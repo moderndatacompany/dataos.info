@@ -4,9 +4,8 @@ pipelines:
         script:
           - pipe: atlassian/azure-storage-deploy:1.0.2
             variables:
-              SOURCE_TYPE: Local
-              SOURCE: '.'
-              SOURCE_LOCATION: '.'
-              DESTINATION_TYPE: Blob
+              SOURCE: 'index.html'
               DESTINATION: 'https://tmdcindiaweb.z13.web.core.windows.net/\\\$web'
-              DESTINATION_SAS_TOKEN: $SAS_TOKEN
+              DESTINATION_SAS_TOKEN: $AZURE_STORAGE_SAS_TOKEN
+              EXTRA_ARGS: '--overwrite=false'
+              DEBUG: 'true'
