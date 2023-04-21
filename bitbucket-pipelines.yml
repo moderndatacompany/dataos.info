@@ -1,11 +1,8 @@
 pipelines:
   default:
     - step:
+        name: Deploy to Azure Blob
+        image: microsoft/azure-cli
         script:
-          - pipe: atlassian/azure-storage-deploy:1.0.2
-            variables:
-              SOURCE: 'index.html'
-              DESTINATION: 'https://tmdcindiaweb.z13.web.core.windows.net/\\\$web'
-              DESTINATION_SAS_TOKEN: $AZURE_STORAGE_SAS_TOKEN
-              EXTRA_ARGS: '--overwrite=false'
-              DEBUG: 'true'
+          - az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
+          - az storage blob upload-batch --destination $BLOB_CONTAINER_NAME --source . --pattern "**/*.*" --account-name $AZURE_STORAGE_ACCOUNT_NAME --account-key $AZURE_STORAGE_ACCOUNT_KEY
