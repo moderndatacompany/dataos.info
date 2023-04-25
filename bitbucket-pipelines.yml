@@ -4,6 +4,7 @@ pipelines:
     - step:
         name: Deploy to azureblob
         script:
+        - echo $$BLOB_URL
         - pipe: microsoft/azure-storage-deploy:2.0.1
           variables:
             SOURCE: './*'
