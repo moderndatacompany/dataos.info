@@ -7,6 +7,6 @@ pipelines:
         - pipe: microsoft/azure-storage-deploy:2.0.1
           variables:
             SOURCE: './*'
-            DESTINATION: $BLOB_URL
+            DESTINATION: 'https://mockdataos.blob.core.windows.net/\\\$web'
             DESTINATION_SAS_TOKEN: $SAS_TOKEN
             EXTRA_ARGS: '--from-to localBlob --recursive'
