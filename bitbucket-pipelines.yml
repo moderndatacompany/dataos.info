@@ -1,5 +1,6 @@
 pipelines:
-  default:
+  branches:
+    master:
     - step:
         name: Deploy to azureblob
         script:
