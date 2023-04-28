@@ -1,0 +1,143 @@
+#### DO NOT CHANGE ####
+site_name: DataOS Documentation
+copyright: Copyright ⓒ 2023 The Modern Data Company
+theme:
+    name: material
+    custom_dir: overrides
+    language: en
+    features:
+        - navigation.tabs
+        - navigation.sections
+        - navigation.instant
+        # - toc.integrate
+    logo: assets/favicon.png
+    favicon: assets/favicon.ico
+    font:
+        text: Roboto
+        code: Roboto Mono
+    palette:
+        primary: white
+plugins:
+    - mermaid2
+    - search
+    # - mkdocs-versioning:
+    #     version: v0.2
+extra_css:
+    - stylesheets/extra.css
+extra_javascript:
+    - https://unpkg.com/mermaid@8.6.4/dist/mermaid.min.js
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid
+  - pymdownx.highlight
+  - pymdownx.smartsymbols
+  - pymdownx.inlinehilite
+  - pymdownx.details
+  - pymdownx.tabbed
+  - pymdownx.tasklist
+  - pymdownx.tilde
+#   - pymdownx.extra
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - toc:
+      permalink: true
+      toc_depth: 5
+      separator: "-"
+  - attr_list
+  - md_in_html
+
+#### Update for navigation tabs/options ####      
+nav:
+    - Home: index.md
+    # - Minerva: minerva/index.md
+    - Applications:
+         - Introduction: cli/index.md
+         - Installation: cli/installationcli.md
+         - Installation[Internal Users]: cli/installation.md
+         - Reference: cli/cli.md
+         - Tutorials: cli/tutorials.md
+
+    - CLI:
+         - Installation: CLI/CLI.md
+         - Command Reference: CLI/CLI Command Reference.md  
+
+    - Primitives:
+         - Introduction: primitives/index.md
+         - Cluster-level Primitives:
+            - Compute: primitives/Compute.md
+            - Depot: 
+                - Depot: primitives/Depot.md
+                - Depot Service: primitives/Depot/Depot Service [WIP].md
+            - Policy: primitives/Policy.md
+         - Workspace-level Primitives:
+            - Cluster: primitives/Cluster.md
+            - Database: primitives/Database.md
+            - Secret: primitives/Secret.md
+            - Service: primitives/Service.md
+            - Workflow: primitives/Workflow.md
+
+         - Depot Config Templates: 
+            - Data Sources:
+                - Amazon Redshift: depots/redshift.md
+                - Amazon S3: depots/amazons3.md
+                - Apache Pulsar: depots/pulsar.md
+                - Azur Blob Storage: depots/azureblobfilestorage.md
+                - Azure Data Lake Storage Gen2: depots/windowsazurstorageblob.md
+                - BigQuery: depots/bigquery.md
+                - Elasticsearch: depots/elasticsearch.md
+                - File: depots/file.md
+                - JDBC: depots/jdbc.md
+                - Kafka: depots/kafka.md
+                - Microsoft SQL Server: depots/msqlserver.md
+                - MYSQL: depots/mysql.md
+                - Oracle: depots/oracle.md
+                - PostgreSQL: depots/postgresql.md
+                - Presto: depots/presto.md
+                - Redis: depots/redis.md
+                - Snowflake: depots/snowflake.md
+                
+                
+    - Stacks: 
+        # - Toolbox: docs/stacks/Toolbox.md
+         - Introduction: stacks/Stacks.md
+         - Scanner: stacks/Scanner.md
+         - Flare: stacks/Flare.md
+         - Benthos: stacks/Benthos.md
+         - Beacon: stacks/Beacon.md
+         - Alpha: stacks/Alpha.md
+         - Airbyte: stacks/Airbyte.md
+
+         - Scenarios: 
+            - Use Cases: 
+                - Partitioning: flare/partitioning.md
+                - Partition Evolution: flare/partitionevolution.md
+                - Data Replay: flare/datareplay.md
+                - Merging Small Files: flare/compactingfiles.md
+                - Concurrent Writes: flare/concurrent.md
+                - GCP Service Account Permissions: flare/gcpsecretpolicy.md
+                - Query Dataset for Job in Progress:  flare/queryinjobprogress.md
+                - Incremental Data Workload: flare/incremental.md
+                - Reading Stream Data: flare/readingstreamdata.md
+                
+    - Contact:
+         - Introduction: governance/datagovernance.md
+         - Data Profiling: governance/dataprofile.md
+    #     - Metrics and Checks: governance/metricschecks.md
+         - Data Fingerprinting: governance/fingerprinting.md
+         - Assertions: governance/assertions.md
+         - Policies: governance/policies.md
+
+   # - Surge: surge/index.md
+
+   # - Catalog: catalog/index.md
+    - Glossary: 
+         - Tableau: integrations/tableau.md
+         - PowerBI: integrations/powerbi.md
+         - IBM SPSS Statistics: integrations/spss.md
+   # - Workbench: workbench/index.md
+
+        
