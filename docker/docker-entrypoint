@@ -1,3 +1,0 @@
-#!/bin/sh
-export APP__VERSION=$(cat /usr/app/public/release.txt | grep GIT_VERSION | sed s/GIT_VERSION=//g)
-exec node /usr/app/index.js $@

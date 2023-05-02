@@ -5,9 +5,8 @@ GIT_VERSION=$(shell git describe --tags --dirty || echo dev-$(shell date -u +"%Y
 BUILD_DATE=$(shell date -u +"%Y-%m-%dT%H:%M:%SZ")
 
 DOCKER_IMAGE_PREFIX=rubiklabs
-DOCKER_IMAGE=modern-docs
+DOCKER_IMAGE=dataos-docs
 DOCKER_TAG=$(GIT_VERSION)
-DOCKER_IMAGE_FULL=$(DOCKER_IMAGE_PREFIX)/mkdocs:$(DOCKER_TAG)
 
 mkdocs-remove:
 	docker image rm rubiklabs/mkdocs:latest
@@ -20,25 +19,13 @@ setup:
 	docker run --rm -it -p 8000:8000 -v '$(shell PWD)':/docs rubiklabs/mkdocs:latest new .
 serve:
 	docker run --rm -it -p 8000:8000 -v '$(shell PWD)':/docs rubiklabs/mkdocs:latest
-
-pre-build: 
-	mkdir -p keys && cp ~/.ssh/bitbucket-readonly keys/ && cp ~/.ssh/bitbucket-readonly.pub keys/
 build:
+	mkdir -p site && \
 	docker build \
 	--progress auto \
-	--build-arg GIT_VERSION=${GIT_VERSION} \
-	--build-arg BUILD_DATE=${BUILD_DATE} \
+	--output site \
 	-t ${DOCKER_IMAGE_PREFIX}/${DOCKER_IMAGE}:${DOCKER_TAG} \
-	-f ./docker/Dockerfile . && \
-	echo "\n\n##########################" && \
-	echo ">> Image: ${DOCKER_IMAGE_PREFIX}/${DOCKER_IMAGE}:${DOCKER_TAG}" && \
-	echo ">> Version: ${DOCKER_TAG}" && \
-	export VERSION=${DOCKER_TAG}
-
-test:
-	docker-compose -f ./docker-compose.yml up --remove-orphans	
-push:
-	docker push ${DOCKER_IMAGE_PREFIX}/${DOCKER_IMAGE}:${DOCKER_TAG}
+	-f ./docker/Dockerfile . 
 
 .release:
 	echo "Creating release with => $(CMD) ..."
