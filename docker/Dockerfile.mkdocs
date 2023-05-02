@@ -1,4 +1,4 @@
-FROM squidfunk/mkdocs-material:7.1.6
+FROM squidfunk/mkdocs-material:9.1.8
 RUN pip install mkdocs-mermaid2-plugin
 RUN pip install mkdocs-versioning
 RUN pip install mkdocs-material-extensions
