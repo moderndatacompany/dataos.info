@@ -140,4 +140,10 @@ nav:
          - IBM SPSS Statistics: integrations/spss.md
    # - Workbench: workbench/index.md
 
+
+    # to be hidden from the top navigation bar on the webpages
+    - About DataOS:
+         - Introduction: About DataOS/About DataOS.md
+         - Architecture: About DataOS/Layered Architecture.md
+         - Philosophy: About DataOS/DataOS Philosophy & Values [WIP].md
         
