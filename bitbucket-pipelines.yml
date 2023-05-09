@@ -2,7 +2,7 @@ pipelines:
   tags:
     '*[0-9].*[0-9].*[0-9]-*':
     - step:
-        name: Deploy App
+        name: Deploy application
         services:
           - docker
         script:
@@ -19,7 +19,7 @@ pipelines:
         artifacts:
           - site/**
     - step:
-        name: Save TAG
+        name: Save application version
         script:
         - export DOCKER_BUILDKIT=1
         - pipe: microsoft/azure-storage-deploy:2.0.1
@@ -28,3 +28,7 @@ pipelines:
             DESTINATION: 'https://mockdataos.blob.core.windows.net/moderndocs-versions/$BITBUCKET_TAG'
             DESTINATION_SAS_TOKEN: $SAS_TOKEN
             EXTRA_ARGS: '--from-to localBlob --recursive' 
+definitions:
+  services:
+    docker:
+      memory: 4096
