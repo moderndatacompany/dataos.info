@@ -9,6 +9,7 @@ pipelines:
         - mkdir -p site
         - docker login --username $DOCKER_HUB_USERNAME --password $DOCKER_HUB_PASSWORD
         - docker build --progress auto --output site -t moderndocs/moderndocs:latest -f ./docker/Dockerfile .
+        - ls -la site
         - pipe: microsoft/azure-storage-deploy:2.0.1
           variables:
             SOURCE: './site/*'
