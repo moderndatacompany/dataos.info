@@ -25,6 +25,6 @@ pipelines:
         - pipe: microsoft/azure-storage-deploy:2.0.1
           variables:
             SOURCE: 'site/**'
-            DESTINATION: 'https://tmdcbitbuckettag.blob.core.windows.net/moderndocs-versions/$BITBUCKET_TAG'
+            DESTINATION: 'https://mockdataos.blob.core.windows.net/moderndocs-versions/$BITBUCKET_TAG'
             DESTINATION_SAS_TOKEN: $SAS_TOKEN
             EXTRA_ARGS: '--from-to localBlob --recursive' 
