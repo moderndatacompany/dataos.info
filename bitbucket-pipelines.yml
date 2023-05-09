@@ -6,7 +6,7 @@ pipelines:
         services:
           - docker
         script:
-        - mkdir -p site
+        - export DOCKER_BUILDKIT=1
         - docker login --username $DOCKER_HUB_USERNAME --password $DOCKER_HUB_PASSWORD
         - docker build --progress auto --output site -t moderndocs/moderndocs:latest -f ./docker/Dockerfile .
         - ls -la
@@ -21,6 +21,7 @@ pipelines:
     - step:
         name: Save TAG
         script:
+        - export DOCKER_BUILDKIT=1
         - pipe: microsoft/azure-storage-deploy:2.0.1
           variables:
             SOURCE: 'site/**'
