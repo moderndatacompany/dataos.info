@@ -1,12 +1,27 @@
 pipelines:
-  branches:
-    master:
+  tags:
+    '*[0-9].*[0-9].*[0-9]-*':
     - step:
-        name: Deploy to azureblob
+        name: Deploy App
+        services:
+          - docker
         script:
+        - mkdir -p site
+        - docker build --progress auto --output site -t moderndocs/moderndocs:latest -f ./docker/Dockerfile .
         - pipe: microsoft/azure-storage-deploy:2.0.1
           variables:
-            SOURCE: './*'
+            SOURCE: './site/*'
             DESTINATION: 'https://mockdataos.blob.core.windows.net/\\\$web'
             DESTINATION_SAS_TOKEN: $SAS_TOKEN
             EXTRA_ARGS: '--from-to localBlob --recursive'
+        artifacts:
+          - site/**
+    - step:
+        name: Save TAG
+        script:
+        - pipe: microsoft/azure-storage-deploy:2.0.1
+          variables:
+            SOURCE: 'site/**'
+            DESTINATION: 'https://tmdcbitbuckettag.blob.core.windows.net/moderndocs-versions/$BITBUCKET_TAG'
+            DESTINATION_SAS_TOKEN: $SAS_TOKEN
+            EXTRA_ARGS: '--from-to localBlob --recursive' 
