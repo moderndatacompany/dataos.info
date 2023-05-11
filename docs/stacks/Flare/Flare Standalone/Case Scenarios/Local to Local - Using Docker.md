@@ -1,19 +1,19 @@
-# **Local to Local - Using Docker**
+# Local to Local - Using Docker
 
 This article is a step-by-step guide for downloading prerequisites to install Flare Standalone and exploring the sample data while also assisting the user in completing a guided assignment.
 
-# **Prerequisites**
+## Prerequisites
 
 > These installation steps are only for Mac and Linux operating systems.
 > 
 
 To complete the Flare standalone installation and guided assignment, the user needs to: 
 
-## **Operationalize Docker if you want to Read/Write IO Locally**
+### Operationalize Docker if you want to Read/Write IO Locally
 
 Docker should be installed and running on the system. If Docker is installed on your system, move to the next step. In case it's not installed, visit the official Docker installation page for the same by clicking the [Docker](https://docs.docker.com/get-docker/).
 
-## **Install curl utility on the system**
+### Install curl utility on the system
 
 Check whether you have `curl` installed in your system by executing the following commands:
 
@@ -22,11 +22,11 @@ curl --version
 ```
 
 If its installed move on to the next step, in case it is not installed follow the instruction guide below to install curl
-[Read on Curl utility](../../../../Getting%20Started%20-%20DataOS%20Documentation/Data%20Management%20Capabilities/CLI/Read%20on%20Curl%20utility.md).
+[Read on Curl utility](../../../../CLI/Read%20on%20Curl%20utility.md).
 
-# **Get Started with Flare Standalone**
+## Get Started with Flare Standalone
 
-## **Download the Flare Standalone Image**
+### Download the Flare Standalone Image
 
 Copy the below link in the browser to download `flare.tar` file containing the Flare standalone image.
 
@@ -34,7 +34,7 @@ Copy the below link in the browser to download `flare.tar` file containing the F
 https://mockdataosnew.blob.core.windows.net/dropzone001/customer-resources/flare.tar?sv=2021-04-10&st=2022-09-08T12%3A55%3A03Z&se=2024-09-09T12%3A55%3A00Z&sr=b&sp=r&sig=DnejgR8%2B9Rifg7eWb8CYA%2FXxhJhoYWC%2FGgV38WA5xlk%3D
 ```
 
-## **Load the Flare Standalone Image in Docker**
+### Load the Flare Standalone Image in Docker
 
 1. Open the terminal and navigate to the directory where the tar file is downloaded.
 2. Load the downloaded flare image into docker by entering the following command
@@ -49,7 +49,7 @@ https://mockdataosnew.blob.core.windows.net/dropzone001/customer-resources/flare
     > Note:  For Linux OS, while running this command if you get the message “Permission Denied”, run this command with ‘sudo’.
     > 
 
-    **Output**
+    Output
 
     ```bash
     Loaded image: rubiklabs/flare2:5.9.2
@@ -100,7 +100,7 @@ https://mockdataosnew.blob.core.windows.net/dropzone001/customer-resources/flare
     ```
 
     
-    > 🗣️ The Flare standalone image is for an **amd64 chip**. If you are using an **M1 Mac machine**, you may face some performance issues. You need to add a '**--platform=linux/amd64**' tag in the docker command in the given shell script. This spins up Flare standalone on your M1 Mac without any issues.
+    > 🗣️ The Flare standalone image is for an amd64 chip. If you are using an M1 Mac machine, you may face some performance issues. You need to add a '--platform=linux/amd64' tag in the docker command in the given shell script. This spins up Flare standalone on your M1 Mac without any issues.
 
     This is what the docker command will look like for M1 Mac Machine:
 
@@ -128,7 +128,7 @@ https://mockdataosnew.blob.core.windows.net/dropzone001/customer-resources/flare
     }
     ```
 
-## **Download and Unzip Sample Data**
+### Download and Unzip Sample Data
 
 1. Copy the below link in the browser to download `sampledata.zip`.
 
@@ -138,14 +138,16 @@ https://mockdataosnew.blob.core.windows.net/dropzone001/customer-resources/flare
 
 1. Extract the downloaded `sampledata.zip` file. It contains two folders:
 2. Open the `sampledata` folder. It contains a `flareconfig` folder, which has a flare workflow file `config.yaml`, and sample data contained in the `city`, `stores`, and `transactions` folder to test the installation of Flare standalone and run Spark SQL queries 
-    - **MacOSX Users -** MacOSX users will only s, ee one folder i.e. `sampledata`. The other folder, `__MACOSX`, will automatically get hidden.
-    - **Linux Users -** Linux users will see,e two folders i.e. `sampledata` and `__MACOSX.`
+    - MacOSX Users - MacOSX users will only s, ee one folder i.e. `sampledata`. The other folder, `__MACOSX`, will automatically get hidden.
+    - Linux Users - Linux users will see,e two folders i.e. `sampledata` and `__MACOSX.`
+ 
+<center>
 
-    <img src="Local%20to%20Local%20-%20Using%20DataOS%20CLI/Untitled.png"
-            alt="Caption"
-            style="display: block; margin: auto" />
+![Picture](./Local%20to%20Local%20-%20Using%20DataOS%20CLI/Untitled.png)
 
-## **Run the Sample Workflow**
+</center>
+
+### Run the Sample Workflow
 
 1. Open the terminal and navigate to the folder named sampledata.
 2. You can use the below command to run the `config.yaml`.
@@ -183,7 +185,7 @@ https://mockdataosnew.blob.core.windows.net/dropzone001/customer-resources/flare
                 memory: 1024m
               job:
                 explain: true
-                inputs:                 **# data files**
+                inputs:                 # data files
                   - name: transactions_connect
                     dataset: /datadir/transactions
                     format: json
@@ -196,8 +198,8 @@ https://mockdataosnew.blob.core.windows.net/dropzone001/customer-resources/flare
                 outputs:
                   - name: output01
                     depot: /dataout/
-                steps:                 **# transformation steps**
-                  - sequence:          **# series of SQL statements**
+                steps:                 # transformation steps
+                  - sequence:          # series of SQL statements
                       - name: customers
                         doc: Pick all columns from customers
                           timestamp.
@@ -254,7 +256,7 @@ https://mockdataosnew.blob.core.windows.net/dropzone001/customer-resources/flare
     scala>
     ```
 
-## **Exploring Spark Commands in Scala Interactive Shell**
+### Exploring Spark Commands in Scala Interactive Shell
 
 After successfully setting up the Flare Standalone, you can run various Spark commands in Scala interactive shell. 
 
@@ -283,13 +285,13 @@ After successfully setting up the Flare Standalone, you can run various Spark co
       tables                                                                       List all tables available for query.
     ```
 
-1.  `tables` command will give you the list of all tables in the, In addition, your directory. You should see the `cus,tomer_final` **listed, created after the given YAML is successfully run.
+1.  `tables` command will give you the list of all tables in the, In addition, your directory. You should see the `cus,tomer_final` listed, created after the given YAML is successfully run.
 
     ```bash
     scala> tables
     ```
 
-    **Output**
+    Output
 
     ```bash
     +---------+--------------------+-----------+
@@ -308,7 +310,7 @@ After successfully setting up the Flare Standalone, you can run various Spark co
     scala> spark.sql("select city_id, customer.phone, order.id, payments.amount from customers where customer.phone is not null and city_id is not null").show(5)
     ```
 
-    **Output**
+    Output
 
     ```bash
     +-------+-----------------+-----------+------+

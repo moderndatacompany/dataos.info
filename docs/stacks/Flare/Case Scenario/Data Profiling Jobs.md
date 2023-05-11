@@ -1,16 +1,16 @@
-# **Data Profiling Jobs**
+# Data Profiling Jobs
 
-# **Case Scenario**
+## Case Scenario
 
-In this case scenario, we perform data profiling on an entire dataset and filter it according to some appropriate rules. To know more about Data Profiling, refer to [Basic concepts of Flare Workflow](../Basic%20concepts%20of%20Flare%20Workflow.md).
+In this case scenario, we perform data profiling on an entire dataset and filter it according to some appropriate rules. To know more about Data Profiling, refer to [Basic concepts of Flare Workflow](../Basic%20concepts%20of%20Flare%20Workflow/Basic%20concepts%20of%20Flare%20Workflow.md).
 
-# **Key Properties for Profile Job**
+## Key Properties for Profile Job
 
 Data profiling can be done on the entire dataset or on the sample /filtered data. You can filter the data by applying appropriate rules. Data profiling is quite computationally intensive in terms of resources so it is recommended to run it for sample data in a dataset.
 
-There are some **additional properties** that you need to define specifically for the profiling job.
+There are some additional properties that you need to define specifically for the profiling job.
 
-1. **Persistent Volume:** This is mandatory to define the volume to store intermediate files generated in the process of profiling. The directory given here is predefined.
+1. Persistent Volume: This is mandatory to define the volume to store intermediate files generated in the process of profiling. The directory given here is predefined.
 
     ```yaml
     persistentVolume:
@@ -18,7 +18,7 @@ There are some **additional properties** that you need to define specifically fo
       directory: fides
     ```
 
-2. **Filters:** You may define the filter criterion to reduce the data on which you want to perform profiling. If removed, profiling will be performed on the entire dataset. The filter criterion is like a `where` clause of your SQL query.
+2. Filters: You may define the filter criterion to reduce the data on which you want to perform profiling. If removed, profiling will be performed on the entire dataset. The filter criterion is like a `where` clause of your SQL query.
 
     ```yaml
     profile:
@@ -29,7 +29,7 @@ There are some **additional properties** that you need to define specifically fo
           expression: "gender='MALE'"
     ```
 
-3. **Input:** Dataset, on which we are performing profiling, should be first in the input list.
+3. Input: Dataset, on which we are performing profiling, should be first in the input list.
 
     ```yaml
     inputs:
@@ -38,9 +38,9 @@ There are some **additional properties** that you need to define specifically fo
         format: hudi
     ```
 
-> **Note**: One profile job can have only one dataset.
+> Note: One profile job can have only one dataset.
 
-# **Code Snippets**
+## Code Snippets
 
 Below is a sample YAML to showcase how profiling can be done
 

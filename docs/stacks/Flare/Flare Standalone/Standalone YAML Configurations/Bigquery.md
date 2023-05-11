@@ -1,8 +1,8 @@
-# **Bigquery**
+# Bigquery
 
-# **Read Config**
+## Read Config
 
-**Input Section Configuration for Reading from Bigquery Data Source**
+Input Section Configuration for Reading from Bigquery Data Source
 
 ```yaml
 inputs:
@@ -16,7 +16,7 @@ inputs:
 
 > 🗣️ Make sure the `dataset` and `temporaryBucket` you mention while writing should exist in the Bigquery otherwise your job/query will fail
 
-**Sample YAML for Reading from Bigquery Data Source**
+Sample YAML for Reading from Bigquery Data Source
 
 ```yaml
 version: v1
@@ -75,9 +75,9 @@ workflow:
 					# the configuration file & sample data and prefix it with /data/examples 
 ```
 
-# **Write Config**
+## Write Config
 
-**Output Section Configuration for Writing to Bigquery Data Source**
+Output Section Configuration for Writing to Bigquery Data Source
 
 ```yaml
 outputs:
@@ -92,7 +92,7 @@ outputs:
           temporaryBucket: <bucket-name>
 ```
 
-**Sample YAML for Writing to Bigquery Data Source**
+Sample YAML for Writing to Bigquery Data Source
 
 ```yaml
 version: v1

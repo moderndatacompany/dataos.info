@@ -1,8 +1,8 @@
-# **Inputs**
+# Inputs
 
 Within the `inputs` section of a Flare Job, users can specify the input dataset details required for reading data from various supported data sources. It is important to note that a single Flare Job has the ability to read data from multiple data sources.
 
-## **Structure of Input Section**
+## Structure of Input Section
 
 ```yaml
 inputs:

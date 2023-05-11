@@ -1,8 +1,8 @@
-# **Snowflake Non-Depot Scan Workflow**
+# Snowflake Non-Depot Scan Workflow
 
 You can scan metadata from a SNOWFLAKE database with non-depot Scanner workflow.
 
-# **Requirements**
+## Requirements
 
 To scan the SNOWFLAKE depot, you need the following:
 
@@ -12,7 +12,7 @@ To scan the SNOWFLAKE depot, you need the following:
 4. If ingesting tags, the user should also have permissions to query `snowflake.account_usage.tag_references`. For this the snowflake user should be granted the `ACCOUNTADMIN` role (or a role granted IMPORTED PRIVILEGES on the database)
 5. If during the ingestion you want to set the session tags, note that the user should have `ALTER SESSION` permissions.
 
-# **Scanner Workflow**
+## Scanner Workflow
 
 Here is an example of YAML configuration to connect to the source and reach the Metis server to save the metadata in Metis DB.
 
@@ -59,7 +59,7 @@ Here is an example of YAML configuration to connect to the source and reach the 
     ```
     
 
-    > **Note:** Remove the commented part mentioned under the filter pattern in the Scanner YAML to apply filters for the required schemas and tables.
+    > Note: Remove the commented part mentioned under the filter pattern in the Scanner YAML to apply filters for the required schemas and tables.
  
  
  

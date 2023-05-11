@@ -1,6 +1,6 @@
-# **Alpha**
+# Alpha
 
-DataOS provides various stacks to accomplish different kinds of functionality. For querying, you have **Minerva** - SQL query engine, **Surge** for Complex Event Processing, and **Benthos** for mundane stream workloads. You can use **Flare**, a Spark-backed data-processing engine, to create complex workflows to carry out the data processing tasks.
+DataOS provides various stacks to accomplish different kinds of functionality. For querying, you have Minerva - SQL query engine, Surge for Complex Event Processing, and Benthos for mundane stream workloads. You can use Flare, a Spark-backed data-processing engine, to create complex workflows to carry out the data processing tasks.
 
 DataOS gives you a convenient way to use Alpha stack to add ad-hoc functionalities on top of DataOS. You can develop your application and create an image of it. This image can be exposed to DataOS using the Alpha stack.
 
@@ -8,27 +8,27 @@ All the functionality and logic are written in your application, and then this l
 
 You can add ingress and autoscaling capabilities to your application. You can also make it part of a workflow.
 
-## **Requirements**
+## Requirements
 
 You need to:
 
 1. Package your application into a Docker image. To learn more about building Docker images for your Apps, refer to [Containerize an application](https://docs.docker.com/get-started/02_our_app/).
 2. Push container image to Docker Hub to share the created image. To learn more about pushing images to Docker Hub, refer to [Manage repositories](https://docs.docker.com/docker-hub/repos/#:~:text=To%20push%20an%20image%20to,docs%2Fbase%3Atesting%20).
 
-## **Deploy Application**
+## Deploy Application
 
 The following steps describe how to deploy an application as a service using the DataOS Alpha stack.
 
-1. [Create a service using Alpha stack](Alpha.md)
+1. [Create a service using Alpha stack](./Alpha.md)
 
-2. [Define the policy for your application](Alpha.md)
+2. [Define the policy for your application](./Alpha.md)
 
-## **Create a Service**
+### Create a Service
 
 Provide the following configuration properties:
 
-- **Replicas**: Create multiple replicated services.
-- **Autoscaling**: Manage autoscaling to match changing application workload levels.
+- Replicas: Create multiple replicated services.
+- Autoscaling: Manage autoscaling to match changing application workload levels.
 
     ```yaml
     autoScaling:
@@ -39,7 +39,7 @@ Provide the following configuration properties:
         targetCPUUtilizationPercentage: 80
     ```
 
-- **Ingress**: Configure the incoming port for the service to allow access to DataOS resources from external links. Provide the following properties.
+- Ingress: Configure the incoming port for the service to allow access to DataOS resources from external links. Provide the following properties.
     - Enable ingress port.
     - Provide a path that will be part of the public URL to access the service outside DataOS.
     - Enable the strip path to strip the specified path and forward the request to the upstream service.
@@ -53,7 +53,7 @@ Provide the following configuration properties:
         stripPath: true
     ```
 
-- **Image**: Latest application docker image.
+- Image: Latest application docker image.
 
     ```yaml
     stack: alpha
@@ -61,7 +61,7 @@ Provide the following configuration properties:
           image: <docker-image>
     ```
 
-- **Arguments**: to pass arguments to the application.
+- Arguments: to pass arguments to the application.
 
   Here is the complete example YAML for a Swagger UI that enables users to try out the API calls directly in the browser.
 
@@ -89,7 +89,7 @@ Provide the following configuration properties:
         image: swaggerapi/swagger-ui           # docker image
     ```
 
-## **Define a Policy**
+### Define a Policy
 
 Allow users to perform a specific set of operations using the application.
 

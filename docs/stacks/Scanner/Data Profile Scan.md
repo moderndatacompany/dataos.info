@@ -1,4 +1,4 @@
-# **Data Profile Scan**
+# Data Profile Scan
 
 Data profiling tool analyzes the structure, content, and relationships within data to uncover patterns, inconsistencies, anomalies, and redundancies to achieve higher data quality. It uses basic statistics to know about the validity of the data. Flare workflows are run for data profiling on the entire dataset or sample /filtered data. This analysis is stored in Icebase. 
 
@@ -7,11 +7,11 @@ Data profile Scanner workflow reads about these statistics (metadata extraction 
 > 🗣️ Before running the Scanner workflow for metadata, ensure that the profiling and datatool workflows are run successfully.
 
 
-# **Scanner Workflow for Data Profiling Metadata**
+## Scanner Workflow for Data Profiling Metadata
 
 The YAML configuration will connect to the Icebase depot and scan the data profile-related information.
 
-## **YAML Configuration**
+## YAML Configuration
 
 Here is the complete YAML for scanning the metadata related to data profiling. 
 
@@ -45,6 +45,6 @@ workflow:
                   - upload
 ```
 
-## **Metadata on Metis UI**
+## Metadata on Metis UI
 
 On a successful run, you are able to view the captured data profiling information about the dataset on Metis UI.

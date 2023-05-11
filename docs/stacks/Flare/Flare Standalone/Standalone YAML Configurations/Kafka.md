@@ -1,8 +1,8 @@
-# **Kafka**
+# Kafka
 
-# **Read Config**
+## Read Config
 
-**Input Section Configuration for Reading from Kafka Data Source**
+Input Section Configuration for Reading from Kafka Data Source
 
 ```yaml
 
@@ -16,7 +16,7 @@ inputs: # Read from Kafka
       isBatch: true
 ```
 
-**Sample YAML for Reading from Kafka Data Source**
+Sample YAML for Reading from Kafka Data Source
 
 ```yaml
 version: v1
@@ -71,9 +71,9 @@ workflow:
                     sql: SELECT * FROM city_connect
 ```
 
-# **Write Config**
+## Write Config
 
-**Output Section Configuration for Writing to Kafka Data Source**
+Output Section Configuration for Writing to Kafka Data Source
 
 ```yaml
 outputs:
@@ -87,7 +87,7 @@ outputs:
         format: avro
 ```
 
-**Sample YAML for Writing to Kafka Data Source**
+Sample YAML for Writing to Kafka Data Source
 
 ```yaml
 version: v1

@@ -1,10 +1,10 @@
-# **Merge Data**
+# Merge Data
 
-# **Case Scenario**
+## Case Scenario
 
 This Flare Workflow enables you to merge city data tables from two different locations
 
-# **Code Snippets**
+## Code Snippets
 
 ```yaml
 version: v1

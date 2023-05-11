@@ -1,8 +1,8 @@
-# **MySQL Depot Scan**
+# MySQL Depot Scan
 
 DataOS allows you to connect to the MySQL database to access data from the tables using Depots. The  Depot enables access to all schemas visible to the specified service in the configured database. You can scan metadata from an MySQL-type depot with Scanner workflows.
 
-# **Requirements**
+## Requirements
 
 To scan the MySQL depot, you need the following:
 
@@ -10,7 +10,7 @@ To scan the MySQL depot, you need the following:
 2. You should have access to the `INFORMATION_SCHEMA`table.
 3. Metadata Scan is supported for MySQL (version 8.0.0 or greater)
 
-# **Scanner Workflow**
+## Scanner Workflow
 
 Here is an example of YAML configuration to connect to the source and reach the Metis server to save the metadata in Metis DB.
 
@@ -60,7 +60,7 @@ Here is an example of YAML configuration to connect to the source and reach the 
     
      
     
-    > **Note:** Remove the commented part mentioned under the filter pattern in the Scanner YAML to apply filters for the required schemas and tables.
+    > Note: Remove the commented part mentioned under the filter pattern in the Scanner YAML to apply filters for the required schemas and tables.
     > 
     
     > 🗣 The FilterPatterns  work on the regex pattern.Filtering for the Scanner workflow works on a hierarchy level; First, it will filter all given schemas and then the table in that schema if present.

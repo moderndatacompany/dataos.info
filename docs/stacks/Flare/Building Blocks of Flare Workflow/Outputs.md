@@ -1,8 +1,8 @@
-# **Outputs**
+# Outputs
 
 In order to facilitate the task of writing to multiple output locations, it is necessary to furnish an array of data definitions. The `outputs` section within the YAML encompasses the requisite configuration settings for generating output in various data formats that are compatible with Flare. This allows us to sink any of the views that were created during the input load or sequence step into a dataset.
 
-## **Structure of the Outputs Section**
+## Structure of the Outputs Section
 
 ```yaml
 outputs:
@@ -53,7 +53,7 @@ The below table summarizes the various attributes within the `outputs` section:
 | `tags` | Tags provide details about data or describe the data in very short.  | `tags:` <br>&nbsp;&nbsp;&nbsp;&nbsp; `- Lookup-Tables` <br>&nbsp;&nbsp;&nbsp;&nbsp; `- Accounts` | NA | NA | NA | Optional |
 | `options` | Options for the output like `saveMode`, `properties` of output file format, `partitioning`, etc. | `options:` <br>&nbsp;&nbsp;&nbsp;&nbsp; `saveMode: overwrite` <br> &nbsp;&nbsp;&nbsp;&nbsp; `compressionType: gzip` | `avro` | `avro`/`spark` | Any option supported by the underlying spark data source connector can be used | Optional |
 
-**Additional attributes within the options**
+Additional attributes within the options
 
 The available output `options` include various attributes such as save mode, file format properties, partitioning, and more. It is important to note that any option supported by the underlying Spark data source connector can be utilized.
 

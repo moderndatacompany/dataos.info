@@ -1,10 +1,10 @@
-# **Read on Curl utility**
+# Read on Curl utility
 
-Curl is **a command-line utility that transfers data from or to a server that is designed to work without user interaction.** Before installing a Curl utility, check if it is already installed. If Curl is already installed on your system, then you can skip the rest of the steps.
+Curl is a command-line utility that transfers data from or to a server that is designed to work without user interaction. Before installing a Curl utility, check if it is already installed. If Curl is already installed on your system, then you can skip the rest of the steps.
 
 Below are the steps mentioned to check if Curl is already installed and useful resources to download and install in case Curl is not installed on your system. 
 
-## **Curl on Ubuntu or Linux**
+## Curl on Ubuntu or Linux
 
 ```bash
 # To check if you have curl installed already:
@@ -17,7 +17,7 @@ sudo apt update
 sudo apt install curl
 ```
 
-## **Curl on Mac**
+## Curl on Mac
 
 ```bash
 # To check if you have curl installed already:
@@ -33,7 +33,7 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 brew install curl
 ```
 
-## **Installing Curl on Windows**
+## Installing Curl on Windows
 
 To download and install curl on your Windows OS, visit [curl Download Wizard](https://curl.se/dlwiz/?type=bin). Look for the version of your Windows OS and download the curl executable file. After downloading, extract the zip file and go to the SRC folder to locate the executable file.
 

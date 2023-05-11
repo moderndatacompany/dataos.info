@@ -1,8 +1,8 @@
-# **JDBC**
+# JDBC
 
 DataOS allows you to connect to a database with JDBC driver to read data from tables using Depot. The Depot enables access to all schemas visible to the specified user in the configured database.
 
-## **Requirements**
+## Requirements
 
 To connect to JDBC, you need:
 
@@ -12,7 +12,7 @@ To connect to JDBC, you need:
 - Username
 - Password
 
-## **Template**
+## Template
 
 To create a Depot of type ‘JDBC‘, use the following template:
 
@@ -25,10 +25,10 @@ tags:
 owner: <owner-name>
 layer: user
 depot:
-  type: JDBC                                      **# Depot type**
+  type: JDBC                                      # Depot type
   description: <description>
   external: true
-  connectionSecret:                               **# Data source specific configurations**
+  connectionSecret:                               # Data source specific configurations
     - acl: rw
       type: key-value-properties
       data:
@@ -39,7 +39,7 @@ depot:
       data:
         username: <jdbc-username>
         password: <jdbc-password>
-  spec:                                           **# Data source specific configurations**
+  spec:                                           # Data source specific configurations
     subprotocol: <mysql|postgresql>
     host: <host>
     port: <port>

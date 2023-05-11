@@ -1,8 +1,8 @@
-# **Transformation Errors**
+# Transformation Errors
 
-## **Error: Caused By Already closed files for partition: month**
+## Error: Caused By Already closed files for partition: month
 
-**Message**
+Message
 
 ```bash
     ...62 more
@@ -11,11 +11,11 @@ Caused by: java.lang.IllogicalStateException: Already closed files for partition
 		at org.apache.spark.sql.execution.datasources.v2.DataWritingSparkTask$.$anonfun$run$run$1(WriteT.....
 ```
 
-**What went wrong?**
+What went wrong?
 
 This basically happens when the partition is not done on the correct column or if the data is large we need to sort it by that column to avoid this error. 
 
-**Solution**
+Solution
 
 To rectify the issue, the partition on the `date/time` column should be done like this
 
@@ -37,9 +37,9 @@ iceberg:
       name: day
 ```
 
-## **Error: Caused by Cannot write incompatible data to table**
+## Error: Caused by Cannot write incompatible data to table
 
-**Message**
+Message
 
 ```bash
 				at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:1052)
@@ -52,19 +52,19 @@ Caused by: org.apache.spark.sql.AnalysisException: Cannot write incompatible dat
 				at org.apache.spark.sql.errors.QueryCompilationErrors$.cannotWriteIncompatibleDataToTable...
 ```
 
-**What went wrong?**
+What went wrong?
 
 Due to incompatible data in table
 
-**Solution**
+Solution
 
 Cast the `date/time` column as `timestamp`
 
 Convert `date/time` column to `timestamp`
 
-## **Error: Job finished with error = java.lang.string Cannot be cast to java.lang.boolean**
+## Error: Job finished with error = java.lang.string Cannot be cast to java.lang.boolean
 
-**Message**
+Message
 
 ```bash
 Stopping Spark Application
@@ -78,7 +78,7 @@ Flare: Job finished with error=java.lang.String cannot be cast to java.lang.Bool
 
 ```bash
 				at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala)
-Caused by: java.lang.ClassCastException: **java.lang.String cannot be cast to java.lang.Boolean**
+Caused by: java.lang.ClassCastException: java.lang.String cannot be cast to java.lang.Boolean
 				at scala.runtime.BoxesRunTime.unboxToBoolean(BoxesRunTime.java:87)
 				at io.dataos.flare.configurations.job.input.File.getReader(File.scala:42)
 				at io.dataos.flare.configurations.job.input.DatasetInput.getReader(Input.scala:167)
@@ -86,6 +86,6 @@ Caused by: java.lang.ClassCastException: **java.lang.String cannot be cast to ja
 				at io.dataos.flare.configurations.job.JobConfiguration.$anonfun$readers$1(JobConfiguration...
 ```
 
-**What went wrong?**
+What went wrong?
 
 The spelling of `false` was wrong in the batch mode

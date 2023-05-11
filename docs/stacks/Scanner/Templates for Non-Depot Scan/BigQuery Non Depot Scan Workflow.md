@@ -1,8 +1,8 @@
-# **BigQuery Non Depot Scan Workflow**
+# BigQuery Non Depot Scan Workflow
 
 The non-depot Scanner workflow will help you to connect with BigQuery to extract metadata details such as schemas, tables, view details etc.
 
-# **Requirements**
+## Requirements
 
 To run the Scanner, you need the following:
 
@@ -24,7 +24,7 @@ To run the Scanner, you need the following:
 | 10 | bigquery.readsessions.create | BigQuery Admin | Bigquery Usage Workflow |
 | 11 | bigquery.readsessions.getData | BigQuery Admin | Bigquery Usage Workflow |
 
-# **Scanner Workflow**
+## Scanner Workflow
 
 Here is an example of YAML configuration to connect to the source and reach the Metis server to save the metadata in Metis DB.
 
@@ -102,7 +102,7 @@ Here is an example of YAML configuration to connect to the source and reach the 
     ```
     
 
-    > **Note:** Remove the commented part mentioned under the filter pattern in the Scanner YAML to apply filters for the required schemas and tables.
+    > Note: Remove the commented part mentioned under the filter pattern in the Scanner YAML to apply filters for the required schemas and tables.
     
     
 

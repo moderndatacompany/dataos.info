@@ -1,10 +1,10 @@
-# **Stream Job**
+# Stream Job
 
-# **Case Scenario**
+## Case Scenario
 
-This case scenario describes the ingestion of stream data from Kafka Depot and saving it to file systems, databases, Iceberg, etc. To know more about a Stream Job, refer to [Basic concepts of Flare Workflow](../Basic%20concepts%20of%20Flare%20Workflow.md).
+This case scenario describes the ingestion of stream data from Kafka Depot and saving it to file systems, databases, Iceberg, etc. To know more about a Stream Job, refer to [Basic concepts of Flare Workflow](../Basic%20concepts%20of%20Flare%20Workflow/Basic%20concepts%20of%20Flare%20Workflow.md).
 
-# **Implementation Flow**
+## Implementation Flow
 
 1. You need to define `checkpointlocation` to store the intermediate batches. The batched files are uploaded into a staging storage zone in DataOS, processed, and pushed into the main storage zone, batch by batch.
 2. Save the YAML given below and adjusted the depot locations.
@@ -13,13 +13,13 @@ This case scenario describes the ingestion of stream data from Kafka Depot and s
 5. As its stream data its metadata needs to be updated at regular intervals, so we would have to schedule the data tool job.
 6. Define the cron within the data tool job and apply the `datatool.yaml` from CLI.
 
-# **Outcomes**
+## Outcomes
 
 The following Flare job saves data from Kafka to Iceberg tables.
 
-# **Code files**
+## Code files
 
-### **config.yaml**
+### config.yaml
 
 ```yaml
 version: v1beta1
@@ -85,7 +85,7 @@ workflow:
                         - __metadata
 ```
 
-### **datatool.yaml**
+### datatool.yaml
 
 ```yaml
 version: v1

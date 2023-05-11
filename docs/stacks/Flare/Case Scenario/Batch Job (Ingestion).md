@@ -1,20 +1,20 @@
-# **Batch Job (Ingestion)**
+# Batch Job (Ingestion)
 
-# **Case Scenario**
+## Case Scenario
 
-In this case scenario, we have a Flare Batch Job in which we read data from one depot, process it, and write it to another depot. To know more about Batch Jobs, refer to [Basic concepts of Flare Workflow](../Basic%20concepts%20of%20Flare%20Workflow.md).
+In this case scenario, we have a Flare Batch Job in which we read data from one depot, process it, and write it to another depot. To know more about Batch Jobs, refer to [Basic concepts of Flare Workflow](../Basic%20concepts%20of%20Flare%20Workflow/Basic%20concepts%20of%20Flare%20Workflow.md).
 
-# **Implementation Flow**
+## Implementation Flow
 
 1. Save the below YAML file to your system
 2. Make sure that the read dataset exists in your depots, along with the write depot.
 3. Once you have made the changes, simply apply the yaml file using the resource apply command.
 
-# **Outcome**
+## Outcome
 
 The data will be read from `thirdparty01` depot to `icebase` depot, after processing on the Flare Stack. Once the file is written to the Icebase depot, its metadata version will be updated to the latest, with Toolbox Stack. Once the data is written to the depot you can view it on the Metis UI
 
-# **Code Snippet**
+## Code Snippet
 
 ```yaml
 version: v1

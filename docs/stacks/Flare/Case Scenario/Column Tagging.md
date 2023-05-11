@@ -1,4 +1,4 @@
-# **Column Tagging**
+# Column Tagging
 
 In Flare 4.0, a new feature has been introduced to enable users to tag columns in an output table from the Flare Workflow YAMLs. This new functionality provides immediate governance over tagged columns during dataset writing. To facilitate this, a new `columnTags` property has been added to the `outputs` section of the Flare YAML.
 
@@ -6,7 +6,7 @@ Three mutually exclusive ways have been defined to identify a column, which incl
 
 The following section provides a comprehensive overview of these three ways:
 
-### **`columnRegex`**
+### `columnRegex`
 
 The `columnRegex` property allows the specification of a regular expression pattern to identify columns that require tagging. The pattern will initiate matching from the beginning of the string. 
 
@@ -20,7 +20,7 @@ columnTags:
       - customer
 ```
 
-### **`columnName`**
+### `columnName`
 
 The `columnName` property is utilized to designate a particular column.
 
@@ -37,7 +37,7 @@ The `columnName` property is utilized to designate a particular column.
 	    - PII.Name
 ```
 
-### **`columnNames`**
+### `columnNames`
 
 The `columnNames` property is utilized when identical tags need to be applied to columns that match the specified name.
 
@@ -55,7 +55,7 @@ The `columnNames` property is utilized when identical tags need to be applied to
 	    - PII.None
 ```
 
-> 🗣️ **Few important points to note**
+> 🗣️ Few important points to note
 > 
 > 1. Tags are case-sensitive. This implies that `PII` is not interchangeable with `piI`, `pii`, or `Pii`. So, consistency in the usage of tag names should be maintained between the Metis GUI and YAML.
 > 2. If the intention is to attach a tag to a column that is already present on Metis, the correct tag, FQN (Fully Qualified Name), must be used. The FQN is constructed using the format `TagCategory.PrimaryTagName`.
@@ -63,7 +63,7 @@ The `columnNames` property is utilized when identical tags need to be applied to
 > 1. Use the Metis GUI to manually remove the erroneous tag from the corresponding column. However, this step alone is not enough, as the tag may reappear in subsequent workflow runs. 
 > 2. Subsequently, delete and rerun the workflow by excluding the undesired tag name. It is crucial to ensure that the workflow and DAG names match.
 
-# **Code Snippet**
+## Code Snippet
 
 The code snippet to define column identifiers and tags is provided below
 

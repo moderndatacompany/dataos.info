@@ -1,4 +1,4 @@
-# **DataOS Philosophy & Values [WIP]**
+# DataOS Philosophy & Values [WIP]
 
 We believe that more than just the technology used behind to build such a system, a data operating system must help the users derive certain outcomes for their organisation. Some of the core values of our belief system have been enlisted on this page, along with an overview of the way DataOS components are used to attain these values.
 

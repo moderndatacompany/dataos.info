@@ -1,8 +1,8 @@
-# **Elasticsearch Depots**
+# Elasticsearch Depots
 
 To start executing Flare Jobs on Elasticsearch Depots, you first need to set up an Elasticsearch Depot. If you haven’t done it, navigate to the below link
 
-# **Read Configuration**
+## Read Configuration
 
 | Scenario | Syntax | Additonal Properties (Elastic Search Specific) |
 | --- | --- | --- |
@@ -19,7 +19,7 @@ inputs:
         es.nodes.wan.only: 'true'
 ```
 
-**Sample Read configuration YAML**
+Sample Read configuration YAML
 
 Let’s take a case scenario where we read the dataset from Elasticsearch depot and store it in the Icebase depot within the DataOS. The read config YAML will be as follows
 
@@ -63,7 +63,7 @@ workflow:
                     sql: SELECT * FROM input
 ```
 
-# **Write Configuration**
+## Write Configuration
 
 | Scenario | Syntax |
 | --- | --- |
@@ -78,7 +78,7 @@ outputs:
     format: elasticsearch
 ```
 
-**Sample Read configuration YAML**
+Sample Read configuration YAML
 
 Let’s take a case scenario where we have to write the dataset to the an Elasticsearch depot from the thirdparty depot. The write config YAML will be as follows
 

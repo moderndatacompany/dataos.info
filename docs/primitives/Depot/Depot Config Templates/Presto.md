@@ -1,8 +1,8 @@
-# **Presto**
+# Presto
 
 DataOS allows you to connect to the Presto query engine for fast analytic queries against data of any size using Depot. The Depot enables access to all catalogs visible to the specified user in the configured query engine.
 
-## **Requirements**
+## Requirements
 
 To connect to Presto, you need:
 
@@ -11,7 +11,7 @@ To connect to Presto, you need:
 - Password
 - Catalog name
 
-## **Template**
+## Template
 
 To create a Depot of type ‘PRESTO‘, use the following template:
 
@@ -25,10 +25,10 @@ tags:
 owner: <owner-name>
 layer: user
 depot:
-  type: PRESTO                                    **# Depot type**
+  type: PRESTO                                    # Depot type
   description: <description>
   external: true
-  connectionSecret:                               **# Data source specific configurations**
+  connectionSecret:                               # Data source specific configurations
     - acl: rw
       values:
         username: <username>
@@ -37,7 +37,7 @@ depot:
       values:
         username: <username>
         password: <password>
-  spec:                                           **# Data source specific configurations**
+  spec:                                           # Data source specific configurations
       host: "localhost"
       port: "5432"
       catalog: "postgres"

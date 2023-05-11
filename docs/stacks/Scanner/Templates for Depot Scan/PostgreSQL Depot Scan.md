@@ -1,8 +1,8 @@
-# **PostgreSQL Depot Scan**
+# PostgreSQL Depot Scan
 
 DataOS allows you to connect to the PostgreSQL database to access data from the tables using Depots. The Depot enables access to all schemas visible to the specified service in the configured database. You can scan metadata from an PostgreSQL depot with Scanner workflows.
 
-# **Requirements**
+## Requirements
 
 To scan the PostgreSQL depot, you need the following:
 
@@ -10,7 +10,7 @@ To scan the PostgreSQL depot, you need the following:
 2. You should have enough access to fetch the required metadata from your PostgreSQL database.
 3. The user needs to have both `CONNECT` and `SELECT`  privileges  on the database.
 
-# **Scanner Workflow**
+## Scanner Workflow
 
 Here is an example of YAML configuration to connect to the source and reach the Metis server to save the metadata in Metis DB. 
 
@@ -54,7 +54,7 @@ Here is an example of YAML configuration to connect to the source and reach the 
 2. After the successful workflow run, you can check the metadata of scanned Tables on Metis U for all schemas present in the database.
     
     
-    > **Note:** Remove the commented part mentioned under the filter pattern in the Scanner YAML to apply filters for the required schemas and tables.
+    > Note: Remove the commented part mentioned under the filter pattern in the Scanner YAML to apply filters for the required schemas and tables.
     > 
     
     

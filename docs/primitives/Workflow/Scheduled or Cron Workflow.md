@@ -1,24 +1,24 @@
-# **Scheduled or Cron Workflow**
+# Scheduled or Cron Workflow
 
-# **Case Scenario**
+## Case Scenario
 
 Let’s take a case scenario, where we read data from Kafka depot and write it to the Icebase. Since this would be a continuous read/write we will have to update the metadata on the Metis continuously. So we will have schedule the toolbox workflow in the datatool.yaml at an interval of 5 minutes.
 
-# **Implementation Flow**
+## Implementation Flow
 
 1. Save the below code snippets into separate YAML files.
 2. Get the username and password for the `kafka.sasl.jaas.config` property.
-3. To schedule the toolbox workflow at an interval of 5 minutes, you would be required to provide the cron expression. In case you don’t know how to define the cron expression, navigate to [cron](https://en.wikipedia.org/wiki/Cron).
+3. To schedule the toolbox workflow at an interval of 5 minutes, you would be required to provide the cron expression. In case you don’t know how to define the cron expression, refer to [cron - wikipedia](https://en.wikipedia.org/wiki/Cron)
 4. First Apply the `kafka-to-icebase.yaml` from the CLI.
 5. Then apply the `datatool.yaml` command from the CLI.
 
-# **Outcome**
+## Outcome
 
 When you apply the `datatool.yaml` workflow at a frequency of 5 minutes. The metadata of ingested data gets updated in Metis after every 5 minutes.
 
-# **Code Snippets**
+## Code Snippets
 
-### **kafka-to-icebase.yaml**
+### kafka-to-icebase.yaml
 
 ```yaml
 version: v1beta1
@@ -84,7 +84,7 @@ workflow:
                         - __metadata
 ```
 
-### **datatool.yaml**
+### datatool.yaml
 
 ```yaml
 version: v1

@@ -1,14 +1,14 @@
-# **Icebase Depot Scan**
+# Icebase Depot Scan
 
 DataOS allows you to create a Depot of type 'ICEBASE' to read the topics/messages stored in Pulsar. The created Depot enables you to read the published topics and process incoming stream of messages. You can scan metadata from ICEBASE-type depot with Scanner workflows.
 
-# **Requirements**
+## Requirements
 
 To scan the ICEBASE depot, you need the following:
 
 - Ensure that the depot is created and you have `read` access for the depot.
 
-# **Scanner Workflow**
+## Scanner Workflow
 
 Here is an example of YAML configuration to connect to the source and reach the Metis server to save the metadata in Metis DB.
 

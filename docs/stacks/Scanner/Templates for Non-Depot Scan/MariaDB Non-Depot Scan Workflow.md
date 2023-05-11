@@ -1,12 +1,12 @@
-# **MariaDB Non-Depot Scan Workflow**
+# MariaDB Non-Depot Scan Workflow
 
 The non-depot Scanner workflow will help you to connect with MariaDB to extract metadata details such as schemas, tables, view details etc.
 
-# **Requirements**
+## Requirements
 
 - Credentials to connect to MariaDB database.
 
-# **Scanner Workflow**
+## Scanner Workflow
 
 Here is an example of YAML configuration to connect to the source and reach the Metis server to save the metadata in Metis DB.
 
@@ -69,4 +69,4 @@ workflow:
 				      #     - table4
 ```
 
-> **Note:** Remove the commented part mentioned under the filter pattern in the Scanner YAML to apply filters for the required schemas and tables.
+> Note: Remove the commented part mentioned under the filter pattern in the Scanner YAML to apply filters for the required schemas and tables.

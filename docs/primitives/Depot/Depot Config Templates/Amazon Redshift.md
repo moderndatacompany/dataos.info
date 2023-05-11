@@ -1,8 +1,8 @@
-# **Amazon Redshift**
+# Amazon Redshift
 
 DataOS allows you to connect to the Amazon Redshift database to read data from tables using Depots. Amazon Redshift is a fully managed and scalable data warehouse service in the cloud. You can perform analysis queries on your dataset using Workbench.
 
-## **Requirements**
+## Requirements
 
 To connect to Redshift, you need:
 
@@ -18,7 +18,7 @@ In case of accessing the Redshift Database in Flare workflows, you also need to 
 - AWS access key
 - AWS secret key
 
-## **Template**
+## Template
 
 To create a Depot of type ‘REDSHIFT‘, use the following template:
 

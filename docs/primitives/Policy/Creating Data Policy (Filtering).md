@@ -1,10 +1,10 @@
-# **Creating Data Policy (Filtering)**
+# Creating Data Policy (Filtering)
 
 Filter policy definition consists of configuration settings for the user, columns of the dataset, and masking operator. It may include rules for the subject, predicate, and object defining AND/OR relationships.
 
 1. Create the YAML file. 
     -  Specify the version, resource name (the policy will be referred to by this name), and resource type (policy). 
-    -  Provide layer as **‘user’** or **‘system’**. 
+    -  Provide layer as ‘user’ or ‘system’. 
         
         `user`: When the resources to be accessed are defined at the DataOS User layer.
         
@@ -13,7 +13,7 @@ Filter policy definition consists of configuration settings for the user, column
     -  Provide a description to help understand its purpose.
     -  Specify the policy-related configuration properties under the `data` section.
         
-        `type`: Specify **“filter”**.
+        `type`: Specify “filter”.
         
         `priority`: The policy with higher priority will override all other policies defined for the same resources.
         
@@ -27,7 +27,7 @@ Filter policy definition consists of configuration settings for the user, column
         
         `match`: You can specify two operators here. `any` (must match at least one tag) and `all`(match all tags).
         
-        `user`: Specify a user identified by a tag. They can be a group of tags defined as an array. See [Rules for AND/OR Logic](Rules%20for%20AND%20OR%20Logic.md).
+        `user`: Specify a user identified by a tag. They can be a group of tags defined as an array. See [Rules for AND/OR Logic](./Rules%20for%20AND%20OR%20Logic.md).
         
     -  Specify the criterion for columns of the dataset for which data is to be filtered.
         
@@ -41,9 +41,9 @@ Filter policy definition consists of configuration settings for the user, column
         
 2. Create the policy resource using the `apply` command.
 
-## **Filtering Policy Example**
+## Filtering Policy Example
 
-**Example** 
+### Example 
 
 ```yaml
 version: v1

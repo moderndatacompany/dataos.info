@@ -1,14 +1,14 @@
-# **Redshift Non-Depot Scan Workflow**
+# Redshift Non-Depot Scan Workflow
 
 The non-depot Scanner workflow will help you to connect with Redshift to extract metadata details such as schemas, tables, view details etc.
 
-# **Requirements**
+## Requirements
 
 1. Credentials to connect to Redshift database.
 2. `SVV_TABLE_INFO` View contains summary information for tables in the Redshift database and is visible only to superusers. You need permissions to query the view while scanning metadata from Scanner workflow.
 3. Redshift user must grant `SELECT`privilege on table [SVV_TABLE_INFO](https://docs.aws.amazon.com/redshift/latest/dg/r_SVV_TABLE_INFO.html) to fetch the metadata of tables and views.
 
-# **Scanner Workflow**
+## Scanner Workflow
 
 Here is an example of YAML configuration to connect to the source and reach the Metis server to save the metadata in Metis DB.
 
@@ -72,7 +72,7 @@ Here is an example of YAML configuration to connect to the source and reach the 
                   #     - table4
     ```
     
-      > **Note:** Remove the commented part mentioned under the filter pattern in the Scanner YAML to apply filters for the required schemas and tables.
+      > Note: Remove the commented part mentioned under the filter pattern in the Scanner YAML to apply filters for the required schemas and tables.
       
      
      

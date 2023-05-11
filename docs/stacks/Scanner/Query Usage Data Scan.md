@@ -1,14 +1,14 @@
-# **Query Usage Data Scan**
+# Query Usage Data Scan
 
 DataOS Gateway service backed by Gateway DB  keeps query usage data, cluster usage statistics, and dataset usage analytics and harvests required insights such as (heavy datasets, popular datasets, datasets most associated together, etc.). The Scanner workflow connects with the Gateway service to extract query-related data and saves it to MetaStore via the REST API Server.  It also scans information about queries, users, dates, and completion times.
 
 This query history/dataset usage data helps to rank the most used tables.
 
-# **Scanner Workflow for Quality Checks**
+## Scanner Workflow for Quality Checks
 
 The following Scanner workflow is for metadata extraction related to query usage data. It will connect to the gateway service to scan the data and save it to the Metis DB periodically.
 
-# **YAML Configuration**
+## YAML Configuration
 
 Here is the complete YAML for scanning the query usage data. 
 
@@ -43,6 +43,6 @@ workflow:
                   - upload
 ```
 
-## **Metadata on Metis UI**
+## Metadata on Metis UI
 
 On a successful run, you can view the query usage data on Metis UI.

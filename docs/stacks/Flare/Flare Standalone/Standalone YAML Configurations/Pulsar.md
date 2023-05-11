@@ -1,8 +1,8 @@
-# **Pulsar**
+# Pulsar
 
-# **Pre-requisites**
+## Pre-requisites
 
-## **Get the `pulsar-admin` tag**
+### Get the `pulsar-admin` tag
 
 To read/write from environment pulsar within the DataOS you require the pulsar-admin tags. To check the list of available tags, execute the command
 
@@ -15,7 +15,7 @@ dataos-ctl user get
                |             |        |                      | roles:id:data-dev,              
                |             |        |                      | roles:id:depot-manager,         
                |             |        |                      | roles:id:depot-reader,          
-               |             |        |                      | **roles:id:pulsar-admin**,    # this is the Pulsar-admin tag     
+               |             |        |                      | roles:id:pulsar-admin,    # this is the Pulsar-admin tag     
                |             |        |                      | roles:id:system-dev,            
                |             |        |                      | roles:id:user,                  
                |             |        |                      | users:id:iamgroot
@@ -23,7 +23,7 @@ dataos-ctl user get
 
 In case you don’t have the required tag please contact the system-administrator
 
-## **Environment Variables for Pulsar**
+### Environment Variables for Pulsar
 
 ```yaml
 envs:
@@ -33,9 +33,9 @@ envs:
 
 Without these environment variables, the job will fail to establish a connection with the Pulsar in standalone mode.
 
-# **Read Config**
+## Read Config
 
-**Input Section Configuration for Reading from Pulsar Data Source**
+Input Section Configuration for Reading from Pulsar Data Source
 
 ```yaml
 inputs:
@@ -49,7 +49,7 @@ inputs:
     topic: transactions
 ```
 
-**Sample YAML for Reading from Pulsar Data Source**
+Sample YAML for Reading from Pulsar Data Source
 
 ```yaml
 version: v1
@@ -116,9 +116,9 @@ workflow:
                     sql: SELECT * FROM transactions_connect
 ```
 
-# **Write Config**
+## Write Config
 
-**Output Section Configuration for Writing to Pulsar Data Source**
+Output Section Configuration for Writing to Pulsar Data Source
 
 ```yaml
 outputs: 
@@ -130,7 +130,7 @@ outputs:
 	    topic: transactions
 ```
 
-**Sample YAML for Writing to Pulsar Data Source**
+Sample YAML for Writing to Pulsar Data Source
 
 ```yaml
 version: v1

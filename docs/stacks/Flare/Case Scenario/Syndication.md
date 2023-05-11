@@ -1,15 +1,15 @@
-# **Syndication**
+# Syndication
 
-# **Case Scenario**
+## Case Scenario
 
 In this case scenario, we syndicate the data from the DataOS internal managed depot icebase to an external depot. This involves reading the data from Icebase, doing certain transformations, and writing it to the external depot.
 
-# **Implementation Flow**
+## Implementation Flow
 
 1. Save the YAML and adjust the depots accordingly.
 2. Apply the YAML using DataOS CLI.
 
-# **Code Snippet**
+## Code Snippet
 
 ```yaml
 version: v1

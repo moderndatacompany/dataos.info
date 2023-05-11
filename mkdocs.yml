@@ -10,7 +10,7 @@ theme:
         - navigation.sections
         - navigation.instant
         # - toc.integrate
-    logo: assets/favicon.png
+    logo: assets/dark-logo-modern.png
     favicon: assets/favicon.ico
     font:
         text: Roboto
@@ -55,30 +55,58 @@ nav:
     - Home: index.md
     # - Minerva: minerva/index.md
     - Applications:
-         - Introduction: cli/index.md
-         - Installation: cli/installationcli.md
-         - Installation[Internal Users]: cli/installation.md
-         - Reference: cli/cli.md
-         - Tutorials: cli/tutorials.md
+         - Introduction: GUI/GUI.md
+         - Metis:
+            - Details:
+                - Introduction: GUI/GUI Applications/Metis/Metis.md
+                - Features: GUI/GUI Applications/Metis/Metis Features/Metis Features.md
+                - Architecture: GUI/GUI Applications/Metis/Architecture/Architecture.md
+                - Metis UI: GUI/GUI Applications/Metis/Metis UI/Metis UI.md
+         - Lens:
+            - Details:
+                - Introduction: GUI/GUI Applications/Lens/Lens.md
+                - Elements: 
+                    - Elements: GUI/GUI Applications/Lens/Elements of Lens/Elements of Lens.md
+                    - Entity: GUI/GUI Applications/Lens/Elements of Lens/Entity.md
+                    - Fields: GUI/GUI Applications/Lens/Elements of Lens/Fields.md
+                    - Dimensions: GUI/GUI Applications/Lens/Elements of Lens/Dimensions.md
+                    - Measures: GUI/GUI Applications/Lens/Elements of Lens/Measures.md
+                    - Relationships: GUI/GUI Applications/Lens/Elements of Lens/Relationships.md
+         - Hera: GUI/GUI Applications/Hera/Hera.md
+         - Workbench: GUI/GUI Applications/Workbench/Workbench.md
+         - Atlas:
+            - Atlas:
+                - Introduction: GUI/GUI Applications/Atlas/Atlas.md
+                - Dashboard: GUI/GUI Applications/Atlas/Dashboard.md 
+                - Queries: GUI/GUI Applications/Atlas/Queries.md
+                - Snippets: GUI/GUI Applications/Atlas/Snippets.md
+                - Alerts: GUI/GUI Applications/Atlas/Alerts.md
+                - Destinations: GUI/GUI Applications/Atlas/Destinations.md
+         - Operations: GUI/GUI Applications/Operations/Operations.md
+         - Notebook: GUI/GUI Applications/Notebook/Notebook.md
+         - Audiences: GUI/GUI Applications/Audiences/Audiences.md
+         - Odin: GUI/GUI Applications/Odin/Odin.md
+         - Bifrost: GUI/GUI Applications/Bifrost/Bifrost.md
+
 
     - CLI:
          - Installation: CLI/CLI.md
          - Command Reference: CLI/CLI Command Reference.md  
 
     - Primitives:
-         - Introduction: primitives/index.md
+         - Introduction: Primitives/Primitives.md
          - Cluster-level Primitives:
-            - Compute: primitives/Compute.md
+            - Compute: Primitives/Compute/Compute.md
             - Depot: 
-                - Depot: primitives/Depot.md
-                - Depot Service: primitives/Depot/Depot Service [WIP].md
-            - Policy: primitives/Policy.md
+                - Depot: Primitives/Depot/Depot.md
+                - Depot Service: Primitives/Depot/Depot Service [WIP].md
+            - Policy: Primitives/Policy/Policy.md
          - Workspace-level Primitives:
-            - Cluster: primitives/Cluster.md
-            - Database: primitives/Database.md
-            - Secret: primitives/Secret.md
-            - Service: primitives/Service.md
-            - Workflow: primitives/Workflow.md
+            - Cluster: Primitives/Cluster/Cluster.md
+            - Database: Primitives/Database.md
+            - Secret: Primitives/Secret.md
+            - Service: Primitives/Service/Service.md
+            - Workflow: Primitives/Workflow/Workflow.md
 
          - Depot Config Templates: 
             - Data Sources:
@@ -103,13 +131,13 @@ nav:
                 
     - Stacks: 
         # - Toolbox: docs/stacks/Toolbox.md
-         - Introduction: stacks/Stacks.md
-         - Scanner: stacks/Scanner.md
-         - Flare: stacks/Flare.md
-         - Benthos: stacks/Benthos.md
-         - Beacon: stacks/Beacon.md
-         - Alpha: stacks/Alpha.md
-         - Airbyte: stacks/Airbyte.md
+         - Introduction: Stacks/Stacks.md
+         - Scanner: Stacks/Scanner/Scanner.md
+         - Flare: Stacks/Flare/Flare.md
+         - Benthos: Stacks/Benthos/Benthos.md
+         - Beacon: Stacks/Beacon/Beacon.md
+         - Alpha: Stacks/Alpha.md
+         - Airbyte: Stacks/Airbyte/Airbyte.md
 
          - Scenarios: 
             - Use Cases: 
@@ -141,9 +169,9 @@ nav:
    # - Workbench: workbench/index.md
 
 
-    # to be hidden from the top navigation bar on the webpages
+# to be hidden from the top navigation bar on the webpages
     - About DataOS:
          - Introduction: About DataOS/About DataOS.md
-         - Architecture: About DataOS/Layered Architecture.md
+         - Architecture: About DataOS/Layered Architecture/Layered Architecture.md
          - Philosophy: About DataOS/DataOS Philosophy & Values [WIP].md
         

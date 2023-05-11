@@ -1,15 +1,14 @@
-# **Testing the Flare job on Flare Standalone**
+# Testing the Flare job on Flare Standalone
 
-# **Pre-requisites**
+## Pre-requisites
 
-## **Install Flare Standalone**
+## Install Flare Standalone
 
-Flare Standalone lets you explore DataOS Flare capabilities on your local system. It's a testing interface to let you check your code before implementing it into production. If you have already installed Flare Standalone, you can move on to the next section. If you haven’t navigated, refer to
-[Flare Standalone 1.0](https://www.notion.so/Flare-Standalone-1-0-).
+Flare Standalone lets you explore DataOS Flare capabilities on your local system. It's a testing interface to let you check your code before implementing it into production. If you have already installed Flare Standalone, you can move on to the next section.
 
-# **Testing the Flare Job**
+## Testing the Flare Job
 
-## **Step 1: Download the data to the local system**
+### Step 1: Download the data to the local system
 
 To test the Flare Job you need to have the data on the local system. If you don’t have the data download the data from your cloud storage
 
@@ -17,7 +16,7 @@ To test the Flare Job you need to have the data on the local system. If you don�
 
 Create a new folder, let’s say by name `city_ingestion` and store the data file `ingestion.csv` in it. Copy the path of the `city_ingestion` folder.
 
-## **Step 2: Make changes to the config YAML**
+### Step 2: Make changes to the config YAML
 
 Change the input dataset address by removing the existing one and adding the prefix `/data/examples` and then adding the name of the folder in which you have stored the data. For e.g. If you have stored the data in the folder `product`, the dataset address will be `/data/examples/product`. 
 
@@ -78,11 +77,11 @@ workflow:
                     sql: select * from city_ingest limit 10
 ```
 
-## **Step 3: Run the Workflow**
+### Step 3: Run the Workflow
 
 To run the Flare workflow we will use the CLI Method. To know more about running Flare Workflow click the below link
 
-**Command**
+Command
 
 ```bash
 dataos-ctl develop start -s <flare-version> -f <config-file-path> -d <data-file-path>
@@ -94,7 +93,7 @@ In this case, we will be using the flare version `flare:3.0` and the `city_inges
 dataos-ctl develop start -s flare:3.0 -f /home/tmdc/standalone/standalone.yaml -d /home/tmdc/standalone/data
 ```
 
-**Output**
+Output
 
 ```bash
 Flare session is available as flare.
@@ -112,7 +111,7 @@ Type in expressions to have them evaluated.
 Type :help for more information.
 ```
 
-- **To view the full output, click the arrow**
+- To view the full output, click the arrow
     
     ```bash
     INFO[0002] 💻 create flare local...                      
@@ -452,9 +451,9 @@ Type :help for more information.
     ```
     
 
-## **Step 4: Check the output**
+### Step 4: Check the output
 
-**Run the tables command**
+Run the tables command
 
 This shows the various tables within the directory that you mounted
 
@@ -471,7 +470,7 @@ scala> tables
 +---------+-----------+-----------+
 ```
 
-**Run the printSchema command**
+Run the printSchema command
 
 ```bash
 scala> spark.sql("select * from city_ingest").printSchema

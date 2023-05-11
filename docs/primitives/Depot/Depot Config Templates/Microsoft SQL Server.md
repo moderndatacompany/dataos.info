@@ -1,8 +1,8 @@
-# **Microsoft SQL Server**
+# Microsoft SQL Server
 
 DataOS allows you to connect to the Microsoft SQL Server database to read data from tables using Depots. The Depot enables access to all tables visible to the specified schema in the configured database. You can create as many Depots as you need to access additional SQL servers/databases.
 
-## **Requirements**
+## Requirements
 
 To connect to SQL Server database, you need:
 
@@ -12,11 +12,11 @@ To connect to SQL Server database, you need:
 - Username
 - Password
 
-## **Template**
+## Template
 
 To create a Depot of type ‘SQLSERVER‘, use the following template:
 
-**Use this template, if self-signed certificate is enabled.**
+Use this template, if self-signed certificate is enabled.
 
 ```yaml
 version: v1
@@ -45,7 +45,7 @@ depot:
         password: 
 ```
 
-**If self-signed certificates are not being used** by your organisation, for connection to these storage systems, then you do not need to write additional parameters within the spec section.
+If self-signed certificates are not being used by your organisation, for connection to these storage systems, then you do not need to write additional parameters within the spec section.
 
 ```yaml
 version: v1
@@ -69,6 +69,6 @@ depot:
     - acl: rw
       type: key-value-properties
       data:
-        username: ******
-        password: ****************
+        username: 
+        password: 
 ```

@@ -1,8 +1,8 @@
-# **Redis**
+# Redis
 
 DataOS allows you to connect to Redis using Depot. The Depot then enables querying of live data stored in Redis and provides access to all of Redis' data structures - String, Hash, List, Set, and Sorted Set. You can also read Data Frames.
 
-## **Requirements**
+## Requirements
 
 To connect to Redis, you need:
 
@@ -12,7 +12,7 @@ To connect to Redis, you need:
 - Table
 - Password
 
-## **Template**
+## Template
 
 To create a Depot of type ‘REDIS‘, use the following template:
 
@@ -26,17 +26,17 @@ tags:
 owner: <owner-name>
 layer: user
 depot:
-  type: REDIS                                    **# Depot type**
+  type: REDIS                                    # Depot type
   description: <description>
   external: true
-  connectionSecret:                              **# Data source specific configurations**
+  connectionSecret:                              # Data source specific configurations
     - acl: rw
       values:
         password: <password>
     - acl: r
       values:
         password: <password>
-  spec:                                          **# Data source specific configurations**
+  spec:                                          # Data source specific configurations
       host: "localhost"
       port: 5432
       db: 10

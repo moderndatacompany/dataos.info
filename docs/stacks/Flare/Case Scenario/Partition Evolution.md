@@ -1,4 +1,4 @@
-# **Partition Evolution**
+# Partition Evolution
 
 This article describes a use case of partition evolution for Iceberg and shows how seamless it is to query the data stored with multiple partition layouts.
 
@@ -14,11 +14,11 @@ Select * from NY-Taxi where date_col > 2010-10-23 AND date_col < 2013-01-01
 
 You do not need to understand the physical table layout to get accurate query results. Iceberg keeps track of the relationships between a column value and its partition.
 
-# **Solution approach**
+## Solution approach
 
 When you evolve a partition spec, the old data written with an earlier partition key remains unchanged, and its metadata remains unaffected. New data is written using the new partition key in a new layout. Metadata for each of the partition versions is kept separately. When you query, each partition layout’s respective metadata is used to identify the files it needs to access; this is called split-planning.
 
-# **Implementation details**
+## Implementation details
 
 The NY Taxi data is ingested and is partitioned by year. When the new data is appended, the table is updated so that the data is partitioned by day. Both partitioning layouts can co-exist in the same table.
 
@@ -28,7 +28,7 @@ Partition evolution is a metadata operation and does not rewrite files.
 
 The following steps demonstrate the partition evolution use case.
 
-## **Ingest data with initial partition**
+### Ingest data with initial partition
 
 Run the following Flare job that ingests data into DataOS with the partition on year.
 
@@ -94,7 +94,7 @@ workflow:
                       dropoff_datetime: timestamp
 ```
 
-## **Update metadata with data tool**
+### Update metadata with data tool
 
 Run the following datatool job to update the metadata in DataOS.
 
@@ -114,7 +114,7 @@ workflow:
           value: latest
 ```
 
-## **Update partition for new data**
+### Update partition for new data
 
 Run the following datatool job to update the partition spec for the new data to be ingested.
 
@@ -140,7 +140,7 @@ workflow:
           - day:pickup_datetime
 ```
 
-## **Append data with new partition spec**
+### Append data with new partition spec
 
 Run the following Flare job that appends data into DataOS with the updated partition on ‘day’.
 

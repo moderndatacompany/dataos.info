@@ -1,10 +1,10 @@
-# **Creating a Cluster Using CLI**
+# Creating a Cluster Using CLI
 
 Within the DataOS, we can create a Cluster using the Command Line Interface. Follow the below steps to create a cluster via this method:
 
-## **Step 1: Create a YAML for Cluster**
+## Step 1: Create a YAML for Cluster
 
-The first and foremost step is to create a YAML file. The [properties](../Cluster.md) to be defined in the YAML are elaborated in the section at the end. The syntax of the YAML is given below:
+The first and foremost step is to create a YAML file. The [properties](../Cluster/Cluster.md) to be defined in the YAML are elaborated in the section at the end. The syntax of the YAML is given below:
 
 ```yaml
 version: v1 # Version
@@ -33,7 +33,7 @@ cluster: # Cluster Specific Section
       - address: dataos://icebase:default # Depot Address
 ```
 
-## **Step 2: Apply the Cluster YAML using DataOS CLI**
+## Step 2: Apply the Cluster YAML using DataOS CLI
 
 To create a Cluster resource, you need to use the apply command on the CLI. The apply command for cluster is given below:
 

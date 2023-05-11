@@ -1,27 +1,27 @@
-# **Toolbox**
+# Toolbox
 
 Toolbox Stack or Data Toolbox Stack provides vital functionality in case of metadata updation in Icebase depots. When data is ingested into Icebase using Flare workflow, the metadata of ingested datasets needs to be registered with Metis before it can be queried using Workbench. The Data Toolbox allows `set_version` action on the data stored in the DataOS internal storage Icebase, which uses the Iceberg format. The Metis keeps track of the Iceberg table by storing a reference to the latest metadata file. Using the Data Toolbox `set_version` action, you can update the metadata version to the latest or any specific version.
 
-# **Performing Data Toolbox Actions**
+## Performing Data Toolbox Actions
 
 You can write Data Toolbox action as a separate workflow or part of a dag in a workflow. 
 
 > 🗣️ For batch workloads, you can use both ways of performing the Toolbox action but for streaming workloads, you need to create separate workflows for Flare and Toolbox.
 
 
-## **Toolbox Action as a separate Workflow**
+## Toolbox Action as a separate Workflow
 
 To perform a data toolbox action, follow the below steps:
 
-### **Step 1: Create a YAML file for Workflow**
+### Step 1: Create a YAML file for Workflow
 
-If you have already ingested data, you can create a separate workflow for toolbox action, as shown in the following YAML. To know more, refer to [Workflow](Workflow.md). 
+If you have already ingested data, you can create a separate workflow for toolbox action, as shown in the following YAML. To know more, refer to [Workflow](../Primitives/Workflow/Workflow.md). 
 
-### **Step 2: Define a Job that executes upon Toolbox Stack**
+### Step 2: Define a Job that executes upon Toolbox Stack
 
-Within the DAG, define a job that executes upon the Toolbox Stack. To know more about the various properties for a job executed upon toolbox stack, refer to [Toolbox](Toolbox.md). 
+Within the DAG, define a job that executes upon the Toolbox Stack. To know more about the various properties for a job executed upon toolbox stack, refer to [Toolbox](./Toolbox.md). 
 
-**Sample Toolbox Workflow**
+Sample Toolbox Workflow
 
 ```yaml
 version: v1 # Version
@@ -40,7 +40,7 @@ workflow: # Workflow Section
 	            value: latest # Sets version to latest (if you wanna choose a specific version refer it here)
 ```
 
-### **Step 3: Apply the Workflow using CLI**
+### Step 3: Apply the Workflow using CLI
 
 Use the apply command to apply the workflow using CLI
 
@@ -48,7 +48,7 @@ Use the apply command to apply the workflow using CLI
 dataos-ctl apply -f <path/file-name> -w <workspace> # By default the workspace is public so you may not include the -w flag
 ```
 
-## **Toolbox Action in a Job within the Flare Workflow**
+## Toolbox Action in a Job within the Flare Workflow
 
 Instead of creating a separate workflow for Toolbox, you can create a single workflow. With a DAG with two jobs, one job runs on Flare Stack while the second one runs on the Toolbox Stack, which depends on the first job for the start of execution.
 
@@ -130,9 +130,9 @@ workflow: # Workflow Section
     dependencies: wf-sample-job-001
 ```
 
-Once you define the workflow, you can apply it using [CLI](../Getting%20Started%20-%20DataOS%20Documentation/Data%20Management%20Capabilities/CLI.md).
+Once you define the workflow, you can apply it using [CLI](../CLI/CLI.md).
 
-# **Building Blocks of Toolbox Job**
+## Building Blocks of Toolbox Job
 
 Here, you need to specify the configuration settings required to perform a data processing job such as driver, executor, inputs, outputs, steps, etc. You can define multiple jobs that will be executed in sequential order.
 

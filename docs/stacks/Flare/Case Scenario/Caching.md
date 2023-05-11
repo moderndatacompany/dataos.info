@@ -1,8 +1,8 @@
-# **Caching**
+# Caching
 
 Caching puts a copy of intermediately transformed dataset into memory, allowing us to repeatedly access it at a much lower cost than running the entire pipeline again.
 
-### **Code Snippet**
+## Code Snippet
 
 ```yaml
 version: v1

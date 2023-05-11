@@ -1,8 +1,8 @@
-# **BigQuery Depot Scan**
+# BigQuery Depot Scan
 
 DataOS allows you to create a Depot of type 'BIGQUERY' to read the data stored in the BigQuery projects. You can create several Depots, each pointing to a different project. You can scan metadata from BigQuery type depot.
 
-# **Requirements**
+## Requirements
 
 To scan the BigQuery depot, you need the following:
 
@@ -25,7 +25,7 @@ To scan the BigQuery depot, you need the following:
 | 10 | bigquery.readsessions.create | BigQuery Admin | Bigquery Usage Workflow |
 | 11 | bigquery.readsessions.getData | BigQuery Admin | Bigquery Usage Workflow |
 
-# **Scanner Workflow**
+## Scanner Workflow
 
 Here is an example of YAML configuration to connect to the source and reach the Metis server to save the metadata in Metis DB.
 
@@ -65,7 +65,7 @@ Here is an example of YAML configuration to connect to the source and reach the 
     ```
     
 
-> **Note:** Remove the commented part mentioned under the filter pattern in the Scanner YAML to apply filters for the required schemas and tables.
+> Note: Remove the commented part mentioned under the filter pattern in the Scanner YAML to apply filters for the required schemas and tables.
 > 
 > 
 > 

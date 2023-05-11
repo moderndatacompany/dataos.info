@@ -1,8 +1,8 @@
-# **Elasticsearch**
+# Elasticsearch
 
-# **Read Config**
+## Read Config
 
-**Input Section Configuration for Reading from Elasticsearch Data Source**
+Input Section Configuration for Reading from Elasticsearch Data Source
 
 ```yaml
 inputs:
@@ -13,7 +13,7 @@ inputs:
       nodes: <ip>:<port> # e.g. localhost:6500
 ```
 
-**Sample YAML for Reading from Elasticsearch Data Source**
+Sample YAML for Reading from Elasticsearch Data Source
 
 ```yaml
 version: v1
@@ -67,9 +67,9 @@ workflow:
                     sql: SELECT * FROM oms_transactions_data
 ```
 
-# **Write Config**
+## Write Config
 
-**Output Section Configuration for Writing to Elasticsearch Data Source**
+Output Section Configuration for Writing to Elasticsearch Data Source
 
 ```yaml
 outputs:
@@ -80,7 +80,7 @@ outputs:
       nodes: <ip>:<port>  # e.g. localhost:6500
 ```
 
-**Sample YAML for Writing to Elasticsearch Data Source**
+Sample YAML for Writing to Elasticsearch Data Source
 
 ```yaml
 version: v1

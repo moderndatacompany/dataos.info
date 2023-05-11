@@ -1,15 +1,15 @@
-# **MSSQL Depot Scan**
+# MSSQL Depot Scan
 
 DataOS allows you to connect to the MSSQL database to access data from the tables using Depots. The  Depot enables access to all schemas visible to the specified service in the configured database. You can scan metadata from an MSSQL-type depot with Scanner workflows.
 
-# **Requirements**
+## Requirements
 
 To scan the MSSQL depot, you need the following:
 
 1. Ensure that the depot is created and you have `read` access for the depot.
 2. You should have enough permissions to scan metadata.
 
-# **Scanner Workflow**
+## Scanner Workflow
 
 Here is an example of YAML configuration to connect to the source and reach the Metis server to save the metadata in Metis DB.
 
@@ -50,5 +50,5 @@ Here is an example of YAML configuration to connect to the source and reach the 
 2. After the successful workflow run, you can check the metadata of scanned Tables on Metis UI for all schemas in the database.
     
     
-    > **Note:** Remove the commented part mentioned under the filter pattern in the Scanner YAML to apply filters for the required schemas and tables.
+    > Note: Remove the commented part mentioned under the filter pattern in the Scanner YAML to apply filters for the required schemas and tables.
     

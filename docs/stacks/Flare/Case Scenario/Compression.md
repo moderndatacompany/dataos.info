@@ -1,12 +1,12 @@
-# **Compression**
+# Compression
 
-# **Case Scenario**
+## Case Scenario
 
 This Flare Workflow compresses Cloud Events and NY Taxi Data.
 
-# **Code Snippets**
+## Code Snippets
 
-## **Compressing Cloud Events Data**
+### Compressing Cloud Events Data
 
 ```yaml
 version: v1
@@ -49,7 +49,7 @@ workflow:
             - name: rewrite_dataset
 ```
 
-## **Compress NY Taxi Data**
+### Compress NY Taxi Data
 
 ```yaml
 version: v1

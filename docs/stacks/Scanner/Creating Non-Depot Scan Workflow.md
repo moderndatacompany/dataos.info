@@ -1,8 +1,8 @@
-# **Creating Non-Depot Scan Workflow**
+# Creating Non-Depot Scan Workflow
 
 In order to create and run a Scanner workflow for metadata ingestion, we will follow the steps to create a YAML configuration that will connect to the source and scan the entities. With this type of Scanner workflow, you must only provide the connection/credential details for the underlying data source within the YAML file.
 
-## **Prerequisites**
+## Prerequisites
 
 Before running non-depot Scanner workflow, you should make sure that you have the following: 
 
@@ -11,7 +11,7 @@ Before running non-depot Scanner workflow, you should make sure that you have th
 3. Permission to run the Scanner workflow such as `users:id:metis` (Metis admin) tag.
 4. Include the property `runAsUser: metis` under the `spec` section in the Scanner YAML.
 
-## **Creating Scanner Workflow for Non-Depot Scan**
+## Creating Scanner Workflow for Non-Depot Scan
 
 Learn how to configure and run a workflow to scan the data sources such as databases, dashboards, messaging services, etc.
 
@@ -43,9 +43,9 @@ Learn how to configure and run a workflow to scan the data sources such as datab
             runAsUser: metis
     ```
     
-4. Under the ‘**Scanner**’ stack, provide the following: 
-    -  **type**. This depends on the underlying data source. 
-     - **source**: Provide the source name where the scanned metadata is saved within Metastore. By default, Scanner workflow pushes metadata to the Metis DB via the Metis API server. On Metis UI, sources are listed for dashboards, data sources, workflows, ML models, etc. Clicking on them will show the metadata for the respective source names.
+4. Under the ‘Scanner’ stack, provide the following: 
+    -  type. This depends on the underlying data source. 
+     - source: Provide the source name where the scanned metadata is saved within Metastore. By default, Scanner workflow pushes metadata to the Metis DB via the Metis API server. On Metis UI, sources are listed for dashboards, data sources, workflows, ML models, etc. Clicking on them will show the metadata for the respective source names.
         
         
         > 🗣 On Metis UI, under the given source name, you can see the information about all the entities scanned for a data source.
@@ -62,7 +62,7 @@ Learn how to configure and run a workflow to scan the data sources such as datab
                   
         ```
         
-5. **When the metadata source is not referenced by the depot**, you need to provide the `source connection` details and credentials **explicitly**. The properties in this section depend on the underlying metadata source, such as username, password, hostPort, project, email, etc. 
+5. When the metadata source is not referenced by the depot, you need to provide the `source connection` details and credentials explicitly. The properties in this section depend on the underlying metadata source, such as username, password, hostPort, project, email, etc. 
     
     > Enter the details for any additional connection arguments that can be sent to the metadata source while making the connection. These details must be added as Key-Value pairs.
     
@@ -79,13 +79,13 @@ Learn how to configure and run a workflow to scan the data sources such as datab
         account: NB48718.central-india.azure
     ```
     
-    > 🗣 Connection details will depend on the underlying data source to be scanned. Click [here](Creating%20Non-Depot%20Scan%20Workflow.md) to learn more about the specific configuration properties.
+    > 🗣 Connection details will depend on the underlying data source to be scanned. Click [here](./Creating%20Non-Depot%20Scan%20Workflow.md) to learn more about the specific configuration properties.
     
     <br>
     
-6. Provide a set of configurations specific to the source type under ****`source configuration` to customize and control metadata scanning. These properties depend on the underlying metadata source. Specify them under the config section.
-    - **type**: Specify config type; for example, in this case, the `type` is `DatabaseMetadata`.
-    - **FilterPattern**: Specify which databases/ schemas/ tables/ charts/ dashboards/ topics are of interest.
+6. Provide a set of configurations specific to the source type under `source configuration` to customize and control metadata scanning. These properties depend on the underlying metadata source. Specify them under the config section.
+    - type: Specify config type; for example, in this case, the `type` is `DatabaseMetadata`.
+    - FilterPattern: Specify which databases/ schemas/ tables/ charts/ dashboards/ topics are of interest.
         
         `include:` and `exclude:` are used to filter target entities. For example, you can specify a  table name or a regex rule to include/exclude tables while scanning the schema and registering with Metis.
         
@@ -106,13 +106,13 @@ Learn how to configure and run a workflow to scan the data sources such as datab
         ```
         
         
-        > 🗣 Config type and filter patterns will vary according to the source to be scanned.  Click [here](Creating%20Non-Depot%20Scan%20Workflow.md) to learn more about the specific configuration properties.
+        > 🗣 Config type and filter patterns will vary according to the source to be scanned.  Click [here](./Creating%20Non-Depot%20Scan%20Workflow.md) to learn more about the specific configuration properties.
 
 <br>
 
 7. Save the YAML file and copy its path. The path could be either relative or absolute.
 
-## **Running Workflow**
+## Running Workflow
 
 Use the `apply` command to run the above workflow.
 
@@ -120,7 +120,7 @@ Use the `apply` command to run the above workflow.
 dataos-ctl apply -f <path/filename> -w <name of the workspace>
 ```
 
-## **Metadata on Metis UI**
+## Metadata on Metis UI
 
 On a successful run, you can view the captured metadata for the given data source on Metis UI by referring to the `Sources`.
 

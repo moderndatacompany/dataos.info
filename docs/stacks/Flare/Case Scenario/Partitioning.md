@@ -1,4 +1,4 @@
-# **Partitioning**
+# Partitioning
 
 Partitioning is a way to make queries faster by grouping similar rows together when writing.
 
@@ -6,7 +6,7 @@ This use case checks how partitioning works for Flare while writing data to Iceb
 
 This use case describes data partitioning with partition keys of different data types for Iceberg and Parquet formats.
 
-Iceberg can partition timestamps by year, month, day, and hour granularity. It can also use a categorical column of data type- string, integer, long, ***double (to be checked)***, to store rows together and speed up queries, e.g., like vendor ID in this example. 
+Iceberg can partition timestamps by year, month, day, and hour granularity. It can also use a categorical column of data type- string, integer, long, *double (to be checked)*, to store rows together and speed up queries, e.g., like vendor ID in this example. 
 
 Iceberg produces partition values by taking a column value and optionally transforming it. Iceberg converts timestamp values into a date, and extracts year, month, day, hour, etc.
 
@@ -14,11 +14,11 @@ While in non-Iceberg data sink, partitions are explicit and appear as a separate
 
 You need to provide a categorical column as a partition criterion for non-Iceberg formats such as Parquet.
 
-# **Implementation details**
+## Implementation details
 
 The following examples demonstrate the use of various partitioning modes.
 
-### **Iceberg**
+### Iceberg
 
 - Partition using type identity
     - Integer values
@@ -29,40 +29,40 @@ The following examples demonstrate the use of various partitioning modes.
     - Day
     - Hour
 
-**Example 1:** Partitioning is done on identity by taking the vendor_id column. You don't need to provide the property name if the partition field type is identity type.
+Example 1: Partitioning is done on identity by taking the vendor_id column. You don't need to provide the property name if the partition field type is identity type.
 
 ```yaml
 partitionSpec:
-    - type: identity    **# options tested: identity, year, month, day, hour**
-      column: vendor_id **# columns used - identity (vendor_id, one string column) & for rest date_col**
+    - type: identity    # options tested: identity, year, month, day, hour
+      column: vendor_id # columns used - identity (vendor_id, one string column) & for rest date_col
 ```
 
-**Example 2:** Partitioning is done on the year.
+Example 2: Partitioning is done on the year.
 
 ```yaml
 partitionSpec:
-    - type: year       **# options tested: identity, year, month, day, hour**
-      column: date_col **# columns used - identity (vendor_id, one string column) & for rest date_col of type timestamp**
+    - type: year       # options tested: identity, year, month, day, hour
+      column: date_col # columns used - identity (vendor_id, one string column) & for rest date_col of type timestamp
       name: year
 ```
 
-**Example 3:** Nested partitioning is done on (identity, year). Here, the vendor_id used for identity should come at the first level.
+Example 3: Nested partitioning is done on (identity, year). Here, the vendor_id used for identity should come at the first level.
 
 ```yaml
 partitionSpec:
     - type: identity  
-      column: vendor_id   **# columns used - identity (vendor_id, one string column) & for rest date_col**
+      column: vendor_id   # columns used - identity (vendor_id, one string column) & for rest date_col
 
-    - type: year          **# options tested: identity, year, month, day, hour**
+    - type: year          # options tested: identity, year, month, day, hour
       column: date_col  
       name: year
 ```
 
-### **Parquet**
+### Parquet
 
 - Partition using type identity
 
-**Example 1: Partitioning is done on identity by taking the vendor_id column.**
+Example 1: Partitioning is done on identity by taking the vendor_id column.
 
 ```yaml
 - sink:
@@ -76,13 +76,13 @@ partitionSpec:
       - vendor_id
 ```
 
-# **Outcomes**
+## Outcomes
 
 The files will be stored in the folders based on the partition criterion defined, and you can view them in workbench or storage locations.
 
-# **Code files**
+## Code files
 
-> 📌 **Note**: When specifying the partition criterion for Iceberg, the 'partitionSpec' property should be defined as a child property under 'iceberg' in the sink section. Otherwise partitioning will not be performed as desired.
+> 📌 Note: When specifying the partition criterion for Iceberg, the 'partitionSpec' property should be defined as a child property under 'iceberg' in the sink section. Otherwise partitioning will not be performed as desired.
 > 
 
 ```yaml
@@ -130,11 +130,11 @@ workflow:
                       write.format.default: parquet
                       write.metadata.compression-codec: gzip
                   partitionSpec:
-                    - type: identity      **# options tested: string, integer, long**
-                      column: vendor_id   **# columns used - identity (vendor_id, one string column)** 
+                    - type: identity      # options tested: string, integer, long
+                      column: vendor_id   # columns used - identity (vendor_id, one string column) 
 
-                    - type: year          **# options tested: identity, year, month, day, hour**
-                      column: date_col    **# columns used - identity (vendor_id, one string column) & for rest date_col**
+                    - type: year          # options tested: identity, year, month, day, hour
+                      column: date_col    # columns used - identity (vendor_id, one string column) & for rest date_col
                       name: year
 
                tags:

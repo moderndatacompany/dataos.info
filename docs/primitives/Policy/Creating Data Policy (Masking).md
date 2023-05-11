@@ -1,4 +1,4 @@
-# **Creating Data Policy (Masking)**
+# Creating Data Policy (Masking)
 
 Data policy definition consists of configuration settings for the user, columns of the dataset and masking operator.
 
@@ -8,7 +8,7 @@ Follow the steps given below to create a data policy using masking to replace(ma
 
 1. Create the YAML file. 
     -  Specify the version, resource name (the policy will be referred to by this name), and resource type (policy). 
-    -  Provide layer as **‘user’** or **‘system’**. 
+    -  Provide layer as ‘user’ or ‘system’. 
         
         `user`: When the resources to be accessed are defined at the DataOS User layer.
         
@@ -17,7 +17,7 @@ Follow the steps given below to create a data policy using masking to replace(ma
     -  Provide a description to help understand its purpose.
     -  Specify the policy-related configuration properties under the `data` section.
         
-        `type`: Specify **“mask”**.
+        `type`: Specify “mask”.
         
         `priority`: The policy with higher priority will override all other policies defined for the same resources.
         
@@ -31,7 +31,7 @@ Follow the steps given below to create a data policy using masking to replace(ma
         
         `match`: You can specify two operators here. `any` (must match at least one tag) and `all`(match all tags).
         
-        `user` : Specify a user identified by a tag. They can be a group of tags defined as an array. See [Rules for AND/OR Logic](Rules%20for%20AND%20OR%20Logic.md).
+        `user` : Specify a user identified by a tag. They can be a group of tags defined as an array. See [Rules for AND/OR Logic](./Rules%20for%20AND%20OR%20Logic.md).
         
     -  Specify the columns of the dataset for which data is to be masked.
         
@@ -43,9 +43,9 @@ Follow the steps given below to create a data policy using masking to replace(ma
         
         `operator`: This is to specify masking type such as `hash`, `redact`, `pass_through`, etc.
         
-        To understand more about the operators through which you can specify masking definitions, refer to [Masking Strategies](../Policy.md).
+        To understand more about the operators through which you can specify masking definitions, refer to [Masking Strategies](../Policy/Policy.md).
         
-        **You may also need to provide additional information for these operators.**
+        You may also need to provide additional information for these operators.
         
         <center>
         
@@ -62,7 +62,7 @@ Follow the steps given below to create a data policy using masking to replace(ma
         
         </center>
         
-        **Supported Column Types**
+        Supported Column Types
         
         The checklist for support of masking strategy by column types is given below.
         
@@ -80,9 +80,9 @@ Follow the steps given below to create a data policy using masking to replace(ma
         
 2. Create the policy resource using the  `apply` command.
 
-## **Masking Policy Examples**
+## Masking Policy Examples
 
-**Example 1**
+### Example 1
 
 The following policy will mask the original sensitive data for the given columns using the `sha256` algorithm.
 
@@ -117,9 +117,9 @@ policy:
         algo: sha256
 ```
 
-**Example 2**
+### Example 2
 
-You can override the masking strategies by using a special policy type- **pass_through**. This policy will allow access to the value of columns tagged with fingerprint PII.
+You can override the masking strategies by using a special policy type- pass_through. This policy will allow access to the value of columns tagged with fingerprint PII.
 
 ```yaml
 version: v1
@@ -147,9 +147,9 @@ policy:
       operator: pass_through
 ```
 
-**Example 3**
+### Example 3
 
-This policy will allow DataOS admin (user with roles:id:operator tag) to access to the value of columns tagged with fingerprint PII. Here, all the masking strategies are overriden by using a special policy type **pass_through.**
+This policy will allow DataOS admin (user with roles:id:operator tag) to access to the value of columns tagged with fingerprint PII. Here, all the masking strategies are overriden by using a special policy type pass_through.
 
 ```yaml
 version: v1

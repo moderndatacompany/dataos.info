@@ -1,13 +1,13 @@
-# **Delete from Dataset**
+# Delete from Dataset
 
 > Supported in Flare Stack Version `flare:4.0` only.
 > 
 
 The `delete_from_dataset` [action](../Building%20Blocks%20of%20Flare%20Workflow/Actions.md) removes data from tables upon a specified filter. There could be myriad such filter condition, two such scenarios are provided below.
 
-# **Code Snippet**
+## Code Snippet
 
-## **Delete from Single Dataset**
+### Delete from Single Dataset
 
 The below case scenario depicts data deletion based on a filter. To accomplish this, we make use of Flare Stack's `delete_from_dataset` action upon the input dataset `inputDf` and delete from the dataset upon the filter condition provided in `deleteWhere` property. The YAML for the same is provided below:
 
@@ -41,7 +41,7 @@ workflow: # Workflow Specific Section
                 deleteWhere: "target.state_code = 'AL'" # Delete where the provided condition is true
 ```
 
-## **Delete from Multiple Dataset**
+### Delete from Multiple Dataset
 
 The below case scenario also depicts data deletion based on a filter. However, here there are two input datasets `customer` and `city` on which an inner join is performed. The filter condition for the same is provided in the `deleteWhere` property. The YAML for the same is provided below:
 

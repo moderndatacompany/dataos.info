@@ -1,8 +1,8 @@
-# **BigQuery**
+# BigQuery
 
 DataOS allows you to create a Depot of type 'BIGQUERY' to read the data stored in the BigQuery projects. You can create several Depots, each pointing to a different project.
 
-## **Requirements**
+## Requirements
 
 To connect to BigQuery, you need:
 
@@ -11,7 +11,7 @@ To connect to BigQuery, you need:
 - Credential properties in JSON file
 - Additional parameters
 
-## **Template**
+## Template
 
 To create a Depot of type 'BIGQUERY', use the following template:
 
@@ -25,10 +25,10 @@ tags:
 owner: <owner-name>
 layer: user
 depot:
-  type: BIGQUERY                  **# Depot type**
+  type: BIGQUERY                  # Depot type
   description: <description>
   external: true
-  connectionSecret:               **# Data source specific configurations**
+  connectionSecret:               # Data source specific configurations
     - acl: rw
       type: key-value-properties
       data:
@@ -43,7 +43,7 @@ depot:
         email: <email-id>
       files:
         json_keyfile: <json-file-path>
-  spec:                            **# Data source specific configurations**
+  spec:                            # Data source specific configurations
     project: <project-name>
     params:
       "key1": "value1"

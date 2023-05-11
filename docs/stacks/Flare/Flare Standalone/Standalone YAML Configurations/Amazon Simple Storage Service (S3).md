@@ -1,8 +1,8 @@
-# **Amazon Simple Storage Service (S3)**
+# Amazon Simple Storage Service (S3)
 
-# **Read Config**
+## Read Config
 
-**Input Section Configuration for Reading from S3 Data Source**
+Input Section Configuration for Reading from S3 Data Source
 
 ```yaml
 inputs:
@@ -13,7 +13,7 @@ inputs:
       format: json
 ```
 
-**Sample YAML for Reading from S3 Data Source**
+Sample YAML for Reading from S3 Data Source
 
 ```yaml
 version: v1
@@ -71,9 +71,9 @@ workflow:
             - 'spark.hadoop.fs.s3a.bucket.<bucket-name>.secret.key': '<secret-key>'
 ```
 
-# **Write Config**
+## Write Config
 
-**Output Section Configuration for Writing to S3 Data Source**
+Output Section Configuration for Writing to S3 Data Source
 
 ```yaml
 outputs:
@@ -84,7 +84,7 @@ outputs:
       format: json
 ```
 
-**Sample YAML for Writing to S3 Data Source**
+Sample YAML for Writing to S3 Data Source
 
 ```yaml
 version: v1

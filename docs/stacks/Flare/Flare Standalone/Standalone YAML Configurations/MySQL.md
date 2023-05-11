@@ -1,8 +1,8 @@
-# **MySQL**
+# MySQL
 
-# **Read Config**
+## Read Config
 
-**Input Section Configuration for Reading from MySQL Data Source**
+Input Section Configuration for Reading from MySQL Data Source
 
 ```yaml
 inputs:
@@ -16,7 +16,7 @@ inputs:
       table: <table-name>
 ```
 
-**Sample YAML for Reading from MySQL Data Source**
+Sample YAML for Reading from MySQL Data Source
 
 ```yaml
 version: v1
@@ -73,9 +73,9 @@ workflow:
                     sql: SELECT * FROM transactions_connect
 ```
 
-# **Write Config**
+## Write Config
 
-**Output Section Configuration for Writing to MySQL Data Source**
+Output Section Configuration for Writing to MySQL Data Source
 
 ```yaml
 outputs:
@@ -89,7 +89,7 @@ outputs:
       table: cityTable
 ```
 
-**Sample YAML for Writing to MySQL Data Source**
+Sample YAML for Writing to MySQL Data Source
 
 ```yaml
 version: v1

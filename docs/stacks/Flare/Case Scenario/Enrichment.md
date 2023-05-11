@@ -1,4 +1,4 @@
-# **Enrichment**
+# Enrichment
 
 ```yaml
 version: v1
@@ -203,7 +203,7 @@ workflow:
                     title: Enriched Countries With States and Cities Information
 ```
 
-# **Toolbox Workflow**
+## Toolbox Workflow
 
 ```yaml
 version: v1

@@ -1,10 +1,10 @@
-# **Bigquery Depots**
+# Bigquery Depots
 
 To execute Flare Jobs on top of the Bigquery data source, you first need to create a depot. If you have already created a depot, then continue reading else proceed to one of the below links based on storage type
 
 To run a Flare Job all you need is the UDL address of the input or output dataset for the reading and writing scenarios respectively.
 
-# **Read Config**
+## Read Config
 
 | Scenario | Syntax | Format Value |
 | --- | --- | --- |
@@ -19,7 +19,7 @@ inputs:
     format: Bigquery # format
 ```
 
-**Sample Read configuration YAML**
+Sample Read configuration YAML
 
 Let’s take a case scenario where the dataset is stored in Big Query Depot and you have to read data from the source, perform some transformation steps and write it to the Icebase which is a managed depot within the DataOS. The read config YAML will be as follows
 
@@ -64,7 +64,7 @@ workflow:
                     sql: SELECT * FROM city_connect
 ```
 
-# **Write Config**
+## Write Config
 
 | Scenario | Syntax | Format Value | Additional Properties |
 | --- | --- | --- | --- |
@@ -83,7 +83,7 @@ outputs:
 	      temporaryBucket: tmdc-development-new
 ```
 
-**Sample Write configuration YAML**
+Sample Write configuration YAML
 
 Let’s take a case scenario where the output dataset is to be stored in Bigquery Depot and you have to read data from the Icebase depot within the DataOS The write config YAML will be as follows
 

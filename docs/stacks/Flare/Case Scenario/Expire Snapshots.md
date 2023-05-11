@@ -1,15 +1,15 @@
-# **Expire Snapshots**
+# Expire Snapshots
 
 > Supported in both Flare Stack Versions `flare:3.0` and `flare:4.0`.
 > 
 
 The `expire_snapshots` [action](../Building%20Blocks%20of%20Flare%20Workflow/Actions.md) expires amassed snapshots. Expiring old snapshots removes them from metadata, so they are no longer available for time travel queries. Data files are not deleted until they are no longer referenced by a snapshot that may be used for time travel or rollback. Regularly expiring snapshots deletes unused data files.
 
-# **Code Snippet**
+## Code Snippet
 
 The below code snippet depicts a case scenario that expires old snapshots using the `expire_snapshots` action. The `expire_snapshots` action is supported in both Flare Stack Versions `flare:3.0` and `flare:4.0`, though the end result is the same in both cases, the action definition slightly differs in the two versions which are given separately in the YAMLs below.
 
-## **Syntax for Flare Version `flare:4.0`**
+### Syntax for Flare Version `flare:4.0`
 
 ```yaml
 version: v1 # Version
@@ -42,7 +42,7 @@ workflow: # Workflow Section
                   expireOlderThan: "1674201289720" # Timestamp in Unix Format (All snapshots older than the timestamp are expired)
 ```
 
-## **Syntax for Flare Version `flare:3.0`**
+### Syntax for Flare Version `flare:3.0`
 
 ```yaml
 version: v1 # Version

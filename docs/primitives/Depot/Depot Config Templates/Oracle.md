@@ -1,8 +1,8 @@
-# **Oracle**
+# Oracle
 
 DataOS allows you to connect to Oracle database to access data from the tables using Depots. The  Depot enables access to all schemas visible to the specified service in the configured database. Connect to on-premise Oracle Database to perform various actions such as create, update, get, and delete on rows in a table. You can create as many Depots as you need to access additional Oracle servers/databases.
 
-## **Requirements**
+## Requirements
 
 To connect to Oracle, you need:
 
@@ -12,7 +12,7 @@ To connect to Oracle, you need:
 - Database name
 - Database schema where your table belongs
 
-## **Template**
+## Template
 
 To create a Depot of type ‘ORACLE‘, use the following template:
 
@@ -25,9 +25,9 @@ tags:
   - oracle
 layer: user
 depot:
-  type: ORACLE                                     **# Depot type**
+  type: ORACLE                                     # Depot type
   description: "Oracle Sample data"
-  spec:                                            **# Data source specific configurations**
+  spec:                                            # Data source specific configurations
     host: 
     port: 
     service: 

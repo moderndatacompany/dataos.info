@@ -1,8 +1,8 @@
-# **Redshift Depots**
+# Redshift Depots
 
 To read/write data on the Redshift data source, you first need to create a depot on top of it. In case you haven’t created a Redshift Depot navigate to the below link
 
-# **Read Config**
+## Read Config
 
 Once you have set up a Redshift Depot, you can start reading data from it. 
 
@@ -10,7 +10,7 @@ Once you have set up a Redshift Depot, you can start reading data from it.
 | --- | --- | --- |
 | Redshift | `inputs:` <br>&nbsp;&nbsp;&nbsp;&nbsp; `- name: <input-dataset>` <br>&nbsp;&nbsp;&nbsp;&nbsp; `dataset: <UDL-of-input-dataset>`  <br>&nbsp;&nbsp;&nbsp;&nbsp; `format: Redshift` | `Redshift` |
 
-**Sample Read configuration YAML**
+Sample Read configuration YAML
 
 Let’s take a case scenario where the dataset is stored in Redshift Depot and you have to read data from the source, perform some transformation steps and write it to the Icebase which is a managed depot within the DataOS. The read config YAML will be as follows
 
@@ -64,7 +64,7 @@ workflow:
                   sql: SELECT * FROM cities
 ```
 
-# **Write Config**
+## Write Config
 
 | Data Source | Format Property Value | Additional Properties (while writing) |
 | --- | --- | --- |

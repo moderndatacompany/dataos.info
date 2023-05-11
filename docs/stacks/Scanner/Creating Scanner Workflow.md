@@ -1,14 +1,14 @@
-# **Creating Scanner Workflow**
+# Creating Scanner Workflow
 
 This tutorial walks you through the steps you need to take to create and run a workflow to scan metadata.
 
-# **Prerequisites**
+## Prerequisites
 
 1. Check required permissions to create a workflow
     
     If you are aware of the concept of a workflow, continue reading the next section.
     
-    To learn more about a workflow in the DataOS context, click [her](../../Transformation/Workflow.md)e. 
+    To learn more about a workflow in the DataOS context, click [here](../../Primitives/Workflow/Workflow.md). 
     
 2. Permission to run the (Scanner) workflow (such as `roles:direct:metis` tag).
     
@@ -18,10 +18,10 @@ This tutorial walks you through the steps you need to take to create and run a w
 3. Include the property `runAsUser: metis` under the `spec` section in the Scanner YAML.
 4. DataOS CLI (Command Line Interface) to run the workflow
     
-    If CLI is already installed on your system, move to the next step. In case it's not installed, refer to the [CLI installation steps](../../Getting%20Started%20-%20DataOS%20Documentation/Data%20Management%20Capabilities/CLI.md). 
+    If CLI is already installed on your system, move to the next step. In case it's not installed, refer to the [CLI installation steps](../../CLI/CLI.md). 
     
 
-# **Creating YAML Configuration**
+## Creating YAML Configuration
 
 This example shows the steps to configure and run a workflow to scan the data sources for the given depot-Icebase.
 
@@ -55,16 +55,16 @@ This example shows the steps to configure and run a workflow to scan the data so
               scanner: 
     ```
     
-4. Under the ‘**Scanner**’ stack (in the above YAML code script), provide the **configuration settings** specific to the underlying source to be scanned, such as config types, connection types, sourceConfig, etc. ****
+4. Under the ‘Scanner’ stack (in the above YAML code script), provide the configuration settings specific to the underlying source to be scanned, such as config types, connection types, sourceConfig, etc. 
     
     
-    > 🗣 These properties vary for the underlying metadata source to be scanned, and you have to choose only the properties which are applicable to the metadata source. To learn more about these properties, refer to [Supported Scanner Workflows](../Scanner.md).
+    > 🗣 These properties vary for the underlying metadata source to be scanned, and you have to choose only the properties which are applicable to the metadata source. To learn more about these properties, refer to [Supported Scanner Workflows](./Scanner.md).
 
 <br>
 
 5. Save the YAML file and copy its path. The path could be either relative or absolute.
 
-# **Running Workflow**
+## Running Workflow
 
 Use the `apply` command to run the above workflow.
 
@@ -72,7 +72,7 @@ Use the `apply` command to run the above workflow.
 dataos-ctl apply -f <path/filename> -w <name of the workspace>
 ```
 
-# **Deleting Workflow**
+## Deleting Workflow
 
 After your job is successfully run, it is a good practice to delete the workflow from the environment to clear up resources faster. The workflow, otherwise, will keep floating in the environment for three days before it gets auto-cleaned.
 
