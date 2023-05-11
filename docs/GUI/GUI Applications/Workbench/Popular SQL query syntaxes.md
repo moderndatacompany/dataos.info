@@ -1,8 +1,8 @@
-# **Popular SQL query syntaxes**
+# Popular SQL query syntaxes
 
 These are some popular SQL syntax queries that will help you explore Workbench and how it functions.
 
-**CTE** stands for Common Table Expression. CTE creates named subqueries that have a reference in the main query. You can define a CTE using WITH and AS clauses within a query. To understand it better, let’s lean on an example: We Need to Find the Highest Salary by Department, Now, let’s see how this data can be expressed into a SQL query using CTE.
+CTE stands for Common Table Expression. CTE creates named subqueries that have a reference in the main query. You can define a CTE using WITH and AS clauses within a query. To understand it better, let’s lean on an example: We Need to Find the Highest Salary by Department, Now, let’s see how this data can be expressed into a SQL query using CTE.
 
 ```sql
 --------- Common Table Expression(CTE)--------------
@@ -131,7 +131,7 @@ OR
 SELECT * FROM table_name WHERE name LIKE 'x___x;
 ```
 
-### **Looking for more? check out these SQL query syntaxes to develop familiarity.**
+## SQL query syntaxes to develop familiarity.
 
 ```sql
 SELECT * FROM tables [WHERE conditions]  
@@ -350,7 +350,7 @@ SELECT operand1 / operand2;
 SELECT operand1 % operand2;
 ```
 
-### **Here are some sample queries to help you get started.**
+## Some sample queries to help you get started.
 
 ```sql
 -------------- Selecting All Columns We use * and LIMIT limits the number of Row--------------------------------------------
@@ -407,6 +407,6 @@ GROUP BY
 modelname
 ```
 
-**Trino SQL query syntax:**
+Trino SQL query syntax:
 
 With DataOS Workbench you can write queries with Trino query syntax. Refer here for [Trino Statement Syntaxes.](https://trino.io/docs/current/sql.html)

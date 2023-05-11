@@ -1,4 +1,4 @@
-# **Object Storage Depots**
+# Object Storage Depots
 
 To execute Flare Jobs on top of object storage depots, you first need to create a depot. If you have already created a depot, then continue reading else proceed to one of the below links based on storage type
 
@@ -6,7 +6,7 @@ Add Link for Google Cloud Storage
 
 By creating depots on top of Object Stores interaction can be done in a uniform way with all supported storages i.e. Azure Blob File System, Google Cloud Storage, and Amazon S3. To run a Flare Job all you need is the UDL address of the input or output dataset for the reading and writing scenarios respectively. Apart from this you also need the file `format` of the data.
 
-# **Read Config**
+## Read Config
 
 | Scenario | Syntax | Supported File Formats |
 | --- | --- | --- |
@@ -21,7 +21,7 @@ inputs:
     format: avro # file format
 ```
 
-**Sample Read configuration YAML**
+Sample Read configuration YAML
 
 Let’s take a case scenario where the dataset is stored in Azure Blob File System (ABFSS) and you have to read data from the source, perform some transformation steps and write it to the Icebase which is a managed depot within the DataOS. The read config YAML will be as follows
 
@@ -66,13 +66,13 @@ workflow:
                   sql: SELECT * FROM city_connect
 ```
 
-# **Write Config**
+## Write Config
 
 | Scenario | Syntax | Supported File Formats |
 | --- | --- | --- |
 | Outputs (while writingto a depot) | `outputs:` <br>&nbsp;&nbsp;&nbsp;&nbsp; `- name: <name-of-output>` <br>&nbsp;&nbsp;&nbsp;&nbsp; `dataset: dataos://[depot]:[collection]/[dataset]?acl=rw` <br>&nbsp;&nbsp;&nbsp;&nbsp; `format: <file-format>` | `avro`,` csv`, `json`, `orc`, `parquet`, `txt`, `xlsx`, `xml` |
 
-> **Note:** the `?acl=rw` after the UDL signifies Access Control List with Read Write Access. You can also specify the address of the output dataset in the format `dataos://[depot]:[collection]?acl=rw.` The name of the output dataset will automatically get appended to it.
+> Note: the `?acl=rw` after the UDL signifies Access Control List with Read Write Access. You can also specify the address of the output dataset in the format `dataos://[depot]:[collection]?acl=rw.` The name of the output dataset will automatically get appended to it.
 > 
 
 For writing the data to a depot on an object store, we need to configure the `name`,  `dataset` and `format` properties in the `outputs` section of the YAML. For instance, if your dataset is to be stored at the UDL address  `dataos://thirdparty01:sampledata`  by the name `output01` and the file format is `avro`. Then the `outputs` section will be as follows
@@ -84,7 +84,7 @@ outputs:
     format: avro # file format
 ```
 
-**Sample Write configuration YAML**
+Sample Write configuration YAML
 
 Let’s take a case scenario where the output dataset is to be stored in Azure Blob File System Depot (ABFSS) and you have to read data from the Icebase depot within the DataOS. The write config YAML will be as follows
 

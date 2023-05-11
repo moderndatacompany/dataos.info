@@ -1,8 +1,8 @@
-# **Oracle Depot Scan**
+# Oracle Depot Scan
 
 DataOS allows you to connect to the Oracle database to access data from the tables using Depots. The Depot enables access to all schemas visible to the specified service in the configured database. You can scan metadata from an Oracle-type depot with Scanner workflows.
 
-# **Requirements**
+## Requirements
 
 To scan the Oracle depot, you need the following:
 
@@ -10,7 +10,7 @@ To scan the Oracle depot, you need the following:
 2. You should have enough access to fetch the required metadata from your Oracle database.
 3. Metadata Scan is supported for 12c, 18c, 19c, and 21c versions. 
 
-# **Scanner Workflow**
+## Scanner Workflow
 
 Here is an example of YAML configuration to connect to the source and reach the Metis server to save the metadata in Metis DB.
 
@@ -53,7 +53,7 @@ Here is an example of YAML configuration to connect to the source and reach the 
 2. After the successful workflow run, you can check the metadata of scanned Tables on Metis UI for all schemas present in the database.
     
     
-    > **Note:** Remove the commented part mentioned under the filter pattern in the Scanner YAML to apply filters for the required schemas and tables.
+    > Note: Remove the commented part mentioned under the filter pattern in the Scanner YAML to apply filters for the required schemas and tables.
     > 
     
 

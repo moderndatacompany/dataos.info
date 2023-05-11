@@ -1,8 +1,8 @@
-# **Snowflake**
+# Snowflake
 
-# **Read Config**
+## Read Config
 
-**Input Section Configuration for Reading from Snowflake Data Source**
+Input Section Configuration for Reading from Snowflake Data Source
 
 ```yaml
 inputs:
@@ -23,7 +23,7 @@ inputs:
 > 🗣️ You can provide either `token`, `pemPrivateKey`, or `password` to access data from snowflake.
 
 
-**Sample YAML for Reading from Snowflake Data Source**
+Sample YAML for Reading from Snowflake Data Source
 
 ```yaml
 version: v1
@@ -77,9 +77,9 @@ workflow:
                     sql: SELECT * FROM city_connect
 ```
 
-# **Write Config**
+## Write Config
 
-**Output Section Configuration for Writing to Snowflake Data Source**
+Output Section Configuration for Writing to Snowflake Data Source
 
 ```yaml
 outputs:
@@ -99,7 +99,7 @@ outputs:
 > 🗣️ You can provide either `token`, `pemPrivateKey`, or `password` to access data from snowflake.
 
 
-**Sample YAML for Writing to Snowflake Data Source**
+Sample YAML for Writing to Snowflake Data Source
 
 ```yaml
 version: v1

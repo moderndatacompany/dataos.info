@@ -1,17 +1,17 @@
-# **Remove Orphans**
+# Remove Orphans
 
 > Supported in both Flare Stack Version `flare:3.0` and `flare:4.0`.
 > 
 
 The `remove_orphans` [action](../Building%20Blocks%20of%20Flare%20Workflow/Actions.md) cleans up orphans files older than a specified time period. This action may take a long time to finish if you have lots of files in data and metadata directories. It is recommended to execute this periodically, but you may not need to execute this often. 
 
-> 🗣️ **Note:** It is dangerous to remove orphan files with a retention interval shorter than the time expected for any write to complete because it might corrupt the table if in-progress files are considered orphaned and are deleted. The default interval is 3 days.
+> 🗣️ Note: It is dangerous to remove orphan files with a retention interval shorter than the time expected for any write to complete because it might corrupt the table if in-progress files are considered orphaned and are deleted. The default interval is 3 days.
 
-# **Code Snippet**
+## Code Snippet
 
 The below code snippet depicts a case scenario that removes orphan files using Flare’s `remove_orphans` action before the timestamp specified in the `olderThan` property. The `remove_orphans` action is supported by both Flare stack versions, i.e. `flare:3.0` and `flare:4.0`, though the two differ in their definitions for 3.0 and 4.0. Both of them are provided below separately.
 
-## **Syntax for Flare Version `flare:4.0`**
+### Syntax for Flare Version `flare:4.0`
 
 ```yaml
 version: v1 # Version
@@ -44,7 +44,7 @@ workflow: # Workflow Section
                   olderThan: "1674201289720" # Timestamp in Unix Format
 ```
 
-## **Syntax for Flare Version `flare:3.0`**
+### Syntax for Flare Version `flare:3.0`
 
 ```yaml
 version: v1 # Version

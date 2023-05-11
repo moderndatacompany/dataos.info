@@ -1,12 +1,12 @@
-# **Rewrite Manifest Files**
+# Rewrite Manifest Files
 
 When a table’s write pattern doesn’t align with the query pattern, metadata can be rewritten to re-group data files into manifests using Flare stack’s `rewrite_manifest` [action](../Building%20Blocks%20of%20Flare%20Workflow/Actions.md).
 
-# **Code Snippet**
+## Code Snippet
 
 The below case scenario depicts rewriting manifest files of dataset stored within the Icebase depot using the `rewrite_manifest` action. The `rewrite_manifest` action is supported in both Flare Stack Versions `flare:3.0` and `flare:4.0`, though the end result is the same in both cases, the action definition slightly differs in the two versions which are given separately in the YAMLs below.
 
-## **Syntax for Flare Version `flare:4.0`**
+### Syntax for Flare Version `flare:4.0`
 
 ```yaml
 version: v1 # Version
@@ -37,7 +37,7 @@ workflow: # Workflow Section
                 input: inputDf # Input Dataset Name
 ```
 
-## **Syntax for Flare Version `flare:3.0`**
+### Syntax for Flare Version `flare:3.0`
 
 ```yaml
 version: v1 # Version

@@ -1,13 +1,13 @@
-# **PostgreSQL Non-Depot Scan Workflow**
+# PostgreSQL Non-Depot Scan Workflow
 
 The non-depot Scanner workflow will help you to connect with PostgreSQL to extract metadata details such as schemas, tables, view details etc.
 
-# **Requirements**
+## Requirements
 
 - Credentials to connect to database.
 - You should have both `CONNECT` and `SELECT`  privileges  on the PostgreSQL database.
 
-# **Scanner Workflow**
+## Scanner Workflow
 
 Here is an example of YAML configuration to connect to the source and reach the Metis server to save the metadata in Metis DB.
 
@@ -69,7 +69,7 @@ Here is an example of YAML configuration to connect to the source and reach the 
     ```
     
 
-    > **Note:** Remove the commented part mentioned under the filter pattern in the Scanner YAML to apply filters for the required schemas and tables.
+    > Note: Remove the commented part mentioned under the filter pattern in the Scanner YAML to apply filters for the required schemas and tables.
  
  
 

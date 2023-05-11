@@ -1,8 +1,8 @@
-# **MySQL**
+# MySQL
 
 DataOS allows you to connect to the MySQL database to read data from tables using Depots. The Depot enables access to all tables visible to the specified schema in the configured database. You can create as many Depots as you need to access additional MYSQL servers/databases.
 
-## **Requirements**
+## Requirements
 
 To connect to the MySQL database, you need:
 
@@ -11,11 +11,11 @@ To connect to the MySQL database, you need:
 - Username
 - Password
 
-## **Template**
+## Template
 
 To create a Depot of type ‘MYSQL‘, use the following template:
 
-**Use this template, if self-signed certificate is enabled.**
+Use this template, if self-signed certificate is enabled.
 
 ```yaml
 version: v1
@@ -43,7 +43,7 @@ depot:
         password: <get from the operator>
 ```
 
-**If self-signed certificates are not being used** by your organisation, for connection to these storage systems, then you do not need to write additional parameters within the spec section.
+If self-signed certificates are not being used by your organisation, for connection to these storage systems, then you do not need to write additional parameters within the spec section.
 
 ```yaml
 version: v1

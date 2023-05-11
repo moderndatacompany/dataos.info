@@ -1,4 +1,4 @@
-# **Rules for AND/OR Logic**
+# Rules for AND/OR Logic
 
 DataOS policies determine which person or application (subject)can access which DataOS resources(objects) to perform allowed action(predicate) and are defined in the `policy.yaml`
 file.
@@ -6,7 +6,9 @@ file.
 The YAML tags field in both subjects and objects is an array of string arrays.
 The string array is how you define the AND relationships between tags, or it can be thought of as a group of tags. The structure is an array of arrays which is how you define the OR relationships between tags.
 
-> 🗣️ **Rule 1.** Subjects are defined using one or more tags with AND/OR relationships.
+## Rule 1
+
+Subjects are defined using one or more tags with AND/OR relationships.
 
 ```yaml
 # tag1 OR tag2
@@ -23,8 +25,8 @@ The string array is how you define the AND relationships between tags, or it can
   - tag3
 ```
 
-**Example 1**
-In this example policy, a subject MUST have the (`roles:id:pii-reader` **AND** `roles:id:testuser`) tags attributed to qualifying for this policy to apply.
+### Example 1
+In this example policy, a subject MUST have the (`roles:id:pii-reader` AND `roles:id:testuser`) tags attributed to qualifying for this policy to apply.
 
 ```yaml
 version: v1
@@ -47,9 +49,9 @@ policy:
     allow: true
 ```
 
-**Example 2**
+### Example 2
 
-In this example policy, a subject MUST have the (`roles:id:pii-reader` AND `roles:id:testuser`) **OR** `roles:id:marketing-manager` tags attributed to qualifying for this policy to apply.
+In this example policy, a subject MUST have the (`roles:id:pii-reader` AND `roles:id:testuser`) OR `roles:id:marketing-manager` tags attributed to qualifying for this policy to apply.
 
 ```yaml
 version: v1
@@ -73,11 +75,13 @@ policy:
     allow: true
 ```
 
-> 🗣 **Rule 2:** Predicates are the string array of actions that the policy will apply to. Predicates are ‘OR’ relationships only since the PEP is authorizing one action at a time.
+## Rule 2
 
-**Example** 
+Predicates are the string array of actions that the policy will apply to. Predicates are ‘OR’ relationships only since the PEP is authorizing one action at a time.
 
-In this example policy, a predicate MUST be `read` **OR** `write` from the PEP to qualify for this policy to apply.
+### Example 
+
+In this example policy, a predicate MUST be `read` OR `write` from the PEP to qualify for this policy to apply.
 
 ```yaml
 version: v1
@@ -102,11 +106,13 @@ policy:
     allow: true
 ```
 
-> 🗣 **Rule 3:** Objects are defined on resource paths or using one or more tags that must be an attribute of the requested object.
+## Rule 3
 
-**Example 1**
+Objects are defined on resource paths or using one or more tags that must be an attribute of the requested object.
 
-In this example policy, an object MUST have the resource path of `/metis/api/v2/workspaces/public` **OR** `/metis/api/v2/workspaces/sandbox`to qualify for this policy to apply.
+### Example 1
+
+In this example policy, an object MUST have the resource path of `/metis/api/v2/workspaces/public` OR `/metis/api/v2/workspaces/sandbox`to qualify for this policy to apply.
 
 ```yaml
 version: v1
@@ -129,9 +135,9 @@ policy:
     allow: true
 ```
 
-**Example 2**
+### Example 2
 
-In this example policy, an object MUST have the `PII.Email` **OR** `PII.Sensitive` tags attributed to qualifying for this policy to apply.
+In this example policy, an object MUST have the `PII.Email` OR `PII.Sensitive` tags attributed to qualifying for this policy to apply.
 
 ```yaml
 version: v1
@@ -155,9 +161,9 @@ policy:
 ```
 <br>
 
-### **Evaluating List Attributes using Wildcard**
+## Evaluating List Attributes using Wildcard
 
-You may use a wildcard (`*`) or (`**`) to evaluate all items within a list.  If *any* item in the list matches the condition, then the condition passes.
+You may use a wildcard (`*`) or (``) to evaluate all items within a list.  If *any* item in the list matches the condition, then the condition passes.
 
 The symbol (`:`) is a delimiter in the tags field and paths field, and predicates field; additional syntax includes:
 
@@ -167,7 +173,7 @@ The symbol (`:`) is a delimiter in the tags field and paths field, and predicate
 | --- | --- | --- |
 | single symbol wildcard: `?` | ?at | matches cat and bat but not at |
 | wildcard: `*` | foo:*:bar | matches foo:baz:bar and foo:zab:bar but not foo:bar nor foo:baz:baz:bar |
-| super wildcard: `**` |  foo:**:bar | matches foo:baz:baz:bar, foo:baz:bar, and foo:bar, but not foobar or foo:baz |
+| super wildcard: `` |  foo::bar | matches foo:baz:baz:bar, foo:baz:bar, and foo:bar, but not foobar or foo:baz |
 | character list: [] | [cb]at | matches cat and bat but not mat nor at |
 | negated character list: [!] | [!cb]at | matches tat and mat but not cat nor bat |
 | ranged character list:[-] | [a-c]at | cat and bat but not mat nor at |

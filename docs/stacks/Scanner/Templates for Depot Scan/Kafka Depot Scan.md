@@ -1,15 +1,15 @@
-# **Kafka Depot Scan**
+# Kafka Depot Scan
 
 DataOS allows you to create a Depot of type 'KAFKA' to read live topic data. The created Depot enables you to read live streaming data. You can scan metadata from an KAFKA-type depot with Scanner workflows.
 
-# **Requirements**
+## Requirements
 
 To scan the KAFKA depot, you need the following:
 
 1. Ensure that the depot is created and you have `read` access for the depot.
 2. To connect to Kafka, you need KAFKA broker list. Once you provide the broker list, the Depot enables fetching all the topics in the KAFKA cluster.
 
-# **Scanner Workflow**
+## Scanner Workflow
 
 Here is an example of YAML configuration to connect to the source and reach the Metis server to save the metadata in Metis DB.
 
@@ -42,6 +42,6 @@ Here is an example of YAML configuration to connect to the source and reach the 
     ```
     
 
-> **Note:** Remove the commented part mentioned under the filter pattern in the Scanner YAML to apply filters for the required topics.
+> Note: Remove the commented part mentioned under the filter pattern in the Scanner YAML to apply filters for the required topics.
 > 
 1. After the successful workflow run, you can check the metadata of scanned topics on Metis UI.

@@ -1,8 +1,8 @@
-# **PostgreSQL**
+# PostgreSQL
 
 DataOS allows you to connect to the PostgreSQL database to read data from tables using Depot. The Depot enables access to all schemas visible to the specified user in the configured database.
 
-## **Requirements**
+## Requirements
 
 To create a Depot to connect to the PostgreSQL database, you need:
 
@@ -11,11 +11,11 @@ To create a Depot to connect to the PostgreSQL database, you need:
 - Username
 - Password
 
-## **Template**
+## Template
 
 To create a Depot of type ‘POSTGRESQL‘, use the following template:
 
-**Use this template, if self-signed certificate is enabled.**
+Use this template, if self-signed certificate is enabled.
 
 ```yaml
 version: v1
@@ -41,7 +41,7 @@ depot:
       sslmode: disable
 ```
 
-**If self-signed certificates are not being used** by your organisation, for connection to these storage systems, then you do not need to write additional parameters within the spec section.
+If self-signed certificates are not being used by your organisation, for connection to these storage systems, then you do not need to write additional parameters within the spec section.
 
 ```yaml
 version: v1

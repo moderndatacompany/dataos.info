@@ -4,17 +4,18 @@ hide:
   - toc
 ---
 
-A first of its kind Data Operating System that removes complexity to future proof your data ecosystem so you can build and deploy new data services and applications... in ~~months~~ weeks.
-
-![Architecture diagram](./assets/modern-data-fabric.svg)
-
----
-
-# DataOS <placeholder heading>
 Implementing a programmable data architecture over legacy & cloud data sources to deliver high-quality data in a governed and secured fashion may seem complex in theory, but with DataOS, we have solved the complexities by creating an operating system that you can control and enhance. With its exhaustive capabilities, provided out-of-the-box, DataOS becomes the one-stop solution for all your data problems.
 
+<figure>
+    <img src="./assets/hero-image.png"
+         alt="Hero Image, original size: height 1770px width 2179px"
+         width="900"
+         height="700">
+    <figcaption>An Operating System for all Data Engineering & Management capabilities.</figcaption>
+</figure>
 
-
+---
+# Get Started
 
 <div class="grid cards" markdown>
 
@@ -38,22 +39,6 @@ Implementing a programmable data architecture over legacy & cloud data sources t
     [:octicons-arrow-right-24: Read More](#)
 
     
-
-
-
-
-
-
--   :material-clock-fast:{ .lg .middle } __Get Started__
-
-    ---
-
-    Start using DataOS.
-
-    [:octicons-arrow-right-24: Read More](#)
-
-
-
 
 
 

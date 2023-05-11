@@ -1,8 +1,8 @@
-# **Postgres**
+# Postgres
 
-# **Read Config**
+## Read Config
 
-**Input Section Configuration for Reading from Postgres Data Source**
+Input Section Configuration for Reading from Postgres Data Source
 
 ```yaml
 inputs:
@@ -16,7 +16,7 @@ inputs:
       table: <table-name>
 ```
 
-**Sample YAML for Reading from Postgres Data Source**
+Sample YAML for Reading from Postgres Data Source
 
 ```yaml
 version: v1
@@ -73,9 +73,9 @@ workflow:
                     sql: SELECT * FROM transactions_connect
 ```
 
-# **Write Config**
+## Write Config
 
-**Output Section Configuration for Writing to Postgres Data Source**
+Output Section Configuration for Writing to Postgres Data Source
 
 ```yaml
 outputs:
@@ -89,7 +89,7 @@ outputs:
       table: <table-name>
 ```
 
-**Sample YAML for Writing to Postgres Data Source**
+Sample YAML for Writing to Postgres Data Source
 
 ```yaml
 version: v1

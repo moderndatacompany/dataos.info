@@ -1,9 +1,9 @@
-# **Snowflake**
+# Snowflake
 
 DataOS allows you to connect to Snowflake to read data from Snowflake tables using Depots.
 Snowflake database is a purely cloud-based data storage and analytics data warehouse provided as a Software-as-a-Service (SaaS). An entirely new SQL database engine (similar to ANSI SQL syntax and features) is designed to work with cloud infrastructure to access the Snowflake database.
 
-## **Requirements**
+## Requirements
 
 To connect to Snowflake, you need:
 
@@ -13,7 +13,7 @@ To connect to Snowflake, you need:
 - Snowflake Database name
 - Database schema where your table belongs
 
-## **Template**
+## Template
 
 To create a Depot of type ‘SNOWFLAKE‘, use the following template:
 
@@ -26,9 +26,9 @@ tags:
   - snowflake
 layer: user
 depot:
-  type: SNOWFLAKE                                  **# Depot type**
+  type: SNOWFLAKE                                  # Depot type
   description: "Snowflake Sample data"
-  spec:                                            **# Data Source Specific Configurations**
+  spec:                                            # Data Source Specific Configurations
     url: MUA15126.snowflakecomputing.com
     database: "SF_TUTS"
   external: true

@@ -1,15 +1,15 @@
-# **Apache Pulsar**
+# Apache Pulsar
 
 DataOS allows you to create a Depot of type 'PULSAR' to read the topics/messages stored in Pulsar. The created Depot enables you to read the published topics and process incoming stream of messages.
 
-## **Requirements**
+## Requirements
 
 To connect to Pulsar, you need:
 
 - Admin URL
 - Service URL
 
-## **Template**
+## Template
 
 To create a Depot of type ‘PULSAR‘, use the following template:
 
@@ -23,10 +23,10 @@ tags:
 owner: <owner-name>
 layer: user
 depot:
-  type: PULSAR       **# Depot type**
+  type: PULSAR       # Depot type
   description: <description>
   external: true
-  spec:              **# Data source specific configurations**
+  spec:              # Data source specific configurations
     adminUrl: <admin-url>
     serviceUrl: <service-url>
     tenant: <system> 

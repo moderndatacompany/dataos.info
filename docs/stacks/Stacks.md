@@ -1,4 +1,4 @@
-# **Stacks**
+# Stacks
 
 Within DataOS, Stacks are the programming paradigms used to support processing and management of data. They also act as the extension points of our runnable resources, Workflow and Service.
 
@@ -8,42 +8,42 @@ A stack is called upon and used by declaring it in the configuration file of Dat
 
 Here’s the list of all the stacks you can currently use within DataOS:
 
-### **Scanner**
+## Scanner
 Metadata retrieval or extraction is the process of requesting and retrieving metadata from a metadata endpoint. These metadata endpoints can be data sources, dashboards, messaging, and lineage services.
 
 Metadata extraction is accomplished by the *DataOS Scanner* stack. You can write Scanner workflows in the form of a sequential YAML for a pull-based metadata extraction system built into DataOS for a wide variety of sources in your data stack.
 To know the details, refer to
-[Scanner](./Scanner.md) 
+[Scanner](./Scanner/Scanner.md).
 
-### **Flare**
+## Flare
 Flare is a declarative stack for large-scale data processing. Flare allows you to build data pipelines and create reasonably complex workflows to carry out the data processing tasks in sequential YAML. It is a powerful tool for Analytical & Data engineers and eliminates the need to understand the protocols/procedures of Spark & Scala. Click on the page to learn about the myriad tasks you can accomplish using
-[Flare](./Flare.md) 
+[Flare](./Flare/Flare.md).
 
-### **Benthos**
+## Benthos
 It is used for Stream Analytics/Event Stream Processing. It allows you to extract & transform streaming data using ‘Bloblang’ within your YAML file itself. To learn how Benthos can be used in DataOS, refer to
-[Benthos](./Benthos.md) 
+[Benthos](./Benthos/Benthos.md) 
 
-### **Beacon**
+## Beacon
 The application development framework of DataOS leverages our core value pillars, such as Governance and Observability, while allowing you to build data apps in an agile manner. This way, DataOS becomes an end-to-end development & deployment environment for all your data-related products.
-[Beacon](./Beacon.md) 
+[Beacon](./Beacon/Beacon.md) 
 
-### **Alpha**
+## Alpha
 A stack within DataOS that helps you connect with web-server-based application images developed on top of DataOS. It allows you to use compute resources of DataOS to run an external tool or application, irrespective of the programming language used to create the application. To learn more, refer to
 [Alpha](./Alpha.md) 
 
-### **Airbyte**
+## Airbyte
 Airbyte allows you to *ingest data* from pre-built as well as custom-made connectors, from high-volume databases to the long tail of API sources. You can directly access and start using Airbyte from DataOS GUI itself, refer to the documentation:
-[Airbyte](./Airbyte.md) 
+[Airbyte](./Airbyte/Airbyte.md) 
 
-### **Data Toolbox**
+## Data Toolbox
 The Toolbox stack plays a vital role when the output dataset is stored in the Icebase depot. To know more about the Toolbox stack, refer to
 [Toolbox](../Transformation/Toolbox.md)
 
-### **Rclone**
+## Rclone
 
 Enable data movement into the cloud or between cloud storages with additional abilities like backup, restore, mirror, etc.
 Impatience is never a good look. Information coming in soon!
 
-### **Surge**
+## Surge
 
 Used for Complex Event Processing (CEP). It is an abstraction over Apache Flink.

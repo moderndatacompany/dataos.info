@@ -1,8 +1,8 @@
-# **EventHub**
+# EventHub
 
-# **Read Config**
+## Read Config
 
-**Input Section Configuration for Reading from Pulsar Data Source**
+Input Section Configuration for Reading from Pulsar Data Source
 
 ```yaml
 inputs:
@@ -19,7 +19,7 @@ inputs:
         eventhubs.consumergroup: "sample"
 ```
 
-**Sample YAML for Reading from EventHub Data Source**
+Sample YAML for Reading from EventHub Data Source
 
 ```yaml
 version: v1
@@ -81,9 +81,9 @@ workflow:
                     sql: SELECT * FROM input
 ```
 
-# **Write Config**
+## Write Config
 
-**Output Section Configuration for Writing to EventHub Data Source**
+Output Section Configuration for Writing to EventHub Data Source
 
 ```yaml
 outputs:
@@ -96,7 +96,7 @@ outputs:
       sasKey: ""
 ```
 
-**Sample YAML for Writing to EventHub Data Source**
+Sample YAML for Writing to EventHub Data Source
 
 ```yaml
 version: v1

@@ -1,8 +1,8 @@
-# **Google Cloud Storage (GCS)**
+# Google Cloud Storage (GCS)
 
-# **Read Config**
+## Read Config
 
-**Input Section Configuration for Reading from GCS Data Source**
+Input Section Configuration for Reading from GCS Data Source
 
 ```yaml
 inputs:
@@ -15,7 +15,7 @@ inputs:
       format: iceberg
 ```
 
-**Sample YAML for Reading from GCS Data Source**
+Sample YAML for Reading from GCS Data Source
 
 ```yaml
 version: v1
@@ -73,9 +73,9 @@ workflow:
 					# Keep the JSON key file at the base directory where you have kept the configuration file & sample data.
 ```
 
-# **Write Config**
+## Write Config
 
-**Output Section Configuration for Writing to GCS Data Source**
+Output Section Configuration for Writing to GCS Data Source
 
 ```yaml
 outputs:
@@ -88,7 +88,7 @@ outputs:
       format: iceberg
 ```
 
-**Sample YAML for Writing to GCS Data Source**
+Sample YAML for Writing to GCS Data Source
 
 ```yaml
 version: v1

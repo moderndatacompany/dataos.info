@@ -1,8 +1,8 @@
-# **Azure Blob Storage (ABFSS)**
+# Azure Blob Storage (ABFSS)
 
-# **Read Config**
+## Read Config
 
-**Input Section Configuration for Reading from ABFSS Data Source**
+Input Section Configuration for Reading from ABFSS Data Source
 
 ```yaml
 inputs:
@@ -15,7 +15,7 @@ inputs:
       isStream: false
 ```
 
-**Sample YAML for Reading from ABFSS Data Source**
+Sample YAML for Reading from ABFSS Data Source
 
 ```yaml
 version: v1 
@@ -70,9 +70,9 @@ workflow:
             - 'spark.hadoop.fs.azure.account.key.<account-name>.dfs.core.windows.net': 'account-key'
 ```
 
-# **Write Config**
+## Write Config
 
-**Output Section Configuration for Writing to ABFSS Data Source**
+Output Section Configuration for Writing to ABFSS Data Source
 
 ```yaml
 outputs:
@@ -85,7 +85,7 @@ outputs:
       format: iceberg
 ```
 
-**Sample YAML for Writing to ABFSS Data Source**
+Sample YAML for Writing to ABFSS Data Source
 
 ```yaml
 ---

@@ -1,12 +1,12 @@
-# **Data Replay**
+# Data Replay
 
 This use case describes the data replay scenario where you need to re-write a data segment for various reasons, such as incomplete or corrupted data. You can configure your data ingestion jobs to fix corrupted records without rewriting all the partitions. This hugely helps to avoid expensive complete data re-write.
 
-# **Solution approach**
+## Solution approach
 
 This use case configures jobs for replacing one partition of data. The behavior was to overwrite partitions dynamically.
 
-# **Implementation details**
+## Implementation details
 
 1. Data replay scenario is tested by first ingesting the NY-taxi data at vendor level partitioning and then one vendor data was replaced using the following properties:
 2. saveMode: overwrite
@@ -16,14 +16,14 @@ The test validation is done with timestamp column by comparing the values writte
 
 1. Data replay is tested by writing data with partitioning and one partition of data was replaced by another job.
 
-# **Outcomes**
+## Outcomes
 
 The files are stored in the folders based on the partition criterion defined and can be viewed in workbench or storage locations. The accuracy of the output was tested by running queries accessing data from the modified partition and confirmed with the timestamp values.
 
-# **Code files**
+## Code files
 
 ```yaml
-**### this job is for only changing one partition of dataset**
+### this job is for only changing one partition of dataset
 
 ---
 version: v1beta1
@@ -68,7 +68,7 @@ workflow:
                   properties:
                       write.format.default: parquet
                       write.metadata.compression-codec: gzip
-                      overwrite-mode: dynamic **# this was used only when one partition data is need to replace with saveMode as Overwrite** 
+                      overwrite-mode: dynamic # this was used only when one partition data is need to replace with saveMode as Overwrite 
                   partitionSpec:
                     - type: identity
                       column: vendor_id
@@ -80,5 +80,5 @@ workflow:
             sequence:
               - name: ny_taxi_ts
                 sql: SELECT *, date_format(now(), 'yyyyMMddHHmm') as version, now() as
-                  ts_ny_taxi FROM ny_taxi where vendor_id = 1   **## data written for only one vendor**
+                  ts_ny_taxi FROM ny_taxi where vendor_id = 1   ## data written for only one vendor
 ```

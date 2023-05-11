@@ -1,8 +1,8 @@
 # Benthos- Twitter Data Processing
 
-This use case demonstrates the creation of the Benthos service in DataOS, which can consume tweets matching a given search string using the recent Twitter search V2 API. While getting the response from API, it contains all the emojis and symbols in it, which are removed using the **bloblang** processor and converted to refined data of twitter which does not contain any emojis. This output can be saved into a JSON file.
+This use case demonstrates the creation of the Benthos service in DataOS, which can consume tweets matching a given search string using the recent Twitter search V2 API. While getting the response from API, it contains all the emojis and symbols in it, which are removed using the bloblang processor and converted to refined data of twitter which does not contain any emojis. This output can be saved into a JSON file.
 
-# Prerequisites
+## Prerequisites
 
 Authentication is done using Oauth2 credentials generated from the Twitter API documentation. Below is the link to generate the credentials.
 
@@ -10,38 +10,36 @@ Authentication is done using Oauth2 credentials generated from the Twitter API d
 
 Here are the steps to get the Twitter data and perform modifications in the pipeline section.
 
-**Step 1:** Create Configuration YAML File
+### Step 1: Create Configuration YAML File
 
              - Define Input.
 
-             - Define the **‘bloblang’** Processor.
+             - Define the ‘bloblang’ Processor.
 
              - Define Output.
 
-**Step 2:** Test the Processing
+### Step 2: Test the Processing
 
-<aside>
-💡 Once you test the processing for the desired results, add the `service` section in the configuration YAML file to create Benthos Service in DataOS. To learn more, click [here.](../Benthos.md)
+Once you test the processing for the desired results, add the `service` section in the configuration YAML file to create Benthos Service in DataOS. To learn more, refer to [Benthos.](./Benthos.md)
 
-</aside>
 
-# Create Configuration File
+## Create Configuration File
 
-Create a YAML file ****with the following configuration properties which will fetch the Twitter data that match the given search query. For pagination, the tweet id is stored in the cache resource.
+Create a YAML file with the following configuration properties which will fetch the Twitter data that match the given search query. For pagination, the tweet id is stored in the cache resource.
 
 ## Define Input
 
-1. **query**: A search expression to use.
-2. **tweet_fields**: [optional] a list of additional fields to obtain for each tweet, by default only the fields `id` and `text` are returned. For more info refer to the [Twitter API docs](https://developer.twitter.com/en/docs/twitter-api/fields).
-3. **poll_period**: The duration string to wait between each search request. This field can be set empty, in which case requests are made at the limit set by the rate limit.
-4. **backfill_period:** A duration string indicating the maximum age of tweets to acquire when starting a search.
-5. **cache:** A cache resource to use for request pagination.
-6. **cache_key**: The key identifier used when storing the ID of the last tweet received.
-7. **rate_limit:** An optional rate limit resource to restrict API requests with. 
-8. **api_key:** An API key for OAuth 2.0 authentication. 
-9. **api_secret:** An API secret for OAuth 2.0 authentication. 
+1. query: A search expression to use.
+2. tweet_fields: [optional] a list of additional fields to obtain for each tweet, by default only the fields `id` and `text` are returned. For more info refer to the [Twitter API docs](https://developer.twitter.com/en/docs/twitter-api/fields).
+3. poll_period: The duration string to wait between each search request. This field can be set empty, in which case requests are made at the limit set by the rate limit.
+4. backfill_period: A duration string indicating the maximum age of tweets to acquire when starting a search.
+5. cache: A cache resource to use for request pagination.
+6. cache_key: The key identifier used when storing the ID of the last tweet received.
+7. rate_limit: An optional rate limit resource to restrict API requests with. 
+8. api_key: An API key for OAuth 2.0 authentication. 
+9. api_secret: An API secret for OAuth 2.0 authentication. 
 
-> **Note:** Benthos allows you to dynamically set config fields with environment variables anywhere within a config YAML file. It is recommended that you populate these API fields using [environment variables](https://www.benthos.dev/docs/configuration/interpolation).
+> Note: Benthos allows you to dynamically set config fields with environment variables anywhere within a config YAML file. It is recommended that you populate these API fields using [environment variables](https://www.benthos.dev/docs/configuration/interpolation).
 > 
 
 ```yaml
@@ -70,9 +68,9 @@ cache_resources:
 
 You will get a response in the form of each JSON object. While getting the response from API, it contained all the emojis and symbols in it, which have to be removed.
 
-1. **root:** the root indicates the whole JSON object. 
-2. **root.match:** this ****is to point text key in JSON object.
-3. **root. text:** this is to remove all the emojis and symbols from the JSON response.
+1. root: the root indicates the whole JSON object. 
+2. root.match: this is to point text key in JSON object.
+3. root. text: this is to remove all the emojis and symbols from the JSON response.
 
 ```yaml
 pipeline:
@@ -98,7 +96,7 @@ output:
     codec: lines
 ```
 
-# Configuration YAML File
+## Configuration YAML File
 
 Here is the complete `twitter.yaml` file.
 
@@ -136,7 +134,7 @@ output:
     codec: lines
 ```
 
-# Test Processing
+## Test Processing
 
 You can run this configuration YAML file on your local machine to test the processing steps for the desired output.
 
@@ -146,13 +144,13 @@ Use the following command:
 benthos -c path_of_file/filename.yaml
 ```
 
-**API response before applying processor:**
+API response before applying processor:
 
 ```yaml
 {"id":"1494608923936292864","text":"@PriapusIQ US media. Russia to start a nuclear war with Ukraine 🇺🇦, how could a country do this to another.."}
 ```
 
-**API response after applying processor:**
+API response after applying processor:
 
 ```yaml
 {"id":"1494608923936292864","text":"@PriapusIQ US media. Russia to start a nuclear war with Ukraine, how could a country do this to another.."}

@@ -1,8 +1,8 @@
-# **Redshift**
+# Redshift
 
-# **Read Config**
+## Read Config
 
-**Input Section Configuration for Reading from Redshift Data Source**
+Input Section Configuration for Reading from Redshift Data Source
 
 ```yaml
 inputs:
@@ -16,7 +16,7 @@ inputs:
       dbTable: <table-name>
 ```
 
-**Sample YAML for Reading from Redshift Data Source**
+Sample YAML for Reading from Redshift Data Source
 
 ```yaml
 version: v1
@@ -83,9 +83,9 @@ workflow:
             - 'spark.hadoop.fs.s3a.bucket.<bucket-name>.secret.key': '<secret-key>'
 ```
 
-# **Write Config**
+## Write Config
 
-**Output Section Configuration for Writing to Redshift Data Source**
+Output Section Configuration for Writing to Redshift Data Source
 
 ```yaml
 outputs:
@@ -99,7 +99,7 @@ outputs:
       dbTable: <table>
 ```
 
-**Sample YAML for Writing to Redshift Data Source**
+Sample YAML for Writing to Redshift Data Source
 
 ```yaml
 version: v1

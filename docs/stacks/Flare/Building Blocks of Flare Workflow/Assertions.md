@@ -1,10 +1,10 @@
-# **Assertions**
+# Assertions
 
 DataOS allows you to define your own `assertions` with a combination of `tests` to check the rules. These `tests` consist of boolean expressions that incorporate metric functions for aggregated data, such as determining whether the average sales price surpasses a specified limit. When creating assertions, DataOS automatically generates metrics based on the functions utilized. For more sophisticated use cases, SQL and regular expressions can also be used to define assertions. 
 
 Additional information on Data Quality Jobs and the application of assertions can be found in this [case scenario](../Case%20Scenario/Data%20Quality%20Jobs%20(Assertions).md).
 
-## **Structure of the Assertions Section**
+## Structure of the Assertions Section
 
 ```yaml
 assertions: #(Mandatory)
@@ -28,7 +28,7 @@ assertions: #(Mandatory)
 		
 ```
 
-### **Assertion Properties**
+## Assertion Properties
 
 | Property | Description | Example | Field (Mandatory/ Optional) |
 | --- | --- | --- | --- |
@@ -39,7 +39,7 @@ assertions: #(Mandatory)
 | `regex` | Regular Expressions | `regex: Awkward`  | Optional |
 | `tests` | A boolean expression for each test. You can use quality metrics functions such as `avg`, `max`, `min`, etc. to define the rules with threshold values. These tests are expected to evaluate to `true` if the assertion should pass. | `tests:` <br>&nbsp;&nbsp;&nbsp;&nbsp; `- avg > 1000.00` <br>&nbsp;&nbsp;&nbsp;&nbsp; `- max < 1000` <br>&nbsp;&nbsp;&nbsp;&nbsp; `- max > 1000` | Optional |
 
-### **Quality metrics functions**
+## Quality metrics functions
 
 | Function | Description | Example |
 | --- | --- | --- |

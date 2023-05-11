@@ -1,6 +1,6 @@
-# **Streaming**
+# Streaming
 
-# **Structure of Streaming Section**
+## Structure of Streaming Section
 
 ```yaml
 streaming:
@@ -14,7 +14,7 @@ streaming:
 ```
 
 To know more about a case scenario on Streaming Job, refer to
-[Stream Job](/mkdocs/Mk%20Docs/Transformation/Flare/Case%20Scenario/Stream%20Job.md).
+[Stream Job](../Case%20Scenario/Stream%20Job.md).
 
 | Property | Description | Example | Default Value | Possible Values | Note/Rule | Field (Mandatory / Optional) |
 | --- | --- | --- | --- | --- | --- | --- |

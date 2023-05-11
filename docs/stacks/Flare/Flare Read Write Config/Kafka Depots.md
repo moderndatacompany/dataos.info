@@ -1,10 +1,10 @@
-# **Kafka Depots**
+# Kafka Depots
 
 To execute Flare Jobs on top of object storage depots, you first need to create a depot. If you have already created a depot, then continue reading else proceed to below link.
 
 To run a Flare Job all you need is the UDL address of the input or output dataset for the reading and writing scenarios respectively. Apart from this you also need the file `format` of the data and some additional properties
 
-# **Read Config**
+## Read Config
 
 | Scenario | Syntax | Additional Properties |
 | --- | --- | --- |
@@ -25,7 +25,7 @@ inputs:
 			kafka.security.protocol: SASL_PLAINTEXT
 ```
 
-**Sample Read configuration YAML**
+Sample Read configuration YAML
 
 Let’s take a case scenario where the dataset is stored in Kafka Depot and you have to read it from the source, perform some transformation steps and write it to the Icebase which is a managed depot within the DataOS. The read config YAML will be as follows
 
@@ -85,7 +85,7 @@ workflow:
             value: latest
 ```
 
-# **Write Config**
+## Write Config
 
 | Scenario | Syntax |
 | --- | --- |
@@ -100,7 +100,7 @@ outputs:
 		checkpointLocation: dataos://icebase:sys01/checkpoints/ny_taxi/output01/nyt01?acl=rw
 ```
 
-**Sample Write configuration YAML**
+Sample Write configuration YAML
 
 Let’s take a case scenario where the output dataset is to be stored a Kafka Depot and you have to read data from the Icebase depot within the DataOS The write config YAML will be as follows
 

@@ -1,4 +1,4 @@
-# **Actions**
+# Actions
 
 > The Data Maintenance Actions are only supported in DataOS Internal Storage Depot, Icebase.
 
@@ -38,7 +38,7 @@ Following are the different actions that can be accomplished using Flare in Data
 
 The configurations for the different actions and their definitions are provided in the below section:
 
-## **Rewrite Dataset**
+## Rewrite Dataset
 
 > Supported in both Flare Stack Versions `flare:3.0` and `flare:4.0`.
 
@@ -57,7 +57,7 @@ actions:
 
 The `rewrite_dataset` action is beneficial in the case of streaming, where small data files can be compacted into larger files to improve query performance. To explore a case scenario on how to compact files using the `rewrite_dataset` action, refer to [Rewrite Dataset](../Case%20Scenario/Rewrite%20Dataset.md).
 
-## **Rewrite Manifest**
+## Rewrite Manifest
 
 > Supported in both Flare Stack Versions `flare:3.0` and `flare:4.0`.
 
@@ -71,7 +71,7 @@ actions:
 
 A case scenario illustrating the implementation of the `rewrite_manifest` action is given, refer to [Rewrite Manifest Files](../Case%20Scenario/Rewrite%20Manifest%20Files.md).
 
-## **Expire Snapshots**
+## Expire Snapshots
 
 > Supported in both Flare Stack Versions `flare:3.0` and `flare:4.0`
 
@@ -87,7 +87,7 @@ actions:
 
 Regularly expiring snapshots is recommended to delete data files that are no longer needed, and to keep the size of table metadata small. To view a case scenario for `expire_snapshots` action, refer to [Expire Snapshots](../Case%20Scenario/Expire%20Snapshots.md).
 
-## **Remove Orphans**
+## Remove Orphans
 
 > Supported in both Flare Stack Version `flare:3.0` and  `flare:4.0`.
 
@@ -105,7 +105,7 @@ actions:
 
 Refer to [Remove Orphans](../Case%20Scenario/Remove%20Orphans.md) to view a case scenario depicting the use of `remove_orphans` action.
 
-## **Delete from Dataset**
+## Delete from Dataset
 
 > Supported in Flare Stack Version `flare:4.0`only.
 
@@ -120,7 +120,7 @@ actions:
 
 The `delete_from_dataset` can be used in multiple configurations, which have been showcased in the case scenarios, refer to [Delete from Dataset](../Case%20Scenario/Delete%20from%20Dataset.md).
 
-> 🗣️ **Note:** When using a GCS-based environment, use the dataset address with the `acl=rw` query parameter (e.g. `dataos://icebase:actions/random_users_data?acl=rw`). This is because GCS generates two credentials with different permissions: one with only read access and one with both read and write access. Flare actions need write access to create files, so if you don't specify `acl=rw`, Flare will default to read-only access and prevent you from updating or creating files. <br>
+> 🗣️ Note: When using a GCS-based environment, use the dataset address with the `acl=rw` query parameter (e.g. `dataos://icebase:actions/random_users_data?acl=rw`). This is because GCS generates two credentials with different permissions: one with only read access and one with both read and write access. Flare actions need write access to create files, so if you don't specify `acl=rw`, Flare will default to read-only access and prevent you from updating or creating files. <br>
     
   ```yaml
     inputs:

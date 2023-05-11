@@ -13,30 +13,29 @@ There are two stages to achieve this:
     Read the data from Pulsar and write it in Icebase.
     
 
-# Prerequisites
+## Prerequisites
 
-**JsonPlaceholder API** is used as the source of streaming which sends JSON data. 
+JsonPlaceholder API is used as the source of streaming which sends JSON data. 
 
 You need to follow each API's own documentation to get the API response. Below is the link for reference.
 
 [https://jsonplaceholder.typicode.com/](https://jsonplaceholder.typicode.com/) 
 
-<aside>
-💡 Most APIs require access via API keys (similar to passwords) or have complex authentication and authorization methods. Some APIs like JsonPlaceholder API provides sample data for testing purposes, so you do not need to generate API keys.
 
-</aside>
+>💡 Most APIs require access via API keys (similar to passwords) or have complex authentication and authorization methods. Some APIs like JsonPlaceholder API provides sample data for testing purposes, so you do not need to generate API keys.
 
-**Here are the steps to create the pipeline.**
 
-**Step 1:** Create a Benthos service in DataOS for storing data fetched from API and writing to Pulsar.
+Here are the steps to create the pipeline.
 
-**Step 2:** Create a [Policy for Benthos Service](../Benthos.md) for ingesting data into DataOS.
+Step 1: Create a Benthos service in DataOS for storing data fetched from API and writing to Pulsar.
 
-**Step 3:** Create a [Flare Workflow](../Flare.md) for reading data from Pulsar and writing into Icebase.
+Step 2: Create a [Policy for Benthos Service](./Benthos.md) for ingesting data into DataOS.
+
+Step 3: Create a [Flare Workflow](../Flare/Flare.md) for reading data from Pulsar and writing into Icebase.
 
 ## Create a Benthos Service in DataOS
 
-Create the YAML file for the Benthos service to fetch the data from **JsonPlaceholder** API and write to Pulsar Depot. To learn more about what sections you need to create, refer to [Benthos Service](../Benthos.md) in DataOS. 
+Create the YAML file for the Benthos service to fetch the data from JsonPlaceholder API and write to Pulsar Depot. To learn more about what sections you need to create, refer to [Benthos Service](./Benthos.md) in DataOS. 
 
 > Note : `address: dataos://publicstreams:default/testjph` where `testjph` is the Pulsar topic created on the fly, where all the streaming data will be pushed as Pulsar works on a pub-sub mechanism where the topic is required to run the service.
 > 
@@ -134,7 +133,7 @@ service:
 
 ## Create a Policy for Benthos Service
 
-Create the following YAML file to apply the policy for ingesting the data into DataOS. To learn more, refer to [Define Policy for Benthos Service](../Benthos.md).
+Create the following YAML file to apply the policy for ingesting the data into DataOS. To learn more, refer to [Define Policy for Benthos Service](./Benthos.md).
 
 ```yaml
 
@@ -159,7 +158,7 @@ policy:
 
 ## Create a Flare Workflow
 
-Create the Flare workflow YAML file to read data from Pulsar and write to Icebase. To learn more about how to write Flare workflow, refer to [Flare Stack](../Flare.md).         
+Create the Flare workflow YAML file to read data from Pulsar and write to Icebase. To learn more about how to write Flare workflow, refer to [Flare Stack](../Flare/Flare.md).         
 
 ```yaml
 ---

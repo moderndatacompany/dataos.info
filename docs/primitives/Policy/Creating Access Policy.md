@@ -1,10 +1,10 @@
-# **Creating Access Policy**
+# Creating Access Policy
 
 Access policy definition consists of configuration settings for the subject, predicate, and object. It may include rules for the subject, predicate and object defining AND/OR relationships.
 
 1. Create the YAML file. 
     - Specify the version, resource name (the policy will be referred to by this name), and resource type (policy). 
-    -  Provide layer as **‘user’** or **‘system’**. 
+    -  Provide layer as ‘user’ or ‘system’. 
         
         `user`: When the resources to be accessed are defined at the DataOS User layer.
         
@@ -13,13 +13,13 @@ Access policy definition consists of configuration settings for the subject, pre
     -  Provide a description to help understand its purpose.
     -  Specify the policy-related configuration properties under the `access` section.
         
-        `subjects` : Subject can be a user or an application identified by a tag. They can be a group of tags defined as an array. See [Rules for AND/OR Logic](Rules%20for%20AND%20OR%20Logic.md).
+        `subjects` : Subject can be a user or an application identified by a tag. They can be a group of tags defined as an array. See [Rules for AND/OR Logic](./Rules%20for%20AND%20OR%20Logic.md).
         
-        `predicates`: Predicate defines an action to be allowed/denied for the underlying resource. You provide multiple possible actions in the form of an array here, but only one action at a time will be considered. See [Rules for AND/OR Logic](Rules%20for%20AND%20OR%20Logic.md).
+        `predicates`: Predicate defines an action to be allowed/denied for the underlying resource. You provide multiple possible actions in the form of an array here, but only one action at a time will be considered. See [Rules for AND/OR Logic](./Rules%20for%20AND%20OR%20Logic.md).
         
         Refer to the following tables for possible actions specified in the `predicate` section.
         
-        **DataOS user:**
+        DataOS user:
         
         <center>
         
@@ -31,7 +31,7 @@ Access policy definition consists of configuration settings for the subject, pre
         | delete | Delete the data  |
         </center>
 
-        **DataOS Applications can perform API operations on resources:**
+        DataOS Applications can perform API operations on resources:
         
         <center>
         
@@ -45,16 +45,16 @@ Access policy definition consists of configuration settings for the subject, pre
         </center>
 
 
-        `objects`: Object is a target resource on which the subject would like to perform actions. A tag or path identifies the object. You can specify multiple tags/paths here. See [Rules for AND/OR Logic](Rules%20for%20AND%20OR%20Logic.md).
+        `objects`: Object is a target resource on which the subject would like to perform actions. A tag or path identifies the object. You can specify multiple tags/paths here. See [Rules for AND/OR Logic](./Rules%20for%20AND%20OR%20Logic.md).
         
     -  Specify whether you are allowing/denying access to the resource.
 2. Create the policy resource using the  `apply` command.
 
-# **Access Policy Examples**
+## Access Policy Examples
 
 Here are examples of how we can create policies to allow the user to perform certain operations on the resources. 
 
-**Example 1**
+### Example 1
 
 The users with `roles:id:testuser` tag can have read permissions on the mentioned depots. 
 
@@ -73,12 +73,12 @@ policy:
       - "read"                          # Allowed action
     objects:
       paths:
-        - "dataos://crmbq**"            # resource paths for Depots
-        - "dataos://poss3**"
+        - "dataos://crmbq"            # resource paths for Depots
+        - "dataos://poss3"
     allow: true
 ```
 
-**Example 2**
+### Example 2
 
 Only users with DataOS operator(admin) tag can perform CRUD operations on the mentioned depots. 
 
@@ -100,6 +100,6 @@ policy:
       - "delete"
     objects:
       paths:
-        - "dataos://syndicationgcs**".    # resource paths for Depots
+        - "dataos://syndicationgcs".    # resource paths for Depots
     allow: true
 ```

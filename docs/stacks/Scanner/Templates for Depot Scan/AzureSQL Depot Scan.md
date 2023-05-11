@@ -1,15 +1,15 @@
-# **AzureSQL Depot Scan**
+# AzureSQL Depot Scan
 
 DataOS allows you to connect to AzureSQL database to read data from tables using Depot. The Depot enables access to all schemas visible to the specified user in the configured database. You can scan metadata from an AzureSQL type depot with Scanner workflows.
 
-# **Requirements**
+## Requirements
 
 To scan the JDBC type depot, you need the following:
 
 1. Ensure that the depot is created for your Azure SQL database and you have `Read` access for the depot.
 2. You should have enough access to fetch the required metadata from your database.
 
-# **Scanner Workflow**
+## Scanner Workflow
 
 Here is an example of YAML configuration to connect to the source and reach the Metis server to save the metadata in Metis DB.
 
@@ -54,7 +54,7 @@ Here is an example of YAML configuration to connect to the source and reach the 
     
 2. After the successful workflow run, you can check the metadata of scanned Tables on Metis UI for all schemas present in the database.
     
-    > **Note:** Remove the commented part mentioned under the filter pattern in the Scanner YAML to apply filters for the required schemas and tables.
+    > Note: Remove the commented part mentioned under the filter pattern in the Scanner YAML to apply filters for the required schemas and tables.
     > 
     
     

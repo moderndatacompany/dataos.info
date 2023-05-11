@@ -1,14 +1,14 @@
-# **File**
+# File
 
 DataOS allows you to create a Depot of type 'FILE' to read the CSV/ plain text data stored in the local file storage.
 
-## **Requirements**
+## Requirements
 
 To connect, you need:
 
 - Path
 
-## **Template**
+## Template
 
 To create a Depot of type ‘FILE‘, use the following template:
 

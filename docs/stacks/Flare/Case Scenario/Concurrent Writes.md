@@ -1,31 +1,31 @@
-# **Concurrent Writes**
+# Concurrent Writes
 
 This case scenario tests the situation where multiple jobs are being concurrently written at the same location.
 
-# **Solution approach**
+## Solution approach
 
 This scenario works only for Iceberg as it supports multiple concurrent writes. A workflow with two jobs is defined to write at the same data location.
 
-# **Implementation Details**
+## Implementation Details
 
-This case scenario is tested on NY-Taxi data. A workflow is created with two jobs (in one dag) to perform write operations for different vendors (data was filtered on vendor level). The workflow is to be submitted for both modes: **append and save mode**
+This case scenario is tested on NY-Taxi data. A workflow is created with two jobs (in one dag) to perform write operations for different vendors (data was filtered on vendor level). The workflow is to be submitted for both modes: append and save mode
 
 For append mode, the data should be written from both jobs.
 
-- **overwrite and save mode**
+- overwrite and save mode
 
 When Flare's overwrite mode is dynamic, partitions that have rows produced by the jobs will be replaced on every new write operation. Only the last finished job's data should be seen in this case.
 
-# **Outcomes**
+## Outcomes
 
 Queries were run to fetch data to validate the expected behavior. Also, it was possible to query data while data was being written.
 
-# **Code files**
+## Code files
 
-## **Job to test concurrent writes**
+### Job to test concurrent writes
 
 ```yaml
-**# This contains two jobs and save mode as append**
+# This contains two jobs and save mode as append
 ---
 version: v1beta1
 name: workflow-ny-taxi-parallel-write
@@ -141,7 +141,7 @@ workflow:
                   ts_ny_taxi FROM ny_taxi_changed_dateformat
 ```
 
-## **DataOS Tool Yaml**
+### DataOS Tool Yaml
 
 ```yaml
 version: v1beta1

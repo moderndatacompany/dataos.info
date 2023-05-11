@@ -1,14 +1,14 @@
-# **CLI**
+# CLI
 
 We believe in API first, CLI second and UI third. DataOS design exemplifies this belief system. Don’t take our word for it, check out our CLI to see for yourself. Through CLI, you can access, use and marvel at the full capabilities of DataOS.
 
 CLI is where your journey starts if you wear any of these hats: that of a Data Engineer or Analytical Engineer, IT services for your enterprise, Infosec division or DevOps. With that in mind, let’s get you started on our command terminal. It will only take a couple of minutes.
 
-## **Installation**
+## Installation
 
 Before you test your mettle on our CLI, let’s make sure you have what it takes.
 
-### **Requirements**
+### Requirements
 
  1.  Please ensure that the curl utility is installed on your system. To check, use this command:
 
@@ -16,14 +16,14 @@ Before you test your mettle on our CLI, let’s make sure you have what it takes
         curl --version
         ```
 
-        If curl is not installed, follow the steps [here](CLI.md).
+        If curl is not installed, follow the steps to [download curl](./Read%20on%20Curl%20utility.md).
 
 2. Get the following items from our Customer Success team:
     - DataOS prime apikey
     - The domain name of the DataOS context/instance
 2. Find out the operating system you are using, then follow the installation steps for the OS on your computer - perhaps the most obvious thing in the world!
 
-### **MacOS**
+### MacOS
 
 1. Export the environment variable PRIME_APIKEY to pass it to the next commands.
 
@@ -115,7 +115,7 @@ Before you test your mettle on our CLI, let’s make sure you have what it takes
 
 Yay! You have successfully installed the CLI, now let’s initialize. 
 
-### **Linux**
+### Linux
 
 1. Export the environment variable PRIME_APIKEY to pass it to the subsequent commands.
 
@@ -211,11 +211,11 @@ Yay! You have successfully installed the CLI, now let’s initialize.
 
 Yay! You have successfully installed the CLI, now let’s initialize. 
 
-### **Windows**
+### Windows
 
-1. Check whether your system has an **Intel 64bit chip** or an **AMD chip.**
-2. Download the CLI binary by typing the given links in your web browser **(according to the chip type AMD/Intel 64bit)**
-    - **For intel 64bit chip, follow these steps:**
+1. Check whether your system has an Intel 64bit chip or an AMD chip.
+2. Download the CLI binary by typing the given links in your web browser (according to the chip type AMD/Intel 64bit)
+    - For intel 64bit chip, follow these steps:
     1. The below link will help you download the shasum file. In the link given below, 386 is the OS Architecture(processor) of your system and 2.4 is the CLI version.
         
         https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-windows-386.tar.gz.sha256sum&dir=cli-apps-2.4&apikey=$PRIME_APIKEY
@@ -225,7 +225,7 @@ Yay! You have successfully installed the CLI, now let’s initialize.
         https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-windows-386.tar.gz&dir=cli-apps-2.4&apikey=$PRIME_APIKEY
     
     
-    - **For AMD chip, follow these steps:**
+    - For AMD chip, follow these steps:
     1. The below link will help you download shasum file. In the link given below, amd64 is the OS Architecture(processor) of your system and 2.4 is the CLI version
         
         https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-windows-amd64.tar.gz.sha256sum&dir=cli-apps-2.4&apikey=$PRIME_APIKEY
@@ -236,13 +236,13 @@ Yay! You have successfully installed the CLI, now let’s initialize.
         
     
 3. The next step is to unzip the downloaded .tar file, to extract it, you will need an archiver utility like Winrar. 
-2. Open Winrar and highlight the zipped tar file (it should appear with other downloaded files in the lower part of the page), and click the **“Extract to”** button on the top. Place it in your chosen directory. 
+2. Open Winrar and highlight the zipped tar file (it should appear with other downloaded files in the lower part of the page), and click the “Extract to” button on the top. Place it in your chosen directory. 
 
-> 🗣️ You will always use this directory to run DataOS. To open the DataOS from anywhere in the system, place the extracted file in a directory that is in your **PATH**. To add the directory in **PATH**, refer to [Setting the Path and Variables in Windows](CLI/Setting%20the%20Path%20and%20Variables%20in%20Windows.md).
+> 🗣️ You will always use this directory to run DataOS. To open the DataOS from anywhere in the system, place the extracted file in a directory that is in your PATH. To add the directory in PATH, refer to [Setting the Path and Variables in Windows](./Setting%20the%20Path%20and%20Variables%20in%20Windows/Setting%20the%20Path%20and%20Variables%20in%20Windows.md).
 
 Yay! You have successfully installed the CLI, now let’s initialize. 
 
-## **Initialize**
+## Initialize
 
 If you have reached here, you are nearly there - at the promised landscape of DataOS. To initialize, run the init command.
 
@@ -284,7 +284,7 @@ INFO[0452] 🚀 initialization...complete
 
 If you are the operator/admin for your enterprise then the installation steps for you, after the last step, will change. These are covered in the Operator Document for DataOS.
 
-## **Log in**
+## Log in
 
 After the successful initialization of DataOS context, you can log into your account with the following command. Finally, the moment we have been waiting for is here.
 
@@ -294,7 +294,7 @@ dataos-ctl login
 
 If your enterprise has taken multiple DataOS contexts then you can use the same command terminal client, the one you just installed, to access & use any of those contexts.
 
-## **Test**
+## Test
 
 Run the following commands to ensure the successful installation of DataOS CLI. These commands will show the version and health status of the installed DataOS CLI.
 
@@ -305,13 +305,8 @@ dataos-ctl health
 
 Did it take you more than a couple of minutes? Well, when someone says ‘just a minute’ they don’t mean it literally!
 
----
+## Linked Documents
 
+- [Read on Curl utility](./Read%20on%20Curl%20utility.md)
 
----
-
-**Linked Documents**
-
-- [Read on Curl utility](CLI/Read%20on%20Curl%20utility.md)
-
-- [Setting the Path and Variables in Windows](CLI/Setting%20the%20Path%20and%20Variables%20in%20Windows.md)
+- [Setting the Path and Variables in Windows](./Setting%20the%20Path%20and%20Variables%20in%20Windows/Setting%20the%20Path%20and%20Variables%20in%20Windows.md)

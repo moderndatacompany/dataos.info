@@ -1,12 +1,12 @@
-# **Rewrite Dataset**
+# Rewrite Dataset
 
 DataOS managed depot, Icebase built on top of Iceberg format can compact data files in parallel using Flare’s `rewrite_dataset` [action](../Building%20Blocks%20of%20Flare%20Workflow/Actions.md). This will combine small files into larger files to reduce metadata overhead and runtime file open costs.
 
-# **Code Snippet**
+## Code Snippet
 
 The below code snippet depicts a case scenario where using the `rewrite_dataset` action, we have compacted the dataset to the target file size. The action is supported in both Flare versions, i.e. `flare:3.0` and `flare:4.0` though they differ in the actions YAML definitions, which are provided below separately. 
 
-## **Syntax for Flare Version `flare:4.0`**
+### Syntax for Flare Version `flare:4.0`
 
 ```yaml
 version: v1 # Version
@@ -40,7 +40,7 @@ workflow: # Workflow Specific Section
                     "target-file-size-bytes": "2048" # Target File Size in Bytes
 ```
 
-## **Syntax for Flare Version `flare:3.0`**
+### Syntax for Flare Version `flare:3.0`
 
 ```yaml
 version: v1 # Version

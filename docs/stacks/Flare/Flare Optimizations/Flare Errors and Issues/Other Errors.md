@@ -1,8 +1,8 @@
-# **Other Errors**
+# Other Errors
 
-## **Error: Caused by Read time out / connection time out**
+## Error: Caused by Read time out / connection time out
 
-**Message**
+Message
 
 Read time out
 
@@ -28,6 +28,6 @@ Caused by: java.net.SocketTimeoutException: connect timed out
 				at java.net.SocksSocketImpl.connect(AbstractPlainSocketImpl.java:392)
 ```
 
-**What went wrong?**
+What went wrong?
 
 Metis Client Error

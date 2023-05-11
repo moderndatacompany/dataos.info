@@ -1,8 +1,8 @@
-# **Secret**
+# Secret
 
 A Secret is a primitive in DataOS that contains the information of sensitive data such as a password, a token, or a key needed to access your data sources and other services. This helps in keeping the secrets independent of any stack or storage. You can store almost any secret in DataOS, and they can be referred to in different stacks.
 
-# **Creating Secrets**
+## Creating Secrets
 
 You can define the `Secret` resource in a  YAML file and then create that object using the `apply` command in CLI.
 
@@ -22,7 +22,7 @@ You can define the `Secret` resource in a  YAML file and then create that objec
 
     There are two ways to create a secret resource.
     
-    ### **Key Value Properties**
+    ### Key Value Properties
     
     Define the required properties directly under the `data` section in your YAML. 
     
@@ -41,7 +41,7 @@ You can define the `Secret` resource in a  YAML file and then create that objec
         ...            
     ```
     
-    ### **File in Key-Value-Properties**
+    ### File in Key-Value-Properties
     
     Another way of creating a secret is to make the value of that secret be available as a file inside the filesystem of the DataOS ecosystem.
     
@@ -67,17 +67,17 @@ You can define the `Secret` resource in a  YAML file and then create that objec
 
 <br>
 
-> 🗣 When you create a ‘**Secret**’ artifact YAML and apply it in CLI, **Poros**, the resource manager, sends it to **Heimdall**, the Governance engine. Heimdall provides vault support for secrets and enables you to control access to secrets using fine-grained permissions whenever the users or applications want to retrieve credentials.
+> 🗣 When you create a ‘Secret’ artifact YAML and apply it in CLI, Poros, the resource manager, sends it to Heimdall, the Governance engine. Heimdall provides vault support for secrets and enables you to control access to secrets using fine-grained permissions whenever the users or applications want to retrieve credentials.
 
-# **Referring Secrets**
+## Referring Secrets
 
 DataOS allows you to create a secret as a primitive. Once a secret primitive is created, you can refer to it in different stacks or you can link secrets to depots.
 
-## **Passing Secrets Using Alpha Stack**
+## Passing Secrets Using Alpha Stack
 
 1. Create a YAML file for defining a secret.
     
-    <u>**secret.yaml**</u>
+    <u>secret.yaml</u>
     
     ```yaml
     version: v1
@@ -98,7 +98,7 @@ DataOS allows you to create a secret as a primitive. Once a secret primitive is 
 2. Apply the secret to the workspace where you want to run your service or workflow.
 3. Create a YAML file for your service. Reference the secret in the application spec of your service and/or workflow. 
     
-    <u>**alpha.yaml**</u>
+    <u>alpha.yaml</u>
     
     ```yaml
     version: v1
@@ -134,7 +134,7 @@ cat /etc/dataos/secret/e
 f
 ```
 
-## **Using Secrets with Depots**
+## Using Secrets with Depots
 
 Once a secret primitive is created, you can simply refer to it in the Depot YAML. That means you don't need to include confidential data while defining your Depot configuration. 
 
