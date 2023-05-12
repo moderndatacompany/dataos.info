@@ -1,181 +1,53 @@
 # Beacon
 
-Beacon stack in DataOS is used to create a service that enables you to access the PostgreSQL database. PostgreSQL REST API connection allows web and application platforms to utilize PostgreSQL as a destination.
+Beacon is a standalone HTTP server designed to facilitate the exposure of data objects and tables contained within PostgreSQL databases. The server offers two distinct flavors (or types) of HTTP APIs, including REST, which leverages the `beacon+rest` stack, and GraphQL, which utilizes the `beacon+graphql` stack.
 
-Through the Beacon stack, REST API is exposed to provide an interface for seamless and secure usage of PostgreSQL with the client applications.
- 
-<center>
+While both flavors of the Beacon stack are designed to offer functionality on top of PostgreSQL databases, it's essential to note that the API endpoints and operations are directly impacted by the structural limitations and permissions set by the database. Each flavor of the stack offers its unique and intuitive capabilities, which are detailed in the table below.
 
-![Picture](./beacon.png)
+| Parameter | beacon+rest stack | beacon+graphql stack |
+| --- | --- | --- |
+| Function | Exposes entities within a PostgreSQL database through a RESTful API. | Exposes entities within a PostgreSQL database through a GraphQL API. |
+| Protocol | REST | GraphQL |
+| Querying | Simple CRUD operations using HTTP verbs (GET, POST, PUT, DELETE). | Advanced querying and filtering using GraphQL queries, mutations, and subscriptions. |
+| Relationships | Supports basic foreign key relationships between tables. | Supports complex nested relationships and connections between tables. |
+| Schema Generation | Uses PostgreSQL metadata to automatically generate a RESTful API. | Uses PostgreSQL metadata to automatically generate a GraphQL schema. |
+| Customization | Limited customization options for endpoints and query parameters. | Highly customizable, with the ability to write custom resolvers, mutations, and subscriptions. |
+| Performance | Generally faster for simple queries and small datasets. | Can be slower for complex queries and large datasets due to GraphQL's flexibility and complexity. |
+| Use Cases | Well-suited for simple use cases where you need a quick and easy way to expose your database data through a RESTful API. | Designed to handle complex use cases where you need to perform complex queries on your database or work with related data in a flexible and efficient manner. |
 
-</center>
+## Beacon Service
 
-You can create a Beacon service using declarative YAML and you do not need to write extra code to enable database access. You can also enforce governance policies for secure access to PostgreSQL data. For example, using policies, you can restrict users to perform Delete/Update operations and allow only reading the data.
+The Beacon stack provides a robust solution for exposing a Postgres API endpoint to the external world. However, ensuring secure access, scalability, and seamless integration with other internal and external applications in DataOS can be complex. This is where the Service Primitive/resource becomes a critical factor.
 
-Beacon services are also built to scale. As per the data growth, you can create a required number of replicas for the service.
+By utilizing the Service Primitive/resource, you can ensure governed access to the endpoint, enable scalability in proportion to data growth and facilitate seamless access to all internal and external components and applications within DataOS. You can further enforce governance Policies to ensure secure access to PostgreSQL data, all in a declarative YAMLish manner within DataOS. 
 
-Once you create the Beacon service, you can perform the following operations:
+![MicrosoftTeams-image (5).png](./MicrosoftTeams-image_(5).png)
 
-## CRUD Operations
-
-- Create — HTTP POST method to create a resource in a REST environment
-- Read — GET method to read a resource
-- Update — PUT method to update a resource
-- Delete — DELETE method To remove a resource from the system
-
-## Other Capabilities
-
-- Search- Full-Text Search on the data stored in PostgreSQL
-- Filtering- Filter result rows by adding conditions on columns
-- Rename- Rename the columns
-
-> Note: To understand more about the PostgreSQL API options, refer to [PostgREST](https://postgrest.org/en/stable/api.html).
-> 
+In summary, a Beacon Service enables you to expose an API endpoint for a specific table in a PostgreSQL database, allowing you to send data to be stored and interact with the data in the table by sending HTTP requests to the endpoint. With a Beacon Service, your web and other data-driven applications in DataOS can perform CRUD operations, search, filter, and rename data assets stored in Postgres (the native relational database of DataOS).
 
 ## Create a Beacon Service
 
-This article describes the steps to create a Beacon service in DataOS to access tables in PostgreSQL.
+Creating a Beacon Service is a straightforward process that is accomplished within the DataOS platform using a simple declarative YAMLish syntax. While you need to have a basic understanding of Postgres to define migrations, the rest of the process is declarative and straightforward. Refer to
+[Creating Beacon Service ](./Creating%20Beacon%20Service.md).
 
-### Step 1: Create SQL Files
+## Sections of a Beacon YAML Configuration
 
-1. Create a migration folder.
+Let's take a closer look at each section of the YAML configuration and understand their importance in configuring your Beacon Service. For a detailed breakdown of each section and how to configure them, please visit the Beacon YAML configuration page.
 
-2. Create Up and Down SQL files.
+[Beacon YAML Configurations](./Beacon%20YAML%20Configurations.md)
 
-    - In up.sql, write the code to create tables, alter tables, and create functions & triggers.
+## Recipes
 
-    - In down.sql, we drop tables, functions & triggers.
+[Exposing GraphQL API’s on Database using Beacon ](./Exposing%20GraphQL%20API%E2%80%99s%20on%20Database%20using%20Beacon.md)
 
-3. Test your SQL commands on local Postgre instance.0001_initial.up.sql
+[Exposing REST API’s on Database using Beacon](./Exposing%20REST%20API%E2%80%99s%20on%20Database%20using%20Beacon.md)
 
-> 📌 Note: Naming of SQL files must be 00001_initial.up.sql & 00001_initial.down.sql format.
-> 
+[Store APIs on Beacon ](./Store%20APIs%20on%20Beacon.md)
 
-### Step 2: Create Database YAML
+[Query Pushdown Streamlit Application ](./Query%20Pushdown%20Streamlit%20Application.md)
 
-1. Provide the database name and the full path of the migration folder containing SQL files.
+[Query Pushdown SSL Postgres](./Query%20Pushdown%20SSL%20Postgres.md)
 
-    ```yaml
-    version: v1beta1
-    name: citybase                                         # database name 
-    type: database
-    description: citybase database for storing city sample data.
-    tags:
-      - database
-    database:
-      migrate:
-        includes:
-          - /home/user/postgres_beacon/migrations         # all up & down sql files.
-        command: up                                       # in case of drop table, write down.
-    ```
+[Mask Data After Moving from Database to Icebase ](./Mask%20Data%20After%20Moving%20from%20Database%20to%20Icebase.md)
 
-2. After creating database YAML, run the apply command on DataOS CLI to create database resource in DataOS.
-
-    ```yaml
-    dataos-ctl apply -f database.yaml
-    ```
-
-To learn more about `apply` command, refer to [CLI](../../CLI/CLI.md) section.
-
-### Step 3: Create Beacon Service YAML
-
-While defining a service, you have to define the following properties:
-
-- Replicas: Create multiple replicated services.
-- Ingress: Configure the incoming port for the service to allow access to DataOS resources from external links.
-
-  Provide the following properties. 
-    
-    - enable ingress port.
-    - enable the `stripPath` to strip the specified path and then forward the request to the upstream service.
-    - provide path. How your URL going to appear.
-    - set `noAuthentication` to false if authentication is needed.
-
-- Environment: configure destination URL and path.
-- Source: about the data source.
-- Topology: provide objects and their input/output types.
-
-    ```yaml
-    version: v1beta1
-    name: scitydatabase-rest    # service name
-    type: service
-    tags:
-      - syndicate
-      - segments
-      - service
-    service:
-      replicas: 2
-      ingress:
-        enabled: true
-        stripPath: true
-        path: /citybase/api/v1   # how your URL going to appear.
-        noAuthentication: true
-      stack: beacon+rest
-      envs:
-        PGRST_OPENAPI_SERVER_PROXY_URI: https://lively-neutral-akita.dataos.io/citybase/api/v1
-                                        # environment URL + path: /citybase/api/v1
-      beacon:
-        source:
-          type: database
-          name: citybase
-          workspace: public
-      topology:
-      - name: database
-        type: input
-        doc: citybase database connection
-      - name: rest-api
-        type: output
-        doc: serves up the citybase database as a RESTful API
-        dependencies:
-        - database
-    ```
-
-2. Run the `apply` command on DataOS CLI to create the service resource for the database.
-
-To learn more about `apply` command, refer to [CLI](../../CLI/CLI.md) section.
-
-### Step 4: Create Policy YAML
-
-A policy in DataOS should be created against which a CRUD operation will be performed by authorized users.
-
-1. Define policy for allowing users to access the database resource and perform specified operations.
-
-    ```yaml
-    name: "city-search-app-demo"
-    version: v1beta1
-    type: policy
-    layer: system
-    description: "Allow user to access citybase app rest apis"
-    policy:
-      access:
-        subjects:
-          tags:
-            - - "dataos:u:user"    # user operator can access API
-        predicates:
-          - "GET"
-          - "POST"
-          - "PUT"
-          - "OPTIONS"              # user can use all CRUD operation if we allow them.
-        objects:
-          paths:
-            - "/citybase/api/v1"   
-        allow: true
-    ```
-
-2. Run the ‘apply’ command on DataOS CLI to create the policy resource for the database.
-
-To learn more about `apply` command, refer to [CLI](../../CLI/CLI.md) section.
-
-> 📌 Note: The user who has an operator tag can only apply the policy.
-> 
-
-Now you are ready to access the PostgreSQL database with the exposed API.
-
-For example, the following URL is to carry out a full-text search on a column link.
-
-| Property | Value |
-| --- | --- |
-| environment name | https://lively-neutral-akita.dataos.io/ |
-| database path | citybase/api/v1/ |
-| table name | place_search_ts |
-| column name on which you created ts vector | document_with_weights |
+[Exposing an API After Creating a Database ](./Exposing%20an%20API%20After%20Creating%20a%20Database.md)
