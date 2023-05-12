@@ -1,4 +1,4 @@
-# Data operating system
+# Data operating system 
 
 ## Setup
 _Ensure that you have [`Docker`](https://docs.docker.com/get-docker/) installed and you have logged in to Docker Hub with TMDC credentials. Contact <suraj@tmdc.io> for help._
