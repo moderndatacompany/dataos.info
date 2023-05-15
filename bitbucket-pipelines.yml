@@ -1,34 +1,40 @@
+image: mcr.microsoft.com/azure-cli
+
 pipelines:
   tags:
     '*[0-9].*[0-9].*[0-9]-*':
     - step:
-        name: Deploy application
+        name: dev-release 
         services:
           - docker
+        size: 2x
+        caches:
+          - docker
         script:
-        - export DOCKER_BUILDKIT=1
-        - docker login --username $DOCKER_HUB_USERNAME --password $DOCKER_HUB_PASSWORD
-        - docker build --progress auto --output site -t moderndocs/moderndocs:latest -f ./docker/Dockerfile .
-        - chmod -R 777 $BITBUCKET_CLONE_DIR
-        - pipe: microsoft/azure-storage-deploy:2.0.1
-          variables:
-            SOURCE: './site/*'
-            DESTINATION: 'https://mockdataos.blob.core.windows.net/\\\$web'
-            DESTINATION_SAS_TOKEN: $SAS_TOKEN
-            EXTRA_ARGS: '--from-to localBlob --recursive'
-        artifacts:
-          - site/**
+          - export DOCKER_BUILDKIT=1
+          - docker login --username $DOCKER_HUB_USERNAME --password $DOCKER_HUB_PASSWORD
+          - docker build --progress auto --output site -t moderndocs/moderndocs:latest -f ./docker/Dockerfile .
+          - az login --service-principal --username $AZURE_APP_ID --password $AZURE_PASSWORD --tenant $AZURE_TENANT_ID
+          - az storage blob upload-batch --account-name $STORAGE_ACCOUNT_NAME --auth-mode key  --destination '$web' --source $SOURCE_DIR --overwrite
+          - az storage blob upload-batch --account-name $STORAGE_ACCOUNT_NAME --auth-mode key  --destination version/$BITBUCKET_TAG --source $SOURCE_DIR --overwrite
+          - az cdn endpoint purge --resource-group $RESOURCE_GROUP --name $CDN_NAME --profile-name $CDN_NAME --content-paths "/*"
+    '*[0-9].*[0-9].*[0-9]':
     - step:
-        name: Save application version
+        name: public-release
+        services:
+          - docker
+        size: 2x
+        caches:
+          - docker
         script:
-        - export DOCKER_BUILDKIT=1
-        - pipe: microsoft/azure-storage-deploy:2.0.1
-          variables:
-            SOURCE: 'site/**'
-            DESTINATION: 'https://mockdataos.blob.core.windows.net/moderndocs-versions/$BITBUCKET_TAG'
-            DESTINATION_SAS_TOKEN: $SAS_TOKEN
-            EXTRA_ARGS: '--from-to localBlob --recursive' 
+          - export DOCKER_BUILDKIT=1
+          - docker login --username $DOCKER_HUB_USERNAME --password $DOCKER_HUB_PASSWORD
+          - docker build --progress auto --output site -t moderndocs/moderndocs:latest -f ./docker/Dockerfile .
+          - az login --service-principal --username $AZURE_APP_ID --password $AZURE_PASSWORD --tenant $AZURE_TENANT_ID
+          - az storage blob upload-batch --account-name $STORAGE_ACCOUNT_NAME --auth-mode key  --destination '$web' --source $SOURCE_DIR --overwrite
+          - az storage blob upload-batch --account-name $STORAGE_ACCOUNT_NAME --auth-mode key  --destination version/$BITBUCKET_TAG --source $SOURCE_DIR --overwrite
+          - az cdn endpoint purge --resource-group $RESOURCE_GROUP --name $CDN_NAME --profile-name $CDN_NAME --content-paths "/*"
 definitions:
   services:
     docker:
-      memory: 1024
+      memory: 4096
