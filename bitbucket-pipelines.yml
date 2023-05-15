@@ -32,7 +32,7 @@ pipelines:
           - docker build --progress auto --output site -t moderndocs/moderndocs:latest -f ./docker/Dockerfile .
           - az login --service-principal --username $AZURE_APP_ID --password $AZURE_PASSWORD --tenant $AZURE_TENANT_ID
           - az storage blob upload-batch --account-name $STORAGE_ACCOUNT_NAME --auth-mode key  --destination '$web' --source $SOURCE_DIR --overwrite
-          - az storage blob upload-batch --account-name $STORAGE_ACCOUNT_NAME --auth-mode key  --destination version/$BITBUCKET_TAG --source $SOURCE_DIR --overwrite
+          - az storage blob upload-batch --account-name $STORAGE_ACCOUNT_NAME --auth-mode key  --destination moderndocs-versions/$BITBUCKET_TAG --source $SOURCE_DIR --overwrite
           - az cdn endpoint purge --resource-group $RESOURCE_GROUP --name $CDN_NAME --profile-name $CDN_NAME --content-paths "/*"
 definitions:
   services:
