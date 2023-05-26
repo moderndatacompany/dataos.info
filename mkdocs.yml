@@ -6,9 +6,14 @@ theme:
     custom_dir: overrides
     language: en
     features:
+        - navigation.footer
+        - navigation.indexes
         - navigation.tabs
         - navigation.sections
         - navigation.instant
+        - navigation.top
+        - navigation.tracking
+        - toc.follow
         # - toc.integrate
     logo: assets/dark-logo-modern.png
     favicon: assets/favicon.ico
