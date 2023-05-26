@@ -16,12 +16,34 @@ theme:
         text: Roboto
         code: Roboto Mono
     palette:
+      - scheme: default
         primary: white
+        accent: white
+        toggle:
+            icon: material/brightness-7
+            name: Switch to dark mode
+      - scheme: slate
+        primary: Blue Gray
+        accent: Blue Gray
+        toggle:
+            icon: material/brightness-4
+            name: Switch to light mode
 plugins:
     - mermaid2
     - search
     # - mkdocs-versioning:
     #     version: v0.2
+extra:
+  generator: true
+  annotate:
+    json: [.s2]
+  social:
+    - icon: fontawesome/brands/facebook
+      link: https://www.facebook.com/themoderndatacompany
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/TheModernDataCo
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/themoderndatacompany
 extra_css:
     - stylesheets/extra.css
 extra_javascript:
@@ -45,7 +67,7 @@ markdown_extensions:
       emoji_generator: !!python/name:materialx.emoji.to_svg
   - toc:
       permalink: true
-      toc_depth: 5
+      toc_depth: 10
       separator: "-"
   - attr_list
   - md_in_html

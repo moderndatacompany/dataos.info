@@ -7,6 +7,7 @@ site/
 *.jar
 target/
 dist/
+.cache/
 .idea/
 TEST*.xml
 .DS_Store
