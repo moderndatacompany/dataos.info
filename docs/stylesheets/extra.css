@@ -1972,7 +1972,8 @@ html .md-footer-meta.md-typeset a:hover {
     display: flex;
     margin-top: .625em;
     scroll-snap-align: start;
-    transition: color 125ms
+    transition: color 125ms;
+    padding: 5px 8px;
 }
 
 .md-nav__link--passed,
@@ -1982,7 +1983,9 @@ html .md-footer-meta.md-typeset a:hover {
 
 .md-nav__item .md-nav__link--active,
 .md-nav__item .md-nav__link--active code {
-    color: var(--md-typeset-a-color)
+    color: var(--md-accent-fg-color);
+    background-color: var(--md-default-fg-color--lightest);
+    width: 100%;
 }
 
 .md-nav__link .md-ellipsis {
