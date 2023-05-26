@@ -28,8 +28,6 @@ Implementing a programmable data architecture over legacy & cloud data sources t
     [:octicons-arrow-right-24: Read More](About DataOS/About DataOS.md)
 
 
-
-
 -   :fontawesome-brands-markdown:{ .lg .middle } __Data Engineering Capabilities__
 
     ---
@@ -37,11 +35,6 @@ Implementing a programmable data architecture over legacy & cloud data sources t
     Jump to this section to understand how DataOS can meet the needs of you organisation's Data Infrastructure.
 
     [:octicons-arrow-right-24: Read More](#)
-
-    
-
-
-
 
 
 -   :material-format-font:{ .lg .middle } __Proof of Value__
@@ -53,11 +46,6 @@ Implementing a programmable data architecture over legacy & cloud data sources t
     [:octicons-arrow-right-24: Read More](#)
 
 
-
-
-
-
-
 -   :material-format-font:{ .lg .middle } __Case Scenarios__
 
     ---
@@ -67,23 +55,13 @@ Implementing a programmable data architecture over legacy & cloud data sources t
     [:octicons-arrow-right-24: Read More](#)
 
 
-
-
-
-
-
-
 -   :material-format-font:{ .lg .middle } __Operator's Manual__
-  
+
     ---
 
     Learn how to administrate DataOS for your organisation. This section will guide you on installation, integration of DataOS with the Active Directory of your organisation, day-to-day monitoring & management of the Operating System, and the steps that the administrator of DataOS can take after installation.
 
     [:octicons-arrow-right-24: Read More](#)
-
-
-
-
 
 
 -   :material-format-font:{ .lg .middle } __Training & Certification Program__
@@ -96,5 +74,4 @@ Implementing a programmable data architecture over legacy & cloud data sources t
 
 </div>
 
-
-_TBD_
+_TBD_  
