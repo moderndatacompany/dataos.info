@@ -22,14 +22,14 @@ theme:
         code: Roboto Mono
     palette:
       - scheme: default
-        primary: white
-        accent: white
+        primary: blue-grey
+        accent: blue-grey
         toggle:
             icon: material/brightness-7
             name: Switch to dark mode
       - scheme: slate
-        primary: Blue Gray
-        accent: Blue Gray
+        primary: grey
+        accent: grey
         toggle:
             icon: material/brightness-4
             name: Switch to light mode

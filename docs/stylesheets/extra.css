@@ -166,6 +166,15 @@ input {
     --md-accent-bg-color--light: #ffffffb3
 }
 
+[data-md-color-primary=blue-grey] {
+    --md-primary-fg-color: #2b323c;
+    --md-primary-fg-color--light: #383f49;
+    --md-primary-fg-color--dark: #20252d;
+    --md-primary-bg-color: #fff;
+    --md-primary-bg-color--light: #ffffffb3;
+    --md-typeset-a-color: #4051b5
+}
+
 :root,
 [data-md-color-scheme=default] {
     --md-default-fg-color: #000000de;
