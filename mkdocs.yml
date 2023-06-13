@@ -15,7 +15,7 @@ theme:
         - navigation.tracking
         - toc.follow
         # - toc.integrate
-    logo: assets/dark-logo-modern.png
+    logo: assets/light-modern-logo.png
     favicon: assets/favicon.ico
     font:
         text: Roboto
@@ -80,125 +80,52 @@ markdown_extensions:
 #### Update for navigation tabs/options ####      
 nav:
     - Home: index.md
-    # - Minerva: minerva/index.md
-    - Applications:
-         - Introduction: GUI/GUI.md
-         - Metis:
-            - Details:
-                - Introduction: GUI/GUI Applications/Metis/Metis.md
-                - Features: GUI/GUI Applications/Metis/Metis Features/Metis Features.md
-                - Architecture: GUI/GUI Applications/Metis/Architecture/Architecture.md
-                - Metis UI: GUI/GUI Applications/Metis/Metis UI/Metis UI.md
-         - Lens:
-            - Details:
-                - Introduction: GUI/GUI Applications/Lens/Lens.md
-                - Elements: 
-                    - Elements: GUI/GUI Applications/Lens/Elements of Lens/Elements of Lens.md
-                    - Entity: GUI/GUI Applications/Lens/Elements of Lens/Entity.md
-                    - Fields: GUI/GUI Applications/Lens/Elements of Lens/Fields.md
-                    - Dimensions: GUI/GUI Applications/Lens/Elements of Lens/Dimensions.md
-                    - Measures: GUI/GUI Applications/Lens/Elements of Lens/Measures.md
-                    - Relationships: GUI/GUI Applications/Lens/Elements of Lens/Relationships.md
-         - Hera: GUI/GUI Applications/Hera/Hera.md
-         - Workbench: GUI/GUI Applications/Workbench/Workbench.md
-         - Atlas:
-            - Atlas:
-                - Introduction: GUI/GUI Applications/Atlas/Atlas.md
-                - Dashboard: GUI/GUI Applications/Atlas/Dashboard.md 
-                - Queries: GUI/GUI Applications/Atlas/Queries.md
-                - Snippets: GUI/GUI Applications/Atlas/Snippets.md
-                - Alerts: GUI/GUI Applications/Atlas/Alerts.md
-                - Destinations: GUI/GUI Applications/Atlas/Destinations.md
-         - Operations: GUI/GUI Applications/Operations/Operations.md
-         - Notebook: GUI/GUI Applications/Notebook/Notebook.md
-         - Audiences: GUI/GUI Applications/Audiences/Audiences.md
-         - Odin: GUI/GUI Applications/Odin/Odin.md
-         - Bifrost: GUI/GUI Applications/Bifrost/Bifrost.md
 
-
-    - CLI:
-         - Installation: CLI/CLI.md
-         - Command Reference: CLI/CLI Command Reference.md  
-
-    - Primitives:
-         - Introduction: Primitives/Primitives.md
-         - Cluster-level Primitives:
-            - Compute: Primitives/Compute/Compute.md
-            - Depot: 
-                - Depot: Primitives/Depot/Depot.md
-                - Depot Service: Primitives/Depot/Depot Service [WIP].md
-            - Policy: Primitives/Policy/Policy.md
+    - Resources:
+         - Introduction: resources.md
          - Workspace-level Primitives:
-            - Cluster: Primitives/Cluster/Cluster.md
-            - Database: Primitives/Database.md
-            - Secret: Primitives/Secret.md
-            - Service: Primitives/Service/Service.md
-            - Workflow: Primitives/Workflow/Workflow.md
+             - Cluster: resources/cluster.md
+             - Secret: resources/secret.md
+             - Service: resources/service.md
+             - Stacks:
+                 - Introduction: resources/stacks.md
+                 - Airbyte: resources/stacks/airbyte.md
+                 - Alpha: resources/stacks/alpha.md
+                 - Beacon: resources/stacks/beacon.md
+                 - Benthos: resources/stacks/benthos.md
+                 - Data Toolbox: resources/stacks/data_toolbox.md
+                 - Flare: resources/stacks/flare.md
+                 - Scanner: resources/stacks/scanner.md
+             - Workflow: resources/workflow.md
+         - Platform-level Primitives:
+             - Compute: resources/compute.md
+             - Depot: resources/depot.md
+             - Policy: resources/policy.md
 
-         - Depot Config Templates: 
-            - Data Sources:
-                - Amazon Redshift: depots/redshift.md
-                - Amazon S3: depots/amazons3.md
-                - Apache Pulsar: depots/pulsar.md
-                - Azur Blob Storage: depots/azureblobfilestorage.md
-                - Azure Data Lake Storage Gen2: depots/windowsazurstorageblob.md
-                - BigQuery: depots/bigquery.md
-                - Elasticsearch: depots/elasticsearch.md
-                - File: depots/file.md
-                - JDBC: depots/jdbc.md
-                - Kafka: depots/kafka.md
-                - Microsoft SQL Server: depots/msqlserver.md
-                - MYSQL: depots/mysql.md
-                - Oracle: depots/oracle.md
-                - PostgreSQL: depots/postgresql.md
-                - Presto: depots/presto.md
-                - Redis: depots/redis.md
-                - Snowflake: depots/snowflake.md
-                
-                
-    - Stacks: 
-        # - Toolbox: docs/stacks/Toolbox.md
-         - Introduction: Stacks/Stacks.md
-         - Scanner: Stacks/Scanner/Scanner.md
-         - Flare: Stacks/Flare/Flare.md
-         - Benthos: Stacks/Benthos/Benthos.md
-         - Beacon: Stacks/Beacon/Beacon.md
-         - Alpha: Stacks/Alpha.md
-         - Airbyte: Stacks/Airbyte/Airbyte.md
-
-         - Scenarios: 
-            - Use Cases: 
-                - Partitioning: flare/partitioning.md
-                - Partition Evolution: flare/partitionevolution.md
-                - Data Replay: flare/datareplay.md
-                - Merging Small Files: flare/compactingfiles.md
-                - Concurrent Writes: flare/concurrent.md
-                - GCP Service Account Permissions: flare/gcpsecretpolicy.md
-                - Query Dataset for Job in Progress:  flare/queryinjobprogress.md
-                - Incremental Data Workload: flare/incremental.md
-                - Reading Stream Data: flare/readingstreamdata.md
-                
-    - Contact:
-         - Introduction: governance/datagovernance.md
-         - Data Profiling: governance/dataprofile.md
-    #     - Metrics and Checks: governance/metricschecks.md
-         - Data Fingerprinting: governance/fingerprinting.md
-         - Assertions: governance/assertions.md
-         - Policies: governance/policies.md
-
-   # - Surge: surge/index.md
-
-   # - Catalog: catalog/index.md
-    - Glossary: 
-         - Tableau: integrations/tableau.md
-         - PowerBI: integrations/powerbi.md
-         - IBM SPSS Statistics: integrations/spss.md
-   # - Workbench: workbench/index.md
-
+    - Interfaces:
+         - Introduction: interfaces.md
+         - CLI:
+             - Introduction: interfaces/cli.md
+             - Installation: interfaces/cli/installation.md
+             - Initialization: interfaces/cli/initialization.md
+             - Command Reference: interfaces/cli/command_reference.md
+         - GUI:
+             - Introduction: interfaces/gui.md
+             - Atlas: interfaces/gui/atlas.md
+             - Audiences: interfaces/gui/audiences.md
+             - Bifrost: interfaces/gui/bifrost.md
+             - Lens: interfaces/gui/lens.md
+             - Metis: interfaces/gui/metis.md
+             - Notebook: interfaces/gui/notebook.md
+             - Operations: interfaces/gui/operations.md
+             - Workbench: interfaces/gui/workbench.md
 
 # to be hidden from the top navigation bar on the webpages
-    - About DataOS:
-         - Introduction: About DataOS/About DataOS.md
-         - Architecture: About DataOS/Layered Architecture/Layered Architecture.md
-         - Philosophy: About DataOS/DataOS Philosophy & Values [WIP].md
-        
+    - Philosophy:
+         - About DataOS: philosophy/about_dataos.md
+         - Architecture: philosophy/architecture.md
+         - Reference: philosophy/reference.md
+
+    - By Role: roles.md
+    
+    - Glossary: glossary.md
