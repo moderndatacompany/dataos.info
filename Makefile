@@ -11,3 +11,5 @@ build:
 	--output site \
 	-t rubiklabs/ddp-website:latest \
 	-f ./Dockerfile . 
+publish:
+	mkdocs gh-deploy --force
