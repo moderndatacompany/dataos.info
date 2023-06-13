@@ -1,3 +1,4 @@
+*.egg-info/*
 node_modules/
 dist/
 site/
@@ -7,7 +8,6 @@ site/
 *.jar
 target/
 dist/
-.cache/
 .idea/
 TEST*.xml
 .DS_Store
