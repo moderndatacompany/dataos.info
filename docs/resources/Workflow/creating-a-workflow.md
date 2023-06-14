@@ -45,7 +45,7 @@ workflow: # Workflow Section
 ```
 Depending on the requirements, choose between a scheduled or single-run workflow.
 
-For more configuration options in the schedule section, refer to the [Workflow YAML Field Reference](./Workflow%20YAML%20Field%20Reference.md).
+For more configuration options in the schedule section, refer to the [Workflow YAML Field Reference](./workflow-yaml-field-reference.md).
 
 ### Configuring the DAG Section
 
@@ -79,4 +79,10 @@ After constructing a Workflow YAML, it's time to apply it and create a Workflow 
 dataos-ctl apply -f <yaml-file-path> -w <workspace>
 ```
 
-Congratulations! You've successfully created a Workflow Resource. Now, you can explore various case-scenarios for a Workflow resource [here](./Workflow%20Use%20Cases.md).
+Congratulations! You've successfully created a Workflow Resource. Now, you can explore various case-scenario for a Workflow resource.
+
+<u>[Implementing Single Run Workflow](./Workflow/single-run-workflow.md)</u>
+
+<u>[Scheduled or Cron Workflow](./Workflow/scheduled-or-cron-workflow.md)</u>
+
+<u>[Executing Multiple Workflow YAMLs from Single One](./Workflow/executing-multiple-workflow-yamls-from-single-one.md)</u>
