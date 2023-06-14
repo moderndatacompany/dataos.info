@@ -103,14 +103,14 @@ nav:
     - Interfaces:
          - Overview: interfaces.md
          - Atlas: interfaces/atlas.md
-         - Audiences: interfaces/gui/audiences.md
-         - Bifrost: interfaces/gui/bifrost.md
+         - Audiences: interfaces/audiences.md
+         - Bifrost: interfaces/bifrost.md
          - CLI: interfaces/cli.md
-         - Lens: interfaces/gui/lens.md
-         - Metis: interfaces/gui/metis.md
-         - Notebook: interfaces/gui/notebook.md
-         - Operations: interfaces/gui/operations.md
-         - Workbench: interfaces/gui/workbench.md        
+         - Lens: interfaces/lens.md
+         - Metis: interfaces/metis.md
+         - Notebook: interfaces/notebook.md
+         - Operations: interfaces/operations.md
+         - Workbench: interfaces/workbench.md        
 
 # to be hidden from the top navigation bar on the webpages
     - Philosophy:
