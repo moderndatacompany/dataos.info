@@ -8,17 +8,17 @@ A job within a workflow defines a sequence of processing tasks in which each job
 
 Each job within a DAG gets executed upon a particular Stack, an extension point within a job that adds new programming paradigms for the user, depending on what they need to do. For instance, if you want to perform data transformation, ingestion, or syndication, go with the Flare stack. DataOS, out-of-the-box, provides you with different stacks, such as Flare, Scanner, Alpha, and many more.
 
-![Diagrammatic representation of a workflow](./Workflow/workflow.svg)
+![Diagrammatic representation of a workflow](./workflow/workflow.svg)
 
 <center><i>Diagrammatic representation of a workflow</i></center>
 
 In the above workflow, `Job 1` runs first, as it has no dependencies. Once `Job 1` has finished, `Job 2` and `Job 3` run in parallel. Finally, once `Job 2` and `Job 3` have been completed, `Job 4` can run as it depends on both `Job 2` and `Job 3`. Finally, once `Job 4` has been completed `Job 5` can run.
 
-The Directed Acyclic Graph may have multiple roots. It implies that the DAG within a workflow can not only have jobs but also workflows themselves stored in different places. This can allow for complex workflows to be split into manageable pieces. To know more about this scenario, click <u><span style="color: blue;">[here.](./Workflow/executing-multiple-workflow-yamls-from-single-one.md)</span></u>
+The Directed Acyclic Graph may have multiple roots. It implies that the DAG within a workflow can not only have jobs but also workflows themselves stored in different places. This can allow for complex workflows to be split into manageable pieces. To know more about this scenario, click <u><span style="color: blue;">[here.](./workflow/executing-multiple-workflow-yamls-from-single-one.md)</span></u>
 
 ## Types of Workflows
 
-Workflows are either single-time run or schedulable. To schedule a workflow, you must add the `schedule` property, under which you define a `cron` and prepare it as a scheduled workflow or a cron workflow. The details related to the cron workflow properties are available in the below table. If you want to check out a case scenario for a cron or scheduled workflow, click <u><span style="color: blue;">[here.](./Workflow/scheduled-or-cron-workflow.md)</span></u>
+Workflows are either single-time run or schedulable. To schedule a workflow, you must add the `schedule` property, under which you define a `cron` and prepare it as a scheduled workflow or a cron workflow. The details related to the cron workflow properties are available in the below table. If you want to check out a case scenario for a cron or scheduled workflow, click <u><span style="color: blue;">[here.](./workflow/scheduled-or-cron-workflow.md)</span></u>
 
 ## Syntax of a workflow
 
@@ -51,7 +51,7 @@ workflow: #(Workflow Section)
 <center> <i>YAML Syntax of a Workflow Resource</i></center>
 
 ## Creating a Workflow
-As you've familiarized yourself with the fundamentals of workflow syntax, it's time to delve deeper into coding, and craft your initial workflow. This section will guide you through each step of this exciting process. To begin your journey, please refer to the following guide by clicking on the link provided <u>[here.](./Workflow/creating-a-workflow.md)</u>
+As you've familiarized yourself with the fundamentals of workflow syntax, it's time to delve deeper into coding, and craft your initial workflow. This section will guide you through each step of this exciting process. To begin your journey, please refer to the following guide by clicking on the link provided <u>[here.](./workflow/creating-a-workflow.md)</u>
 
 ## Workflow YAML Field Reference
 
@@ -81,7 +81,7 @@ The below table summarizes various properties within a Workflow YAML
 
 <i>Optional**:</i> Fields optional for single-run workflows, but Mandatory for Scheduled workflows.
 
-To know more about the various fields, click <u>[here.](./Workflow/workflow-yaml-field-reference.md)</u>
+To know more about the various fields, click <u>[here.](./workflow/workflow-yaml-field-reference.md)</u>
 
 
 <aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
@@ -92,11 +92,11 @@ To know more about the various fields, click <u>[here.](./Workflow/workflow-yaml
 
 ## Case Scenarios
 
-- <u>[Implementing Single Run Workflow](./Workflow/single-run-workflow.md)</u>
+- <u>[Implementing Single Run Workflow](./workflow/single-run-workflow.md)</u>
 
-- <u>[Scheduled or Cron Workflow](./Workflow/scheduled-or-cron-workflow.md)</u>
+- <u>[Scheduled or Cron Workflow](./workflow/scheduled-or-cron-workflow.md)</u>
 
-- <u>[Executing Multiple Workflow YAMLs from a Single One](./Workflow/executing-multiple-workflow-yamls-from-single-one.md)</u>
+- <u>[Executing Multiple Workflow YAMLs from a Single One](./workflow/executing-multiple-workflow-yamls-from-single-one.md)</u>
 
 
 

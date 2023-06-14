@@ -8,7 +8,7 @@ Let’s take a case scenario, where we have to read data from one depot and writ
 
 1. Save the below code snippets into separate YAML files, and store them in the following format
 
-![Untitled](./Executing-Multiple-Workflow-YAMLs-From-Single-One/Untitled.png)
+![Untitled](./executing-multiple-workflow-yamls-from-single-one/untitled.png)
 
 1. Once you do that mention the path (relative or absolute) of the `read-pulsar.yaml` and `write-pulsar.yaml` in the file property of the master file `dag.yaml`. 
 2. Apply the `dag.yaml` command from the CLI.
