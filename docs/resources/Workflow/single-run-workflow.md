@@ -1,6 +1,6 @@
 <center>
 
-![Diagrammatic representation of Single Run Workflow](./Sample_Workflow.svg)
+![Diagrammatic representation of Single Run Workflow](./sample-workflow.svg)
 
 *Diagrammatic representation of Single Run Workflow*
 
