@@ -81,8 +81,8 @@ dataos-ctl apply -f <yaml-file-path> -w <workspace>
 
 Congratulations! You've successfully created a Workflow Resource. Now, you can explore various case-scenario for a Workflow resource.
 
-<u>[Implementing Single Run Workflow](./Workflow/single-run-workflow.md)</u>
+<u>[Implementing Single Run Workflow](./workflow/single-run-workflow.md)</u>
 
-<u>[Scheduled or Cron Workflow](./Workflow/scheduled-or-cron-workflow.md)</u>
+<u>[Scheduled or Cron Workflow](./workflow/scheduled-or-cron-workflow.md)</u>
 
-<u>[Executing Multiple Workflow YAMLs from Single One](./Workflow/executing-multiple-workflow-yamls-from-single-one.md)</u>
+<u>[Executing Multiple Workflow YAMLs from Single One](./workflow/executing-multiple-workflow-yamls-from-single-one.md)</u>

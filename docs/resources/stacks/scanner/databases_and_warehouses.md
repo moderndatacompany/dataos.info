@@ -1,0 +1,21 @@
+# Databases and Warehouses
+
+This is a list of supported data sources from which metadata can be extracted. 
+
+## Databases
+
+[MariaDB](Databases_and_Warehouses_1dfa89a110a04bbbaf29e508bd10aee6/MariaDB_367a5ed02e514c26ba3cdb5f6c21aa54.md)
+
+[PostgreSQL](Databases_and_Warehouses_1dfa89a110a04bbbaf29e508bd10aee6/PostgreSQL_b045d5bb39df4a6199749f57d27c5ada.md)
+
+## Data Warehouses
+
+[BigQuery](Databases_and_Warehouses_1dfa89a110a04bbbaf29e508bd10aee6/BigQuery_aeeb14ee289a4b3dab1d252921beaee1.md)
+
+[Redshift](Databases_and_Warehouses_1dfa89a110a04bbbaf29e508bd10aee6/Redshift_2930256d738f4ab6a6ab3995428420eb.md)
+
+[Snowflake](Databases_and_Warehouses_1dfa89a110a04bbbaf29e508bd10aee6/Snowflake_1e32248a9e954443ac62e41b2a1a1865.md)
+
+## Lakehouse
+
+[Icebase](Databases_and_Warehouses_1dfa89a110a04bbbaf29e508bd10aee6/Icebase_b1a0e981ee124ee49b37225ee33ea7c6.md)
