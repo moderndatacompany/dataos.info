@@ -170,11 +170,7 @@ The below table summarizes various properties within a Scanner workflow YAML.
     - `includes`: Explicitly exclude tables by adding an array of regular expressions to the `excludes` property in the Scanner YAML. The Scanner workflow will exclude any tables whose names match one or more of the provided regular expressions. All other tables will be included.
         
         
-        > Filter patterns support Regex in `includes` and `excludes` expressions. Refer to [Filter Pattern Examples](Creating_Scanner_Workflows/Filter_Pattern_Examples.md)  page for the examples.
-        
-        
-        
-        [Filter Pattern Examples](Creating_Scanner_Workflows/Filter_Pattern_Examples.md)
+        > Filter patterns support Regex in `includes` and `excludes` expressions. Refer to [Filter Pattern Examples](creating_scanner_workflows/filter_pattern_examples.md)  page for the example scenarios.
         
     
     `markDeletedTables`: Set the Mark Deleted Tables property to true to flag tables as soft-deleted if they are not present anymore in the source system. 

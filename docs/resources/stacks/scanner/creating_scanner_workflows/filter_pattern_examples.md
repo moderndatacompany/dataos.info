@@ -2,14 +2,22 @@
 
 We have the ability to exercise control over metadata scanning by utilizing filters. The scanner stack offers a range of filter patterns, including the **`Database Filter Pattern`**, **`Schema Filter Pattern`**, and **`Table Filter Pattern`** for data sources such as databases and data warehouses. Likewise, in the context of messaging pipelines, you can employ the **`topic filter pattern`**.
 
-## Configuring Filters in Scanner YAML
+## Filter patterns
 
- It's important to note that filters exclusively support regular expressions. This document will guide you through the use of different filter types by providing suitable regex patterns based on the given situation. Metadata filters can be configured in Scanner YAML under the `sourceConfig` section.
+- **`databaseFilterPattern`**: Use this pattern to filter databases at the highest level. Specify the databases you want to include or exclude based on certain criteria. This filtering step will narrow down the scope of the subsequent filtering operations.
 
-<aside>
-🗣 Note that the filter supports regex as `includes` **or** `excludes`. When you specify a pattern in the `includes` section, the Scanner will evaluate which entities match the pattern and include them in the metadata scanning and entities that do not match the pattern will be automatically excluded. The same principle applies to the excludes section, where the Scanner excludes entities that match the specified pattern, while automatically including the rest.
+- **`schemaFilterPattern`**: Apply this pattern to filter schemas within the selected databases from the previous step. It allows you to include or exclude specific schemas based on your requirements. This filtering further refines the scope for the final step.
+
+- **`tableFilterPattern`**: Finally, utilize this pattern to filter tables within the selected schemas. Specify the tables you want to include or exclude based on your criteria. This filtering step operates on the remaining schemas after applying the previous two filters.
+
+<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+🗣 By combining all three filters, you can achieve a hierarchical filtering approach that successively narrows down the scope of the metadata scanning in the Scanner workflow. This ensures that only the desired databases, schemas, and tables are included in the workflow based on your specified criteria. If you do not explicitly specify any of these filters then all available entities are scanned.
 
 </aside>
+
+## Configure Filters in Scanner YAML
+
+ It's important to note that filters exclusively support regular expressions. This document will guide you through the use of different filter types by providing suitable regex patterns based on the given situation. Metadata filters can be configured in Scanner YAML under the `sourceConfig` section.
 
 ```yaml
 sourceConfig:
@@ -37,16 +45,11 @@ sourceConfig:
         - table4
 ```
 
-It is important to note that the filtering process follows a top-down hierarchy, where the database filter is applied first, followed by the schema filter, and finally the table filter. This order ensures that the filtering operations are performed in a logical and efficient manner, reducing unnecessary processing.
-
-1. **`databaseFilterPattern`**: Use this pattern to filter databases at the highest level. Specify the databases you want to include or exclude based on certain criteria. This filtering step will narrow down the scope of the subsequent filtering operations.
-2. **`schemaFilterPattern`**: Apply this pattern to filter schemas within the selected databases from the previous step. It allows you to include or exclude specific schemas based on your requirements. This filtering further refines the scope for the final step.
-3. **`tableFilterPattern`**: Finally, utilize this pattern to filter tables within the selected schemas. Specify the tables you want to include or exclude based on your criteria. This filtering step operates on the remaining schemas after applying the previous two filters.
-
-<aside>
-🗣 By combining all three filters, you can achieve a hierarchical filtering approach that successively narrows down the scope of the metadata scanning in the Scanner workflow. This ensures that only the desired databases, schemas, and tables are included in the workflow based on your specified criteria. If you do not explicitly specify any of these filters then all available entities are scanned.
+<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+🗣 Note that the filter supports regex as `includes` OR `excludes`. When you specify a pattern in the `includes` section, the Scanner will evaluate which entities match the pattern and include them in the metadata scanning and entities that do not match the pattern will be automatically excluded. The same principle applies to the excludes section, where the Scanner excludes entities that match the specified pattern, while automatically including the rest.
 
 </aside>
+
 
 ## Example Scenarios
 
@@ -69,7 +72,7 @@ Let us consider a scenario where we aim to ingest metadata from a Snowflake inst
 └─── RETAIL_DB # DB Name
 ```
 
-### Database Filters
+### **Database Filters**
 
 Use `databaseFilterPattern` to determine which databases to include/exclude during metadata ingestion.
 
@@ -122,7 +125,7 @@ sourceConfig:
         - .*DB$
 ```
 
-### Schema Filters
+### **Schema Filters**
 
 Schema filter patterns determine which schemas to include/exclude during metadata ingestion. These are just examples of schemas that could exist in a Snowflake instance, taken for demonstration purpose. The actual schemas and table names may vary based on your specific use case and requirements.
 
@@ -164,7 +167,7 @@ sourceConfig:
         - public
 ```
 
-<aside>
+<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
 🗣 When you mention name in the filter pattern, Scanner workflow will automatically convert the name to the filter pattern considering it as a prefix so the created regex will be `^public.*`
 
 </aside>
@@ -207,7 +210,7 @@ sourceConfig:
         - ^TPCH_SF1$
 ```
 
-### Table Filter pattern
+### **Table Filter pattern**
 
 Use `tableFilterPattern` to determine which tables to include/exclude during metadata ingestion.
 
