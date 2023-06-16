@@ -2,7 +2,7 @@
 
 The Notion Export Path Converter is a Python script that helps you process and convert the paths of Notion's exported files and folders. This script performs various operations, such as unzipping the export file, renaming folders, markdown files, images, and CSV files to a standardized format.
 
-What it can [x] do presently?
+What it can - [x] do presently?
 
 - File Path Formatting (Lowercasing, Removing Notion ID, Space Underscore replacement)
     - [x] Markdown Files
