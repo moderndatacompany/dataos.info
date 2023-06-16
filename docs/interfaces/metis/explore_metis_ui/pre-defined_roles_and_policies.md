@@ -8,6 +8,7 @@ Once the Metis admin creates these roles and policies, roles can be assigned to 
 
 To provide admin access for Metis to a user, grant the `authorize-metis-root-access` ****use case to the user.
 
+In metis, a user must have `Admin` role to configure roles and policies for performing metadata operation. A dataOS user having `operator` tag has complete access to Metis. He is 'Admin' of Metis by default.On Metis UI, Admin can assign 'Admin' role to other users to allow them to configure roles and policies.
 Users other than Admin can also create roles and policies in Metis ****if they have specific use case permissions that allow them to create roles and policies.
 
 <aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
@@ -19,7 +20,7 @@ Users other than Admin can also create roles and policies in Metis ****if they h
 
 There is a direct 1-to-1 mapping between roles and policies, within further bifurcation in rules.
 
-### Roles
+### **Roles**
 
 | Persona | Description |
 | --- | --- |
@@ -29,7 +30,7 @@ There is a direct 1-to-1 mapping between roles and policies, within further bifu
 | Data Owner | Data Owners are individuals who create a dataset or onboard a dataset. This role is intended for developers who want to manage workflows, pipelines, and data sources. They will also be responsible for managing metadata and ensuring the permissions and quality of their dataset.  |
 | Data Consumer | These are data Consumers accessing data through a variety of tools to complete their day-to-day tasks. For instance, they can be a data analyst responsible for managing and supporting the data and analytical needs of their team.  |
 
-### Policies
+### **Policies**
 
 | Policy | Rules | Permission |
 | --- | --- | --- |

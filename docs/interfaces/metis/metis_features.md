@@ -8,7 +8,7 @@ This feature enables you to view a summary of data change events whenever your d
 
 ![Keeping track of activities for your data assets ](metis_features/activity_feed.png)
 
-Keeping track of activities for your data assets 
+<figcaption align = "center">Keeping track of activities for your data assets </figcaption>
 
 With activity feeds, you can easily accomplish the following:
 
@@ -65,7 +65,7 @@ Once you add a category for your glossary as per the business requirement, you c
 
 ![Adding business terms to your dataset](metis_features/add_glossary.png)
 
-Adding business terms to your dataset
+<figcaption align = "center">Adding business terms to your dataset</figcaption>
 
 To learn more about how to create a Glossary, navigate to the link below.
 
@@ -77,7 +77,7 @@ Metis keeps rich metadata for the entities, about their structures, descriptions
 
 ![Deleted data on Metis UI](metis_features/deleted_entity.png)
 
-Deleted data on Metis UI
+<figcaption align = "center">Deleted data on Metis UI</figcaption>
 
 ## Lineage Information
 
@@ -87,9 +87,9 @@ Quickly understand the end-to-end journey of data by tracing lineage across data
 
 Metis allows you to integrate with tools such as Slack, Webhook, Microsoft Teams, etc., that receive all the data changes happening in your organization through APIs. This will generate organization-specific notifications when a change is made to data assets. For example, send an email to the governance team when a "PII" tag is added to any data asset, or you find a change in the schema which can impact other datasets.
 
-![Configuring Webhook for event-driven notification](metis_features/notification.png)
+![Configuring Webhook for event-driven notification](metis_features/notifications.png)
 
-Configuring Webhook for event-driven notification
+<figcaption align = "center">Configuring Webhook for event-driven notification</figcaption>
 
 ## Roles and Policies
 
@@ -113,4 +113,4 @@ This feature records the changes in metadata. Metis maintains the version histor
 
 ![Tracking changes in metadata](metis_features/versioning.png)
 
-Tracking changes in metadata
+<figcaption align = "center">Tracking changes in metadata</figcaption>

@@ -8,7 +8,7 @@ Metis UI homepage displays all the activities around your data assets. You can n
 
 ![Metis UI - landing page](explore_metis_ui/home_page.png)
 
-Metis UI - landing page
+<figcaption align = "center">Metis UI - landing page</figcaption>
 
 This document will cover the essential details about the Metis UI and tutorials on how to perform various functionalities, such as adding a glossary, starting conversations for collaboration, and many more.
 
@@ -24,13 +24,13 @@ Here are some scenarios where using these terms can be powerful:
 - Labeling a data asset with sensitivity information (PII, Highly sensitive, etc.)- Tag Category
 - Applying Gold/Silver/Bronze data-tier labels based on centrally defined standards- Tag Tier
 
-### How to Define Tag Categories
+### **How to Define Tag Categories**
 
 1. On Metis UI, click on the Tags tab. You will see the following.
     
     ![Adding tag category](explore_metis_ui/tag_cat.png)
     
-    Adding tag category
+    <figcaption align = "center">Adding tag category</figcaption>
     
 2. Clicking on the + Add Tag will open up the screen to add a new tag category and its description. 
     
@@ -43,14 +43,14 @@ Here are some scenarios where using these terms can be powerful:
 
 </aside>
 
-### How to Create a Glossary of Terms
+### **How to Create a Glossary of Terms**
 
 1. On Metis UI, navigate to the **Glossary** Tab.
 2. Clicking on + Add Glossary will open up the following form:
 
 ![Adding glossary](explore_metis_ui/add_glossary.png)
 
-Adding glossary
+<figcaption align = "center">Adding glossary</figcaption>
 
 1. Add reviewers and save it. Your glossary will appear on the left pane.
 2. To create a glossary term, select the newly added glossary on the left pane, and then select the **Add term** button on the page.
@@ -58,7 +58,7 @@ Adding glossary
     
     ![Adding references and synonyms for the glossary term ](explore_metis_ui/glossary.png)
     
-    Adding references and synonyms for the glossary term 
+    <figcaption align = "center">Adding references and synonyms for the glossary term </figcaption>
     
     <aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
 🗣 Metis enables you to add rich formatting to glossary term. For example, you can add `bold`, `underline`, or `italic` formatting to the text. You can also create tables, bulleted lists, or hyperlinks to external resources.
@@ -72,25 +72,25 @@ Adding glossary
 
 </aside>
 
-### How to Add Tags to Data Assets
+### **How to Add Tags to Data Assets**
 
 On the data asset information page, click on the highlighted Edit icon. Choose a tag from a list of tags defined in Metis for various categories.
 
 ![Adding tags to data asset](explore_metis_ui/add_tags.png)
 
-Adding tags to data asset
+<figcaption align = "center">Adding tags to data asset</figcaption>
 
-### How to Add Tag Tiers
+### **How to Add Tag Tiers**
 
 On the data asset information page, click on the edit icon next to the Tag Tier.
 
 ![Edit tag tier](explore_metis_ui/add_tier.png)
 
-Edit tag tier
+<figcaption align = "center">Edit tag tier</figcaption>
 
 ## How to Collaborate with Team Members
 
-### Start Conversations
+### **Start Conversations**
 
 You can collaborate with your team by starting conversation threads and asking for dataset descriptions or tags for an entity by clicking the chat icon. Metis enables you to easily ask any questions that you might have about a data asset.
 
@@ -100,7 +100,7 @@ You can create and reply to entire conversation threads around various activitie
     
     ![Conversations around data asset](explore_metis_ui/conversations.png)
     
-    Conversations around data asset
+    <figcaption align = "center">Conversations around data asset</figcaption>
     
 2. Clicking on the **+** sign will open the editor for the new conversation.
     
@@ -113,10 +113,10 @@ You can create and reply to entire conversation threads around various activitie
     
     ![Conversation thread on the column](explore_metis_ui/conversations_column.png)
     
-    Conversation thread on the column
+   <figcaption align = "center"> Conversation thread on the column</figcaption>
     
 
-### Create Announcements
+### **Create Announcements**
 
 This feature helps in informing the entire team (or other users) about the changes to the data, such as deprecation, deletion, or schema changes, so that other team members are prepared to handle the impact. 
 
@@ -124,18 +124,18 @@ These announcements can be scheduled with a start date and an end date. All the 
 
 1. On the data asset information page, click on the vertical three dots menu to get the option to add an announcement for the asset.
 
-![Creating announcements to inform team members about data asset updates](explore_metis_ui/announcement.png)
+![Creating announcements about data asset updates](explore_metis_ui/announcement.png)
 
-Creating announcements to inform team members about data asset updates
+<figcaption align = "center">Creating announcements about data asset updates</figcaption>
 
 1. Clicking on the Add Announcements button will open the dialog box to enter the details.
 2. On Metis UI, under ‘All Activity’, users can view the announcements. Users can add reactions using emojis and reply to the announcement.
 
 ![Announcements in user’s activity](explore_metis_ui/announcement_created.png)
 
-Announcements in user’s activity
+<figcaption align = "center">Announcements in user’s activity</figcaption>
 
-### Create Tasks for Team Members
+### **Create Tasks for Team Members**
 
 You can create tasks for requesting updates on data assets, such as creating tags or updating the description of a data asset and assigning the task to an appropriate user or team.
 
@@ -143,7 +143,7 @@ You can create tasks for requesting updates on data assets, such as creating tag
     
     ![Create task option](explore_metis_ui/create_task.png)
     
-    Create task option
+    <figcaption align = "center">Create task option</figcaption>
     
 2. Create the task and provide the description for it. You also need to assign team members by adding @ symbol. This task will appear in Activities for the assignee.
 
@@ -151,7 +151,8 @@ You can create tasks for requesting updates on data assets, such as creating tag
 
 On the data asset information page, click on the edit icon next to **No Owner.** You can add the team or individual person as an owner of the data asset.
 
-![Screen Shot 2022-12-30 at 5.51.04 pm (1).png](explore_metis_ui/add_owner.png)
+![Add owner](explore_metis_ui/add_owner.png)
+<figcaption align = "center">manage ownership </figcaption>
 
 ## How to create Roles and Policies
 
@@ -172,13 +173,13 @@ Roles can be assigned from the user profile on Metis UI.
     
     ![Metis settings page](explore_metis_ui/users.png)
     
-    Metis settings page
+    <figcaption align = "center">Metis settings page
     
 2. Clicking on the **Users** in the left pane will show the list of users. Click on the user name to open the user profile. In the left pane, edit the roles given to the user. Click on the edit icon, and a drop-down list will show the configured roles to choose from.
 
 ![Adding roles to the user](explore_metis_ui/configure_roles.png)
 
-Adding roles to the user
+<figcaption align = "center">Adding roles to the user</figcaption>
 
 <aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
 🗣 Metis Admin role can be given from the Metis UI by a user with ‘Admin’ privileges. 
@@ -210,25 +211,25 @@ On the data asset information page, you will see the following fingerprinting da
 
 ![Automatically identified columns](explore_metis_ui/fp.png)
 
-Automatically identified columns
+Automatically identified columns</figcaption>
 
 ## How to Visualize Data Quality Tests
 
 You can view the list of quality tests (assertions)created for the columns of your dataset to monitor the data quality and trends charts for each run. The trend charts also show whether the checks are passed or failed.
 
-### Test Suite View
+### **Test Suite View**
 
 1. On the Metis UI page, navigate to the **Settings** tab. Click on **Test Suits** in the left pane to get the  list of test suits.
 ![Test suits ](explore_metis_ui/testsuits.png)
-Test suits 
+<figcaption align = "center">Test suits </figcaption>
 2. Select the test suit for which you want to see quality test results. The list shows the latest test run results for all the datasets and their columns. 
 3. Expand to see all the test results for a dataset column for the particular time period.
 
 ![Test results for the dataset for selected time period](explore_metis_ui/quality_details.png)
 
-Test results for the dataset for selected time period
+<figcaption align = "center">Test results for the dataset for selected time period</figcaption>
 
-### Dataset View
+### **Dataset View**
 
 1. Search the dataset for which you want to view quality tests result.
 2. On the data asset information page, click on the **Profiler & Data Quality** tab.    
