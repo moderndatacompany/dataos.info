@@ -4,9 +4,9 @@ Welcome to the Workflow Creation Guide. This section provides a step-by-step pro
 
 ## Structure of a Workflow YAML File
 
-### Configuring the Resource Section
+### **Configuring the Resource Properties**
 
-A Workflow is a type of resource in DataOS. The first step in building a Workflow involves setting up the Resource Section. Below is the YAML configuration for the Resource Section:
+A Workflow is a type of resource in DataOS. The first step in building a Workflow involves setting up the Resource Section. Below is the YAML configuration for the Resource Properties:
 ```yaml
 name: my-workflow # Resource (or Workflow) Name
 version: v1 # Resource Manifest-Version
@@ -18,13 +18,13 @@ tags: # Resource Tags
 description: This is a sample workflow YAML configuration # Resource Description
 owner: iamgroot # Resource (or Workflow) Owner
 ```
-For further customization options of the fields within the Resource Section, refer to the RESOURCE SECTION LINK.
+For further customization options of the fields within the Resource Section, refer to the [Resource Properties](../../resources.md).
 
-### Configuring the Workflow Section
+### **Configuring the Workflow Section**
 
 The Workflow Section holds configurations exclusive to the Workflow resource. In DataOS, you can implement two types of workflows: single-run and scheduled workflows, which differ in their YAML syntax.
 
-#### Scheduled Workflow
+#### **Scheduled Workflow**
 
 A Scheduled Workflow triggers a series of jobs or tasks at particular intervals or predetermined times. To construct a scheduled workflow, specify the scheduling configurations in the schedule section, as illustrated below:
 ```yaml
@@ -35,7 +35,7 @@ workflow: # Workflow Section
         {collection-of-jobs}
 ```
 
-#### Single-Run Workflow
+#### **Single-Run Workflow**
 
 A Single-run workflow only executes once. A Workflow without a schedule section is a single-run workflow. Below is the YAML syntax for the same:
 ```yaml
@@ -45,13 +45,13 @@ workflow: # Workflow Section
 ```
 Depending on the requirements, choose between a scheduled or single-run workflow.
 
-For more configuration options in the schedule section, refer to the [Workflow YAML Field Reference](./workflow-yaml-field-reference.md).
+For more configuration options in the schedule section, refer to the [Workflow YAML Field Reference](./workflow_yaml_field_reference.md).
 
-### Configuring the DAG Section
+### **Configuring the DAG Section**
 
 A DAG, or Directed Acyclic Graph, depicts the sequence and dependencies between various jobs. A DAG must contain at least one job.
 
-#### Job 
+#### **Job**
 
 A Job is a single processing task. A DAG may include multiple jobs linked in series or parallel to achieve a specific result. The YAML syntax for a job is as follows:
 ```yaml
@@ -81,8 +81,8 @@ dataos-ctl apply -f <yaml-file-path> -w <workspace>
 
 Congratulations! You've successfully created a Workflow Resource. Now, you can explore various case-scenario for a Workflow resource.
 
-<u>[Implementing Single Run Workflow](./workflow/single-run-workflow.md)</u>
+[Implementing Single Run Workflow](./single_run_workflow.md)
 
-<u>[Scheduled or Cron Workflow](./workflow/scheduled-or-cron-workflow.md)</u>
+[Scheduled or Cron Workflow](./scheduled_or_cron_workflow.md)
 
-<u>[Executing Multiple Workflow YAMLs from Single One](./workflow/executing-multiple-workflow-yamls-from-single-one.md)</u>
+[Executing Multiple Workflow YAMLs from Single One](./executing_multiple_workflow_yamls_from_single_one.md)

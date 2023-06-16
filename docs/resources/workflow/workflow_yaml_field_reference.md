@@ -29,7 +29,7 @@ workflow: #(Mandatory)
 
 ## Configuration Fields
 
-### `workflow`
+### **`workflow`**
 <b>Description:</b> Workflow Section <br>
 <b>Data Type:</b> Object <br>
 <b>Requirement:</b> Mandatory <br>
@@ -44,7 +44,7 @@ workflow: # Workflow Section
     {} # Collection of Jobs
 ```
 
-### `schedule`
+### **`schedule`**
 <b>Description:</b> Schedule Section <br>
 <b>Data Type:</b> Object <br>
 <b>Requirement:</b> Optional (Mandatory for Scheduled Workflows) <br>
@@ -57,7 +57,7 @@ schedule: # Schedule Section
   concurrencyPolicy: Forbid # Concurrency Policy
 ```
 
-### `cron`
+### **`cron`**
 <b>Description:</b> The cron field encompasses the cron expression, a string that comprises six or seven sub-expressions providing specific details of the schedule. <br>
 <b>Data Type:</b> String <br>
 <b>Requirement:</b> Optional (Mandatory for Scheduled Workflows) <br>
@@ -69,7 +69,7 @@ schedule: # Schedule Section
 cron: '*/10 * * * *' # Cron Expression
 ```
 
-### `concurrencyPolicy`
+### **`concurrencyPolicy`**
 <b>Description:</b> The concurrencyPolicy field determines how concurrent executions of a workflow, created by a cron workflow, are handled<br>
 <b>Data Type:</b> String <br>
 <b>Requirement:</b> Optional <br>
@@ -85,7 +85,7 @@ cron: '*/10 * * * *' # Cron Expression
 concurrencyPolicy: Replace # Concurrency Policy
 ```
 
-### `startOn`
+### **`startOn`**
 <b>Description:</b> Specifies start time of a schedule in ISO 8601 format.<br>
 <b>Data Type:</b> String <br>
 <b>Requirement:</b> Optional <br>
@@ -96,7 +96,7 @@ concurrencyPolicy: Replace # Concurrency Policy
 startOn: 2022-01-01T23:30:45Z # Start time of Scheduled Workflow Run
 ```
 
-### `endOn`
+### **`endOn`**
 <b>Description:</b> endOn terminates the scheduled workflow run at the specified time, even if the last workflow run isn’t complete <br>
 <b>Data Type:</b> String <br>
 <b>Requirement:</b> Optional <br>
@@ -107,7 +107,7 @@ startOn: 2022-01-01T23:30:45Z # Start time of Scheduled Workflow Run
 endOn: 2022-01-01T23:30:45Z # End time of Scheduled Workflow Run
 ```
 
-### `completeOn`
+### **`completeOn`**
 <b>Description:</b> completeOn signifies successful completion. completeOn will let the last workflow run if it was triggered before the specified time <br>
 <b>Data Type:</b> String <br>
 <b>Requirement:</b> Optional <br>
@@ -118,7 +118,7 @@ endOn: 2022-01-01T23:30:45Z # End time of Scheduled Workflow Run
 completeOn: 2022-01-01T23:30:45Z # Completion time of Scheduled Workflow Run
 ```
 
-### `title`
+### **`title`**
 <b>Description:</b> Title of Workflow <br>
 <b>Data Type:</b> String <br>
 <b>Requirement:</b> Optional <br>
@@ -129,7 +129,7 @@ completeOn: 2022-01-01T23:30:45Z # Completion time of Scheduled Workflow Run
 title: Quality Assessment Workflow # Title of the Workflow
 ```
 
-### `dag`
+### **`dag`**
 <b>Description:</b> DAG is a Directed Acyclic Graph, a conceptual representation of a sequence of jobs (or activities). These jobs in a DAG are executed in the order of dependencies between them <br>
 <b>Data Type:</b> Object <br>
 <b>Requirement:</b> Mandatory <br>
@@ -147,7 +147,7 @@ title: Quality Assessment Workflow # Title of the Workflow
           {} # Flare Stack specific configurations
 ```
 
-### `name`
+### **`name`**
 <b>Description:</b> Name of the Job <br>
 <b>Data Type:</b> String <br>
 <b>Requirement:</b> Mandatory <br>
@@ -158,7 +158,7 @@ title: Quality Assessment Workflow # Title of the Workflow
 name: flare-ingestion-job # Name of the Job
 ```
 
-### `title`
+### **`title`**
 <b>Description:</b> Title of Job <br>
 <b>Data Type:</b> String <br>
 <b>Requirement:</b> Optional <br>
@@ -169,7 +169,7 @@ name: flare-ingestion-job # Name of the Job
 title: Profiling Job # Title of the Job
 ```
 
-### `description`
+### **`description`**
 <b>Description:</b> Text describing the Job <br>
 <b>Data Type:</b> String <br>
 <b>Requirement:</b> Optional <br>
@@ -180,7 +180,7 @@ title: Profiling Job # Title of the Job
 description: The job ingests customer data # Job Description
 ```
 
-### `spec`
+### **`spec`**
 <b>Description:</b> Specs of the Job <br>
 <b>Data Type:</b> Object <br>
 <b>Requirement:</b> Mandatory <br>
@@ -195,7 +195,7 @@ spec: # Specs of the Job
     {} # Flare Stack specific configurations
 ```
 
-### `runAsUser`
+### **`runAsUser`**
 <b>Description:</b> When the "runAsUser" field is configured with the UserID of the use-case assignee, it grants the authority to perform operations on behalf of that user. <br>
 <b>Data Type:</b> String <br>
 <b>Requirement:</b> Optional <br>
@@ -206,7 +206,7 @@ spec: # Specs of the Job
 runAsUser: iamgroot # Run as User Iamgroot
 ```
 
-### `compute`
+### **`compute`**
 <b>Description:</b> A Compute resource provides processing power for the job.  <br>
 <b>Data Type:</b> String <br>
 <b>Requirement:</b> Mandatory <br>
@@ -216,7 +216,7 @@ runAsUser: iamgroot # Run as User Iamgroot
 compute: runnable-default # Compute Resource
 ```
 
-### `stack`
+### **`stack`**
 <b>Description:</b> A Stack is a Resource that serves as a secondary extension point, enhancing the capabilities of a Workflow Resource by introducing additional programming paradigms.  <br>
 <b>Data Type:</b> String <br>
 <b>Requirement:</b> Mandatory <br>
@@ -228,7 +228,7 @@ compute: runnable-default # Compute Resource
 stack: alpha # Stack Resource
 ```
 
-### `retry`
+### **`retry`**
 <b>Description:</b> Retrying failed jobs  <br>
 <b>Data Type:</b> object <br>
 <b>Requirement:</b> Optional <br>
@@ -241,7 +241,7 @@ retry: # Retry Section
   strategy: "OnFailure" # Strategy
 ```
 
-### `count`
+### **`count`**
 <b>Description:</b> Count post which retry occurs  <br>
 <b>Data Type:</b> Integer <br>
 <b>Requirement:</b> Optional <br>
@@ -252,7 +252,7 @@ retry: # Retry Section
 count: 2 # Retry after counts
 ```
 
-### `strategy`
+### **`strategy`**
 <b>Description:</b> Strategies to choose which job failures to retry  <br>
 <b>Data Type:</b> String <br>
 <b>Requirement:</b> Optional <br>
