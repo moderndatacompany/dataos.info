@@ -2,14 +2,13 @@
 
 Metis supports defining roles and policies for metadata operations. A user can be assigned roles. The policies define the set of permissions in the form of rules about what users can do with metadata, for example, whether users can only view metadata or update tags, add descriptions to data assets, change owners, or create a glossary.
 
-Once the Metis admin creates these roles and policies, roles can be assigned to users on Metis UI.
+In metis, a user must have `Admin` role to configure roles and policies for performing metadata operation. Once the Metis admin creates these roles and policies, roles can be assigned to users on Metis UI.
 
 ## Getting Admin Role
 
-To provide admin access for Metis to a user, grant the `authorize-metis-root-access` ****use case to the user.
+A DataOS user  with the `roles:id:operator` tag are designated as dataOS operators. These operators possess full access privileges within the Metis component and are automatically assigned the 'Admin' role. 
 
-In metis, a user must have `Admin` role to configure roles and policies for performing metadata operation. A dataOS user having `operator` tag has complete access to Metis. He is 'Admin' of Metis by default.On Metis UI, Admin can assign 'Admin' role to other users to allow them to configure roles and policies.
-Users other than Admin can also create roles and policies in Metis ****if they have specific use case permissions that allow them to create roles and policies.
+Within the Metis user interface (UI), users holding the 'Admin' role enjoy additional privileges, including the ability to assign the `Admin` role to other users. It's important to note that these users being assigned the `Admin` role may not necessarily possess the `roles:id:operator` tag. By granting the 'Admin' role to other users, they are empowered with the capability to create roles and policies within Metis.
 
 <aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
 🗣 To obtain the required use case and Metis admin role, please contact the DataOS system administrator.
