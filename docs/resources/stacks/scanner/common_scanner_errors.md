@@ -8,7 +8,7 @@ Sometimes a user might get an ERROR 403 (Example Below) while running the Scanne
 
 ![error1.png](common_scanner_errors/error1.png)
 
-### Suggested Solution
+### **Suggested Solution**
 
 To overcome this issue, we need to run the job as Metis user  `runAsUser: metis`
 
@@ -36,7 +36,7 @@ psycopg2.OperationalError: connection to server at "mebash.postgres.database.azu
 connection to server at "mebash.postgres.database.azure.com" (20.81.106.165), port 5432 failed: FATAL:  no pg_hba.conf entry for host "20.219.178.198", user "ashish", database "postgres", no encryption
 ```
 
-### Suggested Solution
+### **Suggested Solution**
 
 The user needs to have both `CONNECT` and `SELECT`  privileges on the database. These privileges allow the user to establish a connection to the database and retrieve the necessary metadata from tables, views, or other database objects.
 
@@ -63,7 +63,7 @@ You may get the following error for value is not a valid enumeration member or e
 
 ![error3.png](common_scanner_errors/error3.png)
 
-### Suggested Solution
+### **Suggested Solution**
 
 Check the `scanner` section of your YAML file. You have mistyped the property name or mentioned a property that does not exist. For example, if you enter `service` for the property `source`, you will get this error. Similarly, if you type depo instead of  `depot`, your Scanner workflow will not run and throw this error.
 
@@ -73,7 +73,7 @@ In case of Snowflake, you may get the following error while scanning data for wa
 
 ![error4.png](common_scanner_errors/error4.png)
 
-### Suggested Solution
+### **Suggested Solution**
 
 If you encounter the error mentioned above, it indicates that the Snowflake depot is configured with a database name instead of a warehouse name. To resolve this issue and enable the scanning of metadata, you should reach out to the DataOS administrator. They will need to make the necessary changes in the Depot configuration YAML file by specifying the correct warehouse name.
 
@@ -84,4 +84,3 @@ You will encounter this error when you try to scan unstructured data stored in F
 ![error5.png](common_scanner_errors/error5.png)
 
 > **Note:** At present, scanning the metadata of File Systems/Blob storage(Unstructured data) is not supported.
->

@@ -13,10 +13,12 @@ You can scan metadata details such as schemas, tables, view details, etc., from 
 
 DataOS allows you to connect to a database with JDBC driver to read data from tables using Depot. You can also scan metadata from an SNOWFLAKE-type depot with Scanner workflows.The Depot enables access to all schemas visible to the specified user in the configured database, SNOWFLAKE. 
 
-<aside>
+<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
 🗣 Ensure that the depot is created for your SNOWFLAKE database and you have `Read` access for the depot.
 
 </aside>
+
+**Depot Scan Workflow YAML**
 
 You can apply database, schema, and table filter patterns while scanning metadata.
 
@@ -55,12 +57,12 @@ workflow:
 
 The non-depot Scanner workflow will help you connect with SNOWFLAKE to extract metadata details. You need to provide source connection details and configuration settings, such as metadata type and filter patterns, to include/exclude assets for metadata scanning. 
 
-### Scanner Configuration **Properties**
+### **Scanner Configuration Properties**
 
 - **Type**: This is source to be scanned; `snowflake`
 - **Source**: Provide source name where the scanned metadata is saved within Metastore. Under the given source name, you can see the information about all the entities scanned for your data source; `MySnowflakeSource`
 
-### Source **Connection Properties**
+### **Source Connection Properties**
 
 - **Username**: Specify the User to connect to Snowflake. It should have enough privileges to read all the metadata.
 - **Password**: Password to connect to Snowflake.
@@ -77,7 +79,7 @@ The non-depot Scanner workflow will help you connect with SNOWFLAKE to extract m
     - In case you are using Single-Sign-On (SSO) for authentication, add the `authenticator` details in the Connection Arguments as a Key-Value pair as follows: `"authenticator" : "sso_login_url"`
     - In case you authenticate with SSO using an external browser popup, then add the `authenticator` details in the Connection Arguments as a Key-Value pair as follows: `"authenticator" : "externalbrowser"`
 
-### Non-Depot Scan Workflow YAML
+**Depot Scan Workflow YAML**
 
 In this example, sample source connections and configuration settings are provided.
 
@@ -122,4 +124,3 @@ workflow:
 ```
 
 > After the successful workflow run, you can check the metadata of scanned Tables on Metis UI.
->

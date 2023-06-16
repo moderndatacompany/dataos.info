@@ -12,7 +12,7 @@ Data profile Scanner workflow reads about these statistics (metadata extraction 
 
 The YAML configuration will connect to the Icebase depot and scan the data profile-related information.
 
-### YAML Configuration
+### **YAML Configuration**
 
 Here is the complete YAML for scanning the metadata related to data profiling. 
 

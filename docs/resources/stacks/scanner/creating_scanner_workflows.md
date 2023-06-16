@@ -210,7 +210,7 @@ The below table summarizes various properties within a Scanner workflow YAML.
         includeViews: true
     ```
     
-    ### Sample Depot Scan YAML File
+    ### **Sample Depot Scan YAML File**
     
     Here is an example of YAML configuration to connect to the source through depot to extract entity metadata. The scanned metadata will be saved in Metis DB.
     
@@ -257,7 +257,7 @@ The below table summarizes various properties within a Scanner workflow YAML.
                     includeViews: true
     ```
     
-    ### Sample Non-Depot Scan YAML File
+    ### **Sample Non-Depot Scan YAML File**
     
     In this example, connection details are given in the YAML configuration to connect to the source to extract entity metadata. The scanned metadata will be saved in Metis DB.
     
