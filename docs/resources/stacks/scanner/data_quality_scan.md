@@ -4,7 +4,7 @@ Assertions are business-specific validation rules applied to test and evaluate t
 
 Data quality Scanner workflow reads about these quality checks for your data along with their pass/fail status(metadata extraction related to data quality) and stores it in Metis DB. This data helps you validate the captured data to determine whether the data meets business requirements.
 
-<aside>
+<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
 🗣️ Before running the Scanner workflow for quality checks metadata, ensure that the data quality and data-tool workflows are run successfully.
 
 </aside>
@@ -13,7 +13,7 @@ Data quality Scanner workflow reads about these quality checks for your data alo
 
 The following YAML configuration will connect to the Icebase depot and scan the data quality checks-related information.
 
-### YAML Configuration
+### **YAML Configuration**
 
 Here is the complete YAML for scanning the schema of the datasets stored with Icebase depot. 
 

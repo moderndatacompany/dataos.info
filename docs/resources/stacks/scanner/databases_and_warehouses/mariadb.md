@@ -12,9 +12,12 @@ ou can scan metadata details such as schemas, tables, view details etc. from Mar
 DataOS allows you to connect to a database with JDBC driver to read data from tables using Depot. The Depot enables access to all schemas visible to the specified user in the configured database, MariaDB. You can scan metadata from an JDBC-type depot with Scanner workflows.
 
 
-> Ensure that the depot is created for your MariaDB database and you have `Read` access for the depot.
+<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+Ensure that the depot is created for your MariaDB database and you have `Read` access for the depot.
+</aside>
 
 
+**Depot Scan Workflow YAML**
 
 You can apply database, schema, and table filter patterns while scanning metadata.
 
@@ -48,12 +51,12 @@ workflow:
 
 You need to provide source connection details and configuration settings, such as metadata type and filter patterns, to include/exclude assets for metadata scanning. 
 
-### Scanner Configuration **Properties**
+### **Scanner Configuration Properties**
 
 - **Type**: This is the source to be scanned; `mariadb`
 - **Source**: Provide source name where the scanned metadata is saved within Metastore. Under the given source name, you can see the information about all the entities scanned for your data source; `MariaDBSource`
 
-### Source **Connection Properties**
+### **Source Connection Properties**
 
 - **Type:** Specify source type**;** `MariaDB`
 - **Username**: Specify the User to connect to MariaDB. It should have enough privileges to read all the metadata.
@@ -65,7 +68,8 @@ You need to provide source connection details and configuration settings, such a
     - In case you are using Single-Sign-On (SSO) for authentication, add the `authenticator` details in the Connection Arguments as a Key-Value pair as follows: `"authenticator" : "sso_login_url"`
     - In case you authenticate with SSO using an external browser popup, then add the `authenticator` details in the Connection Arguments as a Key-Value pair as follows: `"authenticator" : "externalbrowser"`
 
-### Non-Depot Scan Workflow YAML
+**Non-Depot Scan Workflow YAML**
+
 
 In this example, sample source connection and configuration settings are provided.
 
@@ -126,4 +130,3 @@ workflow:
 ```
 
 > After the successful workflow run, you can check the metadata of scanned Tables on Metis UI.
->

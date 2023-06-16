@@ -6,7 +6,7 @@ Metis UI is a collaborative interface for diverse data users to navigate through
 
 Metis UI homepage displays all the activities around your data assets. You can navigate to the different pages by clicking on the **Tabs** given at the top. You can explore the data assets listed on the left panels.
 
-![Metis UI - landing page](/explore_metis_ui/home_page.png)
+![Metis UI - landing page](explore_metis_ui/home_page.png)
 
 Metis UI - landing page
 

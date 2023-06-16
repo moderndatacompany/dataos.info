@@ -8,11 +8,14 @@ To scan the ICEBASE depot, you need the following:
 
 - Ensure that the depot is created and you have `read` access for the depot.
 
+
 ## Scanner Workflow
 
 Here is an example of YAML configuration to connect to the source and reach the Metis server to save the metadata in Metis DB.
 
-1. Create and apply the Scanner YAML. You can run the Scanner workflow with or without a filter pattern. 
+**Depot Scan Workflow YAML**
+
+Create and apply the Scanner YAML. You can run the Scanner workflow with or without a filter pattern. 
     
     ```yaml
     version: v1
@@ -47,4 +50,4 @@ Here is an example of YAML configuration to connect to the source and reach the 
                         - innodb
     ```
     
-2. After the successful workflow run, you can check the metadata of scanned Tables on Metis UI for all topics.
+> After the successful workflow run, you can check the metadata of scanned Tables on Metis UI for all topics.
