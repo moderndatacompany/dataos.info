@@ -18,7 +18,7 @@ When you apply the `datatool.yaml` workflow at a frequency of 5 minutes. The met
 
 ## Code Snippets
 
-### kafka-to-icebase.yaml
+### **kafka-to-icebase.yaml**
 
 ```yaml
 version: v1beta1
@@ -84,7 +84,7 @@ workflow:
                         - __metadata
 ```
 
-### datatool.yaml
+### **datatool.yaml**
 
 ```yaml
 version: v1
