@@ -1,13 +1,19 @@
+# Single Run Workflow
+
 <center>
 
-![Diagrammatic representation of Single Run Workflow](./sample-workflow.svg)
+![Diagrammatic representation of Single Run Workflow](./sample_workflow.svg)
+
+</center>
+
+<center>
 
 *Diagrammatic representation of Single Run Workflow*
 
 </center>
 
 
-**Sample Workflow YAML**   
+### **Sample Workflow YAML**   
 ```yaml
 version: v1 # Version
 name: wf-tmdc-01 # Workflow Name
