@@ -10,9 +10,9 @@ The first thing you do, once you open the Workbench app is to choose the Minerva
 
 You can select a cluster from the available ones. 
 
-The next step is to select the names of the `Catalog`, `Schema`, and `Table` where the data is located. The `Catalog` includes the names of the depots and catalogs (data sources for which the depot has not been created, but which you can still query through DataOS). You can also find  the desired dataset using ‘Search’ feature.
+The next step is to select the names of the `Catalog`, `Schema`, and `Table` where the data is located. The `Catalog` includes the names of the depots and catalogs (data sources for which the depot has not been created, but which you can still query through DataOS). You can also find  the desired dataset using the ‘Search’ feature.
 
-If you do not see the requisite name in the list of Catalogs, ask the admin, or a person with the operator tag to add it to the Minerva cluster you are using. An operator/admin can also create a new cluster just for the data sources you want to use; this way, the complex queries you run would not affect the computation resources of existing clusters.
+If you don't find the desired name in the Catalogs list, you can reach out to the administrator or a user with the operator tag to add it to the Minerva cluster you are currently using. An operator/admin can also create a new cluster just for the data sources you want to use; this way, the complex queries you run would not affect the computation resources of existing clusters.
 
 ![workbench_homepage.png](workbench/workbench_homepage.png)
 
@@ -178,9 +178,7 @@ Select the two query results as shown in the image and click Compare option.
 
 <figcaption align = "center">Results of 2 queries at a time to compare</figcaption>
 
-Scroll each output dataset horizontally to compare specific columns
-
-In the example shown, we have compared the results of two queries where one of them had customer names masked in the input dataset. 
+In the example shown, we have compared the results of two queries, one of them had customer names masked in the input dataset. Scroll each output dataset horizontally to compare specific columns.
 
 ![Query compare result](workbench/query_compare_result.png)
 
