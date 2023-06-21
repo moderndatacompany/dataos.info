@@ -1,85 +1,183 @@
-# Workflow Creation Guide
+# Creating a Workflow
 
-Welcome to the Workflow Creation Guide. This section provides a step-by-step procedure on how to build a Workflow resource within the DataOS environment. The steps range from understanding the structure of a Workflow YAML file to configuring various sections, and ultimately applying it to create a resource within DataOS. Let's delve into the process of building a Workflow.
+This section covers a Workflow YAML file structure,configuration options, and applying the YAML to create a Workflow resource.
 
-## Structure of a Workflow YAML File
+## Workflow YAML File
 
-### **Configuring the Resource Properties**
+To create a Workflow resource, you need to configure the YAML file with the appropriate settings. The following sections explain the necessary configurations.
 
-A Workflow is a type of resource in DataOS. The first step in building a Workflow involves setting up the Resource Section. Below is the YAML configuration for the Resource Properties:
+### **Configuring the Resource Section**
+
+A Workflow is a type of resource in DataOS. Below is the YAML configuration for the Resource Section:
 ```yaml
-name: my-workflow # Resource (or Workflow) Name
-version: v1 # Resource Manifest-Version
-type: workflow # Resource Type
-tags: # Resource Tags 
+name: my-workflow 
+version: v1 
+type: workflow 
+tags: 
   - dataos:type:resource
   - dataos:type:workspace-resource
   - dataos:resource:workflow
-description: This is a sample workflow YAML configuration # Resource Description
-owner: iamgroot # Resource (or Workflow) Owner
+description: This is a sample workflow YAML configuration 
+owner: iamgroot 
 ```
-For further customization options of the fields within the Resource Section, refer to the [Resource Properties](../../resources.md).
+<center><i>Resource Section Configuration</i></center>
+
+For detailed customization options and additional fields within the Resource Section, refer to the [Resource Configuration](../../resources.md).
 
 ### **Configuring the Workflow Section**
 
-The Workflow Section holds configurations exclusive to the Workflow resource. In DataOS, you can implement two types of workflows: single-run and scheduled workflows, which differ in their YAML syntax.
+The Workflow Section contains configurations specific to the Workflow resource. DataOS supports two types of workflows: scheduled and single-run workflows, each with its own YAML syntax.
 
 #### **Scheduled Workflow**
 
-A Scheduled Workflow triggers a series of jobs or tasks at particular intervals or predetermined times. To construct a scheduled workflow, specify the scheduling configurations in the schedule section, as illustrated below:
+A Scheduled Workflow triggers a series of jobs or tasks at particular intervals or predetermined times. To create a scheduled workflow, specify the scheduling configurations in the schedule section:
 ```yaml
-workflow: # Workflow Section
-    schedule: # Schedule Section
-        cron: '/10 * * * *' # Cron Expression
-    dag: # Directed Acyclic Graph
+workflow: 
+    schedule: 
+        cron: '/10 * * * *' 
+    dag: 
         {collection-of-jobs}
 ```
+<center><i>Worfklow Section Configuration - Scheduled</i></center>
 
 #### **Single-Run Workflow**
 
-A Single-run workflow only executes once. A Workflow without a schedule section is a single-run workflow. Below is the YAML syntax for the same:
+A Single-run workflow executes only once. A Workflow without a schedule section is considered a single-run workflow. The YAML syntax for a single-run workflow is as follows:
 ```yaml
-workflow: # Workflow Section
-    dag: # Directed Acyclic Graph
+workflow: 
+    dag: 
         {collection-of-jobs}
 ```
-Depending on the requirements, choose between a scheduled or single-run workflow.
+<center><i>Workflow Section Configuration - Single-Run</i></center>
+Choose the appropriate workflow type based on your requirements.
 
-For more configuration options in the schedule section, refer to the [Workflow YAML Field Reference](./workflow_yaml_field_reference.md).
+For additional configuration options within the schedule section, refer to the [Workflow YAML Field Reference](./workflow_yaml_field_reference.md).
 
 ### **Configuring the DAG Section**
 
-A DAG, or Directed Acyclic Graph, depicts the sequence and dependencies between various jobs. A DAG must contain at least one job.
+A Directed Acyclic Graph (DAG) represents the sequence and dependencies between various jobs within the Workflow. A DAG must contain at least one job.
 
 #### **Job**
 
-A Job is a single processing task. A DAG may include multiple jobs linked in series or parallel to achieve a specific result. The YAML syntax for a job is as follows:
+A Job denotes a single processing task. Multiple jobs within a DAG can be linked in series or parallel to achieve a specific result through `dependencies`. Here is an example YAML syntax for a job:
 ```yaml
-  dag: # (Directed Acyclic Graph)
-    - name: ${job1-name} # (Name of the Job1)
-      spec: # (Specs of the Job1)
-        stack: ${stack1:version} # (Stack Name and Version)
-        compute: ${compute-name} # (Compute Name)
-        stack1: # (Stack1 Specific Configurations)
+  dag: 
+    - name: ${job1-name} 
+      spec: 
+        stack: ${stack1:version} 
+        compute: ${compute-name} 
+        stack1: 
           {stack1-specific-configuration}
-    - name: ${job2-name} # (Name of Job2)
-      spec: # (Specs of Job2)
-        stack: ${stack2:version} # (Stack Name and Version)
-        compute: ${compute-name} # (Compute Name)
-        stack2: # (Stack2 Specific Configuration)
+    - name: ${job2-name} 
+      spec: 
+        stack: ${stack2:version} 
+        compute: ${compute-name} 
+        stack2: 
           {stack2-specific-configuration}
-      dependencies: # (Job Dependency)
+      dependencies: 
        - ${job1-name}
 ```
-Actual configurations for a job vary across stacks. General configuration fields for a job are provided above.
+<center><i>DAG Section Configuration</i></center>
 
-## Applying the Workflow Resource YAML
-After constructing a Workflow YAML, it's time to apply it and create a Workflow resource in the DataOS environment. This is achieved using the `apply` command:
+Note that actual configurations for a job may vary depending on the specific stack. The provided YAML snippet includes general configuration fields for a job.
+
+### **Configuring the Stack Section**
+
+The Stack Section allows you to specify the desired stack for executing your workflow. Depending on your requirements, you can choose from the following supported stacks:
+
+- [Flare Stack](../stacks/flare.md): The Flare stack provides advanced capabilities for data processing and analysis.
+
+- [Alpha Stack](../stacks/alpha.md): The Alpha stack offers a powerful environment for machine learning and model training.
+
+- [Data Toolbox Stack](../stacks/data_toolbox.md): The Data Toolbox stack provides a comprehensive set of tools and utilities for data manipulation and transformation.
+
+To configure the Stack Section, refer to the appropriate stack documentation for detailed instructions on setting up and customizing the stack according to your needs. Each stack has its unique features and configurations that can enhance the functionality of your workflow.
+
+
+<details>
+<summary>
+Click here to view a sample workflow
+</summary>
+The sample workflow is ingests product data from the thirdparty01 depot and store it in the icebase depot. This workflow leverages the Flare stack to efficiently execute the necessary data ingestion tasks. The provided YAML code snippet outlines the configuration and specifications of this workflow.
+
+```yaml
+# Resource Section
+version: v1
+name: cnt-product-demo-01
+type: workflow
+tags:
+- Connect
+- Product
+description: The workflow ingests product data from dropzone into raw zone
+
+# Workflow Section (Single-run)
+workflow:
+  title: Connect Product
+  dag: # DAG of Jobs
+  - name: product-01
+    title: Product Dimension Ingester
+    description: The job ingests product data from dropzone into raw zone
+    spec:
+      tags:
+      - Connect
+      - Product
+      stack: flare:3.0
+      compute: runnable-default
+      envs:
+        FLARE_AUDIT_MODE: LOG
+# Stack Section (Flare)
+      flare:
+        job:
+          explain: true
+          inputs:
+           - name: product_connect
+             dataset: dataos://thirdparty01:none/product
+             format: csv
+             schemaPath: dataos://thirdparty01:none/schemas/avsc/product.avsc
+          logLevel: INFO
+          outputs:
+            - name: products
+              dataset: dataos://icebase:retail/product?acl=rw
+              format: Iceberg
+              description: Customer data ingested from external csv
+              options:
+                saveMode: append
+                sort:
+                  mode: partition
+                  columns:
+                    - name: version
+                      order: desc                            
+                iceberg:
+                  properties:
+                    write.format.default: parquet
+                    write.metadata.compression-codec: gzip
+                  partitionSpec:
+                    - type: identity
+                      column: version
+              tags:
+                - Connect
+                - Product
+              title: Product Source Data
+          steps:
+          - sequence:
+              - name: products
+                doc: Pick all columns from products and add version as yyyyMMddHHmm formatted
+                  timestamp.
+                sql: SELECT *, date_format(now(), 'yyyyMMddHHmm') as version, now() as
+                  ts_product FROM product_connect LIMIT 10
+```
+</details>
+
+
+## Applying the Workflow YAML
+
+Once you have constructed the Workflow YAML file, it's time to apply it and create the Workflow resource within the DataOS environment. Use the following `apply` command:
+
 ```shell
 dataos-ctl apply -f <yaml-file-path> -w <workspace>
 ```
 
-Congratulations! You've successfully created a Workflow Resource. Now, you can explore various case-scenario for a Workflow resource.
+You have successfully created a Workflow Resource. Feel free to explore various case scenarios and advanced features related to Workflow resources.
 
 [Implementing Single Run Workflow](./single_run_workflow.md)
 
