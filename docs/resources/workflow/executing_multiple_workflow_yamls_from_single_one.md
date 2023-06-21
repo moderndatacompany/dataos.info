@@ -1,8 +1,6 @@
 # Executing Multiple Workflow YAMLs from a Single One
 
-## Case Scenario
-
-Let’s take a case scenario, where we have to read data from one depot and write it to another. Once this is completed we have to read the data from the second depot and write it to a third one. Since this is a multiple-step process, we would be splitting it into separate workflows and executing them from a single workflow.
+This section demonstrates how to execute multiple workflows by combining separate YAML files into a single master file. By following this approach, you can streamline complex data processing tasks that involve reading data from one depot, writing it to another depot, and subsequently performing additional processing steps. 
 
 ## Implementation Flow
 

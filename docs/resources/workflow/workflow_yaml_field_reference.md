@@ -1,31 +1,32 @@
-# Workflow YAML Field Reference
+# Workflow YAML Configuration Field Reference
 
 ## Syntax
 
 ```yaml
-workflow: #(Mandatory)
-  schedule: #(Optional**)
-    cron: ${'*/10 * * * *'} #(Optional**)
-    concurrencyPolicy: ${Allow} #(Optional)
-    startOn: ${2022-01-01T23:30:30Z} #(Optional)
-    endOn: ${2022-01-01T23:40:45Z} #(Optional)
-    completeOn: ${2022-01-01T23:30:45Z} #(Optional)
-  dag: #(Mandatory)
-    - name: ${job1-name} #(Mandatory)
-      spec: #(Mandatory)
-        stack: ${stack1:version} #(Mandatory)
-        compute: ${compute-name} #(Mandatory)
-        stack1: #(Mandatory)
+workflow: 
+  schedule: 
+    cron: ${'*/10 * * * *'} 
+    concurrencyPolicy: ${Allow} 
+    startOn: ${2022-01-01T23:30:30Z} 
+    endOn: ${2022-01-01T23:40:45Z} 
+    completeOn: ${2022-01-01T23:30:45Z} 
+  dag: 
+    - name: ${job1-name} 
+      spec: 
+        stack: ${stack1:version} 
+        compute: ${compute-name} 
+        stack1: 
           {stack1-specific-properties}
-    - name: ${job2-name} #(Mandatory)
-      spec: #(Mandatory)
-        stack: ${stack2:version} #(Mandatory)
-        compute: ${compute-name} #(Mandatory)
-        stack2: #(Mandatory)
+    - name: ${job2-name} 
+      spec: 
+        stack: ${stack2:version} 
+        compute: ${compute-name} 
+        stack2: 
           {stack2-specific-properties}
-      dependencies: #(Optional)
+      dependencies: 
        - ${job1-name}
 ```
+<center><i> Workflow YAML Configuration </i></center>
 
 ## Configuration Fields
 
@@ -41,7 +42,7 @@ workflow: # Workflow Section
   schedule: # Schedule Section
     cron: '*/10 * * * *' # Cron Expression
   dag: # Directed Acyclic Graph (DAG)
-    {} # Collection of Jobs
+    {} # List of Jobs
 ```
 
 ### **`schedule`**

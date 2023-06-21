@@ -1,59 +1,77 @@
 # Workflow
 
-Workflow, within the DataOS, is a collection of jobs with directional dependencies. It defines a hierarchy based on a dependency mechanism.
+The Workflow resource in DataOS serves as a fundamental building block for orchestrating data processing tasks with dependencies. It enables the creation of complex data workflows by defining a hierarchy based on a dependency mechanism.
 
-You can visualize workflow as a representation of a DAG, while a DAG can be thought of as a collection of jobs and their dependencies and sets the context for when and how those jobs should be executed. You can have multiple jobs or even a single job within each DAG (there should be at least one). 
+## Workflows and Directed Acyclic Graphs (DAGs)
 
-A job within a workflow defines a sequence of processing tasks in which each job runs in its own Kubernetes pod. This is done so that the computation of one job doesn't create a bottleneck for the others.
+In DataOS, a Workflow represents a directed acyclic graph (DAG), where jobs are represented as nodes, and dependencies between jobs are represented as directed edges. The DAG structure provides a visual representation of the sequence and interdependencies of jobs within a Workflow. This facilitates efficient job execution by enabling parallel and sequential processing based on job dependencies.
 
-Each job within a DAG gets executed upon a particular Stack, an extension point within a job that adds new programming paradigms for the user, depending on what they need to do. For instance, if you want to perform data transformation, ingestion, or syndication, go with the Flare stack. DataOS, out-of-the-box, provides you with different stacks, such as Flare, Scanner, Alpha, and many more.
+Within a workflow, a job encompasses a series of processing tasks, each executed within its dedicated Kubernetes pod. This architectural design ensures that the computational workload of one job does not hinder the performance of others, effectively avoiding bottlenecks.
+
+Furthermore, every job within a Directed Acyclic Graph (DAG) is associated with a specific Stack. A Stack serves as an extension point within a job, offering users the ability to leverage different programming paradigms based on their specific requirements. For instance, if your objective involves data transformation, ingestion, or syndication, utilizing the Flare stack is recommended. DataOS provides a diverse range of pre-built stacks, including Flare, Scanner, Alpha, and more, enabling developers to seamlessly adopt various programming environments to suit their needs.
+
+<center>
 
 ![Diagrammatic representation of a workflow](./workflow/workflow.svg)
 
-<center><i>Diagrammatic representation of a workflow</i></center>
+<i>Diagrammatic representation of a workflow</i></center>
 
-In the above workflow, `Job 1` runs first, as it has no dependencies. Once `Job 1` has finished, `Job 2` and `Job 3` run in parallel. Finally, once `Job 2` and `Job 3` have been completed, `Job 4` can run as it depends on both `Job 2` and `Job 3`. Finally, once `Job 4` has been completed `Job 5` can run.
+In the depicted example, **Job 1** is the first job to be executed as it has no dependencies. Once **Job 1** completes, both **Job 2** and **Job 3** can run concurrently or parallely. Only after the successful completion of both **Job 2** and **Job 3**, **Job 4** becomes eligible for execution. Finally, **Job 5** can be executed after **Job 4** successfully finishes. This hierarchical structure ensures optimal job execution without creating bottlenecks.
 
-The Directed Acyclic Graph may have multiple roots. It implies that the DAG within a workflow can not only have jobs but also workflows themselves stored in different places. This can allow for complex workflows to be split into manageable pieces. To know more about this scenario, click [here.](./workflow/executing_multiple_workflow_yamls_from_single_one.md)
+It is important to note that a Directed Acyclic Graph may have multiple root nodes, which means that a Workflow can contain both jobs and other workflows stored in different locations. This feature allows for the decomposition of complex workflows into manageable components. For more information on this scenario, refer to [Executing Multiple Workflow from a Single One.](./workflow/executing_multiple_workflow_yamls_from_single_one.md)
+
 
 ## Types of Workflows
 
-Workflows are either single-time run or schedulable. To schedule a workflow, you must add the `schedule` property, under which you define a `cron` and prepare it as a scheduled workflow or a cron workflow. The details related to the cron workflow properties are available in the below table. If you want to check out a case scenario for a cron or scheduled workflow, click [here.](./workflow/scheduled_or_cron_workflow.md)
+Workflows in DataOS can be categorized as either single-time run or schedulable workflows.
+
+### **Single-time run Workflows**
+
+Single-time run workflows represent a one-time execution of a sequence of jobs. These workflows do not include scheduling capabilities and rely solely on the defined DAG structure and job dependencies.
+
+### **Schedulable workflows** 
+Schedulable Workflows enable the automated and recurring execution of jobs based on specified intervals or predetermined times. To schedule a workflow, the `schedule` section must be added, allowing the configuration of scheduling parameters. Scheduled workflows provide a powerful mechanism for automating job execution based on a cron expression. To explore case scenarios for scheduled workflows, refer to the [Scheduled or Cron Workflow](./workflow/scheduled_or_cron_workflow.md)
 
 ## Syntax of a workflow
 
-The code block below gives the YAML syntax for a single-time run workflow. You can learn what these key-value properties mean and how these are declared in the table below.
+The Workflow resource is defined using a YAML configuration file. The following example illustrates the syntax for defining a single-time run workflow:
 
 ```yaml
-workflow: #(Workflow Section)
-  schedule: #(Schedule Section)
-    cron: ${'*/10 * * * *'} #(Cron Expression)
-    concurrencyPolicy: ${Allow} #(Concurrency Policy)
-    startOn: ${2022-01-01T23:30:30Z} #(Start Time of Cron)
-    endOn: ${2022-01-01T23:40:45Z} #(End Time of Cron)
-    completeOn: ${2022-01-01T23:30:45Z} #(Completion Time of Cron)
-  dag: #(Directed Acyclic Graph)
-    - name: ${job1-name} #(Name of the Job1)
-      spec: #(Specs of the Job1)
-        stack: ${stack1:version} #(Stack Name and Version)
-        compute: ${compute-name} #(Compute Name)
-        stack1: #(Stack1 Specific Configurations)
+workflow: 
+  schedule: 
+    cron: ${'*/10 * * * *'} 
+    concurrencyPolicy: ${Allow} 
+    startOn: ${2022-01-01T23:30:30Z} 
+    endOn: ${2022-01-01T23:40:45Z} 
+    completeOn: ${2022-01-01T23:30:45Z} 
+  dag: 
+    - name: ${job1-name} 
+      spec: 
+        stack: ${stack1:version} 
+        compute: ${compute-name} 
+        stack1: 
           {stack1-specific-configuration}
-    - name: ${job2-name} #(Name of Job2)
-      spec: #(Specs of Job2)
-        stack: ${stack2:version} #(Stack Name and Version)
-        compute: ${compute-name} #(Compute Name)
-        stack2: #(Stack2 Specific Configuration)
+    - name: ${job2-name} 
+      spec: 
+        stack: ${stack2:version} 
+        compute: ${compute-name} 
+        stack2: 
           {stack2-specific-configuration}
-      dependencies: #(Job Dependency)
+      dependencies: 
        - ${job1-name}
 ```
 <center> <i>YAML Syntax of a Workflow Resource</i></center>
 
-## Creating a Workflow
-As you've familiarized yourself with the fundamentals of workflow syntax, it's time to delve deeper into coding, and craft your initial workflow. This section will guide you through each step of this exciting process. To begin your journey, please refer to the following guide by clicking on the link provided [here.](./workflow/creating_a_workflow.md)
+In this syntax, each job within the DAG is defined with a unique name, specifications, stack configuration, compute settings, and any stack-specific configurations. Job dependencies are specified to ensure the correct execution order.
 
-## Workflow YAML Field Reference
+For a comprehensive reference of available fields and their configurations, please consult the [Workflow YAML Field Reference](./workflow/workflow_yaml_field_reference.md)
+
+## Creating a Workflow
+As you've familiarized yourself with the fundamentals of Workflow syntax, it's time to delve deeper into coding, and craft your initial workflow. To begin your journey, please refer to the following guide by clicking on the link provided [here.](./workflow/creating_a_workflow.md)
+
+<center>
+
+## Workflow YAML Field Configuration
 
 The below table summarizes various properties within a Workflow YAML
 
@@ -79,6 +97,8 @@ The below table summarizes various properties within a Workflow YAML
 | `strategy` | string | None | Always/OnFailure/<br>OnError/OnTransientError | Optional |
 | `dependency` | string | None | Any job name within the workflow | Optional |
 
+</center>
+
 <i>Optional**:</i> Fields optional for single-run workflows, but Mandatory for Scheduled workflows.
 
 To know more about the various fields, click [here.](./workflow/workflow_yaml_field_reference.md)
@@ -91,6 +111,8 @@ To know more about the various fields, click [here.](./workflow/workflow_yaml_fi
 
 
 ## Case Scenarios
+
+To deepen your understanding and expand your knowledge of Workflows, explore the following case scenarios that cover different aspects and functionalities:
 
 - [Implementing Single Run Workflow](./workflow/single_run_workflow.md)
 

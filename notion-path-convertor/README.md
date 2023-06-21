@@ -51,6 +51,9 @@ python main.py
 
 ## Limitation
 
-
+- Issues with naming the second word e.g. amazon%20s3.md --> amazon_s3.md but its becoming amazon.md
+- Remove Table of Contents from End of Page
+- Callout replacement
+- Heading Order
 
 Happy path conversion!
