@@ -30,23 +30,23 @@ The Service-specific Section contains configurations specific to the Service res
 
 ```yaml
 service: 
-    title: "Hit Collector Service" 
-    replicas: 1 
+    title: {{"Hit Collector Service"}}
+    replicas: {{1}}
     autoScaling: 
-        enabled: true
-        minReplicas: 2
-        maxReplicas: 4
-        targetMemoryUtilizationPercentage: 80
-        targetCPUUtilizationPercentage: 80
+        enabled: {{true}}
+        minReplicas: {{2}}
+        maxReplicas: {{4}}
+        targetMemoryUtilizationPercentage: {{80}}
+        targetCPUUtilizationPercentage: {{80}}
     ingress: 
-        enabled: true
-        stripPath: false
-        path: /hit-collector
-        noAuthentication: true
-    stack: benthos 
-    logLevel: INFO
-    dryRun: true
-    servicePort: 8099
+        enabled: {{true}}
+        stripPath: {{false}}
+        path: {{/hit-collector}}
+        noAuthentication: {{true}}
+    stack: {{stack}} # Specify stack here
+    logLevel: {{INFO}}
+    dryRun: {{true}}
+    servicePort: {{8099}}
     {{Stack-specific-section}}
 ```
 <center><i>Service-specific Section Configuration</i></center>
