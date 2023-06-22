@@ -24,9 +24,9 @@ owner: iamgroot
 
 For detailed customization options and additional fields within the Resource Section, refer to the [Resource Configuration](../../resources.md).
 
-### **Configuring the Workflow Section**
+### **Configuring the Workflow-specific Section**
 
-The Workflow Section contains configurations specific to the Workflow resource. DataOS supports two types of workflows: scheduled and single-run workflows, each with its own YAML syntax.
+The Workflow-specific Section contains configurations specific to the Workflow resource. DataOS supports two types of workflows: scheduled and single-run workflows, each with its own YAML syntax.
 
 #### **Scheduled Workflow**
 
@@ -51,7 +51,7 @@ workflow:
 <center><i>Workflow Section Configuration - Single-Run</i></center>
 Choose the appropriate workflow type based on your requirements.
 
-For additional configuration options within the schedule section, refer to the [Workflow YAML Field Reference](./workflow_yaml_field_reference.md).
+For additional configuration options within the Workflow-specific section, refer to the [Workflow YAML Field Reference](./workflow_yaml_field_reference.md).
 
 ### **Configuring the DAG Section**
 
@@ -81,24 +81,26 @@ A Job denotes a single processing task. Multiple jobs within a DAG can be linked
 
 Note that actual configurations for a job may vary depending on the specific stack. The provided YAML snippet includes general configuration fields for a job.
 
-### **Configuring the Stack Section**
+### **Configuring the Stack-specific Section**
 
-The Stack Section allows you to specify the desired stack for executing your workflow. Depending on your requirements, you can choose from the following supported stacks:
+The Stack-specific Section allows you to specify the desired stack for executing your workflow. Depending on your requirements, you can choose from the following supported stacks:
 
 - [Flare Stack](../stacks/flare.md): The Flare stack provides advanced capabilities for data processing and analysis.
 
-- [Alpha Stack](../stacks/alpha.md): The Alpha stack offers a powerful environment for machine learning and model training.
+- [Alpha Stack](../stacks/alpha.md): The Alpha stack offers a powerful environment for hosting web-application, and custom Docker images atop DataOS.
 
 - [Data Toolbox Stack](../stacks/data_toolbox.md): The Data Toolbox stack provides a comprehensive set of tools and utilities for data manipulation and transformation.
 
-To configure the Stack Section, refer to the appropriate stack documentation for detailed instructions on setting up and customizing the stack according to your needs. Each stack has its unique features and configurations that can enhance the functionality of your workflow.
+- [Scanner Stack](../stacks/scanner.md): The Scanner Stack provides metadata ingestion capabilities from a source.
+
+To configure the Stack-specific Section, refer to the appropriate stack documentation for detailed instructions on setting up and customizing the stack according to your needs. Each stack has its unique features and configurations that can enhance the functionality of your workflow.
 
 
 <details>
 <summary>
 Click here to view a sample workflow
 </summary>
-The sample workflow is ingests product data from the thirdparty01 depot and store it in the icebase depot. This workflow leverages the Flare stack to efficiently execute the necessary data ingestion tasks. The provided YAML code snippet outlines the configuration and specifications of this workflow.
+The sample workflow ingests product data from the thirdparty01 depot and store it in the icebase depot. This workflow leverages the Flare stack to efficiently execute the necessary data ingestion tasks. The provided YAML code snippet outlines the configuration and specifications of this workflow.
 
 ```yaml
 # Resource Section
