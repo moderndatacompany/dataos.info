@@ -58,9 +58,11 @@ service:
 
 To understand how a Service works, let’s take a case scenario where a user wants to bring the data from a web app using Google Tag Manager to draw up insights in real-time. This would involve sending all the captured data by Google Tag Manager to an API, applying some transformations, and writing it to, let’s say, a streaming source, Kafka. This would require a Service that would keep listening to the Google Tag Manager API and sync all the data to Kafka in real time. To know more, please refer to the following [link](./service/creating-a-service.md)
 
-## Service YAML Field Reference
+## Service YAML Configuration Field Reference
 
 The table below presents an exhaustive list of key-value properties and their descriptions within a Service YAML file:
+
+<center>
 
 | Field | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
@@ -92,6 +94,8 @@ The table below presents an exhaustive list of key-value properties and their de
 | `runAsApiKey` | string | User's API Key | Any valid DataOS API Key | Optional  |
 | `runAsUser` | string | User's User-id | UserID of Use-Case Assignee | Optional  |
 | `dryRun` | boolean | false | true/false | Optional |
+
+</center>
 
 
 <i>Mandatory**:</i> Fields mandatory for external paths, but optional for internal paths.
