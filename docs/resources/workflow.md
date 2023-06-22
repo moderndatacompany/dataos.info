@@ -39,26 +39,26 @@ The Workflow resource is defined using a YAML configuration file. The following 
 ```yaml
 workflow: 
   schedule: 
-    cron: ${'*/10 * * * *'} 
-    concurrencyPolicy: ${Allow} 
-    startOn: ${2022-01-01T23:30:30Z} 
-    endOn: ${2022-01-01T23:40:45Z} 
-    completeOn: ${2022-01-01T23:30:45Z} 
+    cron: {{'*/10 * * * *'}}
+    concurrencyPolicy: {{Allow}}
+    startOn: {{2022-01-01T23:30:30Z}}
+    endOn: {{2022-01-01T23:40:45Z}}
+    completeOn: {{2022-01-01T23:30:45Z}}
   dag: 
-    - name: ${job1-name} 
+    - name: {{job1-name}}
       spec: 
-        stack: ${stack1:version} 
-        compute: ${compute-name} 
+        stack: {{stack1:version}}
+        compute: {{compute-name}}
         stack1: 
-          {stack1-specific-configuration}
-    - name: ${job2-name} 
+          {{stack1-specific-configuration}}
+    - name: {{job2-name}}
       spec: 
-        stack: ${stack2:version} 
-        compute: ${compute-name} 
+        stack: {{stack2:version}}
+        compute: {{compute-name}}
         stack2: 
-          {stack2-specific-configuration}
+          {{stack2-specific-configuration}}
       dependencies: 
-       - ${job1-name}
+       - {{job1-name}}
 ```
 <center> <i>YAML Syntax of a Workflow Resource</i></center>
 
@@ -81,16 +81,16 @@ The below table summarizes various properties within a Workflow YAML
 | `schedule` | object | None | None | Optional**  |
 | `cron` | string | None | Any valid cron expression. | Optional**  |
 | `concurrencyPolicy` | string | Allow | Allow/Forbid/Replace | Optional |
-| `startOn` | string | None | Any time provided in ISO <br> 8601 format. | Optional |
-| `endOn` | string | None | Any time provided in ISO <br> 8601 format. | Optional |
-| `completeOn` | string | None | Any time provided in ISO <br> 8601 format. | Optional |
+| `startOn` | string | None | Any time provided in ISO 8601 format. | Optional |
+| `endOn` | string | None | Any time provided in ISO 8601 format. | Optional |
+| `completeOn` | string | None | Any time provided in ISO 8601 format. | Optional |
 | `title` | string | None | Any valid string | Optional |
-| `name` | string | None | Any string confirming <br>the regex [a-z0-9]\([-a-z0-9]*<br>[a-z0-9]) and length less <br> than or equal to 48 | Mandatory |
+| `name` | string | None | Any string confirming the regex <br> [a-z0-9]\([-a-z0-9]*[a-z0-9]) and length<br>less than or equal to 48 | Mandatory |
 | `title` | string | None | Any string | Optional |
 | `description` | string | None | Any string | Optional |
 | `spec` | object | None | None | Mandatory |
 | `runAsUser` | string | None | UserID of the Use Case <br>Assignee | Optional |
-| `compute` | string | None | runnable-default or any <br> other custom compute <br> created by the user | Mandatory |
+| `compute` | string | None | runnable-default or any <br> other custom compute resource | Mandatory |
 | `stack` | string | None | flare/toolbox/scanner/<br>alpha | Mandatory |
 | `retry` | object | None | None | Optional |
 | `count` | integer | None | Any positive integer | Optional |

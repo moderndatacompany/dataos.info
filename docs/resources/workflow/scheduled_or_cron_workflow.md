@@ -7,22 +7,25 @@ This documentation outlines a case scenario where data is read from Kafka depot 
 ### **kafka-to-icebase.yaml**
 
 ```yaml
+# Resource Section
 version: v1beta1
 name: kafka-to-icebase-02
 type: workflow
 description: From kafka to icebase
 title: From kafka to icebase
+# Workflow-specific Section
 workflow:
   dag:
+  # Job Specific Section
     - name: k-to-ice-02
       description: From kafka to icebase
       title: From kafka to icebase
       spec:
         stack: flare:3.0
+        # Flare Stack-specific Section
         flare:
           job:
             explain: true
-
             streaming:
               checkpointLocation: dataos://icebase:checkpoints/kafka-to-icebase/random-users/fygsfhb?acl=rw
               triggerMode: ProcessingTime
@@ -73,17 +76,22 @@ workflow:
 ### **datatool.yaml**
 
 ```yaml
+# Resource Section
 version: v1
 name: dataos-tool-random-user
 type: workflow
+# Workflow-specific Section
 workflow:
+  # Schedule Section
   schedule:
     cron: '*/5 * * * *'
   dag:
+  # Job-specific Section
     - name: dataos-tool-kafkastream
       spec:
         stack: toolbox
         compute: runnable-default
+        # Toolbox-stack specific Section
         toolbox:
           dataset: dataos://icebase:kafka/random_users_icebase01?acl=rw
           action:

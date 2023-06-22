@@ -85,7 +85,7 @@ The table below presents an exhaustive list of key-value properties and their de
 | `stack` | string | None | benthos/alpha/beacon | Mandatory |
 | `logLevel` | string | INFO | INFO/WARN/DEBUG/ERROR | Optional |
 | `envs` | object | None | Key-value pairs of environment variables | Optional |
-| `compute` | string | None | runnable-default or custom Compute Resource | Mandatory |
+| `compute` | string | None | runnable-default or any other custom Compute Resource | Mandatory |
 | `resources` | object | None | None | Optional  |
 | `requests` | object | None | None | Optional  |
 | `limits` | object | None | None | Optional  |

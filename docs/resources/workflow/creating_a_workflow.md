@@ -10,15 +10,15 @@ To create a Workflow resource, you need to configure the YAML file with the appr
 
 A Workflow is a type of resource in DataOS. Below is the YAML configuration for the Resource Section:
 ```yaml
-name: my-workflow 
+name: {{my-workflow}}
 version: v1 
 type: workflow 
 tags: 
-  - dataos:type:resource
-  - dataos:type:workspace-resource
-  - dataos:resource:workflow
-description: This is a sample workflow YAML configuration 
-owner: iamgroot 
+  - {{dataos:type:resource}}
+  - {{dataos:type:workspace-resource}}
+  - {{dataos:resource:workflow}}
+description: {{This is a sample workflow YAML configuration}}
+owner: {{iamgroot}}
 ```
 <center><i>Resource Section Configuration</i></center>
 
@@ -62,20 +62,20 @@ A Directed Acyclic Graph (DAG) represents the sequence and dependencies between 
 A Job denotes a single processing task. Multiple jobs within a DAG can be linked in series or parallel to achieve a specific result through `dependencies`. Here is an example YAML syntax for a job:
 ```yaml
   dag: 
-    - name: ${job1-name} 
+    - name: {{job1-name}}
       spec: 
-        stack: ${stack1:version} 
-        compute: ${compute-name} 
+        stack: {{stack1:version}}
+        compute: {{compute-name}}
         stack1: 
-          {stack1-specific-configuration}
-    - name: ${job2-name} 
+          {{stack1-specific-configuration}}
+    - name: {{job2-name}}
       spec: 
-        stack: ${stack2:version} 
-        compute: ${compute-name} 
+        stack: {{stack2:version}}
+        compute: {{compute-name}}
         stack2: 
-          {stack2-specific-configuration}
+          {{stack2-specific-configuration}}
       dependencies: 
-       - ${job1-name}
+       - {{job1-name}}
 ```
 <center><i>DAG Section Configuration</i></center>
 
@@ -112,7 +112,7 @@ tags:
 - Product
 description: The workflow ingests product data from dropzone into raw zone
 
-# Workflow Section (Single-run)
+# Workflow-specific Section (Single-run)
 workflow:
   title: Connect Product
   dag: # DAG of Jobs
@@ -127,7 +127,7 @@ workflow:
       compute: runnable-default
       envs:
         FLARE_AUDIT_MODE: LOG
-# Stack Section (Flare)
+# Stack-specific Section (Flare)
       flare:
         job:
           explain: true

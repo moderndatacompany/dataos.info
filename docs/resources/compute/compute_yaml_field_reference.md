@@ -31,9 +31,9 @@ compute:
 <b>Example Usage:</b>
 ```yaml
 compute:
-  dataplane: ${hub} # Dataplane resource
-  purpose: ${runnable} # Purpose
-  nodePool: # Nodepool section
+  dataplane: ${hub} 
+  purpose: ${runnable} 
+  nodePool: 
     {}
 ```
 
@@ -45,7 +45,7 @@ compute:
 <b>Possible Value:</b> hub <br>
 <b>Example Usage:</b>
 ```yaml
-dataplane: hub # Dataplane resource
+dataplane: hub 
 ```
 
 ### **`purpose`**
@@ -56,7 +56,7 @@ dataplane: hub # Dataplane resource
 <b>Possible Value:</b> runnable/query/gpu <br>
 <b>Example Usage:</b>
 ```yaml
-purpose: gpu # Compute Purpose
+purpose: gpu 
 ```
 
 ### **`nodePool`**
@@ -67,7 +67,7 @@ purpose: gpu # Compute Purpose
 <b>Possible Value:</b> None <br>
 <b>Example Usage:</b>
 ```yaml
-nodePool: # Nodepool Section
+nodePool: 
     {}
 ```
 
@@ -79,8 +79,8 @@ nodePool: # Nodepool Section
 <b>Possible Value:</b> None <br>
 <b>Example Usage:</b>
 ```yaml
-nodeSelector: # Node Selector Section
-    dataos.io/purpose: runnable # Purpose could be either runnable/gpu/query
+nodeSelector: 
+    dataos.io/purpose: runnable 
 ```
 
 ### **`tolerations`**
@@ -92,10 +92,10 @@ nodeSelector: # Node Selector Section
 <b>Example Usage:</b>
 ```yaml
 tolerations:
-  - key: "dedicated" # Key
-    operator: "Equal" # Operator
-    value: "runnable" # Value
-    effect: "NoSchedule" # Effect
+  - key: "dedicated" 
+    operator: "Equal" 
+    value: "runnable" 
+    effect: "NoSchedule" 
 ```
 
 ### **`key`**
@@ -121,7 +121,7 @@ key: dedicated # Key
 
 <b>Example Usage:</b>
 ```yaml
-operator: Equal # Operator
+operator: Equal 
 ```
 
 ### **`value`**
@@ -132,7 +132,7 @@ operator: Equal # Operator
 <b>Possible Value:</b> Any string up to 63 characters. It must start with a letter or a number and can contain letters, numbers, hyphens, dots, and underscores. <br>
 <b>Example Usage:</b>
 ```yaml
-value: runnable # Value
+value: runnable 
 ```
 
 ### **`effect`**
@@ -147,5 +147,5 @@ value: runnable # Value
 - <i>NoExecute:</i>New pods that do not match the taint cannot be scheduled onto the node, and existing pods on the node that do not have a matching toleration are removed.<br>
 <b>Example Usage:</b>
 ```yaml
-effect: NoSchedule # Effect
+effect: NoSchedule 
 ```

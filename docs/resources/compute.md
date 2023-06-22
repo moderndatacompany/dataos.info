@@ -15,6 +15,25 @@ During the initial setup of DataOS, Compute is one of the primary resources crea
 🗣️  The creation of a compute requires the setup of node pools, which is a task typically performed by system administrators within the organization.
 </aside>
 
+## Syntax of Compute
+
+The Compute resource is defined using a YAML configuration file. The following example illustrates the syntax for defining a compute:
+
+```yaml
+compute:
+  dataplane: {{hub}}
+  purpose: {{runnable}}
+  nodePool:
+    nodeSelector:
+      {{"dataos.io/purpose": "runnable"}}
+    tolerations:
+      - key: {{"dedicated"}}
+        operator: {{"Equal"}}
+        value: {{"runnable"}}
+        effect: {{"NoSchedule"}}
+```
+<center> <i>YAML Syntax of a Compute Resource</i></center>
+
 
 ## Types of Compute
 
@@ -22,9 +41,9 @@ Various computational requirements arise depending on different workloads, neces
 
 When setting up DataOS, the following categories of Compute resources can be provisioned, each serving distinct purposes within the system:
 
-- **runnable-default**: This Compute is optimized for data processing workloads, including the execution of Workflows and Services. It is provisioned by default during the installation of DataOS.
+- **runnable**: This Compute is optimized for data processing workloads, including the execution of Workflows and Services. The runnable-default compute is provisioned by default during the installation of DataOS, but you can alter the configurations or create new compue later on.
 
-- **query-default**: Designed specifically for Minerva Clusters, this Compute type supports efficient data querying operations. It is provisioned by default during the installation of DataOS.
+- **query**: Designed specifically for Minerva Clusters, this Compute type supports efficient data querying operations. The query-default compute is provisioned by default during the installation of DataOS, but you can alter the configurations or create new compue later on.
 
 - **gpu**: This Compute is specifically designated for Machine Learning Workloads. It is not present by default but can be provisioned based on the organization's requirements.
 
