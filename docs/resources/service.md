@@ -21,36 +21,36 @@ The Service resource is configured using a YAML file, consisting of several root
 
 ```yaml
 service: 
-  title: ${'Title of a service'}
-  servicePort: ${8080}
-  metricPort: ${8093}
+  title: {{'Title of a service'}}
+  servicePort: {{8080}}
+  metricPort: {{8093}}
   ingress:
-    enabled: ${true}
-    stripPath: ${false}
-    path: ${/hit-collector}
-    noAuthentication: ${true}
-  replicas: ${1}
+    enabled: {{true}}
+    stripPath: {{false}}
+    path: {{/hit-collector}}
+    noAuthentication: {{true}}
+  replicas: {{1}}
   autoScaling: 
-    enabled: ${true}
-    minReplicas: ${2} 
-    maxReplicas: ${4}
-    targetMemoryUtilizationPercentage: ${80}
-    targetCPUUtilizationPercentage: ${80}
-  stack: ${stack-name-and-version}
-  logLevel: ${INFO}
+    enabled: {{true}}
+    minReplicas: {{2}}
+    maxReplicas: {{4}}
+    targetMemoryUtilizationPercentage: {{80}}
+    targetCPUUtilizationPercentage: {{80}}
+  stack: {{stack-name-and-version}}
+  logLevel: {{INFO}}
   envs:
-    ${CONTAINER_NAME: 'itsrandom'}
-  compute: ${runnable-default}
+    {{CONTAINER_NAME: 'itsrandom'}}
+  compute: {{runnable-default}}
   resources:
     requests:
-      cpu: ${100m}
-      memory: ${100Mi}
+      cpu: {{100m}}
+      memory: {{100Mi}}
     limits:
-      cpu: ${400m}
-      memory: ${400Mi}
-  runAsApiKey: ${abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz}
-  runAsUser: ${iamgroot}
-  dryRun: ${true}
+      cpu: {{400m}}
+      memory: {{400Mi}}
+  runAsApiKey: {{abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz}}
+  runAsUser: {{iamgroot}}
+  dryRun: {{true}}
 ```
 <center><i>YAML Syntax of a Service Resource</i></center>
 
