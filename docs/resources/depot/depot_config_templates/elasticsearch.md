@@ -1,42 +1,41 @@
 # Elasticsearch
 
-
-DataOS allows you to connect to Elasticsearch data using Depot. The Depot enables the access to all documents visible to the specified user for text queries and analytics.
+DataOS provides the capability to connect to Elasticsearch data using Depot. The Depot facilitates access to all documents that are visible to the specified user, allowing for text queries and analytics.
 
 ## Requirements
 
-To connect to Elasticsearch, you need:
+To establish a connection with Elasticsearch, the following information is required:
 
 - Username
 - Password
-- Nodes, Hostname/URL of the server and ports
+- Nodes (Hostname/URL of the server and ports)
 
 ## Template
 
-To create a Depot of type ‘ELASTICSEARCH‘, use the following template:
+To create a Depot of type ‘ELASTICSEARCH‘, utilize the following template:
 
 ```yaml
 version: v1
-name: <depot-name>
+name: {{depot-name}}
 type: depot
 tags:
-  - <tag1>
-  - <tag2>
-owner: <owner-name>
+  - {{tag1}}
+  - {{tag2}}
+owner: {{owner-name}}
 layer: user
 depot:
-  type: ELASTICSEARCH              **# Depot type**
-  description: <description>
-  external: true
-  connectionSecret:                **# Data source specific configurations**
+  type: ELASTICSEARCH              
+  description: {description}}
+  external: {{true}}
+  connectionSecret:                
     - acl: rw
       values:
-        username: <username>
-        password: <password>
+        username: {{username}}
+        password: {{password}}
     - acl: r
       values:
-        username: <username>
-        password: <password>
-  spec:                            **# Data source specific configurations**
-    nodes: ["localhost:9092", "localhost:9093"]
+        username: {{username}}
+        password: {{password}}
+  spec:                           
+    nodes: {{["localhost:9092", "localhost:9093"]}}
 ```

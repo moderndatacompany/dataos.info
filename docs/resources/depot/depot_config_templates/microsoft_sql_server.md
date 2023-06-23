@@ -1,75 +1,74 @@
 # Microsoft SQL Server
 
-
-DataOS allows you to connect to the Microsoft SQL Server database to read data from tables using Depots. The Depot enables access to all tables visible to the specified schema in the configured database. You can create as many Depots as you need to access additional SQL servers/databases.
+DataOS allows you to connect to a Microsoft SQL Server database and read data from tables using Depots. A Depot provides access to all tables within the specified schema of the configured database. You can create multiple Depots to connect to different SQL servers or databases.
 
 ## Requirements
 
-To connect to SQL Server database, you need:
+To connect to a Microsoft SQL Server database, you need the following information:
 
-- Host url and parameters
-- Database schema where your table belongs
-- Port
-- Username
-- Password
+- Host URL and parameters: The URL or hostname of the SQL Server along with any additional parameters required for the connection.
+- Database schema: The schema in the database where your tables are located.
+- Port: The port number used for the SQL Server connection.
+- Username: The username for authentication.
+- Password: The password for authentication.
 
 ## Template
 
-To create a Depot of type ‘SQLSERVER‘, use the following template:
+To create a Depot of type ‘SQLSERVER‘, utilize the following template:
 
 **Use this template, if self-signed certificate is enabled.**
 
 ```yaml
 version: v1
-name: "mssql01"
+name: {{mssql01}}
 type: depot
 tags:
-  - dropzone
-  - mssql
+  - {{dropzone}}
+  - {{mssql}}
 layer: user
 depot:
   type: JDBC
-  description: "MSSQL Sample data"
+  description: {{MSSQL Sample data}}
   spec:
     subprotocol: sqlserver
-    host: 
-    port: 
-    database:
-    params: #required in this scenario
-      encrypt: false
-  external: true
+    host: {{host}}
+    port: {{port}}
+    database: {{database}}
+    params: # Required
+      encrypt: {{false}}
+  external: {{true}}
   connectionSecret:
     - acl: rw
       type: key-value-properties
       data:
-        username:
-        password: 
+        username: {{username}}
+        password: {{password}}
 ```
 
-**If self-signed certificates are not being used** by your organisation, for connection to these storage systems, then you do not need to write additional parameters within the spec section.
+**If self-signed certificates are not being used** by your organization, you can omit the params section within the spec:
 
 ```yaml
 version: v1
-name: "mssql01"
+name: {{mssql01}}
 type: depot
 tags:
-  - dropzone
-  - mssql
+  - {{dropzone}}
+  - {{mssql}}
 layer: user
 depot:
   type: JDBC
-  description: "MSSQL Sample data"
+  description: {{MSSQL Sample data}}
   spec:
-    subprotocol: "sqlserver"
-    host: ""
-    port: "<provide.port>"
-    database: "<provide.database>"
-    params: '{"key":"value","key2":"value2"}'
-  external: true
+    subprotocol: sqlserver
+    host: {{host}}
+    port: {{port}}
+    database: {{database}}
+    params: {{'{"key":"value","key2":"value2"}'}}
+  external: {{true}}
   connectionSecret:
     - acl: rw
       type: key-value-properties
       data:
-        username: ******
-        password: ****************
+        username: {{username}}
+        password: {{password}}
 ```

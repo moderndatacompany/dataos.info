@@ -1,6 +1,6 @@
 # Compute
 
-Compute is a fundamental resource in the DataOS ecosystem that enables the allocation of processing power for data processing, querying and machine learning workloads. It facilitates the creation of node pools, which are groups of virtual machines (VMs) with similar configurations, and makes them available to DataOS as a compute resource, accessible through unique names within DataOS. By defining a Compute, the need for manually specifying individual VMs for provisioning is eliminated, streamlining resource management. 
+Compute is a fundamental resource in the DataOS ecosystem that enables the allocation of processing power for data processing, querying and machine learning workloads. It facilitates the creation of node pools, which are groups of virtual machines (VMs) with similar configurations, and makes them available to DataOS as a compute resource, accessible through unique names within DataOS. By defining a Compute, the need for manually specifying individual VMs for provisioning is eliminated, streamlining resource management.
 
 <center>
 
@@ -32,8 +32,8 @@ compute:
         value: {{"runnable"}}
         effect: {{"NoSchedule"}}
 ```
-<center> <i>YAML Syntax of a Compute Resource</i></center>
 
+<center> <i>YAML Syntax of a Compute Resource</i></center>
 
 ## Types of Compute
 
@@ -57,11 +57,9 @@ The diagram presented below illustrates the underlying mechanism for provisionin
 
 </center>
 
-
 ## Creating a Compute
 
 DataOS offers the capability to create customized Computes designed specifically for diverse data processing, machine learning, and query workloads. For comprehensive instructions and guidelines on how to create a Compute, please consult the [Creating a Compute](./compute/creating_a_compute.md) documentation.
-
 
 ## Compute YAML Configuration Fields
 
@@ -84,7 +82,6 @@ The table below presents a comprehensive list of key-value properties and their 
 | `effect` | strin  g | None | NoSchedule/PreferNoSchedule/NoExecute | Mandatory |
 
 </center>
-
 
 For a detailed explanation of each field, consult the [Compute YAML Field Reference](./compute/compute_yaml_field_reference.md)
 
