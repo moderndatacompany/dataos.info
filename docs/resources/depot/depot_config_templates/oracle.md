@@ -1,42 +1,41 @@
 # Oracle
 
-
-DataOS allows you to connect to Oracle database to access data from the tables using Depots. The  Depot enables access to all schemas visible to the specified service in the configured database. Connect to on-premise Oracle Database to perform various actions such as create, update, get, and delete on rows in a table. You can create as many Depots as you need to access additional Oracle servers/databases.
+DataOS allows you to connect to an Oracle database and access data from tables using Depots. A Depot provides access to all schemas within the specified service in the configured database. You can create multiple Depots to connect to different Oracle servers or databases.
 
 ## Requirements
 
-To connect to Oracle, you need:
+To connect to an Oracle database, you need the following information:
 
-- URL of your Oracle account
-- User name, typically your login user
-- Password
-- Database name
-- Database schema where your table belongs
+- URL of your Oracle account: The URL or hostname of the Oracle database.
+- User name: Your login user name.
+- Password: Your password for authentication.
+- Database name: The name of the Oracle database.
+- Database schema: The schema where your table belongs.
 
 ## Template
 
-To create a Depot of type ‘ORACLE‘, use the following template:
+To create a Depot of type ‘ORACLE‘, you can use the following template:
 
 ```yaml
 version: v1
-name: <think of a nice name>
+name: {{depot-name}}
 type: depot
 tags:
-  - dropzone
-  - oracle
+  - {{dropzone}}
+  - {{oracle}}
 layer: user
 depot:
-  type: ORACLE                                     **# Depot type**
-  description: "Oracle Sample data"
-  spec:                                            **# Data source specific configurations**
-    host: 
-    port: 
-    service: 
-  external: true
+  type: ORACLE                                    
+  description: {{"Oracle Sample data"}}
+  spec:                                            
+    host: {{host}}
+    port: {{port}}
+    service: {{service}}
+  external: {{true}}
   connectionSecret:
-    - acl: rw
+    - acl: {{rw}}
       type: key-value-properties
       data:
-        username: <get a hold of it>
-        password: <you have to earn it>
+        username: {{username}}
+        password: {{password}}
 ```
