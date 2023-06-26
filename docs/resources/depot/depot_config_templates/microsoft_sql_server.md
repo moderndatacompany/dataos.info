@@ -19,8 +19,8 @@ To create a Depot of type ‘SQLSERVER‘, utilize the following template:
 **Use this template, if self-signed certificate is enabled.**
 
 ```yaml
-version: v1
 name: {{mssql01}}
+version: v1
 type: depot
 tags:
   - {{dropzone}}
@@ -30,13 +30,14 @@ depot:
   type: JDBC
   description: {{MSSQL Sample data}}
   spec:
-    subprotocol: sqlserver
+    subprotocol: {{sqlserver}}
     host: {{host}}
     port: {{port}}
     database: {{database}}
     params: # Required
       encrypt: {{false}}
   external: {{true}}
+  hiveSync: {{false}}
   connectionSecret:
     - acl: rw
       type: key-value-properties
@@ -48,8 +49,8 @@ depot:
 **If self-signed certificates are not being used** by your organization, you can omit the params section within the spec:
 
 ```yaml
-version: v1
 name: {{mssql01}}
+version: v1
 type: depot
 tags:
   - {{dropzone}}

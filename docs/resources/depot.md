@@ -1,9 +1,6 @@
 # Depot
 
-
-**DataOS Depot** eliminates the need to deal with a source system’s different protocols, credentials, and connection schemas each time you need to access data. It abstracts away these system intricacies and acts as a bridge that lets you connect to the data sources.
-
-Through depot, you can connect and access data from managed & unmanaged object storage like Amazon S3, Azure Blob Storage, streaming sources like Pulsar, and relational & non-relational databases like PostgreSQL, MySQL, BigQuery, NoSQL.
+Depot in DataOS is a resource that simplifies the process of accessing data from different sources by abstracting away the complexities of protocols, credentials, and connection schemas. It acts as a bridge between DataOS and the data sources, allowing you to connect and access data from various types of storage systems such as object storage (e.g., Amazon S3, Azure Blob Storage), streaming sources (e.g., Pulsar), and databases (e.g., PostgreSQL, MySQL, BigQuery, NoSQL).
 
 <style>
     blockquote {
@@ -12,64 +9,62 @@ Through depot, you can connect and access data from managed & unmanaged object s
 </style>
 
 <blockquote style="color: black;">
-You can visualize depots as the registration of data locations to be made available to DataOS. Depot Service accomplishes this by assigning a unique address to every source system. This allows you to access and call the datasets within that source system using UDL (Universal Data Link). A UDL has the following format:
+The Depot serves as the registration mechanism for data locations within DataOS. Through the Depot Service, each source system is assigned a unique address, known as a Universal Data Link (UDL). With the UDL in hand, you can conveniently access and manipulate datasets within the source system without the need to re-enter credentials. The UDL follows the format:
 </blockquote>
 
     
 
 <center> `dataos://[depot]:[collection]/[dataset]` </center>
 
-The UDL gives you direct access to the datasets without having to specify the credentials again. You can now perform operations such as transformation, assigning policies or tags, and a lot more on your dataset. 
+By leveraging the UDL, you gain direct access to datasets and can seamlessly perform various operations, such as data transformation, policy assignment, and more.
 
-The way this UDL address is inferred depends on the source system. For instance, a Relational Database might use the term Schema instead of Collection, and Table instead of Dataset; while for a simple file storage system, Collection can correspond to Folder and Dataset can correspond to File. The good thing about Depot is that, once you have created it, you don’t have to worry about these differing nomenclatures, it brings in uniformity. You can learn more about this under [Create Depot](./depot/create_depot.md) page.
+The specific composition of the UDL address depends on the source system being accessed. For example, in a Relational Database, the term "Schema" may be used instead of "Collection," and "Table" may replace "Dataset." Similarly, in a simple file storage system, "Collection" can correspond to "Folder," and "Dataset" can correspond to "File." The beauty of the Depot lies in its ability to provide uniformity, eliminating the need to worry about these differing nomenclatures. 
 
-Once the depot has been created, everyone in your organisation can access the datasets present within the particular source system in a secure manner. While a depot allows you to access data, it also assigns the **default access policies** to secure it. Further, you can define and use custom Access Policies for the depot and Data Policies for a specific dataset in the depot. To learn more about it, refer to the [Security](../philosophy/architecture.md) page.
+Once a depot is created, all members of your organization gain secure access to datasets within the associated source system. The depot not only facilitates data access but also assigns **default access policies** to ensure data security. Additionally, you have the flexibility to define and utilize custom Access Policies for the depot and Data Policies for specific datasets within the depot.
 
 <aside style="background-color:#FAF3DD; padding:15px; border-radius:5px;">
-🗣️ In case you have not yet realised it, Depot gives you ‘access’ to the data, which means you are neither moving the data away from your source system nor are you creating copies of it. Of course, if you want to accomplish either of these tasks, with DataOS, you can do that too.
+🗣️  It is worth noting that the Depot provides 'access' to data, meaning that data is neither moved away from the source system nor duplicated. However, if the need arises, DataOS offers the capability to perform such tasks as well.
 </aside>
 
 
 ## Depot Service
 
-Depot Service is a DataOS service that manages the Depot construct.
+Depot Service is a DataOS service that manages the Depot resource.
 
-- It allows users to directly run queries on their stored data by providing an on-demand, scalable API/JDBC-based query interface backed by dataframe-based SQLs. In simpler albeit crude words, you can envisage that Depot creates a tabulation of your data, which can now be accessed with Minerva query engine, DataOS stacks, Lens, and other components of DataOS.
-- It allows you to examine or introspect the Depot, or the storage engine indicated by the Depot. In other words, once the depot is created you can get the details like datasets present within, dictionary, constraints, partition, and indexing information. To understand how this is done, check out the [Scanner](./stacks/scanner.md) stack.
+- It provides users with a powerful and scalable API/JDBC-based query interface, enabling direct querying of stored data. The interface is backed by a dataframe-based SQL engine, allowing for efficient data retrieval and analysis. With the Depot Service, users can leverage the Minerva query engine, DataOS stacks, Lens, and other components of DataOS to interact with their data.
+- The Depot Service also facilitates in-depth introspection of depots and their associated storage engines. Once a depot is created, users can obtain comprehensive information about the datasets contained within, including details such as dictionary, constraints, partition, and indexing. For a detailed understanding of this process, please refer to the [Scanner](./stacks/scanner.md) stack documentation.
 
-To learn more about the Depot service and its functionalities, refer to this page: [Depot Service](./depot/depot_service.md)
-
-You are now ready to start creating and using depots.
+To explore the full range of capabilities offered by the Depot Service, please visit the following page: [Depot Service](./depot/depot_service.md)
 
 ## Create Depot
 
-Depot declaration and definition are simplified using the YAML format. Basically, to create a depot, all you need to do is, write a YAML configuration file and apply it through DataOS CLI. Check out the detailed steps on the page given below.
+Creating a depot in DataOS is a streamlined process facilitated by the use of YAML configuration files. To establish a depot, simply compose a YAML configuration file and apply it using the DataOS Command Line Interface (CLI). Please refer to the following documentation to know more:
 
 [Create Depot](./depot/create_depot.md)
 
 ## Use Depot
 
-The UDLs that get constituted whenever you create a depot help you access the data without moving it. You will use these UDLs in various stacks of DataOS. For instance, within the Flare stack, you will mention the UDLs as the addresses of your input and output datasets.
+Once a depot is created, you can leverage the Universal Data Links (UDLs) associated with it to access data without the need to physically move it. These UDLs play a crucial role in different components of DataOS. For instance, within the Flare stack, you can specify UDLs as the addresses of your input and output datasets.
+
+Consider the following excerpt from a YAML file that represents a Flare workflow:
 
 ```yaml
-#just a section of the complete YAML file of a Flare workflow  
+# A section of the complete YAML file for a Flare workflow 
        inputs:                                               
          - name: customer_connect
-           dataset: dataos://crmbq:demo/customer_profiles #example of input UDL
+           dataset: dataos://crmbq:demo/customer_profiles # Example of input UDL
        outputs:
          - name: output01
-           depot: dataos://filebase:raw01 #example of output UDL
+           depot: dataos://filebase:raw01 # Example of output UDL
 ```
 
-Stacks in DataOS are the Programming Paradigms & Extension Points of our Runnable Resources such as workflow & service. I can see your eyes rolling with exasperation! 
-
-Think of Stacks as the different ways in which you should communicate with the machine to perform various actions in DataOS. We have many stacks that can be used within those primitives (workflow & service), for example, Scanner is our stack for introspecting Depots, Toolbox is our stack for managing Icebase DDL and DML, and so on. To read about them further, use this [link](./stacks.md).
+In DataOS, Stacks serve as programming paradigms and extension points for runnable resources like Workflows and Services. While this may sound daunting, think of stacks as distinct approaches to interact with the system, enabling you to perform various actions in DataOS. We offer several Stacks that can be utilized within these primitives, such as Scanner for introspecting depots and Toolbox for managing Icebase DDL and DML. To delve deeper into the stacks and their functionalities, please visit the following [link.](./stacks.md).
 
 ### **Compatibility of Depots with Stacks**
 
 Take a look at the table given below. It shows which of the different Depot Types are supported with which Stacks of DataOS.
 
-
+<center>
 
 | **Depot Type** | **Flare** | **Benthos** | **Minerva** | **Scanner** |
 |---|---|---|---|---|
@@ -89,6 +84,7 @@ PostgreSQL |	RW/PUSHDOWN |	<span style="color:maroon">WIP</span> |	<span style="
 Redis |	WIP |	<span style="color:maroon">WIP</span> |	<span style="color:green">READ</span> |	<span style="color:blue">YES</span> |
 Snowflake |	RW/PUSHDOWN |	<span style="color:maroon">WIP</span> |	<span style="color:green">READ</span> |	<span style="color:blue">YES</span> |
 
+</center>
 
 **RW**: read & write  |  **WIP**: work in progress  |  **PUSHDOWN**: Is pushdown of queries supported  |  **PUSHDOWN^**: Pushdown is supported only for Parquet format
 
@@ -98,77 +94,36 @@ In case you do not know what Pushdown is, do not worry. We got you! Learn it her
 > Furthermore, using Depots significantly reduces the data breach risks and makes the life of the Infosec division of your enterprise easier.
 > 
 
-### **Limit File Format**
+## Managed and Unmanaged Depots
 
-Another important function that a Depot can play is to limit the file type which you can read from and write to a particular data source. In the ‘spec’ section of YAML config file, simply mention the ‘format’ of the files you want to allow access for.
+In DataOS, we distinguish between managed and unmanaged depots based on their characteristics and supported functionalities.
 
-```yaml
-depot:
-  type: S3
-  description: <description>
-  external: true
-    spec:
-       scheme: <s3a>                      
-       bucket: <bucket-name>               ****
-       relativePath: "raw" 
-       format: <format>  **#Mention the file format, such as JSON, to only allow that file type**
-```
+### **Managed Depots**
 
-For File based systems, if you define the format as ‘Iceberg’, you can choose the meta-store catalog between Hadoop and Hive. This is how you do it:
+A managed depot refers to a depot that utilizes internal storage options provided by DataOS. Currently, we offer three types of managed depots by default:
 
-```yaml
-depot:
-  type: ABFSS
-  description: "ABFSS Iceberg depot for sanity"
-  compute: runnable-default
-  spec:
-    "account": 
-    "container": 
-    "relativePath":
-    "format": "ICEBERG"
-    "endpointSuffix":
-    "icebergCatalogType": "Hive"
-   connectionSecret:
+Within DataOS, we provide different types of depots that fall into the managed category. These depots leverage internal storage options to facilitate efficient data handling. Currently, we offer three default managed depots:
 
-```
+#### **Icebase**
 
-If you do not mention the catalogue name as Hive, it will use Hadoop as the default catalog for Iceberg format.
+Icebase is designed to store data suitable for OLAP processes. It qualifies as a managed depot because it offers built-in functionalities such as schema evolution, upsert commands, and time-travel capabilities for datasets. With Icebase, you can conveniently perform these actions directly through the DataOS CLI, eliminating the need for additional stacks like Flare or Data Toolbox. Moreover, queries executed on data stored in Icebase exhibit enhanced performance. For detailed information, refer to the Icebase [page.](./depot/icebase.md)
 
-![Flow when Hive is chosen as the catalog type](./depot/depot_catalog.png)
-<center> <i>Flow when Hive is chosen as the catalog type</i></center>
+#### **Fastbase**
 
+Fastbase is optimized for handling streaming data workloads. As a managed depot, it provides features such as creating and listing topics, which can be executed effortlessly using the DataOS CLI. To explore Fastbase further, consult the [link.](./depot/fastbase.md)
 
+### **Unmanaged Depot**
 
-Hive, automatically keeps the pointer updated to the latest metadata version. If you use Hadoop, you have to manually do this by running the set metadata command as described on this page: [Set Metadata](../interfaces/cli/command_reference.md)
-
-## Managed/Unmanaged Depots
-
-Managed depot is the term we use for the depots pointing to some of the internal storage options you get within DataOS. By default, we currently provide you with three different types of managed depots:
-
-1. Icebase: To store data on which you might want to perform OLAP processes. 
-We call it a managed depot because with it we provide certain in-built functionalities such as Schema evolution, Upsert command, Time-travel on the dataset, etc. You can directly perform these actions through DataOS CLI, without using stacks like Flare or Data Toolbox. Also, your queries on the data stored here will execute faster. Learn more about this on the Storage page: [Storage](./depot/icebase.md) 
-2. Fastbase: To handle streaming data workloads. 
-Being a managed depot, you can again execute commands such as create datasets, list topics, etc. directly from DataOS CLI. Learn more about this on the Storage page: [Storage](./depot/fastbase.md) 
-3. Filebase: You can use this managed depot as a sink for all the different types of data you don’t currently want to perform ELT/ETL processes on, such as file formats of the kind parquet, csv, pdfs, etc. Think of it as a raw data or a file store. While Icebase-type depot enforces structure, Filebase does not.
-
-For an unmanaged depot, the supported functionalities depend on the source system with which the depot connects.
-
-## Delete Depot
-
-You can delete the depot through DataOS CLI. Simply run the command mentioned below.
-
-```shell
-dataos-ctl delete -t depot -n <name of depot>
-```
+For unmanaged depots, the available functionalities are dependent on the connected source system. DataOS acts as an intermediary, facilitating connection management, secrets, and credentials abstraction while relying on the capabilities offered by the underlying source system.
 
 
 <aside style="background-color:#F8ECDF; padding:15px; border-radius:5px;">
-📖 Best Practice: It is part of the best practice to delete the Resources which are no longer in use. They save you both time and money!
+📖 Best Practice: As part of best practices, it is recommended to regularly delete resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs
 
 </aside>
 
-## Depot Templates
+## Depot Configuration Templates
 
-We have curated a list of ready-to-use YAML configuration files to create depots accessing commonly used data sources. You can find this list on the page given below.
+To facilitate the creation of depots accessing commonly used data sources, we have compiled a collection of pre-defined YAML configuration files. These templates serve as a starting point, allowing you to quickly set up depots for popular data sources. You can access the list of these templates by visiting the following page:
 
 [Depot Config Templates](./depot/depot_config_templates.md)

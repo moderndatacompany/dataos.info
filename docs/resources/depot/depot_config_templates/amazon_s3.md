@@ -18,8 +18,8 @@ To establish a connection with Amazon S3, the following information is required:
 To create a Depot of type ‘S3‘, utilize the following template:
 
 ```yaml
-version: v1
 name: {{depot-name}}
+version: v1
 type: depot
 tags:
   - {{tag1}}

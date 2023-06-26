@@ -16,8 +16,8 @@ To establish a connection with BigQuery, the following information is required:
 To create a Depot of type 'BIGQUERY', utilize the following template:
 
 ```yaml
-version: v1
 name: {{depot-name}}
+version: v1
 type: depot
 tags:
   - {{dropzone}}

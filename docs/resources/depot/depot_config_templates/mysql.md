@@ -18,8 +18,8 @@ To create a Depot of type ‘MYSQL‘, utilize the following template:
 **Use this template, if self-signed certificate is enabled.**
 
 ```yaml
-version: v1
 name: {{mysql01}}
+version: v1
 type: depot
 tags:
   - {{dropzone}}
@@ -45,8 +45,8 @@ depot:
 **If self-signed certificates are not being used** by your organization, you can omit the params section within the spec:
 
 ```yaml
-version: v1
 name: {{"mysql01"}}
+version: v1
 type: depot
 tags:
   - {{dropzone}}

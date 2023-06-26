@@ -402,3 +402,12 @@ Check out ready-to-use YAML config files on this page:
 
 [Depot Config Templates](./depot_config_templates.md) 
 
+
+
+## Delete Depot
+
+You can delete the depot through DataOS CLI. Simply run the command mentioned below.
+
+```shell
+dataos-ctl delete -t depot -n <name of depot>
+```
