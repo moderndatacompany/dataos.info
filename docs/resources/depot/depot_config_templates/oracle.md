@@ -17,8 +17,8 @@ To connect to an Oracle database, you need the following information:
 To create a Depot of type ‘ORACLE‘, you can use the following template:
 
 ```yaml
-version: v1
 name: {{depot-name}}
+version: v1
 type: depot
 tags:
   - {{dropzone}}

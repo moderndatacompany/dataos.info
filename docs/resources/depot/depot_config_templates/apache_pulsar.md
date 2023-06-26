@@ -15,8 +15,8 @@ To establish a connection with Pulsar, the following information is required:
 To create a Depot of type 'PULSAR,' utilize the following template:
 
 ```yaml
-version: v1
 name: {{depot-name}}
+version: v1
 type: depot
 tags:
   - {{tag1}}

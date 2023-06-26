@@ -23,8 +23,8 @@ Additionally, when accessing the Redshift Database in Flare workflows, the follo
 To create a Depot of type ‘REDSHIFT‘, utilize the following template:
 
 ```yaml
-version: v1
 name: {{redshift-depot-name}}
+version: v1
 type: depot
 tags:
   - {{redshift}}
@@ -34,6 +34,7 @@ depot:
   description: {{Redshift Sample data}}
   spec:
     host: {{hostname}}
+    subprotocol: {{subprotocol}}
     port: {{5439}}
     database: {{sample-database}}
     bucket: {{tmdc-dataos}}

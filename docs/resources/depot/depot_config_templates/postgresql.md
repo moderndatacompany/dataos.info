@@ -20,8 +20,8 @@ To create a Depot of type ‘POSTGRESQL‘, use the following template:
 **Use this template, if self-signed certificate is enabled.**
 
 ```yaml
-version: v1
 name: {{postgresdb}}
+version: v1
 type: depot
 layer: user
 depot:
@@ -46,8 +46,8 @@ depot:
 **If self-signed certificates are not being used** by your organization, for connection to these storage systems, then you do not need to write additional parameters within the spec section.
 
 ```yaml
-version: v1
 name: {{depot-name}}
+version: v1
 type: depot
 tags:
   - {{tag1}}
@@ -55,24 +55,24 @@ owner: {{owner-name}}
 layer: user
 depot:
   type: POSTGRESQL
-  description: <description>
+  description: {{description}}
   external: true
-  connectionSecret:                               # Data source specific configurations
+  connectionSecret:                               
     - acl: rw
       type: key-value-properties
       data:
-        username: <posgresql-username>
-        password: <posgresql-password>
+        username: {{posgresql-username}}
+        password: {{posgresql-password}}
     - acl: r
       type: key-value-properties
       data:
-        username: <posgresql-username>
-        password: <posgresql-password>
-  spec:                                           # Data source specific configurations
-    host: <host>
-    port: <port>
-    database: <database-name>
-    params: #you can remove this
-      "key1": "value1"
-      "key2": "value2"
+        username: {{posgresql-username}}
+        password: {{posgresql-password}}
+  spec:                                          
+    host: {{host}}
+    port: {{port}}
+    database: {{database-name}}
+    params: # Optional
+      {{"key1": "value1"}}
+      {{"key2": "value2"}}
 ```

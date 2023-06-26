@@ -17,8 +17,8 @@ To establish a JDBC connection, the following information is required:
 To create a Depot of type ‘JDBC‘, utilize the following template:
 
 ```yaml
-version: v1
 name: {{depot-name}}
+version: v1
 type: depot
 tags:
   - {{tag1}}

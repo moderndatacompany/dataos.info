@@ -1,42 +1,41 @@
 # Snowflake
 
-
-DataOS allows you to connect to Snowflake to read data from Snowflake tables using Depots.
-Snowflake database is a purely cloud-based data storage and analytics data warehouse provided as a Software-as-a-Service (SaaS). An entirely new SQL database engine (similar to ANSI SQL syntax and features) is designed to work with cloud infrastructure to access the Snowflake database.
+DataOS provides integration with Snowflake, allowing you to seamlessly read data from Snowflake tables using Depots. Snowflake is a cloud-based data storage and analytics data warehouse offered as a Software-as-a-Service (SaaS) solution. It utilizes a new SQL database engine designed specifically for cloud infrastructure, enabling efficient access to Snowflake databases.
 
 ## Requirements
 
-To connect to Snowflake, you need:
+To establish a connection to Snowflake and create a Depot, you will need the following information:
 
-- URL of your Snowflake account
-- Snowflake username, typically your login username
-- Snowflake user password
-- Snowflake Database name
-- Database schema where your table belongs
+- Snowflake Account URL: The URL of your Snowflake account.
+- Snowflake Username: Your Snowflake login username.
+- Snowflake User Password: The password associated with your Snowflake user account.
+- Snowflake Database Name: The name of the Snowflake database you want to connect to.
+- Database Schema: The schema in the Snowflake database where your desired table resides.
 
 ## Template
 
-To create a Depot of type ‘SNOWFLAKE‘, use the following template:
+To create a Depot of type 'SNOWFLAKE', you can utilize the following YAML template as a starting point:
 
 ```yaml
+name: {{snowflake-depot}}
 version: v1
-name: <depot-name>
 type: depot
 tags:
-  - dropzone
-  - snowflake
+  - {{tag1}}
+  - {{tag2}}
 layer: user
 depot:
-  type: SNOWFLAKE                                  **# Depot type**
-  description: "Snowflake Sample data"
-  spec:                                            **# Data Source Specific Configurations**
-    url: MUA15126.snowflakecomputing.com
-    database: "SF_TUTS"
+  type: snowflake
+  description: {{snowflake-depot-description}}
+  spec:
+    warehouse: {{warehouse-name}}
+    url: {{snowflake-url}}
+    database: {{database-name}}
   external: true
   connectionSecret:
     - acl: rw
       type: key-value-properties
       data:
-        username: <get hold of it>
-        password: <you have to earn it>
+        username: {{snowflake-username}}
+        password: {{snowflake-password}}
 ```

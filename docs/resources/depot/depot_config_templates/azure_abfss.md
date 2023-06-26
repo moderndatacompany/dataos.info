@@ -17,8 +17,8 @@ To establish a connection with Azure ABFSS, the following information is require
 To create a Depot of type ‘ABFSS‘, utilize the following template:
 
 ```yaml
-version: v1
 name: {{depot-name}}
+version: v1
 type: depot
 tags:
   - {{tag1}}
@@ -29,6 +29,7 @@ depot:
   type: ABFSS                                       
   description: {{description}}
   external: {{true}}
+  compute: {{runnable-default}}
   connectionSecret:                                 
     - acl: rw
       type: key-value-properties
