@@ -1,36 +1,36 @@
 # Kafka
 
 
-DataOS allows you to create a Depot of type 'KAFKA' to read live topic data. The created Depot enables you to read live streaming data.
+DataOS allows you to create a Depot of type 'KAFKA' to read live topic data. This Depot enables you to access and consume real-time streaming data from Kafka.
 
 ## Requirements
 
 To connect to Kafka, you need:
 
-- KAFKA broker list
+To establish a connection to Kafka, you need to provide the following information:
 
-Once you provide the broker list, the Depot enables fetching all the topics in the KAFKA cluster.
+- KAFKA broker list: The list of brokers in the Kafka cluster. The broker list enables the Depot to fetch all the available topics in the Kafka cluster.
 
 ## Template
 
-To create a Depot of type 'KAFKA', use the following template:
+To create a Depot of type 'KAFKA', utilize the following template:
 
 ```yaml
 version: v1
-name: <depot-name>
+name: {{depot-name}}
 type: depot
 tags:
-  - <tag1>
-owner: <owner-name>
+  - {{tag1}}
+owner: {{owner-name}}
 layer: user
 depot:
-  type: KAFKA                     **# Depot type**
-  description: <description>
-  external: true
-  spec:                           **# Data source specific configurations**
+  type: KAFKA                     
+  description: {{description}}
+  external: {{true}}
+  spec:                           
     brokers:
-      - <broker1>
-      - <broker2>
+      - {{broker1}}
+      - {{broker2}}
 ```
 
 <style>
@@ -41,5 +41,5 @@ depot:
 
 <blockquote style="color: black;">
 
-Note: The support for creating 'KAFKA' Depot using secrets in configuration is coming soon.
+*Note*: The support for creating 'KAFKA' Depot using secrets in configuration is coming soon.
 </blockquote>
