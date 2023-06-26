@@ -1,27 +1,29 @@
 # workbench
 
-DataOS Workbench is a web-based data exploration tool that allows you to run SQL queries to analyze big data from various heterogeneous data sources. It is backed by the Minerva query engine (which has been built on top of Trino), hence it is ANSI SQL compliant. Workbench allows you to run simple & complex queries on all sorts of relational databases.
+DataOS Workbench is a web-based data exploration tool that allows you to run SQL queries on heterogeneous data sources simultaneously. It is backed by the Minerva query engine (built on top of Trino), hence it is ANSI SQL compliant. Workbench allows you to run simple & complex queries on all sorts of relational databases.
 
-The first thing you do, once you open the Workbench app is to choose the Minerva cluster you want to use. This cluster is committed to executing SQL scripts. You choose this cluster according to your computing requirements. The on-demand compute provisioning in Minerva enables you to meet the fluctuating computational requirements on your data assets. The datasets available to you will depend on the depots & catalogs included in the Minerva cluster. 
+Upon opening the Workbench app, the first step is to select the Minerva cluster you wish to use. This cluster is committed to executing SQL scripts , and its selection is based on the specific computing requirements. The on-demand compute provisioning in Minerva enables you to meet the fluctuating computational requirements of your data assets. The availability of datasets for query is dependent on the inclusion of depots and catalogs within the Minerva cluster.
 
 ![Cluster selection](workbench/wb_homepage.png)
 
 <figcaption align = "center">Cluster selection</figcaption>
 
-You can select a cluster from the available ones. 
+In the details of the Minerva cluster, one will see the names of the data sources that can be queried with that cluster. The Catalogs section includes the names of the depots and catalogs (data sources for which the depot has not been created, but which you can still query through DataOS). The datasets accessible for querying are dependent on the presence of depots and catalogs within the Minerva cluster.
 
-The next step is to select the names of the `Catalog`, `Schema`, and `Table` where the data is located. The `Catalog` includes the names of the depots and catalogs (data sources for which the depot has not been created, but which you can still query through DataOS). You can also find  the desired dataset using the ‘Search’ feature.
+<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+🗣 If you cannot locate the required name within the Catalogs list, you can request the  admin or operator(a user with the operator tag) to add it to the Minerva cluster you are currently utilizing. Alternatively, an operator or admin has the capability to create a new cluster exclusively for the data sources you wish to use. This approach ensures that the execution of complex queries does not impact the computational resources of existing clusters.
+</aside>
 
-If you don't find the desired name in the Catalogs list, you can reach out to the administrator or a user with the operator tag to add it to the Minerva cluster you are currently using. An operator/admin can also create a new cluster just for the data sources you want to use; this way, the complex queries you run would not affect the computation resources of existing clusters.
+The next step is to select the names of the `Catalog`, `Schema`, and `Table` where the data is located. 
 
 ![workbench_homepage.png](workbench/workbench_homepage.png)
 
 <figcaption align = "center">Query and result panes</figcaption>
 Once you select a table from the list of tables, its columns and data types appear on the screen. The mapping from source data to tables is defined by the connector. For relational databases, depot translates to `Catalog` in Workbench, while Collection to `Schema`, and Dataset to `Table`.
 
-The  a fully-qualified table name such as icebase.audience.customers_large_data refers to the Table customers_large_data in the Schema audience which is in the Catalog icebase.
+A fully-qualified table name such as icebase.audience.customers_large_data refers to the Table customers_large_data in the Schema audience which is in the Catalog icebase.
 
-Use Query Pane to edit scripts, save them, and run scripts. When you run a script, results are shown in the Result pane.
+Query Pane is used to edit scripts, save them, and run scripts. When you run a SQL script, results are shown in the Result pane.
 
  Now you are ready to start writing and running the queries. Workbench uses TrinoSQL syntax. If you need help getting started, here is a list of the commonly used queries:
 
@@ -46,11 +48,11 @@ Now choose the fields per your intentions. Once done, click Generate SQL.
 
 The prepend toggle allows you to keep the previous SQL statements in the query pane while generating the new statements. To remove previously generated SQL statements, disable prepend.
 
-You can now directly export the results of the query to a BI tool. Check out the Atlas section.
+One can now directly export the results of the query to a BI tool. Check out the Atlas section.
 
 ### Atlas
 
-Atlas is an in-built BI solution that enables you to create customized reports/dashboards on any datasets with visualizations. In the result pane, hover over the three vertically aligned dots. Click it, and go to the Atlas option.
+Atlas is an in-built BI solution that is used to create to create customized reports/dashboards on any datasets with visualizations. In the result pane, hover over the three vertically aligned dots. Click it, and go to the Atlas option.
 
 ![Atlas option](workbench/more_options.png)
 
@@ -58,7 +60,7 @@ Atlas is an in-built BI solution that enables you to create customized reports/d
 
 When you select the Atlas option, the pop-up will ask you for the query name. Type a name for your query and click export. It will immediately take you to Atlas in a new tab. 
 
-To start using Atlas, check out the Analytics section: Link to Atlas 
+To learn more, click here : Link to Atlas. 
 
 ### Analyze
 
@@ -89,6 +91,9 @@ Clicking on the Runtime Stats tab will take you to a new tab in the web browser 
 ![Available options](workbench/query_analysis.png)
 
 <figcaption align = "center">Available options</figcaption>
+<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+🗣 The statistical information about Query Runtime is stored in Metis and can be accessed through the Metis user interface (UI).
+</aside>
 
 **Overview**
 
@@ -106,7 +111,7 @@ The overview section is further divided into four sub-sections - Session, Execut
 
 A query is executed by breaking up its execution into a hierarchy of stages. Each stage is designed to implement a different section of the distributed query plan. The output from these stages is aggregated into a root stage. The Minerva (query engine) coordinator is responsible for the modelling of the query plan into stages.
 
-Here you can see detailed information on the stages in which your query has been segregated for faster results. It cues you in on the time and resources to be consumed for each section of the query. 
+Here you can see detailed information on the stages in which your query has been segregated, for faster results. It cues you in on the time and resources to be consumed for each section of the query. 
 
 **Tasks**
 
@@ -120,7 +125,7 @@ This will give you a graphical representation of the Tasks completed to execute 
 
 **Stage Performance**
 
-Graphically represents each stage as a flowchart. The information here will be available only after the execution of the query is finished.
+Graphically represents each stage as a flowchart. The information here will be available only after the execution of the query.
 
 ![An example of flowchart of a Stage](workbench/stage_Performance.png)
 
@@ -136,7 +141,7 @@ Splits are sections of a larger data set. Minerva coordinator retrieves a list o
 
 ### Query Details
 
-You can see the details of the query after it has run. Click the bar showing the result of a particular query.
+The details of the query can be seen after it has run. Click the bar showing the result of a particular query.
 
 ![Query and its output](workbench/query_details.png)
 
@@ -158,7 +163,7 @@ This will display all the policies that are applied to the dataset you have quer
 
 <figcaption align = "center">Limited permission to query this Table</figcaption>
 
-You can create data policies (mask and filter) to guide what data the user sees once they access a dataset. To learn more, refer to Data Policies.
+Data policies (mask and filter) can be created to guide what data the user sees once they access a dataset. To learn more, refer to Data Policies.
 
 **Tables**
 
@@ -194,7 +199,7 @@ Click the option for More, and go to the Pivot option.
 
 <figcaption align = "center">Pivot and other option</figcaption>
 
-Pivot option opens up a new pop-up window where you can find all the columns (where at least one row doesn’t have the null value) listed at the top.
+Pivot option opens up a new pop-up window where you can find all the columns (where at least one row doesn’t have the null value) listed at the top. Filters can be applied on each attribute visible in the list.
 
 ![You can also apply filters on each attribute visible in the list. ](workbench/apply_filters.png)
 <figcaption align = "center">Applying filters </figcaption>
@@ -228,10 +233,10 @@ SQL statements that you save are available to you only. You can choose to share 
 
 ### Format
 
-It rearranges/restructures your SQL statements so they are readable and legible to everyone else. Think of it like someone with better calligraphy, rewriting your chicken feet-like handwriting.
+It rearranges/restructures the SQL statements so they are readable and legible to others. 
 
 ### Tags
 
-It’s part of the best practice to declare tags for your saved benches, so they are searchable and discoverable later.
+It’s part of the best practice to declare tags for the saved benches, so they are searchable and discoverable later.
 
 Features like New Bench, Saved Benches, Zoom, Save, etc. are pretty straightforward, and we will not bore you with their details.
