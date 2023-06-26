@@ -4,11 +4,11 @@ DataOS Workbench is a web-based data exploration tool that allows you to run SQL
 
 Upon opening the Workbench app, the first step is to select the Minerva cluster you wish to use. This cluster is committed to executing SQL scripts , and its selection is based on the specific computing requirements. The on-demand compute provisioning in Minerva enables you to meet the fluctuating computational requirements of your data assets. The availability of datasets for query is dependent on the inclusion of depots and catalogs within the Minerva cluster.
 
-![Cluster selection](workbench/wb_homepage.png)
+![Cluster selection](workbench/select_cluster.png)
 
 <figcaption align = "center">Cluster selection</figcaption>
 
-In the details of the Minerva cluster, one will see the names of the data sources that can be queried with that cluster. The Catalogs section includes the names of the depots and catalogs (data sources for which the depot has not been created, but which you can still query through DataOS). The datasets accessible for querying are dependent on the presence of depots and catalogs within the Minerva cluster.
+In the details of the Minerva cluster, one will see the names of the data sources that can be queried with that cluster. The `Catalogs` section includes the names of the depots and catalogs (data sources for which the depot has not been created, but which you can still query through DataOS). The datasets accessible for querying are dependent on the presence of depots and catalogs within the Minerva cluster.
 
 <aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
 🗣 If you cannot locate the required name within the Catalogs list, you can request the  admin or operator(a user with the operator tag) to add it to the Minerva cluster you are currently utilizing. Alternatively, an operator or admin has the capability to create a new cluster exclusively for the data sources you wish to use. This approach ensures that the execution of complex queries does not impact the computational resources of existing clusters.
@@ -21,11 +21,11 @@ The next step is to select the names of the `Catalog`, `Schema`, and `Table` whe
 <figcaption align = "center">Query and result panes</figcaption>
 Once you select a table from the list of tables, its columns and data types appear on the screen. The mapping from source data to tables is defined by the connector. For relational databases, depot translates to `Catalog` in Workbench, while Collection to `Schema`, and Dataset to `Table`.
 
-A fully-qualified table name such as icebase.audience.customers_large_data refers to the Table customers_large_data in the Schema audience which is in the Catalog icebase.
+A fully-qualified table name such as `icebase.audience.customers_large_data` refers to the Table `customers_large_data` in the Schema `audience` which is in the Catalog `icebase`.
 
 Query Pane is used to edit scripts, save them, and run scripts. When you run a SQL script, results are shown in the Result pane.
 
- Now you are ready to start writing and running the queries. Workbench uses TrinoSQL syntax. If you need help getting started, here is a list of the commonly used queries:
+Now you are ready to start writing and running the queries. Workbench uses TrinoSQL syntax. If you need help getting started, refer to the syntax given for the commonly used queries:
 
 [Popular SQL Query Syntax](workbench/sql_query_syntax.md)
 
@@ -48,17 +48,17 @@ Now choose the fields per your intentions. Once done, click Generate SQL.
 
 The prepend toggle allows you to keep the previous SQL statements in the query pane while generating the new statements. To remove previously generated SQL statements, disable prepend.
 
-One can now directly export the results of the query to a BI tool. Check out the Atlas section.
+One can now directly export the results of the query to a BI tool. Refer to the Atlas section to learn more.
 
 ### Atlas
 
-Atlas is an in-built BI solution that is used to create to create customized reports/dashboards on any datasets with visualizations. In the result pane, hover over the three vertically aligned dots. Click it, and go to the Atlas option.
+Atlas is an in-built BI solution that is used to create customized reports/dashboards on any datasets with visualizations. In the result pane, hover over the three vertically aligned dots. Click it, and go to the Atlas option.
 
 ![Atlas option](workbench/more_options.png)
 
 <figcaption align = "center">Atlas option</figcaption>
 
-When you select the Atlas option, the pop-up will ask you for the query name. Type a name for your query and click export. It will immediately take you to Atlas in a new tab. 
+When you select the Atlas option, the pop-up will ask you for the query name. Type a name and click on `Export` it. It will immediately open Atlas in a new tab. 
 
 To learn more, click here : Link to Atlas. 
 
@@ -66,7 +66,7 @@ To learn more, click here : Link to Atlas.
 
 Use this feature to get the Query Plan. It gives you access to both the Raw Data as well as the DAG of the distributed query plan.
 
-To analyze, select the entirety of your query and click the little magnifying glass with the lightning symbol on it (shortcut key: ctrl/cmd + shift + enter).
+To analyze, select the entire query and click the magnifying glass with the lightning symbol on it (shortcut key: ctrl/cmd + shift + enter).
 
 ![Analyze query](workbench/analyze_query.png)
 
@@ -86,7 +86,7 @@ The Runtime Stats option appears while the query is still running. It will not b
 
 <figcaption align = "center">Runtime Stats option can be seen in the result pane</figcaption>
 
-Clicking on the Runtime Stats tab will take you to a new tab in the web browser that will hold vital information about the query you ran.
+Clicking on the `Runtime stats` tab will take you to a new tab in the web browser that will hold vital information about the query you ran.
 
 ![Available options](workbench/query_analysis.png)
 
@@ -111,7 +111,7 @@ The overview section is further divided into four sub-sections - Session, Execut
 
 A query is executed by breaking up its execution into a hierarchy of stages. Each stage is designed to implement a different section of the distributed query plan. The output from these stages is aggregated into a root stage. The Minerva (query engine) coordinator is responsible for the modelling of the query plan into stages.
 
-Here you can see detailed information on the stages in which your query has been segregated, for faster results. It cues you in on the time and resources to be consumed for each section of the query. 
+Detailed information regarding the query stages, which have been segmented to facilitate faster results, can be found here. This provides insights into the time and resources consumption for each section of the query.
 
 **Tasks**
 
@@ -149,7 +149,7 @@ The details of the query can be seen after it has run. Click the bar showing the
 
 **Query**
 
-This will show you the query you just ran. 
+The query which is just run will be displayed here. 
 
 **Stats**
 
@@ -191,8 +191,9 @@ In the example shown, we have compared the results of two queries, one of them h
 
 ### Pivot
 
-With DataOS workbench, you can pivot your output tables/datasets through a click-and-drag interface instead of having to execute it as a SQL statement.
+  With this intuitive interface, you can effortlessly rearrange and transform your data, enabling you to visualize and analyze it from different perspectives.
 
+With DataOS workbench, you can pivot your output tables/datasets through a click-and-drag interface and rearrange and transform your data. This eliminates the need to manually write complex SQL statements for pivoting operations. 
 Click the option for More, and go to the Pivot option.
 
 ![Pivot and other option](workbench/pivot.png)
