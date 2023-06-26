@@ -5,26 +5,26 @@
 ```yaml
 workflow: 
   schedule: 
-    cron: ${'*/10 * * * *'} 
-    concurrencyPolicy: ${Allow} 
-    startOn: ${2022-01-01T23:30:30Z} 
-    endOn: ${2022-01-01T23:40:45Z} 
-    completeOn: ${2022-01-01T23:30:45Z} 
+    cron: {{'*/10 * * * *'}}
+    concurrencyPolicy: {{Allow}}
+    startOn: {{2022-01-01T23:30:30Z}}
+    endOn: {{2022-01-01T23:40:45Z}}
+    completeOn: {{2022-01-01T23:30:45Z}}
   dag: 
-    - name: ${job1-name} 
+    - name: {{job1-name}}
       spec: 
-        stack: ${stack1:version} 
-        compute: ${compute-name} 
+        stack: {{stack1:version}}
+        compute: {{compute-name}}
         stack1: 
-          {stack1-specific-properties}
-    - name: ${job2-name} 
+          {{stack1-specific-properties}}
+    - name: {{job2-name}}
       spec: 
-        stack: ${stack2:version} 
-        compute: ${compute-name} 
+        stack: {{stack2:version}}
+        compute: {{compute-name}}
         stack2: 
-          {stack2-specific-properties}
+          {{stack2-specific-properties}}
       dependencies: 
-       - ${job1-name}
+       - {{job1-name}}
 ```
 <center><i> Workflow YAML Configuration </i></center>
 
@@ -38,10 +38,10 @@ workflow:
 <b>Possible Value:</b> None <br>
 <b>Example Usage:</b>
 ```yaml
-workflow: # Workflow Section
-  schedule: # Schedule Section
-    cron: '*/10 * * * *' # Cron Expression
-  dag: # Directed Acyclic Graph (DAG)
+workflow: 
+  schedule: 
+    cron: '*/10 * * * *' 
+  dag: 
     {} # List of Jobs
 ```
 
@@ -53,9 +53,9 @@ workflow: # Workflow Section
 <b>Possible Value:</b> None <br>
 <b>Example Usage:</b>
 ```yaml
-schedule: # Schedule Section
-  cron: '*/10 * * * *' # Cron Expression
-  concurrencyPolicy: Forbid # Concurrency Policy
+schedule: 
+  cron: '*/10 * * * *' 
+  concurrencyPolicy: Forbid 
 ```
 
 ### **`cron`**
@@ -67,7 +67,7 @@ schedule: # Schedule Section
 <b>Additional Details:</b> The cron expression consists of value separated by white spaces  <br>
 <b>Example Usage:</b>
 ```yaml
-cron: '*/10 * * * *' # Cron Expression
+cron: '*/10 * * * *' 
 ```
 
 ### **`concurrencyPolicy`**
@@ -83,7 +83,7 @@ cron: '*/10 * * * *' # Cron Expression
 
 <b>Example Usage:</b>
 ```yaml
-concurrencyPolicy: Replace # Concurrency Policy
+concurrencyPolicy: Replace 
 ```
 
 ### **`startOn`**
@@ -94,7 +94,7 @@ concurrencyPolicy: Replace # Concurrency Policy
 <b>Possible Value:</b> Any time provided in ISO 8601 format <br>
 <b>Example Usage:</b>
 ```yaml
-startOn: 2022-01-01T23:30:45Z # Start time of Scheduled Workflow Run
+startOn: 2022-01-01T23:30:45Z 
 ```
 
 ### **`endOn`**
@@ -105,7 +105,7 @@ startOn: 2022-01-01T23:30:45Z # Start time of Scheduled Workflow Run
 <b>Possible Value:</b> Any time provided in ISO 8601 format <br>
 <b>Example Usage:</b>
 ```yaml
-endOn: 2022-01-01T23:30:45Z # End time of Scheduled Workflow Run
+endOn: 2022-01-01T23:30:45Z 
 ```
 
 ### **`completeOn`**
@@ -116,7 +116,7 @@ endOn: 2022-01-01T23:30:45Z # End time of Scheduled Workflow Run
 <b>Possible Value:</b> Any time provided in ISO 8601 format <br>
 <b>Example Usage:</b>
 ```yaml
-completeOn: 2022-01-01T23:30:45Z # Completion time of Scheduled Workflow Run
+completeOn: 2022-01-01T23:30:45Z 
 ```
 
 ### **`title`**
@@ -127,7 +127,7 @@ completeOn: 2022-01-01T23:30:45Z # Completion time of Scheduled Workflow Run
 <b>Possible Value:</b> Any string <br>
 <b>Example Usage:</b>
 ```yaml
-title: Quality Assessment Workflow # Title of the Workflow
+title: Quality Assessment Workflow 
 ```
 
 ### **`dag`**
@@ -139,12 +139,12 @@ title: Quality Assessment Workflow # Title of the Workflow
 <b>Additional Details:</b> There should be atleast one job within a DAG<br>
 <b>Example Usage:</b>
 ```yaml
-  dag: #(Mandatory) 
-    - name: profiling-job # Name of the Job
-      spec: # Specs of the Job
-        stack: flare:4.0 # Stack
-        compute: runnable-default # Compute
-        flare: # Flare Stack Section
+  dag: 
+    - name: profiling-job 
+      spec: 
+        stack: flare:4.0 
+        compute: runnable-default 
+        flare: 
           {} # Flare Stack specific configurations
 ```
 
@@ -156,7 +156,7 @@ title: Quality Assessment Workflow # Title of the Workflow
 <b>Possible Value:</b> Any string confirming the regex `[a-z0-9]([-a-z0-9]*[a-z0-9])` and length less than or equal to 48<br>
 <b>Example Usage:</b>
 ```yaml
-name: flare-ingestion-job # Name of the Job
+name: flare-ingestion-job 
 ```
 
 ### **`title`**
@@ -167,7 +167,7 @@ name: flare-ingestion-job # Name of the Job
 <b>Possible Value:</b> Any string <br>
 <b>Example Usage:</b>
 ```yaml
-title: Profiling Job # Title of the Job
+title: Profiling Job 
 ```
 
 ### **`description`**
@@ -178,7 +178,7 @@ title: Profiling Job # Title of the Job
 <b>Possible Value:</b> Any string <br>
 <b>Example Usage:</b>
 ```yaml
-description: The job ingests customer data # Job Description
+description: The job ingests customer data 
 ```
 
 ### **`spec`**
@@ -189,10 +189,10 @@ description: The job ingests customer data # Job Description
 <b>Possible Value:</b> None <br>
 <b>Example Usage:</b>
 ```yaml
-spec: # Specs of the Job
-  stack: flare:4.0 # Stack
-  compute: runnable-default # Compute
-  flare: # Flare Stack Section
+spec: 
+  stack: flare:4.0 
+  compute: runnable-default 
+  flare: 
     {} # Flare Stack specific configurations
 ```
 
@@ -204,7 +204,7 @@ spec: # Specs of the Job
 <b>Possible Value:</b> UserID of the Use Case Assignee <br>
 <b>Example Usage:</b>
 ```yaml
-runAsUser: iamgroot # Run as User Iamgroot
+runAsUser: iamgroot 
 ```
 
 ### **`compute`**
@@ -214,7 +214,7 @@ runAsUser: iamgroot # Run as User Iamgroot
 <b>Default Value:</b> None <br>
 <b>Possible Value:</b> runnable-default or any other custom compute created by the user<br>
 ```yaml
-compute: runnable-default # Compute Resource
+compute: runnable-default 
 ```
 
 ### **`stack`**
@@ -226,7 +226,7 @@ compute: runnable-default # Compute Resource
 <b>Additional Details:</b> It is also possible to specify specific versions of the stack. For example, you can use the notation "flare:4.0" to indicate a specific version. If no version is explicitly specified, the system will automatically select the latest version as the default option <br>
 <b>Example Usage:</b>
 ```yaml
-stack: alpha # Stack Resource
+stack: alpha 
 ```
 
 ### **`retry`**
@@ -237,9 +237,9 @@ stack: alpha # Stack Resource
 <b>Possible Value:</b> None <br>
 <b>Example Usage:</b>
 ```yaml
-retry: # Retry Section
-  count: 2 # Retry after counts
-  strategy: "OnFailure" # Strategy
+retry: 
+  count: 2 
+  strategy: "OnFailure" 
 ```
 
 ### **`count`**
@@ -250,7 +250,7 @@ retry: # Retry Section
 <b>Possible Value:</b> Any positive integer <br>
 <b>Example Usage:</b>
 ```yaml
-count: 2 # Retry after counts
+count: 2 
 ```
 
 ### **`strategy`**
@@ -266,5 +266,5 @@ count: 2 # Retry after counts
   - <i> OnTransientError -</i> Retry steps that encounter errors defined as transient or errors matching the `TRANSIENT_ERROR_PATTERN` environment variable.   <br>
 <b>Example Usage:</b>
 ```yaml
-strategy: "OnTransientError" # Retry Strategy
+strategy: "OnTransientError" 
 ```

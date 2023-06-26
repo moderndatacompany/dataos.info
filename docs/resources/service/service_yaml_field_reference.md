@@ -6,36 +6,36 @@ The syntax below demonstrates the structure of the Service YAML configuration:
 
 ```yaml
 service:
-  title: ${alpha-stack-python-file}
-  servicePort: ${8080}
-  metricPort: ${8093}
+  title: {{alpha-stack-python-file}}
+  servicePort: {{8080}}
+  metricPort: {{8093}}
   ingress:
-    enabled: ${true}
-    path: ${/file_python}
-    stripPath: ${true}
-    noAuthentication: ${true}
-  replicas: ${1}
+    enabled: {{true}}
+    path: {{/file_python}}
+    stripPath: {{true}}
+    noAuthentication: {{true}}
+  replicas: {{1}}
   autoScaling:
-    enabled: ${true}
-    minReplicas: ${1}
-    maxReplicas: ${2}
-    targetMemoryUtilizationPercentage: ${120}
-    targetCPUUtilizationPercentage: ${120}
-  stack: ${alpha}
-  logLevel: ${INFO}
+    enabled: {{true}}
+    minReplicas: {{1}}
+    maxReplicas: {{2}}
+    targetMemoryUtilizationPercentage: {{120}}
+    targetCPUUtilizationPercentage: {{120}}
+  stack: {{alpha}}
+  logLevel: {{INFO}}
   envs:
-    ${CONTAINER_NAME: 'itsrandom'}
-  compute: ${runnable-default}
+    {{CONTAINER_NAME: 'itsrandom'}}
+  compute: {{runnable-default}}
   resources:
     requests:
-      cpu: ${100m}
-      memory: ${100Mi}
+      cpu: {{100m}}
+      memory: {{100Mi}}
     limits:
-      cpu: ${400m}
-      memory: ${400Mi}
-  runAsApiKey: ${abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz}
-  runAsUser: ${iamgroot}
-  dryRun: ${true}
+      cpu: {{400m}}
+      memory: {{400Mi}}
+  runAsApiKey: {{abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz}}
+  runAsUser: {{iamgroot}}
+  dryRun: {{true}}
 ```
 <center><i>Service YAML Configuration</i></center>
 

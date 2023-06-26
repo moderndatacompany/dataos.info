@@ -1,16 +1,17 @@
 # PostgreSQL
 
 
-DataOS allows you to connect to the PostgreSQL database to read data from tables using Depot. The Depot enables access to all schemas visible to the specified user in the configured database.
+DataOS allows you to connect to a PostgreSQL database and read data from tables using Depots. A Depot provides access to all schemas visible to the specified user in the configured database.
 
 ## Requirements
 
-To create a Depot to connect to the PostgreSQL database, you need:
+To create a Depot and connect to a PostgreSQL database, you need the following information:
 
-- Database name
-- Hostname/URL of the server and parameters
-- Username
-- Password
+- Database name: The name of the PostgreSQL database.
+- Hostname/URL of the server: The hostname or URL of the PostgreSQL server.
+- Parameters: Additional parameters for the connection, if required.
+- Username: The username for authentication.
+- Password: The password for authentication.
 
 ## Template
 
@@ -20,40 +21,40 @@ To create a Depot of type ‘POSTGRESQL‘, use the following template:
 
 ```yaml
 version: v1
-name: postgresdb
+name: {{postgresdb}}
 type: depot
 layer: user
 depot:
-  type: JDBC                  # Depot type
-  description: To write data to postgresql database
-  external: true
-  connectionSecret:           # Data source specific configurations
+  type: JDBC                  
+  description: {{To write data to postgresql database}}
+  external: {{true}}
+  connectionSecret:           
     - acl: rw
       type: key-value-properties
       data:
-        username: "<you gotta have this>"
-        password: "<you gotta have this too>"
-  spec:                        # Data source specific configurations
+        username: {{username}}
+        password: {{password}}
+  spec:                        
     subprotocol: "postgresql"
-    host: 
-    port: 
-    database: postgres
-    params: #required in this scenario
-      sslmode: disable
+    host: {{host}}
+    port: {{port}}
+    database: {{postgres}}
+    params: #Required 
+      sslmode: {{disable}}
 ```
 
-**If self-signed certificates are not being used** by your organisation, for connection to these storage systems, then you do not need to write additional parameters within the spec section.
+**If self-signed certificates are not being used** by your organization, for connection to these storage systems, then you do not need to write additional parameters within the spec section.
 
 ```yaml
 version: v1
-name: <depot-name>
+name: {{depot-name}}
 type: depot
 tags:
-  - <tag1>
-owner: <owner-name>
+  - {{tag1}}
+owner: {{owner-name}}
 layer: user
 depot:
-  type: POSTGRESQL                                # Depot type
+  type: POSTGRESQL
   description: <description>
   external: true
   connectionSecret:                               # Data source specific configurations
