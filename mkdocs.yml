@@ -82,49 +82,39 @@ nav:
     - Home: index.md
 
     - Resources:
-         - Introduction: resources.md
-         - Workspace-level Primitives:
-             - Cluster: resources/cluster.md
-             - Secret: resources/secret.md
-             - Service: resources/service.md
-             - Stacks:
-                 - Introduction: resources/stacks.md
-                 - Airbyte: resources/stacks/airbyte.md
-                 - Alpha: resources/stacks/alpha.md
-                 - Beacon: resources/stacks/beacon.md
-                 - Benthos: resources/stacks/benthos.md
-                 - Data Toolbox: resources/stacks/data_toolbox.md
-                 - Flare: resources/stacks/flare.md
-                 - Scanner: resources/stacks/scanner.md
-             - Workflow: resources/workflow.md
-         - Platform-level Primitives:
-             - Compute: resources/compute.md
-             - Depot: resources/depot.md
-             - Policy: resources/policy.md
-
+         - Overview: resources.md
+         - Cluster: resources/cluster.md
+         - Compute: resources/compute.md
+         - Depot: resources/depot.md
+         - Policy: resources/policy.md
+         - Secret: resources/secret.md
+         - Service: resources/service.md   
+         - Stacks:
+             - Introduction: resources/stacks.md
+             - Alpha: resources/stacks/alpha.md
+             - Beacon: resources/stacks/beacon.md
+             - Benthos: resources/stacks/benthos.md
+             - Data Toolbox: resources/stacks/data_toolbox.md
+             - Flare: resources/stacks/flare.md
+             - Scanner: resources/stacks/scanner.md
+         - Workflow: resources/workflow.md
+                 
     - Interfaces:
-         - Introduction: interfaces.md
-         - CLI:
-             - Introduction: interfaces/cli.md
-             - Installation: interfaces/cli/installation.md
-             - Initialization: interfaces/cli/initialization.md
-             - Command Reference: interfaces/cli/command_reference.md
-         - GUI:
-             - Introduction: interfaces/gui.md
-             - Atlas: interfaces/gui/atlas.md
-             - Audiences: interfaces/gui/audiences.md
-             - Bifrost: interfaces/gui/bifrost.md
-             - Lens: interfaces/gui/lens.md
-             - Metis: interfaces/gui/metis.md
-             - Notebook: interfaces/gui/notebook.md
-             - Operations: interfaces/gui/operations.md
-             - Workbench: interfaces/gui/workbench.md
+         - Overview: interfaces.md
+         - Atlas: interfaces/atlas.md
+         - Audiences: interfaces/audiences.md
+         - Bifrost: interfaces/bifrost.md
+         - CLI: interfaces/cli.md
+         - Lens: interfaces/lens.md
+         - Metis: interfaces/metis.md
+         - Notebook: interfaces/notebook.md
+         - Operations: interfaces/operations.md
+         - Workbench: interfaces/workbench.md        
 
 # to be hidden from the top navigation bar on the webpages
     - Philosophy:
          - About DataOS: philosophy/about_dataos.md
          - Architecture: philosophy/architecture.md
-         - Reference: philosophy/reference.md
 
     - By Role: roles.md
     
