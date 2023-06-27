@@ -36,11 +36,11 @@ def rename_markdown_files(directory):
                     content = fileopen.read()
                 
                 # Remove the --- and </aside> block section
-                new_content = re.sub(r"\n---\n.*?\n</aside>", "", content, flags=re.DOTALL)
+                # new_content = re.sub(r"\n---\n.*?\n</aside>", "", content, flags=re.DOTALL)
                 
                 # Write the modified content back to the file
                 with open(new_path, "w") as fileopen:
-                    fileopen.write(new_content)
+                    fileopen.write(content)
     print("Step 3. Markdown Files Renaming Complete.")
 
 
