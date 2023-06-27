@@ -64,7 +64,7 @@ depot:
 
 If you do not mention the catalogue name as Hive, it will use Hadoop as the default catalog for Iceberg format.
 
-![Flow when Hive is chosen as the catalog type](./depot/depot_catalog.png)
+![Flow when Hive is chosen as the catalog type](./depot_catalog.png)
 <center> <i>Flow when Hive is chosen as the catalog type</i></center>
 
 Hive, automatically keeps the pointer updated to the latest metadata version. If you use Hadoop, you have to manually do this by running the set metadata command as described on this page: [Set Metadata](../interfaces/cli/command_reference.md)
