@@ -18,7 +18,7 @@ theme:
     logo: assets/light-modern-logo.png
     favicon: assets/favicon.ico
     font:
-        text: Roboto
+        text: Inter
         code: Roboto Mono
     palette:
       - scheme: default
@@ -36,6 +36,7 @@ theme:
 plugins:
     - mermaid2
     - search
+    # - glightbox
     # - mkdocs-versioning:
     #     version: v0.2
 extra:
@@ -52,7 +53,7 @@ extra:
 extra_css:
     - stylesheets/extra.css
 extra_javascript:
-    - https://unpkg.com/mermaid@8.6.4/dist/mermaid.min.js
+    - https://unpkg.com/mermaid@8.6.4/dist/mermaid.js
 markdown_extensions:
   - pymdownx.superfences:
       custom_fences:
@@ -90,13 +91,14 @@ nav:
          - Secret: resources/secret.md
          - Service: resources/service.md   
          - Stacks:
-             - Introduction: resources/stacks.md
-             - Alpha: resources/stacks/alpha.md
-             - Beacon: resources/stacks/beacon.md
-             - Benthos: resources/stacks/benthos.md
-             - Data Toolbox: resources/stacks/data_toolbox.md
-             - Flare: resources/stacks/flare.md
-             - Scanner: resources/stacks/scanner.md
+             - Stacks:
+                 - Introduction: resources/stacks.md
+                 - Alpha: resources/stacks/alpha.md
+                 - Beacon: resources/stacks/beacon.md
+                 - Benthos: resources/stacks/benthos.md
+                 - Data Toolbox: resources/stacks/data_toolbox.md
+                 - Flare: resources/stacks/flare.md
+                 - Scanner: resources/stacks/scanner.md
          - Workflow: resources/workflow.md
                  
     - Interfaces:
