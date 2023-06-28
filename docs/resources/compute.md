@@ -6,6 +6,9 @@ Compute is a fundamental resource in the DataOS ecosystem that enables the alloc
 
 ![Diagrammatic representation of a Compute](./compute/compute.png)
 
+</center>
+
+<center>
 <i>Diagrammatic representation of a Compute</i></center>
 
 During the initial setup of DataOS, Compute is one of the primary resources created as it serves as the foundation for other components. Compute represents pure processing power without any specific application identity associated with it. At its core, Compute consists of essential server components, including CPUs and RAM (or VMs). It can be composed of node pools from various cloud providers such as Amazon EC2, Azure VM, or Google Cloud Instances. These Compute resources are subsequently referenced within Minerva Clusters for efficient data querying and execution of runnables such as Workflows/Services within DataOS.
@@ -19,21 +22,16 @@ During the initial setup of DataOS, Compute is one of the primary resources crea
 
 The Compute resource is defined using a YAML configuration file. The following example illustrates the syntax for defining a compute:
 
-```yaml
-compute:
-  dataplane: {{hub}}
-  purpose: {{runnable}}
-  nodePool:
-    nodeSelector:
-      {{"dataos.io/purpose": "runnable"}}
-    tolerations:
-      - key: {{"dedicated"}}
-        operator: {{"Equal"}}
-        value: {{"runnable"}}
-        effect: {{"NoSchedule"}}
-```
+To increase the size of an image in Markdown, you can use HTML `<img>` tag attributes. Specifically, you can modify the `width` attribute to adjust the size of the image.
 
-<center> <i>YAML Syntax of a Compute Resource</i></center>
+Here's an example of how to increase the size of the image in your Markdown:
+
+
+<center>
+
+![Syntax of a Compute](./compute/compute_syntax.png)
+
+<i>YAML Syntax of a Compute Resource</i></center>
 
 ## Types of Compute
 

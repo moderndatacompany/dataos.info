@@ -90,14 +90,13 @@ nav:
          - Secret: resources/secret.md
          - Service: resources/service.md   
          - Stacks:
-                 - Introduction: resources/stacks.md
-                 - Airbyte: resources/stacks/airbyte.md
-                 - Alpha: resources/stacks/alpha.md
-                 - Beacon: resources/stacks/beacon.md
-                 - Benthos: resources/stacks/benthos.md
-                 - Data Toolbox: resources/stacks/data_toolbox.md
-                 - Flare: resources/stacks/flare.md
-                 - Scanner: resources/stacks/scanner.md
+             - Introduction: resources/stacks.md
+             - Alpha: resources/stacks/alpha.md
+             - Beacon: resources/stacks/beacon.md
+             - Benthos: resources/stacks/benthos.md
+             - Data Toolbox: resources/stacks/data_toolbox.md
+             - Flare: resources/stacks/flare.md
+             - Scanner: resources/stacks/scanner.md
          - Workflow: resources/workflow.md
                  
     - Interfaces:
