@@ -7,6 +7,8 @@ hide:
 Implementing a programmable data architecture over legacy & cloud data sources to deliver high-quality data in a governed and secured fashion may seem complex in theory, but with DataOS, we have solved the complexities by creating an operating system that you can control and enhance.
 
 ---
+
+
 # Get Started
 
 <div class="grid cards" markdown>
