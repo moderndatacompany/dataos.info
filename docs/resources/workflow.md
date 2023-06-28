@@ -36,31 +36,11 @@ Schedulable Workflows enable the automated and recurring execution of jobs based
 
 The Workflow resource is defined using a YAML configuration file. The following example illustrates the syntax for defining a single-time run workflow:
 
-```yaml
-workflow: 
-  schedule: 
-    cron: {{'*/10 * * * *'}}
-    concurrencyPolicy: {{Allow}}
-    startOn: {{2022-01-01T23:30:30Z}}
-    endOn: {{2022-01-01T23:40:45Z}}
-    completeOn: {{2022-01-01T23:30:45Z}}
-  dag: 
-    - name: {{job1-name}}
-      spec: 
-        stack: {{stack1:version}}
-        compute: {{compute-name}}
-        stack1: 
-          {{stack1-specific-configuration}}
-    - name: {{job2-name}}
-      spec: 
-        stack: {{stack2:version}}
-        compute: {{compute-name}}
-        stack2: 
-          {{stack2-specific-configuration}}
-      dependencies: 
-       - {{job1-name}}
-```
-<center> <i>YAML Syntax of a Workflow Resource</i></center>
+<center>
+
+![Workflow Syntax](./workflow/workflow_syntax.png)
+
+<i>YAML Syntax of a Workflow Resource</i></center>
 
 In this syntax, each job within the DAG is defined with a unique name, specifications, stack configuration, compute settings, and any stack-specific configurations. Job dependencies are specified to ensure the correct execution order.
 
