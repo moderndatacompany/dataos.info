@@ -18,7 +18,7 @@ theme:
     logo: assets/light-modern-logo.png
     favicon: assets/favicon.ico
     font:
-        text: Roboto
+        text: Inter
         code: Roboto Mono
     palette:
       - scheme: default
@@ -36,6 +36,7 @@ theme:
 plugins:
     - mermaid2
     - search
+    # - glightbox
     # - mkdocs-versioning:
     #     version: v0.2
 extra:
@@ -52,7 +53,7 @@ extra:
 extra_css:
     - stylesheets/extra.css
 extra_javascript:
-    - https://unpkg.com/mermaid@8.6.4/dist/mermaid.min.js
+    - https://unpkg.com/mermaid@8.6.4/dist/mermaid.js
 markdown_extensions:
   - pymdownx.superfences:
       custom_fences:
