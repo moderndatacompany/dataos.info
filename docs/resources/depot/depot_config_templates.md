@@ -20,9 +20,9 @@ Here are some of the available Depot config templates:
 
 [Amazon Simple Storage Service (S3)](./depot_config_templates/amazon_s3.md)
 
-[Azure Blob File System Storage (ABFSS)](./depot_config_templates/azure_blob_storage.md)
+[Azure Blob File System Storage (ABFSS)](./depot_config_templates/azure_abfss.md)
 
-[Windows Azure Storage Blob Service (WASBS)](./depot_config_templates/azure_data_lake_storage_gen2.md)
+[Windows Azure Storage Blob Service (WASBS)](./depot_config_templates/azure_wasbs.md)
 
 [Google Cloud Storage (GCS)](./depot_config_templates/google_gcs.md)
 
@@ -64,10 +64,10 @@ depot:
 
 If you do not mention the catalogue name as Hive, it will use Hadoop as the default catalog for Iceberg format.
 
-![Flow when Hive is chosen as the catalog type](./depot/depot_catalog.png)
+![Flow when Hive is chosen as the catalog type](./depot_catalog.png)
 <center> <i>Flow when Hive is chosen as the catalog type</i></center>
 
-Hive, automatically keeps the pointer updated to the latest metadata version. If you use Hadoop, you have to manually do this by running the set metadata command as described on this page: [Set Metadata](../interfaces/cli/command_reference.md)
+Hive, automatically keeps the pointer updated to the latest metadata version. If you use Hadoop, you have to manually do this by running the set metadata command as described on this page: [Set Metadata](./icebase.md#set-metadata)
 
 ## Depots on Streaming Source
 
