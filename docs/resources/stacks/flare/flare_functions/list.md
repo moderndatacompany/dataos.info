@@ -5,7 +5,7 @@
 
 | Function | Description |
 | --- | --- |
-| `add_column` | The function adds a new column. The supported types are string, boolean, byte, short, int, long, float, double, decimal, date, and timestamp. |
+| `add_column` | The *add_column* function adds a new column. The supported types are string, boolean, byte, short, int, long, float, double, decimal, date, and timestamp. |
 
 **Code Snippet**
 
@@ -24,7 +24,7 @@ functions:
 
 | Function | Description |
 | --- | --- |
-| `any_date` | The function converts the string to date type while parsing the string based on the rule provided. Using the by default rule, it converts a date column given in any format like yyyy.mm.dd, dd.mm.yyyy, dd/MM/yy, yyyy/mm/dd, and other (total 18 different formats) into yyyy-mm-dd format.  The rule should be a regular expression. |
+| `any_date` | The *any_date* function converts the string to date type while parsing the string based on the rule provided. Using the by default rule, it converts a date column given in any format like yyyy.mm.dd, dd.mm.yyyy, dd/MM/yy, yyyy/mm/dd, and other (total 18 different formats) into yyyy-mm-dd format.  The rule should be a regular expression. |
 
 **Code Snippet:**
 
@@ -44,7 +44,7 @@ functions:
 
 | Function | Description |
 | --- | --- |
-| `any_timestamp` | The function converts a string to timestamp type while parsing the string based on the rule provided. The timestamp format is as per the specified timezone. The rule should be a regular expression. |
+| `any_timestamp` | The *any_timestamp* function converts a string to timestamp type while parsing the string based on the rule provided. The timestamp format is as per the specified timezone. The rule should be a regular expression. |
 
 **Code Snippet:**
 
@@ -65,7 +65,7 @@ functions:
 
 | Function | Description |
 | --- | --- |
-| `change_case` | The function alters the columns case to Lowercase, Uppercase, or Titlecase depending upon the applied lower/upper/title case changes the column values . |
+| `change_case` | The *change_case* function alters the columns case to Lowercase, Uppercase, or Titlecase depending upon the applied lower/upper/title case changes the column values . |
 
 **Code Snippet:**
 
@@ -80,7 +80,7 @@ functions:
 
 | Function | Description |
 | --- | --- |
-| `change_column_case` | The function changes column names(all columns) to either lowercase or uppercase based on value of case: lower/upper. |
+| `change_column_case` | The *change_column_case* function changes column names(all columns) to either lowercase or uppercase based on value of case: lower/upper. |
 
 **Code Snippet:**
 
@@ -94,7 +94,7 @@ functions:
 
 | Function | Description |
 | --- | --- |
-| `cleanse_column_names`  | The function sanatizes column names, following these rules: <br> • Trim leading and trailing spaces <br> • Lowercases the column name <br> • Replaces any character that are not one of [A-Z][a-z][0-9] or _ with an underscore (_) |
+| `cleanse_column_names`  | The *cleanse_column_names* function sanatizes column names, following these rules: <br> • Trim leading and trailing spaces <br> • Lowercases the column name <br> • Replaces any character that are not one of [A-Z][a-z][0-9] or _ with an underscore (_) |
 
 **Code Snippet:**
 
@@ -107,7 +107,7 @@ functions:
 
 | Function | Description |
 | --- | --- |
-| `columns_replace` | The function alters column names in bulk. |
+| `columns_replace` | The *columns_replace* function alters column names in bulk. |
 
 **Code Snippet:**
 
@@ -121,7 +121,7 @@ functions:
 
 | Function | Description |
 | --- | --- |
-| `copy` | The function copies values from a source column into a destination column. |
+| `copy` | The *copy* function copies values from a source column into a destination column. |
 
 **Code Snippet:**
 
@@ -136,7 +136,7 @@ functions:
 
 | Function | Description |
 | --- | --- |
-| `cut_character` | The function selects parts of a string value, accepting standard cut options. |
+| `cut_character` | The *cut_character* function selects parts of a string value, accepting standard cut options. |
 
 **Code Snippet:**
 
@@ -153,7 +153,7 @@ functions:
 
 | Function | Description |
 | --- | --- |
-| `decode` | The function decodes a column value as one of base32, base64, or hex following RFC-4648. |
+| `decode` | The *decode* function decodes a column value as one of base32, base64, or hex following RFC-4648. |
 
 **Code Snippet:**
 
@@ -169,7 +169,7 @@ functions:
 
 | Function | Description |
 | --- | --- |
-| `diff_date` | The function calculates difference between two date columns. |
+| `diff_date` | The *diff_date* function calculates difference between two date columns. |
 
 **Code Snippet:**
 
@@ -185,7 +185,7 @@ functions:
 
 | Function | Description |
 | --- | --- |
-| `drop` | The function is used to drop a list of columns. |
+| `drop` | The *drop* function is used to drop a list of columns. |
 
 **Code Snippet:**
 
@@ -201,7 +201,7 @@ functions:
 
 | Function | Description |
 | --- | --- |
-| `drop_duplicates` | The function removes all the duplicate elements from a list of columns. |
+| `drop_duplicates` | The *drop_duplicates* function removes all the duplicate elements from a list of columns. |
 
 **Code Snippet:**
 
@@ -217,7 +217,7 @@ functions:
 
 | Function | Description |
 | --- | --- |
-| `encode` | The function encodes a column value as one of base32 , base64, or hex following RFC-4648. |
+| `encode` | The *encode* function encodes a column value as one of base32 , base64, or hex following RFC-4648. |
 
 **Code Snippet:**
 
@@ -233,7 +233,7 @@ functions:
 
 | Function | Description |
 | --- | --- |
-| `epoch_to_timestamp` | The function converts epoch string to timestamp format. |
+| `epoch_to_timestamp` | The *epoch_to_timestamp* function converts epoch string to timestamp format. |
 
 **Code Snippet:**
 
@@ -248,7 +248,7 @@ functions:
 
 | Function | Description |
 | --- | --- |
-| `fill_null_or_empty` | The function fills column value with a fixed value if it is either null or empty (""). If the column does not exist, then the function will fail.The defaultValue can only be of type string. |
+| `fill_null_or_empty` | The *fill_null_or_empty* function fills column value with a fixed value if it is either null or empty (""). If the column does not exist, then the function will fail.The defaultValue can only be of type string. |
 
 **Code Snippet:**
 
@@ -264,408 +264,383 @@ functions:
 
 | Function | Description |
 | --- | --- |
-| `find_and_replace` | The function transforms string column values using a "sed"-like expression to find and replace text within the same column. |
+| `find_and_replace` | The *find_and_replace* function transforms string column values using a "sed"-like expression to find and replace text within the same column. |
 
 **Code Snippet:**
 
 ```yaml
-functions: 
-	- name: find_and_replace 
-		column: title 
-		sedExpression: "s/regex/replacement/g"
+functions:
+  - name: find_and_replace
+    column: title
+    sedExpression: "s/regex/replacement/g"
 ```
 
-### **flatten**
+### **`flatten`**
 
-| Function | flatten |
+| Function | Description |
 | --- | --- |
-| Description | The FLATTEN function separates the elements in a repeated field into individual records.
-The FLATTEN function is useful for the flexible exploration of repeated data. To maintain the association between each flattened value and the other fields in the record, the FLATTEN directive copies all of the other columns into each new record.
-Note :- Use flatten_outer when array has null values and you want records of root with null in flattened columns.  |
+| `flatten` | The *flatten* function separates the elements in a repeated field into individual records. This function is useful for the flexible exploration of repeated data. To maintain the association between each flattened value and the other fields in the record, the FLATTEN directive copies all of the other columns into each new record. <br> <b>Note</b> :- Use flatten_outer when array has null values and you want records of root with null in flattened columns.  |
 
 **Code Snippet:**
 
 ```yaml
-functions: 
-	- name: flatten 
-		column: array_holding_column 
-		asColumn: new_column_name
+functions:
+  - name: flatten
+    column: array_holding_column
+    asColumn: new_column_name
 ```
 
-### **format_date**
+### **`format_date`**
 
-| Function | format_date |
+| Function | Description |
 | --- | --- |
-| Description | The FORMAT_DATE function allows custom patterns for date-time formatting. |
+| `format_date` | The *format_date* function allows custom patterns for date-time formatting. |
 
 **Code Snippet:**
 
 ```yaml
-functions: 
-	- name: format_date 
-		column: date_column 
-		format: "yyyy-MM-dd'T'HH:mm:ss"
+functions:
+  - name: format_date
+    column: date_column
+    format: "yyyy-MM-dd'T'HH:mm:ss"
 ```
 
-### **format_unix_date**
+### **`format_unix_date`**
 
-| Function | format_unix_date |
+| Function | Description |
 | --- | --- |
-| Description | The FORMAT_UNIX_DATE function allows custom patterns for date-time formatting. |
+| `format_unix_date` | The *format_unix_date* function allows custom patterns for date-time formatting. |
 
 **Code Snippet:**
 
 ```yaml
-functions: 
-	- name: format_unix_date 
-		column: unix_epoch_column 
-		format: "yyyy-MM-dd'T'HH:mm:ss"
+functions:
+  - name: format_unix_date
+    column: unix_epoch_column
+    format: "yyyy-MM-dd'T'HH:mm:ss"
 ```
 
-### **generate_uuid**
+### **`generate_uuid`**
 
-| Function | generate_uuid |
+| Function | Description |
 | --- | --- |
-| Description | The GENERATE_UUID function generates a universally unique identifier (UUID) of the record. |
+| `generate_uuid` | The *generate_uuid* function generates a universally unique identifier (UUID) of the record. |
 
 **Code Snippet:**
 
 ```yaml
-functions: 
-	- name: generate_uuid 
-		asColumn: column_01
+functions:
+  - name: generate_uuid
+    asColumn: column_01
 ```
 
-### **hash**
+### **`hash`**
 
-| Function | hash |
+| Function | Description |
 | --- | --- |
-| Description | The HASH function generates a message digest. The column is replaced with the digest created using the supplied algorithm. The type of column is a string. |
+| `hash` | The *hash* function generates a message digest. The column is replaced with the digest created using the supplied algorithm. The type of column is a string. |
 
 **Code Snippet:**
 
 ```yaml
-functions: 
-	- name: hash 
-		column: column_to_hash 
-		algo: MD5 | SHA-1 | SHA-256 | SHA-384 | SHA-512
+functions:
+  - name: hash
+    column: column_to_hash
+    algo: MD5 | SHA-1 | SHA-256 | SHA-384 | SHA-512
 ```
 
-### **increment_variable**
+### **`increment_variable`**
 
-| Function | increment_variable |
+| Function | Description |
 | --- | --- |
-| Description | The INCREMENT_VARIABLE function increments the value of the variable that is local to the input record being processed. |
+| `increment_variable` | The *increment_variable* function increments the value of the variable that is local to the input record being processed. |
 
 **Code Snippet:**
 
 ```yaml
-functions: 
-	- name: increment_variable 
-		column: column_01
+functions:
+  - name: increment_variable
+    column: column_01
 ```
 
-### **mask_number**
+### **`mask_number`**
 
-| Function | mask_number |
+| Function | Description |
 | --- | --- |
-| Description | The MASK_NUMBER function applies substitution masking on the column values.
-The 'column' specifies the name of an existing column to be masked.
-
-The 'pattern' is a substitution pattern to be used to mask the column values.
-
-Substitution masking is generally used for masking credit card or social security numbers. The MASK_NUMBER applies substitution masking on the column values. This type of masking is fixed masking, where the pattern is applied on the fixed length string.
-
-These rules are used for the pattern:
-• Use of # will include the digit from the position.
-• Use x or any other character to mask the digit at that position.
-• E.g. For SSN '000-00-0000' and pattern: 'XXX-XX-####' output would be like: XXX-XX-0000 |
+| `mask_number` | The *mask_number* function applies substitution masking on the column values.<br>The 'column' specifies the name of an existing column to be masked.<br>The 'pattern' is a substitution pattern to be used to mask the column values.<br>Substitution masking is generally used for masking credit card or social security numbers. The MASK_NUMBER applies substitution masking on the column values. This type of masking is fixed masking, where the pattern is applied on the fixed length string.<br>These rules are used for the pattern:<br>• Use of # will include the digit from the position.<br>• Use x or any other character to mask the digit at that position.<br>• E.g. For SSN '000-00-0000' and pattern: 'XXX-XX-####' output would be like: XXX-XX-0000 |
 
 **Code Snippet:**
 
 ```yaml
-functions: 
-	- name: mask_number \
-		column: ssn 
-		pattern: XXX-XX-####
+functions:
+  - name: mask_number
+    column: ssn
+    pattern: XXX-XX-####
 ```
 
-### **merge**
+### **`merge`**
 
-| Function | merge |
+| Function | Description |
 | --- | --- |
-| Description | The MERGE function merges two or more columns by inserting a third column specified as asColumn into a row. The values in the third column are merged values from the specified columns delimited by a specified separator. |
+| `merge` | The *merge* function merges two or more columns by inserting a third column specified as asColumn into a row. The values in the third column are merged values from the specified columns delimited by a specified separator. |
 
 **Code Snippet:**
 
 ```yaml
-functions: 
-	- name: merge 
-		separator: "__" 
-		columns: 
-			- first_name 
-			- last_name 
-		asColumn: full_name
+functions:
+  - name: merge
+    separator: "__"
+    columns:
+      - first_name
+      - last_name
+    asColumn: full_name
 ```
 
-### **parse_as_json**
+### **`parse_as_json`**
 
-| Function | parse_as_json |
+| Function | Description |
 | --- | --- |
-| Description | The PARSE_AS_JSON function is for parsing a JSON object. The function can operate on String or JSONObject types. It requires spark schema json to parse the json back into dataframe. |
+| `parse_as_json` | The *parse_as_json* function is for parsing a JSON object. The function can operate on String or JSON Object types. It requires spark schema json to parse the json back into dataframe. |
 
 **Code Snippet:**
 
 ```yaml
-functions: 
-	- name: parse_as_json 
-		column: json_string_column_name 
-		asColumn: column_name 
-		sparkSchema: "<spark_schema_json>" 
-		avroSchema: "<avro_schema>"
+functions:
+  - name: parse_as_json
+    column: json_string_column_name
+    asColumn: column_name
+    sparkSchema: "<spark_schema_json>"
+    avroSchema: "<avro_schema>"
 ```
 
-### **parse_html**
+### **`parse_html`**
 
-| Function | parse_html |
+| Function | Description |
 | --- | --- |
-| Description | The parse-html function is used to convert the HTML-coded string to a normal string without any html tags.
-Here, asColumn is an optional parameter incase you wish to create a separate column for the processed data. Else, the processed data will replace the original column on which the function is performed.
-The function works using the jsoup library. More details about this library can be found here: https://github.com/jhy/jsoup |
+| `parse_html` | The *parse_html* function is used to convert the HTML-coded string to a normal string without any html tags. Here, asColumn is an optional parameter incase you wish to create a separate column for the processed data. Else, the processed data will replace the original column on which the function is performed. The function works using the jsoup library. More details about this library can be found here: https://github.com/jhy/jsoup |
 
 **Code Snippet:**
 
 ```yaml
-functions: 
-	- name: parse_html 
-		column: questionText 
-		asColumn: parsedText
+functions:
+  - name: parse_html
+    column: questionText
+    asColumn: parsedText
 ```
 
-### **pivot**
+### **`pivot`**
 
-| Function | pivot |
+| Function | Description |
 | --- | --- |
-| Description | The pivot function is used to pivot/rotate the data from one DataFrame/Dataset column into multiple columns (transform row to columns).
-
-Here, values and approach are optional parameters. Also, aggregate_expression requires an alias to be written the same as the column name used with aggregate functions like sum, count, avg, etc.
-
-values can be used to specify only those columns needed after pivot from column .
-approach can be set to “two-phase” for running an optimized version query on large datasets. |
+| `pivot` | The *pivot* function is used to pivot/rotate the data from one DataFrame/Dataset column into multiple columns (transform row to columns). <br>Here, values and approach are optional parameters. Also, aggregate_expression requires an alias to be written the same as the column name used with aggregate functions like sum, count, avg, etc. <br>Values can be used to specify only those columns needed after pivot from column . <br>Approach can be set to “two-phase” for running an optimized version query on large datasets. |
 
 **Code Snippet:**
 
 ```yaml
-functions: 
-	- name: pivot 
-		groupBy: 
-			- "Product" 
-			- "Country" 
-		column: "Country" 
-		values: 
-			- "USA" 
-			- "Mexico" 
-			- "India" 
-		aggregateExpression: "sum(Amount) as Amount" 
-		approach: "two-phase"
+functions:
+  - name: pivot
+    groupBy:
+      - "Product"
+      - "Country"
+    column: "Country"
+    values:
+      - "USA"
+      - "Mexico"
+      - "India"
+    aggregateExpression: "sum(Amount) as Amount"
+    approach: "two-phase"
 ```
 
-### **rename**
+### **`rename`**
 
-| Function | rename |
+| Function | Description |
 | --- | --- |
-| Description | The RENAME function will change the name of a supplied column to a new column name. |
+| `rename` | The *rename* function will change the name of a supplied column to a new column name. |
 
 **Code Snippet:**
 
 ```yaml
-functions: 
-	- name: rename 
-		column: column_name 
-		asColumn: new_column_name
+functions:
+  - name: rename
+    column: column_name
+    asColumn: new_column_name
 ```
 
-### **rename_all**
+### **`rename_all`**
 
-| Function | rename_all |
+| Function | Description |
 | --- | --- |
-| Description | The RENAME ALL function will change the names of a supplied in columns to values. |
+| `rename_all` | The *rename_all* function will change the names of a supplied in columns to values. |
 
 **Code Snippet:**
 
 ```yaml
-functions: 
-	- name: rename_all 
-		columns: 
-			column1: new_column1 
-			column2: new_column2
+functions:
+  - name: rename_all
+    columns:
+      column1: new_column1
+      column2: new_column2
 ```
 
-### **select**
+### **`select`**
 
-| Function | select |
+| Function | Description |
 | --- | --- |
-| Description | The SELECT function is used to keep specified columns from the record. This is the opposite behaviour of the DROP function. |
+| `select` | The *select* function is used to keep specified columns from the record. This is the opposite behaviour of the DROP function. |
 
 **Code Snippet:**
 
 ```yaml
-functions: 
-	- name: select 
-		columns: 
-			- column_01 
-			- column_02 
-			- column_03 
-			- column_04 
-			- column_05 
-			- column_06
+functions:
+  - name: select
+    columns:
+      - column_01
+      - column_02
+      - column_03
+      - column_04
+      - column_05
+      - column_06
 ```
 
-### **set_column**
+### **`set_column`**
 
-| Function | set_column |
+| Function | Description |
 | --- | --- |
-| Description | The SET_COLUMN function will change name of a supplied in column to value in asColumn. |
+| `set_column` | The *set_column* function will change name of a supplied in column to value in asColumn. |
 
 **Code Snippet:**
 
 ```yaml
-functions: 
-	- name: set_column 
-		column: my_col_name 
-		value: "some value here"
+functions:
+  - name: set_column
+    column: my_col_name
+    value: "some value here"
 ```
 
-### **set_type**
+### **`set_type`**
 
-| Function | set_type |
+| Function | Description |
 | --- | --- |
-| Description | Convert the data type of a column. Here type can be one of the spark data types e.g. int, string, long, double, etc. |
+| `set_type` | The `set_type` function converts the data type of a column. Here type can be one of the Spark data types e.g. int, string, long, double, etc. |
 
 **Code Snippet:**
 
 ```yaml
-functions: 
-	- name: set_type 
-		columns: 
-			column1: type 
-			column2: type
+functions:
+  - name: set_type
+    columns:
+      column1: type
+      column2: type
 ```
 
-### **set_variable**
+### **`set_variable`**
 
-| Function | set_variable |
+| Function | Description |
 | --- | --- |
-| Description | The SET_VARIABLE function evaluates the expression supplied and sets the value in the variable. |
+| `set_variable` | The *set_variable* function evaluates the expression supplied and sets the value in the variable. |
 
 **Code Snippet:**
 
 ```yaml
-functions: 
-	- name: set_variable 
-		column: some_new_column 
-		expression: "ROUND(AVG(src_bytes), 2)"
+functions:
+  - name: set_variable
+    column: some_new_column
+    expression: "ROUND(AVG(src_bytes), 2)"
 ```
 
-### **snake_case**
+### **`snake_case`**
 
-| Function | snake_case |
+| Function | Description |
 | --- | --- |
-| Description | The snake_case function converts column names from camel case to snake case and is only applicable for batch dataframe/ job. |
+| `snake_case` | The *snake_case* function converts column names from camel case to snake case and is only applicable for batch dataframe/ job. |
 
 **Code Snippet:**
 
 ```yaml
-functions: 
-	- name: snake_case
+functions:
+  - name: snake_case
 ```
 
-### **split_email**
+### **`split_email`**
 
-| Function | split_email |
+| Function | Description |
 | --- | --- |
-| Description | The split_email function splits/parses an email ID into its two constituent parts: account and domain. After splitting the email address stored in the column within the column property, the directive will create two new columns, appending to the original column, named: column_account, and column_domain. If the email address cannot be parsed correctly, the additional columns will still be generated, but they would be set to null depending on the parts that could not be parsed. |
+| `split_email` | The *split_email* function splits/parses an email ID into its two constituent parts: account and domain. After splitting the email address stored in the column within the column property, the directive will create two new columns, appending to the original column, named: column_account, and column_domain. If the email address cannot be parsed correctly, the additional columns will still be generated, but they would be set to null depending on the parts that could not be parsed. |
 
 **Code Snippet:**
 
 ```yaml
-functions: 
-	- name: split_email 
-		column: email_column
+functions:
+  - name: split_email
+    column: email_column
 ```
 
-### **split_url**
+### **`split_url`**
 
-| Function | split_url |
+| Function | Description |
 | --- | --- |
-| Description | The split_url function splits a URL into protocol, authority, host, port, path, filename, and query. The function will parse the URL into its constituents. Upon splitting the URL, the directive creates seven new columns by appending to the original column name: column_protocol
-column_authority
-column_host
-column_port
-column_path
-column_filename
-column_query
-If the URL cannot be parsed correctly, an exception is thrown. If the URL column does not exist, columns with a null value are added to the record. |
+| `split_url` | The *split_url* function splits a URL into protocol, authority, host, port, path, filename, and query. The function will parse the URL into its constituents. Upon splitting the URL, the directive creates seven new columns by appending to the original<br>column name: column_protocol<br>column_authority<br>column_host<br>column_port<br>column_path<br>column_filename<br>column_query<br>If the URL cannot be parsed correctly, an exception is thrown. If the URL column does not exist, columns with a null value are added to the record. |
 
 **Code Snippet:**
 
 ```yaml
-functions: 
-	- name: split_url 
-		column: column_with_url_content
+functions:
+  - name: split_url
+    column: column_with_url_content
 ```
 
-### **swap**
+### **`swap`**
 
-| Function | swap |
+| Function | Description |
 | --- | --- |
-| Description | The swap function swaps the column names of two columns. |
+| `swap` | The *swap* function swaps the column names of two columns. |
 
 **Code Snippet:**
 
 ```yaml
-functions: 
-	- name: swap 
-		columnA: col_1 
-		columnB: col_2
+functions:
+  - name: swap
+    columnA: col_1
+    columnB: col_2
 ```
 
-### **trim**
+### **`trim`**
 
-| Function | trim |
+| Function | Description |
 | --- | --- |
-| Description | The trim function trim whitespace from both sides, left side or right side of string values they are applied to. One can supply method as trim|ltrim|rtrim |
+| `trim` | The *trim* function trim whitespace from both sides, left side or right side of string values they are applied to. One can supply method as trim/ltrim/rtrim |
 
 **Code Snippet:**
 
 ```yaml
-functions: 
-	- name: trim 
-		column: col_001 
-		method: trim
+functions:
+  - name: trim
+    column: col_001
+    method: trim
 ```
 
-### **unfurl**
+### **`unfurl`**
 
-| Function | unfurl |
+| Function | Description |
 | --- | --- |
-| Description | The unfurl function uses the expression supplied to pull columns from within the nested JSON attribute out e.g. columnName.* |
+| `unfurl` | The *unfurl* function uses the expression supplied to pull columns from within the nested JSON attribute out e.g. columnName.* |
 
 **Code Snippet:**
 
 ```yaml
-functions: 
-	- name: unfurl 
-		expression: col01.* 
-	- name: unfurl 
-		expression: explode(col01)
+
+functions:
+  - name: unfurl
+    expression: col01.*
+  - name: unfurl
+    expression: explode(col01)
 ```
 
-### **unpivot**
+### **`unpivot`**
 
-| Function | unpivot |
+| Function | Description |
 | --- | --- |
-| Description | The unpivot function works as the reverse function for the pivot function in which you can achieve rotating column values into rows values.  |
+| `unpivot` | The *unpivot* function works as the reverse function for the pivot function in which you can achieve rotating column values into rows values.  |
 
 <aside>
 🗣️ Both `pivotColumns` and `columns` can not have `-`,`*` need to specify a list of columns in at least one.
@@ -675,32 +650,32 @@ functions:
 **Code Snippets:**
 
 ```yaml
-functions: 
-	- name: unpivot 
-		columns: # Columns can have - "*" if need to select all remaining columns than pivot columns
-			- USA 
-			- Mexico 
-			- China 
-			- Canada 
-		pivotColumns: # pivotColumns can have - "*" if need to select all remaining columns than columns
-			- Col1
-			- Col2
-			- Col3
-		keyColumnName: Country 
-		valueColumnName: Amount
+functions:
+  - name: unpivot
+    columns: # Columns can have - "*" if need to select all remaining columns than pivot columns
+      - USA
+      - Mexico
+      - China
+      - Canada
+    pivotColumns: # pivotColumns can have - "*" if need to select all remaining columns than columns
+      - Col1
+      - Col2
+      - Col3
+    keyColumnName: Country
+    valueColumnName: Amount
 ```
 
 ```yaml
-functions: 
-	- name: unpivot 
-		columns: # Columns can have - "*" if need to select all remaining columns than pivot columns
-			- "*" 
-		pivotColumns: # pivotColumns can have - "*" if need to select all remaining columns than columns
-			- Col1
-			- Col2
-			- Col3
-		keyColumnName: Country  # this name will be assigned to stack column
-		valueColumnName: Amount # thid name will be assigned to values column
+functions:
+  - name: unpivot
+    columns: # Columns can have - "*" if need to select all remaining columns than pivot columns
+      - "*"
+    pivotColumns: # pivotColumns can have - "*" if need to select all remaining columns than columns
+      - Col1
+      - Col2
+      - Col3
+    keyColumnName: Country  # this name will be assigned to stack column
+    valueColumnName: Amount # thid name will be assigned to values column
 ```
 
 > **Note:** Make sure provided list has the same datatype else it will throw an error. Do not forget to clean the column before passing `*` in columns if column names have hyphens and spaces.

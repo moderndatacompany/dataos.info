@@ -1,7 +1,6 @@
 # Postgres
 
-
-# Read Config
+## Read Config
 
 **Input Section Configuration for Reading from Postgres Data Source**
 
@@ -74,7 +73,7 @@ workflow:
                     sql: SELECT * FROM transactions_connect
 ```
 
-# Write Config
+## Write Config
 
 **Output Section Configuration for Writing to Postgres Data Source**
 
@@ -140,5 +139,3 @@ workflow:
                   - name: finalDf
                     sql: SELECT * FROM transactions_connect limit 10
 ```
-
-Table of Contents

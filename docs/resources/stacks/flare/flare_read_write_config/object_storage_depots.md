@@ -1,21 +1,12 @@
 # Object Storage Depots
 
-
 To execute Flare Jobs on top of object storage depots, like Amazon S3, Azure ABFSS, Azure WASBS, Google Cloud Storage, etc. you first need to create a depot. If you have already created a depot, continue reading.
 
 By creating depots on top of Object Stores, interaction can be done in a uniform way with all supported storages, i.e., Azure Blob File System, Google Cloud Storage, and Amazon S3. To run a Flare Job all you need is the UDL address of the input or output dataset for the reading and writing scenarios, respectively. Apart from this, you also need the file `format` of the data.
 
-# Common Configurations
+## Common Configurations
 
-## Read Config
-
-| Scenario | Syntax | Supported File Formats |
-| --- | --- | --- |
-| Inputs (while reading
-from a depot) | inputs:
-  - name: <name-of-input>
-    dataset: dataos://[depot]:[collection]/[dataset]
-    format: <file-format> | avro, csv, json, orc, parquet, txt, xlsx, xml |
+### **Read Config**
 
 For reading the data, we need to configure the `name`, `dataset`, and `format` properties in the `inputs` section of the YAML. For instance, if your dataset name is `city_connect`, UDL address dataset stored in Azure Blob Storage is `dataos://thirdparty01:sampledata/avro`, and the file format is `avro`. Then the `inputs` section will be as follows-
 
@@ -23,7 +14,7 @@ For reading the data, we need to configure the `name`, `dataset`, and `format` p
 inputs:
 	- name: city_connect # name of the dataset
     dataset: dataos://thirdparty01:sampledata/avro # address of the input dataset
-    format: avro # file format
+    format: avro # file format: avro, csv, json, orc, parquet, txt, xlsx, xml
 ```
 
 Your Flare Jobs can read from multiple data sources. In such a scenario, you have to provide an array of data source definitions as shown below.
@@ -101,15 +92,7 @@ workflow:
                   sql: SELECT * FROM city_connect
 ```
 
-## Write Config
-
-| Scenario | Syntax | Supported File Formats |
-| --- | --- | --- |
-| Outputs (while writing
-to a depot) | outputs:
-  - name: <name-of-output>
-    dataset: dataos://[depot]:[collection]/[dataset]?acl=rw
-    format: <file-format> | avro, csv, json, orc, parquet, txt, xlsx, xml |
+### **Write Config**
 
 > **Note:** the `?acl=rw` after the UDL signifies Access Control List with Read Write Access. You can also specify the address of the output dataset in the format `dataos://[depot]:[collection]?acl=rw.` The name of the output dataset will automatically get appended to it.
 > 
@@ -120,7 +103,7 @@ For writing the data to a depot on an object store, we need to configure the `na
 outputs:
   - name: output01 # output name
     dataset: dataos://thirdparty01:sampledata?acl=rw # address where the output is to be stored
-    format: avro # file format
+    format: avro # file format: avro, csv, json, orc, parquet, txt, xlsx, xml
 ```
 
 **Sample Write configuration YAML**
@@ -166,32 +149,30 @@ workflow:
                     sql: SELECT * FROM city_connect
 ```
 
-# Advanced Configurations
+## Advanced Configurations
 
-## Data Format Configurations
+### **Data Format Configurations**
 
 This section will provide comprehensive information on how to provide advanced source configurations when working with different data sources using DataOS’ Flare stack. 
 
 | Data Source | Properties |
 | --- | --- |
-| AVRO | Object%20Storage%20Depots%20c855cce997be484bb2eb0260db908db7/Source%20Configurations%20by%20Data%20Formats%20b00485aee2214960acec248099d36c36.md |
-| CSV | Object%20Storage%20Depots%20c855cce997be484bb2eb0260db908db7/Source%20Configurations%20by%20Data%20Formats%20b00485aee2214960acec248099d36c36.md |
-| Iceberg | Object%20Storage%20Depots%20c855cce997be484bb2eb0260db908db7/Source%20Configurations%20by%20Data%20Formats%20b00485aee2214960acec248099d36c36.md |
-| JSON | Object%20Storage%20Depots%20c855cce997be484bb2eb0260db908db7/Source%20Configurations%20by%20Data%20Formats%20b00485aee2214960acec248099d36c36.md |
-| ORC | Object%20Storage%20Depots%20c855cce997be484bb2eb0260db908db7/Source%20Configurations%20by%20Data%20Formats%20b00485aee2214960acec248099d36c36.md |
-| Parquet | Object%20Storage%20Depots%20c855cce997be484bb2eb0260db908db7/Source%20Configurations%20by%20Data%20Formats%20b00485aee2214960acec248099d36c36.md |
-| Text | Object%20Storage%20Depots%20c855cce997be484bb2eb0260db908db7/Source%20Configurations%20by%20Data%20Formats%20b00485aee2214960acec248099d36c36.md |
-| XLSX | Object%20Storage%20Depots%20c855cce997be484bb2eb0260db908db7/Source%20Configurations%20by%20Data%20Formats%20b00485aee2214960acec248099d36c36.md |
-| XML | Object%20Storage%20Depots%20c855cce997be484bb2eb0260db908db7/Source%20Configurations%20by%20Data%20Formats%20b00485aee2214960acec248099d36c36.md |
+| AVRO | [Link](./object_storage_depots/source_configurations_by_data_formats.md#avro) |
+| CSV | [Link](./object_storage_depots/source_configurations_by_data_formats.md#csv) |
+| Iceberg | [Link](./object_storage_depots/source_configurations_by_data_formats.md#iceberg) |
+| JSON | [Link](./object_storage_depots/source_configurations_by_data_formats.md#json) |
+| ORC | [Link](./object_storage_depots/source_configurations_by_data_formats.md#orc) |
+| Parquet | [Link](./object_storage_depots/source_configurations_by_data_formats.md#parquet) |
+| Text | [Link](./object_storage_depots/source_configurations_by_data_formats.md#text) |
+| XLSX | [Link](./object_storage_depots/source_configurations_by_data_formats.md#xlsx) |
+| XML | [Link](./object_storage_depots/source_configurations_by_data_formats.md#xml) |
 
 Refer to the link below to know more.
 
-[Source Configurations by Data Formats](Object%20Storage%20Depots%20c855cce997be484bb2eb0260db908db7/Source%20Configurations%20by%20Data%20Formats%20b00485aee2214960acec248099d36c36.md)
+[Source Configurations by Data Formats](./object_storage_depots/source_configurations_by_data_formats.md)
 
 ## Schema Configurations
 
 This section delves into the realm of schema configurations, offering invaluable insights into managing and customizing schemas for various data sources in Flare. Refer to the link below.
 
-[Schema Configurations](Object%20Storage%20Depots%20c855cce997be484bb2eb0260db908db7/Schema%20Configurations%20824035444b054ba29da143dcdee09499.md)
-
-Table of Contents
+[Schema Configurations](./object_storage_depots/schema_configurations.md)

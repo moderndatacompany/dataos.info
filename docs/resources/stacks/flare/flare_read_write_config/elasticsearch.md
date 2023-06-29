@@ -1,19 +1,9 @@
 # Elasticsearch Depots
 
-
 To start executing Flare Jobs on Elasticsearch Depots, you first need to set up an Elasticsearch Depot. If you haven’t done it, navigate to the below link
 
-# Read Configuration
+## Read Configuration
 
-| Scenario | Syntax | Additonal Properties (Elastic Search Specific) |
-| --- | --- | --- |
-| Inputs (while reading
-from a depot) | inputs:
-  - name: <name-of-the-input>
-    dataset: dataos://[depot]:[collection]/[dataset]
-    format: elasticsearch
-    options:
-      es.nodes.wan.only: 'true’ | By setting es.nodes.wan.only, the connector will limit its network usage and instead of connecting directly to the target resource shards, it will make connections to the Elasticsearch cluster only. |
 
 For reading the data from an Elasticsearch depot, we need to configure the following property `name`, `dataset`, `format`, and Elasticsearch-specific property `es.nodes.wan.only` within `options` in the `inputs` section of the YAML. For instance, if your dataset name is `input`, the UDL address is `dataos://elasticsearch:default/elastic_write`  and the `format` set to `elasticsearch`. Then the inputs section will be as follows-
 
@@ -25,6 +15,7 @@ inputs:
      options:
         es.nodes.wan.only: 'true'
 ```
+By setting `es.nodes.wan.only`, the connector will limit its network usage and instead of connecting directly to the target resource shards, it will make connections to the Elasticsearch cluster only.
 
 **Sample Read configuration YAML**
 
@@ -70,15 +61,7 @@ workflow:
                     sql: SELECT * FROM input
 ```
 
-# Write Configuration
-
-| Scenario | Syntax |
-| --- | --- |
-| Inputs (while reading
-from a depot) | outputs:
-   - name: <output-name>
-     dataset: dataos://[depot]:[collection]?acl=rw
-     format: elasticsearch |
+## Write Configuration
 
 For writing the data to an Elasticsearch depot, we need to configure the `name`, `dataset`, `format`, in the `outputs` section of the YAML. For instance, if your dataset name is `output01`, the dataset is to be stored at the location `dataos://elasticsearch:default/elastic_write` and the file format is `elasticsearch`. Then the inputs section will be as follows-
 
@@ -133,5 +116,3 @@ workflow:
                   - name: output01
                     sql: SELECT * FROM city_connect
 ```
-
-Table of Contents

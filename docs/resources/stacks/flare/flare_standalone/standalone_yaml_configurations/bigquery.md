@@ -1,7 +1,7 @@
 # Bigquery
 
 
-# Read Config
+## Read Config
 
 **Input Section Configuration for Reading from Bigquery Data Source**
 
@@ -79,7 +79,7 @@ workflow:
 					# the configuration file & sample data and prefix it with /data/examples 
 ```
 
-# Write Config
+## Write Config
 
 **Output Section Configuration for Writing to Bigquery Data Source**
 
@@ -153,5 +153,3 @@ workflow:
 					# Keep the json key file at the base directory where you have kept 
 					# the configuration file & sample data and prefix it with /data/examples
 ```
-
-Table of Contents

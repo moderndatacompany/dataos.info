@@ -13,7 +13,7 @@
 
 [Data Profiling Jobs](./case_scenario/data_profiling_jobs.md)
 
-[Data Quality Jobs (Assertions)](./case_scenario/data_quality_jobs_(assertions).md)
+[Data Quality Jobs (Assertions)](./case_scenario/data_quality_jobs.md)
 
 [Compression](./case_scenario/compression.md)
 
@@ -28,8 +28,6 @@
 [Partition Evolution](./case_scenario/partition_evolution.md)
 
 [Data Replay](./case_scenario/data_replay.md)
-
-[Actions](./case_scenario/actions.md)
 
 [Concurrent Writes](./case_scenario/concurrent_writes.md)
 

@@ -1,7 +1,7 @@
 # Azure Blob Storage (ABFSS)
 
 
-# Read Config
+## Read Config
 
 **Input Section Configuration for Reading from ABFSS Data Source**
 
@@ -71,7 +71,7 @@ workflow:
             - 'spark.hadoop.fs.azure.account.key.<account-name>.dfs.core.windows.net': 'account-key'
 ```
 
-# Write Config
+## Write Config
 
 **Output Section Configuration for Writing to ABFSS Data Source**
 
@@ -140,5 +140,3 @@ workflow:
           sparkConf:
             - 'spark.hadoop.fs.azure.account.key.<account-name>.dfs.core.windows.net': '<account-key>'
 ```
-
-Table of Contents

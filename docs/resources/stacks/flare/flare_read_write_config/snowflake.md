@@ -1,16 +1,10 @@
 # Snowflake Depots
 
-
 To read/write data on the Snowflake data source, you first need to create a depot on top of it. In case you haven’t created a Snowflake Depot navigate to the below link
 
-# **Read Config**
+## Read Config
 
 Once you have set up a Snowflake Depot, you can start reading data from it. 
-
-| Data Source | Format Property Value | Additional Properties (while reading) |
-| --- | --- | --- |
-| Snowflake | snowflake | options:
-   sfWarehouse: WAREHOUSE |
 
 ```yaml
 version: v1
@@ -72,12 +66,7 @@ workflow:
           value: latest
 ```
 
-# Write Config
-
-| Data Source | Format Property Value | Additional Properties (while writing) |
-| --- | --- | --- |
-| Snowflake | snowflake | extraOptions:
-   sfWarehouse: WAREHOUSE |
+## Write Config
 
 ```yaml
 version: v1
@@ -119,5 +108,3 @@ workflow:
                 description: City data ingested from external csv
                 title: City Source Data
 ```
-
-Table of Contents

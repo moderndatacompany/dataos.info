@@ -39,10 +39,10 @@ INFO[0000] 😃 user get...complete
                |             |        |                      | users:id:iamgroot
 ```
 
-<aside>
-🗣️ **Note**: In case of unavailability of required tags, contact the administrator within your organization with Operator-level permissions or `dataos:u:operator` tag to add the required tags for running your workflow.
+>
 
-</aside>
+**Note:** In case of unavailability of required tags, contact the administrator within your organization with Operator-level permissions or `dataos:u:operator` tag to add the required tags for running your workflow.
+>
 
 ### **Check the required depot**
 
@@ -192,13 +192,10 @@ workflow: # Workflow
                       city_connect
 ```
 
-Save the YAML and copy its path. Path could be either relative or absolute
+Save the YAML and copy its path. Path could be either relative or absolute.
 
-<aside>
-
-🗣️ To know more about the various building blocks of Flare Workflow and their configurations, click on the below link [Building Blocks of Flare Workflow](./building_blocks_of_flare_workflow.md)
-
-</aside>
+> To know more about the various building blocks of Flare Workflow and their configurations, click on the below link [Building Blocks of Flare Workflow](./building_blocks_of_flare_workflow.md)
+>
 
 ### **Validate the YAML**
 
@@ -442,7 +439,7 @@ INFO[0001] 🔍 workflow...complete
 ```
 </details>
 
-#### **Get runtime refresh: (Ctrl+C to exit)**
+#### **Get runtime refresh**
 
 You can see the updates for the workflow progress. 
 
@@ -482,7 +479,8 @@ INFO[0001] 🔍 workflow...complete
 ```
 
 </details>
-    
+
+Press `Ctrl + C` to Exit.
 
 ### **Troubleshoot Errors**
 
@@ -590,7 +588,7 @@ Exception in thread "shutdownHook1" io.dataos.flare.exceptions.FlareException: C
 ```
 </details>
 
-You will notice the error “**There is an existing job with the same workspace. You should use a different job name for your job as you cannot change output datasets for any job.”** 
+You will notice the error “*There is an existing job with the same workspace. You should use a different job name for your job as you cannot change output datasets for any job.”*
 
 #### **Fix the Errors**
 
@@ -742,7 +740,7 @@ You can also use the `set-metadata` Icebase command for Metadata Registration an
 dataos-ctl dataset -a dataos://icebase:retailsample/city set-metadata -v <latest|v2.gz.metadata.json>
 ```
 
-To know more about the Icebase approach click the [link](https://www.notion.so/Icebase-b954a9b214ae409bb5df56a0af00f249?pvs=21)
+To know more about the Icebase approach click the [link](../../depot/icebase.md#set-metadata)
 
 #### **Check Registered Dataset with Metis**
 

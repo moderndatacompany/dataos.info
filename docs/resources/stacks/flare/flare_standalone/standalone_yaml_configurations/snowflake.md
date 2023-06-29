@@ -1,7 +1,7 @@
 # Snowflake
 
 
-# Read Config
+## Read Config
 
 **Input Section Configuration for Reading from Snowflake Data Source**
 
@@ -79,7 +79,7 @@ workflow:
                     sql: SELECT * FROM city_connect
 ```
 
-# Write Config
+## Write Config
 
 **Output Section Configuration for Writing to Snowflake Data Source**
 
@@ -156,5 +156,3 @@ workflow:
                   - name: finalDf
                     sql: SELECT * FROM city_connect
 ```
-
-Table of Contents

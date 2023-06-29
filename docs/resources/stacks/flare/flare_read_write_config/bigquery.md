@@ -5,15 +5,7 @@ To execute Flare Jobs on top of the Bigquery data source, you first need to crea
 
 To run a Flare Job all you need is the UDL address of the input or output dataset for the reading and writing scenarios respectively.
 
-# Read Config
-
-| Scenario | Syntax | Format Value |
-| --- | --- | --- |
-| Inputs (while reading
-from a depot) | inputs:
-  - name: <name-of-input>
-    dataset: dataos://[depot]:[collection]/[dataset]
-    format: Bigquery | Bigquery |
+## Read Config
 
 For reading the data, we need to configure the `name`, `dataset` and `format` properties in the `inputs` section of the YAML. For instance, if your dataset name is `city_connect`, UDL address is `dataos://yakdevbq:dev/city_bq`. Then the inputs section will be as follows-
 
@@ -69,17 +61,7 @@ workflow:
                     sql: SELECT * FROM city_connect
 ```
 
-# Write Config
-
-| Scenario | Syntax | Format Value | Additional Properties |
-| --- | --- | --- | --- |
-| Outputs (while writing
-to a depot) | outputs:
-  - name: <name-of-output>
-    dataset: dataos://[depot]:[collection]/[dataset]?acl=rw
-    format: Bigquery | Bigquery | options:
-   bigquery:
-      temporaryBucket: <name> |
+## Write Config
 
 For writing the data to a depot on a Bigquery depot, we need to configure the `name`,  `dataset` and `format` properties in the `outputs` section of the YAML. For instance, if your dataset is to be stored at the UDL address is `dataos://yakdevbq:dev/city_bq?acl=rw`  by the name `finaldf` and the file format is `Bigquery`. Then the outputs section will be as follows
 
@@ -139,5 +121,3 @@ workflow:
                   - name: finalDf
                     sql: SELECT * FROM city_connect
 ```
-
-Table of Contents

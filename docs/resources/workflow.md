@@ -10,11 +10,11 @@ Within a workflow, a job encompasses a series of processing tasks, each executed
 
 Furthermore, every job within a Directed Acyclic Graph (DAG) is associated with a specific Stack. A Stack serves as an extension point within a job, offering users the ability to leverage different programming paradigms based on their specific requirements. For instance, if your objective involves data transformation, ingestion, or syndication, utilizing the Flare stack is recommended. DataOS provides a diverse range of pre-built stacks, including Flare, Scanner, Alpha, and more, enabling developers to seamlessly adopt various programming environments to suit their needs.
 
-<center>
 
-![Diagrammatic representation of a workflow](./workflow/workflow.svg)
 
-<i>Diagrammatic representation of a workflow</i></center>
+![Diagrammatic representation of a workflow](./workflow/workflow.png)
+
+<center><i>Diagrammatic representation of a workflow</i></center>
 
 In the depicted example, **Job 1** is the first job to be executed as it has no dependencies. Once **Job 1** completes, both **Job 2** and **Job 3** can run concurrently or parallely. Only after the successful completion of both **Job 2** and **Job 3**, **Job 4** becomes eligible for execution. Finally, **Job 5** can be executed after **Job 4** successfully finishes. This hierarchical structure ensures optimal job execution without creating bottlenecks.
 
@@ -36,11 +36,14 @@ Schedulable Workflows enable the automated and recurring execution of jobs based
 
 The Workflow resource is defined using a YAML configuration file. The following example illustrates the syntax for defining a single-time run workflow:
 
-<center>
+
 
 ![Workflow Syntax](./workflow/workflow_syntax.png)
 
-<i>YAML Syntax of a Workflow Resource</i></center>
+<center>
+
+<i>
+YAML Syntax of a Workflow Resource</i></center>
 
 In this syntax, each job within the DAG is defined with a unique name, specifications, stack configuration, compute settings, and any stack-specific configurations. Job dependencies are specified to ensure the correct execution order.
 

@@ -1,7 +1,7 @@
 # Redshift
 
 
-# Read Config
+## Read Config
 
 **Input Section Configuration for Reading from Redshift Data Source**
 
@@ -84,7 +84,7 @@ workflow:
             - 'spark.hadoop.fs.s3a.bucket.<bucket-name>.secret.key': '<secret-key>'
 ```
 
-# Write Config
+## Write Config
 
 **Output Section Configuration for Writing to Redshift Data Source**
 
@@ -163,5 +163,3 @@ workflow:
             - 'spark.hadoop.fs.s3a.bucket.<bucket-name>.access.key': '<access-key>'
             - 'spark.hadoop.fs.s3a.bucket.<bucket-name>.secret.key': '<secret-key>'
 ```
-
-Table of Contents
