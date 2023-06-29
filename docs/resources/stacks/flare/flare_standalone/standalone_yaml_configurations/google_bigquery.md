@@ -1,4 +1,4 @@
-# Bigquery
+# Google Bigquery
 
 
 ## Read Config

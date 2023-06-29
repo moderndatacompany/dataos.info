@@ -1,51 +1,59 @@
 # Flare
 
+Flare is a declarative stack for large-scale data processing within DataOS. It leverages a YAML-based declarative programming paradigm, built as an abstraction over Apache Spark, to provide a comprehensive solution for data ingestion, transformation, enrichment, profiling, quality assessment and syndication on both batch and streaming data.
 
-Flare is a stack used for building end-to-end data pipelines within DataOS. Utilizing a YAML-based declarative programming paradigm built as an abstraction over Apache Spark, Flare offers an all-in-one solution for performing diverse data ingestion, transformation, enrichment, and syndication processes on both batch and streaming data.
 
-
-![diagram 02.jpg](./flare/flare.jpg)
+![flare.jpg](./flare/flare.png)
 
 <center><i>Placement of Flare stack within DataOS</i>
 </center>
 
+## Creating a Flare Job
 
-[Basic Concepts of Flare Workflow](./flare/basic_concepts_of_flare_workflow.md)
+Whether you need to process data in batches or in a streaming fashion, Flare provides different job types to cater to your needs. You can explore the detailed documentation on creating Flare Jobs on the link below.
 
-## Getting Started with Flare Stack
+[Create Flare Jobs](./flare/creating_flare_jobs.md)
 
-### **Elements of Flare Stack**
+## Types of Flare Jobs
 
-A Flare Workflow comprises various configuration settings tailored to suit different use cases. These settings govern the reading, writing, and transformation of data from a wide range of sources and destinations. At its core, a Flare Workflow comprises of two key components: the building blocks, which comprise the configuration settings that underpin the Flare Workflow YAML, and the Flare Functions, which allow users to execute complex tasks with minimal coding requirements by leveraging pre-defined functions. 
+| Flare Job Type  | Description                                                                                                            |
+|-----------------|------------------------------------------------------------------------------------------------------------------------|
+| Batch Job       | Recomputes all changed datasets on each run, providing consistent performance. Has high latency and is suitable for smaller data sizes.                                              |
+| Data Profiling Job | Assesses data quality and structure, examining source data for accuracy, completeness, and validity.                    |
+| Data Quality Job | Evaluates data quality based on business-specific validation rules (assertions).                                                      |
+| Incremental Job | Computes only the changed rows or files of data since the last build, reducing overall computation and latency.        |
+| Stream Job      | Processes new data continuously with low latency, but incurs high computing costs and requires constant resource availability. |
 
-[Building Blocks of Flare Workflow](./flare/building_blocks_of_flare_workflow.md)
+Further information regarding Flare Jobs can be accessed [here](./flare/flare_job_types.md)
+
+## Flare Stack YAML Configurations
+
+The Flare Stack YAML consists of multitude of configuration settings tailored for different use cases. These settings govern data reading, writing, and transformation from diverse sources and destinations. 
+
+[Flare Stack YAML Configurations](./flare/flare_stack_yaml_configurations.md)
 
 [Flare Functions](./flare/flare_functions.md)
 
-### **Creating Workflows upon Flare Stack**
+## Testing Flare Jobs
 
-Embark on a hands-on experience in crafting your first Workflow using Flare. This tutorial will guide you through the process of creating a Flare workflow from start to finish. For further information, please refer to the link provided below.
-
-[Create your first Flare Workflow](./flare/create_your_first_flare_workflow.md)
-
-### **Testing the Workflow**
-
-Prior to deploying your logic into production, it is considered a best practice to thoroughly test it. Flare Standalone provides a convenient, powerful, and reliable testing interface, that enables you to test your code locally on your system, allowing you to identify and address any potential issues before deployment. Further information regarding Flare Standalone can be accessed by clicking the link below.
+Before deploying your logic into production, thorough testing is crucial. Flare Standalone provides a powerful and reliable testing interface, allowing you to test your Flare Jobs locally on your system. It helps identify and address potential issues before deployment. Further information regarding Flare Standalone can be accessed by clicking the link below.
 
 [Flare Standalone](./flare/flare_standalone.md)
 
 ## Flare Optimizations
 
-In the present scenario, the conventional "one size fits all" approach is no longer sufficient. Given the diverse nature of data and the multitude of variations within the data landscape, each Flare Job necessitates fine-tuning and optimization to achieve peak performance in accordance with the user's specifications. For a comprehensive understanding of the numerous optimization techniques, kindly refer to the link provided below.
+To achieve peak performance tailored to your specific requirements, each job executed upon Flare stack requires fine-tuning and optimization. The link below provides comprehensive information on various optimization techniques.
 
 [Flare Optimizations](./flare/flare_optimizations.md)
 
-## Flare Config Templates
+## Flare Configuration Templates
 
-To check out the list of all the connecting depots available in Flare, you can go to the page below to learn more about their configurations.
+Refer to the following page for a comprehensive list of available connecting depots in Flare, along with detailed information pertaining to the configurations associated with each depot. 
 
-[Flare Read/Write Config](./flare/flare_read_write_config.md)
+[Flare Configuration Templates](./flare/flare_configuration_templates.md)
 
 ## Case Scenarios
+
+Explore practical case scenarios that exemplify the application of Flare stack in real-world data processing scenarios. Click on the link below, to know more.
 
 [Case Scenario](./flare/case_scenario.md)
