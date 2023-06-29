@@ -1,22 +1,22 @@
 # Getting the Port of Service and AdminUrl
 
 
-1. Open the Operations App
+- Open the Operations App
 
-![Untitled](Getting%20the%20Port%20of%20Service%20and%20AdminUrl%201109047016724c15bb040e59dd9aa44c/Untitled.png)
+![Untitled](./getting_the_port_of_service_and_adminurl/untitled.png)
 
-1. Click on the Core Kernel
+- Click on the Core Kernel
 
-![Untitled](Getting%20the%20Port%20of%20Service%20and%20AdminUrl%201109047016724c15bb040e59dd9aa44c/Untitled%201.png)
+![Untitled](./getting_the_port_of_service_and_adminurl/untitled_1.png)
 
-1. Click on the Services
+- Click on the Services
 
-![Untitled](Getting%20the%20Port%20of%20Service%20and%20AdminUrl%201109047016724c15bb040e59dd9aa44c/Untitled%202.png)
+![Untitled](./getting_the_port_of_service_and_adminurl/untitled_2.png)
 
-1. In the services search for `pulsar-broker`
+- In the services search for `pulsar-broker`
 
-![Untitled](Getting%20the%20Port%20of%20Service%20and%20AdminUrl%201109047016724c15bb040e59dd9aa44c/Untitled%203.png)
+![Untitled](./getting_the_port_of_service_and_adminurl/untitled_3.png)
 
-1. Click on the `pulsar-broker` service and navigate to the Service Details. Here you will find the Port section which gives the details of the name, protocol, and port
+- Click on the `pulsar-broker` service and navigate to the Service Details. Here you will find the Port section which gives the details of the name, protocol, and port
 
-![Port.png](Getting%20the%20Port%20of%20Service%20and%20AdminUrl%201109047016724c15bb040e59dd9aa44c/Port.png)
+![Port.png](./getting_the_port_of_service_and_adminurl/port.png)

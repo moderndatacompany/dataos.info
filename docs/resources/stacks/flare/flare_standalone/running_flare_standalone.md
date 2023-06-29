@@ -302,4 +302,4 @@ Congratulations on successfully testing your job on Flare Standalone; ****you ca
 
 Wanna learn how to read and write locally using Flare Standalone, navigate to the below page
 
-[Local to Local using CLI ](./case_scenarios/local_to_local.md)
+[Local to Local using CLI ](./case_scenarios/local_to_cloud_using_standalone_2.0.md)
