@@ -1,7 +1,7 @@
 # MySQL
 
 
-# Read Config
+## Read Config
 
 **Input Section Configuration for Reading from MySQL Data Source**
 
@@ -74,7 +74,7 @@ workflow:
                     sql: SELECT * FROM transactions_connect
 ```
 
-# Write Config
+## Write Config
 
 **Output Section Configuration for Writing to MySQL Data Source**
 
@@ -143,5 +143,3 @@ workflow:
                   - name: finalDf
                     sql: SELECT * FROM city LIMIT 10
 ```
-
-Table of Contents

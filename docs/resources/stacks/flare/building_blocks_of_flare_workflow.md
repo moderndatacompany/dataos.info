@@ -153,7 +153,7 @@ In the context of data quality, assertions refer to validation rules that are ta
 
 [Assertions](./building_blocks_of_flare_workflow/assertions.md)
 
-To perform validation checks on datasets that are to be written, click here
+To perform validation checks on datasets that are to be written, click [here.](./case_scenario/data_quality_jobs.md#pre-sink-assertions)
 
 #### **Actions**
 

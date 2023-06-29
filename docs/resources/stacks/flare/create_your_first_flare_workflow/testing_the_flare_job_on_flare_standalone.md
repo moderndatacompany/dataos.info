@@ -98,8 +98,8 @@ In this case, we will be using the flare version `flare:3.0` and the `city_inges
 ```bash
 dataos-ctl develop start -s flare:3.0 -f /home/tmdc/standalone/standalone.yaml -d /home/tmdc/standalone/data
 ```
-
-**Output**
+<details>
+<summary>Output</summary>
 
 ```bash
 Flare session is available as flare.
@@ -116,8 +116,6 @@ Using Scala version 2.12.15 (OpenJDK 64-Bit Server VM, Java 1.8.0_262)
 Type in expressions to have them evaluated.
 Type :help for more information.
 ```
-<details>
-<summary>To view the full output, click the arrow</summary>
     
 ```bash
 INFO[0002] 💻 create flare local...                      

@@ -1,7 +1,7 @@
 # Elasticsearch
 
 
-# Read Config
+## Read Config
 
 **Input Section Configuration for Reading from Elasticsearch Data Source**
 
@@ -68,7 +68,7 @@ workflow:
                     sql: SELECT * FROM oms_transactions_data
 ```
 
-# Write Config
+## Write Config
 
 **Output Section Configuration for Writing to Elasticsearch Data Source**
 
@@ -131,5 +131,3 @@ workflow:
                   - name: finalDf
                     sql: SELECT * FROM oms_transactions_data LIMIT 10
 ```
-
-Table of Contents

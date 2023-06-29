@@ -72,7 +72,7 @@ actions:
     input: <input-dataset-name> # Input Dataset Name
 ```
 
-A case scenario illustrating the implementation of the `rewrite_manifest` action is given [here.](../case_scenario/rewrite_manifest.md)
+A case scenario illustrating the implementation of the `rewrite_manifest` action is given [here.](../case_scenario/rewrite_manifest_files.md)
 
 ## Expire Snapshots
 

@@ -43,7 +43,7 @@ workflow: # Workflow Section
                   expireOlderThan: "1674201289720" # Timestamp in Unix Format (All snapshots older than the timestamp are expired)
 ```
 
-## **Syntax for Flare Version `flare:3.0`**
+### **Syntax for Flare Version `flare:3.0`**
 
 ```yaml
 version: v1 # Version

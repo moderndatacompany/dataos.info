@@ -39,7 +39,7 @@ You can assess your source data quality before using it in critical business sce
 
 #### **Data Quality Job**
 
-Data Quality is essential and subjective as different consumers have different notions of it. Within DataOS, we define assertions, which are business-specific validation rules to test and evaluate the quality of specific datasets if they are appropriate for the intended purpose. On top of that, one can measure the data quality. If you want to look at which properties are required for defining the assertions, click [here](./building_blocks_of_flare_workflow/assertions.md). If you want to check out a case scenario related to Data Quality Jobs, click [here](./case_scenario/data_quality_jobs_(assertions).md).
+Data Quality is essential and subjective as different consumers have different notions of it. Within DataOS, we define assertions, which are business-specific validation rules to test and evaluate the quality of specific datasets if they are appropriate for the intended purpose. On top of that, one can measure the data quality. If you want to look at which properties are required for defining the assertions, click [here](./building_blocks_of_flare_workflow/assertions.md). If you want to check out a case scenario related to Data Quality Jobs, click [here](./case_scenario/data_quality_jobs.md).
 
 #### **Incremental Job**
 

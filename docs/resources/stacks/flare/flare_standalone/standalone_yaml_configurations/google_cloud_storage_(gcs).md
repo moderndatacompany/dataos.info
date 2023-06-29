@@ -1,7 +1,7 @@
 # Google Cloud Storage (GCS)
 
 
-# Read Config
+## Read Config
 
 **Input Section Configuration for Reading from GCS Data Source**
 
@@ -74,7 +74,7 @@ workflow:
 					# Keep the JSON key file at the base directory where you have kept the configuration file & sample data.
 ```
 
-# Write Config
+## Write Config
 
 **Output Section Configuration for Writing to GCS Data Source**
 
@@ -139,5 +139,3 @@ workflow:
             - 'spark.hadoop.google.cloud.auth.service.account.json.keyfile': 'gcp-demo-sa.json'
 					# Keep the JSON key file at the base directory where you have kept the configuration file & sample data.
 ```
-
-Table of Contents

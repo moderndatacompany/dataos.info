@@ -1,7 +1,7 @@
 # Kafka
 
 
-# Read Config
+## Read Config
 
 **Input Section Configuration for Reading from Kafka Data Source**
 
@@ -72,7 +72,7 @@ workflow:
                     sql: SELECT * FROM city_connect
 ```
 
-# Write Config
+## Write Config
 
 **Output Section Configuration for Writing to Kafka Data Source**
 
@@ -140,5 +140,3 @@ workflow:
                   - name: city_connect
                     sql: SELECT * FROM transactions_data
 ```
-
-Table of Contents

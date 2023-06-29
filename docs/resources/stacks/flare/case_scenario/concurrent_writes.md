@@ -143,7 +143,7 @@ workflow:
                   ts_ny_taxi FROM ny_taxi_changed_dateformat
 ```
 
-## **DataOS Tool Yaml**
+### **DataOS Tool Yaml**
 
 ```yaml
 version: v1beta1

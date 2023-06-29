@@ -5,9 +5,11 @@ In Flare 4.0, a new feature has been introduced to enable users to tag columns i
 
 Three mutually exclusive ways have been defined to identify a column, which includes specifying either `columnRegex`, `columnName`, or `columnNames` within the `columnTags` property.
 
+## Different Ways to Identify the Column
+
 The following section provides a comprehensive overview of these three ways:
 
-## **`columnRegex`**
+### **`columnRegex`**
 
 The `columnRegex` property allows the specification of a regular expression pattern to identify columns that require tagging. The pattern will initiate matching from the beginning of the string. 
 
@@ -21,7 +23,7 @@ columnTags:
       - customer
 ```
 
-## `columnName`
+### `columnName`
 
 The `columnName` property is utilized to designate a particular column.
 
@@ -38,7 +40,7 @@ The `columnName` property is utilized to designate a particular column.
 	    - PII.Name
 ```
 
-## `columnNames`
+### `columnNames`
 
 The `columnNames` property is utilized when identical tags need to be applied to columns that match the specified name.
 

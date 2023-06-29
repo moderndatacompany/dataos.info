@@ -29,11 +29,11 @@ In the city data (Source table) information about  `zip_code = 36006` has change
 > Now we want to update this on zip_code (i.e. 36006) records only.
 > 
 
-### Existing city table.
+### **Existing city table.**
 
 ![Screen Shot 2022-06-02 at 1.08.49 AM.png](./merge_into_functionality/screen_shot_2022-06-02_at_1.08.49_am.png)
 
-### City table with updated records (Using merge into the function)
+### **City table with updated records (Using merge into the function)**
 
 ![Screen Shot 2022-06-02 at 1.21.52 AM.png](./merge_into_functionality/screen_shot_2022-06-02_at_1.21.52_am.png)
 

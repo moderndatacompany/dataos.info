@@ -1,0 +1,320 @@
+# http_server
+
+Receive messages POSTed over HTTP(S). HTTP 2.0 is supported when using TLS, which is enabled when key and cert files are specified.
+
+## YAML Configurations
+
+### Common Config
+
+```yaml
+# Common config fields, showing default values
+input:
+  label: ""
+  http_server:
+    address: ""
+    path: /post
+    ws_path: /post/ws
+    allowed_verbs:
+      - POST
+    timeout: 5s
+    rate_limit: ""
+```
+
+### Advanced Config
+
+```yaml
+# All config fields, showing default values
+input:
+  label: ""
+  http_server:
+    address: ""
+    path: /post
+    ws_path: /post/ws
+    ws_welcome_message: ""
+    ws_rate_limit_message: ""
+    allowed_verbs:
+      - POST
+    timeout: 5s
+    rate_limit: ""
+    cert_file: ""
+    key_file: ""
+    cors:
+      enabled: false
+      allowed_origins: []
+    sync_response:
+      status: "200"
+      headers:
+        Content-Type: application/octet-stream
+      metadata_headers:
+        include_prefixes: []
+        include_patterns: []
+```
+
+If the `address` config field is left blank, the service-wide HTTP server will be used.
+
+The field `rate_limit` allows you to specify an optional `rate_limit` resource, which will be applied to each HTTP request made and each websocket payload received.
+
+When the rate limit is breached, HTTP requests will have a 429 response returned with a Retry-After header. Websocket payloads will be dropped and an optional response payload will be sent as per `ws_rate_limit_message`.
+
+### Responses
+
+It's possible to return a response for each message received using synchronous responses. When doing so, you can customize headers with the `sync_response` field `headers`, which can also use function interpolation in the value based on the response message contents.
+
+### Endpoints
+
+The following fields specify endpoints that are registered for sending messages and support path parameters of the form `/{foo}`, which are added to ingested messages as metadata:
+
+### `path` (defaults to `/post`)
+
+This endpoint expects POST requests where the entire request body is consumed as a single message.
+
+If the request contains a multipart `content-type` header as per [rfc1341](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html) then the multiple parts are consumed as a batch of messages, where each body part is a message of the batch.
+
+### `ws_path` (defaults to `/post/ws`)
+
+Creates a websocket connection, where payloads received on the socket are passed through the pipeline as a batch of one message.
+
+You may specify an optional `ws_welcome_message`, which is a static payload to be sent to all clients once a websocket connection is first established.
+
+It's also possible to specify a `ws_rate_limit_message`, which is a static payload to be sent to clients that have triggered the servers rate limit.
+
+### Metadata
+
+This input adds the following metadata fields to each message:
+
+```yaml
+- http_server_user_agent
+- http_server_request_path
+- http_server_verb
+- http_server_remote_ip
+- All headers (only first values are taken)
+- All query parameters
+- All path parameters
+- All cookies
+```
+
+If HTTPS is enabled, the following fields are added as well:
+
+```yaml
+- http_server_tls_version
+- http_server_tls_subject
+- http_server_tls_cipher_suite
+```
+
+You can access these metadata fields using function interpolation.
+
+## Fields
+
+### `address`
+
+An alternative address to host from. If left empty, the service-wide address is used.
+
+Type: `string`
+
+Default: `""`
+
+---
+
+### `path`
+
+The endpoint path to listen for POST requests.
+
+Type: `string`
+
+Default: `"/post"`
+
+---
+
+### `ws_path`
+
+The endpoint path to create websocket connections from.
+
+Type: `string`
+
+Default: `"/post/ws"`
+
+---
+
+### `ws_welcome_message`
+
+An optional message to deliver to fresh websocket connections.
+
+Type: `string`
+
+Default: `""`
+
+---
+
+### `ws_rate_limit_message`
+
+An optional message to delivery to websocket connections that are rate limited.
+
+Type: `string`
+
+Default: `""`
+
+---
+
+### `allowed_verbs`
+
+An array of verbs that are allowed for the `path` endpoint.
+
+Type: `array`
+
+Default: `["POST"]`
+
+---
+
+### `timeout`
+
+Timeout for requests. If a consumed message takes longer than this to be delivered, the connection is closed, but the message may still be delivered.
+
+Type: `string`
+
+Default: `"5s"`
+
+---
+
+### `rate_limit`
+
+An optional rate limit to throttle requests by.
+
+Type: `string`
+
+Default: `""`
+
+---
+
+### `cert_file`
+
+Enable TLS by specifying a certificate and key file. Only valid with a custom `address`.
+
+Type: `string`
+
+Default: `""`
+
+---
+
+### `key_file`
+
+Enable TLS by specifying a certificate and key file. Only valid with a custom `address`.
+
+Type: `string`
+
+Default: `""`
+
+---
+
+### `cors`
+
+Adds Cross-Origin Resource Sharing headers. Only valid with a custom `address`.
+
+Type: `object`
+
+---
+
+### `cors.enabled`
+
+Whether to allow CORS requests.
+
+Type: `bool`
+
+Default: `false`
+
+---
+
+### `cors.allowed_origins`
+
+An explicit list of origins that are allowed for CORS requests.
+
+Type: `array`
+
+Default: `[]`
+
+---
+
+### `sync_response`
+
+Customise messages returned via synchronous responses.
+
+Type: `object`
+
+---
+
+### `sync_response.status`
+
+Specify the status code to return with synchronous responses. This is a string value, which allows you to customize it based on resulting payloads and their metadata. This field supports interpolation functions.
+
+Type: `string`
+
+Default: `"200"`
+
+```yaml
+# Examples
+
+status: "200"
+
+status: ${! json("status") }
+
+status: ${! meta("status") }
+```
+
+---
+
+### `sync_response.headers`
+
+Specify headers to return with synchronous responses. This field supports interpolation functions.
+
+Type: `object`
+
+Default: `{"Content-Type":"application/octet-stream"}`
+
+---
+
+### `sync_response.metadata_headers`
+
+Specify criteria for which metadata values are added to the response as headers.
+
+Type: `object`
+
+---
+
+### `sync_response.metadata_headers.include_prefixes`
+
+Provide a list of explicit metadata key prefixes to match against.
+
+Type: `array`
+
+Default: `[]`
+
+```yaml
+# Examples
+
+include_prefixes:
+  - foo_
+  - bar_
+
+include_prefixes:
+  - kafka_
+
+include_prefixes:
+  - content-
+```
+
+### `sync_response.metadata_headers.include_patterns`
+
+Provide a list of explicit metadata key regular expression (re2) patterns to match against.
+
+Type: `array`
+
+Default: `[]`
+
+```yaml
+# Examples
+
+include_patterns:
+  - .*
+
+include_patterns:
+  - _timestamp_unix$
+```

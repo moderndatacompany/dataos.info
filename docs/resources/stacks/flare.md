@@ -3,11 +3,10 @@
 
 Flare is a stack used for building end-to-end data pipelines within DataOS. Utilizing a YAML-based declarative programming paradigm built as an abstraction over Apache Spark, Flare offers an all-in-one solution for performing diverse data ingestion, transformation, enrichment, and syndication processes on both batch and streaming data.
 
-<center>
 
-![diagram 02.jpg](./flare/diagram_02.jpg)
+![diagram 02.jpg](./flare/flare.jpg)
 
-<i>Placement of Flare stack within DataOS</i>
+<center><i>Placement of Flare stack within DataOS</i>
 </center>
 
 

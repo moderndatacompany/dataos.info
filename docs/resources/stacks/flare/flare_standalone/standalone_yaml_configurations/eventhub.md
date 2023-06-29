@@ -1,7 +1,7 @@
 # EventHub
 
 
-# Read Config
+## Read Config
 
 **Input Section Configuration for Reading from Pulsar Data Source**
 
@@ -82,7 +82,7 @@ workflow:
                     sql: SELECT * FROM input
 ```
 
-# Write Config
+## Write Config
 
 **Output Section Configuration for Writing to EventHub Data Source**
 
@@ -150,5 +150,3 @@ workflow:
                   - name: finalDf
                     sql: SELECT * FROM input
 ```
-
-Table of Contents
