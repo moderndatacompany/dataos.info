@@ -21,191 +21,503 @@ So without any further ado, let’s get right into building audiences within the
 Ensure that the Lens YAML is created with the prerequisites satisfied. For demonstration purpose, As a demonstration, a `c360` lens sample has been provided below:
 
 ```yaml
-name: c360
-description: Data Model to answer any questions around a customer. It follows Activity Schema specifications.
-contract: c360
-owner: iamgroot
+name: "c360"
+contract: "data_mapper"
+description: "Data Model to answer any questions around a customer."
+owner: "The Modern Data Company"
 tags:
-  - c360
+- "c360"
+- "activity_schema"
+- "segment"
 entities:
-  - name: customer
-    sql:
-      query: >
-        SELECT * FROM icebase.audience.customers_large_data_02
-      columns:
-        - name: customer_id
-        - name: customer_name
-        - name: email
-        - name: phone_number
-        - name: address
-      verified: true
-      tables:
-        - icebase.audience.customers_large_data
-    fields:
-      - name: customer_id
-        type: string
-        description: unique identifier of the customer
-        primary: true
-        sql_snippet: customer_id
-      - name: customer_name
-        type: string
-        description: Business name the customer operates under
-        sql_snippet: customer_name
-      - name: email
-        type: string
-        description: email address of the customer
-        sql_snippet: email
-      - name: phone_number
-        type: string
-        description: contact number of the customer
-        sql_snippet: phone_number
-      - name: address
-        type: string
-        description: postal address of the customer
-        sql_snippet: address
-    dimensions:
-      - name: customer_no
-        type: string
-        description: customer identifier only unique within the site
-        sql_snippet: customer_no
-      - name: site
-        type: string
-        description: site number
-        sql_snippet: site
-      - name: state
-        type: string
-        description: state code where the customer physical address is located
-        sql_snippet: state
-      - name: county_name
-        type: string
-        description: name of the county
-        sql_snippet: county_name
-      - name: zip
-        type: string
-        description: ZIP code associate with the customer physical address
-        sql_snippet: zip
-      - name: premise_code
-        type: string
-        description: premise code - on prem, off prem
-        sql_snippet: premise_code
-      - name: status
-        type: string
-        description: customer status - active, inactive, suspended
-        sql_snippet: status
-      - name: license_classification
-        type: string
-        description: used to identify customer tier
-        sql_snippet: license_classification
-      - name: license_type
-        type: string
-        description: type of license
-        sql_snippet: license_type
-      - name: channel_code
-        type: string
-        description: indicates whether chain is a grocery, hotel etc
-        sql_snippet: channel_code
-      - name: channel_name
-        type: string
-        description: channel description
-        sql_snippet: channel_name
-      - name: selling_division_name
-        type: string
-        description: internal division responsible for the order
-        sql_snippet: selling_division_name
-    measures:
-      - name: total_customers
-        sql_snippet: ${customer.customer_id}
-        type: count
-        description: count of total customers
-    relationships:
-      - type: 1:N
-        field: customer_id
-        target:
-          name: activity_stream
-          field: entity_id
-        verified: true
-  - name: activity_stream
-    sql:
-      query: >
-        select * from icebase.audience.activity_streams_large_data_02
-      columns:
-        - name: activity_uuid
-        - name: entity_id
-      verified: true
-      tables:
-        - icebase.audience.activity_streams_large_data
-    fields:
-      - name: activity_uuid
-        type: string
-        description: unique identifier of the activity event
-        primary: true
-        sql_snippet: activity_uuid
-      - name: entity_id
-        type: string
-        description: customer identifier
-        sql_snippet: entity_id
-    dimensions:
-      - name: activity_ts
-        type: date
-        description: timestamp of the moment when activity_occured
-        sql_snippet: activity_ts
-      - name: activity
-        type: string
-        description: name of the activity associated with the customer
-        sql_snippet: activity
-      - name: feature1
-        type: string
-        description: activity specific features
-        sql_snippet: feature1
-      - name: feature2
-        type: string
-        description: activity specific features
-        sql_snippet: feature2
-      - name: feature3
-        type: string
-        description: activity specific features
-        sql_snippet: feature3
-      - name: feature4
-        type: string
-        description: activity specific features
-        sql_snippet: feature4
-      - name: feature5
-        type: string
-        description: activity specific features
-        sql_snippet: feature5
-      - name: feature6
-        type: string
-        description: activity specific features
-        sql_snippet: feature6
-      - name: feature7
-        type: string
-        description: activity specific features
-        sql_snippet: feature7
-      - name: feature8
-        type: string
-        description: activity specific features
-        sql_snippet: feature8
-      - name: feature9
-        type: string
-        description: activity specific features
-        sql_snippet: feature9
-      - name: feature10
-        type: string
-        description: activity specific features
-        sql_snippet: feature10
-      - name: activity_occurence
-        type: number
-        description: how many times has this activity happened to this customer
-        sql_snippet: activity_occurence
-      - name: activity_repeated_at
-        type: date
-        description: The date of the next instance of this activity for this customer
-        sql_snippet: activity_repeated_at
-    measures:
-      - name: total_activities
-        sql_snippet: activity_uuid
-        type: count
-        description: count of total activities
+- name: "customer"
+  sql:
+    query: "SELECT * FROM icebase.audience.customers_large_data"
+    columns:
+    - name: "customer_id"
+    - name: "customer_name"
+    - name: "email"
+    - name: "phone_number"
+    - name: "address"
+    - name: "customer_no"
+    - name: "site"
+    - name: "state"
+    - name: "county_name"
+    - name: "zip"
+    - name: "premise_code"
+    - name: "status"
+    - name: "license_classification"
+    - name: "license_type"
+    - name: "channel_code"
+    - name: "channel_name"
+    - name: "selling_division_name"
+    - name: "consent"
+    tables:
+    - "icebase.audience.customers_large_data_01"
+  fields:
+  - name: "customer_id"
+    description: "unique identifier of the customer"
+    tags:
+    - "customer_identifier"
+    type: "string"
+    column: "customer_id"
+    primary: true
+  - name: "customer_name"
+    description: "Business name the customer operates under"
+    tags:
+    - "name_identifier"
+    type: "string"
+    column: "customer_name"
+    primary: false
+  - name: "email"
+    description: "email address of the customer"
+    tags:
+    - "email_identifier"
+    type: "string"
+    column: "email"
+  - name: "phone_number"
+    description: "contact number of the customer"
+    tags:
+    - "phone_identifier"
+    type: "string"
+    column: "phone_number"
+  - name: "address"
+    description: "postal address of the customer"
+    tags:
+    - "address_identifier"
+    type: "string"
+    column: "address"
+  - name: "customer_no"
+    description: "customer identifier only unique within the site"
+    type: "string"
+    column: "customer_no"
+  - name: "state"
+    description: "state code where the customer physical address is located"
+    type: "string"
+    column: "state"
+  - name: "county_name"
+    description: "name of the county"
+    type: "string"
+    column: "county_name"
+  - name: "zip"
+    description: "ZIP code associate with the customer physical address"
+    type: "string"
+    column: "zip"
+  - name: "premise_code"
+    description: "premise code - on prem, off prem"
+    type: "string"
+    column: "premise_code"
+  - name: "status"
+    description: "customer status - active, inactive, suspended"
+    type: "string"
+    column: "status"
+  - name: "license_classification"
+    description: "used to identify customer tier"
+    type: "string"
+    column: "license_classification"
+  - name: "license_type"
+    description: "type of license"
+    type: "string"
+    column: "license_type"
+  - name: "channel_code"
+    description: "indicates whether chain is a grocery, hotel etc"
+    type: "string"
+    column: "channel_code"
+  - name: "selling_division_name"
+    description: "internal division responsible for the order"
+    type: "string"
+    column: "selling_division_name"
+  - name: "site"
+    description: "site number"
+    type: "string"
+    column: "site"
+  - name: "channel_name"
+    description: "channel description"
+    type: "string"
+    column: "channel_name"
+  - name: "consent"
+    description: "consent to use data for recommendation"
+    type: "string"
+    column: "consent"
+  measures:
+  - name: "count_customers"
+    description: "count of total customers"
+    tags:
+    - "total_customers"
+    type: "count"
+    sql_snippet: "${customer.customer_id}"
+  - name: "percentage_email"
+    description: "percentage customers with email"
+    tags:
+    - "email_reachability"
+    type: "number"
+    sql_snippet: "round(100*count(${customer.email})/cast(count(*) as double),2)"
+  - name: "percentage_phone"
+    description: "percentage customers with email"
+    tags:
+    - "phone_reachability"
+    type: "number"
+    sql_snippet: "round(100*count(${customer.phone_number})/cast(count(*) as double),2)"
+  - name: "percentage_address"
+    description: "percentage customers with email"
+    tags:
+    - "address_reachability"
+    type: "number"
+    sql_snippet: "round(100*count(${customer.address})/cast(count(*) as double),2)"
+  relationships:
+  - type: "1:N"
+    field: "customer_id"
+    target:
+      name: "order_placed"
+      field: "entity_id"
+  - type: "1:N"
+    field: "customer_id"
+    target:
+      name: "order_rejected"
+      field: "entity_id"
+  - type: "1:N"
+    field: "customer_id"
+    target:
+      name: "order_invoiced"
+      field: "entity_id"
+- name: "order_placed"
+  sql:
+    query: "SELECT \n  activity_uuid, \n  entity_id,\n  trim(feature1) as order_id,\n\
+      \  activity_ts,\n  trim(feature2) as product_id,\n  trim(feature3) as brand_name,\n\
+      \  trim(feature4) as supplier_name,\n  trim(feature5) as product_category,\n\
+      \  trim(feature6) as product_classification,\n  cast(feature7 as double) as\
+      \ cases,\n  cast(feature8 as double) as bottles,\n  cast(feature9 as double)\
+      \ as order_value,\n  feature10 as request_delivery_date,\n  activity_occurence,\n\
+      \  activity_repeated_at,\n  case when trim(feature3) = 'BACARDI' then true else\
+      \ false end as bacardi_brand\nFROM icebase.audience.activity_streams_large_data\
+      \ where activity = 'order_placed'\n"
+    columns:
+    - name: "activity_uuid"
+    - name: "entity_id"
+    - name: "activity_ts"
+    - name: "order_id"
+    - name: "product_id"
+    - name: "brand_name"
+    - name: "supplier_name"
+    - name: "product_category"
+    - name: "product_classification"
+    - name: "cases"
+    - name: "bottles"
+    - name: "order_value"
+    - name: "request_delivery_date"
+    - name: "activity_occurence"
+    - name: "activity_repeated_at"
+    - name: "bacardi_brand"
+    tables:
+    - "icebase.audience.activity_streams_large_data"
+  fields:
+  - name: "activity_uuid"
+    description: "unique identifier of the activity event"
+    type: "string"
+    column: "activity_uuid"
+    primary: true
+  - name: "entity_id"
+    description: "customer identifier"
+    type: "string"
+    column: "entity_id"
+  - name: "order_id"
+    description: "order identifier"
+    type: "string"
+    column: "order_id"
+  - name: "activity_ts"
+    description: "timestamp of the moment when activity_occured"
+    type: "date"
+    column: "activity_ts"
+  - name: "product_id"
+    description: "product identifier"
+    type: "string"
+    column: "product_id"
+  - name: "product_classification"
+    description: "classification of the product"
+    type: "string"
+    column: "product_classification"
+  - name: "cases"
+    description: "count of cases the order was placed for"
+    type: "number"
+    column: "cases"
+  - name: "bottles"
+    description: "count of bottles the order was placed for"
+    type: "number"
+    column: "bottles"
+  - name: "order_value"
+    description: "value of the order placed"
+    type: "number"
+    column: "order_value"
+  - name: "request_delivery_date"
+    description: "requested delivery date"
+    type: "date"
+    column: "request_delivery_date"
+  - name: "activity_occurence"
+    description: "how many times this activity has happened to this customer"
+    type: "number"
+    column: "activity_occurence"
+  - name: "activity_repeated_at"
+    description: "The date of the next instance of this activity for this customer"
+    type: "date"
+    column: "activity_repeated_at"
+  - name: "brand_name"
+    description: "name of the brand"
+    type: "string"
+    column: "brand_name"
+  - name: "supplier_name"
+    description: "name of the supplier"
+    type: "string"
+    column: "supplier_name"
+  - name: "product_category"
+    description: "category of the product"
+    type: "string"
+    column: "product_category"
+  - name: "bacardi_brand"
+    type: "bool"
+    column: "bacardi_brand"
+  dimensions:
+  - name: "order_no"
+    description: "unique order_no for a customer"
+    type: "string"
+    sql_snippet: "concat(${order_placed.entity_id},'-',split_part(${order_placed.order_id},'-',1))"
+  - name: "true_if_item_wine"
+    description: "true for any category"
+    type: "bool"
+    sql_snippet: "case when ${order_placed.product_category} = '{{product_cat:WINE}}'\
+      \ then true else false end"
+  - name: "bacardi_1"
+    type: "number"
+    sql_snippet: "case when ${order_placed.bacardi_brand} = {{temp:true}} then 1 else\
+      \ 0 end"
+  measures:
+  - name: "recency"
+    description: "days since last order was placed"
+    type: "min"
+    sql_snippet: "day(current_date - ${order_placed.activity_ts})"
+  - name: "frequency"
+    description: "count of total activities"
+    type: "number"
+    sql_snippet: "count( distinct ${order_placed.order_no}) filter (where date(${order_placed.activity_ts})\
+      \ = date('{{date:2022-07-05}}'))"
+  - name: "monetary_for_day"
+    description: "total order value"
+    type: "number"
+    sql_snippet: "sum(${order_placed.order_value}) filter (where date(${order_placed.activity_ts})\
+      \ = date('{{date:2022-07-05}}'))"
+  - name: "avg_order_value"
+    type: "number"
+    sql_snippet: "${order_placed.monetary_for_day}/ cast(${order_placed.frequency}\
+      \ as double)"
+  - name: "order_value_wine"
+    description: "total order value of wine"
+    type: "number"
+    sql_snippet: "sum(${order_placed.order_value}) filter (where ${order_placed.true_if_item_wine}\
+      \ = true)"
+  - name: "count_of_wine_orders"
+    type: "count_distinct"
+    sql_snippet: "case when ${order_placed.true_if_item_wine} = true then ${order_placed.order_no}\
+      \ else null end"
+  - name: "total_bacardi"
+    type: "sum"
+    sql_snippet: "${order_placed.bacardi_1}"
+- name: "order_rejected"
+  sql:
+    query: "SELECT \n  activity_uuid, \n  entity_id,\n  trim(feature1) as ref_order_id,\n\
+      \  activity_ts,\n  trim(feature2) as product_id,\n  trim(feature3) as order_reject_code,\n\
+      \  trim(feature4) as order_status_code,\n  trim(feature5) as order_delivery_status,\n\
+      \  cast(feature7 as double) as cases,\n  cast(feature8 as double) as bottles,\n\
+      \  cast(feature9 as double) as order_value,\n  feature10 as request_delivery_date,\n\
+      \  activity_occurence,\n  activity_repeated_at\nFROM icebase.audience.activity_streams_large_data\
+      \  where activity = 'order_rejected'\n"
+    columns:
+    - name: "activity_uuid"
+    - name: "entity_id"
+    - name: "ref_order_id"
+    - name: "activity_ts"
+    - name: "product_id"
+    - name: "order_reject_code"
+    - name: "order_status_code"
+    - name: "order_delivery_status"
+    - name: "cases"
+    - name: "bottles"
+    - name: "order_value"
+    - name: "request_delivery_date"
+    - name: "activity_occurence"
+    - name: "activity_repeated_at"
+    tables:
+    - "icebase.audience.activity_streams_large_data"
+    lenses: []
+  fields:
+  - name: "activity_uuid"
+    description: "unique identifier of the activity event"
+    type: "string"
+    column: "activity_uuid"
+    primary: true
+  - name: "entity_id"
+    description: "customer identifier"
+    type: "string"
+    column: "entity_id"
+  - name: "ref_order_id"
+    description: "order identifier"
+    type: "string"
+    column: "ref_order_id"
+  - name: "activity_ts"
+    description: "timestamp of the moment when activity_occured"
+    type: "date"
+    column: "activity_ts"
+  - name: "product_id"
+    description: "product identifier"
+    type: "string"
+    column: "product_id"
+  - name: "cases"
+    description: "count of cases the order was placed for"
+    type: "number"
+    column: "cases"
+  - name: "bottles"
+    description: "count of bottles the order was placed for"
+    type: "number"
+    column: "bottles"
+  - name: "order_value"
+    description: "value of the order placed"
+    type: "number"
+    column: "order_value"
+  - name: "request_delivery_date"
+    description: "requested delivery date"
+    type: "date"
+    column: "request_delivery_date"
+  - name: "activity_occurence"
+    description: "how many times this activity has happened to this customer"
+    type: "number"
+    column: "activity_occurence"
+  - name: "activity_repeated_at"
+    description: "The date of the next instance of this activity for this customer"
+    type: "date"
+    column: "activity_repeated_at"
+  - name: "order_reject_code"
+    description: "code for rejection"
+    type: "string"
+    column: "order_reject_code"
+  - name: "order_status_code"
+    description: "code for order status"
+    type: "string"
+    column: "order_status_code"
+  - name: "order_delivery_status"
+    description: "status of order delivery"
+    type: "string"
+    column: "order_delivery_status"
+  dimensions:
+  - name: "order_no"
+    description: "unique order_no for a customer"
+    type: "string"
+    sql_snippet: "concat(${order_rejected.entity_id},'-',split_part(${order_rejected.ref_order_id},'-',1))"
+  measures:
+  - name: "frequency"
+    description: "count of total activities"
+    type: "number"
+    sql_snippet: "count( distinct ${order_rejected.order_no}) filter (where date(${order_rejected.activity_ts})\
+      \ = date('{{date2:2022-07-25}}'))"
+  - name: "monetary_for_day"
+    description: "total order value"
+    type: "number"
+    sql_snippet: "sum(${order_rejected.order_value}) filter (where date(${order_rejected.activity_ts})\
+      \ = date('{{date2:2022-07-25}}'))"
+  - name: "avg_order_value"
+    type: "number"
+    sql_snippet: "${order_rejected.monetary_for_day}/ cast(${order_rejected.frequency}\
+      \ as double)"
+- name: "order_invoiced"
+  sql:
+    query: "SELECT \n  activity_uuid, \n  entity_id,\n  trim(feature1) as ref_order_id,\n\
+      \  activity_ts,\n  trim(feature2) as product_id,\n  trim(feature3) as brand_name,\n\
+      \  trim(feature4) as supplier_name,\n  trim(feature5) as product_category,\n\
+      \  trim(feature6) as product_classification,\n  cast(feature7 as double) as\
+      \ cases,\n  cast(feature8 as double) as bottles,\n  cast(feature9 as double)\
+      \ as order_value,\n  feature10 as request_delivery_date,\n  activity_occurence,\n\
+      \  activity_repeated_at\nFROM icebase.audience.activity_streams_large_data \
+      \ where activity = 'order_invoiced'\n"
+    columns:
+    - name: "activity_uuid"
+    - name: "entity_id"
+    - name: "ref_order_id"
+    - name: "activity_ts"
+    - name: "product_id"
+    - name: "brand_name"
+    - name: "supplier_name"
+    - name: "product_category"
+    - name: "product_classification"
+    - name: "cases"
+    - name: "bottles"
+    - name: "order_value"
+    - name: "request_delivery_date"
+    - name: "activity_occurence"
+    - name: "activity_repeated_at"
+    tables:
+    - "icebase.audience.activity_streams_large_data"
+  fields:
+  - name: "activity_uuid"
+    description: "unique identifier of the activity event"
+    type: "string"
+    column: "activity_uuid"
+    primary: true
+  - name: "entity_id"
+    description: "customer identifier"
+    type: "string"
+    column: "entity_id"
+  - name: "ref_order_id"
+    description: "order identifier"
+    type: "string"
+    column: "ref_order_id"
+  - name: "activity_ts"
+    description: "timestamp of the moment when activity_occured"
+    type: "date"
+    column: "activity_ts"
+  - name: "product_id"
+    description: "product identifier"
+    type: "string"
+    column: "product_id"
+  - name: "product_classification"
+    description: "product classification"
+    type: "string"
+    column: "product_classification"
+  - name: "cases"
+    description: "case quantity"
+    type: "number"
+    column: "cases"
+  - name: "bottles"
+    description: "bottle quantity"
+    type: "number"
+    column: "bottles"
+  - name: "order_value"
+    description: "order value"
+    type: "number"
+    column: "order_value"
+  - name: "activity_occurence"
+    description: "how many times this activity has happened to this customer"
+    type: "number"
+    column: "activity_occurence"
+  - name: "activity_repeated_at"
+    description: "The date of the next instance of this activity for this customer"
+    type: "date"
+    column: "activity_repeated_at"
+  measures:
+  - name: "frequency"
+    description: "count of total activities"
+    type: "number"
+    sql_snippet: "count( distinct ${order_invoiced.ref_order_id}) filter (where date(${order_invoiced.activity_ts})\
+      \ = date('{{date3:2022-07-11}}'))"
+  - name: "monetary_for_day"
+    description: "total order value"
+    type: "number"
+    sql_snippet: "sum(${order_invoiced.order_value}) filter (where date(${order_invoiced.activity_ts})\
+      \ = date('{{date3:2022-07-11}}'))"
+  - name: "avg_order_value"
+    type: "number"
+    sql_snippet: "${order_invoiced.monetary_for_day}/ cast(${order_invoiced.frequency}\
+      \ as double)"
+    hidden: false
+    depends:
+    - "monetary_for_day"
+    - "frequency" 
 ```
 
 ### Step 2: Deploy the Lens using Postman
@@ -214,7 +526,7 @@ With the YAML for the Lens being created, the next step is to deploy it. Postman
 
 ### Step 3: Exploring the Audience App
 
-Once the Lens is deployed on the DataOS environment, access the Audience [Application](../audiences.md) from the DataOS Homepage and navigate to the [Builder](../audiences.md) section. As soon as you deploy a lens by the name `c360` that satisfies all the prerequisites, it automatically showcases in the Audience Builder. Here now, you can check out all the entities that are there in the c360 model, various fields and measures that are available within them, and also take a look at the visual representation of relationships between them. The below image depicts the various steps to be executed while building audiences:
+Once the Lens is deployed on the DataOS environment, access the Audiences application from the DataOS Homepage and navigate to the Builder section. As soon as you deploy a lens by the name `c360` that satisfies all the prerequisites, it automatically showcases in the Audience Builder. Here now, you can check out all the entities that are there in the c360 model, various fields and measures that are available within them, and also take a look at the visual representation of relationships between them. The below image depicts the various steps to be executed while building audiences:
  
 <center>
 
