@@ -16,7 +16,7 @@ Doc link here.
 
 ## Launching Atlas
 
-Sign in to your DataOS instance with your username and password. On the DataOS home page, click on **Atlas**.
+On the DataOS home page, click on **Atlas**.
 
 ![atlas_homepage.png](atlas/atlas_homepage.png)
 <figcaption align = "center">Home page</figcaption>
