@@ -1,0 +1,409 @@
+# aws_kinesis
+
+Category: AWS, Services
+
+Receive messages from one or more Kinesis streams.
+
+## YAML Configurations
+
+### Common Config
+
+```yaml
+# Common config fields, showing default values
+input:
+  label: ""
+  aws_kinesis:
+    streams: []
+    dynamodb:
+      table: ""
+      create: false
+    checkpoint_limit: 1024
+    commit_period: 5s
+    start_from_oldest: true
+    batching:
+      count: 0
+      byte_size: 0
+      period: ""
+      check: ""
+```
+
+### Advanced Config
+
+```yaml
+# All config fields, showing default values
+input:
+  label: ""
+  aws_kinesis:
+    streams: []
+    dynamodb:
+      table: ""
+      create: false
+      billing_mode: PAY_PER_REQUEST
+      read_capacity_units: 0
+      write_capacity_units: 0
+    checkpoint_limit: 1024
+    commit_period: 5s
+    rebalance_period: 30s
+    lease_period: 30s
+    start_from_oldest: true
+    region: ""
+    endpoint: ""
+    credentials:
+      profile: ""
+      id: ""
+      secret: ""
+      token: ""
+      from_ec2_role: false
+      role: ""
+      role_external_id: ""
+    batching:
+      count: 0
+      byte_size: 0
+      period: ""
+      check: ""
+      processors: []
+```
+
+Consumes messages from one or more Kinesis streams either by automatically balancing shards across other instances of this input or by consuming shards listed explicitly. The latest message sequence consumed by this input is stored within a DynamoDB table, which allows it to resume at the correct sequence of the shard during restarts. This table is also used for coordination across distributed inputs when shard balancing.
+
+Benthos will not store a consumed sequence unless it is acknowledged at the output level, which ensures at-least-once delivery guarantees.
+
+### Ordering[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#ordering)
+
+By default, messages of a shard can be processed in parallel up to a limit determined by the field `checkpoint_limit`. However, if strict ordered processing is required, then this value must be set to 1 in order to process shard messages in lock-step. When doing so, it is recommended that you perform batching at this component for performance, as it will not be possible to batch lock-stepped messages at the output level.
+
+### Table Schema[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#table-schema)
+
+It's possible to configure Benthos to create the DynamoDB table required for coordination if it does not already exist. However, if you wish to create this yourself (recommended), then create a table with a string HASH key `StreamID` and a string RANGE key `ShardID`.
+
+### Batching[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#batching)
+
+Use the `batching` fields to configure an optional batching policy. Each stream shard will be batched separately in order to ensure that acknowledgments aren't contaminated.
+
+## Fields[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#fields)
+
+### `streams`[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#streams)
+
+One or more Kinesis data streams to consume from. Shards of a stream are automatically balanced across consumers by coordinating through the provided DynamoDB table. Multiple comma-separated streams can be listed in a single element. Shards are automatically distributed across consumers of a stream by coordinating through the provided DynamoDB table. Alternatively, it's possible to specify an explicit shard to consume from with a colon after the stream name, e.g. `foo:0` would consume the shard `0` of the stream `foo`.
+
+**Type:** `array`
+
+**Default:** `[]`
+
+---
+
+### `dynamodb`[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#dynamodb)
+
+Determines the table used for storing and accessing the latest consumed sequence for shards and for coordinating balanced consumers of streams.
+
+Type: `object`
+
+---
+
+### `dynamodb.table`[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#dynamodbtable)
+
+The name of the table to access.
+
+**Type:** `string`
+
+**Default:** `""`
+
+---
+
+### `dynamodb.create`[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#dynamodbcreate)
+
+Whether if the table does not exist, it should be created.
+
+**Type:** `bool`
+
+**Default:** `false`
+
+---
+
+### `dynamodb.billing_mode`[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#dynamodbbilling_mode)
+
+When creating the table determines the billing mode.
+
+**Type:** `string`
+
+**Default:** `"PAY_PER_REQUEST"`
+
+**Options:** `PROVISIONED`, `PAY_PER_REQUEST`.
+
+---
+
+### `dynamodb.read_capacity_units`[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#dynamodbread_capacity_units)
+
+Set the provisioned read capacity when creating the table with a `billing_mode` of `PROVISIONED`.
+
+**Type:** `int`
+
+**Default:** `0`
+
+---
+
+### `dynamodb.write_capacity_units`[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#dynamodbwrite_capacity_units)
+
+Set the provisioned write capacity when creating the table with a `billing_mode` of `PROVISIONED`.
+
+**Type:** `int`
+
+**Default:** `0`
+
+---
+
+### `checkpoint_limit`[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#checkpoint_limit)
+
+The maximum gap between the in-flight sequence versus the latest acknowledged sequence at a given time. Increasing this limit enables parallel processing and batching at the output level to work on individual shards. Any given sequence will not be committed unless all messages under that offset are delivered in order to preserve at least once delivery guarantees.
+
+**Type:** `int`
+
+**Default:** `1024`
+
+---
+
+### `commit_period`[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#commit_period)
+
+The period of time between each update to the checkpoint table.
+
+**Type:** `string`
+
+**Default:** `"5s"`
+
+---
+
+### `rebalance_period`[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#rebalance_period)
+
+The period of time between each attempt to rebalance shards across clients.
+
+**Type:** `string`
+
+**Default:** `"30s"`
+
+---
+
+### `lease_period`[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#lease_period)
+
+The period of time after which a client that has failed to update a shard checkpoint is assumed to be inactive.
+
+**Type:** `string`
+
+**Default:** `"30s"`
+
+---
+
+### `start_from_oldest`[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#start_from_oldest)
+
+Whether to consume from the oldest message when a sequence does not yet exist for the stream.
+
+**Type:** `bool`
+
+**Default:** `true`
+
+---
+
+### `region`[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#region)
+
+The AWS region to target.
+
+**Type:** `string`
+
+**Default:** `""`
+
+---
+
+### `endpoint`[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#endpoint)
+
+Allows you to specify a custom endpoint for the AWS API.
+
+**Type:** `string`
+
+**Default:** `""`
+
+---
+
+### `credentials`[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#credentials)
+
+Optional manual configuration of AWS credentials to use. 
+
+Type: `object`
+
+---
+
+### `credentials.profile`[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#credentialsprofile)
+
+A profile from `~/.aws/credentials` to use.
+
+**Type:** `string`
+
+**Default:** `""`
+
+---
+
+### `credentials.id`[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#credentialsid)
+
+The ID of credentials to use.
+
+**Type:** `string`
+
+**Default:** `""`
+
+---
+
+### `credentials.secret`[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#credentialssecret)
+
+The secret for the credentials being used.
+
+**Type:** `string`
+
+**Default:** `""`
+
+---
+
+### `credentials.token`[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#credentialstoken)
+
+The token for the credentials being used, required when using short-term credentials.
+
+**Type:** `string`
+
+**Default:** `""`
+
+---
+
+### `credentials.from_ec2_role`[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#credentialsfrom_ec2_role)
+
+Use the credentials of a host EC2 machine configured to assume an IAM role associated with the instance.
+
+**Type:** `bool`
+
+**Default:** `false`
+
+---
+
+### `credentials.role`[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#credentialsrole)
+
+A role ARN to assume.
+
+**Type:** `string`
+
+**Default:** `""`
+
+---
+
+### `credentials.role_external_id`[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#credentialsrole_external_id)
+
+An external ID to provide when assuming a role.
+
+**Type:** `string`
+
+**Default:** `""`
+
+---
+
+### `batching`[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#batching-1)
+
+Allows you to configure a batching policy.
+
+**Type:** `object`
+
+```yaml
+# Examples
+
+batching:
+  byte_size: 5000
+  count: 0
+  period: 1s
+
+batching:
+  count: 10
+  period: 1s
+
+batching:
+  check: this.contains("END BATCH")
+  count: 0
+  period: 1m
+```
+
+---
+
+### `batching.count`[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#batchingcount)
+
+A number of messages at which the batch should be flushed. If `0` disables count-based batching.
+
+**Type:** `int`
+
+**Default:** `0`
+
+---
+
+### `batching.byte_size`[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#batchingbyte_size)
+
+An amount of bytes at which the batch should be flushed. If `0` disables size-based batching.
+
+**Type:** `int`
+
+**Default:** `0`
+
+---
+
+### `batching.period`[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#batchingperiod)
+
+A period in which an incomplete batch should be flushed regardless of its size.
+
+**Type:** `string`
+
+**Default:** `""`
+
+```yaml
+# Examples
+
+period: 1s
+
+period: 1m
+
+period: 500ms
+
+```
+
+---
+
+### `batching.check`[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#batchingcheck)
+
+A Bloblang query that should return a boolean value indicating whether a message should end a batch.
+
+**Type:** `string`
+
+**Default:** `""`
+
+```yaml
+# Examples
+
+check: this.type == "end_of_transaction"
+```
+
+---
+
+### `batching.processors`[](https://www.benthos.dev/docs/components/inputs/aws_kinesis#batchingprocessors)
+
+A list of processors to apply to a batch as it is flushed. This allows you to aggregate and archive the batch however you see fit. Please note that all resulting messages are flushed as a single batch, therefore splitting the batch into smaller batches using these processors is a no-op.
+
+**Type:** `array`
+
+**Default:** `[]`
+
+```yaml
+# Examples
+
+processors:
+  - archive:
+      format: concatenate
+
+processors:
+  - archive:
+      format: lines
+
+processors:
+  - archive:
+      format: json_array
+
+```

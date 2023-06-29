@@ -28,7 +28,7 @@ def rename_markdown_files(directory):
             if file.endswith(".md"):
                 old_path = os.path.join(root, file)
                 new_file = re.sub(r"\s+", "_", file.lower())
-                # new_file = re.sub(r"_\w{21,}\.md", ".md", new_file)
+                new_file = re.sub(r"_\w{21,}\.md", ".md", new_file)
                 new_path = os.path.join(root, new_file)
                 os.rename(old_path, new_path)
                                 # Read the content of the file
@@ -36,11 +36,11 @@ def rename_markdown_files(directory):
                     content = fileopen.read()
                 
                 # Remove the --- and </aside> block section
-                # new_content = re.sub(r"\n---\n.*?\n</aside>", "", content, flags=re.DOTALL)
+                new_content = re.sub(r"\n---\n.*?\n</aside>", "", content, flags=re.DOTALL)
                 
                 # Write the modified content back to the file
                 with open(new_path, "w") as fileopen:
-                    fileopen.write(content)
+                    fileopen.write(new_content)
     print("Step 3. Markdown Files Renaming Complete.")
 
 
@@ -52,7 +52,7 @@ def rename_images(directory):
             if file.endswith((".png", ".jpg", ".jpeg", ".svg")):
                 old_path = os.path.join(root, file)
                 new_file = re.sub(r"\s+", "_", file.lower())
-                # new_file = re.sub(r"_\w{21,}\.", ".", new_file)
+                new_file = re.sub(r"_\w{21,}\.", ".", new_file)
                 new_path = os.path.join(root, new_file)
                 os.rename(old_path, new_path)
     print("Step 4. Image Files Renaming Complete.")
@@ -64,7 +64,7 @@ def rename_csv_files(directory):
             if file.endswith(".csv"):
                 old_path = os.path.join(root, file)
                 new_file = re.sub(r"\s+", "_", file.lower())
-                # new_file = re.sub(r"_\w{21,}\.csv", ".csv", new_file)
+                new_file = re.sub(r"_\w{21,}\.csv", ".csv", new_file)
                 new_path = os.path.join(root, new_file)
                 os.rename(old_path, new_path)
     print("Step 5. CSV Files Renaming Complete.")
