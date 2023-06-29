@@ -7,7 +7,7 @@
 
 In this scenario, our input data source is read from the local system, processed locally on Standalone, and written locally. If you'd like to know more, you can go ahead and navigate to the below page.
 
-[Local to Local using Standalone 2.0 ](./case_scenarios/local_to_local.md)
+[Local to Local using Standalone 2.0 ](./case_scenarios/local_to_cloud_using_standalone_2.0.md)
 
 ## Read from Cloud, Write to the Local
 

@@ -25,7 +25,7 @@ In this case, you have to prepare Customer 360 data by aggregating data from the
 
 A complete step-by-step run-through with the defined problem statement and the user journey to the desired output.
 
-![Flow diagram explaining data transformations in Flare standalone achieving Customer 360.](./create_customer360_using_standalone_1.0%20/c360_diagram_new2.png)
+![Flow diagram explaining data transformations in Flare standalone achieving Customer 360.](./create_customer360_using_standalone_1.0/c360_diagram_new2.png)
 
 Flow diagram explaining data transformations in Flare standalone achieving Customer 360.
 
