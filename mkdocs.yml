@@ -3,18 +3,19 @@ site_name: DataOS Documentation
 copyright: Copyright ⓒ 2023 The Modern Data Company
 theme:
     name: material
-    custom_dir: overrides
+    # custom_dir: overrides
     language: en
     features:
-        - navigation.footer
-        - navigation.indexes
         - navigation.tabs
         - navigation.sections
+        - navigation.expand
+        - navigation.footer
+        - navigation.indexes
         - navigation.instant
         - navigation.top
         - navigation.tracking
-        - toc.follow
-        # - toc.integrate
+         - toc.follow
+         - toc.integrate
     logo: assets/light-modern-logo.png
     favicon: assets/favicon.ico
     font:
@@ -34,9 +35,8 @@ theme:
             icon: material/brightness-4
             name: Switch to light mode
 plugins:
-    - mermaid2
     - search
-    # - glightbox
+    - mermaid2
     # - mkdocs-versioning:
     #     version: v0.2
 extra:
@@ -91,14 +91,13 @@ nav:
          - Secret: resources/secret.md
          - Service: resources/service.md   
          - Stacks:
-             - Stacks:
-                 - Introduction: resources/stacks.md
-                 - Alpha: resources/stacks/alpha.md
-                 - Beacon: resources/stacks/beacon.md
-                 - Benthos: resources/stacks/benthos.md
-                 - Data Toolbox: resources/stacks/data_toolbox.md
-                 - Flare: resources/stacks/flare.md
-                 - Scanner: resources/stacks/scanner.md
+              - Introduction: resources/stacks.md
+              - Alpha: resources/stacks/alpha.md
+              - Beacon: resources/stacks/beacon.md
+              - Benthos: resources/stacks/benthos.md
+              - Data Toolbox: resources/stacks/data_toolbox.md
+              - Flare: resources/stacks/flare.md
+              - Scanner: resources/stacks/scanner.md
          - Workflow: resources/workflow.md
                  
     - Interfaces:
