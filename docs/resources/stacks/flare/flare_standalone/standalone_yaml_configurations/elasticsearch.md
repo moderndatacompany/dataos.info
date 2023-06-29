@@ -1,6 +1,5 @@
 # Elasticsearch
 
-
 ## Read Config
 
 **Input Section Configuration for Reading from Elasticsearch Data Source**

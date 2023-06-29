@@ -1,6 +1,5 @@
 # Google Cloud Storage (GCS)
 
-
 ## Read Config
 
 **Input Section Configuration for Reading from GCS Data Source**

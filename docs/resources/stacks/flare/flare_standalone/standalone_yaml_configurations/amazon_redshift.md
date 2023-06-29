@@ -1,4 +1,4 @@
-# Redshift
+# Amazon Redshift
 
 
 ## Read Config

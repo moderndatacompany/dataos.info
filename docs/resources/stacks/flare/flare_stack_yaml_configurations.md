@@ -1,4 +1,4 @@
-# Building Blocks of Flare Workflow
+# Flare Stack YAML Configurations
 
 
 A Flare Workflow is a series of activities that are necessary to complete a data processing task. It lets you run your data processing logic. At a more granular level, each Flare Workflow YAML file is composed of fundamental components that include the following essential parts.

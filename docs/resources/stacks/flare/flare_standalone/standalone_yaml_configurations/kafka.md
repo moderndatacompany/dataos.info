@@ -1,6 +1,5 @@
 # Kafka
 
-
 ## Read Config
 
 **Input Section Configuration for Reading from Kafka Data Source**

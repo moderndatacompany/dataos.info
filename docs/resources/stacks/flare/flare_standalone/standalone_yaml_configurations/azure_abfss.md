@@ -1,6 +1,5 @@
 # Azure Blob Storage (ABFSS)
 
-
 ## Read Config
 
 **Input Section Configuration for Reading from ABFSS Data Source**
