@@ -216,7 +216,7 @@ workflow: # Workflow
 
 Save the YAML and copy its path. Path could be either relative or absolute.
 
-> To know more about the various building blocks of Flare Workflow and their configurations, click on the below link [Building Blocks of Flare Workflow](./building_blocks_of_flare_workflow.md)
+> To know more about the various Flare Stack YAML configurations, click [here](./flare_stack_yaml_configurations.md)
 >
 
 ### **Validate the YAML**
@@ -318,7 +318,7 @@ In spite of validating the YAML, there is a chance that the Flare job will fail 
 
 </aside>
 
-[Testing the Flare job on Flare Standalone](./create_your_first_flare_workflow/testing_the_flare_job_on_flare_standalone.md)
+[Testing the Flare job on Flare Standalone](./creating_flare_jobs/testing_the_flare_job_on_flare_standalone.md)
 
 ### **Applying the YAML**
 

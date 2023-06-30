@@ -3,9 +3,9 @@
 
 ## Case Scenario
 
-This case scenario describes the ingestion of stream data from Kafka Depot and saving it to file systems, databases, Iceberg, etc. To know more about a Stream Job click [here](../basic_concepts_of_flare_workflow.md#stream-job)
+This case scenario describes the ingestion of stream data from Kafka Depot and saving it to file systems, databases, Iceberg, etc. To know more about a Stream Job click [here](../flare_job_types.md#stream-job)
 
-To check out the various properties for the streaming section, click [here.](../building_blocks_of_flare_workflow/streaming.md) 
+To check out the various properties for the streaming section, click [here.](../flare_stack_yaml_configurations/streaming.md) 
 
 ## Implementation Flow
 

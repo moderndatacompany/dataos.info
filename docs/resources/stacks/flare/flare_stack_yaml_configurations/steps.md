@@ -2,26 +2,26 @@
 
 In the `steps` section, a series of sequences are defined to execute the necessary actions for performing transformations or applying Flare Functions and SQL queries.
 
-## Structure of **Steps Section**
+## Structure of Steps Section
 
 ```yaml
-steps:  
-  - sequence: 
-      - name: top_100_accounts #(Mandatory)
-				doc: this step is to document #(Optional)
-        sql: select * from account_connect limit 100 #(Mandatory)
-				classpath: io.dataos.custom.step.Step.class #(Optional)
-        functions: #(Optional)
-					# Name of function. You can refer signature of every function in flare function docs.
-          - name: set_type
-            columns:
-              account_id: string
-				# (Optional) There are two commands available persist and unpersist.
-				commands: #(Optional)
-					- name: persist
-						sequenceName: account_connect
-						mode: MEMORY_AND_DISK
+steps:
+  - sequence:
+    - name: top_100_accounts
+      doc: this step is to document
+      sql: select * from account_connect limit 100
+      classpath: io.dataos.custom.step.Step.class
+      functions:
+        - name: set_type
+          columns:
+            account_id: string
+      commands:
+        - name: persist
+          sequenceName: account_connect
+          mode: MEMORY_AND_DISK
 ```
+
+
 
 | Property | Description | Example | Default Value | Possible Values | Note/Rule | Field (Mandatory / Optional) |
 | --- | --- | --- | --- | --- | --- | --- |

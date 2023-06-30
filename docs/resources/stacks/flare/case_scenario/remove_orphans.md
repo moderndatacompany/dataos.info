@@ -4,7 +4,7 @@
 > Supported in both Flare Stack Version `flare:3.0` and `flare:4.0`.
 > 
 
-The `remove_orphans` [action](../building_blocks_of_flare_workflow/actions.md#remove-orphans) cleans up orphans files older than a specified time period. This action may take a long time to finish if you have lots of files in data and metadata directories. It is recommended to execute this periodically, but you may not need to execute this often. 
+The `remove_orphans` [action](../flare_stack_yaml_configurations/actions.md#remove-orphans) cleans up orphans files older than a specified time period. This action may take a long time to finish if you have lots of files in data and metadata directories. It is recommended to execute this periodically, but you may not need to execute this often. 
 
 <aside>
 

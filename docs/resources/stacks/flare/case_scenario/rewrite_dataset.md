@@ -1,6 +1,6 @@
 # Rewrite Dataset
 
-DataOS managed depot, Icebase built on top of Iceberg format can compact data files in parallel using Flare’s `rewrite_dataset` [action](../building_blocks_of_flare_workflow/actions.md#rewrite-dataset). This will combine small files into larger files to reduce metadata overhead and runtime file open costs.
+DataOS managed depot, Icebase built on top of Iceberg format can compact data files in parallel using Flare’s `rewrite_dataset` [action](../flare_stack_yaml_configurations/actions.md#rewrite-dataset). This will combine small files into larger files to reduce metadata overhead and runtime file open costs.
 
 ## Code Snippet
 
