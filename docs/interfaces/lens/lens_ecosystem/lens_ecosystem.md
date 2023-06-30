@@ -2,7 +2,7 @@
 
 The Lens Ecosystem consists of the following components:
 
-1. **Lens Query**:  enables end users to query Lens using the lens grammar
+1. **Lens Query**:  enables end users to query Lens using the lens grammar.
 2. **Lens Service**: facilitates the execution of lens queries, providing the necessary infrastructure and resources for efficient data processing.
 3. **Lens Utilities**: offer additional functionality and tools to enhance the Lens experience, providing support for various operational and analytical use cases.
 
