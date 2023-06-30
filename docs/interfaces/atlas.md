@@ -2,10 +2,6 @@
 
 Atlas is a built-in business intelligence (BI) solution within DataOS that allows you to create customized reports/dashboards. By selecting appropriate visualizations offered by DataOS, complex data can be effectively represented and consumed for valuable insights and informed decision-making.
 
-In addition to Atlas, DataOS integrates with various other BI tools, enhancing the capabilities and functionality of your data analysis. To explore further information about these tools and their benefits, you can refer to the provided link. 
-
-Doc link here.
-
 ## Highlights
 
 - Create 20+ different visualization types, including Sankey, Sunburst, Map Choropleth, Cohort, etc.
@@ -13,6 +9,10 @@ Doc link here.
 - One responsive dashboard for all screen sizes
 - Share your dashboards with multiple users ; you can allow public access to everyone.
 - Create deterministic alerts and send notifications to 10+ destinations, including Slack, MS teams, Pager Duty, etc.
+
+In addition to Atlas, DataOS integrates with various other BI tools, enhancing the capabilities and functionality of your data analysis. To explore further information about these tools and their benefits, you can refer to [Integration with other BI tools](atlas/bi_tools.md). 
+
+
 
 ## Launching Atlas
 
