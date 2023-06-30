@@ -4,16 +4,16 @@ Compute is a fundamental resource in the DataOS ecosystem that enables the alloc
 
 <center>
 
-![Diagrammatic representation of a Compute](./compute/compute.png)
+![Illustration depicting Compute resource in DataOS](./compute/compute.png)
 
 </center>
 
 <center>
-<i>Diagrammatic representation of a Compute</i></center>
+<i>Illustration depicting Compute resource in DataOS</i></center>
 
 During the initial setup of DataOS, Compute is one of the primary resources created as it serves as the foundation for other components. Compute represents pure processing power without any specific application identity associated with it. At its core, Compute consists of essential server components, including CPUs and RAM (or VMs). It can be composed of node pools from various cloud providers such as Amazon EC2, Azure VM, or Google Cloud Instances. These Compute resources are subsequently referenced within Minerva Clusters for efficient data querying and execution of runnables such as Workflows/Services within DataOS.
 
-<aside style="background-color:#FAF3DD; padding:15px; border-radius:5px;">
+<aside style="padding:15px; border-radius:5px;">
 
 🗣️  The creation of a compute requires the setup of node pools, which is a task typically performed by system administrators within the organization.
 </aside>
@@ -22,16 +22,9 @@ During the initial setup of DataOS, Compute is one of the primary resources crea
 
 The Compute resource is defined using a YAML configuration file. The following example illustrates the syntax for defining a compute:
 
-To increase the size of an image in Markdown, you can use HTML `<img>` tag attributes. Specifically, you can modify the `width` attribute to adjust the size of the image.
-
-Here's an example of how to increase the size of the image in your Markdown:
-
-
-<center>
-
 ![Syntax of a Compute](./compute/compute_syntax.png)
 
-<i>YAML Syntax of a Compute Resource</i></center>
+<center><i>YAML Syntax of a Compute Resource</i></center>
 
 ## Types of Compute
 
@@ -77,7 +70,7 @@ The table below presents a comprehensive list of key-value properties and their 
 | `key` | string | None | Any string (e.g. dedicated) | Mandatory |
 | `operator` | string | None | Equal/Exists | Mandatory  |
 | `value` | string | None | query/runnable/gpu | Mandatory |
-| `effect` | strin  g | None | NoSchedule/PreferNoSchedule/NoExecute | Mandatory |
+| `effect` | string | None | NoSchedule/PreferNoSchedule/NoExecute | Mandatory |
 
 </center>
 
