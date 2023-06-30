@@ -11,13 +11,6 @@ DataOS allows these Secrets to be referenced by other resources such as Depots, 
 The YAML given below provides a definition of the Secret Resource.
 
 ```yaml
-# Resource Section
-version: v1 # Manifest Version
-name: my-secret # Name of the Secret Resource
-type: secret # Resource type here is Secret
-description: Secret for the Developer Account # Description of the Secret
-
-# Secret-specific Section
 secret:
   type: key-value # Type of Secret
   acl: rw    # Access Control List (ACL) can be r|rw
@@ -31,7 +24,7 @@ secret:
 | Field | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
 | version | string | None | v1 | Mandatory |
-| name | string | None | Must conform to the regex [a-z0-9]([-a-z0-9]*[a-z0-9]), and length must be less than 47 characters. | Mandatory |
+| name | string | None | Must conform to the regex [a-z0-9]\([-a-z0-9]*[a-z0-9]), and length must be less than 47 characters. | Mandatory |
 | type | string | None | secret | Mandatory |
 | description | string | None | Any string | Optional |
 | tags | list of strings | None | - developer | Optional |
@@ -69,18 +62,10 @@ Various use cases are tied to the Secret Resource as outlined in the following t
 
 | Use Case | Subjects |
 | --- | --- |
-| Create or Update Secrets | • roles:id:operator
-• users:id:dataos-maintenance-manager |
-| Read Secrets | • roles:id:operator
-• users:id:depot-service
-• users:id:metis
-• users:id:dataos-resource-manager
-• users:id:dataos-maintenance-manager |
-| Read Stack Secrets | • roles:id:operator
-• roles:id:system-dev
-• roles:id:data-dev |
-| Read Specific Secrets (Icebase Read, Dropzone01 Read, and Container Registry User Pass) | • roles:id:system-dev
-• roles:id:data-dev |
+| Create or Update Secrets | • roles\:id\:operator<br>• users\:id\:dataos-maintenance-manager |
+| Read Secrets | • roles\:id\:operator<br>• users\:id\:depot-service<br>• users\:id\:metis<br>• users\:id\:dataos-resource-manager<br>• users\:id\:dataos-maintenance-manager |
+| Read Stack Secrets | • roles\:id\:operator<br>• roles\:id\:system-dev<br>• roles\:id\:data-dev |
+| Read Specific Secrets (Icebase Read, Dropzone01 Read, and Container Registry User Pass) | • roles\:id\:system-dev<br>• roles\:id\:data-dev |
 
 ## Creating Secrets
 

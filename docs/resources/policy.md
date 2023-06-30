@@ -41,7 +41,7 @@ The following examples show what the masked data might look like after the maski
 
 | Type | Original Value | Masked Value |
 | --- | --- | --- |
-| Email ID | john.smith@gmail.com | bkfgohrnrtseqq85@bkgiplpsrhsll16.com |
+| Email ID | "john.smith@gmail.com" | "bkfgohrnrtseqq85@bkgiplpsrhsll16.com" |
 | SSN | 987654321 | 867-92-3415 |
 | Credit card number | 8671 9211 3415 4546 | #### #### #### #### |
 
