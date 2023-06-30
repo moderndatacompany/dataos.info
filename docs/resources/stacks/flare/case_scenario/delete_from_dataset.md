@@ -3,7 +3,7 @@
 > Supported in Flare Stack Version `flare:4.0` only.
 > 
 
-The `delete_from_dataset` [action](../building_blocks_of_flare_workflow/actions.md#delete-from-dataset) removes data from tables upon a specified filter. There could be myriad such filter condition, two such scenarios are provided below.
+The `delete_from_dataset` [action](../flare_stack_yaml_configurations/actions.md#delete-from-dataset) removes data from tables upon a specified filter. There could be myriad such filter condition, two such scenarios are provided below.
 
 ## Code Snippet
 

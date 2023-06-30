@@ -3,7 +3,7 @@
 
 ## Case Scenario
 
-In this scenario, we define assertions to evaluate the quality of data. To learn more about Data Quality Jobs, click [here](../basic_concepts_of_flare_workflow.md#data-quality-job)
+In this scenario, we define assertions to evaluate the quality of data. To learn more about Data Quality Jobs, click [here](../flare_job_types.md#data-quality-job)
 
 ## Different Ways to Define Assertions
 

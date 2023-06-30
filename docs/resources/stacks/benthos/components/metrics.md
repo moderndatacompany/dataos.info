@@ -170,4 +170,14 @@ metrics:
 
 ## Metric Targets
 
-[Untitled Database](Metrics%20ffdf4f33adfa4c44a05fd1bb3c6787e0/Untitled%20Database%209d4aec05baea4868b1b02b770ae83f0f.csv)
+<center>
+
+|Name|Category|
+|---|---|
+|[aws_cloudwatch](./metrics/aws_cloudwatch.md)|AWS|
+|[influxdb](./metrics/influxdb.md)|InfluxDB|
+|[json_api](./metrics/json_api.md)|JSON|
+|[logger](./metrics/logger.md)|Logger|
+|[none](./metrics/none.md)|None|
+|[prometheus](./metrics/prometheus.md)|Prometheus|
+|[statsd](./metrics/statsd.md)|StatsD|

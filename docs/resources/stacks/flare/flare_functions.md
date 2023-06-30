@@ -1,5 +1,11 @@
 # Flare Functions
 
+Flare Functions: Pre-defined functions enabling execution of complex tasks with minimal coding requirements.
+Flare Functions: Pre-defined functions, ingeniously devised, facilitating the execution of complex tasks while minimizing the need for extensive coding efforts.
+Flare Functions: Pre-defined functions that streamline the execution of intricate tasks, minimizing the need for extensive coding efforts.
+Flare Functions, which allow users to execute complex tasks with minimal coding requirements by leveraging pre-defined functions. 
+
+
 Flare is a powerful stack that empowers its users with a diverse range of data manipulation functions, all of which can be executed at various processing stages. Furthermore, Flare enables users to create custom Flare functions of their own, which are commonly known as User-Defined Flare Functions (UDFs). 
 
 The YAML syntax given below provides a sample of how Flare Functions are defined:
