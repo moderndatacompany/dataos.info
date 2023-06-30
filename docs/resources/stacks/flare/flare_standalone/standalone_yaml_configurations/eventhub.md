@@ -1,6 +1,5 @@
 # EventHub
 
-
 ## Read Config
 
 **Input Section Configuration for Reading from Pulsar Data Source**

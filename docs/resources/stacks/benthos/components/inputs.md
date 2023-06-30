@@ -63,8 +63,6 @@ The section labeled as **`inputs`** consist of settings that enable the retrieva
 
 To access specific YAML configurations for each input source, users can refer to the accompanying database that lists the categories for each source. By clicking on the corresponding ‘OPEN’ button within the name section of the input source, a new popup window will appear displaying the relevant YAML configurations and description of each field.
 
-[Untitled Database](Inputs%20fa0949a589d34703aa4f36bad1c30bb7/Untitled%20Database%20bbd4e65bf0b142588201672bb787a74e.csv)
-
 
 <center>
 

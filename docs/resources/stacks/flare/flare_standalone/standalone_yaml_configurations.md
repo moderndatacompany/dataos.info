@@ -50,19 +50,19 @@ Flare Standalone currently supports the following Object Storage - Azure Blob Fi
 
 Azure Blob Storage is a storage service by Microsoft. You can go to the page below to learn more about Flare Standalone YAML configurations for ABFSS Data Source.
 
-[Azure Blob Storage (ABFSS)](./standalone_yaml_configurations/azure_blob_storage_(abfss).md)
+[Azure Blob Storage (ABFSS)](./standalone_yaml_configurations/azure_abfss.md)
 
 #### **Google Cloud Storage (GCS)**
 
 Google Cloud Storage is a service for storing your objects in Google Cloud. You can go to the page below to learn more about  Flare Standalone YAML configurations for GCS data sources.
 
-[Google Cloud Storage (GCS)](./standalone_yaml_configurations/google_cloud_storage_(gcs).md)
+[Google Cloud Storage (GCS)](./standalone_yaml_configurations/google_cloud_storage.md)
 
 #### **Amazon Simple Storage Service (S3)**
 
 Amazon Simple Storage Service (S3) is an object storage service. To know more about Flare Standalone YAML configurations for the S3 data source, you can just go to the below page.
 
-[Amazon Simple Storage Service (S3)](./standalone_yaml_configurations/amazon_simple_storage_service_(s3).md)
+[Amazon Simple Storage Service (S3)](./standalone_yaml_configurations/amazon_s3.md)
 
 ### **NoSQL Data Source**
 
@@ -102,7 +102,7 @@ Among warehouses, Flare Standalone currently supports Snowflake, Amazon Redshift
 
 Amazon Redshift is a fully managed petabyte-scale Cloud-based Data Warehouse service designed by Amazon to handle extensive data. To know more about Flare Standalone YAML configuration for the Redshift data source, you can just go to the below page.
 
-[Redshift](./standalone_yaml_configurations/redshift.md)
+[Redshift](./standalone_yaml_configurations/amazon_redshift.md)
 
 #### **Snowflake**
 
@@ -114,7 +114,7 @@ Snowflake is a data-warehousing platform for creating big data products. To know
 
 Google BigQuery is a Cloud-based Data Warehouse that offers a big data analytic web service for processing large datasets over petabytes of data. You can go to the page below to learn more about Flare Standalone configuration for Bigquery data sources.
 
-[Bigquery](./standalone_yaml_configurations/bigquery.md)
+[Bigquery](./standalone_yaml_configurations/google_bigquery.md)
 
 ### **JDBC Data Sources**
 
