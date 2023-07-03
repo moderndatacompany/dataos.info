@@ -1,12 +1,12 @@
 # Lens
 
-Lens is a consistent modeling layer capable of accessing and modeling data from disparate sources. It not only supports the ability to connect underlying data to real-world business objects but also enables you to formulate and delineate measures, KPIs, and relationships between different business concepts, thereby facilitating data-driven decision-making. 
+Lens is a consistent modeling layer capable of accessing and modeling data from disparate sources. It not only supports the ability to connect underlying data to real-world business objects but also enables you to formulate and delineate measures, KPIs, and relationships between different business concepts, thereby facilitating data-driven decision-making. It is designed to break down data silos andfoster mutual agreement between data producers and consumers by implementing Data Contracts.
 
 > A data modeling layer is an interface that lays over the underlying data and consistently exposes commonly understood business terms (such as product, customer, or revenue) to the end consumers. It allows business users to consume the data how they understand it, get what they need, and realize self-service without constantly relying on data engineers for data requests. 
 <center>
-Lens fosters data definition sharing and brings consensus among teams around data definitions, creating a unified and consolidated view of data across the organization.
+Lens promotes data definition sharing and brings consensus among teams around data definitions, creating a unified and consolidated view of data across the organization.
 
-![Picture](lens/ecosystem.png)
+![Picture](lens/lens.png)
 
 </center>
 
@@ -19,7 +19,7 @@ Lens can be built on all sources that Depots support. Lens lets you connect to a
 
 ## Elements of a Lens
 
-The fundamental constituents of Lens encompass an amalgamation of data elements: fields, entities, dimensions, and measures. These elements collectively serve the purpose of outlining the composition and logic of data models. To know more about these elements, refer to 
+The fundamental constituents of both lens and contract encompass an amalgamation of data elements: fields, entities, dimensions, and measures. These elements collectively serve the purpose of outlining the composition and logic of data models. To know more about these elements, refer to 
 [Elements of Lens](lens/elements_of_lens/elements_of_lens.md).
 
 ## Launching Lens
