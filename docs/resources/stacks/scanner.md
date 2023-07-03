@@ -62,7 +62,7 @@ Learn about the source connection and configuration options to create depot scan
 
 [Creating Scanner Workflows](scanner/creating_scanner_workflows.md)
 
-### Supported Data Sources
+### **Supported Data Sources**
 
 Here you can find templates for the depot/non-depot Scanner workflows. 
 

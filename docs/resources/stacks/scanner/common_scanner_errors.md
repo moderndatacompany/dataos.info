@@ -1,6 +1,6 @@
 # Common Scanner Errors
 
-When you run a Scanner workflow, you may see errors that can affect the metadata scan. Here is a list of commonly encountered errors and solutions.****
+When you run a Scanner workflow, you may see errors that can affect the metadata scan. Here is a list of commonly encountered errors and solutions.
 
 ## Error #1
 
