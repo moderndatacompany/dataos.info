@@ -82,8 +82,7 @@ description:
 **Possible value:** any  
 **Example usage:** "This is a sample description of a Resource"  
 **Additional information:** The description can be within quotes or without.  
->
-YAML supports *scalars* such as strings, numbers, booleans, and null. A scalar value can be unquoted, within single quotes (') or double quotes ("). When the scalar contains a special character, the value must be declared within quotes.   
+> YAML supports *scalars* such as strings, numbers, booleans, and null. A scalar value can be unquoted, within single quotes (') or double quotes ("). When the scalar contains a special character, the value must be declared within quotes.   
 
 ### **owner**
 
@@ -97,7 +96,8 @@ owner:
 **Default value:** id of the user applying the Resource  
 **Possible value:**   
 **Example usage:** iamgroot  
-**Additional information:** when no id is provided, or an incorrect id is provided, the system automatically corrects it to the id of the user who applied the Resource on DataOS CLI   
+**Additional information:** 
+> when no id is provided, or an incorrect id is provided, the system automatically corrects it to the id of the user who applied the Resource on DataOS CLI   
 
 ### **layer**
 
@@ -111,7 +111,8 @@ layer:
 **Default value:** user  
 **Possible value:** user or system  
 **Example usage:**  
-**Additional information:** From a user's perspective, the operating system can be envisaged as working at two levels - user layer & system layer. This is only a logical separation to understand the workings of the system.  
+**Additional information:** 
+> From a user's perspective, the operating system can be envisaged as working at two levels - user layer & system layer. This is only a logical separation to understand the workings of the system.  
 
 ### **{{RESOURCE-TYPE}}**
 
@@ -127,7 +128,8 @@ workflow:
 **Default value:** none  
 **Possible value:** cluster, compute, depot, policy, secret, service, stack or workflow   
 **Example usage:** depot  
-**Additional information:** In this case, the placeholder is meant for the key itself, and not the value. By declaring the type of the Resource, say `workflow:`, followed by a space, we are basically creating a *mapping* in YAML.
+**Additional information:** In this case, the placeholder is meant for the key itself, and not the value. 
+> By declaring the type of the Resource, say `workflow:`, followed by a space, we are basically creating a *mapping* in YAML.
 
 The table below summarizes how the values for `version`, `type` & `layer` are declared for different types of Resources.
 
