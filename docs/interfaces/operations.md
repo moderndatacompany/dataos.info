@@ -10,7 +10,7 @@ Operations app enables you to do the following:
 - **Query Analysis**: Get a complete overview of the completed/failed/running queries. Cluster and user wise queries can be observed/debugged from this app's UI.
 - **Cluster Analysis**: View cluster analysis, giving users valuable insights into available clusters.
 - **Grafana**: Leverage Grafana's capabilities to visualize and explore metrics, logs, and traces in the DataOS environment, enabling effective cluster assessment and data analysis.
-- **Bifrost**: This app provides a efficient GUI to create & manage policies to provide flexible, fine-grained access control for administrators across the applications, users, services, stacks & use cases. To learn more, refer to [Bifrost](./bifrost.md).
+- **Bifrost**: Utilize Bifrost's efficient graphical user interface for creating and managing policies to provide flexible and fine-grained access control for  across various applications, users, services, stacks, and use cases. To learn more, refer to [Bifrost](./bifrost.md).
 
 ## Launching Operations App
 
@@ -121,9 +121,8 @@ Operations app provides users with the ability to easily create resources direct
 <aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
 🗣 You need ‘Operator’ level permissions to view the Core kernel and Cloud kernel resources.</aside>
 
-## Core Kernel- Resources
-
-Here you will get the resource details responsible for running the core components. These resources are isolated in groups as namespaces within a single cluster. These namespaces help different projects, teams, or customers to share a Kubernetes cluster. Names of resources need to be unique within a namespace but not across namespaces. Namespace-based scoping is applicable only for name-spaced objects *(e.g. Deployments, Services, workloads, etc).* 
+## Core Kernel
+Here you will get the resource details responsible for running the core components. These resources are isolated in groups as namespaces within a single cluster. These namespaces help different projects, teams, or customers to share a Kubernetes cluster. Names of resources need to be unique within a namespace but not across namespaces. Namespace-based scoping is applicable only for name-spaced objects *(e.g. Pods(Deployments), Services, workloads, Ingresses etc).* 
 
 ### **Pods**
 
@@ -211,7 +210,15 @@ A workload is a DataOS application running in one or more Kubernetes pods. You h
 </center>
 <figcaption align = "center">DataOS workloads </figcaption>
 
-### Ingresses
+### **Ingresses**
+Ingresses are configured within the DataOS platform for specific namespaces such as core apps, Poros, network gateway etc. These ingresses enable external access to the services and applications running within these namespaces, providing a secure and controlled entry point for incoming traffic. By defining and managing these ingresses, administrators can effectively control and direct the flow of network traffic to the respective namespaces, ensuring proper connectivity and access to the deployed resources.
+<center>
+
+![Picture](operations/ingress.png)
+
+</center>
+<figcaption align = "center">Ingresses for various namespaces </figcaption>
+
 
 ## Cloud Kernel 
 ### **Resources**
@@ -227,12 +234,16 @@ Within a cloud environment, compute nodes form a core of resources. They supply 
 
 ### **Compute Node Details**
 
-Click on the compute node to see all the details about the general information, such as the operating system used by the node, OS image, Kubernetes version, architecture, etc., and compute node status, which includes:
+Clicking on the compute node will display the detailed information about the node, including its general details and status. Accessing these compute node details allows you to gain a comprehensive understanding of the node's configuration, status, and available resources, enabling effective management and optimization of your compute infrastructure.
 
-- **Addresses**- host IP and hostname. This information varies depending on the cloud provider.
-- **Conditions**- status of all running computing nodes.
-- **Capacity and allocatable**- resources available on the node: CPU, memory, and the maximum number of pods that can be scheduled onto the node.
-- **Taints**- automatically created by the Kubernetes control plane when problems occur on nodes,  that match the conditions affecting the node.
+- **General Information**: Information about the compute node, such as the operating system it uses, the OS image, the Kubernetes version, and the architecture.
+- **Addresses**- Host IP and hostname. This information varies depending on the cloud provider.
+- **Conditions**- Status of all running computing nodes.It provides insights into the health and availability of the nodes.
+- **Capacity and allocatable**- Available resources on the compute node, including CPU, memory, and the maximum number of pods that can be scheduled onto the node. It helps in understanding the capacity and limits of the node.
+- **Taints**- Automatically created by the Kubernetes control plane when problems occur on nodes,  that match the conditions affecting the node.
+
+![Alt text](operations/compute_node_details.png)
+<figcaption align = "center">Compute node details </figcaption>
 
 ## Product
 
