@@ -2,9 +2,9 @@
 # Compute Templates
 
 
-## runnable template
+## Runnable Compute
 
-### **For ETL Workloads**
+**For ETL Workloads**
 
 ```yaml
 compute:
@@ -48,9 +48,9 @@ compute:
 
 </details>
 
-## query-default
+## Query Compute
 
-### **For Query Workloads**
+**For Query Workloads**
 
 ```yaml
 compute:
@@ -68,7 +68,7 @@ compute:
 
 <details>
 <summary> 
-Sample query-default Compute YAML</summary>
+Sample Query Compute YAML</summary>
 
 ```yaml
 # Resource Section
@@ -93,9 +93,9 @@ compute:
 
 </details>
 
-## gpu template
+## GPU Compute
 
-### **For Machine Learning Workloads**
+**For Machine Learning Workloads**
 
 ```yaml
 compute:
@@ -113,7 +113,7 @@ compute:
 
 <details>
 <summary> 
-Sample query-default Compute YAML</summary>
+Sample GPU Compute YAML</summary>
 
 ```yaml
 # Resource Section

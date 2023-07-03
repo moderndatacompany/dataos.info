@@ -2,19 +2,12 @@
 
 Depot in DataOS is a resource that simplifies the process of accessing data from different sources by abstracting away the complexities of protocols, credentials, and connection schemas. It acts as a bridge between DataOS and the data sources, allowing you to connect and access data from various types of storage systems such as object storage (e.g., Amazon S3, Azure Blob Storage), streaming sources (e.g., Pulsar), and databases (e.g., PostgreSQL, MySQL, BigQuery, NoSQL).
 
-<style>
-    blockquote {
-        background-color: #F6F3F8;
-    }
-</style>
-
-<blockquote style="color: black;">
+>
 The Depot serves as the registration mechanism for data locations within DataOS. Through the Depot Service, each source system is assigned a unique address, known as a Universal Data Link (UDL). With the UDL in hand, you can conveniently access and manipulate datasets within the source system without the need to re-enter credentials. The UDL follows the format:
-</blockquote>
-
-    
 
 <center> `dataos://[depot]:[collection]/[dataset]` </center>
+
+>
 
 By leveraging the UDL, you gain direct access to datasets and can seamlessly perform various operations, such as data transformation, policy assignment, and more.
 
@@ -22,9 +15,38 @@ The specific composition of the UDL address depends on the source system being a
 
 Once a depot is created, all members of your organization gain secure access to datasets within the associated source system. The depot not only facilitates data access but also assigns **default access policies** to ensure data security. Additionally, you have the flexibility to define and utilize custom Access Policies for the depot and Data Policies for specific datasets within the depot.
 
-<aside style="background-color:#FAF3DD; padding:15px; border-radius:5px;">
+<aside style="padding:15px; border-radius:5px;">
+
 🗣️  It is worth noting that the Depot provides 'access' to data, meaning that data is neither moved away from the source system nor duplicated. However, if the need arises, DataOS offers the capability to perform such tasks as well.
 </aside>
+
+## Syntax of Depot
+
+![Syntax of Depot](./depot/depot_syntax.png)
+
+<center><i>Syntax of Depot resource</i></center>
+
+To know more about varies fields within the depot-specific section of YAML, refer to the table below:
+
+| Field | Data Type | Default Value | Possible Value | Requirement |
+|-------|-----------|---------------|----------------|-------------|
+| `depot` | Object | None | None | Mandatory |
+| `type` | String | None | ABFSS, WASBS, REDSHIFT,<br> S3, ELASTICSEARCH, EVENTHUB, PULSAR, BIGQUERY, GCS, JDBC, MSSQL, MYSQL, OPENSEARCH, ORACLE, POSTGRES, SNOWFLAKE | Mandatory |
+| `description` | String | None | Any string | Optional |
+| `external` | String | false | true/false | Mandatory |
+| `source` | String | depot name | Any string | Optional |
+| `compute` | String | runnable-default | Any compute resource | Optional |
+| `connectionSecret` | Object | None | Varies between data sources | Optional |
+| `acl` | String | r | r/rw | Optional |
+| `type` | String | key-value-properties | key-value-properties | Optional |
+| `data` | Object | None | Varies between data sources | Optional |
+| `files` | String | None | Valid absolute path | Optional |
+| `name` | String | None | Valid Secret resource name | Optional |
+| `spec` | Object | None | Varies between data sources | Mandatory |
+
+
+To know more about Depot YAML Configuration Fields, click [here.](./depot/depot_yaml_configuration_field_reference.md)
+
 
 
 ## Depot Service
@@ -66,23 +88,23 @@ Take a look at the table given below. It shows which of the different Depot Type
 
 <center>
 
-| **Depot Type** | **Flare** | **Benthos** | **Minerva** | **Scanner** |
+| Depot Type | Flare | Benthos | Minerva | Scanner |
 |---|---|---|---|---|
-Amazon S3 | RW/PUSHDOWN^ | <span style="color:maroon">WIP</span> | <span style="color:green">READ</span> | <span style="color:blue">YES</span> |
-Amazon Redshift	| RW/PUSHDOWN	| <span style="color:maroon">WIP</span>	| <span style="color:green">READ</span> | <span style="color:blue">YES</span> |
-Apache Kafka	| RW	| <span style="color:green">READ</span>	| <span style="color:green">READ</span>	| <span style="color:blue">YES</span> |
-Apache Pulsar	| RW/PUSHDOWN |	<span style="color:green">READ</span>	| <span style="color:green">READ</span>	| <span style="color:blue">YES</span> |
-Azure Blob File Storage	| RW/PUSHDOWN^	| <span style="color:maroon">WIP</span>	| <span style="color:green">READ</span>	| <span style="color:blue">YES</span> |
-BigQuery |	RW/PUSHDOWN	| <span style="color:maroon">WIP</span>	| <span style="color:green">READ</span> |	<span style="color:blue">YES</span> |
-Elasticsearch |	RW/PUSHDOWN |	<span style="color:maroon">WIP</span> |	<span style="color:green">READ</span>	| <span style="color:blue">YES</span> |
-Google Cloud Storage |	RW/PUSHDOWN^ |	<span style="color:maroon">WIP</span> |	<span style="color:green">READ</span> |	<span style="color:blue">YES</span> |
-JDBC |	RW/PUSHDOWN |	<span style="color:maroon">WIP</span> |	<span style="color:green">READ</span> |	<span style="color:blue">YES</span> |
-MSSQLSERVER |	RW/PUSHDOWN |	<span style="color:maroon">WIP</span> |	<span style="color:green">READ</span> |	<span style="color:blue">YES</span> |
-MySQL |	RW/PUSHDOWN |	<span style="color:maroon">WIP</span> |	<span style="color:green">READ</span> |	<span style="color:blue">YES</span> |
-Oracle |	RW/PUSHDOWN |	<span style="color:maroon">WIP</span> |	<span style="color:green">READ</span> |	<span style="color:blue">YES</span> |
-PostgreSQL |	RW/PUSHDOWN |	<span style="color:maroon">WIP</span> |	<span style="color:green">READ</span> |	<span style="color:blue">YES</span> |
-Redis |	WIP |	<span style="color:maroon">WIP</span> |	<span style="color:green">READ</span> |	<span style="color:blue">YES</span> |
-Snowflake |	RW/PUSHDOWN |	<span style="color:maroon">WIP</span> |	<span style="color:green">READ</span> |	<span style="color:blue">YES</span> |
+| Amazon S3 | RW/PUSHDOWN^ | WIP | READ | YES |
+| Amazon Redshift | RW/PUSHDOWN | WIP | READ | YES |
+| Apache Kafka | RW | READ | READ | YES |
+| Apache Pulsar | RW/PUSHDOWN | READ | READ | YES |
+| Azure Blob File Storage | RW/PUSHDOWN^ | WIP | READ | YES |
+| BigQuery | RW/PUSHDOWN | WIP | READ | YES |
+| Elasticsearch | RW/PUSHDOWN | WIP | READ | YES |
+| Google Cloud Storage | RW/PUSHDOWN^ | WIP | READ | YES |
+| JDBC | RW/PUSHDOWN | WIP | READ | YES |
+| MSSQLSERVER | RW/PUSHDOWN | WIP | READ | YES |
+| MySQL | RW/PUSHDOWN | WIP | READ | YES |
+| Oracle | RW/PUSHDOWN | WIP | READ | YES |
+| PostgreSQL | RW/PUSHDOWN | WIP | READ | YES |
+| Redis | WIP | WIP | READ | YES |
+| Snowflake | RW/PUSHDOWN | WIP | READ | YES |
 
 </center>
 
@@ -117,9 +139,8 @@ Fastbase is optimized for handling streaming data workloads. As a managed depot,
 For unmanaged depots, the available functionalities are dependent on the connected source system. DataOS acts as an intermediary, facilitating connection management, secrets, and credentials abstraction while relying on the capabilities offered by the underlying source system.
 
 
-<aside style="background-color:#F8ECDF; padding:15px; border-radius:5px;">
+<aside style="padding:15px; border-radius:5px;">
 📖 Best Practice: As part of best practices, it is recommended to regularly delete resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs
-
 </aside>
 
 ## Depot Configuration Templates

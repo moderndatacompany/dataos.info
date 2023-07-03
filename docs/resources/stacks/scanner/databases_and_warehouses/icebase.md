@@ -16,9 +16,8 @@ Here is an example of YAML configuration to connect to the source and reach the 
 **Depot Scan Workflow YAML**
 
 Create and apply the Scanner YAML. You can run the Scanner workflow with or without a filter pattern. 
-    
-    ```yaml
-    version: v1
+```yaml
+version: v1
     name: scanner2-icebase-k
     type: workflow
     tags:
@@ -48,6 +47,5 @@ Create and apply the Scanner YAML. You can run the Scanner workflow with or with
                         - sys
                         - performance_schema
                         - innodb
-    ```
-    
-> After the successful workflow run, you can check the metadata of scanned Tables on Metis UI for all topics.
+```
+> After the successful workflow run, you can check the metadata of scanned Tables on Metis UI.
