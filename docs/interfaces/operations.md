@@ -44,14 +44,6 @@ By navigating to the "Resources" tab, the detailed information about the DataOS 
 </center>
 <figcaption align = "center"> User kernel resources</figcaption>
 
-Select the  ‘type’ from the drop-down to see the specific resource. 
- 
-<center>
-
-![Picture](operations/services.png)
-</center>
-<figcaption align = "center">Service type resources </figcaption>
-
 **Resource Runtime**
 
 Click on the resource to get its details, YAML, and runtime information. Here, the details of the pods, their status and the nodes selected for running these pods is displayed. Clicking on `Refresh On` will update the information automatically.
