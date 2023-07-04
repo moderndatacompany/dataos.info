@@ -21,7 +21,7 @@ The Service resource is configured using a YAML file, consisting of several root
 
 <center>
 
-![Syntax of a Service](./service/service_syntax.png)
+![Syntax of a Service](./service/service_yaml.png)
 
 </center>
 

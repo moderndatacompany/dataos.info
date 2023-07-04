@@ -4,7 +4,7 @@ Compute is a fundamental resource in the DataOS ecosystem that enables the alloc
 
 <center>
 
-![Illustration depicting Compute resource in DataOS](./compute/compute.png)
+![Illustration depicting Compute resource in DataOS](./compute/compute_overview.png)
 
 </center>
 
@@ -22,7 +22,7 @@ During the initial setup of DataOS, Compute is one of the primary resources crea
 
 The Compute resource is defined using a YAML configuration file. The following example illustrates the syntax for defining a compute:
 
-![Syntax of a Compute](./compute/compute_syntax.png)
+![Syntax of a Compute](./compute/compute_yaml.png)
 
 <center><i>YAML Syntax of a Compute Resource</i></center>
 
