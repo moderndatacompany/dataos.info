@@ -8,7 +8,7 @@ In DataOS, a Cluster is a Primitive/resource that encompasses a set of computati
 
 </aside>
 
-![Diagrammatic representation of a Cluster ](./cluster/add_a_heading.svg)
+![Diagrammatic representation of a Cluster ](./cluster/cluster_overview.png)
 
 <center><i>Diagrammatic representation of a Cluster</i></center>
 
