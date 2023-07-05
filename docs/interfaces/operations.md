@@ -14,18 +14,9 @@ Operations app enables you to do the following:
 
 ## Launching Operations App
 
-On the DataOS home page, click on 'Operations'.
- 
-<center>
+On the DataOS home page, click on 'Operations'. The following type of resources can be monitored:
 
-![Picture](operations/operations_app_homepage.png)
-
-</center>
-<figcaption align = "center">DataOS home page</figcaption>
-
-The following type of resources can be monitored:
-
-- **User Kernel** - These are the resources that DataOS users can create and manage within the platform. This includes various primitives such as workflows, services, secrets, depots, clusters, and computes. These resources are utilized during data processing jobs, services, and analytics workloads performed by users. Operations UI provides a way for users to observe and monitor these resources and their runtimes to debug if any issues.
+- **User Space** - These are the resources that DataOS users can create and manage within the platform. This includes various primitives such as workflows, services, secrets, depots, clusters, and computes. These resources are utilized during data processing jobs, services, and analytics workloads performed by users. Operations UI provides a way for users to observe and monitor these resources and their runtimes to debug if any issues.
 
 - **Core Kernel** - The Core Kernel consists of system resources that are essential for the smooth operation of the DataOS platform. It provides low-level services and functionalities used by the core components of DataOS to ensure its proper functioning. Monitoring the Core Kernel resources and accessing their logs helps track the health and performance of these critical components, ensuring the overall stability and reliability of the DataOS platform.
 
@@ -40,7 +31,7 @@ By navigating to the "Resources" tab, the detailed information about the DataOS 
  
 <center>
 
-![Picture](operations/user_kernel.png)
+![Picture](operations/user_space.png)
 </center>
 <figcaption align = "center"> User kernel resources</figcaption>
 
@@ -50,7 +41,7 @@ Click on the resource to get its details, YAML, and runtime information. Here, t
  
 <center>
 
-![Picture](./resource_runtime.png)
+![Picture](operations/resourceruntime.png)
 
 </center>
 <figcaption align = "center">Runtime information </figcaption>
@@ -68,7 +59,7 @@ Under Runtime Nodes, click on a node to get the runtime YAML, Logs, and Runtime 
  
 <center>
 
-![Picture](./runtime_node_details.png)
+![Picture](operations/runtime_nodedetail.png)
 
 </center>
 <figcaption align = "center">Node details </figcaption>
@@ -85,7 +76,7 @@ Runtime Node Logs provide a near real-time view. These logs provide insights int
 Check how much memory and CPU is utilized by a Node.
 <center>
 
-![Picture](operations/runtime_node_usage.png)
+![Picture](operations/runtimenodeusage.png)
 
 </center>
 <figcaption align = "center">Node usage </figcaption>
@@ -93,21 +84,21 @@ Check how much memory and CPU is utilized by a Node.
 ### **Minerva Queries**
 Here, users can view Minerva queries and perform various tasks related to query monitoring, and analysis. Once a query is submitted, the information such as query ID, source from where query is submitted (such as trino python client, Workbench or Flare), cluster used, user who submitted the query along with creation time is shown. Queries can be analyzed selecting source/cluster/userof interest.
 
-![Picture](operations/user_kernel_minerva.png)
+![Picture](operations/minerva_query1.png)
 <figcaption align = "center">Minerva queries </figcaption>
 
 Additionally, it enables query profiling, allowing users to analyze query performance, identify bottlenecks, and optimize their queries if needed. It offers detailed execution plans, resource utilization information, and other performance-related metrics.
-![Picture](operations/minerva_query_analysis.png)
+![Picture](operations/query_detail.png)
 <figcaption align = "center">Query details </figcaption>
 
 ### **Cluster Analysis**
-Select `Cluster` resource for User Kernel resources. Cluster analysis option appears on the screen. View the query load distribution along with failed queries for each of the clusters up and running within DataOS instance.
-![Picture](operations/cluster_analysis.png)
+Select `Cluster` resource for User Space resources. Cluster analysis option appears on the screen. View the query load distribution along with failed queries for each of the clusters up and running within DataOS instance.
+![Picture](operations/cluster_analysis1.png)
 <figcaption align = "center">Query load distribution </figcaption>
 
 ### **Create Resources**
 Operations app provides users with the ability to easily create resources directly from the user interface. This functionality eliminates the need to rely on writing YAML for the resource and using CLI for resource creation, thus helps streamlining the resource management process within the DataOS platform.
-![Picture](operations/create_resource.png)
+![Picture](operations/create_resource1.png)
 <figcaption align = "center">Create Minerva cluster </figcaption>
 
 <aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
@@ -122,7 +113,7 @@ When DataOS components are deployed in Kubernetes, that Deployment creates Pods 
 
 *DataOS components are deployed in separate namespaces.* After selecting the namespace, you can see components deployed in that namespace. Here you will get the pod details for the  DataOS components for the selected namespace and the phase. 
 
-![Picture](operations/core_kernel1.png)
+![Picture](operations/corekernel.png)
 <figcaption align = "center"> Core kernel pods</figcaption>
 
 The phase of a Pod is a simple, high-level summary of where the Pod is in its lifecycle.
@@ -138,7 +129,7 @@ Here are the possible values for `phase`.
 | Unknown | For some reason, the state of the Pod could not be obtained. This phase typically occurs due to an error in communicating with the node where the Pod should be running. |
  
 
-Clicking on a particular pod will give you pod details, Pod YAML, Pod logs, and Pod usage.
+Clicking on a particular pod will give you Pod details, Pod YAML, Pod logs, and Pod usage.
 
 **Pod Details**
 
@@ -153,7 +144,7 @@ The pod lifecycle conditions are with a status (True, False, or Unknown) that ma
  
 <center>
 
-![Picture](operations/core_pod_details.png)
+![Picture](operations/core_kernel_pod_details.png)
 <figcaption align = "center">Pod details </figcaption>
 
 </center>
@@ -173,13 +164,6 @@ This gives you the aggregate of the CPU use of all containers for the selected p
 ### **Services**
 
 DataOS services are a means to interact with the Kubernetes system for running the core functionality/components. Select a namespace to get the list of services with their fully qualified domain name. All these services are deployed in the separate logical grouping called namespaces. 
- 
-<center>
-
-![Picture](operations/core_services.png)
-<figcaption align = "center"> </figcaption>
-
-</center>
 
 **Service Details**
 
@@ -194,23 +178,10 @@ A workload is a DataOS application running in one or more Kubernetes pods. You h
 - **Stateful sets** live up to their name, they're useful for stateful applications, that's things such as a database. Stateful sets create and manage pods that are expected to have a level of persistence. They allow for stable network identifiers and persistent storage.
 
 - **Daemon sets** are useful for background tasks such as monitoring by creating one pod per node.
- 
-<center>
-
-![Picture](operations/workloads.png)
-
-</center>
-<figcaption align = "center">DataOS workloads </figcaption>
 
 ### **Ingresses**
 Ingresses are configured within the DataOS platform for specific namespaces such as core apps, Poros, network gateway etc. These ingresses enable external access to the services and applications running within these namespaces, providing a secure and controlled entry point for incoming traffic. By defining and managing these ingresses, administrators can effectively control and direct the flow of network traffic to the respective namespaces, ensuring proper connectivity and access to the deployed resources.
 <center>
-
-![Picture](operations/ingress.png)
-
-</center>
-<figcaption align = "center">Ingresses for various namespaces </figcaption>
-
 
 ## Cloud Kernel 
 ### **Resources**
@@ -219,7 +190,7 @@ Within a cloud environment, compute nodes form a core of resources. They supply 
  
 <center>
 
-![Picture](operations/cloud_kernel.png)
+![Picture](operations/cloud_kernel_node.png)
 
 </center>
 <figcaption align = "center">Compute node details </figcaption>
@@ -234,12 +205,56 @@ Clicking on the compute node will display the detailed information about the nod
 - **Capacity and allocatable**- Available resources on the compute node, including CPU, memory, and the maximum number of pods that can be scheduled onto the node. It helps in understanding the capacity and limits of the node.
 - **Taints**- Automatically created by the Kubernetes control plane when problems occur on nodes,  that match the conditions affecting the node.
 
-![Alt text](operations/compute_node_details.png)
-<figcaption align = "center">Compute node details </figcaption>
-
 ## Product
 
-You can see the deployed DataOS products and their release information here.Click on the product name to view the release details of all the installed DataOS components. 
+You can see the deployed DataOS products and their release information here. Click on the product name to view the release details of all the installed DataOS components. 
  
 <aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
 🗣 You need ‘Operator’ level permissions to view the installed DataOS components.</aside>
+
+## Use Cases
+
+### **Monitoring Query Execution and Performance**
+
+The **Minerva Queries** option provides an intuitive, user-friendly interface to monitor query execution in a Minerva cluster. Here are some use cases where Minerva query information can be valuable for monitoring query execution:
+
+1. **Query Performance Optimization**:  to monitor the performance of running queries in real time. Detailed information about query execution, including query plans, stages, and resource utilization, can be viewed. This information helps in identifying performance bottlenecks, optimizing query execution, and improving overall query performance.
+2. **Query Troubleshooting**: When a query encounters errors or takes longer than expected to execute, the query's progress and execution stages can be observed. You can examine query details, such as the number of rows processed, the duration of each stage, and any error messages. This helps in troubleshooting and diagnosing issues that may arise during query execution.
+3. **Resource Utilization Monitoring**: To view a resource utilization summary for running queries, including CPU and memory usage. You can track resource consumption at the query level and identify queries that are consuming excessive resources. This helps in optimizing resource allocation, identifying resource-intensive queries, and ensuring efficient cluster utilization.
+
+
+### **Troubleshoot Data Processing Workloads**
+
+One use case for utilizing resource runtime logs is to troubleshoot problems with data processing workloads. These logs provide valuable insights into the execution of data movement tasks, allowing you to identify and resolve any issues that may arise during the process. 
+
+Let's say you have a Flare job that moves data from a source system to a destination system. During the execution of the pipeline, you encounter unexpected errors or data discrepancies. One effective way to achieve this is by analyzing the logs generated by the driver and executor nodes. By accessing the resource runtime logs, you can:
+
+1. **Identify errors**: The logs can provide detailed error messages, stack traces, or warnings that help pinpoint the specific issue causing the problem. You can look for any exceptions or error codes that indicate potential data movement issues.
+2. **Trace data flow**: The logs allow you to track the flow of data through the pipeline. You can see the input data, intermediate transformations, and output data at each stage. This helps in understanding how the data is being processed and if any transformations or mappings are causing the problem.
+3. **Analyze performance**: Resource runtime logs provide insights into the performance of the data movement workload. You can check for any delays, bottlenecks, or high resource utilization that may impact the efficiency of the process. This information can help you optimize and tune the workload for better performance.
+4. **Debug transformations**: If you have data transformations or mappings within the workflow,you can inspect the intermediate data at various stages and verify if the transformations are producing the expected results.
+**Analyzing the Driver Logs**: Look for progress indicators (such as completed stages, tasks, or data processing operations) and for any warning or error/exception messages that might indicate potential issues or failures. 
+![Alt text](operations/runtime_logs_driver.png)
+<figcaption align = "center">Driver logs </figcaption>
+**Analyzing the Driver Logs**: - Access the logs of individual executor nodes. These logs provide insights into the specific tasks performed by each executor. Look for task-level progress updates, including completed, failed, or ongoing tasks or any error/exceptions.
+![Alt text](operations/run_time_logs_execute.png)
+<figcaption align = "center">Executor logs</figcaption>
+
+Use the insights gained from the logs to fine-tune the configuration and parameters of the workload, if applicable.
+
+### **Optimizing Resource Utilization**
+
+One use case for utilizing the runtime usage and runtime node logs of the driver and executor is to tweak resource allocation for data processing jobs. These logs provide valuable insights into the resource utilization and performance of the driver and executor nodes during the execution of data processing tasks. Here's an example scenario:
+
+Let's say you have a data processing job that involves complex computations and transformations on large datasets. You notice that the job is taking longer than expected to complete or is experiencing resource-related issues. By accessing the runtime usage and runtime node logs, you can:
+
+1. **Analyze resource utilization**: Observe the CPU, memory, and disk usage of the driver and executor nodes. You can monitor the resource consumption patterns and identify any bottlenecks or resource constraints that may be impacting the job performance. This information helps you determine if the allocated resources are sufficient for the workload or if adjustments need to be made.
+2. **Optimize resource allocation**: Based on the insights gained from the usage graphs, you can make informed decisions about resource allocation for your data processing job. If you observe that the job is CPU-intensive, you might allocate more CPU resources to the executor nodes. If memory usage is high, you can adjust the memory allocation to ensure optimal performance. Fine-tuning the resource allocation can help improve job execution time and overall efficiency.
+
+![Alt text](operations/runtime_usage_execute.png)
+
+![Alt text](operations/runtime_node_usage_driver.png)
+
+
+
+<figcaption align = "center">usage </figcaption>
