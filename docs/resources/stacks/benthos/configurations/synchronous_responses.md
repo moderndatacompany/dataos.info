@@ -61,8 +61,11 @@ output:
 
 Using the above example, sending a request 'foo bar' to the path `/post` passes the message unchanged to the Kafka topic `foo_topic` and also returns the response 'FOO BAR'.
 
-> 🗣 NOTE
-It's safe to use these mechanisms even when combining multiple inputs with a broker, a response payload will always be routed back to the original source of the message.
+<aside style="padding:15px; border-radius:5px;">
+
+🗣 It's safe to use these mechanisms even when combining multiple inputs with a broker, a response payload will always be routed back to the original source of the message.
+
+</aside>
 
 
 ## Returning Partially Processed Messages

@@ -2,7 +2,7 @@
 
 When running Benthos in `streams` mode, it's possible to create streams with their own static configurations, simply list one or more files after the `streams` subcommand:
 
-```bash
+```shell
 benthos streams ./foo.yaml ./configs/*.yaml
 ```
 
@@ -18,7 +18,7 @@ benthos -r "./resources/prod/*.yaml" streams ./stream_configs/*.yaml
 
 Make a directory of stream configs:
 
-```bash
+```shell
 $ mkdir ./streams
 
 $ cat > ./streams/foo.yaml <<EOF
@@ -52,13 +52,13 @@ EOF
 
 Run Benthos in streams mode, pointing to our directory of streams:
 
-```bash
+```shell
 $ benthos streams ./streams/*.yaml
 ```
 
 On a separate terminal you can query the set of streams loaded:
 
-```bash
+```shell
 $ curl http://localhost:4195/streams | jq '.'
 {
   "bar": {
@@ -76,7 +76,7 @@ $ curl http://localhost:4195/streams | jq '.'
 
 You can also query a specific stream to see the loaded configuration:
 
-```bash
+```shell
 $ curl http://localhost:4195/streams/foo | jq '.'
 {
   "active": true,
@@ -121,7 +121,7 @@ $ curl http://localhost:4195/streams/foo | jq '.'
 
 You can then send data to the stream via its namespaced URL:
 
-```bash
+```shell
 $ curl http://localhost:4195/foo/post -d '{"user":{"id":"foo"},"body":{"content":"bar"}}'
 ```
 

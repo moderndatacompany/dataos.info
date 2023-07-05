@@ -8,12 +8,6 @@ Flare is a declarative stack for large-scale data processing within DataOS. It l
 <center><i>Placement of Flare stack within DataOS</i>
 </center>
 
-## Creating a Flare Job
-
-Whether you need to process data in batches or in a streaming fashion, Flare provides different job types to cater to your needs. You can explore the detailed documentation on creating Flare Jobs on the link below.
-
-[Create Flare Jobs](./flare/creating_flare_jobs.md)
-
 ## Types of Flare Jobs
 
 | Flare Job Type  | Description                                                                                                            |
@@ -23,8 +17,17 @@ Whether you need to process data in batches or in a streaming fashion, Flare pro
 | Data Quality Job | Evaluates data quality based on business-specific validation rules (assertions).                                                      |
 | Incremental Job | Computes only the changed rows or files of data since the last build, reducing overall computation and latency.        |
 | Stream Job      | Processes new data continuously with low latency, but incurs high computing costs and requires constant resource availability. |
+| Action Job      | Performs maintenance actions on data stored in Iceberg format in any depot (including Icebase) |
 
 Further information regarding Flare Jobs can be accessed [here](./flare/flare_job_types.md)
+
+## Creating a Flare Job
+
+Whether you need to process data in batches or in a streaming fashion, Flare provides different job types to cater to your needs. You can explore the detailed documentation on creating Flare Jobs on the link below.
+
+[Create Flare Jobs](./flare/creating_flare_jobs.md)
+
+
 
 ## Flare Stack YAML Configurations
 
