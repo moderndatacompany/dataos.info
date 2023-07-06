@@ -8,29 +8,35 @@ Jupyter notebooks are especially useful for "showing the work" that your data te
 ## Notebook on DataOS 
 DataOS is configured to take advantage of the Jupyter ecosystem's open-source tooling. When using Jupyter on DataOS, there are several advantages and features that make it a valuable tool for data science projects:
 
-1. **Secure Environments**: Jupyter kernels on DataOS come with pre-installed libraries essential for data science projects. These environments are secure and isolated, ensuring that your model pipelines and data remain protected. 
-2. **Depot Connectivity**: The PyFlare SDK provides seamless connectivity to your existing depots within the Jupyter environment. This enables easy access to data stored in depots.
-3. **Multi-Language Support**: Jupyter Notebooks offer support for multiple programming languages, including Python, R, Julia, and Scala. This versatility allows you to choose the language that best suits your needs and work with a wide range of data analysis and machine learning tools.
-4. **Apache Toree**: DataOS supports Apache Toree, a Scala-based Jupyter Kernel. This kernel enables Jupyter Notebooks to execute Scala code and seamlessly connect to Apache Spark. With Apache Toree, you can build interactive applications, leverage the power of Spark for big data processing, and perform advanced analytics within your Jupyter environment.
+- **Secure Environments**: Jupyter kernels on DataOS come with pre-installed libraries essential for data science projects. These environments are secure and isolated, ensuring that your model pipelines and data remain protected. 
+- **Depot Connectivity**: The PyFlare SDK provides seamless connectivity to your existing depots within the Jupyter environment. This enables easy access to data stored in depots.
+- **Multi-Language Support**: Jupyter Notebooks offer support for multiple programming languages, including Python, R, Julia, and Scala. This versatility allows you to choose the language that best suits your needs and work with a wide range of data analysis and machine learning tools.
+- **Apache Toree**: DataOS supports Apache Toree, a Scala-based Jupyter Kernel. This kernel enables Jupyter Notebooks to execute Scala code and seamlessly connect to Apache Spark. With Apache Toree, you can build interactive applications, leverage the power of Spark for big data processing, and perform advanced analytics within your Jupyter environment.
 
 
 ## Use Case- Writing Data To Icebase
-This use case demonstrates how to write a test dataset to DataOS Icebase using PySpark on Jupyter Notebook. We achieve the objective with help of `PyFlare` and `PySpark` on Notebook hosted on DataOS.
+This use case demonstrates how to write a test dataset to DataOS Icebase using PyFlare on Jupyter Notebook. We achieve the objective with help of `PyFlare` and `PySpark` on Notebook hosted on DataOS. 
+
+<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+PyFlare is implemented on PySpark.  PyFlare gives capability to read and write data directly to the Icebase.
+</aside>
 
 ### **Prerequisites**
 - DataOS credentials and access to Icebase depot.
 - Hosted Jupyter Notebook on DataOS.
 
 Launch Notebook from DataOS Home and navigate to persistent-systems directory.
-1. Install Pyflare on Jupyter
-2. Input credentials and Connect to Icebase with a spark session
-3.  Read and upload data to icebase using PyFlare
+
+1. Install PyFlare on Jupyter
+2. Input credentials and connect to Icebase with a spark session
+3. Read and save data to icebase using PyFlare
 
 ### **Installation**
 
-Use the following command to install PyFlare on the hosted Jupyter environment:
+Use the following command to install PyFlare on the hosted Jupyter environment. It will enable Spark capabilities in your Jupyter Notebook environment.
 
 ```python
+
 pip install pyflare
 
 # Import necessary libraries
@@ -38,10 +44,10 @@ from pyflare import session, logger, sdk
 ```
 
 ### **Connection to Spark**
-Connect to Icebase with a Spark session. Enter your tokens and table address, we are writing a dataset on vehicle collision to Icebase. 
+Connect to Icebase with a Spark session. Enter your tokens and table address, we are writing a test dataset on vehicle collision to Icebase. 
 
-#### **Define datasets to be read**
-Define the datasets to be read, including the collision dataset path. 
+#### **Define Datasets to be Read**
+Define the datasets to be read, including the dataset path. 
 ```python
 log = logger.get(__name__, "info")
 
@@ -58,7 +64,7 @@ outputs = {
 ```
 
 #### **Specific spark conf for Icebase**  
-Set up the necessary Spark configurations that would be needed for icebase depot.
+Set up the necessary Spark configurations that would be needed for Icebase depot.
 ```python
 sparkConf = [
     ("spark.app.name", "Dataos Sdk Spark App"),
@@ -67,7 +73,7 @@ sparkConf = [
                             "com.microsoft.azure:azure-storage:8.6.6,org.apache.hadoop:hadoop-azure:3.3.3")
 ]
 ```
-#### **DataOS FQDN and DataOS API token**
+#### **DataOS FQDN and DataOS API Token**
 Provide the DataOS Fully Qualified Domain Name (FQDN) and your DataOS API token.
 
 ```python
@@ -75,14 +81,14 @@ DATAOS_FQDN = "engaging-ocelot.dataos.app"
 
 token = "<api token>"
 ```
-#### **Create`SPARK SESSION` to connect with ICEBASE**
+#### **Create Spark Session to Connect with ICEBASE**
 Create a Spark session to connect with Icebase using the provided credentials and configurations.
 ```python
 spark = session(api_key=token, dataos_url=DATAOS_FQDN, inputs=inputs, outputs=outputs,
                 spark_conf_options=sparkConf)
 ```
 
-#### **Read and upload data to Icebase using PyFlare**
+#### **Read and Save Data to Icebase**
 
 Read your dataset using the Spark object created in the previous step. Supported data formats include CSV, JDBC, JSON, ORC, Parquet, Table, and Text. Create a temporary view with a name of your choice for further processing.
 
@@ -93,7 +99,7 @@ df = spark.read.csv("Motor_Vehicle_Collisions_-_Crashes.csv",header=True)
 df.createOrReplaceTempView("collisions")
 ```
 
-#### **Configurations for output dataset**
+#### **Configurations for Output Dataset**
 
 Configure the output dataset options, such as compression and file format, for the data to be saved in Icebase.
 Use the PyFlare SDK to save the dataset to Icebase with the specified options.
@@ -148,3 +154,4 @@ write_options = {
 # Save the dataset to Icebase using PyFlare SDK
 dataset = sdk.save(name="collisions", format="iceberg", mode='overwrite', options=write_options)
 ```
+You have successfully Make sure to customize the database name, table name, and any additional options based on your specific use case.
