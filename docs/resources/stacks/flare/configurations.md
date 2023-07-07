@@ -127,31 +127,31 @@ A Flare Job can be further split into 5 sections:
 
 The `inputs` section encompasses crucial configuration settings necessary for extracting data from diverse sources, such as name, format, dataset address, etc. To facilitate reading data from multiple sources, an array of data source definitions are required. To obtain more detailed information, kindly refer to the link below.
 
-[Inputs](./flare_stack_yaml_configurations/inputs.md)
+[Inputs](./configurations/inputs.md)
 
 #### **Outputs**
 
 The `outputs` section provides comprehensive information regarding the storage location and naming convention for the output dataset. To access additional details, please refer to the link provided below.
 
-[Outputs](./flare_stack_yaml_configurations/outputs.md)
+[Outputs](./configurations/outputs.md)
 
 #### **Steps**
 
 The `steps` section outlines the prescribed sequence of tasks for data enrichment and processing, including but not limited to the addition of calculated columns, aggregations, and filtering via SQL. These are defined in `sequence` under `steps`. For further information, please consult the linked page.
 
-[Steps](./flare_stack_yaml_configurations/steps.md)
+[Steps](./configurations/steps.md)
 
 #### **Streaming**
 
 The `streaming` section encompasses properties that pertain to the execution of stream jobs. For further details, please refer to the page provided below.
 
-[Streaming](./flare_stack_yaml_configurations/streaming.md)
+[Streaming](./configurations/streaming.md)
 
 #### **Assertions**
 
 In the context of data quality, assertions refer to validation rules that are tailored to a particular business domain and serve to determine the fitness-for-purpose of datasets. The application of assertions enables the execution of additional validation checks on top of existing datasets, thereby enhancing their overall quality. Assertions are defined within the dedicated `assertions` section. To gain further insights, please refer to the following page.
 
-[Assertions](./flare_stack_yaml_configurations/assertions.md)
+[Assertions](./configurations/assertions.md)
 
 To perform validation checks on datasets that are to be written, click [here.](./case_scenario/data_quality_jobs.md#pre-sink-assertions)
 
@@ -159,4 +159,4 @@ To perform validation checks on datasets that are to be written, click [here.](.
 
 The DataOS platform provides comprehensive support for executing maintenance actions within the Icebase depot. These are specified within the `actions` section. For further information, please refer to the following page.
 
-[Actions](./flare_stack_yaml_configurations/actions.md)
+[Actions](./configurations/actions.md)

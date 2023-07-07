@@ -2,7 +2,7 @@
 
 ## Case Scenario
 
-In this case scenario, we have a Flare Batch Job in which we read data from one depot, process it, and write it to another depot. To know more about Batch Jobs, click [here](../flare_job_types.md#batch-job)
+In this case scenario, we have a Flare Batch Job in which we read data from one depot, process it, and write it to another depot. To know more about Batch Jobs, click [here](../job_types.md#batch-job)
 
 ## Implementation Flow
 

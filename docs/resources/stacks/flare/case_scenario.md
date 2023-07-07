@@ -59,7 +59,7 @@
 
 ### **Rewrite Orphans**
 
-The `remove_orphans` [action](../flare_stack_yaml_configurations/actions.md#remove-orphans) cleans up orphans files older than a specified time period. This action may take a long time to finish if you have lots of files in data and metadata directories. It is recommended to execute this periodically, but you may not need to execute this often. 
+The `remove_orphans` [action](./configurations/actions.md#remove-orphans) cleans up orphans files older than a specified time period. This action may take a long time to finish if you have lots of files in data and metadata directories. It is recommended to execute this periodically, but you may not need to execute this often. 
 
 <aside>
 

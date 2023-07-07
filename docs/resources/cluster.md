@@ -1,6 +1,6 @@
 # Cluster
 
-In DataOS, a Cluster is a Primitive/resource that encompasses a set of computational resources and configurations used to run data engineering and analytics tasks. A Cluster is powered by a [Compute](./compute.md), another resource which provides the necessary processing power for the workloads executed on the Cluster.
+In DataOS, a Cluster is a fundamental Resource that encompasses a set of computational resources and configurations used to run data engineering and analytics tasks. A Cluster is powered by a [Compute](./compute.md), another resource which provides the necessary processing power for the workloads executed on the Cluster.
 
 <aside style="padding:15px; border-radius:5px;">
 
@@ -109,35 +109,3 @@ Within DataOS, we can create a Cluster via two mechanisms: either by creating a 
 [Creating Cluster Using Operations App UI ](./cluster/creating_cluster_using_operations_app_ui.md)
 
 [Cluster Maintenance ](./cluster/cluster_maintenance.md)
-
----
-
-# Cluster
-
-In DataOS, a Cluster is a resource that encompasses a set of computational resources and configurations used to run data engineering and analytics tasks. A Cluster is powered by a [Compute](./compute.md), another resource which provides the necessary processing power for the workloads executed on the Cluster.
-
-<aside style="padding:15px; border-radius:5px;">
-
-🗣️ To establish a Cluster, `roles:id:operator` tag is required. If you do not possess this tag, contact the DataOS administrator within your organization or any other individual with `roles:id:operator` tag to grant you the tag.
-
-</aside>
-
-![Diagrammatic representation of a Cluster ](./cluster/add_a_heading.svg)
-
-<center><i>Diagrammatic representation of a Cluster</i></center>
-
-DataOS primarily has just one type of Cluster, known as "Minerva.” For exploratory, querying, and ad-hoc analytics workloads, Minerva Clusters can be created and attached to the desired Compute. DataOS provides flexibility to connect Compute of different configurations with different Minerva Clusters. Multiple such clusters can be made of diverse configurations to meet various analytics requirements.
-
-A Cluster refers to a Compute, which is essentially a node pool of homogenous Virtual Machines (VMs) belonging to the same cloud provider. All VMs (or nodes) within a node pool should have the same CPU, RAM, Storage Capacity, Network Protocols, and Storage Drive Types.
-
-## Minerva
-
-Minerva is our query engine that will enable you to access your data for business insights. Minerva query engine gives users the ability to query various datasets through a single platform.
-
-You can also run your analytical/exploration workloads with long-running queries. Minerva is an interactive query engine based on Trino.
-
-Minerva makes it easy to analyze big data using SQL; you can query data across different databases without worrying about their configuration and data formats. It enables high-performance SQL access to various heterogeneous data sources, including traditional relational databases Oracle, PostgreSQL, MySQL, and Redshift, and other data sources such as Kafka and Cassandra.
-
-Minerva enables you to run hundreds of memory, I/O, and CPU-intensive queries concurrently. For such a query load, a single Minerva cluster is insufficient, and you must create multiple clusters which can scale to hundreds of worker nodes while efficiently utilizing cluster resources.
-
-Minerva enables you to concurrently run hundreds of memory, I/O, and CPU-intensive queries. For such query load, a single Minerva cluster is not sufficient, and you need to create multiple clusters. It can scale to hundreds of worker nodes while efficiently utilizing cluster resources.
