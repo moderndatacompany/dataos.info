@@ -56,7 +56,7 @@ inputs = {
 		}                   # else path
 ```
 #### **Output Table address**
-Specify the output table address in Icebase where you want to write the data.
+Specify the output table address in Icebase where you want to write the data. `c181` is the name of the view.
 ```python
 outputs = {
     "c181": "dataos://icebase:<schema>/vehiclecollision"   ##address of table
@@ -96,7 +96,7 @@ Read your dataset using the Spark object created in the previous step. Supported
  
 df = spark.read.csv("Motor_Vehicle_Collisions_-_Crashes.csv",header=True)
 ### temporary view
-df.createOrReplaceTempView("collisions")
+df.createOrReplaceTempView("c181")
 ```
 
 #### **Configurations for Output Dataset**
@@ -107,10 +107,28 @@ Use the PyFlare SDK to save the dataset to Icebase with the specified options.
 ```python
 write_options = {
     "compression": "gzip",
-    "write.format.default": "parquet"}
+    "write.format.default": "parquet",
+    "iceberg": {
+        "partition": [
+            {
+                "type": "identity",
+                "column": "state_code",
+            }
+        ]
+    }
+}
 
-dataset = sdk.save(name = "collisions",format = "iceberg", mode='overwrite', options=write_options)
+dataset = sdk.save(name = "c181",format = "iceberg", mode='overwrite', options=write_options)
 ```
+#### **Set Metadata**
+To show the dataset on the workbench and start querying, run set-metadata command on DataOS CLI.
+```shell
+dataos-ctl dataset set-metadata -a dataos://icebase:shopper_360/model_prediction -v latest
+```
+<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+You can run the SQL query on the intermediate view to check the data before writing it to the Icabase.
+</aside>
+
 ## Example Code
 
 ```python
@@ -143,7 +161,7 @@ spark = session(api_key=token, dataos_url=DATAOS_FQDN, inputs=inputs, outputs=ou
 
 # Read your dataset and create a temporary view
 df = spark.read.csv("Motor_Vehicle_Collisions_-_Crashes.csv", header=True)
-df.createOrReplaceTempView("collisions")
+df.createOrReplaceTempView("c181")
 
 # Configure the output dataset options
 write_options = {
@@ -152,6 +170,6 @@ write_options = {
 }
 
 # Save the dataset to Icebase using PyFlare SDK
-dataset = sdk.save(name="collisions", format="iceberg", mode='overwrite', options=write_options)
+dataset = sdk.save(name="c181", format="iceberg", mode='overwrite', options=write_options)
 ```
 You have successfully Make sure to customize the database name, table name, and any additional options based on your specific use case.
