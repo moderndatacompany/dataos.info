@@ -14,7 +14,7 @@ Data Profiling Jobs assess the quality and structure of datasets. These jobs exa
 
 ### **Data Quality Job**
 
-Data Quality is a subjective concept, varying among different consumers. In DataOS, assertions are defined as business-specific validation rules to evaluate the quality of specific datasets for their intended purpose. Data Quality Jobs measure and ensure data quality based on these assertions. For more information on defining assertions and their properties, refer to [here](./flare_stack_yaml_configurations/assertions.md). To explore a case scenario related to Data Quality Jobs, click [here](./case_scenario/data_quality_jobs.md).
+Data Quality is a subjective concept, varying among different consumers. In DataOS, assertions are defined as business-specific validation rules to evaluate the quality of specific datasets for their intended purpose. Data Quality Jobs measure and ensure data quality based on these assertions. For more information on defining assertions and their properties, refer to [here](./configurations/assertions.md). To explore a case scenario related to Data Quality Jobs, click [here](./case_scenario/data_quality_jobs.md).
 
 ### **Incremental Job**
 
@@ -22,4 +22,4 @@ Incremental Jobs only compute the rows or files of data that have changed since 
 
 ## Stream Job
 
-Stream Jobs continuously process incoming data in real-time. They offer low latency but have the highest computing costs, as resources must always be available to handle new input data. Creating stream jobs should be avoided in most cases unless there are strict latency requirements, typically less than a minute. To explore stream-specific properties for Stream Jobs, click [here](./flare_stack_yaml_configurations/streaming.md). For a case scenario illustrating how a streaming job is declared within DataOS, refer to [here](./case_scenario/stream_jobs.md).
+Stream Jobs continuously process incoming data in real-time. They offer low latency but have the highest computing costs, as resources must always be available to handle new input data. Creating stream jobs should be avoided in most cases unless there are strict latency requirements, typically less than a minute. To explore stream-specific properties for Stream Jobs, click [here](./configurations/streaming.md). For a case scenario illustrating how a streaming job is declared within DataOS, refer to [here](./case_scenario/stream_jobs.md).

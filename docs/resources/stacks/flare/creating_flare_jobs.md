@@ -4,7 +4,7 @@
 
 DataOS uses Flare workflows to carry out large-scale data transformation, ingestion, profiling, syndication, and even a combination of these tasks.
 
-![diagram 03.jpg](./basic_concepts_of_flare_workflow/diagram_03.jpg)
+![diagram 03.jpg](./basic_concepts/diagram_03.jpg)
 
 Flare is a declarative stack that can process large-scale data processing workflows using sequential YAML. On the other hand, a workflow is a primitive/Resource within DataOS that runs a sequence of jobs in a specific order. A workflow is a DAG (Directed Acyclic Graph) of jobs. To learn more about workflows, click [here](../../workflow.md). 
 
@@ -20,7 +20,7 @@ A Job is a generalized way of defining a transformation task based on the scenar
 
 In terms of YAML structure how a Flare Job is declared within the DAG, it comprises three sections: The Input (read data from), the Output (write data to), and the Steps (transformation of data during transit). 
 
-![Build.svg](./basic_concepts_of_flare_workflow/build.svg)
+![Build.svg](./basic_concepts/build.svg)
 
 
 In order to grasp the intricacies of creating a Flare Job and the process of testing and deploying it, we shall explore a specific example of Data Ingestion. The data ingestion process will involve acquiring batch data in CSV format from an external source, applying various transformations on top of it, and ultimately storing the data within DataOS internal storage, Icebase.
@@ -132,7 +132,7 @@ While for a streaming workload, you need to create two separate workflows one fo
 
 For small and medium-sized data it's best to stick to the default configurations, but if you wanna do some heavy lifting by running some hundred Gigabyte and even Terabyte-sized workloads you need to alter the configuration and optimize the job according to that. To know more about optimization click the below link
 
-[Flare Optimizations](../flare/flare_optimizations.md)
+[Flare Optimizations](../flare/optimizations.md)
 
 ## Getting started with Flare Job
 
@@ -216,7 +216,7 @@ workflow: # Workflow
 
 Save the YAML and copy its path. Path could be either relative or absolute.
 
-> To know more about the various Flare Stack YAML configurations, click [here](./flare_stack_yaml_configurations.md)
+> To know more about the various Flare Stack YAML configurations, click [here](./configurations.md)
 >
 
 ### **Validate the YAML**
@@ -225,7 +225,7 @@ Before running the workflow, ensure the validity of the YAML using the Linter co
 
 In case you encounter errors, check out the below link
 
-[Flare Errors and Issues](./flare_optimizations/flare_errors_and_issues.md) 
+[Flare Errors and Issues](./optimizations/errors_and_issues.md) 
 
 To use the linter command use the lint `-l` flag with the `apply` command. 
 

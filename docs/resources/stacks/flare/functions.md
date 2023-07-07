@@ -1,14 +1,23 @@
 # Flare Functions
 
-Flare Functions: Pre-defined functions enabling execution of complex tasks with minimal coding requirements.
-Flare Functions: Pre-defined functions, ingeniously devised, facilitating the execution of complex tasks while minimizing the need for extensive coding efforts.
-Flare Functions: Pre-defined functions that streamline the execution of intricate tasks, minimizing the need for extensive coding efforts.
-Flare Functions, which allow users to execute complex tasks with minimal coding requirements by leveraging pre-defined functions. 
-
-
-Flare is a powerful stack that empowers its users with a diverse range of data manipulation functions, all of which can be executed at various processing stages. Furthermore, Flare enables users to create custom Flare functions of their own, which are commonly known as User-Defined Flare Functions (UDFs). 
+Flare is a robust stack that provides users with an extensive set of pre-defined data manipulation functions. These functions can be executed at different processing stages, allowing for the execution of complex tasks without the need for extensive coding efforts. Additionally, Flare empowers users to create their own custom functions, known as User-Defined Flare Functions (UDFs), to address specific requirements or extend the functionality of the stack. 
 
 The YAML syntax given below provides a sample of how Flare Functions are defined:
+
+```yaml
+functions: 
+  - name: cleanse_column_names
+  - name: unpivot 
+    columns: 
+      - "*" 
+    pivotColumns:
+      - week_year
+    keyColumnName: week_year_column 
+    valueColumnName: values_columns
+```
+
+<details>
+<summary>Sample YAML showcasing application of Flare Function</summary>
 
 ```yaml
 version: v1
@@ -78,14 +87,27 @@ workflow:
           sparkConf:
             - spark.sql.extensions: org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions
 ```
+</details>
 
 In the succeeding list, we provide comprehensive information about these pre-defined functions and their usage.
 
-[List of Flare Functions](./flare_functions/list.md)
+[List of Flare Functions](./functions/list.md)
 
 # User-Defined Flare Functions
 
 In addition to the pre-defined Flare Functions, Flare offers the ability to create custom User-Defined Flare Functions. These functions can be defined using YAML syntax, as demonstrated below.
+
+```yaml
+udfs:
+  to_upper: "(value: String) => if (value.nonEmpty) { value.toUpperCase() } else { \"\" }"
+  to_mask: "(value: String, pattern: String, mask: String) =>  { import io.dataos.flare.functions.utils.Utils \n val indexes = Utils.findCharIndex(pattern, mask) \n
+    val ssnStr = new StringBuilder(value) \n
+    indexes.stream().forEach(index => ssnStr.setCharAt(index, mask.charAt(0))) \n
+    ssnStr.toString \n
+    } "
+```
+
+<details><summary>Sample YAML showcasing User-defined Flare Function</summary>
 
 ```yaml
 version: v1
@@ -148,3 +170,4 @@ workflow:
               - name: finalDf
                 sql: SELECT *, to_upper(city_name) as city_name_upper, to_mask(city_id, 'xx###', 'X') as mask_city_id FROM cities
 ```
+</details>

@@ -24,22 +24,22 @@ When a Flare Workflow is deployed on the Kubernetes Cluster, the real-time infor
 
 Hera App captures the historical and lineage information related to Flare Workflow deployments, topology etc.  It stores all this information within Blob storage. To know more, navigate to the below page
 
-[Observability of Workflow ](./flare_optimizations/observability_of_workflow.md)
+[Observability of Workflow ](./optimizations/observability_of_workflow.md)
 
 ## Spark Web UI
 
 Flare abstracts the complexities of Spark, but at the same time, it amplifies the useful features of Spark. One such is the Spark UI. Spark includes a graphical user interface to inspect or monitor jobs in their various stages of decomposition. A good understanding of what to look for in the Spark UI, such as whether shuffles are spilling to disk or include retries, may help you carve out the best strategy for submitting your Flare Job. 
 
-[Inspecting the Spark UI](./flare_optimizations/inspecting_the_spark_ui.md)
+[Inspecting the Spark UI](./optimizations/inspecting_the_spark_ui.md)
 
 ## Flare Job Performance Tuning
 
 Configuring a Flare job is as much an art as a science. Choosing a configuration depends on the size and setup of the data storage solution, the size of the jobs being run (how much data is processed), and the kind of jobs. For example, jobs that cache a lot of data and perform many iterative computations have different requirements than those that contain a few very large shuffles. Tuning also depends on the goals of your team. In some instances, if you are using shared resources, you might want to configure the job that uses the fewest resources and still succeeds. Other times, you may want to maximize the resources available to give your job the best possible performance. 
 
-[Performance Tuning](./flare_optimizations/performance_tuning.md)
+[Performance Tuning](./optimizations/performance_tuning.md)
 
 ## Flare Errors
 
 Stuck with Errors, check out the below link to resolve frequent errors
 
-[Flare Errors and Issues](./flare_optimizations/flare_errors_and_issues.md)
+[Flare Errors and Issues](./optimizations/errors_and_issues.md)

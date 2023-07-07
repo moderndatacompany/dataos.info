@@ -172,7 +172,7 @@ dataos-ctl develop start -s flare:3.0 -i rubiklabs/flare3:6.0.93 -f standalone/p
 
 ![Untitled](./local_to_cloud_using_standalone_2.0/untitled_1.png)
 
-To know more about the various sections of the Spark UI and what each one of them signifies navigate to the [link](../../flare_optimizations/inspecting_the_spark_ui.md)
+To know more about the various sections of the Spark UI and what each one of them signifies navigate to the [link](../../optimizations/inspecting_the_spark_ui.md)
 
 1. On successful execution, the Scala command line shell will open as below:
 
