@@ -1,23 +1,20 @@
 #Create API Key
 ## Generate API token from DataOS UI
 
-1.  On the DataOS home page, click on '**Profile**'.
+1.  On the 'Profile' page, click on **Tokens**.
 
-2. On the 'Profile' page, click on **Tokens**.
+2. Click on the **Add API Key** link. 
 
-3. Click on the **Add API Key** link on the **Tokens** tab:
+   ![integration-dataos-token-apikey.png](token_apikey.png)
 
-![integration-dataos-token-apikey.png](token_apikey.png)
+3. Type in the name for this token and also set the validity period of your token based on the security requirements as per your business needs. Click **Save** to create one for you.
 
-4. Type in the name for this token and also set the validity period of your token based on the security requirements as per your business needs. Click **Save** to create one for you.
+   ![integration-add-key.png](add_key.png)
 
-![integration-add-key.png](add_key.png)
+4. The API key is listed below. Clicking on the “eye icon” will make the full API key visible. Click on the API key to copy it.
 
-5. The API key is listed below. Click on the “eye icon” on the right side to make the full API key visible.
-
-![integration-key-created.png](key_created.png)
-
-6. Click on the API key to copy it. 
+   ![integration-key-created.png](key_created.png)
+ 
 
 ## Create API Key Using CLI
 
