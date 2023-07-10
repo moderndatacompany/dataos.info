@@ -99,7 +99,7 @@ dataos-ctl apply -f {{file path}} -l
 > The linter identifies only specific kinds of errors in the config file. For a more detailed analysis of the errors, one would need to check the logs for the failed resource-instance.
 > 
 
-<aside>
+<aside style="padding:15px; border-radius:5px;">
 📖 Best Practice:<br>
 Always run the lint command to flag possible errors before deploying a Resource.
 
@@ -129,7 +129,7 @@ dataos-ctl get -i "{{name:version:type:workspace}}"
 
 If no flag is mentioned at the time of applying the Resource, it is deployed in the *public* workspace, which is the common tenant for your entire organisation to work in.
 
-<aside>
+<aside style="padding:15px; border-radius:5px;">
 📖 Best Practice:<br>
 Create a Workspace for your team or your personal work. Always run the jobs/services in that personal/team workspace first. If successful, you can run it in the public workspace to allow other teams/people access to those resource-instances.
 
