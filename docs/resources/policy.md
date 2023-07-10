@@ -38,7 +38,7 @@ Upon the application of a data masking policy, the original data is transformed,
 
 | Data Category | Original Value | Masked Value |
 | --- | --- | --- |
-| Email ID | john.smith@gmail.com | bkfgohrnrtseqq85@bkgiplpsrhsll16.com |
+| Email ID | john.smith\@gmail.com | bkfgohrnrtseqq85\@bkgiplpsrhsll16.com |
 | Social Security Number (SSN) | 987654321 | 867-92-3415 |
 | Credit Card Number | 8671 9211 3415 4546 | #### #### #### #### |
 
@@ -93,11 +93,11 @@ Though the Policy resource is singular, each policy-type has a different underly
 
 [Policy Section-specific Grammar](./policy/policy_section_specific_grammar.md)
 
-# Creating a Policy
+## Creating a Policy
 
-## YAML Configuration File
+### **YAML Configuration File**
 
-### **Resource Section Configuration**
+#### **Resource Section Configuration**
 
 To create a Policy in DataOS, the initial step involves configuring the Resource Section in a YAML file. This section defines various properties of the Policy resource. The following is an example YAML configuration for the Resource Section:
 
@@ -119,11 +119,11 @@ For policies that govern authorization for system level resources such as API Pa
 
 Additionally, the Resource section offers various configurable fields, which can be explored further on the **RESOURCE SECTION** page.
 
-### **Policy-specific Section Configuration**
+#### **Policy-specific Section Configuration**
 
 The Policy Section focuses on the configurations specific to the Policy resource. DataOS supports two distinct types of Policies: **Access Policy** and **Data Policy**. Each Policy Resource type has its own YAML syntax.
 
-#### **Access Policy Syntax**
+##### **Access Policy Syntax**
 
 Access policies are defined using a subject-predicate-object triad. The YAML syntax for an Access Policy is as follows:
 
@@ -141,7 +141,7 @@ policy:
 
 Here, the `subject` represents the user, the `object` denotes the target (such as an API path or resource) that the user interacts with, and the `predicate` represents the action performed. The `allow` field determines whether the policy grants or restricts access for the user to perform the specified action on the designated object. Refer to the [resource](./policy/policy_section_specific_grammar.md) for more details on configuring subjects, predicates, and objects.
 
-**Data Policy Syntax**
+##### **Data Policy Syntax**
 
 ```yaml
 policy:
@@ -161,7 +161,7 @@ policy:
 
 For detailed information on configuring the YAML file for a Data Policy, refer to the [resource](./policy/policy_section_specific_grammar.md).
 
-### Applying the YAML File
+### **Applying the YAML File**
 
 After creating the YAML configuration file for the Policy resource, it's time to apply it to instantiate the resource in the DataOS environment. To apply the Policy YAML file, utilize the `apply` command.
 

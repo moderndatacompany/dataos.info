@@ -204,7 +204,7 @@ service:
                 - bloblang: root = if errored() { deleted() }
             pattern: fan_out
 ```
-
+</details>
 
 ## Apply a Service YAML
 
