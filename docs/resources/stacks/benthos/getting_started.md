@@ -6,7 +6,7 @@ If you're new to the game, fret not! We've got you covered with this step-by-ste
 
 From there, we'll guide you through the transition to DataOS and beyond. Follow along with our expert guidance and before you know it, you'll be a Benthos whiz.
 
-## Install[](https://www.benthos.dev/docs/guides/getting_started#install)
+## Install[]
 
 Firstly, let's get started by installing the Benthos stack. The installation process is a breeze, that involves a single command to be executed on the command line:  
 
@@ -14,7 +14,7 @@ Firstly, let's get started by installing the Benthos stack. The installation pro
 curl -Lsf https://sh.benthos.dev | bash # Downloads the latest stable version
 ```
 
-### Use Docker[](https://www.benthos.dev/docs/guides/getting_started#docker)
+### Use Docker
 
 If you have docker installed, you can pull the latest official Benthos image with:
 
