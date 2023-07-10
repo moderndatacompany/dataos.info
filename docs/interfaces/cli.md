@@ -1,9 +1,8 @@
 # CLI
 
-<!DataOS is controlled at the command-line by standardized YAML directives using a configurable set of Resources. This allows fine-grained control of every function, workload and data products.>
-DataOS CLI is a text-based interface that allows users to interact with the DataOS context via command prompts. It is agnostic of the operating system or processor of the local machines, that is to say that it works in the same manner irrespective of whether you are on MacOS, Linux or Windows.
+DataOS CLI is a text-based interface that allows users to interact with the DataOS context via command prompts. It offers a consistent experience across different operating systems, such as MacOS, Linux, and Windows.
 
-CLI provides several capabilities - progammable command completion, passing environment variables while creating or updating the configuration files, managing multiple DataOS contexts from a central location, a Terminal User Interface, and a host of other features.
+CLI provides several capabilities - progammable command completion, passing environment variables while creating or updating the configuration files, managing multiple DataOS contexts from a central location, a Terminal User Interface(TUI), and a host of other features.
 
 The following document, encapsulates the installation steps for CLI, initialization steps for the DataOS context, and the shell grammar for the first-time users to understand the command structure.
 
@@ -14,10 +13,11 @@ Follow the steps enumerated below to install the Command Line Interface. Check t
 **Requirements**
 
  1. Please ensure that the curl utility is installed on your system. To check, use this command:
-
-        curl --version
-
+    ```sh
+    curl --version
+    ```
     If curl is not installed, follow the steps to [download curl](./cli/read_on_curl_utility.md).
+
  2. Get the following items from our Customer Success team:
     - DataOS prime apikey
     - The domain name of the DataOS context/instance
@@ -38,18 +38,17 @@ Follow the steps enumerated below to install the Command Line Interface. Check t
   
 ### **Installation on MacOS**
 
-1. Export the environment variable PRIME_APIKEY to pass it to the next commands.
+1. Export the environment variable PRIME_APIKEY to pass it to the next commands( replace <span style="color:red"> {{DataOS® prime apikey}} </span> with the API key to connect with the prime context).
 
     ```sh
     export PRIME_APIKEY="{{DataOS® prime apikey}}"
 
-    #{{DataOS® prime apikey}} should be replaced by the API key to connect with the prime context
     ```
 
 2. Download the checksum file using the following command (replace the <span style="color:red">{{ARCH}}</span> value of the processor and the <span style="color:red">{{CLI_VERSION}}</span> to be installed):
 
     ```html
-    curl --silent --output dataos-ctl-{{<span style="color:red">ARCH</span>}}.tar.gz.sha256sum --location --request GET "https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-{{ARCH}}.tar.gz.sha256sum&dir=cli-apps-{{CLI_VERSION}}&apikey=$PRIME_APIKEY"
+    curl --silent --output dataos-ctl-{{ARCH}}.tar.gz.sha256sum --location --request GET "https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-{{ARCH}}.tar.gz.sha256sum&dir=cli-apps-{{CLI_VERSION}}&apikey=$PRIME_APIKEY"
 
     # For example, a mac user with intel-chip, installing the 2.8 version of the CLI will input the below command
     
@@ -60,7 +59,7 @@ Follow the steps enumerated below to install the Command Line Interface. Check t
     # Contact the admin(DataOS operator in your organisation) to get the correct version of the CLI
     ```
 
-3. Download the DataOS CLI binary using the below command (replace the {{ARCH}} value of the processor and the {{CLI_VERSION}} to be installed):
+3. Download the DataOS CLI binary using the below command (replace the <span style="color:red"> {{ARCH}} </span> value of the processor and the <span style="color:red"> {{CLI_VERSION}} </span>to be installed):
 
     ```jsx
 
@@ -102,11 +101,14 @@ Follow the steps enumerated below to install the Command Line Interface. Check t
     x darwin-amd64/
     x darwin-amd64/dataos-ctl
     ```
-6. Run the following command 
 
+6. Run the following command to place the extracted dataos-ctl in a directory that is in your PATH. 
 
     ```jsx
-    export PATH=$PATH:$HOME/.dataos/bin
+    export PATH=$PATH:$HOME/{{dir-name}}
+    # You will get the directory name from the output of the previous command
+    # In the above case, it is darwin-amd64/
+    # For example, export PATH=$PATH:$HOME/darwin-amd64/
     ```
 <br>
 
@@ -132,7 +134,8 @@ Follow the steps enumerated below to install the Command Line Interface. Check t
     >     ```
     >     
 
-Yay! You have successfully installed the CLI, now let’s initialize. 
+You have successfully installed the CLI, now the next step is to [initialize](#initialize) it. 
+
 
    <br>
     <div style="border: 2px dotted #e0e0e0; padding: 15px; border-radius:7px">
@@ -156,19 +159,19 @@ Yay! You have successfully installed the CLI, now let’s initialize.
      > tar: Error opening archive: Unrecognized archive format
      > ```
      > These messages indicate that the correct executable file has not been downloaded by the ```curl``` command
-     </div>
-<br>
+     
+    </div><br>
 
 
-### Linux
+### **Installation on Linux**
 
 1. Export the environment variable PRIME_APIKEY to pass it to the subsequent commands.
 
     ```bash
-    export PRIME_APIKEY=<DataOS® prime apikey>
+    export PRIME_APIKEY={{DataOS® prime apikey}}
     ```
 
-1. Determine processor architecture.
+2. Determine processor architecture.
 
     ```bash
     uname -p
@@ -182,61 +185,63 @@ Yay! You have successfully installed the CLI, now let’s initialize.
     #if the output here comes as x86_64, it also means you have amd64 processor
     ```
 
-1. Update the <ARCH> value & <CLI_version> in the following command to download the checksum file. The available ARCH values are 386, amd64, arm, arm64.
+3. Update the <span style="color:red">{{ARCH}}</span> value & <span style="color:red">{{CLI_version}}</span> in the following command to download the checksum file. The available ARCH values are 386, amd64, arm, arm64.
 
     ```bash
-    curl --silent --output dataos-ctl-linux-<ARCH>.tar.gz.sha256sum --location --request GET "https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-linux-<ARCH>.tar.gz.sha256sum&dir=cli-apps-<CLI_VERSION>&apikey=$PRIME_APIKEY"
+    curl --silent --output dataos-ctl-linux-{{ARCH}}.tar.gz.sha256sum --location --request GET "https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-linux-{{ARCH}}.tar.gz.sha256sum&dir=cli-apps-{{CLI_VERSION}}&apikey=$PRIME_APIKEY"
 
     #2.5 is the CLI version getting installed
     #Contact the admin(operator in your organisation) to get the latest version
     #example: curl --silent --output dataos-ctl-linux-amd64.tar.gz.sha256sum --location --request GET "https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-linux-amd64.tar.gz.sha256sum&dir=cli-apps-2.5&apikey=$PRIME_APIKEY"
     ```
 
-1. Download the CLI binary file using the following command
+4. Download the CLI binary file using the following command.
 
     ```bash
-    curl --silent --output dataos-ctl-linux-<ARCH>.tar.gz --location --request GET "https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-linux-<ARCH>.tar.gz&dir=cli-apps-<CLI_version>&apikey=$PRIME_APIKEY"
-    #replace the <ARCH> & <CLI_version> before executing the command
+    curl --silent --output dataos-ctl-linux-{{ARCH}}.tar.gz --location --request GET "https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-linux-{{ARCH}}.tar.gz&dir=cli-apps-{{CLI_version}}&apikey=$PRIME_APIKEY"
+    #replace the {{ARCH}} & {{CLI_version}} before executing the command.
     ```
 
-1. Validate that the zip has not been tampered (optional step).
+5. Validate that the zip has not been tampered (optional step).
 
     ```jsx
-    #update the <ARCH> value in the command
+    #update the {{ARCH}} value in the command
 
-    shasum -a 256 -c dataos-ctl-linux-<ARCH>.tar.gz.sha256sum
+    shasum -a 256 -c dataos-ctl-linux-{{ARCH}}.tar.gz.sha256sum
     ```
 
     Expected output after running the above command:
 
     ```bash
-    dataos-ctl-linux-<ARCH>.tar.gz: OK
+    dataos-ctl-linux-{{ARCH}}.tar.gz: OK
     ```
 
 6. Extract the dataos-ctl binary.
 
     ```jsx
-    #update the <ARCH> value in the command
+    #update the {{ARCH}} value in the command
 
-    tar -xvf dataos-ctl-linux-<ARCH>.tar.gz
+    tar -xvf dataos-ctl-linux-{{ARCH}}.tar.gz
     ```
 
     Expected output:
 
     ```bash
-    x linux-<ARCH>/
-    x linux-<ARCH>/dataos-ctl
+    x linux-{{ARCH}}/
+    x linux-{{ARCH}}/dataos-ctl
     ```
 
-    > 🗣️ Place the extracted dataos-ctl in a directory that is in your PATH. In Linux, you can achieve this using the following command:
+7. Run the following command to place the extracted dataos-ctl in a directory that is in your PATH.
 
     ```jsx
-    export PATH=$PATH:$HOME/.dataos/bin
+    export PATH=$PATH:$HOME/linux-{{ARCH}}
+    # Update the {{ARCH}} value in the command
+    # Example: export PATH=$PATH:$HOME/linux-amd64
     ```
 
-    > 📌  To access DataOS, you have to run this command every time you restart your computer’s terminal or open a new tab in the terminal. If you are too lazy to do that, you should add the above path in your .bashrc file
+    > 📌  To access DataOS, you have to run this command every time you restart your computer’s terminal or open a new tab in the terminal. To avoid this, you should add the above path in your .bashrc file
     > 
-    > - To add the path to you .bashrc file, you can follow the steps given in this toggle list. Click the toggle icon.
+    > - To add the path to you .bashrc file, follow the below steps. 
     >     
     >     ```bash
     >     #make sure you are in your home directory "~/ (home/<user>)"
@@ -254,38 +259,54 @@ Yay! You have successfully installed the CLI, now let’s initialize.
     >     ```
     >     
 
-Yay! You have successfully installed the CLI, now let’s initialize. 
+You have successfully installed the CLI, now the next step is to [initialize](#initialize) it. 
 
-### Windows
+### **Installation on Windows**
 
-1. Check whether your system has an Intel 64bit chip or an AMD chip.
-2. Download the CLI binary by typing the given links in your web browser (according to the chip type AMD/Intel 64bit)
-    - For intel 64bit chip, follow these steps:
-    1. The below link will help you download the shasum file. In the link given below, 386 is the OS Architecture(processor) of your system and 2.4 is the CLI version.
-        
-        https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-windows-386.tar.gz.sha256sum&dir=cli-apps-2.4&apikey=$PRIME_APIKEY
-    
-    1. The below link will help you download .tar file.
-        
-        https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-windows-386.tar.gz&dir=cli-apps-2.4&apikey=$PRIME_APIKEY
-    
-    
-    - For AMD chip, follow these steps:
-    1. The below link will help you download shasum file. In the link given below, amd64 is the OS Architecture(processor) of your system and 2.4 is the CLI version
-        
-        https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-windows-amd64.tar.gz.sha256sum&dir=cli-apps-2.4&apikey=$PRIME_APIKEY
-        
-    1. The below link will help you download .tar file.
-        
-        https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-windows-amd64.tar.gz&dir=cli-apps-2.4&apikey=$PRIME_APIKEY
-        
-    
-3. The next step is to unzip the downloaded .tar file, to extract it, you will need an archiver utility like Winrar. 
-2. Open Winrar and highlight the zipped tar file (it should appear with other downloaded files in the lower part of the page), and click the “Extract to” button on the top. Place it in your chosen directory. 
+1. Check whether your system has an Intel 64 bit chip or an AMD chip. To find out the architecture, use the following command.
+   ```
+   wmic cpu get architecture
+   ```
+   Sample Output:
+   ```
+   Architecture
+   9 # Required Value
+   ```
+    - If the required value is **0** or **x86,** then it's a 32-bit architecture; in that case, use the **{{ARCH}}** value as **386**.
+    - If the required value is **6, 9,** or **x64**, then it's a 64-bit architecture; in that case, use the **{{ARCH}}** value as **amd64**.
+2. Download the checksum .shasum file using the following link in a browser. Replace the <span style="color:red">{{ARCH}}</span>, <span style="color:red">{{CLI_VERSION}}</span>, and <span style="color:red">{{PRIME_APIKEY}}</span> with respective values.
+   ```
+   https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-windows-{{ARCH}}.tar.gz.sha256sum&dir=cli-apps-{{CLI_VERSION}}&apikey={{PRIME_APIKEY}}
+   # Replace the {{ARCH}}, {{CLI_version}}, and {{PRIME_APIKEY}} in the link
+   # Suppose, amd64 is the processor
+   # 2.8 is the CLI version getting installed
+   # Prime Apikey is abcdefgh12345678987654321
+   # Contact the admin(operator in your organisation) to get the latest version of the CLI
+   # Example: https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-windows-amd64.tar.gz.sha256sum&dir=cli-apps-2.8&apikey=abcdefgh12345678987654321
+   ```
+3. Download the DataOS CLI .tar file using the following link in the browser (replace the <span style="color:red">{{ARCH}}</span>, <span style="color:red">{{CLI_VERSION}}</span>, and <span style="color:red">{{PRIME_APIKEY}}</span> with respective values).
+   ```
+   https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-windows-amd64.tar.gz&dir=cli-apps-{{CLI_VERSION}}&apikey={{PRIME_APIKEY}}
 
-> 🗣️ You will always use this directory to run DataOS. To open the DataOS from anywhere in the system, place the extracted file in a directory that is in your PATH. To add the directory in PATH, refer to [Setting the Path and Variables in Windows](./setting%20the%20path%20and%20variables%20in%20windows/setting%20the%20path%20and%20variables%20in%20windows.md).
+   # Replace the {{ARCH}}, {{CLI_version}}, and {{PRIME_APIKEY}} before executing the command
+   # Example: https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-windows-amd64.tar.gz&dir=cli-apps-2.8&apikey=abcdefgh12345678987654321
+   ```  
+4. Validate that the .tar file has not been tampered with(optional step).
+   ```
+   (Get-FileHash -Algorithm SHA256 -Path {{tar-file-path}}).hash -eq '{{hash-value-from-shasum-file}}'
+   # Replace the {{tar-file-path}} with the path of the downloaded tar file
+   # Open the .shasum file in a text editor and copy the hash value and paste it inside quotes in place of {{hash-value-from-shasum-file}}
+   # Example: (Get-FileHash -Algorithm SHA256 -Path ./Downloads/dataos-ctl-windows-amd64.tar.gz).hash -eq '7d48cb3f60ab4821dd69dddd6291'
+   # If the value is True, validation is successful
+   ```
+5. The next step is to unzip the downloaded .tar file, to extract it, you will need an archiver utility like Winrar. 
 
-Yay! You have successfully installed the CLI, now let’s initialize. 
+6. Open Winrar and highlight the zipped .tar file (it should appear with other downloaded files in the lower part of the page), and click the **“Extract to”** button on the top. Place it in your chosen directory.
+Download the CLI binary by typing the given links in your web browser (according to the chip type AMD/Intel 64bit).
+
+   <aside>🗣️ You will always use this directory to run DataOS. To open the DataOS from anywhere in the system, place the extracted file in a directory that is in your PATH. To add the directory in PATH, refer to [Setting the Path and Variables in Windows]().</aside>
+
+You have successfully installed the CLI, now the next step is to [initialize](#initialize) it. 
 
 ## Initialize
 
@@ -295,12 +316,10 @@ If you have reached here, you are nearly there - at the promised landscape of Da
 dataos-ctl init
 ```
 
-This command will start a short(really short) Q&A session. Don’t worry, I have got the cheat sheet below. Just follow the instructions.
+The initialization process will ask for the following inputs, depending upon your user role:
 
 ```bash
 dataos-ctl init
-
-#to keep things interesting, the 'Y' is capital lettered, while 'n' is small lettered
 
 INFO[0000] The DataOS® is already initialized, do you want to add a new context? (Y,n)  
 ->Y   #input the answer: Y or n
@@ -310,13 +329,13 @@ INFO[0255] The DataOS® is not initialized, do you want to proceed with initiali
 ->Y
 
 INFO[0269] Please enter a name for the current DataOS® Context?  
--><name of the DataOS context> 
+->{{name of the DataOS context}}
 #for example 'kutumbakam'. You can write the name of your choice.
 #your enterprise can have multiple contexts available for you to connect. Choose any one.
 #you can always change the context through a CLI command, after login. 
 
 INFO[0383] Please enter the fully qualified domain name of the DataOS® instance?  
--><domain name> 
+->{{domain name}} 
 #for example 'vasudhaiva-kutumbakam.dataos.app'
 INFO[0408] entered DataOS®: kutumbakam : vasudhaiva-kutumbakam.dataos.app 
 
@@ -348,10 +367,10 @@ dataos-ctl version
 dataos-ctl health
 ```
 
-Did it take you more than a couple of minutes? Well, when someone says ‘just a minute’ they don’t mean it literally!
+
 
 ## Linked Documents
 
 - [Read on Curl utility](./read%20on%20curl%20utility.md)
 
-- [Setting the Path and Variables in Windows](./setting%20the%20path%20and%20variables%20in%20windows/setting%20the%20path%20and%20variables%20in%20windows.md)
+- [Setting the Path and Variables in Windows]()
