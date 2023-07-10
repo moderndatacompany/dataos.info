@@ -367,10 +367,73 @@ dataos-ctl version
 dataos-ctl health
 ```
 
+## Update
+
+In order to update the CLI to a different version, simply rerun all the commands enumerated above. Remember to change the CLI version in the commands to the version you want to install.
+
+## Command Reference
+
+This section will help you get started on the command structure followed by DataOS CLI
+
+### **Structure of the DataOS CLI Command**
+
+```bash
+dataos-ctl <command> <subcommand> <flags parameters>
+```
+### **DataOS CLI Commands**
+
+<aside>
+🗣️ You can generate a list of all available commands with -h or —help
+`dataos-ctl -h`, or you can also use
+`dataos-ctl --help`
+To get help for a specific command, use:
+`dataos-ctl <name of command> --help`
+
+</aside>
+
+A command can have more sub-commands and flags under it. To get details on the subcommand, you can again use the CLI help command.
+
+```bash
+dataos-ctl <command-name> <subcommand-name> -h
+```
+
+A subcommand, in turn, might have more commands in its hierarchy or might only contain flags - don’t worry, it’s not like a never-ending Russian nested doll set; after a couple of sub-commands, the list of new commands ends.
+
+Flags should generally be followed by the name of the appropriate parameter (as if you didn’t know that already!). 
+
+In the example below, we have used the `get` command, followed by the flag -t. This flag must be followed by the name of the ‘type string’ (workflow, policy, depot, and such). 
+
+```bash
+dataos-ctl get -t depot -a 
+# This will give us the details of all the created depots
+# If you don't use -a, it will list only the depots where you are the owner
+```
+
+The string type ‘workflow’, being a runnable Resource of DataOS, must always be followed by the flag `-w <name of the workspace>`
+
+```bash
+dataos-ctl get -t workflow -w public -a
+# This command will list all the workflows running in the public workspace
+# If you don't use the flag -a, it will list only the workflows you are working on
+```
+
+Other DataOS Resources for which a workspace must always be defined are Secret, Service, Cluster, and Database (these are classified as Workspace-level Resources).
+
+For Resources such as Depot, Policy, and Compute, Workspace has no meaning (these are classified as Cluster-level Resources). Hence you need not use the flag `-w <name of workspace>`
+
+**Workspace** is like a tenant in DataOS. It provides a way to segregate your private work from the rest of the organization’s. You can also use it to create a separate work environment for your department or create a sandbox environment and only deploy your crazy projects to the public workspace once they are ready for mass usage.
+
+<aside>
+📖 Best Practice: It is part of the best practice to create a private workspace with your name and then work in it.
+
+</aside>
+
+The page given below contains a list of typical DataOS CLI commands.
+[CLI Command Reference](cli/command_reference.md)
 
 
 ## Linked Documents
 
-- [Read on Curl utility](./read%20on%20curl%20utility.md)
+- [Read on Curl utility](cli/read_on_curl_utility.md)
 
-- [Setting the Path and Variables in Windows]()
+- [Setting the Path and Variables in Windows](cli/windows_path_setting.md)
