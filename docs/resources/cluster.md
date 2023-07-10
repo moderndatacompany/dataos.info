@@ -1,6 +1,6 @@
 # Cluster
 
-In DataOS, a Cluster is a Primitive/resource that encompasses a set of computational resources and configurations used to run data engineering and analytics tasks. A Cluster is powered by a [Compute](./compute.md), another resource which provides the necessary processing power for the workloads executed on the Cluster.
+In DataOS, a Cluster is a fundamental Resource that encompasses a set of computational resources and configurations used to run data engineering and analytics tasks. A Cluster is powered by a [Compute](./compute.md), another resource which provides the necessary processing power for the workloads executed on the Cluster.
 
 <aside style="padding:15px; border-radius:5px;">
 

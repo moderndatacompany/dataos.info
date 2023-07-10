@@ -1,10 +1,10 @@
 # Advanced Bloblang
 
-## Map Parameters[](https://www.benthos.dev/docs/guides/bloblang/advanced#map-parameters)
+## Map Parameters
 
 A map definition only has one input parameter, which is the context that it is called upon:
 
-```python
+```yaml
 map formatting {
   root = "(%v)".format(this)
 }
@@ -18,7 +18,7 @@ root.b = this.b.apply("formatting")
 
 However, we can use object literals in order to provide multiple map parameters. Imagine if we wanted a map that is the exact same as above, except the pattern is `[%v]` instead, with the potential for even more patterns in the future. To do that, we can pass an object with a field `value` with our target to map and a field `pattern` that allows us to specify the pattern to apply:
 
-```python
+```yaml
 map formatting {
   root = this.pattern.format(this.value)
 }
@@ -37,11 +37,11 @@ root.b = {
 # Out: {"a":"[foo]","b":"[bar]"}
 ```
 
-## Walking the Tree[](https://www.benthos.dev/docs/guides/bloblang/advanced#walking-the-tree)
+## Walking the Tree
 
 Sometimes it's necessary to perform a mapping on all values within an unknown tree structure. You can do that easily with recursive mapping:
 
-```python
+```yaml
 map unescape_values {
   root = match {
     this.type() == "object" => this.map_each(item -> item.value.apply("unescape_values")),
@@ -57,7 +57,7 @@ root = this.apply("unescape_values")
 # Out: {"first":{"nested":"foo & bar"},"second":10,"third":["1 < 2",{"also_nested":"2 > 1"}]}
 ```
 
-## Message Expansion[](https://www.benthos.dev/docs/guides/bloblang/advanced#message-expansion)
+## Message Expansion
 
 Expanding a single message into multiple messages can be done by mapping messages into an array and following it up with an `unarchive` processor. For example, given documents of this format:
 
@@ -84,7 +84,7 @@ pipeline:
 
 However, most of the time, we also need to map the elements before expanding them, and often that includes copying fields outside of our target array. We can do that with methods such as `map_each` and `merge`:
 
-```python
+```yaml
 root = this.items.map_each(ele -> this.without("items").merge(ele))
 
 # In:  {"id":"foobar","items":[{"content":"foo"},{"content":"bar"},{"content":"baz"}]}
@@ -93,7 +93,7 @@ root = this.items.map_each(ele -> this.without("items").merge(ele))
 
 However, the above mapping is slightly inefficient as we would create a copy of our source object for each element with the `this.without("items")` part. A more efficient way to do this would be to capture that query within a variable:
 
-```python
+```yaml
 let doc_root = this.without("items")
 root = this.items.map_each($doc_root.merge(this))
 
@@ -113,13 +113,13 @@ pipeline:
         format: json_array
 ```
 
-## Creating CSV[](https://www.benthos.dev/docs/guides/bloblang/advanced#creating-csv)
+## Creating CSV
 
 Benthos has a few different ways of outputting a stream of CSV data. However, the best way to do it is by converting the documents into CSV rows with Bloblang as this gives you full control over exactly how the schema is generated, erroneous data is handled, and escaping of column data is performed.
 
 A common and simple use case is to simply flatten documents and write out the column values in alphabetical order. The first row we generate should also be prefixed with a row containing those column names. Here's a mapping that achieves this by using a `count` function to detect the very first invocation of the mapping in a stream pipeline:
 
-```python
+```yaml
 map escape_csv {
   root = if this.re_match("[\"\n,]+") {
     "\"" + this.replace_all("\"", "\"\"") + "\""
