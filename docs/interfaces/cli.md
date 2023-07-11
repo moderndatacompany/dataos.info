@@ -114,7 +114,7 @@ Follow the steps enumerated below to install the Command Line Interface. Check t
 
 
 
-    > 📌  To access DataOS, you have to run this command every time you restart your computer’s terminal or open a new tab in the terminal. If you are too lazy to do that, you should add the above path in your .zshrc file
+    > 🗣️  To access DataOS, you have to run this command every time you restart your computer’s terminal or open a new tab in the terminal. If you are too lazy to do that, you should add the above path in your .zshrc file
     > 
     > - To add the path to you .zshrc file, you can follow the steps given in this toggle list. Click the toggle icon.
     >     
@@ -139,26 +139,27 @@ You have successfully installed the CLI, now the next step is to [initialize](#i
 
    <br>
     <div style="border: 2px dotted #e0e0e0; padding: 15px; border-radius:7px">
-     *Debug*
-     In case the output was not as expected, then the CLI executable file has not been correctly downloaded & extracted. Input the correct version of the CLI & Arch values, and rerun the commands.
-
-     > For example, one can get an error message after running the following command
-     >```
-     > iamgroot@abcs-MacBook-Pro-2 ~ % shasum -a 256 -c dataos-ctl-darwin-amd64.tar.gz.sha256sum
-     > ```
-     > Error Message
-     > ```
-     > shasum: dataos-ctl-darwin-amd64.tar.gz.sha256sum: no properly formatted SHA checksum lines found
-     > ```
-     > Or an error message after running the following command
-     > ```
-     > iamgroot@abcs-MacBook-Pro-2 ~ % tar -xvf dataos-ctl-darwin-amd64.tar.gz
-     > ```
-     > Error message
-     > ```
-     > tar: Error opening archive: Unrecognized archive format
-     > ```
-     > These messages indicate that the correct executable file has not been downloaded by the ```curl``` command
+     **Debug**
+     In case the output was not as expected, then the CLI executable file has not been correctly downloaded & extracted. Input the correct version of the CLI & ARCH values, and rerun the commands.
+     <details><summary>Typical Errors</summary>
+     1. Error after running the following command
+     ```bash
+     iamgroot@abcs-MacBook-Pro-2 ~ % shasum -a 256 -c dataos-ctl-darwin-amd64.tar.gz.sha256sum
+     ```
+     **Error Message**
+     ```bash
+     shasum: dataos-ctl-darwin-amd64.tar.gz.sha256sum: no properly formatted SHA checksum lines found
+     ```
+     2. Error after running the following command
+     ```
+     iamgroot@abcs-MacBook-Pro-2 ~ % tar -xvf dataos-ctl-darwin-amd64.tar.gz
+     ```
+     **Error message**
+     ```bash
+     tar: Error opening archive: Unrecognized archive format
+     ```
+     These messages indicate that the correct executable file has not been downloaded by the ```curl``` command
+     </details>
      
     </div><br>
 
@@ -239,7 +240,7 @@ You have successfully installed the CLI, now the next step is to [initialize](#i
     # Example: export PATH=$PATH:$HOME/linux-amd64
     ```
 
-    > 📌  To access DataOS, you have to run this command every time you restart your computer’s terminal or open a new tab in the terminal. To avoid this, you should add the above path in your .bashrc file
+    > 🗣️  To access DataOS, you have to run this command every time you restart your computer’s terminal or open a new tab in the terminal. To avoid this, you should add the above path in your .bashrc file
     > 
     > - To add the path to you .bashrc file, follow the below steps. 
     >     
@@ -304,13 +305,13 @@ You have successfully installed the CLI, now the next step is to [initialize](#i
 6. Open Winrar and highlight the zipped .tar file (it should appear with other downloaded files in the lower part of the page), and click the **“Extract to”** button on the top. Place it in your chosen directory.
 Download the CLI binary by typing the given links in your web browser (according to the chip type AMD/Intel 64bit).
 
-   <aside>🗣️ You will always use this directory to run DataOS. To open the DataOS from anywhere in the system, place the extracted file in a directory that is in your PATH. To add the directory in PATH, refer to [Setting the Path and Variables in Windows]().</aside>
+   <aside>🗣️ You will always use this directory to run DataOS. To open the DataOS from anywhere in the system, place the extracted file in a directory that is in your PATH. To add the directory in PATH, refer to [Setting the Path and Variables in Windows](cli/windows_path_setting.md).</aside>
 
 You have successfully installed the CLI, now the next step is to [initialize](#initialize) it. 
 
 ## Initialize
 
-If you have reached here, you are nearly there - at the promised landscape of DataOS. To initialize, run the init command.
+To initialize, run the init command.
 
 ```bash
 dataos-ctl init
@@ -346,17 +347,17 @@ INFO[0408] Are you operating the DataOS®? (Y,n)
 INFO[0452] 🚀 initialization...complete
 ```
 
-If you are the operator/admin for your enterprise then the installation steps for you, after the last step, will change. These are covered in the Operator Document for DataOS.
+<aside>If you are the operator/admin for your enterprise then the installation steps for you, after the last step, will change. These are covered in the Operator Document for DataOS.</aside>
 
 ## Log in
 
-After the successful initialization of DataOS context, you can log into your account with the following command. Finally, the moment we have been waiting for is here.
+After the successful initialization of DataOS context, you can log into your account with the following command. 
 
 ```jsx
 dataos-ctl login
 ```
 
-If your enterprise has taken multiple DataOS contexts then you can use the same command terminal client, the one you just installed, to access & use any of those contexts.
+If your enterprise has multiple DataOS contexts, you can use the same command-line interface (CLI) that you just installed to access and use any of those contexts. With the CLI, you can switch between different DataOS contexts using a specific command.
 
 ## Test
 
@@ -366,3 +367,74 @@ Run the following commands to ensure the successful installation of DataOS CLI. 
 dataos-ctl version
 dataos-ctl health
 ```
+<<<<<<< HEAD
+=======
+
+## Update
+
+In order to update the CLI to a different version, simply rerun all the commands enumerated above. Remember to change the CLI version in the commands to the version you want to install.
+
+## Command Reference
+
+This section will help you get started on the command structure followed by DataOS CLI
+
+### **Structure of the DataOS CLI Command**
+
+```bash
+dataos-ctl <command> <subcommand> <flags parameters>
+```
+### **DataOS CLI Commands**
+
+<aside>
+🗣️ You can generate a list of all available commands with -h or —help
+`dataos-ctl -h`, or you can also use
+`dataos-ctl --help`
+To get help for a specific command, use:
+`dataos-ctl <name of command> --help`
+
+</aside>
+
+A command can have more sub-commands and flags under it. To get details on the subcommand, you can again use the CLI help command.
+
+```bash
+dataos-ctl <command-name> <subcommand-name> -h
+```
+
+A subcommand, in turn, might have more commands in its hierarchy or might only contain flags.
+
+In the example below, we have used the `get` command, followed by the flag -t. This flag must be followed by the name of the ‘type string’ (workflow, policy, depot, etc). 
+
+```bash
+dataos-ctl get -t depot -a 
+# This will give us the details of all the created depots
+# If you don't use -a, it will list only the depots where you are the owner
+```
+
+The string type ‘workflow’, being a runnable Resource of DataOS, must always be followed by the flag `-w <name of the workspace>`
+
+```bash
+dataos-ctl get -t workflow -w public -a
+# This command will list all the workflows running in the public workspace
+# If you don't use the flag -a, it will list only the workflows you are working on
+```
+
+Other DataOS Resources for which a workspace must always be defined are Secret, Service, Cluster, and Database (these are classified as **Workspace-level Resources**).
+
+For Resources such as Depot, Policy, and Compute, Workspace has no meaning (these are classified as **Cluster-level Resources**). Hence you need not use the flag `-w <name of workspace>`.
+
+**Workspace** is like a tenant in DataOS. It provides a way to segregate your private work from the rest of the organization’s. Workspaces also serve as a sandbox environment where you can freely explore and experiment with data without impacting the production environment. This enables you to test and refine your projects before deploying them to the public workspace or making them available for broader usage.
+
+<aside>
+📖 Best Practice: It is part of the best practice to create a private workspace with your name and then work in it.
+
+</aside>
+
+To learn more, refer to [CLI Command Reference](cli/command_reference.md). The reference also contains the help content for all DataOS CLI commands.
+
+
+## Linked Documents
+
+- [Read on Curl utility](cli/read_on_curl_utility.md)
+
+- [Setting the Path and Variables in Windows](cli/windows_path_setting.md)
+>>>>>>> 2000bfd0d60ad1aabb879bfb7388b5601367c579
