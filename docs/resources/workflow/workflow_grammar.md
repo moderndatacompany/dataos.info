@@ -45,6 +45,8 @@ workflow:
     {} # List of Jobs
 ```
 
+---
+
 ### **`schedule`**
 <b>Description:</b> Schedule Section <br>
 <b>Data Type:</b> Object <br>
@@ -158,35 +160,37 @@ title: Quality Assessment Workflow
 ```yaml
 name: flare-ingestion-job 
 ```
+---
 
 ### **`title`**
-<b>Description:</b> Title of Job <br>
-<b>Data Type:</b> String <br>
-<b>Requirement:</b> Optional <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> Any string <br>
+<b>Description:</b> title of Job <br>
+<b>Data Type:</b> string <br>
+<b>Requirement:</b> optional <br>
+<b>Default Value:</b> none <br>
+<b>Possible Value:</b> any string <br>
 <b>Example Usage:</b>
 ```yaml
 title: Profiling Job 
 ```
+---
 
 ### **`description`**
-<b>Description:</b> Text describing the Job <br>
-<b>Data Type:</b> String <br>
-<b>Requirement:</b> Optional <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> Any string <br>
+<b>Description:</b> text describing the Job <br>
+<b>Data Type:</b> string <br>
+<b>Requirement:</b> optional <br>
+<b>Default Value:</b> none <br>
+<b>Possible Value:</b> any string <br>
 <b>Example Usage:</b>
 ```yaml
 description: The job ingests customer data 
 ```
 
 ### **`spec`**
-<b>Description:</b> Specs of the Job <br>
-<b>Data Type:</b> Object <br>
-<b>Requirement:</b> Mandatory <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> None <br>
+<b>Description:</b> specs of the Job <br>
+<b>Data Type:</b> object <br>
+<b>Requirement:</b> mandatory <br>
+<b>Default Value:</b> none <br>
+<b>Possible Value:</b> none <br>
 <b>Example Usage:</b>
 ```yaml
 spec: 
@@ -196,68 +200,79 @@ spec:
     {} # Flare Stack specific configurations
 ```
 
+---
+
 ### **`runAsUser`**
-<b>Description:</b> When the "runAsUser" field is configured with the UserID of the use-case assignee, it grants the authority to perform operations on behalf of that user. <br>
-<b>Data Type:</b> String <br>
-<b>Requirement:</b> Optional <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> UserID of the Use Case Assignee <br>
+<b>Description:</b> when the "runAsUser" field is configured with the UserID of the use-case assignee, it grants the authority to perform operations on behalf of that user. <br>
+<b>Data Type:</b> string <br>
+<b>Requirement:</b> optional <br>
+<b>Default Value:</b> none <br>
+<b>Possible Value:</b> userID of the Use Case Assignee <br>
 <b>Example Usage:</b>
 ```yaml
 runAsUser: iamgroot 
 ```
+---
 
 ### **`compute`**
-<b>Description:</b> A Compute resource provides processing power for the job.  <br>
-<b>Data Type:</b> String <br>
-<b>Requirement:</b> Mandatory <br>
-<b>Default Value:</b> None <br>
+<b>Description:</b> a Compute resource provides processing power for the job.  <br>
+<b>Data Type:</b> string <br>
+<b>Requirement:</b> mandatory <br>
+<b>Default Value:</b> none <br>
 <b>Possible Value:</b> runnable-default or any other custom compute created by the user<br>
+<b>Example Usage:</b>
 ```yaml
 compute: runnable-default 
 ```
 
+---
+
 ### **`stack`**
-<b>Description:</b> A Stack is a Resource that serves as a secondary extension point, enhancing the capabilities of a Workflow Resource by introducing additional programming paradigms.  <br>
-<b>Data Type:</b> String <br>
-<b>Requirement:</b> Mandatory <br>
-<b>Default Value:</b> None <br>
+<b>Description:</b> a Stack is a Resource that serves as a secondary extension point, enhancing the capabilities of a Workflow Resource by introducing additional programming paradigms.  <br>
+<b>Data Type:</b> string <br>
+<b>Requirement:</b> mandatory <br>
+<b>Default Value:</b> none <br>
 <b>Possible Value:</b> flare/toolbox/scanner/alpha. <br>
-<b>Additional Details:</b> It is also possible to specify specific versions of the stack. For example, you can use the notation "flare:4.0" to indicate a specific version. If no version is explicitly specified, the system will automatically select the latest version as the default option <br>
+<b>Additional Details:</b> it is also possible to specify specific versions of the stack. For example, you can use the notation "flare:4.0" to indicate a specific version. If no version is explicitly specified, the system will automatically select the latest version as the default option <br>
 <b>Example Usage:</b>
 ```yaml
 stack: alpha 
 ```
 
+---
+
 ### **`retry`**
-<b>Description:</b> Retrying failed jobs  <br>
+<b>Description:</b> retrying failed jobs  <br>
 <b>Data Type:</b> object <br>
-<b>Requirement:</b> Optional <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> None <br>
+<b>Requirement:</b> optional <br>
+<b>Default Value:</b> none <br>
+<b>Possible Value:</b> none <br>
 <b>Example Usage:</b>
 ```yaml
 retry: 
   count: 2 
   strategy: "OnFailure" 
 ```
+---
 
 ### **`count`**
-<b>Description:</b> Count post which retry occurs  <br>
-<b>Data Type:</b> Integer <br>
-<b>Requirement:</b> Optional <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> Any positive integer <br>
+<b>Description:</b> count post which retry occurs  <br>
+<b>Data Type:</b> integer <br>
+<b>Requirement:</b> optional <br>
+<b>Default Value:</b> none <br>
+<b>Possible Value:</b> any positive integer <br>
 <b>Example Usage:</b>
 ```yaml
 count: 2 
 ```
 
+---
+
 ### **`strategy`**
-<b>Description:</b> Strategies to choose which job failures to retry  <br>
-<b>Data Type:</b> String <br>
-<b>Requirement:</b> Optional <br>
-<b>Default Value:</b> None <br>
+<b>Description:</b> strategies to choose which job failures to retry  <br>
+<b>Data Type:</b> string <br>
+<b>Requirement:</b> optional <br>
+<b>Default Value:</b> none <br>
 <b>Possible Value:</b> Always/OnFailure/OnError/OnTransientError <br>
 <b>Additional Details:</b> <br>
   - <i> Always -</i> Retry all failed steps.  <br>
@@ -267,4 +282,17 @@ count: 2
 <b>Example Usage:</b>
 ```yaml
 strategy: "OnTransientError" 
+```
+
+---
+
+### **`dependency`**
+<b>Description:</b> specifies the dependency between jobs/workflows  <br>
+<b>Data Type:</b> string <br>
+<b>Requirement:</b> optional <br>
+<b>Default Value:</b> none <br>
+<b>Possible Value:</b> none <br>
+<b>Example Usage:</b>
+```yaml
+dependency: job2
 ```

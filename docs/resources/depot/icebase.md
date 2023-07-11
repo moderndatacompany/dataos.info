@@ -2,21 +2,12 @@
 
 Icebase is a depot type within DataOS that leverages the power of the Apache Iceberg table format. It integrates with popular object storage systems like Azure Data Lake, Google Cloud Storage, and Amazon S3, following the Lakehouse pattern. By utilizing Iceberg, Icebase provides a robust OLAP (Online Analytical Processing) system that simplifies data lake access, making it as user-friendly and accessible as traditional data warehouses.
 
-<style>
-    blockquote {
-        background-color: #F6F3F8;
-    }
-</style>
 
-<blockquote style="color: black;">
-
-Apache Iceberg, also known as Iceberg, is an open-source and high-performance table format specifically designed for storing large-scale analytic datasets, including petabyte-scale data. As a valuable addition to the big data ecosystem, Iceberg is optimized to handle vast amounts of data efficiently.
-
-</blockquote>
+>Apache Iceberg, also known as Iceberg, is an open-source and high-performance table format specifically designed for storing large-scale analytic datasets, including petabyte-scale data. As a valuable addition to the big data ecosystem, Iceberg is optimized to handle vast amounts of data efficiently.
 
 Data developers can create multiple Icebase depots to store and manage data, enabling processing and analysis using various programming languages such as R, Python, Scala, and Java. Additionally, tools like Spark and Flink can be utilized to work with Icebase datasets. For seamless integration into existing workflows, SQL can be used to interact with the tables stored in Icebase depots.
 
-<aside style="background-color:#FAF3DD; padding:15px; border-radius:5px;">
+<aside style="padding:15px; border-radius:5px;">
 🗣 Iceberg refers to the file format itself, while Icebase is the catalog or depot type within DataOS. Multiple depots of the Icebase type can be created to accommodate expanding data storage and management requirements. It is important to note that datasets stored in the Iceberg format may also exist in depots that are not specifically of the Icebase type. Icebase is a depot on top of data lake storage that mandates the Iceberg file type.
 </aside>
 
@@ -284,7 +275,7 @@ For more details and use, case refer to the following link
 
 ## Partitioning
 
-<aside style="background-color:#FAF3DD; padding:15px; border-radius:5px;">
+<aside style="padding:15px; border-radius:5px;">
 🗣 This procedure uses partitioning on the upcoming/future data, not the existing one. To make changes to the current data, please look at the partitioning in Flare Case Scenarios.
 
 </aside>

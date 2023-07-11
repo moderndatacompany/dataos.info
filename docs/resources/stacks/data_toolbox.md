@@ -21,15 +21,15 @@ You can write Data Toolbox action as a separate workflow or part of a dag in a w
 
 </aside>
 
-### **Toolbox Action as a separate Workflow**
+## Toolbox Action as a separate Workflow
 
 To perform a data toolbox action, follow the below steps:
 
-#### **Create a YAML file for Workflow**
+### **Create a YAML file for Workflow**
 
 If you have already ingested data, you can create a separate workflow for toolbox action, as shown in the following YAML. To know more about workflows, click [here](../workflow.md). 
 
-#### **Define a Job that executes upon Toolbox Stack**
+### **Define a Job that executes upon Toolbox Stack**
 
 Within the DAG, define a job that executes upon the Toolbox Stack. To know more about the various properties for a job executed upon toolbox stack, click [here](../workflow/creating_a_workflow.md#configuring-the-dag-section). 
 
@@ -51,9 +51,20 @@ workflow:
           name: set_version 
           value: latest 
 ```
-To know more about Toolbox-specfic Section YAML Configuration fields, click [here.](./data_toolbox/data_toolbox_yaml_configuration_field_reference.md)
+The table below elucidates the various attributes within the Toolbox-specific Section.
 
-#### **Apply the Workflow using CLI**
+| Field | Data Type | Default Value | Possible Value | Requirement |
+| --- | --- | --- | --- | --- |
+| [`toolbox`](./data_toolbox/data_toolbox_grammar.md#toolbox) | object | none | none | mandatory |
+| [`dataset`](./data_toolbox/data_toolbox_grammar.md#dataset) | string | none | any valid iceberg dataset udl address | mandatory |
+| [`action`](./data_toolbox/data_toolbox_grammar.md#action) | object | none | none | mandatory |
+| [`name`](./data_toolbox/data_toolbox_grammar.md#name) | string | none | set_version | mandatory |
+| [`value`](./data_toolbox/data_toolbox_grammar.md#value) | string | none | latest or any other specific metadata version | mandatory |
+
+
+To know more about Toolbox-specfic Section YAML Configuration fields, click [here.](./data_toolbox/data_toolbox_grammar.md)
+
+### **Apply the Workflow using CLI**
 
 Use the apply command to apply the workflow using CLI
 
@@ -61,7 +72,7 @@ Use the apply command to apply the workflow using CLI
 dataos-ctl apply -f <path/file-name> -w <workspace> # By default the workspace is public so you may not include the -w flag
 ```
 
-### **Toolbox Action in a Job within the Flare Workflow**
+## Toolbox Action in a Job within the Flare Workflow
 
 Instead of creating a separate workflow for Toolbox, you can create a single workflow. With a DAG with two jobs, one job runs on Flare Stack while the second one runs on the Toolbox Stack, which depends on the first job for the start of execution.
 
@@ -146,5 +157,6 @@ workflow: # Workflow Section
     dependencies: wf-sample-job-001
 ```
 </details>
+
 Once you define the workflow, you can apply it using [CLI](../../interfaces/cli.md).
 
