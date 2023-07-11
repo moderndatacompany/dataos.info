@@ -75,15 +75,7 @@ The table below summarizes the supported features for each source system type:
 | Event | NO | YES | NO | NO | NO | NO |
 
 
-<style>
-    blockquote {
-        background-color: #F6F3F8;
-    }
-</style>
-
-<blockquote style="color: black;">
-If the source doesn’t have a Metadata System in place, Depot can *only* manage connection, secrets, and credentials abstraction.
-</blockquote>
+>If the source doesn’t have a Metadata System in place, Depot can *only* manage connection, secrets, and credentials abstraction.
 
 
 ## Popular Sources Matrix

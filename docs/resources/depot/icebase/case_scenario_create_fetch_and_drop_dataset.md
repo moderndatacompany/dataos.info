@@ -74,7 +74,7 @@ INFO[0001] 📂 get dataset...completed
 
 ## Drop Dataset
 
-<aside style="background-color:#FAF3DD; padding:15px; border-radius:5px;">
+<aside style="padding:15px; border-radius:5px;">
 🗣 To execute this command, it is necessary to possess the `roles:id:operator` tag or obtain the suitable use case assignment from the DataOS operator.
 
 </aside>

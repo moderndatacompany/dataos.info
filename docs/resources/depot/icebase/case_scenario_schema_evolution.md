@@ -1,6 +1,6 @@
 # Case Scenario: Schema Evolution
 
-## **Procedure**
+## Procedure
 
 - Apply the command which you want to execute
 - To observe the changes within the Workbench, execute the below command
@@ -12,7 +12,7 @@ dataos-ctl dataset -a dataos://icebase:retail/city set-metadata \
 
 **Dataset** - `dataos://icebase:retail/city`
 
-## **Add Field/Column**
+## Add Field/Column
 
 The following command can be used to add a column to the table or a nested struct.
 
@@ -43,20 +43,8 @@ Only the following column data types are supported
 
 Initial Schema observed in Workbench
 
-```mermaid
-erDiagram
-    city {
-metadata MAP
-city_id VARCHAR
-zip_code INTEGER
-city_name VARCHAR
-county_name VARCHAR
-state_code VARCHAR
-state_name VARCHAR
-version VARCHAR
-ts_city TIMESTAMP
-    }
-```
+
+![Untitled 1](./case_scenario_schema_evolution/1.png)
 
 Let's add a new column called `new1` into the city dataset with a type `string`. Execute the following code in the terminal.
 
@@ -89,23 +77,10 @@ INFO[0001] 📂 set metadata...completed
 
 Observe the change in the workbench; a new field by the name `new1` is added
 
-```mermaid
-erDiagram
-    city {
-metadata MAP
-city_id VARCHAR
-zip_code INTEGER
-city_name VARCHAR
-county_name VARCHAR
-state_code VARCHAR
-state_name VARCHAR
-version VARCHAR
-ts_city TIMESTAMP
-new1 VARCHAR
-    }
-```
 
-## **Drop Field/Column**
+![Untitled 2](./case_scenario_schema_evolution/2.png)
+
+## Drop Field/Column
 
 To remove an existing column from the table or a nested struct, the following command can be executed
 
@@ -114,21 +89,7 @@ dataos-ctl dataset -a dataos://icebase:retail/city drop-field \
 -n <column-name>
 ```
 
-```mermaid
-erDiagram
-    city {
-metadata MAP
-city_id VARCHAR
-zip_code INTEGER
-city_name VARCHAR
-county_name VARCHAR
-state_code VARCHAR
-state_name VARCHAR
-version VARCHAR
-ts_city TIMESTAMP
-new1 VARCHAR
-    }
-```
+![Untitled 3](./case_scenario_schema_evolution/2.png)
 
 Let’s remove column `new1` from the city dataset. Execute the following code in the terminal
 
@@ -160,22 +121,9 @@ INFO[0001] 📂 set metadata...completed
 
 Observe the change in the workbench; the `new1` column is removed
 
-```mermaid
-erDiagram
-    city {
-metadata MAP
-city_id VARCHAR
-zip_code INTEGER
-city_name VARCHAR
-county_name VARCHAR
-state_code VARCHAR
-state_name VARCHAR
-version VARCHAR
-ts_city TIMESTAMP
-    }
-```
+![Untitled 4](./case_scenario_schema_evolution/1.png)
 
-## **Rename Field/Column**
+## Rename Field/Column
 
 To rename an existing column or field in a nested struct, execute the below code
 
@@ -187,20 +135,7 @@ dataos-ctl dataset -a dataos://icebase:retail/city rename-field \
 
 Let’s rename the column `city_name` in the city dataset to `name`. For this following code needs to be executed -
 
-```mermaid
-erDiagram
-    city {
-metadata MAP
-city_id VARCHAR
-zip_code INTEGER
-city_name VARCHAR
-county_name VARCHAR
-state_code VARCHAR
-state_name VARCHAR
-version VARCHAR
-ts_city TIMESTAMP
-    }
-```
+![Untitled 5](./case_scenario_schema_evolution/4.png)
 
 ```bash
 dataos-ctl dataset -a dataos://icebase:retail/city rename-field \
@@ -231,22 +166,9 @@ INFO[0001] 📂 set metadata...completed
 
 The `city_name` column is renamed to `name`. As observed below
 
-```mermaid
-erDiagram
-    city {
-metadata MAP
-city_id VARCHAR
-zip_code INTEGER
-name VARCHAR
-county_name VARCHAR
-state_code VARCHAR
-state_name VARCHAR
-version VARCHAR
-ts_city TIMESTAMP
-    }
-```
+![Untitled 6](./case_scenario_schema_evolution/6.png)
 
-## **Update** Field/Column
+## Update Field/Column
 
 To widen the type of a column, struct field, map key, map value, or list element, the below command can be executed
 
@@ -256,28 +178,16 @@ dataos-ctl dataset -a dataos://icebase:retail/city update-field \
 -t <column-datatype>
 ```
 
-<aside>
-🗣 Updating column [type](Case%20Scenario%20Schema%20Evolution%208fdb8b7fe4234bde81a44d355fb0825e.md) is limited to only certain data types for any particular type 
+>
+🗣 Updating column [type](./case_scenario_schema_evolution.md) is limited to only certain data types for any particular type 
 - `integer` to `long`
 - `float` to `double`
 - Increasing the precision of `decimal` type
+>
 
-</aside>
 
-```mermaid
-erDiagram
-    city {
-metadata MAP
-city_id VARCHAR
-zip_code INTEGER
-city_name VARCHAR
-county_name VARCHAR
-state_code VARCHAR
-state_name VARCHAR
-version VARCHAR
-ts_city TIMESTAMP
-    }
-```
+
+![Untitled 1](./case_scenario_schema_evolution/1.png)
 
 Let’s update the `zip_code` column type from `INTEGER (integer)` to `BIGINT (long)`. The code is as follows -
 
@@ -310,17 +220,5 @@ INFO[0001] 📂 set metadata...completed
 
 The type of `zip_code` is changed from `INTEGER (integer)` to `BIGINT (long)`
 
-```mermaid
-erDiagram
-    city {
-metadata MAP
-city_id VARCHAR
-zip_code BIGINT
-city_name VARCHAR
-county_name VARCHAR
-state_code VARCHAR
-state_name VARCHAR
-version VARCHAR
-ts_city TIMESTAMP
-    }
-```
+
+![Untitled 8](./case_scenario_schema_evolution/8.png)

@@ -60,25 +60,25 @@ The below table summarizes various properties within a Workflow YAML
 
 | Field | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| `workflow` | object | None | None | Mandatory |
-| `schedule` | object | None | None | Optional**  |
-| `cron` | string | None | Any valid cron expression. | Optional**  |
-| `concurrencyPolicy` | string | Allow | Allow/Forbid/Replace | Optional |
-| `startOn` | string | None | Any time provided in ISO 8601 format. | Optional |
-| `endOn` | string | None | Any time provided in ISO 8601 format. | Optional |
-| `completeOn` | string | None | Any time provided in ISO 8601 format. | Optional |
-| `title` | string | None | Any valid string | Optional |
-| `name` | string | None | Any string confirming the regex <br> [a-z0-9]\([-a-z0-9]*[a-z0-9]) and length<br>less than or equal to 48 | Mandatory |
-| `title` | string | None | Any string | Optional |
-| `description` | string | None | Any string | Optional |
-| `spec` | object | None | None | Mandatory |
-| `runAsUser` | string | None | UserID of the Use Case <br>Assignee | Optional |
-| `compute` | string | None | runnable-default or any <br> other custom compute resource | Mandatory |
-| `stack` | string | None | flare/toolbox/scanner/<br>alpha | Mandatory |
-| `retry` | object | None | None | Optional |
-| `count` | integer | None | Any positive integer | Optional |
-| `strategy` | string | None | Always/OnFailure/<br>OnError/OnTransientError | Optional |
-| `dependency` | string | None | Any job name within the workflow | Optional |
+| [`workflow`](./workflow/workflow_grammar.md#workflow) | object | None | None | Mandatory |
+| [`schedule`](./workflow/workflow_grammar.md#schedule) | object | None | None | Optional**  |
+| [`cron`](./workflow/workflow_grammar.md#cron) | string | None | Any valid cron expression. | Optional**  |
+| [`concurrencyPolicy`](./workflow/workflow_grammar.md#concurrencypolicy) | string | Allow | Allow/Forbid/Replace | Optional |
+| [`startOn`](./workflow/workflow_grammar.md#starton) | string | None | Any time provided in ISO 8601 format. | Optional |
+| [`endOn`](./workflow/workflow_grammar.md#endon) | string | None | Any time provided in ISO 8601 format. | Optional |
+| [`completeOn`](./workflow/workflow_grammar.md#completeon) | string | None | Any time provided in ISO 8601 format. | Optional |
+| [`title`](./workflow/workflow_grammar.md#title) | string | None | Any valid string | Optional |
+| [`name`](./workflow/workflow_grammar.md#name) | string | None | Any string confirming the regex <br> [a-z0-9]\([-a-z0-9]*[a-z0-9]) and length<br>less than or equal to 48 | Mandatory |
+| [`title`](./workflow/workflow_grammar.md#title) | string | None | Any string | Optional |
+| [`description`](./workflow/workflow_grammar.md#description) | string | None | Any string | Optional |
+| [`spec`](./workflow/workflow_grammar.md#spec) | object | None | None | Mandatory |
+| [`runAsUser`](./workflow/workflow_grammar.md#runasuser) | string | None | UserID of the Use Case <br>Assignee | Optional |
+| [`compute`](./workflow/workflow_grammar.md#compute) | string | None | runnable-default or any <br> other custom compute resource | Mandatory |
+| [`stack`](./workflow/workflow_grammar.md#stack) | string | None | flare/toolbox/scanner/<br>alpha | Mandatory |
+| [`retry`](./workflow/workflow_grammar.md#retry) | object | None | None | Optional |
+| [`count`](./workflow/workflow_grammar.md#count) | integer | None | Any positive integer | Optional |
+| [`strategy`](./workflow/workflow_grammar.md#strategy) | string | None | Always/OnFailure/<br>OnError/OnTransientError | Optional |
+| [`dependency`](./workflow/workflow_grammar.md#dependency) | string | None | Any job name within the workflow | Optional |
 
 </center>
 
