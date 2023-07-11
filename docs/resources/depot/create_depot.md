@@ -243,20 +243,7 @@ You can spot in the YAML that the depot has been named ‘covidbq’, and it ref
 
 Depot also allows for certain flexibility while mapping this hierarchy for file storage systems. To unravel this, we will take the example of the AWS S3 bucket. Amazon S3 has a flat structure, wherein you have buckets which are containers containing objects. At the same time, they allow for the creation of folders within a bucket, and you can save the objects within these folders. See the diagram given below:
 
-```mermaid
-flowchart LR
-    subgraph Bucket Name: abcdata
-			subgraph object name
-				olt(online-transaction)
-				oft(offline-transaction)
-		subgraph folder name: transactions
-				f1(file1)
-				f2(file2)
-				end
-			end
-		end
- 
-```
+![Bucket](./create_depot_2.png)
 
 Now, create a depot with the name ‘s3depot’, where you want to map the bucket ‘abcdata’ to the depot, the folder ‘transactions’ to Collection, and the objects file1 and file2 as Datasets. Within spec, you only need to state the bucket name and relativePath to the folder. Scrutinize the YAML given below to see how we have done it.
 

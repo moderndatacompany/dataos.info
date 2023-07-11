@@ -47,7 +47,7 @@ YAML Syntax of a Workflow Resource</i></center>
 
 In this syntax, each job within the DAG is defined with a unique name, specifications, stack configuration, compute settings, and any stack-specific configurations. Job dependencies are specified to ensure the correct execution order.
 
-For a comprehensive reference of available fields and their configurations, please consult the [Workflow YAML Field Reference](./workflow/workflow_yaml_field_reference.md)
+For a comprehensive reference of available fields and their configurations, please consult the [Workflow Grammar](./workflow/workflow_grammar.md)
 
 ## Creating a Workflow
 As you've familiarized yourself with the fundamentals of Workflow syntax, it's time to delve deeper into coding, and craft your initial workflow. To begin your journey, please refer to the following guide by clicking on the link provided [here.](./workflow/creating_a_workflow.md)
@@ -84,7 +84,7 @@ The below table summarizes various properties within a Workflow YAML
 
 <i>Optional**:</i> Fields optional for single-run workflows, but Mandatory for Scheduled workflows.
 
-To know more about the various fields, click [here.](./workflow/workflow_yaml_field_reference.md)
+To know more about the various fields, click [here.](./workflow/workflow_grammar.md)
 
 
 <aside style="padding:15px; border-radius:5px;">
