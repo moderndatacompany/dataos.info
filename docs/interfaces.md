@@ -12,44 +12,55 @@ The homepage of DataOS GUI will show you all the apps currently available for us
 
 ![dataos_homepage.png](interfaces/dataos_homepage.png)
 
+### **DataOS Apps**
+
 Each DataOS app within the GUI has unique capabilities:
 
-### **Atlas**
+**Atlas**
+
 An in-built BI solution to create visualizations, reports, and dashboards for powerful data storytelling and actionable insights. From the Atlas interface, you can manage queries, create snippets, set up alerts, and more.
 
-### **Audience**
+**Audience**
+
 Understand your customers by leveraging semantic data models built via Lens for customer segmentation and data-driven decisions.
 
-### **Bifrost**
+**Bifrost**
+
 Take control of access policies for applications, services, people, and datasets to ensure secure and compliant data access. Bifrost leverages the governance engine of DataOS, Heimdall, to ensure secure and compliant data access through ABAC policies,  giving users fine-grained control over the data and resources.
 
-### **Lens**
+**Lens**
+
 Access and model data from diverse sources, create meaningful relationships between business concepts, define measures, and KPIs for data-informed decision-making.
 
-### **Metis**
+**Metis**
+
 Discover, catalog, and observe enterprise data with comprehensive metadata management, providing technical and business context.
-### **Notebook**
+
+**Notebook**
+
 Leverage the power of Jupyter Notebook on DataOS for data science projects, coding, analysis, and communication of insights.
 
-### **Operations**
+**Operations**
+
 Monitor and administer DataOS platform activity, gaining real-time visibility into resource utilization, cluster performance, and user activities. Keep your data ecosystem running smoothly and optimize resource allocation.
 
-### **Workbench**
+**Workbench**
+
 Explore and query your data assets using SQL with Workbench. Powered by the Minerva query engine (built on top of Trino), Workbench supports both simple and complex queries across a large variety of data sources, including traditional relational databases (Oracle, PostgreSQL, Redshift, etc.) as well as other data sources such as S3, Kafka, and Pulsar. You can query and explore data from these data sources without bringing it to DataOS.
 
 From the DataOS homepage, you can also manage your profile, access tokens, and view all the depots that exist within the DataOS instance for accessing data.
 
-## Manage Profile
+### **Manage Profile**
 
 ![profile.png](interfaces/profileinfo.png)
 
-## Create Tokens
+### **Create Tokens**
 
 API keys/tokens are used to authenticate requests to  DataOS resources. For example, when calling a service endpoint, you need to supply a valid API token in the HTTP `Authorization` header, with a valid token specified as the header value. You can generate API keys/tokens from DataOS UI as well as using DataOS CLI commands.
 
 To learn more, refer to [Creating API Keys and Token](interfaces/create_token.md)
 
-## View Depots
+### **View Depots**
 
 ![Depot](interfaces/depots.png)
 
