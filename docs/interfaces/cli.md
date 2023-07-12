@@ -367,6 +367,8 @@ Run the following commands to ensure the successful installation of DataOS CLI. 
 dataos-ctl version
 dataos-ctl health
 ```
+<<<<<<< HEAD
+=======
 
 ## Update
 
@@ -435,3 +437,4 @@ To learn more, refer to [CLI Command Reference](cli/command_reference.md). The r
 - [Read on Curl utility](cli/read_on_curl_utility.md)
 
 - [Setting the Path and Variables in Windows](cli/windows_path_setting.md)
+>>>>>>> 2000bfd0d60ad1aabb879bfb7388b5601367c579

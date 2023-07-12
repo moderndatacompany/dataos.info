@@ -11,8 +11,7 @@ To establish a Cluster, it is mandatory to possess the roles:id:operator tag. If
 </aside>
 
 
-![Diagrammatic representation of a Cluster Resource](./cluster/add_a_heading.svg)
-
+![Diagrammatic representation of a Cluster ](./cluster/cluster_overview.png)
 <center><i>Diagrammatic representation of a Cluster</i></center>
 
 ## Types of Clusters
@@ -43,20 +42,19 @@ Minerva assumes the crucial role of executing data access policies based on user
 
 ## Syntax of a Cluster YAML
 
-
-## Creating a Cluster
+![Cluster Syntax](./cluster/cluster_syntax.png)
 
 Within DataOS, a Cluster resource can either be created either by applying the YAML using the DataOS Command Line Interface (CLI), or by using the Operations App's Graphical User Interface (GUI).
 
-### **Creating a Cluster via CLI**
+## Creating a Cluster via CLI
 
 As Cluster is a Resource within DataOS. An instance of the Cluster can be created by configuring the Cluster Resource YAML and applying it via CLI.
 
-#### **Building a Cluster Resource YAML** 
+### **Building a Cluster Resource YAML** 
 
 To create a Cluster resource, you need to configure the YAML file with the appropriate settings. The following sections explain the necessary configurations.
 
-##### **Configuring the Resource Section**
+#### **Configuring the Resource Section**
 A Cluster is a resource-type in DataOS. Below is the YAML configuration for the Resource Section:
 
 ```yaml
@@ -74,7 +72,7 @@ owner: {{iamgroot}}
 
 For detailed customization options and additional fields within the Resource Section, refer to the [Resource Grammar.](../resources/resource_grammar.md)
 
-##### **Configuring the Cluster-specific Section**
+#### **Configuring the Cluster-specific Section**
 
 The Cluster-specific Section contains configurations specific to the Cluster resource. The YAML syntax is provided below:
 
@@ -99,23 +97,23 @@ cluster:
 
 | Field | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| `cluster` | object | none | none | mandatory |
-| `compute` | string | none | query-default or any other custom compute resource | mandatory |
-| `runAsUser` | string | none | none | optional |
-| `maintenance` | object | none | none | optional |
-| `restartCrons` | string | none | any valid cron expression | optional |
-| `scalingCrons` | object | none | none | optional |
-| `cron` | string | none | any valid cron expression | optional |
-| `replicas` | integer | 1 | positive integer | optional |
-| `resources` | object | none | none | optional |
-| `limits` | object | none | none | optional |
-| `cpu` | string | requests: 100m, limits: 400m | number of cpu units in milliCPU(m) or cpu Core| optional |
-| `memory` | string | requests: 100Mi, limits: 400Mi | memory in Mebibytes(Mi) or Gibibytes(Gi) | optional |
-| `requests` | object | none | none | optional |
+| [`cluster`](./cluster/cluster_grammar.md#cluster) | object | none | none | mandatory |
+| [`compute`](./cluster/cluster_grammar.md#compute) | string | none | query-default or any other custom compute resource | mandatory |
+| [`runAsUser`](./cluster/cluster_grammar.md#runasuser) | string | none | none | optional |
+| [`maintenance`](./cluster/cluster_grammar.md#maintenance) | object | none | none | optional |
+| [`restartCrons`](./cluster/cluster_grammar.md#restartcron) | string | none | any valid cron expression | optional |
+| [`scalingCrons`](./cluster/cluster_grammar.md#scalingcrons) | object | none | none | optional |
+| [`cron`](./cluster/cluster_grammar.md#cron) | string | none | any valid cron expression | optional |
+| [`replicas`](./cluster/cluster_grammar.md#replicas) | integer | 1 | positive integer | optional |
+| [`resources`](./cluster/cluster_grammar.md#resources) | object | none | none | optional |
+| [`limits`](./cluster/cluster_grammar.md#limits) | object | none | none | optional |
+| [`cpu`](./cluster/cluster_grammar.md#cpu) | string | requests: 100m, limits: 400m | number of cpu units in milliCPU(m) or cpu Core| optional |
+| [`memory`](./cluster/cluster_grammar.md#memory) | string | requests: 100Mi, limits: 400Mi | memory in Mebibytes(Mi) or Gibibytes(Gi) | optional |
+| [`requests`](./cluster/cluster_grammar.md#requests) | object | none | none | optional |
 
 For additional information about attributes within the Cluster-specific Section, refer to the [link](./cluster/cluster_grammar.md)
 
-##### **Configuring the Minerva-specific Section**
+#### **Configuring the Minerva-specific Section**
 
 The Minerva-specific Section contains configurations specific to the Minerva Cluster. The YAML syntax is provided below:
 
@@ -187,7 +185,7 @@ minerva:
 For additional information about attributes within the Minerva-specific Section, refer to the [link](./cluster/cluster_grammar.md)
 
 
-#### **Apply the Cluster YAML using DataOS CLI**
+### **Apply the Cluster YAML using DataOS CLI**
 
 To create a Cluster resource, you need to use the apply command on the CLI. The apply command for Cluster is given below:
 
@@ -195,7 +193,7 @@ To create a Cluster resource, you need to use the apply command on the CLI. The 
 dataos-ctl apply -f <cluster-yaml-file-path>
 ```
 
-### **Creating a Cluster Using Operations App**
+## Creating a Cluster Using Operations App
 
 The Operations App UI provides a convenient way to create a cluster in DataOS. 
 
@@ -204,7 +202,7 @@ The Operations App UI provides a convenient way to create a cluster in DataOS.
 
 To create a cluster using the Operations App UI, follow these steps:
 
-#### **Open the Operations App**
+### **Open the Operations App**
 
 Open the Operations App by either accessing the graphical user interface (GUI) or using the command-line interface (CLI) with the following command:
 
@@ -214,19 +212,19 @@ dataos-ctl view -a operations
 
 ![Untitled](./cluster/creating_cluster_using_operations_app_ui/untitled.png)
 
-#### **Navigate to the ‘Create Resource’ Section**
+### **Navigate to the ‘Create Resource’ Section**
 
 In the Operations App, click the '+ Create Resource' button. This action will open a window with various fields, as shown below:
 
 ![Untitled](./cluster/creating_cluster_using_operations_app_ui/untitled_1.png)
 
-#### **Fill in the Required Fields**
+### **Fill in the Required Fields**
 
 Provide the necessary details in the required properties fields and click 'Create Cluster'. For more information on these properties, refer to the documentation here.
 
 ![Untitled](./cluster/creating_cluster_using_operations_app_ui/untitled_4.png)
 
-#### **View the Created Cluster in the Operations App**
+### **View the Created Cluster in the Operations App**
 
 After clicking 'Create Cluster', a Cluster Resource will be created. You can observe the created cluster in the User Kernel section of the DataOS Operations App.
 

@@ -34,13 +34,6 @@ depot:
     schemaRegistryUrl: {{http://20.9.63.231:8081/}}
 ```
 
-<style>
-    blockquote {
-        background-color: #F6F3F8;
-    }
-</style>
 
-<blockquote style="color: black;">
 
-*Note*: The support for creating 'KAFKA' Depot using secrets in configuration is coming soon.
-</blockquote>
+>*Note*: The support for creating 'KAFKA' Depot using secrets in configuration is coming soon.
