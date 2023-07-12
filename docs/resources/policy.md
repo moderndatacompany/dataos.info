@@ -18,7 +18,7 @@ Access Policies serve as the initial layer of defense, overseeing user access an
 
 ### **Data Policy**
 
-In contrast, Data Policy operates as a secondary layer of control, ensuring data integrity, security, quality, and appropriate usage throughout its lifecycle and state changes. It focuses on regulating the visibility and interaction with specific data once access has been granted. It involves the implementation of techniques such as data masking or filtering to obscure or restrict the visibility of sensitive or restricted data based on predefined rules or conditions.
+In contrast, Data Policy operates as a secondary layer of control, regulating the visibility and interaction with specific data once access has been granted. It involves the implementation of techniques such as data masking or filtering to obscure or restrict the visibility of sensitive or restricted data based on predefined rules or conditions.
 
 For example, when working with a dataset that includes a column labeled `credit_card_number`, it is crucial to protect the sensitive information it contains from unintended exposure. Employing data masking policies or applying data anonymization methods becomes essential to secure the contents of this specific column.
 

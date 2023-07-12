@@ -1,4 +1,4 @@
-## MongoDB
+# MongoDB
 
 DataOS allows you to connect to MongoDB using Depot, enabling you to interact with your MongoDB database and perform various data operations. You can create a MongoDB Depot in DataOS by providing specific configurations.
 

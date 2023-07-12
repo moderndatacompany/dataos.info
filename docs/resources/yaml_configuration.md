@@ -3,7 +3,7 @@
 This page has information on features of YAML which will be useful while writing the configuration files for DataOS Resources.
 
 1. Parse multiple entities and resource-instances in a single YAML file.
-To do this, use three dashes `—--` to separate the two entities. For example, we can create a Depot while using the reference of a Secret in the same config file.
+To do this, use three dashes `---` to separate the two entities. For example, we can create a Depot while using the reference of a Secret in the same config file.
     
     ```yaml
     version: v1
@@ -48,7 +48,7 @@ To do this, use three dashes `—--` to separate the two entities. For example, 
     
     In the above example, `person` is a mapping with keys `name` & `age`, and their corresponding values.
     
-3. YAML supports lists & arrays using the dash `—`  followed by a space. The list, in turn can have mappings or objects or simple key-value pairs.
+3. YAML supports lists & arrays using the dash `-`  followed by a space. The list, in turn can have mappings or objects or simple key-value pairs.
     
     ```yaml
     fruits:
@@ -81,10 +81,10 @@ To do this, use three dashes `—--` to separate the two entities. For example, 
       type: key-value-properties
       acl: rw
       data:
-        accesskeyid: 
-        secretkey: 
-        awsaccesskeyid: 
-        awssecretaccesskey: 
+        accesskeyid: {{access key id}}
+        secretkey: {{secret key}}
+        awsaccesskeyid: {{aws access key id}}
+        awssecretaccesskey: {{aws secret access key}}
     ```
     
     The same secret can be created by using applying this config file:
@@ -97,10 +97,10 @@ To do this, use three dashes `—--` to separate the two entities. For example, 
       acl: rw
       type: key-value-properties
       data:
-        accesskeyid: 
-        secretkey: 
-        awsaccesskeyid: 
-        awssecretaccesskey: 
+        accesskeyid: {{access key id}}
+        secretkey: {{secret key}}
+        awsaccesskeyid: {{aws access key id}}
+        awssecretaccesskey: {{aws secret access key}} 
     ```
     
     Note that the order of objects is different in the two cases. Yet, both the config files are parsed in exactly the same manner, and will create the same Secret.
@@ -108,14 +108,14 @@ To do this, use three dashes `—--` to separate the two entities. For example, 
 5. The number of spaces used for indentation at the same hierarchical level of the config file must be same. This is specifically important when creating a nested list of objects.
     
     ```yaml
-    version: v1 
-    name: 
+    version: v1
+    name:
     description: This is a sample template
     workflow:
-    	title:
-    	schedule:
-    		  cron:
-    		  concurrencyPolicy:
+      title:
+      schedule:
+          cron:
+          concurrencyPolicy:
       dag: 
     			# Job 1 (There should be at least one job within a DAG)
           - name:
