@@ -4,7 +4,7 @@ DataOS Resources are atomic & logical units with their own life cycle. They can 
 
 DataOS Resources are categorized into two categories - Workspace-level Resources & Platform-level Resources.
 
-![DataOS Resources](resources/dataos_resources.png)
+![DataOS Resources](./resources/dataos_resources.png)
 <center><i>DataOS Resources</i></center>
 
 ## Types of DataOS Resources
@@ -17,7 +17,7 @@ It is essential to note here that, as a data developer, you should think & plan 
 
 Each DataOS Resource has been built for a specific purpose, for instance, Workflow has been built to run batch jobs, while Depot has been built to provide JDBC/ODBC connections to various data sources. The Resources are interoperable and can be composed together to implement various architectural designs for the data infrastructure of choice.
 
-Whether it is Lakehouse Architecture, Data Mesh, Data-first Stack or as an operational layer providing a unified experience on top of an existing data architecture - Resources confer the data operating system with modularisation that allows it to be used for any of these use cases. The page on [Properties](./resources/properties.md) describes the common properties enveloped within each DataOS Resource.
+Whether it is Lakehouse Architecture, Data Mesh, Data-first Stack or as an operational layer providing a unified experience on top of an existing data architecture - Resources confer the data operating system with modularization that allows it to be used for any of these use cases. The page on [characteristics](./resources/characteristics.md) describes the common characteristics enveloped within each DataOS Resource.
 
 ## Configuration of Resources
 
@@ -34,20 +34,20 @@ The configuration files are *strongly-typed*, and the system flags an error when
 
 | Field | Data Type | Default Value | Requirement |
 | --- | --- | --- | --- |
-| `version` | string | none | mandatory |
-| `name` | string | none | mandatory |
-| `type` | string | none | mandatory |
-| `tags` | string | depending on the resource-instance, various tags are assigned by default | optional |
-| `description` | string | none | optional |
-| `owner` | string | id of the user who deploys the Resource | optional |
-| `layer` | string | user | optional |
-| `<RESOURCE-TYPE>` | string | none | mandatory |
+| [`name`](./resources/resource_grammar.md#name) | string | none | mandatory |
+| [`version`](./resources/resource_grammar.md#version) | string | none | mandatory |
+| [`type`](./resources/resource_grammar.md#type) | string | none | mandatory |
+| [`tags`](./resources/resource_grammar.md#tags) | string | depending on the Resource-instance, various tags are assigned by default | optional |
+| [`description`](./resources/resource_grammar.md#description) | string | none | optional |
+| [`owner`](./resources/resource_grammar.md#owner) | string | id of the user who deploys the Resource | optional |
+| [`layer`](./resources/resource_grammar.md#layer) | string | user | optional |
+| [`<resource-type>`](./resources/resource_grammar.md#resource-type) | string | none | mandatory |
 
 Each Resource-type has a different evolutionary journey and usage. Hence, the values for fields, like `version` and `type`, are dependent on the Resource-type. The [Resource Grammar](./resources/resource_grammar.md) elucidates all fields and possible values which can be assigned for each of the key-value pair.
 
 These attributes not only define the instance of the Resource being deployed, but are stored as a ‘record of intent’ - once created, the underlying system will constantly work to ensure that the Resource exists and try to reconcile the current & desired states.
 
-## CRUD Operations on DataOS Resources {#crud_operations}
+## CRUD Operations on DataOS Resources
 
 The interfaces of DataOS allow the users to interact with the Resources in a consistent & seamless manner. Depending on the users’ access level, they can perform all the CRUD actions and deploy the Resources through the Command Line Interface, while the Graphical User Interface provides a limited set of capabilities to manage these Resources.
 
@@ -57,7 +57,7 @@ Users of the operating system interact with the instances of DataOS Resources in
 
 Used to create, update & deploy a Resource-instance
 
-```bash
+```shell
 dataos-ctl apply -f {{file path}}
 ```
 
@@ -67,10 +67,10 @@ When you apply an updated configuration file of a Resource, it gets appended by 
 
 Used for read operations
 
-```bash
+```shell
 dataos-ctl get -t {{type of Resource}} -n {{name of the Resource-instance}}
 
-#alternate command
+# alternate command
 dataos-ctl get -i "{{name:version:type}}"
 ```
 
@@ -78,25 +78,25 @@ dataos-ctl get -i "{{name:version:type}}"
 
 To delete an existing instance of a Resource from the system
 
-```bash
+```shell
 dataos-ctl delete -t {{type of Resource}} -n {{name of Resource-instance}}
 
-#alternate command
+# alternate command
 dataos-ctl delete -i "{{name:version:type}}"
 ```
 
-> A resource-instance once deleted cannot be restored again by the system. The user has to redeploy it again using the `apply` command, if and when required.
+> A Resource-instance once deleted cannot be restored again by the system. The user has to redeploy it again using the `apply` command, if and when required.
 > 
 
 ### **Lint**
 
-To run the linter & check for possible errors in the config file of the resource-instance.
+To run the linter & check for possible errors in the config file of the Resource-instance.
 
-```bash
+```shell
 dataos-ctl apply -f {{file path}} -l
 ```
 
-> The linter identifies only specific kinds of errors in the config file. For a more detailed analysis of the errors, one would need to check the logs for the failed resource-instance.
+> The linter identifies only specific kinds of errors in the config file. For a more detailed analysis of the errors, one would need to check the logs for the failed Resource-instance.
 > 
 
 <aside style="padding:15px; border-radius:5px;">
@@ -107,23 +107,23 @@ Always run the lint command to flag possible errors before deploying a Resource.
 
 ### **Logs**
 
-Check the logs for the resource-instance
+Check the logs for the Resource-instance
 
-```bash
+```shell
 dataos-ctl log -t {{type of Resource}} -n {{name of Resource-instance}}
 ```
 
-> The operating system supports various log-levels for the Resources, such as INFO & DEBUG, among others. The details in the logs will depend upon the log-level set in the config file of the resource-instance.
+> The operating system supports various log-levels for the Resources, such as INFO & DEBUG, among others. The details in the logs will depend upon the log-level set in the config file of the Resource-instance.
 > 
 
-While these commands are applicable across all resource-types, the Workspace-level Resources require the user to specify the workspace in which these Resources are deployed. Hence, for these Resource-types, viz. Cluster, Secret, Service and Workflow, the above listed commands are always appended with a flag `-w`.
+While these commands are applicable across all Resource-types, the Workspace-level Resources require the user to specify the Workspace in which these Resources are deployed. Hence, for these Resource-types, viz. Cluster, Secret, Service and Workflow, the above listed commands are always appended with a flag `-w`.
 
 For example, to read information around a workflow, run the following command.
 
 ```bash
 dataos-ctl get -t {{type of Resource}} -w {{workspace name}} -n {{name of the Resource-instance}} 
 
-#alternate command
+# alternate command
 dataos-ctl get -i "{{name:version:type:workspace}}"
 ```
 
@@ -131,7 +131,7 @@ If no flag is mentioned at the time of applying the Resource, it is deployed in 
 
 <aside style="padding:15px; border-radius:5px;">
 📖 Best Practice:<br>
-Create a Workspace for your team or your personal work. Always run the jobs/services in that personal/team workspace first. If successful, you can run it in the public workspace to allow other teams/people access to those resource-instances.
+Create a Workspace for your team or your personal work. Always run the jobs/services in that personal/team Workspace first. If successful, you can run it in the public workspace to allow other teams/people access to those Resource-instances.
 
 </aside>
 
@@ -207,3 +207,4 @@ To parse environment variables in the configuration file of a Resource, follow t
 Here are more features and syntaxes to be kept in mind while writing a [YAML configuration files](./resources/yaml_configuration.md).
 
 DataOS Resources are the lynchpin around which the unified architecture of the data operating system has been built. They make the system modular, composable, interoperable and flexible, while abstracting away the system complexities, allowing users to focus on the outcomes, such as data products, rather than the arduous process of how those outcomes are achieved.
+
