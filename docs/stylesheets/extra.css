@@ -2419,10 +2419,6 @@ html .md-footer-meta.md-typeset a:hover {
         display: block
     }
 
-    /* .md-nav__item--nested>.md-nav>.md-nav__title {
-        display: none
-    } */
-
     .md-nav__item--section {
         display: block;
         margin: 1.25em 0
@@ -2576,9 +2572,6 @@ html .md-footer-meta.md-typeset a:hover {
         margin-bottom: 1.25em
     }
 
-    .md-nav--integrated>.md-nav__list>.md-nav__item--active .md-nav--secondary>.md-nav__title {
-        display: none
-    }
 }
 
 .md-pagination {

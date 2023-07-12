@@ -75,6 +75,6 @@ cluster:
 
 Once you have completed the setup of the connector configurations, you can access your data assets for a specific data source directly from DataOS Workbench. Workbench utilizes Minerva, which supports full SQL, and provides you with an intuitive interface for accessing your data sources as catalogs and exploring schemas.
 
-![minerva-workbench-catalog-table.png]()
+![accessing_catalogs_from_workbench](./connectors_configuration/minerva_workbench_catalog_table.png)
 
 To learn more, refer to the [Workbench](../../interfaces/workbench.md) documentation.

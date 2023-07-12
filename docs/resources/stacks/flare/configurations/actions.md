@@ -1,4 +1,4 @@
-# Actions
+# Flare Actions Section Grammar
 
 > The Data Maintenance Actions are only supported in DataOS Internal Storage Depot, Icebase.
 > 
@@ -8,25 +8,16 @@ Maintenance of any Iceberg table is challenging; therefore, DataOS internal depo
 The `actions` section within a YAML is defined as follows:
 
 ```yaml
-version: v1 # Version
-name: manifest # Name of the Workflow
-type: workflow # Type of Resource (Here its workflow)
-workflow: # Workflow Section
-  dag:
-    - name: actions # Name of the Job
-      spec: # Specs
-        stack: flare:4.0 # Stack is Flare (so it's a Flare Job)
-        compute: runnable-default # Compute
-        flare: # Flare Stack specific Section
-          job: # Job Section
-            explain: true # Explain
-            inputs: # Inputs Section
-              - name: inputDataset # Input Dataset Name
-                dataset: dataos://icebase:actions/data?acl=rw # Input UDL
-                format: Iceberg # Dataset Format
-            logLevel: INFO # Loglevel
-            actions: # Flare Action
-              {} # Action Definition/Properties
+flare: 
+  job: 
+    explain: true 
+    inputs: 
+      - name: inputDataset 
+        dataset: dataos://icebase:actions/data?acl=rw 
+        format: Iceberg 
+    logLevel: INFO 
+    actions: 
+      {} 
 ```
 
 Following are the different actions that can be accomplished using Flare in DataOS:
@@ -59,6 +50,8 @@ actions:
 
 The `rewrite_dataset` action is beneficial in the case of streaming, where small data files can be compacted into larger files to improve query performance. To explore a case scenario on how to compact files using the `rewrite_dataset` action, click [here.](../case_scenario/rewrite_dataset.md)
 
+---
+
 ## Rewrite Manifest
 
 > Supported in both Flare Stack Versions `flare:3.0` and `flare:4.0`.
@@ -73,6 +66,8 @@ actions:
 ```
 
 A case scenario illustrating the implementation of the `rewrite_manifest` action is given [here.](../case_scenario/rewrite_manifest_files.md)
+
+---
 
 ## Expire Snapshots
 
@@ -90,6 +85,8 @@ actions:
 ```
 
 Regularly expiring snapshots is recommended to delete data files that are no longer needed, and to keep the size of table metadata small. To view a case scenario for `expire_snapshots` action, click [here.](../case_scenario/expire_snapshots.md)
+
+---
 
 ## Remove Orphans
 
@@ -109,6 +106,8 @@ actions:
 ```
 
 Click [here](../case_scenario/remove_orphans.md) to view a case scenario depicting the use of `remove_orphans` action.
+
+---
 
 ## Delete from Dataset
 
