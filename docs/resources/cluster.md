@@ -11,8 +11,7 @@ To establish a Cluster, it is mandatory to possess the roles:id:operator tag. If
 </aside>
 
 
-![Diagrammatic representation of a Cluster Resource](./cluster/cluster.png)
-
+![Diagrammatic representation of a Cluster ](./cluster/cluster_overview.png)
 <center><i>Diagrammatic representation of a Cluster</i></center>
 
 ## Types of Clusters
