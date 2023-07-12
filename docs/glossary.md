@@ -1,5 +1,5 @@
 
-  [a](#sectiona)   [b](#sectionb)   [c](#sectionc)   [d](#sectiond)   [e](#sectione)   [f](#sectionf)   [g](#sectiong)   [h](#sectionh)   [i](#sectioni)   [j](#sectionj)   [k](#sectionk)   [l](#sectionl)   [m](#sectionm)   [n](#sectionn)   [o](#sectiono)   [p](#sectionp)   [q](#sectionq)   [r](#sectionr)   [s](#sections)   [t](#sectiont)   [u](#sectionu)   [v](#sectionv)   [w](#sectionw)   [x](#sectionx)   [y](#sectiony)   [z](#sectionz) 
+  [a](./glossary.md#a) &nbsp;   [b](./glossary.md#b) &nbsp;    [c](./glossary.md#c)  &nbsp;     [d](./glossary.md#d) &nbsp;    [e](./glossary.md#e) &nbsp;   [f](./glossary.md#f) &nbsp;    [g](./glossary.md#g)  &nbsp;   [h](./glossary.md#h) &nbsp;    [i](./glossary.md#i) &nbsp;     [j](./glossary.md#j) &nbsp;    [k](./glossary.md#k) &nbsp;     [l](./glossary.md#l) &nbsp;     [m](./glossary.md#m) &nbsp;     [n](./glossary.md#n) &nbsp;    [o](./glossary.md#o) &nbsp;    [p](./glossary.md#p) &nbsp;     [q](./glossary.md#q) &nbsp;     [r](./glossary.md#r) &nbsp;     [s](./glossary.md#s) &nbsp;    [t](./glossary.md#t) &nbsp;     [u](./glossary.md#u) &nbsp;    [v](./glossary.md#v) &nbsp;     [w](./glossary.md#w) &nbsp;     [x](./glossary.md#x) &nbsp;     [y](./glossary.md#y) &nbsp;     [z](./glossary.md#z) 
 ---
 
 # a <a id="a"></a>
@@ -150,7 +150,7 @@
 
 ---
 
-# p <a id="p"></a>
+# p
 
 |  |  |
 | --- | --- |
@@ -161,7 +161,7 @@
 
 ---
 
-# q <a id="q"></a>
+# q
 
 |  |  |
 | --- | --- |
