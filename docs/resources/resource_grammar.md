@@ -2,143 +2,148 @@
 
 Following attributes are declared for every instance of a Resource that is deployed in a DataOS context. Some of these attributes/fields need to mandatorily declared, while others are optional.
 
-### **name**
+## Resource Section Configuration Fields
 
-```yaml
-name: 
-```
+### **`name`**
 
-**Description:** declare a name for the Resource  
-**Data type:** string  
-**Requirement:** mandatory  
-**Default value:** none  
+**Description:** declare a name for the Resource<br> 
+**Data type:** string<br>
+**Requirement:** mandatory  <br>
+**Default value:** none <br> 
 **Possible values:** <br>
 - alpha numeric values with the RegEx `[a-z0-9]([-a-z0-9]*[a-z0-9])`; a hyphen/dash is allowed as a special character  
 - total length of the string should be less than or equal to 48 characters  
 - names of cluster & depot have a different RegEx `[a-z]([a-z0-9]*)`; a hyphen/dash is **not** allowed as a special character <br>
 
-**Example usage:** myfirstworkflow01  
-**Additional information:** two resources in the same workspace cannot have the same name   
-
-### **version**
-
+**Additional information:** two resources in the same workspace cannot have the same name. <br>
+**Example usage:**
 ```yaml
-version: 
+name: myfirstworkflow01
 ```
+---   
 
-**Description:** the version of the Resource  
-**Data type:** string  
-**Requirement:** mandatory  
-**Default value:** none  
-**Possible value:** v1, v1beta, v2       
-**Example usage:** v1  
-**Additional information:**  
+### **`version`**
 
-### **type**
-
+**Description:** the version of the Resource  <br>
+**Data type:** string  <br>
+**Requirement:** mandatory <br>
+**Default value:** none  <br>
+**Possible value:** v1, v1beta, v2 <br>
+**Example usage:** <br>
 ```yaml
-type: 
+version: v1
 ```
 
-**Description:** provide the value for the Resource-type  
-**Data type:** string    
-**Requirement:** mandatory    
-**Default value:** none    
-**Possible value:** cluster, compute, depot, policy, secret, service, stack or workflow     
-**Example usage:** depot    
-**Additional information:**     
+---
 
-### **tags**
+### **`type`**
 
+**Description:** provide the value for the Resource-type <br> 
+**Data type:** string <br>
+**Requirement:** mandatory <br>
+**Default value:** none <br>
+**Possible value:** cluster, compute, depot, policy, secret, service, stack or workflow <br>
+**Example usage:**   
 ```yaml
-tags:
-  -
-  -
+type: depot
 ```
 
-**Description:** assign tags to the Resource-instance    
-**Data type:** an array of strings  
-**Requirement:** optional  
-**Default value:** none
-**Possible value:** any; special characters are allowed   
-**Example usage:**  
-```
+---
+
+### **`tags`**
+
+**Description:** assign tags to the Resource-instance <br>
+**Data type:** a list of strings <br>
+**Requirement:** optional <br>
+**Default value:** none <br>
+**Possible value:** any string; special characters are allowed <br>
+**Example usage:**
+```yaml
 tags: 
   - tag-example
   - dataos:resource:type
   - fordiscoverability
 ```
-**Additional information:**
-### **description**
 
-```yaml
-description: 
-```
+---
 
-**Description:** assign tags to Resource  
+### **`description`**
+
+**Description:** assign description to Resource  
 **Data type:** string  
 **Requirement:** optional  
 **Default value:** none  
 **Possible value:** any  
-**Example usage:** "This is a sample description of a Resource"  
-**Additional information:** The description can be within quotes or without.  
-> YAML supports *scalars* such as strings, numbers, booleans, and null. A scalar value can be unquoted, within single quotes (') or double quotes ("). When the scalar contains a special character, the value must be declared within quotes.   
+**Additional information:** the description can be within quotes or without.  
 
-### **owner**
+> YAML supports *scalars* such as strings, numbers, booleans, and null. A scalar value can be unquoted, within single quotes (') or double quotes ("). When the scalar contains a special character, the value must be declared within quotes.  
 
+**Example usage:** 
 ```yaml
-owner: 
+description: "This is a sample description of a Resource"  
 ```
 
-**Description:** identification of the user  
-**Data type:** string  
-**Requirement:** optional  
-**Default value:** id of the user applying the Resource  
-**Possible value:**   
-**Example usage:** iamgroot  
-**Additional information:** 
-> when no id is provided, or an incorrect id is provided, the system automatically corrects it to the id of the user who applied the Resource on DataOS CLI   
+---
 
-### **layer**
+### **`owner`**
 
+**Description:** identification of the user <br>
+**Data type:** string <br>
+**Requirement:** optional <br>
+**Default value:** id of the user applying the Resource<br>
+**Possible value:** any valid dataos user id<br>
+**Additional information:** when no id is provided, or an incorrect id is provided, the system automatically corrects it to the id of the user who applied the Resource on DataOS CLI   
+**Example usage:**
 ```yaml
-layer: 
+owner: iamgroot
 ```
+---
 
-**Description:** declare the name of the layer in which Resource is going to be deployed
-**Data type:** string  
-**Requirement:** optional  
-**Default value:** user  
-**Possible value:** user or system  
-**Example usage:**  
+### **`layer`**
+
+**Description:** declare the name of the layer in which Resource is going to be deployed <br>
+**Data type:** string <br>
+**Requirement:** optional <br>
+**Default value:** user <br>
+**Possible value:** user/system <br>
 **Additional information:** 
-> From a user's perspective, the operating system can be envisaged as working at two levels - user layer & system layer. This is only a logical separation to understand the workings of the system.  
-
-### **{{RESOURCE-TYPE}}**
-
+From a user's perspective, the operating system can be envisaged as working at two levels - user layer & system layer. This is only a logical separation to understand the workings of the system. <br>
+**Example usage:** 
 ```yaml
-cluster: 
+layer: user
+```
+---
+
+### **`<resource-type>`**
+
+**Description:** specifies attributes specific to a \<resource-type\> <br>
+**Data type:** object <br>
+**Requirement:** mandatory <br>
+**Default value:** none <br>
+**Possible value:** 
+- *key* - cluster, compute, depot, policy, secret, service, stack or workflow
+- *value* - attributes specific for a particular \<resource-type\> <br>
+
+> By declaring the type of the Resource, say `workflow:`, followed by a space, we are basically creating a *mapping* in YAML. 
+
+**Example usage:**
+```yaml
+cluster:
+  {cluster-specific-attributes}
 or
 workflow:
+  {workflow-specific-attributes}
 # all resource-types are created in the same manner
 ```
-**Description:** replace the key {{RESOURCE-TYPE}} with the type of the Resource being deployed  
-**Data type:** string  
-**Requirement:** mandatory    
-**Default value:** none  
-**Possible value:** cluster, compute, depot, policy, secret, service, stack or workflow   
-**Example usage:** depot  
-**Additional information:** In this case, the placeholder is meant for the key itself, and not the value. 
-> By declaring the type of the Resource, say `workflow:`, followed by a space, we are basically creating a *mapping* in YAML.
 
 The table below summarizes how the values for `version`, `type` & `layer` are declared for different types of Resources.
 
-| Resource | Version | Type | layer | {{RESOURCE-TYPE}} |
+| Resource | version | type | layer | \<resource-type\> |
 | --- | --- | --- | --- | --- |
 | Cluster | v1 | cluster | not required | cluster |
 | Compute | v1beta | compute | system | compute |
 | Depot | v1 | depot | user | depot |
-| Policy | v1 | policy | user | policy |
+| Policy | v1 | policy | user/system | policy |
 | Secret | v1 | secret | not required | secret |
 | Service | v1 | service | not required | service |
 | Stack | NA | NA | NA | stack |
