@@ -12,7 +12,7 @@ Furthermore, every job within a Directed Acyclic Graph (DAG) is associated with 
 
 
 
-![Diagrammatic representation of a workflow](./workflow/workflow.png)
+![Diagrammatic representation of a workflow](./workflow/workflow_overview.png)
 
 <center><i>Diagrammatic representation of a workflow</i></center>
 
@@ -38,7 +38,7 @@ The Workflow resource is defined using a YAML configuration file. The following 
 
 
 
-![Workflow Syntax](./workflow/workflow_syntax.png)
+![Workflow Syntax](./workflow/workflow_yaml.png)
 
 <center>
 

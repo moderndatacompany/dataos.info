@@ -22,7 +22,7 @@ Once a depot is created, all members of your organization gain secure access to 
 
 ## Syntax of Depot
 
-![Syntax of Depot](./depot/depot_syntax.png)
+![Syntax of Depot](./depot/depot_yaml.png)
 
 <center><i>Syntax of Depot resource</i></center>
 
