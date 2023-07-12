@@ -51,7 +51,7 @@ workflow:
 <center><i>Workflow Section Configuration - Single-Run</i></center>
 Choose the appropriate workflow type based on your requirements.
 
-For additional configuration options within the Workflow-specific section, refer to the [Workflow YAML Field Reference](./workflow_yaml_field_reference.md).
+For additional configuration options within the Workflow-specific section, refer to the [Workflow Grammar](./workflow_grammar.md).
 
 ### **Configuring the DAG Section**
 

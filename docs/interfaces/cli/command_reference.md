@@ -1,7 +1,5 @@
 # CLI Command Reference
 
-You will find below a list of commonly used commands on CLI. If you are comfortable using the command terminal of any specific system in the world, you can directly start using DataOS CLI - you don’t need to go through this page (smile, it means less reading work for you!).
-
 You can get a complete list of all the commands, sub-commands, arguments and flags by using the help command within CLI itself.
 
 ### **Apply**

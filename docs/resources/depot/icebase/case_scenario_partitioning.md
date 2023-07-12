@@ -49,7 +49,7 @@ dataos-ctl dataset -a dataos://icebase:retail/city \
 -p "month:ts_city:month_partition"
 ```
 
-<aside style="background-color:#FAF3DD; padding:15px; border-radius:5px;">
+<aside style=" padding:15px; border-radius:5px;">
 
 🗣 **Note:** The order of partition given should be the hierarchy in which the user needs the data to be partitioned.
 </aside>

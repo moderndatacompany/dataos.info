@@ -77,7 +77,7 @@ INFO[0000] 📂 get metadata...completed
 
 ### **Set Metadata**
 
-<aside style="background-color:#FAF3DD; padding:15px; border-radius:5px;">
+<aside style=" padding:15px; border-radius:5px;">
 🗣 In instances where data is being written in Iceberg format and the catalog is designated as **Hadoop catalog**, it is necessary for users to utilize this command to set the metadata version. However, it is important to note that this command is not requisite for **Hive catalogs**.
 
 </aside>

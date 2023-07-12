@@ -7,19 +7,11 @@ Fastbase is a managed depot type within the DataOS that supports Apache Pulsar f
 
 DataOS allows users to manage Fastbase depots effortlessly using CLI. This functionality is made possible by the powerful API capabilities of Depot-Service.
 
-<style>
-    blockquote {
-        background-color: #F6F3F8;
-    }
-</style>
 
-<blockquote style="color: black;">
-
-The primary command for interacting with the Fastbase Depot in DataOS is `dataos-ctl fastbase <sub-command>`. Using this command, you can perform various operations related to Fastbase.
-</blockquote>
+>The primary command for interacting with the Fastbase Depot in DataOS is `dataos-ctl fastbase <sub-command>`. Using this command, you can perform various operations related to Fastbase.
 
 
-<aside style="background-color:#FAF3DD; padding:15px; border-radius:5px;">
+<aside style="padding:15px; border-radius:5px;">
 
 🗣️  Bringing uniformity by getting rid of complex terminologies
 To bring uniformity within DataOS, we have replaced specific terminologies related to underlying tech with their analogous DataOS counterpart. For example, topics in Pulsar are the named channels for transmitting messages from producers to consumers. They are streaming logs that are analogous to the dataset. Within DataOS, instead of a topic, we use the term dataset. 

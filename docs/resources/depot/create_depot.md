@@ -88,7 +88,7 @@ version: <v1>                       #Resource API version here
 
 The connection secrets are specific to a particular depot type. Thus, the configuration details(Secret) will depend on the underlying data source, and you should get these details from your enterprise. We have collated the connection secrets for commonly used data sources [here](./depot_config_templates.md): 
 
-<aside style="background-color:#FAF3DD; padding:15px; border-radius:5px;">
+<aside style="padding:15px; border-radius:5px;">
 🗣️ The credentials you use here need to have access to the schemas in the configured database.
 </aside>
 
@@ -201,10 +201,7 @@ The information you declare in ‘spec’ does two things - first, it points the
 
 The specification parameters depend on the storage structure of the data source. These parameters allow you to map the data to the hierarchy followed within DataOS:
 
-```mermaid
-flowchart LR
-D(Depot)-->C(Collection)-->DS(Dataset)
-```
+![Depot](./create_depot.png)
 
 Once mapped, this automatically generates the UDL which you can use everywhere within the DataOS to access the dataset. If memory serves you right, you should be able to recall that the UDL has the following format:
 
@@ -246,20 +243,7 @@ You can spot in the YAML that the depot has been named ‘covidbq’, and it ref
 
 Depot also allows for certain flexibility while mapping this hierarchy for file storage systems. To unravel this, we will take the example of the AWS S3 bucket. Amazon S3 has a flat structure, wherein you have buckets which are containers containing objects. At the same time, they allow for the creation of folders within a bucket, and you can save the objects within these folders. See the diagram given below:
 
-```mermaid
-flowchart LR
-    subgraph Bucket Name: abcdata
-			subgraph object name
-				olt(online-transaction)
-				oft(offline-transaction)
-		subgraph folder name: transactions
-				f1(file1)
-				f2(file2)
-				end
-			end
-		end
- 
-```
+![Bucket](./create_depot_2.png)
 
 Now, create a depot with the name ‘s3depot’, where you want to map the bucket ‘abcdata’ to the depot, the folder ‘transactions’ to Collection, and the objects file1 and file2 as Datasets. Within spec, you only need to state the bucket name and relativePath to the folder. Scrutinize the YAML given below to see how we have done it.
 
@@ -282,31 +266,22 @@ depot:
 
 If you do not declare the relativePath in the YAML above, then given the ordinal structure/hierarchy of the stored data, the bucket ‘abcdata’ itself becomes your depot. You can now **read** the data using the UDLs given below: 
 
-<style>
-    blockquote {
-        background-color: #F6F3F8;
-    }
-</style>
 
-<blockquote style="color: black;">
-
-Note that the depot automatically mapped the transactions folder to Collection in DataOS (this is a result of the ordinal hierarchy of the bucket)
+> Note that the depot automatically mapped the transactions folder to Collection in DataOS (this is a result of the ordinal hierarchy of the bucket)
  `dataos://s3depot:transactions/file1`
  `dataos://s3depot:transactions/file2`
 The two UDLs to point to the objects present in the bucket, outside the folder:
  `dataos://s3depot:none/online-transaction`
  `dataos://s3depot:none/offline-transaction`
 Note: Here ‘Collection’ name is mentioned as ‘none’ because there isn’t a three-level ordinal hierarchy. The object files online-transaction and offline transaction are your datasets and are present directly in the S3 bucket.
-
-</blockquote>
+>
 
 The pliability of Depot allows you to envision the ‘transactions’ folder itself as another object in the bucket, rather than a folder. If this is what you prefer, then you can use the following UDLs to address the files within the folder:
 `dataos://s3depot:none/transactions/file1` 
 `dataos://s3depot:none/transactions/file2`
 Here, the interpretation by the user is that there is no collection in the bucket, and file1 and file2 are directly being accessed as objects having the path /transactions/file1 and /transactions/file2
-> 
 
-Since you have already spent so much time to fathom how Depot behaves, why not acquiesce in checking out a couple of more examples - leave no stone unturned!
+>Since you have already spent so much time to fathom how Depot behaves, why not acquiesce in checking out a couple of more examples - leave no stone unturned!
 
 In the above example of AWS S3, we will now mention the relativePath in the YAML.
 
@@ -327,16 +302,15 @@ depot:
 #the folder 'transactions' can now be accessed by the depot name - 's3depot'             
 ```
 
-
-<blockquote style="color: black;">
+>
 Since the folder ‘transactions’ in the bucket has now been positioned as the depot, two things happen.
 First, you cannot **read** the object files online-transaction and offline-transaction using this depot. 
 Second, you can now **read** the files within the ‘transactions’ folder using the following UDLs:
  `dataos://s3depot:none/file1`
  `dataos://s3depot:none/file2`
-</blockquote>
+>
 
-<aside style="background-color:#FAF3DD; padding:15px; border-radius:5px;">
+<aside style=" padding:15px; border-radius:5px;">
 🗣️ For **writing** data to a source system, you cannot use the names ‘none’ or ‘system’ for the Collection. So the output of, say a flare job, **cannot** have the following address:
 `dataos://<depot name>:none/<dataset name>` or
 `dataos://<depot name>:system/<dataset name>`

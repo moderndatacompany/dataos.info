@@ -1,10 +1,10 @@
-# Properties
+# Characteristics
 
 While each Resource has its own specific attributes & usage, there are certain commonalities which are valid across the group. These are:
 
 ## Customizable
 
-Some Resources also act as the extension points of the operating system. It allows developers to extend & customize the behaviour of the system to meet their domain-specific requirements. The Each Resource has a pre-defined skeletal structure which allows it to interface between the user and the machine. This does not mean that Resources are rigid or immutable and do not allow for solving new use cases. Each Resource has customizations built into it. The fixed, core skeletal part of the structure of the Resource is there only to provide you with a consistent, predictable & seamless experience
+Some Resources also act as the extension points of the operating system. It allows developers to extend & customize the behaviour of the system to meet their domain-specific requirements. Each Resource has a pre-defined skeletal structure which allows it to interface between the user and the machine. This does not mean that Resources are rigid or immutable and do not allow for solving new use cases. Each Resource has customizations built into it. The fixed, core skeletal part of the structure of the Resource is there only to provide you with a consistent, predictable & seamless experience.
 
 Each Resource also has its own hooks & extension limits. For instance, Stacks are the programming paradigms of DataOS, allowing you to add new libraries & functionalities without affecting the existing ones. You can read about customizability of every Resource on their respective pages.
 
@@ -15,33 +15,34 @@ The system has been designed to be tightly integrated yet loosely coupled. Tight
 To illustrate the interoperability of the Resources, we have created a Secret with the name ‘s3-pos-rw’ to store the credentials for accessing an AWS S3 bucket.
 
 ```yaml
-version: v1
 name: s3-pos-rw
+version: v1
 type: secret
 secret:
   type: key-value-properties
   acl: rw
   data:
-    accesskeyid: 
-    secretkey: 
-    awsaccesskeyid: 
-    awssecretaccesskey: 
+    accesskeyid: {{access key id}}
+    secretkey: {{secret key}}
+    awsaccesskeyid: {{aws access key id}}
+    awssecretaccesskey: {{aws secret access key}}
 ```
 
 Now this Resource can be called upon while deploying other Resources. Let’s use the above secret to create a Depot over the same S3 bucket.
 
 ```yaml
+name: {{name}}
 version: v1
-name:
 type: depot
 tags:
+ - {{tag1}}
 layer: user
-depot:
+depot: 
   type: S3
-  description:
+  description: {{description}}
   spec:
-    bucket: 
-    relativePath:
+    bucket: {{bucket}}
+    relativePath: {{relative path}}
   external: true
 # using the 'Secret' created & stored previously
   dataosSecrets:   
@@ -61,21 +62,21 @@ You will learn about interoperability & composability of Resources with more ext
 
 Each Resource acts as an abstraction that hides the underlying complexities of the system. User simply needs to mention the desired state without going into implementation details & procedural protocols. For instance, to apply a masking policy over a specific dataset, you can declaratively fill up the sections marked in the YAML given below.
 
-![Data policy to mask personal identification information](./properties/microsoftteams-image_(110).png)
+![Data policy to mask personal identification information](./properties/data_policy_to_mask_personal_identification_information.png)
 
-Data policy to mask personal identification information
+<center><i>Data policy to mask personal identification information</i></center>
 
 ## Consistent Management
 
-The configuration files for all Resources are written in the form of declarative YAMLs as key-value pairs. The CRUD operations & deployments are performed using interfaces with consistent developer experience for all Resources. You can understand this point in detail by going through the section on [CRUD operations & config files](../resources.md#crud_operations).
+The configuration files for all Resources are written in the form of declarative YAMLs as key-value pairs. The CRUD operations & deployments are performed using interfaces with consistent developer experience for all Resources. You can understand this point in detail by going through the section on [CRUD operations & config files](../resources.md#crud-operations-on-dataos-resources).
 
 ### **Attributes of Resources**
 
 In the below YAML, you can see the identifiers which are common across all Resources.
 
 ```yaml
-version:  # Resource version
 name:     # name the Resource
+version:  # Resource version
 owner:    # id of the user creating the Resource
 type:     # type of Resource (Depot, Secret, Workflow, and so on)
 tags:     # provide tags in an array for easy discoverability & semantic enrichment
@@ -83,7 +84,7 @@ tags:     # provide tags in an array for easy discoverability & semantic enrichm
 	- tag2
 layer:    # user or system
 description: # short description for the Resource you are creating
-resource-type: 
+<resource-type>: 
 # this is where the Resource specific properties begin
 ```
 
@@ -95,7 +96,7 @@ The DataOS orchestrator, Poros, along with a set of automation tools, automates 
 
 ## Lifespan
 
-Different Resources are charatceterized by different life cycle. Fo example, a Workflow can be a single-time run job or a scheduled job which runs at a regular interval, while a Service can be a never-ending processing of streaming data. The lifespan of a Resource can extend beyond the duration of a single session or program execution. They are designed to persist across different instances of an application & session. They are stored as a ‘record of intent’ - once created, the underlying system will constantly work to ensure that the Resource exists and try to reconcile the current & desired states.
+Different Resources are characterized by different life cycle. For example, a Workflow can be a single-time run job or a scheduled job which runs at a regular interval, while a Service can be a never-ending processing of streaming data. The lifespan of a Resource can extend beyond the duration of a single session or program execution. They are designed to persist across different instances of an application & session. They are stored as a ‘record of intent’ - once created, the underlying system will constantly work to ensure that the Resource exists and try to reconcile the current & desired states.
 
 As an example, you can create a bucketing (masking) policy just once and keep using it throughout all applications, for all users, forever.
 
@@ -125,4 +126,4 @@ policy:
             precision : "quarter"
 ```
 
-Whenever you need to use the same policy over a column of any other dataset, simply apply the tag [`PHI.date`](http://PHI.date) using the Metis UI (data catalog). The system stores the policy, and keeps it as a ‘record of intent’. So irrespective of how many times you login & logout, or which application you are using to access the data, the record persists and the policy gets applied.
+Whenever you need to use the same policy over a column of any other dataset, simply apply the tag `PHI.date` using the Metis UI (data catalog). The system stores the policy, and keeps it as a ‘record of intent’. So irrespective of how many times you login & logout, or which application you are using to access the data, the record persists and the policy gets applied.
