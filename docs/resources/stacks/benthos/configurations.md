@@ -78,7 +78,7 @@ These types are hierarchical. For example, an `input` can have a list of child
 
 This is powerful but can potentially lead to large and cumbersome configuration files. This document outlines tooling provided by Benthos to help with writing and managing these more complex configuration files.
 
-### **Testing**
+## Testing
 
 For guidance on how to write and run unit tests for your configuration files, read this [guide.](./configurations/unit_testing.md)
 
@@ -160,13 +160,13 @@ processor_resources:
 
 We can select our chosen resource by changing which file we import, either running:
 
-```bash
+```shell
 benthos -r ./staging/request.yaml -c ./config.yaml
 ```
 
 Or:
 
-```bash
+```shell
 benthos -r ./production/request.yaml -c ./config.yaml
 ```
 
@@ -182,12 +182,12 @@ But hey, why don't you chill out? Benthos has a (currently experimental) alterna
 
 It's possible to have a running instance of Benthos reload configurations, including resource files imported with `-r`/`--resources`, automatically when the files are updated without needing to manually restart the service. This is done by specifying the `-w`/`--watcher` flag when running Benthos in normal mode or in streams mode:
 
-```bash
+```shell
 # Normal mode
 benthos -w -r ./production/request.yaml -c ./config.yaml
 ```
 
-```bash
+```shell
 # Streams mode
 benthos -w -r ./production/request.yaml streams ./stream_configs/*.yaml
 ```
@@ -216,7 +216,7 @@ In order to make this process easier, Benthos is able to generate usable configu
 
 If, for example, we wanted to generate a config with a websocket input, a Kafka output, and a `mapping` processor in the middle, we could do it with the following command:
 
-```bash
+```shell
 benthos create websocket/mapping/kafka
 ```
 
@@ -247,7 +247,7 @@ input:
 
 We can catch this error before attempting to run the config:
 
-```bash
+```shell
 $ benthos lint ./foo.yaml
 ./foo.yaml: line 3: field yourl not recognised
 ```
@@ -258,7 +258,7 @@ For more information, read the output from `benthos lint --help`.
 
 Echoing is where Benthos can print back your configuration *after* it has been parsed. It is done with the `echo` subcommand, which is able to show you a normalised version of your config, allowing you to see how it was interpreted:
 
-```bash
+```shell
 benthos -c ./your-config.yaml echo
 ```
 

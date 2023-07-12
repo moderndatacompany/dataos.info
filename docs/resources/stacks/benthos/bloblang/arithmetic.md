@@ -2,11 +2,11 @@
 
 Bloblang supports a range of comparison operators `!`, `>`, `>=`, `==`, `<`, `<=`, `&&`, `||` and mathematical operators `+`, `-`, `*`, `/`, `%`. How these operators behave is dependent on the type of values they're used with, and therefore it's worth fully understanding these behaviors if you intend to use them heavily in your mappings.
 
-## Mathematical[](https://www.benthos.dev/docs/guides/bloblang/arithmetic#mathematical)
+## Mathematical
 
 All mathematical operators (`+`, `-`, `*`, `/`, `%`) are valid against number values, and addition (`+`) is also supported when both the left and right-hand side arguments are strings. If a mathematical operator is used with an argument that is non-numeric (with the aforementioned string exception), then a recoverable mapping error will be thrown.
 
-### Number Degradation[](https://www.benthos.dev/docs/guides/bloblang/arithmetic#number-degradation)
+### **Number Degradation**
 
 In Bloblang, any number resulting from a method, function, or arithmetic is either a 64-bit signed integer or a 64-bit floating point value. Numbers from input documents can be any combination of size and be signed or unsigned.
 
@@ -14,22 +14,22 @@ When a mathematical operation is performed with two or more integer values, Blob
 
 In order to explicitly coerce numbers into integer types, you can use the `.ceil()`, `.floor()`, or `.round()` methods.
 
-## Comparison[](https://www.benthos.dev/docs/guides/bloblang/arithmetic#comparison)
+## Comparison
 
 The not (`!`) operator reverses the boolean value of the expression immediately following it and is valid to place before any query that yields a boolean value. If the following expression yields, a non-boolean value, then a recoverable mapping error will be thrown.
 
 If you wish to reverse the boolean result of a complex query, then simply place the query within brackets (`!(this.foo > this.bar)`).
 
-### Equality[](https://www.benthos.dev/docs/guides/bloblang/arithmetic#equality)
+### **Equality**
 
 The equality operators (`==` and `!=`) are valid to use against any value type. In order for arguments to be considered equal, they must match in both their basic type (`string`, `number`, `null`, `bool`, etc) as well as their value. If you wish to compare mismatched value types, then use coercion methods.
 
 Number arguments are considered equal if their value is the same when represented the same way, which means their underlying representations (integer, float, etc) do not need to match in order for them to be considered equal.
 
-### Numerical[](https://www.benthos.dev/docs/guides/bloblang/arithmetic#numerical)
+### **Numerical**
 
 Numerical comparisons (`>`, `>=`, `<`, `<=`) are valid to use against number values only. If a non-number value is used as an argument, then a recoverable mapping error will be thrown.
 
-### Boolean[](https://www.benthos.dev/docs/guides/bloblang/arithmetic#boolean)
+### **Boolean**
 
 Boolean comparison operators (`||`, `&&`) are valid to use against boolean values only (`true` or `false`). If a non-boolean value is used as an argument, then a recoverable mapping error will be thrown.

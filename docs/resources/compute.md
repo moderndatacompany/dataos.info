@@ -1,6 +1,16 @@
 # Compute
 
-Compute is a fundamental resource in the DataOS ecosystem that enables the allocation of processing power for data processing, querying and machine learning workloads. It facilitates the creation of node pools, which are groups of virtual machines (VMs) with similar configurations, and makes them available to DataOS as a compute resource, accessible through unique names within DataOS. By defining a Compute, the need for manually specifying individual VMs for provisioning is eliminated, streamlining resource management.
+Compute is a fundamental resource in the DataOS ecosystem that enables the allocation of processing power for data processing, querying and machine learning workloads. It facilitates the creation of node pools, which are groups of virtual machines (VMs) with similar configurations (CPU, RAM, Storage Capacity, Network Protocal, and Storage Drive Types), and makes them available to DataOS as a compute resource, accessible through unique names within DataOS. By defining a Compute, the need for manually specifying individual VMs for provisioning is eliminated, streamlining resource management. 
+
+As an example, a recommended minimum specification could be:
+
+<center>
+
+| CPU | RAM | Hard Disk | Type of Storage |
+| --- | --- | --- | --- |
+| 16 cores | 128 GB | 2 TB | Local Storage |
+
+</center>
 
 <center>
 
