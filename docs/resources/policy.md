@@ -1,86 +1,186 @@
 # Policy
 
-DataOS Policy is a rule defining what tags are associated with subjects, predicates, other tags, or paths associated with objects, and additional conditions on metadata to allow or deny access to DataOS resource/environment. This allows a very flexible approach to policy definition that complements the ever-changing set of subjects and objects in enterprises.
+Policy is a fundamental Resource in DataOS that defines a set of rules or guardrails governing the behavior of users, be it individuals or applications/services. Within DataOS, Policies are enforced using Attribute Based Access Control (ABAC) and define what predicates a user (a subject) can perform on a dataset, API Path, or a Resource (an object), thus defining the constraints of the relationship between the subject and object.
 
-With attribute-based access control(ABAC), DataOS makes policy decisions using the attributes of users, objects, and actions involved in the request. 
+In DataOS, policies are expressed as a distinct Resource in a declarative YAML format. This approach allows for the separation of policies from application code, promoting modularity, easy maintenance, and reducing the need for extensive redeployment. Additionally, DataOS distinguishes between the Policy Decision Point (PDP) and the Policy Enforcement Point (PEP). The PDP makes policy decisions based on predefined rules and attributes, while the PEP enforces these decisions, ensuring access control and compliance. This clear separation of concerns simplifies policy management, fostering scalability, extensibility, and maintainability in the DataOS ecosystem.
+
+[Understanding ABAC, PDP and PEP](./policy/understanding_abac_pdp_and_pep.md)
 
 ## Types of Policies
 
-There are two types of policies in DataOS- Access and Data policies, and both are managed through the primitive named “Policy.”
+DataOS offers two primary categories of policies: **Access Policy** and **Data Policy**. These policies play essential roles in governing user access, actions, and data management within the DataOS system.
 
 ### **Access Policy**
 
-Access policy is a security measure regulating individuals who can view, use, or access a restricted DataOS environment/resource.
+Access Policies serve as the initial layer of defense, overseeing user access and actions within the system. They establish a set of well-defined rules that determine whether a user, known as the subject, is authorized to perform a specific action, referred to as a predicate, on a given dataset, API path, or other resources, known as objects. These policies serve as regulatory mechanisms, effectively governing user interactions and ensuring that access to specific actions is either granted or denied. This decision is based on the evaluation of attributes associated with the subjects and objects involved in the access request.
 
-The Access policy type is implemented using an Attribute-Based Access Control paradigm. More specifically, we leverage the attribute tags of Subjects and the attribute tags or paths of Objects to evaluate a set of policies when determining if a specific Predicate (action) should be allowed or denied. For example, based on the Policy (given in the YAML below), a user with the tag `roles:id:testuser` can read secrets or specific Depots to connect to data.
-
-An access policy has three main components:
-
-![Access policy to allow read access for specific depot](./policy/access_policy.png)
-
-Access policy to allow read access for specific depot
-
-To learn more about creation of Access Policy, refer to this link: [Creating Access Policies](./policy/creating_access_policy.md)
+![Configuration of Access Policy](./policy/image2.png)
 
 ### **Data Policy**
 
-Data policies are a collection of statements that describe the rules controlling the integrity, security, quality, and use of data during its lifecycle and state change. You can create data policies to guide what data the user sees once they access a dataset.
+In contrast, Data Policy operates as a secondary layer of control, ensuring data integrity, security, quality, and appropriate usage throughout its lifecycle and state changes. It focuses on regulating the visibility and interaction with specific data once access has been granted. It involves the implementation of techniques such as data masking or filtering to obscure or restrict the visibility of sensitive or restricted data based on predefined rules or conditions.
 
-You can set up data policies in the following two ways:
+For example, when working with a dataset that includes a column labeled `credit_card_number`, it is crucial to protect the sensitive information it contains from unintended exposure. Employing data masking policies or applying data anonymization methods becomes essential to secure the contents of this specific column.
 
-- **Global** - covers all the columns based on tags. Will only support column masking
-- **Local** - covers columns of a specific dataset. Will support column masking and row-level filters
+![Data policy to mask personal identification information](./policy/image1.png)
 
-These policies selectively mask/filter data and provide multiple views for users and groups based on their access and visibility rules.
+Within Data Policy, we have two separate types one is the Data Filtering Policy, and another is the Data Masking Policy. 
 
-#### **Masking Policy**
+#### **Data Masking Policy**
 
-A data masking policy defines the logic that replaces (masks) the original sensitive data with fictitious data to maintain the privacy of sensitive data. For example, PII data can be shown with an appropriate mask, replaced with a "####" string, or with some hash function.
+Data masking policies are designed to protect sensitive information by replacing original data with fictitious yet structurally similar data. This ensures that the privacy of sensitive data is maintained while keeping the data useful for purposes such as testing and development. 
 
-The following examples show what the masked data might look like after the masking policy is applied.
+Data masking is particularly beneficial for Personally Identifiable Information (PII), where original data can be represented through masking, replacement with a placeholder (such as "####"), or obfuscation through a hash function.
 
-| Type | Original Value | Masked Value |
+
+
+Upon the application of a data masking policy, the original data is transformed, as illustrated in the table below:
+
+| Data Category | Original Value | Masked Value |
 | --- | --- | --- |
-| Email ID | "john.smith@gmail.com" | "bkfgohrnrtseqq85@bkgiplpsrhsll16.com" |
-| SSN | 987654321 | 867-92-3415 |
-| Credit card number | 8671 9211 3415 4546 | #### #### #### #### |
+| Email ID | john.smith\@gmail.com | bkfgohrnrtseqq85\@bkgiplpsrhsll16.com |
+| Social Security Number (SSN) | 987654321 | 867-92-3415 |
+| Credit Card Number | 8671 9211 3415 4546 | #### #### #### #### |
 
-**Masking Strategies**
+Such a policy ensures the protection of sensitive details, including but not limited to names, titles, addresses, etc.
 
-Masking strategies can be defined in the YAML files and applied. These strategies may be simple or complex depending on the information security needs of the organization. 
+You can apply the Mask policy, say to mask the column with ‘customer name’ in it, directly from the Metis UI via policy tags or via DataOS CLI. 
 
-To learn more, [Creating Data Masking Policies](./policy/creating_data_policy_masking.md).
+#### **Data Filtering Policy**
 
-Here is a list of operators/rules through which you can define masking definitions.
+Data filtering policies establish parameters for determining which data elements should be accessible to various users or systems. Proper implementation of data filtering policies ensures that only authorized individuals can access specific data segments.
 
-Here is an example of a data policy that masks the personal information in a dataset. A data policy has the following main components:
+## Configuration of Policy
 
-![Data policy to mask personal identification information](./policy/data_policy.png)
+In DataOS, both access and data policies are configured via the singular Policy resource. However, the two different policies Access and Data Policy has its own YAML syntax.The image represents general configuration for the Policy resource.
 
-Data policy to mask personal identification information
+### **Configuring Access Policy**
 
-#### **Filtering Policy**
 
-The filtering policy constrains data visibility for end users. You can define a policy to remove rows from the query's result set based on comparison operators set on a column, such as some users cannot see ' Florida' region data. Filter policy can be defined in the YAML file and applied at the time of the query. To learn more, click [Creating Data Filtering Policies](./policy/creating_data_policy_masking.md).
 
-## Policy Execution
+The table below summarizes varioues attributes within the access policy YAML.
 
-Whenever a user tries to perform a predicate(action) on a particular object from a service or a system, that particular service can leverage the authorization service to authorize this action and enforce the authorization decisions. DataOS implements unique Policy Decision Point(PDP) and Policy Execution Point(PEP) services based on tags associated with Subjects and Objects. 
+| Field | Data Type | Default Value | Possible Value | Requirement |
+| --- | --- | --- | --- | --- |
+| policy | object | none | none | mandatory |
+| access | object | none | none | mandatory |
+| subjects | object | none | none | mandatory |
+| tags | list of strings | none | a valid DataOS tag | mandatory |
+| predicates | list of strings | none | get, put, post, delete, read, write, update, options | mandatory |
+| objects | object | none | none | mandatory |
+| paths | list of strings | none | api paths, udl paths | mandatory |
+| allow | boolean | false | true/false | optional |
 
-To learn more, click on the link below.
+### **Configuring Data Policy**
 
-[PDP and PEP](./policy/pdp_and_pep.md)
 
-## Rules for AND/OR Logic
+The table below summarizes the various attributes within a data policy YAML.
 
-DataOS establishes policies to define which combinations of **user/ subject/ environmental** attributes are needed to perform an **action** with an **object/resource**. You can write such policies to grant and deny access.
+| Field | Data Type | Default Value | Possible Value | Requirement |
+| --- | --- | --- | --- | --- |
+| policy | object | none | none | mandatory |
+| data | object | none | none | mandatory |
+| depot | string | none | any depot name | optional |
+| collection | string | none | any collection name | optional |
+| dataset | string | none | any dataset name | optional |
+| priority | number | none | 0-100 | mandatory |
+| selector | object | none | none | mandatory |
+| user |  |  |  |  |
+| column | boolean | none | true/false | mandatory |
+| type |  |  |  |  |
 
-The YAML tags field in both subjects and objects is an array of string arrays. The following rules will help you to define required expressions.
+Though the Policy resource is singular, each policy-type has a different underlying implementation. Hence, the Policy-specific Grammar for each type varies which are elucidated on this link.
 
-[Rules for AND/OR Logic](./policy/rules_for_and_or_logic.md)
+[Policy Section-specific Grammar](./policy/policy_section_specific_grammar.md)
 
-While creating a policy in the YAML file, provide various configuration properties, set permissions, and then create that “Policy” object using the `apply` command in CLI.
+## Creating a Policy
 
-You can also refer to the use case for a step-by-step guide demonstrating the **policy creation process.**
+### **YAML Configuration File**
 
-[Policy Implementation Use Case](./policy/policy_implementation_use_case.md)
+#### **Resource Section Configuration**
+
+To create a Policy in DataOS, the initial step involves configuring the Resource Section in a YAML file. This section defines various properties of the Policy resource. The following is an example YAML configuration for the Resource Section:
+
+```yaml
+name: {{my-policy}}
+version: v1 
+type: policy 
+tags: 
+  - {{dataos:type:resource}}
+  - {{dataos:type:cluster-resource}}
+description: {{This is a sample policy YAML configuration}} 
+owner: {{iamgroot}}
+layer: {{user}}
+```
+
+The `layer` field can have value either user/system in case of Policy. 
+
+For policies that govern authorization for system level resources such as API Paths, layer is system, while for user layer authorization such as access to UDL addresses it is user
+
+Additionally, the Resource section offers various configurable fields, which can be explored further on the **RESOURCE SECTION** page.
+
+#### **Policy-specific Section Configuration**
+
+The Policy Section focuses on the configurations specific to the Policy resource. DataOS supports two distinct types of Policies: **Access Policy** and **Data Policy**. Each Policy Resource type has its own YAML syntax.
+
+##### **Access Policy Syntax**
+
+Access policies are defined using a subject-predicate-object triad. The YAML syntax for an Access Policy is as follows:
+
+```yaml
+policy:
+  access:
+    subjects:
+        {}
+    predicates:
+        {}
+    objects:
+        {}
+    allow: true
+```
+
+Here, the `subject` represents the user, the `object` denotes the target (such as an API path or resource) that the user interacts with, and the `predicate` represents the action performed. The `allow` field determines whether the policy grants or restricts access for the user to perform the specified action on the designated object. Refer to the [resource](./policy/policy_section_specific_grammar.md) for more details on configuring subjects, predicates, and objects.
+
+##### **Data Policy Syntax**
+
+```yaml
+policy:
+  data:
+    dataset: sample_driver
+    collection: data_uber
+    depot: icebase
+    priority: 90
+    selector:
+      user:
+        {}
+      column:
+        {}
+    type: {filter/mask}
+    {filter/mask}:
+```
+
+For detailed information on configuring the YAML file for a Data Policy, refer to the [resource](./policy/policy_section_specific_grammar.md).
+
+### **Applying the YAML File**
+
+After creating the YAML configuration file for the Policy resource, it's time to apply it to instantiate the resource in the DataOS environment. To apply the Policy YAML file, utilize the `apply` command.
+
+```shell
+dataos-ctl apply -f <yaml-file-path>
+```
+
+## Policy Implementation Mechanism
+
+In the DataOS ecosystem, the **Heimdall** governance engine operates as the Policy Decision Point (PDP) for Access Policies, while the **Minerva Gateway** serves as the PDP for Data Policies. Both these elements jointly supervise the enforcement of policies across a range of Policy Enforcement Points (PEP), distributed throughout the DataOS ecosystem. 
+
+[Implementation of Data and Access Policy](./policy/implementation_of_data_and_access_policy.md)
+
+## Policy Configuration Templates
+
+[Policy Configuration Templates](./policy/policy_configuration_templates.md)
+
+## Case Scenarios
+
+Refer to the Policy Resource Case Scenarios documentation for a comprehensive understanding of how Policy resources can be utilized. It provides detailed examples and practical implementations to help data developers leverage the Policy resource efficiently.
+
+[Case Scenarios](./policy/case_scenarios.md)

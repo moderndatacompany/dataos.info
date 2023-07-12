@@ -8,7 +8,7 @@ It is assumed here that your Benthos instance is performing only minor processin
 
 Firstly, before venturing into Benthos configurations, you should take an in-depth look at your sources and sinks. Benthos is generally much simpler architecturally than the inputs and outputs it supports. Spend some time understanding how to squeeze the most out of these services and it will make it easier (or unnecessary) to tune your Benthos configuration.
 
-### Benthos Reads Too Slowly
+### **Benthos Reads Too Slowly**
 
 If Benthos isn't reading fast enough from your source, it might not necessarily be due to a slow consumer. If the sink is slow, this can cause back pressure that throttles the amount Benthos can read. Try consuming a test feed with the output replaced with `drop`. If you notice that the input consumption suddenly speeds up, then the issue is likely with the output, in which case, try the next section.
 
@@ -41,7 +41,7 @@ Read the broker documentation for more tips on simplifying broker configs.
 
 If your source doesn't support multiple parallel consumers, then, unfortunately, your options are more limited. A logical next step might be to look at your network/disk configuration to see if that's a potential cause of contention.
 
-### Benthos Writes Too Slowly
+### **Benthos Writes Too Slowly**
 
 If you have an output sink that regularly places back pressure on your source, there are a few solutions depending on the details of the issue.
 
@@ -49,15 +49,15 @@ Firstly, you should check the config parameters of your output sink. There are o
 
 If the config parameters for an output sink aren't enough, then you can try the following:
 
-### Increase in flight messages
+**Increase in flight messages**
 
 Most outputs have a field `max_in_flight` that allows you to specify how many messages can be in flight at the same time. Increasing this value can improve throughput significantly.
 
-### Send messages in batches
+**Send messages in batches**
 
 Most outputs will send data quicker when messages are batched, this is often done automatically in the background. However, for a few outputs, your batches need to be configured. Read the batching documentation for more guidance on how to tune message batches within Benthos.
 
-### Level out input spikes with a buffer
+**Level out input spikes with a buffer**
 
 There are many reasons why an input source might have spikes or inconsistent throughput rates. It is possible that your output is capable of keeping up with the long-term average flow of data but fails to keep up when an intermittent spike occurs.
 

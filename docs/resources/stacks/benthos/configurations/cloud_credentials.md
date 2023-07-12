@@ -16,7 +16,7 @@ credentials:
 
 This section contains many fields and it isn't immediately clear which of them are compulsory and which aren't. This document aims to make it clear what each field is responsible for and how it might be used.
 
-### None of these fields are compulsory
+### **None of these fields are compulsory**
 
 The first thing to make clear is that *all* of these fields are optional. When all fields are left blank, Benthos will attempt to load credentials from a shared credentials file (`~/.aws/credentials`). The profile loaded will be the `default` unless the `AWS_PROFILE` environment variable is set.
 
@@ -24,7 +24,7 @@ The first thing to make clear is that *all* of these fields are optional. When
 
 By explicitly setting the credentials you are using at the component level, it's possible to connect to components using different accounts within the same Benthos process.
 
-### Selecting a Profile
+### **Selecting a Profile**
 
 If you are using your shared credentials file but wish to explicitly select a profile set the `profile` field:
 
@@ -33,7 +33,7 @@ credentials:
   profile: foo
 ```
 
-### Manual
+### **Manual**
 
 If you are using long-term credentials for your account, you only need to set the fields `id` and `secret`:
 

@@ -1,3 +1,4 @@
+# Curl Utility
 
 Curl is a command-line utility that transfers data from or to a server that is designed to work without user interaction. Before installing a Curl utility, check if it is already installed. If Curl is already installed on your system, then you can skip the rest of the steps.
 
