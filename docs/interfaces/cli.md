@@ -36,6 +36,8 @@ Follow the steps enumerated below to install the Command Line Interface. Check t
      | `Windows` | 32bit | 386|
      | | 64bit | amd64 (works for both intel & amd chips)|
   
+<aside>🗣️ Replace <b>{{placeholder}}</b> text in various commands with appropriate values before running the command.</aside>
+
 ### **Installation on MacOS**
 
 1. Export the environment variable PRIME_APIKEY to pass it to the next commands( replace <span style="color:red"> {{DataOS® prime apikey}} </span> with the API key to connect with the prime context).
@@ -56,8 +58,9 @@ Follow the steps enumerated below to install the Command Line Interface. Check t
 
     # 2.8 is the CLI version getting installed
     # darwin-amd64 is the processor
-    # Contact the admin(DataOS operator in your organisation) to get the correct version of the CLI
+    
     ```
+    <aside>🗣️ Contact the admin(DataOS operator in your organization) to get the correct and latest version of the CLI</aside>
 
 3. Download the DataOS CLI binary using the below command (replace the <span style="color:red"> {{ARCH}} </span> value of the processor and the <span style="color:red"> {{CLI_VERSION}} </span>to be installed):
 
@@ -69,7 +72,7 @@ Follow the steps enumerated below to install the Command Line Interface. Check t
     
     #curl --silent --output dataos-ctl-darwin-amd64.tar.gz --location --request GET "https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-darwin-amd64.tar.gz&dir=cli-apps-2.8&apikey=$PRIME_APIKEY"
 
-    # Contact the admin(DataOS operator in your organisation) to get the latest version of the CLI
+    
     ```
 
 4. Validate that the zip has not been tampered with (*this is an optional step*).
@@ -160,8 +163,7 @@ You have successfully installed the CLI, now the next step is to [initialize](#i
      ```
      These messages indicate that the correct executable file has not been downloaded by the ```curl``` command
      </details>
-     
-    </div><br>
+     </div><br>
 
 
 ### **Installation on Linux**
@@ -191,16 +193,15 @@ You have successfully installed the CLI, now the next step is to [initialize](#i
     ```bash
     curl --silent --output dataos-ctl-linux-{{ARCH}}.tar.gz.sha256sum --location --request GET "https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-linux-{{ARCH}}.tar.gz.sha256sum&dir=cli-apps-{{CLI_VERSION}}&apikey=$PRIME_APIKEY"
 
-    #2.5 is the CLI version getting installed
-    #Contact the admin(operator in your organisation) to get the latest version
-    #example: curl --silent --output dataos-ctl-linux-amd64.tar.gz.sha256sum --location --request GET "https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-linux-amd64.tar.gz.sha256sum&dir=cli-apps-2.5&apikey=$PRIME_APIKEY"
+    #example: For CLI version 2.5 getting installed
+    # curl --silent --output dataos-ctl-linux-amd64.tar.gz.sha256sum --location --request GET "https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-linux-amd64.tar.gz.sha256sum&dir=cli-apps-2.5&apikey=$PRIME_APIKEY"
     ```
 
-4. Download the CLI binary file using the following command.
+4. Download the CLI binary file using the following command (replace the<span style="color:red"> {{ARCH}}</span> & <span style="color:red">{{CLI_version}} </span>before executing the command).
 
     ```bash
     curl --silent --output dataos-ctl-linux-{{ARCH}}.tar.gz --location --request GET "https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-linux-{{ARCH}}.tar.gz&dir=cli-apps-{{CLI_version}}&apikey=$PRIME_APIKEY"
-    #replace the {{ARCH}} & {{CLI_version}} before executing the command.
+    
     ```
 
 5. Validate that the zip has not been tampered (optional step).
@@ -275,21 +276,18 @@ You have successfully installed the CLI, now the next step is to [initialize](#i
    ```
     - If the required value is **0** or **x86,** then it's a 32-bit architecture; in that case, use the **{{ARCH}}** value as **386**.
     - If the required value is **6, 9,** or **x64**, then it's a 64-bit architecture; in that case, use the **{{ARCH}}** value as **amd64**.
-2. Download the checksum .shasum file using the following link in a browser. Replace the <span style="color:red">{{ARCH}}</span>, <span style="color:red">{{CLI_VERSION}}</span>, and <span style="color:red">{{PRIME_APIKEY}}</span> with respective values.
+2. Download the checksum .shasum file using the following link in a browser (replace the <span style="color:red">{{ARCH}}</span>, <span style="color:red">{{CLI_VERSION}}</span>, and <span style="color:red">{{PRIME_APIKEY}}</span> with respective values).
    ```
    https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-windows-{{ARCH}}.tar.gz.sha256sum&dir=cli-apps-{{CLI_VERSION}}&apikey={{PRIME_APIKEY}}
-   # Replace the {{ARCH}}, {{CLI_version}}, and {{PRIME_APIKEY}} in the link
    # Suppose, amd64 is the processor
    # 2.8 is the CLI version getting installed
    # Prime Apikey is abcdefgh12345678987654321
-   # Contact the admin(operator in your organisation) to get the latest version of the CLI
    # Example: https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-windows-amd64.tar.gz.sha256sum&dir=cli-apps-2.8&apikey=abcdefgh12345678987654321
    ```
+   <aside>🗣️ Contact the admin(operator in your organization) to get the latest version of the CLI</aside>
 3. Download the DataOS CLI .tar file using the following link in the browser (replace the <span style="color:red">{{ARCH}}</span>, <span style="color:red">{{CLI_VERSION}}</span>, and <span style="color:red">{{PRIME_APIKEY}}</span> with respective values).
    ```
    https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-windows-amd64.tar.gz&dir=cli-apps-{{CLI_VERSION}}&apikey={{PRIME_APIKEY}}
-
-   # Replace the {{ARCH}}, {{CLI_version}}, and {{PRIME_APIKEY}} before executing the command
    # Example: https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-windows-amd64.tar.gz&dir=cli-apps-2.8&apikey=abcdefgh12345678987654321
    ```  
 4. Validate that the .tar file has not been tampered with(optional step).
@@ -302,10 +300,9 @@ You have successfully installed the CLI, now the next step is to [initialize](#i
    ```
 5. The next step is to unzip the downloaded .tar file, to extract it, you will need an archiver utility like Winrar. 
 
-6. Open Winrar and highlight the zipped .tar file (it should appear with other downloaded files in the lower part of the page), and click the **“Extract to”** button on the top. Place it in your chosen directory.
-Download the CLI binary by typing the given links in your web browser (according to the chip type AMD/Intel 64bit).
+6. Open Winrar and highlight the zipped .tar file (it should appear with other downloaded files in the lower part of the page), and click the **“Extract to”** button on the top. Place it in your chosen directory. Download the CLI binary by typing the given links in your web browser (according to the chip type AMD/Intel 64bit).
 
-   <aside>🗣️ You will always use this directory to run DataOS. To open the DataOS from anywhere in the system, place the extracted file in a directory that is in your PATH. To add the directory in PATH, refer to [Setting the Path and Variables in Windows](cli/windows_path_setting.md).</aside>
+   You will always use this directory to run DataOS. To open the DataOS from anywhere in the system, place the extracted file in a directory that is in your PATH. To add the directory in PATH, refer to [Setting the Path and Variables in Windows](cli/windows_path_setting.md).
 
 You have successfully installed the CLI, now the next step is to [initialize](#initialize) it. 
 
@@ -347,7 +344,7 @@ INFO[0408] Are you operating the DataOS®? (Y,n)
 INFO[0452] 🚀 initialization...complete
 ```
 
-<aside>If you are the operator/admin for your enterprise then the installation steps for you, after the last step, will change. These are covered in the Operator Document for DataOS.</aside>
+<aside>🗣️ If you are the operator/admin for your enterprise then the installation steps for you, after the last step, will change. These are covered in the Operator Document for DataOS.</aside>
 
 ## Log in
 
@@ -385,14 +382,15 @@ dataos-ctl <command> <subcommand> <flags parameters>
 ```
 ### **DataOS CLI Commands**
 
-<aside>
-🗣️ You can generate a list of all available commands with -h or —help
-`dataos-ctl -h`, or you can also use
-`dataos-ctl --help`
+You can generate a list of all available commands with -h or —help
+```bash
+dataos-ctl -h
+dataos-ctl --help
+```
 To get help for a specific command, use:
-`dataos-ctl <name of command> --help`
+```bashdataos-ctl <name of command> --help
+```
 
-</aside>
 
 A command can have more sub-commands and flags under it. To get details on the subcommand, you can again use the CLI help command.
 
@@ -402,20 +400,19 @@ dataos-ctl <command-name> <subcommand-name> -h
 
 A subcommand, in turn, might have more commands in its hierarchy or might only contain flags.
 
-In the example below, we have used the `get` command, followed by the flag -t. This flag must be followed by the name of the ‘type string’ (workflow, policy, depot, etc). 
+In the example below, we have used the `get` command, followed by the flag -t. This flag must be followed by the name of the ‘type string’ (workflow, policy, depot, etc). The command below will give us the details of all the created depots (remove -a to list only the depots where you are the owner).
+
 
 ```bash
 dataos-ctl get -t depot -a 
-# This will give us the details of all the created depots
-# If you don't use -a, it will list only the depots where you are the owner
+
 ```
 
-The string type ‘workflow’, being a runnable Resource of DataOS, must always be followed by the flag `-w <name of the workspace>`
+The string type ‘workflow’, being a runnable Resource of DataOS, must always be followed by the flag `-w <name of the workspace>`. The following command will list all the workflows running in the public workspace (remove -a to list only the workflows you are working on).
 
 ```bash
 dataos-ctl get -t workflow -w public -a
-# This command will list all the workflows running in the public workspace
-# If you don't use the flag -a, it will list only the workflows you are working on
+
 ```
 
 Other DataOS Resources for which a workspace must always be defined are Secret, Service, Cluster, and Database (these are classified as **Workspace-level Resources**).
@@ -437,4 +434,3 @@ To learn more, refer to [CLI Command Reference](cli/command_reference.md). The r
 - [Read on Curl utility](cli/read_on_curl_utility.md)
 
 - [Setting the Path and Variables in Windows](cli/windows_path_setting.md)
->>>>>>> 2000bfd0d60ad1aabb879bfb7388b5601367c579
