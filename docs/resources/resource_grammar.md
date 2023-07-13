@@ -2,7 +2,23 @@
 
 Following attributes are declared for every instance of a Resource that is deployed in a DataOS context. Some of these attributes/fields need to mandatorily declared, while others are optional.
 
-## Resource Section Configuration Fields
+## Resource Section Configuration Syntax
+
+```yaml
+name: {{myfirstresource}}
+version: v1
+type: {{resource-type}}
+tags:
+  - {{example-resource}}
+  - {{dataos:workspace:curriculum}}
+description: {{common attributes applicable to all dataos resources}}
+owner: {{iamgroot}}
+layer: {{user}}
+<resource-type>:
+```
+<center><i>Resource Section YAML configuration attributes/fields</i></center>
+
+## Configuration Attributes/Fields
 
 ### **`name`**
 
