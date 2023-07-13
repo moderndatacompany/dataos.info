@@ -16,7 +16,7 @@ Lens is a consistent modeling layer capable of accessing and modeling data from 
 
 Lens can be built on all sources that Depots support. Lens lets you connect to and access data from managed and unmanaged object storage like CSV, parquet, Amazon S3, Azure Blob Storage, streaming sources like Pulsar, and relational and non-relational databases like PostgreSQL, MySQL, BigQuery, etc.
 
-## Launching Lens
+## Lens UI
 On opening the Lens app, you can view all the lenses created and available to consume.
 
 ![Lens Home Page](lens/lens_homepage.png)
@@ -31,7 +31,7 @@ Clicking on the specific lens will open the details where entities and their sch
 
 ## Lens Utilities
 
-Lens Utilitie offer additional functionality and tools to enhance the Lens experience, providing support for various operational and analytical use cases.
+Lens Utilities offer additional functionality and tools to enhance the Lens experience, providing support for various operational and analytical use cases.
 
 ### **Lens Explorer**
 
