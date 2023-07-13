@@ -1,5 +1,9 @@
-
-  [a](./glossary.md#a) &nbsp;   [b](./glossary.md#b) &nbsp;    [c](./glossary.md#c)  &nbsp;     [d](./glossary.md#d) &nbsp;    [e](./glossary.md#e) &nbsp;   [f](./glossary.md#f) &nbsp;    [g](./glossary.md#g)  &nbsp;   [h](./glossary.md#h) &nbsp;    [i](./glossary.md#i) &nbsp;     [j](./glossary.md#j) &nbsp;    [k](./glossary.md#k) &nbsp;     [l](./glossary.md#l) &nbsp;     [m](./glossary.md#m) &nbsp;     [n](./glossary.md#n) &nbsp;    [o](./glossary.md#o) &nbsp;    [p](./glossary.md#p) &nbsp;     [q](./glossary.md#q) &nbsp;     [r](./glossary.md#r) &nbsp;     [s](./glossary.md#s) &nbsp;    [t](./glossary.md#t) &nbsp;     [u](./glossary.md#u) &nbsp;    [v](./glossary.md#v) &nbsp;     [w](./glossary.md#w) &nbsp;     [x](./glossary.md#x) &nbsp;     [y](./glossary.md#y) &nbsp;     [z](./glossary.md#z) 
+---
+hide:
+  - navigation
+#   - toc
+---
+  [a](./glossary.md#a) &nbsp;&nbsp;   [b](./glossary.md#b) &nbsp;&nbsp;    [c](./glossary.md#c)  &nbsp;&nbsp;     [d](./glossary.md#d) &nbsp;&nbsp;    [e](./glossary.md#e) &nbsp;&nbsp;   [f](./glossary.md#f) &nbsp;&nbsp;    [g](./glossary.md#g)  &nbsp;&nbsp;   [h](./glossary.md#h) &nbsp;&nbsp;    [i](./glossary.md#i) &nbsp;&nbsp;     [j](./glossary.md#j) &nbsp;&nbsp;    [k](./glossary.md#k) &nbsp;&nbsp;     [l](./glossary.md#l) &nbsp;&nbsp;     [m](./glossary.md#m) &nbsp;&nbsp;     [n](./glossary.md#n) &nbsp;&nbsp;    [o](./glossary.md#o) &nbsp;&nbsp;    [p](./glossary.md#p) &nbsp;&nbsp;     [q](./glossary.md#q) &nbsp;&nbsp;     [r](./glossary.md#r) &nbsp;&nbsp;     [s](./glossary.md#s) &nbsp;&nbsp;    [t](./glossary.md#t) &nbsp;&nbsp;     [u](./glossary.md#u) &nbsp;&nbsp;    [v](./glossary.md#v) &nbsp;&nbsp;     [w](./glossary.md#w) &nbsp;&nbsp;     [x](./glossary.md#x) &nbsp;&nbsp;     [y](./glossary.md#y) &nbsp;&nbsp;     [z](./glossary.md#z) 
 ---
 
 # a <a id="a"></a>

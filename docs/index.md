@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+#   - toc
+---
 
 Adopting an Operating System for data is not just another tooling shift or migration activity. While it is almost as simple as the former and not as challenging as the latter, the context of such a shift is entirely different. Enabling an OS for data is essentially a pivot in your data philosophy. Everything from how you approach and ingest data to how you understand and operationalise it undergoes a major transformation. But it is truly an essential future-proofing kit- a cushion of flexibility to bear the storm of the rapidly changing technical landscape of data.
 ## Your Familiar Operating System
@@ -12,7 +17,7 @@ Operating systems have been at the heart of enabling masses to access and levera
 Sadly and a bit surprisingly, the data space is still in a phase where data engineers are required to heavily focus on infra maintenance. Their hands are always full with open tickets, most of them requesting a plumbing job. As it is, truly skilled experts in the data space are rare, and most of them are sucked into plumbing the data ecosystem instead of producing data applications that directly impact their team’s ROI.
 ## An Operating System for Data
 
-<aside>
+<aside class="callout">
 💡 DataOS is built with the same philosophy as an operating system.
 </aside>
 <br/>

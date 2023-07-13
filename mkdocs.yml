@@ -36,7 +36,6 @@ theme:
             name: Switch to light mode
 plugins:
     - search
-    - mermaid2
     # - mkdocs-versioning:
     #     version: v0.2
 extra:
@@ -55,11 +54,7 @@ extra_css:
 extra_javascript:
     - https://unpkg.com/mermaid@8.6.4/dist/mermaid.js
 markdown_extensions:
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:mermaid2.fence_mermaid
+  - pymdownx.superfences
   - pymdownx.highlight
   - pymdownx.smartsymbols
   - pymdownx.inlinehilite
