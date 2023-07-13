@@ -2,7 +2,7 @@
 
 This page has information on features of YAML which will be useful while writing the configuration files for DataOS Resources.
 
-1. Parse multiple entities and resource-instances in a single YAML file.
+1. Declare multiple entities and resource-instances in a single YAML file.
 To do this, use three dashes `---` to separate the two entities. For example, we can create a Depot while using the reference of a Secret in the same config file.
     
     ```yaml
