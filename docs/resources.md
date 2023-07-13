@@ -17,7 +17,7 @@ It is essential to note here that, as a data developer, you should think & plan 
 
 Each DataOS Resource has been built for a specific purpose, for instance, Workflow has been built to run batch jobs, while Depot has been built to provide JDBC/ODBC connections to various data sources. The Resources are interoperable and can be composed together to implement various architectural designs for the data infrastructure of choice.
 
-Whether it is Lakehouse Architecture, Data Mesh, Data-first Stack or as an operational layer providing a unified experience on top of an existing data architecture - Resources confer the data operating system with modularization that allows it to be used for any of these use cases. The page on [characteristics](./resources/characteristics.md) describes the common characteristics enveloped within each DataOS Resource.
+Whether it is Lakehouse Architecture, Data Mesh, Data-first Stack or as an operational layer providing a unified experience on top of an existing data architecture - Resources confer the data operating system with modularization that allows it to be used for any of these use cases. The page on [Traits of DataOS Resources](./resources/characteristics.md) describes the common properties enveloped within each DataOS Resource.
 
 ## Configuration of Resources
 
@@ -41,7 +41,7 @@ The configuration files are *strongly-typed*, and the system flags an error when
 | [`description`](./resources/resource_grammar.md#description) | string | none | optional |
 | [`owner`](./resources/resource_grammar.md#owner) | string | id of the user who deploys the Resource | optional |
 | [`layer`](./resources/resource_grammar.md#layer) | string | user | optional |
-| [`<resource-type>`](./resources/resource_grammar.md#resource-type) | string | none | mandatory |
+| [`<resource-type>`](./resources/resource_grammar.md#resource-type) | mapping | none | mandatory |
 
 Each Resource-type has a different evolutionary journey and usage. Hence, the values for fields, like `version` and `type`, are dependent on the Resource-type. The [Resource Grammar](./resources/resource_grammar.md) elucidates all fields and possible values which can be assigned for each of the key-value pair.
 
@@ -135,7 +135,7 @@ Create a Workspace for your team or your personal work. Always run the jobs/serv
 
 </aside>
 
-## YAML Configuration File
+## Features of a YAML Configuration File
 
 Configuration files for all Resources are written in YAML form. It’s necessary for the user to get acquainted with the features and capabilities of YAML to effectively work with the operating system. For example, you can use environment variable references in the config file to set values that need to be configurable during deployment.
 
