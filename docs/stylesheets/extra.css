@@ -232,7 +232,9 @@ input {
     --md-shadow-z1: 0 0.2rem 0.5rem #0000000d, 0 0 0.05rem #0000001a;
     --md-shadow-z2: 0 0.2rem 0.5rem #0000001a, 0 0 0.05rem #00000040;
     --md-shadow-z3: 0 0.2rem 0.5rem #0003, 0 0 0.05rem #00000059;
-    --md-aside-bg-color: #FFE5CC;
+    --md-aside-bg-color: #DDEDEA;
+    --md-blockquote-bg-color: #E9E5E3;
+    --md-callout-bg-color: #FBF3DB;
 }
 
 [data-md-color-scheme=slate] {
@@ -275,7 +277,9 @@ input {
     --md-shadow-z1: 0 0.2rem 0.5rem #0003, 0 0 0.05rem #0000001a;
     --md-shadow-z2: 0 0.2rem 0.5rem #0000004d, 0 0 0.05rem #00000040;
     --md-shadow-z3: 0 0.2rem 0.5rem #0006, 0 0 0.05rem #00000059;
-    --md-aside-bg-color: #934800;
+    --md-aside-bg-color: #354C4B;
+    --md-blockquote-bg-color: #434040;
+    --md-callout-bg-color: #59563B;
 }
 
 .md-icon svg {
@@ -304,8 +308,22 @@ input {
     font-family: var(--md-text-font-family)
 }
 
-aside {
+aside.best-practice {
     background-color: var(--md-aside-bg-color) !important;
+    padding:16px; border-radius:8px;
+}
+blockquote {
+    background-color: var(--md-blockquote-bg-color) !important;
+    margin: 16px 0;
+    padding:8px 0; 
+}
+aside.callout {
+    background-color: var(--md-callout-bg-color) !important;
+    padding:16px; border-radius:8px;
+}
+
+aside.best-practice code {
+    background: unset !important;
 }
 
 code,
@@ -1821,7 +1839,7 @@ html .md-footer-meta.md-typeset a:hover {
 }
 
 [dir=ltr] .md-header__title {
-    margin-left: 1rem
+    margin-left: 0;
 }
 
 [dir=rtl] .md-header__title {
@@ -6605,6 +6623,7 @@ html .md-typeset .footnote-ref {
 .md-typeset .grid>.card:last-child a {
     display: none;
 }
+
 /* last card end */
 
 .md-typeset .grid>*,
@@ -6675,4 +6694,8 @@ html .md-typeset .footnote-ref {
         margin-left: 0;
         margin-right: .8rem
     }
+}
+
+nav.md-footer__inner {
+    display: none !important;
 }
