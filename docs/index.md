@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+#   - toc
+---
 
 Adopting an Operating System for data is not just another tooling shift or migration activity. While it is almost as simple as the former and not as challenging as the latter, the context of such a shift is entirely different. Enabling an OS for data is essentially a pivot in your data philosophy. Everything from how you approach and ingest data to how you understand and operationalise it undergoes a major transformation. But it is truly an essential future-proofing kit- a cushion of flexibility to bear the storm of the rapidly changing technical landscape of data.
 ## Your Familiar Operating System
