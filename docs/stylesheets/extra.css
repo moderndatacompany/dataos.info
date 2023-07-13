@@ -1821,7 +1821,7 @@ html .md-footer-meta.md-typeset a:hover {
 }
 
 [dir=ltr] .md-header__title {
-    margin-left: 1rem
+    margin-left: 0;
 }
 
 [dir=rtl] .md-header__title {
@@ -6605,6 +6605,7 @@ html .md-typeset .footnote-ref {
 .md-typeset .grid>.card:last-child a {
     display: none;
 }
+
 /* last card end */
 
 .md-typeset .grid>*,
@@ -6675,4 +6676,8 @@ html .md-typeset .footnote-ref {
         margin-left: 0;
         margin-right: .8rem
     }
+}
+
+nav.md-footer__inner {
+    display: none !important;
 }
