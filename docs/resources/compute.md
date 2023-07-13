@@ -1,40 +1,53 @@
 # Compute
 
-Compute is a fundamental resource in the DataOS ecosystem that enables the allocation of processing power for data processing, querying and machine learning workloads. It facilitates the creation of node pools, which are groups of virtual machines (VMs) with similar configurations (CPU, RAM, Storage Capacity, Network Protocal, and Storage Drive Types), and makes them available to DataOS as a compute resource, accessible through unique names within DataOS. By defining a Compute, the need for manually specifying individual VMs for provisioning is eliminated, streamlining resource management. 
-
-As an example, a recommended minimum specification could be:
+Compute is a fundamental Resource in the DataOS ecosystem that enables the allocation of processing power for data processing, querying and machine learning workloads. It facilitates the creation of node pools, which are groups of virtual machines (VMs) with similar configurations (CPU, RAM, Storage Capacity, Network Protocal, and Storage Drive Types), and makes them available to DataOS as a Compute Resource, accessible through unique names. By defining a Compute Resource, the need for manually specifying individual VMs for provisioning is eliminated, streamlining resource management. 
 
 <center>
 
-| CPU | RAM | Hard Disk | Type of Storage |
-| --- | --- | --- | --- |
-| 16 cores | 128 GB | 2 TB | Local Storage |
+![Illustration depicting Compute Resource in DataOS](./compute/compute.png)
 
 </center>
 
 <center>
+<i>Illustration depicting Compute Resource in DataOS</i></center>
 
-![Illustration depicting Compute resource in DataOS](./compute/compute_overview.png)
+During the initial setup of DataOS, Compute is one of the primary Resource created as it provides computational power for the functioning of various other components and Resources within the system. A Compute Resource encompasses node pools procured from diverse cloud providers, including Amazon EC2, Azure VM, and Google Cloud Engine. Distinct instances of Compute Resources are tailored to specific purposes and are subsequently referenced by other Resources to fulfill their computational requirements.
 
-</center>
-
-<center>
-<i>Illustration depicting Compute resource in DataOS</i></center>
-
-During the initial setup of DataOS, Compute is one of the primary resources created as it serves as the foundation for other components. Compute represents pure processing power without any specific application identity associated with it. At its core, Compute consists of essential server components, including CPUs and RAM (or VMs). It can be composed of node pools from various cloud providers such as Amazon EC2, Azure VM, or Google Cloud Instances. These Compute resources are subsequently referenced within Minerva Clusters for efficient data querying and execution of runnables such as Workflows/Services within DataOS.
+For example, Compute Resources of the `query` type are designated to empower Minerva Clusters with robust computational power, thereby enabling efficient data querying. Conversely, Compute Resources classified as `runnable` type facilitate the execution of runnable Resources, such as Workflows and Services, by providing the necessary computational capacity.
 
 <aside style="padding:15px; border-radius:5px;">
 
-🗣️  The creation of a compute requires the setup of node pools, which is a task typically performed by system administrators within the organization.
+🗣️  The creation of a Compute Resource requires the setup of node pools. Only users with access to provision node pools, specifically Kubernetes Administrators within the organization, can perform this task.
 </aside>
 
-## Syntax of Compute
+## Compute Resource Configuration Syntax
 
-The Compute resource is defined using a YAML configuration file. The following example illustrates the syntax for defining a compute:
+The Compute Resource is defined using a YAML configuration file. The following example illustrates the syntax for defining a Compute:
 
-![Syntax of a Compute](./compute/compute_yaml.png)
+![Compute Resource YAML configuration syntax](./compute/compute_yaml.png)
 
-<center><i>YAML Syntax of a Compute Resource</i></center>
+<center><i>Compute Resource YAML configuration syntax</i></center>
+
+The table below presents an overview of attributes/fields within a Compute YAML configuration.
+
+<center>
+
+| Field | Data Type | Default Value | Possible Value | Requirement |
+| --- | --- | --- | --- | --- |
+| [`compute`](./compute/compute_grammar.md#compute) | object | none | none | mandatory |
+| [`dataplane`](./compute//compute_grammar.md#dataplane) | string | none | hub | mandatory |
+| [`purpose`](./compute/compute_grammar.md#purpose) | string | none | runnable/query/gpu | mandatory |
+| [`nodePool`](./compute/compute_grammar.md#nodepool) | object | none | none | mandatory  |
+| [`nodeSelector`](./compute/compute_grammar.md#nodeselector) | object | none | none | mandatory |
+| [`tolerations`](./compute/compute_grammar.md#tolerations) | object | none | none | mandatory |
+| [`key`](./compute/compute_grammar.md#key) | string | none | any valid string | mandatory |
+| [`operator`](./compute/compute_grammar.md#operator) | string | none | Equal/Exists | mandatory  |
+| [`value`](./compute/compute_grammar.md#value) | string | none | query/runnable/gpu | mandatory |
+| [`effect`](./compute/compute_grammar.md#effect) | string | none | NoSchedule/PreferNoSchedule/NoExecute | mandatory |
+
+</center>
+
+For a detailed explanation of each attribute/field, consult the [Compute Grammar](./compute/compute_grammar.md)
 
 ## Types of Compute
 
@@ -42,52 +55,94 @@ Various computational requirements arise depending on different workloads, neces
 
 When setting up DataOS, the following categories of Compute resources can be provisioned, each serving distinct purposes within the system:
 
-- **runnable**: This Compute is optimized for data processing workloads, including the execution of Workflows and Services. The runnable-default compute is provisioned by default during the installation of DataOS, but you can alter the configurations or create new compue later on.
+### **Runnable Compute**
 
-- **query**: Designed specifically for Minerva Clusters, this Compute type supports efficient data querying operations. The query-default compute is provisioned by default during the installation of DataOS, but you can alter the configurations or create new compue later on.
+The `runnable` Compute-type is designed to handle data processing workloads and is primarily utilized for executing Workflows and Services. By default, the `runnable-default` Compute-instance is provisioned during the initial installation of DataOS. However, it is possible to modify the configurations of the default instance or create additional Compute-instances according to specific requirements.
 
-- **gpu**: This Compute is specifically designated for Machine Learning Workloads. It is not present by default but can be provisioned based on the organization's requirements.
+### **Query Compute**
 
-The diagram presented below illustrates the underlying mechanism for provisioning diverse workloads on top of Cloud Providers.
+The `query` Compute-type is specifically optimized for Minerva Clusters, enabling efficient data querying operations. During the installation of DataOS, the `query-default` Compute-instance is provisioned by default. Similar to the runnable Compute, the configurations of the query Compute can be customized or additional Compute-instances can be created as needed.
 
-![Provisioning Diverse Worloads on top of Compute resource](./compute/untitled.png)
+### **GPU Compute**
 
-<center>
+The `gpu` Compute-type is dedicated to meeting the computational demands of Machine Learning workloads. Unlike the default Compute-instances, the `gpu` Compute-instance is not provisioned during the initial installation of DataOS. However, organizations have the flexibility to provision this type of Compute based on their specific requirements.
 
-<i>Different Types of Compute on top of Cloud Providers</i>
+The diagram presented below illustrates the underlying mechanism for provisioning diverse workloads on top of Compute Resource.
 
-</center>
-
-## Creating a Compute
-
-DataOS offers the capability to create customized Computes designed specifically for diverse data processing, machine learning, and query workloads. For comprehensive instructions and guidelines on how to create a Compute, please consult the [Creating a Compute](./compute/creating_a_compute.md) documentation.
-
-## Compute YAML Configuration Fields
-
-The table below presents a comprehensive list of key-value properties and their descriptions within a Compute YAML file:
+![Diagram illustrating the underlying mechanism for provisioning diverse workloads on top of Compute Resource](./compute/compute_underlying_mechanism.png)
 
 <center>
 
-| Field | Data Type | Default Value | Possible Value | Requirement |
-| --- | --- | --- | --- | --- |
-| `compute` | object | None | None | Mandatory |
-| `dataplane` | string | None | hub | Mandatory |
-| `purpose` | string | None | runnable/query/gpu | Mandatory |
-| `nodePool` | object | None | None | Mandatory  |
-| `nodeSelector` | object | None | None | Mandatory |
-| `dataos.io/purpose` | string | None | runnable/query/gpu | Mandatory |
-| `tolerations` | object | None | None | Mandatory |
-| `key` | string | None | Any string (e.g. dedicated) | Mandatory |
-| `operator` | string | None | Equal/Exists | Mandatory  |
-| `value` | string | None | query/runnable/gpu | Mandatory |
-| `effect` | string | None | NoSchedule/PreferNoSchedule/NoExecute | Mandatory |
+<i>Diagram illustrating the underlying mechanism for provisioning diverse workloads on top of Compute Resource</i>
 
 </center>
 
-For a detailed explanation of each field, consult the [Compute YAML Field Reference](./compute/compute_yaml_field_reference.md)
+## Compute Resource Creation
+
+To meet the diverse requirements of data processing, machine learning, and query workloads, DataOS offers the flexibility to create customized Compute Resources. This section outlines the structure of a Compute YAML file, the available configuration options, and the process of creating a Compute Resource by applying the YAML.
+
+### **Prerequisites**
+
+DataOS leverages Kubernetes for cluster and container management, enabling the creation and management of VM groups known as node pools. These node pools are defined by specific profiles, encompassing CPU, memory, and disk capacity. Before proceeding with Compute Resource creation, it is necessary to provision a node pool and register it with Kubernetes.
+
+<aside style="padding:15px; border-radius:5px;">
+🗣️ Please get in touch with the Kubernetes administrator in your organization to create a node pool.
+
+</aside>
+
+### **Compute YAML Configuration**
+Once the node pool is established, you can associate it with DataOS by configuring a Compute Resource using a YAML file. The YAML file must include the relevant attributes and fields to successfully create the Compute Resource. The following sections provide detailed insights into the required configurations.
+
+#### **Configuring the Resource Section**
+
+In DataOS, a Compute is classified as a type of resource. Below is the YAML configuration for the Resource Section:
+```yaml
+name: {{my-workflow}}
+version: v1 
+type: workflow 
+tags: 
+  - {{dataos:type:resource}}
+description: {{This is a sample workflow YAML configuration}}
+owner: {{iamgroot}}
+```
+<center><i>Resource Section configuration</i></center>
+
+For detailed customization options and additional fields within the Resource Section, refer to the [Resource Configuration](../resources.md#configuration-of-resources).
+
+#### **Configuring the Compute-specific Section**
+
+The Compute-specific Section contains configurations specific to the Compute Resource. The general syntax for the Compute-specific section is as follows:
+
+```yaml
+compute:
+  dataplane: {{hub}}
+  purpose: {{runnable}}
+  nodePool:
+    nodeSelector:
+      {{"dataos.io/purpose": "runnable"}}
+    tolerations:
+      - key: {{"dedicated"}}
+        operator: {{"Equal"}}
+        value: {{"runnable"}}
+        effect: {{"NoSchedule"}}
+```
+<center><i>Compute-specific Section configuration</i></center>
+
+For a comprehensive understanding of each attribute and its configuration options, please refer to the following [link](./compute/compute_grammar.md). 
+
+Additionally, if you are looking for pre-configured Compute templates tailored for specific workloads such as ETL, Machine Learning, and Query, you can explore them [here](./compute/compute_templates.md). 
+
+### **Applying the YAML**
+
+Once the Compute YAML file is prepared, the apply command can be utilized to create a Compute Resource within the DataOS environment.
+
+```shell
+dataos-ctl apply -f {{path/file-name}}
+```
+
+Upon successful creation of a Compute Resource, [CRUD operations](../resources.md#crud-operations-on-dataos-resources) can be performed on top of it, as well as it can be referenced in Minerva Clusters for query workloads and incorporated into other Resources, such as Workflows, Depots, and Services, using the `compute` field.
+
 
 ## Compute Templates
 
-In this section, a collection of pre-configured Compute Resource Templates is provided, tailored to meet the requirements of different types of available Compute resources for diverse Workload scenarios. The Compute templates are categorized based on the specific types of Workloads they support.
-
-[Compute Templates](./compute/compute_templates.md)
+In this section, a collection of pre-configured Compute Resource Templates is provided, tailored to meet the requirements of different types of available Compute Resources for diverse Workload scenarios. To know more navigate to the [Compute Templates](./compute/compute_templates.md) page.

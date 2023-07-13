@@ -119,18 +119,18 @@ To do this, use three dashes `---` to separate the two entities. For example, we
       dag: 
     			# Job 1 (There should be at least one job within a DAG)
           - name:
-    			  title:
+            title:
             spec:
               stack: {{stack1-version}}
               compute:
     
           # Job 2
           - name:
-    			  title:
+            title:
             spec:
               stack: {{stack2-version}}
               compute:
-    
+            
             dependencies:
               - 
     ```
@@ -146,7 +146,7 @@ To do this, use three dashes `---` to separate the two entities. For example, we
           - name:
         steps:
           - sequence:
-              - name:
+            - name:
               doc: 
               sql: |
                 SELECT *
