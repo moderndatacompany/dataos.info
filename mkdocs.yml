@@ -1,5 +1,5 @@
 #### DO NOT CHANGE ####
-site_name: DataOS Documentation
+site_name: DataOS
 copyright: Copyright ⓒ 2023 The Modern Data Company
 theme:
     name: material
@@ -113,10 +113,13 @@ nav:
          - Workbench: interfaces/workbench.md        
 
 # to be hidden from the top navigation bar on the webpages
-    - Philosophy:
-         - About DataOS: philosophy/about_dataos.md
-         - Architecture: philosophy/architecture.md
-
-    - By Role: roles.md
+    - Architecture: 
+         - Architecture of DataOS: architecture.md
+         - Components:
+              - Architecture of Minerva: architecture/minerva_arch.md
+              - Architecture of Metis: architecture/metis_arch.md
+              - Architecture of Scanner: architecture/scanner_arch.md
+              - Domain Model of Heimdall: architecture/heimdall_arch.md
     
     - Glossary: glossary.md
+    - Videos: videos.md
