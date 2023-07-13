@@ -227,9 +227,6 @@ After clicking 'Create Cluster', a Cluster Resource will be created. You can obs
 
 ![Creating a Cluster Using Operations App UI 4](./cluster/creating_cluster_using_operations_app_ui/cluster_5.png)
 
-
-[Cluster Maintenance ](./cluster/cluster_maintenance.md)
-
 ## Interacting with Minerva
 
 Minerva offers multiple methods for interacting with its features and functionalities. The available options are provided below.
