@@ -17,10 +17,6 @@ DataOS is configured to take advantage of the Jupyter ecosystem's open-source to
 ## Use Case- Writing Data To Icebase
 This use case demonstrates how to write a test dataset to DataOS Icebase using PyFlare on Jupyter Notebook. We achieve the objective with help of `PyFlare` and `PySpark` on Notebook hosted on DataOS. 
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
-PyFlare is implemented on PySpark.  PyFlare gives capability to read and write data directly to the Icebase.
-</aside>
-
 ### **Prerequisites**
 - DataOS credentials and access to Icebase depot.
 - Hosted Jupyter Notebook on DataOS.
