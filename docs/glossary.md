@@ -10,7 +10,7 @@ hide:
 
 | Term | Description |
 | --- | --- |
-| Airbyte |  |
+| Airbyte | An open-source platform that facilitates data integration and replication processes by collecting data from various sources and making it available for analysis and storage. DataOS integrates with it and provides a graphical user interface to leverage its capabilities. |
 | Atlas | A built-in business intelligence (BI) tool that enables you to generate visualizations, customize reports, and create interactive dashboards. |
 | Audiences | It is an application derived from Lens that uses the semantic data models created through Lens to identify and categorize specific groups of people who have similar characteristics, traits, or behaviors. These categorized groups are referred to as audiences. |
 | Access policy | Access policies help ensure that data is handled securely, protecting sensitive information and maintaining data integrity.  |
@@ -44,10 +44,10 @@ hide:
 | --- | --- |
 | Depot | Depots can be understood as the connection pipeline enabling data access, exploration, and processing. It also provides references to virtual locations where data from different silos and clouds is fetched and stored. |
 | Data Toolbox | Toolbox allows set_version action on the data stored in Icebase that serves as DataOS internal storage. The data stored here is stored in Iceberg format. Using Toolbox, metadata version can be updated to the latest or specific version. |
-| Data Developer |  |
-| Database |  |
+| Data Developer | Data developer specializes in designing, building, and maintaining data-centric applications and systems. They work with data infrastructure, data sources, and data pipelines to enable efficient data processing and analysis. |
+| Database | -- |
 | Data policy | Data policy enforces a set of actions that will be taken on data assets when a user matching the policy rule requests access to data. These actions protect sensitive data and help organisations achieve data privacy and meet regulatory compliance expectations. |
-| Dropzone | -- |
+| Dropzone | Dropzone is a depot in DataOS referring to an object storage. This storage is used as data lake to easily and securely upload files. |
 
 ---
 
@@ -55,7 +55,7 @@ hide:
 
 | Term | Description |
 | --- | --- |
-| Egress | -- |
+| Egress | The process of transferring data from one system or network to another external system or network. Egress typically refers to data leaving a particular system or network. |
 |  |  |
 
 ---
@@ -93,7 +93,7 @@ hide:
 | Term | Description |
 | --- | --- |
 | Icebase | High-performance storage which provides necessary tooling and integrations to manage data and metadata in a simple and efficient manner while inherenting interoperability with capabilities spread across the data operating system. |
-| Interface | -- |
+| Interface | Interfaces in DataOS such as CLI, GUI, API provide points of communication and interaction between different components for efficient data operations,  and control over various activities. interfaces enable self-service data management.  |
 | ingress | Ingress in DataOS exposes HTTP and HTTPS routes from outside the DataOS context to services within a DataOS context. It configures the incoming port for the service to allow access to DataOS resources from external links. |
 
 ---
@@ -196,19 +196,11 @@ hide:
 
 # u 
 
-| Term | Description |
-| --- | --- |
-|  |  |
-|  |  |
 
 ---
 
 # v 
 
-| Term | Description |
-| --- | --- |
-|  |  |
-|  |  |
 
 ---
 
@@ -227,11 +219,6 @@ hide:
 ---
 
 # y 
-
-| Term | Description |
-| --- | --- |
-| YAML | Yet Another Markup Language. It is a human-readable data serialization language that is often used for writing configuration files. |
-|  |  |
 
 ---
 
