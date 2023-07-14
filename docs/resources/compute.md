@@ -28,27 +28,6 @@ The Compute Resource is defined using a YAML configuration file. The following e
 
 <center><i>Compute Resource YAML configuration syntax</i></center>
 
-The table below presents an overview of attributes/fields within a Compute YAML configuration.
-
-<center>
-
-| Field | Data Type | Default Value | Possible Value | Requirement |
-| --- | --- | --- | --- | --- |
-| [`compute`](./compute/compute_grammar.md#compute) | object | none | none | mandatory |
-| [`dataplane`](./compute//compute_grammar.md#dataplane) | string | none | hub | mandatory |
-| [`purpose`](./compute/compute_grammar.md#purpose) | string | none | runnable/query/gpu | mandatory |
-| [`nodePool`](./compute/compute_grammar.md#nodepool) | object | none | none | mandatory  |
-| [`nodeSelector`](./compute/compute_grammar.md#nodeselector) | object | none | none | mandatory |
-| [`tolerations`](./compute/compute_grammar.md#tolerations) | object | none | none | mandatory |
-| [`key`](./compute/compute_grammar.md#key) | string | none | any valid string | mandatory |
-| [`operator`](./compute/compute_grammar.md#operator) | string | none | Equal/Exists | mandatory  |
-| [`value`](./compute/compute_grammar.md#value) | string | none | query/runnable/gpu | mandatory |
-| [`effect`](./compute/compute_grammar.md#effect) | string | none | NoSchedule/PreferNoSchedule/NoExecute | mandatory |
-
-</center>
-
-For a detailed explanation of each attribute/field, consult the [Compute Grammar](./compute/compute_grammar.md)
-
 ## Types of Compute
 
 Various computational requirements arise depending on different workloads, necessitating specific levels of processing power and specialized Compute configurations. For instance, Machine Learning workloads often demand GPUs or TPUs, while querying extensive datasets calls for specific Node pool specifications.
@@ -127,6 +106,26 @@ compute:
         effect: {{"NoSchedule"}}
 ```
 <center><i>Compute-specific Section configuration</i></center>
+
+
+The table below presents an overview of attributes/fields within a the Compute-specfic Section of YAML.
+
+<center>
+
+| Field | Data Type | Default Value | Possible Value | Requirement |
+| --- | --- | --- | --- | --- |
+| [`compute`](./compute/compute_grammar.md#compute) | object | none | none | mandatory |
+| [`dataplane`](./compute//compute_grammar.md#dataplane) | string | none | hub | mandatory |
+| [`purpose`](./compute/compute_grammar.md#purpose) | string | none | runnable/query/gpu | mandatory |
+| [`nodePool`](./compute/compute_grammar.md#nodepool) | object | none | none | mandatory  |
+| [`nodeSelector`](./compute/compute_grammar.md#nodeselector) | object | none | none | mandatory |
+| [`tolerations`](./compute/compute_grammar.md#tolerations) | object | none | none | mandatory |
+| [`key`](./compute/compute_grammar.md#key) | string | none | any valid string | mandatory |
+| [`operator`](./compute/compute_grammar.md#operator) | string | none | Equal/Exists | mandatory  |
+| [`value`](./compute/compute_grammar.md#value) | string | none | query/runnable/gpu | mandatory |
+| [`effect`](./compute/compute_grammar.md#effect) | string | none | NoSchedule/PreferNoSchedule/NoExecute | mandatory |
+
+</center>
 
 For a comprehensive understanding of each attribute and its configuration options, please refer to the following [link](./compute/compute_grammar.md). 
 

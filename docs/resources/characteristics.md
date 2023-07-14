@@ -1,4 +1,4 @@
-# Characteristics
+# Common Traits of DataOS Resources
 
 While each Resource has its own specific attributes & usage, there are certain commonalities which are valid across the group. These are:
 
