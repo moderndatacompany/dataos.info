@@ -44,7 +44,7 @@ hide:
 | [Depot](./resources/depot.md) | Depots can be understood as the connection pipeline enabling data access, exploration, and processing. It also provides references to virtual locations where data from different silos and clouds is fetched and stored. |
 | [Data Toolbox](./resources/stacks/data_toolbox.md) | Toolbox allows set_version action on the data stored in Icebase that serves as DataOS internal storage. The data stored here is stored in Iceberg format. Using Toolbox, metadata version can be updated to the latest or specific version. |
 | Data Developer | Data developer specializes in designing, building, and maintaining data-centric applications and systems. They work with data infrastructure, data sources, and data pipelines to enable efficient data processing and analysis. |
-| [Data policy](./resources/policy.md#data-policy) | Data policy enforces a set of actions that will be taken on data assets when a user matching the policy rule requests access to data. These actions protect sensitive data and help organisations achieve data privacy and meet regulatory compliance expectations. |
+| [Data Policy](./resources/policy.md#data-policy) | Data policy enforces a set of actions that will be taken on data assets when a user matching the policy rule requests access to data. These actions protect sensitive data and help organisations achieve data privacy and meet regulatory compliance expectations. |
 | Dropzone | Dropzone is a depot in DataOS referring to an object storage. This storage is used as data lake to easily and securely upload files. |
 
 ---
