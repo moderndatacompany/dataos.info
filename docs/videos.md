@@ -3,42 +3,73 @@ hide:
   - navigation
 #   - toc
 ---
-DataOS CLI - Learn all about DataOS CLI, its installation, & how to interact with it.
 
-[![Image alt text](https://img.youtube.com/vi/54uQS0vpF-Y/0.jpg)](https://www.youtube.com/watch?v=54uQS0vpF-Y)
 
----
+<div>
+  <h2>DataOS CLI</h2>
+  <p>This video explains the DataOS Command-Line Interface (CLI). It covers installation steps, command structure, and the wide range of tasks you can accomplish with it.</p>
+  <video width="1080" height="360" controls>
+    <source src="[path/to/video.mp4](https://www.youtube.com/watch?v=54uQS0vpF-Y)" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
 
-Introduction to Depot - Learn about DataOS Depot & gain a conceptual understanding of how it works.
 
-[![Introduction to Depot - Learn about DataOS Depot & gain a conceptual understanding of how it works.](https://img.youtube.com/vi/VrqwKgQ2q6w/0.jpg)](https://www.youtube.com/watch?v=VrqwKgQ2q6w)
+<div>
+  <h2>DataOS Depots</h2>
+  <p>In this video, you will delve into the concept of DataOS Depots and the Universal Data Link (UDL). The video explains how Depots, with UDL standardize the data access process across different storage hierarchies. Gain insights into why and how Depots are used.</p>
+  <video width="1080" height="360" controls>
+    <source src="[path/to/video.mp4](https://www.youtube.com/watch?v=54uQS0vpF-Y)" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
 
----
-Create a Depot - Create a Depot in a few minutes. Just follow the guided steps & done. Depot Created.
 
-[![Create a Depot - Create a Depot in a few minutes. Just follow the guided steps & done. Depot Created.](https://img.youtube.com/vi/rpFE1qUqWBw/0.jpg)](https://www.youtube.com/watch?v=rpFE1qUqWBw)
+<div>
+  <h2>Create a Depot</h2>
+  <p>In this video, you will learn the process of creating Depots in DataOS using YAML configurations. It walks you through the steps involved in crafting a YAML file that specifies the desired properties of the Depot, such as storage hierarchy, access permissions, and credentials.</p>
+  <video width="1080" height="360" controls>
+    <source src="[[path/to/video.mp4](https://www.youtube.com/watch?v=54uQS0vpF-Y)](https://www.youtube.com/watch?v=rpFE1qUqWBw)" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
 
----
-Introduction to Scanner - Extract metadata from external source systems with DataOS Scanner.
 
-[![Introduction to Scanner - Extract metadata from external source systems with DataOS Scanner.](https://img.youtube.com/vi/rLA8Mvx5JX0/0.jpg)](https://www.youtube.com/watch?v=rLA8Mvx5JX0)
+<div>
+  <h2>Introduction to Scanner</h2>
+  <p>In this video, you will be introduced to Scanner, the metadata extraction framework in DataOS. The video provides an overview of how the Scanner stack is used to extract metadata from various source systems and store it in the metadata store.</p>
+  <video width="1080" height="360" controls>
+    <source src="[[path/to/video.mp4](https://www.youtube.com/watch?v=54uQS0vpF-Y)](https://www.youtube.com/watch?v=rpFE1qUqWBw)" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
 
----
 
-Non-depot scan - Know all about the non-depot scan and how it functions
+<div>
+  <h2> How to Run a Scanner job</h2>
+  <p>In this video, you will learn to write a Scanner job to extract data from the source system using a depot.</p>
+  <video width="1080" height="360" controls>
+    <source src="[[path/to/video.mp4](https://www.youtube.com/watch?v=54uQS0vpF-Y)](https://www.youtube.com/watch?v=rpFE1qUqWBw)" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
 
-[![Non-depot scan - Know all about the non-depot scan and how it functions](https://img.youtube.com/vi/NbUckpZxu0s/0.jpg)](https://www.youtube.com/watch?v=NbUckpZxu0s)
 
----
+<div>
+  <h2>Non-depot scan</h2>
+  <p>This video highlights the configuration of a Scanner job for extracting metadata from a data source for which depot is not created.</p>
+  <video width="1080" height="360" controls>
+    <source src="[[path/to/video.mp4](https://www.youtube.com/watch?v=54uQS0vpF-Y)](https://www.youtube.com/watch?v=rpFE1qUqWBw)" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
 
-Scanner Configuration Filter Patterns
 
-[![Scanner Configuration Filter Patterns](https://img.youtube.com/vi/OeSjgSljtKg/0.jpg)](https://www.youtube.com/watch?v=OeSjgSljtKg)
-
----
-
-How to run a Scanner job
-
-[![How to run a Scanner job](https://img.youtube.com/vi/bqEgS-wxL14/0.jpg)](https://www.youtube.com/watch?v=bqEgS-wxL14)
-
----
+<div>
+  <h2> Configuration Filter Patterns</h2>
+  <p>In this video, you will get an understanding of how you scan only specific databases, schemas and tables using filter patterns.</p>
+  <video width="1080" height="360" controls>
+    <source src="[[path/to/video.mp4](https://www.youtube.com/watch?v=54uQS0vpF-Y)](https://www.youtube.com/watch?v=rpFE1qUqWBw)" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
