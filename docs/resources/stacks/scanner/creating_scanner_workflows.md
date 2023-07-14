@@ -15,14 +15,12 @@
 
 ## Creating Scanner YAML Configuration
 
-1. Define resource properties such as name, version, type, owner etc. These properties are common for all resources. To learn more, refer to [this] page.
+1. Define resource properties such as name, version, type, owner etc. These properties are common for all resources. To learn more, refer to [Configuring the Resource Section](/resources/workflow/creating_a_workflow/#configuring-the-resource-section) page.
     
-2. Scanner workflows are either single-time run or scheduled to run at a specific cadence. To schedule a workflow, you must add the `schedule` property, under which you define a `cron` To learn about these properties, refer to [this] page.
+2. Scanner workflows are either single-time run or scheduled to run at a specific cadence. To schedule a workflow, you must add the `schedule` property, under which you define a `cron` To learn about these properties, refer to [Schedulable workflows](/resources/workflow/#schedulable-workflows).
 
     
 3. Define the Scanner job properties in the `dag`, such as job name, description. 
-    
-
     
 4. Define the specification for stack and compute for the Scanner workflow. Also specify user ID of the use case assignee. The default value here is `metis`. but 'Run as a Scanner user' use case should be granted to run Scanner workflow. 
 
