@@ -42,6 +42,9 @@ plugins:
     #     version: v0.2
 extra:
   generator: true
+  analytics: 
+    provider: google
+    property: G-ZH4G0HKBQC
   annotate:
     json: [.s2]
   social:
