@@ -17,7 +17,9 @@ theme:
          - toc.follow
          - toc.integrate
     logo: assets/light-modern-logo.png
-    favicon: assets/favicon.ico
+    favicon: assets/favicon.png
+    logo_link_footer: https://themoderndatacompany.com
+    logo_footer: assets/ModernLogo.png
     font:
         text: Inter
         code: Roboto Mono
@@ -43,11 +45,11 @@ extra:
   annotate:
     json: [.s2]
   social:
-    - icon: fontawesome/brands/facebook
+    - icon: assets/facebook.png
       link: https://www.facebook.com/themoderndatacompany
-    - icon: fontawesome/brands/twitter
+    - icon: assets/twitter.png
       link: https://twitter.com/TheModernDataCo
-    - icon: fontawesome/brands/linkedin
+    - icon: assets/linkedin.png
       link: https://www.linkedin.com/company/themoderndatacompany
 extra_css:
     - stylesheets/extra.css

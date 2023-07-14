@@ -22,14 +22,14 @@
 
 <!-- Copyright and theme information -->
 <div class="md-copyright">
-  {% if config.copyright %}
-  <div class="md-copyright__highlight">
-    {{ config.copyright }}
-  </div>
-  {% endif %}
   {% if not config.extra.generator == false %}
   <a href="https://themoderndatacompany.com/contact-us" target="_blank" rel="noopener"> Contact Us </a> | <a
     href="https://themoderndatacompany.com/privacy-policy" target="_blank" rel="noopener"> Privacy Policy </a> | <a
     href="https://themoderndatacompany.com/terms-of-use" target="_blank" rel="noopener"> Terms of Use </a>
+  {% endif %}
+  {% if config.copyright %}
+  <div class="md-copyright__highlight">
+    {{ config.copyright }}
+  </div>
   {% endif %}
 </div>
