@@ -364,8 +364,6 @@ Run the following commands to ensure the successful installation of DataOS CLI. 
 dataos-ctl version
 dataos-ctl health
 ```
-<<<<<<< HEAD
-=======
 
 ## Update
 
