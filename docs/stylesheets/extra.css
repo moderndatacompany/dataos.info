@@ -315,7 +315,7 @@ aside.best-practice {
 blockquote {
     background-color: var(--md-blockquote-bg-color) !important;
     margin: 16px 0;
-    padding:8px 0; 
+    padding:4px 0; 
 }
 aside.callout {
     background-color: var(--md-callout-bg-color) !important;

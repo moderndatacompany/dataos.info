@@ -1,4 +1,4 @@
-# Cluster Configuration Recommendations
+# Recommended Cluster Configuration
 
 DataOS offers the flexibility to create clusters on-demand based on specific use cases, allowing you to customize the cluster according to your needs. The following cluster configurations are recommended for different query loads.
 
@@ -12,11 +12,14 @@ For this use case, it is recommended to have multiple Minerva clusters to ensure
 
 **Recommended Configuration**
 
-A default Minerva cluster can be used with the following properties:
+A default Minerva cluster can be used with the properties specified in the toggle below.
+
+<details>
+<summary>Minerva Cluster Configuration</summary>
 
 ```yaml
-version: v1beta1
-name: minervab    
+name: minervab
+version: v1    
 type: cluster
 description: the default minerva cluster b
 tags:
@@ -40,6 +43,9 @@ minerva:
     logLevel: INFO
     trinoLogLevel: ERROR
 ```
+</details>
+
+For more information, refer to the [Multi-Cluster Setup](../cluster/case_scenarios.md#multi-cluster-setup).
 
 ## Scenario 2: Data scientists/analysts running intensive data exploration
 
@@ -47,7 +53,7 @@ In this scenario, clusters are required for specialized use cases or teams, such
 
 **Recommended Configuration**
 
-For these use cases, it is recommended to use on-demand Minerva clusters and consider the following configurations:
+For these use cases, it is recommended to use on-demand Minerva Clusters and consider the following configurations:
 
 1. Use a bigger cluster by increasing the maximum worker node count.
 2. Add a limit clause for all subqueries.
@@ -55,7 +61,6 @@ For these use cases, it is recommended to use on-demand Minerva clusters and con
 
 Increasing the number of nodes in a single cluster improves throughput and resource utilization, enabling efficient processing of large queries.
 
-For more information, refer to the [Multi-Cluster Setup](../cluster/performance_tuning.md) section.
 
 ## Scenario 3: CPU optimized instance
 
