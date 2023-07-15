@@ -176,7 +176,7 @@ input {
 }
 
 [data-md-color-primary=grey] {
-    --md-primary-fg-color: #0a0c0f;
+    --md-primary-fg-color: #000000;
     --md-primary-fg-color--light: #383f49;
     --md-primary-fg-color--dark: #0a0c0f;
     --md-primary-bg-color: #ffffff;
@@ -185,7 +185,7 @@ input {
 }
 
 [data-md-color-scheme=default] {
-    --md-default-fg-color: #000000de;
+    --md-default-fg-color: #000000;
     --md-default-fg-color--light: #0000008a;
     --md-default-fg-color--lighter: #00000052;
     --md-default-fg-color--lightest: #00000012;
@@ -342,7 +342,7 @@ pre {
 .md-typeset {
     -webkit-print-color-adjust: exact;
     color-adjust: exact;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.6
 }
 
@@ -363,7 +363,7 @@ pre {
 }
 
 .md-typeset h1 {
-    color: var(--md-default-fg-color--light);
+    color: var(--md-default-fg-color);
     font-size: 2em;
     line-height: 1.3;
     margin: 0 0 1.25em
@@ -962,7 +962,7 @@ html .md-typeset__table table {
 }
 
 html {
-    font-size: 125%;
+    /* font-size: 125%; */
     height: 100%;
     overflow-x: hidden
 }
@@ -983,7 +983,7 @@ body {
     background-color: var(--md-default-bg-color);
     display: flex;
     flex-direction: column;
-    font-size: 14px;
+    font-size: 16px;
     min-height: 100%;
     position: relative;
     width: 100%
@@ -1591,7 +1591,7 @@ input:checked+.md-consent__settings {
 }
 
 .md-footer-meta__inner .md-footer-meta__content {
-    border-top: 1px solid #99999950;
+    /* border-top: 1px solid #99999950; */
     width: 100%;
 }
 
@@ -1616,9 +1616,34 @@ html .md-footer-meta.md-typeset a:hover {
 .md-copyright {
     color: var(--md-footer-fg-color--lighter);
     font-size: .64rem;
-    margin: auto .6rem;
+    margin: auto .6rem 10px;
     padding: .4rem 0;
-    width: 100%
+    width: 100%;
+    text-align: right;
+}
+
+.md-social a.md-social__link {
+    display: inline-flex;
+    height: 28px;
+    width: 28px;
+    align-items: center;
+    justify-content: center;
+}
+
+.md-social .md-footer-social-and-modern-logo {
+    display: flex;
+    flex-direction: column;
+}
+
+.md-footer-social-and-modern-logo img.modern-logo {
+    margin: 0 .4rem;
+    padding: .2rem 0 .6rem
+}
+
+@media screen and (min-width: 45em) {
+    .md-footer-social-and-modern-logo img.modern-logo {
+        padding: .6rem 0
+    }
 }
 
 @media screen and (min-width: 45em) {
@@ -1740,7 +1765,7 @@ html .md-footer-meta.md-typeset a:hover {
 }
 
 .md-header--shadow {
-    box-shadow: 0 0 .2rem #0000001a, 0 .2rem .4rem #0003;
+    box-shadow: 0 0 .2rem rgba(0, 0, 0, 0.045), 0 .2rem .4rem rgba(0, 0, 0, 0.045);
     transition: transform .25s cubic-bezier(.1, .7, .1, 1), box-shadow .25s
 }
 
