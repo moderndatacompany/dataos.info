@@ -1,4 +1,4 @@
-# Cluster Grammar
+# Cluster Section-specific Grammar
 
 ```yaml
 cluster: 
