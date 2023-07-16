@@ -12,7 +12,7 @@ In the Audience App, the `customer` entity of the `c360` Lens must consistently 
 
 So without any further ado, let’s get right into building audiences within the Audience App.
 
-> 📖 Best Practice: Assigning a string data type to the `customer_id` field is recommended to improve query performance. Even if a different data type is provided, we have handled it in the query-building process, so there's no need to worry.
+<aside class="best-practice"> 📖 Best Practice: Assigning a string data type to the `customer_id` field is recommended to improve query performance. Even if a different data type is provided, we have handled it in the query-building process, so there's no need to worry.</aside>
 
 ## Building Audiences
 

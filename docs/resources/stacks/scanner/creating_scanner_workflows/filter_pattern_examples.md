@@ -10,7 +10,7 @@ We have the ability to exercise control over metadata scanning by utilizing filt
 
 - **`tableFilterPattern`**: Finally, utilize this pattern to filter tables within the selected schemas. Specify the tables you want to include or exclude based on your criteria. This filtering step operates on the remaining schemas after applying the previous two filters.
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 By combining all three filters, you can achieve a hierarchical filtering approach that successively narrows down the scope of the metadata scanning in the Scanner workflow. This ensures that only the desired databases, schemas, and tables are included in the workflow based on your specified criteria. If you do not explicitly specify any of these filters then all available entities are scanned.
 
 </aside>
@@ -45,7 +45,7 @@ sourceConfig:
         - table4
 ```
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 Note that the filter supports regex as `includes` OR `excludes`. When you specify a pattern in the `includes` section, the Scanner will evaluate which entities match the pattern and include them in the metadata scanning and entities that do not match the pattern will be automatically excluded. The same principle applies to the excludes section, where the Scanner excludes entities that match the specified pattern, while automatically including the rest.
 
 </aside>
@@ -167,7 +167,7 @@ sourceConfig:
         - public
 ```
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 When you mention name in the filter pattern, Scanner workflow will automatically convert the name to the filter pattern considering it as a prefix so the created regex will be `^public.*`
 
 </aside>

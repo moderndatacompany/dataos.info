@@ -5,7 +5,7 @@
 1. Permission to run the Scanner workflow: A user must have either Operator level access (`roles:id:operator` tag) or grant to the “**Run as Scanner User”** use case. 
     
     
-  <aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">🗣 To obtain the required use case, please contact the DataOS system administrator.</aside>
+  <aside class="callout">🗣 To obtain the required use case, please contact the DataOS system administrator.</aside>
     
   
     
@@ -36,7 +36,7 @@
       depot: dataos://icebase       
     ```
 
-    <aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">🗣 Scanner workflow will automatically create a source (with the same name as the depot name) where the scanned metadata is saved within Metastore.</aside>    
+    <aside class="callout">🗣 Scanner workflow will automatically create a source (with the same name as the depot name) where the scanned metadata is saved within Metastore.</aside>    
     
     
     **For Non-Depot Scan:** First, specify the 
@@ -52,7 +52,7 @@
     ```
     
     
-     <aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;"> 🗣 On Metis UI, sources are listed for data sources, dashboards, workflows, and ML models. Under the given source name, you can see the information about all the entities scanned for a data source.</aside>
+     <aside class="callout"> 🗣 On Metis UI, sources are listed for data sources, dashboards, workflows, and ML models. Under the given source name, you can see the information about all the entities scanned for a data source.</aside>
    
     
     **`sourceConnection`**: When the metadata source is not referenced by the depot, you need to provide the source connection details and credentials **explicitly**. The properties in this section depend on the underlying metadata source, such as type, username, password, hostPort, project, email, etc. 
@@ -68,7 +68,7 @@
     ```
     
     
-    <aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;"> 🗣 Connection details will depend on the underlying data source to be scanned. Click here to learn more about the data source specific configuration properties.</aside>
+    <aside class="callout"> 🗣 Connection details will depend on the underlying data source to be scanned. Click here to learn more about the data source specific configuration properties.</aside>
     
     
     
@@ -86,7 +86,7 @@
     
     
         
-    <aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;"> 🗣 Filter patterns support Regex in `includes` and `excludes` expressions. </aside>
+    <aside class="callout"> 🗣 Filter patterns support Regex in `includes` and `excludes` expressions. </aside>
       
      Refer to [Filter Pattern Examples](creating_scanner_workflows/filter_pattern_examples.md)  for the example scenarios.
         
@@ -201,6 +201,6 @@
       ```
     </details>
     
-    <aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">🗣 To scan metadata from various data sources, you need certain permissions and access privileges as a data source user. These requirements are specific to each data source. Refer to [this]() section to learn more about them. </aside>
+    <aside class="callout">🗣 To scan metadata from various data sources, you need certain permissions and access privileges as a data source user. These requirements are specific to each data source. Refer to [this]() section to learn more about them. </aside>
         
     After the successful workflow run, you can check the metadata of scanned Tables on Metis UI for all schemas present in the database.
