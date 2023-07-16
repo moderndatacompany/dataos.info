@@ -134,7 +134,7 @@ scanner:
 scanner:
   source: samplexyz 
 ```
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;"> When the metadata source is not referenced by the depot, you need to provide the source connection details and credentials **explicitly**. </aside>
+<aside class="callout"> When the metadata source is not referenced by the depot, you need to provide the source connection details and credentials **explicitly**. </aside>
 
 ### **`type`**
 **Description**: Data source type in the sourceConnection section.

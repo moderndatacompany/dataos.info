@@ -10,7 +10,7 @@ Upon opening the Workbench app, the first step is to select the Minerva cluster 
 
 In the details of the Minerva cluster, one will see the names of the data sources that can be queried with that cluster. The `Catalogs` section includes the names of the depots and catalogs (data sources for which the depot has not been created, but which you can still query through DataOS). The datasets accessible for querying are dependent on the presence of depots and catalogs within the Minerva cluster.
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 If you cannot locate the required name within the Catalogs list, you can request the  admin or operator(a user with the operator tag) to add it to the Minerva cluster you are currently utilizing. Alternatively, an operator or admin has the capability to create a new cluster exclusively for the data sources you wish to use. This approach ensures that the execution of complex queries does not impact the computational resources of existing clusters.
 </aside>
 
@@ -94,7 +94,7 @@ Clicking on the `Runtime stats` tab will take you to a new tab in the web browse
 ![Available options](workbench/query_analysis.png)
 
 <figcaption align = "center">Available options</figcaption>
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 The statistical information about Query Runtime is stored in Metis and can be accessed through the Metis user interface (UI).
 </aside>
 
