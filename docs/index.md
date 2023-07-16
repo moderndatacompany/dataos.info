@@ -26,7 +26,7 @@ Sadly and a bit surprisingly, the data space is still in a phase where data engi
 ## An Operating System for Data
 
 <aside class="callout">
-💡 DataOS is built with the same philosophy as an operating system.
+🗣️ DataOS is built with the same philosophy as an operating system.
 </aside>
 <br/>
 
@@ -64,8 +64,8 @@ What follows from assembled systems is the sudden overwhelm of managing multiple
 
 It’s both a skill- and resource-deficit issue. Moreover, with decades spent on evolving data stacks with not much value to show, organisations are not ideally inclined to pour in more investments and efforts to rip and replace their work. In essence, 𝐀𝐮𝐭𝐨𝐧𝐨𝐦𝐲 instead should become the higher priority over Decentralisation if that is the ultimate objective.
 
-<aside>
-💡 As we have established in the above sections, enabling autonomy for a host of personas is the number one objective of any operating system design. Teams can even use this autonomy and flexibility to create decentralised models with far less resources, but that is a secondary and one of many objectives that can be established through autonomy across several layers of data producers and engineers.
+<aside class="callout">
+🗣️ As we have established in the above sections, enabling autonomy for a host of personas is the number one objective of any operating system design. Teams can even use this autonomy and flexibility to create decentralised models with far less resources, but that is a secondary and one of many objectives that can be established through autonomy across several layers of data producers and engineers.
 </aside>
 
 ### Bearing the Weight of Rapid Tech Evolution
