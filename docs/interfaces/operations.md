@@ -68,7 +68,7 @@ Under Runtime Nodes, click on a node to get the runtime YAML, Logs, and Runtime 
 
 Runtime Node Logs provide a near real-time view. These logs provide insights into the current health of the node environment and can be helpful for debugging issues.
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 Logs are not guaranteed to persist for any length of time and may be cleared as needed.</aside>
 
 
@@ -101,7 +101,7 @@ Operations app provides users with the ability to easily create resources direct
 ![Picture](operations/create_resource1.png)
 <figcaption align = "center">Create Minerva cluster </figcaption>
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 You need ‘Operator’ level permissions to view the Core kernel and Cloud kernel resources.</aside>
 
 ## Core Kernel
@@ -208,7 +208,7 @@ Clicking on the compute node will display the detailed information about the nod
 
 You can see the deployed DataOS products and their release information here. Click on the product name to view the release details of all the installed DataOS components. 
  
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 You need ‘Operator’ level permissions to view the installed DataOS components.</aside>
 
 ## Use Cases

@@ -4,7 +4,7 @@ Assertions are business-specific validation rules applied to test and evaluate t
 
 Data quality Scanner workflow reads about these quality checks for your data along with their pass/fail status(metadata extraction related to data quality) and stores it in Metis DB. This data helps you validate the captured data to determine whether the data meets business requirements.
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣️ Before running the Scanner workflow for quality checks metadata, ensure that the data quality and data-tool workflows are run successfully.
 
 </aside>

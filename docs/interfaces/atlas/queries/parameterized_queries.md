@@ -24,7 +24,7 @@ You can define several types of parameters in your query.
     | Date and Time Range | Timestamp |  |
     | Date and Time Range (with seconds) | Timestamp |  |
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 These parameters are associated with the corresponding data types of the columns within your dataset in the query. You can verify the schema of the dataset in the Workbench to obtain detailed information about the data types and other characteristics of each column.
 </aside>
 
@@ -90,7 +90,7 @@ Follow the below steps to add a parameter to your query.
     <figcaption align = "center">Query with a text parameter</figcaption>
     
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 Alternatively, you can also manually type the double curly braces `{{ }}` and click on the gear icon near the parameter widget to edit the settings.
 
 </aside>
@@ -106,7 +106,7 @@ Select the parameter type ‘Date’ while adding a parameter in your query.
 
 You will get a calendar-picking interface to provide the date values for your queries. Choose the date and click on ‘Apply changes’ to execute the query. 
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 Date parameters are considered strings, so you should wrap them in single quotes(`'`) and do the required type conversions for your query to run successfully.
 
 </aside>
@@ -181,7 +181,7 @@ When the `Dropdown` option for the parameter type is selected from the parameter
 
 <figcaption align = "center">Configuring dropdown list </figcaption>
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 Dropdown list options are considered text parameters, so if you want to use numbers/dates/datetime in your dropdown, you should take care of type conversions for the format your dataset column requires.
 
 </aside>

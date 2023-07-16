@@ -10,7 +10,7 @@ A DataOS user  with the `roles:id:operator` tag are designated as dataOS operato
 
 Within the Metis user interface (UI), users holding the 'Admin' role enjoy additional privileges, including the ability to assign the `Admin` role to other users. It's important to note that these users being assigned the `Admin` role may not necessarily possess the `roles:id:operator` tag. By granting the 'Admin' role to other users, they are empowered with the capability to create roles and policies within Metis.
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 To obtain the required use case and Metis admin role, please contact the DataOS system administrator.
 
 </aside>
@@ -48,7 +48,7 @@ Resources: Workflow, Topics, Table, MLModel, Dashboard, Charts, Test Suites, Web
 | Data Steward | Metadata Management | Ops: EditTags, EditDescription, EditDisplayName, ViewAll
 Resources: Workflow, Table, Metrics, Dashboard, Charts, Dashboard Source, MLModel |
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 Initially, all users are assigned a Data Consumer role, which enables them to have view access to all assets in Metis.
 
 </aside>
