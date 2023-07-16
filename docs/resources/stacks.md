@@ -36,4 +36,3 @@ The Data Toolbox stack provides functionality to update Iceberg metadata version
 The Scanner stack in DataOS is a Python-based framework that allows developers to extract metadata from external source systems (such as RDBMS, Data Warehouses, Messaging services, etc.) as well as components/services within the DataOS environment.
 
 These built-in stacks offer a wide range of capabilities, empowering data developers to efficiently build, process, and manage data within the DataOS ecosystem.
-

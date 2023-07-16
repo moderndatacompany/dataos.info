@@ -129,14 +129,15 @@ layer: user
 ### **`<resource-type>`**
 
 **Description:** specifies attributes specific to a \<resource-type\> <br>
-**Data type:** object <br>
+**Data type:** mapping <br>
 **Requirement:** mandatory <br>
 **Default value:** none <br>
 **Possible value:** 
 - *key* - cluster, compute, depot, policy, secret, service, stack or workflow
 - *value* - attributes specific for a particular \<resource-type\> <br>
 
-> By declaring the type of the Resource, say `workflow:`, followed by a space, we are basically creating a *mapping* in YAML. 
+> By declaring the type of the Resource, say `workflow:`, followed by a space, we are basically creating a *mapping* in YAML.
+> To know about the key-value pairs within each *mapping*, go through the pages of respective DataOS Resources. 
 
 **Example usage:**
 ```yaml

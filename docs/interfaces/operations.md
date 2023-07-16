@@ -181,7 +181,6 @@ A workload is a DataOS application running in one or more Kubernetes pods. You h
 
 ### **Ingresses**
 Ingresses are configured within the DataOS platform for specific namespaces such as core apps, Poros, network gateway etc. These ingresses enable external access to the services and applications running within these namespaces, providing a secure and controlled entry point for incoming traffic. By defining and managing these ingresses, administrators can effectively control and direct the flow of network traffic to the respective namespaces, ensuring proper connectivity and access to the deployed resources.
-<center>
 
 ## Cloud Kernel 
 ### **Resources**
