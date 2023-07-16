@@ -5,7 +5,14 @@ hide:
 ---
 # DataOS Philosophy
 
-Adopting an Operating System for data is not just another tooling shift or migration activity. While it is almost as simple as the former and not as challenging as the latter, the context of such a shift is entirely different. Enabling an OS for data is essentially a pivot in your data philosophy. Everything from how you approach and ingest data to how you understand and operationalise it undergoes a major transformation. But it is truly an essential future-proofing kit- a cushion of flexibility to bear the storm of the rapidly changing technical landscape of data.
+Adopting an Operating System for data is not just another tooling shift or migration activity. While it is almost as simple as the former and not as challenging as the latter, the context of such a shift is entirely different. Enabling an OS for data is essentially a pivot in your data philosophy. Everything from how you approach and ingest data to how you understand and operationalise it undergoes a major transformation.
+
+One of these core mindset shifts is the evolution from traditional two-dimensional tables to [Data Products](https://datadeveloperplatform.org/what_is_data_developer_platform/#what-is-a-data-product). While the former is an isolated unit of data wandering across the data ecosystem without governance or razor-focused purpose, the latter (Data Products) is a technologically aesthetic amalgam of well-defined purpose and execution. Only an Operating System design enables such a blend at scale.
+
+DataOS, as a [direct implementation of an OS design specifically built for data](https://datadeveloperplatform.org/), allows users to build a product experience around data and tie efforts and initiatives to the business value. Moreover, Data Product being an atomic building block of software-like data stacks, makes DataOS truly an essential future-proofing kit- a cushion of flexibility to bear the storm of the rapidly changing technical landscape of data; from traditional and modern data stacks to fabric and mesh-y frameworks.
+
+
+
 ## Your Familiar Operating System
 
 Operating systems have been at the heart of enabling masses to access and leverage countless benefits of digital applications without the need to be skilled in infrastructure and dirty plumbing. Even app developers who are into heavy engineering need not bootstrap the whole system from scratch to build their applications. Instead, they put together different unique capabilities available on the OS to spin up these applications and deploy at scale.
