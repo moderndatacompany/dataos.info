@@ -6,6 +6,7 @@ hide:
 # Architecture of DataOS
 
 DataOS is a distributed cloud computing system based on micro-services architecture. This makes the services within its collection -
+
 - Loosely coupled
 - Independently deployable
 - Work with different technologies and programming languages
@@ -107,4 +108,4 @@ This layer acts as a bridge between the Core Kernel & the User Layer. It manages
 
 The multi-layered architecture allows DataOS to make updates to the core capabilities of the system & cloud infrastructure without affecting the day-to-day operations of the business. It provides a unified architecture for the data infrastructure by abstracting the complexities of the microservices architecture.  
 
-The most important advantage that DataOS’ architecture provides over other data infrastructures is overcoming the fragmented developer experience and disjointed observability. The Interfaces of DataOS, abstractions provided by the 3-layered structure of the OS and composability of DataOS Resources together enable data developers & operators to collaborate, lower integration & operational costs, and scale & speed-up data initiatives. 
+The most important advantage that DataOS’ architecture provides over other data infrastructures is overcoming the fragmented developer experience and disjointed observability. The [Interfaces](./interfaces.md) of DataOS, abstractions provided by the 3-layered structure of the OS and composability of [DataOS Resources](./resources.md) together enable data developers & operators to collaborate, lower integration & operational costs, and scale & speed-up data initiatives. 
