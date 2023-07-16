@@ -1,6 +1,6 @@
 # Compute
 
-Compute is a fundamental Resource in the DataOS ecosystem that enables the allocation of processing power for data processing, querying and machine learning workloads. It facilitates the creation of node pools, which are groups of virtual machines (VMs) with similar configurations (CPU, RAM, Storage Capacity, Network Protocal, and Storage Drive Types), and makes them available to DataOS as a Compute Resource, accessible through unique names. By defining a Compute Resource, the need for manually specifying individual VMs for provisioning is eliminated, streamlining resource management. 
+Compute is a fundamental [Resource](../resources.md) in the DataOS ecosystem that enables the allocation of processing power for data processing, querying and machine learning workloads. It facilitates the creation of node pools, which are groups of virtual machines (VMs) with similar configurations (CPU, RAM, Storage Capacity, Network Protocal, and Storage Drive Types), and makes them available to DataOS as a Compute Resource, accessible through unique names. By defining a Compute Resource, the need for manually specifying individual VMs for provisioning is eliminated, streamlining resource management. 
 
 <center>
 
@@ -15,7 +15,7 @@ During the initial setup of DataOS, Compute is one of the primary Resource creat
 
 For example, Compute Resources of the `query` type are designated to empower Minerva Clusters with robust computational power, thereby enabling efficient data querying. Conversely, Compute Resources classified as `runnable` type facilitate the execution of runnable Resources, such as Workflows and Services, by providing the necessary computational capacity.
 
-<aside style="padding:15px; border-radius:5px;">
+<aside class="callout">
 
 🗣️  The creation of a Compute Resource requires the setup of node pools. Only users with access to provision node pools, specifically Kubernetes Administrators within the organization, can perform this task.
 </aside>
@@ -64,7 +64,7 @@ To meet the diverse requirements of data processing, machine learning, and query
 
 DataOS leverages Kubernetes for cluster and container management, enabling the creation and management of VM groups known as node pools. These node pools are defined by specific profiles, encompassing CPU, memory, and disk capacity. Before proceeding with Compute Resource creation, it is necessary to provision a node pool and register it with Kubernetes.
 
-<aside style="padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣️ Please get in touch with the Kubernetes administrator in your organization to create a node pool.
 
 </aside>
@@ -114,20 +114,20 @@ The table below presents an overview of attributes/fields within a the Compute-s
 
 | Field | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`compute`](./compute/compute_grammar.md#compute) | object | none | none | mandatory |
-| [`dataplane`](./compute//compute_grammar.md#dataplane) | string | none | hub | mandatory |
-| [`purpose`](./compute/compute_grammar.md#purpose) | string | none | runnable/query/gpu | mandatory |
-| [`nodePool`](./compute/compute_grammar.md#nodepool) | object | none | none | mandatory  |
-| [`nodeSelector`](./compute/compute_grammar.md#nodeselector) | object | none | none | mandatory |
-| [`tolerations`](./compute/compute_grammar.md#tolerations) | object | none | none | mandatory |
-| [`key`](./compute/compute_grammar.md#key) | string | none | any valid string | mandatory |
-| [`operator`](./compute/compute_grammar.md#operator) | string | none | Equal/Exists | mandatory  |
-| [`value`](./compute/compute_grammar.md#value) | string | none | query/runnable/gpu | mandatory |
-| [`effect`](./compute/compute_grammar.md#effect) | string | none | NoSchedule/PreferNoSchedule/NoExecute | mandatory |
+| [`compute`](./compute/compute_section_specific_grammar.md#compute) | object | none | none | mandatory |
+| [`dataplane`](./compute/compute_section_specific_grammar.md#dataplane) | string | none | hub | mandatory |
+| [`purpose`](./compute/compute_section_specific_grammar.md#purpose) | string | none | runnable/query/gpu | mandatory |
+| [`nodePool`](./compute/compute_section_specific_grammar.md#nodepool) | object | none | none | mandatory  |
+| [`nodeSelector`](./compute/compute_section_specific_grammar.md#nodeselector) | object | none | none | mandatory |
+| [`tolerations`](./compute/compute_section_specific_grammar.md#tolerations) | object | none | none | mandatory |
+| [`key`](./compute/compute_section_specific_grammar.md#key) | string | none | any valid string | mandatory |
+| [`operator`](./compute/compute_section_specific_grammar.md#operator) | string | none | Equal/Exists | mandatory  |
+| [`value`](./compute/compute_section_specific_grammar.md#value) | string | none | query/runnable/gpu | mandatory |
+| [`effect`](./compute/compute_section_specific_grammar.md#effect) | string | none | NoSchedule/PreferNoSchedule/NoExecute | mandatory |
 
 </center>
 
-For a comprehensive understanding of each attribute and its configuration options, please refer to the following [link](./compute/compute_grammar.md). 
+For a comprehensive understanding of each attribute and its configuration options, please refer to the following [link](./compute/compute_section_specific_grammar.md). 
 
 Additionally, if you are looking for pre-configured Compute templates tailored for specific workloads such as ETL, Machine Learning, and Query, you can explore them [here](./compute/compute_templates.md). 
 

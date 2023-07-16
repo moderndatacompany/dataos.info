@@ -151,13 +151,17 @@ workflow:
 
 The table below summarizes how the values for `version`, `type` & `layer` are declared for different types of Resources.
 
-| Resource | version | type | layer | `<resource-type>` |
+<center>
+
+| Resource | version | type | layer | <resource-type\> |
 | --- | --- | --- | --- | --- |
-| Cluster | v1 | cluster | not required | cluster:  |
-| Compute | v1beta | compute | system | compute:  |
-| Depot | v1 | depot | user | depot:  |
-| Policy | v1 | policy | user/system | policy:  |
-| Secret | v1 | secret | not required | secret:  |
-| Service | v1 | service | not required | service:  |
-| Stack | NA | NA | NA | stack:  |
-| Workflow | v1 | workflow | not required | workflow:  |
+| Cluster | v1 | cluster | not required | cluster |
+| Compute | v1beta | compute | system | compute |
+| Depot | v1 | depot | user | depot |
+| Policy | v1 | policy | user/system | policy |
+| Secret | v1 | secret | not required | secret |
+| Service | v1 | service | not required | service |
+| Stack | NA | NA | NA | stack |
+| Workflow | v1 | workflow | not required | workflow |
+
+</center>
