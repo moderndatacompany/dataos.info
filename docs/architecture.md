@@ -19,7 +19,7 @@ Heimdall is the governance engine for all access control within DataOS. Whether 
 
 ### Metis
 
-Metis is the metadata manager of DataOS. It collates & curates operational metadata, technical & business metadata from various data sources, as well as DataOS Resources. Metis serves this metadata via a graphical user interface for consumption by data developers. Combined with Odin (service for Knowledge Graphs), it forms a semantic web to generate ontologies with specific business values. 
+[Metis](./interfaces/metis.md) is the metadata manager of DataOS. It collates & curates operational metadata, technical & business metadata from various data sources, as well as DataOS Resources. Metis serves this metadata via a graphical user interface for consumption by data developers. Combined with Odin (service for Knowledge Graphs), it forms a semantic web to generate ontologies with specific business values. 
 
 ### Gateway
 
@@ -27,7 +27,7 @@ A service which runs on top of the query engine, Minerva, and is responsible for
 
 ### Caretaker
 
-It captures, stores & serves information related to pods (such as pod states & aggregates) or compute nodes. It maintains the historical data in blob storage while serving the current states of running pods via the Operations app.
+It captures, stores & serves information related to pods (such as pod states & aggregates) or compute nodes. It maintains the historical data in blob storage while serving the current states of running pods via the [Operations app](./interfaces/operations.md).
 
 ---
 
@@ -44,9 +44,11 @@ Studying the implementation of the micro-services design of DataOS helps compreh
 > 
 > > As an implementation of micro-services design;
 > > 
+>
 > 
 > > A self-serve data infrastructure; and
 > > 
+>
 > 
 > > As an operating system
 > > 
@@ -61,12 +63,12 @@ Let us look at DataOS from the perspective of data infrastructure.
 ## Data-management Architecture
 
 ![Design showcasing data-flow patterns in the *User Space* of DataOS](./architecture/dataos_architecture.jpg)
+<center><i>Design showcasing data-flow patterns in the *User Space* of DataOS</i></center>
+<br/>
 
-Design showcasing data-flow patterns in the *User Space* of DataOS
+The User Space is the layer of DataOS where data developers work - further information is provided in the section on the [Operating System](./architecture.md#design-of-the-operating-system). A data developer, or a *data product developer*, interacts with the system through interfaces in the *user layer*.
 
-The User Space is the layer of DataOS where data developers work - further information is provided in the section on the Operating System (add link). A data developer, or a *data product* developer, interacts with the system through interfaces in the *user layer*.
-
-- Depot acts as the data interface between the source systems and DataOS Stacks; as well as other Resources. Various services, like the catalog (Metis) and the query engine (Minerva) also leverage depots to establish communication for querying and data modeling jobs.
+- [Depot](./resources/depot.md) acts as the data interface between the source systems and DataOS Stacks; as well as other Resources. Various services, like the catalog (Metis) and the query engine (Minerva) also leverage depots to establish communication for querying and data modeling jobs.
 - The Application Platform encapsulates DataOS Resources & programming paradigms with which a data producer works. This is where data ingestion & processing jobs are written, long-running services & applications are configured, and ETL/ELT or Reverse ELT pipelines are built.
 - Poros is the orchestrator of all DataOS Resources. It manages their lifecycle, versioning and works to reconcile the *current state* of Resources with the *desired state*. It is based on the *operator pattern* of Kubernetes
 - Minerva is a federated query engine. It executes queries on the coordinator-worker node pattern. With Minerva, the storage and compute are decoupled and can be scaled independently. Minerva represents the compute/cluster layer, whereas the underlying data sources represent the storage layer.
@@ -79,14 +81,14 @@ Throughout this journey of data across various applications & services, the data
 
 DataOS specs resemble the principles of a Data Developer Platform, such as declarative infrastructure management and dynamic configuration management with access control & version control systems in place, among others. This makes it the infrastructure of choice for creating, deploying and managing data products at scale.
 
-- The depots & APIs provide the input/output ports, while the stacks like Flare & Benthos are used to configure the transformation logic on the data products. All the while, the system provides you with end-to-end observability, monitoring & customizability to define metrics or SLOs for different stages of the data product’s lifecycle, and provision computes & clusters with DataOS Resources on demand.
+- The depots & APIs provide the input/output ports, while the stacks like [Flare](./resources/stacks/flare.md) & [Benthos](./resources/stacks/benthos.md) are used to configure the transformation logic on the data products. All the while, the system provides you with end-to-end observability, monitoring & customizability to define metrics or SLOs for different stages of the data product’s lifecycle, and provision computes & clusters with DataOS Resources on demand.
 - The separation of Compute & Storage allows the users to scale both independently & optimize costs while building & experimenting with new data products.
 - The native governance with Heimdall & Gateway ensures granular access control on every aspect of data products, Metis provides the ability to discover, understand & categorize the data products, and Poros automates the orchestration.
-- The interfaces of applications like Lens, Workbench & Atlas enable data developers to experiment with data products quickly and in a self-serve manner.
-- The niche capabilities as provided with DataOS Resources like Service & Alpha stack.
-- Abstractions over all the parts of the aforementioned micro-services architecture and the open standards used while building them makes the system flexible, customizable towards the addition of new tools & technologies, and allow one to create data products even for the edge cases.
+- The interfaces of applications like [Lens](./interfaces/lens.md), [Workbench](./interfaces/workbench.md) & [Atlas](./interfaces/atlas.md) enable data developers to experiment with data products quickly and in a self-serve manner.
+- The niche capabilities as provided with DataOS Resources like [Service](./resources/service.md) & [Alpha stack](./resources/stacks/alpha.md) allow one to create data products even for the edge cases..
+- Abstractions over all the parts of the aforementioned micro-services architecture and the open standards used while building them makes the system flexible and customizable towards the addition of new tools & technologies. 
 
-Having an operating system to perform all these tasks means that the developer experience is consistent & seamless, and the data developers can focus on & accelerate building of data products to solve business problems rather than get bogged down with solving the problems for data teams of each domain within the organization.
+Having an operating system to perform all these tasks means that the developer experience is consistent & seamless, and the data product developers can focus on & accelerate building of data products to solve business problems rather than get bogged down with solving the problems for data teams of each domain within the organization.
 
 ---
 
