@@ -1,6 +1,6 @@
 # Audience UI
 
-## DataOS Audience on Home Page
+## Audience on DataOS Home App
  
 <center>
 
@@ -8,7 +8,7 @@
 
 </center>
 
-<figcaption align = "center">Audiences App on the DataOS Home Page</figcaption>
+<figcaption align = "center">Audiences on the DataOS Home App</figcaption>
 <br>
 
 ## Audience Builder
