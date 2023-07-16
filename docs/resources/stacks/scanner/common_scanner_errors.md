@@ -48,7 +48,7 @@ FROM   information_schema.table_privileges
 WHERE  grantee = 'MY_USER_Name'
 ```
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 The errors thrown in the case of Redshift and PostgresSQL databases are mostly the same. Please check if you have enough permissions to scan the metadata from the underlying sources.
 
 </aside>

@@ -13,7 +13,7 @@ You can scan metadata details such as schemas, tables, view details, etc., from 
 
 DataOS allows you to connect to a database with JDBC driver to read data from tables using Depot. You can also scan metadata from an SNOWFLAKE-type depot with Scanner workflows.The Depot enables access to all schemas visible to the specified user in the configured database, SNOWFLAKE. 
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 Ensure that the depot is created for your SNOWFLAKE database and you have `Read` access for the depot.
 
 </aside>

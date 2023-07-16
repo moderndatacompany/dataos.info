@@ -1,6 +1,6 @@
 # Cluster
 
-The Cluster Resource in DataOS is a fundamental Resource that encompasses a set of computational resources and configurations necessary for executing data engineering and analytics tasks. It relies on the [Compute](./compute.md) Resource, which provides the required processing power for the workloads executed within the Cluster. 
+The Cluster Resource in DataOS is a fundamental [Resource](../resources.md) that encompasses a set of computational resources and configurations necessary for executing data engineering and analytics tasks. It relies on the [Compute](./compute.md) Resource, which provides the required processing power for the workloads executed within the Cluster. 
 
 A Compute Resource can be provisioned [on-demand](./cluster/on_demand_computing.md), allowing for efficient allocation of resources based on workload-specific requirements. This decoupling of computation and storage, facilitates flexibility, cost-efficiency and scalability.
 
@@ -93,21 +93,21 @@ cluster:
 
 | Field | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`cluster`](./cluster/cluster_grammar.md#cluster) | object | none | none | mandatory |
-| [`compute`](./cluster/cluster_grammar.md#compute) | string | none | query-default or any other query type custom Compute Resource | mandatory |
-| [`runAsUser`](./cluster/cluster_grammar.md#runasuser) | string | none | userid of the use case assignee | optional |
-| [`maintenance`](./cluster/cluster_grammar.md#maintenance) | object | none | none | optional |
-| [`restartCrons`](./cluster/cluster_grammar.md#restartcron) | string | none | any valid cron expression | optional |
-| [`scalingCrons`](./cluster/cluster_grammar.md#scalingcrons) | object | none | none | optional |
-| [`cron`](./cluster/cluster_grammar.md#cron) | string | none | any valid cron expression | optional |
-| [`replicas`](./cluster/cluster_grammar.md#replicas) | integer | 1 | positive integer | optional |
-| [`resources`](./cluster/cluster_grammar.md#resources) | object | none | none | optional |
-| [`limits`](./cluster/cluster_grammar.md#limits) | object | none | none | optional |
-| [`cpu`](./cluster/cluster_grammar.md#cpu) | string | requests: 100m, limits: 400m | number of cpu units in milliCPU(m) or cpu Core| optional |
-| [`memory`](./cluster/cluster_grammar.md#memory) | string | requests: 100Mi, limits: 400Mi | memory in Mebibytes(Mi) or Gibibytes(Gi) | optional |
-| [`requests`](./cluster/cluster_grammar.md#requests) | object | none | none | optional |
+| [`cluster`](./cluster/cluster_section_specific_grammar.md#cluster) | object | none | none | mandatory |
+| [`compute`](./cluster/cluster_section_specific_grammar.md#compute) | string | none | query-default or any other query type custom Compute Resource | mandatory |
+| [`runAsUser`](./cluster/cluster_section_specific_grammar.md#runasuser) | string | none | userid of the use case assignee | optional |
+| [`maintenance`](./cluster/cluster_section_specific_grammar.md#maintenance) | object | none | none | optional |
+| [`restartCrons`](./cluster/cluster_section_specific_grammar.md#restartcron) | string | none | any valid cron expression | optional |
+| [`scalingCrons`](./cluster/cluster_section_specific_grammar.md#scalingcrons) | object | none | none | optional |
+| [`cron`](./cluster/cluster_section_specific_grammar.md#cron) | string | none | any valid cron expression | optional |
+| [`replicas`](./cluster/cluster_section_specific_grammar.md#replicas) | integer | 1 | positive integer | optional |
+| [`resources`](./cluster/cluster_section_specific_grammar.md#resources) | object | none | none | optional |
+| [`limits`](./cluster/cluster_section_specific_grammar.md#limits) | object | none | none | optional |
+| [`cpu`](./cluster/cluster_section_specific_grammar.md#cpu) | string | requests: 100m, limits: 400m | number of cpu units in milliCPU(m) or cpu Core| optional |
+| [`memory`](./cluster/cluster_section_specific_grammar.md#memory) | string | requests: 100Mi, limits: 400Mi | memory in Mebibytes(Mi) or Gibibytes(Gi) | optional |
+| [`requests`](./cluster/cluster_section_specific_grammar.md#requests) | object | none | none | optional |
 
-For additional information about attributes within the Cluster-specific Section, refer to the [link.](./cluster/cluster_grammar.md)
+For additional information about attributes within the Cluster-specific Section, refer to the [link.](./cluster/cluster_section_specific_grammar.md)
 
 #### **Configuring the Minerva-specific Section**
 
@@ -153,34 +153,34 @@ minerva:
 
 | Field | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`minerva`](./cluster/cluster_grammar.md#minerva) | object | none | none | mandatory |
-| [`selector`](./cluster/cluster_grammar.md#selector) | object | none | none | mandatory |
-| [`users`](./cluster/cluster_grammar.md#users) | list of strings | none | a valid subset of all available users within DataOS or regex pattern | mandatory |
-| [`tags`](./cluster/cluster_grammar.md#tags) | list of strings | none | any valid tag or regex pattern | optional |
-| [`sources`](./cluster/cluster_grammar.md#sources) | list of strings | none | list of strings representing source or regex pattern | mandatory |
-| [`replicas`](./cluster/cluster_grammar.md#replicas) | integer | 1 | 1-4 | mandatory |
-| [`match`](./cluster/cluster_grammar.md#match) | string | none | any/all | mandatory |
-| [`priority`](./cluster/cluster_grammar.md#priority) | integer | 10 | 1-5000 | mandatory |
-| [`runAsApiKey`](./cluster/cluster_grammar.md#runasapikey) | string | users dataos api key | any valid dataos api key | mandatory |
-| [`runAsUser`](./cluster/cluster_grammar.md#runasuser) | string | none | userid of the use case assignee | optional |
-| [`resources`](./cluster/cluster_grammar.md#resources) | object | none | none | optional |
-| [`limits`](./cluster/cluster_grammar.md#limits) | object | none | none | optional |
-| [`cpu`](./cluster/cluster_grammar.md#cpu) | string | requests: 100m, limits: 400m | number of cpu units in milliCPU(m) or cpu Core| optional |
-| [`memory`](./cluster/cluster_grammar.md#memory) | string | requests: 100Mi, limits: 400Mi | memory in Mebibytes(Mi) or Gibibytes(Gi) | optional |
-| [`requests`](./cluster/cluster_grammar.md#requests) | object | none | none | optional |
-| [`debug`](./cluster/cluster_grammar.md#debug) | object | none | none | mandatory |
-| [`logLevel`](./cluster/cluster_grammar.md#loglevel) | object | none | none | optional |
-| [`logLevel`](./cluster/cluster_grammar.md#loglevel) | object | INFO | INFO/DEBUG/ERROR | optional |
-| [`trinoLogLevel`](./cluster/cluster_grammar.md#trinologlevel) | object | INFO | INFO/DEBUG/ERROR | optional |
-| [`depots`](./cluster/cluster_grammar.md#depots) | list of objects | none | none | optional |
-| [`address`](./cluster/cluster_grammar.md#address) | string | none | valid depot udl address | optional |
-| [`properties`](./cluster/cluster_grammar.md#properties) | object | none | none | optional |
-| [`catalogs`](./cluster/cluster_grammar.md#catalogs) | list of objects | none | none | optional |
-| [`name`](./cluster/cluster_grammar.md#name) | string | none | any valid string | optional |
-| [`type`](./cluster/cluster_grammar.md#type) | string | none | oracle/memory/wrangler/redshift | mandatory |
-| [`properties`](./cluster/cluster_grammar.md#properties-1) | object | none | valid connector properties | optional |
+| [`minerva`](./cluster/cluster_section_specific_grammar.md#minerva) | object | none | none | mandatory |
+| [`selector`](./cluster/cluster_section_specific_grammar.md#selector) | object | none | none | mandatory |
+| [`users`](./cluster/cluster_section_specific_grammar.md#users) | list of strings | none | a valid subset of all available users within DataOS or regex pattern | mandatory |
+| [`tags`](./cluster/cluster_section_specific_grammar.md#tags) | list of strings | none | any valid tag or regex pattern | optional |
+| [`sources`](./cluster/cluster_section_specific_grammar.md#sources) | list of strings | none | list of strings representing source or regex pattern | mandatory |
+| [`replicas`](./cluster/cluster_section_specific_grammar.md#replicas) | integer | 1 | 1-4 | mandatory |
+| [`match`](./cluster/cluster_section_specific_grammar.md#match) | string | none | any/all | mandatory |
+| [`priority`](./cluster/cluster_section_specific_grammar.md#priority) | integer | 10 | 1-5000 | mandatory |
+| [`runAsApiKey`](./cluster/cluster_section_specific_grammar.md#runasapikey) | string | users dataos api key | any valid dataos api key | mandatory |
+| [`runAsUser`](./cluster/cluster_section_specific_grammar.md#runasuser) | string | none | userid of the use case assignee | optional |
+| [`resources`](./cluster/cluster_section_specific_grammar.md#resources) | object | none | none | optional |
+| [`limits`](./cluster/cluster_section_specific_grammar.md#limits) | object | none | none | optional |
+| [`cpu`](./cluster/cluster_section_specific_grammar.md#cpu) | string | requests: 100m, limits: 400m | number of cpu units in milliCPU(m) or cpu Core| optional |
+| [`memory`](./cluster/cluster_section_specific_grammar.md#memory) | string | requests: 100Mi, limits: 400Mi | memory in Mebibytes(Mi) or Gibibytes(Gi) | optional |
+| [`requests`](./cluster/cluster_section_specific_grammar.md#requests) | object | none | none | optional |
+| [`debug`](./cluster/cluster_section_specific_grammar.md#debug) | object | none | none | mandatory |
+| [`logLevel`](./cluster/cluster_section_specific_grammar.md#loglevel) | object | none | none | optional |
+| [`logLevel`](./cluster/cluster_section_specific_grammar.md#loglevel) | object | INFO | INFO/DEBUG/ERROR | optional |
+| [`trinoLogLevel`](./cluster/cluster_section_specific_grammar.md#trinologlevel) | object | INFO | INFO/DEBUG/ERROR | optional |
+| [`depots`](./cluster/cluster_section_specific_grammar.md#depots) | list of objects | none | none | optional |
+| [`address`](./cluster/cluster_section_specific_grammar.md#address) | string | none | valid depot udl address | optional |
+| [`properties`](./cluster/cluster_section_specific_grammar.md#properties) | object | none | none | optional |
+| [`catalogs`](./cluster/cluster_section_specific_grammar.md#catalogs) | list of objects | none | none | optional |
+| [`name`](./cluster/cluster_section_specific_grammar.md#name) | string | none | any valid string | optional |
+| [`type`](./cluster/cluster_section_specific_grammar.md#type) | string | none | oracle/memory/wrangler/redshift | mandatory |
+| [`properties`](./cluster/cluster_section_specific_grammar.md#properties-1) | object | none | valid connector properties | optional |
 
-For additional information about attributes within the Minerva-specific Section, refer to the [link.](./cluster/cluster_grammar.md)
+For additional information about attributes within the Minerva-specific Section, refer to the [link.](./cluster/cluster_section_specific_grammar.md)
 
 
 ### **Apply the Cluster YAML**
@@ -221,7 +221,7 @@ In the Operations App, click the '+ Create Resource' button. This action will op
 
 ### **Fill in the Required Fields**
 
-Provide the necessary details in the required properties fields and click 'Create Cluster'. For more information on these properties, refer to the documentation [here.](./cluster/cluster_grammar.md)
+Provide the necessary details in the required properties fields and click 'Create Cluster'. For more information on these properties, refer to the documentation [here.](./cluster/cluster_section_specific_grammar.md)
 
 ![Creating a Cluster Using Operations App UI 3](./cluster/creating_cluster_using_operations_app_ui/cluster_4.png)
 

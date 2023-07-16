@@ -56,8 +56,6 @@ Depot Service is a DataOS service that manages the Depot resource.
 - It provides users with a powerful and scalable API/JDBC-based query interface, enabling direct querying of stored data. The interface is backed by a dataframe-based SQL engine, allowing for efficient data retrieval and analysis. With the Depot Service, users can leverage the Minerva query engine, DataOS stacks, Lens, and other components of DataOS to interact with their data.
 - The Depot Service also facilitates in-depth introspection of depots and their associated storage engines. Once a depot is created, users can obtain comprehensive information about the datasets contained within, including details such as dictionary, constraints, partition, and indexing. For a detailed understanding of this process, please refer to the [Scanner](./stacks/scanner.md) stack documentation.
 
-To explore the full range of capabilities offered by the Depot Service, please visit the following page: [Depot Service](./depot/depot_service.md)
-
 ## Create Depot
 
 Creating a depot in DataOS is a streamlined process facilitated by the use of YAML configuration files. To establish a depot, simply compose a YAML configuration file and apply it using the DataOS Command Line Interface (CLI). Please refer to the following documentation to know more:

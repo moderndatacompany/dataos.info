@@ -113,8 +113,6 @@ policy:
     allow: {{false}}
 ```
 
-Enabling Subject with 
-
 **Enabling Predicates on a particular collection within a Depot for Subjects whose tags follow a Specific RegeX**
 
 The provided template defines a policy that allows access to a dataset stored within a Depot. The sample given below allows users with tags following the regex `roles:id:**` OR `users:id:**` tag to execute any predicates on the dataset stored at the UDL address, `dataos://icebase:test_healthcare/**`. Please remember to customize the template by replacing the placeholder values with the necessary details based on your specific requirements.
@@ -154,1036 +152,906 @@ policy:
 
 ### Masking Policy
 
-### Bucket Number
+#### **Bucket Number**
 
 **Template 1**
 
+This template defines a masking policy for bucketing age values. It replaces individual ages with the lowest value of the respective bucket. Please note that you should replace the placeholder values with the appropriate details based on your specific requirements.
+
 ```yaml
-name: age
+name: {{age}}
 version: v1
 type: policy
 tags:
-  - dataos:type:resource
-  - dataos:type:cluster-resource
-  - dataos:resource:policy
-  - dataos:layer:user
+  - {{dataos:type:resource}}
+  - {{dataos:type:cluster-resource}}
 description: >-
-  An age bucket is formed by grouping the ages together. Based on defined age
+  {{An age bucket is formed by grouping the ages together. Based on defined age
   buckets, the age of individuals is redacted and anonymized. If an individual’s
   age falls under a defined bucket, it is replaced with the lowest value of the
-  bucket.
-owner: iamgroot
+  bucket.}}
+owner: {{iamgroot}}
 layer: user
 policy:
   data:
-    description: >-
-      An age bucket is formed by grouping the ages together. Based on defined
-      age buckets, the age of individuals is redacted and anonymized. If an
-      individual’s age falls under a defined bucket, it is replaced with the
-      lowest value of the bucket.
-    name: age
-    priority: 100
+    priority: {{100}}
     type: mask
     mask:
       bucket_number:
         buckets:
-          - 5
-          - 12
-          - 18
-          - 25
-          - 45
-          - 60
-          - 70
+          - {{5}}
+          - {{12}}
+          - {{18}}
+          - {{25}}
+          - {{45}}
+          - {{60}}
+          - {{70}}
       operator: bucket_number
     selector:
       column:
         tags:
-          - PII.Age
+          - {{PII.Age}}
       user:
-        match: any
+        match: {{any}}
         tags:
-          - roles:id:user
+          - {{roles:id:user}}
 ```
 
 **Template 2**
 
 ```yaml
-name: agephi
+name: {{agephi}}
 version: v1
 type: policy
 tags:
-  - dataos:type:resource
-  - dataos:type:cluster-resource
-  - dataos:resource:policy
-  - dataos:layer:user
+  - {{dataos:type:resource}}
+  - {{dataos:type:cluster-resource}}
 description: >-
-  An age bucket is formed by grouping the ages together. Based on defined age
+  {{An age bucket is formed by grouping the ages together. Based on defined age
   buckets, the age of individuals is redacted and anonymized. If an individual’s
   age falls under a defined bucket, it is replaced with the lowest value of the
-  bucket.
-owner: dataos-manager
+  bucket.}}
+owner: {{dataos-manager}}
 layer: user
 policy:
   data:
-    description: >-
-      An age bucket is formed by grouping the ages together. Based on defined
-      age buckets, the age of individuals is redacted and anonymized. If an
-      individual’s age falls under a defined bucket, it is replaced with the
-      lowest value of the bucket.
-    name: age
-    priority: 100
+    priority: {{100}}
     type: mask
     mask:
       bucket_number:
         buckets:
-          - 5
-          - 12
-          - 18
-          - 25
-          - 45
-          - 60
-          - 70
+          - {{5}}
+          - {{12}}
+          - {{18}}
+          - {{25}}
+          - {{45}}
+          - {{60}}
+          - {{70}}
       operator: bucket_number
     selector:
       column:
         tags:
-          - PHI.Age
+          - {{PHI.Age}}
       user:
-        match: any
+        match: {{any}}
         tags:
-          - roles:id:user
+          - {{roles:id:user}}
 ```
 
 **Template 3**
 
 ```yaml
-name: income
+name: {{income}}
 version: v1
 type: policy
 tags:
-  - dataos:type:resource
-  - dataos:type:cluster-resource
-  - dataos:resource:policy
-  - dataos:layer:user
+  - {{dataos:type:resource}}
+  - {{dataos:type:cluster-resource}}
+  - {{dataos:resource:policy}}
 description: >-
   Incomes are grouped into buckets to represent different income ranges. An
   individual's income is redacted and anonymized with the lowest value in the
   bucket.
-owner: dataos-manager
+owner: {{dataos-manager}}
 layer: user
 policy:
   data:
-    description: >-
-      Incomes are grouped into buckets to represent different income ranges. An
-      individual's income is redacted and anonymized with the lowest value in
-      the bucket.
-    name: income
-    priority: 100
+    priority: {{100}}
     type: mask
     mask:
       bucket_number:
         buckets:
-          - 1000
-          - 2000
-          - 5000
-          - 10000
-          - 50000
-          - 100000
-          - 200000
-          - 500000
+          - {{1000}}
+          - {{2000}}
+          - {{5000}}
+          - {{10000}}
+          - {{50000}}
+          - {{100000}}
+          - {{200000}}
+          - {{500000}}
       operator: bucket_number
     selector:
       column:
         tags:
-          - PII.Income
+          - {{PII.Income}}
       user:
-        match: any
+        match: {{any}}
         tags:
-          - roles:id:user
+          - {{roles:id:user}}
 ```
 
 **Template 4**
 
 ```yaml
-name: test-phi-bucket-age
+name: {{test-phi-bucket-age}}
 version: v1
 type: policy
 tags:
-  - dataos:type:resource
-  - dataos:type:cluster-resource
-  - dataos:resource:policy
-  - dataos:layer:user
-description: Dummy rule for demonstration
-owner: nandapage
+  - {{dataos:type:resource}}
+  - {{dataos:type:cluster-resource}}
+  - {{dataos:resource:policy}}
+  - {{dataos:layer:user}}
+description: {{Dummy rule for demonstration}}
+owner: {{iamgroot}}
 layer: user
 policy:
   data:
-    description: Dummy rule for demonstration
-    name: test-phi-bucket-age
-    priority: 40
+    priority: {{40}}
     type: mask
     mask:
       bucket_number:
         buckets:
-          - 20
-          - 40
-          - 60
-          - 80
+          - {{20}}
+          - {{40}}
+          - {{60}}
+          - {{80}}
       operator: bucket_number
     selector:
       column:
         tags:
-          - PHI.age
+          - {{PHI.age}}
       user:
-        match: any
+        match: {{any}}
         tags:
-          - roles:id:system-dev
-          - roles:id:data-dev
+          - {{roles:id:system-dev}}
+          - {{roles:id:data-dev}}
 ```
 
-### Bucket Date
+#### **Bucket Date**
 
 **Template 1**
 
 ```yaml
-name: date-of-birth
+name: {{date-of-birth}}
 version: v1
 type: policy
 tags:
-  - dataos:type:resource
-  - dataos:type:cluster-resource
-  - dataos:resource:policy
-  - dataos:layer:user
+  - {{dataos:type:resource}}
+  - {{dataos:type:cluster-resource}}
+  - {{dataos:resource:policy}}
+  - {{dataos:layer:user}}
 description: >-
-  Groups the date of births into buckets and redacts it to
+  {{Groups the date of births into buckets and redacts it to
   either(hour/day/week/month). By replacing the Date of Birth with the bucket's
-  lower value, an individual's Date of Birth is hidden.
-owner: dataos-manager
+  lower value, an individual's Date of Birth is hidden.}}
+owner: {{iamgroot}}
 layer: user
 policy:
   data:
-    description: >-
-      Groups the date of births into buckets and redacts it to
-      either(hour/day/week/month). By replacing the Date of Birth with the
-      bucket's lower value, an individual's Date of Birth is hidden.
-    name: date-of-birth
-    priority: 99
+    priority: {{99}}
     type: mask
     mask:
       bucket_date:
-        precision: month
+        precision: {{month}}
       operator: bucket_date
     selector:
       column:
         tags:
-          - PII.DateOfBirth
+          - {{PII.DateOfBirth}}
       user:
-        match: any
+        match: {{any}}
         tags:
-          - roles:id:user
+          - {{roles:id:user}}
 ```
 
 **Template 2**
 
 ```yaml
-name: phi-date-of-birth
+name: {{phi-date-of-birth}}
 version: v1
 type: policy
 tags:
-  - dataos:type:resource
-  - dataos:type:cluster-resource
-  - dataos:resource:policy
-  - dataos:layer:user
+  - {{dataos:type:resource}}
+  - {{dataos:type:cluster-resource}}
+  - {{dataos:resource:policy}}
+  - {{dataos:layer:user}}
 description: >-
-  Groups the date of births into buckets and redacts it to
+  {{Groups the date of births into buckets and redacts it to
   either(hour/day/week/month). By replacing the Date of Birth with the bucket's
-  lower value, an individual's Date of Birth is hidden.
-owner: dataos-manager
+  lower value, an individual's Date of Birth is hidden.}}
+owner: iamgroot
 layer: user
 policy:
   data:
-    description: >-
-      Groups the date of births into buckets and redacts it to
-      either(hour/day/week/month). By replacing the Date of Birth with the
-      bucket's lower value, an individual's Date of Birth is hidden.
-    name: phi-date-of-birth
-    priority: 99
+    priority: {{99}}
     type: mask
     mask:
       bucket_date:
-        precision: month
+        precision: {{month}}
       operator: bucket_date
     selector:
       column:
         tags:
-          - PHI.DateOfBirth
+          - {{PHI.DateOfBirth}}
       user:
-        match: any
+        match: {{any}}
         tags:
-          - roles:id:user
+          - {{roles:id:user}}
 ```
 
-### Hashing
+#### **Hashing**
 
 **Template 1**
 
 ```yaml
-name: email
+name: {{email}}
 version: v1
 type: policy
 tags:
-  - dataos:type:resource
-  - dataos:type:cluster-resource
-  - dataos:resource:policy
-  - dataos:layer:user
+  - {{dataos:type:resource}}
+  - {{dataos:layer:user}}
 description: >-
-  Masks an individual’s email address by replacing it with a generated hash
-  against the value.
-owner: dataos-manager
+  {{Masks an individual’s email address by replacing it with a generated hash
+  against the value.}}
+owner: {{iamgroot}}
 layer: user
 policy:
   data:
-    description: >-
-      Masks an individual’s email address by replacing it with a generated hash
-      against the value.
-    name: email
-    priority: 98
+    priority: {{98}}
     type: mask
     mask:
       hash:
-        algo: sha256
+        algo: {{sha256}}
       operator: hash
     selector:
       column:
         tags:
-          - PII.Email
+          - {{PII.Email}}
       user:
-        match: any
+        match: {{any}}
         tags:
-          - roles:id:user
+          - {{roles:id:user}}
 ```
 
 **Template 2**
 
 ```yaml
-name: name
+name: {{name}}
 version: v1
 type: policy
 tags:
-  - dataos:type:resource
-  - dataos:type:cluster-resource
-  - dataos:resource:policy
-  - dataos:layer:user
+  - {{dataos:type:resource}}
+  - {{dataos:type:cluster-resource}}
 description: >-
-  Masks an individual’s name by replacing it with a generated hash against the
-  value.
-owner: dataos-manager
+  {{Masks an individual’s name by replacing it with a generated hash against the
+  value.}}
+owner: {{iamgroot}}
 layer: user
 policy:
   data:
-    description: >-
-      Masks an individual’s name by replacing it with a generated hash against
-      the value.
-    name: name
-    priority: 100
+    priority: {{100}}
     type: mask
     mask:
       hash:
-        algo: sha256
+        algo: {{sha256}}
       operator: hash
     selector:
       column:
         tags:
-          - PII.Name
+          - {{PII.Name}}
       user:
-        match: any
+        match: {{any}}
         tags:
-          - roles:id:user
+          - {{roles:id:user}}
 ```
 
 **Template 3**
 
 ```yaml
-name: pii-hash
+name: {{pii-hash}}
 version: v1
 type: policy
 tags:
-  - dataos:type:resource
-  - dataos:type:cluster-resource
-  - dataos:resource:policy
-  - dataos:layer:user
-description: default data policy to hash any column tagged with fingerprint pii
-owner: dataos-manager
+  - {{dataos:type:resource}}
+description: {{default data policy to hash any column tagged with fingerprint pii}}
+owner: {{iamgroot}}
 layer: user
 policy:
   data:
-    description: default data policy to hash any column tagged with fingerprint pii
-    name: pii-hash
-    priority: 100
+    priority: {{100}}
     type: mask
     mask:
       hash:
-        algo: sha256
+        algo: {{sha256}}
       operator: hash
     selector:
       column:
         tags:
-          - PII.Sensitive
+          - {{PII.Sensitive}}
       user:
-        match: any
+        match: {{any}}
         tags:
-          - roles:id:user
+          - {{roles:id:user}}
 ```
 
 **Template 4**
 
 ```yaml
-name: test-phi-mask
+name: {{test-phi-mask}}
 version: v1
 type: policy
 tags:
-  - dataos:type:resource
-  - dataos:type:cluster-resource
-  - dataos:resource:policy
-  - dataos:layer:user
-description: data policy to hash PHI columns by tags
-owner: nandapage
+  - {{dataos:type:resource}}
+  - {{dataos:type:cluster-resource}}
+description: {{data policy to hash PHI columns by tags}}
+owner: {{iamgroot}}
 layer: user
 policy:
   data:
-    dataset: patients
-    collection: test_healthcare
-    depot: icebase
-    description: data policy to hash PHI columns by tags
-    name: test-phi-mask
-    priority: 40
+    dataset: {{patients}}
+    collection: {{test_healthcare}}
+    depot: {{icebase}}
+    priority: {{40}}
     type: mask
     mask:
       hash:
-        algo: sha256
+        algo: {{sha256}}
       operator: hash
     selector:
       column:
         tags:
-          - PHI.sensitive
+          - {{PHI.sensitive}}
       user:
-        match: any
+        match: {{any}}
         tags:
-          - roles:id:healthcaredatauser
+          - {{roles:id:healthcaredatauser}}
 ```
 
-### Redact
+#### **Redact**
 
 **Template 1**
 
 ```yaml
-name: gender
+name: {{gender}}
 version: v1
 type: policy
 tags:
-  - dataos:type:resource
-  - dataos:type:cluster-resource
-  - dataos:resource:policy
-  - dataos:layer:user
+  - {{dataos:layer:user}}
 description: >-
-  The gender of all individuals is redacted and replaced with a constant value
-  ‘REDACTED’
-owner: dataos-manager
+  {{The gender of all individuals is redacted and replaced with a constant value
+  ‘REDACTED’}}
+owner: {{iamgroot}}
 layer: user
 policy:
   data:
-    description: >-
-      The gender of all individuals is redacted and replaced with a constant
-      value ‘REDACTED’
-    name: gender
-    priority: 97
+    priority: {{97}}
     type: mask
     mask:
       hash:
-        algo: sha256
+        algo: {{sha256}}
       operator: redact
     selector:
       column:
         tags:
-          - PII.Gender
+          - {{PII.Gender}}
       user:
-        match: any
+        match: {{any}}
         tags:
-          - roles:id:user
+          - {{roles:id:user}}
 ```
 
 **Template 2**
 
 ```yaml
-name: location
+name: {{location}}
 version: v1
 type: policy
 tags:
-  - dataos:type:resource
-  - dataos:type:cluster-resource
-  - dataos:resource:policy
-  - dataos:layer:user
+  - {{dataos:type:resource}}
 description: >-
-  The location of all individuals is redacted and replaced with a constant value
+  {{The location of all individuals is redacted and replaced with a constant value
   ‘REDACTED’. Location can be classified as an individual’s address, zip code,
-  state, or country.
-owner: dataos-manager
+  state, or country.}}
+owner: {{iamgroot}}
 layer: user
 policy:
   data:
-    description: >-
-      The location of all individuals is redacted and replaced with a constant
-      value ‘REDACTED’. Location can be classified as an individual’s address,
-      zip code, state, or country.
-    name: location
-    priority: 100
+    priority: {{100}}
     type: mask
     mask:
       hash:
-        algo: sha256
+        algo: {{sha256}}
       operator: redact
     selector:
       column:
         tags:
-          - PII.Location
+          - {{PII.Location}}
       user:
-        match: any
+        match: {{any}}
         tags:
-          - roles:id:user
+          - {{roles:id:user}}
 ```
 
 **Template 3**
 
 ```yaml
-name: policy-test-hash
+name: {{policy-test-hash}}
 version: v1
 type: policy
 tags:
-  - dataos:type:resource
-  - dataos:type:cluster-resource
-  - dataos:resource:policy
-  - dataos:layer:user
-description: 'policy to hash on column '
-owner: shreyanegi
+  - {{dataos:type:resource}}
+description: {{'policy to hash on column '}}
+owner: {{iamgroot}}
 layer: user
 policy:
   data:
-    dataset: sample_ride
-    collection: data_uber
-    depot: icebase
-    description: 'policy to hash on column '
-    name: policy-test-hash
-    priority: 90
+    dataset: {{sample_ride}}
+    collection: {{data_uber}}
+    depot: {{icebase}}
+    priority: {{90}}
     type: mask
     mask:
       operator: redact
     selector:
       column:
         names:
-          - payment_method
+          - {{payment_method}}
       user:
-        match: any
+        match: {{any}}
         tags:
-          - users:id:shreyanegi
+          - {{users:id:iamgroot}}
 ```
 
 **Template 4**
 
 ```yaml
-name: test-phi-redact
+name: {{test-phi-redact}}
 version: v1
 type: policy
 tags:
-  - dataos:type:resource
-  - dataos:type:cluster-resource
-  - dataos:resource:policy
-  - dataos:layer:user
-description: data policy to redact PHI columns by tags
-owner: nandapage
+  - {{dataos:type:resource}}
+description: {{data policy to redact PHI columns by tags}}
+owner: {{iamgroot}}
 layer: user
 policy:
   data:
-    dataset: patients
-    collection: test_healthcare
-    depot: icebase
-    description: data policy to redact PHI columns by tags
-    name: test-phi-redact
-    priority: 40
+    dataset: {{patients}}
+    collection: {{test_healthcare}}
+    depot: {{icebase}}
+    priority: {{40}}
     type: mask
     mask:
       hash:
-        algo: sha256
+        algo: {{sha256}}
       operator: redact
     selector:
       column:
         tags:
-          - PHI.int_sensitive
-          - PHI.confidential
+          - {{PHI.int_sensitive}}
+          - {{PHI.confidential}}
       user:
-        match: any
+        match: {{any}}
         tags:
-          - roles:id:healthcaredatauser
+          - {{roles:id:healthcaredatauser}}
 ```
 
-### Random Pattern
+#### **Random Pattern**
 
 **Template 1**
 
 ```yaml
-name: license-number
+name: {{license-number}}
 version: v1
 type: policy
 tags:
-  - dataos:type:resource
-  - dataos:type:cluster-resource
-  - dataos:resource:policy
-  - dataos:layer:user
+  - {{dataos:type:resource}}
 description: >-
-  By replacing an individual's license number with a random string of the same
-  length, it masks their identity. The column data type is preserved.
-owner: dataos-manager
+  {{By replacing an individual's license number with a random string of the same
+  length, it masks their identity. The column data type is preserved.}}
+owner: {{iamgroot}}
 layer: user
 policy:
   data:
-    description: >-
-      By replacing an individual's license number with a random string of the
-      same length, it masks their identity. The column data type is preserved.
-    name: license-number
-    priority: 100
+    priority: {{100}}
     type: mask
     mask:
       operator: rand_pattern
       rand_pattern:
-        pattern: '####-####-####'
+        pattern: {{'####-####-####'}}
     selector:
       column:
         tags:
-          - PII.LicenseNumber
+          - {{PII.LicenseNumber}}
       user:
-        match: any
+        match: {{any}}
         tags:
-          - roles:id:user
+          - {{roles:id:user}}
 ```
 
 **Template 2**
 
 ```yaml
-name: social-security-number
+name: {{social-security-number}}
 version: v1
 type: policy
 tags:
-  - dataos:type:resource
-  - dataos:type:cluster-resource
-  - dataos:resource:policy
-  - dataos:layer:user
+  - {{dataos:type:resource}}
 description: >-
-  By replacing an individual's Personal ID number with a random string of the
-  same length, it masks their identity. The column data type is preserved.
-owner: dataos-manager
+  {{By replacing an individual's Personal ID number with a random string of the
+  same length, it masks their identity. The column data type is preserved.}}
+owner: {{iamgroot}}
 layer: user
 policy:
   data:
-    description: >-
-      By replacing an individual's Personal ID number with a random string of
-      the same length, it masks their identity. The column data type is
-      preserved.
-    name: social-security-number
-    priority: 100
+    priority: {{100}}
     type: mask
     mask:
       operator: rand_pattern
       rand_pattern:
-        pattern: '####-###-####-##'
+        pattern: {{'####-###-####-##'}}
     selector:
       column:
         tags:
-          - PII.SocialSecurityNumber
+          - {{PII.SocialSecurityNumber}}
       user:
-        match: any
+        match: {{any}}
         tags:
-          - roles:id:user
+          - {{roles:id:user}}
 ```
 
-### Regex Replace
+#### **Regex Replace**
 
 **Template 1**
 
 ```yaml
-name: phone-number
+name: {{phone-number}}
 version: v1
 type: policy
 tags:
-  - dataos:type:resource
-  - dataos:type:cluster-resource
-  - dataos:resource:policy
-  - dataos:layer:user
+  - {{dataos:type:resource}}
 description: >-
-  Replaces the last five digits of an individual’s phone number with ‘XXXX’ to
-  mask the contact information
-owner: dataos-manager
+  {{Replaces the last five digits of an individual’s phone number with ‘XXXX’ to
+  mask the contact information}}
+owner: {{iamgroot}}
 layer: user
 policy:
   data:
-    description: >-
-      Replaces the last five digits of an individual’s phone number with ‘XXXX’
-      to mask the contact information
-    name: phone-number
-    priority: 100
+    priority: {{{{100}}}}
     type: mask
     mask:
       operator: regex_replace
       regex_replace:
-        pattern: .{5}$
-        replacement: xxxxx
+        pattern: {{.{5}$}}
+        replacement: {{xxxxx}}
     selector:
       column:
         tags:
-          - PII.PhoneNumber
+          - {{PII.PhoneNumber}}
       user:
-        match: any
+        match: {{any}}
         tags:
-          - roles:id:user
+          - {{roles:id:user}}
 ```
 
 **Template 2**
 
 ```yaml
-name: policy-test-regex-replace
+name: {{policy-test-regex-replace}}
 version: v1
 type: policy
 tags:
-  - dataos:type:resource
-  - dataos:type:cluster-resource
-  - dataos:resource:policy
-  - dataos:layer:user
-description: mask policy on a column using regex_replace operator
-owner: shreyanegi
+  - {{dataos:type:resource}}
+description: {{mask policy on a column using regex_replace operator}}
+owner: {{iamgroot}}
 layer: user
 policy:
   data:
-    dataset: sample_driver
-    collection: data_uber
-    depot: icebase
-    description: mask policy on a column using regex_replace operator
-    name: policy-test-regex-replace
-    priority: 90
+    dataset: {{sample_driver}}
+    collection: {{data_uber}}
+    depot: {{icebase}}
+    priority: {{90}}
     type: mask
     mask:
       operator: regex_replace
       regex_replace:
-        pattern: '[0-9]'
-        replacement: '#'
+        pattern: {{'[0-9]'}}
+        replacement: {{'#'}}
     selector:
       column:
         names:
-          - d_ph_n
+          - {{d_ph_n}}
       user:
-        match: any
+        match: {{any}}
         tags:
-          - users:id:shreyanegi
+          - {{users:id:iamgroot}}
 ```
 
 **Template 3**
 
 ```yaml
-name: test-phi-regex-replace-cc
+name: {{test-phi-regex-replace-cc}}
 version: v1
 type: policy
 tags:
-  - dataos:type:resource
-  - dataos:type:cluster-resource
-  - dataos:resource:policy
-  - dataos:layer:user
-description: Masking for credit card info
-owner: nandapage
+  - {{dataos:type:resource}}
+description: {{Masking for credit card info}}
+owner: {{iamgroot}}
 layer: user
 policy:
   data:
-    dataset: patients
-    collection: test_healthcare
-    depot: icebase
-    description: Masking for credit card info
-    name: test-phi-regex-replace-cc
-    priority: 40
+    dataset: {{patients}}
+    collection: {{test_healthcare}}
+    depot: {{icebase}}
+    priority: {{40}}
     type: mask
     mask:
       operator: regex_replace
       regex_replace:
-        pattern: '[0-9](?=.*.{4})'
-        replacement: '#'
+        pattern: {{'[0-9](?=.*.{4})'}}
+        replacement: {{'#'}}
     selector:
       column:
         tags:
-          - PHI.ccn
+          - {{PHI.ccn}}
       user:
-        match: all
+        match: {{all}}
         tags:
-          - roles:id:healthcaredatauser
+          - {{roles:id:healthcaredatauser}}
 ```
 
-### Pass Through
+#### **Pass Through**
 
 **Template 1**
 
 ```yaml
-name: pii-reader
+name: {{pii-reader}}
 version: v1
 type: policy
 tags:
-  - dataos:type:resource
-  - dataos:type:cluster-resource
-  - dataos:resource:policy
-  - dataos:layer:user
+  - {{dataos:type:resource}}
+  - {{dataos:type:cluster-resource}}
+  - {{dataos:resource:policy}}
+  - {{dataos:layer:user}}
 description: >-
-  default data policy to allow access to the value of columns tagged with
-  fingerprint pii if they are pii-readers
-owner: dataos-manager
+  {{default data policy to allow access to the value of columns tagged with
+  fingerprint pii if they are pii-readers}}
+owner: {{iamgroot}}
 layer: user
 policy:
   data:
-    description: >-
-      default data policy to allow access to the value of columns tagged with
-      fingerprint pii if they are pii-readers
-    name: pii-reader
-    priority: 90
+    priority: {{90}}
     type: mask
     mask:
       operator: pass_through
     selector:
       column:
         tags:
-          - PII.Sensitive
+          - {{PII.Sensitive}}
       user:
-        match: any
+        match: {{any}}
         tags:
-          - roles:id:pii-reader
+          - {{roles:id:pii-reader}}
 ```
 
 **Template 2**
 
 ```yaml
-name: test-phi-reader-doctor
+name: {{test-phi-reader-doctor}}
 version: v1
 type: policy
 tags:
-  - dataos:type:resource
-  - dataos:type:cluster-resource
-  - dataos:resource:policy
-  - dataos:layer:user
-description: policy to allow doctors with a PHI-doctor tag to view patient's data
-owner: nandapage
+  - {{dataos:type:resource}}
+  - {{dataos:type:cluster-resource}}
+  - {{dataos:resource:policy}}
+  - {{dataos:layer:user}}
+description: {{policy to allow doctors with a PHI-doctor tag to view patient's data}}
+owner: {{iamgroot}}
 layer: user
 policy:
   data:
-    dataset: patients
-    collection: test_healthcare
-    depot: icebase
-    description: policy to allow doctors with a PHI-doctor tag to view patient's data
-    name: test-phi-reader-doctor
-    priority: 30
+    dataset: {{patients}}
+    collection: {{test_healthcare}}
+    depot: {{icebase}}
+    priority: {{30}}
     type: mask
     mask:
       operator: pass_through
     selector:
       column:
         tags:
-          - PHI.id
-          - PHI.name
-          - PHI.confidential
+          - {{PHI.id}}
+          - {{PHI.name}}
+          - {{PHI.confidential}}
       user:
-        match: all
+        match: {{all}}
         tags:
-          - roles:id:doctor
-          - roles:id:healthcaredatauser
+          - {{roles:id:doctor}}
+          - {{roles:id:healthcaredatauser}}
 ```
 
 **Template 3**
 
 ```yaml
-name: test-phi-reader-finance
+name: {{test-phi-reader-finance}}
 version: v1
 type: policy
 tags:
-  - dataos:type:resource
-  - dataos:type:cluster-resource
-  - dataos:resource:policy
-  - dataos:layer:user
+  - {{dataos:type:resource}}
+  - {{dataos:type:cluster-resource}}
+  - {{dataos:resource:policy}}
+  - {{dataos:layer:user}}
 description: >-
-  policy to allow research team with role:id:research tag to view patient's
-  medical information but patient ID is hidden
-owner: nandapage
+  {{policy to allow research team with role:id:research tag to view patient's
+  medical information but patient ID is hidden}}
+owner: {{iamgroot}}
 layer: user
 policy:
   data:
-    dataset: patients
-    collection: test_healthcare
-    depot: icebase
-    description: >-
-      policy to allow research team with role:id:research tag to view patient's
-      medical information but patient ID is hidden
-    name: test-phi-reader-finance
-    priority: 30
+    dataset: {{patients}}
+    collection: {{test_healthcare}}
+    depot: {{icebase}}
+    priority: {{30}}
     type: mask
     mask:
       operator: pass_through
     selector:
       column:
         tags:
-          - PHI.financial
-          - PHI.id
-          - PHI.dor
-          - PHI.name
+          - {{PHI.financial}}
+          - {{PHI.id}}
+          - {{PHI.dor}}
+          - {{PHI.name}}
       user:
-        match: all
+        match: {{all}}
         tags:
-          - roles:id:finance
-          - roles:id:healthcaredatauser
+          - {{roles:id:finance}}
+          - {{roles:id:healthcaredatauser}}
 ```
 
 **Template 4**
 
 ```yaml
-name: test-phi-reader-research
+name: {{test-phi-reader-research}}
 version: v1
 type: policy
 tags:
-  - dataos:type:resource
-  - dataos:type:cluster-resource
-  - dataos:resource:policy
-  - dataos:layer:user
+  - {{dataos:type:resource}}
+  - {{dataos:type:cluster-resource}}
+  - {{dataos:resource:policy}}
+  - {{dataos:layer:user}}
 description: >-
-  policy to allow research team with role:id:research tag to view patient's
-  medical information but patient ID is hidden
-owner: nandapage
+  {{policy to allow research team with role:id:research tag to view patient's
+  medical information but patient ID is hidden}}
+owner: {{iamgroot}}
 layer: user
 policy:
   data:
-    dataset: patients
-    collection: test_healthcare
-    depot: icebase
-    description: >-
-      policy to allow research team with role:id:research tag to view patient's
-      medical information but patient ID is hidden
-    name: test-phi-reader-research
-    priority: 30
+    dataset: {{patients}}
+    collection: {{test_healthcare}}
+    depot: {{icebase}}
+    priority: {{30}}
     type: mask
     mask:
       operator: pass_through
     selector:
       column:
         tags:
-          - PHI.research
+          - {{PHI.research}}
       user:
-        match: all
+        match: {{all}}
         tags:
-          - roles:id:research
-          - roles:id:healthcaredatauser
+          - {{roles:id:research}}
+          - {{roles:id:healthcaredatauser}}
 ```
 
 **Template 5**
 
 ```yaml
-name: test-phi-reader-staff
+name: {{test-phi-reader-staff}}
 version: v1
 type: policy
 tags:
-  - dataos:type:resource
-  - dataos:type:cluster-resource
-  - dataos:resource:policy
-  - dataos:layer:user
-description: policy to allow staff with role:id:staff tag to view patient's data
-owner: nandapage
+  - {{dataos:type:resource}}
+  - {{dataos:type:cluster-resource}}
+  - {{dataos:resource:policy}}
+  - {{dataos:layer:user}}
+description: {{policy to allow staff with role:id:staff tag to view patient's data}}
+owner: {{iamgroot}}
 layer: user
 policy:
   data:
-    dataset: patients
-    collection: test_healthcare
-    depot: icebase
-    description: policy to allow staff with role:id:staff tag to view patient's data
-    name: test-phi-reader-staff
-    priority: 30
+    dataset: {{patients}}
+    collection: {{test_healthcare}}
+    depot: {{icebase}}
+    description: {{policy to allow staff with role:id:staff tag to view patient's data
+    name: test-phi-reader-staff}}
+    priority: {{30}}
     type: mask
     mask:
       operator: pass_through
     selector:
       column:
         tags:
-          - PHI.contact
-          - PHI.name
-          - PHI.id
+          - {{PHI.contact}}
+          - {{PHI.name}}
+          - {{PHI.id}}
       user:
         match: all
         tags:
-          - roles:id:staff
+          - {{roles:id:staff}}
 ```
 
-## Filtering Policy
+### **Filtering Policy**
 
 **Template 1**
 
 ```yaml
-name: filter-health-persons
+name: {{filter-health-persons}}
 version: v1
 type: policy
 tags:
-  - dataos:type:resource
-  - dataos:type:cluster-resource
-  - dataos:resource:policy
-  - dataos:layer:user
-description: data policy to filter according to ethnicity type is equals Not Span/Hispanic
-owner: srikrishnaenkathala
+  - {{dataos:type:resource}}
+  - {{dataos:type:cluster-resource}}
+  - {{dataos:resource:policy}}
+  - {{dataos:layer:user}}
+description: {{data policy to filter according to ethnicity type is equals Not Span/Hispanic}}
+owner: {{iamgroot}}
 layer: user
 policy:
   data:
-    dataset: procedure_codes
-    collection: emr_healthcare
-    depot: postgres
-    description: >-
-      data policy to filter according to ethnicity type is equals Not
-      Span/Hispanic
-    name: filter-health-persons
-    priority: 75
+    dataset: {{procedure_codes}}
+    collection: {{emr_healthcare}}
+    depot: {{postgres}}
+    priority: {{75}}
     type: filter
     filters:
-      - column: proc_code
-        operator: equals
-        value: CAR004
+      - column: {{proc_code}}
+        operator: {{equals}}
+        value: {{CAR004}}
     selector:
       user:
-        match: any
+        match: {{any}}
         tags:
-          - roles:id:limited-access
+          - {{roles:id:limited-access}}
 ```
 
 **Template 2**
 
 ```yaml
-name: filter-to-florida
+name: {{filter-to-florida}}
 version: v1
 type: policy
 tags:
-  - dataos:type:resource
-  - dataos:type:cluster-resource
-  - dataos:resource:policy
-  - dataos:layer:user
-description: data policy to filter just FL data
-owner: akashvishwakarma
+  - {{dataos:type:resource}}
+  - {{dataos:type:cluster-resource}}
+  - {{dataos:resource:policy}}
+  - {{dataos:layer:user}}
+description: {{data policy to filter just FL data}}
+owner: {{iamgroot}}
 layer: user
 policy:
   data:
-    depot: icebase
-    description: data policy to filter just FL data
-    name: filter-to-florida
-    priority: 10
+    depot: {{icebase}}
+    priority: {{10}}
     type: filter
     filters:
-      - column: vehicle_id
-        operator: not_equals
-        value: FL
+      - column: {{vehicle_id}}
+        operator: {{not_equals}}
+        value: {{FL}}
     selector:
       user:
-        match: any
+        match: {{any}}
         tags:
-          - - users:**
-          - - roles:**
+          - - {{users:**}}
+          - - {{roles:**}}
 ```

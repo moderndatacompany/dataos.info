@@ -38,7 +38,7 @@ Here are some scenarios where using these terms can be powerful:
     
 3. For the newly added category, add new tags with proper descriptions and save it. Now, these tags can be added to the user assets. 
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 You can define new tag categories as per business requirements, but some of the tag categories, such as tag tiers, are pre-defined by the Metis administrator with special business importance terms, Gold, Silver, etc. Click **here** to learn more about it.
 
 </aside>
@@ -60,14 +60,14 @@ Here are some scenarios where using these terms can be powerful:
     
     <figcaption align = "center">Adding references and synonyms for the glossary term </figcaption>
     
-    <aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+    <aside class="callout">
 🗣 Metis enables you to add rich formatting to glossary term. For example, you can add `bold`, `underline`, or `italic` formatting to the text. You can also create tables, bulleted lists, or hyperlinks to external resources.
 </aside> 
 4. You can add synonyms, the other terms used for the same term, such as for customer, you can add client, buyer, etc.
 5. You can add related terms for the term, such as for customer, you can add related terms ‘loyal’, ‘preferred’, ‘high-importance’, etc.
 6. A term also has a set of **Reviewers** who review and accept the changes to the Glossary. This is to ensure the consistent use of terms across the organization. 
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 Once tag categories and glossary terms are defined, users can attach them to various data assets.
 
 </aside>
@@ -104,7 +104,7 @@ You can create and reply to entire conversation threads around various activitie
     
 2. Clicking on the **+** sign will open the editor for the new conversation.
     
-    <aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+    <aside class="callout">
     🗣 Metis enables you to add rich formatting to conversations. For example, you can add bold, underlined, or italic formatting to the text. You can also create tables, bulleted lists, or hyperlinks to external resources.
     
     </aside>
@@ -160,7 +160,7 @@ The Metis administrator has to decide on the roles users must be given along wit
 
 [Pre-defined Roles and Policies](explore_metis_ui/pre-defined_roles_and_policies.md)
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 Metis Admins have access to define new roles and their associated permissions. Once roles and permissions are in line with organization/business requirements, Metis admin can assign Roles to Users.
 
 </aside>
@@ -181,7 +181,7 @@ Roles can be assigned from the user profile on Metis UI.
 
 <figcaption align = "center">Adding roles to the user</figcaption>
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 Metis Admin role can be given from the Metis UI by a user with ‘Admin’ privileges. 
 
 </aside>
