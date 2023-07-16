@@ -9,7 +9,7 @@ Adopting an Operating System for data is not just another tooling shift or migra
 
 One of these core mindset shifts is the evolution from traditional two-dimensional tables to [Data Products](https://datadeveloperplatform.org/what_is_data_developer_platform/#what-is-a-data-product). While the former is an isolated unit of data wandering across the data ecosystem without governance or razor-focused purpose, the latter (Data Products) is a technologically aesthetic amalgam of well-defined purpose and execution. Only an Operating System design enables such a blend at scale.
 
-DataOS, as a [direct implementation of an OS design specifically built for data](https://datadeveloperplatform.org/), allows users to build a product experience around data and tie efforts and initiatives to the business value. Moreover, Data Product being an atomic building block of software-like data stacks, makes DataOS truly an essential future-proofing kit- a cushion of flexibility to bear the storm of the rapidly changing technical landscape of data; from traditional and modern data stacks to fabric and mesh-y frameworks.
+DataOS, as a [direct implementation of an OS design specifically built for data](https://datadeveloperplatform.org/), allows users to build a product experience around data and tie efforts and initiatives to the business value. Moreover, Data Product being an atomic building block of software-like data stacks, makes DataOS truly an essential future-proofing kit- a cushion of flexibility to bear the storm of the rapidly changing data landscape; from traditional and modern data stacks to fabric and mesh-y frameworks.
 
 
 
