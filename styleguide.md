@@ -35,7 +35,7 @@ Define the color scheme, if any.
 
 #### 2.2.1 Best Practices Block
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 📖 Best Practice: It is part of the best practice to add relevant `description` and `tags` for your workflow. While `description` helps to determine what the workflow will help you accomplish, `tags` can help in faster searching in Metis and Operations.
 </aside>
 

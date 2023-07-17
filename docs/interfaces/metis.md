@@ -23,7 +23,7 @@ Metadata is generated every time data is captured at a source, accessed by users
 
 Metis keeps comprehensive details about datasets, jobs, tags, data relationships, transformations, and user interactions. 
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 All metadata, whether about datasets, jobs, tags or any aspect is stored as separate metadata entities in the Metis DB. Additionally, the database also stores the interconnections and relationships between these entities. It also stores change events for metadata i.e. differences between the current and last version of an entity.
 
 </aside>

@@ -42,7 +42,12 @@
       title="{{ title | e }}"
       class="md-social__link"
     >
-      {% include ".icons/" ~ social.icon ~ ".svg" %}
+    <img
+    src="{{ social.icon }}"
+    title="{{ title | e }}"
+    width="28"
+    height="28"
+    />
     </a>
   {% endfor %}
 </div>
