@@ -1,21 +1,38 @@
 # Policy Section-specific Grammar
 
-## Access Policy
+## Access Policy YAML Configuration
+
+```yaml
+policy:
+  access:
+    subjects:
+      tags:
+        - - {{roles:id:**}}
+        - - {{users:id:**}}
+    predicates:
+      - {{create}}
+      - {{read}}
+      - {{write}}
+      - {{put}}
+      - {{update}}
+      - {{delete}}
+      - {{post}}
+    objects:
+      paths:
+        - {{dataos://icebase:spend_analysis/**}}
+    allow: {{false}}
+```
+
+## Configuration Attributes/Fields
 
 ### **`subjects`**
 
-**Description:** a subject is a user that would like to perform a specific predicate on a specific object. It refers to persons or application/services that make the request to perform an action. Attributes of the subject might include tags or groups of tags.
-
-**Data Type:** object
-
-**Requirement:** mandatory
-
-**Default Value:** none
-
-**Possible Value:** none
-
-**Example Usage:**
-
+**Description:** a subject is a user that would like to perform a specific predicate on a specific object. It refers to persons or application/services that make the request to perform an action. Attributes of the subject might include tags or groups of tags.<br>
+**Data Type:** object<br>
+**Requirement:** mandatory<br>
+**Default Value:** none<br>
+**Possible Value:** none<br>
+**Example Usage:**<br>
 ```yaml
 subjects:
   tags:
@@ -26,20 +43,13 @@ subjects:
 
 ### **`objects`**
 
-**Description:** the target that the subject would like to perform the predicate on. This can be any target, an API path, a column. The object is the resource (data or service) on which the action is to be performed.
-
-**Data Type:** list of strings
-
-**Requirement:** mandatory
-
-**Default Value:** none
-
-**Possible Value:** any target, api path, tags of requested object, column etc.
-
+**Description:** the target that the subject would like to perform the predicate on. This can be any target, an API path, a column. The object is the resource (data or service) on which the action is to be performed.<br>
+**Data Type:** list of strings<br>
+**Requirement:** mandatory<br>
+**Default Value:** none<br>
+**Possible Value:** any target, api path, tags of requested object, column etc.<br>
 **Additional Information:** Predicates are ‘OR’ relationships only, since the PEP is authorizing one action at a time.
-
 **Example Usage:** 
-
 ```yaml
 objects:
   paths:
@@ -48,20 +58,15 @@ objects:
 
 ---
 
+
 ### **`tags`**
 
-**Description:** Tags are the attributes of the subject or object. A tag field can contain one single tag or a group of tags in the form of a list. 
-
-**Data Type:** list of strings
-
-**Requirement:** mandatory
-
-**Default Value:** none
-
-**Possible Value:** any valid string
-
-**Additional Information:**
-
+**Description:** tags are the attributes of the subject or object. A tag field can contain one single tag or a group of tags in the form of a list<br>
+**Data Type:** list of strings<br>
+**Requirement:** mandatory<br>
+**Default Value:** none<br>
+**Possible Value:** any valid string<br>
+**Additional Information:** 
 - **Defining AND/OR Relationships**
     - Defining OR Relationship
         - The syntax given below allows access for either `tag1` OR `tag2`.
@@ -229,18 +234,12 @@ tags:
 
 ### **`predicates`**
 
-**Description:** the action or the verb that the subject would like to perform on the specific object. 
-
-**Data Type:** list of strings
-
-**Requirement:** mandatory
-
-**Default Value:** none
-
-**Possible Value:** crud operations like read, write, update, delete or http operations like get, put, post, delete, options.
-
-**Additional Information:** predicates are ‘OR’ relationships only, since the PEP is authorizing one action at a time.
-
+**Description:** the action or the verb that the subject would like to perform on the specific object.<br>
+**Data Type:** list of strings<br>
+**Requirement:** mandatory<br>
+**Default Value:** none<br>
+**Possible Value:** crud operations like read, write, update, delete or http operations like get, put, post, delete, options.<br>
+**Additional Information:** predicates are ‘OR’ relationships only, since the PEP is authorizing one action at a time.<br>
 **Example Usage:** in this example policy, a predicate MUST be `read` OR `write` from the PEP to qualify for this policy to apply.
 
 ```yaml
@@ -248,54 +247,48 @@ predicates:
   - read
   - write
 ```
-
-- **Sample Predicates OR Relationship**
+<details><summary>Sample Predicates OR Relationship</summary>
     
-    ```yaml
-    name: predicate-example2
-    version: v1
-    type: policy
-    layer: user
-    description: example policy
-    policy:
-      access:
-        subjects:
-          tags:
-            - - roles:id:pii-reader
-              - roles:id:user
-            - - roles:id:marketing-manager
-        predicates:
-          - read
-          - write
-        objects:
-          tags:
-            - - PII.Sensitive
-              - dataos:type:column
-        allow: true
-    ```
-    
+  ```yaml
+  name: predicate-example2
+  version: v1
+  type: policy
+  layer: user
+  description: example policy
+  policy:
+    access:
+      subjects:
+        tags:
+          - - roles:id:pii-reader
+            - roles:id:user
+          - - roles:id:marketing-manager
+      predicates:
+        - read
+        - write
+      objects:
+        tags:
+          - - PII.Sensitive
+            - dataos:type:column
+      allow: true
+  ```
+</details>
 
 ---
 
 ### **`allow`**
 
-**Description:** action to be allowed or denied
-
-**Data Type:** boolean
-
-**Requirement:** optional
-
-**Default Value:** false
-
-**Possible Value:** true/false
-
+**Description:** action to be allowed or denied<br>
+**Data Type:** boolean<br>
+**Requirement:** optional<br>
+**Default Value:** false<br>
+**Possible Value:** true/false<br>
 **Example Usage:** 
 
 ```yaml
 allow: true
 ```
 
-## Data Policy
+## Data Policy YAML Configuration
 
 ```yaml
 policy:
@@ -318,18 +311,15 @@ policy:
 		{{filter/mask}}: 
 ```
 
+## Configuration Fields/Attributes
+
 ### **`data`**
 
-**Description:** data policy specific section 
-
-**Data Type:** object
-
-**Requirement:** mandatory
-
-**Default Value:** none
-
-**Possible Value:** none
-
+**Description:** data policy specific section<br>
+**Data Type:** object<br>
+**Requirement:** mandatory<br>
+**Default Value:** none<br>
+**Possible Value:** none<br>
 **Example Usage:** 
 
 ```yaml
@@ -341,16 +331,11 @@ data:
 
 ### **`priority`**
 
-**Description:** the policy with higher priority will override all other policies defined for the same resources.
-
-**Data Type:** number
-
-**Requirement:** optional
-
-**Default Value:** none
-
-**Possible Value:** any number between 0-100. 0 being the lowest priority and 100 being the highest
-
+**Description:** the policy with higher priority will override all other policies defined for the same resources.<br>
+**Data Type:** number<br>
+**Requirement:** optional<br>
+**Default Value:** none<br>
+**Possible Value:** any number between 0-100. 0 being the lowest priority and 100 being the highest<br>
 **Example Usage:** 
 
 ```yaml
@@ -361,16 +346,11 @@ priority: 80
 
 ### **`depot`**
 
-**Description:** name of depot
-
-**Data Type:** string
-
-**Requirement:** optional
-
-**Default Value:** none
-
-**Possible Value:** valid depot name. Use ** for all possible depot names. 
-
+**Description:** name of depot<br>
+**Data Type:** string<br>
+**Requirement:** optional<br>
+**Default Value:** none<br>
+**Possible Value:** valid depot name. Use ** for all possible depot names.<br>
 **Example Usage:** 
 
 ```yaml
@@ -381,17 +361,12 @@ depot: icebase
 
 ### **`collection`**
 
-**Description:** name of the collection
-
-**Data Type:** string
-
-**Requirement:** optional
-
-**Default Value:** none
-
-**Possible Value:** any valid collection name. Use ** for all possible collection names. 
-
-**Example Usage:** 
+**Description:** name of the collection<br>
+**Data Type:** string<br>
+**Requirement:** optional<br>
+**Default Value:** none<br>
+**Possible Value:** any valid collection name. Use ** for all possible collection names.<br>
+**Example Usage:**
 
 ```yaml
 collection: retail
@@ -401,39 +376,27 @@ collection: retail
 
 ### **`dataset`**
 
-**Description:** name of dataset
-
-**Data Type:** string
-
-**Requirement:** optional
-
-**Default Value:** none
-
-**Possible Value:** any valid dataset name. Use ** for all possible dataset names. 
-
+**Description:** name of dataset<br>
+**Data Type:** string<br>
+**Requirement:** optional<br>
+**Default Value:** none<br>
+**Possible Value:** any valid dataset name. Use ** for all possible dataset names.<br>
 **Example Usage:** 
 
 ```yaml
-predicates:
-  - read
-  - write
+dataset: city
 ```
 
 ---
 
 ### **`selector`**
 
-**Description:** selector section
-
-**Data Type:** object
-
-**Requirement:** mandatory
-
-**Default Value:** none
-
-**Possible Value:** none
-
-**Example Usage:** 
+**Description:** selector section<br>
+**Data Type:** object<br>
+**Requirement:** mandatory<br>
+**Default Value:** none<br>
+**Possible Value:** none<br>
+**Example Usage:**
 
 ```yaml
 selector:
@@ -447,16 +410,11 @@ selector:
 
 ### **`user`**
 
-**Description:** section for defining the user 
-
-**Data Type:** object
-
-**Requirement:** mandatory
-
-**Default Value:** none
-
-**Possible Value:** none
-
+**Description:** section for defining the user<br>
+**Data Type:** object<br>
+**Requirement:** mandatory<br>
+**Default Value:** none<br>
+**Possible Value:** none<br>
 **Example Usage:** 
 
 ```yaml
@@ -469,16 +427,11 @@ user:
 ---
 
 ### **`match`**
-**Description:** This attribute 
-
-**Data Type:** string
-
-**Requirement:** mandatory
-
-**Default Value:** none
-
-**Possible Value:** any/all
-
+**Description:** This attribute<br>
+**Data Type:** string<br>
+**Requirement:** mandatory<br>
+**Default Value:** none<br>
+**Possible Value:** any/all<br>
 **Example Usage:** 
 
 ```yaml
@@ -487,22 +440,17 @@ match: any
 
 ---
 
-### [**`tags`**](./policy_section_specific_grammar.md#tags)
+### [**`tags`**](#tags)
 
 ---
 
 ### **`column`**
 
-**Description:** column section
-
-**Data Type:** object
-
-**Requirement:** mandatory
-
-**Default Value:** none
-
-**Possible Value:** any valid column name
-
+**Description:** column section<br>
+**Data Type:** object<br>
+**Requirement:** mandatory<br>
+**Default Value:** none<br>
+**Possible Value:** any valid column name<br>
 **Example Usage:** 
 
 ```yaml
@@ -515,16 +463,11 @@ column:
 
 ### **`names`**
 
-**Description:** list of column name
-
-**Data Type:** list of strings
-
-**Requirement:** mandatory
-
-**Default Value:** none
-
-**Possible Value:** valid column names 
-
+**Description:** list of column name<br>
+**Data Type:** list of strings<br>
+**Requirement:** mandatory<br>
+**Default Value:** none<br>
+**Possible Value:** valid column names<br>
 **Example Usage:**
 
 ```yaml
@@ -537,20 +480,11 @@ names:
 
 ### **`mask`**
 
-**Description:** field for defining the data masking strategy 
-
-**Data Type:** object
-
-**Requirement:** optional
-
-**Default Value:** none
-
-**Possible Value:** depends on the masking strategy utilized
-
-**Additional Information:** for more information regarding the various masking strategies within DataOS refer to the link below
-
-[Masking Strategies](./policy_section_specific_grammar/masking_strategies.md)
-
+**Description:** field for defining the data masking strategy<br>
+**Data Type:** object<br>
+**Requirement:** optional<br>
+**Default Value:** none<br>
+**Possible Value:** depends on the masking strategy utilized<br>
 **Example Usage:** in this example policy, a predicate MUST be `read` OR `write` from the PEP to qualify for this policy to apply.
 
 ```yaml
@@ -560,95 +494,302 @@ mask:
     algo: sha256
 ```
 
----
+**Additional Information:** for more information regarding the various masking strategies within DataOS refer to the link below
 
-### **`filter`**
+Masking strategies are key components in preserving data privacy and ensuring information security. These strategies encompass a set of operators or rules meticulously designed with the capability to be tailored based on user requirements.
 
-**Description:** section for defining data filter pattern
+Here's a handy table that lists the data masking strategies and the corresponding data types they can be used for:
 
-**Data Type:** object
+| Masking Type | Operator | Text | Number | Date | Object |
+| --- | --- | --- | --- | --- | --- |
+| Hashing | `hash` | Y | N | N | N |
+| Bucketing | `bucket_name`, `bucket_date` |N | Y | Y | N |
+| Regex replace | `regex_replace` | Y | N | N | N |
+| Format preservation (Random Pattern) | `rand_pattern` | Y | N | N | N |
+| Redaction | `redact` | Y | Y | Y | N |
+| Pass Through | `pass_through` | Y | Y | Y | Y |
 
-**Requirement:** optional
+In the following section, we delve into comprehensive explanations and syntax examples for each of these data masking strategies.
 
-**Default Value:** none
+#### **`bucket_number`**
 
-**Possible Value:** depends on the filter pattern utilized
+Using the `bucket_number` operator, numerical data can be categorized into defined range 'buckets.' Each data point is then replaced by the lower boundary of the bucket it falls into.
 
-**Additional Information:** 
+**Configuration Syntax**
 
-**Example Usage:** in this example policy, a predicate MUST be `read` OR `write` from the PEP to qualify for this policy to apply.
+To leverage the `bucket_number` operator, incorporate the following YAML configuration in your data masking definition:
 
 ```yaml
-filters: # Filters Section
-  - column: store_state_code
-    operator: not_equals
-    value: TN
+mask:
+	operator: bucket_number 
+	bucket_number:
+	  buckets:
+			{{bucket-list}}
+```
+
+The `{{bucket_list}}` is a placeholder for your list of bucket ranges.
+
+**Example**
+
+```yaml
+mask:
+	operator: bucket_number 
+	bucket_number:
+	  buckets:
+	    - 20
+	    - 40
+	    - 60
+	    - 80
+	    - 100
+```
+
+In this example, numerical data would be segmented into the indicated ranges. A value of 27, for example, would be bucketed to the 20 range, whereas a value of 77 would fall into the 60 range.
+
+
+#### **`bucket_date`**
+
+The `bucket_date` operator functions similarly to ‘bucket_number’ but is specifically tailored for date data types. This strategy enables the categorization of dates into various precision levels such as hour, day, week, or month.
+
+**Configuration Syntax** 
+
+To implement the ‘bucket_date’ operator, use the following YAML configuration:
+
+```yaml
+mask:
+  operator: bucket_date
+  bucket_date:
+    precision: {{date-precision}} # Options: hour, day, week, month
+```
+
+**Example**
+
+```yaml
+mask:
+  operator: bucket_date
+  bucket_date:
+    precision: month 
+```
+
+In this example, the `precision` field designates the granularity of the date bucketing to be at a 'month' level.
+
+
+#### **`hash`**
+
+The hashing method is a powerful data masking technique wherein a specific input consistently produces an identical fixed-size byte string, commonly referred to as a 'hash code'. A notable feature of hashing is its sensitivity to changes in input; even the slightest modification in input can yield a significantly different hash output.
+
+A unique and crucial characteristic of hashing is its irreversibility — once data is hashed, it cannot be converted back to its original state. This property makes hashing a particularly useful technique for masking sensitive textual data, such as passwords, or personally identifiable information (PII), such as names and email addresses.
+
+
+**Configuration Syntax**
+
+Hashing involves the use of a specific algorithm that performs the conversion from original data to hashed data. To implement hashing, you will need to specify the hashing algorithm you wish to use. The general syntax structure is as follows:
+
+```yaml
+mask:
+  operator: hash
+  hash:
+    algo: {{algorithm-name}}
+```
+
+**Example**
+
+```yaml
+mask:
+  operator: hash
+  hash:
+    algo: sha256
+```
+
+In this YAML configuration, the operator `hash` is specified along with the SHA-256 algorithm (`algo: sha256`). The SHA-256 algorithm is a popular choice due to its strong security properties, but other algorithms could be used as per your requirements.
+
+Remember, the `hash` operator is only applicable to textual data types. Attempting to use it on non-textual data types may lead to unintended results or errors. Always make sure the data you wish to mask is compatible with the masking operator you choose.
+
+
+#### **`redact`**
+
+Redaction is a data masking strategy that aims to obscure or completely erase portions of data. Its real-world analogy can be seen in blacking out sections of a document to prevent sensitive information from being disclosed. When applied to data masking, redaction might involve replacing certain elements in a data field (such as characters in an email address or digits in a Social Security number) with a placeholder string, e.g., "[REDACTED]"
+
+For instance, the gender of every individual could be redacted and substituted with a consistent value, 'REDACTED'. Similarly, an individual's location information (which may include address, zip code, state, or country) could be redacted and replaced with 'REDACTED'.
+
+**Configuration Syntax**
+
+To implement the `redact` operator, the following YAML configuration can be utilized:
+
+```yaml
+mask:
+  operator: redact
+#   redact:
+#     replacement: {{replacement-string}}
+#    hash: 
+#   algo: sha256
+```
+
+**Example**
+
+```yaml
+mask:
+  operator: redact
+  redact:
+    replacement: 'REDACTED'
+#	hash: # Why is the redact hash here?
+#  algo: sha256
+```
+
+The `replacement` field determines the string that will replace the redacted portions of data.
+
+#### **`rand_pattern`**
+
+Random Pattern Masking involves the substitution of sensitive data with randomly produced equivalents that maintain the original data's format or structure. The fundamental goal is to ensure that the masked data is statistically representative and retains operational utility while safeguarding critical information. For example, it can be used to replace personal names with random strings or transform real addresses into plausible but entirely fictitious ones.
+
+**Configuration Syntax**
+
+To implement the `rand_pattern` operator, the following YAML configuration can be utilized:
+
+```yaml
+mask:
+  operator: rand_pattern
+  rand_pattern:
+    pattern: {{random-pattern}}
+```
+
+Here, `${random-pattern}` is a placeholder for the random pattern you wish to apply.
+
+**Example**
+
+Below is an example illustrating the usage of the `rand_pattern` operator:
+
+```yaml
+mask:
+  operator: rand_pattern
+  rand_pattern:
+    pattern: '####-####-####'
+```
+
+In this instance, the specified pattern '####-####-####' will generate random numbers in a format similar to a credit card number, preserving the structure of the original data but replacing it with randomly generated information.
+
+**Format Preserving Encryption (FPE)**: As the name suggests, this method encrypts data in a way that the output has the same format as the input. For example, if a 16-digit credit card number is encrypted using FPE, the result is another 16-digit number. This maintains functional realism, allowing systems to operate normally with masked data.
+
+
+#### **`regex_replace`**
+
+The Regular Expression (Regex) Replacement strategy utilizes regular expressions to discern and mask identifiable patterns within the data. The identified patterns can be substituted with a predetermined value or random character(s). This strategy is particularly advantageous for masking data that follows a predictable pattern, such as email addresses, phone numbers, or credit card information.
+
+**Configuration Syntax**
+
+The `regex_replace` operator requires a `pattern` and a `replacement` field in its configuration. The general syntax structure is as follows:
+
+```yaml
+mask:
+  operator: regex_replace
+  regex_replace:
+    pattern: {{regex-pattern}}
+    replacement: {{replacement-pattern}}
+```
+
+The `pattern` field expects a regular expression pattern as its value, while the `replacement` field expects the desired replacement string.
+
+**Examples**
+
+```yaml
+mask:
+  operator: regex_replace
+  regex_replace:
+    pattern: .{5}$
+    replacement: xxxxx
+```
+
+In the above example, the regular expression`.{5}$` represents any five characters at the end of a string. These characters will be replaced by 'xxxxx'.
+
+```yaml
+mask:
+  operator: regex_replace
+  regex_replace:
+    pattern: '[0-9]'
+    replacement: '#'
+```
+
+Here, the regular expression `[0-9]` denotes any single digit which will be replaced with '#'.
+
+```yaml
+mask:
+  operator: regex_replace
+  regex_replace:
+    pattern: '[0-9](?=.*.{4})'
+    replacement: '#'
+```
+
+In this case, the regex pattern `[0-9](?=.*.{4})` identifies a digit followed by at least four characters. This digit will be replaced by '#'.
+
+
+#### **`pass_through`**
+
+The "Pass Through" strategy is used when certain data elements should not be masked or altered. With this technique, data developers can specify that certain data fields remain unchanged during the masking process. This approach is suitable for data that doesn't contain sensitive information or data that is already anonymized.
+
+**Configuration Syntax**
+
+To implement the `pass_through` operator, the following YAML configuration can be utilized:
+
+```yaml
+mask:
+  operator: pass_through
 ```
 
 ---
 
-The configurations are summarized in the table given below.
-
-- description - Provide a description to help understand its purpose
-- policy - Specify the policy-related configuration properties under the data section
-- type: Specify ‘mask’
-- priority:
-- depot: Mention the depot name to connect to the data source
-- collection: Provide the name of collection
-- dataset: Provide name of the dataset
-- selector: Specify user-related settings under the selector section
-
-| Field | Data Type | Default Value | Possible Value | Requirement |
-| --- | --- | --- | --- | --- |
-| filters | object | None | None | Mandatory |
-| column | string | None | Any column within the data | Mandatory |
-| operator | string | None | not_equals,
- | Mandatory |
-| value | string | None | Any value within the column | Mandatory |
-
-## **Masking Strategies**
-
-The strategy chosen for data masking greatly impacts the effectiveness of a data policy. Various strategies such as hashing, bucketing, regular expression replace, format-preserving encryption, and redaction can be employed based on the specific requirements of your data environment. To understand these strategies in depth and to determine the most suitable one for your use case, refer to the resource provided in the following link:
+### **`filters`**
 
 The data visibility for end users is limited due to the filtering policy. You can build a policy to eliminate results from a query's result set depending on comparison operators specified on a column, for example, some users won't be able to see data from the 'Florida' area.
 
-- The filtering policy constraints data visibility for end users.
-- You can define a policy to remove rows from the query’s result set based on comparison operators set on a column
-- Such as some users cannot see ‘Florida’ region data.
-- Filter policy can be defined in the YAML file and applied at the time of the query
-- Filter Policy definition consists of configuration settings for the user, columns of the dataset, and masking operator.
-- It may include rules for the subject, predicate, and object defining AND/OR relationships.
-
-## Syntax of a Data Filtering Policy
-
-The YAML given below provides a definition of the Data Policy.
+**Description:** section for defining data filter pattern<br>
+**Data Type:** list of objects<br>
+**Requirement:** optional<br>
+**Default Value:** none<br>
+**Possible Value:** depends on the filter pattern utilized<br>
+**Additional Information:** 
+**Example Usage:** 
 
 ```yaml
-policy: # Policy Section
-	data: # Data Policy Section
-	  type: <type> # Type of Data Policy
-	  priority: 80 # Priority
-	  selector: # Selector
-	    user: # User 
-	      match: any # Match
-	      tags: # Tags
-	        - "users:id:iamgroot"
-			column: # Column 
-	      names: # Name of the Column
-	        - "store_state_code"
-	  depot: icebase # Depot
-	  collection: retail # Collection
-	  dataset: store # Dataset
-	  filters: # Filters Section
-	    - column: store_state_code
-	      operator: not_equals
-	      value: TN
+filters: 
+  - column: {{store_state_code}}
+    operator: {{not_equals}}
+    value: {{TN}}
 ```
 
-To dive deep into these configuration fields, click on the link below.
+#### **`column`**
 
-[Filter Policy YAML Configuration Field Reference](./policy_section_specific_grammar/filter_policy_yaml_configuration_field_reference.md)
+**Description:** column name<br>
+**Data Type:** string<br>
+**Requirement:** mandatory<br>
+**Default Value:** none<br>
+**Possible Value:** valid column name<br>
+**Example Usage:** 
 
-**Filter YAML Configuration**
+```yaml
+column: store_state_code
+```
 
-[YAML](./policy_section_specific_grammar/yaml.md)
+#### **`operator`**
+
+**Description:** filter operator name<br>
+**Data Type:** string<br>
+**Requirement:** mandatory<br>
+**Default Value:** none<br>
+**Possible Value:** equals/not_equals<br>
+**Example Usage:** 
+
+```yaml
+operator: not_equals
+```
+
+#### **`value`**
+
+**Description:** value on which filter is to be applied<br>
+**Data Type:** depends on `coloumn` data type<br>
+**Requirement:** mandatory<br>
+**Default Value:** none<br>
+**Possible Value:** any value within the column<br>
+**Example Usage:** 
+
+```yaml
+value: TX
+```

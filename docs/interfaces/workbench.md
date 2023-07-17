@@ -10,7 +10,7 @@ Upon opening the Workbench app, the first step is to select the Minerva cluster 
 
 In the details of the Minerva cluster, one will see the names of the data sources that can be queried with that cluster. The `Catalogs` section includes the names of the depots and catalogs (data sources for which the depot has not been created, but which you can still query through DataOS). The datasets accessible for querying are dependent on the presence of depots and catalogs within the Minerva cluster.
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 If you cannot locate the required name within the Catalogs list, you can request the  admin or operator(a user with the operator tag) to add it to the Minerva cluster you are currently utilizing. Alternatively, an operator or admin has the capability to create a new cluster exclusively for the data sources you wish to use. This approach ensures that the execution of complex queries does not impact the computational resources of existing clusters.
 </aside>
 
@@ -29,10 +29,13 @@ Now you are ready to start writing and running the queries. Workbench uses Trino
 
 [Popular SQL Query Syntax](workbench/sql_query_syntax.md)
 
+Find the list of all the functions supported by the query engine of DataOS.
+[Functions and Operators - DataOS](workbench/functions_and_operators.md).
+
 
 ## Workbench Features
 
-### Studio Feature
+### **Studio Feature**
 
 The Studio feature is designed to streamline the process of writing complex and time-consuming SQL queries. With its intuitive interface, you can effortlessly generate SQL statements by selecting the desired Aggregates and Measures, or Raw Records and columns.
 
@@ -50,7 +53,7 @@ The prepend toggle allows you to keep the previous SQL statements in the query p
 
 One can now directly export the results of the query to a BI tool. Refer to the Atlas section to learn more.
 
-### Atlas
+### **Atlas**
 
 Atlas is an in-built BI solution that is used to create customized reports/dashboards on any datasets with visualizations. In the result pane, hover over the three vertically aligned dots. Click it, and go to the Atlas option.
 
@@ -62,7 +65,7 @@ When you select the Atlas option, the pop-up will ask you for the query name. Ty
 
 To learn more, click here : Link to Atlas. 
 
-### Analyze
+### **Analyze**
 
 Use this feature to get the Query Plan. It gives you access to both the Raw Data as well as the DAG of the distributed query plan.
 
@@ -91,7 +94,7 @@ Clicking on the `Runtime stats` tab will take you to a new tab in the web browse
 ![Available options](workbench/query_analysis.png)
 
 <figcaption align = "center">Available options</figcaption>
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 The statistical information about Query Runtime is stored in Metis and can be accessed through the Metis user interface (UI).
 </aside>
 
@@ -139,7 +142,7 @@ Splits are sections of a larger data set. Minerva coordinator retrieves a list o
 
 <figcaption align = "center">Splits </figcaption>
 
-### Query Details
+### **Query Details**
 
 The details of the query can be seen after it has run. Click the bar showing the result of a particular query.
 
@@ -173,7 +176,7 @@ Tables will show you the fully qualified address of the input datasets. You can 
 
 Here you can see the metadata of the output dataset.
 
-### Compare
+### **Compare**
 
 Workbench interface allows you to compare the results of two queries without having to execute additional SQL statements to do this. 
 
@@ -189,7 +192,7 @@ In the example shown, we have compared the results of two queries, one of them h
 
 <figcaption align = "center">Query compare result</figcaption>
 
-### Pivot
+### **Pivot**
 
   With this intuitive interface, you can effortlessly rearrange and transform your data, enabling you to visualize and analyze it from different perspectives.
 
@@ -217,27 +220,25 @@ You can do a lot more in Pivot, such as create charts and heat-maps, perform agg
 
 There are lots of more features that make the Workbench interface user-friendly. Some of these features have been listed below.
 
-### History
+### **History**
 
 This stores the SQL statements executed by you in the last 4 weeks.
 
-### Saved Benches
+### **Saved Benches**
 
 The saved SQL scripts appear in the Saved benches list. 
 
 ![saved_benches.png](workbench/saved_benches.png)
 
 <figcaption align = "center">Saved benches</figcaption>
-### Private/Shared Bench
 
+### **Private/Shared Bench**
 SQL statements that you save are available to you only. You can choose to share your SQL statements with other members of your enterprise. Simply save the bench, and click on the Private button to share a bench with other users.
 
-### Format
+### **Format**
 
 It rearranges/restructures the SQL statements so they are readable and legible to others. 
 
-### Tags
+### **Tags**
 
 It’s part of the best practice to declare tags for the saved benches, so they are searchable and discoverable later.
-
-Features like New Bench, Saved Benches, Zoom, Save, etc. are pretty straightforward, and we will not bore you with their details.

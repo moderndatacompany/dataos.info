@@ -1,20 +1,21 @@
-DataOS Interfaces empower your data journey by offering powerful tools for efficient data operations and seamless collaboration. It gives you the flexibility of the CLI or the intuitive experience of the GUI, enabling self-service data management. Let's explore these interfaces and their capabilities:
+Interfaces in DataOS serve as vital points of communication and interaction between different components. They facilitate seamless collaboration and independent functionality within DataOS. These interfaces provide powerful tools for efficient data operations,  and control over various activities. Whether you prefer the flexibility of the API, the command-driven power of the CLI, or the intuitive experience of the GUI, DataOS interfaces enable self-service data management. Let's explore these interfaces and their capabilities.
 
-## CLI (Command-Line Interface)
+## Command-Line Interface (CLI)
 
-The DataOS CLI provides a command-line environment for efficient and streamlined data operations. With the CLI, you can interact with DataOS through text-based commands, create and manage resources, and perform various data management tasks. It offers flexibility and control for administrators and data engineers who prefer working from the command line.
+The DataOS CLI provides a command-line environment for efficient and streamlined data operations. It offers quick access to system functionality with flexibility and control making it ideal for data engineers or system administrators. They can interact with DataOS instance through text-based commands, create and manage resources, and perform various data management tasks.  Effective utilization of CLI may require familiarity with the system and its underlying commands. To learn more, refer to the CLI section. 
 
-## GUI (Graphical User Interface)
+## Graphical User Interface (GUI)
 
-The DataOS GUI offers an intuitive interface where you can access a suite of applications tailored to different data-related tasks and personas. Explore, analyze, and collaborate with ease, empowering your data journey.
+The Graphical User Interface offers an intuitive and visually engaging way to interact with DataOS and its components.  This makes DataOS accessible to users with varying technical expertise, enhancing user experience and usability. For example, applications like Atlas and Lens Explorer provide graphical user interfaces for tasks such as creating visualizations, building dashboards, and interacting with the semantic layer.
 
-The homepage of DataOS GUI will show you all the apps currently available for use:
+## Application Programming Interface (API)
 
+The Application Programming Interface (API) in DataOS provides a way to interact with the core components, libraries, and services. APIs act as intermediaries, allowing users/applications to access DataOS functionality and resources. APIs empower data  developers to create diverse applications and services, leveraging the full functionality of DataOS.
+
+<aside>The choice of interface (CLI, GUI or API) depends on factors such as specific applications, user requirements, and the capabilities of individual components. By leveraging these interfaces effectively, users can navigate their data journey within DataOS and unlock its full potential.</aside>
+
+From the DataOS Home app, you can access the unique capabilities of the components and apps.
 ![dataos_homepage.png](interfaces/dataos_homepage.png)
-
-### **DataOS Apps**
-
-Each DataOS app within the GUI has unique capabilities:
 
 **Atlas**
 
@@ -22,7 +23,7 @@ An in-built BI solution to create visualizations, reports, and dashboards for po
 
 **Audience**
 
-Understand your customers by leveraging semantic data models built via Lens for customer segmentation and data-driven decisions.
+Understand your customers by leveraging semantic data models built via Lens for customer segmentation and data-driven decisions using Audience UI.
 
 **Bifrost**
 
@@ -30,11 +31,11 @@ Take control of access policies for applications, services, people, and datasets
 
 **Lens**
 
-Access and model data from diverse sources, create meaningful relationships between business concepts, define measures, and KPIs for data-informed decision-making.
+Access and explore all the Lenses that are created to model data from diverse sources, create meaningful relationships between business concepts, define measures, and KPIs for data-informed decision-making.
 
 **Metis**
 
-Discover, catalog, and observe enterprise data with comprehensive metadata management, providing technical and business context.
+Discover, catalog, and observe enterprise data with comprehensive metadata management, providing technical and business context. Metis powers its UI by making the metadata available for users to explore and discover assets.
 
 **Notebook**
 
@@ -42,13 +43,13 @@ Leverage the power of Jupyter Notebook on DataOS for data science projects, codi
 
 **Operations**
 
-Monitor and administer DataOS platform activity, gaining real-time visibility into resource utilization, cluster performance, and user activities. Keep your data ecosystem running smoothly and optimize resource allocation.
+With Operations UI, monitor and administer DataOS platform activity, gaining real-time visibility into resource utilization, cluster performance, and user activities. Keep your data ecosystem running smoothly and optimize resource allocation.
 
 **Workbench**
 
 Explore and query your data assets using SQL with Workbench. Powered by the Minerva query engine (built on top of Trino), Workbench supports both simple and complex queries across a large variety of data sources, including traditional relational databases (Oracle, PostgreSQL, Redshift, etc.) as well as other data sources such as S3, Kafka, and Pulsar. You can query and explore data from these data sources without bringing it to DataOS.
 
-From the DataOS homepage, you can also manage your profile, access tokens, and view all the depots that exist within the DataOS instance for accessing data.
+From the DataOS UI, you can also manage your profile, access tokens, and view all the depots that exist within the DataOS instance for accessing data.
 
 ### **Manage Profile**
 

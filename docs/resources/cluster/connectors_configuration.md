@@ -8,12 +8,12 @@ To define connectors for data sources in Minerva, you have the following options
 
 ### **Depot**
 
-If you have already defined Depots to access data sources, you can specify the addresses of these Depots in the DataOS YAML file to configure connectors. Additionally, you can include additional properties to optimize Minerva's performance.
+If you have already defined Depots to access data sources, you can specify the addresses of these Depots in the DataOS YAML file to configure connectors. Additionally, you can include additional properties to optimize Minerva's performance. To know more about depots, click [here.](../depot.md)
 
 ### **Catalog** 
 This approach involves providing the name of the connector and its associated properties, such as the connection URL, username, and password for accessing the data source.
 
-## Sample Conector Configuration
+**Sample Conector Configuration**
 
 Below is an example of connector configuration using Depot definitions and Catalog key-value properties. These definitions will be converted into catalogs that can be accessed through DataOS Workbench.
 
@@ -38,7 +38,7 @@ cluster:
     logLevel: INFO
     trinoLogLevel: ERROR
     depots:                        
-# Pre-defined Depots and their properties** 
+# Pre-defined Depots and their properties 
       - address: dataos://icebase:default         
         properties:
             iceberg.file-format: PARQUET
@@ -70,6 +70,9 @@ cluster:
     - name: wrangler
       type: wrangler
 ```
+
+# Supported Connectors
+
 
 ## Accessing Catalogs from Workbench
 

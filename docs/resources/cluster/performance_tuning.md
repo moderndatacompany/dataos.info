@@ -4,7 +4,7 @@ The Minerva query engine is specifically designed to handle large data sets dist
 
 ## Cluster Sizing
 
-To ensure optimal performance, it is crucial to appropriately size your Minerva cluster nodes. A Minerva cluster consists of a single driver (coordinator) node and multiple worker nodes. The coordinator node analyzes and plans query execution, distributing the query plan among the worker nodes for processing within the cluster. The driver node executes parallel operations on the worker nodes, leveraging connectors specific to your data sources (e.g., Snowflake, Postgres, Oracle) to read and transform data.
+To ensure optimal performance, it is crucial to appropriately size your Minerva cluster nodes. A Minerva cluster consists of a single driver (coordinator) node and multiple worker nodes. The coordinator node analyzes and plans query execution, distributing the query plan among the worker nodes for processing within the cluster. The driver node executes parallel operations on the worker nodes, leveraging connectors specific to your data sources (e.g., Postgres, Oracle) to read and transform data.
 
 While the driver and worker nodes can have different instance types, Minerva's default configuration maintains consistent configurations for all worker nodes. It's important to note that Minerva clusters are static and do not automatically resize based on workloads.
 
@@ -52,7 +52,7 @@ To optimize your workload in Minerva, it's crucial to understand the characteris
 - Assess the average amount of data involved in typical queries.
 - Determine peak load requirements in terms of CPU and memory.
 
-### **Recommendations**
+**Recommendations**
 
 In high-concurrency or heavy-workload environments, it is recommended to oversize your Minerva cluster to achieve optimal performance. Additionally, closely monitor performance under different query loads and fine-tune the configuration as necessary. Refer to the provided examples for further guidance.
 
@@ -63,7 +63,7 @@ While optimizing query execution by addressing infrastructure aspects is importa
 Improving storage performance in Minerva involves considerations related to file formats, sizes, compression, and organization. These optimizations can significantly enhance query performance.
 
 
-### **Recommendations**
+**Recommendations**
 
 - **Use columnar formats that efficiently store data**
 
@@ -71,7 +71,7 @@ Minerva processes data in vectorized columns, holding only the relevant data for
 
 - **Optimize file size**
 
-File size has a significant impact on query processing. Small files result in numerous small IO requests, which can affect performance due to high latency, throttling, or IO capacity limitations. Handling each file separately increases scheduling time and costs. To mitigate these issues, use file sizes of at least 100MB to overcome potential IO-related challenges. DataOS enables merging and compacting data/metadata files within Icebase data storage.
+File size has a significant impact on query processing. Small files result in numerous small IO requests, which can affect performance due to high latency, throttling, or IO capacity limitations. Handling each file separately increases scheduling time and costs. To mitigate these issues, use file sizes of at least 100MB to overcome potential IO-related challenges. DataOS enables merging and compacting data/metadata files within Icebase data storage using Flare Stack's Maintenance Actions.
 
 - **Apply data compression**
 

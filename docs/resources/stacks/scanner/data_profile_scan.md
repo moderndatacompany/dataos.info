@@ -4,7 +4,7 @@ Flare workflows are run for data profiling on the entire dataset or sample /filt
 
 Data profile Scanner workflow reads about these statistics (metadata extraction related to data profiling) and stores it in Metis DB. This data helps you find your data's completeness, uniqueness, and correctness for the given dataset.
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣️ Before running the Scanner workflow for data profiling metadata, ensure that the profiling and data-tool workflows are run successfully.
 </aside>
 
