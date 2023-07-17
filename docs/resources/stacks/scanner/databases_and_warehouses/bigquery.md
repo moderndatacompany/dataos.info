@@ -24,7 +24,7 @@ To scan the metadata from BigQuery, you need the following:
 
 DataOS allows you to create a depot of type 'BIGQUERY' to read the data stored in the BigQuery projects. You can create several depots, each pointing to a different project. The following YAML scans metadata from a BigQuery-type depot. 
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 Ensure that the depot is created and you have `read` access for the depot.
 
 </aside>
@@ -99,7 +99,7 @@ You can checkout **[this](https://cloud.google.com/iam/docs/keys-create-delete#
 - **privateKeyId**: This is a unique identifier for the private key associated with the BigQuery account.
 - **privateKey**: This is the private key associated with the service account that is used to authenticate and authorize access to BigQuery.
     
-    <aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+    <aside class="callout">
     🗣 While providing private key, divide every \n to new line  between BEGIN & END PRIVATE KEY as shown in the example below.
     
     </aside>

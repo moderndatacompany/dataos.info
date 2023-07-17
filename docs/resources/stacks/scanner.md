@@ -9,14 +9,14 @@ In DataOS, metadata extraction is treated as a job, which is accomplished using 
 
 Similar to an ETL (Extract, Transform, Load) job, the Scanner workflow connects to the metadata source, extracts the metadata, and applies transformations to convert it into a standardized format. The transformed metadata is then pushed to a REST API server, which is backed by a centralized metadata store or database such as MySQL or Postgres. This process can be performed in either a batch or scheduled manner, depending on the requirements.
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 The default metadata store in DataOS is MetisDB which is a Postgres database.
 
 </aside>
 
 The stored metadata is used by various DataOS components for discoverability, governance, and observability. External apps running on top of DataOS can also fetch this metadata via Metis server APIs.
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 In DataOS, all the metadata entities are defined and consumed in JSON format.
 
 </aside>
@@ -34,7 +34,7 @@ The Scanner job connects with the following DataOS components and stores the ext
 - **Heimdall:** To scan information about the users present in the DataOS environment, their descriptions, and images. All this user information will be available on Metis UI.
 
 A continuous running service within the DataOS environment keeps track of newly created or updated datasets/topics/pipelines(workflows). With this information about the changed entity, it creates a reconciliation Scanner YAML with filters to include only the affected entity. This Scanner workflow will extract the metadata about the entity and update the target metastore.
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 DataOS Scanner is a flexible and extensible framework; you can easily integrate it with new sources
 
 </aside>
@@ -47,7 +47,7 @@ Within DataOS, different workflows can be deployed and scheduled, which will con
 
 - **Non-Depot Scan Workflow**: With this type of scanner workflow, you must provide the connection details and credentials for the underlying metadata source in the YAML file. These connection details depend on the underlying source and may include details such as host URL, project ID, email, etc.
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 The non-Depot scan can help extract metadata from sources where depot creation is not supported or when you do not have an already created depot.
 
 </aside>
@@ -101,7 +101,7 @@ Here you can find templates for the depot/non-depot Scanner workflows.
 
 [Messaging Services](scanner/messaging_services.md)
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 You can perform both depot scans and non-depot scans on all the data sources where you have established depots. The distinction lies in the fact that non-depot scans require you to furnish connection information and credentials within the Scanner YAML file. Whereas, for depot scans, you only need to provide the depot name or address.
 </aside>
 

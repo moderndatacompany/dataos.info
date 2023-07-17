@@ -36,7 +36,7 @@ Follow the steps enumerated below to install the Command Line Interface. Check t
      | `Windows` | 32bit | 386|
      | | 64bit | amd64 (works for both intel & amd chips)|
   
-<aside>🗣️ Replace <b>{{placeholder}}</b> text in various commands with appropriate values before running the command.</aside>
+   <aside class="callout">🗣️ Replace <b>{{placeholder}}</b> text in various commands with appropriate values before running the command.</aside>
 
 ### **Installation on MacOS**
 
@@ -60,7 +60,7 @@ Follow the steps enumerated below to install the Command Line Interface. Check t
     # darwin-amd64 is the processor
     
     ```
-    <aside>🗣️ Contact the admin(DataOS operator in your organization) to get the correct and latest version of the CLI</aside>
+    <aside class="callout">🗣️ Contact the admin (DataOS operator in your organization) to get the correct and latest version of the CLI</aside>
 
 3. Download the DataOS CLI binary using the below command (replace the <span style="color:red"> {{ARCH}} </span> value of the processor and the <span style="color:red"> {{CLI_VERSION}} </span>to be installed):
 
@@ -284,7 +284,7 @@ You have successfully installed the CLI, now the next step is to [initialize](#i
    # Prime Apikey is abcdefgh12345678987654321
    # Example: https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-windows-amd64.tar.gz.sha256sum&dir=cli-apps-2.8&apikey=abcdefgh12345678987654321
    ```
-   <aside>🗣️ Contact the admin(operator in your organization) to get the latest version of the CLI</aside>
+   <aside class="callout">🗣️ Contact the admin(operator in your organization) to get the latest version of the CLI</aside>
 3. Download the DataOS CLI .tar file using the following link in the browser (replace the <span style="color:red">{{ARCH}}</span>, <span style="color:red">{{CLI_VERSION}}</span>, and <span style="color:red">{{PRIME_APIKEY}}</span> with respective values).
    ```
    https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-windows-amd64.tar.gz&dir=cli-apps-{{CLI_VERSION}}&apikey={{PRIME_APIKEY}}
@@ -344,7 +344,7 @@ INFO[0408] Are you operating the DataOS®? (Y,n)
 INFO[0452] 🚀 initialization...complete
 ```
 
-<aside>🗣️ If you are the operator/admin for your enterprise then the installation steps for you, after the last step, will change. These are covered in the Operator Document for DataOS.</aside>
+<aside class="callout">🗣️ If you are the operator/admin for your enterprise then the installation steps for you, after the last step, will change. These are covered in the Operator Document for DataOS.</aside>
 
 ## Log in
 
@@ -419,7 +419,7 @@ For Resources such as Depot, Policy, and Compute, Workspace has no meaning (thes
 
 **Workspace** is like a tenant in DataOS. It provides a way to segregate your private work from the rest of the organization’s. Workspaces also serve as a sandbox environment where you can freely explore and experiment with data without impacting the production environment. This enables you to test and refine your projects before deploying them to the public workspace or making them available for broader usage.
 
-<aside>
+<aside class="best-practice">
 📖 Best Practice: It is part of the best practice to create a private workspace with your name and then work in it.
 
 </aside>

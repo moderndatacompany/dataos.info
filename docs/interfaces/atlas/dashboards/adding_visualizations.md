@@ -69,7 +69,7 @@ Atlas provides options to style the text boxes in your dashboards using Markdow
 
 <figcaption align = "center">Text formatting options</figcaption>
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 On any dashboard, click on `Add Widget` to add more visualizations from existing queries.
 
 </aside>
