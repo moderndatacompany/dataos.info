@@ -1,6 +1,6 @@
 # Toolbox
 
-Toolbox Stack or Data Toolbox Stack provides vital functionality in case of metadata updation in Icebase depots. When data is ingested into Icebase using Flare workflow, the metadata of ingested datasets needs to be registered with Metis before it can be queried using Workbench. The Data Toolbox allows `set_version` action on the data stored in the DataOS internal storage Icebase, which uses the Iceberg format. The Metis keeps track of the Iceberg table by storing a reference to the latest metadata file. Using the Data Toolbox `set_version` action, you can update the metadata version to the latest or any specific version.
+Toolbox Stack or Data Toolbox Stack provides vital functionality in case of metadata updation in [Icebase](../depot.md#icebase) depots. When data is ingested into Icebase using [Flare](./flare.md)Stack, the metadata of ingested datasets needs to be registered with [Metis](../../interfaces/metis.md) before it can be queried using [Workbench](../../interfaces/workbench.md). The Data Toolbox allows `set_version` action on the data stored in the DataOS internal storage Icebase, which uses the Iceberg format. The [Metis](../../interfaces/metis.md) keeps track of the Iceberg table by storing a reference to the latest metadata file. Using the Data Toolbox `set_version` action, you can update the metadata version to the latest or any specific version.
 
 ## Syntax of Toolbox-stack Specific Section
 
@@ -16,7 +16,7 @@ toolbox:
 
 You can write Data Toolbox action as a separate workflow or part of a dag in a workflow. 
 
-<aside style="padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣️ For batch workloads, you can use both ways of performing the Toolbox action but for streaming workloads, you need to create separate workflows for Flare and Toolbox.
 
 </aside>
@@ -31,7 +31,7 @@ If you have already ingested data, you can create a separate workflow for toolbo
 
 ### **Define a Job that executes upon Toolbox Stack**
 
-Within the DAG, define a job that executes upon the Toolbox Stack. To know more about the various properties for a job executed upon toolbox stack, click [here](../workflow/creating_a_workflow.md#configuring-the-dag-section). 
+Within the DAG, define a job that executes upon the Toolbox Stack. To know more about the various properties for a job executed upon toolbox stack, click [here](../workflow.md#configuring-the-dag-section). 
 
 **Sample Toolbox Workflow**
 

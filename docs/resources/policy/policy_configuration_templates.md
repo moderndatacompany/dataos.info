@@ -154,9 +154,9 @@ policy:
 
 #### **Bucket Number**
 
-**Template 1**
+The templates below given below define a Data Masking Policy for bucketing values. It replaces individual values with the lowest value of the respective bucket. Please note that you should replace the placeholder values with the appropriate details based on your specific requirements.
 
-This template defines a masking policy for bucketing age values. It replaces individual ages with the lowest value of the respective bucket. Please note that you should replace the placeholder values with the appropriate details based on your specific requirements.
+**Template 1**
 
 ```yaml
 name: {{age}}

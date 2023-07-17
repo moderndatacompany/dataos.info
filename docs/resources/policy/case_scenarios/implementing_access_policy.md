@@ -1,212 +1,125 @@
 # Implementing Access Policy
 
-As DataOS uses a declarative YAML paradigm, the policy is applied as a code that the user can apply from the User Interface.
+## Granting Access to Users Using Pre-defined Tags
 
-Are you excited to create your first access policy for DataOS
+### **Sample Ingested Dataset**
 
-## Building a Policy YAML
+Access to ingested datasets on Workbench is denied by default due to the DataOS default policy applied during installation, which restricts all DataOS users from accessing these datasets.
 
-### **Resource Section**
+![Sample inaccessible dataset](./implementing_access_policy/access_denied.png)
+<center><i>Dataset access denied</i></center>
 
-- A Policy is a resource in DataOS, so while creating a policy the first and foremost step is to take into account the resource section in the policy
+## Implementation of Access Policy
+
+### **Creating a YAML Configuration**
+
+To enable access to the dataset, a Policy Resource can be used to grant access to pre-existing users or a subset of those users. Below is an example Policy configuration:
 
 ```yaml
-name: sample-access-policy
 version: v1
+name: test-policy-allowing-access
 type: policy
-tags:
-  - dataos:type:resource
-  - dataos:type:cluster-resource
-  - dataos:resource:policy
-  - dataos:layer:user
-description: This is just a sample policy
-owner: iamgroot
 layer: user
-policy: 
-	{}
-```
-
-For more information about the various configuration fields in the resource section of a YAML, click here.
-
-### **Policy Section**
-
-Once we have configured policy for the Resource, now its time to go dirty with the Policy. The Policy section incorporates various configuration fields for a Policy. The below code block provides a general structure for the same. Within a Policy we have two separate types of Policy: Data and Access Policy.
-
-For Access Policy, the YAML Configuration is as follows:
-
-```yaml
-policy:
-	access:
-		{}
-		subjects: 
-			{}
-		predicates: 
-			{}
-		objects: 
-```
-
-For Data Policy, the YAML Configuraiton is as follows:
-
-```yaml
-policy:
-  data:
-    description: Dummy rule for demonstration
-    name: test-phi-bucket-age
-    priority: 40
-    type: mask
-		{mask-type}
-			{}
-    mask:
-      bucket_number:
-        buckets:
-          - 20
-          - 40
-          - 60
-          - 80
-      operator: bucket_number
-    selector:
-      column:
-        tags:
-          - PHI.age
-      user:
-        match: any
-        tags:
-          - roles:id:system-dev
-          - roles:id:data-dev
-```
-
-```yaml
-	access:
-		subjects: 
-			{}
-		predicates: 
-			{}
-		objects: 
-```
-
-```yaml
+description: "Policy allowing all users"
 policy:
   access:
     subjects:
       tags:
-        - - roles:id:**
-        - - users:id:**
+        - "roles:id:*"                  # Default tag for DataOS users
+        - "users:id:*" 
     predicates:
-      - create
-      - read
-      - write
-      - put
-      - update
-      - delete
-      - post
+      - "read"
     objects:
-      paths:
-        - dataos://icebase:spend_analysis/**
-    allow: false
-    description: policy allowing users to read from demo depots
-    name: user-access-schema-spend-analysis
+      paths:                            # Sample dataset resource
+        - "dataos://icebase:sample/test_dataset"
+    allow: true                        # Granting access
+```
+<center><i>Example of an Access Policy</i></center>
+
+## Applying the YAML
+
+To create a Policy Resource in the DataOS environment, open the DataOS CLI and use the apply command with the provided YAML file.
+
+```shell
+dataos-ctl apply -f {{file path}}
 ```
 
-- Prerequisites
-    - CLI
-    - Operator Tag to add custom tags and apply policies
-    - Sample dataset is ingested
-- Sample Dataset
-    - icebase:sample/ dataset
-        
-        ![Sample dataset](./implementing_access_policy/default_accessible_wb.png)
-        
-        Sample dataset
-        
-    - You are able to query it on Workbench because the DataOS default policy applied at the time of installation allows all DataOS users to access the ingested datasets.
-- Access Policy Implementation
-    - For demonstration purposes, we will create a policy to deny access to all users to this dataset
-        
-        ```yaml
-        version: v1
-        name: test-policy-usecase-denying-access
-        type: policy
-        layer: user
-        description: "policy denying users"
-        policy:
-          access:
-            subjects:
-              tags:
-                - "roles:id:*"                  # default tag for DataOS users
-                
-            predicates:
-              - "read"
-            objects:
-              paths:                            # resource, a sample dataset
-                - "dataos://icebase:sample/test_dataset"
-            allow: false                        # to restrict access
-        ```
-        
-    - Open the DataOS CLI. Use the apply command to create this policy in the DataOS environment.
-        
-        ```bash
-        dataos-ctl apply -f access_policy_denying.yaml
-        ```
-        
-    - As a result of this policy implementation, you can not access the sample dataset anymore.
-        
-        ![Dataset not accessible](./implementing_access_policy/access_denied.png)
-        
-        Dataset not accessible
-        
-    - Create a new policy to allow access to the resource (sample dataset in the example) for all the users having this custom tag.
-    - Here is the policy YAML to allow access for the user having a custom tag - roles:id:test:user
-    
-    ```yaml
-        version: v1
-        name: test-policy-usecase-allowing-access
-        type: policy
-        layer: user
-        description: "policy implementation to allow users having custom tag 'roles:id:test:user'"
-        policy:
-          access:
-            subjects:
-              tags:
-                - "roles:id:test:user"          # Custom tag
-            predicates:
-              - "read"
-            objects:
-              paths:                            # resource, a sample dataset
-                - "dataos://icebase:sample/test_dataset"
-            allow: true
-    ```
-    
-- Now we will add this custom tag to allow a user to access the sample dataset using the following CLI command. You can see the custom tag listed in the output for the user.
-    
-    ```bash
-    dataos-ctl user tag add -i 'iamgroot' -t 'roles:id:test:user'
-    
-    INFO[0000] 🏷 user tag add...                            
-    INFO[0000] new tags: roles:id:test:user                 
-    INFO[0003] 🏷 user tag add...complete                    
-    
-           ID       |              TAGS               
-    ----------------|---------------------------------
-        iamgroot    | roles:direct:collated,          
-                    | roles:id:data-dev,              
-                    | roles:id:depot-manager,         
-                    | roles:id:depot-reader,          
-                    | roles:id:operator,              
-                    | roles:id:system-dev,            
-                    | roles:id:test:user,             
-                    | roles:id:user,                  
-                    | users:id:iamgroot
-    ```
-    
-- These tags can also be seen in the user’s profile on DataOS UI.
-    
-    ![Tags on user’s profile page](./implementing_access_policy/ui_new_tag.png)
-    
-    Tags on user’s profile page
-    
-- The user iamgroot is able to access and query the sample dataset due to the access policy implemented with a custom tag.
-- The following screenshot displays the query result on the DataOS Workbench.
-    
-    ![Dataset accessible after adding a custom tag](./implementing_access_policy/allow_access.png)
-    
-    Dataset accessible after adding a custom tag
+Once the Policy is applied, all users will be able to access this dataset from Workbench.
+
+![Access allowed](./implementing_access_policy/allow_access.png)
+<center><i>Dataset accessible after implementing the Policy</i></center>
+
+## Granting Access via Custom Tags
+
+Alternatively, an Access Policy can be created to allow access to the dataset for users with a specific custom tag.
+
+### **Creating a Policy YAML**
+
+Create a new Policy to allow access to the resource (sample dataset in this example) for users possessing a custom tag. Here is an example YAML configuration for such a policy:
+
+```yaml
+name: test-policy-allowing-access
+version: v1
+type: policy
+layer: user
+description: "Policy implementation to allow users having custom tag 'roles:id:test:user'"
+policy:
+  access:
+    subjects:
+      tags:
+        - "roles:id:test:user"          # Custom tag
+    predicates:
+      - "read"
+    objects:
+      paths:                            # Sample dataset resource
+        - "dataos://icebase:sample/test_dataset"
+    allow: true
+```
+
+### **Applying the YAML**
+
+Open the DataOS CLI and use the apply command to create a Policy Resource in the DataOS environment.
+
+```shell
+dataos-ctl apply -f access_policy_allowing.yaml
+```
+
+### **Adding Custom Tag to User**
+
+To allow a user to access the sample dataset, add the custom tag using the following CLI command. The custom tag will be listed in the output for the user.
+
+```shell
+dataos-ctl user tag add -i 'iamgroot' -t 'roles:id:test:user'
+
+# Expected Output
+
+INFO[0000] 🏷 User tag added.                            
+INFO[0000] New tags: roles:id:test:user                 
+INFO[0003] 🏷 User tag added successfully.               
+
+        ID       |              TAGS               
+----------------|---------------------------------
+    iamgroot    | roles:direct:collated,          
+                | roles:id:data-dev,              
+                | roles:id:depot-manager,         
+                | roles:id:depot-reader,          
+                | roles:id:operator,              
+                | roles:id:system-dev,            
+                | roles:id:test:user,             
+                | roles:id:user,                  
+                | users:id:iamgroot
+```
+
+These tags can also be viewed in the user's profile on the DataOS UI.
+
+![Tags on user’s profile page](./implementing_access_policy/ui_new_tag.png)
+
+<center><i>Tags displayed on user's profile page</i></center>
+
+The user with the identifier 'iamgroot' can now access and query the sample dataset due to the access policy implemented with the custom tag.
+
+The following screenshot displays the query result on the DataOS Workbench.
+
+![Access allowed](./implementing_access_policy/allow_access.png)
+
+<center><i>Dataset accessible after adding a custom tag</i></center>
