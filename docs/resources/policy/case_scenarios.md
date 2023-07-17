@@ -5,3 +5,5 @@
 [Implementing Data Masking Policy](./case_scenarios/implementing_data_masking_policy.md)
 
 [Implementing Data Filtering Policy](./case_scenarios/implementing_data_filtering_policy.md)
+
+[Policy Implementation Use Case](./case_scenarios.md)/

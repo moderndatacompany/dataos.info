@@ -2,7 +2,7 @@
 
 ## Create a Secret YAML
 
-Add a Secret resource into the Workspace where you will run the Alpha Service or Job; the `cloud-kernel-image-pull` secret type will create a Kubernetes Secret in the Workspace.
+Add a Secret Resource into the Workspace where you will run the Alpha Service or Job; the `cloud-kernel-image-pull` secret type will create a Kubernetes Secret in the Workspace.
 
 ```yaml
 version: v1beta1
@@ -26,10 +26,10 @@ secret:
 
 ## Apply the Secret YAML
 
-Use the `apply` command to create a Secret resource in the workspace.
+Use the `apply` command to create a Secret Resource in the workspace.
 
-```bash
-dataos-ctl apply -f <path-to-secret-yaml> -w <workspace>
+```shell
+dataos-ctl apply -f {{path-to-secret-yaml}} -w {{workspace}}
 ```
 
 ## Referencing the Secret in Alpha YAML

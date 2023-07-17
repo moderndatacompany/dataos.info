@@ -1,10 +1,10 @@
 # Referencing Secrets in a Service
 
-Given that a Secret is a fundamental resource within the data operating system, it can be referred to in other DataOS Resources once created. To demonstrate this capability, we will use the example of a Service.
+Given that a Secret is a fundamental Resource within the data operating system, it can be referred to in other DataOS Resources once created. To demonstrate this capability, we will use the example of a Service.
 
 ## Create a Secret YAML
 
-Create a YAML file to define a secret.
+Create a YAML file to define a Secret.
 
 ```yaml
 version: v1
@@ -22,14 +22,14 @@ secret:
 
 ## Apply the Secret YAML
 
-Apply the secret to the workspace where you want to run your service.
+Apply the Secret to the Workspace where you want to run your service.
 
 ```bash
-dataos-ctl apply -f <path-to-secret-yaml> -w <workspace>
+dataos-ctl apply -f {{path-to-secret-yaml}} -w {{workspace}}
 ```
 
-<aside>
-🗣 **Note:** The type is `cloud-kernel` that means a secret will be created with the same name as the secret resource in the same workspace.
+<aside class="callout">
+🗣 **Note:** The type is <code>cloud-kernel</code> that means a secret will be created with the same name as the secret resource in the same workspace.
 
 </aside>
 
@@ -57,7 +57,7 @@ service:
 
 ## Apply the Service YAML
 
-To create a service resource, use the `apply` command.
+To create a Service Resource, use the `apply` command.
 
 Your secret will be mounted in the DataOS secret directory on each replica of your service and/or job. This directory is defined by the environment variable: `DATAOS_SECRET_DIR=/opt/dataos/secret`
 

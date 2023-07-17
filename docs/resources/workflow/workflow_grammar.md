@@ -60,6 +60,8 @@ schedule:
   concurrencyPolicy: Forbid 
 ```
 
+---
+
 ### **`cron`**
 <b>Description:</b> The cron field encompasses the cron expression, a string that comprises six or seven sub-expressions providing specific details of the schedule. <br>
 <b>Data Type:</b> String <br>
@@ -71,6 +73,8 @@ schedule:
 ```yaml
 cron: '*/10 * * * *' 
 ```
+
+---
 
 ### **`concurrencyPolicy`**
 <b>Description:</b> The concurrencyPolicy field determines how concurrent executions of a workflow, created by a cron workflow, are handled<br>
@@ -88,6 +92,8 @@ cron: '*/10 * * * *'
 concurrencyPolicy: Replace 
 ```
 
+---
+
 ### **`startOn`**
 <b>Description:</b> Specifies start time of a schedule in ISO 8601 format.<br>
 <b>Data Type:</b> String <br>
@@ -98,6 +104,8 @@ concurrencyPolicy: Replace
 ```yaml
 startOn: 2022-01-01T23:30:45Z 
 ```
+
+---
 
 ### **`endOn`**
 <b>Description:</b> endOn terminates the scheduled workflow run at the specified time, even if the last workflow run isn’t complete <br>
@@ -110,6 +118,8 @@ startOn: 2022-01-01T23:30:45Z
 endOn: 2022-01-01T23:30:45Z 
 ```
 
+---
+
 ### **`completeOn`**
 <b>Description:</b> completeOn signifies successful completion. completeOn will let the last workflow run if it was triggered before the specified time <br>
 <b>Data Type:</b> String <br>
@@ -121,6 +131,8 @@ endOn: 2022-01-01T23:30:45Z
 completeOn: 2022-01-01T23:30:45Z 
 ```
 
+---
+
 ### **`title`**
 <b>Description:</b> Title of Workflow <br>
 <b>Data Type:</b> String <br>
@@ -131,6 +143,8 @@ completeOn: 2022-01-01T23:30:45Z
 ```yaml
 title: Quality Assessment Workflow 
 ```
+
+---
 
 ### **`dag`**
 <b>Description:</b> DAG is a Directed Acyclic Graph, a conceptual representation of a sequence of jobs (or activities). These jobs in a DAG are executed in the order of dependencies between them <br>
@@ -149,6 +163,8 @@ title: Quality Assessment Workflow
         flare: 
           {} # Flare Stack specific configurations
 ```
+
+---
 
 ### **`name`**
 <b>Description:</b> Name of the Job <br>
@@ -184,6 +200,8 @@ title: Profiling Job
 ```yaml
 description: The job ingests customer data 
 ```
+
+---
 
 ### **`spec`**
 <b>Description:</b> specs of the Job <br>
