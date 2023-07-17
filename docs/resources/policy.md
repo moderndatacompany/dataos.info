@@ -117,18 +117,22 @@ policy:
 
 The table below summarizes varioues attributes/fields within the access policy YAML.
 
+<center>
+
 | Field | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`policy`](./policy/policy_section_specific_grammar.md#policy) | object | none | none | mandatory |
-| [`access`](./policy/policy_section_specific_grammar.md#access) | object | none | none | mandatory |
-| [`subjects`](./policy/policy_section_specific_grammar.md#subjects) | object | none | none | mandatory |
-| [`tags`](./policy/policy_section_specific_grammar.md#tags) | list of strings | none | a valid DataOS tag | mandatory |
-| [`predicates`](./policy/policy_section_specific_grammar.md#predicates) | list of strings | none | http or crud operations | mandatory |
-| [`objects`](./policy/policy_section_specific_grammar.md#objects) | object | none | none | mandatory |
-| [`paths`](./policy/policy_section_specific_grammar.md#paths) | list of strings | none | api paths, udl paths | mandatory |
-| [`allow`](./policy/policy_section_specific_grammar.md#allow) | boolean | false | true/false | optional |
+| [`policy`](./policy/policy_specific_section_grammar.md#policy) | object | none | none | mandatory |
+| [`access`](./policy/policy_specific_section_grammar.md#access) | object | none | none | mandatory |
+| [`subjects`](./policy/policy_specific_section_grammar.md#subjects) | object | none | none | mandatory |
+| [`tags`](./policy/policy_specific_section_grammar.md#tags) | list of strings | none | a valid DataOS tag | mandatory |
+| [`predicates`](./policy/policy_specific_section_grammar.md#predicates) | list of strings | none | http or crud operations | mandatory |
+| [`objects`](./policy/policy_specific_section_grammar.md#objects) | object | none | none | mandatory |
+| [`paths`](./policy/policy_specific_section_grammar.md#paths) | list of strings | none | api paths, udl paths | mandatory |
+| [`allow`](./policy/policy_specific_section_grammar.md#allow) | boolean | false | true/false | optional |
 
-Here, the `subject` represents the user, the `object` denotes the target (such as an API path or resource) that the user interacts with, and the `predicate` represents the action performed. The `allow` field determines whether the policy grants or restricts access for the user to perform the specified action on the designated object. Refer to the [Policy Section-specific Grammar](./policy/policy_section_specific_grammar.md) for more details on configuring subjects, predicates, and objects.
+</center>
+
+Here, the `subject` represents the user, the `object` denotes the target (such as an API path or resource) that the user interacts with, and the `predicate` represents the action performed. The `allow` field determines whether the policy grants or restricts access for the user to perform the specified action on the designated object. Refer to the [Policy Section-specific Grammar](./policy/policy_specific_section_grammar.md) for more details on configuring subjects, predicates, and objects.
 
 **Data Policy Syntax**
 
@@ -155,24 +159,28 @@ policy:
 
 The table below summarizes the various attributes/fields within a data policy YAML.
 
+<center>
+
 | Field | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`policy`](./policy/policy_section_specific_grammar.md#policy) | object | none | none | mandatory |
-| [`data`](./policy/policy_section_specific_grammar.md#data) | object | none | none | mandatory |
-| [`depot`](./policy/policy_section_specific_grammar.md#depot) | string | none | any valid depot name or regex pattern | optional |
-| [`collection`](./policy/policy_section_specific_grammar.md#collection) | string | none | any valid collection name or regex pattern | optional |
-| [`dataset`](./policy/policy_section_specific_grammar.md#dataset) | string | none | any valid dataset name or regex pattern | optional |
-| [`priority`](./policy/policy_section_specific_grammar.md#priority) | number | none | 0-100 | mandatory |
-| [`selector`](./policy/policy_section_specific_grammar.md#selector) | object | none | none | mandatory |
-| [`user`](./policy/policy_section_specific_grammar.md#user) | object | none | none | mandatory |
-| [`tags`](./policy/policy_section_specific_grammar.md#tags) | list of strings | none | a valid DataOS tag | mandatory |
-| [`column`](./policy/policy_section_specific_grammar.md#column) | object | none | true/false | optional |
-| [`name`](./policy/policy_section_specific_grammar.md#column) | list of strings | none | valid column name | optional |
-| [`type`](./policy/policy_section_specific_grammar.md#type) | string | none | mask/filter | mandatory |
-| [`filter/mask`](./policy/policy_section_specific_grammar.md#type) | object | none | none | mandatory |
+| [`policy`](./policy/policy_specific_section_grammar.md#policy) | object | none | none | mandatory |
+| [`data`](./policy/policy_specific_section_grammar.md#data) | object | none | none | mandatory |
+| [`depot`](./policy/policy_specific_section_grammar.md#depot) | string | none | any valid depot name or regex pattern | optional |
+| [`collection`](./policy/policy_specific_section_grammar.md#collection) | string | none | any valid collection name or regex pattern | optional |
+| [`dataset`](./policy/policy_specific_section_grammar.md#dataset) | string | none | any valid dataset name or regex pattern | optional |
+| [`priority`](./policy/policy_specific_section_grammar.md#priority) | number | none | 0-100 | mandatory |
+| [`selector`](./policy/policy_specific_section_grammar.md#selector) | object | none | none | mandatory |
+| [`user`](./policy/policy_specific_section_grammar.md#user) | object | none | none | mandatory |
+| [`tags`](./policy/policy_specific_section_grammar.md#tags) | list of strings | none | a valid DataOS tag | mandatory |
+| [`column`](./policy/policy_specific_section_grammar.md#column) | object | none | true/false | optional |
+| [`name`](./policy/policy_specific_section_grammar.md#column) | list of strings | none | valid column name | optional |
+| [`type`](./policy/policy_specific_section_grammar.md#type) | string | none | mask/filter | mandatory |
+| [`filter/mask`](./policy/policy_specific_section_grammar.md#type) | object | none | none | mandatory |
+
+</center>
 
 
-For detailed information on configuring the YAML file for a Data Policy, refer to the following [link](./policy/policy_section_specific_grammar.md).
+For detailed information on configuring the YAML file for a Data Policy, refer to the following [link](./policy/policy_specific_section_grammar.md).
 
 
 
@@ -194,6 +202,10 @@ In this section, a collection of pre-configured Policy Resource Templates are pr
 
 ## Case Scenarios
 
-Refer to the Policy Resource Case Scenarios documentation for a comprehensive understanding of how Policy Resource can be utilized. It provides detailed examples and practical implementations to help data developers leverage the Policy resource efficiently.
+For detailed examples and practical implementations of Policy Resource, refer to the following Policy Resource Case Scenarios:
 
-[Case Scenarios](./policy/case_scenarios.md)
+[Implementing Access Policy](./policy/case_scenarios/implementing_access_policy.md)
+
+[Implementing Data Masking Policy](./policy/case_scenarios/implementing_data_masking_policy.md)
+
+[Implementing Data Filtering Policy](./policy/case_scenarios/implementing_data_filtering_policy.md)
