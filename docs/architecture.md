@@ -4,6 +4,20 @@ hide:
 #   - toc
 ---
 # Architecture of DataOS
+DataOS is the data operating system built to create, deploy & manage domain-specific data products at scale. Its architecture has been designed to enhance experience of data developers, decrease reliance on IT teams, democratize data, provide tangible ROI faster, and accelerate creation of data products. This page elucidates how the design of DataOS implements a data-first architecture.
+
+<aside class="callout">
+🗣️ The architectrue of DataOS can be analyzed & studied with different vistas -
+<ul>
+  <li>As an implementation of micro-services design;</li>
+  <li>A self-serve data infrastructure; and</li>
+  <li>As an operating system</li>
+</ul>
+</aside>
+
+> Each leads us to the same consensus - a modular, composable, and interoperable data infrastructure which is built on open standards - making it extensible, future-proof, and flexible enough to be used with your existing tools & infrastructure, while also empowering implementation of new patterns & frameworks, such as Data-first Stack, Data Mesh or Data Developer Platform.
+
+## Microservices Architecture
 
 DataOS is a distributed cloud computing system based on micro-services architecture. This makes the services within its collection -
 
@@ -19,7 +33,7 @@ These are some of the services of DataOS acting as a cohesive whole to form the 
 ### Heimdall
 Heimdall is the governance engine for all access control within DataOS. Whether it is access to a dataset, an API path or other applications & services of the operating system, Heimdall acts as the Policy Decision Point (PDP) for ingress and authorizations.
 ### Metis
-[Metis](./interfaces/metis.md) is the metadata manager of DataOS. It collates & curates operational metadata, technical & business metadata from various data sources, as well as DataOS Resources. Metis serves this metadata via a graphical user interface for consumption by data developers. Combined with Odin (service for Knowledge Graphs), it forms a semantic web to generate ontologies with specific business values. 
+[Metis](./interfaces/metis.md) is the metadata manager of DataOS. It collates & curates operational metadata, technical & business metadata from various data sources, as well as DataOS Resources. Metis serves this metadata via a graphical user interface for consumption by data developers. Combined with Odin (service for Knowledge Graphs), it forms a semantic web to generate ontologies and creates a digital twin of an organization's data infrastructure. 
 ### Gateway
 A service which runs on top of the query engine, Minerva, and is responsible for managing Minerva clusters, user authentication (via calls to Heimdall), as well as data policy decisions. It acts as the PDP for data filtering and masking so that the data is not masked/filtered at the source directly, but at the time of query parsing.
 ### Caretaker
@@ -33,23 +47,8 @@ These services persist their own data & state in a dedicated database. They comm
 Studying the implementation of the micro-services design of DataOS helps comprehend the granular details of the operating system, but since the system automates & abstracts all the underlying complexities & provisioning, a data developer should focus entirely on the *User Space* to leverage various data-management capabilities.
 
 ---
-> The architecture of DataOS can be analysed & studied with different vistas. These are:
-> 
-> 
-> > As an implementation of micro-services design;
-> 
-> > A self-serve data infrastructure; and
-> 
-> > As an operating system
 
-<aside class="callout">
-🗣️ Each leads us to the same conclusion - a modular, composable, and interoperable data infrastructure which is built on open standards - making it extensible, future-proof, and flexible enough to be used with your existing tools and infrastructure while also allowing implementation of new data management patterns or concepts, such as Data Developer Platform, Data Mesh or Data-first Stack.
-
-</aside>
-
----
-
-Let us look at DataOS from the perspective of data infrastructure.
+Let us look at DataOS from the perspective of a data infrastructure.
 ## Data Infrastructure
 
 ![Design showcasing data-flow patterns in the *User Space* of DataOS](./architecture/dataos_architecture.jpg)
@@ -76,7 +75,7 @@ DataOS specs resemble the principles of a Data Developer Platform, such as decla
 - The niche capabilities as provided with DataOS Resources like [Service](./resources/service.md) & [Alpha stack](./resources/stacks/alpha.md) allow one to create data products even for the edge cases.
 - Abstractions over all the parts of the aforementioned micro-services architecture and the open standards used while building them makes the system flexible and customizable towards the addition of new tools & technologies. 
 
-Having an operating system to perform all these tasks means that the developer experience is consistent & seamless, and the data product developers can focus on & accelerate building of data products to solve business problems rather than get bogged down with solving the problems for data teams of each domain within the organization.
+> Having an operating system to perform all these tasks means that the developer experience is consistent & seamless, and the data product developers can focus on & accelerate building of data products to solve business problems rather than get bogged down with solving the problems for data teams of each domain within the organization.
 
 ---
 
