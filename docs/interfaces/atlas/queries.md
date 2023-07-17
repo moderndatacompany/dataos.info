@@ -6,7 +6,7 @@ Click on the specific query to view/edit the SQL statement.
 
 Query editor allows you to format your query and enable/disable the live auto-complete feature. To save a query, press **Ctrl+ S** (or **Cmd +S)/** click **Save**. ****Once you finish editing, you can click on ‘**Run**’ to view the query result. From here, you can also build visualizations based on the results returned from queries.
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 To run your queries, you might want to change the selected cluster. To learn more about clusters, click here.
 
 </aside>

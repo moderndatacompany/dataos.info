@@ -21,10 +21,6 @@ Read about Secret on the following page: [Secret](./secret.md)
 
 Service can be conceptualized as a long-running process that is receiving or/and serving an API, or even a UI. It can be used for scenarios that need a continuous flow of real-time data, such as event processing, streaming IoT and more. You will find the details of this *runnable resource* here: [Service](./service.md)
 
-### **Stack**
-
-Stacks are the programming paradigms used to support the processing and management of data. They also act as the secondary extension points for our runnable resources, Workflow and Service. The following page contains detailed information on all the stacks you can currently leverage in DataOS: [Stacks](./stacks.md)
-
 ### **Workflow**
 
 Workflow is a manifestation of a Directed Acyclic Graph, which helps you to streamline and automate the process of working with big data. A data ingestion or processing task carried out as a batch is referred to as a *job*. Jobs are defined and executed through Workflow. Learn the details of the Workflow here: [Workflow](./workflow.md)
@@ -48,3 +44,7 @@ Depots provide you with a uniform way to connect with the variety of data source
 ### **Policy**
 
 Policy is a set of rules which governs the behavior of a user(person or application/service). Broadly, you can create and manage two kinds of policies in DataOS - **Access Policy** & **Data Policy**. They have been elaborated on this page: [Policy](./policy.md)
+
+### **Stack**
+
+Stacks are the programming paradigms used to support the processing and management of data. They also act as the secondary extension points for our runnable resources, Workflow and Service. The following page contains detailed information on all the stacks you can currently leverage in DataOS: [Stacks](./stacks.md)

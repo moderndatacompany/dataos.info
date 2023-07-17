@@ -49,10 +49,15 @@ This file was automatically generated - do not edit
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-meta__content">
+        <div class="md-footer-social-and-modern-logo">
+          {% if config.extra.social %}
+          {% include "partials/social.html" %}
+          {% endif %}
+          <a href="{{ config.theme.logo_link_footer }}" target="_blank">
+            <img src="{{ config.theme.logo_footer }}" width="251" class="modern-logo" />
+          </a>
+        </div>
         {% include "partials/copyright.html" %}
-      {% if config.extra.social %}
-      {% include "partials/social.html" %}
-      {% endif %}
       </div>
     </div>
   </div>

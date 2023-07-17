@@ -1,6 +1,6 @@
 # Setting Up Minerva Client
 
-To set up the minerva-cli and run queries on Minerva via the terminal, there are two approaches:
+To set up the Minerva Client or minerva-cli and run queries on Minerva via the terminal, there are two approaches:
 
 ## Setup
 
@@ -8,13 +8,13 @@ To set up the minerva-cli and run queries on Minerva via the terminal, there are
 
 - Open the terminal and pull the minerva-cli image by executing the following command. Ensure that Docker is installed and running on your system.
 
-    ```bash
+    ```shell
     docker pull tmdc/minerva-cli:latest
     ```
 
 - To verify that the installation is successful, run the following command. It should display a list of supported commands.
 
-    ```bash
+    ```shell
     docker run --rm -it --name minerva tmdc/minerva-cli:latest java -jar minerva-cli.jar --help
     ```
 
@@ -68,7 +68,7 @@ To set up the minerva-cli and run queries on Minerva via the terminal, there are
 
 ### **Connect**
 
-To connect with a running Minerva cluster, use the following command:
+To connect with a running Minerva Cluster, use the following command:
 
 ```shell
 minerva --server https://tcp.<DATAOS_INSTANCE_FQDN>:7432 \

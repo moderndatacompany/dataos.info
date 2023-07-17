@@ -12,7 +12,7 @@ Clicking on +Add New will give you the following screen to add a new snippet. Pr
 
 In Query editor or Workbench, type the trigger keyword that you defined in the Query Snippet editor. Auto Complete will suggest the snippet like any other related word,  selecting the query snippet will insert the snippet.
 
-<aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
+<aside class="callout">
 🗣 Make sure that Live Autocomplete is enabled. Click on the lightning icon shown on Query Editor.
 
 </aside>

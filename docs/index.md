@@ -1,5 +1,18 @@
+---
+hide:
+  - navigation
+#   - toc
+---
+# DataOS Philosophy
 
-Adopting an Operating System for data is not just another tooling shift or migration activity. While it is almost as simple as the former and not as challenging as the latter, the context of such a shift is entirely different. Enabling an OS for data is essentially a pivot in your data philosophy. Everything from how you approach and ingest data to how you understand and operationalise it undergoes a major transformation. But it is truly an essential future-proofing kit- a cushion of flexibility to bear the storm of the rapidly changing technical landscape of data.
+Adopting an Operating System for data is not just another tooling shift or migration activity. While it is almost as simple as the former and not as challenging as the latter, the context of such a shift is entirely different. Enabling an OS for data is essentially a pivot in your data philosophy. Everything from how you approach and ingest data to how you understand and operationalise it undergoes a major transformation.
+
+One of these core mindset shifts is the evolution from traditional two-dimensional tables to [Data Products](https://datadeveloperplatform.org/what_is_data_developer_platform/#what-is-a-data-product). While the former is an isolated unit of data wandering across the data ecosystem without governance or razor-focused purpose, the latter (Data Products) is a technologically aesthetic amalgam of well-defined purpose and execution. Only an Operating System design enables such a blend at scale.
+
+DataOS, as a [direct implementation of an OS design specifically built for data](https://datadeveloperplatform.org/), allows users to build a product experience around data and tie efforts and initiatives to the business value. Moreover, Data Product being an atomic building block of software-like data stacks, makes DataOS truly an essential future-proofing kit- a cushion of flexibility to bear the storm of the rapidly changing data landscape; from traditional and modern data stacks to fabric and mesh-y frameworks.
+
+
+
 ## Your Familiar Operating System
 
 Operating systems have been at the heart of enabling masses to access and leverage countless benefits of digital applications without the need to be skilled in infrastructure and dirty plumbing. Even app developers who are into heavy engineering need not bootstrap the whole system from scratch to build their applications. Instead, they put together different unique capabilities available on the OS to spin up these applications and deploy at scale.
@@ -12,8 +25,8 @@ Operating systems have been at the heart of enabling masses to access and levera
 Sadly and a bit surprisingly, the data space is still in a phase where data engineers are required to heavily focus on infra maintenance. Their hands are always full with open tickets, most of them requesting a plumbing job. As it is, truly skilled experts in the data space are rare, and most of them are sucked into plumbing the data ecosystem instead of producing data applications that directly impact their team’s ROI.
 ## An Operating System for Data
 
-<aside>
-💡 DataOS is built with the same philosophy as an operating system.
+<aside class="callout">
+🗣️ DataOS is built with the same philosophy as an operating system.
 </aside>
 <br/>
 
@@ -51,8 +64,8 @@ What follows from assembled systems is the sudden overwhelm of managing multiple
 
 It’s both a skill- and resource-deficit issue. Moreover, with decades spent on evolving data stacks with not much value to show, organisations are not ideally inclined to pour in more investments and efforts to rip and replace their work. In essence, 𝐀𝐮𝐭𝐨𝐧𝐨𝐦𝐲 instead should become the higher priority over Decentralisation if that is the ultimate objective.
 
-<aside>
-💡 As we have established in the above sections, enabling autonomy for a host of personas is the number one objective of any operating system design. Teams can even use this autonomy and flexibility to create decentralised models with far less resources, but that is a secondary and one of many objectives that can be established through autonomy across several layers of data producers and engineers.
+<aside class="callout">
+🗣️ As we have established in the above sections, enabling autonomy for a host of personas is the number one objective of any operating system design. Teams can even use this autonomy and flexibility to create decentralised models with far less resources, but that is a secondary and one of many objectives that can be established through autonomy across several layers of data producers and engineers.
 </aside>
 
 ### Bearing the Weight of Rapid Tech Evolution
