@@ -31,13 +31,13 @@ To dive deep into these configuration fields, refer to [Secret-specific Section 
 
 ## Types of Secrets in DataOS
 
-When creating a Secret resource, you can specify its type using the `type` field within the `secrets` section. The Secret type is used to facilitate programmatic handling of the Secret data.
+When creating a Secret Resource, you can specify its type using the `type` field within the `secrets` section. The Secret type is used to facilitate programmatic handling of the Secret data.
 
 DataOS provides several built-in types for some common usage scenarios. These types vary in terms of the validations performed and the constraints DataOS imposes on them.
 
 | Secret Type | Usage |
 | --- | --- |
-| [`cloud-kernel`](./secret/types_of_secret_resources.md#cloud-kernel) | This type stores arbitrary user-defined data in the form of key-value pair as a Kubernetes Secret with the same name as the Secret resource in the same Workspace. |
+| [`cloud-kernel`](./secret/types_of_secret_resources.md#cloud-kernel) | This type stores arbitrary user-defined data in the form of key-value pair as a Kubernetes Secret with the same name as the Secret Resource in the same Workspace. |
 | [`cloud-kernel-image-pull`](./secret/types_of_secret_resources.md#cloud-kernel-image-pull) | This type retains credentials needed for pulling images from a private Docker container registry. |
 | [`certificates`](./secret/types_of_secret_resources.md#certificate) | This is a secret type used to securely store certificates, which are often necessary for secured communication in the system.  |
 | [`key-value-properties`](./secret/types_of_secret_resources.md#key-value-properties) | This type conserves arbitrary user-defined data as a Secret by transforming multiple key-value pairs into a singular key-value pair, which is then encoded in base64 format. |
@@ -140,7 +140,7 @@ To access the stored secret data in DataOS, you can reference them in your code 
 
 The `secrets` identifier is used for creating a Secret in DataOS. However, it's important to note that you cannot use the same identifier to refer to pre-existing secrets in other Resources. For referencing secrets across various DataOS Resources, the `dataosSecrets` identifier is used.
 
-To reference a Secret resource using the `dataosSecrets` field, use the following YAML syntax:
+To reference a Secret Resource using the `dataosSecrets` field, use the following YAML syntax:
 
 ```yaml
 dataosSecrets:
