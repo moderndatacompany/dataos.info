@@ -36,15 +36,15 @@ When setting up DataOS, the following categories of Compute resources can be pro
 
 ### **Runnable Compute**
 
-The `runnable` Compute-type is designed to handle data processing workloads and is primarily utilized for executing Workflows and Services. By default, the `runnable-default` Compute-instance is provisioned during the initial installation of DataOS. However, it is possible to modify the configurations of the default instance or create additional Compute-instances according to specific requirements.
+The `runnable` Compute-type is designed to handle data processing workloads and is primarily utilized for executing Workflows and Services. By default, the `runnable-default` Compute-instance is provisioned during the initial installation of DataOS. However, it is possible to modify the [configurations](./compute/compute_templates.md#runnable-compute) of the default instance or create additional Compute-instances according to specific requirements.
 
 ### **Query Compute**
 
-The `query` Compute-type is specifically optimized for Minerva Clusters, enabling efficient data querying operations. During the installation of DataOS, the `query-default` Compute-instance is provisioned by default. Similar to the runnable Compute, the configurations of the query Compute can be customized or additional Compute-instances can be created as needed.
+The `query` Compute-type is specifically optimized for Minerva Clusters, enabling efficient data querying operations. During the installation of DataOS, the `query-default` Compute-instance is provisioned by default. Similar to the runnable Compute, the [configurations](./compute/compute_templates.md#query-compute) of the query Compute can be customized or additional Compute-instances can be created as needed.
 
 ### **GPU Compute**
 
-The `gpu` Compute-type is dedicated to meeting the computational demands of Machine Learning workloads. Unlike the default Compute-instances, the `gpu` Compute-instance is not provisioned during the initial installation of DataOS. However, organizations have the flexibility to provision this type of Compute based on their specific requirements.
+The `gpu` Compute-type is dedicated to meeting the computational demands of Machine Learning workloads. Unlike the default Compute-instances, the `gpu` Compute-instance is not provisioned during the initial installation of DataOS. However, organizations have the flexibility to provision this [type](./compute/compute_templates.md#gpu-compute) of Compute based on their specific requirements. 
 
 The diagram presented below illustrates the underlying mechanism for provisioning diverse workloads on top of Compute Resource.
 
@@ -114,20 +114,20 @@ The table below presents an overview of attributes/fields within a the Compute-s
 
 | Field | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`compute`](./compute/compute_section_specific_grammar.md#compute) | object | none | none | mandatory |
-| [`dataplane`](./compute/compute_section_specific_grammar.md#dataplane) | string | none | hub | mandatory |
-| [`purpose`](./compute/compute_section_specific_grammar.md#purpose) | string | none | runnable/query/gpu | mandatory |
-| [`nodePool`](./compute/compute_section_specific_grammar.md#nodepool) | object | none | none | mandatory  |
-| [`nodeSelector`](./compute/compute_section_specific_grammar.md#nodeselector) | object | none | none | mandatory |
-| [`tolerations`](./compute/compute_section_specific_grammar.md#tolerations) | object | none | none | mandatory |
-| [`key`](./compute/compute_section_specific_grammar.md#key) | string | none | any valid string | mandatory |
-| [`operator`](./compute/compute_section_specific_grammar.md#operator) | string | none | Equal/Exists | mandatory  |
-| [`value`](./compute/compute_section_specific_grammar.md#value) | string | none | query/runnable/gpu | mandatory |
-| [`effect`](./compute/compute_section_specific_grammar.md#effect) | string | none | NoSchedule/PreferNoSchedule/NoExecute | mandatory |
+| [`compute`](./compute/compute_specific_section_grammar.md#compute) | object | none | none | mandatory |
+| [`dataplane`](./compute/compute_specific_section_grammar.md#dataplane) | string | none | hub | mandatory |
+| [`purpose`](./compute/compute_specific_section_grammar.md#purpose) | string | none | runnable/query/gpu | mandatory |
+| [`nodePool`](./compute/compute_specific_section_grammar.md#nodepool) | object | none | none | mandatory  |
+| [`nodeSelector`](./compute/compute_specific_section_grammar.md#nodeselector) | object | none | none | mandatory |
+| [`tolerations`](./compute/compute_specific_section_grammar.md#tolerations) | object | none | none | mandatory |
+| [`key`](./compute/compute_specific_section_grammar.md#key) | string | none | any valid string | mandatory |
+| [`operator`](./compute/compute_specific_section_grammar.md#operator) | string | none | Equal/Exists | mandatory  |
+| [`value`](./compute/compute_specific_section_grammar.md#value) | string | none | query/runnable/gpu | mandatory |
+| [`effect`](./compute/compute_specific_section_grammar.md#effect) | string | none | NoSchedule/PreferNoSchedule/NoExecute | mandatory |
 
 </center>
 
-For a comprehensive understanding of each attribute and its configuration options, please refer to the following [link](./compute/compute_section_specific_grammar.md). 
+For a comprehensive understanding of each attribute and its configuration options, please refer to the following [link](./compute/compute_specific_section_grammar.md). 
 
 Additionally, if you are looking for pre-configured Compute templates tailored for specific workloads such as ETL, Machine Learning, and Query, you can explore them [here](./compute/compute_templates.md). 
 

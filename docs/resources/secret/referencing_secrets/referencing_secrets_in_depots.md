@@ -1,12 +1,12 @@
 # Referencing Secrets in Depots
 
-Following the creation of a Secret resource, it can be conveniently referred to within the Depot YAML. This eliminates the need to incorporate confidential data during your Depot configuration definition.
+Following the creation of a Secret Resource, it can be conveniently referred to within the Depot YAML. This eliminates the need to incorporate confidential data during your Depot configuration definition.
 
 Depots store essential connection details like Postgres database type, access URL, domain name, and port number and can refer to the secrets that you need for establishing the connection.
 
 ## Create a Secret YAML
 
-Define a secret by creating a YAML file. Below is an example YAML file containing two secret definitions corresponding to two access control permissions (i.e., for ‘RW’ and ‘R’ access).
+Define a Secret by creating a YAML file. Below is an example YAML file containing two secret definitions corresponding to two access control permissions (i.e., for ‘RW’ and ‘R’ access).
 
 ```yaml
 name: gcsr
@@ -38,9 +38,9 @@ secret:
 
 ## Apply the Secret YAML
 
-To create a secret resource, we use the `apply` command. Since a Secret is a workspace resource we apply it to a particular workspace where you want to create the additional resource.
+To create a secret Resource, we use the `apply` command. Since a Secret is a workspace Resource we apply it to a particular workspace where you want to create the additional Resource.
 
-```bash
+```shell
 dataos-ctl apply -f <path-to-secret-yaml> -w <workspace>
 ```
 
@@ -74,10 +74,10 @@ depot:
 
 ## Apply the Depot YAML
 
-Utilize the `apply` command to create a Depot resource.
+Utilize the `apply` command to create a Depot Resource.
 
-```bash
-dataos-ctl apply -f <path-to-depot-yaml>
+```shell
+dataos-ctl apply -f {{path-to-depot-yaml}}
 ```
 
 > Please note that we've generated distinct secrets for various access control levels (ACLs), and we've made references to them based on the requirements.

@@ -359,7 +359,7 @@ users:
 **Requirement:** optional<br>
 **Default Value:** none<br>
 **Possible Value:** any valid tag or pattern<br>
-**Additional Information:** Multiple users can be specified using AND/OR Logical Rules. To know more, click [here](../policy/policy_section_specific_grammar.md#tags)<br>
+**Additional Information:** Multiple users can be specified using AND/OR Logical Rules. To know more, click [here](../policy/policy_specific_section_grammar.md#tags)<br>
 **Example Usage:**<br>
 ```yaml
 users:

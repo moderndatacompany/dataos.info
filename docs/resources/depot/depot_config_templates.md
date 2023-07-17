@@ -4,8 +4,6 @@ To make the process of creating a Depot configuration easier, we provide a set o
 
 It's important to note that when using these templates, you will need to populate the key-value properties in the YAML config file with the appropriate values for your data source. This requires a basic understanding of your organization's data infrastructure and the necessary credentials or connection details.
 
-
-
 Here are some of the available Depot config templates:
 
 ## Depots on Data Warehouse
@@ -25,49 +23,6 @@ Here are some of the available Depot config templates:
 [Windows Azure Storage Blob Service (WASBS)](./depot_config_templates/azure_wasbs.md)
 
 [Google Cloud Storage (GCS)](./depot_config_templates/google_gcs.md)
-
-
-
-### **Limit File Format**
-
-Another important function that a Depot can play is to limit the file type which you can read from and write to a particular data source. In the ‘spec’ section of YAML config file, simply mention the ‘format’ of the files you want to allow access for.
-
-```yaml
-depot:
-  type: S3
-  description: <description>
-  external: true
-    spec:
-       scheme: <s3a>                      
-       bucket: <bucket-name>               ****
-       relativePath: "raw" 
-       format: <format>  **#Mention the file format, such as JSON, to only allow that file type**
-```
-
-For File based systems, if you define the format as ‘Iceberg’, you can choose the meta-store catalog between Hadoop and Hive. This is how you do it:
-
-```yaml
-depot:
-  type: ABFSS
-  description: "ABFSS Iceberg depot for sanity"
-  compute: runnable-default
-  spec:
-    "account": 
-    "container": 
-    "relativePath":
-    "format": "ICEBERG"
-    "endpointSuffix":
-    "icebergCatalogType": "Hive"
-   connectionSecret:
-
-```
-
-If you do not mention the catalogue name as Hive, it will use Hadoop as the default catalog for Iceberg format.
-
-![Flow when Hive is chosen as the catalog type](./depot_catalog.png)
-<center> <i>Flow when Hive is chosen as the catalog type</i></center>
-
-Hive, automatically keeps the pointer updated to the latest metadata version. If you use Hadoop, you have to manually do this by running the set metadata command as described on this page: [Set Metadata](./icebase.md#set-metadata)
 
 ## Depots on Streaming Source
 
