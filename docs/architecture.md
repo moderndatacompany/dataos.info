@@ -84,6 +84,11 @@ Let us delve into how such a vast system with complexities underneath can be cla
 
 ## Design of the Operating System
 The architecture of DataOS can be segregated into three layers - User Space, Core Kernel & Cloud Kernel. 
+
+![Layered Architecture of DataOS](./architecture/layered_arch.png)
+<center><i>Layered Architecture of DataOS</i></center>
+<br/>
+
 ### Cloud Kernel
 It is an abstraction layer over the cloud APIs of cloud providers like AWS, GCP & Azure. It makes DataOS cloud-agnostic, meaning the user is not locked-in with any specific vendor. DataOS uses Kubernetes to containerize its applications & automate the provisioning & control of node pools. This layer is deployed as Infrastructure as Code (IaC) to provide consistency, idempotency, reliability, reusability & automation.
 
