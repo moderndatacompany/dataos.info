@@ -4,7 +4,7 @@ hide:
 #   - toc
 ---
 # Architecture of DataOS
-DataOS is the data operating system built to create, deploy & manage domain-specific data products at scale. Its architecture has been designed to enhance experience of data developers, decrease reliance on IT teams, democratize data, provide tangible ROI faster, and accelerate creation of data products. This page elucidates how the design of DataOS implements a data-first architecture.
+DataOS is the data operating system built to create, deploy & manage domain-specific data products at scale. Its architecture has been designed to enhance experience of data developers, decrease reliance on IT teams, democratize data, provide tangible ROI faster, and accelerate creation of data products. This page elucidates how the design of DataOS implements this data-first architecture.
 
 <aside class="callout">
 🗣️ The architectrue of DataOS can be analyzed & studied with different vistas -
@@ -55,7 +55,7 @@ Let us look at DataOS from the perspective of a data infrastructure.
 <center><i>Design showcasing data-flow patterns in the *User Space* of DataOS</i></center>
 <br/>
 
-The User Space is the layer of DataOS where data developers work - further information is provided in the section on the [Operating System](./architecture.md#design-of-the-operating-system). A data developer, or a *data product developer*, interacts with the system through [interfaces](./interfaces.md) in the *user layer*.
+The [User Space](./architecture.md#user-space) is the layer of DataOS where data developers work. A data developer, or a *data product developer*, interacts with the system through [interfaces](./interfaces.md) in the *user layer*.
 
 - [Depot](./resources/depot.md) acts as the data interface between the source systems and DataOS Stacks; as well as other Resources. Various services, like the catalog (Metis) and the query engine (Minerva) also leverage depots to establish communication for querying and data modeling jobs.
 - The Application Platform encapsulates DataOS Resources & programming paradigms with which a data producer works. This is where data ingestion & processing jobs are written, long-running services & applications are configured, and ETL/ELT or Reverse ELT pipelines are built.
