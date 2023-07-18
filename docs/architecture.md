@@ -82,7 +82,7 @@ DataOS specs resemble the principles of a Data Developer Platform, such as decla
 Let us delve into how such a vast system with complexities underneath can be classified as an Operating System.
 
 ## Design of the Operating System
-The architecture of DataOS can be segregated into three layers - User Space, Core Kernel & Cloud Kernel. 
+The architecture of DataOS can be segregated into three logically separated layers - User Space, Core Kernel & Cloud Kernel. 
 
 ![Layered Architecture of DataOS](./architecture/layered_arch.png)
 <center><i>Layered Architecture of DataOS</i></center>
