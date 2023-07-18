@@ -120,7 +120,7 @@ INFO[0000] 🔍 get...complete
 
 In case you don’t have the required depot in the list, you can create a YAML configuration file for a depot and apply it through CLI. To know more about creating a depot click on the below link 
 
-[Create Depot](../../depot/create_depot.md)
+[Create Depot](../../depot.md#create-depot)
 
 ### **Check the type of workload you wanna run**
 
