@@ -29,97 +29,70 @@ To know more about the details of various properties within a workflow, click [h
 In the realm of task orchestration, a Job can be understood as a series of discrete steps necessary for the completion of an action. These steps can include diverse activities, such as loading initial data, modifying and writing data to a destination. While a Job is a generalized term, a Flare Job specifically involves utilizing the Flare Stack to complete processing tasks. By leveraging a directed acyclic graph (DAG), users can specify and execute numerous Jobs, each with its distinctive set of tasks in a specific order. It is possible to define multiple jobs that will be executed consecutively. The syntax for creating a Flare Job is presented below:
 
 ```yaml
-dag: # Directed Acyclic Graph (DAG): A collection of Jobs
-  - name: city-02 # Name of the Job (there can be more than 1 Job within a DAG that can run on different stacks)
-    title: City Dimension Ingester # Title of the Job
-    description: The job ingests city data from dropzone into raw zone # Description
-		tags: # Tags
-			- Connect
-			- City
-    spec: # Specs
-      runAsUser: iamgroot # Run As User
-      stack: flare:4.0 # Here stack is Flare so its a Flare Job
-      compute: runnable-default # Compute
-      flare: # Flare Section
-        driver: # Driver Section
-          coreLimit: 1000m **# m here is millicore**
-          cores: 1
-          memory: 1024m
-        executor: # Executor Section
-          coreLimit: 1000m
-          cores: 1
-          instances: 1
-          memory: 1024m
-        job: # Job
-          explain: true # Explain
-          logLevel: INFO # Log Level
-					streaming:  # Streaming Section
-								{}
+dag: 
+  - name: {{city-02}}
+    title: {{City Dimension Ingester}}
+    description: {{The job ingests city data from dropzone into raw zone}}
+    tags:
+      - {{Connect}}
+      - {{City}}
+    spec: 
+      runAsUser: {{iamgroot}} 
+      stack: {{flare:4.0}}
+      compute: {{runnable-default}}
+# Flare Stack-specific Attributes/Fields
+      flare:
+        driver:
+          coreLimit: {{1000m}} 
+          cores: {{1}}
+          memory: {{1024m}}
+        executor: 
+          coreLimit: {{1000m}}
+          cores: {{1}}
+          instances: {{1}}
+          memory: {{1024m}}
+        job:
+          explain: {{true}}
+          logLevel: {{INFO}}
+          streaming: # Streaming Section
+            {}
           inputs: #Inputs Section
-								{}
+            {}
           outputs: #Outputs Section
-								{}
-					steps: # Steps Section
-								{}
+            {}
+          steps: # Steps Section
+            {}
 					assertions: # Assertions Section
-								{}
+            {}
 					actions: # Actions Section
-								{}
+            {}
 ```
 
 The `{}` symbol functions as a variable placeholder that accommodates diverse supplementary properties that are listed at the conclusion of the corresponding section.
 
 The below table summarizes the various attributes within a Flare Job:
 
-| --- | --- | --- | --- | --- | --- | --- |
-| name | Name of the job. | name: customer | NA | NA | Rules for name: 37 alphanumeric characters and a special character '-' allowed. [a-z0-9]([-a-z0-9]*[a-z0-9]. The maximum permissible length for the name is 47 (Note: It is advised to keep the name length less than 30 characters because the orchestration engine behind the scenes adds a Unique ID which is usually 17 characters. Hence reduce the name length to 30. | Mandatory |
-| title | Title of the job. | title: Sample Ingester | NA | NA | NA | Optional |
-| description | This is the text describing the job. | description: The job ingests customer data and joins it with city data | NA | NA | NA | Optional |
-| spec | Specs of job. | spec:
-    {} | NA | NA | NA | Mandatory |
-| tags | Tags for the job. | tags:
-   - Connect
-   - Customer | NA | NA | NA | Optional |
-| runAsUser | Run as User. | runAsUser: iamgroot | NA | User ID of the use case assignee | Make sure that the user id is valid. | Optional |
-| stack | The Flare stack version to run the workflow is defined here.  | stack: flare:4.0 | flare:4.0 | flare:4.0, flare:3.0 | Please check the available Flare stack version. | Optional |
-| flare | Flare Stack specific section. | flare: 
-     {} | NA | NA | NA | Mandatory |
-| driver | The driver is the controller node of the operation and controls the operations of the workflow. | driver:
-  coreLimit: 1000m
-  cores: 1
-  memory: 1024m | driver:
-  coreLimit: 1000m
-  cores: 1
-  memory: 1024m | NA | If not defined, default values will be considered. Here the unit in coreLimit value is millicore(m). | Optional |
-| executor | The executor is the worker node that performs the operations defined in the workflow and sends the result back to the driver. It must interface with the cluster manager in order to actually get physical resources and launch executors. | executor:
-  coreLimit: 2000m
-  cores: 2
-  instances: 2
-  memory: 1024m | executor:
-  coreLimit: 1000m
-  cores: 1
-  instances: 1
-  memory: 1024m | NA | If not defined, default values will be considered. Here the unit in coreLimit value is millicore(m). | Optional |
-| job | Jobs can be defined as the steps to complete any action such as loading initial data, updating data, or writing data to sink. | job:
-    {} | NA | NA | NA | Mandatory |
-| explain | Use this flag to print the spark logical/physical plans in the logs.  | explain: true | false | true/false | For both physical and logical plans set to true
-For just physical set to false. | Optional |
-| logLevel | A log level is a piece of information from a given log message that distinguishes log events from each other. It helps in finding runtime issues with your Flare workflow and in troubleshooting. | logLevel: INFO | INFO | INFO / WARN / DEBUG/ ERROR | INFO - Designates informational messages that highlight the progress of the workflow
-WARN - Designates potentially harmful situations
-DEBUG - Designates fine-grained informational events that are most useful while debugging
-ERROR - Desingates error events that might still allow the workflow to continue running | Optional |
-| streaming | The streaming section contains properties related to executing the stream jobs. | streaming:
-    {} | NA | NA | NA | Optional |
-| inputs | Contains dataset details for reading data from supported data sources. | inputs:
-     {} | NA | NA | NA | Mandatory |
-| steps | One or more sequences to execute the steps defined for performing any transformation or applying any flare function or command. | steps:
-     {} | NA | NA | NA | Mandatory |
-| outputs | Contains dataset details for writing data to supported data sources. | outputs:
-     {] | NA | NA | NA | Mandatory |
-| assertions | Assertions allow you to perform validation checks on top of pre-written datasets. They are defined under the assertions section.  | assertions:
-     {] | NA | NA | NA | Optional |
-| actions | Icebase-specific actions are defined in the actions section. | actions:
-     {] | NA | NA | NA | Optional |
+<center>
+
+| Field | Data Type | Default Value | Possible Value | Requirement |
+| --- | --- | --- | --- | --- |
+| [`flare`](./configurations/flare_stack_specific_grammar.md#flare) | object | none | none | mandatory |
+| [driver](./configurations/flare_stack_specific_grammar.md#driver) | object | none | none | optional |
+| [`executor`](./configurations/flare_stack_specific_grammar.md#executor) | object | none | none | optional |
+| [`job`](./configurations/flare_stack_specific_grammar.md#job) | object | none | none | mandatory |
+| [`explain`](./configurations/flare_stack_specific_grammar.md#explain) | boolean | false | true/false | optional |
+| [`logLevel`](./configurations/flare_stack_specific_grammar.md#loglevel) | string | INFO | INFO / WARN /<br>DEBUG/ ERROR | optional |
+| [`streaming`](./configurations/streaming.md) | object | none | none | optional |
+| [`inputs`](./configurations/inputs.md) | object | none | none | mandatory |
+| [`steps`](./configurations/steps.md) | object | none | none | optional |
+| [`outputs`](./configurations/outputs.md) | object | none | none | mandatory |
+| [`assertions`](./configurations/assertions.md) | object | none | none | optional |
+| [`actions`](./configurations/actions.md) | object | none | none | optional |
+
+</center>
+
+Refer to the link here for more information regarding the Flare Stack-specific Section attributes, click [here.](./configurations/flare_stack_specific_grammar.md)
+
 
 A Flare Job can be further split into 5 sections:
 
