@@ -12,12 +12,12 @@ Flare is a declarative stack for large-scale data processing within DataOS. It l
 
 | Flare Job Type  | Description                                                                                                            |
 |-----------------|------------------------------------------------------------------------------------------------------------------------|
-| Batch Job       | Recomputes all changed datasets on each run, providing consistent performance. Has high latency and is suitable for smaller data sizes.                                              |
-| Data Profiling Job | Assesses data quality and structure, examining source data for accuracy, completeness, and validity.                    |
-| Data Quality Job | Evaluates data quality based on business-specific validation rules (assertions).                                                      |
-| Incremental Job | Computes only the changed rows or files of data since the last build, reducing overall computation and latency.        |
-| Stream Job      | Processes new data continuously with low latency, but incurs high computing costs and requires constant resource availability. |
-| Action Job      | Performs maintenance actions on data stored in Iceberg format in any depot (including Icebase) |
+| [Batch Job](./flare/job_types.md#batch-job)       | Recomputes all changed datasets on each run, providing consistent performance. Has high latency and is suitable for smaller data sizes.                                              |
+| [Data Profiling Job](./flare/job_types.md#data-profiling-job) | Assesses data quality and structure, examining source data for accuracy, completeness, and validity.                    |
+| [Data Quality Job](./flare/job_types.md#data-quality-job) | Evaluates data quality based on business-specific validation rules (assertions).                                                      |
+| [Incremental Job](./flare/job_types.md#incremental-job) | Computes only the changed rows or files of data since the last build, reducing overall computation and latency.        |
+| [Stream Job](./flare/job_types.md#stream-job)      | Processes new data continuously with low latency, but incurs high computing costs and requires constant resource availability. |
+| [Action Job](./flare/job_types.md#action-job)      | Performs maintenance actions on data stored in Iceberg format in any depot (including Icebase) |
 
 Further information regarding Flare Jobs can be accessed [here](./flare/job_types.md)
 

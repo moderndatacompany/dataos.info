@@ -31,12 +31,13 @@ workflow:
 ## Configuration Fields
 
 ### **`workflow`**
-<b>Description:</b> Workflow Section <br>
-<b>Data Type:</b> Object <br>
-<b>Requirement:</b> Mandatory <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> None <br>
+<b>Description:</b> workflow Section <br>
+<b>Data Type:</b> object <br>
+<b>Requirement:</b> mandatory <br>
+<b>Default Value:</b> none <br>
+<b>Possible Value:</b> none <br>
 <b>Example Usage:</b>
+
 ```yaml
 workflow: 
   schedule: 
@@ -48,34 +49,40 @@ workflow:
 ---
 
 ### **`schedule`**
-<b>Description:</b> Schedule Section <br>
-<b>Data Type:</b> Object <br>
-<b>Requirement:</b> Optional (Mandatory for Scheduled Workflows) <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> None <br>
+<b>Description:</b> schedule Section <br>
+<b>Data Type:</b> object <br>
+<b>Requirement:</b> optional (Mandatory for Scheduled Workflows) <br>
+<b>Default Value:</b> none <br>
+<b>Possible Value:</b> none <br>
 <b>Example Usage:</b>
+
 ```yaml
 schedule: 
   cron: '*/10 * * * *' 
   concurrencyPolicy: Forbid 
 ```
 
+---
+
 ### **`cron`**
-<b>Description:</b> The cron field encompasses the cron expression, a string that comprises six or seven sub-expressions providing specific details of the schedule. <br>
-<b>Data Type:</b> String <br>
-<b>Requirement:</b> Optional (Mandatory for Scheduled Workflows) <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> Any valid cron expression <br>
-<b>Additional Details:</b> The cron expression consists of value separated by white spaces  <br>
+<b>Description:</b> the cron field encompasses the cron expression, a string that comprises six or seven sub-expressions providing specific details of the schedule. <br>
+<b>Data Type:</b> string <br>
+<b>Requirement:</b> optional (Mandatory for Scheduled Workflows) <br>
+<b>Default Value:</b> none <br>
+<b>Possible Value:</b> any valid cron expression <br>
+<b>Additional Details:</b> the cron expression consists of value separated by white spaces  <br>
 <b>Example Usage:</b>
+
 ```yaml
 cron: '*/10 * * * *' 
 ```
 
+---
+
 ### **`concurrencyPolicy`**
-<b>Description:</b> The concurrencyPolicy field determines how concurrent executions of a workflow, created by a cron workflow, are handled<br>
-<b>Data Type:</b> String <br>
-<b>Requirement:</b> Optional <br>
+<b>Description:</b> the concurrencyPolicy field determines how concurrent executions of a workflow, created by a cron workflow, are handled<br>
+<b>Data Type:</b> string <br>
+<b>Requirement:</b> optional <br>
 <b>Default Value:</b> Allow <br>
 <b>Possible Value:</b> Allow/Forbid/Replace <br>
 <b>Additional Details:</b> <br>
@@ -84,61 +91,72 @@ cron: '*/10 * * * *'
 - <i> concurrencyPolicy: Replace -</i> When the concurrencyPolicy is set to "Replace", the cron workflow handles concurrent executions by replacing the currently running workflow run with a new workflow run if it is time for the next job workflow and the previous one is still in progress.  <br>
 
 <b>Example Usage:</b>
+
 ```yaml
 concurrencyPolicy: Replace 
 ```
 
+---
+
 ### **`startOn`**
-<b>Description:</b> Specifies start time of a schedule in ISO 8601 format.<br>
-<b>Data Type:</b> String <br>
-<b>Requirement:</b> Optional <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> Any time provided in ISO 8601 format <br>
+<b>Description:</b> specifies start time of a schedule in ISO 8601 format.<br>
+<b>Data Type:</b> string <br>
+<b>Requirement:</b> optional <br>
+<b>Default Value:</b> none <br>
+<b>Possible Value:</b> any time provided in ISO 8601 format <br>
 <b>Example Usage:</b>
 ```yaml
 startOn: 2022-01-01T23:30:45Z 
 ```
 
+---
+
 ### **`endOn`**
 <b>Description:</b> endOn terminates the scheduled workflow run at the specified time, even if the last workflow run isn’t complete <br>
-<b>Data Type:</b> String <br>
-<b>Requirement:</b> Optional <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> Any time provided in ISO 8601 format <br>
+<b>Data Type:</b> string <br>
+<b>Requirement:</b> optional <br>
+<b>Default Value:</b> none <br>
+<b>Possible Value:</b> any time provided in ISO 8601 format <br>
 <b>Example Usage:</b>
 ```yaml
 endOn: 2022-01-01T23:30:45Z 
 ```
 
+---
+
 ### **`completeOn`**
 <b>Description:</b> completeOn signifies successful completion. completeOn will let the last workflow run if it was triggered before the specified time <br>
-<b>Data Type:</b> String <br>
-<b>Requirement:</b> Optional <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> Any time provided in ISO 8601 format <br>
+<b>Data Type:</b> string <br>
+<b>Requirement:</b> optional <br>
+<b>Default Value:</b> none <br>
+<b>Possible Value:</b> any time provided in ISO 8601 format <br>
 <b>Example Usage:</b>
 ```yaml
 completeOn: 2022-01-01T23:30:45Z 
 ```
 
+---
+
 ### **`title`**
-<b>Description:</b> Title of Workflow <br>
-<b>Data Type:</b> String <br>
-<b>Requirement:</b> Optional <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> Any string <br>
+<b>Description:</b> title of Workflow <br>
+<b>Data Type:</b> string <br>
+<b>Requirement:</b> optional <br>
+<b>Default Value:</b> none <br>
+<b>Possible Value:</b> any string <br>
 <b>Example Usage:</b>
 ```yaml
 title: Quality Assessment Workflow 
 ```
 
+---
+
 ### **`dag`**
 <b>Description:</b> DAG is a Directed Acyclic Graph, a conceptual representation of a sequence of jobs (or activities). These jobs in a DAG are executed in the order of dependencies between them <br>
-<b>Data Type:</b> Object <br>
-<b>Requirement:</b> Mandatory <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> None <br>
-<b>Additional Details:</b> There should be atleast one job within a DAG<br>
+<b>Data Type:</b> object <br>
+<b>Requirement:</b> mandatory <br>
+<b>Default Value:</b> none <br>
+<b>Possible Value:</b> none <br>
+<b>Additional Details:</b> there should be atleast one job within a DAG<br>
 <b>Example Usage:</b>
 ```yaml
   dag: 
@@ -150,12 +168,14 @@ title: Quality Assessment Workflow
           {} # Flare Stack specific configurations
 ```
 
+---
+
 ### **`name`**
-<b>Description:</b> Name of the Job <br>
-<b>Data Type:</b> String <br>
-<b>Requirement:</b> Mandatory <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> Any string confirming the regex `[a-z0-9]([-a-z0-9]*[a-z0-9])` and length less than or equal to 48<br>
+<b>Description:</b> name of the Job <br>
+<b>Data Type:</b> string <br>
+<b>Requirement:</b> mandatory <br>
+<b>Default Value:</b> none <br>
+<b>Possible Value:</b> any string confirming the regex `[a-z0-9]([-a-z0-9]*[a-z0-9])` and length less than or equal to 48<br>
 <b>Example Usage:</b>
 ```yaml
 name: flare-ingestion-job 
@@ -184,6 +204,8 @@ title: Profiling Job
 ```yaml
 description: The job ingests customer data 
 ```
+
+---
 
 ### **`spec`**
 <b>Description:</b> specs of the Job <br>
@@ -215,7 +237,7 @@ runAsUser: iamgroot
 ---
 
 ### **`compute`**
-<b>Description:</b> a Compute resource provides processing power for the job.  <br>
+<b>Description:</b> a Compute Resource provides processing power for the job.  <br>
 <b>Data Type:</b> string <br>
 <b>Requirement:</b> mandatory <br>
 <b>Default Value:</b> none <br>

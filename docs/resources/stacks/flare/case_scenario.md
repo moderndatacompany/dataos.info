@@ -1,7 +1,5 @@
 # Case Scenario
 
-
-
 ## Data Migration and Movement
 
 [Batch Job](./case_scenario/batch_jobs.md)

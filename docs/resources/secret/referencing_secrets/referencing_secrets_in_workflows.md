@@ -1,6 +1,6 @@
 # Referencing Secrets in Workflows
 
-Similarly, you could have called upon the secret in a Workflow. Here’s a sample YAML to do it:
+Secrets can be called upon in a Workflow. Here’s a sample YAML to do it:
 
 ## Create a Secret YAML
 
@@ -21,7 +21,7 @@ secret:
 
 ## Apply the Secret YAML
 
-Apply the secret to the workspace where you plan to execute your workflow.
+Apply the Secret to the workspace where you plan to execute your workflow.
 
 ```bash
 dataos-ctl apply -f <path-to-secret-yaml> -w <workspace>
@@ -29,7 +29,7 @@ dataos-ctl apply -f <path-to-secret-yaml> -w <workspace>
 
 ## Referencing the Secret in the Workflow YAML
 
-Create a YAML file for your workflow. In the application spec of your workflow, make a reference to the secret.
+Create a YAML file for your Workflow. In the application spec of your Workflow, make a reference to the Secret.
 
 ```yaml
 version: v1
