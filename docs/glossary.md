@@ -144,7 +144,7 @@ hide:
 | [PDP](./resources/policy/understanding_abac_pdp_and_pep.md) | Policy Desicion Point is the service that evaluates a specific subject-predicate-object-metadata request against the current policies to determine if access to the DataOS resource/ environment is allowed or denied. |
 | [PEP](./resources/policy/understanding_abac_pdp_and_pep.md) | Policy Enforcement Point is responsible for execution of the decision returned from PDP. |
 | Poros | DataOS Poros is an orchestration engine for managing workflows, which are run for data transformation and movement. Working in coordination with Kubernetes, Poros efficiently allocates resources to various running jobs and services for data processing.  |
-| [Policy](./resources/policy.md) | Policy is a in DataOS Resource to define rules to allow or deny access to DataOS resources. Policies are enforced using Attribute Based Access Control (ABAC) and define what actions(predicates), a user (a subject) can perform on a dataset, API Path, or a Resource (an object). |
+| [Policy](./resources/policy.md) | Policy is a DataOS Resource which governs the behaviour of users(applications and persons). In DataoS, two types of policies can be created- Access Policy & Data Policy.  |
 | [Profiling](/resources/stacks/flare/case_scenario/data_profiling_jobs/#data-profiling-jobs) | Data profiling is a process that involves examining data to gain insights into its structure, quality, and characteristics. In DataOS,  data profiling workflow aims to analyze data for valid formats, null values, and inconsistencies to enhance data quality. By utilizing basic statistics, it uncovers anomalies, redundancies, and provides insights into the validity of the data. |
 
 
@@ -178,7 +178,7 @@ hide:
 
 | Term | Description |
 | --- | --- |
-| TUI | Terminal User Interface is the interface on the terminal where data practioners can interact with the DataOS context. |
+| TUI | Terminal User Interface shows all the key resources deployed on the DataOS Context for real-time monitoring and exploration. It provides an easy-to-use interface for developers and operators to access vital information about the applications and infrastructure. TUI using DataOS CLI. |
 | Themis | Themis provides native JDBC and ODBC connectivity, which makes it easy to connect to Themis from a wide variety of programming languages and tools. Themis is a modern, high-performance, and highly available JDBC server that provides a unified interface to connect with different database management systems (DBMS). Themis stands out from other distributed SQL query engines due to its unique and noteworthy features. |
 
 
