@@ -45,7 +45,7 @@ workflow:
               checkpointLocation: dataos://icebase:checkpoints/kafka-to-icebase/random-users/fygsfhb?acl=rw
               triggerMode: ProcessingTime
               triggerDuration: 10 seconds
-              forEachBatchMode: false # Only one view can be wwritten
+              forEachBatchMode: false # Only one view can be written
 
             inputs:
               - name: random_user
