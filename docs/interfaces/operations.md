@@ -24,7 +24,7 @@ On the DataOS home page, click on 'Operations'. The following type of resources 
 
 - **Product** - In this section, you can find information about the release name and version of the DataOS platform and its associated components. This helps users keep track of the software versions they are working with and stay updated on the latest releases and features offered by DataOS.
 
-## User Kernel 
+## User Space 
 ### **Resources and their runtime**
 
 By navigating to the "Resources" tab, the detailed information about the DataOS primitives created  by users can be accessed such as workflows, services, secrets, depots, clusters, compute, etc. This includes insights into the current running status of these resources, as well as the owner or creator of each resource. The "Resources" tab provides a centralized view of the user-created components, allowing users to monitor and manage their resources effectively. 
@@ -33,7 +33,7 @@ By navigating to the "Resources" tab, the detailed information about the DataOS 
 
 ![Picture](operations/user_space.png)
 </center>
-<figcaption align = "center"> User kernel resources</figcaption>
+<figcaption align = "center"> User space resources</figcaption>
 
 **Resource Runtime**
 
