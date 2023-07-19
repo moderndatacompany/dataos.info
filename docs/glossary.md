@@ -10,13 +10,13 @@ hide:
 
 | Term | Description |
 | --- | --- |
-| [Access Policy](./resources/policy.md#access-policy) | An access policy in DataOS serves as a regulatory mechanism that governs user interactions by defining rules for granting or denying access to specific actions. These policies determine whether a user, referred to as the subject, is authorized to perform a particular action, known as the predicate, on a given dataset, API path, or other resources, referred to as objects. Access policies provide a structured approach to enforcing security and controlling user access within the DataOS environment.  |
+| [Access Policy](./resources/policy.md#access-policy) | An access policy in DataOS serves as a regulatory mechanism that governs user authorizations by defining rules for granting or denying access to specific actions. These policies determine whether a user, referred to as the subject, is authorized to perform a particular action, known as the predicate, on a given dataset, API path, or other resources, referred to as objects. Read about [Bifrost](interfaces/bifrost.md) to establish access control via a Graphical User Interface.  |
 | [Airbyte](/resources/depot/list_of_connectors/) | Airbyte is a modern ELT data pipeline tool that streamlines data integration and replication by efficiently collecting data from diverse sources and making it available for analysis and storage. DataOS seamlessly integrates with Airbyte and provides a graphical user interface to enable access to Airbyte connectors. This integration empowers users to leverage Airbyte's functionalities effortlessly within the DataOS ecosystem. |
-| [Alerts](/interfaces/atlas/#set-up-alerts) | Alerts in DataOS serve as a notification mechanism that informs you when a specific field returned by a query meets a predefined threshold or set of criteria. They are an effective way to monitor and track important business Key Performance Indicators (KPIs). |
+| [Alerts](/interfaces/atlas/#set-up-alerts) | DataOS allows you to monitor & setup alerts at different stages of the data product journey. For example, you can setup Metrics Alerts in DataOS to serve a notification that informs you when a specific field returned by a query meets a predefined threshold or set of criteria; you can setup Workflow Alerts to get notified of breaks in the data pipelines; you can also setup alerts for quality checks, data changes, and a lot more. |
 | [Assertions]() | Assertions are custom validation rules tailored to a specific business domain. They are essential in evaluating the suitability of datasets for their intended purpose. By implementing assertions, datasets can undergo additional validation checks, leading to enhanced data quality.  |
 | [Atlas](./interfaces/atlas.md) | A built-in business intelligence (BI) tool that enables you to generate visualizations, and create interactive dashboards. |
 | [Audiences](./interfaces/audiences.md) | It is an application derived from Lens that uses the semantic data models created through Lens to identify and categorize specific groups of people who have similar characteristics, traits, or behaviors. These categorized groups are referred to as audiences. |
-| [Authorization Atoms](./interfaces/bifrost.md) | Authorization Atoms refer to the actions used in the authorization process to grant or deny access to DataOS resources based on defined policies. |
+| [Authorization Atoms](./interfaces/bifrost.md) | Each predicate and object in an Access Policy is an Authorization Atom. This allows us to use them in a composable manner to create modular use cases or policies. |
 
 
 # b
@@ -159,9 +159,9 @@ hide:
 
 | Term | Description |
 | --- | --- |
-| [Resources](./resources.md) | Resources in DataOS are the lego blocks or the building blocks that can be combined to other resources. Other word for resources with context to DataOS is primitives. |
-| Resource-instance | Resource-instance is the instance of resource. A user typically use an instance of a resource while performing an action within DataOS. |
-| Resource-type | Resource-type is the type of resource. DataOS resources can be categorized into segments, Workspace resource and platform resources. |
+| [Resource](./resources.md) | Resources in DataOS are the lego blocks or the building blocks that can be combined to other resources. Other word for resources with context to DataOS is primitives. |
+| Resource-instance | The instance of a DataOS Resource which is deployed and orchestrated as a 'record of intent'. Every resource-instance in a Workspace, will have a unique name.  |
+| Resource-type | Resource-type refers to each of the different kinds of Resources which are available in DataOS. So, Workflow, Compute, Policy - each of them is a resource-type. |
 
 
 # s 
