@@ -37,7 +37,7 @@ hide:
 | [Cloud Kernel](/architecture/#cloud-kernel)  | Cloud Kernel is an abstraction layer over the cloud APIs of cloud providers like AWS, GCP & Azure that facilitates interactions with cloud-based services and resources. It makes DataOS cloud-agnostic. |
 | Collection | The collection represents a logical container that holds related data entities, and it plays a key role in establishing the data hierarchy. Once a mapping is established between a depot and a collection, it generates a Uniform Data Link (UDL) that can be utilized throughout DataOS to access the dataset. |
 | Context | DataOS Context refers to the environment or instance where DataOS is deployed and operates.   |
-| [Core Kernel](/architecture/#core-kernel) | Core Kernel is a fundamental component of DataOS responsible for core functionalities and operations.  |
+| [Core Kernel](/architecture/#core-kernel) | Core Kernel serves as the traditional operating system kernel, responsible for OS functionalities that are independent of cloud-specific features. It incorporates drivers to enable communications between services, enforces access controls for both ingress & egress, and manages creation, scheduling & termination of various DataOS Resources & applications.   |
 
 
 # d 
@@ -47,7 +47,7 @@ hide:
 | Data Developer | Data developer in DataOS, specializes in designing, building, and maintaining data-centric applications and systems. They work with data infrastructure, data sources, and data pipelines to enable efficient data processing and analysis. |
 | [Data Policy](./resources/policy.md#data-policy) | Data Policy serves as an additional layer of control in regulating the visibility and interaction with specific data after access has been granted. It employs techniques like data masking or filtering to  restrict the visibility of sensitive or restricted data based on predefined rules or conditions. By enforcing these policies, organizations can ensure data privacy and regulatory compliance, minimizing the risk of unauthorized access to sensitive information. |
 | [Data Toolbox](./resources/stacks/data_toolbox.md) | The Data Toolbox Stack is used to update metadata for the data that is ingested into Icebase using Flare Stack. The metadata of the ingested datasets needs to be registered with Metis before it can be queried using Workbench.|
-| [Depot](./resources/depot.md) | In DataOS, a Depot serves as a resource that simplifies connectivity to different data sources by abstracting the complexities of the underlying systems.  Depots handle protocols, credentials, and connection schemas, making it easier for users to access and utilize data from diverse sources, including file systems, data lake systems, database systems, and event systems |
+| [Depot](./resources/depot.md) | Depot is a Dataos Resource that simplifies connectivity to different data sources by abstracting the complexities of the underlying systems.  Depots handle protocols, credentials, and connection schemas, making it easier for users to access and utilize data from diverse sources, including file systems, data lake systems, database systems, and event systems |
 | Dropzone | Dropzone is a depot in DataOS referring to an object storage. This storage is used as data lake to easily and securely upload files. |
 
 
@@ -89,7 +89,7 @@ hide:
 | [Icebase](./resources/depot/icebase.md) | Icebase is a depot in DataOS that utilizes the Apache Iceberg table format. It seamlessly integrates with popular object storage systems like Azure Data Lake, Google Cloud Storage, and Amazon S3, following the Lakehouse pattern. Icebase offers a powerful OLAP (Online Analytical Processing) system that simplifies access to data lakes.|
 | Indexer | It is a continuous running service within the DataOS environment that keeps track of newly created or updated datasets/topics/pipelines(workflows). With the information about the changed entity, a reconciliation Scanner YAML is created with filters to scan the metadata of the affected entity. |
 | [Ingress](./interfaces/operations.md#ingresses) | Ingress in DataOS exposes HTTP and HTTPS routes from outside the DataOS context to services within a DataOS context. It configures the incoming port for the service to allow access to DataOS resources from external links. |
-| [Interface](/interfaces/) | Interfaces in DataOS such as CLI, GUI, API provide points of communication and interaction between different components for efficient data operations,  and control over various activities. interfaces enable self-service data management.  |
+| [Interface](/interfaces/) | Interfaces in DataOS such as CLI, GUI, API provide points of communication and interaction between different components for efficient data operations,  and control over various activities. Interfaces enable self-service data management.  |
 
 
 # j 
@@ -143,8 +143,8 @@ hide:
 | --- | --- |
 | [PDP](./resources/policy/understanding_abac_pdp_and_pep.md) | Policy Desicion Point is the service that evaluates a specific subject-predicate-object-metadata request against the current policies to determine if access to the DataOS resource/ environment is allowed or denied. |
 | [PEP](./resources/policy/understanding_abac_pdp_and_pep.md) | Policy Enforcement Point is responsible for execution of the decision returned from PDP. |
-| Poros | Poros is a custom controller for K8s implemented using the operator pattern. It orchestrates all the primitives required to run DataOS using Kubernetes by registering them as custome resources. |
-| [Policy](./resources/policy.md) | Policy in DataOS is a resource to define rules for tags, associated with subjects, predicates, or paths associated with objects, and additional conditions on metadata to allow or deny access to DataOS resource. |
+| Poros | DataOS Poros is an orchestration engine for managing workflows, which are run for data transformation and movement. Working in coordination with Kubernetes, Poros efficiently allocates resources to various running jobs and services for data processing.  |
+| [Policy](./resources/policy.md) | Policy is a in DataOS Resource to define rules to allow or deny access to DataOS resources. Policies are enforced using Attribute Based Access Control (ABAC) and define what actions(predicates), a user (a subject) can perform on a dataset, API Path, or a Resource (an object). |
 | [Profiling](/resources/stacks/flare/case_scenario/data_profiling_jobs/#data-profiling-jobs) | Data profiling is a process that involves examining data to gain insights into its structure, quality, and characteristics. In DataOS,  data profiling workflow aims to analyze data for valid formats, null values, and inconsistencies to enhance data quality. By utilizing basic statistics, it uncovers anomalies, redundancies, and provides insights into the validity of the data. |
 
 
@@ -159,20 +159,19 @@ hide:
 
 | Term | Description |
 | --- | --- |
-| [Resource](./resources.md) | Resources in DataOS are the lego blocks or the building blocks that can be combined to other resources. Other word for resources with context to DataOS is primitives. |
+| [Resource](./resources.md) | Resources in DataOS are the lego blocks or the building blocks of the system that can be composed together. Each Resource in DataOS is a logical atomic unit with specific purpose, and is defined using a particular set of attributes. |
 | Resource-instance | The instance of a DataOS Resource which is deployed and orchestrated as a 'record of intent'. Every resource-instance in a Workspace, will have a unique name.  |
 | Resource-type | Resource-type refers to each of the different kinds of Resources which are available in DataOS. So, Workflow, Compute, Policy - each of them is a resource-type. |
-
 
 # s 
 
 | Term | Description |
 | --- | --- |
-| [Scanner](./resources/stacks/scanner.md) |  Scanner is a stack in DataOS, a Python-based framework for extracting metadata from external source systems and the components within the DataOS environment. |
-| [Secret](./resources/secret.md) | Secret is a DataOS resource that acts a vault where all the credentials, and access key are stored. |
-| [Service](./resources/service.md) | Service is never ending process that is receiving and/or  serving API. It serves real-time data such as user interface.  |
-| [Stack](./resources/stacks.md) | DataOS Stacks are the programming paradigms supporting processing and management of data. It acts as the extension points of runnable resources, Workflow, and Service. |
-| Sentinel | Sentinel is a monitoring and logging solution offering centralized observability in the DataOS infrastructure. It gives a bird's eye view, keeping a watchful eye on metrics, alerts, and usage. |
+| [Scanner](./resources/stacks/scanner.md) |  Scanner is a Stack in DataOS, a Python-based framework for extracting metadata from external source systems and the components within the DataOS environment. |
+| [Secret](./resources/secret.md) | Secret is a DataOS Resource to store sensitive information such as passwords, tokens or keys in the internal vault of DataOS. |
+| [Service](./resources/service.md) | Service is a DataOS Resource for long running process that is receiving and/or serving API. It is used for scenarios that need a continuous flow of real-time data, such as event processing, streaming IoT and more.   |
+| [Stack](./resources/stacks.md) | DataOS Stacks are the programming paradigms supporting processing and management of data. They acts as the extension points of runnable resources, Workflow, and Service. |
+| Sentinel | Sentinel is a monitoring and logging solution offering centralized observability in the DataOS infrastructure. |
 
 
 # t 
@@ -183,8 +182,10 @@ hide:
 | Themis | Themis provides native JDBC and ODBC connectivity, which makes it easy to connect to Themis from a wide variety of programming languages and tools. Themis is a modern, high-performance, and highly available JDBC server that provides a unified interface to connect with different database management systems (DBMS). Themis stands out from other distributed SQL query engines due to its unique and noteworthy features. |
 
 
-# u 
-|Unified Architecture | The unified architecture of DataOS refers to the cohesive and integrated design approach that combines various components, services, and technologies into a unified system. It enables data management, processing, and analysis, ensuring seamless interoperability and consistent user experience across different functionalities and applications within DataOS. |
+# u
+| Term | Description |
+| --- | --- | 
+| Unified Architecture | The unified architecture of DataOS refers to the cohesive and integrated design approach that combines various components, services, and technologies into a unified system. It enables data management, processing, and analysis, ensuring seamless interoperability and consistent user experience across different functionalities and applications within DataOS.|
 | [Uniform Data Link](/resources/depot/#depot) | The Depot serves as the registration of data locations to be made accessible to DataOS. Once the Depot is created, each source system is assigned a unique address, referred to as a Uniform Data Link (UDL). Regardless of the source system's internal naming conventions and structure, the UDL ensures consistency in referencing data.  |
 | [User Space](/interfaces/operations/#user-kernel) | User Space represents the domain of the operating system where data developers work and create resources such as workflows, services, secrets, depots, clusters, compute, etc for data processing jobs, services, and analytics workloads. Operations UI provides a way for users to observe and monitor these resources and their runtimes to debug if any issues.|
 
@@ -197,8 +198,8 @@ hide:
 
 | Term | Description |
 | --- | --- |
-| [Workbench](./interfaces/workbench.md) | Workbench is a user interface (UI)-based query interface designed for data manipulation and exploration. allows you to run simple and complex SQL queries on heterogeneous data sources.  |
-| [Workflow](./resources/workflow.md) | The Workflow is a fundamental resource for orchestrating data processing tasks with dependencies. It defines a pipeline involving a sequence of jobs, each utilizing stacks behind the scenes to accomplish various tasks. Within a Workflow, a job encompasses a sequence of processing tasks that need to be executed in a specific order to achieve desired outcomes.  |
+| [Workbench](./interfaces/workbench.md) | Workbench is a query interface within DataOS that provides functionality for editing, running, and saving SQL scripts, viewing query results and more. It serves as a versatile tool for running both simple and complex SQL queries on diverse data sources, enabling efficient data exploration.  |
+| [Workflow](./resources/workflow.md) | The Workflow is a DataOS Resource for orchestrating data processing tasks with dependencies. It defines a pipeline involving a sequence of jobs, each utilizing stacks behind the scenes to accomplish various tasks. Within a Workflow, a job encompasses a sequence of processing tasks that need to be executed in a specific order to achieve desired outcomes.  |
 | Workspace | In DataOS, a Workspace is a separate work environment for individuals or teams, providing logical separation and control over resources. Each Workspace functions like a tenant, allowing the creation and management of resources in an isolated context. By default, resources are created in the public Workspace, serving as a shared environment. |
 
 
