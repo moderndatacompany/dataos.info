@@ -179,7 +179,6 @@ hide:
 | Term | Description |
 | --- | --- |
 | TUI | Terminal User Interface shows all the key resources deployed on the DataOS Context for real-time monitoring and exploration. It provides an easy-to-use interface for developers and operators to access vital information about the applications and infrastructure. TUI using DataOS CLI. |
-| Themis | Themis provides native JDBC and ODBC connectivity, which makes it easy to connect to Themis from a wide variety of programming languages and tools. Themis is a modern, high-performance, and highly available JDBC server that provides a unified interface to connect with different database management systems (DBMS). Themis stands out from other distributed SQL query engines due to its unique and noteworthy features. |
 
 
 # u
