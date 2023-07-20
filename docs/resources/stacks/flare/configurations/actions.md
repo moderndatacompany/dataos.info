@@ -1,6 +1,6 @@
 # Flare Actions Section Grammar
 
-> The Data Maintenance Actions are only supported in DataOS Internal Storage Depot, Icebase.
+> The Data Maintenance Actions are only supported in depots with Iceberg datasets. For e.g. Icebase.
 > 
 
 Maintenance of any Iceberg table is challenging; therefore, DataOS internal depot Icebase gives users in-built capabilities to manage and maintain metadata files and data. In DataOS, these operations can be performed using Flare stack. This service in Flare is offered through `actions`. 
@@ -32,7 +32,7 @@ The configurations for the different actions and their definitions are provided 
 
 ## Rewrite Dataset
 
-> Supported in both Flare Stack Versions `flare:3.0` and `flare:4.0`.
+> Supported in Flare Stack Version `flare:4.0`.
 > 
 
 Iceberg format within Icebase depots tracks each data file in a table. More data files lead to more metadata stored in manifest files, and small data files cause an unnecessary amount of metadata and less efficient queries from file open costs. 
@@ -54,7 +54,7 @@ The `rewrite_dataset` action is beneficial in the case of streaming, where small
 
 ## Rewrite Manifest
 
-> Supported in both Flare Stack Versions `flare:3.0` and `flare:4.0`.
+> Supported in Flare Stack Version `flare:4.0`.
 > 
 
 DataOS internal depot, Icebase uses metadata in its manifest list and manifest files to speed up query planning and to prune unnecessary data files. Some tables can benefit from rewriting manifest files to make locating data for queries much faster. The metadata tree functions as an index over a table’s data. Manifests in the metadata tree are automatically compacted in the order they are added, which makes queries faster when the write pattern aligns with read filters. For example, writing hourly-partitioned data as it arrives is aligned with time-range query filters. The `rewrite_manifest` action definition for `flare:4.0` is given below:
@@ -71,7 +71,7 @@ A case scenario illustrating the implementation of the `rewrite_manifest` action
 
 ## Expire Snapshots
 
-> Supported in both Flare Stack Versions `flare:3.0` and `flare:4.0`
+> Supported in Flare Stack Version `flare:4.0`
 > 
 
 Each write to an Iceberg table within Icebase depots creates a new snapshot, or version, of a table. Snapshots can be used for time-travel queries, or the table can be rolled back to any valid snapshot. Snapshots accumulate until they are expired by Flare’s `expire_snapshots` action. The `expire_snapshots` action definition for `flare:4.0` is as follows:
@@ -90,7 +90,7 @@ Regularly expiring snapshots is recommended to delete data files that are no lon
 
 ## Remove Orphans
 
-> Supported in both Flare Stack Version `flare:3.0` and  `flare:4.0`.
+> Supported in Flare Stack Version `flare:4.0`.
 > 
 
 While executing Flare Jobs upon Icebase depots, job failures can leave files that are not referenced by table metadata, and in some cases, normal snapshot expiration may not be able to determine if a file is no longer needed and delete it.
@@ -125,9 +125,9 @@ actions:
 
 The `delete_from_dataset` can be used in multiple configurations, which have been showcased in the case scenarios [here.](../case_scenario/delete_from_dataset.md)
 
-<aside>
+<aside class="callout">
 
-🗣️ **Note:** When using a GCS-based environment, use the dataset address with the `acl=rw` query parameter (e.g. `dataos://icebase:actions/random_users_data?acl=rw`). This is because GCS generates two credentials with different permissions: one with only read access and one with both read and write access. Flare actions need write access to create files, so if you don't specify `acl=rw`, Flare will default to read-only access and prevent you from updating or creating files.
+🗣️ When using a GCS-based environment, use the dataset address with the `acl=rw` query parameter (e.g. `dataos://icebase:actions/random_users_data?acl=rw`). This is because GCS generates two credentials with different permissions: one with only read access and one with both read and write access. Flare actions need write access to create files, so if you don't specify `acl=rw`, Flare will default to read-only access and prevent you from updating or creating files.
 
 ```yaml
 inputs:

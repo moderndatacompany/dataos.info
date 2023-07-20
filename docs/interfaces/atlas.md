@@ -19,7 +19,7 @@ In addition to Atlas, DataOS integrates with various other BI tools, enhancing t
 On the DataOS home page, click on **Atlas**.
 
 ![atlas_homepage.png](atlas/atlas_homepage.png)
-<figcaption align = "center">Home page</figcaption>
+<figcaption align = "center">Atlas interface</figcaption>
 
 On the app’s landing screen, you can do the following:
 

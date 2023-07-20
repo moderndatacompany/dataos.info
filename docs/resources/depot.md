@@ -569,3 +569,9 @@ Using Lens, you can create Data Models and explore them using the Lens App UI. L
 To facilitate the creation of depots accessing commonly used data sources, we have compiled a collection of pre-defined YAML configuration files. These templates serve as a starting point, allowing you to quickly set up depots for popular data sources. You can access the list of these templates by visiting the following page:
 
 [Depot Config Templates](./depot/depot_config_templates.md)
+
+## Data Integration - Supported Connectors in DataOS
+
+The page below provides an overview of the data sources accessible by one or more components within DataOS. 
+
+[Supported Connectors in DataOS](./depot/list_of_connectors.md)
