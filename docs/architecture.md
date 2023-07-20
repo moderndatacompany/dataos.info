@@ -95,9 +95,9 @@ It abstracts away the complexities of managing distributed systems, including ta
 ### Core Kernel
 It provides the next set of abstractions over the cloud layer, translating low-level APIs (low-level in terms of communication & function) to high-level APIs. Core Kernel serves as the traditional operating system kernel, responsible for OS functionalities that are independent of cloud-specific features. 
 
-From a user’s perspective, it handles system resources such as CPU scheduling, memory allocation and provides input/output ports for applications & services running on top of it. Core kernel incorporates drivers to enable communications between services, enforces access controls for both ingress & egress, and manages creation, scheduling & termination of various DataOS Resources & applications.
+From a user’s perspective, it handles system resources such as CPU scheduling, memory allocation and provides input/output ports for applications & services running on top of it. Core kernel incorporates drivers to enable communications between services and enforces access controls for both ingress & egress.
 ### User Space
-User Space represents the domain of the operating system where data developers work. It allows the developers to isolate & segregate their work from other users, providing multi-tenancy to develop business-domain-specific data products. User Space is itself segregated into two logically separated layers, viz.
+User Space represents the domain of the operating system where data developers work. It allows the developers to isolate & segregate their work from other users, providing multi-tenancy to develop business-domain-specific data products. All the DataOS Resources are created, deployed & managed by users in this layer. User Space is itself segregated into two logically separated layers, viz.
 #### **User Layer**
 
 This layer can be envisioned to be the layer providing the user [interfaces](./interfaces.md) for various applications of DataOS, such as Atlas and Workbench. It also has a Command Line Interface to perform CRUD operations on DataOS Resources and trigger user processes. It is where DataOS Resources such as Depots are deployed, and ETL pipelines are built.
