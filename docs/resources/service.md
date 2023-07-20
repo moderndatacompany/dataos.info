@@ -18,8 +18,6 @@ To achieve robust scalability, the Service Resource introduces the concept of re
 
 In DataOS, Ingress exposes HTTP and HTTPS routes from outside the DataOS context to services within the DataOS environment. It configures the incoming port for the Service Resource, enabling access to DataOS resources from external links. Ingress plays a crucial role in facilitating communication between DataOS and external systems or users.
 
-### **Autoscaling**
-
 
 ## Syntax of a service
 

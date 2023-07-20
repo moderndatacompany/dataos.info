@@ -67,6 +67,7 @@ outputs:
 outputs:
   {} # Properties within the outputs section
 ```
+
 ---
 ### **`name`**
 <b>Description:</b> Name assigned to one of the views you want to sink as an output dataset. <br>
@@ -79,6 +80,7 @@ outputs:
 ```yaml
 name: top_100_accounts
 ```
+
 ---
 ### **`dataset`**
 <b>Description:</b> DataOS UDL address specifying the location where the output dataset will be stored. dataset where you want to write your data referred by view in `name` above. <br>
@@ -91,6 +93,7 @@ name: top_100_accounts
 ```yaml
 dataset: dataos://icebase:bronze/topaccounts?acl=rw
 ```
+
 ---
 ### **`format`**
 <b>Description:</b> File format in which the output dataset will be saved.<br>
@@ -103,6 +106,7 @@ dataset: dataos://icebase:bronze/topaccounts?acl=rw
 ```yaml
 format: iceberg
 ```
+
 ---
 ### **`driver`**
 <b>Description:</b> The field can be used to override the default driver class in case of output dataset to be stored in JDBC depot types. <br>
@@ -115,6 +119,7 @@ format: iceberg
 ```yaml
 driver: org.apache.jdbc.psql.Driver
 ```
+
 ---
 ### **`title`**
 <b>Description:</b> Title of the output dataset. <br>
@@ -127,6 +132,7 @@ driver: org.apache.jdbc.psql.Driver
 ```yaml
 title: Account
 ```
+
 ---
 ### **`description`**
 <b>Description:</b> Description of the output dataset. <br>
@@ -139,6 +145,7 @@ title: Account
 ```yaml
 description: Account data from GCD export
 ```
+
 ---
 ### **`tags`**
 <b>Description:</b> List of tags or labels associated with the output dataset. <br>
@@ -176,6 +183,7 @@ options:
       - name: version
         order: desc
 ```
+
 ---
 ### **`saveMode`**
 <b>Description:</b> `saveMode` is used to specify the expected behavior of saving a Dataframe to a data source<br>
@@ -217,6 +225,7 @@ extraOptions:
 ```yaml
 compressionType: gzip
 ```
+
 ---
 
 ### **`sort`**
@@ -235,6 +244,7 @@ sort:
     - name: version # column name
       order: desc # order (asc, desc)
 ```
+
 ---
 
 ### **`iceberg`**
@@ -260,6 +270,7 @@ iceberg:
       column: timestamp
       asColumn: day_partitioned
 ```
+
 ---
 
 ### **`merge`**
@@ -275,6 +286,7 @@ merge:
   onClause: old.id = new.id
   whenClause: matched then update set * when not matched then insert *
 ```
+
 ---
 
 ### **`onClause`**
@@ -318,6 +330,7 @@ properties:
   write.format.default: parquet
   write.metadata.compression-codec: gzip
 ```
+
 ---
 
 ### **`partitionSpec`**
@@ -350,6 +363,7 @@ partitionSpec:
 ```yaml
 type: identity
 ```
+
 ---
 
 ### **`column`**
@@ -363,6 +377,7 @@ type: identity
 ```yaml
 column: timestamp
 ```
+
 ---
 
 ### **`asColumn`**
