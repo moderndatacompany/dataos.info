@@ -83,6 +83,7 @@ name: top_100_accounts
 ```yaml
 doc: this step is to document
 ```
+
 ---
 
 ### **`sql`**
@@ -96,6 +97,7 @@ doc: this step is to document
 ```yaml
 sql: select * from account_connect limit 100
 ```
+
 ---
 
 ### **`classpath`**
@@ -109,6 +111,7 @@ sql: select * from account_connect limit 100
 ```yaml
 classpath: io.dataos.custom.step.Step.class
 ```
+
 ---
 
 ### **`functions`**
