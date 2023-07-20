@@ -5,26 +5,26 @@ A Flare Workflow is a series of activities that are necessary to complete a data
 
 ## Structure of Flare Workflow
 
-### **Flare Workflow**
+### **Workflow Resource**
 
-In the context of DataOS, a Workflow is a fundamental Primitive/Resource. Specifically, a Flare Workflow comprises of a job that calls upon the Flare stack to execute various processing tasks. The syntax for a Workflow is outlined below for your reference.
+In the context of DataOS, a Workflow is a fundamental Resource. Specifically, a Flare Workflow comprises of a job that calls upon the Flare stack to execute various processing tasks. The syntax for a Workflow is outlined below for your reference.
 
 ```yaml
-version: v1 # Version
-name: wf-cust-demo-01 # Name of the Workflow
-type: workflow # Resource Type (Here its Workflow)
-tags: # Tags
+version: v1 
+name: wf-cust-demo-01 
+type: workflow 
+tags: 
   - Connect
   - Customer
-description: Sample Job # Description 
-workflow: # Workflow Specific Section
+description: Sample Job  
+workflow:
 	dag:
-		{} #sequence of jobs come within DAG
+		{} 
 ```
 
-To know more about the details of various properties within a workflow, click [here](../../workflow.md) 
+To know more about the details of various properties within a Workflow, click [here](../../workflow.md) 
 
-### **Flare Job**
+### **Job**
 
 In the realm of task orchestration, a Job can be understood as a series of discrete steps necessary for the completion of an action. These steps can include diverse activities, such as loading initial data, modifying and writing data to a destination. While a Job is a generalized term, a Flare Job specifically involves utilizing the Flare Stack to complete processing tasks. By leveraging a directed acyclic graph (DAG), users can specify and execute numerous Jobs, each with its distinctive set of tasks in a specific order. It is possible to define multiple jobs that will be executed consecutively. The syntax for creating a Flare Job is presented below:
 
@@ -40,35 +40,39 @@ dag:
       runAsUser: {{iamgroot}} 
       stack: {{flare:4.0}}
       compute: {{runnable-default}}
-# Flare Stack-specific Attributes/Fields
+# Flare Stack-specific Section
       flare:
-        driver:
-          coreLimit: {{1000m}} 
-          cores: {{1}}
-          memory: {{1024m}}
-        executor: 
-          coreLimit: {{1000m}}
-          cores: {{1}}
-          instances: {{1}}
-          memory: {{1024m}}
-        job:
-          explain: {{true}}
-          logLevel: {{INFO}}
-          streaming: # Streaming Section
-            {}
-          inputs: #Inputs Section
-            {}
-          outputs: #Outputs Section
-            {}
-          steps: # Steps Section
-            {}
-					assertions: # Assertions Section
-            {}
-					actions: # Actions Section
-            {}
+        {}
 ```
 
-The `{}` symbol functions as a variable placeholder that accommodates diverse supplementary properties that are listed at the conclusion of the corresponding section.
+### **Flare Stack-specific Section**
+```yaml
+flare:
+  driver:
+    coreLimit: {{1000m}} 
+    cores: {{1}}
+    memory: {{1024m}}
+  executor: 
+    coreLimit: {{1000m}}
+    cores: {{1}}
+    instances: {{1}}
+    memory: {{1024m}}
+  job:
+    explain: {{true}}
+    logLevel: {{INFO}}
+    streaming: # Streaming Section
+      {}
+    inputs: #Inputs Section
+      {}
+    outputs: #Outputs Section
+      {}
+    steps: # Steps Section
+      {}
+    assertions: # Assertions Section
+      {}
+    actions: # Actions Section
+      {}
+```
 
 The below table summarizes the various attributes within a Flare Job:
 
