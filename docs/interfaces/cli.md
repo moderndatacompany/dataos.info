@@ -60,7 +60,7 @@ Follow the steps enumerated below to install the Command Line Interface. Check t
     # darwin-amd64 is the processor
     
     ```
-    <aside class="callout">🗣️ Contact the admin (DataOS operator in your organization) to get the correct and latest version of the CLI</aside>
+    <aside class="callout">🗣️ Contact the admin (DataOS operator in your organization) to get the correct and latest version of the CLI.</aside>
 
 3. Download the DataOS CLI binary using the below command (replace the <span style="color:red"> {{ARCH}} </span> value of the processor and the <span style="color:red"> {{CLI_VERSION}} </span>to be installed):
 
