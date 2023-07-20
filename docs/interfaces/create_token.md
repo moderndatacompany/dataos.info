@@ -3,17 +3,17 @@
 
 1.  On the 'Profile' page, click on **Tokens**.
 
-2. Click on the **Add API Key** link. 
-
+2. Click on the **Add API Key** link.
    ![integration-dataos-token-apikey.png](token_apikey.png)
+   <figcaption align = "center"> Adding API key</figcaption>
 
 3. Type in the name for this token and also set the validity period of your token based on the security requirements as per your business needs. Click **Save** to create one for you.
-
    ![integration-add-key.png](add_key.png)
+   <figcaption align = "center">Providing name for the token </figcaption>
 
 4. The API key is listed below. Clicking on the “eye icon” will make the full API key visible. Click on the API key to copy it.
-
    ![integration-key-created.png](key_created.png)
+   <figcaption align = "center"> API key created</figcaption>
  
 
 ## Create API Key Using CLI
