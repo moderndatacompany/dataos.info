@@ -55,6 +55,8 @@
 
 [Remove Orphans](./case_scenario/remove_orphans.md)
 
+[Rewrite Manifest Files](./case_scenario/rewrite_manifest_files.md)
+
 ### **Rewrite Orphans**
 
 The `remove_orphans` [action](./configurations/actions.md#remove-orphans) cleans up orphans files older than a specified time period. This action may take a long time to finish if you have lots of files in data and metadata directories. It is recommended to execute this periodically, but you may not need to execute this often. 
@@ -151,4 +153,4 @@ workflow:
 </details>
 
 
-[Rewrite Manifest Files](./case_scenario/rewrite_manifest_files.md)
+

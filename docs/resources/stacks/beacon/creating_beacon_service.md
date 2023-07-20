@@ -17,7 +17,7 @@ Make sure that you have an active Database Primitive/Resource within DataOS, as 
 
 ## Let’s Begin!
 
-### **Create a Benthos Service YAML**
+### **Create a Beacon Service YAML**
 
 To commence the process, we will be creating a Beacon Service YAML that will encompass several essential components. Each of these sections has been elaborated in detail on the various configurations page. The YAML Configuration is provided below:
 

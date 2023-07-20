@@ -5,12 +5,12 @@ DataOS allows you to define your own `assertions` with a combination of `tests` 
 ## Structure of the Assertions Section
 
 ```yaml
-assertions: #(Mandatory)
-  - column: order_amount #(Optional)
-  	filter: brand_name == 'Urbane' #(Optional)
-	validFormat: #(Optional)
-	  regex: Awkward #(Optional)
-	tests: #(Optional)
+assertions: 
+  - column: order_amount 
+  	filter: brand_name == 'Urbane' 
+	validFormat: 
+	  regex: Awkward 
+	tests: 
 	  - avg > 1000.00
 	  - max < 1000
 	  - max > 1000
@@ -20,7 +20,7 @@ assertions: #(Mandatory)
 		MAX(order_amount) AS max_order_amount
 	  FROM source
 	  WHERE brand_name = 'Awkward Styles' 
-	tests: #(Optional)
+	tests: 
 	  - avg_order_amount > 1000
 	  - max_order_amount < 1000
 ```
@@ -39,6 +39,7 @@ assertions: #(Mandatory)
 assertions:
   {} 
 ```
+
 ---
 ### **`column`**
 <b>Description:</b> the column on which the rule is to be defined. <br>
@@ -51,6 +52,7 @@ assertions:
 ```yaml
 column: order_amount
 ```
+
 ---
 
 ### **`filter`**
@@ -64,6 +66,7 @@ column: order_amount
 ```yaml
 filter: brand_name == 'Urbane’
 ```
+
 ---
 
 ### **`sql`**
@@ -82,6 +85,7 @@ MAX(order_amount) AS max_order_amount
 FROM source
 where brand_name = 'Awkward Styles’
 ```
+
 ---
 
 ### **`validFormat`**
@@ -96,6 +100,7 @@ where brand_name = 'Awkward Styles’
 validFormat: 
   regex: Awkward 
 ```
+
 ---
 
 ### **`regex`**
@@ -109,6 +114,7 @@ validFormat:
 ```yaml
 regex: Awkward
 ```
+
 ---
 
 ### **`tests`**
