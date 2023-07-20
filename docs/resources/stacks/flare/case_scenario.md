@@ -1,7 +1,5 @@
 # Case Scenario
 
-
-
 ## Data Migration and Movement
 
 [Batch Job](./case_scenario/batch_jobs.md)
@@ -56,6 +54,8 @@
 [Expire Snapshots](./case_scenario/expire_snapshots.md)
 
 [Remove Orphans](./case_scenario/remove_orphans.md)
+
+[Rewrite Manifest Files](./case_scenario/rewrite_manifest_files.md)
 
 ### **Rewrite Orphans**
 
@@ -153,4 +153,4 @@ workflow:
 </details>
 
 
-[Rewrite Manifest Files](./case_scenario/rewrite_manifest_files.md)
+
