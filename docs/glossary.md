@@ -3,7 +3,7 @@ hide:
   - navigation
 #   - toc
 ---
-  [a](./glossary.md#a) &nbsp;&nbsp;   [b](./glossary.md#b) &nbsp;&nbsp;    [c](./glossary.md#c)  &nbsp;&nbsp;     [d](./glossary.md#d) &nbsp;&nbsp;    [e](./glossary.md#e) &nbsp;&nbsp;   [f](./glossary.md#f) &nbsp;&nbsp;    [g](./glossary.md#g)  &nbsp;&nbsp;   [h](./glossary.md#h) &nbsp;&nbsp;    [i](./glossary.md#i) &nbsp;&nbsp;     [j](./glossary.md#j) &nbsp;&nbsp;    [k](./glossary.md#k) &nbsp;&nbsp;     [l](./glossary.md#l) &nbsp;&nbsp;     [m](./glossary.md#m) &nbsp;&nbsp;     [n](./glossary.md#n) &nbsp;&nbsp;    [o](./glossary.md#o) &nbsp;&nbsp;    [p](./glossary.md#p) &nbsp;&nbsp;     [q](./glossary.md#q) &nbsp;&nbsp;     [r](./glossary.md#r) &nbsp;&nbsp;     [s](./glossary.md#s) &nbsp;&nbsp;    [t](./glossary.md#t) &nbsp;&nbsp;     [u](./glossary.md#u) &nbsp;&nbsp;    [v](./glossary.md#v) &nbsp;&nbsp;     [w](./glossary.md#w) &nbsp;&nbsp;     [x](./glossary.md#x) &nbsp;&nbsp;     [y](./glossary.md#y) &nbsp;&nbsp;     [z](./glossary.md#z) 
+  [a](./glossary.md#a) &nbsp;&nbsp;   [b](./glossary.md#b) &nbsp;&nbsp;    [c](./glossary.md#c)  &nbsp;&nbsp;     [d](./glossary.md#d) &nbsp;&nbsp;    [e](./glossary.md#e) &nbsp;&nbsp;   [f](./glossary.md#f) &nbsp;&nbsp;    [g](./glossary.md#g)  &nbsp;&nbsp;   [h](./glossary.md#h) &nbsp;&nbsp;    [i](./glossary.md#i) &nbsp;&nbsp;     [j](./glossary.md#j) &nbsp;&nbsp;    [k](./glossary.md#k) &nbsp;&nbsp;     [l](./glossary.md#l) &nbsp;&nbsp;     [m](./glossary.md#m) &nbsp;&nbsp;     [n](./glossary.md#n) &nbsp;&nbsp;    [o](./glossary.md#o) &nbsp;&nbsp;    [p](./glossary.md#p) &nbsp;&nbsp;     [q](./glossary.md#q) &nbsp;&nbsp;     [r](./glossary.md#r) &nbsp;&nbsp;     [s](./glossary.md#s) &nbsp;&nbsp;    [t](./glossary.md#t) &nbsp;&nbsp;     [u](./glossary.md#u) &nbsp;&nbsp;   [w](./glossary.md#w) &nbsp;&nbsp;    
 ---
 
 # a
@@ -188,11 +188,6 @@ hide:
 | [Uniform Data Link](/resources/depot/#depot) | The Depot serves as the registration of data locations to be made accessible to DataOS. Once the Depot is created, each source system is assigned a unique address, referred to as a Uniform Data Link (UDL). Regardless of the source system's internal naming conventions and structure, the UDL ensures consistency in referencing data.  |
 | [User Space](/interfaces/operations/#user-kernel) | User Space represents the domain of the operating system where data developers work and create resources such as workflows, services, secrets, depots, clusters, compute, etc for data processing jobs, services, and analytics workloads. Operations UI provides a way for users to observe and monitor these resources and their runtimes to debug if any issues.|
 
-
-# v 
-
----
-
 # w 
 
 | Term | Description |
@@ -200,14 +195,3 @@ hide:
 | [Workbench](./interfaces/workbench.md) | Workbench is a query interface within DataOS that provides functionality for editing, running, and saving SQL scripts, viewing query results and more. It serves as a versatile tool for running both simple and complex SQL queries on diverse data sources, enabling efficient data exploration.  |
 | [Workflow](./resources/workflow.md) | The Workflow is a DataOS Resource for orchestrating data processing tasks with dependencies. It defines a pipeline involving a sequence of jobs, each utilizing stacks behind the scenes to accomplish various tasks. Within a Workflow, a job encompasses a sequence of processing tasks that need to be executed in a specific order to achieve desired outcomes.  |
 | Workspace | In DataOS, a Workspace is a separate work environment for individuals or teams, providing logical separation and control over resources. Each Workspace functions like a tenant, allowing the creation and management of resources in an isolated context. By default, resources are created in the public Workspace, serving as a shared environment. |
-
-
-# x
-
----
-
-# y 
-
----
-
-# z
