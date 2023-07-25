@@ -20,7 +20,7 @@ For example, Compute Resources of the `query` type are designated to empower Min
 🗣️  The creation of a Compute Resource requires the setup of node pools. Only users with access to provision node pools, specifically Kubernetes Administrators within the organization, can perform this task.
 </aside>
 
-## Compute Resource Configuration Syntax
+## Syntax of a Compute YAML
 
 The Compute Resource is defined using a YAML configuration file. The following example illustrates the syntax for defining a Compute:
 
