@@ -266,9 +266,11 @@ To learn more about Secrets as a Resource and their usage, refer to the document
 
 The `spec` section in the YAML configuration file plays a crucial role in directing the Depot to the precise location of your data and providing it with the hierarchical structure of the data source. By defining the specification parameters, you establish a mapping between the data and the hierarchy followed within DataOS.
 
-The hierarchical structure within DataOS is represented as follows:
+Within DataOS, the hierarchical structure of a data source is represented as follows:
 
 ![Depot Specifications](./depot/depot_hierarchy.png)
+
+<center><i>Hierarchical Structure of a Data Source within DataOS</i></center>
 
 Once this mapping is established, it automatically generates the Uniform Data Link (UDL) that can be used throughout DataOS to access the dataset. As a reminder, the UDL has the format: `dataos://[depot]:[collection]/[dataset]`.
 
@@ -312,6 +314,7 @@ By appropriately configuring the specifications, you ensure that the Depot is ac
 Depot provides flexibility in mapping the hierarchy for file storage systems. Let's consider the example of an [Amazon S3](./depot/depot_config_templates/amazon_s3.md) bucket, which has a flat structure consisting of buckets, folders, and objects. By understanding the hierarchy and utilizing the appropriate configurations, you can effectively map the structure to DataOS components.
 
 ![Bucket](./depot/create_depot_2.png)
+<center><i>Amazon S3 Bucket Structure</i></center>
 
 Here's an example of creating a depot named 's3depot' that maps the following structure:
 
