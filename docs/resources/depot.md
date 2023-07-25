@@ -25,7 +25,7 @@ Once a Depot is created, all members of an organization gain secure access to da
 🗣️  It is worth noting that the Depot provides 'access' to data, meaning that data remains within the source system and is neither moved nor duplicated. However, DataOS offers multiple <a href="./stacks.md">Stacks</a> such as <a href="./stacks/flare.md">Flare</a>, <a href="./stacks/benthos.md">Benthos</a>, etc. to perform ingestion, syndication, copying if the need arises.
 </aside>
 
-## Syntax of Depot
+## Syntax of a Depot YAML
 
 ![Syntax of Depot](./depot/depot_yaml.png)
 
