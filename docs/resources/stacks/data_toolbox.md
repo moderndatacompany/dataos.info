@@ -1,16 +1,10 @@
-# Toolbox
+# Data Toolbox
 
-Toolbox Stack or Data Toolbox Stack provides vital functionality in case of metadata updation in [Icebase](../depot.md#icebase) depots. When data is ingested into Icebase using [Flare](./flare.md)Stack, the metadata of ingested datasets needs to be registered with [Metis](../../interfaces/metis.md) before it can be queried using [Workbench](../../interfaces/workbench.md). The Data Toolbox allows `set_version` action on the data stored in the DataOS internal storage Icebase, which uses the Iceberg format. The [Metis](../../interfaces/metis.md) keeps track of the Iceberg table by storing a reference to the latest metadata file. Using the Data Toolbox `set_version` action, you can update the metadata version to the latest or any specific version.
+Data Toolbox Stack or simply Toolbox Stack provides vital functionality in case of metadata updation in [Icebase](../depot.md#icebase) depots. When data is ingested into Icebase using [Flare](./flare.md)Stack, the metadata of ingested datasets needs to be registered with [Metis](../../interfaces/metis.md) before it can be queried using [Workbench](../../interfaces/workbench.md). The Data Toolbox allows `set_version` action on the data stored in the DataOS internal storage Icebase, which uses the Iceberg format. The [Metis](../../interfaces/metis.md) keeps track of the Iceberg table by storing a reference to the latest metadata file. Using the Data Toolbox `set_version` action, you can update the metadata version to the latest or any specific version.
 
-## Syntax of Toolbox-stack Specific Section
+## Syntax of Data Toolbox YAML Configuration
 
-```yaml
-toolbox: 
-  dataset: dataos://icebase:sample/city?acl=rw 
-  action: 
-    name: set_version
-    value: latest 
-```
+![Data Toolbox YAML Configuration Syntax](./data_toolbox/data_toolbox_syntax.png)
 
 ## Performing Data Toolbox Actions
 
