@@ -1,10 +1,156 @@
 # Case Scenario
 
-## Data Migration and Movement
+## Batch Jobs
 
-[Batch Job](./case_scenario/batch_jobs.md)
+Batch jobs are utilized in situations where there is a need to recompute all changed datasets in every run, ensuring consistent end-to-end performance on each occasion.
 
-[Stream Job](./case_scenario/stream_jobs.md)
+Simple Batch Jobs follow a straightforward process that involves:
+
+1. Reading data from a specified set of depots.
+2. Applying transformations to the data.
+3. Writing the transformed data to another set of depots.
+
+<details>
+<summary>Case Scenario</summary>
+
+The code snippet below demonstrates a Workflow involving a single Flare batch job that reads the input dataset from <code>thirdparty01</code> depot, perform transformation using Flare Stack, and stores the output dataset in the <code>bqdepot</code> depot. 
+
+**Code Snippet**
+
+```yaml
+name: bq-write-01
+version: v1
+type: workflow
+tags:
+  - bq
+  - City
+title: Write bq
+workflow:
+  dag:
+    - name: city-write-bq-01
+      title: City write bq
+      description: This job read data from azure and writes to Sbq
+      spec:
+        tags:
+          - Connect
+          - City
+        stack: flare:3.0
+        compute: runnable-default
+        flare:
+          job:
+            explain: true
+            inputs:
+              - name: city_connect
+                dataset: dataos://thirdparty01:none/city
+                format: csv
+                schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
+            logLevel: INFO
+            outputs:
+              - name: finalDf
+                dataset: dataos://bqdepot:dev/city?acl=rw
+                format: bigquery
+                options:
+                  saveMode: overwrite
+                  bigquery:
+                    temporaryBucket: tmdc-development-new
+            steps:
+              - sequence:
+                  - name: finalDf
+                    sql: SELECT * FROM city_connect LIMIT 10
+```
+
+In the context of depots, with the exception of those supporting Iceberg file formats with Hadoop Catalog type, the metadata of the datasets is automatically surfaced in the Metis. However, for depots utilizing the Iceberg file format with Hadoop Catalog type, the metadata version needs to be updated manually using the Toolbox Stack or using the <code>set-metadata</code> command on the DataOS CLI. Once the metadata is updated, it becomes discoverable and accessible through the Metis UI.
+
+</details>
+
+## Stream Jobs
+
+In scenarios where there is a continuous requirement to process incoming data in real-time, Flare Stream Jobs offer an effective solution. However, it is advisable to exercise caution when creating Stream Jobs, as they should be reserved for cases where strict latency requirements exist, typically demanding a processing time of less than a minute, considering that they may incur higher computing costs.
+
+<details>
+<summary>Case Scenario</summary>
+
+
+The following code snippet illustrates a Workflow involving a Flare Stream Job that reads data from the <code>thirdparty01</code> depot in a streaming format and subsequently written to the <code>eventhub</code> depot. During this process, all intermediate streams of data batches are stored at the location specified in the <code>checkpointLocation</code> attribute.
+
+**Code Snippet**
+
+```yaml
+
+version: v1
+name: write-eventhub-b-02
+type: workflow
+tags:
+  - eventhub
+  - write
+description: this jobs reads data from thirdparty and writes to eventhub
+workflow:
+  dag:
+    - name: eventhub-write-b-02
+      title: write data to eventhub
+      description: write data to eventhub
+      spec:
+        tags:
+          - Connect
+        stack: flare:4.0
+        compute: runnable-default
+        flare:
+          job:
+            explain: true
+            streaming:
+              checkpointLocation: /tmp/checkpoints/devd01
+              forEachBatchMode: "true"
+            inputs:
+              - name: input
+                dataset: dataos://thirdparty01:none/city
+                format: csv
+                schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
+
+            logLevel: INFO
+            outputs:
+              - name: finalDf
+                dataset: dataos://eventhub:default/eventhub01?acl=rw
+                format: Eventhub
+
+            steps:
+              - sequence:
+                - name: finalDf
+                  sql: SELECT * FROM input
+```
+
+In the context of output depots, the automatic surfacing of metadata in the Metis is applicable to all depots except those supporting Iceberg file formats with Hadoop Catalog type. For such depots, manual updating of the metadata version is required using the Toolbox Stack. If there is a need to obtain the metadata at the end of transformation, when the entire data has been completely written to the output depot, you can execute the Toolbox Stack once at the conclusion of the transformation process. Alternatively, if metadata is required at a specific cadence, scheduling the job upon the Toolbox Stack can fulfill this requirement. 
+
+The code snippet below illustrates a sample schedule workflow for updating the metadata pointer using the Toolbox Stack in output depots with Iceberg file format with Hadoop Catalog type.
+
+```yaml
+version: v1
+name: dataos-tool-random-user
+type: workflow
+workflow:
+  schedule:
+    cron: '*/5 * * * *'
+  dag:
+    - name: dataos-tool-job
+      spec:
+        stack: toolbox
+        compute: runnable-default
+        toolbox:
+          dataset: dataos://icebase:kafka/random_users_icebase01?acl=rw
+          action:
+            name: set_version
+            value: latest
+```
+
+Once the metadata is updated, it becomes discoverable and accessible through the Metis UI.
+
+</details>
+
+## Incremental Jobs
+
+Computes only the changed rows or files of data since the last build, reducing overall computation and latency. Incremental Jobs only compute the rows or files of data that have changed since the last build. They are suitable for processing event data and datasets with frequent changes. Incremental jobs reduce overall computation and significantly decrease end-to-end latency compared to batch jobs. Moreover, compute costs for incremental jobs can be lower than batch jobs when dealing with high-scale datasets, as the amount of actual computation is minimized. By processing only new data, incremental jobs eliminate the need to redo analysis on large datasets where most information remains unchanged. For case scenarios on Incremental Jobs, refer to [here](./case_scenario/incremental_jobs.md).
+
+
+
 
 [Incremental Job](./case_scenario/incremental_jobs.md)
 

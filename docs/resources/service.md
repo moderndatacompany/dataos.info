@@ -19,7 +19,7 @@ To achieve robust scalability, the Service Resource introduces the concept of re
 In DataOS, Ingress exposes HTTP and HTTPS routes from outside the DataOS context to services within the DataOS environment. It configures the incoming port for the Service Resource, enabling access to DataOS resources from external links. Ingress plays a crucial role in facilitating communication between DataOS and external systems or users.
 
 
-## Syntax of a service
+## Syntax of a Service YAML
 
 The Service resource is configured using a YAML file, consisting of several rooted sections. The syntax for a Service YAML is given below:
 

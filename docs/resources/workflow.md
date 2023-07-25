@@ -32,7 +32,7 @@ Single-time run workflows represent a one-time execution of a sequence of jobs. 
 ### **Schedulable Workflows** 
 Schedulable Workflows enable the automated and recurring execution of jobs based on specified intervals or predetermined times. To schedule a workflow, the `schedule` section must be added, allowing the configuration of scheduling parameters. Scheduled workflows provide a powerful mechanism for automating job execution based on a cron expression. To explore case scenarios for scheduled workflows, refer to the [Scheduled or Cron Workflow](./workflow/scheduled_or_cron_workflow.md)
 
-## Syntax of a Workflow
+## Syntax of a Workflow YAML
 
 The Workflow Resource is defined using a YAML configuration file. The following example illustrates the syntax for defining a single-time run workflow:
 
