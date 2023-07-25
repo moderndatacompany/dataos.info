@@ -45,9 +45,15 @@ Query snippets are reusable segments of pre-written queries that save you time a
 
 ### **Set up** **Alerts**
 
-Alerts notify you when a field returned by a query meets a threshold (set as a criterion or a set of criteria). Use alerts to monitor your important business KPIs or integrate them with tools to start getting notifications. Alerts complement scheduled queries, but their criteria are checked after every execution. To learn more about managing alerts in Atlas, click here.
+Alerts notify you when a field returned by a query meets a threshold (set as a criterion or a set of criteria). Use alerts to monitor your important business KPIs or integrate them with tools to start getting notifications. Alerts complement scheduled queries, but their criteria are checked after every execution. On Atlasinterface you can view all the alerts created and their states. To know more, refer to [Manage Alerts](atlas/alerts.md).
 
-[Alerts](atlas/alerts.md)
+
+To learn more about creating alerts, refer to [Setting up Dashboard Alerts](/dataos_alerts/dashboard_alerts/).
+
+<aside class="callout">DataOS comes equipped with a wide array of integrated alert mechanisms with a strong focus on observability and  active monitoring.  To learn more about them, refer to <a href="/dataos_alerts/">DataOS Alerts</a></aside>
+
+
+
 
 ### **Destinations**
 

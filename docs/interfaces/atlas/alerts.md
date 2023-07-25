@@ -28,3 +28,7 @@ A message template consisting of input fields for the subject and body will be s
 ![Modifying alert settings](alerts/configure_alert.png)
 
 <figcaption align = "center">Modifying alert settings</figcaption>
+
+To learn more about creating alerts, refer to [Setting up Dashboard Alerts](/dataos_alerts/dashboard_alerts/).
+
+<aside class="callout">DataOS comes equipped with a wide array of integrated alert mechanisms with a strong focus on observability and  active monitoring.  To learn more about them, refer to <a href="/dataos_alerts/">DataOS Alerts</a></aside>
