@@ -6,7 +6,7 @@ Each Secret in DataOS is associated with a specific Workspace, thereby limiting 
 
 DataOS allows these Secrets to be referenced by other resources such as [Depots](./depot.md), [Stacks](./stacks.md), [Services](./service.md), and more. When a Secret Resource YAML is deployed via CLI, Poros, the Resource manager, forwards it to Heimdall, the Governance Engine within DataOS. Heimdall provides vault support for Secrets and enables you to control access to secrets using fine-grained permissions whenever the users or applications want to retrieve credentials.
 
-## Syntax of a Secret Resource
+## Syntax of a Secret YAML
 
 The YAML given below provides a definition of the Secret Resource.
 
