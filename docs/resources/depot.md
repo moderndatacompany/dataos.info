@@ -1,4 +1,4 @@
-# Depot
+git # Depot
 
 Depot in DataOS is a [Resource](../resources.md) that acts as an intermediary, facilitating connectivity to diverse data sources by abstracting the complexities associated with the underlying source system (including protocols, credentials, and connection schemas). It enables users to establish connections and retrieve data from various data sources, such as file systems (e.g., AWS S3, Google GCS, Azure Blob Storage), data lake systems (e.g., Icebase), database systems (e.g., Redshift, SnowflakeDB, Bigquery, Postgres), and event systems (e.g., Kafka, Pulsar).
 
@@ -25,7 +25,7 @@ Once a Depot is created, all members of an organization gain secure access to da
 🗣️  It is worth noting that the Depot provides 'access' to data, meaning that data remains within the source system and is neither moved nor duplicated. However, DataOS offers multiple <a href="./stacks.md">Stacks</a> such as <a href="./stacks/flare.md">Flare</a>, <a href="./stacks/benthos.md">Benthos</a>, etc. to perform ingestion, syndication, copying if the need arises.
 </aside>
 
-## Syntax of Depot
+## Syntax of a Depot YAML
 
 ![Syntax of Depot](./depot/depot_yaml.png)
 

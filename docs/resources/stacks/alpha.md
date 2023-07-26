@@ -4,6 +4,12 @@ Alpha Stack is a declarative DevOps software development kit (SDK) to publish da
 
 When deploying an application using Alpha Stack, the containerized image contains all the essential functionalities and logic required for the application, while execution of the image occurs within DataOS via the utilization of Alpha Stack, which can be invoked or called within a Service or a Workflow Primitive/Resource.
 
+## Syntax of Alpha YAML Configuration
+
+![Alpha YAML Configuration Syntax](./alpha/alpha_syntax.png)
+
+<center><i>Alpha YAML Configuration Syntax</i></center>
+
 ## Getting Started with Alpha Stack
 
 ### **Deploying Images from a Public DockerHub Repository**

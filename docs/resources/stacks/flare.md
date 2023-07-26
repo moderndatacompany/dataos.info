@@ -21,7 +21,12 @@ Flare is a declarative stack for large-scale data processing within DataOS. It l
 
 Further information regarding Flare Jobs can be accessed [here](./flare/job_types.md)
 
-## Creating a Flare Job
+## Syntax of Flare YAML configuration
+
+![Flare YAML Configuration Syntax](./flare/flare_syntax.png)
+<center><i>Flare YAML Configuration Syntax</i></center>
+
+## How to create jobs using Flare Stack
 
 Whether you need to process data in batches or in a streaming fashion, Flare provides different job types to cater to your needs. You can explore the detailed documentation on creating Flare Jobs on the link below.
 
@@ -29,7 +34,7 @@ Whether you need to process data in batches or in a streaming fashion, Flare pro
 
 
 
-## Flare Stack YAML Configurations
+## Attributes in Flare Stack YAML configuration
 
 The Flare Stack YAML consists of multitude of configuration settings tailored for different use cases. These settings govern data reading, writing, and transformation from diverse sources and destinations. 
 
@@ -37,25 +42,25 @@ The Flare Stack YAML consists of multitude of configuration settings tailored fo
 
 [Flare Functions](./flare/functions.md)
 
-## Testing Flare Jobs
+## How to test Flare Jobs
 
 Before deploying your logic into production, thorough testing is crucial. Flare Standalone provides a powerful and reliable testing interface, allowing you to test your Flare Jobs locally on your system. It helps identify and address potential issues before deployment. Further information regarding Flare Standalone can be accessed by clicking the link below.
 
 [Flare Standalone](./flare/standalone.md)
 
-## Flare Optimizations
+## How to optimize jobs in Flare
 
 To achieve peak performance tailored to your specific requirements, each job executed upon Flare stack requires fine-tuning and optimization. The link below provides comprehensive information on various optimization techniques.
 
 [Flare Optimizations](./flare/optimizations.md)
 
-## Flare Configuration Templates
+## Pre-defined Flare YAML configuration templates
 
 Refer to the following page for a comprehensive list of available connecting depots in Flare, along with detailed information pertaining to the configurations associated with each depot. 
 
 [Flare Configuration Templates](./flare/configuration_templates.md)
 
-## Case Scenarios
+## Practical Case Scenarios
 
 Explore practical case scenarios that exemplify the application of Flare stack in real-world data processing scenarios. Click on the link below, to know more.
 

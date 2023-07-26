@@ -43,6 +43,12 @@ Benthos offers a wide range of features that make it an ideal solution for strea
 
 Now, let's dive into the details and explore Benthos further.
 
+## Syntax of Benthos YAML Configuration
+
+![Benthos YAML Configuration Syntax](./benthos/benthos_syntax.png)
+
+<center><i>Benthos YAML Configuration Syntax</i></center>
+
 ## Getting Started with Benthos
 
 ### **Setting Up Benthos Locally**
