@@ -60,7 +60,7 @@ Refer to the following page for a comprehensive list of available connecting dep
 
 [Flare Configuration Templates](./flare/configuration_templates.md)
 
-## Practical Case Scenarios
+## Case Scenarios
 
 Explore practical case scenarios that exemplify the application of Flare stack in real-world data processing scenarios. Click on the link below, to know more.
 
