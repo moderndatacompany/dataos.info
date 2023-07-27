@@ -1,6 +1,6 @@
-# Workflow YAML Configuration Field Reference
+# Attributes in Workflow YAML Configuration
 
-## Syntax
+## Structure of a Workflow YAML
 
 ```yaml
 workflow: 
@@ -28,10 +28,10 @@ workflow:
 ```
 <center><i> Workflow YAML Configuration </i></center>
 
-## Configuration Fields
+## Configuration Attributes
 
 ### **`workflow`**
-<b>Description:</b> workflow Section <br>
+<b>Description:</b> workflow section <br>
 <b>Data Type:</b> object <br>
 <b>Requirement:</b> mandatory <br>
 <b>Default Value:</b> none <br>
@@ -49,7 +49,7 @@ workflow:
 ---
 
 ### **`schedule`**
-<b>Description:</b> schedule Section <br>
+<b>Description:</b> schedule section <br>
 <b>Data Type:</b> object <br>
 <b>Requirement:</b> optional (Mandatory for Scheduled Workflows) <br>
 <b>Default Value:</b> none <br>
@@ -80,15 +80,15 @@ cron: '*/10 * * * *'
 ---
 
 ### **`concurrencyPolicy`**
-<b>Description:</b> the concurrencyPolicy field determines how concurrent executions of a workflow, created by a cron workflow, are handled<br>
+<b>Description:</b> the concurrencyPolicy field determines how concurrent executions of a Workflow, created by a scheduled Workflow, are handled<br>
 <b>Data Type:</b> string <br>
 <b>Requirement:</b> optional <br>
 <b>Default Value:</b> Allow <br>
 <b>Possible Value:</b> Allow/Forbid/Replace <br>
 <b>Additional Details:</b> <br>
-- <i> concurrencyPolicy: Forbid -</i> When the concurrencyPolicy is set to "Forbid", the cron workflow strictly prohibits concurrent runs. In this scenario, if it is time for a new workflow run and the previous workflow run is still in progress, the cron workflow will skip the new workflow run altogether.  <br>
-- <i> concurrencyPolicy: Allow -</i> On the other hand, setting the concurrencyPolicy to "Allow" enables the cron workflow to accommodate concurrent executions. If it is time for a new workflow run and the previous workflow run has not completed yet, the cron workflow will proceed with the new workflow run concurrently.  <br>
-- <i> concurrencyPolicy: Replace -</i> When the concurrencyPolicy is set to "Replace", the cron workflow handles concurrent executions by replacing the currently running workflow run with a new workflow run if it is time for the next job workflow and the previous one is still in progress.  <br>
+- <i> concurrencyPolicy: Forbid -</i> When the concurrencyPolicy is set to "Forbid", the Schedule/Cron Workflow strictly prohibits concurrent runs. In this scenario, if it is time for a new workflow run and the previous workflow run is still in progress, the cron workflow will skip the new workflow run altogether.  <br>
+- <i> concurrencyPolicy: Allow -</i> On the other hand, setting the concurrencyPolicy to "Allow" enables the Schedule/Cron Workflow to accommodate concurrent executions. If it is time for a new workflow run and the previous workflow run has not completed yet, the cron workflow will proceed with the new workflow run concurrently.  <br>
+- <i> concurrencyPolicy: Replace -</i> When the concurrencyPolicy is set to "Replace", the Schedule/Cron Workflow handles concurrent executions by replacing the currently running workflow run with a new workflow run if it is time for the next job workflow and the previous one is still in progress.  <br>
 
 <b>Example Usage:</b>
 
@@ -112,7 +112,7 @@ startOn: 2022-01-01T23:30:45Z
 ---
 
 ### **`endOn`**
-<b>Description:</b> endOn terminates the scheduled workflow run at the specified time, even if the last workflow run isn’t complete <br>
+<b>Description:</b> endOn terminates the scheduled Workflow run at the specified time, even if the last workflow run isn’t complete <br>
 <b>Data Type:</b> string <br>
 <b>Requirement:</b> optional <br>
 <b>Default Value:</b> none <br>
@@ -225,7 +225,7 @@ spec:
 ---
 
 ### **`runAsUser`**
-<b>Description:</b> when the "runAsUser" field is configured with the UserID of the use-case assignee, it grants the authority to perform operations on behalf of that user. <br>
+<b>Description:</b> when the `runAsUser` field is configured with the UserID of the use-case assignee, it grants the authority to perform operations on behalf of that user. <br>
 <b>Data Type:</b> string <br>
 <b>Requirement:</b> optional <br>
 <b>Default Value:</b> none <br>
@@ -255,7 +255,7 @@ compute: runnable-default
 <b>Requirement:</b> mandatory <br>
 <b>Default Value:</b> none <br>
 <b>Possible Value:</b> flare/toolbox/scanner/alpha. <br>
-<b>Additional Details:</b> it is also possible to specify specific versions of the stack. For example, you can use the notation "flare:4.0" to indicate a specific version. If no version is explicitly specified, the system will automatically select the latest version as the default option <br>
+<b>Additional Details:</b> it is also possible to specify specific versions of the Stack. For example, you can use the notation "flare:4.0" to indicate a specific version. If no version is explicitly specified, the system will automatically select the latest version as the default option <br>
 <b>Example Usage:</b>
 ```yaml
 stack: alpha 
@@ -270,6 +270,7 @@ stack: alpha
 <b>Default Value:</b> none <br>
 <b>Possible Value:</b> none <br>
 <b>Example Usage:</b>
+
 ```yaml
 retry: 
   count: 2 
@@ -284,6 +285,7 @@ retry:
 <b>Default Value:</b> none <br>
 <b>Possible Value:</b> any positive integer <br>
 <b>Example Usage:</b>
+
 ```yaml
 count: 2 
 ```
@@ -302,6 +304,7 @@ count: 2
   - <i> OnError -</i> Retry steps that encounter errors or whose init or wait containers fail.  <br>
   - <i> OnTransientError -</i> Retry steps that encounter errors defined as transient or errors matching the `TRANSIENT_ERROR_PATTERN` environment variable.   <br>
 <b>Example Usage:</b>
+
 ```yaml
 strategy: "OnTransientError" 
 ```
@@ -315,6 +318,7 @@ strategy: "OnTransientError"
 <b>Default Value:</b> none <br>
 <b>Possible Value:</b> none <br>
 <b>Example Usage:</b>
+
 ```yaml
 dependency: job2
 ```
