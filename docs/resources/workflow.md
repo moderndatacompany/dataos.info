@@ -530,14 +530,18 @@ Make sure to replace `{{name-to-workspace in the output table from get status co
 
 </details>
 
-
-
 <aside class="best-practice">
 
 📖 <i>Best Practice:</i><br> It is part of the best practice to add relevant <code>description</code> and <code>tags</code> for your workflow. While <code>description</code> helps to determine what the workflow will help you accomplish, <code>tags</code> can help in faster searching in Metis and Operations.
 </aside>
 
+## Workflow Alerts
 
+Workflow alerts keep you informed about any failures or deviaions in data processing operations by providing  valuable insights about the data workloads in real-time. These alerts enable identifying potential issues so that  you can take immediate action, minimizing downtime and optimizing performance.
+
+To learn more about creating these alerts, refer to [Setting up Workflow Alerts](/dataos_alerts/workflow_alerts/).
+
+<aside class="callout">DataOS offers a diverse range of integrated alert mechanisms, emphasizing observability and active monitoring.  To learn more about them, refer to <a href="/dataos_alerts/">DataOS Alerts</a></aside>
 
 ## Case Scenarios
 

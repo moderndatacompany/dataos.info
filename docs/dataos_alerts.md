@@ -8,6 +8,10 @@ This page provides a comprehensive overview of the alert mechanisms integrated w
 
 Dashboard alerts provide immediate notifications regarding significant changes or updates in your business performance metrics or other crucial dashboard data. To learn more, refer to [Setting Up Dashboard Alerts in Atlas](dataos_alerts/dashboard_alerts.md).
 
+## Metis Alerts
+
+Metis provides a comprehensive set of alerts and notifications mechanisms to notify users about any changes to metadata within the DataOS context. These alerts enable users to stay informed about the updates in their data assets, ensuring better data governance and control over the data lifecycle. To learn more, refer to [Metis Alerts](dataos_alerts/metis_alerts.md).  
+
 ## Workflow Alerts
 
 Workflow alerts are designed to monitor your running workflows and jobs continuously, notifying you instantly when a specific workflow encounters an issue or failure. These alerts act as safeguards, ensuring the smooth operation of your Workflow. To learn more, refer to [Setting Up Workflow Alerts](dataos_alerts/workflow_alerts.md).
