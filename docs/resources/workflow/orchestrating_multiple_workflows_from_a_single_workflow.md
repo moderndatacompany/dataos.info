@@ -1,6 +1,6 @@
-# Executing Multiple Workflow YAMLs from a Single One
+# Orchestrating Multiple Workflows from a Single Workflow
 
-This section demonstrates how to execute multiple workflows by combining separate YAML files into a single master file. By following this approach, you can streamline complex data processing tasks that involve reading data from one depot, writing it to another depot, and subsequently performing additional processing steps. 
+This section demonstrates how to orchestrate multiple workflows by combining separate YAML files into a single master Workflow YAML file. By following this approach, you can streamline complex data processing tasks that involve reading data from one depot, writing it to another depot, and subsequently performing additional processing steps. 
 
 ## Implementation Flow
 
@@ -8,9 +8,11 @@ This section demonstrates how to execute multiple workflows by combining separat
 
 <center>
 
-![Untitled](./executing_multiple_workflow_yamls_from_a_single_one/untitled.png)
+![Directory Structure](./orchestrating_multiple_workflows_from_a_single_workflow/directory_structure.png)
 
 </center>
+
+<center><i>Directory Structure</i></center>
 
 2. Once you do that mention the path (relative or absolute) of the `read-pulsar.yaml` and `write-pulsar.yaml` in the file property of the master file `dag.yaml`. 
 3. Apply the `dag.yaml` command from the CLI.

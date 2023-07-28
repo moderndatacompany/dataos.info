@@ -70,7 +70,7 @@ hide:
 | Term | Description |
 | --- | --- |
 | [Flare](./resources/stacks/flare.md) | Flare stack is used for building end-to-end data pipelines within DataOS. It uses a YAML-based declarative programming paradigm built as an abstraction over Apache Spark. It offers an all-in-one solution for performing diverse data ingestion, transformation, enrichment, and syndication processes on batch and streaming data. |
-| [Fastbase](./resources/depot/fastbase.md) | Fastbase is a managed depot type in DataOS specifically designed to support Apache Pulsar format for streaming workloads. With Fastbase depots, users can seamlessly leverage the power of streaming and real-time data processing within the DataOS ecosystem. |
+| [Fastbase](./resources/depot/fastbase.md) | Fastbase is a depot type in DataOS specifically designed to support Apache Pulsar format for streaming workloads. With Fastbase depots, users can seamlessly leverage the power of streaming and real-time data processing within the DataOS ecosystem. |
 | Filebase | It is a depot that is configured during the DataOS installation and serves as a destination for storing various types of data in file formats like parquet, csv, pdfs, and more. |
 
 ---
@@ -108,7 +108,7 @@ hide:
 
 | Term | Description |
 | --- | --- |
-| Jupyter Notebook | Jupyter Notebook is an interface that enables interactive computing and data analysis. DataOS is configured to leverage the Jupyter ecosystem. This integration allows users to seamlessly utilize Jupyter Notebook within the DataOS environment, empowering them to explore and analyze data. |
+| [Jupyter Notebook](/interfaces/notebook/) | Jupyter Notebook is an interface that enables interactive computing and data analysis. DataOS is configured to leverage the Jupyter ecosystem. This integration allows users to seamlessly utilize Jupyter Notebook within the DataOS environment, empowering them to explore and analyze data. |
 
 ---
 
@@ -132,8 +132,8 @@ hide:
 
 | Term | Description |
 | --- | --- |
-| [Metis](./architecture/metis_arch.md) | Metis is a metadata manager, cataloging service, and database within the DataOS environment assissting with discoverability and observability capabilities for your enterprise data. |
-| [Minerva](./architecture/minerva_arch.md) | Minerva is a query engine that enables access to data for business insights. It is an interactive query engine based on Trino that makes it easy to analyze big data using SQL. |
+| [Metis](/interfaces/metis/) | Metis is a metadata manager, cataloging service, and database within the DataOS environment assissting with discoverability and observability capabilities for your enterprise data. |
+| [Minerva](/resources/cluster/#minerva) | Minerva is a query engine that enables access to data for business insights. It is an interactive query engine based on Trino that makes it easy to analyze big data using SQL. |
 
 ---
 
@@ -210,7 +210,7 @@ hide:
 | --- | --- | 
 | Unified Architecture | The unified architecture of DataOS refers to the cohesive and integrated design approach that combines various components, services, and technologies into a unified system. It enables data management, processing, and analysis, ensuring seamless interoperability and consistent user experience across different functionalities and applications within DataOS.|
 | [Uniform Data Link](/resources/depot/#depot) | The Depot serves as the registration of data locations to be made accessible to DataOS. Once the Depot is created, each source system is assigned a unique address, referred to as a Uniform Data Link (UDL). Regardless of the source system's internal naming conventions and structure, the UDL ensures consistency in referencing data.  |
-| [User Space](/interfaces/operations/#user-kernel) | User Space represents the domain of the operating system where data developers work and create resources such as workflows, services, secrets, depots, clusters, compute, etc for data processing jobs, services, and analytics workloads. Operations UI provides a way for users to observe and monitor these resources and their runtimes to debug if any issues.|
+| [User Space](/architecture/#user-space) | User Space represents the domain of the operating system where data developers work and create resources such as workflows, services, secrets, depots, clusters, compute, etc for data processing jobs, services, and analytics workloads. Operations UI provides a way for users to observe and monitor these resources and their runtimes to debug if any issues.|
 
 ---
 

@@ -22,7 +22,7 @@ Incremental Jobs only compute the rows or files of data that have changed since 
 
 ## Stream Job
 
-Stream Jobs continuously process incoming data in real-time. They offer low latency but have the highest computing costs, as resources must always be available to handle new input data. Creating stream jobs should be avoided in most cases unless there are strict latency requirements, typically less than a minute. To explore stream-specific properties for Stream Jobs, click [here](./configurations/streaming.md). For a case scenario illustrating how a streaming job is declared within DataOS, refer to [here](./case_scenario/stream_jobs.md).
+Stream Jobs continuously process incoming data in real-time. They offer low latency but have the highest computing costs, as resources must always be available to handle new input data. Creating stream jobs should be avoided in most cases unless there are strict latency requirements, typically less than a minute. To explore stream-specific properties for Stream Jobs, click [here](./configurations/streaming.md). For a case scenario illustrating how a streaming job is declared within DataOS, refer to [here.](./case_scenario.md#stream-jobs)
 
 ## Action Job
 
