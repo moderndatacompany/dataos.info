@@ -2,7 +2,7 @@
 
 <center>
 
-![Diagrammatic representation of Single Run Workflow](./sample_workflow.svg)
+![Illustration of a Single-run Workflow](./sample_workflow.svg)
 
 </center>
 

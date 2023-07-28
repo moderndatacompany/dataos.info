@@ -12,6 +12,8 @@ This section demonstrates how to orchestrate multiple workflows by combining sep
 
 </center>
 
+<center><i>Directory Structure</i></center>
+
 2. Once you do that mention the path (relative or absolute) of the `read-pulsar.yaml` and `write-pulsar.yaml` in the file property of the master file `dag.yaml`. 
 3. Apply the `dag.yaml` command from the CLI.
 
