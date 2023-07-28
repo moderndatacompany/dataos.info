@@ -35,19 +35,25 @@ When initiating a SQL query from sources such as Workbench, Atlas, Minerva-CLI, 
 
 Minerva assumes the crucial role of executing access policies based on user tags, proficiently managing Cluster access, and providing users with comprehensive reports in case of query rejections or encountered exceptions during execution. By seamlessly handling these aspects, Minerva offers a robust and reliable environment for executing complex data queries while adhering to data governance and security protocols.
 
-## Syntax of a Cluster YAML
+## Structure of a Cluster YAML
 
-![Cluster Syntax](./cluster/cluster_syntax.png)
+<center>
+
+![Cluster Structure](./cluster/cluster_syntax.png)
+
+</center>
+<center><i>Structure of a Cluster YAML configuration </i></center>
+
 
 Within DataOS, a Cluster Resource can either be created either by applying the YAML using the DataOS Command Line Interface (CLI), or by using the Operations App's Graphical User Interface (GUI).
 
-## Creating a Cluster Resource via CLI
+## How to create a Cluster Resource?
 
-As Cluster is a Resource within DataOS. An instance of the Cluster can be created by configuring the Cluster Resource YAML and applying it via CLI.
+As Cluster is a Resource-type within DataOS. An instance of the Cluster can be created by configuring the Cluster Resource YAML and applying it via CLI.
 
-### **Building a Cluster Resource YAML** 
+### **Create a Cluster Resource YAML** 
 
-To create a Cluster Resource, you need to configure the YAML file with the appropriate attributes/fields. The following sections explain the necessary configurations.
+To create a Cluster Resource, you need to configure the YAML file with the appropriate attributes. The following sections explain the necessary configurations.
 
 #### **Configuring the Resource Section**
 A Cluster is a Resource-type in DataOS. Below is the YAML configuration for the Resource Section:
@@ -66,7 +72,7 @@ cluster:
 
 <center><i>Resource Section configuration for a Cluster Resource-type</i></center>
 
-For detailed customization options and additional fields within the Resource Section, refer to the [Resource Grammar.](../resources/resource_grammar.md)
+For detailed customization options and additional details, refer to the [Resource Grammar.](../resources/resource_grammar.md)
 
 #### **Configuring the Cluster-specific Section**
 

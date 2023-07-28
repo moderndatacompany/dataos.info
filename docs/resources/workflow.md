@@ -75,7 +75,7 @@ The Workflow-specific section contains configurations specific to the Workflow R
 
 **Scheduled Workflow**
 
-A [Scheduled Workflow](#scheduled-workflows) triggers a series of jobs or tasks at particular intervals or predetermined times. To create a scheduled workflow, specify the [scheduling attributes](./workflow/workflow_yaml_attributes_configuration.md#schedule) in the schedule section:
+A [Scheduled Workflow](#scheduled-workflows) triggers a series of jobs or tasks at particular intervals or predetermined times. To create a scheduled workflow, specify the scheduling [attributes](./workflow/workflow_yaml_attributes_configuration.md#schedule) in the schedule section:
 ```yaml
 workflow:
   schedule:
@@ -83,7 +83,7 @@ workflow:
   dag:
     {{collection-of-jobs}}
 ```
-<center><i>Worfklow-specific section configuration for Scheduled Workflow</i></center>
+<center><i>Scheduled Workflow configuration</i></center>
 
 **Single-Run Workflow**
 
@@ -93,7 +93,7 @@ workflow:
   dag:
     {{collection-of-jobs}}
 ```
-<center><i>Workflow-specific section configuration for Single-Run Workflow</i></center>
+<center><i>Single-run Workflow configuration</i></center>
 
 Choose the appropriate workflow type based on your requirements. The below table summarizes various attributes within the Workflow-specific section.
 
@@ -114,7 +114,7 @@ Choose the appropriate workflow type based on your requirements. The below table
 
 <i>optional**:</i> Fields optional for single-run workflows, but mandatory for Scheduled workflows.
 
-For additional configuration attributes within the Workflow-specific section, refer to the [Attributes in Workflow-specific section YAML configuration.](./workflow/workflow_yaml_attributes_configuration.md#workflow)
+For additional details about the attributes within the Workflow-specific section, refer to the link: [Attributes of Workflow-specific section](./workflow/workflow_yaml_attributes_configuration.md#workflow)
 
 #### **Configuring the Job-specific Section**
 
@@ -401,7 +401,7 @@ To check the logs for errors, use the following command. Retrieve the node name 
 Command:
 
 ```shell
-dataos-ctl -i "{{copy the name-to-workspace in the output table from get status command}}" --node {{failed-node-name-from-get-runtime-command}} log
+dataos-ctl -i "{{copy the name-to-workspace in the output table from get command}}" --node {{failed-node-name-from-get-runtime-command}} log
 ```
 
 Example:
@@ -509,7 +509,7 @@ Modify the YAML configuration by changing the name of the Workflow. For example,
 
 Before re-running the Workflow, delete the previous version from the environment. There are two ways to delete the Workflow as shown below.
 
-**Method 1:** Copy the name-to-workspace from the output table of the get status command and use it as a string in the delete command.
+**Method 1:** Copy the name-to-workspace from the output table of the `get` command and use it as a string in the delete command.
 
 Command
 
@@ -623,7 +623,7 @@ INFO[0002] 🔍 workflow...complete
   cnt-city-demo-999-start-rnnbl       | system   | cnt-city-demo-999-lork-2374735668 | pod-workflow | wait,main               | succeeded
 ```
 
-Make sure to replace `{{name-to-workspace in the output table from get status command}}` and `{{file-path}}` with the actual values according to your workflow.
+Make sure to replace `{{name-to-workspace in the output table from get status command}}` and `{{file-path}}` with the actual values according to your Workflow.
 
 </details>
 
@@ -631,7 +631,7 @@ Make sure to replace `{{name-to-workspace in the output table from get status co
 
 <aside class="best-practice">
 
-📖 <i>Best Practice:</i><br> It is part of the best practice to add relevant <code>description</code> and <code>tags</code> for your Workflow. While <code>description</code> helps to determine what the workflow will help you accomplish, <code>tags</code> can help in faster searching in Metis and Operations.
+📖 <i>Best Practice:</i><br> It is part of the best practice to add relevant <code>description</code>, <code>title</code> and <code>tags</code> for your Workflow. <code>description</code> helps to determine what the workflow will help you accomplish, <code>title</code> and <code>tags</code> can help in faster searching in Metis and Operations.
 </aside>
 
 ## How to setup alerts on Workflows?
@@ -646,9 +646,11 @@ To deepen your understanding and expand your knowledge of Workflows, explore the
 
 - [How to implement Single-run Workflow?](./workflow/single_run_workflow.md)
 
-- [How to run a Cron Workflow or a Scheduled Workflow](./workflow/scheduled_or_cron_workflow.md)
+- [How to run a Cron Workflow or a Scheduled Workflow?](./workflow/scheduled_or_cron_workflow.md)
 
-- [How to orchestrate multiple Workflows from a single Workflow](./workflow/orchestrating_multiple_workflows_from_a_single_workflow.md)
+- [How to orchestrate multiple Workflows from a single Workflow?](./workflow/orchestrating_multiple_workflows_from_a_single_workflow.md)
+
+- [How to retry a job in the Workflow?](./workflow/retry_jobs.md)
 
 
 
