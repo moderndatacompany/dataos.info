@@ -20,7 +20,6 @@ hide:
 | [Audiences](./interfaces/audiences.md) | It is an application derived from Lens that uses the semantic data models created through Lens to identify and categorize specific groups of people who have similar characteristics, traits, or behaviors. These categorized groups are referred to as audiences. |
 | [Authorization Atoms](./interfaces/bifrost.md) | Each predicate and object in an Access Policy is an Authorization Atom. This allows us to use them in a composable manner to create modular use cases or policies. |
 
----
 
 ## b
 
@@ -31,7 +30,6 @@ hide:
 | [Bifrost](./interfaces/bifrost.md) | Bifrost is a Graphical User Interface (GUI) that empowers users to effortlessly create and manage access policies for applications, services, people, and datasets. Bifrost leverages the governance engine of DataOS, Heimdall, to ensure secure and compliant data access through ABAC policies, giving users fine-grained control over the data and resources.|
 | [Bloblang](./resources/stacks/benthos/bloblang.md) | Benthos incorporates Bloblang, a built-in mapping language designed to extract, modify, and restructure data in formats like JSON, CSV, and XML. Bloblang is used in data integration and processing pipelines to perform tasks like data mapping, filtering, and conversion. With Bloblang, users can efficiently manipulate and transform data within Benthos, enhancing their data processing capabilities.  |
 
----
 
 ## c 
 | Term | Description |
@@ -43,9 +41,8 @@ hide:
 | Context | DataOS Context refers to the environment or instance where DataOS is deployed and operates.   |
 | [Core Kernel](/architecture/#core-kernel) | Core Kernel serves as the traditional operating system kernel, responsible for OS functionalities that are independent of cloud-specific features. It incorporates drivers to enable communications between services, enforces access controls for both ingress & egress, and manages creation, scheduling & termination of various DataOS Resources & applications.   |
 
----
 
-# d 
+## d 
 
 | Term | Description |
 | --- | --- |
@@ -55,7 +52,6 @@ hide:
 | [Depot](./resources/depot.md) | Depot is a Dataos Resource that simplifies connectivity to different data sources by abstracting the complexities of the underlying systems.  Depots handle protocols, credentials, and connection schemas, making it easier for users to access and utilize data from diverse sources, including file systems, data lake systems, database systems, and event systems |
 | Dropzone | Dropzone is a depot in DataOS referring to an object storage. This storage is used as data lake to easily and securely upload files. |
 
----
 
 ## e 
 
@@ -63,7 +59,6 @@ hide:
 | --- | --- |
 | Egress | In DataOS, egress refers to the process of transferring data from a particular system or network to an external system or network. Egress can occur when data is retrieved, exported, or transmitted from DataOS to another system, allowing data to be utilized outside of the DataOS ecosystem. |
 
----
 
 ## f 
 
@@ -73,8 +68,6 @@ hide:
 | [Fastbase](./resources/depot/fastbase.md) | Fastbase is a depot type in DataOS specifically designed to support Apache Pulsar format for streaming workloads. With Fastbase depots, users can seamlessly leverage the power of streaming and real-time data processing within the DataOS ecosystem. |
 | Filebase | It is a depot that is configured during the DataOS installation and serves as a destination for storing various types of data in file formats like parquet, csv, pdfs, and more. |
 
----
-
 ## g 
 
 | Term | Description |
@@ -82,7 +75,6 @@ hide:
 | Grafana | Grafana is a powerful tool that allows the creation of  dashboards and provides capabilities for querying, visualizing, and exploring metrics, logs, and traces within the DataOS environment. It empowers administrators to effectively assess health of Kubernetes clusters. |
 | [GUI](./interfaces.md#graphical-user-interface-gui) | The Graphical User Interface (GUI) in DataOS provides a user-friendly and visually appealing interface for interacting with DataOS and its components. |
 
----
 
 ## h 
 
@@ -91,7 +83,6 @@ hide:
 | Hera| Hera is a source of record for lineage and topology that collates metadata from multiple sources, schedulers and/or data processing frameworks as long as the necessary integration is in place. It can receive lieneage information from workflow orchestration engine like Argo or Airflow, or a Jupyter notebook. |
 | [Heimdall](./architecture/heimdall_arch.md) | Heimdall is the authentication, authorization, and governance engine in DataOS, responsible for implementing a robust security strategy. It ensures that only authorized users have access to DataOS resources. |
 
----
 
 ## i
 
@@ -102,7 +93,6 @@ hide:
 | [Ingress](./interfaces/operations.md#ingresses) | Ingress in DataOS exposes HTTP and HTTPS routes from outside the DataOS context to services within a DataOS context. It configures the incoming port for the service to allow access to DataOS resources from external links. |
 | [Interface](/interfaces/) | Interfaces in DataOS such as CLI, GUI, API provide points of communication and interaction between different components for efficient data operations,  and control over various activities. Interfaces enable self-service data management.  |
 
----
 
 ## j 
 
@@ -110,14 +100,11 @@ hide:
 | --- | --- |
 | [Jupyter Notebook](/interfaces/notebook/) | Jupyter Notebook is an interface that enables interactive computing and data analysis. DataOS is configured to leverage the Jupyter ecosystem. This integration allows users to seamlessly utilize Jupyter Notebook within the DataOS environment, empowering them to explore and analyze data. |
 
----
-
 ## k 
 | Term | Description |
 | --- | --- |
 | kubectl | In DataOS, kubectl provides a powerful interface for administrators and developers to interact with the underlying Kubernetes infrastructure of DataOS, enabling efficient management and operation of containerized applications and services. It allows to manage and control various aspects of the DataOS environment, such as deploying and scaling applications, inspecting cluster resources, accessing logs, etc.|
 
----
 
 ## l 
 
@@ -126,8 +113,6 @@ hide:
 | [Lens](./interfaces/lens.md) | It is a modeling layer capable of accessing and modeling data from disparate sources. It supports data-driven decision-making by supporting and connecting to underlying data to the real-world business objects, formulates and delineate measure, KPIs, and relationships between different business concepts. |
 | [Lens Explorer](/interfaces/lens/#lens-explorer) | Lens Explorer is an intuitive graphical user interface that allows users to discover and analyze data within the Ontology layer. Users can utilize Lens Explorer to query the semantic model(lens) and obtain answers to complex data questions in an exploratory manner.|
 
----
-
 ## m 
 
 | Term | Description |
@@ -135,15 +120,13 @@ hide:
 | [Metis](/interfaces/metis/) | Metis is a metadata manager, cataloging service, and database within the DataOS environment assissting with discoverability and observability capabilities for your enterprise data. |
 | [Minerva](/resources/cluster/#minerva) | Minerva is a query engine that enables access to data for business insights. It is an interactive query engine based on Trino that makes it easy to analyze big data using SQL. |
 
----
-
 ## n 
+
 | Term | Description |
 | --- | --- |
 | Network Gateway | In DataOS, a Network Gateway is a component that enables secure communication and connectivity between different networks or systems within the DataOS infrastructure. It serves as a bridge or interface that facilitates the exchange of data and information between networks while enforcing security measures such as access control and data encryption.  |
 | Node Pool | A Node pool refers to a groups of virtual machines (VMs) with similar configurations (CPU, RAM, Storage Capacity, Network Protocal, and Storage Drive Types). Nodepools are made available to DataOS as a Compute Resource.  |
 
----
 
 ## o 
 
@@ -153,7 +136,6 @@ hide:
 | OpenID | OpenID Connect is an identity layer built on top of the OAuth protocol, providing a streamlined mechanism for Clients to verify the identity of End-Users. It utilizes an Authorization Server to authenticate the user and retrieve basic profile information through exposed REST APIs. In DataOS, Heimdall leverages OpenID Connect for authentication and authorization when processing sign-in requests from users. |
 | [Operations](./interfaces/operations.md) | Operations app provides administrators a centralized way to understand and govern activity on the DataOS platform and monitor how users optimally utilize available resources. |
 
----
 
 ## p
 
@@ -165,7 +147,6 @@ hide:
 | [Policy](./resources/policy.md) | Policy is a DataOS Resource which governs the behaviour of users(applications and persons). In DataoS, two types of policies can be created- Access Policy & Data Policy.  |
 | [Profiling](/resources/stacks/flare/case_scenario/data_profiling_jobs/#data-profiling-jobs) | Data profiling is a process that involves examining data to gain insights into its structure, quality, and characteristics. In DataOS,  data profiling workflow aims to analyze data for valid formats, null values, and inconsistencies to enhance data quality. By utilizing basic statistics, it uncovers anomalies, redundancies, and provides insights into the validity of the data. |
 
----
 
 ## q
 
@@ -173,7 +154,6 @@ hide:
 | --- | --- |
 | Querybook | Querybook is an integrated interface to run SQL queries on any datasets and explore.|
 
----
 
 ## r 
 
@@ -182,8 +162,6 @@ hide:
 | [Resource](./resources.md) | Resources in DataOS are the lego blocks or the building blocks of the system that can be composed together. Each Resource in DataOS is a logical atomic unit with specific purpose, and is defined using a particular set of attributes. |
 | Resource-instance | The instance of a DataOS Resource which is deployed and orchestrated as a 'record of intent'. Every resource-instance in a Workspace, will have a unique name.  |
 | Resource-type | Resource-type refers to each of the different kinds of Resources which are available in DataOS. So, Workflow, Compute, Policy - each of them is a resource-type. |
-
----
 
 ## s 
 
@@ -195,15 +173,12 @@ hide:
 | [Stack](./resources/stacks.md) | DataOS Stacks are the programming paradigms supporting processing and management of data. They acts as the extension points of runnable resources, Workflow, and Service. |
 | Sentinel | Sentinel is a monitoring and logging solution offering centralized observability in the DataOS infrastructure. |
 
----
 
 ## t 
 
 | Term | Description |
 | --- | --- |
-| TUI | Terminal User Interface shows all the key resources deployed on the DataOS Context for real-time monitoring and exploration. It provides an easy-to-use interface for developers and operators to access vital information about the applications and infrastructure. TUI using DataOS CLI. |
-
----
+| TUI | Terminal User Interface shows all the key resources deployed in the DataOS Context for real-time monitoring and exploration. It provides an easy-to-use interface for developers and operators to access vital information about the applications and infrastructure. TUI using DataOS CLI. |
 
 ## u
 | Term | Description |
@@ -211,8 +186,6 @@ hide:
 | Unified Architecture | The unified architecture of DataOS refers to the cohesive and integrated design approach that combines various components, services, and technologies into a unified system. It enables data management, processing, and analysis, ensuring seamless interoperability and consistent user experience across different functionalities and applications within DataOS.|
 | [Uniform Data Link](/resources/depot/#depot) | The Depot serves as the registration of data locations to be made accessible to DataOS. Once the Depot is created, each source system is assigned a unique address, referred to as a Uniform Data Link (UDL). Regardless of the source system's internal naming conventions and structure, the UDL ensures consistency in referencing data.  |
 | [User Space](/architecture/#user-space) | User Space represents the domain of the operating system where data developers work and create resources such as workflows, services, secrets, depots, clusters, compute, etc for data processing jobs, services, and analytics workloads. Operations UI provides a way for users to observe and monitor these resources and their runtimes to debug if any issues.|
-
----
 
 ## w 
 
