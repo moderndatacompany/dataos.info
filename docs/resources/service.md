@@ -2,7 +2,7 @@
 
 A Service represents a long-running process that acts as a receiver and/or provider of APIs. It serves as a fundamental [Resource](../resources.md) in the DataOS ecosystem, catering to various scenarios involving continuous real-time and streaming data flow. Whether it's event processing, streaming IoT data, log processing for network devices, real-time stock trade analysis, or dynamic user interfaces (UIs), the Service Resource enables data developers to gather, process, and analyze real-time/streaming data flow, enabling timely insights and swift response to the latest information.
 
-While resembling a [Workflow](./workflow.md) in some aspects, a Service differentiates itself by not employing [Directed Acyclic Graphs (DAGs)](./workflow.md#workflows-and-directed-acyclic-graphs-dags). Instead, a Service is provisioned as a runnable entity, albeit limited to utilizing a single Stack at a time. This contrasts with a Workflow, which can accommodate multiple jobs running on separate stacks simultaneously.
+While resembling a [Workflow](./workflow.md) in some aspects, a Service differentiates itself by not employing [Directed Acyclic Graphs (DAGs)](./workflow.md#workflows-and-directed-acyclic-graphs-dags). Instead, a Service is provisioned as a runnable entity, albeit limited to utilizing a single [Stack](./stacks.md) at a time. This contrasts with a Workflow, which can accommodate multiple [jobs](./workflow.md#workflows-and-directed-acyclic-graphs-dags) being executed upon separate Stacks.
 
 ## Core Concepts
 
@@ -10,33 +10,33 @@ While resembling a [Workflow](./workflow.md) in some aspects, a Service differen
 
 The Service Resource is equipped with a port and a socket, for data reception and transmission. By listening on a specific URL port, the Service facilitates the posting or retrieval of data. The presence or absence of these ports and sockets depends on the specific use case requirements and objectives.
 
-### **Replicas**
-
-To achieve robust scalability, the Service Resource introduces the concept of replicas. Replicas ensure a stable set of identical Kubernetes Pods that run the Service concurrently. This mechanism guarantees availability by maintaining a specified number of Pods, enabling the Service to effortlessly handle heavy workloads without succumbing to failure.
-
 ### **Ingress**
 
 In DataOS, Ingress exposes HTTP and HTTPS routes from outside the DataOS context to services within the DataOS environment. It configures the incoming port for the Service Resource, enabling access to DataOS resources from external links. Ingress plays a crucial role in facilitating communication between DataOS and external systems or users.
 
+### **Replicas**
 
-## Syntax of a Service YAML
+To achieve robust scalability, the Service Resource introduces the concept of replicas. Replicas ensure a stable set of identical Kubernetes Pods that run the Service concurrently. This mechanism guarantees availability by maintaining a specified number of Pods, enabling the Service to effortlessly handle heavy workloads without succumbing to failure.
 
-The Service resource is configured using a YAML file, consisting of several rooted sections. The syntax for a Service YAML is given below:
+
+## Structure of a Service YAML
+
+The Service Resource is configured using a YAML file, consisting of several rooted sections. The structure for a Service YAML is given below:
 
 <center>
 
-![Syntax of a Service](./service/service_yaml.png)
+![Service Resource YAML configuration structure](./service/service_yaml.png)
 
 </center>
 
 
 <center>
 
-<i>YAML Syntax of a Service Resource</i>
+<i>Service Resource YAML configuration structure</i>
 
 </center>
 
-## Creating a Service
+## How to create a Service?
 
 To understand how a Service works, let’s take a case scenario where a user wants to bring the data from a web app using Google Tag Manager to draw up insights in real-time. This would involve sending all the captured data by Google Tag Manager to an API, applying some transformations, and writing it to, let’s say, a streaming source, Kafka. This would require a Service that would keep listening to the Google Tag Manager API and sync all the data to Kafka in real time.
 

@@ -2,13 +2,13 @@
 
 <center>
 
-![Diagrammatic representation of Single Run Workflow](./sample_workflow.svg)
+![Illustration of a Single-run Workflow](./sample_workflow.svg)
 
 </center>
 
 <center>
 
-*Diagrammatic representation of Single Run Workflow*
+*Illustration of a Single-run Workflow*
 
 </center>
 
@@ -38,7 +38,7 @@ workflow:
         - City
         stack: flare:3.0 # The job gets executed upon the Flare Stack, so its a Flare Job
         compute: runnable-default
-        # Flare Stack Specific Properties
+        # Flare Stack-specific Section
         flare:
           job:
             explain: true
@@ -85,7 +85,7 @@ workflow:
       spec:
         stack: toolbox # The Job gets executed upon Toolbox Stack, so its a Toolbox Job 
         compute: runnable-default
-        # Toolbox Stack specific properties
+        # Toolbox Stack-specific Section
         toolbox:
         dataset: dataos://icebase:retail/city01
         action:
