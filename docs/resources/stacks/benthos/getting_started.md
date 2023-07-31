@@ -6,7 +6,7 @@ If you're new to the game, fret not! We've got you covered with this step-by-ste
 
 From there, we'll guide you through the transition to DataOS and beyond. Follow along with our expert guidance and before you know it, you'll be a Benthos whiz.
 
-## Install[]
+## Install
 
 Firstly, let's get started by installing the Benthos stack. The installation process is a breeze, that involves a single command to be executed on the command line:  
 
@@ -23,7 +23,7 @@ docker pull jeffail/benthos
 docker run --rm -v /path/to/your/config.yaml:/benthos.yaml jeffail/benthos
 ```
 
-### Homebrew[](https://www.benthos.dev/docs/guides/getting_started#homebrew)
+### **Homebrew**
 
 On macOS, Benthos can be installed via Homebrew:
 
@@ -128,7 +128,7 @@ pipeline:
 
 Don’t worry if you don’t understand even a single word of Bloblang. We will teach you like a kid, and you will be a hero from zero in no time.
 
-### Output
+### **Output**
 
 Finally, we will use outputs to store the transformed data. Outputs can be anything from file systems, message queues, DataOS depots, or even HTTP endpoints. In this example, we will be using a file output to store the transformed data in a local file.
 
@@ -141,7 +141,7 @@ output:
 
 And that’s it! You have survived the theory part, now go back to your code editor.
 
-### Back to Code
+### **Back to Code**
 
 Now let's choose a random API to work with. For the purposes of this guide, we'll use the Chuck Norris Jokes API. Not only is it a great source of entertainment, but it's also a simple and straightforward API to work with.
 
@@ -178,7 +178,7 @@ benthos -c /home/Desktop/pipeline.yaml
 
 And there you have it! But before you go dancing in the park, check out both the input (by copying the URL in any browser) and the processed output (inside the output file). This would help you understand what the Bloblang processor is doing.
 
-Before Processing
+**Before Processing**
 
 ```bash
 {
@@ -192,7 +192,7 @@ Before Processing
 }
 ```
 
-After Processing
+**After Processing**
 
 ```bash
 {"joke":"Jesus Walked on water. Chuck Norris Swam on land"}
@@ -210,27 +210,3 @@ root = {
 This transformation takes the incoming data and creates a new object with a single key-value pair. The key is "joke", and the value is the joke itself. We're essentially just extracting the joke from the API response and storing it in a more structured format.
 
 That’s it! With just a few lines of code, we've set up a Benthos pipeline to retrieve Chuck Norris jokes from an API, transform the data using Bloblang, and store the result locally on our machine. Now go forth and use your newfound powers for good (or for laughter)!
-
-How exciting! I don't know about you but I'm going to need to lie down for a while. Now that you are a Benthos expert, might I suggest you peruse these sections to see if anything tickles your fancy?
-
-## Recommended
-
-Run a Benthos streaming pipeline on DataOS
-
-## Alternatively, if you wanna…
-
-Be the Master of Bloblang.
-
-Use Benthos Studio to create advanced bloblang transformations
-
-See what are the possible input sources Benthos supports.
-
-Take a look at the different processors to mess up your streaming data.
-
-Check out the compatible outputs and endpoints Benthos can write to.
-
-Monitor your Benthos pipelines.
-
-Check out Quick Recipes to
-
-Are you a Benthos expert, check out some advanced configurations to challenge you?

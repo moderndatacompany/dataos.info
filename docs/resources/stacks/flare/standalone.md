@@ -43,16 +43,21 @@ Let's take a scenario where you write a Flare Workflow YAML to write terabytes o
 dataos-ctl develop start -s flare -i rubiklabs/flare3:6.0.93 -f sample/standalone-config/config.yaml -d standalone -P 14042
 ```
 
-| dataos-ctl | develop | start | -s | flare | -i | rubiklabs/flare3:6.0.93 | -f | sampledata/standalone-config/config.yaml | -d | standalone | -P | 14042 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Command to operate DataOS CLI (Command Line Interface). CTL stands for control. | Manage DataOS development. | Start development container | Stack flag  | Stack along with version as argument. You can also provide a specific version for flare, like flare:3.0, flare:4.0 | Image Flag
-(Optional) | Custom Image
-(Optional) | File path flag | File path as argument (can be either relative or absolute) | Directory Path flag | Path of the folder inside which the data folder is stored. (The content of this directory is mounted on the docker within /data/examples/) | Port Flag
-(Optional) | Exposed port 
-number
-Spark UI can be accessed in browser by
-https://localhost/<port-number>
-(Optional) |
+| Command Element | Description |
+|----------------------------------------------------------|------------------------------------------------------------------------------------------------------|
+| dataos-ctl                                                | Command to operate DataOS CLI (Command Line Interface). CTL stands for control.                        |
+| develop                                                  | Manage DataOS development.                                                                         |
+| start                                                    | Start development container                                                                       |
+| -s                                                       | Stack flag                                                                                        |
+| flare                                                    | Stack along with version as argument. You can also provide a specific version for flare, like flare:3.0, flare:4.0 |
+| -i                                                       | Image Flag (Optional)                                                                             |
+| rubiklabs/flare3:6.0.93                                  | Custom Image (Optional)                                                                           |
+| -f                                                       | File path flag                                                                                    |
+| sampledata/standalone-config/config.yaml                 | File path as argument (can be either relative or absolute)                                          |
+| -d                                                       | Directory Path flag                                                                               |
+| standalone                                               | Path of the folder inside which the data folder is stored. (The content of this directory is mounted on the docker within /data/examples/) |
+| -P                                                       | Port Flag (Optional)                                                                              |
+| 14042                                                    | Exposed port number. Spark UI can be accessed in the browser by https://localhost/<port-number> (Optional) |
 
 ### **Let's Begin**
 
