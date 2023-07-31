@@ -11,8 +11,6 @@ While both flavors of the Beacon stack are designed to offer functionality on to
 | Querying | Simple CRUD operations using HTTP verbs (GET, POST, PUT, DELETE). | Advanced querying and filtering using GraphQL queries, mutations, and subscriptions. |
 | Relationships | Supports basic foreign key relationships between tables. | Supports complex nested relationships and connections between tables. |
 | Schema Generation | Uses PostgreSQL metadata to automatically generate a RESTful API. | Uses PostgreSQL metadata to automatically generate a GraphQL schema. |
-| Customization | Limited customization options for endpoints and query parameters. | Highly customizable, with the ability to write custom resolvers, mutations, and subscriptions. |
-| Performance | Generally faster for simple queries and small datasets. | Can be slower for complex queries and large datasets due to GraphQL's flexibility and complexity. |
 | Use Cases | Well-suited for simple use cases where you need a quick and easy way to expose your database data through a RESTful API. | Designed to handle complex use cases where you need to perform complex queries on your database or work with related data in a flexible and efficient manner. |
 
 ## Beacon Service
@@ -24,6 +22,12 @@ By utilizing the Service Primitive/resource, you can ensure governed access to t
 ![beacon](./beacon/beacon.png)
 
 In summary, a Beacon Service enables you to expose an API endpoint for a specific table in a PostgreSQL database, allowing you to send data to be stored and interact with the data in the table by sending HTTP requests to the endpoint. With a Beacon Service, your web and other data-driven applications in DataOS can perform CRUD operations, search, filter, and rename data assets stored in Postgres (the native relational database of DataOS).
+
+## Syntax of Beacon YAML Configuration
+
+![Beacon YAML Configuration Syntax](./beacon/beacon_syntax.png)
+
+<center><i>Beacon YAML configuration syntax</i></center>
 
 ## Create a Beacon Service
 
