@@ -42,7 +42,7 @@ hide:
 | [Core Kernel](/architecture/#core-kernel) | Core Kernel serves as the traditional operating system kernel, responsible for OS functionalities that are independent of cloud-specific features. It incorporates drivers to enable communications between services, enforces access controls for both ingress & egress, and manages creation, scheduling & termination of various DataOS Resources & applications.   |
 
 
-# d 
+## d 
 
 | Term | Description |
 | --- | --- |
@@ -65,15 +65,8 @@ hide:
 | Term | Description |
 | --- | --- |
 | [Flare](./resources/stacks/flare.md) | Flare stack is used for building end-to-end data pipelines within DataOS. It uses a YAML-based declarative programming paradigm built as an abstraction over Apache Spark. It offers an all-in-one solution for performing diverse data ingestion, transformation, enrichment, and syndication processes on batch and streaming data. |
-<<<<<<< HEAD
-| [Fastbase](./resources/depot/fastbase.md) | Fastbase is a managed depot type in DataOS specifically designed to support Apache Pulsar format for streaming workloads. With Fastbase depots, users can seamlessly leverage the power of streaming and real-time data processing within the DataOS ecosystem. |
-| Filebase | It is a depot that is configured during the DataOS installation and serves as a destination for storing various types of data in file formats like parquet, csv, pdfs, and more. |
-=======
 | [Fastbase](./resources/depot/fastbase.md) | Fastbase is a depot type in DataOS specifically designed to support Apache Pulsar format for streaming workloads. With Fastbase depots, users can seamlessly leverage the power of streaming and real-time data processing within the DataOS ecosystem. |
 | Filebase | It is a depot that is configured during the DataOS installation and serves as a destination for storing various types of data in file formats like parquet, csv, pdfs, and more. |
-
----
->>>>>>> origin/stage
 
 ## g 
 
@@ -105,18 +98,9 @@ hide:
 
 | Term | Description |
 | --- | --- |
-<<<<<<< HEAD
-| Jupyter Notebook | Jupyter Notebook is an interface that enables interactive computing and data analysis. DataOS is configured to leverage the Jupyter ecosystem. This integration allows users to seamlessly utilize Jupyter Notebook within the DataOS environment, empowering them to explore and analyze data. |
-=======
 | [Jupyter Notebook](/interfaces/notebook/) | Jupyter Notebook is an interface that enables interactive computing and data analysis. DataOS is configured to leverage the Jupyter ecosystem. This integration allows users to seamlessly utilize Jupyter Notebook within the DataOS environment, empowering them to explore and analyze data. |
->>>>>>> origin/stage
 
-
-<<<<<<< HEAD
-# k 
-=======
 ## k 
->>>>>>> origin/stage
 | Term | Description |
 | --- | --- |
 | kubectl | In DataOS, kubectl provides a powerful interface for administrators and developers to interact with the underlying Kubernetes infrastructure of DataOS, enabling efficient management and operation of containerized applications and services. It allows to manage and control various aspects of the DataOS environment, such as deploying and scaling applications, inspecting cluster resources, accessing logs, etc.|
@@ -128,11 +112,6 @@ hide:
 | --- | --- |
 | [Lens](./interfaces/lens.md) | It is a modeling layer capable of accessing and modeling data from disparate sources. It supports data-driven decision-making by supporting and connecting to underlying data to the real-world business objects, formulates and delineate measure, KPIs, and relationships between different business concepts. |
 | [Lens Explorer](/interfaces/lens/#lens-explorer) | Lens Explorer is an intuitive graphical user interface that allows users to discover and analyze data within the Ontology layer. Users can utilize Lens Explorer to query the semantic model(lens) and obtain answers to complex data questions in an exploratory manner.|
-<<<<<<< HEAD
-=======
-
----
->>>>>>> origin/stage
 
 ## m 
 
@@ -141,22 +120,13 @@ hide:
 | [Metis](/interfaces/metis/) | Metis is a metadata manager, cataloging service, and database within the DataOS environment assissting with discoverability and observability capabilities for your enterprise data. |
 | [Minerva](/resources/cluster/#minerva) | Minerva is a query engine that enables access to data for business insights. It is an interactive query engine based on Trino that makes it easy to analyze big data using SQL. |
 
-
-<<<<<<< HEAD
-# n 
-=======
 ## n 
->>>>>>> origin/stage
+
 | Term | Description |
 | --- | --- |
 | Network Gateway | In DataOS, a Network Gateway is a component that enables secure communication and connectivity between different networks or systems within the DataOS infrastructure. It serves as a bridge or interface that facilitates the exchange of data and information between networks while enforcing security measures such as access control and data encryption.  |
 | Node Pool | A Node pool refers to a groups of virtual machines (VMs) with similar configurations (CPU, RAM, Storage Capacity, Network Protocal, and Storage Drive Types). Nodepools are made available to DataOS as a Compute Resource.  |
 
-<<<<<<< HEAD
-
-=======
----
->>>>>>> origin/stage
 
 ## o 
 
@@ -192,11 +162,6 @@ hide:
 | [Resource](./resources.md) | Resources in DataOS are the lego blocks or the building blocks of the system that can be composed together. Each Resource in DataOS is a logical atomic unit with specific purpose, and is defined using a particular set of attributes. |
 | Resource-instance | The instance of a DataOS Resource which is deployed and orchestrated as a 'record of intent'. Every resource-instance in a Workspace, will have a unique name.  |
 | Resource-type | Resource-type refers to each of the different kinds of Resources which are available in DataOS. So, Workflow, Compute, Policy - each of them is a resource-type. |
-<<<<<<< HEAD
-=======
-
----
->>>>>>> origin/stage
 
 ## s 
 
@@ -213,20 +178,7 @@ hide:
 
 | Term | Description |
 | --- | --- |
-| TUI | Terminal User Interface shows all the key resources deployed on the DataOS Context for real-time monitoring and exploration. It provides an easy-to-use interface for developers and operators to access vital information about the applications and infrastructure. TUI using DataOS CLI. |
-
-<<<<<<< HEAD
-
-# u
-| Term | Description |
-| --- | --- | 
-| Unified Architecture | The unified architecture of DataOS refers to the cohesive and integrated design approach that combines various components, services, and technologies into a unified system. It enables data management, processing, and analysis, ensuring seamless interoperability and consistent user experience across different functionalities and applications within DataOS.|
-| [Uniform Data Link](/resources/depot/#depot) | The Depot serves as the registration of data locations to be made accessible to DataOS. Once the Depot is created, each source system is assigned a unique address, referred to as a Uniform Data Link (UDL). Regardless of the source system's internal naming conventions and structure, the UDL ensures consistency in referencing data.  |
-| [User Space](/interfaces/operations/#user-kernel) | User Space represents the domain of the operating system where data developers work and create resources such as workflows, services, secrets, depots, clusters, compute, etc for data processing jobs, services, and analytics workloads. Operations UI provides a way for users to observe and monitor these resources and their runtimes to debug if any issues.|
-
-# w 
-=======
----
+| TUI | Terminal User Interface shows all the key resources deployed in the DataOS Context for real-time monitoring and exploration. It provides an easy-to-use interface for developers and operators to access vital information about the applications and infrastructure. TUI using DataOS CLI. |
 
 ## u
 | Term | Description |
@@ -235,18 +187,12 @@ hide:
 | [Uniform Data Link](/resources/depot/#depot) | The Depot serves as the registration of data locations to be made accessible to DataOS. Once the Depot is created, each source system is assigned a unique address, referred to as a Uniform Data Link (UDL). Regardless of the source system's internal naming conventions and structure, the UDL ensures consistency in referencing data.  |
 | [User Space](/architecture/#user-space) | User Space represents the domain of the operating system where data developers work and create resources such as workflows, services, secrets, depots, clusters, compute, etc for data processing jobs, services, and analytics workloads. Operations UI provides a way for users to observe and monitor these resources and their runtimes to debug if any issues.|
 
----
-
 ## w 
->>>>>>> origin/stage
 
 | Term | Description |
 | --- | --- |
 | [Workbench](./interfaces/workbench.md) | Workbench is a query interface within DataOS that provides functionality for editing, running, and saving SQL scripts, viewing query results and more. It serves as a versatile tool for running both simple and complex SQL queries on diverse data sources, enabling efficient data exploration.  |
 | [Workflow](./resources/workflow.md) | The Workflow is a DataOS Resource for orchestrating data processing tasks with dependencies. It defines a pipeline involving a sequence of jobs, each utilizing stacks behind the scenes to accomplish various tasks. Within a Workflow, a job encompasses a sequence of processing tasks that need to be executed in a specific order to achieve desired outcomes.  |
 | Workspace | In DataOS, a Workspace is a separate work environment for individuals or teams, providing logical separation and control over resources. Each Workspace functions like a tenant, allowing the creation and management of resources in an isolated context. By default, resources are created in the public Workspace, serving as a shared environment. |
-<<<<<<< HEAD
-=======
 
 ---
->>>>>>> origin/stage
