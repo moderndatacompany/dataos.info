@@ -630,8 +630,6 @@ Make sure to replace `{{name-to-workspace in the output table from get status co
 
 </details>
 
-
-
 <aside class="best-practice">
 
 📖 <i>Best Practice:</i><br> It is part of the best practice to add relevant <code>description</code>, <code>title</code> and <code>tags</code> for your Workflow. <code>description</code> helps to determine what the workflow will help you accomplish, <code>title</code> and <code>tags</code> can help in faster searching in <a href="../interfaces/metis.md">Metis</a> and <a href="../interfaces/operations.md">Operations</a>.
@@ -643,6 +641,7 @@ Make sure to replace `{{name-to-workspace in the output table from get status co
 Workflow alerts play a vital role in the effective management of extensive Workflows and Jobs, enabling streamlined monitoring and prompt notifications in the event of failures. For detailed instructions on configuring Workflow alerts, refer to the documentation link: [Setting Up Workflow Alerts](../dataos_alerts/workflow_alerts.md)
 
 
+<aside class="callout">DataOS offers a diverse range of integrated alert mechanisms, emphasizing observability and active monitoring.  To learn more about them, refer to <a href="/dataos_alerts/">DataOS Alerts</a></aside>
 
 ## Case Scenarios
 
