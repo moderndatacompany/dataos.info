@@ -113,8 +113,7 @@ nav:
          - Workbench: interfaces/workbench.md        
 
 # to be hidden from the top navigation bar on the webpages
-    - Architecture: 
-         - Architecture of DataOS: architecture.md
+    - Architecture: architecture.md
     
     - Glossary: glossary.md
     - Videos: videos.md

@@ -1,6 +1,6 @@
-Interfaces in DataOS serve as vital points of communication and interaction between different components. They facilitate seamless collaboration and independent functionality within DataOS. These interfaces provide powerful tools for efficient data operations,  and control over various activities. Whether you prefer the flexibility of the API, the command-driven power of the CLI, or the intuitive experience of the GUI, DataOS interfaces enable self-service data management. Let's explore these interfaces and their capabilities.
+Interfaces in DataOS serve as vital points of communication and interaction between different services & the users. They facilitate seamless collaboration and independent functionality within DataOS. These interfaces provide powerful tools for efficient data operations,  and control over various activities. Whether you prefer the flexibility of the API, the command-driven power of the CLI, or the intuitive experience of the GUI, DataOS interfaces enable self-service data management. Let's explore these interfaces and their capabilities.
 
-## Command-Line Interface (CLI)
+## Command Line Interface (CLI)
 
 The DataOS CLI provides a command-line environment for efficient and streamlined data operations. It offers quick access to system functionality with flexibility and control making it ideal for data engineers or system administrators. They can interact with DataOS instance through text-based commands, create and manage resources, and perform various data management tasks.  Effective utilization of CLI may require familiarity with the system and its underlying commands. To learn more, click [here](/interfaces/cli/). 
 
