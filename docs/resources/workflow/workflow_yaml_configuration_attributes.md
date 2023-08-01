@@ -1,4 +1,4 @@
-# Attributes in Workflow YAML Configuration
+# Attributes of Workflow YAML Configuration
 
 ## Structure of a Workflow YAML
 
@@ -32,7 +32,7 @@ workflow:
       dependencies: 
        - {{job1-name}}
 ```
-<center><i> Workflow YAML Configuration </i></center>
+<center><i> Structure of Workflow YAML configuration </i></center>
 
 ## Configuration Attributes
 

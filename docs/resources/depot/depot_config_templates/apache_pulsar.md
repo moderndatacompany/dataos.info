@@ -1,6 +1,5 @@
 # Apache Pulsar
 
-
 DataOS provides the capability to create a Depot of type 'PULSAR' for reading topics and messages stored in Pulsar. This Depot facilitates the consumption of published topics and processing of incoming streams of messages.
 
 ## Requirements
