@@ -46,7 +46,7 @@ depot:
         awssecretaccesskey: {{AWS_SECRET_ACCESS_KEY}}
   spec:                                            
     scheme: {{s3a}}
-    bucket: {{project-name>}}
+    bucket: {{project-name}}
     relativePath: {{relative-path}}
     format: {{format}}
 ```
