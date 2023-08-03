@@ -11,17 +11,17 @@ The cloud-kernel secret type means that a Kubernetes secret will be created with
 **Syntax**
 
 ```yaml
-version: v1
 name: testing
+version: v1
 type: secret
 description: a very special test secret
 secret:
   type: cloud-kernel
   acl: r
   data:
-    a: b
-    c: d
-    e: f
+    {{a: b}}
+    {{c: d}}
+    {{e: f}}
 ```
 
 ## `cloud-kernel-image-pull`
@@ -31,8 +31,8 @@ Accessing a Docker registry for images requires valid Docker credentials. You ca
 **Syntax**
 
 ```yaml
+name: {{docker-image-pull}}
 version: v1
-name: docker-image-pull
 type: secret
 secret:
   type: cloud-kernel-image-pull
@@ -58,15 +58,15 @@ This secret type is for storing simple pairs of keys and values. They are stored
 **Syntax**
 
 ```yaml
+name: {{testing}}
 version: v1
-name: testing
 type: secret
 secret:
   type: key-value
   acl: r
   data:
-    key1:value1
-    key2:value2
+    {{key1:value1}}
+    {{key2:value2}}
 ```
 
 When you store a secret as a key-value type, the system passes the secret in the format they are stated, without any alterations.
@@ -79,44 +79,48 @@ This type is similar to key-value, but the difference lies in the way the system
 **Syntax**
 
 ```yaml
+name: {{testing}}
 version: v1
-name: testing
 type: secret
 secret:
   type: key-value-properties
   acl: r
   data:
-    key1:value1
-    key2:value2
+    {{key1:value1}}
+    {{key2:value2}}
 ```
 
 Another way of creating a secret is to make the value of that secret available as a file, and referring the path of that file in the YAML
 
+**Syntax**
+
 ```yaml
+name: {{testing}}
 version: v1
-name: testing
 type: secret
 secret:
   type: key-value-properties
   acl: r
   data:
-    key1:value1
-    key2:value2
-    key_json: <json-file-name> # secrets in a file
+    {{key1:value1}}
+    {{key2:value2}}
+    key_json: {{json-file-name}} # secrets in a file
 ```
 
 ## `certificate`
 
 This type is used to store TLS certificates and keys. The most common usage scenario is Ingress resource termination, but this type is also sometimes used with other resources.
 
+**Syntax**
+
 ```yaml
+name: {{secret-name}}
 version: v1
-name: testing
 type: secret
 secret:
   type: certificate
-  acl: r
-  data:
-    key1:value1
-    key2:value2
+  acl: rw
+  files:
+    truststoreLocation: {{file-path}}
+    keystoreLocation: {{file-path}}
 ```
