@@ -510,11 +510,11 @@ depot:
   type: S3
   description: {{description}}
   external: true
-    spec:
-      scheme: {{s3a}}
-      bucket: {{bucket-name}}
-      relativePath: "raw" 
-      format: {{format}}  # mention the file format, such as JSON, to only allow that file type
+  spec:
+    scheme: {{s3a}}
+    bucket: {{bucket-name}}
+    relativePath: "raw" 
+    format: {{format}}  # mention the file format, such as JSON, to only allow that file type
 ```
 
 For File based systems, if you define the format as ‘Iceberg’, you can choose the meta-store catalog between Hadoop and Hive. This is how you do it:
@@ -525,12 +525,12 @@ depot:
   description: "ABFSS Iceberg depot for sanity"
   compute: runnable-default
   spec:
-    "account": 
-    "container": 
-    "relativePath":
-    "format": "ICEBERG"
-    "endpointSuffix":
-    "icebergCatalogType": "Hive"
+    account: 
+    container: 
+    relativePath:
+    format: ICEBERG
+    endpointSuffix:
+    icebergCatalogType: Hive
 
 ```
 
