@@ -32,4 +32,4 @@ To configure event notifications to the registered webhooks, enter the following
 2. End Point URL to receive HTTP call back on.
 3. Event filters to receive notifications for specific events of interest like when the metadata entity is created, updated or deleted.
 
-[image](dataos_alerts/webhook.png)
+![image](./webhook.png)

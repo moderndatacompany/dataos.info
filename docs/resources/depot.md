@@ -85,7 +85,6 @@ The YAML configuration file for a Depot can be divided into four main sections: 
 The Resource section of the YAML configuration file consists of attributes that are common across all resource-types. The following YAML snippet demonstrates the key-value properties that need to be declared in this section:
 
 ```yaml
-```yaml
 name: {{mydepot}}
 version: v1 
 type: depot 
@@ -380,7 +379,7 @@ Secondly with this setup, you can read the files within the 'transactions' folde
 
 <aside class="callout">
 
-When writing data to a source system, names like 'none' or 'system' cannot be used for the collection. Therefore, the output of a Flare job cannot have an address like <code>dataos://<depot name>:none/<dataset name></code> or <code>dataos://<depot name>:system/<dataset name></code>.
+When writing data to a source system, names like 'none' or 'system' cannot be used for the collection. Therefore, the output of a Flare job cannot have an address like <code>dataos://{{depot name}}:none/{{dataset name}}</code> or <code>dataos://{{depot name}}:system/{{dataset name}}</code>.
 </aside>
 
 For accessing data from [Kafka](./depot/depot_config_templates/kafka.md), where the structure consists of a broker list and topics, the `spec` section in the YAML configuration will point the depot to the broker list, and the datasets will map to the topic list. The format of the YAML will be as follows:

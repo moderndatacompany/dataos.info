@@ -108,20 +108,10 @@ Click here to view a sample service
 
 The sample service ingests product data from the thirdparty01 depot and store it in the icebase depot. This workflow leverages the Flare stack to efficiently execute the necessary data ingestion tasks. The provided YAML code snippet outlines the configuration and specifications of this workflow.
 
-**Sample Stack-specific Section for Benthos Stack**
 
-<center><i>Sample Stack-specific Section Configuration for Benthos</i></center>
+<br>
 
-<center>
-
-<a href="./service/blank_diagram.svg"><img src="./service/blank_diagram.svg" alt="Blank Diagram"></a>
-
-
-<i> Diagrammatic Representation of Above Service </i>
-
-</center>
-
-
+<b>Code Snippet</b>
 
 ```yaml
 name: my-workflow
@@ -148,6 +138,7 @@ service:
         noAuthentication: true
     stack: benthos 
     logLevel: INFO
+    compute: runnable-default
     dryRun: true
     servicePort: 8099
     benthos:
