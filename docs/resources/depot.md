@@ -21,7 +21,7 @@ Once a Depot is created, all members of an organization gain secure access to da
 
 <aside class="callout">
 
-🗣️  Depot provides 'access' to data, meaning that data remains within the source system and is neither moved nor duplicated. However, DataOS offers multiple <a href="./stacks.md">Stacks</a> such as <a href="./stacks/flare.md">Flare</a>, <a href="./stacks/benthos.md">Benthos</a>, etc. to perform ingestion, syndication, copying if the need arises.
+🗣️ Depot provides 'access' to data, meaning that data remains within the source system and is neither moved nor duplicated. However, DataOS offers multiple <a href="./stacks.md">Stacks</a> such as <a href="./stacks/flare.md">Flare</a>, <a href="./stacks/benthos.md">Benthos</a>, etc. to perform ingestion, syndication, copying if the need arises.
 </aside>
 
 ## Structure of a Depot YAML
@@ -379,7 +379,7 @@ Secondly with this setup, you can read the files within the 'transactions' folde
 
 <aside class="callout">
 
-When writing data to a source system, names like 'none' or 'system' cannot be used for the collection. Therefore, the output of a Flare job cannot have an address like <code>dataos://{{depot name}}:none/{{dataset name}}</code> or <code>dataos://{{depot name}}:system/{{dataset name}}</code>.
+🗣️ When writing data to a source system, names like 'none' or 'system' cannot be used for the collection. Therefore, the output of a Flare job cannot have an address like <code>dataos://{{depot name}}:none/{{dataset name}}</code> or <code>dataos://{{depot name}}:system/{{dataset name}}</code>.
 </aside>
 
 For accessing data from [Kafka](./depot/depot_config_templates/kafka.md), where the structure consists of a broker list and topics, the `spec` section in the YAML configuration will point the depot to the broker list, and the datasets will map to the topic list. The format of the YAML will be as follows:
