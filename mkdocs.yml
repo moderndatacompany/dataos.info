@@ -42,9 +42,24 @@ plugins:
     #     version: v0.2
 extra:
   generator: true
+  # section added by Manish
   analytics: 
     provider: google
     property: G-ZH4G0HKBQC
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/thumb-up-outline
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback!
+        - icon: material/thumb-down-outline
+          name: This page could be improved
+          data: 0
+          note: >- 
+            Thanks for your feedback!
+  # end of the section added by Manish
   annotate:
     json: [.s2]
   social:
@@ -89,7 +104,8 @@ nav:
          - Depot: resources/depot.md
          - Policy: resources/policy.md
          - Secret: resources/secret.md
-         - Service: resources/service.md   
+         - Service: resources/service.md 
+         - Workflow: resources/workflow.md  
          - Stacks:
               - Introduction: resources/stacks.md
               - Alpha: resources/stacks/alpha.md
@@ -98,7 +114,7 @@ nav:
               - Data Toolbox: resources/stacks/data_toolbox.md
               - Flare: resources/stacks/flare.md
               - Scanner: resources/stacks/scanner.md
-         - Workflow: resources/workflow.md
+
                  
     - Interfaces:
          - Overview: interfaces.md
