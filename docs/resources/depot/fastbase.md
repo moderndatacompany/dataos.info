@@ -1,31 +1,29 @@
 # Fastbase
 
-
-Fastbase is a managed depot type within the DataOS that supports Apache Pulsar format for streaming workloads. Pulsar offers a “unified messaging model”  that combines the best features of traditional messaging systems like RabbitMQ and pub-sub (publish-subscribe) event streaming platforms like Apache Kafka. Users can leverage Fastbase depotsfor their streaming and real-time data workloads. 
+Fastbase is a depot type within the DataOS that supports Apache Pulsar format for streaming workloads. Pulsar offers a “unified messaging model”  that combines the best features of traditional messaging systems like RabbitMQ and pub-sub (publish-subscribe) event streaming platforms like Apache Kafka. Users can leverage Fastbase depots for their streaming and real-time data workloads. 
 
 ## Commands in DataOS
 
-DataOS allows users to manage Fastbase depots effortlessly using CLI. This functionality is made possible by the powerful API capabilities of Depot-Service.
+DataOS allows users to manage Fastbase depots effortlessly using CLI. This functionality is made possible by the powerful API capabilities of [Depot Service](../depot.md#depot-service).
 
 
->The primary command for interacting with the Fastbase Depot in DataOS is `dataos-ctl fastbase <sub-command>`. Using this command, you can perform various operations related to Fastbase.
+The primary command for interacting with the Fastbase Depot in DataOS is `dataos-ctl fastbase {{sub-command}}`. Using this command, you can perform various operations related to Fastbase.
 
 
-<aside style="padding:15px; border-radius:5px;">
+<aside class=callout>
 
 🗣️  Bringing uniformity by getting rid of complex terminologies
 To bring uniformity within DataOS, we have replaced specific terminologies related to underlying tech with their analogous DataOS counterpart. For example, topics in Pulsar are the named channels for transmitting messages from producers to consumers. They are streaming logs that are analogous to the dataset. Within DataOS, instead of a topic, we use the term dataset. 
-Taking this into account, any Fastbase UDL (Universal Data Link) within the DataOS is referenced as 
-```dataos://fastbase:<schema|none>/<dataset>```
-E.g., dataos://fastbase:default/my_data is one such UDL where we use the default schema and use the my_data dataset (my_data is a Pulsar topic, but within the DataOS, the term topic is replaced by dataset while referencing UDL)
+Taking this into account, any Fastbase UDL (Universal Data Link) within the DataOS is referenced as <code>dataos://fastbase:{{schema|none}}/{{dataset}}</code>
+E.g., dataos://fastbase:default/my_data is one such UDL where we use the default schema and use the my_data dataset (my_data is a Pulsar Topic, but within the DataOS, the term topic is replaced by dataset while referencing UDL)
 
 </aside>
 
-<blockquote style="color: black;">
-To execute Fastbase commands, it is necessary to have the `pulsar-admin` tag. You can check if you have the tag by running dataos-ctl user get in the terminal and verifying the presence of the dataos:u:pulsar:admin tag in the tags column.
-</blockquote>
+> To execute Fastbase commands, it is necessary to have the `pulsar-admin` tag. You can check if you have the tag by running dataos-ctl user get in the terminal and verifying the presence of the dataos:u:pulsar:admin tag in the tags column.
 
-### **Create Dataset**
+## How to create and fetch dataset?
+
+### **Create a Dataset**
 
 By creating and applying a YAML given below, you can create a dataset in Fastbase.
 
@@ -34,27 +32,27 @@ By creating and applying a YAML given below, you can create a dataset in Fastbas
 
 ```yaml
 # example-manifest.yaml
-schema: # <optional>
+schema: # optional
   type: "avro"
   avro: '<avro-schema>'
-pulsar: # <optional>
+pulsar: # optional
   type: "partitioned" or "non-partitioned" #(choose one)
-  partitions: 2 # <optional - use in case the type is: partitioned>dataos-ctl dataset create -a dataos://<pulsar-depot>:default/<topic-name> \ -f path/to/example-manifest.yaml+
+  partitions: 2 # optional - use in case the type is: partitioned>dataos-ctl dataset create -a dataos://<pulsar-depot>:default/<topic-name> \ -f path/to/example-manifest.yaml+
 
 ```
 
 **Command**
 
 ```shell
-dataos-ctl dataset create -a <udl-address> -f <yaml-file-path>
+dataos-ctl dataset create -a {{udl-address}} -f {{yaml-file-path}}
 ```
 
 <details><summary> Click on the toggle to see sample manifests</summary>
 
 ```yaml
-pulsar: # <optional>
+pulsar: # optional
   type: "partitioned" or "non-partitioned" #(chose one)
-  partitions: 2 # <optional - use in case the type is: partitioned>
+  partitions: 2 # optional - use in case the type is: partitioned
 ```
 
 This manifest creates a dataset with two partitions and without schema. In this case, the schema will be associated during write.
@@ -63,28 +61,32 @@ This manifest creates a dataset with two partitions and without schema. In this 
 schema:
   type: "avro"
   avro: '{"type":"record","name":"defaultName","fields":[{"name":"__metadata","type":{"type":"map","values":"string","key-id":10,"value-id":11},"field-id":1},{"name":"city_id","type":["null","string"],"default":null,"field-id":2},{"name":"zip_code","type":["null","int"],"default":null,"field-id":3},{"name":"city_name","type":["null","string"],"default":null,"field-id":4},{"name":"county_name","type":["null","string"],"default":null,"field-id":5},{"name":"state_code","type":["null","string"],"default":null,"field-id":6},{"name":"state_name","type":["null","string"],"default":null,"field-id":7},{"name":"version","type":"string","field-id":8},{"name":"ts_city","type":{"type":"long","logicalType":"timestamp-micros","adjust-to-utc":true},"field-id":9}]}'
-pulsar: # <optional>
+pulsar: # optional
   type: "partitioned" or "non-partitioned" #(chose one)
-  partitions: 2 # <optional - use in case the type is: partitioned>
+  partitions: 2 # optional - use in case the type is: partitioned
 ```
 
-This manifest creates a dataset with two partitions with ******the “Avro” ******schema.
+This manifest creates a dataset with two partitions with the “Avro” schema.
 </details>
 
-**Note**: 
+<aside class= callout>
+🗣️  Note:<br>
+<ul> <li>Pulsar supports quantifiable distribution while partitioning the data. The value of the partitions key is in the `int` form, and it doesn’t support categorical partition.</li>
+<li>The minimum partition value should be 2.</li>
+<li>Pulsar is based on the number of distributions, while iceberg is based on the type of distributions you need.</li>
 
-- Pulsar supports quantifiable distribution while partitioning the data. The value of the partitions key is in the `int` form, and it doesn’t support categorical partition.
-- The minimum partition value should be 2.
-- Pulsar is based on the number of distributions, while iceberg is based on the type of distributions you need.
+</ul>
+
+</aside>
 
 ---
 
-### **Fetch Dataset**
+### **Fetch a Dataset**
 
 With the help of the get command, we can gather or fetch all the information on the existing topic in Pulsar’s depot.
 
 ```bash
-dataos-ctl dataset -a dataos://<pulsar-depot>:default/<topic-name>  get
+dataos-ctl dataset -a dataos://fastbase:default/{{topic-name}}  get
 ```
 
 ---
@@ -97,7 +99,7 @@ Messages in Pulsar are published to topics and organized in a three-level hierar
 
 <center><i>Three Level Hierarchy Structure in Pulsar</i></center>
 
-- One `tenant` **represents a specific business unit or a product line. Topics created under a `tenant` share the same business context that is distinct from others.
+- One `tenant` represents a specific business unit or a product line. Topics created under a `tenant` share the same business context that is distinct from others.
 - Within one `tenant`, topics having similar behavioral characteristics can be further grouped into a smaller administrative unit called a `namespace`. Different policies such as message retention or expiry policy, can be set either at the `namespace` level or at an individual `topic` level. Policies set at the `namespace` level will apply to all topics under the `namespace`.
 
 The below commands need to be executed in the above hierarchical order.
@@ -142,7 +144,7 @@ Namespaces are logical grouping of topics. After creating a tenant, you can crea
 The command `namespace list` interacts with namespaces in the DataOS Fastbase and also lists the namespaces.
 
 ```bash
-dataos-ctl fastbase namespace -t <tenant_name> list
+dataos-ctl fastbase namespace -t {{tenant_name}} list
 ```
 
 **Command**
@@ -175,7 +177,7 @@ We currently support the creation of partitioned and non-partitioned `topics`, a
 The topics are listed with the help of `the topic list` command.
 
 ```bash
-dataos-ctl fastbase topic -n <tenant_name>/<namespace_name> list
+dataos-ctl fastbase topic -n {{tenant_name}}/{{namespace_name}} list
 ```
 
 **Command**
@@ -199,7 +201,7 @@ INFO[0001] 🔍 list...complete
 In Pulsar, the name of a `topic` reflects the following structure:
 
 ```bash
-{persistent|non-persistent}://<tenant_name>/<namespace_name>/<topic_name>
+{persistent|non-persistent}://{{tenant_name}}/{{namespace_name}}/{{topic_name}}
 ```
 
 Pulsar has persistent and non-persistent topics. 
