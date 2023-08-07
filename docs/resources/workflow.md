@@ -2,46 +2,50 @@
 
 The Workflow in DataOS serves as a fundamental [Resource](../resources.md) for orchestrating data processing tasks with dependencies. It enables the creation of complex data workflows by defining a hierarchy based on a dependency mechanism.
 
-## Workflows and Directed Acyclic Graphs (DAGs)
+## Workflow and Directed Acyclic Graph (DAG)
 
 In DataOS, a Workflow represents a **Directed Acyclic Graph (DAG)**, where jobs are represented as nodes, and dependencies between jobs are represented as directed edges. The DAG structure provides a visual representation of the sequence and interdependencies of jobs within a Workflow. This facilitates efficient job execution by enabling parallel and sequential processing based on job dependencies.
 
 Within a Workflow, a **job** encompasses a series of processing tasks, each executed within its dedicated Kubernetes Pod. This architectural design ensures that the computational workload of one job does not hinder the performance of others, effectively avoiding bottlenecks.
 
-Furthermore, every job within a Directed Acyclic Graph (DAG) is associated with a specific [Stack](./stacks.md). A Stack serves as an extension point within a job, offering users the ability to leverage different programming paradigms based on their specific requirements. For instance, if your objective involves data transformation, ingestion, or syndication, utilizing the [Flare](./stacks/flare.md) Stack is recommended. DataOS provides a diverse range of pre-built stacks, including [Flare](./stacks/flare.md), [Scanner](./stacks/scanner.md), [Alpha](./stacks/alpha.md), and more, enabling developers to seamlessly adopt various programming environments to suit their needs.
+Furthermore, every job within a Directed Acyclic Graph (DAG) is associated with a specific [Stack](./stacks.md). A Stack serves as an extension point within a job, offering users the ability to leverage different programming paradigms based on their specific requirements. For instance, if your objective involves data transformation, ingestion, or syndication, utilizing the [Flare](./stacks/flare.md) Stack is recommended. DataOS provides a diverse range of pre-built stacks, including [Flare](./stacks/flare.md), [Scanner](./stacks/scanner.md) and more, enabling developers to seamlessly adopt various programming environments to suit their needs.
 
 ![Illustration of Workflow Resource](./workflow/workflow_overview.png)
 
 <center><i>Illustration of Workflow Resource</i></center>
 
+In the depicted example, **Job 1** is the first job to be executed as it has no dependencies. Once **Job 1** completes, both **Job 2** and **Job 3** can run concurrently or parallely. Only after the successful completion of both **Job 2** and **Job 3**, **Job 4** becomes eligible for execution. Finally, **Job 5** can be executed sequentially after **Job 4** successfully finishes. This hierarchical structure ensures optimal job execution without creating bottlenecks.
 
-In the depicted example, **Job 1** is the first job to be executed as it has no dependencies. Once **Job 1** completes, both **Job 2** and **Job 3** can run concurrently or parallely. Only after the successful completion of both **Job 2** and **Job 3**, **Job 4** becomes eligible for execution. Finally, **Job 5** can be executed after **Job 4** successfully finishes. This hierarchical structure ensures optimal job execution without creating bottlenecks.
+<aside class=callout>
 
-It is important to note that a Directed Acyclic Graph may have multiple root nodes, which means that a Workflow can contain both jobs and other Workflows stored in different locations. This feature allows for the decomposition of complex workflows into manageable components. For more information on this scenario, refer to [Orchestrating Multiple Workflows from a Single Workflow](./workflow/orchestrating_multiple_workflows_from_a_single_workflow.md)
+🗣️ A Directed Acyclic Graph may have multiple root nodes, which means that a Workflow can contain both jobs and other Workflows stored in different locations. This feature allows for the decomposition of complex workflows into manageable components. For more information on this scenario, refer to <a href="./workflow/orchestrating_multiple_workflows_from_a_single_workflow.md">Orchestrating Multiple Workflows from a Single Workflow.</a>
 
 
-## Types of Workflows
+</aside>
 
-Workflows in DataOS can be categorized as either [single-time run](#single-time-run-workflows) or [scheduled workflows](#scheduled-workflows).
 
-### **Single-time run Workflows**
+## Types of Workflow
 
-Single-time run Workflows represent a one-time execution of a sequence of jobs. These workflows do not include scheduling attributes and rely solely on the defined DAG structure and job dependencies.
+Workflows in DataOS can be categorized as either [single-run](#single-run-workflow) or [scheduled workflow](#scheduled-workflow).
 
-### **Scheduled Workflows** 
-Scheduled Workflows enable the automated and recurring execution of jobs based on specified intervals or predetermined times. To schedule a Workflow, the `schedule` section must be added to the Workflow YAML configuration, allowing the configuration of scheduling attributes. Scheduled Workflows provide a powerful mechanism for automating job execution based on a cron expression. To explore case scenarios for scheduled workflows, refer to the [Scheduled or Cron Workflow](./workflow/scheduled_or_cron_workflow.md)
+### **Single-run Workflow**
+
+Single-run Workflow represent a one-time execution of a sequence of jobs. These workflows do not include scheduling attributes and rely solely on the defined DAG structure and job dependencies. To explore a case scenario for a single-run Workflow, refer to the link: [How to implement Single-run Workflow?](./workflow/single_run_workflow.md)
+
+### **Scheduled Workflow** 
+Scheduled Workflow enable the automated and recurring execution of jobs based on specified intervals or predetermined times. To schedule a Workflow, the `schedule` section along with the scheduling attributes must be added to the Workflow YAML configuration. Scheduled Workflow provide a powerful mechanism for automating job execution based on a cron expression. To explore a case scenario for a Scheduled Workflow, refer to the link: [How to run a Cron Workflow or a Scheduled Workflow?](./workflow/scheduled_or_cron_workflow.md)
 
 ## Structure of a Workflow YAML
 
-The Workflow Resource is defined using a YAML configuration file. The following example illustrates the structure for defining a single-time run workflow:
+The Workflow Resource is defined using a YAML configuration file. The following example illustrates the structure for defining a Single-run Workflow:
 
 ![Workflow Resource YAML configuration structure](./workflow/workflow_yaml.png)
 
 <center><i>Workflow Resource YAML configuration structure</i></center>
 
-In the above YAML, each job within the DAG is defined with a unique name, specifications, Stack configuration, Compute settings, and any Stack-specific configurations. Job dependencies are specified to ensure the correct execution order.
+The above sample YAML illustrates a Workflow with a single job. Multiple jobs can be specified within a Workflow DAG and correct execution order is specfied using dependencies. Each job within the DAG is defined with a unique [name](./workflow/workflow_yaml_configuration_attributes.md#name), [specifications](./workflow/workflow_yaml_configuration_attributes.md#spec), [Stack](./workflow/workflow_yaml_configuration_attributes.md#stack), [Compute](./workflow/workflow_yaml_configuration_attributes.md#compute), Stack-specific attributes, and various other optional attributes.
 
-For a comprehensive reference of various attributes and their configurations, please consult the [Attributes in Workflow YAML configuration](./workflow/workflow_yaml_attributes_configuration.md)
+For a comprehensive reference of various attributes and their configurations, please consult the [Attributes of Workflow YAML](./workflow/workflow_yaml_configuration_attributes.md)
 
 ## How to Create a Workflow?
 
@@ -51,7 +55,7 @@ To create a Workflow Resource, you need to configure the YAML file with the appr
 
 #### **Configuring the Resource Section**
 
-A Workflow is a type of Resource in DataOS.The Resource section of the YAML configuration file consists of attributes that are common across all Resource-types. The following YAML snippet demonstrates the key-value properties that need to be declared in this section:
+A Workflow is a Resource-type in DataOS.The Resource section of the YAML configuration file consists of attributes that are common across all resource-types. The following YAML snippet demonstrates the key-value properties that need to be declared in this section:
 
 ```yaml
 name: {{my-workflow}}
@@ -66,7 +70,7 @@ owner: {{iamgroot}}
 ```
 <center><i>Resource section configuration</i></center>
 
-For detailed customization options and additional attributes within the Resource section, refer to the [Attributes in Resource YAML configuration](../resources.md#configuration-of-resources).
+For more details regarding the attributes within the Resource section, refer to the [Attributes of Resource section](../resources.md#configuration-of-resources).
 
 #### **Configuring the Workflow-specific Section**
 
@@ -74,7 +78,7 @@ The Workflow-specific section contains configurations specific to the Workflow R
 
 **Scheduled Workflow**
 
-A [Scheduled Workflow](#scheduled-workflows) triggers a series of jobs or tasks at particular intervals or predetermined times. To create a scheduled workflow, specify the scheduling [attributes](./workflow/workflow_yaml_attributes_configuration.md#schedule) in the schedule section:
+A [Scheduled Workflow](#scheduled-workflow) triggers a series of jobs or tasks at particular intervals or predetermined times. To create a scheduled workflow, specify the scheduling attributes in the [`schedule`](./workflow/workflow_yaml_configuration_attributes.md#schedule) section, in the following format:
 ```yaml
 workflow:
   schedule:
@@ -86,7 +90,7 @@ workflow:
 
 **Single-Run Workflow**
 
-A Single-run Workflow executes only once. A Workflow without a schedule section is considered a single-run workflow. The YAML syntax for a single-run workflow is as follows:
+A Single-run Workflow executes only once. It does not include a schedule section. The YAML configuration for a single-run workflow is as follows:
 ```yaml
 workflow:
   dag:
@@ -94,26 +98,26 @@ workflow:
 ```
 <center><i>Single-run Workflow configuration</i></center>
 
-Choose the appropriate workflow type based on your requirements. The below table summarizes various attributes within the Workflow-specific section.
+The below table summarizes various attributes within the Workflow-specific section.
 
 <center>
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`workflow`](./workflow/workflow_yaml_attributes_configuration.md#workflow) | object | none | none | mandatory |
-| [`schedule`](./workflow/workflow_yaml_attributes_configuration.md#schedule) | object | none | none | optional**  |
-| [`cron`](./workflow/workflow_yaml_attributes_configuration.md#cron) | string | none | any valid cron expression. | optional**  |
-| [`concurrencyPolicy`](./workflow/workflow_yaml_attributes_configuration.md#concurrencypolicy) | string | Allow | Allow/Forbid/Replace | optional |
-| [`startOn`](./workflow/workflow_yaml_attributes_configuration.md#starton) | string | none | any time provided in ISO 8601 format. | optional |
-| [`endOn`](./workflow/workflow_yaml_attributes_configuration.md#endon) | string | none | any time provided in ISO 8601 format. | optional |
-| [`completeOn`](./workflow/workflow_yaml_attributes_configuration.md#completeon) | string | none | any time provided in ISO 8601 format. | optional |
-| [`title`](./workflow/workflow_yaml_attributes_configuration.md#title) | string | none | any valid string | optional |
+| [`workflow`](./workflow/workflow_yaml_configuration_attributes.md#workflow) | object | none | none | mandatory |
+| [`schedule`](./workflow/workflow_yaml_configuration_attributes.md#schedule) | object | none | none | optional**  |
+| [`cron`](./workflow/workflow_yaml_configuration_attributes.md#cron) | string | none | any valid cron expression. | optional**  |
+| [`concurrencyPolicy`](./workflow/workflow_yaml_configuration_attributes.md#concurrencypolicy) | string | Allow | Allow/Forbid/Replace | optional** |
+| [`startOn`](./workflow/workflow_yaml_configuration_attributes.md#starton) | string | none | any time provided in ISO 8601 format. | optional** |
+| [`endOn`](./workflow/workflow_yaml_configuration_attributes.md#endon) | string | none | any time provided in ISO 8601 format. | optional** |
+| [`completeOn`](./workflow/workflow_yaml_configuration_attributes.md#completeon) | string | none | any time provided in ISO 8601 format. | optional** |
+| [`title`](./workflow/workflow_yaml_configuration_attributes.md#title) | string | none | any valid string | optional |
 
 </center>
 
-<i>optional**:</i> Fields optional for single-run workflows, but mandatory for Scheduled workflows.
+<i>optional**:</i> Attributes optional for single-run workflows, but mandatory for scheduled workflows.
 
-For additional details about the attributes within the Workflow-specific section, refer to the link: [Attributes of Workflow-specific section](./workflow/workflow_yaml_attributes_configuration.md#workflow)
+For additional details about the attributes within the Workflow-specific section, refer to the link: [Attributes of Workflow-specific section](./workflow/workflow_yaml_configuration_attributes.md#workflow)
 
 #### **Configuring the Job-specific Section**
 
@@ -121,29 +125,29 @@ A Directed Acyclic Graph (DAG) represents the sequence and dependencies between 
 
 **Job**
 
-A Job denotes a single processing task. Multiple jobs within a DAG can be linked sequentially or concurrently to achieve a specific result through `dependencies`. Here is an example YAML syntax for two jobs linked by dependencies:
+A Job denotes a single processing task. Multiple jobs within a DAG can be linked sequentially or concurrently to achieve a specific result through [`dependencies`](./workflow/workflow_yaml_configuration_attributes.md#dependency). Here is an example YAML syntax for two jobs linked by dependencies:
 ```yaml
-  dag: 
-    - name: {{job1-name}}
-      spec: 
-        stack: {{stack1:version}}
-        compute: {{compute-name}}
-        stack1: 
-          {{stack1-specific-configuration}}
-    - name: {{job2-name}}
-      spec: 
-        stack: {{stack2:version}}
-        compute: {{compute-name}}
-        stack2: 
-          {{stack2-specific-configuration}}
-      dependencies: 
-       - {{job1-name}}
+dag: 
+  - name: {{job1-name}}
+    spec: 
+      stack: {{stack1:version}}
+      compute: {{compute-name}}
+      stack1: 
+        {{stack1-specific-configuration}}
+  - name: {{job2-name}}
+    spec: 
+      stack: {{stack2:version}}
+      compute: {{compute-name}}
+      stack2: 
+        {{stack2-specific-configuration}}
+    dependencies: 
+      - {{job1-name}}
 ```
-<center><i>Job-specific section YAML Configuration</i></center>
+<center><i>Job-specific section YAML configuration</i></center>
 
 <aside class=callout>
 
-🗣️ Please be aware that the code block above outlines only the general configuration for a job. The actual attributes and configuration may differ based on the specific <a href="./stacks.md">Stack</a> utilized.
+🗣️ Please be aware that the code block above outlines only the general configuration for a job. The actual attributes may differ based on the specific <a href="./stacks.md">Stack</a> utilized.
 
 </aside>
 
@@ -153,21 +157,21 @@ The below table summarizes various attributes within the Job-specific section.
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`name`](./workflow/workflow_yaml_attributes_configuration.md#name) | string | none | any string confirming the regex <br> [a-z0-9]\([-a-z0-9]*[a-z0-9]) and length<br>less than or equal to 48 | mandatory |
-| [`title`](./workflow/workflow_yaml_attributes_configuration.md#title) | string | none | any string | optional |
-| [`description`](./workflow/workflow_yaml_attributes_configuration.md#description) | string | none | any string | optional |
-| [`spec`](./workflow/workflow_yaml_attributes_configuration.md#spec) | object | none | none | mandatory |
-| [`runAsUser`](./workflow/workflow_yaml_attributes_configuration.md#runasuser) | string | none | userID of the Use Case <br>Assignee | optional |
-| [`compute`](./workflow/workflow_yaml_attributes_configuration.md#compute) | string | none | runnable-default or any <br> other custom Compute Resource | mandatory |
-| [`stack`](./workflow/workflow_yaml_attributes_configuration.md#stack) | string | none | flare/toolbox/scanner/<br>alpha | mandatory |
-| [`retry`](./workflow/workflow_yaml_attributes_configuration.md#retry) | object | none | none | optional |
-| [`count`](./workflow/workflow_yaml_attributes_configuration.md#count) | integer | none | any positive integer | optional |
-| [`strategy`](./workflow/workflow_yaml_attributes_configuration.md#strategy) | string | none | Always/OnFailure/<br>OnError/OnTransientError | optional |
-| [`dependency`](./workflow/workflow_yaml_attributes_configuration.md#dependency) | string | none | any job name within the workflow | optional |
+| [`name`](./workflow/workflow_yaml_configuration_attributes.md#name) | string | none | any string confirming the regex <br> [a-z0-9]\([-a-z0-9]*[a-z0-9]) and length<br>less than or equal to 48 | mandatory |
+| [`title`](./workflow/workflow_yaml_configuration_attributes.md#title) | string | none | any string | optional |
+| [`description`](./workflow/workflow_yaml_configuration_attributes.md#description) | string | none | any string | optional |
+| [`spec`](./workflow/workflow_yaml_configuration_attributes.md#spec) | mapping | none | none | mandatory |
+| [`runAsUser`](./workflow/workflow_yaml_configuration_attributes.md#runasuser) | string | none | userID of the Use Case <br>Assignee | optional |
+| [`compute`](./workflow/workflow_yaml_configuration_attributes.md#compute) | string | none | runnable-default or any <br> other custom Compute Resource | mandatory |
+| [`stack`](./workflow/workflow_yaml_configuration_attributes.md#stack) | string | none | flare/toolbox/scanner/<br>alpha | mandatory |
+| [`retry`](./workflow/workflow_yaml_configuration_attributes.md#retry) | mapping | none | none | optional |
+| [`count`](./workflow/workflow_yaml_configuration_attributes.md#count) | integer | none | any positive integer | optional |
+| [`strategy`](./workflow/workflow_yaml_configuration_attributes.md#strategy) | string | none | Always/OnFailure/<br>OnError/OnTransientError | optional |
+| [`dependency`](./workflow/workflow_yaml_configuration_attributes.md#dependency) | string | none | any job name within the workflow | optional |
 
 </center>
 
-For additional configuration attributes within the Job-specific section, refer to the [Attributes in Job-specific section YAML configuration.](./workflow/workflow_yaml_attributes_configuration.md#name)
+For additional details about attributes within the Job-specific section, refer to the [Attributes of Job-specific section.](./workflow/workflow_yaml_configuration_attributes.md#name)
 
 #### **Configuring the Stack-specific Section**
 
@@ -177,18 +181,18 @@ The Stack-specific Section allows you to specify the desired [Stack](./stacks.md
 
 - [Alpha Stack](./stacks/alpha.md): The Alpha stack offers a powerful environment for hosting web-application, and custom Docker images atop DataOS.
 
-- [Data Toolbox Stack](./stacks/data_toolbox.md): The Data Toolbox stack provides a comprehensive set of tools and utilities for data manipulation and transformation.
+- [Data Toolbox Stack](./stacks/data_toolbox.md): The Data Toolbox stack provides a comprehensive set of tools and utilities for Depots storing Iceberg datasets, for e.g. Icebase.
 
 - [Scanner Stack](./stacks/scanner.md): The Scanner Stack provides metadata ingestion capabilities from a source.
 
-To configure the Stack-specific Section, refer to the appropriate Stack documentation for detailed instructions on setting up and customizing the Stack according to your needs. Each Stack has its unique attributes that can enhance the functionality of your Workflow.
+For more detailed instructions on setting up and customizing the Stack-specific Section attributes according to your needs, refer to the appropriate documentation of [Flare](./stacks/flare/configurations.md), [Data Toolbox](./stacks/data_toolbox/data_toolbox_grammar.md), [Scanner](./stacks/scanner/field_ref.md), [Alpha](./stacks/alpha.md#alpha-stack-section). Each Stack has its unique attributes that can enhance the functionality of your job.
 
 
 <details>
 <summary>
-Click here to view a sample Workflow
+Click here to view a sample Workflow YAML configuration
 </summary>
-The sample Workflow ingests product data from the <code>thirdparty01</code> depot and store it in the icebase Depot. This Workflow leverages the Flare Stack to efficiently execute the necessary data ingestion tasks. The provided YAML code snippet outlines the configuration and specifications of this Workflow.
+The sample Workflow ingests product data from the <code>thirdparty01</code> Depot and store it in the icebase Depot. This Workflow leverages the Flare Stack to efficiently execute the necessary data ingestion tasks. The provided YAML code snippet outlines the configuration and specifications of this Workflow.
 
 ```yaml
 # Resource Section
@@ -196,70 +200,70 @@ version: v1
 name: cnt-product-demo-01
 type: workflow
 tags:
-- Connect
-- Product
-description: The workflow ingests product data from dropzone into raw zone
+  - Connect
+  - Product
+description: The workflow ingests product data
 
 # Workflow-specific Section (Single-run)
 workflow:
   title: Connect Product
   dag: # DAG of Jobs
-  - name: product-01
-    title: Product Dimension Ingester
-    description: The job ingests product data from dropzone into raw zone
-    spec:
-      tags:
-      - Connect
-      - Product
-      stack: flare:3.0
-      compute: runnable-default
-      envs:
-        FLARE_AUDIT_MODE: LOG
+    - name: product-01
+      title: Product Dimension Ingester
+      description: The job ingests product data from dropzone into raw zone
+      spec:
+        tags:
+          - Connect
+          - Product
+        stack: flare:3.0
+        compute: runnable-default
+        envs:
+          FLARE_AUDIT_MODE: LOG
 # Stack-specific Section (Flare)
-      flare:
-        job:
-          explain: true
-          inputs:
-           - name: product_connect
-             dataset: dataos://thirdparty01:none/product
-             format: csv
-             schemaPath: dataos://thirdparty01:none/schemas/avsc/product.avsc
-          logLevel: INFO
-          outputs:
-            - name: products
-              dataset: dataos://icebase:retail/product?acl=rw
-              format: Iceberg
-              description: Customer data ingested from external csv
-              options:
-                saveMode: append
-                sort:
-                  mode: partition
-                  columns:
-                    - name: version
-                      order: desc                            
-                iceberg:
-                  properties:
-                    write.format.default: parquet
-                    write.metadata.compression-codec: gzip
-                  partitionSpec:
-                    - type: identity
-                      column: version
-              tags:
-                - Connect
-                - Product
-              title: Product Source Data
-          steps:
-          - sequence:
+        flare:
+          job:
+            explain: true
+            inputs:
+              - name: product_connect
+                dataset: dataos://thirdparty01:none/product
+                format: csv
+                schemaPath: dataos://thirdparty01:none/schemas/avsc/product.avsc
+            logLevel: INFO
+            outputs:
               - name: products
-                doc: Pick all columns from products and add version as yyyyMMddHHmm formatted
-                  timestamp.
-                sql: SELECT *, date_format(now(), 'yyyyMMddHHmm') as version, now() as
-                  ts_product FROM product_connect LIMIT 10
+                dataset: dataos://icebase:retail/product?acl=rw
+                format: Iceberg
+                description: Customer data ingested from external csv
+                options:
+                  saveMode: append
+                  sort:
+                    mode: partition
+                    columns:
+                      - name: version
+                        order: desc                            
+                  iceberg:
+                    properties:
+                      write.format.default: parquet
+                      write.metadata.compression-codec: gzip
+                    partitionSpec:
+                      - type: identity
+                        column: version
+                tags:
+                  - Connect
+                  - Product
+                title: Product Source Data
+            steps:
+              - sequence:
+                - name: products
+                  doc: Pick all columns from products and add version as yyyyMMddHHmm formatted
+                    timestamp.
+                  sql: SELECT *, date_format(now(), 'yyyyMMddHHmm') as version, now() as
+                    ts_product FROM product_connect LIMIT 10
 ```
 </details>
 
 
-### **Applying the Workflow YAML**
+### **Apply the Workflow YAML**
 
 Once you have constructed the Workflow YAML file, it's time to apply it and create the Workflow Resource within the DataOS environment. Use the following `apply` command:
 
@@ -279,7 +283,7 @@ dataos-ctl workspace create -n {{name of your workspace}}
 
 #### **Get Status of the Workflow**
 
-To retrieve information about the Workflow, use the `get` command in the CLI. This command lists the workflows created by you. To check this information for all users, add the `-a` flag to the command.
+To retrieve information about the Workflow, use the `get` command in the [CLI](../interfaces/cli.md). This command lists the workflows created by the user applying the command. To check this information for all users, add the `-a` flag to the command.
 
 Command:
 
@@ -342,7 +346,7 @@ dataos-ctl -t workflow -w public get
   <b>cnt-product-demo-01 | v1      | workflow | public</b>    | active | running |   tmdc
 ```
 
-Select from Name to Workspace, for example `cnt-product-demo-01 | v1 | workflow | public`.
+Select the workflow details from Name to Workspace tab, for example, `cnt-product-demo-01 | v1 | workflow | public`.
 
 ```shell
 dataos-ctl -i " cnt-product-demo-01 | v1      | workflow | public" get runtime
@@ -542,7 +546,7 @@ dataos-ctl delete -f {{file-path}}
 Example:
 
 ```shell
-dataos-ctl delete -f /home/desktop/flare/connect-city/config_v2beta1.yaml
+dataos-ctl delete -f /home/desktop/flare/connect-city/config_v1.yaml
 ```
 
 Output:
@@ -626,11 +630,10 @@ Make sure to replace `{{name-to-workspace in the output table from get status co
 
 </details>
 
-
-
 <aside class="best-practice">
 
-📖 <i>Best Practice:</i><br> It is part of the best practice to add relevant <code>description</code>, <code>title</code> and <code>tags</code> for your Workflow. <code>description</code> helps to determine what the workflow will help you accomplish, <code>title</code> and <code>tags</code> can help in faster searching in Metis and Operations.
+📖 <i>Best Practice:</i><br> It is part of the best practice to add relevant <code>description</code>, <code>title</code> and <code>tags</code> for your Workflow. <code>description</code> helps to determine what the workflow will help you accomplish, <code>title</code> and <code>tags</code> can help in faster searching in <a href="../interfaces/metis.md">Metis</a> and <a href="../interfaces/operations.md">Operations</a>.
+
 </aside>
 
 ## How to setup alerts on Workflows?
@@ -638,6 +641,7 @@ Make sure to replace `{{name-to-workspace in the output table from get status co
 Workflow alerts play a vital role in the effective management of extensive Workflows and Jobs, enabling streamlined monitoring and prompt notifications in the event of failures. For detailed instructions on configuring Workflow alerts, refer to the documentation link: [Setting Up Workflow Alerts](../dataos_alerts/workflow_alerts.md)
 
 
+<aside class="callout">DataOS offers a diverse range of integrated alert mechanisms, emphasizing observability and active monitoring.  To learn more about them, refer to <a href="/dataos_alerts/">DataOS Alerts</a></aside>
 
 ## Case Scenarios
 

@@ -3,7 +3,7 @@
 The following section provides an overview of the data sources accessible by one or more components within DataOS.
 
 <aside class="callout">
-🗣️ Note:<br>In relation to Minerva (DataOS's query engine), the supported source systems for query pushdown are also indicated.*
+🗣️ In relation to Minerva (DataOS's query engine), the supported source systems for query pushdown are also indicated.*
 </aside>
 
 ## Supported Connectors

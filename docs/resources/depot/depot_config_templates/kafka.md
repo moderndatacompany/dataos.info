@@ -34,6 +34,3 @@ depot:
     schemaRegistryUrl: {{http://20.9.63.231:8081/}}
 ```
 
-
-
->*Note*: The support for creating 'KAFKA' Depot using secrets in configuration is coming soon.

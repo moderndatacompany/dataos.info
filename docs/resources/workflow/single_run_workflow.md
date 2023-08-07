@@ -1,4 +1,4 @@
-# Single Run Workflow
+# Single-Run Workflow
 
 <center>
 
@@ -21,8 +21,8 @@ version: v1
 name: wf-tmdc-01 
 type: workflow 
 tags:
-- Connect
-- City
+  - Connect
+  - City
 description: The job ingests city data from dropzone into raw zone
 # Workflow-specific Section
 workflow:
@@ -34,8 +34,8 @@ workflow:
       description: The job ingests city data from dropzone into raw zone
       spec:
         tags:
-        - Connect
-        - City
+          - Connect
+          - City
         stack: flare:3.0 # The job gets executed upon the Flare Stack, so its a Flare Job
         compute: runnable-default
         # Flare Stack-specific Section
@@ -43,6 +43,7 @@ workflow:
           job:
             explain: true
             logLevel: INFO
+
             inputs:
               - name: city_connect
                   dataset: dataos://thirdparty01:none/city
@@ -68,6 +69,7 @@ workflow:
                     partitionSpec:
                     - type: identity
                         column: version
+
             steps:
               - sequence:
                 - name: cities
@@ -80,6 +82,7 @@ workflow:
                           now() AS ts_city
                       FROM
                           city_connect
+
 # Job 2 Specific Section
     - name: datatool-1 # Job 2 name
       spec:
@@ -89,8 +92,8 @@ workflow:
         toolbox:
         dataset: dataos://icebase:retail/city01
         action:
-            name: set_version
-            value: latest
+          name: set_version
+          value: latest
     # Job 2 Dependent on Job 1 for the start of execution
       dependencies: wf-job1
 ```
