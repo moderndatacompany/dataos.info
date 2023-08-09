@@ -120,7 +120,7 @@ curl --location --request POST 'https://flexible-buffalo.dataos.app/stores/api/v
 
 **curl and API url for filtering rows and columns (to get state of your interest)**
 
-1. To select one column from store table get request  or you can run curl command - 
+- To select one column from store table get request  or you can run curl command - 
     
     ```powershell
     [https://flexible-buffalo.dataos.app/stores/api/v1/stores](https://flexible-buffalo.dataos.app/stores/api/v1/stores)
@@ -130,7 +130,7 @@ curl --location --request POST 'https://flexible-buffalo.dataos.app/stores/api/v
     curl --location --request GET 'https://flexible-buffalo.dataos.app/stores/api/v1/stores'
     ```
     
-2. To select a column from stores table 
+- To select a column from stores table 
     
     ```powershell
     [https://flexible-buffalo.dataos.app/stores/api/v1/stores](https://flexible-buffalo.dataos.app/stores/api/v1/stores)?select=name
@@ -141,7 +141,7 @@ curl --location --request POST 'https://flexible-buffalo.dataos.app/stores/api/v
     ```
     
 
-1. To select column and filter row wise data
+- To select column and filter row wise data
     
     ```powershell
     https://flexible-buffalo.dataos.app/stores/api/v1/stores?select=*name=eq.flareincr31032021
