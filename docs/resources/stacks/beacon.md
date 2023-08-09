@@ -88,6 +88,20 @@ beacon:
         - database # Topology step 2 is dependent on step 1
 ```
 
+The table below summarizes the various attributes within the Beacon Stack-specific Section.
+
+| Attribute | Data Type | Default Value | Possible Value | Requirement |
+| --- | --- | --- | --- | --- |
+| [`source`](./beacon/beacon_yaml_attributes.md#source) | mapping | none | none | mandatory |
+| [`type`](./beacon/beacon_yaml_attributes.md#type) | string | none | database | mandatory |
+| [`name`](./beacon/beacon_yaml_attributes.md#name) | string | none | any string | mandatory |
+| [`workspace`](./beacon/beacon_yaml_attributes.md#workspace) | string | public | any valid workspace name | mandatory |
+| [`topology`](./beacon/beacon_yaml_attributes.md#topology) | list of mapping | none | none | mandatory |
+| [`name`](./beacon/beacon_yaml_attributes.md#name-1) | string | none | any string | mandatory |
+| [`type`](./beacon/beacon_yaml_attributes.md#type-1) | string | none | input/output | mandatory |
+| [`doc`](./beacon/beacon_yaml_attributes.md#doc) | string | none | any string | optional |
+| [`dependencies`](./beacon/beacon_yaml_attributes.md#dependencies) | list of strings | none | any valid dependent topology name | mandatory |
+
 Each of the attributes in this section has been elaborated in detail on the [Attribute of Beacon Stack](./beacon/beacon_yaml_attributes.md) page.
 
 ### **Apply the YAML file**
