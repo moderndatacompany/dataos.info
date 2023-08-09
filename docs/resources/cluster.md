@@ -246,19 +246,19 @@ After clicking 'Create Cluster', a Cluster Resource will be created. You can obs
 Minerva offers multiple methods for interacting with its features and functionalities. The available options are provided below.
 
 ### **Minerva CLI**
-The Minerva CLI is a command-line-based interactive interface that enables users to run queries effectively. To learn more about how to setup Minerva CLI, click [here](./cluster/minerva_client.md)
+The Minerva CLI is a command-line-based interactive interface that enables users to run queries effectively. To learn more about how to setup Minerva CLI, click [here.](./cluster/minerva_client.md)
 
 ### **Workbench**
 
-Workbench is a user interface (UI)-based query interface designed for data manipulation and exploration. Learn more about Workbench [here](../interfaces/workbench.md)
+Workbench is a user interface (UI)-based query interface designed for data manipulation and exploration. Learn more about Workbench [here.](../interfaces/workbench.md)
 
 ### **Connect via Tableau, SPSS and Power BI**
 
-Users can leverage popular BI analytics platforms like Tableau, SPSS and Power BI to access data from DataOS via Minerva URL. To learn more about integration with Tableau, Power BI and SPSS, click [here](../interfaces/atlas/bi_tools.md#integrations-with-external-applications).
+Users can leverage popular BI analytics platforms like Tableau, SPSS and Power BI to access data from DataOS via Minerva URL. To learn more about integration with Tableau, Power BI and SPSS, click [here.](../interfaces/atlas/bi_tools.md#integrations-with-external-applications).
 
 ## Query Execution Optimization
 
-To achieve enhanced performance and cost efficiency when working with analytical workloads in DataOS, it is crucial to optimize your query execution on Minerva Clusters. The following considerations can assist you in accelerating your queries. For detailed information and guidance, please refer to the provided link: [Query Optimization](./cluster/query_optimization.md)
+To achieve enhanced performance and cost efficiency when working with analytical workloads in DataOS, it is crucial to optimize your query execution on Minerva Clusters. The following considerations can assist you in accelerating your queries. For detailed information and guidance, please refer to the provided link: [Query Optimization.](./cluster/query_optimization.md)
 
 
 ## Performance Tuning
