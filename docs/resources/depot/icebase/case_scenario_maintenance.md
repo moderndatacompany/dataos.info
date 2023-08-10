@@ -6,13 +6,21 @@
 
 The list snapshot command is used to list all the snapshots of the dataset. This will help determine how many dataset snapshots you have. The command is as follows:
 
-```bash
+**Command**
+
+```shell
+dataos-ctl dataset -a {{udl}} snapshots 
+```
+
+**Example**
+
+```shell
 dataos-ctl dataset -a dataos://icebase:retail/city snapshots 
 ```
 
 Output
 
-```bash
+```shell
 INFO[0000] 📂 get snapshots...                           
 INFO[0000] 📂 get snapshots...completed                  
 
@@ -28,21 +36,25 @@ The first column represents the Snapshot IDs and the second one represents the r
 
 The Set Snapshot command helps to set a snapshot so that you can travel back. The command is given below.
 
-```bash
-dataos-ctl dataset -a dataos://icebase:retail/city set-snapshot \
--i <snapshot-id>
+**Command**
+
+```shell
+dataos-ctl dataset -a {{udl}} set-snapshot \
+-i {{snapshot-id}}
 ```
+
+**Example**
 
 Let’s say you wanna revert back to a specific snapshot ID from the once listed by the list snapshots command. The command will be:
 
-```bash
+```shell
 dataos-ctl dataset -a dataos://icebase:retail/city set-snapshot \
 -i 5724215526433994041
 ```
 
 Output (successful execution)
 
-```bash
+```shell
 INFO[0000] 📂 set snapshot...                            
 INFO[0001] 📂 set snapshot...completed
 ```
@@ -55,13 +67,21 @@ INFO[0001] 📂 set snapshot...completed
 
 The metadata command lists all the metadata files. The command is given below.
 
-```bash
+**Command**
+
+```shell
+dataos-ctl dataset -a {{udl}} metadata
+```
+
+**Example**
+
+```shell
 dataos-ctl dataset -a dataos://icebase:retail/city metadata
 ```
 
 Output (successful execution)
 
-```bash
+```shell
 INFO[0000] 📂 get metadata...                            
 INFO[0000] 📂 get metadata...completed                   
 
@@ -77,35 +97,38 @@ INFO[0000] 📂 get metadata...completed
 
 ### **Set Metadata**
 
-<aside style=" padding:15px; border-radius:5px;">
-🗣 In instances where data is being written in Iceberg format and the catalog is designated as **Hadoop catalog**, it is necessary for users to utilize this command to set the metadata version. However, it is important to note that this command is not requisite for **Hive catalogs**.
+<aside class=callout>
+🗣 In instances where data is being written in Iceberg format and the catalog is designated as <b>Hadoop catalog</b>, it is necessary for users to utilize this command to set the metadata version. However, it is important to note that this command is not requisite for <b>Hive catalogs</b>.
 
 </aside>
 
 In order to set the metadata to the latest or some specific version, use the below command.
 
-```bash
-dataos-ctl dataset -a dataos://icebase:retail/city set-metadata \
--v <latest|version.gz.metadata.json>
+**Command**
+
+```shell
+dataos-ctl dataset -a {{udl}} set-metadata \
+-v {{latest|version.gz.metadata.json}}
 ```
+**Example**
 
-In order to set the metadata to the `latest` format.
+In order to set the metadata of the dataset `dataos://icebase:retail/city` to the `latest` format.
 
-```bash
+```shell
 dataos-ctl dataset -a dataos://icebase:retail/city set-metadata \
 -v latest
 ```
 
 In order to set the metadata to some specfic version among the ones in the list say `v4.gz.metadata.json`.
 
-```bash
+```shell
 dataos-ctl dataset -a dataos://icebase:retail/city set-metadata \
 -v v4.gz.metadata.json
 ```
 
 Output
 
-```bash
+```shell
 INFO[0000] 📂 set metadata...                            
 INFO[0001] 📂 set metadata...completed
 ```
@@ -114,15 +137,15 @@ INFO[0001] 📂 set metadata...completed
 
 To set nullability in a specific column. The command is as follows:
 
-```bash
-dataos-ctl dataset -a dataos://icebase:retail/city set-nullable \
--n <column-name> \
--b <true/false>
+```shell
+dataos-ctl dataset -a {{udl}} set-nullable \
+-n {{column-name}} \
+-b {{true/false}}
 ```
 
 Let’s say we wanna set a column random as nullable. The command is given below:
 
-```bash
+```shell
 dataos-ctl dataset -a dataos://icebase:retail/city set-nullable \
 -n random \
 -b true
@@ -130,7 +153,7 @@ dataos-ctl dataset -a dataos://icebase:retail/city set-nullable \
 
 Output (on successful execution)
 
-```bash
+```shell
 INFO[0000] 📂 set nullability                            
 INFO[0000] 📂 set nullability...completed
 ```

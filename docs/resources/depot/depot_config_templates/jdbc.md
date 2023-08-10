@@ -48,3 +48,19 @@ depot:
       {{"key1": "value1"}}
       {{"key2": "value2"}}
 ```
+
+### **Self-signed Certificate (SSL/TLS) Requirement**
+
+If you are connecting to relational databases using the JDBC API and encounter self-signed certificate (SSL/TLS) requirements, you can disable encryption by modifying the YAML configuration file. Simply provide the necessary details for the subprotocol, host, port, database, and use the params field to specify the appropriate parameters for your specific source system as shown below:
+
+```yaml
+spec:
+  subprotocol:
+  host: 
+  port: 
+  database:
+  params:
+#use params for JDBC type connections where self-signed certificates have been enabled
+```
+
+The particular specifications to be filled within *params* depend on the source system. 

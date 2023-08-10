@@ -5,13 +5,21 @@
 
 To obtain the list of properties, execute the following command within the DataOS.
 
-```bash
+**Command**
+
+```shell
+dataos-ctl dataset properties -a {{udl}}
+```
+
+**Example**
+
+```shell
 dataos-ctl dataset properties -a dataos://icebase:retail/city
 ```
 
 Output (Successful Execution)
 
-```bash
+```shell
 INFO[0000] 📂 get properties...                          
 INFO[0000] 📂 get properties...completed                 
 
@@ -26,42 +34,46 @@ Above, we can see the pre-defined property `write.metadata.compression-codec` wh
 
 To add a single property the below code can be used. 
 
-```bash
-dataos-ctl dataset add-properties -a dataos://icebase:retail/city \
--p "<property-name>:<property-value>"
+**Command**
+
+```shell
+dataos-ctl dataset add-properties -a {{udl}} \
+-p "{{property-name}}:{{property-value}}"
 ```
 
 To add multiple properties at the same time, use:
 
-```bash
+```shell
 dataos-ctl dataset add-properties -a dataos://icebase:retail/city \
--p "<property-name>:<property-value>" \
--p "<property-name>:<property-value>"
+-p "{{property-name}}:{{property-value}}" \
+-p "{{property-name}}:{{property-value}}"
 ```
+
+**Example**
 
 Let’s say we want to add a new property by the name `write.metadata.metrics.default` and set its value to `full`. To do this, execute the following code:
 
-```bash
+```shell
 dataos-ctl dataset add-properties -a dataos://icebase:retail/city \
 -p write.metadata.metrics.default:full
 ```
 
 Output (on successful execution)
 
-```bash
+```shell
 INFO[0000] 📂 add properties...                          
 INFO[0000] 📂 add properties...completed
 ```
 
 To check whether the property is added or not, run the list properties command:
 
-```bash
+```shell
 dataos-ctl dataset properties -a dataos://icebase:retail/city
 ```
 
 Output
 
-```bash
+```shell
 INFO[0000] 📂 get properties...                          
 INFO[0000] 📂 get properties...completed                 
 
@@ -77,33 +89,37 @@ As we can see, the property has been successfully added.
 
 To remove a property, the following command can be used.
 
-```bash
-dataos-ctl dataset remove-properties -a dataos://icebase:retail/city \
--p "<property-name>" \
--p "<property-name>"
+**Command**
+
+```shell
+dataos-ctl dataset remove-properties -a {{udl}} \
+-p "{{property-name}}" \
+-p "{{property-name}}"
 ```
+
+**Example**
 
 Let’s say we want to remove the property `write.metadata.metrics.default`. To accomplish this, execute the following code:
 
-```bash
+```shell
 dataos-ctl dataset remove-properties -a dataos://icebase:retail/city \
 -p write.metadata.metrics.default
 ```
 
 Output (successful execution)
 
-```bash
+```shell
 INFO[0000] 📂 remove properties...                       
 INFO[0001] 📂 remove properties...completed
 ```
 
 To check whether the property is deleted or not, use the list properties command.
 
-```bash
+```shell
 dataos-ctl dataset properties -a dataos://icebase:retail/city
 ```
 
-```bash
+```shell
 INFO[0000] 📂 get properties...                          
 INFO[0000] 📂 get properties...completed                 
 

@@ -1,58 +1,136 @@
 # Beacon
 
-Beacon is a standalone HTTP server designed to facilitate the exposure of data objects and tables contained within PostgreSQL databases. The server offers two distinct flavors (or types) of HTTP APIs, including REST, which leverages the `beacon+rest` stack, and GraphQL, which utilizes the `beacon+graphql` stack.
+Beacon is a standalone HTTP server designed to facilitate the exposure of data objects and tables contained within PostgreSQL databases. The server offers a `beacon+rest` [Stack](../stacks.md), which exposes entities within a PostgreSQL database through a RESTful API, enabling simple CRUD Operations such as GET, POST, PUT, DELETE.
 
-While both flavors of the Beacon stack are designed to offer functionality on top of PostgreSQL databases, it's essential to note that the API endpoints and operations are directly impacted by the structural limitations and permissions set by the database. Each flavor of the stack offers its unique and intuitive capabilities, which are detailed in the table below.
+<aside class=callout>
 
-| Parameter | beacon+rest stack | beacon+graphql stack |
-| --- | --- | --- |
-| Function | Exposes entities within a PostgreSQL database through a RESTful API. | Exposes entities within a PostgreSQL database through a GraphQL API. |
-| Protocol | REST | GraphQL |
-| Querying | Simple CRUD operations using HTTP verbs (GET, POST, PUT, DELETE). | Advanced querying and filtering using GraphQL queries, mutations, and subscriptions. |
-| Relationships | Supports basic foreign key relationships between tables. | Supports complex nested relationships and connections between tables. |
-| Schema Generation | Uses PostgreSQL metadata to automatically generate a RESTful API. | Uses PostgreSQL metadata to automatically generate a GraphQL schema. |
-| Use Cases | Well-suited for simple use cases where you need a quick and easy way to expose your database data through a RESTful API. | Designed to handle complex use cases where you need to perform complex queries on your database or work with related data in a flexible and efficient manner. |
+While Beacon Stack offers CRUD functionality on top of PostgreSQL databases, it's essential to note that the API endpoints and operations are directly impacted by the structural limitations and permissions set by the database. 
+
+</aside>
 
 ## Beacon Service
 
-The Beacon stack provides a robust solution for exposing a Postgres API endpoint to the external world. However, ensuring secure access, scalability, and seamless integration with other internal and external applications in DataOS can be complex. This is where the Service Primitive/resource becomes a critical factor.
+The Beacon Stack provides a robust solution for exposing a Postgres API endpoint to the external world. However, ensuring secure access, scalability, and seamless integration with other internal and external applications can be complex. This is where the [Service Resource](../service.md) becomes a critical factor.
 
-By utilizing the Service Primitive/resource, you can ensure governed access to the endpoint, enable scalability in proportion to data growth and facilitate seamless access to all internal and external components and applications within DataOS. You can further enforce governance Policies to ensure secure access to PostgreSQL data, all in a declarative YAMLish manner within DataOS. 
+By utilizing the [Service Resource](../service.md), you can ensure governed access to the endpoint, enable scalability in proportion to data growth and facilitate seamless access to all internal and external components and applications within DataOS. You can further enforce governance [Policies](../policy.md) to ensure secure access to PostgreSQL data, all in a declarative YAMLish manner within DataOS. 
 
 ![beacon](./beacon/beacon.png)
 
-In summary, a Beacon Service enables you to expose an API endpoint for a specific table in a PostgreSQL database, allowing you to send data to be stored and interact with the data in the table by sending HTTP requests to the endpoint. With a Beacon Service, your web and other data-driven applications in DataOS can perform CRUD operations, search, filter, and rename data assets stored in Postgres (the native relational database of DataOS).
+<center><i>Beacon Service in DataOS</i></center>
 
-## Syntax of Beacon YAML Configuration
+In summary, a Beacon Service enables you to expose an API endpoint for a specific table in a PostgreSQL database, allowing you to send data to be stored and interact with the data in the table by sending HTTP requests to the endpoint. With a Beacon Service, your web and other data-driven applications in DataOS can perform CRUD operations on data assets stored in Postgres.
+
+## Structure of a Beacon YAML
 
 ![Beacon YAML Configuration Syntax](./beacon/beacon_syntax.png)
 
-<center><i>Beacon YAML configuration syntax</i></center>
+<center><i>Structure of a Beacon YAML configuration</i></center>
 
 ## Create a Beacon Service
 
-Creating a Beacon Service is a straightforward process that is accomplished within the DataOS platform using a simple declarative YAMLish syntax. While you need to have a basic understanding of Postgres to define migrations, the rest of the process is declarative and straightforward. Click on the link below to learn more.
+Creating a Beacon Service is a straightforward process that is accomplished within the DataOS platform using a simple declarative YAMLish syntax. While you need to have a basic understanding of Postgres to define migrations, the rest of the process is declarative and straightforward. 
 
-[Creating Beacon Service ](./beacon/creating_beacon_service.md)
+### **Prerequisites**
 
-## Sections of a Beacon YAML Configuration
+#### **Apply the Adequate Access Policy or Assign the Use Case**
 
-Let's take a closer look at each section of the YAML configuration and understand their importance in configuring your Beacon Service. For a detailed breakdown of each section and how to configure them, please visit the Beacon YAML configuration page.
+Make sure you have an adequate tag or use case to create a [Service](../service.md). If you have have one, refer to the section below.
 
-[Beacon YAML Configurations](./beacon/beacon_yaml_configurations.md)
+#### **Required Database exists**
 
-## Recipes
+Make sure that you have an active Database within DataOS, as per the schema you require. If you have one, navigate to the next step.
 
-[Exposing GraphQL API’s on Database using Beacon ](./beacon/exposing_graphql_apis_on_database_using_beacon.md)
+### **Create a YAML file**
 
-[Exposing REST API’s on Database using Beacon](./beacon/exposing_rest_apis_on_database_using_beacon.md)
+#### **Configure the Service Resource Section**
 
-[Store APIs on Beacon ](./beacon/store_apis_on_beacon.md)
+At the core of any Beacon Service lies the Service Resource section, which is responsible for defining a Service Resource through a set of YAML attributes. A Service is a persistent process that either receives or delivers API requests. The Beacon Stack is then invoked within the Service to effectuate the exposition of Postgres API.The YAML syntax for the same is provided below.
 
-[Query Pushdown Streamlit Application ](./beacon/query_pushdown_streamlit_application.md)
+```yaml
+name: {{stores-db}}
+version: v1 
+type: service 
+tags: 
+  - {{syndicate}}
+  - {{service}}
+service: 
+  replicas: {{2}} 
+  ingress: 
+    enabled: {{true}} 
+    stripPath: {{true}} 
+    path: {{/stores/api/v1}} 
+    noAuthentication: {{true}} 
+  stack: beacon+rest 
+  envs: 
+    PGRST_OPENAPI_SERVER_PROXY_URI: https://{{dataos-context}}.dataos.app/{{database-path}} # e.g. https://adapting-spaniel.dataos.app/stores/api/v1/
+```
 
-[Query Pushdown SSL Postgres](./beacon/query_pushdown_ssl_postgres.md)
+For a deeper understanding of Service Resource and its YAML attributes, please refer to the [Attributes of Service Resource](../service/service_specific_section_grammar.md) page.
 
-[Mask Data After Moving from Database to Icebase ](./beacon/mask_data_after_moving_from_database_to_icebase.md)
+#### **Configure Beacon Stack-specific Section**
 
-[Exposing an API After Creating a Database ](./beacon/exposing_an_api_after_creating_a_database.md)
+The Beacon Stack-specific section, comprises attributes within the YAML configuration file. The YAML configuration is given below:
+
+```yaml
+beacon:
+  source:
+    type: database 
+    name: storesdb 
+    workspace: public
+  topology:
+    - name: database
+      type: input 
+      doc: stores database connection 
+    - name: rest-api
+      type: output
+      doc: serves up the stores database as a RESTful API
+      dependencies:
+        - database # Topology step 2 is dependent on step 1
+```
+
+The table below summarizes the various attributes within the Beacon Stack-specific Section.
+
+| Attribute | Data Type | Default Value | Possible Value | Requirement |
+| --- | --- | --- | --- | --- |
+| [`source`](./beacon/beacon_yaml_attributes.md#source) | mapping | none | none | mandatory |
+| [`type`](./beacon/beacon_yaml_attributes.md#type) | string | none | database | mandatory |
+| [`name`](./beacon/beacon_yaml_attributes.md#name) | string | none | any string | mandatory |
+| [`workspace`](./beacon/beacon_yaml_attributes.md#workspace) | string | public | any valid workspace name | mandatory |
+| [`topology`](./beacon/beacon_yaml_attributes.md#topology) | list of mapping | none | none | mandatory |
+| [`name`](./beacon/beacon_yaml_attributes.md#name-1) | string | none | any string | mandatory |
+| [`type`](./beacon/beacon_yaml_attributes.md#type-1) | string | none | input/output | mandatory |
+| [`doc`](./beacon/beacon_yaml_attributes.md#doc) | string | none | any string | optional |
+| [`dependencies`](./beacon/beacon_yaml_attributes.md#dependencies) | list of strings | none | any valid dependent topology name | mandatory |
+
+Each of the attributes in this section has been elaborated in detail on the [Attribute of Beacon Stack](./beacon/beacon_yaml_attributes.md) page.
+
+### **Apply the YAML file**
+
+You can apply the YAML file to create a Beacon Service within the DataOS environment using the command given below:
+
+```shell
+dataos-ctl apply -f {{path-of-the-config-file}} -w {{workspace}}
+```
+
+### **Check Run time**
+
+```shell
+dataos-ctl -t service -w {{workspace}} -n {{service-name}}  get runtime -r
+# Sample
+dataos-ctl -t service -w public -n pulsar-random  get runtime -r
+```
+
+
+## Case Scenarios
+
+- [Exposing REST API’s on Database using Beacon](./beacon/exposing_rest_apis_on_database_using_beacon.md)
+
+- [Store APIs on Beacon ](./beacon/store_apis_on_beacon.md)
+
+- [Query Pushdown Streamlit Application ](./beacon/query_pushdown_streamlit_application.md)
+
+- [Query Pushdown SSL Postgres](./beacon/query_pushdown_ssl_postgres.md)
+
+- [Mask Data After Moving from Database to Icebase ](./beacon/mask_data_after_moving_from_database_to_icebase.md)
+
+- [Exposing an API After Creating a Database ](./beacon/exposing_an_api_after_creating_a_database.md)
