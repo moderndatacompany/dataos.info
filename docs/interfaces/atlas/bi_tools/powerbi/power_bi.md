@@ -1,12 +1,6 @@
-# DataOS Integration with Power BI
+# DataOS Integration with Power BI Using ODBC Driver
 
-This article will help you to set up the connection between DataOS and Power BI. It provides specific steps needed to fetch data from DataOS into Power BI.
-
-## Explore your DataOS data with Power BI
-
-Power BI is a business analytics service to provide interactive visualizations and business intelligence capabilities. Using Power BI’s simple user interface, you can create your reports and dashboards.
-
-DataOS and Power BI seamless integration works to take advantage of that powerful visualization technology, on the data pulled from DataOS.
+This article will help you to set up the connection between DataOS and Power BI. It provides specific steps needed to fetch data from DataOS into Power BI using Simba Presto ODBC driver.
 
 ## Requirements
 

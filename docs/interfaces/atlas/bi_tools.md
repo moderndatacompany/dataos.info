@@ -2,7 +2,7 @@
 
 While you can build your own apps on top of DataOS, it also integrates with many existing products. To connect DataOS with some of the commonly used tools, you can use the links below:
 
-- [Power BI](./bi_tools/powerbi/power_bi.md)
+- [Power BI](./bi_tools/powerbi/powerbi.md)
 
 - [Tableau](./bi_tools/tableau/tableau.md)
 
