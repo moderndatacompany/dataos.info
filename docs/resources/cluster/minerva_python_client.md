@@ -138,6 +138,7 @@ res
 ```
 **Output:**
 ![image](lens_query_output.png)
+<figcaption align = "center">Lens query output </figcaption>
 
 ### **SQLAlchemy**
 

@@ -300,7 +300,7 @@ You have successfully installed the CLI, now the next step is to [initialize](#i
    ```
 5. The next step is to unzip the downloaded .tar file, to extract it, you will need an archiver utility like Winrar. 
 
-6. Open Winrar and highlight the zipped .tar file (it should appear with other downloaded files in the lower part of the page), and click the **“Extract to”** button on the top. Place it in your chosen directory. Download the CLI binary by typing the given links in your web browser (according to the chip type AMD/Intel 64bit).
+6. Open Winrar and highlight the zipped .tar file (it should appear with other downloaded files in the lower part of the page), and click the **“Extract to”** button on the top. Place it in your chosen directory. 
 
    You will always use this directory to run DataOS. To open the DataOS from anywhere in the system, place the extracted file in a directory that is in your PATH. To add the directory in PATH, refer to [Setting the Path and Variables in Windows](cli/windows_path_setting.md).
 
