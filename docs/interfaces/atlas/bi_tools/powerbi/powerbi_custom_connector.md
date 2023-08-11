@@ -28,12 +28,14 @@ Before you start using the DataOS Power BI Connector, configure it as a custom c
 5. Select **OK**, and then restart Power BI Desktop.
     
     ![powerbi_securityoption.png](powerbi_custom_connector/powerbi_securityoption.png)
+    <figcaption align = "center"> Security settings </figcaption>
     
     For more information, follow the [official documentation from Microsoft](https://learn.microsoft.com/en-us/power-bi/connect-data/desktop-connector-extensibility).
     
 6. In Power BI Desktop, click on the **Get Data > More.** You should be able to see DataOS as an available data source.
     
     ![image](powerbi_custom_connector/getdata_dataos_option.png)
+    <figcaption align = "center"> Data sources </figcaption>
     
 
 ## **Access data from DataOS on Power BI**
@@ -46,6 +48,7 @@ Once DataOS appears as a data source in Power BI Desktop, data from DataOS can b
 2. Choose ‘DataOS’ from the list of available data sources. 
     
     ![getdata_dataos.png](powerbi_custom_connector/getdata_dataos.png)
+    <figcaption align = "center"> DataOS as data source </figcaption>
     
 3. A pop-up appears. Fill in the required and optional fields to establish communication with your DataOS environment. 
     - Basic connection information such as the URL of the DataOS instance, including the port used. Ask the DataOS administrator for this information. It is essential to provide the URL with `tcp` for TCP/IP connection.
@@ -54,14 +57,17 @@ Once DataOS appears as a data source in Power BI Desktop, data from DataOS can b
 5. Click "OK" to scan all objects and retrieve schema and tables within the selected catalog(s).
     
     ![image](powerbi_custom_connector/connection_details.png)
+    <figcaption align = "center"> Connect with DataOS </figcaption>
     
 6. Enter your Username and Password (APIKEY) and proceed.
     
     ![image](powerbi_custom_connector/username.png)
+    <figcaption align = "center">Credentials to connect  </figcaption>
     
 7. Choose a table from the available list of catalogs and schemas. You'll be able to preview the data. 
     
     ![image](powerbi_custom_connector/catalogs.png)
+    <figcaption align = "center"> Catalogs and schemas </figcaption>
     
     <aside class="callout">
     🗣 The visibility of these catalogs and schemas will depend on your access level within DataOS.
@@ -78,6 +84,7 @@ Once DataOS appears as a data source in Power BI Desktop, data from DataOS can b
 4. In the `Custom SQL Query` field, enter the desired query (or a Lens Query) and fill in the other mandatory fields.
     
     ![image](powerbi_custom_connector/custom_query.png)
+    <figcaption align = "center">Query to get the result data  </figcaption>
     
     <aside class="callout">
     🗣 Ensure that you have access to the datasets mentioned in the query to avoid the “forbidden access” error. Reach out to the administrator to request access to the specific datasets mentioned in your query.
@@ -88,6 +95,7 @@ Once DataOS appears as a data source in Power BI Desktop, data from DataOS can b
 6. The result of that query will be fetched instead of the catalog and table views and loaded into Power BI. Click on ‘Load’ to view the data.
     
     ![image](powerbi_custom_connector/query_result.png)
+    <figcaption align = "center"> Query result </figcaption>
     
 
 ## Prepare the dashboard(s)
