@@ -2,13 +2,13 @@
 
 DataOS CLI is a text-based interface that allows users to interact with the DataOS context via command prompts. It offers a consistent experience across different operating systems, such as MacOS, Linux, and Windows.
 
-CLI provides several capabilities - progammable command completion, passing environment variables while creating or updating the configuration files, managing multiple DataOS contexts from a central location, a Terminal User Interface(TUI), and a host of other features.
+CLI provides several capabilities - programmable command completion, passing environment variables while creating or updating the configuration files, managing multiple DataOS contexts from a central location, a Terminal User Interface(TUI), and a host of other features.
 
 The following document, encapsulates the installation steps for CLI, initialization steps for the DataOS context, and the shell grammar for the first-time users to understand the command structure.
 
 ## Installation
 
-Follow the steps enumerated below to install the Command Line Interface. Check the pre-requisites before moving forward.
+Follow the steps enumerated below to install the Command Line Interface. Check the prerequisites before moving forward.
 
 **Requirements**
 
@@ -98,7 +98,7 @@ Follow the steps enumerated below to install the Command Line Interface. Check t
     #example: tar -xvf dataos-ctl-darwin-amd64.tar.gz
     ```
 
-    This is the expeced output:
+    This is the expected output:
 
     ```
     x darwin-amd64/
@@ -117,9 +117,9 @@ Follow the steps enumerated below to install the Command Line Interface. Check t
 
 
 
-    > 🗣️  To access DataOS, you have to run this command every time you restart your computer’s terminal or open a new tab in the terminal. If you are too lazy to do that, you should add the above path in your .zshrc file
+    > 🗣️  To access DataOS, you have to run this command every time you restart your computer’s terminal or open a new tab in the terminal. If you are too lazy to do that, you should add the above path to your .zshrc file
     > 
-    > - To add the path to you .zshrc file, you can follow the steps given in this toggle list. Click the toggle icon.
+    > - To add the path to your .zshrc file, you can follow the steps given in this toggle list. Click the toggle icon.
     >     
     >     ```bash
     >     #make sure you are in your home directory "~/ (home/<user>)"
