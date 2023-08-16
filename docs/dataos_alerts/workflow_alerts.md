@@ -316,4 +316,5 @@ When the workflow fails, two alerts are triggered: one for the job failure and t
 
 Upon the triggering of these alerts, notifications will be sent to the designated Teams channel. These notifications provide valuable information about the job and workflow that failed, which is particularly useful for debugging as the alerts contain links to the Operations App (for run details) and the Hera app (for logs), facilitating the troubleshooting process by providing access to relevant details and logs.
 
-[Notification in Email](workflow_alert.png)
+![Notification in Email](workflow_alert.png)
+<figcaption align = "center">Notification in email  </figcaption>

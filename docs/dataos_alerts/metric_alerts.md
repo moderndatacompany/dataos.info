@@ -227,7 +227,8 @@ workflow:
             - alert_daily.py
             - function.py
 ```
-[Notification in Email](metric_alert.png)
+![Notification in Email](metric_alert.png)
+<figcaption align = "center">Notification in email  </figcaption>
 
 <aside class="callout"> The workflow can be scheduled to run at your preferred frequency (e.g., every minute, hourly, daily) using CRON jobs in the `schedule` tag. </aside>
 

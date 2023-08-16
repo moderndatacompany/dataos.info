@@ -64,7 +64,7 @@ API keys/tokens are used to authenticate requests to  DataOS resources. For exam
 To learn more, refer to [Creating API Keys and Token](interfaces/create_token.md)
 
 ### **View Depots**
-
+You can see a complete list of depots created in your DataOS context for accessing data sources.
 ![Depot](interfaces/depots.png)
 <figcaption align = "center">Depots</figcaption>
 

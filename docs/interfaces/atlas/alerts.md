@@ -31,4 +31,4 @@ A message template consisting of input fields for the subject and body will be s
 
 To learn more about creating alerts, refer to [Setting up Dashboard Alerts](/dataos_alerts/dashboard_alerts/).
 
-<aside class="callout">DataOS offers a diverse range of integrated alert mechanisms, emphasizing observability and active monitoring.  To learn more about them, refer to <a href="/dataos_alerts/">DataOS Alerts</a></aside>
+<aside class="callout">DataOS offers a diverse range of integrated alert mechanisms, emphasizing observability and active monitoring.  To learn more about them, refer to <a href="/dataos_alerts/">DataOS Alerts.</a></aside>

@@ -49,7 +49,7 @@ Alerts notify you when a field returned by a query meets a threshold (set as a 
 
 To learn more about creating alerts, refer to [Setting up Dashboard Alerts](/dataos_alerts/dashboard_alerts/).
 
-<aside class="callout">DataOS comes equipped with a wide array of integrated alert mechanisms with a strong focus on observability and  active monitoring.  To learn more about them, refer to <a href="/dataos_alerts/">DataOS Alerts</a></aside>
+<aside class="callout">DataOS comes equipped with a wide array of integrated alert mechanisms with a strong focus on observability and  active monitoring.  To learn more about them, refer to <a href="/dataos_alerts/">DataOS Alerts.</a></aside>
 
 
 ### **Destinations**
