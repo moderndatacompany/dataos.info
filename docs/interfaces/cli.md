@@ -47,7 +47,18 @@ Follow the steps enumerated below to install the Command Line Interface. Check t
 
     ```
 
-2. Download the checksum file using the following command (replace the **`ARCH`** value of the processor and the **`CLI_VERSION`** to be installed):
+2. Determine processor architecture with the following command.
+    ```
+    uname -m
+    ```
+    Sample output:
+
+    ```
+    x86_64
+    ```
+    You can use this output with the "darwin" prefix as ARCH value in your shell commands to specify the architecture. The available values are `darwin-amd64`, `darwin-arm64` for different types of processors on macOS.
+    
+3. Download the checksum file using the following command (replace the **`ARCH`** value of the processor and the **`CLI_VERSION`** to be installed):
 
     ```jsx
     curl --silent --output dataos-ctl-{{ARCH}}.tar.gz.sha256sum --location --request GET "https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-{{ARCH}}.tar.gz.sha256sum&dir=cli-apps-{{CLI_VERSION}}&apikey=$PRIME_APIKEY"
