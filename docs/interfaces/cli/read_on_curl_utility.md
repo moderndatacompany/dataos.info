@@ -5,20 +5,7 @@ Curl is a command-line utility that transfers data from or to a server that is 
 
 Below are the steps mentioned to check if Curl is already installed and useful resources to download and install in case Curl is not installed on your system. 
 
-## Curl on Ubuntu or Linux
-
-```bash
-# To check if you have curl installed already:
-curl --version
-
-# To update your ubuntu or linux box:
-sudo apt update
-
-# To install curl utility:
-sudo apt install curl
-```
-
-## Curl on Mac
+## Installing Curl on Mac
 
 ```bash
 # To check if you have curl installed already:
@@ -32,6 +19,25 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 
 # After installing brew, let's install curl:
 brew install curl
+
+# To update curl utility:
+brew upgrade curl
+```
+
+## Installing Curl on Ubuntu or Linux
+
+```bash
+# To check if you have curl installed already:
+curl --version
+
+# To update your ubuntu or linux box:
+sudo apt update
+
+# To install curl utility:
+sudo apt install curl
+
+# To update curl utility:
+sudo apt upgrade curl
 ```
 
 ## Installing Curl on Windows
