@@ -2,7 +2,7 @@
 
 DataOS CLI is a text-based interface that allows users to interact with the DataOS context via command prompts. It offers a consistent experience across operating systems like MacOS, Linux, and Windows.
 
-CLI provides several capabilities - programable command completion, passing environment variables while creating or updating the configuration files, managing multiple DataOS contexts from a central location, a Terminal User Interface(TUI), and a host of other features.
+CLI provides several capabilities - programmable command completion, passing environment variables while creating or updating the configuration files, managing multiple DataOS contexts from a central location, a Terminal User Interface (TUI), and a host of other features.
 
 The following document encapsulates the installation steps for CLI, initialization steps for the DataOS context, and the shell grammar for first-time users to understand the command structure.
 
@@ -57,7 +57,7 @@ Follow the steps enumerated below to install the Command Line Interface. Check t
     x86_64
     ```
     You can use this output with the "darwin" prefix as ARCH value in your shell commands to specify the architecture. The available values are `darwin-amd64`, `darwin-arm64` for different types of processors on macOS.
-    
+
 3. Download the checksum file using the following command (replace the **`ARCH`** value of the processor and the **`CLI_VERSION`** to be installed):
 
     ```jsx
