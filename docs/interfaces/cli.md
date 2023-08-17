@@ -2,7 +2,7 @@
 
 DataOS CLI is a text-based interface that allows users to interact with the DataOS context via command prompts. It offers a consistent experience across operating systems like MacOS, Linux, and Windows.
 
-CLI provides several capabilities - programmable command completion, passing environment variables while creating or updating the configuration files, managing multiple DataOS contexts from a central location, a Terminal User Interface(TUI), and various other features.
+CLI provides several capabilities - programable command completion, passing environment variables while creating or updating the configuration files, managing multiple DataOS contexts from a central location, a Terminal User Interface(TUI), and a host of other features.
 
 The following document encapsulates the installation steps for CLI, initialization steps for the DataOS context, and the shell grammar for first-time users to understand the command structure.
 
@@ -47,18 +47,7 @@ Follow the steps enumerated below to install the Command Line Interface. Check t
 
     ```
 
-2. Determine processor architecture using the following command.
-    ```shell
-    uname -m
-    ```
-    Sample output:
-    ```
-    x86_64
-    ```
-    Refer to the table given in the previous section for the corresponding **`ARCH`** value for the processor.
-
-
-3. Download the checksum file using the following command (replace the **`ARCH`** value of the processor and the **`CLI_VERSION`** to be installed):
+2. Download the checksum file using the following command (replace the **`ARCH`** value of the processor and the **`CLI_VERSION`** to be installed):
 
     ```jsx
     curl --silent --output dataos-ctl-{{ARCH}}.tar.gz.sha256sum --location --request GET "https://prime.tmdata.io/plutus/api/v1/files/download?name=dataos-ctl-{{ARCH}}.tar.gz.sha256sum&dir=cli-apps-{{CLI_VERSION}}&apikey=$PRIME_APIKEY"
