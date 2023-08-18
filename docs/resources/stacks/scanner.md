@@ -64,28 +64,27 @@ The below table summarizes various properties within a Scanner workflow YAML.
 
 | Field | Example | Default Value | Requirement | Additional Details |
 | --- | --- | --- | --- | --- |
-| `stack` | `scanner` |  | Mandatory |  |
-| `compute` | `mycompute` |`runnable-default`  | Mandatory |  |
-| `runAsUser` | `metis` |  | Mandatory |  |
-| `depot` |`dataos://icebase`|  | Mandatory | in case of Depot scan only. |
-| `type` | `bigquery` | Source-specific | Mandatory | In case of non-Depot scan |
-| `source` | `bigquery_metasource` |  | Mandatory | In case of non-Depot scan |
+| [`stack`](./field_ref/#stack) | `scanner` |  | Mandatory |  |
+| [`compute`](./field_ref/#compute) | `mycompute` |`runnable-default`  | Mandatory |  |
+| [`runAsUser`](./field_ref/#runasuser) | `metis` |  | Mandatory |  |
+| [`depot`](./field_ref/#depot) |`dataos://icebase`|  | Mandatory | in case of Depot scan only. |
+| [`type`](./field_ref/#type) | `bigquery` | Source-specific | Mandatory | In case of non-Depot scan |
+| [`source`](./field_ref/#source)| `bigquery_metasource` |  | Mandatory | In case of non-Depot scan |
 | `sourceConnection` |  |  |  |  |
-| `type` | `BigQuery` | Source-specific | Mandatory | In case of non-Depot scan |
-| `username` | `projectID` `email` `hostport`| Source-specific | Mandatory | In case of non-Depot scan|
+| [`type`](./field_ref/#type_1) | `BigQuery` | Source-specific | Mandatory | In case of non-Depot scan |
+| [`username`](./field_ref/#username) | `projectID` `email` `hostport`| Source-specific | Mandatory | In case of non-Depot scan|
 | `sourceConfig`| | | | |
-| `type` |  `DatabaseMetadata`  `MessagingMetadata` |  | Mandatory | In case of non-Depot scan |
-| `databaseFilterPattern` | `^SNOWFLAKE.*` |  | optional | Applicable only in case of Database/Warehouse data source |
-| `schemaFilterPattern` | `^public$` |  | optional | Applicable only in case of Database/Warehouse data source |
-| `tableFilterPattern` | `.*CUSTOMER.*` |  | optional | Applicable only in case of Database/Warehouse data source |
-| `topicFilterPattern` | `foo` `bar` |  | optional | Applicable only in case of Messaging data source |
-| `includeViews` | `true` `false` | `false` | optional | Applicable only in case of Database/Warehouse data source |
-| `includeTables` | `true` `false` | `false` | optional | Applicable only in case of Database/Warehouse data source |
-| `markDeletedTables` | `true` `false` | `false` | optional | Applicable only in case of Database/Warehouse data source |
-| `markDeletedTablesFromFilterOnly`  | `true` `false` | `false` | optional | Applicable only in case of Database/Warehouse data source |
-| `enableDebugLog` | `true` `false` | `false` | optional | All |
-| `ingestSampleData` | `true` `false` | `false` | optional | Applicable only in case of Messaging data source |
-| `markDeletedTopics` | `true` `false` | `false` | optional | Applicable only in case of Messaging data source |
+| [`type`](./field_ref/#type_2) |  `DatabaseMetadata`  `MessagingMetadata` |  | Mandatory | In case of non-Depot scan |
+| [`databaseFilterPattern`](./field_ref/#databasefilterpattern) | `^SNOWFLAKE.*` |  | optional | Applicable only in case of Database/Warehouse data source |
+| [`schemaFilterPattern`](./field_ref/#schemafilterpattern) | `^public$` |  | optional | Applicable only in case of Database/Warehouse data source |
+| [`tableFilterPattern`](./field_ref/#tablefilterpattern) | `.*CUSTOMER.*` |  | optional | Applicable only in case of Database/Warehouse data source |
+| [`topicFilterPattern`](./field_ref/#topicfilterpattern) | `foo` `bar` |  | optional | Applicable only in case of Messaging data source |
+| [`includeViews`](./field_ref/#includeviews) | `true` `false` | `false` | optional | Applicable only in case of Database/Warehouse data source |
+| [`markDeletedTables`](./field_ref/#markdeletedtables) | `true` `false` | `false` | optional | Applicable only in case of Database/Warehouse data source |
+| [`markDeletedTablesFromFilterOnly`](./field_ref/#markdeletedtablesfromfilteronly)  | `true` `false` | `false` | optional | Applicable only in case of Database/Warehouse data source |
+| [`enableDebugLog`](./field_ref/#enabledebuglog) | `true` `false` | `false` | optional | All |
+| [`ingestSampleData`](./field_ref/#ingestsampledata) | `true` `false` | `false` | optional | Applicable only in case of Messaging data source |
+| [`markDeletedTopics`](./field_ref/#markdeletedtopics)| `true` `false` | `false` | optional | Applicable only in case of Messaging data source |
 
 To learn more about these fields, their possible values, example usage, refer to [Scanner YAML Fields Reference](scanner/field_ref.md).
 
