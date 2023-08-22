@@ -553,7 +553,7 @@ To enable the [Minerva](./cluster.md#minerva) Query Engine to access a specific 
 
 [Access](./policy.md#access-policy) and [Data Policies](./policy.md#data-policy) can be created upon Depots to govern the data. This helps in reducing data breach risks and simplifying compliance with regulatory requirements. Access Policies can restrict access to specific depots, collections, or datasets, while Data Policies allow you to control the visibility and usage of data.
 
-### **Buildi Data Models**
+### **Building Data Models**
 
 You can use Lens to create Data Models on top of Depots and explore them using the [Lens App UI.](../interfaces/lens.md)
 
