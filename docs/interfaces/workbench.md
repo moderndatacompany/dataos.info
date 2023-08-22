@@ -27,7 +27,7 @@ Query Pane is used to edit scripts, save them, and run scripts. When you run a S
 
 Now you are ready to start writing and running the queries. Workbench uses TrinoSQL syntax. If you need help getting started, refer to the syntax given for the commonly used queries:
 
-[Popular SQL Query Syntax](workbench/sql_query_syntax.md)
+[Minerva SQL Query Syntax](workbench/sql_query_syntax.md)
 
 Find the list of all the functions supported by the query engine of DataOS.
 [Functions and Operators - DataOS](workbench/functions_and_operators.md).
