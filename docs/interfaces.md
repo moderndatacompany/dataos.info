@@ -14,6 +14,9 @@ The Application Programming Interface (API) in DataOS provides a way to interact
 
 <aside class="callout">The choice of interface (CLI, GUI or API) depends on factors such as specific applications, user requirements, and the capabilities of individual components. By leveraging these interfaces effectively, users can navigate their data journey within DataOS and unlock its full potential.</aside>
 
+## DataOS Home App- GUI to Interact with DataOS Components
+
+### **Access Native Apps**
 From the DataOS Home app, you can access the unique capabilities of the components and apps.
 ![dataos_homepage.png](interfaces/dataos_homepage.png)
 <figcaption align = "center">DataOS Home App </figcaption>
@@ -50,7 +53,7 @@ With Operations UI, monitor and administer DataOS platform activity, gaining rea
 
 Explore and query your data assets using SQL with Workbench. Powered by the Minerva query engine (built on top of Trino), Workbench supports both simple and complex queries across a large variety of data sources, including traditional relational databases (Oracle, PostgreSQL, Redshift, etc.) as well as other data sources such as S3, Kafka, and Pulsar. You can query and explore data from these data sources without bringing it to DataOS. To learn more, click [here](/interfaces/workbench/).
 
-DataOS Home app also enables you to [manage your profile](/interfaces/#manage-profile), [access tokens](/interfaces/#create-tokens), and [view all the depots](/interfaces/#view-depots) that exist within the DataOS instance for accessing data.
+**DataOS Home app also enables you to [manage your profile](/interfaces/#manage-profile), [access tokens](/interfaces/#create-tokens), and [view all the depots](/interfaces/#view-depots) that exist within the DataOS instance for accessing data.**
 
 ### **Manage Profile**
 
@@ -68,3 +71,5 @@ You can see a complete list of depots created in your DataOS context for accessi
 ![Depot](interfaces/depots.png)
 <figcaption align = "center">Depots</figcaption>
 
+## Accessing DataOS from External Applications
+DataOS integrates with various other BI tools, enhancing the capabilities and functionality of your data analysis. To explore further information about these tools and their benefits, you can refer to [Integration with other BI tools](/interfaces/atlas/bi_tools/).
