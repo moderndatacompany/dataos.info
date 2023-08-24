@@ -40,7 +40,7 @@ For detailed description of `MATCH_RECOGNIZE` clause, see [**pattern recognit
 TABLE (table_function_invocation) [ [ AS ] alias [ ( column_alias [, ...] ) ] ]
 ```
 
-For description of table functions usage, see [table functions](https://trino.io/docs/current/functions/table.html).
+<!-- For description of table functions usage, see [table functions](https://trino.io/docs/current/functions/table.html). -->
 
 and `join_type` is one of
 
@@ -732,7 +732,7 @@ FROM some_table
     ON some_table.key = u.key;
 ```
 
-More background information and details can be found in a blog post about this optimization.
+<!-- More background information and details can be found in a blog post about this optimization.-->
 
 ## OFFSET clause
 
