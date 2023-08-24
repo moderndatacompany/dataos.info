@@ -4,14 +4,13 @@ The Various Alerts section provides a collection of guides and recommendations f
 
 ## Kube CPU Throttling High
 
-The *Kube CPU Throttling High* alert is an informational warning that indicates an increase in CPU throttling for certain processes within a Kubernetes cluster. To know more, click on the link below.
-
+The *Kube CPU Throttling High* alert is an informational warning that indicates an increase in CPU throttling for certain processes within a Kubernetes cluster. Here's how the alert notification looks:
 
 **Alert Notification**
 
-![Untitled](Untitled.png)
+![CPU throttling](cpu_throttling.png)
 
-CPU throttling increases for certain processes
+<i>CPU throttling increases for certain processes </i>
 
 ### **Impact**
 
@@ -42,9 +41,9 @@ The *Kube Pod Crash Looping alert* serves as an important notification for Kuber
 
 **Alert Notification**
 
-![Untitled](Untitled1.png)
+![Untitled](pod_crash.png)
 
-Kube Pod Crash Looping
+<i>Kube Pod Crash Looping</i>
 
 ### **Impact**
 
@@ -95,7 +94,7 @@ The *Aggregated API Down* alert is a crucial notification that signifies issues 
 
 ![image](agg_api_down.png)
 
-Aggregated API Down
+<i>Aggregated API Down</i>
 
 
 ### **Impact**
@@ -111,9 +110,9 @@ Services that directly utilize the Kubernetes API may start to exhibit unpredict
 1. Examine the status of the API server targets within the Prometheus user interface.
 2. Verify if the API remains unresponsive by executing the following command:
 
-```bash
-kubectl cluster-info
-```
+    ```bash
+    kubectl cluster-info
+    ```
 
 1. If the API server is accessible, there could be a network issue between the Prometheus instances and the API server pods. Inspect the status of the API server pods by running:
 
@@ -135,15 +134,15 @@ kubectl cluster-info
 
 ## Kube Pod Not Ready
 
-The *Kube Pod Not Ready* alert is triggered when a pod in a Kubernetes cluster remains in a non-ready state for more than 15 minutes. This can occur due to various issues, such as failed readiness probes, pending pod creation for a specific namespace and node, or other underlying problems. The alert aims to notify operators about potential service degradation or unavailability, as the affected pod is not connected to the service and will not receive traffic. To know more, click on the link below
+The *Kube Pod Not Ready* alert is triggered when a pod in a Kubernetes cluster remains in a non-ready state for more than 15 minutes. This can occur due to various issues, such as failed readiness probes, pending pod creation for a specific namespace and node, or other underlying problems. The alert aims to notify operators about potential service degradation or unavailability, as the affected pod is not connected to the service and will not receive traffic.
 
 For more information on pod failure to reach the ready state, see the [pod lifecycle](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/) documentation.
 
 **Alert Notification**
 
-![Untitled](Untitled2.png)
+![Untitled](pod_not_ready.png)
 
-Kube Pod Not Ready
+<i>Kube Pod Not Ready</i>
 
 ### **Impact**
 
@@ -194,12 +193,13 @@ Consult with developers or review the application documentation to ensure proper
 
 ## Kube Container Waiting
 
-This Kube Container Waiting Alert occurs when a container within a Kubernetes pod experiences an extended period in the Waiting state, indicating potential issues with the deployment or underlying resources. Prolonged waiting periods can impact the overall performance and availability of services, making it crucial to identify and resolve the underlying causes. To know more, click on the link below.
+This Kube Container Waiting Alert occurs when a container within a Kubernetes pod experiences an extended period in the Waiting state, indicating potential issues with the deployment or underlying resources. Prolonged waiting periods can impact the overall performance and availability of services, making it crucial to identify and resolve the underlying causes.
 
 **Alert Notification**
 
-![Untitled](Untitled3.png)
-Kube Container Waiting
+![Untitled](container_waiting.png)
+
+<i>Kube Container Waiting</i>
 
 
 ### **Impact**
@@ -230,14 +230,14 @@ Refer to the [Container Waiting](https://kubernetes.io/docs/tasks/debug-applicat
 
 ## Kube CPU Over Commit
 
-The *Kube CPU Over Commit* alert occurs when a Kubernetes cluster's CPU resource requests for Pods surpass its capacity, resulting in an overcommitted state. This situation renders the cluster vulnerable to node failure, as it would be unable to accommodate some Pods within the remaining nodes, causing them to enter a `Pending` state. Proper diagnosis and remediation measures are crucial for maintaining optimal cluster performance and ensuring that critical services remain operational even in the event of node failure. To know more, click on the link below.
+The *Kube CPU Over Commit* alert occurs when a Kubernetes cluster's CPU resource requests for Pods surpass its capacity, resulting in an overcommitted state. This situation renders the cluster vulnerable to node failure, as it would be unable to accommodate some Pods within the remaining nodes, causing them to enter a `Pending` state. Proper diagnosis and remediation measures are crucial for maintaining optimal cluster performance and ensuring that critical services remain operational even in the event of node failure. 
 
 **Alert Notification**
 
 
-![Untitled](Untitled4.png)
+![Untitled](cpu_over_commit.png)
 
-Kube CPU Over Commit
+<i>Kube CPU Over Commit</i>
 
 
 ### **Consequences**
@@ -260,15 +260,14 @@ The cluster is unable to tolerate node failure. Should a node fail, some Pods wi
 
 ## Kube StatefulSet Generation Mismatch
 
-The *Kube Statefulset Generation Mismatch* alert occurs when there is a discrepancy in StatefulSet generation, potentially due to a rollback. This discrepancy can lead to service degradation or unavailability, negatively impacting the performance of your Kubernetes cluster. Identifying, diagnosing, and resolving such issues is crucial for maintaining efficient and reliable operations. To know more, click on the link below.
-
+The *Kube Statefulset Generation Mismatch* alert occurs when there is a discrepancy in StatefulSet generation, potentially due to a rollback. This discrepancy can lead to service degradation or unavailability, negatively impacting the performance of your Kubernetes cluster. Identifying, diagnosing, and resolving such issues is crucial for maintaining efficient and reliable operations.
 
 **Alert Notification**
 
 
-![Untitled](Untitled5.png)
+![Untitled](generation_mismatch.png)
 
-Kube StatefulSet Generation Mismatch
+<i>Kube StatefulSet Generation Mismatch</i>
 
 
 ### **Consequences**
@@ -323,9 +322,9 @@ The *Kube Quota Fully Used* alert occurs when the cluster's resource utilization
 **Alert Notification**
 
 
-![Untitled](Untitled6.png)
+![Untitled](quota_used.png)
 
-Kube Quota Fully Used
+<i>Kube Quota Fully Used</i>
 
 **Consequence**
 
@@ -349,9 +348,9 @@ When a volume in a Kubernetes cluster begins to fill up, it can create performan
 **Alert Notification**
 
 
-![Untitled](Untitled7.png)
+![Untitled](volume_fillup.png)
 
-Kube Persistent Volume Filling Up
+<i>Kube Persistent Volume Filling Up</i>
 
 ### **Consequences**
 
@@ -465,9 +464,9 @@ The *Kube HPA Maxed Out* alert is triggered when the Horizontal Pod Autoscaler (
 **Alert Notification**
 
 
-![Untitled](Untitled8.png)
+![Untitled](hpa_max_out.png)
 
-Kube HPA Maxed Out
+<i>Kube HPA Maxed Out</i>
 
 
 ### **Consequences**
@@ -489,14 +488,14 @@ Conduct performance tests to evaluate the application's scaling capabilities.
 
 ## Kube HPA Replicas MisMatch
 
-The *Kube HPA Replicas MisMatch* alert is triggered when the Horizontal Pod Autoscaler (HPA) in a Kubernetes cluster fails to reach the desired number of replicas for an extended period, specifically longer than 15 minutes. This situation may occur due to various factors such as insufficient nodes, resource quota limitations, or pod eviction based on priority. To know more, click on the link below.
+The *Kube HPA Replicas MisMatch* alert is triggered when the Horizontal Pod Autoscaler (HPA) in a Kubernetes cluster fails to reach the desired number of replicas for an extended period, specifically longer than 15 minutes. This situation may occur due to various factors such as insufficient nodes, resource quota limitations, or pod eviction based on priority.
 
 **Alert Notification**
 
 
-![Untitled](Untitled9.png)
+![Untitled](replica_mismatch.png)
 
-Kube Hpa Replicas MisMatch
+<i>Kube Hpa Replicas MisMatch</i>
 
 
 ### **Consequences**
@@ -523,8 +522,9 @@ The *Kube Version MisMatch* alert is triggered when Kubernetes components within
 
 **Alert Notification**
 
-![Untitled](Untitled.png)
-Kube Version MisMatch
+![Untitled](version_mismatch.png)
+
+<i>Kube Version MisMatch</i>
 
 ### **Consequences**
 
@@ -552,14 +552,14 @@ kubectl get nodes
 
 ## Kube Node not Ready
 
-The *Kube Node Not Ready* alert occurs when a Kubernetes node remains in a state other than `Ready` for an extended period. This can impact the node's ability to host new pods, consequently affecting the performance and reliability of cluster deployments. To know more, click on the link below.
+The *Kube Node Not Ready* alert occurs when a Kubernetes node remains in a state other than `Ready` for an extended period. This can impact the node's ability to host new pods, consequently affecting the performance and reliability of cluster deployments.
 
 **Alert Notification**
 
 
-![Untitled](Untitled10.png)
+![Untitled](node_not_ready.png)
 
-Kube Node Not Ready
+<i>Kube Node Not Ready</i>
 
 
 ### **Consequences**
@@ -589,16 +589,16 @@ The output should reveal the reason for the node's unready state (e.g., timeouts
 
 After resolving the issue preventing the node from being replaced, terminate the instance to restore normal functionality.
 
-### Kube Node Unreachable
+## Kube Node Unreachable
 
 The *Kube Node Unreachable* alert is triggered when a Kubernetes node becomes unreachable, which can lead to the rescheduling of certain workloads. This situation may impact the performance and reliability of cluster deployments. Various factors, such as disruptive software upgrades, hardware failures, or network issues, can contribute to a node becoming unreachable. 
 
 **Alert Notification**
 
 
-![Untitled](Untitled11.png)
+![Untitled](node_unreachable1.png)
 
-Kube Node Unreachable
+<i>Kube Node Unreachable</i>
 
 
 ### **Consequences**
@@ -640,14 +640,14 @@ For other scenarios, ensure storage and networking redundancy, if applicable.
 
 ## Kube StatefulSet Update Not Rolled Out
 
-The alert is triggered when a StatefulSet update in a Kubernetes cluster fails to roll out successfully. This can lead to service degradation or unavailability, impacting the performance and reliability of your applications and infrastructure. To know more, click on the link below.
+The alert is triggered when a StatefulSet update in a Kubernetes cluster fails to roll out successfully. This can lead to service degradation or unavailability, impacting the performance and reliability of your applications and infrastructure.
 
 **Alert Notification**
 
 
-![Untitled](Untitled12.png)
+![Untitled](set-update_not_rolledout.png)
 
-Kube StatefulSet Update Not Rolled Out
+<i>Kube StatefulSet Update Not Rolled Out</i>
 
 
 ### **Consequences**
