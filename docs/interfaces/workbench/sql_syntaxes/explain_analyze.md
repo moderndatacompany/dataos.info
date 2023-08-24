@@ -10,7 +10,7 @@ EXPLAIN ANALYZE [VERBOSE] statement
 
 Execute the statement and show the distributed execution plan of the statement along with the cost of each operation.
 
-The `VERBOSE` option will give more detailed information and low-level statistics; understanding these may require knowledge of Trino internals and implementation details.
+The `VERBOSE` option will give more detailed information and low-level statistics; understanding these may require knowledge of Minerva internals and implementation details.
 
 >🗣 Note: 
 The stats may not be entirely accurate, especially for queries that complete quickly.
@@ -28,7 +28,7 @@ WHERE orderdate > date '1995-01-01' GROUP BY clerk;
 ```yaml
                                           Query Plan
 -----------------------------------------------------------------------------------------------
-Trino version: version
+Minerva version: version
 Queued: 374.17us, Analysis: 190.96ms, Planning: 179.03ms, Execution: 3.06s
 Fragment 1 [HASH]
     CPU: 22.58ms, Scheduled: 96.72ms, Blocked 46.21s (Input: 23.06s, Output: 0.00ns), Input: 1000 rows (37.11kB); per task: avg.: 1000.00 std.dev.: 0.00, Output: 1000 rows (28.32kB)

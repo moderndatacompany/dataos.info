@@ -78,4 +78,6 @@ MERGE INTO accounts t USING monthly_accounts_update s
 
 ## Limitations
 
-Any connector can be used as a source table for a `MERGE` statement. Only connectors which support the `MERGE` statement can be the target of a merge operation. See the [**connector documentation**](https://trino.io/docs/current/connector.html) for more information.
+Any connector can be used as a source table for a `MERGE` statement. Only connectors which support the `MERGE` statement can be the target of a merge operation.
+
+<!-- See the [**connector documentation**](https://trino.io/docs/current/connector.html) for more information. -->
