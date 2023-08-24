@@ -1,4 +1,4 @@
-# Functions and Operators - DataOS
+# Functions and Operators
 
 | Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
 | --- | --- | --- | --- | --- | --- | --- |
