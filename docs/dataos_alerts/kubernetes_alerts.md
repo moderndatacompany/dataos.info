@@ -25,7 +25,7 @@ This alert is primarily informational and may be disregarded if no other issues 
 ### **Mitigation**
 
 By default, kube-prometheus suppresses this alert, which will only be transmitted if another alert from the same namespace is active.
-<aside class="callout"> Users should avoid raising CPU limits unless the application exhibits erratic behavior (triggered by another alert).</aside>
+<aside class="callout">🗣 Users should avoid raising CPU limits unless the application exhibits erratic behavior (triggered by another alert).</aside>
 
 **In conjunction with other alerts**:
 
@@ -387,7 +387,7 @@ Examples of services that support this feature include:
 - Kafka
 - MinIO
 
-<aside class="callout"> Some services may necessitate specific scaling conditions, such as doubling the number of existing nodes.</aside>
+<aside class="callout">🗣 Some services may necessitate specific scaling conditions, such as doubling the number of existing nodes.</aside>
 
 
 **Direct Volume Resizing**

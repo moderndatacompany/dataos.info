@@ -122,7 +122,7 @@ To show the dataset on the workbench and start querying, run set-metadata comman
 dataos-ctl dataset set-metadata -a dataos://icebase:shopper_360/model_prediction -v latest
 ```
 <aside class="callout">
-You can run the SQL query on the intermediate view to check the data before writing it to the Icabase.
+🗣 You can run the SQL query on the intermediate view to check the data before writing it to the Icabase.
 </aside>
 
 ## Example Code
