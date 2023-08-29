@@ -7,7 +7,7 @@ Click on the specific query to view/edit the SQL statement.
 Query editor allows you to format your query and enable/disable the live auto-complete feature. To save a query, press **Ctrl+ S** (or **Cmd +S)/** click **Save**. ****Once you finish editing, you can click on ‘**Run**’ to view the query result. From here, you can also build visualizations based on the results returned from queries.
 
 <aside class="callout">
-🗣 To run your queries, you might want to change the selected cluster. To learn more about clusters, click here.
+🗣 To run your queries, you might want to change the selected cluster. To learn more about clusters, click <a href="/resources/cluster/">here</a>.
 
 </aside>
 
@@ -37,7 +37,7 @@ To learn more about the parameter types and how to add parameters to the queries
     
 [Parameterized Queries](queries/parameterized_queries.md)
     
-## Download Query Result
+## Download query result
     
 Click on the three dots to download a query result as a CSV, TSV, or Excel file.
     
