@@ -1,42 +1,31 @@
 # Orchestrating Multiple Workflows from a Single Workflow
 
-This section demonstrates how to orchestrate multiple workflows by combining separate YAML files into a single master Workflow YAML file. By following this approach, you can streamline complex data processing tasks that involve reading data from one depot, writing it to another depot, and subsequently performing additional processing steps. 
+This section demonstrates how to orchestrate multiple workflows by referencing separate YAML files in a master Workflow YAML file. By following this approach, you can streamline complex data processing tasks into manageable pieces.
 
-## Implementation Flow
+## Code Snippet
 
-1. Save the below code snippets into separate YAML files, and store them in the following format
+The code snippet below shows the master Workflow (`dag.yaml`) that references two separate Workflows (stored in `read-pulsar.yaml` and `write-pulsar.yaml`) by specifying the file path within the `file` attribute. 
 
-<center>
+<details>
+<summary>Click here to view the code snippets</summary>
 
-![Directory Structure](./orchestrating_multiple_workflows_from_a_single_workflow/directory_structure.png)
-
-</center>
-
-<center><i>Directory Structure</i></center>
-
-2. Once you do that mention the path (relative or absolute) of the `read-pulsar.yaml` and `write-pulsar.yaml` in the file property of the master file `dag.yaml`. 
-3. Apply the `dag.yaml` command from the CLI.
-
-## Outcome
-
-When you apply the `dag.yaml` file, using CLI, it calls in the `write-pulsar.yaml` file first and the `read-pulsar.yaml` file second as the second file is dependent upon the first. The workflow within the `write-pulsar.yaml` writes the data from `thirdparty` depot to `sanitypulsar01` depot. Once that is done the second workflow is executed which writes the same data from `sanitypulsar01` depot to the `icebase` depot. This finishes the two processing tasks by applying just one file.
-
-## Code Snippets
-
-### **dag.yaml**
+<b>dag.yaml</b>
 
 ```yaml
-version: v1
+# Resource Section
 name: wf-sample-dag
+version: v1
 type: workflow
 tags:
   - read
   - write
 description: This jobs reads data from thirdparty and writes to pulsar
+
+# Workflow-specific Section
 workflow:
   dag:
     - name: write
-      file: workflows/write-pulsar.yaml
+      file: workflows/write-pulsar.yaml 
 
     - name: read
       file: workflows/read-pulsar.yaml
@@ -44,26 +33,33 @@ workflow:
         - write
 ```
 
-### **write-pulsar.yaml**
+<b>write-pulsar.yaml</b>
 
 ```yaml
-version: v1
+# Resource Section
 name: write-pulsar-01
+version: v1
 type: workflow
 tags:
   - pulsar
   - read
 description: this jobs reads data from thirdparty and writes to pulsar
+
+# Workflow-specific Section
 workflow:
   dag:
+
+# Job-specific Section
     - name: write-pulsar
       title: write avro data to pulsar
       description: write avro data to pulsar
       spec:
         tags:
           - Connect
-        stack: flare:3.0
+        stack: flare:4.0
         compute: runnable-default
+
+# Flare Stack-specific Section        
         flare:
           job:
             explain: true
@@ -89,26 +85,33 @@ workflow:
                     sql: SELECT * FROM input
 ```
 
-### **read-pulsar.yaml**
+<b>read-pulsar.yaml</b>
 
 ```yaml
-version: v1
+# Resource Section
 name: read-pulsar-01
+version: v1
 type: workflow
 tags:
   - pulsar
   - read
 description: this jobs reads data from thirdparty and writes to pulsar
+
+# Workflow-specific Section
 workflow:
   dag:
+
+# Job 1 specific Section
     - name: read-pulsar-001
       title: write avro data to pulsar
       description: write avro data to pulsar
       spec:
         tags:
           - Connect
-        stack: flare:3.0
+        stack: flare:4.0
         compute: runnable-default
+
+# Flare Stack-specific Section
         flare:
           job:
             explain: true
@@ -133,10 +136,13 @@ workflow:
                   - name: finalDf
                     sql: SELECT * FROM input
 
+# Job 2 specific Section
     - name: dataos-tool-pulsar
       spec:
         stack: toolbox
         compute: runnable-default
+
+# Toolbox Stack-specific Section
         toolbox:
           dataset: dataos://icebase:sample/sanity_pulsar?acl=rw
           action:
@@ -145,3 +151,18 @@ workflow:
       dependencies:
         - read-pulsar-001
 ```
+
+</details>
+
+
+## Implementation Flow
+
+- Save the above code snippets into separate YAML files.
+
+- Once you do that mention the path (relative or absolute) of the `read-pulsar.yaml` and `write-pulsar.yaml` in the file property of the master file `dag.yaml`.
+
+- Apply the `dag.yaml` command from the CLI.
+
+When you apply the `dag.yaml` file, using CLI, it calls in the `write-pulsar.yaml` file first and the `read-pulsar.yaml` file second as the second file is dependent upon the first. The Workflow within the `write-pulsar.yaml` writes the data from `thirdparty` depot to `sanitypulsar01` depot. Once that is done the second workflow is executed which writes the same data from `sanitypulsar01` depot to the `icebase` depot. This finishes the two processing tasks by applying just one file.
+
+

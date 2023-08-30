@@ -19,13 +19,13 @@ The Beacon stack provides a robust solution for exposing a Postgres API endpoint
 
 By utilizing the Service Primitive/resource, you can ensure governed access to the endpoint, enable scalability in proportion to data growth and facilitate seamless access to all internal and external components and applications within DataOS. You can further enforce governance Policies to ensure secure access to PostgreSQL data, all in a declarative YAMLish manner within DataOS. 
 
-![beacon](./beacon/beacon.png)
+![beacon]
 
 In summary, a Beacon Service enables you to expose an API endpoint for a specific table in a PostgreSQL database, allowing you to send data to be stored and interact with the data in the table by sending HTTP requests to the endpoint. With a Beacon Service, your web and other data-driven applications in DataOS can perform CRUD operations, search, filter, and rename data assets stored in Postgres (the native relational database of DataOS).
 
 ## Syntax of Beacon YAML Configuration
 
-![Beacon YAML Configuration Syntax](./beacon/beacon_syntax.png)
+![Beacon YAML Configuration Syntax]
 
 <center><i>Beacon YAML configuration syntax</i></center>
 
@@ -33,26 +33,26 @@ In summary, a Beacon Service enables you to expose an API endpoint for a specifi
 
 Creating a Beacon Service is a straightforward process that is accomplished within the DataOS platform using a simple declarative YAMLish syntax. While you need to have a basic understanding of Postgres to define migrations, the rest of the process is declarative and straightforward. Click on the link below to learn more.
 
-[Creating Beacon Service ](./beacon/creating_beacon_service.md)
+[Creating Beacon Service ]
 
 ## Sections of a Beacon YAML Configuration
 
 Let's take a closer look at each section of the YAML configuration and understand their importance in configuring your Beacon Service. For a detailed breakdown of each section and how to configure them, please visit the Beacon YAML configuration page.
 
-[Beacon YAML Configurations](./beacon/beacon_yaml_configurations.md)
+[Beacon YAML Configurations]
 
 ## Recipes
 
-[Exposing GraphQL API’s on Database using Beacon ](./beacon/exposing_graphql_apis_on_database_using_beacon.md)
+[Exposing GraphQL API’s on Database using Beacon ]
 
-[Exposing REST API’s on Database using Beacon](./beacon/exposing_rest_apis_on_database_using_beacon.md)
+[Exposing REST API’s on Database using Beacon]
 
-[Store APIs on Beacon ](./beacon/store_apis_on_beacon.md)
+[Store APIs on Beacon ]
 
-[Query Pushdown Streamlit Application ](./beacon/query_pushdown_streamlit_application.md)
+[Query Pushdown Streamlit Application ]
 
-[Query Pushdown SSL Postgres](./beacon/query_pushdown_ssl_postgres.md)
+[Query Pushdown SSL Postgres]
 
-[Mask Data After Moving from Database to Icebase ](./beacon/mask_data_after_moving_from_database_to_icebase.md)
+[Mask Data After Moving from Database to Icebase ]
 
-[Exposing an API After Creating a Database ](./beacon/exposing_an_api_after_creating_a_database.md)
+[Exposing an API After Creating a Database ]
