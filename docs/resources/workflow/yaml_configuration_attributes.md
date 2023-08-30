@@ -31,6 +31,10 @@ workflow:
           {{stack2-specific-properties}}
       dependencies: 
        - {{job1-name}}
+    - name: {{job2-name}}
+      file: {{workflows/write-pulsar.yaml}}
+      dependencies: 
+       - {{job2-name}}
 ```
 <center><i> Structure of Workflow YAML configuration </i></center>
 
@@ -60,7 +64,7 @@ workflow:
 
 | **Data Type**     | **Requirement**                          | **Default Value** | **Possible Value** |
 |---------------|--------------------------------------|---------------|----------------|
-| mapping       | optional (mandatory for <br>Scheduled Workflows) | none          | none           |
+| mapping       | optional (mandatory for <br><a href="../workflow.md#scheduled-workflow">Scheduled Workflows</a>) | none          | none           |
 
 <b>Example Usage:</b>
 
@@ -73,13 +77,13 @@ schedule:
 ---
 
 ### **`cron`**
-<b>Description:</b> the cron field encompasses the cron expression, a string that comprises six or seven sub-expressions providing specific details of the schedule. <br>
+<b>Description:</b> the cron field encompasses the <a href="https://en.wikipedia.org/wiki/Cron">cron expression</a>, a string that comprises six or seven sub-expressions providing specific details of the schedule. <br>
 
 | **Data Type** | **Requirement**                          | **Default Value** | **Possible Value**          |
 |-----------|--------------------------------------|---------------|-------------------------|
-| string    | optional (mandatory for<br> Scheduled Workflows) | none          | any valid cron expression |
+| string    | optional (mandatory for <br><a href="../workflow.md#scheduled-workflow">Scheduled Workflows</a>) | none          | any valid cron expression |
 
-<b>Additional Details:</b> the cron expression consists of value separated by white spaces  <br>
+<b>Additional Details:</b> the cron expression consists of value separated by white spaces, make sure there are no formatting issues.<br>
 <b>Example Usage:</b>
 
 ```yaml
@@ -89,16 +93,16 @@ cron: '*/10 * * * *'
 ---
 
 ### **`concurrencyPolicy`**
-<b>Description:</b> the concurrencyPolicy field determines how concurrent executions of a Workflow, created by a scheduled Workflow, are handled<br>
+<b>Description:</b> the <code>concurrencyPolicy</code> attribute determines how concurrent executions of a Workflow, created by a scheduled Workflow, are handled<br>
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ----------- | ------------- | --------------- | --------------- |
 |    string     |    optional     |       Allow       | Allow/Forbid/Replace |
 
 <b>Additional Details:</b> <br>
-- <i> concurrencyPolicy: Forbid -</i> When the concurrencyPolicy is set to "Forbid", the Schedule/Cron Workflow strictly prohibits concurrent runs. In this scenario, if it is time for a new workflow run and the previous workflow run is still in progress, the cron workflow will skip the new workflow run altogether.  <br>
-- <i> concurrencyPolicy: Allow -</i> On the other hand, setting the concurrencyPolicy to "Allow" enables the Schedule/Cron Workflow to accommodate concurrent executions. If it is time for a new workflow run and the previous workflow run has not completed yet, the cron workflow will proceed with the new workflow run concurrently.  <br>
-- <i> concurrencyPolicy: Replace -</i> When the concurrencyPolicy is set to "Replace", the Schedule/Cron Workflow handles concurrent executions by replacing the currently running workflow run with a new workflow run if it is time for the next job workflow and the previous one is still in progress.  <br>
+- <i> <code>concurrencyPolicy: Forbid</code> -</i> When the <code>concurrencyPolicy</code> is set to <code>Forbid</code>, the Schedule/Cron Workflow strictly prohibits concurrent runs. In this scenario, if it is time for a new Workflow run and the previous Workflow run is still in progress, the cron Workflow will skip the new Workflow run altogether.  <br>
+- <i> <code>concurrencyPolicy: Allow</code> -</i> On the other hand, setting the <code>concurrencyPolicy</code> to <code>Allow</code> enables the Schedule/Cron Workflow to accommodate concurrent executions. If it is time for a new Workflow run and the previous Workflow run has not completed yet, the cron Workflow will proceed with the new Workflow run concurrently.  <br>
+- <i> <code>concurrencyPolicy: Replace</code> -</i> When the <code>concurrencyPolicy</code> is set to <code>Replace</code>, the Schedule/Cron Workflow handles concurrent executions by replacing the currently running Workflow run with a new Workflow run if it is time for the next job Workflow and the previous one is still in progress.  <br>
 
 <b>Example Usage:</b>
 
@@ -109,13 +113,14 @@ concurrencyPolicy: Replace
 ---
 
 ### **`startOn`**
-<b>Description:</b> specifies start time of a schedule in ISO 8601 format.<br>
+<b>Description:</b> specifies start time of a schedule in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format.<br>
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value**                  |
 |-----------|-------------|---------------|---------------------------------|
-| string    | optional    | none          | any time provided in ISO 8601 format |
+| string    | optional    | none          | any time provided in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format |
 
 <b>Example Usage:</b>
+
 ```yaml
 startOn: 2022-01-01T23:30:45Z 
 ```
@@ -123,13 +128,14 @@ startOn: 2022-01-01T23:30:45Z
 ---
 
 ### **`endOn`**
-<b>Description:</b> endOn terminates the scheduled Workflow run at the specified time, even if the last workflow run isn’t complete <br>
+<b>Description:</b> <code>endOn</code> terminates the scheduled Workflow run at the specified time, even if the last workflow run that got triggered before the threshold time isn’t complete <br>
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value**                  |
 |-----------|-------------|---------------|---------------------------------|
 | string    | optional    | none          | any time provided in ISO 8601 format |
 
 <b>Example Usage:</b>
+
 ```yaml
 endOn: 2022-01-01T23:30:45Z 
 ```
@@ -137,13 +143,14 @@ endOn: 2022-01-01T23:30:45Z
 ---
 
 ### **`completeOn`**
-<b>Description:</b> completeOn signifies successful completion. completeOn will let the last workflow run if it was triggered before the specified time <br>
+<b>Description:</b> <code>completeOn</code> signifies successful completion. completeOn will let the last workflow run if it was triggered before the specified time <br>
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value**            |
 | ----------- | ------------- | --------------- | --------------------------- |
-|    string     |    optional     |       none        | any time provided in ISO 8601 format |
+|    string     |    optional     |       none        | any time provided in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format |
 
 <b>Example Usage:</b>
+
 ```yaml
 completeOn: 2022-01-01T23:30:45Z 
 ```
@@ -158,6 +165,7 @@ completeOn: 2022-01-01T23:30:45Z
 | string    | optional    | none          | any string     |
 
 <b>Example Usage:</b>
+
 ```yaml
 title: Quality Assessment Workflow 
 ```
@@ -165,7 +173,7 @@ title: Quality Assessment Workflow
 ---
 
 ### **`dag`**
-<b>Description:</b> DAG is a Directed Acyclic Graph, a conceptual representation of a sequence of jobs (or activities). These jobs in a DAG are executed in the order of dependencies between them <br>
+<b>Description:</b> DAG is a <a href="../workflow.md#workflow-and-directed-acyclic-graph-dag">Directed Acyclic Graph</a>, a conceptual representation of a sequence of jobs (or activities). These jobs in a DAG are executed in the order of dependencies between them <br>
 
 | **Data Type**        | **Requirement** | **Default Value** | **Possible Value** |
 |------------------|-------------|---------------|----------------|
@@ -173,6 +181,7 @@ title: Quality Assessment Workflow
 
 <b>Additional Details:</b> there should be atleast one job within a DAG<br>
 <b>Example Usage:</b>
+
 ```yaml
 dag: 
   - name: profiling-job 
@@ -219,6 +228,7 @@ title: Profiling Job
 | string      | optional    | none          | any string     |
 
 <b>Example Usage:</b>
+
 ```yaml
 description: The job ingests customer data 
 ```
@@ -233,6 +243,7 @@ description: The job ingests customer data
 | mapping   | mandatory   | none          | none           |
 
 <b>Example Usage:</b>
+
 ```yaml
 spec: 
   stack: flare:4.0 
@@ -244,7 +255,8 @@ spec:
 ---
 
 ### **`runAsUser`**
-<b>Description:</b> when the `runAsUser` field is configured with the UserID of the use-case assignee, it grants the authority to perform operations on behalf of that user. <br>
+
+<b>Description:</b> when the <code>runAsUser</code> attribute is configured with the UserID of the use-case assignee, it grants the authority to perform operations on behalf of that user. <br>
 
 | **Data Type**       | **Requirement** | **Default Value** | **Possible Value**            |
 |-----------------|-------------|---------------|---------------------------|
@@ -257,13 +269,14 @@ runAsUser: iamgroot
 ---
 
 ### **`compute`**
-<b>Description:</b> a Compute Resource provides processing power for the job.  <br>
+<b>Description:</b> a <a href="../compute.md">Compute</a> Resource provides processing power for the job.  <br>
 
 | **Data Type**       | **Requirement** | **Default Value** | **Possible Value**                           |
 |-----------------|-------------|---------------|------------------------------------------|
-| string          | mandatory   | none          | runnable-default or any <br> other custom compute <br>created by the user |
+| string          | mandatory   | none          | runnable-default or any <br> other custom Compute <br> Resource created by <br> the user |
 
 <b>Example Usage:</b>
+
 ```yaml
 compute: runnable-default 
 ```
@@ -271,16 +284,17 @@ compute: runnable-default
 ---
 
 ### **`stack`**
-<b>Description:</b> a Stack is a Resource that serves as a secondary extension point, enhancing the capabilities of a Workflow Resource by introducing additional programming paradigms.  <br>
+<b>Description:</b> <a href="../stacks.md">Stack</a> is a <a href="../../resources.md">Resource</a> that serves as a secondary extension point, enhancing the capabilities of a Workflow Resource by introducing additional programming paradigms.  <br>
 
 | **Data Type**   | **Requirement** | **Default Value** | **Possible Value**                         |
 |-------------|-------------|---------------|----------------------------------------|
 | string      | mandatory   | none          | flare/toolbox/scanner/alpha            |
 
-<b>Additional Details:</b> it is also possible to specify specific versions of the Stack. For example, you can use the notation "flare:4.0" to indicate a specific version. If no version is explicitly specified, the system will automatically select the latest version as the default option <br>
+<b>Additional Details:</b> it is also possible to specify specific versions of the Stack. For example, you can use the notation <code>flare:4.0</code> to indicate a specific version. If no version is explicitly specified, the system will automatically select the latest stable version as the default option <br>
 <b>Example Usage:</b>
+
 ```yaml
-stack: alpha 
+stack: toolbox 
 ```
 
 ---
@@ -325,10 +339,10 @@ count: 2
 | string      | optional    | none          | Always/OnFailure/<br>OnError/OnTransientError |
 
 <b>Additional Details:</b> <br>
-  - <i> Always -</i> Retry all failed steps.  <br>
-  - <i> OnFailure -</i> Retry steps whose main container is marked as failed in Kubernetes (this is the default).  <br>
-  - <i> OnError -</i> Retry steps that encounter errors or whose init or wait containers fail.  <br>
-  - <i> OnTransientError -</i> Retry steps that encounter errors defined as transient or errors matching the `TRANSIENT_ERROR_PATTERN` environment variable.   <br>
+  - <i> <code>Always</code> -</i> Retry all failed steps.  <br>
+  - <i> <code>OnFailure</code> -</i> Retry steps whose main container is marked as failed in Kubernetes (this is the default).  <br>
+  - <i> <code>OnError</code> -</i> Retry steps that encounter errors or whose init or wait containers fail.  <br>
+  - <i> <code>OnTransientError</code> -</i> Retry steps that encounter errors defined as transient or errors matching the <code>TRANSIENT_ERROR_PATTERN</code> environment variable.  <br>
 
 <b>Example Usage:</b>
 
@@ -349,4 +363,19 @@ strategy: "OnTransientError"
 
 ```yaml
 dependency: job2
+```
+
+---
+
+### **`file`**
+<b>Description:</b> attribute for specifying the file path for a Workflow YAML  <br>
+
+| **Data Type**   | **Requirement** | **Default Value** | **Possible Value** |
+|-------------|-------------|---------------|----------------|
+| string      | optional    | none          | none           |
+
+<b>Example Usage:</b>
+
+```yaml
+file: workflow/new/random.yaml
 ```
