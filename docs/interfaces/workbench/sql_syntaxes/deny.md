@@ -38,7 +38,7 @@ DENY SELECT ON orders TO ROLE PUBLIC;
 
 ## Limitations
 
-The system access controls as well as the connectors provided by default in Trino have no support for `DENY`.
+The system access controls as well as the connectors provided by default in Minerva have no support for `DENY`.
 
 ## See also
 

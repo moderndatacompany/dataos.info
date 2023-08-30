@@ -1,6 +1,6 @@
 # Destinations
 
-## Configure Destination
+## Configure destination
 
 Clicking on +Add New will give you the following screen to add a new alert destination.
 

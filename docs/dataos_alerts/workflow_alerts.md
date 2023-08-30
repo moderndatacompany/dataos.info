@@ -31,7 +31,7 @@ dataos-ctl user apikey get
 
 ## Procedure
 
-### **Step 1: Push the Alerts Code to the Docker Hub**
+### **Step 1: Push the Alerts code to the Docker hub**
 
 To set up the alerting system, you will need to create a Python script for sending alerts, a Dockerfile, and a requirements file. Below are samples of the Python script, Dockerfile, and requirements file to help you get started.
 
@@ -140,7 +140,7 @@ requests
 In your terminal, navigate to the directory containing the Dockerfile and run the following command to build your Docker image. Replace `<image-name>` with the name you want to give your Docker image.
 
 ```bash
-docker build -t <image-name> .
+docker build -t <image-name>.
 ```
 
 **Tag the Docker Image**
@@ -294,7 +294,7 @@ workflow:
     dependencies: wf-job1
 ```
 
-### **Step 5: Apply the Monitored Workflow**
+### **Step 5: Apply the monitored Workflow**
 
 Once the workflow to be monitored has been designed, it's time to deploy it. After some time, this workflow may fail, as simulated in the example provided. 
 
