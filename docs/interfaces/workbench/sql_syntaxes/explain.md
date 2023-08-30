@@ -15,7 +15,7 @@ TYPE { LOGICAL | DISTRIBUTED | VALIDATE | IO }
 
 ## Description
 
-Show the logical or distributed execution plan of a statement, or validate the statement. The distributed plan is shown by default. Each plan fragment of the distributed plan is executed by a single or multiple Trino nodes. Fragments separation represent the data exchange between Trino nodes. Fragment type specifies how the fragment is executed by Trino nodes and how the data is distributed between fragments:
+Show the logical or distributed execution plan of a statement, or validate the statement. The distributed plan is shown by default. Each plan fragment of the distributed plan is executed by a single or multiple Minerva nodes. Fragments separation represent the data exchange between Minerva nodes. Fragment type specifies how the fragment is executed by Minerva nodes and how the data is distributed between fragments:
 
 `SINGLE`
 
@@ -50,7 +50,7 @@ EXPLAIN (TYPE LOGICAL) SELECT regionkey, count(*) FROM nation GROUP BY 1;
 ```yaml
                                                    Query Plan
 -----------------------------------------------------------------------------------------------------------------
- Trino version: version
+ Minerva version: version
  Output[regionkey, _col1]
  │   Layout: [regionkey:bigint, count:bigint]
  │   Estimates: {rows: ? (?), cpu: ?, memory: ?, network: ?}
@@ -85,7 +85,7 @@ EXPLAIN (TYPE LOGICAL) SELECT regionkey, count(*) FROM nation GROUP BY 1;
 
 **Warning**
 
-The output format is not guaranteed to be backward compatible across Trino versions.
+The output format is not guaranteed to be backward compatible across Minerva versions.
 
 Process the supplied query statement and create a logical plan in JSON format:
 
@@ -359,7 +359,7 @@ EXPLAIN (TYPE DISTRIBUTED) SELECT regionkey, count(*) FROM nation GROUP BY 1;
 ```yaml
                                               Query Plan
 ------------------------------------------------------------------------------------------------------
- Trino version: version
+ Minerva version: version
  Fragment 0 [SINGLE]
      Output layout: [regionkey, count]
      Output partitioning: SINGLE []
@@ -403,7 +403,7 @@ EXPLAIN (TYPE DISTRIBUTED) SELECT regionkey, count(*) FROM nation GROUP BY 1;
 
 **Warning**
 
-The output format is not guaranteed to be backward compatible across Trino versions.
+The output format is not guaranteed to be backward compatible across Minerva versions.
 
 Process the supplied query statement and create a distributed plan in JSON format. The distributed plan splits the logical plan into stages, and therefore explicitly shows the data exchange between workers:
 

@@ -55,6 +55,6 @@ SET TIME ZONE concat_ws('/', 'America', 'Los_Angeles');
 
 Setting the default time zone for the session has no effect if the `sql.forced-session-time-zone` configuration property is already set.
 
-## See also
+<!-- ## See also
 
-- **`[current_timezone()](https://trino.io/docs/current/functions/datetime.html#current_timezone)`**
+- **`[current_timezone()](https://trino.io/docs/current/functions/datetime.html#current_timezone)`**-->

@@ -16,9 +16,9 @@ Statistics are returned as a row for each column, plus a summary row for the tab
 | Column | Description | Notes |
 | --- | --- | --- |
 | column_name | The name of the column | NULL in the table summary row |
-| data_size | The total size in bytes of all of the values in the column | NULL in the table summary row. Available for columns of [string](https://trino.io/docs/current/language/types.html#string-data-types) data types with variable widths. |
+| data_size | The total size in bytes of all of the values in the column | NULL in the table summary row. Available for columns of string data types with variable widths. |
 | distinct_values_count | The estimated number of distinct values in the column | NULL in the table summary row |
 | nulls_fractions | The portion of the values in the column that are NULL | NULL in the table summary row. |
 | row_count | The estimated number of rows in the table | NULL in column statistic rows |
-| low_value | The lowest value found in this column | NULL in the table summary row. Available for columns of [DATE](https://trino.io/docs/current/language/types.html#date-data-type), [integer](https://trino.io/docs/current/language/types.html#integer-data-types), [floating-point](https://trino.io/docs/current/language/types.html#floating-point-data-types), and [fixed-precision](https://trino.io/docs/current/language/types.html#fixed-precision-data-types) data types. |
-| high_value | The highest value found in this column | NULL in the table summary row. Available for columns of [DATE](https://trino.io/docs/current/language/types.html#date-data-type), [integer](https://trino.io/docs/current/language/types.html#integer-data-types), [floating-point](https://trino.io/docs/current/language/types.html#floating-point-data-types), and [fixed-precision](https://trino.io/docs/current/language/types.html#fixed-precision-data-types) data types. |
+| low_value | The lowest value found in this column | NULL in the table summary row. Available for columns of DATE, integer, floating-point, and fixed-precision data types. |
+| high_value | The highest value found in this column | NULL in the table summary row. Available for columns of DATE, integer, floating-point, and fixed-precision data types. |

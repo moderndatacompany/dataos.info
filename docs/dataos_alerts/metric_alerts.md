@@ -230,7 +230,7 @@ workflow:
 ![Notification in Email](metric_alert.png)
 <figcaption align = "center">Notification in email  </figcaption>
 
-<aside class="callout"> The workflow can be scheduled to run at your preferred frequency (e.g., every minute, hourly, daily) using CRON jobs in the `schedule` tag. </aside>
+<aside class="callout">🗣 The workflow can be scheduled to run at your preferred frequency (e.g., every minute, hourly, daily) using CRON jobs in the `schedule` tag. </aside>
 
 Now, apply this YAML configuration to DataOS.
 
