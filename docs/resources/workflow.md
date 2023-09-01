@@ -1,6 +1,6 @@
 # Workflow
 
-The Workflow in DataOS serves as a fundamental [Resource](../resources.md) for orchestrating data processing tasks with dependencies. It enables the creation of complex data workflows by defining a hierarchy based on a dependency mechanism.
+The Workflow in DataOS serves as a [Resource](../resources.md) for orchestrating data processing tasks with dependencies. It enables the creation of complex data workflows by defining a hierarchy based on a dependency mechanism.
 
 ## Workflow and Directed Acyclic Graph (DAG)
 

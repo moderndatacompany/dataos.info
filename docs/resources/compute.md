@@ -1,6 +1,6 @@
 # Compute
 
-Compute is a fundamental [Resource](../resources.md) in the DataOS ecosystem that enables the allocation of processing power for data processing, querying and machine learning workloads. It facilitates the creation of node pools, which are groups of virtual machines (VMs) with similar configurations (CPU, RAM, Storage Capacity, Network Protocol, and Storage Drive Types), and makes them available to DataOS as a Compute Resource, accessible through unique names. By defining a Compute Resource, the need for manually specifying individual VMs for provisioning is eliminated, streamlining resource management. 
+Compute is a [Resource](../resources.md) in the DataOS ecosystem that enables the allocation of processing power for data processing, querying and machine learning workloads. It facilitates the creation of node pools, which are groups of virtual machines (VMs) with similar configurations (CPU, RAM, Storage Capacity, Network Protocol, and Storage Drive Types), and makes them available to DataOS as a Compute Resource, accessible through unique names. By defining a Compute Resource, the need for manually specifying individual VMs for provisioning is eliminated, streamlining resource management. 
 
 <center>
 
