@@ -3,8 +3,8 @@
 You can also execute or call Alpha stack within a Workflow as given below:
 
 ```yaml
-version: v1
 name: alpha-workflow
+version: v1
 type: workflow
 workflow:
   dag:

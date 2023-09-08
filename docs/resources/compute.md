@@ -1,6 +1,6 @@
 # Compute
 
-Compute is a [Resource](../resources.md) in the DataOS ecosystem that enables the allocation of processing power for data processing, querying and machine learning workloads. It facilitates the creation of node pools, which are groups of virtual machines (VMs) with similar configurations (CPU, RAM, Storage Capacity, Network Protocol, and Storage Drive Types), and makes them available to DataOS as a Compute Resource, accessible through unique names. By defining a Compute Resource, the need for manually specifying individual VMs for provisioning is eliminated, streamlining resource management. 
+Compute is a [DataOS Resource](../resources.md), designed to streamline the allocation of processing power for data-centric tasks such as data procesing, querying and machine learning workloads. It acts as an abstraction on top of **node pools**, which represent a group of virtual machines (VMs) characterized by congruent configurations. These configurations encompass CPU specifications, RAM capacity, network protocol, and storage drive types.  These homogenous groupings are seamlessly accessible through a unique, identifiable name within DataOS. and makes them available to DataOS as a Compute Resource, accessible through a unique name. This abstraction eliminates the necessity for developers to individually specify and provision VMs, thus optimizing resource allocation and streamlining the computational workflow.
 
 <center>
 
@@ -9,7 +9,7 @@ Compute is a [Resource](../resources.md) in the DataOS ecosystem that enables th
 </center>
 
 <center>
-<i>Illustration depicting Compute Resource in DataOS</i></center>
+<i>Illustration depicting hierarchy of Compute Resource</i></center>
 
 During the initial setup of DataOS, Compute is one of the primary Resource created as it provides computational power for the functioning of various other components and Resources within the system. A Compute Resource encompasses node pools procured from diverse cloud providers, including Amazon EC2, Azure VM, and Google Cloud Engine. Distinct instances of Compute Resources are tailored to specific purposes and are subsequently referenced by other Resources to fulfill their computational requirements.
 
