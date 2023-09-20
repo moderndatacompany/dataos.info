@@ -39,7 +39,7 @@
     <aside class="callout">🗣 Scanner workflow will automatically create a source (with the same name as the depot name) where the scanned metadata is saved within Metastore.</aside>    
     
     
-    **For Non-Depot Scan:** First, specify the 
+    **For Non-Depot Scan:** First, specify the following:
     
     **`type`**: This depends on the underlying data source. Values for type could be snowflake, bigquery, redshift, etc.
     

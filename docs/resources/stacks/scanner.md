@@ -30,14 +30,14 @@ Apart from the external applications, the Scanner stack can also extract metadat
 
 The Scanner job connects with the following DataOS components and stores the extracted metadata to Metis DB:
 
-- **Collation-Service**: To scan and publish data-pipeline metadata (workflow-related information, execution history, and execution states). For historical data such as pods and logs, and data processing stacks such as Flare, Benthos, etc., to collect metadata about jobs information and source and destinations.
-- **Gateway service**: To retrieve information from data profiles (descriptive statistics for datasets) and data quality tables (quality checks for your data along with their pass/fail status). To scan query usage-related data and harvest required insights such as (heavy datasets, popular datasets, datasets most associated together, etc.).
-- **Heimdall**: To scan information about the users present in the DataOS environment, their descriptions, and images. All this user information will be available on Metis UI.
-- **Pulsar Service**: To keep listening to the messages being published on it from various other services/stacks.
+- **Collation Service**: This service scans and publishes metadata related to data pipelines, including workflow information, execution history, and execution states. It also collects metadata for historical data such as pods and logs, as well as data processing stacks like Flare and Benthos, capturing job information and source-destination relationships.
+- **Gateway Service**: To retrieve information from data profiles (descriptive statistics for datasets) and data quality tables (quality checks for your data along with their pass/fail status). It also scans data related to query usage, enabling insights into heavy datasets, popular datasets, and associations between datasets.
+- **Heimdall**: To scan and retrieve information about users in the DataOS environment, including their descriptions and profile images. This user information is accessible through the Metis UI.
+- **Pulsar** **Service**: To keep listening to the messages being published on it by various other services and stacks within the system.
 
-A continuous running service within the DataOS environment keeps track of newly created or updated datasets/topics/pipelines(workflows). With this information about the changed entity, it creates a reconciliation Scanner YAML with filters to include only the affected entity. This Scanner workflow will extract the metadata about the entity and update the target metastore.
+Indexer service, a continuous running service within the DataOS environment keeps track of newly created or updated entities(datasets/topics/workflows, etc.). With this information about the changed entity, it creates a reconciliation Scanner YAML with filters to include only the affected entity. This Scanner workflow will extract the metadata about the entity and update the target metastore.
 <aside class="callout">
-🗣 DataOS Scanner is a flexible and extensible framework; you can easily integrate it with new sources
+🗣 DataOS Scanner is a flexible and extensible framework; you can easily integrate it with new sources.
 
 </aside>
 
