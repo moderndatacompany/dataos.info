@@ -7,13 +7,13 @@ Metadata can be retrieved from Superset dashboards using non-depot Scanner workf
 
 To scan the metadata from Superset, you need the following:
 
-Database Connection: To extract metadata from Superset via MySQL or Postgres database, database user must have at least SELECT priviledge on dashboards & slices tables within of superset schema.
+- Database Connection: To extract metadata from Superset via MySQL or Postgres database, database user must have at least SELECT priviledge on dashboards & slices tables within of superset schema.
 
-> The ingestion also works with Superset 2.0.0 🎉
+> The metadata extraction also works with Superset 2.0.0 🎉
 
 ## Non-Depot Scan Workflow
 
-First you need to provide source connection details to connect with the dashboard service. Once connected you can provide configuration settings, such as metadata type and filter patterns to include/exclude assets for metadata scanning. 
+First, you need to provide source connection details to connect with the dashboard service. Once connected, you can provide configuration settings, such as metadata type and filter patterns to include/exclude assets for metadata scanning. 
 
 ### **Scanner Configuration Properties**
 
@@ -78,4 +78,4 @@ workflow:
               dashboardFilterPattern: {}
 ```
 
-> After the successful workflow run, you can check the metadata of scanned Tables on Metis UI.
+> After the successful workflow run, you can check the metadata of scanned dashboards on Metis UI.

@@ -67,4 +67,4 @@ workflow:
               chartFilterPattern: {}
 ```
 
-> After the successful workflow run, you can check the metadata of scanned Tables on Metis UI.
+> After the successful workflow run, you can check the metadata of scanned dashboards on Metis UI.

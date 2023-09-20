@@ -6,7 +6,9 @@ You can scan metadata from Atlas for a dashboard with non-depot Scanner workflow
 
 To scan the metadata from Atlas, you need the following:
 
-- Login to Atlas so that atlas API key will be generated in the profile section.
+- Atlas API key
+
+> To obtain an Atlas API key, log in to Atlas. Once logged in, navigate to the <b>Profile</b> section, where you can access and view your generated API key.
 
 
 ## Non-Depot Scan Workflow
@@ -64,4 +66,4 @@ workflow:
               chartFilterPattern: {}
 ```
 
-> After the successful workflow run, you can check the metadata of scanned Tables on Metis UI.
+> After the successful workflow run, you can check the metadata of scanned dashboards on Metis UI.

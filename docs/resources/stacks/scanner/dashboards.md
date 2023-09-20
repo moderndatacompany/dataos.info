@@ -1,6 +1,11 @@
-From Structured data sources, Scanner workflow extracts schema details such as table names, constraints, and primary keys.
-This is a list of supported data sources from which metadata can be extracted. 
+Metadata can be retrieved from the dashboard services using non-depot Scanner workflows. This metadata is about elemnets, such as dashboards, charts, owners, etc.
+
+This is a list of supported dashboard services from which metadata can be extracted. 
 
 ## Databases
 
-[Atlas](databases_and_warehouses/mariadb.md)
+[Atlas](dashboards/atlas_scan.md)
+
+[Redash](dashboards/redash_scan.md)
+
+[Superset](dashboards/superset_scan.md)
