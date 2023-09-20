@@ -2,7 +2,7 @@
 
 A Service represents a long-running process that acts as a receiver and/or provider of APIs. It serves as a fundamental [Resource](../resources.md) in the DataOS ecosystem, catering to various scenarios involving continuous real-time and streaming data flow. Whether it's event processing, streaming IoT data, log processing for network devices, real-time stock trade analysis, or dynamic user interfaces (UIs), the Service Resource enables data developers to gather, process, and analyze real-time/streaming data flow, enabling timely insights and swift response to the latest information.
 
-While resembling a [Workflow](./workflow.md) in some aspects, a Service differentiates itself by not employing [Directed Acyclic Graphs (DAGs)](./workflow.md#workflows-and-directed-acyclic-graphs-dags). Instead, a Service is provisioned as a runnable entity, albeit limited to utilizing a single [Stack](./stacks.md) at a time. This contrasts with a Workflow, which can accommodate multiple [jobs](./workflow.md#workflows-and-directed-acyclic-graphs-dags) being executed upon separate Stacks.
+While resembling a [Workflow](./workflow.md) in some aspects, a Service differentiates itself by not employing [Directed Acyclic Graphs (DAGs)](./workflow.md#workflows-and-directed-acyclic-graphs-dags). Instead, a Service is provisioned as a runnable entity, albeit limited to utilizing a single [Stack](./stacks.md) at a time. This contrasts with a Workflow, which can accommodate multiple [jobs](./workflow.md#workflows-and-directed-acyclic-graphs-dags) being executed upon separate [Stacks.](./stacks.md)
 
 ## Core Concepts
 
@@ -43,11 +43,11 @@ To understand how a Service works, let’s take a case scenario where a user wan
 
 ### **Service YAML Configuration**
 
-To create a Service resource, you need to configure the YAML file with the appropriate attributes/fields. The following sections explain the necessary configurations.
+To create a Service Resource, you need to configure the YAML file with the appropriate attributes. The following sections explain the necessary configurations.
 
-#### **Configuring the Resource Section**
+#### **Configure the Resource Section**
 
-A Service is a type of resource in DataOS. Below is the YAML configuration for the Resource Section:
+A Service is a [Resource-type](./types_of_dataos_resources.md) in DataOS. Below is the YAML configuration for the Resource Section:
 ```yaml
 name: {{my-workflow}}
 version: v1 
@@ -60,7 +60,7 @@ owner: {{iamgroot}}
 ```
 <center><i>Resource Section Configuration for a Service</i></center>
 
-For detailed customization options and additional fields within the Resource Section, refer to the [Resource Configuration](../resources/resource_grammar.md).
+For detailed customization options and additional attributes of the Resource Section, refer to the [Attributes of Resource Section.](../resources/resource_grammar.md)
 
 #### **Configuring the Service-specific Section**
 
@@ -254,38 +254,38 @@ The table below presents an exhaustive list of key-value properties and their de
 
 | Field | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`service`](./service/service_specific_section_grammar.md#service)| object | none | none | mandatory |
-| [`title`](./service/service_specific_section_grammar.md#title) | string | none | any string | optional |
-| [`servicePort`](./service/service_specific_section_grammar.md#serviceport) | integer | none | any valid service port | optional |
-| [`metricPort`](./service/service_specific_section_grammar.md#metricport) | integer | none | any valid metric port | optional |
-| [`ingress`](./service/service_specific_section_grammar.md#ingress) | object | none | none | mandatory**  |
-| [`enabled`](./service/service_specific_section_grammar.md#enabled) | boolean | false | true/false | mandatory** |
-| [`path`](./service/service_specific_section_grammar.md#path) | string | none | any valid path | mandatory** |
-| [`stripPath`](./service/service_specific_section_grammar.md#strippath) | boolean | false | true/false | mandatory** |
-| [`noAuthentication`](./service/service_specific_section_grammar.md#noauthentication) | boolean | false | true/false | optional |
-| [`replicas`](./service/service_specific_section_grammar.md#replicas) | integer | 1 | any positive integer | optional  |
-| [`autoscaling`](./service/service_specific_section_grammar.md#autoscaling) | object | none | none | optional |
-| [`enabled`](./service/service_specific_section_grammar.md#enabled-1) | boolean | false | true/false | optional |
-| [`minReplicas`](./service/service_specific_section_grammar.md#minreplicas) | integer | 1 | any positive integer | optional  |
-| [`maxReplicas`](./service/service_specific_section_grammar.md#maxreplicas) | integer | 1 | any positive integer | optional  |
-| [`targetMemoryUtilizationPercentage`](./service/service_specific_section_grammar.md#targetmemoryutilizationpercentage) | integer | none | any positive integer | optional  |
-| [`targetCPUUtilizationPercentage`](./service/service_specific_section_grammar.md#targetcpuutilizationpercentage) | integer | None | any positive integer | optional  |
-| [`stack`](./service/service_specific_section_grammar.md#stack) | string | None | benthos/alpha/beacon | mandatory |
-| [`logLevel`](./service/service_specific_section_grammar.md#loglevel) | string | INFO | INFO/WARN/DEBUG/ERROR | optional |
-| [`envs`](./service/service_specific_section_grammar.md#envs) | object | none | key-value pairs of environment variables | optional |
-| [`compute`](./service/service_specific_section_grammar.md#compute) | string | none | runnable-default or any other custom Compute Resource | mandatory |
-| [`resources`](./service/service_specific_section_grammar.md#resources) | object | none | none | optional  |
-| [`requests`](./service/service_specific_section_grammar.md#requests) | object | none | none | optional  |
-| [`limits`](./service/service_specific_section_grammar.md#limits) | object | none | none | optional  |
-| [`cpu`](./service/service_specific_section_grammar.md#cpu) | string | requests: 100m, limits: 400m | cpu units in milliCPU(m) or cpu core | optional  |
-| [`memory`](./service/service_specific_section_grammar.md#memory) | string | requests: 100Mi, limits: 400Mi | memory in Mebibytes(Mi) or Gibibytes(Gi) | optional  |
-| [`runAsApiKey`](./service/service_specific_section_grammar.md#runasapikey) | string | user's API Key | any valid DataOS API Key | Optional  |
-| [`runAsUser`](./service/service_specific_section_grammar.md#runasuser) | string | user's User-id | userID of Use-Case Assignee | optional  |
-| [`dryRun`](./service/service_specific_section_grammar.md#dryrun) | boolean | false | true/false | optional |
+| [`service`](./service/yaml_configuration_attributes.md#service)| object | none | none | mandatory |
+| [`title`](./service/yaml_configuration_attributes.md#title) | string | none | any string | optional |
+| [`servicePort`](./service/yaml_configuration_attributes.md#serviceport) | integer | none | any valid service port | optional |
+| [`metricPort`](./service/yaml_configuration_attributes.md#metricport) | integer | none | any valid metric port | optional |
+| [`ingress`](./service/yaml_configuration_attributes.md#ingress) | object | none | none | mandatory**  |
+| [`enabled`](./service/yaml_configuration_attributes.md#enabled) | boolean | false | true/false | mandatory** |
+| [`path`](./service/yaml_configuration_attributes.md#path) | string | none | any valid path | mandatory** |
+| [`stripPath`](./service/yaml_configuration_attributes.md#strippath) | boolean | false | true/false | mandatory** |
+| [`noAuthentication`](./service/yaml_configuration_attributes.md#noauthentication) | boolean | false | true/false | optional |
+| [`replicas`](./service/yaml_configuration_attributes.md#replicas) | integer | 1 | any positive integer | optional  |
+| [`autoscaling`](./service/yaml_configuration_attributes.md#autoscaling) | object | none | none | optional |
+| [`enabled`](./service/yaml_configuration_attributes.md#enabled-1) | boolean | false | true/false | optional |
+| [`minReplicas`](./service/yaml_configuration_attributes.md#minreplicas) | integer | 1 | any positive integer | optional  |
+| [`maxReplicas`](./service/yaml_configuration_attributes.md#maxreplicas) | integer | 1 | any positive integer | optional  |
+| [`targetMemoryUtilizationPercentage`](./service/yaml_configuration_attributes.md#targetmemoryutilizationpercentage) | integer | none | any positive integer | optional  |
+| [`targetCPUUtilizationPercentage`](./service/yaml_configuration_attributes.md#targetcpuutilizationpercentage) | integer | None | any positive integer | optional  |
+| [`stack`](./service/yaml_configuration_attributes.md#stack) | string | None | benthos/alpha/beacon | mandatory |
+| [`logLevel`](./service/yaml_configuration_attributes.md#loglevel) | string | INFO | INFO/WARN/DEBUG/ERROR | optional |
+| [`envs`](./service/yaml_configuration_attributes.md#envs) | object | none | key-value pairs of environment variables | optional |
+| [`compute`](./service/yaml_configuration_attributes.md#compute) | string | none | runnable-default or any other custom Compute Resource | mandatory |
+| [`resources`](./service/yaml_configuration_attributes.md#resources) | object | none | none | optional  |
+| [`requests`](./service/yaml_configuration_attributes.md#requests) | object | none | none | optional  |
+| [`limits`](./service/yaml_configuration_attributes.md#limits) | object | none | none | optional  |
+| [`cpu`](./service/yaml_configuration_attributes.md#cpu) | string | requests: 100m, limits: 400m | cpu units in milliCPU(m) or cpu core | optional  |
+| [`memory`](./service/yaml_configuration_attributes.md#memory) | string | requests: 100Mi, limits: 400Mi | memory in Mebibytes(Mi) or Gibibytes(Gi) | optional  |
+| [`runAsApiKey`](./service/yaml_configuration_attributes.md#runasapikey) | string | user's API Key | any valid DataOS API Key | Optional  |
+| [`runAsUser`](./service/yaml_configuration_attributes.md#runasuser) | string | user's User-id | userID of Use-Case Assignee | optional  |
+| [`dryRun`](./service/yaml_configuration_attributes.md#dryrun) | boolean | false | true/false | optional |
 
 </center>
 
 
 <i>Mandatory**:</i> Fields mandatory for external paths, but optional for internal paths.
 
-For a detailed explanation of each field, consult the [Service-specific Section Grammar](./service/service_specific_section_grammar.md)
+For a detailed explanation of each field, consult the [Attributes of Service YAML.](./service/yaml_configuration_attributes.md)

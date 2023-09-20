@@ -65,7 +65,7 @@ service:
     PGRST_OPENAPI_SERVER_PROXY_URI: https://{{dataos-context}}.dataos.app/{{database-path}} # e.g. https://adapting-spaniel.dataos.app/stores/api/v1/
 ```
 
-For a deeper understanding of Service Resource and its YAML attributes, please refer to the [Attributes of Service Resource](../service/service_specific_section_grammar.md) page.
+For a deeper understanding of Service Resource and its YAML attributes, please refer to the [Attributes of Service Resource YAML](../service/yaml_configuration_attributes.md) page.
 
 #### **Configure Beacon Stack-specific Section**
 

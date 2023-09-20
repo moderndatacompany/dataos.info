@@ -1,6 +1,6 @@
 # Workflow
 
-The Workflow in DataOS serves as a fundamental [Resource](../resources.md) for orchestrating data processing tasks with dependencies. It enables the creation of complex data workflows by defining a hierarchy based on a dependency mechanism.
+The Workflow in DataOS serves as a [Resource](../resources.md) for orchestrating data processing tasks with dependencies. It enables the creation of complex data workflows by defining a hierarchy based on a dependency mechanism.
 
 ## Workflow and Directed Acyclic Graph (DAG)
 
@@ -22,7 +22,7 @@ In the above illustration, **Job 1** is the first job to be executed as it has n
 
 <aside class=callout>
 
-🗣️ A Directed Acyclic Graph may have multiple root nodes, which means that a Workflow can contain both jobs and other nested Workflows stored in different locations. This feature allows for the decomposition of complex workflows into manageable components. For more information on this scenario, refer to <a href="./workflow/orchestrating_multiple_workflows_from_a_single_workflow.md">Orchestrating Multiple Workflows from a Single Workflow.</a>
+🗣️ A Directed Acyclic Graph may have multiple root nodes, which means that a Workflow can contain both jobs and other nested Workflows stored in different locations. This feature allows for the decomposition of complex workflows into manageable components. For more information on this scenario, refer to <a href="/resources/workflow/orchestrating_multiple_workflows_from_a_single_workflow/">Orchestrating Multiple Workflows from a Single Workflow.</a>
 
 
 </aside>
@@ -659,16 +659,20 @@ Make sure to replace `{{name to workspace in the output table from get status co
 
 <aside class="best-practice">
 
-📖 <i>Best Practice:</i><br> It is part of the best practice to add relevant <code>description</code>, <code>title</code> and <code>tags</code> for your Workflow. <code>description</code> helps to determine what the Workflow will help you accomplish, <code>title</code> and <code>tags</code> can help in faster searching in <a href="../interfaces/metis.md">Metis</a> and <a href="../interfaces/operations.md">Operations</a> App.
+📖 <i>Best Practice:</i><br> It is part of the best practice to add relevant <code>description</code>, <code>title</code> and <code>tags</code> for your Workflow. <code>description</code> helps to determine what the Workflow will help you accomplish, <code>title</code> and <code>tags</code> can help in faster searching in <a href="/interfaces/metis/">Metis</a> and <a href="/interfaces/operations/">Operations</a> App.
 
 </aside>
 
 ## How to setup alerts on Workflows?
 
-Workflow alerts play a vital role in the effective management of extensive Workflows and Jobs, enabling streamlined monitoring and prompt notifications in the event of failures. For detailed instructions on configuring Workflow alerts, refer to the documentation link: [Setting Up Workflow Alerts.](../dataos_alerts/workflow_alerts.md)
+Workflow alerts play a vital role in the effective management of extensive Workflows and Jobs, enabling streamlined monitoring and prompt notifications in the event of failures. For detailed instructions on configuring Workflow alerts, refer to the documentation link: [Setting Up Workflow Alerts.](/dataos_alerts/workflow_alerts.md)
 
 
-<aside class="callout">DataOS offers a diverse range of integrated alert mechanisms, emphasizing observability and active monitoring.  To learn more about them, refer to <a href="../dataos_alerts.md">DataOS Alerts</a> page.</aside>
+<aside class="callout">
+
+DataOS offers a diverse range of integrated alert mechanisms, emphasizing observability and active monitoring.  To learn more about them, refer to <a href="/dataos_alerts/">DataOS Alerts</a> page.
+
+</aside>
 
 ## Case Scenarios
 

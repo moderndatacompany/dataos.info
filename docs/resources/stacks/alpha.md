@@ -1,10 +1,10 @@
 # Alpha
 
-Alpha Stack is a declarative DevOps software development kit (SDK) to publish data-driven applications in production. As a cohesive stack, it seamlessly integrates with web-server-based application images constructed atop DataOS, empowering users to leverage DataOS's compute resources to execute external tools or applications. With Alpha Stack, application development is no longer bound by programming language constraints, as it enables the fluid deployment of diverse applications onto a robust, flexible infrastructure.
+Alpha Stack is a declarative DevOps software development kit (SDK) to publish data-driven applications in production. As a cohesive stack, it seamlessly integrates with web-server-based application images constructed atop DataOS, empowering users to leverage DataOS's Compute Resource to execute external tools or applications. With Alpha Stack, application development is no longer bound by programming language constraints, as it enables the fluid deployment of diverse applications onto a robust, flexible infrastructure.
 
-When deploying an application using Alpha Stack, the containerized image contains all the essential functionalities and logic required for the application, while execution of the image occurs within DataOS via the utilization of Alpha Stack, which can be invoked or called within a Service or a Workflow Primitive/Resource.
+When deploying an application using Alpha Stack, the containerized image contains all the essential functionalities and logic required for the application, while execution of the image occurs within DataOS via the utilization of Alpha Stack, which can be invoked or called within a Service or a Workflow Resource.
 
-## Syntax of Alpha YAML Configuration
+## Syntax of Alpha YAML
 
 ![Alpha YAML Configuration Syntax](./alpha/alpha_syntax.png)
 
@@ -29,38 +29,38 @@ You can also deploy custom-built images from a private DockerHub repository. To 
 ```yaml
 
 # Resource Section
-version: v1
 name: alpha-stack
+version: v1
 type: workflow/service
 workflow/service: # Workflow/Service Specific Section
 # ...
 # ...
 # ...
   stack: alpha # Stack (Here it's Alpha)
-	secrets:
-		- newSecret # Secret (Resource) to be referred within Alpha
-	envs:
-		LOG_LEVEL: info # Log Level
+  secrets:
+  	- newSecret # Secret (Resource) to be referred within Alpha
+  envs:
+  	LOG_LEVEL: info # Log Level
   alpha:
 
 # Alpha Stack Specific Section
     image: swagger/swagger-ui # Path of the Docker Image
-		command: # Command
-			- streamlit
+	command: # Command
+	  - streamlit
     arguments: # Arguments
       - run
-			- app.py
+	  - app.py
 ```
 
 ### **Resource Section**
 
-Alpha Stack can be implemented or executed via a Workflow or as a Service. Workflow/Service are core DataOS resources and are both provisioned as runnable. To know more about the YAML configurations for a Workflow/Service, refer to any of the below two sections:
+Alpha Stack can be implemented or executed via a Workflow or as a Service. Workflow/Service are DataOS Resources and are both provisioned as runnable. To know more about the YAML configurations for a Workflow/Service, refer to any of the below two sections:
 
 [Workflow](../workflow.md)
 
 [Service](../service.md)
 
-### **Alpha Stack Section**
+### **Alpha Stack-specific Section**
 
 **`alpha`**
 
@@ -68,7 +68,7 @@ All the configuration fields and values for the Alpha Stack are provided within 
 
 ```yaml
 alpha:
-	{} # All the fields and values for the Alpha stack are specified here
+  {} # All the fields and values for the Alpha stack are specified here
 ```
 
 **`image`**
@@ -107,7 +107,7 @@ CMD ["streamlit", "run", "app.py"]
 
 ```yaml
 command: 
-	- streamlit
+  - streamlit
 ```
 
 ### `arguments`
@@ -117,7 +117,7 @@ The arguments are the additional arguments apart form the primary command specif
 ```yaml
 arguments:
   - run
-	- app.py
+  - app.py
 ```
 
 ## Recipes
