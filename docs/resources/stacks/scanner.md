@@ -107,7 +107,7 @@ Here you can find templates for the depot/non-depot Scanner workflows.
 
 [Messaging Services](scanner/messaging_services.md)
 
-[Dashboard Services](Scanner/dashboards.md)
+[Dashboard Services](scanner/dashboards.md)
 
 <aside class="callout">
 🗣 You can perform both depot scans and non-depot scans on all the data sources where you have established depots. The distinction lies in the fact that non-depot scans require you to furnish connection information and credentials within the Scanner YAML file. Whereas, for depot scans, you only need to provide the depot name or address.
