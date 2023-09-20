@@ -1,7 +1,9 @@
 # Scanner
-The Scanner stack in DataOS is a Python-based framework designed for developers to extract metadata from external source systems (such as RDBMS, Data Warehouses, Messaging services, etc.) and the components/services within the DataOS environment. 
+The Scanner stack in DataOS is a Python-based framework designed for developers to extract metadata from external source systems (such as RDBMS, Data Warehouses, Messaging services, Dashboards, etc.) and the components/services within the DataOS environment. 
 
-With the DataOS Scanner stack, you can extract both general information about datasets/tables, such as their names, owners, and tags, as well as more detailed metadata like table schemas, column names, and descriptions. Additionally, the Scanner stack can help you retrieve metadata related to data quality and profiling, query usage, pipelines (workflows), and user information associated with your data assets.
+With the DataOS Scanner stack, you can extract both general information about datasets/tables, such as their names, owners, and tags, as well as more detailed metadata like table schemas, column names, and descriptions.  It can also connect with Dashboard and Messaging services to get the related metadata. For example, in the case of dashboards, it extracts information about the dashboard, dashboard Elements, and associated data sources.
+
+Additionally, the Scanner stack can help you retrieve metadata related to data quality and profiling, query usage, pipelines (workflows), and user information associated with your data assets.
 
 ## How Does Scanner Stack Work?
 
@@ -28,10 +30,10 @@ Apart from the external applications, the Scanner stack can also extract metadat
 
 The Scanner job connects with the following DataOS components and stores the extracted metadata to Metis DB:
 
-- **Poros**: To scan and publish data-pipeline metadata (workflow-related information, execution history, and execution states).
-- **Icebase**: To retrieve information from data profiles (descriptive statistics for datasets) and data quality tables (quality checks for your data along with their pass/fail status).
-- **Gateway service:** To scan query usage-related data and harvests required insights such as (heavy datasets, popular datasets, datasets most associated together, etc.).
-- **Heimdall:** To scan information about the users present in the DataOS environment, their descriptions, and images. All this user information will be available on Metis UI.
+- **Collation-Service**: To scan and publish data-pipeline metadata (workflow-related information, execution history, and execution states). For historical data such as pods and logs, and data processing stacks such as Flare, Benthos, etc., to collect metadata about jobs information and source and destinations.
+- **Gateway service**: To retrieve information from data profiles (descriptive statistics for datasets) and data quality tables (quality checks for your data along with their pass/fail status). To scan query usage-related data and harvest required insights such as (heavy datasets, popular datasets, datasets most associated together, etc.).
+- **Heimdall**: To scan information about the users present in the DataOS environment, their descriptions, and images. All this user information will be available on Metis UI.
+- **Pulsar Service**: To keep listening to the messages being published on it from various other services/stacks.
 
 A continuous running service within the DataOS environment keeps track of newly created or updated datasets/topics/pipelines(workflows). With this information about the changed entity, it creates a reconciliation Scanner YAML with filters to include only the affected entity. This Scanner workflow will extract the metadata about the entity and update the target metastore.
 <aside class="callout">
@@ -58,39 +60,44 @@ You can write Scanner workflows in the form of a sequential YAML for a pull-base
 ![Scanner YAML](./scanner/scanner_yaml.png)
 <figcaption align = "center">Scanner YAML Components</figcaption>
 
-## Building Blocks of Scanner Workflow
-
-The below table summarizes various properties within a Scanner workflow YAML.
-
-| Field | Example | Default Value | Requirement | Additional Details |
-| --- | --- | --- | --- | --- |
-| [`stack`](./field_ref/#stack) | `scanner` |  | Mandatory |  |
-| [`compute`](./field_ref/#compute) | `mycompute` |`runnable-default`  | Mandatory |  |
-| [`runAsUser`](./field_ref/#runasuser) | `metis` |  | Mandatory |  |
-| [`depot`](./field_ref/#depot) |`dataos://icebase`|  | Mandatory | in case of Depot scan only. |
-| [`type`](./field_ref/#type) | `bigquery` | Source-specific | Mandatory | In case of non-Depot scan |
-| [`source`](./field_ref/#source)| `bigquery_metasource` |  | Mandatory | In case of non-Depot scan |
-| `sourceConnection` |  |  |  |  |
-| [`type`](./field_ref/#type_1) | `BigQuery` | Source-specific | Mandatory | In case of non-Depot scan |
-| [`username`](./field_ref/#username) | `projectID` `email` `hostport`| Source-specific | Mandatory | In case of non-Depot scan|
-| `sourceConfig`| | | | |
-| [`type`](./field_ref/#type_2) |  `DatabaseMetadata`  `MessagingMetadata` |  | Mandatory | In case of non-Depot scan |
-| [`databaseFilterPattern`](./field_ref/#databasefilterpattern) | `^SNOWFLAKE.*` |  | optional | Applicable only in case of Database/Warehouse data source |
-| [`schemaFilterPattern`](./field_ref/#schemafilterpattern) | `^public$` |  | optional | Applicable only in case of Database/Warehouse data source |
-| [`tableFilterPattern`](./field_ref/#tablefilterpattern) | `.*CUSTOMER.*` |  | optional | Applicable only in case of Database/Warehouse data source |
-| [`topicFilterPattern`](./field_ref/#topicfilterpattern) | `foo` `bar` |  | optional | Applicable only in case of Messaging data source |
-| [`includeViews`](./field_ref/#includeviews) | `true` `false` | `false` | optional | Applicable only in case of Database/Warehouse data source |
-| [`markDeletedTables`](./field_ref/#markdeletedtables) | `true` `false` | `false` | optional | Applicable only in case of Database/Warehouse data source |
-| [`markDeletedTablesFromFilterOnly`](./field_ref/#markdeletedtablesfromfilteronly)  | `true` `false` | `false` | optional | Applicable only in case of Database/Warehouse data source |
-| [`enableDebugLog`](./field_ref/#enabledebuglog) | `true` `false` | `false` | optional | All |
-| [`ingestSampleData`](./field_ref/#ingestsampledata) | `true` `false` | `false` | optional | Applicable only in case of Messaging data source |
-| [`markDeletedTopics`](./field_ref/#markdeletedtopics)| `true` `false` | `false` | optional | Applicable only in case of Messaging data source |
-
-To learn more about these fields, their possible values, example usage, refer to [Scanner YAML Fields Reference](scanner/field_ref.md).
-
 Learn about the source connection and configuration options to create depot scan/non-depot scan workflow DAGs to scan entity metadata.
 
 [Creating Scanner Workflows](scanner/creating_scanner_workflows.md)
+
+## Attributes of Scanner Workflow
+
+The below table summarizes various properties within a Scanner workflow YAML.
+
+| Attribute                           | Data Type  | Default Value | Possible Value                                   | Requirement |
+| ----------------------------------- | ---------- | ------------- | ----------------------------------------------- | ----------- |
+| [`spec`](./field_ref/#spec)         | mapping    |               |                                                 | Mandatory    |
+| [`stack`](./field_ref/#stack)       | string     |               | `scanner`                                       | Mandatory    |
+| [`compute`](./field_ref/#compute)   | string     | `runnable-default` | `mycompute`                                 | Mandatory |
+| [`runAsUser`](./field_ref/#runasuser)| string    |               | `metis`                                         | Mandatory    |
+| [`depot`](./field_ref/#depot)       | string     |               | `dataos://icebase`                              | Mandatory    | in case of Depot scan only.
+| [`type`](./field_ref/#type)         | string     | Source-specific | `bigquery`                                      | Mandatory    | In case of non-Depot scan
+| [`source`](./field_ref/#source)     | string     |               | `bigquery_metasource`                           | Mandatory    | In case of non-Depot scan
+| [`sourceConnection`](./field_ref/#sourceconnection) | mapping | |               | Mandatory    |
+| [`type`](./field_ref/#type_1)       | string     | Source-specific | `BigQuery`                                      | Mandatory    | In case of non-Depot scan
+| [`username`](./field_ref/#username) | string     | Source-specific | `projectID` `email` `hostport`                  | Mandatory    | In case of non-Depot scan
+| [`sourceConfig`](./field_ref/#sourceconfig) | mapping | |               | Mandatory    |
+| [`type`](./field_ref/#type_2)       | string     |               | `DatabaseMetadata`  `MessagingMetadata`        | Mandatory    | In case of non-Depot scan
+| [`databaseFilterPattern`](./field_ref/#databasefilterpattern) | mapping | | | Mandatory    |
+| [`includes/exclude`](./field_ref/#includes-or-excludes)| string | | `^SNOWFLAKE.*`                               | optional    | Applicable only in case of Database/Warehouse data source |
+| [`schemaFilterPattern`](./field_ref/#schemafilterpattern) | mapping | | | Mandatory    |
+| [`includes/excludes`](./field_ref/#includes-or-excludes_1) | string | | `^public$`                              | optional    | Applicable only in case of Database/Warehouse data source |
+| [`tableFilterPattern`](./field_ref/#tablefilterpattern) | mapping | | | mandatory   |                                                       |
+| [`includes/excludes`](./field_ref/#includes-or-excludes_2) | string | | `^public$`                              | optional    | Applicable only in case of Database/Warehouse data source |
+| [`topicFilterPattern`](./field_ref/#topicfilterpattern) | mapping | | | Mandatory    |
+| [`includes/excludes`](./field_ref/#includes-or-excludes_3)| string | | `foo` `bar`                               | optional    | Applicable only in case of Messaging data source     |
+| [`includeViews`](./field_ref/#includeviews) | boolean | `false`       | `true` `false`                              | optional    | Applicable only in case of Database/Warehouse data source |
+| [`markDeletedTables`](./field_ref/#markdeletedtables) | boolean | `false` | `true` `false`                            | optional    | Applicable only in case of Database/Warehouse data source |
+| [`markDeletedTablesFromFilterOnly`](./field_ref/#markdeletedtablesfromfilteronly) | boolean | `false`  | `true` `false` | optional | Applicable only in case of Database/Warehouse data source |
+| [`enableDebugLog`](./field_ref/#enabledebuglog) | boolean | `false` | `true` `false`                               | optional    | All                                                   |
+| [`ingestSampleData`](./field_ref/#ingestsampledata) |  boolean | `false` | `true` `false`                             | optional    | Applicable only in case of Messaging data source       |
+| [`markDeletedTopics`](./field_ref/#markdeletedtopics)| boolean | `false` | `true` `false`                            | optional    | Applicable only in case of Messaging data source       |
+
+To learn more about these fields, their possible values, example usage, refer to [Attributes of Scanner YAML](scanner/field_ref.md).
 
 ### **Supported Data Sources**
 
@@ -99,6 +106,8 @@ Here you can find templates for the depot/non-depot Scanner workflows.
 [Databases and Warehouses](scanner/databases_and_warehouses.md)
 
 [Messaging Services](scanner/messaging_services.md)
+
+[Dashboard Services](Scanner/dashboards.md)
 
 <aside class="callout">
 🗣 You can perform both depot scans and non-depot scans on all the data sources where you have established depots. The distinction lies in the fact that non-depot scans require you to furnish connection information and credentials within the Scanner YAML file. Whereas, for depot scans, you only need to provide the depot name or address.
