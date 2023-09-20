@@ -15,9 +15,9 @@
 
 ## Creating Scanner YAML Configuration
 
-1. Define resource properties such as name, version, type, owner etc. These properties are common for all resources. To learn more, refer to [Configuring the Resource Section](/resources/workflow/creating_a_workflow/#configuring-the-resource-section) page.
+1. Define resource properties such as name, version, type, owner etc. These properties are common for all resources. To learn more, refer to [Configuring the Resource Section](/resources/workflow/#configure-the-resource-section) page.
     
-2. Scanner workflows are either single-time run or scheduled to run at a specific cadence. To schedule a workflow, you must add the `schedule` property, under which you define a `cron` To learn about these properties, refer to [Schedulable workflows](/resources/workflow/#schedulable-workflows).
+2. Scanner workflows are either single-time run or scheduled to run at a specific cadence. To schedule a workflow, you must add the `schedule` property, under which you define a `cron` To learn about these properties, refer to [Schedulable workflows](/resources/workflow/#scheduled-workflow).
 
     
 3. Define the Scanner job properties in the `dag`, such as job name, description. 
@@ -29,7 +29,7 @@
     
     **For Depot Scan:** Depot provides a reference to the source from which metadata is read/ingested. 
     
-    `depot`: Give the name or address of the depot. The Scanner job will scan all the datasets referred by a depot. Depot keeps connection details and secrets, so you do not need to give them explicitly in Scanner YAML.
+    **`depot`**: Give the name or address of the depot. The Scanner job will scan all the datasets referred by a depot. Depot keeps connection details and secrets, so you do not need to give them explicitly in Scanner YAML.
     
     ```yaml
     scanner:
@@ -203,4 +203,4 @@
     
     <aside class="callout">🗣 To scan metadata from various data sources, you need certain permissions and access privileges as a data source user. These requirements are specific to each data source. Refer to [this]() section to learn more about them. </aside>
         
-    After the successful workflow run, you can check the metadata of scanned Tables on Metis UI for all schemas present in the database.
+    After the successful workflow run, you can check the metadata of scanned entities on Metis UI for all schemas present in the database.
