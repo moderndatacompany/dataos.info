@@ -32,7 +32,8 @@ version: v1
 type: compute
 layer: system
 description: "runnable compute"
-# Compute-specific Section (for runnables)
+
+# Compute-specific Section
 compute:
   dataplane: hub
   purpose: runnable
@@ -77,7 +78,8 @@ version: v1
 type: compute
 layer: system
 description: "default query compute"
-# Compute-specific Section (for query)
+# Compute-specific Section 
+
 compute:
   dataplane: hub
   purpose: query
@@ -103,7 +105,7 @@ compute:
   purpose: gpu
   nodePool:
     nodeSelector:
-      ${"dataos.io/purpose": "gpu"}
+      {{"dataos.io/purpose": "gpu"}}
     tolerations:
       - key: {{"dedicated"}}
         operator: {{"Equal"}}
@@ -122,7 +124,8 @@ version: v1
 type: compute
 layer: system
 description: gpu compute for jobs
-# Compute-specific Section (for gpu)
+
+# Compute-specific Section
 compute:
   dataplane: hub
   purpose: gpu

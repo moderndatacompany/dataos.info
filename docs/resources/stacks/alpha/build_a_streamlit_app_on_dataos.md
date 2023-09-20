@@ -50,7 +50,7 @@ This Dockerfile starts with a lightweight Python 3.10 base image, installs Strea
 
 To build the Docker image, run the following command in the same directory as your `Dockerfile`:
 
-```bash
+```shell
 docker build -t my-app:new .
 ```
 
@@ -64,7 +64,7 @@ First, you need to create a Docker Hub account and repository.
 
 Next, log in to Docker Hub using the `docker login` command.
 
-```bash
+```shell
 docker login --username=your-username
 ```
 
@@ -74,13 +74,13 @@ Replace `your-username` with your Docker Hub username, and input the password to
 
 To push an image to Docker Hub, your image needs to be tagged. In case it’s not tagged, you can use the below command.
 
-```bash
+```shell
 docker image tag my-app:new your-username/my-app:new
 ```
 
 Finally, push the Docker image to Docker Hub using the following command:
 
-```bash
+```shell
 docker image push your-username/my-app:new
 ```
 
@@ -89,8 +89,8 @@ docker image push your-username/my-app:new
 This command builds a Docker image named `my-app` using the `Dockerfile` in the current directory.
 
 ```yaml
-version: v1 # Version
-name: streamlit-app # Name of the Resource 
+
+version: v1 # Version 
 type: service # Type of Resource
 service: # Service Specific Section
   compute: runnable-default # Compute is Runnable-default (since its a service)
@@ -117,7 +117,7 @@ service: # Service Specific Section
 
 Apply the YAML file using the `apply` command, as follows:
 
-```bash
+```shell
 dataos-ctl apply -f <path-to-file> -w <workspace>
 ```
 
@@ -127,4 +127,6 @@ You can see the streamlit UI, on the web browser at the following address
 
 `https://<dataos-context>/<path>` 
 
-![Untitled](./build_a_streamlit_app_on_dataos/untitled.png)
+![Streamlit App](./build_a_streamlit_app_on_dataos/untitled.png)
+
+<center><i>Streamlit App on DataOS</i></center>
