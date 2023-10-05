@@ -2,13 +2,9 @@
 
 ## Prerequisites
 
-1. Permission to run the Scanner workflow: A user must have either Operator level access (`roles:id:operator` tag) or grant to the “**Run as Scanner User”** use case. 
-    
-    
+1. Permission to run the Scanner workflow: A user must have either Operator level access (`roles:id:operator` tag) or grant to the “**Run as Scanner User”** use case.
   <aside class="callout">🗣 To obtain the required use case, please contact the DataOS system administrator.</aside>
-    
-  
-    
+     
 2. Include the property `runAsUser: metis` under the `spec` section in the Scanner YAML.
 
 

@@ -17,14 +17,14 @@ Lens is a consistent modeling layer capable of accessing and modeling data from 
 Lens can be built on all sources that Depots support. Lens lets you connect to and access data from managed and unmanaged object storage like CSV, parquet, Amazon S3, Azure Blob Storage, streaming sources like Pulsar, and relational and non-relational databases like PostgreSQL, MySQL, BigQuery, etc.
 
 ## Lens UI
-On opening the Lens app, you can view all the lenses created and available to consume.
+On opening the Lens app, you can view all the Lenses created and available to consume.
 
 ![Lens Home Page](lens/lens_homepage.png)
 
 <figcaption align = "center">Lenses</figcaption>
 <br>
 
-Clicking on the specific lens will open the details where entities and their schema are displayed along with   the tabs to see the relationship of the entities and definitions.
+Clicking on the specific Lens will open the details where entities and their schema are displayed along with   the tabs to see the relationship of the entities and definitions.
 ![Lens Dtails](lens/lens_details.png)
 
 <figcaption align = "center">Lens details</figcaption>
@@ -76,14 +76,14 @@ Follow the steps to create a clone of an existing Lens view:
 <aside class="callout">🗣 Lens views in Draft mode are not eligible for cloning. Users are required to publish the view prior to initiating the cloning process. </aside>
 
 #### **Editing an existing view**
-Users can edit an existing lens view that they own.
+Users can edit an existing Lens view that they own.
 ![Edit mode](lens/lens_ecosystem/edit_view.png)
 
 <figcaption align = "center">Editing a view</figcaption>
 
 ## Elements of a Lens
 
-The fundamental constituents of both lens and contract encompass an amalgamation of data elements: fields, entities, dimensions, and measures. These elements collectively serve the purpose of outlining the composition and logic of data models. To know more about these elements, refer to 
+The fundamental constituents of both Lens and contract encompass an amalgamation of data elements: fields, entities, dimensions, and measures. These elements collectively serve the purpose of outlining the composition and logic of data models. To know more about these elements, refer to 
 [Elements of Lens](lens/elements_of_lens/elements_of_lens.md).
 
 ## Lens ecosystem
