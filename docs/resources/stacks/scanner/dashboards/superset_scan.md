@@ -23,9 +23,11 @@ First, you need to provide source connection details to connect with the dashboa
 #### **sourceConnection Properties**
 
 **For Superset connection**:
+
 - **Host and Port**: Host and port of the Superset instance. 
 
-**For Postgres Connection**
+**For Postgres connection**:
+
 - **Type**: This depends on the underlying data source;`Postgres`
 - **Username**: Postgres user name. It can be seen from .env-non-dev;`superset`                    
 - **Password**: Postgres password;`superset`                   
@@ -34,6 +36,7 @@ First, you need to provide source connection details to connect with the dashboa
 
 
 #### **sourceConfig Properties**
+
 - **Type**: This is type of the source  to be scanned: `dashboardmetadata`
 - **Filter Patterns**: To control the metadata scan for the desired entities: `dashboardFilterPattern`, `chartFilterPattern`
 
