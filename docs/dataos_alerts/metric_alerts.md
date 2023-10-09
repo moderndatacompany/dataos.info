@@ -1,7 +1,7 @@
 # Setting up Metric Alerts
 
-Imagine a scenario where your sales are booming but you don't realize that your inventory is running low.. This guide will demonstrate how to how to use DataOS with Python and SQL to set up alerts for
-key metrics such as inventory, sales, or pipeline leakages. This way, you can stay informed and take action when needed.
+Imagine a scenario where your sales are booming but you don't realize that your inventory is running low. This guide will demonstrate how to use DataOS with Python and SQL to set up alerts for
+key metrics such as, inventory, sales, or pipeline leakages. This way, you can stay informed and take action when needed.
 
 In this example, an alert is created that triggers when the total revenue for a specific country surpasses $10,000. The alert will notify the country manager about the significant revenue milestone. This alert system will be established through a Python script dockerized and deployed using Alpha Stack on DataOS, interacting with the Icebase depot, where the relevant data is stored.
 
@@ -23,7 +23,7 @@ dataos-ctl user apikey get
 
 ### **Step 1: Construct the Query**
 
-The SQL query is designed to extract necessary data and conditionally assign manager email addresses based on the country. If the `total revenue` exceeds the set threshold, the alert is triggered.
+The SQL query is designed to extract necessary data and conditionally assign manager email address based on the country. If the `total revenue` exceeds the set threshold, the alert is triggered.
 
 ```sql
 SELECT
@@ -115,7 +115,7 @@ df = pd.DataFrame(data, columns =['sales.total_revenue',
 
 The `Redmail` library is used to send alerts via email. In case you have your own SMTP server, configure it accordingly.
 
-`Redmail` is compatible with `Outlook` and `G-mail`. `Jinja` templates can be used to send customized alerts. For example, Python variables like {{manager_mail}} is used in HTML code.
+`Redmail` is compatible with `Outlook` and `G-mail`. `Jinja` templates can be used to send customized alerts. For example, Python variable like {{manager_mail}} is used in HTML code.
 
 ```python
 from redmail import gmail
