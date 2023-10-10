@@ -1,6 +1,10 @@
 # Setting up Kubernetes Alerts
 
-The Various Alerts section provides a collection of guides and recommendations for addressing different alerts that may be triggered in a Kubernetes environment. 
+Kubernetes, with its dynamic and distributed nature, relies on events to communicate changes, errors, or important occurrences within the cluster. These events provide critical insights and serve as triggers for alerting mechanisms ensuring timely responses to issues and maintaining the health of clusters.   
+
+DataOS utilizes Kubernetes events for robust system monitoring. It tracks event volumes and details over time to establish precise alerts. This approach ensures prompt problem detection and resolution.
+
+The following are the examples of Kubernetes actionable events that could trigger alerts and generate notification.
 
 ## Kube CPU Throttling High
 
