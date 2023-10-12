@@ -10,7 +10,16 @@ Apart from regular batch jobs, there are three specialized types of batch jobs d
 
 ### **Data Profiling Job**
 
-Data Profiling Jobs assess the quality and structure of datasets. These jobs examine source data to determine accuracy, completeness, and validity, providing summaries and insights about the data. Accurate and complete data is essential for making informed decisions based on the available data. Data Profiling Jobs enable you to analyze the structure, content, and relationships within the data, uncovering patterns, rules, inconsistencies, anomalies, and redundancies to achieve higher data quality. Basic statistics are used to assess data validity. To learn more about Data Profiling Jobs, refer to the [here](./case_scenario/data_profiling_jobs.md).
+Data Profiling Jobs assess the quality and structure of datasets. These jobs examine source data to determine accuracy, completeness, and validity, providing summaries and insights about the data. Accurate and complete data is essential for making informed decisions based on the available data. Data Profiling Jobs enable you to analyze the structure, content, and relationships within the data, uncovering patterns, rules, inconsistencies, anomalies, and redundancies to achieve higher data quality. Basic statistics are used to assess data validity. To learn more about Data Profiling Jobs, refer to [here](./case_scenario/data_profiling_jobs.md).
+
+#### **Fingerprinting**
+When you initiate a data profiling job for your dataset, it automatically triggers the **fingerprinting** process.
+
+Data profiling provides a comprehensive overview of your data, including details about data distribution, types, missing values, and outliers. Fingerprinting, however, is a specialized process aimed at analyzing data columns to detect distinctive patterns or signatures within the data. By examining the data values in a column, it can identify what type of data is there and determine what business terms or labels can be attached to this data. 
+
+Fingerprinting helps in recognizing specific data attributes, such as sensitive data like Personally Identifiable Information (PII) or Protected Health Information (PHI). It also plays a role in data classification and applying security and privacy policies. This information is saved for your dataset in Metis DB. To access, refer to [Getting Fingerprinting Information for Your Data](/interfaces/metis/explore_metis_ui/#how-to-get-fingerprinting-information).
+
+For more information on how DataOS performs fingerprinting, click [here](./case_scenario/fingerprinting.md).
 
 ### **Data Quality Job**
 
