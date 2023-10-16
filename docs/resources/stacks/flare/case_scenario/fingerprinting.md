@@ -1,6 +1,17 @@
 # Fingerprinting in DataOS
-Fingerprinting in DataOS analyzes data columns to detect distinctive patterns or signatures. This analysis helps identify the nature of the data and enables the assignment of relevant business labels or tags for discoverability. Moreover, fingerprinting plays a vital role in automating the identification of sensitive data, such as Personally Identifiable Information (PII) or Protected Health Information (PHI). It suggests the appropriate business terms and tags based on the type of data. Once the data is fingerprinted, you can create data policies to effectively manage and protect the sensitive data. By leveraging fingerprinting, you can ensure that sensitive data is adequately protected and compliant with government regulations like GDPR.
+Fingerprinting in DataOS analyzes data columns to detect distinctive patterns or signatures. 
 
+This analysis serves several purposes:
+
+**Understanding Data**: It helps you better comprehend the data's characteristics.
+
+**Enhancing Discoverability**: By assigning relevant business labels or tags, it facilitates data discoverability and democratization.
+
+**Automating Sensitive Data Identification**: It automates the recognition of sensitive data, like Personally Identifiable Information (PII) or Protected Health Information (PHI). Once data is fingerprinted, you can create data policies to effectively manage and protect this sensitive information.
+
+**Ensuring Regulatory Compliance**: It aids in ensuring compliance with government regulations such as GDPR."
+
+## Fingerprinting Process
 The fingerprinting process is systematic and involves several key steps:
 
 **Data Column Classification:** Data columns undergo comprehensive classification, categorizing them into different data types, differentiating between categorical and non-categorical data.
@@ -14,16 +25,17 @@ DataOS provides both built-in and customizable classifications seamlessly integr
 <aside class="callout">On the Metis UI, you can access and manage classifications organized into tag groups.</aside>
 
 ## Classification of Data
+DataOS performs classification and attribute tagging with text patterns using pre-defined categories and regular expressions.
 
-Sensitive data is identified with text patterns using dictionaries and regular expressions.
+### **Pre-defined Categories** 
+Categories are defined based on related keywords and phrases, such as personally identifiable information, medical terminology, etc. Sensitive data is compared to the dictionary entries and evaluated based on a score. DataOS provides a range of built-in categorie  tailored to industries like healthcare, banking, finance, and more. It also takes care of country specific  columns such as SSN number for US and PAN and AADHAR for India. You also have the flexibility to create custom dictionaries to align with your organization's specific requirements.
 
-### **Dictionary** 
-Dictionaries consist of related keywords and phrases, such as personally identifiable information, medical terminology, etc. Sensitive data is compared to the dictionary entries and evaluated based on a score. DataOS provides a range of built-in dictionaries tailored to industries like healthcare, banking, finance, and more. You also have the flexibility to create custom dictionaries to align with your organization's specific requirements.
-
-## **Advanced Patterns** 
+### **Advanced Patterns** 
 Advanced patterns involve the use of regular expressions or phrases to detect specific patterns, such as social security numbers or credit card numbers.  DataOS includes built-in advanced patterns designed for the identification of PII and PHI information to comply with government regulations. Additionally, you have the option to create custom advanced patterns to suit your unique data classification needs.
 
 ## Classification Categories and Fields
+
+DataOS supports the following classifications.
 
 ### **Data Types**
 
@@ -31,8 +43,12 @@ Advanced patterns involve the use of regular expressions or phrases to detect sp
 - Fraction 
 - Datetime 
 
+### **Categorical/Non Categorical Columns**
+Based on the minimum number of non-null values, unique values and distribution of values, it determines and classifies a column as categorical.
 
 ### **Attributes**
+Refer to the following table, which is used for classification and attribute tagging during the fingerprinting process in DataOS.
+
 | Category | Attributes|
 | --- | --- | 
 | Personal Information | • ID, UUID, API Key<br> • Login ID, password<br> • Name - First and Last<br> • Gender<br> • Organization Name<br> • Bank Issued Card Number<br> • IP Address<br> • URL/Domain<br> • Salary<br> • Blood Group |
@@ -43,3 +59,5 @@ Advanced patterns involve the use of regular expressions or phrases to detect sp
 |Government-issued IDs | • US EIN Number<br>• US SSN Number<br>• Indian Aadhar Number<br>• Indian UPI Id<br>• Indian PAN Number |
 | Driving License Information | • US Driving License<br>• Indian Driving License | 
 | Demographic Information | • Religion<br>• Sexuality<br>• Race |
+
+
