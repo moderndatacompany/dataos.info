@@ -25,7 +25,7 @@ To maximize performance, organizations can establish Minerva query engine cluste
 
 #### **Querying Diverse Data Sources**
 
-Minerva supports an extensive range of data sources, encompassing both traditional relational databases such as Oracle, PostgreSQL, MySQL, and Redshift, non-relational sources like Kafka and Cassandra, as well as object storages like Amazon S3, and Google Cloud Storage. This broad compatibility ensures seamless access to various data sources, enabling comprehensive and integrated analyses. To know more about the various data sources supported by Minerva, click [here.](./cluster/connectors_configuration.md)
+Minerva supports an extensive range of data sources, encompassing both traditional relational databases such as Oracle, PostgreSQL, MySQL, and Redshift, non-relational sources like Kafka and Cassandra, as well as object storages like Amazon S3, and Google Cloud Storage. This broad compatibility ensures seamless access to various data sources, enabling comprehensive and integrated analyses. To know more about the various data sources supported by Minerva, click on the following link: [Connectors Configuration.](./cluster/connectors_configuration.md)
 
 #### **Query Execution Process**
 
@@ -99,21 +99,21 @@ cluster:
 
 | Field | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`cluster`](./cluster/cluster_specific_section_grammar.md#cluster) | object | none | none | mandatory |
-| [`compute`](./cluster/cluster_specific_section_grammar.md#compute) | string | none | query-default or any other query type custom Compute Resource | mandatory |
-| [`runAsUser`](./cluster/cluster_specific_section_grammar.md#runasuser) | string | none | userid of the use case assignee | optional |
-| [`maintenance`](./cluster/cluster_specific_section_grammar.md#maintenance) | object | none | none | optional |
-| [`restartCrons`](./cluster/cluster_specific_section_grammar.md#restartcron) | string | none | any valid cron expression | optional |
-| [`scalingCrons`](./cluster/cluster_specific_section_grammar.md#scalingcrons) | object | none | none | optional |
-| [`cron`](./cluster/cluster_specific_section_grammar.md#cron) | string | none | any valid cron expression | optional |
-| [`replicas`](./cluster/cluster_specific_section_grammar.md#replicas) | integer | 1 | positive integer | optional |
-| [`resources`](./cluster/cluster_specific_section_grammar.md#resources) | object | none | none | optional |
-| [`limits`](./cluster/cluster_specific_section_grammar.md#limits) | object | none | none | optional |
-| [`cpu`](./cluster/cluster_specific_section_grammar.md#cpu) | string | requests: 100m, limits: 400m | number of cpu units in milliCPU(m) or cpu Core| optional |
-| [`memory`](./cluster/cluster_specific_section_grammar.md#memory) | string | requests: 100Mi, limits: 400Mi | memory in Mebibytes(Mi) or Gibibytes(Gi) | optional |
-| [`requests`](./cluster/cluster_specific_section_grammar.md#requests) | object | none | none | optional |
+| [`cluster`](./cluster/cluster_attributes.md#cluster) | object | none | none | mandatory |
+| [`compute`](./cluster/cluster_attributes.md#compute) | string | none | query-default or any other query type custom Compute Resource | mandatory |
+| [`runAsUser`](./cluster/cluster_attributes.md#runasuser) | string | none | userid of the use case assignee | optional |
+| [`maintenance`](./cluster/cluster_attributes.md#maintenance) | object | none | none | optional |
+| [`restartCron`](./cluster/cluster_attributes.md#restartcron) | string | none | any valid cron expression | optional |
+| [`scalingCrons`](./cluster/cluster_attributes.md#scalingcrons) | object | none | none | optional |
+| [`cron`](./cluster/cluster_attributes.md#cron) | string | none | any valid cron expression | optional |
+| [`replicas`](./cluster/cluster_attributes.md#replicas) | integer | 1 | positive integer | optional |
+| [`resources`](./cluster/cluster_attributes.md#resources) | object | none | none | optional |
+| [`limits`](./cluster/cluster_attributes.md#limits) | object | none | none | optional |
+| [`cpu`](./cluster/cluster_attributes.md#cpu) | string | requests: 100m, limits: 400m | number of cpu units in milliCPU(m) or cpu Core| optional |
+| [`memory`](./cluster/cluster_attributes.md#memory) | string | requests: 100Mi, limits: 400Mi | memory in Mebibytes(Mi) or Gibibytes(Gi) | optional |
+| [`requests`](./cluster/cluster_attributes.md#requests) | object | none | none | optional |
 
-For additional information about attributes within the Cluster-specific Section, refer to the [link.](./cluster/cluster_specific_section_grammar.md)
+For additional information about attributes within the Cluster-specific section, refer to the link: [Attributes of Cluster-specific section.](./cluster/cluster_attributes.md#cluster)
 
 #### **Configuring the Minerva-specific Section**
 
@@ -159,34 +159,33 @@ minerva:
 
 | Field | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`minerva`](./cluster/cluster_specific_section_grammar.md#minerva) | object | none | none | mandatory |
-| [`selector`](./cluster/cluster_specific_section_grammar.md#selector) | object | none | none | mandatory |
-| [`users`](./cluster/cluster_specific_section_grammar.md#users) | list of strings | none | a valid subset of all available users within DataOS or regex pattern | mandatory |
-| [`tags`](./cluster/cluster_specific_section_grammar.md#tags) | list of strings | none | any valid tag or regex pattern | optional |
-| [`sources`](./cluster/cluster_specific_section_grammar.md#sources) | list of strings | none | list of strings representing source or regex pattern | mandatory |
-| [`replicas`](./cluster/cluster_specific_section_grammar.md#replicas) | integer | 1 | 1-4 | mandatory |
-| [`match`](./cluster/cluster_specific_section_grammar.md#match) | string | none | any/all | mandatory |
-| [`priority`](./cluster/cluster_specific_section_grammar.md#priority) | integer | 10 | 1-5000 | mandatory |
-| [`runAsApiKey`](./cluster/cluster_specific_section_grammar.md#runasapikey) | string | users dataos api key | any valid dataos api key | mandatory |
-| [`runAsUser`](./cluster/cluster_specific_section_grammar.md#runasuser) | string | none | userid of the use case assignee | optional |
-| [`resources`](./cluster/cluster_specific_section_grammar.md#resources) | object | none | none | optional |
-| [`limits`](./cluster/cluster_specific_section_grammar.md#limits) | object | none | none | optional |
-| [`cpu`](./cluster/cluster_specific_section_grammar.md#cpu) | string | requests: 100m, limits: 400m | number of cpu units in milliCPU(m) or cpu Core| optional |
-| [`memory`](./cluster/cluster_specific_section_grammar.md#memory) | string | requests: 100Mi, limits: 400Mi | memory in Mebibytes(Mi) or Gibibytes(Gi) | optional |
-| [`requests`](./cluster/cluster_specific_section_grammar.md#requests) | object | none | none | optional |
-| [`debug`](./cluster/cluster_specific_section_grammar.md#debug) | object | none | none | mandatory |
-| [`logLevel`](./cluster/cluster_specific_section_grammar.md#loglevel) | object | none | none | optional |
-| [`logLevel`](./cluster/cluster_specific_section_grammar.md#loglevel) | object | INFO | INFO/DEBUG/ERROR | optional |
-| [`trinoLogLevel`](./cluster/cluster_specific_section_grammar.md#trinologlevel) | object | INFO | INFO/DEBUG/ERROR | optional |
-| [`depots`](./cluster/cluster_specific_section_grammar.md#depots) | list of objects | none | none | optional |
-| [`address`](./cluster/cluster_specific_section_grammar.md#address) | string | none | valid depot udl address | optional |
-| [`properties`](./cluster/cluster_specific_section_grammar.md#properties) | object | none | none | optional |
-| [`catalogs`](./cluster/cluster_specific_section_grammar.md#catalogs) | list of objects | none | none | optional |
-| [`name`](./cluster/cluster_specific_section_grammar.md#name) | string | none | any valid string | optional |
-| [`type`](./cluster/cluster_specific_section_grammar.md#type) | string | none | oracle/memory/wrangler/redshift | mandatory |
-| [`properties`](./cluster/cluster_specific_section_grammar.md#properties-1) | object | none | valid connector properties | optional |
+| [`minerva`](./cluster/cluster_attributes.md#minerva) | object | none | none | mandatory |
+| [`selector`](./cluster/cluster_attributes.md#selector) | object | none | none | mandatory |
+| [`users`](./cluster/cluster_attributes.md#users) | list of strings | none | a valid subset of all available users within DataOS or regex pattern | mandatory |
+| [`tags`](./cluster/cluster_attributes.md#tags) | list of strings | none | any valid tag or regex pattern | optional |
+| [`sources`](./cluster/cluster_attributes.md#sources) | list of strings | none | list of strings representing source or regex pattern | mandatory |
+| [`replicas`](./cluster/cluster_attributes.md#replicas) | integer | 1 | 1-4 | mandatory |
+| [`match`](./cluster/cluster_attributes.md#match) | string | none | any/all | mandatory |
+| [`priority`](./cluster/cluster_attributes.md#priority) | integer | 10 | 1-5000 | mandatory |
+| [`runAsApiKey`](./cluster/cluster_attributes.md#runasapikey) | string | users dataos api key | any valid dataos api key | mandatory |
+| [`runAsUser`](./cluster/cluster_attributes.md#runasuser) | string | none | userid of the use case assignee | optional |
+| [`resources`](./cluster/cluster_attributes.md#resources) | object | none | none | optional |
+| [`limits`](./cluster/cluster_attributes.md#limits) | object | none | none | optional |
+| [`cpu`](./cluster/cluster_attributes.md#cpu) | string | requests: 100m, limits: 400m | number of cpu units in milliCPU(m) or cpu Core| optional |
+| [`memory`](./cluster/cluster_attributes.md#memory) | string | requests: 100Mi, limits: 400Mi | memory in Mebibytes(Mi) or Gibibytes(Gi) | optional |
+| [`requests`](./cluster/cluster_attributes.md#requests) | object | none | none | optional |
+| [`debug`](./cluster/cluster_attributes.md#debug) | object | none | none | mandatory |
+| [`logLevel`](./cluster/cluster_attributes.md#loglevel) | object | INFO | INFO/DEBUG/ERROR | optional |
+| [`trinoLogLevel`](./cluster/cluster_attributes.md#trinologlevel) | object | INFO | INFO/DEBUG/ERROR | optional |
+| [`depots`](./cluster/cluster_attributes.md#depots) | list of objects | none | none | optional |
+| [`address`](./cluster/cluster_attributes.md#address) | string | none | valid depot udl address | optional |
+| [`properties`](./cluster/cluster_attributes.md#properties) | object | none | none | optional |
+| [`catalogs`](./cluster/cluster_attributes.md#catalogs) | list of objects | none | none | optional |
+| [`name`](./cluster/cluster_attributes.md#name) | string | none | any valid string | optional |
+| [`type`](./cluster/cluster_attributes.md#type) | string | none | oracle/memory/wrangler/redshift | mandatory |
+| [`properties`](./cluster/cluster_attributes.md#properties_1) | object | none | valid connector properties | optional |
 
-For additional information about attributes within the Minerva-specific Section, refer to the [link.](./cluster/cluster_specific_section_grammar.md)
+For additional information about attributes above attributes, refer to the [Attributes of Minerva-specific section.](./cluster/cluster_attributes.md#minerva)
 
 
 ### **Apply the Cluster YAML**
@@ -227,7 +226,7 @@ In the Operations App, click the '+ Create Resource' button. This action will op
 
 ### **Fill in the Required Fields**
 
-Provide the necessary details in the required properties fields and click 'Create Cluster'. For more information on these properties, refer to the documentation [here.](./cluster/cluster_specific_section_grammar.md)
+Provide the necessary details in the required properties fields and click 'Create Cluster'. For more information on these properties, refer to the documentation [here.](./cluster/cluster_attributes.md)
 
 ![Creating a Cluster Using Operations App UI 3](./cluster/creating_cluster_using_operations_app_ui/cluster_4.png)
 
@@ -246,19 +245,19 @@ After clicking 'Create Cluster', a Cluster Resource will be created. You can obs
 Minerva offers multiple methods for interacting with its features and functionalities. The available options are provided below.
 
 ### **Minerva CLI**
-The Minerva CLI is a command-line-based interactive interface that enables users to run queries effectively. To learn more about how to setup Minerva CLI, click [here.](./cluster/minerva_client.md)
+The Minerva CLI is a command-line-based interactive interface that enables users to run queries effectively. To learn more, click on the link: [How to setup Minerva CLI.](./cluster/minerva_client.md)
 
 ### **Workbench**
 
-Workbench is a user interface (UI)-based query interface designed for data manipulation and exploration. Learn more about Workbench [here.](../interfaces/workbench.md)
+Workbench is a user interface (UI)-based query interface designed for data manipulation and exploration. To learn more, navigate to the [Workbench](../interfaces/workbench.md) documentation.
 
 ### **Connect via Tableau, SPSS and Power BI**
 
-Users can leverage popular BI analytics platforms like Tableau, SPSS and Power BI to access data from DataOS via Minerva URL. To learn more about integration with Tableau, Power BI and SPSS, click [here.](../interfaces/atlas/bi_tools.md#integrations-with-external-applications).
+Users can leverage popular BI analytics platforms like Tableau, SPSS and Power BI to access data from DataOS via Minerva URL. To learn more, navigate to the link: [How to connect Minerva with Tableau, SPSS, and Power BI.](../interfaces/atlas/bi_tools.md)
 
 ## Query Execution Optimization
 
-To achieve enhanced performance and cost efficiency when working with analytical workloads in DataOS, it is crucial to optimize your query execution on Minerva Clusters. The following considerations can assist you in accelerating your queries. For detailed information and guidance, please refer to the provided link: [Query Optimization.](./cluster/query_optimization.md)
+To achieve enhanced performance and cost efficiency when working with analytical workloads in DataOS, it is crucial to optimize your query execution on Minerva Clusters. The following considerations can assist you in accelerating your queries. For detailed information and guidance, please refer to the provided link: [How to optimize query execution.](./cluster/query_optimization.md)
 
 
 ## Performance Tuning
@@ -272,7 +271,7 @@ The [Recommend Cluster Configuration](./cluster/configuration_recommendations.md
 
 The Minerva query engine supports a wide range of connectors, including MySQL, PostgreSQL, Oracle, and Redshift. These connectors are configured in a YAML file, where they are mounted as catalogs. The catalogs store schemas and enable referencing of data sources through the respective connectors.
 
-By utilizing these connectors, you can perform data analyses directly on the data sources without the need to transfer the data to DataOS. This approach allows for efficient querying and exploration of data, minimizing data movement. To know more, click [here.](./cluster/connectors_configuration.md)
+By utilizing these connectors, you can perform data analyses directly on the data sources without the need to transfer the data to DataOS. This approach allows for efficient querying and exploration of data, minimizing data movement. To know more, click on the link: [Connectors Configuration.](./cluster/connectors_configuration.md)
 
 
 ## Case Scenarios
