@@ -1,8 +1,9 @@
 # Lens Explorer
 
-Lens Explorer allows users to examine the same data model from diverse perspectives and contexts, enabling them to effortlessly analyze data at various levels of detail. This flexibility allows for slicing and dicing data to gain insights from different angles. Additionally, Lens Explorer simplifies complex calculations through a low-code approach, enabling users to perform intricate computations swiftly and with ease.
+Lens Explorer allows users to access Lens to examine the same data model from diverse perspectives and contexts, enabling them to effortlessly analyze data at various levels of detail. This flexibility allows for slicing and dicing data to gain insights from different angles. Additionally, Lens Explorer simplifies complex calculations through a low-code approach, enabling users to perform intricate computations swiftly and with ease.
 
 ## How to Guide for Lens Explorer
+
 Users can visually compose search queries ranging from simple filters to using params for the fields of interest. From there, they can explore the result sets as a table of results or a chart. Additionally,  users can export and save the analysis as a view.
 
 Here is a quick guide for navigating through Lens Explorer.
