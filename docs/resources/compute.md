@@ -86,7 +86,7 @@ owner: {{iamgroot}}
 ```
 <center><i>Resource Section configuration</i></center>
 
-For detailed customization options and additional attributes within the Resource Section, refer to the [Attributes of Resource Section](../resources/resource_grammar.md).
+For detailed customization options and additional attributes within the Resource Section, refer to the [Attributes of Resource Section](../resources/resource_attributes.md).
 
 #### **Configuring the Compute-specific Section**
 

@@ -125,7 +125,7 @@ layer: user
 ```
 <center><i>Resource section YAML configuration</i></center>
 
-For more details regarding attributes in the Resource section, refer to the link: [Attributes of Resource Section.](./resource_grammar.md)
+For more details regarding attributes in the Resource section, refer to the link: [Attributes of Resource Section.](./resource_attributes.md)
 
 #### **Configure Depot-specific Section**
 

@@ -81,13 +81,13 @@ description: {{This is a sample policy YAML configuration}}
 owner: {{iamgroot}}
 layer: {{user}}
 ```
-<center><i>Resource Section YAML configuration</i></center>
+<center><i>Resource section YAML configuration</i></center>
 
 The `layer` field can have value either user/system in case of Policy. 
 
 For policies that govern authorization for system level resources such as API Paths, `layer` is *system*, while for user `layer` authorization such as access to UDL addresses it is *user*.
 
-Additionally, the Resource section offers various configurable fields, which can be explored further on this [link.](../resources/resource_grammar.md)
+Additionally, the Resource section offers various configurable attributes, which can be explored further on the link: [Attributes of Resource section.](../resources/resource_attributes.md)
 
 
 

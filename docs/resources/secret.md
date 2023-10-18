@@ -68,7 +68,7 @@ tags:
 description: {{This is a sample secret YAML configuration}} 
 owner: {{iamgroot}}
 ```
-To gain a comprehensive understanding of the attributes and fields in the Resource Section, refer to the following [link.](../resources.md)
+For more information about the attributes of Resource Section, refer to the link [Attributes of Resource section.](../resources/resource_attributes.md)
 
 #### **Configure Secret-specific Section**
 

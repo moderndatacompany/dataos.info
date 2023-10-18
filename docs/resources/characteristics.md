@@ -88,7 +88,7 @@ description: # short description for the Resource you are creating
 # this is where the Resource specific properties begin
 ```
 
-You can learn more about these Attributes on the page about [Resource Grammar](./resource_grammar.md).
+You can learn more about these attributes on the page: [Attributes of Resource section.](./resource_attributes.md)
 
 ### **Automation & Orchestration**
 

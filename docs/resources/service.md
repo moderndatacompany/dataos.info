@@ -60,7 +60,7 @@ owner: {{iamgroot}}
 ```
 <center><i>Resource Section Configuration for a Service</i></center>
 
-For detailed customization options and additional attributes of the Resource Section, refer to the [Attributes of Resource Section.](../resources/resource_grammar.md)
+For detailed customization options and additional attributes of the Resource Section, refer to the link: [Attributes of Resource Section.](../resources/resource_attributes.md)
 
 #### **Configuring the Service-specific Section**
 

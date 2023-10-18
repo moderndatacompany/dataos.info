@@ -72,7 +72,7 @@ cluster:
 
 <center><i>Resource Section configuration for a Cluster Resource-type</i></center>
 
-For detailed customization options and additional details, refer to the [Resource Grammar.](../resources/resource_grammar.md)
+For detailed customization options and additional details, refer to the [Attributes of Resource section.](../resources/resource_attributes.md)
 
 #### **Configuring the Cluster-specific Section**
 
