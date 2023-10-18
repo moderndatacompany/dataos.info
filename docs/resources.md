@@ -34,16 +34,16 @@ The configuration files are *strongly-typed*, and the system flags an error when
 
 | Field | Data Type | Default Value | Requirement |
 | --- | --- | --- | --- |
-| [`name`](./resources/resource_grammar.md#name) | string | none | mandatory |
-| [`version`](./resources/resource_grammar.md#version) | string | none | mandatory |
-| [`type`](./resources/resource_grammar.md#type) | string | none | mandatory |
-| [`tags`](./resources/resource_grammar.md#tags) | string | depending on the Resource-instance, various tags are assigned by default | optional |
-| [`description`](./resources/resource_grammar.md#description) | string | none | optional |
-| [`owner`](./resources/resource_grammar.md#owner) | string | id of the user who deploys the Resource | optional |
-| [`layer`](./resources/resource_grammar.md#layer) | string | user | optional |
-| [`<resource-type>`](./resources/resource_grammar.md#resource-type) | mapping | none | mandatory |
+| [`name`](./resources/resource_attributes.md#name) | string | none | mandatory |
+| [`version`](./resources/resource_attributes.md#version) | string | none | mandatory |
+| [`type`](./resources/resource_attributes.md#type) | string | none | mandatory |
+| [`tags`](./resources/resource_attributes.md#tags) | string | depending on the Resource-instance, various tags are assigned by default | optional |
+| [`description`](./resources/resource_attributes.md#description) | string | none | optional |
+| [`owner`](./resources/resource_attributes.md#owner) | string | id of the user who deploys the Resource | optional |
+| [`layer`](./resources/resource_attributes.md#layer) | string | user | optional |
+| [`<resource-type>`](./resources/resource_attributes.md#resource-type) | mapping | none | mandatory |
 
-Each Resource-type has a different evolutionary journey and usage. Hence, the values for fields, like `version` and `type`, are dependent on the Resource-type. The [Resource Grammar](./resources/resource_grammar.md) elucidates all fields and possible values which can be assigned for each of the key-value pair.
+Each Resource-type has a different evolutionary journey and usage. Hence, the values for fields, like `version` and `type`, are dependent on the Resource-type. The [Attributes of Resource Meta section](./resources/resource_attributes.md) elucidates all fields and possible values which can be assigned for each of the key-value pair.
 
 These attributes not only define the instance of the Resource being deployed, but are stored as a ‘record of intent’ - once created, the underlying system will constantly work to ensure that the Resource exists and try to reconcile the current & desired states.
 

@@ -88,7 +88,7 @@ workflow: # Workflow-specific Section
 ```
 <center><i>Resource section configuration</i></center>
 
-For more details regarding the attributes of Resource section, refer to the link: [Attributes of Resource section](../resources/resource_grammar.md).
+For more details regarding the attributes of Resource section, refer to the link: [Attributes of Resource section.](../resources/resource_attributes.md)
 
 #### **Configure the Workflow-specific Section**
 
