@@ -74,7 +74,7 @@ Once the node pool is established, you can associate it with DataOS by configuri
 
 #### **Configuring the Resource Section**
 
-In DataOS, a Compute is classified as a Resource-type. Below is the YAML configuration for the Resource Section:
+In DataOS, a Compute is classified as a [Resource-type.](./types_of_dataos_resources.md) Below is the YAML configuration for the Resource Section:
 ```yaml
 name: {{my-workflow}}
 version: v1 
@@ -86,7 +86,7 @@ owner: {{iamgroot}}
 ```
 <center><i>Resource Section configuration</i></center>
 
-For detailed customization options and additional attributes within the Resource Section, refer to the [Attributes of Resource Section](../resources/resource_attributes.md).
+For detailed customization options and additional attributes within the Resource Section, refer to the [Attributes of Resource section.](../resources/resource_attributes.md).
 
 #### **Configuring the Compute-specific Section**
 
@@ -127,7 +127,7 @@ The table below presents an overview of attributes within a the Compute-specfic 
 
 </center>
 
-For more details about various attributes, refer to the [Attributes of Compute YAML.](./compute/yaml_configuration_attributes.md)
+For more details about various attributes, refer to the [Attributes of Compute-specific section.](./compute/yaml_configuration_attributes.md)
 
 Additionally, if you are looking for pre-configured Compute templates tailored for specific workloads such as ETL, Machine Learning, and Query, refer to [Compute Templates.](./compute/compute_templates.md)
 
