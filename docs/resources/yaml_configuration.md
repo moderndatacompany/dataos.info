@@ -1,9 +1,9 @@
 # YAML configuration files
 
-This page has information on features of YAML which will be useful while writing the configuration files for DataOS Resources.
+This page has information on features of YAML which will be useful while writing the configuration files for [DataOS Resources.](../resources.md)
 
-1. Declare multiple entities and resource-instances in a single YAML file.
-To do this, use three dashes `---` to separate the two entities. For example, we can create a Depot while using the reference of a Secret in the same config file.
+1. Declare multiple entities and Resource-instances in a single YAML file.
+To do this, use three dashes `---` to separate the two entities. For example, we can create a [Depot](./depot.md) while using the reference of a [Secret](./secret.md) in the same config file.
     
     ```yaml
     version: v1
@@ -71,7 +71,7 @@ To do this, use three dashes `---` to separate the two entities. For example, we
     vegetables: [donoteat, tastesbad]
     ```
     
-4. The objects at the same hierarchical level are interchangeable in order. For example, a new Secret is created using the following config file:
+4. The objects at the same hierarchical level are interchangeable in order. For example, a new [Secret](./secret.md) is created using the following config file:
     
     ```yaml
     version: v1
@@ -87,7 +87,7 @@ To do this, use three dashes `---` to separate the two entities. For example, we
         awssecretaccesskey: {{aws secret access key}}
     ```
     
-    The same secret can be created by using applying this config file:
+    The same [Secret](./secret.md) can be created by using applying this config file:
     
     ```yaml
     version: v1

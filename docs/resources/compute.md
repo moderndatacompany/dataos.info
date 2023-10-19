@@ -1,6 +1,6 @@
 # Compute
 
-Compute is a DataOS [Resource](../resources.md), designed to streamline the allocation of processing power for data-centric tasks such as data procesing, querying and machine learning workloads. It acts as an abstraction on top of **node pools**, which represent a group of virtual machines (VMs) characterized by congruent configurations. These configurations encompass CPU specifications, RAM capacity, network protocol, and storage drive types. These homogenous groupings are seamlessly accessible through a unique, identifiable name within DataOS and available to DataOS as a Compute Resource. This abstraction eliminates the necessity for developers to individually specify and provision VMs, thus optimizing resource allocation and streamlining the computational workflow.
+Compute is a [DataOS Resource](../resources.md), designed to streamline the allocation of processing power for data-centric tasks such as data procesing, querying and machine learning workloads. It acts as an abstraction on top of **node pools**, which represent a group of virtual machines (VMs) characterized by congruent configurations. These configurations encompass CPU specifications, RAM capacity, network protocol, and storage drive types. These homogenous groupings are seamlessly accessible through a unique, identifiable name within DataOS and available to DataOS as a Compute Resource. This abstraction eliminates the necessity for developers to individually specify and provision VMs, thus optimizing resource allocation and streamlining the computational workflow.
 
 <center>
 
@@ -13,7 +13,7 @@ Compute is a DataOS [Resource](../resources.md), designed to streamline the allo
 
 During the initial setup of DataOS, Compute is one of the primary Resource created as it provides computational power for the functioning of various other components and Resources within the system. A Compute Resource encompasses node pools procured from diverse cloud providers, including Amazon EC2, Azure VM, and Google Cloud Engine. Distinct instances of Compute Resources are tailored to specific purposes and are subsequently referenced by other Resources to fulfill their computational requirements.
 
-For example, Compute Resources of the `query` type are designated to empower Minerva Clusters with computation power, thereby enabling efficient data querying. Conversely, Compute Resources classified as `runnable` type facilitate the execution of runnable Resources, such as Workflows and Services, by providing the necessary computational capacity.
+For example, Compute Resources of the `query` type are designated to empower Minerva Clusters with computation power, thereby enabling efficient data querying. Conversely, Compute Resources classified as `runnable` type facilitate the execution of **runnable** [Resources](../resources.md), such as [Workflow](./workflow.md) and [Service](./service.md), by providing the necessary computational capacity.
 
 <aside class="callout">
 
@@ -36,11 +36,11 @@ The following categories of Compute Resources can be provisioned, each serving d
 
 ### **Runnable Compute**
 
-The `runnable` Compute-type is designed to handle data processing workloads and is primarily utilized for executing Workflows and Services. By default, the `runnable-default` Compute-instance is provisioned during the initial installation of DataOS. However, it is possible to modify the [configurations](./compute/compute_templates.md#runnable-compute) of the default instance or create additional Compute-instances according to specific requirements.
+The `runnable` Compute-type is designed to handle data processing workloads and is primarily utilized for executing [Workflows](./workflow.md) and [Services](./service.md). By default, the `runnable-default` Compute-instance is provisioned during the initial installation of DataOS. However, it is possible to modify the [configurations](./compute/compute_templates.md#runnable-compute) of the default instance or create additional Compute-instances according to specific requirements.
 
 ### **Query Compute**
 
-The `query` Compute-type is specifically optimized for Minerva Clusters, enabling efficient data querying operations. During the installation of DataOS, the `query-default` Compute-instance is provisioned by default. Similar to the runnable Compute, the [configurations](./compute/compute_templates.md#query-compute) of the query Compute can be customized or additional Compute-instances can be created as needed.
+The `query` Compute-type is specifically optimized for [Minerva Clusters](./cluster.md#minerva), enabling efficient data querying operations. During the installation of DataOS, the `query-default` Compute-instance is provisioned by default. Similar to the runnable Compute, the [configurations](./compute/compute_templates.md#query-compute) of the query Compute can be customized or additional Compute-instances can be created as needed.
 
 ### **GPU Compute**
 
@@ -58,7 +58,7 @@ The diagram presented below illustrates the underlying mechanism for provisionin
 
 ## How to create a Compute Resource?
 
-To meet the diverse requirements of data processing, machine learning, and query workloads, DataOS offers the flexibility to create customized Compute Resources. This section outlines the structure of a Compute YAML file, the available configuration options, and the process of creating a Compute Resource by applying the YAML.
+To meet the diverse requirements of data processing, machine learning, and query workloads, DataOS offers the flexibility to create customized Compute Resources. This section outlines the structure of a Compute YAML file, the available configuration attributes, and the process of creating a Compute Resource by applying the YAML.
 
 ### **Prerequisites**
 
@@ -84,7 +84,7 @@ tags:
 description: {{This is a sample workflow YAML configuration}}
 owner: {{iamgroot}}
 ```
-<center><i>Resource Section configuration</i></center>
+<center><i>Resource section configuration</i></center>
 
 For detailed customization options and additional attributes within the Resource Section, refer to the [Attributes of Resource section.](../resources/resource_attributes.md).
 
@@ -105,7 +105,7 @@ compute:
         value: {{"runnable"}}
         effect: {{"NoSchedule"}}
 ```
-<center><i>Compute-specific Section configuration</i></center>
+<center><i>Compute-specific section configuration</i></center>
 
 
 The table below presents an overview of attributes within a the Compute-specfic Section of YAML.
