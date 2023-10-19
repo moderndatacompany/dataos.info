@@ -1,4 +1,4 @@
-# Attributes of Compute YAML
+# Attributes of Compute-specific Section
 
 This documentation provides a comprehensive overview of the configuration attributes available for the Compute-specifc Section within a Compute Resource YAML.
 
@@ -19,7 +19,7 @@ compute:
         value: {{"runnable"}}
         effect: {{"NoSchedule"}}
 ```
-<center><i> Compute YAML configuration </i></center>
+<center><i> Compute-specific section YAML configuration </i></center>
 
 ## Configuration Attributes
 
