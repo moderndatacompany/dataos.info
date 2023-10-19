@@ -46,7 +46,7 @@ Upon the application of a data masking policy, the original data is transformed,
 
 Such a policy ensures the protection of sensitive details, including but not limited to names, titles, addresses, etc.
 
-You can apply the Mask policy, say to mask the column with ‘customer name’ in it, directly from the Metis UI via policy tags or via DataOS CLI by applying a YAML file. 
+You can apply the Mask policy, say to mask the column with ‘customer name’ in it, directly from the [Metis UI](../interfaces/metis.md) via policy tags or via [DataOS CLI](../interfaces/cli.md) by applying a YAML file. 
 
 #### **Data Filtering Policy**
 
@@ -68,7 +68,7 @@ In DataOS, both access and data policies are configured via the singular Policy 
 
 #### **Resource Section Configuration**
 
-To create a Policy YAML in DataOS, the initial step involves configuring the Resource Section in a YAML file. This section defines various properties of the Policy Resource. The following is an example YAML configuration for the Resource Section:
+To create a Policy YAML in DataOS, the initial step involves configuring the [Resource Section](./resource_attributes.md) in a YAML file. This section defines various properties of the Policy Resource. The following is an example YAML configuration for the Resource Section:
 
 ```yaml
 name: {{my-policy}}
@@ -90,14 +90,13 @@ For policies that govern authorization for system level resources such as API Pa
 Additionally, the Resource section offers various configurable attributes, which can be explored further on the link: [Attributes of Resource section.](../resources/resource_attributes.md)
 
 
-
 #### **Policy-specific Section Configuration**
 
-The Policy-specific Section focuses on the configurations specific to the Policy Resource. Each Policy Resource-type has its own YAML syntax.
+The Policy-specific Section focuses on the configurations specific to the Policy Resource. Each Policy-type has its own YAML syntax.
 
 **Access Policy Syntax**
 
-Access Policies are defined using a subject-predicate-object triad. The YAML syntax for an Access Policy is as follows:
+Access Policies are defined using a [subject-predicate-object](./policy/understanding_abac_pdp_and_pep.md#attribute-based-access-control-abac) triad. The YAML syntax for an Access Policy is as follows:
 
 ```yaml
 policy:
@@ -121,18 +120,18 @@ The table below summarizes varioues attributes/fields within the access policy Y
 
 | Field | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`policy`](./policy/policy_specific_section_grammar.md#policy) | object | none | none | mandatory |
-| [`access`](./policy/policy_specific_section_grammar.md#access) | object | none | none | mandatory |
-| [`subjects`](./policy/policy_specific_section_grammar.md#subjects) | object | none | none | mandatory |
-| [`tags`](./policy/policy_specific_section_grammar.md#tags) | list of strings | none | a valid DataOS tag | mandatory |
-| [`predicates`](./policy/policy_specific_section_grammar.md#predicates) | list of strings | none | http or crud operations | mandatory |
-| [`objects`](./policy/policy_specific_section_grammar.md#objects) | object | none | none | mandatory |
-| [`paths`](./policy/policy_specific_section_grammar.md#paths) | list of strings | none | api paths, udl paths | mandatory |
-| [`allow`](./policy/policy_specific_section_grammar.md#allow) | boolean | false | true/false | optional |
+| [`policy`](./policy/yaml_configuration_attributes.md#policy) | object | none | none | mandatory |
+| [`access`](./policy/yaml_configuration_attributes.md#access) | object | none | none | mandatory |
+| [`subjects`](./policy/yaml_configuration_attributes.md#subjects) | object | none | none | mandatory |
+| [`tags`](./policy/yaml_configuration_attributes.md#tags) | list of strings | none | a valid DataOS tag | mandatory |
+| [`predicates`](./policy/yaml_configuration_attributes.md#predicates) | list of strings | none | http or crud operations | mandatory |
+| [`objects`](./policy/yaml_configuration_attributes.md#objects) | object | none | none | mandatory |
+| [`paths`](./policy/yaml_configuration_attributes.md#paths) | list of strings | none | api paths, udl paths | mandatory |
+| [`allow`](./policy/yaml_configuration_attributes.md#allow) | boolean | false | true/false | optional |
 
 </center>
 
-Here, the `subject` represents the user, the `object` denotes the target (such as an API path or resource) that the user interacts with, and the `predicate` represents the action performed. The `allow` field determines whether the policy grants or restricts access for the user to perform the specified action on the designated object. Refer to the [Policy Section-specific Grammar](./policy/policy_specific_section_grammar.md) for more details on configuring subjects, predicates, and objects.
+Here, the [`subjects`](./policy/yaml_configuration_attributes.md#subjects) represents the user, the [`objects`](./policy/yaml_configuration_attributes.md#objects) denotes the target (such as an API path or resource) that the user interacts with, and the [`predicates`](./policy/yaml_configuration_attributes.md#predicates) represents the action performed. The [`allow`](./policy/yaml_configuration_attributes.md#allow) field determines whether the policy grants or restricts access for the user to perform the specified action on the designated object. Refer to the [Attributes of Policy-specific section](./policy/yaml_configuration_attributes.md) for more details on configuring subjects, predicates, and objects.
 
 **Data Policy Syntax**
 
@@ -163,30 +162,30 @@ The table below summarizes the various attributes/fields within a data policy YA
 
 | Field | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`policy`](./policy/policy_specific_section_grammar.md#policy) | object | none | none | mandatory |
-| [`data`](./policy/policy_specific_section_grammar.md#data) | object | none | none | mandatory |
-| [`depot`](./policy/policy_specific_section_grammar.md#depot) | string | none | any valid depot name or regex pattern | optional |
-| [`collection`](./policy/policy_specific_section_grammar.md#collection) | string | none | any valid collection name or regex pattern | optional |
-| [`dataset`](./policy/policy_specific_section_grammar.md#dataset) | string | none | any valid dataset name or regex pattern | optional |
-| [`priority`](./policy/policy_specific_section_grammar.md#priority) | number | none | 0-100 | mandatory |
-| [`selector`](./policy/policy_specific_section_grammar.md#selector) | object | none | none | mandatory |
-| [`user`](./policy/policy_specific_section_grammar.md#user) | object | none | none | mandatory |
-| [`tags`](./policy/policy_specific_section_grammar.md#tags) | list of strings | none | a valid DataOS tag | mandatory |
-| [`column`](./policy/policy_specific_section_grammar.md#column) | object | none | true/false | optional |
-| [`name`](./policy/policy_specific_section_grammar.md#column) | list of strings | none | valid column name | optional |
-| [`type`](./policy/policy_specific_section_grammar.md#type) | string | none | mask/filter | mandatory |
-| [`filter/mask`](./policy/policy_specific_section_grammar.md#type) | object | none | none | mandatory |
+| [`policy`](./policy/yaml_configuration_attributes.md#policy) | object | none | none | mandatory |
+| [`data`](./policy/yaml_configuration_attributes.md#data) | object | none | none | mandatory |
+| [`depot`](./policy/yaml_configuration_attributes.md#depot) | string | none | any valid depot name or regex pattern | optional |
+| [`collection`](./policy/yaml_configuration_attributes.md#collection) | string | none | any valid collection name or regex pattern | optional |
+| [`dataset`](./policy/yaml_configuration_attributes.md#dataset) | string | none | any valid dataset name or regex pattern | optional |
+| [`priority`](./policy/yaml_configuration_attributes.md#priority) | number | none | 0-100 | mandatory |
+| [`selector`](./policy/yaml_configuration_attributes.md#selector) | object | none | none | mandatory |
+| [`user`](./policy/yaml_configuration_attributes.md#user) | object | none | none | mandatory |
+| [`tags`](./policy/yaml_configuration_attributes.md#tags) | list of strings | none | a valid DataOS tag | mandatory |
+| [`column`](./policy/yaml_configuration_attributes.md#column) | object | none | true/false | optional |
+| [`names`](./policy/yaml_configuration_attributes.md#names) | list of strings | none | valid column name | optional |
+| [`type`](./policy/yaml_configuration_attributes.md#type) | string | none | mask/filter | mandatory |
+| [`mask`](./policy/yaml_configuration_attributes.md#mask)/[`filters`](./policy/yaml_configuration_attributes.md#filters) | object | none | none | mandatory |
 
 </center>
 
 
-For detailed information on configuring the YAML file for a Data Policy, refer to the following [link](./policy/policy_specific_section_grammar.md).
+For detailed information on configuring the YAML file for a Data Policy, refer to the link: [Attributes of Policy-specific section.](./policy/yaml_configuration_attributes.md)
 
 
 
 ### **Applying the YAML File**
 
-After creating the YAML configuration file for the Policy resource, it's time to apply it to instantiate the resource in the DataOS environment. To apply the Policy YAML file, utilize the `apply` command.
+After creating the YAML configuration file for the Policy Resource, it's time to apply it to instantiate the resource in the DataOS environment. To apply the Policy YAML file, utilize the [`apply`](../interfaces/cli/command_reference.md#apply) command.
 
 ```shell
 dataos-ctl apply -f {{yaml-file-path}}
@@ -194,7 +193,7 @@ dataos-ctl apply -f {{yaml-file-path}}
 
 ## Policy Implementation Mechanism
 
-In the DataOS ecosystem, the **Heimdall** governance engine operates as the Policy Decision Point (PDP) for Access Policies, while the **Minerva Gateway** serves as the PDP for Data Policies. Both these elements jointly supervise the enforcement of policies across a range of Policy Enforcement Points (PEP), distributed throughout the DataOS ecosystem. Learn more about Policy implementation in DataOS, [here.](./policy/implementation_of_data_and_access_policy.md)
+In the DataOS ecosystem, the [Heimdall](../architecture.md#heimdall) governance engine operates as the [Policy Decision Point (PDP)](./policy/understanding_abac_pdp_and_pep.md#policy-decision-point-pdp) for [Access Policies](#access-policy), while the [Minerva Gateway](../architecture.md#gateway) serves as the PDP for [Data Policies](#data-policy). Both these elements jointly supervise the enforcement of policies across a range of Policy Enforcement Points (PEP), distributed throughout the DataOS ecosystem. Learn more about Policy implementation in DataOS, [here.](./policy/implementation_of_data_and_access_policy.md)
 
 ## Policy Configuration Templates
 

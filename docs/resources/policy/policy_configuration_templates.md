@@ -34,7 +34,7 @@ policy:
 
 **Enabling Specific Predicates on a Particular Dataset within a Depot for a Subject Possessing a Specified Tag**
 
-The provided template defines an access policy for a Depot within DataOS. The sample given below authorizes users with the `roles:id:healthcaredatauser` tag to `READ` predicate on the dataset stored at the UDL address, `dataos://icebase:test/customer_test`. Please remember to customize the template by replacing the placeholder values with the necessary details based on your specific requirements.
+The provided template defines an access policy for a [Depot](../depot.md) within DataOS. The sample given below authorizes users with the `roles:id:healthcaredatauser` tag to `READ` predicate on the dataset stored at the UDL address, `dataos://icebase:test/customer_test`. Please remember to customize the template by replacing the placeholder values with the necessary details based on your specific requirements.
 
 **Template**
 

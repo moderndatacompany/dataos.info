@@ -1,4 +1,4 @@
-# Policy Section-specific Grammar
+# Attributes of Policy-specific Section
 
 ## Access Policy YAML Configuration
 
@@ -23,12 +23,48 @@ policy:
     allow: {{false}}
 ```
 
-## Configuration Attributes/Fields
+### **Configuration Attributes/Fields**
 
-### **`subjects`**
+#### **`policy`**
+
+**Description:** mapping for policy attributes<br>
+**Data Type:** mapping<br>
+**Requirement:** mandatory<br>
+**Default Value:** none<br>
+**Possible Value:** none<br>
+**Example Usage:**<br>
+```yaml
+policy:
+  data/access:
+    {}
+```
+
+
+#### **`access`**
+
+**Description:** mapping for access policy attributes<br>
+**Data Type:** mapping<br>
+**Requirement:** mandatory<br>
+**Default Value:** none<br>
+**Possible Value:** none<br>
+**Example Usage:**<br>
+```yaml
+access:
+  subjects:
+    {}
+  predicates:
+    {}
+  objects:
+    {}
+  allow: true
+```
+
+---
+
+#### **`subjects`**
 
 **Description:** a subject is a user that would like to perform a specific predicate on a specific object. It refers to persons or application/services that make the request to perform an action. Attributes of the subject might include tags or groups of tags.<br>
-**Data Type:** object<br>
+**Data Type:** mapping<br>
 **Requirement:** mandatory<br>
 **Default Value:** none<br>
 **Possible Value:** none<br>
@@ -41,7 +77,7 @@ subjects:
 
 ---
 
-### **`objects`**
+#### **`objects`**
 
 **Description:** the target that the subject would like to perform the predicate on. This can be any target, an API path, a column. The object is the resource (data or service) on which the action is to be performed.<br>
 **Data Type:** list of strings<br>
@@ -58,8 +94,24 @@ objects:
 
 ---
 
+#### **`paths`**
 
-### **`tags`**
+**Description:** object paths<br>
+**Data Type:** list of string<br>
+**Requirement:** optional<br>
+**Default Value:** none<br>
+**Possible Value:** valid list of paths in string format<br>
+**Example Usage:** 
+
+```yaml
+paths:
+  - /dataos/system/themis/**
+```
+
+---
+
+
+#### **`tags`**
 
 **Description:** tags are the attributes of the subject or object. A tag field can contain one single tag or a group of tags in the form of a list<br>
 **Data Type:** list of strings<br>
@@ -232,7 +284,7 @@ tags:
 
 ---
 
-### **`predicates`**
+#### **`predicates`**
 
 **Description:** the action or the verb that the subject would like to perform on the specific object.<br>
 **Data Type:** list of strings<br>
@@ -275,7 +327,7 @@ predicates:
 
 ---
 
-### **`allow`**
+#### **`allow`**
 
 **Description:** action to be allowed or denied<br>
 **Data Type:** boolean<br>
@@ -311,12 +363,12 @@ policy:
 		{{filter/mask}}: 
 ```
 
-## Configuration Fields/Attributes
+### **Configuration Fields/Attributes**
 
-### **`data`**
+#### **`data`**
 
 **Description:** data policy specific section<br>
-**Data Type:** object<br>
+**Data Type:** mapping<br>
 **Requirement:** mandatory<br>
 **Default Value:** none<br>
 **Possible Value:** none<br>
@@ -329,7 +381,7 @@ data:
 
 ---
 
-### **`priority`**
+#### **`priority`**
 
 **Description:** the policy with higher priority will override all other policies defined for the same resources.<br>
 **Data Type:** number<br>
@@ -344,7 +396,7 @@ priority: 80
 
 ---
 
-### **`depot`**
+#### **`depot`**
 
 **Description:** name of depot<br>
 **Data Type:** string<br>
@@ -359,7 +411,7 @@ depot: icebase
 
 ---
 
-### **`collection`**
+#### **`collection`**
 
 **Description:** name of the collection<br>
 **Data Type:** string<br>
@@ -374,7 +426,7 @@ collection: retail
 
 ---
 
-### **`dataset`**
+#### **`dataset`**
 
 **Description:** name of dataset<br>
 **Data Type:** string<br>
@@ -389,10 +441,10 @@ dataset: city
 
 ---
 
-### **`selector`**
+#### **`selector`**
 
 **Description:** selector section<br>
-**Data Type:** object<br>
+**Data Type:** mapping<br>
 **Requirement:** mandatory<br>
 **Default Value:** none<br>
 **Possible Value:** none<br>
@@ -408,10 +460,10 @@ selector:
 
 ---
 
-### **`user`**
+#### **`user`**
 
 **Description:** section for defining the user<br>
-**Data Type:** object<br>
+**Data Type:** mapping<br>
 **Requirement:** mandatory<br>
 **Default Value:** none<br>
 **Possible Value:** none<br>
@@ -426,7 +478,7 @@ user:
 
 ---
 
-### **`match`**
+#### **`match`**
 **Description:** This attribute<br>
 **Data Type:** string<br>
 **Requirement:** mandatory<br>
@@ -440,14 +492,14 @@ match: any
 
 ---
 
-### [**`tags`**](#tags)
+#### [**`tags`**](#tags)
 
 ---
 
-### **`column`**
+#### **`column`**
 
 **Description:** column section<br>
-**Data Type:** object<br>
+**Data Type:** mapping<br>
 **Requirement:** mandatory<br>
 **Default Value:** none<br>
 **Possible Value:** any valid column name<br>
@@ -461,7 +513,7 @@ column:
 
 ---
 
-### **`names`**
+#### **`names`**
 
 **Description:** list of column name<br>
 **Data Type:** list of strings<br>
@@ -478,10 +530,10 @@ names:
 
 ---
 
-### **`mask`**
+#### **`mask`**
 
 **Description:** field for defining the data masking strategy<br>
-**Data Type:** object<br>
+**Data Type:** mapping<br>
 **Requirement:** optional<br>
 **Default Value:** none<br>
 **Possible Value:** depends on the masking strategy utilized<br>
@@ -511,7 +563,7 @@ Here's a handy table that lists the data masking strategies and the correspondin
 
 In the following section, we delve into comprehensive explanations and syntax examples for each of these data masking strategies.
 
-#### **`bucket_number`**
+##### **`bucket_number`**
 
 Using the `bucket_number` operator, numerical data can be categorized into defined range 'buckets.' Each data point is then replaced by the lower boundary of the bucket it falls into.
 
@@ -546,7 +598,7 @@ mask:
 In this example, numerical data would be segmented into the indicated ranges. A value of 27, for example, would be bucketed to the 20 range, whereas a value of 77 would fall into the 60 range.
 
 
-#### **`bucket_date`**
+##### **`bucket_date`**
 
 The `bucket_date` operator functions similarly to ‘bucket_number’ but is specifically tailored for date data types. This strategy enables the categorization of dates into various precision levels such as hour, day, week, or month.
 
@@ -573,7 +625,7 @@ mask:
 In this example, the `precision` field designates the granularity of the date bucketing to be at a 'month' level.
 
 
-#### **`hash`**
+##### **`hash`**
 
 The hashing method is a powerful data masking technique wherein a specific input consistently produces an identical fixed-size byte string, commonly referred to as a 'hash code'. A notable feature of hashing is its sensitivity to changes in input; even the slightest modification in input can yield a significantly different hash output.
 
@@ -605,7 +657,7 @@ In this YAML configuration, the operator `hash` is specified along with the SHA-
 Remember, the `hash` operator is only applicable to textual data types. Attempting to use it on non-textual data types may lead to unintended results or errors. Always make sure the data you wish to mask is compatible with the masking operator you choose.
 
 
-#### **`redact`**
+##### **`redact`**
 
 Redaction is a data masking strategy that aims to obscure or completely erase portions of data. Its real-world analogy can be seen in blacking out sections of a document to prevent sensitive information from being disclosed. When applied to data masking, redaction might involve replacing certain elements in a data field (such as characters in an email address or digits in a Social Security number) with a placeholder string, e.g., "[REDACTED]"
 
@@ -637,7 +689,7 @@ mask:
 
 The `replacement` field determines the string that will replace the redacted portions of data.
 
-#### **`rand_pattern`**
+##### **`rand_pattern`**
 
 Random Pattern Masking involves the substitution of sensitive data with randomly produced equivalents that maintain the original data's format or structure. The fundamental goal is to ensure that the masked data is statistically representative and retains operational utility while safeguarding critical information. For example, it can be used to replace personal names with random strings or transform real addresses into plausible but entirely fictitious ones.
 
@@ -670,7 +722,7 @@ In this instance, the specified pattern '####-####-####' will generate random nu
 **Format Preserving Encryption (FPE)**: As the name suggests, this method encrypts data in a way that the output has the same format as the input. For example, if a 16-digit credit card number is encrypted using FPE, the result is another 16-digit number. This maintains functional realism, allowing systems to operate normally with masked data.
 
 
-#### **`regex_replace`**
+##### **`regex_replace`**
 
 The Regular Expression (Regex) Replacement strategy utilizes regular expressions to discern and mask identifiable patterns within the data. The identified patterns can be substituted with a predetermined value or random character(s). This strategy is particularly advantageous for masking data that follows a predictable pattern, such as email addresses, phone numbers, or credit card information.
 
@@ -721,7 +773,7 @@ mask:
 In this case, the regex pattern `[0-9](?=.*.{4})` identifies a digit followed by at least four characters. This digit will be replaced by '#'.
 
 
-#### **`pass_through`**
+##### **`pass_through`**
 
 The "Pass Through" strategy is used when certain data elements should not be masked or altered. With this technique, data developers can specify that certain data fields remain unchanged during the masking process. This approach is suitable for data that doesn't contain sensitive information or data that is already anonymized.
 
@@ -736,12 +788,12 @@ mask:
 
 ---
 
-### **`filters`**
+#### **`filters`**
 
 The data visibility for end users is limited due to the filtering policy. You can build a policy to eliminate results from a query's result set depending on comparison operators specified on a column, for example, some users won't be able to see data from the 'Florida' area.
 
 **Description:** section for defining data filter pattern<br>
-**Data Type:** list of objects<br>
+**Data Type:** list of mappings<br>
 **Requirement:** optional<br>
 **Default Value:** none<br>
 **Possible Value:** depends on the filter pattern utilized<br>
@@ -755,7 +807,7 @@ filters:
     value: {{TN}}
 ```
 
-#### **`column`**
+##### **`column`**
 
 **Description:** column name<br>
 **Data Type:** string<br>
@@ -768,7 +820,7 @@ filters:
 column: store_state_code
 ```
 
-#### **`operator`**
+##### **`operator`**
 
 **Description:** filter operator name<br>
 **Data Type:** string<br>
@@ -781,7 +833,7 @@ column: store_state_code
 operator: not_equals
 ```
 
-#### **`value`**
+##### **`value`**
 
 **Description:** value on which filter is to be applied<br>
 **Data Type:** depends on `coloumn` data type<br>
