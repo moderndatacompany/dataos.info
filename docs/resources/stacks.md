@@ -1,8 +1,8 @@
 # Stacks
 
-In DataOS, Stacks are programming paradigms that facilitate the processing and management of data. They serve as extension points for runnable DataOS Resources, Workflows, and Services, offering configurable options to meet specific requirements and enhance functionality.
+In DataOS, Stacks are programming paradigms that facilitate the processing and management of data. They serve as extension points for runnable [DataOS Resources](../resources.md), [Workflow](./workflow.md), and [Service](./service.md), offering configurable attributes to meet specific requirements and enhance functionality.
 
-As a DataOS Resource, each stack is defined by unique attributes and metadata that define its intended purpose and capabilities.
+As a [DataOS Resource](../resources.md), each Stack is defined by unique attributes and metadata that define its intended purpose and capabilities.
 
 DataOS provides a comprehensive set of built-in stacks while also allowing the flexibility to add custom stacks as needed.
 
@@ -10,29 +10,26 @@ DataOS provides a comprehensive set of built-in stacks while also allowing the f
 
 ### **Flare**
 
-Flare is a powerful declarative stack designed specifically for large-scale data processing tasks.
+[Flare](./stacks/flare.md) is a powerful declarative Stack designed specifically for large-scale data processing tasks.
 
 ### **Benthos**
 
-Benthos is a high-performance, resilient, and declarative stream processing stack.
+[Benthos](./stacks/benthos.md) is a high-performance, resilient, and declarative stream processing Stack.
 
 ### **Beacon**
 
-Beacon stack is a standalone HTTP server that exposes API endpoints on top of a Postgres Database. It offers two variations:
-
-- Beacon + REST: Enables the exposure of REST APIs.
-- Beacon + GraphQL: Facilitates the exposure of GraphQL APIs.
+[Beacon] Stack is a standalone HTTP server that exposes API endpoints on top of a Postgres database. It offers a single flavor `beacon+rest` that enables exposure of REST APIs on Postgres database.
 
 ### **Alpha**
 
-Alpha Stack is a declarative DevOps SDK used for seamless deployment of data applications into production environments.
+[Alpha](./stacks/alpha.md) Stack is a declarative DevOps SDK used for seamless deployment of data applications into production environments.
 
 ### **Data Toolbox**
 
-The Data Toolbox stack provides functionality to update Iceberg metadata versions to the latest available or to any specific version.
+The [Data Toolbox](./stacks/data_toolbox.md) Stack provides functionality to update Iceberg metadata versions to the latest available or to any specific version.
 
 ### **Scanner**
 
-The Scanner stack in DataOS is a Python-based framework that allows developers to extract metadata from external source systems (such as RDBMS, Data Warehouses, Messaging services, etc.) as well as components/services within the DataOS environment.
+The [Scanner](./stacks/scanner.md) Stack in DataOS is a Python-based framework that allows developers to extract metadata from external source systems (such as RDBMS, Data Warehouses, Messaging services, etc.) as well as components/services within the DataOS environment.
 
 These built-in stacks offer a wide range of capabilities, empowering data developers to efficiently build, process, and manage data within the DataOS ecosystem.

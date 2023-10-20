@@ -22,7 +22,7 @@ Policy decisions in DataOS are made by evaluating the tags (or attributes) assoc
 
 ## PDP and PEP
 
-Whenever a user attempts to perform a predicate on a resource, this interaction pattern can be better comprehended through an understanding of Policy Decision Points (PDP) and Policy Enforcement Points (PEP).
+Whenever a user attempts to perform a predicate on a resource, this interaction pattern can be better comprehended through an understanding of [Policy Decision Points (PDP)](#policy-decision-point-pdp) and [Policy Enforcement Points (PEP).](#policy-enforcement-point-pep)
 
 ### **Policy Decision Point (PDP)**
 
@@ -34,4 +34,4 @@ A Policy Enforcement Point (PEP) signifies the service at the point of access. U
 
 ![PDP and PEP](./understanding_abac_pdp_and_pep/pdp_and_pep.png)
 
-In this context, **Heimdall** serves as the PDP for access policies, while **Minerva Gateway** fulfills the role of the PDP for Data Policies. The rest of the system's services function as PEPs, liaising with Heimdall and Minerva Gateway for all authorization-related matters.
+In this context, [Heimdall](../../architecture.md#heimdall) serves as the PDP for access policies, while [Minerva Gateway](../../architecture.md#gateway) fulfills the role of the PDP for [Data Policies.](../policy.md#data-policy) The rest of the system's services function as PEPs, liaising with Heimdall and Minerva Gateway for all authorization-related matters.
