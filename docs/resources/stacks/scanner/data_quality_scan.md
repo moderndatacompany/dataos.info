@@ -1,6 +1,9 @@
-# Data Quality Scan
+# Data Quality Checks Scanner
 
 Assertions are business-specific validation rules applied to test and evaluate the quality of specific datasets if they are appropriate for the intended purpose. DataOS allows you to define your own assertions with a combination of tests to check the rules. Flare workflows are run for data quality checks on the entire dataset or sample /filtered data. This analysis is stored in Icebase.
+
+> To learn more about data quality (assertions) Flare workflows, click [here](/resources/stacks/flare/job_types/#data-quality-job).
+>
 
 Data quality Scanner workflow reads about these quality checks for your data along with their pass/fail status(metadata extraction related to data quality) and stores it in Metis DB. This data helps you validate the captured data to determine whether the data meets business requirements.
 
