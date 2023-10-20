@@ -121,21 +121,21 @@ The following workflows are running as system workflows to periodically scan the
 
 DataOS can leverage Scanner workflows to write jobs that could pull information from data profiles (descriptive statistics for the datasets) and data quality tables on an incremental basis and publish it to Metis DB.
 
-[Data Profile Scan](scanner/data_profile_scan.md)
+[Data Profiling Scanner](scanner/data_profile_scan.md)
 
-[Data Quality Scan](scanner/data_quality_scan.md)
+[Data Quality Scanner](scanner/data_quality_scan.md)
 
 ### **Pipelines/Workflows Data**
 
 For metadata extraction related to data about workflows and resource consumption, the following workflow is scheduled.
 
-[Workflows Data Scan](scanner/workflows_data_scan.md)
+[Workflows Data Scanner](scanner/workflows_data_scan.md)
 
 ### **Query History**
 
 This Scanner workflow will ingest metadata related to query history. It scans information about queries, users, dates, and completion times. It connects with the Gateway service on a given cadence to fetch information about queries.
 
-[Query Usage](scanner/query_usage_data_scan.md)
+[Query Usage Scanner](scanner/query_usage_data_scan.md)
 
 ### **Users’ Information**
 

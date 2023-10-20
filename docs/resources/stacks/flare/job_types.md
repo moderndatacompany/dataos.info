@@ -10,7 +10,7 @@ Apart from regular batch jobs, there are three specialized types of batch jobs d
 
 ### **Data Profiling Job**
 
-Data Profiling Jobs assess the quality and structure of datasets. These jobs examine source data to determine accuracy, completeness, and validity, providing summaries and insights about the data. Accurate and complete data is essential for making informed decisions based on the available data. Data Profiling Jobs enable you to analyze the structure, content, and relationships within the data, uncovering patterns, rules, inconsistencies, anomalies, and redundancies to achieve higher data quality. Basic statistics are used to assess data validity. Data profiling gives a comprehensive overview of your data, its distribution, types, missing values, and outliers.
+Data Profiling Jobs assess the validity and structure of datasets. These jobs examine source data to determine accuracy, completeness, and validity, providing summaries and insights about the data. Accurate and complete data is essential for making informed decisions based on the available data. Data Profiling Jobs enable you to analyze the structure, content, and relationships within the data, uncovering patterns, rules, inconsistencies, anomalies, and redundancies to achieve higher data quality. Basic statistics are used to assess data validity. Data profiling gives a comprehensive overview of your data, its distribution, types, missing values, and outliers.
 To learn more about Data Profiling Jobs, refer to [here](./case_scenario/data_profiling_jobs.md).
 
 #### **Fingerprinting**
