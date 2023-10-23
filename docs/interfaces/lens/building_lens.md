@@ -1,13 +1,12 @@
 # Building Lens
-Creating Lenses involves several key steps. Here's a structured guide to help you navigate the process:
-
+Creating Lenses involves several key steps. Here's a structured guide to help you navigate the process.
 ## Lens Modeling
 
 ### **Understanding Key Questions and Metrics**
 
 Before diving into lens modeling, it's essential to have a clear understanding of the questions you aim to address and the metrics required. Think about the aspects of your data that you want to analyze. For example, if you're working with sales data, you might want to know which products are selling best in different regions or which customers are making the most significant purchases. This outcome-oriented approach ensures that your lens aligns with your specific needs. So, you need to list the critical questions.
 
-**Examples:** In the retail industry, which provides consumers with access to a diverse range of products and services across the globe, the following are the critical concerns:
+**Example:** In the retail industry, which provides consumers with access to a diverse range of products and services across the globe, the following are the critical concerns:
 
 - Which products do users prefer in particular cities or states?
 - In which state are these products most frequently sold?
@@ -191,9 +190,7 @@ To create a Lens, you need to configure the attributes of various sections withi
 
 </aside>
 
-For additional information regarding the various elements of the Lens, including their definitions, considerations and other details, please refer to:
-
-[Attributes of Lens YAML](building_lens/attributes_lens.md)
+For additional information regarding the various elements of the Lens, including their definitions, considerations and other details, please refer to [Attributes of Lens YAML](building_lens/attributes_lens.md)
 
 **The table below summarizes various attributes within the Lens YAML.**
 
@@ -451,15 +448,14 @@ Here's a comprehensive example of the 'Retail Supply Chain' Lens to drive our us
     ```
     
 </details>
+
 ## Deploying Lens
 
 After defining the Lens, the next step is to deploy it into the DataOS environment. To get started, follow the steps:
 
 **Step 1: Get the Environment Token or API Key**
 
-- Get the environment token or API Key from the profile section of the current environment.  To get  the API Key from DataOS, click the below link
-    
-    To get or create an API key from DataOS, refer to this l**ink**.
+- Get the environment token or API Key from the profile section of the current environment.  To get  the API Key from DataOS, click [here](/interfaces/create_token/).
     
 
 **Step 2: Install Postman**
