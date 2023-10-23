@@ -110,7 +110,7 @@ command:
   - streamlit
 ```
 
-### `arguments`
+**`arguments`**
 
 The arguments are the additional arguments apart form the primary command specified within the Dockerfile, as described above
 
@@ -122,6 +122,8 @@ arguments:
 
 ## Recipes
 
-[Build a Streamlit App on DataOS](./alpha/build_a_streamlit_app_on_dataos.md)
+[How to deploy a Streamlit App on DataOS](./alpha/build_a_streamlit_app_on_dataos.md)
 
-[Alpha Stack within a Workflow ](./alpha/alpha_stack_within_a_workflow.md)
+[Alpha Stack within a Workflow](./alpha/alpha_stack_within_a_workflow.md)
+
+[Creating shortcut for Alpha Stack based applications](./alpha/alpha_stack_based_app_shortcut.md)
