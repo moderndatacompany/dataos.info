@@ -99,21 +99,21 @@ cluster:
 
 | Field | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`cluster`](./cluster/cluster_attributes.md#cluster) | object | none | none | mandatory |
-| [`compute`](./cluster/cluster_attributes.md#compute) | string | none | query-default or any other query type custom Compute Resource | mandatory |
-| [`runAsUser`](./cluster/cluster_attributes.md#runasuser) | string | none | userid of the use case assignee | optional |
-| [`maintenance`](./cluster/cluster_attributes.md#maintenance) | object | none | none | optional |
-| [`restartCron`](./cluster/cluster_attributes.md#restartcron) | string | none | any valid cron expression | optional |
-| [`scalingCrons`](./cluster/cluster_attributes.md#scalingcrons) | object | none | none | optional |
-| [`cron`](./cluster/cluster_attributes.md#cron) | string | none | any valid cron expression | optional |
-| [`replicas`](./cluster/cluster_attributes.md#replicas) | integer | 1 | positive integer | optional |
-| [`resources`](./cluster/cluster_attributes.md#resources) | object | none | none | optional |
-| [`limits`](./cluster/cluster_attributes.md#limits) | object | none | none | optional |
-| [`cpu`](./cluster/cluster_attributes.md#cpu) | string | requests: 100m, limits: 400m | number of cpu units in milliCPU(m) or cpu Core| optional |
-| [`memory`](./cluster/cluster_attributes.md#memory) | string | requests: 100Mi, limits: 400Mi | memory in Mebibytes(Mi) or Gibibytes(Gi) | optional |
-| [`requests`](./cluster/cluster_attributes.md#requests) | object | none | none | optional |
+| [`cluster`](./cluster/yaml_configuration_attributes.md#cluster) | mapping | none | none | mandatory |
+| [`compute`](./cluster/yaml_configuration_attributes.md#compute) | string | none | query-default or any other query type custom Compute Resource | mandatory |
+| [`runAsUser`](./cluster/yaml_configuration_attributes.md#runasuser) | string | none | userid of the use case assignee | optional |
+| [`maintenance`](./cluster/yaml_configuration_attributes.md#maintenance) | mapping | none | none | optional |
+| [`restartCron`](./cluster/yaml_configuration_attributes.md#restartcron) | string | none | any valid cron expression | optional |
+| [`scalingCrons`](./cluster/yaml_configuration_attributes.md#scalingcrons) | mapping | none | none | optional |
+| [`cron`](./cluster/yaml_configuration_attributes.md#cron) | string | none | any valid cron expression | optional |
+| [`replicas`](./cluster/yaml_configuration_attributes.md#replicas) | integer | 1 | positive integer | optional |
+| [`resources`](./cluster/yaml_configuration_attributes.md#resources) | mapping | none | none | optional |
+| [`limits`](./cluster/yaml_configuration_attributes.md#limits) | mapping | none | none | optional |
+| [`cpu`](./cluster/yaml_configuration_attributes.md#cpu) | string | requests: 100m, limits: 400m | number of cpu units in milliCPU(m) or cpu Core| optional |
+| [`memory`](./cluster/yaml_configuration_attributes.md#memory) | string | requests: 100Mi, limits: 400Mi | memory in Mebibytes(Mi) or Gibibytes(Gi) | optional |
+| [`requests`](./cluster/yaml_configuration_attributes.md#requests) | mapping | none | none | optional |
 
-For additional information about attributes within the Cluster-specific section, refer to the link: [Attributes of Cluster-specific section.](./cluster/cluster_attributes.md#cluster)
+For additional information about attributes within the Cluster-specific section, refer to the link: [Attributes of Cluster-specific section.](./cluster/yaml_configuration_attributes.md#cluster)
 
 #### **Configuring the Minerva-specific Section**
 
@@ -157,35 +157,38 @@ minerva:
 
 ```
 
+Certainly, here's the table with only the attribute names and their corresponding data types, requirements, default values, and possible values:                                          |
+
+
 | Field | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`minerva`](./cluster/cluster_attributes.md#minerva) | object | none | none | mandatory |
-| [`selector`](./cluster/cluster_attributes.md#selector) | object | none | none | mandatory |
-| [`users`](./cluster/cluster_attributes.md#users) | list of strings | none | a valid subset of all available users within DataOS or regex pattern | mandatory |
-| [`tags`](./cluster/cluster_attributes.md#tags) | list of strings | none | any valid tag or regex pattern | optional |
-| [`sources`](./cluster/cluster_attributes.md#sources) | list of strings | none | list of strings representing source or regex pattern | mandatory |
-| [`replicas`](./cluster/cluster_attributes.md#replicas) | integer | 1 | 1-4 | mandatory |
-| [`match`](./cluster/cluster_attributes.md#match) | string | none | any/all | mandatory |
-| [`priority`](./cluster/cluster_attributes.md#priority) | integer | 10 | 1-5000 | mandatory |
-| [`runAsApiKey`](./cluster/cluster_attributes.md#runasapikey) | string | users dataos api key | any valid dataos api key | mandatory |
-| [`runAsUser`](./cluster/cluster_attributes.md#runasuser) | string | none | userid of the use case assignee | optional |
-| [`resources`](./cluster/cluster_attributes.md#resources) | object | none | none | optional |
-| [`limits`](./cluster/cluster_attributes.md#limits) | object | none | none | optional |
-| [`cpu`](./cluster/cluster_attributes.md#cpu) | string | requests: 100m, limits: 400m | number of cpu units in milliCPU(m) or cpu Core| optional |
-| [`memory`](./cluster/cluster_attributes.md#memory) | string | requests: 100Mi, limits: 400Mi | memory in Mebibytes(Mi) or Gibibytes(Gi) | optional |
-| [`requests`](./cluster/cluster_attributes.md#requests) | object | none | none | optional |
-| [`debug`](./cluster/cluster_attributes.md#debug) | object | none | none | mandatory |
-| [`logLevel`](./cluster/cluster_attributes.md#loglevel) | object | INFO | INFO/DEBUG/ERROR | optional |
-| [`trinoLogLevel`](./cluster/cluster_attributes.md#trinologlevel) | object | INFO | INFO/DEBUG/ERROR | optional |
-| [`depots`](./cluster/cluster_attributes.md#depots) | list of objects | none | none | optional |
-| [`address`](./cluster/cluster_attributes.md#address) | string | none | valid depot udl address | optional |
-| [`properties`](./cluster/cluster_attributes.md#properties) | object | none | none | optional |
-| [`catalogs`](./cluster/cluster_attributes.md#catalogs) | list of objects | none | none | optional |
-| [`name`](./cluster/cluster_attributes.md#name) | string | none | any valid string | optional |
-| [`type`](./cluster/cluster_attributes.md#type) | string | none | oracle/memory/wrangler/redshift | mandatory |
-| [`properties`](./cluster/cluster_attributes.md#properties_1) | object | none | valid connector properties | optional |
+| [`minerva`](./cluster/yaml_configuration_attributes.md#minerva) | mapping | none | none | mandatory |
+| [`selector`](./cluster/yaml_configuration_attributes.md#selector) | mapping | none | none | mandatory |
+| [`users`](./cluster/yaml_configuration_attributes.md#users) | list of strings | none | a valid subset of all available users within DataOS or regex pattern | mandatory |
+| [`tags`](./cluster/yaml_configuration_attributes.md#tags) | list of strings | none | any valid tag or regex pattern | optional |
+| [`sources`](./cluster/yaml_configuration_attributes.md#sources) | list of strings | none | list of strings representing source or regex pattern | mandatory |
+| [`replicas`](./cluster/yaml_configuration_attributes.md#replicas) | integer | 1 | 1-4 | mandatory |
+| [`match`](./cluster/yaml_configuration_attributes.md#match) | string | none | any/all | mandatory |
+| [`priority`](./cluster/yaml_configuration_attributes.md#priority) | integer | 10 | 1-5000 | mandatory |
+| [`runAsApiKey`](./cluster/yaml_configuration_attributes.md#runasapikey) | string | users dataos api key | any valid dataos api key | mandatory |
+| [`runAsUser`](./cluster/yaml_configuration_attributes.md#runasuser) | string | none | userid of the use case assignee | optional |
+| [`resources`](./cluster/yaml_configuration_attributes.md#resources) | mapping | none | none | optional |
+| [`limits`](./cluster/yaml_configuration_attributes.md#limits) | mapping | none | none | optional |
+| [`cpu`](./cluster/yaml_configuration_attributes.md#cpu) | string | requests: 100m, limits: 400m | number of cpu units in milliCPU(m) or cpu Core| optional |
+| [`memory`](./cluster/yaml_configuration_attributes.md#memory) | string | requests: 100Mi, limits: 400Mi | memory in Mebibytes(Mi) or Gibibytes(Gi) | optional |
+| [`requests`](./cluster/yaml_configuration_attributes.md#requests) | mapping | none | none | optional |
+| [`debug`](./cluster/yaml_configuration_attributes.md#debug) | mapping | none | none | mandatory |
+| [`logLevel`](./cluster/yaml_configuration_attributes.md#loglevel) | mapping | INFO | INFO/DEBUG/ERROR | optional |
+| [`trinoLogLevel`](./cluster/yaml_configuration_attributes.md#trinologlevel) | mapping | INFO | INFO/DEBUG/ERROR | optional |
+| [`depots`](./cluster/yaml_configuration_attributes.md#depots) | list of mappings | none | none | optional |
+| [`address`](./cluster/yaml_configuration_attributes.md#address) | string | none | valid depot udl address | optional |
+| [`properties`](./cluster/yaml_configuration_attributes.md#properties) | mapping | none | none | optional |
+| [`catalogs`](./cluster/yaml_configuration_attributes.md#catalogs) | list of mappings | none | none | optional |
+| [`name`](./cluster/yaml_configuration_attributes.md#name) | string | none | any valid string | optional |
+| [`type`](./cluster/yaml_configuration_attributes.md#type) | string | none | oracle/memory/wrangler/redshift | mandatory |
+| [`properties`](./cluster/yaml_configuration_attributes.md#properties_1) | mapping | none | valid connector properties | optional |
 
-For additional information about attributes above attributes, refer to the [Attributes of Minerva-specific section.](./cluster/cluster_attributes.md#minerva)
+For additional information about attributes above attributes, refer to the [Attributes of Minerva-specific section.](./cluster/yaml_configuration_attributes.md#minerva)
 
 
 ### **Apply the Cluster YAML**
@@ -226,7 +229,7 @@ In the Operations App, click the '+ Create Resource' button. This action will op
 
 ### **Fill in the Required Fields**
 
-Provide the necessary details in the required properties fields and click 'Create Cluster'. For more information on these properties, refer to the documentation [here.](./cluster/cluster_attributes.md)
+Provide the necessary details in the required properties fields and click 'Create Cluster'. For more information on these properties, refer to the documentation [here.](./cluster/yaml_configuration_attributes.md)
 
 ![Creating a Cluster Using Operations App UI 3](./cluster/creating_cluster_using_operations_app_ui/cluster_4.png)
 
