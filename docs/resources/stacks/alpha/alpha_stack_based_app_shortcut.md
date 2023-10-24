@@ -23,9 +23,7 @@ appDetailSpec: {
 
 ## Structure of `appDetailSpec`
 
-The `appDetailSpec` value is a JSON string containing the subsequent keys:
-
-Certainly, here's the information for the JSON attributes presented in a table format with the requested columns:
+The `appDetailSpec` value is a JSON string containing the subsequent attributes:
 
 <center>
 
@@ -45,7 +43,9 @@ Certainly, here's the information for the JSON attributes presented in a table f
 
 </center>
 
-### **Incorporating the Application Icon**
+## Procedure for creating the application shortcut
+
+### **Incorporate the Application Icon**
 
 Should you possess a custom application icon, it is imperative that it be provided in SVG format for subsequent encoding as a Base64 string. 
 
