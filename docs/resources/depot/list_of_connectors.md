@@ -16,23 +16,19 @@ The following section provides an overview of the data sources accessible by one
 | MS SQL                                               | Database                         | :white_check_mark:           | :white_check_mark:         | :white_check_mark:         | :white_check_mark:       | :white_check_mark:     |
 | MongoDB                                              | Database                         | :white_check_mark:           | :white_check_mark:         | :white_large_square:       | :white_check_mark:       | :white_large_square:     |
 | Oracle                                               | Database                         | :white_check_mark:           | :white_check_mark:         | :white_check_mark:         | :white_check_mark:       | :white_check_mark:     |
-| PostgreSQL                                          | Database                         | :white_check_mark:           | :white_check_mark:         | :white_large_square:       | :white_check_mark:       | :white_check_mark:     |
-|                                                      |                                  | :white_large_square:         | :white_large_square:       | :white_large_square:       | :white_large_square:     | :white_large_square:   |
+| PostgreSQL                                          | Database                         | :white_check_mark:           | :white_check_mark:         | :white_large_square:       | :white_check_mark:       | :white_check_mark:     
 | Eventhub                                             | Messaging & Streaming Datastore | :white_check_mark:           | :white_large_square:       | :white_large_square:       | :white_check_mark:       | :white_large_square:   |
 | Fastbase (Pulsar)                                    | Messaging & Streaming Datastore | :white_check_mark:           | :white_large_square:       | :white_large_square:       | :white_check_mark:       | :white_check_mark:     |
-| Kafka                                                | Messaging & Streaming Datastore | :white_check_mark:           | :white_check_mark:         | :white_large_square:       | :white_check_mark:       | :white_check_mark:     |
-|                                                      |                                  | :white_large_square:         | :white_large_square:       | :white_large_square:       | :white_large_square:     | :white_large_square:   |
+| Kafka                                                | Messaging & Streaming Datastore | :white_check_mark:           | :white_check_mark:         | :white_large_square:       | :white_check_mark:       | :white_check_mark:     
 | AWS Redshift                                         | Warehouses & Data Lake           | :white_check_mark:           | :white_check_mark:         | :white_large_square:       | :white_check_mark:       | :white_check_mark:     |
 | AWS S3 Blob Storage                                  | Warehouses & Data Lake           | :white_check_mark:           | :white_large_square:       | :white_large_square:       | :white_check_mark:       | :white_large_square:   |
 | ABFSS (Azure Data Lake Gen2)                         | Warehouses & Data Lake           | :white_check_mark:           | :white_large_square:       | :white_large_square:       | :white_check_mark:       | :white_large_square:   |
 | WASBS (Azure Blob Storage)                           | Warehouses & Data Lake           | :white_check_mark:           | :white_large_square:       | :white_large_square:       | :white_check_mark:       | :white_large_square:   |
 | BigQuery                                             | Warehouses & Data Lake           | :white_check_mark:           | :white_check_mark:         | :white_large_square:       | :white_check_mark:       | :white_check_mark:     |
 | GCS (Google Cloud Storage)                           | Warehouses & Data Lake           | :white_check_mark:           | :white_large_square:       | :white_large_square:       | :white_check_mark:       | :white_large_square:   |
-| Snowflake                                            | Warehouses & Data Lake           | :white_check_mark:           | :white_large_square:       | :white_large_square:       | :white_check_mark:       | :white_check_mark:     |
-|                                                      |                                  | :white_large_square:         | :white_large_square:       | :white_large_square:       | :white_large_square:     | :white_large_square:   |
+| Snowflake                                            | Warehouses & Data Lake           | :white_check_mark:           | :white_large_square:       | :white_large_square:       | :white_check_mark:       | :white_check_mark:     
 | "JDBC (any source exposed via JDBC driver is supported, e.g. MSSQL Server, SAP Hana)" | Miscellaneous                    | :white_check_mark:           | :white_check_mark:         | :white_large_square:       | :white_check_mark:       | :white_check_mark:     |
-| OpenSearch                                           | Miscellaneous                    | :white_check_mark:           | :white_large_square:       | :white_large_square:       | :white_check_mark:       | :white_large_square:   |
-|                                                      |                                  | :white_large_square:         | :white_large_square:       | :white_large_square:       | :white_large_square:     | :white_large_square:   |
+| OpenSearch                                           | Miscellaneous                    | :white_check_mark:           | :white_large_square:       | :white_large_square:       | :white_check_mark:       | :white_large_square:   
 | Accumulo                                             | Databases                        | :white_large_square:         | :white_check_mark:         | :white_large_square:       | :white_large_square:     | :white_large_square:   |
 | Cassandra                                            | Databases                        | :white_large_square:         | :white_check_mark:         | :white_large_square:       | :white_large_square:     | :white_large_square:   |
 | ClickHouse                                           | Databases                        | :white_large_square:         | :white_check_mark:         | :white_check_mark:         | :white_large_square:     | :white_check_mark:     |
@@ -43,14 +39,12 @@ The following section provides an overview of the data sources accessible by one
 | Phoenix                                              | Databases                        | :white_large_square:         | :white_check_mark:         | :white_large_square:       | :white_large_square:     | :white_large_square:   |
 | Pinot                                                | Databases                        | :white_large_square:         | :white_check_mark:         | :white_check_mark:         | :white_large_square:     | :white_large_square:   |
 | Prometheus                                           | Databases (Metrics Collection & Time-series DB)| :white_large_square:         | :white_check_mark:         | :white_large_square:       | :white_large_square:     | :white_large_square:   |
-| SingleStore                                          | Databases                        | :white_large_square:         | :white_check_mark:         | :white_check_mark:         | :white_large_square:     | :white_check_mark:     |
-|                                                      |                                  | :white_large_square:         | :white_large_square:       | :white_large_square:       | :white_large_square:     | :white_large_square:   |
+| SingleStore                                          | Databases                        | :white_large_square:         | :white_check_mark:         | :white_check_mark:         | :white_large_square:     | :white_check_mark:     
 | Azure Databricks                                     | Warehouses & Data lakes          | :white_large_square:         | :white_large_square:       | :white_large_square:       | :white_large_square:     | :white_check_mark:     |
 | Hive                                                 | Warehouses & Data Lake           | :white_large_square:         | :white_check_mark:         | :white_large_square:       | :white_large_square:     | :white_check_mark:     |
 | Hudi                                                 | Warehouses & Data Lake           | :white_large_square:         | :white_check_mark:         | :white_large_square:       | :white_large_square:     | :white_large_square:   |
 | MariaDB                                              | Warehouses & Data lakes          | :white_large_square:         | :white_check_mark:         | :white_check_mark:         | :white_large_square:     | :white_check_mark:     |
-| Delta Lake                                           | Lakehouse                        | :white_large_square:         | :white_check_mark:         | :white_large_square:       | :white_large_square:     | :white_large_square:   |
-|                                                      |                                  | :white_large_square:         | :white_large_square:       | :white_large_square:       | :white_large_square:     | :white_large_square:   |
+| Delta Lake                                           | Lakehouse                        | :white_large_square:         | :white_check_mark:         | :white_large_square:       | :white_large_square:     | :white_large_square:   
 | Atop                                                 | Miscellaneous (Linux Server Performance Analysis Tool) | :white_large_square:         | :white_check_mark:         | :white_large_square:       | :white_large_square:     | :white_large_square:   |
 | AWS Glue                                             | Miscellaneous (Data Integration Service) | :white_large_square:         | :white_large_square:       | :white_large_square:       | :white_large_square:     | :white_check_mark:     |
 | AWS Athena                                           | Miscellaneous (Interactive Analytics Service) | :white_large_square:         | :white_large_square:       | :white_large_square:       | :white_large_square:     | :white_check_mark:     |
@@ -2401,12 +2395,6 @@ Refer to the following list of supported Destinations and Sources within HighTou
       <td></td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
       <td>16</td>
       <td>Adobe Target</td>
       <td>Analytics</td>
@@ -2545,12 +2533,6 @@ Refer to the following list of supported Destinations and Sources within HighTou
       <td>Customer Success and Surveys</td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
       <td>39</td>
       <td>Anaplan</td>
       <td>Finance and ERP</td>
@@ -2611,12 +2593,6 @@ Refer to the following list of supported Destinations and Sources within HighTou
       <td>Payments</td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
       <td>49</td>
       <td>Azure Blob Storage</td>
       <td>File Storage</td>
@@ -2663,12 +2639,6 @@ Refer to the following list of supported Destinations and Sources within HighTou
       <td>SFTP</td>
       <td>File Storage</td>
       <td>Developer Tools</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
     </tr>
     <tr>
       <td>57</td>
@@ -2755,12 +2725,6 @@ Refer to the following list of supported Destinations and Sources within HighTou
       <td>Email and Sales</td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
       <td>71</td>
       <td>ChurnZero</td>
       <td>Customer Success</td>
@@ -2800,12 +2764,6 @@ Refer to the following list of supported Destinations and Sources within HighTou
       <td>77</td>
       <td>Totango</td>
       <td>Customer Success</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
       <td></td>
     </tr>
     <tr>
@@ -2899,12 +2857,6 @@ Refer to the following list of supported Destinations and Sources within HighTou
       <td></td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
       <td>93</td>
       <td>Attentive</td>
       <td>E-commerce</td>
@@ -2938,12 +2890,6 @@ Refer to the following list of supported Destinations and Sources within HighTou
       <td>98</td>
       <td>Shopify</td>
       <td>E-commerce</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
       <td></td>
     </tr>
     <tr>
@@ -3121,12 +3067,6 @@ Refer to the following list of supported Destinations and Sources within HighTou
       <td></td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
       <td>128</td>
       <td>Mattermost</td>
       <td>Internal Notifications</td>
@@ -3142,12 +3082,6 @@ Refer to the following list of supported Destinations and Sources within HighTou
       <td>130</td>
       <td>Slack</td>
       <td>Internal Notifications</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
       <td></td>
     </tr>
     <tr>
@@ -3169,12 +3103,6 @@ Refer to the following list of supported Destinations and Sources within HighTou
       <td></td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
       <td>134</td>
       <td>Chargebee</td>
       <td>Payments</td>
@@ -3190,12 +3118,6 @@ Refer to the following list of supported Destinations and Sources within HighTou
       <td>136</td>
       <td>Zuora</td>
       <td>Payments</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
       <td></td>
     </tr>
     <tr>
@@ -3220,12 +3142,6 @@ Refer to the following list of supported Destinations and Sources within HighTou
       <td>140</td>
       <td>Userflow</td>
       <td>Product Experience</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
       <td></td>
     </tr>
     <tr>
@@ -3283,12 +3199,6 @@ Refer to the following list of supported Destinations and Sources within HighTou
       <td></td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
       <td>150</td>
       <td>KakaoTalk</td>
       <td>SMS &amp; Push</td>
@@ -3307,12 +3217,6 @@ Refer to the following list of supported Destinations and Sources within HighTou
       <td></td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
       <td>153</td>
       <td>Gong</td>
       <td>Sales</td>
@@ -3322,18 +3226,6 @@ Refer to the following list of supported Destinations and Sources within HighTou
       <td>154</td>
       <td>Partnerstack</td>
       <td>Sales</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>155</td>
-      <td>Reply.io</td>
-      <td>Sales</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
       <td></td>
     </tr>
     <tr>
@@ -3352,12 +3244,6 @@ Refer to the following list of supported Destinations and Sources within HighTou
       <td>158</td>
       <td>User Interviews</td>
       <td>Surveys</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
       <td></td>
     </tr>
     <tr>
