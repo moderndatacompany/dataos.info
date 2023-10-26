@@ -1,388 +1,633 @@
-# Service YAML Configuration Field Reference
-The Service YAML Field Reference provides a comprehensive overview of the configuration fields available for the Service resource.
+# Attributes of Service-specific Section
 
-## Syntax
-The syntax below demonstrates the structure of the Service YAML configuration:
+This document provide a comprehensive overview of the configuration attributes available for the Service Resource.
+
+## Structure of Service-specifc Section
+
+The manifest below demonstrates the structure of the Service-specific section YAML configuration:
 
 ```yaml
 service:
-  title: {{alpha-stack-python-file}}
-  servicePort: {{8080}}
-  metricPort: {{8093}}
-  ingress:
-    enabled: {{true}}
-    path: {{/file_python}}
+  title: {{title of service}}
+  tags:
+    - {{tag1}}
+    - {{tag2}}
+  servicePort: {{service port number}}
+  ingress: 
+    enabled: {{enables ingress}}
+    path: {{/alpha}}
     stripPath: {{true}}
-    noAuthentication: {{true}}
-  replicas: {{1}}
-  autoScaling:
-    enabled: {{true}}
-    minReplicas: {{1}}
-    maxReplicas: {{2}}
-    targetMemoryUtilizationPercentage: {{120}}
-    targetCPUUtilizationPercentage: {{120}}
-  stack: {{alpha}}
-  logLevel: {{INFO}}
-  envs:
-    {{CONTAINER_NAME: 'itsrandom'}}
-  compute: {{runnable-default}}
+    noAuthentication: {{false}}
+    appDetailSpec: {{}}
+    apiDetailSpec: {{}}
+  replicas: {{2}}
+  autoScaling: 
+    enabled: {{true/false}}
+    minReplicas: {{3}}
+    maxReplicas: {{5}}
+    targetMemoryUtilizationPercentage: {{50}}
+    targetCPUUtilizationPercentage: {{80}}
+  stack: {{stack name and version}} # mandatory
+  logLevel: {{log level}}
+  configs: 
+    {{alpha: beta}}
+  envs: 
+    {{random: delta}}
+  secrets: 
+    - {{mysecret}}
+  dataosSecrets:
+    - name: {{mysecret}}
+      workspace: {{curriculum}}
+      key: {{newone}}
+      keys:
+        - {{newone}}
+        - {{oldone}}
+      allKeys: {{true}}
+      consumptionType: {{envVars}}
+  dataosVolumes: 
+    - name: {{myVolume}}
+      directory: {{/file}}
+      readOnly: {{true}}
+      subPath: {{/random}}
+  tempVolume: {{abcd}}
+  persistentVolume:
+    name: {{myVolume}}
+    directory: {{/file}}
+    readOnly: {{true}}
+    subPath: {{/random}}
+  compute: {{compute resource name}} # mandatory
   resources:
     requests:
-      cpu: {{100m}}
-      memory: {{100Mi}}
+      cpu: {{100Mi}}
+      memory: {{100Gi}}
     limits:
-      cpu: {{400m}}
-      memory: {{400Mi}}
-  runAsApiKey: {{abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz}}
-  runAsUser: {{iamgroot}}
+      cpu: {{100Mi}}
+      memory: {{100Gi}}
   dryRun: {{true}}
+  runAsApiKey: {{abcdefghijklmnopqrstuvwxyz}}
+  runAsUser: {{iamgroot}}
+  topology:
+    name: {{abcd}} # mandatory
+    type: {{efgh}} # mandatory
+    doc: {{abcd efgh}}
+    properties: 
+      {{alpha: random}}
+    dependencies: 
+      - {{abc}}
 ```
-<center><i>Service YAML Configuration</i></center>
 
-## Configuration Fields
+## Configuration Attributes
 
-### **`service`**
-<b>Description:</b> Service Section <br>
-<b>Data Type:</b> Object <br>
-<b>Requirement:</b> Mandatory <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> None <br>
-<b>Example Usage:</b>
+## **`service`**
+
+**Description:** configuration for the service.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| mapping        | mandatory      | none                   | none
+
+**Example Usage:**<br>
 ```yaml
 service:
-  title: alpha-stack-python-file
-  servicePort: 8080 
-  metricPort: 8093
-  ingress:
-    {}
+  title: My Service
+  tags:
+    - tag1
+    - tag2
+  servicePort: 4
+  # ... (other service configuration attributes)
 ```
+
+---
 
 ### **`title`**
-<b>Description:</b> Title of the Service <br>
-<b>Data Type:</b> String <br>
-<b>Requirement:</b> Optional <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> Any string <br>
-<b>Example Usage:</b>
+
+**Description:** the title of the service.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| string        | optional       | none                  | any string
+
+**Example Usage:**<br>
 ```yaml
-title: Workflow Indexer
+service:
+  title: benthos service
 ```
+
+---
+
+
+### **`tags`**
+
+**Description:** tags associated with the service.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| list of strings | optional   | none                 | valid [tag](../policy/yaml_configuration_attributes.md#tags)
+
+**Example Usage:**<br>
+```yaml
+service:
+  tags:
+    - tag1
+    - tag2
+```
+
+---
 
 ### **`servicePort`**
-<b>Description:</b> This specification creates a new Service object, which targets the TCP port number whose number is given. Ensure that any other service is not using this port else it would replace it. <br>
-<b>Data Type:</b> Integer <br>
-<b>Requirement:</b> Mandatory <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> Any valid port number <br>
-<b>Additional Details:</b> Ensure that any other service is not using this port else it would replace it<br>
-<b>Example Usage:</b>
+
+**Description:** the port on which the service is exposed. this specification creates a new Service object, which targets the TCP port number whose number is given. Ensure that any other service is not using this port else it would replace it.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| integer       | optional       | none                   | valid port number
+
+**Example Usage:**<br>
 ```yaml
-servicePort: 1234
+service:
+  servicePort: 8080
 ```
 
-### **`metricPort`**
-<b>Description:</b> This specification creates a new Service object, which targets the metric port number whose number is given. <br>
-<b>Data Type:</b> Integer <br>
-<b>Requirement:</b> Mandatory <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> Any valid port number <br>
-<b>Additional Details:</b> Ensure that any other service is not using this port else it would replace it<br>
-
-<b>Example Usage:</b>
-```yaml
-metricPort: 1234
-```
+---
 
 ### **`ingress`**
-<b>Description:</b> Ingress exposes HTTP and HTTPS routes from outside DataOS to services within DataOS. Configure the incoming port for the service to allow access to DataOS resources from external links.<br>
-<b>Data Type:</b> Object <br>
-<b>Requirement:</b> Mandatory for external paths <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> None <br>
-<b>Example Usage:</b>
+
+**Description:** configuration for the service's ingress. Ingress exposes HTTP and HTTPS routes from outside DataOS to services within DataOS. Configure the incoming port for the service to allow access to DataOS resources from external links.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| mapping        | optional       | none                  | none
+
+**Example Usage:**<br>
 ```yaml
-ingress: 
+service:
+  ingress: 
+      enabled: true
+      noAuthentication: true
+      path: /sample-service 
+      stripPath: true
+```
+---
+
+#### **`enabled`**
+
+**Description:** indicates whether ingress is enabled for the service.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| boolean       | optional       | false                | true/false
+
+**Example Usage:**<br>
+```yaml
+service:
+  ingress:
     enabled: true
-    noAuthentication: true
-    path: /sample-service 
+```
+
+---
+
+#### **`path`**
+
+**Description:** the path for the Service's ingress configuration. If a Service by the same path already exists, it would get replaced.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| string        | optional       | none              | any valid path
+
+**Example Usage:**<br>
+```yaml
+service:
+  ingress:
+    path: /my-service
+```
+
+---
+
+#### **`stripPath`**
+
+**Description:** indicates whether to strip the path from incoming requests in the ingress configuration.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| boolean       | optional       | false                | true/false
+
+**Example Usage:**<br>
+```yaml
+service:
+  ingress:
     stripPath: true
 ```
 
-### **`enabled`**
-<b>Description:</b> Enables the Ingress Port <br>
-<b>Data Type:</b> Boolean <br>
-<b>Requirement:</b> Mandatory for external paths <br>
-<b>Default Value:</b> false <br>
-<b>Possible Value:</b> true/false <br>
-<b>Example Usage:</b>
+---
+
+#### **`noAuthentication`**
+
+**Description:** indicates whether authentication is disabled for the ingress configuration.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| boolean       | optional       | true               | true or false.
+
+**Example Usage:**<br>
 ```yaml
-enabled: true
+service:
+  ingress:
+    noAuthentication: true
 ```
 
-### **`path`**
-<b>Description:</b> Provide a path that will be part of the public URL to access the service outside DataOS. <br>
-<b>Data Type:</b> String <br>
-<b>Requirement:</b> Mandatory for external paths <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> Any valid path <br>
-<b>Additional Details:</b>If a service by the same path already exists, it would get replaced<br>
-<b>Example Usage:</b>
-```yaml
-path: /spam-detection
-```
-
-### **`stripPath`**
-<b>Description:</b> Enable the stripPath to strip the specified path and forward the request to the upstream service <br>
-<b>Data Type:</b> Boolean <br>
-<b>Requirement:</b> Mandatory <br>
-<b>Default Value:</b> false <br>
-<b>Possible Value:</b> true/false <br>
-<b>Example Usage:</b>
-```yaml
-stripPath: true
-```
-
-### **`noAuthentication`**
-<b>Description:</b> Set noAuthentication to false if authentication is needed. <br>
-<b>Data Type:</b> Boolean <br>
-<b>Requirement:</b> Optional <br>
-<b>Default Value:</b> false <br>
-<b>Possible Value:</b> true/false <br>
-<b>Example Usage:</b>
-```yaml
-noAuthentication: false
-```
+---
 
 ### **`replicas`**
-<b>Description:</b> The number of replicated services <br>
-<b>Data Type:</b> Integer <br>
-<b>Requirement:</b> Mandatory <br>
-<b>Default Value:</b> 1 <br>
-<b>Possible Value:</b> Any positive integer<br>
-<b>Example Usage:</b>
+
+**Description:** the number of replicas for the service
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| integer       | optional       | 1                   | any positive integer
+
+**Example Usage:**<br>
 ```yaml
-replicas: 2
+service:
+  replicas: 3
 ```
 
+---
+
 ### **`autoScaling`**
-<b>Description:</b> Manage autoscaling to match changing application workload levels <br>
-<b>Data Type:</b> Object <br>
-<b>Requirement:</b> Optional <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> None <br>
-<b>Example Usage:</b>
+
+**Description:** configuration for auto-scaling of the service. Manage autoscaling to match changing application workload levels.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| mapping        | optional       | none                 | none
+
+**Example Usage:**<br>
 ```yaml
-autoscaling: 
+service:
+  autoScaling:
     enabled: true
-    minReplicas: 2
-    maxReplicas: 4
-    targetMemoryUtilizationPercentage: 80
+    minReplicas: 3
+    maxReplicas: 5
+    targetMemoryUtilizationPercentage: 50
     targetCPUUtilizationPercentage: 80
 ```
 
-### **`enabled`**
-<b>Description:</b> Enables autoscaling <br>
-<b>Data Type:</b> Boolean <br>
-<b>Requirement:</b> Optional <br>
-<b>Default Value:</b> false <br>
-<b>Possible Value:</b> true/false <br>
-<b>Example Usage:</b>
+---
+
+#### **`enabled`**
+
+**Description:** indicates whether autoscaling is enabled for the service.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| boolean       | optional       | true                | true or false.
+
+**Example Usage:**<br>
 ```yaml
-enabled: true
+service:
+  autoScaling:
+    enabled: true
 ```
 
-### **`minReplicas`**
-<b>Description:</b> Minimum number of replicas  <br>
-<b>Data Type:</b> Integer <br>
-<b>Requirement:</b> Optional <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> Any positive integer <br>
-<b>Example Usage:</b>
+---
+
+#### **`minReplicas`**
+
+**Description:** the minimum number of replicas for autoscaling.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| integer       | optional       | 1                   | any positive integer.
+
+**Example Usage:**<br>
 ```yaml
-minReplicas: 2
+service:
+  autoScaling:
+    minReplicas: 2
 ```
 
-### **`maxReplicas`**
-<b>Description:</b> Maximum number of replicas. It must be a value greater than minReplicas. <br>
-<b>Data Type:</b> Integer <br>
-<b>Requirement:</b> Optional <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> Any value greater than or equal to minReplicas <br>
-<b>Example Usage:</b>
+---
+
+#### **`maxReplicas`**
+
+**Description:** the maximum number of replicas for autoscaling.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| integer       | optional       | none                  | any positive integer
+
+**Example Usage:**<br>
 ```yaml
-maxReplicas: 4
+service:
+  autoScaling:
+    maxReplicas: 3
 ```
 
-### **`targetMemoryUtilizationPercentage`**
-<b>Description:</b> Average memory usage of all pods in a deployment across the last minute divided by the requested CPU of this deployment. If the mean of the pods' CPU utilization is higher than the target you defined, then your replicas will be adjusted. <br>
-<b>Data Type:</b> Number <br>
-<b>Requirement:</b> Optional <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> Any number <br>
-<b>Example Usage:</b>
+---
+
+#### **`targetMemoryUtilizationPercentage`**
+
+**Description:** the target memory utilization percentage for autoscaling is the average memory usage of all pods in a deployment across the last minute divided by the requested CPU of this deployment. If the mean of the pods' CPU utilization is higher than the target you defined, then your replicas will be adjusted.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| integer       | optional       | none                  | any integer between 0 and 100.
+
+**Example Usage:**<br>
 ```yaml
-targetMemoryUtilizationPercentage: 80
+service:
+  autoScaling:
+    targetMemoryUtilizationPercentage: 70
 ```
 
-### **`targetCPUUtilizationPercentage`**
-<b>Description:</b> Average CPU usage of all pods in a deployment across the last minute divided by the requested CPU of this deployment. If the mean of the pods' memory utilization is higher than the target you defined, then your replicas will be adjusted. <br>
-<b>Data Type:</b> Number <br>
-<b>Requirement:</b> Optional <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> Any number <br>
-<b>Example Usage:</b>
+---
+
+#### **`targetCPUUtilizationPercentage`**
+
+**Description:** the target CPU utilization percentage for autoscaling is the average CPU usage of all pods in a deployment across the last minute divided by the requested CPU of this deployment. If the mean of the pods' memory utilization is higher than the target you defined, then your replicas will be adjusted.
+|
+
+ **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| integer       | optional       | 80                  | any integer between 0 and 100.
+
+**Example Usage:**<br>
 ```yaml
-targetCPUUtilizationPercentage: 70
+service:
+  autoScaling:
+    targetCPUUtilizationPercentage: 90
 ```
+
+---
 
 ### **`stack`**
-<b>Description:</b> A Stack is a Resource that serves as a secondary extension point, enhancing the capabilities of a Service Resource by introducing additional programming paradigms. <br>
-<b>Data Type:</b> String <br>
-<b>Requirement:</b> Mandatory <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> benthos/beacon/alpha <br>
+
+**Description:** the name and version of the [Stack](../stacks.md) Resource which the Service orchestrates.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| string        | mandatory      | none                  | benthos/<br>alpha/beacon+rest
+
 <b>Additional Details:</b> <br>
 - <i>benthos:</i> for Stream Analytics/Event Stream Processing <br>
 - <i>beacon:</i> for Web and other applications gain access to PostgreSQL database within DataOS<br>
 - <i>alpha:</i> for connecting to Web-Server based application images developed on top of DataOS
  <br>
-<b>Example Usage:</b>
+
+**Example Usage:**<br>
 ```yaml
-stack: alpha
+service:
+  stack: benthos
 ```
 
+---
+
 ### **`logLevel`**
-<b>Description:</b> Classifies enteries in logs in terms of urgency which helps to filter logs during search and helps control the amount of information in logs <br>
-<b>Data Type:</b> String <br>
-<b>Requirement:</b> Optional <br>
-<b>Default Value:</b> INFO <br>
-<b>Possible Value:</b> INFO/WARN/DEBUG/ERROR <br>
+
+**Description:** the log level for the Service classifies enteries in logs in terms of urgency which helps to filter logs during search and helps control the amount of information in logs.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| string        | optional       | INFO               | Valid log level from amongst<br> INFO, WARN DEBUG, ERROR
+
 <b>Additional Details:</b>
 - <i>INFO:</i> Designates informational messages that highlight the progress of the service
 - <i>WARN:</i> Designates potentially harmful situations
 - <i>DEBUG:</i> Designates fine-grained informational events that are most useful while debugging
 - <i>ERROR:</i> Desingates error events that might still allow the workflow to continue running
-<b>Example Usage:</b>
+
+**Example Usage:**<br>
 ```yaml
-logLevel: WARN
+service:
+  logLevel: DEBUG
 ```
 
-### **`envs`**
-<b>Description:</b> Environment Variables <br>
-<b>Data Type:</b> Object <br>
-<b>Requirement:</b> Optional <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> Any key-value pair of environment variables <br>
-<b>Example Usage:</b>
+---
+
+### **`configs`**
+
+**Description:** additional optional configuration for the service.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| mapping        | optional       | none                  | key-value configurations
+
+**Example Usage:**<br>
 ```yaml
+service:
+  configs:
+    key1: value1
+    key2: value2
+```
+
+---
+
+### **`envs`**
+
+**Description:** environment variables for the service.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| mapping        | optional       | none                 | key-value configurations
+
+**Example Usage:**<br>
+```yaml
+service:
   envs:
     CONTAINER_NAME: 'itsrandom'
 ```
 
-### **`compute`**
-<b>Description:</b> A Compute resource provides processing power for the job.  <br>
-<b>Data Type:</b> String <br>
-<b>Requirement:</b> Mandatory <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> runnable-default or any other custom compute created by the user<br>
+---
+
+### **`secrets`**
+
+**Description:** list of secrets associated with the service
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| list of strings | optional   | none                   | none
+
+**Example Usage:**<br>
 ```yaml
-compute: runnable-default # Compute Resource
+service:
+  secrets:
+    - mysecret
 ```
+
+---
+
+### **`dataosSecrets`**
+
+**Description:** list of [DataOS Secrets](../secret.md) associated with the Service. Each DataOS Secret is an mapping containing various attributes.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| list of mappings | optional   | none                   | none
+
+**Example Usage:**<br>
+```yaml
+service:
+  dataosSecrets:
+    - name: mysecret
+      workspace: curriculum
+      key: newone
+      keys:
+        - newone
+        - oldone
+      allKeys: true
+      consumptionType: envVars
+```
+
+---
+
+### **`dataosVolumes`**
+
+**Description:** list of DataOS Volumes associated with the Service. Each DataOS Volume is a mapping containing various attributes.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| list of mappings | optional   | none                   | none
+
+**Example Usage:**<br>
+```yaml
+service:
+  dataosVolumes:
+    - name: myVolume
+      directory: /file
+      readOnly: true
+      subPath: /random
+```
+
+---
+
+### **`tempVolume`**
+
+**Description:** the temporary volume for the service.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| string        | optional       | none                   | any valid Volume name
+
+**Example Usage:**<br>
+```yaml
+service:
+  tempVolume: abcd
+```
+
+---
+
+### **`persistentVolume`**
+
+**Description:** configuration for the persistent volume associated with the service.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| mapping        | optional       | none                | none
+
+**Example Usage:**<br>
+```yaml
+service:
+  persistentVolume:
+    name: myVolume
+    directory: /file
+    readOnly: true
+    subPath: /random
+```
+
+---
+
+### **`compute`**
+
+**Description:** the name of the [Compute](../compute.md) Resource for the Service. 
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| string        | mandatory      | none                  | valid runnable-type Compute Resource name.
+
+**Example Usage:**<br>
+```yaml
+service:
+  compute: MyComputeResource
+```
+
+---
 
 ### **`resources`**
-<b>Description:</b> Resource Configuration <br>
-<b>Data Type:</b> Object <br>
-<b>Requirement:</b> Optional <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> None <br>
-<b>Example Usage:</b>
+
+**Description:** Resource requests and limits for the Service. This includes CPU and memory specifications.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| mapping        | optional       | none                 | none
+
+**Example Usage:**<br>
 ```yaml
-resources:
+service:
+  resources:
     requests:
-        cpu: 100m
-        memory: 100Mi
+      cpu: 100Mi
+      memory: 100Gi
     limits:
-        cpu: 400m
-        memory: 400Mi
+      cpu: 100Mi
+      memory: 100Gi
 ```
 
-### **`requests`**
-<b>Description:</b> Requested Resource Configuration <br>
-<b>Data Type:</b> Object <br>
-<b>Requirement:</b> Optional <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> None <br>
-<b>Example Usage:</b>
-```yaml
-requests:
-    cpu: 100m
-    memory: 100Mi
-```
-
-### **`limits`**
-<b>Description:</b> Resource limit Configuration <br>
-<b>Data Type:</b> Object <br>
-<b>Requirement:</b> Optional <br>
-<b>Default Value:</b> None <br>
-<b>Possible Value:</b> None <br>
-<b>Example Usage:</b>
-```yaml
-limits:
-    cpu: 1000m
-    memory: 1000Mi
-```
-
-### **`cpu`**
-<b>Description:</b> CPU Configuration <br>
-<b>Data Type:</b> String <br>
-<b>Requirement:</b> Optional <br>
-<b>Default Value:</b> requests: 100m, limits: 400m <br>
-<b>Possible Value:</b> Number CPU units in milliCPU(m) or CPU Core <br>
-<b>Example Usage:</b>
-```yaml
-cpu: 1000m
-```
-
-### **`memory`**
-<b>Description:</b> Memory Configuration <br>
-<b>Data Type:</b> String <br>
-<b>Requirement:</b> Optional <br>
-<b>Default Value:</b> requests: 100Mi, limits: 400Mi <br>
-<b>Possible Value:</b> Memory in Mebibytes(Mi) or Gibibytes(Gi) <br>
-<b>Example Usage:</b>
-```yaml
-memory: 1000Mi
-```
-
-### **`runAsApiKey`**
-<b>Description:</b> When the "runAsApiKey" field is configured with the Api Key of a user, it grants the authority to perform operations on behalf of that user. <br>
-<b>Data Type:</b> String <br>
-<b>Requirement:</b> Optional <br>
-<b>Default Value:</b> Apikey of the User <br>
-<b>Possible Value:</b> Any user's valid DataOS API Key <br>
-<b>Example Usage:</b>
-```yaml
-runAsApiKey: abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
-```
-
-### **`runAsUser`**
-<b>Description:</b> When the "runAsUser" field is configured with the UserID of the use-case assignee, it grants the authority to perform operations on behalf of that user. <br>
-<b>Data Type:</b> String <br>
-<b>Requirement:</b> Optional <br>
-<b>Default Value:</b> User-ID of the User <br>
-<b>Possible Value:</b> User-ID of the Use-Case Assignee <br>
-<b>Example Usage:</b>
-```yaml
-runAsUser: iamgroot
-```
+---
 
 ### **`dryRun`**
-<b>Description:</b> When enabled, the dryRun property deploys the service to the cluster without submitting it. <br>
-<b>Data Type:</b> Boolean <br>
-<b>Requirement:</b> Optional <br>
-<b>Default Value:</b> false <br>
-<b>Possible Value:</b> true/false <br>
-<b>Example Usage:</b>
+
+**Description:** indicates whether the service is in dry run mode. When enabled, the dryRun property deploys the service to the cluster without submitting it.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| boolean       | optional       | true                | true or false.
+
+**Example Usage:**<br>
 ```yaml
-dryRun: true
+service:
+  dryRun: true
+```
+
+---
+
+### **`runAsApiKey`**
+
+**Description:** the runAsApiKey attribute allows a user to assume the identity of another user through the provision of the latter's API key.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| string        | mandatory      | none               | any valid API key.
+
+**Additional Details:** The apikey can be obtained by executing the following command from the CLI:
+
+```shell
+dataos-ctl user apikey get
+```
+
+In case no apikey is available, the below command can be run to create a new apikey
+
+```shell
+dataos-ctl user apikey create -n {{name of the apikey}} -d {{duration for the apikey to live}}
+```
+
+**Example Usage:**<br>
+```yaml
+service:
+  runAsApiKey: abcdefghijklmnopqrstuvwxyz
+```
+
+---
+
+### **`runAsUser`**
+
+**Description:** when the `runAsUser` attribute is configured with the UserID of the use-case assignee, it grants the authority to perform operations on behalf of that user.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| string        | mandatory      | user-id of the user                   | user-id of the use-case assignee
+
+**Example Usage:**<br>
+```yaml
+service:
+  runAsUser: iamgroot
 ```
