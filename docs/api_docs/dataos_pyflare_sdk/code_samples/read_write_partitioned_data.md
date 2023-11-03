@@ -90,8 +90,8 @@ load(name="dataos://icebase:pyflaresdk/test_write_02", format="iceberg").show()
 # Count the total number of records in the stored dataset
 load(name="dataos://icebase:pyflaresdk/test_write_02", format="iceberg").count()
 
-# Stop the Spark session
-spark.stop()
+# Uncomment the following line if you wish to stop the Spark session
+# spark.stop()
 
 
 ```

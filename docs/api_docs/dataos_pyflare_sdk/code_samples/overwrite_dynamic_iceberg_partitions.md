@@ -2,9 +2,35 @@
 
 ```python
 # Import necessary libraries
-from pyspark.sql import SparkSession
 from pyspark.sql import Row
+import random
+from datetime import datetime, timedelta
+from pyspark.sql.functions import col
 from pyflare.sdk import load, save, session_builder
+
+# Generate a random date of birth
+def generate_random_date_of_birth():
+    start_date = datetime(1998, 1, 1)
+    end_date = datetime(1998, 12, 31)
+    random_days = random.randint(0, (end_date - start_date).days)
+    return (start_date + timedelta(days=random_days)).strftime("%Y-%m-%d")
+
+# Generate random data records
+def GenerateData():
+    num_rows = random.randint(1000, 10000)
+    first_names = ["Alice", "Bob", "Charlie", "David", "Emily", "Frank", "Grace", "Henry", "Ivy", "Jack", "Karen", "Leo",
+                   "Mia", "Noah", "Olivia", "Peter", "Quinn", "Rachel", "Sam", "Tom", "Uma", "Victor", "Wendy", "Xander",
+                   "Yvonne", "Zane"
+                   ]
+
+    data = []
+    for _ in range(num_rows):
+        name = random.choice(first_names)
+        date_of_birth_str = generate_random_date_of_birth()
+        date_of_birth_ts = datetime.strptime(date_of_birth_str, "%Y-%m-%d")
+        age = random.randint(20, 99)
+        data.append(Row(name=name, date_of_birth=date_of_birth_ts, age=age))
+    return data
 
 # Define Spark configuration
 sparkConf = [
@@ -13,11 +39,11 @@ sparkConf = [
 ]
 
 # DataOS configuration
-DATAOS_FQDN = "current-joey.dataos.app"
-token = "cmFrZXNoX3Rlc3RpbmcuNTQ4NGEwZWEtNTcwNi00Zjc1LWE2YTgtYTlhZTE3Nzg2OGI2"
+DATAOS_FQDN = "{{dataos fqdn}}"
+token = "{{dataos apikey token}}"
 
 # Create a Spark session with DataOS settings
-spark = session_builder.SparkSessionBuilder() \
+spark = session_builder.SparkSessionBuilder(log_level = "INFO") \
     .with_spark_conf(sparkConf) \
     .with_user_apikey(token) \
     .with_dataos_fqdn(DATAOS_FQDN) \
