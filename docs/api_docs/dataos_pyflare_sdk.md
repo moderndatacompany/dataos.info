@@ -10,7 +10,7 @@ Dataos PyFlare offers a unified interface for data loading, transformation, and 
 
 ### **Data Connector Integration**
 
-It seamlessly integrates with various data connectors, including Google BigQuery, Google Cloud Storage (GCS), Snowflake, Redshift, Pulsar, and more, by leveraging the SDK's built-in capabilities.
+It seamlessly integrates with various data connectors, including depot and non-depot sources, by leveraging the SDK's built-in capabilities.
 
 ### **Customizability and Extensibility**
 
@@ -48,10 +48,10 @@ python3 --version
 py --version
 ```
 
-If you do not have Python, please install the latest version from [python.org](https://www.python.org/)
+If you do not have Python, please install the latest version from [python.org.](https://www.python.org/)
 
 <aside class="callout">
-🗣 <b>Note:</b> If you’re using an enhanced shell like IPython or Jupyter notebook, you can run system commands like those in this tutorial by prefacing them with a <code>!</code> character:
+🗣 <b>Note:</b> If you’re using an enhanced shell like IPython or Jupyter notebook, you can run system commands by prefacing them with a <code>!</code> character:
 
 ```bash
 In [1]: import sys
@@ -82,9 +82,24 @@ py -m pip --version
 
 If you installed Python from source, with an installer from [python.org](https://www.python.org/), or via [Homebrew](https://brew.sh/) you should already have pip. If you’re on Linux and installed using your OS package manager, you may have to install pip separately, see [Installing pip/setuptools/wheel with Linux Package Managers](https://packaging.python.org/en/latest/guides/installing-using-linux-tools/).
 
-**Spark environment configured**
+**Spark Environment Configuration**
 
-Additionally, make sure to have a Spark environment set up with required configurations for your specific use case.
+To ensure the proper functioning of the system, a Spark environment must be configured with the necessary settings tailored to the specific use case.
+
+**Inclusion of Additional JARs**
+
+The inclusion of JAR files is contingent on the unique use case in question. Nevertheless, a standard set of essential JARs consistently aids in facilitating governance. The obligatory JAR files encompass:
+
+- `io.dataos.sdk.commons`
+- `io.dataos.sdk.heimdall`
+- `io.dataos.sdk.spark-authz`
+- A single consolidated JAR file named `io.dataos.sdk.flare_2.12`
+
+<aside class="callout">
+
+Please be advised that these JARs are indispensable for the specified use case and should be incorporated as per the requirements of your project.
+
+</aside>
 
 ### **Installing from PyPI**
 
@@ -119,7 +134,7 @@ py -m pip install dataos-pyflare=={{version specifier}}
 
 pip can install from either [Source Distributions (sdist)](https://files.pythonhosted.org/packages/08/a6/ebc36b838374e3cf81d6dc429ff57e56c4c69d802ca171af927a2d382924/dataos-pyflare-0.0.7.tar.gz) or [Wheels](https://files.pythonhosted.org/packages/7e/ed/726abfa8ff1b6827dcb684224f0d75c0206aa41e4addacda09dba9e011cb/dataos_pyflare-0.0.7-py3-none-any.whl), but if both are present on PyPI, pip will prefer a compatible wheel. You can override pip`s default behavior by e.g. using its [–no-binary](https://pip.pypa.io/en/latest/cli/pip_install/#install-no-binary) option.
 
-If pip does not find a wheel to install, it will locally build a wheel and cache it for future installs, instead of rebuilding the source distribution in the future.
+If `pip` does not find a wheel to install, it will locally build a wheel and cache it for future installs, instead of rebuilding the source distribution in the future.
 
 ### **Upgrading from PyPI**
 
@@ -136,15 +151,6 @@ python3 -m pip install --upgrade dataos-pyflare
 ```bash
 py -m pip install --upgrade dataos-pyflare
 ```
-
-### **Dependencies**
-
-| Package | Minimum Supported Version |
-| --- | --- |
-| pyspark | 3.3.1 |
-| deprecation | 2.1.0 |
-| setuptools | 68.0.0 |
-| py4j | 0.10.9.5 |
 
 ## Getting Started
 
@@ -205,9 +211,9 @@ dataos-ctl user apikey get
 dataos-ctl user apikey create
 ```
 
-### **Session Setup**
+### **PyFlare Session Setup**
 
-A session can be created using the configuration settings, including the application name and the local master. A session is then created using the provided configurations, using the `session_builder.SparkSessionBuilder()` method. This session serves as the foundation for subsequent data operations.
+A PyFlare session can be created using the configuration settings using the [`SparkSessionBuilder()`](./dataos_pyflare_sdk/io/dataos/spark/session/SparkSessionBuilder.html) object. This session serves as the foundation for subsequent data operations.
 
 ```python
 # Spark configuration settings
@@ -231,7 +237,7 @@ df.show(10)
 
 ### **Data Storage**
 
-The `save` method is used to store the transformed DataFrame in the designated destination (`dataos://icebase:pyflaresdk/test_write_01`) in Iceberg format.
+The [`save`](./dataos_pyflare_sdk/io/dataos/spark/session/FlareSession.html#save(address:String,df:org.apache.spark.sql.DataFrame,format:String,datasetOutputOptions:Option[io.dataos.spark.models.output.DatasetOutputOptions]):org.apache.spark.sql.streaming.StreamingQuery) method is used to store the transformed DataFrame in the designated destination (`dataos://icebase:pyflaresdk/test_write_01`) in Iceberg format.
 
 ```python
 # Save the DataFrame to DataOS with specified path
@@ -240,7 +246,7 @@ save(name="dataos://icebase:pyflaresdk/test_write_01", dataframe=df, format="ice
 
 ### **Data Retrieval**
 
-The `load` method is employed to retrieve data from a specified source (`dataos://icebase:pyflaresdk/test_write_01`) in Iceberg format. The result is a governed DataFrame.
+The [`load`](./dataos_pyflare_sdk/io/dataos/spark/session/FlareSession.html#load(address:String,format:String,isStream:Boolean,datasetInputOptions:Option[io.dataos.spark.models.input.DatasetInputOptions],sparkOptions:Option[Map[String,String]]):org.apache.spark.sql.DataFrame) method is employed to retrieve data from a specified source (`dataos://icebase:pyflaresdk/test_write_01`) in Iceberg format. The result is a governed DataFrame.
 
 ```python
 # Read data from DataOS using Iceberg format and display the first 10 records
