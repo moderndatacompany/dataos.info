@@ -1,0 +1,37 @@
+commons.http.client package
+===========================
+
+Submodules
+----------
+
+commons.http.client.base\_client module
+---------------------------------------
+
+.. automodule:: commons.http.client.base_client
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+commons.http.client.dataos\_consumer module
+-------------------------------------------
+
+.. automodule:: commons.http.client.dataos_consumer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+commons.http.client.hadler module
+---------------------------------
+
+.. automodule:: commons.http.client.hadler
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: commons.http.client
+   :members:
+   :undoc-members:
+   :show-inheritance:
