@@ -27,7 +27,8 @@ layer: user
 depot:
   type: ORACLE                                    
   description: {{"Oracle Sample data"}}
-  spec:                                            
+  spec:
+    subprotocol: {{subprotocol}} # for example "oracle:thin"                                     
     host: {{host}}
     port: {{port}}
     service: {{service}}
