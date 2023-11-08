@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>depot_service.apis.depot_api &mdash; dataos-sdk-py 00.00.01 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            dataos-sdk-py
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">asset_tags_service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html#depot-service">depot_service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html#commons">commons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html#gateway">gateway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html#heimdall">heimdall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html#poros">poros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html#stack-service">stack_service</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">dataos-sdk-py</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">depot_service.apis.depot_api</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for depot_service.apis.depot_api</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
+
+<span class="kn">import</span> <span class="nn">uuid</span>
+
+<span class="kn">from</span> <span class="nn">pydantic.fields</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">uplink</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="kn">from</span> <span class="nn">commons.http.client.dataos_consumer</span> <span class="kn">import</span> <span class="n">DataOSBaseConsumer</span>
+<span class="kn">from</span> <span class="nn">commons.http.client.hadler</span> <span class="kn">import</span> <span class="n">raise_for_status_code</span>
+<span class="kn">from</span> <span class="nn">depot_service.models.depot_flag_request</span> <span class="kn">import</span> <span class="n">DepotFlagRequest</span>
+<span class="kn">from</span> <span class="nn">depot_service.models.depot_request</span> <span class="kn">import</span> <span class="n">DepotRequest</span>
+<span class="kn">from</span> <span class="nn">depot_service.models.depot_response</span> <span class="kn">import</span> <span class="n">DepotResponse</span>
+
+
+<div class="viewcode-block" id="DepotApi"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.depot_api.DepotApi">[docs]</a><span class="k">class</span> <span class="nc">DepotApi</span><span class="p">(</span><span class="n">DataOSBaseConsumer</span><span class="p">):</span>
+
+<div class="viewcode-block" id="DepotApi.archive"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.depot_api.DepotApi.archive">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@returns</span><span class="o">.</span><span class="n">json</span>
+    <span class="nd">@json</span>
+    <span class="nd">@patch</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">/archived&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">archive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">payload</span><span class="p">:</span> <span class="n">Body</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">DepotFlagRequest</span><span class="p">),</span>
+                <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="n">DepotResponse</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Archive a specific depot.</span>
+
+<span class="sd">        This method makes an API call to archive the specified depot.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            depot (str): The ID or name of the depot to archive.</span>
+<span class="sd">            payload (dict):</span>
+<span class="sd">                Attributes:</span>
+<span class="sd">                    isArchived (bool): A flag indicating whether the depot should be archived (True) or unarchived (False).</span>
+<span class="sd">                    archivalMessage (Optional[str]): An optional message explaining the reason for archiving the depot.</span>
+<span class="sd">                                     This message will only be present if the `isArchived` attribute is True.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            DepotResponse: An object containing the response data from the API call.</span>
+<span class="sd">                           The structure of the DepotResponse object may vary based on the API response.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DepotApi.get_depot"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.depot_api.DepotApi.get_depot">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@returns</span><span class="o">.</span><span class="n">json</span>
+    <span class="nd">@get</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">get_depot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                  <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="n">DepotResponse</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get information about a specific depot.</span>
+
+<span class="sd">        This method makes an API call to retrieve detailed information about the specified depot.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            depot (str): The ID or name of the depot to retrieve information for.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            DepotResponse: An object containing the response data from the API call.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DepotApi.create_or_update"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.depot_api.DepotApi.create_or_update">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@returns</span><span class="o">.</span><span class="n">json</span>
+    <span class="nd">@json</span>
+    <span class="nd">@put</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">create_or_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">payload</span><span class="p">:</span> <span class="n">Body</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">DepotRequest</span><span class="p">),</span>
+                         <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="n">DepotResponse</span><span class="p">:</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DepotApi.get_meta"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.depot_api.DepotApi.get_meta">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@returns</span><span class="o">.</span><span class="n">json</span>
+    <span class="nd">@get</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">/meta&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">get_meta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                 <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get metadata for a specific depot.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            depot (str): The ID or name of the depot to retrieve metadata for.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: A dictionary containing the metadata for the specified depot.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            Exception: If the API request fails or returns an error status code.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DepotApi.delete_meta"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.depot_api.DepotApi.delete_meta">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@delete</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">/meta&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">delete_meta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">Query</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">),</span>
+                    <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Delete a meta entry for a given depot.</span>
+
+<span class="sd">        This function deletes a meta entry with a specific key for a given depot.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            depot (str): The name of the depot where the meta entry will be deleted.</span>
+<span class="sd">            key (str): The key of the meta entry to be deleted.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None: This function doesn&#39;t return anything explicitly.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DepotApi.update_meta"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.depot_api.DepotApi.update_meta">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@json</span>
+    <span class="nd">@patch</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">/meta&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">update_meta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">payload</span><span class="p">:</span> <span class="n">Body</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="nb">dict</span><span class="p">),</span>
+                    <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="n">DepotResponse</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Update a meta entry for a given depot.</span>
+
+<span class="sd">        This function sends a PATCH request to update a meta entry for a given depot</span>
+<span class="sd">        using the provided payload.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            depot (str): The name of the depot where the meta entry will be updated.</span>
+<span class="sd">            payload (dict): A dictionary containing the data to be updated in the meta entry.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            DepotResponse: An object representing the response from the API call.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DepotApi.get_owners"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.depot_api.DepotApi.get_owners">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@returns</span><span class="o">.</span><span class="n">json</span>
+    <span class="nd">@get</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">/owners&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">get_owners</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                   <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the owners of a specific depot.</span>
+
+<span class="sd">        This method makes an API call to retrieve the owners associated with the specified depot.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            depot (str): The ID or name of the depot to retrieve owners for.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[str]: A list containing the names of owners of the specified depot.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DepotApi.add_owner"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.depot_api.DepotApi.add_owner">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@returns</span><span class="o">.</span><span class="n">json</span>
+    <span class="nd">@put</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">/owners/</span><span class="si">{owner}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">add_owner</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">owner</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                  <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="n">DepotResponse</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Add a new owner to a given depot.</span>
+
+<span class="sd">            This function sends a PUT request to add a new owner to a specified depot.</span>
+
+<span class="sd">            Parameters:</span>
+<span class="sd">                depot (str): The name of the depot to which the new owner will be added.</span>
+<span class="sd">                owner (str): The name of the new owner to be added to the depot.</span>
+
+<span class="sd">            Returns:</span>
+<span class="sd">                DepotResponse: An object representing the response from the API call.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DepotApi.delete_owner"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.depot_api.DepotApi.delete_owner">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@delete</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">/owners/</span><span class="si">{owner}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">delete_owner</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">owner</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                     <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Delete an owner from a given depot.</span>
+
+<span class="sd">        This function sends a DELETE request to remove an owner from a specified depot.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            depot (str): The name of the depot from which the owner will be deleted.</span>
+<span class="sd">            owner (str): The name of the owner to be removed from the depot.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None: This function doesn&#39;t return anything explicitly. The owner will be deleted from the depot on a successful API call.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DepotApi.get_collections"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.depot_api.DepotApi.get_collections">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@returns</span><span class="o">.</span><span class="n">json</span>
+    <span class="nd">@get</span><span class="p">(</span><span class="s2">&quot;api/v2/depots/</span><span class="si">{depot}</span><span class="s2">/collections&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">get_collections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depot</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                        <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve a list of collections from a given depot.</span>
+
+<span class="sd">        This function sends a GET request to fetch the list of collections available in a specified depot.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            depot (str): The name of the depot from which to retrieve the list of collections.</span>
+<span class="sd">                Possible values for &#39;depot&#39;: GCS, S3, ABFSS, WASBS, FILE, PULSAR</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[str]: A list of strings representing the names of collections available in the specified depot.</span>
+<span class="sd">                If no collections are found or an error occurs, an empty list will be returned.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If the &#39;depot&#39; parameter is not one of the valid options (GCS, S3, ABFSS, WASBS, FILE, PULSAR).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="DepotApi.get_depots"><a class="viewcode-back" href="../../../depot_service.apis.html#depot_service.apis.depot_api.DepotApi.get_depots">[docs]</a>    <span class="nd">@raise_for_status_code</span>
+    <span class="nd">@returns</span><span class="o">.</span><span class="n">json</span>
+    <span class="nd">@get</span><span class="p">(</span><span class="s2">&quot;api/v2/depots&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">get_depots</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                   <span class="n">correlation_id</span><span class="p">:</span> <span class="n">Header</span><span class="p">(</span><span class="s2">&quot;dataos-correlation-id&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()))</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve a dictionary of available depots.</span>
+
+<span class="sd">        This function sends a GET request to fetch a dictionary containing information about available depots.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            No parameter</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: A dictionary where the keys represent the depot names and the values are additional information about each depot.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div></div>
+
+    <span class="c1"># @raise_for_status_code</span>
+    <span class="c1"># @returns.json</span>
+    <span class="c1"># @get(&quot;api/v2/depots/{depot}/secrets&quot;)</span>
+    <span class="c1"># def get_secrets(self) -&gt; dict:</span>
+    <span class="c1">#     &quot;&quot;&quot;</span>
+    <span class="c1">#     Retrieve a dictionary of available depots.</span>
+    <span class="c1">#</span>
+    <span class="c1">#     This function sends a GET request to fetch a dictionary containing information about available depots.</span>
+    <span class="c1">#</span>
+    <span class="c1">#     Parameters:</span>
+    <span class="c1">#         No parameter</span>
+    <span class="c1">#</span>
+    <span class="c1">#     Returns:</span>
+    <span class="c1">#         dict: A dictionary where the keys represent the depot names and the values are additional information about each depot.</span>
+    <span class="c1">#     &quot;&quot;&quot;</span>
+    <span class="c1">#     pass</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, tmdc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
