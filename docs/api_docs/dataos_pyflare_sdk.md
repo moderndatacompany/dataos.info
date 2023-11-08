@@ -1,12 +1,12 @@
-# DataOS PyFlare SDK
+# PyFlare SDK
 
-The DataOS PyFlare SDK is a Python library that streamlines data operations and faciltate seamless interactions with Apache Spark within DataOS. The library abstracts complexities inherent in data flow, allowing users to direct their focus toward data transformations and the formulation of business logic by simplifying the loading, transformation, and storage of data.
+The PyFlare SDK is a Python library that streamlines data operations and faciltate seamless interactions with Apache Spark within DataOS. Its a wrapper around Flare, to enable Python support with DataOS capabilities. The library abstracts complexities inherent in data flow, allowing users to direct their focus toward data transformations and the formulation of business logic by simplifying the loading, transformation, and storage of data. It facilitates the integration of existing Spark Job code bases with DataOS, requiring minimal modifications.
 
 ## Key Features
 
 ### **Streamlined Data Operations**
 
-Dataos PyFlare offers a unified interface for data loading, transformation, and storage, thereby significantly reducing development intricacies and accelerating the project timeline.
+PyFlare offers a unified interface for data loading, transformation, and storage, thereby significantly reducing development intricacies and accelerating the project timeline.
 
 ### **Data Connector Integration**
 
@@ -14,15 +14,15 @@ It seamlessly integrates with various data connectors, including depot and non-d
 
 ### **Customizability and Extensibility**
 
-Dataos PyFlare empowers users with the flexibility to tailor it to their specific project requirements. It seamlessly integrates with existing Python libraries and frameworks designed for data manipulation.
+PyFlare empowers users with the flexibility to tailor it to their specific project requirements. It seamlessly integrates with existing Python libraries and frameworks designed for data manipulation.
 
 ### **Optimized for DataOS**
 
-Dataos PyFlare is finely tuned for the DataOS platform, rendering it an ideal choice for the management and processing of data within DataOS environments.
+PyFlare is finely tuned for the DataOS platform, rendering it an ideal choice for the management and processing of data within DataOS environments.
 
 ## Installation
 
-The DataOS PyFlare module is compatible with DataOS-native Jupyter Notebooks and can also be utilized in various Python programs across different environments, provided that the necessary JAR files are incorporated.
+The PyFlare module is compatible with DataOS-native Jupyter Notebooks and can also be utilized in various Python programs across different environments, provided that the necessary JAR files are incorporated.
 
 <aside class = "callout">
 🗣 If you are using DataOS-native Jupyter Notebooks, you can skip the installation part and directly navigate to the <a href="#getting-started">Getting Started</a> section as the JAR files and modules are included automatically as part of the environment setup.
@@ -30,7 +30,7 @@ The DataOS PyFlare module is compatible with DataOS-native Jupyter Notebooks and
 
 ### **Prerequisites**
 
-This section describes the steps to follow before installing DataOS PyFlare.
+This section describes the steps to follow before installing PyFlare.
 
 **Ensure you have Python ≥ 3.7 Installed**
 
@@ -103,7 +103,7 @@ Please be advised that these JARs are indispensable for the specified use case a
 
 ### **Installing from PyPI**
 
-The DataOS PyFlare library can be installed from the Python Package Index (PyPI) using the following command:
+The `dataos-pyflare` library can be installed from the Python Package Index (PyPI) using the following command:
 
 **For Linux/macOS**
 
@@ -138,7 +138,7 @@ If `pip` does not find a wheel to install, it will locally build a wheel and c
 
 ### **Upgrading from PyPI**
 
-Upgrade DataOS PyFlare to the latest from PyPI.
+Upgrade `dataos-pyflare` to the latest from PyPI.
 
 **For Unix/macOS** 
 
@@ -154,7 +154,7 @@ py -m pip install --upgrade dataos-pyflare
 
 ## Getting Started
 
-The following code snippet exemplifies the configuration of a DataOS PyFlare session for generating fictitious data, applying transformations, and saving the results to Icebase depot.
+The following code snippet exemplifies the configuration of a PyFlare session for generating fictitious data, applying transformations, and saving the results to Icebase depot.
 
 ### **Import the Requisite Libraries**
 
@@ -218,7 +218,7 @@ A PyFlare session can be created using the configuration settings using the [`Sp
 ```python
 # Spark configuration settings
 sparkConf = [
-    ("spark.app.name", "Dataos Sdk Spark App"),
+    ("spark.app.name", "Dataos PyFlare Sdk App"),
     ("spark.master", "local[*]"),
 ]
 
@@ -267,11 +267,11 @@ spark.stop()
 
 ## Code Samples
 
-- [ How to Read and Write Partitioned Data within Icebase depot?](./dataos_pyflare_sdk/code_samples/read_write_partitioned_data.md)
+- [ How to read and write partitioned data within Icebase Depot using PyFlare?](./dataos_pyflare_sdk/code_samples/read_write_partitioned_data.md)
 
-- [How to Overwrite Dynamic Iceberg Partitions Using DataOS PyFlare?](./dataos_pyflare_sdk/code_samples/overwrite_dynamic_iceberg_partitions.md)
+- [How to overwrite dynamic Iceberg partitions using PyFlare?](./dataos_pyflare_sdk/code_samples/overwrite_dynamic_iceberg_partitions.md)
 
-- [How to write data in Avro format from Iceberg using DataOS PyFlare?](./dataos_pyflare_sdk/code_samples/write_avro_read_iceberg.md)
+- [How to write data in Avro format from Iceberg using PyFlare?](./dataos_pyflare_sdk/code_samples/write_avro_read_iceberg.md)
 
 
 
