@@ -293,7 +293,7 @@ properties = {
 
 
 
-## Python SDK Reference
+## Python SDK Library Reference
 
 For a detailed reference guide on the Python SDK and its subpackages, modules, and classes, please visit the [Python SDK Reference.](./dataos_python_sdk/reference_index.html). 
 
