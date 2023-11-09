@@ -1,6 +1,6 @@
 # PyFlare SDK
 
-The PyFlare SDK is a Python library that streamlines data operations and faciltate seamless interactions with Apache Spark within DataOS. Its a wrapper around Flare, to enable Python support with DataOS capabilities. The library abstracts complexities inherent in data flow, allowing users to direct their focus toward data transformations and the formulation of business logic by simplifying the loading, transformation, and storage of data. It facilitates the integration of existing Spark Job code bases with DataOS, requiring minimal modifications.
+The PyFlare SDK is a Python library that streamlines data operations and faciltate seamless interactions with Apache Spark within DataOS. Its a wrapper around [Flare](../resources/stacks/flare.md), to enable Python support with DataOS capabilities. The library abstracts complexities inherent in data flow, allowing users to direct their focus toward data transformations and the formulation of business logic by simplifying the loading, transformation, and storage of data. It facilitates the integration of existing Spark Job code bases with DataOS, requiring minimal modifications.
 
 ## Key Features
 
@@ -22,10 +22,10 @@ PyFlare is finely tuned for the DataOS platform, rendering it an ideal choice fo
 
 ## Installation
 
-The PyFlare module is compatible with DataOS-native Jupyter Notebooks and can also be utilized in various Python programs across different environments, provided that the necessary JAR files are incorporated.
+The PyFlare module is compatible with DataOS-native [Jupyter Notebooks](../interfaces/notebook.md) and can also be utilized in various Python programs across different environments, provided that the necessary JAR files are incorporated.
 
 <aside class = "callout">
-🗣 If you are using DataOS-native Jupyter Notebooks, you can skip the installation part and directly navigate to the <a href="#getting-started">Getting Started</a> section as the JAR files and modules are included automatically as part of the environment setup.
+🗣 If you are using DataOS-native Jupyter Notebooks or Python environment, you can skip the installation part and directly navigate to the <a href="#getting-started">Getting Started</a> section as the JAR files and modules are included automatically as part of the environment setup.
 </aside>
 
 ### **Prerequisites**
@@ -48,10 +48,10 @@ python3 --version
 py --version
 ```
 
-If you do not have Python, please install the latest version from [python.org.](https://www.python.org/)
+If you do not have Python, please install the latest version from [python.org](https://www.python.org/).
 
-<aside class="callout">
-🗣 <b>Note:</b> If you’re using an enhanced shell like IPython or Jupyter notebook, you can run system commands by prefacing them with a <code>!</code> character:
+
+> <b>Note:</b> If you’re using an enhanced shell like IPython or Jupyter notebook, you can run system commands by prefacing them with a <code>!</code> character:
 
 ```bash
 In [1]: import sys
@@ -60,7 +60,9 @@ In [1]: import sys
 Python 3.6.3
 ```
 
-It’s recommended to write <code>{sys.executable}</code> rather than plain <code>python</code> in order to ensure that commands are run in the Python installation matching the currently running notebook (which may not be the same Python installation that the <code>python</code> command refers to).
+<aside class="best-practice">
+
+It’s recommended to write <code>{sys.executable}</code> rather than plain <code>python</code> in order to ensure that commands are run in the Python installation matching the currently running Notebook (which may not be the same Python installation that the <code>python</code> command refers to).
 
 </aside>
 
@@ -86,9 +88,9 @@ If you installed Python from source, with an installer from [python.org](https:
 
 To ensure the proper functioning of the system, a Spark environment must be configured with the necessary settings tailored to the specific use case.
 
-**Inclusion of Additional JARs**
+**Inclusion of common JARs**
 
-The inclusion of JAR files is contingent on the unique use case in question. Nevertheless, a standard set of essential JARs consistently aids in facilitating governance. The obligatory JAR files encompass:
+JAR files are crucial for the specific use case and should be integrated into your project as needed. But there are a set of common JARs which are always needed to support governance. The obligatory JAR files encompass:
 
 - `io.dataos.sdk.commons`
 - `io.dataos.sdk.heimdall`
@@ -97,7 +99,7 @@ The inclusion of JAR files is contingent on the unique use case in question. Nev
 
 <aside class="callout">
 
-Please be advised that these JARs are indispensable for the specified use case and should be incorporated as per the requirements of your project.
+It's important to note that DataOS-native Jupyter and Python environments do not demand the utilization of the previously mentioned JAR files. This is because most of the essential JAR files are already included within the environment.
 
 </aside>
 
@@ -213,7 +215,7 @@ dataos-ctl user apikey create
 
 ### **PyFlare Session Setup**
 
-A PyFlare session can be created using the configuration settings using the [`SparkSessionBuilder()`](./dataos_pyflare_sdk/io/dataos/spark/session/SparkSessionBuilder.html) object. This session serves as the foundation for subsequent data operations.
+A PyFlare session can be created using the configuration settings using the [`SparkSessionBuilder()`](./dataos_pyflare_sdk/io/dataos/spark/session/SparkSessionBuilder.html). This session serves as the foundation for subsequent data operations.
 
 ```python
 # Spark configuration settings
