@@ -1,6 +1,6 @@
-# PyFlare SDK
+# DataOS PyFlare SDK
 
-The PyFlare SDK is a Python library that streamlines data operations and faciltate seamless interactions with Apache Spark within DataOS. Its a wrapper around [Flare](../resources/stacks/flare.md), to enable Python support with DataOS capabilities. The library abstracts complexities inherent in data flow, allowing users to direct their focus toward data transformations and the formulation of business logic by simplifying the loading, transformation, and storage of data. It facilitates the integration of existing Spark Job code bases with DataOS, requiring minimal modifications.
+The DataOS PyFlare SDK is a Python library that streamlines data operations and faciltate seamless interactions with Apache Spark within DataOS. Its a wrapper around [Flare](../resources/stacks/flare.md), to enable Python support with DataOS capabilities. The library abstracts complexities inherent in data flow, allowing users to direct their focus toward data transformations and the formulation of business logic by simplifying the loading, transformation, and storage of data. It facilitates the integration of existing Spark Job code bases with DataOS, requiring minimal modifications.
 
 ## Key Features
 
@@ -62,7 +62,7 @@ Python 3.6.3
 
 <aside class="best-practice">
 
-It’s recommended to write <code>{sys.executable}</code> rather than plain <code>python</code> in order to ensure that commands are run in the Python installation matching the currently running Notebook (which may not be the same Python installation that the <code>python</code> command refers to).
+<b>Best Practice:</b> It’s recommended to write <code>{sys.executable}</code> rather than plain <code>python</code> in order to ensure that commands are run in the Python installation matching the currently running Notebook (which may not be the same Python installation that the <code>python</code> command refers to).
 
 </aside>
 
@@ -276,9 +276,10 @@ spark.stop()
 - [How to write data in Avro format from Iceberg using PyFlare?](./dataos_pyflare_sdk/code_samples/write_avro_read_iceberg.md)
 
 
+## PyFlare SDK Library Reference
 
-## Library Reference
+For a comprehensive reference guide to the PyFlare SDK, including detailed information on its modules and classes, please consult the [PyFlare SDK Library Reference.](./dataos_pyflare_sdk/io/index.html)
 
-[PyFlare SDK Library Reference](./dataos_pyflare_sdk/io/index.html)
+
 
 
