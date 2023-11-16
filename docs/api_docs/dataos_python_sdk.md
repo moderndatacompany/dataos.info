@@ -1,12 +1,10 @@
 # DataOS SDK for Python
 
-The DataOS SDK for Python includes functionality to accelerate development with Python for the DataOS platform. It provides a cohesive set of APIs that facilitate seamless interaction with a diverse range of Resources, each accessible through its respective services. By utilizing the SDK, data developers unlock the potential to construct innovative solutions and integrate them seamlessly into their existing resources.
-
-Whether it's enhancing data management, refining analytical processes, or augmenting automation frameworks, the DataOS SDK for Python empowers data developers to harness the full potential of DataOS. This integration capability fosters a flexible and dynamic environment where users can tailor solutions to their unique needs and rapidly innovate with confidence.
+The DataOS SDK for Python includes functionality to accelerate development with Python for the DataOS platform. It provides a cohesive set of APIs, each accessible through its respective services, enabling seamless interaction with the platform. By utilizing the SDK, data developers unlock the potential to construct innovative solutions and integrate them seamlessly into their existing resources.
 
 <aside class="callout">
 
-🗣 The <b>DataOS SDK for Python</b> is currently in the stress testing phase. The interfaces are now finalized, and you can expect to see additional information in forthcoming releases.
+🗣 The <b>DataOS SDK for Python</b> is currently in the stress testing phase. The interfaces are finalized. Additional information expected in further releases.
 
 </aside>
 
@@ -34,16 +32,16 @@ py --version
 
 If you do not have Python, please install the latest version from [python.org](https://www.python.org/).
 
-<aside class = "callout">
-🗣 <b>Note:</b> If you’re using an enhanced shell like IPython or Jupyter notebook, you can run system commands like those in this tutorial by prefacing them with a <code>!</code> character:
+> <b>Note:</b> If you’re using an enhanced shell like IPython or Jupyter notebook, you can run system commands like those given above by prefacing them with a <code>!</code> character:
 ```shell
 In [1]: import sys
         !{sys.executable} --version
 # Output
 Python 3.7.3
 ```
+<aside class="best-practice">
 
-It’s recommended to write <code>{sys.executable}</code> rather than plain <code>python</code> in order to ensure that commands are run in the Python installation matching the currently running notebook (which may not be the same Python installation that the <code>python</code> command refers to).
+<b>Best Practice:</b> It’s recommended to write <code>{sys.executable}</code> rather than plain <code>python</code> in order to ensure that commands are run in the Python installation matching the currently running notebook (which may not be the same Python installation that the <code>python</code> command refers to).
 
 </aside>
 
@@ -65,7 +63,7 @@ py -m pip --version
 
 If you installed Python from source, with an installer from [python.org](https://www.python.org/), or via [Homebrew](https://brew.sh/) you should already have pip. If you’re on Linux and installed using your OS package manager, you may have to install pip separately, see [Installing pip/setuptools/wheel with Linux Package Managers](https://packaging.python.org/en/latest/guides/installing-using-linux-tools/).
 
-### **Installing from PyPI**
+### **Installing `dataos-sdk-py` from PyPI**
 
 The DataOS SDK for Python can be installed from the Python Package Index (PyPI) using the following command:
 
@@ -90,6 +88,7 @@ py -m pip install dataos-sdk-py=={{version specifier}}
 ```
 
 <aside class="callout">
+
 🗣 <b>Note:</b> If you’re using an enhanced shell like IPython or Jupyter notebook, you must restart the runtime in order to use the newly installed package.
 
 </aside>
@@ -110,19 +109,13 @@ python3 -m pip install --upgrade dataos-sdk-py
 py -m pip install --upgrade dataos-sdk-py
 ```
 
-Please install the DataOS SDK for Python via the following command:
-
-```shell
-pip install dataos-sdk-py
-```
-
 ## Getting Started
 
-Once you have installed the DataOS SDK for Python, now is the time to start coding. 
+Upon successful installation of the DataOS SDK for Python, it is now time to commence your coding journey.
 
 ### **List Metadata of a Dataset**
 
-So to begin with we will take a simple example of establishing a connection with DataOS, configuring it with the necessary parameters, and accessing dataset’s metadata.
+To get started, let's walk through a straightforward example of establishing a connection with DataOS, configuring it with the required parameters, and accessing metadata for a dataset.
 
 **Code Snippet**
 
@@ -153,7 +146,8 @@ ds_client_instance = ds_client.build()
 metadata = ds_client_instance.dataset_api.list_metadata(depot="icebase", collection="retail", dataset="city")
 
 # Print Metadata
-print(metadata))
+print(metadata)
+
 ```
 
 **Expected Output**
@@ -162,9 +156,11 @@ print(metadata))
 [MetadataVersionResponse(version='v1.gz.metadata.json', timestamp=1696940109201), MetadataVersionResponse(version='v2.gz.metadata.json', timestamp=1696940212855), MetadataVersionResponse(version='v3.gz.metadata.json', timestamp=1697550809632), MetadataVersionResponse(version='v4.gz.metadata.json', timestamp=1698387825353), MetadataVersionResponse(version='v5.gz.metadata.json', timestamp=1699016002681)]
 ```
 
-### **Show statistics for a dataset**
+For additional information regarding the [subpackages](./dataos_python_sdk/depot_service.html#subpackages) and [submodules](./dataos_python_sdk/depot_service.html#submodules) contained within the [`depot_service`](./dataos_python_sdk/modules.html#depot-service) package, please refer to the respective links within the [Python SDK Library Reference](./dataos_python_sdk/reference_index.html).
 
-The code snippet below shows how to set up the Depot Service client and show dataset statistics using the DataOS SDK for Python. 
+### **Retrieve Dataset Statistics**
+
+In the following code snippet, we demonstrate the setup of the Depot Service client and the process of retrieving statistics for a dataset using the DataOS SDK for Python.
 
 **Code Snippet**
 
@@ -295,7 +291,9 @@ properties = {
 
 </details>
 
+
+
 ## Python SDK Library Reference
 
-[Python SDK Library Reference](./dataos_python_sdk/reference_index.html)
+For a detailed reference guide on the Python SDK and its subpackages, modules, and classes, please visit the [Python SDK Reference.](./dataos_python_sdk/reference_index.html). 
 
