@@ -18,7 +18,11 @@ So without any further ado, let’s get right into building audiences within the
 
 ### **Step 1: Create a Lens**
 
-Ensure that the Lens YAML is created with the prerequisites satisfied. For demonstration purpose, As a demonstration, a `c360` lens sample has been provided below:
+Ensure that the Lens YAML is created with the prerequisites satisfied. If you want to learn more about the process of creating a Lens, refer to [Building Lens](/interfaces/lens/building_lens/) documentation for detailed instructions.
+
+For the demonstration purpose, a `c360` lens sample has been created. The YAML outlines the entities, fields, measures, and relationships, providing a structured data model for the Audience app.
+
+<details><Summary>Example YAML for the 'c360'</summary>
 
 ```yaml
 name: "c360"
@@ -519,7 +523,7 @@ entities:
     - "monetary_for_day"
     - "frequency" 
 ```
-
+</details>
 ### **Step 2: Deploy the Lens using Postman**
 
 With the YAML for the Lens being created, the next step is to deploy it. Postman will be used as the deployment tool. Ensure that you have installed Postman and followed all necessary steps to deploy the Lens.

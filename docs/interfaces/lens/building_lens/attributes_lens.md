@@ -43,7 +43,7 @@ entities:
         sql_snippet: {{additional join conditions}}
 ```
 
-Below is a brief summary of each section and its respective attributes to help you quickly grasp the configuration. For in-depth information on their properties and usage, please click on the individual attribute or refer to [Details for Configuration Attributes.](Attributes%20of%20Lens%20YAML%2078242bf6b6434331aef06e3f8e6562c2.md) 
+Below is a brief summary of each section and its respective attributes to help you quickly grasp the configuration. For in-depth information on their properties and usage, please click on the individual attribute or refer to [Details for Configuration Attributes.](/interfaces/lens/building_lens/attributes_lens/#configuration-attributes) 
 
 ## Lens Meta Section
 

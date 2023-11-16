@@ -469,7 +469,7 @@ Create a lens or update an existing Lens.
 
 - In the ‘**Headers**’ section, add the following headers:
     
-    ![Untitled](building_lens/Untitled.png)
+    ![Untitled](building_lens/untitled.png)
     
 - Write Lens in the ‘**Body**’ Section. Choose ‘**raw**’ as the text format
 - In the ‘**Param**’ section, select dryrun=false.
@@ -480,7 +480,7 @@ Create a lens or update an existing Lens.
         Example: *https://enough-kingfish.dataos.app/lens/api/v1/lenses?dryrun=false*
         
     
-    ![Untitled](building_lens/Untitled%201.png)
+    ![Untitled](building_lens/untitled_1.png)
     
 
 ## Querying Lens
@@ -508,7 +508,7 @@ Let’s explore an analytical question through Lens Query:
 - To narrow down to states with more than 100,000 orders, add a rule to the Measures section and choose the measure `order.total_order_quantity`, then select the ‘>’ symbol and type 100000 in the adjacent box (don’t use quotes).
 - Now click **Run Query.**
     
-    ![Untitled](building_lens/Untitled%202.png)
+    ![Untitled](building_lens/untitled_2.png)
     
     The table in the diagram above displays states with total order quantities exceeding one hundred thousand. Additionally, there's a customizable bar chart at the bottom that you can configure and export according to your requirements.
     
@@ -568,7 +568,7 @@ PARAMS (month=3)
 
 Params are useful to power multiple use cases without having to define multiple measures or dimensions per use case. In the following article, we will demonstrate how Params can be leveraged in different scenarios.
 
-[Scenarios: Dynamic Parameters in Query](building_lens/scenario_dynamic_params.md)
+[Scenarios: Dynamic Parameters in Query](building_lens/scenarios_dynamic_params.md)
 
 ## Tutorial: Sports Retail Data Lens Creation
 
