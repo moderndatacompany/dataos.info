@@ -387,7 +387,7 @@ data:
 **Data Type:** number<br>
 **Requirement:** optional<br>
 **Default Value:** none<br>
-**Possible Value:** any number within the range of 0 to 100, inclusive. 0 being the highest priority and 100 being the lowest<br>
+**Possible Value:** any number within the range of 1 to 100, inclusive. 1 being the highest priority and 100 being the lowest.<br>
 **Example Usage:** 
 
 ```yaml
