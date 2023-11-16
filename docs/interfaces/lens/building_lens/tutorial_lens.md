@@ -21,31 +21,11 @@ By addressing these data questions, data-driven decisions can be made to enhance
 
 | Entity | Fields and Dimensions | Derived Dimensions | Measure | Related To | Relationship |
 | --- | --- | --- | --- | --- | --- |
-| Customer | first_name,
-last_name,
-birth_date,
-marital_status,
-gender,
-email_address,
-annual_income,
-total_children,
-education_level,
-occupation,
-home_owner,
-dob | full_name,customer_lifespan_in_year, customer_lifespan_in_month, average_order_value, average_purchase_frequency_rate, customer_lifetime_value, home_owner_bool_value | total_customer,average_annual_income,count_home_owner |  |  |
-| Sales | order_number, customer_key, order_date, inline_item_number, product_key, territorry_key, order_quantities, order_line_item, category_name |  | total_revenue, number_of_orders, number_of_customer, first_order, last_order, last_order, lifespan_in_year, lifespan_in_month, avg_order_value, avg_purchase_freq_rate, month1_revenue, month2_revenue, product_category_share_orders, date_wise_orders | Customer
-
-Territory | N:1
-
-N:1 |
-| Product | product_key, product_subcategory_key, product_name, product_description, product_sku, Product_color, product_size, product_style, product_cost, product_price  |  | profit | Sales | 1:N |
-| Returns | return_date, product_key, territory_id, return_quantity, 
- |  |  | Product
-
-Territory | N:1
-
-N:1 |
-| Territory | sales_territory_key, region, country |  |  |  |  |
+| Customer | first_name, last_name,<br>birth_date,<br>marital_status,<br>gender,<br>email_address,<br>annual_income,<br>total_children,<br>education_level,<br>occupation,home_owner,dob | full_name,<br>customer_lifespan_in_year, <br>customer_lifespan_in_month, <br>average_order_value,<br> average_purchase_frequency_rate,<br> customer_lifetime_value, <br>home_owner_bool_value | total_customer,<br>average_annual_income,<br>count_home_owner |  |  |
+| Sales | order_number, customer_key, <br>order_date, <br>inline_item_number, product_key, <br>territorry_key, <br>order_quantities, order_line_item, <br>category_name |  | total_revenue, number_of_orders, number_of_customer, <br>first_order, last_order,<br> last_order, <br>lifespan_in_year, lifespan_in_month, <br>avg_order_value, <br>avg_purchase_freq_rate, month1_revenue,<br> month2_revenue, <br>product_category_share_orders, <br>date_wise_orders | Customer <br>Territory | N:1 <br>N:1 |
+| Product | product_key,<br> product_subcategory_key, <br>product_name, <br>product_description, <br>product_sku, Product_color, <br>product_size,<br> product_style, product_cost, <br>product_price  |  | profit | Sales | 1:N |
+| Returns | return_date, product_key, <br>territory_id, <br>return_quantity|  |  | Product<br>Territory | N:1<br>N:1 | |
+| Territory | sales_territory_key, <br>region, country |  |  |  |  |
 
 ## Defining Lens for Sports Data Analysis
 
