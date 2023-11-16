@@ -383,11 +383,11 @@ data:
 
 #### **`priority`**
 
-**Description:** the policy with higher priority will override all other policies defined for the same resources.<br>
+**Description:** the Policy with lower value of priority attribute will take precedence over all other policies associated with the same resources. Consequently, a policy assigned a priority of 1 will supersede any conflicting policy assigned a priority of 90.<br>
 **Data Type:** number<br>
 **Requirement:** optional<br>
 **Default Value:** none<br>
-**Possible Value:** any number between 0-100. 0 being the lowest priority and 100 being the highest<br>
+**Possible Value:** any number within the range of 0 to 100, inclusive. 0 being the highest priority and 100 being the lowest<br>
 **Example Usage:** 
 
 ```yaml
