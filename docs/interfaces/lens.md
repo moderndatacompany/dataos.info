@@ -44,9 +44,13 @@ Lens Explorer's drag-and-drop interface allows users to easily build customized 
 ![Lens Dtails](lens/lens_details_explorer.png)
 
 <figcaption align = "center">Lens Explorer</figcaption>
-### **Lens Views**
+### **Lens Views** 
 
-The Lens Views utility encompasses readily-shareable views formulated atop Lenses. This tool enables users to store their crafted views while exploring Lenses, and seamlessly retrieve them at their convenience. These views include a diverse array of use cases and scenarios. A list of published views will be shown. Every view listed an owner’s name, Lens name, and associated time of creation. These views can be filtered by owners or their states(Draft, Published). Users can view the analysis with refreshed data by re-executing the query. 
+A View refers to a user-crafted perspective or snapshot formulated atop Lenses. It serves as a readily-shareable compilation of insights and visualizations obtained during the exploration of Lenses.  The Lens Views utility empowers users to store their customized views systematically, facilitating effortless retrieval at their convenience. These views encapsulate a diverse range of use cases and scenarios, providing a comprehensive representation of the user's analytical findings.
+
+Upon publication, the Views become part of a list accessible under the "Views" section. Each published View is listed with the owner's name, Lens name, and the associated time of creation. Users can navigate and filter this list based on ownership or the current state of the views (Draft or Published), allowing for efficient management.
+
+Furthermore, the system supports a dynamic experience, as users can refresh the analysis with updated data by re-executing the query associated with each View. 
  
 <center>
 
@@ -55,33 +59,62 @@ The Lens Views utility encompasses readily-shareable views formulated atop Lense
 </center>
 
 <figcaption align = "center">Graphical User Interface of the Lens Views</figcaption>
+### **Creating a Lens View**
 
-#### **Cloning a Lens view**
-Users have the capability to clone a lens view and customize according to their requirements. Cloning streamlines the process of creating variations of a lens view, eliminating the need to recreate a view from scratch. Users can experiment freely with different data selections.
+When users compose queries on Lens Explorer and analyze the result sets as a table or a chart, they also get an option to export and save the analysis as a **View**.
 
-Follow the steps to create a clone of an existing Lens view:
+1. Open the Lens Explorer and compose a query by selecting the required dimensions and measures.
+    
+    ![save_view_option.png](lens/save_view_option.png)
+    <figcaption align = "center">Saving option</figcaption>
+    
+2. Provide a name and description for the Lens View.
+    
+    ![save_view.png](lens/save_view.png)
+    <figcaption align = "center">Saving Lens View</figcaption>
+    
+3. The View is successfully created and is currently in Draft mode. In this state, the View is exclusively accessible to its creator;  other users cannot view or access it.
+    
+    ![draft_view.png](lens/draft_view.png)
+    <figcaption align = "center">Draft view</figcaption>
+    
+4. To make this View available to other users, you need to publish it. 
+    
+    ![publish view.png](lens/publish_view.png)
+    <figcaption align = "center">Publishing Lens view</figcaption>
+    
 
-1. Navigate to any published Lens View, then click on the **Clone View** icon. Confirm your selection to create a cloned view.
-    ![Cloning Lens Views](lens/lens_ecosystem/clone_view.png)
+5. Once published, it will be removed from the draft mode and become available under **Views**. 
 
+    ![published_views.png](lens/published_views.png)
+    <figcaption align = "center">Published Lens Views</figcaption>
+
+### **Editing an existing view**
+
+Users can edit an existing Lens View that they own.
+
+![edit view.png](lens/edit_view.png)
+<figcaption align = "center">Editing a Lens View</figcaption>
+
+### **Cloning a Lens view**
+
+Users can clone a Lens View and customize it according to their requirements. Cloning streamlines the creation of variations of a Lens View, eliminating the need to recreate them from scratch. Users can experiment freely with different dimension and measure selections.
+
+Follow the steps to create a clone of an existing Lens View:
+
+1. Navigate to any published Lens View, then click the **Clone View** icon. Confirm your selection to create a cloned view.
+    
+    ![*Clone a Lens view*](lens/clone_view.png)
+    
     <figcaption align = "center">Clone a Lens view</figcaption>
+    
+2. Make the required modifications, then click **Run Query** to generate the view. After the query execution is completed, users will be presented with the option to **Save View**.
+    
+    ![save_clone.png](lens/save_clone.png)
+    <figcaption align = "center">Saving cloned Lens View</figcaption>
+    
+3. Input a new name and description for the cloned view to save it. By default, the cloned view is saved in the draft mode, and to make it available to all the users, it should be published as shown above.
 
-2. Make the required modifications, then click **Run Query** to generate the view. After the query execution is complete, users will be presented with the option to **Save View**.
-    ![Cloning Lens Views](lens/lens_ecosystem/save_cloned_view.png)
-
-    <figcaption align = "center">Make changes and save the view</figcaption>
-3. Input a new name and description for the cloned view to save it. The cloned view will be stored in Draft Mode. Access the cloned lens view by toggling the Drafts button.
-    ![Draft mode Lens views](lens/lens_ecosystem/draft_views.png)
-
-    <figcaption align = "center">Lens views in draft mode</figcaption>
-
-<aside class="callout">🗣 Lens views in Draft mode are not eligible for cloning. Users are required to publish the view prior to initiating the cloning process. </aside>
-
-#### **Editing an existing view**
-Users can edit an existing Lens view that they own.
-![Edit mode](lens/lens_ecosystem/edit_view.png)
-
-<figcaption align = "center">Editing a view</figcaption>
 
 ## Elements of a Lens
 
