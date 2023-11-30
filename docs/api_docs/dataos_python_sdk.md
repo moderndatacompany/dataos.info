@@ -3,9 +3,7 @@
 The DataOS SDK for Python includes functionality to accelerate development with Python for the DataOS platform. It provides a cohesive set of APIs, each accessible through its respective services, enabling seamless interaction with the platform. By utilizing the SDK, data developers unlock the potential to construct innovative solutions and integrate them seamlessly into their existing resources.
 
 <aside class="callout">
-
-🗣 The <b>DataOS SDK for Python</b> is currently in the stress testing phase. The interfaces are finalized. Additional information expected in further releases.
-
+🗣 Delve into the <a href="./reference_index.html">Python SDK Library Reference</a> for detailed insights into the diverse subpackages, modules and classes encompassed by the Python SDK package. To know more about the installation procedures, refer to the following section.
 </aside>
 
 ## Installation
@@ -41,7 +39,7 @@ Python 3.7.3
 ```
 <aside class="best-practice">
 
-<b>Best Practice:</b> It’s recommended to write <code>{sys.executable}</code> rather than plain <code>python</code> in order to ensure that commands are run in the Python installation matching the currently running notebook (which may not be the same Python installation that the <code>python</code> command refers to).
+📖 <b>Best Practice:</b> It’s recommended to write <code>{sys.executable}</code> rather than plain <code>python</code> in order to ensure that commands are run in the Python installation matching the currently running notebook (which may not be the same Python installation that the <code>python</code> command refers to).
 
 </aside>
 
@@ -87,11 +85,7 @@ py -m pip install dataos-sdk-py=={{version specifier}}
 # e.g. py -m pip install dataos-sdk-py==0.0.1
 ```
 
-<aside class="callout">
-
-🗣 <b>Note:</b> If you’re using an enhanced shell like IPython or Jupyter notebook, you must restart the runtime in order to use the newly installed package.
-
-</aside>
+> <b>Note:</b> If you’re using an enhanced shell like IPython or Jupyter notebook, you must restart the runtime in order to use the newly installed package.
 
 ### **Upgrading from PyPI**
 
@@ -295,5 +289,5 @@ properties = {
 
 ## Python SDK Library Reference
 
-For a detailed reference guide on the Python SDK and its subpackages, modules, and classes, please visit the [Python SDK Reference.](./dataos_python_sdk/reference_index.html). 
+For a detailed reference guide on the Python SDK and its subpackages, modules, and classes, please visit the [Python SDK Library Reference.](./dataos_python_sdk/reference_index.html). 
 
