@@ -2,6 +2,11 @@
 
 The DataOS PyFlare SDK is a Python library that streamlines data operations and faciltate seamless interactions with Apache Spark within DataOS. Its a wrapper around [Flare](../resources/stacks/flare.md), to enable Python support with DataOS capabilities. The library abstracts complexities inherent in data flow, allowing users to direct their focus toward data transformations and the formulation of business logic by simplifying the loading, transformation, and storage of data. It facilitates the integration of existing Spark Job code bases with DataOS, requiring minimal modifications.
 
+<aside class="callout">
+🗣 Delve into the comprehensive <a href="./io/index.html">PyFlare SDK Library Reference</a> for detailed insights into the diverse modules and classes encompassed by the PyFlare package. To know more about PyFlare's key features and initiation procedures, refer to the following sections.
+</aside>
+
+
 ## Key Features
 
 ### **Streamlined Data Operations**
@@ -24,9 +29,7 @@ PyFlare is finely tuned for the DataOS platform, rendering it an ideal choice fo
 
 The PyFlare module is compatible with DataOS-native [Jupyter Notebooks](../interfaces/notebook.md) and can also be utilized in various Python programs across different environments, provided that the necessary JAR files are incorporated.
 
-<aside class = "callout">
-🗣 If you are using DataOS-native Jupyter Notebooks or Python environment, you can skip the installation part and directly navigate to the <a href="#getting-started">Getting Started</a> section as the JAR files and modules are included automatically as part of the environment setup.
-</aside>
+><b>Note:</b> If you are using DataOS-native Jupyter Notebooks or Python environment, you can skip the installation part and directly navigate to the <a href="#getting-started">Getting Started</a> section as the JAR files and modules are included automatically as part of the environment setup.
 
 ### **Prerequisites**
 
@@ -62,7 +65,7 @@ Python 3.6.3
 
 <aside class="best-practice">
 
-<b>Best Practice:</b> It’s recommended to write <code>{sys.executable}</code> rather than plain <code>python</code> in order to ensure that commands are run in the Python installation matching the currently running Notebook (which may not be the same Python installation that the <code>python</code> command refers to).
+📖 <b>Best Practice:</b> It’s recommended to write <code>{sys.executable}</code> rather than plain <code>python</code> in order to ensure that commands are run in the Python installation matching the currently running Notebook (which may not be the same Python installation that the <code>python</code> command refers to).
 
 </aside>
 
@@ -97,11 +100,8 @@ JAR files are crucial for the specific use case and should be integrated into yo
 - `io.dataos.sdk.spark-authz`
 - A single consolidated JAR file named `io.dataos.sdk.flare_2.12`
 
-<aside class="callout">
+> <b>Note:</b> It's important to note that DataOS-native Jupyter and Python environments do not demand the utilization of the previously mentioned JAR files. This is because most of the essential JAR files are already included within the environment.
 
-It's important to note that DataOS-native Jupyter and Python environments do not demand the utilization of the previously mentioned JAR files. This is because most of the essential JAR files are already included within the environment.
-
-</aside>
 
 ### **Installing from PyPI**
 
@@ -127,10 +127,8 @@ py -m pip install dataos-pyflare=={{version specifier}}
 # e.g. py -m pip install dataos-pyflare==0.0.6
 ```
 
-<aside class="callout">
-🗣 <b>Note:</b> If you’re using an enhanced shell like IPython or Jupyter notebook, you must restart the runtime in order to use the newly installed package.
+><b>Note:</b> If you’re using an enhanced shell like IPython or Jupyter notebook, you must restart the runtime in order to use the newly installed package.
 
-</aside>
 
 ### **Install from Source Distribution**
 
