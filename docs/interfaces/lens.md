@@ -59,7 +59,7 @@ Furthermore, the system supports a dynamic experience, as users can refresh the 
 </center>
 
 <figcaption align = "center">Graphical User Interface of the Lens Views</figcaption>
-### **Creating a Lens View**
+#### **Creating a Lens View**
 
 When users compose queries on Lens Explorer and analyze the result sets as a table or a chart, they also get an option to export and save the analysis as a **View**.
 
@@ -89,14 +89,14 @@ When users compose queries on Lens Explorer and analyze the result sets as a tab
     ![published_views.png](lens/published_views.png)
     <figcaption align = "center">Published Lens Views</figcaption>
 
-### **Editing an existing view**
+#### **Editing an Existing View**
 
 Users can edit an existing Lens View that they own.
 
 ![edit view.png](lens/edit_view.png)
 <figcaption align = "center">Editing a Lens View</figcaption>
 
-### **Cloning a Lens view**
+#### **Cloning a Lens View**
 
 Users can clone a Lens View and customize it according to their requirements. Cloning streamlines the creation of variations of a Lens View, eliminating the need to recreate them from scratch. Users can experiment freely with different dimension and measure selections.
 
