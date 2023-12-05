@@ -10,8 +10,8 @@ Apart from regular batch jobs, there are three specialized types of batch jobs d
 
 ### **Data Profiling Job**
 
-Data Profiling Jobs assess the validity and structure of datasets. These jobs examine source data to determine accuracy, completeness, and validity, providing summaries and insights about the data. Accurate and complete data is essential for making informed decisions based on the available data. Data Profiling Jobs enable you to analyze the structure, content, and relationships within the data, uncovering patterns, rules, inconsistencies, anomalies, and redundancies to achieve higher data quality. Basic statistics are used to assess data validity. Data profiling gives a comprehensive overview of your data, its distribution, types, missing values, and outliers.
-To learn more about Data Profiling Jobs, refer to [here](./case_scenario/data_profiling_jobs.md).
+Data Profiling Jobs assess the validity and structure of datasets. These jobs examine source data to determine accuracy, completeness, and validity, providing summaries and insights about the data. Accurate and complete data is essential for making informed decisions based on the available data. Data Profiling Jobs enable you to analyze the structure, content, and relationships within the data, uncovering inconsistencies, and anomalies to achieve higher data quality. <br>
+To learn more about creating Data Profiling Jobs, refer to [here](creating_data_profiling_jobs.md).
 
 #### **Fingerprinting**
 When you initiate a data profiling job for your dataset, it automatically triggers the **fingerprinting** process.
@@ -23,8 +23,11 @@ To learn more about classification process, refer to [Fingerprinting in DataOS](
 DataOS conducts fingerprinting and stores the classification information for your dataset in Metis DB, which can be accessed through the Metis UI. To learn more, refer to [Fingerprinting Information on Metis UI](/interfaces/metis/explore_metis_ui/#how-to-get-fingerprinting-information).
 
 ### **Data Quality Job**
+DataOS allows users to define their data quality expectations and discover data shortcomings for the success of data-driven operations. It uses the Flare stack that provides a set of tools and functions for data quality analysis and validation. Flare provides assertions, which are business-specific validation rules, to test and evaluate the quality of specific datasets if they are appropriate for the intended purpose. 
 
-Data Quality is a subjective concept, varying among different consumers. In DataOS, assertions are defined as business-specific validation rules to evaluate the quality of specific datasets for their intended purpose. Data Quality Jobs measure and ensure data quality based on these assertions. For more information on defining assertions and their properties, refer to [here](./configurations/assertions.md). To explore a case scenario related to Data Quality Jobs, click [here](./case_scenario/data_quality_jobs.md).
+Data Quality Jobs measure and ensure data quality based on these assertions. For more information on defining assertions and their properties, refer to [Performing Business Validation Checks with Assertions](defining_assertions.md)
+
+
 
 ### **Incremental Job**
 
