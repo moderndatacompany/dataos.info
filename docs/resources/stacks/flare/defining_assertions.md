@@ -8,9 +8,9 @@ The quality job YAML contains an assertions section to define tests for data qua
 Broadly, there are three ways to apply checks to a column:
 
 1. **Using built-in functions that directly operate on a column's values**, such as average, minimum, maximum, and more.
-    - **column:** It specifies the data column being examined and on which on which rule is to be defined
-    - **filter:** It specifies the condition to narrow down the data.
-    - **tests:** This section contains a series of tests that the data must pass, For example, if the average 'order_amount' is greater than 1000.00. You can use other aggregate functions as well.
+    **column:** It specifies the data column being examined and on which on which rule is to be defined
+    **filter:** It specifies the condition to narrow down the data.
+    **tests:** This section contains a series of tests that the data must pass, For example, if the average 'order_amount' is greater than 1000.00. You can use other aggregate functions as well.
         - avg > 1000.00
         - max < 1000: This test verifies that the maximum 'order_amount' is less than 1000.
         
@@ -20,15 +20,15 @@ Broadly, there are three ways to apply checks to a column:
         </aside>
         
 2. **Employing built-in functions that work on the results of** **regular expressions** applied to a column's values, like checking for invalid percentages or counts.
-    - **column:** It specifies the data column being examined and on which on which rule is to be defined
-    - **validFormat:** This section has one attribute:
+    **column:** It specifies the data column being examined and on which on which rule is to be defined
+    **validFormat:** This section has one attribute:
         - **regex:** It defines a regular expression ('regex'), which the column values should conform to.
-    - **tests:** It contains tests that the data must pass.
+    **tests:** It contains tests that the data must pass.
         - invalid_count < 5
         - invalid_percentage < 0.1
         - regex_match > 10
 3. **Creating custom quality rules using SQL-based assertions when you have complex testing criteria** that need custom logic and computed columns for evaluation. You can use SQL expressions to define your assertions.
-    - **sql:** This attribute contains a SQL query that calculates the values to be compared.
+    **sql:** This attribute contains a SQL query that calculates the values to be compared.
         
         For example: SELECT
               AVG(order_amount) AS avg_order_amount,
@@ -36,7 +36,7 @@ Broadly, there are three ways to apply checks to a column:
               FROM source
               WHERE brand_name = 'Awkward Styles'
         
-    - **tests:**  This section lists tests based on the SQL query results. For example,
+    **tests:**  This section lists tests based on the SQL query results. For example,
         - avg_order_amount > 1000: It checks if the calculated average 'order_amount' is greater than 1000.
         - max_order_amount < 1000: This test ensures that the calculated maximum 'order_amount' is less than 1000.
 
@@ -110,7 +110,7 @@ assertions:
       - {{boolean expressions with computed values}}
 ```
 
-### Attributes of Assertions Section
+### **Attributes of Assertions Section**
 
 The below table summarizes various properties within an assertions section in Quality job YAML.
 
@@ -163,12 +163,9 @@ workflow:
                   {{SQL statement}}
                 tests:
                   - {{boolean expression}}
-     ...
-     ...
-     ...
 ```
 
-- **Example YAML for Standalone Assertions**
+<details><summary>Example YAML for Standalone Assertions</summary>
     
     The following YAML of the Flare Workflow demonstrates the definition of stand alone assertions. 
     
@@ -253,12 +250,12 @@ workflow:
                 - spark.memory.fraction: "0.1"
                 - spark.shuffle.memoryFraction: "0.2"
     ```
+</details>
+<aside class="callout">
+🗣 It should be noted that, since check and metric information is stored in separate locations, the corresponding metadata must be updated individually. As a result, two separate Toolbox Workflow runs must be executed, one for metrics and the other for checks.
+</aside>
     
-    <aside class="callout">
-    🗣 It should be noted that, since check and metric information is stored in separate locations, the corresponding metadata must be updated individually. As a result, two separate Toolbox Workflow runs must be executed, one for metrics and the other for checks.
-    </aside>
-    
-    <details>
+<details>
     <summary>Toolbox Workflow (for checks)</summary>        
     ```yaml
     version: v1
@@ -279,8 +276,10 @@ workflow:
             name: set_version
             value: latest
     ```
-    </details>    
-    <details><summary>Toolbox Workflow (for metrics)</summary>
+</details> 
+
+<details>
+<summary>Toolbox Workflow (for metrics)</summary>
     ```yaml
     version: v1
     name:  dataos-tool-metrics
@@ -300,13 +299,14 @@ workflow:
             name: set_version
             value: latest
     ```
-    </details>    
+</details>
+
 
 ### **Pre-Sink Assertions**
 
 Starting from Flare version 4.0, users can integrate assertions directly into their data transformation processes within the `outputs` section. Flare offers the capability to perform pre-sink checks or assertions on datasets enabling users to perform row-level checks before writing them to the destination. In this process, it initially verifies the assertion, and only if all the checks pass successfully, the data will be ingested.
 
-This empowers users to validate their data to avoid writing erroneous data to the target and also eliminates the requirement for standalone data quality jobs.<br> 
+This empowers users to validate their data to avoid writing erroneous data to the target and also eliminates the requirement for standalone data quality jobs.<br> <br>
 **Syntax for Pre-sink Assertions**
 
 ```yaml
@@ -348,7 +348,7 @@ workflow:
 
 ```
 
-- **Example YAML for Pre-Sink Assertions**
+<details><summary>Example YAML for Pre-Sink Assertions</summary>
     
     To utilize this functionality, pre-assertions can be established as shown in the following YAML syntax:
     
@@ -470,9 +470,12 @@ workflow:
                           - avg_zip_code > 3600
                           - max_zip_code < 36006
     ```
+
+</details>
+
 ### **Alert Mechanism for Handling Assertion Failures**
 When assertions fail, it results in the failure of the entire workflow, preventing data ingestion. DataOS features an alert system designed for this scenario. DataOS enables you to set up [**Workflow Alerts**](/dataos_alerts/#workflow-alerts), to notify stakeholders in case of workflow or job failures, significantly improving the Developer Experience (DevX). Each alert provides comprehensive information about workflow and job runs, including access to logs. This streamlined process greatly assists in the prompt identification and resolution of issues.
 
-### Case Scenario
+### **Case Scenario**
 
 To understand how assertions are used in different scenarios, refer to [Enhancing Data Integrity with Assertion Jobs](assertions_case_scenario.md)

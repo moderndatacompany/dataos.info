@@ -141,7 +141,7 @@ In this process, it initially evaluates the assertion, and only if all the check
 
 ## Handling Quality Check Failures
 
-**To address the question of what happens if the quality checks fail, the workflow example includes an assertion to check for missing values in the email column.**
+To address the question of what happens if the quality checks fail, the workflow example includes an assertion to check for missing values in the email column.
 
 The following example demonstrates this scenario. We will incorporate an assertion to check for missing values in the email column. 
 
