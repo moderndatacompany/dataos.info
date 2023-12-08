@@ -1,6 +1,6 @@
 # SQL Syntaxes
 
-This section describes the SQL syntax used in Trino. A reference to the supported SQL data types is available. Trino also provides numerous SQL functions and operators.
+This section describes the SQL syntax used in Minerva. A reference to the supported SQL data types is available. Minerva also provides numerous SQL functions and operators.
 
 [ALTER MATERIALIZED VIEW](./sql_syntaxes/alter_materialized_view.md)
 
