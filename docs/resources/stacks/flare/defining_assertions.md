@@ -472,3 +472,7 @@ workflow:
     ```
 ### **Alert Mechanism for Handling Assertion Failures**
 When assertions fail, it results in the failure of the entire workflow, preventing data ingestion. DataOS features an alert system designed for this scenario. DataOS enables you to set up [**Workflow Alerts**](/dataos_alerts/#workflow-alerts), to notify stakeholders in case of workflow or job failures, significantly improving the Developer Experience (DevX). Each alert provides comprehensive information about workflow and job runs, including access to logs. This streamlined process greatly assists in the prompt identification and resolution of issues.
+
+### Case Scenario
+
+To understand how assertions are used in different scenarios, refer to [Enhancing Data Integrity with Assertion Jobs](assertions_case_scenario.md)
