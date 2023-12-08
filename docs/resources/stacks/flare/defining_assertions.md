@@ -8,39 +8,41 @@ The quality job YAML contains an assertions section to define tests for data qua
 Broadly, there are three ways to apply checks to a column:
 
 1. **Using built-in functions that directly operate on a column's values**, such as average, minimum, maximum, and more.
-    **column:** It specifies the data column being examined and on which on which rule is to be defined
-    **filter:** It specifies the condition to narrow down the data.
-    **tests:** This section contains a series of tests that the data must pass, For example, if the average 'order_amount' is greater than 1000.00. You can use other aggregate functions as well.
-        - avg > 1000.00
-        - max < 1000: This test verifies that the maximum 'order_amount' is less than 1000.
+    <br>**column:** It specifies the data column being examined and on which on which rule is to be defined
+    <br>**filter:** It specifies the condition to narrow down the data.
+    <br>**tests:** This section contains a series of tests that the data must pass, For example, if the average 'order_amount' is greater than 1000.00. You can use other aggregate functions as well.
+    - avg > 1000.00
+    - max < 1000: This test verifies that the maximum 'order_amount' is less than 1000.
         
-        <aside class="callout">
+    <aside class="callout">
         🗣 To get the list of various quality metrics functions that can be used in defining boolean expressions for the tests, refer to [**`tests`**](/resources/stacks/flare/assertion_configuration/#quality-metrics-functions).
         
-        </aside>
+    </aside>
         
 2. **Employing built-in functions that work on the results of** **regular expressions** applied to a column's values, like checking for invalid percentages or counts.
-    **column:** It specifies the data column being examined and on which on which rule is to be defined
-    **validFormat:** This section has one attribute:
-        - **regex:** It defines a regular expression ('regex'), which the column values should conform to.
-    **tests:** It contains tests that the data must pass.
-        - invalid_count < 5
-        - invalid_percentage < 0.1
-        - regex_match > 10
+    <br>**column:** It specifies the data column being examined and on which on which rule is to be defined
+    <br>**validFormat:** This section has one attribute:
+    <br>**regex:** It defines a regular expression ('regex'), which the column values should conform to.
+    <br>**tests:** It contains tests that the data must pass.
+    - invalid_count < 5
+    - invalid_percentage < 0.1
+    - regex_match > 10
 3. **Creating custom quality rules using SQL-based assertions when you have complex testing criteria** that need custom logic and computed columns for evaluation. You can use SQL expressions to define your assertions.
-    **sql:** This attribute contains a SQL query that calculates the values to be compared.
-        
-        For example: SELECT
+    <br>**sql:** This attribute contains a SQL query that calculates the values to be compared.
+    For example:
+    ``` 
+            SELECT
               AVG(order_amount) AS avg_order_amount,
               MAX(order_amount) AS max_order_amount
               FROM source
               WHERE brand_name = 'Awkward Styles'
+    ```
         
-    **tests:**  This section lists tests based on the SQL query results. For example,
+    <br>**tests:**  This section lists tests based on the SQL query results. For example,
         - avg_order_amount > 1000: It checks if the calculated average 'order_amount' is greater than 1000.
         - max_order_amount < 1000: This test ensures that the calculated maximum 'order_amount' is less than 1000.
 
-### Example of Assertion YAML
+### **Example of Assertion YAML**
 
 In the snippet below, you'll find examples of all the available assertions.
 
@@ -478,4 +480,4 @@ When assertions fail, it results in the failure of the entire workflow, preventi
 
 ### **Case Scenario**
 
-To understand how assertions are used in different scenarios, refer to [Enhancing Data Integrity with Assertion Jobs](assertions_case_scenario.md)
+To understand how assertions are used in different scenarios, refer to [Enhancing Data Integrity with Assertion Jobs](assertions_case_scenario.md).
