@@ -1,4 +1,4 @@
-# Data Profiling Scanner
+# Scanner for Data Profiling
 
 Flare workflows are run for data profiling on the entire dataset or sample /filtered data and uses basic statistics to know about the validity of the data. This analysis is stored in Icebase.
 > To learn more about data profiling Flare workflows, click [here](/resources/stacks/flare/job_types/#data-profiling-job).
@@ -11,10 +11,9 @@ Data profile Scanner workflow reads about these statistics (metadata extraction 
 </aside>
 
 
+## Scanner Workflow YAML 
 
-## Scanner Workflow for Data Profiling Metadata
-
-The YAML configuration will connect to the Icebase depot and scan the data profile-related information.
+The given YAML will connect to the Icebase depot and scan the data profile-related information.
 
 ### **YAML Configuration**
 
