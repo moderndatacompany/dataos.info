@@ -1,4 +1,4 @@
-# Data Quality Checks Scanner
+# Scanner for Data Quality Checks
 
 Assertions are business-specific validation rules applied to test and evaluate the quality of specific datasets if they are appropriate for the intended purpose. DataOS allows you to define your own assertions with a combination of tests to check the rules. Flare workflows are run for data quality checks on the entire dataset or sample /filtered data. This analysis is stored in Icebase.
 
@@ -12,13 +12,11 @@ Data quality Scanner workflow reads about these quality checks for your data alo
 
 </aside>
 
-## Workflow for Quality Checks Scan
+## Scanner Workflow YAML for Quality Checks 
 
 The following YAML configuration will connect to the Icebase depot and scan the data quality checks-related information.
 
-### **YAML Configuration**
-
-Here is the complete YAML for scanning the schema of the datasets stored with Icebase depot. 
+### **YAML Configuration** 
 
 ```yaml
 version: v1
