@@ -1,8 +1,16 @@
+---
+hide:
+- navigation
+- toc
+---
 # Functions and Operators
 
+
+  [a](./functions_and_operators.md#a) &nbsp;&nbsp;   [b](./functions_and_operators.md#b) &nbsp;&nbsp;    [c](./functions_and_operators.md#c)  &nbsp;&nbsp;     [d](./functions_and_operators.md#d) &nbsp;&nbsp;    [e](./functions_and_operators.md#e) &nbsp;&nbsp;   [f](./functions_and_operators.md#f) &nbsp;&nbsp;    [g](./functions_and_operators.md#g)  &nbsp;&nbsp;   [h](./functions_and_operators.md#h) &nbsp;&nbsp;    [i](./functions_and_operators.md#i) &nbsp;&nbsp;     [j](./functions_and_operators.md#j) &nbsp;&nbsp;    [k](./functions_and_operators.md#k) &nbsp;&nbsp;     [l](./functions_and_operators.md#l) &nbsp;&nbsp;     [m](./functions_and_operators.md#m) &nbsp;&nbsp;     [n](./functions_and_operators.md#n) &nbsp;&nbsp;    [o](./functions_and_operators.md#o) &nbsp;&nbsp;    [p](./functions_and_operators.md#p) &nbsp;&nbsp;     [q](./functions_and_operators.md#q) &nbsp;&nbsp;     [r](./functions_and_operators.md#r) &nbsp;&nbsp;     [s](./functions_and_operators.md#s) &nbsp;&nbsp;    [t](./functions_and_operators.md#t) &nbsp;&nbsp;     [u](./functions_and_operators.md#u) &nbsp;&nbsp; [v](./functions_and_operators.md#v) &nbsp;&nbsp;   [w](./functions_and_operators.md#w) &nbsp;&nbsp; [x](./functions_and_operators.md#x) &nbsp;&nbsp;   [y](./functions_and_operators.md#y) &nbsp;&nbsp; [z](./functions_and_operators.md#z) &nbsp;&nbsp;   
+
+## a
 | Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
 | --- | --- | --- | --- | --- | --- | --- |
-| A |  |  |  | 0 |  |  |
 | abs | bigint | bigint | scalar | 1 | Absolute value |  |
 | abs | decimal(p,s) | decimal(p,s) | scalar | 1 | Absolute value |  |
 | abs | double | double | scalar | 1 | Absolute value |  |
@@ -64,7 +72,9 @@
 | avg | interval day to second | interval day to second | aggregate | 1 |  |  |
 | avg | interval year to month | interval year to month | aggregate | 1 |  |  |
 | avg | real | real | aggregate | 1 | Returns the average value of the argument |  |
-| B |  |  |  | 0 |  |  |
+## b
+| Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
+| --- | --- | --- | --- | --- | --- | --- |
 | bar | varchar | double, bigint | scalar | 1 |  |  |
 | bar | varchar | double, bigint, color, color | scalar | 1 |  |  |
 | beta_cdf | double | double, double, double | scalar | 1 | Beta cdf given the a, b parameters and value |  |
@@ -99,7 +109,10 @@
 | bitwise_xor | bigint | bigint, bigint | scalar | 1 | Bitwise XOR in 2’s complement arithmetic |  |
 | bool_and | boolean | boolean | aggregate | 1 |  |  |
 | bool_or | boolean | boolean | aggregate | 1 |  |  |
-| C |  |  |  | 0 |  |  |
+
+## c
+| Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
+| --- | --- | --- | --- | --- | --- | --- |
 | cardinality | bigint | array(e) | scalar | 1 | Returns the cardinality (length) of the array |  |
 | cardinality | bigint | hyperloglog | scalar | 1 | Compute the cardinality of a HyperLogLog instance |  |
 | cardinality | bigint | map(k,v) | scalar | 1 | Returns the cardinality (the number of key-value pairs) of the map |  |
@@ -158,7 +171,9 @@
 | current_date | date |  | scalar | 1 | Current date |  |
 | current_groups | array(varchar) |  | scalar | 1 | Current groups of current user |  |
 | current_timezone | varchar |  | scalar | 1 | Current time zone |  |
-| D |  |  |  | 0 |  |  |
+## d
+| Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
+| --- | --- | --- | --- | --- | --- | --- |
 | date | date | timestamp(p) | scalar | 1 |  |  |
 | date | date | timestamp(p) with time zone | scalar | 1 |  |  |
 | date | date | varchar(x) | scalar | 1 |  |  |
@@ -212,7 +227,10 @@
 | doy | bigint | date | scalar | 1 | Day of the year of the given date |  |
 | doy | bigint | timestamp(p) | scalar | 1 | Day of the year of the given timestamp |  |
 | doy | bigint | timestamp(p) with time zone | scalar | 1 | Day of the year of the given timestamp |  |
-| E |  |  |  | 0 |  |  |
+
+## e
+| Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
+| --- | --- | --- | --- | --- | --- | --- |
 | e | double |  | scalar | 1 | Euler’s number |  |
 | element_at | V | map(K,V), K | scalar | 1 | Get value for the given key, or null if it does not exist |  |
 | element_at | e | array(e), bigint | scalar | 1 | Get element of array at given index |  |
@@ -221,7 +239,10 @@
 | evaluate_classifier_predictions | varchar | varchar(x), varchar(y) | aggregate | 1 |  |  |
 | every | boolean | boolean | aggregate | 1 |  |  |
 | exp | double | double | scalar | 1 | Euler’s number raised to the given power |  |
-| F |  |  |  | 0 |  |  |
+
+## f
+| Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
+| --- | --- | --- | --- | --- | --- | --- |
 | features | map(bigint,double) | double | scalar | 1 |  |  |
 | features | map(bigint,double) | double, double | scalar | 1 |  |  |
 | features | map(bigint,double) | double, double, double | scalar | 1 |  |  |
@@ -277,7 +298,10 @@
 | from_utf8 | varchar | varbinary | scalar | 1 | Decodes the UTF-8 encoded string |  |
 | from_utf8 | varchar | varbinary, bigint | scalar | 1 | Decodes the UTF-8 encoded string |  |
 | from_utf8 | varchar | varbinary, varchar(x) | scalar | 1 | Decodes the UTF-8 encoded string |  |
-| G |  |  |  | 0 |  |  |
+
+## g
+| Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
+| --- | --- | --- | --- | --- | --- | --- |
 | geometric_mean | double | bigint | aggregate | 1 |  |  |
 | geometric_mean | double | double | aggregate | 1 |  |  |
 | geometric_mean | real | real | aggregate | 1 |  |  |
@@ -289,7 +313,10 @@
 | geometry_union_agg | geometry | geometry | aggregate | 1 | Returns a geometry that represents the point set union of the input geometries. |  |
 | great_circle_distance | double | double, double, double, double | scalar | 1 | Calculates the great-circle distance between two points on the Earth’s surface in kilometers |  |
 | greatest | E | E | scalar | 1 | Get the largest of the given values |  |
-| H |  |  |  | 0 |  |  |
+
+## h
+| Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
+| --- | --- | --- | --- | --- | --- | --- |
 | hamming_distance | bigint | varchar(x), varchar(y) | scalar | 1 | Computes Hamming distance between two strings |  |
 | hash_counts | map(bigint,smallint) | setdigest | scalar | 1 |  |  |
 | hex | varchar | bigint | scalar | 1 | Converts integer number to hex value |  |
@@ -307,7 +334,10 @@
 | hour | bigint | timestamp(p) with time zone | scalar | 1 | Hour of the day of the given timestamp |  |
 | hour | bigint | varchar | scalar | 1 | day of the year of the given string timestamp |  |
 | human_readable_seconds | varchar | double | scalar | 1 |  |  |
-| I |  |  |  | 0 |  |  |
+
+## i
+| Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
+| --- | --- | --- | --- | --- | --- | --- |
 | index | bigint | varchar, varchar | scalar | 1 | Returns index of first occurrence of a substring (or 0 if not found) |  |
 | infinity | double |  | scalar | 1 | Infinity |  |
 | instr | bigint | varchar, varchar | scalar | 1 | returns index of first occurrence of a substring (or 0 if not found) in string |  |
@@ -319,7 +349,10 @@
 | is_json_scalar | boolean | json | scalar | 1 |  |  |
 | is_json_scalar | boolean | varchar(x) | scalar | 1 |  |  |
 | is_nan | boolean | double | scalar | 1 | Test if value is not-a-number |  |
-| J |  |  |  | 0 |  |  |
+
+## j
+| Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
+| --- | --- | --- | --- | --- | --- | --- |
 | jaccard_index | double | setdigest, setdigest | scalar | 1 |  |  |
 | json_array_contains | boolean | json, bigint | scalar | 1 |  |  |
 | json_array_contains | boolean | json, boolean | scalar | 1 |  |  |
@@ -341,10 +374,16 @@
 | json_parse | json | varchar(x) | scalar | 1 |  |  |
 | json_size | bigint | json, jsonpath | scalar | 1 |  |  |
 | json_size | bigint | varchar(x), jsonpath | scalar | 1 |  |  |
-| K |  |  |  | 0 |  |  |
+
+## k
+| Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
+| --- | --- | --- | --- | --- | --- | --- |
 | kurtosis | double | bigint | aggregate | 1 | Returns the (excess) kurtosis of the argument |  |
 | kurtosis | double | double | aggregate | 1 | Returns the (excess) kurtosis of the argument |  |
-| L |  |  |  | 0 |  |  |
+
+## l
+| Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
+| --- | --- | --- | --- | --- | --- | --- |
 | lag | t | t | window | 1 |  |  |
 | lag | t | t, bigint | window | 1 |  |  |
 | lag | t | t, bigint, t | window | 1 |  |  |
@@ -389,7 +428,10 @@
 | ltrim | varchar(x) | varchar(x) | scalar | 1 | Removes whitespace from the beginning of a string |  |
 | ltrim | varchar(x) | varchar(x), codepoints | scalar | 1 | Remove the longest string containing only given characters from the beginning of a string |  |
 | luhn_check | boolean | varchar | scalar | 1 | Checks that a string of digits is valid according to the Luhn algorithm |  |
-| M |  |  |  | 0 |  |  |
+
+## m
+| Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
+| --- | --- | --- | --- | --- | --- | --- |
 | make_set_digest | setdigest | t | aggregate | 1 |  |  |
 | map | map(K,V) | array(K), array(V) | scalar | 1 | Constructs a map from the given key/value arrays |  |
 | map | map(unknown,unknown) |  | scalar | 1 | Creates an empty map |  |
@@ -442,7 +484,10 @@
 | multimap_agg | map(K,array(V)) | K, V | aggregate | 1 | Aggregates all the rows (key/value pairs) into a single multimap |  |
 | multimap_from_entries | map(k,array(v)) | array(row(k,v)) | scalar | 1 | Construct a multimap from an array of entries |  |
 | murmur3 | varbinary | varbinary | scalar | 1 | Compute murmur3 hash |  |
-| N |  |  |  | 0 |  |  |
+
+## n
+| Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
+| --- | --- | --- | --- | --- | --- | --- |
 | nan | double |  | scalar | 1 | Constant representing not-a-number |  |
 | ngrams | array(array(t)) | array(t), integer | scalar | 1 | Return N-grams for the input |  |
 | none_match | boolean | array(t), function(t,boolean) | scalar | 1 | Returns true if all elements of the array don’t match the given predicate |  |
@@ -456,11 +501,17 @@
 | numeric_histogram | map(real,real) | bigint, real | aggregate | 1 |  |  |
 | numeric_histogram | map(real,real) | bigint, real, double | aggregate | 1 |  |  |
 | nvl | t | t, t | scalar | 1 | Return default value if the value is NULL else return value |  |
-| O |  |  |  | 0 |  |  |
+
+## o
+| Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
+| --- | --- | --- | --- | --- | --- | --- |
 | objectid | objectid |  | scalar | 1 | Mongodb ObjectId |  |
 | objectid | objectid | varchar | scalar | 1 | Mongodb ObjectId from the given string |  |
 | objectid_timestamp | timestamp(3) with time zone | objectid | scalar | 1 | Timestamp from the given Mongodb ObjectId |  |
-| P |  |  |  | 0 |  |  |
+
+## p
+| Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
+| --- | --- | --- | --- | --- | --- | --- |
 | parse_data_size | decimal(38,0) | varchar(x) | scalar | 1 | Converts data size string to bytes |  |
 | parse_datetime | timestamp(3) with time zone | varchar(x), varchar(y) | scalar | 1 | Parses the specified date/time by the given format |  |
 | parse_duration | interval day to second | varchar(x) | scalar | 1 | Convert duration string to an interval |  |
@@ -471,14 +522,20 @@
 | pmod | double | double, double | scalar | 1 | Returns the positive value of a mod b |  |
 | pow | double | double, double | scalar | 1 | Value raised to the power of exponent |  |
 | power | double | double, double | scalar | 1 | Value raised to the power of exponent |  |
-| Q |  |  |  | 0 |  |  |
+
+## q
+| Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
+| --- | --- | --- | --- | --- | --- | --- |
 | qdigest_agg | qdigest(V) | V | aggregate | 1 | Returns a qdigest from the set of reals, bigints or doubles |  |
 | qdigest_agg | qdigest(V) | V, bigint | aggregate | 1 | Returns a qdigest from the set of reals, bigints or doubles |  |
 | qdigest_agg | qdigest(V) | V, bigint, double | aggregate | 1 | Returns a qdigest from the set of reals, bigints or doubles |  |
 | quarter | bigint | date | scalar | 1 | Quarter of the year of the given date |  |
 | quarter | bigint | timestamp(p) | scalar | 1 | Quarter of the year of the given timestamp |  |
 | quarter | bigint | timestamp(p) with time zone | scalar | 1 | Quarter of the year of the given timestamp |  |
-| R |  |  |  | 0 |  |  |
+
+## r
+| Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
+| --- | --- | --- | --- | --- | --- | --- |
 | radians | double | double | scalar | 1 | Converts an angle in degrees to radians |  |
 | rand | bigint | bigint | scalar | 0 | A pseudo-random number between 0 and value (exclusive) |  |
 | rand | bigint | bigint, bigint | scalar | 0 | A pseudo-random number between start and stop (exclusive) |  |
@@ -568,7 +625,10 @@
 | rtrim | char(x) | char(x), codepoints | scalar | 1 | Remove the longest string containing only given characters from the end of a string |  |
 | rtrim | varchar(x) | varchar(x) | scalar | 1 | Removes whitespace from the end of a string |  |
 | rtrim | varchar(x) | varchar(x), codepoints | scalar | 1 | Remove the longest string containing only given characters from the end of a string |  |
-| S |  |  |  | 0 |  |  |
+
+## s
+| Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
+| --- | --- | --- | --- | --- | --- | --- |
 | second | bigint | interval day to second | scalar | 1 | Second of the minute of the given interval |  |
 | second | bigint | time(p) | scalar | 1 | Second of the minute of the given time |  |
 | second | bigint | time(p) with time zone | scalar | 1 | Second of the minute of the given time |  |
@@ -696,7 +756,10 @@
 | sum | interval day to second | interval day to second | aggregate | 1 |  |  |
 | sum | interval year to month | interval year to month | aggregate | 1 |  |  |
 | sum | real | real | aggregate | 1 |  |  |
-| T |  |  |  | 0 |  |  |
+
+## t
+| Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
+| --- | --- | --- | --- | --- | --- | --- |
 | tan | double | double | scalar | 1 | Tangent |  |
 | tanh | double | double | scalar | 1 | Hyperbolic tangent |  |
 | tdigest_agg | tdigest | double | aggregate | 1 |  |  |
@@ -745,7 +808,10 @@
 | truncate | double | double | scalar | 1 | Round to integer by dropping digits after decimal point |  |
 | truncate | real | real | scalar | 1 | Round to integer by dropping digits after decimal point |  |
 | typeof | varchar | t | scalar | 1 | Textual representation of expression type |  |
-| U |  |  |  | 0 |  |  |
+
+## u
+| Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
+| --- | --- | --- | --- | --- | --- | --- |
 | unhex | varbinary | varchar | scalar | 1 | Converts Hexadecimal number to binary value |  |
 | unix_timestamp | bigint |  | scalar | 1 | Gets current UNIX timestamp in seconds |  |
 | upper | char(x) | char(x) | scalar | 1 | Converts the string to upper case |  |
@@ -760,7 +826,10 @@
 | url_extract_protocol | varchar(x) | varchar(x) | scalar | 1 | Extract protocol from url |  |
 | url_extract_query | varchar(x) | varchar(x) | scalar | 1 | Extract query from url |  |
 | uuid | uuid |  | scalar | 0 | Generates a random UUID |  |
-| V |  |  |  | 0 |  |  |
+
+## v
+| Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
+| --- | --- | --- | --- | --- | --- | --- |
 | value_at_quantile | bigint | qdigest(bigint), double | scalar | 1 | Given an input q between [0, 1], find the value whose rank in the sorted sequence of the n values represented by the qdigest is qn. |  |
 | value_at_quantile | double | qdigest(double), double | scalar | 1 | Given an input q between [0, 1], find the value whose rank in the sorted sequence of the n values represented by the qdigest is qn. |  |
 | value_at_quantile | double | tdigest, double | scalar | 1 | Given an input q between [0, 1], find the value whose rank in the sorted sequence of the n values represented by the tdigest is qn. |  |
@@ -775,7 +844,10 @@
 | var_samp | double | double | aggregate | 1 | Returns the sample variance of the argument |  |
 | variance | double | bigint | aggregate | 1 | Returns the sample variance of the argument |  |
 | variance | double | double | aggregate | 1 | Returns the sample variance of the argument |  |
-| W |  |  |  | 0 |  |  |
+
+## w
+| Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
+| --- | --- | --- | --- | --- | --- | --- |
 | week | bigint | date | scalar | 1 | Week of the year of the given date |  |
 | week | bigint | timestamp(p) | scalar | 1 | Week of the year of the given timestamp |  |
 | week | bigint | timestamp(p) with time zone | scalar | 1 | Week of the year of the given timestamp |  |
@@ -792,9 +864,15 @@
 | with_timezone | timestamp(p) with time zone | timestamp(p), varchar(x) | scalar | 1 |  |  |
 | word_stem | varchar(x) | varchar(x) | scalar | 1 | Returns the stem of a word in the English language |  |
 | word_stem | varchar(x) | varchar(x), varchar(2) | scalar | 1 | Returns the stem of a word in the given language |  |
-| X |  |  |  | 0 |  |  |
+
+## x
+| Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
+| --- | --- | --- | --- | --- | --- | --- |
 | xxhash64 | varbinary | varbinary | scalar | 1 | Compute xxhash64 hash |  |
-| Y |  |  |  | 0 |  |  |
+
+## y
+| Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
+| --- | --- | --- | --- | --- | --- | --- |
 | year | bigint | date | scalar | 1 | Year of the given date |  |
 | year | bigint | interval year to month | scalar | 1 | Year of the given interval |  |
 | year | bigint | timestamp(p) | scalar | 1 | Year of the given timestamp |  |
@@ -806,7 +884,10 @@
 | yow | bigint | date | scalar | 1 | Year of the ISO week of the given date |  |
 | yow | bigint | timestamp(p) | scalar | 1 | Year of the ISO week of the given timestamp |  |
 | yow | bigint | timestamp(p) with time zone | scalar | 1 | Year of the ISO week of the given timestamp |  |
-| Z |  |  |  | 0 |  |  |
+
+## z
+| Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
+| --- | --- | --- | --- | --- | --- | --- |
 | zip | array(row(T1,T2)) | array(T1), array(T2) | scalar | 1 | Merges the given arrays, element-wise, into a single array of rows. |  |
 | zip | array(row(T1,T2,T3)) | array(T1), array(T2), array(T3) | scalar | 1 | Merges the given arrays, element-wise, into a single array of rows. |  |
 | zip | array(row(T1,T2,T3,T4)) | array(T1), array(T2), array(T3), array(T4) | scalar | 1 | Merges the given arrays, element-wise, into a single array of rows. |  |
