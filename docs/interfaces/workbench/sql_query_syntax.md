@@ -2,7 +2,7 @@
 
 This section describes the SQL syntax used in Minerva. A reference to the supported SQL data types is available. Minerva also provides numerous SQL functions and operators.
 
-[ALTER MATERIALIZED VIEW](./sql_syntaxes/alter_materialized_view.md)
+<!--[ALTER MATERIALIZED VIEW](./sql_syntaxes/alter_materialized_view.md) -->
 
 [ALTER SCHEMA](./sql_syntaxes/alter_schema.md)
 
@@ -18,7 +18,7 @@ This section describes the SQL syntax used in Minerva. A reference to the suppo
 
 [COMMIT](./sql_syntaxes/commit.md)
 
-[CREATE MATERIALIZED VIEW](./sql_syntaxes/create_materialized_view.md)
+<!--[CREATE MATERIALIZED VIEW](./sql_syntaxes/create_materialized_view.md) -->
 
 [CREATE ROLE](./sql_syntaxes/create_role.md)
 
@@ -42,7 +42,7 @@ This section describes the SQL syntax used in Minerva. A reference to the suppo
 
 [DESCRIBE OUTPUT](./sql_syntaxes/describe_output.md)
 
-[DROP MATERIALIZED VIEW](./sql_syntaxes/drop_materialized_view.md)
+<!--[DROP MATERIALIZED VIEW](./sql_syntaxes/drop_materialized_view.md) -->
 
 [DROP ROLE](./sql_syntaxes/drop_role.md)
 
@@ -74,7 +74,7 @@ This section describes the SQL syntax used in Minerva. A reference to the suppo
 
 [PREPARE](./sql_syntaxes/prepare.md)
 
-[REFRESH MATERIALIZED VIEW](./sql_syntaxes/refresh_materialized_view.md)
+<!--[REFRESH MATERIALIZED VIEW](./sql_syntaxes/refresh_materialized_view.md) -->
 
 [RESET SESSION](./sql_syntaxes/reset_session.md)
 
@@ -98,7 +98,7 @@ This section describes the SQL syntax used in Minerva. A reference to the suppo
 
 [SHOW COLUMNS](./sql_syntaxes/show_columns.md)
 
-[SHOW CREATE MATERIALIZED VIEW](./sql_syntaxes/show_create_materialized_view.md)
+<!--[SHOW CREATE MATERIALIZED VIEW](./sql_syntaxes/show_create_materialized_view.md) -->
 
 [SHOW CREATE SCHEMA](./sql_syntaxes/show_create_schema.md)
 
