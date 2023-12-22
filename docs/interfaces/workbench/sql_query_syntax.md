@@ -28,7 +28,7 @@ This section describes the SQL syntax used in Minerva. A reference to the suppo
 
 [CREATE TABLE AS](./sql_syntaxes/create_table_as.md)
 
-[CREATE VIEW](./sql_syntaxes/create_view.md)
+<!--[CREATE VIEW](./sql_syntaxes/create_view.md) -->
 
 [DEALLOCATE PREPARE](./sql_syntaxes/deallocate_prepare.md)
 
