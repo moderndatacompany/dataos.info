@@ -34,7 +34,7 @@ This section describes the SQL syntax used in Minerva. A reference to the suppo
 
 [DELETE](./sql_syntaxes/delete.md)
 
-[DENY](./sql_syntaxes/deny.md)
+<!--[DENY](./sql_syntaxes/deny.md)-->
 
 [DESCRIBE](./sql_syntaxes/describe.md)
 
@@ -60,11 +60,11 @@ This section describes the SQL syntax used in Minerva. A reference to the suppo
 
 [EXPLAIN ANALYZE](./sql_syntaxes/explain_analyze.md)
 
-[GRANT](./sql_syntaxes/grant.md)
+<!--[GRANT](./sql_syntaxes/grant.md)-->
 
-[GRANT ROLES](./sql_syntaxes/grant_roles.md)
+<!--[GRANT ROLES](./sql_syntaxes/grant_roles.md)-->
 
-[INSERT](./sql_syntaxes/insert.md)
+<!--[INSERT](./sql_syntaxes/insert.md)-->
 
 [MATCH_RECOGNIZE](./sql_syntaxes/match_recognize.md)
 
@@ -78,9 +78,9 @@ This section describes the SQL syntax used in Minerva. A reference to the suppo
 
 [RESET SESSION](./sql_syntaxes/reset_session.md)
 
-[REVOKE](./sql_syntaxes/revoke.md)
+<!--[REVOKE](./sql_syntaxes/revoke.md)-->
 
-[REVOKE ROLES](./sql_syntaxes/revoke_roles.md)
+<!--[REVOKE ROLES](./sql_syntaxes/revoke_roles.md)-->
 
 [ROLLBACK](./sql_syntaxes/rollback.md)
 
