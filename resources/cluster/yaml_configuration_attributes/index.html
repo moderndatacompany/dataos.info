@@ -1,0 +1,4175 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>Attributes of Cluster-specific Section - All things DataOS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Custom admonition icons -->
+
+
+<!-- Custom tag icons -->
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-ZH4G0HKBQC"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-ZH4G0HKBQC",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-ZH4G0HKBQC",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="blue-grey">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#attributes-of-cluster-specific-section" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine base classes -->
+
+
+
+<!-- Header -->
+<header class="md-header" data-md-component="header">
+  <nav
+    class="md-header__inner md-grid"
+    aria-label="Header"
+  >
+
+    <!-- Link to home -->
+    <a
+      href="../../.."
+      title="All things DataOS"
+      class="md-header__button md-logo"
+      aria-label="All things DataOS"
+      data-md-component="logo"
+    >
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Logo -->
+
+  <img src="../../../assets/light-modern-logo.png" alt="logo" />
+
+    </a>
+
+    <!-- Button to open drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            All things DataOS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Attributes of Cluster-specific Section
+            
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color palette -->
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input
+            class="md-option"
+            data-md-color-media=""
+            data-md-color-scheme="default"
+            data-md-color-primary="blue-grey"
+            data-md-color-accent="blue-grey"
+            
+              aria-label="Switch to dark mode"
+            
+            type="radio"
+            name="__palette"
+            id="__palette_1"
+          />
+          
+            <label
+              class="md-header__button md-icon"
+              title="Switch to dark mode"
+              for="__palette_2"
+              hidden
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          <input
+            class="md-option"
+            data-md-color-media=""
+            data-md-color-scheme="slate"
+            data-md-color-primary="grey"
+            data-md-color-accent="grey"
+            
+              aria-label="Switch to light mode"
+            
+            type="radio"
+            name="__palette"
+            id="__palette_2"
+          />
+          
+            <label
+              class="md-header__button md-icon"
+              title="Switch to light mode"
+              for="__palette_1"
+              hidden
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+
+    <!-- Site language selector -->
+    
+
+    <!-- Button to open search modal -->
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+
+      <!-- Search interface -->
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Search interface -->
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+
+      <!-- Search input -->
+      <input
+        type="text"
+        class="md-search__input"
+        name="query"
+        aria-label="Search"
+        placeholder="Search"
+        autocapitalize="off"
+        autocorrect="off"
+        autocomplete="off"
+        spellcheck="false"
+        data-md-component="search-query"
+        required
+      />
+
+      <!-- Button to open search -->
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+
+      <!-- Search options -->
+      <nav
+        class="md-search__options"
+        aria-label="Search"
+      >
+
+        <!-- Button to share search -->
+        
+
+        <!-- Button to reset search -->
+        <button
+          type="reset"
+          class="md-search__icon md-icon"
+          title="Clear"
+          aria-label="Clear"
+          tabindex="-1"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+
+      <!-- Search suggestions -->
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+
+        <!-- Search results -->
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    <!-- Repository information -->
+    
+  </nav>
+
+  <!-- Navigation tabs (sticky) -->
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Hack: unset variable, as we're using it recursively in tabs-item.html -->
+
+
+<!-- Navigation tabs -->
+<nav
+  class="md-tabs"
+  aria-label="Tabs"
+  data-md-component="tabs"
+>
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  
+  
+
+  <!-- Recurse, if the first item has further nested items -->
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link">
+        Resources
+      </a>
+    </li>
+  
+
+<!-- Main navigation item -->
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  
+  
+
+  <!-- Recurse, if the first item has further nested items -->
+  
+    <li class="md-tabs__item">
+      <a href="../../../interfaces/" class="md-tabs__link">
+        Interfaces
+      </a>
+    </li>
+  
+
+<!-- Main navigation item -->
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../../architecture/" class="md-tabs__link">
+      Architecture
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../../glossary/" class="md-tabs__link">
+      Glossary
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../../videos/" class="md-tabs__link">
+      Videos
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to configuration -->
+
+
+  
+
+
+
+<!-- Main navigation -->
+<nav
+  class="md-nav md-nav--primary md-nav--lifted"
+  aria-label="Navigation"
+  data-md-level="0"
+>
+
+  <!-- Site title -->
+  <label class="md-nav__title" for="__drawer">
+    <a
+      href="../../.."
+      title="All things DataOS"
+      class="md-nav__button md-logo"
+      aria-label="All things DataOS"
+      data-md-component="logo"
+    >
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Logo -->
+
+  <img src="../../../assets/light-modern-logo.png" alt="logo" />
+
+    </a>
+    All things DataOS
+  </label>
+
+  <!-- Repository information -->
+  
+
+  <!-- Render item list -->
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+        
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle md-toggle--indeterminate"
+        type="checkbox"
+        id="__nav_2"
+        
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_2"
+          id="__nav_2_label"
+          tabindex="0"
+        >
+          Resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="1"
+        aria-labelledby="__nav_2_label"
+        aria-expanded="false"
+      >
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Cluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../compute/" class="md-nav__link">
+        Compute
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../depot/" class="md-nav__link">
+        Depot
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../policy/" class="md-nav__link">
+        Policy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../secret/" class="md-nav__link">
+        Secret
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../service/" class="md-nav__link">
+        Service
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../workflow/" class="md-nav__link">
+        Workflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+      
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+        
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle md-toggle--indeterminate"
+        type="checkbox"
+        id="__nav_2_9"
+        
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_2_9"
+          id="__nav_2_9_label"
+          tabindex="0"
+        >
+          Stacks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="2"
+        aria-labelledby="__nav_2_9_label"
+        aria-expanded="false"
+      >
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Stacks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/alpha/" class="md-nav__link">
+        Alpha
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/beacon/" class="md-nav__link">
+        Beacon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/benthos/" class="md-nav__link">
+        Benthos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/data_toolbox/" class="md-nav__link">
+        Data Toolbox
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/flare/" class="md-nav__link">
+        Flare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/scanner/" class="md-nav__link">
+        Scanner
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+        
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle md-toggle--indeterminate"
+        type="checkbox"
+        id="__nav_3"
+        
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_3"
+          id="__nav_3_label"
+          tabindex="0"
+        >
+          Interfaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="1"
+        aria-labelledby="__nav_3_label"
+        aria-expanded="false"
+      >
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Interfaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/atlas/" class="md-nav__link">
+        Atlas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/audiences/" class="md-nav__link">
+        Audiences
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/bifrost/" class="md-nav__link">
+        Bifrost
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/cli/" class="md-nav__link">
+        CLI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/lens/" class="md-nav__link">
+        Lens
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/metis/" class="md-nav__link">
+        Metis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/notebook/" class="md-nav__link">
+        Notebook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/operations/" class="md-nav__link">
+        Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/workbench/" class="md-nav__link">
+        Workbench
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        Glossary
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../videos/" class="md-nav__link">
+        Videos
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#structure-of-cluster-specific-section" class="md-nav__link">
+    Structure of Cluster-specific Section
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-attributes" class="md-nav__link">
+    Configuration Attributes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cluster" class="md-nav__link">
+    cluster
+  </a>
+  
+    <nav class="md-nav" aria-label="cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#compute" class="md-nav__link">
+    compute
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runasapikey" class="md-nav__link">
+    runAsApiKey
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runasuser" class="md-nav__link">
+    runAsUser
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maintenance" class="md-nav__link">
+    maintenance
+  </a>
+  
+    <nav class="md-nav" aria-label="maintenance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#restartcron" class="md-nav__link">
+    restartCron
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timezone" class="md-nav__link">
+    timezone
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scalingcrons" class="md-nav__link">
+    scalingCrons
+  </a>
+  
+    <nav class="md-nav" aria-label="scalingCrons">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cron" class="md-nav__link">
+    cron
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replicas" class="md-nav__link">
+    replicas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    resources
+  </a>
+  
+    <nav class="md-nav" aria-label="resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#limits" class="md-nav__link">
+    limits
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requests" class="md-nav__link">
+    requests
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minerva" class="md-nav__link">
+    minerva
+  </a>
+  
+    <nav class="md-nav" aria-label="minerva">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#replicas_1" class="md-nav__link">
+    replicas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secrets" class="md-nav__link">
+    secrets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#depots" class="md-nav__link">
+    depots
+  </a>
+  
+    <nav class="md-nav" aria-label="depots">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#address" class="md-nav__link">
+    address
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secrets_1" class="md-nav__link">
+    secrets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#catalogs" class="md-nav__link">
+    catalogs
+  </a>
+  
+    <nav class="md-nav" aria-label="catalogs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#name" class="md-nav__link">
+    name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type" class="md-nav__link">
+    type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#properties_1" class="md-nav__link">
+    properties
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug" class="md-nav__link">
+    debug
+  </a>
+  
+    <nav class="md-nav" aria-label="debug">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loglevel" class="md-nav__link">
+    logLevel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trinologlevel" class="md-nav__link">
+    trinoLogLevel
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coordinatorenvs" class="md-nav__link">
+    coordinatorEnvs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workerenvs" class="md-nav__link">
+    workerEnvs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overridedefaultenvs" class="md-nav__link">
+    overrideDefaultEnvs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spillovervolume" class="md-nav__link">
+    spillOverVolume
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selector" class="md-nav__link">
+    selector
+  </a>
+  
+    <nav class="md-nav" aria-label="selector">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#users" class="md-nav__link">
+    users
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tags" class="md-nav__link">
+    tags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sources" class="md-nav__link">
+    sources
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#match" class="md-nav__link">
+    match
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#priority" class="md-nav__link">
+    priority
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nats" class="md-nav__link">
+    nats
+  </a>
+  
+    <nav class="md-nav" aria-label="nats">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#replicas_2" class="md-nav__link">
+    replicas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volumetype" class="md-nav__link">
+    volumeType
+  </a>
+  
+    <nav class="md-nav" aria-label="volumeType">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volumesize" class="md-nav__link">
+    volumeSize
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maxconnections" class="md-nav__link">
+    maxConnections
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#roles" class="md-nav__link">
+    roles
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jupyterhub" class="md-nav__link">
+    jupyterHub
+  </a>
+  
+    <nav class="md-nav" aria-label="jupyterHub">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ingress" class="md-nav__link">
+    ingress
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oidcconfig" class="md-nav__link">
+    oidcConfig
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storageclass" class="md-nav__link">
+    storageClass
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#singleuserconfig" class="md-nav__link">
+    singleUserConfig
+  </a>
+  
+    <nav class="md-nav" aria-label="singleUserConfig">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volumecapacity" class="md-nav__link">
+    volumeCapacity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Tags -->
+
+
+<!-- Actions -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Actions -->
+
+
+<!--
+  Hack: check whether the content contains a h1 headline. If it doesn't, the
+  page title (or respectively site name) is used as the main headline.
+-->
+
+
+<!-- Page content -->
+<h1 id="attributes-of-cluster-specific-section">Attributes of Cluster-specific Section<a class="headerlink" href="#attributes-of-cluster-specific-section" title="Permanent link">&para;</a></h1>
+<h2 id="structure-of-cluster-specific-section">Structure of Cluster-specific Section<a class="headerlink" href="#structure-of-cluster-specific-section" title="Permanent link">&para;</a></h2>
+<p><div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">compute</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">query-default</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">  </span><span class="nt">runAsApiKey</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">abcdefghijklmnopqrstuvwxyz</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">  </span><span class="nt">runaAsUser</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">minerva-cluster</span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="nt">maintenance</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">restartCron</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="s">&#39;13</span><span class="nv"> </span><span class="s">1</span><span class="nv"> </span><span class="s">*/2</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&#39;</span><span class="p p-Indicator">}}</span>
+<span class="w">    </span><span class="nt">timezone</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">Asia/Kolkata</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">    </span><span class="nt">scalingCrons</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="s">&#39;5/10</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&#39;</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">        </span><span class="nt">timezone</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">Europe/Berlin</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">        </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">2</span><span class="p p-Indicator">}}</span>
+<span class="w">        </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span>
+<span class="w">          </span><span class="nt">requests</span><span class="p">:</span><span class="w"> </span>
+<span class="w">            </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">800m</span><span class="p p-Indicator">}}</span>
+<span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">1Gi</span><span class="p p-Indicator">}}</span>
+<span class="w">          </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span>
+<span class="w">            </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">1000m</span><span class="p p-Indicator">}}</span>
+<span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">2Gi</span><span class="p p-Indicator">}}</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">minerva</span><span class="p">:</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">2</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">secrets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">mysecret</span><span class="p p-Indicator">}}</span>
+<span class="w">    </span><span class="nt">depots</span><span class="p">:</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">dataos</span><span class="p p-Indicator">:</span><span class="nv">//icebase</span><span class="p p-Indicator">:</span><span class="nv">default</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">        </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">iceberg.file-format</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">PARQUET</span><span class="p p-Indicator">}}</span><span class="w"> </span>
+<span class="w">          </span><span class="nt">iceberg.compression-codec</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">GZIP</span><span class="p p-Indicator">}}</span><span class="w"> </span>
+<span class="w">          </span><span class="nt">hive.config.resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="s">&quot;/usr/trino/etc/catalog/core-site.xml&quot;</span><span class="p p-Indicator">}}</span>
+<span class="w">        </span><span class="nt">secrets</span><span class="p">:</span><span class="w"> </span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">newsecret</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">            </span><span class="nt">workspace</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">curriculum</span><span class="p p-Indicator">}}</span>
+<span class="w">            </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">newone</span><span class="p p-Indicator">}}</span>
+<span class="w">            </span><span class="nt">keys</span><span class="p">:</span><span class="w"> </span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">newone</span><span class="p p-Indicator">}}</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">oldone</span><span class="p p-Indicator">}}</span>
+<span class="w">            </span><span class="nt">allKeys</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">true</span><span class="p p-Indicator">}}</span>
+<span class="w">            </span><span class="nt">consumptionType</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">envVars</span><span class="p p-Indicator">}}</span>
+<span class="w">    </span><span class="nt">catalogs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">cache</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">memory</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">        </span><span class="nt">properties</span><span class="p">:</span><span class="w"> </span>
+<span class="w">          </span><span class="nt">memory.max-data-per-node</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="s">&quot;128MB&quot;</span><span class="p p-Indicator">}}</span><span class="w"> </span>
+<span class="w">        </span><span class="nt">secrets</span><span class="p">:</span><span class="w"> </span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">newsecret</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">            </span><span class="nt">workspace</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">curriculum</span><span class="p p-Indicator">}}</span>
+<span class="w">            </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">newone</span><span class="p p-Indicator">}}</span>
+<span class="w">            </span><span class="nt">keys</span><span class="p">:</span><span class="w"> </span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">newone</span><span class="p p-Indicator">}}</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">oldone</span><span class="p p-Indicator">}}</span>
+<span class="w">            </span><span class="nt">allKeys</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">true</span><span class="p p-Indicator">}}</span>
+<span class="w">            </span><span class="nt">consumptionType</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">envVars</span><span class="p p-Indicator">}}</span>
+<span class="w">    </span><span class="nt">debug</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">logLevel</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">INFO</span><span class="p p-Indicator">}}</span>
+<span class="w">      </span><span class="nt">trinoLogLevel</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">ERROR</span><span class="p p-Indicator">}}</span>
+
+<span class="w">    </span><span class="nt">coordinatorEnvs</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">alpha</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beta</span><span class="w"> </span><span class="c1"># bring from doc</span>
+<span class="w">    </span><span class="nt">workerEnvs</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">gamma</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sigma</span><span class="w"> </span><span class="c1"># bring from doc</span>
+<span class="w">    </span><span class="nt">overrideDefaultEnvs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">spillOverVolume</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">twenty</span>
+<span class="w">    </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">users</span><span class="p">:</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="s">&quot;**&quot;</span><span class="p p-Indicator">}}</span>
+<span class="w">      </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">alpha</span><span class="p p-Indicator">}}</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">beta</span><span class="p p-Indicator">}}</span>
+<span class="w">      </span><span class="nt">sources</span><span class="p">:</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">scanner/**</span><span class="p p-Indicator">}}</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">flare/**</span><span class="p p-Indicator">}}</span>
+<span class="w">      </span><span class="nt">match</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="s">&#39;&#39;</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">      </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="s">&#39;10&#39;</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="c1"># mandatory</span>
+
+<span class="w">  </span><span class="nt">nats</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">    </span><span class="nt">volumeType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">newone</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">    </span><span class="nt">volumeSize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30mi</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">    </span><span class="nt">maxConnections</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">newrole</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">        </span><span class="nt">permissions</span><span class="p">:</span><span class="w"> </span>
+<span class="w">          </span><span class="nt">publish</span><span class="p">:</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beta</span>
+<span class="w">          </span><span class="nt">subscribe</span><span class="p">:</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">newone</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">develop</span>
+<span class="w">          </span><span class="nt">allow_responses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">jupyterHub</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ingress</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/strip/</span>
+<span class="w">      </span><span class="nt">stripPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="nt">noAuthentication</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">appDetailSpec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">random</span>
+<span class="w">      </span><span class="nt">apiDetailSpec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">random</span>
+<span class="w">    </span><span class="nt">oidcConfig</span><span class="p">:</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">      </span><span class="nt">clientId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hellow</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">      </span><span class="nt">clientSecret</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">delta</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">    </span><span class="nt">storageClass</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">    </span><span class="nt">singleUserConfig</span><span class="p">:</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">      </span><span class="nt">volumeCapacity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span><span class="w"> </span><span class="c1"># mandatory</span>
+</code></pre></div>
+<center><i>Structure of Cluster-specific Section</i></center></p>
+<h2 id="configuration-attributes">Configuration Attributes<a class="headerlink" href="#configuration-attributes" title="Permanent link">&para;</a></h2>
+<h2 id="cluster"><strong><code>cluster</code></strong><a class="headerlink" href="#cluster" title="Permanent link">&para;</a></h2>
+<p><strong>Description:</strong> the <code>cluster</code> mapping/section defines configurations for the Cluster Resource.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mapping</td>
+<td>mandatory</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">compute</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">query-default</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">runAsUser</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">minerva-cluster</span>
+<span class="w">  </span><span class="nt">minerva</span><span class="p">:</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">selector</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">users</span><span class="p">:</span><span class="w"> </span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">-&quot;**&quot;</span>
+<span class="w">      </span><span class="nt">sources</span><span class="p">:</span><span class="w"> </span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scanner/**</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">flare/**</span>
+<span class="w">    </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">    </span><span class="nt">match</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">    </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;10&#39;</span>
+<span class="w">    </span><span class="nt">runAsApiKey</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dataos apikey</span>
+<span class="w">    </span><span class="nt">runAsUser</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">iamgroot</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span>
+<span class="w">        </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4000m</span>
+<span class="w">        </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8Gi</span>
+<span class="w">      </span><span class="nt">requests</span><span class="p">:</span><span class="w"> </span>
+<span class="w">        </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1200m</span>
+<span class="w">        </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2Gi</span>
+<span class="w">    </span><span class="nt">debug</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">logLevel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INFO</span>
+<span class="w">      </span><span class="nt">trinoLogLevel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ERROR</span>
+<span class="w">    </span><span class="nt">depots</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dataos://icebase:default</span>
+<span class="w">        </span><span class="nt">properties</span><span class="p">:</span><span class="w"> </span>
+<span class="w">          </span><span class="nt">iceberg.file-format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PARQUET</span>
+<span class="w">          </span><span class="nt">iceberg.compression-codec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GZIP</span>
+<span class="w">          </span><span class="nt">hive.config.resources</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/usr/trino/etc/catalog/core-site.xml&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dataos://bqdepot:default</span>
+<span class="w">    </span><span class="nt">catalogs</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cache</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">memory</span>
+<span class="w">        </span><span class="nt">properties</span><span class="p">:</span><span class="w"> </span>
+<span class="w">          </span><span class="nt">memory.max-data-per-node</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;128MB&quot;</span>
+</code></pre></div></p>
+<hr />
+<h3 id="compute"><strong><code>compute</code></strong><a class="headerlink" href="#compute" title="Permanent link">&para;</a></h3>
+<p><strong>Description:</strong> the <code>compute</code> attribute specifies the name of the <a href="../../compute/">Compute</a> Resource-instance referred by the Cluster.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>mandatory</td>
+<td>query-default</td>
+<td>any valid <a href="../../compute/#query-compute">query-type</a> Compute Resource-instance name</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">compute</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">query-default</span>
+</code></pre></div></p>
+<hr />
+<h3 id="runasapikey"><strong><code>runAsApiKey</code></strong><a class="headerlink" href="#runasapikey" title="Permanent link">&para;</a></h3>
+<p><strong>Description:</strong> the <code>runAsApiKey</code> attribute allows a user to assume the identity of another user through the provision of the latter's API key.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>mandatory</td>
+<td>abcdefghijklmnopqrstuvwxyz</td>
+<td>any valid DataOS user API key</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Additional Details</strong>: The apikey can be obtained by executing the following command from the <a href="../../../interfaces/cli/">CLI</a>:</p>
+<div class="highlight"><pre><span></span><code>dataos-ctl<span class="w"> </span>user<span class="w"> </span>apikey<span class="w"> </span>get
+</code></pre></div>
+<p>In case no apikey is available, the below command can be run to create a new apikey</p>
+<div class="highlight"><pre><span></span><code>dataos-ctl<span class="w"> </span>user<span class="w"> </span>apikey<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span><span class="o">{{</span>name<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>apikey<span class="o">}}</span><span class="w"> </span>-d<span class="w"> </span><span class="o">{{</span>duration<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>apikey<span class="w"> </span>to<span class="w"> </span>live<span class="o">}}</span>
+</code></pre></div>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">runAsApiKey</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">abcdefghijklmnopqrstuvwxyz</span>
+</code></pre></div></p>
+<hr />
+<h3 id="runasuser"><strong><code>runAsUser</code></strong><a class="headerlink" href="#runasuser" title="Permanent link">&para;</a></h3>
+<p><strong>Description:</strong> when the <code>runAsUser</code> attribute is configured with the UserID of the use-case assignee, it grants the authority to perform operations on behalf of that user.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>optional</td>
+<td>user-id of the user</td>
+<td>user-id of the use-case assignee</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">runAsUser</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">iamgroot</span>
+</code></pre></div></p>
+<hr />
+<h3 id="maintenance"><strong><code>maintenance</code></strong><a class="headerlink" href="#maintenance" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>Available in DataOS CLI Version 2.8.2 and DataOS Version 1.10.41</p>
+</blockquote>
+<p><strong>Description:</strong> The <code>maintenance</code> section provides a set of Cluster maintenance-related configurations that assist with various operator activities that need to be simplified and automated by Poros, the DataOS orchestrator. The Cluster maintenance features are invoked on a <code>cron</code> schedule. This triggers a restart or a scale which is very specific to the Cluster in purview.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mapping</td>
+<td>optional</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">maintenance</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">restartCron</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="s">&#39;13</span><span class="nv"> </span><span class="s">1</span><span class="nv"> </span><span class="s">*/2</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&#39;</span><span class="p p-Indicator">}}</span>
+<span class="w">    </span><span class="nt">timezone</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">Europe/Berlin</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">    </span><span class="nt">scalingCrons</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="s">&#39;5/10</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&#39;</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">        </span><span class="nt">timezone</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">Europe/Berlin</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">        </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">2</span><span class="p p-Indicator">}}</span>
+<span class="w">        </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span>
+<span class="w">          </span><span class="nt">requests</span><span class="p">:</span><span class="w"> </span>
+<span class="w">            </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">800m</span><span class="p p-Indicator">}}</span>
+<span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">1Gi</span><span class="p p-Indicator">}}</span>
+<span class="w">          </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span>
+<span class="w">            </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">1000m</span><span class="p p-Indicator">}}</span>
+<span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">2Gi</span><span class="p p-Indicator">}}</span><span class="w"> </span>
+</code></pre></div></p>
+<hr />
+<h4 id="restartcron"><strong><code>restartCron</code></strong><a class="headerlink" href="#restartcron" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> The <code>restartCron</code> attribute specifies the cron schedule for cluster restart. Poros, the DataOS orchestrator will restart the Cluster based on the specified schedule.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>any valid cron expression</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+- To restart the Cluster at 1:13am every other day, specify.
+  <div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">maintenance</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">restartCron</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;13</span><span class="nv"> </span><span class="s">1</span><span class="nv"> </span><span class="s">*/2</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&#39;</span>
+</code></pre></div></p>
+<hr />
+<h4 id="timezone"><strong><code>timezone</code></strong><a class="headerlink" href="#timezone" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> The <code>timezone</code> attribute specifies the Cluster's timezone.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>any valid timezone from the <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">tz database</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">maintenance</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">timezone</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Asia/Kolkata</span>
+</code></pre></div></p>
+<hr />
+<h4 id="scalingcrons"><strong><code>scalingCrons</code></strong><a class="headerlink" href="#scalingcrons" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> The <code>scalingCrons</code> attribute defines configurations for scaling the Cluster. Poros can horizontally and/or vertically scale the Cluster based on the provided configuration.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mapping</td>
+<td>optional</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<p>Each scaling cron includes the following attributes:</p>
+<ul>
+<li><a href="#cron"><strong><code>cron</code></strong></a>: The cron schedule for the job.</li>
+<li><a href="#timezone"><strong><code>timezone</code></strong></a>: The timezone for the job.</li>
+<li><a href="#replicas"><strong><code>replicas</code></strong></a>: The number of replicas.</li>
+<li><a href="#resources"><strong><code>resources</code></strong></a>: Resource specifications for the job, including <a href="#requests"><code>requests</code></a> and <a href="#limits"><code>limits</code></a> for CPU and memory.</li>
+</ul>
+<p><strong>Additional Information:</strong> A <code>scalingCron</code> overrides the default provided <code>replicas</code> and/or <code>resources</code> in a cluster like Minerva while in an "active" cron window. When a cron schedule is triggered, the supplied replicas and resources are put into effect until another cron schedule occurs. To clear an active scalingCron, clear out the <code>scalingCrons</code> section and apply the Resource again.<br>
+<strong>Example Usage:</strong></p>
+<ul>
+<li><strong>Horizontal Scaling:</strong> To scale the Cluster horizontally every 5 minutes, specify.
+  <div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">maintenance</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">scalingCrons</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;5/10</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&#39;</span>
+<span class="w">      </span><span class="nt">timezone</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Europe/Berlin</span>
+<span class="w">      </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;10/10</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&#39;</span>
+<span class="w">      </span><span class="nt">timezone</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Europe/Berlin</span>
+<span class="w">      </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+</code></pre></div></li>
+<li><strong>Vertical Scaling:</strong> To scale the Cluster vertically every 5 minutes, specify the following attributes/fields.
+  <div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">maintenance</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">scalingCrons</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;5/10</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&#39;</span>
+<span class="w">      </span><span class="nt">timezone</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Europe/Berlin</span>
+<span class="w">      </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000m</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2Gi</span>
+<span class="w">        </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">800m</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1Gi</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;10/10</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&#39;</span>
+<span class="w">      </span><span class="nt">timezone</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Europe/Berlin</span>
+<span class="w">      </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3000m</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7Gi</span>
+<span class="w">        </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1500m</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3Gi</span>
+</code></pre></div></li>
+</ul>
+<hr />
+<h5 id="cron"><strong><code>cron</code></strong><a class="headerlink" href="#cron" title="Permanent link">&para;</a></h5>
+<p><strong>Description:</strong> specifies the cron schedule for scaling tasks in the Cluster.<br></p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>optional</td>
+<td>none</td>
+<td>any valid cron expression</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">maintenance</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">scalingCrons</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;5/10</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&#39;</span>
+</code></pre></div></p>
+<hr />
+<h5 id="replicas"><strong><code>replicas</code></strong><a class="headerlink" href="#replicas" title="Permanent link">&para;</a></h5>
+<p><strong>Description:</strong> specifies the number of replicas for scaling tasks in the Cluster.<br></p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>integer</td>
+<td>mandatory</td>
+<td>1</td>
+<td>1-4</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">maintenance</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">scalingCrons</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+</code></pre></div></p>
+<hr />
+<h5 id="resources"><strong><code>resources</code></strong><a class="headerlink" href="#resources" title="Permanent link">&para;</a></h5>
+<p><strong>Description:</strong> resource allocation of CPU and Memory configuration for the Cluster.<br></p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mapping</td>
+<td>optional</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">maintenance</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">scalingCrons</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000m</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2Gi</span>
+<span class="w">        </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">800m</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1Gi</span>
+</code></pre></div></p>
+<hr />
+<h6 id="limits"><strong><code>limits</code></strong><a class="headerlink" href="#limits" title="Permanent link">&para;</a></h6>
+<p><strong>Description:</strong> specifies the resource limits for CPU and memory for the specific Cluster.<br></p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mapping</td>
+<td>optional</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">maintenance</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">scalingCrons</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000m</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2Gi</span>
+</code></pre></div></p>
+<hr />
+<h6 id="requests"><strong><code>requests</code></strong><a class="headerlink" href="#requests" title="Permanent link">&para;</a></h6>
+<p><strong>Description:</strong> Specifies the resource requests for the cluster.<br></p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mapping</td>
+<td>optional</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">maintenance</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">scalingCrons</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">800m</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1Gi</span>
+</code></pre></div></p>
+<p><strong><code>cpu</code></strong></p>
+<p><strong>Description:</strong> specifies the CPU resource configuration for the Cluster.<br></p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>optional</td>
+<td>requests: 100m, limits: 400m</td>
+<td>cpu units in milliCPU(m) or CPU Core</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">maintenance</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">scalingCrons</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000m</span>
+</code></pre></div></p>
+<hr />
+<p><strong><code>memory</code></strong></p>
+<p><strong>Description:</strong> specifies the requested memory for scaling tasks in the Cluster.<br></p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>optional</td>
+<td>requests: 100Mi, limits: 400Mi</td>
+<td>memory in Mebibytes(Mi) or Gibibytes(Gi)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">maintenance</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">scalingCrons</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000m</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2Gi</span>
+</code></pre></div></p>
+<hr />
+<h3 id="minerva"><strong><code>minerva</code></strong><a class="headerlink" href="#minerva" title="Permanent link">&para;</a></h3>
+<p><strong>Description:</strong> The <code>minerva</code> attribute defines configurations for the Minerva Cluster.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mapping</td>
+<td>mandatory</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">minerva</span><span class="p">:</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">secrets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysecret</span>
+<span class="w">    </span><span class="nt">depots</span><span class="p">:</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dataos://icebase:default</span><span class="w"> </span><span class="c1"># mandatory</span>
+<span class="w">        </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">iceberg.file-format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PARQUET</span><span class="w"> </span>
+<span class="w">          </span><span class="nt">iceberg.compression-codec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GZIP</span><span class="w"> </span>
+<span class="w">          </span><span class="nt">hive.config.resources</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/usr/trino/etc/catalog/core-site.xml&quot;</span>
+</code></pre></div></p>
+<hr />
+<h4 id="replicas_1"><strong><code>replicas</code></strong><a class="headerlink" href="#replicas_1" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> The <code>replicas</code> attribute specifies the number of Minerva Cluster replicas.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>mandatory</td>
+<td>1</td>
+<td>any valid postive integer</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">minerva</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+</code></pre></div></p>
+<h4 id="secrets"><strong><code>secrets</code></strong><a class="headerlink" href="#secrets" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> The <code>secrets</code> attribute is a list of secrets referred by Minerva Cluster.</p>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">minerva</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">secrets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysecret</span>
+</code></pre></div></p>
+<hr />
+<h4 id="depots"><strong><code>depots</code></strong><a class="headerlink" href="#depots" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> The <code>depots</code> attribute is a list of depots configurations. Its a specification of sources to be queried. This includes only those sources on which a depot can be created and support querying from Minerva Cluster.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>list of mappings</td>
+<td>optional</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<p>Each depot configuration comprises of the following attributes:</p>
+<ul>
+<li><a href="#address"><strong><code>address</code></strong></a>: The depot's address.</li>
+<li><a href="#properties"><strong><code>properties</code></strong></a>: Properties specific to the depot.</li>
+<li><a href="#secrets"><strong><code>secrets</code></strong></a>: List of Secret Resource referred by the depot.</li>
+</ul>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">minerva</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">depots</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dataos://icebase:default</span>
+<span class="w">        </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">iceberg.file-format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PARQUET</span>
+<span class="w">          </span><span class="nt">iceberg.compression-codec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GZIP</span>
+<span class="w">          </span><span class="nt">hive.config.resources</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/usr/trino/etc/catalog/core-site.xml&quot;</span>
+<span class="w">        </span><span class="nt">secrets</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">newsecret</span>
+<span class="w">            </span><span class="nt">workspace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">curriculum</span>
+<span class="w">            </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">newone</span>
+<span class="w">            </span><span class="nt">keys</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">newone</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oldone</span>
+<span class="w">            </span><span class="nt">allKeys</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">            </span><span class="nt">consumptionType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envVars</span>
+</code></pre></div></p>
+<hr />
+<h6 id="address"><strong><code>address</code></strong><a class="headerlink" href="#address" title="Permanent link">&para;</a></h6>
+<p><strong>Description:</strong> specifies the address for a depot<br></p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>optional</td>
+<td>none</td>
+<td>valid depot udl address</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">minerva</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">depots</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dataos://icebase:default</span>
+</code></pre></div></p>
+<hr />
+<h6 id="properties"><strong><code>properties</code></strong><a class="headerlink" href="#properties" title="Permanent link">&para;</a></h6>
+<p><strong>Description:</strong> additional properties for a depot<br></p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mapping</td>
+<td>optional</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">minerva</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">depots</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">iceberg.file-format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PARQUET</span>
+<span class="w">          </span><span class="nt">iceberg.compression-codec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GZIP</span>
+<span class="w">          </span><span class="nt">hive.config.resources</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/usr/trino/etc/catalog/core-site.xml&quot;</span>
+</code></pre></div></p>
+<hr />
+<h5 id="secrets_1"><strong><code>secrets</code></strong><a class="headerlink" href="#secrets_1" title="Permanent link">&para;</a></h5>
+<p><strong>Description:</strong> Secret Resource referred by the depot/catalog.</p>
+<p><strong>Additional Information</strong>: For more information, refer to the link <a href="../../secret/#referencing-a-secret-in-a-depot">Secrets</a></p>
+<hr />
+<h5 id="catalogs"><strong><code>catalogs</code></strong><a class="headerlink" href="#catalogs" title="Permanent link">&para;</a></h5>
+<p><strong>Description:</strong> The <code>catalogs</code> attribute for specification of sources in scenarios where it is not possible to create a depot, but a Trino connector is available and supported for the source.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>list of mappings</td>
+<td>optional</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">minerva</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">catalogs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cache</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">memory</span>
+<span class="w">        </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">memory.max-data-per-node</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;128MB&quot;</span>
+</code></pre></div></p>
+<p>Each catalog configuration includes the following attributes:</p>
+<ul>
+<li><a href="#name"><strong><code>name</code></strong></a>: The catalog name.</li>
+<li><a href="#type"><strong><code>type</code></strong></a>: The catalog type.</li>
+<li><a href="#properties-1"><strong><code>properties</code></strong></a>: Catalog-specific properties.</li>
+<li><a href="#secrets-1"><strong><code>secrets</code></strong></a>: List of secrets used by the catalog.</li>
+</ul>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">minerva</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">catalogs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cache</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">memory</span>
+<span class="w">        </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">memory.max-data-per-node</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;128MB&quot;</span>
+<span class="w">        </span><span class="nt">secrets</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">newsecret</span>
+<span class="w">            </span><span class="nt">workspace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">curriculum</span>
+<span class="w">            </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">newone</span>
+<span class="w">            </span><span class="nt">keys</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">newone</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oldone</span>
+<span class="w">            </span><span class="nt">allKeys</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">            </span><span class="nt">consumptionType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envVars</span>
+</code></pre></div></p>
+<hr />
+<h6 id="name"><strong><code>name</code></strong><a class="headerlink" href="#name" title="Permanent link">&para;</a></h6>
+<p><strong>Description:</strong> specifies the name of a catalog<br></p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>optional</td>
+<td>none</td>
+<td>any valid string</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">minerva</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">catalogs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cache</span>
+</code></pre></div></p>
+<hr />
+<h6 id="type"><strong><code>type</code></strong><a class="headerlink" href="#type" title="Permanent link">&para;</a></h6>
+<p><strong>Description:</strong> specifies the type of a catalog<br></p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>optional</td>
+<td>none</td>
+<td><a href="../connectors_configuration/">View the list of all possible catalog types here</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">minerva</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">catalogs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">memory</span>
+</code></pre></div></p>
+<hr />
+<h6 id="properties_1"><strong><code>properties</code></strong><a class="headerlink" href="#properties_1" title="Permanent link">&para;</a></h6>
+<p><strong>Description:</strong> additional properties for a catalog<br></p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mapping</td>
+<td>optional</td>
+<td>none</td>
+<td>valid connector properties</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">minerva</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">catalogs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">memory.max-data-per-node</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;128MB&quot;</span>
+</code></pre></div></p>
+<hr />
+<h5 id="debug"><strong><code>debug</code></strong><a class="headerlink" href="#debug" title="Permanent link">&para;</a></h5>
+<p><strong>Description:</strong> The <code>debug</code> section includes debug-related configurations for Minerva.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mapping</td>
+<td>mandatory</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">debug</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">logLevel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INFO</span>
+<span class="w">  </span><span class="nt">trinoLogLevel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ERROR</span>
+</code></pre></div></p>
+<hr />
+<h6 id="loglevel"><strong><code>logLevel</code></strong><a class="headerlink" href="#loglevel" title="Permanent link">&para;</a></h6>
+<p><strong>Description:</strong> The <code>logLevel</code> attribute specifies the log level for Minerva's logs.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>optional</td>
+<td>INFO</td>
+<td>INFO/DEBUG/ERROR</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">minerva</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">debug</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">logLevel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INFO</span>
+</code></pre></div></p>
+<hr />
+<h6 id="trinologlevel"><strong><code>trinoLogLevel</code></strong><a class="headerlink" href="#trinologlevel" title="Permanent link">&para;</a></h6>
+<p><strong>Description:</strong> The <code>trinoLogLevel</code> attribute specifies the log level for Trino logs within Minerva.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>optional</td>
+<td>INFO</td>
+<td>INFO/DEBUG/ERROR</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">minerva</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">debug</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">trinoLogLevel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ERROR</span>
+</code></pre></div></p>
+<hr />
+<h4 id="coordinatorenvs"><strong><code>coordinatorEnvs</code></strong><a class="headerlink" href="#coordinatorenvs" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> The <code>coordinatorEnvs</code> section includes environment variables for the coordinator node.</p>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">minerva</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">coordinatorEnvs</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">alpha</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beta</span>
+</code></pre></div></p>
+<hr />
+<h4 id="workerenvs"><strong><code>workerEnvs</code></strong><a class="headerlink" href="#workerenvs" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> The <code>workerEnvs</code> section includes environment variables for worker nodes.</p>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">minerva</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">workerEnvs</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">gamma</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sigma</span>
+</code></pre></div></p>
+<hr />
+<h4 id="overridedefaultenvs"><strong><code>overrideDefaultEnvs</code></strong><a class="headerlink" href="#overridedefaultenvs" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> The <code>overrideDefaultEnvs</code> attribute specifies whether to override default environment variables.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>optional</td>
+<td>true</td>
+<td>true or false</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">minerva</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">overrideDefaultEnvs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div></p>
+<hr />
+<h4 id="spillovervolume"><strong><code>spillOverVolume</code></strong><a class="headerlink" href="#spillovervolume" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> The <code>spillOverVolume</code> attribute specifies the spill-over volume.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>optional</td>
+<td>twenty</td>
+<td>any valid string</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">minerva</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">spillOverVolume</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">twenty</span>
+</code></pre></div></p>
+<hr />
+<h4 id="selector"><strong><code>selector</code></strong><a class="headerlink" href="#selector" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> The <code>selector</code> section defines a selector for users, tags, sources, match, and priority.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mapping</td>
+<td>mandatory</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">minerva</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;**&quot;</span>
+<span class="w">      </span><span class="nt">sources</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scanner/**</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">flare/**</span>
+</code></pre></div></p>
+<hr />
+<h5 id="users"><strong><code>users</code></strong><a class="headerlink" href="#users" title="Permanent link">&para;</a></h5>
+<p><strong>Description:</strong> the <code>users</code> attribute specifies a user identified by a tag or regex patterns. They can also be a group of tags defined as a list.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>list of strings</td>
+<td>mandatory</td>
+<td>none</td>
+<td>a valid subset of all available<br> users within DataOS</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">minerva</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;**&quot;</span>
+</code></pre></div></p>
+<hr />
+<h5 id="tags"><strong><code>tags</code></strong><a class="headerlink" href="#tags" title="Permanent link">&para;</a></h5>
+<p><strong>Description:</strong> The <code>tags</code> attribute specifies a list of tags. The cluster is accessible exclusively to users who possess specific tags.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>list of strings</td>
+<td>optional</td>
+<td>none</td>
+<td>any valid tag or pattern</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Additional Information:</strong> Multiple users can be specified using AND/OR Logical Rules. To know more, click <a href="../../policy/yaml_configuration_attributes/#tags">here</a><br></p>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">minerva</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">tags</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beta</span>
+</code></pre></div></p>
+<hr />
+<h5 id="sources"><strong><code>sources</code></strong><a class="headerlink" href="#sources" title="Permanent link">&para;</a></h5>
+<p><strong>Description:</strong> the <code>sources</code> attribute specifies sources that can redirect queries to Cluster.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>list of strings</td>
+<td>mandatory</td>
+<td>none</td>
+<td>list of strings representing source. For all sources, specify “**”.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">minerva</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">sources</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scanner/**</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">flare/**</span>
+</code></pre></div></p>
+<hr />
+<h5 id="match"><strong><code>match</code></strong><a class="headerlink" href="#match" title="Permanent link">&para;</a></h5>
+<p><strong>Description:</strong> The <code>match</code> attribute specifies the match condition.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>mandatory</td>
+<td>any</td>
+<td>any/all</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Additional Information:</strong> 
+- <code>any</code> - must match at least one tag
+- <code>all</code> - must match all tags<br></p>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">minerva</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">match</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">any</span>
+</code></pre></div></p>
+<hr />
+<h5 id="priority"><strong><code>priority</code></strong><a class="headerlink" href="#priority" title="Permanent link">&para;</a></h5>
+<p><strong>Description:</strong> The <code>priority</code> attribute specifies the priority level. Workloads will be redirected to Cluster with a lower priority level (inverse relationship).</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>integer</td>
+<td>mandatory</td>
+<td>10</td>
+<td>any value between 1-5000</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">minerva</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+</code></pre></div></p>
+<hr />
+<h3 id="nats"><strong><code>nats</code></strong><a class="headerlink" href="#nats" title="Permanent link">&para;</a></h3>
+<p><strong>Description:</strong> The <code>nats</code> section defines configurations for NATS Cluster.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mapping</td>
+<td>mandatory</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">nats</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">volumeType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">newone</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">volumeSize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30mi</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">maxConnections</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">newrole</span><span class="w"> </span>
+<span class="w">        </span><span class="nt">permissions</span><span class="p">:</span><span class="w"> </span>
+<span class="w">          </span><span class="nt">publish</span><span class="p">:</span><span class="w"> </span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beta</span>
+<span class="w">          </span><span class="nt">subscribe</span><span class="p">:</span><span class="w"> </span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">newone</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">develop</span>
+<span class="w">          </span><span class="nt">allow_responses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div></p>
+<hr />
+<h4 id="replicas_2"><strong><code>replicas</code></strong><a class="headerlink" href="#replicas_2" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> The <code>replicas</code> attribute specifies the number of NATS Cluster replicas.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>integer</td>
+<td>mandatory</td>
+<td>1</td>
+<td>positive integer</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">nats</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+</code></pre></div></p>
+<hr />
+<h4 id="volumetype"><strong><code>volumeType</code></strong><a class="headerlink" href="#volumetype" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> The <code>volumeType</code> attribute specifies the volume type for NATS.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>valid string</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">nats</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">volumeType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">newone</span>
+</code></pre></div></p>
+<hr />
+<h5 id="volumesize"><strong><code>volumeSize</code></strong><a class="headerlink" href="#volumesize" title="Permanent link">&para;</a></h5>
+<p><strong>Description:</strong> The <code>volumeSize</code> attribute specifies the volume size for NATS.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>valid string</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">nats</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">volumeSize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30mi</span>
+</code></pre></div></p>
+<hr />
+<h5 id="maxconnections"><strong><code>maxConnections</code></strong><a class="headerlink" href="#maxconnections" title="Permanent link">&para;</a></h5>
+<p><strong>Description:</strong> The <code>maxConnections</code> attribute specifies the maximum number of NATS connections.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>integer</td>
+<td>mandatory</td>
+<td>1</td>
+<td>positive integer</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">nats</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">maxConnections</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+</code></pre></div></p>
+<hr />
+<h5 id="roles"><strong><code>roles</code></strong><a class="headerlink" href="#roles" title="Permanent link">&para;</a></h5>
+<p><strong>Description:</strong> The <code>roles</code> attribute defines roles and permissions for NATS.</p>
+<p>Each role includes the following attributes:</p>
+<ul>
+<li><strong><code>name</code></strong>: The role name.</li>
+<li><strong><code>permissions</code></strong>: The permissions for the role, including <code>publish</code>, <code>subscribe</code>, and <code>allow_responses</code>.</li>
+</ul>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">nats</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">newrole</span>
+<span class="w">        </span><span class="nt">permissions</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">publish</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beta</span>
+<span class="w">          </span><span class="nt">subscribe</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">newone</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">develop</span>
+<span class="w">        </span><span class="nt">allow_responses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div></p>
+<hr />
+<h3 id="jupyterhub"><strong><code>jupyterHub</code></strong><a class="headerlink" href="#jupyterhub" title="Permanent link">&para;</a></h3>
+<p><strong>Description:</strong> The <code>jupyterHub</code> section defines configurations for JupyterHub.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mapping</td>
+<td>mandatory</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br></p>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">jupyterHub</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ingress</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/strip/</span>
+<span class="w">      </span><span class="nt">stripPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="nt">noAuthentication</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">appDetailSpec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">random</span>
+<span class="w">      </span><span class="nt">apiDetailSpec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">random</span>
+<span class="w">    </span><span class="nt">oidcConfig</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">clientId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hellow</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">clientSecret</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">delta</span>
+<span class="w">    </span><span class="nt">storageClass</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
+<span class="w">    </span><span class="nt">singleUserConfig</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">volumeCapacity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span><span class="w"> </span>
+</code></pre></div>
+<hr />
+<h4 id="ingress"><strong><code>ingress</code></strong><a class="headerlink" href="#ingress" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> The <code>ingress</code> section specifies configurations for the JupyterHub ingress.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enabled</code></td>
+<td>boolean</td>
+<td>optional</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>path</code></td>
+<td>string</td>
+<td>optional</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>stripPath</code></td>
+<td>boolean</td>
+<td>optional</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>noAuthentication</code></td>
+<td>string</td>
+<td>optional</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>appDetailSpec</code></td>
+<td>string</td>
+<td>optional</td>
+<td>random</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">jupyterHub</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ingress</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/strip/</span>
+<span class="w">      </span><span class="nt">stripPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="nt">noAuthentication</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">appDetailSpec</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+</code></pre></div></p>
+<hr />
+<h4 id="oidcconfig"><strong><code>oidcConfig</code></strong><a class="headerlink" href="#oidcconfig" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> The <code>oidcConfig</code> section specifies OIDC (OpenID Connect) configurations for JupyterHub.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Attribute</strong></th>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>clientId</code></td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>valid string</td>
+</tr>
+<tr>
+<td><code>clientSecret</code></td>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>valid string</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">jupyterHub</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">oidcConfig</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">clientId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hellow</span>
+<span class="w">      </span><span class="nt">clientSecret</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">delta</span>
+</code></pre></div></p>
+<hr />
+<h4 id="storageclass"><strong><code>storageClass</code></strong><a class="headerlink" href="#storageclass" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> The <code>storageClass</code> attribute specifies the storage class for JupyterHub.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>mandatory</td>
+<td>none</td>
+<td>valid string</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">jupyterHub</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">storageClass</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
+</code></pre></div></p>
+<hr />
+<h4 id="singleuserconfig"><strong><code>singleUserConfig</code></strong><a class="headerlink" href="#singleuserconfig" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> The <code>singleUserConfig</code> section specifies configurations for single users in JupyterHub.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mapping</td>
+<td>mandatory</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">jupyterHub</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">singleUserConfig</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">volumeCapacity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
+</code></pre></div></p>
+<hr />
+<h5 id="volumecapacity"><strong><code>volumeCapacity</code></strong><a class="headerlink" href="#volumecapacity" title="Permanent link">&para;</a></h5>
+<p><strong>Description:</strong> The <code>volumeCapacity</code> attribute specifies the volume capacity for single users.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Data Type</strong></th>
+<th><strong>Requirement</strong></th>
+<th><strong>Default Value</strong></th>
+<th><strong>Possible Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>mandatory</td>
+<td>alpha</td>
+<td>valid string</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Usage:</strong><br>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">jupyterHub</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">singleUserConfig</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">volumeCapacity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
+</code></pre></div></p>
+
+<!-- Source file information -->
+
+
+<!-- Was this page helpful? -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine feedback configuration -->
+
+  
+
+
+<!-- Determine whether to show feedback -->
+
+
+<!-- Was this page helpful? -->
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+
+        <!-- Feedback ratings -->
+        <div class="md-feedback__list">
+          
+            <button
+              class="md-feedback__icon md-icon"
+              type="submit"
+              title="This page was helpful"
+              data-md-value="1"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9h4m4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21H9m0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03V19Z"/></svg>
+            </button>
+          
+            <button
+              class="md-feedback__icon md-icon"
+              type="submit"
+              title="This page could be improved"
+              data-md-value="0"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12h-4M15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3h9m0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97V5Z"/></svg>
+            </button>
+          
+        </div>
+
+        <!-- Feedback rating notes (shown after submission) -->
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+
+              <!-- Determine title -->
+              
+                
+              
+
+              <!-- Replace {url} and {title} placeholders in note -->
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+
+              <!-- Determine title -->
+              
+                
+              
+
+              <!-- Replace {url} and {title} placeholders in note -->
+              Thanks for your feedback!
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<!-- Comment system -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Comment system -->
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <!-- Repository information -->
+  
+
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-meta__content">
+        <div class="md-footer-social-and-modern-logo">
+          
+          <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Social links -->
+<div class="md-social">
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://www.facebook.com/themoderndatacompany"
+      target="_blank" rel="noopener"
+      title="www.facebook.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/facebook.png"
+    title="www.facebook.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://twitter.com/TheModernDataCo"
+      target="_blank" rel="noopener"
+      title="twitter.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/twitter.png"
+    title="twitter.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://www.linkedin.com/company/themoderndatacompany"
+      target="_blank" rel="noopener"
+      title="www.linkedin.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/linkedin.png"
+    title="www.linkedin.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+</div>
+          
+          <a href="https://themoderndatacompany.com" target="_blank">
+            <img src="/assets/ModernLogo.png" width="251" class="modern-logo" />
+          </a>
+        </div>
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Copyright and theme information -->
+<div class="md-copyright">
+  
+  <a href="https://themoderndatacompany.com/contact-us" target="_blank" rel="noopener"> Contact Us </a> | <a
+    href="https://themoderndatacompany.com/privacy-policy" target="_blank" rel="noopener"> Privacy Policy </a> | <a
+    href="https://themoderndatacompany.com/terms-of-use" target="_blank" rel="noopener"> Terms of Use </a>
+  
+  
+  <div class="md-copyright__highlight">
+    Copyright ⓒ 2023 The Modern Data Company
+  </div>
+  
+</div>
+      </div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.top", "navigation.tracking", "content.code.copy", "content.code.annotate - toc.follow - toc.integrate"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.6.4/dist/mermaid.js"></script>
+      
+    
+  </body>
+</html>

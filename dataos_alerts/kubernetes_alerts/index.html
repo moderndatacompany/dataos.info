@@ -1,0 +1,3076 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>Setting up Kubernetes Alerts - All things DataOS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Custom admonition icons -->
+
+
+<!-- Custom tag icons -->
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-ZH4G0HKBQC"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-ZH4G0HKBQC",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-ZH4G0HKBQC",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="blue-grey">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#setting-up-kubernetes-alerts" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine base classes -->
+
+
+
+<!-- Header -->
+<header class="md-header" data-md-component="header">
+  <nav
+    class="md-header__inner md-grid"
+    aria-label="Header"
+  >
+
+    <!-- Link to home -->
+    <a
+      href="../.."
+      title="All things DataOS"
+      class="md-header__button md-logo"
+      aria-label="All things DataOS"
+      data-md-component="logo"
+    >
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Logo -->
+
+  <img src="../../assets/light-modern-logo.png" alt="logo" />
+
+    </a>
+
+    <!-- Button to open drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            All things DataOS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Setting up Kubernetes Alerts
+            
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color palette -->
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input
+            class="md-option"
+            data-md-color-media=""
+            data-md-color-scheme="default"
+            data-md-color-primary="blue-grey"
+            data-md-color-accent="blue-grey"
+            
+              aria-label="Switch to dark mode"
+            
+            type="radio"
+            name="__palette"
+            id="__palette_1"
+          />
+          
+            <label
+              class="md-header__button md-icon"
+              title="Switch to dark mode"
+              for="__palette_2"
+              hidden
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          <input
+            class="md-option"
+            data-md-color-media=""
+            data-md-color-scheme="slate"
+            data-md-color-primary="grey"
+            data-md-color-accent="grey"
+            
+              aria-label="Switch to light mode"
+            
+            type="radio"
+            name="__palette"
+            id="__palette_2"
+          />
+          
+            <label
+              class="md-header__button md-icon"
+              title="Switch to light mode"
+              for="__palette_1"
+              hidden
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+
+    <!-- Site language selector -->
+    
+
+    <!-- Button to open search modal -->
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+
+      <!-- Search interface -->
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Search interface -->
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+
+      <!-- Search input -->
+      <input
+        type="text"
+        class="md-search__input"
+        name="query"
+        aria-label="Search"
+        placeholder="Search"
+        autocapitalize="off"
+        autocorrect="off"
+        autocomplete="off"
+        spellcheck="false"
+        data-md-component="search-query"
+        required
+      />
+
+      <!-- Button to open search -->
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+
+      <!-- Search options -->
+      <nav
+        class="md-search__options"
+        aria-label="Search"
+      >
+
+        <!-- Button to share search -->
+        
+
+        <!-- Button to reset search -->
+        <button
+          type="reset"
+          class="md-search__icon md-icon"
+          title="Clear"
+          aria-label="Clear"
+          tabindex="-1"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+
+      <!-- Search suggestions -->
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+
+        <!-- Search results -->
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    <!-- Repository information -->
+    
+  </nav>
+
+  <!-- Navigation tabs (sticky) -->
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Hack: unset variable, as we're using it recursively in tabs-item.html -->
+
+
+<!-- Navigation tabs -->
+<nav
+  class="md-tabs"
+  aria-label="Tabs"
+  data-md-component="tabs"
+>
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  
+  
+
+  <!-- Recurse, if the first item has further nested items -->
+  
+    <li class="md-tabs__item">
+      <a href="../../resources/" class="md-tabs__link">
+        Resources
+      </a>
+    </li>
+  
+
+<!-- Main navigation item -->
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  
+  
+
+  <!-- Recurse, if the first item has further nested items -->
+  
+    <li class="md-tabs__item">
+      <a href="../../interfaces/" class="md-tabs__link">
+        Interfaces
+      </a>
+    </li>
+  
+
+<!-- Main navigation item -->
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../architecture/" class="md-tabs__link">
+      Architecture
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../glossary/" class="md-tabs__link">
+      Glossary
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../videos/" class="md-tabs__link">
+      Videos
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to configuration -->
+
+
+  
+
+
+
+<!-- Main navigation -->
+<nav
+  class="md-nav md-nav--primary md-nav--lifted"
+  aria-label="Navigation"
+  data-md-level="0"
+>
+
+  <!-- Site title -->
+  <label class="md-nav__title" for="__drawer">
+    <a
+      href="../.."
+      title="All things DataOS"
+      class="md-nav__button md-logo"
+      aria-label="All things DataOS"
+      data-md-component="logo"
+    >
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Logo -->
+
+  <img src="../../assets/light-modern-logo.png" alt="logo" />
+
+    </a>
+    All things DataOS
+  </label>
+
+  <!-- Repository information -->
+  
+
+  <!-- Render item list -->
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+        
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle md-toggle--indeterminate"
+        type="checkbox"
+        id="__nav_2"
+        
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_2"
+          id="__nav_2_label"
+          tabindex="0"
+        >
+          Resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="1"
+        aria-labelledby="__nav_2_label"
+        aria-expanded="false"
+      >
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/cluster/" class="md-nav__link">
+        Cluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/compute/" class="md-nav__link">
+        Compute
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/depot/" class="md-nav__link">
+        Depot
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/policy/" class="md-nav__link">
+        Policy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/secret/" class="md-nav__link">
+        Secret
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/service/" class="md-nav__link">
+        Service
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/workflow/" class="md-nav__link">
+        Workflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+      
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+        
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle md-toggle--indeterminate"
+        type="checkbox"
+        id="__nav_2_9"
+        
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_2_9"
+          id="__nav_2_9_label"
+          tabindex="0"
+        >
+          Stacks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="2"
+        aria-labelledby="__nav_2_9_label"
+        aria-expanded="false"
+      >
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Stacks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/stacks/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/stacks/alpha/" class="md-nav__link">
+        Alpha
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/stacks/beacon/" class="md-nav__link">
+        Beacon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/stacks/benthos/" class="md-nav__link">
+        Benthos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/stacks/data_toolbox/" class="md-nav__link">
+        Data Toolbox
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/stacks/flare/" class="md-nav__link">
+        Flare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/stacks/scanner/" class="md-nav__link">
+        Scanner
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+        
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle md-toggle--indeterminate"
+        type="checkbox"
+        id="__nav_3"
+        
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_3"
+          id="__nav_3_label"
+          tabindex="0"
+        >
+          Interfaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="1"
+        aria-labelledby="__nav_3_label"
+        aria-expanded="false"
+      >
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Interfaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../interfaces/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../interfaces/atlas/" class="md-nav__link">
+        Atlas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../interfaces/audiences/" class="md-nav__link">
+        Audiences
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../interfaces/bifrost/" class="md-nav__link">
+        Bifrost
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../interfaces/cli/" class="md-nav__link">
+        CLI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../interfaces/lens/" class="md-nav__link">
+        Lens
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../interfaces/metis/" class="md-nav__link">
+        Metis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../interfaces/notebook/" class="md-nav__link">
+        Notebook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../interfaces/operations/" class="md-nav__link">
+        Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../interfaces/workbench/" class="md-nav__link">
+        Workbench
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        Glossary
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../videos/" class="md-nav__link">
+        Videos
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#kube-cpu-throttling-high" class="md-nav__link">
+    Kube CPU Throttling High
+  </a>
+  
+    <nav class="md-nav" aria-label="Kube CPU Throttling High">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#impact" class="md-nav__link">
+    Impact
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnosis" class="md-nav__link">
+    Diagnosis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mitigation" class="md-nav__link">
+    Mitigation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kube-pod-crash-looping" class="md-nav__link">
+    Kube Pod Crash Looping
+  </a>
+  
+    <nav class="md-nav" aria-label="Kube Pod Crash Looping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#impact_1" class="md-nav__link">
+    Impact
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resolution" class="md-nav__link">
+    Resolution
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aggregated-api-down" class="md-nav__link">
+    Aggregated API Down
+  </a>
+  
+    <nav class="md-nav" aria-label="Aggregated API Down">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#impact_2" class="md-nav__link">
+    Impact
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remediation" class="md-nav__link">
+    Remediation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kube-pod-not-ready" class="md-nav__link">
+    Kube Pod Not Ready
+  </a>
+  
+    <nav class="md-nav" aria-label="Kube Pod Not Ready">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#impact_3" class="md-nav__link">
+    Impact
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnosis_1" class="md-nav__link">
+    Diagnosis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mitigation_1" class="md-nav__link">
+    Mitigation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kube-container-waiting" class="md-nav__link">
+    Kube Container Waiting
+  </a>
+  
+    <nav class="md-nav" aria-label="Kube Container Waiting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#impact_4" class="md-nav__link">
+    Impact
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting_1" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resolution_1" class="md-nav__link">
+    Resolution
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kube-cpu-over-commit" class="md-nav__link">
+    Kube CPU Over Commit
+  </a>
+  
+    <nav class="md-nav" aria-label="Kube CPU Over Commit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#consequences" class="md-nav__link">
+    Consequences
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnosis_2" class="md-nav__link">
+    Diagnosis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remediation_1" class="md-nav__link">
+    Remediation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kube-statefulset-generation-mismatch" class="md-nav__link">
+    Kube StatefulSet Generation Mismatch
+  </a>
+  
+    <nav class="md-nav" aria-label="Kube StatefulSet Generation Mismatch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#consequences_1" class="md-nav__link">
+    Consequences
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting_2" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remediation_2" class="md-nav__link">
+    Remediation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kube-quota-fully-used" class="md-nav__link">
+    Kube Quota Fully Used
+  </a>
+  
+    <nav class="md-nav" aria-label="Kube Quota Fully Used">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#investigation" class="md-nav__link">
+    Investigation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resolution_2" class="md-nav__link">
+    Resolution
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kube-persistent-volume-filling-up" class="md-nav__link">
+    Kube Persistent Volume Filling Up
+  </a>
+  
+    <nav class="md-nav" aria-label="Kube Persistent Volume Filling Up">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#consequences_2" class="md-nav__link">
+    Consequences
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identifying-the-problem" class="md-nav__link">
+    Identifying the Problem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solutions" class="md-nav__link">
+    Solutions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-considerations" class="md-nav__link">
+    Additional Considerations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kube-hpa-maxed-out" class="md-nav__link">
+    Kube HPA Maxed Out
+  </a>
+  
+    <nav class="md-nav" aria-label="Kube HPA Maxed Out">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#consequences_3" class="md-nav__link">
+    Consequences
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identifying-the-issue" class="md-nav__link">
+    Identifying the Issue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solutions_1" class="md-nav__link">
+    Solutions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kube-hpa-replicas-mismatch" class="md-nav__link">
+    Kube HPA Replicas MisMatch
+  </a>
+  
+    <nav class="md-nav" aria-label="Kube HPA Replicas MisMatch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#consequences_4" class="md-nav__link">
+    Consequences
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identifying-the-issue_1" class="md-nav__link">
+    Identifying the Issue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solutions_2" class="md-nav__link">
+    Solutions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kube-version-mismatch" class="md-nav__link">
+    Kube Version MisMatch
+  </a>
+  
+    <nav class="md-nav" aria-label="Kube Version MisMatch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#consequences_5" class="md-nav__link">
+    Consequences
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identifying-the-issue_2" class="md-nav__link">
+    Identifying the Issue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solutions_3" class="md-nav__link">
+    Solutions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kube-node-not-ready" class="md-nav__link">
+    Kube Node not Ready
+  </a>
+  
+    <nav class="md-nav" aria-label="Kube Node not Ready">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#consequences_6" class="md-nav__link">
+    Consequences
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identifying-the-issue_3" class="md-nav__link">
+    Identifying the Issue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solutions_4" class="md-nav__link">
+    Solutions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kube-node-unreachable" class="md-nav__link">
+    Kube Node Unreachable
+  </a>
+  
+    <nav class="md-nav" aria-label="Kube Node Unreachable">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#consequences_7" class="md-nav__link">
+    Consequences
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identifying-the-issue_4" class="md-nav__link">
+    Identifying the Issue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solutions_5" class="md-nav__link">
+    Solutions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kube-statefulset-update-not-rolled-out" class="md-nav__link">
+    Kube StatefulSet Update Not Rolled Out
+  </a>
+  
+    <nav class="md-nav" aria-label="Kube StatefulSet Update Not Rolled Out">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#consequences_8" class="md-nav__link">
+    Consequences
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identifying-the-issue_5" class="md-nav__link">
+    Identifying the Issue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solutions_6" class="md-nav__link">
+    Solutions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Tags -->
+
+
+<!-- Actions -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Actions -->
+
+
+<!--
+  Hack: check whether the content contains a h1 headline. If it doesn't, the
+  page title (or respectively site name) is used as the main headline.
+-->
+
+
+<!-- Page content -->
+<h1 id="setting-up-kubernetes-alerts">Setting up Kubernetes Alerts<a class="headerlink" href="#setting-up-kubernetes-alerts" title="Permanent link">&para;</a></h1>
+<p>Kubernetes, with its dynamic and distributed nature, relies on events to communicate changes, errors, or important occurrences within the cluster. These events provide critical insights and serve as triggers for alerting mechanisms ensuring timely responses to issues and maintaining the health of clusters.   </p>
+<p>DataOS utilizes Kubernetes events for robust system monitoring. It tracks event volumes and details over time to establish precise alerts. This approach ensures prompt problem detection and resolution.</p>
+<p>The following are the examples of Kubernetes actionable events that could trigger alerts and generate notification.</p>
+<h2 id="kube-cpu-throttling-high">Kube CPU Throttling High<a class="headerlink" href="#kube-cpu-throttling-high" title="Permanent link">&para;</a></h2>
+<p>The <em>Kube CPU Throttling High</em> alert is an informational warning that indicates an increase in CPU throttling for certain processes within a Kubernetes cluster. Here's how the alert notification looks:</p>
+<p><strong>Alert Notification</strong></p>
+<p><img alt="CPU throttling" src="../cpu_throttling.png" /></p>
+<p><i>CPU throttling increases for certain processes </i></p>
+<h3 id="impact"><strong>Impact</strong><a class="headerlink" href="#impact" title="Permanent link">&para;</a></h3>
+<p>This alert is primarily informational and may be disregarded if no other issues are affecting the application.</p>
+<h3 id="diagnosis"><strong>Diagnosis</strong><a class="headerlink" href="#diagnosis" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Verify that the application is functioning properly</li>
+<li>Ensure that CPU resource allocations align with application usage</li>
+<li>Examine the node's kernel version</li>
+</ul>
+<h3 id="mitigation"><strong>Mitigation</strong><a class="headerlink" href="#mitigation" title="Permanent link">&para;</a></h3>
+<p>By default, kube-prometheus suppresses this alert, which will only be transmitted if another alert from the same namespace is active.</p>
+<aside class="callout">🗣 Users should avoid raising CPU limits unless the application exhibits erratic behavior (triggered by another alert).</aside>
+
+<p><strong>In conjunction with other alerts</strong>:</p>
+<p>Allocate more CPU limits to a specific container within the pod while maintaining the same requests.</p>
+<p>In certain instances, an outdated kernel on a Kubernetes node may cause problems with CPU resource allocation to processes <a href="https://github.com/kubernetes/kubernetes/issues/67577">refer here</a>.</p>
+<p>In specific situations, ensure the use of CPU Pinning and isolation – in essence, provide the container with complete CPU cores. Additionally, update the application to be aware of its cgroup environment or explicitly define the number of CPUs it can utilize, or limit the number of threads.</p>
+<h2 id="kube-pod-crash-looping">Kube Pod Crash Looping<a class="headerlink" href="#kube-pod-crash-looping" title="Permanent link">&para;</a></h2>
+<p>The <em>Kube Pod Crash Looping alert</em> serves as an important notification for Kubernetes administrators, highlighting a recurring issue with a Pod that is crashing or becoming unresponsive, prompting Kubernetes to restart it automatically. </p>
+<p><strong>Alert Notification</strong></p>
+<p><img alt="Untitled" src="../pod_crash.png" /></p>
+<p><i>Kube Pod Crash Looping</i></p>
+<h3 id="impact_1"><strong>Impact</strong><a class="headerlink" href="#impact_1" title="Permanent link">&para;</a></h3>
+<p>The consequences of a CrashLoop include service degradation or unavailability, inability to perform rolling upgrades, and failure of certain applications to execute required tasks, such as data migrations.</p>
+<h3 id="troubleshooting"><strong>Troubleshooting</strong><a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Examine the template by running:</p>
+<p><div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span><span class="nv">$NAMESPACE</span><span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span><span class="nv">$POD</span>.
+</code></pre></div>
+2. Review pod events with:</p>
+<p><div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span><span class="nv">$NAMESPACE</span><span class="w"> </span>describe<span class="w"> </span>pod<span class="w"> </span><span class="nv">$POD</span>.
+</code></pre></div>
+3. Inspect pod logs using:</p>
+<p><div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span><span class="nv">$NAMESPACE</span><span class="w"> </span>logs<span class="w"> </span><span class="nv">$POD</span><span class="w"> </span>-c<span class="w"> </span><span class="nv">$CONTAINER</span>
+</code></pre></div>
+4. Analyze pod template parameters, such as:
+- Pod priority
+- Resources - the pod may attempt to utilize an unavailable resource, like a GPU, when only a limited number of nodes offer this resource
+- Readiness and liveness probes might be incorrect - verify the port or command, and ensure that the check does not fail too quickly due to a short response timeout</p>
+</li>
+</ol>
+<p>Additional factors to consider:</p>
+<ul>
+<li>Slow application response time due to resource constraints, such as insufficient memory or CPU, especially during startup</li>
+<li>The application waiting for other services to start, like a database</li>
+<li>Misconfiguration that leads to application crashes on startup</li>
+<li>Absence of necessary files, such as configmaps, secrets, or volumes</li>
+<li>Read-only filesystem</li>
+<li>Inappropriate user permissions within the container</li>
+<li>Insufficient container capabilities (securityContext)</li>
+<li>The application being executed in an unexpected directory (e.g., the WORKDIR from the Dockerfile not being used in OpenShift)</li>
+</ul>
+<h3 id="resolution"><strong>Resolution</strong><a class="headerlink" href="#resolution" title="Permanent link">&para;</a></h3>
+<p>Consult with developers or review application documentation to ensure appropriate default values are defined for starting the application.</p>
+<h2 id="aggregated-api-down">Aggregated API Down<a class="headerlink" href="#aggregated-api-down" title="Permanent link">&para;</a></h2>
+<p>The <em>Aggregated API Down</em> alert is a crucial notification that signifies issues with the availability of the Kubernetes Aggregated API, which plays a vital role in managing and orchestrating cluster resources.  this alert is activated when the monitoring system is unable to reach any Kubernetes API servers for a duration exceeding 15 minutes.</p>
+<p><strong>Alert Notification</strong></p>
+<p><img alt="image" src="../agg_api_down.png" /></p>
+<p><i>Aggregated API Down</i></p>
+<h3 id="impact_2"><strong>Impact</strong><a class="headerlink" href="#impact_2" title="Permanent link">&para;</a></h3>
+<p>This critical alert indicates that the Kubernetes API is unresponsive, potentially causing the cluster to be partially or entirely non-functional.</p>
+<p>Applications that do not directly rely on the Kubernetes API will continue to operate. However, modifying Kubernetes resources within the cluster will be impossible.</p>
+<p>Services that directly utilize the Kubernetes API may start to exhibit unpredictable behavior.</p>
+<h3 id="remediation"><strong>Remediation</strong><a class="headerlink" href="#remediation" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Examine the status of the API server targets within the Prometheus user interface.</li>
+<li>
+<p>Verify if the API remains unresponsive by executing the following command:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>cluster-info
+</code></pre></div>
+</li>
+<li>
+<p>If the API server is accessible, there could be a network issue between the Prometheus instances and the API server pods. Inspect the status of the API server pods by running:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span>get<span class="w"> </span>pods
+</code></pre></div>
+</li>
+<li>
+<p>Examine the logs of the API server pods with the following command:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span>logs<span class="w"> </span>-l<span class="w"> </span><span class="s1">&#39;component=kube-apiserver&#39;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Investigate the following aspects for potential issues:</p>
+<ul>
+<li>Node networking</li>
+<li>Node firewall settings</li>
+<li>Kube-proxy logs</li>
+<li>NetworkPolicies, ensuring that Prometheus and the Kubernetes API are not inadvertently filtered out</li>
+</ul>
+</li>
+</ol>
+<h2 id="kube-pod-not-ready">Kube Pod Not Ready<a class="headerlink" href="#kube-pod-not-ready" title="Permanent link">&para;</a></h2>
+<p>The <em>Kube Pod Not Ready</em> alert is triggered when a pod in a Kubernetes cluster remains in a non-ready state for more than 15 minutes. This can occur due to various issues, such as failed readiness probes, pending pod creation for a specific namespace and node, or other underlying problems. The alert aims to notify operators about potential service degradation or unavailability, as the affected pod is not connected to the service and will not receive traffic.</p>
+<p>For more information on pod failure to reach the ready state, see the <a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/">pod lifecycle</a> documentation.</p>
+<p><strong>Alert Notification</strong></p>
+<p><img alt="Untitled" src="../pod_not_ready.png" /></p>
+<p><i>Kube Pod Not Ready</i></p>
+<h3 id="impact_3"><strong>Impact</strong><a class="headerlink" href="#impact_3" title="Permanent link">&para;</a></h3>
+<p>This issue can lead to service degradation or unavailability, as the pod is not connected to the service and will not receive traffic.</p>
+<h3 id="diagnosis_1"><strong>Diagnosis</strong><a class="headerlink" href="#diagnosis_1" title="Permanent link">&para;</a></h3>
+<p>To diagnose the issue, follow these steps:</p>
+<ol>
+<li>
+<p>Examine the pod template using the following command:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span><span class="nv">$NAMESPACE</span><span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span><span class="nv">$POD</span>.
+</code></pre></div>
+</li>
+<li>
+<p>Review the pod events with this command:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span><span class="nv">$NAMESPACE</span><span class="w"> </span>describe<span class="w"> </span>pod<span class="w"> </span><span class="nv">$POD</span>.
+</code></pre></div>
+</li>
+<li>
+<p>Access the pod logs using:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span><span class="nv">$NAMESPACE</span><span class="w"> </span>logs<span class="w"> </span><span class="nv">$POD</span><span class="w"> </span>-c<span class="w"> </span><span class="nv">$CONTAINER</span>
+</code></pre></div>
+</li>
+<li>
+<p>Investigate the pod template parameters, such as:</p>
+<ul>
+<li>Pod priority</li>
+<li>Resources (the pod may be attempting to utilize unavailable resources, such as a GPU with limited node availability)</li>
+<li>Readiness and liveness probes (these may be incorrect due to wrong port, command, or a too-short response timeout)</li>
+<li>Stuck or long-running init containers</li>
+</ul>
+</li>
+</ol>
+<p>Additional factors to consider:</p>
+<ul>
+<li>Slow application response due to resource constraints (e.g., insufficient memory or CPU at startup)</li>
+<li>Application waiting for other services to start (e.g., a database)</li>
+<li>Misconfiguration causing application crashes at startup</li>
+<li>Missing files (e.g., configmaps, secrets, or volumes)</li>
+<li>Read-only filesystem</li>
+<li>Incorrect user permissions within the container</li>
+<li>Absence of special container capabilities (securityContext)</li>
+<li>Application executed in an unexpected directory (e.g., a WORKDIR from a Dockerfile not used in OpenShift)</li>
+</ul>
+<h3 id="mitigation_1"><strong>Mitigation</strong><a class="headerlink" href="#mitigation_1" title="Permanent link">&para;</a></h3>
+<p>Consult with developers or review the application documentation to ensure proper default values for starting the app.</p>
+<h2 id="kube-container-waiting">Kube Container Waiting<a class="headerlink" href="#kube-container-waiting" title="Permanent link">&para;</a></h2>
+<p>This Kube Container Waiting Alert occurs when a container within a Kubernetes pod experiences an extended period in the Waiting state, indicating potential issues with the deployment or underlying resources. Prolonged waiting periods can impact the overall performance and availability of services, making it crucial to identify and resolve the underlying causes.</p>
+<p><strong>Alert Notification</strong></p>
+<p><img alt="Untitled" src="../container_waiting.png" /></p>
+<p><i>Kube Container Waiting</i></p>
+<h3 id="impact_4"><strong>Impact</strong><a class="headerlink" href="#impact_4" title="Permanent link">&para;</a></h3>
+<p>This may result in service degradation or unavailability.</p>
+<h3 id="troubleshooting_1"><strong>Troubleshooting</strong><a class="headerlink" href="#troubleshooting_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Examine pod events by executing the following command:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span><span class="nv">$NAMESPACE</span><span class="w"> </span>describe<span class="w"> </span>pod<span class="w"> </span><span class="nv">$POD</span>
+</code></pre></div>
+<ol>
+<li>Review pod logs with the following command:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span><span class="nv">$NAMESPACE</span><span class="w"> </span>logs<span class="w"> </span><span class="nv">$POD</span><span class="w"> </span>-c<span class="w"> </span><span class="nv">$CONTAINER</span>
+</code></pre></div>
+<ol>
+<li>Inspect for missing components, such as configuration maps, secrets, or volumes.</li>
+<li>Assess pod requests, particularly unique ones, like GPU.</li>
+<li>Investigate node taints and capabilities.</li>
+</ol>
+<h3 id="resolution_1"><strong>Resolution</strong><a class="headerlink" href="#resolution_1" title="Permanent link">&para;</a></h3>
+<p>Refer to the <a href="https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#my-pod-stays-waiting">Container Waiting</a> section of the Kubernetes documentation for further guidance.</p>
+<h2 id="kube-cpu-over-commit">Kube CPU Over Commit<a class="headerlink" href="#kube-cpu-over-commit" title="Permanent link">&para;</a></h2>
+<p>The <em>Kube CPU Over Commit</em> alert occurs when a Kubernetes cluster's CPU resource requests for Pods surpass its capacity, resulting in an overcommitted state. This situation renders the cluster vulnerable to node failure, as it would be unable to accommodate some Pods within the remaining nodes, causing them to enter a <code>Pending</code> state. Proper diagnosis and remediation measures are crucial for maintaining optimal cluster performance and ensuring that critical services remain operational even in the event of node failure. </p>
+<p><strong>Alert Notification</strong></p>
+<p><img alt="Untitled" src="../cpu_over_commit.png" /></p>
+<p><i>Kube CPU Over Commit</i></p>
+<h3 id="consequences"><strong>Consequences</strong><a class="headerlink" href="#consequences" title="Permanent link">&para;</a></h3>
+<p>The cluster is unable to tolerate node failure. Should a node fail, some Pods will enter a <code>Pending</code> state.</p>
+<h3 id="diagnosis_2"><strong>Diagnosis</strong><a class="headerlink" href="#diagnosis_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Verify if the CPU resource requests align with application usage</li>
+<li>Ensure that some nodes are available and not cordoned off</li>
+<li>Investigate any issues with the cluster-autoscaler's ability to add new nodes</li>
+</ul>
+<h3 id="remediation_1"><strong>Remediation</strong><a class="headerlink" href="#remediation_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Increase the number of nodes in the cluster - it is generally preferable to have a higher number of smaller nodes rather than a few larger ones.</li>
+<li>Introduce various node pools with different instance types to circumvent issues that may arise from relying solely on one instance type in the cloud.</li>
+<li>Implement pod priorities to safeguard critical services from performance degradation; refer to <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/">pod priority and preemption</a>.</li>
+<li>Optimize settings for specific Pods used in conjunction with the <a href="https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#how-does-cluster-autoscaler-work-with-pod-priority-and-preemption">cluster-autoscaler</a>.</li>
+<li>Conduct performance tests based on expected workloads and plan cluster capacity accordingly.</li>
+</ul>
+<h2 id="kube-statefulset-generation-mismatch">Kube StatefulSet Generation Mismatch<a class="headerlink" href="#kube-statefulset-generation-mismatch" title="Permanent link">&para;</a></h2>
+<p>The <em>Kube Statefulset Generation Mismatch</em> alert occurs when there is a discrepancy in StatefulSet generation, potentially due to a rollback. This discrepancy can lead to service degradation or unavailability, negatively impacting the performance of your Kubernetes cluster. Identifying, diagnosing, and resolving such issues is crucial for maintaining efficient and reliable operations.</p>
+<p><strong>Alert Notification</strong></p>
+<p><img alt="Untitled" src="../generation_mismatch.png" /></p>
+<p><i>Kube StatefulSet Generation Mismatch</i></p>
+<h3 id="consequences_1"><strong>Consequences</strong><a class="headerlink" href="#consequences_1" title="Permanent link">&para;</a></h3>
+<p>This can lead to a reduction in service quality or complete unavailability.</p>
+<h3 id="troubleshooting_2"><strong>Troubleshooting</strong><a class="headerlink" href="#troubleshooting_2" title="Permanent link">&para;</a></h3>
+<p>Refer to the <a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#failed-deployment">Kubernetes Documentation - Failed Deployment</a>, which can also be applied to StatefulSets to a certain extent:</p>
+<ul>
+<li>Examine the rollout history:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span><span class="nv">$NAMESPACE</span><span class="w"> </span>rollout<span class="w"> </span><span class="nb">history</span><span class="w"> </span>statefulset<span class="w"> </span><span class="nv">$NAME</span>
+</code></pre></div>
+<ul>
+<li>Verify the rollout status, ensuring it is not paused.</li>
+<li>Review the deployment status using:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span><span class="nv">$NAMESPACE</span><span class="w"> </span>describe<span class="w"> </span>statefulset<span class="w"> </span><span class="nv">$NAME</span>
+</code></pre></div>
+<ul>
+<li>Determine the number of declared replicas.</li>
+<li>Investigate whether new pods are crashing.</li>
+<li>Assess any issues with PersistentVolumes associated with StatefulSets.</li>
+<li>Evaluate the status of pods belonging to the replica sets within the deployment.</li>
+<li>Analyze pod template parameters, including:<ul>
+<li>Pod priority - determine if it was evicted by higher-priority pods.</li>
+<li>Resources - ensure it is not attempting to use unavailable resources, such as a limited number of nodes with GPUs.</li>
+<li>Affinity rules - check if a lack of available nodes due to affinities prevents pod scheduling.</li>
+<li>Pod termination grace period - verify if an excessively long period causes pods to remain in the terminating state.</li>
+</ul>
+</li>
+<li>Inspect whether the Horizontal Pod Autoscaler (HPA) is activated due to untested values (request values).</li>
+<li>Confirm that the cluster-autoscaler can create new nodes by reviewing its logs or the cluster-autoscaler status ConfigMap.</li>
+</ul>
+<h3 id="remediation_2"><strong>Remediation</strong><a class="headerlink" href="#remediation_2" title="Permanent link">&para;</a></h3>
+<p>StatefulSets have unique characteristics and often employ specialized scripts for pod termination. Investigate whether specific commands, such as data migration, are executed, as they may substantially slow down the process.</p>
+<p>If scaling out, adding new nodes typically resolves the issue.</p>
+<p>Alternatively, the StatefulSet definition may require adjustments.</p>
+<p>In rare instances, it may be necessary to roll back to a previous version. Consult the <a href="https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#rolling-updates">Kubernetes Documentation - Rolling Back</a>.</p>
+<p>In extremely rare cases, deleting problematic pods may be the best course of action.</p>
+<h2 id="kube-quota-fully-used">Kube Quota Fully Used<a class="headerlink" href="#kube-quota-fully-used" title="Permanent link">&para;</a></h2>
+<p>The <em>Kube Quota Fully Used</em> alert occurs when the cluster's resource utilization within a specific namespace reaches its permitted limits. When this happens, the deployment of new applications might be hindered, affecting the overall performance and functionality of the system. To address this issue, it is crucial to investigate resource consumption, adjust quotas, optimize resource utilization, and follow standard capacity planning procedures as outlined in the page below.</p>
+<p><strong>Alert Notification</strong></p>
+<p><img alt="Untitled" src="../quota_used.png" /></p>
+<p><i>Kube Quota Fully Used</i></p>
+<p><strong>Consequence</strong></p>
+<p>Installation of new applications might be hindered.</p>
+<h3 id="investigation"><strong>Investigation</strong><a class="headerlink" href="#investigation" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Examine the resource consumption for the specified namespace within the given time frame.</li>
+</ul>
+<h3 id="resolution_2"><strong>Resolution</strong><a class="headerlink" href="#resolution_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Evaluate the current quota for the specified namespace and make appropriate adjustments.</li>
+<li>Assess the resources governed by the quota and optimize their utilization.</li>
+<li>Proceed with standard capacity planning processes.</li>
+<li>Refer to <a href="https://kubernetes.io/docs/concepts/policy/resource-quotas/">Resource Quotas</a> for more information.</li>
+</ul>
+<h2 id="kube-persistent-volume-filling-up">Kube Persistent Volume Filling Up<a class="headerlink" href="#kube-persistent-volume-filling-up" title="Permanent link">&para;</a></h2>
+<p>When a volume in a Kubernetes cluster begins to fill up, it can create performance and stability issues for the services and applications that rely on it. The <em>Kube Persistent Volume Filling Up</em> alert occurs when a volume approaches its capacity, potentially causing service degradation, read-only mode activation, or even data loss.  A variety of factors, such as increased application usage, data retention, and misconfiguration, can contribute to a volume filling up. To prevent service degradation or switching to read-only mode, it is essential to identify and implement appropriate mitigation strategies, ensuring that the volume usage remains within acceptable limits and that the overall infrastructure continues to operate efficiently.</p>
+<p><strong>Alert Notification</strong></p>
+<p><img alt="Untitled" src="../volume_fillup.png" /></p>
+<p><i>Kube Persistent Volume Filling Up</i></p>
+<h3 id="consequences_2"><strong>Consequences</strong><a class="headerlink" href="#consequences_2" title="Permanent link">&para;</a></h3>
+<p>Filling up a volume may lead to service degradation and potentially a switch to read-only mode.</p>
+<h3 id="identifying-the-problem"><strong>Identifying the Problem</strong><a class="headerlink" href="#identifying-the-problem" title="Permanent link">&para;</a></h3>
+<p>Examine application usage over time and check for configurations such as snapshotting or automatic data retention.</p>
+<h3 id="solutions"><strong>Solutions</strong><a class="headerlink" href="#solutions" title="Permanent link">&para;</a></h3>
+<p><strong>Data Retention</strong></p>
+<p>The quickest and most cost-effective solution is to delete unneeded data. Consult the service owner to determine if specific old data can be removed. If possible, enable data retention, especially for snapshots.</p>
+<p><strong>Data Export</strong></p>
+<p>If the data is not required within the service but needs to be processed later, transfer it to an external location, such as an S3 bucket.</p>
+<p><strong>Cluster Data Rebalancing</strong></p>
+<p>Some services automatically rebalance data within a cluster when a node fills up. This may involve redistributing data across existing nodes or adding new nodes. If supported, increase the number of replicas and either wait for data migration or initiate it manually.</p>
+<p>Examples of services that support this feature include:</p>
+<ul>
+<li>Cassandra</li>
+<li>Ceph</li>
+<li>Elasticsearch/OpenSearch</li>
+<li>Gluster</li>
+<li>Hadoop</li>
+<li>Kafka</li>
+<li>MinIO</li>
+</ul>
+<aside class="callout">🗣 Some services may necessitate specific scaling conditions, such as doubling the number of existing nodes.</aside>
+
+<p><strong>Direct Volume Resizing</strong></p>
+<p>If volume resizing is an option, simply increase the volume capacity. To check if volume expansion is available, run the following command with your namespace and PVC-name replaced:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>storageclass<span class="w"> </span><span class="sb">`</span>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;my-namespace&gt;<span class="w"> </span>get<span class="w"> </span>pvc<span class="w"> </span>&lt;my-pvc&gt;<span class="w"> </span>-ojson<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.spec.storageClassName&#39;</span><span class="sb">`</span>
+
+NAME<span class="w">                 </span>PROVISIONER<span class="w">            </span>RECLAIMPOLICY<span class="w">   </span>VOLUMEBINDINGMODE<span class="w">   </span>ALLOWVOLUMEEXPANSION<span class="w">   </span>AGE
+standard<span class="w"> </span><span class="o">(</span>default<span class="o">)</span><span class="w">   </span>kubernetes.io/gce-pd<span class="w">   </span>Delete<span class="w">          </span>Immediate<span class="w">           </span><span class="nb">true</span><span class="w">                   </span>28d
+</code></pre></div>
+<p>If <code>ALLOWVOLUMEEXPANSION</code> is true, you can utilize this feature. To resize the volume, run:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;my-namespace&gt;<span class="w"> </span>edit<span class="w"> </span>pvc<span class="w"> </span>&lt;my-pvc&gt;
+</code></pre></div>
+<p>Adjust <code>.spec.resources.requests.storage</code> to the desired storage size. Once the PVC status prompts you to restart the associated pod, perform the following to restart it:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;my-namespace&gt;<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span><span class="sb">`</span>kubectl<span class="w"> </span>-n<span class="w"> </span>&lt;my-namespace&gt;<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-ojson<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.items[] | select(.spec.volumes[] .persistentVolumeClaim.claimName==&quot;&lt;my-pvc&gt;&quot;) | .metadata.name&#39;</span><span class="sb">`</span>
+</code></pre></div>
+<p><strong>Data Migration to a Larger Volume</strong></p>
+<p>When resizing is not possible and the data cannot be deleted, create a larger volume and migrate the data.</p>
+<p><strong>Volume Purging</strong></p>
+<p>For ephemeral data on volumes that cannot be expanded, purging the volume may be the best option. Be cautious, as this will permanently delete the data on the volume.</p>
+<p><strong>Data Migration to a Larger Instance Pool within the Same Cluster</strong></p>
+<p>In specific situations, it may be beneficial to migrate data to a new, larger instance pool within the same cluster. This can be challenging due to the management of certain resources in Kubernetes.</p>
+<p>The general procedure involves:</p>
+<ol>
+<li>Adding new nodes with greater capacity than the existing cluster</li>
+<li>Initiating data migration</li>
+<li>Scaling down the old instance pool to zero and then deleting it.</li>
+</ol>
+<p><strong>Data Migration to a Larger Cluster</strong></p>
+<p>This common scenario is more expensive and time-consuming and may cause split-brain issues during writing.</p>
+<p>The general procedure involves:</p>
+<ol>
+<li>Creating a data snapshot on the existing cluster</li>
+<li>Adding a new cluster with greater capacity than the existing cluster</li>
+<li>Restoring data on the new cluster based on the snapshot</li>
+<li>Switching the old cluster to read-only mode</li>
+<li>Reconfiguring the network to point to the new cluster</li>
+<li>Migrating data from the old cluster to the new cluster to synchronize the differences between the snapshot and the latest writes</li>
+<li>Removing the old cluster</li>
+</ol>
+<h3 id="additional-considerations"><strong>Additional Considerations</strong><a class="headerlink" href="#additional-considerations" title="Permanent link">&para;</a></h3>
+<p>When implementing any of the above mitigation strategies, it is crucial to consider the specific requirements and limitations of your environment, such as available resources, budget constraints, and data sensitivity. Be sure to consult with service owners and other relevant stakeholders before making any changes.</p>
+<p>Additionally, it is essential to monitor the impact of these changes on your system, ensuring that the desired outcomes have been achieved without introducing new issues or exacerbating existing ones. Regularly review and update your mitigation strategies as necessary to maintain optimal performance and data integrity.</p>
+<p>In conclusion, addressing volume-filling issues is a vital aspect of maintaining a healthy and efficient infrastructure. By following the guidelines and mitigation strategies provided in this technical document, you can effectively manage volume-filling concerns and minimize the negative impact on your services and applications.</p>
+<h2 id="kube-hpa-maxed-out">Kube HPA Maxed Out<a class="headerlink" href="#kube-hpa-maxed-out" title="Permanent link">&para;</a></h2>
+<p>The <em>Kube HPA Maxed Out</em> alert is triggered when the Horizontal Pod Autoscaler (HPA) in a Kubernetes cluster reaches its maximum replica count for an extended period, specifically longer than 15 minutes. This situation may prevent the HPA from creating new pods, thus limiting the application's ability to scale according to demand. </p>
+<p><strong>Alert Notification</strong></p>
+<p><img alt="Untitled" src="../hpa_max_out.png" /></p>
+<p><i>Kube HPA Maxed Out</i></p>
+<h3 id="consequences_3"><strong>Consequences</strong><a class="headerlink" href="#consequences_3" title="Permanent link">&para;</a></h3>
+<p>The HPA will be unable to create new pods, limiting the application's scaling capabilities. It is important to note that for some services, reaching the maximum HPA value is intentional.</p>
+<h3 id="identifying-the-issue"><strong>Identifying the Issue</strong><a class="headerlink" href="#identifying-the-issue" title="Permanent link">&para;</a></h3>
+<p>Investigate the factors preventing HPA from scaling:</p>
+<ul>
+<li>Insufficient maximum replica count</li>
+<li>Undervalued resource requests, such as CPU</li>
+</ul>
+<h3 id="solutions_1"><strong>Solutions</strong><a class="headerlink" href="#solutions_1" title="Permanent link">&para;</a></h3>
+<p>For basic metrics like CPU and memory, ensure appropriate <code>requests</code> values are set. If memory-based scaling is in use, verify the absence of memory leaks. For custom metrics, fine-tune the application's scaling behavior based on the metric.</p>
+<p>Conduct performance tests to evaluate the application's scaling capabilities.</p>
+<h2 id="kube-hpa-replicas-mismatch">Kube HPA Replicas MisMatch<a class="headerlink" href="#kube-hpa-replicas-mismatch" title="Permanent link">&para;</a></h2>
+<p>The <em>Kube HPA Replicas MisMatch</em> alert is triggered when the Horizontal Pod Autoscaler (HPA) in a Kubernetes cluster fails to reach the desired number of replicas for an extended period, specifically longer than 15 minutes. This situation may occur due to various factors such as insufficient nodes, resource quota limitations, or pod eviction based on priority.</p>
+<p><strong>Alert Notification</strong></p>
+<p><img alt="Untitled" src="../replica_mismatch.png" /></p>
+<p><i>Kube Hpa Replicas MisMatch</i></p>
+<h3 id="consequences_4"><strong>Consequences</strong><a class="headerlink" href="#consequences_4" title="Permanent link">&para;</a></h3>
+<p>The HPA will be unable to create new pods, limiting the application's scaling capabilities. It is important to note that for some services, reaching the maximum HPA value is intentional.</p>
+<h3 id="identifying-the-issue_1"><strong>Identifying the Issue</strong><a class="headerlink" href="#identifying-the-issue_1" title="Permanent link">&para;</a></h3>
+<p>Investigate the factors preventing HPA from scaling:</p>
+<ul>
+<li>Insufficient maximum replica count</li>
+<li>Undervalued resource requests, such as CPU</li>
+</ul>
+<h3 id="solutions_2"><strong>Solutions</strong><a class="headerlink" href="#solutions_2" title="Permanent link">&para;</a></h3>
+<p>For basic metrics like CPU and memory, ensure appropriate <code>requests</code> values are set. If memory-based scaling is in use, verify the absence of memory leaks. For custom metrics, fine-tune the application's scaling behavior based on the metric.</p>
+<p>Conduct performance tests to evaluate the application's scaling capabilities.</p>
+<h2 id="kube-version-mismatch">Kube Version MisMatch<a class="headerlink" href="#kube-version-mismatch" title="Permanent link">&para;</a></h2>
+<p>The <em>Kube Version MisMatch</em> alert is triggered when Kubernetes components within a cluster are running different semantic versions, which typically occurs during the cluster upgrade process. Control plane nodes or worker nodes may have mismatched versions during minor or major version upgrades. Such discrepancies in API versions can lead to a wide range of issues, from individual container performance to overall cluster stability. </p>
+<p><strong>Alert Notification</strong></p>
+<p><img alt="Untitled" src="../version_mismatch.png" /></p>
+<p><i>Kube Version MisMatch</i></p>
+<h3 id="consequences_5"><strong>Consequences</strong><a class="headerlink" href="#consequences_5" title="Permanent link">&para;</a></h3>
+<p>Incompatible API versions between Kubernetes components can result in a wide range of issues, affecting individual containers, application stability, and overall cluster stability.</p>
+<h3 id="identifying-the-issue_2"><strong>Identifying the Issue</strong><a class="headerlink" href="#identifying-the-issue_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Examine existing Kubernetes versions using:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>nodes
+</code></pre></div>
+<ul>
+<li>Observe the version column in the output</li>
+<li>Verify if there is an ongoing Kubernetes upgrade, particularly in managed cloud services</li>
+</ul>
+<h3 id="solutions_3"><strong>Solutions</strong><a class="headerlink" href="#solutions_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Safely drain affected nodes before upgrading or replacing them with newer versions. Refer to <a href="https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/">Safely drain node</a> for guidance.</li>
+<li>Ensure proper control plane version and node pool versions are set when creating clusters.</li>
+<li>Enable automatic cluster updates for the control plane and node pools.</li>
+<li>Establish appropriate maintenance windows for clusters.</li>
+</ul>
+<p><a href="https://www.notion.so/Kube-Version-MisMatch-8ac611546dcd45aea9bc5502ac983099?pvs=21">Kube Version MisMatch</a></p>
+<h2 id="kube-node-not-ready">Kube Node not Ready<a class="headerlink" href="#kube-node-not-ready" title="Permanent link">&para;</a></h2>
+<p>The <em>Kube Node Not Ready</em> alert occurs when a Kubernetes node remains in a state other than <code>Ready</code> for an extended period. This can impact the node's ability to host new pods, consequently affecting the performance and reliability of cluster deployments.</p>
+<p><strong>Alert Notification</strong></p>
+<p><img alt="Untitled" src="../node_not_ready.png" /></p>
+<p><i>Kube Node Not Ready</i></p>
+<h3 id="consequences_6"><strong>Consequences</strong><a class="headerlink" href="#consequences_6" title="Permanent link">&para;</a></h3>
+<p>The cluster's deployment performance may be impacted depending on the overall workload and the affected node's role.</p>
+<h3 id="identifying-the-issue_3"><strong>Identifying the Issue</strong><a class="headerlink" href="#identifying-the-issue_3" title="Permanent link">&para;</a></h3>
+<p>The alert notification should indicate the unready node, for example:</p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span>-<span class="w"> </span><span class="nv">alertname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>KubeNodeNotReady
+...
+<span class="w"> </span>-<span class="w"> </span><span class="nv">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>node1.example.com
+...
+</code></pre></div>
+<p>Log in to the cluster and check the node's status:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>node<span class="w"> </span><span class="nv">$NODE</span><span class="w"> </span>-o<span class="w"> </span>yaml
+</code></pre></div>
+<p>The output should reveal the reason for the node's unready state (e.g., timeouts when reaching the API or kubelet).</p>
+<h3 id="solutions_4"><strong>Solutions</strong><a class="headerlink" href="#solutions_4" title="Permanent link">&para;</a></h3>
+<p>After resolving the issue preventing the node from being replaced, terminate the instance to restore normal functionality.</p>
+<h2 id="kube-node-unreachable">Kube Node Unreachable<a class="headerlink" href="#kube-node-unreachable" title="Permanent link">&para;</a></h2>
+<p>The <em>Kube Node Unreachable</em> alert is triggered when a Kubernetes node becomes unreachable, which can lead to the rescheduling of certain workloads. This situation may impact the performance and reliability of cluster deployments. Various factors, such as disruptive software upgrades, hardware failures, or network issues, can contribute to a node becoming unreachable. </p>
+<p><strong>Alert Notification</strong></p>
+<p><img alt="Untitled" src="../node_unreachable1.png" /></p>
+<p><i>Kube Node Unreachable</i></p>
+<h3 id="consequences_7"><strong>Consequences</strong><a class="headerlink" href="#consequences_7" title="Permanent link">&para;</a></h3>
+<p>The cluster's deployment performance may be impacted, depending on the overall workload and the affected node's role.</p>
+<h3 id="identifying-the-issue_4"><strong>Identifying the Issue</strong><a class="headerlink" href="#identifying-the-issue_4" title="Permanent link">&para;</a></h3>
+<p>The alert notification should indicate the unreachable node, for example:</p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span>-<span class="w"> </span><span class="nv">alertname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>KubeNodeUnreachable
+...
+<span class="w"> </span>-<span class="w"> </span><span class="nv">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>node1.example.com
+...
+</code></pre></div>
+<p>Log in to the cluster and check the node's status:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>node<span class="w"> </span><span class="nv">$NODE</span><span class="w"> </span>-o<span class="w"> </span>yaml
+</code></pre></div>
+<p>The output should reveal the reason for the node's unreachability.</p>
+<p>Common failure scenarios include:</p>
+<ul>
+<li>Disruptive software upgrades</li>
+<li>Network partitioning due to hardware failures</li>
+<li>Firewall rule changes</li>
+<li>Virtual machines suspended because of storage area network issues</li>
+<li>System crashes or freezes caused by software or hardware malfunctions</li>
+</ul>
+<h3 id="solutions_5"><strong>Solutions</strong><a class="headerlink" href="#solutions_5" title="Permanent link">&para;</a></h3>
+<p>If the node is undergoing maintenance, ensure it is properly <a href="https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/">cordoned and drained</a>.</p>
+<p>For other scenarios, ensure storage and networking redundancy, if applicable.</p>
+<h2 id="kube-statefulset-update-not-rolled-out">Kube StatefulSet Update Not Rolled Out<a class="headerlink" href="#kube-statefulset-update-not-rolled-out" title="Permanent link">&para;</a></h2>
+<p>The alert is triggered when a StatefulSet update in a Kubernetes cluster fails to roll out successfully. This can lead to service degradation or unavailability, impacting the performance and reliability of your applications and infrastructure.</p>
+<p><strong>Alert Notification</strong></p>
+<p><img alt="Untitled" src="../set-update_not_rolledout.png" /></p>
+<p><i>Kube StatefulSet Update Not Rolled Out</i></p>
+<h3 id="consequences_8"><strong>Consequences</strong><a class="headerlink" href="#consequences_8" title="Permanent link">&para;</a></h3>
+<p>Service degradation or unavailability may occur.</p>
+<h3 id="identifying-the-issue_5"><strong>Identifying the Issue</strong><a class="headerlink" href="#identifying-the-issue_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Inspect the StatefulSet using:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span><span class="nv">$NAMESPACE</span><span class="w"> </span>describe<span class="w"> </span>statefulset<span class="w"> </span><span class="nv">$NAME</span>.
+</code></pre></div>
+<ul>
+<li>Verify if the StatefulSet update was not manually paused (see status)</li>
+<li>Check the declared number of replicas</li>
+<li>Examine the status of pods belonging to the replica sets under the StatefulSet</li>
+<li>Review pod template parameters, such as:<ul>
+<li>Pod priority - potential eviction by higher priority pods</li>
+<li>Resources - possible utilization of unavailable resources, e.g., GPUs with limited node availability</li>
+<li>Affinity rules - scheduling constraints due to affinities and insufficient nodes</li>
+<li>Pod termination grace period - extended terminating state due to excessive duration</li>
+</ul>
+</li>
+<li>Investigate potential issues with disk attachment to the StatefulSet, e.g., a disk in Zone A while the pod is scheduled in Zone B</li>
+<li>Assess if the Horizontal Pod Autoscaler (HPA) is triggered due to untested values (requests values)</li>
+<li>Examine if the cluster-autoscaler can create new nodes by reviewing its logs or the cluster-autoscaler status ConfigMap</li>
+</ul>
+<h3 id="solutions_6"><strong>Solutions</strong><a class="headerlink" href="#solutions_6" title="Permanent link">&para;</a></h3>
+<p>Refer to <a href="https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods">Debugging Pods</a> for guidance on resolving the issue.</p>
+
+<!-- Source file information -->
+
+
+<!-- Was this page helpful? -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine feedback configuration -->
+
+  
+
+
+<!-- Determine whether to show feedback -->
+
+
+<!-- Was this page helpful? -->
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+
+        <!-- Feedback ratings -->
+        <div class="md-feedback__list">
+          
+            <button
+              class="md-feedback__icon md-icon"
+              type="submit"
+              title="This page was helpful"
+              data-md-value="1"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9h4m4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21H9m0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03V19Z"/></svg>
+            </button>
+          
+            <button
+              class="md-feedback__icon md-icon"
+              type="submit"
+              title="This page could be improved"
+              data-md-value="0"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12h-4M15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3h9m0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97V5Z"/></svg>
+            </button>
+          
+        </div>
+
+        <!-- Feedback rating notes (shown after submission) -->
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+
+              <!-- Determine title -->
+              
+                
+              
+
+              <!-- Replace {url} and {title} placeholders in note -->
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+
+              <!-- Determine title -->
+              
+                
+              
+
+              <!-- Replace {url} and {title} placeholders in note -->
+              Thanks for your feedback!
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<!-- Comment system -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Comment system -->
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <!-- Repository information -->
+  
+
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-meta__content">
+        <div class="md-footer-social-and-modern-logo">
+          
+          <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Social links -->
+<div class="md-social">
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://www.facebook.com/themoderndatacompany"
+      target="_blank" rel="noopener"
+      title="www.facebook.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/facebook.png"
+    title="www.facebook.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://twitter.com/TheModernDataCo"
+      target="_blank" rel="noopener"
+      title="twitter.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/twitter.png"
+    title="twitter.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://www.linkedin.com/company/themoderndatacompany"
+      target="_blank" rel="noopener"
+      title="www.linkedin.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/linkedin.png"
+    title="www.linkedin.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+</div>
+          
+          <a href="https://themoderndatacompany.com" target="_blank">
+            <img src="/assets/ModernLogo.png" width="251" class="modern-logo" />
+          </a>
+        </div>
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Copyright and theme information -->
+<div class="md-copyright">
+  
+  <a href="https://themoderndatacompany.com/contact-us" target="_blank" rel="noopener"> Contact Us </a> | <a
+    href="https://themoderndatacompany.com/privacy-policy" target="_blank" rel="noopener"> Privacy Policy </a> | <a
+    href="https://themoderndatacompany.com/terms-of-use" target="_blank" rel="noopener"> Terms of Use </a>
+  
+  
+  <div class="md-copyright__highlight">
+    Copyright ⓒ 2023 The Modern Data Company
+  </div>
+  
+</div>
+      </div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.top", "navigation.tracking", "content.code.copy", "content.code.annotate - toc.follow - toc.integrate"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.6.4/dist/mermaid.js"></script>
+      
+    
+  </body>
+</html>

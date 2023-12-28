@@ -1,0 +1,2684 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>MATCH_RECOGNIZE - All things DataOS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Custom admonition icons -->
+
+
+<!-- Custom tag icons -->
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-ZH4G0HKBQC"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-ZH4G0HKBQC",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-ZH4G0HKBQC",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="blue-grey">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#match_recognize" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine base classes -->
+
+
+
+<!-- Header -->
+<header class="md-header" data-md-component="header">
+  <nav
+    class="md-header__inner md-grid"
+    aria-label="Header"
+  >
+
+    <!-- Link to home -->
+    <a
+      href="../../../.."
+      title="All things DataOS"
+      class="md-header__button md-logo"
+      aria-label="All things DataOS"
+      data-md-component="logo"
+    >
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Logo -->
+
+  <img src="../../../../assets/light-modern-logo.png" alt="logo" />
+
+    </a>
+
+    <!-- Button to open drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            All things DataOS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MATCH_RECOGNIZE
+            
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color palette -->
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input
+            class="md-option"
+            data-md-color-media=""
+            data-md-color-scheme="default"
+            data-md-color-primary="blue-grey"
+            data-md-color-accent="blue-grey"
+            
+              aria-label="Switch to dark mode"
+            
+            type="radio"
+            name="__palette"
+            id="__palette_1"
+          />
+          
+            <label
+              class="md-header__button md-icon"
+              title="Switch to dark mode"
+              for="__palette_2"
+              hidden
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          <input
+            class="md-option"
+            data-md-color-media=""
+            data-md-color-scheme="slate"
+            data-md-color-primary="grey"
+            data-md-color-accent="grey"
+            
+              aria-label="Switch to light mode"
+            
+            type="radio"
+            name="__palette"
+            id="__palette_2"
+          />
+          
+            <label
+              class="md-header__button md-icon"
+              title="Switch to light mode"
+              for="__palette_1"
+              hidden
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+
+    <!-- Site language selector -->
+    
+
+    <!-- Button to open search modal -->
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+
+      <!-- Search interface -->
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Search interface -->
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+
+      <!-- Search input -->
+      <input
+        type="text"
+        class="md-search__input"
+        name="query"
+        aria-label="Search"
+        placeholder="Search"
+        autocapitalize="off"
+        autocorrect="off"
+        autocomplete="off"
+        spellcheck="false"
+        data-md-component="search-query"
+        required
+      />
+
+      <!-- Button to open search -->
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+
+      <!-- Search options -->
+      <nav
+        class="md-search__options"
+        aria-label="Search"
+      >
+
+        <!-- Button to share search -->
+        
+
+        <!-- Button to reset search -->
+        <button
+          type="reset"
+          class="md-search__icon md-icon"
+          title="Clear"
+          aria-label="Clear"
+          tabindex="-1"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+
+      <!-- Search suggestions -->
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+
+        <!-- Search results -->
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    <!-- Repository information -->
+    
+  </nav>
+
+  <!-- Navigation tabs (sticky) -->
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Hack: unset variable, as we're using it recursively in tabs-item.html -->
+
+
+<!-- Navigation tabs -->
+<nav
+  class="md-tabs"
+  aria-label="Tabs"
+  data-md-component="tabs"
+>
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  
+  
+
+  <!-- Recurse, if the first item has further nested items -->
+  
+    <li class="md-tabs__item">
+      <a href="../../../../resources/" class="md-tabs__link">
+        Resources
+      </a>
+    </li>
+  
+
+<!-- Main navigation item -->
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  
+  
+
+  <!-- Recurse, if the first item has further nested items -->
+  
+    <li class="md-tabs__item">
+      <a href="../../../" class="md-tabs__link">
+        Interfaces
+      </a>
+    </li>
+  
+
+<!-- Main navigation item -->
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../../../architecture/" class="md-tabs__link">
+      Architecture
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../../../glossary/" class="md-tabs__link">
+      Glossary
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../../../videos/" class="md-tabs__link">
+      Videos
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to configuration -->
+
+
+  
+
+
+
+<!-- Main navigation -->
+<nav
+  class="md-nav md-nav--primary md-nav--lifted"
+  aria-label="Navigation"
+  data-md-level="0"
+>
+
+  <!-- Site title -->
+  <label class="md-nav__title" for="__drawer">
+    <a
+      href="../../../.."
+      title="All things DataOS"
+      class="md-nav__button md-logo"
+      aria-label="All things DataOS"
+      data-md-component="logo"
+    >
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Logo -->
+
+  <img src="../../../../assets/light-modern-logo.png" alt="logo" />
+
+    </a>
+    All things DataOS
+  </label>
+
+  <!-- Repository information -->
+  
+
+  <!-- Render item list -->
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+        
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle md-toggle--indeterminate"
+        type="checkbox"
+        id="__nav_2"
+        
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_2"
+          id="__nav_2_label"
+          tabindex="0"
+        >
+          Resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="1"
+        aria-labelledby="__nav_2_label"
+        aria-expanded="false"
+      >
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/cluster/" class="md-nav__link">
+        Cluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/compute/" class="md-nav__link">
+        Compute
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/depot/" class="md-nav__link">
+        Depot
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/policy/" class="md-nav__link">
+        Policy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/secret/" class="md-nav__link">
+        Secret
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/service/" class="md-nav__link">
+        Service
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/workflow/" class="md-nav__link">
+        Workflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+      
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+        
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle md-toggle--indeterminate"
+        type="checkbox"
+        id="__nav_2_9"
+        
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_2_9"
+          id="__nav_2_9_label"
+          tabindex="0"
+        >
+          Stacks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="2"
+        aria-labelledby="__nav_2_9_label"
+        aria-expanded="false"
+      >
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Stacks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/stacks/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/stacks/alpha/" class="md-nav__link">
+        Alpha
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/stacks/beacon/" class="md-nav__link">
+        Beacon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/stacks/benthos/" class="md-nav__link">
+        Benthos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/stacks/data_toolbox/" class="md-nav__link">
+        Data Toolbox
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/stacks/flare/" class="md-nav__link">
+        Flare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/stacks/scanner/" class="md-nav__link">
+        Scanner
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+        
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle md-toggle--indeterminate"
+        type="checkbox"
+        id="__nav_3"
+        
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_3"
+          id="__nav_3_label"
+          tabindex="0"
+        >
+          Interfaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="1"
+        aria-labelledby="__nav_3_label"
+        aria-expanded="false"
+      >
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Interfaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../atlas/" class="md-nav__link">
+        Atlas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../audiences/" class="md-nav__link">
+        Audiences
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../bifrost/" class="md-nav__link">
+        Bifrost
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../cli/" class="md-nav__link">
+        CLI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../lens/" class="md-nav__link">
+        Lens
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../metis/" class="md-nav__link">
+        Metis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../notebook/" class="md-nav__link">
+        Notebook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../operations/" class="md-nav__link">
+        Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Workbench
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../glossary/" class="md-nav__link">
+        Glossary
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../videos/" class="md-nav__link">
+        Videos
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#synopsis" class="md-nav__link">
+    Synopsis
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partitioning-and-ordering" class="md-nav__link">
+    Partitioning and ordering
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#row-pattern-measures" class="md-nav__link">
+    Row pattern measures
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rows-per-match" class="md-nav__link">
+    Rows per match
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#after-match-skip" class="md-nav__link">
+    After match skip
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#row-pattern-syntax" class="md-nav__link">
+    Row pattern syntax
+  </a>
+  
+    <nav class="md-nav" aria-label="Row pattern syntax">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concatenation" class="md-nav__link">
+    concatenation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternation" class="md-nav__link">
+    alternation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permutation" class="md-nav__link">
+    permutation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grouping" class="md-nav__link">
+    grouping
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partition-start-anchor" class="md-nav__link">
+    partition start anchor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partition-end-anchor" class="md-nav__link">
+    partition end anchor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#empty-pattern" class="md-nav__link">
+    empty pattern
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exclusion-syntax" class="md-nav__link">
+    exclusion syntax
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quantifiers" class="md-nav__link">
+    quantifiers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#row-pattern-union-variables" class="md-nav__link">
+    Row pattern union variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#row-pattern-variable-definitions" class="md-nav__link">
+    Row pattern variable definitions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#row-pattern-recognition-expressions" class="md-nav__link">
+    Row pattern recognition expressions
+  </a>
+  
+    <nav class="md-nav" aria-label="Row pattern recognition expressions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pattern-variable-references" class="md-nav__link">
+    pattern variable references
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classifier-function" class="md-nav__link">
+    classifier function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#match_number-function" class="md-nav__link">
+    match_number function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logical-navigation-functions" class="md-nav__link">
+    logical navigation functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#physical-navigation-functions" class="md-nav__link">
+    physical navigation functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nesting-of-navigation-functions" class="md-nav__link">
+    nesting of navigation functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregate-functions" class="md-nav__link">
+    Aggregate functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregation-arguments" class="md-nav__link">
+    Aggregation arguments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nesting-of-aggregate-functions" class="md-nav__link">
+    Nesting of aggregate functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage-of-the-classifier-and-match_number-functions" class="md-nav__link">
+    Usage of the classifier and match_number functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#row-pattern-count-aggregation" class="md-nav__link">
+    Row pattern count aggregation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-and-final-semantics" class="md-nav__link">
+    RUNNING and FINAL semantics
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evaluating-expressions-in-empty-matches-and-unmatched-rows" class="md-nav__link">
+    Evaluating expressions in empty matches and unmatched rows
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Tags -->
+
+
+<!-- Actions -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Actions -->
+
+
+<!--
+  Hack: check whether the content contains a h1 headline. If it doesn't, the
+  page title (or respectively site name) is used as the main headline.
+-->
+
+
+<!-- Page content -->
+<h1 id="match_recognize">MATCH_RECOGNIZE<a class="headerlink" href="#match_recognize" title="Permanent link">&para;</a></h1>
+<h2 id="synopsis">Synopsis<a class="headerlink" href="#synopsis" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">MATCH_RECOGNIZE (</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">[ PARTITION BY column [, ...] ]</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">[ ORDER BY column [, ...] ]</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">[ MEASURES measure_definition [, ...] ]</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">[ rows_per_match ]</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">[ AFTER MATCH skip_to ]</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">PATTERN ( row_pattern )</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">[ SUBSET subset_definition [, ...] ]</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">DEFINE variable_definition [, ...]</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">)</span>
+</code></pre></div>
+<h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
+<p>The <code>MATCH_RECOGNIZE</code> clause is an optional subclause of the <code>FROM</code> clause. It is used to detect patterns in a set of rows. Patterns of interest are specified using row pattern syntax based on regular expressions. The input to pattern matching is a table, a view or a subquery. For each detected match, one or more rows are returned. They contain requested information about the match.</p>
+<p>Row pattern matching is a powerful tool when analyzing complex sequences of events. The following examples show some of the typical use cases:</p>
+<ul>
+<li>in trade applications, tracking trends or identifying customers with specific behavioral patterns</li>
+<li>in shipping applications, tracking packages through all possible valid paths,</li>
+<li>in financial applications, detecting unusual incidents, which might signal fraud</li>
+</ul>
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
+<p>In the following example, the pattern describes a V-shape over the <code>totalprice</code> column. A match is found whenever orders made by a customer first decrease in price, and then increase past the starting point:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT * FROM orders MATCH_RECOGNIZE(</span>
+<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">PARTITION BY custkey</span>
+<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">ORDER BY orderdate</span>
+<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">MEASURES</span>
+<span class="w">              </span><span class="l l-Scalar l-Scalar-Plain">A.totalprice AS starting_price,</span>
+<span class="w">              </span><span class="l l-Scalar l-Scalar-Plain">LAST(B.totalprice) AS bottom_price,</span>
+<span class="w">              </span><span class="l l-Scalar l-Scalar-Plain">LAST(U.totalprice) AS top_price</span>
+<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">ONE ROW PER MATCH</span>
+<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">AFTER MATCH SKIP PAST LAST ROW</span>
+<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">PATTERN (A B+ C+ D+)</span>
+<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">SUBSET U = (C, D)</span>
+<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">DEFINE</span>
+<span class="w">              </span><span class="l l-Scalar l-Scalar-Plain">B AS totalprice &lt; PREV(totalprice),</span>
+<span class="w">              </span><span class="l l-Scalar l-Scalar-Plain">C AS totalprice &gt; PREV(totalprice) AND totalprice &lt;= A.totalprice,</span>
+<span class="w">              </span><span class="l l-Scalar l-Scalar-Plain">D AS totalprice &gt; PREV(totalprice)</span>
+<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">)</span>
+</code></pre></div>
+<p>In the following sections, all subclauses of the <code>MATCH_RECOGNIZE</code> clause are explained with this example query.</p>
+<h2 id="partitioning-and-ordering">Partitioning and ordering<a class="headerlink" href="#partitioning-and-ordering" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">PARTITION BY custkey</span>
+</code></pre></div>
+<p>The <code>PARTITION BY</code> clause allows you to break up the input table into separate sections, that are independently processed for pattern matching. Without a partition declaration, the whole input table is used. This behavior is analogous to the semantics of <code>PARTITION BY</code> clause in <a href="../select/"><strong>window specification</strong></a>. In the example, the <code>orders</code> table is partitioned by the <code>custkey</code> value, so that pattern matching is performed for all orders of a specific customer independently from orders of other customers.</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">ORDER BY orderdate</span>
+</code></pre></div>
+<p>The optional <code>ORDER BY</code> clause is generally useful to allow matching on an ordered data set. For example, sorting the input by <code>orderdate</code> allows for matching on a trend of changes over time.</p>
+<h2 id="row-pattern-measures">Row pattern measures<a class="headerlink" href="#row-pattern-measures" title="Permanent link">&para;</a></h2>
+<p>The <code>MEASURES</code> clause allows to specify what information is retrieved from a matched sequence of rows.</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">MEASURES measure_expression AS measure_name [, ...]</span>
+</code></pre></div>
+<p>A measure expression is a scalar expression whose value is computed based on a match. In the example, three row pattern measures are specified:</p>
+<p><code>A.totalprice AS starting_price</code> returns the price in the first row of the match, which is the only row associated with <code>A</code> according to the pattern.</p>
+<p><code>LAST(B.totalprice) AS bottom_price</code> returns the lowest price (corresponding to the bottom of the “V” in the pattern). It is the price in the last row associated with <code>B</code>, which is the last row of the descending section.</p>
+<p><code>LAST(U.totalprice) AS top_price</code> returns the highest price in the match. It is the price in the last row associated with <code>C</code> or <code>D</code>, which is also the final row of the match.</p>
+<p>Measure expressions can refer to the columns of the input table. They also allow special syntax to combine the input information with the details of the match (see <a href="./"><strong>Row pattern recognition expressions</strong></a>).</p>
+<p>Each measure defines an output column of the pattern recognition. The column can be referenced with the <code>measure_name</code>.</p>
+<p>The <code>MEASURES</code> clause is optional. When no measures are specified, certain input columns (depending on <a href="./"><strong>ROWS PER MATCH</strong></a> clause) are the output of the pattern recognition.</p>
+<h2 id="rows-per-match">Rows per match<a class="headerlink" href="#rows-per-match" title="Permanent link">&para;</a></h2>
+<p>This clause can be used to specify the quantity of output rows. There are two main options:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">ONE ROW PER MATCH</span>
+</code></pre></div>
+<p>and</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">ALL ROWS PER MATCH</span>
+</code></pre></div>
+<p><code>ONE ROW PER MATCH</code> is the default option. For every match, a single row of output is produced. Output consists of <code>PARTITION BY</code> columns and measures. The output is also produced for empty matches, based on their starting rows. Rows that are unmatched (that is, neither included in some non-empty match, nor being the starting row of an empty match), are not included in the output.</p>
+<p>For <code>ALL ROWS PER MATCH</code>, every row of a match produces an output row, unless it is excluded from the output by the <a href="./"><strong>exclusion syntax</strong></a>. Output consists of <code>PARTITION BY</code> columns, <code>ORDER BY</code> columns, measures and remaining columns from the input table. By default, empty matches are shown and unmatched rows are skipped, similarly as with the <code>ONE ROW PER MATCH</code> option. However, this behavior can be changed by modifiers:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">ALL ROWS PER MATCH SHOW EMPTY MATCHES</span>
+</code></pre></div>
+<p>shows empty matches and skips unmatched rows, like the default.</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">ALL ROWS PER MATCH OMIT EMPTY MATCHES</span>
+</code></pre></div>
+<p>excludes empty matches from the output.</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">ALL ROWS PER MATCH WITH UNMATCHED ROWS</span>
+</code></pre></div>
+<p>shows empty matches and produces additional output row for each unmatched row.</p>
+<p>There are special rules for computing row pattern measures for empty matches and unmatched rows. They are explained in <a href="./"><strong>Evaluating expressions in empty matches and unmatched rows</strong></a>.</p>
+<p>Unmatched rows can only occur when the pattern does not allow an empty match. Otherwise, they are considered as starting rows of empty matches. The option <code>ALL ROWS PER MATCH WITH UNMATCHED ROWS</code> is recommended when pattern recognition is expected to pass all input rows, and it is not certain whether the pattern allows an empty match.</p>
+<h2 id="after-match-skip">After match skip<a class="headerlink" href="#after-match-skip" title="Permanent link">&para;</a></h2>
+<p>The <code>AFTER MATCH SKIP</code> clause specifies where pattern matching resumes after a non-empty match is found.</p>
+<p>The default option is:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">AFTER MATCH SKIP PAST LAST ROW</span>
+</code></pre></div>
+<p>With this option, pattern matching starts from the row after the last row of the match. Overlapping matches are not detected.</p>
+<p>With the following option, pattern matching starts from the second row of the match:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">AFTER MATCH SKIP TO NEXT ROW</span>
+</code></pre></div>
+<p>In the example, if a V-shape is detected, further overlapping matches are found, starting from consecutive rows on the descending slope of the “V”. Skipping to the next row is the default behavior after detecting an empty match or unmatched row.</p>
+<p>The following <code>AFTER MATCH SKIP</code> options allow to resume pattern matching based on the components of the pattern. Pattern matching starts from the last (default) or first row matched to a certain row pattern variable. It can be either a primary pattern variable (they are explained in <a href="./"><strong>Row pattern syntax</strong></a>) or a <a href="./"><strong>union variable</strong></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">AFTER MATCH SKIP TO [ FIRST | LAST ] pattern_variable</span>
+</code></pre></div>
+<p>It is forbidden to skip to the first row of the current match, because it results in an infinite loop. For example specifying <code>AFTER MATCH SKIP TO A</code> fails, because <code>A</code> is the first element of the pattern, and jumping back to it creates an infinite loop. Similarly, skipping to a pattern variable which is not present in the match causes failure.</p>
+<p>All other options than the default <code>AFTER MATCH SKIP PAST LAST ROW</code> allow detection of overlapping matches. The combination of <code>ALL ROWS PER MATCH WITH UNMATCHED ROWS</code> with <code>AFTER MATCH SKIP PAST LAST ROW</code> is the only configuration that guarantees exactly one output row for each input row.</p>
+<h2 id="row-pattern-syntax">Row pattern syntax<a class="headerlink" href="#row-pattern-syntax" title="Permanent link">&para;</a></h2>
+<p>Row pattern is a form of a regular expression with some syntactical extensions specific to row pattern recognition. It is specified in the <code>PATTERN</code> clause:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">PATTERN ( row_pattern )</span>
+</code></pre></div>
+<p>The basic element of row pattern is a primary pattern variable. Like pattern matching in character strings searches for characters, pattern matching in row sequences searches for rows which can be “labeled” with certain primary pattern variables. A primary pattern variable has a form of an identifier and is <a href="./"><strong>defined</strong></a> by a boolean condition. This condition determines whether a particular input row can be mapped to this variable and take part in the match.</p>
+<p>In the example <code>PATTERN (A B+ C+ D+)</code>, there are four primary pattern variables: <code>A</code>, <code>B</code>, <code>C</code>, and <code>D</code>.</p>
+<p>Row pattern syntax includes the following usage:</p>
+<h3 id="concatenation">concatenation<a class="headerlink" href="#concatenation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">A B+ C+ D+</span>
+</code></pre></div>
+<p>It is a sequence of components without operators between them. All components are matched in the same order as they are specified.</p>
+<h3 id="alternation">alternation<a class="headerlink" href="#alternation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">A | B | C</span>
+</code></pre></div>
+<p>It is a sequence of components separated by <code>|</code>. Exactly one of the components is matched. In case when multiple components can be matched, the leftmost matching component is chosen.</p>
+<h3 id="permutation">permutation<a class="headerlink" href="#permutation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">PERMUTE(A, B, C)</span>
+</code></pre></div>
+<p>It is equivalent to alternation of all permutations of its components. All components are matched in some order. If multiple matches are possible for different orderings of the components, the match is chosen based on the lexicographical order established by the order of components in the <code>PERMUTE</code> list. In the above example, the most preferred option is <code>A B C</code>, and the least preferred option is <code>C B A</code>.</p>
+<h3 id="grouping">grouping<a class="headerlink" href="#grouping" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">(A B C)</span>
+</code></pre></div>
+<h3 id="partition-start-anchor">partition start anchor<a class="headerlink" href="#partition-start-anchor" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">^</span>
+</code></pre></div>
+<h3 id="partition-end-anchor">partition end anchor<a class="headerlink" href="#partition-end-anchor" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$</span>
+</code></pre></div>
+<h3 id="empty-pattern">empty pattern<a class="headerlink" href="#empty-pattern" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">()</span>
+</code></pre></div>
+<h3 id="exclusion-syntax">exclusion syntax<a class="headerlink" href="#exclusion-syntax" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="nv">- row_pattern -</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p>Exclusion syntax is used to specify portions of the match to exclude from the output. It is useful in combination with the <code>ALL ROWS PER MATCH</code> option, when only certain sections of the match are interesting.</p>
+<p>If you change the example to use <code>ALL ROWS PER MATCH</code>, and the pattern is modified to <code>PATTERN (A {- B+ C+ -} D+)</code>, the result consists of the initial matched row and the trailing section of rows.</p>
+<p>Specifying pattern exclusions does not affect the computation of expressions in <code>MEASURES</code> and <code>DEFINE</code> clauses. Exclusions also do not affect pattern matching. They have the same semantics as regular grouping with parentheses.</p>
+<p>It is forbidden to specify pattern exclusions with the option <code>ALL ROWS PER MATCH WITH UNMATCHED ROWS</code>.</p>
+<h3 id="quantifiers">quantifiers<a class="headerlink" href="#quantifiers" title="Permanent link">&para;</a></h3>
+<p>Pattern quantifiers allow to specify the desired number of repetitions of a sub-pattern in a match. They are appended after the relevant pattern component:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">(A | B)*</span>
+</code></pre></div>
+<p>There are following row pattern quantifiers:</p>
+<ul>
+<li>zero or more repetitions:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="err">*</span>
+</code></pre></div>
+<ul>
+<li>one or more repetitions:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">+</span>
+</code></pre></div>
+<ul>
+<li>zero or one repetition:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">?</span>
+</code></pre></div>
+<ul>
+<li>exact number of repetitions, specified by a non-negative integer number:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="nv">n</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<ul>
+<li>number of repetitions ranging between bounds, specified by non-negative integer numbers:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="nv">m</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">n</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p>Specifying bounds is optional. If the left bound is omitted, it defaults to <code>0</code>. So, <code>{, 5}</code> can be described as “between zero and five repetitions”. If the right bound is omitted, the number of accepted repetitions is unbounded. So, <code>{5, }</code> can be described as “at least five repetitions”. Also, <code>{,}</code> is equivalent to <code>*</code>.</p>
+<p>Quantifiers are greedy by default. It means that higher number of repetitions is preferred over lower number. This behavior can be changed to reluctant by appending <code>?</code> immediately after the quantifier. With <code>{3, 5}</code>, 3 repetitions is the least desired option and 5 repetitions – the most desired. With <code>{3, 5}?</code>, 3 repetitions are most desired. Similarly, <code>?</code> prefers 1 repetition, while <code>??</code> prefers 0 repetitions.</p>
+<h2 id="row-pattern-union-variables">Row pattern union variables<a class="headerlink" href="#row-pattern-union-variables" title="Permanent link">&para;</a></h2>
+<p>As explained in <a href="./"><strong>Row pattern syntax</strong></a>, primary pattern variables are the basic elements of row pattern. In addition to primary pattern variables, you can define union variables. They are introduced in the <code>SUBSET</code> clause:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SUBSET U = (C, D), ...</span>
+</code></pre></div>
+<p>In the preceding example, union variable <code>U</code> is defined as union of primary variables <code>C</code> and <code>D</code>. Union variables are useful in <code>MEASURES</code>, <code>DEFINE</code> and <code>AFTER MATCH SKIP</code> clauses. They allow you to refer to set of rows matched to either primary variable from a subset.</p>
+<p>With the pattern: <code>PATTERN((A | B){5} C+)</code> it cannot be determined upfront if the match contains any <code>A</code> or any <code>B</code>. A union variable can be used to access the last row matched to either <code>A</code> or <code>B</code>. Define <code>SUBSET U = (A, B)</code>, and the expression <code>LAST(U.totalprice)</code> returns the value of the <code>totalprice</code> column from the last row mapped to either <code>A</code> or <code>B</code>. Also, <code>AFTER MATCH SKIP TO LAST A</code> or <code>AFTER MATCH SKIP TO LAST B</code> can result in failure if <code>A</code> or <code>B</code> is not present in the match. <code>AFTER MATCH SKIP TO LAST U</code> does not fail.</p>
+<h2 id="row-pattern-variable-definitions">Row pattern variable definitions<a class="headerlink" href="#row-pattern-variable-definitions" title="Permanent link">&para;</a></h2>
+<p>The <code>DEFINE</code> clause is where row pattern primary variables are defined. Each variable is associated with a boolean condition:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">DEFINE B AS totalprice &lt; PREV(totalprice), ...</span>
+</code></pre></div>
+<p>During pattern matching, when a certain variable is considered for the next step of the match, the boolean condition is evaluated in context of the current match. If the result is <code>true</code>, then the current row, “labeled” with the variable, becomes part of the match.</p>
+<p>In the preceding example, assume that the pattern allows to match <code>B</code> at some point. There are some rows already matched to some pattern variables. Now, variable <code>B</code> is being considered for the current row. Before the match is made, the defining condition for <code>B</code> is evaluated. In this example, it is only true if the value of the <code>totalprice</code> column in the current row is lower than <code>totalprice</code> in the preceding row.</p>
+<p>The mechanism of matching variables to rows shows the difference between pattern matching in row sequences and regular expression matching in text. In text, characters remain constantly in their positions. In row pattern matching, a row can be mapped to different variables in different matches, depending on the preceding part of the match, and even on the match number.</p>
+<p>It is not required that every primary variable has a definition in the <code>DEFINE</code> clause. Variables not mentioned in the <code>DEFINE</code> clause are implicitly associated with <code>true</code> condition, which means that they can be matched to every row.</p>
+<p>Boolean expressions in the <code>DEFINE</code> clause allow the same special syntax as expressions in the <code>MEASURES</code> clause. Details are explained in <a href="./"><strong>Row pattern recognition expressions</strong></a>.</p>
+<h2 id="row-pattern-recognition-expressions">Row pattern recognition expressions<a class="headerlink" href="#row-pattern-recognition-expressions" title="Permanent link">&para;</a></h2>
+<p>Expressions in <a href="./"><strong>MEASURES</strong></a> and <a href="./"><strong>DEFINE</strong></a> clauses are scalar expressions evaluated over rows of the input table. They support special syntax, specific to pattern recognition context. They can combine input information with the information about the current match. Special syntax allows to access pattern variables assigned to rows, browse rows based on how they are matched, and refer to the sequential number of the match.</p>
+<h3 id="pattern-variable-references">pattern variable references<a class="headerlink" href="#pattern-variable-references" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">A.totalprice</span>
+
+<span class="l l-Scalar l-Scalar-Plain">U.orderdate</span>
+
+<span class="l l-Scalar l-Scalar-Plain">orderstatus</span>
+</code></pre></div>
+<p>A column name prefixed with a pattern variable refers to values of this column in all rows matched to this variable, or to any variable from the subset in case of union variable. If a column name is not prefixed, it is considered as prefixed with the <code>universal pattern variable</code>, defined as union of all primary pattern variables. In other words, a non-prefixed column name refers to all rows of the current match.</p>
+<p>It is forbidden to prefix a column name with a table name in the pattern recognition context.</p>
+<h3 id="classifier-function">classifier function<a class="headerlink" href="#classifier-function" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">CLASSIFIER()</span>
+
+<span class="l l-Scalar l-Scalar-Plain">CLASSIFIER(A)</span>
+
+<span class="l l-Scalar l-Scalar-Plain">CLASSIFIER(U)</span>
+</code></pre></div>
+<p>The <code>classifier</code> function returns the primary pattern variable associated with the row. The return type is <code>varchar</code>. The optional argument is a pattern variable. It limits the rows of interest, the same way as with prefixed column references. The <code>classifier</code> function is particularly useful with a union variable as the argument. It allows you to determine which variable from the subset actually matched.</p>
+<h3 id="match_number-function">match_number function<a class="headerlink" href="#match_number-function" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">MATCH_NUMBER()</span>
+</code></pre></div>
+<p>The <code>match_number</code> function returns the sequential number of the match within partition, starting from <code>1</code>. Empty matches are assigned sequential numbers as well as non-empty matches. The return type is <code>bigint</code>.</p>
+<h3 id="logical-navigation-functions">logical navigation functions<a class="headerlink" href="#logical-navigation-functions" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">FIRST(A.totalprice, 2)</span>
+</code></pre></div>
+<p>In the above example, the <code>first</code> function navigates to the first row matched to pattern variable <code>A</code>, and then searches forward until it finds two more occurrences of variable <code>A</code> within the match. The result is the value of the <code>totalprice</code> column in that row.</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">LAST(A.totalprice, 2)</span>
+</code></pre></div>
+<p>In the above example, the <code>last</code> function navigates to the last row matched to pattern variable <code>A</code>, and then searches backwards until it finds two more occurrences of variable <code>A</code> within the match. The result is the value of the <code>totalprice</code> column in that row.</p>
+<p>With the <code>first</code> and <code>last</code> functions the result is <code>null</code>, if the searched row is not found in the mach.</p>
+<p>The second argument is optional. The default value is <code>0</code>, which means that by default these functions navigate to the first or last row of interest. If specified, the second argument must be a non-negative integer number.</p>
+<h3 id="physical-navigation-functions">physical navigation functions<a class="headerlink" href="#physical-navigation-functions" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">PREV(A.totalprice, 2)</span>
+</code></pre></div>
+<p>In the above example, the <code>prev</code> function navigates to the last row matched to pattern variable <code>A</code>, and then searches two rows backward. The result is the value of the <code>totalprice</code> column in that row.</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">NEXT(A.totalprice, 2)</span>
+</code></pre></div>
+<p>In the above example, the <code>next</code> function navigates to the last row matched to pattern variable <code>A</code>, and then searches two rows forward. The result is the value of the <code>totalprice</code> column in that row.</p>
+<p>With the <code>prev</code> and <code>next</code> functions, it is possible to navigate and retrieve values outside the match. If the navigation goes beyond partition bounds, the result is <code>null</code>.</p>
+<p>The second argument is optional. The default value is <code>1</code>, which means that by default these functions navigate to previous or next row. If specified, the second argument must be a non-negative integer number.</p>
+<h3 id="nesting-of-navigation-functions">nesting of navigation functions<a class="headerlink" href="#nesting-of-navigation-functions" title="Permanent link">&para;</a></h3>
+<p>It is possible to nest logical navigation functions within physical navigation functions:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">PREV(FIRST(A.totalprice, 3), 2)</span>
+</code></pre></div>
+<p>In case of nesting, first the logical navigation is performed. It establishes the starting row for the physical navigation. When both navigation operations succeed, the value is retrieved from the designated row.</p>
+<p>Pattern navigation functions require at least one column reference or <code>classifier</code> function inside of their first argument. The following examples are correct:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">LAST(&quot;pattern_variable_&quot; || CLASSIFIER())</span>
+
+<span class="l l-Scalar l-Scalar-Plain">NEXT(U.totalprice + 10)</span>
+</code></pre></div>
+<p>This is incorrect:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">LAST(1)</span>
+</code></pre></div>
+<p>It is also required that all column references and all <code>classifier</code> calls inside a pattern navigation function are consistent in referred pattern variables. They must all refer either to the same primary variable, the same union variable, or to the implicit universal pattern variable. The following examples are correct:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">LAST(CLASSIFIER() = &#39;A&#39; OR totalprice &gt; 10) /* universal pattern variable */</span>
+
+<span class="l l-Scalar l-Scalar-Plain">LAST(CLASSIFIER(U) = &#39;A&#39; OR U.totalprice &gt; 10) /* pattern variable U */</span>
+</code></pre></div>
+<p>This is incorrect:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">LAST(A.totalprice + B.totalprice)</span>
+</code></pre></div>
+<h3 id="aggregate-functions">Aggregate functions<a class="headerlink" href="#aggregate-functions" title="Permanent link">&para;</a></h3>
+<p>It is allowed to use aggregate functions in a row pattern recognition context. Aggregate functions are evaluated over all rows of the current match or over a subset of rows based on the matched pattern variables. The <a href="./"><strong>running and final semantics</strong></a> are supported, with <code>running</code> as the default.</p>
+<p>The following expression returns the average value of the <code>totalprice</code> column for all rows matched to pattern variable <code>A</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">avg(A.totalprice)</span>
+</code></pre></div>
+<p>The following expression returns the average value of the <code>totalprice</code> column for all rows matched to pattern variables from subset <code>U</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">avg(U.totalprice)</span>
+</code></pre></div>
+<p>The following expression returns the average value of the <code>totalprice</code> column for all rows of the match:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">avg(totalprice)</span>
+</code></pre></div>
+<h3 id="aggregation-arguments"><strong>Aggregation arguments</strong><a class="headerlink" href="#aggregation-arguments" title="Permanent link">&para;</a></h3>
+<p>In case when the aggregate function has multiple arguments, it is required that all arguments refer consistently to the same set of rows:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">max_by(totalprice, tax) /* aggregate over all rows of the match */</span>
+
+<span class="l l-Scalar l-Scalar-Plain">max_by(CLASSIFIER(A), A.tax) /* aggregate over all rows matched to A */</span>
+</code></pre></div>
+<p>This is incorrect:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">max_by(A.totalprice, tax)</span>
+
+<span class="l l-Scalar l-Scalar-Plain">max_by(A.totalprice, A.tax + B.tax)</span>
+</code></pre></div>
+<p>If an aggregate argument does not contain any column reference or <code>classifier</code> function, it does not refer to any pattern variable. In such a case other aggregate arguments determine the set of rows to aggregate over. If none of the arguments contains a pattern variable reference, the universal row pattern variable is implicit. This means that the aggregate function applies to all rows of the match:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">count(1) /* aggregate over all rows of the match */</span>
+
+<span class="l l-Scalar l-Scalar-Plain">min_by(1, 2) /* aggregate over all rows of the match */</span>
+
+<span class="l l-Scalar l-Scalar-Plain">min_by(1, totalprice) /* aggregate over all rows of the match */</span>
+
+<span class="l l-Scalar l-Scalar-Plain">min_by(totalprice, 1) /* aggregate over all rows of the match */</span>
+
+<span class="l l-Scalar l-Scalar-Plain">min_by(A.totalprice, 1) /* aggregate over all rows matched to A */</span>
+
+<span class="l l-Scalar l-Scalar-Plain">max_by(1, A.totalprice) /* aggregate over all rows matched to A */</span>
+</code></pre></div>
+<h3 id="nesting-of-aggregate-functions"><strong>Nesting of aggregate functions</strong><a class="headerlink" href="#nesting-of-aggregate-functions" title="Permanent link">&para;</a></h3>
+<p>Aggregate function arguments must not contain pattern navigation functions. Similarly, aggregate functions cannot be nested in pattern navigation functions.</p>
+<h3 id="usage-of-the-classifier-and-match_number-functions"><strong>Usage of the <code>classifier</code> and <code>match_number</code> functions</strong><a class="headerlink" href="#usage-of-the-classifier-and-match_number-functions" title="Permanent link">&para;</a></h3>
+<p>It is allowed to use the <code>classifier</code> and <code>match_number</code> functions in aggregate function arguments. The following expression returns an array containing all matched pattern variables:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">array_agg(CLASSIFIER())</span>
+</code></pre></div>
+<p>This is particularly useful in combination with the option <code>ONE ROW PER MATCH</code>. It allows to get all the components of the match while keeping the output size reduced.</p>
+<h3 id="row-pattern-count-aggregation"><strong>Row pattern count aggregation</strong><a class="headerlink" href="#row-pattern-count-aggregation" title="Permanent link">&para;</a></h3>
+<p>Like other aggregate functions in a row pattern recognition context, the <code>count</code> function can be applied to all rows of the match, or to rows associated with certain row pattern variables:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">count(*), count() /* count all rows of the match */</span>
+
+<span class="l l-Scalar l-Scalar-Plain">count(totalprice) /* count non-null values of the totalprice column</span>
+<span class="w">                     </span><span class="l l-Scalar l-Scalar-Plain">in all rows of the match */</span>
+
+<span class="l l-Scalar l-Scalar-Plain">count(A.totalprice) /* count non-null values of the totalprice column</span>
+<span class="w">                       </span><span class="l l-Scalar l-Scalar-Plain">in all rows matched to A */</span>
+</code></pre></div>
+<p>The <code>count</code> function in a row pattern recognition context allows special syntax to support the <code>count(*)</code> behavior over a limited set of rows:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">count(A.*) /* count rows matched to A */</span>
+
+<span class="l l-Scalar l-Scalar-Plain">count(U.*) /* count rows matched to pattern variables from subset U */</span>
+</code></pre></div>
+<h3 id="running-and-final-semantics"><code>RUNNING</code> and <code>FINAL</code> semantics<a class="headerlink" href="#running-and-final-semantics" title="Permanent link">&para;</a></h3>
+<p>During pattern matching in a sequence of rows, one row after another is examined to determine if it fits the pattern. At any step, a partial match is known, but it is not yet known what rows will be added in the future or what pattern variables they will be mapped to. So, when evaluating a boolean condition in the <code>DEFINE</code> clause for the current row, only the preceding part of the match (plus the current row) is “visible”. This is the <code>running</code> semantics.</p>
+<p>When evaluating expressions in the <code>MEASURES</code> clause, the match is complete. It is then possible to apply the <code>final</code> semantics. In the <code>final</code> semantics, the whole match is “visible” as from the position of the final row.</p>
+<p>In the <code>MEASURES</code> clause, the <code>running</code> semantics can also be applied. When outputting information row by row (as in <code>ALL ROWS PER MATCH</code>), the <code>running</code> semantics evaluate expressions from the positions of consecutive rows.</p>
+<p>The <code>running</code> and <code>final</code> semantics are denoted by the keywords: <code>RUNNING</code> and <code>FINAL</code>, preceding a logical navigation function <code>first</code> or <code>last</code>, or an aggregate function:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">RUNNING LAST(A.totalprice)</span>
+
+<span class="l l-Scalar l-Scalar-Plain">FINAL LAST(A.totalprice)</span>
+
+<span class="l l-Scalar l-Scalar-Plain">RUNNING avg(A.totalprice)</span>
+
+<span class="l l-Scalar l-Scalar-Plain">FINAL count(A.*)</span>
+</code></pre></div>
+<p>The <code>running</code> semantics is default in <code>MEASURES</code> and <code>DEFINE</code> clauses. <code>FINAL</code> can only be specified in the <code>MEASURES</code> clause.</p>
+<p>With the option <code>ONE ROW PER MATCH</code>, row pattern measures are evaluated from the position of the final row in the match. Therefore, <code>running</code> and <code>final</code> semantics are the same.</p>
+<h2 id="evaluating-expressions-in-empty-matches-and-unmatched-rows">Evaluating expressions in empty matches and unmatched rows<a class="headerlink" href="#evaluating-expressions-in-empty-matches-and-unmatched-rows" title="Permanent link">&para;</a></h2>
+<p>An empty match occurs when the row pattern is successfully matched, but no pattern variables are assigned. The following pattern produces an empty match for every row:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">PATTERN(())</span>
+</code></pre></div>
+<p>When evaluating row pattern measures for an empty match:</p>
+<ul>
+<li>all column references return <code>null</code></li>
+<li>all navigation operations return <code>null</code></li>
+<li><code>classifier</code> function returns <code>null</code></li>
+<li><code>match_number</code> function returns the sequential number of the match</li>
+<li>all aggregate functions are evaluated over an empty set of rows</li>
+</ul>
+<p>Like every match, an empty match has its starting row. All input values which are to be output along with the measures (as explained in <a href="./"><strong>Rows per match</strong></a>), are the values from the starting row.</p>
+<p>An unmatched row is a row that is neither part of any non-empty match nor the starting row of an empty match. With the option <code>ALL ROWS PER MATCH WITH UNMATCHED ROWS</code>, a single output row is produced. In that row, all row pattern measures are <code>null</code>. All input values which are to be output along with the measures (as explained in <a href="./"><strong>Rows per match</strong></a>), are the values from the unmatched row. Using the <code>match_number</code> function as a measure can help differentiate between an empty match and unmatched row.</p>
+
+<!-- Source file information -->
+
+
+<!-- Was this page helpful? -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine feedback configuration -->
+
+  
+
+
+<!-- Determine whether to show feedback -->
+
+
+<!-- Was this page helpful? -->
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+
+        <!-- Feedback ratings -->
+        <div class="md-feedback__list">
+          
+            <button
+              class="md-feedback__icon md-icon"
+              type="submit"
+              title="This page was helpful"
+              data-md-value="1"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9h4m4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21H9m0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03V19Z"/></svg>
+            </button>
+          
+            <button
+              class="md-feedback__icon md-icon"
+              type="submit"
+              title="This page could be improved"
+              data-md-value="0"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12h-4M15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3h9m0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97V5Z"/></svg>
+            </button>
+          
+        </div>
+
+        <!-- Feedback rating notes (shown after submission) -->
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+
+              <!-- Determine title -->
+              
+                
+              
+
+              <!-- Replace {url} and {title} placeholders in note -->
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+
+              <!-- Determine title -->
+              
+                
+              
+
+              <!-- Replace {url} and {title} placeholders in note -->
+              Thanks for your feedback!
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<!-- Comment system -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Comment system -->
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <!-- Repository information -->
+  
+
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-meta__content">
+        <div class="md-footer-social-and-modern-logo">
+          
+          <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Social links -->
+<div class="md-social">
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://www.facebook.com/themoderndatacompany"
+      target="_blank" rel="noopener"
+      title="www.facebook.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/facebook.png"
+    title="www.facebook.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://twitter.com/TheModernDataCo"
+      target="_blank" rel="noopener"
+      title="twitter.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/twitter.png"
+    title="twitter.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://www.linkedin.com/company/themoderndatacompany"
+      target="_blank" rel="noopener"
+      title="www.linkedin.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/linkedin.png"
+    title="www.linkedin.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+</div>
+          
+          <a href="https://themoderndatacompany.com" target="_blank">
+            <img src="/assets/ModernLogo.png" width="251" class="modern-logo" />
+          </a>
+        </div>
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Copyright and theme information -->
+<div class="md-copyright">
+  
+  <a href="https://themoderndatacompany.com/contact-us" target="_blank" rel="noopener"> Contact Us </a> | <a
+    href="https://themoderndatacompany.com/privacy-policy" target="_blank" rel="noopener"> Privacy Policy </a> | <a
+    href="https://themoderndatacompany.com/terms-of-use" target="_blank" rel="noopener"> Terms of Use </a>
+  
+  
+  <div class="md-copyright__highlight">
+    Copyright ⓒ 2023 The Modern Data Company
+  </div>
+  
+</div>
+      </div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.top", "navigation.tracking", "content.code.copy", "content.code.annotate - toc.follow - toc.integrate"], "search": "../../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.6.4/dist/mermaid.js"></script>
+      
+    
+  </body>
+</html>

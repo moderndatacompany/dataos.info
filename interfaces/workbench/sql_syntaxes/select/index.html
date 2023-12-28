@@ -1,0 +1,3206 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>SELECT - All things DataOS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Custom admonition icons -->
+
+
+<!-- Custom tag icons -->
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-ZH4G0HKBQC"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-ZH4G0HKBQC",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-ZH4G0HKBQC",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="blue-grey">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#select" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine base classes -->
+
+
+
+<!-- Header -->
+<header class="md-header" data-md-component="header">
+  <nav
+    class="md-header__inner md-grid"
+    aria-label="Header"
+  >
+
+    <!-- Link to home -->
+    <a
+      href="../../../.."
+      title="All things DataOS"
+      class="md-header__button md-logo"
+      aria-label="All things DataOS"
+      data-md-component="logo"
+    >
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Logo -->
+
+  <img src="../../../../assets/light-modern-logo.png" alt="logo" />
+
+    </a>
+
+    <!-- Button to open drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            All things DataOS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SELECT
+            
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color palette -->
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input
+            class="md-option"
+            data-md-color-media=""
+            data-md-color-scheme="default"
+            data-md-color-primary="blue-grey"
+            data-md-color-accent="blue-grey"
+            
+              aria-label="Switch to dark mode"
+            
+            type="radio"
+            name="__palette"
+            id="__palette_1"
+          />
+          
+            <label
+              class="md-header__button md-icon"
+              title="Switch to dark mode"
+              for="__palette_2"
+              hidden
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          <input
+            class="md-option"
+            data-md-color-media=""
+            data-md-color-scheme="slate"
+            data-md-color-primary="grey"
+            data-md-color-accent="grey"
+            
+              aria-label="Switch to light mode"
+            
+            type="radio"
+            name="__palette"
+            id="__palette_2"
+          />
+          
+            <label
+              class="md-header__button md-icon"
+              title="Switch to light mode"
+              for="__palette_1"
+              hidden
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+
+    <!-- Site language selector -->
+    
+
+    <!-- Button to open search modal -->
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+
+      <!-- Search interface -->
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Search interface -->
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+
+      <!-- Search input -->
+      <input
+        type="text"
+        class="md-search__input"
+        name="query"
+        aria-label="Search"
+        placeholder="Search"
+        autocapitalize="off"
+        autocorrect="off"
+        autocomplete="off"
+        spellcheck="false"
+        data-md-component="search-query"
+        required
+      />
+
+      <!-- Button to open search -->
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+
+      <!-- Search options -->
+      <nav
+        class="md-search__options"
+        aria-label="Search"
+      >
+
+        <!-- Button to share search -->
+        
+
+        <!-- Button to reset search -->
+        <button
+          type="reset"
+          class="md-search__icon md-icon"
+          title="Clear"
+          aria-label="Clear"
+          tabindex="-1"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+
+      <!-- Search suggestions -->
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+
+        <!-- Search results -->
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    <!-- Repository information -->
+    
+  </nav>
+
+  <!-- Navigation tabs (sticky) -->
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Hack: unset variable, as we're using it recursively in tabs-item.html -->
+
+
+<!-- Navigation tabs -->
+<nav
+  class="md-tabs"
+  aria-label="Tabs"
+  data-md-component="tabs"
+>
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  
+  
+
+  <!-- Recurse, if the first item has further nested items -->
+  
+    <li class="md-tabs__item">
+      <a href="../../../../resources/" class="md-tabs__link">
+        Resources
+      </a>
+    </li>
+  
+
+<!-- Main navigation item -->
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  
+  
+
+  <!-- Recurse, if the first item has further nested items -->
+  
+    <li class="md-tabs__item">
+      <a href="../../../" class="md-tabs__link">
+        Interfaces
+      </a>
+    </li>
+  
+
+<!-- Main navigation item -->
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../../../architecture/" class="md-tabs__link">
+      Architecture
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../../../glossary/" class="md-tabs__link">
+      Glossary
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../../../videos/" class="md-tabs__link">
+      Videos
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to configuration -->
+
+
+  
+
+
+
+<!-- Main navigation -->
+<nav
+  class="md-nav md-nav--primary md-nav--lifted"
+  aria-label="Navigation"
+  data-md-level="0"
+>
+
+  <!-- Site title -->
+  <label class="md-nav__title" for="__drawer">
+    <a
+      href="../../../.."
+      title="All things DataOS"
+      class="md-nav__button md-logo"
+      aria-label="All things DataOS"
+      data-md-component="logo"
+    >
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Logo -->
+
+  <img src="../../../../assets/light-modern-logo.png" alt="logo" />
+
+    </a>
+    All things DataOS
+  </label>
+
+  <!-- Repository information -->
+  
+
+  <!-- Render item list -->
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+        
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle md-toggle--indeterminate"
+        type="checkbox"
+        id="__nav_2"
+        
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_2"
+          id="__nav_2_label"
+          tabindex="0"
+        >
+          Resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="1"
+        aria-labelledby="__nav_2_label"
+        aria-expanded="false"
+      >
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/cluster/" class="md-nav__link">
+        Cluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/compute/" class="md-nav__link">
+        Compute
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/depot/" class="md-nav__link">
+        Depot
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/policy/" class="md-nav__link">
+        Policy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/secret/" class="md-nav__link">
+        Secret
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/service/" class="md-nav__link">
+        Service
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/workflow/" class="md-nav__link">
+        Workflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+      
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+        
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle md-toggle--indeterminate"
+        type="checkbox"
+        id="__nav_2_9"
+        
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_2_9"
+          id="__nav_2_9_label"
+          tabindex="0"
+        >
+          Stacks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="2"
+        aria-labelledby="__nav_2_9_label"
+        aria-expanded="false"
+      >
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Stacks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/stacks/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/stacks/alpha/" class="md-nav__link">
+        Alpha
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/stacks/beacon/" class="md-nav__link">
+        Beacon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/stacks/benthos/" class="md-nav__link">
+        Benthos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/stacks/data_toolbox/" class="md-nav__link">
+        Data Toolbox
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/stacks/flare/" class="md-nav__link">
+        Flare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/stacks/scanner/" class="md-nav__link">
+        Scanner
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+        
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle md-toggle--indeterminate"
+        type="checkbox"
+        id="__nav_3"
+        
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_3"
+          id="__nav_3_label"
+          tabindex="0"
+        >
+          Interfaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="1"
+        aria-labelledby="__nav_3_label"
+        aria-expanded="false"
+      >
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Interfaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../atlas/" class="md-nav__link">
+        Atlas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../audiences/" class="md-nav__link">
+        Audiences
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../bifrost/" class="md-nav__link">
+        Bifrost
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../cli/" class="md-nav__link">
+        CLI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../lens/" class="md-nav__link">
+        Lens
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../metis/" class="md-nav__link">
+        Metis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../notebook/" class="md-nav__link">
+        Notebook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../operations/" class="md-nav__link">
+        Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Workbench
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../glossary/" class="md-nav__link">
+        Glossary
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../videos/" class="md-nav__link">
+        Videos
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#synopsis" class="md-nav__link">
+    Synopsis
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#with-clause" class="md-nav__link">
+    WITH clause
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#with-recursive-clause" class="md-nav__link">
+    WITH RECURSIVE clause
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#select-clause" class="md-nav__link">
+    SELECT clause
+  </a>
+  
+    <nav class="md-nav" aria-label="SELECT clause">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#select-expressions" class="md-nav__link">
+    Select expressions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-by-clause" class="md-nav__link">
+    GROUP BY clause
+  </a>
+  
+    <nav class="md-nav" aria-label="GROUP BY clause">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#complex-grouping-operations" class="md-nav__link">
+    Complex grouping operations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grouping-sets" class="md-nav__link">
+    GROUPING SETS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cube" class="md-nav__link">
+    CUBE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rollup" class="md-nav__link">
+    ROLLUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combining-multiple-grouping-expressions" class="md-nav__link">
+    Combining multiple grouping expressions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grouping-operation" class="md-nav__link">
+    GROUPING operation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#having-clause" class="md-nav__link">
+    HAVING clause
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#window-clause" class="md-nav__link">
+    WINDOW clause
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-operations" class="md-nav__link">
+    Set operations
+  </a>
+  
+    <nav class="md-nav" aria-label="Set operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#union-clause" class="md-nav__link">
+    UNION clause
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intersect-clause" class="md-nav__link">
+    INTERSECT clause
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#except-clause" class="md-nav__link">
+    EXCEPT clause
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#order-by-clause" class="md-nav__link">
+    ORDER BY clause
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#offset-clause" class="md-nav__link">
+    OFFSET clause
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limit-or-fetch-first-clause" class="md-nav__link">
+    LIMIT or FETCH FIRST clause
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tablesample" class="md-nav__link">
+    TABLESAMPLE
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unnest" class="md-nav__link">
+    UNNEST
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#joins" class="md-nav__link">
+    Joins
+  </a>
+  
+    <nav class="md-nav" aria-label="Joins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cross-join" class="md-nav__link">
+    CROSS JOIN
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lateral" class="md-nav__link">
+    LATERAL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qualifying-column-names" class="md-nav__link">
+    Qualifying column names
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subqueries" class="md-nav__link">
+    Subqueries
+  </a>
+  
+    <nav class="md-nav" aria-label="Subqueries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exists" class="md-nav__link">
+    EXISTS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in" class="md-nav__link">
+    IN
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scalar-subquery" class="md-nav__link">
+    Scalar subquery
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Tags -->
+
+
+<!-- Actions -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Actions -->
+
+
+<!--
+  Hack: check whether the content contains a h1 headline. If it doesn't, the
+  page title (or respectively site name) is used as the main headline.
+-->
+
+
+<!-- Page content -->
+<h1 id="select">SELECT<a class="headerlink" href="#select" title="Permanent link">&para;</a></h1>
+<h2 id="synopsis">Synopsis<a class="headerlink" href="#synopsis" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="w"> </span><span class="nv">WITH</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="nv">RECURSIVE</span><span class="w"> </span><span class="p p-Indicator">]</span><span class="w"> </span><span class="nv">with_query</span><span class="w"> </span><span class="p p-Indicator">[,</span><span class="w"> </span><span class="nv">...</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<span class="l l-Scalar l-Scalar-Plain">SELECT [ ALL | DISTINCT ] select_expression [, ...]</span>
+<span class="l l-Scalar l-Scalar-Plain">[ FROM from_item [, ...] ]</span>
+<span class="l l-Scalar l-Scalar-Plain">[ WHERE condition ]</span>
+<span class="l l-Scalar l-Scalar-Plain">[ GROUP BY [ ALL | DISTINCT ] grouping_element [, ...] ]</span>
+<span class="l l-Scalar l-Scalar-Plain">[ HAVING condition]</span>
+<span class="l l-Scalar l-Scalar-Plain">[ WINDOW window_definition_list]</span>
+<span class="l l-Scalar l-Scalar-Plain">[ { UNION | INTERSECT | EXCEPT } [ ALL | DISTINCT ] select ]</span>
+<span class="l l-Scalar l-Scalar-Plain">[ ORDER BY expression [ ASC | DESC ] [, ...] ]</span>
+<span class="l l-Scalar l-Scalar-Plain">[ OFFSET count [ ROW | ROWS ] ]</span>
+<span class="l l-Scalar l-Scalar-Plain">[ LIMIT { count | ALL } ]</span>
+<span class="l l-Scalar l-Scalar-Plain">[ FETCH { FIRST | NEXT } [ count ] { ROW | ROWS } { ONLY | WITH TIES } ]</span>
+</code></pre></div>
+<p>where <code>from_item</code> is one of</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">table_name [ [ AS ] alias [ ( column_alias [, ...] ) ] ]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">from_item join_type from_item</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">[ ON join_condition | USING ( join_column [, ...] ) ]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">table_name [ [ AS ] alias [ ( column_alias [, ...] ) ] ]</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">MATCH_RECOGNIZE pattern_recognition_specification</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">[ [ AS ] alias [ ( column_alias [, ...] ) ] ]</span>
+</code></pre></div>
+<p>For detailed description of <code>MATCH_RECOGNIZE</code> clause, see <a href="../match_recognize/"><strong>pattern recognition in FROM clause</strong></a>.</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">TABLE (table_function_invocation) [ [ AS ] alias [ ( column_alias [, ...] ) ] ]</span>
+</code></pre></div>
+<!-- For description of table functions usage, see [table functions](https://trino.io/docs/current/functions/table.html). -->
+
+<p>and <code>join_type</code> is one of</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="w"> </span><span class="nv">INNER</span><span class="w"> </span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">JOIN</span>
+<span class="l l-Scalar l-Scalar-Plain">LEFT [ OUTER ] JOIN</span>
+<span class="l l-Scalar l-Scalar-Plain">RIGHT [ OUTER ] JOIN</span>
+<span class="l l-Scalar l-Scalar-Plain">FULL [ OUTER ] JOIN</span>
+<span class="l l-Scalar l-Scalar-Plain">CROSS JOIN</span>
+</code></pre></div>
+<p>and <code>grouping_element</code> is one of</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">()</span>
+<span class="l l-Scalar l-Scalar-Plain">expression</span>
+<span class="l l-Scalar l-Scalar-Plain">GROUPING SETS ( ( column [, ...] ) [, ...] )</span>
+<span class="l l-Scalar l-Scalar-Plain">CUBE ( column [, ...] )</span>
+<span class="l l-Scalar l-Scalar-Plain">ROLLUP ( column [, ...] )</span>
+</code></pre></div>
+<h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
+<p>Retrieve rows from zero or more tables.</p>
+<h2 id="with-clause">WITH clause<a class="headerlink" href="#with-clause" title="Permanent link">&para;</a></h2>
+<p>The <code>WITH</code> clause defines named relations for use within a query. It allows flattening nested queries or simplifying subqueries. For example, the following queries are equivalent:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT a, b</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM (</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">SELECT a, MAX(b) AS b FROM t GROUP BY a</span>
+<span class="l l-Scalar l-Scalar-Plain">) AS x;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">WITH x AS (SELECT a, MAX(b) AS b FROM t GROUP BY a)</span>
+<span class="l l-Scalar l-Scalar-Plain">SELECT a, b FROM x;</span>
+</code></pre></div>
+<p>This also works with multiple subqueries:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">WITH</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">t1 AS (SELECT a, MAX(b) AS b FROM x GROUP BY a),</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">t2 AS (SELECT a, AVG(d) AS d FROM y GROUP BY a)</span>
+<span class="l l-Scalar l-Scalar-Plain">SELECT t1.*, t2.*</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM t1</span>
+<span class="l l-Scalar l-Scalar-Plain">JOIN t2 ON t1.a = t2.a;</span>
+</code></pre></div>
+<p>Additionally, the relations within a <code>WITH</code> clause can chain:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">WITH</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">x AS (SELECT a FROM t),</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">y AS (SELECT a AS b FROM x),</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">z AS (SELECT b AS c FROM y)</span>
+<span class="l l-Scalar l-Scalar-Plain">SELECT c FROM z;</span>
+</code></pre></div>
+<blockquote>
+<p>🗣 <strong>Warning :</strong>
+Currently, the SQL for the <code>WITH</code> clause will be inlined anywhere the named relation is used. This means that if the relation is used more than once and the query is non-deterministic, the results may be different each time.
+</p>
+</blockquote>
+<h2 id="with-recursive-clause">WITH RECURSIVE clause<a class="headerlink" href="#with-recursive-clause" title="Permanent link">&para;</a></h2>
+<p>The <code>WITH RECURSIVE</code> clause is a variant of the <code>WITH</code> clause. It defines a list of queries to process, including recursive processing of suitable queries.</p>
+<blockquote>
+<p>🗣 <strong>Warning :</strong>
+This feature is experimental only. Proceed to use it only if you understand potential query failures and the impact of the recursion processing on your workload.
+</p>
+</blockquote>
+<p>A recursive <code>WITH</code>-query must be shaped as a <code>UNION</code> of two relations. The first relation is called the <em>recursion base</em>, and the second relation is called the <em>recursion step</em>. Trino supports recursive <code>WITH</code>-queries with a single recursive reference to a <code>WITH</code>-query from within the query. The name <code>T</code> of the query <code>T</code> can be mentioned once in the <code>FROM</code> clause of the recursion step relation.</p>
+<p>The following listing shows a simple example, that displays a commonly used form of a single query in the list:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">WITH RECURSIVE t(n) AS (</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">VALUES (1)</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">UNION ALL</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">SELECT n + 1 FROM t WHERE n &lt; 4</span>
+<span class="l l-Scalar l-Scalar-Plain">)</span>
+<span class="l l-Scalar l-Scalar-Plain">SELECT sum(n) FROM t;</span>
+</code></pre></div>
+<p>In the preceding query the simple assignment <code>VALUES (1)</code> defines the recursion base relation. <code>SELECT n + 1 FROM t WHERE n &lt; 4</code> defines the recursion step relation. The recursion processing performs these steps:</p>
+<ul>
+<li>recursive base yields <code>1</code></li>
+<li>first recursion yields <code>1 + 1 = 2</code></li>
+<li>second recursion uses the result from the first and adds one: <code>2 + 1 = 3</code></li>
+<li>third recursion uses the result from the second and adds one again: <code>3 + 1 = 4</code></li>
+<li>fourth recursion aborts since <code>n = 4</code></li>
+<li>this results in <code>t</code> having values <code>1</code>, <code>2</code>, <code>3</code> and <code>4</code></li>
+<li>the final statement performs the sum operation of these elements with the final result value <code>10</code></li>
+</ul>
+<p>The types of the returned columns are those of the base relation. Therefore it is required that types in the step relation can be coerced to base relation types.</p>
+<p>The <code>RECURSIVE</code> clause applies to all queries in the <code>WITH</code> list, but not all of them must be recursive. If a <code>WITH</code>-query is not shaped according to the rules mentioned above or it does not contain a recursive reference, it is processed like a regular <code>WITH</code>-query. Column aliases are mandatory for all the queries in the recursive <code>WITH</code> list.</p>
+<p>The following limitations apply as a result of following the SQL standard and due to implementation choices, in addition to <code>WITH</code> clause limitations:</p>
+<ul>
+<li>only single-element recursive cycles are supported. Like in regular <code>WITH</code>queries, references to previous queries in the <code>WITH</code> list are allowed. References to following queries are forbidden.</li>
+<li>usage of outer joins, set operations, limit clause, and others is not always allowed in the step relation</li>
+<li>recursion depth is fixed, defaults to <code>10</code>, and doesn’t depend on the actual query results</li>
+</ul>
+<p>You can adjust the recursion depth with the <a href="../set_session/"><strong>session property</strong></a> <code>max_recursion_depth</code>. When changing the value consider that the size of the query plan growth is quadratic with the recursion depth.</p>
+<h2 id="select-clause">SELECT clause<a class="headerlink" href="#select-clause" title="Permanent link">&para;</a></h2>
+<p>The <code>SELECT</code> clause specifies the output of the query. Each <code>select_expression</code> defines a column or columns to be included in the result.</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT [ ALL | DISTINCT ] select_expression [, ...]</span>
+</code></pre></div>
+<p>The <code>ALL</code> and <code>DISTINCT</code> quantifiers determine whether duplicate rows are included in the result set. If the argument <code>ALL</code> is specified, all rows are included. If the argument <code>DISTINCT</code> is specified, only unique rows are included in the result set. In this case, each output column must be of a type that allows comparison. If neither argument is specified, the behavior defaults to <code>ALL</code>.</p>
+<h3 id="select-expressions">Select expressions<a class="headerlink" href="#select-expressions" title="Permanent link">&para;</a></h3>
+<p>Each <code>select_expression</code> must be in one of the following forms:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">expression [ [ AS ] column_alias ]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">row_expression.* [ AS ( column_alias [, ...] ) ]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">relation.*</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">*</span>
+</code></pre></div>
+<p>In the case of <code>expression [ [ AS ] column_alias ]</code>, a single output column is defined.</p>
+<p>In the case of <code>row_expression.* [ AS ( column_alias [, ...] ) ]</code>, the <code>row_expression</code> is an arbitrary expression of type <code>ROW</code>. All fields of the row define output columns to be included in the result set.</p>
+<p>In the case of <code>relation.*</code>, all columns of <code>relation</code> are included in the result set. In this case column aliases are not allowed.</p>
+<p>In the case of <code>*</code>, all columns of the relation defined by the query are included in the result set.</p>
+<p>In the result set, the order of columns is the same as the order of their specification by the select expressions. If a select expression returns multiple columns, they are ordered the same way they were ordered in the source relation or row type expression.</p>
+<p>If column aliases are specified, they override any preexisting column or row field names:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT (CAST(ROW(1, true) AS ROW(field1 bigint, field2 boolean))).* AS (alias1, alias2);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alias1 | alias2</span>
+<span class="l l-Scalar l-Scalar-Plain">--------+--------</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">1 | true</span>
+<span class="l l-Scalar l-Scalar-Plain">(1 row)</span>
+</code></pre></div>
+<p>Otherwise, the existing names are used:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT (CAST(ROW(1, true) AS ROW(field1 bigint, field2 boolean))).*;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">field1 | field2</span>
+<span class="l l-Scalar l-Scalar-Plain">--------+--------</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">1 | true</span>
+<span class="l l-Scalar l-Scalar-Plain">(1 row)</span>
+</code></pre></div>
+<p>and in their absence, anonymous columns are produced:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT (ROW(1, true)).*;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">_col0 | _col1</span>
+<span class="l l-Scalar l-Scalar-Plain">-------+-------</span>
+<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">1 | true</span>
+<span class="l l-Scalar l-Scalar-Plain">(1 row)</span>
+</code></pre></div>
+<h2 id="group-by-clause">GROUP BY clause<a class="headerlink" href="#group-by-clause" title="Permanent link">&para;</a></h2>
+<p>The <code>GROUP BY</code> clause divides the output of a <code>SELECT</code> statement into groups of rows containing matching values. A simple <code>GROUP BY</code> clause may contain any expression composed of input columns or it may be an ordinal number selecting an output column by position (starting at one).</p>
+<p>The following queries are equivalent. They both group the output by the <code>nationkey</code> input column with the first query using the ordinal position of the output column and the second query using the input column name:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT count(*), nationkey FROM customer GROUP BY 2;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">SELECT count(*), nationkey FROM customer GROUP BY nationkey;</span>
+</code></pre></div>
+<p><code>GROUP BY</code> clauses can group output by input column names not appearing in the output of a select statement. For example, the following query generates row counts for the <code>customer</code> table using the input column <code>mktsegment</code>:</p>
+<p><code>SELECT count(*) FROM customer GROUP BY mktsegment;</code></p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">_col0</span>
+<span class="l l-Scalar l-Scalar-Plain">-------</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">29968</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30142</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30189</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">29949</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">29752</span>
+<span class="l l-Scalar l-Scalar-Plain">(5 rows)</span>
+</code></pre></div>
+<p>When a <code>GROUP BY</code> clause is used in a <code>SELECT</code> statement all output expressions must be either aggregate functions or columns present in the <code>GROUP BY</code> clause.</p>
+<h3 id="complex-grouping-operations">Complex grouping operations<a class="headerlink" href="#complex-grouping-operations" title="Permanent link">&para;</a></h3>
+<p>Trino also supports complex aggregations using the <code>GROUPING SETS</code>, <code>CUBE</code> and <code>ROLLUP</code> syntax. This syntax allows users to perform analysis that requires aggregation on multiple sets of columns in a single query. Complex grouping operations do not support grouping on expressions composed of input columns. Only column names are allowed.</p>
+<p>Complex grouping operations are often equivalent to a <code>UNION ALL</code> of simple <code>GROUP BY</code> expressions, as shown in the following examples. This equivalence does not apply, however, when the source of data for the aggregation is non-deterministic.</p>
+<h3 id="grouping-sets">GROUPING SETS<a class="headerlink" href="#grouping-sets" title="Permanent link">&para;</a></h3>
+<p>Grouping sets allow users to specify multiple lists of columns to group on. The columns not part of a given sublist of grouping columns are set to <code>NULL</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT * FROM shipping;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">origin_state | origin_zip | destination_state | destination_zip | package_weight</span>
+<span class="l l-Scalar l-Scalar-Plain">--------------+------------+-------------------+-----------------+----------------</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">California   |      94131 | New Jersey        |            8648 |             13</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">California   |      94131 | New Jersey        |            8540 |             42</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">New Jersey   |       7081 | Connecticut       |            6708 |            225</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">California   |      90210 | Connecticut       |            6927 |           1337</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">California   |      94131 | Colorado          |           80302 |              5</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">New York     |      10002 | New Jersey        |            8540 |              3</span>
+<span class="l l-Scalar l-Scalar-Plain">(6 rows)</span>
+</code></pre></div>
+<p><code>GROUPING SETS</code> semantics are demonstrated by this example query:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT origin_state, origin_zip, destination_state, sum(package_weight)</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM shipping</span>
+<span class="l l-Scalar l-Scalar-Plain">GROUP BY GROUPING SETS (</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">(origin_state),</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">(origin_state, origin_zip),</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">(destination_state));</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">origin_state | origin_zip | destination_state | _col0</span>
+<span class="l l-Scalar l-Scalar-Plain">--------------+------------+-------------------+-------</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">New Jersey   | NULL       | NULL              |   225</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">California   | NULL       | NULL              |  1397</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">New York     | NULL       | NULL              |     3</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">California   |      90210 | NULL              |  1337</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">California   |      94131 | NULL              |    60</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">New Jersey   |       7081 | NULL              |   225</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">New York     |      10002 | NULL              |     3</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NULL         | NULL       | Colorado          |     5</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NULL         | NULL       | New Jersey        |    58</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NULL         | NULL       | Connecticut       |  1562</span>
+<span class="l l-Scalar l-Scalar-Plain">(10 rows)</span>
+</code></pre></div>
+<p>The preceding query may be considered logically equivalent to a <code>UNION ALL</code> of multiple <code>GROUP BY</code> queries:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT origin_state, NULL, NULL, sum(package_weight)</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM shipping GROUP BY origin_state</span>
+
+<span class="l l-Scalar l-Scalar-Plain">UNION ALL</span>
+
+<span class="l l-Scalar l-Scalar-Plain">SELECT origin_state, origin_zip, NULL, sum(package_weight)</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM shipping GROUP BY origin_state, origin_zip</span>
+
+<span class="l l-Scalar l-Scalar-Plain">UNION ALL</span>
+
+<span class="l l-Scalar l-Scalar-Plain">SELECT NULL, NULL, destination_state, sum(package_weight)</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM shipping GROUP BY destination_state;</span>
+</code></pre></div>
+<p>However, the query with the complex grouping syntax (<code>GROUPING SETS</code>, <code>CUBE</code> or <code>ROLLUP</code>) will only read from the underlying data source once, while the query with the <code>UNION ALL</code> reads the underlying data three times. This is why queries with a <code>UNION ALL</code> may produce inconsistent results when the data source is not deterministic.</p>
+<h3 id="cube">CUBE<a class="headerlink" href="#cube" title="Permanent link">&para;</a></h3>
+<p>The <code>CUBE</code> operator generates all possible grouping sets (i.e. a power set) for a given set of columns. For example, the query:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT origin_state, destination_state, sum(package_weight)</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM shipping</span>
+<span class="l l-Scalar l-Scalar-Plain">GROUP BY CUBE (origin_state, destination_state);</span>
+</code></pre></div>
+<p>is equivalent to:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT origin_state, destination_state, sum(package_weight)</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM shipping</span>
+<span class="l l-Scalar l-Scalar-Plain">GROUP BY GROUPING SETS (</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">(origin_state, destination_state),</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">(origin_state),</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">(destination_state),</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">()</span>
+<span class="l l-Scalar l-Scalar-Plain">);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">origin_state | destination_state | _col0</span>
+<span class="l l-Scalar l-Scalar-Plain">--------------+-------------------+-------</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">California   | New Jersey        |    55</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">California   | Colorado          |     5</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">New York     | New Jersey        |     3</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">New Jersey   | Connecticut       |   225</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">California   | Connecticut       |  1337</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">California   | NULL              |  1397</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">New York     | NULL              |     3</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">New Jersey   | NULL              |   225</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NULL         | New Jersey        |    58</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NULL         | Connecticut       |  1562</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NULL         | Colorado          |     5</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NULL         | NULL              |  1625</span>
+<span class="l l-Scalar l-Scalar-Plain">(12 rows)</span>
+</code></pre></div>
+<h3 id="rollup">ROLLUP<a class="headerlink" href="#rollup" title="Permanent link">&para;</a></h3>
+<p>The <code>ROLLUP</code> operator generates all possible subtotals for a given set of columns. For example, the query:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT origin_state, origin_zip, sum(package_weight)</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM shipping</span>
+<span class="l l-Scalar l-Scalar-Plain">GROUP BY ROLLUP (origin_state, origin_zip);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">origin_state | origin_zip | _col2</span>
+<span class="l l-Scalar l-Scalar-Plain">--------------+------------+-------</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">California   |      94131 |    60</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">California   |      90210 |  1337</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">New Jersey   |       7081 |   225</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">New York     |      10002 |     3</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">California   | NULL       |  1397</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">New York     | NULL       |     3</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">New Jersey   | NULL       |   225</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NULL         | NULL       |  1625</span>
+<span class="l l-Scalar l-Scalar-Plain">(8 rows)</span>
+</code></pre></div>
+<p>is equivalent to:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT origin_state, origin_zip, sum(package_weight)</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM shipping</span>
+<span class="l l-Scalar l-Scalar-Plain">GROUP BY GROUPING SETS ((origin_state, origin_zip), (origin_state), ());</span>
+</code></pre></div>
+<h3 id="combining-multiple-grouping-expressions">Combining multiple grouping expressions<a class="headerlink" href="#combining-multiple-grouping-expressions" title="Permanent link">&para;</a></h3>
+<p>Multiple grouping expressions in the same query are interpreted as having cross-product semantics. For example, the following query:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT origin_state, destination_state, origin_zip, sum(package_weight)</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM shipping</span>
+<span class="l l-Scalar l-Scalar-Plain">GROUP BY</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">GROUPING SETS ((origin_state, destination_state)),</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">ROLLUP (origin_zip);</span>
+</code></pre></div>
+<p>which can be rewritten as:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT origin_state, destination_state, origin_zip, sum(package_weight)</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM shipping</span>
+<span class="l l-Scalar l-Scalar-Plain">GROUP BY</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">GROUPING SETS ((origin_state, destination_state)),</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">GROUPING SETS ((origin_zip), ());</span>
+</code></pre></div>
+<p>is logically equivalent to:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT origin_state, destination_state, origin_zip, sum(package_weight)</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM shipping</span>
+<span class="l l-Scalar l-Scalar-Plain">GROUP BY GROUPING SETS (</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">(origin_state, destination_state, origin_zip),</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">(origin_state, destination_state)</span>
+<span class="l l-Scalar l-Scalar-Plain">);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">origin_state | destination_state | origin_zip | _col3</span>
+<span class="l l-Scalar l-Scalar-Plain">--------------+-------------------+------------+-------</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">New York     | New Jersey        |      10002 |     3</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">California   | New Jersey        |      94131 |    55</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">New Jersey   | Connecticut       |       7081 |   225</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">California   | Connecticut       |      90210 |  1337</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">California   | Colorado          |      94131 |     5</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">New York     | New Jersey        | NULL       |     3</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">New Jersey   | Connecticut       | NULL       |   225</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">California   | Colorado          | NULL       |     5</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">California   | Connecticut       | NULL       |  1337</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">California   | New Jersey        | NULL       |    55</span>
+<span class="l l-Scalar l-Scalar-Plain">(10 rows)</span>
+</code></pre></div>
+<p>The <code>ALL</code> and <code>DISTINCT</code> quantifiers determine whether duplicate grouping sets each produce distinct output rows. This is particularly useful when multiple complex grouping sets are combined in the same query. For example, the following query:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT origin_state, destination_state, origin_zip, sum(package_weight)</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM shipping</span>
+<span class="l l-Scalar l-Scalar-Plain">GROUP BY ALL</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">CUBE (origin_state, destination_state),</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">ROLLUP (origin_state, origin_zip);</span>
+</code></pre></div>
+<p>is equivalent to:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT origin_state, destination_state, origin_zip, sum(package_weight)</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM shipping</span>
+<span class="l l-Scalar l-Scalar-Plain">GROUP BY GROUPING SETS (</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">(origin_state, destination_state, origin_zip),</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">(origin_state, origin_zip),</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">(origin_state, destination_state, origin_zip),</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">(origin_state, origin_zip),</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">(origin_state, destination_state),</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">(origin_state),</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">(origin_state, destination_state),</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">(origin_state),</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">(origin_state, destination_state),</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">(origin_state),</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">(destination_state),</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">()</span>
+<span class="l l-Scalar l-Scalar-Plain">);</span>
+</code></pre></div>
+<p>However, if the query uses the <code>DISTINCT</code> quantifier for the <code>GROUP BY</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT origin_state, destination_state, origin_zip, sum(package_weight)</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM shipping</span>
+<span class="l l-Scalar l-Scalar-Plain">GROUP BY DISTINCT</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">CUBE (origin_state, destination_state),</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">ROLLUP (origin_state, origin_zip);</span>
+</code></pre></div>
+<p>only unique grouping sets are generated:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT origin_state, destination_state, origin_zip, sum(package_weight)</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM shipping</span>
+<span class="l l-Scalar l-Scalar-Plain">GROUP BY GROUPING SETS (</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">(origin_state, destination_state, origin_zip),</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">(origin_state, origin_zip),</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">(origin_state, destination_state),</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">(origin_state),</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">(destination_state),</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">()</span>
+<span class="l l-Scalar l-Scalar-Plain">);</span>
+</code></pre></div>
+<p>The default set quantifier is <code>ALL</code>.</p>
+<h3 id="grouping-operation">GROUPING operation<a class="headerlink" href="#grouping-operation" title="Permanent link">&para;</a></h3>
+<p><code>grouping(col1, ..., colN) -&gt; bigint</code></p>
+<p>The grouping operation returns a bit set converted to decimal, indicating which columns are present in a grouping. It must be used in conjunction with <code>GROUPING SETS</code>, <code>ROLLUP</code>, <code>CUBE</code> or <code>GROUP BY</code> and its arguments must match exactly the columns referenced in the corresponding <code>GROUPING SETS</code>, <code>ROLLUP</code>, <code>CUBE</code> or <code>GROUP BY</code> clause.</p>
+<p>To compute the resulting bit set for a particular row, bits are assigned to the argument columns with the rightmost column being the least significant bit. For a given grouping, a bit is set to 0 if the corresponding column is included in the grouping and to 1 otherwise. For example, consider the query below:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT origin_state, origin_zip, destination_state, sum(package_weight),</span>
+<span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">grouping(origin_state, origin_zip, destination_state)</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM shipping</span>
+<span class="l l-Scalar l-Scalar-Plain">GROUP BY GROUPING SETS (</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">(origin_state),</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">(origin_state, origin_zip),</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">(destination_state)</span>
+<span class="l l-Scalar l-Scalar-Plain">);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">origin_state | origin_zip | destination_state | _col3 | _col4</span>
+<span class="l l-Scalar l-Scalar-Plain">--------------+------------+-------------------+-------+-------</span>
+<span class="l l-Scalar l-Scalar-Plain">California   | NULL       | NULL              |  1397 |     3</span>
+<span class="l l-Scalar l-Scalar-Plain">New Jersey   | NULL       | NULL              |   225 |     3</span>
+<span class="l l-Scalar l-Scalar-Plain">New York     | NULL       | NULL              |     3 |     3</span>
+<span class="l l-Scalar l-Scalar-Plain">California   |      94131 | NULL              |    60 |     1</span>
+<span class="l l-Scalar l-Scalar-Plain">New Jersey   |       7081 | NULL              |   225 |     1</span>
+<span class="l l-Scalar l-Scalar-Plain">California   |      90210 | NULL              |  1337 |     1</span>
+<span class="l l-Scalar l-Scalar-Plain">New York     |      10002 | NULL              |     3 |     1</span>
+<span class="l l-Scalar l-Scalar-Plain">NULL         | NULL       | New Jersey        |    58 |     6</span>
+<span class="l l-Scalar l-Scalar-Plain">NULL         | NULL       | Connecticut       |  1562 |     6</span>
+<span class="l l-Scalar l-Scalar-Plain">NULL         | NULL       | Colorado          |     5 |     6</span>
+<span class="l l-Scalar l-Scalar-Plain">(10 rows)</span>
+</code></pre></div>
+<p>The first grouping in the above result only includes the <code>origin_state</code> column and excludes the <code>origin_zip</code> and <code>destination_state</code> columns. The bit set constructed for that grouping is <code>011</code> where the most significant bit represents <code>origin_state</code>.</p>
+<h2 id="having-clause">HAVING clause<a class="headerlink" href="#having-clause" title="Permanent link">&para;</a></h2>
+<p>The <code>HAVING</code> clause is used in conjunction with aggregate functions and the <code>GROUP BY</code> clause to control which groups are selected. A <code>HAVING</code> clause eliminates groups that do not satisfy the given conditions. <code>HAVING</code> filters groups after groups and aggregates are computed.</p>
+<p>The following example queries the <code>customer</code> table and selects groups with an account balance greater than the specified value:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT count(*), mktsegment, nationkey,</span>
+<span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">CAST(sum(acctbal) AS bigint) AS totalbal</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM customer</span>
+<span class="l l-Scalar l-Scalar-Plain">GROUP BY mktsegment, nationkey</span>
+<span class="l l-Scalar l-Scalar-Plain">HAVING sum(acctbal) &gt; 5700000</span>
+<span class="l l-Scalar l-Scalar-Plain">ORDER BY totalbal DESC;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">_col0 | mktsegment | nationkey | totalbal</span>
+<span class="l l-Scalar l-Scalar-Plain">-------+------------+-----------+----------</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">1272 | AUTOMOBILE |        19 |  5856939</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">1253 | FURNITURE  |        14 |  5794887</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">1248 | FURNITURE  |         9 |  5784628</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">1243 | FURNITURE  |        12 |  5757371</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">1231 | HOUSEHOLD  |         3 |  5753216</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">1251 | MACHINERY  |         2 |  5719140</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">1247 | FURNITURE  |         8 |  5701952</span>
+<span class="l l-Scalar l-Scalar-Plain">(7 rows)</span>
+</code></pre></div>
+<h2 id="window-clause">WINDOW clause<a class="headerlink" href="#window-clause" title="Permanent link">&para;</a></h2>
+<p>The <code>WINDOW</code> clause is used to define named window specifications. The defined named window specifications can be referred to in the <code>SELECT</code> and <code>ORDER BY</code> clauses of the enclosing query:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT orderkey, clerk, totalprice,</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">rank() OVER w AS rnk</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM orders</span>
+<span class="l l-Scalar l-Scalar-Plain">WINDOW w AS (PARTITION BY clerk ORDER BY totalprice DESC)</span>
+<span class="l l-Scalar l-Scalar-Plain">ORDER BY count() OVER w, clerk, rnk</span>
+</code></pre></div>
+<p>The window definition list of <code>WINDOW</code> clause can contain one or multiple named window specifications of the form</p>
+<p><code>window_name AS (window_specification)</code></p>
+<p>A window specification has the following components:</p>
+<ul>
+<li>The existing window name, which refers to a named window specification in the <code>WINDOW</code> clause. The window specification associated with the referenced name is the basis of the current specification.</li>
+<li>The partition specification, which separates the input rows into different partitions. This is analogous to how the <code>GROUP BY</code> clause separates rows into different groups for aggregate functions.</li>
+<li>The ordering specification, which determines the order in which input rows will be processed by the window function.</li>
+<li>The window frame, which specifies a sliding window of rows to be processed by the function for a given row. If the frame is not specified, it defaults to <code>RANGE UNBOUNDED PRECEDING</code>, which is the same as <code>RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW</code>. This frame contains all rows from the start of the partition up to the last peer of the current row. In the absence of <code>ORDER BY</code>, all rows are considered peers, so <code>RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW</code> is equivalent to <code>BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING</code>. The window frame syntax supports additional clauses for row pattern recognition. If the row pattern recognition clauses are specified, the window frame for a particular row consists of the rows matched by a pattern starting from that row. Additionally, if the frame specifies row pattern measures, they can be called over the window, similarly to window functions. For more details, see <a href="../row_pattern_recognition_in_window_structures/"><strong>Row pattern recognition in window structures</strong></a>.</li>
+</ul>
+<p>Each window component is optional. If a window specification does not specify window partitioning, ordering or frame, those components are obtained from the window specification referenced by the <code>existing window name</code>, or from another window specification in the reference chain. In case when there is no <code>existing window name</code> specified, or none of the referenced window specifications contains the component, the default value is used.</p>
+<h2 id="set-operations">Set operations<a class="headerlink" href="#set-operations" title="Permanent link">&para;</a></h2>
+<p><code>UNION</code> <code>INTERSECT</code> and <code>EXCEPT</code> are all set operations. These clauses are used to combine the results of more than one select statement into a single result set:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">query UNION [ALL | DISTINCT] query</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">query INTERSECT [ALL | DISTINCT] query</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">query EXCEPT [ALL | DISTINCT] query</span>
+</code></pre></div>
+<p>The argument <code>ALL</code> or <code>DISTINCT</code> controls which rows are included in the final result set. If the argument <code>ALL</code> is specified all rows are included even if the rows are identical. If the argument <code>DISTINCT</code> is specified only unique rows are included in the combined result set. If neither is specified, the behavior defaults to <code>DISTINCT</code>.</p>
+<p>Multiple set operations are processed left to right, unless the order is explicitly specified via parentheses. Additionally, <code>INTERSECT</code> binds more tightly than <code>EXCEPT</code> and <code>UNION</code>. That means <code>A UNION B INTERSECT C EXCEPT D</code> is the same as <code>A UNION (B INTERSECT C) EXCEPT D</code>.</p>
+<h3 id="union-clause">UNION clause<a class="headerlink" href="#union-clause" title="Permanent link">&para;</a></h3>
+<p><code>UNION</code> combines all the rows that are in the result set from the first query with those that are in the result set for the second query. The following is an example of one of the simplest possible <code>UNION</code> clauses. It selects the value <code>13</code> and combines this result set with a second query that selects the value <code>42</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT 13</span>
+<span class="l l-Scalar l-Scalar-Plain">UNION</span>
+<span class="l l-Scalar l-Scalar-Plain">SELECT 42;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">_col0</span>
+<span class="l l-Scalar l-Scalar-Plain">-------</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">13</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">42</span>
+<span class="l l-Scalar l-Scalar-Plain">(2 rows)</span>
+</code></pre></div>
+<p>The following query demonstrates the difference between <code>UNION</code> and <code>UNION ALL</code>. It selects the value <code>13</code> and combines this result set with a second query that selects the values <code>42</code> and <code>13</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT 13</span>
+<span class="l l-Scalar l-Scalar-Plain">UNION</span>
+<span class="l l-Scalar l-Scalar-Plain">SELECT * FROM (VALUES 42, 13);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">_col0</span>
+<span class="l l-Scalar l-Scalar-Plain">-------</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">13</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">42</span>
+<span class="l l-Scalar l-Scalar-Plain">(2 rows)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT 13</span>
+<span class="l l-Scalar l-Scalar-Plain">UNION ALL</span>
+<span class="l l-Scalar l-Scalar-Plain">SELECT * FROM (VALUES 42, 13);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">_col0</span>
+<span class="l l-Scalar l-Scalar-Plain">-------</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">13</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">42</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">13</span>
+<span class="l l-Scalar l-Scalar-Plain">(2 rows)</span>
+</code></pre></div>
+<h3 id="intersect-clause">INTERSECT clause<a class="headerlink" href="#intersect-clause" title="Permanent link">&para;</a></h3>
+<p><code>INTERSECT</code> returns only the rows that are in the result sets of both the first and the second queries. The following is an example of one of the simplest possible <code>INTERSECT</code> clauses. It selects the values <code>13</code> and <code>42</code> and combines this result set with a second query that selects the value <code>13</code>. Since <code>42</code> is only in the result set of the first query, it is not included in the final results.:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT * FROM (VALUES 13, 42)</span>
+<span class="l l-Scalar l-Scalar-Plain">INTERSECT</span>
+<span class="l l-Scalar l-Scalar-Plain">SELECT 13;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">_col0</span>
+<span class="l l-Scalar l-Scalar-Plain">-------</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">13</span>
+<span class="l l-Scalar l-Scalar-Plain">(2 rows)</span>
+</code></pre></div>
+<h3 id="except-clause">EXCEPT clause<a class="headerlink" href="#except-clause" title="Permanent link">&para;</a></h3>
+<p><code>EXCEPT</code> returns the rows that are in the result set of the first query, but not the second. The following is an example of one of the simplest possible <code>EXCEPT</code> clauses. It selects the values <code>13</code> and <code>42</code> and combines this result set with a second query that selects the value <code>13</code>. Since <code>13</code> is also in the result set of the second query, it is not included in the final result.:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT * FROM (VALUES 13, 42)</span>
+<span class="l l-Scalar l-Scalar-Plain">EXCEPT</span>
+<span class="l l-Scalar l-Scalar-Plain">SELECT 13;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">_col0</span>
+<span class="l l-Scalar l-Scalar-Plain">-------</span>
+<span class="w">   </span><span class="l l-Scalar l-Scalar-Plain">42</span>
+<span class="l l-Scalar l-Scalar-Plain">(2 rows)</span>
+</code></pre></div>
+<h2 id="order-by-clause">ORDER BY clause<a class="headerlink" href="#order-by-clause" title="Permanent link">&para;</a></h2>
+<p>The <code>ORDER BY</code> clause is used to sort a result set by one or more output expressions:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">ORDER BY expression [ ASC | DESC ] [ NULLS { FIRST | LAST } ] [, ...]</span>
+</code></pre></div>
+<p>Each expression may be composed of output columns, or it may be an ordinal number selecting an output column by position, starting at one. The <code>ORDER BY</code> clause is evaluated after any <code>GROUP BY</code> or <code>HAVING</code> clause, and before any <code>OFFSET</code>, <code>LIMIT</code> or <code>FETCH FIRST</code> clause. The default null ordering is <code>NULLS LAST</code>, regardless of the ordering direction.</p>
+<p>Note that, following the SQL specification, an <code>ORDER BY</code> clause only affects the order of rows for queries that immediately contain the clause. Trino follows that specification, and drops redundant usage of the clause to avoid negative performance impacts.</p>
+<p>In the following example, the clause only applies to the select statement.</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">INSERT INTO some_table</span>
+<span class="l l-Scalar l-Scalar-Plain">SELECT * FROM another_table</span>
+<span class="l l-Scalar l-Scalar-Plain">ORDER BY field;</span>
+</code></pre></div>
+<p>Since tables in SQL are inherently unordered, and the <code>ORDER BY</code> clause in this case does not result in any difference, but negatively impacts performance of running the overall insert statement, Trino skips the sort operation.</p>
+<p>Another example where the <code>ORDER BY</code> clause is redundant, and does not affect the outcome of the overall statement, is a nested query:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT *</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM some_table</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">JOIN (SELECT * FROM another_table ORDER BY field) u</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">ON some_table.key = u.key;</span>
+</code></pre></div>
+<!-- More background information and details can be found in a blog post about this optimization.-->
+
+<h2 id="offset-clause">OFFSET clause<a class="headerlink" href="#offset-clause" title="Permanent link">&para;</a></h2>
+<p>The <code>OFFSET</code> clause is used to discard a number of leading rows from the result set:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">OFFSET count [ ROW | ROWS ]</span>
+</code></pre></div>
+<p>If the <code>ORDER BY</code> clause is present, the <code>OFFSET</code> clause is evaluated over a sorted result set, and the set remains sorted after the leading rows are discarded:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT name FROM nation ORDER BY name OFFSET 22;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">name</span>
+<span class="l l-Scalar l-Scalar-Plain">----------------</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UNITED KINGDOM</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UNITED STATES</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VIETNAM</span>
+<span class="l l-Scalar l-Scalar-Plain">(3 rows)</span>
+</code></pre></div>
+<p>Otherwise, it is arbitrary which rows are discarded. If the count specified in the <code>OFFSET</code> clause equals or exceeds the size of the result set, the final result is empty.</p>
+<h2 id="limit-or-fetch-first-clause">LIMIT or FETCH FIRST clause<a class="headerlink" href="#limit-or-fetch-first-clause" title="Permanent link">&para;</a></h2>
+<p>The <code>LIMIT</code> or <code>FETCH FIRST</code> clause restricts the number of rows in the result set.</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">LIMIT { count | ALL }</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">FETCH { FIRST | NEXT } [ count ] { ROW | ROWS } { ONLY | WITH TIES }</span>
+</code></pre></div>
+<p>The following example queries a large table, but the <code>LIMIT</code> clause restricts the output to only have five rows (because the query lacks an <code>ORDER BY</code>, exactly which rows are returned is arbitrary):</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT orderdate FROM orders LIMIT 5;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">orderdate</span>
+<span class="l l-Scalar l-Scalar-Plain">------------</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1994-07-25</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1993-11-12</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1992-10-06</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1994-01-04</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1997-12-28</span>
+<span class="l l-Scalar l-Scalar-Plain">(5 rows)</span>
+</code></pre></div>
+<p><code>LIMIT ALL</code> is the same as omitting the <code>LIMIT</code> clause.</p>
+<p>The <code>FETCH FIRST</code> clause supports either the <code>FIRST</code> or <code>NEXT</code> keywords and the <code>ROW</code> or <code>ROWS</code> keywords. These keywords are equivalent and the choice of keyword has no effect on query execution.</p>
+<p>If the count is not specified in the <code>FETCH FIRST</code> clause, it defaults to <code>1</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT orderdate FROM orders FETCH FIRST ROW ONLY;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">orderdate</span>
+<span class="l l-Scalar l-Scalar-Plain">------------</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1994-02-12</span>
+<span class="l l-Scalar l-Scalar-Plain">(1 row)</span>
+</code></pre></div>
+<p>If the <code>OFFSET</code> clause is present, the <code>LIMIT</code> or <code>FETCH FIRST</code> clause is evaluated after the <code>OFFSET</code> clause:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT * FROM (VALUES 5, 2, 4, 1, 3) t(x) ORDER BY x OFFSET 2 LIMIT 2;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x</span>
+<span class="nn">---</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="l l-Scalar l-Scalar-Plain">(2 rows)</span>
+</code></pre></div>
+<p>For the <code>FETCH FIRST</code> clause, the argument <code>ONLY</code> or <code>WITH TIES</code> controls which rows are included in the result set.</p>
+<p>If the argument <code>ONLY</code> is specified, the result set is limited to the exact number of leading rows determined by the count.</p>
+<p>If the argument <code>WITH TIES</code> is specified, it is required that the <code>ORDER BY</code> clause be present. The result set consists of the same set of leading rows and all of the rows in the same peer group as the last of them (‘ties’) as established by the ordering in the <code>ORDER BY</code> clause. The result set is sorted:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT name, regionkey</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM nation</span>
+<span class="l l-Scalar l-Scalar-Plain">ORDER BY regionkey FETCH FIRST ROW WITH TIES;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">name    | regionkey</span>
+<span class="l l-Scalar l-Scalar-Plain">------------+-----------</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ETHIOPIA   |         0</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MOROCCO    |         0</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">KENYA      |         0</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ALGERIA    |         0</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MOZAMBIQUE |         0</span>
+<span class="l l-Scalar l-Scalar-Plain">(5 rows)</span>
+</code></pre></div>
+<h2 id="tablesample">TABLESAMPLE<a class="headerlink" href="#tablesample" title="Permanent link">&para;</a></h2>
+<p>There are multiple sample methods:</p>
+<p><code>BERNOULLI</code> Each row is selected to be in the table sample with a probability of the sample percentage. When a table is sampled using the Bernoulli method, all physical blocks of the table are scanned and certain rows are skipped (based on a comparison between the sample percentage and a random value calculated at runtime).
+The probability of a row being included in the result is independent from any other row. This does not reduce the time required to read the sampled table from disk. It may have an impact on the total query time if the sampled output is processed further.<code>SYSTEM</code>This sampling method divides the table into logical segments of data and samples the table at this granularity. This sampling method either selects all the rows from a particular segment of data or skips it (based on a comparison between the sample percentage and a random value calculated at runtime).
+The rows selected in a system sampling will be dependent on which connector is used. For example, when used with Hive, it is dependent on how the data is laid out on HDFS. This method does not guarantee independent sampling probabilities.</p>
+<blockquote>
+<p>📌 <strong>Note :</strong>
+Neither of the two methods allow deterministic bounds on the number of rows returned.
+</p>
+</blockquote>
+<p>Examples:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT *</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM users TABLESAMPLE BERNOULLI (50);</span>
+
+<span class="l l-Scalar l-Scalar-Plain">SELECT *</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM users TABLESAMPLE SYSTEM (75);</span>
+</code></pre></div>
+<p>Using sampling with joins:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT o.*, i.*</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM orders o TABLESAMPLE SYSTEM (10)</span>
+<span class="l l-Scalar l-Scalar-Plain">JOIN lineitem i TABLESAMPLE BERNOULLI (40)</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">ON o.orderkey = i.orderkey;</span>
+</code></pre></div>
+<h2 id="unnest">UNNEST<a class="headerlink" href="#unnest" title="Permanent link">&para;</a></h2>
+<p><code>UNNEST</code> can be used to expand an ARRAY or MAP into a relation. Arrays are expanded into a single column:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT * FROM UNNEST(ARRAY[1,2]) AS t(number);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">number</span>
+<span class="l l-Scalar l-Scalar-Plain">--------</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="l l-Scalar l-Scalar-Plain">(2 rows)</span>
+</code></pre></div>
+<p>Maps are expanded into two columns (key, value):</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT * FROM UNNEST(</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">map_from_entries(</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">ARRAY[</span>
+<span class="w">                </span><span class="l l-Scalar l-Scalar-Plain">(&#39;SQL&#39;,1974),</span>
+<span class="w">                </span><span class="l l-Scalar l-Scalar-Plain">(&#39;Java&#39;, 1995)</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">]</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">)</span>
+<span class="l l-Scalar l-Scalar-Plain">) AS t(language, first_appeared_year);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">language | first_appeared_year</span>
+<span class="l l-Scalar l-Scalar-Plain">----------+---------------------</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SQL      |                1974</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Java     |                1995</span>
+<span class="l l-Scalar l-Scalar-Plain">(2 rows)</span>
+</code></pre></div>
+<p><code>UNNEST</code> can be used in combination with an <code>ARRAY</code> of ROW structures for expanding each field of the <code>ROW</code> into a corresponding column:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT *</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM UNNEST(</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">ARRAY[</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">ROW(&#39;Java&#39;,  1995),</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">ROW(&#39;SQL&#39; , 1974)],</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">ARRAY[</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">ROW(false),</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">ROW(true)]</span>
+<span class="l l-Scalar l-Scalar-Plain">) as t(language,first_appeared_year,declarative);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">language | first_appeared_year | declarative</span>
+<span class="l l-Scalar l-Scalar-Plain">----------+---------------------+-------------</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Java     |                1995 | false</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SQL      |                1974 | true</span>
+<span class="l l-Scalar l-Scalar-Plain">(2 rows)</span>
+</code></pre></div>
+<p><code>UNNEST</code> can optionally have a <code>WITH ORDINALITY</code> clause, in which case an additional ordinality column is added to the end:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT a, b, rownumber</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM UNNEST (</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">ARRAY[2, 5],</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">ARRAY[7, 8, 9]</span>
+<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">) WITH ORDINALITY AS t(a, b, rownumber);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">a   | b | rownumber</span>
+<span class="l l-Scalar l-Scalar-Plain">------+---+-----------</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">2 | 7 |         1</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">5 | 8 |         2</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NULL | 9 |         3</span>
+<span class="l l-Scalar l-Scalar-Plain">(3 rows)</span>
+</code></pre></div>
+<p><code>UNNEST</code> returns zero entries when the array/map is empty:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT * FROM UNNEST (ARRAY[]) AS t(value);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">value</span>
+<span class="l l-Scalar l-Scalar-Plain">-------</span>
+<span class="l l-Scalar l-Scalar-Plain">(0 rows)</span>
+</code></pre></div>
+<p><code>UNNEST</code> returns zero entries when the array/map is null:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT * FROM UNNEST (CAST(null AS ARRAY(integer))) AS t(number);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">number</span>
+<span class="l l-Scalar l-Scalar-Plain">--------</span>
+<span class="l l-Scalar l-Scalar-Plain">(0 rows)</span>
+</code></pre></div>
+<p><code>UNNEST</code> is normally used with a <code>JOIN</code>, and can reference columns from relations on the left side of the join:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT student, score</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM (</span>
+<span class="w">   </span><span class="l l-Scalar l-Scalar-Plain">VALUES</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">(&#39;John&#39;, ARRAY[7, 10, 9]),</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">(&#39;Mary&#39;, ARRAY[4, 8, 9])</span>
+<span class="l l-Scalar l-Scalar-Plain">) AS tests (student, scores)</span>
+<span class="l l-Scalar l-Scalar-Plain">CROSS JOIN UNNEST(scores) AS t(score);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">student | score</span>
+<span class="l l-Scalar l-Scalar-Plain">---------+-------</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">John    |     7</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">John    |    10</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">John    |     9</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mary    |     4</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mary    |     8</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mary    |     9</span>
+<span class="l l-Scalar l-Scalar-Plain">(6 rows)</span>
+</code></pre></div>
+<p><code>UNNEST</code> can also be used with multiple arguments, in which case they are expanded into multiple columns, with as many rows as the highest cardinality argument (the other columns are padded with nulls):</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT numbers, animals, n, a</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM (</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">VALUES</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">(ARRAY[2, 5], ARRAY[&#39;dog&#39;, &#39;cat&#39;, &#39;bird&#39;]),</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">(ARRAY[7, 8, 9], ARRAY[&#39;cow&#39;, &#39;pig&#39;])</span>
+<span class="l l-Scalar l-Scalar-Plain">) AS x (numbers, animals)</span>
+<span class="l l-Scalar l-Scalar-Plain">CROSS JOIN UNNEST(numbers, animals) AS t (n, a);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">numbers  |     animals      |  n   |  a</span>
+<span class="l l-Scalar l-Scalar-Plain">-----------+------------------+------+------</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">[2, 5]    | [dog, cat, bird] |    2 | dog</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">[2, 5]    | [dog, cat, bird] |    5 | cat</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">[2, 5]    | [dog, cat, bird] | NULL | bird</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">[7, 8, 9] | [cow, pig]       |    7 | cow</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">[7, 8, 9] | [cow, pig]       |    8 | pig</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">[7, 8, 9] | [cow, pig]       |    9 | NULL</span>
+<span class="l l-Scalar l-Scalar-Plain">(6 rows)</span>
+</code></pre></div>
+<p><code>LEFT JOIN</code> is preferable in order to avoid losing the the row containing the array/map field in question when referenced columns from relations on the left side of the join can be empty or have <code>NULL</code> values:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT runner, checkpoint</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM (</span>
+<span class="w">   </span><span class="l l-Scalar l-Scalar-Plain">VALUES</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">(&#39;Joe&#39;, ARRAY[10, 20, 30, 42]),</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">(&#39;Roger&#39;, ARRAY[10]),</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">(&#39;Dave&#39;, ARRAY[]),</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">(&#39;Levi&#39;, NULL)</span>
+<span class="l l-Scalar l-Scalar-Plain">) AS marathon (runner, checkpoints)</span>
+<span class="l l-Scalar l-Scalar-Plain">LEFT JOIN UNNEST(checkpoints) AS t(checkpoint) ON TRUE;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">runner | checkpoint</span>
+<span class="l l-Scalar l-Scalar-Plain">--------+------------</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Joe    |         10</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Joe    |         20</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Joe    |         30</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Joe    |         42</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Roger  |         10</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dave   |       NULL</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Levi   |       NULL</span>
+<span class="l l-Scalar l-Scalar-Plain">(7 rows)</span>
+</code></pre></div>
+<p>Note that in case of using <code>LEFT JOIN</code> the only condition supported by the current implementation is <code>ON TRUE</code>.</p>
+<h2 id="joins">Joins<a class="headerlink" href="#joins" title="Permanent link">&para;</a></h2>
+<p>Joins allow you to combine data from multiple relations.</p>
+<h3 id="cross-join">CROSS JOIN<a class="headerlink" href="#cross-join" title="Permanent link">&para;</a></h3>
+<p>A cross join returns the Cartesian product (all combinations) of two relations. Cross joins can either be specified using the explit <code>CROSS JOIN</code> syntax or by specifying multiple relations in the <code>FROM</code> clause.</p>
+<p>Both of the following queries are equivalent:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT *</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM nation</span>
+<span class="l l-Scalar l-Scalar-Plain">CROSS JOIN region;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">SELECT *</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM nation, region;</span>
+</code></pre></div>
+<p>The <code>nation</code> table contains 25 rows and the <code>region</code> table contains 5 rows, so a cross join between the two tables produces 125 rows:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT n.name AS nation, r.name AS region</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM nation AS n</span>
+<span class="l l-Scalar l-Scalar-Plain">CROSS JOIN region AS r</span>
+<span class="l l-Scalar l-Scalar-Plain">ORDER BY 1, 2;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">nation     |   region</span>
+<span class="l l-Scalar l-Scalar-Plain">----------------+-------------</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ALGERIA        | AFRICA</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ALGERIA        | AMERICA</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ALGERIA        | ASIA</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ALGERIA        | EUROPE</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ALGERIA        | MIDDLE EAST</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ARGENTINA      | AFRICA</span>
+<span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ARGENTINA      | AMERICA</span>
+<span class="nn">...</span>
+<span class="l l-Scalar l-Scalar-Plain">(125 rows)</span>
+</code></pre></div>
+<h3 id="lateral">LATERAL<a class="headerlink" href="#lateral" title="Permanent link">&para;</a></h3>
+<p>Subqueries appearing in the <code>FROM</code> clause can be preceded by the keyword <code>LATERAL</code>. This allows them to reference columns provided by preceding <code>FROM</code> items.</p>
+<p>A <code>LATERAL</code> join can appear at the top level in the <code>FROM</code> list, or anywhere within a parenthesized join tree. In the latter case, it can also refer to any items that are on the left-hand side of a <code>JOIN</code> for which it is on the right-hand side.</p>
+<p>When a <code>FROM</code> item contains <code>LATERAL</code> cross-references, evaluation proceeds as follows: for each row of the <code>FROM</code> item providing the cross-referenced columns, the <code>LATERAL</code> item is evaluated using that row set’s values of the columns. The resulting rows are joined as usual with the rows they were computed from. This is repeated for set of rows from the column source tables.</p>
+<p><code>LATERAL</code> is primarily useful when the cross-referenced column is necessary for computing the rows to be joined:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT name, x, y</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM nation</span>
+<span class="l l-Scalar l-Scalar-Plain">CROSS JOIN LATERAL (SELECT name || &#39; :-&#39; AS x)</span>
+<span class="l l-Scalar l-Scalar-Plain">CROSS JOIN LATERAL (SELECT x || &#39;)&#39; AS y);</span>
+</code></pre></div>
+<h3 id="qualifying-column-names">Qualifying column names<a class="headerlink" href="#qualifying-column-names" title="Permanent link">&para;</a></h3>
+<p>When two relations in a join have columns with the same name, the column references must be qualified using the relation alias (if the relation has an alias), or with the relation name:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT nation.name, region.name</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM nation</span>
+<span class="l l-Scalar l-Scalar-Plain">CROSS JOIN region;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">SELECT n.name, r.name</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM nation AS n</span>
+<span class="l l-Scalar l-Scalar-Plain">CROSS JOIN region AS r;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">SELECT n.name, r.name</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM nation n</span>
+<span class="l l-Scalar l-Scalar-Plain">CROSS JOIN region r;</span>
+</code></pre></div>
+<p>The following query will fail with the error <code>Column 'name' is ambiguous</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT name</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM nation</span>
+<span class="l l-Scalar l-Scalar-Plain">CROSS JOIN region;</span>
+</code></pre></div>
+<h2 id="subqueries">Subqueries<a class="headerlink" href="#subqueries" title="Permanent link">&para;</a></h2>
+<p>A subquery is an expression which is composed of a query. The subquery is correlated when it refers to columns outside of the subquery. Logically, the subquery will be evaluated for each row in the surrounding query. The referenced columns will thus be constant during any single evaluation of the subquery.</p>
+<blockquote>
+<p>📌 <strong>Note :</strong>
+Support for correlated subqueries is limited. Not every standard form is supported.
+</p>
+</blockquote>
+<h3 id="exists">EXISTS<a class="headerlink" href="#exists" title="Permanent link">&para;</a></h3>
+<p>The <code>EXISTS</code> predicate determines if a subquery returns any rows:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT name</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM nation</span>
+<span class="l l-Scalar l-Scalar-Plain">WHERE EXISTS (</span>
+<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">SELECT *</span>
+<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">FROM region</span>
+<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">WHERE region.regionkey = nation.regionkey</span>
+<span class="l l-Scalar l-Scalar-Plain">);</span>
+</code></pre></div>
+<h3 id="in">IN<a class="headerlink" href="#in" title="Permanent link">&para;</a></h3>
+<p>The <code>IN</code> predicate determines if any values produced by the subquery are equal to the provided expression. The result of <code>IN</code> follows the standard rules for nulls. The subquery must produce exactly one column:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT name</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM nation</span>
+<span class="l l-Scalar l-Scalar-Plain">WHERE regionkey IN (</span>
+<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">SELECT regionkey</span>
+<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">FROM region</span>
+<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">WHERE name = &#39;AMERICA&#39; OR name = &#39;AFRICA&#39;</span>
+<span class="l l-Scalar l-Scalar-Plain">);</span>
+</code></pre></div>
+<h3 id="scalar-subquery">Scalar subquery<a class="headerlink" href="#scalar-subquery" title="Permanent link">&para;</a></h3>
+<p>A scalar subquery is a non-correlated subquery that returns zero or one row. It is an error for the subquery to produce more than one row. The returned value is <code>NULL</code> if the subquery produces no rows:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SELECT name</span>
+<span class="l l-Scalar l-Scalar-Plain">FROM nation</span>
+<span class="l l-Scalar l-Scalar-Plain">WHERE regionkey = (SELECT max(regionkey) FROM region);</span>
+</code></pre></div>
+<blockquote>
+<p>📌 <strong>Note :</strong>
+Currently only single column can be returned from the scalar subquery.
+</p>
+</blockquote>
+
+<!-- Source file information -->
+
+
+<!-- Was this page helpful? -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine feedback configuration -->
+
+  
+
+
+<!-- Determine whether to show feedback -->
+
+
+<!-- Was this page helpful? -->
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+
+        <!-- Feedback ratings -->
+        <div class="md-feedback__list">
+          
+            <button
+              class="md-feedback__icon md-icon"
+              type="submit"
+              title="This page was helpful"
+              data-md-value="1"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9h4m4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21H9m0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03V19Z"/></svg>
+            </button>
+          
+            <button
+              class="md-feedback__icon md-icon"
+              type="submit"
+              title="This page could be improved"
+              data-md-value="0"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12h-4M15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3h9m0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97V5Z"/></svg>
+            </button>
+          
+        </div>
+
+        <!-- Feedback rating notes (shown after submission) -->
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+
+              <!-- Determine title -->
+              
+                
+              
+
+              <!-- Replace {url} and {title} placeholders in note -->
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+
+              <!-- Determine title -->
+              
+                
+              
+
+              <!-- Replace {url} and {title} placeholders in note -->
+              Thanks for your feedback!
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<!-- Comment system -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Comment system -->
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <!-- Repository information -->
+  
+
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-meta__content">
+        <div class="md-footer-social-and-modern-logo">
+          
+          <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Social links -->
+<div class="md-social">
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://www.facebook.com/themoderndatacompany"
+      target="_blank" rel="noopener"
+      title="www.facebook.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/facebook.png"
+    title="www.facebook.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://twitter.com/TheModernDataCo"
+      target="_blank" rel="noopener"
+      title="twitter.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/twitter.png"
+    title="twitter.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://www.linkedin.com/company/themoderndatacompany"
+      target="_blank" rel="noopener"
+      title="www.linkedin.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/linkedin.png"
+    title="www.linkedin.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+</div>
+          
+          <a href="https://themoderndatacompany.com" target="_blank">
+            <img src="/assets/ModernLogo.png" width="251" class="modern-logo" />
+          </a>
+        </div>
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Copyright and theme information -->
+<div class="md-copyright">
+  
+  <a href="https://themoderndatacompany.com/contact-us" target="_blank" rel="noopener"> Contact Us </a> | <a
+    href="https://themoderndatacompany.com/privacy-policy" target="_blank" rel="noopener"> Privacy Policy </a> | <a
+    href="https://themoderndatacompany.com/terms-of-use" target="_blank" rel="noopener"> Terms of Use </a>
+  
+  
+  <div class="md-copyright__highlight">
+    Copyright ⓒ 2023 The Modern Data Company
+  </div>
+  
+</div>
+      </div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.top", "navigation.tracking", "content.code.copy", "content.code.annotate - toc.follow - toc.integrate"], "search": "../../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.6.4/dist/mermaid.js"></script>
+      
+    
+  </body>
+</html>

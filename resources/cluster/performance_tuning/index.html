@@ -1,0 +1,2910 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>Performance Tuning - All things DataOS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Custom admonition icons -->
+
+
+<!-- Custom tag icons -->
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-ZH4G0HKBQC"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-ZH4G0HKBQC",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-ZH4G0HKBQC",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="blue-grey">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#performance-tuning" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine base classes -->
+
+
+
+<!-- Header -->
+<header class="md-header" data-md-component="header">
+  <nav
+    class="md-header__inner md-grid"
+    aria-label="Header"
+  >
+
+    <!-- Link to home -->
+    <a
+      href="../../.."
+      title="All things DataOS"
+      class="md-header__button md-logo"
+      aria-label="All things DataOS"
+      data-md-component="logo"
+    >
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Logo -->
+
+  <img src="../../../assets/light-modern-logo.png" alt="logo" />
+
+    </a>
+
+    <!-- Button to open drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            All things DataOS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Performance Tuning
+            
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color palette -->
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input
+            class="md-option"
+            data-md-color-media=""
+            data-md-color-scheme="default"
+            data-md-color-primary="blue-grey"
+            data-md-color-accent="blue-grey"
+            
+              aria-label="Switch to dark mode"
+            
+            type="radio"
+            name="__palette"
+            id="__palette_1"
+          />
+          
+            <label
+              class="md-header__button md-icon"
+              title="Switch to dark mode"
+              for="__palette_2"
+              hidden
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          <input
+            class="md-option"
+            data-md-color-media=""
+            data-md-color-scheme="slate"
+            data-md-color-primary="grey"
+            data-md-color-accent="grey"
+            
+              aria-label="Switch to light mode"
+            
+            type="radio"
+            name="__palette"
+            id="__palette_2"
+          />
+          
+            <label
+              class="md-header__button md-icon"
+              title="Switch to light mode"
+              for="__palette_1"
+              hidden
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+
+    <!-- Site language selector -->
+    
+
+    <!-- Button to open search modal -->
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+
+      <!-- Search interface -->
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Search interface -->
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+
+      <!-- Search input -->
+      <input
+        type="text"
+        class="md-search__input"
+        name="query"
+        aria-label="Search"
+        placeholder="Search"
+        autocapitalize="off"
+        autocorrect="off"
+        autocomplete="off"
+        spellcheck="false"
+        data-md-component="search-query"
+        required
+      />
+
+      <!-- Button to open search -->
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+
+      <!-- Search options -->
+      <nav
+        class="md-search__options"
+        aria-label="Search"
+      >
+
+        <!-- Button to share search -->
+        
+
+        <!-- Button to reset search -->
+        <button
+          type="reset"
+          class="md-search__icon md-icon"
+          title="Clear"
+          aria-label="Clear"
+          tabindex="-1"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+
+      <!-- Search suggestions -->
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+
+        <!-- Search results -->
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    <!-- Repository information -->
+    
+  </nav>
+
+  <!-- Navigation tabs (sticky) -->
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Hack: unset variable, as we're using it recursively in tabs-item.html -->
+
+
+<!-- Navigation tabs -->
+<nav
+  class="md-tabs"
+  aria-label="Tabs"
+  data-md-component="tabs"
+>
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  
+  
+
+  <!-- Recurse, if the first item has further nested items -->
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link">
+        Resources
+      </a>
+    </li>
+  
+
+<!-- Main navigation item -->
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  
+  
+
+  <!-- Recurse, if the first item has further nested items -->
+  
+    <li class="md-tabs__item">
+      <a href="../../../interfaces/" class="md-tabs__link">
+        Interfaces
+      </a>
+    </li>
+  
+
+<!-- Main navigation item -->
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../../architecture/" class="md-tabs__link">
+      Architecture
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../../glossary/" class="md-tabs__link">
+      Glossary
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../../videos/" class="md-tabs__link">
+      Videos
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to configuration -->
+
+
+  
+
+
+
+<!-- Main navigation -->
+<nav
+  class="md-nav md-nav--primary md-nav--lifted"
+  aria-label="Navigation"
+  data-md-level="0"
+>
+
+  <!-- Site title -->
+  <label class="md-nav__title" for="__drawer">
+    <a
+      href="../../.."
+      title="All things DataOS"
+      class="md-nav__button md-logo"
+      aria-label="All things DataOS"
+      data-md-component="logo"
+    >
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Logo -->
+
+  <img src="../../../assets/light-modern-logo.png" alt="logo" />
+
+    </a>
+    All things DataOS
+  </label>
+
+  <!-- Repository information -->
+  
+
+  <!-- Render item list -->
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+        
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle md-toggle--indeterminate"
+        type="checkbox"
+        id="__nav_2"
+        
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_2"
+          id="__nav_2_label"
+          tabindex="0"
+        >
+          Resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="1"
+        aria-labelledby="__nav_2_label"
+        aria-expanded="false"
+      >
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Cluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../compute/" class="md-nav__link">
+        Compute
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../depot/" class="md-nav__link">
+        Depot
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../policy/" class="md-nav__link">
+        Policy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../secret/" class="md-nav__link">
+        Secret
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../service/" class="md-nav__link">
+        Service
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../workflow/" class="md-nav__link">
+        Workflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+      
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+        
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle md-toggle--indeterminate"
+        type="checkbox"
+        id="__nav_2_9"
+        
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_2_9"
+          id="__nav_2_9_label"
+          tabindex="0"
+        >
+          Stacks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="2"
+        aria-labelledby="__nav_2_9_label"
+        aria-expanded="false"
+      >
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Stacks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/alpha/" class="md-nav__link">
+        Alpha
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/beacon/" class="md-nav__link">
+        Beacon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/benthos/" class="md-nav__link">
+        Benthos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/data_toolbox/" class="md-nav__link">
+        Data Toolbox
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/flare/" class="md-nav__link">
+        Flare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/scanner/" class="md-nav__link">
+        Scanner
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+        
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle md-toggle--indeterminate"
+        type="checkbox"
+        id="__nav_3"
+        
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_3"
+          id="__nav_3_label"
+          tabindex="0"
+        >
+          Interfaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="1"
+        aria-labelledby="__nav_3_label"
+        aria-expanded="false"
+      >
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Interfaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/atlas/" class="md-nav__link">
+        Atlas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/audiences/" class="md-nav__link">
+        Audiences
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/bifrost/" class="md-nav__link">
+        Bifrost
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/cli/" class="md-nav__link">
+        CLI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/lens/" class="md-nav__link">
+        Lens
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/metis/" class="md-nav__link">
+        Metis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/notebook/" class="md-nav__link">
+        Notebook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/operations/" class="md-nav__link">
+        Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/workbench/" class="md-nav__link">
+        Workbench
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        Glossary
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../videos/" class="md-nav__link">
+        Videos
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cluster-sizing" class="md-nav__link">
+    Cluster Sizing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#small-clusters-vs-big-clusters" class="md-nav__link">
+    Small Clusters vs. Big Clusters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#machine-default-settings" class="md-nav__link">
+    Machine Default Settings
+  </a>
+  
+    <nav class="md-nav" aria-label="Machine Default Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#managing-memory" class="md-nav__link">
+    Managing Memory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jvm" class="md-nav__link">
+    JVM
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workload-tuning" class="md-nav__link">
+    Workload Tuning
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-formats" class="md-nav__link">
+    Storage Formats
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-properties" class="md-nav__link">
+    Configuration Properties
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#category-memory-management-properties" class="md-nav__link">
+    Category: Memory Management Properties
+  </a>
+  
+    <nav class="md-nav" aria-label="Category: Memory Management Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#querymax-memory-per-node" class="md-nav__link">
+    query.max-memory-per-node
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querymax-memory" class="md-nav__link">
+    query.max-memory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querymax-memory-per-task" class="md-nav__link">
+    query.max-memory-per-task
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memoryheap-headroom-per-node" class="md-nav__link">
+    memory.heap-headroom-per-node
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#category-query-management-properties" class="md-nav__link">
+    Category: Query Management Properties
+  </a>
+  
+    <nav class="md-nav" aria-label="Category: Query Management Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#queryexecution-policy" class="md-nav__link">
+    query.execution-policy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querymax-execution-time" class="md-nav__link">
+    query.max-execution-time
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querymax-planning-time" class="md-nav__link">
+    query.max-planning-time
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querymax-run-time" class="md-nav__link">
+    query.max-run-time
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querymax-stage-count" class="md-nav__link">
+    query.max-stage-count
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querymax-history" class="md-nav__link">
+    query.max-history
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querymin-expire-age" class="md-nav__link">
+    query.min-expire-age
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#category-spilling-properties" class="md-nav__link">
+    Category: Spilling Properties
+  </a>
+  
+    <nav class="md-nav" aria-label="Category: Spilling Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spill-enabled" class="md-nav__link">
+    spill-enabled
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spiller-spill-path" class="md-nav__link">
+    spiller-spill-path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spiller-max-used-space-threshold" class="md-nav__link">
+    spiller-max-used-space-threshold
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spiller-threads" class="md-nav__link">
+    spiller-threads
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#max-spill-per-node" class="md-nav__link">
+    max-spill-per-node
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-max-spill-per-node" class="md-nav__link">
+    query-max-spill-per-node
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregation-operator-unspill-memory-limit" class="md-nav__link">
+    aggregation-operator-unspill-memory-limit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spill-compression-enabled" class="md-nav__link">
+    spill-compression-enabled
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spill-encryption-enabled" class="md-nav__link">
+    spill-encryption-enabled
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#category-exchange-properties" class="md-nav__link">
+    Category: Exchange Properties
+  </a>
+  
+    <nav class="md-nav" aria-label="Category: Exchange Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exchangeclient-threads" class="md-nav__link">
+    exchange.client-threads
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exchangeconcurrent-request-multiplier" class="md-nav__link">
+    exchange.concurrent-request-multiplier
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exchangedata-integrity-verification" class="md-nav__link">
+    exchange.data-integrity-verification
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exchangemax-buffer-size" class="md-nav__link">
+    exchange.max-buffer-size
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exchangemax-response-size" class="md-nav__link">
+    exchange.max-response-size
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sinkmax-buffer-size" class="md-nav__link">
+    sink.max-buffer-size
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sinkmax-broadcast-buffer-size" class="md-nav__link">
+    sink.max-broadcast-buffer-size
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#category-task-properties" class="md-nav__link">
+    Category: Task Properties
+  </a>
+  
+    <nav class="md-nav" aria-label="Category: Task Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#taskconcurrency" class="md-nav__link">
+    task.concurrency
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taskhttp-response-threads" class="md-nav__link">
+    task.http-response-threads
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taskhttp-timeout-threads" class="md-nav__link">
+    task.http-timeout-threads
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taskinfo-update-interval" class="md-nav__link">
+    task.info-update-interval
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taskmax-drivers-per-task" class="md-nav__link">
+    task.max-drivers-per-task
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taskmax-partial-aggregation-memory" class="md-nav__link">
+    task.max-partial-aggregation-memory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taskmax-worker-threads" class="md-nav__link">
+    task.max-worker-threads
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taskmin-drivers" class="md-nav__link">
+    task.min-drivers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taskmin-drivers-per-task" class="md-nav__link">
+    task.min-drivers-per-task
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taskwriter-count" class="md-nav__link">
+    task.writer-count
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connectors-for-query-optimization" class="md-nav__link">
+    Connectors for Query Optimization
+  </a>
+  
+    <nav class="md-nav" aria-label="Connectors for Query Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#predicate-pushdown" class="md-nav__link">
+    Predicate Pushdown
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#projection-pushdown" class="md-nav__link">
+    Projection Pushdown
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregate-pushdown" class="md-nav__link">
+    Aggregate Pushdown
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#join-pushdown" class="md-nav__link">
+    Join Pushdown
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limit-pushdown" class="md-nav__link">
+    Limit Pushdown
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Tags -->
+
+
+<!-- Actions -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Actions -->
+
+
+<!--
+  Hack: check whether the content contains a h1 headline. If it doesn't, the
+  page title (or respectively site name) is used as the main headline.
+-->
+
+
+<!-- Page content -->
+<h1 id="performance-tuning">Performance Tuning<a class="headerlink" href="#performance-tuning" title="Permanent link">&para;</a></h1>
+<p>The Minerva query engine is specifically designed to handle large data sets distributed across diverse data sources. However, executing complex queries with big data on Minerva may require some optimization to improve performance. This section outlines several key considerations that can help you accelerate your queries on Minerva.</p>
+<h2 id="cluster-sizing">Cluster Sizing<a class="headerlink" href="#cluster-sizing" title="Permanent link">&para;</a></h2>
+<p>To ensure optimal performance, it is crucial to appropriately size your Minerva cluster nodes. A Minerva cluster consists of a single driver (coordinator) node and multiple worker nodes. The coordinator node analyzes and plans query execution, distributing the query plan among the worker nodes for processing within the cluster. The driver node executes parallel operations on the worker nodes, leveraging connectors specific to your data sources (e.g., Postgres, Oracle) to read and transform data.</p>
+<p>While the driver and worker nodes can have different instance types, Minerva's default configuration maintains consistent configurations for all worker nodes. It's important to note that Minerva clusters are static and do not automatically resize based on workloads.</p>
+<p>Minerva utilizes parallel processing and pipelined execution across cluster nodes, making efficient use of available resources such as memory, CPU, and network allocation. The multithreaded execution model ensures maximum utilization of CPU cores. Additionally, it's essential to manage user and query concurrency requirements, considering potential fluctuations during peak and off-hours.</p>
+<p>Query execution time is influenced by three primary dimensions: CPU time, memory requirements, and network bandwidth usage. These factors apply to both single-query and concurrent workloads. Increasing the number of CPUs can result in shorter query durations, while memory is critical for performing operations like joins, group by, and order by in your queries. These dimensions collectively contribute to the overall cost of executing queries in Minerva.</p>
+<p>When sizing your cluster, consider the following factors:</p>
+<ul>
+<li>Data Volume: The total amount of data you need to process</li>
+<li>Data Growth: Anticipated data growth over time</li>
+</ul>
+<h2 id="small-clusters-vs-big-clusters">Small Clusters vs. Big Clusters<a class="headerlink" href="#small-clusters-vs-big-clusters" title="Permanent link">&para;</a></h2>
+<p>When initially setting up your cluster, it's advisable to start with a larger cluster size than what is strictly necessary. This allows you to ensure stability and validate that all components are functioning correctly. Running workloads on a small cluster can easily exceed resource limits (CPU, memory, network), resulting in query failures or prolonged waiting times. A single big query on a small cluster can lead to queuing and unreliable response times for query results.</p>
+<p>If required, you can provide specific examples to determine the appropriate cluster size for different use cases.</p>
+<h2 id="machine-default-settings">Machine Default Settings<a class="headerlink" href="#machine-default-settings" title="Permanent link">&para;</a></h2>
+<p>Ensure that the default machine settings are sufficiently large to support the expected cluster configurations for your desired workloads. Consider the following aspects:</p>
+<h3 id="managing-memory"><strong>Managing Memory</strong><a class="headerlink" href="#managing-memory" title="Permanent link">&para;</a></h3>
+<p>Account for memory required by the operating system for processes such as the kernel, disk, and network buffers.</p>
+<h3 id="jvm"><strong>JVM</strong><a class="headerlink" href="#jvm" title="Permanent link">&para;</a></h3>
+<p>Configure your virtual machine options. You can use the provided diagnostic options to troubleshoot garbage collection (GC) issues.</p>
+<p>Java heap configuration is also essential. Allocate memory for OS processes, JVM processes (e.g., garbage collection, thread management), and query processing. Here's a recommended memory allocation breakdown:</p>
+<ul>
+<li>Approximately 20% for OS overhead</li>
+<li>80% allocated to the Java heap, with around 70% dedicated to query memory</li>
+</ul>
+<p>For example, on a 128 GB machine, allocate 100 GB to JVM Heap and reserve 70 GB for Minerva Query Memory.</p>
+<p>Using larger machines with fewer instances is generally preferable, as it reduces memory overhead per machine and minimizes coordination efforts. It is recommended to disable OS spilling, as JVM is not designed for spilling. Instead, scale up the cluster size for larger queries. Spilling can cause queuing issues due to slow disk access. Furthermore, disabling the "runaway" process detector is advisable since Minerva efficiently utilizes all available resources.</p>
+<h2 id="workload-tuning">Workload Tuning<a class="headerlink" href="#workload-tuning" title="Permanent link">&para;</a></h2>
+<p>To optimize your workload in Minerva, it's crucial to understand the characteristics and requirements of your overall workload. Different use cases may require different instance types and configurations. Consider the following aspects to minimize errors caused by timeouts and resource limitations:</p>
+<ul>
+<li>Identify the types of queries you run: Determine if they are memory-intensive or compute-intensive.</li>
+<li>Define the expected latency for your queries.</li>
+<li>Specify the desired consistency level.</li>
+<li>Evaluate the concurrency of your workload, as higher concurrency requires more core memory.</li>
+<li>Assess the average amount of data involved in typical queries.</li>
+<li>Determine peak load requirements in terms of CPU and memory.</li>
+</ul>
+<p><strong>Recommendations</strong></p>
+<p>In high-concurrency or heavy-workload environments, it is recommended to oversize your Minerva cluster to achieve optimal performance. Additionally, closely monitor performance under different query loads and fine-tune the configuration as necessary. Refer to the provided examples for further guidance.</p>
+<h2 id="storage-formats">Storage Formats<a class="headerlink" href="#storage-formats" title="Permanent link">&para;</a></h2>
+<p>While optimizing query execution by addressing infrastructure aspects is important, it's equally essential to enhance storage performance. Storage performance is influenced by two key factors: latency and throughput. Latency refers to the time taken to retrieve data for end-users, while throughput represents the amount of data read by a query over time.</p>
+<p>Improving storage performance in Minerva involves considerations related to file formats, sizes, compression, and organization. These optimizations can significantly enhance query performance.</p>
+<p><strong>Recommendations</strong></p>
+<ul>
+<li><strong>Use columnar formats that efficiently store data</strong></li>
+</ul>
+<p>Minerva processes data in vectorized columns, holding only the relevant data for processing and compressing each column individually. Icebase stores data in the Parquet format, which is optimized for fast data retrieval.</p>
+<ul>
+<li><strong>Optimize file size</strong></li>
+</ul>
+<p>File size has a significant impact on query processing. Small files result in numerous small IO requests, which can affect performance due to high latency, throttling, or IO capacity limitations. Handling each file separately increases scheduling time and costs. To mitigate these issues, use file sizes of at least 100MB to overcome potential IO-related challenges. DataOS enables merging and compacting data/metadata files within Icebase data storage using Flare Stack's Maintenance Actions.</p>
+<ul>
+<li><strong>Apply data compression</strong></li>
+</ul>
+<p>Compressing your data can significantly enhance performance. Icebase stores data in the Apache Parquet format, which offers built-in data compression.</p>
+<ul>
+<li><strong>Partition your data</strong></li>
+</ul>
+<p>Partitioning involves dividing your table into segments based on specific column values (e.g., date, vendor ID, product ID). This strategy keeps related data together and reduces the amount of data scanned for queries involving predicates on partitioned columns, thereby improving performance.</p>
+<ul>
+<li><strong>Sort your data</strong></li>
+</ul>
+<p>Sorting your data can also improve performance by narrowing down the range of partitions that need to be read by Minerva. If you filter based on a sorted column, Minerva can efficiently skip irrelevant chunks of data.</p>
+<h2 id="configuration-properties">Configuration Properties<a class="headerlink" href="#configuration-properties" title="Permanent link">&para;</a></h2>
+<p>To achieve optimal performance for your specific workload, you may need to adjust Minerva's configuration properties. DataOS allows you to customize these properties and tune their behavior as needed. The Minerva cluster YAML configuration defines these properties for coordinator and worker nodes under the <code>Env</code> section.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">cluster</span><span class="p">:</span>
+<span class="err">  </span><span class="l l-Scalar l-Scalar-Plain">compute</span><span class="err">: </span><span class="l l-Scalar l-Scalar-Plain">query-default</span><span class="w"> </span>
+<span class="err">  </span><span class="l l-Scalar l-Scalar-Plain">runAsUser</span><span class="err">: </span><span class="w"> </span>
+<span class="err">  </span><span class="nt">minerva</span><span class="p">:</span><span class="w"> </span>
+<span class="err">    </span><span class="nt">selector</span><span class="p">:</span>
+<span class="err">      </span><span class="nt">users</span><span class="p">:</span>
+<span class="err">        - </span><span class="s">&quot;**&quot;</span>
+<span class="err">      </span><span class="nt">sources</span><span class="p">:</span>
+<span class="err">        - </span><span class="s">&quot;**&quot;</span>
+<span class="err">    </span><span class="l l-Scalar l-Scalar-Plain">replicas</span><span class="err">: </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"> </span>
+<span class="err">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span>
+<span class="err">      </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span>
+<span class="err">        </span><span class="l l-Scalar l-Scalar-Plain">cpu</span><span class="err">: </span><span class="l l-Scalar l-Scalar-Plain">2000m</span><span class="w"> </span>
+<span class="err">        </span><span class="l l-Scalar l-Scalar-Plain">memory</span><span class="err">: </span><span class="l l-Scalar l-Scalar-Plain">4Gi</span><span class="w"> </span>
+<span class="err">      </span><span class="nt">requests</span><span class="p">:</span><span class="w"> </span>
+<span class="err">        </span><span class="l l-Scalar l-Scalar-Plain">cpu</span><span class="err">: </span><span class="l l-Scalar l-Scalar-Plain">2000m</span><span class="w"> </span>
+<span class="err">        </span><span class="l l-Scalar l-Scalar-Plain">memory</span><span class="err">: </span><span class="l l-Scalar l-Scalar-Plain">4Gi</span><span class="w"> </span>
+<span class="err">    </span><span class="nt">debug</span><span class="p">:</span><span class="w"> </span>
+<span class="err">      </span><span class="l l-Scalar l-Scalar-Plain">logLevel</span><span class="err">: </span><span class="l l-Scalar l-Scalar-Plain">INFO</span><span class="w"> </span>
+<span class="err">      </span><span class="l l-Scalar l-Scalar-Plain">trinoLogLevel</span><span class="err">: </span><span class="l l-Scalar l-Scalar-Plain">ERROR</span>
+<span class="err">    </span><span class="l l-Scalar l-Scalar-Plain">coordinatorEnvs</span><span class="err">:               </span><span class="l l-Scalar l-Scalar-Plain">#</span><span class="err"> </span><span class="l l-Scalar l-Scalar-Plain">for</span><span class="err"> </span><span class="l l-Scalar l-Scalar-Plain">coordinator</span>
+<span class="err">      </span><span class="l l-Scalar l-Scalar-Plain">CONF__config__query.max-memory</span><span class="err">: </span><span class="l l-Scalar l-Scalar-Plain">&quot;2GB&quot;</span>
+<span class="err">    </span><span class="l l-Scalar l-Scalar-Plain">workerEnvs</span><span class="err">:                   </span><span class="l l-Scalar l-Scalar-Plain">#</span><span class="err"> </span><span class="l l-Scalar l-Scalar-Plain">for</span><span class="err"> </span><span class="l l-Scalar l-Scalar-Plain">worker</span>
+<span class="err">      </span><span class="l l-Scalar l-Scalar-Plain">CONF__config__query.max-memory</span><span class="err">: </span><span class="l l-Scalar l-Scalar-Plain">&quot;2GB&quot;</span>
+</code></pre></div>
+<h3 id="category-memory-management-properties"><strong>Category: Memory Management Properties</strong><a class="headerlink" href="#category-memory-management-properties" title="Permanent link">&para;</a></h3>
+<h4 id="querymax-memory-per-node"><strong><code>query.max-memory-per-node</code></strong><a class="headerlink" href="#querymax-memory-per-node" title="Permanent link">&para;</a></h4>
+<p><b>Description:</b> This property determines the maximum amount of user memory that a query can utilize on a worker. User memory is allocated during execution for components directly related to or controlled by the query, such as hash tables and sorting. If the user memory allocation of a query on any worker exceeds this limit, the query is terminated.<br>
+<b>Type:</b> Data size<br>
+<b>Key:</b>CONF__config__query.
+max-memory-per-node<br>
+<b>Default Value:</b> (JVM max memory * 0.3)<br></p>
+<hr />
+<h4 id="querymax-memory"><strong><code>query.max-memory</code></strong><a class="headerlink" href="#querymax-memory" title="Permanent link">&para;</a></h4>
+<p><b>Description:</b> This property defines the maximum amount of user memory that a query can use across the entire cluster. User memory is allocated during execution for components directly related to or controlled by the query, such as hash tables and sorting. If the user memory allocation of a query across all workers exceeds this limit, the query is terminated. <br>
+<b>Type:</b> Data size <br>
+<b>Key:</b> CONF__config__query.max-memory <br>
+<b>Default Value:</b> 20GB <br></p>
+<hr />
+<h4 id="querymax-memory-per-task"><code>query.max-memory-per-task</code><a class="headerlink" href="#querymax-memory-per-task" title="Permanent link">&para;</a></h4>
+<p><b>Description:</b> This property specifies the maximum amount of memory that a task can use on a node in the cluster. Note that support for this property is experimental. <br>
+<b>Type:</b> Data size <br>
+<b>Key:</b> CONF__config__query.max-memory-per-task <br>
+<b>Session Property:</b>query_max_total_memory_per_task<br>
+<b>Default Value:</b> None (unrestricted) <br></p>
+<hr />
+<h4 id="memoryheap-headroom-per-node"><code>memory.heap-headroom-per-node</code><a class="headerlink" href="#memoryheap-headroom-per-node" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property reserves a portion of the JVM heap as headroom or buffer for memory allocations that are not tracked by Trino.<br>
+<strong>Type:</strong> Data size<br>
+<strong>Key:</strong> CONF__config__memory.heap-headroom-per-node<br>
+<strong>Default Value:</strong> (JVM max memory * 0.3)</p>
+<hr />
+<h3 id="category-query-management-properties"><strong>Category: Query Management Properties</strong><a class="headerlink" href="#category-query-management-properties" title="Permanent link">&para;</a></h3>
+<h4 id="queryexecution-policy"><code>query.execution-policy</code><a class="headerlink" href="#queryexecution-policy" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property configures the algorithm used to schedule the stages of a query.<br>
+<strong>Type:</strong> String<br>
+<strong>Key:</strong> CONF__config__query.execution-policy<br>
+<strong>Session Property:</strong> execution_policy<br>
+<strong>Default Value:</strong> Phased<br>
+<strong>Possible Value:</strong> Phased, All-at-once, Legacy-phased<br>
+<strong>Additional Information:</strong> The available execution policies are as follows:
+- <strong>Phased:</strong> Stages are scheduled sequentially to avoid dependencies and maximize resource utilization, resulting in the lowest query wall time.
+- <strong>All-at-once:</strong> All stages of a query are scheduled simultaneously, leading to higher initial resource utilization but potentially longer queue times and higher query wait times due to inter-stage dependencies.
+- <strong>Legacy-phased:</strong> Similar to phased execution, but aims to minimize the number of running stages, potentially increasing query wall time.</p>
+<hr />
+<h4 id="querymax-execution-time"><code>query.max-execution-time</code><a class="headerlink" href="#querymax-execution-time" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property sets the maximum allowed execution time for a query on the cluster. It includes only the active execution time and excludes analysis, query planning, and queue wait times.<br>
+<strong>Type:</strong> Duration<br>
+<strong>Key:</strong> CONF__config__query.max-execution-time<br>
+<strong>Session Property:</strong> query_max_execution_time<br>
+<strong>Default Value:</strong> 100 days<br></p>
+<hr />
+<h4 id="querymax-planning-time"><code>query.max-planning-time</code><a class="headerlink" href="#querymax-planning-time" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property defines the maximum allowed planning time for a query. If the planning time exceeds this limit, the coordinator attempts to stop the query. Note that certain planning operations may not be immediately cancellable.<br>
+<strong>Type:</strong> Duration<br>
+<strong>Key:</strong> CONF__config__query.max-planning-time<br>
+<strong>Default Value:</strong> 10 minutes<br>
+<strong>Session Property:</strong> query_max_planning_time</p>
+<hr />
+<h4 id="querymax-run-time"><code>query.max-run-time</code><a class="headerlink" href="#querymax-run-time" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property specifies the maximum allowed total runtime for a query on the cluster. It includes analysis, planning, and queue wait times, providing the overall time allowed for a query to exist since its creation.<br>
+<strong>Type:</strong> Duration<br>
+<strong>Key:</strong> CONF__config__query.max-run-time<br>
+<strong>Default Value:</strong> 100 days<br>
+<strong>Session Property:</strong> query_max_run_time</p>
+<hr />
+<h4 id="querymax-stage-count"><code>query.max-stage-count</code><a class="headerlink" href="#querymax-stage-count" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property determines the maximum number of stages that can be generated per query. If a query exceeds this limit, it will be terminated with an error indicating that it has too many stages.<br>
+<strong>Key:</strong> CONF__config__query.max-stage-count<br>
+<strong>Type:</strong> Integer<br>
+<strong>Default Value:</strong> 100<br>
+<strong>Min Value:</strong> 1<br>
+<strong>Warning:</strong> Setting a high value for this property can cause instability in the cluster, leading to unrelated queries being terminated with a REMOTE_TASK_ERROR due to exceeding the maximum requests queued per destination.</p>
+<hr />
+<h4 id="querymax-history"><code>query.max-history</code><a class="headerlink" href="#querymax-history" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property sets the maximum number of queries to retain in the query history for statistical and informational purposes. Once this limit is reached, older queries are removed based on their age.<br>
+<strong>Key:</strong> CONF__config__query.max-history<br>
+<strong>Type:</strong> Integer<br>
+<strong>Default Value:</strong> 100</p>
+<hr />
+<h4 id="querymin-expire-age"><code>query.min-expire-age</code><a class="headerlink" href="#querymin-expire-age" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property specifies the minimum age of a query in the history before it is expired. Once expired, a query is removed from the query history buffer and is no longer accessible in the Web UI.<br>
+<strong>Type:</strong> Duration<br>
+<strong>Key:</strong> CONF__config__query.min-expire-age<br>
+<strong>Default Value:</strong> 15 minutes</p>
+<hr />
+<h3 id="category-spilling-properties"><strong>Category: Spilling Properties</strong><a class="headerlink" href="#category-spilling-properties" title="Permanent link">&para;</a></h3>
+<h4 id="spill-enabled"><strong><code>spill-enabled</code></strong><a class="headerlink" href="#spill-enabled" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property enables spilling memory to disk in order to avoid exceeding memory limits for the query. Spilling works by offloading memory to disk, allowing queries with large memory footprints to proceed, albeit with slower execution times. Spilling is supported for aggregations, joins (inner and outer), sorting, and window functions. Please note that this property does not reduce the memory usage required for other join types. The <code>spill_enabled</code> session property can override this configuration.<br>
+<strong>Type:</strong> Boolean<br>
+<strong>Key:</strong> CONF__config__spill-enabled<br>
+<strong>Default Value:</strong> FALSE</p>
+<hr />
+<h4 id="spiller-spill-path"><strong><code>spiller-spill-path</code></strong><a class="headerlink" href="#spiller-spill-path" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property specifies the directory where spilled content is written. It can be a comma-separated list to spill simultaneously to multiple directories, leveraging multiple drives installed in the system. It is not recommended to spill to system drives. Importantly, avoid spilling to the drive where JVM logs are written to prevent disk overutilization, which may cause queries to fail.<br>
+<strong>Type:</strong> String<br>
+<strong>Key:</strong> CONF__config__spiller-spill-path<br>
+<strong>Default Value:</strong> No default value. Must be set when spilling is enabled</p>
+<hr />
+<h4 id="spiller-max-used-space-threshold"><strong><code>spiller-max-used-space-threshold</code></strong><a class="headerlink" href="#spiller-max-used-space-threshold" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> If the disk space usage ratio of a given spill path exceeds this threshold, the spill path is deemed ineligible for spilling.<br>
+<strong>Type:</strong> Double<br>
+<strong>Key:</strong> CONF__config__spiller-max-used-space-threshold<br>
+<strong>Default Value:</strong> 0.9</p>
+<hr />
+<h4 id="spiller-threads"><strong><code>spiller-threads</code></strong><a class="headerlink" href="#spiller-threads" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property determines the number of spiller threads. Increase this value if the default number of threads cannot fully utilize the underlying spilling device, such as when using RAID.<br>
+<strong>Type:</strong> Integer<br>
+<strong>Key:</strong> CONF__config__spiller-threads<br>
+<strong>Default Value:</strong> 4</p>
+<hr />
+<h4 id="max-spill-per-node"><strong><code>max-spill-per-node</code></strong><a class="headerlink" href="#max-spill-per-node" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property sets the maximum spill space to be used by all queries on a single node.<br>
+<strong>Type:</strong> Data Size<br>
+<strong>Key:</strong> CONF__config__max-spill-per-node<br>
+<strong>Default Value:</strong> 100GB</p>
+<hr />
+<h4 id="query-max-spill-per-node"><strong><code>query-max-spill-per-node</code></strong><a class="headerlink" href="#query-max-spill-per-node" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property defines the maximum spill space to be used by a single query on a single node.<br>
+<strong>Type:</strong> Data Size<br>
+<strong>Key:</strong> CONF__config__query-max-spill-per-node<br>
+<strong>Default Value:</strong> 100GB</p>
+<h4 id="aggregation-operator-unspill-memory-limit"><strong><code>aggregation-operator-unspill-memory-limit</code></strong><a class="headerlink" href="#aggregation-operator-unspill-memory-limit" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property defines the memory limit for unspilling a single instance of an aggregation operator.<br>
+<strong>Type:</strong> Data Size<br>
+<strong>Key:</strong> CONF__config__aggregation-operator-unspill-memory-limit<br>
+<strong>Default Value:</strong> 4MB</p>
+<hr />
+<h4 id="spill-compression-enabled"><strong><code>spill-compression-enabled</code></strong><a class="headerlink" href="#spill-compression-enabled" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> Enables data compression for pages that are spilled to disk.<br>
+<strong>Type:</strong> Boolean<br>
+<strong>Key:</strong> CONF__config__spill-compression-enabled<br>
+<strong>Default Value:</strong> FALSE</p>
+<hr />
+<h4 id="spill-encryption-enabled"><strong><code>spill-encryption-enabled</code></strong><a class="headerlink" href="#spill-encryption-enabled" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> Enables the use of a randomly generated secret key (per spill file) to encrypt and decrypt data that is spilled to disk.<br>
+<strong>Type:</strong> Boolean<br>
+<strong>Key:</strong> CONF__config__spill-encryption-enabled<br>
+<strong>Default Value:</strong> FALSE</p>
+<h3 id="category-exchange-properties"><strong>Category: Exchange Properties</strong><a class="headerlink" href="#category-exchange-properties" title="Permanent link">&para;</a></h3>
+<h4 id="exchangeclient-threads"><strong><code>exchange.client-threads</code></strong><a class="headerlink" href="#exchangeclient-threads" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property determines the number of threads used by exchange clients to fetch data from other Trino nodes. Increasing the value can improve performance for large clusters or clusters with high concurrency. However, setting excessively high values may result in performance degradation due to context switches and increased memory usage.<br>
+<strong>Type:</strong> Integer<br>
+<strong>Key:</strong> CONF__config__exchange.client-threads<br>
+<strong>Default Value:</strong> 25<br>
+<strong>Min Value:</strong> 1</p>
+<hr />
+<h4 id="exchangeconcurrent-request-multiplier"><strong><code>exchange.concurrent-request-multiplier</code></strong><a class="headerlink" href="#exchangeconcurrent-request-multiplier" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property determines the multiplier for the number of concurrent requests relative to the available buffer memory. The maximum number of requests is calculated based on the average buffer usage per request multiplied by this multiplier. The heuristic takes into account the available buffer space and aims to optimize concurrency and network utilization. Adjusting this value can increase concurrency and improve network utilization.<br>
+<strong>Type:</strong> Integer<br>
+<strong>Key:</strong> CONF__config__exchange.concurrent-request-multiplier<br>
+<strong>Default Value:</strong> 3<br>
+<strong>Min Value:</strong> 1</p>
+<hr />
+<h4 id="exchangedata-integrity-verification"><strong><code>exchange.data-integrity-verification</code></strong><a class="headerlink" href="#exchangedata-integrity-verification" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property configures the behavior in case of data integrity issues. By default, when data integrity issues are detected during the built-in verification, queries are aborted (ABORT). Setting the property to NONE disables the verification, while setting it to RETRY repeats the data exchange when integrity issues are detected.<br>
+<strong>Type:</strong> String<br>
+<strong>Key:</strong> CONF__config__exchange.data-integrity-verification<br>
+<strong>Default Value:</strong> ABORT<br>
+<strong>Allowed Values:</strong> NONE, ABORT, RETRY</p>
+<hr />
+<h4 id="exchangemax-buffer-size"><strong><code>exchange.max-buffer-size</code></strong><a class="headerlink" href="#exchangemax-buffer-size" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property defines the size of the buffer in the exchange client that holds data fetched from other nodes before it is processed. A larger buffer size can increase network throughput for larger clusters, thereby reducing query processing time. However, it also reduces the available memory for other purposes.<br>
+<strong>Type:</strong> Data Size<br>
+<strong>Key:</strong> CONF__config__exchange.max-buffer-size<br>
+<strong>Default Value:</strong> 32MB</p>
+<hr />
+<h4 id="exchangemax-response-size"><strong><code>exchange.max-response-size</code></strong><a class="headerlink" href="#exchangemax-response-size" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property sets the maximum size of a response returned from an exchange request. The response is stored in the exchange client buffer, which is shared across all concurrent requests for the exchange. Increasing this value can improve network throughput, especially when there is high latency. Decreasing the value can improve query performance for large clusters by reducing skew, as the exchange client buffer can hold responses for more tasks.<br>
+<strong>Type:</strong> Data Size<br>
+<strong>Key:</strong> CONF__config__exchange.max-response-size<br>
+<strong>Default Value:</strong> 16MB<br>
+<strong>Min Value:</strong> 1MB</p>
+<hr />
+<h4 id="sinkmax-buffer-size"><strong><code>sink.max-buffer-size</code></strong><a class="headerlink" href="#sinkmax-buffer-size" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property determines the output buffer size for task data waiting to be pulled by upstream tasks. If the task output is hash partitioned, the buffer is shared among all partitioned consumers. Increasing this value can improve network throughput for data transferred between stages, particularly in cases of high network latency or when there are many nodes in the cluster.<br>
+<strong>Type:</strong> Data Size<br>
+<strong>Key:</strong> CONF__config__sink.max-buffer-size<br>
+<strong>Default Value:</strong> 32MB</p>
+<hr />
+<h4 id="sinkmax-broadcast-buffer-size"><strong><code>sink.max-broadcast-buffer-size</code></strong><a class="headerlink" href="#sinkmax-broadcast-buffer-size" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property specifies the broadcast output buffer size for task data waiting to be pulled by upstream tasks. The broadcast buffer is used to store and transfer build-side data for replicated joins. If the buffer size is too small, it can hinder the scaling of join probe side tasks when new nodes are added to the cluster.<br>
+<strong>Type:</strong> Data Size<br>
+<strong>Key:</strong> CONF__config__sink.max-broadcast-buffer-size<br>
+<strong>Default Value:</strong> 200MB</p>
+<hr />
+<h3 id="category-task-properties"><strong>Category: Task Properties</strong><a class="headerlink" href="#category-task-properties" title="Permanent link">&para;</a></h3>
+<h4 id="taskconcurrency"><strong><code>task.concurrency</code></strong><a class="headerlink" href="#taskconcurrency" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property defines the default local concurrency for parallel operators such as joins and aggregations. The value should be adjusted based on the query concurrency and worker resource utilization. Lower values are suitable for clusters that run many queries concurrently to avoid slowdowns due to context switching and overhead. Higher values are better for clusters that handle a smaller number of queries at a time. The <code>task_concurrency</code> session property allows specifying this value on a per-query basis.<br>
+<strong>Type:</strong> Integer<br>
+<strong>Key:</strong> CONF__config__task.concurrency<br>
+<strong>Default Value:</strong> 16<br>
+<strong>Restrictions:</strong> Must be a power of two.</p>
+<hr />
+<h4 id="taskhttp-response-threads"><strong><code>task.http-response-threads</code></strong><a class="headerlink" href="#taskhttp-response-threads" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property sets the maximum number of threads that can handle HTTP responses. Threads are created on-demand and cleaned up when idle. Increasing this value can be beneficial for clusters with a high number of concurrent queries or a large number of workers.<br>
+<strong>Type:</strong> Integer<br>
+<strong>Key:</strong> CONF__config__task.http-response-threads<br>
+<strong>Default Value:</strong> 100<br>
+<strong>Min Value:</strong> 1</p>
+<hr />
+<h4 id="taskhttp-timeout-threads"><strong><code>task.http-timeout-threads</code></strong><a class="headerlink" href="#taskhttp-timeout-threads" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property determines the number of threads used to handle timeouts when generating HTTP responses. If all threads are frequently in use, it may be necessary to increase this value. The thread utilization can be monitored through the <code>trino.server:name=AsyncHttpExecutionMBean:TimeoutExecutor</code> JMX object. If the <code>ActiveCount</code> is consistently the same as <code>PoolSize</code>, it indicates the need for more threads.<br>
+<strong>Type:</strong> Integer<br>
+<strong>Key:</strong> CONF__config__task.http-timeout-threads<br>
+<strong>Default Value:</strong> 3<br>
+<strong>Min Value:</strong> 1</p>
+<hr />
+<h4 id="taskinfo-update-interval"><strong><code>task.info-update-interval</code></strong><a class="headerlink" href="#taskinfo-update-interval" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property controls the staleness of task information used in scheduling. Larger values reduce coordinator CPU load but may result in suboptimal split scheduling.<br>
+<strong>Type:</strong> Duration<br>
+<strong>Key:</strong> CONF__config__task.info-update-interval<br>
+<strong>Default Value:</strong> 3s<br>
+<strong>Min Value:</strong> 1ms<br>
+<strong>Max Value:</strong> 10s</p>
+<hr />
+<h4 id="taskmax-drivers-per-task"><strong><code>task.max-drivers-per-task</code></strong><a class="headerlink" href="#taskmax-drivers-per-task" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property limits the maximum number of drivers that can run concurrently within a task. Setting this value reduces the likelihood of a task using too many drivers and can improve concurrent query performance. However, setting it too low may result in underutilized resources.<br>
+<strong>Type:</strong> Integer<br>
+<strong>Key:</strong> CONF__config__task.max-drivers-per-task<br>
+<strong>Default Value:</strong> 2147483647<br>
+<strong>Min Value:</strong> 1</p>
+<hr />
+<h4 id="taskmax-partial-aggregation-memory"><strong><code>task.max-partial-aggregation-memory</code></strong><a class="headerlink" href="#taskmax-partial-aggregation-memory" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property specifies the maximum size of partial aggregation results for distributed aggregations. Increasing this value can reduce network transfer and lower CPU utilization by allowing more groups to be kept locally before being flushed. However, it also increases memory usage.<br>
+<strong>Type:</strong> Data Size<br>
+<strong>Key:</strong> CONF__config__task.max-partial-aggregation-memory<br>
+<strong>Default Value:</strong> 16MB</p>
+<hr />
+<h4 id="taskmax-worker-threads"><strong><code>task.max-worker-threads</code></strong><a class="headerlink" href="#taskmax-worker-threads" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property determines the number of threads used by workers to process splits. Increasing this number can improve throughput if worker CPU utilization is low and all threads are in use. However, it also increases heap space usage. Setting the value too high may lead to a drop in performance due to context switching. The number of active threads can be monitored using the <code>RunningSplits</code> property of the <code>trino.execution.executor:name=TaskExecutor.RunningSplits</code> JMX object.<br>
+<strong>Type:</strong> Integer<br>
+<strong>Key:</strong> CONF__config__task.max-worker-threads<br>
+<strong>Default Value:</strong> (Node CPUs * 2)</p>
+<hr />
+<h4 id="taskmin-drivers"><strong><code>task.min-drivers</code></strong><a class="headerlink" href="#taskmin-drivers" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property represents the target number of running leaf splits on a worker. It acts as a minimum value because each leaf task is guaranteed to have at least 3 running splits. Non-leaf tasks are also ensured to run to prevent deadlocks. Adjusting this value can impact responsiveness for new tasks and resource utilization.<br>
+<strong>Type:</strong> Integer<br>
+<strong>Key:</strong> CONF__config__task.min-drivers<br>
+<strong>Default Value:</strong> (task.max-worker-threads * 2)</p>
+<hr />
+<h4 id="taskmin-drivers-per-task"><strong><code>task.min-drivers-per-task</code></strong><a class="headerlink" href="#taskmin-drivers-per-task" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property sets the minimum number of drivers guaranteed to run concurrently for a single task, assuming the task has remaining splits to process.<br>
+<strong>Type:</strong> Integer<br>
+<strong>Key:</strong> CONF__config__task.min-drivers-per-task<br>
+<strong>Default Value:</strong> 3<br>
+<strong>Min Value:</strong> 1</p>
+<hr />
+<h4 id="taskwriter-count"><strong><code>task.writer-count</code></strong><a class="headerlink" href="#taskwriter-count" title="Permanent link">&para;</a></h4>
+<p><strong>Description:</strong> This property determines the number of concurrent writer threads per worker per query. Increasing this value can enhance write speed, particularly when a query is not I/O bound and can take advantage of additional CPU for parallel writes. However, some connectors may experience CPU bottlenecks during writing due to compression or other factors. Setting this value too high may overload the cluster with excessive resource utilization. The <code>task_writer_count</code> session property allows specifying this value on a per-query basis.<br>
+<strong>Type:</strong> Integer<br>
+<strong>Key:</strong> CONF__config__task.writer-count<br>
+<strong>Default Value:</strong> 1<br>
+<strong>Restrictions:</strong> Must be a power of two.</p>
+<p>When defining environment variables explicitly, ensure that you set <code>overrideDefaultEnvs</code> to <code>false</code> to avoid accepting default configurations.</p>
+<p>For more details, refer to the table of configuration properties.</p>
+<h2 id="connectors-for-query-optimization">Connectors for Query Optimization<a class="headerlink" href="#connectors-for-query-optimization" title="Permanent link">&para;</a></h2>
+<p>Minerva supports pushdown optimization, which involves pushing transformation logic to the source database. This optimization allows Minerva to delegate specific query operations or parts of operations to the connected data source, improving overall query performance.</p>
+<p>Pushdown optimization includes the following types:</p>
+<h3 id="predicate-pushdown"><strong>Predicate Pushdown</strong><a class="headerlink" href="#predicate-pushdown" title="Permanent link">&para;</a></h3>
+<p>Optimizes row-based filtering by passing the inferred filter (typically from a <code>WHERE</code> clause) to the underlying data source for processing.</p>
+<h3 id="projection-pushdown"><strong>Projection Pushdown</strong><a class="headerlink" href="#projection-pushdown" title="Permanent link">&para;</a></h3>
+<p>Optimizes column-based filtering by limiting access to the columns specified in the <code>SELECT</code> clause and other parts of the query. Only the necessary columns are read and returned by the data source.</p>
+<h3 id="aggregate-pushdown"><strong>Aggregate Pushdown</strong><a class="headerlink" href="#aggregate-pushdown" title="Permanent link">&para;</a></h3>
+<p>Improves performance for queries involving groupings and aggregations by delegating these operations to the underlying data source's index service.</p>
+<h3 id="join-pushdown"><strong>Join Pushdown</strong><a class="headerlink" href="#join-pushdown" title="Permanent link">&para;</a></h3>
+<p>Allows Minerva to delegate table JOIN operations to the underlying data source, reducing the amount of data processed by Minerva for subsequent query processing.</p>
+<h3 id="limit-pushdown"><strong>Limit Pushdown</strong><a class="headerlink" href="#limit-pushdown" title="Permanent link">&para;</a></h3>
+<p>Reduces the number of returned records by applying a <code>LIMIT</code> clause to the query. For unsorted records, the processing of these queries can be pushed down to the underlying data source, potentially improving performance. Similarly, if the query includes an <code>ORDER BY</code> clause, the data source can perform the sorting, returning the top rows to Minerva for further processing.</p>
+<p>Implementing pushdown optimization results in various benefits, including improved query performance, reduced network traffic between Minerva and the data source, and cost savings. However, it's important to note that the availability of pushdown support depends on the specific connector and the underlying source system.</p>
+
+<!-- Source file information -->
+
+
+<!-- Was this page helpful? -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine feedback configuration -->
+
+  
+
+
+<!-- Determine whether to show feedback -->
+
+
+<!-- Was this page helpful? -->
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+
+        <!-- Feedback ratings -->
+        <div class="md-feedback__list">
+          
+            <button
+              class="md-feedback__icon md-icon"
+              type="submit"
+              title="This page was helpful"
+              data-md-value="1"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9h4m4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21H9m0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03V19Z"/></svg>
+            </button>
+          
+            <button
+              class="md-feedback__icon md-icon"
+              type="submit"
+              title="This page could be improved"
+              data-md-value="0"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12h-4M15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3h9m0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97V5Z"/></svg>
+            </button>
+          
+        </div>
+
+        <!-- Feedback rating notes (shown after submission) -->
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+
+              <!-- Determine title -->
+              
+                
+              
+
+              <!-- Replace {url} and {title} placeholders in note -->
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+
+              <!-- Determine title -->
+              
+                
+              
+
+              <!-- Replace {url} and {title} placeholders in note -->
+              Thanks for your feedback!
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<!-- Comment system -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Comment system -->
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <!-- Repository information -->
+  
+
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-meta__content">
+        <div class="md-footer-social-and-modern-logo">
+          
+          <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Social links -->
+<div class="md-social">
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://www.facebook.com/themoderndatacompany"
+      target="_blank" rel="noopener"
+      title="www.facebook.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/facebook.png"
+    title="www.facebook.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://twitter.com/TheModernDataCo"
+      target="_blank" rel="noopener"
+      title="twitter.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/twitter.png"
+    title="twitter.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://www.linkedin.com/company/themoderndatacompany"
+      target="_blank" rel="noopener"
+      title="www.linkedin.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/linkedin.png"
+    title="www.linkedin.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+</div>
+          
+          <a href="https://themoderndatacompany.com" target="_blank">
+            <img src="/assets/ModernLogo.png" width="251" class="modern-logo" />
+          </a>
+        </div>
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Copyright and theme information -->
+<div class="md-copyright">
+  
+  <a href="https://themoderndatacompany.com/contact-us" target="_blank" rel="noopener"> Contact Us </a> | <a
+    href="https://themoderndatacompany.com/privacy-policy" target="_blank" rel="noopener"> Privacy Policy </a> | <a
+    href="https://themoderndatacompany.com/terms-of-use" target="_blank" rel="noopener"> Terms of Use </a>
+  
+  
+  <div class="md-copyright__highlight">
+    Copyright ⓒ 2023 The Modern Data Company
+  </div>
+  
+</div>
+      </div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.top", "navigation.tracking", "content.code.copy", "content.code.annotate - toc.follow - toc.integrate"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.6.4/dist/mermaid.js"></script>
+      
+    
+  </body>
+</html>

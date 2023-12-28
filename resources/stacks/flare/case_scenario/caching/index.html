@@ -1,0 +1,3152 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>Caching - All things DataOS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Custom admonition icons -->
+
+
+<!-- Custom tag icons -->
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-ZH4G0HKBQC"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-ZH4G0HKBQC",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-ZH4G0HKBQC",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="blue-grey">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#caching" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine base classes -->
+
+
+
+<!-- Header -->
+<header class="md-header" data-md-component="header">
+  <nav
+    class="md-header__inner md-grid"
+    aria-label="Header"
+  >
+
+    <!-- Link to home -->
+    <a
+      href="../../../../.."
+      title="All things DataOS"
+      class="md-header__button md-logo"
+      aria-label="All things DataOS"
+      data-md-component="logo"
+    >
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Logo -->
+
+  <img src="../../../../../assets/light-modern-logo.png" alt="logo" />
+
+    </a>
+
+    <!-- Button to open drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            All things DataOS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Caching
+            
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color palette -->
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input
+            class="md-option"
+            data-md-color-media=""
+            data-md-color-scheme="default"
+            data-md-color-primary="blue-grey"
+            data-md-color-accent="blue-grey"
+            
+              aria-label="Switch to dark mode"
+            
+            type="radio"
+            name="__palette"
+            id="__palette_1"
+          />
+          
+            <label
+              class="md-header__button md-icon"
+              title="Switch to dark mode"
+              for="__palette_2"
+              hidden
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          <input
+            class="md-option"
+            data-md-color-media=""
+            data-md-color-scheme="slate"
+            data-md-color-primary="grey"
+            data-md-color-accent="grey"
+            
+              aria-label="Switch to light mode"
+            
+            type="radio"
+            name="__palette"
+            id="__palette_2"
+          />
+          
+            <label
+              class="md-header__button md-icon"
+              title="Switch to light mode"
+              for="__palette_1"
+              hidden
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+
+    <!-- Site language selector -->
+    
+
+    <!-- Button to open search modal -->
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+
+      <!-- Search interface -->
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Search interface -->
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+
+      <!-- Search input -->
+      <input
+        type="text"
+        class="md-search__input"
+        name="query"
+        aria-label="Search"
+        placeholder="Search"
+        autocapitalize="off"
+        autocorrect="off"
+        autocomplete="off"
+        spellcheck="false"
+        data-md-component="search-query"
+        required
+      />
+
+      <!-- Button to open search -->
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+
+      <!-- Search options -->
+      <nav
+        class="md-search__options"
+        aria-label="Search"
+      >
+
+        <!-- Button to share search -->
+        
+
+        <!-- Button to reset search -->
+        <button
+          type="reset"
+          class="md-search__icon md-icon"
+          title="Clear"
+          aria-label="Clear"
+          tabindex="-1"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+
+      <!-- Search suggestions -->
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+
+        <!-- Search results -->
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    <!-- Repository information -->
+    
+  </nav>
+
+  <!-- Navigation tabs (sticky) -->
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Hack: unset variable, as we're using it recursively in tabs-item.html -->
+
+
+<!-- Navigation tabs -->
+<nav
+  class="md-tabs"
+  aria-label="Tabs"
+  data-md-component="tabs"
+>
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  
+  
+
+  <!-- Recurse, if the first item has further nested items -->
+  
+    <li class="md-tabs__item">
+      <a href="../../../../" class="md-tabs__link">
+        Resources
+      </a>
+    </li>
+  
+
+<!-- Main navigation item -->
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  
+  
+
+  <!-- Recurse, if the first item has further nested items -->
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../interfaces/" class="md-tabs__link">
+        Interfaces
+      </a>
+    </li>
+  
+
+<!-- Main navigation item -->
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../../../../architecture/" class="md-tabs__link">
+      Architecture
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../../../../glossary/" class="md-tabs__link">
+      Glossary
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../../../../videos/" class="md-tabs__link">
+      Videos
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to configuration -->
+
+
+  
+
+
+
+<!-- Main navigation -->
+<nav
+  class="md-nav md-nav--primary md-nav--lifted"
+  aria-label="Navigation"
+  data-md-level="0"
+>
+
+  <!-- Site title -->
+  <label class="md-nav__title" for="__drawer">
+    <a
+      href="../../../../.."
+      title="All things DataOS"
+      class="md-nav__button md-logo"
+      aria-label="All things DataOS"
+      data-md-component="logo"
+    >
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Logo -->
+
+  <img src="../../../../../assets/light-modern-logo.png" alt="logo" />
+
+    </a>
+    All things DataOS
+  </label>
+
+  <!-- Repository information -->
+  
+
+  <!-- Render item list -->
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+        
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle md-toggle--indeterminate"
+        type="checkbox"
+        id="__nav_2"
+        
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_2"
+          id="__nav_2_label"
+          tabindex="0"
+        >
+          Resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="1"
+        aria-labelledby="__nav_2_label"
+        aria-expanded="false"
+      >
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../cluster/" class="md-nav__link">
+        Cluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../compute/" class="md-nav__link">
+        Compute
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../depot/" class="md-nav__link">
+        Depot
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../policy/" class="md-nav__link">
+        Policy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../secret/" class="md-nav__link">
+        Secret
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../service/" class="md-nav__link">
+        Service
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../workflow/" class="md-nav__link">
+        Workflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+      
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+        
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle md-toggle--indeterminate"
+        type="checkbox"
+        id="__nav_2_9"
+        
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_2_9"
+          id="__nav_2_9_label"
+          tabindex="0"
+        >
+          Stacks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="2"
+        aria-labelledby="__nav_2_9_label"
+        aria-expanded="false"
+      >
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Stacks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../alpha/" class="md-nav__link">
+        Alpha
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../beacon/" class="md-nav__link">
+        Beacon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../benthos/" class="md-nav__link">
+        Benthos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../data_toolbox/" class="md-nav__link">
+        Data Toolbox
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Flare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../scanner/" class="md-nav__link">
+        Scanner
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+        
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle md-toggle--indeterminate"
+        type="checkbox"
+        id="__nav_3"
+        
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_3"
+          id="__nav_3_label"
+          tabindex="0"
+        >
+          Interfaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="1"
+        aria-labelledby="__nav_3_label"
+        aria-expanded="false"
+      >
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Interfaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../../interfaces/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../../interfaces/atlas/" class="md-nav__link">
+        Atlas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../../interfaces/audiences/" class="md-nav__link">
+        Audiences
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../../interfaces/bifrost/" class="md-nav__link">
+        Bifrost
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../../interfaces/cli/" class="md-nav__link">
+        CLI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../../interfaces/lens/" class="md-nav__link">
+        Lens
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../../interfaces/metis/" class="md-nav__link">
+        Metis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../../interfaces/notebook/" class="md-nav__link">
+        Notebook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../../interfaces/operations/" class="md-nav__link">
+        Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../../interfaces/workbench/" class="md-nav__link">
+        Workbench
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../../architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../../glossary/" class="md-nav__link">
+        Glossary
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../../videos/" class="md-nav__link">
+        Videos
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#code-snippet" class="md-nav__link">
+    Code Snippet
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Tags -->
+
+
+<!-- Actions -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Actions -->
+
+
+<!--
+  Hack: check whether the content contains a h1 headline. If it doesn't, the
+  page title (or respectively site name) is used as the main headline.
+-->
+
+
+<!-- Page content -->
+<h1 id="caching">Caching<a class="headerlink" href="#caching" title="Permanent link">&para;</a></h1>
+<p>Caching puts a copy of intermediately transformed dataset into memory, allowing us to repeatedly access it at a much lower cost than running the entire pipeline again.</p>
+<h2 id="code-snippet">Code Snippet<a class="headerlink" href="#code-snippet" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">connect-labor-history-new</span>
+<span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">workflow</span>
+<span class="nt">tags</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Report-Table</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Labor History enriched data workflow</span>
+<span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Labor History New Enriched</span>
+<span class="nt">workflow</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">dag</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">connect-labor-history-load-new</span>
+<span class="w">      </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Labor History Enriched</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">This job creates Labor history New enriched data</span>
+<span class="w">      </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Report-Table</span>
+<span class="w">        </span><span class="nt">stack</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">flare:1.0</span>
+<span class="w">        </span><span class="nt">tempVolume</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500Gi</span>
+<span class="w">        </span><span class="nt">flare</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">driver</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">coreLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3500m</span>
+<span class="w">            </span><span class="nt">cores</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4000m</span>
+<span class="w">          </span><span class="nt">executor</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">coreLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7000m</span>
+<span class="w">            </span><span class="nt">cores</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">            </span><span class="nt">instances</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">18000m</span>
+<span class="w">          </span><span class="nt">job</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">explain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">            </span><span class="nt">inputs</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">labor_history_new</span>
+<span class="w">                </span><span class="nt">dataset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dataos://icebase:temp_view/labor_history</span>
+<span class="w">                </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">iceberg</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">labor_history_amount</span>
+<span class="w">                </span><span class="nt">dataset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dataos://icebase:report/labor_history_amount</span>
+<span class="w">                </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">iceberg</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">currency_type</span>
+<span class="w">                </span><span class="nt">dataset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dataos://icebase:gcdcore_bronze/gcdcore_currency_type</span>
+<span class="w">                </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">iceberg</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fiscal_period</span>
+<span class="w">                </span><span class="nt">dataset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dataos://icebase:report/fiscal_period</span>
+<span class="w">                </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">iceberg</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fiscal_week</span>
+<span class="w">                </span><span class="nt">dataset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dataos://icebase:report/fiscal_week</span>
+<span class="w">                </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">iceberg</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">employee_history</span>
+<span class="w">                </span><span class="nt">dataset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dataos://icebase:report/employee_history</span>
+<span class="w">                </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">iceberg</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">project</span>
+<span class="w">                </span><span class="nt">dataset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dataos://icebase:report/gcdcore_project_current</span>
+<span class="w">                </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">iceberg</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">currency_exchange_consolidation</span>
+<span class="w">                </span><span class="nt">dataset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dataos://icebase:report/currency_exchange_consolidation</span>
+<span class="w">                </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">iceberg</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">organization_new</span>
+<span class="w">                </span><span class="nt">dataset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dataos://icebase:gcdcore_silver_new/gcdcore_organization</span>
+<span class="w">                </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">iceberg</span>
+
+<span class="w">            </span><span class="nt">logLevel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ERROR</span>
+<span class="w">            </span><span class="nt">outputs</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enriched</span>
+<span class="w">                </span><span class="nt">depot</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dataos://icebase:report?acl=rw</span>
+<span class="w">            </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">sequence</span><span class="p">:</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">labor_history_helper</span>
+<span class="w">                    </span><span class="nt">sql</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">                      </span><span class="no">SELECT DISTINCT</span>
+<span class="w">                          </span><span class="no">*,</span>
+<span class="w">                          </span><span class="no">CASE</span>
+<span class="w">                            </span><span class="no">WHEN</span>
+<span class="w">                              </span><span class="no">(</span>
+<span class="w">                                </span><span class="no">post_trans_type IN (&#39;BL&#39;,&#39;LA&#39;)</span>
+<span class="w">                                </span><span class="no">OR</span>
+<span class="w">                                </span><span class="no">( post_trans_type IS NULL AND xfer_project_id IS NOT NULL )</span>
+<span class="w">                                </span><span class="no">OR</span>
+<span class="w">                                </span><span class="no">( post_trans_type IN (&#39;BL&#39;,&#39;LA&#39;) AND bill_status = &#39;T&#39; )</span>
+<span class="w">                              </span><span class="no">)</span>
+<span class="w">                              </span><span class="no">AND is_project_cost = 1</span>
+<span class="w">                              </span><span class="no">THEN 1</span>
+<span class="w">                            </span><span class="no">ELSE 0</span>
+<span class="w">                          </span><span class="no">END AS flag_hours_transferred,</span>
+<span class="w">                          </span><span class="no">CASE</span>
+<span class="w">                            </span><span class="no">WHEN (</span>
+<span class="w">                                </span><span class="no">post_trans_type NOT IN (&#39;BL&#39;,&#39;LA&#39;)</span>
+<span class="w">                                </span><span class="no">OR</span>
+<span class="w">                                </span><span class="no">(</span>
+<span class="w">                                  </span><span class="no">post_trans_type IS NULL</span>
+<span class="w">                                  </span><span class="no">AND xfer_project_id IS NULL</span>
+<span class="w">                                </span><span class="no">)</span>
+<span class="w">                              </span><span class="no">)</span>
+<span class="w">                              </span><span class="no">AND is_project_cost = 1</span>
+<span class="w">                              </span><span class="no">THEN 1</span>
+<span class="w">                            </span><span class="no">ELSE 0</span>
+<span class="w">                          </span><span class="no">END AS flag_costs_available_to_bill,</span>
+<span class="w">                          </span><span class="no">CASE</span>
+<span class="w">                            </span><span class="no">WHEN (</span>
+<span class="w">                                </span><span class="no">post_trans_type IN (&#39;BL&#39;,&#39;LA&#39;)</span>
+<span class="w">                                </span><span class="no">OR</span>
+<span class="w">                                </span><span class="no">(</span>
+<span class="w">                                  </span><span class="no">post_trans_type IS NULL</span>
+<span class="w">                                  </span><span class="no">AND xfer_project_id IS NOT NULL</span>
+<span class="w">                                </span><span class="no">)</span>
+<span class="w">                                </span><span class="no">OR</span>
+<span class="w">                                </span><span class="no">(</span>
+<span class="w">                                  </span><span class="no">post_trans_type IN (&#39;BL&#39;,&#39;LA&#39;)</span>
+<span class="w">                                  </span><span class="no">AND bill_status = &#39;T&#39;</span>
+<span class="w">                                </span><span class="no">)</span>
+<span class="w">                              </span><span class="no">)</span>
+<span class="w">                              </span><span class="no">AND is_project_cost = 1</span>
+<span class="w">                              </span><span class="no">THEN 0</span>
+<span class="w">                            </span><span class="no">ELSE 1</span>
+<span class="w">                          </span><span class="no">END AS flag_hours_non_transferred</span>
+<span class="w">                        </span><span class="no">FROM labor_history_new</span>
+<span class="w">                    </span><span class="nt">functions</span><span class="p">:</span>
+<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">drop</span>
+<span class="w">                        </span><span class="nt">columns</span><span class="p">:</span>
+<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rn</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lh_hlper</span>
+<span class="w">                    </span><span class="nt">sql</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">                      </span><span class="no">select *,</span>
+<span class="w">                      </span><span class="no">IFNULL(MIN(CASE WHEN batch != &#39;TimeKeeper&#39; AND post_trans_type = &#39;TS&#39; THEN 1</span>
+<span class="w">                                  </span><span class="no">WHEN batch = &#39;TimeKeeper&#39; AND post_trans_type = &#39;TS&#39; THEN 0</span>
+<span class="w">                                  </span><span class="no">ELSE NULL</span>
+<span class="w">                                </span><span class="no">END)</span>
+<span class="w">                            </span><span class="no">OVER(PARTITION BY fiscal_period_id_trans,fiscal_week_id_trans, employee_id),0)  is_timecard_manual</span>
+<span class="w">                      </span><span class="no">from labor_history_helper</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">currency_type_billing</span>
+<span class="w">                    </span><span class="nt">sql</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SELECT currency_type_id FROM currency_type WHERE value = &#39;billing&#39;</span>
+
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">currency_type_functional</span>
+<span class="w">                    </span><span class="nt">sql</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SELECT currency_type_id FROM currency_type WHERE value = &#39;functional&#39;</span>
+
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">currency_type_enterprise</span>
+<span class="w">                    </span><span class="nt">sql</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SELECT currency_type_id FROM currency_type WHERE value = &#39;enterprise&#39;</span>
+
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">currency_type_reporting1</span>
+<span class="w">                    </span><span class="nt">sql</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SELECT currency_type_id FROM currency_type WHERE value = &#39;reporting_1&#39;</span>
+
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">currency_type_reporting2</span>
+<span class="w">                    </span><span class="nt">sql</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SELECT currency_type_id FROM currency_type WHERE value = &#39;reporting_2&#39;</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">labor_history_amount_transposed</span>
+<span class="w">                    </span><span class="nt">sql</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">                      </span><span class="no">SELECT distinct</span>
+<span class="w">                          </span><span class="no">labor_history_id,</span>
+<span class="w">                          </span><span class="no">SUM(CASE WHEN currency_type_id = (SELECT * FROM currency_type_billing)</span>
+<span class="w">                                </span><span class="no">THEN CAST(cost_amount AS NUMERIC(19,4))</span>
+<span class="w">                              </span><span class="no">ELSE 0</span>
+<span class="w">                            </span><span class="no">END) AS cost_amount_billing,</span>
+<span class="w">                          </span><span class="no">SUM(CASE WHEN currency_type_id = (SELECT * FROM currency_type_billing)</span>
+<span class="w">                                </span><span class="no">THEN CAST(bill_amount AS NUMERIC(19,4))</span>
+<span class="w">                              </span><span class="no">ELSE 0</span>
+<span class="w">                            </span><span class="no">END) AS bill_amount_billing,</span>
+<span class="w">                          </span><span class="no">SUM(CASE WHEN currency_type_id = (SELECT * FROM currency_type_functional)</span>
+<span class="w">                                </span><span class="no">THEN CAST(cost_amount AS NUMERIC(19,4))</span>
+<span class="w">                              </span><span class="no">ELSE 0</span>
+<span class="w">                            </span><span class="no">END) AS cost_amount_functional,</span>
+<span class="w">                          </span><span class="no">SUM(CASE WHEN currency_type_id = (SELECT * FROM currency_type_functional)</span>
+<span class="w">                                </span><span class="no">THEN CAST(bill_amount AS NUMERIC(19,4))</span>
+<span class="w">                              </span><span class="no">ELSE 0</span>
+<span class="w">                            </span><span class="no">END) AS bill_amount_functional,</span>
+<span class="w">                          </span><span class="no">SUM(CASE WHEN currency_type_id = (SELECT * FROM currency_type_enterprise)</span>
+<span class="w">                                </span><span class="no">THEN CAST(cost_amount AS NUMERIC(19,4))</span>
+<span class="w">                              </span><span class="no">ELSE 0</span>
+<span class="w">                            </span><span class="no">END) AS cost_amount_report_usd,</span>
+<span class="w">                          </span><span class="no">SUM(CASE WHEN currency_type_id = (SELECT * FROM currency_type_enterprise)</span>
+<span class="w">                                </span><span class="no">THEN CAST(bill_amount AS NUMERIC(19,4))</span>
+<span class="w">                              </span><span class="no">ELSE 0</span>
+<span class="w">                            </span><span class="no">END) AS bill_amount_report_usd,</span>
+<span class="w">                          </span><span class="no">SUM(CASE WHEN currency_type_id = (SELECT * FROM currency_type_reporting1)</span>
+<span class="w">                                </span><span class="no">THEN CAST(cost_amount AS NUMERIC(19,4))</span>
+<span class="w">                              </span><span class="no">ELSE 0</span>
+<span class="w">                            </span><span class="no">END) AS cost_amount_report_gbp,</span>
+<span class="w">                          </span><span class="no">SUM(CASE WHEN currency_type_id = (SELECT * FROM currency_type_reporting1)</span>
+<span class="w">                                </span><span class="no">THEN CAST(bill_amount AS NUMERIC(19,4))</span>
+<span class="w">                              </span><span class="no">ELSE 0</span>
+<span class="w">                            </span><span class="no">END) AS bill_amount_report_gbp,</span>
+<span class="w">                          </span><span class="no">SUM(CASE WHEN currency_type_id = (SELECT * FROM currency_type_reporting2)</span>
+<span class="w">                                </span><span class="no">THEN CAST(cost_amount AS NUMERIC(19,4))</span>
+<span class="w">                              </span><span class="no">ELSE 0</span>
+<span class="w">                            </span><span class="no">END) AS cost_amount_report_cny,</span>
+<span class="w">                          </span><span class="no">SUM(CASE WHEN currency_type_id = (SELECT * FROM currency_type_reporting2)</span>
+<span class="w">                                </span><span class="no">THEN CAST(bill_amount AS NUMERIC(19,4))</span>
+<span class="w">                              </span><span class="no">ELSE 0</span>
+<span class="w">                            </span><span class="no">END) AS bill_amount_report_cny</span>
+<span class="w">                          </span><span class="no">FROM  labor_history_amount</span>
+<span class="w">                          </span><span class="no">GROUP BY labor_history_id</span>
+
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">df_fpp</span>
+<span class="w">                    </span><span class="nt">sql</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">                      </span><span class="no">SELECT DISTINCT</span>
+<span class="w">                        </span><span class="no">lh.labor_history_id,</span>
+<span class="w">                        </span><span class="no">lh.period,</span>
+<span class="w">                        </span><span class="no">lh.postseq,</span>
+<span class="w">                        </span><span class="no">lh.pkey,</span>
+<span class="w">                        </span><span class="no">lh.trans_date,</span>
+<span class="w">                        </span><span class="no">lh.trans_type,</span>
+<span class="w">                        </span><span class="no">lh.is_timecard_manual,</span>
+<span class="w">                        </span><span class="no">CASE</span>
+<span class="w">                          </span><span class="no">WHEN lh.batch != &#39;TimeKeeper&#39; AND lh.post_trans_type = &#39;TS&#39;</span>
+<span class="w">                              </span><span class="no">AND lh.is_timecard_manual = 0</span>
+<span class="w">                            </span><span class="no">THEN 1</span>
+<span class="w">                          </span><span class="no">ELSE 0</span>
+<span class="w">                        </span><span class="no">END AS is_timecard_correction,</span>
+<span class="w">                        </span><span class="no">lh.post_date,</span>
+<span class="w">                        </span><span class="no">lh.post_trans_type,</span>
+<span class="w">                        </span><span class="no">lh.fiscal_period_id_post,</span>
+<span class="w">                        </span><span class="no">lh.fiscal_period_id_trans,</span>
+<span class="w">                        </span><span class="no">lh.fiscal_period_id_xfer,</span>
+<span class="w">                        </span><span class="no">lh.employee_productivity_code AS  employee_productivity_type,</span>
+<span class="w">                        </span><span class="no">lh.admin_tech   AS  employee_admin_technical,</span>
+<span class="w">                        </span><span class="no">lh.employee_productivity_code AS employee_productivity_type_post,</span>
+<span class="w">                        </span><span class="no">lh.admin_tech   AS employee_admin_technical_post,</span>
+<span class="w">                        </span><span class="no">lh.total_hours,</span>
+<span class="w">                        </span><span class="no">CASE</span>
+<span class="w">                        </span><span class="no">WHEN lh.flag_hours_transferred = 1</span>
+<span class="w">                          </span><span class="no">THEN lh.total_hours</span>
+<span class="w">                        </span><span class="no">ELSE 0</span>
+<span class="w">                        </span><span class="no">END AS total_hours_transferred,</span>
+<span class="w">                        </span><span class="no">lh.timecard_comment,</span>
+<span class="w">                        </span><span class="no">CASE</span>
+<span class="w">                          </span><span class="no">WHEN lh.admin_tech = &#39;technical&#39; THEN lh.total_hours</span>
+<span class="w">                          </span><span class="no">ELSE 0</span>
+<span class="w">                        </span><span class="no">END AS tech_employee_hours,</span>
+<span class="w">                        </span><span class="no">CASE</span>
+<span class="w">                          </span><span class="no">WHEN lh.admin_tech = &#39;admin&#39; THEN lh.total_hours</span>
+<span class="w">                          </span><span class="no">ELSE 0</span>
+<span class="w">                        </span><span class="no">END AS admin_employee_hours,</span>
+<span class="w">                        </span><span class="no">lh.level1_labor_code,</span>
+<span class="w">                        </span><span class="no">lh.level1_labor_code_label,</span>
+<span class="w">                        </span><span class="no">lh.level2_labor_code,</span>
+<span class="w">                        </span><span class="no">lh.level2_labor_code_label,</span>
+<span class="w">                        </span><span class="no">lh.level3_labor_code,</span>
+<span class="w">                        </span><span class="no">lh.level3_labor_code_label,</span>
+<span class="w">                        </span><span class="no">lh.level4_labor_code,</span>
+<span class="w">                        </span><span class="no">lh.level4_labor_code_label,</span>
+<span class="w">                        </span><span class="no">lh.is_project_cost,</span>
+<span class="w">                        </span><span class="no">lh.bill_status,</span>
+
+<span class="w">                        </span><span class="no">lh.xfer_project_id,</span>
+<span class="w">                        </span><span class="no">lh.office_id_employee,</span>
+<span class="w">                        </span><span class="no">lh.flag_hours_transferred,</span>
+<span class="w">                        </span><span class="no">lh.flag_costs_available_to_bill,</span>
+<span class="w">                        </span><span class="no">lh.flag_hours_non_transferred,</span>
+<span class="w">                        </span><span class="no">lh.project_id,</span>
+<span class="w">                        </span><span class="no">lh.admin_tech,</span>
+<span class="w">                        </span><span class="no">lh.fiscal_week_id_post,</span>
+<span class="w">                        </span><span class="no">lh.fiscal_week_id_trans,</span>
+<span class="w">                        </span><span class="no">lh.employee_id,</span>
+
+<span class="w">                        </span><span class="no">fpp.fiscal_year_id AS fiscal_year_id_post,</span>
+<span class="w">                        </span><span class="no">fpp.fiscal_year_period_code AS fiscal_year_period_code_post,</span>
+<span class="w">                        </span><span class="no">fpp.fiscal_year_code AS fiscal_year_code_post,</span>
+<span class="w">                        </span><span class="no">fpp.fiscal_year_start_date AS fiscal_year_start_date_post,</span>
+<span class="w">                        </span><span class="no">fpp.fiscal_year_end_date AS fiscal_year_end_date_post,</span>
+<span class="w">                        </span><span class="no">fpp.fiscal_period_code AS fiscal_period_code_post,</span>
+<span class="w">                        </span><span class="no">fpp.fiscal_period_start_date AS fiscal_period_start_date_post,</span>
+<span class="w">                        </span><span class="no">fpp.fiscal_period_end_date AS fiscal_period_end_date_post,</span>
+<span class="w">                        </span><span class="no">fpp.fiscal_period_is_closed AS fiscal_period_post_is_closed,</span>
+<span class="w">                        </span><span class="no">fpp.fiscal_period_weeks_count AS fiscal_period_weeks_count_post,</span>
+
+<span class="w">                        </span><span class="no">fpp.fiscal_period_calendar_month_name AS fiscal_period_calendar_month_name_post,</span>
+<span class="w">                        </span><span class="no">fpp.fiscal_period_calendar_month_abbreviated AS fiscal_period_calendar_month_abbreviated_post,</span>
+<span class="w">                        </span><span class="no">fpp.fiscal_period_calendar_year4 AS fiscal_period_calendar_year4_post,</span>
+<span class="w">                        </span><span class="no">fpp.fiscal_period_calendar_year2 AS fiscal_period_calendar_year2_post,</span>
+<span class="w">                        </span><span class="no">fpp.fiscal_period_calendar_month_year AS fiscal_period_calendar_month_year_post,</span>
+
+<span class="w">                        </span><span class="no">fpp.index_yoy_fiscal_year_to_date_current AS index_yoy_fiscal_year_to_date_current_post,</span>
+<span class="w">                        </span><span class="no">fpp.index_yoy_3_period_current AS index_yoy_3_period_current_post,</span>
+<span class="w">                        </span><span class="no">fpp.index_yoy_6_period_current AS index_yoy_6_period_current_post,</span>
+<span class="w">                        </span><span class="no">fpp.index_yoy_12_period_current AS index_yoy_12_period_current_post,</span>
+<span class="w">                        </span><span class="no">fpp.index_rolling_3_fiscal_year_current AS index_rolling_3_fiscal_year_current_post,</span>
+<span class="w">                        </span><span class="no">fpp.index_rolling_5_fiscal_year_current AS index_rolling_5_fiscal_year_current_post,</span>
+
+<span class="w">                        </span><span class="no">fpp.index_yoy_fiscal_year_to_date_max_closed AS index_yoy_fiscal_year_to_date_max_closed_post,</span>
+<span class="w">                        </span><span class="no">fpp.index_yoy_3_period_max_closed AS index_yoy_3_period_max_closed_post,</span>
+<span class="w">                        </span><span class="no">fpp.index_yoy_6_period_max_closed AS index_yoy_6_period_max_closed_post,</span>
+<span class="w">                        </span><span class="no">fpp.index_yoy_12_period_max_closed AS index_yoy_12_period_max_closed_post,</span>
+<span class="w">                        </span><span class="no">fpp.index_rolling_3_fiscal_year_max_closed AS index_rolling_3_fiscal_year_max_closed_post,</span>
+<span class="w">                        </span><span class="no">fpp.index_rolling_5_fiscal_year_max_closed AS index_rolling_5_fiscal_year_max_closed_post,</span>
+
+<span class="w">                        </span><span class="no">fpp.current_period_basis_date,</span>
+<span class="w">                        </span><span class="no">fpp.fiscal_year_period_code_current,</span>
+<span class="w">                        </span><span class="no">fpp.fiscal_year_code_current,</span>
+<span class="w">                        </span><span class="no">fpp.fiscal_period_start_date_current,</span>
+<span class="w">                        </span><span class="no">fpp.fiscal_period_end_date_current,</span>
+<span class="w">                        </span><span class="no">fpp.fiscal_year_start_date_current,</span>
+<span class="w">                        </span><span class="no">fpp.fiscal_year_end_date_current,</span>
+
+<span class="w">                        </span><span class="no">fpp.fiscal_period_distance_current,</span>
+<span class="w">                        </span><span class="no">fpp.fiscal_year_distance_current,</span>
+
+<span class="w">                        </span><span class="no">fpp.fiscal_year_period_code_min_open,</span>
+<span class="w">                        </span><span class="no">fpp.fiscal_year_period_code_max_closed,</span>
+<span class="w">                        </span><span class="no">fpp.fiscal_year_code_max_closed,</span>
+<span class="w">                        </span><span class="no">fpp.fiscal_period_start_date_max_closed,</span>
+<span class="w">                        </span><span class="no">fpp.fiscal_period_end_date_max_closed,</span>
+
+<span class="w">                        </span><span class="no">fpp.fiscal_period_distance_max_closed,</span>
+<span class="w">                        </span><span class="no">fpp.fiscal_year_distance_max_closed</span>
+
+<span class="w">                        </span><span class="no">FROM lh_hlper lh</span>
+<span class="w">                        </span><span class="no">LEFT JOIN fiscal_period fpp</span>
+<span class="w">                        </span><span class="no">ON lh.fiscal_period_id_post = fpp.fiscal_period_id</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">df_fpt</span>
+<span class="w">                    </span><span class="nt">sql</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">                      </span><span class="no">SELECT DISTINCT lh.*,</span>
+<span class="w">                        </span><span class="no">fpt.fiscal_year_period_code AS fiscal_year_period_code_trans,</span>
+<span class="w">                        </span><span class="no">fpt.fiscal_year_code AS fiscal_year_code_trans,</span>
+<span class="w">                        </span><span class="no">fpt.fiscal_year_start_date AS fiscal_year_start_date_trans,</span>
+<span class="w">                        </span><span class="no">fpt.fiscal_year_end_date AS fiscal_year_end_date_trans,</span>
+<span class="w">                        </span><span class="no">fpt.fiscal_period_code AS fiscal_period_code_trans,</span>
+<span class="w">                        </span><span class="no">fpt.fiscal_period_start_date AS fiscal_period_start_date_trans,</span>
+<span class="w">                        </span><span class="no">fpt.fiscal_period_end_date AS fiscal_period_end_date_trans,</span>
+<span class="w">                        </span><span class="no">fpt.fiscal_period_is_closed AS fiscal_period_trans_is_closed,</span>
+<span class="w">                        </span><span class="no">fpt.fiscal_period_weeks_count AS fiscal_period_weeks_count_trans,</span>
+
+<span class="w">                        </span><span class="no">fpt.fiscal_period_calendar_month_name AS fiscal_period_calendar_month_name_trans,</span>
+<span class="w">                        </span><span class="no">fpt.fiscal_period_calendar_month_abbreviated AS fiscal_period_calendar_month_abbreviated_trans,</span>
+<span class="w">                        </span><span class="no">fpt.fiscal_period_calendar_year4 AS fiscal_period_calendar_year4_trans,</span>
+<span class="w">                        </span><span class="no">fpt.fiscal_period_calendar_year2 AS fiscal_period_calendar_year2_trans,</span>
+<span class="w">                        </span><span class="no">fpt.fiscal_period_calendar_month_year AS fiscal_period_calendar_month_year_trans,</span>
+
+<span class="w">                        </span><span class="no">fpt.index_yoy_fiscal_year_to_date_current AS index_yoy_fiscal_year_to_date_current_trans,</span>
+<span class="w">                        </span><span class="no">fpt.index_yoy_3_period_current AS index_yoy_3_period_current_trans,</span>
+<span class="w">                        </span><span class="no">fpt.index_yoy_6_period_current AS index_yoy_6_period_current_trans,</span>
+<span class="w">                        </span><span class="no">fpt.index_yoy_12_period_current AS index_yoy_12_period_current_trans,</span>
+<span class="w">                        </span><span class="no">fpt.index_rolling_3_fiscal_year_current AS index_rolling_3_fiscal_year_current_trans,</span>
+<span class="w">                        </span><span class="no">fpt.index_rolling_5_fiscal_year_current AS index_rolling_5_fiscal_year_current_trans,</span>
+
+<span class="w">                        </span><span class="no">fpt.index_yoy_fiscal_year_to_date_max_closed AS index_yoy_fiscal_year_to_date_max_closed_trans,</span>
+<span class="w">                        </span><span class="no">fpt.index_yoy_3_period_max_closed AS index_yoy_3_period_max_closed_trans,</span>
+<span class="w">                        </span><span class="no">fpt.index_yoy_6_period_max_closed AS index_yoy_6_period_max_closed_trans,</span>
+<span class="w">                        </span><span class="no">fpt.index_yoy_12_period_max_closed AS index_yoy_12_period_max_closed_trans,</span>
+<span class="w">                        </span><span class="no">fpt.index_rolling_3_fiscal_year_max_closed AS index_rolling_3_fiscal_year_max_closed_trans,</span>
+<span class="w">                        </span><span class="no">fpt.index_rolling_5_fiscal_year_max_closed AS index_rolling_5_fiscal_year_max_closed_trans</span>
+
+<span class="w">                        </span><span class="no">from df_fpp lh</span>
+<span class="w">                        </span><span class="no">LEFT JOIN fiscal_period fpt</span>
+<span class="w">                        </span><span class="no">ON lh.fiscal_period_id_trans = fpt.fiscal_period_id</span>
+
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">df_fpx</span>
+<span class="w">                    </span><span class="nt">sql</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">                      </span><span class="no">SELECT DISTINCT lh.*,</span>
+<span class="w">                        </span><span class="no">fpx.fiscal_year_period_code AS fiscal_year_period_code_xfer,</span>
+<span class="w">                        </span><span class="no">fpx.fiscal_year_code AS fiscal_year_code_xfer,</span>
+<span class="w">                        </span><span class="no">fpx.fiscal_year_start_date AS fiscal_year_start_date_xfer,</span>
+<span class="w">                        </span><span class="no">fpx.fiscal_year_end_date AS fiscal_year_end_date_xfer,</span>
+<span class="w">                        </span><span class="no">fpx.fiscal_period_code AS fiscal_period_code_xfer,</span>
+<span class="w">                        </span><span class="no">fpx.fiscal_period_start_date AS fiscal_period_start_date_xfer,</span>
+<span class="w">                        </span><span class="no">fpx.fiscal_period_end_date AS fiscal_period_end_date_xfer,</span>
+<span class="w">                        </span><span class="no">fpx.fiscal_period_is_closed AS fiscal_period_xfer_is_closed,</span>
+<span class="w">                        </span><span class="no">fpx.fiscal_period_weeks_count AS fiscal_period_weeks_count_xfer,</span>
+
+<span class="w">                        </span><span class="no">fpx.fiscal_period_calendar_month_name AS fiscal_period_calendar_month_name_xfer,</span>
+<span class="w">                        </span><span class="no">fpx.fiscal_period_calendar_month_abbreviated AS fiscal_period_calendar_month_abbreviated_xfer,</span>
+<span class="w">                        </span><span class="no">fpx.fiscal_period_calendar_year4 AS fiscal_period_calendar_year4_xfer,</span>
+<span class="w">                        </span><span class="no">fpx.fiscal_period_calendar_year2 AS fiscal_period_calendar_year2_xfer,</span>
+<span class="w">                        </span><span class="no">fpx.fiscal_period_calendar_month_year AS fiscal_period_calendar_month_year_xfer,</span>
+
+<span class="w">                        </span><span class="no">fpx.index_yoy_fiscal_year_to_date_current AS index_yoy_fiscal_year_to_date_current_xfer,</span>
+<span class="w">                        </span><span class="no">fpx.index_yoy_3_period_current AS index_yoy_3_period_current_xfer,</span>
+<span class="w">                        </span><span class="no">fpx.index_yoy_6_period_current AS index_yoy_6_period_current_xfer,</span>
+<span class="w">                        </span><span class="no">fpx.index_yoy_12_period_current AS index_yoy_12_period_current_xfer,</span>
+<span class="w">                        </span><span class="no">fpx.index_rolling_3_fiscal_year_current AS index_rolling_3_fiscal_year_current_xfer,</span>
+<span class="w">                        </span><span class="no">fpx.index_rolling_5_fiscal_year_current AS index_rolling_5_fiscal_year_current_xfer,</span>
+
+<span class="w">                        </span><span class="no">fpx.index_yoy_fiscal_year_to_date_max_closed AS index_yoy_fiscal_year_to_date_max_closed_xfer,</span>
+<span class="w">                        </span><span class="no">fpx.index_yoy_3_period_max_closed AS index_yoy_3_period_max_closed_xfer,</span>
+<span class="w">                        </span><span class="no">fpx.index_yoy_6_period_max_closed AS index_yoy_6_period_max_closed_xfer,</span>
+<span class="w">                        </span><span class="no">fpx.index_yoy_12_period_max_closed AS index_yoy_12_period_max_closed_xfer,</span>
+<span class="w">                        </span><span class="no">fpx.index_rolling_3_fiscal_year_max_closed AS index_rolling_3_fiscal_year_max_closed_xfer,</span>
+<span class="w">                        </span><span class="no">fpx.index_rolling_5_fiscal_year_max_closed AS index_rolling_5_fiscal_year_max_closed_xfer</span>
+
+<span class="w">                        </span><span class="no">from df_fpt lh</span>
+<span class="w">                        </span><span class="no">LEFT JOIN fiscal_period fpx</span>
+<span class="w">                        </span><span class="no">ON lh.fiscal_period_id_xfer = fpx.fiscal_period_id</span>
+
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">df_fw_post</span>
+<span class="w">                    </span><span class="nt">sql</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">                      </span><span class="no">SELECT DISTINCT lh.*,</span>
+<span class="w">                      </span><span class="no">fw_post.fiscal_week_id AS fw_post_fiscal_week_id_post,</span>
+<span class="w">                      </span><span class="no">fw_post.fiscal_year_week_number AS fiscal_year_week_number_post,</span>
+<span class="w">                      </span><span class="no">fw_post.fiscal_period_week_number AS fiscal_period_week_number_post,</span>
+<span class="w">                      </span><span class="no">fw_post.week_start_date AS week_start_date_post,</span>
+<span class="w">                      </span><span class="no">fw_post.week_end_date AS week_end_date_post,</span>
+
+<span class="w">                      </span><span class="no">fw_post.calender_year_week_number AS calendar_year_week_number_post,</span>
+<span class="w">                      </span><span class="no">fw_post.calendar_period_month_name AS calendar_period_month_name_post,</span>
+<span class="w">                      </span><span class="no">fw_post.calendar_week_month_name AS calendar_week_month_name_post,</span>
+
+<span class="w">                      </span><span class="no">fw_post.fiscal_year_week_number_current AS fiscal_year_week_number_current_post,</span>
+<span class="w">                      </span><span class="no">fw_post.fiscal_period_week_number_current AS fiscal_period_week_number_current_post,</span>
+<span class="w">                      </span><span class="no">fw_post.week_start_date_current AS week_start_date_current_post,</span>
+<span class="w">                      </span><span class="no">fw_post.week_end_date_current AS week_end_date_current_post,</span>
+
+<span class="w">                      </span><span class="no">fw_post.week_distance_current AS week_distance_current_post,</span>
+<span class="w">                      </span><span class="no">fw_post.index_rolling_4_week_current AS index_rolling_4_week_current_post,</span>
+<span class="w">                      </span><span class="no">fw_post.index_rolling_8_week_current AS index_rolling_8_week_current_post,</span>
+<span class="w">                      </span><span class="no">fw_post.index_rolling_12_week_current AS index_rolling_12_week_current_post,</span>
+<span class="w">                      </span><span class="no">fw_post.index_rolling_16_week_current AS index_rolling_16_week_current_post</span>
+
+<span class="w">                      </span><span class="no">from df_fpx lh</span>
+<span class="w">                      </span><span class="no">LEFT JOIN fiscal_week fw_post</span>
+<span class="w">                      </span><span class="no">ON lh.fiscal_week_id_post = fw_post.fiscal_week_id</span>
+<span class="w">                    </span><span class="nt">functions</span><span class="p">:</span>
+<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">drop</span>
+<span class="w">                        </span><span class="nt">columns</span><span class="p">:</span>
+<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fiscal_week_id_post</span>
+<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rename_all</span>
+<span class="w">                        </span><span class="nt">columns</span><span class="p">:</span>
+<span class="w">                          </span><span class="nt">fw_post_fiscal_week_id_post</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fiscal_week_id_post</span>
+
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">df_fw_tran</span>
+<span class="w">                    </span><span class="nt">sql</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">                      </span><span class="no">SELECT DISTINCT lh.*,</span>
+<span class="w">                      </span><span class="no">fw_tran.fiscal_week_id AS fw_tran_fiscal_week_id_trans,</span>
+<span class="w">                      </span><span class="no">fw_tran.fiscal_year_week_number AS fiscal_year_week_number_trans,</span>
+<span class="w">                      </span><span class="no">fw_tran.fiscal_period_week_number AS fiscal_period_week_number_trans,</span>
+<span class="w">                      </span><span class="no">fw_tran.week_start_date  AS week_start_date_trans,</span>
+<span class="w">                      </span><span class="no">fw_tran.week_end_date AS week_end_date_trans,</span>
+
+<span class="w">                      </span><span class="no">fw_tran.calender_year_week_number AS calendar_year_week_number_trans,</span>
+<span class="w">                      </span><span class="no">fw_tran.calendar_period_month_name AS calendar_period_month_name_trans,</span>
+<span class="w">                      </span><span class="no">fw_tran.calendar_week_month_name  AS calendar_week_month_name_trans,</span>
+
+<span class="w">                      </span><span class="no">fw_tran.fiscal_year_week_number_current  AS fiscal_year_week_number_current_trans,</span>
+<span class="w">                      </span><span class="no">fw_tran.fiscal_period_week_number_current  AS fiscal_period_week_number_current_trans,</span>
+<span class="w">                      </span><span class="no">fw_tran.week_start_date_current AS week_start_date_current_trans,</span>
+<span class="w">                      </span><span class="no">fw_tran.week_end_date_current AS  week_end_date_current_trans,</span>
+
+<span class="w">                      </span><span class="no">fw_tran.week_distance_current  AS week_distance_current_trans,</span>
+<span class="w">                      </span><span class="no">fw_tran.index_rolling_4_week_current  AS index_rolling_4_week_current_trans,</span>
+<span class="w">                      </span><span class="no">fw_tran.index_rolling_8_week_current  ASindex_rolling_8_week_current_trans,</span>
+<span class="w">                      </span><span class="no">fw_tran.index_rolling_12_week_current AS index_rolling_12_week_current_trans,</span>
+<span class="w">                      </span><span class="no">fw_tran.index_rolling_16_week_current AS index_rolling_16_week_current_trans</span>
+
+<span class="w">                      </span><span class="no">from df_fw_post lh</span>
+<span class="w">                      </span><span class="no">LEFT JOIN fiscal_week fw_tran</span>
+<span class="w">                      </span><span class="no">ON lh.fiscal_week_id_trans = fw_tran.fiscal_week_id</span>
+
+<span class="w">                    </span><span class="nt">functions</span><span class="p">:</span>
+<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">drop</span>
+<span class="w">                        </span><span class="nt">columns</span><span class="p">:</span>
+<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fiscal_week_id_trans</span>
+<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rename_all</span>
+<span class="w">                        </span><span class="nt">columns</span><span class="p">:</span>
+<span class="w">                          </span><span class="nt">fw_tran_fiscal_week_id_trans</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fiscal_week_id_trans</span>
+
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">df_e1</span>
+<span class="w">                    </span><span class="nt">sql</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">                      </span><span class="no">SELECT DISTINCT lh.*,</span>
+<span class="w">                      </span><span class="no">eh.employee_id eid,</span>
+<span class="w">                      </span><span class="no">eh.start_date AS  employee_start_date,</span>
+<span class="w">                      </span><span class="no">IFNULL(eh.first_name_preferred,eh.first_name_legal) AS employee_first_name,</span>
+<span class="w">                      </span><span class="no">IFNULL(eh.last_name_preferred,eh.last_name_legal) AS  employee_last_name,</span>
+
+<span class="w">                      </span><span class="no">eh.full_name AS employee_full_name,</span>
+<span class="w">                      </span><span class="no">eh.is_current_record  AS employee_is_current_record,</span>
+
+<span class="w">                      </span><span class="no">eh.office_hours_per_week  AS  employee_office_hours_per_week,</span>
+<span class="w">                      </span><span class="no">eh.hours_per_week AS  employee_hours_per_week,</span>
+<span class="w">                      </span><span class="no">eh.pay_type   AS  employee_pay_type,</span>
+<span class="w">                      </span><span class="no">eh.pay_rate_type AS employee_pay_rate_type,</span>
+<span class="w">                      </span><span class="no">eh.target_ratio   AS employee_target_ratio,</span>
+<span class="w">                      </span><span class="no">eh.fee_multiplier AS  employee_fee_multiplier,</span>
+<span class="w">                      </span><span class="no">eh.principal_staff  AS mployee_principal_staff,</span>
+<span class="w">                      </span><span class="no">eh.full_part_time AS  employee_full_part_time,</span>
+<span class="w">                      </span><span class="no">eh.regular_temp   AS employee_regular_temp,</span>
+
+<span class="w">                      </span><span class="no">eh.studio_name as eh_studio_name,</span>
+<span class="w">                      </span><span class="no">eh.practice_area_1_name as eh_practice_area_1_name,</span>
+<span class="w">                      </span><span class="no">eh.market_sector_1_name as eh_market_sector_1_name,</span>
+
+<span class="w">                      </span><span class="no">eh.worker_type,</span>
+<span class="w">                      </span><span class="no">eh.employee_type_vision,</span>
+<span class="w">                      </span><span class="no">eh.employee_type_name_vision,</span>
+<span class="w">                      </span><span class="no">eh.status_name  AS  employee_status_name,</span>
+<span class="w">                      </span><span class="no">eh.employee_number_base,</span>
+<span class="w">                      </span><span class="no">eh.employee_number_vision,</span>
+<span class="w">                      </span><span class="no">CAST(eh.bill_rate AS NUMERIC(19,4)) AS  employee_bill_rate,</span>
+
+<span class="w">                      </span><span class="no">eh.job_profile_name AS  employee_job_profile_name,</span>
+<span class="w">                      </span><span class="no">eh.physical_location  AS  employee_physical_location,</span>
+<span class="w">                      </span><span class="no">eh.employee_number_base_supervisor  AS employee_supervisor_number_base,</span>
+<span class="w">                      </span><span class="no">eh.employee_number_vision_supervisor AS employee_supervisor_number_vision,</span>
+<span class="w">                      </span><span class="no">eh.first_name_supervisor AS employee_supervisor_first_name,</span>
+<span class="w">                      </span><span class="no">eh.last_name_supervisor AS employee_supervisor_last_name,</span>
+
+<span class="w">                      </span><span class="no">eh.full_name_supervisor AS employee_supervisor_full_name,</span>
+<span class="w">                      </span><span class="no">eh.employee_supervisor_studio_name  AS employee_supervisor_studio_name,</span>
+<span class="w">                      </span><span class="no">eh.employee_supervisor_office_name  AS employee_supervisor_office_name,</span>
+<span class="w">                      </span><span class="no">eh.employee_supervisor_office_name_current AS employee_supervisor_office_name_current,</span>
+<span class="w">                      </span><span class="no">eh.studio_name  AS employee_supervisor_studio_name_current,</span>
+<span class="w">                      </span><span class="no">CAST(CASE WHEN lh.total_hours &gt; eh.hours_per_week THEN lh.total_hours - eh.hours_per_week</span>
+<span class="w">                              </span><span class="no">ELSE 0</span>
+<span class="w">                            </span><span class="no">END AS NUMERIC(19,4))   overtime_hours,</span>
+<span class="w">                      </span><span class="no">eh.start_date esd,</span>
+<span class="w">                      </span><span class="no">eh.end_date eed,</span>
+<span class="w">                      </span><span class="no">eh.business_entity_code ebec</span>
+<span class="w">                      </span><span class="no">from df_fw_tran lh</span>
+<span class="w">                      </span><span class="no">LEFT JOIN employee_history eh</span>
+<span class="w">                      </span><span class="no">ON lh.employee_id = eh.employee_id</span>
+
+<span class="w">                    </span><span class="nt">functions</span><span class="p">:</span>
+<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">drop</span>
+<span class="w">                        </span><span class="nt">columns</span><span class="p">:</span>
+<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">employee_id</span>
+<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rename_all</span>
+<span class="w">                        </span><span class="nt">columns</span><span class="p">:</span>
+<span class="w">                          </span><span class="nt">eid</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">employee_id</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">df_eh</span>
+<span class="w">                    </span><span class="nt">sql</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">                      </span><span class="no">select</span>
+<span class="w">                      </span><span class="no">distinct lh.*</span>
+<span class="w">                      </span><span class="no">from df_e1 lh</span>
+<span class="w">                      </span><span class="no">where lh.trans_date &gt;= lh.esd</span>
+<span class="w">                      </span><span class="no">AND lh.trans_date &lt;= lh.eed OR lh.eed IS NULL</span>
+<span class="w">                      </span><span class="no">AND LEFT(lh.ebec,1) != &#39;9&#39;</span>
+<span class="w">                    </span><span class="nt">functions</span><span class="p">:</span>
+<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">drop</span>
+<span class="w">                        </span><span class="nt">columns</span><span class="p">:</span>
+<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">esd</span>
+<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eed</span>
+<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ebec</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">df_eh_post1</span>
+<span class="w">                    </span><span class="nt">sql</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">                      </span><span class="no">SELECT DISTINCT lh.*,</span>
+<span class="w">                      </span><span class="no">eh_post.start_date                      employee_start_date_post,</span>
+<span class="w">                      </span><span class="no">eh_post.office_hours_per_week AS employee_office_hours_per_week_post,</span>
+<span class="w">                      </span><span class="no">eh_post.hours_per_week  AS employee_hours_per_week_post,</span>
+<span class="w">                      </span><span class="no">eh_post.pay_type    AS employee_pay_type_post,</span>
+
+<span class="w">                      </span><span class="no">eh_post.studio_name               eh_post_studio_name,</span>
+<span class="w">                      </span><span class="no">eh_post.studio_status_name        eh_post_studio_status_name,</span>
+<span class="w">                      </span><span class="no">eh_post.practice_area_1_name      eh_post_practice_area_1_name,</span>
+<span class="w">                      </span><span class="no">eh_post.market_sector_1_name      eh_post_market_sector_1_name,</span>
+<span class="w">                      </span><span class="no">eh_post.target_ratio  AS employee_target_ratio_post,</span>
+<span class="w">                      </span><span class="no">eh_post.fee_multiplier AS employee_fee_multiplier_post,</span>
+<span class="w">                      </span><span class="no">eh_post.principal_staff AS employee_principal_staff_post,</span>
+<span class="w">                      </span><span class="no">eh_post.full_part_time  AS employee_full_part_time_post,</span>
+<span class="w">                      </span><span class="no">eh_post.regular_temp  AS employee_regular_temp_post,</span>
+<span class="w">                      </span><span class="no">eh_post.worker_type   AS worker_type_post,</span>
+<span class="w">                      </span><span class="no">eh_post.employee_type_vision  AS employee_type_vision_post,</span>
+<span class="w">                      </span><span class="no">eh_post.employee_type_name_vision AS employee_type_name_vision_post,</span>
+<span class="w">                      </span><span class="no">eh_post.status_name   AS employee_status_name_post,</span>
+<span class="w">                      </span><span class="no">eh_post.employee_number_base AS employee_number_base_post,</span>
+<span class="w">                      </span><span class="no">eh_post.employee_number_vision AS employee_number_vision_post,</span>
+<span class="w">                      </span><span class="no">CAST(eh_post.bill_rate AS NUMERIC(19,4)) AS employee_bill_rate_post,</span>
+
+<span class="w">                      </span><span class="no">eh_post.studio_id,</span>
+<span class="w">                      </span><span class="no">eh_post.start_date epsd,</span>
+<span class="w">                      </span><span class="no">eh_post.end_date eped,</span>
+<span class="w">                      </span><span class="no">eh_post.business_entity_code epbec</span>
+<span class="w">                      </span><span class="no">from df_eh lh</span>
+<span class="w">                      </span><span class="no">LEFT JOIN employee_history eh_post</span>
+<span class="w">                      </span><span class="no">ON lh.employee_id = eh_post.employee_id</span>
+
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">df_eh_post</span>
+<span class="w">                    </span><span class="nt">sql</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">                      </span><span class="no">select</span>
+<span class="w">                      </span><span class="no">distinct lh.*</span>
+<span class="w">                      </span><span class="no">from df_eh_post1 lh</span>
+<span class="w">                      </span><span class="no">where lh.trans_date &gt;= lh.epsd</span>
+<span class="w">                      </span><span class="no">AND lh.trans_date &lt;= lh.eped OR lh.eped IS NULL</span>
+<span class="w">                      </span><span class="no">AND LEFT(lh.epbec,1) != &#39;9&#39;</span>
+<span class="w">                    </span><span class="nt">functions</span><span class="p">:</span>
+<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">drop</span>
+<span class="w">                        </span><span class="nt">columns</span><span class="p">:</span>
+<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">epsd</span>
+<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eped</span>
+<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">epbec</span>
+
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">emp_base</span>
+<span class="w">                    </span><span class="nt">sql</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SELECT DISTINCT employee_id FROM employee_history WHERE employee_number_base = &#39;92367&#39;</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">df_emp</span>
+<span class="w">                    </span><span class="nt">sql</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cache table emp_base</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">df_pr1</span>
+<span class="w">                    </span><span class="nt">sql</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">                      </span><span class="no">SELECT DISTINCT lh.*,</span>
+<span class="w">                      </span><span class="no">pr.studio_name,</span>
+<span class="w">                      </span><span class="no">pr.practice_area_name,</span>
+<span class="w">                      </span><span class="no">pr.market_sector_name,</span>
+<span class="w">                      </span><span class="no">pr.studio_status_name,</span>
+<span class="w">                      </span><span class="no">pr.use_separate_terms,</span>
+
+<span class="w">                      </span><span class="no">pr.project_id              pr_project_id,</span>
+<span class="w">                      </span><span class="no">pr.project_number_1,</span>
+<span class="w">                      </span><span class="no">pr.project_name,</span>
+<span class="w">                      </span><span class="no">pr.project_name_long,</span>
+<span class="w">                      </span><span class="no">pr.org_code,</span>
+<span class="w">                      </span><span class="no">pr.org_code AS project_org_code,</span>
+<span class="w">                      </span><span class="no">pr.business_entity_code,</span>
+<span class="w">                      </span><span class="no">pr.business_entity_code AS project_business_entity_code,</span>
+<span class="w">                      </span><span class="no">pr.business_entity_name,</span>
+<span class="w">                      </span><span class="no">pr.business_entity_name AS project_business_entity_name,</span>
+<span class="w">                      </span><span class="no">pr.region_code,</span>
+<span class="w">                      </span><span class="no">pr.region_code AS project_region_code,</span>
+<span class="w">                      </span><span class="no">pr.region_name,</span>
+<span class="w">                      </span><span class="no">pr.region_name AS project_region_name,</span>
+<span class="w">                      </span><span class="no">pr.office_code,</span>
+<span class="w">                      </span><span class="no">pr.office_code AS project_office_code,</span>
+<span class="w">                      </span><span class="no">pr.office_name,</span>
+<span class="w">                      </span><span class="no">pr.office_name AS project_office_name,</span>
+
+<span class="w">                      </span><span class="no">pr.studio_name  AS project_studio_name,</span>
+<span class="w">                      </span><span class="no">pr.studio_status_name AS project_studio_status_name,</span>
+
+<span class="w">                      </span><span class="no">pr.country_name,</span>
+<span class="w">                      </span><span class="no">pr.country_name AS project_country_name,</span>
+
+<span class="w">                      </span><span class="no">pr.practice_area_industry_name  AS project_practice_area_industry_name,</span>
+<span class="w">                      </span><span class="no">pr.practice_area_name AS project_practice_area_name,</span>
+<span class="w">                      </span><span class="no">pr.market_sector_name AS project_market_sector_name,</span>
+
+<span class="w">                      </span><span class="no">pr.project_type_name,</span>
+<span class="w">                      </span><span class="no">pr.service_name   AS project_service_name,</span>
+<span class="w">                      </span><span class="no">pr.service_sub_name AS project_service_sub_name,</span>
+<span class="w">                      </span><span class="no">pr.delivery_approach_name AS project_delivery_approach_name,</span>
+<span class="w">                      </span><span class="no">pr.government_funded_name AS project_government_funded_name,</span>
+<span class="w">                      </span><span class="no">pr.is_residential   AS project_is_residential,</span>
+<span class="w">                      </span><span class="no">pr.status_name  AS project_status_name,</span>
+<span class="w">                      </span><span class="no">pr.charge_type_name,</span>
+<span class="w">                      </span><span class="no">pr.charge_type_name AS project_charge_type_name,</span>
+
+<span class="w">                      </span><span class="no">pr.fiscal_year_period_code_last_activity  AS project_fiscal_year_period_code_last_activity,</span>
+
+<span class="w">                      </span><span class="no">pr.base_project_number,</span>
+<span class="w">                      </span><span class="no">pr.base_project_name,</span>
+
+<span class="w">                      </span><span class="no">pr.billing_group_parent_project_number_1,</span>
+<span class="w">                      </span><span class="no">pr.billing_group_parent_project_name,</span>
+
+<span class="w">                      </span><span class="no">pr.currency_id_billing,</span>
+<span class="w">                      </span><span class="no">pr.currency_code_billing,</span>
+<span class="w">                      </span><span class="no">pr.currency_name_billing,</span>
+
+<span class="w">                      </span><span class="no">pr.currency_id_functional,</span>
+<span class="w">                      </span><span class="no">pr.currency_code_functional,</span>
+<span class="w">                      </span><span class="no">pr.currency_name_functional,</span>
+
+<span class="w">                      </span><span class="no">pr.currency_id_report_usd,</span>
+<span class="w">                      </span><span class="no">pr.currency_code_report_usd,</span>
+<span class="w">                      </span><span class="no">pr.currency_name_report_usd,</span>
+
+<span class="w">                      </span><span class="no">pr.currency_id_report_gbp,</span>
+<span class="w">                      </span><span class="no">pr.currency_code_report_gbp,</span>
+<span class="w">                      </span><span class="no">pr.currency_name_report_gbp,</span>
+
+<span class="w">                      </span><span class="no">pr.currency_id_report_cny,</span>
+<span class="w">                      </span><span class="no">pr.currency_code_report_cny,</span>
+<span class="w">                      </span><span class="no">pr.currency_name_report_cny</span>
+
+<span class="w">                      </span><span class="no">from df_eh_post lh</span>
+<span class="w">                      </span><span class="no">LEFT JOIN project pr</span>
+<span class="w">                      </span><span class="no">ON lh.project_id = pr.project_id</span>
+<span class="w">                    </span><span class="nt">functions</span><span class="p">:</span>
+<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">drop</span>
+<span class="w">                        </span><span class="nt">columns</span><span class="p">:</span>
+<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">project_id</span>
+<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rename_all</span>
+<span class="w">                        </span><span class="nt">columns</span><span class="p">:</span>
+<span class="w">                          </span><span class="nt">pr_project_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">project_id</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">df_pr</span>
+<span class="w">                    </span><span class="nt">sql</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">                      </span><span class="no">select distinct pr.*,</span>
+<span class="w">                      </span><span class="no">CASE WHEN pr.employee_id = (SELECT DISTINCT employee_id FROM emp_base)</span>
+<span class="w">                      </span><span class="no">THEN pr.studio_name ELSE pr.eh_studio_name END                        employee_studio_name,</span>
+<span class="w">                      </span><span class="no">CASE WHEN pr.employee_id = (SELECT DISTINCT employee_id FROM emp_base)</span>
+<span class="w">                      </span><span class="no">THEN pr.practice_area_name ELSE pr.eh_practice_area_1_name END                employee_practice_area_1_name,</span>
+<span class="w">                      </span><span class="no">CASE WHEN pr.employee_id = (SELECT DISTINCT employee_id FROM emp_base)</span>
+<span class="w">                      </span><span class="no">THEN pr.market_sector_name ELSE pr.eh_market_sector_1_name END                employee_market_sector_1_name,</span>
+
+<span class="w">                      </span><span class="no">CASE WHEN pr.employee_id = (SELECT DISTINCT employee_id FROM emp_base)</span>
+<span class="w">                      </span><span class="no">THEN pr.studio_name ELSE pr.eh_post_studio_name END                        employee_studio_name_post,</span>
+<span class="w">                      </span><span class="no">CASE WHEN pr.employee_id = (SELECT DISTINCT employee_id FROM emp_base)</span>
+<span class="w">                      </span><span class="no">THEN pr.studio_status_name ELSE pr.eh_post_studio_status_name END                  employee_studio_status_name_post,</span>
+<span class="w">                      </span><span class="no">CASE WHEN pr.employee_id = (SELECT DISTINCT employee_id FROM emp_base)</span>
+<span class="w">                      </span><span class="no">THEN pr.practice_area_name ELSE pr.eh_post_practice_area_1_name END                employee_practice_area_1_name_post,</span>
+<span class="w">                      </span><span class="no">CASE WHEN pr.employee_id = (SELECT DISTINCT employee_id FROM emp_base)</span>
+<span class="w">                      </span><span class="no">THEN pr.market_sector_name ELSE pr.eh_post_market_sector_1_name END                employee_market_sector_1_name_post,</span>
+
+<span class="w">                      </span><span class="no">CASE</span>
+<span class="w">                            </span><span class="no">WHEN pr.flag_hours_transferred = 1</span>
+<span class="w">                              </span><span class="no">AND pr.charge_type_name = &#39;Billable&#39;</span>
+<span class="w">                              </span><span class="no">THEN pr.total_hours</span>
+<span class="w">                            </span><span class="no">ELSE 0</span>
+<span class="w">                          </span><span class="no">END AS direct_hours_transferred,</span>
+
+<span class="w">                      </span><span class="no">CASE  WHEN pr.charge_type_name = &#39;Billable&#39; THEN pr.total_hours</span>
+<span class="w">                            </span><span class="no">WHEN pr.charge_type_name IS NULL THEN NULL</span>
+<span class="w">                            </span><span class="no">ELSE 0</span>
+<span class="w">                        </span><span class="no">END AS direct_hours,</span>
+<span class="w">                        </span><span class="no">CASE  WHEN</span>
+<span class="w">                                </span><span class="no">pr.charge_type_name = &#39;Billable&#39;</span>
+<span class="w">                                </span><span class="no">AND pr.admin_tech = &#39;technical&#39;</span>
+<span class="w">                              </span><span class="no">THEN pr.total_hours</span>
+<span class="w">                            </span><span class="no">WHEN pr.charge_type_name IS NULL THEN NULL</span>
+<span class="w">                            </span><span class="no">ELSE 0</span>
+<span class="w">                        </span><span class="no">END AS tech_direct_hours,</span>
+<span class="w">                        </span><span class="no">CASE  WHEN</span>
+<span class="w">                                </span><span class="no">pr.charge_type_name = &#39;Billable&#39;</span>
+<span class="w">                                </span><span class="no">AND pr.admin_tech = &#39;admin&#39;</span>
+<span class="w">                              </span><span class="no">THEN pr.total_hours</span>
+<span class="w">                            </span><span class="no">WHEN pr.charge_type_name IS NULL THEN NULL</span>
+<span class="w">                            </span><span class="no">ELSE 0</span>
+<span class="w">                        </span><span class="no">END AS admin_direct_hours,</span>
+
+<span class="w">                        </span><span class="no">CASE</span>
+<span class="w">                            </span><span class="no">WHEN pr.charge_type_name = &#39;Billable&#39; THEN 0</span>
+<span class="w">                            </span><span class="no">WHEN pr.charge_type_name IS NULL THEN NULL</span>
+<span class="w">                            </span><span class="no">ELSE pr.total_hours</span>
+<span class="w">                        </span><span class="no">END AS indirect_hours,</span>
+<span class="w">                        </span><span class="no">CASE</span>
+<span class="w">                            </span><span class="no">WHEN</span>
+<span class="w">                                </span><span class="no">pr.charge_type_name != &#39;Billable&#39;</span>
+<span class="w">                                </span><span class="no">AND pr.admin_tech = &#39;technical&#39;</span>
+<span class="w">                              </span><span class="no">THEN pr.total_hours</span>
+<span class="w">                            </span><span class="no">WHEN pr.charge_type_name IS NULL THEN NULL</span>
+<span class="w">                            </span><span class="no">ELSE 0</span>
+<span class="w">                        </span><span class="no">END AS tech_indirect_hours,</span>
+<span class="w">                        </span><span class="no">CASE</span>
+
+<span class="w">                            </span><span class="no">WHEN</span>
+<span class="w">                                </span><span class="no">pr.charge_type_name != &#39;Billable&#39;</span>
+<span class="w">                                </span><span class="no">AND pr.admin_tech = &#39;admin&#39;</span>
+<span class="w">                              </span><span class="no">THEN pr.total_hours</span>
+<span class="w">                            </span><span class="no">WHEN pr.charge_type_name IS NULL THEN NULL</span>
+<span class="w">                            </span><span class="no">ELSE 0</span>
+<span class="w">                        </span><span class="no">END AS admin_indirect_hours,</span>
+
+<span class="w">                        </span><span class="no">CASE  WHEN pr.charge_type_name = &#39;Promo&#39;</span>
+<span class="w">                              </span><span class="no">THEN pr.total_hours</span>
+<span class="w">                            </span><span class="no">ELSE 0</span>
+<span class="w">                          </span><span class="no">END AS promotional_hours_total</span>
+<span class="w">                      </span><span class="no">from df_pr1 pr</span>
+<span class="w">                    </span><span class="nt">functions</span><span class="p">:</span>
+<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">drop</span>
+<span class="w">                        </span><span class="nt">columns</span><span class="p">:</span>
+<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">project_id</span>
+<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eh_post_studio_name</span>
+<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eh_post_studio_status_name</span>
+<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eh_post_practice_area_1_name</span>
+<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eh_post_market_sector_1_name</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">df_lha_xp</span>
+<span class="w">                    </span><span class="nt">sql</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">                      </span><span class="no">SELECT DISTINCT</span>
+<span class="w">                      </span><span class="no">lh.*,</span>
+<span class="w">                      </span><span class="no">CAST(lh.flag_costs_available_to_bill * lha_xp.bill_amount_billing AS NUMERIC(19,4))   labor_costs_available_to_bill_billing,</span>
+
+<span class="w">                      </span><span class="no">CAST(lh.flag_costs_available_to_bill * lha_xp.bill_amount_functional AS NUMERIC(19,4))  labor_costs_available_to_bill_functional,</span>
+
+<span class="w">                      </span><span class="no">CAST(lh.flag_costs_available_to_bill * lha_xp.bill_amount_report_usd AS NUMERIC(19,4))  labor_costs_available_to_bill_report_usd,</span>
+
+<span class="w">                      </span><span class="no">CAST(lh.flag_costs_available_to_bill * lha_xp.bill_amount_report_gbp AS NUMERIC(19,4))  labor_costs_available_to_bill_report_gbp,</span>
+
+<span class="w">                      </span><span class="no">CAST( lh.flag_costs_available_to_bill * lha_xp.bill_amount_report_cny AS NUMERIC(19,4)) labor_costs_available_to_bill_report_cny,</span>
+
+<span class="w">                      </span><span class="no">CASE WHEN lh.total_hours = 0</span>
+<span class="w">                      </span><span class="no">THEN CAST(employee_bill_rate AS NUMERIC(19,4))</span>
+<span class="w">                      </span><span class="no">ELSE CAST(lha_xp.bill_amount_billing/lh.total_hours AS NUMERIC(19,4))</span>
+<span class="w">                      </span><span class="no">END                               employee_override_rate,</span>
+<span class="w">                      </span><span class="no">CASE WHEN lh.total_hours = 0</span>
+<span class="w">                      </span><span class="no">THEN CAST(employee_bill_rate_post AS NUMERIC(19,4))</span>
+<span class="w">                      </span><span class="no">ELSE CAST(lha_xp.bill_amount_billing/lh.total_hours AS NUMERIC(19,4))</span>
+<span class="w">                      </span><span class="no">END                               employee_override_rate_post,</span>
+<span class="w">                      </span><span class="no">CASE lh.charge_type_name WHEN &#39;Billable&#39; THEN lha_xp.cost_amount_billing ELSE 0 END AS  direct_cost_amount_billing,</span>
+<span class="w">                      </span><span class="no">CASE lh.charge_type_name WHEN &#39;Billable&#39; THEN lha_xp.bill_amount_billing ELSE 0 END AS direct_bill_amount_billing,</span>
+<span class="w">                      </span><span class="no">CASE WHEN lh.charge_type_name = &#39;Billable&#39; THEN 0</span>
+<span class="w">                      </span><span class="no">WHEN lh.charge_type_name IS NULL THEN NULL</span>
+<span class="w">                      </span><span class="no">ELSE lha_xp.cost_amount_billing</span>
+<span class="w">                      </span><span class="no">END                                         indirect_cost_amount_billing,</span>
+<span class="w">                      </span><span class="no">CASE WHEN lh.charge_type_name = &#39;Billable&#39; THEN 0</span>
+<span class="w">                        </span><span class="no">WHEN lh.charge_type_name IS NULL THEN NULL</span>
+<span class="w">                        </span><span class="no">ELSE lha_xp.bill_amount_billing</span>
+<span class="w">                      </span><span class="no">END                                         indirect_bill_amount_billing,</span>
+
+<span class="w">                      </span><span class="no">lha_xp.bill_amount_billing                                total_bill_amount_billing,</span>
+
+<span class="w">                      </span><span class="no">CAST(lh.flag_hours_transferred * lha_xp.bill_amount_billing AS NUMERIC(19,4))     labor_costs_transferred_billing,</span>
+<span class="w">                      </span><span class="no">CAST(lh.flag_hours_non_transferred * lha_xp.bill_amount_billing AS NUMERIC(19,4))   labor_costs_non_transferred_billing,</span>
+
+<span class="w">                      </span><span class="no">lha_xp.cost_amount_functional,</span>
+<span class="w">                      </span><span class="no">CASE lh.charge_type_name WHEN &#39;Billable&#39; THEN lha_xp.cost_amount_functional ELSE 0 END  direct_cost_amount_functional,</span>
+<span class="w">                      </span><span class="no">CASE lh.charge_type_name WHEN &#39;Billable&#39; THEN lha_xp.bill_amount_functional ELSE 0 END  direct_bill_amount_functional,</span>
+<span class="w">                      </span><span class="no">CASE  WHEN lh.charge_type_name = &#39;Billable&#39; THEN 0</span>
+<span class="w">                        </span><span class="no">WHEN lh.charge_type_name IS NULL THEN NULL</span>
+<span class="w">                        </span><span class="no">ELSE lha_xp.cost_amount_functional</span>
+<span class="w">                      </span><span class="no">END                                             indirect_cost_amount_functional,</span>
+<span class="w">                      </span><span class="no">CASE  WHEN lh.charge_type_name = &#39;Billable&#39; THEN 0</span>
+<span class="w">                        </span><span class="no">WHEN lh.charge_type_name IS NULL THEN NULL</span>
+<span class="w">                        </span><span class="no">ELSE lha_xp.bill_amount_functional</span>
+<span class="w">                      </span><span class="no">END                                             indirect_bill_amount_functional,</span>
+
+<span class="w">                      </span><span class="no">lha_xp.bill_amount_functional,</span>
+
+<span class="w">                      </span><span class="no">lha_xp.bill_amount_functional                               total_bill_amount_functional,</span>
+
+<span class="w">                      </span><span class="no">CAST(lh.flag_hours_transferred * lha_xp.bill_amount_functional AS NUMERIC(19,4))    labor_costs_transferred_functional,</span>
+<span class="w">                      </span><span class="no">CAST(lh.flag_hours_non_transferred * lha_xp.bill_amount_functional AS NUMERIC(19,4))  labor_costs_non_transferred_functional,</span>
+
+<span class="w">                      </span><span class="no">CASE lh.charge_type_name WHEN &#39;Billable&#39; THEN lha_xp.cost_amount_report_usd ELSE 0 END  direct_cost_amount_report_usd,</span>
+<span class="w">                      </span><span class="no">CASE lh.charge_type_name WHEN &#39;Billable&#39; THEN lha_xp.bill_amount_report_usd ELSE 0 END  direct_bill_amount_report_usd,</span>
+<span class="w">                      </span><span class="no">CASE  WHEN lh.charge_type_name = &#39;Billable&#39; THEN 0</span>
+<span class="w">                        </span><span class="no">WHEN lh.charge_type_name IS NULL THEN NULL</span>
+<span class="w">                        </span><span class="no">ELSE lha_xp.cost_amount_report_usd</span>
+<span class="w">                      </span><span class="no">END                                             indirect_cost_amount_report_usd,</span>
+<span class="w">                      </span><span class="no">CASE  WHEN lh.charge_type_name = &#39;Billable&#39; THEN 0</span>
+<span class="w">                        </span><span class="no">WHEN lh.charge_type_name IS NULL THEN NULL</span>
+<span class="w">                        </span><span class="no">ELSE lha_xp.bill_amount_report_usd</span>
+<span class="w">                      </span><span class="no">END                                             indirect_bill_amount_report_usd,</span>
+
+<span class="w">                      </span><span class="no">lha_xp.bill_amount_report_usd                               total_bill_amount_report_usd,</span>
+
+<span class="w">                      </span><span class="no">CAST(lh.flag_hours_transferred * lha_xp.bill_amount_report_usd AS NUMERIC(19,4))    labor_costs_transferred_report_usd,</span>
+<span class="w">                      </span><span class="no">CAST(lh.flag_hours_non_transferred * lha_xp.bill_amount_report_usd AS NUMERIC(19,4))  labor_costs_non_transferred_report_usd,</span>
+
+<span class="w">                      </span><span class="no">CASE lh.charge_type_name WHEN &#39;Billable&#39; THEN lha_xp.cost_amount_report_gbp ELSE 0 END  direct_cost_amount_report_gbp,</span>
+<span class="w">                      </span><span class="no">CASE lh.charge_type_name WHEN &#39;Billable&#39; THEN lha_xp.bill_amount_report_gbp ELSE 0 END  direct_bill_amount_report_gbp,</span>
+<span class="w">                      </span><span class="no">CASE  WHEN lh.charge_type_name = &#39;Billable&#39; THEN 0</span>
+<span class="w">                        </span><span class="no">WHEN lh.charge_type_name IS NULL THEN NULL</span>
+<span class="w">                        </span><span class="no">ELSE lha_xp.cost_amount_report_gbp</span>
+<span class="w">                      </span><span class="no">END                                             indirect_cost_amount_report_gbp,</span>
+<span class="w">                      </span><span class="no">CASE  WHEN lh.charge_type_name = &#39;Billable&#39; THEN 0</span>
+<span class="w">                        </span><span class="no">WHEN lh.charge_type_name IS NULL THEN NULL</span>
+<span class="w">                        </span><span class="no">ELSE lha_xp.bill_amount_report_gbp</span>
+<span class="w">                      </span><span class="no">END                                             indirect_bill_amount_report_gbp,</span>
+
+<span class="w">                      </span><span class="no">lha_xp.bill_amount_report_gbp                               total_bill_amount_report_gbp,</span>
+
+<span class="w">                      </span><span class="no">CAST(lh.flag_hours_transferred * lha_xp.bill_amount_report_gbp AS NUMERIC(19,4))    labor_costs_transferred_report_gbp,</span>
+<span class="w">                      </span><span class="no">CAST(lh.flag_hours_non_transferred * lha_xp.bill_amount_report_gbp AS NUMERIC(19,4))  labor_costs_non_transferred_report_gbp,</span>
+
+<span class="w">                      </span><span class="no">CASE lh.charge_type_name WHEN &#39;Billable&#39; THEN lha_xp.cost_amount_report_cny ELSE 0 END  direct_cost_amount_report_cny,</span>
+<span class="w">                      </span><span class="no">CASE lh.charge_type_name WHEN &#39;Billable&#39; THEN lha_xp.bill_amount_report_cny ELSE 0 END  direct_bill_amount_report_cny,</span>
+<span class="w">                      </span><span class="no">CASE  WHEN lh.charge_type_name = &#39;Billable&#39; THEN 0</span>
+<span class="w">                        </span><span class="no">WHEN lh.charge_type_name IS NULL THEN NULL</span>
+<span class="w">                        </span><span class="no">ELSE lha_xp.cost_amount_report_cny</span>
+<span class="w">                      </span><span class="no">END                                             indirect_cost_amount_report_cny,</span>
+<span class="w">                      </span><span class="no">CASE  WHEN lh.charge_type_name = &#39;Billable&#39; THEN 0</span>
+<span class="w">                        </span><span class="no">WHEN lh.charge_type_name IS NULL THEN NULL</span>
+<span class="w">                        </span><span class="no">ELSE lha_xp.bill_amount_report_cny</span>
+<span class="w">                      </span><span class="no">END                                             indirect_bill_amount_report_cny,</span>
+
+<span class="w">                      </span><span class="no">lha_xp.bill_amount_report_cny                               total_bill_amount_report_cny,</span>
+
+<span class="w">                      </span><span class="no">CAST(lh.flag_hours_transferred * lha_xp.bill_amount_report_cny AS NUMERIC(19,4))    labor_costs_transferred_report_cny,</span>
+<span class="w">                      </span><span class="no">CAST(lh.flag_hours_non_transferred * lha_xp.bill_amount_report_cny AS NUMERIC(19,4))  labor_costs_non_transferred_report_cny</span>
+
+<span class="w">                      </span><span class="no">FROM</span>
+<span class="w">                      </span><span class="no">df_pr lh</span>
+<span class="w">                      </span><span class="no">LEFT JOIN labor_history_amount_transposed lha_xp  ON lh.labor_history_id = lha_xp.labor_history_id</span>
+
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">df_xfer_pr</span>
+<span class="w">                    </span><span class="nt">sql</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">                      </span><span class="no">SELECT DISTINCT</span>
+<span class="w">                      </span><span class="no">lh.*,</span>
+<span class="w">                      </span><span class="no">xfer_pr.project_id                                xfer_from_project_id,</span>
+<span class="w">                      </span><span class="no">xfer_pr.project_number_1                              xfer_from_project_number_1,</span>
+<span class="w">                      </span><span class="no">xfer_pr.project_name                                xfer_from_project_name,</span>
+<span class="w">                      </span><span class="no">xfer_pr.project_name_long                             xfer_from_project_name_long,</span>
+<span class="w">                      </span><span class="no">xfer_pr.org_code                                  xfer_from_project_org_code,</span>
+
+<span class="w">                      </span><span class="no">xfer_pr.business_entity_code                            xfer_from_project_business_entity_code,</span>
+<span class="w">                      </span><span class="no">xfer_pr.business_entity_name                            xfer_from_project_business_entity_name,</span>
+<span class="w">                      </span><span class="no">xfer_pr.region_code                               xfer_from_project_region_code,</span>
+<span class="w">                      </span><span class="no">xfer_pr.region_name                               xfer_from_project_region_name,</span>
+<span class="w">                      </span><span class="no">xfer_pr.office_code                               xfer_from_project_office_code,</span>
+<span class="w">                      </span><span class="no">xfer_pr.office_name                               xfer_from_project_office_name,</span>
+<span class="w">                      </span><span class="no">xfer_pr.studio_name                               xfer_from_project_studio_name,</span>
+<span class="w">                      </span><span class="no">xfer_pr.practice_area_name                            xfer_from_project_practice_area_name,</span>
+<span class="w">                      </span><span class="no">xfer_pr.market_sector_name                            xfer_from_project_market_sector_name,</span>
+
+<span class="w">                      </span><span class="no">xfer_pr.project_type_name                             xfer_from_project_type_name,</span>
+<span class="w">                      </span><span class="no">xfer_pr.service_name                                xfer_from_project_service_name,</span>
+<span class="w">                      </span><span class="no">xfer_pr.service_sub_name                              xfer_from_project_service_sub_name,</span>
+<span class="w">                      </span><span class="no">xfer_pr.delivery_approach_name                          xfer_from_project_delivery_approach_name,</span>
+<span class="w">                      </span><span class="no">xfer_pr.government_funded_name                          xfer_from_project_government_funded_name,</span>
+<span class="w">                      </span><span class="no">xfer_pr.is_residential                              xfer_from_project_is_residential,</span>
+<span class="w">                      </span><span class="no">xfer_pr.status_name                               xfer_from_project_status_name,</span>
+<span class="w">                      </span><span class="no">xfer_pr.charge_type_name                              xfer_from_project_charge_type_name</span>
+
+<span class="w">                      </span><span class="no">FROM df_lha_xp lh</span>
+<span class="w">                      </span><span class="no">LEFT JOIN project xfer_pr ON lh.xfer_project_id = xfer_pr.project_id</span>
+
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">df_fx_pr_org_rollup_cur</span>
+<span class="w">                    </span><span class="nt">sql</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">                      </span><span class="no">SELECT DISTINCT</span>
+<span class="w">                      </span><span class="no">lh.*,</span>
+<span class="w">                      </span><span class="no">CAST( lh.flag_costs_available_to_bill *lh.bill_amount_functional * fx_pr_org_rollup_cur.exchange_rate_avg AS NUMERIC(19,4))</span>
+<span class="w">                        </span><span class="no">labor_costs_available_to_bill_report_functional_rollup_standard,</span>
+
+<span class="w">                      </span><span class="no">CASE lh.charge_type_name</span>
+<span class="w">                        </span><span class="no">WHEN &#39;Billable&#39;</span>
+<span class="w">                        </span><span class="no">THEN CAST(lh.cost_amount_functional * fx_pr_org_rollup_cur.exchange_rate_avg AS NUMERIC(19,4))</span>
+<span class="w">                        </span><span class="no">ELSE 0</span>
+<span class="w">                      </span><span class="no">END                                             direct_cost_amount_report_functional_rollup_standard,</span>
+
+<span class="w">                      </span><span class="no">CASE lh.charge_type_name</span>
+<span class="w">                        </span><span class="no">WHEN &#39;Billable&#39;</span>
+<span class="w">                        </span><span class="no">THEN CAST(lh.bill_amount_functional * fx_pr_org_rollup_cur.exchange_rate_avg AS NUMERIC(19,4))</span>
+<span class="w">                        </span><span class="no">ELSE 0</span>
+<span class="w">                      </span><span class="no">END                                             direct_bill_amount_report_functional_rollup_standard,</span>
+<span class="w">                      </span><span class="no">CASE WHEN lh.charge_type_name = &#39;Billable&#39; THEN 0</span>
+<span class="w">                        </span><span class="no">WHEN lh.charge_type_name IS NULL THEN NULL</span>
+<span class="w">                        </span><span class="no">ELSE CAST(lh.cost_amount_functional * fx_pr_org_rollup_cur.exchange_rate_avg AS NUMERIC(19,4))</span>
+<span class="w">                      </span><span class="no">END                                             indirect_cost_amount_report_functional_rollup_standard,</span>
+<span class="w">                      </span><span class="no">CASE WHEN lh.charge_type_name = &#39;Billable&#39; THEN 0</span>
+<span class="w">                        </span><span class="no">WHEN lh.charge_type_name IS NULL THEN NULL</span>
+<span class="w">                        </span><span class="no">ELSE CAST(lh.bill_amount_functional * fx_pr_org_rollup_cur.exchange_rate_avg AS NUMERIC(19,4))</span>
+<span class="w">                      </span><span class="no">END                                             indirect_bill_amount_report_functional_rollup_standard,</span>
+<span class="w">                      </span><span class="no">CAST(lh.flag_hours_transferred</span>
+<span class="w">                        </span><span class="no">*lh.bill_amount_functional</span>
+<span class="w">                        </span><span class="no">* fx_pr_org_rollup_cur.exchange_rate_avg</span>
+<span class="w">                        </span><span class="no">AS NUMERIC(19,4))                                   labor_costs_transferred_report_functional_rollup_standard,</span>
+
+<span class="w">                      </span><span class="no">CAST(lh.flag_hours_non_transferred</span>
+<span class="w">                        </span><span class="no">*lh.bill_amount_functional</span>
+<span class="w">                        </span><span class="no">* fx_pr_org_rollup_cur.exchange_rate_avg</span>
+<span class="w">                        </span><span class="no">AS NUMERIC(19,4)) labor_costs_non_transferred_report_functional_rollup_standard,</span>
+
+<span class="w">                      </span><span class="no">lh.bill_amount_functional * fx_pr_org_rollup_cur.exchange_rate_avg          total_bill_amount_report_functional_rollup_standard</span>
+
+<span class="w">                      </span><span class="no">FROM df_xfer_pr lh</span>
+<span class="w">                      </span><span class="no">LEFT JOIN currency_exchange_consolidation fx_pr_org_rollup_cur</span>
+<span class="w">                      </span><span class="no">ON fx_pr_org_rollup_cur.currency_id_from = lh.currency_id_functional</span>
+
+<span class="w">                      </span><span class="no">AND fx_pr_org_rollup_cur.fiscal_period_id = lh.fiscal_period_id_post</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">df_eh_current</span>
+<span class="w">                    </span><span class="nt">sql</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">                      </span><span class="no">SELECT DISTINCT</span>
+<span class="w">                      </span><span class="no">lh.*,</span>
+<span class="w">                      </span><span class="no">CASE WHEN lh.employee_id = (SELECT DISTINCT employee_id FROM emp_base)</span>
+<span class="w">                      </span><span class="no">THEN lh.org_code ELSE eh_current.org_code END                       employee_org_code_current,</span>
+<span class="w">                      </span><span class="no">CASE WHEN lh.employee_id = (SELECT DISTINCT employee_id FROM emp_base)</span>
+<span class="w">                      </span><span class="no">THEN lh.region_code ELSE eh_current.region_code END                   employee_region_code_current,</span>
+<span class="w">                      </span><span class="no">CASE WHEN lh.employee_id = (SELECT DISTINCT employee_id FROM emp_base)</span>
+<span class="w">                      </span><span class="no">THEN lh.region_name ELSE eh_current.region_name END                   employee_region_name_current,</span>
+<span class="w">                      </span><span class="no">CASE WHEN lh.employee_id = (SELECT DISTINCT employee_id FROM emp_base)</span>
+<span class="w">                      </span><span class="no">THEN lh.office_code ELSE eh_current.office_code END                   employee_office_code_current,</span>
+<span class="w">                      </span><span class="no">CASE WHEN lh.employee_id = (SELECT DISTINCT employee_id FROM emp_base)</span>
+<span class="w">                      </span><span class="no">THEN lh.office_name ELSE eh_current.office_name END                   employee_office_name_current,</span>
+<span class="w">                      </span><span class="no">CASE WHEN lh.employee_id = (SELECT DISTINCT employee_id FROM emp_base)</span>
+<span class="w">                      </span><span class="no">THEN lh.studio_name ELSE eh_current.studio_name END                   employee_studio_name_current,</span>
+
+<span class="w">                      </span><span class="no">eh_current.status_name                    employee_status_name_current</span>
+
+<span class="w">                      </span><span class="no">FROM</span>
+<span class="w">                      </span><span class="no">df_fx_pr_org_rollup_cur lh</span>
+<span class="w">                      </span><span class="no">LEFT JOIN employee_history eh_current ON eh_current.employee_id = lh.employee_id</span>
+<span class="w">                      </span><span class="no">AND eh_current.is_current_record = 1</span>
+
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">labor_history_final</span>
+<span class="w">                    </span><span class="nt">sql</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">                      </span><span class="no">SELECT DISTINCT</span>
+<span class="w">                      </span><span class="no">lh.*,</span>
+<span class="w">                      </span><span class="no">CASE WHEN lh.employee_id = (SELECT DISTINCT employee_id FROM emp_base)</span>
+<span class="w">                      </span><span class="no">THEN lh.org_code ELSE lh_org_emp.org_code END                                     employee_org_code,</span>
+
+<span class="w">                      </span><span class="no">CASE WHEN lh.employee_id = (SELECT DISTINCT employee_id FROM emp_base)</span>
+<span class="w">                      </span><span class="no">THEN lh.business_entity_code ELSE lh_org_emp.business_entity_code END                         employee_business_entity_code,</span>
+<span class="w">                      </span><span class="no">CASE WHEN lh.employee_id = (SELECT DISTINCT employee_id FROM emp_base)</span>
+<span class="w">                      </span><span class="no">THEN lh.business_entity_name ELSE lh_org_emp.business_entity_name END                         employee_business_entity_name,</span>
+<span class="w">                      </span><span class="no">CASE WHEN lh.employee_id = (SELECT DISTINCT employee_id FROM emp_base)</span>
+<span class="w">                      </span><span class="no">THEN lh.region_code ELSE lh_org_emp.region_code END                                 employee_region_code,</span>
+<span class="w">                      </span><span class="no">CASE WHEN lh.employee_id = (SELECT DISTINCT employee_id FROM emp_base)</span>
+<span class="w">                      </span><span class="no">THEN lh.region_name ELSE lh_org_emp.region_name END                                 employee_region_name,</span>
+<span class="w">                      </span><span class="no">CASE WHEN lh.employee_id = (SELECT DISTINCT employee_id FROM emp_base)</span>
+<span class="w">                      </span><span class="no">THEN lh.office_code ELSE lh_org_emp.office_code END                                 employee_office_code,</span>
+<span class="w">                      </span><span class="no">CASE WHEN lh.employee_id = (SELECT DISTINCT employee_id FROM emp_base)</span>
+<span class="w">                      </span><span class="no">THEN lh.office_name ELSE lh_org_emp.office_name</span>
+<span class="w">                      </span><span class="no">END   employee_office_name,</span>
+
+<span class="w">                      </span><span class="no">CASE WHEN lh.employee_id = (SELECT DISTINCT employee_id FROM emp_base)</span>
+<span class="w">                      </span><span class="no">THEN lh.org_code ELSE lh_org_emp.org_code END   employee_org_code_post,</span>
+
+<span class="w">                      </span><span class="no">CASE WHEN lh.employee_id = (SELECT DISTINCT employee_id FROM emp_base)</span>
+<span class="w">                      </span><span class="no">THEN lh.business_entity_code ELSE lh_org_emp.business_entity_code END                       employee_business_entity_code_post,</span>
+<span class="w">                      </span><span class="no">CASE WHEN lh.employee_id = (SELECT DISTINCT employee_id FROM emp_base)</span>
+<span class="w">                      </span><span class="no">THEN lh.business_entity_name ELSE lh_org_emp.business_entity_name END                       employee_business_entity_name_post,</span>
+<span class="w">                      </span><span class="no">CASE WHEN lh.employee_id = (SELECT DISTINCT employee_id FROM emp_base)</span>
+<span class="w">                      </span><span class="no">THEN lh.region_code ELSE lh_org_emp.region_code END                                 employee_region_code_post,</span>
+<span class="w">                      </span><span class="no">CASE WHEN lh.employee_id = (SELECT DISTINCT employee_id FROM emp_base)</span>
+<span class="w">                      </span><span class="no">THEN lh.region_name ELSE lh_org_emp.region_name END                                 employee_region_name_post,</span>
+<span class="w">                      </span><span class="no">CASE WHEN lh.employee_id = (SELECT DISTINCT employee_id FROM emp_base)</span>
+<span class="w">                      </span><span class="no">THEN lh.office_code ELSE lh_org_emp.office_code END                                 employee_office_code_post,</span>
+<span class="w">                      </span><span class="no">CASE WHEN lh.employee_id = (SELECT DISTINCT employee_id FROM emp_base)</span>
+<span class="w">                      </span><span class="no">THEN lh.office_name ELSE lh_org_emp.office_name END                                 employee_office_name_post,</span>
+
+<span class="w">                      </span><span class="no">CASE WHEN lh.employee_id = (SELECT DISTINCT employee_id FROM emp_base)</span>
+<span class="w">                      </span><span class="no">THEN lh.country_name ELSE lh_org_emp.country_id END                                 employee_country_id</span>
+
+<span class="w">                      </span><span class="no">FROM</span>
+<span class="w">                      </span><span class="no">df_eh_current lh</span>
+<span class="w">                      </span><span class="no">LEFT JOIN organization_new lh_org_emp</span>
+<span class="w">                      </span><span class="no">ON lh.office_id_employee = lh_org_emp.office_id</span>
+
+<span class="w">                </span><span class="nt">sink</span><span class="p">:</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">sequenceName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">df_pr1</span>
+<span class="w">                    </span><span class="nt">datasetName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">labor_history</span>
+<span class="w">                    </span><span class="nt">outputName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enriched</span>
+<span class="w">                    </span><span class="nt">outputType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Iceberg</span>
+<span class="w">                    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Labor History Enriched data from GCD ingested datasets</span>
+<span class="w">                    </span><span class="nt">outputOptions</span><span class="p">:</span>
+<span class="w">                      </span><span class="nt">saveMode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">overwrite</span>
+
+<span class="w">                      </span><span class="nt">iceberg</span><span class="p">:</span>
+<span class="w">                        </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">                          </span><span class="nt">write.format.default</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">parquet</span>
+<span class="w">                          </span><span class="nt">write.metadata.compression-codec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gzip</span>
+
+<span class="w">                    </span><span class="nt">tags</span><span class="p">:</span>
+<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Report-Table</span>
+<span class="w">                    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Labor History Enriched</span>
+<span class="w">          </span><span class="nt">sparkConf</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">spark.sql.autoBroadcastJoinThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300m</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">spark.sql.shuffle.partitions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">600</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">spark.default.parallelism</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dt-labor-history-l-n</span>
+<span class="w">      </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">stack</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">toolbox</span>
+<span class="w">        </span><span class="nt">toolbox</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">dataset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dataos://icebase:report/labor_history?acl=rw</span>
+<span class="w">          </span><span class="nt">action</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">set_version</span>
+<span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">latest</span>
+<span class="w">      </span><span class="nt">dependencies</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">connect-labor-history-load-new</span>
+</code></pre></div>
+
+<!-- Source file information -->
+
+
+<!-- Was this page helpful? -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine feedback configuration -->
+
+  
+
+
+<!-- Determine whether to show feedback -->
+
+
+<!-- Was this page helpful? -->
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+
+        <!-- Feedback ratings -->
+        <div class="md-feedback__list">
+          
+            <button
+              class="md-feedback__icon md-icon"
+              type="submit"
+              title="This page was helpful"
+              data-md-value="1"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9h4m4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21H9m0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03V19Z"/></svg>
+            </button>
+          
+            <button
+              class="md-feedback__icon md-icon"
+              type="submit"
+              title="This page could be improved"
+              data-md-value="0"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12h-4M15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3h9m0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97V5Z"/></svg>
+            </button>
+          
+        </div>
+
+        <!-- Feedback rating notes (shown after submission) -->
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+
+              <!-- Determine title -->
+              
+                
+              
+
+              <!-- Replace {url} and {title} placeholders in note -->
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+
+              <!-- Determine title -->
+              
+                
+              
+
+              <!-- Replace {url} and {title} placeholders in note -->
+              Thanks for your feedback!
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<!-- Comment system -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Comment system -->
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <!-- Repository information -->
+  
+
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-meta__content">
+        <div class="md-footer-social-and-modern-logo">
+          
+          <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Social links -->
+<div class="md-social">
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://www.facebook.com/themoderndatacompany"
+      target="_blank" rel="noopener"
+      title="www.facebook.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/facebook.png"
+    title="www.facebook.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://twitter.com/TheModernDataCo"
+      target="_blank" rel="noopener"
+      title="twitter.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/twitter.png"
+    title="twitter.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://www.linkedin.com/company/themoderndatacompany"
+      target="_blank" rel="noopener"
+      title="www.linkedin.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/linkedin.png"
+    title="www.linkedin.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+</div>
+          
+          <a href="https://themoderndatacompany.com" target="_blank">
+            <img src="/assets/ModernLogo.png" width="251" class="modern-logo" />
+          </a>
+        </div>
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Copyright and theme information -->
+<div class="md-copyright">
+  
+  <a href="https://themoderndatacompany.com/contact-us" target="_blank" rel="noopener"> Contact Us </a> | <a
+    href="https://themoderndatacompany.com/privacy-policy" target="_blank" rel="noopener"> Privacy Policy </a> | <a
+    href="https://themoderndatacompany.com/terms-of-use" target="_blank" rel="noopener"> Terms of Use </a>
+  
+  
+  <div class="md-copyright__highlight">
+    Copyright ⓒ 2023 The Modern Data Company
+  </div>
+  
+</div>
+      </div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.top", "navigation.tracking", "content.code.copy", "content.code.annotate - toc.follow - toc.integrate"], "search": "../../../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.6.4/dist/mermaid.js"></script>
+      
+    
+  </body>
+</html>

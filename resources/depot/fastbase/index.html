@@ -1,0 +1,2579 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>Fastbase - All things DataOS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Custom admonition icons -->
+
+
+<!-- Custom tag icons -->
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-ZH4G0HKBQC"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-ZH4G0HKBQC",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-ZH4G0HKBQC",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="blue-grey">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#fastbase" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine base classes -->
+
+
+
+<!-- Header -->
+<header class="md-header" data-md-component="header">
+  <nav
+    class="md-header__inner md-grid"
+    aria-label="Header"
+  >
+
+    <!-- Link to home -->
+    <a
+      href="../../.."
+      title="All things DataOS"
+      class="md-header__button md-logo"
+      aria-label="All things DataOS"
+      data-md-component="logo"
+    >
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Logo -->
+
+  <img src="../../../assets/light-modern-logo.png" alt="logo" />
+
+    </a>
+
+    <!-- Button to open drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            All things DataOS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Fastbase
+            
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color palette -->
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input
+            class="md-option"
+            data-md-color-media=""
+            data-md-color-scheme="default"
+            data-md-color-primary="blue-grey"
+            data-md-color-accent="blue-grey"
+            
+              aria-label="Switch to dark mode"
+            
+            type="radio"
+            name="__palette"
+            id="__palette_1"
+          />
+          
+            <label
+              class="md-header__button md-icon"
+              title="Switch to dark mode"
+              for="__palette_2"
+              hidden
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          <input
+            class="md-option"
+            data-md-color-media=""
+            data-md-color-scheme="slate"
+            data-md-color-primary="grey"
+            data-md-color-accent="grey"
+            
+              aria-label="Switch to light mode"
+            
+            type="radio"
+            name="__palette"
+            id="__palette_2"
+          />
+          
+            <label
+              class="md-header__button md-icon"
+              title="Switch to light mode"
+              for="__palette_1"
+              hidden
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+
+    <!-- Site language selector -->
+    
+
+    <!-- Button to open search modal -->
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+
+      <!-- Search interface -->
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Search interface -->
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+
+      <!-- Search input -->
+      <input
+        type="text"
+        class="md-search__input"
+        name="query"
+        aria-label="Search"
+        placeholder="Search"
+        autocapitalize="off"
+        autocorrect="off"
+        autocomplete="off"
+        spellcheck="false"
+        data-md-component="search-query"
+        required
+      />
+
+      <!-- Button to open search -->
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+
+      <!-- Search options -->
+      <nav
+        class="md-search__options"
+        aria-label="Search"
+      >
+
+        <!-- Button to share search -->
+        
+
+        <!-- Button to reset search -->
+        <button
+          type="reset"
+          class="md-search__icon md-icon"
+          title="Clear"
+          aria-label="Clear"
+          tabindex="-1"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+
+      <!-- Search suggestions -->
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+
+        <!-- Search results -->
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    <!-- Repository information -->
+    
+  </nav>
+
+  <!-- Navigation tabs (sticky) -->
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Hack: unset variable, as we're using it recursively in tabs-item.html -->
+
+
+<!-- Navigation tabs -->
+<nav
+  class="md-tabs"
+  aria-label="Tabs"
+  data-md-component="tabs"
+>
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  
+  
+
+  <!-- Recurse, if the first item has further nested items -->
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link">
+        Resources
+      </a>
+    </li>
+  
+
+<!-- Main navigation item -->
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  
+  
+
+  <!-- Recurse, if the first item has further nested items -->
+  
+    <li class="md-tabs__item">
+      <a href="../../../interfaces/" class="md-tabs__link">
+        Interfaces
+      </a>
+    </li>
+  
+
+<!-- Main navigation item -->
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../../architecture/" class="md-tabs__link">
+      Architecture
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../../glossary/" class="md-tabs__link">
+      Glossary
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../../videos/" class="md-tabs__link">
+      Videos
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to configuration -->
+
+
+  
+
+
+
+<!-- Main navigation -->
+<nav
+  class="md-nav md-nav--primary md-nav--lifted"
+  aria-label="Navigation"
+  data-md-level="0"
+>
+
+  <!-- Site title -->
+  <label class="md-nav__title" for="__drawer">
+    <a
+      href="../../.."
+      title="All things DataOS"
+      class="md-nav__button md-logo"
+      aria-label="All things DataOS"
+      data-md-component="logo"
+    >
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Logo -->
+
+  <img src="../../../assets/light-modern-logo.png" alt="logo" />
+
+    </a>
+    All things DataOS
+  </label>
+
+  <!-- Repository information -->
+  
+
+  <!-- Render item list -->
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+        
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle md-toggle--indeterminate"
+        type="checkbox"
+        id="__nav_2"
+        
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_2"
+          id="__nav_2_label"
+          tabindex="0"
+        >
+          Resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="1"
+        aria-labelledby="__nav_2_label"
+        aria-expanded="false"
+      >
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../cluster/" class="md-nav__link">
+        Cluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../compute/" class="md-nav__link">
+        Compute
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Depot
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../policy/" class="md-nav__link">
+        Policy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../secret/" class="md-nav__link">
+        Secret
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../service/" class="md-nav__link">
+        Service
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../workflow/" class="md-nav__link">
+        Workflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+      
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+        
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle md-toggle--indeterminate"
+        type="checkbox"
+        id="__nav_2_9"
+        
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_2_9"
+          id="__nav_2_9_label"
+          tabindex="0"
+        >
+          Stacks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="2"
+        aria-labelledby="__nav_2_9_label"
+        aria-expanded="false"
+      >
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Stacks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/alpha/" class="md-nav__link">
+        Alpha
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/beacon/" class="md-nav__link">
+        Beacon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/benthos/" class="md-nav__link">
+        Benthos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/data_toolbox/" class="md-nav__link">
+        Data Toolbox
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/flare/" class="md-nav__link">
+        Flare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/scanner/" class="md-nav__link">
+        Scanner
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+        
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle md-toggle--indeterminate"
+        type="checkbox"
+        id="__nav_3"
+        
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_3"
+          id="__nav_3_label"
+          tabindex="0"
+        >
+          Interfaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="1"
+        aria-labelledby="__nav_3_label"
+        aria-expanded="false"
+      >
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Interfaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/atlas/" class="md-nav__link">
+        Atlas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/audiences/" class="md-nav__link">
+        Audiences
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/bifrost/" class="md-nav__link">
+        Bifrost
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/cli/" class="md-nav__link">
+        CLI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/lens/" class="md-nav__link">
+        Lens
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/metis/" class="md-nav__link">
+        Metis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/notebook/" class="md-nav__link">
+        Notebook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/operations/" class="md-nav__link">
+        Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/workbench/" class="md-nav__link">
+        Workbench
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        Glossary
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../videos/" class="md-nav__link">
+        Videos
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#commands-in-dataos" class="md-nav__link">
+    Commands in DataOS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-create-and-fetch-dataset" class="md-nav__link">
+    How to create and fetch dataset?
+  </a>
+  
+    <nav class="md-nav" aria-label="How to create and fetch dataset?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-dataset" class="md-nav__link">
+    Create a Dataset
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fetch-a-dataset" class="md-nav__link">
+    Fetch a Dataset
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tenant-namespace-and-topic" class="md-nav__link">
+    Tenant, Namespace, and Topic
+  </a>
+  
+    <nav class="md-nav" aria-label="Tenant, Namespace, and Topic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tenants" class="md-nav__link">
+    Tenants
+  </a>
+  
+    <nav class="md-nav" aria-label="Tenants">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-tenants" class="md-nav__link">
+    List tenants
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespaces" class="md-nav__link">
+    Namespaces
+  </a>
+  
+    <nav class="md-nav" aria-label="Namespaces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-namespaces" class="md-nav__link">
+    List namespaces
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#topics" class="md-nav__link">
+    Topics
+  </a>
+  
+    <nav class="md-nav" aria-label="Topics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-topics" class="md-nav__link">
+    List topics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#topic-consume" class="md-nav__link">
+    Topic consume
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#topic-read" class="md-nav__link">
+    Topic read
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Tags -->
+
+
+<!-- Actions -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Actions -->
+
+
+<!--
+  Hack: check whether the content contains a h1 headline. If it doesn't, the
+  page title (or respectively site name) is used as the main headline.
+-->
+
+
+<!-- Page content -->
+<h1 id="fastbase">Fastbase<a class="headerlink" href="#fastbase" title="Permanent link">&para;</a></h1>
+<p>Fastbase is a depot type within the DataOS that supports Apache Pulsar format for streaming workloads. Pulsar offers a “unified messaging model”  that combines the best features of traditional messaging systems like RabbitMQ and pub-sub (publish-subscribe) event streaming platforms like Apache Kafka. Users can leverage Fastbase depots for their streaming and real-time data workloads. </p>
+<h2 id="commands-in-dataos">Commands in DataOS<a class="headerlink" href="#commands-in-dataos" title="Permanent link">&para;</a></h2>
+<p>DataOS allows users to manage Fastbase depots effortlessly using CLI. This functionality is made possible by the powerful API capabilities of <a href="../#depot-service">Depot Service</a>.</p>
+<p>The primary command for interacting with the Fastbase Depot in DataOS is <code>dataos-ctl fastbase {{sub-command}}</code>. Using this command, you can perform various operations related to Fastbase.</p>
+<aside class=callout>
+
+🗣️  Bringing uniformity by getting rid of complex terminologies
+To bring uniformity within DataOS, we have replaced specific terminologies related to underlying tech with their analogous DataOS counterpart. For example, topics in Pulsar are the named channels for transmitting messages from producers to consumers. They are streaming logs that are analogous to the dataset. Within DataOS, instead of a topic, we use the term dataset. 
+Taking this into account, any Fastbase UDL (Universal Data Link) within the DataOS is referenced as <code>dataos://fastbase:{{schema|none}}/{{dataset}}</code>
+E.g., dataos://fastbase:default/my_data is one such UDL where we use the default schema and use the my_data dataset (my_data is a Pulsar Topic, but within the DataOS, the term topic is replaced by dataset while referencing UDL)
+
+</aside>
+
+<blockquote>
+<p>To execute Fastbase commands, it is necessary to have the <code>pulsar-admin</code> tag. You can check if you have the tag by running dataos-ctl user get in the terminal and verifying the presence of the dataos:u:pulsar:admin tag in the tags column.</p>
+</blockquote>
+<h2 id="how-to-create-and-fetch-dataset">How to create and fetch dataset?<a class="headerlink" href="#how-to-create-and-fetch-dataset" title="Permanent link">&para;</a></h2>
+<h3 id="create-a-dataset"><strong>Create a Dataset</strong><a class="headerlink" href="#create-a-dataset" title="Permanent link">&para;</a></h3>
+<p>By creating and applying a YAML given below, you can create a dataset in Fastbase.</p>
+<p><strong>Sample YAML</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># example-manifest.yaml</span>
+<span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;avro&quot;</span>
+<span class="w">  </span><span class="nt">avro</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&lt;avro-schema&gt;&#39;</span>
+<span class="nt">pulsar</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;partitioned&quot;</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">or &quot;non-partitioned&quot;</span><span class="w"> </span><span class="c1">#(choose one)</span>
+<span class="w">  </span><span class="nt">partitions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"> </span><span class="c1"># optional - use in case the type is: partitioned&gt;dataos-ctl dataset create -a dataos://&lt;pulsar-depot&gt;:default/&lt;topic-name&gt; \ -f path/to/example-manifest.yaml+</span>
+</code></pre></div>
+<p><strong>Command</strong></p>
+<div class="highlight"><pre><span></span><code>dataos-ctl<span class="w"> </span>dataset<span class="w"> </span>create<span class="w"> </span>-a<span class="w"> </span><span class="o">{{</span>udl-address<span class="o">}}</span><span class="w"> </span>-f<span class="w"> </span><span class="o">{{</span>yaml-file-path<span class="o">}}</span>
+</code></pre></div>
+<details><summary> Click on the toggle to see sample manifests</summary>
+
+<div class="highlight"><pre><span></span><code><span class="nt">pulsar</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;partitioned&quot;</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">or &quot;non-partitioned&quot;</span><span class="w"> </span><span class="c1">#(chose one)</span>
+<span class="w">  </span><span class="nt">partitions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"> </span><span class="c1"># optional - use in case the type is: partitioned</span>
+</code></pre></div>
+
+This manifest creates a dataset with two partitions and without schema. In this case, the schema will be associated during write.
+
+<div class="highlight"><pre><span></span><code><span class="nt">schema</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;avro&quot;</span>
+<span class="w">  </span><span class="nt">avro</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&quot;type&quot;:&quot;record&quot;,&quot;name&quot;:&quot;defaultName&quot;,&quot;fields&quot;:[{&quot;name&quot;:&quot;__metadata&quot;,&quot;type&quot;:{&quot;type&quot;:&quot;map&quot;,&quot;values&quot;:&quot;string&quot;,&quot;key-id&quot;:10,&quot;value-id&quot;:11},&quot;field-id&quot;:1},{&quot;name&quot;:&quot;city_id&quot;,&quot;type&quot;:[&quot;null&quot;,&quot;string&quot;],&quot;default&quot;:null,&quot;field-id&quot;:2},{&quot;name&quot;:&quot;zip_code&quot;,&quot;type&quot;:[&quot;null&quot;,&quot;int&quot;],&quot;default&quot;:null,&quot;field-id&quot;:3},{&quot;name&quot;:&quot;city_name&quot;,&quot;type&quot;:[&quot;null&quot;,&quot;string&quot;],&quot;default&quot;:null,&quot;field-id&quot;:4},{&quot;name&quot;:&quot;county_name&quot;,&quot;type&quot;:[&quot;null&quot;,&quot;string&quot;],&quot;default&quot;:null,&quot;field-id&quot;:5},{&quot;name&quot;:&quot;state_code&quot;,&quot;type&quot;:[&quot;null&quot;,&quot;string&quot;],&quot;default&quot;:null,&quot;field-id&quot;:6},{&quot;name&quot;:&quot;state_name&quot;,&quot;type&quot;:[&quot;null&quot;,&quot;string&quot;],&quot;default&quot;:null,&quot;field-id&quot;:7},{&quot;name&quot;:&quot;version&quot;,&quot;type&quot;:&quot;string&quot;,&quot;field-id&quot;:8},{&quot;name&quot;:&quot;ts_city&quot;,&quot;type&quot;:{&quot;type&quot;:&quot;long&quot;,&quot;logicalType&quot;:&quot;timestamp-micros&quot;,&quot;adjust-to-utc&quot;:true},&quot;field-id&quot;:9}]}&#39;</span>
+<span class="nt">pulsar</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;partitioned&quot;</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">or &quot;non-partitioned&quot;</span><span class="w"> </span><span class="c1">#(chose one)</span>
+<span class="w">  </span><span class="nt">partitions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"> </span><span class="c1"># optional - use in case the type is: partitioned</span>
+</code></pre></div>
+
+This manifest creates a dataset with two partitions with the “Avro” schema.
+</details>
+
+<aside class= callout>
+🗣️  Note:<br>
+<ul> <li>Pulsar supports quantifiable distribution while partitioning the data. The value of the partitions key is in the `int` form, and it doesn’t support categorical partition.</li>
+<li>The minimum partition value should be 2.</li>
+<li>Pulsar is based on the number of distributions, while iceberg is based on the type of distributions you need.</li>
+
+</ul>
+
+</aside>
+
+<hr />
+<h3 id="fetch-a-dataset"><strong>Fetch a Dataset</strong><a class="headerlink" href="#fetch-a-dataset" title="Permanent link">&para;</a></h3>
+<p>With the help of the get command, we can gather or fetch all the information on the existing topic in Pulsar’s depot.</p>
+<div class="highlight"><pre><span></span><code>dataos-ctl<span class="w"> </span>dataset<span class="w"> </span>-a<span class="w"> </span>dataos://fastbase:default/<span class="o">{{</span>topic-name<span class="o">}}</span><span class="w">  </span>get
+</code></pre></div>
+<hr />
+<h2 id="tenant-namespace-and-topic">Tenant, Namespace, and Topic<a class="headerlink" href="#tenant-namespace-and-topic" title="Permanent link">&para;</a></h2>
+<p>Messages in Pulsar are published to topics and organized in a three-level hierarchy structure.</p>
+<p><img alt="Pulsar Hierarchy" src="hierarchy.png" /></p>
+<p><center><i>Three Level Hierarchy Structure in Pulsar</i></center></p>
+<ul>
+<li>One <code>tenant</code> represents a specific business unit or a product line. Topics created under a <code>tenant</code> share the same business context that is distinct from others.</li>
+<li>Within one <code>tenant</code>, topics having similar behavioral characteristics can be further grouped into a smaller administrative unit called a <code>namespace</code>. Different policies such as message retention or expiry policy, can be set either at the <code>namespace</code> level or at an individual <code>topic</code> level. Policies set at the <code>namespace</code> level will apply to all topics under the <code>namespace</code>.</li>
+</ul>
+<p>The below commands need to be executed in the above hierarchical order.</p>
+<hr />
+<h3 id="tenants"><strong>Tenants</strong><a class="headerlink" href="#tenants" title="Permanent link">&para;</a></h3>
+<h4 id="list-tenants"><strong>List tenants</strong><a class="headerlink" href="#list-tenants" title="Permanent link">&para;</a></h4>
+<p>The command <code>tenant list</code> displays the tenants in the DataOS Fastbase.</p>
+<p>The tenant is a first-class citizen in Pulsar. Pulsar was created from the ground up as a multi-tenant system. To support multi-tenancy, Pulsar has a concept of tenants. Tenants can be spread across clusters and can each have their own authentication and authorization scheme applied to them. Multi-tenancy with Apache Pulsar deployments refers to authorized namespaces assigned to elastic cluster sets in support of software applications in the cloud data processing.</p>
+<p><strong>Command</strong></p>
+<div class="highlight"><pre><span></span><code>dataos-ctl<span class="w"> </span>fastbase<span class="w"> </span>tenant<span class="w"> </span>list
+</code></pre></div>
+<p>Output</p>
+<div class="highlight"><pre><span></span><code>INFO<span class="o">[</span><span class="m">0000</span><span class="o">]</span><span class="w"> </span>🔍<span class="w"> </span>list...<span class="w">                            </span>
+INFO<span class="o">[</span><span class="m">0001</span><span class="o">]</span><span class="w"> </span>🔍<span class="w"> </span>list...complete
+
+<span class="w">  </span>TENANT
+----------
+<span class="w">  </span>public
+<span class="w">  </span>pulsar
+<span class="w">  </span>system
+</code></pre></div>
+<hr />
+<h3 id="namespaces"><strong>Namespaces</strong><a class="headerlink" href="#namespaces" title="Permanent link">&para;</a></h3>
+<p>Namespaces are logical grouping of topics. After creating a tenant, you can create one or more namespaces <strong>*</strong>*for the tenant.</p>
+<h4 id="list-namespaces"><strong>List namespaces</strong><a class="headerlink" href="#list-namespaces" title="Permanent link">&para;</a></h4>
+<p>The command <code>namespace list</code> interacts with namespaces in the DataOS Fastbase and also lists the namespaces.</p>
+<div class="highlight"><pre><span></span><code>dataos-ctl<span class="w"> </span>fastbase<span class="w"> </span>namespace<span class="w"> </span>-t<span class="w"> </span><span class="o">{{</span>tenant_name<span class="o">}}</span><span class="w"> </span>list
+</code></pre></div>
+<p><strong>Command</strong></p>
+<div class="highlight"><pre><span></span><code>dataos-ctl<span class="w"> </span>fastbase<span class="w"> </span>namespace<span class="w"> </span>-t<span class="w"> </span>public<span class="w"> </span>list
+</code></pre></div>
+<p>Output</p>
+<div class="highlight"><pre><span></span><code>INFO<span class="o">[</span><span class="m">0000</span><span class="o">]</span><span class="w"> </span>🔍<span class="w"> </span>list...<span class="w">                            </span>
+INFO<span class="o">[</span><span class="m">0001</span><span class="o">]</span><span class="w"> </span>🔍<span class="w"> </span>list...complete
+
+<span class="w">    </span>NAMESPACE
+-----------------
+<span class="w">  </span>public/default
+</code></pre></div>
+<hr />
+<h3 id="topics"><strong>Topics</strong><a class="headerlink" href="#topics" title="Permanent link">&para;</a></h3>
+<p>Topic in Pulsar is referred to as a dataset in DataOS. Topics are the endpoints for publishing and consuming messages. Producers send the data to pulsar topics, and consumers read them from the same pulsar topic. </p>
+<p>We currently support the creation of partitioned and non-partitioned <code>topics</code>, aka <code>datasets</code> with or without <code>schema</code>. The schema format that is currently supported by it is Avro.</p>
+<h4 id="list-topics"><strong>List topics</strong><a class="headerlink" href="#list-topics" title="Permanent link">&para;</a></h4>
+<p>The topics are listed with the help of <code>the topic list</code> command.</p>
+<div class="highlight"><pre><span></span><code>dataos-ctl<span class="w"> </span>fastbase<span class="w"> </span>topic<span class="w"> </span>-n<span class="w"> </span><span class="o">{{</span>tenant_name<span class="o">}}</span>/<span class="o">{{</span>namespace_name<span class="o">}}</span><span class="w"> </span>list
+</code></pre></div>
+<p><strong>Command</strong></p>
+<div class="highlight"><pre><span></span><code>dataos-ctl<span class="w"> </span>fastbase<span class="w"> </span>topic<span class="w"> </span>-n<span class="w"> </span>public/default<span class="w"> </span>list
+</code></pre></div>
+<p>Output</p>
+<div class="highlight"><pre><span></span><code>INFO<span class="o">[</span><span class="m">0000</span><span class="o">]</span><span class="w"> </span>🔍<span class="w"> </span>list...<span class="w">                            </span>
+INFO<span class="o">[</span><span class="m">0001</span><span class="o">]</span><span class="w"> </span>🔍<span class="w"> </span>list...complete
+
+<span class="w">                </span>TOPIC<span class="w">               </span><span class="p">|</span><span class="w"> </span>PARTITIONED<span class="w">    </span>
+------------------------------------<span class="p">|</span>----------------
+<span class="w"> </span>persistent://public/default/public<span class="w"> </span><span class="p">|</span><span class="w"> </span>N
+<span class="w"> </span>persistent://public/default/user<span class="w">   </span><span class="p">|</span><span class="w"> </span>N
+</code></pre></div>
+<p>In Pulsar, the name of a <code>topic</code> reflects the following structure:</p>
+<div class="highlight"><pre><span></span><code><span class="o">{</span>persistent<span class="p">|</span>non-persistent<span class="o">}</span>://<span class="o">{{</span>tenant_name<span class="o">}}</span>/<span class="o">{{</span>namespace_name<span class="o">}}</span>/<span class="o">{{</span>topic_name<span class="o">}}</span>
+</code></pre></div>
+<p>Pulsar has persistent and non-persistent topics. </p>
+<p>A persistent topic is a logical endpoint for publishing and consuming messages. The topic name structure for persistent topics is:</p>
+<div class="highlight"><pre><span></span><code>persistent://tenant/namespace/topic
+</code></pre></div>
+<p>Non-persistent topics are used in applications that only consume real-time published messages and do not need persistent guarantees. This way, it reduces message-publish latency by removing the overhead of persisting messages. The topic name structure for non-persistent topics is:</p>
+<div class="highlight"><pre><span></span><code>non-persistent://tenant/namespace/topic
+</code></pre></div>
+<hr />
+<h4 id="topic-consume"><strong>Topic consume</strong><a class="headerlink" href="#topic-consume" title="Permanent link">&para;</a></h4>
+<p>This command consumes messages from a topic. Also, the consumer and subscription details are displayed with the help of this command. </p>
+<div class="highlight"><pre><span></span><code>dataos-ctl<span class="w"> </span>fastbase<span class="w"> </span>topic<span class="w"> </span>consume<span class="w"> </span><span class="o">[</span>flags<span class="o">]</span>
+Flags:
+<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">                  </span><span class="nb">help</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>consume
+<span class="w">  </span>-l,<span class="w"> </span>--logMessage<span class="w">            </span>Log<span class="w"> </span>message<span class="w"> </span><span class="o">(</span>default<span class="w"> </span><span class="nb">true</span><span class="o">)</span>
+<span class="w">  </span>-p,<span class="w"> </span>--logPayload<span class="w">            </span>Log<span class="w"> </span>payload<span class="w"> </span>with<span class="w"> </span>message
+<span class="w">  </span>-s,<span class="w"> </span>--startAtFirstMessage<span class="w">   </span>Start<span class="w"> </span>at<span class="w"> </span>the<span class="w"> </span>first<span class="w"> </span>message<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>topic
+<span class="w">  </span>-t,<span class="w"> </span>--topic<span class="w"> </span>string<span class="w">          </span>FastBase<span class="w"> </span>topic<span class="w"> </span>to<span class="w"> </span>consume<span class="w"> </span>messages<span class="w"> </span>from
+</code></pre></div>
+<p><strong>Command (-p, -s, -t flags)</strong></p>
+<div class="highlight"><pre><span></span><code>dataos-ctl<span class="w"> </span>fastbase<span class="w"> </span>topic<span class="w"> </span>consume<span class="w"> </span>-p<span class="w"> </span>-s<span class="w"> </span>-t<span class="w"> </span>persistent://public/default/random_users_02
+</code></pre></div>
+<details>
+
+<summary>Output</summary>
+
+<div class="highlight"><pre><span></span><code>INFO<span class="o">[</span><span class="m">0000</span><span class="o">]</span><span class="w"> </span>🔍<span class="w"> </span>consume...<span class="w">                                 </span>
+WARN<span class="o">[</span><span class="m">0003</span><span class="o">]</span><span class="w"> </span>code:<span class="w"> </span><span class="m">404</span><span class="w"> </span>reason:<span class="w"> </span>Subscription<span class="w"> </span>not<span class="w"> </span>found<span class="w">     </span>
+INFO<span class="o">[</span><span class="m">0006</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Connecting<span class="w"> </span>to<span class="w"> </span>broker<span class="o">]</span><span class="w">                        </span><span class="nv">remote_addr</span><span class="o">=</span><span class="s2">&quot;pulsar+ssl://tcp.above-dragon.dataos.app:6651&quot;</span>
+INFO<span class="o">[</span><span class="m">0007</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>TCP<span class="w"> </span>connection<span class="w"> </span>established<span class="o">]</span><span class="w">                  </span><span class="nv">local_addr</span><span class="o">=</span><span class="s2">&quot;192.168.68.62:50854&quot;</span><span class="w"> </span><span class="nv">remote_addr</span><span class="o">=</span><span class="s2">&quot;pulsar+ssl://tcp.above-dragon.dataos.app:6651&quot;</span>
+INFO<span class="o">[</span><span class="m">0007</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Connection<span class="w"> </span>is<span class="w"> </span>ready<span class="o">]</span><span class="w">                         </span><span class="nv">local_addr</span><span class="o">=</span><span class="s2">&quot;192.168.68.62:50854&quot;</span><span class="w"> </span><span class="nv">remote_addr</span><span class="o">=</span><span class="s2">&quot;pulsar+ssl://tcp.above-dragon.dataos.app:6651&quot;</span>
+INFO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Connecting<span class="w"> </span>to<span class="w"> </span>broker<span class="o">]</span><span class="w">                        </span><span class="nv">remote_addr</span><span class="o">=</span><span class="s2">&quot;pulsar+ssl://tcp.above-dragon.dataos.app:6651&quot;</span>
+INFO<span class="o">[</span><span class="m">0009</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>TCP<span class="w"> </span>connection<span class="w"> </span>established<span class="o">]</span><span class="w">                  </span><span class="nv">local_addr</span><span class="o">=</span><span class="s2">&quot;192.168.68.62:50856&quot;</span><span class="w"> </span><span class="nv">remote_addr</span><span class="o">=</span><span class="s2">&quot;pulsar+ssl://tcp.above-dragon.dataos.app:6651&quot;</span>
+INFO<span class="o">[</span><span class="m">0010</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Connection<span class="w"> </span>is<span class="w"> </span>ready<span class="o">]</span><span class="w">                         </span><span class="nv">local_addr</span><span class="o">=</span><span class="s2">&quot;192.168.68.62:50856&quot;</span><span class="w"> </span><span class="nv">remote_addr</span><span class="o">=</span><span class="s2">&quot;pulsar+ssl://tcp.above-dragon.dataos.app:6651&quot;</span>
+INFO<span class="o">[</span><span class="m">0010</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Connected<span class="w"> </span>consumer<span class="o">]</span><span class="w">                          </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>kipsy<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/random_users_02&quot;</span>
+INFO<span class="o">[</span><span class="m">0010</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Created<span class="w"> </span>consumer<span class="o">]</span><span class="w">                            </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>kipsy<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/random_users_02&quot;</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CKoKEAAYACAA&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;1322:0:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="o">{</span><span class="s2">&quot;age&quot;</span>:<span class="s2">&quot;&quot;</span>,<span class="s2">&quot;city&quot;</span>:<span class="s2">&quot;Nova Iguaçu&quot;</span>,<span class="s2">&quot;country&quot;</span>:<span class="s2">&quot;Brazil&quot;</span>,<span class="s2">&quot;email&quot;</span>:<span class="s2">&quot;ivone.rezende@example.com&quot;</span>,<span class="s2">&quot;first_name&quot;</span>:<span class="s2">&quot;Ivone&quot;</span>,<span class="s2">&quot;gender&quot;</span>:<span class="s2">&quot;female&quot;</span>,<span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;f87624d4-d04e-47b2-aa1a-81a5a887bc7a&quot;</span>,<span class="s2">&quot;last_name&quot;</span>:<span class="s2">&quot;&quot;</span>,<span class="s2">&quot;phone&quot;</span>:<span class="s2">&quot;(76) 7285-1917&quot;</span>,<span class="s2">&quot;postcode&quot;</span>:<span class="s2">&quot;87183&quot;</span>,<span class="s2">&quot;state&quot;</span>:<span class="s2">&quot;Mato Grosso&quot;</span>,<span class="s2">&quot;title&quot;</span>:<span class="s2">&quot;Ms&quot;</span><span class="o">}</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-06-22T12:10:12.581+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-06-22T12:10:12.581+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-4-623&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/random_users_02&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CKoKEAEYACAA&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;1322:1:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="o">{</span><span class="s2">&quot;age&quot;</span>:<span class="s2">&quot;&quot;</span>,<span class="s2">&quot;city&quot;</span>:<span class="s2">&quot;Shannon&quot;</span>,<span class="s2">&quot;country&quot;</span>:<span class="s2">&quot;Ireland&quot;</span>,<span class="s2">&quot;email&quot;</span>:<span class="s2">&quot;kathleen.richards@example.com&quot;</span>,<span class="s2">&quot;first_name&quot;</span>:<span class="s2">&quot;Kathleen&quot;</span>,<span class="s2">&quot;gender&quot;</span>:<span class="s2">&quot;female&quot;</span>,<span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;9efe2757-f81d-4ec7-9940-14c9a34d1c5c&quot;</span>,<span class="s2">&quot;last_name&quot;</span>:<span class="s2">&quot;&quot;</span>,<span class="s2">&quot;phone&quot;</span>:<span class="s2">&quot;051-256-6998&quot;</span>,<span class="s2">&quot;postcode&quot;</span>:<span class="s2">&quot;55659&quot;</span>,<span class="s2">&quot;state&quot;</span>:<span class="s2">&quot;Leitrim&quot;</span>,<span class="s2">&quot;title&quot;</span>:<span class="s2">&quot;Mrs&quot;</span><span class="o">}</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-06-22T12:10:12.6+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-06-22T12:10:12.6+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-4-623&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/random_users_02&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CKoKEAIYACAA&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;1322:2:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="o">{</span><span class="s2">&quot;age&quot;</span>:<span class="s2">&quot;&quot;</span>,<span class="s2">&quot;city&quot;</span>:<span class="s2">&quot;Limeira&quot;</span>,<span class="s2">&quot;country&quot;</span>:<span class="s2">&quot;Brazil&quot;</span>,<span class="s2">&quot;email&quot;</span>:<span class="s2">&quot;silnior.nogueira@example.com&quot;</span>,<span class="s2">&quot;first_name&quot;</span>:<span class="s2">&quot;Sílnior&quot;</span>,<span class="s2">&quot;gender&quot;</span>:<span class="s2">&quot;female&quot;</span>,<span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;d399586e-d54d-4a92-84fd-b30b4b320012&quot;</span>,<span class="s2">&quot;last_name&quot;</span>:<span class="s2">&quot;&quot;</span>,<span class="s2">&quot;phone&quot;</span>:<span class="s2">&quot;(92) 6422-7741&quot;</span>,<span class="s2">&quot;postcode&quot;</span>:<span class="s2">&quot;74804&quot;</span>,<span class="s2">&quot;state&quot;</span>:<span class="s2">&quot;Alagoas&quot;</span>,<span class="s2">&quot;title&quot;</span>:<span class="s2">&quot;Miss&quot;</span><span class="o">}</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-06-22T12:10:12.616+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-06-22T12:10:12.616+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-4-623&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/random_users_02&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CKoKEAMYACAA&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;1322:3:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="o">{</span><span class="s2">&quot;age&quot;</span>:<span class="s2">&quot;&quot;</span>,<span class="s2">&quot;city&quot;</span>:<span class="s2">&quot;Weimar&quot;</span>,<span class="s2">&quot;country&quot;</span>:<span class="s2">&quot;Germany&quot;</span>,<span class="s2">&quot;email&quot;</span>:<span class="s2">&quot;brigitta.godecke@example.com&quot;</span>,<span class="s2">&quot;first_name&quot;</span>:<span class="s2">&quot;Brigitta&quot;</span>,<span class="s2">&quot;gender&quot;</span>:<span class="s2">&quot;female&quot;</span>,<span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;ffca87ba-72c2-4f40-996e-5aaf233dbd03&quot;</span>,<span class="s2">&quot;last_name&quot;</span>:<span class="s2">&quot;&quot;</span>,<span class="s2">&quot;phone&quot;</span>:<span class="s2">&quot;0446-7765109&quot;</span>,<span class="s2">&quot;postcode&quot;</span>:<span class="s2">&quot;46669&quot;</span>,<span class="s2">&quot;state&quot;</span>:<span class="s2">&quot;Nordrhein-Westfalen&quot;</span>,<span class="s2">&quot;title&quot;</span>:<span class="s2">&quot;Mrs&quot;</span><span class="o">}</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-06-22T12:10:12.63+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-06-22T12:10:12.63+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-4-623&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/random_users_02&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CKoKEAQYACAA&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;1322:4:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="o">{</span><span class="s2">&quot;age&quot;</span>:<span class="s2">&quot;&quot;</span>,<span class="s2">&quot;city&quot;</span>:<span class="s2">&quot;Ryslinge&quot;</span>,<span class="s2">&quot;country&quot;</span>:<span class="s2">&quot;Denmark&quot;</span>,<span class="s2">&quot;email&quot;</span>:<span class="s2">&quot;alberte.mortensen@example.com&quot;</span>,<span class="s2">&quot;first_name&quot;</span>:<span class="s2">&quot;Alberte&quot;</span>,<span class="s2">&quot;gender&quot;</span>:<span class="s2">&quot;female&quot;</span>,<span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;6b3cebd5-b41a-474b-9d5e-4209b29b5097&quot;</span>,<span class="s2">&quot;last_name&quot;</span>:<span class="s2">&quot;&quot;</span>,<span class="s2">&quot;phone&quot;</span>:<span class="s2">&quot;15539760&quot;</span>,<span class="s2">&quot;postcode&quot;</span>:<span class="s2">&quot;70648&quot;</span>,<span class="s2">&quot;state&quot;</span>:<span class="s2">&quot;Danmark&quot;</span>,<span class="s2">&quot;title&quot;</span>:<span class="s2">&quot;Ms&quot;</span><span class="o">}</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-06-22T12:10:12.727+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-06-22T12:10:12.727+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-4-623&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/random_users_02&quot;</span><span class="o">}</span>
+</code></pre></div>
+
+</details>
+
+<hr />
+<p><strong>Command (-p,-s,-t,-l flags)</strong></p>
+<div class="highlight"><pre><span></span><code>dataos-ctl<span class="w"> </span>fastbase<span class="w"> </span>topic<span class="w"> </span>consume<span class="w"> </span>-p<span class="w"> </span>-s<span class="w"> </span>-t<span class="w"> </span>persistent://public/default/usaflogs<span class="w"> </span>-l<span class="w"> </span><span class="nb">false</span>
+</code></pre></div>
+<details><summary>Output</summary>
+
+<div class="highlight"><pre><span></span><code>ERRO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="w"> </span>from<span class="w"> </span>broker<span class="o">]</span><span class="w">   </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+ERRO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="o">]</span><span class="w">               </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-flbtz<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+ERRO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="w"> </span>from<span class="w"> </span>broker<span class="o">]</span><span class="w">   </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+ERRO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="o">]</span><span class="w">               </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-flbtz<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+ERRO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="w"> </span>from<span class="w"> </span>broker<span class="o">]</span><span class="w">   </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+ERRO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="o">]</span><span class="w">               </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-flbtz<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+ERRO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="w"> </span>from<span class="w"> </span>broker<span class="o">]</span><span class="w">   </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+ERRO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="o">]</span><span class="w">               </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-flbtz<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+ERRO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="w"> </span>from<span class="w"> </span>broker<span class="o">]</span><span class="w">   </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+ERRO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="o">]</span><span class="w">               </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-flbtz<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+INFO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Connected<span class="w"> </span>consumer<span class="o">]</span><span class="w">                          </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-flbtz<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+INFO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Reconnected<span class="w"> </span>consumer<span class="w"> </span>to<span class="w"> </span>broker<span class="o">]</span><span class="w">              </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-flbtz<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+ERRO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="w"> </span>from<span class="w"> </span>broker<span class="o">]</span><span class="w">   </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+INFO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span>no<span class="w"> </span>more<span class="w"> </span>messages<span class="w"> </span>to<span class="w"> </span>read...exiting<span class="w">           </span>
+INFO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span>Closing<span class="w"> </span><span class="nv">consumer</span><span class="o">=</span><span class="m">1</span><span class="w">                            </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-flbtz<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CNkBEMYcGAAgAA==&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;217:3654:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="s2">&quot;JjIwMjItMDgtMzFUMTI6MDc6NDNINGNiMTAyNTItNjcwOC00NzgwLWJhOTMtYzg3N2E5NDc0NDgzFEZ1ZWxJbmdlc3QGODc3DGxpdHJlcw==&quot;</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:37:43.841+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:37:43.841+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-2-4&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/usaflogs&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CNkBEMccGAAgAA==&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;217:3655:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="s2">&quot;JjIwMjItMDgtMzFUMTI6MDc6NDdINGNiMTAyNTItNjcwOC00NzgwLWJhOTMtYzg3N2E5NDc0NDgzFEZ1ZWxJbmdlc3QGMTEwDGxpdHJlcw==&quot;</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:37:47.659+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:37:47.659+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-2-4&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/usaflogs&quot;</span><span class="o">}</span>
+INFO<span class="o">[</span><span class="m">0009</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Closed<span class="w"> </span>consumer<span class="o">]</span><span class="w">                             </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-flbtz<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+INFO<span class="o">[</span><span class="m">0009</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>close<span class="w"> </span>consumer,<span class="w"> </span><span class="nb">exit</span><span class="w"> </span>reconnect<span class="o">]</span><span class="w">              </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-flbtz<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+INFO<span class="o">[</span><span class="m">0009</span><span class="o">]</span><span class="w"> </span>🔍<span class="w"> </span>read...complete
+</code></pre></div>
+</details>
+
+<hr />
+<h4 id="topic-read"><strong>Topic read</strong><a class="headerlink" href="#topic-read" title="Permanent link">&para;</a></h4>
+<p>The command helps to read the topic, additional flags are given below</p>
+<div class="highlight"><pre><span></span><code>dataos-ctl<span class="w"> </span>fastbase<span class="w"> </span>topic<span class="w"> </span><span class="nb">read</span><span class="w"> </span><span class="o">[</span>flags<span class="o">]</span>
+
+Flags:
+<span class="w">  </span>-d,<span class="w"> </span>--duration<span class="w"> </span>string<span class="w">    </span>FastBase<span class="w"> </span>duration<span class="w"> </span>to<span class="w"> </span>seek<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>past
+<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">               </span><span class="nb">help</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">read</span>
+<span class="w">  </span>-l,<span class="w"> </span>--logMessage<span class="w">         </span>Log<span class="w"> </span>message<span class="w"> </span><span class="o">(</span>default<span class="w"> </span><span class="nb">true</span><span class="o">)</span>
+<span class="w">  </span>-p,<span class="w"> </span>--logPayload<span class="w">         </span>Log<span class="w"> </span>payload<span class="w"> </span>with<span class="w"> </span>message
+<span class="w">  </span>-m,<span class="w"> </span>--messageId<span class="w"> </span>string<span class="w">   </span>FastBase<span class="w"> </span>message<span class="w"> </span>id<span class="w"> </span>to<span class="w"> </span>start<span class="w"> </span>reading<span class="w"> </span>from
+<span class="w">  </span>-t,<span class="w"> </span>--topic<span class="w"> </span>string<span class="w">       </span>FastBase<span class="w"> </span>topic<span class="w"> </span>to<span class="w"> </span><span class="nb">read</span><span class="w"> </span>message<span class="w"> </span>from
+</code></pre></div>
+<p><strong>Command (-p,-t flags)</strong></p>
+<div class="highlight"><pre><span></span><code>dataos-ctl<span class="w"> </span>fastbase<span class="w"> </span>topic<span class="w"> </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span>-t<span class="w"> </span>persistent://public/default/random_users_02
+</code></pre></div>
+<details> <summary> Output </summary>
+
+<div class="highlight"><pre><span></span><code>INFO<span class="o">[</span><span class="m">0000</span><span class="o">]</span><span class="w"> </span>🔍<span class="w"> </span>read...<span class="w">                                   </span>
+INFO<span class="o">[</span><span class="m">0006</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Connecting<span class="w"> </span>to<span class="w"> </span>broker<span class="o">]</span><span class="w">                        </span><span class="nv">remote_addr</span><span class="o">=</span><span class="s2">&quot;pulsar+ssl://tcp.above-dragon.dataos.app:6651&quot;</span>
+INFO<span class="o">[</span><span class="m">0007</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>TCP<span class="w"> </span>connection<span class="w"> </span>established<span class="o">]</span><span class="w">                  </span><span class="nv">local_addr</span><span class="o">=</span><span class="s2">&quot;192.168.68.62:50854&quot;</span><span class="w"> </span><span class="nv">remote_addr</span><span class="o">=</span><span class="s2">&quot;pulsar+ssl://tcp.above-dragon.dataos.app:6651&quot;</span>
+INFO<span class="o">[</span><span class="m">0007</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Connection<span class="w"> </span>is<span class="w"> </span>ready<span class="o">]</span><span class="w">                         </span><span class="nv">local_addr</span><span class="o">=</span><span class="s2">&quot;192.168.68.62:50854&quot;</span><span class="w"> </span><span class="nv">remote_addr</span><span class="o">=</span><span class="s2">&quot;pulsar+ssl://tcp.above-dragon.dataos.app:6651&quot;</span>
+INFO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Connecting<span class="w"> </span>to<span class="w"> </span>broker<span class="o">]</span><span class="w">                        </span><span class="nv">remote_addr</span><span class="o">=</span><span class="s2">&quot;pulsar+ssl://tcp.above-dragon.dataos.app:6651&quot;</span>
+INFO<span class="o">[</span><span class="m">0009</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>TCP<span class="w"> </span>connection<span class="w"> </span>established<span class="o">]</span><span class="w">                  </span><span class="nv">local_addr</span><span class="o">=</span><span class="s2">&quot;192.168.68.62:50856&quot;</span><span class="w"> </span><span class="nv">remote_addr</span><span class="o">=</span><span class="s2">&quot;pulsar+ssl://tcp.above-dragon.dataos.app:6651&quot;</span>
+INFO<span class="o">[</span><span class="m">0010</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Connection<span class="w"> </span>is<span class="w"> </span>ready<span class="o">]</span><span class="w">                         </span><span class="nv">local_addr</span><span class="o">=</span><span class="s2">&quot;192.168.68.62:50856&quot;</span><span class="w"> </span><span class="nv">remote_addr</span><span class="o">=</span><span class="s2">&quot;pulsar+ssl://tcp.above-dragon.dataos.app:6651&quot;</span>
+INFO<span class="o">[</span><span class="m">0010</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Connected<span class="w"> </span>consumer<span class="o">]</span><span class="w">                          </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>kipsy<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/random_users_02&quot;</span>
+INFO<span class="o">[</span><span class="m">0010</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Created<span class="w"> </span>consumer<span class="o">]</span><span class="w">                            </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>kipsy<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/random_users_02&quot;</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CKoKEAAYACAA&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;1322:0:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="o">{</span><span class="s2">&quot;age&quot;</span>:<span class="s2">&quot;&quot;</span>,<span class="s2">&quot;city&quot;</span>:<span class="s2">&quot;Nova Iguaçu&quot;</span>,<span class="s2">&quot;country&quot;</span>:<span class="s2">&quot;Brazil&quot;</span>,<span class="s2">&quot;email&quot;</span>:<span class="s2">&quot;ivone.rezende@example.com&quot;</span>,<span class="s2">&quot;first_name&quot;</span>:<span class="s2">&quot;Ivone&quot;</span>,<span class="s2">&quot;gender&quot;</span>:<span class="s2">&quot;female&quot;</span>,<span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;f87624d4-d04e-47b2-aa1a-81a5a887bc7a&quot;</span>,<span class="s2">&quot;last_name&quot;</span>:<span class="s2">&quot;&quot;</span>,<span class="s2">&quot;phone&quot;</span>:<span class="s2">&quot;(76) 7285-1917&quot;</span>,<span class="s2">&quot;postcode&quot;</span>:<span class="s2">&quot;87183&quot;</span>,<span class="s2">&quot;state&quot;</span>:<span class="s2">&quot;Mato Grosso&quot;</span>,<span class="s2">&quot;title&quot;</span>:<span class="s2">&quot;Ms&quot;</span><span class="o">}</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-06-22T12:10:12.581+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-06-22T12:10:12.581+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-4-623&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/random_users_02&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CKoKEAEYACAA&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;1322:1:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="o">{</span><span class="s2">&quot;age&quot;</span>:<span class="s2">&quot;&quot;</span>,<span class="s2">&quot;city&quot;</span>:<span class="s2">&quot;Shannon&quot;</span>,<span class="s2">&quot;country&quot;</span>:<span class="s2">&quot;Ireland&quot;</span>,<span class="s2">&quot;email&quot;</span>:<span class="s2">&quot;kathleen.richards@example.com&quot;</span>,<span class="s2">&quot;first_name&quot;</span>:<span class="s2">&quot;Kathleen&quot;</span>,<span class="s2">&quot;gender&quot;</span>:<span class="s2">&quot;female&quot;</span>,<span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;9efe2757-f81d-4ec7-9940-14c9a34d1c5c&quot;</span>,<span class="s2">&quot;last_name&quot;</span>:<span class="s2">&quot;&quot;</span>,<span class="s2">&quot;phone&quot;</span>:<span class="s2">&quot;051-256-6998&quot;</span>,<span class="s2">&quot;postcode&quot;</span>:<span class="s2">&quot;55659&quot;</span>,<span class="s2">&quot;state&quot;</span>:<span class="s2">&quot;Leitrim&quot;</span>,<span class="s2">&quot;title&quot;</span>:<span class="s2">&quot;Mrs&quot;</span><span class="o">}</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-06-22T12:10:12.6+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-06-22T12:10:12.6+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-4-623&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/random_users_02&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CKoKEAIYACAA&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;1322:2:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="o">{</span><span class="s2">&quot;age&quot;</span>:<span class="s2">&quot;&quot;</span>,<span class="s2">&quot;city&quot;</span>:<span class="s2">&quot;Limeira&quot;</span>,<span class="s2">&quot;country&quot;</span>:<span class="s2">&quot;Brazil&quot;</span>,<span class="s2">&quot;email&quot;</span>:<span class="s2">&quot;silnior.nogueira@example.com&quot;</span>,<span class="s2">&quot;first_name&quot;</span>:<span class="s2">&quot;Sílnior&quot;</span>,<span class="s2">&quot;gender&quot;</span>:<span class="s2">&quot;female&quot;</span>,<span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;d399586e-d54d-4a92-84fd-b30b4b320012&quot;</span>,<span class="s2">&quot;last_name&quot;</span>:<span class="s2">&quot;&quot;</span>,<span class="s2">&quot;phone&quot;</span>:<span class="s2">&quot;(92) 6422-7741&quot;</span>,<span class="s2">&quot;postcode&quot;</span>:<span class="s2">&quot;74804&quot;</span>,<span class="s2">&quot;state&quot;</span>:<span class="s2">&quot;Alagoas&quot;</span>,<span class="s2">&quot;title&quot;</span>:<span class="s2">&quot;Miss&quot;</span><span class="o">}</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-06-22T12:10:12.616+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-06-22T12:10:12.616+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-4-623&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/random_users_02&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CKoKEAMYACAA&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;1322:3:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="o">{</span><span class="s2">&quot;age&quot;</span>:<span class="s2">&quot;&quot;</span>,<span class="s2">&quot;city&quot;</span>:<span class="s2">&quot;Weimar&quot;</span>,<span class="s2">&quot;country&quot;</span>:<span class="s2">&quot;Germany&quot;</span>,<span class="s2">&quot;email&quot;</span>:<span class="s2">&quot;brigitta.godecke@example.com&quot;</span>,<span class="s2">&quot;first_name&quot;</span>:<span class="s2">&quot;Brigitta&quot;</span>,<span class="s2">&quot;gender&quot;</span>:<span class="s2">&quot;female&quot;</span>,<span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;ffca87ba-72c2-4f40-996e-5aaf233dbd03&quot;</span>,<span class="s2">&quot;last_name&quot;</span>:<span class="s2">&quot;&quot;</span>,<span class="s2">&quot;phone&quot;</span>:<span class="s2">&quot;0446-7765109&quot;</span>,<span class="s2">&quot;postcode&quot;</span>:<span class="s2">&quot;46669&quot;</span>,<span class="s2">&quot;state&quot;</span>:<span class="s2">&quot;Nordrhein-Westfalen&quot;</span>,<span class="s2">&quot;title&quot;</span>:<span class="s2">&quot;Mrs&quot;</span><span class="o">}</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-06-22T12:10:12.63+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-06-22T12:10:12.63+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-4-623&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/random_users_02&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CKoKEAQYACAA&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;1322:4:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="o">{</span><span class="s2">&quot;age&quot;</span>:<span class="s2">&quot;&quot;</span>,<span class="s2">&quot;city&quot;</span>:<span class="s2">&quot;Ryslinge&quot;</span>,<span class="s2">&quot;country&quot;</span>:<span class="s2">&quot;Denmark&quot;</span>,<span class="s2">&quot;email&quot;</span>:<span class="s2">&quot;alberte.mortensen@example.com&quot;</span>,<span class="s2">&quot;first_name&quot;</span>:<span class="s2">&quot;Alberte&quot;</span>,<span class="s2">&quot;gender&quot;</span>:<span class="s2">&quot;female&quot;</span>,<span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;6b3cebd5-b41a-474b-9d5e-4209b29b5097&quot;</span>,<span class="s2">&quot;last_name&quot;</span>:<span class="s2">&quot;&quot;</span>,<span class="s2">&quot;phone&quot;</span>:<span class="s2">&quot;15539760&quot;</span>,<span class="s2">&quot;postcode&quot;</span>:<span class="s2">&quot;70648&quot;</span>,<span class="s2">&quot;state&quot;</span>:<span class="s2">&quot;Danmark&quot;</span>,<span class="s2">&quot;title&quot;</span>:<span class="s2">&quot;Ms&quot;</span><span class="o">}</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-06-22T12:10:12.727+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-06-22T12:10:12.727+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-4-623&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/random_users_02&quot;</span><span class="o">}</span>
+</code></pre></div>
+
+</details>
+
+<p><strong>Command (-p,-t,-m flags)</strong></p>
+<div class="highlight"><pre><span></span><code>dataos-ctl<span class="w"> </span>fastbase<span class="w"> </span>topic<span class="w"> </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span>-t<span class="w"> </span>persistent://public/default/usaflogs<span class="w"> </span>-d<span class="w"> </span>5s
+</code></pre></div>
+<details><summary>Output</summary>
+
+<div class="highlight"><pre><span></span><code>INFO<span class="o">[</span><span class="m">0000</span><span class="o">]</span><span class="w"> </span>🔍<span class="w"> </span>read...<span class="w">                                   </span>
+INFO<span class="o">[</span><span class="m">0006</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Connecting<span class="w"> </span>to<span class="w"> </span>broker<span class="o">]</span><span class="w">                        </span><span class="nv">remote_addr</span><span class="o">=</span><span class="s2">&quot;pulsar+ssl://tcp.above-dragon.dataos.app:6651&quot;</span>
+INFO<span class="o">[</span><span class="m">0007</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>TCP<span class="w"> </span>connection<span class="w"> </span>established<span class="o">]</span><span class="w">                  </span><span class="nv">local_addr</span><span class="o">=</span><span class="s2">&quot;192.168.68.62:50854&quot;</span><span class="w"> </span><span class="nv">remote_addr</span><span class="o">=</span><span class="s2">&quot;pulsar+ssl://tcp.above-dragon.dataos.app:6651&quot;</span>
+INFO<span class="o">[</span><span class="m">0007</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Connection<span class="w"> </span>is<span class="w"> </span>ready<span class="o">]</span><span class="w">                         </span><span class="nv">local_addr</span><span class="o">=</span><span class="s2">&quot;192.168.68.62:50854&quot;</span><span class="w"> </span><span class="nv">remote_addr</span><span class="o">=</span><span class="s2">&quot;pulsar+ssl://tcp.above-dragon.dataos.app:6651&quot;</span>
+INFO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Connecting<span class="w"> </span>to<span class="w"> </span>broker<span class="o">]</span><span class="w">                        </span><span class="nv">remote_addr</span><span class="o">=</span><span class="s2">&quot;pulsar+ssl://tcp.above-dragon.dataos.app:6651&quot;</span>
+INFO<span class="o">[</span><span class="m">0009</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>TCP<span class="w"> </span>connection<span class="w"> </span>established<span class="o">]</span><span class="w">                  </span><span class="nv">local_addr</span><span class="o">=</span><span class="s2">&quot;192.168.68.62:50856&quot;</span><span class="w"> </span><span class="nv">remote_addr</span><span class="o">=</span><span class="s2">&quot;pulsar+ssl://tcp.above-dragon.dataos.app:6651&quot;</span>
+INFO<span class="o">[</span><span class="m">0010</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Connection<span class="w"> </span>is<span class="w"> </span>ready<span class="o">]</span><span class="w">                         </span><span class="nv">local_addr</span><span class="o">=</span><span class="s2">&quot;192.168.68.62:50856&quot;</span><span class="w"> </span><span class="nv">remote_addr</span><span class="o">=</span><span class="s2">&quot;pulsar+ssl://tcp.above-dragon.dataos.app:6651&quot;</span>
+INFO<span class="o">[</span><span class="m">0010</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Connected<span class="w"> </span>consumer<span class="o">]</span><span class="w">                          </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>kipsy<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/random_users_02&quot;</span>
+INFO<span class="o">[</span><span class="m">0010</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Created<span class="w"> </span>consumer<span class="o">]</span><span class="w">                            </span>
+ERRO<span class="o">[</span><span class="m">0013</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="o">]</span><span class="w">               </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-nevot<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+ERRO<span class="o">[</span><span class="m">0013</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="w"> </span>from<span class="w"> </span>broker<span class="o">]</span><span class="w">   </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+INFO<span class="o">[</span><span class="m">0013</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Connected<span class="w"> </span>consumer<span class="o">]</span><span class="w">                          </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-nevot<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+INFO<span class="o">[</span><span class="m">0013</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Reconnected<span class="w"> </span>consumer<span class="w"> </span>to<span class="w"> </span>broker<span class="o">]</span><span class="w">              </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-nevot<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CNkBEIsdGAAgAA==&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;217:3723:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="s2">&quot;JjIwMjItMDgtMzFUMTI6MTE6NDBINGNiMTAyNTItNjcwOC00NzgwLWJhOTMtYzg3N2E5NDc0NDgzEkZ1ZWxTcGVudAgyNDQ4DGxpdHJlcw==&quot;</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:41:40.27+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:41:40.27+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-2-4&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/usaflogs&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CNkBEIwdGAAgAA==&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;217:3724:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="s2">&quot;JjIwMjItMDgtMzFUMTI6MTE6NDJIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0EkZ1ZWxTcGVudAY2NzkOZ2FsbG9ucw==&quot;</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:41:42.254+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:41:42.254+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-2-4&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/usaflogs&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CNkBEI0dGAAgAA==&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;217:3725:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="s2">&quot;JjIwMjItMDgtMzFUMTI6MTE6NDRINGNiMTAyNTItNjcwOC00NzgwLWJhOTMtYzg3N2E5NDc0NDgzFEZ1ZWxJbmdlc3QGODQ4DGxpdHJlcw==&quot;</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:41:44.256+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:41:44.256+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-2-4&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/usaflogs&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CNkBEI4dGAAgAA==&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;217:3726:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="s2">&quot;JjIwMjItMDgtMzFUMTI6MTE6NDZIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0FEZ1ZWxJbmdlc3QGNDEwDmdhbGxvbnM=&quot;</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:41:46.234+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:41:46.233+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-2-4&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/usaflogs&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CNkBEI8dGAAgAA==&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;217:3727:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="s2">&quot;JjIwMjItMDgtMzFUMTI6MTE6NDhINGNiMTAyNTItNjcwOC00NzgwLWJhOTMtYzg3N2E5NDc0NDgzFEZ1ZWxJbmdlc3QGODMyDGxpdHJlcw==&quot;</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:41:48.137+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:41:48.137+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-2-4&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/usaflogs&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CNkBEJAdGAAgAA==&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;217:3728:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="s2">&quot;JjIwMjItMDgtMzFUMTI6MTE6NDlINGNiMTAyNTItNjcwOC00NzgwLWJhOTMtYzg3N2E5NDc0NDgzEkZ1ZWxTcGVudAY2NzkMbGl0cmVz&quot;</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:41:50.021+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:41:50.021+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-2-4&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/usaflogs&quot;</span><span class="o">}</span>
+</code></pre></div>
+</details>
+
+<p><strong>Command (-p, -t, -m flags)</strong></p>
+<div class="highlight"><pre><span></span><code>dataos-ctl<span class="w"> </span>fastbase<span class="w"> </span>topic<span class="w"> </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span>-t<span class="w"> </span>persistent://public/default/usaflogs<span class="w"> </span>-m<span class="w"> </span><span class="nv">CNkBEMccGAAgAA</span><span class="o">==</span>
+</code></pre></div>
+<details>
+<summary>Output</summary>
+
+<div class="highlight"><pre><span></span><code>ERRO<span class="o">[</span><span class="m">0014</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="w"> </span>from<span class="w"> </span>broker<span class="o">]</span><span class="w">   </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+ERRO<span class="o">[</span><span class="m">0014</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="o">]</span><span class="w">               </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-bodoo<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+ERRO<span class="o">[</span><span class="m">0014</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="w"> </span>from<span class="w"> </span>broker<span class="o">]</span><span class="w">   </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+ERRO<span class="o">[</span><span class="m">0014</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="o">]</span><span class="w">               </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-bodoo<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+ERRO<span class="o">[</span><span class="m">0014</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="w"> </span>from<span class="w"> </span>broker<span class="o">]</span><span class="w">   </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+ERRO<span class="o">[</span><span class="m">0014</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="o">]</span><span class="w">               </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-bodoo<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+ERRO<span class="o">[</span><span class="m">0014</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="w"> </span>from<span class="w"> </span>broker<span class="o">]</span><span class="w">   </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+ERRO<span class="o">[</span><span class="m">0014</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="o">]</span><span class="w">               </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-bodoo<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+ERRO<span class="o">[</span><span class="m">0014</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="w"> </span>from<span class="w"> </span>broker<span class="o">]</span><span class="w">   </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+INFO<span class="o">[</span><span class="m">0014</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Connected<span class="w"> </span>consumer<span class="o">]</span><span class="w">                          </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-bodoo<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+INFO<span class="o">[</span><span class="m">0014</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Reconnected<span class="w"> </span>consumer<span class="w"> </span>to<span class="w"> </span>broker<span class="o">]</span><span class="w">              </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-bodoo<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CNkBEMccGAAgAA==&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;217:3655:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="s2">&quot;JjIwMjItMDgtMzFUMTI6MDc6NDdINGNiMTAyNTItNjcwOC00NzgwLWJhOTMtYzg3N2E5NDc0NDgzFEZ1ZWxJbmdlc3QGMTEwDGxpdHJlcw==&quot;</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:37:47.659+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:37:47.659+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-2-4&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/usaflogs&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CNkBEMgcGAAgAA==&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;217:3656:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="s2">&quot;JjIwMjItMDgtMzFUMTI6MDc6NTFINGNiMTAyNTItNjcwOC00NzgwLWJhOTMtYzg3N2E5NDc0NDgzEkZ1ZWxTcGVudAY3NjcMbGl0cmVz&quot;</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:37:51.643+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:37:51.643+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-2-4&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/usaflogs&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CNkBEMkcGAAgAA==&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;217:3657:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="s2">&quot;JjIwMjItMDgtMzFUMTI6MDc6NTZIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0EkZ1ZWxTcGVudAQxMA5nYWxsb25z&quot;</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:37:56.769+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:37:56.769+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-2-4&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/usaflogs&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CNkBEMocGAAgAA==&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;217:3658:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="s2">&quot;JjIwMjItMDgtMzFUMTI6MDg6MDFIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0FEZ1ZWxJbmdlc3QGMTMwDmdhbGxvbnM=&quot;</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:38:01.823+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:38:01.823+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-2-4&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/usaflogs&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CNkBEMscGAAgAA==&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;217:3659:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="s2">&quot;JjIwMjItMDgtMzFUMTI6MDg6MDZIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0FEZ1ZWxJbmdlc3QGMzkyDmdhbGxvbnM=&quot;</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:38:06.941+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:38:06.941+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-2-4&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/usaflogs&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CNkBEMwcGAAgAA==&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;217:3660:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="s2">&quot;JjIwMjItMDgtMzFUMTI6MDg6MTBIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0FEZ1ZWxJbmdlc3QGNzk3DmdhbGxvbnM=&quot;</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:38:10.958+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:38:10.958+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-2-4&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/usaflogs&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CNkBEM0cGAAgAA==&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;217:3661:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="s2">&quot;JjIwMjItMDgtMzFUMTI6MDg6MTVIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0FEZ1ZWxJbmdlc3QGMTg3DmdhbGxvbnM=&quot;</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:38:15.945+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:38:15.945+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-2-4&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/usaflogs&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CNkBEM4cGAAgAA==&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;217:3662:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="s2">&quot;JjIwMjItMDgtMzFUMTI6MDg6MTlIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0EkZ1ZWxTcGVudAYzMzUOZ2FsbG9ucw==&quot;</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:38:19.847+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:38:19.846+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-2-4&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/usaflogs&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CNkBEM8cGAAgAA==&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;217:3663:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="s2">&quot;JjIwMjItMDgtMzFUMTI6MDg6MjNINGNiMTAyNTItNjcwOC00NzgwLWJhOTMtYzg3N2E5NDc0NDgzEkZ1ZWxTcGVudAY0MDAMbGl0cmVz&quot;</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:38:23.936+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:38:23.936+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-2-4&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/usaflogs&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CNkBENAcGAAgAA==&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;217:3664:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="s2">&quot;JjIwMjItMDgtMzFUMTI6MDg6MzZINGNiMTAyNTItNjcwOC00NzgwLWJhOTMtYzg3N2E5NDc0NDgzFEZ1ZWxJbmdlc3QGNDk3DGxpdHJlcw==&quot;</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:38:36.621+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:38:36.621+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-2-4&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/usaflogs&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CNkBENEcGAAgAA==&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;217:3665:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="s2">&quot;JjIwMjItMDgtMzFUMTI6MDg6NDBIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0EkZ1ZWxTcGVudAY0NzEOZ2FsbG9ucw==&quot;</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:38:40.433+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:38:40.433+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-2-4&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/usaflogs&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CNkBENIcGAAgAA==&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;217:3666:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="s2">&quot;JjIwMjItMDgtMzFUMTI6MDg6NTBIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0FEZ1ZWxJbmdlc3QGMTk1DmdhbGxvbnM=&quot;</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:38:50.739+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:38:50.739+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-2-4&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/usaflogs&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CNkBENMcGAAgAA==&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;217:3667:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="s2">&quot;JjIwMjItMDgtMzFUMTI6MDg6NTRIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0FEZ1ZWxJbmdlc3QGMjgyDmdhbGxvbnM=&quot;</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:38:54.638+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:38:54.637+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-2-4&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/usaflogs&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CNkBENQcGAAgAA==&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;217:3668:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="s2">&quot;JjIwMjItMDgtMzFUMTI6MDg6NThINGNiMTAyNTItNjcwOC00NzgwLWJhOTMtYzg3N2E5NDc0NDgzFEZ1ZWxJbmdlc3QGMzk0DGxpdHJlcw==&quot;</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:38:58.526+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:38:58.526+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-2-4&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/usaflogs&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CNkBENUcGAAgAA==&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;217:3669:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="s2">&quot;JjIwMjItMDgtMzFUMTI6MDk6MDBINGNiMTAyNTItNjcwOC00NzgwLWJhOTMtYzg3N2E5NDc0NDgzEkZ1ZWxTcGVudAQ1OAxsaXRyZXM=&quot;</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:39:00.344+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:39:00.344+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-2-4&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/usaflogs&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CNkBENYcGAAgAA==&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;217:3670:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="s2">&quot;JjIwMjItMDgtMzFUMTI6MDk6MDJIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0EkZ1ZWxTcGVudAYxMDQOZ2FsbG9ucw==&quot;</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:39:02.353+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:39:02.353+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-2-4&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/usaflogs&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CNkBENccGAAgAA==&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;217:3671:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="s2">&quot;JjIwMjItMDgtMzFUMTI6MDk6MDVIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0EkZ1ZWxTcGVudAgxMDI3DmdhbGxvbnM=&quot;</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:39:05.236+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:39:05.236+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-2-4&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/usaflogs&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CNkBENgcGAAgAA==&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;217:3672:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="s2">&quot;JjIwMjItMDgtMzFUMTI6MDk6MDdIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0EkZ1ZWxTcGVudAQyMg5nYWxsb25z&quot;</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:39:07.232+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:39:07.232+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-2-4&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/usaflogs&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CNkBENkcGAAgAA==&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;217:3673:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="s2">&quot;JjIwMjItMDgtMzFUMTI6MDk6MTJIOGVkMGQ5OGUtNmUwNS00NDhhLWEzNTgtNzQ0MzRlYWVkMjg0FEZ1ZWxJbmdlc3QGNzY3DmdhbGxvbnM=&quot;</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:39:12.939+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:39:12.939+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-2-4&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/usaflogs&quot;</span><span class="o">}</span>
+INFO<span class="o">[</span><span class="m">0016</span><span class="o">]</span><span class="w"> </span>no<span class="w"> </span>more<span class="w"> </span>messages<span class="w"> </span>to<span class="w"> </span>read...exiting<span class="w">           </span>
+INFO<span class="o">[</span><span class="m">0016</span><span class="o">]</span><span class="w"> </span>Closing<span class="w"> </span><span class="nv">consumer</span><span class="o">=</span><span class="m">1</span><span class="w">                            </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-bodoo<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+INFO<span class="o">[</span><span class="m">0016</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Closed<span class="w"> </span>consumer<span class="o">]</span><span class="w">                             </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-bodoo<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+INFO<span class="o">[</span><span class="m">0016</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>close<span class="w"> </span>consumer,<span class="w"> </span><span class="nb">exit</span><span class="w"> </span>reconnect<span class="o">]</span><span class="w">              </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-bodoo<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+INFO<span class="o">[</span><span class="m">0016</span><span class="o">]</span><span class="w"> </span>🔍<span class="w"> </span>read...complete
+</code></pre></div>
+</details>
+
+<hr />
+<p><strong>Command (-p,-t,-l flags)</strong></p>
+<div class="highlight"><pre><span></span><code>dataos-ctl<span class="w"> </span>fastbase<span class="w"> </span>topic<span class="w"> </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span>-t<span class="w"> </span>persistent://public/default/usaflogs<span class="w"> </span>-l<span class="w"> </span><span class="nb">false</span>
+</code></pre></div>
+<details><summary>Output</summary>
+
+<div class="highlight"><pre><span></span><code>ERRO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="w"> </span>from<span class="w"> </span>broker<span class="o">]</span><span class="w">   </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+ERRO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="o">]</span><span class="w">               </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-flbtz<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+ERRO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="w"> </span>from<span class="w"> </span>broker<span class="o">]</span><span class="w">   </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+ERRO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="o">]</span><span class="w">               </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-flbtz<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+ERRO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="w"> </span>from<span class="w"> </span>broker<span class="o">]</span><span class="w">   </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+ERRO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="o">]</span><span class="w">               </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-flbtz<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+ERRO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="w"> </span>from<span class="w"> </span>broker<span class="o">]</span><span class="w">   </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+ERRO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="o">]</span><span class="w">               </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-flbtz<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+ERRO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="w"> </span>from<span class="w"> </span>broker<span class="o">]</span><span class="w">   </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+ERRO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="o">]</span><span class="w">               </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-flbtz<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+INFO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Connected<span class="w"> </span>consumer<span class="o">]</span><span class="w">                          </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-flbtz<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+INFO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Reconnected<span class="w"> </span>consumer<span class="w"> </span>to<span class="w"> </span>broker<span class="o">]</span><span class="w">              </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-flbtz<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+ERRO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Failed<span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>last<span class="w"> </span>message<span class="w"> </span>id<span class="w"> </span>from<span class="w"> </span>broker<span class="o">]</span><span class="w">   </span><span class="nv">error</span><span class="o">=</span><span class="s2">&quot;connection closed&quot;</span><span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+INFO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span>no<span class="w"> </span>more<span class="w"> </span>messages<span class="w"> </span>to<span class="w"> </span>read...exiting<span class="w">           </span>
+INFO<span class="o">[</span><span class="m">0008</span><span class="o">]</span><span class="w"> </span>Closing<span class="w"> </span><span class="nv">consumer</span><span class="o">=</span><span class="m">1</span><span class="w">                            </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-flbtz<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CNkBEMYcGAAgAA==&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;217:3654:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="s2">&quot;JjIwMjItMDgtMzFUMTI6MDc6NDNINGNiMTAyNTItNjcwOC00NzgwLWJhOTMtYzg3N2E5NDc0NDgzFEZ1ZWxJbmdlc3QGODc3DGxpdHJlcw==&quot;</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:37:43.841+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:37:43.841+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-2-4&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/usaflogs&quot;</span><span class="o">}</span>
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:<span class="s2">&quot;CNkBEMccGAAgAA==&quot;</span>,<span class="s2">&quot;string_id&quot;</span>:<span class="s2">&quot;217:3655:0&quot;</span>,<span class="s2">&quot;payload&quot;</span>:<span class="s2">&quot;JjIwMjItMDgtMzFUMTI6MDc6NDdINGNiMTAyNTItNjcwOC00NzgwLWJhOTMtYzg3N2E5NDc0NDgzFEZ1ZWxJbmdlc3QGMTEwDGxpdHJlcw==&quot;</span>,<span class="s2">&quot;publish_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:37:47.659+05:30&quot;</span>,<span class="s2">&quot;event_time&quot;</span>:<span class="s2">&quot;2022-08-31T17:37:47.659+05:30&quot;</span>,<span class="s2">&quot;producer_name&quot;</span>:<span class="s2">&quot;pulsar-2-4&quot;</span>,<span class="s2">&quot;topic&quot;</span>:<span class="s2">&quot;persistent://public/default/usaflogs&quot;</span><span class="o">}</span>
+INFO<span class="o">[</span><span class="m">0009</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>Closed<span class="w"> </span>consumer<span class="o">]</span><span class="w">                             </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-flbtz<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+INFO<span class="o">[</span><span class="m">0009</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>close<span class="w"> </span>consumer,<span class="w"> </span><span class="nb">exit</span><span class="w"> </span>reconnect<span class="o">]</span><span class="w">              </span><span class="nv">consumerID</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>023bd9ba506abcf0e3701c5faa22cf4c8b545bf40fcb607a435fbbcb59be9408<span class="w"> </span><span class="nv">subscription</span><span class="o">=</span>reader-flbtz<span class="w"> </span><span class="nv">topic</span><span class="o">=</span><span class="s2">&quot;persistent://public/default/usaflogs&quot;</span>
+INFO<span class="o">[</span><span class="m">0009</span><span class="o">]</span><span class="w"> </span>🔍<span class="w"> </span>read...complete
+</code></pre></div>
+</details>
+
+<!-- Source file information -->
+
+
+<!-- Was this page helpful? -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine feedback configuration -->
+
+  
+
+
+<!-- Determine whether to show feedback -->
+
+
+<!-- Was this page helpful? -->
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+
+        <!-- Feedback ratings -->
+        <div class="md-feedback__list">
+          
+            <button
+              class="md-feedback__icon md-icon"
+              type="submit"
+              title="This page was helpful"
+              data-md-value="1"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9h4m4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21H9m0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03V19Z"/></svg>
+            </button>
+          
+            <button
+              class="md-feedback__icon md-icon"
+              type="submit"
+              title="This page could be improved"
+              data-md-value="0"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12h-4M15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3h9m0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97V5Z"/></svg>
+            </button>
+          
+        </div>
+
+        <!-- Feedback rating notes (shown after submission) -->
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+
+              <!-- Determine title -->
+              
+                
+              
+
+              <!-- Replace {url} and {title} placeholders in note -->
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+
+              <!-- Determine title -->
+              
+                
+              
+
+              <!-- Replace {url} and {title} placeholders in note -->
+              Thanks for your feedback!
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<!-- Comment system -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Comment system -->
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <!-- Repository information -->
+  
+
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-meta__content">
+        <div class="md-footer-social-and-modern-logo">
+          
+          <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Social links -->
+<div class="md-social">
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://www.facebook.com/themoderndatacompany"
+      target="_blank" rel="noopener"
+      title="www.facebook.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/facebook.png"
+    title="www.facebook.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://twitter.com/TheModernDataCo"
+      target="_blank" rel="noopener"
+      title="twitter.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/twitter.png"
+    title="twitter.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://www.linkedin.com/company/themoderndatacompany"
+      target="_blank" rel="noopener"
+      title="www.linkedin.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/linkedin.png"
+    title="www.linkedin.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+</div>
+          
+          <a href="https://themoderndatacompany.com" target="_blank">
+            <img src="/assets/ModernLogo.png" width="251" class="modern-logo" />
+          </a>
+        </div>
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Copyright and theme information -->
+<div class="md-copyright">
+  
+  <a href="https://themoderndatacompany.com/contact-us" target="_blank" rel="noopener"> Contact Us </a> | <a
+    href="https://themoderndatacompany.com/privacy-policy" target="_blank" rel="noopener"> Privacy Policy </a> | <a
+    href="https://themoderndatacompany.com/terms-of-use" target="_blank" rel="noopener"> Terms of Use </a>
+  
+  
+  <div class="md-copyright__highlight">
+    Copyright ⓒ 2023 The Modern Data Company
+  </div>
+  
+</div>
+      </div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.top", "navigation.tracking", "content.code.copy", "content.code.annotate - toc.follow - toc.integrate"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.6.4/dist/mermaid.js"></script>
+      
+    
+  </body>
+</html>
