@@ -1,8 +1,8 @@
 # SDK and API Docs
 
-## DataOS PyFlare SDK
+## DataOS Flare SDK
 
-The DataOS PyFlare SDK provides a seamless interface for executing and managing Apache Spark workloads within the DataOS ecosystem. To access detailed information on how to utilize the DataOS PyFlare SDK and harness its capabilities, please refer to the link: [DataOS PyFlare SDK](./api_docs/dataos_pyflare_sdk.md)
+The DataOS Flare SDK provides a seamless interface for executing and managing Apache Spark workloads within the DataOS ecosystem. To access detailed information on how to utilize the DataOS Flare SDK and harness its capabilities, please refer to the link: [DataOS Flare SDK](./api_docs/dataos_scala_sdk/index.html)
 
 ## DataOS SDK for Python
 
