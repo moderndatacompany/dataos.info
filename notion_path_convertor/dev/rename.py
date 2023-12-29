@@ -48,7 +48,7 @@ def update_links(directory):
                     f.truncate()
 
 # Run the code
-directory = "/Users/nandapage/work/dataosinfo/dataos.info/docs/interfaces"  # Replace with the actual directory path
+directory = "/Users/nandapage/work/dataosinfo/dataos.info/docs/interfaces/metis"  # Replace with the actual directory path
 rename_folders(directory)
 rename_markdown_files(directory)
 rename_images(directory)
