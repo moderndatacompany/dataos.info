@@ -1,9 +1,9 @@
-# DataOS PyFlare SDK
+# DataOS Flare SDK
 
-The DataOS PyFlare SDK is a Python library that streamlines data operations and faciltate seamless interactions with Apache Spark within DataOS. Its a wrapper around [Flare](../resources/stacks/flare.md), to enable Python support with DataOS capabilities. The library abstracts complexities inherent in data flow, allowing users to direct their focus toward data transformations and the formulation of business logic by simplifying the loading, transformation, and storage of data. It facilitates the integration of existing Spark Job code bases with DataOS, requiring minimal modifications.
+The DataOS Flare SDK is a Python library that streamlines data operations and faciltate seamless interactions with Apache Spark within DataOS. Its a wrapper around [Flare](../resources/stacks/flare.md), to enable Python support with DataOS capabilities. The library abstracts complexities inherent in data flow, allowing users to direct their focus toward data transformations and the formulation of business logic by simplifying the loading, transformation, and storage of data. It facilitates the integration of existing Spark Job code bases with DataOS, requiring minimal modifications.
 
 <aside class="callout">
-🗣 Delve into the comprehensive <a href="./io/index.html">PyFlare SDK Library Reference</a> for detailed insights into the diverse modules and classes encompassed by the PyFlare package. To know more about PyFlare's key features and initiation procedures, refer to the following sections.
+🗣 Delve into the comprehensive <a href="./io/index.html">Flare SDK Library Reference</a> for detailed insights into the diverse modules and classes encompassed by the Flare package. To know more about Flare's key features and initiation procedures, refer to the following sections.
 </aside>
 
 
@@ -11,7 +11,7 @@ The DataOS PyFlare SDK is a Python library that streamlines data operations and 
 
 ### **Streamlined Data Operations**
 
-PyFlare offers a unified interface for data loading, transformation, and storage, thereby significantly reducing development intricacies and accelerating the project timeline.
+Flare offers a unified interface for data loading, transformation, and storage, thereby significantly reducing development intricacies and accelerating the project timeline.
 
 ### **Data Connector Integration**
 
@@ -19,21 +19,21 @@ It seamlessly integrates with various data connectors, including depot and non-d
 
 ### **Customizability and Extensibility**
 
-PyFlare empowers users with the flexibility to tailor it to their specific project requirements. It seamlessly integrates with existing Python libraries and frameworks designed for data manipulation.
+Flare empowers users with the flexibility to tailor it to their specific project requirements. It seamlessly integrates with existing Python libraries and frameworks designed for data manipulation.
 
 ### **Optimized for DataOS**
 
-PyFlare is finely tuned for the DataOS platform, rendering it an ideal choice for the management and processing of data within DataOS environments.
+Flare is finely tuned for the DataOS platform, rendering it an ideal choice for the management and processing of data within DataOS environments.
 
 ## Installation
 
-The PyFlare module is compatible with DataOS-native [Jupyter Notebooks](../interfaces/notebook.md) and can also be utilized in various Python programs across different environments, provided that the necessary JAR files are incorporated.
+The Flare module is compatible with DataOS-native [Jupyter Notebooks](../interfaces/notebook.md) and can also be utilized in various Python programs across different environments, provided that the necessary JAR files are incorporated.
 
 ><b>Note:</b> If you are using DataOS-native Jupyter Notebooks or Python environment, you can skip the installation part and directly navigate to the <a href="#getting-started">Getting Started</a> section as the JAR files and modules are included automatically as part of the environment setup.
 
 ### **Prerequisites**
 
-This section describes the steps to follow before installing PyFlare.
+This section describes the steps to follow before installing Flare.
 
 **Ensure you have Python ≥ 3.7 Installed**
 
@@ -105,26 +105,26 @@ JAR files are crucial for the specific use case and should be integrated into yo
 
 ### **Installing from PyPI**
 
-The `dataos-pyflare` library can be installed from the Python Package Index (PyPI) using the following command:
+The `dataos-Flare` library can be installed from the Python Package Index (PyPI) using the following command:
 
 **For Linux/macOS**
 
 ```bash
 # For latest version
-python3 -m pip install dataos-pyflare
+python3 -m pip install dataos-Flare
 # For specific version
-python3 -m pip install dataos-pyflare=={{version specifier}}
-# e.g. python3 -m pip install dataos-pyflare==0.0.6
+python3 -m pip install dataos-Flare=={{version specifier}}
+# e.g. python3 -m pip install dataos-Flare==0.0.6
 ```
 
 **For Windows**
 
 ```bash
 # For latest version
-py -m pip install dataos-pyflare
+py -m pip install dataos-Flare
 # For specific version
-py -m pip install dataos-pyflare=={{version specifier}}
-# e.g. py -m pip install dataos-pyflare==0.0.6
+py -m pip install dataos-Flare=={{version specifier}}
+# e.g. py -m pip install dataos-Flare==0.0.6
 ```
 
 ><b>Note:</b> If you’re using an enhanced shell like IPython or Jupyter notebook, you must restart the runtime in order to use the newly installed package.
@@ -132,29 +132,29 @@ py -m pip install dataos-pyflare=={{version specifier}}
 
 ### **Install from Source Distribution**
 
-pip can install from either [Source Distributions (sdist)](https://files.pythonhosted.org/packages/08/a6/ebc36b838374e3cf81d6dc429ff57e56c4c69d802ca171af927a2d382924/dataos-pyflare-0.0.7.tar.gz) or [Wheels](https://files.pythonhosted.org/packages/7e/ed/726abfa8ff1b6827dcb684224f0d75c0206aa41e4addacda09dba9e011cb/dataos_pyflare-0.0.7-py3-none-any.whl), but if both are present on PyPI, pip will prefer a compatible wheel. You can override pip`s default behavior by e.g. using its [–no-binary](https://pip.pypa.io/en/latest/cli/pip_install/#install-no-binary) option.
+pip can install from either [Source Distributions (sdist)](https://files.pythonhosted.org/packages/08/a6/ebc36b838374e3cf81d6dc429ff57e56c4c69d802ca171af927a2d382924/dataos-Flare-0.0.7.tar.gz) or [Wheels](https://files.pythonhosted.org/packages/7e/ed/726abfa8ff1b6827dcb684224f0d75c0206aa41e4addacda09dba9e011cb/dataos_Flare-0.0.7-py3-none-any.whl), but if both are present on PyPI, pip will prefer a compatible wheel. You can override pip`s default behavior by e.g. using its [–no-binary](https://pip.pypa.io/en/latest/cli/pip_install/#install-no-binary) option.
 
 If `pip` does not find a wheel to install, it will locally build a wheel and cache it for future installs, instead of rebuilding the source distribution in the future.
 
 ### **Upgrading from PyPI**
 
-Upgrade `dataos-pyflare` to the latest from PyPI.
+Upgrade `dataos-Flare` to the latest from PyPI.
 
 **For Unix/macOS** 
 
 ```bash
-python3 -m pip install --upgrade dataos-pyflare
+python3 -m pip install --upgrade dataos-Flare
 ```
 
 **For Windows**
 
 ```bash
-py -m pip install --upgrade dataos-pyflare
+py -m pip install --upgrade dataos-Flare
 ```
 
 ## Getting Started
 
-The following code snippet exemplifies the configuration of a PyFlare session for generating fictitious data, applying transformations, and saving the results to Icebase depot.
+The following code snippet exemplifies the configuration of a Flare session for generating fictitious data, applying transformations, and saving the results to Icebase depot.
 
 ### **Import the Requisite Libraries**
 
@@ -163,7 +163,7 @@ from pyspark.sql import Row
 import random
 from datetime import datetime, timedelta
 from pyspark.sql.functions import col
-from pyflare.sdk import load, save, session_builder
+from Flare.sdk import load, save, session_builder
 ```
 
 ### **Data Generation**
@@ -211,14 +211,14 @@ dataos-ctl user apikey get
 dataos-ctl user apikey create
 ```
 
-### **PyFlare Session Setup**
+### **Flare Session Setup**
 
-A PyFlare session can be created using the configuration settings using the [`SparkSessionBuilder()`](./dataos_pyflare_sdk/io/dataos/spark/session/SparkSessionBuilder.html). This session serves as the foundation for subsequent data operations.
+A Flare session can be created using the configuration settings using the [`SparkSessionBuilder()`](./dataos_scala_sdk/io/dataos/spark/session/SparkSessionBuilder.html). This session serves as the foundation for subsequent data operations.
 
 ```python
 # Spark configuration settings
 sparkConf = [
-    ("spark.app.name", "Dataos PyFlare Sdk App"),
+    ("spark.app.name", "Dataos Flare Sdk App"),
     ("spark.master", "local[*]"),
 ]
 
@@ -237,23 +237,23 @@ df.show(10)
 
 ### **Data Storage**
 
-The [`save`](./dataos_pyflare_sdk/io/dataos/spark/session/FlareSession.html#save(address:String,df:org.apache.spark.sql.DataFrame,format:String,datasetOutputOptions:Option[io.dataos.spark.models.output.DatasetOutputOptions]):org.apache.spark.sql.streaming.StreamingQuery) method is used to store the transformed DataFrame in the designated destination (`dataos://icebase:pyflaresdk/test_write_01`) in Iceberg format.
+The [`save`](./dataos_scala_sdk/io/dataos/spark/session/FlareSession.html#save(address:String,df:org.apache.spark.sql.DataFrame,format:String,datasetOutputOptions:Option[io.dataos.spark.models.output.DatasetOutputOptions]):org.apache.spark.sql.streaming.StreamingQuery) method is used to store the transformed DataFrame in the designated destination (`dataos://icebase:Flaresdk/test_write_01`) in Iceberg format.
 
 ```python
 # Save the DataFrame to DataOS with specified path
-save(name="dataos://icebase:pyflaresdk/test_write_01", dataframe=df, format="iceberg", mode="overwrite")
+save(name="dataos://icebase:Flaresdk/test_write_01", dataframe=df, format="iceberg", mode="overwrite")
 ```
 
 ### **Data Retrieval**
 
-The [`load`](./dataos_pyflare_sdk/io/dataos/spark/session/FlareSession.html#load(address:String,format:String,isStream:Boolean,datasetInputOptions:Option[io.dataos.spark.models.input.DatasetInputOptions],sparkOptions:Option[Map[String,String]]):org.apache.spark.sql.DataFrame) method is employed to retrieve data from a specified source (`dataos://icebase:pyflaresdk/test_write_01`) in Iceberg format. The result is a governed DataFrame.
+The [`load`](./dataos_scala_sdk/io/dataos/spark/session/FlareSession.html#load(address:String,format:String,isStream:Boolean,datasetInputOptions:Option[io.dataos.spark.models.input.DatasetInputOptions],sparkOptions:Option[Map[String,String]]):org.apache.spark.sql.DataFrame) method is employed to retrieve data from a specified source (`dataos://icebase:Flaresdk/test_write_01`) in Iceberg format. The result is a governed DataFrame.
 
 ```python
 # Read data from DataOS using Iceberg format and display the first 10 records
-load(name="dataos://icebase:pyflaresdk/test_write_01", format="iceberg").show(10)
+load(name="dataos://icebase:Flaresdk/test_write_01", format="iceberg").show(10)
 
 # Count the total number of records in the stored dataset
-load(name="dataos://icebase:pyflaresdk/test_write_01", format="iceberg").count()
+load(name="dataos://icebase:Flaresdk/test_write_01", format="iceberg").count()
 ```
 
 ### **Session Termination**
@@ -267,16 +267,16 @@ spark.stop()
 
 ## Code Samples
 
-- [ How to read and write partitioned data within Icebase Depot using PyFlare?](./dataos_pyflare_sdk/code_samples/read_write_partitioned_data.md)
+- [ How to read and write partitioned data within Icebase Depot using Flare?](./dataos_scala_sdk/code_samples/read_write_partitioned_data.md)
 
-- [How to overwrite dynamic Iceberg partitions using PyFlare?](./dataos_pyflare_sdk/code_samples/overwrite_dynamic_iceberg_partitions.md)
+- [How to overwrite dynamic Iceberg partitions using Flare?](./dataos_scala_sdk/code_samples/overwrite_dynamic_iceberg_partitions.md)
 
-- [How to write data in Avro format from Iceberg using PyFlare?](./dataos_pyflare_sdk/code_samples/write_avro_read_iceberg.md)
+- [How to write data in Avro format from Iceberg using Flare?](./dataos_scala_sdk/code_samples/write_avro_read_iceberg.md)
 
 
-## PyFlare SDK Library Reference
+## Flare SDK Library Reference
 
-For a comprehensive reference guide to the PyFlare SDK, including detailed information on its modules and classes, please consult the [PyFlare SDK Library Reference.](./dataos_pyflare_sdk/io/index.html)
+For a comprehensive reference guide to the Flare Scala SDK, including detailed information on its modules and classes, please consult the [Flare Scala SDK Library Reference.](./dataos_scala_sdk/io/index.html)
 
 
 
