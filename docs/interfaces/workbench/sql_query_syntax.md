@@ -20,7 +20,7 @@ This section describes the SQL syntax used in Minerva. A reference to the suppo
 
 <!--[CREATE MATERIALIZED VIEW](./sql_syntaxes/create_materialized_view.md) -->
 
-[CREATE ROLE](./sql_syntaxes/create_role.md)
+<!--[CREATE ROLE](./sql_syntaxes/create_role.md)-->
 
 [CREATE SCHEMA](./sql_syntaxes/create_schema.md)
 
@@ -44,7 +44,7 @@ This section describes the SQL syntax used in Minerva. A reference to the suppo
 
 <!--[DROP MATERIALIZED VIEW](./sql_syntaxes/drop_materialized_view.md) -->
 
-[DROP ROLE](./sql_syntaxes/drop_role.md)
+<!--[DROP ROLE](./sql_syntaxes/drop_role.md)-->
 
 [DROP SCHEMA](./sql_syntaxes/drop_schema.md)
 
@@ -88,7 +88,7 @@ This section describes the SQL syntax used in Minerva. A reference to the suppo
 
 [SET PATH](./sql_syntaxes/set_path.md)
 
-[SET ROLE](./sql_syntaxes/set_role.md)
+<!--[SET ROLE](./sql_syntaxes/set_role.md)-->
 
 [SET SESSION](./sql_syntaxes/set_session.md)
 
@@ -108,9 +108,9 @@ This section describes the SQL syntax used in Minerva. A reference to the suppo
 
 [SHOW FUNCTIONS](./sql_syntaxes/show_functions.md)
 
-[SHOW GRANTS](./sql_syntaxes/show_grants.md)
-
-[SHOW ROLE GRANTS](./sql_syntaxes/show_role_grants.md)
+<!--[SHOW GRANTS](./sql_syntaxes/show_grants.md)
+-->
+<!--[SHOW ROLE GRANTS](./sql_syntaxes/show_role_grants.md)-->
 
 [SHOW ROLES](./sql_syntaxes/show_roles.md)
 
