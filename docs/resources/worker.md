@@ -142,7 +142,7 @@ By configuring these sections as needed, data developers can create highly custo
 
 ### **Apply the Worker YAML**
 
-After creating the YAML configuration file for the Worker Resource, it's time to apply it to instantiate the Resource-instance in the DataOS environment. To apply the Worker YAML file, utilize the `apply` command.
+After creating the YAML configuration file for the Worker Resource, it's time to apply it to instantiate the Resource-instance in the DataOS environment. To apply the Worker YAML file, utilize the [`apply`](../interfaces/cli/command_reference.md#apply) command.
 
 ```shell
 dataos-ctl apply -f {{yaml config file path}} - w {{workspace name}}
@@ -213,7 +213,7 @@ dataos-ctl get -t worker -w {{workspace name}} -a
 dataos-ctl get -t worker -w curriculum
 ```
 
-You can also access the details of any created Worker through the DataOS GUI in the Resource tab of the  [Operations App.](../interfaces/operations/)
+You can also access the details of any created Worker through the DataOS GUI in the Resource tab of the  [Operations App.](../interfaces/operations.md)
 
 ### **Deleting a Worker**
 
@@ -291,15 +291,11 @@ INFO[0001] 🗑 delete...complete
 
 ## Attributes of Worker YAML
 
-The Attributes of Worker YAML define the key properties and configurations that can be used to specify and customize Worker Resources within a YAML file. These attributes allow data developers to define the structure and behavior of their Worker Resources. For comprehensive information on each attribute and its usage, please refer to the link provided below.
-
-[Attributes of Worker YAML](./worker/yaml_configuration_attributes.md)
+The Attributes of Worker YAML define the key properties and configurations that can be used to specify and customize Worker Resources within a YAML file. These attributes allow data developers to define the structure and behavior of their Worker Resources. For comprehensive information on each attribute and its usage, please refer to the link: [Attributes of Worker YAML.](./worker/yaml_configuration_attributes.md)
 
 ## Worker Templates
 
-The Worker templates serve as blueprints, defining the structure and configurations for various Workers. To know more, refer to the link below.
-
-[Worker Templates](./worker/templates.md)
+The Worker templates serve as blueprints, defining the structure and configurations for various Workers. To know more, refer to the link: [Worker Templates.](./worker/templates.md)
 
 ## Worker Command Reference
 
