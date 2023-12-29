@@ -39,7 +39,7 @@ Access and explore all the Lenses that are created to model data from diverse so
 
 **Metis**
 
-Discover, catalog, and observe enterprise data with comprehensive metadata management, providing technical and business context. Metis powers its UI by making the metadata available for users to explore and discover assets. To know more, click [here](/interfaces/metis/).
+Discover, catalog, and observe enterprise data and Resources with comprehensive metadata management, providing technical and business context. Metis powers its UI by making the metadata available for users to explore and discover Products, Data Assets and DataOS Resources. To know more, click [here](/interfaces/metis_new/).
 
 **Notebook**
 
