@@ -10,7 +10,7 @@ The Graphical User Interface offers an intuitive and visually engaging way to in
 
 ## Application Programming Interface (API)
 
-The Application Programming Interface (API) in DataOS provides a way to interact with the core components, libraries, and services. APIs act as intermediaries, allowing users/applications to access DataOS functionality and resources. APIs empower data  developers to create diverse applications and services, leveraging the full functionality of DataOS.
+The Application Programming Interface (API) in DataOS provides a way to interact with the core components, libraries, and services. APIs act as intermediaries, allowing users/applications to access DataOS functionality and resources. APIs empower data  developers to create diverse applications and services, leveraging the full functionality of DataOS. Learn about our SDKs on the following page: [DataOS SDKs](api_docs.md)
 
 <aside class="callout">The choice of interface (CLI, GUI or API) depends on factors such as specific applications, user requirements, and the capabilities of individual components. By leveraging these interfaces effectively, users can navigate their data journey within DataOS and unlock its full potential.</aside>
 
