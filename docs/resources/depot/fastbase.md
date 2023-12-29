@@ -100,7 +100,7 @@ Messages in Pulsar are published to topics and organized in a three-level hierar
 <center><i>Three Level Hierarchy Structure in Pulsar</i></center>
 
 - One `tenant` represents a specific business unit or a product line. Topics created under a `tenant` share the same business context that is distinct from others.
-- Within one `tenant`, topics having similar behavioral characteristics can be further grouped into a smaller administrative unit called a `namespace`. Different policies such as message retention or expiry policy, can be set either at the `namespace` level or at an individual `topic` level. Policies set at the `namespace` level will apply to all topics under the `namespace`.
+- Within one `tenant`, topics having similar behavioral characteristics and can be further grouped into smaller administrative units called `namespace`. Different policies such as message retention or expiry policy, can be set either at the `namespace` level or at an individual `topic` level. Policies set at the `namespace` level will apply to all topics under the `namespace`.
 
 The below commands need to be executed in the above hierarchical order.
 
@@ -112,7 +112,7 @@ The below commands need to be executed in the above hierarchical order.
 
 The command `tenant list` displays the tenants in the DataOS Fastbase.
 
-The tenant is a first-class citizen in Pulsar. Pulsar was created from the ground up as a multi-tenant system. To support multi-tenancy, Pulsar has a concept of tenants. Tenants can be spread across clusters and can each have their own authentication and authorization scheme applied to them. Multi-tenancy with Apache Pulsar deployments refers to authorized namespaces assigned to elastic cluster sets in support of software applications in the cloud data processing.
+Tenant is a first-class citizen in Pulsar. Pulsar was created from the ground up as a multi-tenant system and to support multi-tenancy, Pulsar has the concept of tenants. Tenants can be spread across clusters and can each have their own authentication and authorization scheme applied to them. Multi-tenancy with Apache Pulsar deployments refers to authorized namespaces assigned to elastic cluster sets in support of software applications in the cloud data processing.
 
 **Command**
 
@@ -137,7 +137,7 @@ INFO[0001] 🔍 list...complete
 
 ### **Namespaces**
 
-Namespaces are logical grouping of topics. After creating a tenant, you can create one or more namespaces ******for the tenant.
+Namespaces are logical grouping of topics. After creating a tenant, you can create one or more namespaces for the tenant.
 
 #### **List namespaces**
 
