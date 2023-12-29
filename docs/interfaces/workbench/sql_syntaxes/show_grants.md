@@ -38,6 +38,6 @@ Some connectors have no support for `SHOW GRANTS`. See connector documentation
 
 ## See also
 
-[GRANT](./grant.md) 
+<!--[GRANT](./grant.md)--> 
 
-[REVOKE](./revoke.md)
+<!--[REVOKE](./revoke.md)-->
