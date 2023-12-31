@@ -198,15 +198,16 @@ This section includes a summary of the workflow run history.
 | Status | Runtime status of the workflow run, such as Succeeded, Running, Aborted, Failed |
 | Started At | Date and time when workflow run |
 | Duration | Duration of workflow run |
+
 - Clicking on a workflow run will display the following options.
     
-    ### Run Details
+    #### **Run Details**
     
     To get the workflow run details, click **Run History** >> **RunID >> Logical Plan >> Job >> Run Details**
     
     ![Screen Shot 2023-09-13 at 8.03.09 PM.png](metis_resources_workflows/Screen_Shot_2023-09-13_at_8.03.09_PM.png)
     
-    ### Pod Details
+    #### **Pod Details**
     
     To get the pod details, click Workflow **Run History** >> **RunID >> Physical Plan >> Node** 
     
@@ -214,7 +215,7 @@ This section includes a summary of the workflow run history.
     
     ![Screen Shot 2023-09-13 at 8.06.25 PM.png](metis_resources_workflows/Screen_Shot_2023-09-13_at_8.06.25_PM.png)
     
-    ### Resource Usage
+    #### **Resource Usage**
     
     To get the workflow run details, click **Run History** >> **RunID >> Logical Plan >>Jobs>> Run Details**
     
