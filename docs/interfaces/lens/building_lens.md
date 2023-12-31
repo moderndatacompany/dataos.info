@@ -460,7 +460,7 @@ After defining the Lens, the next step is to deploy it into the DataOS environme
 
 **Step 2: Install Postman**
 
-- Install Postman from the following l[ink](https://www.postman.com/downloads/):
+- Install Postman from the following [link](https://www.postman.com/downloads/):
 - After completing the installation, you can begin building and exploring Lenses using Postman.
 
 **Step 3: Building and Exploring Lenses** 
