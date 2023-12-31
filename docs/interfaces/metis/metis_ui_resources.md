@@ -29,32 +29,32 @@ MetisDB stores comprehensive details about DataOS Resources such as workflows, S
 
 [Metis Resources- Workflows](metis_ui_resources/metis_resources_workflows.md)
 
-[Metis Resources- services](metis_ui_resources/metis_resources_services.md)
+[Metis Resources- Services](metis_ui_resources/metis_resources_services.md)
 
-[Metis Resources- depot](metis_ui_resources/metis_resources_depots.md)
+[Metis Resources- Depot](metis_ui_resources/metis_resources_depots.md)
 
-[Metis Resources- clusters](metis_ui_resources/metis_resources_clusters.md)
+[Metis Resources- Clusters](metis_ui_resources/metis_resources_clusters.md)
 
-[Metis Resources- bundles](metis_ui_resources/metis_resources_bundles.md)
+[Metis Resources- Bundles](metis_ui_resources/metis_resources_bundles.md)
 
-[Metis Resources- workers](metis_ui_resources/metis_resources_workers.md)
+[Metis Resources- Workers](metis_ui_resources/metis_resources_workers.md)
 
-[Metis Resources- policies](metis_ui_resources/metis_resources_policies.md)
+[Metis Resources- Policies](metis_ui_resources/metis_resources_policies.md)
 
-[Metis Resources- stacks](metis_ui_resources/metis_resources_stacks.md)
+[Metis Resources- Stacks](metis_ui_resources/metis_resources_stacks.md)
 
-[Metis Resources- databases](metis_ui_resources/metis_resources_databases.md)
+[Metis Resources- Databases](metis_ui_resources/metis_resources_databases.md)
 
-[Metis Resources-- computes](metis_ui_resources/metis_resources_computes.md)
+[Metis Resources-- Computes](metis_ui_resources/metis_resources_computes.md)
 
-[Metis Resources- secrets](metis_ui_resources/metis_resources_secrets.md)
+[Metis Resources- Secrets](metis_ui_resources/metis_resources_secrets.md)
 
-[Metis Resources- monitors](metis_ui_resources/metis_resources_monitors.md)
+[Metis Resources- Monitors](metis_ui_resources/metis_resources_monitors.md)
 
-[Metis Resources- lakehouses](metis_ui_resources/metis_resources_lakehouses.md)
+[Metis Resources- Lakehouses](metis_ui_resources/metis_resources_lakehouses.md)
 
-[Metis Resources- instance secrets](metis_ui_resources/metis_resources_instance_secrets.md)
+[Metis Resources- Instance secrets](metis_ui_resources/metis_resources_instance_secrets.md)
 
-[Metis Resources- operators](metis_ui_resources/metis_resources_operators.md)
+[Metis Resources- Operators](metis_ui_resources/metis_resources_operators.md)
 
-[Metis Resources- pager](metis_ui_resources/metis_resources_pagers.md)
+[Metis Resources- Pager](metis_ui_resources/metis_resources_pagers.md)
