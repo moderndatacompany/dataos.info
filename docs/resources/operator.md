@@ -489,9 +489,9 @@ dataos-ctl apply -f {{operator yaml manifest file path}}
 
 #### **Verify Operator Creation**
 
-To ensure that your operator has been successfully created, you can verify it in two ways:
+To ensure that your Operator has been successfully created, you can verify it in two ways:
 
-Check the name of the newly created depot in the list of depots where you are named as the owner:
+Check the name of the newly created Operator in the list of Operators where you are named as the owner:
 
 ```shell
 dataos-ctl get -t operator
@@ -505,7 +505,7 @@ INFO[0000] 🔍 get...complete
   adf-operator | v1alpha | operator |           | active |         | iamgroot    
 ```
 
-Alternatively, retrieve the list of all operators created in your organization:
+Alternatively, retrieve the list of all Operators created in your organization:
 
 ```shell
 dataos-ctl get -t operator -a
