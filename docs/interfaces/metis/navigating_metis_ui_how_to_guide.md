@@ -67,13 +67,13 @@ Here are some scenarios where using these terms can be powerful:
     
     > Metis enables you to add rich formatting to glossary term. For example, you can add `bold`, `underline`, or `italic` formatting to the text. You can also create tables, bulleted lists, or hyperlinks to external resources.
     > 
+    
 7. You can add synonyms, the other terms used for the same term, such as for customer, you can add client, buyer, etc.
 8. You can add related terms for the term, such as for customer, you can add related terms ‘loyal’, ‘preferred’, ‘high-importance’, etc.
 9. A term also has a set of **Reviewers** who review and accept the changes to the Glossary. This is to ensure the consistent use of terms across the organization. 
 
 <aside class="callout">
 🗣 Once tag categories and glossary terms are defined, users can attach them to various entities such as data assets, DataOS Resources and products.
-
 </aside>
 
 ### **How to Add Tags to Data Assets**
