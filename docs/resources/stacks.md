@@ -1,35 +1,86 @@
-# Stacks
+# Stack
 
-In DataOS, Stacks are programming paradigms that facilitate the processing and management of data. They serve as extension points for runnable [DataOS Resources](../resources.md), [Workflow](./workflow.md), and [Service](./service.md), offering configurable attributes to meet specific requirements and enhance functionality.
+Stack is a [DataOS Resource](../resources.md) that acts as an execution engine and an extension point for integrating new programming paradigms within the platform. Stacks are composable and can be orchestrated using DataOS Resources such as a [Worker](./worker.md), [Service](./service.md), or within a designated job in a [Workflow](./workflow.md) Resource.
 
-As a [DataOS Resource](../resources.md), each Stack is defined by unique attributes and metadata that define its intended purpose and capabilities.
+While certain pre-configured Stacks such as [Flare](./stacks/flare.md), [Benthos](./stacks/benthos.md), and [Scanner](./stacks/scanner.md) are natively available within DataOS, users retain the autonomy to define and deploy their own tailor-made Stacks.
 
-DataOS provides a comprehensive set of built-in stacks while also allowing the flexibility to add custom stacks as needed.
+## Key Features of Stacks
+
+**Custom Computing Environments**
+
+Stacks provide a means for users to define and manage custom computing environments tailored to their specific needs.
+
+**Dynamic Transformation**
+
+Traditionally, a static, rigid, and linear approach exists for building and deploying software images, with each transformation step requiring manual intervention and a rebuild. In contrast, Stacks enable a dynamically configured transformation approach, allowing more flexibility, where the transformation process is defined through a configuration, making it easier to adapt and extend the process as needed.
+
+**Ensuring Consistency and Reliability**
+
+Stacks encapsulate the necessary components, configurations, and dependencies, ensuring that each execution within a Stack adheres to predefined specifications and operates seamlessly within the broader DataOS ecosystem.
+
+**Abstraction of Deployment Complexities**
+
+Stacks function as an abstraction layer, obviating the need to grapple with the intricacies of deployment. This abstraction empowers data developers to concentrate on their use cases, unfettered by the burden of micromanaging low-level technical intricacies.
+
+**Increasing Platform Team productivity**
+
+Traditionally, data platform teams invest considerable time integrating new programming paradigms within the platform, a repetitive task recurring regularly. The introduction of Stacks delegates the responsibility of creating new Stacks to data developers, enabling them to declaratively create Stacks. For advanced capabilities requiring custom Operators, collaboration with the Platform team may be necessary. This collaborative model enhances the productivity of both teams, preventing the Platform team from becoming a bottleneck for successive capability integration requests.
+
+**Ensures Guarantees**
+
+Stacks assure specific guarantees, such as displaying lineage information on the specified endpoint, ensuring governance, appropriate observability, and orchestrating using DataOS Resources like Worker, Workflow, and Service. Declarative specification of these attributes replaces the extensive development efforts previously required from the Platform team.
+
+**Reusing existing Codebases**
+
+Data Developers can create tailor-made Stacks to incorporate their existing codebases into DataOS, eliminating the need for rewriting. This expedites onboarding and allows developers to seamlessly declare their Stacks (e.g., RClone, Great Expectations) and commence work within the DataOS ecosystem.
+
+## Stack vs. Operator
+
+DataOS has two distinct resources that supports its interoperability and extensibility. One is the Stack and the other is the [Operator](./operator.md). Though both [Resource-types](./types_of_dataos_resources.md) are quite similar, yet they are relevant in different scenarios. The table below summarizes the difference between the two Resource-types.
+
+| Parameter | Stack | Operator |
+| --- | --- | --- |
+| *Definition* | Enables orchestration of logic within the periphery of DataOS Kubernetes Cluster. The resource which the Stack manages shares the DataOS runtime, and utilizes its compute for execution of the logic. | Enables orchestration of resources or logic outside the periphery of the DataOS Kubernetes Cluster. The resource (external resource to be precise) doesn’t share the DataOS runtime, and relies on an external compute and platform for those needs. |
+| *Control* | More granular control as a data developer can define the various aspects of orchestration like what K8s resources will be utilized, what secrets will be used and all that   | Constrained by the capabilities of the external platform. Lesser control |
+| *Development Efforts* | Less development efforts as the creation of the a Stack only demands the understanding of that programming paradigm, no understanding of external platform required. | More development efforts as the creation of an Operator demands understanding of the intricacies of the external platform and NATS. |
+| *Creator Persona* | Data Developer primarily the Data Engineer | Platform Engineering Team  |
+| *Supporting capabilities* | Modularity, extensibility | Interoperability, Extensibility  |
+| *Use Case* | Introduction of new programming paradigms within DataOS like Flink, Spark, Soda, DBT, Steampipe, Function Mesh | Controlling an external resource from the interface of DataOS like Azure Data Factory Pipeline, Databricks Workflow, Hightouch Factory. |
+| *Scope* | Platform-Level | Platform-Level |
 
 ## Built-in Stacks in DataOS
 
 ### **Flare**
 
-[Flare](./stacks/flare.md) is a powerful declarative Stack designed specifically for large-scale data processing tasks.
+[Flare](./stacks/flare.md) is a powerful declarative Stack designed specifically for large-scale data processing tasks.
 
 ### **Benthos**
 
-[Benthos](./stacks/benthos.md) is a high-performance, resilient, and declarative stream processing Stack.
+[Benthos](./stacks/benthos.md) is a high-performance, resilient, and declarative stream processing Stack.
 
 ### **Beacon**
 
-[Beacon] Stack is a standalone HTTP server that exposes API endpoints on top of a Postgres database. It offers a single flavor `beacon+rest` that enables exposure of REST APIs on Postgres database.
+[Beacon](./stacks/beacon.md) Stack is a standalone HTTP server that exposes API endpoints on top of a Postgres database. It offers a single flavor `beacon+rest` that enables exposure of REST APIs on Postgres database.
 
 ### **Alpha**
 
-[Alpha](./stacks/alpha.md) Stack is a declarative DevOps SDK used for seamless deployment of data applications into production environments.
+[Alpha](./stacks/alpha.md) Stack is a declarative DevOps SDK used for seamless deployment of data applications into production environments.
 
 ### **Data Toolbox**
 
-The [Data Toolbox](./stacks/data_toolbox.md) Stack provides functionality to update Iceberg metadata versions to the latest available or to any specific version.
+The [Data Toolbox](./stacks/data_toolbox.md) Stack provides functionality to update Iceberg metadata versions to the latest available or to any specific version.
 
 ### **Scanner**
 
-The [Scanner](./stacks/scanner.md) Stack in DataOS is a Python-based framework that allows developers to extract metadata from external source systems (such as RDBMS, Data Warehouses, Messaging services, etc.) as well as components/services within the DataOS environment.
+The [Scanner](./stacks/scanner.md) Stack in DataOS is a Python-based framework that allows developers to extract metadata from external source systems (such as RDBMS, Data Warehouses, Messaging services, etc.) as well as components/services within the DataOS environment.
 
 These built-in stacks offer a wide range of capabilities, empowering data developers to efficiently build, process, and manage data within the DataOS ecosystem.
+
+## How to create your own Stack?
+
+<aside class="callout">
+🗣 This section is tailored for individuals aspiring to create their own custom Stacks. Proficiency in <b>Docker</b> and <b>Kubernetes</b> is essential for a comprehensive understanding of the content.
+
+</aside>
+
+[How to create your own Stack?](./stacks/custom_stacks.md)
