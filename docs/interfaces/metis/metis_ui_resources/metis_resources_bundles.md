@@ -1,12 +1,13 @@
-# Metis Resources- Bundles
+# Bundles Metadata On Metis UI
 <aside class="callout">
-⚠️ This page guides you on exploring and managing metadata for Bundles on Metis. To learn in detail about the Cluster as a Resource, refer to this link.
+⚠️ This page guides you on exploring and managing metadata for Bundles on Metis. To learn in detail about the Cluster as a Resource, refer to this <a href="/resources/">link</a>.
 
 </aside>
 
 Metis has integrated "Bundle" as a "Resource" type for storing metadata related to the collection of Resources deployed as part of a bundle. On selecting **Bundle,** the following information will appear on the screen:
 
 ![bundles.png](metis_resources_bundles/bundles.png)
+<figcaption align = "center"> List of bundles </figcaption>
 
 ## Filter pane
 
@@ -46,6 +47,7 @@ Each bundle resource in the list will have a Card view that displays the followi
 In the card view, click anywhere except the resource name to get the overview.
 
 ![bundle_overview.png](metis_resources_bundles/bundle_overview.png)
+<figcaption align = "center"> Quick information  </figcaption>
 
 This includes the following quick reference information:
 
@@ -63,6 +65,7 @@ This includes the following quick reference information:
 In the Result or Overview pane, click on the name of the Bundle to open the Details page, which includes:
 
 ![bundle_details.png](metis_resources_bundles/bundle_details.png)
+<figcaption align = "center"> Comprehensive details  </figcaption>
 
 ### **Bundle Information**
 

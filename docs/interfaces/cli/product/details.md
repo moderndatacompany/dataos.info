@@ -61,3 +61,19 @@ Flags:
   -t, --type string           Product type to query
   -v, --version string        Product version to query
 ```
+
+**Examples:**
+
+```shell
+~ dataos-ctl product get -a
+INFO[0000] 🔍 product get...                             
+INFO[0001] 🔍 product get...complete                     
+
+  TYPE | VERSION |        NAME         | STATUS |      OWNER        
+-------|---------|---------------------|--------|-------------------
+  data | v1alpha | customer-360-all    | active | kunalchoudhary    
+  data | v1alpha | customer-360-ashish | active | ashishmaheshwari  
+  data | v1alpha | customer-360-po     | active | kunalchoudhary    
+
+
+```

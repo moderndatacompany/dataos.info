@@ -1,4 +1,4 @@
-# Query-details Command Group
+# Query-gateway Command Group
 You run the following `query-details` sub commands by appending them to *dataos-ctl query-details*.
 
 ## `connect`

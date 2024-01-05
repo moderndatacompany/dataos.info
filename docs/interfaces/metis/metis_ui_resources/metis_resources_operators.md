@@ -1,7 +1,7 @@
-# Metis Resources- Pperators
+# Operators Metadata On Metis UI
 
 <aside class="callout">
-⚠️ This page guides you on exploring and managing metadata for Operators on Metis. To learn in detail about the Operator as a  DataOS Resource, refer to this link.
+⚠️ This page guides you on exploring and managing metadata for Operators on Metis. To learn in detail about the Operator as a  DataOS Resource, refer to this <a href="/resources/">link</a>.
 
 </aside>
 

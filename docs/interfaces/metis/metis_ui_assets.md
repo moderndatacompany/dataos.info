@@ -1,4 +1,4 @@
-# Metis UI- Assets
+# Data Assets Metadata
 
 Metis DB stores detailed metadata information about all your data assets across the organization. Metadata is extracted using Scanners from data sources used by your organization  like RDBMS, Data Warehouses, Messaging services, Dashboards, etc.
 
@@ -19,8 +19,8 @@ The Data Asset page provides a holistic view of your data from various data sour
 
 ### **Comprehensive View**
 
-[Metis Assets- Tables](metis_ui_assets/metis_assets_tables.md)
+[Tables Metadata On Metis UI](metis_ui_assets/metis_assets_tables.md)
 
-[Metis Assets- Topics](metis_ui_assets/metis_assets_topic.md)
+[Topics Metadata On Metis UI](metis_ui_assets/metis_assets_topic.md)
 
-[Metis Assets- Dashboards](metis_ui_assets/metis_assets_dashboards.md)
+[Dashboards Metadata On Metis UI](metis_ui_assets/metis_assets_dashboards.md)

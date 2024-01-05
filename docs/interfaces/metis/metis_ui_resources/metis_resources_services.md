@@ -1,13 +1,14 @@
-# Metis Resources- Services
+# Services Metadata On Metis UI
 
 <aside class="callout">
-⚠️ This page guides you on exploring and managing metadata for Services on Metis. To learn in detail about the Service as a Resource, refer to this link.
+⚠️ This page guides you on exploring and managing metadata for Services on Metis. To learn in detail about the Service as a Resource, refer to this <a href="/resources/service/">link</a>.
 
 </aside>
 
 Metis has integrated "Service" as a "Resource type" for storing metadata related to its port, socket, replicas, stack, etc., within DataOS. On selecting **Services,** the following information will appear on the screen:
 
 ![services.png](metis_resources_services/services.png)
+<figcaption align = "center"> List of Services  </figcaption>
 
 ## Filter pane
 
@@ -48,6 +49,7 @@ Each service in the list will feature a **Card view** that displays the followin
 In the card view, click anywhere except the resource name to get the overview.
 
 ![services_overview.png](metis_resources_services/services_overview.png)
+<figcaption align = "center"> Quick information  </figcaption>
 
 This includes the following quick reference information:
 
@@ -65,6 +67,7 @@ This includes the following quick reference information:
 In the Result or Overview pane, click on the name of the Service to open the Resource Details page, which includes:
 
 ![services_details.png](metis_resources_services/services_details.png)
+<figcaption align = "center"> Comprehensive details  </figcaption>
 
 ### **Service Information**
 
@@ -112,9 +115,11 @@ The subsequent tabs will provide you with more detailed information, as explaine
 A Directed Acyclic Graph (DAG) is a conceptual representation of a sequence of activities. For the Service, this shows the input and processing steps and output.
 
 ![services_topology.png](metis_resources_services/services_topology.png)
+<figcaption align = "center"> Dag of activities </figcaption>
 
 Clicking on the input will display the following details in the side pane:
 ![image](metis_resources_services/service_topology_input.png)
+<figcaption align = "center"> Input details </figcaption>
 
 | Attribute | Description |
 | --- | --- |
@@ -136,6 +141,7 @@ Clicking on the input will display the following details in the side pane:
 
 Clicking on the processor will display the following details in the side pane:
 ![image](metis_resources_services/service_topology_processor.png)
+<figcaption align = "center"> Processor details </figcaption>
 
 | Attribute | Description |
 | --- | --- |
@@ -147,6 +153,7 @@ Clicking on the processor will display the following details in the side pane:
 
 Clicking on the output will display the following details in the side pane:
 ![image](metis_resources_services/service_topology_output.png)
+<figcaption align = "center"> Output details </figcaption>
 
 | Attribute | Description |
 | --- | --- |
@@ -165,6 +172,7 @@ This space lists all activities, including tasks and conversations around the sp
 This section provides an overview of the service's execution history. It offers a concise summary of past service runs, allowing users to quickly access information about the service's previous operations and performance.
 
 ![services_runtime.png](metis_resources_services/services_runtime.png)
+<figcaption align = "center"> Run history </figcaption>
 
 | Attribute | Description |
 | --- | --- |
