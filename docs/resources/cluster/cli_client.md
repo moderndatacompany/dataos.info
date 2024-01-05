@@ -1,10 +1,12 @@
-# Setting Up Minerva Client
+# Setting Up CLI Client
+
+## **Connecting to Minerva**
 
 To set up the Minerva Client or minerva-cli and run queries on Minerva via the terminal, there are two approaches:
 
-## Setup
+### **Setup**
 
-### **Approach 1 - Docker**
+#### **Approach 1 - Docker**
 
 - Open the terminal and pull the minerva-cli image by executing the following command. Ensure that Docker is installed and running on your system.
 
@@ -30,7 +32,7 @@ To set up the Minerva Client or minerva-cli and run queries on Minerva via the t
     minerva --help
     ```
 
-### **Approach 2 - Executable Jar**
+#### **Approach 2 - Executable Jar**
 
 <aside>
 
@@ -64,20 +66,72 @@ To set up the Minerva Client or minerva-cli and run queries on Minerva via the t
     minerva --help
     ```
 
-## Tutorial
-
-### **Connect**
+### **Connecting to Minerva**
 
 To connect with a running Minerva Cluster, use the following command:
 
 ```shell
-minerva --server https://tcp.<DATAOS_INSTANCE_FQDN>:7432 \
-     --user <USER_NAME> \
-     --apikey <DATAOS_API_KEY> \
-     --cluster-name=<CLUSTER_NAME>
+minerva --server https://tcp.{{dataos instance fqdn}}:7432 \
+     --user {{user id}} \
+     --apikey {{dataos api key}} \
+     --cluster-name={{CLUSTER_NAME}}
 ```
 
-### **Query**
+
+## Connecting to Themis
+
+<aside class="callout">
+
+🗣 If you encounter issues executing the steps mentioned in the previous section, you can use the equivalent <code>java</code> command with the <code>-jar</code> option to run the CLI. Please note that the Trino client runs on JVM 11 or higher.
+
+</aside>
+
+- Open the terminal and ensure that you have Java 11 or a higher version installed by running the following command:
+    
+    ```bash
+    java --version
+    ```
+    
+- Download the `trino-cli` JAR file from [here](https://repo1.maven.org/maven2/io/trino/trino-cli/435/trino-cli-435-executable.jar).
+- To verify that `trino-cli` runs properly, execute the following command. It should display a list of supported commands.
+    
+    ```bash
+    java -jar trino-cli-435-executable.jar --help
+    ```
+    
+- Set up an alias for future ease using the following command.
+    
+    ```bash
+    # For bash terminals
+    echo alias 'minerva="java -jar minerva-cli-388.jar"' >> ~/.bashrc && source ~/.bashrc
+    # For zsh terminals
+    echo alias 'trino="java -jar trino-cli-435-executable.jar"' >> ~/.zshrc && source ~/.zshrc
+    ```
+    
+- Confirm that the created alias works correctly.
+    
+    ```bash
+    trino --help
+    ```
+    
+- To connect with a running Themis Cluster, use the following command:
+    
+    ```bash
+    trino --server = https://tcp.{{dataos instance fqdn}}:7432 \
+         --user = {{dataos userID}} \
+         --apikey {{dataos user apikey}}
+    		 --extra-credential accessToken={{dataos user apikey}} \
+         --extra-credential cluster={{themis cluster name}}
+    
+    # Sample
+    trino --server = https://tcp.cheerful-delta.dataos.app:7432 \
+    			--user=iamgroot \
+    			--extra-credential accessToken=abcdefghijklmnopqrstuvwxyz 
+    			--extra-credential cluster=themiscluster
+    ```
+
+
+## **Query**
 
 The following commands can be used to perform various operations:
 
@@ -195,7 +249,7 @@ The following commands can be used to perform various operations:
     ➜ Minerva:icebase.surveys# quit
     ```
 
-### **Export results as CSV**
+## **Export results as CSV**
 
 To export query results as a CSV file, you can use the `output-format` option. The example below demonstrates how to execute a query and save the results to a CSV file named `result.csv`:
 
