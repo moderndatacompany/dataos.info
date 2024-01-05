@@ -1,13 +1,14 @@
-# Metis Resources- Workers
+# Workers Metadata On Metis UI
 
 <aside class="callout">
-⚠️ This page guides you on exploring and managing metadata for Workers on Metis. To learn in detail about the Worker as a  DataOS Resource, refer to this link.
+⚠️ This page guides you on exploring and managing metadata for Workers on Metis. To learn in detail about the Worker as a  DataOS Resource, refer to this <a href="/resources/">link</a>.
 
 </aside>
 
 Metis has integrated "Worker" as a "Resource” type entity for storing metadata related to the long-running process within DataOS to perform specific tasks or computations. On selecting **Workers,** the following information will appear on the screen:
 
 ![workers.png](metis_resources_workers/workers.png)
+<figcaption align = "center"> List of Workers </figcaption>
 
 ## Filter pane
 
@@ -48,6 +49,7 @@ Each worker resource in the list will have a Card view that displays the followi
 In the card view, click anywhere except the resource name to get the overview.
 
 ![workers_overview.png](metis_resources_workers/workers_overview.png)
+<figcaption align = "center"> Quick information  </figcaption>
 
 This includes the following quick reference information:
 
@@ -65,6 +67,7 @@ This includes the following quick reference information:
 In the Result or Overview pane, click on the name of the Worker to open the Resource Details page, which includes:
 
 ![workers_details.png](metis_resources_workers/workers_details.png)
+<figcaption align = "center"> Comprehensive details  </figcaption>
 
 ### Workers Information
 
@@ -106,6 +109,7 @@ A Directed Acyclic Graph (DAG) is a conceptual representation of a sequence of a
 Clicking on the **Input** will display the following details in the side pane:
 
 ![Screen Shot 2023-09-18 at 1.37.27 PM.png](metis_resources_workers/Screen_Shot_2023-09-18_at_1.37.27_PM.png)
+<figcaption align = "center"> dag of activities </figcaption>
 
 | Attribute | Description |
 | --- | --- |
@@ -128,6 +132,7 @@ Clicking on the **Input** will display the following details in the side pane:
 Clicking on the **Output** will display the following details in the side pane:
 
 ![Screen Shot 2023-09-18 at 1.40.05 PM.png](metis_resources_workers/Screen_Shot_2023-09-18_at_1.40.05_PM.png)
+<figcaption align = "center"> Output details </figcaption>
 
 | Attribute | Description |
 | --- | --- |
@@ -146,6 +151,7 @@ This space lists all activities, including tasks and conversations around the sp
 This section provides an overview of the Worker's execution history. It offers a concise summary of past runs, allowing users to quickly access information about the Worker's previous operations and performance.
 
 ![workers_rt.png](metis_resources_workers/workers_rt.png)
+<figcaption align = "center">Run history  </figcaption>
 
 You can further access:
 

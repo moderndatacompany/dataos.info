@@ -1,7 +1,7 @@
-# Metis Resources- Computes
+# Computes Metadata On Metis UI
 
 <aside class="callout">
-⚠️ This page guides you on exploring and managing metadata for Computes on Metis. To learn in detail about the Compute as a  DataOS Resource, refer to this link.
+⚠️ This page guides you on exploring and managing metadata for Computes on Metis. To learn in detail about the Compute as a  DataOS Resource, refer to this <a href="/resources/compute/">link</a>.
 
 </aside>
 
@@ -10,6 +10,7 @@ Metis has integrated "Compute" as a "Resource” type entity for storing metadat
 On selecting **Computes,** the following information will appear on the screen:
 
 ![computes.png](metis_resources_computes/computes.png)
+<figcaption align = "center"> List of compute resources </figcaption>
 
 ## Filter pane
 
@@ -49,6 +50,7 @@ Each compute resource in the list will have a Card view that displays the follow
 In the card view, click anywhere except the resource name to get the overview.
 
 ![compute_overview.png](metis_resources_computes/compute_overview.png)
+<figcaption align = "center"> Quick information  </figcaption>
 
 This includes the following quick reference information:
 
@@ -66,6 +68,7 @@ This includes the following quick reference information:
 In the Result or Overview pane, click on the name of the Compute to open the Resource Details page, which includes:
 
 ![compute_details.png](metis_resources_computes/compute_details.png)
+<figcaption align = "center"> Comprehensive details </figcaption>
 
 ### **Compute Information**
 

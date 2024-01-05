@@ -1,10 +1,11 @@
-# Metis Assets- Tables
+# Tables Metadata On Metis UI
 
 The Scanner workflow extracts both general and detailed information from structured data sources, about datasets/tables. This includes general details like names, owners, and tags, along with more intricate metadata such as table schemas, column names, descriptions, data types, quality, transformations, and relationships. The collected metadata is stored in the Metis DB, and the Metis UI presents this wealth of information under the '**Tables**' section. Users can efficiently locate, access, and interpret these assets and their associated data.
 
 On selecting **Tables,** the following information will appear on the screen:
 
 ![tables.png](metis_assets_tables/tables.png)
+<figcaption align = "center">List of tables  </figcaption>
 
 ## Filter pane
 
@@ -51,6 +52,7 @@ Each table in the list will feature a Card view that displays the following info
 In the Card view, click anywhere except the table name to get the overview for quick reference.
 
 ![tables_ov.png](metis_assets_tables/tables_ov.png)
+<figcaption align = "center"> Quick information </figcaption>
 
 This includes the following quick reference information:
 
@@ -105,6 +107,7 @@ The subsequent **tabs** on the Details Page provide more detailed information on
 ### **Schema**
 
 ![tables_schema.png](metis_assets_tables/tables_schema.png)
+<figcaption align = "center"> Schema of table </figcaption>
 
 ### **Activity Feeds & Tasks**
 
@@ -119,12 +122,14 @@ Here, you can access information about the queries executed on a specific table/
 This tab shows the data profiling information for your table/dataset and data types, null values %, distinct value %, and unique values % for each column., which will help you to assess the accuracy, completeness, and validity of the data. 
 
 ![tables_profile.png](metis_assets_tables/tables_profile.png)
+<figcaption align = "center"> Profiling information </figcaption>
 
 ### **Data Quality**
 
 You can view the list of quality tests (assertions)created for your dataset to monitor the data quality and the status of each run. 
 
 ![table_qcheck.png](metis_assets_tables/table_qcheck.png)
+<figcaption align = "center"> List of quality tests </figcaption>
 
 Here, you will get the information about the tests designed as per the quality objectives set for your datasets and ots columns.
 
@@ -138,15 +143,17 @@ Here, you will get the information about the tests designed as per the quality o
 | Table | The table or dataset to which the quality test is applied. This involves dataset level metrics or schema related validations. |
 | Column | The specific column or field within the table to which the quality test attribute pertains. |
 
-Click on the test result to see the details of 
+Click on the test result to see the details of a specific SLO.
 
 ![tables_qlty.png](metis_assets_tables/tables_qlty.png)
+<figcaption align = "center"> Details of a quality test  </figcaption>
 
 ### **Lineage**
 
 The lineage graph illustrates the relationships between workflows and derived datasets, providing a clear representation of how data entities are related and how they may have changed over time. You can get the details of data flow across workflows and the datasets they produce. Additionally, you can learn about the other dependent datasets. You can explore more by clicking on the dataset/workflow nodes of the lineage graph.
 
 ![tables_lineage.png](metis_assets_tables/tables_lineage.png)
+<figcaption align = "center"> Lineage view </figcaption>
 
 You can explore more by clicking on the dataset/workflow nodes of the lineage graph.
 
@@ -155,9 +162,11 @@ You can explore more by clicking on the dataset/workflow nodes of the lineage gr
 It opens up the side pane to display additional information. It gives you links for Source, Database, Schema to further explore them. Users also get the option to switch to the Workbench app to run queries and explore the dataset.
 
 ![tables_leneageset.png](metis_assets_tables/tables_lineage_dataset.png)
+<figcaption align = "center"> Dataset information  </figcaption>
 
 ***Job***
 
 Users will get the Workflow information on the side pane and link to Workflow Resource to know more about.
 
 ![tables_lineage_job.png](metis_assets_tables/tables_lineage_job.png)
+<figcaption align = "center">Job details  </figcaption>

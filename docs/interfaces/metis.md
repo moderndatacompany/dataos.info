@@ -33,7 +33,7 @@ It also grants access to historical and operational data about Resources, facili
 
 </aside>
 
-## Metis Features
+## Understanding Metis Capabilities
 
 Within a DataOS environment, Metis is a vital tool for discovering data products, exploring data assets and DataOS Resources, and improving the catalog experience for both business users and data developers. Metis additionally empowers users to add more business context to these entities.
 
@@ -41,22 +41,23 @@ Apart from this, it allows you to govern, observe, and monitor the data systems 
 
 To learn in detail about these features, click on the page below.
 
-[Metis Features](metis/metis_features.md)
+[Metis Key Features](metis/metis_features.md)
 
-## Metis UI
+## Exploring Metis UI Elements
 
 Metis UI is a collaborative interface for diverse data users to navigate through the data ecosystem in an enterprise. Metis UI helps users search, discover, understand, and trust **data products**, **data** **assets** (tables, pipelines, dashboards, etc.), and **DataOS Resources** (Workflows, Services, Stacks, etc.) that exist for the entire organization. Users can easily collaborate with other team members, inform them about the updates on these assets, observe the changes in the metadata through versions, and accomplish more.
 
-The homepage of Metis UI showcases a comprehensive overview of activities related to your data entities. 
-
 ![Metis UI](metis/metis.png)
+<figcaption align = "center"> DataOS Metis App </figcaption>
 
-To better understand Metis UI and how to perform various functionalities, check out the links below.
+The homepage of Metis UI showcases a comprehensive overview of activities related to your data entities. For detailed information about the metadata of these entities, click on the following links:
 
-[Metis UI- Products](metis/metis_ui_products.md)
+[Products Metadata Deep Dive](metis/metis_ui_products.md)
 
-[Metis UI- Resources](metis/metis_ui_resources.md)
+[DataOS Resources Metadata Deep Dive](metis/metis_ui_resources.md)
 
-[Metis UI- Assets](metis/metis_ui_assets.md)
+[Data Assets Metadata Deep Dive](metis/metis_ui_assets.md)
+
+To better understand Metis UI and how to perform various functionalities, check out the link below.
 
 [Navigating Metis UI](metis/navigating_metis_ui_how_to_guide.md)

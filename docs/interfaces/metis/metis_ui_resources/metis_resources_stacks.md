@@ -1,13 +1,14 @@
-# Metis Resources- Stacks
+# Stacks Metadata On Metis UI
 
 <aside class="callout">
-⚠️ This page guides you on exploring and managing metadata for Stacks on Metis. To learn in detail about the Stack as a DataOS Resource, refer to this link.
+⚠️ This page guides you on exploring and managing metadata for Stacks on Metis. To learn in detail about the Stack as a DataOS Resource, refer to this <a href="/resources/stacks/">link</a>.
 
 </aside>
 
 Metis has integrated "Stack" as a "Resource” type entity for storing metadata related to the unique attributes that define its capabilities within DataOS. On selecting **Stacks,** the following information will appear on the screen:
 
 ![stacks.png](metis_resources_stacks/stacks.png)
+<figcaption align = "center"> List of Stacks  </figcaption>
 
 ## Filter pane
 
@@ -46,6 +47,7 @@ Each stack resource in the list will have a Card view that displays the followin
 In the card view, click anywhere except the resource name to get the overview.
 
 ![stack_overview.png](metis_resources_stacks/stack_overview.png)
+<figcaption align = "center"> Quick information  </figcaption>
 
 This includes the following information for quick reference:
 
@@ -64,6 +66,7 @@ This includes the following information for quick reference:
 In the Result or Overview pane, click on the name of the Stack to open the Resource Details page, which includes:
 
 ![stack_detail.png](metis_resources_stacks/stack_detail.png)
+<figcaption align = "center"> Comprehensive details  </figcaption>
 
 ### Stacks Information
 

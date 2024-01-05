@@ -1,4 +1,4 @@
-# Metis UI- Products
+# Products Metadata
 
 Metis DB stores detailed metadata information about all your data products across the organization. Metadata is extracted using Scanners from data products used by your organization.
 
@@ -14,4 +14,4 @@ The Data Product page provides a holistic view of Data Products.
 
 ### **Comprehensive View**
 
-[Metis Products- Data Products](metis_ui_products/metis_products_data_products.md)
+[Data Products Metadata On Metis UI](metis_ui_products/metis_products_data_products.md)

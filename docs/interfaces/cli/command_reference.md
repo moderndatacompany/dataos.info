@@ -1,8 +1,8 @@
-# CLI Command Reference
+# CLI Command Reference (NEW)
 
 You can get a complete list of all the commands, sub-commands, arguments and flags by using the help command within CLI itself.
 
-### **Apply**
+## `apply`
 
 Create and update resources in a DataOS cluster through running *apply command*. A resource in DataOS can mean a policy or depot or workflow/service/etc. This command manages applications through *.yaml* files defining DataOS resources. 
 
@@ -13,15 +13,43 @@ Usage:
   dataos-ctl apply [flags]
 
 Flags:
-  -h, --help                  help for apply
-  -l, --lint                  Lint the files, do not apply
-  -f, --manifestFile string   Manifest file location
-  -o, --overrideWarnings      Override the warnings and apply
-  -R, --recursive             Get manifest files recursively from the provided directory
-  -w, --workspace string      Workspace to target resource (default "public")
+  -d, --de-ref                  De-reference the files, do not apply
+      --disable-interpolation   Disable interpolation, do not interpolate $ENV|${ENV}
+      --disable-resolve-stack   Disable resolve stack
+  -h, --help                    help for apply
+  -l, --lint                    Lint the files, do not apply
+  -f, --manifestFile string     Manifest file location
+  -r, --re-run                  Re-run resource after apply
+  -R, --recursive               Get manifest files recursively from the provided directory
+      --tls-allow-insecure      Allow insecure TLS connections
+  -w, --workspace string        Workspace to target resource (default "public")
 ```
 
-### **Completion**
+## `collation`
+Interact with the Collation Service in the DataOS®
+
+```shell
+
+Usage:
+  dataos-ctl collation [command]
+
+Available Commands:
+  content     Interact with content items in the DataOS® Collation Service
+  metadata    Interact with metadata in the DataOS® Collation Service
+  resource    Interact with resources in the DataOS® Collation Service
+
+Flags:
+  -h, --help   help for collation
+
+Global Flags:
+      --tls-allow-insecure   Allow insecure TLS connections
+
+Use "dataos-ctl collation [command] --help" for more information about a command.
+
+```
+To learn more, refer to [Collation Command Group](collation/details.md).
+
+## `completion`
 
 This mode places you in an interactive mode with auto-completion for the given shell (zsh or bash). To setup autocomplete in current bash shell, bash-completion package should be installed first.
 
@@ -55,21 +83,22 @@ Flags:
 -h, --help   help for completion
 ```
 
-### **Context**
+## `context`
 
-Manage DataOS Contexts. A context represents the connection to a DataOS cluster/instance/environment and can be used to create depots, jobs, queries etc on that cluster.
+Manage DataOS Contexts. A context represents the connection to a DataOS instance/environment and can be used to create depots, jobs, queries etc on that context.
 
-> 📌 **Note**: Only one context can be active.
-> 
+<aside class-callout">Only one context can be active.
+</aside>
 
 ```bash
 Usage 
 dataos-ctl context [command]
 
 Available Commands:
-delete      Delete DataOS Context
-list        List DataOS contexts
-select      Select DataOS Context
+  delete      Delete DataOS® Context
+  list        List DataOS® contexts
+  product     Manage products and releases for the current DataOS® context
+  select      Select DataOS® Context
 
 Flags:
 -h, --help   help for context
@@ -77,170 +106,10 @@ Flags:
 Use "dataos-ctl context [command] --help" for more information about a command.
 ```
 
-**Context List**
+To learn more, refer to [Context Command Group](context/details.md).
 
-Get the list of environments you have initialized using the *dataos-ctl init* command. The active context will be shown with a star and you can see its URL in the output.
 
-```bash
-Usage:
-dataos-ctl context select [flags]
-
-Flags:
--h, --help          help for select
--n, --name string   name of context to select
-```
-
-Here is the expected output:
-
-```bash
-➜  ~ dataos-ctl context list
-INFO[0000] * meerkat                                    
-INFO[0000]   squirrel                                   
-INFO[0000]   wholly-merry-orca                          
-INFO[0000] 🔗...https://cleanly-mutual-meerkat.dataos.io
-```
-
-**Context Delete**
-
-Delete the context which is pointing to your DataOS environment.
-
-```bash
-Usage:
-dataos-ctl context delete [flags]
-
-Flags:
--h, --help          help for delete
--n, --name string   name of context to select
-```
-
-**Context Select**
-
-Select a new context to point to, from the available environments.
-
-```bash
-Usage:
-    dataos-ctl context select [flags]
-
-Flags:
--h, --help          help for select
--n, --name string   name of context to select
-```
-
-### **Datanet**
-
-Manage the Datanet of the DataOS®
-
-```bash
-Usage:
-  dataos-ctl datanet [command]
-
-Aliases:
-  datanet, catalog
-
-Available Commands:
-  create        Create Entry in DataOS® Datanet
-  get           Get Entry
-  heartbeat     Send Workflow Run Entry Heartbeat
-  lifecycle     Manage Run Entry Lifecycle
-  map-stack-run Map the Stack Run to a Run Entry
-
-Flags:
-  -h, --help   help for datanet
-
-Use "dataos-ctl datanet [command] --help" for more information about a command.
-```
-
-**Datanet Create**
-
-Create Entry in the DataOS® Datanet.
-
-```bash
-Usage:
-  dataos-ctl datanet create [flags]
-
-Flags:
-  -h, --help                  help for create
-      --idOutputFile string   Id output file location
-  -f, --manifestFile string   Manifest file location
-  -o, --outputFile string     Yaml output file location
-      --parentRunId string    Parent Run Id to associate with the Child Datanet Entry
-  -p, --printRequest          Print the request as yaml
-  -t, --type string           Type of entry: workflow, workflow_run, job, job_run, service, service_run, topology
-  -w, --workspace string      Workspace to target datanet entries (default "public")
-```
-
-**Datanet Get**
-
-Get Entry in the DataOS® Datanet.
-
-```bash
-Usage:
-  dataos-ctl datanet get [flags]
-
-Flags:
-  -h, --help                help for get
-  -n, --name string         Name or ID of the entry
-  -o, --outputFile string   Yaml output file location
-  -r, --runId string        Entry run id
-  -t, --type string         Type of entry: workflow, workflow_run, job, job_run, service, service_run, topology
-  -w, --workspace string    Workspace to target datanet entries (default "public")
-```
-
-**Datanet Heartbeat**
-
-Send Workflow Run Entry Heartbeat in the DataOS® Datanet.
-
-```bash
-Usage:
-  dataos-ctl datanet heartbeat [flags]
-
-Flags:
-  -h, --help                help for heartbeat
-  -n, --name string         Name of the entry
-  -o, --outputFile string   Yaml output file location
-  -r, --runId string        Entry run id
-  -t, --type string         Type of entry: workflow_run, job_run, service_run
-  -w, --workspace string    Workspace to target datanet entries (default "public")
-```
-
-**Datanet Lifecycle**
-
-Manage the Datanet of the DataOS®.
-
-```bash
-Usage:
-  dataos-ctl datanet lifecycle [flags]
-
-Flags:
-  -h, --help                help for lifecycle
-  -m, --message string      Run state transition message
-  -n, --name string         Name of the entry
-  -o, --outputFile string   Yaml output file location
-  -r, --runId string        Entry run id
-  -s, --state string        Run state target transition, can be: start, complete, abort, fail
-  -t, --type string         Type of entry: workflow_run, job_run, service_run
-  -w, --workspace string    Workspace to target datanet entries (default "public")
-```
-
-**Datanet Map-Stack-Run**
-
-Map the Stack Run to a Run Entry in the DataOS® Datanet.
-
-```bash
-Usage:
-  dataos-ctl datanet map-stack-run [flags]
-
-Flags:
-  -h, --help                     help for map-stack-run
-  -n, --name string              Name of the entry
-  -r, --runId string             Entry run id
-  -s, --stackRunId string        Stack run id
-  -v, --topologyVersion string   Stack run topology version
-  -t, --type string              Type of entry: workflow_run, job_run, service_run
-  -w, --workspace string         Workspace to target datanet entries (default "public")
-```
-
-### Dataset
+## `dataset`
 
 Apply toolkit commands in the DataOS®.
 
@@ -252,12 +121,15 @@ Available Commands:
   add-field         Add Field
   add-properties    Add Properties
   create            Create
+  drop              Drop
   drop-field        Drop Field
   get               Get
+  list              List Datasets
   metadata          Get Metadata
   properties        Get Properties
   remove-properties Remove Properties
   rename-field      Rename Field
+  rollback          Rollback
   set-metadata      Set Metadata
   set-nullable      Set Nullable
   set-snapshot      Set Snapshot
@@ -270,223 +142,9 @@ Flags:
 
 Use "dataos-ctl dataset [command] --help" for more information about a command.
 ```
+To learn more, refer to [Dataset Command Group](dataset/details.md).
 
-**Dataset Add-Field**
-
-Add field.
-
-```bash
-Usage:
-  dataos-ctl dataset add-field [flags]
-
-Flags:
-  -a, --address string    Dataset Address
-  -t, --datatype string   Datatype of field
-  -h, --help              help for add-field
-  -n, --name string       Name of new field
-  -p, --precision int8    --precision 10 (only for decimal type)
-  -s, --scale int8        --scale 1 (only for decimal type) (default 1)
-```
-
-**Dataset Add-Properties**
-
-Add properties.
-
-```bash
-Usage:
-  dataos-ctl dataset add-properties [flags]
-
-Flags:
-  -a, --address string       The address of Dataset
-  -h, --help                 help for add-properties
-  -p, --properties strings   --properties <property_name>:<property_value>
-```
-
-**Dataset Create**
-
-Create dataset.
-
-```bash
-Usage:
-  dataos-ctl dataset create [flags]
-
-Flags:
-  -a, --address string        Dataset Address
-  -h, --help                  help for create
-  -f, --manifestFile string   Manifest file location
-```
-
-**Dataset Drop-Field**
-
-Drop field.
-
-```bash
-Usage:
-  dataos-ctl dataset drop-field [flags]
-
-Flags:
-  -a, --address string   The dataset address
-  -h, --help             help for drop-field
-  -n, --name string      Name of field
-```
-
-**Dataset Get**
-
-Get dataset address.
-
-```bash
-Usage:
-  dataos-ctl dataset get [flags]
-
-Flags:
-  -a, --address string   Dataset Address
-  -h, --help             help for get
-```
-
-**Dataset Metadata**
-
-Get dataset metadata.
-
-```bash
-Usage:
-  dataos-ctl dataset metadata [flags]
-
-Flags:
-  -a, --address string   The address of Dataset
-  -h, --help             help for metadata
-```
-
-**Dataset Properties**
-
-Get dataset properties.
-
-```bash
-Usage:
-  dataos-ctl dataset properties [flags]
-
-Flags:
-  -a, --address string   The address of Dataset
-  -h, --help             help for properties
-```
-
-**Dataset Remove-Properties**
-
-Remove dataset properties.
-
-```bash
-Usage:
-  dataos-ctl dataset remove-properties [flags]
-
-Flags:
-  -a, --address string           The address of Dataset
-  -h, --help                     help for remove-properties
-  -p, --properties stringArray   --properties <property_name>
-```
-
-**Dataset Rename-Field**
-
-Rename dataset field.
-
-```bash
-Usage:
-  dataos-ctl dataset rename-field [flags]
-
-Flags:
-  -a, --address string   The address of dataset
-  -h, --help             help for rename-field
-  -n, --name string      Name of existing field
-  -m, --newName string   New name for field
-```
-
-**Dataset Set-Metadata**
-
-Set metadata for the dataset.
-
-```bash
-Usage:
-  dataos-ctl dataset set-metadata [flags]
-
-Flags:
-  -a, --address string   The address for dataset.
-  -h, --help             help for set-metadata
-  -v, --version string   set metadata of dataset
-```
-
-**Dataset Set-Nullable**
-
-Set nullable.
-
-```bash
-Usage:
-  dataos-ctl dataset set-nullable [flags]
-
-Flags:
-  -a, --address string    The address of Dataset
-  -h, --help              help for set-nullable
-  -n, --name string       Name of field
-  -b, --nullable string   true for nullable field, else false
-```
-
-**Dataset Set-Snapshot**
-
-Set snapshot.
-
-```bash
-Usage:
-  dataos-ctl dataset set-snapshot [flags]
-
-Flags:
-  -a, --address string   The address of Dataset
-  -h, --help             help for set-snapshot
-  -i, --id string        The snapshot id
-```
-
-**Dataset Snapshots**
-
-List dataset snapshots.
-
-```bash
-Usage:
-  dataos-ctl dataset snapshots [flags]
-
-Flags:
-  -a, --address string   The address of Dataset
-  -h, --help             help for snapshots
-```
-
-**Dataset Update-Field**
-
-Update dataset field.
-
-```bash
-Usage:
-  dataos-ctl dataset update-field [flags]
-
-Flags:
-  -a, --address string    The address of Dataset
-  -t, --datatype string   Datatype of field
-  -h, --help              help for update-field
-  -n, --name string       Name of field
-  -p, --precision int8    --precision 10 (only for decimal type)
-  -s, --scale int8        --scale 1 (only for decimal type) (default 1)
-```
-
-**Dataset Update-Partition**
-
-Update partition.
-
-```bash
-Usage:
-  dataos-ctl dataset update-partition [flags]
-
-Flags:
-  -a, --address string       The address of Dataset
-  -n, --count int            --count 2
-  -h, --help                 help for update-partition
-  -p, --partitions strings   --partitions <partition_type>:<column_name>:<partition_name>
-```
-
-### **Delete**
+## `delete`
 
 Delete resources in the DataOS.
 
@@ -495,121 +153,141 @@ Usage:
 dataos-ctl delete [flags]
 
 Flags:
--h, --help                help for delete
--i, --identifier string   Identifier of resource, like: NAME:VERSION:TYPE
--n, --name string         Name of resource
-    --namespace string    Namespace to target resource (default "default")
--t, --type string         The resource type to get, possible values: depot, function, job, 
-policy, service, secret
+      --force                 Force delete even though dependencies are not allowing it
+  -h, --help                  help for delete
+      --id string             Resource ID, like: TYPE:VERSION:NAME:WORKSPACE(optional), depot:v1:icebase or service:v1:ping:sandbox
+  -i, --identifier string     Identifier of resource, like: NAME:VERSION:TYPE
+  -f, --manifestFile string   Manifest file location
+  -n, --name string           Name of resource
+      --tls-allow-insecure    Allow Insecure TLS connections
+  -t, --type string           The resource type to delete. Workspace resources: workflow,service,worker,secret,database,cluster,volume,resource,monitor,pager,lakehouse. Instance resources: policy,depot,compute,dataplane,stack,operator,bundle,instance-secret,grant.
+  -v, --version string        Version of resource (default "v1")
+  -w, --workspace string      Workspace to target resource (default "public")
 ```
 
 DataOS checks resource dependability while deleting resources.
 
 ![cli-resource-delete.png](cli-resource-delete.png)
 
-### **Develop**
+## `develop`
 
 With this command, manage DataOS Development. You can test the changes on the local machine before directly applying on the server.
 
 ```bash
+Manage DataOS® Development
+
 Usage:
-dataos-ctl develop [command]
+  dataos-ctl develop [command]
 
 Available Commands:
-apply             Apply development resources
-get               Get development containers
-get-stack-version Get stack versions
-log-stream        Create development log-stream
-port-forward      Create development port-forward
-start             Start development container
-stop              Stop development containers
+  generate    Generate example manifests
+  get         Get development containers
+  schema      JSON Schema visibility for DataOS® resource types and apis
+  stack       Stack specific commands
+  start       Start development container
+  stop        Stop development containers
+  types       DataOS® resource types specific commands
 
 Flags:
--h, --help   help for develop
+  -h, --help   help for develop
 
 Use "dataos-ctl develop [command] --help" for more information about a command.
 ```
+To learn more, refer to [Develop Command Group](develop/details.md).
 
-**Develop Create**
+## `doc`
+Generate markdown documentation for every command
 
-Create a development container.
+```shell
 
-```bash
 Usage:
-dataos-ctl develop create [flags]
+  dataos-ctl doc [flags]
 
 Flags:
--d, --dataDir string        Directory containing the data
--h, --help                  help for create
--f, --manifestFile string   Manifest file location
--s, --stack string          Job stack
+  -h, --help   help for doc
+
+Global Flags:
+      --tls-allow-insecure   Allow insecure TLS connections
 ```
 
-**Develop Get**
+## `domain`
+Manage domains in the DataOS®
+```shell
 
-Get running development containers.
-
-```bash
 Usage:
-dataos-ctl develop get [flags]
+  dataos-ctl domain [command]
+
+Available Commands:
+  apply       Apply DataOS® Domains
+  delete      Delete DataOS® Domains
+  get         Get DataOS® Domains
 
 Flags:
--h, --help   help for get
+  -h, --help   help for domain
+
+Global Flags:
+      --tls-allow-insecure   Allow insecure TLS connections
+
+Use "dataos-ctl domain [command] --help" for more information about a command.
 ```
+To learn more, refer to [Domain Command Group](domain/details.md).
 
-**Develop Port-Forward**
+## `fastbase`
+Interact with the FastBase Depot in the DataOS®
 
-Create development port-forward.
+```shell
 
-```bash
 Usage:
-dataos-ctl develop port-forward [flags]
+  dataos-ctl fastbase [command]
+
+Available Commands:
+  namespace   Interact with namespaces in the DataOS® FastBase
+  tenant      Interact with tenants in the DataOS® FastBase
+  topic       Interact with topics in the DataOS® FastBase
 
 Flags:
--h, --help               help for port-forward
--n, --name string        Name of the Resource
-    --pod                Forward specific pod directly
--p, --port string        Port mapping of the Resource (default "3000:3000")
--t, --type string        Type of the Resource (default "service")
--w, --workspace string   Workspace of the Resource (default "public")
+  -h, --help   help for fastbase
+
+Global Flags:
+      --tls-allow-insecure   Allow insecure TLS connections
+
+Use "dataos-ctl fastbase [command] --help" for more information about a command.
 ```
+To learn more, refer to [Fastbase Command Group](fastbase/details.md).
 
-**Develop Stop**
-
-Stop running development containers.
-
-```bash
-Usage:
-dataos-ctl develop stop [flags]
-
-Flags:
--i, --containerId string   Container ID
--h, --help                 help for stop
-```
-
-### **Get**
+## `get`
 
 Use *get* to pull a list of resources you have currently on your DataOS cluster. The types of resources you can get include-depot, function, job, policy, service, secret.
 
 ```bash
 Usage:
-dataos-ctl get [flags]
+  dataos-ctl get [flags]
+  dataos-ctl get [command]
+
+Available Commands:
+  runtime     Get DataOS® Runtime Details
 
 Flags:
--a, --all                Get resources for all owners
--d, --details            Set to true to include details in the result
--h, --help               Help for get command
--i, --identifier string  Identifier of resource, like: NAME:VERSION:TYPE
--n, --name string        Name to query
--o, --owner string       Get resources for a specific owner id, defaults to your id.
--r, --refresh            Auto refresh the results
-    --refreshRate int    Refresh rate in seconds (default 5)
-    --tags               Set to true to include tags in the result
--t, --type string        The resource type to get. Workspace resources: workflow, service, cluster, secret, database, model, synth. Cluster resources: depot, policy, compute.
--w, --workspace string   Workspace to query
-```
+  -a, --all                   Get resources for all owners
+  -d, --details               Set to true to include details in the result
+  -h, --help                  help for get
+      --id string             Resource ID, like: TYPE:VERSION:NAME:WORKSPACE(optional), depot:v1:icebase or service:v1:ping:sandbox
+  -i, --identifier string     Identifier of resource, like: NAME:VERSION:TYPE
+  -f, --manifestFile string   Manifest File location
+  -n, --name string           Name to query
+  -o, --owner string          Get resources for a specific owner id, defaults to your id.
+  -r, --refresh               Auto refresh the results
+      --refreshRate int       Refresh rate in seconds (default 5)
+      --tags                  Set to true to include tags in the result
+      --tls-allow-insecure    Allow insecure TLS connections
+  -t, --type string           The resource type to get. Workspace resources: workflow,service,worker,secret,database,cluster,volume,resource,monitor,pager,lakehouse. Instance resources: policy,depot,compute,dataplane,stack,operator,bundle,instance-secret,grant.
+      --unSanitize            Get the resources un-sanitized, this includes sensitive fields.
+  -v, --version string        Version to query (default "v1")
+  -w, --workspace string      Workspace to query
 
-Examples: All four syntaxes of the command are valid.
+Use "dataos-ctl get [command] --help" for more information about a command.
+```
+**Examples:** All four syntaxes of the command are valid.
 
 ```jsx
 dataos-ctl get -t workflow -w public -n quality-checks-test-cases
@@ -618,7 +296,7 @@ dataos-ctl -i "quality-checks-test-cases | v1beta1 | workflow | public"   get
 dataos-ctl get -i "quality-checks-test-cases | v1beta1 | workflow | public"
 ```
 
-Output:
+**Output:**
 
 ```bash
 INFO[0000] 🔍 workflow...                                
@@ -629,115 +307,9 @@ INFO[0002] 🔍 workflow...complete
   quality-checks-test-cases | v1beta1 | workflow |  public   |   active   | succeeded | rakeshvishvakarma21  
 ```
 
-### **Get Runtime**
+To learn more, refer to [Get Command Group](get/details.md).
 
-Get the runtime details of a resource in the DataOS.
-
-```bash
-Usage:
-dataos-ctl get [flags]
-
-Flags:
--d, --details             Set to true to include details in the result
--h, --help                help for get
--i, --identifier string   Identifier of resource, like: NAME:VERSION:TYPE
--n, --name string         Name to query
--r, --runtime             Set to true to include runtime details in the result
-    --tags                Set to true to include tags in the result
--t, --type string         The resource type to get. Workspace resources: workflow, service, secret. Cluster resources: depot, policy.
--w, --workspace string    Workspace to query
-```
-
-Examples:
-
-```bash
-dataos-ctl get runtime -t depot -n icebase
-dataos-ctl get runtime -w system -t cluster -n minervaa
-dataos-ctl get runtime -w system -t service -n iosa-receiver
-dataos-ctl get runtime -w public -t workflow -n cnt-city-demo-01
-dataos-ctl -i "quality-checks-test-cases | v1beta1 | workflow | public"  get runtime
-```
-
-You can also provide a string to get the runtime information.
-
-```bash
-dataos-ctl -i "quality-checks-test-cases | v1beta1 | workflow | public"  get runtime
-```
-
-Output:
-
-```bash
-INFO[0000] 🔍 workflow...                                
-INFO[0002] 🔍 workflow...complete                        
-
-            NAME            | VERSION |   TYPE   | WORKSPACE |     TITLE      |        OWNER         
-----------------------------|---------|----------|-----------|----------------|----------------------
-  quality-checks-test-cases | v1beta1 | workflow | public    | Quality-Checks | rakeshvishvakarma21  
-
-           JOB NAME          |   STACK    |        JOB TITLE        |    JOB DEPENDENCIES     
------------------------------|------------|-------------------------|-------------------------
-  dataos-tool-quality-checks | toolbox    |                         | quality-checks-summary  
-  quality-checks-summary     | flare:1.0  | quality-checks datasets |                         
-  system                     | dataos_cli | System Runnable Steps   |                         
-
-  SCHEDULED RUNTIME |    LAST SCHEDULED TIME     
---------------------|----------------------------
-  RUNNING           | 2021-11-01T14:30:00+05:30  
-
-  RUNTIME | PROGRESS |          STARTED          | FINISHED  
-----------|----------|---------------------------|-----------
-  running | 2/3      | 2021-11-01T14:30:00+05:30 |           
-
-                NODE NAME               |        JOB NAME        |                       POD NAME                       |     TYPE     |       CONTAINERS        |   PHASE    
-----------------------------------------|------------------------|------------------------------------------------------|--------------|-------------------------|------------
-  quality-checks-summary-bviw-driver    | quality-checks-summary | quality-checks-summary-bviw-driver                   | pod-flare    | spark-kubernetes-driver | running    
-  quality-checks-summary-execute        | quality-checks-summary | quality-checks-test-cases-bviw-1635757200-996077945  | pod-workflow | main                    | running    
-  quality-checks-summary-start-rnnbl    | quality-checks-summary | -checks-test-cases-bviw-1635757200-3571325227 |
-```
-
-These commands get the runtime info and display the "node"s that are involved, then you can get the details of a specific node which then gives you the pod details of that node:
-
-```bash
-dataos-ctl -i "quality-checks-test-cases | v1beta1 | workflow | public" --node quality
--checks-summary-bviw-driver  get runtime
-```
-
-Output:
-
-```bash
-INFO[0000] 🔍 node...                                    
-INFO[0003] 🔍 node...complete                            
-
-              NODE NAME              |              POD NAME              |    IMAGE PULL SECRETS     |   PHASE    
--------------------------------------|------------------------------------|---------------------------|------------
-  quality-checks-summary-bviw-driver | quality-checks-summary-bviw-driver | dataos-container-registry | Succeeded  
-
-      CONTAINER NAME      |         CONTAINER IMAGE          | CONTAINER IMAGE PULL POLICY  
---------------------------|----------------------------------|------------------------------
-  spark-kubernetes-driver | docker.io/rubiklabs/flare:5.5.48 | IfNotPresent                 
-
-  POD CONDITION TYPE | POD CONDITION STATUS | MESSAGE |           TIME             
----------------------|----------------------|---------|----------------------------
-  Initialized        | True                 |         | 2021-11-01T15:45:26+05:30  
-  PodScheduled       | True                 |         | 2021-11-01T15:45:26+05:30  
-  Ready              | False                |         | 2021-11-01T15:47:25+05:30  
-  ContainersReady    | False                |         | 2021-11-01T15:47:25+05:30  
-
-      CONTAINER NAME      |        CONTAINER STATE         |          STARTED          |         FINISHED           
---------------------------|--------------------------------|---------------------------|----------------------------
-  spark-kubernetes-driver | Terminated Reason:Completed    | 2021-11-01T15:45:28+05:30 | 2021-11-01T15:47:25+05:30  
-                          | Message: ExitCode: 0           |                           |                            
-
-  EVENT TYPE | EVENT REASON |   EVENT SOURCE    |                    EVENT MESSAGE                    |       LAST OCCURRED       | COUNT  
--------------|--------------|-------------------|-----------------------------------------------------|---------------------------|--------
-  Warning    | FailedMount  | kubelet           | MountVolume.SetUp failed for                        | 2021-11-01T15:00:31+05:30 | 1      
-             |              |                   | volume "spark-conf-volume-driver"                   |                           |        
-             |              |                   | : configmap                                         |                           |        
-             |              |                   | "spark-drv-9f60d37cdad602e6-conf-map"               |                           |        
-             |              |                   | not found                                           |                           |
-```
-
-### **Health**
+## `health`
 
 Get health of DataOS CLI, DataOS resources and services. It checks if server is reachable and helps in troubleshooting.
 
@@ -761,7 +333,7 @@ INFO[0005] 🔗...https://formerly-saving-lynx.dataos.io
 INFO[0005] ⛅️...gcp
 ```
 
-### **Help**
+## `help`
 
 Get help for any command in the application.
 
@@ -773,7 +345,7 @@ Flags:
 -h, --help   help for help
 ```
 
-### **Init**
+## `init`
 
 Initialize the DataOS environment.
 
@@ -783,27 +355,50 @@ dataos-ctl init [flags]
 
 Flags:
 -h, --help   help for init
+-n, --oldInitFlow   Use the old initialization flow
+
 ```
+## `jq`
+JSON filter a manifest using a jq filter
 
-### **Log**
+```shell
 
-Get the logs for a resource in the DataOS.
-
-```bash
 Usage:
-dataos-ctl log [flags]
+  dataos-ctl jq [flags]
 
 Flags:
--f, --follow              Follow the logs
--h, --help                help for log
--i, --identifier string   Identifier of resource, like: NAME:VERSION:TYPE
--r, --includeRunnable     Include runnable system pods and logs
--n, --name string         Name to query
--t, --type string         The resource type to get, possible values: service, workflow
--w, --workspace string    Workspace to query (default "public")
+      --filter string         jq filter
+  -h, --help                  help for jq
+  -f, --manifestFile string   Manifest file location
+```
+## log
+
+Get the logs for a resource in the DataOS®
+
+```bash
+
+Usage:
+  dataos-ctl log [flags]
+
+Aliases:
+  log, logs
+
+Flags:
+  -c, --container string    Container name to filter logs
+  -f, --follow              Follow the logs
+  -h, --help                help for log
+  -i, --identifier string   Identifier of resource, like: NAME:VERSION:TYPE
+  -r, --includeRunnable     Include runnable system pods and logs
+  -n, --name string         Name to query
+      --node string         Node name to filter logs
+  -l, --tailLines int       Number of tail lines to retrieve, use -1 to get all logs (default 300)
+  -t, --type string         The resource type to get, possible values: service, workflow, cluster, depot
+  -v, --version string      Version to query (default "v1")
+  -w, --workspace string    Workspace to query (default "public")
 ```
 
-Examples: The log command has been updated to pass a "node" as well as to support getting logs for "cluster" and "depot" types that have runtimes. If you don't pass a "node" to the logs command it will try to display all the "main" logs for all nodes.
+**Examples: **
+The log command has been updated to pass a "node" as well as to support getting logs for "cluster" and "depot" types that have runtimes. If you don't pass a "node" to the logs command it will try to display all the "main" logs for all nodes.
 
 ```bash
 dataos-ctl log -w public -t workflow -n cnt-city-demo-01 --node city-execute
@@ -817,7 +412,7 @@ dataos-ctl -i "quality-checks-test-cases | v1beta1 | workflow | public" --node q
 -checks-summary-bviw-driver log
 ```
 
-Output:
+**Output:**
 
 ```bash
 INFO[0000] 📃 log(public)...                             
@@ -836,11 +431,9 @@ INFO[0003] 📃 log(public)...complete
 ...
 ```
 
-you can also pass the "-c" command with the container name you want to see the logs for.
+## `login`
 
-### **Login**
-
-Login to the DataOS.
+Log in to DataOS®
 
 ```bash
 Usage:
@@ -850,204 +443,201 @@ Flags:
 -h, --help      help for login
 ```
 
-### **Maintenance**
+## `maintenance`
 
-Maintenance of the DataOS.
+Maintenance of the DataOS®
 
 ```bash
+
 Usage:
-dataos-ctl maintenance [command]
+  dataos-ctl maintenance [command]
 
 Available Commands:
-collect-garbage collects garbage on the DataOS.
+  collect-garbage      Collect Garbage on the DataOS®
+  create-docker-secret Creates a Docker Secret for K8S
 
 Flags:
--h, --help   help for maintenance
-
-Use "dataos-ctl maintenance [command] --help" for more information about a command.
+  -h, --help   help for maintenance
 ```
+To learn more, refer to [Maintenance Command Group](maintenance/details.md).
 
-**Maintenance Collect-garbage**
 
-Collect Garbage on the DataOS.
+## `operate`
+Operate the DataOS®
 
-```bash
+```shell
+
 Usage:
-dataos-ctl maintenance collect-garbage [flags]
-
-Flags:
--d, --duration string     The duration to calculate the age of resources that are eligible for garbage collection (default "168h")
--h, --help                help for collect-garbage
--k, --kubeconfig string   Kubeconfig file location
--l, --layer string        The layer to target in the DataOS, user|system (default "user")
-```
-
-### **Operate**
-
-Operate the DataOS.
-
-```bash
-Usage:
-dataos-ctl operate [command]
+  dataos-ctl operate [command]
 
 Available Commands:
-apply        Apply manifest
-chart-export Exports a Helm Chart from a Chart Registry
-git          Git component manifests
-install      Install components
-ping         Ping
-upgrade      Upgrade components
-view         View DataOS® Operator Services
-zip          Zip install files
+  chart-export   Exports a Helm Chart from a Chart Registry
+  exec-stream    Execute-stream a command on a specific target
+  get-dataplanes Get the dataplanes
+  get-secret     Gets a secret from Heimdall
+  log-stream     Stream the logs on a specific target
+  pulsar         Pulsar management
+  tcp-stream     Tcp-stream a specific address
 
 Flags:
   -h, --help   help for operate
 
+Global Flags:
+      --tls-allow-insecure   Allow insecure TLS connections
+
 Use "dataos-ctl operate [command] --help" for more information about a command.
 ```
+<aside class="callout"> The<i> <b>operate </b></i>command is intended for use by system administrators. If you would like more information about its various subcommands, please reach out to our Customer Success team.</aside>
 
-**Operate Apply**
+## `product`
+Manage products in the DataOS®
 
-Apply manifest on the DataOS.
+```shell
 
-```bash
 Usage:
-dataos-ctl operate apply [flags]
+  dataos-ctl product [command]
+
+Available Commands:
+  apply       Apply DataOS® Products
+  delete      Delete DataOS® Products
+  get         Get DataOS® Products
 
 Flags:
--h, --help                  help for apply
--f, --manifestFile string   Single Manifest File Location
--n, --namespace string      Namespace
+  -h, --help   help for product
+
+Global Flags:
+      --tls-allow-insecure   Allow insecure TLS connections
+
+Use "dataos-ctl product [command] --help" for more information about a command.
 ```
+To learn more, refer to [Product Command Group](product/details.md).
 
-**Operate Chart-Export**
+## `query-gateway`
+Interact with the Query Gateway in the DataOS®
 
-Exports a Helm Chart from a Chart Registry.
+```shell
 
-```bash
 Usage:
-dataos-ctl operate chart-export [flags]
+  dataos-ctl query-gateway [command]
+
+Available Commands:
+  connect     Connect to the DataOS® Query Gateway
 
 Flags:
-    --accessKey string      The AWS Access Key for ECR Chart Registry
-    --accessSecret string   The AWS Access Secret for ECR Chart Registry
--c, --chart string          The chart ref
--d, --exportDir string      The directory to export the Helm chart
--h, --help                  help for chart-export
-    --region string         The AWS Region for ECR Chart Registry
-    --registry string       The AWS ECR Chart Registry
+  -h, --help   help for query-gateway
+
+Global Flags:
+      --tls-allow-insecure   Allow insecure TLS connections
+
+Use "dataos-ctl query-gateway [command] --help" for more information about a command.
 ```
+To learn more, refer to [Query-gateway Command Group](query-gateway/details.md).
 
-**Operate Get-Secret**
+## `resource`
+Manage resources in the DataOS®
 
-Gets a secret from Heimdall.
+```shell
 
-```bash
 Usage:
-dataos-ctl operate get-secret [flags]
+  dataos-ctl resource [command]
+
+Available Commands:
+  apply       Apply DataOS® Resources
+  create      Create DataOS® Resources
+  delete      Delete DataOS® Resources
+  get         Get DataOS® Resources
+  log         Get DataOS® Resource Logs
+  run         Run DataOS® Resource
+  runtime     DataOS® runtime management commands
+  tcp-stream  Open a tcp stream for DataOS® Resources
+  update      Update DataOS® Resources
 
 Flags:
--h, --help        help for get-secret
--i, --id string   The secret id
+  -h, --help   help for resource
+
+Global Flags:
+      --tls-allow-insecure   Allow insecure TLS connections
+
+Use "dataos-ctl resource [command] --help" for more information about a command.
 ```
+To learn more, refer to [Resource Command Group](resource/details.md).
 
-**Operate Git**
+## `role`
+Manage DataOS® Roles
 
-Git component manifests on the DataOS.
+```shell
 
-```bash
 Usage:
-dataos-ctl operate git [flags]
+  dataos-ctl role [command]
+
+Aliases:
+  role, roles
+
+Available Commands:
+  changes     View a DataOS® Role changes
+  get         Get DataOS® Roles
 
 Flags:
--e, --email string   Operator email
--h, --help           help for git
--l, --localOnly      Perform local only
--n, --name string    Operator name
--p, --push           Push changes
--r, --resetGitDir    Reset the local git directory
+  -h, --help   help for role
+
+Global Flags:
+      --tls-allow-insecure   Allow insecure TLS connections
+
+Use "dataos-ctl role [command] --help" for more information about a command.
 ```
+To learn more, refer to [Role Command Group](role/details.md).
 
-**Operate Install**
+## `runtime`
+DataOS® runtime management commands
 
-When you create a new server, you want to install new applications on the server. Use this command to install one or more applications/components on the server.
+```shell
 
-```bash
 Usage:
-dataos-ctl operate install [flags]
+  dataos-ctl runtime [command]
+
+Available Commands:
+  get         Get DataOS® Runnable Resources
+  pause       Pause DataOS® Runnable Resources
+  re-run      Re-run DataOS® Runnable Resources
+  resume      Resume DataOS® Runnable Resources
+  stop        Stop DataOS® Runnable Resources
 
 Flags:
--h, --help                    help for install
--i, --imagesFile string       Installation Images File Location
--f, --installFile string      Installation Manifest File Location
--n, --noGitOps                Do not push changes to the GitOps repo in DataOS®
-    --oldReleaseManifest      Use old install manifest format
-    --renderOnly              Render only
--r, --replaceIfExists         Replace existing resources
--s, --secretsFile string      Installation Secrets File Location
-    --useExternalPostgresql   Use external postgresql
--v, --valuesFile string       Installation Values File Location
+  -h, --help   help for runtime
+
+Global Flags:
+      --tls-allow-insecure   Allow insecure TLS connections
+
+Use "dataos-ctl runtime [command] --help" for more information about a command.
 ```
+To learn more, refer to [Runtime Command Group](runtime/details.md).
 
-**Operate Ping**
+## `tcp-stream`
 
-```bash
+Open a tcp stream for resources in the DataOS®
+```shell
+Open a tcp stream for resources in the DataOS®
+
 Usage:
-dataos-ctl operate ping [flags]
+  dataos-ctl tcp-stream [flags]
 
 Flags:
--h, --help   help for ping
+      --dataplane string       Dataplane name; default=hub (default "hub")
+  -h, --help                   help for tcp-stream
+  -i, --identifier string      Identifier of resource, like: NAME:VERSION:TYPE
+      --listenPort int         Port the local client will listen on to tcp stream (default 14040)
+  -n, --name string            Name of resource
+      --node string            Node name to open tcp stream in resource runtime
+      --servicePort int        Service port to be forwarded (default 4040)
+      --serviceSuffix string   Suffix to override default service suffix: ui-svc (default "ui-svc")
+      --tls-allow-insecure     Allow Insecure TLS connections
+  -t, --type string            The resource type to tcp-stream. Workspace resources: workflow,service,worker,secret,database,cluster,volume,resource,monitor,pager,lakehouse. Instance resources: policy,depot,compute,dataplane,stack,operator,bundle,instance-secret,grant.
+  -w, --workspace string       Workspace to target resource (default "public")
 ```
 
-**Operate Upgrade**
-
-Upgrade components on the DataOS.
-
-```bash
-Usage:
-dataos-ctl operate upgrade [flags]
-
-Flags:
--h, --help                    help for upgrade
--i, --imagesFile string       Installation Images File Location
--f, --installFile string      Installation Manifest File Location
-    --oldReleaseManifest      Use old install manifest format
--s, --secretsFile string      Installation Secrets File Location
-    --useExternalPostgresql   Use external postgresql
--v, --valuesFile string       Installation Values File Location
-```
-
-**Operate View**
-
-View DataOS Operator Services from the local machine without going to server. You can create a data pipe from server to local machine.
-
-```bash
-Usage:
-dataos-ctl operate view [flags]
-
-Flags:
--h, --help                            help for view
--p, --localPort int                   The starting local port to port-forward services to (default 8081)
--s, --servicesToPortForward strings   The comma separated list of services to port-forward local: 
-                                        metis,cerebro,aurora-beanstalkd,git,prometheus,
-                                        service-mesh,cruise-control,kibana,spark-history
-```
-
-```bash
-➜  ~ dataos-ctl operate view -s metis
-INFO[0000] 📚 metis view...                              
-INFO[0000] 🔭 metis port-forward..                       
-INFO[0003] close connections hit enter/return?
-INFO[0004] 🔭 metis port-forward.. ready
-INFO[0004] : metis http://localhost:8081
-```
-
-> 📌 **Note**: Config File ".dataos.ck.config" should be present in the folder  "[/Users/[username]/.dataos/context].
-> 
-
-### **TUI**
-
-Dataos-ctl TUI is a Terminal User Interface for DataOS. It shows all the key resources deployed on the server. You can click on the resource menu to see the corresponding details in the Resource Summary section. You can view artefacts and Run time services/resources and and their YAML. You can also view logs for runtime.
+## `tui`
+Terminal UI of the DataOS®
+Dataos-ctl TUI is a Terminal User Interface for DataOS®. It shows all the key resources deployed on the server. You can click on the resource menu to see the corresponding details in the Resource Summary section. You can view artefacts and Run time services/resources and their YAML. You can also view logs for runtime.
 
 ![cli-tui.png](cli-tui.png)
 
@@ -1060,7 +650,96 @@ Flags:
 -w, --workspaces string   list of workspaces to include, comma separated
 ```
 
-### **Version**
+## `update`
+Update resources in the DataOS®
+
+```shell
+
+Usage:
+  dataos-ctl update [flags]
+
+Flags:
+      --disable-interpolation   Disable interpolation, do not interpolate $ENV|${ENV}
+      --disable-resolve-stack   Disable resolve stack
+  -h, --help                    help for update
+  -f, --manifestFile string     Manifest file location
+  -R, --recursive               Get manifest files recursively from the provided directory
+      --tls-allow-insecure      Allow insecure TLS connections
+  -w, --workspace string        Workspace to target resource (default "public")
+
+```
+
+## `user`
+Manage DataOS® Users
+
+```shell
+
+Usage:
+  dataos-ctl user [command]
+
+Aliases:
+  user, users
+
+Available Commands:
+  apikey      Manage a DataOS® User apikey
+  changes     View a DataOS® User changes
+  create      Create a DataOS® User
+  delete      Delete a DataOS® User
+  get         Get DataOS® Users
+  tag         Manage DataOS® User's tags
+
+Flags:
+  -h, --help   help for user
+
+Global Flags:
+      --tls-allow-insecure   Allow insecure TLS connections
+
+Use "dataos-ctl user [command] --help" for more information about a command.
+```
+To learn more, refer to [User Command Group](user/details.md).
+
+## `usql`
+usql, the universal command-line interface for SQL databases
+
+```shell
+
+Usage:
+  usql [OPTIONS]... [DSN]
+
+Arguments:
+  DSN                            database url
+
+Flags:
+  -c, --command=COMMAND ...    run only single command (SQL or internal) and exit
+  -f, --file=FILE ...          execute commands from file and exit
+  -w, --no-password            never prompt for password
+  -X, --no-rc                  do not read start up file
+  -o, --out=OUT                output file
+  -W, --password               force password prompt (should happen automatically)
+  -1, --single-transaction     execute as a single transaction (if non-interactive)
+  -v, --set=, --variable=NAME=VALUE ...  
+                               set variable NAME to VALUE
+  -P, --pset=VAR[=ARG] ...     set printing option VAR to ARG (see \pset command)
+  -F, --field-separator=FIELD-SEPARATOR ...  
+                               field separator for unaligned and CSV output (default "|" and ",")
+  -R, --record-separator=RECORD-SEPARATOR ...  
+                               record separator for unaligned and CSV output (default \n)
+  -T, --table-attr=TABLE-ATTR ...  
+                               set HTML table tag attributes (e.g., width, border)
+  -A, --no-align               unaligned table output mode
+  -H, --html                   HTML table output mode
+  -t, --tuples-only            print rows only
+  -x, --expanded               turn on expanded table output
+  -z, --field-separator-zero   set field separator for unaligned and CSV output to zero byte
+  -0, --record-separator-zero  set record separator for unaligned and CSV output to zero byte
+  -J, --json                   JSON output mode
+  -C, --csv                    CSV output mode
+  -G, --vertical               vertical output mode
+  -q, --quiet                  run quietly (no messages, only query output)
+      --version                display version and exit
+```
+
+##  `version`
 
 Print the version number of DataOS.
 
@@ -1072,7 +751,7 @@ Flags:
 -h, --help   help for version
 ```
 
-### **View**
+## `view`
 
 Use this command to open GUI applications from the terminal. 
 
@@ -1085,14 +764,14 @@ Flags:
 -h, --help                 help for view
 ```
 
-For example,
+**Example:**
 
 ```jsx
 dataos-ctl view -a workbench
 #this command will directly take you to the Workbench app in a new tab of the web browser 
 ```
 
-### **Workspace**
+## `workspace`
 
 Manage DataOS workspaces.
 
@@ -1110,160 +789,4 @@ Flags:
 
 Use "dataos-ctl workspace [command] --help" for more information about a command.
 ```
-
-**Workspace Create**
-
-Create workspace.
-
-```jsx
-Usage:
-dataos-ctl workspace create [flags]
-
-Flags:
--d, --description string   workspace description
--h, --help                 help for create
-    --labels strings       The workspace labels
--l, --layer string         workspace layer (default "user")
--n, --name string          workspace name
-    --tags strings         The workspace tags
--v, --version string       workspace version (default "v1beta1")
-```
-
-**Workspace Delete**
-
-Delete workspaces.
-
-```jsx
-Usage:
-dataos-ctl workspace delete [flags]
-
-Flags:
--h, --help          help for delete
--n, --name string   workspace name
-```
-
-**Workspace Get**
-
-Get workspaces.
-
-```jsx
-Usage:
-dataos-ctl workspace get [flags]
-
-Flags:
--h, --help           help for get
--l, --layer string   workspace layer (default "user")
-```
-
-### **User**
-
-Manage DataOS users.
-
-```bash
-Usage:
-dataos-ctl user [command]
-
-Available Commands:
-apikey      Manage a DataOS® User apikey
-delete      Delete a user
-get         Get users
-tag         Manage DataOS® User's tags
-
-Flags:
--h, --help   help for user
-
-Use "dataos-ctl user [command] --help" for more information about a command.
-```
-
-**User Apikey**
-
-Manage a DataOS user apikey.
-
-```bash
-Usage:
-dataos-ctl user apikey [command]
-
-Available Commands:
-create      Create an apikey for a user
-delete      Delete the apikey for a user
-get         Get the apikey for a user
-
-Flags:
--h, --help   help for apikey
-
-Use "dataos-ctl user apikey [command] --help" for more information about a command.
-```
-
-**User Delete**
-
-Delete a user
-
-```bash
-Usage:
-dataos-ctl user delete [flags]
-
-Flags:
--h, --help        help for delete
--i, --id string   Id of the user
-```
-
-**User Get**
-
-Get users
-
-```bash
-Usage:
-dataos-ctl user get [flags]
-
-Flags:
--a, --all         Get all users
--h, --help        help for get
--i, --id string   Id of the user
-```
-
-**User Tag**
-
-Manage DataOS user's tags.
-
-```bash
-Usage:
-dataos-ctl user tag [command]
-
-Available Commands:
-add         Add tags to a user
-delete      Delete tags from a user
-
-Flags:
--h, --help   help for tag
-
-Use "dataos-ctl user tag [command] --help" for more information about a command.
-```
-
-**User Tag Add**
-
-Add tags to a user.
-
-```bash
-Usage:
-dataos-ctl user tag add [flags]
-
-Flags:
--h, --help           help for add
--i, --id string      Id of the user
--t, --tags strings   The tags to add
-```
-
-**User Tag Delete**
-
-Delete tags from a user.
-
-```bash
-Usage:
-dataos-ctl user tag delete [flags]
-
-Flags:
--h, --help           help for delete
--i, --id string      Id of the user
--t, --tags strings   The tags to delete
-```
-
+To learn more, refer to [Workspace Command Group](workspace/details.md).

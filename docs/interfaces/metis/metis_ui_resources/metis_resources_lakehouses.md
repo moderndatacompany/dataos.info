@@ -1,13 +1,14 @@
-# Metis Resources- Lakehouses
+# Lakehouses Metadata On Metis UI
 
 <aside class="callout">
-⚠️ This page guides you on exploring and managing metadata for Lakehouses on Metis. To learn in detail about the Lakehouse as a  DataOS Resource, refer to this link.
+⚠️ This page guides you on exploring and managing metadata for Lakehouses on Metis. To learn in detail about the Lakehouse as a  DataOS Resource, refer to this <a href="/resources/">link</a>.
 
 </aside>
 
 Metis has integrated "Lakehouse" as a "Resource" type entity for storing metadata related to its configuration, such as compute used, depot used to refer, and metastore properties within DataOS. On selecting **Lakehouses,** the following information will appear on the screen:
 
 ![lakehouses.png](metis_resources_lakehouses/lakehouses.png)
+<figcaption align = "center"> List of Lakehouses  </figcaption>
 
 ## Filter pane
 
@@ -48,6 +49,7 @@ Each Lakehouse resource in the list will have a Card view that displays the foll
 In the card view, click anywhere except the resource name to get the overview.
 
 ![lakehouse_overview.png](metis_resources_lakehouses/lakehouse_overview.png)
+<figcaption align = "center"> Quick information  </figcaption>
 
 This includes the following information for quick reference:
 
@@ -65,6 +67,7 @@ This includes the following information for quick reference:
 In the Result or Overview pane, click on the name of the Lakehouse to open the Resource Details page, which includes:
 
 ![lakehouse_details.png](metis_resources_lakehouses/lakehouse_details.png)
+<figcaption align = "center"> Comprehensive details  </figcaption>
 
 ### **Lakehouses Information**
 
