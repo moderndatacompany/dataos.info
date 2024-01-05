@@ -1,13 +1,14 @@
-# Metis Resources- Secrets
+# Secrets Metadata On Metis UI
 
 <aside class="callout">
-⚠️ This page guides you on exploring and managing metadata for Secrets on Metis. To learn in detail about the Secret as a DataOS Resource, refer to this link.
+⚠️ This page guides you on exploring and managing metadata for Secrets on Metis. To learn in detail about the Secret as a DataOS Resource, refer to this <a href="/resources/secret/">link</a>.
 
 </aside>
 
 Metis has integrated "Secret" as a "Resource" type entity for storing metadata related to the source for which it is created, the specific workspace of its creation, and its current state within DataOS. On selecting **Secrets,** the following information will appear on the screen:
 
 ![secrets.png](metis_resources_secrets/secrets.png)
+<figcaption align = "center"> List of Secrets  </figcaption>
 
 ## Filter pane
 
@@ -48,6 +49,7 @@ Each secret resource in the list will have a Card view that displays the followi
 In the card view, click anywhere except the resource name to get the overview.
 
 ![secret_overview.png](metis_resources_secrets/secret_overview.png)
+<figcaption align = "center"> Quick information  </figcaption>
 
 This includes the following information for quick reference:
 
@@ -65,6 +67,7 @@ This includes the following information for quick reference:
 In the Result or Overview pane, click on the name of the secret to open the Resource Details page, which includes:
 
 ![secret_details.png](metis_resources_secrets/secret_details.png)
+<figcaption align = "center"> Comprehensive details  </figcaption>
 
 ### **Secrets Information**
 

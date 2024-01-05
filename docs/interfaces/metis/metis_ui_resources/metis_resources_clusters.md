@@ -1,13 +1,14 @@
-# Metis Resources- Clusters
+# Clusters Metadata On Metis UI
 
 <aside class="callout">
-⚠️ This page guides you on exploring and managing metadata for Clusters on Metis. To learn in detail about the Cluster as a Resource, refer to this link.
+⚠️ This page guides you on exploring and managing metadata for Clusters on Metis. To learn in detail about the Cluster as a Resource, refer to this <a href="/resources/cluster/">link</a>.
 
 </aside>
 
 Metis has integrated "**Cluster**" as a "Resource type" entity for storing metadata related to its Compute and configuration settings, Cluster analysis to view the query load distribution along with failed queries for each of the clusters up and running within the DataOS instance. On selecting **Clusters,** the following information will appear on the screen:
 
 ![clusters.png](metis_resources_clusters/clusters.png)
+<figcaption align = "center"> List of Clusters  </figcaption>
 
 ## Filter pane
 
@@ -52,6 +53,7 @@ Each Cluster in the list will display the following information:
 Click anywhere except the Cluster name to view the overview. 
 
 ![cluster_overview.png](metis_resources_clusters/cluster_overview.png)
+<figcaption align = "center"> Quick information  </figcaption>
 
 This includes the following quick reference information:
 
@@ -70,6 +72,7 @@ This includes the following quick reference information:
 In the Result or Overview pane, click on the name of the Cluster to open the Resource Details page, which includes:
 
 ![cluster_details.png](metis_resources_clusters/cluster_details.png)
+<figcaption align = "center"> Comprehensive details  </figcaption>
 
 ### **Cluster Information**
 In addition to basic Cluster information, the following details and options are provided.
@@ -124,6 +127,7 @@ This section offers comprehensive information regarding the cluster's manifest. 
 This section provides an overview of the cluster's execution history. It offers a concise summary of past runs, allowing users to quickly access information about the cluster's previous operations and performance.
 
 ![cluster_runtime.png](metis_resources_clusters/cluster_runtime.png)
+<figcaption align = "center">Runtime information  </figcaption>
 
 You can access more details by clicking on the link.
 
@@ -152,3 +156,4 @@ This option empowers you to gain valuable insights into the performance and effi
 The cluster analysis provides visibility into any failed queries within the cluster running within the DataOS instance. This information is invaluable for troubleshooting issues and ensuring the smooth operation of your data processing infrastructure.
 
 ![Screen Shot 2023-09-18 at 10.56.46 AM.png](metis_resources_clusters/Screen_Shot_2023-09-18_at_10.56.46_AM.png)
+<figcaption align = "center"> Cluster analysis </figcaption>
