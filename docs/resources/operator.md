@@ -13,7 +13,7 @@ Operator is a [DataOS Resource](../resources.md) that provides a standardized in
 At its core, an Operator empowers the DataOS orchestrator, referred to as *Poros*, to manage these external resources using custom-built Operators. 
 
 <aside class="callout">
-🗣️ The Operator is classified as a <a href="../resources/types_of_dataos_resources.md#cluster-level-resources">Platform-level DataOS Resource</a>. Its creation and management fall under the purview of either the <b>DataOS Operator/Administrator</b> or the <b>Platform Engineering</b> team within an organization.
+🗣️ The Operator is classified as a <a href="/resources/types_of_dataos_resources/#cluster-level-resources">Platform-level DataOS Resource</a>. Its creation and management fall under the purview of either the <b>DataOS Operator/Administrator</b> or the <b>Platform Engineering</b> team within an organization.
 
 </aside>
 
@@ -41,7 +41,7 @@ The Operator enhances the developer experience and enhances productivity by offe
 
 ## How to create an Operator?
 
-Let’s take a scenario in which a data developer wants to trigger a pipeline run in a Azure Data Factory (external platform) and synchronize the metadata from ADF back into DataOS for observability. But before proceeding ahead, make sure you have the following prerequisites.
+Let’s take a scenario in which a data developer wants to trigger a pipeline run in Azure Data Factory (external platform) and synchronize the metadata from ADF back into DataOS for observability. But before proceeding ahead, make sure you have the following prerequisites.
 
 ### **Prerequisites**
 
@@ -56,19 +56,19 @@ To set up your Azure Data Factory Operator, ensure you have the following four f
 
 #### **Pipeline Run-specific Fields**
 
-For programmatic triggering, gather information regarding the various fields required for initiating a pipeline run. Refer to the [Pipeline Run API documentation](https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-run?tabs=HTTP) for details.
+For programmatic triggering, gather information regarding the various fields required for initiating a pipeline run. Refer to the official [Azure Data Factory Pipeline Run API documentation](https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-run?tabs=HTTP) for details.
 
 ### **Steps**
 
 Creating your operator involves a series of logical steps, as outlined below:
 
-1. [Implementing the Operator Interfaces]()<br>
-    a. [Reconciler Interface]()<br>
-    b. [OController Interface]()<br>
-    c. [Message Handler Interface]()
-2. [Dockerize the Code]()
-3. [YAML manifest for Operator]()
-4. [Apply the Operator manifest]()
+1. [Implementing the Operator Interfaces](#implementing-the-operator-interfaces)<br>
+    a. [Reconciler Interface](#implementing-the-operator-interfaces)<br>
+    b. [OController Interface](#implementing-the-operator-interfaces)<br>
+    c. [Message Handler Interface](#implementing-the-operator-interfaces)
+2. [Dockerize the Code](#dockerize-the-code)
+3. [YAML manifest for Operator](#yaml-manifest-for-operator)
+4. [Apply the Operator manifest](#apply-the-operator-yaml)
 5. [Verify Operator creation]()
 6. [YAML manifest for Resource (external Resource)]()
 7. [Apply the Resource manifest]()
@@ -81,7 +81,7 @@ Creating your operator involves a series of logical steps, as outlined below:
 The first step in creating an operator is implementing three key interfaces: Reconciler, OController, and Message Handler Interface using the the [DataOS SDK-Go](https://bitbucket.org/rubik_/dataos-sdk-go). 
 
 <aside class="callout">
-🗣 Implementing the Operator interfaces requires a good understanding of <b>Kubernetes</b> and associated terminology. If the Operator is present within the DataOS context, you can directly proceed to <a href="#re">creating the Resource manifest for the external Resource.</a>
+🗣 Implementing the Operator interfaces requires a good understanding of <b>Kubernetes</b> and associated terminology. If the Operator is present within the DataOS context, you can directly proceed to <a href="/resources/operator/#yaml-manifest-for-resource">creating the Resource manifest for the external Resource.</a>
 
 </aside>
 
@@ -479,7 +479,7 @@ The table below summarizes the attributes of the Operator-specific section:
 
 For in-depth information about the attributes of the Operator-specific section, please consult the [Attributes of Operator-specific section.](./operator/yaml_configuration_attributes.md)
 
-#### **Apply the Operator YAML**
+#### **Apply the Operator manifest**
 
 After creating the YAML configuration file for the Operator Resource, it's time to apply it to instantiate the Resource-instance in the DataOS environment. To apply the Operator YAML file, utilize the [`apply`](../interfaces/cli/command_reference.md#apply) command.
 

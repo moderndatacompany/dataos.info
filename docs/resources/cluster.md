@@ -19,21 +19,57 @@ Within a Cluster, the provisioned group of machines work together to process que
 
 ### **Minerva**
 
-Minerva is an interactive query engine, based on Trino, meticulously crafted to efficiently execute analytical and exploratory workloads. It empowers data developers to effortlessly query diverse data sources using a unified, high-performance SQL interface. With Minerva, data analysis of substantial data volumes becomes simpler, eliminating the need to handle intricate underlying configurations and data formats. 
+Minerva is an interactive static query engine, based on Trino, meticulously crafted to efficiently execute analytical and exploratory workloads. It empowers data developers to effortlessly query diverse data sources using a unified, high-performance SQL interface. With Minerva, data analysis of substantial data volumes becomes simpler, eliminating the need to handle intricate underlying configurations and data formats. 
 
 To maximize performance, organizations can establish Minerva query engine clusters capable of effortlessly handling heavy workloads. These clusters enable the concurrent execution of memory-intensive, I/O-intensive, long-running, and CPU-intensive queries, ensuring efficient processing of diverse data scenarios. 
 
-#### **Querying Diverse Data Sources**
+**Querying Diverse Data Sources**
 
 Minerva supports an extensive range of data sources, encompassing both traditional relational databases such as Oracle, PostgreSQL, MySQL, and Redshift, non-relational sources like Kafka and Cassandra, as well as object storages like Amazon S3, and Google Cloud Storage. This broad compatibility ensures seamless access to various data sources, enabling comprehensive and integrated analyses. To know more about the various data sources supported by Minerva, click on the following link: [Connectors Configuration.](./cluster/connectors_configuration.md)
 
-#### **Query Execution Process**
+**Query Execution Process**
 
 When initiating a SQL query from sources such as Workbench, Atlas, Minerva-CLI, JDBC, or Lens App UI, the query is seamlessly directed to the Minerva Gateway Service. The Gateway Service conducts a thorough analysis of the query and the associated tables, forwarding it to the Minerva Clusters for execution. Furthermore, the Gateway Service facilitates data policy decisions, including Masking and Filtering policies. Once the analysis is completed, the query is seamlessly passed on to the Minerva Cluster for execution.
 
-#### **Managing Data Access Policies and Cluster Resources**
+**Managing Data Access Policies and Cluster Resources**
 
 Minerva assumes the crucial role of executing access policies based on user tags, proficiently managing Cluster access, and providing users with comprehensive reports in case of query rejections or encountered exceptions during execution. By seamlessly handling these aspects, Minerva offers a robust and reliable environment for executing complex data queries while adhering to data governance and security protocols.
+
+### **Themis**
+
+Themis is an elastic SQL query engine optimized for fast, distributed querying across large datasets. As a modern JDBC server, Themis offers a comprehensive interface for various database management systems (DBMS), distinguishing itself through high performance, versatility, scalability, availability, and security measures, making it ideal for large-scale enterprise applications.
+
+**Key Characteristics of Themis**
+
+Themis excels in its domain with several notable features:
+
+- **Elasticity**: In contrast to Minerva, which is a static query engine, Themis operates as an elastic query engine, adapting dynamically to varying workload demands.
+- **Extensive Data Source Compatibility**: Themis supports a broad array of data sources, notably Hive, HBase, and Cassandra. Its compatibility extends to HDFS, Apache Hive, Kafka, and Cassandra, among others, streamlining the process of interfacing with diverse data sources.
+- **Concurrent Processing and Scalability**: Designed with a multi-threaded architecture, Themis excels in demanding enterprise environments that require high concurrency and scalability. It is compatible with major big data frameworks, including Apache Hadoop, Spark, and Kubernetes.
+- **Enhanced Security**: Themis incorporates Apache Hive's security features and supports advanced security protocols such as Kerberos, LDAP, and Active Directory, enabling straightforward integration with existing security infrastructures.
+- **Optimized Performance**: Advanced caching and memory management techniques in Themis significantly enhance SQL query performance and efficiency.
+- **Vibrant Development Community**: Regular updates and improvements are made by an active development community.
+- **JDBC and ODBC Connectivity**: Themis offers native JDBC and ODBC connectivity, facilitating straightforward integration with a range of programming languages and tools.
+- **High Availability**: With inherent load balancing and failover mechanisms, Themis ensures consistent availability and reliability.
+- **Efficient Memory Usage**: Its design prioritizes efficiency, resulting in a smaller memory footprint.
+
+### **Comparative Analysis: Minerva vs. Themis**
+
+Themis and Minerva, both SQL query engines, are designed for efficient, distributed querying in large datasets. The key differences are summarized in the table below:
+
+| Feature | Minerva | Themis | Remarks |
+| --- | --- | --- | --- |
+| Query Engine Type | Static | Elastic | Minerva operates with a fixed allocation of resources, while Themis dynamically allocates resources based on workload demands. |
+| SQL Dialect | TrinoSQL | SparkSQL | Different SQL dialects indicate compatibility with various data processing paradigms. |
+| Underlying Engine | Trino | Kyuubi | This aspect determines the core architecture and capabilities of each engine. |
+| Scalability | Limited | High | Themis offers superior scalability compared to Minerva, accommodating fluctuating workloads efficiently. |
+| Resource Utilization | Constant | Adaptive | Themis adjusts resource usage in real-time, unlike Minerva's consistent resource requirement. |
+| Performance in Variable Workloads | Consistent | Optimal | Themis excels in environments with variable data queries, providing enhanced performance. |
+| Data Source Compatibility | Basic | Extensive | Themis supports a wider range of data sources than Minerva, making it more versatile for diverse data environments. |
+| Security Features | Standard | Advanced | Themis integrates more sophisticated security protocols, beneficial for environments with stringent security requirements. |
+| Concurrency Handling | Moderate | High | Themis is designed to handle higher levels of concurrency, suitable for large-scale enterprise applications. |
+| Flexibility in Deployment | Fixed | Flexible | Themis offers more flexibility in deployment, adapting to various big data platforms like Hadoop, Spark, and Kubernetes. |
+| Use Case Suitability | Best for environments with predictable, consistent workloads. For example, predictable data processing needs, such as monthly financial reporting or static data analysis. | Ideal for dynamic, varying workloads and large-scale deployments. For example, dynamic environments such as e-commerce platforms, where real-time data analysis is crucial for customer behavior tracking, inventory management, and personalized recommendations. | Depending on the workload consistency and scale, the choice between Minerva and Themis can be determined. |
 
 ## Structure of a Cluster YAML
 
@@ -115,6 +151,11 @@ cluster:
 
 For additional information about attributes within the Cluster-specific section, refer to the link: [Attributes of Cluster-specific section.](./cluster/yaml_configuration_attributes.md#cluster)
 
+For the two different types of Cluster the configuration varies, which are elucidated in the sections below:
+
+- [Configuring the Minerva Cluster](#configuring-the-minerva-specific-section)
+- [Configuring the Themis Cluster](#)
+
 #### **Configuring the Minerva-specific Section**
 
 The Minerva-specific Section contains configurations specific to the Minerva Cluster. The YAML syntax is provided below:
@@ -157,7 +198,7 @@ minerva:
 
 ```
 
-Certainly, here's the table with only the attribute names and their corresponding data types, requirements, default values, and possible values:                                          |
+Certainly, here's the table with only the attribute names and their corresponding data types, requirements, default values, and possible values:                                          
 
 
 | Field | Data Type | Default Value | Possible Value | Requirement |
@@ -190,14 +231,198 @@ Certainly, here's the table with only the attribute names and their correspondin
 
 For additional information about attributes above attributes, refer to the [Attributes of Minerva-specific section.](./cluster/yaml_configuration_attributes.md#minerva)
 
+#### **Configuring the Themis-specific section**
+
+Attributes particular to the Themis Cluster are defined here. This includes configurations such as Pod Resources, Spark settings, Depot specifications, and Environment variables.
+
+Example YAML syntax for the Themis-specific section:
+
+```yaml
+themis:
+	resources: # Pod Resources specification 
+		{}
+	envs: # Environment variables
+		{}
+	themisConf: # Themis configurations
+		{}
+	spark:
+		{} # Spark configuration
+	depots:
+		{} # Depots specification
+```
+
+**Pod Resources**
+
+Specifies the requested and maximum CPU and memory limits for Pod Resources.
+
+```yaml
+themis: # Themis mapping (mandatory)
+	resources: # Pod Resources (optional)
+		requests: # Requested CPU and memory resources (optional)
+			cpu: {{1000m}} # (optional)
+			memory: {{2Gi}} # (optional)
+		limits: # Maximum limit of CPU and memory resources (optional)
+			cpu: {{2000m}} # (optional)
+			memory: {{4Gi}} # (optional)
+```
+
+**Spark environment configuration**
+
+Details the memory size, cores, and other configurations for Spark drivers and executors.
+
+```yaml
+themis: # Themis mapping (mandatory)
+  spark:
+    driver: # Spark driver memory and core configuration (mandatory)
+      memory: {{4096M}} # (mandatory)
+      cores: {{1}} # (mandatory)
+    executor: # Spark executor memory, core, and instanceCount configuration (mandatory)
+      memory: {{4096M}} # (mandatory)
+      cores: {{1}} # (mandatory)
+      instanceCount: {{1}} # (mandatory)
+      maxInstanceCount: {{5}} # (mandatory)
+		sparkConf: # Spark configurations (optional)
+			{{spark.dynamicAllocation.enabled: true}} 
+```
+
+The list of Spark configuration that can be configured within this section are specified in the toggle below.
+
+<details>
+    <summary>Spark Configurations</summary>
+    The Spark Configuration can be specified within the <code>sparkConf</code> attribute. The list of spark configurations is provided below:
+    <ul>
+        <li><code>spark.eventLog.dir = location of folder/directory</code></li>
+        <li><code>spark.ui.port = 4040</code></li>
+        <li><code>spark.driver.memory=6g</code></li>
+        <li><code>spark.driver.cores=2</code></li>
+        <li><code>spark.driver.memoryOverhead=1g</code></li>
+        <li><code>spark.executor.memory=4g</code></li>
+        <li><code>spark.executor.cores=2g</code></li>
+    </ul>
+    <p>For more information, refer to the following <a href="https://spark.apache.org/docs/latest/configuration.html">link.</a></p>
+</details>
+
+**Depot specification**
+
+Defines the Depots targeted by the Themis Cluster.
+
+```yaml
+themis: # Themis mapping (mandatory)
+  depots: # mandatory
+    - address: {{dataos://icebase}} # Depot UDL address (mandatory)
+			properties: # Depot properties (optional)
+				{{properties attributes}} 
+```
+
+**Themis Configuration**
+
+Allows for additional key-value pair configurations specific to the Themis Cluster.
+
+```yaml
+themis: # Themis mapping (mandatory)
+  themisConf:  # Themis configuration specification (optional)
+    {{"kyuubi.frontend.thrift.binary.bind.host": "0.0.0.0"}} # (optional)
+    {{"kyuubi.frontend.thrift.binary.bind.port": "10101"}} # (optional)
+```
+
+The list of the available Themis Cluster configurations is provided in the toggle below.
+
+<details>
+    <summary>Themis Cluster configuration</summary>
+    The Themis configuration can be supplied using the <code>themisConf</code> attribute. The configurations are provided below:
+    <ul>
+        <li><code>kyuubi.operation.incremental.collect=true</code> : To get paginated data.</li>
+        <li><code>kyuubi.frontend.thrift.worker.keepalive.time=PT30S</code> : TTL for spark engine, this indicated that after 30 seconds of idle time spark engine is terminated.</li>
+        <li><code>kyuubi.engine.hive.java.options</code> : The extra Java options for the Hive query engine</li>
+        <li><code>kyuubi.frontend.thrift.worker.keepalive.time=PT1M</code> : Keep-alive time (in milliseconds) for an idle worker thread</li>
+        <li><code>kyuubi.frontend.thrift.login.timeout=PT10S</code> : Timeout for Thrift clients during login to the thrift frontend service.</li>
+        <li><code>kyuubi.metadata.cleaner.interval=PT30M</code> : The interval to check and clean expired metadata.</li>
+        <li><code>kyuubi.metadata.max.age=PT72H</code> : The maximum age of metadata, the metadata exceeding the age will be cleaned.</li>
+        <li><code>kyuubi.server.periodicGC.interval</code> : How often to trigger a garbage collection</li>
+        <li><code>kyuubi.server.redaction.regex</code> : Regex to decide which Kyuubi contain sensitive information. When this regex matches a property key or value, the value is redacted from the various logs.</li>
+    </ul>
+    <p>For more information, refer to the following <a href="https://kyuubi.readthedocs.io/en/master/configuration/settings.html">link.</a></p>
+</details>
+
+
+**Environment Variables**
+
+Configures the Themis Cluster for various environments through key-value pair environment variables.
+
+```yaml
+themis: # Themis mapping (mandatory)
+	envs: # Environment variables (optional)
+		{{key-value pairs of environment variables}}
+```
+
+<details><summary>Sample Themis Cluster manifest</summary>
+    
+```yaml
+# Resource meta section
+name: clustername
+version: v1
+type: cluster
+description: We are using this cluster to check the monitor and pager stuff with the help of themis cluster. 
+tags:
+  - cluster
+  - themis
+
+# Cluster-specific section
+cluster:
+  compute: query-default
+# Themis-specific section
+  themis:
+    themisConf:  
+      "kyuubi.frontend.thrift.binary.bind.host": "0.0.0.0"
+      "kyuubi.frontend.thrift.binary.bind.port": "10101"
+    spark:
+      # sparkConf:
+      #   "spark.sql.extensions": "org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions,io.dataos.spark.authz.extension.HeimdallSparkExtension"
+      #   "spark.heimdall.udf.provider": "io.dataos.spark.authz.functions.udfs.DataOSSparkUdfProvider"
+      driver:
+        memory: '4096M'
+      executor:
+        memory: '4096M'
+        # instanceCount: 1
+        maxInstanceCount: 1
+    depots:
+      - address: dataos://icebase
+      # - address: dataos://gateway
+```
+</details>
+
 
 ### **Apply the Cluster YAML**
 
 To create a Cluster Resource, you need to use the apply command on the CLI. The apply command for Cluster is given below:
 
 ```shell
-dataos-ctl apply -f {{cluster-yaml-file-path}} -w {{workspace}}
+dataos-ctl apply -f {{cluster-yaml-file-path}} -w {{workspace name}}
+# Sample
+dataos-ctl apply -f dataproduct/themis-cluster.yaml -w curriculum
 ```
+
+### **Verify Cluster creation**
+
+To ensure that your Cluster has been successfully created, you can verify it in two ways:
+
+Check the name of the newly created Cluster in the list of clusters created by you in a particular Workspace:
+
+```bash
+dataos-ctl get -t cluster - w {{workspace name}}
+# Sample
+dataos-ctl get -t cluster -w curriculum
+```
+
+Alternatively, retrieve the list of all Workers created in the Workspace by appending `-a` flag:
+
+```bash
+dataos-ctl get -t cluster -w {{workspace name}} -a
+# Sample
+dataos-ctl get -t cluster -w curriculum
+```
+
+You can also access the details of any created Cluster through the DataOS GUI in the Resource tab of the  [Operations App.](/interfaces/operations/)
 
 ## Creating a Cluster Using Operations App
 
@@ -243,20 +468,49 @@ After clicking 'Create Cluster', a Cluster Resource will be created. You can obs
 
 <center><i>Created Cluster in Operations App</i></center>
 
-## Interacting with Minerva
+## Interacting with Clusters
 
-Minerva offers multiple methods for interacting with its features and functionalities. The available options are provided below.
+Clusters offers multiple methods for interacting with its features and functionalities. The available options are provided below.
 
-### **Minerva CLI**
-The Minerva CLI is a command-line-based interactive interface that enables users to run queries effectively. To learn more, click on the link: [How to setup Minerva CLI.](./cluster/minerva_client.md)
+### **Using CLI client**
+
+The Trino client is a command-line-based interactive interface that enables users to connect to both the Minerva and Themis Clusters. To learn more, click on the link: [How to setup CLI client.](./cluster/cli_client.md)
+
 
 ### **Workbench**
 
-Workbench is a user interface (UI)-based query interface designed for data manipulation and exploration. To learn more, navigate to the [Workbench](../interfaces/workbench.md) documentation.
+To interact with Clusters using the Workbench, execute the following steps:
+
+- **Accessing the Cluster:** Upon launching the Workbench application, the user is required to select the desired Cluster. In this instance, the cluster identified as `themisog` is chosen.
+
+<center>
+
+![Selecting a Cluster](./cluster/cluster_selection.png)
+<i>Selecting a Cluster from Workbench</i>
+
+</center>
+
+- **Execution of Queries**:
+    - **Catalog, Schema, and Table Selection**: The user must select the appropriate catalog, schema, and tables within the Workbench interface.
+    - **Query Execution**: After formulating the query, the user executes it by clicking the 'Run' button.
+    - **Result Retrieval**: The outcomes of the executed query are displayed in the pane situated below the query input area.
+
+<center>
+
+![Executed Query](./cluster/executed_query.png)
+
+<i>Query result set</i>
+</center>
+
+For comprehensive details on the features and capabilities of Workbench, refer to the dedicated [Workbench](../interfaces/workbench.md) documentation.
 
 ### **Connect via Tableau, SPSS and Power BI**
 
-Users can leverage popular BI analytics platforms like Tableau, SPSS and Power BI to access data from DataOS via Minerva URL. To learn more, navigate to the link: [How to connect Minerva with Tableau, SPSS, and Power BI.](../interfaces/atlas/bi_tools.md)
+Users can leverage popular BI analytics platforms like Tableau, SPSS and Power BI to access data from DataOS via Cluster URL. To learn more, navigate to the link: [How to connect Cluster with Tableau, SPSS, and Power BI.](../interfaces/atlas/bi_tools.md)
+
+### **Using Spark Integration (Themis only)**
+
+For more control over data and transformations, developers can utilize Spark sessions. This can be done in Scala, Python, or Java. Spark integration allows for complex data manipulation and analysis, leveraging Themis's capabilities within a Spark environment.
 
 ## Query Execution Optimization
 
