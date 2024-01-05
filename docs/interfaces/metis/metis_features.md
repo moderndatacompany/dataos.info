@@ -1,4 +1,4 @@
-# Metis Features
+# Metis Key Features
 
 Metis collects metadata by utilizing the Scanner stack and connecting with other components’ exposed APIs to gather information about the historical and current state of the DataOS artifacts (Data Products, Assets, Resources), ensuring comprehensive metadata coverage. It includes the following set of featuress to facilitate discovery, governance, observability, and collaboration.
 

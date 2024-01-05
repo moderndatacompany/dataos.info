@@ -1,7 +1,7 @@
-# Metis Resources- Databases
+# Databases Metadata On Metis UI
 
 <aside class="callout">
-⚠️ This page guides you on exploring and managing metadata for databases on Metis. To learn in detail about the Database as a DataOS Resource, refer to this link.
+⚠️ This page guides you on exploring and managing metadata for databases on Metis. To learn in detail about the Database as a DataOS Resource, refer to this <a href="/resources/database/">link</a>.
 
 </aside>
 
@@ -50,6 +50,7 @@ Each database resource in the list will have a Card view that displays the follo
 In the card view, click anywhere except the resource name to get the overview.
 
 ![database_overview.png](metis_resources_databases/database_overview.png)
+<figcaption align = "center"> Quick information  </figcaption>
 
 This includes the following information for quick reference:
 
@@ -67,6 +68,7 @@ This includes the following information for quick reference:
 In the Result or Overview pane, click on the name of the Database to open the Resource Details page, which includes:
 
 ![database_details.png](metis_resources_databases/database_details.png)
+<figcaption align = "center"> Comprehensive details  </figcaption>
 
 ### **Databases Information**
 

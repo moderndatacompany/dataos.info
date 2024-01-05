@@ -1,11 +1,11 @@
 # Workspace Command Group
 You run the following `workspace` sub commands by appending them to *dataos-ctl workspace*.
 
-### **Workspace Create**
+## `create`
 
 Create workspace.
 
-```jsx
+```shell
 Usage:
 dataos-ctl workspace create [flags]
 
@@ -19,11 +19,11 @@ Flags:
 -v, --version string       workspace version (default "v1beta1")
 ```
 
-### **Workspace Delete**
+## `delete`
 
 Delete workspaces.
 
-```jsx
+```shell
 Usage:
 dataos-ctl workspace delete [flags]
 
@@ -32,11 +32,11 @@ Flags:
 -n, --name string   workspace name
 ```
 
-### **Workspace Get**
+## `get`
 
 Get workspaces.
 
-```jsx
+```shell
 Usage:
 dataos-ctl workspace get [flags]
 

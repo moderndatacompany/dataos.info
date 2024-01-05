@@ -1,13 +1,14 @@
-# Metis Resources- Instance Secrets
+# Instance Secrets Metadata On Metis UI
 
 <aside class="callout">
-⚠️ This page guides you on exploring and managing metadata for Instance Secrest on Metis. To learn in detail about the Instance Secret as a  DataOS Resource, refer to this link.
+⚠️ This page guides you on exploring and managing metadata for Instance Secrest on Metis. To learn in detail about the Instance Secret as a  DataOS Resource, refer to this <a href="/resources/">link</a>.
 
 </aside>
 
 Metis has integrated "Instance-Secret" as a "Resource" type entity for storing metadata related to the source for which it is created, and its current state within DataOS. On selecting **Instance-Secrets,** the following information will appear on the screen:
 
 ![isecrets.png](metis_resources_instance_secrets/isecrets.png)
+<figcaption align = "center"> List of Instance Secrets  </figcaption>
 
 ## Filter pane
 
@@ -46,6 +47,7 @@ Each Instance Secret resource in the list will have a Card view that displays th
 In the card view, click anywhere except the resource name to get the overview.
 
 ![isecret_overview.png](metis_resources_instance_secrets/isecret_overview.png)
+<figcaption align = "center"> Quick information  </figcaption>
 
 This includes the following information for quick reference:
 
@@ -62,6 +64,7 @@ This includes the following information for quick reference:
 In the Result or Overview pane, click on the name of the secret to open the Resource Details page, which includes:
 
 ![isecret_details.png](metis_resources_instance_secrets/isecret_details.png)
+<figcaption align = "center"> Comprehensive details  </figcaption>
 
 ### **Instance Secrets Information**
 

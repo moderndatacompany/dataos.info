@@ -1,10 +1,11 @@
-# Metis Assets- Topics
+# Topics Metadata On Metis UI
 
 The Scanner workflow extracts information from streaming data sources about the topic, sender/recipient, and message content elements (message size, message types such as text, audio, or video). The collected metadata is stored in the Metis DB, and the Metis UI presents this wealth of information under the '**Topics**' section. Users can efficiently locate, access, and interpret these assets and their associated data.
 
 On selecting **Topics,** the following information will appear on the screen:
 
 ![topics_overview.png](metis_assets_topic/topics_overview.png)
+<figcaption align = "center">List of Topics </figcaption>
 
 ## Filter pane
 
@@ -49,6 +50,7 @@ Each topic in the list will feature a Card view that displays the following info
 In the card view, click anywhere except the **topic** name to get the overview.
 
 ![topics.png](metis_assets_topic/topics.png)
+<figcaption align = "center"> Quick information for a topic </figcaption>
 
 This includes the following quick reference information:
 
@@ -67,6 +69,7 @@ This includes the following quick reference information:
 In the Result or Overview pane, click on the name of the topic to open the Asset Details page, which includes:
 
 ![Screenshot 2023-12-01 at 5.06.15 PM.png](metis_assets_topic/Screenshot_2023-12-01_at_5.06.15_PM.png)
+<figcaption align = "center"> Comprehensive details about a topic  </figcaption>
 
 ### **Topic Information**
 

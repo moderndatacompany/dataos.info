@@ -253,7 +253,7 @@ Global Flags:
 
 Use "dataos-ctl fastbase [command] --help" for more information about a command.
 ```
-To learn more, refer to [Domain Command Group](fastbase/details.md).
+To learn more, refer to [Fastbase Command Group](fastbase/details.md).
 
 ## `get`
 
@@ -309,7 +309,7 @@ INFO[0002] 🔍 workflow...complete
 
 To learn more, refer to [Get Command Group](get/details.md).
 
-## Health
+## `health`
 
 Get health of DataOS CLI, DataOS resources and services. It checks if server is reachable and helps in troubleshooting.
 
@@ -487,7 +487,7 @@ Global Flags:
 
 Use "dataos-ctl operate [command] --help" for more information about a command.
 ```
-To learn more, refer to [Operatee Command Group](Operate/details.md).
+<aside class="callout"> The<i> <b>operate </b></i>command is intended for use by system administrators. If you would like more information about its various subcommands, please reach out to our Customer Success team.</aside>
 
 ## `product`
 Manage products in the DataOS®
@@ -531,7 +531,7 @@ Global Flags:
 
 Use "dataos-ctl query-gateway [command] --help" for more information about a command.
 ```
-To learn more, refer to [Product Command Group](query-gateway/details.md).
+To learn more, refer to [Query-gateway Command Group](query-gateway/details.md).
 
 ## `resource`
 Manage resources in the DataOS®
@@ -699,10 +699,44 @@ Use "dataos-ctl user [command] --help" for more information about a command.
 To learn more, refer to [User Command Group](user/details.md).
 
 ## `usql`
-
+usql, the universal command-line interface for SQL databases
 
 ```shell
 
+Usage:
+  usql [OPTIONS]... [DSN]
+
+Arguments:
+  DSN                            database url
+
+Flags:
+  -c, --command=COMMAND ...    run only single command (SQL or internal) and exit
+  -f, --file=FILE ...          execute commands from file and exit
+  -w, --no-password            never prompt for password
+  -X, --no-rc                  do not read start up file
+  -o, --out=OUT                output file
+  -W, --password               force password prompt (should happen automatically)
+  -1, --single-transaction     execute as a single transaction (if non-interactive)
+  -v, --set=, --variable=NAME=VALUE ...  
+                               set variable NAME to VALUE
+  -P, --pset=VAR[=ARG] ...     set printing option VAR to ARG (see \pset command)
+  -F, --field-separator=FIELD-SEPARATOR ...  
+                               field separator for unaligned and CSV output (default "|" and ",")
+  -R, --record-separator=RECORD-SEPARATOR ...  
+                               record separator for unaligned and CSV output (default \n)
+  -T, --table-attr=TABLE-ATTR ...  
+                               set HTML table tag attributes (e.g., width, border)
+  -A, --no-align               unaligned table output mode
+  -H, --html                   HTML table output mode
+  -t, --tuples-only            print rows only
+  -x, --expanded               turn on expanded table output
+  -z, --field-separator-zero   set field separator for unaligned and CSV output to zero byte
+  -0, --record-separator-zero  set record separator for unaligned and CSV output to zero byte
+  -J, --json                   JSON output mode
+  -C, --csv                    CSV output mode
+  -G, --vertical               vertical output mode
+  -q, --quiet                  run quietly (no messages, only query output)
+      --version                display version and exit
 ```
 
 ##  `version`

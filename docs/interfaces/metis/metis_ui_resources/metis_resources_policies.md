@@ -1,13 +1,14 @@
-# Metis Resources- Policies
+# Policies Metadata On Metis UI
 
 <aside class="callout">
-⚠️ This page guides you on exploring and managing metadata for Policies on Metis. To learn in detail about the Policy as a  DataOS Resource, refer to this link.
+⚠️ This page guides you on exploring and managing metadata for Policies on Metis. To learn in detail about the Policy as a  DataOS Resource, refer to this <a href="/resources/policy/">link</a>.
 
 </aside>
 
 Metis has integrated "Policy" as a "Resource” type entity for storing metadata related to Access and data Policies. On selecting **Policies,** the following information will appear on the screen:
 
 ![policies.png](metis_resources_policies/policies.png)
+<figcaption align = "center"> List of Policies  </figcaption>
 
 ## Filter pane
 
@@ -46,6 +47,7 @@ Each policy resource in the list will have a Card view that displays the followi
 In the card view, click anywhere except the resource name to get the overview.
 
 ![policy_overview.png](metis_resources_policies/policy_overview.png)
+<figcaption align = "center"> Quick information  </figcaption>
 
 This includes the following information for quick reference:
 
@@ -65,6 +67,7 @@ This includes the following information for quick reference:
 In the Result or Overview pane, click on the name of the Policies to open the Resource Details page, which includes:
 
 ![policy_details.png](metis_resources_policies/policy_details.png)
+<figcaption align = "center"> Comprehensive details  </figcaption>
 
 ### **Policy Information**
 
