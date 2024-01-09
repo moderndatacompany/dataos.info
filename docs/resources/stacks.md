@@ -4,6 +4,12 @@ Stack is a [DataOS Resource](../resources.md) that acts as an execution engine a
 
 While certain pre-configured Stacks such as [Flare](./stacks/flare.md), [Benthos](./stacks/benthos.md), and [Scanner](./stacks/scanner.md) are natively available within DataOS, users retain the autonomy to define and deploy their own tailor-made Stacks.
 
+<aside class="callout">
+
+🗣️ A Stack is an <b>Instance-level</b> DataOS Resource and is a key component of DataOS's extensibility framework. This Resource-type enables the creation of custom Stacks, as exemplified by Soda, CLI, Steampipe, and DBT Stack, all of which have been introduced as a Stack within DataOS using the same development pattern. For detailed guidance on developing your own Stack within DataOS, please consult the following documentation: <a href = "/resources/stacks/custom_stacks/">How to create your own Stack in DataOS?</a>
+
+</aside>
+
 ## Key Features of Stacks
 
 **Custom Computing Environments**
@@ -78,9 +84,6 @@ These built-in stacks offer a wide range of capabilities, empowering data develo
 
 ## How to create your own Stack?
 
-<aside class="callout">
-🗣 This section is tailored for individuals aspiring to create their own custom Stacks. Proficiency in <b>Docker</b> and <b>Kubernetes</b> is essential for a comprehensive understanding of the content.
+Aside from the pre-defined Stacks within DataOS, data developers retain the autonomy to create their own tailor made Stacks to extend the existing capabilities of the platform and introduce new programming paradigms within DataOS. To learn more refer to the following link: [How to create your own custom Stack?](./stacks/custom_stacks.md)
 
-</aside>
 
-[How to create your own Stack?](./stacks/custom_stacks.md)
