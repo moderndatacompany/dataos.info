@@ -1,4 +1,4 @@
-# Policies Metadata On Metis UI
+# Metadata of Policies on Metis UI
 
 <aside class="callout">
 ⚠️ This page guides you on exploring and managing metadata for Policies on Metis. To learn in detail about the Policy as a  DataOS Resource, refer to this <a href="/resources/policy/">link</a>.

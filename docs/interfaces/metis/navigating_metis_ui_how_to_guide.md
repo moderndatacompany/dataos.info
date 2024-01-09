@@ -1,12 +1,13 @@
-# Navigating Metis UI: How-To-Guide
+# Navigating Metis UI
 
 Metis is a one-stop solution for data discoverability and managing all aspects of the data ecosystem. Metis UI  helps users search, discover, understand, and trust **data** **assets** (tables, topics, dashboards, etc.), **DataOS Resources** (Workflows, Services, Stacks, etc.) and Data Products that exist for the entire organization. Users can easily collaborate with other team members, inform them about the updates on these assets, observe the changes in the metadata through versions, and accomplish more.
 
 ## Metis UI Homepage
 
-The homepage of Metis UI showcases a comprehensive overview of activities related to your data assets and Resources. Users can navigate through and interact with the data assets and Resources for further exploration and management.
+The homepage of Metis UI showcases a comprehensive overview of activities related to your data entities (Data products, data assets and DataOS Resources). Users can navigate through and interact with these entities for further exploration and management.
 
 ![Metis UI - landing page](navigating_metis_ui_how_to_guide/landing_page.png)
+<figcaption align = "center">Metis UI - landing page  </figcaption>
 
 Metis UI - landing page
 
@@ -32,15 +33,17 @@ Here are some scenarios where using these terms can be powerful:
 1. On Metis UI, click on **Govern →Tag Groups**. 
     
     ![tag_groups.png](navigating_metis_ui_how_to_guide/tag_groups.png)
+    <figcaption align = "center"> Tag groups </figcaption>
     
-2. Clicking on the + Add Tag will open the screen to add a new tag category and its description.
+2. Clicking on the + Add Tag will open the screen to add a new tag group and its description.
     
      
     
     ![new_tag_group.png](navigating_metis_ui_how_to_guide/new_tag_group.png)
+    <figcaption align = "center"> New tag group creation </figcaption>
     
 3. Enable **Mutually Exclusive** Property to designate tag groups as mutually exclusive. When a tag group is marked as mutually exclusive, it implies that a metadata entity can be tagged to belong to one of the available tags defined in the group.  To learn more, refer to [**Mutually Exclusive Tag Groups**](metis_features.md). 
-4. Add new tags with proper descriptions for the newly added category and save them. Now, these tags can be added to the data assets and Resources.
+4. Add new tags with proper descriptions for the newly added category and save them. Now, these tags can be added to the data entities.
 
 <aside class="callout">
 🗣 You can define new tag categories as per business requirements, but some of the tag categories, such as tag tiers, are pre-defined by the Metis administrator with special business importance terms, Gold, Silver, etc. Click **here** to learn more about it.
@@ -54,7 +57,7 @@ Here are some scenarios where using these terms can be powerful:
     
     ![Adding glossary](navigating_metis_ui_how_to_guide/add_glossary.png)
     
-    Adding glossary
+    <figcaption align = "center"> Adding glossary </figcaption>
     
 3. Enable Mutually Exclusive Property to designate the glossary as mutually exclusive. When a Glossary is marked as mutually exclusive, it implies that a metadata entity can be tagged to any of the single glossary terms.  It can not have two or more glossary terms attached to it simultaneously.
 4. Add owners and reviewers and save it. Your glossary will appear on the left pane.
@@ -63,7 +66,7 @@ Here are some scenarios where using these terms can be powerful:
     
     ![Adding references and synonyms for the glossary term ](navigating_metis_ui_how_to_guide/add_glossary_term.png)
     
-    Adding references and synonyms for the glossary term 
+    <figcaption align = "center"> Adding references and synonyms for the glossary term  </figcaption>
     
     > Metis enables you to add rich formatting to glossary term. For example, you can add `bold`, `underline`, or `italic` formatting to the text. You can also create tables, bulleted lists, or hyperlinks to external resources.
     > 
@@ -76,21 +79,21 @@ Here are some scenarios where using these terms can be powerful:
 🗣 Once tag categories and glossary terms are defined, users can attach them to various entities such as data assets, DataOS Resources and products.
 </aside>
 
-### **How to Add Tags to Data Assets**
+### **How to Add Tags to DataOS entities**
 
-On the data asset information page, click on the highlighted Edit icon. Choose a tag from a list of tags defined in Metis for various categories.
+On the DataOS entity detailspage, click on the highlighted Edit icon. Choose a tag from a list of tags defined in Metis for various categories.
 
 ![Adding tags to data asset](navigating_metis_ui_how_to_guide/add_tags.png)
 
-Adding tags to data asset
+<figcaption align = "center"> Adding tags to data asset </figcaption>
 
 ### **How to Add Tag Tiers**
 
-On the data asset information page, click on the edit icon next to the Tag Tier.
+On the DataOS entity detailspage, click on the edit icon next to the Tag Tier.
 
 ![Edit tag tier](navigating_metis_ui_how_to_guide/add_tier.png)
 
-Edit tag tier
+<figcaption align = "center"> Edit tag tier </figcaption>
 
 ## How to Collaborate with Team Members
 
@@ -100,15 +103,16 @@ You can collaborate with your team by starting conversation threads and asking f
 
 You can create and reply to entire conversation threads around various activities across any data asset. You can also add reactions with emojis.
 
-1. On the entity details page, click on the highlighted icon for conversations. The number on it denotes the messages in the conversation thread. The right pane will show the conversations.
+1. On the entity DataOS entity detailspage, click on the highlighted icon for conversations. The number on it denotes the messages in the conversation thread. The right pane will show the conversations.
     
     ![Conversations around data asset](navigating_metis_ui_how_to_guide/add_conversation.png)
     
-    Conversations around data asset
+    <figcaption align = "center"> Conversations around data asset </figcaption>
     
 2. A side pane will open.
     
     ![conversation.png](navigating_metis_ui_how_to_guide/conversation.png)
+    <figcaption align = "center"> Conversation </figcaption>
     
 3. Clicking on the **+** sign will open the editor for the new conversation.
     
@@ -121,7 +125,7 @@ You can create and reply to entire conversation threads around various activitie
     
     ![Conversation thread on the column](navigating_metis_ui_how_to_guide/conversations_column.png)
     
-    Conversation thread on the column
+    <figcaption align = "center"> Conversation thread on the column </figcaption>
     
 
 ### **Create Announcements**
@@ -130,28 +134,28 @@ This feature helps in informing the entire team (or other users) about the chang
 
 These announcements can be scheduled with a start date and an end date. All the users following your data are notified in Activity Feeds about the announcement.
 
-1. On the data asset information page, click on the vertical three-dot menu to get the option to add an announcement for the asset.
+1. On the DataOS entity details page, click on the vertical three-dot menu to get the option to add an announcement for the asset.
 
 ![Creating announcements to inform team members about data asset updates](navigating_metis_ui_how_to_guide/announcements.png)
+<figcaption align = "center">Creating announcements to inform team members about updates  </figcaption>
 
-Creating announcements to inform team members about data asset updates
 
 1. Clicking on the **Add Announcements** button will open the dialog box to enter the details, such as title, description, start and end date.
 2. On Metis UI, under ‘All Activity’, users can view the announcements. Users can add reactions using emojis and reply to the announcement.
 
 ![Announcements in user’s activity](navigating_metis_ui_how_to_guide/announcement_created.png)
 
-Announcements in user’s activity
+<figcaption align = "center"> Announcements in user’s activity </figcaption>
 
 ### **Create Tasks for Team Members**
 
 You can create tasks for requesting updates on data assets, such as creating tags or updating the description of a data asset and assigning the task to an appropriate user or team.
 
-1. On the data asset information page, click on the highlighted icon to get the option to add a task.
+1. On the DataOS entity detailspage, click on the highlighted icon to get the option to add a task.
     
     ![Create task option](navigating_metis_ui_how_to_guide/create_task_option.png)
     
-    Create task option
+    <figcaption align = "center">  </figcaption>Create task option
     
 2. Create the task and provide the description for it. You also need to assign team members by adding @ symbol. This task will appear in Activities for the assignee.
     
@@ -160,9 +164,10 @@ You can create tasks for requesting updates on data assets, such as creating tag
 
 ## How to Manage Ownerships
 
-On the data asset information page, click on the edit icon next to **No Owner.** You can add the team or individual person as an owner of the data asset.
+On the DataOS entity detailspage, click on the edit icon next to **No Owner.** You can add the team or individual person as an owner of the data asset.
 
 ![add_owner.png](navigating_metis_ui_how_to_guide/add_owner.png)
+<figcaption align = "center">Adding owner  </figcaption>
 
 ## How to Create Roles and Policies
 
@@ -184,7 +189,7 @@ Roles can be assigned from the user profile on the Metis UI.
     
     ![Adding roles to the user](navigating_metis_ui_how_to_guide/roleto_user.png)
     
-    Adding roles to the user
+    <figcaption align = "center"> Adding roles to the user </figcaption>
     
 
 <aside class="callout">
@@ -197,7 +202,7 @@ Roles can be assigned from the user profile on the Metis UI.
 Data profiling workflow analyzes the valid formats, null and inconsistent values within data to uncover anomalies and redundancies to achieve higher data quality. It uses basic statistics to gain insight about the validity of the data. The Data Profile scan workflow reads data profiling statistics and saves this information into Metis DB, which can be accessed on Metis UI.
 
 1. Search the dataset for which you want to view the data profiling results.
-2. Click on the **Profiler & Data Quality tab on the data asset information page**.
+2. Click on the **Profiler & Data Quality tab on the DataOS entity detailspage**.
 3. You will see the data profiling statistics for the columns. It gives data types, null values %, distinct value %, and unique values % for each column. It also shows you ‘value count’, which helps you to know the completeness and missing values for the column before you use the data for critical business use cases.
 4. Click on a column to see more details on the statistical distribution of its values.  You need to select the time period to see all the test results run for the particular column of the dataset.
 
@@ -207,7 +212,7 @@ Fingerprinting analyzes the data to know that a column of data has a signature o
 
 This information is shown on the Metis UI for your dataset.
 
-On the data asset information page, you will see the following fingerprinting data for your dataset.
+On the DataOS entity detailspage, you will see the following fingerprinting data for your dataset.
 
 1. Column names for which fingerprinting is performed.
 2. Label showing the labels identified in the data. These labels are defined as system labels or according to business value.
@@ -217,12 +222,12 @@ On the data asset information page, you will see the following fingerprinting da
     
     ![Automatically identified columns](navigating_metis_ui_how_to_guide/fingerprinting.png)
     
-    Automatically identified columns
+    <figcaption align = "center"> Automatically identified columns </figcaption>
     
 
 ## How to Visualize Data Quality Tests
 
-You can view the list of quality tests (assertions)created for the columns of your dataset to monitor the data quality and trends charts for each run. The trend charts also show whether the checks are passed or failed.
+You can view the list of quality tests (SLOs)created for the columns of your dataset to monitor the data quality and trends charts for each run. The trend charts also show whether the checks are passed or failed.
 
 ### **Test Suite View**
 
@@ -230,19 +235,19 @@ You can view the list of quality tests (assertions)created for the columns of yo
 
 ![Test suits ](navigating_metis_ui_how_to_guide/testsuit_option.png)
 
-Test suits 
+<figcaption align = "center"> Test suits  </figcaption>
 
 1. Select the test suit for which you want to see quality test results. The list shows the latest test run results for all the datasets and their columns. 
 2. Expand to see all the test results for a dataset column for the particular time period.
 
 ![Test results for the dataset for a selected time period](navigating_metis_ui_how_to_guide/test_cases.png)
 
-Test results for the dataset for a selected time period
+<figcaption align = "center"> Test results for the dataset for a selected time period </figcaption>
 
 ### **Dataset View**
 
 1. Search the dataset for which you want to view quality test results.
-2. Click on the **Profiler & Data Quality tab on the data asset information page**.
+2. Click on the **Profiler & Data Quality tab on the DataOS entity details page**.
 3. You will see the summary. In the summary for quality test runs for the columns, click on the **Data Quality** tab to see a list of results of the last test run for the dataset. You can expand and select the time period to see all the test results for the particular column of the dataset.
 
 ## How to configure **Alerts and Notifications**
@@ -268,7 +273,7 @@ Metis allows users to define fine-grain notifications for alerts. You can select
     - For email alerts, provide configure settings for SMTP Server.
     
     ![notifications.png](navigating_metis_ui_how_to_guide/notifications.png)
-    
+    <figcaption align = "center"> Configurations for mails </figcaption>
 
 <aside class="callout">
 🗣 Only users having Metis admin roles can configure the SMTP settings for sending emails.

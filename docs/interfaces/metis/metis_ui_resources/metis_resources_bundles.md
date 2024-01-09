@@ -1,4 +1,4 @@
-# Bundles Metadata On Metis UI
+# Metadata of Bundles on Metis UI
 <aside class="callout">
 ⚠️ This page guides you on exploring and managing metadata for Bundles on Metis. To learn in detail about the Cluster as a Resource, refer to this <a href="/resources/">link</a>.
 

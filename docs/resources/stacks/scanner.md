@@ -1,9 +1,12 @@
 # Scanner
-The Scanner stack in DataOS is a Python-based framework designed for developers to extract metadata from external source systems (such as RDBMS, Data Warehouses, Messaging services, Dashboards, etc.) and the components/services within the DataOS environment. 
+The Scanner stack in DataOS is a Python-based framework designed for developers to extract metadata from external source systems (such as RDBMS, Data Warehouses, Messaging services, Dashboards, etc.) and the components/services within the DataOS environment to extract information about Data products and DataOS Resources. 
 
-With the DataOS Scanner stack, you can extract both general information about datasets/tables, such as their names, owners, and tags, as well as more detailed metadata like table schemas, column names, and descriptions.  It can also connect with Dashboard and Messaging services to get the related metadata. For example, in the case of dashboards, it extracts information about the dashboard, dashboard Elements, and associated data sources.
+With the DataOS Scanner stack, you can extract both general information about datasets/tables, such as their names, owners, and tags, as well as more detailed metadata like table schemas, column names, and descriptions.  Additionally, this stack can help you retrieve metadata related to data quality and profiling, query usage, and user information associated with your data assets.
 
-Additionally, the Scanner stack can help you retrieve metadata related to data quality and profiling, query usage, pipelines (workflows), and user information associated with your data assets.
+It can also connect with Dashboard and Messaging services to get the related metadata. For example, in the case of dashboards, it extracts information about the dashboard, dashboard Elements, and associated data sources.
+
+Using the Scanner stackwithin DataOS, metadata can be extracted from DataOS Products and DataOS Resources. The extracted metadata offers detailed insights into the input, output & SLOs (Service Level Objectives) for every data product, along with all the data access permissions, infrastructure resources used for creating it and more. Users can track the entire life cycle of data product creation. The Scanner stack collects comprehensive metadata across DataOS Resources such as Workflows, Services, Clusters, Depots, etc.including their historical runtime and operations data.
+
 
 ## How Does Scanner Stack Work?
 
@@ -35,7 +38,7 @@ The Scanner job connects with the following DataOS components and stores the ext
 - **Heimdall**: To scan and retrieve information about users in the DataOS environment, including their descriptions and profile images. This user information is accessible through the Metis UI.
 - **Pulsar** **Service**: To keep listening to the messages being published on it by various other services and stacks within the system.
 
-Indexer service, a continuous running service within the DataOS environment keeps track of newly created or updated entities(datasets/topics/workflows, etc.). With this information about the changed entity, it creates a reconciliation Scanner YAML with filters to include only the affected entity. This Scanner workflow will extract the metadata about the entity and update the target metastore.
+Indexer service, a continuous running service within the DataOS environment keeps track of newly created or updated entities such as Data products, Data Assets(datasets/topics/workflows, etc.) and DataOS Resources(Workflows, Services, Workers, Monitirs, Depots etc.). With this information about the changed entity, it creates a reconciliation Scanner YAML with filters to include only the affected entity. This Scanner workflow will extract the metadata about the entity and update the target metastore.
 <aside class="callout">
 🗣 DataOS Scanner is a flexible and extensible framework; you can easily integrate it with new sources.
 
@@ -117,6 +120,10 @@ Here you can find templates for the depot/non-depot Scanner workflows.
 
 The following workflows are running as system workflows to periodically scan the related metadata and save it to Metis DB to reflect the updated metadata state. They are scheduled to run at a set interval.
 
+### **Data Products**
+The following Scanner workflow collects information about the Data products within DataOS.
+[Scanner for Data Product]
+
 ### **Data Profiling and Quality**
 
 DataOS can leverage Scanner workflows to write jobs that could pull information from data profiles (descriptive statistics for the datasets) and data quality tables on an incremental basis and publish it to Metis DB.
@@ -125,7 +132,7 @@ DataOS can leverage Scanner workflows to write jobs that could pull information 
 
 [Scanner for Data Quality](scanner/data_quality_scan.md)
 
-### **Pipelines/Workflows Data**
+### **Workflows Data**
 
 For metadata extraction related to data about workflows and resource consumption, the following workflow is scheduled.
 

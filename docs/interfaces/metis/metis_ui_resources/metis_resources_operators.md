@@ -1,4 +1,4 @@
-# Operators Metadata On Metis UI
+# Metadata of Operators on Metis UI
 
 <aside class="callout">
 ⚠️ This page guides you on exploring and managing metadata for Operators on Metis. To learn in detail about the Operator as a  DataOS Resource, refer to this <a href="/resources/">link</a>.
