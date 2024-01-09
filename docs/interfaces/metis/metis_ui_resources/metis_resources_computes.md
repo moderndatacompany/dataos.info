@@ -1,11 +1,11 @@
-# Computes Metadata On Metis UI
+# Metadata of Computes on Metis UI
 
 <aside class="callout">
 ⚠️ This page guides you on exploring and managing metadata for Computes on Metis. To learn in detail about the Compute as a  DataOS Resource, refer to this <a href="/resources/compute/">link</a>.
 
 </aside>
 
-Metis has integrated "Compute" as a "Resource” type entity for storing metadata pertaining to their attributes, real-time status, user engagements, manifest details, and more. This metadata plays a crucial role in tracking and management of resources within the Metis platform.
+Metis has integrated "Compute" as a "Resource” type entity for storing metadata pertaining to its attributes, real-time status, user engagements, manifest details, and more. This metadata plays a crucial role in tracking and management of resources within the Metis platform.
 
 On selecting **Computes,** the following information will appear on the screen:
 

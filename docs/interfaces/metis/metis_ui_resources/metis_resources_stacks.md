@@ -1,4 +1,4 @@
-# Stacks Metadata On Metis UI
+# Metadata of Stacks on Metis UI
 
 <aside class="callout">
 ⚠️ This page guides you on exploring and managing metadata for Stacks on Metis. To learn in detail about the Stack as a DataOS Resource, refer to this <a href="/resources/stacks/">link</a>.

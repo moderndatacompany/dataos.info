@@ -27,34 +27,34 @@ MetisDB stores comprehensive details about DataOS Resources such as workflows, S
 
 ### **Comprehensive View**
 
-[Workflows Metadata On Metis UI](metis_ui_resources/metis_resources_workflows.md)
+[Metadata of Workflows on Metis UI](metis_ui_resources/metis_resources_workflows.md)
 
-[Services Metadata On Metis UI](metis_ui_resources/metis_resources_services.md)
+[Metadata of Services on Metis UI](metis_ui_resources/metis_resources_services.md)
 
-[Depots Metadata On Metis UI](metis_ui_resources/metis_resources_depots.md)
+[Metadata of Depots on Metis UI](metis_ui_resources/metis_resources_depots.md)
 
-[Clusters Metadata On Metis UI](metis_ui_resources/metis_resources_clusters.md)
+[Metadata of Clusters on Metis UI](metis_ui_resources/metis_resources_clusters.md)
 
-[Bundles Metadata On Metis UI](metis_ui_resources/metis_resources_bundles.md)
+[Metadata of Bundles on Metis UI](metis_ui_resources/metis_resources_bundles.md)
 
-[Workers Metadata On Metis UI](metis_ui_resources/metis_resources_workers.md)
+[Metadata of Workers on Metis UI](metis_ui_resources/metis_resources_workers.md)
 
-[Policies Metadata On Metis UI](metis_ui_resources/metis_resources_policies.md)
+[Metadata of Policies on Metis UI](metis_ui_resources/metis_resources_policies.md)
 
-[Stacks Metadata On Metis UI](metis_ui_resources/metis_resources_stacks.md)
+[Metadata of Stacks on Metis UI](metis_ui_resources/metis_resources_stacks.md)
 
-[Databases Metadata On Metis UI](metis_ui_resources/metis_resources_databases.md)
+[Metadata of Databases on Metis UI](metis_ui_resources/metis_resources_databases.md)
 
-[Computes Metadata On Metis UI](metis_ui_resources/metis_resources_computes.md)
+[Metadata of Computes on Metis UI](metis_ui_resources/metis_resources_computes.md)
 
-[Secrets Metadata On Metis UI](metis_ui_resources/metis_resources_secrets.md)
+[Metadata of Secrets on Metis UI](metis_ui_resources/metis_resources_secrets.md)
 
-[Monitors Metadata On Metis UI](metis_ui_resources/metis_resources_monitors.md)
+[Metadata of Monitors on Metis UI](metis_ui_resources/metis_resources_monitors.md)
 
-[Lakehouses Metadata On Metis UI](metis_ui_resources/metis_resources_lakehouses.md)
+[Metadata of Lakehouses on Metis UI](metis_ui_resources/metis_resources_lakehouses.md)
 
-[Instance secrets Metadata On Metis UI](metis_ui_resources/metis_resources_instance_secrets.md)
+[Metadata of Instance secrets on Metis UI](metis_ui_resources/metis_resources_instance_secrets.md)
 
-[Operators Metadata On Metis UI](metis_ui_resources/metis_resources_operators.md)
+[Metadata of Operators on Metis UI](metis_ui_resources/metis_resources_operators.md)
 
-[Pagers Metadata On Metis UI](metis_ui_resources/metis_resources_pagers.md)
+[Metadata of Pagers on Metis UI](metis_ui_resources/metis_resources_pagers.md)

@@ -1,4 +1,4 @@
-# Clusters Metadata On Metis UI
+# Metadata of Clusters on Metis UI
 
 <aside class="callout">
 ⚠️ This page guides you on exploring and managing metadata for Clusters on Metis. To learn in detail about the Cluster as a Resource, refer to this <a href="/resources/cluster/">link</a>.

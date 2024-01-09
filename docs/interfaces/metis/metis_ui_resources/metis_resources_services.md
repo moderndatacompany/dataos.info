@@ -1,4 +1,4 @@
-# Services Metadata On Metis UI
+# Metadata of Services on Metis UI
 
 <aside class="callout">
 ⚠️ This page guides you on exploring and managing metadata for Services on Metis. To learn in detail about the Service as a Resource, refer to this <a href="/resources/service/">link</a>.

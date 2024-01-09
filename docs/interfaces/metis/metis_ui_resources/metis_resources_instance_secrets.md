@@ -1,4 +1,4 @@
-# Instance Secrets Metadata On Metis UI
+# Metadata of Instance Secrets on Metis UI
 
 <aside class="callout">
 ⚠️ This page guides you on exploring and managing metadata for Instance Secrest on Metis. To learn in detail about the Instance Secret as a  DataOS Resource, refer to this <a href="/resources/">link</a>.

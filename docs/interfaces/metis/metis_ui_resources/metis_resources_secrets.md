@@ -1,4 +1,4 @@
-# Secrets Metadata On Metis UI
+# Metadata of Secrets on Metis UI
 
 <aside class="callout">
 ⚠️ This page guides you on exploring and managing metadata for Secrets on Metis. To learn in detail about the Secret as a DataOS Resource, refer to this <a href="/resources/secret/">link</a>.
