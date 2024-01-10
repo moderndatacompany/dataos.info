@@ -1,7 +1,7 @@
-# Workflows Metadata On Metis UI
+# Metadata of Workflows on Metis UI
 
 <aside class="callout">
-⚠️ This page guides you on exploring and managing metadata for Workflows on Metis. To learn in detail about the Workflow as a Resource, refer to this <a href="/resources/workflow/">link</a>.
+🗣 This page guides you on exploring and managing metadata for Workflows on Metis. To learn in detail about the Workflow as a Resource, refer to this <a href="/resources/workflow/">link</a>.
 
 </aside>
 

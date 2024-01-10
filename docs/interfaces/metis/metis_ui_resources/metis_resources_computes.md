@@ -1,7 +1,7 @@
 # Metadata of Computes on Metis UI
 
 <aside class="callout">
-⚠️ This page guides you on exploring and managing metadata for Computes on Metis. To learn in detail about the Compute as a  DataOS Resource, refer to this <a href="/resources/compute/">link</a>.
+🗣 This page guides you on exploring and managing metadata for Computes on Metis. To learn in detail about the Compute as a  DataOS Resource, refer to this <a href="/resources/compute/">link</a>.
 
 </aside>
 
