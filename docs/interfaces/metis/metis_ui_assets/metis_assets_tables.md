@@ -1,4 +1,4 @@
-# Tables Metadata On Metis UI
+# Metadata of Tables on Metis UI
 
 The Scanner workflow extracts both general and detailed information from structured data sources, about datasets/tables. This includes general details like names, owners, and tags, along with more intricate metadata such as table schemas, column names, descriptions, data types, quality, transformations, and relationships. The collected metadata is stored in the Metis DB, and the Metis UI presents this wealth of information under the '**Tables**' section. Users can efficiently locate, access, and interpret these assets and their associated data.
 

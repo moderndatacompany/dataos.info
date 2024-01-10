@@ -1,4 +1,4 @@
-# Topics Metadata On Metis UI
+# Metadata of Topics on Metis UI
 
 The Scanner workflow extracts information from streaming data sources about the topic, sender/recipient, and message content elements (message size, message types such as text, audio, or video). The collected metadata is stored in the Metis DB, and the Metis UI presents this wealth of information under the '**Topics**' section. Users can efficiently locate, access, and interpret these assets and their associated data.
 

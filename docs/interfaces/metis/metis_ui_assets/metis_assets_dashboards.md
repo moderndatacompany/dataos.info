@@ -1,4 +1,4 @@
-# Dashboards Metadata On Metis UI
+# Metadata of Dashboards on Metis UI
 
 The Scanner workflow extracts information from the dashboard services using non-depot Scanner workflows. This metadata is about elements such as dashboards, charts, owners, etc. The collected metadata is stored in the Metis DB, and the Metis UI presents this wealth of information under the 'Dashboards' section. Users can efficiently locate, access, and interpret these assets and their associated data.
 

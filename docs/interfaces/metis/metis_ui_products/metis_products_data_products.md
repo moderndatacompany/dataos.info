@@ -1,4 +1,4 @@
-# Data Products Metadata On Metis UI
+# Metadata of Data Products on Metis UI
 
 Metis collects metadata of data products. The collected metadata is stored in the Metis DB, and the Metis UI presents this wealth of information under the '**Data Products**' section. Users can efficiently locate, access, and interpret Data Products and their associated data.
 
