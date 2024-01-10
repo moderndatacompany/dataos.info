@@ -200,3 +200,8 @@
     <aside class="callout">🗣 To scan metadata from various data sources, you need certain permissions and access privileges as a data source user. These requirements are specific to each data source. Refer to [this]() section to learn more about them. </aside>
         
     After the successful workflow run, you can check the metadata of scanned entities on Metis UI for all schemas present in the database.
+
+## Filter Pattern Examples
+The scanner stack offers a range of filter patterns, including the Database Filter Pattern, Schema Filter Pattern, and Table Filter Pattern for data sources such as databases and data warehouses. Likewise, in the context of messaging pipelines, you can employ the topic filter pattern. Users can exercise control over metadata scanning by utilizing these filters. 
+
+To know more about how to specify filters in different scenarios, refer to [Filter Pattern Examples](creating_scanner_workflows/filter_pattern_examples.md).    
