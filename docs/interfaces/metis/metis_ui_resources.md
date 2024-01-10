@@ -1,10 +1,11 @@
-# DataOS Resources Metadata
+# Metadata of DataOS Resources
 
-MetisDB serves as a comprehensive repository for detailed information about various DataOS Resources, including workflows, services, clusters, computes, secrets, and more, along with user interactions. To access the wealth of details available, refer to the following sections on the Metis UI:
+MetisDB serves as a comprehensive repository for detailed information about various DataOS Resources, including workflows, services, clusters, computes, secrets, and more, along with user interactions. 
 
-MetisDB stores comprehensive details about DataOS Resources such as workflows, Services, Clusters, Computes, Secrets, etc. and user interactions. Refer to the following to get all the details surfaced for each of the resources on Metis UI.
 
 ## Resource Details
+MetisDB stores comprehensive details about DataOS Resources such as workflows, Services, Clusters, Computes, Secrets, etc. and user interactions. Refer to the following to get all the details surfaced for each of the resources on Metis UI.
+
 ### **Quick Overview**
 | Entity          | Filter    | Card View  | Side Pane View | Details Page   |
 | --------------- | --------- | ---------- | -------------- | --------------- |
@@ -26,35 +27,53 @@ MetisDB stores comprehensive details about DataOS Resources such as workflows, S
 | Pagers           | 1. Owner<br>2. Tag<br>3. Tier | 1. Name<br>2. Description<br>3. Tags<br>4. Owner<br>5. Tier<br>6. Domain<br>7. Workspace | 1. Name<br>2. Description<br>3. Workspace<br>4. Version<br>5. State<br>6. Followers Count<br>7. Last Updated | 1. Meta Version<br>2. Follow<br>3. Learn<br>4. Delete<br>5. Owner<br>6. Tier<br>7. Domain<br>8. Tags<br>9. Request description/Tags Update(?)<br>10. Edit description<br>12. Start Conversation<br>**Tabs**<br>1. Details<br>   a. Workspace<br>   b. Version<br>   c. State<br>   d. Aggregate Status<br>   e. Builder State<br>   f. Lifecycle Event(s)<br>2. Activity Feeds and Tasks<br>3. Manifest |
 
 ### **Comprehensive View**
+To deep dive into the wealth of details available, refer to the following sections on the Metis UI:
 
-[Metadata of Workflows on Metis UI](metis_ui_resources/metis_resources_workflows.md)
+#### **Workflows**
 
-[Metadata of Services on Metis UI](metis_ui_resources/metis_resources_services.md)
+To access metadata of Workflows on Metis UI, click [here](metis_ui_resources/metis_resources_workflows.md)
 
-[Metadata of Depots on Metis UI](metis_ui_resources/metis_resources_depots.md)
+#### **Services**
+To access metadata of Services on Metis UI, click [here](metis_ui_resources/metis_resources_services.md)
 
-[Metadata of Clusters on Metis UI](metis_ui_resources/metis_resources_clusters.md)
+#### **Depots**
+To access metadata of Depots on Metis UI, click [here](metis_ui_resources/metis_resources_depots.md)
 
-[Metadata of Bundles on Metis UI](metis_ui_resources/metis_resources_bundles.md)
+#### **Clusters**
+To access metadata of Clusters on Metis UI, click [here](metis_ui_resources/metis_resources_clusters.md)
 
-[Metadata of Workers on Metis UI](metis_ui_resources/metis_resources_workers.md)
+#### **Bundles**
+To access metadata of Bundles on Metis UI, click [here](metis_ui_resources/metis_resources_bundles.md)
 
-[Metadata of Policies on Metis UI](metis_ui_resources/metis_resources_policies.md)
+#### **Workers**
+To access metadata of Workers on Metis UI, click [here](metis_ui_resources/metis_resources_workers.md)
 
-[Metadata of Stacks on Metis UI](metis_ui_resources/metis_resources_stacks.md)
+#### **Policies**
+To access metadata of Policies on Metis UI, click [here](metis_ui_resources/metis_resources_policies.md)
 
-[Metadata of Databases on Metis UI](metis_ui_resources/metis_resources_databases.md)
+#### **Stacks**
+To access metadata of Stacks on Metis UI, click [here](metis_ui_resources/metis_resources_stacks.md)
 
-[Metadata of Computes on Metis UI](metis_ui_resources/metis_resources_computes.md)
+#### **Databases**
+To access metadata of Databases on Metis UI, click [here](metis_ui_resources/metis_resources_databases.md)
 
-[Metadata of Secrets on Metis UI](metis_ui_resources/metis_resources_secrets.md)
+#### **Computes**
+To access metadata of Computes on Metis UI, click [here](metis_ui_resources/metis_resources_computes.md)
 
-[Metadata of Monitors on Metis UI](metis_ui_resources/metis_resources_monitors.md)
+#### **Secrets**
+To access metadata of Secrets on Metis UI, click [here](metis_ui_resources/metis_resources_secrets.md)
 
-[Metadata of Lakehouses on Metis UI](metis_ui_resources/metis_resources_lakehouses.md)
+#### **Monitors**
+To access metadata of Monitors on Metis UI, click [here](metis_ui_resources/metis_resources_monitors.md)
 
-[Metadata of Instance secrets on Metis UI](metis_ui_resources/metis_resources_instance_secrets.md)
+#### **Lakehouses**
+To access metadata of Lakehouses on Metis UI, click [here](metis_ui_resources/metis_resources_lakehouses.md)
 
-[Metadata of Operators on Metis UI](metis_ui_resources/metis_resources_operators.md)
+#### **Instance Secrets**
+To access metadata of Instance Secrets on Metis UI, click [here](metis_ui_resources/metis_resources_instance_secrets.md)
 
-[Metadata of Pagers on Metis UI](metis_ui_resources/metis_resources_pagers.md)
+#### **Operators**
+To access metadata of Operators on Metis UI, click [here](metis_ui_resources/metis_resources_operators.md)
+
+#### **Pagers**
+To access metadata of Pagers on Metis UI, click [here](metis_ui_resources/metis_resources_pagers.md)
