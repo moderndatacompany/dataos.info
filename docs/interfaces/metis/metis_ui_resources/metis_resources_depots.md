@@ -1,7 +1,7 @@
 # Metadata of Depots on Metis UI
 
 <aside class="callout">
-⚠️ This page guides you on exploring and managing metadata for Depots on Metis. To learn in detail about the Depot as a Resource, refer to this <a href="/resources/depot/">link</a>.
+🗣 This page guides you on exploring and managing metadata for Depots on Metis. To learn in detail about the Depot as a Resource, refer to this <a href="/resources/depot/">link</a>.
 
 </aside>
 
