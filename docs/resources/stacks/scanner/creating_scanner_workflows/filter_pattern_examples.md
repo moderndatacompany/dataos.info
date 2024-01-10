@@ -1,6 +1,6 @@
 # Filter Pattern Examples
 
-We have the ability to exercise control over metadata scanning by utilizing filters. The scanner stack offers a range of filter patterns, including the **`Database Filter Pattern`**, **`Schema Filter Pattern`**, and **`Table Filter Pattern`** for data sources such as databases and data warehouses. Likewise, in the context of messaging pipelines, you can employ the **`topic filter pattern`**.
+The scanner stack offers a range of filter patterns, including the **`Database Filter Pattern`**, **`Schema Filter Pattern`**, and **`Table Filter Pattern`** for data sources such as databases and data warehouses. Likewise, in the context of messaging pipelines, you can employ the **`topic filter pattern`**. These filters enables users to exercise control over metadata scanning.
 
 ## Filter patterns
 
@@ -13,7 +13,7 @@ We have the ability to exercise control over metadata scanning by utilizing filt
 <aside class="callout">
 🗣 By combining all three filters, you can achieve a hierarchical filtering approach that successively narrows down the scope of the metadata scanning in the Scanner workflow. This ensures that only the desired databases, schemas, and tables are included in the workflow based on your specified criteria. If you do not explicitly specify any of these filters then all available entities are scanned.
 
-</aside>
+</aside> 
 
 ## Configure Filters in Scanner YAML
 
