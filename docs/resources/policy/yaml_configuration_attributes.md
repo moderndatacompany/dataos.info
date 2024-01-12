@@ -514,11 +514,14 @@ column:
 **Possible Value:** valid column name<br>
 **Example Usage:**
 
+<br>
 ```yaml
 names:
   - "first_name"
   - "last_name"
 ```
+<br>
+
 ---
 
 #### **`tags`**
