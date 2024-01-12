@@ -209,7 +209,9 @@ Flags:
 Global Flags:
       --tls-allow-insecure   Allow insecure TLS connections
 ```
-
+<aside class="callout">
+🗣 The generated .md files are located within the <i>dataos-ctl-docs</i> folder in your machine's default directory.
+</aside>
 ## `domain`
 Manage domains in the DataOS®
 ```shell
@@ -487,7 +489,7 @@ Global Flags:
 
 Use "dataos-ctl operate [command] --help" for more information about a command.
 ```
-<aside class="callout"> The<i> <b>operate </b></i>command is intended for use by system administrators. If you would like more information about its various subcommands, please reach out to our Customer Success team.</aside>
+<aside class="callout"> 🗣 The<i> <b>operate </b></i>command is intended for use by system administrators. If you would like more information about its various subcommands, please reach out to our Customer Success team.</aside>
 
 ## `product`
 Manage products in the DataOS®

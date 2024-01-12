@@ -170,9 +170,10 @@ The table below summarizes the various attributes/fields within a data policy YA
 | [`priority`](./policy/yaml_configuration_attributes.md#priority) | number | none | 0-100 | mandatory |
 | [`selector`](./policy/yaml_configuration_attributes.md#selector) | object | none | none | mandatory |
 | [`user`](./policy/yaml_configuration_attributes.md#user) | object | none | none | mandatory |
-| [`tags`](./policy/yaml_configuration_attributes.md#tags) | list of strings | none | a valid DataOS tag | mandatory |
+| [`tags`](./policy/yaml_configuration_attributes.md#tags_1) | list of strings | none | a valid DataOS tag | mandatory |
 | [`column`](./policy/yaml_configuration_attributes.md#column) | object | none | true/false | optional |
-| [`names`](./policy/yaml_configuration_attributes.md#names) | list of strings | none | valid column name | optional |
+| [`names`](./policy/yaml_configuration_attributes.md#names) | list of column names | none | valid column name | optional |
+| [`tags`](./policy/yaml_configuration_attributes.md#tags_2) | list of tags | none | valid column tag defined under a tag group | optional |
 | [`type`](./policy/yaml_configuration_attributes.md#type) | string | none | mask/filter | mandatory |
 | [`mask`](./policy/yaml_configuration_attributes.md#mask)/[`filters`](./policy/yaml_configuration_attributes.md#filters) | object | none | none | mandatory |
 
