@@ -38,7 +38,6 @@ The Scanner job connects with the following DataOS components and stores the ext
 - **Heimdall**: To scan and retrieve information about users in the DataOS environment, including their descriptions and profile images. This user information is accessible through the Metis UI.
 - **Pulsar** **Service**: To keep listening to the messages being published on it by various other services and stacks within the system.
 
-Indexer service, a continuous running service within the DataOS environment keeps track of newly created or updated entities such as Data products, Data Assets(datasets/topics/workflows, etc.) and DataOS Resources(Workflows, Services, Workers, Monitirs, Depots etc.). With this information about the changed entity, it creates a reconciliation Scanner YAML with filters to include only the affected entity. This Scanner workflow will extract the metadata about the entity and update the target metastore.
 <aside class="callout">
 🗣 DataOS Scanner is a flexible and extensible framework; you can easily integrate it with new sources.
 
@@ -124,6 +123,19 @@ The following workflows are running as system workflows to periodically scan the
 The following Scanner workflow collects information about the Data products within DataOS.
 [Scanner for Data Product]
 
+### **Query Usage**
+
+This Scanner workflow will ingest metadata related to query history. It scans information about queries, users, dates, and completion times. It connects with the Gateway service on a given cadence to fetch information about queries.
+
+[Scanner for Query Usage](scanner/query_usage_data_scan.md)
+
+### **Users’ Information**
+
+This workflow will scan the information about the users in DataOS. This is a scheduled workflow that connects with Heimdall on a given cadence to fetch information about users.
+
+
+## Metadata Update
+
 ### **Data Profiling and Quality**
 
 DataOS can leverage Scanner workflows to write jobs that could pull information from data profiles (descriptive statistics for the datasets) and data quality tables on an incremental basis and publish it to Metis DB.
@@ -138,15 +150,6 @@ For metadata extraction related to data about workflows and resource consumption
 
 [Scanner for DataOS Workflows](scanner/workflows_data_scan.md)
 
-### **Query History**
-
-This Scanner workflow will ingest metadata related to query history. It scans information about queries, users, dates, and completion times. It connects with the Gateway service on a given cadence to fetch information about queries.
-
-[Scanner for Query Usage](scanner/query_usage_data_scan.md)
-
-### **Users’ Information**
-
-This workflow will scan the information about the users in DataOS. This is a scheduled workflow that connects with Heimdall on a given cadence to fetch information about users.
 
 ## Common Errors
 

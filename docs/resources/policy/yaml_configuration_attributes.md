@@ -355,10 +355,9 @@ policy:
         tags:
 					- "roles:id:testuser"
 			column:
-			  names:
-          - "first_name"
-          - "last_name"
-          - "email_id"
+			  tags:
+          - "PII.email"
+          - "PII.income"
     type: {{filter/mask}}
 		{{filter/mask}}: 
 ```
@@ -492,34 +491,27 @@ match: any
 
 ---
 
-#### [**`tags`**](#tags)
-
----
-
 #### **`column`**
 
 **Description:** column section<br>
 **Data Type:** mapping<br>
 **Requirement:** mandatory<br>
-**Default Value:** none<br>
-**Possible Value:** any valid column name<br>
 **Example Usage:** 
 
 ```yaml
 column:
-  names:
-    - "first_name"
+  
 ```
 
 ---
 
 #### **`names`**
 
-**Description:** list of column name<br>
+**Description:** list of column names<br>
 **Data Type:** list of strings<br>
 **Requirement:** mandatory<br>
 **Default Value:** none<br>
-**Possible Value:** valid column names<br>
+**Possible Value:** valid column name<br>
 **Example Usage:**
 
 ```yaml
@@ -527,6 +519,25 @@ names:
   - "first_name"
   - "last_name"
 ```
+---
+
+#### **`tags`**
+
+**Description:** list of tags given to columns<br>
+**Data Type:** list of strings<br>
+**Requirement:** mandatory<br>
+**Default Value:** none<br>
+**Possible Value:** valid column tags defined under some tag group<br>
+**Example Usage:**
+
+```yaml
+tags:
+  - "PII.age"
+  - "dataos.city"
+```
+<aside class="callout">
+🗣️ The specified tag must be associated with a corresponding tag group and follow the format <i> <tag_group>.<tag> </i>. For additional information on tag groups, please refer to the <a href="/interfaces/metis/navigating_metis_ui_how_to_guide/#adding-tag-categories-tags-and-glossary">Metis documentation</a>.
+</aside>
 
 ---
 
