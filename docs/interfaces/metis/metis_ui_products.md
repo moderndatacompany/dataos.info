@@ -1,4 +1,4 @@
-# Products Metadata
+# Metadata of Products 
 
 Metis DB stores detailed metadata information about all your data products across the organization. Metadata is extracted using Scanners from data products used by your organization.
 
