@@ -27,20 +27,20 @@ Metis acts as a catalog for Data Products, making the discovery of data products
 2. Understand quality aspects defined by Service Level Objectives (SLOs) to make informed decisions on selecting the appropriate data product for your needs.
 3. Explore operational metadata for data products, such as data access rights, data creators, resources, purpose, source, and consumer-aligned outputs, etc.
 
-Explore metadata of Data Products by clicking [here](metis/metis_ui_products.md)
+You can explore metadata of Data Products by clicking [here](metis/metis_ui_products.md).
 ### **Data Assets**
 
 Metis gathers metadata on your databases, dashboards, and messaging services by utilizing the Scanner stack.
 
 For structured data sources, it captures schema details, including table/column names, their descriptions, constraints, and primary keys. it includes SLOs for the quality of assets, suggests sensitive tags, etc. In the context of messaging services, Metis stores information on topics, senders/recipients, and message content elements (such as message size and types like text, audio, or video). Likewise, for dashboard services, the metadata encompasses elements like dashboards, charts, owners, and more.
 
-Explore metadata of Data Assets by clicking [here](metis/metis_ui_assets.md)
+To know more about metadata attributes of Data Assets, click [here](metis/metis_ui_assets.md).
 
 ### **DataOS Resources**
 Metis also collects metadata across your Workflows, Services, Clusters, Depots, etc., including their historical runtime and operations data, and saves it to the Metis DB to provide an aggregated view. 
 It also grants access to historical and operational data about Resources, facilitating workload monitoring and troubleshooting, including a detailed exploration of pods and containers when necessary. This metadata helps in understanding how containers are orchestrated across various workloads, services, and clusters.
 
-Explore metadata of  DataOS Resources by clicking [here](metis/metis_ui_resources.md)
+To explore metadata of DataOS Resources in detail, click [here](metis/metis_ui_resources.md).
 
 <aside class="callout">
 🗣 All metadata about datasets, jobs, tags, or any aspect is stored as separate metadata entities in the Metis DB. Additionally, the database also stores the interconnections and relationships between these entities. It also stores change events for metadata, i.e., differences between an entity's current and last version.
@@ -51,7 +51,7 @@ Explore metadata of  DataOS Resources by clicking [here](metis/metis_ui_resource
 
 Within a DataOS environment, Metis is a vital tool for discovering data products, exploring data assets and DataOS Resources, and improving the catalog experience for both business users and data developers. Metis additionally empowers users to add more business context to these entities. It allows users to govern, observe, and monitor the data systems fully and enables you to prevent and fix data problems in increasingly complex data scenarios. It also enables business users to classify data  and flag sensitive or confidential information so as to follow privacy regulations by applying DataOS policies.
 
-To learn in detail about these features, click on the page below.
+To learn in detail about these features, click on the link below.
 
 [Metis Key Features](metis/metis_features.md)
 
