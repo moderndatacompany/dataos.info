@@ -121,35 +121,49 @@ The following workflows are running as system workflows to periodically scan the
 
 ### **Data Products**
 The following Scanner workflow collects information about the Data products within DataOS.
-[Scanner for Data Product]
+[Scanner for Data Product](scanner/data_product_scan.md)
 
-### **Query Usage**
-
-This Scanner workflow will ingest metadata related to query history. It scans information about queries, users, dates, and completion times. It connects with the Gateway service on a given cadence to fetch information about queries.
-
-[Scanner for Query Usage](scanner/query_usage_data_scan.md)
+### **System Metadata Sync**
+The following Scanner workflow collects information from Icebase and Fastbase for the newly added data assets.<br>
+[Scanner for System Metadata](scanner/system_metadata_scan.md)
 
 ### **Users’ Information**
 
 This workflow will scan the information about the users in DataOS. This is a scheduled workflow that connects with Heimdall on a given cadence to fetch information about users.
-
+[Scanner for User's Information](scanner/user_info_scan.md)
 
 ## Metadata Update
+Indexer service, a continuous running service within the DataOS environment keeps track of newly created or updated entities such as **Data products**, **Data Assets**(datasets/topics/dashboards, etc.) and **DataOS Resources**(Workflows, Services, Workers, Monitirs, Depots etc.). With this information about the changed entity, it creates a reconciliation Scanner YAML with filters to include only the affected entity. This Scanner workflow will extract the metadata about the entity and update the target metastore.
 
-### **Data Profiling and Quality**
+The following continuous running services are designed for triggering the specific type of metadata scan. 
 
-DataOS can leverage Scanner workflows to write jobs that could pull information from data profiles (descriptive statistics for the datasets) and data quality tables on an incremental basis and publish it to Metis DB.
+### **Data Profiling**
+The objective of this worker is to proactively scan data profiling information, which includes descriptive statistics for datasets stored in Icebase. It operates in response to a triggered data profiling job, publishing the metadata to the Metis DB.
 
-[Scanner for Data Profiling](scanner/data_profile_scan.md)
+[Indexer Service for Data Profiling](scanner/data_profile_scan.md)
 
-[Scanner for Data Quality](scanner/data_quality_scan.md)
+### **Data Quality**
+This worker is designed to reactively scan datasets and ingest quality checks and metrics data whenever a data quality scan is initiated. The acquired information is then published to the Metis DB, contributing to a comprehensive understanding of data quality. 
 
-### **Workflows Data**
+[Indexer Service for Data Quality](scanner/data_quality_scan.md)
 
-For metadata extraction related to data about workflows and resource consumption, the following workflow is scheduled.
 
-[Scanner for DataOS Workflows](scanner/workflows_data_scan.md)
+### **SODA Quality Checks**
+The primary objective of this worker is to reactively scan datasets, for collecting quality checks and metrics data whenever a SODA quality scan is triggered. The collected data is saved to the Metis DB, facilitating thorough analysis and monitoring.
 
+[Indexer Service for SODA Quality Checks](scanner/data_quality_scan_soda.md)
+
+
+### **DataOS Resources**
+This worker operates reactively to scan specific DataOS Resource information from Poros whenever a lifecycle event is triggered. It captures relevant details and publishes them to the Metis DB, ensuring an up-to-date repository of DataOS Resources metadata.
+
+[Indexer Service for DataOS Resources](scanner/dataos_resources_scan.md)
+
+### **Query Usage**
+
+This Worker is for ingesting metadata related to query history. It scans information about queries, users, dates, and completion times. 
+
+[Indexer Sertvice for Query Usage](scanner/query_usage_data_scan.md)
 
 ## Common Errors
 
