@@ -4,49 +4,49 @@ Flare workflows are run for data profiling on the entire dataset or sample /filt
 > To learn more about data profiling Flare workflows, click [here](/resources/stacks/flare/job_types/#data-profiling-job).
 >
 
-Data profile Scanner workflow reads about these statistics (metadata extraction related to data profiling) and stores it in Metis DB. This data helps you find your data's completeness, uniqueness, and correctness for the given dataset.
+A continuous running service reads about these statistics (metadata extraction related to data profiling) and stores it in Metis DB. This data helps you find your data's completeness, uniqueness, and correctness for the given dataset.
 
-<aside class="callout">
-🗣️ Before running the Scanner workflow for data profiling metadata, ensure that the profiling and data-tool workflows are run successfully.
-</aside>
+## Scanner Worker YAML 
 
-
-## Scanner Workflow YAML 
-
-The given YAML will connect to the Icebase depot and scan the data profile-related information.
+The given Worker YAML will scan the data profile-related information whenever data profiling job is run on any dataset.
 
 ### **YAML Configuration**
 
-Here is the complete YAML for scanning the metadata related to data profiling. 
-
 ```yaml
-version: v1
-name: icebase-depot-profile
-type: workflow
+name: dataset-profiling-indexer
+version: v1beta
+type: worker
 tags:
-  - icebase-scanner2
-description: The job scans schema tables and register metadata
-workflow:
-  dag:
-    - name: profile-icebase-depot
-      description: The job scans schema from icebase depot tables and register metadata to metis2
-      spec:
-        tags:
-          - scanner2.0
-        stack: scanner:2.0
-        compute: runnable-default
-        runAsUser: metis
-        scanner:
-          depot: dataos://icebase
-          type: profiler
-          sourceConfig:
-            config:
-              schemaFilterPattern:
-                includes:
-                  - emr_healthcare
-              tableFilterPattern:
-                includes:
-                  - upload
+  - Scanner
+description: >-
+  The purpose of this worker is to reactively scan workflows and ingest
+  profiling data whenever a lifecycle event is triggered.
+owner: metis
+workspace: system
+worker:
+  title: Dataset Profiling Indexer
+  tags:
+    - Scanner
+  replicas: 1
+  autoScaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 2
+    targetMemoryUtilizationPercentage: 120
+    targetCPUUtilizationPercentage: 120
+  stack: scanner:2.0
+  stackSpec:
+    type: worker
+    worker: data_profile_indexer
+  logLevel: INFO
+  compute: runnable-default
+  runAsUser: metis
+  resources:
+    requests:
+      cpu: 500m
+      memory: 1024Mi
+    limits: {}
+  runAsApiKey: '****************************************************************************'
 ```
 
 ## Metadata on Metis UI

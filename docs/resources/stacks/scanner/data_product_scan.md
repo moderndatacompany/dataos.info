@@ -1,14 +1,14 @@
 # Scanner for Data Products
 
-Flare workflows are run for collecting metadata related to Data products such as inputs, outputs, SLOs, policies, lineage and associated DataOS Resources.
+Data product Scanner workflows is for collecting metadata related to Data products such as inputs, outputs, SLOs, policies, lineage and associated DataOS Resources.
 
-Data product Scanner workflow reads the metadata and stores it in Metis DB. This metadata helps you understand data product's life cycle along with the data access permissions, infrastructure resources used for creating it.
+This Scanner workflow reads the metadata and stores it in Metis DB. This metadata helps you understand data product's life cycle along with the data access permissions, infrastructure resources used for creating it.
 
 ## Scanner Workflow YAML 
 
 The given YAML will scan the data product-related information.
 
-### **YAML Configuration**
+**YAML Configuration**
 
 ```yaml
 version: v1
@@ -40,3 +40,7 @@ workflow:
               #   includes:
               #     - customer-360-all$
 ```
+
+## Metadata on Metis UI
+
+On a successful run, you can view the Data Product information on Metis UI.
