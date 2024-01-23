@@ -398,7 +398,7 @@ Flags:
   -w, --workspace string    Workspace to query (default "public")
 ```
 
-**Examples: **
+**Examples:**
 The log command has been updated to pass a "node" as well as to support getting logs for "cluster" and "depot" types that have runtimes. If you don't pass a "node" to the logs command it will try to display all the "main" logs for all nodes.
 
 ```bash
@@ -588,6 +588,7 @@ Use "dataos-ctl role [command] --help" for more information about a command.
 ```
 To learn more, refer to [Role Command Group](role/details.md).
 
+
 ## `runtime`
 DataOS® runtime management commands
 
@@ -601,6 +602,7 @@ Available Commands:
   pause       Pause DataOS® Runnable Resources
   re-run      Re-run DataOS® Runnable Resources
   resume      Resume DataOS® Runnable Resources
+  run         Run DataOS® Runnable Resources
   stop        Stop DataOS® Runnable Resources
 
 Flags:
@@ -613,6 +615,69 @@ Use "dataos-ctl runtime [command] --help" for more information about a command.
 ```
 To learn more, refer to [Runtime Command Group](runtime/details.md).
 
+**Examples:**
+The "runtime run" sub-command initiates a directive to the Poros operator, instructing it to execute a workflow immediately. This functionality is applicable to both scheduled and one-time workflows. In the case of scheduled workflows, it triggers an immediate run, while for one-time workflows, it behaves same as 're-run' operation.
+
+```shell
+~ dataos-ctl get -w system -a
+INFO[0000] 🔍 get...                                     
+INFO[0004] 🔍 get...complete                             
+
+               NAME              | VERSION |   TYPE   | WORKSPACE | STATUS |            RUNTIME             |         OWNER          
+---------------------------------|---------|----------|-----------|--------|--------------------------------|------------------------
+  miniature                      | v1      | cluster  | system    | active | running:1                      | dataos-manager         
+  system                         | v1      | cluster  | system    | active | running:1                      | dataos-manager         
+  prime-cloud-r-sa               | v1      | secret   | system    | active |                                | dataos-manager         
+  prime-cloud-rw-sa              | v1      | secret   | system    | active |                                | dataos-manager         
+  system-container-registry      | v1      | secret   | system    | active |                                | dataos-manager         
+  system-dataops-storage         | v1      | secret   | system    | active |                                | dataos-manager         
+  gateway-audit-receiver         | v1      | service  | system    | active | running:1                      | aashishverma           
+  gateway-audit-receiver-01      | v1      | service  | system    | active | running:1                      | metis                  
+  minerva-audit-receiver-01      | v1      | service  | system    | active | running:1                      | metis                  
+  query-audit-service            | v1      | service  | system    | active | running:1                      | mohammadnabeelqureshi  
+  stores-api                     | v1      | service  | system    | active | running:1                      | metis                  
+  dataset-profiling-indexer      | v1beta  | worker   | system    | active | running:1                      | metis                  
+  dataset-quality-checks-indexer | v1beta  | worker   | system    | active | running:1                      | metis                  
+  poros-indexer                  | v1beta  | worker   | system    | active | running:2                      | metis                  
+  query-usage-indexer            | v1beta  | worker   | system    | active | running:1                      | metis                  
+  soda-quality-checks-indexer    | v1beta  | worker   | system    | active | running:1                      | metis                  
+  data-insights-sync             | v1      | workflow | system    | active | next:2024-01-23T15:30:00+05:30 | metis                  
+  data-product-sync              | v1      | workflow | system    | active | next:2024-01-23T14:30:00+05:30 | metis                  
+  heimdall-users-sync            | v1      | workflow | system    | active | running                        | metis                  
+  system-metadata-sync           | v1      | workflow | system    | active | next:2024-01-23T14:00:00+05:30 | metis                  
+
+
+➜  ~ dataos-ctl -i 'data-product-sync              | v1      | workflow | system' runtime run
+INFO[0000] 💨 runtime run...                             
+INFO[0002] 💨 runtime run...complete                     
+➜  ~ dataos-ctl get -w system -a                                                             
+INFO[0000] 🔍 get...                                     
+INFO[0000] 🔍 get...complete                             
+
+               NAME              | VERSION |   TYPE   | WORKSPACE | STATUS |            RUNTIME             |         OWNER          
+---------------------------------|---------|----------|-----------|--------|--------------------------------|------------------------
+  miniature                      | v1      | cluster  | system    | active | running:1                      | dataos-manager         
+  system                         | v1      | cluster  | system    | active | running:1                      | dataos-manager         
+  prime-cloud-r-sa               | v1      | secret   | system    | active |                                | dataos-manager         
+  prime-cloud-rw-sa              | v1      | secret   | system    | active |                                | dataos-manager         
+  system-container-registry      | v1      | secret   | system    | active |                                | dataos-manager         
+  system-dataops-storage         | v1      | secret   | system    | active |                                | dataos-manager         
+  gateway-audit-receiver         | v1      | service  | system    | active | running:1                      | aashishverma           
+  gateway-audit-receiver-01      | v1      | service  | system    | active | running:1                      | metis                  
+  minerva-audit-receiver-01      | v1      | service  | system    | active | running:1                      | metis                  
+  query-audit-service            | v1      | service  | system    | active | running:1                      | mohammadnabeelqureshi  
+  stores-api                     | v1      | service  | system    | active | running:1                      | metis                  
+  dataset-profiling-indexer      | v1beta  | worker   | system    | active | running:1                      | metis                  
+  dataset-quality-checks-indexer | v1beta  | worker   | system    | active | running:1                      | metis                  
+  poros-indexer                  | v1beta  | worker   | system    | active | running:2                      | metis                  
+  query-usage-indexer            | v1beta  | worker   | system    | active | running:1                      | metis                  
+  soda-quality-checks-indexer    | v1beta  | worker   | system    | active | running:1                      | metis                  
+  data-insights-sync             | v1      | workflow | system    | active | next:2024-01-23T15:30:00+05:30 | metis                  
+  data-product-sync              | v1      | workflow | system    | active | running                        | metis                  
+  heimdall-users-sync            | v1      | workflow | system    | active | next:2024-01-23T13:50:00+05:30 | metis                  
+  system-metadata-sync           | v1      | workflow | system    | active | next:2024-01-23T14:00:00+05:30 | metis       
+
+```
 ## `tcp-stream`
 
 Open a tcp stream for resources in the DataOS®
