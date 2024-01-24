@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pyflare.sdk.core package &mdash; dataos-pyflare 0.1.7 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="pyflare.sdk.depots package" href="pyflare.sdk.depots.html" />
+    <link rel="prev" title="pyflare.sdk.config package" href="pyflare.sdk.config.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            dataos-pyflare
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pyflare</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="pyflare.html">pyflare package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="pyflare.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="pyflare.jars.html">pyflare.jars package</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="pyflare.sdk.html">pyflare.sdk package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyflare.secrets.html">pyflare.secrets package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyflare.html#module-pyflare">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">dataos-pyflare</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">pyflare</a></li>
+          <li class="breadcrumb-item"><a href="pyflare.html">pyflare package</a></li>
+          <li class="breadcrumb-item"><a href="pyflare.sdk.html">pyflare.sdk package</a></li>
+      <li class="breadcrumb-item active">pyflare.sdk.core package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs/pyflare.sdk.core.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pyflare-sdk-core-package">
+<h1>pyflare.sdk.core package<a class="headerlink" href="#pyflare-sdk-core-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-pyflare.sdk.core.dataos_input">
+<span id="pyflare-sdk-core-dataos-input-module"></span><h2>pyflare.sdk.core.dataos_input module<a class="headerlink" href="#module-pyflare.sdk.core.dataos_input" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyflare.sdk.core.dataos_input.DataOSInput">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyflare.sdk.core.dataos_input.</span></span><span class="sig-name descname"><span class="pre">DataOSInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parsed_inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apikey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_stream</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">driver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyflare.sdk.core.dataos_input.DataOSInput" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.core.dataos_input.DataOSInput.process_inputs">
+<span class="sig-name descname"><span class="pre">process_inputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#pyflare.sdk.core.dataos_input.DataOSInput.process_inputs" title="Permalink to this definition"></a></dt>
+<dd><p>Read dataset from a source with the supplied parameters and
+create a temp view with the name passed in the dataos_source decorator.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pyflare.sdk.core.dataos_output">
+<span id="pyflare-sdk-core-dataos-output-module"></span><h2>pyflare.sdk.core.dataos_output module<a class="headerlink" href="#module-pyflare.sdk.core.dataos_output" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyflare.sdk.core.dataos_output.DataOSOutput">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyflare.sdk.core.dataos_output.</span></span><span class="sig-name descname"><span class="pre">DataOSOutput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataframe</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parsed_outputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apikey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_stream</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">driver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyflare.sdk.core.dataos_output.DataOSOutput" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.core.dataos_output.DataOSOutput.process_outputs">
+<span class="sig-name descname"><span class="pre">process_outputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyflare.sdk.core.dataos_output.DataOSOutput.process_outputs" title="Permalink to this definition"></a></dt>
+<dd><p>Write the transformed dataset to sink, with the supplied parameters to dataos_sink decorator.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pyflare.sdk.core.decorator">
+<span id="pyflare-sdk-core-decorator-module"></span><h2>pyflare.sdk.core.decorator module<a class="headerlink" href="#module-pyflare.sdk.core.decorator" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-pyflare.sdk.core.minerva_input">
+<span id="pyflare-sdk-core-minerva-input-module"></span><h2>pyflare.sdk.core.minerva_input module<a class="headerlink" href="#module-pyflare.sdk.core.minerva_input" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyflare.sdk.core.minerva_input.MinervaInput">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyflare.sdk.core.minerva_input.</span></span><span class="sig-name descname"><span class="pre">MinervaInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parsed_inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'jdbc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">driver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'io.trino.jdbc.TrinoDriver'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyflare.sdk.core.minerva_input.MinervaInput" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.core.minerva_input.MinervaInput.process_inputs">
+<span class="sig-name descname"><span class="pre">process_inputs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#pyflare.sdk.core.minerva_input.MinervaInput.process_inputs" title="Permalink to this definition"></a></dt>
+<dd><p>Run query on minerva and the result is stored as a temp view
+with the name passed in the dataos_source decorator.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pyflare.sdk.core.session_builder">
+<span id="pyflare-sdk-core-session-builder-module"></span><h2>pyflare.sdk.core.session_builder module<a class="headerlink" href="#module-pyflare.sdk.core.session_builder" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyflare.sdk.core.session_builder.SparkSessionBuilder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyflare.sdk.core.session_builder.</span></span><span class="sig-name descname"><span class="pre">SparkSessionBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_level</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyflare/sdk/core/session_builder.html#SparkSessionBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.core.session_builder.SparkSessionBuilder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.core.session_builder.SparkSessionBuilder.add_reader_instance">
+<span class="sig-name descname"><span class="pre">add_reader_instance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depot_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyflare/sdk/core/session_builder.html#SparkSessionBuilder.add_reader_instance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.core.session_builder.SparkSessionBuilder.add_reader_instance" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.core.session_builder.SparkSessionBuilder.add_writer_instance">
+<span class="sig-name descname"><span class="pre">add_writer_instance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depot_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyflare/sdk/core/session_builder.html#SparkSessionBuilder.add_writer_instance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.core.session_builder.SparkSessionBuilder.add_writer_instance" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyflare.sdk.core.session_builder.SparkSessionBuilder.api_token">
+<span class="sig-name descname"><span class="pre">api_token</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#pyflare.sdk.core.session_builder.SparkSessionBuilder.api_token" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.core.session_builder.SparkSessionBuilder.build_session">
+<span class="sig-name descname"><span class="pre">build_session</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">SparkSession</span></span></span><a class="reference internal" href="../_modules/pyflare/sdk/core/session_builder.html#SparkSessionBuilder.build_session"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.core.session_builder.SparkSessionBuilder.build_session" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyflare.sdk.core.session_builder.SparkSessionBuilder.dataos_fqdn">
+<span class="sig-name descname"><span class="pre">dataos_fqdn</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#pyflare.sdk.core.session_builder.SparkSessionBuilder.dataos_fqdn" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.core.session_builder.SparkSessionBuilder.load_default_spark_conf">
+<span class="sig-name descname"><span class="pre">load_default_spark_conf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pyflare.sdk.core.session_builder.SparkSessionBuilder" title="pyflare.sdk.core.session_builder.SparkSessionBuilder"><span class="pre">SparkSessionBuilder</span></a></span></span><a class="reference internal" href="../_modules/pyflare/sdk/core/session_builder.html#SparkSessionBuilder.load_default_spark_conf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.core.session_builder.SparkSessionBuilder.load_default_spark_conf" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyflare.sdk.core.session_builder.SparkSessionBuilder.log_level">
+<span class="sig-name descname"><span class="pre">log_level</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'INFO'</span></em><a class="headerlink" href="#pyflare.sdk.core.session_builder.SparkSessionBuilder.log_level" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyflare.sdk.core.session_builder.SparkSessionBuilder.logger">
+<span class="sig-name descname"><span class="pre">logger</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Logger</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyflare.sdk.core.session_builder.SparkSessionBuilder.logger" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyflare.sdk.core.session_builder.SparkSessionBuilder.parsed_inputs">
+<span class="sig-name descname"><span class="pre">parsed_inputs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#pyflare.sdk.core.session_builder.SparkSessionBuilder.parsed_inputs" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyflare.sdk.core.session_builder.SparkSessionBuilder.parsed_outputs">
+<span class="sig-name descname"><span class="pre">parsed_outputs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#pyflare.sdk.core.session_builder.SparkSessionBuilder.parsed_outputs" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyflare.sdk.core.session_builder.SparkSessionBuilder.spark">
+<span class="sig-name descname"><span class="pre">spark</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">SparkSession</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyflare.sdk.core.session_builder.SparkSessionBuilder.spark" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyflare.sdk.core.session_builder.SparkSessionBuilder.spark_conf">
+<span class="sig-name descname"><span class="pre">spark_conf</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#pyflare.sdk.core.session_builder.SparkSessionBuilder.spark_conf" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.core.session_builder.SparkSessionBuilder.with_dataos_fqdn">
+<span class="sig-name descname"><span class="pre">with_dataos_fqdn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataos_fqdn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyflare/sdk/core/session_builder.html#SparkSessionBuilder.with_dataos_fqdn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.core.session_builder.SparkSessionBuilder.with_dataos_fqdn" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.core.session_builder.SparkSessionBuilder.with_depot">
+<span class="sig-name descname"><span class="pre">with_depot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depot_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">acl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'r'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pyflare.sdk.core.session_builder.SparkSessionBuilder" title="pyflare.sdk.core.session_builder.SparkSessionBuilder"><span class="pre">SparkSessionBuilder</span></a></span></span><a class="reference internal" href="../_modules/pyflare/sdk/core/session_builder.html#SparkSessionBuilder.with_depot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.core.session_builder.SparkSessionBuilder.with_depot" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.core.session_builder.SparkSessionBuilder.with_readers">
+<span class="sig-name descname"><span class="pre">with_readers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reader_address_list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pyflare.sdk.core.session_builder.SparkSessionBuilder" title="pyflare.sdk.core.session_builder.SparkSessionBuilder"><span class="pre">SparkSessionBuilder</span></a></span></span><a class="reference internal" href="../_modules/pyflare/sdk/core/session_builder.html#SparkSessionBuilder.with_readers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.core.session_builder.SparkSessionBuilder.with_readers" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.core.session_builder.SparkSessionBuilder.with_spark_conf">
+<span class="sig-name descname"><span class="pre">with_spark_conf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conf</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pyflare.sdk.core.session_builder.SparkSessionBuilder" title="pyflare.sdk.core.session_builder.SparkSessionBuilder"><span class="pre">SparkSessionBuilder</span></a></span></span><a class="reference internal" href="../_modules/pyflare/sdk/core/session_builder.html#SparkSessionBuilder.with_spark_conf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.core.session_builder.SparkSessionBuilder.with_spark_conf" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.core.session_builder.SparkSessionBuilder.with_user_apikey">
+<span class="sig-name descname"><span class="pre">with_user_apikey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">apikey</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyflare/sdk/core/session_builder.html#SparkSessionBuilder.with_user_apikey"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.core.session_builder.SparkSessionBuilder.with_user_apikey" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyflare.sdk.core.session_builder.SparkSessionBuilder.with_writers">
+<span class="sig-name descname"><span class="pre">with_writers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">writer_address_list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pyflare.sdk.core.session_builder.SparkSessionBuilder" title="pyflare.sdk.core.session_builder.SparkSessionBuilder"><span class="pre">SparkSessionBuilder</span></a></span></span><a class="reference internal" href="../_modules/pyflare/sdk/core/session_builder.html#SparkSessionBuilder.with_writers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.core.session_builder.SparkSessionBuilder.with_writers" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="pyflare.sdk.core.session_builder.g_dataos_token">
+<span class="sig-prename descclassname"><span class="pre">pyflare.sdk.core.session_builder.</span></span><span class="sig-name descname"><span class="pre">g_dataos_token</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#pyflare.sdk.core.session_builder.g_dataos_token" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="pyflare.sdk.core.session_builder.g_inputs">
+<span class="sig-prename descclassname"><span class="pre">pyflare.sdk.core.session_builder.</span></span><span class="sig-name descname"><span class="pre">g_inputs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#pyflare.sdk.core.session_builder.g_inputs" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="pyflare.sdk.core.session_builder.g_outputs">
+<span class="sig-prename descclassname"><span class="pre">pyflare.sdk.core.session_builder.</span></span><span class="sig-name descname"><span class="pre">g_outputs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#pyflare.sdk.core.session_builder.g_outputs" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyflare.sdk.core.session_builder.load">
+<span class="sig-prename descclassname"><span class="pre">pyflare.sdk.core.session_builder.</span></span><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">driver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyflare/sdk/core/session_builder.html#load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.core.session_builder.load" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyflare.sdk.core.session_builder.minerva_input">
+<span class="sig-prename descclassname"><span class="pre">pyflare.sdk.core.session_builder.</span></span><span class="sig-name descname"><span class="pre">minerva_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">driver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'io.trino.jdbc.TrinoDriver'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyflare/sdk/core/session_builder.html#minerva_input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.core.session_builder.minerva_input" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyflare.sdk.core.session_builder.refresh_global_data">
+<span class="sig-prename descclassname"><span class="pre">pyflare.sdk.core.session_builder.</span></span><span class="sig-name descname"><span class="pre">refresh_global_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark_session_builder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pyflare.sdk.core.session_builder.SparkSessionBuilder" title="pyflare.sdk.core.session_builder.SparkSessionBuilder"><span class="pre">SparkSessionBuilder</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyflare/sdk/core/session_builder.html#refresh_global_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.core.session_builder.refresh_global_data" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyflare.sdk.core.session_builder.save">
+<span class="sig-prename descclassname"><span class="pre">pyflare.sdk.core.session_builder.</span></span><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataframe</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'append'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">driver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyflare/sdk/core/session_builder.html#save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.core.session_builder.save" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="pyflare.sdk.core.session_builder.spark">
+<span class="sig-prename descclassname"><span class="pre">pyflare.sdk.core.session_builder.</span></span><span class="sig-name descname"><span class="pre">spark</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">SparkSession</span></em><a class="headerlink" href="#pyflare.sdk.core.session_builder.spark" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-pyflare.sdk.core">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pyflare.sdk.core" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pyflare.sdk.config.html" class="btn btn-neutral float-left" title="pyflare.sdk.config package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pyflare.sdk.depots.html" class="btn btn-neutral float-right" title="pyflare.sdk.depots package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Modern Labs.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

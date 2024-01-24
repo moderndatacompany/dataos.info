@@ -1,0 +1,7 @@
+pyflare
+=======
+
+.. toctree::
+   :maxdepth: 4
+
+   pyflare
