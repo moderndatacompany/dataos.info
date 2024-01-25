@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pyflare.sdk.utils package &mdash; dataos-pyflare 0.1.7 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="pyflare.sdk.writers package" href="pyflare.sdk.writers.html" />
+    <link rel="prev" title="pyflare.sdk.readers package" href="pyflare.sdk.readers.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            dataos-pyflare
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pyflare</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="pyflare.html">pyflare package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="pyflare.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="pyflare.jars.html">pyflare.jars package</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="pyflare.sdk.html">pyflare.sdk package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyflare.secrets.html">pyflare.secrets package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyflare.html#module-pyflare">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">dataos-pyflare</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">pyflare</a></li>
+          <li class="breadcrumb-item"><a href="pyflare.html">pyflare package</a></li>
+          <li class="breadcrumb-item"><a href="pyflare.sdk.html">pyflare.sdk package</a></li>
+      <li class="breadcrumb-item active">pyflare.sdk.utils package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs/pyflare.sdk.utils.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pyflare-sdk-utils-package">
+<h1>pyflare.sdk.utils package<a class="headerlink" href="#pyflare-sdk-utils-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-pyflare.sdk.utils.generic_utils">
+<span id="pyflare-sdk-utils-generic-utils-module"></span><h2>pyflare.sdk.utils.generic_utils module<a class="headerlink" href="#module-pyflare.sdk.utils.generic_utils" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyflare.sdk.utils.generic_utils.append_properties">
+<span class="sig-prename descclassname"><span class="pre">pyflare.sdk.utils.generic_utils.</span></span><span class="sig-name descname"><span class="pre">append_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/pyflare/sdk/utils/generic_utils.html#append_properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.utils.generic_utils.append_properties" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyflare.sdk.utils.generic_utils.authorize_user">
+<span class="sig-prename descclassname"><span class="pre">pyflare.sdk.utils.generic_utils.</span></span><span class="sig-name descname"><span class="pre">authorize_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">heimdallClient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apikey</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyflare/sdk/utils/generic_utils.html#authorize_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.utils.generic_utils.authorize_user" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyflare.sdk.utils.generic_utils.decode_base64_string">
+<span class="sig-prename descclassname"><span class="pre">pyflare.sdk.utils.generic_utils.</span></span><span class="sig-name descname"><span class="pre">decode_base64_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">encoded_string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/pyflare/sdk/utils/generic_utils.html#decode_base64_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.utils.generic_utils.decode_base64_string" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyflare.sdk.utils.generic_utils.decorate_logger">
+<span class="sig-prename descclassname"><span class="pre">pyflare.sdk.utils.generic_utils.</span></span><span class="sig-name descname"><span class="pre">decorate_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyflare/sdk/utils/generic_utils.html#decorate_logger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.utils.generic_utils.decorate_logger" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyflare.sdk.utils.generic_utils.enhance_connection_url">
+<span class="sig-prename descclassname"><span class="pre">pyflare.sdk.utils.generic_utils.</span></span><span class="sig-name descname"><span class="pre">enhance_connection_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/pyflare/sdk/utils/generic_utils.html#enhance_connection_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.utils.generic_utils.enhance_connection_url" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyflare.sdk.utils.generic_utils.get_abfss_spark_conf">
+<span class="sig-prename descclassname"><span class="pre">pyflare.sdk.utils.generic_utils.</span></span><span class="sig-name descname"><span class="pre">get_abfss_spark_conf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rw_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyflare.sdk.config.html#pyflare.sdk.config.read_config.ReadConfig" title="pyflare.sdk.config.read_config.ReadConfig"><span class="pre">ReadConfig</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyflare/sdk/utils/generic_utils.html#get_abfss_spark_conf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.utils.generic_utils.get_abfss_spark_conf" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyflare.sdk.utils.generic_utils.get_dataset_path">
+<span class="sig-prename descclassname"><span class="pre">pyflare.sdk.utils.generic_utils.</span></span><span class="sig-name descname"><span class="pre">get_dataset_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depot_config</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/pyflare/sdk/utils/generic_utils.html#get_dataset_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.utils.generic_utils.get_dataset_path" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyflare.sdk.utils.generic_utils.get_env_variable">
+<span class="sig-prename descclassname"><span class="pre">pyflare.sdk.utils.generic_utils.</span></span><span class="sig-name descname"><span class="pre">get_env_variable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env_variable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/pyflare/sdk/utils/generic_utils.html#get_env_variable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.utils.generic_utils.get_env_variable" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyflare.sdk.utils.generic_utils.get_gcs_spark_conf">
+<span class="sig-prename descclassname"><span class="pre">pyflare.sdk.utils.generic_utils.</span></span><span class="sig-name descname"><span class="pre">get_gcs_spark_conf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rw_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyflare.sdk.config.html#pyflare.sdk.config.read_config.ReadConfig" title="pyflare.sdk.config.read_config.ReadConfig"><span class="pre">ReadConfig</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyflare/sdk/utils/generic_utils.html#get_gcs_spark_conf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.utils.generic_utils.get_gcs_spark_conf" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyflare.sdk.utils.generic_utils.get_jars_path">
+<span class="sig-prename descclassname"><span class="pre">pyflare.sdk.utils.generic_utils.</span></span><span class="sig-name descname"><span class="pre">get_jars_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyflare/sdk/utils/generic_utils.html#get_jars_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.utils.generic_utils.get_jars_path" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyflare.sdk.utils.generic_utils.get_s3_spark_conf">
+<span class="sig-prename descclassname"><span class="pre">pyflare.sdk.utils.generic_utils.</span></span><span class="sig-name descname"><span class="pre">get_s3_spark_conf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rw_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pyflare.sdk.config.html#pyflare.sdk.config.read_config.ReadConfig" title="pyflare.sdk.config.read_config.ReadConfig"><span class="pre">ReadConfig</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyflare/sdk/utils/generic_utils.html#get_s3_spark_conf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.utils.generic_utils.get_s3_spark_conf" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyflare.sdk.utils.generic_utils.get_secret_file_path">
+<span class="sig-prename descclassname"><span class="pre">pyflare.sdk.utils.generic_utils.</span></span><span class="sig-name descname"><span class="pre">get_secret_file_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/pyflare/sdk/utils/generic_utils.html#get_secret_file_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.utils.generic_utils.get_secret_file_path" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyflare.sdk.utils.generic_utils.get_secret_token">
+<span class="sig-prename descclassname"><span class="pre">pyflare.sdk.utils.generic_utils.</span></span><span class="sig-name descname"><span class="pre">get_secret_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depot_details</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/pyflare/sdk/utils/generic_utils.html#get_secret_token"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.utils.generic_utils.get_secret_token" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyflare.sdk.utils.generic_utils.resolve_dataos_address">
+<span class="sig-prename descclassname"><span class="pre">pyflare.sdk.utils.generic_utils.</span></span><span class="sig-name descname"><span class="pre">resolve_dataos_address</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataos_address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/pyflare/sdk/utils/generic_utils.html#resolve_dataos_address"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.utils.generic_utils.resolve_dataos_address" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyflare.sdk.utils.generic_utils.safe_assignment">
+<span class="sig-prename descclassname"><span class="pre">pyflare.sdk.utils.generic_utils.</span></span><span class="sig-name descname"><span class="pre">safe_assignment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyflare/sdk/utils/generic_utils.html#safe_assignment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.utils.generic_utils.safe_assignment" title="Permalink to this definition"></a></dt>
+<dd><p>Returns val1 if val2 is None, else return val2</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyflare.sdk.utils.generic_utils.write_dict_to_file">
+<span class="sig-prename descclassname"><span class="pre">pyflare.sdk.utils.generic_utils.</span></span><span class="sig-name descname"><span class="pre">write_dict_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/pyflare/sdk/utils/generic_utils.html#write_dict_to_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.utils.generic_utils.write_dict_to_file" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyflare.sdk.utils.generic_utils.write_string_to_file">
+<span class="sig-prename descclassname"><span class="pre">pyflare.sdk.utils.generic_utils.</span></span><span class="sig-name descname"><span class="pre">write_string_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">string_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/pyflare/sdk/utils/generic_utils.html#write_string_to_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.utils.generic_utils.write_string_to_file" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-pyflare.sdk.utils.pyflare_exceptions">
+<span id="pyflare-sdk-utils-pyflare-exceptions-module"></span><h2>pyflare.sdk.utils.pyflare_exceptions module<a class="headerlink" href="#module-pyflare.sdk.utils.pyflare_exceptions" title="Permalink to this heading"></a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="pyflare.sdk.utils.pyflare_exceptions.InvalidInputException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyflare.sdk.utils.pyflare_exceptions.</span></span><span class="sig-name descname"><span class="pre">InvalidInputException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyflare/sdk/utils/pyflare_exceptions.html#InvalidInputException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.utils.pyflare_exceptions.InvalidInputException" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pyflare.sdk.utils.pyflare_exceptions.MissingElementException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyflare.sdk.utils.pyflare_exceptions.</span></span><span class="sig-name descname"><span class="pre">MissingElementException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyflare/sdk/utils/pyflare_exceptions.html#MissingElementException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.utils.pyflare_exceptions.MissingElementException" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pyflare.sdk.utils.pyflare_exceptions.MissingEnvironmentVariable">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyflare.sdk.utils.pyflare_exceptions.</span></span><span class="sig-name descname"><span class="pre">MissingEnvironmentVariable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyflare/sdk/utils/pyflare_exceptions.html#MissingEnvironmentVariable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.utils.pyflare_exceptions.MissingEnvironmentVariable" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pyflare.sdk.utils.pyflare_exceptions.PyflareReadException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyflare.sdk.utils.pyflare_exceptions.</span></span><span class="sig-name descname"><span class="pre">PyflareReadException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyflare/sdk/utils/pyflare_exceptions.html#PyflareReadException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.utils.pyflare_exceptions.PyflareReadException" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pyflare.sdk.utils.pyflare_exceptions.PyflareWriteException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyflare.sdk.utils.pyflare_exceptions.</span></span><span class="sig-name descname"><span class="pre">PyflareWriteException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyflare/sdk/utils/pyflare_exceptions.html#PyflareWriteException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.utils.pyflare_exceptions.PyflareWriteException" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+</section>
+<section id="module-pyflare.sdk.utils.pyflare_logger">
+<span id="pyflare-sdk-utils-pyflare-logger-module"></span><h2>pyflare.sdk.utils.pyflare_logger module<a class="headerlink" href="#module-pyflare.sdk.utils.pyflare_logger" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyflare.sdk.utils.pyflare_logger.create_log4j_on_disk">
+<span class="sig-prename descclassname"><span class="pre">pyflare.sdk.utils.pyflare_logger.</span></span><span class="sig-name descname"><span class="pre">create_log4j_on_disk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root_logger_level</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyflare/sdk/utils/pyflare_logger.html#create_log4j_on_disk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.utils.pyflare_logger.create_log4j_on_disk" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyflare.sdk.utils.pyflare_logger.get_pyflare_logger">
+<span class="sig-prename descclassname"><span class="pre">pyflare.sdk.utils.pyflare_logger.</span></span><span class="sig-name descname"><span class="pre">get_pyflare_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'INFO'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pyflare.sdk.utils.pyflare_logger'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyflare/sdk/utils/pyflare_logger.html#get_pyflare_logger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.utils.pyflare_logger.get_pyflare_logger" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyflare.sdk.utils.pyflare_logger.log4j_log_level">
+<span class="sig-prename descclassname"><span class="pre">pyflare.sdk.utils.pyflare_logger.</span></span><span class="sig-name descname"><span class="pre">log4j_log_level</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">python_log_level</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyflare/sdk/utils/pyflare_logger.html#log4j_log_level"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.utils.pyflare_logger.log4j_log_level" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyflare.sdk.utils.pyflare_logger.setup_pyflare_logger">
+<span class="sig-prename descclassname"><span class="pre">pyflare.sdk.utils.pyflare_logger.</span></span><span class="sig-name descname"><span class="pre">setup_pyflare_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'INFO'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pyflare.sdk.utils.pyflare_logger'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyflare/sdk/utils/pyflare_logger.html#setup_pyflare_logger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyflare.sdk.utils.pyflare_logger.setup_pyflare_logger" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-pyflare.sdk.utils">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pyflare.sdk.utils" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pyflare.sdk.readers.html" class="btn btn-neutral float-left" title="pyflare.sdk.readers package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pyflare.sdk.writers.html" class="btn btn-neutral float-right" title="pyflare.sdk.writers package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Modern Labs.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
