@@ -214,11 +214,12 @@ stack:
     type: "envVars"
   image:
     registry: docker.io
-    repository: rubiklabs
+    repository: iamgroot
     image: dataos-steampipe
     tag: 0.0.1-dev
-    auth:
-      imagePullSecret: dataos-container-registry
+    # If your container registry is private utilize the below attribute after applying imagePullSecret 
+    # auth: 
+    #   imagePullSecret: dataos-container-registry
   command:
     - /entrypoint.sh
   arguments:
@@ -228,7 +229,7 @@ stack:
     - --foreground
   stackSpecValueSchema:
     jsonSchema: |
-      { "$schema": "http://json-schema.org/draft-01/schema#", "type": "object", "properties": {}}
+      {"$schema":"http://json-schema.org/draft-04/schema#","type":"object","properties":{"plugins":{"type":"array","items":{"type":"string"}}}}
   serviceConfig:
     configFileTemplate:
 			
