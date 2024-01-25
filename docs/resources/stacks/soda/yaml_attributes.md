@@ -1,0 +1,354 @@
+# Attributes of Soda Stack YAML
+
+## Structure of YAML
+
+```yaml
+stackSpec:
+  inputs:
+    # Redshift
+    - dataset: dataos://redshiftdepot:public/redshift_write_12
+      checks:
+        - row_count between 10 and 1000
+    # Oracle
+    - dataset: dataos://oracledepot:dev/oracle_write_12
+      checks:
+        - row_count between 10 and 1000
+    # MySql
+    - dataset: dataos://mysqldepot:tmdc/mysql_write_csv_12
+      checks:
+        - row_count between 10 and 1000
+    # MSSQL
+    - dataset: dataos://mssqldepot:tmdc/mssql_write_csv_12
+      checks:
+        - row_count between 10 and 1000
+    # Minerva
+    - dataset: dataos://icebase:retail/customer
+      options:
+        engine: minerva
+        clusterName: miniature
+      profile:
+        columns:
+          - customer_index
+          - exclude email_id
+          - include d*
+          - e*
+      checks:
+        - row_count between 10 and 1000
+        - row_count between (10 and 55)
+        - missing_count(birthdate) = 0
+        - invalid_percent(phone_number) < 1 %:
+            valid format: phone number
+        - invalid_count(number_of_children) < 0:
+            valid min: 0
+            valid max: 6
+        - min(age) > 30:
+            filter: marital_status = 'Married'
+        - duplicate_count(phone_number) = 0
+        - row_count same as city
+        - duplicate_count(customer_index) > 10
+        - duplicate_percent(customer_index) < 0.10
+        - failed rows:
+            samples limit: 70
+            fail condition: age < 18  and age >= 50
+        - failed rows:
+            fail query: |
+              SELECT DISTINCT customer_index
+              FROM customer as customer
+        - freshness(ts_customer) < 1d
+        - freshness(ts_customer) < 5d
+        - max(age) <= 100
+        - max_length(first_name) = 8
+        - values in (occupation) must exist in city (city_name)
+        - schema:
+            name: Confirm that required columns are present
+            warn:
+              when required column missing: [first_name, last_name]
+            fail:
+              when required column missing:
+                - age
+                - no_phone
+        - schema:
+            warn:
+              when forbidden column present: [Voldemort]
+              when wrong column type:
+                first_name: int
+            fail:
+              when forbidden column present: [Pii*]
+              when wrong column type:
+                number_of_children: DOUBLE
+    # Postgres
+    - dataset: dataos://postgresdepot:public/classification
+      checks:
+        - row_count between 0 and 1000
+    # Big Query
+    - dataset: dataos://bigquerydepot:distribution/dc_info
+      checks:
+      - row_count between 0 and 1000
+    # Snowflake
+    - dataset: dataos://snowflakedepot:TPCH_SF10/CUSTOMER
+      options: # this option is default no need to set, added for example.
+        engine: default
+      checks:
+        - row_count between 10 and 1000
+```
+
+## Configuration Attributes
+
+### **`stackSpec`**
+
+**Description:** Specification for the Soda Stack, including inputs for various datasets and associated checks.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| mapping | mandatory | none | none |
+
+**Example Usage:**
+
+```yaml
+stackSpec:
+  inputs:
+    # ... (list of dataset inputs and checks)
+```
+
+---
+
+### **`inputs`**
+
+**Description:** Within the inputs section users define the datasets or data sources on which data quality assessments will be performed. List of dataset inputs with associated checks.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| list of mappings | mandatory | none | none |
+
+**Example Usage:**
+
+```yaml
+stackSpec:
+  inputs:
+    - dataset: dataos://sanityredshift:public/redshift_write_12
+      checks:
+        - row_count between 10 and 1000
+    # ... (other dataset inputs)
+```
+
+---
+
+### **`dataset`**
+
+**Description:** Dataset specification, including the source and path. Specify the data source or dataset on which you want to run data quality checks.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | mandatory | none | dataset UDL path |
+
+**Example Usage:**
+
+```yaml
+stackSpec:
+  inputs:
+    - dataset: dataos://sanityredshift:public/redshift_write_12
+      # ...
+```
+
+---
+
+### **`checks`**
+
+**Description:** List of checks associated with the dataset input. Here you will specify a list of specific data quality checks or tests that will be performed on the designated dataset. These checks can be tailored to suit the unique requirements of the dataset and the data quality objectives. 
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| list of mappings | mandatory | none | none |
+
+**Example Usage:**
+
+```yaml
+stackSpec:
+  inputs:
+    - dataset: dataos://sanityredshift:public/redshift_write_12
+      checks:
+        - row_count between 10 and 1000
+    # ... (other checks for the dataset)
+```
+
+---
+
+### **`options`**
+
+**Description:** Options associated with the dataset input, such as the engine or cluster name. Here, you can configure how you want to connect to the data source and run the check. Pass the following information - 
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| mapping | optional | none | mapping containing options in key-value pairs |
+
+**Example Usage:**
+
+```yaml
+stackSpec:
+  inputs:
+    - dataset: dataos://icebase:retail/customer
+      options:
+        engine: minerva
+        clusterName: miniature
+      # ...
+```
+
+---
+
+### **`profile`**
+
+**Description:** Profile specification for the dataset input, including column selections. Here you can specify a list of columns that require profiling. Column profile information is used to understand the characteristics and data distribution in the specified columns, such as the calculated mean value of data in a column, the maximum and minimum values in a column, and the number of rows with missing data. 
+
+It can help you to gain insight into the type of checks you can prepare to test for data quality. However, it can be resource-heavy, so carefully consider the datasets for which you truly need column profile information.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| mapping | optional | none | none |
+
+**Example Usage:**
+
+```yaml
+stackSpec:
+  inputs:
+    - dataset: dataos://icebase:retail/customer
+      profile:
+        columns:
+          - customer_index
+          - exclude email_id
+          - include d*
+          - e*
+      # ...
+```
+
+---
+
+### **`columns`**
+
+**Description:** List of column specifications for profiling the dataset.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| list of strings | optional | - | List of column names or patterns. |
+
+**Additional Information:** In this section, specify the columns for which you need profiling information. You can do so in the following ways -
+
+- Exact Column Name:
+    
+    If you provide an exact column name, the profiling will focus only on that specific column. 
+    
+    ```yaml
+    profile:
+      columns:
+        - customer_index
+    ```
+    
+- Wildcard Matching:
+    
+    If you want to profile multiple columns that share a common pattern, you can use the "*" wildcard character. This wildcard matches any sequence of characters within a column name. 
+    
+    ```yaml
+    profile:
+      columns:
+        - include d*
+    ```
+    
+- Wildcard for All Columns:
+    
+    To profile all columns in the dataset, you can use the "*" wildcard without any prefix. 
+    
+    ```yaml
+    profile:
+      columns:
+        - "*"
+    ```
+    
+- Excluding Columns:
+    
+    Exclude specific columns from the profiling process, by using the "exclude" keyword followed by the column names.
+    
+    ```yaml
+    profile:
+      columns:
+    		- "*"
+        - exclude email_id
+    ```
+    
+- Combining Patterns
+    
+    Combine different patterns to create more refined selections. 
+    
+    ```yaml
+    profile:
+      columns:
+        - customer_index
+        - exclude email_id
+        - include d*
+        - e*
+    ```
+    
+
+**Example Usage:**
+
+```yaml
+stackSpec:
+  inputs:
+    - dataset: dataos://icebase:retail/customer
+      profile:
+        columns:
+          - customer_index
+          - exclude email_id
+          - include d*
+          - e*
+      # ...
+```
+
+---
+
+### **`engine`**
+
+**Description:** Engine option for the dataset input. The engine key can have two values: "minerva" and "default". The "default" value executes queries on the native engine of the data source, while "minerva" uses the DataOS query engine to run queries. 
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | optional | none | default/minerva |
+
+**Additional Information:** 
+
+- Why and when do we need to connect to Minerva?
+    - When the source’s engine is not supported
+    - When the source doesn’t have a native engine
+
+To run checks on such a source, we must first connect it to a depot.
+
+- **Available engines for different sources**
+    
+    
+    | Source Name/Engine | Default | Minerva |
+    | --- | --- | --- |
+    | Snowflake | Yes | Yes |
+    | Oracle | Yes | Yes |
+    | Trino | Yes | Yes |
+    | Minerva | No | Yes |
+    | BigQuery | Yes | Yes |
+    | Postgres | Yes | Yes |
+    | MySQL | Yes | Yes |
+    | MSSQL | Yes | Yes |
+    | Redshift | Yes | Yes |
+    | Elastic Search | No | Yes |
+    | MongoDB | No | Yes |
+    | Kafka | No | Yes |
+    | Azure File System | No | No |
+    | Eventhub | No | No |
+    | GCS | No | No |
+    | OpenSearch | No | No |
+    | S3 | No | No |
+
+---
+
+### **`clusterName`**
+
+**Description:** Here, the users can specify the cluster name on which the queries will run. If the engine is Minerva, this is a mandatory field. You can check the cluster on which your depot is mounted in Workbench or check the cluster definition in Operations.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | optional | none | valid Cluster Name |
