@@ -56,29 +56,34 @@ DataOS has two distinct resources that supports its interoperability and extensi
 
 ## Built-in Stacks in DataOS
 
-### **CLI**
-
-The DataOS Command-Line Interface (CLI), known as `dataos-ctl`, also serves as a Stack within the DataOS ecosystem. It enables users to programmatically execute CLI commands through a YAML manifest. To learn more about CLI Stack, refer to the link: [CLI](./stacks/cli.md).
-
-### **Flare**
-
-[Flare](./stacks/flare.md) is a powerful declarative Stack designed specifically for large-scale data processing tasks.
-
-### **Benthos**
-
-[Benthos](./stacks/benthos.md) is a high-performance, resilient, and declarative stream processing Stack.
-
-### **Beacon**
-
-[Beacon](./stacks/beacon.md) Stack is a standalone HTTP server that exposes API endpoints on top of a Postgres database. It offers a single flavor `beacon+rest` that enables exposure of REST APIs on Postgres database.
 
 ### **Alpha**
 
 [Alpha](./stacks/alpha.md) Stack is a declarative DevOps SDK used for seamless deployment of data applications into production environments.
 
+### **Beacon**
+
+[Beacon](./stacks/beacon.md) Stack is a standalone HTTP server that exposes API endpoints on top of a Postgres database. It offers a single flavor `beacon+rest` that enables exposure of REST APIs on Postgres database.
+
+
+### **Benthos**
+
+[Benthos](./stacks/benthos.md) is a high-performance, resilient, and declarative stream processing Stack.
+
+### **CLI**
+
+The DataOS Command-Line Interface (CLI), known as `dataos-ctl`, also serves as a Stack within the DataOS ecosystem. It enables users to programmatically execute CLI commands through a YAML manifest. To learn more about CLI Stack, refer to the link: [CLI](./stacks/cli.md).
+
+
+
 ### **Data Toolbox**
 
 The [Data Toolbox](./stacks/data_toolbox.md) Stack provides functionality to update Iceberg metadata versions to the latest available or to any specific version.
+
+### **Flare**
+
+[Flare](./stacks/flare.md) is a powerful declarative Stack designed specifically for large-scale data processing tasks.
+
 
 ### **Scanner**
 
