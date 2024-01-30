@@ -4,7 +4,7 @@ DataOS Lakehouse, is a [DataOS Resource](../resources.md) that integrates Apache
 
 <aside class="callout">
 
-🗣️ Unlike traditional object storage depots that are instantiated at the Instance-level, Lakehouses are created at the Workspace-level.
+🗣️ Unlike traditional <a href="./depot/depot_config_templates.md">object storage or Data Lake depots</a> that are instantiated at the <a href="./types_of_dataos_resources.md#instance-level-resources">Instance-level</a>, Lakehouses are created at the <a href="./types_of_dataos_resources.md#workspace-level-resources">Workspace-level.
 
 </aside>
 
@@ -16,11 +16,11 @@ DataOS Lakehouse offers a fully managed storage solution. It utilizes Apache Ice
 
 **Computing Environment Flexibility**
 
-Supports a multitude of computing environments for cloud-native storage. Users can deploy various compute engines, including DataOS native stacks such as Flare, Soda, etc.
+Supports a multitude of computing environments for cloud-native storage. Users can deploy various compute engines, including DataOS native stacks such as [Flare](./stacks/flare.md), [Soda](./stacks/soda.md), etc.
 
 **Apache Iceberg Integration**
 
-Incorporates a hosted implementation of Apache Iceberg REST catalog, facilitating interaction with DataOS warehouse through Iceberg REST catalog API.
+Incorporates a hosted implementation of Apache Iceberg REST catalog, facilitating interaction with DataOS Lakehouse through Iceberg REST catalog API.
 
 ## How to create a Lakehouse?
 
@@ -32,9 +32,15 @@ Data developers can create a Lakehouse Resource by creating a YAML manifest and 
 
 A Lakehouse YAML manifest can be structurally broken down into following sections:
 
-#### **Configure the Resource meta section**
+- [Resource meta section](#configure-the-resource-meta-section)
+- [Lakehouse-specific section](#configure-the-lakehouse-specific-section)
+	- [Metastore configuration](#metastore-configuration)
+	- [Storage configuration](#storage-configuration)
+		- [GCS](#gcs)
 
-In DataOS, a Lakehouse is categorized as a **[Resource-type](https://dataos.info/resources/types_of_dataos_resources/).** The Resource meta section within the YAML manifest encompasses attributes universally applicable to all Resource-types. The provided YAML codeblock elucidates the requisite attributes for this section: 
+#### **Configuring the Resource meta section**
+
+In DataOS, a Lakehouse is categorized as a [Resource-type](https://dataos.info/resources/types_of_dataos_resources/). The Resource meta section within the YAML manifest encompasses attributes universally applicable to all Resource-types. The provided YAML codeblock elucidates the requisite attributes for this section: 
 
 ```yaml
 # Resource meta section
@@ -53,7 +59,7 @@ bundle: # Bundle-specific section mapping(mandatory)
 
 For more information, refer to the [Attributes of Resource Meta Section.](../resources/resource_attributes.md)
 
-#### **Configure the Lakehouse-specific section**
+#### **Configuring the Lakehouse-specific section**
 
 ```yaml
 metastore: # Metastore section (optional)
