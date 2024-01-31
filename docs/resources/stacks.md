@@ -56,31 +56,47 @@ DataOS has two distinct resources that supports its interoperability and extensi
 
 ## Built-in Stacks in DataOS
 
-### **Flare**
-
-[Flare](./stacks/flare.md) is a powerful declarative Stack designed specifically for large-scale data processing tasks.
-
-### **Benthos**
-
-[Benthos](./stacks/benthos.md) is a high-performance, resilient, and declarative stream processing Stack.
-
-### **Beacon**
-
-[Beacon](./stacks/beacon.md) Stack is a standalone HTTP server that exposes API endpoints on top of a Postgres database. It offers a single flavor `beacon+rest` that enables exposure of REST APIs on Postgres database.
 
 ### **Alpha**
 
 [Alpha](./stacks/alpha.md) Stack is a declarative DevOps SDK used for seamless deployment of data applications into production environments.
 
+### **Beacon**
+
+[Beacon](./stacks/beacon.md) Stack is a standalone HTTP server that exposes API endpoints on top of a Postgres database. It offers a single flavor `beacon+rest` that enables exposure of REST APIs on Postgres database.
+
+
+### **Benthos**
+
+[Benthos](./stacks/benthos.md) is a high-performance, resilient, and declarative stream processing Stack.
+
+### **CLI**
+
+The DataOS Command-Line Interface (CLI), known as `dataos-ctl`, also serves as a Stack within the DataOS ecosystem. It enables users to programmatically execute CLI commands through a YAML manifest. To learn more about CLI Stack, refer to the link: [CLI](./stacks/cli.md).
+
+
+
 ### **Data Toolbox**
 
 The [Data Toolbox](./stacks/data_toolbox.md) Stack provides functionality to update Iceberg metadata versions to the latest available or to any specific version.
+
+### **Flare**
+
+[Flare](./stacks/flare.md) is a powerful declarative Stack designed specifically for large-scale data processing tasks.
+
 
 ### **Scanner**
 
 The [Scanner](./stacks/scanner.md) Stack in DataOS is a Python-based framework that allows developers to extract metadata from external source systems (such as RDBMS, Data Warehouses, Messaging services, etc.) as well as components/services within the DataOS environment.
 
+### **Soda**
+
+Soda is a declarative Stack integrated into DataOS, specifically for data quality testing and profiling across one or more datasets. To learn more about Soda, refer to the link: [Soda](./stacks/soda.md).
+
+
 These built-in stacks offer a wide range of capabilities, empowering data developers to efficiently build, process, and manage data within the DataOS ecosystem.
+
+
 
 ## How to create your own Stack?
 
