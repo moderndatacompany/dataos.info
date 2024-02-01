@@ -361,7 +361,7 @@ You have successfully installed the CLI, now the next step is to [initialize](#i
 
 You have successfully installed the CLI, now the next step is to [initialize](#initialize) it. 
 
-## Initialize
+## Initialize DataOS Context
 
 To initialize, run the init command.
 
@@ -411,7 +411,7 @@ dataos-ctl login
 
 If your enterprise has multiple DataOS contexts, you can use the same command-line interface (CLI) that you just installed to access and use any of those contexts. You can switch between different DataOS contexts using a specific command with the CLI.
 
-## Test
+## Test CLI Installation
 
 Run the following commands to ensure the successful installation of DataOS CLI. These commands will show the version and health status of the installed DataOS CLI.
 
@@ -420,7 +420,7 @@ dataos-ctl version
 dataos-ctl health
 ```
 
-## Update
+## Update CLI
 
 To update the CLI to a different version, just redo the steps mentioned earlier. However, make sure to modify the CLI version within these commands to match the specific version you intend to install.
 
