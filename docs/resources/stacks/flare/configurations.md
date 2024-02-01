@@ -1519,6 +1519,26 @@ stackSpec:
 
 ---
 
+##### **`sqlFile`**
+
+**Description:** The sqlFile attribute specifies the path to an SQL file containing transformation queries.The sql snippets are interpolated within the `sql` attribute when the YAML manifest is applied using the DataOS CLI. This feature enables clean code separation and efficient management of complex SQL transformations.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | optional | none | any valid SQL file path |
+
+**Example Usage:**
+
+```yaml
+stackSpec:
+  job:
+    steps:
+      - sequence:
+          - sqlFile: transformation/data-product/mycode.sql
+```
+
+---
+
 ##### **`classpath`**
 
 **Description:** The `classpath` attribute specifies the classpath of the Java or Scala class that implements the step's logic. It is essential for steps that involve custom processing logic.
