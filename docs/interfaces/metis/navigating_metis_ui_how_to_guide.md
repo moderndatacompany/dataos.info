@@ -50,7 +50,7 @@ Here are some scenarios where using these terms can be powerful:
 
 </aside>
 
-### **How to Create a Glossary of Terms**
+### **How to Create a Glossary**
 
 1. On Metis UI, click on **Govern →** **Glossary**.
 2. Clicking on + Add Glossary will open up the following form:
@@ -61,8 +61,10 @@ Here are some scenarios where using these terms can be powerful:
     
 3. Enable Mutually Exclusive Property to designate the glossary as mutually exclusive. When a Glossary is marked as mutually exclusive, it implies that a metadata entity can be tagged to any of the single glossary terms.  It can not have two or more glossary terms attached to it simultaneously.
 4. Add owners and reviewers and save it. Your glossary will appear on the left pane.
-5. To create a glossary term, select the newly added glossary on the left pane and then select the **Add term** button on the page.
-6. Give this new term a name, which must be unique in the glossary. 
+
+#### **How to Add Glossary Terms**
+1. To create a glossary term, select the newly added glossary on the left pane and then select the **Add term** button on the page.
+2. Give this new term a name, which must be unique in the glossary. 
     
     ![Adding references and synonyms for the glossary term ](navigating_metis_ui_how_to_guide/add_glossary_term.png)
     
@@ -71,9 +73,44 @@ Here are some scenarios where using these terms can be powerful:
     > Metis enables you to add rich formatting to glossary term. For example, you can add `bold`, `underline`, or `italic` formatting to the text. You can also create tables, bulleted lists, or hyperlinks to external resources.
     > 
     
-7. You can add synonyms, the other terms used for the same term, such as for customer, you can add client, buyer, etc.
-8. You can add related terms for the term, such as for customer, you can add related terms ‘loyal’, ‘preferred’, ‘high-importance’, etc.
-9. A term also has a set of **Reviewers** who review and accept the changes to the Glossary. This is to ensure the consistent use of terms across the organization. 
+3. You can add synonyms, the other terms used for the same term, such as for customer, you can add client, buyer, etc.
+4. You can add related terms for the term, such as for customer, you can add related terms ‘loyal’, ‘preferred’, ‘high-importance’, etc.
+5. Add links from where you inherited the term.
+6. Add the tags which are alreday existing in DataOS
+7. A term also has a set of **Reviewers** who review and accept the changes to the Glossary. This is to ensure the consistent use of terms across the organization. 
+
+### **How to Bulk Upload Glossary**
+
+Metis facilitates a **Glossary Bulk Upload** feature. During the bulk upload process, Owners and Reviewers can be specified. These designated individuals will then be automatically associated with each glossary term, streamlining the management and oversight of the entire glossary.
+
+To import a glossary into Metis:
+
+1. Navigate to **Govern > Glossary**.
+    
+2. Click on the **⋮** icon and **Export** the glossary file. If you have glossary terms in your Glossary, the same will be exported as a CSV file. If there are no terms in the Glossary, then a blank CSV template will be downloaded.
+    
+    ![image](navigating_metis_ui_how_to_guide/glossary_add_term_option.png)
+    <figcaption align = "center"> Glossary options </figcaption>
+    
+3. Once you have the template, you can fill in the following details:
+    - **parent** - The parent column helps to define the hierarchy of the glossary terms. If you leave this field blank, the Term will be created at the root level. If you want to create a hierarchy of Glossary Terms, the parent details must be entered as per the hierarchy. For example, from the Glossary level, `Banking.Account.Savings Account`
+    - **name**- This contains the name of the glossary term, and is a required field.
+    - **displayName** - This contains the Display name of the glossary term.
+    - **description**- This contains the description or details of the glossary term and is a required field.
+    - **synonyms** - Include words that have the same meaning as the glossary term. E.g., for the term ‘Customer’, the synonyms can be ‘Client’, ‘Buyer’, or ‘Purchaser’. In the CSV file, the synonyms must be separated by a semicolon (;) as in `Client; Buyer;Purchaser`
+    - **related terms** - A term that has a related concept as the glossary term. This term must be available in Metis. E.g., for the term ‘Customer’, the related terms can be ‘Customer LTV (LifeTime Value)’, and ‘Customer Acquisition Cost (CAC)’. In the CSV file, the related terms must contain the hierarchy, which is separated by a full stop (.). Multiple terms must be separated by a semicolon (;) as in `Banking.Account.Savings account;Banking.Debit card`
+    - **references** - Add links from the internet from where you inherited the term. In the CSV file, the references must be in the format (name;url;name;url) `IBM;https://www.ibm.com/;World Bank;https://www.worldbank.org/`
+    - **tags** - Add the tags which are already existing in Metis. In the CSV file, the tags must be in the format `PII.Sensitive;PersonalData.Personal`
+    
+4. Once you have added the values for the above fields in CSV you can upload it via **Import** option. 
+    
+       
+    ![Untitled](navigating_metis_ui_how_to_guide/glossary_upload_option.png)
+    <figcaption align = "center">Glossary bulk upload option</figcaption>
+5. Choose the file to be uploaded and the Glossary will be populated.
+    ![Untitled](navigating_metis_ui_how_to_guide/glossary_upload.png)
+    <figcaption align = "center"> Upload CSV file </figcaption>
+
 
 <aside class="callout">
 🗣 Once tag categories and glossary terms are defined, users can attach them to various entities such as data assets, DataOS Resources and products.
@@ -101,7 +138,7 @@ On the DataOS entity detailspage, click on the edit icon next to the Tag Tier.
 
 You can collaborate with your team by starting conversation threads and asking for dataset descriptions or tags for an entity by clicking the chat icon. Metis enables you to easily ask any questions that you might have about an entity.
 
-You can create and reply to entire conversation threads around various activities across any data asset. You can also add reactions with emojis.
+You can create and reply to entire conversation threads around various activities across any DataOS entity. You can also add reactions with emojis.
 
 1. On the entity DataOS entity detailspage, click on the highlighted icon for conversations. The number on it denotes the messages in the conversation thread. The right pane will show the conversations.
     
