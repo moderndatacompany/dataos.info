@@ -5,10 +5,12 @@ Flare is a declarative [Stack](../stacks.md) for large-scale data processing wit
 
 ![flare.jpg](./flare/flare_overview.png)
 
-<center><i>Placement of Flare stack within DataOS</i>
+<center><i>Placement of Flare Stack within DataOS</i>
 </center>
 
-## Types of Flare Jobs
+## Flare Jobs
+
+The Flare Stack offers varied configuration to execute different types of Jobs. The details of each job are provided in the table below:
 
 | Flare Job Type  | Description                                                                                                            |
 |-----------------|------------------------------------------------------------------------------------------------------------------------|
