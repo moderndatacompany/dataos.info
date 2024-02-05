@@ -27,3 +27,6 @@ Follow the steps to explore a Lens within the Lens Explorer:
 - Step 4: Apply Params
 - Step 5: Run the Query
 - Step 6: Visualize the Results
+<aside class="callout">
+The presentation of the query results adheres to the data policies applied to the base table from which the lens is derived.
+</aside>
