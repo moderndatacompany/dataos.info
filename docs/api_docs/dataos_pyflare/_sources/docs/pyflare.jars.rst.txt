@@ -1,0 +1,10 @@
+pyflare.jars package
+====================
+
+Module contents
+---------------
+
+.. automodule:: pyflare.jars
+   :members:
+   :undoc-members:
+   :show-inheritance:
