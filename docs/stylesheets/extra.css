@@ -1657,8 +1657,10 @@ html .md-footer-meta.md-typeset a:hover {
 }
 
 .md-social {
-    margin: 0 .4rem;
-    padding: .2rem 0 .6rem
+    display: block;
+    gap: 0.2rem;
+    margin: 0 0.4rem;
+    padding: 0.2rem 0 0.6rem;
 }
 
 @media screen and (min-width: 45em) {
