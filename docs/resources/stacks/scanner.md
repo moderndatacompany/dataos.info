@@ -133,7 +133,7 @@ This workflow will scan the information about the users in DataOS. This is a sch
 [Scanner for User's Information](scanner/user_info_scan.md)
 
 ## Metadata Update
-Indexer service, a continuous running service within the DataOS environment keeps track of newly created or updated entities such as **Data products**, **Data Assets**(datasets/topics/dashboards, etc.) and **DataOS Resources**(Workflows, Services, Workers, Monitirs, Depots etc.). With this information about the changed entity, it creates a reconciliation Scanner YAML with filters to include only the affected entity. This Scanner workflow will extract the metadata about the entity and update the target metastore.
+Indexer service, a continuous running service within the DataOS environment keeps track of newly created or updated entities such as **Data products**, **Data Assets**(datasets/topics/dashboards, etc.) and **DataOS Resources**(Workflows, Services, Workers, Monitors, Depots etc.). With this information about the changed entity, it creates a reconciliation Scanner YAML with filters to include only the affected entity. This Scanner workflow will extract the metadata about the entity and update the target metastore.
 
 The following continuous running services are designed for triggering the specific type of metadata scan. 
 
