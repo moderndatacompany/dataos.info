@@ -673,15 +673,15 @@ workflow:
         stack: flare:4.0
         compute: runnable-default
         stackSpec:
-            job:
+          job:
             explain: true
-            logLevel: INFO
             inputs:
               - name: soda
-                dataset: dataos://systemstreams:soda/quality_profile_results
+                dataset: dataos://systemstreams:soda/quality_profile_results_01
                 isStream: false
                 options:
                   startingOffsets: earliest
+            logLevel: INFO
             outputs:
               - name: joined_checks_metrics
                 dataset: dataos://icebase:soda/soda_check_metrics_01?acl=rw
@@ -692,12 +692,12 @@ workflow:
                   sort:
                     mode: partition
                     columns:
-                      - name: depot
-                        order: desc
-                      - name: collection
-                        order: desc
-                      - name: dataset
-                        order: desc
+                        - name: depot
+                          order: desc
+                        - name: collection
+                          order: desc
+                        - name: dataset
+                          order: desc
                   iceberg:
                     partitionSpec:
                       - type: identity
@@ -708,84 +708,84 @@ workflow:
                         column: dataset
             steps:
               - sequence:
-                - name: dropped_columns
-                  sql: SELECT * from soda
-                  functions:
-                    - name: drop
-                      columns:
-                        - __eventTime
-                        - __key
-                        - __producer_name
-                        - __messageProperties
-                        - __publishTime
-                        - __topic
-                        - automatedMonitoringChecks
-                        - clusterName
-                        - dataosResourceId
-                        - defaultDataSource
-                        - definitionName
-                        - engine
-                        - hasFailures
-                        - hasErrors
-                        - hasWarnings
-                        - logs
-                        - metadata
-                        - profiling
-                        - queries
-                        - runId
-                    - name: cleanse_column_names
-                    - name: checks_extracted
-                      sql: select * from dropped_columns
-                      functions:
-                        - name: unfurl 
-                          expression: explode(checks) as checks_
-                        - name: drop
-                          columns:
-                            - checks
-                        - name: rename_all
-                          columns:
-                            metrics: metrics_value
-                        - name: unfurl 
-                          expression: checks_.*
-                        - name: drop
-                          columns:
-                            - checks_
-                        - name: unfurl
-                          expression: explode(metrics) as metrics_
-                        - name: drop
-                          columns:
-                            - metrics
-                    - name: metrics_extracted
-                      sql: select dataos_run_id, metrics_value from checks_extracted
-                      functions:
-                        - name: unfurl 
-                          expression: explode(metrics_value) as metrics_value_
-                        - name: drop
-                          columns:
-                            - metrics_value
-                        - name: unfurl 
-                          expression: metrics_value_.*
-                        - name: drop
-                          columns:
-                            - metrics_value_
+                  - name: dropped_columns
+                    sql: SELECT * from soda
+                    functions:
+                      - name: drop
+                        columns:
+                          - __eventTime
+                          - __key
+                          - __producer_name
+                          - __messageProperties
+                          - __publishTime
+                          - __topic
+                          - automatedMonitoringChecks
+                          - clusterName
+                          - dataosResourceId
+                          - defaultDataSource
+                          - definitionName
+                          - engine
+                          - hasFailures
+                          - hasErrors
+                          - hasWarnings
+                          - logs
+                          - metadata
+                          - profiling
+                          - queries
+                          - runId
+                      - name: cleanse_column_names
+                  - name: checks_extracted
+                    sql: select * from dropped_columns
+                    functions:
+                      - name: unfurl 
+                        expression: explode(checks) as checks_
+                      - name: drop
+                        columns:
+                          - checks
+                      - name: rename_all
+                        columns:
+                          metrics: metrics_value
+                      - name: unfurl 
+                        expression: checks_.*
+                      - name: drop
+                        columns:
+                          - checks_
+                      - name: unfurl
+                        expression: explode(metrics) as metrics_
+                      - name: drop
+                        columns:
+                          - metrics
+                  - name: metrics_extracted
+                    sql: select dataos_run_id, metrics_value from checks_extracted
+                    functions:
+                      - name: unfurl 
+                        expression: explode(metrics_value) as metrics_value_
+                      - name: drop
+                        columns:
+                          - metrics_value
+                      - name: unfurl 
+                        expression: metrics_value_.*
+                      - name: drop
+                        columns:
+                          - metrics_value_
 
-                    - name: joined_checks_metrics
-                      sql: select 
-                            ce.dataos_run_id, ce.job_name, ce.scan_start_timestamp as timestamp, ce.user_name, ce.depot, ce.collection, ce.dataset, ce.column, ce.name as check_definition, me.metric_name, me.value as metric_value, ce.outcome as check_outcome
-                            from checks_extracted ce
-                            left join metrics_extracted me on ce.dataos_run_id = me.dataos_run_id and ce.metrics_ = me.identity
+                  - name: joined_checks_metrics
+                    sql: select 
+                          ce.dataos_run_id, ce.job_name, ce.scan_start_timestamp as timestamp, ce.user_name, ce.depot, ce.collection, ce.dataset, ce.column, ce.name as check_definition, me.metric_name, me.value as metric_value, ce.outcome as check_outcome
+                          from checks_extracted ce
+                          left join metrics_extracted me on ce.dataos_run_id = me.dataos_run_id and ce.metrics_ = me.identity
 
     - name: soda-check-data
       spec:
         stack: toolbox
         compute: runnable-default
         stackSpec:
-            dataset: dataos://icebase:soda/soda_check_metrics_01?acl=rw
-            action:
+          dataset: dataos://icebase:soda/soda_check_metrics_01?acl=rw
+          action:
             name: set_version
             value: latest
-        dependencies:
-          - soda-cm-data
+      dependencies:
+        - soda-cm-data
 ```
 </details>
 
@@ -793,8 +793,8 @@ workflow:
 <summary>Workflow for sinking Soda Profiling information</summary>
 
 ```yaml
-name: soda-profile-data
 version: v1
+name: soda-profile-data
 type: workflow
 workflow:
   dag:
@@ -804,158 +804,158 @@ workflow:
         compute: runnable-default
         stackSpec:
           job:
-          explain: true
-          logLevel: INFO
-          inputs:
-            - name: soda
-              dataset: dataos://systemstreams:soda/quality_profile_results
-              isStream: false
-              options:
-                startingOffsets: earliest
-          outputs:
-            - name: changed_datatype
-              dataset: dataos://icebase:soda/soda_profiles_01?acl=rw
-              format: Iceberg
-              options:
-                saveMode: append
-                checkpointLocation: dataos://icebase:sys01/checkpoints/soda-profiles-data/v001?acl=rw
-                sort:
-                mode: partition
-                columns:
-                  - name: depot
-                    order: desc
-                  - name: collection
-                    order: desc
-                  - name: dataset
-                    order: desc
-                iceberg:
-                  partitionSpec:
-                    - type: identity
-                      column: depot
-                    - type: identity
-                      column: collection
-                    - type: identity
-                      column: dataset
-                steps:
-                  - sequence:
-                    - name: dropped_columns
-                      sql: SELECT * from soda
-                      functions:
-                        - name: drop
-                          columns:
-                            - __eventTime
-                            - __key
-                            - __producer_name
-                            - __messageProperties
-                            - __publishTime
-                            - __topic
-                            - automatedMonitoringChecks
-                            - clusterName
-                            - dataosResourceId
-                            - defaultDataSource
-                            - definitionName
-                            - engine
-                            - hasFailures
-                            - hasErrors
-                            - hasWarnings
-                            - logs
-                            - metadata
-                            - checks
-                            - queries
-                            - metrics
-                        - name: cleanse_column_names
-                        - name: unfurl
-                          expression: explode(profiling) as profiling_
-                        - name: unfurl
-                          expression: profiling_.*
-                        - name: drop
-                          columns:
-                            - profiling
-                            - profiling_
-                        - name: unfurl
-                          expression: explode(column_profiles) as column_profiles_
-                        - name: unfurl
-                          expression: column_profiles_.*
-                        - name: unfurl
-                          expression: profile.*
-                        - name: drop
-                          columns:
-                            - column_profiles
-                            - column_profiles_
-                            - profile
-                        - name: cleanse_column_names
-                        - name: changed_datatype
-                          sql: |
-                              SELECT
-                              collection,
-                              dataset,
-                              depot,
-                              job_name,
-                              user_name,
-                              scan_end_timestamp as created_at,
-                              row_count,
-                              table,
-                              column_name,
-                              run_id,
-                              cast(avg AS STRING) AS avg,
-                              cast(avg_length AS STRING) AS avg_length,
-                              cast(distinct AS STRING) AS distinct,
-                              cast(frequent_values AS STRING) AS frequent_values,
-                              cast(histogram AS STRING) AS histogram,
-                              cast(max AS STRING) AS max,
-                              cast(max_length AS STRING) AS max_length,
-                              cast(maxs AS STRING) maxs,
-                              cast(min AS STRING) AS min,
-                              cast(min_length AS STRING) AS min_length,
-                              cast(mins AS STRING) AS mins,
-                              cast(missing_count AS STRING) AS missing_count,
-                              cast(stddev AS STRING) AS stddev,
-                              cast(sum AS STRING) AS sum,
-                              cast(variance AS STRING) AS variance
-                              FROM
-                              dropped_columns
-                          functions:
-                            - name: unpivot 
-                              columns:
-                                - avg
-                                - avg_length
-                                - distinct
-                                - frequent_values
-                                - histogram
-                                - max
-                                - max_length
-                                - maxs
-                                - min
-                                - min_length
-                                - mins
-                                - missing_count
-                                - stddev
-                                - sum
-                                - variance
-                              pivotColumns:
-                                - run_id
-                                - created_at
-                                - depot
-                                - collection
-                                - dataset
-                                - user_name
-                                - job_name
-                                - row_count
-                                - table
-                                - column_name
-                              keyColumnName: analyzer_name
-                              valueColumnName: result
+            explain: true
+            inputs:
+              - name: soda
+                dataset: dataos://systemstreams:soda/quality_profile_results_01
+                isStream: false
+                options:
+                  startingOffsets: earliest
+            logLevel: INFO
+            outputs:
+              - name: changed_datatype
+                dataset: dataos://icebase:soda/soda_profiles_01?acl=rw
+                format: Iceberg
+                options:
+                  saveMode: append
+                  checkpointLocation: dataos://icebase:sys01/checkpoints/soda-profiles-data/v001?acl=rw
+                  sort:
+                    mode: partition
+                    columns:
+                        - name: depot
+                          order: desc
+                        - name: collection
+                          order: desc
+                        - name: dataset
+                          order: desc
+                  iceberg:
+                    partitionSpec:
+                      - type: identity
+                        column: depot
+                      - type: identity
+                        column: collection
+                      - type: identity
+                        column: dataset
+            steps:
+              - sequence:
+                  - name: dropped_columns
+                    sql: SELECT * from soda
+                    functions:
+                      - name: drop
+                        columns:
+                          - __eventTime
+                          - __key
+                          - __producer_name
+                          - __messageProperties
+                          - __publishTime
+                          - __topic
+                          - automatedMonitoringChecks
+                          - clusterName
+                          - dataosResourceId
+                          - defaultDataSource
+                          - definitionName
+                          - engine
+                          - hasFailures
+                          - hasErrors
+                          - hasWarnings
+                          - logs
+                          - metadata
+                          - checks
+                          - queries
+                          - metrics
+                      - name: cleanse_column_names
+                      - name: unfurl
+                        expression: explode(profiling) as profiling_
+                      - name: unfurl
+                        expression: profiling_.*
+                      - name: drop
+                        columns:
+                          - profiling
+                          - profiling_
+                      - name: unfurl
+                        expression: explode(column_profiles) as column_profiles_
+                      - name: unfurl
+                        expression: column_profiles_.*
+                      - name: unfurl
+                        expression: profile.*
+                      - name: drop
+                        columns:
+                          - column_profiles
+                          - column_profiles_
+                          - profile
+                      - name: cleanse_column_names
+                  - name: changed_datatype
+                    sql: |
+                      SELECT
+                        collection,
+                        dataset,
+                        depot,
+                        job_name,
+                        user_name,
+                        scan_end_timestamp as created_at,
+                        row_count,
+                        table,
+                        column_name,
+                        run_id,
+                        cast(avg AS STRING) AS avg,
+                        cast(avg_length AS STRING) AS avg_length,
+                        cast(distinct AS STRING) AS distinct,
+                        cast(frequent_values AS STRING) AS frequent_values,
+                        cast(histogram AS STRING) AS histogram,
+                        cast(max AS STRING) AS max,
+                        cast(max_length AS STRING) AS max_length,
+                        cast(maxs AS STRING) maxs,
+                        cast(min AS STRING) AS min,
+                        cast(min_length AS STRING) AS min_length,
+                        cast(mins AS STRING) AS mins,
+                        cast(missing_count AS STRING) AS missing_count,
+                        cast(stddev AS STRING) AS stddev,
+                        cast(sum AS STRING) AS sum,
+                        cast(variance AS STRING) AS variance
+                      FROM
+                        dropped_columns
+                    functions:
+                      - name: unpivot 
+                        columns:
+                          - avg
+                          - avg_length
+                          - distinct
+                          - frequent_values
+                          - histogram
+                          - max
+                          - max_length
+                          - maxs
+                          - min
+                          - min_length
+                          - mins
+                          - missing_count
+                          - stddev
+                          - sum
+                          - variance
+                        pivotColumns:
+                          - run_id
+                          - created_at
+                          - depot
+                          - collection
+                          - dataset
+                          - user_name
+                          - job_name
+                          - row_count
+                          - table
+                          - column_name
+                        keyColumnName: analyzer_name
+                        valueColumnName: result
 
     - name: soda-prf-tool
       spec:
         stack: toolbox
         compute: runnable-default
         stackSpec:
-            dataset: dataos://icebase:soda/soda_profiles_01?acl=rw
-            action:
+          dataset: dataos://icebase:soda/soda_profiles_01?acl=rw
+          action:
             name: set_version
             value: latest
-        dependencies:
+      dependencies:
         - soda-prf-data
 ```
 </details>
