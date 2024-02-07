@@ -6,7 +6,7 @@ As implied by its name, the Bundle Resource aggregates various [DataOS Resources
 
 <aside class="callout">
 
-🗣 A Bundle is a <b>Platform-level</b> Resource in DataOS, while the Resources present within the Bundle can be either <b>Workspace-level</b> or <b>Platform-level</b>.
+🗣 A Bundle is an <a href="/resources/types_of_dataos_resources/#instance-level-resources">Instance-level</a> Resource in DataOS, while the Resources present within the Bundle can be either <a href="/resources/types_of_dataos_resources/#workspace-level-resources">Workspace-level</a> or <a href="/resources/types_of_dataos_resources/#instance-level-resources">Instance-level</a>.
 
 </aside>
 
@@ -178,7 +178,7 @@ Within a Bundle, you have the option to deploy Workspace-level Resources in a ne
 
 🗣 The Workspaces specified within a Bundle does not dictate the location of Bundle creation. Instead, it pertains to the Workspace designated to encompass all <b>Workspace-level Resources</b> (such as <i>Workflow, Service, Worker, Secret, Database, Lakehouse and Cluster)</i> housed within the Bundle.
 
-It is noteworthy that the Workspace-level Resources present in a Bundle can also be instantiated within other Workspaces, not necessarily that was created using the Bundle. But, the <b>Platform-level Resources</b>, irrespective of their presence within a Bundle, such as <i>Depot, Policy, Compute, Stack, Instance-Secret, Operator</i>, or even another <i>Bundle</i>, maintain their platform-level scope and are not constrained to a specific Workspace.
+It is noteworthy that the Workspace-level Resources present in a Bundle can also be instantiated within other Workspaces, not necessarily that was created using the Bundle. But, the <b>Instance-level Resources</b>, irrespective of their presence within a Bundle, such as <i>Depot, Policy, Compute, Stack, Instance-Secret, Operator</i>, or even another <i>Bundle</i>, maintain their instance-level scope and are not constrained to a specific Workspace.
 
 </aside>
 

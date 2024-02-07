@@ -1037,7 +1037,7 @@ SELECT * FROM icebase.soda.soda_check_metrics_01 LIMIT 10
 
 ## Case Scenarios
 
-- [How to run Soda checks for data quality evaluation using Soda Stack in DataOS?](./soda/how_to_run_soda_checks_using_soda_stack.md)
+<!-- - [How to run Soda checks for data quality evaluation using Soda Stack in DataOS?](./soda/how_to_run_soda_checks_using_soda_stack.md) -->
 
 - [How to run profiling using Soda Stack in DataOS?](./soda/how_to_run_profiling_using_soda_stack.md)
 

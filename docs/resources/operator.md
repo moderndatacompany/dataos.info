@@ -13,7 +13,7 @@ Operator is a [DataOS Resource](../resources.md) that provides a standardized in
 At its core, an Operator empowers the DataOS orchestrator, referred to as *Poros*, to manage these external resources using custom-built Operators. 
 
 <aside class="callout">
-🗣️ The Operator is classified as a <a href="/resources/types_of_dataos_resources/#cluster-level-resources">Platform-level DataOS Resource</a>. Its creation and management fall under the purview of either the <b>DataOS Operator/Administrator</b> or the <b>Platform Engineering</b> team within an organization.
+🗣️ The Operator is classified as an <a href="/resources/types_of_dataos_resources/#instance-level-resources">Instance-level</a> DataOS Resource. Its creation and management fall under the purview of either the <b>DataOS Operator/Administrator</b> or the <b>Platform Engineering</b> team within an organization.
 
 </aside>
 
