@@ -4,7 +4,7 @@ DataOS Lakehouse, is a [DataOS Resource](../resources.md) that integrates Apache
 
 <aside class="callout">
 
-🗣️ Unlike traditional <a href="./depot/depot_config_templates.md">object storage or Data Lake depots</a> that are instantiated at the <a href="./types_of_dataos_resources.md#instance-level-resources">Instance-level</a>, Lakehouses are created at the <a href="./types_of_dataos_resources.md#workspace-level-resources">Workspace-level</a>.
+🗣️ Unlike traditional object storage or Data Lake <a href="/resources/depot/depot_config_templates/">depots</a> that are instantiated at the <a href="/resources/types_of_dataos_resources/#instance-level-resources">Instance-level</a>, Lakehouses are created at the <a href="/resources/types_of_dataos_resources/#workspace-level-resources">Workspace-level</a>.
 
 </aside>
 
@@ -17,7 +17,7 @@ DataOS Lakehouse offers a fully managed storage solution. It utilizes Apache Ice
 
 **Computing Environment Flexibility**
 
-Supports a multitude of computing environments for cloud-native storage. Users can deploy various compute engines, including DataOS native stacks such as [Flare](./stacks/flare.md), [Soda](./stacks/soda.md), etc.
+Supports a multitude of computing environments for cloud-native storage. Users can deploy various processing engines, including DataOS native stacks such as [Flare](./stacks/flare.md), [Soda](./stacks/soda.md), etc.
 
 **Apache Iceberg Integration**
 
@@ -47,44 +47,86 @@ A Lakehouse YAML manifest can be structurally broken down into following section
 
 #### **Configuring the Resource meta section**
 
-In DataOS, a Lakehouse is categorized as a [Resource-type](https://dataos.info/resources/types_of_dataos_resources/). The Resource meta section within the YAML manifest encompasses attributes universally applicable to all Resource-types. The provided YAML codeblock elucidates the requisite attributes for this section: 
+In DataOS, a Lakehouse is categorized as a [Resource-type](./types_of_dataos_resources.md). The Resource meta section within the YAML manifest encompasses attributes universally applicable to all Resource-types. The provided YAML codeblock elucidates the requisite attributes for this section: 
 
 ```yaml
-# Resource meta section
-name: {{my-lakehouse}} # Resource name (mandatory)
-version: v1alpha # Manifest version (mandatory)
-type: lakehouse # Resource-type (mandatory)
-tags: # Resource Tags (optional)
-  - {{dataos:type:resource}}
-  - {{dataos:resource:lakehouse}}
-description: {{This is a lakehouse yaml manifest}} # Resource Description (optional)
-owner: {{iamgroot}} # Resource Owner (optional)
-bundle: # Bundle-specific section mapping(mandatory)
-  {{Attributes of Lakehouse-specific section}}
+# Configuration for Resource meta section
+
+name: my-lakehouse            # Resource name (mandatory, default: none, possible: any string confirming the regex [a-z0-9]([-a-z0-9]*[a-z0-9]) and length less than or equal to 48 characters)
+version: v1                   # Manifest version (mandatory, default: none, possible: v1)
+type: lakehouse               # Resource-type (mandatory, default: none, possible: workflow)
+tags:                         # Tags (optional, default: none, possible: list of strings)
+  - lakehouse
+description: ABFSS lakehouse  # Resource description (optional, default: none, possible: any string)
+workspace: curriculum         # Workspace name (optional, default: public, possible: any DataOS Workspace name)
 ```
 <center><i>Resource meta section</i></center>
 
-For more information, refer to the [Attributes of Resource Meta Section.](../resources/resource_attributes.md)
+For more information, refer to the [Attributes of Resource meta section](./resource_attributes.md).
 
 #### **Configuring the Lakehouse-specific section**
 
 ```yaml
-metastore: # Metastore section (optional)
-	type: {{iceberg-rest-catlog}} # Metastore type (mandatory)
-	replicas: {{2}} # Number of replicas (optional)
-	autoScaling: # Autoscaling configuration (optional)
-		enabled: {{true}} # Enable autoscaling (optional)
-		minReplicas: {{2}} # Minimum number of replicas (optional)
-		maxReplicas: {{4}} # Maximum number of replicas (optional)
-		targetMemoryUtilizationPercentage: {{60}} # Target Memory Utilization Percentage (optional)
-		targetCPUUtilizationPercentage: {{60}} # Target CPU Utilization Percentage (optional)
-	resources: # CPU and memory resources (optional)
-		requests: 
-			cpu: {{1Gi}} # Requested CPU resources (optional)
-			memory: {{400m}} # Requested Memory resources (optional)
-		limits:
-			cpu: {{1Gi}} # CPU resource limits (optional)
-			memory: {{400m}} # Memory resource limits (optional)
+# Configuration for Lakehouse-specific section
+
+lakehouse:
+  type: ABFSS 								  # Storage-type (mandatory)
+  compute: runnable-default 				  # Compute name (mandatory)
+  runAsApiKey: abcdefghijklmnopqrstuvwxyz 	  # DataOS API key (optional)
+  runAsUser: iamgroot 						  # User ID of use-case assignee (optional)
+
+  # Iceberg-specific section: Comprises attributes specific to iceberg (optional)
+  iceberg: 
+	
+	# Storage section: Comprises attributes specific to storage configuration
+
+    storage: 								  # Storage section (mandatory)
+      depotName: depot name 				  # Name of depot (optional)
+      type: abfss/gcs/wasbs/s3				  # Object store type (mandatory)
+      abfss/gcs/wasbs/s3:					  # Depot type (optional)
+        # ...attributes specific to depot-type
+      secret: 
+        - name: mysecret 					  # Secret Name (mandatory)
+          workspace: public 				  # Workspace Name (optional)
+          key: username 					  # Key (optional)
+          keys: 							  # Keys (optional)
+            - username
+            - password
+          allKeys: true 					  # All Keys (optional)
+          consumptionType: envVars 			  # Secret consumption type (optional)
+
+	# Metastore section: Comprises attributes specific to metastore configuration
+ 
+    metastore: 								  # Metastore section (optional)
+      type: iceberg-rest-catlog 			  # Metastore type (mandatory)
+      replicas: 2 							  # Number of replicas (optional)
+      autoScaling: 							  # Autoscaling configuration (optional)
+        enabled: true 						  # Enable autoscaling (optional)
+        minReplicas: 2 						  # Minimum number of replicas (optional)
+        maxReplicas: 4 						  # Maximum number of replicas (optional)
+        targetMemoryUtilizationPercentage: 60 # Target Memory Utilization Percentage (optional)
+        targetCPUUtilizationPercentage: 60    # Target CPU Utilization Percentage (optional)
+      resources: 							  # CPU and memory resources (optional)
+        requests: 
+          cpu: 1Gi 							  # Requested CPU resources (optional)
+          memory: 400m 						  # Requested Memory resources (optional)
+        limits:
+          cpu: 1Gi 							  # CPU resource limits (optional)
+          memory: 400m 						  # Memory resource limits (optional)
+
+	# Query Engine configuration (optional)
+
+    queryEngine: 							  
+      type: themis 							  # Query Engine type (mandatory)
+      resources: 							  # CPU and memory resources (optional)
+        requests: 
+          cpu: 1Gi 							  # Requested CPU resources (optional)
+          memory: 400m 						  # Requested Memory resources (optional)
+        limits:
+          cpu: 1Gi 							  # CPU resource limits (optional)
+          memory: 400m    					  # Memory resource limits (optional)
+      themis/minerva:						  # Cluster-specific configuration (optional)
+        # ... attribute specific to the query engine-type
 ```
 
 <center>
@@ -109,22 +151,22 @@ This table is designed to assist users in understanding and configuring the Lake
 #### **Metastore configuration**
 
 ```yaml
-metastore: # Metastore section (optional)
-	type: {{iceberg-rest-catlog}} # Metastore type (mandatory)
-	replicas: {{2}} # Number of replicas (optional)
-	autoScaling: # Autoscaling configuration (optional)
-		enabled: {{true}} # Enable autoscaling (optional)
-		minReplicas: {{2}} # Minimum number of replicas (optional)
-		maxReplicas: {{4}} # Maximum number of replicas (optional)
-		targetMemoryUtilizationPercentage: {{60}} # Target Memory Utilization Percentage (optional)
-		targetCPUUtilizationPercentage: {{60}} # Target CPU Utilization Percentage (optional)
-	resources: # CPU and memory resources (optional)
+metastore: 									  # Metastore section (optional)
+	type: iceberg-rest-catlog 				  # Metastore type (mandatory)
+	replicas: 2 							  # Number of replicas (optional)
+	autoScaling: 							  # Autoscaling configuration (optional)
+		enabled: true 						  # Enable autoscaling (optional)
+		minReplicas: 2 						  # Minimum number of replicas (optional)
+		maxReplicas: 4 					  	  # Maximum number of replicas (optional)
+		targetMemoryUtilizationPercentage: 60 # Target Memory Utilization Percentage (optional)
+		targetCPUUtilizationPercentage: 60 	  # Target CPU Utilization Percentage (optional)
+	resources: 								  # CPU and memory resources (optional)
 		requests: 
-			cpu: {{1Gi}} # Requested CPU resources (optional)
-			memory: {{400m}} # Requested Memory resources (optional)
+			cpu: 1Gi 						  # Requested CPU resources (optional)
+			memory: 400m 					  # Requested Memory resources (optional)
 		limits:
-			cpu: {{1Gi}} # CPU resource limits (optional)
-			memory: {{400m}} # Memory resource limits (optional)
+			cpu: 1Gi 						  # CPU resource limits (optional)
+			memory: 400m 					  # Memory resource limits (optional)
 ```
 
 
@@ -155,19 +197,19 @@ metastore: # Metastore section (optional)
 
 ```yaml
 storage: 
-	depotName: {{depot name}} # Name of depot (optional)
-	type: {{abfss}} # Object store type (mandatory)
-	abfss/gcs/wasbs/s3: # Depot type (optional)
-		{{depot configuration}}
+	depotName: depot name 			 # Name of depot (optional)
+	type: abfss 					 # Object store type (mandatory)
+	abfss/gcs/wasbs/s3: 			 # Depot type (optional)
+		# ... attributes specific to depot-type
 	secret: 
-		- name: {{mysecret}} # Secret Name (mandatory)
-			workspace: {{public}} # Workspace Name (optional)
-			key: {{username}} # Key (optional)
-			keys: # Keys (optional)
-				- {{username}}
-				- {{password}} 
-			allKeys: true # All Keys (optional)
-			consumptionType: {{envVars}} # Secret consumption type (optional)
+		- name: mysecret 			 # Secret Name (mandatory)
+			workspace: public 		 # Workspace Name (optional)
+			key: username 			 # Key (optional)
+			keys: 					 # Keys (optional)
+				- username
+				- password
+			allKeys: true 			 # All Keys (optional)
+			consumptionType: envVars # Secret consumption type (optional)
 ```
 
 <center>
@@ -193,12 +235,12 @@ storage:
 
 ```yaml
 gcs:
-	bucket: {{bucket-testing}} # GCS Bucket (optional)
-	format: {{format}} # Format (optional)
-	icebergCatalogType: {{hadoop}} # Iceberg Catalog Type (optional)
-	metastoreType: {{iceberg-rest}} # Meta Store type (optional)
-	metastoreUrl: {{}} # Meta Store URL (optional)
-	relativePath: {{}} # Relative Path (optional)
+	bucket: bucket-testing 					# GCS Bucket (optional)
+	format: format 							# Format (optional)
+	icebergCatalogType: hadoop 				# Iceberg Catalog Type (optional)
+	metastoreType: iceberg-rest 			# Meta Store type (optional)
+	metastoreUrl: https://random-url.com    # Meta Store URL (optional)
+	relativePath: tmdc-dataos 				# Relative Path (optional)
 ```
 
 <center>
@@ -219,14 +261,14 @@ gcs:
 
 ```yaml
 abfss:
-	account: {{}} # ABFSS Account (optional)
-	container: {{}} # 
-	endpointSuffix: {{}} # End Point Suffix (optional)
-	format: {{}} # File Format (optional)
-	icebergCatalogType: {{}} # Iceberg Catalog Type (optional)
-	metastoreType: {{}} # Metastore type (optional)
-	metastoreUrl: {{}} # Metastore URL (optional)
-	relativePath: {{}} # Relative Path (optional)
+	account: random 						# ABFSS Account (optional)
+	container: alpha 						# Container (optional)
+	endpointSuffix: new 					# End Point Suffix (optional)
+	format: iceberg 						# File Format (optional)
+	icebergCatalogType: hadoop 				# Iceberg Catalog Type (optional)
+	metastoreType: iceberg-rest 			# Metastore type (optional)
+	metastoreUrl: https://random-url.com	# Metastore URL (optional)
+	relativePath: tmdc-dataos 				# Relative Path (optional)
 ```
 
 <center>
@@ -249,14 +291,14 @@ abfss:
 
 ```yaml
 wasbs:
-	account: {{}} # ABFSS Account (optional)
-	container: {{}} # 
-	endpointSuffix: {{}} # End Point Suffix (optional)
-	format: {{}} # File Format (optional)
-	icebergCatalogType: {{}} # Iceberg Catalog Type (optional)
-	metastoreType: {{}} # Metastore type (optional)
-	metastoreUrl: {{}} # Metastore URL (optional)
-	relativePath: {{}} # Relative Path (optional)
+	account: random 						# WASBS Account (optional)
+	container: alpha 						# Container (optional)
+	endpointSuffix: new 					# End Point Suffix (optional)
+	format: iceberg 						# File Format (optional)
+	icebergCatalogType: hadoop 				# Iceberg Catalog Type (optional)
+	metastoreType: iceberg-rest 			# Metastore type (optional)
+	metastoreUrl: https://random-url.com	# Metastore URL (optional)
+	relativePath: tmdc-dataos 				# Relative Path (optional)
 ```
 
 <center>
@@ -280,13 +322,13 @@ wasbs:
 
 ```yaml
 s3:
-	bucket: {{bucket-testing}} # GCS Bucket (optional)
-	format: {{format}} # Format (optional)
-	icebergCatalogType: {{hadoop}} # Iceberg Catalog Type (optional)
-	metastoreType: {{iceberg-rest}} # Meta Store type (optional)
-	metastoreUrl: {{}} # Meta Store URL (optional)
-	relativePath: {{}} # Relative Path (optional)
-	scheme: {{}} # Scheme (optional)
+	bucket: bucket-testing	    		# GCS Bucket (optional)
+	format: format 			 			# Format (optional)
+	icebergCatalogType: hadoop  		# Iceberg Catalog Type (optional)
+	metastoreType: iceberg-rest		    # Meta Store type (optional)
+	metastoreUrl: iceberg-rest		    # Meta Store URL (optional)
+	relativePath: tmdc-dataos			# Relative Path (optional)
+	scheme: abcd 						# Scheme (optional)
 ```
 
 <center>
@@ -308,16 +350,16 @@ s3:
 
 ```yaml
 queryEngine:
-	type: {{themis}} # Query Engine type (mandatory)
-	resources: # CPU and memory resources (optional)
+	type: themis	 			# Query Engine type (mandatory)
+	resources: 					# CPU and memory resources (optional)
 		requests: 
-			cpu: {{1Gi}} # Requested CPU resources (optional)
-			memory: {{400m}} # Requested Memory resources (optional)
+			cpu: 1Gi	 		# Requested CPU resources (optional)
+			memory: 400m	 	# Requested Memory resources (optional)
 		limits:
-			cpu: {{1Gi}} # CPU resource limits (optional)
-			memory: {{400m}} # Memory resource limits (optional)
-	themis/minerva: # Cluster-specific configuration (optional)
-		{{themis/minerva specific attributes}}
+			cpu: 1Gi	 		# CPU resource limits (optional)
+			memory: 400m	 	# Memory resource limits (optional)
+	themis/minerva: 			# Cluster-specific configuration (optional)
+		# ...attributes of themis/minerva cluster
 ```
 
 <center>
@@ -343,19 +385,19 @@ queryEngine:
 ```yaml
 themis: 
 	envs: 
-		
+		# ...environment variables
 	themisConf:
-	
+		# ...Themis cluster specific configurations
 	spark: 
-		driver: # Spark driver configuration (mandatory)
-			memory: {{400m}} # Driver memory (mandatory)
-			cpu: {{1Gi}} # Driver CPU (mandatory)
-		executor: # Spark executor configuration (mandatory)
-			memory: {{400m}} # Driver memory (mandatory)
-			cpu: {{1Gi}} # Driver CPU (mandatory)
-			instanceCount: {{2}} # Executor Instance count (mandatory)
-			maxInstanceCount: {{4}} # Maximum executor Instance count (mandatory)
-		sparkConf: # Spark environment configuration (optional)
+		driver:					 # Spark driver configuration (mandatory)
+			memory: 400m		 # Driver memory (mandatory)
+			cpu: 1Gi 			 # Driver CPU (mandatory)
+		executor: 				 # Spark executor configuration (mandatory)
+			memory: {{400m}} 	 # Driver memory (mandatory)
+			cpu: {{1Gi}} 		 # Driver CPU (mandatory)
+			instanceCount: 2	 # Executor Instance count (mandatory)
+			maxInstanceCount: 4  # Maximum executor Instance count (mandatory)
+		sparkConf: 				 # Spark environment configuration (optional)
 ```
 
 <center>
@@ -383,16 +425,16 @@ themis:
 
 ```yaml
 minerva: 
-	replicas: {{2}} # Number of replicas (mandatory)
-	coordinatorEnvs: # Coordinator environment variables (optional)
-		
-	workerEnvs: # Worker environment variables (optional)
-
-	overrideDefaultEnvs: {{true}} # Override Default Environment Variables (optional)
-	spillOverVolume: {{alpha}} # Spill Over Volume (optional)
-	debug: # Debug (optional)
-		logLevel: {{INFO}} # LogLevel (optional)
-		trinoLogLevel: {{DEBUG}} # Trino Log Level (optional)
+	replicas: 2 				# Number of replicas (mandatory)
+	coordinatorEnvs: 			# Coordinator environment variables (optional)
+		# ...attributes specific to coordinator environment variables
+	workerEnvs: 				# Worker environment variables (optional)
+		# ...attributes specific to worker environment variables
+	overrideDefaultEnvs: true 	# Override Default Environment Variables (optional)
+	spillOverVolume: alpha 		# Spill Over Volume (optional)
+	debug: 						# Debug (optional)
+		logLevel: INFO 			# LogLevel (optional)
+		trinoLogLevel: DEBUG 	# Trino Log Level (optional)
 ```
 
 <center>
