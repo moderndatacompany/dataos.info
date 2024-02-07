@@ -8,6 +8,17 @@ Flare is a declarative [Stack](../stacks.md) for large-scale data processing wit
 <center><i>Placement of Flare Stack within DataOS</i>
 </center>
 
+## Syntax of Flare YAML configuration
+
+![Flare YAML Configuration Syntax](./flare/flare_syntax.png)
+<center><i>Flare YAML Configuration Syntax</i></center>
+
+## How to create jobs using Flare Stack
+
+Whether you need to process data in batches or in a streaming fashion, Flare provides different job types to cater to your needs. You can explore the detailed documentation on creating Flare Jobs on the link below.
+
+[Create Flare Jobs](./flare/creating_flare_jobs.md)
+
 ## Types of Flare Jobs
 
 Flare Stack offers varied configuration to execute different types of [Jobs](../workflow.md#configure-the-job-specific-section). The details of each job are provided in the table below:
@@ -29,49 +40,38 @@ When you initiate a data profiling job for your dataset, it automatically trigge
 
 Fingerprinting primarily addresses the data classification challenge, aiming to categorize the columns of a table into a predefined categories. Fingerprinting analyzes data columns to detect distinctive patterns or signatures within the data. By examining the data values in a column, it can identify what type of data is there and determine what business terms or labels can be attached to this data. These labels or tags are valuable for enhancing discoverability and enabling effective governance.
 
-To learn more about classification process, refer to Fingerprinting in DataOS.
+To learn more about classification process, refer to [Fingerprinting in DataOS](./flare/case_scenario/fingerprinting.md).
 
-DataOS conducts fingerprinting and stores the classification information for your dataset in Metis DB, which can be accessed through the Metis UI. To learn more, refer to Fingerprinting Information on Metis UI.
+DataOS conducts fingerprinting and stores the classification information for your dataset in Metis DB, which can be accessed through the Metis UI. To learn more, refer to [Fingerprinting Information on Metis UI](/interfaces/metis/navigating_metis_ui_how_to_guide#how-to-get-fingerprinting-information).
 
 #### **Data Quality Job**
 
 DataOS allows users to define their data quality expectations and discover data shortcomings for the success of data-driven operations. It uses the Flare stack that provides a set of tools and functions for data quality analysis and validation. Flare provides assertions, which are business-specific validation rules, to test and evaluate the quality of specific datasets if they are appropriate for the intended purpose.
 
-Data Quality Jobs measure and ensure data quality based on these assertions. For more information on defining assertions and their properties, refer to Performing Business Validation Checks with Assertions
+Data Quality Jobs measure and ensure data quality based on these assertions. For more information on defining assertions and their properties, refer to [Performing Business Validation Checks with Assertions](./flare/assertion_configuration.md).
 
 #### **Incremental Job**
 
-Incremental Jobs only compute the rows or files of data that have changed since the last build. They are suitable for processing event data and datasets with frequent changes. Incremental jobs reduce overall computation and significantly decrease end-to-end latency compared to batch jobs. Moreover, compute costs for incremental jobs can be lower than batch jobs when dealing with high-scale datasets, as the amount of actual computation is minimized. By processing only new data, incremental jobs eliminate the need to redo analysis on large datasets where most information remains unchanged. For case scenarios on Incremental Jobs, refer to here.
+Incremental Jobs only compute the rows or files of data that have changed since the last build. They are suitable for processing event data and datasets with frequent changes. Incremental jobs reduce overall computation and significantly decrease end-to-end latency compared to batch jobs. Moreover, compute costs for incremental jobs can be lower than batch jobs when dealing with high-scale datasets, as the amount of actual computation is minimized. By processing only new data, incremental jobs eliminate the need to redo analysis on large datasets where most information remains unchanged. For case scenarios on Incremental Jobs, refer to the link: [Case Scenarios: Incremental Jobs](./flare/assertions_case_scenario.md).
 
 ### **Stream Job**
 
-Stream Jobs continuously process incoming data in real-time. They offer low latency but have the highest computing costs, as resources must always be available to handle new input data. Creating stream jobs should be avoided in most cases unless there are strict latency requirements, typically less than a minute. To explore stream-specific properties for Stream Jobs, click here. For a case scenario illustrating how a streaming job is declared within DataOS, refer to here.
+Stream Jobs continuously process incoming data in real-time. They offer low latency but have the highest computing costs, as resources must always be available to handle new input data. Creating stream jobs should be avoided in most cases unless there are strict latency requirements, typically less than a minute. To explore stream-specific properties for Stream Jobs, click here. For a case scenario illustrating how a streaming job is declared within DataOS, refer to the link:[Case Scenario: Stream Jobs](./flare/case_scenario#stream-jobs).
 
 ### **Action Job**
 
-The DataOS platform provides comprehensive support for executing maintenance actions jobs within the depots supporting the Iceberg table format such as Icebase. These are specified within the actions section. To explore action-specific properties for Action Jobs, click here. For a case scenario illustrating how a action job is declared within DataOS, refer to here.
+The DataOS platform provides comprehensive support for executing maintenance actions jobs within the depots supporting the Iceberg table format such as Icebase. These are specified within the actions section. To explore action-specific properties for Action Jobs, click here. For a case scenario illustrating how a action job is declared within DataOS, refer to the link: [Case Scenario: Action Job](./flare/case_scenario#flare-actions).
 
-| Flare Job Type  | Description                                                                                                            |
+<!-- | Flare Job Type  | Description                                                                                                            |
 |-----------------|------------------------------------------------------------------------------------------------------------------------|
 | [Batch Job](./flare/job_types.md#batch-job)       | Recomputes all changed datasets on each run, providing consistent performance. Has high latency and is suitable for smaller data sizes.                                              |
 | [Data Profiling Job](./flare/job_types.md#data-profiling-job) | Assesses data quality and structure, examining source data for accuracy, completeness, and validity.                    |
 | [Data Quality Job](./flare/job_types.md#data-quality-job) | Evaluates data quality based on business-specific validation rules (assertions).                                                      |
 | [Incremental Job](./flare/job_types.md#incremental-job) | Computes only the changed rows or files of data since the last build, reducing overall computation and latency.        |
 | [Stream Job](./flare/job_types.md#stream-job)      | Processes new data continuously with low latency, but incurs high computing costs and requires constant resource availability. |
-| [Action Job](./flare/job_types.md#action-job)      | Performs maintenance actions on data stored in Iceberg format in any depot (including Icebase) |
+| [Action Job](./flare/job_types.md#action-job)      | Performs maintenance actions on data stored in Iceberg format in any depot (including Icebase) | -->
 
-Further information regarding Flare Jobs can be accessed [here](./flare/job_types.md)
-
-## Syntax of Flare YAML configuration
-
-![Flare YAML Configuration Syntax](./flare/flare_syntax.png)
-<center><i>Flare YAML Configuration Syntax</i></center>
-
-## How to create jobs using Flare Stack
-
-Whether you need to process data in batches or in a streaming fashion, Flare provides different job types to cater to your needs. You can explore the detailed documentation on creating Flare Jobs on the link below.
-
-[Create Flare Jobs](./flare/creating_flare_jobs.md)
+<!-- Further information regarding Flare Jobs can be accessed [here](./flare/job_types.md) -->
 
 
 
