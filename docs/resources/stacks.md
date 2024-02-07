@@ -6,7 +6,7 @@ While certain pre-configured Stacks such as [Flare](./stacks/flare.md), [Benthos
 
 <aside class="callout">
 
-🗣️ A Stack is an <b>Instance-level</b> DataOS Resource and is a key component of DataOS's extensibility framework. This Resource-type enables the creation of custom Stacks, as exemplified by Soda, CLI, Steampipe, and DBT Stack, all of which have been introduced as a Stack within DataOS using the same development pattern. For detailed guidance on developing your own Stack within DataOS, please consult the following documentation: <a href = "/resources/stacks/custom_stacks/">How to create your own Stack in DataOS?</a>
+🗣️ A Stack is an <a href="/resources/types_of_dataos_resources/#instance-level-resources">Instance-level</a> DataOS Resource and is a key component of DataOS's extensibility framework. This Resource-type enables the creation of custom Stacks, as exemplified by Soda, CLI, Steampipe, and DBT Stack, all of which have been introduced as a Stack within DataOS using the same development pattern. For detailed guidance on developing your own Stack within DataOS, please consult the following documentation: <a href = "/resources/stacks/custom_stacks/">How to create your own Stack in DataOS?</a>
 
 </aside>
 
@@ -52,7 +52,7 @@ DataOS has two distinct resources that supports its interoperability and extensi
 | *Creator Persona* | Data Developer primarily the Data Engineer | Platform Engineering Team  |
 | *Supporting capabilities* | Modularity, extensibility | Interoperability, Extensibility  |
 | *Use Case* | Introduction of new programming paradigms within DataOS like Flink, Spark, Soda, DBT, Steampipe, Function Mesh | Controlling an external resource from the interface of DataOS like Azure Data Factory Pipeline, Databricks Workflow, Hightouch Factory. |
-| *Scope* | Platform-Level | Platform-Level |
+| *Scope* | Instance-Level | Instance-Level |
 
 ## Built-in Stacks in DataOS
 
