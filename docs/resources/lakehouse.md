@@ -4,9 +4,10 @@ DataOS Lakehouse, is a [DataOS Resource](../resources.md) that integrates Apache
 
 <aside class="callout">
 
-🗣️ Unlike traditional <a href="./depot/depot_config_templates.md">object storage or Data Lake depots</a> that are instantiated at the <a href="./types_of_dataos_resources.md#instance-level-resources">Instance-level</a>, Lakehouses are created at the <a href="./types_of_dataos_resources.md#workspace-level-resources">Workspace-level.
+🗣️ Unlike traditional object storage or Data Lake <a href="/resources/depot/depot_config_templates/">depots</a> that are instantiated at the <a href="/resources/types_of_dataos_resources/#instance-level-resources">Instance-level</a>, Lakehouses are created at the <a href="/resources/types_of_dataos_resources/#workspace-level-resources">Workspace-level</a>.
 
 </aside>
+
 
 ## Key Features of a Lakehouse
 
@@ -16,7 +17,7 @@ DataOS Lakehouse offers a fully managed storage solution. It utilizes Apache Ice
 
 **Computing Environment Flexibility**
 
-Supports a multitude of computing environments for cloud-native storage. Users can deploy various compute engines, including DataOS native stacks such as [Flare](./stacks/flare.md), [Soda](./stacks/soda.md), etc.
+Supports a multitude of computing environments for cloud-native storage. Users can deploy various processing engines, including DataOS native stacks such as [Flare](./stacks/flare.md), [Soda](./stacks/soda.md), etc.
 
 **Apache Iceberg Integration**
 
@@ -37,47 +38,95 @@ A Lakehouse YAML manifest can be structurally broken down into following section
 	- [Metastore configuration](#metastore-configuration)
 	- [Storage configuration](#storage-configuration)
 		- [GCS](#gcs)
+		- [ABFSS](#abfss)
+		- [WASBS](#wasbs)
+		- [S3](#s3)
+	- [Query Engine configuration](#query-engine-configuration)
+		- [Themis](#themis)
+		- [Minerva](#minerva)
 
 #### **Configuring the Resource meta section**
 
-In DataOS, a Lakehouse is categorized as a [Resource-type](https://dataos.info/resources/types_of_dataos_resources/). The Resource meta section within the YAML manifest encompasses attributes universally applicable to all Resource-types. The provided YAML codeblock elucidates the requisite attributes for this section: 
+In DataOS, a Lakehouse is categorized as a [Resource-type](./types_of_dataos_resources.md). The Resource meta section within the YAML manifest encompasses attributes universally applicable to all Resource-types. The provided YAML codeblock elucidates the requisite attributes for this section: 
 
 ```yaml
-# Resource meta section
-name: {{my-lakehouse}} # Resource name (mandatory)
-version: v1alpha # Manifest version (mandatory)
-type: lakehouse # Resource-type (mandatory)
-tags: # Resource Tags (optional)
-  - {{dataos:type:resource}}
-  - {{dataos:resource:lakehouse}}
-description: {{This is a lakehouse yaml manifest}} # Resource Description (optional)
-owner: {{iamgroot}} # Resource Owner (optional)
-bundle: # Bundle-specific section mapping(mandatory)
-  {{Attributes of Lakehouse-specific section}}
+# Configuration for Resource meta section
+
+name: my-lakehouse            # Resource name (mandatory, default: none, possible: any string confirming the regex [a-z0-9]([-a-z0-9]*[a-z0-9]) and length less than or equal to 48 characters)
+version: v1                   # Manifest version (mandatory, default: none, possible: v1)
+type: lakehouse               # Resource-type (mandatory, default: none, possible: workflow)
+tags:                         # Tags (optional, default: none, possible: list of strings)
+  - lakehouse
+description: ABFSS lakehouse  # Resource description (optional, default: none, possible: any string)
+workspace: curriculum         # Workspace name (optional, default: public, possible: any DataOS Workspace name)
 ```
 <center><i>Resource meta section</i></center>
 
-For more information, refer to the [Attributes of Resource Meta Section.](../resources/resource_attributes.md)
+For more information, refer to the [Attributes of Resource meta section](./resource_attributes.md).
 
 #### **Configuring the Lakehouse-specific section**
 
 ```yaml
-metastore: # Metastore section (optional)
-	type: {{iceberg-rest-catlog}} # Metastore type (mandatory)
-	replicas: {{2}} # Number of replicas (optional)
-	autoScaling: # Autoscaling configuration (optional)
-		enabled: {{true}} # Enable autoscaling (optional)
-		minReplicas: {{2}} # Minimum number of replicas (optional)
-		maxReplicas: {{4}} # Maximum number of replicas (optional)
-		targetMemoryUtilizationPercentage: {{60}} # Target Memory Utilization Percentage (optional)
-		targetCPUUtilizationPercentage: {{60}} # Target CPU Utilization Percentage (optional)
-	resources: # CPU and memory resources (optional)
-		requests: 
-			cpu: {{1Gi}} # Requested CPU resources (optional)
-			memory: {{400m}} # Requested Memory resources (optional)
-		limits:
-			cpu: {{1Gi}} # CPU resource limits (optional)
-			memory: {{400m}} # Memory resource limits (optional)
+# Configuration for Lakehouse-specific section
+
+lakehouse:
+  type: ABFSS 								  # Storage-type (mandatory)
+  compute: runnable-default 				  # Compute name (mandatory)
+  runAsApiKey: abcdefghijklmnopqrstuvwxyz 	  # DataOS API key (optional)
+  runAsUser: iamgroot 						  # User ID of use-case assignee (optional)
+
+  # Iceberg-specific section: Comprises attributes specific to iceberg (optional)
+  iceberg: 
+	
+	# Storage section: Comprises attributes specific to storage configuration
+
+    storage: 								  # Storage section (mandatory)
+      depotName: depot name 				  # Name of depot (optional)
+      type: abfss/gcs/wasbs/s3				  # Object store type (mandatory)
+      abfss/gcs/wasbs/s3:					  # Depot type (optional)
+        # ...attributes specific to depot-type
+      secret: 
+        - name: mysecret 					  # Secret Name (mandatory)
+          workspace: public 				  # Workspace Name (optional)
+          key: username 					  # Key (optional)
+          keys: 							  # Keys (optional)
+            - username
+            - password
+          allKeys: true 					  # All Keys (optional)
+          consumptionType: envVars 			  # Secret consumption type (optional)
+
+	# Metastore section: Comprises attributes specific to metastore configuration
+ 
+    metastore: 								  # Metastore section (optional)
+      type: iceberg-rest-catlog 			  # Metastore type (mandatory)
+      replicas: 2 							  # Number of replicas (optional)
+      autoScaling: 							  # Autoscaling configuration (optional)
+        enabled: true 						  # Enable autoscaling (optional)
+        minReplicas: 2 						  # Minimum number of replicas (optional)
+        maxReplicas: 4 						  # Maximum number of replicas (optional)
+        targetMemoryUtilizationPercentage: 60 # Target Memory Utilization Percentage (optional)
+        targetCPUUtilizationPercentage: 60    # Target CPU Utilization Percentage (optional)
+      resources: 							  # CPU and memory resources (optional)
+        requests: 
+          cpu: 1Gi 							  # Requested CPU resources (optional)
+          memory: 400m 						  # Requested Memory resources (optional)
+        limits:
+          cpu: 1Gi 							  # CPU resource limits (optional)
+          memory: 400m 						  # Memory resource limits (optional)
+
+	# Query Engine configuration (optional)
+
+    queryEngine: 							  
+      type: themis 							  # Query Engine type (mandatory)
+      resources: 							  # CPU and memory resources (optional)
+        requests: 
+          cpu: 1Gi 							  # Requested CPU resources (optional)
+          memory: 400m 						  # Requested Memory resources (optional)
+        limits:
+          cpu: 1Gi 							  # CPU resource limits (optional)
+          memory: 400m    					  # Memory resource limits (optional)
+      themis/minerva:						  # Cluster-specific configuration (optional)
+        # ... attribute specific to the query engine-type
 ```
 
 <center>
@@ -102,22 +151,22 @@ This table is designed to assist users in understanding and configuring the Lake
 #### **Metastore configuration**
 
 ```yaml
-metastore: # Metastore section (optional)
-	type: {{iceberg-rest-catlog}} # Metastore type (mandatory)
-	replicas: {{2}} # Number of replicas (optional)
-	autoScaling: # Autoscaling configuration (optional)
-		enabled: {{true}} # Enable autoscaling (optional)
-		minReplicas: {{2}} # Minimum number of replicas (optional)
-		maxReplicas: {{4}} # Maximum number of replicas (optional)
-		targetMemoryUtilizationPercentage: {{60}} # Target Memory Utilization Percentage (optional)
-		targetCPUUtilizationPercentage: {{60}} # Target CPU Utilization Percentage (optional)
-	resources: # CPU and memory resources (optional)
+metastore: 									  # Metastore section (optional)
+	type: iceberg-rest-catlog 				  # Metastore type (mandatory)
+	replicas: 2 							  # Number of replicas (optional)
+	autoScaling: 							  # Autoscaling configuration (optional)
+		enabled: true 						  # Enable autoscaling (optional)
+		minReplicas: 2 						  # Minimum number of replicas (optional)
+		maxReplicas: 4 					  	  # Maximum number of replicas (optional)
+		targetMemoryUtilizationPercentage: 60 # Target Memory Utilization Percentage (optional)
+		targetCPUUtilizationPercentage: 60 	  # Target CPU Utilization Percentage (optional)
+	resources: 								  # CPU and memory resources (optional)
 		requests: 
-			cpu: {{1Gi}} # Requested CPU resources (optional)
-			memory: {{400m}} # Requested Memory resources (optional)
+			cpu: 1Gi 						  # Requested CPU resources (optional)
+			memory: 400m 					  # Requested Memory resources (optional)
 		limits:
-			cpu: {{1Gi}} # CPU resource limits (optional)
-			memory: {{400m}} # Memory resource limits (optional)
+			cpu: 1Gi 						  # CPU resource limits (optional)
+			memory: 400m 					  # Memory resource limits (optional)
 ```
 
 
@@ -148,19 +197,19 @@ metastore: # Metastore section (optional)
 
 ```yaml
 storage: 
-	depotName: {{depot name}} # Name of depot (optional)
-	type: {{abfss}} # Object store type (mandatory)
-	abfss/gcs/wasbs/s3: # Depot type (optional)
-		{{depot configuration}}
+	depotName: depot name 			 # Name of depot (optional)
+	type: abfss 					 # Object store type (mandatory)
+	abfss/gcs/wasbs/s3: 			 # Depot type (optional)
+		# ... attributes specific to depot-type
 	secret: 
-		- name: {{mysecret}} # Secret Name (mandatory)
-			workspace: {{public}} # Workspace Name (optional)
-			key: {{username}} # Key (optional)
-			keys: # Keys (optional)
-				- {{username}}
-				- {{password}} 
-			allKeys: true # All Keys (optional)
-			consumptionType: {{envVars}} # Secret consumption type (optional)
+		- name: mysecret 			 # Secret Name (mandatory)
+			workspace: public 		 # Workspace Name (optional)
+			key: username 			 # Key (optional)
+			keys: 					 # Keys (optional)
+				- username
+				- password
+			allKeys: true 			 # All Keys (optional)
+			consumptionType: envVars # Secret consumption type (optional)
 ```
 
 <center>
@@ -186,12 +235,12 @@ storage:
 
 ```yaml
 gcs:
-	bucket: {{bucket-testing}} # GCS Bucket (optional)
-	format: {{format}} # Format (optional)
-	icebergCatalogType: {{hadoop}} # Iceberg Catalog Type (optional)
-	metastoreType: {{iceberg-rest}} # Meta Store type (optional)
-	metastoreUrl: {{}} # Meta Store URL (optional)
-	relativePath: {{}} # Relative Path (optional)
+	bucket: bucket-testing 					# GCS Bucket (optional)
+	format: format 							# Format (optional)
+	icebergCatalogType: hadoop 				# Iceberg Catalog Type (optional)
+	metastoreType: iceberg-rest 			# Meta Store type (optional)
+	metastoreUrl: https://random-url.com    # Meta Store URL (optional)
+	relativePath: tmdc-dataos 				# Relative Path (optional)
 ```
 
 <center>
@@ -212,14 +261,14 @@ gcs:
 
 ```yaml
 abfss:
-	account: {{}} # ABFSS Account (optional)
-	container: {{}} # 
-	endpointSuffix: {{}} # End Point Suffix (optional)
-	format: {{}} # File Format (optional)
-	icebergCatalogType: {{}} # Iceberg Catalog Type (optional)
-	metastoreType: {{}} # Metastore type (optional)
-	metastoreUrl: {{}} # Metastore URL (optional)
-	relativePath: {{}} # Relative Path (optional)
+	account: random 						# ABFSS Account (optional)
+	container: alpha 						# Container (optional)
+	endpointSuffix: new 					# End Point Suffix (optional)
+	format: iceberg 						# File Format (optional)
+	icebergCatalogType: hadoop 				# Iceberg Catalog Type (optional)
+	metastoreType: iceberg-rest 			# Metastore type (optional)
+	metastoreUrl: https://random-url.com	# Metastore URL (optional)
+	relativePath: tmdc-dataos 				# Relative Path (optional)
 ```
 
 <center>
@@ -242,14 +291,14 @@ abfss:
 
 ```yaml
 wasbs:
-	account: {{}} # ABFSS Account (optional)
-	container: {{}} # 
-	endpointSuffix: {{}} # End Point Suffix (optional)
-	format: {{}} # File Format (optional)
-	icebergCatalogType: {{}} # Iceberg Catalog Type (optional)
-	metastoreType: {{}} # Metastore type (optional)
-	metastoreUrl: {{}} # Metastore URL (optional)
-	relativePath: {{}} # Relative Path (optional)
+	account: random 						# WASBS Account (optional)
+	container: alpha 						# Container (optional)
+	endpointSuffix: new 					# End Point Suffix (optional)
+	format: iceberg 						# File Format (optional)
+	icebergCatalogType: hadoop 				# Iceberg Catalog Type (optional)
+	metastoreType: iceberg-rest 			# Metastore type (optional)
+	metastoreUrl: https://random-url.com	# Metastore URL (optional)
+	relativePath: tmdc-dataos 				# Relative Path (optional)
 ```
 
 <center>
@@ -273,13 +322,13 @@ wasbs:
 
 ```yaml
 s3:
-	bucket: {{bucket-testing}} # GCS Bucket (optional)
-	format: {{format}} # Format (optional)
-	icebergCatalogType: {{hadoop}} # Iceberg Catalog Type (optional)
-	metastoreType: {{iceberg-rest}} # Meta Store type (optional)
-	metastoreUrl: {{}} # Meta Store URL (optional)
-	relativePath: {{}} # Relative Path (optional)
-	scheme: {{}} # Scheme (optional)
+	bucket: bucket-testing	    		# GCS Bucket (optional)
+	format: format 			 			# Format (optional)
+	icebergCatalogType: hadoop  		# Iceberg Catalog Type (optional)
+	metastoreType: iceberg-rest		    # Meta Store type (optional)
+	metastoreUrl: iceberg-rest		    # Meta Store URL (optional)
+	relativePath: tmdc-dataos			# Relative Path (optional)
+	scheme: abcd 						# Scheme (optional)
 ```
 
 <center>
@@ -301,16 +350,16 @@ s3:
 
 ```yaml
 queryEngine:
-	type: {{themis}} # Query Engine type (mandatory)
-	resources: # CPU and memory resources (optional)
+	type: themis	 			# Query Engine type (mandatory)
+	resources: 					# CPU and memory resources (optional)
 		requests: 
-			cpu: {{1Gi}} # Requested CPU resources (optional)
-			memory: {{400m}} # Requested Memory resources (optional)
+			cpu: 1Gi	 		# Requested CPU resources (optional)
+			memory: 400m	 	# Requested Memory resources (optional)
 		limits:
-			cpu: {{1Gi}} # CPU resource limits (optional)
-			memory: {{400m}} # Memory resource limits (optional)
-	themis/minerva: # Cluster-specific configuration (optional)
-		{{themis/minerva specific attributes}}
+			cpu: 1Gi	 		# CPU resource limits (optional)
+			memory: 400m	 	# Memory resource limits (optional)
+	themis/minerva: 			# Cluster-specific configuration (optional)
+		# ...attributes of themis/minerva cluster
 ```
 
 <center>
@@ -336,19 +385,19 @@ queryEngine:
 ```yaml
 themis: 
 	envs: 
-		
+		# ...environment variables
 	themisConf:
-	
+		# ...Themis cluster specific configurations
 	spark: 
-		driver: # Spark driver configuration (mandatory)
-			memory: {{400m}} # Driver memory (mandatory)
-			cpu: {{1Gi}} # Driver CPU (mandatory)
-		executor: # Spark executor configuration (mandatory)
-			memory: {{400m}} # Driver memory (mandatory)
-			cpu: {{1Gi}} # Driver CPU (mandatory)
-			instanceCount: {{2}} # Executor Instance count (mandatory)
-			maxInstanceCount: {{4}} # Maximum executor Instance count (mandatory)
-		sparkConf: # Spark environment configuration (optional)
+		driver:					 # Spark driver configuration (mandatory)
+			memory: 400m		 # Driver memory (mandatory)
+			cpu: 1Gi 			 # Driver CPU (mandatory)
+		executor: 				 # Spark executor configuration (mandatory)
+			memory: {{400m}} 	 # Driver memory (mandatory)
+			cpu: {{1Gi}} 		 # Driver CPU (mandatory)
+			instanceCount: 2	 # Executor Instance count (mandatory)
+			maxInstanceCount: 4  # Maximum executor Instance count (mandatory)
+		sparkConf: 				 # Spark environment configuration (optional)
 ```
 
 <center>
@@ -376,16 +425,16 @@ themis:
 
 ```yaml
 minerva: 
-	replicas: {{2}} # Number of replicas (mandatory)
-	coordinatorEnvs: # Coordinator environment variables (optional)
-		
-	workerEnvs: # Worker environment variables (optional)
-
-	overrideDefaultEnvs: {{true}} # Override Default Environment Variables (optional)
-	spillOverVolume: {{alpha}} # Spill Over Volume (optional)
-	debug: # Debug (optional)
-		logLevel: {{INFO}} # LogLevel (optional)
-		trinoLogLevel: {{DEBUG}} # Trino Log Level (optional)
+	replicas: 2 				# Number of replicas (mandatory)
+	coordinatorEnvs: 			# Coordinator environment variables (optional)
+		# ...attributes specific to coordinator environment variables
+	workerEnvs: 				# Worker environment variables (optional)
+		# ...attributes specific to worker environment variables
+	overrideDefaultEnvs: true 	# Override Default Environment Variables (optional)
+	spillOverVolume: alpha 		# Spill Over Volume (optional)
+	debug: 						# Debug (optional)
+		logLevel: INFO 			# LogLevel (optional)
+		trinoLogLevel: DEBUG 	# Trino Log Level (optional)
 ```
 
 <center>
@@ -403,6 +452,207 @@ minerva:
 | [`trinoLogLevel`](./lakehouse/yaml_configuration_attributes.md#trinologlevel) (under `debug`) | string | none | any valid log level for Trino | optional |
 
 </center>
+
+### **Apply the Lakehouse YAML**
+
+After creating the YAML configuration file for the Lakehouse Resource, it's time to apply it to instantiate the Resource-instance in the DataOS environment. To apply the Lakehouse YAML file, utilize the [`apply`](../interfaces/cli/command_reference.md#apply) command.
+
+```shell
+dataos-ctl apply -f {{yaml config file path}} - w {{workspace name}}
+# Sample
+dataos-ctl apply -f dataproducts/new-lakehouse.yaml -w curriculum
+```
+
+<details>
+<summary>Sample Lakehouse YAML</summary>
+    
+```yaml
+version: v1alpha
+name: {{s3-depot-name}}
+layer: user
+type: lakehouse
+tags:
+  - Iceberg
+  - Azure
+description: "Icebase depot of storage-type S3"
+lakehouse:
+  type: iceberg
+  compute: runnable-default
+  iceberg:
+    storage:
+      type: s3
+      s3:
+        bucket: {{s3 bucket name}}        # "tmdc-dataos-testing"
+        relativePath: {{relative path}}
+      secrets:
+        - name: {{s3-depot-name}}-rw
+          keys:
+            - {{s3-depot-name}}-rw
+          allkeys: true    
+        - name: {{s3-depot-name}}-r
+          keys:
+            - {{s3-depot-name}}-r
+          allkeys: true 
+    metastore:
+      type: "iceberg-rest-catalog"
+    queryEngine:
+      type: {{query engine}}
+```
+</details>
+
+### **Verify Lakehouse Creation**
+
+To ensure that your Lakehouse has been successfully created, you can verify it in two ways:
+
+Check the name of the newly created Lakehouse in the list of lakehouses created by you in a particular Workspace:
+
+```shell
+dataos-ctl get -t lakehouse - w {{workspace name}}
+# Sample
+dataos-ctl get -t lakehouse -w curriculum
+```
+
+Alternatively, retrieve the list of all Lakehouses created in the Workspace by appending `-a` flag:
+
+```shell
+dataos-ctl get -t lakehouse -w {{workspace name}} -a
+# Sample
+dataos-ctl get -t lakehouse -w curriculum
+```
+
+You can also access the details of any created Lakehouse through the DataOS GUI in the Resource tab of the  [Operations App.](../interfaces/operations.md)
+
+### **Deleting a Lakehouse**
+
+Use the [`delete`](../interfaces/cli/command_reference.md#delete) command to remove the specific Lakehouse Resource-instance from the DataOS environment. There are three ways to delete a Lakehouse as shown below.
+
+**Method 1:** Copy the name to Workspace from the output table of the [`get`](../interfaces/cli/command_reference.md#get) command and use it as a string in the delete command.
+
+Command
+
+```shell
+dataos-ctl delete -i "{{name to workspace in the output table from get status command}}"
+```
+
+Example:
+
+```shell
+dataos-ctl delete -i "cnt-lakehouse-demo-01 | v1alpha | lakehouse | public"
+```
+
+Output:
+
+```shell
+INFO[0000] 🗑 delete...
+INFO[0001] 🗑 deleting(public) cnt-lakehouse-demo-01:v1alpha:lakehouse...
+INFO[0003] 🗑 deleting(public) cnt-lakehouse-demo-01:v1alpha:lakehouse...deleted
+INFO[0003] 🗑 delete...complete
+```
+
+**Method 2:** Specify the path of the YAML file and use the [`delete`](../interfaces/cli/command_reference.md#delete) command.
+
+Command:
+
+```shell
+dataos-ctl delete -f {{file-path}}
+```
+
+Example:
+
+```shell
+dataos-ctl delete -f /home/desktop/connect-city/config_v1alpha.yaml
+```
+
+Output:
+
+```shell
+INFO[0000] 🗑 delete...
+INFO[0000] 🗑 deleting(public) cnt-lakehouse-demo-010:v1alpha:lakehouse...
+INFO[0001] 🗑 deleting(public) cnt-lakehouse-demo-010:v1alpha:lakehouse...deleted
+INFO[0001] 🗑 delete...complete
+```
+
+**Method 3:** Specify the Workspace, Resource-type, and Lakehouse name in the [`delete`](../interfaces/cli/command_reference.md#delete) command.
+
+Command:
+
+```shell
+dataos-ctl delete -w {{workspace}} -t lakehouse -n {{lakehouse name}}
+```
+
+Example:
+
+```shell
+dataos-ctl delete -w public -t lakehouse -n cnt-product-demo-01
+```
+
+Output:
+
+```shell
+INFO[0000] 🗑 delete...
+INFO[0000] 🗑 deleting(public) cnt-city-demo-010:v1alpha:lakehouse...
+INFO[0001] 🗑 deleting(public) cnt-city-demo-010:v1alpha:lakehouse...deleted
+INFO[0001] 🗑 delete...complete
+```
+
+
+## Attributes of Lakehouse YAML
+
+The Attributes of Lakehouse YAML define the key properties and configurations that can be used to specify and customize Lakehouse Resources within a YAML file. These attributes allow data developers to define the structure and behavior of their Lakehouse Resources. For comprehensive information on each attribute and its usage, please refer to the link: [Attributes of Lakehouse YAML.](./lakehouse/yaml_configuration_attributes.md)
+
+## Lakehouse Command Reference
+
+Here is a reference to the various commands related to managing Lakehouses in DataOS:
+
+- **Applying a Lakehouse:** Use the following command to apply a Lakehouse using a YAML configuration file:
+    
+    ```shell 
+    dataos-ctl apply -f {{yaml config file path}} -w {{workspace}}
+    dataos-ctl resource apply -f {{yaml config file path}} -w {{workspace}}
+    # Sample
+    dataos-ctl resource apply -f lakehouse/lakehouse.yaml -w curriculum
+    dataos-ctl resource apply -f lakehouse/lakehouse.yaml -w curriculum
+    ```
+    
+- **Get Lakehouse Status:** To retrieve the status of a specific Lakehouse, use the following command:
+    
+    ```shell
+    dataos-ctl get -t lakehouse -w {{workspace name}}
+    # Sample
+    dataos-ctl get -t lakehouse -w curriculum
+    ```
+    
+- **Get Status of all Workers within a Workspace:** To get the status of all Workers within the current context, use this command:
+    
+    ```shell
+    dataos-ctl get -t lakehouse -w {{workspace name}} -a
+    # Sample
+    dataos-ctl get -t lakehouse -w curriculum -a
+    ```
+    
+- **Generate Lakehouse JSON Schema:** To generate the JSON schema for a Lakehouse with a specific version (e.g., v1alpha), use the following command:
+    
+    ```shell
+    dataos-ctl develop schema generate -t lakehouse -v {{version}}
+    # Sample
+    dataos-ctl develop schema generate -t lakehouse -v v1alpha
+    ```
+    
+- **Get Lakehouse JSON Resource Schema:** To obtain the JSON resource schema for a Lakehouse with a specific version (e.g., v1alpha), use the following command:
+    
+    ```shell
+    dataos-ctl develop get resource -t lakehouse -v {{version}}
+    # Sample
+    dataos-ctl develop get resource -t lakehouse -v v1alpha
+    ```
+    
+- **Delete Workers:** To delete a specific lakehouse you can use the below command
+    
+    ```shell
+    dataos-ctl delete -t lakehouse -w {{workspace name}} -n {{name of lakehouse}}
+    # Sample
+    dataos-ctl delete -t lakehouse -w curriculum -n benthos3-lakehouse
+    ```
 
 ## Case Scenario
 
