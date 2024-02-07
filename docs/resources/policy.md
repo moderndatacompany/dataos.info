@@ -204,8 +204,8 @@ In this section, a collection of pre-configured Policy Resource Templates are pr
 
 For detailed examples and practical implementations of Policy Resource, refer to the following Policy Resource Case Scenarios:
 
-[Implementing Access Policy](./policy/case_scenarios/implementing_access_policy.md)
+- [How to implement access policy?](./policy/case_scenarios/implementing_access_policy.md)
 
-[Implementing Data Masking Policy](./policy/case_scenarios/implementing_data_masking_policy.md)
+- [How to implement data masking policy?](./policy/case_scenarios/implementing_data_masking_policy.md)
 
-[Implementing Data Filtering Policy](./policy/case_scenarios/implementing_data_filtering_policy.md)
+- [How to implement data filtering policy?](./policy/case_scenarios/implementing_data_filtering_policy.md)
