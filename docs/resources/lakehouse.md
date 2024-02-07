@@ -4,9 +4,10 @@ DataOS Lakehouse, is a [DataOS Resource](../resources.md) that integrates Apache
 
 <aside class="callout">
 
-🗣️ Unlike traditional <a href="./depot/depot_config_templates.md">object storage or Data Lake depots</a> that are instantiated at the <a href="./types_of_dataos_resources.md#instance-level-resources">Instance-level</a>, Lakehouses are created at the <a href="./types_of_dataos_resources.md#workspace-level-resources">Workspace-level.
+🗣️ Unlike traditional <a href="./depot/depot_config_templates.md">object storage or Data Lake depots</a> that are instantiated at the <a href="./types_of_dataos_resources.md#instance-level-resources">Instance-level</a>, Lakehouses are created at the <a href="./types_of_dataos_resources.md#workspace-level-resources">Workspace-level</a>.
 
 </aside>
+
 
 ## Key Features of a Lakehouse
 
@@ -37,6 +38,12 @@ A Lakehouse YAML manifest can be structurally broken down into following section
 	- [Metastore configuration](#metastore-configuration)
 	- [Storage configuration](#storage-configuration)
 		- [GCS](#gcs)
+		- [ABFSS](#abfss)
+		- [WASBS](#wasbs)
+		- [S3](#s3)
+	- [Query Engine configuration](#query-engine-configuration)
+		- [Themis](#themis)
+		- [Minerva](#minerva)
 
 #### **Configuring the Resource meta section**
 
@@ -403,6 +410,207 @@ minerva:
 | [`trinoLogLevel`](./lakehouse/yaml_configuration_attributes.md#trinologlevel) (under `debug`) | string | none | any valid log level for Trino | optional |
 
 </center>
+
+### **Apply the Lakehouse YAML**
+
+After creating the YAML configuration file for the Lakehouse Resource, it's time to apply it to instantiate the Resource-instance in the DataOS environment. To apply the Lakehouse YAML file, utilize the [`apply`](../interfaces/cli/command_reference.md#apply) command.
+
+```shell
+dataos-ctl apply -f {{yaml config file path}} - w {{workspace name}}
+# Sample
+dataos-ctl apply -f dataproducts/new-lakehouse.yaml -w curriculum
+```
+
+<details>
+<summary>Sample Lakehouse YAML</summary>
+    
+```yaml
+version: v1alpha
+name: {{s3-depot-name}}
+layer: user
+type: lakehouse
+tags:
+  - Iceberg
+  - Azure
+description: "Icebase depot of storage-type S3"
+lakehouse:
+  type: iceberg
+  compute: runnable-default
+  iceberg:
+    storage:
+      type: s3
+      s3:
+        bucket: {{s3 bucket name}}        # "tmdc-dataos-testing"
+        relativePath: {{relative path}}
+      secrets:
+        - name: {{s3-depot-name}}-rw
+          keys:
+            - {{s3-depot-name}}-rw
+          allkeys: true    
+        - name: {{s3-depot-name}}-r
+          keys:
+            - {{s3-depot-name}}-r
+          allkeys: true 
+    metastore:
+      type: "iceberg-rest-catalog"
+    queryEngine:
+      type: {{query engine}}
+```
+</details>
+
+### **Verify Lakehouse Creation**
+
+To ensure that your Lakehouse has been successfully created, you can verify it in two ways:
+
+Check the name of the newly created Lakehouse in the list of lakehouses created by you in a particular Workspace:
+
+```shell
+dataos-ctl get -t lakehouse - w {{workspace name}}
+# Sample
+dataos-ctl get -t lakehouse -w curriculum
+```
+
+Alternatively, retrieve the list of all Lakehouses created in the Workspace by appending `-a` flag:
+
+```shell
+dataos-ctl get -t lakehouse -w {{workspace name}} -a
+# Sample
+dataos-ctl get -t lakehouse -w curriculum
+```
+
+You can also access the details of any created Lakehouse through the DataOS GUI in the Resource tab of the  [Operations App.](../interfaces/operations.md)
+
+### **Deleting a Lakehouse**
+
+Use the [`delete`](../interfaces/cli/command_reference.md#delete) command to remove the specific Lakehouse Resource-instance from the DataOS environment. There are three ways to delete a Lakehouse as shown below.
+
+**Method 1:** Copy the name to Workspace from the output table of the [`get`](../interfaces/cli/command_reference.md#get) command and use it as a string in the delete command.
+
+Command
+
+```shell
+dataos-ctl delete -i "{{name to workspace in the output table from get status command}}"
+```
+
+Example:
+
+```shell
+dataos-ctl delete -i "cnt-lakehouse-demo-01 | v1alpha | lakehouse | public"
+```
+
+Output:
+
+```shell
+INFO[0000] 🗑 delete...
+INFO[0001] 🗑 deleting(public) cnt-lakehouse-demo-01:v1alpha:lakehouse...
+INFO[0003] 🗑 deleting(public) cnt-lakehouse-demo-01:v1alpha:lakehouse...deleted
+INFO[0003] 🗑 delete...complete
+```
+
+**Method 2:** Specify the path of the YAML file and use the [`delete`](../interfaces/cli/command_reference.md#delete) command.
+
+Command:
+
+```shell
+dataos-ctl delete -f {{file-path}}
+```
+
+Example:
+
+```shell
+dataos-ctl delete -f /home/desktop/connect-city/config_v1alpha.yaml
+```
+
+Output:
+
+```shell
+INFO[0000] 🗑 delete...
+INFO[0000] 🗑 deleting(public) cnt-lakehouse-demo-010:v1alpha:lakehouse...
+INFO[0001] 🗑 deleting(public) cnt-lakehouse-demo-010:v1alpha:lakehouse...deleted
+INFO[0001] 🗑 delete...complete
+```
+
+**Method 3:** Specify the Workspace, Resource-type, and Lakehouse name in the [`delete`](../interfaces/cli/command_reference.md#delete) command.
+
+Command:
+
+```shell
+dataos-ctl delete -w {{workspace}} -t lakehouse -n {{lakehouse name}}
+```
+
+Example:
+
+```shell
+dataos-ctl delete -w public -t lakehouse -n cnt-product-demo-01
+```
+
+Output:
+
+```shell
+INFO[0000] 🗑 delete...
+INFO[0000] 🗑 deleting(public) cnt-city-demo-010:v1alpha:lakehouse...
+INFO[0001] 🗑 deleting(public) cnt-city-demo-010:v1alpha:lakehouse...deleted
+INFO[0001] 🗑 delete...complete
+```
+
+
+## Attributes of Lakehouse YAML
+
+The Attributes of Lakehouse YAML define the key properties and configurations that can be used to specify and customize Lakehouse Resources within a YAML file. These attributes allow data developers to define the structure and behavior of their Lakehouse Resources. For comprehensive information on each attribute and its usage, please refer to the link: [Attributes of Lakehouse YAML.](./lakehouse/yaml_configuration_attributes.md)
+
+## Lakehouse Command Reference
+
+Here is a reference to the various commands related to managing Lakehouses in DataOS:
+
+- **Applying a Lakehouse:** Use the following command to apply a Lakehouse using a YAML configuration file:
+    
+    ```shell 
+    dataos-ctl apply -f {{yaml config file path}} -w {{workspace}}
+    dataos-ctl resource apply -f {{yaml config file path}} -w {{workspace}}
+    # Sample
+    dataos-ctl resource apply -f lakehouse/lakehouse.yaml -w curriculum
+    dataos-ctl resource apply -f lakehouse/lakehouse.yaml -w curriculum
+    ```
+    
+- **Get Lakehouse Status:** To retrieve the status of a specific Lakehouse, use the following command:
+    
+    ```shell
+    dataos-ctl get -t lakehouse -w {{workspace name}}
+    # Sample
+    dataos-ctl get -t lakehouse -w curriculum
+    ```
+    
+- **Get Status of all Workers within a Workspace:** To get the status of all Workers within the current context, use this command:
+    
+    ```shell
+    dataos-ctl get -t lakehouse -w {{workspace name}} -a
+    # Sample
+    dataos-ctl get -t lakehouse -w curriculum -a
+    ```
+    
+- **Generate Lakehouse JSON Schema:** To generate the JSON schema for a Lakehouse with a specific version (e.g., v1alpha), use the following command:
+    
+    ```shell
+    dataos-ctl develop schema generate -t lakehouse -v {{version}}
+    # Sample
+    dataos-ctl develop schema generate -t lakehouse -v v1alpha
+    ```
+    
+- **Get Lakehouse JSON Resource Schema:** To obtain the JSON resource schema for a Lakehouse with a specific version (e.g., v1alpha), use the following command:
+    
+    ```shell
+    dataos-ctl develop get resource -t lakehouse -v {{version}}
+    # Sample
+    dataos-ctl develop get resource -t lakehouse -v v1alpha
+    ```
+    
+- **Delete Workers:** To delete a specific lakehouse you can use the below command
+    
+    ```shell
+    dataos-ctl delete -t lakehouse -w {{workspace name}} -n {{name of lakehouse}}
+    # Sample
+    dataos-ctl delete -t lakehouse -w curriculum -n benthos3-lakehouse
+    ```
 
 ## Case Scenario
 
