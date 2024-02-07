@@ -24,7 +24,10 @@ workflow:
                     valid min: 1
                     valid max: 6
                 - duplicate_count(phone) = 0
-              engine: minerva #(If we want to give support for different engine for each dataset )
+              profile:
+                columns:
+                  - "*"
+              engine: minerva
             - dataset: dataos://icebase:retail/customer_360
               checks:
                 - row_count between 10 and 1000
@@ -35,4 +38,7 @@ workflow:
                     valid min: 1
                     valid max: 6
                 - duplicate_count(phone) = 0
+              profile:
+                columns:
+                  - "*"
 ```

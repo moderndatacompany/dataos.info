@@ -26,6 +26,9 @@ stackSpec:
       options:
         engine: minerva
         clusterName: miniature
+      filter:
+        name: filter_on_age
+        where: age > 50
       profile:
         columns:
           - customer_index
@@ -94,7 +97,7 @@ stackSpec:
 
 ## Configuration Attributes
 
-### **`stackSpec`**
+## **`stackSpec`**
 
 **Description:** Specification for the Soda Stack, including inputs for various datasets and associated checks.
 
@@ -114,7 +117,7 @@ stackSpec:
 
 ### **`inputs`**
 
-**Description:** Within the inputs section users define the datasets or data sources on which data quality assessments will be performed. List of dataset inputs with associated checks.
+**Description:** Within the `inputs` section users define the datasets or data sources on which data quality assessments will be performed, along with associated checks.
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
@@ -133,7 +136,7 @@ stackSpec:
 
 ---
 
-### **`dataset`**
+#### **`dataset`**
 
 **Description:** Dataset specification, including the source and path. Specify the data source or dataset on which you want to run data quality checks.
 
@@ -152,7 +155,7 @@ stackSpec:
 
 ---
 
-### **`checks`**
+#### **`checks`**
 
 **Description:** List of checks associated with the dataset input. Here you will specify a list of specific data quality checks or tests that will be performed on the designated dataset. These checks can be tailored to suit the unique requirements of the dataset and the data quality objectives. 
 
@@ -173,7 +176,7 @@ stackSpec:
 
 ---
 
-### **`options`**
+#### **`options`**
 
 **Description:** Options associated with the dataset input, such as the engine or cluster name. Here, you can configure how you want to connect to the data source and run the check. Pass the following information - 
 
@@ -190,12 +193,149 @@ stackSpec:
       options:
         engine: minerva
         clusterName: miniature
-      # ...
+      # ...other inputs attributes
 ```
 
 ---
 
-### **`profile`**
+##### **`engine`**
+
+**Description:** Engine option for the dataset input. The engine key can have two values: "minerva" and "default". The "default" value executes queries on the native engine of the data source, while "minerva" uses the DataOS query engine to run queries. 
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | optional | none | default/minerva |
+
+**Additional Information:** 
+
+- Why and when do we need to connect to Minerva?
+    - When the source’s engine is not supported
+    - When the source doesn’t have a native engine
+
+To run checks on such a source, we must first connect it to a depot.
+
+- **Available engines for different sources**
+    
+    
+    | Source Name/Engine | Default | Minerva |
+    | --- | --- | --- |
+    | Snowflake | Yes | Yes |
+    | Oracle | Yes | Yes |
+    | Trino | Yes | Yes |
+    | Minerva | No | Yes |
+    | BigQuery | Yes | Yes |
+    | Postgres | Yes | Yes |
+    | MySQL | Yes | Yes |
+    | MSSQL | Yes | Yes |
+    | Redshift | Yes | Yes |
+    | Elastic Search | No | Yes |
+    | MongoDB | No | Yes |
+    | Kafka | No | Yes |
+    | Azure File System | No | No |
+    | Eventhub | No | No |
+    | GCS | No | No |
+    | OpenSearch | No | No |
+    | S3 | No | No |
+
+**Example Usage:**
+
+```yaml
+stackSpec:
+  inputs:
+    - dataset: dataos://icebase:retail/customer
+      options:
+        engine: minerva
+      # ...other inputs attributes
+```
+
+---
+
+##### **`clusterName`**
+
+**Description:** Here, the users can specify the cluster name on which the queries will run. If the engine is Minerva, this is a mandatory field. You can check the cluster on which your depot is mounted in Workbench or check the cluster definition in Operations.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | optional | none | valid Cluster Name |
+
+**Example Usage:**
+
+```yaml
+stackSpec:
+  inputs:
+    - dataset: dataos://icebase:retail/customer
+      options:
+        clusterName: miniature
+      # ...other inputs attributes
+```
+
+---
+
+#### **`filter`**
+
+**Description:** The `filter` attribute mapping or filter section serves as a global filter for all checks specified within a dataset. It is essential to note that this global filter functionality differs from the filter applied within the check section.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| mapping | optional | none | none |
+
+**Example Usage:**
+
+```yaml
+stackSpec:
+  inputs:
+    - dataset: dataos://icebase:retail/customer
+      filter:
+          name: filter_on_age
+          where: age > 50
+      # ...other inputs attributes
+```
+
+---
+
+##### **`name`**
+
+**Description:** The `name` attribute provides a unique name to the filter.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | optional | none | any valid string |
+
+**Example Usage:**
+
+```yaml
+stackSpec:
+  inputs:
+    - dataset: dataos://icebase:retail/customer
+      filter:
+          name: filter_on_age
+        # ...other filter attributes
+```
+
+---
+
+##### **`where`**
+
+**Description:** The `where` attribute is used to specify the filter condition.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | optional | none | valid filter condition |
+
+**Example Usage:**
+
+```yaml
+stackSpec:
+  inputs:
+    - dataset: dataos://icebase:retail/customer
+      filter:
+          where: age < 60
+        # ...other filter attributes
+```
+
+---
+
+#### **`profile`**
 
 **Description:** Profile specification for the dataset input, including column selections. Here you can specify a list of columns that require profiling. Column profile information is used to understand the characteristics and data distribution in the specified columns, such as the calculated mean value of data in a column, the maximum and minimum values in a column, and the number of rows with missing data. 
 
@@ -222,7 +362,7 @@ stackSpec:
 
 ---
 
-### **`columns`**
+##### **`columns`**
 
 **Description:** List of column specifications for profiling the dataset.
 
@@ -303,52 +443,3 @@ stackSpec:
 ```
 
 ---
-
-### **`engine`**
-
-**Description:** Engine option for the dataset input. The engine key can have two values: "minerva" and "default". The "default" value executes queries on the native engine of the data source, while "minerva" uses the DataOS query engine to run queries. 
-
-| Data Type | Requirement | Default Value | Possible Value |
-| --- | --- | --- | --- |
-| string | optional | none | default/minerva |
-
-**Additional Information:** 
-
-- Why and when do we need to connect to Minerva?
-    - When the source’s engine is not supported
-    - When the source doesn’t have a native engine
-
-To run checks on such a source, we must first connect it to a depot.
-
-- **Available engines for different sources**
-    
-    
-    | Source Name/Engine | Default | Minerva |
-    | --- | --- | --- |
-    | Snowflake | Yes | Yes |
-    | Oracle | Yes | Yes |
-    | Trino | Yes | Yes |
-    | Minerva | No | Yes |
-    | BigQuery | Yes | Yes |
-    | Postgres | Yes | Yes |
-    | MySQL | Yes | Yes |
-    | MSSQL | Yes | Yes |
-    | Redshift | Yes | Yes |
-    | Elastic Search | No | Yes |
-    | MongoDB | No | Yes |
-    | Kafka | No | Yes |
-    | Azure File System | No | No |
-    | Eventhub | No | No |
-    | GCS | No | No |
-    | OpenSearch | No | No |
-    | S3 | No | No |
-
----
-
-### **`clusterName`**
-
-**Description:** Here, the users can specify the cluster name on which the queries will run. If the engine is Minerva, this is a mandatory field. You can check the cluster on which your depot is mounted in Workbench or check the cluster definition in Operations.
-
-| Data Type | Requirement | Default Value | Possible Value |
-| --- | --- | --- | --- |
-| string | optional | none | valid Cluster Name |
