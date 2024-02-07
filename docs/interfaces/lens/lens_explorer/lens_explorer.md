@@ -17,9 +17,9 @@ Here is a quick guide for navigating through Lens Explorer.
 <figcaption align = "center">A graphical how to guide for Lens Explorer</figcaption>
 <br>
 
-## Procedure
+## Procedure to Explore a Lens
 
-Follow the steps to explore a Lens within the Lens Explorer:
+Follow the steps within the Lens Explorer:
 
 - Step 1: Select a Cluster
 - Step 2: Select the fields, dimensions, and measures from the entities
