@@ -230,7 +230,7 @@ dataos-ctl delete -i "{{name to workspace in the output table from get status co
 Example:
 
 ```shell
-dataos-ctl delete -i "cnt-product-demo-01 | v1beta | workflow | public"
+dataos-ctl delete -i "cnt-product-demo-01 | v1beta | worker | public"
 ```
 
 Output:
