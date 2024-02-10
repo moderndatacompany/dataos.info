@@ -60,13 +60,13 @@ The YAML configuration file for a Secret can be divided into two sections: Resou
 The Resource Section of the YAML configuration file consists of attributes that are common across all Resource-types. The following YAML snippet demonstrates the key-value properties that need to be declared in this section:
 
 ```yaml
-name: {{mysecret}}
+name: ${{mysecret}}
 version: v1 
 type: depot 
 tags: 
-  - {{dataos:type:resource}}
-description: {{This is a sample secret YAML configuration}} 
-owner: {{iamgroot}}
+  - ${{dataos:type:resource}}
+description: ${{This is a sample secret YAML configuration}} 
+owner: ${{iamgroot}}
 ```
 For more information about the attributes of Resource Section, refer to the link [Attributes of Resource section.](../resources/resource_attributes.md)
 
@@ -88,7 +88,7 @@ secret:
 Apply the Secret YAML via the CLI, by specifying the YAML’s path and the workspace. The `apply` command is given below.
 
 ```shell
-dataos-ctl apply -f {{path/secret.yaml}} -w {{name of the workspace}}
+dataos-ctl apply -f ${{path/secret.yaml}} -w ${{name of the workspace}}
 ```
 
 **Expected Output**
@@ -107,7 +107,7 @@ INFO[0007] 🛠 apply...complete
 Use the get command to validate whether, the Secret Resource has been properly created within the DataOS environment.
 
 ```shell
-dataos-ctl get -t secret -w {{workspace}}
+dataos-ctl get -t secret -w ${{workspace}}
 ```
 
 **Sample**
@@ -144,7 +144,7 @@ To reference a Secret Resource using the `dataosSecrets` field, use the followin
 
 ```yaml
 dataosSecrets:
-  - {{name-of-the-secret}}
+  - ${{name-of-the-secret}}
 ```
 
 Here's a sample YAML configuration that demonstrates how to reference a Secret Resource using the `dataosSecrets` field:

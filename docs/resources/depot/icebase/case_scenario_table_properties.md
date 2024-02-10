@@ -8,7 +8,7 @@ To obtain the list of properties, execute the following command within the DataO
 **Command**
 
 ```shell
-dataos-ctl dataset properties -a {{udl}}
+dataos-ctl dataset properties -a ${{udl}}
 ```
 
 **Example**
@@ -37,16 +37,16 @@ To add a single property the below code can be used.
 **Command**
 
 ```shell
-dataos-ctl dataset add-properties -a {{udl}} \
--p "{{property-name}}:{{property-value}}"
+dataos-ctl dataset add-properties -a ${{udl}} \
+-p "${{property-name}}:${{property-value}}"
 ```
 
 To add multiple properties at the same time, use:
 
 ```shell
 dataos-ctl dataset add-properties -a dataos://icebase:retail/city \
--p "{{property-name}}:{{property-value}}" \
--p "{{property-name}}:{{property-value}}"
+-p "${{property-name}}:${{property-value}}" \
+-p "${{property-name}}:${{property-value}}"
 ```
 
 **Example**
@@ -92,9 +92,9 @@ To remove a property, the following command can be used.
 **Command**
 
 ```shell
-dataos-ctl dataset remove-properties -a {{udl}} \
--p "{{property-name}}" \
--p "{{property-name}}"
+dataos-ctl dataset remove-properties -a ${{udl}} \
+-p "${{property-name}}" \
+-p "${{property-name}}"
 ```
 
 **Example**

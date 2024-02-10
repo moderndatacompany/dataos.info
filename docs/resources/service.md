@@ -49,14 +49,14 @@ To create a Service Resource, you need to configure the YAML file with the appro
 
 A Service is a [Resource-type](./types_of_dataos_resources.md) in DataOS. Below is the YAML configuration for the Resource Meta Section:
 ```yaml
-name: {{my-workflow}}
+name: ${{my-service}}
 version: v1 
 type: service 
 tags: 
-  - {{dataos:type:resource}}
-  - {{dataos:type:workspace-resource}}
-description: {{This is a sample service YAML configuration}}
-owner: {{iamgroot}}
+  - ${{dataos:type:resource}}
+  - ${{dataos:type:workspace-resource}}
+description: ${{This is a sample service YAML configuration}}
+owner: ${{iamgroot}}
 ```
 <center><i>Resource Meta Section Configuration for a Service</i></center>
 
@@ -68,24 +68,24 @@ The Service-specific Section contains configurations specific to the Service res
 
 ```yaml
 service: 
-    title: {{"Hit Collector Service"}}
-    replicas: {{1}}
+    title: ${{"Hit Collector Service"}}
+    replicas: ${{1}}
     autoScaling: 
-        enabled: {{true}}
-        minReplicas: {{2}}
-        maxReplicas: {{4}}
-        targetMemoryUtilizationPercentage: {{80}}
-        targetCPUUtilizationPercentage: {{80}}
+        enabled: ${{true}}
+        minReplicas: ${{2}}
+        maxReplicas: ${{4}}
+        targetMemoryUtilizationPercentage: ${{80}}
+        targetCPUUtilizationPercentage: ${{80}}
     ingress: 
-        enabled: {{true}}
-        stripPath: {{false}}
-        path: {{/hit-collector}}
-        noAuthentication: {{true}}
-    stack: {{stack}} # Specify stack here
-    logLevel: {{INFO}}
-    dryRun: {{true}}
-    servicePort: {{8099}}
-    {{Stack-specific-section}}
+        enabled: ${{true}}
+        stripPath: ${{false}}
+        path: ${{/hit-collector}}
+        noAuthentication: ${{true}}
+    stack: ${{stack}} # Specify stack here
+    logLevel: ${{INFO}}
+    dryRun: ${{true}}
+    servicePort: ${{8099}}
+    ${{Stack-specific-section}}
 ```
 <center><i>Service-specific Section Configuration</i></center>
 
@@ -241,7 +241,7 @@ service:
 Run the `apply` command on DataOS CLI to create the service resource in DataOS environment.
 
 ```shell
-dataos-ctl apply -f {{filename.yaml}} -w {{name of the workspace}}
+dataos-ctl apply -f ${{filename.yaml}} -w ${{name of the workspace}}
 ```
 
 To learn more about `apply` command, refer to the [CLI](../interfaces/cli/command_reference.md) section.

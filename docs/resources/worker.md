@@ -46,17 +46,17 @@ In DataOS, a Worker is categorized as a [Resource-type](../resources/types_of_da
 The following YAML excerpt illustrates the attributes that are specified within this section:
 
 ```yaml
-name: {{my-worker}}
+name: ${{my-worker}}
 version: v1beta 
 type: worker
 layer: user 
 tags: 
-  - {{dataos:type:resource}}
-  - {{dataos:resource:worker}}
-description: {{this worker resource is for a data product}}
-owner: {{iamgroot}}
+  - ${{dataos:type:resource}}
+  - ${{dataos:resource:worker}}
+description: ${{this worker resource is for a data product}}
+owner: ${{iamgroot}}
 worker: # worker-specific section
-  {{worker-specific Attributes}}
+  ${{worker-specific Attributes}}
 ```
 <center><i>Resource meta section</i></center>
 
@@ -68,47 +68,47 @@ The below YAML provides a high-level structure for the Worker-specific section:
 
 ```yaml
 worker: 
-	title: {{title of worker}}
+	title: ${{title of worker}}
 	tags:
-		- {{tag 1}}
-		- {{tag 2}}
-	replicas: {{worker replicas}}
+		- ${{tag 1}}
+		- ${{tag 2}}
+	replicas: ${{worker replicas}}
 	autoscaling: 
-		enabled: {{enable autoscaling}}
-		minReplicas: {{minimum replicas}}
-		maxReplicas: {{maximum replicas}}
-		targetMemoryUtilizationPercentage: {{60}}
-		targetCPUUtilizationPercentage: {{70}}
-	stack: {{stack name and version}} 
-	logLevel: {{log level}}
+		enabled: ${{enable autoscaling}}
+		minReplicas: ${{minimum replicas}}
+		maxReplicas: ${{maximum replicas}}
+		targetMemoryUtilizationPercentage: ${{60}}
+		targetCPUUtilizationPercentage: ${{70}}
+	stack: ${{stack name and version}} 
+	logLevel: ${{log level}}
 	configs: 
-		{{additional configuration}}
+		${{additional configuration}}
 	envs: 
-		{{environment variable configuration}}
+		${{environment variable configuration}}
 	secrets: 
-		- {{secret configuration}}
+		- ${{secret configuration}}
 	dataosSecrets:
-		{{dataos secret resource configuration}}
+		${{dataos secret resource configuration}}
 	dataosVolumes: 
-		{{dataos volumes resource configuration}} 
+		${{dataos volumes resource configuration}} 
 	tempVolume: hola
 	persistentVolume: 
-		{{persistent volume configuration}}
+		${{persistent volume configuration}}
 	compute: runnable-default 
 	resources:
 		requests:
-			cpu: {{cpu requests}}
-			memory: {{memory requests}}
+			cpu: ${{cpu requests}}
+			memory: ${{memory requests}}
 		limits:
-			cpu: {{cpu limits}}
-			memory: {{memory limits}}
-	dryRun: {{enables dryrun}}
-	runAsApiKey: {{dataos apikey}}
-	runAsUser: {{dataos user-id}}
+			cpu: ${{cpu limits}}
+			memory: ${{memory limits}}
+	dryRun: ${{enables dryrun}}
+	runAsApiKey: ${{dataos apikey}}
+	runAsUser: ${{dataos user-id}}
 	topology:
-		{{worker topology}}
+		${{worker topology}}
 	stackSpec: 
-		{{Stack-specific Attributes}}
+		${{Stack-specific Attributes}}
 ```
 <center><i>Resource meta section</i></center>
 
@@ -145,7 +145,7 @@ By configuring these sections as needed, data developers can create highly custo
 After creating the YAML configuration file for the Worker Resource, it's time to apply it to instantiate the Resource-instance in the DataOS environment. To apply the Worker YAML file, utilize the [`apply`](../interfaces/cli/command_reference.md#apply) command.
 
 ```shell
-dataos-ctl apply -f {{yaml config file path}} - w {{workspace name}}
+dataos-ctl apply -f ${{yaml config file path}} - w ${{workspace name}}
 # Sample
 dataos-ctl apply -f dataproducts/new-worker.yaml -w curriculum
 ```
@@ -200,7 +200,7 @@ To ensure that your Worker has been successfully created, you can verify it in t
 Check the name of the newly created Worker in the list of workers created by you in a particular Workspace:
 
 ```shell
-dataos-ctl get -t worker - w {{workspace name}}
+dataos-ctl get -t worker - w ${{workspace name}}
 # Sample
 dataos-ctl get -t worker -w curriculum
 ```
@@ -208,7 +208,7 @@ dataos-ctl get -t worker -w curriculum
 Alternatively, retrieve the list of all Workers created in the Workspace by appending `-a` flag:
 
 ```shell
-dataos-ctl get -t worker -w {{workspace name}} -a
+dataos-ctl get -t worker -w ${{workspace name}} -a
 # Sample
 dataos-ctl get -t worker -w curriculum
 ```
@@ -224,7 +224,7 @@ Use the [`delete`](../interfaces/cli/command_reference.md#delete) command to rem
 Command
 
 ```shell
-dataos-ctl delete -i "{{name to workspace in the output table from get status command}}"
+dataos-ctl delete -i "${{name to workspace in the output table from get status command}}"
 ```
 
 Example:
@@ -247,7 +247,7 @@ INFO[0003] 🗑 delete...complete
 Command:
 
 ```shell
-dataos-ctl delete -f {{file-path}}
+dataos-ctl delete -f ${{file-path}}
 ```
 
 Example:
@@ -270,7 +270,7 @@ INFO[0001] 🗑 delete...complete
 Command:
 
 ```shell
-dataos-ctl delete -w {{workspace}} -t worker -n {{worker name}}
+dataos-ctl delete -w ${{workspace}} -t worker -n ${{worker name}}
 ```
 
 Example:
@@ -304,8 +304,8 @@ Here is a reference to the various commands related to managing Workers in DataO
 - **Applying a Worker:** Use the following command to apply a Worker using a YAML configuration file:
     
     ```shell 
-    dataos-ctl apply -f {{yaml config file path}} -w {{workspace}}
-    dataos-ctl resource apply -f {{yaml config file path}} -w {{workspace}}
+    dataos-ctl apply -f ${{yaml config file path}} -w ${{workspace}}
+    dataos-ctl resource apply -f ${{yaml config file path}} -w ${{workspace}}
     # Sample
     dataos-ctl resource apply -f worker/worker.yaml -w curriculum
     dataos-ctl resource apply -f worker/worker.yaml -w curriculum
@@ -314,7 +314,7 @@ Here is a reference to the various commands related to managing Workers in DataO
 - **Get Worker Status:** To retrieve the status of a specific Worker, use the following command:
     
     ```shell
-    dataos-ctl get -t worker -w {{workspace name}}
+    dataos-ctl get -t worker -w ${{workspace name}}
     # Sample
     dataos-ctl get -t worker -w curriculum
     ```
@@ -322,7 +322,7 @@ Here is a reference to the various commands related to managing Workers in DataO
 - **Get Status of all Workers within a Workspace:** To get the status of all Workers within the current context, use this command:
     
     ```shell
-    dataos-ctl get -t worker -w {{workspace name}} -a
+    dataos-ctl get -t worker -w ${{workspace name}} -a
     # Sample
     dataos-ctl get -t worker -w curriculum -a
     ```
@@ -330,7 +330,7 @@ Here is a reference to the various commands related to managing Workers in DataO
 - **Generate Worker JSON Schema:** To generate the JSON schema for a Worker with a specific version (e.g., v1alpha), use the following command:
     
     ```shell
-    dataos-ctl develop schema generate -t worker -v {{version}}
+    dataos-ctl develop schema generate -t worker -v ${{version}}
     # Sample
     dataos-ctl develop schema generate -t worker -v v1alpha
     ```
@@ -338,7 +338,7 @@ Here is a reference to the various commands related to managing Workers in DataO
 - **Get Worker JSON Resource Schema:** To obtain the JSON resource schema for a Worker with a specific version (e.g., v1alpha), use the following command:
     
     ```shell
-    dataos-ctl develop get resource -t worker -v {{version}}
+    dataos-ctl develop get resource -t worker -v ${{version}}
     # Sample
     dataos-ctl develop get resource -t worker -v v1alpha
     ```
@@ -346,7 +346,7 @@ Here is a reference to the various commands related to managing Workers in DataO
 - **Delete Workers:** To delete a specific worker you can use the below command
     
     ```shell
-    dataos-ctl delete -t worker -w {{workspace name}} -n {{name of worker}}
+    dataos-ctl delete -t worker -w ${{workspace name}} -n ${{name of worker}}
     # Sample
     dataos-ctl delete -t worker -w curriculum -n benthos3-worker
     ```

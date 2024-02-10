@@ -1,4 +1,4 @@
-# Attributes of Service-specific Section
+# Attributes of Service YAML Manifest
 
 This document provide a comprehensive overview of the configuration attributes available for the Service Resource.
 
@@ -8,72 +8,72 @@ The manifest below demonstrates the structure of the Service-specific section YA
 
 ```yaml
 service:
-  title: {{title of service}}
+  title: ${{title of service}}
   tags:
-    - {{tag1}}
-    - {{tag2}}
-  servicePort: {{service port number}}
+    - ${{tag1}}
+    - ${{tag2}}
+  servicePort: ${{service port number}}
   ingress: 
-    enabled: {{enables ingress}}
-    path: {{/alpha}}
-    stripPath: {{true}}
-    noAuthentication: {{false}}
-    appDetailSpec: {{}}
-    apiDetailSpec: {{}}
-  replicas: {{2}}
+    enabled: ${{enables ingress}}
+    path: ${{/alpha}}
+    stripPath: ${{true}}
+    noAuthentication: ${{false}}
+    appDetailSpec: ${{}}
+    apiDetailSpec: ${{}}
+  replicas: ${{2}}
   autoScaling: 
-    enabled: {{true/false}}
-    minReplicas: {{3}}
-    maxReplicas: {{5}}
-    targetMemoryUtilizationPercentage: {{50}}
-    targetCPUUtilizationPercentage: {{80}}
-  stack: {{stack name and version}} # mandatory
-  logLevel: {{log level}}
+    enabled: ${{true/false}}
+    minReplicas: ${{3}}
+    maxReplicas: ${{5}}
+    targetMemoryUtilizationPercentage: ${{50}}
+    targetCPUUtilizationPercentage: ${{80}}
+  stack: ${{stack name and version}} # mandatory
+  logLevel: ${{log level}}
   configs: 
-    {{alpha: beta}}
+    ${{alpha: beta}}
   envs: 
-    {{random: delta}}
+    ${{random: delta}}
   secrets: 
-    - {{mysecret}}
+    - ${{mysecret}}
   dataosSecrets:
-    - name: {{mysecret}}
-      workspace: {{curriculum}}
-      key: {{newone}}
+    - name: ${{mysecret}}
+      workspace: ${{curriculum}}
+      key: ${{newone}}
       keys:
-        - {{newone}}
-        - {{oldone}}
-      allKeys: {{true}}
-      consumptionType: {{envVars}}
+        - ${{newone}}
+        - ${{oldone}}
+      allKeys: ${{true}}
+      consumptionType: ${{envVars}}
   dataosVolumes: 
-    - name: {{myVolume}}
-      directory: {{/file}}
-      readOnly: {{true}}
-      subPath: {{/random}}
-  tempVolume: {{abcd}}
+    - name: ${{myVolume}}
+      directory: ${{/file}}
+      readOnly: ${{true}}
+      subPath: ${{/random}}
+  tempVolume: ${{abcd}}
   persistentVolume:
-    name: {{myVolume}}
-    directory: {{/file}}
-    readOnly: {{true}}
-    subPath: {{/random}}
-  compute: {{compute resource name}} # mandatory
+    name: ${{myVolume}}
+    directory: ${{/file}}
+    readOnly: ${{true}}
+    subPath: ${{/random}}
+  compute: ${{compute resource name}} # mandatory
   resources:
     requests:
-      cpu: {{100Mi}}
-      memory: {{100Gi}}
+      cpu: ${{100Mi}}
+      memory: ${{100Gi}}
     limits:
-      cpu: {{100Mi}}
-      memory: {{100Gi}}
-  dryRun: {{true}}
-  runAsApiKey: {{abcdefghijklmnopqrstuvwxyz}}
-  runAsUser: {{iamgroot}}
+      cpu: ${{100Mi}}
+      memory: ${{100Gi}}
+  dryRun: ${{true}}
+  runAsApiKey: ${{abcdefghijklmnopqrstuvwxyz}}
+  runAsUser: ${{iamgroot}}
   topology:
-    name: {{abcd}} # mandatory
-    type: {{efgh}} # mandatory
-    doc: {{abcd efgh}}
+    name: ${{abcd}} # mandatory
+    type: ${{efgh}} # mandatory
+    doc: ${{abcd efgh}}
     properties: 
-      {{alpha: random}}
+      ${{alpha: random}}
     dependencies: 
-      - {{abc}}
+      - ${{abc}}
 ```
 
 ## Configuration Attributes
@@ -607,7 +607,7 @@ dataos-ctl user apikey get
 In case no apikey is available, the below command can be run to create a new apikey
 
 ```shell
-dataos-ctl user apikey create -n {{name of the apikey}} -d {{duration for the apikey to live}}
+dataos-ctl user apikey create -n ${{name of the apikey}} -d ${{duration for the apikey to live}}
 ```
 
 **Example Usage:**<br>

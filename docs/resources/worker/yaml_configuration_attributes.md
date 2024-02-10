@@ -4,34 +4,34 @@
 
 ```yaml
 worker: 
-	title: {{benthos}}
+	title: ${{benthos}}
 	tags:
-		- {{tag1}}
-		- {{tag2}}
-	replicas: {{1}}
+		- ${{tag1}}
+		- ${{tag2}}
+	replicas: ${{1}}
 	autoscaling: 
-		enabled: {{enable autoscaling}}
-		minReplicas: {{1}}
-		maxReplicas: {{3}}
-		targetMemoryUtilizationPercentage: {{60}}
-		targetCPUUtilizationPercentage: {{70}}
-	stack: {{benthos}} # mandatory
+		enabled: ${{enable autoscaling}}
+		minReplicas: ${{1}}
+		maxReplicas: ${{3}}
+		targetMemoryUtilizationPercentage: ${{60}}
+		targetCPUUtilizationPercentage: ${{70}}
+	stack: ${{benthos}} # mandatory
 	logLevel: INFO
 	configs: 
-		{{alpha: beta}}
-		{{gamma: sigma}}
+		${{alpha: beta}}
+		${{gamma: sigma}}
 	envs: 
-		{{PULSAR: random}}
-		{{SSL: crazy}}
+		${{PULSAR: random}}
+		${{SSL: crazy}}
 	secrets: 
-		- {{mysecret}}
+		- ${{mysecret}}
 	dataosSecrets:
-		- name: {{random}} # mandatory
-			workspace: {{delta}} # mandatory
-			key: {{hola}}
+		- name: ${{random}} # mandatory
+			workspace: ${{delta}} # mandatory
+			key: ${{hola}}
 			keys: 
-				- {{list}}
-				- {{abcd}}
+				- ${{list}}
+				- ${{abcd}}
 			allKeys: true/false
 			consumptionType: hola
 	dataosVolumes: 
@@ -66,7 +66,7 @@ worker:
 				- new1
 				- new2 
 	stackSpec/flare/benthos/toolbox/beacon/scanner/alpha: 
-		{{Stack-specific Attributes}}
+		${{Stack-specific Attributes}}
 ```
 
 ## Attributes configuration
@@ -449,5 +449,5 @@ topology:
 
 ```yaml
 stackSpec/flare/benthos/toolbox/beacon/scanner/alpha:
-  {{Stack-specific Attributes}}
+  ${{Stack-specific Attributes}}
 ```

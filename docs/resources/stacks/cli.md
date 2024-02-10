@@ -63,11 +63,11 @@ INFO[0000] 🔑 user apikey get...complete
 				# dataos_user_apikey_token
 ```
 
-Replace `{{dataos_user_id}}` and `{{dataos_user_apikey_token}}` with values obtained from the commands above in the Secret Manifest provided below:
+Replace `${{dataos_user_id}}` and `${{dataos_user_apikey_token}}` with values obtained from the commands above in the Secret Manifest provided below:
 
 ```yaml
 # Resource meta section
-name: {{dataos-ctl-user-apikey}} 
+name: ${{dataos-ctl-user-apikey}} 
 version: v1
 type: instance-secret
 layer: user
@@ -77,14 +77,14 @@ instance-secret:
   type: key-value
   acl: rw
   data:
-    USER_ID: {{dataos_user_id}} 
-    APIKEY: {{dataos_user_apikey_token}}
+    USER_ID: ${{dataos_user_id}} 
+    APIKEY: ${{dataos_user_apikey_token}}
 ```
 
 ### **Apply the Instance Secret manifest**
 
 ```shell
-dataos-ctl apply -f {{instance secret yaml file path}}
+dataos-ctl apply -f ${{instance secret yaml file path}}
 
 # Expected Output
 INFO[0000] 🛠 apply...                                   
@@ -171,7 +171,7 @@ workflow:
 ### **Apply the Workflow manifest**
 
 ```shell
-dataos-ctl apply -f {{workflow yaml file path}} -w {{workspace name}}
+dataos-ctl apply -f ${{workflow yaml file path}} -w ${{workspace name}}
 
 # Sample and Expected Output
 dataos-ctl apply -f workflow/volume_lifecycle.yml
@@ -184,7 +184,7 @@ INFO[0005] 🛠 apply...complete
 ### **Verify Workflow creation**
 
 ```shell
-dataos-ctl get -t workflow -w {{workspace name}}
+dataos-ctl get -t workflow -w ${{workspace name}}
 
 # Sample Output
 INFO[0000] 🔍 get...
@@ -200,7 +200,7 @@ INFO[0001] 🔍 get...complete
 Copy the name to Workspace from the output table of the [`get`](../../interfaces/cli/command_reference.md#get) command and use it as a string in the delete command.
 
 ```shell
-dataos-ctl -i "{{copy the name to workspace in the output table from get command}}" --node {{failed node name from get runtime command}} log
+dataos-ctl -i "${{copy the name to workspace in the output table from get command}}" --node ${{failed node name from get runtime command}} log
 
 # Sample
 dataos-ctl -i "dataos-ctl-volume-lifecycle-01 | v1      | workflow | public" log                                                                                             

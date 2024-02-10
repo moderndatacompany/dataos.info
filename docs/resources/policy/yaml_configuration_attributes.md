@@ -7,20 +7,20 @@ policy:
   access:
     subjects:
       tags:
-        - - {{roles:id:**}}
-        - - {{users:id:**}}
+        - - $${{roles:id:**}}
+        - - ${{users:id:**}}
     predicates:
-      - {{create}}
-      - {{read}}
-      - {{write}}
-      - {{put}}
-      - {{update}}
-      - {{delete}}
-      - {{post}}
+      - ${{create}}
+      - ${{read}}
+      - ${{write}}
+      - ${{put}}
+      - ${{update}}
+      - ${{delete}}
+      - ${{post}}
     objects:
       paths:
-        - {{dataos://icebase:spend_analysis/**}}
-    allow: {{false}}
+        - ${{dataos://icebase:spend_analysis/**}}
+    allow: ${{false}}
 ```
 
 ### **Configuration Attributes/Fields**
@@ -345,10 +345,10 @@ allow: true
 ```yaml
 policy:
   data:
-		dataset: {{sample_driver}}
-    collection: {{data_uber}}
-    depot: {{icebase}}
-    priority: {{90}}
+		dataset: ${{sample_driver}}
+    collection: ${{data_uber}}
+    depot: ${{icebase}}
+    priority: ${{90}}
     selector:
       user:
 			  match: any
@@ -358,8 +358,8 @@ policy:
 			  tags:
           - "PII.email"
           - "PII.income"
-    type: {{filter/mask}}
-		{{filter/mask}}: 
+    type: ${{filter/mask}}
+		${{filter/mask}}: 
 ```
 
 ### **Configuration Fields/Attributes**
@@ -590,10 +590,10 @@ mask:
 	operator: bucket_number 
 	bucket_number:
 	  buckets:
-			{{bucket-list}}
+			${{bucket-list}}
 ```
 
-The `{{bucket_list}}` is a placeholder for your list of bucket ranges.
+The `${{bucket_list}}` is a placeholder for your list of bucket ranges.
 
 **Example**
 
@@ -624,7 +624,7 @@ To implement the ‘bucket_date’ operator, use the following YAML configuratio
 mask:
   operator: bucket_date
   bucket_date:
-    precision: {{date-precision}} # Options: hour, day, week, month
+    precision: ${{date-precision}} # Options: hour, day, week, month
 ```
 
 **Example**
@@ -654,7 +654,7 @@ Hashing involves the use of a specific algorithm that performs the conversion fr
 mask:
   operator: hash
   hash:
-    algo: {{algorithm-name}}
+    algo: ${{algorithm-name}}
 ```
 
 **Example**
@@ -685,7 +685,7 @@ To implement the `redact` operator, the following YAML configuration can be util
 mask:
   operator: redact
 #   redact:
-#     replacement: {{replacement-string}}
+#     replacement: ${{replacement-string}}
 #    hash: 
 #   algo: sha256
 ```
@@ -715,7 +715,7 @@ To implement the `rand_pattern` operator, the following YAML configuration can b
 mask:
   operator: rand_pattern
   rand_pattern:
-    pattern: {{random-pattern}}
+    pattern: ${{random-pattern}}
 ```
 
 Here, `${random-pattern}` is a placeholder for the random pattern you wish to apply.
@@ -748,8 +748,8 @@ The `regex_replace` operator requires a `pattern` and a `replacement` field in i
 mask:
   operator: regex_replace
   regex_replace:
-    pattern: {{regex-pattern}}
-    replacement: {{replacement-pattern}}
+    pattern: ${{regex-pattern}}
+    replacement: ${{replacement-pattern}}
 ```
 
 The `pattern` field expects a regular expression pattern as its value, while the `replacement` field expects the desired replacement string.
@@ -816,9 +816,9 @@ The data visibility for end users is limited due to the filtering policy. You ca
 
 ```yaml
 filters: 
-  - column: {{store_state_code}}
-    operator: {{not_equals}}
-    value: {{TN}}
+  - column: ${{store_state_code}}
+    operator: ${{not_equals}}
+    value: ${{TN}}
 ```
 
 ##### **`column`**

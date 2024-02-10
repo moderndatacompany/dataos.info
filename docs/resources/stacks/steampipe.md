@@ -79,14 +79,14 @@ A [Service](../service.md) is a long-running process designed to handle and resp
     ```yaml
     # For Referring Secrets from a pre-created Secret Resource
       dataosSecrets: 
-        - name: {{secret resource name}}
-          workspace: {{workspace name}}
+        - name: ${{secret resource name}}
+          workspace: ${{workspace name}}
           allKeys: true
           consumptionType: envVars
     
     # For Supplying Secrets as Environment Variables
       envs:
-        STEAMPIPE_DATABASE_PASSWORD: {{steampipe database password}}
+        STEAMPIPE_DATABASE_PASSWORD: ${{steampipe database password}}
     ```
     
 - `configs`: Steampipe relies on the `.spc` file for configuration specifications. The filename varies based on the plugin, such as `csv.spc` for CSV or `snowflake.spc` for Snowflake. As a data developer, specify the file name along with the path in the value. Upon applying the YAML, the DataOS orchestrator, Poros, interpolates information from the `.spc` file and encrypts it using the base64 encryption algorithm within the YAML definition. You can verify this process by linting the YAML before applying. For additional configuration rules related to the .spc file, refer to the official Steampipe documentation and search for the specific plugin.
@@ -184,7 +184,7 @@ service:
 
 # For Supplying Secrets as Environment Variables
     envs:
-    STEAMPIPE_DATABASE_PASSWORD: "{{steampipe database password}}"
+    STEAMPIPE_DATABASE_PASSWORD: "${{steampipe database password}}"
 
     configs:
     csv.spc: "/home/iamgroot/modern_office/stack/dataos_steampipe/steampipe_csv/config/csv.spc"
@@ -199,7 +199,7 @@ service:
 Once you have created the Service manifest, [`apply`](../../interfaces/cli/command_reference.md#apply) it using the DataOS Command Line Interface (CLI) to instantiate a Service Resource instance. Execute the following command:
 
 ```shell
-dataos-ctl apply -f {{file-path}} -w {{workspace-name}}
+dataos-ctl apply -f ${{file-path}} -w ${{workspace-name}}
 ```
 
 **Verification and Status Confirmation**
@@ -207,7 +207,7 @@ dataos-ctl apply -f {{file-path}} -w {{workspace-name}}
 Validate the Service Resource instance creation by utilizing the [`get`](../../interfaces/cli/command_reference.md#get) command:
 
 ```shell
-dataos-ctl get -t service -w {{workspace-name}}
+dataos-ctl get -t service -w ${{workspace-name}}
 ```
 
 #### **Create a Depot on the hosted Database Service**
@@ -220,7 +220,7 @@ Once you have the Steampipe Service up and running, the next step involves creat
     
     ```yaml
     # Format
-    host: {{name of the steampipe service}}.{{workspace of the service}}.svc.cluster.local
+    host: ${{name of the steampipe service}}.${{workspace of the service}}.svc.cluster.local
     
     # Sample 
     host: steampipe-csv.public.svc.cluster.local
@@ -261,7 +261,7 @@ depot:
         type: key-value-properties
         data:
         username: "steampipe"
-        password: "{{steampipe depot password}}"
+        password: "${{steampipe depot password}}"
     spec:                                           # Data source specific configurations
     host: steampipe-csv.public.svc.cluster.local
     port: 9193
@@ -275,7 +275,7 @@ depot:
 To create Depot Resource instance within the DataOS environment, use the [`apply`](../../interfaces/cli/command_reference.md#apply) command as shown below:
 
 ```shell
-dataos-ctl apply -f {{depot manifest file path}}
+dataos-ctl apply -f ${{depot manifest file path}}
 ```
 
 **Verify Depot Creation**
@@ -295,7 +295,7 @@ Prior to directing queries towards a [Cluster](../cluster.md) through the Depot,
 Execute the following command on the DataOS CLI to port forward the servicePort to a locally designated listenPort:
 
 ```shell
-dataos-ctl -t service - w public -n {{service name}} tcp-stream --servicePort 9193 --listenPort {{valid localhost port number}}
+dataos-ctl -t service -w public -n ${{service name}} tcp-stream --servicePort 9193 --listenPort ${{valid localhost port number}}
 ```
 
 **Query the Database using the DataOS CLI USQL**
@@ -303,7 +303,7 @@ dataos-ctl -t service - w public -n {{service name}} tcp-stream --servicePort 91
 Utilize the DataOS `usql` command to query the Database:
 
 ```shell
-dataos-ctl usql "postgres://localhost:{{username}}@{{password}}"
+dataos-ctl usql "postgres://localhost:${{username}}@${{password}}"
 
 # Sample Command
 dataos-ctl usql "postgres://localhost:steampipe@alphabeta"
@@ -365,7 +365,7 @@ cluster:
 To create Cluster Resource instance within the DataOS environment, use the [`apply`](../../interfaces/cli/command_reference.md#apply) command as shown below:
 
 ```shell
-dataos-ctl apply -f {{cluster manifest file path}} -w {{workspace name}}
+dataos-ctl apply -f ${{cluster manifest file path}} -w ${{workspace name}}
 ```
 
 **Verification and Status Confirmation**
@@ -373,7 +373,7 @@ dataos-ctl apply -f {{cluster manifest file path}} -w {{workspace name}}
 Validate the Cluster Resource instance creation by utilizing the [`get`](../../interfaces/cli/command_reference.md#get) command:
 
 ```shell
-dataos-ctl get -t cluster -w {{workspace-name}}
+dataos-ctl get -t cluster -w ${{workspace-name}}
 ```
 
 **Query Data on Workbench**

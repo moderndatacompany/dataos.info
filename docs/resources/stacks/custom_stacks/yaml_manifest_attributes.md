@@ -7,59 +7,59 @@
 stack:
 
 # Stack meta section
-  name: {{stack name}}
-  flavor: {{stack flavor}}
-  version: {{stack version}}
-  reconciler: {{reconciler}}
+  name: ${{stack name}}
+  flavor: ${{stack flavor}}
+  version: ${{stack version}}
+  reconciler: ${{reconciler}}
 
 # Image specification section
   image:
-    registry: {{continer registry}}
-    repository: {{repository}}
-    image: {{image}}
-    tag: {{tag}}
+    registry: ${{continer registry}}
+    repository: ${{repository}}
+    image: ${{image}}
+    tag: ${{tag}}
     auth:
-      imagePullSecret: {{secret}}
+      imagePullSecret: ${{secret}}
 
 # Command and argument sections
   command:
-    - {{list of commands}}
+    - ${{list of commands}}
   arguments:
-    - {{arguments}}
+    - ${{arguments}}
 
 # Environment variables
   environmentVars:
-		{{environment variables}}
+		${{environment variables}}
 
 # Port configuration
   ports:
-    name: {{port name}}
-    servicePort: {{service port}}
-    targetPort: {{target port}}
+    name: ${{port name}}
+    servicePort: ${{service port}}
+    targetPort: ${{target port}}
 
 # Stack Spec value JSON schema
   stackSpecValueSchema:
-    jsonSchema: {{json schema}}
+    jsonSchema: ${{json schema}}
 
 # Orchestrator configuration
   workflowJobConfig:
-    configFileTemplate: {{config file template}}
-    conatinerResourceTemplate: {{container resource template}}
+    configFileTemplate: ${{config file template}}
+    conatinerResourceTemplate: ${{container resource template}}
     resourceTemplateConfig:
-      resourceTemplate: {{resource template}}
-      successCondition: {{success condition}}
-      failureCondition: {{failure condition}}
+      resourceTemplate: ${{resource template}}
+      successCondition: ${{success condition}}
+      failureCondition: ${{failure condition}}
   serviceConfig:
-    configFileTemplate: {{config file template}}
-    conatinerResourceTemplate: {{container resource template}}
+    configFileTemplate: ${{config file template}}
+    conatinerResourceTemplate: ${{container resource template}}
   workerConfig:
-    configFileTemplate: {{config file template}}
-    conatinerResourceTemplate: {{container resource template}}
-    resourceTemplate: {{resource template}}
+    configFileTemplate: ${{config file template}}
+    conatinerResourceTemplate: ${{container resource template}}
+    resourceTemplate: ${{resource template}}
 
 # Secret Projection
   secretProjection:
-    type: {{secret projection type}}
+    type: ${{secret projection type}}
 
 # DataOS Address JQ Filters
 dataOsAddressJqFilters:
@@ -364,20 +364,20 @@ environmentVars:
 
 | Name | Value |
 | --- | --- |
-| DEPOT_SERVICE_URL | https://{{dataos-context}}/ds |
-| GATEWAY_URL | https://{{dataos-context}}/gateway |
-| HEIMDALL_URL | https://{{dataos-context}}/heimdall |
-| HERA_URL | https://{{dataos-context}}/hera/api |
+| DEPOT_SERVICE_URL | https://${{dataos-context}}/ds |
+| GATEWAY_URL | https://${{dataos-context}}/gateway |
+| HEIMDALL_URL | https://${{dataos-context}}/heimdall |
+| HERA_URL | https://${{dataos-context}}/hera/api |
 | SCS_SERVICE_URL | http://stack-exec-context-sink.poros.svc.cluster.local:39100/sink |
-| METIS_URL | https://{{dataos-context}}/metis2 |
-| PULSAR_SERVICE_URL | pulsar+ssl://tcp.{{dataos-context}}:6651 |
-| MINERVA_JDBC_URL | jdbc:trino://tcp.{{dataos-context}}:7432 |
+| METIS_URL | https://${{dataos-context}}/metis2 |
+| PULSAR_SERVICE_URL | pulsar+ssl://tcp.${{dataos-context}}:6651 |
+| MINERVA_JDBC_URL | jdbc:trino://tcp.${{dataos-context}}:7432 |
 | DATAOS_NAME |  sanity-read-azure-nabeel-05 |
 | DATAOS_RESOURCE_ID | workflow:v1:sanity-read-azure-nabeel-05:public |
 | DATAOS_RUN_ID | cvi31p4sagw0 |
 | DATAOS_TYPE | workflow |
 | DATAOS_WORKSPACE | public |
-| DATAOS_FQDN | {{dataos-context}} |
+| DATAOS_FQDN | ${{dataos-context}} |
 | DATAOS_TAGS | sanity,tags |
 | DATAOS_DESCRIPTION | The purpose of this job is to verify if we are able to read different file formats from azure abfss or not. |
 | DATAOS_CONFIG_DIR | /etc/dataos/config |
@@ -385,18 +385,18 @@ environmentVars:
 | DATAOS_SECRET_DIR | /etc/dataos/secret |
 | RUNNABLE_ARTIFACT_DIR | /etc/dataos/work |
 | RUNNABLE_TYPE | workflow |
-| DATAOS_RUN_AS_APIKEY | {{dataos user apikey token}} |
-| DATAOS_RUN_AS_USER | {{user id of the user}} |
+| DATAOS_RUN_AS_APIKEY | ${{dataos user apikey token}} |
+| DATAOS_RUN_AS_USER | ${{user id of the user}} |
 | DATAOS_STAMP | -boo1 |
 | DATAOS_UID | 15d4b6bb-2aaa-45b3-8a57-2e302cff06fb |
 | HERA_SSL | false |
 | LOG_LEVEL | INFO |
 | DATAOS_LOG_LEVEL | INFO |
 | METIS_AUTH_PROVIDER | dataos-apikey |
-| MINERVA_TCP_HOST | tcp.{{dataos-context}} |
+| MINERVA_TCP_HOST | tcp.${{dataos-context}} |
 | MINERVA_TCP_PORT | 7432 |
-| SSL_KEYSTORE_PASSWORD | {{ssl keystore password}} |
-| SSL_TRUSTSTORE_PASSWORD | {{ssl truststore password}} |
+| SSL_KEYSTORE_PASSWORD | ${{ssl keystore password}} |
+| SSL_TRUSTSTORE_PASSWORD | ${{ssl truststore password}} |
 | DATAOS_IS_DRY_RUN | false |
 
 ---
