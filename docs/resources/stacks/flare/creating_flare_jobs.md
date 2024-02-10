@@ -44,7 +44,7 @@ Before proceeding to run a Flare Workflow, kindly ensure that you have the neces
 
 Use the command below to check your permission tags. Make sure that you are logged in to DataOS CLI before running the above command. 
 
-```bash
+```shell
 dataos-ctl user get
 #This is the output you will get
 INFO[0000] 😃 user get...   # we hope u keep smiling                             
@@ -72,7 +72,7 @@ To run a Flare Workflow, you need depots addressing both source and sink systems
 
 To get the list of `depots`, created by all the DataOS users, run the below command in the CLI
 
-```bash
+```shell
 dataos-ctl get -t depot -a
 ```
 
@@ -82,7 +82,7 @@ dataos-ctl get -t depot -a
     
 Output (with your job highlighted in bold)
 
-```bash
+```shell
 INFO[0000] 🔍 get...                                     
 INFO[0000] 🔍 get...complete                             
 
@@ -120,7 +120,7 @@ INFO[0000] 🔍 get...complete
 
 In case you don’t have the required depot in the list, you can create a YAML configuration file for a depot and apply it through CLI. To know more about creating a depot click on the below link 
 
-[Create Depot](../../depot.md#create-depot)
+[Create Depot](../../depot.md#how-to-create-a-depot)
 
 ### **Check the type of workload you wanna run**
 
@@ -138,7 +138,7 @@ For small and medium-sized data it's best to stick to the default configurations
 
 Excited to run the workflow for Flare Job, without further ado let’s get right into it. 
 
-### **Create YAML file**
+### **Create a YAML file**
 
 To define a workflow for the Flare job you want to run, you must provide various configuration values in the key-value pairs in the YAML file. Before creating the YAML, you need to get the UDL of the input and output depots. For this case scenario 
 
@@ -216,7 +216,7 @@ workflow: # Workflow
 
 Save the YAML and copy its path. Path could be either relative or absolute.
 
-> To know more about the various Flare Stack YAML configurations, click [here](./configurations.md)
+> To know more about the various Flare Stack YAML configurations, click [here](./configurations.md).
 >
 
 ### **Validate the YAML**
@@ -229,19 +229,19 @@ In case you encounter errors, check out the below link
 
 To use the linter command use the lint `-l` flag with the `apply` command. 
 
-```bash
+```shell
 dataos-ctl apply -f <file-path> -l
 ```
 
 Sample
 
-```yaml
+```shell
 dataos-ctl apply -f /home/tmdc/Desktop/city_flare -l
 ```
 <details>
 <summary>If there are no errors in the YAML config file, click the toggle to check the output</summary>
     
-```bash
+```shell
 INFO[0000] 🛠 apply...                                   
 INFO[0000] 🔧 applying(public) cnt-city-demo-001:v1beta1:workflow... 
 
@@ -324,17 +324,17 @@ In spite of validating the YAML, there is a chance that the Flare job will fail 
 
 Use the `apply` command to create a workflow from the given YAML file. 
 
-```bash
+```shell
 dataos-ctl apply -f <file-path>
 ```
 
-```
+```shell
 dataos-ctl apply -f /home/tmdc/Desktop/city_flare
 ```
 
 Output
 
-```bash
+```shell
 INFO[0000] 🛠 apply...                                   
 INFO[0000] 🔧 applying(public) cnt-city-demo-001:v1beta1:workflow... 
 INFO[0002] 🔧 applying(public) cnt-city-demo-001:v1beta1:workflow...created 
@@ -347,7 +347,7 @@ This is an **optional** step. By default, you can always run your Flare workflow
 
 s in `public` workspace, but if you wanna create a new workspace for some specific workflows, execute the below command.
 
-```bash
+```shell
 dataos-ctl workspace create -n <name of your workspace>
 ```
 
@@ -359,13 +359,13 @@ dataos-ctl workspace create -n <name of your workspace>
 
 Use the `get` command for the workflow information on CLI. This command will list the workflows created by you. You can check this information for all the users by adding `-a` flag to the command.
 
-```bash
+```shell
 dataos-ctl -t workflow -w public get
 ```
 
 Output
 
-```bash
+```shell
 INFO[0000] 🔍 get...                                     
 INFO[0001] 🔍 get...complete                             
 
@@ -376,13 +376,13 @@ INFO[0001] 🔍 get...complete
 
 **Created by everyone**
 
-```bash
+```shell
 dataos-ctl -t workflow -w public get -a
 ```
 
 Output
 
-```bash
+```shell
 INFO[0000] 🔍 get...                                     
 INFO[0001] 🔍 get...complete                             
 
@@ -400,13 +400,13 @@ Get the Runtime status of the workflow, using the below command
 
 Command
 
-```yaml
+```shell
 dataos-ctl get runtime -w <workspace-name> -t workflow -n <name-of-workflow>
 ```
 
 Example
 
-```bash
+```shell
 dataos-ctl get runtime -w public -t workflow -n cnt-city-demo-001
 ```
 
@@ -414,7 +414,7 @@ dataos-ctl get runtime -w public -t workflow -n cnt-city-demo-001
 
 You can pass the information as a string from the output of the `get` command as highlighted in red in the below command
 
-```bash
+```shell
 dataos-ctl -t workflow -w public get
 # the output is shown below
         NAME        | VERSION |   TYPE   | WORKSPACE | STATUS | RUNTIME |   OWNER     
@@ -424,7 +424,7 @@ dataos-ctl -t workflow -w public get
 
 Select from Name to workspace, for example `cnt-city-demo-001 | v1     | workflow | public` 
 
-```bash
+```shell
 dataos-ctl -i " cnt-city-demo-001 | v1      | workflow | public" get runtime
 ```
 
@@ -432,7 +432,7 @@ dataos-ctl -i " cnt-city-demo-001 | v1      | workflow | public" get runtime
 
 <summary>Output</summary>
 
-```bash
+```shell
 INFO[0000] 🔍 workflow...                                
 INFO[0001] 🔍 workflow...complete                        
 
@@ -465,14 +465,14 @@ INFO[0001] 🔍 workflow...complete
 
 You can see the updates for the workflow progress. 
 
-```bash
+```shell
 dataos-ctl -i " cnt-city-demo-001 | v1     | workflow | public" get runtime -r
 ```
 <details>
 
 <summary>Output</summary>
     
-```bash
+```shell
 INFO[0000] 🔍 workflow...                                
 INFO[0001] 🔍 workflow...complete                        
 
@@ -512,19 +512,19 @@ Run the same workflow again with the same specifications
 
 Check the logs using the following command. You can run the runtime command to get the names of nodes that failed
 
-```bash
+```shell
 dataos-ctl -i "<copy the name-to-workspace in the output table from get status command" --node <failed-node-name-from-get-runtime-command> log
 ```
 
 **Example**
 
-```bash
+```shell
 dataos-ctl -i " cnt-city-demo-001 | v1 | workflow | public" --node city-001-c5dq-0624114155-driver log
 ```
 <details>
 <summary>Output</summary>
     
-```bash
+```shell
 INFO[0000] 📃 log(public)...                             
 INFO[0001] 📃 log(public)...complete                     
 
@@ -624,13 +624,13 @@ Now before you rerun the workflow, you need to `delete` the previous version of 
 
 Command
 
-```bash
+```shell
 dataos-ctl -i "<name-to-workspace in the output table from get status command>" delete
 ```
 
 Example
 
-```yaml
+```shell
 dataos-ctl -i " cnt-city-demo-001 | v1 | workflow | public" delete
 # this is the output
 INFO[0000] 🗑 delete...                                  
@@ -643,13 +643,13 @@ INFO[0003] 🗑 delete...complete
 
 Command
 
-```bash
+```shell
 dataos-ctl delete -f <file-path>
 ```
 
 Example
 
-```bash
+```shell
 dataos-ctl delete -f /home/desktop/flare/connect-city/config_v2beta1.yaml 
 # this is the output
 INFO[0000] 🗑 delete...                                  
@@ -662,13 +662,13 @@ INFO[0001] 🗑 delete...complete
 
 Command
 
-```bash
+```shell
 dataos-ctl -w <workspace> -t workflow -n <workflow-name> delete
 ```
 
 Example
 
-```bash
+```shell
 dataos-ctl -w public -t workflow -n cnt-city-demo-001 delete
 # this is the output
 INFO[0000] 🗑 delete...                                  
@@ -683,20 +683,20 @@ Run the workflow again using `apply` command. Check the Runtime for its success.
 
 **Command**
 
-```bash
+```shell
 dataos-ctl -i "copy the name-to-workspace in the output table from get status command" get runtime -r
 ```
 
 **Example**
 
-```bash
+```shell
 dataos-ctl -i " cnt-city-demo-999 | v1 | workflow | public" get runtime -r
 ```
 <details>
 <summary>
 Output</summary>
     
-```bash
+```shell
 INFO[0000] 🔍 workflow...                                
 INFO[0002] 🔍 workflow...complete                        
 
@@ -758,11 +758,11 @@ workflow:
 
 You can also use the `set-metadata` Icebase command for Metadata Registration and configuring the metadata version 
 
-```yaml
+```shell
 dataos-ctl dataset -a dataos://icebase:retailsample/city set-metadata -v <latest|v2.gz.metadata.json>
 ```
 
-To know more about the Icebase approach click the [link](../../depot/icebase.md#set-metadata)
+To know more about the Icebase approach click the [link](../../depot/icebase.md#set-metadata).
 
 #### **Check Registered Dataset with Metis**
 
@@ -770,8 +770,7 @@ Check the registered dataset on the Metis UI.
 
 > You have just run your first Flare Workflow and successfully ingested a dataset within the Icebase. We have also checked it on the Datanet. Once we are done with the ingestion and transformation, we can start querying the data using the Workbench and build analytics Dashboard.
 
-**But wait! The work doesn’t end here**
-> 
+But wait! The work doesn’t end here
 
 **Delete the Workflow**
 
@@ -779,13 +778,13 @@ It’s always good to clean your desk, after getting the work done. You should d
 
 First, list the workflows.
 
-```yaml
+```shell
 dataos-ctl -t workflow -w public get
 ```
 
 Output
 
-```yaml
+```shell
 INFO[0000] 🔍 get...                                     
 INFO[0001] 🔍 get...complete                             
 
@@ -797,13 +796,13 @@ INFO[0001] 🔍 get...complete
 
 And then delete using the below command
 
-```yaml
+```shell
 dataos-ctl -i "cnt-city-demo-999     | v1 | workflow | public " delete
 ```
 
 Output
 
-```yaml
+```shell
 INFO[0000] 🗑 delete...                                  
 INFO[0001] 🗑 deleting(public) cnt-city-demo-999:v1beta1:workflow... 
 INFO[0003] 🗑 deleting(public) cnt-city-demo-999:v1beta1:workflow...deleted 
