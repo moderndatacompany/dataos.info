@@ -2,7 +2,7 @@
 
 DataOS Resources are atomic & logical units with their own life cycle. They can be composed together and also with other components to act as the building blocks of the system. Each Resource represents a higher-level abstraction which can be source controlled and managed using a version control system.
 
-DataOS Resources are categorized into two categories - Workspace-level Resources & Platform-level Resources.
+DataOS Resources are categorized into two categories - [Workspace-level Resources](./resources/types_of_dataos_resources.md#workspace-level-resources) & [Instance-level Resources](./resources/types_of_dataos_resources.md#instance-level-resources).
 
 ![DataOS Resources](./resources/dataos_resources.png)
 <center><i>DataOS Resources</i></center>
