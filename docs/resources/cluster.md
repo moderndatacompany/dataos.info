@@ -59,17 +59,17 @@ Themis and Minerva, both SQL query engines, are designed for efficient, distribu
 
 | Feature | Minerva | Themis | Remarks |
 | --- | --- | --- | --- |
-| Query Engine Type | Static | Elastic | Minerva operates with a fixed allocation of resources, while Themis dynamically allocates resources based on workload demands. |
-| SQL Dialect | TrinoSQL | SparkSQL | Different SQL dialects indicate compatibility with various data processing paradigms. |
-| Underlying Engine | Trino | Kyuubi | This aspect determines the core architecture and capabilities of each engine. |
-| Scalability | Limited | High | Themis offers superior scalability compared to Minerva, accommodating fluctuating workloads efficiently. |
-| Resource Utilization | Constant | Adaptive | Themis adjusts resource usage in real-time, unlike Minerva's consistent resource requirement. |
-| Performance in Variable Workloads | Consistent | Optimal | Themis excels in environments with variable data queries, providing enhanced performance. |
-| Data Source Compatibility | Basic | Extensive | Themis supports a wider range of data sources than Minerva, making it more versatile for diverse data environments. |
-| Security Features | Standard | Advanced | Themis integrates more sophisticated security protocols, beneficial for environments with stringent security requirements. |
-| Concurrency Handling | Moderate | High | Themis is designed to handle higher levels of concurrency, suitable for large-scale enterprise applications. |
-| Flexibility in Deployment | Fixed | Flexible | Themis offers more flexibility in deployment, adapting to various big data platforms like Hadoop, Spark, and Kubernetes. |
-| Use Case Suitability | Best for environments with predictable, consistent workloads. For example, predictable data processing needs, such as monthly financial reporting or static data analysis. | Ideal for dynamic, varying workloads and large-scale deployments. For example, dynamic environments such as e-commerce platforms, where real-time data analysis is crucial for customer behavior tracking, inventory management, and personalized recommendations. | Depending on the workload consistency and scale, the choice between Minerva and Themis can be determined. |
+| *Query Engine Type* | Static | Elastic | Minerva operates with a fixed allocation of resources, while Themis dynamically allocates resources based on workload demands. |
+| *SQL Dialect* | TrinoSQL | SparkSQL | Different SQL dialects indicate compatibility with various data processing paradigms. |
+| *Underlying Engine* | Trino | Kyuubi | This aspect determines the core architecture and capabilities of each engine. |
+| *Scalability* | Limited | High | Themis offers superior scalability compared to Minerva, accommodating fluctuating workloads efficiently. |
+| *Resource Utilization* | Constant | Adaptive | Themis adjusts resource usage in real-time, unlike Minerva's consistent resource requirement. |
+| *Performance in Variable Workloads* | Consistent | Optimal | Themis excels in environments with variable data queries, providing enhanced performance. |
+| *Data Source Compatibility* | Basic | Extensive | Themis supports a wider range of data sources than Minerva, making it more versatile for diverse data environments. |
+| *Security Features* | Standard | Advanced | Themis integrates more sophisticated security protocols, beneficial for environments with stringent security requirements. |
+| *Concurrency Handling* | Moderate | High | Themis is designed to handle higher levels of concurrency, suitable for large-scale enterprise applications. |
+| *Flexibility in Deployment* | Fixed | Flexible | Themis offers more flexibility in deployment, adapting to various big data platforms like Hadoop, Spark, and Kubernetes. |
+| *Use Case Suitability* | Best for environments with predictable, consistent workloads. For example, predictable data processing needs, such as monthly financial reporting or static data analysis. | Ideal for dynamic, varying workloads and large-scale deployments. For example, dynamic environments such as e-commerce platforms, where real-time data analysis is crucial for customer behavior tracking, inventory management, and personalized recommendations. | Depending on the workload consistency and scale, the choice between Minerva and Themis can be determined. |
 
 ## Structure of a Cluster YAML
 
@@ -95,14 +95,14 @@ To create a Cluster Resource, you need to configure the YAML file with the appro
 A Cluster is a Resource-type in DataOS. Below is the YAML configuration for the Resource Section:
 
 ```yaml
-name: {{minervac}}
+name: ${{minervac}}
 version: v1 
 type: cluster 
 tags: 
-  - {{dataos:type:cluster}}
-  - {{dataos:type:workspace-resource}}
-description: {{this is a sample cluster configuration}}
-owner: {{iamgroot}}
+  - ${{dataos:type:cluster}}
+  - ${{dataos:type:workspace-resource}}
+description: ${{this is a sample cluster configuration}}
+owner: ${{iamgroot}}
 cluster: 
 ```
 
@@ -116,20 +116,20 @@ The Cluster-specific Section contains configurations specific to the Cluster Res
 
 ```yaml
 cluster: 
-  compute: {{query-default}} 
-  runAsUser: {{minerva-cluster}} 
+  compute: ${{query-default}} 
+  runAsUser: ${{minerva-cluster}} 
   maintenance: 
-    restartCron: {{'13 1 */2 * *'}} 
+    restartCron: ${{'13 1 */2 * *'}} 
     scalingCrons: 
-    - cron: {{'5/10 * * * *'}} 
-      replicas: {{3}} 
+    - cron: ${{'5/10 * * * *'}} 
+      replicas: ${{3}} 
       resources: 
         limits: 
-          cpu: {{1000m}} 
-          memory: {{2Gi}} 
+          cpu: ${{1000m}} 
+          memory: ${{2Gi}} 
         requests: 
-          cpu: {{800m}} 
-          memory: {{1Gi}}
+          cpu: ${{800m}} 
+          memory: ${{1Gi}}
 ```
 <center><i>Cluster-specific Section Configuration</i></center>
 
@@ -164,37 +164,37 @@ The Minerva-specific Section contains configurations specific to the Minerva Clu
 minerva: 
   selector: 
     users: 
-      - {{"**"}}
+      - ${{"**"}}
     sources: 
-    - {{scanner/**}}
-    - {{flare/**}}
-  replicas: {{2}} 
+    - ${{scanner/**}}
+    - ${{flare/**}}
+  replicas: ${{2}} 
   match: '' 
-  priority: {{'10'}} 
-  runAsApiKey: {{dataos api key}} 
-  runAsUser: {{iamgroot}} 
+  priority: ${{'10'}} 
+  runAsApiKey: ${{dataos api key}} 
+  runAsUser: ${{iamgroot}} 
   resources: 
     limits: 
-      cpu: {{4000m}} 
-      memory: {{8Gi}} 
+      cpu: ${{4000m}} 
+      memory: ${{8Gi}} 
     requests: 
-      cpu: {{1200m}} 
-      memory: {{2Gi}} 
+      cpu: ${{1200m}} 
+      memory: ${{2Gi}} 
   debug: 
-    logLevel: {{INFO}} 
-    trinoLogLevel: {{ERROR}} 
+    logLevel: ${{INFO}} 
+    trinoLogLevel: ${{ERROR}} 
   depots: 
-    - address: {{dataos://icebase:default}} 
+    - address: ${{dataos://icebase:default}} 
       properties: 
-        iceberg.file-format: {{PARQUET}} 
-        iceberg.compression-codec: {{GZIP}} 
-        hive.config.resources: {{"/usr/trino/etc/catalog/core-site.xml"}} 
-    - address: {{dataos://yakdevbq:default}} 
+        iceberg.file-format: ${{PARQUET}} 
+        iceberg.compression-codec: ${{GZIP}} 
+        hive.config.resources: ${{"/usr/trino/etc/catalog/core-site.xml"}} 
+    - address: ${{dataos://yakdevbq:default}} 
   catalogs: 
-    - name: {{cache}} 
-      type: {{memory}} 
+    - name: ${{cache}} 
+      type: ${{memory}} 
       properties: 
-        memory.max-data-per-node: {{"128MB"}} 
+        memory.max-data-per-node: ${{"128MB"}} 
 
 ```
 
@@ -259,11 +259,11 @@ Specifies the requested and maximum CPU and memory limits for Pod Resources.
 themis: # Themis mapping (mandatory)
 	resources: # Pod Resources (optional)
 		requests: # Requested CPU and memory resources (optional)
-			cpu: {{1000m}} # (optional)
-			memory: {{2Gi}} # (optional)
+			cpu: ${{1000m}} # (optional)
+			memory: ${{2Gi}} # (optional)
 		limits: # Maximum limit of CPU and memory resources (optional)
-			cpu: {{2000m}} # (optional)
-			memory: {{4Gi}} # (optional)
+			cpu: ${{2000m}} # (optional)
+			memory: ${{4Gi}} # (optional)
 ```
 
 **Spark environment configuration**
@@ -274,15 +274,15 @@ Details the memory size, cores, and other configurations for Spark drivers and e
 themis: # Themis mapping (mandatory)
   spark:
     driver: # Spark driver memory and core configuration (mandatory)
-      memory: {{4096M}} # (mandatory)
-      cores: {{1}} # (mandatory)
+      memory: ${{4096M}} # (mandatory)
+      cores: ${{1}} # (mandatory)
     executor: # Spark executor memory, core, and instanceCount configuration (mandatory)
-      memory: {{4096M}} # (mandatory)
-      cores: {{1}} # (mandatory)
-      instanceCount: {{1}} # (mandatory)
-      maxInstanceCount: {{5}} # (mandatory)
+      memory: ${{4096M}} # (mandatory)
+      cores: ${{1}} # (mandatory)
+      instanceCount: ${{1}} # (mandatory)
+      maxInstanceCount: ${{5}} # (mandatory)
 		sparkConf: # Spark configurations (optional)
-			{{spark.dynamicAllocation.enabled: true}} 
+			${{spark.dynamicAllocation.enabled: true}} 
 ```
 
 The list of Spark configuration that can be configured within this section are specified in the toggle below.
@@ -309,9 +309,9 @@ Defines the Depots targeted by the Themis Cluster.
 ```yaml
 themis: # Themis mapping (mandatory)
   depots: # mandatory
-    - address: {{dataos://icebase}} # Depot UDL address (mandatory)
+    - address: ${{dataos://icebase}} # Depot UDL address (mandatory)
 			properties: # Depot properties (optional)
-				{{properties attributes}} 
+				${{properties attributes}} 
 ```
 
 **Themis Configuration**
@@ -321,8 +321,8 @@ Allows for additional key-value pair configurations specific to the Themis Clust
 ```yaml
 themis: # Themis mapping (mandatory)
   themisConf:  # Themis configuration specification (optional)
-    {{"kyuubi.frontend.thrift.binary.bind.host": "0.0.0.0"}} # (optional)
-    {{"kyuubi.frontend.thrift.binary.bind.port": "10101"}} # (optional)
+    ${{"kyuubi.frontend.thrift.binary.bind.host": "0.0.0.0"}} # (optional)
+    ${{"kyuubi.frontend.thrift.binary.bind.port": "10101"}} # (optional)
 ```
 
 The list of the available Themis Cluster configurations is provided in the toggle below.
@@ -352,7 +352,7 @@ Configures the Themis Cluster for various environments through key-value pair en
 ```yaml
 themis: # Themis mapping (mandatory)
 	envs: # Environment variables (optional)
-		{{key-value pairs of environment variables}}
+		${{key-value pairs of environment variables}}
 ```
 
 <details><summary>Sample Themis Cluster manifest</summary>
@@ -397,7 +397,7 @@ cluster:
 To create a Cluster Resource, you need to use the apply command on the CLI. The apply command for Cluster is given below:
 
 ```shell
-dataos-ctl apply -f {{cluster-yaml-file-path}} -w {{workspace name}}
+dataos-ctl apply -f ${{cluster-yaml-file-path}} -w ${{workspace name}}
 # Sample
 dataos-ctl apply -f dataproduct/themis-cluster.yaml -w curriculum
 ```
@@ -409,7 +409,7 @@ To ensure that your Cluster has been successfully created, you can verify it in 
 Check the name of the newly created Cluster in the list of clusters created by you in a particular Workspace:
 
 ```bash
-dataos-ctl get -t cluster - w {{workspace name}}
+dataos-ctl get -t cluster - w ${{workspace name}}
 # Sample
 dataos-ctl get -t cluster -w curriculum
 ```
@@ -417,7 +417,7 @@ dataos-ctl get -t cluster -w curriculum
 Alternatively, retrieve the list of all Workers created in the Workspace by appending `-a` flag:
 
 ```bash
-dataos-ctl get -t cluster -w {{workspace name}} -a
+dataos-ctl get -t cluster -w ${{workspace name}} -a
 # Sample
 dataos-ctl get -t cluster -w curriculum
 ```

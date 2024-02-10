@@ -10,7 +10,7 @@ service:
 	# ... 
   stack: beacon+rest 
 	envs:
-    PGRST_OPENAPI_SERVER_PROXY_URI: https://{{dataos-context}}/{{path}}
+    PGRST_OPENAPI_SERVER_PROXY_URI: https://${{dataos-context}}/${{path}}
 
 # Beacon Stack-specific Section
   beacon:
@@ -37,8 +37,8 @@ While creating a Beacon Service with a `beacon+rest` stack, you need to specify 
 
 ```yaml
 envs:
-  PGRST_OPENAPI_SERVER_PROXY_URI: https://{{dataos-context}}/{{database-path}}
-# Replace the {{dataos-context}} and {{database-path}} with your DataOS Full Context Name and Postgres Datbase path respectively
+  PGRST_OPENAPI_SERVER_PROXY_URI: https://${{dataos-context}}/${{database-path}}
+# Replace the ${{dataos-context}} and ${{database-path}} with your DataOS Full Context Name and Postgres Datbase path respectively
 ```
 
 ## **Beacon Stack-specific Section**

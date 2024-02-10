@@ -393,8 +393,8 @@ themis:
 			memory: 400m		 # Driver memory (mandatory)
 			cpu: 1Gi 			 # Driver CPU (mandatory)
 		executor: 				 # Spark executor configuration (mandatory)
-			memory: {{400m}} 	 # Driver memory (mandatory)
-			cpu: {{1Gi}} 		 # Driver CPU (mandatory)
+			memory: ${{400m}} 	 # Driver memory (mandatory)
+			cpu: ${{1Gi}} 		 # Driver CPU (mandatory)
 			instanceCount: 2	 # Executor Instance count (mandatory)
 			maxInstanceCount: 4  # Maximum executor Instance count (mandatory)
 		sparkConf: 				 # Spark environment configuration (optional)
@@ -458,7 +458,7 @@ minerva:
 After creating the YAML configuration file for the Lakehouse Resource, it's time to apply it to instantiate the Resource-instance in the DataOS environment. To apply the Lakehouse YAML file, utilize the [`apply`](../interfaces/cli/command_reference.md#apply) command.
 
 ```shell
-dataos-ctl apply -f {{yaml config file path}} - w {{workspace name}}
+dataos-ctl apply -f ${{yaml config file path}} - w ${{workspace name}}
 # Sample
 dataos-ctl apply -f dataproducts/new-lakehouse.yaml -w curriculum
 ```
@@ -468,7 +468,7 @@ dataos-ctl apply -f dataproducts/new-lakehouse.yaml -w curriculum
     
 ```yaml
 version: v1alpha
-name: {{s3-depot-name}}
+name: ${{s3-depot-name}}
 layer: user
 type: lakehouse
 tags:
@@ -482,21 +482,21 @@ lakehouse:
     storage:
       type: s3
       s3:
-        bucket: {{s3 bucket name}}        # "tmdc-dataos-testing"
-        relativePath: {{relative path}}
+        bucket: ${{s3 bucket name}}        # "tmdc-dataos-testing"
+        relativePath: ${{relative path}}
       secrets:
-        - name: {{s3-depot-name}}-rw
+        - name: ${{s3-depot-name}}-rw
           keys:
-            - {{s3-depot-name}}-rw
+            - ${{s3-depot-name}}-rw
           allkeys: true    
-        - name: {{s3-depot-name}}-r
+        - name: ${{s3-depot-name}}-r
           keys:
-            - {{s3-depot-name}}-r
+            - ${{s3-depot-name}}-r
           allkeys: true 
     metastore:
       type: "iceberg-rest-catalog"
     queryEngine:
-      type: {{query engine}}
+      type: ${{query engine}}
 ```
 </details>
 
@@ -507,7 +507,7 @@ To ensure that your Lakehouse has been successfully created, you can verify it i
 Check the name of the newly created Lakehouse in the list of lakehouses created by you in a particular Workspace:
 
 ```shell
-dataos-ctl get -t lakehouse - w {{workspace name}}
+dataos-ctl get -t lakehouse - w ${{workspace name}}
 # Sample
 dataos-ctl get -t lakehouse -w curriculum
 ```
@@ -515,7 +515,7 @@ dataos-ctl get -t lakehouse -w curriculum
 Alternatively, retrieve the list of all Lakehouses created in the Workspace by appending `-a` flag:
 
 ```shell
-dataos-ctl get -t lakehouse -w {{workspace name}} -a
+dataos-ctl get -t lakehouse -w ${{workspace name}} -a
 # Sample
 dataos-ctl get -t lakehouse -w curriculum
 ```
@@ -531,7 +531,7 @@ Use the [`delete`](../interfaces/cli/command_reference.md#delete) command to rem
 Command
 
 ```shell
-dataos-ctl delete -i "{{name to workspace in the output table from get status command}}"
+dataos-ctl delete -i "${{name to workspace in the output table from get status command}}"
 ```
 
 Example:
@@ -554,7 +554,7 @@ INFO[0003] 🗑 delete...complete
 Command:
 
 ```shell
-dataos-ctl delete -f {{file-path}}
+dataos-ctl delete -f ${{file-path}}
 ```
 
 Example:
@@ -577,7 +577,7 @@ INFO[0001] 🗑 delete...complete
 Command:
 
 ```shell
-dataos-ctl delete -w {{workspace}} -t lakehouse -n {{lakehouse name}}
+dataos-ctl delete -w ${{workspace}} -t lakehouse -n ${{lakehouse name}}
 ```
 
 Example:
@@ -607,8 +607,8 @@ Here is a reference to the various commands related to managing Lakehouses in Da
 - **Applying a Lakehouse:** Use the following command to apply a Lakehouse using a YAML configuration file:
     
     ```shell 
-    dataos-ctl apply -f {{yaml config file path}} -w {{workspace}}
-    dataos-ctl resource apply -f {{yaml config file path}} -w {{workspace}}
+    dataos-ctl apply -f ${{yaml config file path}} -w ${{workspace}}
+    dataos-ctl resource apply -f ${{yaml config file path}} -w ${{workspace}}
     # Sample
     dataos-ctl resource apply -f lakehouse/lakehouse.yaml -w curriculum
     dataos-ctl resource apply -f lakehouse/lakehouse.yaml -w curriculum
@@ -617,7 +617,7 @@ Here is a reference to the various commands related to managing Lakehouses in Da
 - **Get Lakehouse Status:** To retrieve the status of a specific Lakehouse, use the following command:
     
     ```shell
-    dataos-ctl get -t lakehouse -w {{workspace name}}
+    dataos-ctl get -t lakehouse -w ${{workspace name}}
     # Sample
     dataos-ctl get -t lakehouse -w curriculum
     ```
@@ -625,7 +625,7 @@ Here is a reference to the various commands related to managing Lakehouses in Da
 - **Get Status of all Workers within a Workspace:** To get the status of all Workers within the current context, use this command:
     
     ```shell
-    dataos-ctl get -t lakehouse -w {{workspace name}} -a
+    dataos-ctl get -t lakehouse -w ${{workspace name}} -a
     # Sample
     dataos-ctl get -t lakehouse -w curriculum -a
     ```
@@ -633,7 +633,7 @@ Here is a reference to the various commands related to managing Lakehouses in Da
 - **Generate Lakehouse JSON Schema:** To generate the JSON schema for a Lakehouse with a specific version (e.g., v1alpha), use the following command:
     
     ```shell
-    dataos-ctl develop schema generate -t lakehouse -v {{version}}
+    dataos-ctl develop schema generate -t lakehouse -v ${{version}}
     # Sample
     dataos-ctl develop schema generate -t lakehouse -v v1alpha
     ```
@@ -641,7 +641,7 @@ Here is a reference to the various commands related to managing Lakehouses in Da
 - **Get Lakehouse JSON Resource Schema:** To obtain the JSON resource schema for a Lakehouse with a specific version (e.g., v1alpha), use the following command:
     
     ```shell
-    dataos-ctl develop get resource -t lakehouse -v {{version}}
+    dataos-ctl develop get resource -t lakehouse -v ${{version}}
     # Sample
     dataos-ctl develop get resource -t lakehouse -v v1alpha
     ```
@@ -649,7 +649,7 @@ Here is a reference to the various commands related to managing Lakehouses in Da
 - **Delete Workers:** To delete a specific lakehouse you can use the below command
     
     ```shell
-    dataos-ctl delete -t lakehouse -w {{workspace name}} -n {{name of lakehouse}}
+    dataos-ctl delete -t lakehouse -w ${{workspace name}} -n ${{name of lakehouse}}
     # Sample
     dataos-ctl delete -t lakehouse -w curriculum -n benthos3-lakehouse
     ```

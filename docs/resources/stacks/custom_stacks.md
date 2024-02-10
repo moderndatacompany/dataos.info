@@ -53,16 +53,16 @@ The ensuing sections delineate the various sections of a Stack YAML.
 In DataOS, a Stack is categorized as a [Resource-type](../types_of_dataos_resources.md). The Resource meta section within the YAML manifest encompasses attributes universally applicable to all Resource-types. The provided YAML codeblock elucidates the requisite attributes for this section:
 
 ```yaml
-name: {{my-stack}}
+name: ${{my-stack}}
 version: v1alpha 
 type: stack
 tags: 
-  - {{dataos:type:resource}}
-  - {{dataos:resource:stack}}
-description: {{This is a sample stack yaml manifest}}
-owner: {{iamgroot}}
+  - ${{dataos:type:resource}}
+  - ${{dataos:resource:stack}}
+description: ${{This is a sample stack yaml manifest}}
+owner: ${{iamgroot}}
 stack: # Stack-specific Section
-  {{Attributes of Stack-specific section}}
+  ${{Attributes of Stack-specific section}}
 ```
 
 For detailed information on the attributes within the Resource meta section, please refer to [Attributes of Resource Section](../resource_attributes.md).
@@ -176,7 +176,7 @@ The secretProjection type specifies the projection of secrets, such as depot and
 
 ```yaml
 secretProjection:
-	type: {{secret projection type}}
+	type: ${{secret projection type}}
 ```
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
@@ -302,12 +302,12 @@ Workflow Configuration
 
 ```yaml
 workflowJobConfig:
-	configFileTemplate: {{config file template}}
-	conatinerResourceTemplate: {{container resource template}}
+	configFileTemplate: ${{config file template}}
+	conatinerResourceTemplate: ${{container resource template}}
 	resourceTemplateConfig:
-		resourceTemplate: {{resource template}}
-		successCondition: {{success condition}}
-		failureCondition: {{failure condition}}
+		resourceTemplate: ${{resource template}}
+		successCondition: ${{success condition}}
+		failureCondition: ${{failure condition}}
 ```
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
@@ -326,9 +326,9 @@ Worker Configuration
 
 ```yaml
 workerConfig:
-	configFileTemplate: {{config file template}}
-	conatinerResourceTemplate: {{container resource template}}
-	resourceTemplate: {{resource template}}
+	configFileTemplate: ${{config file template}}
+	conatinerResourceTemplate: ${{container resource template}}
+	resourceTemplate: ${{resource template}}
 ```
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
@@ -344,8 +344,8 @@ Service Configuration
 
 ```yaml
 serviceConfig:
-	configFileTemplate: {{config file template}}
-	conatinerResourceTemplate: {{container resource template}}
+	configFileTemplate: ${{config file template}}
+	conatinerResourceTemplate: ${{container resource template}}
 ```
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
@@ -366,7 +366,7 @@ To take a look at a case scenario, refer to the link: [Stack orchestrated by a S
 Once the Stack YAML file is prepared, the [`apply`](../../interfaces/cli/command_reference.md#apply) command can be utilized to create a Stack Resource within the DataOS environment.
 
 ```shell
-dataos-ctl apply -f {{path/file-name}}
+dataos-ctl apply -f ${{path/file-name}}
 ```
 
 Upon successful creation of a Stack Resource, [CRUD operations](../../resources.md#crud-operations-on-dataos-resources) can be performed on top of it, and it can be orchestrated by Resources such as [Workflow](../workflow.md), [Worker](../worker.md), or [Service](../service.md), by specifying the Stack attribute within their respective YAMLs.
