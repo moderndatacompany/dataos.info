@@ -1,4 +1,4 @@
-# Attributes of Resource Section
+# Attributes of Resource Meta Section
 
 Following attributes are declared for every instance of a Resource that is deployed in a DataOS context. Some of these attributes/fields need to mandatorily declared, while others are optional.
 
@@ -16,13 +16,13 @@ owner: {{iamgroot}}
 layer: {{user}}
 <resource-type>:
 ```
-<center><i>Resource section YAML configuration attributes</i></center>
+<center><i>Resource meta section YAML configuration attributes</i></center>
 
-## Configuration Attributes/Fields
+## Configuration Attributes
 
 ### **`name`**
 
-**Description:** declare a name for the Resource<br>
+**Description:** Declare a name for the Resource<br>
 
 | **Data Type**    | **Requirement** | **Default Value** | **Possible Value** |
 |------------------|-----------------|-------------------|-------------------|
@@ -38,7 +38,7 @@ name: resourcename
 
 ### **`version`**
 
-**Description:** the version of the Resource <br>
+**Description:** The version of the Resource <br>
 
 | **Data Type**    | **Requirement** | **Default Value** | **Possible Value** |
 |------------------|-----------------|-------------------|-------------------|
@@ -52,7 +52,7 @@ version: v1
 ---
 ### **`type`**
 
-**Description:** provide the value for the Resource-type <br>
+**Description:** Provide the value for the Resource-type <br>
 
 | **Data Type**    | **Requirement** | **Default Value** | **Possible Value** |
 |------------------|-----------------|-------------------|-------------------|
@@ -65,7 +65,7 @@ type: depot
 ---
 ### **`tags`**
 
-**Description:** assign tags to the Resource-instance <br>
+**Description:** Assign tags to the Resource-instance <br>
 
 | **Data Type**    | **Requirement** | **Default Value** | **Possible Value** |
 |------------------|-----------------|-------------------|-------------------|
@@ -82,7 +82,7 @@ tags:
 
 ### **`description`**
 
-**Description:** assign description to Resource<br>
+**Description:** Assign description to Resource<br>
 
 | **Data Type**    | **Requirement** | **Default Value** | **Possible Value** |
 |------------------|-----------------|-------------------|-------------------|
@@ -100,7 +100,7 @@ description: "This is a sample description of a Resource"
 
 ### **`owner`**
 
-**Description:** identification of the user <br>
+**Description:** Identification of the user <br>
 
 | **Data Type**    | **Requirement** | **Default Value** | **Possible Value** |
 |------------------|-----------------|-------------------|-------------------|
@@ -116,7 +116,7 @@ owner: iamgroot
 
 ### **`layer`**
 
-**Description:** declare the name of the layer in which Resource is going to be deployed <br>
+**Description:** Declare the name of the layer in which Resource is going to be deployed <br>
 
 | **Data Type**    | **Requirement** | **Default Value** | **Possible Value** |
 |------------------|-----------------|-------------------|-------------------|
@@ -132,7 +132,7 @@ layer: user
 
 ### **`<resource-type>`**
 
-**Description:** specifies attributes specific to a \<resource-type\> <br>
+**Description:** Specifies attributes specific to a \<resource-type\> <br>
 
 | **Data Type**    | **Requirement** | **Default Value** | **Possible Value** |
 |------------------|-----------------|-------------------|-------------------|
