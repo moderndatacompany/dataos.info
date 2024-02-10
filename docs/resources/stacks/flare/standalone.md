@@ -3,9 +3,9 @@
 > While developing a new Flare data processing workflow, it's a good idea to confirm that your transformations will work in production. Flare Standalone is the easiest way to achieve this.
 > 
 
-<aside>
+<aside class="callout">
 
-🗣️ Across the documentation, wherever we mention Standalone, we imply the latest version, **Standalone 2.0**. For the older version, specifically, **Standalone 1.0** is mentioned.
+🗣️ Across the documentation, wherever we mention Standalone, we imply the latest version, <b>Standalone 2.0</b>. For the older version, specifically, <b>Standalone 1.0</b> is mentioned.
 
 </aside>
 
@@ -39,7 +39,7 @@ Let's take a scenario where you write a Flare Workflow YAML to write terabytes o
 
 ### **Anatomy of the Standalone command**
 
-```bash
+```shell
 dataos-ctl develop start -s flare -i rubiklabs/flare3:6.0.93 -f sample/standalone-config/config.yaml -d standalone -P 14042
 ```
 

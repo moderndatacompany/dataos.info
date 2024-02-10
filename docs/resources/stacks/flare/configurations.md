@@ -342,7 +342,7 @@ stackSpec:
 
 ## **`job`**
 
-**Description:** Job can be defined as the entities that make up the [Workflow](../../worker.md). The `job` section includes various configurations related to job execution, such as logging, explanation mode, and subsections for specific job components.
+**Description:** Job can be defined as the entities that make up the [Workflow](../../workflow.md). The `job` section includes various configurations related to job execution, such as logging, explanation mode, and subsections for specific job components.
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
@@ -1565,7 +1565,7 @@ stackSpec:
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| list of mappings | optional | none | any custom or valid Flare functions provided in the document: [Flare Functions](./functions.md) |
+| list of mappings | optional | none | any custom or valid Flare functions provided in the document: [Flare Functions](./functions.md). |
 
 **Example Usage:**
 
@@ -1589,7 +1589,7 @@ stackSpec:
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| string | mandatory | none | any valid function name from amongst the following [Flare Functions](./functions.md)|
+| string | mandatory | none | any valid function name from amongst the following [Flare Functions](./functions.md).|
 
 **Example Usage:**
 
@@ -2058,7 +2058,7 @@ stackSpec:
 stackSpec:
   job:
     actions:
-      - 
+      # ... attribute specific to Flare Action
 ```
 
 
@@ -2161,7 +2161,7 @@ The `delete_from_dataset` can be used in multiple configurations, which have bee
 
 <aside class="callout">
 
-🗣️ When using a GCS-based environment, use the dataset address with the `acl=rw` query parameter (e.g. `dataos://icebase:actions/random_users_data?acl=rw`). This is because GCS generates two credentials with different permissions: one with only read access and one with both read and write access. Flare actions need write access to create files, so if you don't specify `acl=rw`, Flare will default to read-only access and prevent you from updating or creating files.
+🗣️ When using a GCS-based environment, use the dataset address with the <code>acl=rw</code> query parameter (e.g. <code>dataos://icebase:actions/random_users_data?acl=rw</code>). This is because GCS generates two credentials with different permissions: one with only read access and one with both read and write access. Flare actions need write access to create files, so if you don't specify <code>acl=rw</code>, Flare will default to read-only access and prevent you from updating or creating files.
 
 ```yaml
 inputs:
