@@ -7,7 +7,7 @@ This is a step-by-step guide to running Flare Standalone using DataOS Command Li
 
 Let's take a case scenario where we read data from the environment Pulsar and write it to the Local File System. After writing the data to the Local File System, we also want to run some Scala commands to verify whether our data is written and has the appropriate schema. 
 
-For other inputs and outputs data sources, you can check out the [Standalone YAML configuration section.](./standalone_yaml_configurations.md)
+For other inputs and outputs data sources, you can check out the [Standalone YAML configuration section.](../configuration_templates.md)
 
 But before diving right into the programming stuff, let's ensure you have the required prerequisites.
 
@@ -17,7 +17,7 @@ But before diving right into the programming stuff, let's ensure you have the re
 
 DataOS CLI should be installed on your system with the latest version. To get the details of the CLI version, run the command after logging into DataOS.
 
-```bash
+```shell
 dataos-ctl version
 ```
 
@@ -32,7 +32,7 @@ If CLI is not updated to the latest version, navigate to the below page.
 
 Since we would be dealing with environment Pulsar format, you will need the `pulsar-admin` tag to read the data. To check the available tags that you have, execute the command:
 
-```bash
+```shell
 dataos-ctl user get
 # Output
 			NAME     |     ID      |  TYPE  |        EMAIL         |              TAGS               
@@ -48,7 +48,7 @@ dataos-ctl user get
 
 ```
 
-<aside>
+<aside class="callout">
 🗣️ If you don't have the `pulsar-admin` tag, contact the system administrator.
 </aside>
 
@@ -147,11 +147,11 @@ You can store the data and the `config.yaml` anywhere you want. You have to go a
 
 - You also require the DataOS `apikey`, which you can get by executing the below command.
 
-```bash
+```shell
 dataos-ctl user apikey get
 ```
 
-       If you don't have it, you can also create a new one.
+  If you don't have it, you can also create a new one.
 
 - The last and final aspect that's missing is the `serviceUrl` and `adminUrl`, for which you require two things 
     1. `<dataos-context>` - The system administrator provides this in your organization
@@ -164,22 +164,23 @@ dataos-ctl user apikey get
 
 - You can use the below command to run the `config.yaml`.
 
-```bash
+```shell
 dataos-ctl develop start -s <flare-version> -i <custom-image> -f <path-of-config.yaml> -d <path-of-data-directory> -P <port-number>
 ```
 
 Example
 
-```bash
+```shell
 dataos-ctl develop start -s flare:3.0 -i **rubiklabs/flare3:6.0.93** -f standalone/config.yaml -d standalone -P 14042 # For Apple Mac M1/M2 Chip, change the image to **rubiklabs/flare3:6.0.93-xp.01**
 ```
 
 > **Note:** The `config.yaml` and data directory path could be either absolute or relative. The port number by default is set at 14040, but if you have a job already running on 14040, you can configure it to a different port, e.g., 14042.
 > 
 
-<aside>
-🗣️ **Note:** In case when you don't have the version mentioned above stack downloaded, it will download first, and then the execution will start. If you have it installed already; it will directly execute the job. 
-If you have an Apple M1/M2 Chip system, use the `rubiklabs/flare3:6.0.93-xp.01`  docker image.
+<aside class="callout">
+
+🗣️ <b>Note:</b> In case when you don't have the version mentioned above stack downloaded, it will download first, and then the execution will start. If you have it installed already; it will directly execute the job. 
+If you have an Apple M1/M2 Chip system, use the <code>rubiklabs/flare3:6.0.93-xp.01</code>  docker image.
 
 </aside>
 
@@ -191,7 +192,7 @@ To know more about the various sections of the Spark UI and what each one of the
 
 - On successful execution, the Scala command line shell will open as below:
 
-```bash
+```shell
 
 2022-12-05 05:28:10,854 INFO  [main] i.d.f.c.ProcessingContext: **run complete.
 # When you see this run complete message, then only your job has successfully executed**
@@ -221,7 +222,7 @@ After successful job execution, you can run various Spark commands in Scala inte
 
 - `tables` command will give you the list of all tables in the current directory. You should see the `finaldf` and `transactions_connect` tables listed, which are created after the given YAML is successfully run.
 
-```bash
+```shell
 scala> tables
 # Expected Output
 +---------+--------------------+-----------+
@@ -236,13 +237,13 @@ You must debug your code if you don't get the required output or find the above 
 
 - You can also run a Spark SQL query to verify the data, as follows:
 
-```bash
+```shell
 scala> spark.sql("SELECT * FROM customers_final").show(false)
 ```
 
 - You can also run a Spark SQL query to print schema to verify the data, as follows:
 
-```bash
+```shell
 scala> spark.sql("SELECT * FROM finaldf").printSchema
 # Expected Output
 root
