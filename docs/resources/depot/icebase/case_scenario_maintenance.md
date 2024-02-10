@@ -9,7 +9,7 @@ The list snapshot command is used to list all the snapshots of the dataset. This
 **Command**
 
 ```shell
-dataos-ctl dataset -a {{udl}} snapshots 
+dataos-ctl dataset -a ${{udl}} snapshots 
 ```
 
 **Example**
@@ -39,8 +39,8 @@ The Set Snapshot command helps to set a snapshot so that you can travel back. Th
 **Command**
 
 ```shell
-dataos-ctl dataset -a {{udl}} set-snapshot \
--i {{snapshot-id}}
+dataos-ctl dataset -a ${{udl}} set-snapshot \
+-i ${{snapshot-id}}
 ```
 
 **Example**
@@ -70,7 +70,7 @@ The metadata command lists all the metadata files. The command is given below.
 **Command**
 
 ```shell
-dataos-ctl dataset -a {{udl}} metadata
+dataos-ctl dataset -a ${{udl}} metadata
 ```
 
 **Example**
@@ -107,8 +107,8 @@ In order to set the metadata to the latest or some specific version, use the bel
 **Command**
 
 ```shell
-dataos-ctl dataset -a {{udl}} set-metadata \
--v {{latest|version.gz.metadata.json}}
+dataos-ctl dataset -a ${{udl}} set-metadata \
+-v ${{latest|version.gz.metadata.json}}
 ```
 **Example**
 
@@ -138,9 +138,9 @@ INFO[0001] 📂 set metadata...completed
 To set nullability in a specific column. The command is as follows:
 
 ```shell
-dataos-ctl dataset -a {{udl}} set-nullable \
--n {{column-name}} \
--b {{true/false}}
+dataos-ctl dataset -a ${{udl}} set-nullable \
+-n ${{column-name}} \
+-b ${{true/false}}
 ```
 
 Let’s say we wanna set a column random as nullable. The command is given below:

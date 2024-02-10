@@ -81,10 +81,10 @@ To do this, use three dashes `---` to separate the two entities. For example, we
       type: key-value-properties
       acl: rw
       data:
-        accesskeyid: {{access key id}}
-        secretkey: {{secret key}}
-        awsaccesskeyid: {{aws access key id}}
-        awssecretaccesskey: {{aws secret access key}}
+        accesskeyid: ${{access key id}}
+        secretkey: ${{secret key}}
+        awsaccesskeyid: ${{aws access key id}}
+        awssecretaccesskey: ${{aws secret access key}}
     ```
     
     The same [Secret](./secret.md) can be created by using applying this config file:
@@ -97,10 +97,10 @@ To do this, use three dashes `---` to separate the two entities. For example, we
       acl: rw
       type: key-value-properties
       data:
-        accesskeyid: {{access key id}}
-        secretkey: {{secret key}}
-        awsaccesskeyid: {{aws access key id}}
-        awssecretaccesskey: {{aws secret access key}} 
+        accesskeyid: ${{access key id}}
+        secretkey: ${{secret key}}
+        awsaccesskeyid: ${{aws access key id}}
+        awssecretaccesskey: ${{aws secret access key}} 
     ```
     
     Note that the order of objects is different in the two cases. Yet, both the config files are parsed in exactly the same manner, and will create the same Secret.
@@ -121,14 +121,14 @@ To do this, use three dashes `---` to separate the two entities. For example, we
           - name:
             title:
             spec:
-              stack: {{stack1-version}}
+              stack: ${{stack1-version}}
               compute:
     
           # Job 2
           - name:
             title:
             spec:
-              stack: {{stack2-version}}
+              stack: ${{stack2-version}}
               compute:
             
             dependencies:

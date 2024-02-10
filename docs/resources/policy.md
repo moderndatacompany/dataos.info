@@ -71,15 +71,15 @@ In DataOS, both access and data policies are configured via the singular Policy 
 To create a Policy YAML in DataOS, the initial step involves configuring the [Resource Section](./resource_attributes.md) in a YAML file. This section defines various properties of the Policy Resource. The following is an example YAML configuration for the Resource Section:
 
 ```yaml
-name: {{my-policy}}
+name: ${{my-policy}}
 version: v1 
 type: policy 
 tags: 
-  - {{dataos:type:resource}}
-  - {{dataos:type:cluster-resource}}
-description: {{This is a sample policy YAML configuration}} 
-owner: {{iamgroot}}
-layer: {{user}}
+  - ${{dataos:type:resource}}
+  - ${{dataos:type:cluster-resource}}
+description: ${{This is a sample policy YAML configuration}} 
+owner: ${{iamgroot}}
+layer: ${{user}}
 ```
 <center><i>Resource section YAML configuration</i></center>
 
@@ -103,14 +103,14 @@ policy:
   access:
     subjects:
       tags:
-        - {{roles:id:user}}
-        - {{roles:id:pii-reader}}
+        - ${{roles:id:user}}
+        - ${{roles:id:pii-reader}}
     predicates:
-      - {{read}}
+      - ${{read}}
     objects:
       <tags/paths>:
-        - {{tag/path}}
-    allow: {{true}}
+        - ${{tag/path}}
+    allow: ${{true}}
 ```
 <center><i>Policy-specific Section YAML configuration (Access Policy Syntax)</i></center>
 
@@ -140,19 +140,19 @@ A data policy is defined using the following YAML syntax:
 ```yaml
 policy:
   data:
-    dataset: {{dataset name}}
-    collection: {{collection name}}
-    depot: {{depot name}}
+    dataset: ${{dataset name}}
+    collection: ${{collection name}}
+    depot: ${{depot name}}
     priority: 90
     selector:
       user:
       tags:
-        - {{roles:id:user}}
+        - ${{roles:id:user}}
       column:
         {}
-    type: {{filter/mask}}
+    type: ${{filter/mask}}
     <filter/mask>:
-      {{masking or filtering specific attributes/fields}}
+      ${{masking or filtering specific attributes/fields}}
 ```
 <center><i>Policy-specific Section YAML configuration (Data Policy Syntax)</i></center>
 
@@ -189,7 +189,7 @@ For detailed information on configuring the YAML file for a Data Policy, refer t
 After creating the YAML configuration file for the Policy Resource, it's time to apply it to instantiate the resource in the DataOS environment. To apply the Policy YAML file, utilize the [`apply`](../interfaces/cli/command_reference.md#apply) command.
 
 ```shell
-dataos-ctl apply -f {{yaml-file-path}}
+dataos-ctl apply -f ${{yaml-file-path}}
 ```
 
 ## Policy Implementation Mechanism

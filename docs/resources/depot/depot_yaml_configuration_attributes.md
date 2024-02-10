@@ -4,25 +4,24 @@
 
 ```yaml
 depot:
-  type: {{S3}}                                          
-  description: {{description}}
-  external: {{true}}
-  source: {{metadata}}
-  compute: {{runnable-default}}
+  type: ${{S3}}                                          
+  description: ${{description}}
+  external: ${{true}}
+  source: ${{metadata}}
+  compute: ${{runnable-default}}
   connectionSecret:                                
-    name: {{secret-name}}
-    - acl: {{rw}}
+    - acl: ${{rw}}
       type: key-value-properties
       data:
-        {{data-source-specific-connection-secrets}}
+        ${{data-source-specific-connection-secrets}}
   spec:
-    {{data-source-specifications}}
+    ${{data-source-specifications}}
 ```
 <center><i> Structure of Depot YAML configuration </i></center>
 
-## Attributes
+## Attributes Configuration
 
-### **`depot`**
+## **`depot`**
 <b>Description:</b> specifies the configuration for the Depot section <br>
 
 | **Data Type**    | **Requirement** | **Default Value** | **Possible Value** |
@@ -111,7 +110,7 @@ connectionSecret:
   {} 
 ```
 
-### **`acl`**
+#### **`acl`**
 <b>Description:</b> Declares the access policy for the depot. Multiple connections with different access levels can be created for the same depot. For example, read and write permissions for a specific transformation and read-only permission for another operation using the same depot. <br>
 
 | **Data Type**    | **Requirement** | **Default Value** | **Possible Value** |
@@ -124,7 +123,7 @@ connectionSecret:
 acl: rw
 ```
 
-### **`type`**
+#### **`type`**
 <b>Description:</b> Specifies the type of Secret<br>
 
 | **Data Type**    | **Requirement** | **Default Value** | **Possible Value** |
@@ -137,7 +136,7 @@ acl: rw
 type: key-value-properties 
 ```
 
-### **`data`**
+#### **`data`**
 <b>Description:</b> Provides the credentials and additional information needed to connect with the data source, such as access key ID, secret key ID, username, and passwords. <br>
 
 | **Data Type**    | **Requirement** | **Default Value** | **Possible Value** |
@@ -152,7 +151,7 @@ data:
   email: iamgroot@tmdc.io
 ```
 
-### **`files`**
+#### **`files`**
 <b>Description:</b> Allows storing sensitive information in a separate JSON file. Specify the absolute path to the JSON file containing the credentials.<br>
 
 | **Data Type**    | **Requirement** | **Default Value** | **Possible Value** |
@@ -164,20 +163,6 @@ data:
 ```yaml
 files:
   json_keyfile: secrets/gcp-demo-sa.json
-```
-
-### **`name`**
-<b>Description:</b> Specifies the name of the Secret resource containing the connection credentials.
-<br>
-
-| **Data Type**    | **Requirement** | **Default Value** | **Possible Value** |
-|-----------|-------------|---------------|---------------------|
-| string    | optional    | none          | valid Secret Resource name |
-
-<b>Example Usage:</b>
-
-```yaml
-name: "mysql-secret"
 ```
 
 ### **`spec`**

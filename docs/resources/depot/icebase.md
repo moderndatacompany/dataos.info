@@ -26,12 +26,12 @@ To view metadata changes in the Workbench, executing the `set-metadata` command 
 The execution of the `set-metadata` command to update to the latest version can be performed as follows:
 
 ```shell
-dataos-ctl dataset -a {{udl}} set-metadata -v {{set-metadata}}
+dataos-ctl dataset -a ${{udl}} set-metadata -v ${{set-metadata}}
 
 # '-a' flag denotes Dataset Address
-# {{udl}} is a placeholder for dataset UDL - dataos://icebase:retail/city is one such sample UDL
+# ${{udl}} is a placeholder for dataset UDL - dataos://icebase:retail/city is one such sample UDL
 # '-v' flag denotes the Set Metadata of the Dataset
-# {{set-metadata}} is a placeholder for the current set metadata version of the dataset - latest OR v1.gz.metadata.json are sample set metadata versions.
+# ${{set-metadata}} is a placeholder for the current set metadata version of the dataset - latest OR v1.gz.metadata.json are sample set metadata versions.
 ```
 
 ---
@@ -43,12 +43,12 @@ dataos-ctl dataset -a {{udl}} set-metadata -v {{set-metadata}}
 The `create` command is utilized to create a dataset using the specified address and schema definition found within a YAML file. 
 
 ```shell
-dataos-ctl dataset -a {{udl}} create -f {{manifest-file-path}}
+dataos-ctl dataset -a ${{udl}} create -f ${{manifest-file-path}}
 
 # '-a' flag denotes the Dataset Address
-# {{udl}} is a placeholder for dataset UDL - dataos://icebase:retail/city is one such sample UDL
+# ${{udl}} is a placeholder for dataset UDL - dataos://icebase:retail/city is one such sample UDL
 # '-f' flag denotes a file
-# {{manifest-file-path}} is a placeholder for Manifest File Location - home/new.yaml is one such sample Manifest File Location
+# ${{manifest-file-path}} is a placeholder for Manifest File Location - home/new.yaml is one such sample Manifest File Location
 ```
 
 When creating a dataset, the path of the payload or schema in the YAML file must be specified (mandatory), and the schema type must be in `avro` format. A sample manifest YAML file for Iceberg format dataset creation is provided for reference below. 
@@ -79,10 +79,10 @@ Save it onto your system, and provide its path in the manifest file location.
 The `get` command can be used to fetch the existing dataset. The command can be used as follows:
 
 ```shell
-dataos-ctl dataset -a {{udl}} get
+dataos-ctl dataset -a ${{udl}} get
 
 # '-a' flag denotes the Dataset Address
-# {{udl}} is a placeholder for dataset UDL - dataos://icebase:retail/city is one such sample UDL
+# ${{udl}} is a placeholder for dataset UDL - dataos://icebase:retail/city is one such sample UDL
 ```
 
 ### **Drop Dataset**
@@ -90,32 +90,32 @@ dataos-ctl dataset -a {{udl}} get
 To drop the dataset and delete the entry from metastore, use the below command.
 
 ```shell
-dataos-ctl dataset -a {{udl}} drop
+dataos-ctl dataset -a ${{udl}} drop
 
 # '-a' flag denotes the Dataset Address
-# {{udl}} is a placeholder for dataset UDL - dataos://icebase:retail/city is one such sample UDL
+# ${{udl}} is a placeholder for dataset UDL - dataos://icebase:retail/city is one such sample UDL
 ```
 
 or you can also equivalently use 
 
 ```shell
-dataos-ctl dataset -a {{udl}} drop -p false
+dataos-ctl dataset -a ${{udl}} drop -p false
 # OR
-dataos-ctl dataset -a {{udl}} drop --purge false
+dataos-ctl dataset -a ${{udl}} drop --purge false
 
 # '-a' flag denotes the Dataset Address
-# {{udl}} is a placeholder for dataset UDL - dataos://icebase:retail/city is one such sample UDL
+# ${{udl}} is a placeholder for dataset UDL - dataos://icebase:retail/city is one such sample UDL
 # '-p' or '--purge' flags denote the purge value
 ```
 
 If this `-p`/`--purge` (Purge Value) is set to `true` (by default, this is `false`), the dataset entry gets deleted from the store as well as all its files.
 
 ```shell
-dataos-ctl dataset -a {{udl}} drop -p true
+dataos-ctl dataset -a ${{udl}} drop -p true
 # OR
-dataos-ctl dataset -a {{udl}} drop --purge true
+dataos-ctl dataset -a ${{udl}} drop --purge true
 
-# {{udl}} is a placeholder for dataset UDL - dataos://icebase:retail/city is one such sample UDL
+# ${{udl}} is a placeholder for dataset UDL - dataos://icebase:retail/city is one such sample UDL
 # '-p' or '--purge' flags denote the purge value
 ```
 
@@ -130,10 +130,10 @@ dataos-ctl dataset -a {{udl}} drop --purge true
 To obtain the list of all the properties and their value, execute the following command
 
 ```shell
-dataos-ctl dataset properties -a {{udl}}
+dataos-ctl dataset properties -a ${{udl}}
 
 # '-a' flag denotes the Dataset Address
-# {{udl}} is a placeholder for dataset UDL - dataos://icebase:retail/city is one such sample UDL
+# ${{udl}} is a placeholder for dataset UDL - dataos://icebase:retail/city is one such sample UDL
 ```
 
 ### **Add Properties**
@@ -141,19 +141,19 @@ dataos-ctl dataset properties -a {{udl}}
 To add a single property, the below code can be used. 
 
 ```shell
-dataos-ctl dataset -a {{udl}} add-properties \
--p "{{property-name}}:{{property-value}}"
+dataos-ctl dataset -a ${{udl}} add-properties \
+-p "${{property-name}}:${{property-value}}"
 
 # '-a' flag denotes the Dataset Address
-# {{udl}} is a placeholder for dataset UDL - dataos://icebase:retail/city is one such sample UDL
+# ${{udl}} is a placeholder for dataset UDL - dataos://icebase:retail/city is one such sample UDL
 ```
 
 To add multiple properties at the same time, use
 
 ```shell
 dataos-ctl dataset -a dataos://icebase:retail/city add-properties \
--p "{{property-name}}:{{property-value}}" \
--p "{{property-name}}:{{property-value}}"
+-p "${{property-name}}:${{property-value}}" \
+-p "${{property-name}}:${{property-value}}"
 ```
 
 ### **Remove Properties**
@@ -162,8 +162,8 @@ To remove a property, the following command can be used.
 
 ```shell
 dataos-ctl dataset -a dataos://icebase:retail/city remove-properties \
--p "{{property-name}}" \
--p "{{property-name}}"
+-p "${{property-name}}" \
+-p "${{property-name}}"
 ```
 
 For more details and use cases, refer to the following link
@@ -180,11 +180,11 @@ The following command can be used to add a column to the table or a nested struc
 
 ```shell
 dataos-ctl dataset -a dataos://icebase:retail/city add-field \
--n {{column-name}} \
--t {{column-datatype}}
+-n ${{column-name}} \
+-t ${{column-datatype}}
 # Additional Flags for -t decimal
--p {{precision: any-positive-number-less-than-38}} \ # Only for -t decimal
--s {{scale: any-whole-number-less-than-precision}} # Only for -t decimal
+-p ${{precision: any-positive-number-less-than-38}} \ # Only for -t decimal
+-s ${{scale: any-whole-number-less-than-precision}} # Only for -t decimal
 ```
 
 In the case of all data types excluding `decimal`, we have two command-line flags:
@@ -221,7 +221,7 @@ To remove an existing column from the table or a nested struct, the following co
 
 ```shell
 dataos-ctl dataset -a dataos://icebase:retail/city drop-field \
--n {{column-name}}
+-n ${{column-name}}
 ```
 
 ### **Rename Field/Column**
@@ -230,8 +230,8 @@ To rename an existing column or field in a nested struct, execute the below code
 
 ```shell
 dataos-ctl dataset -a dataos://icebase:retail/city rename-field \
--n {{column-name}} \
--m {{column-new-name}}
+-n ${{column-name}} \
+-m ${{column-new-name}}
 ```
 
 ### **Update Field/Column**
@@ -240,11 +240,11 @@ To widen the type of a column, struct field, map key, map value, or list element
 
 ```shell
 dataos-ctl dataset -a dataos://icebase:retail/city update-field \
--n {{column-name}} \
--t {{column-datatype}}
+-n ${{column-name}} \
+-t ${{column-datatype}}
 # Additional Flags for -t decimal
--p {{precision: can-only-be-widened-not-narrowed}} \ # Only for -t decimal
--s {{scale: is fixed}} # Only for -t decimal
+-p ${{precision: can-only-be-widened-not-narrowed}} \ # Only for -t decimal
+-s ${{scale: is fixed}} # Only for -t decimal
 ```
 
 When updating a field, precision can only be widened, not narrowed. In contrast, the scale is fixed and cannot be changed when updating a field.
@@ -275,7 +275,7 @@ For more details and use, case refer to the following link
 
 ## How to perform partitioning?
 
-<aside class=callout>
+<aside class="callout">
 🗣 This procedure uses partitioning on the upcoming/future data, not the existing one. To make changes to the current data, please look at the partitioning in Flare Case Scenarios.
 
 </aside>
@@ -339,7 +339,7 @@ dataos-ctl dataset -a dataos://icebase:retail/city \
 
 ```shell
 dataos-ctl dataset -a dataos://icebase:retail/city update-partition \
--p "{{partition_type}}:{{column_name}}:{{partition_name}}"
+-p "${{partition_type}}:${{column_name}}:${{partition_name}}"
 ```
 
 For more details and use cases, refer to the below link
@@ -368,7 +368,7 @@ This command helps in setting the snapshot of a dataset to a particular snapshot
 
 ```shell
 dataos-ctl dataset -a dataos://icebase:retail/city set-snapshot \
--i {{snapshot-id}}
+-i ${{snapshot-id}}
 ```
 
 ### **Metadata Listing**
@@ -387,7 +387,7 @@ To set the metadata to the latest or some specific version, the following comman
 
 ```shell
 dataos-ctl dataset -a dataos://icebase:retail/city set-metadata \
--v {{latest|v2.gz.metadata.json}}
+-v ${{latest|v2.gz.metadata.json}}
 ```
 
 For more details and use cases, refer to the following link

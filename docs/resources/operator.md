@@ -165,37 +165,37 @@ The following YAML manifest illustrates the attributes specified within the Oper
 
 ```yaml
 # Resource meta section
-name: {{azure-data-factory}}
+name: ${{azure-data-factory}}
 version: v1alpha
 type: operator
 layer: user
-description: {{provides management of azure data factory resources lifecycle}}
+description: ${{provides management of azure data factory resources lifecycle}}
 tags:
-	- {{operator}}
-	- {{adf}}
-	- {{azure-data-factory}}
+	- ${{operator}}
+	- ${{adf}}
+	- ${{azure-data-factory}}
 
 # Operator-specific section
 operator:
 
   # NATS Cluster configuration
 	natsClusterConfig:
-		name: {{adf-nats}}
-		compute: {{runnable-default}}
-		runAsUser: {{minerva-cluster}} 
+		name: ${{adf-nats}}
+		compute: ${{runnable-default}}
+		runAsUser: ${{minerva-cluster}} 
 
   # Computational Components
 	components:
-		- name: {{adf-controller}}
-			type: {{worker}}
-			compute: {{runnable-default}}
-			runAsUser: {{minerva-cluster}}
-			image: {{docker.io/rubiklabs/azure-operator:0.1.5-dev}}
-			imagePullSecret: {{dataos-container-registry}}
+		- name: ${{adf-controller}}
+			type: ${{worker}}
+			compute: ${{runnable-default}}
+			runAsUser: ${{minerva-cluster}}
+			image: ${{docker.io/rubiklabs/azure-operator:0.1.5-dev}}
+			imagePullSecret: ${{dataos-container-registry}}
 			command: 
-				- {{/opt/tmdc-io/azure-operator}}
+				- ${{/opt/tmdc-io/azure-operator}}
 			arguments:
-				- {{operator}}
+				- ${{operator}}
 				- adf
 				- --electionStateFile
 				- /opt/tmdc-io/leader-election.log
@@ -291,60 +291,60 @@ You can also pass the Azure-specific Secrets seperately.
 <b>Create a Secret Resource YAML</b>
     
 ```yaml
-name: {{adf-operator}}
+name: ${{adf-operator}}
 version: v1
-description: {{the secrets for adf operator}}
+description: ${{the secrets for adf operator}}
 secret: 
     type: key-value-properties
     acl: rw
     data: 
-        AZURE_TENANT_ID: {{azure tenant id}}
-        AZURE_CLIENT_ID: {{azure client id}}
-        AZURE_CLIENT_SECRET: {{azure client secret}}
-        AZURE_SUBSCRIPTION_ID: {{azure subscription id}}
+        AZURE_TENANT_ID: ${{azure tenant id}}
+        AZURE_CLIENT_ID: ${{azure client id}}
+        AZURE_CLIENT_SECRET: ${{azure client secret}}
+        AZURE_SUBSCRIPTION_ID: ${{azure subscription id}}
 ```
     
 <b>Apply the Secret YAML</b>
     
 ```shell
-dataos-ctl apply -f {{secret-yaml-file-path}} -w {{workspace}}
+dataos-ctl apply -f ${{secret-yaml-file-path}} -w ${{workspace}}
 ```
     
 <b>Reference the Secrets in the Operator YAML</b>
     
 ```yaml
 # Resource meta section
-name: {{azure-data-factory}}
+name: ${{azure-data-factory}}
 version: v1alpha
 type: operator
 layer: user
-description: {{provides management of azure data factory resources lifecycle}}
+description: ${{provides management of azure data factory resources lifecycle}}
 tags:
-    - {{operator}}
-    - {{adf}}
-    - {{azure-data-factory}}
+    - ${{operator}}
+    - ${{adf}}
+    - ${{azure-data-factory}}
 
 # Operator-specific section
 operator:
 
     # NATS Cluster configuration
     natsClusterConfig:
-        name: {{adf-nats}}
-        compute: {{runnable-default}}
-        runAsUser: {{minerva-cluster}} 
+        name: ${{adf-nats}}
+        compute: ${{runnable-default}}
+        runAsUser: ${{minerva-cluster}} 
 
     # Computational Components
     components:
-        - name: {{adf-controller}}
-            type: {{worker}}
-            compute: {{runnable-default}}
-            runAsUser: {{minerva-cluster}}
-            image: {{docker.io/rubiklabs/azure-operator:0.1.5-dev}}
-            imagePullSecret: {{dataos-container-registry}}
+        - name: ${{adf-controller}}
+            type: ${{worker}}
+            compute: ${{runnable-default}}
+            runAsUser: ${{minerva-cluster}}
+            image: ${{docker.io/rubiklabs/azure-operator:0.1.5-dev}}
+            imagePullSecret: ${{dataos-container-registry}}
             command: 
-                - {{/opt/tmdc-io/azure-operator}}
+                - ${{/opt/tmdc-io/azure-operator}}
             arguments:
-                - {{operator}}
+                - ${{operator}}
                 - adf
                 - --electionStateFile
                 - /opt/tmdc-io/leader-election.log
@@ -484,7 +484,7 @@ For in-depth information about the attributes of the Operator-specific section, 
 After creating the YAML configuration file for the Operator Resource, it's time to apply it to instantiate the Resource-instance in the DataOS environment. To apply the Operator YAML file, utilize the [`apply`](../interfaces/cli/command_reference.md#apply) command.
 
 ```shell
-dataos-ctl apply -f {{operator yaml manifest file path}}
+dataos-ctl apply -f ${{operator yaml manifest file path}}
 ```
 
 #### **Verify Operator Creation**
@@ -529,23 +529,23 @@ Resource as a Resource, in essence, serves as a means to interact with Operators
 
 ```yaml
 # Resource meta section
-name: {{pipeline-run-1}}
+name: ${{pipeline-run-1}}
 version: v1alpha
 type: resource
 tags:
-	- {{adf-pipeline}}
-	- {{adf-operator}}
-description: {{adf pipeline run}}
+	- ${{adf-pipeline}}
+	- ${{adf-operator}}
+description: ${{adf pipeline run}}
 owner: iamgroot
 
 # Resource-specific section
 resource: 
-	operator: {{adf-operator}}
-	type: {{pipeline-run}}
+	operator: ${{adf-operator}}
+	type: ${{pipeline-run}}
 	spec: 
-		factoryName: {{datafactoryoz3un3trdpaa}}
-		pipelineName: {{ArmtemplateSampleCopyPipeline}}
-		resourceGroupName: {{Engineering}}
+		factoryName: ${{datafactoryoz3un3trdpaa}}
+		pipelineName: ${{ArmtemplateSampleCopyPipeline}}
+		resourceGroupName: ${{Engineering}}
 ```
 
 When creating Resources with this approach, the Operator's JSON Schema plays a vital role in validation. The spec provided in the Resource YAML is validated against this schema, ensuring that the Resource conforms to the predefined structure.
@@ -560,7 +560,7 @@ When creating Resources with this approach, the Operator's JSON Schema plays a v
 To trigger a pipeline run, you can apply the Resource YAML using the following command:
 
 ```shell
-dataos-ctl apply -f {{resource-yaml-file-path}} -w {{workspace}}
+dataos-ctl apply -f ${{resource-yaml-file-path}} -w ${{workspace}}
 
 # Sample
 dataos-ctl apply -f ../adf-operator/resource.yaml -w public
@@ -569,7 +569,7 @@ dataos-ctl apply -f ../adf-operator/resource.yaml -w public
 #### **Get Status of Pipeline Run**
 
 ```shell
-dataos-ctl get -t resource -w {{workspace}}
+dataos-ctl get -t resource -w ${{workspace}}
 
 # Sample
 dataos-ctl get -t resource -w public
@@ -615,10 +615,10 @@ Once we apply we can go over on the Azure Data Factory UI.
 While the pipeline is in progress, you have the capability to capture metadata from Azure Data Factory back into DataOS Metis. The process of metadata capture is orchestrated through the Operator Component and NATS Cluster. While coding the Operator, you have the complete complete control over determining which specific state information from the external cluster, in this case, Azure Cluster, should be retrieved and synchronized with DataOS. To get information about which information is being synchronized, utilize the following command:
 
 ```shell
-dataos-ctl get -t resource -w public -n {{external-resource-name}} -d
+dataos-ctl get -t resource -w public -n ${{external-resource-name}} -d
 ```
 
-Here, `{{external-resource-name}}` should be replaced with the relevant identifier, such as the name of the specific external resource (Resource) run:
+Here, `${{external-resource-name}}` should be replaced with the relevant identifier, such as the name of the specific external resource (Resource) run:
 
 ```shell
 dataos-ctl get -t resource -w public -n pipeline-run-1 -d
@@ -629,7 +629,7 @@ dataos-ctl get -t resource -w public -n pipeline-run-1 -d
 If you need to delete an operator, you first need to delete all the workloads or Resources that are dependent on it. Once it's done, use the `delete` command to remove the specific operator from the DataOS instance:
 
 ```shell
-dataos-ctl delete -t operator -n {{name of operator}}
+dataos-ctl delete -t operator -n ${{name of operator}}
 ```
 
 ## How does the Operator Work?

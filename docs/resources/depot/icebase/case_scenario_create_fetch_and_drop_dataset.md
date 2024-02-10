@@ -5,8 +5,8 @@
 The following command can be used to create a dataset.
 
 ```shell
-dataos-ctl dataset -a {{udl}} create \
--f {{manifest-file-path}}
+dataos-ctl dataset -a ${{udl}} create \
+-f ${{manifest-file-path}}
 ```
 
 Creating a dataset will require a YAML File, whose path has to be provided in the manifest file path. The sample format for the YAML file is provided below.
@@ -52,7 +52,7 @@ INFO[0003] 📂 create dataset...completed
 The `get` command to fetch a dataset is given below.
 
 ```shell
-dataos-ctl dataset -a {{udl}} get
+dataos-ctl dataset -a ${{udl}} get
 ```
 **Example**
 
@@ -95,11 +95,11 @@ To drop a dataset that already exists within the Icebase depot, you can use the 
 **Command**
 
 ```shell
-dataos-ctl dataset -a {{udl}} drop
+dataos-ctl dataset -a ${{udl}} drop
 # OR
-dataos-ctl dataset -a {{udl}} drop -p false # -p flag is Purge Value (its by default: false)
+dataos-ctl dataset -a ${{udl}} drop -p false # -p flag is Purge Value (its by default: false)
 # OR
-dataos-ctl dataset -a {{udl}} drop --purge false
+dataos-ctl dataset -a ${{udl}} drop --purge false
 ```
 
 **Example**
@@ -127,9 +127,9 @@ To drop an existing dataset such that both the entry from the metastore gets del
 **Command**
 
 ```shell
-dataos-ctl dataset -a {{udl}} drop -p true # -p flag is Purge Value (its by default: false)
+dataos-ctl dataset -a ${{udl}} drop -p true # -p flag is Purge Value (its by default: false)
 # OR
-dataos-ctl dataset -a {{udl}} drop --purge true
+dataos-ctl dataset -a ${{udl}} drop --purge true
 ```
 
 **Example**

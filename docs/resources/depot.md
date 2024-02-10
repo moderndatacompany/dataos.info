@@ -85,13 +85,13 @@ The YAML configuration file for a Depot can be divided into four main sections: 
 The Resource section of the YAML configuration file consists of attributes that are common across all resource-types. The following YAML snippet demonstrates the key-value properties that need to be declared in this section:
 
 ```yaml
-name: {{mydepot}}
+name: ${{mydepot}}
 version: v1 
 type: depot 
 tags: 
-  - {{dataos:type:resource}}
-description: {{This is a sample depot YAML configuration}} 
-owner: {{iamgroot}}
+  - ${{dataos:type:resource}}
+description: ${{This is a sample depot YAML configuration}} 
+owner: ${{iamgroot}}
 layer: user
 ```
 <center><i>Resource section YAML configuration</i></center>
@@ -104,11 +104,11 @@ The Depot-specific section of the YAML configuration file includes key-value pro
 
 ```yaml
 depot:   
-  type: {{BIGQUERY}}                  
-  description: {{description}}
-  external: {{true}}                  
-  source: {{bigquerymetadata}} 
-  compute: {{runnable-default}}
+  type: ${{BIGQUERY}}                  
+  description: ${{description}}
+  external: ${{true}}                  
+  source: ${{bigquerymetadata}} 
+  compute: ${{runnable-default}}
   connectionSecrets:
     {}
   specs:
@@ -154,14 +154,14 @@ connectionSecret:
   - acl: rw                        
     type: key-value-properties
     data:
-      projectid: {{project-name}}
-      email: {{email-id}}
+      projectid: ${{project-name}}
+      email: ${{email-id}}
     files:
-      json_keyfile: {{secrets/gcp-demo-sa.json}} #JSON file containing the credentials to read-write    
+      json_keyfile: ${{secrets/gcp-demo-sa.json}} #JSON file containing the credentials to read-write    
   - acl: r                        
     type: key-value-properties
     files:
-      json_keyfile: {{secrets/gcp-demo-sa.json}} #JSON file containing the credentials to read-only
+      json_keyfile: ${{secrets/gcp-demo-sa.json}} #JSON file containing the credentials to read-only
 ```
 
 This is how you can declare connection secrets to create a Depot for [AWS S3](./depot/depot_config_templates/amazon_s3.md) storage:
@@ -171,9 +171,9 @@ connectionSecret:
   - acl: rw                         
     type: key-value-properties
     data:                           #credentials required to access aws
-      awsaccesskeyid: {{AWS_ACCESS_KEY_ID}}
-      awsbucketname: {{bucket-name}}
-      awssecretaccesskey: {{AWS_SECRET_ACCESS_KEY}}
+      awsaccesskeyid: ${{AWS_ACCESS_KEY_ID}}
+      awsbucketname: ${{bucket-name}}
+      awssecretaccesskey: ${{AWS_SECRET_ACCESS_KEY}}
 ```
 
 For accessing [JDBC](./depot/depot_config_templates/jdbc.md), all you need is a username and password. Check it out below:
@@ -183,8 +183,8 @@ connectionSecret:
   - acl: rw
     type: key-value-properties
     data:                            #for JDBC, the credentials you get from the data source should have permission to read/write schemas of the database being accessed 
-      username: {{username}}
-      password: {{password}}
+      username: ${{username}}
+      password: ${{password}}
 ```
 
 The basic attributes filled in this section are provided in the table below:
@@ -207,21 +207,21 @@ The basic attributes filled in this section are provided in the table below:
 - Create a YAML file with the details on the connection secret:
 
   ```yaml
-  name: {{mysql-secret}}
+  name: ${{mysql-secret}}
   version: v1      
   type: secret
   secret:
     type: key-value-properties
     acl: rw
     data:
-      connection-user: {{user}}
-      connection-password: {{password}}
+      connection-user: ${{user}}
+      connection-password: ${{password}}
   ```
 
 - Apply this YAML file on DataOS CLI
 
   ```shell
-  dataos-ctl apply -f {{path/secret.yaml}} -w {{name of the workspace}}
+  dataos-ctl apply -f ${{path/secret.yaml}} -w ${{name of the workspace}}
   ```
 
 If you have created this [Secret](./secret.md) in a public Workspace, any user within your enterprise can refer to the Secret by its name, "mysql-secret".
@@ -244,8 +244,8 @@ depot:
   type: MYSQL
   description: "MYSQL Sample data"
   spec:
-    host: {{host}}
-    port: {{port}}
+    host: ${{host}}
+    port: ${{port}}
   external: true
   data:
     connectionSecret:
@@ -379,7 +379,7 @@ Secondly with this setup, you can read the files within the 'transactions' folde
 
 <aside class="callout">
 
-🗣️ When writing data to a source system, names like 'none' or 'system' cannot be used for the collection. Therefore, the output of a Flare job cannot have an address like <code>dataos://{{depot name}}:none/{{dataset name}}</code> or <code>dataos://{{depot name}}:system/{{dataset name}}</code>.
+🗣️ When writing data to a source system, names like 'none' or 'system' cannot be used for the collection. Therefore, the output of a Flare job cannot have an address like <code>dataos://${{depot name}}:none/${{dataset name}}</code> or <code>dataos://${{depot name}}:system/${{dataset name}}</code>.
 </aside>
 
 For accessing data from [Kafka](./depot/depot_config_templates/kafka.md), where the structure consists of a broker list and topics, the `spec` section in the YAML configuration will point the depot to the broker list, and the datasets will map to the topic list. The format of the YAML will be as follows:
@@ -387,12 +387,12 @@ For accessing data from [Kafka](./depot/depot_config_templates/kafka.md), where 
 ```yaml
 depot:
   type: KAFKA
-  description: {{description}}
+  description: ${{description}}
   external: true
   spec:
     brokers:
-      - {{broker1}}
-      - {{broker2}}
+      - ${{broker1}}
+      - ${{broker2}}
 ```
 
 
@@ -401,7 +401,7 @@ depot:
 Once you have the YAML file ready in your code editor, simply copy the path of the YAML file and apply it through the DataOS CLI, using the command given below:
 
 ```shell
-dataos-ctl apply -f {{yamlfilepath}}
+dataos-ctl apply -f ${{yamlfilepath}}
 ```
 
 ### **Verify Depot Creation**
@@ -431,7 +431,7 @@ You can also access the details of any created Depot through the DataOS GUI in t
 If you need to delete a depot, use the following command in the DataOS CLI:
 
 ```shell
-dataos-ctl delete -t depot -n {{name of depot}}
+dataos-ctl delete -t depot -n ${{name of depot}}
 ```
 
 By executing the above command, the specified depot will be deleted from your DataOS environment.
@@ -508,13 +508,13 @@ Another important function that a Depot can play is to limit the file type which
 ```yaml
 depot:
   type: S3
-  description: {{description}}
+  description: ${{description}}
   external: true
   spec:
-    scheme: {{s3a}}
-    bucket: {{bucket-name}}
+    scheme: ${{s3a}}
+    bucket: ${{bucket-name}}
     relativePath: "raw" 
-    format: {{format}}  # mention the file format, such as JSON, to only allow that file type
+    format: ${{format}}  # mention the file format, such as JSON, to only allow that file type
 ```
 
 For File based systems, if you define the format as ‘Iceberg’, you can choose the meta-store catalog between Hadoop and Hive. This is how you do it:

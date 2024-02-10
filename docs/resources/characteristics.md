@@ -22,27 +22,27 @@ secret:
   type: key-value-properties
   acl: rw
   data:
-    accesskeyid: {{access key id}}
-    secretkey: {{secret key}}
-    awsaccesskeyid: {{aws access key id}}
-    awssecretaccesskey: {{aws secret access key}}
+    accesskeyid: ${{access key id}}
+    secretkey: ${{secret key}}
+    awsaccesskeyid: ${{aws access key id}}
+    awssecretaccesskey: ${{aws secret access key}}
 ```
 
 Now this Resource can be called upon while deploying other Resources. Let’s use the above secret to create a Depot over the same S3 bucket.
 
 ```yaml
-name: {{name}}
+name: ${{name}}
 version: v1
 type: depot
 tags:
- - {{tag1}}
+ - ${{tag1}}
 layer: user
 depot: 
   type: S3
-  description: {{description}}
+  description: ${{description}}
   spec:
-    bucket: {{bucket}}
-    relativePath: {{relative path}}
+    bucket: ${{bucket}}
+    relativePath: ${{relative path}}
   external: true
 # using the 'Secret' created & stored previously
   dataosSecrets:   

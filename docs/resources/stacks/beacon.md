@@ -47,22 +47,22 @@ Make sure that you have an active Database within DataOS, as per the schema you 
 At the core of any Beacon Service lies the Service Resource section, which is responsible for defining a Service Resource through a set of YAML attributes. A Service is a persistent process that either receives or delivers API requests. The Beacon Stack is then invoked within the Service to effectuate the exposition of Postgres API.The YAML syntax for the same is provided below.
 
 ```yaml
-name: {{stores-db}}
+name: ${{stores-db}}
 version: v1 
 type: service 
 tags: 
-  - {{syndicate}}
-  - {{service}}
+  - ${{syndicate}}
+  - ${{service}}
 service: 
-  replicas: {{2}} 
+  replicas: ${{2}} 
   ingress: 
-    enabled: {{true}} 
-    stripPath: {{true}} 
-    path: {{/stores/api/v1}} 
-    noAuthentication: {{true}} 
+    enabled: ${{true}} 
+    stripPath: ${{true}} 
+    path: ${{/stores/api/v1}} 
+    noAuthentication: ${{true}} 
   stack: beacon+rest 
   envs: 
-    PGRST_OPENAPI_SERVER_PROXY_URI: https://{{dataos-context}}.dataos.app/{{database-path}} # e.g. https://adapting-spaniel.dataos.app/stores/api/v1/
+    PGRST_OPENAPI_SERVER_PROXY_URI: https://${{dataos-context}}.dataos.app/${{database-path}} # e.g. https://adapting-spaniel.dataos.app/stores/api/v1/
 ```
 
 For a deeper understanding of Service Resource and its YAML attributes, please refer to the [Attributes of Service Resource YAML](../service/yaml_configuration_attributes.md) page.
@@ -109,13 +109,13 @@ Each of the attributes in this section has been elaborated in detail on the [Att
 You can apply the YAML file to create a Beacon Service within the DataOS environment using the command given below:
 
 ```shell
-dataos-ctl apply -f {{path-of-the-config-file}} -w {{workspace}}
+dataos-ctl apply -f ${{path-of-the-config-file}} -w ${{workspace}}
 ```
 
 ### **Check Run time**
 
 ```shell
-dataos-ctl -t service -w {{workspace}} -n {{service-name}}  get runtime -r
+dataos-ctl -t service -w ${{workspace}} -n ${{service-name}}  get runtime -r
 # Sample
 dataos-ctl -t service -w public -n pulsar-random  get runtime -r
 ```

@@ -4,37 +4,37 @@
 
 ```yaml
 workflow:
-  title: {{title of workflow}}
+  title: ${{title of workflow}}
   schedule: 
-    cron: {{'*/10 * * * *'}}
-    concurrencyPolicy: {{Allow}}
-    startOn: {{2022-01-01T23:30:30Z}}
-    endOn: {{2022-01-01T23:40:45Z}}
-    completeOn: {{2022-01-01T23:30:45Z}}
+    cron: ${{'*/10 * * * *'}}
+    concurrencyPolicy: ${{Allow}}
+    startOn: ${{2022-01-01T23:30:30Z}}
+    endOn: ${{2022-01-01T23:40:45Z}}
+    completeOn: ${{2022-01-01T23:30:45Z}}
   dag: 
-    - name: {{job1-name}}
-      description: {{description}}
-      title: {{title of job}}
+    - name: ${{job1-name}}
+      description: ${{description}}
+      title: ${{title of job}}
       tags:
-        - {{tag1}}
-        - {{tag2}}
+        - ${{tag1}}
+        - ${{tag2}}
       spec: 
-        stack: {{stack1:version}}
-        compute: {{compute-name}}
+        stack: ${{stack1:version}}
+        compute: ${{compute-name}}
         stack1: 
-          {{stack1-specific-properties}}
-    - name: {{job2-name}}
+          ${{stack1-specific-properties}}
+    - name: ${{job2-name}}
       spec: 
-        stack: {{stack2:version}}
-        compute: {{compute-name}}
+        stack: ${{stack2:version}}
+        compute: ${{compute-name}}
         stack2: 
-          {{stack2-specific-properties}}
+          ${{stack2-specific-properties}}
       dependencies: 
-       - {{job1-name}}
-    - name: {{job2-name}}
-      file: {{workflows/write-pulsar.yaml}}
+       - ${{job1-name}}
+    - name: ${{job3-name}}
+      file: ${{workflows/write-pulsar.yaml}}
       dependencies: 
-       - {{job2-name}}
+       - ${{job2-name}}
 ```
 <center><i> Structure of Workflow YAML configuration </i></center>
 
