@@ -497,7 +497,7 @@ The following table provides a comprehensive overview of the various attributes 
 | [`engine`](./soda/yaml_attributes.md#engine) | string | none | default / minerva | optional |
 | [`clusterName`](./soda/yaml_attributes.md#clustername) | string | none | valid cluster name | optional |
 | [`filter`](./soda/yaml_attributes.md#filter) | mapping | none | none | optional |
-| [`name`](./soda/yaml_attributeSodaCLs.md#name) | string | none | valid filter name | optional |
+| [`name`](./soda/yaml_attributes.md#name) | string | none | valid filter name | optional |
 | [`where`](./soda/yaml_attributes.md#where) | string | none | valid filter condition | optional |
 | [`profile`](./soda/yaml_attributes.md#profile) | mapping | none | none | optional |
 | [`columns`](./soda/yaml_attributes.md#columns) | list of strings | none | dataset column names | optional |
