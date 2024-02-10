@@ -714,7 +714,7 @@ worker:
 Use the apply command to apply the workflow using CLI.
 
 ```shell
-dataos-ctl apply -f {{path/file-name}} -w {{workspace}} # By default the workspace is public
+dataos-ctl apply -f ${{path/file-name}} -w ${{workspace}} # By default the workspace is public
 ```
 
 ## Querying Profiling and Checks data

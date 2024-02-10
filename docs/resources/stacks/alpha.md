@@ -6,7 +6,7 @@ When deploying an application using Alpha Stack, the containerized image contain
 
 <aside class="callout">
 
-In the upcoming releases Alpha Stack would be deprecated and would be replaced by Container Stack.
+🗣 In the upcoming releases Alpha Stack would be deprecated and would be replaced by Container Stack.
 
 </aside>
 
@@ -35,27 +35,27 @@ You can also deploy custom-built images from a private DockerHub repository. To 
 ```yaml
 
 # Resource Section
-name: alpha-stack
+name: ${{alpha-stack}}
 version: v1
-type: workflow/service
+type: ${{workflow/service}}
 workflow/service: # Workflow/Service Specific Section
 # ...
 # ...
 # ...
   stack: alpha # Stack (Here it's Alpha)
   secrets:
-  	- newSecret # Secret (Resource) to be referred within Alpha
+  	- ${{newSecret}} # Secret (Resource) to be referred within Alpha
   envs:
-  	LOG_LEVEL: info # Log Level
+  	${{LOG_LEVEL: info}} # Log Level
   alpha:
 
 # Alpha Stack Specific Section
-    image: swagger/swagger-ui # Path of the Docker Image
+    image: ${{swagger/swagger-ui}} # Path of the Docker Image
 	command: # Command
-	  - streamlit
+	  - ${{streamlit}}
     arguments: # Arguments
-      - run
-	  - app.py
+    - ${{run}}
+	  - ${{app.py}}
 ```
 
 ### **Resource Section**

@@ -5,15 +5,15 @@ Following attributes are declared for every instance of a Resource that is deplo
 ## Resource Section Configuration Syntax
 
 ```yaml
-name: {{myfirstresource}}
+name: ${{myfirstresource}}
 version: v1
-type: {{resource-type}}
+type: ${{resource-type}}
 tags:
-  - {{example-resource}}
-  - {{dataos:workspace:curriculum}}
-description: {{common attributes applicable to all dataos resources}}
-owner: {{iamgroot}}
-layer: {{user}}
+  - ${{example-resource}}
+  - ${{dataos:workspace:curriculum}}
+description: ${{common attributes applicable to all dataos resources}}
+owner: ${{iamgroot}}
+layer: ${{user}}
 <resource-type>:
 ```
 <center><i>Resource meta section YAML configuration attributes</i></center>

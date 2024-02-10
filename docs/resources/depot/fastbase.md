@@ -7,14 +7,14 @@ Fastbase is a depot type within the DataOS that supports Apache Pulsar format fo
 DataOS allows users to manage Fastbase depots effortlessly using CLI. This functionality is made possible by the powerful API capabilities of [Depot Service](../depot.md#depot-service).
 
 
-The primary command for interacting with the Fastbase Depot in DataOS is `dataos-ctl fastbase {{sub-command}}`. Using this command, you can perform various operations related to Fastbase.
+The primary command for interacting with the Fastbase Depot in DataOS is `dataos-ctl fastbase ${{sub-command}}`. Using this command, you can perform various operations related to Fastbase.
 
 
 <aside class=callout>
 
 🗣️  Bringing uniformity by getting rid of complex terminologies
 To bring uniformity within DataOS, we have replaced specific terminologies related to underlying tech with their analogous DataOS counterpart. For example, topics in Pulsar are the named channels for transmitting messages from producers to consumers. They are streaming logs that are analogous to the dataset. Within DataOS, instead of a topic, we use the term dataset. 
-Taking this into account, any Fastbase UDL (Universal Data Link) within the DataOS is referenced as <code>dataos://fastbase:{{schema|none}}/{{dataset}}</code>
+Taking this into account, any Fastbase UDL (Universal Data Link) within the DataOS is referenced as <code>dataos://fastbase:${{schema|none}}/${{dataset}}</code>
 E.g., dataos://fastbase:default/my_data is one such UDL where we use the default schema and use the my_data dataset (my_data is a Pulsar Topic, but within the DataOS, the term topic is replaced by dataset while referencing UDL)
 
 </aside>
@@ -44,7 +44,7 @@ pulsar: # optional
 **Command**
 
 ```shell
-dataos-ctl dataset create -a {{udl-address}} -f {{yaml-file-path}}
+dataos-ctl dataset create -a ${{udl-address}} -f ${{yaml-file-path}}
 ```
 
 <details><summary> Click on the toggle to see sample manifests</summary>
@@ -86,7 +86,7 @@ This manifest creates a dataset with two partitions with the “Avro” schema.
 With the help of the get command, we can gather or fetch all the information on the existing topic in Pulsar’s depot.
 
 ```bash
-dataos-ctl dataset -a dataos://fastbase:default/{{topic-name}}  get
+dataos-ctl dataset -a dataos://fastbase:default/${{topic-name}}  get
 ```
 
 ---
@@ -144,7 +144,7 @@ Namespaces are logical grouping of topics. After creating a tenant, you can crea
 The command `namespace list` interacts with namespaces in the DataOS Fastbase and also lists the namespaces.
 
 ```bash
-dataos-ctl fastbase namespace -t {{tenant_name}} list
+dataos-ctl fastbase namespace -t ${{tenant_name}} list
 ```
 
 **Command**
@@ -177,7 +177,7 @@ We currently support the creation of partitioned and non-partitioned `topics`, a
 The topics are listed with the help of `the topic list` command.
 
 ```bash
-dataos-ctl fastbase topic -n {{tenant_name}}/{{namespace_name}} list
+dataos-ctl fastbase topic -n ${{tenant_name}}/${{namespace_name}} list
 ```
 
 **Command**
@@ -201,7 +201,7 @@ INFO[0001] 🔍 list...complete
 In Pulsar, the name of a `topic` reflects the following structure:
 
 ```bash
-{persistent|non-persistent}://{{tenant_name}}/{{namespace_name}}/{{topic_name}}
+{persistent|non-persistent}://${{tenant_name}}/${{namespace_name}}/${{topic_name}}
 ```
 
 Pulsar has persistent and non-persistent topics. 

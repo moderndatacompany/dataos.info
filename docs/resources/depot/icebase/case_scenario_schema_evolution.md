@@ -6,7 +6,7 @@
 - To observe the changes within the Workbench, execute the below command
 
 ```shell
-dataos-ctl dataset -a {{udl}} set-metadata \
+dataos-ctl dataset -a ${{udl}} set-metadata \
 -v latest
 ```
 
@@ -18,8 +18,8 @@ The following command can be used to add a column to the table or a nested struc
 
 ```shell
 dataos-ctl dataset -a dataos://icebase:retail/city add-field \
--n {{column-name}} \
--t {{column-datatype}}
+-n ${{column-name}} \
+-t ${{column-datatype}}
 ```
 
 Only the following column data types are supported
@@ -86,7 +86,7 @@ To remove an existing column from the table or a nested struct, the following co
 
 ```shell
 dataos-ctl dataset -a dataos://icebase:retail/city drop-field \
--n {{column-name}}
+-n ${{column-name}}
 ```
 
 ![Schema Evolution 3](./case_scenario_schema_evolution/2.png)
@@ -129,8 +129,8 @@ To rename an existing column or field in a nested struct, execute the below code
 
 ```shell
 dataos-ctl dataset -a dataos://icebase:retail/city rename-field \
--n {{column-name}} \
--m {{column-new-name}}
+-n ${{column-name}} \
+-m ${{column-new-name}}
 ```
 
 Let’s rename the column `city_name` in the city dataset to `name`. For this following code needs to be executed -
@@ -174,8 +174,8 @@ To widen the type of a column, struct field, map key, map value, or list element
 
 ```shell
 dataos-ctl dataset -a dataos://icebase:retail/city update-field \
--n {{column-name}} \
--t {{column-datatype}}
+-n ${{column-name}} \
+-t ${{column-datatype}}
 ```
 
 >

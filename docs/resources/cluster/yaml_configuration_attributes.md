@@ -4,108 +4,108 @@
 
 ```yaml
 cluster:
-  compute: {{query-default}} # mandatory
-  runAsApiKey: {{abcdefghijklmnopqrstuvwxyz}} # mandatory
-  runaAsUser: {{minerva-cluster}}
+  compute: ${{query-default}} # mandatory
+  runAsApiKey: ${{abcdefghijklmnopqrstuvwxyz}} # mandatory
+  runaAsUser: ${{minerva-cluster}}
   maintenance:
-    restartCron: {{'13 1 */2 * *'}}
-    timezone: {{Asia/Kolkata}} # mandatory
+    restartCron: ${{'13 1 */2 * *'}}
+    timezone: ${{Asia/Kolkata}} # mandatory
     scalingCrons: 
-      - cron: {{'5/10 * * * *'}} # mandatory
-        timezone: {{Europe/Berlin}} # mandatory
-        replicas: {{2}}
+      - cron: ${{'5/10 * * * *'}} # mandatory
+        timezone: ${{Europe/Berlin}} # mandatory
+        replicas: ${{2}}
         resources: 
           requests: 
-            cpu: {{800m}}
-            memory: {{1Gi}}
+            cpu: ${{800m}}
+            memory: ${{1Gi}}
           limits: 
-            cpu: {{1000m}}
-            memory: {{2Gi}}	
+            cpu: ${{1000m}}
+            memory: ${{2Gi}}	
   minerva: 
-    replicas: {{2}} # mandatory
+    replicas: ${{2}} # mandatory
     resources:
     secrets:
-      - {{mysecret}}
+      - ${{mysecret}}
     depots: # mandatory
-      - address: {{dataos://icebase:default}} # mandatory
+      - address: ${{dataos://icebase:default}} # mandatory
         properties:
-          iceberg.file-format: {{PARQUET}} 
-          iceberg.compression-codec: {{GZIP}} 
-          hive.config.resources: {{"/usr/trino/etc/catalog/core-site.xml"}}
+          iceberg.file-format: ${{PARQUET}} 
+          iceberg.compression-codec: ${{GZIP}} 
+          hive.config.resources: ${{"/usr/trino/etc/catalog/core-site.xml"}}
         secrets: 
-          - name: {{newsecret}} # mandatory
-            workspace: {{curriculum}}
-            key: {{newone}}
+          - name: ${{newsecret}} # mandatory
+            workspace: ${{curriculum}}
+            key: ${{newone}}
             keys: 
-              - {{newone}}
-              - {{oldone}}
-            allKeys: {{true}}
-            consumptionType: {{envVars}}
+              - ${{newone}}
+              - ${{oldone}}
+            allKeys: ${{true}}
+            consumptionType: ${{envVars}}
     catalogs:
-      - name: {{cache}} # mandatory
-        type: {{memory}} # mandatory
+      - name: ${{cache}} # mandatory
+        type: ${{memory}} # mandatory
         properties: 
-          memory.max-data-per-node: {{"128MB"}} 
+          memory.max-data-per-node: ${{"128MB"}} 
         secrets: 
-          - name: {{newsecret}} # mandatory
-            workspace: {{curriculum}}
-            key: {{newone}}
+          - name: ${{newsecret}} # mandatory
+            workspace: ${{curriculum}}
+            key: ${{newone}}
             keys: 
-              - {{newone}}
-              - {{oldone}}
-            allKeys: {{true}}
-            consumptionType: {{envVars}}
+              - ${{newone}}
+              - ${{oldone}}
+            allKeys: ${{true}}
+            consumptionType: ${{envVars}}
     debug:
-      logLevel: {{INFO}}
-      trinoLogLevel: {{ERROR}}
+      logLevel: ${{INFO}}
+      trinoLogLevel: ${{ERROR}}
     
     coordinatorEnvs:
-      alpha: beta # bring from doc
+      ${{alpha: beta}} 
     workerEnvs:
-      gamma: sigma # bring from doc
+      ${{gamma: sigma}} 
     overrideDefaultEnvs: true
     spillOverVolume: twenty
     selector:
       users: # mandatory
-        - {{"**"}}
+        - ${{"**"}}
       tags: # mandatory
-        - {{alpha}}
-        - {{beta}}
+        - ${{alpha}}
+        - ${{beta}}
       sources: # mandatory
-        - {{scanner/**}}
-        - {{flare/**}}
-      match: {{''}} # mandatory
-      priority: {{'10'}} # mandatory
+        - ${{scanner/**}}
+        - ${{flare/**}}
+      match: ${{''}} # mandatory
+      priority: ${{'10'}} # mandatory
       
   nats:
-    replicas: 5 # mandatory
-    volumeType: newone # mandatory
-    volumeSize: 30mi # mandatory
-    maxConnections: 4 # mandatory
+    replicas: ${{5}} # mandatory
+    volumeType: ${{newone}} # mandatory
+    volumeSize: ${{30mi}} # mandatory
+    maxConnections: ${{4}} # mandatory
     roles: # mandatory
-      - name: newrole # mandatory
+      - name: ${{newrole}} # mandatory
         permissions: 
           publish: # mandatory
-            - alpha
-            - beta
+            - ${{alpha}}
+            - ${{beta}}
           subscribe: # mandatory
-            - newone
-            - develop
-          allow_responses: true
+            - ${{newone}}
+            - ${{develop}}
+          allow_responses: ${{true}}
   jupyterHub:
     ingress: 
-      enabled: true
-      path: /strip/
-      stripPath: false
-      noAuthentication: true
-      appDetailSpec: random
-      apiDetailSpec: random
+      enabled: ${{true}}
+      path: ${{/strip/}}
+      stripPath: ${{false}}
+      noAuthentication: ${{true}}
+      appDetailSpec: ${{random}}
+      apiDetailSpec: ${{random}}
     oidcConfig: # mandatory
-      clientId: hellow # mandatory
-      clientSecret: delta # mandatory
-    storageClass: alpha # mandatory
+      clientId: ${{hellow}} # mandatory
+      clientSecret: ${{delta}} # mandatory
+    storageClass: ${{alpha}} # mandatory
     singleUserConfig: # mandatory
-      volumeCapacity: alpha # mandatory
+      volumeCapacity: ${{alpha}} # mandatory
 ```
 <center><i>Structure of Cluster-specific Section</i></center>
 
@@ -195,7 +195,7 @@ dataos-ctl user apikey get
 In case no apikey is available, the below command can be run to create a new apikey
 
 ```shell
-dataos-ctl user apikey create -n {{name of the apikey}} -d {{duration for the apikey to live}}
+dataos-ctl user apikey create -n ${{name of the apikey}} -d ${{duration for the apikey to live}}
 ```
 
 **Example Usage:**<br>
@@ -236,19 +236,19 @@ cluster:
 ```yaml
 cluster:
   maintenance:
-    restartCron: {{'13 1 */2 * *'}}
-    timezone: {{Europe/Berlin}} # mandatory
+    restartCron: '13 1 */2 * *'
+    timezone: Europe/Berlin # mandatory
     scalingCrons: 
-      - cron: {{'5/10 * * * *'}} # mandatory
-        timezone: {{Europe/Berlin}} # mandatory
-        replicas: {{2}}
+      - cron: '5/10 * * * *' # mandatory
+        timezone: Europe/Berlin # mandatory
+        replicas: 2
         resources: 
           requests: 
-            cpu: {{800m}}
-            memory: {{1Gi}}
+            cpu: 800m
+            memory: 1Gi
           limits: 
-            cpu: {{1000m}}
-            memory: {{2Gi}}	
+            cpu: 1000m
+            memory: 2Gi
 ```
 
 ---

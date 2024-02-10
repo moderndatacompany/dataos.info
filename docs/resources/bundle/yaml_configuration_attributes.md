@@ -1,4 +1,6 @@
-# Structure of Bundle YAML Manifest
+# Attributes of Bundle YAML Manifest
+
+## Structure of Bundle YAML manifest
 
 ```yaml
 # Bundle-specific section
@@ -6,44 +8,57 @@ bundle:
 
 	# Bundle schedule section
   schedule: 
-    initialState: {{initial state}}
-    timezone: {{timezone}}
+    initialState: ${{initial state}}
+    timezone: ${{timezone}}
     create:
-      - cron: {{create cron expression}}
+      - cron: ${{create cron expression}}
     delete:
-      - cron: {{delete cron expression}}
+      - cron: ${{delete cron expression}}
 
 	# Bundle Workspaces section
 	workspaces: 
-		- name: {{workspace to be created name}}
-			description: {{workspace description}}
+		- name: ${{workspace to be created name}}
+			description: ${{workspace description}}
 			tags: 
-				- {{tag1}}
-				- {{tag2}}
+				- ${{tag1}}
+				- ${{tag2}}
 			labels: 
-				{{key: value}}
-			layer: {{layer}}
+				${{key: value}}
+			layer: ${{layer}}
 
-	# Bundle Resources section
-	resources:
-	  - id: {{resource id}}
-	    workspace: {{workspace name}}
-	    dependencies:
-	      - {{dependent resource id 1}}
-	      - {{dependent resource id 2}}
-	    spec:
-	      {{specific-Resource spec}}
-	    file: {{Resource file reference}}
+  # Bundle Resources section
+  resources:
+    - id: ${{bundle-scanner}} # Resource ID (mandatory)
+      workspace: ${{bundlespace}} # Workspace (optional)
+      spec: # Resource spec (mandatory) 
+        ${{resource spec manifest}}
+      file: ${{/home/Desktop/bundle-scanner.yaml}} # Resource spec file (optional)
+      dependencies: # Resource dependency (optional)
+        - ${{bundle-depot}}
+      dependencyConditions: # Resource dependency conditions (optional)
+        - resourceId: ${{bundle-depot}} # Resource ID (mandatory)
+          status: # Status dependency condition (optional)
+            is: # Status is (optional)
+              - ${{active}}
+            contains: # Status contains (optional)
+              - ${{activ}}
+          runtime: # Runtime dependency condition (optional)
+            is: # Runtime is (optional)
+              - ${{running}}
+            contains: # Runtime contains (optional)
+              - ${{run}}
 
 	# Additional properties section
 	properties:
-	  {{key: value}}
+	  ${{key: value}}
+  
+  manageAsUser: ${{iamgroot}}
 ```
 
 
-# Attribute configuration
+## Attribute configuration
 
-### **`bundle`**
+## **`bundle`**
 
 **Description:** Bundle-specific section or the mapping containing attributes of Bundle Resource.
 
@@ -120,7 +135,7 @@ schedule:
 
 ---
 
-### **`initialState`**
+#### **`initialState`**
 
 **Description:** The `initialState` attribute defines the starting condition of the Bundle Resource. Setting this attribute to `create` initiates the creation of a new Bundle Resource according to the schedule outlined in the `create` attribute. Conversely, assigning the value `delete` triggers the deletion of an existing Bundle, following the cron schedule specified in the `delete` attribute.
 
@@ -136,7 +151,7 @@ initialState: create
 
 ---
 
-### **`timezone`**
+#### **`timezone`**
 
 **Description:** The timezone attribute specifies the timezone to be used in interpreting the schedule.
 
@@ -157,7 +172,7 @@ timezone: "Eurpoe/Berlin"
 
 ---
 
-### **`create`**
+#### **`create`**
 
 **Description:** The `create` attribute specifies the schedule for creating the Bundle Resource.
 
@@ -182,7 +197,7 @@ create:
 
 ---
 
-### **`cron`**
+#### **`cron`**
 
 **Description:** The `cron` attribute is used to specify a cron expression, a string consisting of five characters, separated by white spaces describing the individual details of the Bundle creation or deletion schedule.
 
@@ -198,7 +213,7 @@ cron: "24 0 * * *" # Cron expression for the time 00:24
 
 ---
 
-### **`delete`**
+#### **`delete`**
 
 **Description:** The `delete` attribute is used to define the deletion schedule for the Bundle Resource.
 
@@ -240,7 +255,7 @@ workspaces:
 
 ---
 
-### **`name`**
+#### **`name`**
 
 **Description:** The `name` attribute is used to specify the name of a Workspace.
 
@@ -256,7 +271,7 @@ name: myworkspace
 
 ---
 
-### **`description`**
+#### **`description`**
 
 **Description:** The `description` attribute is used to provide a description for a Workspace.
 
@@ -272,7 +287,7 @@ description: "This is a description of my workspace."
 
 ---
 
-### **`tags`**
+#### **`tags`**
 
 **Description:** The `tags` attribute is used to specify tags associated with a specific-Workspace.
 
@@ -282,7 +297,7 @@ description: "This is a description of my workspace."
 
 **Additional Details:** Certain tags like `dataos:type:workspace:**`, `dataos:layer:**`, `dataos:workspace:**` are assigned by the DataOS itself for internal discoverability purposes. You can get the list of tags on the DataOS CLI using the following command:
 
-```yaml
+```shell
 dataos-ctl workspace get
 
 # Expected Sample Output
@@ -317,7 +332,7 @@ tags:
 
 ---
 
-### **`labels`**
+#### **`labels`**
 
 **Description:** The `labels` attribute is used to specify key-value labels associated with a Workspace.
 
@@ -335,7 +350,7 @@ labels:
 
 ---
 
-### **`layer`**
+#### **`layer`**
 
 **Description:** The `layer` attribute is used to specify the layer within the User Space where the Bundle Resource belongs.
 
@@ -374,7 +389,7 @@ resources:
 
 ---
 
-### **`id`**
+#### **`id`**
 
 **Description:** The `id` attribute is used to specify the unique identifier of a Resource within the Bundle definition. This identifier is used to create dependencies between different resources within the Bundle.
 
@@ -390,7 +405,7 @@ id: myresource
 
 ---
 
-### **`workspace`**
+#### **`workspace`**
 
 **Description:** The `workspace` attribute is used to specify the name of the workspace associated with a Workspace-level Resource within the Bundle definition.
 
@@ -408,7 +423,7 @@ workspace: myworkspace
 
 ---
 
-### **`dependencies`**
+#### **`dependencies`**
 
 **Description:** The `dependencies` attribute is used to specify a list of Resources referred by their resource `id` on which the current resource depends within the Directed Acyclic Graph (DAG) of resources.
 
@@ -425,7 +440,7 @@ dependencies:
 
 ---
 
-### **`dependencyConditions`**
+#### **`dependencyConditions`**
 
 **Description:** The `dependencyConditions` attribute is a mapping that configures dependency conditions based on status and runtime. By default, if `dependencyConditions` are not specified but a `dependency` is indicated on some Resource, the default condition assumes the status is active.
 
@@ -452,7 +467,7 @@ dependencyConditions:
 
 ---
 
-### **`resourceId`**
+##### **`resourceId`**
 
 **Description:** The `resourceId` attribute designates the unique identifier of a Resource that a given Resource is dependent on. This identifier plays a critical role in establishing dependencies among various resources within the Bundle.
 
@@ -468,23 +483,7 @@ resourceId: myresource
 
 ---
 
-### **`status`**
-
-**Description:** The `status` attribute is used to specify the expected status of a Resource within the Bundle. The status can be evaluated using two different operators: `is` and `contains`.
-
-| Data Type | Requirement | Default Value | Possible Values |
-| --- | --- | --- | --- |
-| mapping | optional | none | none |
-
-**Example Usage:**
-
-```yaml
-status:
-	is:
-		- active
-```
-
-### **`status`**
+##### **`status`**
 
 **Description:** The `status` attribute is employed to define the anticipated status of a Resource within the Bundle. This attribute facilitates the assessment of a Resource's operational condition based on predefined criteria. It utilizes two distinct operators for evaluation: `is` and `contains`. The `is` operator is used to specify an exact match of the Resource's status, while the `contains` operator allows for a more flexible match, indicating that the Resource's status includes one or more specified conditions.
 
@@ -513,7 +512,23 @@ In this example, the `status` attribute is configured to meet conditions where t
 
 ---
 
-### **`is`**
+##### **`runtime`**
+
+**Description:** The `runtime` attribute specifies the execution state or duration of a Resource within the Bundle. It typically indicates the operational phase of the Resource, such as whether it is currently running, completed, or has encountered an error during execution.
+
+| Data Type | Requirement | Default Value | Possible Values |
+| --- | --- | --- | --- |
+| string or time duration format | optional | none | Predefined runtime states like running, succeeded, failed, or specific time durations. |
+
+**Example Usage:**
+
+```yaml
+runtime: succeeded
+```
+
+---
+
+###### **`is`**
 
 **Description:** The `is` attribute is used to specify an exact match condition within a parent attribute structure. It is typically employed to define a precise state or value that a resource or property must match exactly for a condition to be considered true.
 
@@ -532,7 +547,7 @@ In this usage, the `is` attribute lists specific states ('active', 'completed'),
 
 ---
 
-### **`contains`**
+###### **`contains`**
 
 **Description:** The `contains` attribute is used to specify a condition where the presence of one or more values within a larger set satisfies the requirement. Unlike `is`, which demands an exact match, `contains` is used for more flexible matching, allowing for partial or subset matches within a broader context.
 
@@ -552,23 +567,9 @@ In this example, the `contains` attribute lists conditions ('error', 'warning') 
 
 ---
 
-### **`runtime`**
 
-**Description:** The `runtime` attribute specifies the execution state or duration of a Resource within the Bundle. It typically indicates the operational phase of the Resource, such as whether it is currently running, completed, or has encountered an error during execution.
 
-| Data Type | Requirement | Default Value | Possible Values |
-| --- | --- | --- | --- |
-| string or time duration format | optional | none | Predefined runtime states like running, succeeded, failed, or specific time durations. |
-
-**Example Usage:**
-
-```yaml
-runtime: succeeded
-```
-
----
-
-### **`spec`**
+#### **`spec`**
 
 **Description:** The `spec` attribute enables in-line definition of specification or configuration for a Resource within the Bundle. It is particularly useful for defining configurations that are concise or specific to a single Bundle, avoiding the need for external files.
 
@@ -606,13 +607,13 @@ spec:
 ```
 
 <aside>
-🗣 A data developer has the option to either define the complete Resource manifest directly within the `spec` attribute or alternatively, construct a separate file and reference its path using the `file` attribute. This provides flexibility in how Resource configurations are managed and maintained within the Bundle.
+🗣 A data developer has the option to either define the complete Resource manifest directly within the <code>spec</code> attribute or alternatively, construct a separate file and reference its path using the `file` attribute. This provides flexibility in how Resource configurations are managed and maintained within the Bundle.
 
 </aside>
 
 ---
 
-### **`file`**
+#### **`file`**
 
 **Description:** The `file` attribute specifies the path to the Resource specification file associated with the Resource. When a Resource is applied or linted, the contents of the file indicated in the `file` attribute are interpolated within the `spec` attribute. This allows for external configuration of Resource specifications, enabling more dynamic and modular resource management.
 
@@ -642,3 +643,19 @@ file: "/path/to/resource/manifest.yaml"
 properties:
 	alpha: beta
 ```
+
+---
+
+### **`manageAsUser`**
+
+<b>Description:</b> When the <code>manageAsUser</code> attribute is configured with the UserID of the use-case assignee, it grants the authority to perform operations on behalf of that user. <br>
+
+| **Data Type**       | **Requirement** | **Default Value** | **Possible Value**            |
+|-----------------|-------------|---------------|---------------------------|
+| string          | optional    | none          | userID of the Use <br>Case Assignee |
+
+<b>Example Usage:</b>
+```yaml
+manageAsUser: iamgroot 
+```
+---
