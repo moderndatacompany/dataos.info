@@ -53,23 +53,23 @@ At the core of any Benthos Service lies the Service resource section, which is r
 
 ```yaml
 version: v1
-name: {{randomusertest}}
+name: ${{randomusertest}}
 type: service
 service:
-  compute: {{runnable-default}}
-  replicas: {{1}}
-  servicePort: {{8080}}  # dataos port
+  compute: ${{runnable-default}}
+  replicas: ${{1}}
+  servicePort: ${{8080}}  # dataos port
   ingress:
-    enabled: {{true}}
-    path: {{/test007}}   # url path
-    noAuthentication: {{true}}
+    enabled: ${{true}}
+    path: ${{/test007}}   # url path
+    noAuthentication: ${{true}}
     annotations:
       konghq.com/strip-path: "false"
       kubernetes.io/ingress.class: kong
-  stack: {{benthos}}   # dataos stack
-  logLevel: {{DEBUG}}
+  stack: ${{benthos}}   # dataos stack
+  logLevel: ${{DEBUG}}
   tags:
-    - {{service}}
+    - ${{service}}
 ```
 
 For a deeper understanding of Service and its associated YAML configurations, please refer to the [Service](../../service.md) page.
@@ -83,12 +83,12 @@ To configure the Benthos Stack-specific section, you need to configure several c
 ```yaml
 benthos:
   input:
-    {{input-component}}
+    ${{input-component}}
   pipeline:
     processors:
-      {{pipeline-component}}
+      ${{pipeline-component}}
   output:
-    {{output-component}}
+    ${{output-component}}
 ```
 The Benthos Stack-specific Section comprises of several components each of which have been elaborated in detail on the [components](./components.md) page.
 
@@ -100,10 +100,10 @@ The `input` component specifies the configuration for the data source. Here's an
 
 ```yaml
 http_client:
-  url: {{https://randomuser.me/api/}}
-  verb: {{GET}}
+  url: ${{https://randomuser.me/api/}}
+  verb: ${{GET}}
   headers:
-    Content-Type: {{application/JSON}}
+    Content-Type: ${{application/JSON}}
 ```
 
 You can refer to the `http_client` [input](./components/inputs/http_client.md) documentation for more details on available configuration options.
@@ -141,17 +141,17 @@ output:
         pattern: fan_out
         outputs:
         - plugin:
-            address: {{dataos://fastbase:default/test007}}
+            address: ${{dataos://fastbase:default/test007}}
             metadata:
               auth:
                 token:
                   enabled: true
-                  token: {{DataOS-User-API-Key}}
-              description: {{Random users data}}
+                  token: ${{DataOS-User-API-Key}}
+              description: ${{Random users data}}
               format: AVRO
-              schema: {{"{\"name\":\"default\",\"type\":\"record\",\"namespace\":\"defaultNamespace\",\"fields\":[{\"name\":\"age\",\"type\":\"int\"},{\"name\":\"city\",\"type\":\"string\"},{\"name\":\"dob\",\"type\":\"string\"},{\"name\":\"email\",\"type\":\"string\"},{\"name\":\"gender\",\"type\":\"string\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"page\",\"type\":\"int\"},{\"name\":\"seed\",\"type\":\"string\"}]}"}}
+              schema: ${{"{\"name\":\"default\",\"type\":\"record\",\"namespace\":\"defaultNamespace\",\"fields\":[{\"name\":\"age\",\"type\":\"int\"},{\"name\":\"city\",\"type\":\"string\"},{\"name\":\"dob\",\"type\":\"string\"},{\"name\":\"email\",\"type\":\"string\"},{\"name\":\"gender\",\"type\":\"string\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"page\",\"type\":\"int\"},{\"name\":\"seed\",\"type\":\"string\"}]}"}}
               schemaLocation: http://registry.url/schemas/ids/12 
-              title: {{Random Uses Info}}
+              title: ${{Random Uses Info}}
               type: STREAM
           type: dataos_depot
         - stdout: {}
@@ -166,7 +166,7 @@ Feel free to explore the available output options and their configurations in th
 You can apply the YAML file, to create a Service resource within the DataOS environment using the command given below:
 
 ```bash
-dataos-ctl apply -f {{path-of-the-config-file}} -w {{workspace}}
+dataos-ctl apply -f ${{path-of-the-config-file}} -w ${{workspace}}
 ```
 
 ### **Check Topic Consume in Fastbase Depot**
@@ -174,7 +174,7 @@ dataos-ctl apply -f {{path-of-the-config-file}} -w {{workspace}}
 #### **Check Run time**
 
 ```bash
-dataos-ctl -t service -w {{workspace}} -n {{service-name}}  get runtime -r
+dataos-ctl -t service -w ${{workspace}} -n ${{service-name}}  get runtime -r
 # Sample
 dataos-ctl -t service -w public -n pulsar-random  get runtime -r
 ```
@@ -188,13 +188,13 @@ dataos-ctl fastbase tenant list
 #### **List all Namespaces within the Public Tenant**
 
 ```bash
-dataos-ctl fastbase namespace list -t {{tenant}}
+dataos-ctl fastbase namespace list -t ${{tenant}}
 ```
 
 #### **List all topics in public/default namespace**
 
 ```bash
-dataos-ctl fastbase topic list -n {{namespace}}
+dataos-ctl fastbase topic list -n ${{namespace}}
 # Sample
 dataos-ctl fastbase topic list -n public/default
 ```
@@ -202,7 +202,7 @@ dataos-ctl fastbase topic list -n public/default
 #### **Check Topic Consume**
 
 ```bash
-dataos-ctl fastbase topic consume -p -s -t persistent://{{tenant}}/{{namespace}}/{{topic}}
+dataos-ctl fastbase topic consume -p -s -t persistent://${{tenant}}/${{namespace}}/${{topic}}
 # Sample
 dataos-ctl fastbase topic consume -p -s -t persistent://public/default/test12
 ```

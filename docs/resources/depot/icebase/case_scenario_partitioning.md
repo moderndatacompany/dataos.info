@@ -61,8 +61,8 @@ For updating partition, use the below command.
 **Command**
 
 ```shell
-dataos-ctl dataset -a {{udl}} update-partition \
--p "{{partition_type}}:{{column_name}}:{{partition_name}}"
+dataos-ctl dataset -a ${{udl}} update-partition \
+-p "${{partition_type}}:${{column_name}}:${{partition_name}}"
 ```
 
 **Example**

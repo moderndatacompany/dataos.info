@@ -74,17 +74,17 @@ Each of these sections are mappings and comprise several section-specific attrib
 A Workflow is a [Resource-type](../resources/types_of_dataos_resources.md) in DataOS. The Resource section of the YAML configuration file consists of attributes that are common across all resource-types. The following YAML snippet demonstrates the attributes that need to be declared in this section:
 
 ```yaml
-name: {{my-workflow}}
+name: ${{my-workflow}}
 version: v1 
 type: workflow 
 tags: 
-  - {{dataos:type:resource}}
-  - {{dataos:type:workspace-resource}}
-  - {{dataos:resource:workflow}}
-description: {{This is a sample workflow YAML configuration}}
-owner: {{iamgroot}}
+  - ${{dataos:type:resource}}
+  - ${{dataos:type:workspace-resource}}
+  - ${{dataos:resource:workflow}}
+description: ${{This is a sample workflow YAML configuration}}
+owner: ${{iamgroot}}
 workflow: # Workflow-specific Section
-  {{Attributes of Workflow-specific Section}}
+  ${{Attributes of Workflow-specific Section}}
 ```
 <center><i>Resource section configuration</i></center>
 
@@ -101,7 +101,7 @@ A [Single-run Workflow](#single-run-workflow) executes only once. It does not in
 ```yaml
 workflow:
   dag:
-    {{list-of-jobs}}
+    ${{list-of-jobs}}
 ```
 <center><i>Workflow-specific Section configuration for Single-run Workflow</i></center>
 
@@ -111,9 +111,9 @@ A [Scheduled Workflow](#scheduled-workflow) triggers a series of jobs or tasks a
 ```yaml
 workflow:
   schedule:
-    cron: {{'/10 * * * *'}}
+    cron: ${{'/10 * * * *'}}
   dag:
-    {{list-of-jobs}}
+    ${{list-of-jobs}}
 ```
 <center><i>Workflow-specific section configuration for Scheduled Workflow</i></center>
 
@@ -149,27 +149,27 @@ A [Directed Acyclic Graph (DAG)](#workflow-and-directed-acyclic-graph-dag) repre
 A Job denotes a single processing task. Multiple jobs within a DAG can be linked sequentially or concurrently to achieve a specific result through [`dependencies`](./workflow/yaml_configuration_attributes.md#dependency). Here is an example YAML syntax for two jobs linked by dependencies:
 ```yaml
 dag: 
-  - name: {{job1 name}}
+  - name: ${{job1 name}}
     spec: 
-      stack: {{stack1:version}}
-      compute: {{compute name}}
+      stack: ${{stack1:version}}
+      compute: ${{compute name}}
       resources:
         requests:
-          cpu: {{requested cpu}}
-          memory: {{requested memory}}
+          cpu: ${{requested cpu}}
+          memory: ${{requested memory}}
         limits:
-          cpu: {{cpu limits}}
-          memory: {{memory limits}}
+          cpu: ${{cpu limits}}
+          memory: ${{memory limits}}
       stack1: 
-        {{stack1 specific attributes}}
-  - name: {{job2-name}}
+        ${{stack1 specific attributes}}
+  - name: ${{job2-name}}
     spec: 
-      stack: {{stack2:version}}
-      compute: {{compute name}}
+      stack: ${{stack2:version}}
+      compute: ${{compute name}}
       stack2: 
-        {{stack2 specific configuration}}
+        ${{stack2 specific configuration}}
     dependencies: 
-      - {{job1-name}}
+      - ${{job1-name}}
 ```
 <center><i>Job-specific section YAML configuration</i></center>
 
@@ -285,13 +285,13 @@ workflow:
 Once you have constructed the Workflow YAML file, it's time to [apply](../resources.md#apply) it and create the Workflow [Resource](../resources.md) within the DataOS environment. Use the following [`apply`](../interfaces/cli/command_reference.md#apply) command:
 
 ```shell
-dataos-ctl apply -f {{yaml file path}} -w {{workspace}}
+dataos-ctl apply -f ${{yaml file path}} -w ${{workspace}}
 ```
 
 Workspace specification is optional. In case its not provided the Workflow runs in the `public` Workspace. To create a new Workspace, execute the [`workspace create`](../interfaces/cli/command_reference.md#workspace) command as shown below and then execute the above command:
 
 ```shell
-dataos-ctl workspace create -n {{name of your workspace}}
+dataos-ctl workspace create -n ${{name of your workspace}}
 ```
 
 ## How to Monitor a Workflow?
@@ -345,7 +345,7 @@ INFO[0001] 🔍 get...complete
 To obtain the runtime status of the Workflow, use the [`get runtime`](../interfaces/cli/command_reference.md#get-runtime) command:
 
 ```shell
-dataos-ctl get runtime -w {{workspace-name}} -t workflow -n {{name of workflow}}
+dataos-ctl get runtime -w ${{workspace-name}} -t workflow -n ${{name of workflow}}
 ```
 
 Example:
@@ -424,7 +424,7 @@ To check the logs for errors, retrieve the node name from the output of the [`ge
 Command:
 
 ```shell
-dataos-ctl -i "{{copy the name to workspace in the output table from get command}}" --node {{failed node name from get runtime command}} log
+dataos-ctl -i "${{copy the name to workspace in the output table from get command}}" --node ${{failed node name from get runtime command}} log
 ```
 
 Example:
@@ -537,7 +537,7 @@ Before re-running the Workflow, delete the previous version from the environment
 Command
 
 ```shell
-dataos-ctl delete -i "{{name to workspace in the output table from get status command}}"
+dataos-ctl delete -i "${{name to workspace in the output table from get status command}}"
 ```
 
 Example:
@@ -560,7 +560,7 @@ INFO[0003] 🗑 delete...complete
 Command:
 
 ```shell
-dataos-ctl delete -f {{file-path}}
+dataos-ctl delete -f ${{file-path}}
 ```
 
 Example:
@@ -583,7 +583,7 @@ INFO[0001] 🗑 delete...complete
 Command:
 
 ```shell
-dataos-ctl delete -w {{workspace}} -t workflow -n {{workflow name}}
+dataos-ctl delete -w ${{workspace}} -t workflow -n ${{workflow name}}
 ```
 
 Example:
@@ -608,14 +608,14 @@ Run the Workflow again using the [`apply`](../interfaces/cli/command_reference.m
 Command: 
 
 ```shell
-dataos-ctl apply -f {{file path}} -w {{workspace}}
+dataos-ctl apply -f ${{file path}} -w ${{workspace}}
 ```
 Once you have applied the Workflow, check the runtime for its success by using the [`get runtime`](../interfaces/cli/command_reference.md#get-runtime) command
 
 Command:
 
 ```shell
-dataos-ctl get runtime -i "{{copy the name to workspace in the output table from get status command}}" -r
+dataos-ctl get runtime -i "${{copy the name to workspace in the output table from get status command}}" -r
 ```
 
 Example:
@@ -653,7 +653,7 @@ INFO[0002] 🔍 workflow...complete
   cnt-city-demo-999-start-rnnbl       | system   | cnt-city-demo-999-lork-2374735668 | pod-workflow | wait,main               | succeeded
 ```
 
-Make sure to replace `{{name to workspace in the output table from get status command}}` and `{{file path}}` with the actual values according to your Workflow.
+Make sure to replace `${{name to workspace in the output table from get status command}}` and `${{file path}}` with the actual values according to your Workflow.
 
 </details>
 

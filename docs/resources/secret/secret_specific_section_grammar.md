@@ -4,11 +4,11 @@
 
 ```yaml
 secret: 
-  type: {{secret-type}} 
-  acl: {{r|rw}}   
+  type: ${{secret-type}} 
+  acl: ${{r|rw}}   
   data: 
-    {{key1: value1}} 
-    {{key2: value2}} 
+    ${{key1: value1}} 
+    ${{key2: value2}} 
     ...
 ```
 
