@@ -76,13 +76,13 @@ Once the node pool is established, you can associate it with DataOS by configuri
 
 In DataOS, a Compute is classified as a [Resource-type.](./types_of_dataos_resources.md) Below is the YAML configuration for the Resource Section:
 ```yaml
-name: {{my-workflow}}
+name: ${{my-workflow}}
 version: v1 
 type: workflow 
 tags: 
-  - {{dataos:type:resource}}
-description: {{This is a sample workflow YAML configuration}}
-owner: {{iamgroot}}
+  - ${{dataos:type:resource}}
+description: ${{This is a sample workflow YAML configuration}}
+owner: ${{iamgroot}}
 ```
 <center><i>Resource section configuration</i></center>
 
@@ -94,16 +94,16 @@ The Compute-specific Section contains attributes specific to the Compute Resourc
 
 ```yaml
 compute:
-  dataplane: {{hub}}
-  purpose: {{runnable}}
+  dataplane: ${{hub}}
+  purpose: ${{runnable}}
   nodePool:
     nodeSelector:
-      {{"dataos.io/purpose": "runnable"}}
+      ${{"dataos.io/purpose": "runnable"}}
     tolerations:
-      - key: {{"dedicated"}}
-        operator: {{"Equal"}}
-        value: {{"runnable"}}
-        effect: {{"NoSchedule"}}
+      - key: ${{"dedicated"}}
+        operator: ${{"Equal"}}
+        value: ${{"runnable"}}
+        effect: ${{"NoSchedule"}}
 ```
 <center><i>Compute-specific section configuration</i></center>
 
@@ -136,7 +136,7 @@ Additionally, if you are looking for pre-configured Compute templates tailored f
 Once the Compute YAML file is prepared, the [`apply`](../interfaces/cli/command_reference.md#apply) command can be utilized to create a Compute Resource within the DataOS environment.
 
 ```shell
-dataos-ctl apply -f {{path/file-name}}
+dataos-ctl apply -f ${{path/file-name}}
 ```
 
 Upon successful creation of a Compute Resource, [CRUD operations](../resources.md#crud-operations-on-dataos-resources) can be performed on top of it, as well as it can be referenced in Minerva Clusters for query workloads and incorporated into other Resources, such as [Workflow](./workflow.md), [Depot](./depot.md), and [Service](./service.md), using the `compute` attribute.
