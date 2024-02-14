@@ -4,7 +4,7 @@
 > Supported in both Flare Stack Versions `flare:3.0` and `flare:4.0`.
 > 
 
-The `expire_snapshots` [action](../configurations/actions.md#expire-snapshots) expires amassed snapshots. Expiring old snapshots removes them from metadata, so they are no longer available for time travel queries. Data files are not deleted until they are no longer referenced by a snapshot that may be used for time travel or rollback. Regularly expiring snapshots deletes unused data files.
+The `expire_snapshots` [action](../configurations.md#expire_snapshots) expires amassed snapshots. Expiring old snapshots removes them from metadata, so they are no longer available for time travel queries. Data files are not deleted until they are no longer referenced by a snapshot that may be used for time travel or rollback. Regularly expiring snapshots deletes unused data files.
 
 ## Code Snippet
 
