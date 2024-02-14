@@ -1,6 +1,6 @@
 # Scheduled or Cron Workflow
 
-The following code snippet illustrates a [Workflow](../workflow.md) involving a [Flare Stream Job](../stacks/flare/job_types.md#stream-job) that reads data from the <code>thirdparty01</code> [depot](../depot.md) in [streaming mode](../stacks/flare/case_scenario.md#stream-jobs) and subsequently writes to the [<code>eventhub</code>](../stacks/flare/configuration_templates/eventhub.md) [depot](../depot.md). During this process, all intermediate streams of data batches are stored at the location specified in the [<code>checkpointLocation</code>](../stacks/flare/configurations/streaming.md#checkpointlocation) attribute.
+The following code snippet illustrates a [Workflow](../workflow.md) involving a [Flare Stream Job](../stacks/flare.md#stream-job) that reads data from the <code>thirdparty01</code> [depot](../depot.md) in [streaming mode](../stacks/flare/case_scenario.md#stream-jobs) and subsequently writes to the [<code>eventhub</code>](../stacks/flare/configuration_templates/eventhub.md) [depot](../depot.md). During this process, all intermediate streams of data batches are stored at the location specified in the [<code>checkpointLocation</code>](../stacks/flare/configurations.md#checkpointlocation) attribute.
 
 <details><summary>Click here to view the code snippet</summary>
 
