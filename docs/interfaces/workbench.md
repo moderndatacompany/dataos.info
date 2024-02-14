@@ -52,6 +52,10 @@ Now choose the fields per your intentions. Once done, click Generate SQL.
 
 The prepend toggle allows you to keep the previous SQL statements in the query pane while generating the new statements. To remove previously generated SQL statements, disable prepend.
 
+>
+In Workbench, you can comment out multiple lines of SQL statement by starting with `/*` and ending with ` */`. Any text between `/*` and ` */` will be ignored. You can also highlight multiple lines and press `Ctrl+Shift+?` (Windows, Linux) or `Command+Shift+?` to comment/uncomment.</aside>
+>
+
 One can now directly export the results of the query to a BI tool. Refer to the Atlas section to learn more.
 
 ### **Atlas**

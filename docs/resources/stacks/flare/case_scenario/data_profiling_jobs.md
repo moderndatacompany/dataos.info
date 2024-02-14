@@ -2,7 +2,7 @@
 
 ## Case Scenario
 
-In this case scenario, we perform data profiling on an entire dataset and filter it according to some appropriate rules. To learn more about Data Profiling, click [here](../job_types.md#data-profiling-job)
+In this case scenario, we perform data profiling on an entire dataset and filter it according to some appropriate rules. To learn more about Data Profiling, click [here](../../flare.md#data-profiling-job)
 
 ## Key Properties for Profile Job
 

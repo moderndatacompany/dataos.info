@@ -103,7 +103,7 @@ To learn more about the attributes of <a href="/resources/worker/">Worker</a> Re
 
 ### **Declare the configuration for Soda `stackSpec` section**
 
-The [Workflow](../workflow.md) and [Worker](../worker.md) Resouce comprise of a [`stackSpec`](./soda/yaml_attributes.md#stackspec) section (or a mapping) that comprises the attributes of the Stack to be orchestrated. In the context of Soda Stack, the StackSpec defines diverse datasets and their associated Soda checks. 
+The [Workflow](../workflow.md) and [Worker](../worker.md) Resource comprise of a [`stackSpec`](./soda/yaml_attributes.md#stackspec) section (or a mapping) that comprises the attributes of the Stack to be orchestrated. In the context of Soda Stack, the StackSpec defines diverse datasets and their associated Soda checks. 
 
 The YAML snippet below shows a sample structure of the Soda [`stackSpec`](./soda/yaml_attributes.md#stackspec) section:
 
@@ -190,7 +190,8 @@ stackSpec:
 
 stackSpec:
   inputs:
-    - checks:
+    - dataset: dataos://icebase:retail/customer
+      checks:
       - freshness (start_date) < 1d
       # ...other inputs attributes
 

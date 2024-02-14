@@ -538,7 +538,7 @@ Let's take an example where we aim to find the monthly active users, and we want
 
 ```yaml
 measures:
-	- name: monthly_active_user
+  - name: monthly_active_user
     type: count
     sql_snippet: case when month(${visitedcampaign.ts_}) = {{month:2}}  then entity_id else null end
 ```
