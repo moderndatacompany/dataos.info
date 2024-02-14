@@ -112,7 +112,7 @@ This section describes the SQL syntax used in Minerva. A reference to the suppo
 -->
 <!--[SHOW ROLE GRANTS](./sql_syntaxes/show_role_grants.md)-->
 
-[SHOW ROLES](./sql_syntaxes/show_roles.md)
+<!-- [SHOW ROLES](./sql_syntaxes/show_roles.md) -->
 
 [SHOW SCHEMAS](./sql_syntaxes/show_schemas.md)
 

@@ -205,7 +205,7 @@ Computes only the changed rows or files of data since the last build, reducing o
 
 ### **Rewrite Orphans**
 
-The `remove_orphans` [action](./configurations/actions.md#remove-orphans) cleans up orphans files older than a specified time period. This action may take a long time to finish if you have lots of files in data and metadata directories. It is recommended to execute this periodically, but you may not need to execute this often. 
+The `remove_orphans` [action](./configurations.md#remove_orphans) cleans up orphans files older than a specified time period. This action may take a long time to finish if you have lots of files in data and metadata directories. It is recommended to execute this periodically, but you may not need to execute this often. 
 
 <aside>
 
@@ -259,7 +259,7 @@ workflow:
 
 ### **Rewrite Dataset**
 
-The [`rewrite_dataset`](./configurations/actions.md#rewrite-dataset) action provided by DataOS allows for the parallel compaction of data files in Iceberg tables using Flare. This action efficiently reduces the size of data files to meet the specified target file size in bytes, as defined in the YAML configuration.
+The [`rewrite_dataset`](./configurations.md#rewrite_dataset) action provided by DataOS allows for the parallel compaction of data files in Iceberg tables using Flare. This action efficiently reduces the size of data files to meet the specified target file size in bytes, as defined in the YAML configuration.
 
 <details><summary>Case Scenario</summary>
 
