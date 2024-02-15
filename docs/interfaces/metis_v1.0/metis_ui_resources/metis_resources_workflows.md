@@ -141,11 +141,11 @@ Click on a job to learn more about the following:
 
 This section represents the Dag (of Transformations)**,** outlining the steps defined in the Flare job. It may include one or more sequences for executing the steps necessary for performing transformations or applying Flare functions or commands. Each intermediate step in a sequence may generate a view referenced in subsequent actions or outputs. Here, users can view these sequences, SQL statements, and Flare functions used for transformations. 
 
-![image](metis_resources_workflows/wf_job_topologÿ.png)
+![image](metis_resources_workflows/wf_job_topology.png)
 
 - Clicking on the **SQL statement** will display the following details on the side pane:
     
-    ![image](metis_resources_workflows/wf_job_topologÿ_sql.png)
+    ![image](metis_resources_workflows/wf_job_topology_sql.png)
     
     | Attribute | Description |
     | --- | --- |
@@ -156,7 +156,7 @@ This section represents the Dag (of Transformations)**,** outlining the steps de
     | Depends | Specifies the dependency |
 - Clicking on the **data frame (intermediate view)** will display the following details on the side pane:
     
-    ![image](metis_resources_workflows/wf_job_topologÿ_frame.png)
+    ![image](metis_resources_workflows/wf_job_topology_frame.png)
     | Attribute | Description |
     | --- | --- |
     | Name | Name of the underlying selected entity |
