@@ -5,7 +5,7 @@
 
 This case scenario describes a situation where your data source contains a large amount of data that are continuously updated. Reloading the entire data set can be time-consuming. So you want only to read new data, hence we would be using the incremental job or the incremental load method. The incremental load method (incremental job) is more efficient as compared to full data load (batch job) when working with a huge volume of data. 
 
-To know more about an Incremental Job, click [here](../job_types.md#incremental-job)
+To know more about an Incremental Job, click [here](../../flare.md#incremental-job)
 
 ## Implementation Flow
 

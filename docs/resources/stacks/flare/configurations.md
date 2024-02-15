@@ -1128,7 +1128,7 @@ stackSpec:
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| string | mandatory | none | partition |
+| string | mandatory | none | partition / global |
 
 **Additional Details:** In `partition` mode, chunk of data or logical division of data are stored on a node in the cluster in Iceberg kind of dataset.
 
