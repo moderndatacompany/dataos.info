@@ -9,7 +9,7 @@ SQL Functions by Topic
 
 ## Aggregate
 
-For more details, see {doc}`aggregate`
+For more details, see [aggregate function](./functions_and_operators/aggregate.md)
 
 - `any_value`
 - `approx_distinct`
