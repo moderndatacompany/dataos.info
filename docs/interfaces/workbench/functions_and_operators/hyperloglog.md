@@ -45,7 +45,7 @@ WHERE visit_date >= current_date - interval '7' day;
 | ---------------- | -------------------------------------------------------------------------------------------------------------------- | ------------- |
 | `approx_set(x)`  | Returns the HyperLogLog sketch of the input data set `x`. This data sketch underlies `approx_distinct()` and can be stored and used later by calling `cardinality()`. | `HyperLogLog` |
 
-### **`cardinality(hll)`**
+### **`cardinality()`**
 
 | Function         | Description                                           | Return Type   |
 | ---------------- | ----------------------------------------------------- | ------------- |

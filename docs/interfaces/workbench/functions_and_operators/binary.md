@@ -1,5 +1,5 @@
 # Binary functions and operators
-
+    
 ## Binary operators
 
 
