@@ -505,7 +505,7 @@ When a Bundle Resource is deleted, it triggers the removal of all resources asso
 
 Before deleting the Bundle, you must delete all workloads or resources that are dependent on it. This step ensures that there are no dependencies left that could cause issues during deletion. Once it's done, use the `delete` command to remove the specific Bundle Resource-instance from the DataOS environment:
 
-```yaml
+```shell
 # METHOD 1
 dataos-ctl delete -t bundle -n ${{name of bundle}}
 # Sample
@@ -517,7 +517,7 @@ dataos-ctl delete -i "${{identifier string for a resource}}"
 dataos-ctl delete -i "my-bundle | v1beta | bundle |      "
 ```
 
-<aside>
+<aside class="callout">
 🗣 When deleting a Bundle Resource, the order of resource deletion is reversed from the order of applying. This is done to ensure that resources with dependencies are not deleted before their dependencies, preventing errors or inconsistencies.
 
 </aside>
