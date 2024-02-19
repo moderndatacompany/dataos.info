@@ -126,6 +126,6 @@ FROM
   )
 ```
 ## LQL Errors and Solutions
-When you run a Lens query, you may encounter some errors due to which Lens query may not work. Refer to the following document for the common errors and their solutions.
+When you run a Lens query on Workbench, Notebook or any other interface like BI tools, you might come across errors concerning syntax or case sensitivity in date filters. These issues can prevent the Lens query from functioning properly. Refer to the following document for the common errors and their solutions.
 
 [LQL Common Errors](lens_error.md)
