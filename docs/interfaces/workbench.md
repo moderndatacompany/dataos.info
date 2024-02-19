@@ -34,7 +34,7 @@ Now you are ready to start writing and running the queries. Workbench uses Trino
 
 Find the list of all the functions supported by Minerva.
 
-[Minerva SQL Functions and Operators](workbench/functions_and_operators.md).
+[Minerva SQL Functions and Operators](workbench/minerva_sql_functions_and_operators.md).
 
 
 ## Workbench Features

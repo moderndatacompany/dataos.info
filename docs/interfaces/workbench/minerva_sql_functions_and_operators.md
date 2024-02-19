@@ -4,10 +4,12 @@ This section provides a comprehensive overview of the SQL functions and operator
 
 Refer to the following sections for further details:
 
-Alphabetical list of Minerva SQL Funcions
-SQL Functions by Topic
+[Minerva SQL Functions and Operators: Alphabetical Reference](functions_and_operators.md)
 
-## Aggregate
+
+## Minerva SQL Functions by Topic
+
+### **Aggregate**
 
 For more details, see [aggregate function](./functions_and_operators/aggregate.md)
 
@@ -57,7 +59,7 @@ For more details, see [aggregate function](./functions_and_operators/aggregate.m
 - [`var_samp`](./functions_and_operators/aggregate.md#var_samp)
 - [`reduce_agg`](./functions_and_operators/aggregate.md#reduce_agg)
 
-## Array
+### **Array**
 
 For more details, see [`array`](./functions_and_operators/array.md)
 
@@ -97,7 +99,7 @@ For more details, see [`array`](./functions_and_operators/array.md)
 - [`zip_with`](./functions_and_operators/array.md#zip_with)
 
 
-## Binary
+### **Binary**
 
 For more details, see [`binary`](./functions_and_operators/binary.md)
 
@@ -139,7 +141,7 @@ For more details, see [`binary`](./functions_and_operators/binary.md)
 - [`xxhash64`](./functions_and_operators/binary.md#hashing-function)
 
 
-## Bitwise
+### **Bitwise**
 
 For more details, see {doc}`bitwise`
 
@@ -153,7 +155,7 @@ For more details, see {doc}`bitwise`
 - [`bitwise_xor`](./functions_and_operators/bitwise.md#bitwise_xor)
 
 
-## Color
+### **Color**
 
 For more details, see [`color`](./functions_and_operators/color.md)
 
@@ -162,14 +164,14 @@ For more details, see [`color`](./functions_and_operators/color.md)
 - [`render`](./functions_and_operators/color.md#render)
 - [`rgb`](./functions_and_operators/color.md#rgb)
 
-## Comparison
+### **Comparison**
 
 For more details, see {doc}`comparison`
 
 - [`greatest`](./functions_and_operators/comparison.md#greatest)
 - [`least`](./functions_and_operators/comparison.md#least)
 
-## Conditional
+### **Conditional**
 
 For more details, see {doc}`conditional`
 
@@ -179,7 +181,7 @@ For more details, see {doc}`conditional`
 - [`nullif`](./functions_and_operators/conditional.md#nullif)
 - [`try`](./functions_and_operators/conditional.md#try)
 
-## Conversion
+### **Conversion**
 
 For more details, see [`conversion`](./functions_and_operators/conversion.md)
 
@@ -188,7 +190,7 @@ For more details, see [`conversion`](./functions_and_operators/conversion.md)
 - [`try_cast`](./functions_and_operators/conversion.md#try_cast)
 - [`typeof`](./functions_and_operators/conversion.md#typeof)
 
-## Date and time
+### **Date and time**
 
 For more details, see [`datetime`](./functions_and_operators/datetime.md)
 
@@ -208,7 +210,7 @@ For more details, see [`datetime`](./functions_and_operators/datetime.md)
 - [`format_datetime`](./functions_and_operators/datetime.md#format_datetime(timestamp, format))
 
 
-## Geospatial
+### **Geospatial**
 
 For more details, see {doc}`geospatial`
 
@@ -293,7 +295,7 @@ For more details, see {doc}`geospatial`
 - `to_geometry`
 - `to_spherical_geography`
 
-## HyperLogLog
+### **HyperLogLog**
 
 For more details, see [`hyperloglog`](./functions_and_operators/hyperloglog.md)
 
@@ -303,7 +305,7 @@ For more details, see [`hyperloglog`](./functions_and_operators/hyperloglog.md)
 - [`merge`](./functions_and_operators/aggregate.md#merge)
 
 
-## JSON
+### **JSON**
 
 For more details, see `json`
 
@@ -322,7 +324,7 @@ For more details, see `json`
 - `json_size`
 - {ref}`json_value() <json-value>`
 
-## Lambda
+### Lambda
 
 For more details, see [`lambda`](./functions_and_operators/lambda.md)
 
@@ -332,7 +334,7 @@ For more details, see [`lambda`](./functions_and_operators/lambda.md)
 - `regexp_replace`
 - `transform`
 
-## Machine learning
+### **Machine Learning**
 
 For more details, see [`ml`](./functions_and_operators/machine_learning.md)
 
@@ -344,7 +346,7 @@ For more details, see [`ml`](./functions_and_operators/machine_learning.md)
 - [`learn_regressor`](./functions_and_operators/machine_learning.md#learn_regressor)
 - [`regress`](./functions_and_operators/machine_learning.md#regress)
 
-## Map
+### Map
 
 For more details,[`map`](./functions_and_operators/map.md)
 
@@ -362,7 +364,7 @@ For more details,[`map`](./functions_and_operators/map.md)
 - [`transform_keys`](./functions_and_operators/map.md#transform_keys)
 - [`transform_values`](./functions_and_operators/map.md#transform_values)
 
-## Math
+### **Math**
 
 For more details, see - [`abs`](./functions_and_operators/math.md#abs)
 - [`acos`](./functions_and_operators/math.md#acos)
@@ -410,7 +412,7 @@ For more details, see - [`abs`](./functions_and_operators/math.md#abs)
 - [`wilson_interval_lower`](./functions_and_operators/math.md#wilson_interval_lower)
 - [`wilson_interval_upper`](./functions_and_operators/math.md#wilson_interval_upper)
 
-## Quantile digest
+### **Quantile Digest**
 
 For more details, see [`qdigest`](./functions_and_operators/quantile_digest.md)
 
@@ -420,7 +422,7 @@ For more details, see [`qdigest`](./functions_and_operators/quantile_digest.md)
 - [`values_at_quantiles`](./functions_and_operators/quantile_digest.md#values_at_quantiles)
 
 
-## Regular expression
+### **Regular Expression**
 
 For more details, see [`regexp`](./functions_and_operators/regular_expression.md)
 
@@ -433,7 +435,7 @@ For more details, see [`regexp`](./functions_and_operators/regular_expression.md
 - [`regexp_split`](./functions_and_operators/regular_expression.md#regexp_split)
 
 
-## Row pattern recognition expressions
+### **Row Pattern Recognition Expressions**
 
 - {ref}`classifier <classifier-function>`
 - {ref}`first <logical-navigation-functions>`
@@ -443,7 +445,7 @@ For more details, see [`regexp`](./functions_and_operators/regular_expression.md
 - {ref}`permute <permute-function>`
 - {ref}`prev <physical-navigation-functions>`
 
-## Session
+### **Session**
 
 For more details, see [`session`](./functions_and_operators/session_information.md)
 
@@ -453,7 +455,7 @@ For more details, see [`session`](./functions_and_operators/session_information.
 - [`current_user`](./functions_and_operators/session_information.md#current_user)
 
 
-## Set Digest
+### **Set Digest**
 
 For more details, see [`setdigest`](./functions_and_operators/set_digest.md)
 
@@ -465,7 +467,7 @@ For more details, see [`setdigest`](./functions_and_operators/set_digest.md)
 - [`hash_counts`](./functions_and_operators/set_digest.md#hash_counts)
 
 
-## String
+### **String**
 
 For more details, see [`string`](./functions_and_operators/string.md)
 - [`chr`](./functions_and_operators/string.md#chr)
@@ -502,13 +504,13 @@ For more details, see [`string`](./functions_and_operators/string.md)
 - [`upper`](./functions_and_operators/string.md#upper)
 - [`word_stem`](./functions_and_operators/string.md#word_stem)
 
-## System
+### **System**
 
 For more details, see [`system`](./functions_and_operators/system.md)
 
 - [`version`](./functions_and_operators/system.md#version)
 
-## T-Digest
+### **T-Digest**
 
 For more details, see [`tdigest`](./functions_and_operators/t_digest.md)
 
@@ -517,7 +519,7 @@ For more details, see [`tdigest`](./functions_and_operators/t_digest.md)
 - [`value_at_quantile()`](./functions_and_operators/t_digest.md#value_at_quantile)
 
 
-## Teradata
+### **Teradata**
 
 For more details, see [`teradata`](./functions_and_operators/teradata.md)
 
@@ -528,7 +530,7 @@ For more details, see [`teradata`](./functions_and_operators/teradata.md)
 - [`to_date`](./functions_and_operators/teradata.md#to_date)
 
 
-## URL
+### **URL**
 
 For more details, see [`url`](./functions_and_operators/url.md)
 
@@ -543,13 +545,13 @@ For more details, see [`url`](./functions_and_operators/url.md)
 - [`url_extract_query`](./functions_and_operators/url.md#url_extract_query)
 
 
-## UUID
+### **UUID**
 
 For more details, see [`uuid`](./functions_and_operators/uuid.md)
 
 - [`uuid`](./functions_and_operators/uuid.md#uuid)
 
-## Window
+### **Window**
 
 For more details, see [`window`](./functions_and_operators/window.md)
 
