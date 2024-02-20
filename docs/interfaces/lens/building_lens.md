@@ -77,6 +77,7 @@ This forms the foundation for our Lens definition. Data engineers will expand up
 <Details><summary>Example YAML for Retail Supply Chain Data Model</summary><br>
 
 <b>Data Model YAML</b>
+
 ```yaml
 contract:
   name: supply_chain
@@ -164,7 +165,9 @@ contract:
           - name: total_products
             type: count
 ```
+
 </details>
+
 ## Defining Lens
 
 Once your logical data model is in place, data engineers can start referring to it to construct Lens. Lens maps the attributes to the physical data.
