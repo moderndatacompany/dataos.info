@@ -2,6 +2,8 @@
 
 DataOS Workbench is a web-based data exploration tool that allows you to run SQL queries on heterogeneous data sources simultaneously. It is backed by the Minerva query engine (built on top of Trino), hence it is ANSI SQL compliant. Workbench allows you to run simple & complex queries on all sorts of relational databases.
 
+## Cluster Selection
+
 Upon opening the Workbench app, the first step is to select the Minerva cluster you wish to use. This cluster is committed to executing SQL scripts , and its selection is based on the specific computing requirements. The on-demand compute provisioning in Minerva enables you to meet the fluctuating computational requirements of your data assets. The availability of datasets for query is dependent on the inclusion of depots and catalogs within the Minerva cluster.
 
 ![Cluster selection](workbench/select_cluster.png)
@@ -14,6 +16,7 @@ In the details of the Minerva cluster, one will see the names of the data source
 🗣 If you cannot locate the required name within the Catalogs list, you can request the  admin or operator(a user with the operator tag) to add it to the Minerva cluster you are currently utilizing. Alternatively, an operator or admin has the capability to create a new cluster exclusively for the data sources you wish to use. This approach ensures that the execution of complex queries does not impact the computational resources of existing clusters.
 </aside>
 
+## Querying Data
 The next step is to select the names of the `Catalog`, `Schema`, and `Table` where the data is located. 
 
 ![workbench_homepage.png](workbench/workbench_homepage.png)
@@ -31,7 +34,7 @@ Now you are ready to start writing and running the queries. Workbench uses Trino
 
 Find the list of all the functions supported by Minerva.
 
-[Functions and Operators](workbench/functions_and_operators.md).
+[Minerva SQL Functions and Operators](workbench/minerva_sql_functions_and_operators.md).
 
 
 ## Workbench Features

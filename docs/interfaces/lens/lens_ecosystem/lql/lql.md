@@ -3,6 +3,7 @@ Lens Query Language (LQL) is a low code SQL (Structured Query Language) that’s
 
 In addition to specifying the Lens to query, the lens grammar primarily consists of straightforward abstract SQL functions.
 
+## Clauses
 | LQL Clause | Description |
 | --- | --- |
 | SELECT | Just like in SQL, you can select the entity.dimensions or entity.measures that will appear in the resulting view. |
@@ -15,7 +16,7 @@ In addition to specifying the Lens to query, the lens grammar primarily consists
 | LIMIT | To limit the number of rows count returned. |
 | OFFSET | The offset rows are skipped before the rows after offset is returned. |
 
-**Keywords to Specify Range**
+## Keywords to Specify Range
 
 To aptly define the range, you can use any of the following keywords -
 
@@ -27,7 +28,11 @@ To aptly define the range, you can use any of the following keywords -
 - `last days` | `week` | `year` | `month` | `quarter`
 
 
-Just like in SQL, you can use Group By, Order By, Limit, and Offset to further group, order, and limit your resulting view. Below is an example of a Lens query that extracts quantities sold and revenue generated in Beach, Fort, and Somerset cities.
+<aside class=callout>
+🗣 Just like in SQL, you can use Group By, Order By, Limit, and Offset to further group, order, and limit your resulting view. </aside>
+
+### **Lens Query Example**
+Below is an example of a Lens query that extracts quantities sold and revenue generated in Beach, Fort, and Somerset cities.
 
 ```sql
 LENS (
@@ -120,3 +125,7 @@ FROM
       50
   )
 ```
+## LQL Errors and Solutions
+When you run a Lens query on Workbench, Notebook or any other interface like BI tools, you might come across errors concerning syntax or case sensitivity in date filters. These issues can prevent the Lens query from functioning properly. Refer to the following document for the common errors and their solutions.
+
+[LQL Common Errors](lens_error.md)
