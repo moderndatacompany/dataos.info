@@ -9,7 +9,7 @@ This documentation aims to help users understand and address common errors encou
 
 An ambiguous error may occur when copying LQL containing measures/dimensions, typically due to a space between the "(" symbol and the word "PARAMS." This can result in syntax errors, impacting query functionality.
 
-![Ambiguous error due to space](error_due_to_space.png)
+![Ambiguous error due to space](lens_error/error_due_to_space.png)
 
 Ambiguous error due to space
 
@@ -17,7 +17,7 @@ Ambiguous error due to space
 
 To resolve this error, remove the space between the "(" symbol and the word "PARAMS" in the LQL query. This modification should rectify the syntax error and make the query functional again. 
 
-![solution_remove_space.png](solution_remove_space.png)
+![solution_remove_space.png](lens_error/solution_remove_space.png)
 
 Here's how the LQL query should look after this modification:
 
@@ -48,14 +48,14 @@ FROM
 
 In LQL, using uppercase keywords like "AFTER" in date filters may lead to errors, as the system expects these keywords to be in lowercase.
 
-![Error due to uppercase keywords](syntax_error.png)
+![Error due to uppercase keywords](lens_error/syntax_error.png)
 
 Error due to uppercase keywords
 
 ### **Suggested Solution**
 Ensure keywords like "AFTER" and “BEFORE” are in lowercase. Modify the LQL query accordingly:
 
-![solution_changecase.png](solution_changecase.png)
+![solution_changecase.png](lens_error/solution_changecase.png)
 
 Here's how the LQL query should look after this modification:
 
@@ -85,7 +85,7 @@ FROM
 
 Performing operations inside LQL subqueries from the DataOS Workbench can result in syntax errors, especially if not using the specified syntax for LQL queries.
 
-![Error due to renaming of column inside the sub query](rename_inside_subquery.png)
+![Error due to renaming of column inside the sub query](lens_error/rename_inside_subquery.png)
 
 Error due to renaming of column inside the sub query
 
@@ -93,7 +93,7 @@ Error due to renaming of column inside the sub query
 
 Follow the correct syntax for operations like renaming columns, casting functions, or using range functions in LQL queries. Ensure these operations are executed outside the sub-query to avoid syntax errors.
 
-![Rename and cast operations outside the sub-query](solution_rename.png)
+![Rename and cast operations outside the sub-query](lens_error/solution_rename.png)
 
 Rename and cast operations outside the sub-query
 
@@ -151,11 +151,11 @@ The problem seems to be arising due to there being no space between the "(" symb
 
 The issue likely arises because there is no space between the "(" symbol and the word "RANGE." This absence of space can cause a syntax error. 
 
-![Error due to no space after RANGE keyword](error_range.png)
+![Error due to no space after RANGE keyword](lens_error/error_range.png)
 
 Error due to no space after RANGE keyword
 
-![solution_add_space.png](solution_add_space.png)
+![solution_add_space.png](lens_error/solution_add_space.png)
 
 ### **Suggested Solution**
 

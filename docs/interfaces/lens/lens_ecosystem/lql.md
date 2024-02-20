@@ -48,7 +48,7 @@ LENS (
             OR "orderLine.quantities" > 1600
         )
     DATE 'order.order_datetime' 
-    [RANGE](https://www.notion.so/bc856a40241649738dc8b73ffea2e536?pvs=21) ('last quarter') 
+    RANGE ('last quarter') 
     GRANULARITY ('week') 
     TIMEZONE ('Asia/Kolkata')
     GROUP BY 'retailer.state'
@@ -128,4 +128,4 @@ FROM
 ## LQL Errors and Solutions
 When you run a Lens query on Workbench, Notebook or any other interface like BI tools, you might come across errors concerning syntax or case sensitivity in date filters. These issues can prevent the Lens query from functioning properly. Refer to the following document for the common errors and their solutions.
 
-[LQL Common Errors](lens_error.md)
+[LQL Common Errors](lql/lens_error.md)
