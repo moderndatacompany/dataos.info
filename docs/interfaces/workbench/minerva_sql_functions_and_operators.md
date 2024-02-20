@@ -326,7 +326,7 @@ For more details, see `json`
 
 ### Lambda
 
-For more details, see [`lambda`](./functions_and_operators/lambda.md)
+<!-- For more details, see [`lambda`](./functions_and_operators/lambda.md) -->
 
 
 - `any_match`
