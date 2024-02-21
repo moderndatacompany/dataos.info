@@ -34,7 +34,7 @@ input:
         resource: foobar
 ```
 
-You can find out more about resources in this document.
+You can find out more about resources in this [document](../configurations/resources.md).
 
 |Name|Tags|
 |---|---|
