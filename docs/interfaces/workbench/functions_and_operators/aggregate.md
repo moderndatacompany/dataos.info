@@ -74,8 +74,14 @@ FROM your_table;
 | -------------------- | -------------------------------------------------------------------------------------------- | ------------ |
 | `max(x)`             | Computes the maximum value among all input values.                                           | `<same as input>` |
 | `max(x, n)`          | Retrieves the n largest values from all input values of `x`.                                    | `array<[same as input]>` |
-| `max_by(x, y)`       | Obtains the value of `x` associated with the maximum value of `y` across all input values.        | `<same as x>` |
-| `max_by(x, y, n)`    | Retrieves n values of `x` associated with the n largest values of `y` in descending order of `y`.   | `array<[same as x]>` |
+
+### **`max_by()`**
+
+| Function           | Description                                              | Return Type          |
+|--------------------|----------------------------------------------------------|----------------------|
+| `max_by(x, y)`     | Obtains the value of `x` associated with the maximum value of `y`. | `<same as x>`        |
+| `max_by(x, y, n)`  | Retrieves n values of `x` associated with the n largest values of `y`. | `array<[same as x]>` |
+
 
 ### **`min()`**
 
@@ -83,8 +89,15 @@ FROM your_table;
 | -------------------- | -------------------------------------------------------------------------------------------- | ------------ |
 | `min(x)`             | Computes the minimum value among all input values.                                           | `<same as input>` |
 | `min(x, n)`          | Retrieves the n smallest values from all input values of x.                                   | `array<[same as input]>` |
-| `min_by(x, y)`       | Obtains the value of `x` associated with the minimum value of `y` across all input values.        | `<same as x>` |
-| `min_by(x, y, n)`    | Retrieves n values of x associated with the n smallest values of `y` in ascending order of `y`.   | `array<[same as x]>` |
+
+
+### **`min_by`**
+
+| Function           | Description                                              | Return Type          |
+|--------------------|----------------------------------------------------------|----------------------|
+| `min_by(x, y)`     | Obtains the value of `x` associated with the minimum value of `y`. | `<same as x>`        |
+| `min_by(x, y, n)`  | Retrieves n values of `x` associated with the n smallest values of `y` in ascending order of `y`. | `array<[same as x]>` |
+
 
 ### **`sum()`**
 
@@ -104,26 +117,26 @@ FROM your_table;
 
 ## Map aggregate functions
 
-### **`histogram(x)`**
+### **`histogram()`**
 
 | Function         | Description                                                                      | Return Type  |
 | ---------------- | -------------------------------------------------------------------------------- | ------------ |
 | `histogram(x)`   | Generates a map containing the count of occurrences for each input value.         | `map<K,bigint>` |
 
-### **`map_agg(key, value)`**
+### **`map_agg()`**
 
 | Function             | Description                                       | Return Type  |
 | -------------------- | ------------------------------------------------- | ------------ |
 | `map_agg(key, value)` | Generates a map created from the input key/value pairs. | `map<key, value>` |
 
 
-### **`map_union(x(K, V))`**
+### **`map_union()`**
 
 | Function                 | Description                                                  | Return Type  |
 | ------------------------ | ------------------------------------------------------------ | ------------ |
 | `map_union(x(K, V))`     | Obtains the union of all input maps. If a key is present in multiple input maps, the value in the resulting map is selected arbitrarily from one of the input maps. | `map<K, V>` |
 
-### **`multimap_agg(key, value)`**
+### **`multimap_agg()`**
 
 | Function                       | Description                                                                                      | Return Type  |
 | ------------------------------ | ------------------------------------------------------------------------------------------------ | ------------ |
@@ -141,7 +154,7 @@ FROM your_table;
 | `approx_distinct(x, e)`    | Returns the approximate count of distinct non-null values in the input set `x`. Zero is returned if all input values are null. The standard error is no more than `e`, with `e` in the range of [0.0040625, 0.26000]. | `bigint`     |
 
 
-### **`approx_most_frequent(buckets, value, capacity)`**
+### **`approx_most_frequent()`**
 
 | Function               | Description                                                                                                      | Return Type  |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------- | ------------ |
@@ -149,7 +162,7 @@ FROM your_table;
 
 
 
-### **`approx_percentile(x, percentage)`**
+### **`approx_percentile()`**
 
 | Function                                      | Description                                                                                                         | Return Type  |
 | ----------------------------------------------|---------------------------------------------------------------------------------------------------------------------| ------------ |
@@ -205,86 +218,86 @@ A T-digest is a data sketch specifically crafted to store approximate percentile
 ## Statistical aggregate functions
 
 
-**`corr(y, x)`**
+**`corr()`**
 
 | Function        | Description                                    | Return Type            |
 |-----------------|------------------------------------------------|------------------------|
 | `corr(y, x)`    | Returns the correlation coefficient of input values `y` and `x`. | `double`    |
 
-### **`covar_pop(y, x)`**
+### **`covar_pop()`**
 
 | Function              | Description                                           | Return Type            |
 |-----------------------|-------------------------------------------------------|------------------------|
 | `covar_pop(y, x)`     | Returns the population covariance of input values `y` and `x`. | `double`    |
 
 
-### **`covar_samp(y, x)`**
+### **`covar_samp()`**
 
 | Function               | Description                                           | Return Type            |
 |------------------------|-------------------------------------------------------|------------------------|
 | `covar_samp(y, x)`     | Returns the sample covariance of input values `y` and `x`. | `double`    |
 
 
-### **`kurtosis(x)`**
+### **`kurtosis()`**
 
 | Function          | Description                                                                                                           | Return Type            |
 |-------------------|-----------------------------------------------------------------------------------------------------------------------|------------------------|
 | `kurtosis(x)`     | Returns the excess kurtosis of all input values. It provides an unbiased estimate using a specific mathematical expression. | `double`    |
 
-### **`regr_intercept(y, x)`**
+### **`regr_intercept()`**
 
 | Function                | Description                                          | Return Type            |
 |-------------------------|------------------------------------------------------|------------------------|
 | `regr_intercept(y, x)`  | Returns the linear regression intercept of input values. `y` is the dependent value, and `x` is the independent value. | `double`    |
 
 
-### **`regr_slope(y, x)`**
+### **`regr_slope()`**
 
 | Function            | Description                                          | Return Type            |
 |---------------------|------------------------------------------------------|------------------------|
 | `regr_slope(y, x)`  | Returns the linear regression slope of input values. `y` is the dependent value, and `x` is the independent value. | `double`    |
 
 
-### **`skewness(x)`**
+### **`skewness()`**
 
 | Function       | Description                                          | Return Type            |
 |----------------|------------------------------------------------------|------------------------|
 | `skewness(x)`  | Returns Fisher’s moment coefficient of skewness for all input values. | `double`    |
 
 
-### **`stddev(x)`**
+### **`stddev()`**
 
 | Function      | Description                           | Return Type            |
 |---------------|---------------------------------------|------------------------|
 | `stddev(x)`   | Alias for `stddev_samp()`.             | `double`    |
 
 
-### **`stddev_pop(x)`**
+### **`stddev_pop()`**
 
 | Function          | Description                                           | Return Type            |
 |-------------------|-------------------------------------------------------|------------------------|
 | `stddev_pop(x)`   | Returns the population standard deviation of all input values. | `double`    |
 
-### **`stddev_samp(x)`**
+### **`stddev_samp()`**
 
 | Function          | Description                                           | Return Type            |
 |-------------------|-------------------------------------------------------|------------------------|
 | `stddev_samp(x)`  | Returns the sample standard deviation of all input values. | `double`    |
 
-### **`variance(x)`**
+### **`variance()`**
 
 | Function       | Description                          | Return Type            |
 |----------------|--------------------------------------|------------------------|
 | `variance(x)`  | Alias for `var_samp()`.               | `double`    |
 
 
-### **`var_pop(x)`**
+### **`var_pop()`**
 
 | Function         | Description                                    | Return Type            |
 |------------------|------------------------------------------------|------------------------|
 | `var_pop(x)`     | Returns the population variance of all input values. | `double`    |
 
-### **`var_samp(x)`**
+### **`var_samp()`**
 
 | Function         | Description                                    | Return Type            |
 |------------------|------------------------------------------------|------------------------|
@@ -350,9 +363,3 @@ The `FILTER` keyword allows you to apply a condition using a `WHERE` clause to r
 | `SELECT count(*) FILTER (WHERE petal_length_cm > 4) AS count`   | Adds a condition on the count for Iris flowers while retaining all information.                      |
 
 
-
-<aside class="callout">
-
-🗣 This is my first official callout. <a href="/interfaces/workbench/functions_and_operators/agg_fun_md/"> mylink </a>
-<code>xyz</code>
-</aside>

@@ -552,8 +552,6 @@ kubectl get nodes
 - Enable automatic cluster updates for the control plane and node pools.
 - Establish appropriate maintenance windows for clusters.
 
-[Kube Version MisMatch](https://www.notion.so/Kube-Version-MisMatch-8ac611546dcd45aea9bc5502ac983099?pvs=21)
-
 ## Kube Node not Ready
 
 The *Kube Node Not Ready* alert occurs when a Kubernetes node remains in a state other than `Ready` for an extended period. This can impact the node's ability to host new pods, consequently affecting the performance and reliability of cluster deployments.

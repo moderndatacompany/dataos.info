@@ -8,38 +8,50 @@ Currently, one can access the Lens service via Gateway. Queries from various int
  
 <center>
 
-![Picture](./query_lifecycle.png)
+![Picture](./lens_query/query_lifecycle.png)
 
 </center>
 
 <figcaption align = "center">Lifecycle of a Lens Query</figcaption>
 <br>
 
-## Query Grammar
 
-Other than stating which lens to query, the lens grammar consists of simple abstract SQL functions.
+## Lens Query Grammar
+Lens Query Language (LQL) is a low code SQL (Structured Query Language) that’s powered with SQL capabilities. With the help of LQL, you can query a Lens from the workbenchor BI tools such as Atlas, Power BI, Tableau etc. 
 
-| SELECT | Just like in SQL, you can select the entity.dimensions or entity.measures that will appear in the resulting view. |
+In addition to specifying the Lens to query, the lens grammar primarily consists of straightforward abstract SQL functions.
+
+### **Clauses**
+
+| LQL Clause | Description |
 | --- | --- |
-| WHERE | Use where to filter your results based on measures and dimensions. |
-| DATE | Name of the date dimension. It will be used to evaluate range and granularity. |
-| RANGE | It’s used to filter date dimensions to a specified range.  |
-| GRANULARITY | Date dimensions are grouped according to the level of granularity set. You can add the following granularity -second, minute, hour, day, week, month, year |
-| GROUP BY | Group rows on the basis of selected dimensions. It’s just like your SQL group by clause, you can only group by dimensions. |
-| ORDER BY | Behaves like SQL order by clause; you can order your resultant rows either on the basis of dimension or measures. |
-| LIMIT | Let’s you limit the number of rows count returned. |
-| OFFSET | The offset rows are skipped before the rows after offset is returned. |
+| `SELECT` | Just like in SQL, you can select the entity.dimensions or entity.measures that will appear in the resulting view. |
+| `WHERE` | Use where to filter your results based on measures and dimensions. |
+| `DATE` | Name of the date dimension, used to evaluate range and granularity. |
+| `RANGE` | To filter date dimensions to a specified range.  |
+| `GRANULARITY` | Date dimensions are grouped according to the level of granularity set. You can add the following granularity -second, minute, hour, day, week, month, year |
+| `GROUP BY` | Group rows on the basis of selected dimensions. It’s just like your SQL group by clause, you can only group by dimensions. |
+| `ORDER BY` | Behaves like SQL order by clause; you can order your resultant rows either on the basis of dimension or measures. |
+| `LIMIT` | To limit the number of rows count returned. |
+| `OFFSET` | The offset rows are skipped before the rows after offset is returned. |
 
-> Note: 
-> To aptly define the range, you can use any of the following keywords -
-> - `last [0-9] days` | `week` | `year` | `month` | `quarter`
-> - `next [0-9] days` | `week` | `year` | `month` | `quarter`
-> - `today`
-> - `yesterday`
-> - `this days` | `week` | `year` | `month` | `quarter`
-> - `last days` | `week` | `year` | `month` | `quarter`
+### **Keywords to Specify Range**
 
-Just like in SQL, you can use Group By, Order By, Limit, and Offset to further group, order, and limit your resulting view. Below is an example of a Lens query that extracts quantities sold and revenue generated in Beach, Fort, and Somerset cities.
+To aptly define the range, you can use any of the following keywords -
+
+- `last [0-9] days` | `week` | `year` | `month` | `quarter`
+- `next [0-9] days` | `week` | `year` | `month` | `quarter`
+- `today`
+- `yesterday`
+- `this days` | `week` | `year` | `month` | `quarter`
+- `last days` | `week` | `year` | `month` | `quarter`
+
+
+<aside class=callout>
+🗣 Just like in SQL, you can use GROUP BY, ORDER BY, LIMIT, and OFFSET to further group, order, and limit your resulting view. </aside>
+
+## Lens Query Example
+Below is an example of a Lens query that extracts quantities sold and revenue generated in Beach, Fort, and Somerset cities.
 
 ```sql
 LENS (
@@ -69,7 +81,7 @@ LENS (
 
 ## Utilities
 
-### List all Lenses
+### **List all Lenses**
 
 Using `List Lenses` you can list all the lenses.
 
@@ -77,7 +89,7 @@ Using `List Lenses` you can list all the lenses.
 SELECT * FROM LENS( LIST LENSES );
 ```
 
-### List all entities within a Lens
+### **List all entities within a Lens**
 
 Using `Select "*"` you can list all the entities within a lens.
 
@@ -85,7 +97,7 @@ Using `Select "*"` you can list all the entities within a lens.
 SELECT * FROM LENS( SELECT "*" FROM lens_name);
 ```
 
-### List row-level details of an entity
+### **List row-level details of an entity**
 
 Using `entity_name.*` you can list row-level details for a specific entity. It’s functionally similar to ‘select *’.
 
@@ -95,7 +107,7 @@ SELECT * FROM LENS (
 )
 ```
 
-### List row_count for an entity
+### **List row_count for an entity**
 
 With `entity_name.#` you can list the row count for a specific entity. Functionality is similar to ‘count(*)’.
 
@@ -105,7 +117,7 @@ SELECT * FROM LENS (
 )
 ```
 
-### Apply `ORDER BY`, `LIMIT`, and `OFFSET`
+### **Apply `ORDER BY`, `LIMIT`, and `OFFSET`**
 
 You can add the `ORDER BY`, `LIMIT`, and `OFFSET` in the Lens Query. It will apply `ORDER BY` on selected measure and selected dimensions.
 
@@ -132,3 +144,7 @@ FROM
       50
   )
 ```
+## Lens Query Language (LQL) Errors and Solutions
+When you run a Lens query on Workbench, Notebook or any other interface like BI tools, you might come across errors concerning syntax or case sensitivity in date filters. These issues can prevent the Lens query from functioning properly. Refer to the following document for the common errors and their solutions.
+
+[Lens Query Language (LQL) Common Errors](lens_query/lens_query_language_error.md)
