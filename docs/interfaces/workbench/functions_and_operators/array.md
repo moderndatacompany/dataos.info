@@ -32,7 +32,7 @@ SELECT ARRAY[1] || 2 AS concatenated_array_with_element;
 SELECT 2 || ARRAY[1] AS concatenated_element_with_array;
 ```
 
-### **`all_match(array(T), function(T, boolean)) → boolean`**
+### **`all_match()`**
 
 | Function                        | Description                                                                                                                                                  | Return Type |
 |------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|
@@ -44,12 +44,19 @@ Example:
 all_match(array(T), function(T, boolean)) → boolean
 ```
 
-### **`Array distinct()`**
+### **`any_match()`**
 
-| Function       | Description                                       | Return Type |
-|----------------------------|---------------------------------------------------|-------------|
+| Function | Description | Return Type |
+| --- | --- | --- |
+| \`any_match(array(T), function(T, boolean))\` | Returns whether any elements of an array match the given predicate. Returns true if one or more elements match the predicate; false if none of the elements matches (a special case is when the array is empty); \`NULL\` if the predicate function returns NULL for one or more elements and false for all other elements. | \`boolean\` |
 
-| `array_distinct(x)` | Remove duplicate values from the array `x`.         | `array`       |
+
+### **`array distinct()`**
+
+| Function              | Description                                | Return Type |
+|-----------------------|--------------------------------------------|-------------|
+| `array_distinct(x)`   | Remove duplicate values from the array `x`. | `array`     |
+
 
 ### **`array_intersect()`**
 
@@ -65,7 +72,7 @@ all_match(array(T), function(T, boolean)) → boolean
 |-------------------------------|------------------------------------------------------------------|-------------|
 | `array_except(x, y)`| Returns an array of elements in x but not in y, without duplicates. | `array`       |
 
-###  **array_histogram()**
+### **`array_histogram()`**
 
 | Function                | Description                                                                                                    | Return Type         |
 |-------------------------|----------------------------------------------------------------------------------------------------------------|---------------------|
@@ -99,6 +106,7 @@ SELECT array_histogram(ARRAY[NULL, NULL]);
 |-------------------|----------------------------------------------|-------------|
 | `array_max(x)`    | Returns the maximum value of the input array. | `same as x`         |
 
+
 ### **`array_min()`**
 
 
@@ -106,11 +114,13 @@ SELECT array_histogram(ARRAY[NULL, NULL]);
 |-------------------|----------------------------------------------|-------------|
 | `array_min(x)`    | Returns the minimum value of the input array. | `same as x`         |
 
+
 ### **`array_position`**
 
 | Function                   | Description                                                          | Return Type |
 |----------------------------|----------------------------------------------------------------------|-------------|
 | `array_position(x, element)`| Returns the position of the first occurrence of the `element` in array `s` (or 0 if not found). | `bigint` |
+
 
 ### **`array_remove()`**
 
@@ -118,6 +128,7 @@ SELECT array_histogram(ARRAY[NULL, NULL]);
 | Function                   | Description                                                          | Return Type |
 |----------------------------|----------------------------------------------------------------------|-------------|
 | `array_remove(x, element)` | Remove all elements that equal `element` from array `x`.                  | `array`     |
+
 
 ### **`array_sort()`**
 
@@ -134,11 +145,14 @@ SELECT array_sort(ARRAY[3, 2, 5, 1, 2],
 
 SELECT array_sort(ARRAY['bc', 'ab', 'dc'],
 ```
-#### **`array_overlap()`**
+
+
+### **`array_overlap()`**
 
 | Function                    | Description                                                                                                       | Return Type |
 |-----------------------------|-------------------------------------------------------------------------------------------------------------------|-------------|
 | `arrays_overlap(x, y)`      | Tests if arrays `x` and `y` have any non-null elements in common. Returns null if there are no non-null elements in common but either array contains null. | `boolean`   |
+
 
 ### **`cardinality`()**
 
@@ -153,6 +167,7 @@ SELECT array_sort(ARRAY['bc', 'ab', 'dc'],
 |-------------------------------------|------------------------------------------------------------------|-------------|
 | `concat(array1, array2, ..., arrayN)` | Concatenates the arrays `array1, array2, ..., arrayN`. This function provides the same functionality as the SQL-standard concatenation operator ( &#124; &#124; )| `array`     |
 
+
 ### **`combinations()`**
 
 | Function                                   | Description                                                      | Return Type        |
@@ -161,11 +176,13 @@ SELECT array_sort(ARRAY['bc', 'ab', 'dc'],
 
 The order of sub-groups and elements within a sub-group is deterministic but unspecified. The value of n must not be greater than 5, and the total size of sub-groups generated must be smaller than 100,000.
 
+
 ### **`contains()`**
 
 | Function                    | Description                                        | Return Type |
 |-----------------------------|----------------------------------------------------|-------------|
 | `contains(x, element)`      | Returns true if the array x contains the element. | `boolean`   |
+
 
 ### **`contains_sequence()`**
 
@@ -179,6 +196,7 @@ The order of sub-groups and elements within a sub-group is deterministic but uns
 | Function                        | Description                                                                                                                       | Return Type |
 |---------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|-------------|
 | `element_at(array(E), index)`   | Returns the element of the array at the given index. If index > 0, this function provides the same functionality as the SQL-standard subscript operator ([]), except that the function returns NULL when accessing an index larger than the array length, whereas the subscript operator would fail in such a case. If index < 0, `element_at` accesses elements from the last to the first. | `E`         |
+
 
 ### **`filter()`**
 
@@ -203,6 +221,7 @@ SELECT filter(ARRAY[5, NULL, 7, NULL], x -> x IS NOT NULL);
 | Function               | Description                                                    | Return Type |
 |------------------------|----------------------------------------------------------------|-------------|
 | `flatten(x)`           | Flattens an array(array(T)) to an array(T) by concatenating the contained arrays. | `array`     |
+
 
 ### **`ngrams()`**
 
@@ -233,6 +252,7 @@ SELECT ngrams(ARRAY[1, 2, 3, 4], 2);
 | Function                                       | Description                                                                                                      | Return Type |
 |------------------------------------------------|------------------------------------------------------------------------------------------------------------------|-------------|
 | `none_match(array(T), function(T, boolean))`    | Returns whether no elements of an array match the given predicate. Returns `true` if none of the elements matches the predicate (a special case is when the array is empty); `false` if one or more elements match; `NULL` if the predicate function returns `NULL` for one or more elements and `false` for all other elements. | `boolean`   |
+
 
 ### **`reduce()`**
 
@@ -281,37 +301,24 @@ SELECT reduce(ARRAY[5, 6, 10, 20],
 -- 10.25
 ```
 
+
 ### **`repeat()`**
 
 | Function                     | Description                                                   | Return Type |
 |------------------------------|---------------------------------------------------------------|-------------|
 | `repeat(element, count)`     | Repeat the element for `count` times.                           | `array`     |
 
-### **`sequence()`**
-
-| Function                | Description                                                                                    | Return Type |
-|-------------------------|------------------------------------------------------------------------------------------------|-------------|
-| `sequence(start, stop)`  | Generate a sequence of integers from `start` to `stop`, incrementing by 1 if `start` is less than or equal to `stop`, otherwise -1. | `array`     |
-
 
 ### **`sequence()`**
 
-| Function                    | Description                                                                                                     | Return Type |
-|-----------------------------|-----------------------------------------------------------------------------------------------------------------|-------------|
-| `sequence(start, stop, step)` | Generate a sequence of integers from `start` to `stop`, incrementing by `step`.                                  | `array`     |
-
-
-### **`sequence`**
-
-| Function                | Description                                                                                                                          | Return Type |
-|-------------------------|--------------------------------------------------------------------------------------------------------------------------------------|-------------|
-| `sequence(start, stop)`  | Generate a sequence of dates from `start` date to `stop` date, incrementing by 1 day if `start` date is less than or equal to `stop` date, otherwise -1 day. | `array`     |
-
-### **`sequence()`**
-
-| Function                    | Description                                                                                                                     | Return Type |
-|-----------------------------|---------------------------------------------------------------------------------------------------------------------------------|-------------|
+| Function                     | Description                                                                                                                        | Return Type |
+|------------------------------|------------------------------------------------------------------------------------------------------------------------------------|-------------|
+| `sequence(start, stop)`       | Generate a sequence of integers from `start` to `stop`, incrementing by 1 if `start` is less than or equal to `stop`, otherwise -1. | `array`     |
+| `sequence(start, stop, step)` | Generate a sequence of integers from `start` to `stop`, incrementing by `step`.                                                  | `array`     |
+| `sequence(start, stop)`       | Generate a sequence of dates from `start` date to `stop` date, incrementing by 1 day if `start` date is less than or equal to `stop` date, otherwise -1 day. | `array`     |
+| `sequence(start, stop, step)` | Generate a sequence of dates from `start` to `stop`, incrementing by `step`. The type of step can be either INTERVAL DAY TO SECOND or INTERVAL YEAR TO MONTH. | `array`     |
 | `sequence(start, stop, step)` | Generate a sequence of timestamps from `start` to `stop`, incrementing by `step`. The type of step can be either INTERVAL DAY TO SECOND or INTERVAL YEAR TO MONTH. | `array`     |
+
 
 
 ### **`shuffle()`**
@@ -319,6 +326,7 @@ SELECT reduce(ARRAY[5, 6, 10, 20],
 | Function              | Description                                      | Return Type |
 |-----------------------|--------------------------------------------------|-------------|
 | `shuffle(x)`          | Generate a random permutation of the given array `x`. | `array`     |
+
 
 ### **`trim_array()`**
 
@@ -369,6 +377,7 @@ SELECT transform(ARRAY[ARRAY[1, NULL, 2], ARRAY[3, NULL]],
 ```sql
 SELECT zip(ARRAY[1, 2], ARRAY['1b', null, '3b']);
 -- [ROW(1, '1b'), ROW(2, null), ROW(null, '3b')]
+
 ```
 ### **`zip_with()`**
 
