@@ -1,6 +1,6 @@
 # Bloblang Walkthrough
 
-Bloblang is the most advanced mapping language that you'll learn from this walkthrough (probably). It is designed for readability, the power to shape even the most outrageous input documents, and to easily make erratic schemas bend to your will. Bloblang is the native mapping language of Benthos, but it has been designed as a general purpose technology ready to be adopted by other tools.
+[Bloblang](../components/processors/bloblang.md) is the most advanced mapping language that you'll learn from this walkthrough (probably). It is designed for readability, the power to shape even the most outrageous input documents, and to easily make erratic schemas bend to your will. Bloblang is the native mapping language of Benthos, but it has been designed as a general purpose technology ready to be adopted by other tools.
 
 In this walkthrough you'll learn how to make new friends by mapping their documents, and lose old friends as they grow jealous and bitter of your mapping abilities. There are a few ways to execute Bloblang but the way we'll do it in this guide is to pull a Benthos docker image and run the command benthos blobl server, which opens up an interactive Bloblang editor:
 

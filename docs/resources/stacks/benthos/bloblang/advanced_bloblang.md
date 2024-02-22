@@ -115,7 +115,7 @@ pipeline:
 
 ## Creating CSV
 
-Benthos has a few different ways of outputting a stream of CSV data. However, the best way to do it is by converting the documents into CSV rows with Bloblang as this gives you full control over exactly how the schema is generated, erroneous data is handled, and escaping of column data is performed.
+Benthos has a few different ways of outputting a stream of CSV data. However, the best way to do it is by converting the documents into CSV rows with [Bloblang](../components/processors/bloblang.md) as this gives you full control over exactly how the schema is generated, erroneous data is handled, and escaping of column data is performed.
 
 A common and simple use case is to simply flatten documents and write out the column values in alphabetical order. The first row we generate should also be prefixed with a row containing those column names. Here's a [mapping](../components/processors/mapping.md) that achieves this by using a `count` function to detect the very first invocation of the [mapping](../components/processors/mapping.md) in a stream pipeline:
 
