@@ -94,7 +94,7 @@ These are the main components within Benthos and they provide the majority of us
 
 ### **Observability Components**
 
-There are also the observability components http, logger, metrics, and tracing, which allow you to specify how Benthos exposes observability data:
+There are also the observability components [http](../benthos/components/http.md), [logger](../benthos/components/logger.md), [metrics](../benthos/components/metrics.md), and [tracing](../benthos/components/tracers.md), which allow you to specify how Benthos exposes observability data:
 
 ```yaml
 http:
@@ -118,7 +118,7 @@ tracer:
 
 ### **Resource Components**
 
-Finally, there are caches and rate limits. These are components that are referenced by core components and can be shared.
+Finally, there are [caches](../benthos/components/caches.md) and [rate limits](../benthos/components/rate_limit.md). These are components that are referenced by core components and can be shared.
 
 ```yaml
 input:
@@ -147,7 +147,7 @@ cache_resources:
       addresses: [ localhost:11211 ]
 ```
 
-It's also possible to configure inputs, outputs, and processors as resources which allows them to be reused throughout a configuration with the `resource` input,  `resource` output,  and `resource` processor, respectively.
+It's also possible to configure inputs, outputs, and processors as resources which allows them to be reused throughout a configuration with the [`resource` input](../benthos/components/inputs.md),  [`resource` output](../benthos/components/output.md),  and [`resource` processor](../benthos/components/processors.md), respectively.
 
 For a thorough and comprehensive understanding of these magnificent components, do peruse the pages that lie beyond the links below. You might discover hidden secrets, juicy details, or even a surprise cameo appearance from your favorite celebrity component. Who knows, the possibilities are endless!
 

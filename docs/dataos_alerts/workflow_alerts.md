@@ -299,7 +299,7 @@ workflow:
 Once the workflow to be monitored has been designed, it's time to deploy it. After some time, this workflow may fail, as simulated in the example provided. 
 
 ```bash
-dataos-ctl -t workflow -w public get                                                                 ok | %  12:47:24 
+dataos-ctl -t workflow -w public get   
 
 # Output
 INFO[0000] 🔍 get...                                     

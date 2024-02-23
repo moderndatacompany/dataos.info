@@ -177,7 +177,7 @@ Further, jobs can be retried automatically by pre-defining the retry strategy wi
 
 <aside class=callout>
 
-🗣️ Please be aware that the code block above outlines only the general configuration for a job. The actual attributes may differ based on the specific <a href="./stacks.md">Stack</a> utilized within a job.
+🗣️ Please be aware that the code block above outlines only the general configuration for a job. The actual attributes may differ based on the specific <a href="/resources/stacks/">Stack</a> utilized within a job.
 
 </aside>
 
@@ -228,7 +228,7 @@ For more detailed instructions on setting up and customizing the Stack-specific 
 Click here to view a sample Workflow YAML configuration
 </summary>
 
-The sample Workflow code snippet provide below consists of a single job that leverages the <a href="./stacks/flare.md">Flare</a> Stack for transforming data read from the <a href="./depot/icebase.md">Icebase</a> Depot and storing it in the <code>thirdparty01</code> Depot.
+The sample Workflow code snippet provide below consists of a single job that leverages the <a href="/resources/stacks/flare/">Flare</a> Stack for transforming data read from the <a href="/resources/depot/icebase/">Icebase</a> Depot and storing it in the <code>thirdparty01</code> Depot.
 <br>
 <br>
 <b>Code Snippet</b>
@@ -665,7 +665,7 @@ Make sure to replace `${{name to workspace in the output table from get status c
 
 ## How to setup alerts on Workflows?
 
-Workflow alerts play a vital role in the effective management of extensive Workflows and Jobs, enabling streamlined monitoring and prompt notifications in the event of failures. For detailed instructions on configuring Workflow alerts, refer to the documentation link: [Setting Up Workflow Alerts.](/dataos_alerts/workflow_alerts.md)
+Workflow alerts play a vital role in the effective management of extensive Workflows and Jobs, enabling streamlined monitoring and prompt notifications in the event of failures. For detailed instructions on configuring Workflow alerts, refer to the documentation link: [Setting Up Workflow Alerts.](/dataos_alerts/workflow_alerts/)
 
 
 <aside class="callout">

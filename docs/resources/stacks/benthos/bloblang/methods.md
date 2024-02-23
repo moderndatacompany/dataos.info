@@ -71,7 +71,7 @@ If the result of a target query fails (due to incorrect types, failed parsing, e
 root.doc.id = this.thing.id.string().catch(uuid_v4())
 ```
 
-The fallback argument can be a mapping, allowing you to capture the error string and yield structured data back.
+The fallback argument can be a [mapping](../components/processors/mapping.md), allowing you to capture the error string and yield structured data back.
 
 ```yaml
 root.url = this.url.parse_url().catch(err -> {"error":err,"input":this.url})
@@ -120,7 +120,7 @@ root.result = this.foo.exists("bar.baz")
 
 ### **`from`**
 
-Modifies a target query such that certain functions are executed from the perspective of another message in the batch. This allows you to mutate events based on the contents of other messages. Functions that support this behaviour are content, json and meta.
+Modifies a target query such that certain [functions](../bloblang/functions.md) are executed from the perspective of another message in the batch. This allows you to mutate events based on the contents of other messages. [Functions](../bloblang/functions.md) that support this behaviour are content, json and meta.
 
 **Parameters**
 
@@ -139,7 +139,7 @@ root.foo = json("foo").from(1)
 
 ### **`from_all`**
 
-Modifies a target query such that certain functions are executed from the perspective of each message in the batch, and returns the set of results as an array. Functions that support this behaviour are content, json and meta.
+Modifies a target query such that certain functions are executed from the perspective of each message in the batch, and returns the set of results as an array.[Functions](../bloblang/functions.md) that support this behaviour are content, json and meta.
 
 **Examples**
 
@@ -551,7 +551,8 @@ This method is mostly stable but breaking changes could still be made outside of
 
 </aside>
 
-Creates a "slug" from a given string. Wraps the github.com/gosimple/slug package. See its docs for more information.
+Creates a "slug" from a given string. Wraps the github.com/gosimple/slug package . See its docs for more information.
+
 
 **Parameters**
 
