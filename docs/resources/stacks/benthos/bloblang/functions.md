@@ -40,7 +40,7 @@ root.id = count("bloblang_function_example")
 
 ### **`deleted`**
 
-A function that returns a result indicating that the mapping target should be deleted. Deleting, also known as dropping, messages will result in them being acknowledged as successfully processed to inputs in a Benthos pipeline. For more information about error handling patterns read here.
+A function that returns a result indicating that the [mapping](../components/processors/mapping.md) target should be deleted. Deleting, also known as dropping, messages will result in them being acknowledged as successfully processed to inputs in a Benthos pipeline. For more information about error handling patterns read here.
 
 **Examples**
 
@@ -121,7 +121,7 @@ root.fifth = random_int(timestamp_unix_nano(), 5, 20)
 root.sixth = random_int(seed:timestamp_unix_nano(), max:20)
 ```
 
-It is possible to specify a dynamic seed argument, in which case the argument will only be resolved once during the lifetime of the mapping.
+It is possible to specify a dynamic seed argument, in which case the argument will only be resolved once during the lifetime of the [mapping](../components/processors/mapping.md).
 
 ```yaml
 root.first = random_int(timestamp_unix_nano())
@@ -244,7 +244,7 @@ root.id = uuid_v4()
 
 ### **`batch_index`**
 
-Returns the index of the mapped message within a batch. This is useful for applying maps only on certain messages of a batch.
+Returns the index of the mapped message within a batch. This is useful for applying [maps](../components/processors/mapping.md) only on certain messages of a batch.
 
 **Examples**
 
@@ -265,7 +265,7 @@ root.foo = batch_size()
 
 ### **`content`**
 
-Returns the full raw contents of the mapping target message as a byte array. When mapping to a JSON field the value should be encoded using the method encode, or cast to a string directly using the method string, otherwise it will be base64 encoded by default.
+Returns the full raw contents of the [mapping](../components/processors/mapping.md) target message as a byte array. When [mapping](../components/processors/mapping.md) to a JSON field the value should be encoded using the method encode, or cast to a string directly using the method string, otherwise it will be base64 encoded by default.
 
 **Examples**
 
@@ -327,7 +327,7 @@ root.doc = json()
 
 ### **`metadata`**
 
-Returns the value of a metadata key from the input message, or null if the key does not exist. Since values are extracted from the read-only input message they do NOT reflect changes made from within the map, in order to query metadata mutations made within a mapping use the @.foo syntax. This function supports extracting metadata from other messages of a batch with the from method.
+Returns the value of a metadata key from the input message, or null if the key does not exist. Since values are extracted from the read-only input message they do NOT reflect changes made from within the map, in order to query metadata mutations made within a [mapping](../components/processors/mapping.md) use the @.foo syntax. This function supports extracting metadata from other messages of a batch with the from method.
 
 **Parameters**
 
@@ -396,7 +396,7 @@ Returns the value of an environment variable, or null if the environment variabl
 root.thing.key = env("key").or("default value")
 ```
 
-When the argument is static this function will only resolve once and yield the same result for each invocation as an optimisation, this means that updates to env vars during runtime will not be reflected. You can work around this optimisation by using variables as the argument as this will force a new evaluation for each execution of the mapping.
+When the argument is static this function will only resolve once and yield the same result for each invocation as an optimisation, this means that updates to env vars during runtime will not be reflected. You can work around this optimisation by using variables as the argument as this will force a new evaluation for each execution of the [mapping](../components/processors/mapping.md).
 
 ```yaml
 let env_key = "key"
@@ -406,7 +406,7 @@ root.thing.key = env($env_key).or("default_value")
 
 ### **`file`**
 
-Reads a file and returns its contents. Relative paths are resolved from the directory of the process executing the mapping.
+Reads a file and returns its contents. Relative paths are resolved from the directory of the process executing the [mapping](../components/processors/mapping.md).
 
 **Parameters**
 
@@ -420,7 +420,7 @@ root.doc = file(env("BENTHOS_TEST_BLOBLANG_FILE")).parse_json()
 # Out: {"doc":{"foo":"bar"}}
 ```
 
-When the argument is static this function will only resolve once and yield the same result for each invocation as an optimisation, this means that updates to files during runtime will not be reflected. You can work around this optimisation by using variables as the argument as this will force a new file read for each execution of the mapping.
+When the argument is static this function will only resolve once and yield the same result for each invocation as an optimisation, this means that updates to files during runtime will not be reflected. You can work around this optimisation by using variables as the argument as this will force a new file read for each execution of the [mapping](../components/processors/mapping.md).
 
 ```yaml
 let env_key = "BENTHOS_TEST_BLOBLANG_FILE"
@@ -504,7 +504,7 @@ root.received_at = timestamp_unix_nano()
 This function is mostly stable but breaking changes could still be made outside of major version releases if a fundamental problem with it is found.
 </aside>
 
-Takes in a string that maps to a faker function and returns the result from that faker function. Returns an error if the given string doesn't match a supported faker function. Supported functions: latitude, longitude, unix_time, date, time_string, month_name, year_string, day_of_week, day_of_month, timestamp, century, timezone, time_period, email, mac_address, domain_name, url, username, ipv4, ipv6, password, jwt, word, sentence, paragraph, cc_type, cc_number, currency, amount_with_currency, title_male, title_female, first_name, first_name_male, first_name_female, last_name, name, gender, chinese_first_name, chinese_last_name, chinese_name, phone_number, toll_free_phone_number, e164_phone_number, uuid_hyphenated, uuid_digit. Refer to the faker docs for details on these functions.
+Takes in a string that [maps](../components/processors/mapping.md) to a faker function and returns the result from that faker function. Returns an error if the given string doesn't match a supported faker function. Supported functions: latitude, longitude, unix_time, date, time_string, month_name, year_string, day_of_week, day_of_month, timestamp, century, timezone, time_period, email, mac_address, domain_name, url, username, ipv4, ipv6, password, jwt, word, sentence, paragraph, cc_type, cc_number, currency, amount_with_currency, title_male, title_female, first_name, first_name_male, first_name_female, last_name, name, gender, chinese_first_name, chinese_last_name, chinese_name, phone_number, toll_free_phone_number, e164_phone_number, uuid_hyphenated, uuid_digit. Refer to the faker docs for details on these functions.
 
 **Parameters**
 
@@ -539,7 +539,7 @@ root.uuid = fake("uuid_hyphenated")
 ## Deprecated
 
 ### **`meta`**
-Returns the value of a metadata key from the input message as a string, or null if the key does not exist. Since values are extracted from the read-only input message they do NOT reflect changes made from within the map. In order to query metadata mutations made within a mapping use the root_meta function. This function supports extracting metadata from other messages of a batch with the from method.
+Returns the value of a metadata key from the input message as a string, or null if the key does not exist. Since values are extracted from the read-only input message they do NOT reflect changes made from within the map. In order to query metadata mutations made within a [mapping](../components/processors/mapping.md) use the root_meta function. This function supports extracting metadata from other messages of a batch with the from method.
 
 **Parameters**
 

@@ -2,7 +2,7 @@
 
 The Hightouch Operator facilitates the programmatic orchestration and monitoring of the state cycle of the **hightouch-pipeline** from the DataOS CLI interface within the **Hightouch Factory**.
 
-> This section outlines the steps for the Hightouch Factory Pipeline, which are analogous to the ADF Factory Pipeline. To prevent redundancy, consult the ADF Pipeline for supplementary information: <a href="/resources/operator#how-to-create-an-operator">How to create an Operator?</a>
+> This section outlines the steps for the Hightouch Factory Pipeline, which are analogous to the ADF Factory Pipeline. To prevent redundancy, consult the ADF Pipeline for supplementary information: <a href="/resources/operator/#how-to-create-an-operator">How to create an Operator?</a>
 > 
 
 ## Prerequisite
