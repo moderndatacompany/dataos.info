@@ -143,7 +143,7 @@ For more details, see [`binary`](./functions_and_operators/binary.md)
 
 ### **Bitwise**
 
-For more details, see {doc}`bitwise`
+For more details, see `bitwise`
 
 - [`bit_count`](./functions_and_operators/bitwise.md#bit_count)
 - [`bitwise_and`](./functions_and_operators/bitwise.md#bitwise_and)
@@ -166,14 +166,14 @@ For more details, see [`color`](./functions_and_operators/color.md)
 
 ### **Comparison**
 
-For more details, see {doc}`comparison`
+For more details, see [`comparison`](./functions_and_operators/comparison.md)
 
 - [`greatest`](./functions_and_operators/comparison.md#greatest)
 - [`least`](./functions_and_operators/comparison.md#least)
 
 ### **Conditional**
 
-For more details, see {doc}`conditional`
+For more details, see [`conditional`](./functions_and_operators/conditional.md)
 
 - [`case`](./functions_and_operators/conditional.md#case)
 - [`coalesce`](./functions_and_operators/conditional.md#coalesce)
@@ -210,90 +210,7 @@ For more details, see [`datetime`](./functions_and_operators/datetime.md)
 - [`format_datetime`](./functions_and_operators/datetime.md#format_datetime(timestamp, format))
 
 
-### **Geospatial**
 
-For more details, see {doc}`geospatial`
-
-- `bing_tile`
-- `bing_tile_at`
-- `bing_tile_coordinates`
-- `bing_tile_polygon`
-- `bing_tile_quadkey`
-- `bing_tile_zoom_level`
-- `bing_tiles_around`
-- `convex_hull_agg`
-- `from_encoded_polyline`
-- `from_geojson_geometry`
-- `geometry_from_hadoop_shape`
-- `geometry_invalid_reason`
-- `geometry_nearest_points`
-- `geometry_to_bing_tiles`
-- `geometry_union`
-- `geometry_union_agg`
-- `great_circle_distance`
-- `line_interpolate_point`
-- `line_locate_point`
-- `simplify_geometry`
-- `ST_Area`
-- `ST_AsBinary`
-- `ST_AsText`
-- `ST_Boundary`
-- `ST_Buffer`
-- `ST_Centroid`
-- `ST_Contains`
-- `ST_ConvexHull`
-- `ST_CoordDim`
-- `ST_Crosses`
-- `ST_Difference`
-- `ST_Dimension`
-- `ST_Disjoint`
-- `ST_Distance`
-- `ST_EndPoint`
-- `ST_Envelope`
-- `ST_Equals`
-- `ST_ExteriorRing`
-- `ST_Geometries`
-- `ST_GeometryFromText`
-- `ST_GeometryN`
-- `ST_GeometryType`
-- `ST_GeomFromBinary`
-- `ST_InteriorRings`
-- `ST_InteriorRingN`
-- `ST_Intersects`
-- `ST_Intersection`
-- `ST_IsClosed`
-- `ST_IsEmpty`
-- `ST_IsSimple`
-- `ST_IsRing`
-- `ST_IsValid`
-- `ST_Length`
-- `ST_LineFromText`
-- `ST_LineString`
-- `ST_MultiPoint`
-- `ST_NumGeometries`
-- `ST_NumInteriorRing`
-- `ST_NumPoints`
-- `ST_Overlaps`
-- `ST_Point`
-- `ST_PointN`
-- `ST_Points`
-- `ST_Polygon`
-- `ST_Relate`
-- `ST_StartPoint`
-- `ST_SymDifference`
-- `ST_Touches`
-- `ST_Union`
-- `ST_Within`
-- `ST_X`
-- `ST_XMax`
-- `ST_XMin`
-- `ST_Y`
-- `ST_YMax`
-- `ST_YMin`
-- `to_encoded_polyline`
-- `to_geojson_geometry`
-- `to_geometry`
-- `to_spherical_geography`
 
 ### **HyperLogLog**
 
@@ -305,34 +222,15 @@ For more details, see [`hyperloglog`](./functions_and_operators/hyperloglog.md)
 - [`merge`](./functions_and_operators/aggregate.md#merge)
 
 
-### **JSON**
 
-For more details, see `json`
+### **Lambda**
 
-- `is_json_scalar`
-- {ref}`json_array() <json-array>`
-- `json_array_contains`
-- `json_array_get`
-- `json_array_length`
-- {ref}`json_exists() <json-exists>`
-- `json_extract`
-- `json_extract_scalar`
-- `json_format`
-- `json_parse`
-- {ref}`json_object() <json-object>`
-- {ref}`json_query() <json-query>`
-- `json_size`
-- {ref}`json_value() <json-value>`
+For more details, see [`lambda`](./functions_and_operators/lambda.md)
 
-### Lambda
-
-<!-- For more details, see [`lambda`](./functions_and_operators/lambda.md) -->
-
-
-- `any_match`
-- `reduce_agg`
-- `regexp_replace`
-- `transform`
+- [`any_match`](./functions_and_operators/lambda.md#any_match)
+- [`reduce_agg`](./functions_and_operators/lambda.md#reduce_agg)
+- [`regexp_replace`](./functions_and_operators/lambda.md#regexp_replace)
+- [`transform`](./functions_and_operators/lambda.md#transform)
 
 ### **Machine Learning**
 
@@ -346,7 +244,7 @@ For more details, see [`ml`](./functions_and_operators/machine_learning.md)
 - [`learn_regressor`](./functions_and_operators/machine_learning.md#learn_regressor)
 - [`regress`](./functions_and_operators/machine_learning.md#regress)
 
-### Map
+### **Map**
 
 For more details,[`map`](./functions_and_operators/map.md)
 
@@ -435,15 +333,6 @@ For more details, see [`regexp`](./functions_and_operators/regular_expression.md
 - [`regexp_split`](./functions_and_operators/regular_expression.md#regexp_split)
 
 
-### **Row Pattern Recognition Expressions**
-
-- {ref}`classifier <classifier-function>`
-- {ref}`first <logical-navigation-functions>`
-- {ref}`last <logical-navigation-functions>`
-- {ref}`match_number <match-number-function>`
-- {ref}`next <physical-navigation-functions>`
-- {ref}`permute <permute-function>`
-- {ref}`prev <physical-navigation-functions>`
 
 ### **Session**
 
@@ -461,8 +350,8 @@ For more details, see [`setdigest`](./functions_and_operators/set_digest.md)
 
 - [`make_set_digest`](./functions_and_operators/set_digest.md#make_set_digest)
 - [`merge_set_digest`](./functions_and_operators/set_digest.md#merge_set_digest)
-- {ref}`cardinality() <setdigest-cardinality>`
-- [`intersection_cardinality`](./functions_and_operators/set_digest.md#intersection_cardinality)
+- [`cardinality`](./functions_and_operators/set_digest.md#cardinality)
+- [`intersection_cardinality`](./functions_and_operators/set_digest.    md#intersection_cardinality)
 - [`jaccard_index`](./functions_and_operators/set_digest.md#jaccard_index)
 - [`hash_counts`](./functions_and_operators/set_digest.md#hash_counts)
 
@@ -470,6 +359,7 @@ For more details, see [`setdigest`](./functions_and_operators/set_digest.md)
 ### **String**
 
 For more details, see [`string`](./functions_and_operators/string.md)
+
 - [`chr`](./functions_and_operators/string.md#chr)
 - [`codepoint`](./functions_and_operators/string.md#codepoint)
 - [`concat`](./functions_and_operators/string.md#concat)
@@ -523,7 +413,7 @@ For more details, see [`tdigest`](./functions_and_operators/t_digest.md)
 
 For more details, see [`teradata`](./functions_and_operators/teradata.md)
 
--- [`char2hexint`](./functions_and_operators/teradata.md#char2hexint)
+- [`char2hexint`](./functions_and_operators/teradata.md#char2hexint)
 - [`index`](./functions_and_operators/teradata.md#index)
 - [`to_char`](./functions_and_operators/teradata.md#to_char)
 - [`to_timestamp`](./functions_and_operators/teradata.md#to_timestamp)
