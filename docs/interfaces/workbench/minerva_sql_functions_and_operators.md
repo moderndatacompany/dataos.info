@@ -351,7 +351,7 @@ For more details, see [`setdigest`](./functions_and_operators/set_digest.md)
 - [`make_set_digest`](./functions_and_operators/set_digest.md#make_set_digest)
 - [`merge_set_digest`](./functions_and_operators/set_digest.md#merge_set_digest)
 - [`cardinality`](./functions_and_operators/set_digest.md#cardinality)
-- [`intersection_cardinality`](./functions_and_operators/set_digest.    md#intersection_cardinality)
+- [`intersection_cardinality`](./functions_and_operators/set_digest.md#intersection_cardinality)
 - [`jaccard_index`](./functions_and_operators/set_digest.md#jaccard_index)
 - [`hash_counts`](./functions_and_operators/set_digest.md#hash_counts)
 
