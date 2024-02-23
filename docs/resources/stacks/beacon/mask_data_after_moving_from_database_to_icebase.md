@@ -203,7 +203,7 @@ workflow:
 2. Run the `apply` command on DataOS CLI.
 
 ```bash
-~$ dataos-ctl apply -f /home/arike/Desktop/Everything_Folder/Beacon/ingestion.yaml 
+dataos-ctl apply -f /home/arike/Desktop/Everything_Folder/Beacon/ingestion.yaml 
 INFO[0000] 🛠 apply...                                   
 INFO[0001] 🔧 applying(public) sales-transactions:v1beta1:workflow... 
 🚨 v1beta1 has been replaced by versions v1 for type workflow 🚨
