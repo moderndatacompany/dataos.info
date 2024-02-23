@@ -17,7 +17,11 @@ Pagination can be applied across various components within the Benthos pipeline 
 
 ## Example:
 First, we'll create a YAML file where pagination will be configured.
+
 ### Input Section
+<details>
+  <summary><strong>YAML Configurations</strong></summary>
+
 ```yaml
 input:
   label: "consume_data_page_indicator"
@@ -35,8 +39,12 @@ input:
       message: 'table paginator - received hit with query ${! json("query")}'
   # - label: "send_a_response_back"
   #   sync_response: {}
-
 ```
+</details>
+
+
+
+
 
 #### Explanation:
 
@@ -55,6 +63,9 @@ input:
 
 
 ### Processor Section
+
+<details>
+  <summary><strong>YAML Configurations</strong></summary>
 
 ```yaml
 pipeline:
@@ -112,6 +123,7 @@ pipeline:
         message: '${! json("name") }'
     - bloblang: root = deleted()
 ``` 
+</details>
 
 #### Explanation:
 
@@ -154,6 +166,9 @@ INFO Launching a benthos instance, use CTRL+C to close  @service=benthos
 
 Following the execution of the above mentioned YAML configuration, the subsequent step involves creating another Benthos YAML file containing the following endpoint configurations.
 
+<details>
+  <summary><strong>YAML Configurations</strong></summary>
+
 ```yaml
 input:
   generate:
@@ -181,6 +196,7 @@ input:
                     level: INFO
                     message: "Requst sent to databaseSourcePaginator" 
  ```
+</details> 
 
 #### Explanation:
 
@@ -203,9 +219,13 @@ input:
 
 
 Upon implementing the provided YAML configuration in another terminal tab, the output generated will resemble the following pattern:
+
+<details>
+  <summary><strong>Terminal Output</strong></summary>
+
 ```shell
 INFO https://fun-bluefish.dataos.app/metis/api/v1/tables?after=aWNlYmFzZS5pY2ViYXNlLmNsaS5jaXR5XzAx  @service=benthos label="" path=root.pipeline.processors.0.branch.processors.1
-INFO table paginator - received hit with query after=aWNlYmFzZS5pY2ViYXNlLmh1YnNwb3QuY29tcGFueV9wcm9wZXJ0eV9oaXN0b3J5  @service=benthos label=input_log path=root.input.processors.0
+INFO table paginator - received hit with query after=aWNlYmFzZS5pY2ViYXNlLmh1YnNwb3QuY29tcGFueV9wcm9wZXJ0eV9oaXN0b  @service=benthos label=input_log path=root.input.processors.0
 INFO customer_profiles                             @service=benthos label=log_processor_message path=root.pipeline.processors.5
 INFO consumer_info                                 @service=benthos label=log_processor_message path=root.pipeline.processors.5
 INFO consumer_medical_history                      @service=benthos label=log_processor_message path=root.pipeline.processors.5
@@ -216,7 +236,7 @@ INFO dc_info                                       @service=benthos label=log_pr
 INFO dc_inventory_info                             @service=benthos label=log_processor_message path=root.pipeline.processors.5
 INFO dc_inventory_iot                              @service=benthos label=log_processor_message path=root.pipeline.processors.5
 INFO gcs_write_hadoop_13                           @service=benthos label=log_processor_message path=root.pipeline.processors.5
-INFO https://fun-bluefish.dataos.app/metis/api/v1/tables?after=aWNlYmFzZS5pY2ViYXNlLmh1YnNwb3QuY29tcGFueV9wcm9wZXJ0eV9oaXN0b3J5  @service=benthos label="" path=root.pipeline.processors.0.branch.processors.1
+INFO https://fun-bluefish.dataos.app/metis/api/v1/tables?after=aWNlYmFzZS5pY2ViYXNlLmh1YnNwb3QuY29tcGFueV9wcm9wZXJ0eV9oaXN0b  @service=benthos label="" path=root.pipeline.processors.0.branch.processors.1
 INFO gcs_write_hive_13                             @service=benthos label=log_processor_message path=root.pipeline.processors.5
 INFO association_type                              @service=benthos label=log_processor_message path=root.pipeline.processors.5
 INFO company                                       @service=benthos label=log_processor_message path=root.pipeline.processors.5
@@ -229,7 +249,7 @@ INFO contact_list_member                           @service=benthos label=log_pr
 INFO contact_property_history                      @service=benthos label=log_processor_message path=root.pipeline.processors.5
 INFO table paginator - received hit with query after=aWNlYmFzZS5pY2ViYXNlLmh1YnNwb3QuZGVhbF9waXBlbGluZQ==  @service=benthos label=input_log path=root.input.processors.0
 INFO https://fun-bluefish.dataos.app/metis/api/v1/tables?after=aWNlYmFzZS5pY2ViYXNlLmh1YnNwb3QuZGVhbF9waXBlbGluZQ==  @service=benthos label="" path=root.pipeline.processors.0.branch.processors.1
-INFO table paginator - received hit with query after=aWNlYmFzZS5pY2ViYXNlLmh1YnNwb3QuZW1haWxfZXZlbnRfZHJvcHBlZA==  @service=benthos label=input_log path=root.input.processors.0
+INFO table paginator - received hit with query after=aWNlYmFzZS5pY2ViYXNlLmh1YnNwb3QuZW1haWxfZXZlbnRfZHJvcHBlZ  @service=benthos label=input_log path=root.input.processors.0
 INFO deal                                          @service=benthos label=log_processor_message path=root.pipeline.processors.5
 INFO deal_company                                  @service=benthos label=log_processor_message path=root.pipeline.processors.5
 INFO deal_contact                                  @service=benthos label=log_processor_message path=root.pipeline.processors.5
@@ -240,7 +260,7 @@ INFO deal_stage                                    @service=benthos label=log_pr
 INFO email_campaign                                @service=benthos label=log_processor_message path=root.pipeline.processors.5
 INFO email_event                                   @service=benthos label=log_processor_message path=root.pipeline.processors.5
 INFO email_event_bounce                            @service=benthos label=log_processor_message path=root.pipeline.processors.5
-INFO https://fun-bluefish.dataos.app/metis/api/v1/tables?after=aWNlYmFzZS5pY2ViYXNlLmh1YnNwb3QuZW1haWxfZXZlbnRfZHJvcHBlZA==  @service=benthos label="" path=root.pipeline.processors.0.branch.processors.1
+INFO https://fun-bluefish.dataos.app/metis/api/v1/tables?after=aWNlYmFzZS5pY2ViYXNlLmh1YnNwb3QuZW1haWxfZXZlbnRfZHJvcHBlZA @service=benthos label="" path=root.pipeline.processors.0.branch.processors.1
 INFO email_event_click                             @service=benthos label=log_processor_message path=root.pipeline.processors.5
 INFO email_event_deferred                          @service=benthos label=log_processor_message path=root.pipeline.processors.5
 INFO email_event_delivered                         @service=benthos label=log_processor_message path=root.pipeline.processors.5
@@ -252,3 +272,5 @@ INFO email_event_status_change                     @service=benthos label=log_pr
 INFO email_event_suppressed                        @service=benthos label=log_processor_message path=root.pipeline.processors.5
 INFO email_subscription                            @service=benthos label=log_processor_message path=root.pipeline.processors.5
 ```
+</details>
+
