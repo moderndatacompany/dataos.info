@@ -1,6 +1,6 @@
 # Bloblang
 
-Bloblang, or blobl for short, is a language designed for mapping data of a wide variety of forms. It's a safe, fast, and powerful way to perform document mapping within Benthos. It also has a Go API for writing your own functions and methods as plugins.
+[Bloblang](../benthos/components/processors/bloblang.md), or blobl for short, is a language designed for mapping data of a wide variety of forms. It's a safe, fast, and powerful way to perform document mapping within Benthos. It also has a Go API for writing your own functions and methods as plugins.
 
 Bloblang is available as a processor and it's also possible to use blobl queries in function interpolations.
 
@@ -15,7 +15,7 @@ This document outlines the core features of the Bloblang language, but if you're
 
 ## Assignment
 
-A Bloblang mapping expresses how to create a new document by extracting data from an existing input document. Assignments consist of a dot separated path segments on the left-hand side describing a field to be created within the new document, and a right-hand side query describing what the content of the new field should be.
+A [Bloblang mapping](../benthos/components/processors/mapping.md) expresses how to create a new document by extracting data from an existing input document. Assignments consist of a dot separated path segments on the left-hand side describing a field to be created within the new document, and a right-hand side query describing what the content of the new field should be.
 
 The keyword root on the left-hand side refers to the root of the new document, the keyword this on the right-hand side refers to the current context of the query, which is the read-only input document when querying from the root of a mapping:
 
