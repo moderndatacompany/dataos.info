@@ -80,7 +80,7 @@ That was just the trailer. Now it's time to experiment and explore the many othe
 
 But before that, let’s understand the structure of Benthos YAML config in more detail.
 
-The main sections that make up a config are `input`, `pipeline`, and `output`. Kind of like this:
+The main sections that make up a config are [`input`](../benthos/components/inputs.md), `pipeline` and [`output`](../benthos/components/output.md). Kind of like this:
 
 ```yaml
 input:
@@ -95,7 +95,7 @@ output:
 
 ### **Input**
 
-Inputs are the sources of data that Benthos will use to process. They can be anything from APIs, file systems, or even Kafka streams. The configurations of the input sources are specified in the `input` section.
+[Inputs](../benthos/components/inputs.md) are the sources of data that Benthos will use to process. They can be anything from APIs, file systems, or even Kafka streams. The configurations of the input sources are specified in the `input` section.
 
 For example, you can use an HTTP input to fetch data from an API like below
 
@@ -112,7 +112,7 @@ There are many-many supported sources that you will get tired of getting to know
 
 ### **Pipeline**
 
-Next up, we have the `pipeline` section. Within the pipeline, we define processors to transform the data we have fetched from the API. Bloblang is a powerful and flexible language that Benthos uses to perform transformations. In this example, we will be applying some basic Bloblang transformations to the data. The `processors` are defined as a sub-section with the `pipeline` section as elucidated below:
+Next up, we have the `pipeline` section. Within the pipeline, we define processors to transform the data we have fetched from the API. Bloblang is a powerful and flexible language that Benthos uses to perform transformations. In this example, we will be applying some basic Bloblang transformations to the data. The [`processors`](../benthos/components/processors.md) are defined as a sub-section with the `pipeline` section as elucidated below:
 
 ```yaml
 pipeline:

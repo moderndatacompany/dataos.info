@@ -441,7 +441,8 @@ dataos-ctl -h
 dataos-ctl --help
 ```
 To get help for a specific command, use:
-```bashdataos-ctl <name of command> --help
+```bash
+dataos-ctl <name of command> --help
 ```
 
 

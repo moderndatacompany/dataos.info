@@ -42,7 +42,7 @@ Fingerprinting primarily addresses the data classification challenge, aiming to 
 
 To learn more about classification process, refer to [Fingerprinting in DataOS](./flare/case_scenario/fingerprinting.md).
 
-DataOS conducts fingerprinting and stores the classification information for your dataset in Metis DB, which can be accessed through the Metis UI. To learn more, refer to [Fingerprinting Information on Metis UI](/interfaces/metis/navigating_metis_ui_how_to_guide#how-to-get-fingerprinting-information).
+DataOS conducts fingerprinting and stores the classification information for your dataset in Metis DB, which can be accessed through the Metis UI. To learn more, refer to [Fingerprinting Information on Metis UI](/interfaces/metis/navigating_metis_ui_how_to_guide/#how-to-get-fingerprinting-information).
 
 #### **Data Quality Job**
 
