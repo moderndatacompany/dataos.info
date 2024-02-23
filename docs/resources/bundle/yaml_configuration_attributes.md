@@ -1,4 +1,4 @@
-# Attributes of Bundle YAML Manifest
+]# Attributes of Bundle YAML Manifest
 
 ## Structure of Bundle YAML manifest
 
@@ -261,7 +261,7 @@ workspaces:
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| string | mandatory | none | valid Workspace name, not exceeding 32 characters, adhering to the regex pattern: [a-z]([-a-z0-9]*[a-z0-9])? |
+| string | mandatory | none | valid Workspace name, not exceeding 32 characters, adhering to the regex pattern:<br> `[a-z]([-a-z0-9]*[a-z0-9])?` |
 
 **Example Usage:**
 
@@ -411,7 +411,7 @@ id: myresource
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
-| string | optional (mandatory for Workspace-level Resources) | none | valid Workspace name, not exceeding 32 characters, adhering to the regex pattern: [a-z]([-a-z0-9]*[a-z0-9])? |
+| string | optional (mandatory for Workspace-level Resources) | none | valid Workspace name, not exceeding 32 characters, adhering to the regex pattern: `[a-z]([-a-z0-9]*[a-z0-9])?` |
 
 **Additional Information:** A Bundle can reference Resources located in other Workspaces, which may not be created using the Bundle itself, for the creation of a Workspace-level Resource. For instance, a Workspace named `myworkspace` might be created using the Bundle, but when specifying a Workflow within the Bundle Workspace, Resources can also be created in a different Workspace, like a `testingspace`, provided there is access to that Workspace. Absence of access rights could prevent such operations.
 
