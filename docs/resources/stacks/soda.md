@@ -334,11 +334,11 @@ The [`filter`](./soda/yaml_attributes.md#filter) attribute or section works as a
 
 <aside class="callout">
 
-🗣️ This global filter functionality differs from the filter applied within the <a href="/resources/stacks/soda#defining-soda-checks"><code>checks</code></a> section.
+🗣️ This global filter functionality differs from the filter applied within the <a href="/resources/stacks/soda/#defining-soda-checks"><code>checks</code></a> section.
 
 </aside>
 
-The following YAML sample demonstrates how the [`filter`](./soda/yaml_attributes.md#filter) section can be employed to apply a global filter on all checks specified within the <a href="/resources/stacks/soda/yaml_attributes#checks"><code>checks</code></a> section.
+The following YAML sample demonstrates how the [`filter`](./soda/yaml_attributes.md#filter) section can be employed to apply a global filter on all checks specified within the [`checks`](./soda/yaml_attributes.md#checks) section.
 
 ```yaml
 stackSpec:
@@ -720,7 +720,7 @@ dataos-ctl apply -f ${{path/file-name}} -w ${{workspace}} # By default the works
 
 ## Querying Profiling and Checks data
 
-Soda check results and profiling information are stored in Iceberg tables, and querying this information can be accomplished through [Workbench](../../interfaces/workbench/) App. 
+Soda check results and profiling information are stored in Iceberg tables, and querying this information can be accomplished through [Workbench](../../interfaces/workbench.md) App. 
 
 To do so, Workflows can be executed to sink the information related to Checks and Profiles into the [Icebase](../depot.md#icebase) depot. The YAML for both Workflows is provided below.
 
