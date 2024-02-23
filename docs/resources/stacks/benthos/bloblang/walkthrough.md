@@ -43,7 +43,7 @@ root = {}
 root.foo = this.message
 ```
 
-Bloblang supports a bunch of literal types, and the first line of this mapping assigns an empty object literal to the root. The second line then creates a new field foo on that object by assigning it the value of message from the input document. You should see that our output has changed to:
+Bloblang supports a bunch of literal types, and the first line of this mapping assigns [an empty object literal](../bloblang.md) to the root. The second line then creates a new field foo on that object by assigning it the value of message from the input document. You should see that our output has changed to:
 
 ```json
 {
@@ -76,7 +76,7 @@ Also note that we can use quotes in order to express path segments that contain 
 
 ## Basic Methods and Functions
 
-Nothing is ever good enough for you, why should the input document be any different? Usually in our mappings it's necessary to mutate values whilst we map them over, this is almost always done with methods, of which there are many. To demonstrate we're going to change our mapping to uppercase the field message from our input document:
+Nothing is ever good enough for you, why should the input document be any different? Usually in our mappings it's necessary to mutate values whilst we map them over, this is almost always done with [methods](../bloblang/methods.md), of which there are many. To demonstrate we're going to change our mapping to uppercase the field message from our input document:
 
 ```yaml
 root.foo.bar = this.message.uppercase()
@@ -110,7 +110,7 @@ root.foo.bar = this.message.uppercase().replace_all(old: "WORLD", new: this.mess
 root.foo."buz me".baz = "I like mapping"
 ```
 
-Woah, I think that's the plot to Inception, let's move onto functions. Functions are just boring methods that don't have a target, and there are plenty of them as well. Functions are often used to extract information unrelated to the input document, such as environment variables, or to generate data such as timestamps or UUIDs.
+Woah, I think that's the plot to Inception, let's move onto [functions](../bloblang/functions.md). Functions are just boring methods that don't have a target, and there are plenty of them as well. Functions are often used to extract information unrelated to the input document, such as environment variables, or to generate data such as timestamps or UUIDs.
 
 Since we're completionists let's add one to our mapping:
 
@@ -174,7 +174,7 @@ So far in all of our examples both the input document and our newly mapped docum
 
 You should notice that when a value type is assigned to the root the output is the raw value, and therefore strings are not quoted. This is what makes it possible to output data of any format, including encrypted, encoded or otherwise binary data.
 
-Unstructured mapping is not limited to the output. Rather than referencing the input document with this, where it must be structured, it is possible to reference it as a binary string with the function content, try changing your mapping to:
+Unstructured mapping is not limited to the output. Rather than referencing the input document with this, where it must be structured, it is possible to reference it as a binary string with the [function `content`](../bloblang/functions.md), try changing your mapping to:
 
 ```yaml
 root = content().uppercase()
@@ -225,7 +225,7 @@ root.pet.treats = if this.pet.is_cute {
 }
 ```
 
-This is possible because field deletions are expressed as assigned values created with the deleted() function. This is cool but also in poor taste, treats should be allocated based on need, not cuteness!
+This is possible because field deletions are expressed as assigned values created with the [`deleted()` function](../bloblang/functions.md). This is cool but also in poor taste, treats should be allocated based on need, not cuteness!
 
 ### **Match Expression**
 
@@ -291,7 +291,7 @@ Uh oh! It looks like our canvasser was too lazy and our angry_peasants count was
 
 So what if we want to try and map something, but don't care if it fails? In this case if we are unable to compare our angry peasants with palace guards then I would still consider us in trouble just to be safe.
 
-For that we have a special method catch, which if we add to any query allows us to specify an argument to be returned when an error occurs. Since methods can be added to any query we can surround our arithmetic with brackets and catch the whole thing:
+For that we have a special [method `catch`](../bloblang/methods.md), which if we add to any query allows us to specify an argument to be returned when an error occurs. Since methods can be added to any query we can surround our arithmetic with brackets and catch the whole thing:
 
 ```yaml
 root.in_trouble = (this.angry_peasants > this.palace_guards).catch(true)
@@ -347,7 +347,7 @@ I'm worried that I've turned you into some sort of error hating thug, hell-bent 
 
 You can read about common Benthos error handling patterns for bad data in the error handling guide, but the first step is to create the error. Luckily, Bloblang has a range of ways of creating errors under certain circumstances, which can be used in order to validate the data being mapped.
 
-There are a few helper methods that make validating and coercing fields nice and easy, try this mapping out:
+There are [a few helper methods](../bloblang/methods.md) that make validating and coercing fields nice and easy, try this mapping out:
 
 ```yaml
 root.foo = this.foo.number()
@@ -363,9 +363,9 @@ With some of these sample inputs:
 {"foo":10,"bar":"hello world","baz":[]}
 ```
 
-However, these methods don't cover all use cases. The general purpose error throwing technique is the throw function, which takes an argument string that describes the error. When it's called it will throw a mapping error that abandons the mapping (unless it's caught, psych!)
+However, these methods don't cover all use cases. The general purpose error throwing technique is the [`throw` function](../bloblang/functions.md), which takes an argument string that describes the error. When it's called it will throw a mapping error that abandons the mapping (unless it's caught, psych!)
 
-For example, we can check the type of a field with the method type, and then throw an error if it's not the type we expected:
+For example, we can check the type of a field with the [method `type`](../bloblang/methods.md), and then throw an error if it's not the type we expected:
 
 ```yaml
 root.foos = if this.user.foos.type() == "array" {
@@ -474,7 +474,7 @@ Neat.
 
 Congratulations for making it this far, but if you take your current level of knowledge to a map-off you'll be laughed off the stage. What happens when you need to map all of the elements of an array? Or filter the keys of an object by their values? What if the fellowship just used the eagles to fly to mount doom?
 
-Bloblang offers a bunch of advanced methods for manipulating structured data types, let's take a quick tour of some of the cooler ones. Set your input document to this list of things:
+Bloblang offers a bunch of [advanced methods for manipulating](../bloblang/methods.md) structured data types, let's take a quick tour of some of the cooler ones. Set your input document to this list of things:
 
 ```json
 {
@@ -512,11 +512,11 @@ root = this.things.filter(thing -> thing.is_cool && thing.quantity > this.num_fr
 
 Try running that mapping and you'll see that the output is reduced. What is happening here is that the filter method takes an argument that is a query, and that query will be mapped for each individual element of the array (where the context is changed to the element itself). We have captured the context into a field thing which allows us to continue referencing the root of the input with this.
 
-The filter method requires the query parameter to resolve to a boolean true or false, and if it resolves to true the element will be present in the resulting array, otherwise it is removed.
+The [`filter` method](../bloblang/methods.md) requires the query parameter to resolve to a boolean true or false, and if it resolves to true the element will be present in the resulting array, otherwise it is removed.
 
 Being able to express a query argument to be applied to a range in this way is one of the more powerful features of Bloblang, and when mapping complex structured data these advanced methods will likely be a common tool that you'll reach for.
 
-Another such method is map_each, which allows you to mutate each element of an array, or each value of an object. Change your input document to the following:
+Another such method is [`map_each`](../bloblang/methods.md), which allows you to mutate each element of an array, or each value of an object. Change your input document to the following:
 
 ```json
 {
@@ -558,7 +558,7 @@ root = this.talking_heads.map_each(raw -> raw.split(":").(split_string -> {
 Try updating that map so that only opinions that mention Pokemon are kept
 </aside>
 
-Cool. To find more methods for manipulating structured data types check out the methods page.
+Cool. To find more methods for manipulating structured data types check out the [methods page](../bloblang/methods.md).
 
 ## Reusable Mappings
 Bloblang has cool methods, sure, but there's nothing cooler than methods you've made yourself. When the going gets tough in the mapping world the best solution is often to create a named mapping, which you can do with the keyword map:
@@ -576,7 +576,7 @@ root = this.talking_heads.map_each(raw -> raw.apply("parse_talking_head"))
 
 The body of a named map, encapsulated with squiggly brackets, is a totally isolated mapping where root now refers to a new value being created for each invocation of the map, and this refers to the root of the context provided to the map.
 
-Named maps are executed with the method apply, which has a string parameter identifying the map to execute, this means it's possible to dynamically select the target map.
+Named maps are executed with the [method `apply`](../bloblang/methods.md), which has a string parameter identifying the map to execute, this means it's possible to dynamically select the target map.
 
 As you can see in the above example we were able to use a custom map in order to create our talking head objects without the object literal. Within a named map we can also create variables that exist only within the scope of the map.
 
@@ -628,7 +628,7 @@ Charlie will be upset but at least we'll be safe.
 
 You are truly a champion of mappings, and you're probably feeling pretty confident right now. Maybe you even have a mapping that you're particularly proud of. Well, I'm sorry to inform you that your mapping is DOOMED, as a mapping without unit tests is like a Twitter session, with the progression of time it will inevitably descend into madness.
 
-However, if you act now there is still time to spare your mapping from this fate, as Benthos has it's own unit testing capabilities that you can also use for your mappings. To start with save a mapping into a file called something like naughty_man.blobl, we can use the example above from the reusable mappings section:
+However, if you act now there is still time to spare your mapping from this fate, as Benthos has it's own [unit testing capabilities](../configurations/unit_testing.md) that you can also use for your mappings. To start with save a mapping into a file called something like naughty_man.blobl, we can use the example above from the reusable mappings section:
 
 ```yaml
 map remove_naughty_man {
