@@ -64,7 +64,7 @@ workflow:
 
 | **Data Type**     | **Requirement**                          | **Default Value** | **Possible Value** |
 |---------------|--------------------------------------|---------------|----------------|
-| mapping       | optional (mandatory for <br><a href="../workflow.md#scheduled-workflow">Scheduled Workflows</a>) | none          | none           |
+| mapping       | optional (mandatory for <br>Scheduled Workflows) | none          | none           |
 
 <b>Example Usage:</b>
 
