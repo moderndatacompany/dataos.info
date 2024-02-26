@@ -121,7 +121,7 @@ period: 500ms
 
 ### `batch_policy.check`[](https://www.benthos.dev/docs/components/buffers/memory#batch_policycheck)
 
-A Bloblang query that should return a boolean value indicating whether a message should end a batch.
+A [Bloblang query](../../../benthos/bloblang.md) that should return a boolean value indicating whether a message should end a batch.
 
 **Type:** `string`
 
@@ -137,7 +137,7 @@ check: this.type == "end_of_transaction"
 
 ### `batch_policy.processors`[](https://www.benthos.dev/docs/components/buffers/memory#batch_policyprocessors)
 
-A list of processors to apply to a batch as it is flushed. This allows you to aggregate and archive the batch however you see fit. Please note that all resulting messages are flushed as a single batch, therefore splitting the batch into smaller batches using these processors is a no-op.
+A list of [processors](../../components/processors.md) to apply to a batch as it is flushed. This allows you to aggregate and archive the batch however you see fit. Please note that all resulting messages are flushed as a single batch, therefore splitting the batch into smaller batches using these processors is a no-op.
 
 **Type:** `array`
 

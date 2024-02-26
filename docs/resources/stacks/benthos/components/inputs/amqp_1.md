@@ -49,7 +49,7 @@ This input adds the following metadata fields to each message:
 - All string-typed message annotations
 ```
 
-You can access these metadata fields using function interpolation.
+You can access these metadata fields using [function interpolation](../../configurations/interpolation.md).
 
 ## Fields
 
