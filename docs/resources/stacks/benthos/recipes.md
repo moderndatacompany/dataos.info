@@ -23,3 +23,7 @@ Let's get cooking!
 ## How to perform rate limit 
 
 [Perform Rate Limit](./recipes/how_to_perform_rate_limit.md)
+
+## Pagination
+
+[Performing Pagination](../benthos/recipes/pagination.md)
