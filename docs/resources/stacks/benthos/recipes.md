@@ -19,3 +19,11 @@ Let's get cooking!
 ## Stock Data API
 
 [Stock Data API to Icebase](./recipes/stock_data_api_to_icebase.md)
+
+## How to perform rate limit 
+
+[Perform Rate Limit](./recipes/how_to_perform_rate_limit.md)
+
+## Pagination
+
+[Performing Pagination](../benthos/recipes/pagination.md)

@@ -81,7 +81,7 @@ schedule:
 
 | **Data Type** | **Requirement**                          | **Default Value** | **Possible Value**          |
 |-----------|--------------------------------------|---------------|-------------------------|
-| string    | optional (mandatory for <br><a href="../workflow.md#scheduled-workflow">Scheduled Workflows</a>) | none          | any valid cron expression |
+| string    | optional (mandatory for <br>[Scheduled Workflows](/resources/workflow/#scheduled-workflow)) | none          | any valid cron expression |
 
 <b>Additional Details:</b> the cron expression consists of value separated by white spaces, make sure there are no formatting issues.<br>
 <b>Example Usage:</b>
@@ -173,7 +173,7 @@ title: Quality Assessment Workflow
 ---
 
 ### **`dag`**
-<b>Description:</b> DAG is a <a href="../workflow.md#workflow-and-directed-acyclic-graph-dag">Directed Acyclic Graph</a>, a conceptual representation of a sequence of jobs (or activities). These jobs in a DAG are executed in the order of dependencies between them <br>
+<b>Description:</b> DAG is a <a href="/resources/workflow/#workflow-and-directed-acyclic-graph-dag">Directed Acyclic Graph</a>, a conceptual representation of a sequence of jobs (or activities). These jobs in a DAG are executed in the order of dependencies between them <br>
 
 | **Data Type**        | **Requirement** | **Default Value** | **Possible Value** |
 |------------------|-------------|---------------|----------------|
@@ -269,7 +269,7 @@ runAsUser: iamgroot
 ---
 
 ### **`compute`**
-<b>Description:</b> a <a href="../compute.md">Compute</a> Resource provides processing power for the job.  <br>
+<b>Description:</b> a <a href="/resources/compute/">Compute</a> Resource provides processing power for the job.  <br>
 
 | **Data Type**       | **Requirement** | **Default Value** | **Possible Value**                           |
 |-----------------|-------------|---------------|------------------------------------------|
@@ -284,7 +284,7 @@ compute: runnable-default
 ---
 
 ### **`stack`**
-<b>Description:</b> <a href="../stacks.md">Stack</a> is a <a href="../../resources.md">Resource</a> that serves as a secondary extension point, enhancing the capabilities of a Workflow Resource by introducing additional programming paradigms.  <br>
+<b>Description:</b> <a href="/resources/stacks/">Stack</a> is a <a href="/resources/">Resource</a> that serves as a secondary extension point, enhancing the capabilities of a Workflow Resource by introducing additional programming paradigms.  <br>
 
 | **Data Type**   | **Requirement** | **Default Value** | **Possible Value**                         |
 |-------------|-------------|---------------|----------------------------------------|

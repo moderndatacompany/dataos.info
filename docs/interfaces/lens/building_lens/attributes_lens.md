@@ -109,7 +109,7 @@ This section defines the query to map identified entity with physical data.
 | --- | --- | --- |
 | name |  | Name of the dimension |
 | description |  | Description of the dimension |
-| type |  | Type of the dimension. Refer https://www.notion.so/dimensions |
+| type |  | Type of the dimension. |
 |  | string | Typically used when the dimension contains letters or special characters.  |
 |  | number | Dimension containing an integer or number can be assigned the type number. |
 |  | date | Use a date type for the dimension if the SQL expression expects to return a value of the type date. |

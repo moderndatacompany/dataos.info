@@ -81,4 +81,4 @@ Getting the Flare Standalone up and running on your local machine is easy. All t
 
 Flare Standalone extends support for all connectors available in Flare, thereby providing enhanced connectivity options for users. For additional information on the supported configurations, please refer to the below page.
 
-[Standalone YAML Configurations](./standalone/standalone_yaml_configurations/)
+[Standalone YAML Configurations](/resources/stacks/flare/configuration_templates/#supported-data-sources)
