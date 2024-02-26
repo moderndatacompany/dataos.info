@@ -1,6 +1,6 @@
 #### DO NOT CHANGE ####
 site_name: All things DataOS
-copyright: Copyright ⓒ 2023 The Modern Data Company
+copyright: Copyright ⓒ 2024 The Modern Data Company
 theme:
     name: material
     custom_dir: overrides
