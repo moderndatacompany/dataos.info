@@ -1,9 +1,7 @@
 # system_window
 
-Tags: System Window
-
-<aside>
-🗣 **BETA**
+<aside class = "callout" >
+🗣 <b>BETA</b>
 
 This component is mostly stable but breaking changes could still be made outside of major version releases if a fundamental problem with the component is found.
 
@@ -22,17 +20,17 @@ buffer:
     allowed_lateness: ""
 ```
 
-A window is a grouping of messages that fit within a discrete measure of time following the system clock. Messages are allocated to a window either by the processing time (the time at which they're ingested) or by the event time, and this is controlled via the `timestamp_mapping` field.
+A window is a grouping of messages that fit within a discrete measure of time following the system clock. Messages are allocated to a window either by the processing time (the time at which they're ingested) or by the event time, and this is controlled via the [`timestamp_mapping`](#timestamp_mapping) field.
 
 In tumbling mode (default) the beginning of a window immediately follows the end of a prior window. When the buffer is initialized the first window to be created and populated is aligned against the zeroth minute of the zeroth hour of the day by default, and may therefore be open for a shorter period than the specified size.
 
-A window is flushed only once the system clock surpasses its scheduled end. If an `allowed_lateness` is specified then the window will not be flushed until the scheduled end plus that length of time.
+A window is flushed only once the system clock surpasses its scheduled end. If an [`allowed_lateness`](#allowed_lateness) is specified then the window will not be flushed until the scheduled end plus that length of time.
 
 When a message is added to a window it has a metadata field `window_end_timestamp` added to it containing the timestamp of the end of the window as an RFC3339 string.
 
 ## Sliding Windows[](https://www.benthos.dev/docs/components/buffers/system_window#sliding-windows)
 
-Sliding windows begin from an offset of the prior windows' beginning rather than its end, and therefore messages may belong to multiple windows. In order to produce sliding windows specify a `slide` duration.
+Sliding windows begin from an offset of the prior windows' beginning rather than its end, and therefore messages may belong to multiple windows. In order to produce sliding windows specify a [`slide` duration](#slide).
 
 ## Back Pressure[](https://www.benthos.dev/docs/components/buffers/system_window#back-pressure)
 
@@ -106,7 +104,7 @@ pipeline:
 
 ### `timestamp_mapping`[](https://www.benthos.dev/docs/components/buffers/system_window#timestamp_mapping)
 
-A Bloblang mapping applied to each message during ingestion that provides the timestamp to use for allocating it a window. By default, the function `now()` is used in order to generate a fresh timestamp at the time of ingestion (the processing time), whereas this mapping can instead extract a timestamp from the message itself (the event time).
+A [Bloblang mapping](../../../benthos/bloblang.md) applied to each message during ingestion that provides the timestamp to use for allocating it a window. By default, the function `now()` is used in order to generate a fresh timestamp at the time of ingestion (the processing time), whereas this mapping can instead extract a timestamp from the message itself (the event time).
 
 The timestamp value assigned to `root` must either be a numerical unix time in seconds (with up to nanosecond precision via decimals), or a string in ISO 8601 format. If the mapping fails or provides an invalid result the message will be dropped (with logging to describe the problem).
 
