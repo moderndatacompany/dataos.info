@@ -10,6 +10,21 @@
 | /        | Division (integer division performs truncation) |
 | %        | Modulus (remainder)                    |
 
+
+
+When performing division operations in SQL queries, it's important to handle division by zero errors. One approach is to use the `NULLIF` function to replace the divisor with NULL when it equals zero. However, if you prefer not to return NULL values, you can use the `COALESCE` function to replace NULL values with a specified default value. Here's an example:
+
+```sql
+SELECT value1 / NULLIF(value2, 0) AS ratio
+FROM your_table;
+```
+
+```sql
+SELECT value1 / COALESCE(NULLIF(value2, 0), default_value) AS ratio
+FROM your_table;
+```
+
+
 ## Mathematical functions
 ### **`abs()`**
 | Function      | Description                         | Return Value   |
