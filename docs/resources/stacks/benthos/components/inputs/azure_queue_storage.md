@@ -95,7 +95,7 @@ Default: `""`
 
 ### `queue_name`
 
-The name of the source storage queue. This field supports interpolation functions.
+The name of the source storage queue. This field supports [function interpolation](../../configurations/interpolation.md).
 
 Type: `string`
 

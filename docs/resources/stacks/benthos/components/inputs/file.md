@@ -38,7 +38,7 @@ This input adds the following metadata fields to each message:
 - mod_time (RFC3339)
 ```
 
-You can access these metadata fields using function interpolation.
+You can access these metadata fields using [function interpolation](../../configurations/interpolation.md).
 
 ## Fields
 
