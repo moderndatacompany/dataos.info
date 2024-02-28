@@ -62,7 +62,7 @@ input:
       processors: []
 ```
 
-Consumes messages from one or more Kinesis streams either by automatically balancing shards across other instances of this input or by consuming shards listed explicitly. The latest message sequence consumed by this input is stored within a DynamoDB table, which allows it to resume at the correct sequence of the shard during restarts. This table is also used for coordination across distributed inputs when shard balancing.
+Consumes messages from one or more Kinesis streams either by automatically balancing shards across other instances of this input or by consuming shards listed explicitly. The latest message sequence consumed by this input is stored within a [DynamoDB table](#dynamodbtable), which allows it to resume at the correct sequence of the shard during restarts. This table is also used for coordination across distributed inputs when shard balancing.
 
 Benthos will not store a consumed sequence unless it is acknowledged at the output level, which ensures at-least-once delivery guarantees.
 
@@ -76,7 +76,7 @@ It's possible to configure Benthos to create the DynamoDB table required for coo
 
 ### Batching
 
-Use the `batching` fields to configure an optional batching policy. Each stream shard will be batched separately in order to ensure that acknowledgments aren't contaminated.
+Use the `batching` fields to configure an optional batching policy. Each stream shard will be batched separately in order to ensure that acknowledgments aren't contaminated.
 
 ## Fields
 
