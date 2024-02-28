@@ -406,8 +406,6 @@ INFO[0408] Are you operating the DataOS®? (Y,n)
 INFO[0452] 🚀 initialization...complete
 ```
 
-<aside class="callout">🗣️ If you are your enterprise's operator/admin, then the installation steps for you will change after the last step. These are covered in the Operator Document for DataOS.</aside>
-
 ## Log in
 
 After the successful initialization of DataOS context, you can log in to your account with the following command. 
@@ -452,7 +450,6 @@ To get help for a specific command, use:
 dataos-ctl <name of command> --help
 ```
 
-
 A command can have more sub-commands and flags under it. You can again use the CLI help command to get details on the subcommand.
 
 ```bash
@@ -478,7 +475,7 @@ dataos-ctl get -t workflow -w public -a
 
 Other DataOS Resources for which a workspace must always be defined are Secret, Service, Cluster, and Database (these are classified as **Workspace-level Resources**).
 
-For Resources such as Depot, Policy, and Compute, Workspace has no meaning (these are classified as **Cluster-level Resources**). Hence you need not use the flag `-w <name of workspace>`.
+For Resources such as Depot, Policy, and Compute, the concept of Workspace has no meaning (these are classified as **Instance-level Resources**). Hence you need not use the flag `-w <name of workspace>`.
 
 **Workspace** is like a tenant in DataOS. It provides a way to segregate your private work from the rest of the organization’s. Workspaces also serve as a sandbox environment where you can freely explore and experiment with data without impacting the production environment. This functionality enables you to test and refine your projects before deploying them to the public workspace or making them available for broader usage.
 

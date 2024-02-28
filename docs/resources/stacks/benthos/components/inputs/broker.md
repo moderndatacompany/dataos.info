@@ -74,7 +74,7 @@ It's possible to configure a batch policy with a broker using the `batching`�
 
 ### Processors
 
-It is possible to configure processors at the broker level, where they will be applied to *all* child inputs, as well as on the individual child inputs. If you have processors at both the broker level *and* on child inputs, then the broker processors will be applied *after* the child nodes processors.
+It is possible to configure [processors](../../components/processors.md) at the broker level, where they will be applied to *all* child inputs, as well as on the individual child inputs. If you have processors at both the broker level *and* on child inputs, then the broker processors will be applied *after* the child nodes processors.
 
 ## Fields
 
@@ -180,7 +180,7 @@ check: this.type == "end_of_transaction"
 
 ### `batching.processors`
 
-A list of processors to apply to a batch as it is flushed. This allows you to aggregate and archive the batch however you see fit. Please note that all resulting messages are flushed as a single batch, therefore splitting the batch into smaller batches using these processors is a no-op.
+A list of [processors](../../components/processors.md) to apply to a batch as it is flushed. This allows you to aggregate and archive the batch however you see fit. Please note that all resulting messages are flushed as a single batch, therefore splitting the batch into smaller batches using these processors is a no-op.
 
 Type: `array`
 

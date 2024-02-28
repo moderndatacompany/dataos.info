@@ -19,10 +19,18 @@ A DataOS Resource to create, manage and optimize computational resources & confi
 
 DataOS Lakehouse integrates Apache Iceberg table format with cloud object storage to offer a fully managed storage solution. It replicates traditional data warehouse functionalities, such as table creation with defined schemas and data manipulation via various tools. To learn more about Lakehouse, refer to the following link: [Lakehouse](./lakehouse.md).
 
+### **Monitor**
+
+The Monitor is a DataOS Resource that allows one to raise incidents corresponding to the occurrence of certain events or metrics in the system. More details about the Monitor are available on the following page: [Monitor](./monitor.md).
+
+### **Pager**
+
+A Pager Resource enables users to specify criteria for identifying an incident from the incident stream and delivering it to a user-specified destination. 
+
+
 ### **Secret**
 
-The Resource to store sensitive information such as passwords, tokens or keys in the internal vault of DataOS, and use this information later without sharing the sensitive data itself.
-Read about Secret on the following page: [Secret](./secret.md).
+The Resource to store sensitive information such as passwords, tokens or keys in the internal vault of DataOS, and use this information later without sharing the sensitive data itself. Secrets are confined to a Workspace, unlike Instance Secrets whose scope spans across the entire DataOS Instance. Read about Secret on the following page: [Secret](./secret.md).
 
 ### **Service**
 
@@ -50,7 +58,7 @@ The following Resources come into this category:
 
 <!-- >🔔 Components labeled as **[𝛼 alpha]** are in their Alpha release phase. This stage is primarily for testing and evaluation; therefore, we advise against using these components for critical production tasks. Availability in all environments is not guaranteed. For further information and confirmation of their accessibility, please consult with your DataOS administrator. -->
 
-The Bundle Resource is a Resource management construct that streamlines the deployment and management of mutliple DataOS Resources. Within a Bundle each entity represents a unique DataOS Resource, interconnected through dependency relationships and conditions. To learn more about Bundles, click on the link: [Bundle](./bundle.md).
+The Bundle Resource is a Resource management construct that streamlines the deployment and management of multiple DataOS Resources. Within a Bundle each entity represents a unique DataOS Resource, interconnected through dependency relationships and conditions. To learn more about Bundles, click on the link: [Bundle](./bundle.md).
 
 ### **Compute**
 
@@ -59,6 +67,10 @@ Compute is essentially a node pool of homogeneous virtual machines. They allow y
 ### **Depot**
 
 Depots provide you with a uniform way to connect with the variety of data sources in your organization. Depots abstract away the different protocols and complexities of the source systems to present a common taxonomy and method to address these source systems. Learn how to create & use depots on this link: [Depot](./depot.md).
+
+### **Instance Secrets**
+
+An Instance Secret is a Resource within DataOS for securely storing confidential information at the DataOS Instance level. Its scope spans the entire DataOS Instance, enabling access across all Workspaces. Conversely, a Secret is limited in accessibility, allowing access solely to Resources within the Workspace where it's created. 
 
 ### **Operator**
 

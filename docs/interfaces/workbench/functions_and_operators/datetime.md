@@ -182,8 +182,8 @@ SELECT to_iso8601(TIMESTAMP '2022-05-31 12:30:45+03:00') AS iso8601_timestamp_tz
 
 **Example:**
 ```sql
-SELECT to_milliseconds(interval '2 days 03:45:30.500') AS milliseconds_result;
--- Result: 183930500
+SELECT to_milliseconds(interval '24000' hour ) AS milliseconds_result;
+-- Result: 18393050086400000000
 ```
 
 ### **`to_unixtime()`**
@@ -230,7 +230,13 @@ The date_trunc function supports the following units:
 
 | Function                  | Description                                      |
 |---------------------------|--------------------------------------------------|
-| `date_trunc(unit, x)  `     | Returns `x` truncated to unit:                     |
+| `date_trunc(unit, x)  `     | Returns `x` truncated to unit                    |
+
+**Example:**
+```sql
+SELECT DATE_TRUNC('HOUR', TIMESTAMP '2022-05-17 15:30:45') AS truncated_date;
+---2022-05-17 15:00:00.000
+```
 
 ## Interval functions
 

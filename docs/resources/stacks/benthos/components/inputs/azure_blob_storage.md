@@ -23,7 +23,7 @@ Downloads objects within an Azure Blob Storage container, optionally filtered by
 
 ## Downloading Large Files
 
-When downloading large files, it's often necessary to process it in streamed parts in order to avoid loading the entire file in memory at a given time. In order to do this, a `codec` can be specified that determines how to break the input into smaller individual messages.
+When downloading large files, it's often necessary to process it in streamed parts in order to avoid loading the entire file in memory at a given time. In order to do this, a [`codec`](#codec) can be specified that determines how to break the input into smaller individual messages.
 
 ## Metadata
 
@@ -39,7 +39,7 @@ This input adds the following metadata fields to each message:
 - All user defined metadata
 ```
 
-You can access these metadata fields using function interpolation.
+You can access these metadata fields using [function interpolation](../../configurations/interpolation.md).
 
 ## Fields
 
