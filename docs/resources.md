@@ -4,8 +4,11 @@ DataOS Resources are atomic & logical units with their own life cycle. They can 
 
 DataOS Resources are categorized into two categories - [Workspace-level Resources](./resources/types_of_dataos_resources.md#workspace-level-resources) & [Instance-level Resources](./resources/types_of_dataos_resources.md#instance-level-resources).
 
-![DataOS Resources](./resources/dataos_resources.png)
-<center><i>DataOS Resources</i></center>
+![Workspace-level DataOS Resources](./resources/workspace_dataos_resources.png)
+<center><i>Workspace-level DataOS Resources</i></center>
+
+![Instance-level DataOS Resources](./resources/instance_dataos_resources.png)
+<center><i>Instance-level DataOS Resources</i></center>
 
 ## Types of DataOS Resources
 

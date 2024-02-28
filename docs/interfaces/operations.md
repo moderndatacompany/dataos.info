@@ -255,4 +255,4 @@ Let's say you have a data processing job that involves complex computations and 
 
 By analyzing the resource utilization of the data processing job, it becomes apparent that the allocated resources are insufficient. The executor node is reaching its maximum limit, indicating a potential bottleneck in the processing pipeline. To optimize job performance and ensure efficient processing, it is recommended to increase the requested resources.
 
-By scaling up the allocated resources, such as CPU and memory, the executor node will have more capacity to handle the workload. This can lead to improved processing speed, reduced latency, and overall better performance of the data processing job.
+By scaling up the allocated resources, such as CPU and Memory, the executor node will have more capacity to handle the workload. This can lead to improved processing speed, reduced latency, and overall better performance of the data processing job.
