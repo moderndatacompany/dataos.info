@@ -143,7 +143,7 @@ For more details, see [`binary`](./functions_and_operators/binary.md)
 
 ### **Bitwise**
 
-For more details, see `bitwise`
+For more details, see [`bitwise`](./functions_and_operators/bitwise.md)
 
 - [`bit_count`](./functions_and_operators/bitwise.md#bit_count)
 - [`bitwise_and`](./functions_and_operators/bitwise.md#bitwise_and)
@@ -192,7 +192,7 @@ For more details, see [`conversion`](./functions_and_operators/conversion.md)
 
 ### **Date and time**
 
-For more details, see [`datetime`](./functions_and_operators/datetime.md)
+For more details, see [`date and time`](./functions_and_operators/datetime.md)
 
 - [`AT TIME ZONE`](./functions_and_operators/datetime.md#at-time-zone-operator)
 - [`current_date`](./functions_and_operators/datetime.md#current_date)
@@ -234,7 +234,7 @@ For more details, see [`lambda`](./functions_and_operators/lambda.md)
 
 ### **Machine Learning**
 
-For more details, see [`ml`](./functions_and_operators/machine_learning.md)
+For more details, see [`machine learning`](./functions_and_operators/machine_learning.md)
 
 - [`classify`](./functions_and_operators/machine_learning.md#classify)
 - [`features`](./functions_and_operators/machine_learning.md#features)
@@ -246,7 +246,7 @@ For more details, see [`ml`](./functions_and_operators/machine_learning.md)
 
 ### **Map**
 
-For more details,[`map`](./functions_and_operators/map.md)
+For more details,see [`map`](./functions_and_operators/map.md)
 
 - [`cardinality`](./functions_and_operators/map.md#cardinality)
 - [`element_at`](./functions_and_operators/map.md#element_at)
@@ -264,7 +264,8 @@ For more details,[`map`](./functions_and_operators/map.md)
 
 ### **Math**
 
-For more details, see - [`abs`](./functions_and_operators/math.md#abs)
+For more details, see [`maths`](./functions_and_operators/math.md#abs)
+
 - [`acos`](./functions_and_operators/math.md#acos)
 - [`asin`](./functions_and_operators/math.md#asin)
 - [`atan`](./functions_and_operators/math.md#atan)
@@ -312,7 +313,7 @@ For more details, see - [`abs`](./functions_and_operators/math.md#abs)
 
 ### **Quantile Digest**
 
-For more details, see [`qdigest`](./functions_and_operators/quantile_digest.md)
+For more details, see [`quantile digest`](./functions_and_operators/quantile_digest.md)
 
 - [`merge()`](./functions_and_operators/quantile_digest.md#merge)
 - [`qdigest_agg`](./functions_and_operators/quantile_digest.md#qdigest_agg)
@@ -322,7 +323,7 @@ For more details, see [`qdigest`](./functions_and_operators/quantile_digest.md)
 
 ### **Regular Expression**
 
-For more details, see [`regexp`](./functions_and_operators/regular_expression.md)
+For more details, see [`regular expression`](./functions_and_operators/regular_expression.md)
 
 - [`regexp_count`](./functions_and_operators/regular_expression.md#regexp_count)
 - [`regexp_extract`](./functions_and_operators/regular_expression.md#regexp_extract)
