@@ -141,8 +141,8 @@ Monitors within the DataOS are categorized into three distinct types, differenti
 
 | Data Source Type    | Data Type | Condition Definition       | Monitor Type      | Type Attribute Value&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
 |---------------------|-----------|----------------------------|-------------------| -------|
-| Icebase, Prometheus | Numeric   | SQL Query, PROM Query      | <a href="/resources/monitor#equation-monitor">Equation Monitor</a>  | <code>type: equation_monitor</code> |
-| APIs                | String    | JQ Filtering and value matching | <a href="/resources/monitor#report-monitor">Report Monitor</a>    | <code>type: report_monitor</code> |
+| Icebase, Prometheus | Numeric   | SQL Query, PROM Query      | <a href="/resources/monitor/#equation-monitor">Equation Monitor</a>  | <code>type: equation_monitor</code> |
+| APIs                | String    | JQ Filtering and value matching | <a href="/resources/monitor/#report-monitor">Report Monitor</a>    | <code>type: report_monitor</code> |
 
 </center>
 
@@ -230,63 +230,63 @@ monitor:
 <th>Requirement</th>
 </tr>
 <tr>
-<td><a href="/resources/monitor/yaml_configuration_attributes#equation"><code>equation</code></a></td>
+<td><a href="/resources/monitor/yaml_configuration_attributes/#equation"><code>equation</code></a></td>
 <td>mapping</td>
 <td>none</td>
 <td>none</td>
 <td>mandatory</td>
 </tr>
 <tr>
-<td><a href="/resources/monitor/yaml_configuration_attributes#leftexpression"><code>leftExpression</code></td>
+<td><a href="/resources/monitor/yaml_configuration_attributes/#leftexpression"><code>leftExpression</code></td>
 <td>mapping</td>
 <td>none</td>
 <td>none</td>
 <td>mandatory</td>
 </tr>
 <tr>
-<td><a href="/resources/monitor/yaml_configuration_attributes#rightexpression"><code>rightExpression</code></td>
+<td><a href="/resources/monitor/yaml_configuration_attributes/#rightexpression"><code>rightExpression</code></td>
 <td>mapping</td>
 <td>none</td>
 <td>none</td>
 <td>mandatory</td>
 </tr>
 <tr>
-<td><a href="/resources/monitor/yaml_configuration_attributes#querycoefficient"><code>queryCoefficient</code></td>
+<td><a href="/resources/monitor/yaml_configuration_attributes/#querycoefficient"><code>queryCoefficient</code></td>
 <td>number</td>
 <td>none</td>
 <td>any number</td>
 <td>mandatory</td>
 </tr>
 <tr>
-<td><a href="/resources/monitor/yaml_configuration_attributes#queryconstant"><code>queryConstant</code></td>
+<td><a href="/resources/monitor/yaml_configuration_attributes/#queryconstant"><code>queryConstant</code></td>
 <td>number</td>
 <td>none</td>
 <td>any number</td>
 <td>mandatory</td>
 </tr>
 <tr>
-<td><a href="/resources/monitor/yaml_configuration_attributes#query"><code>query</code></td>
+<td><a href="/resources/monitor/yaml_configuration_attributes/#query"><code>query</code></td>
 <td>mapping</td>
 <td>none</td>
 <td>valid query attributes</td>
 <td>mandatory</td>
 </tr>
 <tr>
-<td><a href="/resources/monitor/yaml_configuration_attributes#type-2"><code>type</code></td>
+<td><a href="/resources/monitor/yaml_configuration_attributes/#type-2"><code>type</code></td>
 <td>string</td>
 <td>none</td>
 <td>prom, trino</td>
 <td>mandatory</td>
 </tr>
 <tr>
-<td><a href="/resources/monitor/yaml_configuration_attributes#cluster"><code>cluster</code></td>
+<td><a href="/resources/monitor/yaml_configuration_attributes/#cluster"><code>cluster</code></td>
 <td>string</td>
 <td>none</td>
 <td>minerva, thanos, themis</td>
 <td>mandatory</td>
 </tr>
 <tr>
-<td><a href="/resources/monitor/yaml_configuration_attributes#operator"><code>operator</code></td>
+<td><a href="/resources/monitor/yaml_configuration_attributes/#operator"><code>operator</code></td>
 <td>string</td>
 <td>none</td>
 <td>equals, greater_than, less_than, not_equals, greater_than_equals, less_than_equals</td>
@@ -294,7 +294,7 @@ monitor:
 </tr>
 </table>
 
-<p>For more information regarding the various attributes, refer to the link: <a href="/resources/monitor/yaml_configuration_attributes.md#equation">Attributes of Monitor manifest</a>.</p>
+<p>For more information regarding the various attributes, refer to the link: <a href="/resources/monitor/yaml_configuration_attributes/#equation">Attributes of Monitor manifest</a>.</p>
 
 </details>
 
@@ -406,63 +406,63 @@ monitor:
 <th>Requirement</th>
 </tr>
 <tr>
-<td><a href="/resources/monitor/yaml_configuration_attributes#report"><code>report</code></a></td>
+<td><a href="/resources/monitor/yaml_configuration_attributes/#report"><code>report</code></a></td>
 <td>mapping</td>
 <td>none</td>
 <td>none</td>
 <td>optional</td>
 </tr>
 <tr>
-<td><a href="/resources/monitor/yaml_configuration_attributes#source"><code>source</code></td>
+<td><a href="/resources/monitor/yaml_configuration_attributes/#source"><code>source</code></td>
 <td>mapping</td>
 <td>none</td>
 <td>none</td>
 <td>mandatory</td>
 </tr>
 <tr>
-<td><a href="/resources/monitor/yaml_configuration_attributes#dataosinstance"><code>dataOsInstance</code></td>
+<td><a href="/resources/monitor/yaml_configuration_attributes/#dataosinstance"><code>dataOsInstance</code></td>
 <td>mapping</td>
 <td>none</td>
 <td>none</td>
 <td>mandatory</td>
 </tr>
 <tr>
-<td><a href="/resources/monitor/yaml_configuration_attributes#path"><code>path</code></td>
+<td><a href="/resources/monitor/yaml_configuration_attributes/#path"><code>path</code></td>
 <td>string</td>
 <td>none</td>
 <td>any valid API endpoint paths</td>
 <td>mandatory</td>
 </tr>
 <tr>
-<td><a href="/resources/monitor/yaml_configuration_attributes#conditions"><code>conditions</code></td>
+<td><a href="/resources/monitor/yaml_configuration_attributes/#conditions"><code>conditions</code></td>
 <td>list of mappings</td>
 <td>none</td>
 <td>none</td>
 <td>mandatory</td>
 </tr>
 <tr>
-<td><a href="/resources/monitor/yaml_configuration_attributes#valuecomparison"><code>valueComparison</code></td>
+<td><a href="/resources/monitor/yaml_configuration_attributes/#valuecomparison"><code>valueComparison</code></td>
 <td>mapping</td>
 <td>none</td>
 <td>valid query attributes</td>
 <td>mandatory</td>
 </tr>
 <tr>
-<td><a href="/resources/monitor/yaml_configuration_attributes#durationcomparison"><code>durationComparison</code></td>
+<td><a href="/resources/monitor/yaml_configuration_attributes/#durationcomparison"><code>durationComparison</code></td>
 <td>mapping</td>
 <td>none</td>
 <td>valid query attributes</td>
 <td>mandatory</td>
 </tr>
 <tr>
-<td><a href="/resources/monitor/yaml_configuration_attributes#operator"><code>operator</code></td>
+<td><a href="/resources/monitor/yaml_configuration_attributes/#operator"><code>operator</code></td>
 <td>string</td>
 <td>none</td>
 <td>equals, greater_than, less_than, not_equals, greater_than_equals, less_than_equals</td>
 <td>mandatory</td>
 </tr>
 <tr>
-<td><a href="/resources/monitor/yaml_configuration_attributes#value"><code>value</code></td>
+<td><a href="/resources/monitor/yaml_configuration_attributes/#value"><code>value</code></td>
 <td>string</td>
 <td>none</td>
 <td>any valid string</td>
@@ -470,7 +470,7 @@ monitor:
 </tr>
 </table>
 
-<p>For more information regarding the various attributes, refer to the link: <a href="/resources/monitor/yaml_configuration_attributes.md#report">Attributes of Report manifest</a>.</p>
+<p>For more information regarding the various attributes, refer to the link: <a href="/resources/monitor/yaml_configuration_attributes/#report">Attributes of Report manifest</a>.</p>
 
 </details>
 
