@@ -164,7 +164,7 @@ FROM your_table;
 
 ### **`approx_percentile()`**
 
-| Function                                      | Description                                                                                                         | Return Type  |
+| Function&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;              | Description                                                                                                         | Return Type  |
 | ----------------------------------------------|---------------------------------------------------------------------------------------------------------------------| ------------ |
 | `approx_percentile(x, percentage)`             | Computes the approximate percentile for all input values of `x` at the given `percentage`. `percentage` must be between 0 and 1, constant for all rows.               | `[same as x]`     |
 | `approx_percentile(x, percentages)`            | Calculates the approximate percentile for all input values of `x` at each specified percentage in the array. Each element in `percentages` must be between 0 and 1, constant for all rows.               | `array<[same as x]>`  |
@@ -201,7 +201,7 @@ A quantile digest is a data sketch that stores approximate percentile informatio
 | Function                                 | Description                                                                     | Return Type               |
 | -----------------------------------------|---------------------------------------------------------------------------------|---------------------------|
 | `qdigest_agg(x)`                         | Computes a quantile digest (qdigest) for values in `x`.                          | `qdigest([same as x])`    |
-| `qdigest_agg(x, w) -> qdigest([same as x])` | Computes a quantile digest (qdigest) for values in `x` with per-item weights `w`. | `qdigest([same as x])`    |
+| `qdigest_agg(x, w)` | Computes a quantile digest (qdigest) for values in `x` with per-item weights `w`. | `qdigest([same as x])`    |
 | `qdigest_agg(x, w, accuracy)`            | Computes a quantile digest (qdigest) for values in `x` with per-item weights `w` and specified accuracy. | `qdigest([same as x])`    |
 
 
@@ -211,8 +211,8 @@ A T-digest is a data sketch specifically crafted to store approximate percentile
 
 | Function                             | Description                                   | Return Type     |
 | --------------------------------------|-----------------------------------------------|-----------------|
-| `tdigest_agg(x) → tdigest`           | Computes a T-Digest for values in `x`.        | `tdigest`      |
-| `tdigest_agg(x, w) → tdigest`        | Computes a T-Digest for values in `x` with per-item weights `w`. | `tdigest`      |
+| `tdigest_agg(x)`           | Computes a T-Digest for values in `x`.        | `tdigest`      |
+| `tdigest_agg(x, w)`        | Computes a T-Digest for values in `x` with per-item weights `w`. | `tdigest`      |
 
 
 ## Statistical aggregate functions
@@ -308,7 +308,7 @@ A T-digest is a data sketch specifically crafted to store approximate percentile
 
 | Function                                                                                                                | Description                                                                                                                | Return Type            |
 |-------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|------------------------|
-| `reduce_agg(inputValue T, initialState S, inputFunction(S, T, S), combineFunction(S, S, S)) → S#`                      | Reduces all input values into a single value. `inputFunction` is invoked for each non-null input value, taking the input value and the current state (initially `initialState`), and returning the new state. `combineFunction` is invoked to combine two states into a new state. The final state is returned. The state type (`S`) must be boolean, integer, floating-point, or date/time/interval. | `<Same as initialState>`|
+| `reduce_agg(inputValue T, initialState S, inputFunction(S, T, S), combineFunction(S, S, S)) `                      | Reduces all input values into a single value. `inputFunction` is invoked for each non-null input value, taking the input value and the current state (initially `initialState`), and returning the new state. `combineFunction` is invoked to combine two states into a new state. The final state is returned. The state type (`S`) must be boolean, integer, floating-point, or date/time/interval. | `<Same as initialState>`|
 
 
 #### Example:
