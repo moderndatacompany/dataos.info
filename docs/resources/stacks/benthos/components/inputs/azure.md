@@ -3,7 +3,7 @@
 Category: Azure, Services
 
 <aside>
-🗣 **BETA**
+🗣 <b> BETA </b>
 
 This component is mostly stable, but breaking changes could still be made outside of major version releases if a fundamental problem with the component is found.
 
@@ -101,7 +101,7 @@ A storage account connection string. This field is required if  `storage_accoun
 
 ### `queue_name`[](https://www.benthos.dev/docs/components/inputs/azure_queue_storage#queue_name)
 
-The name of the source storage queue. This field supports interpolation functions.
+The name of the source storage queue. This field supports [function interpolation](../../configurations/interpolation.md).
 
 **Type:** `string`
 

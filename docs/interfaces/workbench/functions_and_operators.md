@@ -9,69 +9,66 @@ hide:
   [a](./functions_and_operators.md#a) &nbsp;&nbsp;   [b](./functions_and_operators.md#b) &nbsp;&nbsp;    [c](./functions_and_operators.md#c)  &nbsp;&nbsp;     [d](./functions_and_operators.md#d) &nbsp;&nbsp;    [e](./functions_and_operators.md#e) &nbsp;&nbsp;   [f](./functions_and_operators.md#f) &nbsp;&nbsp;    [g](./functions_and_operators.md#g)  &nbsp;&nbsp;   [h](./functions_and_operators.md#h) &nbsp;&nbsp;    [i](./functions_and_operators.md#i) &nbsp;&nbsp;     [j](./functions_and_operators.md#j) &nbsp;&nbsp;    [k](./functions_and_operators.md#k) &nbsp;&nbsp;     [l](./functions_and_operators.md#l) &nbsp;&nbsp;     [m](./functions_and_operators.md#m) &nbsp;&nbsp;     [n](./functions_and_operators.md#n) &nbsp;&nbsp;    [o](./functions_and_operators.md#o) &nbsp;&nbsp;    [p](./functions_and_operators.md#p) &nbsp;&nbsp;     [q](./functions_and_operators.md#q) &nbsp;&nbsp;     [r](./functions_and_operators.md#r) &nbsp;&nbsp;     [s](./functions_and_operators.md#s) &nbsp;&nbsp;    [t](./functions_and_operators.md#t) &nbsp;&nbsp;     [u](./functions_and_operators.md#u) &nbsp;&nbsp; [v](./functions_and_operators.md#v) &nbsp;&nbsp;   [w](./functions_and_operators.md#w) &nbsp;&nbsp; [x](./functions_and_operators.md#x) &nbsp;&nbsp;   [y](./functions_and_operators.md#y) &nbsp;&nbsp; [z](./functions_and_operators.md#z) &nbsp;&nbsp;   
 
 ## a
-| Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
-| --- | --- | --- | --- | --- | --- | --- |
-| abs | bigint | bigint | scalar | 1 | Absolute value |  |
-| abs | decimal(p,s) | decimal(p,s) | scalar | 1 | Absolute value |  |
-| abs | double | double | scalar | 1 | Absolute value |  |
-| abs | integer | integer | scalar | 1 | Absolute value |  |
-| abs | real | real | scalar | 1 | Absolute value |  |
-| abs | smallint | smallint | scalar | 1 | Absolute value |  |
-| abs | tinyint | tinyint | scalar | 1 | Absolute value |  |
-| acos | double | double | scalar | 1 | Arc cosine |  |
-| all_match | boolean | array(t), function(t,boolean) | scalar | 1 | Returns true if all elements of the array match the given predicate |  |
-| any_match | boolean | array(t), function(t,boolean) | scalar | 1 | Returns true if the array contains one or more elements that match the given predicate |  |
-| approx_distinct | bigint | boolean | aggregate | 1 |  |  |
-| approx_distinct | bigint | boolean, double | aggregate | 1 |  |  |
-| approx_distinct | bigint | t | aggregate | 1 |  |  |
-| approx_distinct | bigint | t, double | aggregate | 1 |  |  |
-| approx_distinct | bigint | unknown | aggregate | 1 |  |  |
-| approx_distinct | bigint | unknown, double | aggregate | 1 |  |  |
-| approx_most_frequent | map(bigint,bigint) | bigint, bigint, bigint | aggregate | 1 |  |  |
-| approx_most_frequent | map(varchar,bigint) | bigint, varchar, bigint | aggregate | 1 |  |  |
-| approx_percentile | array(bigint) | bigint, array(double) | aggregate | 1 |  |  |
-| approx_percentile | array(bigint) | bigint, double, array(double) | aggregate | 1 |  |  |
-| approx_percentile | array(double) | double, array(double) | aggregate | 1 |  |  |
-| approx_percentile | array(double) | double, double, array(double) | aggregate | 1 |  |  |
-| approx_percentile | array(real) | real, array(double) | aggregate | 1 |  |  |
-| approx_percentile | array(real) | real, double, array(double) | aggregate | 1 |  |  |
-| approx_percentile | bigint | bigint, double | aggregate | 1 |  |  |
-| approx_percentile | bigint | bigint, double, double | aggregate | 1 |  |  |
-| approx_percentile | bigint | bigint, double, double, double | aggregate | 1 |  |  |
-| approx_percentile | double | double, double | aggregate | 1 |  |  |
-| approx_percentile | double | double, double, double | aggregate | 1 |  |  |
-| approx_percentile | double | double, double, double, double | aggregate | 1 |  |  |
-| approx_percentile | real | real, double | aggregate | 1 |  |  |
-| approx_percentile | real | real, double, double | aggregate | 1 |  |  |
-| approx_percentile | real | real, double, double, double | aggregate | 1 |  |  |
-| approx_set | hyperloglog | bigint | aggregate | 1 |  |  |
-| approx_set | hyperloglog | double | aggregate | 1 |  |  |
-| approx_set | hyperloglog | varchar(x) | aggregate | 1 |  |  |
-| arbitrary | T | T | aggregate | 1 | Return an arbitrary non-null input value |  |
-| array_agg | array(T) | T | aggregate | 1 | return an array of values |  |
-| array_distinct | array(e) | array(e) | scalar | 1 | Remove duplicate values from the given array |  |
-| array_except | array(e) | array(e), array(e) | scalar | 1 | Returns an array of elements that are in the first array but not the second, without duplicates. |  |
-| array_intersect | array(e) | array(e), array(e) | scalar | 1 | Intersects elements of the two given arrays |  |
-| array_join | varchar | array(T), varchar | scalar | 1 | Concatenates the elements of the given array using a delimiter and an optional string to replace nulls |  |
-| array_join | varchar | array(T), varchar, varchar | scalar | 1 | Concatenates the elements of the given array using a delimiter and an optional string to replace nulls |  |
-| array_max | t | array(t) | scalar | 1 | Get maximum value of array |  |
-| array_min | t | array(t) | scalar | 1 | Get minimum value of array |  |
-| array_position | bigint | array(t), t | scalar | 1 | Returns the position of the first occurrence of the given value in array (or 0 if not found) |  |
-| array_remove | array(e) | array(e), e | scalar | 1 | Remove specified values from the given array |  |
-| array_sort | array(e) | array(e) | scalar | 1 | Sorts the given array in ascending order according to the natural ordering of its elements. |  |
-| array_sort | array(t) | array(t), function(t,t,integer) | scalar | 1 | Sorts the given array with a lambda comparator. |  |
-| array_union | array(e) | array(e), array(e) | scalar | 1 | Union elements of the two given arrays |  |
-| arrays_overlap | boolean | array(e), array(e) | scalar | 1 | Returns true if arrays have common elements |  |
-| asin | double | double | scalar | 1 | Arc sine |  |
-| at_timezone | timestamp(p) with time zone | timestamp(p) with time zone, varchar(x) | scalar | 1 |  |  |
-| atan | double | double | scalar | 1 | Arc tangent |  |
-| atan2 | double | double, double | scalar | 1 | Arc tangent of given fraction |  |
-| avg | decimal(p,s) | decimal(p,s) | aggregate | 1 | Calculates the average value |  |
-| avg | double | bigint | aggregate | 1 |  |  |
-| avg | double | double | aggregate | 1 |  |  |
-| avg | interval day to second | interval day to second | aggregate | 1 |  |  |
-| avg | interval year to month | interval year to month | aggregate | 1 |  |  |
-| avg | real | real | aggregate | 1 | Returns the average value of the argument |  |
+| Function          | Return Type               | Argument Types                             | Function Type | Deterministic | Description                                            |
+| ----------------- | ------------------------- | ------------------------------------------- | -------------- | ------------- | ------------------------------------------------------ |
+| abs               | bigint                    | bigint                                      | scalar         | 1             | Absolute value                                        |
+|                  | decimal(p,s)              | decimal(p,s)                                |               |               |                                                        |
+|                  | double                    | double                                      |               |               |                                                        |
+|                  | integer                   | integer                                     |               |               |                                                        |
+|                  | real                      | real                                        |               |               |                                                        |
+|                  | smallint                  | smallint                                    |               |               |                                                        |
+|                  | tinyint                   | tinyint                                     |               |               |                                                        |
+| acos              | double                    | double                                      | scalar         | 1             | Arc cosine                                             |
+| all_match         | boolean                   | array(t), function(t,boolean)               | scalar         | 1             | Returns true if all elements of the array match the given predicate |
+| any_match         | boolean                   | array(t), function(t,boolean)               | scalar         | 1             | Returns true if the array contains one or more elements that match the given predicate |
+| approx_distinct   | bigint                    | boolean                                     | aggregate      | 1             |                                                        |
+|                  | bigint                    | boolean, double                             | aggregate      | 1             |                                                        |
+|                  | bigint                    | t                                           | aggregate      | 1             |                                                        |
+|                  | bigint                    | t, double                                   | aggregate      | 1             |                                                        |
+|                  | bigint                    | unknown                                     | aggregate      | 1             |                                                        |
+|                  | bigint                    | unknown, double                             | aggregate      | 1             |                                                        |
+| approx_most_frequent | map(bigint,bigint)      | bigint, bigint, bigint                      | aggregate      | 1             |                                                        |
+|                  | map(varchar,bigint)      | bigint, varchar, bigint                     | aggregate      | 1             |                                                        |
+| approx_percentile | array(bigint)             | bigint, array(double)                       | aggregate      | 1             |                                                        |
+|                  | array(bigint)             | bigint, double, array(double)               | aggregate      | 1             |                                                        |
+|                  | array(double)             | double, array(double)                       | aggregate      | 1             |                                                        |
+|                  | array(double)             | double, double, array(double)               | aggregate      | 1             |                                                        |
+|                  | array(real)               | real, array(double)                         | aggregate      | 1             |                                                        |
+|                  | array(real)               | real, double, array(double)                 | aggregate      | 1             |                                                        |
+|                  | bigint                    | bigint, double                              | aggregate      | 1             |                                                        |
+|                  | bigint                    | bigint, double, double                      | aggregate      | 1             |                                                        |
+|                  | bigint                    | bigint, double, double, double              | aggregate      | 1             |                                                        |
+|                  | double                    | double, double                              | aggregate      | 1             |                                                        |
+|                  | double                    | double, double, double                      | aggregate      | 1             |                                                        |
+|                  | double                    | double, double, double, double              | aggregate      | 1             |                                                        |
+|                  | real                      | real, double                                | aggregate      | 1             |                                                        |
+|                  | real                      | real, double, double                        | aggregate      | 1             |                                                        |
+|                  | real                      | real, double, double, double                | aggregate      | 1             |                                                        |
+| approx_set        | hyperloglog               | bigint                                      | aggregate      | 1             |                                                        |
+|                  | hyperloglog               | double                                      | aggregate      | 1             |                                                        |
+|                  | hyperloglog               | varchar(x)                                  | aggregate      | 1             |                                                        |
+| arbitrary         | T                         | T                                           | aggregate      | 1             | Return an arbitrary non-null input value              |
+| array_agg         | array(T)                  | T                                           | aggregate      | 1             | return an array of values                              |
+| array_distinct    | array(e)                  | array(e)                                    | scalar         | 1             | Remove duplicate values from the given array           |
+| array_except      | array(e)                  | array(e), array(e)                          | scalar         | 1             | Returns an array of elements that are in the first array but not the second, without duplicates |
+| array_intersect   | array(e)                  | array(e), array(e)                          | scalar         | 1             | Intersects elements of the two given arrays            |
+| array_join        | varchar                   | array(T), varchar                           | scalar         | 1             | Concatenates the elements of the given array using a delimiter and an optional string to replace nulls |
+|                  | varchar                   | array(T), varchar, varchar                  | scalar         | 1             | Concatenates the elements of the given array using a delimiter and an optional string to replace nulls |
+| array_max         | t                         | array(t)                                    | scalar         | 1             | Get maximum value of array                              |
+| array_min         | t                         | array(t)                                    | scalar         | 1             | Get minimum value of array                              |
+| array_position    | bigint                    | array(t), t                                 | scalar         | 1             | Returns the position of the first occurrence of the given value in array (or 0 if not found) |
+| array_remove      | array(e)                  | array(e), e                                | scalar         | 1             | Remove specified values from the given array           |
+| array_sort        | array(e)                  | array(e)                                    | scalar         | 1             | Sorts the given array in ascending order according to the natural ordering of its elements. |
+|                  | array(t)                  | array(t), function(t,t,integer)             | scalar         | 1             | Sorts the given array with a lambda comparator.        |
+| array_union       | array(e)                  | array(e), array(e)                          | scalar         | 1             | Union elements of the two given arrays                 |
+| arrays_overlap    | boolean                   | array(e), array(e)                          | scalar         | 1             | Returns true if arrays have common elements            |
+| asin              | double                    | double                                      | scalar         | 1             | Arc sine                                               |
+| at_timezone       | timestamp(p) with time zone | timestamp(p) with time zone, varchar(x)    | scalar         | 1             |                                                        |
+| atan              | double                    | double                                      | scalar         | 1             | Arc tangent                                            |
+| atan2             | double                    | double, double                              | scalar         | 1             | Arc tangent of given fraction                          |
+| avg               | decimal(p,s)              | decimal(p,s)                                | aggregate      | 1             | Calculates the average value                           |
+|                  | double                    | bigint                                     
+
 ## b
 | Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
 | --- | --- | --- | --- | --- | --- | --- |

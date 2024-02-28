@@ -32,7 +32,7 @@ input:
     batch_count: 1
 ```
 
-This input offers more control over CSV parsing than the `file` input.
+This input offers more control over CSV parsing than the [`file` input](../inputs/file.md).
 
 When parsing with a header row, each line of the file will be consumed as a structured object, where the key names are determined from the header now. For example, the following CSV file:
 
