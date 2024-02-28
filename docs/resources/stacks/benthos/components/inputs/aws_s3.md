@@ -58,7 +58,7 @@ input:
 
 A common pattern for consuming S3 objects is to emit upload notification events from the bucket either directly to an SQS queue or to an SNS topic that is consumed by an SQS queue and then have your consumer listen for events that prompt it to download the newly uploaded objects. More information about this pattern and how to set it up can be found [here.](https://docs.aws.amazon.com/AmazonS3/latest/dev/ways-to-add-notification-config-to-bucket.html)
 
-Benthos is able to follow this pattern when you configure an `sqs.url`, where it consumes events from SQS and only downloads object keys received within those events. In order for this to work, Benthos needs to know where within the event the key and bucket names can be found, specified as dot paths with the fields `sqs.key_path` and `sqs.bucket_path`. The default values for these fields should already be correct when following the guide above.
+Benthos is able to follow this pattern when you configure an `sqs.url`, where it consumes events from SQS and only downloads object keys received within those events. In order for this to work, Benthos needs to know where within the event the key and bucket names can be found, specified as [dot paths](../../configurations/fields_paths.md) with the fields `sqs.key_path` and `sqs.bucket_path`. The default values for these fields should already be correct when following the guide above.
 
 If your notification events are being routed to SQS via an SNS topic, then the events will be enveloped by SNS, in which case you also need to specify the field `sqs.envelope_path`, which in the case of SNS to SQS will usually be `Message`.
 
@@ -86,7 +86,7 @@ This input adds the following metadata fields to each message:
 - All user defined metadata
 ```
 
-You can access these metadata fields using function interpolation. Note that user-defined metadata is case insensitive within AWS, and it is likely that the keys will be received in a capitalized form, if you wish to make them consistent, you can map all metadata keys to lower or uppercase using a Bloblang mapping, such as `meta = meta().map_each_key(key -> key.lowercase())`.
+You can access these metadata fields using [function interpolation](../../configurations/interpolation.md). Note that user-defined metadata is case insensitive within AWS, and it is likely that the keys will be received in a capitalized form, if you wish to make them consistent, you can map all metadata keys to lower or uppercase using a Bloblang mapping, such as `meta = meta().map_each_key(key -> key.lowercase())`.
 
 ## Fields
 

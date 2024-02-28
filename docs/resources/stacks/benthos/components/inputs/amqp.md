@@ -74,7 +74,7 @@ This input adds the following metadata fields to each message:
 - All existing message headers, including nested headers prefixed with the key of their respective parent.
 ```
 
-You can access these metadata fields using function interpolation.
+You can access these metadata fields using [function interpolation](../../configurations/interpolation.md).
 
 ## Fields[](https://www.benthos.dev/docs/components/inputs/amqp_0_9#fields)
 
