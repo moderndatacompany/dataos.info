@@ -1,6 +1,9 @@
+
+![Lakehouse Icon](./lakehouse/lakehouse_icon.svg){ align=left }
+
 # Lakehouse
 
-DataOS Lakehouse, is a [DataOS Resource](../resources.md) that integrates Apache Iceberg table format and cloud object storage to provide a fully managed storage solution. It emulates traditional data warehouses, enabling table creation with defined schemas, data manipulation via various tools, and data access regulation through [Heimdall](../architecture.md#heimdall).
+DataOS Lakehouse, is a [DataOS Resource](../resources.md) that integrates Apache Iceberg table format and cloud object storage to provide a fully managed storage solution. It emulates traditional data warehouses, enabling table creation with defined schemas, data manipulation via various tools, and data access regulation through the DataOS Governance engine, [Heimdall](../architecture.md#heimdall).
 
 <aside class="callout">
 
@@ -9,7 +12,113 @@ DataOS Lakehouse, is a [DataOS Resource](../resources.md) that integrates Apache
 </aside>
 
 
+<div class="grid cards" markdown>
+
+-   :material-format-list-bulleted-type:{ .lg .middle } **Key Features of a Lakehouse**
+
+    ---
+
+    DataOS Lakehouse adds several Relational Data Warehouse-like features to your existing data lakes.
+
+    [:octicons-arrow-right-24: Key features](#key-features-of-a-lakehouse)
+
+-   :material-clock-fast:{ .lg .middle } **Structure of a Lakehouse manifest?**
+
+    ---
+
+    A Lakehouse is a DataOS Resource that can be created by applying a manifest file via the DataOS CLI.
+
+    [:octicons-arrow-right-24: Getting started](#how-to-create-a-lakehouse)
+
+-   :material-clock-fast:{ .lg .middle } **How to setup a Lakehouse?**
+
+    ---
+
+    Create a new Lakehouse with your existing object storage and get up and running in minutes.
+
+    [:octicons-arrow-right-24: Getting started](#how-to-create-a-lakehouse)
+
+-   :material-script-text-outline:{ .lg .middle } **How to configure a Lakehouse manifest?**
+
+    ---
+
+    The Lakehouse Resource manifest file offers several configurable attributes that could be configured for various use-cases.
+
+    [:octicons-arrow-right-24:  Lakehouse attributes](./lakehouse/yaml_configuration_attributes.md)
+
+-   :material-console:{ .lg .middle } **How to manage datasets in a Lakehouse?**
+
+    ---
+
+    Various commands related to performing DDL/DML operations on datasets in a Lakehouse.
+    
+    [:octicons-arrow-right-24:  Command Reference](#lakehouse-command-reference)
+
+</div>
+
+<!-- The list syntax is essentially a shortcut for card grids, and consists of an unordered (or ordered) list wrapped by a div with both, the grid and cards classes:
+
+<div class="grid cards" markdown>
+
+- :fontawesome-brands-html5: __HTML__ for content and structure
+- :fontawesome-brands-js: __JavaScript__ for interactivity
+- :fontawesome-brands-css3: __CSS__ for text running out of boxes
+- :fontawesome-brands-internet-explorer: __Internet Explorer__ ... huh?
+
+</div>
+
+List elements can contain arbitrary Markdown, as long as the surrounding div defines the markdown attribute. Following is a more complex example, which includes icons and links:
+
+
+<div class="grid" markdown>
+
+:fontawesome-brands-html5: __HTML__ for content and structure
+{ .card }
+
+:fontawesome-brands-js: __JavaScript__ for interactivity
+{ .card }
+
+:fontawesome-brands-css3: __CSS__ for text running out of boxes
+{ .card }
+
+> :fontawesome-brands-internet-explorer: __Internet Explorer__ ... huh?
+
+</div>
+
+<div class="grid" markdown>
+
+=== "Unordered list"
+
+    * Sed sagittis eleifend rutrum
+    * Donec vitae suscipit est
+    * Nulla tempor lobortis orci
+
+=== "Ordered list"
+
+    1. Sed sagittis eleifend rutrum
+    2. Donec vitae suscipit est
+    3. Nulla tempor lobortis orci
+
+``` title="Content tabs"
+=== "Unordered list"
+
+    * Sed sagittis eleifend rutrum
+    * Donec vitae suscipit est
+    * Nulla tempor lobortis orci
+
+=== "Ordered list"
+
+    1. Sed sagittis eleifend rutrum
+    2. Donec vitae suscipit est
+    3. Nulla tempor lobortis orci
+```
+
+</div> -->
+
+
 ## Key Features of a Lakehouse
+
+DataOS Lakehouse adds several Relational Data Warehouse-like featueres to a data lake. This section will walk you through some of them.
 
 **Managed Storage**
 
@@ -23,7 +132,70 @@ Supports a multitude of computing environments for cloud-native storage. Users c
 
 Incorporates a hosted implementation of Apache Iceberg REST catalog, facilitating interaction with DataOS Lakehouse through Iceberg REST catalog API.
 
+## Structure of a Lakehouse manifest
+
+```yaml hl_lines="1-9 11-15 17-26 28-31 33-36"
+
+# Resource meta section (1)
+name: <lakehouse-resource-name> 
+version: v1alpha
+layer: user
+type: lakehouse        
+tags:
+  - <tag1>
+  - <tag2>
+description: <lakehouse-resource-description>
+
+# Lakehouse-specific section (2)
+lakehouse:
+  type: iceberg
+  compute: <compute-name>
+  iceberg:
+
+    # Storage section (3)
+    storage:
+      type: <storage-type> 
+      <storage-type>:
+        format: iceberg
+        icebergCatalogType: <iceberg-catalog-type>
+        metastoreType: <metastore-type>
+        metastoreUrl: <url>
+        relativePath: <relative-path>
+        # ...other Storage-specific attributes
+
+    # Metastore section (4)
+    metastore:
+      type: <metastore-type>
+      # ...other Metastore-specific attributes
+
+    # Query engine section (5)
+    queryEngine:
+      type: <query-engine-type>
+      # ...other Query-engine-specific attributes
+```
+
+1.  **Resource meta section** within a manifest file comprises metadata attributes universally applicable to all [Resource-types](./types_of_dataos_resources.md). To learn more about how to configure attributes within this section, refer to the link: [Attributes of Resource meta section](./resource_attributes.md).
+
+2.  **Lakehouse-specific section** within a manifest file comprises attributes
+    specific to the Lakehouse Resource. This section is further subdivided into: Storage, Metastore, and Query Engine section. To learn more about how to configure attributes of Lakehouse-specific section, refer the link: [Attributes of Lakehouse-specific section](./lakehouse/yaml_configuration_attributes.md).
+
+3.  :man_raising_hand: I'm a code annotation! I can contain `code`, __formatted
+    text__, images, ... basically anything that can be written in Markdown.
+
+4.  :man_raising_hand: I'm a code annotation! I can contain `code`, __formatted
+    text__, images, ... basically anything that can be written in Markdown.
+
+5.  :man_raising_hand: I'm a code annotation! I can contain `code`, __formatted
+    text__, images, ... basically anything that can be written in Markdown.
+
+
 ## How to create a Lakehouse?
+
+### **Prerequisites**
+
+#### **Create Read and Read-write Instance Secrets**
+
+
 
 ### **Prerequisites**
 
@@ -37,13 +209,7 @@ A Lakehouse YAML manifest can be structurally broken down into following section
 - [Lakehouse-specific section](#lakehouse-specific-section)
 	- [Metastore configuration](#metastore-configuration)
 	- [Storage configuration](#storage-configuration)
-		- [GCS](#gcs)
-		- [ABFSS](#abfss)
-		- [WASBS](#wasbs)
-		- [S3](#s3)
 	- [Query Engine configuration](#query-engine-configuration)
-		- [Themis](#themis)
-		- [Minerva](#minerva)
 
 #### **Resource meta section**
 
@@ -195,6 +361,122 @@ metastore: 									  # Metastore section (optional)
 
 ##### **Storage configuration**
 
+
+=== "ABFSS"
+
+    ```yaml
+    abfss:
+      account: random 						# ABFSS Account (optional)
+      container: alpha 						# Container (optional)
+      endpointSuffix: new 					# End Point Suffix (optional)
+      format: iceberg 						# File Format (optional)
+      icebergCatalogType: hadoop 				# Iceberg Catalog Type (optional)
+      metastoreType: iceberg-rest 			# Metastore type (optional)
+      metastoreUrl: https://random-url.com	# Metastore URL (optional)
+      relativePath: tmdc-dataos 				# Relative Path (optional)
+    ```
+
+    <center>
+
+    | Attribute | Data Type | Default Value | Possible Value | Requirement |
+    | --- | --- | --- | --- | --- |
+    | [`abfss`](./lakehouse/yaml_configuration_attributes.md#abfss) | object | none | none | optional |
+    | [`account`](./lakehouse/yaml_configuration_attributes.md#account) | string | none | any valid ABFSS account | optional |
+    | [`container`](./lakehouse/yaml_configuration_attributes.md#container) | string | none | any valid container name | optional |
+    | [`endpointSuffix`](./lakehouse/yaml_configuration_attributes.md#endpointsuffix) | string | none | any valid endpoint suffix | optional |
+    | [`format`](./lakehouse/yaml_configuration_attributes.md#format) | string | none | any valid file format | optional |
+    | [`icebergCatalogType`](./lakehouse/yaml_configuration_attributes.md#icebergcatalogtype) | string | none | any valid Iceberg catalog type | optional |
+    | [`metastoreType`](./lakehouse/yaml_configuration_attributes.md#metastoretype) | string | none | any valid metastore type | optional |
+    | [`metastoreUrl`](./lakehouse/yaml_configuration_attributes.md#metastoreurl) | string | none | any valid URL | optional |
+    | [`relativePath`](./lakehouse/yaml_configuration_attributes.md#relativepath) | string | none | any valid relative path | optional |
+
+    </center>
+
+=== "GCS"
+
+    ```yaml
+    gcs:
+      bucket: bucket-testing 					# GCS Bucket (optional)
+      format: format 							# Format (optional)
+      icebergCatalogType: hadoop 				# Iceberg Catalog Type (optional)
+      metastoreType: iceberg-rest 			# Meta Store type (optional)
+      metastoreUrl: https://random-url.com    # Meta Store URL (optional)
+      relativePath: tmdc-dataos 				# Relative Path (optional)
+    ```
+
+    <center>
+
+    | Attribute | Data Type | Default Value | Possible Value | Requirement |
+    | --- | --- | --- | --- | --- |
+    | [`gcs`](./lakehouse/yaml_configuration_attributes.md#gcs) | object | none | none | optional |
+    | [`bucket`](./lakehouse/yaml_configuration_attributes.md#bucket) | string | none | any valid GCS bucket name | optional |
+    | [`format`](./lakehouse/yaml_configuration_attributes.md#format) | string | none | any valid format | optional |
+    | [`icebergCatalogType`](./lakehouse/yaml_configuration_attributes.md#icebergcatalogtype) | string | none | hadoop | optional |
+    | [`metastoreType`](./lakehouse/yaml_configuration_attributes.md#metastoretype) | string | none | iceberg-rest | optional |
+    | [`metastoreUrl`](./lakehouse/yaml_configuration_attributes.md#metastoreurl) | string | none | any valid URL | optional |
+    | [`relativePath`](./lakehouse/yaml_configuration_attributes.md#relativepath) | string | none | any valid relative path | optional |
+
+    </center>
+
+=== "S3"
+
+    ```yaml
+    s3:
+      bucket: bucket-testing	    		# GCS Bucket (optional)
+      format: format 			 			# Format (optional)
+      icebergCatalogType: hadoop  		# Iceberg Catalog Type (optional)
+      metastoreType: iceberg-rest		    # Meta Store type (optional)
+      metastoreUrl: iceberg-rest		    # Meta Store URL (optional)
+      relativePath: tmdc-dataos			# Relative Path (optional)
+      scheme: abcd 						# Scheme (optional)
+    ```
+
+    <center>
+
+    | Attribute | Data Type | Default Value | Possible Value | Requirement |
+    | --- | --- | --- | --- | --- |
+    | [`s3`](./lakehouse/yaml_configuration_attributes.md#s3) | object | none | none | optional |
+    | [`bucket`](./lakehouse/yaml_configuration_attributes.md#bucket) | string | none | any valid S3 bucket name | optional |
+    | [`format`](./lakehouse/yaml_configuration_attributes.md#format) | string | none | any valid format | optional |
+    | [`icebergCatalogType`](./lakehouse/yaml_configuration_attributes.md#icebergcatalogtype) | string | none | hadoop | optional |
+    | [`metastoreType`](./lakehouse/yaml_configuration_attributes.md#metastoretype) | string | none | iceberg-rest | optional |
+    | [`metastoreUrl`](./lakehouse/yaml_configuration_attributes.md#metastoreurl) | string | none | any valid URL | optional |
+    | [`relativePath`](./lakehouse/yaml_configuration_attributes.md#relativepath) | string | none | any valid relative path | optional |
+    | [`scheme`](./lakehouse/yaml_configuration_attributes.md#scheme) | string | none | any valid scheme | optional |
+
+    </center>
+
+=== "WASBS"
+
+    ```yaml
+    wasbs:
+      account: random 						# WASBS Account (optional)
+      container: alpha 						# Container (optional)
+      endpointSuffix: new 					# End Point Suffix (optional)
+      format: iceberg 						# File Format (optional)
+      icebergCatalogType: hadoop 				# Iceberg Catalog Type (optional)
+      metastoreType: iceberg-rest 			# Metastore type (optional)
+      metastoreUrl: https://random-url.com	# Metastore URL (optional)
+      relativePath: tmdc-dataos 				# Relative Path (optional)
+    ```
+
+    <center>
+
+    | Attribute | Data Type | Default Value | Possible Value | Requirement |
+    | --- | --- | --- | --- | --- |
+    | [`wasbs`](./lakehouse/yaml_configuration_attributes.md#wasbs) | object | none | none | optional |
+    | [`account`](./lakehouse/yaml_configuration_attributes.md#account) | string | none | any valid WASBS account | optional |
+    | [`container`](./lakehouse/yaml_configuration_attributes.md#container) | string | none | any valid container name | optional |
+    | [`endpointSuffix`](./lakehouse/yaml_configuration_attributes.md#endpointsuffix) | string | none | any valid endpoint suffix | optional |
+    | [`format`](./lakehouse/yaml_configuration_attributes.md#format) | string | none | any valid file format | optional |
+    | [`icebergCatalogType`](./lakehouse/yaml_configuration_attributes.md#icebergcatalogtype) | string | none | any valid Iceberg catalog type | optional |
+    | [`metastoreType`](./lakehouse/yaml_configuration_attributes.md#metastoretype) | string | none | any valid metastore type | optional |
+    | [`metastoreUrl`](./lakehouse/yaml_configuration_attributes.md#metastoreurl) | string | none | any valid URL | optional |
+    | [`relativePath`](./lakehouse/yaml_configuration_attributes.md#relativepath) | string | none | any valid relative path | optional |
+
+    </center>
+
+
 ```yaml
 storage: 
 	depotName: depot name 			 # Name of depot (optional)
@@ -231,121 +513,6 @@ storage:
 
 </center>
 
-###### **GCS**
-
-```yaml
-gcs:
-	bucket: bucket-testing 					# GCS Bucket (optional)
-	format: format 							# Format (optional)
-	icebergCatalogType: hadoop 				# Iceberg Catalog Type (optional)
-	metastoreType: iceberg-rest 			# Meta Store type (optional)
-	metastoreUrl: https://random-url.com    # Meta Store URL (optional)
-	relativePath: tmdc-dataos 				# Relative Path (optional)
-```
-
-<center>
-
-| Attribute | Data Type | Default Value | Possible Value | Requirement |
-| --- | --- | --- | --- | --- |
-| [`gcs`](./lakehouse/yaml_configuration_attributes.md#gcs) | object | none | none | optional |
-| [`bucket`](./lakehouse/yaml_configuration_attributes.md#bucket) | string | none | any valid GCS bucket name | optional |
-| [`format`](./lakehouse/yaml_configuration_attributes.md#format) | string | none | any valid format | optional |
-| [`icebergCatalogType`](./lakehouse/yaml_configuration_attributes.md#icebergcatalogtype) | string | none | hadoop | optional |
-| [`metastoreType`](./lakehouse/yaml_configuration_attributes.md#metastoretype) | string | none | iceberg-rest | optional |
-| [`metastoreUrl`](./lakehouse/yaml_configuration_attributes.md#metastoreurl) | string | none | any valid URL | optional |
-| [`relativePath`](./lakehouse/yaml_configuration_attributes.md#relativepath) | string | none | any valid relative path | optional |
-
-</center>
-
-###### **ABFSS**
-
-```yaml
-abfss:
-	account: random 						# ABFSS Account (optional)
-	container: alpha 						# Container (optional)
-	endpointSuffix: new 					# End Point Suffix (optional)
-	format: iceberg 						# File Format (optional)
-	icebergCatalogType: hadoop 				# Iceberg Catalog Type (optional)
-	metastoreType: iceberg-rest 			# Metastore type (optional)
-	metastoreUrl: https://random-url.com	# Metastore URL (optional)
-	relativePath: tmdc-dataos 				# Relative Path (optional)
-```
-
-<center>
-
-| Attribute | Data Type | Default Value | Possible Value | Requirement |
-| --- | --- | --- | --- | --- |
-| [`abfss`](./lakehouse/yaml_configuration_attributes.md#abfss) | object | none | none | optional |
-| [`account`](./lakehouse/yaml_configuration_attributes.md#account) | string | none | any valid ABFSS account | optional |
-| [`container`](./lakehouse/yaml_configuration_attributes.md#container) | string | none | any valid container name | optional |
-| [`endpointSuffix`](./lakehouse/yaml_configuration_attributes.md#endpointsuffix) | string | none | any valid endpoint suffix | optional |
-| [`format`](./lakehouse/yaml_configuration_attributes.md#format) | string | none | any valid file format | optional |
-| [`icebergCatalogType`](./lakehouse/yaml_configuration_attributes.md#icebergcatalogtype) | string | none | any valid Iceberg catalog type | optional |
-| [`metastoreType`](./lakehouse/yaml_configuration_attributes.md#metastoretype) | string | none | any valid metastore type | optional |
-| [`metastoreUrl`](./lakehouse/yaml_configuration_attributes.md#metastoreurl) | string | none | any valid URL | optional |
-| [`relativePath`](./lakehouse/yaml_configuration_attributes.md#relativepath) | string | none | any valid relative path | optional |
-
-</center>
-
-###### **WASBS**
-
-```yaml
-wasbs:
-	account: random 						# WASBS Account (optional)
-	container: alpha 						# Container (optional)
-	endpointSuffix: new 					# End Point Suffix (optional)
-	format: iceberg 						# File Format (optional)
-	icebergCatalogType: hadoop 				# Iceberg Catalog Type (optional)
-	metastoreType: iceberg-rest 			# Metastore type (optional)
-	metastoreUrl: https://random-url.com	# Metastore URL (optional)
-	relativePath: tmdc-dataos 				# Relative Path (optional)
-```
-
-<center>
-
-| Attribute | Data Type | Default Value | Possible Value | Requirement |
-| --- | --- | --- | --- | --- |
-| [`wasbs`](./lakehouse/yaml_configuration_attributes.md#wasbs) | object | none | none | optional |
-| [`account`](./lakehouse/yaml_configuration_attributes.md#account) | string | none | any valid WASBS account | optional |
-| [`container`](./lakehouse/yaml_configuration_attributes.md#container) | string | none | any valid container name | optional |
-| [`endpointSuffix`](./lakehouse/yaml_configuration_attributes.md#endpointsuffix) | string | none | any valid endpoint suffix | optional |
-| [`format`](./lakehouse/yaml_configuration_attributes.md#format) | string | none | any valid file format | optional |
-| [`icebergCatalogType`](./lakehouse/yaml_configuration_attributes.md#icebergcatalogtype) | string | none | any valid Iceberg catalog type | optional |
-| [`metastoreType`](./lakehouse/yaml_configuration_attributes.md#metastoretype) | string | none | any valid metastore type | optional |
-| [`metastoreUrl`](./lakehouse/yaml_configuration_attributes.md#metastoreurl) | string | none | any valid URL | optional |
-| [`relativePath`](./lakehouse/yaml_configuration_attributes.md#relativepath) | string | none | any valid relative path | optional |
-
-</center>
-
-
-###### **S3**
-
-```yaml
-s3:
-	bucket: bucket-testing	    		# GCS Bucket (optional)
-	format: format 			 			# Format (optional)
-	icebergCatalogType: hadoop  		# Iceberg Catalog Type (optional)
-	metastoreType: iceberg-rest		    # Meta Store type (optional)
-	metastoreUrl: iceberg-rest		    # Meta Store URL (optional)
-	relativePath: tmdc-dataos			# Relative Path (optional)
-	scheme: abcd 						# Scheme (optional)
-```
-
-<center>
-
-| Attribute | Data Type | Default Value | Possible Value | Requirement |
-| --- | --- | --- | --- | --- |
-| [`s3`](./lakehouse/yaml_configuration_attributes.md#s3) | object | none | none | optional |
-| [`bucket`](./lakehouse/yaml_configuration_attributes.md#bucket) | string | none | any valid S3 bucket name | optional |
-| [`format`](./lakehouse/yaml_configuration_attributes.md#format) | string | none | any valid format | optional |
-| [`icebergCatalogType`](./lakehouse/yaml_configuration_attributes.md#icebergcatalogtype) | string | none | hadoop | optional |
-| [`metastoreType`](./lakehouse/yaml_configuration_attributes.md#metastoretype) | string | none | iceberg-rest | optional |
-| [`metastoreUrl`](./lakehouse/yaml_configuration_attributes.md#metastoreurl) | string | none | any valid URL | optional |
-| [`relativePath`](./lakehouse/yaml_configuration_attributes.md#relativepath) | string | none | any valid relative path | optional |
-| [`scheme`](./lakehouse/yaml_configuration_attributes.md#scheme) | string | none | any valid scheme | optional |
-
-</center>
-
 ##### **Query Engine configuration**
 
 ```yaml
@@ -375,7 +542,7 @@ queryEngine:
 | [`limits`](./lakehouse/yaml_configuration_attributes.md#limits) | object | none | none | optional |
 | [`cpu`](./lakehouse/yaml_configuration_attributes.md#cpu) (under `limits`) | string | none | any valid CPU resource limit | optional |
 | [`memory`](./lakehouse/yaml_configuration_attributes.md#memory) (under `limits`) | string | none | any valid memory resource limit | optional |
-| [`themis/minerva`](./lakehouse/yaml_configuration_attributes.md#themisminerva) | object | none | none | optional |
+| [`themis`](./lakehouse/yaml_configuration_attributes.md#themisminerva) | object | none | none | optional |
 | [`themis/minerva specific attributes`](./lakehouse/yaml_configuration_attributes.md#themisminervaspecificattributes) | object | none | none | as per themis/minerva type |
 
 </center>
@@ -417,39 +584,6 @@ themis:
 | [`instanceCount`](./lakehouse/yaml_configuration_attributes.md#instancecount) (under `executor`) | integer | none | any valid integer | mandatory |
 | [`maxInstanceCount`](./lakehouse/yaml_configuration_attributes.md#maxinstancecount) (under `executor`) | integer | none | any valid integer | mandatory |
 | [`sparkConf`](./lakehouse/yaml_configuration_attributes.md#sparkconf) (under `spark`) | object | none | none | optional |
-
-</center>
-
-
-###### **Minerva**
-
-```yaml
-minerva: 
-	replicas: 2 				# Number of replicas (mandatory)
-	coordinatorEnvs: 			# Coordinator environment variables (optional)
-		# ...attributes specific to coordinator environment variables
-	workerEnvs: 				# Worker environment variables (optional)
-		# ...attributes specific to worker environment variables
-	overrideDefaultEnvs: true 	# Override Default Environment Variables (optional)
-	spillOverVolume: alpha 		# Spill Over Volume (optional)
-	debug: 						# Debug (optional)
-		logLevel: INFO 			# LogLevel (optional)
-		trinoLogLevel: DEBUG 	# Trino Log Level (optional)
-```
-
-<center>
-
-| Attribute | Data Type | Default Value | Possible Value | Requirement |
-| --- | --- | --- | --- | --- |
-| [`minerva`](./lakehouse/yaml_configuration_attributes.md#minerva) | object | none | none | mandatory |
-| [`replicas`](./lakehouse/yaml_configuration_attributes.md#replicas) | integer | none | any valid integer | mandatory |
-| [`coordinatorEnvs`](./lakehouse/yaml_configuration_attributes.md#coordinatorenvs) | object | none | none | optional |
-| [`workerEnvs`](./lakehouse/yaml_configuration_attributes.md#workerenvs) | object | none | none | optional |
-| [`overrideDefaultEnvs`](./lakehouse/yaml_configuration_attributes.md#overridedefaultenvs) | boolean | none | true/false | optional |
-| [`spillOverVolume`](./lakehouse/yaml_configuration_attributes.md#spillovervolume) | string | none | any valid volume name | optional |
-| [`debug`](./lakehouse/yaml_configuration_attributes.md#debug) | object | none | none | optional |
-| [`logLevel`](./lakehouse/yaml_configuration_attributes.md#loglevel) (under `debug`) | string | none | INFO, DEBUG, etc. | optional |
-| [`trinoLogLevel`](./lakehouse/yaml_configuration_attributes.md#trinologlevel) (under `debug`) | string | none | any valid log level for Trino | optional |
 
 </center>
 
