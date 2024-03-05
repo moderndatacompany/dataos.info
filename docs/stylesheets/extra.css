@@ -6635,7 +6635,7 @@ html .md-typeset .footnote-ref {
 
 /* comment below style to enable/disable last card */
 /* last card start */
-.md-typeset .grid.cards>ol>li:last-child,
+/* .md-typeset .grid.cards>ol>li:last-child,
 .md-typeset .grid.cards>ul>li:last-child,
 .md-typeset .grid>.card:last-child {
     pointer-events: none;
@@ -6643,13 +6643,13 @@ html .md-typeset .footnote-ref {
     background-color: var(--md-default-fg-color--lightest);
     opacity: 0.2;
     font-style: italic;
-}
+} */
 
-.md-typeset .grid.cards>ol>li:last-child a,
+/* .md-typeset .grid.cards>ol>li:last-child a,
 .md-typeset .grid.cards>ul>li:last-child a,
 .md-typeset .grid>.card:last-child a {
     display: none;
-}
+} */
 
 /* last card end */
 
