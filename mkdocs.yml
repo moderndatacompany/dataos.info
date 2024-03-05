@@ -18,8 +18,8 @@ theme:
         - content.code.annotate
         - content.tabs.link
         - content.tooltips
-         - toc.follow
-         - toc.integrate
+        - toc.follow
+        # - toc.integrate
     icon:
       admonition:
         note: octicons/tag-16
