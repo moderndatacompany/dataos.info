@@ -1,6 +1,9 @@
 # Amazon S3
 
-DataOS offers the capability to connect to Amazon S3 for accessing objects within buckets using Depots. Depots facilitate access to S3 object metadata. Amazon S3 functions as a key-based object store, where each object is stored and retrieved using a unique key. An account can have multiple buckets for data storage and organization within the Amazon S3 namespace. An object within a bucket is identified by a unique key and a version ID.
+DataOS provides the capability to establish a connection with the Amazon S3 buckets. We have provided the template for the manifest file to establish this connection. Follow these steps to create the depot:
+**Step 1**: Copy the template from below and paste it in a code editor.
+**Step 2**: Fill the values for the atttributes/fields declared in the YAML-based manifest file.
+**Step 3**: Apply the file through DataOS CLI
 
 ## Requirements
 
@@ -25,10 +28,15 @@ tags:
   - {{tag1}}
 owner: {{owner-name}}
 layer: user
+description: {{description}}
 depot:
   type: S3                                          
-  description: {{description}}
   external: {{true}}
+  spec:                                            
+    scheme: {{s3a}}
+    bucket: {{project-name}}
+    relativePath: {{relative-path}}
+    format: {{format}}
   connectionSecret:                                
     - acl: rw
       type: key-value-properties
@@ -44,9 +52,4 @@ depot:
         secretkey: {{AWS_SECRET_ACCESS_KEY}}
         awsaccesskeyid: {{AWS_ACCESS_KEY_ID}}
         awssecretaccesskey: {{AWS_SECRET_ACCESS_KEY}}
-  spec:                                            
-    scheme: {{s3a}}
-    bucket: {{project-name}}
-    relativePath: {{relative-path}}
-    format: {{format}}
 ```
