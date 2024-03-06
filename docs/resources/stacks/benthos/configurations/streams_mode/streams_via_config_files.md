@@ -125,4 +125,4 @@ You can then send data to the stream via its namespaced URL:
 $ curl http://localhost:4195/foo/post -d '{"user":{"id":"foo"},"body":{"content":"bar"}}'
 ```
 
-There are other endpoints in the REST API for creating, updating, and deleting streams.
+There are other endpoints in the [REST API](./streams_via_rest_api.md) for creating, updating, and deleting streams.
