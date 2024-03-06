@@ -643,7 +643,7 @@ dataos-ctl resource update -t monitor -w curriculum -n my-monitor
 
 ### **Get details of a specific Monitor**
 
-To retrieve the status of a specific Monitor incuding details in the result, use the following command:
+To retrieve the status of a specific Monitor including details in the result, use the following command:
 
 ```shell
 dataos-ctl resource get -t monitor -w curriculum -n ${{monitor name}} -d
