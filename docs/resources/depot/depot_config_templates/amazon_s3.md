@@ -1,4 +1,4 @@
-# Amazon S3
+# Depot for Amazon S3
 
 DataOS provides the capability to establish a connection with the Amazon S3 buckets. We have provided the template for the manifest file to establish this connection. Follow these steps to create the depot:
 **Step 1**: Copy the template from below and paste it in a code editor.
