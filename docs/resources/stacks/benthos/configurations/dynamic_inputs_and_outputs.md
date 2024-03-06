@@ -1,6 +1,6 @@
 # Dynamic Inputs and Outputs
 
-It is possible to have sets of inputs and outputs in Benthos that can be added, updated, and removed during runtime with the dynamic fan-in and dynamic fan out types.
+It is possible to have sets of inputs and outputs in Benthos that can be added, updated, and removed during runtime with the [dynamic fan-in](../components/inputs/dynamic.md) and [dynamic fan](../components/inputs/dynamic.md) out types.
 
 Dynamic inputs and outputs are each identified by unique string labels, which are specified when adding them either in configuration or via the HTTP API. The labels are useful when querying which types are active.
 

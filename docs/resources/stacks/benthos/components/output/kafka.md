@@ -32,7 +32,7 @@ The config field `ack_replicas` determines whether we wait for acknowledgment 
 
 Both the `key` and `topic` fields can be dynamically set using function interpolations described here.
 
-Metadata will be added to each message sent as headers (version 0.11+) but can be restricted using the field `metadata`.
+Metadata will be added to each message sent as headers (version 0.11+) but can be restricted using the field [`metadata`](#metadata).
 
 ### Strict Ordering and Retries
 
