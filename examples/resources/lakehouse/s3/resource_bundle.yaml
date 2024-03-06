@@ -1,0 +1,60 @@
+version: v1beta
+name: resource-lakehouse-s3-bundle
+type: bundle
+tags:
+  - resource
+  - lakehouse
+  - bundle
+  - testing
+  - s3
+description: Bundle for testing Lakehouse Instance
+layer: "user"
+bundle:
+  workspaces:
+    - name: lakehousetesting
+      description: Workspace for Lakehouse testing
+      layer: user
+  resources:
+    - id: create-instance-secret-s3-read
+      file: ./resource_instance_secret_s3_read.yaml
+    - id: create-instance-secret-s3-read-write
+      file: ./resource_instance_secret_s3_read_write.yaml
+    - id: create-lakehouse-s3
+      file: ./resource_lakehouse_s3.yaml
+      dependencies:
+        - create-instance-secret-s3-read
+        - create-instance-secret-s3-read-write
+      dependencyConditions:
+        - resourceId: create-instance-secret-s3-read
+          status:
+            is:
+              - active
+        - resourceId: create-instance-secret-s3-read-write
+          status:
+            is:
+              - active
+    - id: run-scanner-workflow-s3-lakehouse-depot
+      workspace: lakehousetesting
+      file: ./resource_workflow_scanner_lakehouse_depot.yaml
+      dependencies:
+        - create-lakehouse-s3
+      dependencyConditions:
+        - resourceId: create-lakehouse-s3
+          status:
+            is:
+              - active
+    - id: run-flare-workflow-icebase-read-lakehouse-write
+      workspace: lakehousetesting
+      file: ./resource_workflow_flare_icebase_lakehouse.yaml
+      dependencies:
+        - run-scanner-workflow-s3-lakehouse-depot
+      dependencyConditions:
+        - resourceId: run-scanner-workflow-s3-lakehouse-depot
+          status:
+            is:
+              - active
+          runtime:
+            is:
+              - succeeded
+
+
