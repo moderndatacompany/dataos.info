@@ -16,8 +16,24 @@ theme:
         - navigation.tracking
         - content.code.copy
         - content.code.annotate
+        - content.tabs.link
+        - content.tooltips
          - toc.follow
          - toc.integrate
+    icon:
+      admonition:
+        note: octicons/tag-16
+        abstract: octicons/checklist-16
+        info: octicons/info-16
+        tip: octicons/squirrel-16
+        success: octicons/check-16
+        question: octicons/question-16
+        warning: octicons/alert-16
+        failure: octicons/x-circle-16
+        danger: octicons/zap-16
+        bug: octicons/bug-16
+        example: octicons/beaker-16
+        quote: octicons/quote-16
     logo: assets/light-modern-logo.png
     favicon: assets/favicon.png
     logo_link_footer: https://themoderndatacompany.com
@@ -76,12 +92,27 @@ extra_css:
 extra_javascript:
     - https://unpkg.com/mermaid@8.6.4/dist/mermaid.js
 markdown_extensions:
-  - pymdownx.superfences
-  - pymdownx.highlight
-  - pymdownx.smartsymbols
-  - pymdownx.inlinehilite
+  - abbr
+  - admonition
   - pymdownx.details
-  - pymdownx.tabbed
+  - pymdownx.superfences
+  - attr_list
+  - md_in_html 
+  - pymdownx.highlight:
+      use_pygments: true
+      pygments_lang_class: true
+      auto_title: false
+      linenums: true
+      linenums_style: pymdownx-inline
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.smartsymbols
+  - pymdownx.tabbed:
+      alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
   - pymdownx.tasklist
   - pymdownx.tilde
 #   - pymdownx.extra
