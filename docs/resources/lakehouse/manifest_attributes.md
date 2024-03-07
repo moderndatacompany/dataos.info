@@ -1,4 +1,4 @@
-# Attributes of Lakehouse YAML
+# Attributes of Lakehouse manifest
 
 ## `lakehouse`
 

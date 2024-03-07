@@ -20,7 +20,7 @@ Lakehouse, is a [DataOS Resource](/resources/) that integrates Apache Iceberg ta
 
     DataOS Lakehouse adds several Relational Data Warehouse-like features to your existing data lakes.
 
-    [:octicons-arrow-right-24: Key features](#key-features-of-a-lakehouse)
+    [:octicons-arrow-right-24: Key features](/resources/lakehouse/#key-features-of-a-lakehouse)
 
 
 -   :material-clock-fast:{ .lg .middle } **Structure of a Lakehouse manifest**
@@ -29,7 +29,7 @@ Lakehouse, is a [DataOS Resource](/resources/) that integrates Apache Iceberg ta
 
     A Lakehouse manifest file includes multiple sections with attributes that must be configured for creating a Lakehouse instance.
 
-    [:octicons-arrow-right-24: Structure](#structure-of-a-lakehouse-manifest)
+    [:octicons-arrow-right-24: Structure](/resources/lakehouse/#structure-of-a-lakehouse-manifest)
 
 -   :material-clock-fast:{ .lg .middle } **How to setup a Lakehouse?**
 
@@ -37,7 +37,7 @@ Lakehouse, is a [DataOS Resource](/resources/) that integrates Apache Iceberg ta
 
     Create a new Lakehouse with your existing object storage and get up and running in minutes.
 
-    [:octicons-arrow-right-24: Getting started](#how-to-create-a-lakehouse)
+    [:octicons-arrow-right-24: Getting started](/resources/lakehouse/#how-to-create-a-lakehouse)
 
 -   :material-script-text-outline:{ .lg .middle } **How to configure a Lakehouse manifest file?**
 
@@ -45,7 +45,7 @@ Lakehouse, is a [DataOS Resource](/resources/) that integrates Apache Iceberg ta
 
     The Lakehouse Resource manifest file offers several configurable attributes that could be configured for various use-cases.
 
-    [:octicons-arrow-right-24:  Lakehouse attributes](/lakehouse/manifest_attributes/)
+    [:octicons-arrow-right-24:  Lakehouse attributes](/resources/lakehouse/manifest_attributes/)
 
 -   :material-console:{ .lg .middle } **How to manage datasets in a Lakehouse?**
 
@@ -53,7 +53,7 @@ Lakehouse, is a [DataOS Resource](/resources/) that integrates Apache Iceberg ta
 
     Various CLI commands related to performing DDL/DML operations on datasets in a Lakehouse.
     
-    [:octicons-arrow-right-24:  Command reference](/lakehouse/command_reference/)
+    [:octicons-arrow-right-24:  Command reference](/resources/lakehouse/command_reference/)
 
 -   :material-console:{ .lg .middle } **Case Scenarios**
 
@@ -61,7 +61,7 @@ Lakehouse, is a [DataOS Resource](/resources/) that integrates Apache Iceberg ta
 
     Learn how to accompolish a specific task in a Lakehouse.
     
-    [:octicons-arrow-right-24:  Case scenarios](/lakehouse/#case-scenario/)
+    [:octicons-arrow-right-24:  Case scenarios](/resources/lakehouse/#case-scenario)
 
 </div>
 
