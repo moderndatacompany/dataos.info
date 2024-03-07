@@ -3,11 +3,11 @@
 
 # Lakehouse
 
-DataOS Lakehouse, is a [DataOS Resource](../resources.md) that integrates Apache Iceberg table format and cloud object storage to provide a fully managed storage solution. It emulates traditional data warehouses, enabling table creation with defined schemas, data manipulation via various tools, and data access regulation through the DataOS Governance engine, [Heimdall](../architecture.md#heimdall).
+Lakehouse, is a [DataOS Resource](../resources.md) that integrates Apache Iceberg table format and cloud object storage to provide a fully managed storage solution. It emulates traditional data warehouses, enabling table creation with defined schemas, data manipulation via various tools, and data access regulation through the DataOS Governance engine, [Heimdall](../architecture.md#heimdall).
 
 <aside class="callout">
 
-🗣️ Unlike traditional object storage or Data Lake <a href="/resources/depot/depot_config_templates/">depots</a> that are instantiated at the <a href="/resources/types_of_dataos_resources/#instance-level-resources">Instance-level</a>, Lakehouses are created at the <a href="/resources/types_of_dataos_resources/#workspace-level-resources">Workspace-level</a>.
+🗣️ Unlike traditional object storage or Data Lake depots that are instantiated at the <a href="/resources/types_of_dataos_resources/#instance-level-resources">Instance-level</a>, Lakehouses are created at the <a href="/resources/types_of_dataos_resources/#workspace-level-resources">Workspace-level</a>.
 
 </aside>
 
@@ -22,7 +22,8 @@ DataOS Lakehouse, is a [DataOS Resource](../resources.md) that integrates Apache
 
     [:octicons-arrow-right-24: Key features](#key-features-of-a-lakehouse)
 
--   :material-clock-fast:{ .lg .middle } **Structure of a Lakehouse manifest?**
+
+-   :material-clock-fast:{ .lg .middle } **Structure of a Lakehouse manifest**
 
     ---
 
@@ -191,11 +192,40 @@ lakehouse:
 
 ## How to create a Lakehouse?
 
+Data developers can create a Lakehouse Resource by creating a YAML manifest and applying it via the DataOS [CLI](../interfaces/cli.md).
+
 ### **Prerequisites**
 
-#### **Create Read and Read-write Instance Secrets**
+#### **Create Instance Secrets**
 
+DataOS comprises of a Resource called Instance-secret that enables a data developer to store sensitive information such as data source credenitals, and other information secrets in the Heimdall vault.
 
+<div class="grid" markdown>
+
+=== "ABFSS"
+
+    * Sed sagittis eleifend rutrum
+    * Donec vitae suscipit est
+    * Nulla tempor lobortis orci
+
+=== "GCS"
+
+    1. Sed sagittis eleifend rutrum
+    2. Donec vitae suscipit est
+    3. Nulla tempor lobortis orci
+
+=== "WASBS"
+
+    * Sed sagittis eleifend rutrum
+    * Donec vitae suscipit est
+    * Nulla tempor lobortis orci
+=== "S3"
+
+    ```yaml title="resource_instance_secret_s3_read.yaml"
+    --8<-- "examples/resources/lakehouse/s3/resource_instance_secret_s3_read.yaml"
+    ```
+
+</div>
 
 ### **Prerequisites**
 

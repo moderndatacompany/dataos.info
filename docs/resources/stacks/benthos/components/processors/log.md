@@ -15,7 +15,7 @@ The `level` field determines the log level of the printed events and can be an
 
 ### Structured Fields
 
-It's also possible add custom fields to logs when the format is set to a structured form such as `json` or `logfmt` with the config field `fields_mapping`:
+It's also possible add custom fields to logs when the format is set to a structured form such as `json` or `logfmt` with the config field [`fields_mapping`](#fields_mapping):
 
 ```yaml
 pipeline:
@@ -46,7 +46,7 @@ Options: `FATAL`, `ERROR`, `WARN`, `INFO`, `DEBUG`, `TRACE`, `ALL`.
 
 ### `fields_mapping`
 
-An optional Bloblang mapping that can be used to specify extra fields to add to the log. If log fields are also added with the `fields` field then those values will override matching keys from this mapping.
+An optional [Bloblang mapping](../../bloblang.md) that can be used to specify extra fields to add to the log. If log fields are also added with the `fields` field then those values will override matching keys from this mapping.
 
 Type: `string`
 
@@ -66,7 +66,7 @@ fields_mapping: |-
 
 ### `message`
 
-The message to print. This field supports interpolation functions.
+The message to print. This field supports [interpolation functions](../../configurations/interpolation.md).
 
 Type: `string`
 

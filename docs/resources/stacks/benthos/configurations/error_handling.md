@@ -8,7 +8,7 @@ This document outlines common patterns for dealing with errors, such as dropping
 
 ## Abandon on Failure
 
-It's possible to define a list of processors which should be skipped for messages that failed a previous stage using the `try` processor:
+It's possible to define a list of processors which should be skipped for messages that failed a previous stage using the `try` processor:
 
 ```yaml
 pipeline:
@@ -45,9 +45,9 @@ pipeline:
 
 ## Logging Errors
 
-When an error occurs, there will occasionally be useful information stored within the error flag that can be exposed with the interpolation function `error`. This allows you to expose the information with processors.
+When an error occurs, there will occasionally be useful information stored within the error flag that can be exposed with the interpolation function [`error`](../configurations/interpolation.md). This allows you to expose the information with processors.
 
-For example, when catching failed processors, you can `log` the messages:
+For example, when catching failed processors, you can [`log`](../components/processors/log.md) the messages:
 
 ```yaml
 pipeline:
@@ -91,7 +91,7 @@ This loop will block the pipeline and prevent the blocking message from being ac
 
 ## Drop Failed Messages
 
-In order to filter out any failed messages from your pipeline, you can use a `mapping` processor:
+In order to filter out any failed messages from your pipeline, you can use a [`mapping` processor](../components/processors/mapping.md):
 
 ```yaml
 pipeline:
