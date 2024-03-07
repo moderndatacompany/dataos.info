@@ -18,7 +18,7 @@ If a literal string is required that matches this pattern (`${foo}`) you can esc
 
 ## Bloblang Queries
 
-Some Benthos fields also support Bloblang function interpolations, which are much more powerful expressions that allow you to query the contents of messages and perform arithmetic. The syntax of a function interpolation is `${!<bloblang expression>}`, where the contents are a bloblang query (the right-hand-side of a bloblang map) including a range of functions. For example, with the following config:
+Some Benthos fields also support [Bloblang](../bloblang.md) function interpolations, which are much more powerful expressions that allow you to query the contents of messages and perform arithmetic. The syntax of a function interpolation is `${!<bloblang expression>}`, where the contents are a bloblang query (the right-hand-side of a bloblang map) including a range of [functions](../bloblang.md). For example, with the following config:
 
 ```yaml
 output:
@@ -31,7 +31,7 @@ A message with the contents `{"topic":"foo","message":"hello world"}` would be
 
 If a literal string is required that matches this pattern (`${!foo}`), then, similar to environment variables, you can escape it with double brackets. For example, the string `${{!foo}}` would be read as the literal `${!foo}`.
 
-Bloblang supports arithmetic, boolean operators, coalesce, and mapping expressions. For more in-depth details about the language, check out the docs.
+Bloblang supports arithmetic, boolean operators, coalesce, and mapping expressions. For more in-depth details about the language, [check out the docs](../bloblang.md).
 
 ## Examples
 
