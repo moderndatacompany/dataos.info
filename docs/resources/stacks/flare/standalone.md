@@ -30,7 +30,7 @@ The execution of a Flare Job involves submission to Poros, the resource manager 
 
 Let's take a scenario where you write a Flare Workflow YAML to write terabytes of enriched data to a DataOS depot. With the allocated resources, you expect the job to finish in 5 hours. To your dismay, the job fails after 5 hours. On checking logs, it turns out the culprit is a minor mistake in the SQL code in the penultimate job. This results in the wastage of both compute resources and time. Flare Standalone becomes a savior in such a situation as it allows you to test your jobs before deploying into production, thus assisting you in detecting possible issues.
 
-<aside>
+<aside class='best-practice'>
 📖 Best Practice: Like DevOps, it is a best practice in DataOps to test your locally using Flare Standalone before implementing it in production. By leveraging local compute resources, Standalone enables cost savings on cloud-based computational expenses that may be incurred during the formulation of Flare Jobs.
 
 </aside>
