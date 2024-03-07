@@ -35,16 +35,16 @@ The image represents the configuration file of DataOS Resources.
 
 The configuration files are *strongly-typed*, and the system flags an error when Resource files are applied with incorrect syntax. The table below gives an overview of how these attributes/fields are filled.
 
-| Field | Data Type | Default Value | Requirement |
+| Attribute | Data Type | Default Value | Requirement |
 | --- | --- | --- | --- |
-| [`name`](./resources/resource_attributes.md#name) | string | none | mandatory |
-| [`version`](./resources/resource_attributes.md#version) | string | none | mandatory |
-| [`type`](./resources/resource_attributes.md#type) | string | none | mandatory |
-| [`tags`](./resources/resource_attributes.md#tags) | string | depending on the Resource-instance, various tags are assigned by default | optional |
-| [`description`](./resources/resource_attributes.md#description) | string | none | optional |
-| [`owner`](./resources/resource_attributes.md#owner) | string | id of the user who deploys the Resource | optional |
-| [`layer`](./resources/resource_attributes.md#layer) | string | user | optional |
-| [`<resource-type>`](./resources/resource_attributes.md#resource-type) | mapping | none | mandatory |
+| [`name`](/resources/resource_attributes/#name) | string | none | mandatory |
+| [`version`](/resources/resource_attributes/#version) | string | none | mandatory |
+| [`type`](/resources/resource_attributes/#type) | string | none | mandatory |
+| [`tags`](/resources/resource_attributes/#tags) | string | depending on the Resource-instance, various tags are assigned by default | optional |
+| [`description`](/resources/resource_attributes/#description) | string | none | optional |
+| [`owner`](/resources/resource_attributes/#owner) | string | id of the user who deploys the Resource | optional |
+| [`layer`](/resources/resource_attributes/#layer) | string | user | optional |
+| [`<resource-type>`](/resources/resource_attributes/#resource-type) | mapping | none | mandatory |
 
 Each Resource-type has a different evolutionary journey and usage. Hence, the values for fields, like `version` and `type`, are dependent on the Resource-type. The [Attributes of Resource Meta section](./resources/resource_attributes.md) elucidates all fields and possible values which can be assigned for each of the key-value pair.
 
