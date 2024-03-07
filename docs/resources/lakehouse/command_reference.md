@@ -160,7 +160,7 @@ dataos-ctl dataset -a ${{udl}} drop --purge true
 # '-p' or '--purge' flags denote the purge value
 ```
 
-[Case Scenario: Create, Get, and Drop Dataset](/resourceslakehouse/command_reference/case_scenario_create_fetch_and_drop_dataset/)
+[Case Scenario: Create, Get, and Drop Dataset](/resources/lakehouse/command_reference/case_scenario_create_fetch_and_drop_dataset/)
 
 ---
 
