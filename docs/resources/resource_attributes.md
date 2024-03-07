@@ -16,6 +16,7 @@ owner: ${{iamgroot}}
 layer: ${{user}}
 <resource-type>:
 ```
+
 <center><i>Resource meta section YAML configuration attributes</i></center>
 
 ## Configuration Attributes
