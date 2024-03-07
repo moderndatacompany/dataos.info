@@ -1,6 +1,6 @@
 # mapping
 
-Executes a Bloblang mapping on messages, creating a new document that replaces (or filters) the original message.
+Executes a [Bloblang](../../bloblang.md) mapping on messages, creating a new document that replaces (or filters) the original message.
 
 ```yaml
 # Config fields, showing default values
@@ -12,7 +12,7 @@ Bloblang is a powerful language that enables a wide range of mapping, transforma
 
 If your mapping is large and you'd prefer for it to live in a separate file, then you can execute a mapping directly from a file with the expression `from "<path>"`, where the path must be absolute or relative from the location that Benthos is executed from.
 
-Note: This processor is equivalent to the bloblang one. The latter will be deprecated in a future release.
+Note: This processor is equivalent to the [bloblang](./bloblang.md) one. The latter will be deprecated in a future release.
 
 ## Input Document Immutability
 
@@ -30,9 +30,9 @@ Mapping documents is advantageous in situations where the result is a document w
 
 ## Error Handling
 
-Bloblang mappings can fail, in which case the message remains unchanged, errors are logged, and the message is flagged as having failed, allowing you to use standard processor error handling patterns.
+Bloblang mappings can fail, in which case the message remains unchanged, errors are logged, and the message is flagged as having failed, allowing you to use [standard processor error handling patterns](../../configurations/error_handling.md).
 
-However, Bloblang itself also provides powerful ways of ensuring your mappings do not fail by specifying desired fallback behavior, which you can read about in this section.
+However, Bloblang itself also provides powerful ways of ensuring your mappings do not fail by specifying desired fallback behavior, which you can read about in [this section](../../configurations/error_handling.md).
 
 ## Mapping
 
