@@ -719,11 +719,14 @@ For general use cases, a basic configuration may suffice, requiring only the spe
     queryEngine:
       type: themis
     ```
+    <center>
 
     | Attribute | Data Type | Default Value | Possible Value | Requirement |
     | --- | --- | --- | --- | --- |
     | [`queryEngine`](/resources/lakehouse/manifest_attributes/#queryengine) | object | none | none | mandatory |
     | [`type`](/resources/lakehouse/manifest_attributes/#type) | string | none | themis | mandatory |
+
+    </center>
 
 === "Advanced configuration"
 
@@ -782,6 +785,46 @@ For general use cases, a basic configuration may suffice, requiring only the spe
     | [`sparkConf`](/resources/lakehouse/manifest_attributes/#sparkconf) (under `spark`) | object | none | none | optional |
 
     </center>
+
+??? tip "Sample Lakehouse manifest"
+
+    ```yaml
+
+    # Resource-meta section
+    name: alphaomega
+    version: v1alpha
+    type: lakehouse
+    tags:
+      - Iceberg
+      - Azure
+    description: Icebase depot of storage-type S3
+    owner: iamgroot
+    layer: user
+
+    # Lakehouse-specific section
+    lakehouse:
+      type: iceberg
+      compute: runnable-default
+      iceberg:
+        storage:
+          type: s3
+          s3:
+            bucket: dataos-lakehouse   
+            relativePath: /test
+          secrets:
+            - name: alphaomega0public0storage-r
+              keys:
+                - alphaomega0public0storage-r
+              allkeys: true 
+            - name: alphaomega0public0storage-rw
+              keys:
+                - alphaomega0public0storage-rw
+              allkeys: true    
+        metastore:
+          type: "iceberg-rest-catalog"
+        queryEngine:
+          type: themis
+    ```
 
 ### **Apply the Lakehouse manifest**
 
