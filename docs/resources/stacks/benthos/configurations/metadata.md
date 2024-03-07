@@ -6,7 +6,7 @@ When an input protocol supports attributes or metadata, they will automatically 
 
 ## Editing Metadata
 
-Benthos allows you to add and remove metadata using the `mapping` processor. For example, you can do something like this in your pipeline:
+Benthos allows you to add and remove metadata using the [`mapping` processor](../components/processors/mapping.md). For example, you can do something like this in your pipeline:
 
 ```yaml
 pipeline:
@@ -20,7 +20,7 @@ pipeline:
       meta time = event.timestamp
 ```
 
-You can also use Bloblang to delete individual metadata keys with:
+You can also use [Bloblang](../bloblang.md) to delete individual metadata keys with:
 
 ```go
 meta foo = deleted()
@@ -34,7 +34,7 @@ meta = @.filter(kv -> !kv.key.has_prefix("kafka_"))
 
 ## Using Metadata
 
-Metadata values can be referenced in any field that supports interpolation functions. For example, you can route messages to Kafka topics using interpolation of metadata keys:
+Metadata values can be referenced in any field that supports [interpolation functions](../configurations/interpolation.md). For example, you can route messages to Kafka topics using interpolation of metadata keys:
 
 ```yaml
 output:
@@ -80,7 +80,7 @@ output:
         - target_topic
 ```
 
-And when the list of metadata keys that we do *not* want to send is large it can be helpful to use a Bloblang mapping in order to give all of these "private" keys a common prefix:
+And when the list of metadata keys that we do *not* want to send is large it can be helpful to use a [Bloblang mapping](../bloblang.md) in order to give all of these "private" keys a common prefix:
 
 ```yaml
 pipeline:
