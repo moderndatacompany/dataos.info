@@ -22,3 +22,4 @@ Thumbs.db
 *.mov
 *.wmv
 link_failures_markdown_table.md
+secrets_detection_log.txt

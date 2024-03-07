@@ -4,8 +4,8 @@ A Benthos stream consists of four components; an input, an optional buffer, proc
 
 Alternatively, Benthos can be run in `streams` mode, where a single running Benthos instance is able to run multiple entirely isolated streams. Adding streams in this mode can be done in two ways:
 
-1. Static configuration files allow you to maintain a directory of static stream configuration files that will be traversed by Benthos.
-2. An HTTP REST API allows you to dynamically create, read the status of, update, and delete streams at runtime.
+1. [Static configuration files](./streams_mode/streams_via_config_files.md) allow you to maintain a directory of static stream configuration files that will be traversed by Benthos.
+2. An [HTTP REST API](./streams_mode/streams_via_rest_api.md) allows you to dynamically create, read the status of, update, and delete streams at runtime.
 
 These two methods can be used in combination, i.e. it's possible to update and delete streams that were created with static files.
 
@@ -36,11 +36,11 @@ Will register an endpoint `/meow`, which will be prefixed with the name `foo`�
 
 ## Resources
 
-When running Benthos in streams mode, resource components are shared across all streams. The streams mode HTTP API also provides an endpoint for modifying and adding resource configurations dynamically.
+When running Benthos in streams mode, [resource components](./resources.md) are shared across all streams. The streams mode HTTP API also provides an endpoint for modifying and adding resource configurations dynamically.
 
 ## Metrics
 
-Metrics from all streams are aggregated and exposed via the method specified in the config of the Benthos instance running in `streams` mode, with their metrics enriched with the tag `stream` containing the stream name.
+Metrics from all streams are aggregated and exposed via the method specified in [the config](../components/metrics.md) of the Benthos instance running in `streams` mode, with their metrics enriched with the tag `stream` containing the stream name.
 
 For example, a Benthos instance running in streams mode running a stream named `foo` would have metrics from `foo` registered with the label `stream` with the value of `foo`.
 

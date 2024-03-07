@@ -4,17 +4,17 @@
 
 This section outlines a few common throughput issues and ways in which they can be solved within Benthos.
 
-It is assumed here that your Benthos instance is performing only minor processing steps and therefore has minimal reliance on your CPU resource. If this is not the case, the following still applies to an extent, but you should also refer to the next section regarding CPU utilization.
+It is assumed here that your Benthos instance is performing only minor processing steps and therefore has minimal reliance on your CPU resource. If this is not the case, the following still applies to an extent, but you should also refer to [the next section regarding CPU utilization](#maximising-cpu-utilisation).
 
 Firstly, before venturing into Benthos configurations, you should take an in-depth look at your sources and sinks. Benthos is generally much simpler architecturally than the inputs and outputs it supports. Spend some time understanding how to squeeze the most out of these services and it will make it easier (or unnecessary) to tune your Benthos configuration.
 
 ### **Benthos Reads Too Slowly**
 
-If Benthos isn't reading fast enough from your source, it might not necessarily be due to a slow consumer. If the sink is slow, this can cause back pressure that throttles the amount Benthos can read. Try consuming a test feed with the output replaced with `drop`. If you notice that the input consumption suddenly speeds up, then the issue is likely with the output, in which case, try the next section.
+If Benthos isn't reading fast enough from your source, it might not necessarily be due to a slow consumer. If the sink is slow, this can cause back pressure that throttles the amount Benthos can read. Try consuming a test feed with the output replaced with `drop`. If you notice that the input consumption suddenly speeds up, then the issue is likely with the output, in which case, [try the next section](#benthos-writes-too-slowly).
 
 If the `drop` output pipe didn't help, then take a quick look at the basic configuration fields for the input source type. Sometimes there are fields for setting a number of background prefetches or similar concepts that can increase your throughput. For example, increasing the value of `prefetch_count` for an AMQP consumer can greatly increase the rate at which it is consumed.
 
-Next, if your source supports multiple parallel consumers, then you can try doing that within Benthos by using a broker. For example, if you started with:
+Next, if your source supports multiple parallel consumers, then you can try doing that within Benthos by using a [broker](../components/inputs/broker.md). For example, if you started with:
 
 ```yaml
 input:
@@ -37,7 +37,7 @@ input:
 
 Which would create the exact same consumer as before, with four connections in total. Try increasing the number of copies to see how that affects the throughput. If your multiple consumers would require different configurations, then set copies to `1` and write each consumer as a separate object in the `inputs` array.
 
-Read the broker documentation for more tips on simplifying broker configs.
+Read the [broker documentation](../components/inputs/broker.md) for more tips on simplifying broker configs.
 
 If your source doesn't support multiple parallel consumers, then, unfortunately, your options are more limited. A logical next step might be to look at your network/disk configuration to see if that's a potential cause of contention.
 
@@ -55,7 +55,7 @@ Most outputs have a field `max_in_flight` that allows you to specify how many 
 
 **Send messages in batches**
 
-Most outputs will send data quicker when messages are batched, this is often done automatically in the background. However, for a few outputs, your batches need to be configured. Read the batching documentation for more guidance on how to tune message batches within Benthos.
+Most outputs will send data quicker when messages are batched, this is often done automatically in the background. However, for a few outputs, your batches need to be configured. Read the [batching documentation](../configurations/message_batching.md) for more guidance on how to tune message batches within Benthos.
 
 **Level out input spikes with a buffer**
 
@@ -63,7 +63,7 @@ There are many reasons why an input source might have spikes or inconsistent thr
 
 In situations like these, it is sometimes a better use of your hardware and resources to level out the flow of data rather than try and match the peak throughput. This would depend on the frequency and duration of the spikes as well as your latency requirements and is, therefore, a matter of judgment.
 
-Leveling out the flow of data can be done within Benthos using a buffer. Buffers allow an input source to store a bounded amount of data temporarily, which a consumer can work through at its own pace. Buffers always have a fixed capacity, which, when full, will proceed to block the input just like a busy output would.
+Leveling out the flow of data can be done within Benthos using a [buffer](../components/buffers.md). Buffers allow an input source to store a bounded amount of data temporarily, which a consumer can work through at its own pace. Buffers always have a fixed capacity, which, when full, will proceed to block the input just like a busy output would.
 
 Therefore, it's still important to have an output that can keep up with the flow of data, the difference that a buffer makes is that the output only needs to keep up with the *average* flow of data versus the instantaneous flow of data.
 
@@ -73,6 +73,6 @@ For example, if your input usually produces 10 msgs/s but occasionally spikes to
 
 Some processors within Benthos are relatively heavy on your CPU and can potentially become the bottleneck of a service. In these circumstances, it is worth configuring Benthos so that your processors are running on each available core of your machine without contention.
 
-An array of processors in any section of a Benthos config becomes a single logical pipeline of steps running on a single logical thread. The easiest way to create parallel processor threads is to configure them inside the pipeline configuration block, where we can explicitly set any number of parallel processor threads independent of how many inputs or outputs we want to use.
+An array of processors in any section of a Benthos config becomes a single logical pipeline of steps running on a single logical thread. The easiest way to create parallel processor threads is to configure them inside the [pipeline](./processing_pipelines.md) configuration block, where we can explicitly set any number of parallel processor threads independent of how many inputs or outputs we want to use.
 
-Please refer to the documentation regarding pipelines for some examples.
+Please refer [to the documentation regarding pipelines](./processing_pipelines.md) for some examples.
