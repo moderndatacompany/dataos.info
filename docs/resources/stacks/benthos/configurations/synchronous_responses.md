@@ -41,7 +41,7 @@ output:
 
 Using the above example, sending a request 'foo bar' to the path `/post` returns the response 'FOO BAR'.
 
-It's also possible to combine a `sync_response` output with other outputs using a `broker`:
+It's also possible to combine a `sync_response` output with other outputs using a [`broker`](../components/inputs/broker.md):
 
 ```yaml
 input:
