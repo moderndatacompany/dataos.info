@@ -17,20 +17,21 @@ The available Depot configuration Templates are provided in the table below:
 | [Amazon Redshift](./depot_config_templates/amazon_redshift.md)       | Data Warehouse     |
 | [Google BigQuery](./depot_config_templates/google_bigquery.md)       | Data Warehouse     |
 | [Snowflake](./depot_config_templates/snowflake.md)                 | Data Warehouse     |
-| [Amazon Simple Storage Service (S3)](./depot_config_templates/amazon_s3.md)       | Data Lake          |
-| [Azure Blob File System Storage (ABFSS)](./depot_config_templates/azure_abfss.md) | Data Lake          |
-| [Windows Azure Storage Blob Service (WASBS)](./depot_config_templates/azure_wasbs.md) | Data Lake          |
-| [Google Cloud Storage (GCS)](./depot_config_templates/google_gcs.md)           | Data Lake          |
+| [Amazon Simple Storage Service (S3)](./depot_config_templates/amazon_s3.md)       | Lakehouse or Data Lake          |
+| [Azure Blob File System Storage (ABFSS)](./depot_config_templates/azure_abfss.md) | Lakehouse or Data Lake          |
+| [Windows Azure Storage Blob Service (WASBS)](./depot_config_templates/azure_wasbs.md) | Lakehouse or Data Lake          |
+| [Google Cloud Storage (GCS)](./depot_config_templates/google_gcs.md)           | Lakehouse or Data Lake          |
+| [Icebase](./depot_config_templates/icebase_hadoop_s3.md)       | Lakehouse or Data Lake          |
 | [Apache Pulsar](./depot_config_templates/apache_pulsar.md)              | Streaming Source   |
 | [Eventhub](./depot_config_templates/eventhub.md)                       | Streaming Source   |
 | [Apache Kafka](./depot_config_templates/kafka.md)                       | Streaming Source   |
 | [Elasticsearch](./depot_config_templates/elasticsearch.md)          | NoSQL Database     |
 | [MongoDB](./depot_config_templates/mongodb.md)                     | NoSQL Database     |
 | [Opensearch](./depot_config_templates/opensearch.md)               | NoSQL Database     |
-| [Oracle](./depot_config_templates/oracle.md)                     | Relational Database |
 | [JDBC](./depot_config_templates/jdbc.md)                         | Relational Database |
 | [MySQL](./depot_config_templates/mysql.md)                       | Relational Database |
 | [Microsoft SQL Server](./depot_config_templates/microsoft_sql_server.md) | Relational Database |
+| [Oracle](./depot_config_templates/oracle.md)                     | Relational Database |
 | [PostgreSQL](./depot_config_templates/postgresql.md)             | Relational Database |
 
 </center>
