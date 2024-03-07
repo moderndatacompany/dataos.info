@@ -1,6 +1,6 @@
 # bloblang
 
-Executes a Bloblang mapping on messages.
+Executes a [Bloblang](../../bloblang.md) mapping on messages.
 
 ```yaml
 # Config fields, showing default values
@@ -14,7 +14,7 @@ If your mapping is large and you'd prefer for it to live in a separate file, the
 
 ## Component Rename
 
-This processor was recently renamed to the `mapping` processor in order to make the purpose of the processor more prominent. It is still valid to use the existing `bloblang` name but eventually, it will be deprecated and replaced by the new name in example configs.
+This processor was recently renamed to the [`mapping` processor](../../components/processors/mapping.md) in order to make the purpose of the processor more prominent. It is still valid to use the existing `bloblang` name but eventually, it will be deprecated and replaced by the new name in example configs.
 
 ## Examples
 
@@ -93,6 +93,6 @@ pipeline:
 
 ## Error Handling
 
-Bloblang mappings can fail, in which case the message remains unchanged, errors are logged, and the message is flagged as having failed, allowing you to use standard processor error handling patterns.
+Bloblang mappings can fail, in which case the message remains unchanged, errors are logged, and the message is flagged as having failed, allowing you to use [standard processor error handling patterns](../../configurations/error_handling.md).
 
-However, Bloblang itself also provides powerful ways of ensuring your mappings do not fail by specifying desired fallback behavior, which you can read about in this section.
+However, Bloblang itself also provides powerful ways of ensuring your mappings do not fail by specifying desired fallback behavior, which you can read about in [this section](../../configurations/error_handling.md).
