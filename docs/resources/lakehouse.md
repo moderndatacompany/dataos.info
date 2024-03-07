@@ -22,6 +22,7 @@ Lakehouse, is a [DataOS Resource](../resources.md) that integrates Apache Iceber
 
     [:octicons-arrow-right-24: Key features](#key-features-of-a-lakehouse)
 
+
 -   :material-clock-fast:{ .lg .middle } **Structure of a Lakehouse manifest**
 
     ---
@@ -228,6 +229,7 @@ DataOS comprises of a Resource called Instance-secret that enables a data develo
 
 ### **Prerequisites**
 
+Data developers can create a Lakehouse Resource by creating a YAML manifest and applying it via the DataOS [CLI](../interfaces/cli.md).
 
 ### **Create a YAML manifest**
 
