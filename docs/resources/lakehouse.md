@@ -22,6 +22,7 @@ Lakehouse, is a [DataOS Resource](/resources/) that integrates Apache Iceberg ta
 
     [:octicons-arrow-right-24: Key features](#key-features-of-a-lakehouse)
 
+
 -   :material-clock-fast:{ .lg .middle } **Structure of a Lakehouse manifest**
 
     ---
