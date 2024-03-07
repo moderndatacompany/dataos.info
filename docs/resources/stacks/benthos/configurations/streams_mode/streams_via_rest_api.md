@@ -1,8 +1,8 @@
 # Streams Via REST API
 
-By using the Benthos `streams` mode REST API, you can dynamically control which streams are active at runtime. The full spec for the Benthos streams mode REST API can be found here.
+By using the Benthos `streams` mode REST API, you can dynamically control which streams are active at runtime. The full spec for the Benthos streams mode REST API can be [found here](./streams_api.md).
 
-Note that stream configs created and updated using this API do *not* benefit from environment variable interpolation (function interpolation will still work).
+Note that stream configs created and updated using this API do *not* benefit from [environment variable interpolation](../../configurations/interpolation.md) (function interpolation will still work).
 
 ## Walkthrough
 

@@ -1,6 +1,9 @@
-# Amazon Redshift
+# Depot for Amazon Redshift
 
-DataOS provides the capability to establish a connection with the Amazon Redshift database for the purpose of reading data from tables using Depots. Amazon Redshift is a cloud-based, fully managed, and scalable data warehouse service. Analysis queries on your dataset can be performed using Workbench.
+DataOS provides the capability to establish a connection with the Amazon Redshift database. We have provided the template for the manifest file to establish this connection. Follow these steps to create the depot:
+**Step 1**: Copy the template from below and paste it in a code editor.
+**Step 2**: Fill the values for the atttributes/fields declared in the YAML-based manifest file.
+**Step 3**: Apply the file through DataOS CLI
 
 ## Requirements
 
@@ -11,7 +14,7 @@ To establish a connection with Redshift, the following information is required:
 - Database name
 - User name and password
 
-Additionally, when accessing the Redshift Database in Flare workflows, the following details are also necessary:
+Additionally, when accessing the Redshift Database in Workflows or other DataOS Resources, the following details are also necessary:
 
 - Bucket name where the data resides
 - Relative path
@@ -29,9 +32,9 @@ type: depot
 tags:
   - {{redshift}}
 layer: user
+description: {{Redshift Sample data}}
 depot:
   type: REDSHIFT
-  description: {{Redshift Sample data}}
   spec:
     host: {{hostname}}
     subprotocol: {{subprotocol}}
