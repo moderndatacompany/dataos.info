@@ -120,17 +120,172 @@ Here you can find templates for the depot/non-depot Scanner workflows.
 The following workflows are running as system workflows to periodically scan the related metadata and save it to Metis DB to reflect the updated metadata state. They are scheduled to run at a set interval.
 
 ### **Data Products**
-The following Scanner workflow collects information about the Data products within DataOS.
-[Scanner for Data Product](scanner/data_product_scan.md)
+Data product Scanner workflows is for collecting metadata related to Data products such as inputs, outputs, SLOs, policies, lineage and associated DataOS Resources.
+
+This Scanner workflow reads the metadata and stores it in Metis DB. This metadata helps you understand data product's life cycle along with the data access permissions, infrastructure resources used for creating it.
+
+<details><summary> Scanner for Data Product</summary>
+```yaml
+version: v1
+name: scanner2-data-product
+type: workflow
+tags:
+  - scanner
+  - data-quality
+description: The job scans schema tables and register data
+workflow:
+  # schedule:
+  #   cron: '*/20 * * * *'
+  #   concurrencyPolicy: Forbid
+  dag:
+    - name: scanner2-data-product-job
+      description: The job scans schema from data-product and register data to metis
+      spec:
+        tags:
+          - scanner2
+        stack: scanner:2.0
+        compute: runnable-default
+        stackSpec:
+          type: data-product
+          sourceConfig:
+            config:
+              type: DataProduct
+              markDeletedDataProducts: true
+              # dataProductFilterPattern:
+              #   includes:
+              #     - customer-360-all$
+```
+
+</details>
+
+<aside class="callout">
+
+🗣 On a successful run, you can view the Data Product information on Metis UI.
+</aside>
 
 ### **System Metadata Sync**
-The following Scanner workflow collects information from Icebase and Fastbase for the newly added data assets.<br>
-[Scanner for System Metadata](scanner/system_metadata_scan.md)
+
+This scanner periodically scans the icebase and Fastbase and stores metadata related to tables and topics in Metis DB. It collects information from Icebase and Fastbase for the newly added data assets.<br>
+
+<details><summary>Scanner for System Metadata</summary>
+
+```yaml
+name: system-metadata-sync
+version: v1
+type: workflow
+tags:
+  - icebase
+  - fastbase
+  - profile
+  - scanner
+description: Icebase, fastbase metadata scanner workflow
+owner: metis
+workspace: system
+workflow:
+  title: Icebase and Fastbase Depot Scanner
+  schedule:
+    cron: '*/30 * * * *'
+    timezone: UTC
+    concurrencyPolicy: Forbid
+  dag:
+    - name: icebase-scanner
+      description: The job scans and publishes all datasets from icebase to metis.
+      spec:
+        stack: scanner:2.0
+        logLevel: INFO
+        compute: runnable-default
+        resources:
+          requests:
+            cpu: 250m
+            memory: 512Mi
+          limits: {}
+        runAsApiKey: >-
+          ****************************************************************************
+        runAsUser: metis
+        stackSpec:
+          depot: icebase
+          sourceConfig:
+            config:
+              markDeletedTables: true
+    - name: fastbase-scanner
+      description: The job scans and publishes all datasets from fastbase to metis.
+      spec:
+        stack: scanner:2.0
+        logLevel: INFO
+        compute: runnable-default
+        resources:
+          requests:
+            cpu: 250m
+            memory: 512Mi
+          limits:
+            cpu: 1100m
+            memory: 2048Mi
+        runAsApiKey: >-
+          ****************************************************************************
+        runAsUser: metis
+        stackSpec:
+          depot: fastbase
+stamp: '-bkcu'
+generation: 33
+uid: a105c747-410c-4edc-9953-bda462e94efd
+status: {}
+```
+
+</details>
+
+<aside class="callout">
+🗣 On a successful run, you can view the scanned metadata on Metis UI under the "Assets" for tables and topics.</aside>
 
 ### **Users’ Information**
 
-This workflow will scan the information about the users in DataOS. This is a scheduled workflow that connects with Heimdall on a given cadence to fetch information about users.
-[Scanner for User's Information](scanner/user_info_scan.md)
+Heimdall, in DataOS, is the security engine managing user access. It ensures only authorized users can access DataOS resources. This Scanner workflow connects with Heimdall to To scan and retrieve information about users in the DataOS environment, including their descriptions and profile images and stores it in Metis DB. 
+
+This Scanner workflow will scan the information about the users in DataOS. This is a scheduled workflow that connects with Heimdall on a given cadence to fetch information about users.
+
+<details><summary>Scanner for User's Information</summary>
+
+```yaml
+name: heimdall-users-sync
+version: v1
+type: workflow
+tags:
+  - users
+  - scanner
+description: Heimdall users sync workflow
+owner: metis
+workspace: system
+workflow:
+  title: Heimdall Users Sync
+  schedule:
+    cron: '*/10 * * * *'
+    timezone: UTC
+    concurrencyPolicy: Forbid
+  dag:
+    - name: users-sync
+      description: The job scans and publishes all users heimdall to metis.
+      spec:
+        stack: scanner:2.0
+        stackSpec:
+          type: users
+        logLevel: INFO
+        compute: runnable-default
+        runAsUser: metis
+        resources:
+          requests:
+            cpu: 250m
+            memory: 512Mi
+          limits:
+            cpu: 1100m
+            memory: 2048Mi
+        runAsApiKey: >-
+          ****************************************************************************
+```
+</details>
+
+<aside class="callout">
+
+🗣 On a successful run, you can view the users information on Metis UI.
+</aside>
 
 ## Metadata Update
 Indexer service, a continuous running service within the DataOS environment keeps track of newly created or updated entities such as **Data products**, **Data Assets**(datasets/topics/dashboards, etc.) and **DataOS Resources**(Workflows, Services, Workers, Monitors, Depots etc.). With this information about the changed entity, it creates a reconciliation Scanner YAML with filters to include only the affected entity. This Scanner workflow will extract the metadata about the entity and update the target metastore.
@@ -138,32 +293,261 @@ Indexer service, a continuous running service within the DataOS environment keep
 The following continuous running services are designed for triggering the specific type of metadata scan. 
 
 ### **Data Profiling**
+
+Flare workflows are run for data profiling on the entire dataset or sample /filtered data and uses basic statistics to know about the validity of the data. This analysis is stored in Icebase.
+> To learn more about data profiling Flare workflows, click [here](/resources/stacks/flare/#data-profiling-job).
+>
+
+A continuous running service reads about these statistics (metadata extraction related to data profiling) and stores it in Metis DB. This data helps you find your data's completeness, uniqueness, and correctness for the given dataset. 
+
 The objective of this worker is to proactively scan data profiling information, which includes descriptive statistics for datasets stored in Icebase. It operates in response to a triggered data profiling job, publishing the metadata to the Metis DB.
 
-[Indexer Service for Data Profiling](scanner/data_profile_scan.md)
+<details><summary>Indexer Service for Data Profiling</summary>
+```yaml
+name: dataset-profiling-indexer
+version: v1beta
+type: worker
+tags:
+  - Scanner
+description: >-
+  The purpose of this worker is to reactively scan workflows and ingest
+  profiling data whenever a lifecycle event is triggered.
+owner: metis
+workspace: system
+worker:
+  title: Dataset Profiling Indexer
+  tags:
+    - Scanner
+  replicas: 1
+  autoScaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 2
+    targetMemoryUtilizationPercentage: 120
+    targetCPUUtilizationPercentage: 120
+  stack: scanner:2.0
+  stackSpec:
+    type: worker
+    worker: data_profile_indexer
+  logLevel: INFO
+  compute: runnable-default
+  runAsUser: metis
+  resources:
+    requests:
+      cpu: 500m
+      memory: 1024Mi
+    limits: {}
+  runAsApiKey: '****************************************************************************'
+```
+
+</details>
+
+<aside class="callout">
+🗣
+You can view this captured metadata, data profiling information about the dataset on Metis UI.</aside>
 
 ### **Data Quality**
-This worker is designed to reactively scan datasets and ingest quality checks and metrics data whenever a data quality scan is initiated. The acquired information is then published to the Metis DB, contributing to a comprehensive understanding of data quality. 
 
-[Indexer Service for Data Quality](scanner/data_quality_scan.md)
+Service Level objectives(SLOs) are business-specific validation rules applied to test and evaluate the quality of specific datasets if they are appropriate for the intended purpose. DataOS allows you to define your own assertions with a combination of tests to check the rules.
 
+This worker is a continuous running service, designed to reactively scan datasets and ingest quality checks and metrics data along with their pass/fail status whenever a Flare data quality scan is initiated. The acquired metadata related to data quality is then published to the Metis DB, contributing to a comprehensive understanding of data quality. 
+
+<details><summary>Indexer Service for Data Quality</summary>
+```yaml
+name: dataset-quality-checks-indexer
+version: v1beta
+type: worker
+tags:
+  - Scanner
+description: >-
+  The purpose of this worker is to reactively scan workflows and ingest
+  quality checks and metrics data whenever a lifecycle event is triggered.
+owner: metis
+workspace: system
+worker:
+  title: Dataset Quality Checks Indexer
+  tags:
+    - Scanner
+  replicas: 1
+  autoScaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 2
+    targetMemoryUtilizationPercentage: 120
+    targetCPUUtilizationPercentage: 120
+  logLevel: INFO
+  runAsUser: metis
+  compute: runnable-default
+  stack: scanner:2.0
+  stackSpec:
+    type: worker
+    worker: data_quality_indexer
+  resources:
+    requests:
+      cpu: 500m
+      memory: 1024Mi
+    limits: {}
+  runAsApiKey: '****************************************************************************'
+```
+</details>
+
+<aside class="callout">
+🗣 You can view the list of SLOs created for the dataset to monitor the data quality and trend charts for each run. The trend charts also show whether the checks are passed or failed.
+</aside>
 
 ### **SODA Quality Checks**
-The primary objective of this worker is to reactively scan datasets, for collecting quality checks and metrics data whenever a SODA quality scan is triggered. The collected data is saved to the Metis DB, facilitating thorough analysis and monitoring.
 
-[Indexer Service for SODA Quality Checks](scanner/data_quality_scan_soda.md)
+DataOS now also extends support to other quality check platforms, such as SQL-powered SODA. It enables you to use the Soda Checks Language (SodaCL) to turn user-defined inputs into aggregated SQL queries. With Soda, you get a far more expressive language to test the quality of your datasets. It allows for complex user-defined checks with granular control over fail and warn states.
 
+The primary objective of this continuous running service (worker) is to reactively scan datasets, for collecting quality checks and metrics data along with their pass/fail status whenever a SODA quality scan is triggered. The collected data is saved to the Metis DB, facilitating thorough analysis and monitoring.
+
+<details><summary>Indexer Service for SODA Quality Checks</summary>
+
+```yaml
+name: soda-quality-checks-indexer
+version: v1beta
+type: worker
+tags:
+  - Scanner
+description: >-
+  The purpose of this worker is to reactively scan datasets and ingest quality
+  checks and metrics data whenever a soda scan is triggered.
+owner: metis
+workspace: system
+worker:
+  title: Soda Quality Checks Indexer
+  tags:
+    - Scanner
+  replicas: 1
+  autoScaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 2
+    targetMemoryUtilizationPercentage: 120
+    targetCPUUtilizationPercentage: 120
+  stack: scanner:2.0
+  stackSpec:
+    type: worker
+    worker: soda_indexer
+  logLevel: INFO
+  compute: runnable-default
+  runAsUser: metis
+  resources:
+    requests:
+      cpu: 500m
+      memory: 1024Mi
+    limits: {}
+  runAsApiKey: '****************************************************************************'
+  
+```
+
+</details>
+
+<aside class="callout">
+🗣 On Metis UI, you can view the list of SLOs created for the dataset to monitor the data quality and trend charts for each run. The trend charts also show whether the checks are passed or failed.
+</aside>
 
 ### **DataOS Resources**
-This worker operates reactively to scan specific DataOS Resource information from Poros whenever a lifecycle event is triggered. It captures relevant details and publishes them to the Metis DB, ensuring an up-to-date repository of DataOS Resources metadata.
 
-[Indexer Service for DataOS Resources](scanner/dataos_resources_scan.md)
+DataOS Resources Metadata Scanner Worker is a continuous running service to read the metadata across Workflows, Services, Clusters, Depots, etc., including their historical runtime and operations data, and saves it to the Metis DB a whenever a DataOS Resource is created, deleted within DataOS. 
+
+This worker operates reactively to scan specific DataOS Resource information from Poros whenever a lifecycle event is triggered. It captures relevant details and publishes them to the Metis DB, ensuring an up-to-date repository of DataOS Resources metadata. 
+
+<details><summary>Indexer Service for DataOS Resources </summary>
+
+
+```yaml
+name: poros-indexer
+version: v1beta
+type: worker
+tags:
+  - Scanner
+description: >-
+  The purpose of this worker is to reactively scan metadata for DataOS Resources whenever a
+  lifecycle event is triggered.
+owner: metis
+workspace: system
+worker:
+  title: Workflow Indexer
+  tags:
+    - Scanner
+  replicas: 2
+  autoScaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 3
+    targetMemoryUtilizationPercentage: 120
+    targetCPUUtilizationPercentage: 120
+  stack: scanner:2.0
+  stackSpec:
+    type: worker
+    worker: poros_indexer
+  logLevel: INFO
+  compute: runnable-default
+  runAsUser: metis
+  resources:
+    requests:
+      cpu: 500m
+      memory: 1024Mi
+    limits: {}
+  runAsApiKey: '****************************************************************************'
+  
+```
+</details>
+
+<aside class="callout"> 🗣 You can view the collected metadata about DataOS Resources on Metis UI.</aside>
 
 ### **Query Usage**
 
-This Worker is for ingesting metadata related to query history. It scans information about queries, users, dates, and completion times. 
+DataOS Gateway service backed by Gateway DB  keeps query usage data, and dataset usage analytics and harvests required insights such as (heavy datasets, popular datasets, datasets most associated together, etc.). The Scanner Worker is a continuous running service to extract query-related data and saves it to MetaStore.  It scans information about queries, users, dates, and completion times. This query history/dataset usage data helps to rank the most used tables.
 
-[Indexer Sertvice for Query Usage](scanner/query_usage_data_scan.md)
+The following Scanner Worker is for metadata extraction related to query usage data. It reactively reads the queries data published to pulsar topic and ingest it into metis. It scans information about queries, users, dates, and completion times. 
+
+<details><summary>Indexer Sertvice for Query Usage </summary>
+
+```yaml
+name: query-usage-indexer
+version: v1beta
+type: worker
+tags:
+  - Scanner
+description: >-
+  This worker reactively reads the queries data published to pulsar topic and
+  ingest it into metis.
+owner: metis
+workspace: system
+worker:
+  title: Query Usage Indexer
+  tags:
+    - Scanner
+  replicas: 1
+  autoScaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 2
+    targetMemoryUtilizationPercentage: 120
+    targetCPUUtilizationPercentage: 120
+  stack: scanner:2.0
+  stackSpec:
+    type: worker
+    worker: query_indexer
+  logLevel: INFO
+  compute: runnable-default
+  runAsUser: metis
+  resources:
+    requests:
+      cpu: 500m
+      memory: 1024Mi
+    limits: {}
+  runAsApiKey: '****************************************************************************'
+  
+```
+
+</details>
+
+<aside class="callout"> 🗣 You can view the query usage data for your dataset on Metis UI.
+</aside>
+
 
 ## Common Errors
 
