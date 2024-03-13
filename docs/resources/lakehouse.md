@@ -68,7 +68,7 @@ Lakehouse, is a [DataOS Resource](/resources/) that integrates Apache Iceberg ta
 
 ## Key Features of a Lakehouse
 
-DataOS Lakehouse adds several Relational Data Warehouse-like featueres to a data lake. This section will walk you through some of them.
+DataOS Lakehouse adds several Relational Data Warehouse-like features to a data lake. This section will walk you through some of them.
 
 **Managed Storage**
 
