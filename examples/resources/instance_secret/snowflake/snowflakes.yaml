@@ -1,6 +1,6 @@
-# MySQL Read Instance-secret Manifest
+# Snowflake Read Instance-secret Manifest
 
-name: ${mysql-depot-name}-r # Unique identifier for Resource, replace ${mysql-depot-name} with depot name
+name: ${snowflake-depot-name}-r # Unique identifier for Resource, replace ${snowflake-depot-name} with depot name
 version: v1 # Manifest version
 type: instance-secret # Type of the Resource
 description: ${description} # Purpose of the Instance-secret
@@ -9,5 +9,5 @@ instance-secret:
   type: key-value-properties # Secret type
   acl: r # Access control: 'r' for read-only
   data:
-    username: ${username} # replace with MySQL username
-    password: ${password} # replace with MySQL password
+    username: ${username} # replace with snowflake username
+    password: ${password} # replace with snowflake password
