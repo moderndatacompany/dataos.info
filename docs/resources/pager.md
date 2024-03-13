@@ -1,5 +1,49 @@
 # Pager
 
+What is a Pager?
+
+
+Why seperate it from Monitor?
+
+
+How to create a Pager?
+
+
+How does a Pager Work?
+
+
+How to configure a Pager?
+
+```yaml title="pager_advanced_configuration.yaml"
+pager:
+  conditions: # mandatory
+    - valueJqFilter: ${string} # mandatory
+      operator: ${equals} # mandatory
+      value: string # mandatory
+  output: # mandatory
+    email: 
+      emailTargets: # mandatory
+        - <email 1>
+        - <email 2>
+    msTeams: 
+      webHookUrl: # mandatory
+    webHook: 
+      url: ${webhook-url} # mandatory
+      headers:  <object>
+      authorization: 
+        token: ${token}
+        customHeader: ${customHeader}
+      verb: GET # mandatory
+      bodyTemplate: <string> 
+```
+
+
+
+
+How to use a Pager?
+
+
+
 A Pager enables users to specify criteria for **identifying an incident** from the incident stream and **delivering it** to a user-specified destination. Here is how it works.
 
 1. A pager constantly reads incident messages from the incident stream.
