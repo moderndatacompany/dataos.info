@@ -11,7 +11,7 @@ A template is defined in a YAML file that can be imported when Benthos runs usin
 benthos -t "./templates/*.yaml" -c ./config.yaml
 ```
 
-The template describes the type of component and configuration fields that can be used to customize it, followed by a Bloblang mapping that translates an object containing those fields into a Benthos config structure. This allows you to use logic to generate more complex configurations:
+The template describes the type of component and configuration fields that can be used to customize it, followed by a [Bloblang mapping](../bloblang.md) that translates an object containing those fields into a Benthos config structure. This allows you to use logic to generate more complex configurations:
 
 ## Template
 
@@ -214,7 +214,7 @@ Default: `false`
 
 ### `mapping`
 
-A Bloblang mapping that translates the fields of the template into a valid Benthos configuration for the target component type.
+A [Bloblang](../bloblang.md) mapping that translates the fields of the template into a valid Benthos configuration for the target component type.
 
 Type: `string`
 
@@ -222,7 +222,7 @@ Type: `string`
 
 ### `metrics_mapping`
 
-An optional Bloblang mapping that allows you to rename or prevent certain metrics paths from being exported. For more information, check out the metrics documentation. When metric paths are created, renamed, and dropped, a trace log is written, enabling TRACE level logging is, therefore, a good way to diagnose path mappings.
+An optional [Bloblang mapping](../bloblang.md) that allows you to rename or prevent certain metrics paths from being exported. For more information, check out the [metrics documentation](../components/metrics.md). When metric paths are created, renamed, and dropped, a trace log is written, enabling TRACE level logging is, therefore, a good way to diagnose path mappings.
 
 Invocations of this mapping are able to reference a variable $label in order to obtain the value of the label provided to the template config. This allows you to match labels with the root of the config.
 

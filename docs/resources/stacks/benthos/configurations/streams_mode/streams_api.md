@@ -4,7 +4,7 @@ When Benthos is run in `streams` mode, it will open up an HTTP REST API for cr
 
 Each stream has its own input, buffer, pipeline, and output sections which contains an isolated stream of data with its own lifetime. A stream config cannot include resources, and instead, these should be created and modified using the `/resources/{type}/{id}` endpoint.
 
-A walkthrough on using this API can be found here.
+A walkthrough on using this API can be [found here](./streams_via_rest_api.md).
 
 ## API
 
