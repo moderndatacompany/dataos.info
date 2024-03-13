@@ -1,14 +1,14 @@
 # Message Batching
 
-Benthos is able to join sources and sinks with sometimes conflicting batching behaviors without sacrificing its strong delivery guarantees. It's also able to perform powerful processing functions across batches of messages, such as grouping, archiving, and reduction. Therefore, batching within Benthos is a mechanism that serves multiple purposes:
+Benthos is able to join sources and sinks with sometimes conflicting batching behaviors without sacrificing its strong delivery guarantees. It's also able to perform powerful [processing functions](./window_processing.md) across batches of messages, such as grouping, archiving, and reduction. Therefore, batching within Benthos is a mechanism that serves multiple purposes:
 
-1. Performance (throughput)
-2. Grouped message processing
-3. Compatibility (mixing multi and single-part message protocols)
+1. [Performance (throughput)](#performance)
+2. [Grouped message processing](#grouped-message-processing)
+3. [Compatibility (mixing multi and single-part message protocols)](#compatibility)
 
 ## Performance
 
-For most users, the only benefit of batching messages is improving throughput over your output protocol. For some protocols, this can happen in the background and requires no configuration from you. However, if an output has a `batching` configuration block, this means it benefits from batching and requires you to specify how you'd like your batches to be formed by configuring a batching policy:
+For most users, the only benefit of batching messages is improving throughput over your output protocol. For some protocols, this can happen in the background and requires no configuration from you. However, if an output has a `batching` configuration block, this means it benefits from batching and requires you to specify how you'd like your batches to be formed by configuring a [batching policy](#message-batching):
 
 ```yaml
 output:
@@ -42,7 +42,7 @@ output:
 
 Inputs that behave this way are documented as such and have a `batching` configuration block.
 
-Sometimes you may prefer to create your batches before processing in order to benefit from batch wide processing, in which case, if your input doesn't already support a batch policy, you can instead use a `broker`, which also allows you to combine inputs with a single batch policy:
+Sometimes you may prefer to create your batches before processing in order to benefit from [batch wide processing](#grouped-message-processing), in which case, if your input doesn't already support [a batch policy](#batch-policy), you can instead use a [`broker`](../components/inputs/broker.md), which also allows you to combine inputs with a single batch policy:
 
 ```yaml
 input:
@@ -92,7 +92,7 @@ output:
     path: docs/${! meta("kafka_partition") }/${! count("files") }-${! timestamp_unix_nano() }.tar.gz
 ```
 
-For more examples of batched (or windowed) processing, check out this document.
+For more examples of batched (or windowed) processing, check out [this document](./window_processing.md).
 
 ## Compatibility
 
@@ -143,7 +143,7 @@ When an input or output component has a config field `batching`, that means it
 
 - The `byte_size` field is non-zero, and the total size of the batch in bytes matches or exceeds it (disregarding metadata.)
 - The `count` field is non-zero and the total number of messages in the batch matches or exceeds it.
-- A message added to the batch causes the `check` to return to `true`.
+- A message added to the batch causes the [`check`](../bloblang.md) to return to `true`.
 - The `period` field is non-empty, and the time since the last batch exceeds its value.
 
 This allows you to combine conditions:

@@ -1,6 +1,6 @@
 # Serverless
 
-Currently the only supported serverless deployment of Benthos is for AWS Lambda.
+Currently the only supported serverless deployment of Benthos is for [AWS Lambda](#lambda).
 
 ## Lambda
 
@@ -80,7 +80,7 @@ output:
 
 It's possible to configure pipelines that send messages to third party destinations and also return a result back to the caller. This is done by configuring an output block and including an output of the type sync_response.
 
-For example, if we wished for our lambda function to send a payload to Kafka and also return the same payload back to the caller we could use a broker:
+For example, if we wished for our lambda function to send a payload to Kafka and also return the same payload back to the caller we could use a [broker](../components/inputs/broker.md):
 
 ```yaml
 output:
@@ -99,7 +99,7 @@ output:
 
 ### **go1.x on x86_64**
 
-Grab an archive labelled benthos-lambda from the releases page page and then create your function:
+Grab an archive labelled benthos-lambda from the [releases page](https://github.com/benthosdev/benthos/releases) page and then create your function:
 
 ```shell
 LAMBDA_ENV=`cat yourconfig.yaml | jq -csR {Variables:{BENTHOS_CONFIG:.}}`
@@ -112,11 +112,11 @@ aws lambda create-function \
   --function-name benthos-example
 ```
 
-There is also an example SAM template and Terraform resource in the repo to copy from.
+There is also an example [SAM template](https://github.com/benthosdev/benthos/blob/main/resources/serverless/lambda/benthos-lambda-sam.yaml) and [Terraform](https://github.com/benthosdev/benthos/blob/main/resources/serverless/lambda/benthos-lambda.tf) resource in the repo to copy from.
 
 ### **provided.al2 on amd64**
 
-Grab an archive labelled benthos-lambda-al2 for arm64 from the releases page page and then create your function (AWS CLI v2 only):
+Grab an archive labelled benthos-lambda-al2 for arm64 from the [releases page](https://github.com/benthosdev/benthos/releases) and then create your function (AWS CLI v2 only):
 
 ```shell
 LAMBDA_ENV=`cat yourconfig.yaml | jq -csR {Variables:{BENTHOS_CONFIG:.}}`
@@ -130,7 +130,7 @@ aws lambda create-function \
   --function-name benthos-example
 ```
 
-There is also an example SAM template and Terraform resource in the repo to copy from.
+There is also an example [SAM template](https://github.com/benthosdev/benthos/blob/main/resources/serverless/lambda/benthos-lambda-sam.yaml) and [Terraform](https://github.com/benthosdev/benthos/blob/main/resources/serverless/lambda/benthos-lambda.tf) resource in the repo to copy from.
 
 Note that you can also run `benthos-lambda-al2` on x86_64, just use the `amd64` zip instead.
 

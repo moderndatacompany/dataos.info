@@ -15,11 +15,11 @@ thing:
 Note that it would be valid to have `super_secret: ${SECRET}` above (without the quotes), but if `SECRET` is unset, then the config becomes structurally different. Therefore, it's always best to wrap environment variable interpolations with quotes so that when the variable is unset, you still have a valid config (with an empty string).
 > 
 
-More information about this syntax can be found on the interpolation field page.
+More information about this syntax can be found on the [interpolation field page](./interpolation.md).
 
 ## Using CLI Flags
 
-As an alternative to environment variables, it's possible to set specific fields within a config using the CLI flag `--set` where the syntax is a `<path>=<value>` pair, the path being a dot-separated path to the field being set and the value being the thing to set it to. If, for example, we had the config:
+As an alternative to environment variables, it's possible to set specific fields within a config using the CLI flag `--set` where the syntax is a `<path>=<value>` pair, the path being a [dot-separated path to the field being set](./fields_paths.md) and the value being the thing to set it to. If, for example, we had the config:
 
 ```yaml
 thing:
@@ -39,4 +39,4 @@ Using this method, we can inject the secret into the config without "leaking" it
 
 There are a few ways in which configs parsed by Benthos can be exported back out of the service. In all of these cases, Benthos will attempt to scrub any field values within the config that are known secrets (any field marked as a secret in the docs).
 
-However, if you're embedding secrets within a config outside of the value of secret fields, maybe as part of a Bloblang mapping, then care should be taken to avoid exposing the resulting config. This specifically means you should not enable debug HTTP endpoints when the port is exposed and don't use the `benthos echo` subcommand on configs containing secrets unless you're printing to a secure pipe.
+However, if you're embedding secrets within a config outside of the value of secret fields, maybe as part of a Bloblang mapping, then care should be taken to avoid exposing the resulting config. This specifically means you should not enable debug [HTTP endpoints](../components/http.md) when the port is exposed and don't use the `benthos echo` subcommand on configs containing secrets unless you're printing to a secure pipe.
