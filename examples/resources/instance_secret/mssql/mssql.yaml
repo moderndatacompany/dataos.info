@@ -9,5 +9,5 @@ instance-secret:
   type: key-value-properties # Secret type
   acl: r # Access control: 'r' for read-only
   data:
-    username: {{username}} # replace with MsSQL username
-    password: {{password}} # replace with MsSQL password
+    username: ${username} # replace with MsSQL username
+    password: ${password} # replace with MsSQL password

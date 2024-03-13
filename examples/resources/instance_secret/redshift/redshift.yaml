@@ -9,7 +9,7 @@ instance-secret:
   type: key-value-properties # Secret type
   acl: r # Access control: 'r' for read-only
   data:
-    username: {{username}} # replace with Redshift username
-    password: {{password}} # replace with Redshift password
-    awsaccesskeyid: {{access key}} # replace with AWS access ID
-    awssecretaccesskey: {{secret key}}  # replace with AWS access key
+    username: ${username} # replace with Redshift username
+    password: ${password} # replace with Redshift password
+    awsaccesskeyid: ${access key} # replace with AWS access ID
+    awssecretaccesskey: ${secret key}  # replace with AWS access key
