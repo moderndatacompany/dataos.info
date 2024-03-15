@@ -24,16 +24,16 @@ While Workspace-level confidentiality is maintained for Secrets, it's essential 
 
     Secrets provide secure storage for sensitive information, reducing exposure risks inherent in embedding such data directly in resource configurations.
 
-    [:octicons-arrow-right-24: Create Secret](/resources/secret_updated/#how-to-create-secrets)
+    [:octicons-arrow-right-24: Create Secret](/resources/secret_updated/#how-to-create-a-secret)
 
 
 -   :material-script-text-outline:{ .lg .middle } **How to refer a Secret into other Resources?**
 
     ---
 
-    A Secret YAML manifest file includes resource meta and Secret specific sections with attributes that must be configured for creating a Secret.
+    A Secret manifest file includes resource meta and Secret specific sections with attributes that must be configured for creating a Secret.
 
-    [:octicons-arrow-right-24: Refering Secrets](/resources/secret_updated/#integration-of-the-secret-into-other-resources)
+    [:octicons-arrow-right-24: Refering Secrets](#how-to-refer-secrets-in-other-dataos-resources)
 
 
 
@@ -92,12 +92,13 @@ The Secret-specific Section of the YAML configuration file includes key-value pa
 
 ```yaml
 secret:
-  type: ${{secret-subtype}}
-  acl: ${{access-control-level}}
-  data:
-    ${{key1}}: ${{value1}}
+  type: ${{secret-subtype}} # Mandatory
+  acl: ${{access-control-level}} # Mandatory
+  data:                   # Mandatory
+    ${{key1}}: ${{value1}} 
     ${{key2}}: ${{value2}}
-  file: ${file-path}  
+  files: # Manifest file path (optional)
+		${{xyz: /home/secret.yaml}}
 ```
 
 #### **Secret YAML Configuration Fields**
@@ -108,7 +109,7 @@ secret:
 | [`type`](./secret_updated/secrets_attributes.md#types-of-secret) | string | none | cloud-kernel, cloud-kernel-image-pull, key-value, key-value-properties, certificates | mandatory |
 | [`acl`](./secret_updated/secrets_attributes.md#secretacl) | string | none | r, rw | mandatory |
 | [`data`](./secret_updated/secrets_attributes.md#secret-data) | object | none | none | mandatory |
-| [`file`](./secret_updated/secrets_attributes.md#secret-file) | string | none | file-path | optional |
+| [`files`](./secret_updated/secrets_attributes.md#secret-file) | string | none | file-path | optional |
 
 
 For more information about the various attributes in Secret specific section, refer to the Attributes of [Secret specific section](./secret_updated/secrets_attributes.md).
@@ -191,7 +192,7 @@ To remove the Secret Resource from the DataOS environment, utilize the `delete` 
 === "Example Usage"
 
     ```shell
-    dataos-ctl delete -i seconddepot:v1:depot
+    dataos-ctl delete -i mysecret:v1:secret
     ```
 
 

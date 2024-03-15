@@ -6,31 +6,46 @@ An Instance Secret is a [DataOS resource](../resources.md) designed for securely
 
 Instance Secret's significance lies in its ability to provide an instance level security for such confidential information, ensuring that it is safeguarded across the entire DataOS Instance. Consolidating sensitive data at this level, offers convenience and efficiency in managing access and permissions, thereby enhancing overall security measures within the platform.
 
-<aside class="callout">
-
-🗣️ An Instance Secret operates as a DataOS Resource at the <a href="/resources/types_of_dataos_resources/#instance-level-resources">Instance-level</a>, in contrast to a <a href="/resources/secret">Secret Resource </a>, which functions at the <a href="/resources/types_of_dataos_resources/#workspace-level-resources">Workspace-level</a>.
-
-</aside>
-
 <div class="grid cards" markdown>
 
--   :material-format-list-bulleted-type:{ .lg .middle } **Get Started**
+-   :material-format-list-bulleted-type:{ .lg .middle } **How to create and manage an Instance Secret?**
 
     ---
 
-  
+    Instance Secrets provide secure storage for sensitive information, reducing exposure risks inherent in embedding such data directly in resource configurations.
 
-    [:octicons-arrow-right-24: How to create an Instance Secret?](#how-to-create-an-instance-secret)
-
-    [:octicons-arrow-right-24: Validate the Instance Secret.](#validate-the-instance-secret)
-
-    [:octicons-arrow-right-24: Delete the Instance Secret.](#delete-the-instance-secret)
-
-    [:octicons-arrow-right-24: How to integrate Instance Secret into Other Resources?](#how-to-integrate-instance-secret-into-other-resources)
+    [:octicons-arrow-right-24: Create Instance Secret](/resources/instance_secret/#how-to-create-an-instance-secret)
 
 
+-   :material-script-text-outline:{ .lg .middle } **How to refer an Instance Secret into other Resources?**
 
+    ---
+
+    An Intsnace Secret manifest file includes resource meta and Secret specific sections with attributes that must be configured for creating a Secret.
+
+    [:octicons-arrow-right-24: Refering Instance Secrets](/resources/instance_secret/#how-to-refer-instance-secret-into-other-resources)
+
+
+
+-   :material-clock-fast:{ .lg .middle } **Types of Instance Secrets**
+
+    ---
+
+    DataOS Instance Secret types securely store diverse sensitive data, addressing specific needs like cloud credentials, image pulling, key-value pairs, metadata, and SSL/TLS certificates.
+
+    [:octicons-arrow-right-24: Types](../resources/instance_secret/instance_secret_attributes.md)
+
+
+-   :material-console:{ .lg .middle } **Instance Secret Template**
+
+    ---
+
+    Instance Secret Resource can be refered into various types of Depots.
+
+
+    [:octicons-arrow-right-24: Example](/resources/instance_secret/#instance-secret-templates)
 </div>
+
 
 
 ## How to create an Instance Secret?
@@ -46,11 +61,10 @@ The YAML structure for the Instance Secret is outlined as follows:
 
 ### **Create an Instance Secret YAML configuration**
 
-Begin by creating a YAML file that will hold the configuration details for your Instance Secret.
-
+Begin by creating a manifest file that will hold the configuration details for your Instance Secret.
 ### **Resource meta section**
 
-The YAML snippet provided below serves as a reference for the Resource meta section, outlining essential declarations for Instance Secrets. Note that while some attributes are optional, others are mandatory for consistency across all resource types.
+The Insatnce Secret manifest snippet provided below serves as a reference for the Resource meta section, outlining essential declarations for Instance Secrets. Note that while some attributes are optional, others are mandatory for consistency across all resource types.
 
 ```yaml
 # Resource meta section
@@ -63,77 +77,115 @@ description: {{resource description}}
 owner: iamgroot
 layer: user # Layer (user)
 ```
+For more information about the various attributes in Resource meta section, refer to the Attributes of [Resource meta section](../resources/resource_attributes.md).
 
 ### **Instance-Secret specific section**
 
 This section focuses on Instance Secret attributes, outlining essential details such as Instance Secret type, access control list (ACL), and required key-value pairs. Additionally, it allows for the optional inclusion of file paths for manifest files.
 
 ```yaml
+# Instance-secret specific section
 instance-secret:
-  type: {{secret-type}} # Type of Instance-secret (mandatory)
-  acl: r|rw # Access control list (mandatory)
+  type: key-value-properties # Type of Instance-secret (mandatory)
+  acl: ${{r|rw}} # Access control list (mandatory)
   data: # Data section mapping (mandatory)
-    key: {{value}}
-    key: {{value}}
+    ${{username: iamgroot}}
+    ${{password: abcd1234}}
+	files: # Manifest file path (optional)
+		${{xyz: /home/instance-secret.yaml}}
 ```
 
-*Demystifying Attribute Configurations: [Details](./instance_secret/instance_secret_attributes.md)*
+#### **Instance Secret YAML Configuration Fields**
+
+| Field | Data Type | Default Value | Possible Value | Requirement |
+| --- | --- | --- | --- | --- |
+| [`instance-secret`](./instance_secret/instance_secret_attributes.md#instance-secret) | object | none | none | mandatory |
+| [`type`](./instance_secret/instance_secret_attributes.md#instance-secret) | string | none | cloud-kernel, cloud-kernel-image-pull, key-value, key-value-properties, certificates | mandatory |
+| [`acl`](./instance_secret/instance_secret_attributes.md#instance-secret) | string | none | r, rw | mandatory |
+| [`data`](./instance_secret/instance_secret_attributes.md#instance-secret) | object | none | none | mandatory |
+| [`files`](./instance_secret/instance_secret_attributes.md#instance-secret) | string | none | file-path | optional |
+
+
+For more information about the various attributes in Instance Secret specific section, refer to the Attributes of [Instance Secret specific section](./instance_secret/instance_secret_attributes.md).
+
+
 
 ### **Apply the Instance Secret YAML**
 
 To implement the Instance Secret YAML, you can utilize the [DataOS Command Line Interface (CLI)](../interfaces/cli.md) by explicitly indicating the path to the YAML file. When applying the YAML file, note that Instance Secrets do not require workspace specification. The apply command is as follows:
 
-```bash
-dataos-ctl apply -f {{Instance Secret YAML path}} 
-```
+=== "Command"
+    ```shell
+    dataos-ctl apply -f ${path/instance_secret.yaml} -w ${name of the workspace}
+    ```
+=== "Example Usage"
+    ```shell
+    dataos-ctl apply -f myinstance_secrets.yaml -w sandbox
+    ```
 
-Example usage:
+Alternative to the above apply command.
 
-```bash
-dataos-ctl apply -f /home/iamgroot/instanceSecret.yaml 
-```
+=== "Command"
+    ```shell
+    dataos-ctl resource apply -f ${path/instance_secret.yaml} -w ${name of the workspace}
+    ```
+=== "Example Usage"
+    ```shell
+    dataos-ctl resource apply -f myinstance_secrets.yaml -w sandbox
+    ```
 
-## Validate the Instance Secret
+## How to manage an Instance-Secret?
+
+### **Validate the Instance Secret**
 
 To validate the proper creation of the Instance Secret Resource within the DataOS environment, employ the `get` command. Execute the following command to ascertain the existence and correctness of the Instance Secret Resource:
 
-```bash
-dataos-ctl get
-```
+=== "Command"
 
-Example usage:
+    ```shell
+    dataos-ctl get -t instance-secret -w {{workspace}}
+    ```
 
-```bash
-dataos-ctl get
-```
+=== "Example Usage"
 
-## Delete the Instance Secret
+    ```shell
+    dataos-ctl get -t instance-secret -w sandbox
+    ```
+
+
+### **Delete the Instance Secret**
 
 To remove the Instance Secret Resource from the DataOS environment, utilize the `delete` command within the Command Line Interface (CLI). Execute the following command to initiate the deletion process:
 
 **delete command structure for -t (type) and -n (name)**
 
-```bash
-dataos-ctl delete -t {{resource-type}} -n {{resource-name}}
-```
+=== "Command"
 
-Example usage:
+    ```shell
+    dataos-ctl delete -t {{resource-type}} -n {{resource-name}}
+    ```
 
-```bash
-dataos-ctl delete -t instance-secret -n depotSecret-r
-```
+=== "Example Usage"
+
+    ```shell
+    dataos-ctl delete -t instance-secret -n myinstance_secret
+    ```
+
 
 **delete command structure for -i (identifier)**
 
-```bash
-dataos-ctl delete -i {{resource-name:version:resource-type}}
-```
+=== "Command"
 
-Example usage:
+    ```shell
+    dataos-ctl delete -i {{resource-name:version:resource-type}}
+    ```
 
-```bash
-dataos-ctl delete -i depotSecret-r:v1:instance-secret
-```
+=== "Example Usage"
+
+    ```shell
+    dataos-ctl delete -i myinstance_secret:v1:instance-secret
+    ```
+
 
 Before you can delete an Instance Secret, you need to make sure there are no other resources still utilizing it. For example, if a Depot has a dependency on an Instance Secret, trying to delete that Instance Secret will cause an error. So, you'll need to remove the Depot first, and then you can delete the Instance Secret. This rule applies to both Instance Secrets and Secrets.
 
@@ -141,7 +193,7 @@ An error will be thrown if any resource has a dependency on Instance Secret as s
 
 Example usage:
 
-```bash
+```shell
 dataos-ctl delete -t instance-secret -n sampleinstsecret
 INFO[0000] 🗑 delete...                                  
 INFO[0000] 🗑 deleting sampleinstsecret:v1:instance-secret... 
@@ -150,23 +202,27 @@ WARN[0001] 🗑 delete...error
 ERRO[0001] Invalid Parameter - failure deleting instance resource : cannot delete resource, it is a dependency of 'depot:v2alpha:sampleinstdepot'
 ```
 
-```bash
+```shell
 dataos-ctl delete -t depot -n sampleinstdepot
 INFO[0000] 🗑 delete...                                  
 INFO[0000] 🗑 deleting sampleinstdepot:depot...nothing   
 INFO[0000] 🗑 delete...complete
 ```
 
-```bash
+```shell
 dataos-ctl delete -t instance-secret -n sampleinstsecret
 INFO[0000] 🗑 delete...                                  
 INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...nothing 
 INFO[0000] 🗑 delete...complete
 ```
 
-## How to integrate Instance Secret into Other Resources
+## How to refer Instance Secret into Other Resources
 
-Integrating Instance Secrets into various resources involves obtaining dynamically generated credentials and updating configurations for secure access. This process enhances security by mitigating risks associated with static credentials and enables fine-grained control over resource access.
+Refering Instance Secrets into various resources involves obtaining dynamically generated credentials and updating configurations for secure access. This process enhances security by mitigating risks associated with static credentials and enables fine-grained control over resource access.
+
+**Syntax**
+```yaml
+
 
 ### **Referencing Instance Secrets in a Depot**
 
@@ -344,7 +400,6 @@ Example usage:
         - create-volume # Second Job dependent on successful execution of First Job
     ```
 
-*Know more about Workflow: [Workflow](./workflow.md)*
 
 ### **Referencing Instance Secrets in a Service**
 
