@@ -1,6 +1,6 @@
 # Amazon Redshift Read Write Instance-secret Manifest
 
-name: ${redshift-depot-name}-r # Unique identifier for Resource, replace ${re-depot-name} with depot name
+name: ${redshift-depot-name}-rw # Unique identifier for Resource, replace ${re-depot-name} with depot name
 version: v1 # Manifest version
 type: instance-secret # Type of the Resource
 description: ${description} # Purpose of the Instance-secret
@@ -9,7 +9,7 @@ instance-secret:
   type: key-value-properties # Secret type
   acl: rw # Access control: 'rw' for read-write
   data:
-    username: {{username}} # replace with Redshift username
-    password: {{password}} # replace with Redshift password
-    awsaccesskeyid: {{access key}} # replace with AWS access ID
-    awssecretaccesskey: {{secret key}}  # replace with AWS access key
+    username: ${username} # replace with Redshift username
+    password: ${password} # replace with Redshift password
+    awsaccesskeyid: ${access key} # replace with AWS access ID
+    awssecretaccesskey: ${secret key}  # replace with AWS access key
