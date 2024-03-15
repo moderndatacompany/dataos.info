@@ -30,11 +30,14 @@ Example Usage:
 ```yaml
 name: adepot-r
 ```
+<aside class="callout">
 
+🗣 When opting for `acl:rw`, it's imperative to establish two Instance Secrets: one configured for `acl:r` and another for `acl:rw`, and refer both Instance Secrets into the Resource YAML.
 
->🗣 When opting for `acl:rw`, it's imperative to establish two Instance Secrets: one configured for `acl:r` and another for `acl:rw`, and refer both Instance Secrets into the Resource YAML.
 
 </aside>
+
+
 
 ### **Version:**
 
@@ -51,11 +54,13 @@ Possible Value: Instance Secrets currently have only one version V1, to check ou
 ```basic
 dataos-ctl develop types versions
 ```
+<aside class="callout">
 
+🗣 To use the above command you need to have the operator tag.
 
->🗣 To use the above command you need to have the operator tag.
 
 </aside>
+
 
 Data Type: String
 

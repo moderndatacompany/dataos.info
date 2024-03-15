@@ -9,5 +9,8 @@ instance-secret:
   type: key-value-properties # Secret type
   acl: r # Access control: 'r' for read-only
   data:
-    projectid: {{project-name}} # Replace with Bigquery project ID
-    email: {{email-id}} # Replace with Bigquery email ID
+    projectid: ${project-name} # Replace with Bigquery project ID
+    email: ${email-id} # Replace with Bigquery email ID
+  files:
+    json_keyfile: ${json-file-path}
+                               
