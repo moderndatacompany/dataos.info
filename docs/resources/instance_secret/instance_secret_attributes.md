@@ -186,7 +186,7 @@ Example usage:
 layer: user
 ```
 
-### **Instance-Secret:**
+### **Instance-Secret**
 
 Description: The Instance-Secret specific section comprises properties of Instance Secret Resources.
 
