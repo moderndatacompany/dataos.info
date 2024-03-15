@@ -1,4 +1,4 @@
-# Pager
+# :resources-pager: Pager
 
 A Pager in DataOS is a [Resource](/resources/) that enables data developers to specify criteria for identifying an incident within the incident stream and delivering it to a user-specified destination. It operates by evaluating pre-defined conditions against incoming incident data from the incident stream. Upon identifying a match, it triggers an alert and delivers it to the specified destination.
 

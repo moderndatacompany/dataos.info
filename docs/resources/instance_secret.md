@@ -1,6 +1,6 @@
-![Instance Secret Icon](/resources/instance_secret/instance_secret_icon.svg){ align=left }
+<!-- ![Instance Secret Icon](/resources/instance_secret/instance_secret_icon.svg){ align=left } -->
 
-# Instance Secret
+# :resources-instance-secret: Instance Secret
 
 An Instance Secret is a [DataOS resource](../resources.md) designed for securely storing sensitive information at the instance level. This encompasses items like usernames, passwords, certificates, tokens, and keys.
 
