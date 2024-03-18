@@ -1,4 +1,4 @@
-# Setting up Kubernetes Alerts
+<!-- # Setting up Kubernetes Alerts
 
 Kubernetes, with its dynamic and distributed nature, relies on events to communicate changes, errors, or important occurrences within the cluster. These events provide critical insights and serve as triggers for alerting mechanisms ensuring timely responses to issues and maintaining the health of clusters.   
 
@@ -678,4 +678,4 @@ kubectl -n $NAMESPACE describe statefulset $NAME.
 
 ### **Solutions**
 
-Refer to [Debugging Pods](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods) for guidance on resolving the issue.
+Refer to [Debugging Pods](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods) for guidance on resolving the issue. -->
