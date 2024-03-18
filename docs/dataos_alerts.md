@@ -7,11 +7,11 @@ This page provides a comprehensive overview of the alert mechanisms integrated w
 
 Dashboard alerts provide immediate notifications regarding significant changes or updates in your business performance metrics or other crucial dashboard data. To learn more, refer to [Setting Up Dashboard Alerts in Atlas](dataos_alerts/dashboard_alerts.md).
 
-## Kubernetes Alerts
+## Grafana Alerts
 
-The DataOS Alerting mechanism for Kubernetes is designed to issue pre-set alerts based on specific resource usage parameters. The type of alerts Sentinel generates for your Kubernetes cluster is contingent upon the designated metrics and threshold values. Regular alerts include but are not limited to CPU Throttling Alert, and Kube API Server Error Budget Burn, among others. Regular inspection and adjustment of these configurations can facilitate the delivery of pertinent alerts, thereby aiding in maintaining the optimal health of your cluster.
+The DataOS Alerting mechanism with Grafana is designed to issue pre-set alerts based on specific resource usage parameters. The type of alerts Sentinel generates for your Kubernetes cluster is contingent upon the designated metrics and threshold values. Regular alerts include but are not limited to CPU Throttling Alert, and Kube API Server Error Budget Burn, among others. Regular inspection and adjustment of these configurations can facilitate the delivery of pertinent alerts, thereby aiding in maintaining the optimal health of your cluster.
 
-Events within the Kubernetes ecosystem are indicative of potential disturbances concerning the performance, dependability, or steadiness of your applications and infrastructure. DataOS harnesses Kubernetes events to create a robust alert and monitoring system. By comprehending the origins and impacts of these alerts, it is possible to preemptively pinpoint issues and employ suitable remedies to sustain the expected level of performance and reliability. To delve deeper into this topic, refer to [Kubernetes Events for Alerting](dataos_alerts/kubernetes_alerts.md).
+Events within the Kubernetes ecosystem are indicative of potential disturbances concerning the performance, dependability, or steadiness of your applications and infrastructure. DataOS harnesses Kubernetes events to create a robust alert and monitoring system with Grafana. By comprehending the origins and impacts of these alerts, it is possible to preemptively pinpoint issues and employ suitable remedies to sustain the expected level of performance and reliability.
 
 ## Metis Alerts
 
