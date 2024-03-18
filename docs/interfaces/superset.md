@@ -10,7 +10,7 @@ Superset is a business intelligence solution seamlessly integrated into DataOS. 
 
     ---
 
-    Superset offers data exploration, visualization, SQL querying, role-based access control, and integration with various data sources.
+    This section includes key features that defines Superset.
 
     [:octicons-arrow-right-24: Key features](/interfaces/superset/#features-of-superset)
 
@@ -19,7 +19,7 @@ Superset is a business intelligence solution seamlessly integrated into DataOS. 
 
     ---
 
-    Launching Superset involves connecting data sources, configuring user access, and creating dashboards for data exploration.
+    Getting started with Superset by launching it within DataOS enviroment.
 
 
     [:octicons-arrow-right-24: Launching Superset](/interfaces/superset/#launching-superset)
@@ -28,7 +28,7 @@ Superset is a business intelligence solution seamlessly integrated into DataOS. 
 
     ---
 
-    Creating a dashboard in Superset entails selecting data sources, configuring visualizations, and arranging components for intuitive data exploration and analysis.
+    Create the customizable dashboard using Superset.
 
     [:octicons-arrow-right-24: Steps to create a Dashboard](/interfaces/superset/#steps-to-create-the-dashboard)
 
@@ -36,7 +36,7 @@ Superset is a business intelligence solution seamlessly integrated into DataOS. 
 
     ---
 
-    Superset's use cases include real life data exploration, visualization, interactive reporting, and decision support.
+    Real life scenarios for creating the dashboard using Superset.
 
     [:octicons-arrow-right-24: Practical Scenario](/interfaces/superset/#use-cases)
 
