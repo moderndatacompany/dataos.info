@@ -1,7 +1,7 @@
 
-![Lakehouse Icon](/resources/lakehouse/lakehouse_icon.svg){ align=left }
+<!-- ![Lakehouse Icon](/resources/lakehouse/lakehouse_icon.svg){ align=left } -->
 
-# Lakehouse
+# :resources-lakehouse: Lakehouse
 
 Lakehouse, is a [DataOS Resource](/resources/) that integrates Apache Iceberg table format and cloud object storage to provide a fully managed storage solution. It emulates traditional data warehouses, enabling table creation with defined schemas, data manipulation via various tools, and data access regulation through the DataOS Governance engine, [Heimdall](/architecture/#heimdall).
 
@@ -68,7 +68,7 @@ Lakehouse, is a [DataOS Resource](/resources/) that integrates Apache Iceberg ta
 
 ## Key Features of a Lakehouse
 
-DataOS Lakehouse adds several Relational Data Warehouse-like featueres to a data lake. This section will walk you through some of them.
+DataOS Lakehouse adds several Relational Data Warehouse-like features to a data lake. This section will walk you through some of them.
 
 **Managed Storage**
 
