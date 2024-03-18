@@ -13,7 +13,7 @@ The Pager along with [Monitor](/resources/monitor/) Resource comprise the backbo
 
     Learn how to create and manage a Pager in DataOS.
 
-    [:octicons-arrow-right-24: Create and manage a Pager](#how-to-create-and-manage-a-pager?)
+    [:octicons-arrow-right-24: Create and manage a Pager](#how-to-create-and-manage-a-pager)
 
 
 -   :material-list-box-outline:{ .lg .middle } **How to configure a Pager manifest file?**
@@ -22,7 +22,7 @@ The Pager along with [Monitor](/resources/monitor/) Resource comprise the backbo
 
     Discover how to configure a Pager manifest file by adjusting its attributes.
 
-    [:octicons-arrow-right-24: Pager attributes](/resources/pager/)
+    [:octicons-arrow-right-24: Pager attributes](/resources/pager/manifest_attributes/)
 
 -   :material-network-pos:{ .lg .middle } **How does a Pager work?**
 
@@ -31,7 +31,7 @@ The Pager along with [Monitor](/resources/monitor/) Resource comprise the backbo
     Understand the inner workings of a Pager within DataOS.
 
     
-    [:octicons-arrow-right-24: Working of a Pager](#how-does-a-pager-work?)
+    [:octicons-arrow-right-24: Working of a Pager](#how-does-a-pager-work)
 
 -   :material-content-duplicate:{ .lg .middle } **Pager usage examples**
 

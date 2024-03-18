@@ -187,7 +187,7 @@ To remove the Instance Secret Resource from the DataOS environment, utilize the 
     ```
 
 
-Before you can delete an Instance Secret, you need to make sure there are no other resources still utilizing it. For example, if a Depot has a dependency on an Instance Secret, trying to delete that Instance Secret will cause an error. So, you'll need to remove the Depot first, and then you can delete the Instance Secret. This rule applies to both Instance Secrets and Secrets.
+Before you can delete an Instance Secret, you need to make sure there are no other resources still utilizing it. For example, if a Depot has a dependency on an Instance Secret, trying to delete that Instance Secret will cause an error. So, you'll need to remove the Depot first, and then you can delete the Instance Secret. This rule applies to both Instance Secrets and [Secrets](../resources/secret_updated.md).
 
 An error will be thrown if any resource has a dependency on Instance Secret as shown below.
 

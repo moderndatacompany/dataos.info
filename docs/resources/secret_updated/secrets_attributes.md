@@ -1,4 +1,4 @@
-# Secret specific attributes configuration
+# Secret Specific Attributes
 
 ## Secret manifest
 
@@ -281,6 +281,8 @@ As per the Secret type, the data-specific section can contain different attribut
     Description: The password or secure key associated with the secret.
     Data Type: String
     Requirement: Mandatory
+
+These key-value pair can be different as per the different types of resources.
 
 ## **Secret: File**
 
