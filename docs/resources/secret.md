@@ -1,4 +1,4 @@
-# Secret
+# :resources-secret: Secret
 
 In DataOS, a Secret [Resource](../resources.md) serves as an entity for securely storing sensitive data such as usernames, passwords, certificates, tokens, or keys. The inclusion of such information directly in application code or configuration poses an exposure risk, which can be mitigated by using Secrets. Secrets facilitate the separation of sensitive data from Resource definitions, thereby reducing accidental exposure during the creation, viewing, or editing of these Resources and still allowing accessibility to the user as and when required.
 
