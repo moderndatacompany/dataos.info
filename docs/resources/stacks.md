@@ -1,4 +1,4 @@
-# Stack
+# :resources-stack: Stack
 
 Stack is a [DataOS Resource](../resources.md) that acts as an execution engine and an extension point for integrating new programming paradigms within the platform. Stacks are composable and can be orchestrated using DataOS Resources such as a [Worker](./worker.md), [Service](./service.md), or within a designated job in a [Workflow](./workflow.md) Resource.
 

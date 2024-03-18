@@ -1,4 +1,4 @@
-# Service
+# :resources-service: Service
 
 A Service represents a long-running process that acts as a receiver and/or provider of APIs. It's a DataOS [Resource](../resources.md), catering to various scenarios involving continuous real-time and streaming data flow. Whether it's event processing, streaming IoT data, log processing for network devices, real-time stock trade analysis, or dynamic user interfaces (UIs), the Service Resource enables data developers to gather, process, and analyze real-time/streaming data flow, enabling timely insights and swift response to the latest information.
 
