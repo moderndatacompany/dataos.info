@@ -119,6 +119,9 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+      options:
+        custom_icons:
+          - overrides/.icons
   - toc:
       permalink: true
       toc_depth: 10
@@ -136,13 +139,17 @@ nav:
          - Cluster: resources/cluster.md
          - Compute: resources/compute.md
          - Depot: resources/depot.md
+         - 'Instance Secret': resources/instance_secret.md 
          - Lakehouse: resources/lakehouse.md
+         - Monitor: resources/monitor.md
          - Operator: resources/operator.md
+         - Pager: resources/pager.md
          - Policy: resources/policy.md
-         - Secret: resources/secret.md
+         - Secret: resources/secret_updated.md
          - Service: resources/service.md 
          - Worker: resources/worker.md
-         - Workflow: resources/workflow.md  
+         - Workflow: resources/workflow.md 
+
          - Stacks:
               - Introduction: resources/stacks.md
               - Alpha: resources/stacks/alpha.md
@@ -166,10 +173,10 @@ nav:
          - Metis: interfaces/metis.md
          - Notebook: interfaces/notebook.md
          - Operations: interfaces/operations.md
+        #  - Superset: interfaces/superset.md
          - Workbench: interfaces/workbench.md        
 
 # to be hidden from the top navigation bar on the webpages
     - Architecture: architecture.md
-    
     - Glossary: glossary.md
     - Videos: videos.md

@@ -62,7 +62,7 @@ Metis lists all Resources, providing overviews and specific information about ea
 <figcaption align = "center"> DataOS Resource information </figcaption>
 
 <aside class="callout">
-🗣 Access to the Resource details can be configured by the Metis admin, such as giving <b>View Minimal/View All<?b> permissions configured in policies for roles for metadata management.
+🗣 Access to the Resource details can be configured by the Metis admin, such as giving <b>View Minimal/View All</b> permissions configured in policies for roles for metadata management.
 
 </aside>
 
