@@ -56,24 +56,24 @@ A Rolling Window refers to a statistical analysis method applied to time-series 
 
 Enhance your understanding of chart components, tailored to specific characteristics of popular chart types:
 
-[Big Number with Trendline](../superset/charts_components/big_number_trendline.md)
+- [Big Number with Trendline](../superset/charts_components/big_number_trendline.md)
 
-[Big Number](../superset/charts_components/big_number.md)
+- [Big Number](../superset/charts_components/big_number.md)
 
-[Table](../superset/charts_components/table.md)
+- [Table](../superset/charts_components/table.md)
 
-[Pivot Table](../superset/charts_components/pivot_table.md)
+- [Pivot Table](../superset/charts_components/pivot_table.md)
 
-[Line Chart](../superset/charts_components/line_chart.md)
+- [Line Chart](../superset/charts_components/line_chart.md)
 
-[Area Chart](../superset/charts_components/area_chart.md)
+- [Area Chart](../superset/charts_components/area_chart.md)
 
-[Bar Chart](../superset/charts_components/bar_chart.md)
+- [Bar Chart](../superset/charts_components/bar_chart.md)
 
-[Scatter Plot](../superset/charts_components/scatter_plot.md)
+- [Scatter Plot](../superset/charts_components/scatter_plot.md)
 
-[Pie Chart](../superset/charts_components/pie_chart.md)
+- [Pie Chart](../superset/charts_components/pie_chart.md)
 
-[World Map](../superset/charts_components/world_map.md)
+- [World Map](../superset/charts_components/world_map.md)
 
-[Bar Chart (legacy)](../superset/charts_components/bar_chart_legacy.md)
+- [Bar Chart (legacy)](../superset/charts_components/bar_chart_legacy.md)

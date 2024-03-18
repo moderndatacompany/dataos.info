@@ -1,6 +1,48 @@
-# What is Superset?
+![Superset Icon](/interfaces/superset/Superset.svg){ align=left }
+
+# Superset
 
 Superset is a business intelligence solution seamlessly integrated into DataOS. It offers the ability to craft tailored reports and dashboards with ease. Complex data can be represented effectively by utilizing a diverse set of visualization options inherent to Superset, facilitating clear interpretation for informed decision-making processes. 
+
+<div class="grid cards" markdown>
+
+-   :material-format-list-bulleted-type:{ .lg .middle } **Key Features of Superset**
+
+    ---
+
+    This section includes key features that defines Superset.
+
+    [:octicons-arrow-right-24: Key features](/interfaces/superset/#features-of-superset)
+
+
+-   :material-clock-fast:{ .lg .middle } **Getting Started**
+
+    ---
+
+    Getting started with Superset by launching it within DataOS enviroment.
+
+
+    [:octicons-arrow-right-24: Launching Superset](/interfaces/superset/#launching-superset)
+
+-   :material-clock-fast:{ .lg .middle } **How to create a Dashboard?**
+
+    ---
+
+    Create the customizable dashboard using Superset.
+
+    [:octicons-arrow-right-24: Steps to create a Dashboard](/interfaces/superset/#steps-to-create-the-dashboard)
+
+-   :material-script-text-outline:{ .lg .middle } **Use Cases**
+
+    ---
+
+    Real life scenarios for creating the dashboard using Superset.
+
+    [:octicons-arrow-right-24: Practical Scenario](/interfaces/superset/#use-cases)
+
+
+</div>
+
 
 ## Features of Superset
 
@@ -19,8 +61,8 @@ To initiate Superset within the DataOS environment, navigate to the "Apps" secti
 Upon selection, the interface of Superset will open, presenting a layout resembling the following:
 
 ![Untitled](/interfaces/superset/Untitled%20(3).png)
+<figcaption align = "center">Superset Interface</figcaption>
 
-                                                               *Superset  interface*
 
 <aside class="callout">
 🗣 There are various methods to create dashboards in Superset. You can design the layout and add charts, create charts individually, compile them into a dashboard, or generate charts directly from queries. Adhering to best practices is essential for efficient dashboard creation in Superset.
@@ -44,7 +86,7 @@ Let’s see how you can add a Database to Superset:-
 
 ![Untitled](/interfaces/superset/Untitled%20(4).png)
 
-Check out the list of Databases supported by Superset in DataOS, [here](/interfaces/superset/supported_databases.md).
+Check out the list of Databases supported by Superset in DataOS, [here](../interfaces/superset/supported_databases.md).
 
 <aside class="callout">
 🗣 In the Superset environment, only Admins are responsible for setting up database connections. If data developers wish to access particular databases, they need to submit source requests and the necessary permissions will be granted accordingly.
@@ -107,11 +149,11 @@ After creating the chart via query you will be redirected to the following inter
 
 Now, you can choose the desired chart type and efficiently drag and drop columns into the required fields. Subsequently, update the chart to reflect your desired configuration. Ensure to give your chart a meaningful name and save it.
 
-To enhance your proficiency in creating impactful visualizations in Superset, we've curated resources on fundamental chart components and customization options. These guides aim to simplify the process of navigating through Superset's features.
+To enhance your proficiency in creating impactful visualizations in Superset, we've curated resources on fundamental chart components and customization options. These guides aim to simplify the process of navigating through Superset's features:
 
 #### [Chart Components](../interfaces/superset/charts_components.md)
 
-Explore the basic elements that makeup Superset charts, helping you grasp the essentials for constructing meaningful visual representations.
+Explore the basic elements that makeup Superset charts, helping you grasp the essentials for constructing meaningful visual representations:
 
 #### [Charts Customization](../interfaces/superset/chart_customization.md)
 
@@ -135,4 +177,4 @@ Explore advanced customization using CSS, providing you with finer control over 
 
 ## Use cases
 
-- Our Superstore Sales Dashboard, crafted with Superset, offers a streamlined view of sales data. Tailored for decision-makers, this interactive tool simplifies analysis across categories, cities, regions, and customer segments. Dive into insights effortlessly, empowering strategic decision-making. Explore the [Superstore Sales Dashboard](https://www.notion.so/Sales-Performance-Dashboard-ef10b145257c492fa63063b8456e456c?pvs=21).
+- Our Superstore Sales Dashboard, crafted with Superset, offers a streamlined view of sales data. Tailored for decision-makers, this interactive tool simplifies analysis across categories, cities, regions, and customer segments. Dive into insights effortlessly, empowering strategic decision-making. Explore the [Superstore Sales Dashboard](../interfaces/superset/use_case.md).
