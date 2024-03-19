@@ -44,7 +44,7 @@ Instance Secret's significance lies in its ability to provide an instance level 
 
 
     [:octicons-arrow-right-24: Example](/resources/instance_secret/#instance-secret-templates)
-    
+     
 </div>
 
 
@@ -614,11 +614,11 @@ Create a manifest file for your Depot. In the application spec of your Depot, en
 
 
         === "Read-only instance-secret"
-            ```yaml title="instance_secret_eh_read.yaml" 
+            ```yaml title="instance_secret_read.yaml" 
             --8<-- "examples/resources/instance_secret/eventhub/eventhub.yaml"
             ```
         === "Read-write instance-secret"
-            ```yaml title="instance_secret_eh_read_write.yaml"
+            ```yaml title="instance_secret_read_write.yaml"
             --8<-- "examples/resources/instance_secret/eventhub/eventhub_rw.yaml"
             ```
 
