@@ -195,6 +195,7 @@ To remove the Secret Resource from the DataOS environment, utilize the `delete` 
     dataos-ctl delete -i mysecret:v1:secret
     ```
 
+Before you can delete a Secret, you need to make sure there are no other resources still utilizing it. For example, if a Workflow has a dependency on a Secret, trying to delete that Secret will cause an error. So, you'll need to remove the Workflow first, and then you can delete the Secret. This rule applies to both [Instance Secrets](../resources/instance_secret.md) and Secrets.
 
 ## How to refer Secrets in other DataOS Resources?
 
