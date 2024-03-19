@@ -132,7 +132,6 @@ markdown_extensions:
 #### Update for navigation tabs/options ####      
 nav:
     - Home: index.md
-
     - Resources:
          - Overview: resources.md
          - Bundle: resources/bundle.md
