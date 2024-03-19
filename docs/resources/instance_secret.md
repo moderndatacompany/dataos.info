@@ -1,6 +1,6 @@
 <!-- ![Instance Secret Icon](/resources/instance_secret/instance_secret_icon.svg){ align=left } -->
 
-# :resources-instance-secret: Instance Secret
+# Instance Secret
 
 An Instance Secret is a [DataOS resource](../resources.md) designed for securely storing sensitive information at the instance level. This encompasses items like usernames, passwords, certificates, tokens, and keys.
 
@@ -17,13 +17,13 @@ Instance Secret's significance lies in its ability to provide an instance level 
     [:octicons-arrow-right-24: Create Instance Secret](/resources/instance_secret/#how-to-create-an-instance-secret)
 
 
--   :material-script-text-outline:{ .lg .middle } **How to refer an Instance Secret into other Resources?**
+-   :material-script-text-outline:{ .lg .middle } **How to refer an Instance Secret into Depot?**
 
     ---
 
     An Intsnace Secret manifest file includes resource meta and Secret specific sections with attributes that must be configured for creating a Secret.
 
-    [:octicons-arrow-right-24: Refering Instance Secrets](/resources/instance_secret/#how-to-refer-instance-secret-into-other-resources)
+    [:octicons-arrow-right-24: Refering Instance Secrets](/resources/instance_secret/#how-to-refer-instance-secret-into-various-depots)
 
 
 
@@ -44,6 +44,7 @@ Instance Secret's significance lies in its ability to provide an instance level 
 
 
     [:octicons-arrow-right-24: Example](/resources/instance_secret/#instance-secret-templates)
+    
 </div>
 
 
@@ -133,6 +134,15 @@ Alternative to the above apply command.
     ```shell
     dataos-ctl resource apply -f myinstance_secrets.yaml -w sandbox
     ```
+Expected output:
+
+```shell
+$ dataos-ctl apply -f /home/office/YAMLS/depot_secret.yaml
+INFO[0000] 🛠 apply...                                   
+INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
+INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
+INFO[0004] 🛠 apply...complete
+```
 
 ## How to manage an Instance-Secret?
 
@@ -216,336 +226,49 @@ INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...nothing
 INFO[0000] 🗑 delete...complete
 ```
 
-## How to refer Instance Secret into Other Resources
+## How to refer Instance Secret into various Depots?
 
-Refering Instance Secrets into various resources involves obtaining dynamically generated credentials and updating configurations for secure access. This process enhances security by mitigating risks associated with static credentials and enables fine-grained control over resource access.
+To access the stored secret data in DataOS, you can reference them in your code using the `secrets` and `dataosSecrets` mechanisms. These identifiers ensure secure referencing of Instance Secrets across different Depots, enhancing system security and operational integrity.
+
+The secrets identifier is used for referencing an Instance Secret in DataOS. However, it's important to note that you cannot use the same identifier to refer to pre-existing secrets in Depots. For referencing secrets across various DataOS Resources, the `dataosSecrets` identifier is used.
 
 **Syntax**
-```yaml
-
-
-### **Referencing Instance Secrets in a Depot**
-
-Create a YAML file for your Depot. In the application spec of your Depot, ensure to incorporate a reference to the Instance Secret to uphold confidentiality and security measures.
-
-**Instance Secret YAML for Depot**
-
-Example usage:
 
 ```yaml
-name: depotsecret-r # Resource name (mandatory)
-version: v1 # Manifest version (mandatory)
-type: instance-secret # Resource-type (mandatory)
-tags: # Tags (optional)
-  - just for practice
-description: instance secret configuration # Description of Resource (optional)
-layer: user
-instance-secret: # Instance Secret mapping (mandatory)
-  type: key-value-properties # Type of Instance-secret (mandatory)
-  acl: r # Access control list (mandatory)
-  data: # Data section mapping (mandatory)
-    username: iamgroot
-    password: yourpassword
+dataosSecrets:
+  - name: ${your-instance-secret-name}-r|rw # Mandatory
+    workspace: ${instance-secret-workspace} # Optional
+    key: ${key of your instance-secret} # Optional, used when only single key is required.
+    keys:            # Optional, used when multiple key is required.
+      - ${instance secret_key}
+      - ${instance secret-key}
+    allKeys: ${true-or-false} # Optional
+    consumptionType: ${envVars} # Optional, possible values: envVars, propfile and file.
 ```
-<aside class="callout">
+Create a manifest file for your Depot. In the application spec of your Depot, ensure to incorporate a reference to the Instance Secret to uphold confidentiality and security measures.
 
-🗣️ To ensure controlled access for read-write, it is essential to create two Instance Secrets: one with acl:r for read-only access and another with acl:rw for both read and write access and refer to both Instance-Secrets in a Depot. This enables precise management of permissions for different levels of access.
-
-</aside>
-
-
-**Depot YAML using Instance Secret**
-
-Example usage:
-
-??? tip "Instance Secret referencing in Depot manifest"
-
-    ```yaml
-
-    name: depotsecret
-    version: v2alpha
-    type: depot
-    tags:
-      - snowflake
-      - depot
-    layer: user
-    depot:
-      type: SNOWFLAKE
-      description: testing instance secrets using snowflake depot
-    snowflake:
-      warehouse: compute_WH
-      url: nhjjsf.central-india.azure.snowflakecomputing.com
-      database: mydatabase
-    external: true
-    secrets:
-      - name: depotsecret-r
-         keys:
-           - depotsecret-r
-
+=== "Instance Secret for acl:r"
+    ```yaml title="instance_secret.yaml"
+        --8<-- "examples/resources/instance_secret/depot/secret.yaml"
+    ```
+=== "Instance Secret for acl:rw"
+    ```yaml title="instance_secret.yaml"
+        --8<-- "examples/resources/instance_secret/depot/secret_rw.yaml"
     ```
 
-Expected output:
+=== "Depot"
+    ```yaml title="depot.yaml"
+        --8<-- "examples/resources/instance_secret/depot/depot.yaml"
+    ```
 
-```bash
-$ dataos-ctl apply -f /home/shraddhaade/YAMLS/istest.yaml
-INFO[0000] 🛠 apply...                                   
-INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
-INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
-INFO[0004] 🛠 apply...complete
-```
 
 *Know more about Depot: [Depot](./depot00.md)*
 
-### **Referencing Instance Secrets in a Workflow**
+<aside class="callout">
 
-Create a YAML file for your Workflow. In the application spec of your Workflow, ensure to incorporate a reference to the Instance Secret to uphold confidentiality and security measures.
+🗣️ To ensure controlled access for read-write, it is essential to create two Instance Secrets: one with acl:r for read-only access and another with acl:rw for both read and write access and refer to both Instance-Secrets in a Depot as shown above. This enables precise management of permissions for different levels of access.
 
-**Instance Secret YAML for Workflow**
-
-Example usage:
-
-```yaml
-# Resource meta section
-name: inst-secret-cli
-version: v1
-type: instance-secret
-layer: user
-
-# Instance-secret specific section
-instance-secret:
-  type: key-value
-  acl: rw
-  data:
-    USER_ID: iamgroot
-    APIKEY: dG9rZW5fdG90YWxseZhZDctYWE4MC00Mzk0LWI0MTct
-```
-
-**Workflow** **YAML using Instance Secret**
-
-Example usage:
-
-??? tip "Instance Secret referencing in Workflow manifest"
-
-    ```yaml
-    # Resource meta section
-    name: cli-workflow
-    version: v1
-    type: workflow
-
-    # Workflow-specific section
-    workflow:
-      dag:
-
-    # First Job
-      - name: create-volume
-        spec:
-          stack: dataos-ctl # dataos-ctl stack name
-          compute: runnable-default
-
-        # Referred Instance secrets 
-          dataosSecrets:
-          - name: inst-secret-cli # Instance secret name same as declared above
-            allKeys: true
-            consumptionType: envVars
-
-          secrets:
-          - name: inst-secret-cli # Instance secret name same as declared above
-            keys: 
-             - inst-secret-cli-rw
-
-            # Stack-specific section
-          stackSpec:
-            arguments:
-            - resource
-            - apply
-            - -f
-            - /etc/dataos/config/manifest.yaml
-            - -w
-            - ${CURRENT_WORKSPACE}
-
-            # Manifest for the Resource against which the above command is executed
-            manifest:
-              version: v1beta
-              name: "temp001"
-              type: volume
-              volume:
-                size: 1Gi
-                accessMode: ReadWriteMany
-                type: temp
-
-    # Second Job
-      - name: get-volume
-        spec:
-          stack: dataos-ctl
-          compute: runnable-default
-
-            # Referred Instance secrets 
-          dataosSecrets:
-          - name: inst-secret-cli
-            allKeys: true
-            consumptionType: envVars
-
-            # Stack-specific section
-          stackSpec:
-            arguments:
-            - resource
-            - get
-            - -t
-            - volume
-            - -n
-            - temp001
-            - -w
-            - ${CURRENT_WORKSPACE}
-        dependencies:
-        - create-volume # Second Job dependent on successful execution of First Job
-    ```
-
-
-### **Referencing Instance Secrets in a Service**
-
-Create a YAML file for your Service Workflow. In the application spec of your Service Workflow, ensure to incorporate a reference to the Instance Secret to uphold confidentiality and security measures.
-
-**Service** **Workflow** **YAML using Instance Secret**
-
-Example usage:
-
-??? tip "Instance Secret referencing in Service manifest"
-
-    ```yaml
-    version: v1
-    name: dataos-ctl-service-workflow
-    type: workflow
-    workflow:
-      dag:
-      - name: create-service
-        spec:
-          stack: dataos-ctl
-          compute: runnable-default
-          dataosSecrets:
-          - name: dataos-ctl-user-apikey
-            allKeys: true
-            consumptionType: envVars
-          stackSpec:
-            arguments:
-            - resource
-            - apply
-            - -f
-            - /etc/dataos/config/manifest.yaml
-            - -w
-            - ${CURRENT_WORKSPACE}
-            manifest:
-              version: v1
-              name: random-user
-              type: service
-              tags:
-                - service
-              description: Random User
-              service:
-                title: Test  API
-                replicas: 1
-                servicePort: 9876
-                compute: runnable-default
-                resources:
-                  requests:
-                    cpu: 100m
-                    memory: 128Mi
-                  limits:
-                    cpu: 1000m
-                    memory: 1024Mi
-                ingress:
-                  enabled: true
-                  path: /random-user
-                  noAuthentication: true
-                  annotations:
-                    konghq.com/strip-path: "false"
-                    kubernetes.io/ingress.class: kong
-                stack: benthos:3.0
-                logLevel: DEBUG
-                tags:
-                  - service
-                  - random-user
-                stackSpec:
-                  input:
-                      http_client:
-                        url: https://randomuser.me/api/
-                        verb: GET
-                        headers:
-                          Content-Type: application/octet-stream
-
-                  pipeline:
-                    processors:
-
-                      - bloblang: meta status_code = 200
-
-                      - log:
-                          level: DEBUG
-                          message: "received message: ${!meta()}"
-
-                      - bloblang: |
-                          root.id = uuid_v4()
-                          root.title = this.results.0.name.title.or("")
-                          root.first_name = this.results.0.name.first.or("")
-                          root.last_name = this.results.0.name.last.("")
-                          root.gender = this.results.0.gender.or("")
-                          root.email = this.results.0.email.or("")
-                          root.city = this.results.0.location.city.or("")
-                          root.state = this.results.0.location.state.or("")
-                          root.country = this.results.0.location.country.or("")
-                          root.postcode = this.results.0.location.postcode.or("").string()
-                          root.age = this.results.0.age.or("").string()
-                          root.phone = this.results.0.phone.or("").string()
-                      - log:
-                          level: INFO
-                          message: 'payload: ${! json() }'
-
-                  output:
-                    broker:
-                      outputs:
-                        - broker:
-                            pattern: fan_out
-                            outputs:
-                              - stdout: {}
-                              - type: dataos_depot
-                                plugin:
-                                  address: dataos://fastbase:default/random_users_test_01
-                                  metadata:
-                                    auth:
-                                      token:
-                                        enabled: true
-                                    description: Audit receiver Service
-                                    format: AVRO
-                                    schema: "{\"type\":\"record\",\"name\":\"default\",\"namespace\":\"defaultNamespace\",\"fields\":[{\"name\":\"id\",\"type\":\"string\"},{\"name\":\"title\",\"type\":\"string\"},{\"name\":\"first_name\",\"type\":\"string\"},{\"name\":\"last_name\",\"type\":\"string\"}, {\"name\":\"gender\",\"type\":\"string\"},{\"name\":\"email\",\"type\":\"string\"},{\"name\":\"city\",\"type\":\"string\"},{\"name\":\"state\",\"type\":\"string\"},{\"name\":\"country\",\"type\":\"string\"},{\"name\":\"postcode\",\"type\":\"string\"},{\"name\":\"age\",\"type\":\"string\"},{\"name\":\"phone\",\"type\":\"string\"}]}"
-                                    schemaLocation: http://registry.url/schemas/ids/11
-                                    title: Random Uses Info
-                                    tls:
-                                      enabled: true
-                                      tls_allow_insecure_connection: true
-                                      tls_validate_hostname: false
-                                    type: STREAM
-      - name: get-service-runtime
-        spec:
-          stack: dataos-ctl
-          compute: runnable-default
-          dataosSecrets:
-          - name: dataos-ctl-user-apikey
-            allKeys: true
-            consumptionType: envVars
-          stackSpec:
-            arguments:
-            - resource
-            - get
-            - -t
-            - service
-            - -n
-            - random-user
-            - runtime
-            - -w
-            - ${CURRENT_WORKSPACE}
-        dependencies:
-        - create-service
-    ```
-
-*Know more about Service: [Service](./service.md)*
+</aside>
 
 ## Instance Secret Templates
 
