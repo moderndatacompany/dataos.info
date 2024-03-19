@@ -1,4 +1,4 @@
-# Attributes of Cluster-specific Section
+# Attributes of Cluster manifest
 
 ## Structure of Cluster-specific Section
 
