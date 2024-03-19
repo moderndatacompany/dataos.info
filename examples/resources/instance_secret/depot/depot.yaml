@@ -1,0 +1,23 @@
+name: depotsecret
+version: v2alpha
+type: depot
+tags:
+  - snowflake
+  - depot
+layer: user
+depot:
+  type: SNOWFLAKE
+  description: testing instance secrets using snowflake depot
+snowflake:
+  warehouse: compute_WH
+  url: nhjjsf.central-india.azure.snowflakecomputing.com
+  database: mydatabase
+external: true
+dataosSecrets:
+  - name: depotsecret-r
+    keys:
+      - depotsecret-r
+
+  - name: depotsecret-rw
+    keys:
+      - depotsecret-rw
