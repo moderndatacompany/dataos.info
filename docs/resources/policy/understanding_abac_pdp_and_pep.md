@@ -18,7 +18,7 @@ Resources that can be exposed by the system itself or applications/services runn
 
 The specific action or operation a user desires to perform, such as a read/write operation on a path, HTTP operation on an API path, or data masking or filtering techniques.
 
-Policy decisions in DataOS are made by evaluating the tags (or attributes) associated with subjects and objects. These tags are matched against a set of policies to determine whether a particular predicate should be allowed or denied for a given subject and object combination.
+Policy decisions in DataOS are made by evaluating the tags (or attributes) associated with subjects and objects. These tags are matched against a set of policies to determine whether a particular predicate should be allowed for a given subject and object combination.
 
 ## PDP and PEP
 
@@ -34,4 +34,4 @@ A Policy Enforcement Point (PEP) signifies the service at the point of access. U
 
 ![PDP and PEP](./understanding_abac_pdp_and_pep/pdp_and_pep.png)
 
-In this context, [Heimdall](../../architecture.md#heimdall) serves as the PDP for access policies, while [Minerva Gateway](../../architecture.md#gateway) fulfills the role of the PDP for [Data Policies.](../policy.md#data-policy) The rest of the system's services function as PEPs, liaising with Heimdall and Minerva Gateway for all authorization-related matters.
+In this context, [Heimdall](../../architecture.md#heimdall) serves as the PDP for access policies, and [Data Policies.](../policy.md#data-policy) The rest of the system's services function as PEPs, liaising with Heimdall for all authorization-related matters.
