@@ -1,32 +1,32 @@
 # :resources-database: Database
 
-Database as a [Resource](/resources/) within DataOS is declared for creating a database within DataOS. It is treated as a first-class resource, encapsulating the fundamental unit for storing and organizing structured data using PostgreSQL. The classification of Databases as a resource type within the DataOS ecosystem allows for systematic management, provisioning, and utilization of databases in a standardized manner.
+A Database Resource [Resource](/resources/) in DataOS ct as a repository for storing transaction data, utilizing a managed Postgres relational database. It fulfills the transactional data storage needs of custom data applications developed on top of DataOS. Internal applications like Lens, Metis, etc., also leverage the Database Resource for their transactional data storage. Utilizing a [Service](./service.md) supported by the [Beacon Stack](./stacks/beacon.md)facilitates CRUD operations (Create, Read, Update, Delete) on data assets stored in the Database, ensuring smooth connectivity between the data application and the Database. For analytical operations, users can utilize the [Flare Stack](./stacks/flare.md)to move the data from transactional data storage to other [Depots](./depot.md) or [Lakehouses](./lakehouse.md).
 
 <aside class=”callout”>
 
- Database is a Workspace-level Resource type.
+A Database is a Workspace-level Resource-type, implying that its scope is limited to a particular Workspace.
 
 </aside>
 
 
 <div class="grid cards" markdown>
 
--   :material-card-bulleted-settings-outline:{ .lg .middle } **Key Features of Database**
+-   :material-card-bulleted-settings-outline:{ .lg .middle } **How to create and manage a Database?**
 
     ---
 
-    Understand the need of Database as a Resource in DataOS.
+    Learn how to create and manage a Database in DataOS.
 
-    [:octicons-arrow-right-24: Key Features](#key-features-of-database)
+    [:octicons-arrow-right-24: Create and Manage Database](#how-to-create-and-manage-a-database)
 
 
--   :material-list-box-outline:{ .lg .middle } **How to create a Database?**
+-   :material-list-box-outline:{ .lg .middle } **How to create and manage a Database?**
 
     ---
 
     Learn how to create a database yaml specific to PostgreSQL.
 
-    [:octicons-arrow-right-24: Create a Database](#how-to-create-a-database?)
+    [:octicons-arrow-right-24: Create a Database](#how-to-create-a-database)
 
 -   :material-network-pos:{ .lg .middle } **Possible Errors**
 
@@ -62,7 +62,7 @@ The Beacon Service enables CRUD operations (Create, Read, Update, Delete) on dat
 To learn more about the Beacon refer [Becon Resource](/resources/stacks/beacon/#configure-beacon-stack-specific-section)
 
 
-## How to Create a Database?
+## How to Create and Manage a Database?
 
 To create a Database Resource specific to PostgreSQL define a YAML configuration file create a dedicated folder `migration` to store all Database migration files.
 

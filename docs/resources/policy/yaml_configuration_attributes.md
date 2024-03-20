@@ -27,11 +27,13 @@ policy:
 
 #### **`policy`**
 
-**Description:** mapping for policy attributes<br>
-**Data Type:** mapping<br>
-**Requirement:** mandatory<br>
-**Default Value:** none<br>
-**Possible Value:** none<br>
+
+**Description:** configuration for the policy.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| mapping        | mandatory      | none                   | none
+
 **Example Usage:**<br>
 ```yaml
 policy:
@@ -43,10 +45,12 @@ policy:
 #### **`access`**
 
 **Description:** mapping for access policy attributes<br>
-**Data Type:** mapping<br>
-**Requirement:** mandatory<br>
-**Default Value:** none<br>
-**Possible Value:** none<br>
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| mapping       | mandatory      | none              | none                |
+
+
 **Example Usage:**<br>
 ```yaml
 access:
@@ -63,11 +67,13 @@ access:
 
 #### **`subjects`**
 
-**Description:** a subject is a user that would like to perform a specific predicate on a specific object. It refers to persons or application/services that make the request to perform an action. Attributes of the subject might include tags or groups of tags.<br>
-**Data Type:** mapping<br>
-**Requirement:** mandatory<br>
-**Default Value:** none<br>
-**Possible Value:** none<br>
+subjects:
+  Description: a subject is a user that would like to perform a specific predicate on a specific object. It refers to persons or application/services that make the request to perform an action. Attributes of the subject might include tags or groups of tags.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| mapping       | mandatory      | none              | none                |
+
 **Example Usage:**<br>
 ```yaml
 subjects:
@@ -77,14 +83,16 @@ subjects:
 
 ---
 
-#### **`objects`**
+#### **`objects`**:
 
-**Description:** the target that the subject would like to perform the predicate on. This can be any target, an API path, a column. The object is the resource (data or service) on which the action is to be performed.<br>
-**Data Type:** list of strings<br>
-**Requirement:** mandatory<br>
-**Default Value:** none<br>
-**Possible Value:** any target, api path, tags of requested object, column etc.<br>
+  **Description:** the target that the subject would like to perform the predicate on. This can be any target, an API path, a column. The object is the resource (data or service) on which the action is to be performed.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| list of strings       | mandatory      | none              | any target, api path, tags of requested object, column etc.               |
+
 **Additional Information:** Predicates are ‘OR’ relationships only, since the PEP is authorizing one action at a time.
+
 **Example Usage:** 
 ```yaml
 objects:
@@ -94,20 +102,20 @@ objects:
 
 ---
 
-#### **`paths`**
+##### **`paths`**
 
-**Description:** object paths<br>
-**Data Type:** list of string<br>
-**Requirement:** optional<br>
-**Default Value:** none<br>
-**Possible Value:** valid list of paths in string format<br>
+**Description:** object paths
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| list of string       | optional      | none              | valid list of paths in string format               |
+
 **Example Usage:** 
 
 ```yaml
 paths:
   - /dataos/system/themis/**
 ```
-
 ---
 
 
