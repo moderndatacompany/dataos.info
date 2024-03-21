@@ -1,6 +1,6 @@
 <!-- ![Secret Icon](/resources/secret_updated/Secret%20Icon.svg){ align=left } -->
 
-# :resources-secret: Secret
+# Secret
 
 In DataOS, Secrets are [Resources](../resources.md) designed for the secure storage of sensitive information, including usernames, passwords, certificates, tokens, or keys within the confines of a specific **DataOS Workspace**. The primary purpose of Secrets is to address the inherent exposure risk associated with directly embedding such confidential data within application code or configuration files.
 
@@ -208,7 +208,7 @@ The secrets identifier is used for creating a Secret in DataOS. However, it's im
 ```yaml
 dataosSecrets:
   - name: ${your-secret-name} # Mandatory
-    worksapce: ${secret-workspace} # Optional
+    workspace: ${secret-workspace} # Optional
     key: ${key of your secret} # Optional, used when only single key is required.
     keys:            # Optional, used when multiple key is required.
       - ${secret_key}
@@ -295,11 +295,10 @@ Container registries, pivotal for storing and managing images, including essenti
 
 <aside class="callout">
 
-🗣 When you use the **secrets** attribute, the encrypted secrets are visible during linting, which is a process to check for errors, but they remain visible to end-users. So, while they are encrypted, they can still be seen by people accessing the configuration.
+🗣 When you use the `secrets` attribute, the encrypted secrets are visible during linting, which is a process to check for errors, but they remain visible to end-users. So, while they are encrypted, they can still be seen by people accessing the configuration.
 
-On the other hand, if you use **dataosSecrets**, during linting, the secrets are completely hidden within the configuration. This provides a higher level of security and confidentiality because even during checks for errors, the secrets are not exposed.
+On the other hand, if you use `dataosSecrets`, during linting, the secrets are completely hidden within the configuration. This provides a higher level of security and confidentiality because even during checks for errors, the secrets are not exposed.
 
 This difference allows for precise control over how sensitive information is exposed within the configuration environment, ensuring that only authorized individuals can access it.
-
 
 </aside>
