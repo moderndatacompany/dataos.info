@@ -1,6 +1,6 @@
-# Attributes of Policy-specific Section
+# Attributes of Policy manifest
 
-## Access Policy YAML Configuration
+## Structure of a Access Policy manifest
 
 ```yaml
 policy:
@@ -67,8 +67,7 @@ access:
 
 #### **`subjects`**
 
-subjects:
-  Description: a subject is a user that would like to perform a specific predicate on a specific object. It refers to persons or application/services that make the request to perform an action. Attributes of the subject might include tags or groups of tags.
+**Description:** a subject is a user that would like to perform a specific predicate on a specific object. It refers to persons or application/services that make the request to perform an action. Attributes of the subject might include tags or groups of tags.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
@@ -85,7 +84,7 @@ subjects:
 
 #### **`objects`**:
 
-  **Description:** the target that the subject would like to perform the predicate on. This can be any target, an API path, a column. The object is the resource (data or service) on which the action is to be performed.
+**Description:** the target that the subject would like to perform the predicate on. This can be any target, an API path, a column. The object is the resource (data or service) on which the action is to be performed.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
@@ -121,162 +120,138 @@ paths:
 
 #### **`tags`**
 
-**Description:** tags are the attributes of the subject or object. A tag field can contain one single tag or a group of tags in the form of a list<br>
-**Data Type:** list of strings<br>
-**Requirement:** mandatory<br>
-**Default Value:** none<br>
-**Possible Value:** any valid string<br>
-**Additional Information:** 
-- **Defining AND/OR Relationships**
-    - Defining OR Relationship
-        - The syntax given below allows access for either `tag1` OR `tag2`.
-            
-            ```yaml
-            tags: 
-            	-- tag1
-            	-- tag2
-            ```
-            
-        - The outermost list contains two inner lists, each representing a tag. In this case, it means that both "tag1" and "tag2" are considered separately which is how you define the OR relationships between tags.
-        - Example of OR Relationship
-            - In this example policy, an object MUST have the resource path of `/metis/api/v2/workspaces/public` **OR** `/metis/api/v2/workspaces/sandbox` to qualify for this policy to apply.
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| list of strings       | mandatory      | none       | any valid string     |
+
+**Additional Information:** <br>
+    1.  **Defining Relationships**<br>
+      - OR <br>
+      - AND
+
+=== "OR" 
+
+    The syntax given below allows access for either `tag1` OR `tag2`.<br>
                 
-                ```yaml
-                name: object-example1
-                version: v1
-                type: policy
-                layer: user
-                description: example policy
-                policy:
-                  access:
-                    subjects:
-                      tags:
-                        - - roles:id:developer
-                          - roles:id:testuser
-                    predicates:
-                      - read
-                    objects:
-                      paths:
-                        - /metis/api/v2/workspaces/public
-                        - /metis/api/v2/workspaces/sandbox
-                    allow: true
-                ```
+    ```yaml
+    tags: 
+      -- tag1
+      -- tag2
+    ```
+    The outermost list contains two inner lists, each representing a tag. In this case, it means that both "tag1" and "tag2" are considered separately which is how you define the OR relationships between tags.
+
+    **Example of OR Relationship** <br>
+
+    === "Example 1"
+    
+        In this example policy, an object MUST have the resource path of `/metis/api/v2/workspaces/public` **OR** `/metis/api/v2/workspaces/sandbox` to qualify for this policy to apply.
                 
-            - In this example policy, an object MUST have the `PII.Email` **OR** `PII.Sensitive` tags to qualify for this policy to apply.
+        ```yaml hl_lines="16-17"
+        name: object-example1
+        version: v1
+        type: policy
+        layer: user
+        description: example policy
+        policy:
+          access:
+            subjects:
+              tags:
+                - - roles:id:developer
+                  - roles:id:testuser
+            predicates:
+              - read
+            objects:
+              paths:
+                - /metis/api/v2/workspaces/public
+                - /metis/api/v2/workspaces/sandbox
+            allow: true
+        ```
+
+    === "Example 2" 
+
+        In this example policy, an object MUST have the `PII.Email` **OR** `PII.Sensitive` tags to qualify for this policy to apply.
                 
-                ```yaml
-                name: object-example2
-                version: v1
-                type: policy
-                layer: user
-                description: example policy
-                policy:
-                  access:
-                    subjects:
-                      tags:
-                        - - roles:id:developer
-                          - roles:id:testuser
-                    predicates:
-                      - read
-                    objects:
-                      tags:
-                        - - PII.Email
-                        - - PII.Sensitive
-                    allow: true
-                ```
-                
-    - Defining AND relationship
-        - To define an AND relationship between tags, the structure would be like this:
+        ```yaml hl_lines="16-17"
+        name: object-example2
+        version: v1
+        type: policy
+        layer: user
+        description: example policy
+        policy:
+          access:
+            subjects:
+              tags:
+                - - roles:id:developer
+                  - roles:id:testuser
+            predicates:
+              - read
+            objects:
+              tags:
+                - - PII.Email
+                - - PII.Sensitive
+            allow: true
+        ```
             
-            ```yaml
-            tags: 
-            	-- tag1
-            	 - tag2
-            ```
-            
-        - The outermost list contains a single inner list with two tags. The indentation implies that "tag2" is a child of "tag1," indicating the requirement for both tags to be present which is how you define the AND relationship between tags.
-        - Example of AND Relationship
-            
-            For example, in this example policy, a subject MUST have both the tags (`roles:id:pii-reader` AND `roles:id:testuser`) to qualify for this policy to apply/or to be applicable. 
-            
-            ```yaml
-            name: subject-example1
-            version: v1
-            type: policy
-            layer: user
-            description: example policy
-            policy:
-              access:
-                subjects:
-                  tags:
-                    - - roles:id:pii-reader
-                      - roles:id:user
-                predicates:
-                  - read
-                objects:
-                  tags:
-                    - - PII.Sensitive
-                      - dataos:type:column
-                allow: true
-            ```
-            
+=== "AND"
+
     - Defining Complex Relationships Using AND, OR
-        - This section represents an expression where either "tag1" or both "tag2" and "tag3" should be true. The outermost list contains three elements. The first and second elements represent "tag1" and "tag2" separately. The third element, "tag3," is indented to indicate that it is a child of "tag2," implying that both "tag2" and "tag3" should be true.
-            
-            ```yaml
-            # tag1 OR (tag2 AND tag3)
-            tags: 
-            - - tag1
-            - - tag2
-              - tag3
-            ```
-            
-        - Example of Complex AND, OR Relationship
-            
-            For example, to qualify for the following example policy, a subject must have either both tags (`roles:id:pii-reader` AND `roles:id:testuser`) OR the tag `roles:id:marketing-manager`.
-            
-            ```yaml
-            name: subject-example2
-            version: v1
-            type: policy
-            layer: user
-            description: example policy
-            policy:
-              access:
-                subjects:
-                  tags:
-                    - - roles:id:pii-reader
-                      - roles:id:testuser
-                    - - roles:id:marketing-manager
-                predicates:
-                  - read
-                objects:
-                  tags:
-                    - - PII.Sensitive
-                      - dataos:type:column
-                allow: true
-            ```
-            
-- **Evaluating List Attributes using Wildcard**
-    - The symbol`:` is a delimiter in the tags field and paths field, and predicates field; additional syntax includes:
         
+        This section represents an expression where either "tag1" or both "tag2" and "tag3" should be true. The outermost list contains three elements. The first and second elements represent "tag1" and "tag2" separately. The third element, "tag3," is indented to indicate that it is a child of "tag2," implying that both "tag2" and "tag3" should be true.
         
-        | Wildcard | Wildcard Name | Example | Description |
-        | --- | --- | --- | --- |
-        | ? | Single Character Wildcard - Matches exactly one occurrence of any character | ?at | Matches cat and bat but not at |
-        | * | Glob/Asterisk - Matches any number of characters, including none, within the same level of a hierarchy. Can be used to evaluate all items in a list; if any item in the list matches the condition, then the condition passes. | foo:*:bar | Matches foo:baz:bar and foo:zab:bar but not foo:bar nor foo:baz:baz:bar |
-        | ** | Super Glob/Double Asterisk - Matches any number of characters across multiple levels of a hierarchy. Can be used to evaluate all items in a list; if any item in the list matches the condition, then the condition passes. |  foo:**:bar | Matches foo:baz:baz:bar, foo:baz:bar, and foo:bar, but not foobar or foo:baz |
-        | [] | Character List - Matches exactly one character that is contained within the brackets.  | [cb]at | matches cat and bat but not mat nor at
-        (It’s worthing noting that the order of characters within the brackets doesn’t matter, [cb]at and [bc]at function the same way) |
-        | [!] | Negated Character List - Matches any single character that is not listed between the brackets. | [!cb]at | matches tat and mat but not cat nor bat |
-        | [-] | Ranged Character List - Match a specific character within a certain range. | [a-c]at | cat and bat but not mat nor at |
-        | [!-] | Negated Ranged Character List | [!a-c]at  | matches mat and tat but not cat nor bat |
-        | {[]} | Alternatives List | {cat,bat,[mt]at}  | matches cat, bat, mat, tat and nothing else |
-        | \ | Backslash (escape) | foo\\bar
-        foo\bar 
-        foo\*bar | matches foo\bar and nothing else
-        matches foobar and nothing else
-        matches foo*bar and nothing else |
+    ```yaml
+    # tag1 OR (tag2 AND tag3)
+    tags: 
+    - - tag1
+    - - tag2
+      - tag3
+    ```
+    
+    - Example of Complex AND, OR Relationship
+        
+        For example, to qualify for the following example policy, a subject must have either both tags (`roles:id:pii-reader` AND `roles:id:testuser`) OR the tag `roles:id:marketing-manager`.
+        
+    ```yaml
+    name: subject-example2
+    version: v1
+    type: policy
+    layer: user
+    description: example policy
+    policy:
+      access:
+        subjects:
+          tags:
+            - - roles:id:pii-reader
+              - roles:id:testuser
+            - - roles:id:marketing-manager
+        predicates:
+          - read
+        objects:
+          tags:
+            - - PII.Sensitive
+              - dataos:type:column
+        allow: true
+    ```
+    
+2.  **Evaluating List Attributes using Wildcard**
+
+The symbol`:` is a delimiter in the tags field and paths field, and predicates field; additional syntax includes:
+         
+| Wildcard | Wildcard Name | Example | Description |
+| --- | --- | --- | --- |
+| ? | Single Character Wildcard - Matches exactly one occurrence of any character | ?at | Matches cat and bat but not at |
+| * | Glob/Asterisk - Matches any number of characters, including none, within the same level of a hierarchy. Can be used to evaluate all items in a list; if any item in the list matches the condition, then the condition passes. | foo:*:bar | Matches foo:baz:bar and foo:zab:bar but not foo:bar nor foo:baz:baz:bar |
+| ** | Super Glob/Double Asterisk - Matches any number of characters across multiple levels of a hierarchy. Can be used to evaluate all items in a list; if any item in the list matches the condition, then the condition passes. |  foo:**:bar | Matches foo:baz:baz:bar, foo:baz:bar, and foo:bar, but not foobar or foo:baz |
+| [] | Character List - Matches exactly one character that is contained within the brackets.  | [cb]at | matches cat and bat but not mat nor at
+(It’s worthing noting that the order of characters within the brackets doesn’t matter, [cb]at and [bc]at function the same way) |
+| [!] | Negated Character List - Matches any single character that is not listed between the brackets. | [!cb]at | matches tat and mat but not cat nor bat |
+| [-] | Ranged Character List - Match a specific character within a certain range. | [a-c]at | cat and bat but not mat nor at |
+| [!-] | Negated Ranged Character List | [!a-c]at  | matches mat and tat but not cat nor bat |
+| {[]} | Alternatives List | {cat,bat,[mt]at}  | matches cat, bat, mat, tat and nothing else |
+| \ | Backslash (escape) | foo\\bar
+foo\bar 
+foo\*bar | matches foo\bar and nothing else
+matches foobar and nothing else
+matches foo*bar and nothing else |
 
 **Example Usage:**
 
@@ -294,12 +269,15 @@ tags:
 
 #### **`predicates`**
 
-**Description:** the action or the verb that the subject would like to perform on the specific object.<br>
-**Data Type:** list of strings<br>
-**Requirement:** mandatory<br>
-**Default Value:** none<br>
-**Possible Value:** crud operations like read, write, update, delete or http operations like get, put, post, delete, options.<br>
-**Additional Information:** predicates are ‘OR’ relationships only, since the PEP is authorizing one action at a time.<br>
+
+**Description:** the action or the verb that the subject would like to perform on the specific object.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| list of strings       | mandatory      | none              | crud operations like read, write, update, delete or http operations like get, put, post, delete, options.               |
+
+**Additional Information:** Predicates are ‘OR’ relationships only, since the PEP is authorizing one action at a time.
+
 **Example Usage:** in this example policy, a predicate MUST be `read` OR `write` from the PEP to qualify for this policy to apply.
 
 ```yaml
@@ -338,24 +316,26 @@ predicates:
 #### **`allow`**
 
 **Description:** action to be allowed or denied<br>
-**Data Type:** boolean<br>
-**Requirement:** optional<br>
-**Default Value:** false<br>
-**Possible Value:** true/false<br>
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| boolean       | optional       | false             | true/false          |
+
 **Example Usage:** 
 
 ```yaml
 allow: true
 ```
 
-## Data Policy YAML Configuration
+## Structure of a Data Policy manifest
 
 ```yaml
 policy:
   data:
-		dataset: ${{sample_driver}}
-    collection: ${{data_uber}}
+    type: ${{filter/mask}}
     depot: ${{icebase}}
+    collection: ${{data_uber}}
+		dataset: ${{sample_driver}}
     priority: ${{90}}
     selector:
       user:
@@ -366,19 +346,21 @@ policy:
 			  tags:
           - "PII.email"
           - "PII.income"
-    type: ${{filter/mask}}
+    
 		${{filter/mask}}: 
 ```
 
-### **Configuration Fields/Attributes**
+### **Configuration Attributes**
 
 #### **`data`**
 
 **Description:** data policy specific section<br>
-**Data Type:** mapping<br>
-**Requirement:** mandatory<br>
-**Default Value:** none<br>
-**Possible Value:** none<br>
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| mapping       | mandatory      | none              | none                |
+
+
 **Example Usage:** 
 
 ```yaml
@@ -391,10 +373,11 @@ data:
 #### **`priority`**
 
 **Description:** the Policy with lower value of priority attribute will take precedence over all other policies associated with the same resources. Consequently, a policy assigned a priority of 1 will supersede any conflicting policy assigned a priority of 90.<br>
-**Data Type:** number<br>
-**Requirement:** optional<br>
-**Default Value:** none<br>
-**Possible Value:** any number within the range of 1 to 100, inclusive. 1 being the highest priority and 100 being the lowest.<br>
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| number        | optional       | none              | 1 to 100 (inclusive) |
+
 **Example Usage:** 
 
 ```yaml
@@ -406,10 +389,11 @@ priority: 80
 #### **`depot`**
 
 **Description:** name of depot<br>
-**Data Type:** string<br>
-**Requirement:** optional<br>
-**Default Value:** none<br>
-**Possible Value:** valid depot name. Use ** for all possible depot names.<br>
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| string        | optional       | none                | **                |
+
 **Example Usage:** 
 
 ```yaml
@@ -421,10 +405,11 @@ depot: icebase
 #### **`collection`**
 
 **Description:** name of the collection<br>
-**Data Type:** string<br>
-**Requirement:** optional<br>
-**Default Value:** none<br>
-**Possible Value:** any valid collection name. Use ** for all possible collection names.<br>
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| string        | optional       | none                | **                |
+
 **Example Usage:**
 
 ```yaml
@@ -436,10 +421,11 @@ collection: retail
 #### **`dataset`**
 
 **Description:** name of dataset<br>
-**Data Type:** string<br>
-**Requirement:** optional<br>
-**Default Value:** none<br>
-**Possible Value:** any valid dataset name. Use ** for all possible dataset names.<br>
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| string        | optional       | none                | **                |
+
 **Example Usage:** 
 
 ```yaml
@@ -451,10 +437,11 @@ dataset: city
 #### **`selector`**
 
 **Description:** selector section<br>
-**Data Type:** mapping<br>
-**Requirement:** mandatory<br>
-**Default Value:** none<br>
-**Possible Value:** none<br>
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| mapping       | mandatory      | none                | none                |
+
 **Example Usage:**
 
 ```yaml
@@ -470,10 +457,11 @@ selector:
 #### **`user`**
 
 **Description:** section for defining the user<br>
-**Data Type:** mapping<br>
-**Requirement:** mandatory<br>
-**Default Value:** none<br>
-**Possible Value:** none<br>
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | -------------- | ------------------- | ------------------- |
+| mapping       | mandatory      | none                | none                |
+
 **Example Usage:** 
 
 ```yaml
@@ -487,11 +475,13 @@ user:
 
 #### **`match`**
 **Description:** This attribute<br>
-**Data Type:** string<br>
-**Requirement:** mandatory<br>
-**Default Value:** none<br>
-**Possible Value:** any/all<br>
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | --------------- | ----------------- | ------------------ |
+| string        | mandatory       | none              | any/all            |
+
 **Example Usage:** 
+
 
 ```yaml
 match: any
@@ -502,8 +492,11 @@ match: any
 #### **`column`**
 
 **Description:** column section<br>
-**Data Type:** mapping<br>
-**Requirement:** mandatory<br>
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | --------------- | ----------------- | ------------------ |
+| mapping       | mandatory       | none              | none               |
+
 **Example Usage:** 
 
 ```yaml
@@ -516,10 +509,11 @@ column:
 #### **`names`**
 
 **Description:** list of column names<br>
-**Data Type:** list of strings<br>
-**Requirement:** mandatory<br>
-**Default Value:** none<br>
-**Possible Value:** valid column name<br>
+
+| **Data Type**     | **Requirement** | **Default Value** | **Possible Value** |
+| ----------------- | --------------- | ----------------- | ------------------ |
+| list of strings   | mandatory       | none              | valid column name  |
+
 **Example Usage:**
 
 <br>
@@ -535,10 +529,11 @@ names:
 #### **`tags`**
 
 **Description:** list of tags given to columns<br>
-**Data Type:** list of strings<br>
-**Requirement:** mandatory<br>
-**Default Value:** none<br>
-**Possible Value:** valid column tags defined under some tag group<br>
+
+| **Data Type**     | **Requirement** | **Default Value** | **Possible Value** |
+| ----------------- | --------------- | ----------------- | ------------------ |
+| list of strings   | mandatory       | none              | valid column tags defined under some tag group  |
+
 **Example Usage:**
 
 ```yaml
@@ -555,10 +550,11 @@ tags:
 #### **`mask`**
 
 **Description:** field for defining the data masking strategy<br>
-**Data Type:** mapping<br>
-**Requirement:** optional<br>
-**Default Value:** none<br>
-**Possible Value:** depends on the masking strategy utilized<br>
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | --------------- | ----------------- | ------------------ |
+| mapping       | optional        | none              | depends on the masking strategy utilized |
+
 **Example Usage:** in this example policy, a predicate MUST be `read` OR `write` from the PEP to qualify for this policy to apply.
 
 ```yaml
