@@ -1,0 +1,14 @@
+# Azure Blob File System Secure (ABFSS) Read Write Instance Secret Manifest
+
+name: ${abfss-depot-name}-rw  # Name of the instance-secret, indicating it's for read-write access.
+version: v1 # Manifest Version           
+type: instance-secret # Resource-type
+description: ${description}   # Optional: Brief description of the instance-secret's purpose.
+layer: user # DataOS Layer                 
+instance-secret:
+  type: key-value-properties  # Type of Instance-secret
+  acl: rw                     # Access control level, set to 'rw' for read-write access.
+  data:                       
+    azureendpointsuffix: ${azure-endpoint-suffix}  # Endpoint suffix for the Azure storage account.
+    azurestorageaccountkey: ${azure-storage-account-key}  # Access key for the Azure storage account.
+    azurestorageaccountname: ${azure-storage-account-name}  # Name of the Azure storage account.
