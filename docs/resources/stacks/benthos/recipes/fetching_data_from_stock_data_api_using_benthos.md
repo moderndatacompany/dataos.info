@@ -1,4 +1,4 @@
-# Stock Data API to Icebase
+# Fetching Data from Stock Data API using Benthos
 
 Here's a more detailed step-by-step guide to fetching data from the Stock data API using Benthos:
 
@@ -88,7 +88,6 @@ Here's a more detailed step-by-step guide to fetching data from the Stock data A
                   processors:
                     - log:
                         level
-    
     ```
     
 5. Reading data from pulsar and writing to icebase
