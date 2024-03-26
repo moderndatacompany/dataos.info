@@ -16,7 +16,7 @@ theme:
         - navigation.tracking
         - content.code.copy
         - content.code.annotate
-        - content.tabs.link
+        # - content.tabs.link
         - content.tooltips
 #          - toc.follow
 #          - toc.integrate
@@ -115,7 +115,7 @@ markdown_extensions:
           case: lower
   - pymdownx.tasklist
   - pymdownx.tilde
-#   - pymdownx.extra
+#  - pymdownx.extra
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
