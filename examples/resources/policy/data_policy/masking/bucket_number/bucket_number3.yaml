@@ -1,0 +1,37 @@
+name: {{income}}
+version: v1
+type: policy
+tags:
+  - {{dataos:type:resource}}
+  - {{dataos:type:cluster-resource}}
+  - {{dataos:resource:policy}}
+description: >-
+  Incomes are grouped into buckets to represent different income ranges. An
+  individual's income is redacted and anonymized with the lowest value in the
+  bucket.
+owner: {{dataos-manager}}
+layer: user
+policy:
+  data:
+    priority: {{100}}
+    type: mask
+    mask:
+      bucket_number:
+        buckets:
+          - {{1000}}
+          - {{2000}}
+          - {{5000}}
+          - {{10000}}
+          - {{50000}}
+          - {{100000}}
+          - {{200000}}
+          - {{500000}}
+      operator: bucket_number
+    selector:
+      column:
+        tags:
+          - {{PII.Income}}
+      user:
+        match: {{any}}
+        tags:
+          - {{roles:id:user}}
