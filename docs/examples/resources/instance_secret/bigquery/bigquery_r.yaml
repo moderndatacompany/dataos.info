@@ -12,5 +12,4 @@ instance-secret:
     projectid: ${project-name} # Replace with Bigquery project ID
     email: ${email-id} # Replace with Bigquery email ID
   files:
-    json_keyfile: ${json-file-path}
-                               
+    json_keyfile: ${json-file-path}                               
