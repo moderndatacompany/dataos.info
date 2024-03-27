@@ -138,7 +138,7 @@ The table below summarizes the attributes of Instance-secret specific section:
 | [`files`](/resources/instance_secret/manifest_attributes/#files) | string | none | file-path | optional |
 
 
-For more information about the various attributes in Instance Secret specific section, refer to the [Attributes of Instance Secret specific section](/resources/instance_secret/manifest_attributes.md).
+For more information about the various attributes in Instance Secret specific section, refer to the [Attributes of Instance Secret specific section](/resources/instance_secret/manifest_attributes/).
 
 
 
