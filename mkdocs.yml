@@ -16,7 +16,7 @@ theme:
         - navigation.tracking
         - content.code.copy
         - content.code.annotate
-        - content.tabs.link
+        # - content.tabs.link
         - content.tooltips
 #          - toc.follow
 #          - toc.integrate
@@ -106,7 +106,8 @@ markdown_extensions:
       linenums_style: pymdownx-inline
       anchor_linenums: true
   - pymdownx.inlinehilite
-  - pymdownx.snippets
+  - pymdownx.snippets:
+      base_path: docs/
   - pymdownx.smartsymbols
   - pymdownx.tabbed:
       alternate_style: true
@@ -115,7 +116,7 @@ markdown_extensions:
           case: lower
   - pymdownx.tasklist
   - pymdownx.tilde
-#   - pymdownx.extra
+#  - pymdownx.extra
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg

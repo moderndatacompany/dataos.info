@@ -1,0 +1,9 @@
+name: ${testing}
+version: v1
+type: instance-secret
+instance-secret:
+  type: key-value
+  acl: r
+  data:
+    ${key1:value1}
+    ${key2:value2}

@@ -1,6 +1,6 @@
 <!-- ![Secret Icon](/resources/secret_updated/Secret%20Icon.svg){ align=left } -->
 
-# Secret
+# :resources-secret: Secret
 
 In DataOS, Secrets are [Resources](../resources.md) designed for the secure storage of sensitive information, including usernames, passwords, certificates, tokens, or keys within the confines of a specific **DataOS Workspace**. The primary purpose of Secrets is to address the inherent exposure risk associated with directly embedding such confidential data within application code or configuration files.
 
