@@ -101,9 +101,11 @@ The below table summarizes various properties within a Scanner workflow YAML.
 
 To learn more about these fields, their possible values, example usage, refer to [Attributes of Scanner YAML](scanner/field_ref.md).
 
-### **Supported Data Sources**
+## Supported Data Sources
 
 Here you can find templates for the depot/non-depot Scanner workflows. 
+
+
 
 [Databases and Warehouses](scanner/databases_and_warehouses.md)
 
