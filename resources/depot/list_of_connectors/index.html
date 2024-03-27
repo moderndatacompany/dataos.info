@@ -1,0 +1,6140 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.15">
+    
+    
+      
+        <title>Data Integration - Supported Connectors in DataOS - All things DataOS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e359304.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Custom admonition icons -->
+
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.5 1.75v11.5c0 .138.112.25.25.25h3.17a.75.75 0 0 1 0 1.5H2.75A1.75 1.75 0 0 1 1 13.25V1.75C1 .784 1.784 0 2.75 0h8.5C12.216 0 13 .784 13 1.75v7.736a.75.75 0 0 1-1.5 0V1.75a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13.274 9.537v-.001l-4.557 4.45a.75.75 0 0 1-1.055-.008l-1.943-1.95a.75.75 0 0 1 1.062-1.058l1.419 1.425 4.026-3.932a.75.75 0 1 1 1.048 1.074ZM4.75 4h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM4 7.75A.75.75 0 0 1 4.75 7h2a.75.75 0 0 1 0 1.5h-2A.75.75 0 0 1 4 7.75Z"/></svg>');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/></svg>');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25Zm7.47 3.97a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L10.69 8 9.22 6.53a.75.75 0 0 1 0-1.06ZM6.78 6.53 5.31 8l1.47 1.47a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215l-2-2a.75.75 0 0 1 0-1.06l2-2a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"/></svg>');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.92 6.085h.001a.749.749 0 1 1-1.342-.67c.169-.339.436-.701.849-.977C6.845 4.16 7.369 4 8 4a2.756 2.756 0 0 1 1.637.525c.503.377.863.965.863 1.725 0 .448-.115.83-.329 1.15-.205.307-.47.513-.692.662-.109.072-.22.138-.313.195l-.006.004a6.24 6.24 0 0 0-.26.16.952.952 0 0 0-.276.245.75.75 0 0 1-1.248-.832c.184-.264.42-.489.692-.661.103-.067.207-.132.313-.195l.007-.004c.1-.061.182-.11.258-.161a.969.969 0 0 0 .277-.245C8.96 6.514 9 6.427 9 6.25a.612.612 0 0 0-.262-.525A1.27 1.27 0 0 0 8 5.5c-.369 0-.595.09-.74.187a1.01 1.01 0 0 0-.34.398ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.344 2.343h-.001a8 8 0 0 1 11.314 11.314A8.002 8.002 0 0 1 .234 10.089a8 8 0 0 1 2.11-7.746Zm1.06 10.253a6.5 6.5 0 1 0 9.108-9.275 6.5 6.5 0 0 0-9.108 9.275ZM6.03 4.97 8 6.94l1.97-1.97a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l1.97 1.97a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-1.97 1.97a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L6.94 8 4.97 6.03a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018Z"/></svg>');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M9.504.43a1.516 1.516 0 0 1 2.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.249 1.249 0 0 1-.871.354h-.302a1.25 1.25 0 0 1-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429Zm1.047 1.074L3.286 8.571A.25.25 0 0 0 3.462 9H6.75a.75.75 0 0 1 .694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0 0 12.538 7H9.25a.75.75 0 0 1-.683-1.06l2.008-4.418.003-.006a.036.036 0 0 0-.004-.009l-.006-.006-.008-.001c-.003 0-.006.002-.009.004Z"/></svg>');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M4.72.22a.75.75 0 0 1 1.06 0l1 .999a3.488 3.488 0 0 1 2.441 0l.999-1a.748.748 0 0 1 1.265.332.75.75 0 0 1-.205.729l-.775.776c.616.63.995 1.493.995 2.444v.327c0 .1-.009.197-.025.292.408.14.764.392 1.029.722l1.968-.787a.75.75 0 0 1 .556 1.392L13 7.258V9h2.25a.75.75 0 0 1 0 1.5H13v.5c0 .409-.049.806-.141 1.186l2.17.868a.75.75 0 0 1-.557 1.392l-2.184-.873A4.997 4.997 0 0 1 8 16a4.997 4.997 0 0 1-4.288-2.427l-2.183.873a.75.75 0 0 1-.558-1.392l2.17-.868A5.036 5.036 0 0 1 3 11v-.5H.75a.75.75 0 0 1 0-1.5H3V7.258L.971 6.446a.75.75 0 0 1 .558-1.392l1.967.787c.265-.33.62-.583 1.03-.722a1.677 1.677 0 0 1-.026-.292V4.5c0-.951.38-1.814.995-2.444L4.72 1.28a.75.75 0 0 1 0-1.06Zm.53 6.28a.75.75 0 0 0-.75.75V11a3.5 3.5 0 1 0 7 0V7.25a.75.75 0 0 0-.75-.75ZM6.173 5h3.654A.172.172 0 0 0 10 4.827V4.5a2 2 0 1 0-4 0v.327c0 .096.077.173.173.173Z"/></svg>');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M5 5.782V2.5h-.25a.75.75 0 0 1 0-1.5h6.5a.75.75 0 0 1 0 1.5H11v3.282l3.666 5.76C15.619 13.04 14.543 15 12.767 15H3.233c-1.776 0-2.852-1.96-1.899-3.458Zm-2.4 6.565a.75.75 0 0 0 .633 1.153h9.534a.75.75 0 0 0 .633-1.153L12.225 10.5h-8.45ZM9.5 2.5h-3V6c0 .143-.04.283-.117.403L4.73 9h6.54L9.617 6.403A.746.746 0 0 1 9.5 6Z"/></svg>');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"/></svg>');}</style>
+
+
+<!-- Custom tag icons -->
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-ZH4G0HKBQC"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-ZH4G0HKBQC",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-ZH4G0HKBQC",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="blue-grey">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#data-integration-supported-connectors-in-dataos" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine base classes -->
+
+
+
+<!-- Header -->
+<header class="md-header" data-md-component="header">
+  <nav
+    class="md-header__inner md-grid"
+    aria-label="Header"
+  >
+
+    <!-- Link to home -->
+    <a
+      href="../../.."
+      title="All things DataOS"
+      class="md-header__button md-logo"
+      aria-label="All things DataOS"
+      data-md-component="logo"
+    >
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Logo -->
+
+  <img src="../../../assets/light-modern-logo.png" alt="logo" />
+
+    </a>
+
+    <!-- Button to open drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            All things DataOS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Data Integration - Supported Connectors in DataOS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color palette -->
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input
+            class="md-option"
+            data-md-color-media=""
+            data-md-color-scheme="default"
+            data-md-color-primary="blue-grey"
+            data-md-color-accent="blue-grey"
+            
+              aria-label="Switch to dark mode"
+            
+            type="radio"
+            name="__palette"
+            id="__palette_1"
+          />
+          
+            <label
+              class="md-header__button md-icon"
+              title="Switch to dark mode"
+              for="__palette_2"
+              hidden
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          <input
+            class="md-option"
+            data-md-color-media=""
+            data-md-color-scheme="slate"
+            data-md-color-primary="grey"
+            data-md-color-accent="grey"
+            
+              aria-label="Switch to light mode"
+            
+            type="radio"
+            name="__palette"
+            id="__palette_2"
+          />
+          
+            <label
+              class="md-header__button md-icon"
+              title="Switch to light mode"
+              for="__palette_1"
+              hidden
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+
+    <!-- Site language selector -->
+    
+
+    <!-- Button to open search modal -->
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+
+      <!-- Search interface -->
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Search interface -->
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+
+      <!-- Search input -->
+      <input
+        type="text"
+        class="md-search__input"
+        name="query"
+        aria-label="Search"
+        placeholder="Search"
+        autocapitalize="off"
+        autocorrect="off"
+        autocomplete="off"
+        spellcheck="false"
+        data-md-component="search-query"
+        required
+      />
+
+      <!-- Button to open search -->
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+
+      <!-- Search options -->
+      <nav
+        class="md-search__options"
+        aria-label="Search"
+      >
+
+        <!-- Button to share search -->
+        
+
+        <!-- Button to reset search -->
+        <button
+          type="reset"
+          class="md-search__icon md-icon"
+          title="Clear"
+          aria-label="Clear"
+          tabindex="-1"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+
+      <!-- Search suggestions -->
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+
+        <!-- Search results -->
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    <!-- Repository information -->
+    
+  </nav>
+
+  <!-- Navigation tabs (sticky) -->
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Hack: unset variable, as we're using it recursively in tabs-item.html -->
+
+
+<!-- Navigation tabs -->
+<nav
+  class="md-tabs"
+  aria-label="Tabs"
+  data-md-component="tabs"
+>
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  
+  
+
+  <!-- Recurse, if the first item has further nested items -->
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link">
+        Resources
+      </a>
+    </li>
+  
+
+<!-- Main navigation item -->
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  
+  
+
+  <!-- Recurse, if the first item has further nested items -->
+  
+    <li class="md-tabs__item">
+      <a href="../../../interfaces/" class="md-tabs__link">
+        Interfaces
+      </a>
+    </li>
+  
+
+<!-- Main navigation item -->
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../../architecture/" class="md-tabs__link">
+      Architecture
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../../glossary/" class="md-tabs__link">
+      Glossary
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../../videos/" class="md-tabs__link">
+      Videos
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to configuration -->
+
+
+  
+
+
+
+<!-- Main navigation -->
+<nav
+  class="md-nav md-nav--primary md-nav--lifted"
+  aria-label="Navigation"
+  data-md-level="0"
+>
+
+  <!-- Site title -->
+  <label class="md-nav__title" for="__drawer">
+    <a
+      href="../../.."
+      title="All things DataOS"
+      class="md-nav__button md-logo"
+      aria-label="All things DataOS"
+      data-md-component="logo"
+    >
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Logo -->
+
+  <img src="../../../assets/light-modern-logo.png" alt="logo" />
+
+    </a>
+    All things DataOS
+  </label>
+
+  <!-- Repository information -->
+  
+
+  <!-- Render item list -->
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+        
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle md-toggle--indeterminate"
+        type="checkbox"
+        id="__nav_2"
+        
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_2"
+          id="__nav_2_label"
+          tabindex="0"
+        >
+          Resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="1"
+        aria-labelledby="__nav_2_label"
+        aria-expanded="false"
+      >
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../bundle/" class="md-nav__link">
+        Bundle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../cluster/" class="md-nav__link">
+        Cluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../compute/" class="md-nav__link">
+        Compute
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Depot
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../instance_secret/" class="md-nav__link">
+        Instance Secret
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../lakehouse/" class="md-nav__link">
+        Lakehouse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../monitor/" class="md-nav__link">
+        Monitor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../operator/" class="md-nav__link">
+        Operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../pager/" class="md-nav__link">
+        Pager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../policy/" class="md-nav__link">
+        Policy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../secret_updated/" class="md-nav__link">
+        Secret
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../service/" class="md-nav__link">
+        Service
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../worker/" class="md-nav__link">
+        Worker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../workflow/" class="md-nav__link">
+        Workflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+      
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+        
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle md-toggle--indeterminate"
+        type="checkbox"
+        id="__nav_2_16"
+        
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_2_16"
+          id="__nav_2_16_label"
+          tabindex="0"
+        >
+          Stacks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="2"
+        aria-labelledby="__nav_2_16_label"
+        aria-expanded="false"
+      >
+        <label class="md-nav__title" for="__nav_2_16">
+          <span class="md-nav__icon md-icon"></span>
+          Stacks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/alpha/" class="md-nav__link">
+        Alpha
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/beacon/" class="md-nav__link">
+        Beacon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/benthos/" class="md-nav__link">
+        Benthos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/cli/" class="md-nav__link">
+        CLI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/data_toolbox/" class="md-nav__link">
+        Data Toolbox
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/flare/" class="md-nav__link">
+        Flare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/scanner/" class="md-nav__link">
+        Scanner
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/soda/" class="md-nav__link">
+        Soda
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../stacks/steampipe/" class="md-nav__link">
+        Steampipe
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+        
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle md-toggle--indeterminate"
+        type="checkbox"
+        id="__nav_3"
+        
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_3"
+          id="__nav_3_label"
+          tabindex="0"
+        >
+          Interfaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="1"
+        aria-labelledby="__nav_3_label"
+        aria-expanded="false"
+      >
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Interfaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/atlas/" class="md-nav__link">
+        Atlas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/audiences/" class="md-nav__link">
+        Audiences
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/bifrost/" class="md-nav__link">
+        Bifrost
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/cli/" class="md-nav__link">
+        CLI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/lens/" class="md-nav__link">
+        Lens
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/metis/" class="md-nav__link">
+        Metis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/notebook/" class="md-nav__link">
+        Notebook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/operations/" class="md-nav__link">
+        Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../interfaces/workbench/" class="md-nav__link">
+        Workbench
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        Glossary
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../videos/" class="md-nav__link">
+        Videos
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#supported-connectors" class="md-nav__link">
+    Supported Connectors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#airbyte-connectors" class="md-nav__link">
+    Airbyte - Connectors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bi-tools-connectors" class="md-nav__link">
+    BI Tools Connectors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#high-touch-connectors" class="md-nav__link">
+    High Touch Connectors
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Tags -->
+
+
+<!-- Actions -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Actions -->
+
+
+<!--
+  Hack: check whether the content contains a h1 headline. If it doesn't, the
+  page title (or respectively site name) is used as the main headline.
+-->
+
+
+<!-- Page content -->
+<h1 id="data-integration-supported-connectors-in-dataos">Data Integration - Supported Connectors in DataOS<a class="headerlink" href="#data-integration-supported-connectors-in-dataos" title="Permanent link">&para;</a></h1>
+<p>The following section provides an overview of the data sources accessible by one or more components within DataOS.</p>
+<aside class="callout">
+🗣️ In relation to Minerva (DataOS's query engine), the supported source systems for query pushdown are also indicated.*
+</aside>
+
+<h2 id="supported-connectors">Supported Connectors<a class="headerlink" href="#supported-connectors" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Data Source</th>
+<th>Type</th>
+<th>Depot</th>
+<th>Minerva</th>
+<th>Pushdown Support (Minerva)</th>
+<th>Flare</th>
+<th>Scanner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ElasticSearch</td>
+<td>Database</td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+</tr>
+<tr>
+<td>Icebase (Iceberg Format)</td>
+<td>Database</td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+</tr>
+<tr>
+<td>MySQL</td>
+<td>Database</td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+</tr>
+<tr>
+<td>MS SQL</td>
+<td>Database</td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+</tr>
+<tr>
+<td>MongoDB</td>
+<td>Database</td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+</tr>
+<tr>
+<td>Oracle</td>
+<td>Database</td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+</tr>
+<tr>
+<td>PostgreSQL</td>
+<td>Database</td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+</tr>
+<tr>
+<td>Eventhub</td>
+<td>Messaging &amp; Streaming Datastore</td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+</tr>
+<tr>
+<td>Fastbase (Pulsar)</td>
+<td>Messaging &amp; Streaming Datastore</td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+</tr>
+<tr>
+<td>Kafka</td>
+<td>Messaging &amp; Streaming Datastore</td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+</tr>
+<tr>
+<td>AWS Redshift</td>
+<td>Warehouses &amp; Data Lake</td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+</tr>
+<tr>
+<td>AWS S3 Blob Storage</td>
+<td>Warehouses &amp; Data Lake</td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+</tr>
+<tr>
+<td>ABFSS (Azure Data Lake Gen2)</td>
+<td>Warehouses &amp; Data Lake</td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+</tr>
+<tr>
+<td>WASBS (Azure Blob Storage)</td>
+<td>Warehouses &amp; Data Lake</td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+</tr>
+<tr>
+<td>BigQuery</td>
+<td>Warehouses &amp; Data Lake</td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+</tr>
+<tr>
+<td>GCS (Google Cloud Storage)</td>
+<td>Warehouses &amp; Data Lake</td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+</tr>
+<tr>
+<td>Snowflake</td>
+<td>Warehouses &amp; Data Lake</td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+</tr>
+<tr>
+<td>"JDBC (any source exposed via JDBC driver is supported, e.g. MSSQL Server, SAP Hana)"</td>
+<td>Miscellaneous</td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+</tr>
+<tr>
+<td>OpenSearch</td>
+<td>Miscellaneous</td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+</tr>
+<tr>
+<td>Accumulo</td>
+<td>Databases</td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+</tr>
+<tr>
+<td>Cassandra</td>
+<td>Databases</td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+</tr>
+<tr>
+<td>ClickHouse</td>
+<td>Databases</td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+</tr>
+<tr>
+<td>DB2 (IBM)</td>
+<td>Databases</td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+</tr>
+<tr>
+<td>DOMO Database</td>
+<td>Databases</td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+</tr>
+<tr>
+<td>Ignite</td>
+<td>Databases (for in-memory computing)</td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+</tr>
+<tr>
+<td>Kudu</td>
+<td>Databases</td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+</tr>
+<tr>
+<td>Phoenix</td>
+<td>Databases</td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+</tr>
+<tr>
+<td>Pinot</td>
+<td>Databases</td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+</tr>
+<tr>
+<td>Prometheus</td>
+<td>Databases (Metrics Collection &amp; Time-series DB)</td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+</tr>
+<tr>
+<td>SingleStore</td>
+<td>Databases</td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+</tr>
+<tr>
+<td>Azure Databricks</td>
+<td>Warehouses &amp; Data lakes</td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+</tr>
+<tr>
+<td>Hive</td>
+<td>Warehouses &amp; Data Lake</td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+</tr>
+<tr>
+<td>Hudi</td>
+<td>Warehouses &amp; Data Lake</td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+</tr>
+<tr>
+<td>MariaDB</td>
+<td>Warehouses &amp; Data lakes</td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+</tr>
+<tr>
+<td>Delta Lake</td>
+<td>Lakehouse</td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+</tr>
+<tr>
+<td>Atop</td>
+<td>Miscellaneous (Linux Server Performance Analysis Tool)</td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+</tr>
+<tr>
+<td>AWS Glue</td>
+<td>Miscellaneous (Data Integration Service)</td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+</tr>
+<tr>
+<td>AWS Athena</td>
+<td>Miscellaneous (Interactive Analytics Service)</td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+</tr>
+<tr>
+<td>Druid</td>
+<td>Miscellaneous (for Real-time Analytics)</td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+</tr>
+<tr>
+<td>Google Sheets</td>
+<td>File System</td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+</tr>
+<tr>
+<td>JMX</td>
+<td>Miscellaneous</td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+</tr>
+<tr>
+<td>Kinesis</td>
+<td>Messaging &amp; Streaming Platform</td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+</tr>
+<tr>
+<td>Redis</td>
+<td>Miscellaneous</td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+<td><img alt="⬜" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2b1c.svg" title=":white_large_square:" /></td>
+</tr>
+</tbody>
+</table>
+<h2 id="airbyte-connectors">Airbyte - Connectors<a class="headerlink" href="#airbyte-connectors" title="Permanent link">&para;</a></h2>
+<p>In addition to the above mentioned sources, Airbyte has been seamlessly integrated into DataOS's Technology Stack. This integration empowers us to facilitate connectivity with approximately <strong>300 data sources</strong>, encompassing a wide array of WebAPIs and Analytics Tools. Refer to the comprehensive list below:</p>
+<details>
+<summary>List of connectors supported by Airbyte</summary>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sno.</th>
+      <th>Connector Name</th>
+      <th>Type</th>
+      <th>Sources</th>
+      <th>Destinations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>AlloyDB for Postgre SQL</td>
+      <td>Databases</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Apache Doris</td>
+      <td>Databases</td>
+      <td></td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Apache Iceberg</td>
+      <td>Databases</td>
+      <td></td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Apache Kafka</td>
+      <td>Databases</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Click House</td>
+      <td>Databases</td>
+      <td>Yes</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>CockroachDB</td>
+      <td>Databases</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Convex.dev</td>
+      <td>Databases</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>DuckDB</td>
+      <td>Databases</td>
+      <td></td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>DynamoDB</td>
+      <td>Databases</td>
+      <td>Yes</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Elasticsearch</td>
+      <td>Databases</td>
+      <td>Yes</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Fauna</td>
+      <td>Databases</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>Firebase</td>
+      <td>Databases</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Google Pubsub</td>
+      <td>Databases</td>
+      <td></td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>IBM Db2</td>
+      <td>Databases</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Kafka</td>
+      <td>Databases</td>
+      <td></td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>MSSQL SQL Server</td>
+      <td>Databases</td>
+      <td>Yes</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>MySQL</td>
+      <td>Databases</td>
+      <td>Yes</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>MongoDB</td>
+      <td>Databases</td>
+      <td>Yes</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Microsoft Dataverse</td>
+      <td>Databases</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Oracle DB</td>
+      <td>Databases</td>
+      <td>Yes</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>Postgre SQL</td>
+      <td>Databases</td>
+      <td>Yes</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>Pulsar</td>
+      <td>Databases</td>
+      <td>Yes</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>TiDB</td>
+      <td>Databases</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>Yugabytedb</td>
+      <td>Databases</td>
+      <td></td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>S3</td>
+      <td>Warehouses and Lakes</td>
+      <td>Yes</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>BigQuery</td>
+      <td>Warehouses and Lakes</td>
+      <td>Yes</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>MariaDB Columnstore</td>
+      <td>Warehouses and Lakes</td>
+      <td></td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>Firebolt</td>
+      <td>Warehouses and Lakes</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>Azure Blob Storage</td>
+      <td>Warehouses and Lakes</td>
+      <td></td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td>Azure Table Storage</td>
+      <td>Warehouses and Lakes</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>31</td>
+      <td>S3 Glue</td>
+      <td>Warehouses and Lakes</td>
+      <td></td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>32</td>
+      <td>Redshift</td>
+      <td>Warehouses and Lakes</td>
+      <td>Yes</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>33</td>
+      <td>Google Cloud Storage</td>
+      <td>Warehouses and Lakes</td>
+      <td></td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>34</td>
+      <td>Snowflake Data Cloud</td>
+      <td>Warehouses and Lakes</td>
+      <td>Yes</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>35</td>
+      <td>Teradata</td>
+      <td>Warehouses and Lakes</td>
+      <td></td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>36</td>
+      <td>Databricks Lakehouse</td>
+      <td>Warehouses and Lakes</td>
+      <td></td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>37</td>
+      <td>AWS</td>
+      <td>Warehouses and Lakes</td>
+      <td></td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>38</td>
+      <td>AWS Cloud Trail</td>
+      <td>Engineering Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>39</td>
+      <td>Amazon SQS</td>
+      <td>Engineering Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td>Auth0</td>
+      <td>Engineering Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>41</td>
+      <td>Ashby</td>
+      <td>Engineering Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>42</td>
+      <td>Convex</td>
+      <td>Engineering Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>43</td>
+      <td>Courier</td>
+      <td>Engineering Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>44</td>
+      <td>Datadog</td>
+      <td>Engineering Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>45</td>
+      <td>Dockerhub</td>
+      <td>Engineering Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>46</td>
+      <td>E2E Testing</td>
+      <td>Engineering Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>47</td>
+      <td>GitLab</td>
+      <td>Engineering Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>48</td>
+      <td>Harness</td>
+      <td>Engineering Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>49</td>
+      <td>Intruder</td>
+      <td>Engineering Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>50</td>
+      <td>K6 Cloud</td>
+      <td>Engineering Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>51</td>
+      <td>PagerDuty</td>
+      <td>Engineering Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>52</td>
+      <td>Jira</td>
+      <td>Engineering Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>53</td>
+      <td>Jenkins</td>
+      <td>Engineering Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>54</td>
+      <td>MeiliSearch</td>
+      <td>Engineering Analytics</td>
+      <td></td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>55</td>
+      <td>PyPI</td>
+      <td>Engineering Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>56</td>
+      <td>Rest Api</td>
+      <td>Engineering Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>57</td>
+      <td>Sentry</td>
+      <td>Engineering Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>58</td>
+      <td>SonarCloud</td>
+      <td>Engineering Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>59</td>
+      <td>Statuspage</td>
+      <td>Engineering Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>60</td>
+      <td>Statuspage.io</td>
+      <td>Engineering Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>61</td>
+      <td>Streamr</td>
+      <td>Engineering Analytics</td>
+      <td></td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>62</td>
+      <td>Typesense</td>
+      <td>Engineering Analytics</td>
+      <td></td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>63</td>
+      <td>Vantage</td>
+      <td>Engineering Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>64</td>
+      <td>VictorOps</td>
+      <td>Engineering Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>65</td>
+      <td>App follow</td>
+      <td>Product Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>66</td>
+      <td>Adjust</td>
+      <td>Product Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>67</td>
+      <td>Aha</td>
+      <td>Product Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>68</td>
+      <td>Amplitude</td>
+      <td>Product Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>69</td>
+      <td>Chartmogul</td>
+      <td>Product Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>70</td>
+      <td>Config Cat</td>
+      <td>Product Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>71</td>
+      <td>Keen</td>
+      <td>Product Analytics</td>
+      <td></td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>72</td>
+      <td>Launch Darkly</td>
+      <td>Product Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>73</td>
+      <td>Looker</td>
+      <td>Product Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>74</td>
+      <td>Mixpanel</td>
+      <td>Product Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>75</td>
+      <td>Metabase</td>
+      <td>Product Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>76</td>
+      <td>Plausible</td>
+      <td>Product Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>77</td>
+      <td>Posthog</td>
+      <td>Product Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>78</td>
+      <td>Microsoft Dynamics NAV</td>
+      <td>Product Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>79</td>
+      <td>Facebook Marketing</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>80</td>
+      <td>Facebook Pages</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>81</td>
+      <td>Google Ads</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>82</td>
+      <td>Google Analytics</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>83</td>
+      <td>Google Search Console</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>84</td>
+      <td>Instagram</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>85</td>
+      <td>Webflow</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>86</td>
+      <td>Active Campaign</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>87</td>
+      <td>Amazon Ads</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>88</td>
+      <td>Bing Ads</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>89</td>
+      <td>Braze</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>90</td>
+      <td>Cart</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>91</td>
+      <td>Emarsys</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>92</td>
+      <td>Formidable Forms</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>93</td>
+      <td>Heap</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>94</td>
+      <td>HubSpot</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>95</td>
+      <td>HubSpot CRM</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>96</td>
+      <td>HubSpot Marketing</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>97</td>
+      <td>Iterable</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>98</td>
+      <td>Klaviyo</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>99</td>
+      <td>LinkedIn Pages</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>100</td>
+      <td>LinkedIn</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>101</td>
+      <td>Mailchimp</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>102</td>
+      <td>Marketo</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>103</td>
+      <td>Microsoft Advertising</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>104</td>
+      <td>Microsoft Dynamics 365</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>105</td>
+      <td>Twitter Ads</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>106</td>
+      <td>LinkedIn Ads</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>107</td>
+      <td>Lokalise</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>108</td>
+      <td>Mailchimp</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>109</td>
+      <td>Mailgun</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>110</td>
+      <td>Mailjet Email</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>111</td>
+      <td>Mailjet SMS</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>112</td>
+      <td>Marketo</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>113</td>
+      <td>N8n</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>114</td>
+      <td>Omnisend</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>115</td>
+      <td>OneSignal</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>116</td>
+      <td>Orbit.love</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>117</td>
+      <td>PartnerStack</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>118</td>
+      <td>Pinterest Ads</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>119</td>
+      <td>Postmark App</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>120</td>
+      <td>Qualaroo</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>121</td>
+      <td>RD Station Marketing</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>122</td>
+      <td>SendGrid</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>123</td>
+      <td>Sendinblue</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>124</td>
+      <td>Short.io</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>125</td>
+      <td>Smaily</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>126</td>
+      <td>SmartEngage</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>127</td>
+      <td>Snapchat Marketing</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>128</td>
+      <td>SurveyMonkey</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>129</td>
+      <td>SurveySparrow</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>130</td>
+      <td>TikTok for Business Marketing</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>131</td>
+      <td>Twilio</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>132</td>
+      <td>Twitter</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>133</td>
+      <td>Tyntec SMS</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>134</td>
+      <td>Typeform</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>135</td>
+      <td>Whisky Hunter</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>136</td>
+      <td>Wordpress</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>137</td>
+      <td>Yandex Metrica</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>138</td>
+      <td>YouTube Analytics</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>139</td>
+      <td>Zapier Supported Storage</td>
+      <td>Marketing Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>140</td>
+      <td>App Store</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>141</td>
+      <td>Asana</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>142</td>
+      <td>Alpha Vantage</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>143</td>
+      <td>Airtable</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>144</td>
+      <td>Amazon Seller Partner</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>145</td>
+      <td>BambooHR</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>146</td>
+      <td>Big Commerce</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>147</td>
+      <td>Braintree</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>148</td>
+      <td>Chargebee</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>149</td>
+      <td>Chargify</td>
+      <td>Finance & Ops Analytics</td>
+      <td></td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>150</td>
+      <td>ClickUp</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>151</td>
+      <td>Clockify</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>152</td>
+      <td>Coin API</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>153</td>
+      <td>Coin Gecko Coins</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>154</td>
+      <td>CoinMarketCap</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>155</td>
+      <td>Exchange Rates API</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>156</td>
+      <td>Fastbill</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>157</td>
+      <td>Confluence</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>158</td>
+      <td>Commerce tools</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>159</td>
+      <td>Flexport</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>160</td>
+      <td>GetLago</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>161</td>
+      <td>Glassfrog</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>162</td>
+      <td>GoCardless</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>163</td>
+      <td>Greenhouse</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>164</td>
+      <td>Gutendex</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>165</td>
+      <td>Google Directory</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>166</td>
+      <td>Harvest</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>167</td>
+      <td>Hubplanner</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>168</td>
+      <td>Klarna</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>169</td>
+      <td>Lever Hiring</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>170</td>
+      <td>Kyriba</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>171</td>
+      <td>Linnworks</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>172</td>
+      <td>Notion</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>173</td>
+      <td>Okta</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>174</td>
+      <td>Google Workspace Admin Reports</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>175</td>
+      <td>Microsoft Dynamics AX</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>176</td>
+      <td>Microsoft Teams</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>177</td>
+      <td>Microsoft Dynamics GP</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>178</td>
+      <td>My Hours</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>179</td>
+      <td>Netsuite</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>180</td>
+      <td>Oracle PeopleSoft</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>181</td>
+      <td>Orb</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>182</td>
+      <td>Pagar.me</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>183</td>
+      <td>PayPal Transaction</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>184</td>
+      <td>Plaid</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>185</td>
+      <td>PrestaShop</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>186</td>
+      <td>Primetric</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>187</td>
+      <td>QuickBooks</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>188</td>
+      <td>Railz</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>189</td>
+      <td>Recharge</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>190</td>
+      <td>Recruitee</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>191</td>
+      <td>Recurly</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>192</td>
+      <td>Rocket.chat</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Sno.</th>
+      <th>Connector Name</th>
+      <th>Type</th>
+      <th>Sources</th>
+      <th>Destinations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>193</td>
+      <td>SAP Business One</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>194</td>
+      <td>SAP Fieldglass</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>195</td>
+      <td>Shopify</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>196</td>
+      <td>Slack</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>197</td>
+      <td>Spree Commerce</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>198</td>
+      <td>Square</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>199</td>
+      <td>Stripe</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>200</td>
+      <td>Tempo</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>201</td>
+      <td>Timely</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>202</td>
+      <td>Toggl</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>203</td>
+      <td>Trello</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>204</td>
+      <td>Visma E-conomic</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>205</td>
+      <td>WooCommerce</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>206</td>
+      <td>Workramp</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>207</td>
+      <td>Wrike</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>208</td>
+      <td>Younium</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>209</td>
+      <td>Zenefits</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>210</td>
+      <td>Zencart</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>211</td>
+      <td>Zoom</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>212</td>
+      <td>Zuora</td>
+      <td>Finance & Ops Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>213</td>
+      <td>Salesforce</td>
+      <td>Sales & Support Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>214</td>
+      <td>Close.com</td>
+      <td>Sales & Support Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>215</td>
+      <td>Coda</td>
+      <td>Sales & Support Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>216</td>
+      <td>Delighted</td>
+      <td>Sales & Support Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>217</td>
+      <td>Dixa</td>
+      <td>Sales & Support Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>218</td>
+      <td>Drift</td>
+      <td>Sales & Support Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>219</td>
+      <td>Freshcaller</td>
+      <td>Sales & Support Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>220</td>
+      <td>Freshdesk</td>
+      <td>Sales & Support Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>221</td>
+      <td>Freshsales</td>
+      <td>Sales & Support Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>222</td>
+      <td>Intercom</td>
+      <td>Sales & Support Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>223</td>
+      <td>Kustomer</td>
+      <td>Sales & Support Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>224</td>
+      <td>Oracle Siebel CRM</td>
+      <td>Sales & Support Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>225</td>
+      <td>Outreach</td>
+      <td>Sales & Support Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>226</td>
+      <td>PersistIq</td>
+      <td>Sales & Support Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>227</td>
+      <td>Pipedrive</td>
+      <td>Sales & Support Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>228</td>
+      <td>Reply.io</td>
+      <td>Sales & Support Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>229</td>
+      <td>Retently</td>
+      <td>Sales & Support Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>230</td>
+      <td>SalesLoft</td>
+      <td>Sales & Support Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>231</td>
+      <td>Sugar CRM</td>
+      <td>Sales & Support Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>232</td>
+      <td>TalkDesk Explore</td>
+      <td>Sales & Support Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>233</td>
+      <td>Vitally</td>
+      <td>Sales & Support Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>234</td>
+      <td>Zendesk Chat</td>
+      <td>Sales & Support Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>235</td>
+      <td>Zendesk Sell</td>
+      <td>Sales & Support Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>236</td>
+      <td>Zendesk Sunshine</td>
+      <td>Sales & Support Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>237</td>
+      <td>Zendesk Support</td>
+      <td>Sales & Support Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>238</td>
+      <td>Zendesk Talk</td>
+      <td>Sales & Support Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>239</td>
+      <td>Zenloop</td>
+      <td>Sales & Support Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>240</td>
+      <td>Zoho CRM</td>
+      <td>Sales & Support Analytics</td>
+      <td>Yes</td>
+      <td></td>
+    </tr>
+  <tr>
+    <td>241</td>
+    <td>Microsoft Dynamics Customer Engagement</td>
+    <td>Sales & Support Analytics</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>242</td>
+    <td>Google Sheets</td>
+    <td>Files</td>
+    <td>Yes</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>243</td>
+    <td>CSV</td>
+    <td>Files</td>
+    <td>Yes</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>244</td>
+    <td>Excel</td>
+    <td>Files</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>245</td>
+    <td>Feather</td>
+    <td>Files</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>246</td>
+    <td>JSON File</td>
+    <td>Files</td>
+    <td>Yes</td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>247</td>
+    <td>SFTP</td>
+    <td>Files</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>248</td>
+    <td>Parquet File</td>
+    <td>Files</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>249</td>
+    <td>Smartsheets</td>
+    <td>Files</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>250</td>
+    <td>Apify</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>251</td>
+    <td>Breezometer</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>252</td>
+    <td>Faker</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>253</td>
+    <td>NASA</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>254</td>
+    <td>New York Times</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>255</td>
+    <td>News API</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>256</td>
+    <td>IP2Whois</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>257</td>
+    <td>Google Webfonts</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>258</td>
+    <td>Newsdata</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>259</td>
+    <td>OpenWeather</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>260</td>
+    <td>Oura</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>261</td>
+    <td>Pexels API</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>262</td>
+    <td>Pocket</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>263</td>
+    <td>PokéAPI</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>264</td>
+    <td>Polygon</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>265</td>
+    <td>Public API</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>266</td>
+    <td>Punk API</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>267</td>
+    <td>REST Countries</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>268</td>
+    <td>RKI Covid</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>269</td>
+    <td>RSS</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>270</td>
+    <td>Recreation.gov</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>271</td>
+    <td>SFTP Bulk</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>272</td>
+    <td>SearchMetrics</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>273</td>
+    <td>Secoda</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>274</td>
+    <td>Senseforce</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>275</td>
+    <td>SpaceX API</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>276</td>
+    <td>Strava</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>277</td>
+    <td>TMDb</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>278</td>
+    <td>TVMaze Schedule</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>279</td>
+    <td>The Guardian API</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>280</td>
+    <td>US Census</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>281</td>
+    <td>Waiteraid</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>282</td>
+    <td>Weatherstack</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>283</td>
+    <td>Wikipedia Pageviews</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>284</td>
+    <td>xkcd</td>
+    <td>Others</td>
+    <td>Yes</td>
+    <td></td>
+  </tr>
+</tbody>
+</table>
+
+</details>
+
+<h2 id="bi-tools-connectors">BI Tools Connectors<a class="headerlink" href="#bi-tools-connectors" title="Permanent link">&para;</a></h2>
+<p>DataOS seamlessly integrates with multiple Business Intelligence (BI) Tools, including Tableau, PowerBI, and IBM SPSS Statistics. Refer to the link to know <a href="../../../interfaces/atlas/bi_tools/">more</a></p>
+<h2 id="high-touch-connectors">High Touch Connectors<a class="headerlink" href="#high-touch-connectors" title="Permanent link">&para;</a></h2>
+<p>DataOS also provides integration with HighTouch, enabling the syndication of data from diverse Data Warehouses, Spreadsheets, and Data Lakes to over 125 Software-as-a-Service (SaaS) tools and Business Applications. This functionality empowers various Reverse-ETL use cases.</p>
+<p>Refer to the following list of supported Destinations and Sources within HighTouch:</p>
+<details><summary>List of Sources supported by Hightouch</summary>
+<center>
+<table>
+  <thead>
+    <tr>
+      <th>Sno.</th>
+      <th>Connector Name</th>
+      <th>Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>AlloyDB</td>
+      <td>Data System</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Amazon Athena</td>
+      <td>Data System</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Amazon Redshift</td>
+      <td>Data System</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Azure Synapse</td>
+      <td>Data System</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>ClickHouse</td>
+      <td>Data System</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Databricks</td>
+      <td>Data System</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Elasticsearch</td>
+      <td>Data System</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Firebolt</td>
+      <td>Data System</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Google BigQuery</td>
+      <td>Data System</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Greenplum Database</td>
+      <td>Data System</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Microsoft SQL Server</td>
+      <td>Data System</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>MongoDB</td>
+      <td>Data System</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>MySQL</td>
+      <td>Data System</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Oracle</td>
+      <td>Data System</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Palantir Foundary</td>
+      <td>Data System</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>PlanetScale</td>
+      <td>Data System</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>PostgreSQL</td>
+      <td>Data System</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Rockset</td>
+      <td>Data System</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Snowflake</td>
+      <td>Data System</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Trino</td>
+      <td>Data System</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>Amazon S3</td>
+      <td>Other</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>Azure Blob Storage</td>
+      <td>Other</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>Google Cloud Storage</td>
+      <td>Other</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>Metabase</td>
+      <td>Other</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>Mixpanel Cohort</td>
+      <td>Other</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>SFTP</td>
+      <td>Other</td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>Tableau</td>
+      <td>Other</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>Airtable</td>
+      <td>Spreadsheets</td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>Google Sheets</td>
+      <td>Spreadsheets</td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td>Microsoft Excel</td>
+      <td>Spreadsheets</td>
+    </tr>
+  </tbody>
+</table>
+</center>
+
+</details>
+
+<details><summary>List of Destinations supported by Hightouch</summary>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sno.</th>
+      <th>Connector Name</th>
+      <th>Type</th>
+      <th>Additional Capability</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>AlloyDB</td>
+      <td>Databases</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>CockroachDB</td>
+      <td>Databases</td>
+      <td>Developer tool and Advertising</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>DynamoDB</td>
+      <td>Databases</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>HubDB</td>
+      <td>Databases</td>
+      <td>Email, Sales, Live chat and help desk</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>IBMDB2</td>
+      <td>Databases</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>MariaDB</td>
+      <td>Databases</td>
+      <td>Developer Tool</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>MongoDB</td>
+      <td>Databases</td>
+      <td>Developer Tool</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>OracleDB</td>
+      <td>Databases</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Firestore</td>
+      <td>Databases</td>
+      <td>Developer Tool</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Hightouch Personalization API</td>
+      <td>Databases</td>
+      <td>Developer Tool and Product Experience</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>MySQL</td>
+      <td>Databases</td>
+      <td>Developer Tool</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>PostgreSQL</td>
+      <td>Databases</td>
+      <td>Developer Tool</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Redis</td>
+      <td>Databases</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Rockset</td>
+      <td>Databases</td>
+      <td>Developer Tool</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>SQLServer</td>
+      <td>Databases</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Adobe Target</td>
+      <td>Analytics</td>
+      <td>Product Experience</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Algolia</td>
+      <td>Analytics</td>
+      <td>Product Experience</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Amplitude</td>
+      <td>Analytics</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Calixa</td>
+      <td>Analytics</td>
+      <td>CRM and Customer Success</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>ChartMogul</td>
+      <td>Analytics</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>FullStory</td>
+      <td>Analytics</td>
+      <td>Product Experience and Surveys</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>Gainsight</td>
+      <td>Analytics</td>
+      <td>Customer Success, Product Experience and Surveys</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>GainsightPX</td>
+      <td>Analytics</td>
+      <td>Customer Success, Product Experience and Surveys</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>Google Analytics</td>
+      <td>Analytics</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>Heap</td>
+      <td>Analytics</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>Mixpanel</td>
+      <td>Analytics</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>MoEngage</td>
+      <td>Analytics</td>
+      <td>Email, SMS and Push</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>mParticle</td>
+      <td>Analytics</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>Optimizely</td>
+      <td>Analytics</td>
+      <td>Product Experience</td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td>Orbit</td>
+      <td>Analytics</td>
+      <td>CRM and Customer Success</td>
+    </tr>
+    <tr>
+      <td>31</td>
+      <td>Pendo</td>
+      <td>Analytics</td>
+      <td>Product Experience and Surveys</td>
+    </tr>
+    <tr>
+      <td>32</td>
+      <td>Planhat</td>
+      <td>Analytics</td>
+      <td>Customer Success</td>
+    </tr>
+    <tr>
+      <td>33</td>
+      <td>PostHog</td>
+      <td>Analytics</td>
+      <td>Product Experience</td>
+    </tr>
+    <tr>
+      <td>34</td>
+      <td>Rudderstack</td>
+      <td>Analytics</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>35</td>
+      <td>Segment</td>
+      <td>Analytics</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>36</td>
+      <td>Singular</td>
+      <td>Analytics</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>37</td>
+      <td>Statsig</td>
+      <td>Analytics</td>
+      <td>Product Experience</td>
+    </tr>
+    <tr>
+      <td>38</td>
+      <td>Vitally</td>
+      <td>Analytics</td>
+      <td>Customer Success and Surveys</td>
+    </tr>
+    <tr>
+      <td>39</td>
+      <td>Anaplan</td>
+      <td>Finance and ERP</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td>Microsoft Dynamics 365</td>
+      <td>Finance and ERP</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>41</td>
+      <td>NetSuite (REST)</td>
+      <td>Finance and ERP</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>42</td>
+      <td>NetSuite (SOAP)</td>
+      <td>Finance and ERP</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>43</td>
+      <td>QuickBooks</td>
+      <td>Finance and ERP</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>44</td>
+      <td>Sage Intacct</td>
+      <td>Finance and ERP</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>45</td>
+      <td>SAPS/4HANA</td>
+      <td>Finance and ERP</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>46</td>
+      <td>Workday</td>
+      <td>Finance and ERP</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>47</td>
+      <td>Xero</td>
+      <td>Finance and ERP</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>48</td>
+      <td>Zuora</td>
+      <td>Finance and ERP</td>
+      <td>Payments</td>
+    </tr>
+    <tr>
+      <td>49</td>
+      <td>Azure Blob Storage</td>
+      <td>File Storage</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>50</td>
+      <td>Box</td>
+      <td>File Storage</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>51</td>
+      <td>Dropbox</td>
+      <td>File Storage</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>52</td>
+      <td>Google Cloud Storage</td>
+      <td>File Storage</td>
+      <td>Developer Tools</td>
+    </tr>
+    <tr>
+      <td>53</td>
+      <td>Google Drive</td>
+      <td>File Storage</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>54</td>
+      <td>Microsoft OneDrive</td>
+      <td>File Storage</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>55</td>
+      <td>S3</td>
+      <td>File Storage</td>
+      <td>Developer Tools</td>
+    </tr>
+    <tr>
+      <td>56</td>
+      <td>SFTP</td>
+      <td>File Storage</td>
+      <td>Developer Tools</td>
+    </tr>
+    <tr>
+      <td>57</td>
+      <td>ActiveCampaign</td>
+      <td>CRM</td>
+      <td>Email and Sales</td>
+    </tr>
+    <tr>
+      <td>58</td>
+      <td>Attio</td>
+      <td>CRM</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>59</td>
+      <td>Close</td>
+      <td>CRM</td>
+      <td>Email and Sales</td>
+    </tr>
+    <tr>
+      <td>60</td>
+      <td>Correlated</td>
+      <td>CRM</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>61</td>
+      <td>Freshsales</td>
+      <td>CRM</td>
+      <td>Email, Sales, Live chat and help desk</td>
+    </tr>
+    <tr>
+      <td>62</td>
+      <td>HubSpot</td>
+      <td>CRM</td>
+      <td>Email, Sales and Live chat and help desk</td>
+    </tr>
+    <tr>
+      <td>63</td>
+      <td>Kustomer</td>
+      <td>CRM</td>
+      <td>Customer Success, Email, Live chat and help desk, SMS and Push.</td>
+    </tr>
+    <tr>
+      <td>64</td>
+      <td>Microsoft Dynamics 365</td>
+      <td>CRM</td>
+      <td>Finance and ERP</td>
+    </tr>
+    <tr>
+      <td>65</td>
+      <td>NCR Advanced Marketing Solution</td>
+      <td>CRM</td>
+      <td>Advertising</td>
+    </tr>
+    <tr>
+      <td>66</td>
+      <td>Pipedrive</td>
+      <td>CRM</td>
+      <td>Email and Sales</td>
+    </tr>
+    <tr>
+      <td>67</td>
+      <td>Salesforce</td>
+      <td>CRM</td>
+      <td>Customer Success, and Sales</td>
+    </tr>
+    <tr>
+      <td>68</td>
+      <td>Salesforce (Sandbox)</td>
+      <td>CRM</td>
+      <td>Customer Success, and Sales</td>
+    </tr>
+    <tr>
+      <td>69</td>
+      <td>Salesloft</td>
+      <td>CRM</td>
+      <td>Email and Sales</td>
+    </tr>
+    <tr>
+      <td>70</td>
+      <td>Zoho CRM</td>
+      <td>CRM</td>
+      <td>Email and Sales</td>
+    </tr>
+    <tr>
+      <td>71</td>
+      <td>ChurnZero</td>
+      <td>Customer Success</td>
+      <td>Product Experience and Surveys</td>
+    </tr>
+    <tr>
+      <td>72</td>
+      <td>ClientSuccess</td>
+      <td>Customer Success</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>73</td>
+      <td>Freshdesk</td>
+      <td>Customer Success</td>
+      <td>Live Chat & help desk</td>
+    </tr>
+    <tr>
+      <td>74</td>
+      <td>Intercom</td>
+      <td>Customer Success</td>
+      <td>Email. Live chat & help desk, product experience, Sales and Surveys</td>
+    </tr>
+    <tr>
+      <td>75</td>
+      <td>Planhat</td>
+      <td>Customer Success</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>76</td>
+      <td>SMTP Email</td>
+      <td>Customer Success</td>
+      <td>Email</td>
+    </tr>
+    <tr>
+      <td>77</td>
+      <td>Totango</td>
+      <td>Customer Success</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>78</td>
+      <td>Amazon EventBridge</td>
+      <td>Developer Tools</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>79</td>
+      <td>Amazon Kinesis</td>
+      <td>Developer Tools</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>80</td>
+      <td>Amazon SNS</td>
+      <td>Developer Tools</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>81</td>
+      <td>Amazon SQS</td>
+      <td>Developer Tools</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>82</td>
+      <td>Apache Kafka</td>
+      <td>Developer Tools</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>83</td>
+      <td>Auth0</td>
+      <td>Developer Tools</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>84</td>
+      <td>AWS Lambda</td>
+      <td>Developer Tools</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>85</td>
+      <td>Azure Functions</td>
+      <td>Developer Tools</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>86</td>
+      <td>Embedded Destination</td>
+      <td>Developer Tools</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>87</td>
+      <td>Google Cloud Functions</td>
+      <td>Developer Tools</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>88</td>
+      <td>Google Cloud Pub/Sub</td>
+      <td>Developer Tools</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>89</td>
+      <td>HTTP Request</td>
+      <td>Developer Tools</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>90</td>
+      <td>RabbitMQ</td>
+      <td>Developer Tools</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>91</td>
+      <td>Webflow</td>
+      <td>Developer Tools</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>92</td>
+      <td>Zapier</td>
+      <td>Developer Tools</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>93</td>
+      <td>Attentive</td>
+      <td>E-commerce</td>
+      <td>SMS &amp; Push and Advertising</td>
+    </tr>
+    <tr>
+      <td>94</td>
+      <td>BigCommerce</td>
+      <td>E-commerce</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>95</td>
+      <td>Bloomreach</td>
+      <td>E-commerce</td>
+      <td>Email, SMS &amp; Push</td>
+    </tr>
+    <tr>
+      <td>96</td>
+      <td>Facebook Product Catalog</td>
+      <td>E-commerce</td>
+      <td>Advertising</td>
+    </tr>
+    <tr>
+      <td>97</td>
+      <td>Rokt</td>
+      <td>E-commerce</td>
+      <td>Advertising</td>
+    </tr>
+    <tr>
+      <td>98</td>
+      <td>Shopify</td>
+      <td>E-commerce</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>99</td>
+      <td>Acoustic</td>
+      <td>Email</td>
+      <td>SMS &amp; Push</td>
+    </tr>
+    <tr>
+      <td>100</td>
+      <td>Braze</td>
+      <td>Email</td>
+      <td>SMS &amp; Push</td>
+    </tr>
+    <tr>
+      <td>101</td>
+      <td>Braze Cohorts</td>
+      <td>Email</td>
+      <td>SMS &amp; Push</td>
+    </tr>
+    <tr>
+      <td>102</td>
+      <td>Campaign Monitor</td>
+      <td>Email</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>103</td>
+      <td>Campaigner</td>
+      <td>Email</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>104</td>
+      <td>Clever Tap</td>
+      <td>Email</td>
+      <td>SMS &amp; Push</td>
+    </tr>
+    <tr>
+      <td>105</td>
+      <td>Cordial</td>
+      <td>Email</td>
+      <td>SMS &amp; Push</td>
+    </tr>
+    <tr>
+      <td>106</td>
+      <td>Courier</td>
+      <td>Email</td>
+      <td>Internal Notification, SMS &amp; Push</td>
+    </tr>
+    <tr>
+      <td>107</td>
+      <td>Customer.io</td>
+      <td>Email</td>
+      <td>SMS &amp; Push</td>
+    </tr>
+    <tr>
+      <td>108</td>
+      <td>Drift</td>
+      <td>Email</td>
+      <td>Live chat &amp; help desk, Sales</td>
+    </tr>
+    <tr>
+      <td>109</td>
+      <td>Eloqua</td>
+      <td>Email</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>110</td>
+      <td>Emarsys</td>
+      <td>Email</td>
+      <td>SMS and Push</td>
+    </tr>
+    <tr>
+      <td>111</td>
+      <td>Help Scout</td>
+      <td>Email</td>
+      <td>Live chat &amp; help desk</td>
+    </tr>
+    <tr>
+      <td>112</td>
+      <td>Iterable</td>
+      <td>Email</td>
+      <td>SMS &amp; Push</td>
+    </tr>
+    <tr>
+      <td>113</td>
+      <td>Klaviyo</td>
+      <td>Email</td>
+      <td>SMS &amp; Push</td>
+    </tr>
+    <tr>
+      <td>114</td>
+      <td>Mailchimp</td>
+      <td>Email</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>115</td>
+      <td>Marketo</td>
+      <td>Email</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>116</td>
+      <td>OneSignal</td>
+      <td>Email</td>
+      <td>SMS &amp; Push</td>
+    </tr>
+    <tr>
+      <td>117</td>
+      <td>Ortto</td>
+      <td>Email</td>
+      <td>SMS &amp; Push</td>
+    </tr>
+    <tr>
+      <td>118</td>
+      <td>Outreach</td>
+      <td>Email</td>
+      <td>Sales</td>
+    </tr>
+    <tr>
+      <td>119</td>
+      <td>Reply.io</td>
+      <td>Email</td>
+      <td>Sales</td>
+    </tr>
+    <tr>
+      <td>120</td>
+      <td>Responsys</td>
+      <td>Email</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>121</td>
+      <td>Retention Science</td>
+      <td>Email</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>122</td>
+      <td>Sailthru</td>
+      <td>Email</td>
+      <td>SMS &amp; Push</td>
+    </tr>
+    <tr>
+      <td>123</td>
+      <td>Salesforce Marketing Cloud</td>
+      <td>Email</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>124</td>
+      <td>Salesforce Pardot</td>
+      <td>Email</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>125</td>
+      <td>Salesforce Pardot (Sandbox)</td>
+      <td>Email</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>126</td>
+      <td>SendGrid</td>
+      <td>Email</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>127</td>
+      <td>Vero</td>
+      <td>Email</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>128</td>
+      <td>Mattermost</td>
+      <td>Internal Notifications</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>129</td>
+      <td>Microsoft Teams</td>
+      <td>Internal Notifications</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>130</td>
+      <td>Slack</td>
+      <td>Internal Notifications</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>131</td>
+      <td>Front</td>
+      <td>Live chat &amp; help desk</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>132</td>
+      <td>Gladly</td>
+      <td>Live chat &amp; help desk</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>133</td>
+      <td>Zendesk</td>
+      <td>Live chat &amp; help desk</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>134</td>
+      <td>Chargebee</td>
+      <td>Payments</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>135</td>
+      <td>Stripe</td>
+      <td>Payments</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>136</td>
+      <td>Zuora</td>
+      <td>Payments</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>137</td>
+      <td>Appcues</td>
+      <td>Product Experience</td>
+      <td>Surveys</td>
+    </tr>
+    <tr>
+      <td>138</td>
+      <td>Chameleon</td>
+      <td>Product Experience</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>139</td>
+      <td>LaunchDarkly</td>
+      <td>Product Experience</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>140</td>
+      <td>Userflow</td>
+      <td>Product Experience</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>141</td>
+      <td>Airtable</td>
+      <td>Productivity Tools</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>142</td>
+      <td>Asana</td>
+      <td>Productivity Tools</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>143</td>
+      <td>ClickUp</td>
+      <td>Productivity Tools</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>144</td>
+      <td>Google Sheets</td>
+      <td>Productivity Tools</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>145</td>
+      <td>Google Sheets (Service Account)</td>
+      <td>Productivity Tools</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>146</td>
+      <td>Jira</td>
+      <td>Productivity Tools</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>147</td>
+      <td>Microsoft Excel</td>
+      <td>Productivity Tools</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>148</td>
+      <td>Notion</td>
+      <td>Productivity Tools</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>149</td>
+      <td>ServiceNow</td>
+      <td>Productivity Tools</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>150</td>
+      <td>KakaoTalk</td>
+      <td>SMS &amp; Push</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>151</td>
+      <td>Line</td>
+      <td>SMS &amp; Push</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>152</td>
+      <td>WhatsApp</td>
+      <td>SMS &amp; Push</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>153</td>
+      <td>Gong</td>
+      <td>Sales</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>154</td>
+      <td>Partnerstack</td>
+      <td>Sales</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>156</td>
+      <td>Delighted</td>
+      <td>Surveys</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>157</td>
+      <td>Qualtrics</td>
+      <td>Surveys</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>158</td>
+      <td>User Interviews</td>
+      <td>Surveys</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>159</td>
+      <td>Amazon Ads</td>
+      <td>Advertising</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>160</td>
+      <td>Amobee</td>
+      <td>Advertising</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>161</td>
+      <td>Beeswax</td>
+      <td>Advertising</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>162</td>
+      <td>Bing Ads</td>
+      <td>Advertising</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>163</td>
+      <td>CitrusAd</td>
+      <td>Advertising</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>164</td>
+      <td>Criteo</td>
+      <td>Advertising</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>165</td>
+      <td>eBay</td>
+      <td>Advertising</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>166</td>
+      <td>Facebook Conversions</td>
+      <td>Advertising</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>167</td>
+      <td>Facebook Custom Audiences</td>
+      <td>Advertising</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>168</td>
+      <td>Facebook Offline Conversions</td>
+      <td>Advertising</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>169</td>
+      <td>Google Ad Manager 360</td>
+      <td>Advertising</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>170</td>
+      <td>Google Ads</td>
+      <td>Advertising</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>171</td>
+      <td>Google Campaign Manager 360</td>
+      <td>Advertising</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>172</td>
+      <td>Google Display &amp; Video 360</td>
+      <td>Advertising</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>173</td>
+      <td>Google Search Ads 360</td>
+      <td>Advertising</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>174</td>
+      <td>LinkedIn Ads</td>
+      <td>Advertising</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>175</td>
+      <td>NCR Advanced Marketing Solution</td>
+      <td>Advertising</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>176</td>
+      <td>Pinterest Ads</td>
+      <td>Advertising</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>177</td>
+      <td>Reddit Ads</td>
+      <td>Advertising</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>178</td>
+      <td>Rokt</td>
+      <td>Advertising</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>179</td>
+      <td>Snapchat</td>
+      <td>Advertising</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>180</td>
+      <td>Spotify</td>
+      <td>Advertising</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>181</td>
+      <td>StackAdapt</td>
+      <td>Advertising</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>182</td>
+      <td>The Trade Desk</td>
+      <td>Advertising</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>183</td>
+      <td>TikTok</td>
+      <td>Advertising</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>184</td>
+      <td>Twitter Ads</td>
+      <td>Advertising</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>185</td>
+      <td>Yahoo</td>
+      <td>Advertising</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+</details>
+
+<!-- Source file information -->
+
+
+<!-- Was this page helpful? -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine feedback configuration -->
+
+  
+
+
+<!-- Determine whether to show feedback -->
+
+
+<!-- Was this page helpful? -->
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+
+        <!-- Feedback ratings -->
+        <div class="md-feedback__list">
+          
+            <button
+              class="md-feedback__icon md-icon"
+              type="submit"
+              title="This page was helpful"
+              data-md-value="1"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9h4m4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21H9m0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03V19Z"/></svg>
+            </button>
+          
+            <button
+              class="md-feedback__icon md-icon"
+              type="submit"
+              title="This page could be improved"
+              data-md-value="0"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12h-4M15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3h9m0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97V5Z"/></svg>
+            </button>
+          
+        </div>
+
+        <!-- Feedback rating notes (shown after submission) -->
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+
+              <!-- Determine title -->
+              
+                
+              
+
+              <!-- Replace {url} and {title} placeholders in note -->
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+
+              <!-- Determine title -->
+              
+                
+              
+
+              <!-- Replace {url} and {title} placeholders in note -->
+              Thanks for your feedback!
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<!-- Comment system -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Comment system -->
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <!-- Repository information -->
+  
+
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-meta__content">
+        <div class="md-footer-social-and-modern-logo">
+          
+          <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Social links -->
+<div class="md-social">
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://www.facebook.com/themoderndatacompany"
+      target="_blank" rel="noopener"
+      title="www.facebook.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/facebook.png"
+    title="www.facebook.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://twitter.com/TheModernDataCo"
+      target="_blank" rel="noopener"
+      title="twitter.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/twitter.png"
+    title="twitter.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://www.linkedin.com/company/themoderndatacompany"
+      target="_blank" rel="noopener"
+      title="www.linkedin.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/linkedin.png"
+    title="www.linkedin.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+</div>
+          
+          <a href="https://themoderndatacompany.com" target="_blank">
+            <img src="/assets/ModernLogo.png" width="251" class="modern-logo" />
+          </a>
+        </div>
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Copyright and theme information -->
+<div class="md-copyright">
+  
+  <a href="https://themoderndatacompany.com/contact-us" target="_blank" rel="noopener"> Contact Us </a> | <a
+    href="https://themoderndatacompany.com/privacy-policy" target="_blank" rel="noopener"> Privacy Policy </a> | <a
+    href="https://themoderndatacompany.com/terms-of-use" target="_blank" rel="noopener"> Terms of Use </a>
+  
+  
+  <div class="md-copyright__highlight">
+    Copyright ⓒ 2024 The Modern Data Company
+  </div>
+  
+</div>
+      </div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.top", "navigation.tracking", "content.code.copy", "content.code.annotate", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.bd41221c.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.6.4/dist/mermaid.js"></script>
+      
+    
+  </body>
+</html>

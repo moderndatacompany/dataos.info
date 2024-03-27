@@ -1,0 +1,2988 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../notebook/">
+      
+      
+        <link rel="next" href="../workbench/">
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.15">
+    
+    
+      
+        <title>Operations - All things DataOS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Custom admonition icons -->
+
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.5 1.75v11.5c0 .138.112.25.25.25h3.17a.75.75 0 0 1 0 1.5H2.75A1.75 1.75 0 0 1 1 13.25V1.75C1 .784 1.784 0 2.75 0h8.5C12.216 0 13 .784 13 1.75v7.736a.75.75 0 0 1-1.5 0V1.75a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13.274 9.537v-.001l-4.557 4.45a.75.75 0 0 1-1.055-.008l-1.943-1.95a.75.75 0 0 1 1.062-1.058l1.419 1.425 4.026-3.932a.75.75 0 1 1 1.048 1.074ZM4.75 4h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM4 7.75A.75.75 0 0 1 4.75 7h2a.75.75 0 0 1 0 1.5h-2A.75.75 0 0 1 4 7.75Z"/></svg>');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/></svg>');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25Zm7.47 3.97a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L10.69 8 9.22 6.53a.75.75 0 0 1 0-1.06ZM6.78 6.53 5.31 8l1.47 1.47a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215l-2-2a.75.75 0 0 1 0-1.06l2-2a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"/></svg>');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.92 6.085h.001a.749.749 0 1 1-1.342-.67c.169-.339.436-.701.849-.977C6.845 4.16 7.369 4 8 4a2.756 2.756 0 0 1 1.637.525c.503.377.863.965.863 1.725 0 .448-.115.83-.329 1.15-.205.307-.47.513-.692.662-.109.072-.22.138-.313.195l-.006.004a6.24 6.24 0 0 0-.26.16.952.952 0 0 0-.276.245.75.75 0 0 1-1.248-.832c.184-.264.42-.489.692-.661.103-.067.207-.132.313-.195l.007-.004c.1-.061.182-.11.258-.161a.969.969 0 0 0 .277-.245C8.96 6.514 9 6.427 9 6.25a.612.612 0 0 0-.262-.525A1.27 1.27 0 0 0 8 5.5c-.369 0-.595.09-.74.187a1.01 1.01 0 0 0-.34.398ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.344 2.343h-.001a8 8 0 0 1 11.314 11.314A8.002 8.002 0 0 1 .234 10.089a8 8 0 0 1 2.11-7.746Zm1.06 10.253a6.5 6.5 0 1 0 9.108-9.275 6.5 6.5 0 0 0-9.108 9.275ZM6.03 4.97 8 6.94l1.97-1.97a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l1.97 1.97a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-1.97 1.97a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L6.94 8 4.97 6.03a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018Z"/></svg>');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M9.504.43a1.516 1.516 0 0 1 2.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.249 1.249 0 0 1-.871.354h-.302a1.25 1.25 0 0 1-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429Zm1.047 1.074L3.286 8.571A.25.25 0 0 0 3.462 9H6.75a.75.75 0 0 1 .694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0 0 12.538 7H9.25a.75.75 0 0 1-.683-1.06l2.008-4.418.003-.006a.036.036 0 0 0-.004-.009l-.006-.006-.008-.001c-.003 0-.006.002-.009.004Z"/></svg>');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M4.72.22a.75.75 0 0 1 1.06 0l1 .999a3.488 3.488 0 0 1 2.441 0l.999-1a.748.748 0 0 1 1.265.332.75.75 0 0 1-.205.729l-.775.776c.616.63.995 1.493.995 2.444v.327c0 .1-.009.197-.025.292.408.14.764.392 1.029.722l1.968-.787a.75.75 0 0 1 .556 1.392L13 7.258V9h2.25a.75.75 0 0 1 0 1.5H13v.5c0 .409-.049.806-.141 1.186l2.17.868a.75.75 0 0 1-.557 1.392l-2.184-.873A4.997 4.997 0 0 1 8 16a4.997 4.997 0 0 1-4.288-2.427l-2.183.873a.75.75 0 0 1-.558-1.392l2.17-.868A5.036 5.036 0 0 1 3 11v-.5H.75a.75.75 0 0 1 0-1.5H3V7.258L.971 6.446a.75.75 0 0 1 .558-1.392l1.967.787c.265-.33.62-.583 1.03-.722a1.677 1.677 0 0 1-.026-.292V4.5c0-.951.38-1.814.995-2.444L4.72 1.28a.75.75 0 0 1 0-1.06Zm.53 6.28a.75.75 0 0 0-.75.75V11a3.5 3.5 0 1 0 7 0V7.25a.75.75 0 0 0-.75-.75ZM6.173 5h3.654A.172.172 0 0 0 10 4.827V4.5a2 2 0 1 0-4 0v.327c0 .096.077.173.173.173Z"/></svg>');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M5 5.782V2.5h-.25a.75.75 0 0 1 0-1.5h6.5a.75.75 0 0 1 0 1.5H11v3.282l3.666 5.76C15.619 13.04 14.543 15 12.767 15H3.233c-1.776 0-2.852-1.96-1.899-3.458Zm-2.4 6.565a.75.75 0 0 0 .633 1.153h9.534a.75.75 0 0 0 .633-1.153L12.225 10.5h-8.45ZM9.5 2.5h-3V6c0 .143-.04.283-.117.403L4.73 9h6.54L9.617 6.403A.746.746 0 0 1 9.5 6Z"/></svg>');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"/></svg>');}</style>
+
+
+<!-- Custom tag icons -->
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-ZH4G0HKBQC"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-ZH4G0HKBQC",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-ZH4G0HKBQC",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="blue-grey">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#operations" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine base classes -->
+
+
+
+<!-- Header -->
+<header class="md-header" data-md-component="header">
+  <nav
+    class="md-header__inner md-grid"
+    aria-label="Header"
+  >
+
+    <!-- Link to home -->
+    <a
+      href="../.."
+      title="All things DataOS"
+      class="md-header__button md-logo"
+      aria-label="All things DataOS"
+      data-md-component="logo"
+    >
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Logo -->
+
+  <img src="../../assets/light-modern-logo.png" alt="logo" />
+
+    </a>
+
+    <!-- Button to open drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            All things DataOS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Operations
+            
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color palette -->
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input
+            class="md-option"
+            data-md-color-media=""
+            data-md-color-scheme="default"
+            data-md-color-primary="blue-grey"
+            data-md-color-accent="blue-grey"
+            
+              aria-label="Switch to dark mode"
+            
+            type="radio"
+            name="__palette"
+            id="__palette_1"
+          />
+          
+            <label
+              class="md-header__button md-icon"
+              title="Switch to dark mode"
+              for="__palette_2"
+              hidden
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          <input
+            class="md-option"
+            data-md-color-media=""
+            data-md-color-scheme="slate"
+            data-md-color-primary="grey"
+            data-md-color-accent="grey"
+            
+              aria-label="Switch to light mode"
+            
+            type="radio"
+            name="__palette"
+            id="__palette_2"
+          />
+          
+            <label
+              class="md-header__button md-icon"
+              title="Switch to light mode"
+              for="__palette_1"
+              hidden
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+
+    <!-- Site language selector -->
+    
+
+    <!-- Button to open search modal -->
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+
+      <!-- Search interface -->
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Search interface -->
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+
+      <!-- Search input -->
+      <input
+        type="text"
+        class="md-search__input"
+        name="query"
+        aria-label="Search"
+        placeholder="Search"
+        autocapitalize="off"
+        autocorrect="off"
+        autocomplete="off"
+        spellcheck="false"
+        data-md-component="search-query"
+        required
+      />
+
+      <!-- Button to open search -->
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+
+      <!-- Search options -->
+      <nav
+        class="md-search__options"
+        aria-label="Search"
+      >
+
+        <!-- Button to share search -->
+        
+
+        <!-- Button to reset search -->
+        <button
+          type="reset"
+          class="md-search__icon md-icon"
+          title="Clear"
+          aria-label="Clear"
+          tabindex="-1"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+
+      <!-- Search suggestions -->
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+
+        <!-- Search results -->
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    <!-- Repository information -->
+    
+  </nav>
+
+  <!-- Navigation tabs (sticky) -->
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Hack: unset variable, as we're using it recursively in tabs-item.html -->
+
+
+<!-- Navigation tabs -->
+<nav
+  class="md-tabs"
+  aria-label="Tabs"
+  data-md-component="tabs"
+>
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  
+  
+
+  <!-- Recurse, if the first item has further nested items -->
+  
+    <li class="md-tabs__item">
+      <a href="../../resources/" class="md-tabs__link">
+        Resources
+      </a>
+    </li>
+  
+
+<!-- Main navigation item -->
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+    
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  
+  
+
+  <!-- Recurse, if the first item has further nested items -->
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
+        Interfaces
+      </a>
+    </li>
+  
+
+<!-- Main navigation item -->
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../architecture/" class="md-tabs__link">
+      Architecture
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../glossary/" class="md-tabs__link">
+      Glossary
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../videos/" class="md-tabs__link">
+      Videos
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to configuration -->
+
+
+  
+
+
+
+<!-- Main navigation -->
+<nav
+  class="md-nav md-nav--primary md-nav--lifted"
+  aria-label="Navigation"
+  data-md-level="0"
+>
+
+  <!-- Site title -->
+  <label class="md-nav__title" for="__drawer">
+    <a
+      href="../.."
+      title="All things DataOS"
+      class="md-nav__button md-logo"
+      aria-label="All things DataOS"
+      data-md-component="logo"
+    >
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Logo -->
+
+  <img src="../../assets/light-modern-logo.png" alt="logo" />
+
+    </a>
+    All things DataOS
+  </label>
+
+  <!-- Repository information -->
+  
+
+  <!-- Render item list -->
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+        
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle md-toggle--indeterminate"
+        type="checkbox"
+        id="__nav_2"
+        
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_2"
+          id="__nav_2_label"
+          tabindex="0"
+        >
+          Resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="1"
+        aria-labelledby="__nav_2_label"
+        aria-expanded="false"
+      >
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/bundle/" class="md-nav__link">
+        Bundle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/cluster/" class="md-nav__link">
+        Cluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/compute/" class="md-nav__link">
+        Compute
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/depot/" class="md-nav__link">
+        Depot
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/instance_secret/" class="md-nav__link">
+        Instance Secret
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/lakehouse/" class="md-nav__link">
+        Lakehouse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/monitor/" class="md-nav__link">
+        Monitor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/operator/" class="md-nav__link">
+        Operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/pager/" class="md-nav__link">
+        Pager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/policy/" class="md-nav__link">
+        Policy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/secret_updated/" class="md-nav__link">
+        Secret
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/service/" class="md-nav__link">
+        Service
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/worker/" class="md-nav__link">
+        Worker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/workflow/" class="md-nav__link">
+        Workflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+      
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+        
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle md-toggle--indeterminate"
+        type="checkbox"
+        id="__nav_2_16"
+        
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_2_16"
+          id="__nav_2_16_label"
+          tabindex="0"
+        >
+          Stacks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="2"
+        aria-labelledby="__nav_2_16_label"
+        aria-expanded="false"
+      >
+        <label class="md-nav__title" for="__nav_2_16">
+          <span class="md-nav__icon md-icon"></span>
+          Stacks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/stacks/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/stacks/alpha/" class="md-nav__link">
+        Alpha
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/stacks/beacon/" class="md-nav__link">
+        Beacon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/stacks/benthos/" class="md-nav__link">
+        Benthos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/stacks/cli/" class="md-nav__link">
+        CLI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/stacks/data_toolbox/" class="md-nav__link">
+        Data Toolbox
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/stacks/flare/" class="md-nav__link">
+        Flare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/stacks/scanner/" class="md-nav__link">
+        Scanner
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/stacks/soda/" class="md-nav__link">
+        Soda
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../resources/stacks/steampipe/" class="md-nav__link">
+        Steampipe
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+    
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle "
+        type="checkbox"
+        id="__nav_3"
+        checked
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_3"
+          id="__nav_3_label"
+          tabindex="0"
+        >
+          Interfaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="1"
+        aria-labelledby="__nav_3_label"
+        aria-expanded="true"
+      >
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Interfaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../atlas/" class="md-nav__link">
+        Atlas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../audiences/" class="md-nav__link">
+        Audiences
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../bifrost/" class="md-nav__link">
+        Bifrost
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../cli/" class="md-nav__link">
+        CLI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../lens/" class="md-nav__link">
+        Lens
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../metis/" class="md-nav__link">
+        Metis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../notebook/" class="md-nav__link">
+        Notebook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+    
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle"
+        type="checkbox"
+        id="__toc"
+      />
+
+      <!-- Hack: see partials/toc.html for more information -->
+      
+      
+        
+      
+
+      <!-- Render table of contents, if not empty -->
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Operations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a
+        href="./"
+        class="md-nav__link md-nav__link--active"
+      >
+        Operations
+      </a>
+
+      <!-- Show table of contents -->
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#launching-operations-app" class="md-nav__link">
+    Launching Operations App
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-space" class="md-nav__link">
+    User Space
+  </a>
+  
+    <nav class="md-nav" aria-label="User Space">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resources-and-their-runtime" class="md-nav__link">
+    Resources and their runtime
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minerva-queries" class="md-nav__link">
+    Minerva Queries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cluster-analysis" class="md-nav__link">
+    Cluster Analysis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-resources" class="md-nav__link">
+    Create Resources
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-kernel" class="md-nav__link">
+    Core Kernel
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Kernel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pods" class="md-nav__link">
+    Pods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#services" class="md-nav__link">
+    Services
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workloads" class="md-nav__link">
+    Workloads
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ingresses" class="md-nav__link">
+    Ingresses
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-kernel" class="md-nav__link">
+    Cloud Kernel
+  </a>
+  
+    <nav class="md-nav" aria-label="Cloud Kernel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    Resources
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compute-node-details" class="md-nav__link">
+    Compute Node Details
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#product" class="md-nav__link">
+    Product
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-cases" class="md-nav__link">
+    Use Cases
+  </a>
+  
+    <nav class="md-nav" aria-label="Use Cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#monitoring-query-execution-and-performance" class="md-nav__link">
+    Monitoring Query Execution and Performance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshoot-data-processing-workloads" class="md-nav__link">
+    Troubleshoot Data Processing Workloads
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimizing-resource-utilization" class="md-nav__link">
+    Optimizing Resource Utilization
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+
+  <!-- Main navigation item -->
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../workbench/" class="md-nav__link">
+        Workbench
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        Glossary
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../videos/" class="md-nav__link">
+        Videos
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#launching-operations-app" class="md-nav__link">
+    Launching Operations App
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-space" class="md-nav__link">
+    User Space
+  </a>
+  
+    <nav class="md-nav" aria-label="User Space">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resources-and-their-runtime" class="md-nav__link">
+    Resources and their runtime
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minerva-queries" class="md-nav__link">
+    Minerva Queries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cluster-analysis" class="md-nav__link">
+    Cluster Analysis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-resources" class="md-nav__link">
+    Create Resources
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-kernel" class="md-nav__link">
+    Core Kernel
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Kernel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pods" class="md-nav__link">
+    Pods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#services" class="md-nav__link">
+    Services
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workloads" class="md-nav__link">
+    Workloads
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ingresses" class="md-nav__link">
+    Ingresses
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-kernel" class="md-nav__link">
+    Cloud Kernel
+  </a>
+  
+    <nav class="md-nav" aria-label="Cloud Kernel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    Resources
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compute-node-details" class="md-nav__link">
+    Compute Node Details
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#product" class="md-nav__link">
+    Product
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-cases" class="md-nav__link">
+    Use Cases
+  </a>
+  
+    <nav class="md-nav" aria-label="Use Cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#monitoring-query-execution-and-performance" class="md-nav__link">
+    Monitoring Query Execution and Performance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshoot-data-processing-workloads" class="md-nav__link">
+    Troubleshoot Data Processing Workloads
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimizing-resource-utilization" class="md-nav__link">
+    Optimizing Resource Utilization
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Tags -->
+
+
+<!-- Actions -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Actions -->
+
+
+<!--
+  Hack: check whether the content contains a h1 headline. If it doesn't, the
+  page title (or respectively site name) is used as the main headline.
+-->
+
+
+<!-- Page content -->
+<h1 id="operations">Operations<a class="headerlink" href="#operations" title="Permanent link">&para;</a></h1>
+<p>The Operations App serves as a centralized hub for understanding and managing activity on the DataOS platform. It provides administrators with insights into cluster and job performance, user actions, access tags, and resource utilization in real-time. With its observability capabilities, the Operations App empowers users to monitor the health and status of the DataOS platform, troubleshoot issues, and resolve issues related to consumption of resources. Teams can centrally monitor and analyze events/logs generated by different tools of the data stack.
+the Operations App seamlessly integrates with Grafana, a tool for creating insightful dashboards for assessing health of Kubernetes clusters, pods usage etc.</p>
+<p>Operations App enables you to do the following:</p>
+<ul>
+<li><strong>Resources</strong>: Keep track of user, core and cloud kernel level resources, their utilization and allocation.</li>
+<li><strong>Resource Creation</strong>: Create Resources from its UI, for example, a user can create a minerva cluster from Operations App now.</li>
+<li><strong>Query Analysis</strong>: Get a complete overview of the completed/failed/running queries. Cluster and user wise queries can be observed/debugged from this App's UI.</li>
+<li><strong>Cluster Analysis</strong>: View cluster analysis, giving users valuable insights into available clusters.</li>
+<li><strong>Grafana</strong>: Leverage Grafana's capabilities to visualize and explore metrics, logs, and traces in the DataOS environment, enabling effective cluster assessment and data analysis.</li>
+<li><strong>Bifrost</strong>: Utilize Bifrost's efficient graphical user interface for creating and managing policies to provide flexible and fine-grained access control for  across various applications, users, services, stacks, and use cases. To learn more, refer to <a href="../bifrost/">Bifrost</a>.</li>
+</ul>
+<h2 id="launching-operations-app">Launching Operations App<a class="headerlink" href="#launching-operations-app" title="Permanent link">&para;</a></h2>
+<p>On the DataOS home page, click on 'Operations'. The following types of resources can be monitored:</p>
+<ul>
+<li>
+<p><strong>User Space</strong> - These are the resources that DataOS users can create and manage within the platform. This includes various primitives such as workflows, services, secrets, depots, clusters, and computes. These resources are utilized during data processing jobs, services, and analytics workloads performed by users. Operations App UI provides a way for users to observe and monitor these resources and their runtimes to debug if any issues.</p>
+</li>
+<li>
+<p><strong>Core Kernel</strong> - The Core Kernel consists of system resources that are essential for the smooth operation of the DataOS platform. It provides low-level services and functionalities used by the core components of DataOS to ensure its proper functioning. Monitoring the Core Kernel resources and accessing their logs helps track the health and performance of these critical components, ensuring the overall stability and reliability of the DataOS platform.</p>
+</li>
+<li>
+<p><strong>Cloud Kernel</strong> - The Cloud Kernel encompasses resources specifically designed for running and managing workloads in a cloud environment. These resources include virtual machines (VMs), container services, and other cloud-based infrastructure components. Monitoring the health and usage of the Cloud Kernel resources allows users to optimize their cloud-based workloads, ensure efficient resource utilization, and maintain the availability and performance of their applications and services.</p>
+</li>
+<li>
+<p><strong>Product</strong> - In this section, you can find information about the release name and version of the DataOS platform and its associated components. This helps users keep track of the software versions they are working with and stay updated on the latest releases and features offered by DataOS.</p>
+</li>
+</ul>
+<h2 id="user-space">User Space<a class="headerlink" href="#user-space" title="Permanent link">&para;</a></h2>
+<h3 id="resources-and-their-runtime"><strong>Resources and their runtime</strong><a class="headerlink" href="#resources-and-their-runtime" title="Permanent link">&para;</a></h3>
+<p>By navigating to the "Resources" tab, the detailed information about the DataOS primitives created  by users can be accessed such as workflows, services, secrets, depots, clusters, compute, etc. This includes insights into the current running status of these resources, as well as the owner or creator of each resource. The "Resources" tab provides a centralized view of the user-created components, allowing users to monitor and manage their resources effectively. </p>
+<p><center></p>
+<p><img alt="Picture" src="user_space.png" />
+</center></p>
+<figcaption align = "center"> User space resources</figcaption>
+
+<p><strong>Resource Runtime</strong></p>
+<p>Click on the resource to get its details, YAML, and runtime information. Here, the details of the pods, their status and the nodes selected for running these pods is displayed. Clicking on <code>Refresh On</code> will update the information automatically.</p>
+<p><center></p>
+<p><img alt="Picture" src="resourceruntime.png" /></p>
+<p></center></p>
+<figcaption align = "center">Runtime information </figcaption>
+
+<p><strong>Resource YAML</strong></p>
+<p>It serves as a configuration file that defines the desired state of the resource within the DataOS environment. By examining the Resource YAML, users can gain insights into the specific configurations and settings applied to each resource. It includes the resource type, metadata, and specific properties associated with each resource. The Resource YAML is created by the user and resource is typically created using the DataOS CLI command <strong><code>apply</code></strong>. </p>
+<p>All these YAMLs also have the auto-generated section ‘status’ that conveys information about the build state, runtime state, and the required Cloud Kernel resources and web resources.</p>
+<p><strong>Runtime Node Details</strong></p>
+<p>Under Runtime Nodes, click on a node to get the runtime YAML, Logs, and Runtime Node Usage. Here you will get the container details, their state, and pod lifecycle conditions(Ready, PodScheduled…) with a status (True, False or Unknown) that make up the ‘computed state’ of a pod at any time.</p>
+<p><center></p>
+<p><img alt="Picture" src="runtime_nodedetail.png" /></p>
+<p></center></p>
+<figcaption align = "center">Node details </figcaption>
+
+<p><strong>Runtime Node Logs</strong></p>
+<p>Runtime Node Logs provide a near real-time view. These logs provide insights into the current health of the node environment and can be helpful for debugging issues.</p>
+<aside class="callout">
+🗣 Logs are not guaranteed to persist for any length of time and may be cleared as needed.</aside>
+
+<p><strong>Runtime Node Usage</strong>
+Check how much memory and CPU is utilized by a Node.
+<center></p>
+<p><img alt="Picture" src="runtimenodeusage.png" /></p>
+<p></center></p>
+<figcaption align = "center">Node usage </figcaption>
+
+<h3 id="minerva-queries"><strong>Minerva Queries</strong><a class="headerlink" href="#minerva-queries" title="Permanent link">&para;</a></h3>
+<p>Here, users can view Minerva queries and perform various tasks related to query monitoring, and analysis. Once a query is submitted, the information such as query ID, source from where query is submitted (such as trino python client, Workbench or Flare), cluster used, user who submitted the query along with creation time is shown. Queries can be analyzed selecting source/cluster/user of interest.</p>
+<p><img alt="Picture" src="minerva_query1.png" /></p>
+<figcaption align = "center">Minerva queries </figcaption>
+
+<p>Additionally, it enables query profiling, allowing users to analyze query performance, identify bottlenecks, and optimize their queries if needed. It offers detailed execution plans, resource utilization information, and other performance-related metrics.
+<img alt="Picture" src="query_detail.png" /></p>
+<figcaption align = "center">Query details </figcaption>
+
+<h3 id="cluster-analysis"><strong>Cluster Analysis</strong><a class="headerlink" href="#cluster-analysis" title="Permanent link">&para;</a></h3>
+<p>Select <code>Cluster</code> resource for User Space resources. Cluster analysis option appears on the screen. View the query load distribution along with failed queries for each of the clusters up and running within DataOS instance.
+<img alt="Picture" src="cluster_analysis1.png" /></p>
+<figcaption align = "center">Query load distribution </figcaption>
+
+<h3 id="create-resources"><strong>Create Resources</strong><a class="headerlink" href="#create-resources" title="Permanent link">&para;</a></h3>
+<p>Operations App provides users with the ability to easily create resources directly from the user interface. This functionality eliminates the need to rely on writing YAML for the resource and using CLI for resource creation, thus helps streamlining the resource management process within the DataOS platform.
+<img alt="Picture" src="create_resource1.png" /></p>
+<figcaption align = "center">Create Minerva cluster </figcaption>
+
+<aside class="callout">
+🗣 You need ‘Operator’ level permissions to view the Core kernel and Cloud Kernel resources.</aside>
+
+<h2 id="core-kernel">Core Kernel<a class="headerlink" href="#core-kernel" title="Permanent link">&para;</a></h2>
+<p>Here you will get the resource details responsible for running the core components. These resources are isolated in groups as namespaces within a single cluster. These namespaces help different projects, teams, or customers to share a Kubernetes cluster. Names of resources need to be unique within a namespace but not across namespaces. Namespace-based scoping is applicable only for name-spaced objects <em>(e.g. Pods(Deployments), Services, workloads, Ingresses etc).</em> </p>
+<h3 id="pods"><strong>Pods</strong><a class="headerlink" href="#pods" title="Permanent link">&para;</a></h3>
+<p>When DataOS components are deployed in Kubernetes, that Deployment creates Pods with containers inside them  Each Pod is tied to the Node where it is scheduled and remains there until termination or deletion. In case of a Node failure, identical Pods are scheduled on other available Nodes in the cluster.</p>
+<p><em>DataOS components are deployed in separate namespaces.</em> After selecting the namespace, you can see components deployed in that namespace. Here you will get the pod details for the  DataOS components for the selected namespace and the phase. </p>
+<p><img alt="Picture" src="corekernel.png" /></p>
+<figcaption align = "center"> Core kernel pods</figcaption>
+
+<p>The phase of a Pod is a simple, high-level summary of where the Pod is in its lifecycle.</p>
+<p>Here are the possible values for <code>phase</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pending</td>
+<td>The Pod has been accepted by the Kubernetes cluster, but one or more of the containers has not been set up and made ready to run. This includes the time a Pod spends waiting to be scheduled as well as the time spent downloading container images over the network.</td>
+</tr>
+<tr>
+<td>Running</td>
+<td>The Pod has been bound to a node, and all of the containers have been created. At least one container is still running or is in the process of starting or restarting.</td>
+</tr>
+<tr>
+<td>Succeeded</td>
+<td>All containers in the Pod have terminated in success, and will not be restarted.</td>
+</tr>
+<tr>
+<td>Failed</td>
+<td>All containers in the Pod have terminated, and at least one container has terminated in failure. That is, the container either exited with non-zero status or was terminated by the system.</td>
+</tr>
+<tr>
+<td>Unknown</td>
+<td>For some reason, the state of the Pod could not be obtained. This phase typically occurs due to an error in communicating with the node where the Pod should be running.</td>
+</tr>
+</tbody>
+</table>
+<p>Clicking on a particular pod will give you Pod details, Pod YAML, Pod logs, and Pod usage.</p>
+<p><strong>Pod Details</strong></p>
+<p>This gives you pod and container details and container status. You will also get pod lifecycle conditions(Ready, PodScheduled…). A Pod has a PodStatus, which has an array of PodConditions through which the Pod has or has not passed:</p>
+<ul>
+<li><code>PodScheduled</code>: the Pod has been scheduled to a node.</li>
+<li><code>ContainersReady</code>: all containers in the Pod are ready.</li>
+<li><code>Initialized</code>: all init containers have completed successfully.</li>
+<li><code>Ready</code>: the Pod is able to serve requests.</li>
+</ul>
+<p>The pod lifecycle conditions are with a status (True, False, or Unknown) that makes up a pod's ‘computed state’ at any time. You can track the state of each container inside a Pod.</p>
+<p><center></p>
+<p><img alt="Picture" src="core_kernel_pod_details.png" /></p>
+<figcaption align = "center">Pod details </figcaption>
+
+<p></center></p>
+<p><strong>Pod YAML</strong></p>
+<p>This is Kubernetes generated YAML for this resource where you can see the metadata information such as API version, resource version, its unique id, labels, deployment type, etc. You will also find the ‘spec’ property, which includes containers(image, ports, env, etc), memory requirements, storage volumes, tolerations and runtime status, etc.</p>
+<p><strong>Pod Logs</strong></p>
+<p>This option will enable you to access live stream logs produced by a named Pod to your terminal, letting you inspect the output from your application and diagnose a problem with your cluster’s workloads.</p>
+<p><strong>Pod Usage</strong></p>
+<p>This gives you the aggregate of the CPU use of all containers for the selected pod. Likewise, pod memory utilization refers to the total aggregate of memory used by all containers in the pod.</p>
+<h3 id="services"><strong>Services</strong><a class="headerlink" href="#services" title="Permanent link">&para;</a></h3>
+<p>DataOS services are a means to interact with the Kubernetes system for running the core functionality/components. Select a namespace to get the list of services with their fully qualified domain name. All these services are deployed in the separate logical grouping called namespaces. </p>
+<p><strong>Service Details</strong></p>
+<p>Click on the service from the selected namespace to view the port details, service and pod endpoints, etc.</p>
+<h3 id="workloads"><strong>Workloads</strong><a class="headerlink" href="#workloads" title="Permanent link">&para;</a></h3>
+<p>A workload is a DataOS application running in one or more Kubernetes pods. You have the following workload types:</p>
+<ul>
+<li>
+<p><strong>Deployments</strong> are useful for stateless applications. Deployments create and manage identical pods called replicas, based on a pod template. If a pod stops or becomes unresponsive, the deployment's controller will replace it.</p>
+</li>
+<li>
+<p><strong>Stateful sets</strong> live up to their name, they're useful for stateful applications, that's things such as a database. Stateful sets create and manage pods that are expected to have a level of persistence. They allow for stable network identifiers and persistent storage.</p>
+</li>
+<li>
+<p><strong>Daemon sets</strong> are useful for background tasks such as monitoring by creating one pod per node.</p>
+</li>
+</ul>
+<h3 id="ingresses"><strong>Ingresses</strong><a class="headerlink" href="#ingresses" title="Permanent link">&para;</a></h3>
+<p>Ingresses are configured within the DataOS platform for specific namespaces such as core apps, Poros, network gateway etc. These ingresses enable external access to the services and applications running within these namespaces, providing a secure and controlled entry point for incoming traffic. By defining and managing these ingresses, administrators can effectively control and direct the flow of network traffic to the respective namespaces, ensuring proper connectivity and access to the deployed resources.</p>
+<h2 id="cloud-kernel">Cloud Kernel<a class="headerlink" href="#cloud-kernel" title="Permanent link">&para;</a></h2>
+<h3 id="resources"><strong>Resources</strong><a class="headerlink" href="#resources" title="Permanent link">&para;</a></h3>
+<p>Within a cloud environment, compute nodes form a core of resources. They supply the processing, memory, network, and storage that virtual machine instances need. When an instance is created, it is matched to a compute node with the available resources. Here you can access the details about these compute nodes, their creation time, and cloud service provider.</p>
+<p><center></p>
+<p><img alt="Picture" src="cloud_kernel_node.png" /></p>
+<p></center></p>
+<figcaption align = "center">Compute node details</figcaption>
+
+<h3 id="compute-node-details"><strong>Compute Node Details</strong><a class="headerlink" href="#compute-node-details" title="Permanent link">&para;</a></h3>
+<p>Clicking on the compute node will display the detailed information about the node, including its general details and status. Accessing these compute node details allows you to gain a comprehensive understanding of the node's configuration, status, and available resources, enabling effective management and optimization of your compute infrastructure.</p>
+<ul>
+<li><strong>General Information</strong>: Information about the compute node, such as the operating system it uses, the OS image, the Kubernetes version, and the architecture.</li>
+<li><strong>Addresses</strong>- Host IP and hostname. This information varies depending on the cloud provider.</li>
+<li><strong>Conditions</strong>- Status of all running computing nodes.It provides insights into the health and availability of the nodes.</li>
+<li><strong>Capacity and allocatable</strong>- Available resources on the compute node, including CPU, memory, and the maximum number of pods that can be scheduled onto the node. It helps in understanding the capacity and limits of the node.</li>
+<li><strong>Taints</strong>- Automatically created by the Kubernetes control plane when problems occur on nodes,  that match the conditions affecting the node.</li>
+</ul>
+<h2 id="product">Product<a class="headerlink" href="#product" title="Permanent link">&para;</a></h2>
+<p>You can see the deployed DataOS products and their release information here. Click on the Product name to view the release details of all the installed DataOS components. </p>
+<aside class="callout">
+🗣 You need ‘Operator-level permissions' to view the installed DataOS components.</aside>
+
+<h2 id="use-cases">Use Cases<a class="headerlink" href="#use-cases" title="Permanent link">&para;</a></h2>
+<h3 id="monitoring-query-execution-and-performance"><strong>Monitoring Query Execution and Performance</strong><a class="headerlink" href="#monitoring-query-execution-and-performance" title="Permanent link">&para;</a></h3>
+<p>The <strong>Minerva Queries</strong> option provides an intuitive, user-friendly interface to monitor query execution in a Minerva cluster. Here are some use cases where Minerva query information can be valuable for monitoring query execution:</p>
+<ol>
+<li>
+<p><strong>Query Performance Optimization</strong>:  to monitor the performance of running queries in real time. Detailed information about query execution, including query plans, stages, and resource utilization, can be viewed. This information helps in identifying performance bottlenecks, optimizing query execution, and improving overall query performance. With the Resource Utilization Summary for running queries, you can track resource consumption at the query level and identify queries that are consuming excessive resources. This helps in identifying resource-intensive queries, and ensuring efficient cluster utilization.</p>
+</li>
+<li>
+<p><strong>Query Troubleshooting</strong>: When a query encounters errors or takes longer than expected to execute, the query's progress and execution stages can be observed. You can examine query details, such as the number of rows processed, the duration of each stage, and any error messages. This helps in troubleshooting and diagnosing issues that may arise during query execution.</p>
+</li>
+</ol>
+<h3 id="troubleshoot-data-processing-workloads"><strong>Troubleshoot Data Processing Workloads</strong><a class="headerlink" href="#troubleshoot-data-processing-workloads" title="Permanent link">&para;</a></h3>
+<p>One use case for utilizing resource runtime logs is to troubleshoot problems with data processing workloads. These logs provide valuable insights into the execution of data movement tasks, allowing you to identify and resolve any issues that may arise during the process. By accessing the resource runtime logs, you can:</p>
+<ol>
+<li><strong>Identify errors</strong>: The logs can provide detailed error messages, stack traces, or warnings that help pinpoint the specific issue causing the problem. You can look for any exceptions or error codes that indicate potential data movement issues.</li>
+<li><strong>Trace data flow</strong>: The logs allow you to track the flow of data through the pipeline. You can see the input data, intermediate transformations, and output data at each stage. This helps in understanding how the data is being processed and if any transformations or mappings are causing the problem.</li>
+<li><strong>Analyze performance</strong>: Resource runtime logs provide insights into the performance of the data movement workload. You can check for any delays, bottlenecks, or high resource utilization that may impact the efficiency of the process. This information can help you optimize and tune the workload for better performance.</li>
+<li><strong>Debug transformations</strong>: If you have data transformations or mappings within the workflow, you can inspect the intermediate data at various stages and verify if the transformations are producing the expected results.</li>
+</ol>
+<p>Let's say you have a Flare job that moves data from a source system to a destination system. During the execution of the pipeline, you encounter unexpected errors or data discrepancies. One effective way to achieve this is by analyzing the logs generated by the driver and executor nodes.</p>
+<p><strong>Analyzing the Driver Logs</strong>: Look for progress indicators (such as completed stages, tasks, or data processing operations) and for any warning or error/exception messages that might indicate potential issues or failures. 
+<img alt="Alt text" src="runtime_logs_driver.png" /></p>
+<figcaption align = "center">Driver logs </figcaption>
+<p><strong>Analyzing the Executor Logs</strong>: - Access the logs of individual executor nodes. These logs provide insights into the specific tasks performed by each executor. Look for task-level progress updates, including completed, failed, or ongoing tasks or any error/exceptions.
+<img alt="Alt text" src="run_time_logs_execute.png" /></p>
+<figcaption align = "center">Executor logs</figcaption>
+
+<p>Use the insights gained from the logs to fine-tune the configuration and parameters of the workload, if applicable.</p>
+<h3 id="optimizing-resource-utilization"><strong>Optimizing Resource Utilization</strong><a class="headerlink" href="#optimizing-resource-utilization" title="Permanent link">&para;</a></h3>
+<p>One use case for utilizing the runtime usage and runtime node logs of the driver and executor is to tweak resource allocation for data processing jobs. These logs provide valuable insights into the resource utilization and performance of the driver and executor nodes during the execution of data processing tasks. Here is an example scenario:</p>
+<p>Let's say you have a data processing job that involves complex computations and transformations on large datasets. You notice that the job is taking longer than expected to complete or is experiencing resource-related issues. By accessing the Runtime Usage and Runtime Node Logs, you can:</p>
+<ol>
+<li><strong>Analyze Resource Utilization</strong>: Observe the CPU, Memory, and Disk usage of the driver and executor nodes. You can monitor the resource consumption patterns and identify any bottlenecks or resource constraints that may be impacting the job performance. This information helps you determine if the allocated resources are sufficient for the workload or if adjustments need to be made.</li>
+<li><strong>Optimize Resource Allocation</strong>: Based on the insights gained from the usage graphs, you can make informed decisions about resource allocation for your data processing job. If you observe that the job is CPU-intensive, you might allocate more CPU resources to the executor nodes. If memory usage is high, you can adjust the memory allocation to ensure optimal performance. Fine-tuning the resource allocation can help improve job execution time and overall efficiency.</li>
+</ol>
+<p><img alt="Alt text" src="runtime_usage_execute.png" /></p>
+<figcaption align = "center">Runtime usage </figcaption>
+
+<p>By analyzing the resource utilization of the data processing job, it becomes apparent that the allocated resources are insufficient. The executor node is reaching its maximum limit, indicating a potential bottleneck in the processing pipeline. To optimize job performance and ensure efficient processing, it is recommended to increase the requested resources.</p>
+<p>By scaling up the allocated resources, such as CPU and Memory, the executor node will have more capacity to handle the workload. This can lead to improved processing speed, reduced latency, and overall better performance of the data processing job.</p>
+
+<!-- Source file information -->
+
+
+<!-- Was this page helpful? -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine feedback configuration -->
+
+  
+
+
+<!-- Determine whether to show feedback -->
+
+
+<!-- Was this page helpful? -->
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+
+        <!-- Feedback ratings -->
+        <div class="md-feedback__list">
+          
+            <button
+              class="md-feedback__icon md-icon"
+              type="submit"
+              title="This page was helpful"
+              data-md-value="1"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9h4m4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21H9m0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03V19Z"/></svg>
+            </button>
+          
+            <button
+              class="md-feedback__icon md-icon"
+              type="submit"
+              title="This page could be improved"
+              data-md-value="0"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12h-4M15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3h9m0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97V5Z"/></svg>
+            </button>
+          
+        </div>
+
+        <!-- Feedback rating notes (shown after submission) -->
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+
+              <!-- Determine title -->
+              
+                
+              
+
+              <!-- Replace {url} and {title} placeholders in note -->
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+
+              <!-- Determine title -->
+              
+                
+              
+
+              <!-- Replace {url} and {title} placeholders in note -->
+              Thanks for your feedback!
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<!-- Comment system -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Comment system -->
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer">
+    <nav class="md-footer__inner md-grid" aria-label="">
+      
+      <a href="../notebook/" class="md-footer__link md-footer__link--prev" rel="prev">
+        <div class="md-footer__button md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+        </div>
+        <div class="md-footer__title">
+          <div class="md-ellipsis">
+            <span class="md-footer__direction">
+              Previous
+            </span>
+            Notebook
+          </div>
+        </div>
+      </a>
+      
+      
+      <a href="../workbench/" class="md-footer__link md-footer__link--next" rel="next">
+        <div class="md-footer__title">
+          <div class="md-ellipsis">
+            <span class="md-footer__direction">
+              Next
+            </span>
+            Workbench
+          </div>
+        </div>
+        <div class="md-footer__button md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+        </div>
+      </a>
+      
+    </nav>
+  </div>
+  
+  <!-- Repository information -->
+  
+
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-meta__content">
+        <div class="md-footer-social-and-modern-logo">
+          
+          <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Social links -->
+<div class="md-social">
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://www.facebook.com/themoderndatacompany"
+      target="_blank" rel="noopener"
+      title="www.facebook.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/facebook.png"
+    title="www.facebook.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://twitter.com/TheModernDataCo"
+      target="_blank" rel="noopener"
+      title="twitter.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/twitter.png"
+    title="twitter.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://www.linkedin.com/company/themoderndatacompany"
+      target="_blank" rel="noopener"
+      title="www.linkedin.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/linkedin.png"
+    title="www.linkedin.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+</div>
+          
+          <a href="https://themoderndatacompany.com" target="_blank">
+            <img src="/assets/ModernLogo.png" width="251" class="modern-logo" />
+          </a>
+        </div>
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Copyright and theme information -->
+<div class="md-copyright">
+  
+  <a href="https://themoderndatacompany.com/contact-us" target="_blank" rel="noopener"> Contact Us </a> | <a
+    href="https://themoderndatacompany.com/privacy-policy" target="_blank" rel="noopener"> Privacy Policy </a> | <a
+    href="https://themoderndatacompany.com/terms-of-use" target="_blank" rel="noopener"> Terms of Use </a>
+  
+  
+  <div class="md-copyright__highlight">
+    Copyright ⓒ 2024 The Modern Data Company
+  </div>
+  
+</div>
+      </div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.top", "navigation.tracking", "content.code.copy", "content.code.annotate", "content.tooltips"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.bd41221c.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.6.4/dist/mermaid.js"></script>
+      
+    
+  </body>
+</html>

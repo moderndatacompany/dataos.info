@@ -1,0 +1,12 @@
+# Resource meta section
+name: <resource-name>
+version: v1alpha
+type: lakehouse
+tags:
+  - <tag1>
+  - <tag2>
+description: <description>
+owner: <userid-of-owner>
+layer: user
+lakehouse:
+  # attributes of lakehouse-specific section

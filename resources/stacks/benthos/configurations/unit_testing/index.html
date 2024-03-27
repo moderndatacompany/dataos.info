@@ -1,0 +1,3143 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.15">
+    
+    
+      
+        <title>Unit Testing - All things DataOS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.7e359304.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Custom admonition icons -->
+
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.5 1.75v11.5c0 .138.112.25.25.25h3.17a.75.75 0 0 1 0 1.5H2.75A1.75 1.75 0 0 1 1 13.25V1.75C1 .784 1.784 0 2.75 0h8.5C12.216 0 13 .784 13 1.75v7.736a.75.75 0 0 1-1.5 0V1.75a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13.274 9.537v-.001l-4.557 4.45a.75.75 0 0 1-1.055-.008l-1.943-1.95a.75.75 0 0 1 1.062-1.058l1.419 1.425 4.026-3.932a.75.75 0 1 1 1.048 1.074ZM4.75 4h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM4 7.75A.75.75 0 0 1 4.75 7h2a.75.75 0 0 1 0 1.5h-2A.75.75 0 0 1 4 7.75Z"/></svg>');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/></svg>');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25Zm7.47 3.97a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L10.69 8 9.22 6.53a.75.75 0 0 1 0-1.06ZM6.78 6.53 5.31 8l1.47 1.47a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215l-2-2a.75.75 0 0 1 0-1.06l2-2a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"/></svg>');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.92 6.085h.001a.749.749 0 1 1-1.342-.67c.169-.339.436-.701.849-.977C6.845 4.16 7.369 4 8 4a2.756 2.756 0 0 1 1.637.525c.503.377.863.965.863 1.725 0 .448-.115.83-.329 1.15-.205.307-.47.513-.692.662-.109.072-.22.138-.313.195l-.006.004a6.24 6.24 0 0 0-.26.16.952.952 0 0 0-.276.245.75.75 0 0 1-1.248-.832c.184-.264.42-.489.692-.661.103-.067.207-.132.313-.195l.007-.004c.1-.061.182-.11.258-.161a.969.969 0 0 0 .277-.245C8.96 6.514 9 6.427 9 6.25a.612.612 0 0 0-.262-.525A1.27 1.27 0 0 0 8 5.5c-.369 0-.595.09-.74.187a1.01 1.01 0 0 0-.34.398ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.344 2.343h-.001a8 8 0 0 1 11.314 11.314A8.002 8.002 0 0 1 .234 10.089a8 8 0 0 1 2.11-7.746Zm1.06 10.253a6.5 6.5 0 1 0 9.108-9.275 6.5 6.5 0 0 0-9.108 9.275ZM6.03 4.97 8 6.94l1.97-1.97a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l1.97 1.97a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-1.97 1.97a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L6.94 8 4.97 6.03a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018Z"/></svg>');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M9.504.43a1.516 1.516 0 0 1 2.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.249 1.249 0 0 1-.871.354h-.302a1.25 1.25 0 0 1-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429Zm1.047 1.074L3.286 8.571A.25.25 0 0 0 3.462 9H6.75a.75.75 0 0 1 .694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0 0 12.538 7H9.25a.75.75 0 0 1-.683-1.06l2.008-4.418.003-.006a.036.036 0 0 0-.004-.009l-.006-.006-.008-.001c-.003 0-.006.002-.009.004Z"/></svg>');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M4.72.22a.75.75 0 0 1 1.06 0l1 .999a3.488 3.488 0 0 1 2.441 0l.999-1a.748.748 0 0 1 1.265.332.75.75 0 0 1-.205.729l-.775.776c.616.63.995 1.493.995 2.444v.327c0 .1-.009.197-.025.292.408.14.764.392 1.029.722l1.968-.787a.75.75 0 0 1 .556 1.392L13 7.258V9h2.25a.75.75 0 0 1 0 1.5H13v.5c0 .409-.049.806-.141 1.186l2.17.868a.75.75 0 0 1-.557 1.392l-2.184-.873A4.997 4.997 0 0 1 8 16a4.997 4.997 0 0 1-4.288-2.427l-2.183.873a.75.75 0 0 1-.558-1.392l2.17-.868A5.036 5.036 0 0 1 3 11v-.5H.75a.75.75 0 0 1 0-1.5H3V7.258L.971 6.446a.75.75 0 0 1 .558-1.392l1.967.787c.265-.33.62-.583 1.03-.722a1.677 1.677 0 0 1-.026-.292V4.5c0-.951.38-1.814.995-2.444L4.72 1.28a.75.75 0 0 1 0-1.06Zm.53 6.28a.75.75 0 0 0-.75.75V11a3.5 3.5 0 1 0 7 0V7.25a.75.75 0 0 0-.75-.75ZM6.173 5h3.654A.172.172 0 0 0 10 4.827V4.5a2 2 0 1 0-4 0v.327c0 .096.077.173.173.173Z"/></svg>');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M5 5.782V2.5h-.25a.75.75 0 0 1 0-1.5h6.5a.75.75 0 0 1 0 1.5H11v3.282l3.666 5.76C15.619 13.04 14.543 15 12.767 15H3.233c-1.776 0-2.852-1.96-1.899-3.458Zm-2.4 6.565a.75.75 0 0 0 .633 1.153h9.534a.75.75 0 0 0 .633-1.153L12.225 10.5h-8.45ZM9.5 2.5h-3V6c0 .143-.04.283-.117.403L4.73 9h6.54L9.617 6.403A.746.746 0 0 1 9.5 6Z"/></svg>');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"/></svg>');}</style>
+
+
+<!-- Custom tag icons -->
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-ZH4G0HKBQC"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-ZH4G0HKBQC",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-ZH4G0HKBQC",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="blue-grey">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#unit-testing" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine base classes -->
+
+
+
+<!-- Header -->
+<header class="md-header" data-md-component="header">
+  <nav
+    class="md-header__inner md-grid"
+    aria-label="Header"
+  >
+
+    <!-- Link to home -->
+    <a
+      href="../../../../.."
+      title="All things DataOS"
+      class="md-header__button md-logo"
+      aria-label="All things DataOS"
+      data-md-component="logo"
+    >
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Logo -->
+
+  <img src="../../../../../assets/light-modern-logo.png" alt="logo" />
+
+    </a>
+
+    <!-- Button to open drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            All things DataOS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Unit Testing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color palette -->
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input
+            class="md-option"
+            data-md-color-media=""
+            data-md-color-scheme="default"
+            data-md-color-primary="blue-grey"
+            data-md-color-accent="blue-grey"
+            
+              aria-label="Switch to dark mode"
+            
+            type="radio"
+            name="__palette"
+            id="__palette_1"
+          />
+          
+            <label
+              class="md-header__button md-icon"
+              title="Switch to dark mode"
+              for="__palette_2"
+              hidden
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          <input
+            class="md-option"
+            data-md-color-media=""
+            data-md-color-scheme="slate"
+            data-md-color-primary="grey"
+            data-md-color-accent="grey"
+            
+              aria-label="Switch to light mode"
+            
+            type="radio"
+            name="__palette"
+            id="__palette_2"
+          />
+          
+            <label
+              class="md-header__button md-icon"
+              title="Switch to light mode"
+              for="__palette_1"
+              hidden
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+
+    <!-- Site language selector -->
+    
+
+    <!-- Button to open search modal -->
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+
+      <!-- Search interface -->
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Search interface -->
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+
+      <!-- Search input -->
+      <input
+        type="text"
+        class="md-search__input"
+        name="query"
+        aria-label="Search"
+        placeholder="Search"
+        autocapitalize="off"
+        autocorrect="off"
+        autocomplete="off"
+        spellcheck="false"
+        data-md-component="search-query"
+        required
+      />
+
+      <!-- Button to open search -->
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+
+      <!-- Search options -->
+      <nav
+        class="md-search__options"
+        aria-label="Search"
+      >
+
+        <!-- Button to share search -->
+        
+
+        <!-- Button to reset search -->
+        <button
+          type="reset"
+          class="md-search__icon md-icon"
+          title="Clear"
+          aria-label="Clear"
+          tabindex="-1"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+
+      <!-- Search suggestions -->
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+
+        <!-- Search results -->
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    <!-- Repository information -->
+    
+  </nav>
+
+  <!-- Navigation tabs (sticky) -->
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Hack: unset variable, as we're using it recursively in tabs-item.html -->
+
+
+<!-- Navigation tabs -->
+<nav
+  class="md-tabs"
+  aria-label="Tabs"
+  data-md-component="tabs"
+>
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  
+  
+
+  <!-- Recurse, if the first item has further nested items -->
+  
+    <li class="md-tabs__item">
+      <a href="../../../../" class="md-tabs__link">
+        Resources
+      </a>
+    </li>
+  
+
+<!-- Main navigation item -->
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  
+  
+
+  <!-- Recurse, if the first item has further nested items -->
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../interfaces/" class="md-tabs__link">
+        Interfaces
+      </a>
+    </li>
+  
+
+<!-- Main navigation item -->
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../../../../architecture/" class="md-tabs__link">
+      Architecture
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../../../../glossary/" class="md-tabs__link">
+      Glossary
+    </a>
+  </li>
+
+      
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to state -->
+
+  
+  
+
+
+<!-- Main navigation item with nested items -->
+
+  <li class="md-tabs__item">
+    <a href="../../../../../videos/" class="md-tabs__link">
+      Videos
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine class according to configuration -->
+
+
+  
+
+
+
+<!-- Main navigation -->
+<nav
+  class="md-nav md-nav--primary md-nav--lifted"
+  aria-label="Navigation"
+  data-md-level="0"
+>
+
+  <!-- Site title -->
+  <label class="md-nav__title" for="__drawer">
+    <a
+      href="../../../../.."
+      title="All things DataOS"
+      class="md-nav__button md-logo"
+      aria-label="All things DataOS"
+      data-md-component="logo"
+    >
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Logo -->
+
+  <img src="../../../../../assets/light-modern-logo.png" alt="logo" />
+
+    </a>
+    All things DataOS
+  </label>
+
+  <!-- Repository information -->
+  
+
+  <!-- Render item list -->
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+        
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle md-toggle--indeterminate"
+        type="checkbox"
+        id="__nav_2"
+        
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_2"
+          id="__nav_2_label"
+          tabindex="0"
+        >
+          Resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="1"
+        aria-labelledby="__nav_2_label"
+        aria-expanded="false"
+      >
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../bundle/" class="md-nav__link">
+        Bundle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../cluster/" class="md-nav__link">
+        Cluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../compute/" class="md-nav__link">
+        Compute
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../depot/" class="md-nav__link">
+        Depot
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../instance_secret/" class="md-nav__link">
+        Instance Secret
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../lakehouse/" class="md-nav__link">
+        Lakehouse
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../monitor/" class="md-nav__link">
+        Monitor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../operator/" class="md-nav__link">
+        Operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../pager/" class="md-nav__link">
+        Pager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../policy/" class="md-nav__link">
+        Policy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../secret_updated/" class="md-nav__link">
+        Secret
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../service/" class="md-nav__link">
+        Service
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../worker/" class="md-nav__link">
+        Worker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../workflow/" class="md-nav__link">
+        Workflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+      
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+        
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle md-toggle--indeterminate"
+        type="checkbox"
+        id="__nav_2_16"
+        
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_2_16"
+          id="__nav_2_16_label"
+          tabindex="0"
+        >
+          Stacks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="2"
+        aria-labelledby="__nav_2_16_label"
+        aria-expanded="false"
+      >
+        <label class="md-nav__title" for="__nav_2_16">
+          <span class="md-nav__icon md-icon"></span>
+          Stacks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../alpha/" class="md-nav__link">
+        Alpha
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../beacon/" class="md-nav__link">
+        Beacon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Benthos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../cli/" class="md-nav__link">
+        CLI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../data_toolbox/" class="md-nav__link">
+        Data Toolbox
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../flare/" class="md-nav__link">
+        Flare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../scanner/" class="md-nav__link">
+        Scanner
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../soda/" class="md-nav__link">
+        Soda
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../steampipe/" class="md-nav__link">
+        Steampipe
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+
+    <!-- Determine whether to render item as a section -->
+    
+
+    <!-- Render item with nested items -->
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+
+      <!-- Determine checked and indeterminate state -->
+      
+      
+        
+      
+
+      <!-- Active checkbox expands items contained within nested section -->
+      <input
+        class="md-nav__toggle md-toggle md-toggle--indeterminate"
+        type="checkbox"
+        id="__nav_3"
+        
+      />
+
+      <!-- Determine all nested items that are index pages -->
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      <!-- Render toggle to expand nested items -->
+      
+        <label
+          class="md-nav__link"
+          for="__nav_3"
+          id="__nav_3_label"
+          tabindex="0"
+        >
+          Interfaces
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+
+      <!-- Render link to index page + toggle -->
+      
+
+      <!-- Render nested navigation -->
+      <nav
+        class="md-nav"
+        data-md-level="1"
+        aria-labelledby="__nav_3_label"
+        aria-expanded="false"
+      >
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Interfaces
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+
+          <!-- Render nested item list -->
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../../interfaces/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../../interfaces/atlas/" class="md-nav__link">
+        Atlas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../../interfaces/audiences/" class="md-nav__link">
+        Audiences
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../../interfaces/bifrost/" class="md-nav__link">
+        Bifrost
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../../interfaces/cli/" class="md-nav__link">
+        CLI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../../interfaces/lens/" class="md-nav__link">
+        Lens
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../../interfaces/metis/" class="md-nav__link">
+        Metis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../../interfaces/notebook/" class="md-nav__link">
+        Notebook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../../interfaces/operations/" class="md-nav__link">
+        Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../../interfaces/workbench/" class="md-nav__link">
+        Workbench
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+
+  <!-- Currently active page -->
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../../architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../../glossary/" class="md-nav__link">
+        Glossary
+      </a>
+    </li>
+  
+
+    
+      
+      
+      <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Wrap everything with a macro to reduce file roundtrips (see #2213) -->
+
+
+<!-- Render current and nested navigation items -->
+
+
+  <!-- Determine class according to state -->
+  
+  
+
+  <!-- Main navigation item with nested items -->
+  
+    <li class="md-nav__item">
+      <a href="../../../../../videos/" class="md-nav__link">
+        Videos
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#contents" class="md-nav__link">
+    Contents
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-a-test" class="md-nav__link">
+    Writing a Test
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing a Test">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inline-tests" class="md-nav__link">
+    Inline Tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloblang-tests" class="md-nav__link">
+    Bloblang Tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fragmented-tests" class="md-nav__link">
+    Fragmented Tests
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-definitions" class="md-nav__link">
+    Input Definitions
+  </a>
+  
+    <nav class="md-nav" aria-label="Input Definitions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#content" class="md-nav__link">
+    content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json_content" class="md-nav__link">
+    json_content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_content" class="md-nav__link">
+    file_content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata" class="md-nav__link">
+    metadata
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-conditions" class="md-nav__link">
+    Output Conditions
+  </a>
+  
+    <nav class="md-nav" aria-label="Output Conditions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bloblang" class="md-nav__link">
+    bloblang
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#content_equals" class="md-nav__link">
+    content_equals
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#content_matches" class="md-nav__link">
+    content_matches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata_equals" class="md-nav__link">
+    metadata_equals
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_equals" class="md-nav__link">
+    file_equals
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_json_equals" class="md-nav__link">
+    file_json_equals
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json_equals" class="md-nav__link">
+    json_equals
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json_contains" class="md-nav__link">
+    json_contains
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-tests" class="md-nav__link">
+    Running Tests
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mocking-processors" class="md-nav__link">
+    Mocking Processors
+  </a>
+  
+    <nav class="md-nav" aria-label="Mocking Processors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#more-granular-mocking" class="md-nav__link">
+    More granular mocking
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fields" class="md-nav__link">
+    Fields
+  </a>
+  
+    <nav class="md-nav" aria-label="Fields">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tests" class="md-nav__link">
+    tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tests_1" class="md-nav__link">
+    tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tests_2" class="md-nav__link">
+    tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teststarget_processors" class="md-nav__link">
+    tests[].target_processors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teststarget_mapping" class="md-nav__link">
+    tests[].target_mapping
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testsmocks" class="md-nav__link">
+    tests[].mocks
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testsinput_batch" class="md-nav__link">
+    tests[].input_batch
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testsinput_batchcontent" class="md-nav__link">
+    tests[].input_batch[].content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testsinput_batchjson_content" class="md-nav__link">
+    tests[].input_batch[].json_content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testsinput_batchfile_content" class="md-nav__link">
+    tests[].input_batch[].file_content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testsinput_batchmetadata" class="md-nav__link">
+    tests[].input_batch[].metadata
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testsinput_batches" class="md-nav__link">
+    tests[].input_batches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testsinput_batchescontent" class="md-nav__link">
+    tests[].input_batches[][].content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testsinput_batchesjson_content" class="md-nav__link">
+    tests[].input_batches[][].json_content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testsinput_batchesfile_content" class="md-nav__link">
+    tests[].input_batches[][].file_content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testsinput_batchesmetadata" class="md-nav__link">
+    tests[].input_batches[][].metadata
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testsoutput_batches" class="md-nav__link">
+    tests[].output_batches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testsoutput_batchescontent" class="md-nav__link">
+    tests[].output_batches[][].content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testsoutput_batchesmetadata" class="md-nav__link">
+    tests[].output_batches[][].metadata
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testsoutput_batchesbloblang" class="md-nav__link">
+    tests[].output_batches[][].bloblang
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testsoutput_batchescontent_equals" class="md-nav__link">
+    tests[].output_batches[][].content_equals
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testsoutput_batchescontent_matches" class="md-nav__link">
+    tests[].output_batches[][].content_matches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testsoutput_batchesmetadata_equals" class="md-nav__link">
+    tests[].output_batches[][].metadata_equals
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testsoutput_batchesfile_equals" class="md-nav__link">
+    tests[].output_batches[][].file_equals
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testsoutput_batchesfile_json_equals" class="md-nav__link">
+    tests[].output_batches[][].file_json_equals
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testsoutput_batchesjson_equals" class="md-nav__link">
+    tests[].output_batches[][].json_equals
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testsoutput_batchesjson_contains" class="md-nav__link">
+    tests[].output_batches[][].json_contains
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testsoutput_batchesfile_json_contains" class="md-nav__link">
+    tests[].output_batches[][].file_json_contains
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Tags -->
+
+
+<!-- Actions -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Actions -->
+
+
+<!--
+  Hack: check whether the content contains a h1 headline. If it doesn't, the
+  page title (or respectively site name) is used as the main headline.
+-->
+
+
+<!-- Page content -->
+<h1 id="unit-testing">Unit Testing<a class="headerlink" href="#unit-testing" title="Permanent link">&para;</a></h1>
+<p>The Benthos service offers a command <code>benthos test</code> for running unit tests on sections of a configuration file. This makes it easy to protect your config files from regressions over time.</p>
+<h2 id="contents">Contents<a class="headerlink" href="#contents" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#writing-a-test">Writing a Test</a></li>
+<li><a href="#output-conditions">Output Conditions</a></li>
+<li><a href="#running-tests">Running Tests</a></li>
+<li><a href="#mocking-processors">Mocking Processors</a></li>
+<li><a href="#fields">Config Field Spec</a></li>
+</ol>
+<h2 id="writing-a-test">Writing a Test<a class="headerlink" href="#writing-a-test" title="Permanent link">&para;</a></h2>
+<p>Let's imagine we have a configuration file <code>foo.yaml</code> containing some processors:</p>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="nt">input</span><span class="p">:</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="w">  </span><span class="nt">kafka</span><span class="p">:</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="w">    </span><span class="nt">addresses</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="nv">TODO</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="w">    </span><span class="nt">topics</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="nv">foo</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">bar</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="w">    </span><span class="nt">consumer_group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foogroup</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><a href="#__codelineno-0-6"><span class="linenos" data-linenos=" 6 "></span></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><a href="#__codelineno-0-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="nt">pipeline</span><span class="p">:</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><a href="#__codelineno-0-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">  </span><span class="nt">processors</span><span class="p">:</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><a href="#__codelineno-0-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mapping</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&quot;%vend&quot;.format(content().uppercase().string())&#39;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><a href="#__codelineno-0-10"><span class="linenos" data-linenos="10 "></span></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><a href="#__codelineno-0-11"><span class="linenos" data-linenos="11 "></span></a><span class="nt">output</span><span class="p">:</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><a href="#__codelineno-0-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">  </span><span class="nt">aws_s3</span><span class="p">:</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><a href="#__codelineno-0-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">    </span><span class="nt">bucket</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TODO</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><a href="#__codelineno-0-14"><span class="linenos" data-linenos="14 "></span></a><span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;${!</span><span class="nv"> </span><span class="s">meta(&quot;kafka_topic&quot;)</span><span class="nv"> </span><span class="s">}/${!</span><span class="nv"> </span><span class="s">json(&quot;message.id&quot;)</span><span class="nv"> </span><span class="s">}.json&#39;</span>
+</code></pre></div>
+<p>One way to write our unit tests for this config is to accompany it with a file of the same name and extension but suffixed with <code>_benthos_test</code>, which in this case would be <code>foo_benthos_test.yaml</code>.</p>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="nt">tests</span><span class="p">:</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example test</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="w">    </span><span class="nt">target_processors</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;/pipeline/processors&#39;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><a href="#__codelineno-1-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><a href="#__codelineno-1-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="w">    </span><span class="nt">input_batch</span><span class="p">:</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><a href="#__codelineno-1-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">content</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;example</span><span class="nv"> </span><span class="s">content&#39;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><a href="#__codelineno-1-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">        </span><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><a href="#__codelineno-1-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">          </span><span class="nt">example_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example metadata value</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><a href="#__codelineno-1-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">    </span><span class="nt">output_batches</span><span class="p">:</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><a href="#__codelineno-1-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">      </span><span class="p p-Indicator">-</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><a href="#__codelineno-1-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">content_equals</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EXAMPLE CONTENTend</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><a href="#__codelineno-1-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">          </span><span class="nt">metadata_equals</span><span class="p">:</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a><a href="#__codelineno-1-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">            </span><span class="nt">example_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example metadata value</span>
+</code></pre></div>
+<p>Under <code>tests</code>, we have a list of any number of unit tests to execute for the config file. Each test is run in complete isolation, including any resources defined by the config file. Tests should be allocated a unique <code>name</code> that identifies the feature being tested.</p>
+<p>The field <code>target_processors</code> is either the label of a processor to test or a <a href="https://tools.ietf.org/html/rfc6901">JSON Pointer</a> that identifies the position of a processor, or a list of processors, within the file which should be executed by the test. For example, a value of <code>foo</code> would target a processor with the label <code>foo</code>, and a value of <code>/input/processors</code> would target all processors within the input section of the config.</p>
+<p>The field <code>environment</code> allows you to define an object of key/value pairs that set environment variables to be evaluated during the parsing of the target config file. These are unique to each test, allowing you to test different environment variable interpolation combinations.</p>
+<p>The field <code>input_batch</code> lists one or more messages to be fed into the targeted processors as a batch. Each message of the batch may have its raw content defined as well as metadata key/value pairs.</p>
+<p>For the common case where the messages are in JSON format, you can use <code>json_content</code> instead of <code>content</code> to specify the message structurally rather than verbatim.</p>
+<p>The field <code>output_batches</code> lists any number of batches of messages which are expected to result from the target processors. Each batch lists any number of messages, each one defining <a href="#output-conditions"><code>conditions</code></a> to describe the expected contents of the message.</p>
+<p>If the number of batches defined does not match the resulting number of batches, the test will fail. If the number of messages defined in each batch does not match the number in the resulting batches, the test will fail. If any condition of a message fails, then the test fails.</p>
+<h3 id="inline-tests">Inline Tests<a class="headerlink" href="#inline-tests" title="Permanent link">&para;</a></h3>
+<p>Sometimes it's more convenient to define your tests within the config being tested. This is fine, simply add the <code>tests</code> field to the end of the config being tested.</p>
+<h3 id="bloblang-tests">Bloblang Tests<a class="headerlink" href="#bloblang-tests" title="Permanent link">&para;</a></h3>
+<p>Sometimes when working with large <a href="../../bloblang/">Bloblang mappings</a>, it's preferred to have the full mapping in a separate file to your Benthos configuration. In this case, it's possible to write unit tests that target and execute the mapping directly with the field <code>target_mapping</code>, which, when specified, is interpreted as either an absolute path or a path relative to the test definition file that points to a file containing only a Bloblang mapping.</p>
+<p>For example, if we were to have a file <code>cities.blobl</code> containing a mapping:</p>
+<div class="language-go highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos="1 "></span></a><span class="nx">root</span><span class="p">.</span><span class="nx">Cities</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">this</span><span class="p">.</span><span class="nx">locations</span><span class="p">.</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos="2 "></span></a><span class="w">                </span><span class="nx">filter</span><span class="p">(</span><span class="nx">loc</span><span class="w"> </span><span class="o">-</span><span class="p">&gt;</span><span class="w"> </span><span class="nx">loc</span><span class="p">.</span><span class="nx">state</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;WA&quot;</span><span class="p">).</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos="3 "></span></a><span class="w">                </span><span class="nx">map_each</span><span class="p">(</span><span class="nx">loc</span><span class="w"> </span><span class="o">-</span><span class="p">&gt;</span><span class="w"> </span><span class="nx">loc</span><span class="p">.</span><span class="nx">name</span><span class="p">).</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><a href="#__codelineno-2-4"><span class="linenos" data-linenos="4 "></span></a><span class="w">                </span><span class="nx">sort</span><span class="p">().</span><span class="nx">join</span><span class="p">(</span><span class="s">&quot;, &quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>We can accompany it with a test file <code>cities_test.yaml</code> containing a regular test definition:</p>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="nt">tests</span><span class="p">:</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><a href="#__codelineno-3-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test cities mapping</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><a href="#__codelineno-3-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="w">    </span><span class="nt">target_mapping</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;./cities.blobl&#39;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><a href="#__codelineno-3-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><a href="#__codelineno-3-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="w">    </span><span class="nt">input_batch</span><span class="p">:</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><a href="#__codelineno-3-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">content</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><a href="#__codelineno-3-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">          </span><span class="no">{</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><a href="#__codelineno-3-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">            </span><span class="no">&quot;locations&quot;: [</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><a href="#__codelineno-3-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">              </span><span class="no">{&quot;name&quot;: &quot;Seattle&quot;, &quot;state&quot;: &quot;WA&quot;},</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a><a href="#__codelineno-3-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">              </span><span class="no">{&quot;name&quot;: &quot;New York&quot;, &quot;state&quot;: &quot;NY&quot;},</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><a href="#__codelineno-3-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">              </span><span class="no">{&quot;name&quot;: &quot;Bellevue&quot;, &quot;state&quot;: &quot;WA&quot;},</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a><a href="#__codelineno-3-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">              </span><span class="no">{&quot;name&quot;: &quot;Olympia&quot;, &quot;state&quot;: &quot;WA&quot;}</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><a href="#__codelineno-3-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">            </span><span class="no">]</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a><a href="#__codelineno-3-14"><span class="linenos" data-linenos="14 "></span></a><span class="w">          </span><span class="no">}</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a><a href="#__codelineno-3-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">    </span><span class="nt">output_batches</span><span class="p">:</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a><a href="#__codelineno-3-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">      </span><span class="p p-Indicator">-</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a><a href="#__codelineno-3-17"><span class="linenos" data-linenos="17 "></span></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">json_equals</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;Cities&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Bellevue,</span><span class="nv"> </span><span class="s">Olympia,</span><span class="nv"> </span><span class="s">Seattle&quot;</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p>And execute this test the same way we execute other Benthos tests (<code>benthos test ./dir/cities_test.yaml</code>, <code>benthos test ./dir/...</code>, etc.).</p>
+<h3 id="fragmented-tests">Fragmented Tests<a class="headerlink" href="#fragmented-tests" title="Permanent link">&para;</a></h3>
+<p>Sometimes the number of tests you need to define in order to cover a config file is so vast that it's necessary to split them across multiple test definition files. This is possible but Benthos still requires a way to detect the configuration file being targeted by these fragmented test definition files. In order to do this, we must prefix our <code>target_processors</code> field with the path of the target relative to the definition file.</p>
+<p>The syntax of <code>target_processors</code>, in this case, is a full <a href="https://tools.ietf.org/html/rfc6901">JSON Pointer</a> that should look something like <code>target.yaml#/pipeline/processors</code>. For example, if we saved our test definition above in an arbitrary location like <code>./tests/first.yaml</code> and wanted to target our original <code>foo.yaml</code> config file, we could do that with the following:</p>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="nt">tests</span><span class="p">:</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><a href="#__codelineno-4-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example test</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><a href="#__codelineno-4-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="w">    </span><span class="nt">target_processors</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;../foo.yaml#/pipeline/processors&#39;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><a href="#__codelineno-4-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><a href="#__codelineno-4-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="w">    </span><span class="nt">input_batch</span><span class="p">:</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><a href="#__codelineno-4-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">content</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;example</span><span class="nv"> </span><span class="s">content&#39;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><a href="#__codelineno-4-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">        </span><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><a href="#__codelineno-4-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">          </span><span class="nt">example_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example metadata value</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a><a href="#__codelineno-4-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">    </span><span class="nt">output_batches</span><span class="p">:</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a><a href="#__codelineno-4-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">      </span><span class="p p-Indicator">-</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a><a href="#__codelineno-4-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">content_equals</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EXAMPLE CONTENTend</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a><a href="#__codelineno-4-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">          </span><span class="nt">metadata_equals</span><span class="p">:</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a><a href="#__codelineno-4-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">            </span><span class="nt">example_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example metadata value</span>
+</code></pre></div>
+<h2 id="input-definitions">Input Definitions<a class="headerlink" href="#input-definitions" title="Permanent link">&para;</a></h2>
+<h3 id="content"><code>content</code><a class="headerlink" href="#content" title="Permanent link">&para;</a></h3>
+<p>Sets the raw content of the message.</p>
+<hr />
+<h3 id="json_content"><code>json_content</code><a class="headerlink" href="#json_content" title="Permanent link">&para;</a></h3>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos="1 "></span></a><span class="nt">json_content</span><span class="p">:</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><a href="#__codelineno-5-2"><span class="linenos" data-linenos="2 "></span></a><span class="w">  </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo value</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><a href="#__codelineno-5-3"><span class="linenos" data-linenos="3 "></span></a><span class="w">  </span><span class="nt">bar</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="nv">element1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">10</span><span class="w"> </span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<p>Sets the raw content of the message to a JSON document matching the structure of the value.</p>
+<hr />
+<h3 id="file_content"><code>file_content</code><a class="headerlink" href="#file_content" title="Permanent link">&para;</a></h3>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><a href="#__codelineno-6-1"><span class="linenos" data-linenos="1 "></span></a><span class="nt">file_content</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./foo/bar.txt</span>
+</code></pre></div>
+<p>Sets the raw content of the message by reading a file. The path of the file should be relative to the path of the test file.</p>
+<hr />
+<h3 id="metadata"><code>metadata</code><a class="headerlink" href="#metadata" title="Permanent link">&para;</a></h3>
+<p>A map of key/value pairs that sets the metadata values of the message.</p>
+<h2 id="output-conditions">Output Conditions<a class="headerlink" href="#output-conditions" title="Permanent link">&para;</a></h2>
+<h3 id="bloblang"><code>bloblang</code><a class="headerlink" href="#bloblang" title="Permanent link">&para;</a></h3>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><a href="#__codelineno-7-1"><span class="linenos" data-linenos="1 "></span></a><span class="nt">bloblang</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;this.age</span><span class="nv"> </span><span class="s">&gt;</span><span class="nv"> </span><span class="s">10</span><span class="nv"> </span><span class="s">&amp;&amp;</span><span class="nv"> </span><span class="s">@foo.length()</span><span class="nv"> </span><span class="s">&gt;</span><span class="nv"> </span><span class="s">0&#39;</span>
+</code></pre></div>
+<p>Executes a <a href="../../bloblang/">Bloblang expression</a> on a message, if the result is anything other than a boolean equalling <code>true</code> the test fails.</p>
+<hr />
+<h3 id="content_equals"><code>content_equals</code><a class="headerlink" href="#content_equals" title="Permanent link">&para;</a></h3>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><a href="#__codelineno-8-1"><span class="linenos" data-linenos="1 "></span></a><span class="nt">content_equals</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example content</span>
+</code></pre></div>
+<p>Checks the full raw contents of a message against a value.</p>
+<hr />
+<h3 id="content_matches"><code>content_matches</code><a class="headerlink" href="#content_matches" title="Permanent link">&para;</a></h3>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><a href="#__codelineno-9-1"><span class="linenos" data-linenos="1 "></span></a><span class="nt">content_matches</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;^foo</span><span class="nv"> </span><span class="s">[a-z]+</span><span class="nv"> </span><span class="s">bar$&quot;</span>
+</code></pre></div>
+<p>Checks whether the full raw contents of a message matches a regular expression (re2).</p>
+<hr />
+<h3 id="metadata_equals"><code>metadata_equals</code><a class="headerlink" href="#metadata_equals" title="Permanent link">&para;</a></h3>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><a href="#__codelineno-10-1"><span class="linenos" data-linenos="1 "></span></a><span class="nt">metadata_equals</span><span class="p">:</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><a href="#__codelineno-10-2"><span class="linenos" data-linenos="2 "></span></a><span class="w">  </span><span class="nt">example_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example metadata value</span>
+</code></pre></div>
+<p>Checks a map of metadata keys to values against the metadata stored in the message. If there is a value mismatch between a key of the condition versus the message metadata, this condition will fail.</p>
+<hr />
+<h3 id="file_equals"><code>file_equals</code><a class="headerlink" href="#file_equals" title="Permanent link">&para;</a></h3>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><a href="#__codelineno-11-1"><span class="linenos" data-linenos="1 "></span></a><span class="nt">file_equals</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./foo/bar.txt</span>
+</code></pre></div>
+<p>Checks that the contents of a message matches the contents of a file. The path of the file should be relative to the path of the test file.</p>
+<hr />
+<h3 id="file_json_equals"><code>file_json_equals</code><a class="headerlink" href="#file_json_equals" title="Permanent link">&para;</a></h3>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><a href="#__codelineno-12-1"><span class="linenos" data-linenos="1 "></span></a><span class="nt">file_json_equals</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./foo/bar.json</span>
+</code></pre></div>
+<p>Checks that both the message and the file contents are valid JSON documents and that they are structurally equivalent. Will ignore formatting and ordering differences. The path of the file should be relative to the path of the test file.</p>
+<hr />
+<h3 id="json_equals"><code>json_equals</code><a class="headerlink" href="#json_equals" title="Permanent link">&para;</a></h3>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><a href="#__codelineno-13-1"><span class="linenos" data-linenos="1 "></span></a><span class="nt">json_equals</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="w"> </span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p>Checks that both the message and the condition are valid JSON documents, and that they are structurally equivalent. Will ignore formatting and ordering differences.</p>
+<p>You can also structure the condition content as YAML and it will be converted to the equivalent JSON document for testing:</p>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><a href="#__codelineno-14-1"><span class="linenos" data-linenos="1 "></span></a><span class="nt">json_equals</span><span class="p">:</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a><a href="#__codelineno-14-2"><span class="linenos" data-linenos="2 "></span></a><span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">value</span>
+</code></pre></div>
+<hr />
+<h3 id="json_contains"><code>json_contains</code><a class="headerlink" href="#json_contains" title="Permanent link">&para;</a></h3>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><a href="#__codelineno-15-1"><span class="linenos" data-linenos="1 "></span></a><span class="nt">json_contains</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="w"> </span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p>Checks that both the message and the condition are valid JSON documents and that the message is a superset of the condition.</p>
+<h2 id="running-tests">Running Tests<a class="headerlink" href="#running-tests" title="Permanent link">&para;</a></h2>
+<p>Executing tests for a specific config can be done by pointing the subcommand <code>test</code> at either the config to be tested or its test definition, e.g., <code>benthos test ./config.yaml</code> and <code>benthos test ./config_benthos_test.yaml</code> are equivalent.</p>
+<p>The <code>test</code> subcommand also supports wildcard patterns e.g., <code>benthos test ./foo/*.yaml</code> will execute all tests within matching files. In order to walk a directory tree and execute all tests found, you can use the shortcut <code>./...</code>, e.g., <code>benthos test ./...</code> will execute all tests found in the current directory, any child directories, and so on.</p>
+<p>If you want to allow components to write logs at a provided level to stdout when running the tests, you can use <code>benthos test --log &lt;level&gt;</code>. Please consult the <a href="../../components/logger/">logger docs</a> for further details.</p>
+<h2 id="mocking-processors">Mocking Processors<a class="headerlink" href="#mocking-processors" title="Permanent link">&para;</a></h2>
+<p>BETA: This feature is currently in a BETA phase, which means breaking changes could be made if a fundamental issue with the feature is found.</p>
+<p>Sometimes you'll want to write tests for a series of processors, where one or more of them are networked (or otherwise stateful). Rather than creating and managing mocked services you can define mock versions of those processors in the test definition. For example, if we have a config with the following processors:</p>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><a href="#__codelineno-16-1"><span class="linenos" data-linenos="1 "></span></a><span class="nt">pipeline</span><span class="p">:</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a><a href="#__codelineno-16-2"><span class="linenos" data-linenos="2 "></span></a><span class="w">  </span><span class="nt">processors</span><span class="p">:</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3"></a><a href="#__codelineno-16-3"><span class="linenos" data-linenos="3 "></span></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mapping</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;root</span><span class="nv"> </span><span class="s">=</span><span class="nv"> </span><span class="s">&quot;simon</span><span class="nv"> </span><span class="s">says:</span><span class="nv"> </span><span class="s">&quot;</span><span class="nv"> </span><span class="s">+</span><span class="nv"> </span><span class="s">content()&#39;</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4"></a><a href="#__codelineno-16-4"><span class="linenos" data-linenos="4 "></span></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">get_foobar_api</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5"></a><a href="#__codelineno-16-5"><span class="linenos" data-linenos="5 "></span></a><span class="w">      </span><span class="nt">http</span><span class="p">:</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6"></a><a href="#__codelineno-16-6"><span class="linenos" data-linenos="6 "></span></a><span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://example.com/foobar</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7"></a><a href="#__codelineno-16-7"><span class="linenos" data-linenos="7 "></span></a><span class="w">        </span><span class="nt">verb</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GET</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8"></a><a href="#__codelineno-16-8"><span class="linenos" data-linenos="8 "></span></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mapping</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;root</span><span class="nv"> </span><span class="s">=</span><span class="nv"> </span><span class="s">content().uppercase()&#39;</span>
+</code></pre></div>
+<p>Rather than create a fake service for the <code>http</code> processor to interact with, we can define a mock in our test definition that replaces it with a <a href="../../components/processors/mapping/"><code>mapping</code> processor</a>. Mocks are configured as a map of labels that identify a processor to replace and the config to replace it with:</p>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><a href="#__codelineno-17-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="nt">tests</span><span class="p">:</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a><a href="#__codelineno-17-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mocks the http proc</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3"></a><a href="#__codelineno-17-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="w">    </span><span class="nt">target_processors</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;/pipeline/processors&#39;</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4"></a><a href="#__codelineno-17-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="w">    </span><span class="nt">mocks</span><span class="p">:</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5"></a><a href="#__codelineno-17-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="w">      </span><span class="nt">get_foobar_api</span><span class="p">:</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6"></a><a href="#__codelineno-17-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">        </span><span class="nt">mapping</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;root</span><span class="nv"> </span><span class="s">=</span><span class="nv"> </span><span class="s">content().string()</span><span class="nv"> </span><span class="s">+</span><span class="nv"> </span><span class="s">&quot;</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">some</span><span class="nv"> </span><span class="s">mock</span><span class="nv"> </span><span class="s">content&quot;&#39;</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7"></a><a href="#__codelineno-17-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">    </span><span class="nt">input_batch</span><span class="p">:</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8"></a><a href="#__codelineno-17-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hello</span><span class="nv"> </span><span class="s">world&quot;</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9"></a><a href="#__codelineno-17-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">    </span><span class="nt">output_batches</span><span class="p">:</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10"></a><a href="#__codelineno-17-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">content_equals</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;SIMON</span><span class="nv"> </span><span class="s">SAYS:</span><span class="nv"> </span><span class="s">HELLO</span><span class="nv"> </span><span class="s">WORLD</span><span class="nv"> </span><span class="s">THIS</span><span class="nv"> </span><span class="s">IS</span><span class="nv"> </span><span class="s">SOME</span><span class="nv"> </span><span class="s">MOCK</span><span class="nv"> </span><span class="s">CONTENT&quot;</span>
+</code></pre></div>
+<p>With the above test definition the <code>http</code> processor will be swapped out for <code>mapping: 'root = content().string() + " this is some mock content"'</code>. For the purposes of mocking it is recommended that you use a <a href="../../components/processors/mapping/"><code>mapping</code> processor</a> that simply mutates the message in a way that you would expect the mocked processor to.</p>
+<blockquote>
+<p>Note: It's not currently possible to mock components that are imported as separate resource files (using --resource/-r). It is recommended that you mock these by maintaining separate definitions for test purposes (-r "./test/*.yaml").
+</p>
+</blockquote>
+<h3 id="more-granular-mocking">More granular mocking<a class="headerlink" href="#more-granular-mocking" title="Permanent link">&para;</a></h3>
+<p>It is also possible to target specific fields within the test config by <a href="https://tools.ietf.org/html/rfc6901">JSON pointers</a> as an alternative to labels. The following test definition would create the same mock as the previous:</p>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><a href="#__codelineno-18-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="nt">tests</span><span class="p">:</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a><a href="#__codelineno-18-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mocks the http proc</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3"></a><a href="#__codelineno-18-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="w">    </span><span class="nt">target_processors</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;/pipeline/processors&#39;</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4"></a><a href="#__codelineno-18-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="w">    </span><span class="nt">mocks</span><span class="p">:</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5"></a><a href="#__codelineno-18-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="w">      </span><span class="nt">/pipeline/processors/1</span><span class="p">:</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6"></a><a href="#__codelineno-18-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">        </span><span class="nt">mapping</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;root</span><span class="nv"> </span><span class="s">=</span><span class="nv"> </span><span class="s">content().string()</span><span class="nv"> </span><span class="s">+</span><span class="nv"> </span><span class="s">&quot;</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">some</span><span class="nv"> </span><span class="s">mock</span><span class="nv"> </span><span class="s">content&quot;&#39;</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7"></a><a href="#__codelineno-18-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">    </span><span class="nt">input_batch</span><span class="p">:</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8"></a><a href="#__codelineno-18-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hello</span><span class="nv"> </span><span class="s">world&quot;</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9"></a><a href="#__codelineno-18-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">    </span><span class="nt">output_batches</span><span class="p">:</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10"></a><a href="#__codelineno-18-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">content_equals</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;SIMON</span><span class="nv"> </span><span class="s">SAYS:</span><span class="nv"> </span><span class="s">HELLO</span><span class="nv"> </span><span class="s">WORLD</span><span class="nv"> </span><span class="s">THIS</span><span class="nv"> </span><span class="s">IS</span><span class="nv"> </span><span class="s">SOME</span><span class="nv"> </span><span class="s">MOCK</span><span class="nv"> </span><span class="s">CONTENT&quot;</span>
+</code></pre></div>
+<h2 id="fields">Fields<a class="headerlink" href="#fields" title="Permanent link">&para;</a></h2>
+<p>The schema of a template file is as follows:</p>
+<h3 id="tests"><code>tests</code><a class="headerlink" href="#tests" title="Permanent link">&para;</a></h3>
+<p>A list of one or more unit tests to execute.</p>
+<p>Type: list of <code>object</code></p>
+<hr />
+<h3 id="tests_1"><code>tests</code><a class="headerlink" href="#tests_1" title="Permanent link">&para;</a></h3>
+<p>The name of the test, should be unique and give a rough indication of what behavior is being tested.</p>
+<p>Type: <code>string</code></p>
+<hr />
+<h3 id="tests_2"><code>tests</code><a class="headerlink" href="#tests_2" title="Permanent link">&para;</a></h3>
+<p>An optional map of environment variables to set for the duration of the test.</p>
+<p>Type: map of <code>string</code></p>
+<hr />
+<h3 id="teststarget_processors"><code>tests[].target_processors</code><a class="headerlink" href="#teststarget_processors" title="Permanent link">&para;</a></h3>
+<p>A <a href="https://tools.ietf.org/html/rfc6901">JSON Pointer</a> that identifies the specific processors which should be executed by the test. The target can either be a single processor or an array of processors. Alternatively, a resource label can be used to identify a processor.</p>
+<p>It is also possible to target processors in a separate file by prefixing the target with a path relative to the test file followed by a # symbol.</p>
+<p>Type: <code>string</code></p>
+<p>Default: <code>"/pipeline/processors"</code></p>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><a href="#__codelineno-19-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># Examples</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a><a href="#__codelineno-19-2"><span class="linenos" data-linenos="2 "></span></a>
+<a id="__codelineno-19-3" name="__codelineno-19-3"></a><a href="#__codelineno-19-3"><span class="linenos" data-linenos="3 "></span></a><span class="nt">target_processors</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_processor</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4"></a><a href="#__codelineno-19-4"><span class="linenos" data-linenos="4 "></span></a>
+<a id="__codelineno-19-5" name="__codelineno-19-5"></a><a href="#__codelineno-19-5"><span class="linenos" data-linenos="5 "></span></a><span class="nt">target_processors</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/pipeline/processors/0</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6"></a><a href="#__codelineno-19-6"><span class="linenos" data-linenos="6 "></span></a>
+<a id="__codelineno-19-7" name="__codelineno-19-7"></a><a href="#__codelineno-19-7"><span class="linenos" data-linenos="7 "></span></a><span class="nt">target_processors</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">target.yaml#/pipeline/processors</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8"></a><a href="#__codelineno-19-8"><span class="linenos" data-linenos="8 "></span></a>
+<a id="__codelineno-19-9" name="__codelineno-19-9"></a><a href="#__codelineno-19-9"><span class="linenos" data-linenos="9 "></span></a><span class="nt">target_processors</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">target.yaml#/pipeline/processors</span>
+</code></pre></div>
+<hr />
+<h3 id="teststarget_mapping"><code>tests[].target_mapping</code><a class="headerlink" href="#teststarget_mapping" title="Permanent link">&para;</a></h3>
+<p>A file path relative to the test definition path of a Bloblang file to execute as an alternative to testing processors with the <code>target_processors</code> field. This allows you to define unit tests for Bloblang mappings directly.</p>
+<p>Type: <code>string</code></p>
+<p>Default: <code>""</code></p>
+<hr />
+<h3 id="testsmocks"><code>tests[].mocks</code><a class="headerlink" href="#testsmocks" title="Permanent link">&para;</a></h3>
+<p>An optional map of processors to mock. Keys should contain either a label or a JSON pointer of a processor that should be mocked. Values should contain a processor definition, which will replace the mocked processor. Most of the time, you'll want to use a <a href="../../components/processors/mapping/"><code>mapping</code> processor</a> here and use it to create a result that emulates the target processor.</p>
+<p>Type: map of <code>unknown</code></p>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><a href="#__codelineno-20-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># Examples</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2"></a><a href="#__codelineno-20-2"><span class="linenos" data-linenos="2 "></span></a>
+<a id="__codelineno-20-3" name="__codelineno-20-3"></a><a href="#__codelineno-20-3"><span class="linenos" data-linenos="3 "></span></a><span class="nt">mocks</span><span class="p">:</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4"></a><a href="#__codelineno-20-4"><span class="linenos" data-linenos="4 "></span></a><span class="w">  </span><span class="nt">get_foobar_api</span><span class="p">:</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5"></a><a href="#__codelineno-20-5"><span class="linenos" data-linenos="5 "></span></a><span class="w">    </span><span class="nt">mapping</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root = content().string() + &quot; this is some mock content&quot;</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6"></a><a href="#__codelineno-20-6"><span class="linenos" data-linenos="6 "></span></a>
+<a id="__codelineno-20-7" name="__codelineno-20-7"></a><a href="#__codelineno-20-7"><span class="linenos" data-linenos="7 "></span></a><span class="nt">mocks</span><span class="p">:</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8"></a><a href="#__codelineno-20-8"><span class="linenos" data-linenos="8 "></span></a><span class="w">  </span><span class="nt">/pipeline/processors/1</span><span class="p">:</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9"></a><a href="#__codelineno-20-9"><span class="linenos" data-linenos="9 "></span></a><span class="w">    </span><span class="nt">mapping</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root = content().string() + &quot; this is some mock content&quot;</span>
+</code></pre></div>
+<hr />
+<h3 id="testsinput_batch"><code>tests[].input_batch</code><a class="headerlink" href="#testsinput_batch" title="Permanent link">&para;</a></h3>
+<p>Define a batch of messages to feed into your test, specify either an <code>input_batch</code> or a series of <code>input_batches</code>.</p>
+<p>Type: list of <code>object</code></p>
+<hr />
+<h3 id="testsinput_batchcontent"><code>tests[].input_batch[].content</code><a class="headerlink" href="#testsinput_batchcontent" title="Permanent link">&para;</a></h3>
+<p>The raw content of the input message.</p>
+<p>Type: <code>string</code></p>
+<p>Default: <code>""</code></p>
+<hr />
+<h3 id="testsinput_batchjson_content"><code>tests[].input_batch[].json_content</code><a class="headerlink" href="#testsinput_batchjson_content" title="Permanent link">&para;</a></h3>
+<p>Sets the raw content of the message to a JSON document matching the structure of the value.</p>
+<p>Type: <code>unknown</code></p>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a><a href="#__codelineno-21-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># Examples</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2"></a><a href="#__codelineno-21-2"><span class="linenos" data-linenos="2 "></span></a>
+<a id="__codelineno-21-3" name="__codelineno-21-3"></a><a href="#__codelineno-21-3"><span class="linenos" data-linenos="3 "></span></a><span class="nt">json_content</span><span class="p">:</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4"></a><a href="#__codelineno-21-4"><span class="linenos" data-linenos="4 "></span></a><span class="w">  </span><span class="nt">bar</span><span class="p">:</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5"></a><a href="#__codelineno-21-5"><span class="linenos" data-linenos="5 "></span></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">element1</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6"></a><a href="#__codelineno-21-6"><span class="linenos" data-linenos="6 "></span></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7"></a><a href="#__codelineno-21-7"><span class="linenos" data-linenos="7 "></span></a><span class="w">  </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo value</span>
+</code></pre></div>
+<hr />
+<h3 id="testsinput_batchfile_content"><code>tests[].input_batch[].file_content</code><a class="headerlink" href="#testsinput_batchfile_content" title="Permanent link">&para;</a></h3>
+<p>Sets the raw content of the message by reading a file. The path of the file should be relative to the path of the test file.</p>
+<p>Type: <code>string</code></p>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a><a href="#__codelineno-22-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># Examples</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2"></a><a href="#__codelineno-22-2"><span class="linenos" data-linenos="2 "></span></a>
+<a id="__codelineno-22-3" name="__codelineno-22-3"></a><a href="#__codelineno-22-3"><span class="linenos" data-linenos="3 "></span></a><span class="nt">file_content</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./foo/bar.txt</span>
+</code></pre></div>
+<hr />
+<h3 id="testsinput_batchmetadata"><code>tests[].input_batch[].metadata</code><a class="headerlink" href="#testsinput_batchmetadata" title="Permanent link">&para;</a></h3>
+<p>A map of metadata key/values to add to the input message.</p>
+<p>Type: map of <code>string</code></p>
+<hr />
+<h3 id="testsinput_batches"><code>tests[].input_batches</code><a class="headerlink" href="#testsinput_batches" title="Permanent link">&para;</a></h3>
+<p>Define a series of batches of messages to feed into your test, specify either an <code>input_batch</code> or a series of <code>input_batches</code>.</p>
+<p>Type: <code>object</code></p>
+<hr />
+<h3 id="testsinput_batchescontent"><code>tests[].input_batches[][].content</code><a class="headerlink" href="#testsinput_batchescontent" title="Permanent link">&para;</a></h3>
+<p>The raw content of the input message.</p>
+<p>Type: <code>string</code></p>
+<p>Default: <code>""</code></p>
+<hr />
+<h3 id="testsinput_batchesjson_content"><code>tests[].input_batches[][].json_content</code><a class="headerlink" href="#testsinput_batchesjson_content" title="Permanent link">&para;</a></h3>
+<p>Sets the raw content of the message to a JSON document matching the structure of the value.</p>
+<p>Type: <code>unknown</code></p>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><a href="#__codelineno-23-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># Examples</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2"></a><a href="#__codelineno-23-2"><span class="linenos" data-linenos="2 "></span></a>
+<a id="__codelineno-23-3" name="__codelineno-23-3"></a><a href="#__codelineno-23-3"><span class="linenos" data-linenos="3 "></span></a><span class="nt">json_content</span><span class="p">:</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4"></a><a href="#__codelineno-23-4"><span class="linenos" data-linenos="4 "></span></a><span class="w">  </span><span class="nt">bar</span><span class="p">:</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5"></a><a href="#__codelineno-23-5"><span class="linenos" data-linenos="5 "></span></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">element1</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6"></a><a href="#__codelineno-23-6"><span class="linenos" data-linenos="6 "></span></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7"></a><a href="#__codelineno-23-7"><span class="linenos" data-linenos="7 "></span></a><span class="w">  </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo value</span>
+</code></pre></div>
+<hr />
+<h3 id="testsinput_batchesfile_content"><code>tests[].input_batches[][].file_content</code><a class="headerlink" href="#testsinput_batchesfile_content" title="Permanent link">&para;</a></h3>
+<p>Sets the raw content of the message by reading a file. The path of the file should be relative to the path of the test file.</p>
+<p>Type: <code>string</code></p>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><a href="#__codelineno-24-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># Examples</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2"></a><a href="#__codelineno-24-2"><span class="linenos" data-linenos="2 "></span></a>
+<a id="__codelineno-24-3" name="__codelineno-24-3"></a><a href="#__codelineno-24-3"><span class="linenos" data-linenos="3 "></span></a><span class="nt">file_content</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./foo/bar.txt</span>
+</code></pre></div>
+<h3 id="testsinput_batchesmetadata"><code>tests[].input_batches[][].metadata</code><a class="headerlink" href="#testsinput_batchesmetadata" title="Permanent link">&para;</a></h3>
+<p>A map of metadata key/values to add to the input message.</p>
+<p>Type: map of <code>string</code></p>
+<hr />
+<h3 id="testsoutput_batches"><code>tests[].output_batches</code><a class="headerlink" href="#testsoutput_batches" title="Permanent link">&para;</a></h3>
+<p>List of output batches.</p>
+<p>Type: <code>object</code></p>
+<hr />
+<h3 id="testsoutput_batchescontent"><code>tests[].output_batches[][].content</code><a class="headerlink" href="#testsoutput_batchescontent" title="Permanent link">&para;</a></h3>
+<p>The raw content of the input message.</p>
+<p>Type: <code>string</code></p>
+<p>Default: <code>""</code></p>
+<hr />
+<h3 id="testsoutput_batchesmetadata"><code>tests[].output_batches[][].metadata</code><a class="headerlink" href="#testsoutput_batchesmetadata" title="Permanent link">&para;</a></h3>
+<p>A map of metadata key/values to add to the input message.</p>
+<p>Type: map of <code>unknown</code></p>
+<hr />
+<h3 id="testsoutput_batchesbloblang"><code>tests[].output_batches[][].bloblang</code><a class="headerlink" href="#testsoutput_batchesbloblang" title="Permanent link">&para;</a></h3>
+<p>Executes a Bloblang mapping on the output message, if the result is anything other than a boolean equalling <code>true</code> the test fails.</p>
+<p>Type: <code>string</code></p>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a><a href="#__codelineno-25-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># Examples</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2"></a><a href="#__codelineno-25-2"><span class="linenos" data-linenos="2 "></span></a>
+<a id="__codelineno-25-3" name="__codelineno-25-3"></a><a href="#__codelineno-25-3"><span class="linenos" data-linenos="3 "></span></a><span class="nt">bloblang</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">this.age &gt; 10 &amp;&amp; @foo.length() &gt; 0</span>
+</code></pre></div>
+<hr />
+<h3 id="testsoutput_batchescontent_equals"><code>tests[].output_batches[][].content_equals</code><a class="headerlink" href="#testsoutput_batchescontent_equals" title="Permanent link">&para;</a></h3>
+<p>Checks the full raw contents of a message against a value.</p>
+<p>Type: <code>string</code></p>
+<hr />
+<h3 id="testsoutput_batchescontent_matches"><code>tests[].output_batches[][].content_matches</code><a class="headerlink" href="#testsoutput_batchescontent_matches" title="Permanent link">&para;</a></h3>
+<p>Checks whether the full raw contents of a message matches a regular expression (re2).</p>
+<p>Type: <code>string</code></p>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a><a href="#__codelineno-26-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># Examples</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2"></a><a href="#__codelineno-26-2"><span class="linenos" data-linenos="2 "></span></a>
+<a id="__codelineno-26-3" name="__codelineno-26-3"></a><a href="#__codelineno-26-3"><span class="linenos" data-linenos="3 "></span></a><span class="nt">content_matches</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^foo [a-z]+ bar$</span>
+</code></pre></div>
+<hr />
+<h3 id="testsoutput_batchesmetadata_equals"><code>tests[].output_batches[][].metadata_equals</code><a class="headerlink" href="#testsoutput_batchesmetadata_equals" title="Permanent link">&para;</a></h3>
+<p>Checks a map of metadata keys to values against the metadata stored in the message. If there is a value mismatch between a key of the condition versus the message metadata this condition will fail.</p>
+<p>Type: map of <code>unknown</code></p>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a><a href="#__codelineno-27-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># Examples</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2"></a><a href="#__codelineno-27-2"><span class="linenos" data-linenos="2 "></span></a>
+<a id="__codelineno-27-3" name="__codelineno-27-3"></a><a href="#__codelineno-27-3"><span class="linenos" data-linenos="3 "></span></a><span class="nt">metadata_equals</span><span class="p">:</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4"></a><a href="#__codelineno-27-4"><span class="linenos" data-linenos="4 "></span></a><span class="w">  </span><span class="nt">example_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example metadata value</span>
+</code></pre></div>
+<h3 id="testsoutput_batchesfile_equals"><code>tests[].output_batches[][].file_equals</code><a class="headerlink" href="#testsoutput_batchesfile_equals" title="Permanent link">&para;</a></h3>
+<p>Checks that the contents of a message matches the contents of a file. The path of the file should be relative to the path of the test file.</p>
+<p>Type: <code>string</code></p>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1"></a><a href="#__codelineno-28-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># Examples</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2"></a><a href="#__codelineno-28-2"><span class="linenos" data-linenos="2 "></span></a>
+<a id="__codelineno-28-3" name="__codelineno-28-3"></a><a href="#__codelineno-28-3"><span class="linenos" data-linenos="3 "></span></a><span class="nt">file_equals</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./foo/bar.txt</span>
+</code></pre></div>
+<hr />
+<h3 id="testsoutput_batchesfile_json_equals"><code>tests[].output_batches[][].file_json_equals</code><a class="headerlink" href="#testsoutput_batchesfile_json_equals" title="Permanent link">&para;</a></h3>
+<p>Checks that both the message and the file contents are valid JSON documents and that they are structurally equivalent. Will ignore formatting and ordering differences. The path of the file should be relative to the path of the test file.</p>
+<p>Type: <code>string</code></p>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1"></a><a href="#__codelineno-29-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># Examples</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2"></a><a href="#__codelineno-29-2"><span class="linenos" data-linenos="2 "></span></a>
+<a id="__codelineno-29-3" name="__codelineno-29-3"></a><a href="#__codelineno-29-3"><span class="linenos" data-linenos="3 "></span></a><span class="nt">file_json_equals</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./foo/bar.json</span>
+</code></pre></div>
+<hr />
+<h3 id="testsoutput_batchesjson_equals"><code>tests[].output_batches[][].json_equals</code><a class="headerlink" href="#testsoutput_batchesjson_equals" title="Permanent link">&para;</a></h3>
+<p>Checks that both the message and the condition are valid JSON documents, and that they are structurally equivalent. Will ignore formatting and ordering differences.</p>
+<p>Type: <code>unknown</code></p>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1"></a><a href="#__codelineno-30-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># Examples</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2"></a><a href="#__codelineno-30-2"><span class="linenos" data-linenos="2 "></span></a>
+<a id="__codelineno-30-3" name="__codelineno-30-3"></a><a href="#__codelineno-30-3"><span class="linenos" data-linenos="3 "></span></a><span class="nt">json_equals</span><span class="p">:</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4"></a><a href="#__codelineno-30-4"><span class="linenos" data-linenos="4 "></span></a><span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">value</span>
+</code></pre></div>
+<hr />
+<h3 id="testsoutput_batchesjson_contains"><code>tests[].output_batches[][].json_contains</code><a class="headerlink" href="#testsoutput_batchesjson_contains" title="Permanent link">&para;</a></h3>
+<p>Checks that both the message and the condition are valid JSON documents, and that the message is a superset of the condition.</p>
+<p>Type: <code>unknown</code></p>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1"></a><a href="#__codelineno-31-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># Examples</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2"></a><a href="#__codelineno-31-2"><span class="linenos" data-linenos="2 "></span></a>
+<a id="__codelineno-31-3" name="__codelineno-31-3"></a><a href="#__codelineno-31-3"><span class="linenos" data-linenos="3 "></span></a><span class="nt">json_contains</span><span class="p">:</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4"></a><a href="#__codelineno-31-4"><span class="linenos" data-linenos="4 "></span></a><span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">value</span>
+</code></pre></div>
+<hr />
+<h3 id="testsoutput_batchesfile_json_contains"><code>tests[].output_batches[][].file_json_contains</code><a class="headerlink" href="#testsoutput_batchesfile_json_contains" title="Permanent link">&para;</a></h3>
+<p>Checks that both the message and the file contents are valid JSON documents and that the message is a superset of the condition. Will ignore formatting and ordering differences. The path of the file should be relative to the path of the test file.</p>
+<p>Type: <code>string</code></p>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1"></a><a href="#__codelineno-32-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># Examples</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2"></a><a href="#__codelineno-32-2"><span class="linenos" data-linenos="2 "></span></a>
+<a id="__codelineno-32-3" name="__codelineno-32-3"></a><a href="#__codelineno-32-3"><span class="linenos" data-linenos="3 "></span></a><span class="nt">file_json_contains</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./foo/bar.json</span>
+</code></pre></div>
+
+<!-- Source file information -->
+
+
+<!-- Was this page helpful? -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine feedback configuration -->
+
+  
+
+
+<!-- Determine whether to show feedback -->
+
+
+<!-- Was this page helpful? -->
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+
+        <!-- Feedback ratings -->
+        <div class="md-feedback__list">
+          
+            <button
+              class="md-feedback__icon md-icon"
+              type="submit"
+              title="This page was helpful"
+              data-md-value="1"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9h4m4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21H9m0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03V19Z"/></svg>
+            </button>
+          
+            <button
+              class="md-feedback__icon md-icon"
+              type="submit"
+              title="This page could be improved"
+              data-md-value="0"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12h-4M15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3h9m0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97V5Z"/></svg>
+            </button>
+          
+        </div>
+
+        <!-- Feedback rating notes (shown after submission) -->
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+
+              <!-- Determine title -->
+              
+                
+              
+
+              <!-- Replace {url} and {title} placeholders in note -->
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+
+              <!-- Determine title -->
+              
+                
+              
+
+              <!-- Replace {url} and {title} placeholders in note -->
+              Thanks for your feedback!
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<!-- Comment system -->
+<!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Comment system -->
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <!-- Repository information -->
+  
+
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-meta__content">
+        <div class="md-footer-social-and-modern-logo">
+          
+          <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Social links -->
+<div class="md-social">
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://www.facebook.com/themoderndatacompany"
+      target="_blank" rel="noopener"
+      title="www.facebook.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/facebook.png"
+    title="www.facebook.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://twitter.com/TheModernDataCo"
+      target="_blank" rel="noopener"
+      title="twitter.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/twitter.png"
+    title="twitter.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+
+    <!-- Automatically set rel=me for Mastodon -->
+    
+    
+
+    <!-- Compute title and render link -->
+    
+    
+      
+      
+    
+    <a
+      href="https://www.linkedin.com/company/themoderndatacompany"
+      target="_blank" rel="noopener"
+      title="www.linkedin.com"
+      class="md-social__link"
+    >
+    <img
+    src="/assets/linkedin.png"
+    title="www.linkedin.com"
+    width="28"
+    height="28"
+    />
+    </a>
+  
+</div>
+          
+          <a href="https://themoderndatacompany.com" target="_blank">
+            <img src="/assets/ModernLogo.png" width="251" class="modern-logo" />
+          </a>
+        </div>
+        <!--
+  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Copyright and theme information -->
+<div class="md-copyright">
+  
+  <a href="https://themoderndatacompany.com/contact-us" target="_blank" rel="noopener"> Contact Us </a> | <a
+    href="https://themoderndatacompany.com/privacy-policy" target="_blank" rel="noopener"> Privacy Policy </a> | <a
+    href="https://themoderndatacompany.com/terms-of-use" target="_blank" rel="noopener"> Terms of Use </a>
+  
+  
+  <div class="md-copyright__highlight">
+    Copyright ⓒ 2024 The Modern Data Company
+  </div>
+  
+</div>
+      </div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.top", "navigation.tracking", "content.code.copy", "content.code.annotate", "content.tooltips"], "search": "../../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.bd41221c.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.6.4/dist/mermaid.js"></script>
+      
+    
+  </body>
+</html>
