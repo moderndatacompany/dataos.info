@@ -1,10 +1,8 @@
-# Case Scenarios
-
-## Multi-Cluster Setup
+# How to create multiple Cluster using a single manifest file?
 
 In scenarios where a single cluster is insufficient to handle the query load or specific performance issues arise, multiple Minerva clusters can be created. The following example demonstrates a typical configuration for a multi-cluster setup:
 
-<details><summary>Sample YAML Configuration</summary>
+**Manifest file**
 
 ```yaml
 - version: v1                           # Cluster 1
@@ -120,6 +118,5 @@ In scenarios where a single cluster is insufficient to handle the query load or 
           properties:
             memory.max-data-per-node: "128MB"
 ```
-</details>
 
 

@@ -45,7 +45,7 @@ minerva:
 ```
 </details>
 
-For more information, refer to the [Multi-Cluster Setup](../cluster/examples.md#multi-cluster-setup).
+For more information, refer to the [Multi-Cluster Setup](../cluster/examples/multiple_cluster_setup.md).
 
 ## Scenario 2: Data scientists/analysts running intensive data exploration
 

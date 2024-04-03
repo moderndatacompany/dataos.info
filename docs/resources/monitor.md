@@ -97,7 +97,7 @@ Following incident publication, users can configure alerts based on these incide
 
 The Monitor Service has two major components - Monitor DB and Scheduler. Monitor DB stores the manifest file of each instance of Monitor in its database. The Scheduler reads from this manifest file to query the Metric & Event store. This Metric & Event store is a proxy for any storage system, such as an SQL database, Prometheus DB, a streaming DB or a queryable source of choice.
 
-Montior Service is responsible for cross-checking the [condition](#key-concepts-of-monitor) declared by the user with an Event/Metric generated in the system. If the condition is fulfilled, it publishes the information mentioned in the manifest file as an [incident](#key-concepts-of-monitor) to a [Fastbase](/resources/depot/fastbase/) topic. This Fastbase topic is a store based on the Pulsar DB system.
+Monitor Service is responsible for cross-checking the [condition](#key-concepts-of-monitor) declared by the user with an Event/Metric generated in the system. If the condition is fulfilled, it publishes the information mentioned in the manifest file as an [incident](#key-concepts-of-monitor) to a [Fastbase](/resources/depot/fastbase/) topic. This Fastbase topic is a store based on the Pulsar DB system.
 
 <center>
 
