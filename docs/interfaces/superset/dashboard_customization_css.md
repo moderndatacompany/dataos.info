@@ -160,6 +160,6 @@ Hide chart titles at your discretion using the provided CSS code:
 ![Untitled](/interfaces/superset/dashboard_customization/i.png)
 
 <aside class="callout">
-🗣 In Superset, <code>!important</code> can be used in custom CSS rules to ensure they take precedence over existing styles. While `!important` can be effective for overriding styles, it should be used sparingly to maintain code readability and avoid potential conflicts.
+🗣 In Superset, <code>!important</code> can be used in custom CSS rules to ensure they take precedence over existing styles. While <code>!important</code> can be effective for overriding styles, it should be used sparingly to maintain code readability and avoid potential conflicts.
 
 </aside>
