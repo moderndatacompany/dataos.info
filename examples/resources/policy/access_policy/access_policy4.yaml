@@ -1,0 +1,19 @@
+name: {{deny-schema-policy}}
+version: v1
+type: policy
+tags:
+  - {{dataos:type:resource}}
+  - {{dataos:type:cluster-resource}}
+description: {{policy denying users to access a dataset}}
+layer: user
+policy:
+  access:
+    subjects:
+      tags:
+        - - {{roles:id:tag:selective-restricted-access}}
+    predicates:
+      - {{'**'}}
+    objects:
+      paths:
+        - {{dataos://icebase:test/customer_test}}
+    allow: {{false}}
