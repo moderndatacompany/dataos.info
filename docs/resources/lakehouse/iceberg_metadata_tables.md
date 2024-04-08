@@ -6,12 +6,18 @@ Keep in mind that the metadata tables built into a DataOS Lakehouse storage are 
 
 The history table records the table’s evolution. Each of the four columns in this table provides unique insights into the table’s history.
 
+<center>
+
 | Field Name | Description | Data Type | Example Value |
 | --- | --- | --- | --- |
-| made_current_at | Represents the exact timestamp when the corresponding snapshot was made the current snapshot. This gives us a precise temporal marker for when changes to the table were committed. | timestamp with time zone | 2024-01-11 09:21:23.949 UTC |
-| snapshot_id | This column serves as the unique identifier for each snapshot. This identifier enables us to track and reference specific snapshots within the table’s history. | bigint | 2399709541800220700 |
-| parent_id | This column provides the unique ID of the parent snapshot of the current snapshot. This effectively maps out the lineage of each snapshot | bigint or NULL | 57819473453326215154 |
-| is_current_ancestor | This column indicates whether a snapshot is an ancestor of the table’s current snapshot. This boolean value (true or false) helps identify snapshots that are part of the table’s state lineage and those invalidated from table rollbacks. | boolean | true |
+| `made_current_at` | Represents the exact timestamp when the corresponding snapshot was made the current snapshot. This gives us a precise temporal marker for when changes to the table were committed. | timestamp with time zone | 2024-01-11 09:21:23.949 UTC |
+| `snapshot_id` | This column serves as the unique identifier for each snapshot. This identifier enables us to track and reference specific snapshots within the table’s history. | bigint | 2399709541800220700 |
+| `parent_id` | This column provides the unique ID of the parent snapshot of the current snapshot. This effectively maps out the lineage of each snapshot | bigint or NULL | 57819473453326215154 |
+| `is_current_ancestor` | This column indicates whether a snapshot is an ancestor of the table’s current snapshot. This boolean value (true or false) helps identify snapshots that are part of the table’s state lineage and those invalidated from table rollbacks. | boolean | true |
+
+*Schema of the history metadata table*
+
+</center>
 
 You can use the history metadata table for data recovery and version control as well as to identify table rollbacks.
 With a snapshot ID, you can restore your data and minimize potential data loss. In
@@ -54,23 +60,19 @@ The `metadata_log_entries` metadata table keeps track of the evolution of the ta
 by logging the metadata files generated during table updates. Each field within this
 table holds significant information about the state of the table at a given point in time.
 
+<center>
+
 | Field Name | Description | Data Type | Example Value |
 | --- | --- | --- | --- |
-| timestamp | The timestamp field records the exact date and time when the metadata was updated. This timestamp serves as a temporal marker for the state of the table at that specific moment. | timestamp | 2023-07-28 10:43:57.487 |
-| file | The file field indicates the location of the datafile that corresponds to that
-particular metadata log entry. This location acts as a reference point to access the
-actual data associated with the metadata entry. | string | …/v1.metadata.json |
-| latest_snapshot_id | The latest_snapshot_id field provides the identifier of the most recent snapshot at
-the time of the metadata update. It is a useful reference point for understanding the
-state of the data when the metadata was updated. | int | 180260833656645300 |
-| latest_schema_id | The latest_schema_id field contains the ID of the schema being used
-when the metadata log entry was created. This gives context about the structure of the
-data at the time of the metadata update. | int | 0 |
-| latest_sequence_number | The latest_sequence_number field signifies the order of the metadata
-updates. It is an incrementing count that helps track the sequence of metadata
-changes over time. | int | 1 |
+| `timestamp` | The timestamp field records the exact date and time when the metadata was updated. This timestamp serves as a temporal marker for the state of the table at that specific moment. | timestamp | 2023-07-28 10:43:57.487 |
+| `file` | The file field indicates the location of the datafile that corresponds to that particular metadata log entry. This location acts as a reference point to access the actual data associated with the metadata entry. | string | …/v1.metadata.json |
+| `latest_snapshot_id` | The latest_snapshot_id field provides the identifier of the most recent snapshot at the time of the metadata update. It is a useful reference point for understanding the state of the data when the metadata was updated. | int | 180260833656645300 |
+| `latest_schema_id` | The latest_schema_id field contains the ID of the schema being used when the metadata log entry was created. This gives context about the structure of the data at the time of the metadata update. | int | 0 |
+| `latest_sequence_number` | The latest_sequence_number field signifies the order of the metadata updates. It is an incrementing count that helps track the sequence of metadata changes over time. | int | 1 |
 
 *Schema of the metadata-log-entries metadata table*
+
+</center>
 
 You can use the `metadata_log_entries` metadata table to find the latest snapshot with a previous schema. For example, maybe you made a change to the schema and now you want to go back to the previous schema. You’ll want to find the latest snapshot using that schema, which can be determined with a query that will rank the snapshots for each `schema_id` and then return only the top-ranked snapshot for each:
 
@@ -115,18 +117,20 @@ SELECT * FROM icebase.retail."city$metadata_log_entries"
 
 The snapshots metadata table is essential for tracking dataset versions and histories. It maintains metadata about every snapshot for a given table, representing a consistent view of the dataset at a specific time. The details about each snapshot serve as a historical record of changes and portray the state of the dataset at the snapshot’s creation. The table includes several fields, each with a unique role.
 
+<center>
+
 | Field Name | Description | Data Type | Example Value |
 | --- | --- | --- | --- |
-| committed_at | The committed_at field signifies the precise timestamp when the snapshot was created, giving an indication of when the snapshot and its associated data state were committed. | timestamp | 2023-02-08 03:29:51.215 |
-| snapshot_id | The snapshot_id field is a unique identifier for each snapshot. This field is crucial for distinguishing between the different snapshots and specific operations such as snapshot retrieval or deletion. | int | 57897183625154 |
-| parent_id | The parent_id field links to the snapshot ID of the snapshot’s parent, providing context about the lineage of snapshots and allowing for the reconstruction of a historical sequence of snapshots. | int or null | NULL |
-| operation | The operation field lists a string of the types of operations that occurred, such as
-APPEND and OVERWRITE. | string | append
- |
-| manifest_list | Further, the manifest_list field offers detailed insights into the files comprising the snapshot. It’s like a directory or inventory that keeps a record of all the datafiles associated with a given snapshot.  | string | …/table/metadata/snap-57897183999154-1.avro |
-| summary | The summary field holds metrics about the snapshot, such as the number of added or deleted files, number of records, and other statistical data that provide a quick glance into the snapshot’s content. | map/struct | { added-records -> 400404, total-records -> 3000000,
-added-data-files -> 300, total-data-files -> 500,
-spark.app.id -> application_1520379268916_155055 } |
+| `committed_at` | The committed_at field signifies the precise timestamp when the snapshot was created, giving an indication of when the snapshot and its associated data state were committed. | timestamp | 2023-02-08 03:29:51.215 |
+| `snapshot_id` | The snapshot_id field is a unique identifier for each snapshot. This field is crucial for distinguishing between the different snapshots and specific operations such as snapshot retrieval or deletion. | int | 57897183625154 |
+| `parent_id` | The parent_id field links to the snapshot ID of the snapshot’s parent, providing context about the lineage of snapshots and allowing for the reconstruction of a historical sequence of snapshots. | int or null | NULL |
+| `operation` | The operation field lists a string of the types of operations that occurred, such as APPEND and OVERWRITE. | string | append |
+| `manifest_list` | Further, the manifest_list field offers detailed insights into the files comprising the snapshot. It’s like a directory or inventory that keeps a record of all the datafiles associated with a given snapshot.  | string | …/table/metadata/snap-57897183999154-1.avro |
+| `summary` | The summary field holds metrics about the snapshot, such as the number of added or deleted files, number of records, and other statistical data that provide a quick glance into the snapshot’s content. | map/struct | { added-records -> 400404, total-records -> 3000000, added-data-files -> 300, total-data-files -> 500, spark.app.id -> application_1520379268916_155055 } |
+
+*Schema of the snapshots metadata table*
+
+</center>
 
 There are many possible ways to use the snapshots metadata table. One use case is to understand the pattern of data additions to the table. This could be useful in capacity planning or understanding data growth over time. Here is an SQL query that shows the total records added at each snapshot:
 
@@ -175,33 +179,31 @@ The `files` metadata table showcases the current datafiles within a table and fu
 detailed information about each of them, from their location and format to their
 content and partitioning specifics.
 
-*Schema of the files metadata table*
+<center>
 
 | Field Name | Description | Data Type | Example Value |
 | --- | --- | --- | --- |
-| content | The content field represents the type of content in the file, with a 0 signifying a datafile, 1 a position delete file, and 2 an equality delete file. | int | 0 |
-| file_path | file_path gives the exact location of each file. This helps facilitate access to each data file when needed. | string | …/table/data/00000-3-8d6d60e8-d427-4809-bcf0-
-f5d45a4aad96.parquet |
-| file_format | The file_format field indicates the format of the data file, for instance, whether it’s a Parquet, Avro, or ORC file. | string | PARQUET |
-| spec_id | The spec_id field corresponds to the partition spec ID that the file adheres to,
-providing a reference to how the data is partitioned. | int | 0
- |
-| partition | The partition field provides a representation of the datafile’s specific partition,
-indicating how the data within the file is divided for optimized access and query
-performance. | struct | {1999-01-01, 01} |
-| record_count | The record_count field reports the number of records contained within each file,
-giving a measure of the file’s data volume. | int | 1 |
-| file_size_in_bytes | The file_size_in_bytes field provides the total size of the file in bytes. | int | 597 |
-| columns_sizes | The column_sizes field furnishes the sizes of the individual columns. | map | [1 -> 90, 2 -> 62] |
-| value_counts | The value_counts field provides the count of non-null values, in each column | map | [1 -> 1, 2 -> 1] |
-| null_value_counts | The null_value_counts field provides the count of null values in each column. | map | [1 -> 0, 2 -> 0] |
-| nan_value_counts | The nan_value_counts fields provide the count of NaN (Not a Number) values in each column. | map | [] |
-| lower_bounds | The lower_bounds field holds the minimum value in each column, providing essential insights into the data range within each file. | map | [1 -> , 2 -> c] |
-| upper_bounds | The upper_bounds field holds the maximum value in each column, providing essential insights into the data range within each file. | map | [1 -> , 2 -> c] |
-| key_metadata | The key_metadata field contains implementation-specific metadata, if any exists. | binary | null |
-| split_offsets | The split_offsets field provides the offsets at which the file is split into smaller segments for parallel processing. | list | [4] |
-| equality_ids | The equality_ids field corresponds to the IDs relating to equality delete files, if any exist. | list | null |
-| sort_order_id | The sort_order_id field corresponds to the IDs of the table’s sort order, if it has one. | int | null |
+| `content` | The content field represents the type of content in the file, with a 0 signifying a datafile, 1 a position delete file, and 2 an equality delete file. | int | 0 |
+| `file_path` | file_path gives the exact location of each file. This helps facilitate access to each data file when needed. | string | …/table/data/00000-3-8d6d60e8-d427-4809-bcf0-f5d45a4aad96.parquet |
+| `file_format` | The file_format field indicates the format of the data file, for instance, whether it’s a Parquet, Avro, or ORC file. | string | PARQUET |
+| spec_id | The spec_id field corresponds to the partition spec ID that the file adheres to, providing a reference to how the data is partitioned. | int | 0|
+| `partition` | The partition field provides a representation of the datafile’s specific partition, indicating how the data within the file is divided for optimized access and query performance. | struct | {1999-01-01, 01} |
+| `record_count` | The record_count field reports the number of records contained within each file, giving a measure of the file’s data volume. | int | 1 |
+| `file_size_in_bytes` | The file_size_in_bytes field provides the total size of the file in bytes. | int | 597 |
+| `columns_sizes` | The column_sizes field furnishes the sizes of the individual columns. | map | [1 -> 90, 2 -> 62] |
+| `value_counts` | The value_counts field provides the count of non-null values, in each column | map | [1 -> 1, 2 -> 1] |
+| `null_value_counts` | The null_value_counts field provides the count of null values in each column. | map | [1 -> 0, 2 -> 0] |
+| `nan_value_counts` | The nan_value_counts fields provide the count of NaN (Not a Number) values in each column. | map | [] |
+| `lower_bounds` | The lower_bounds field holds the minimum value in each column, providing essential insights into the data range within each file. | map | [1 -> , 2 -> c] |
+| `upper_bounds` | The upper_bounds field holds the maximum value in each column, providing essential insights into the data range within each file. | map | [1 -> , 2 -> c] |
+| `key_metadata` | The key_metadata field contains implementation-specific metadata, if any exists. | binary | null |
+| `split_offsets` | The split_offsets field provides the offsets at which the file is split into smaller segments for parallel processing. | list | [4] |
+| `equality_ids` | The equality_ids field corresponds to the IDs relating to equality delete files, if any exist. | list | null |
+| `sort_order_id` | The sort_order_id field corresponds to the IDs of the table’s sort order, if it has one. | int | null |
+
+*Schema of the files metadata table*
+
+</center>
 
 There are many possible use cases for the files metadata table, including determining whether a partition should be rewritten, identifying partitions that need data repair, finding the total size of a snapshot, and getting a list of files from a previous snapshot.
 
