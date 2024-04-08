@@ -1,0 +1,27 @@
+name: {{pii-reader}}
+version: v1
+type: policy
+tags:
+  - {{dataos:type:resource}}
+  - {{dataos:type:cluster-resource}}
+  - {{dataos:resource:policy}}
+  - {{dataos:layer:user}}
+description: >-
+  {{default data policy to allow access to the value of columns tagged with
+  fingerprint pii if they are pii-readers}}
+owner: {{iamgroot}}
+layer: user
+policy:
+  data:
+    priority: {{90}}
+    type: mask
+    mask:
+      operator: pass_through
+    selector:
+      column:
+        tags:
+          - {{PII.Sensitive}}
+      user:
+        match: {{any}}
+        tags:
+          - {{roles:id:pii-reader}}

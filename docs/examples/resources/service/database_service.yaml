@@ -11,7 +11,7 @@ service:
   stack: beacon+rest                 #specify the stack
   compute: runnable-default
   envs:
-    PGRST_OPENAPI_SERVER_PROXY_URI: https://more-jackal.dataos.app/product_db/api/v1 
+    PGRST_OPENAPI_SERVER_PROXY_URI: https://{current-context}.dataos.app/{database_path} 
     
 #specify the stack specific section                           
   stackSpec:
