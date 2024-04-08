@@ -16,27 +16,55 @@ To connect to an Oracle database, you need the following information:
 
 To create a Depot of type ‘ORACLE‘, you can use the following template:
 
-```yaml
-name: {{depot-name}}
-version: v1
-type: depot
-tags:
-  - {{dropzone}}
-  - {{oracle}}
-layer: user
-depot:
-  type: ORACLE                                    
-  description: {{"Oracle Sample data"}}
-  spec:
-    subprotocol: {{subprotocol}} # for example "oracle:thin"                                     
-    host: {{host}}
-    port: {{port}}
-    service: {{service}}
-  external: {{true}}
-  connectionSecret:
-    - acl: {{rw}}
-      type: key-value-properties
-      data:
-        username: {{username}}
-        password: {{password}}
-```
+=== "v1"
+
+    ```yaml
+    name: {{depot-name}}
+    version: v1
+    type: depot
+    tags:
+      - {{dropzone}}
+      - {{oracle}}
+    layer: user
+    depot:
+      type: ORACLE                                    
+      description: {{"Oracle Sample data"}}
+      spec:
+        subprotocol: {{subprotocol}} # for example "oracle:thin"                                     
+        host: {{host}}
+        port: {{port}}
+        service: {{service}}
+      external: {{true}}
+      connectionSecret:
+        - acl: {{rw}}
+          type: key-value-properties
+          data:
+            username: {{username}}
+            password: {{password}}
+    ```
+=== "v2alpha"
+
+    ```yaml
+    name: {{depot-name}}
+    version: v1
+    type: depot
+    tags:
+      - {{dropzone}}
+      - {{oracle}}
+    layer: user
+    depot:
+      type: ORACLE                                    
+      description: {{"Oracle Sample data"}}
+      spec:
+        subprotocol: {{subprotocol}} # for example "oracle:thin"                                     
+        host: {{host}}
+        port: {{port}}
+        service: {{service}}
+      external: {{true}}
+      connectionSecret:
+        - acl: {{rw}}
+          type: key-value-properties
+          data:
+            username: {{username}}
+            password: {{password}}
+    ```

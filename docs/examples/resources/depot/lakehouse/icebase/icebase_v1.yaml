@@ -1,0 +1,22 @@
+version: v1
+name: "s3hadoopiceberg"
+type: depot
+tags:
+  - S3
+layer: user
+description: "AWS S3 Bucket for Data"
+depot:
+  type: S3
+  compute: runnable-default
+  spec:
+    bucket: $S3_BUCKET        # "tmdc-dataos-testing"
+    relativePath: $S3_RELATIVE_PATH           # "/sanity"
+    format: ICEBERG
+    scheme: s3a       
+  external: true
+  secrets:
+    - name: {{icebase-s3-instance-secret-name}}-r
+      allkeys: true
+
+    - name: {{icebase-s3-instance-secret-name}}-rw
+      allkeys: true
