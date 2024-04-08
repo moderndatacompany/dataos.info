@@ -572,33 +572,318 @@ To make the process of creating a Depot configuration easier, we provide a set o
 
 You can access these templates by visiting the following links: 
 
-=== "Data Warehouse"
+=== "Data <br> Warehouse"
 
-    | Data Source Template                                             |
-    |------------------------------------------------------------------|
-    | [Amazon Redshift](./depot/depot_config_templates/amazon_redshift.md)   |
-    | [Google BigQuery](./depot/depot_config_templates/google_bigquery.md)   |
-    | [Snowflake](./depot/depot_config_templates/snowflake.md)               |
+    === "Amazon Redshift"
 
-=== "Lakehouse or Data Lake"
+        DataOS provides the capability to establish a connection with the Amazon Redshift database. We have provided the template for the manifest file to establish this connection.
 
-    | Data Source Template                                                    |
-    |-------------------------------------------------------------------------|
-    | [Amazon Simple Storage Service (S3)](./depot/depot_config_templates/amazon_s3.md)        |
-    | [Azure Blob File System Storage (ABFSS)](./depot/depot_config_templates/azure_abfss.md)  |
-    | [Windows Azure Storage Blob Service (WASBS)](./depot/depot_config_templates/azure_wasbs.md) |
-    | [Google Cloud Storage (GCS)](./depot/depot_config_templates/google_gcs.md)              |
-    | [Icebase](./depot/depot_config_templates/icebase_hadoop_s3.md)          |
+        === "version v2alpha"
+            ```yaml title="redshift_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/data_warehouse/redshift/redshift_v2alpha.yaml"
+            ```
+        === "version v1"
+            ```yaml title="redshift_v1.yaml"
+            --8<-- "examples/resources/depot/data_warehouse/redshift/redshift_v1.yaml"
+            ```
+        Follow these steps to create the depot: 
 
-=== "Streaming Source"
+        - **Step 1**: Create Instance-secret to store the credentials, for more imformation about instance secret, refer to [Instance Secret](../resources/instance_secret.md). 
+        - **Step 2**: Copy the template from above and paste it in a code.
+        - **Step 3**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
+        - **Step 4**: Apply the file through DataOS CLI.
+        
 
-    | Data Source Template                                      |
-    |-----------------------------------------------------------|
-    | [Apache Pulsar](./depot/depot_config_templates/apache_pulsar.md) |
-    | [Eventhub](./depot/depot_config_templates/eventhub.md)           |
-    | [Apache Kafka](./depot/depot_config_templates/kafka.md)           |
+        **Requirements**
+        To establish a connection with Redshift, the following information is required:
 
-=== "NoSQL Database"
+        - Hostname
+        - Port
+        - Database name
+        - User name and password
+
+        Additionally, when accessing the Redshift Database in Workflows or other DataOS Resources, the following details are also necessary:
+
+        - Bucket name where the data resides
+        - Relative path
+        - AWS access key
+        - AWS secret key
+
+    === "Google Bigquery"
+
+        DataOS enables the creation of a Depot of type 'BIGQUERY' to read data stored in BigQuery projects. Multiple Depots can be created, each pointing to a different project.
+
+        === "version v2alpha"
+
+            ```yaml title="bigquery_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/data_warehouse/bigquery/bigquery_v2alpha.yaml"
+            ```
+
+        === "version v1"
+
+            ```yaml title="bigquery_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/data_warehouse/bigquery/bigquery_v1.yaml"
+            ```
+
+        **Requirements**
+        To establish a connection with BigQuery, the following information is required:
+
+        - Project ID: The identifier of the BigQuery project.
+        - Email ID: The email address associated with the BigQuery project.
+        - Credential properties in JSON file: A JSON file containing the necessary credential properties.
+        - Additional parameters: Any additional parameters required for the connection.
+
+    === "Snowflake"
+        DataOS provides integration with Snowflake, allowing you to seamlessly read data from Snowflake tables using Depots. Snowflake is a cloud-based data storage and analytics data warehouse offered as a Software-as-a-Service (SaaS) solution. It utilizes a new SQL database engine designed specifically for cloud infrastructure, enabling efficient access to Snowflake databases. 
+
+        === "version v2alpha"
+
+            ```yaml title="snowflake_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/data_warehouse/snowflake/snowflake_v2alpha.yaml"
+            ```
+
+        === "version v1"
+
+            ```yaml title="snowflake_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/data_warehouse/snowflake/snowflake_v1.yaml"
+            ```   
+
+        **Requirements**
+
+        To establish a connection to Snowflake and create a Depot, you will need the following information:
+
+        - Snowflake Account URL: The URL of your Snowflake account.
+        - Snowflake Username: Your Snowflake login username.
+        - Snowflake User Password: The password associated with your Snowflake user account.
+        - Snowflake Database Name: The name of the Snowflake database you want to connect to.
+        - Database Schema: The schema in the Snowflake database where your desired table resides.    
+   
+
+=== "Lakehouse or <br> Data Lake"
+
+    === "Amazon s3"
+        DataOS provides the capability to establish a connection with the Amazon S3 buckets. We have provided the template for the manifest file to establish this connection.
+
+        === "version v2alpha"
+
+            ```yaml title="s3_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/lakehouse/amazon_s3/s3_v2alpha.yaml"
+            ```
+
+        === "version v1"
+
+            ```yaml title="s3_v1.yaml" 
+            --8<-- "examples/resources/depot/lakehouse/amazon_s3/s3_v1.yaml"
+            ```   
+
+        Follow these steps to create the depot:
+
+        - **Step 1**: Copy the template from below and paste it in a code editor. 
+        - **Step 2**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
+        - **Step 3**: Apply the file through DataOS CLI
+
+        **Requirements**
+
+        To establish a connection with Amazon S3, the following information is required:
+
+        - AWS access key ID
+        - AWS bucket name
+        - Secret access key
+        - Scheme
+        - Relative Path
+        - Format
+
+
+    
+    === "ABFSS"
+
+        DataOS enables the creation of a Depot of type 'ABFSS' to facilitate the reading of data stored in an Azure Blob Storage account. This Depot provides access to the storage account, which can consist of multiple containers. A container serves as a grouping mechanism for multiple blobs. It is recommended to define a separate Depot for each container.
+
+        === "version v2alpha"
+
+            ```yaml title="abfss_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/lakehouse/abfss/abfss_v2alpha.yaml"
+            ```
+
+        === "version v1"
+
+            ```yaml title="abfss_v1.yaml" 
+            --8<-- "examples/resources/depot/lakehouse/abfss/abfss_v1.yaml"
+            ``` 
+
+        **Requirements**
+
+        To establish a connection with Azure ABFSS, the following information is required:
+
+        - Storage account name
+        - Storage account key
+        - Container
+        - Relative path
+        - Data format stored in the container    
+
+    === "WASBS"
+
+        DataOS enables the creation of a Depot of type 'WASBS' to facilitate the reading of data stored in Azure Data Lake Storage. This Depot enables access to the storage account, which can contain multiple containers. A container serves as a grouping of multiple blobs. It is recommended to define a separate Depot for each container.
+
+        === "version v2alpha"
+
+            ```yaml title="wasbs_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/lakehouse/wasbs/wasbs_v2alpha.yaml"
+            ```
+
+        === "version v1"
+
+            ```yaml title="wasbs_v1.yaml" 
+            --8<-- "examples/resources/depot/lakehouse/wasbs/wasbs_v1.yaml"
+            ``` 
+
+        **Requirements**
+
+        To establish a connection with Azure WASBS, the following information is required:
+
+        - Storage account name
+        - Storage account key
+        - Container
+        - Relative path
+        - Format            
+
+
+
+    === "GCS"
+
+        DataOS provides the capability to connect to Google Cloud Storage data using Depot. 
+        
+        === "version v2alpha"
+
+            ```yaml title="gcs_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/lakehouse/gcs/gcs_v2alpha.yaml"
+            ```
+
+        === "version v1"
+
+            ```yaml title="gcs_v1.yaml" 
+            --8<-- "examples/resources/depot/lakehouse/gcs/gcs_v1.yaml"
+            ```        
+        
+        The Depot facilitates access to all documents that are visible to the specified user, allowing for text queries and analytics.
+
+        **Requirements**
+
+        To establish a connection with Google Cloud Storage (GCS), the following information is required:
+
+        - GCS Bucket
+        - Relative Path
+        - GCS Project ID
+        - GCS Account Email
+        - GCS Key
+
+    === "Icebase"
+
+        DataOS provides the capability to establish a connection with the Icebase Lakehouse over Amazon S3 or other object storages. We have provided the template for the manifest file to establish this connection.
+
+        === "version v2alpha"
+
+            ```yaml title="icebase_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/lakehouse/icebase/icebase_v2alpha.yaml"
+            ```
+
+        === "version v1"
+
+            ```yaml title="icebase_v1.yaml" 
+            --8<-- "examples/resources/depot/lakehouse/icebase/icebase_v1.yaml"
+            ```     
+        Follow these steps to create the depot:
+
+        - **Step 1**: Copy the template from below and paste it in a code editor. 
+        - **Step 2**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
+        - **Step 3**: Apply the file through DataOS CLI
+
+        **Requirements**
+
+        To establish a connection with Amazon S3, the following information is required:
+
+        - AWS access key ID
+        - AWS bucket name
+        - Secret access key
+        - Scheme
+        - Relative Path
+        - Format    
+
+=== "Streaming <br> Source"
+
+    === "Apache pulsar"
+
+        DataOS provides the capability to create a Depot of type 'PULSAR' for reading topics and messages stored in Pulsar. This Depot facilitates the consumption of published topics and processing of incoming streams of messages.
+
+        === "version v2alpha"
+
+            ```yaml title="pulsar_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/streaming_source/apache_pulsar/pulsar_v2alpha.yaml"
+            ```
+
+        === "version v1"
+
+            ```yaml title="pulsar_v1.yaml" 
+            --8<-- "examples/resources/depot/streaming_source/apache_pulsar/pulsar_v1.yaml"
+            ``` 
+
+        **Requirements**
+
+        To establish a connection with Pulsar, the following information is required:
+
+        - Admin URL
+        - Service URL
+
+    === "Eventhub"
+
+        DataOS provides the capability to connect to Eventhub data using Depot. The Depot facilitates access to all documents that are visible to the specified user, allowing for text queries and analytics.
+
+        === "version v2alpha"
+
+            ```yaml title="eh_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/streaming_source/eventhub/eh_v2alpha.yaml"
+            ```
+
+        === "version v1"
+
+            ```yaml title="eh_v1.yaml" 
+            --8<-- "examples/resources/depot/streaming_source/eventhub/eh_v1.yaml"
+            ``` 
+
+        **Requirements**
+
+        To establish a connection with Eventhub, the following information is required:
+
+        - Endpoint
+        - Eventhub Shared Access Key Name
+        - Eventhub Shared Access Key   
+
+    === "Kafka"
+
+        DataOS allows you to create a Depot of type 'KAFKA' to read live topic data. This Depot enables you to access and consume real-time streaming data from Kafka.
+        
+        === "version v2alpha"
+
+            ```yaml title="eh_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/streaming_source/eventhub/eh_v2alpha.yaml"
+            ```
+
+        === "version v1"
+
+            ```yaml title="eh_v1.yaml" 
+            --8<-- "examples/resources/depot/streaming_source/eventhub/eh_v1.yaml"
+            ``` 
+
+        **Requirements**
+
+        - To connect to Kafka, you need:
+
+        - To establish a connection to Kafka, you need to provide the following information:
+
+        - KAFKA broker list: The list of brokers in the Kafka cluster. The broker list enables the Depot to fetch all the available topics in the Kafka cluster.
+        Schema Registry URL
+
+=== "NoSQL <br> Database"
 
     | Data Source Template                                       |
     |------------------------------------------------------------|
@@ -606,7 +891,7 @@ You can access these templates by visiting the following links: 
     | [MongoDB](./depot/depot_config_templates/mongodb.md)             |
     | [Opensearch](./depot/depot_config_templates/opensearch.md)       |
 
-=== "Relational Database"
+=== "Relational <br> Database"
 
     | Data Source Template                                           |
     |----------------------------------------------------------------|
