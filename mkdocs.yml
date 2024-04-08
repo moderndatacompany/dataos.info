@@ -20,6 +20,9 @@ theme:
         - content.tooltips
 #          - toc.follow
 #          - toc.integrate
+        - search.suggest
+        # - search.highlighting
+        - search.share
     icon:
       admonition:
         note: octicons/tag-16
@@ -56,6 +59,7 @@ theme:
             name: Switch to light mode
 plugins:
     - search
+    - tags
     # - mkdocs-versioning:
     #     version: v0.2
 extra:
