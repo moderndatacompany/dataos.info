@@ -16,34 +16,70 @@ To establish a connection with Azure WASBS, the following information is require
 
 To create a Depot of type ‘WASBS‘, utilize the following template:
 
-```yaml
-name: {{depot-name}}
-version: v1
-type: depot
-tags:
-  - {{tag1}}
-  - {{tag2}}
-owner: {{owner-name}}
-layer: user
-depot:
-  type: WASBS                                      
-  description: {{description}}
-  external: {{true}}
-  compute: {{runnable-default}}
-  connectionSecret:                                 
-    - acl: rw
-      type: key-value-properties
-      data:
-        azurestorageaccountname: {{account-name}}
-        azurestorageaccountkey: {{account-key}}
-    - acl: r
-      type: key-value-properties
-      data:
-        azurestorageaccountname: {{account-name}}
-        azurestorageaccountkey: {{account-key}}
-  spec:                                          
-    account: {{account-name}}
-    container: {{container-name}}
-    relativePath: {{relative-path}}
-    format: {{format}}
-```
+=== "v1"
+
+    ```yaml
+    name: {{depot-name}}
+    version: v1
+    type: depot
+    tags:
+      - {{tag1}}
+      - {{tag2}}
+    owner: {{owner-name}}
+    layer: user
+    depot:
+      type: WASBS                                      
+      description: {{description}}
+      external: {{true}}
+      compute: {{runnable-default}}
+      connectionSecret:                                 
+        - acl: rw
+          type: key-value-properties
+          data:
+            azurestorageaccountname: {{account-name}}
+            azurestorageaccountkey: {{account-key}}
+        - acl: r
+          type: key-value-properties
+          data:
+            azurestorageaccountname: {{account-name}}
+            azurestorageaccountkey: {{account-key}}
+      spec:                                          
+        account: {{account-name}}
+        container: {{container-name}}
+        relativePath: {{relative-path}}
+        format: {{format}}
+    ```
+=== "v2alpha"
+
+    ```yaml
+    name: {{depot-name}}
+    version: v1
+    type: depot
+    tags:
+      - {{tag1}}
+      - {{tag2}}
+    owner: {{owner-name}}
+    layer: user
+    depot:
+      type: WASBS                                      
+      description: {{description}}
+      external: {{true}}
+      compute: {{runnable-default}}
+      connectionSecret:                                 
+        - acl: rw
+          type: key-value-properties
+          data:
+            azurestorageaccountname: {{account-name}}
+            azurestorageaccountkey: {{account-key}}
+        - acl: r
+          type: key-value-properties
+          data:
+            azurestorageaccountname: {{account-name}}
+            azurestorageaccountkey: {{account-key}}
+      wasbs:                                          
+        account: {{account-name}}
+        container: {{container-name}}
+        relativePath: {{relative-path}}
+        format: {{format}}
+    ```
+
