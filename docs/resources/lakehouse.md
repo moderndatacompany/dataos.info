@@ -1,49 +1,36 @@
-
-<!-- ![Lakehouse Icon](/resources/lakehouse/lakehouse_icon.svg){ align=left } -->
+---
+title: Lakehouse
+search:
+  boost: 2
+---
 
 # :resources-lakehouse: Lakehouse
 
-Lakehouse, is a [DataOS Resource](/resources/) that integrates Apache Iceberg table format and cloud object storage to provide a fully managed storage solution. It emulates traditional data warehouses, enabling table creation with defined schemas, data manipulation via various tools, and data access regulation through the DataOS Governance engine, [Heimdall](/architecture/#heimdall).
+Lakehouse is a [DataOS Resource](/resources/) that merges Apache Iceberg table format with cloud object storage, yielding a fully managed storage architecture that blends the strengths of data lakes and data warehouses. It enables a novel approach to system design, incorporating features typically found in data warehouses—such as the creation of tables with defined schemas, data manipulation using a variety of tools, and sophisticated data management capabilities—directly on top of cost-effective cloud storage in open formats.
 
 <aside class="callout">
 
-🗣️ Unlike traditional object storage or Data Lake depots that are instantiated at the <a href="/resources/types_of_dataos_resources/#instance-level-resources">Instance-level</a>, Lakehouses are created at the <a href="/resources/types_of_dataos_resources/#workspace-level-resources">Workspace-level</a>.
+🗣️ The Lakehouse is designated as a <a href="/resources/types_of_dataos_resources/#workspace-level-resources">Workspace-level</a> DataOS Resource. This classification enables the creation of separate Lakehouses within distinct Workspaces, facilitating workload and data isolation. 
 
 </aside>
 
 
 <div class="grid cards" markdown>
 
--   :material-format-list-bulleted-type:{ .lg .middle } **Key Features of a Lakehouse**
+-   :material-clock-fast:{ .lg .middle } **How to create and manage a Lakehouse?**
 
     ---
 
-    DataOS Lakehouse adds several Relational Data Warehouse-like features to your existing data lakes.
+    Learn how to create and manage a Lakehouse in DataOS.
 
-    [:octicons-arrow-right-24: Key features](/resources/lakehouse/#key-features-of-a-lakehouse)
+    [:octicons-arrow-right-24: Create and manage a Lakehouse](/resources/lakehouse/#how-to-create-and-manage-a-lakehouse)
 
 
--   :material-clock-fast:{ .lg .middle } **Structure of a Lakehouse manifest**
-
-    ---
-
-    A Lakehouse manifest file includes multiple sections with attributes that must be configured for creating a Lakehouse instance.
-
-    [:octicons-arrow-right-24: Structure](/resources/lakehouse/#structure-of-a-lakehouse-manifest)
-
--   :material-clock-fast:{ .lg .middle } **How to setup a Lakehouse?**
+-   :material-list-box-outline:{ .lg .middle } **How to configure a Lakehouse manifest file?**
 
     ---
 
-    Create a new Lakehouse with your existing object storage and get up and running in minutes.
-
-    [:octicons-arrow-right-24: Getting started](/resources/lakehouse/#how-to-create-a-lakehouse)
-
--   :material-script-text-outline:{ .lg .middle } **How to configure a Lakehouse manifest file?**
-
-    ---
-
-    The Lakehouse Resource manifest file offers several configurable attributes that could be configured for various use-cases.
+    Discover how to configure a Lakehouse manifest file by adjusting its attributes.
 
     [:octicons-arrow-right-24:  Lakehouse attributes](/resources/lakehouse/manifest_attributes/)
 
@@ -53,744 +40,156 @@ Lakehouse, is a [DataOS Resource](/resources/) that integrates Apache Iceberg ta
 
     Various CLI commands related to performing DDL/DML operations on datasets in a Lakehouse.
     
-    [:octicons-arrow-right-24:  Command reference](/resources/lakehouse/command_reference/)
+    [:octicons-arrow-right-24:  Managing datasets in Lakehouse](/resources/lakehouse/command_reference/)
 
--   :material-console:{ .lg .middle } **Case Scenarios**
+-   :material-content-duplicate:{ .lg .middle }  **How to use a Lakehouse in DataOS?**
 
     ---
 
-    Learn how to accompolish a specific task in a Lakehouse.
+    Explore examples showcasing the usage of Lakehouse in various scenarios.
     
-    [:octicons-arrow-right-24:  Case scenarios](/resources/lakehouse/#case-scenario)
+    [:octicons-arrow-right-24: Lakehouse usage examples](/resources/lakehouse/#case-scenario)
 
 </div>
 
 
 ## Key Features of a Lakehouse
 
-DataOS Lakehouse adds several Relational Data Warehouse-like features to a data lake. This section will walk you through some of them.
+The DataOS Lakehouse integrates essential features of Relational Data Warehouses with the scalability and adaptability of data lakes. Here's an outline of its core features:
 
-**Managed Storage**
+- **Decoupled Storage from Compute**: The Lakehouse architecture decouples storage from computational resources, permitting independent scaling. This enables handling larger datasets and more simultaneous users efficiently.
+- **ACID Transactions Support**: Essential for data integrity during simultaneous accesses, ACID transaction support ensures consistent and reliable data amidst concurrent operations.
+- **Versatile Workload Management**: Designed to facilitate a range of tasks from analytics to machine learning, the Lakehouse serves as a unified repository, streamlining data management.
+- **Flexible Computing Environments**: Supports a diverse array of cloud-native storage and processing environments, including DataOS native stacks like [Flare](/resources/stacks/flare/), [Soda](/resources/stacks/soda/), etc.
+- **Openness and Standardization**: Embracing open file formats like Parquet ensures efficient data retrieval across various tools and platforms.
+- **Branching Capabilities**: Employs Iceberg's branching features to support schema versioning and experimentation, enabling safe testing and iteration without affecting live data.
 
-DataOS Lakehouse offers a fully managed storage solution. It utilizes Apache Iceberg tables and cloud object storage, mimicking traditional warehouse functionalities.
+## Architecture of a Lakehouse
 
-**Computing Environment Flexibility**
+DataOS Lakehouse architecture comprises of several layers that come together to form a cohesive environment for data management. The layers are described below:
 
-Supports a multitude of computing environments for cloud-native storage. Users can deploy various processing engines, including DataOS native stacks such as [Flare](/resources/stacks/flare/), [Soda](/resources/stacks/soda/), etc.
+- **Storage**: Acts as the foundational storage layer, interfacing with the cloud storage services (e.g., GCS, ABFSS, WASBS, Amazon S3). It abstracts out the storage connection details by creating a [Depot](/resources/depot/) Resource on applying, while the credentials are securely referred using [Instance Secrets](/resources/instance_secret/). The Lakehouse storage, utilizes Parquet for efficiently handling large datasets, and employs the Iceberg format for table metadata management.
+- **Metastore**: Facilitates access to metadata related to the stored data through the utilization of the Iceberg REST metastore. It exposes Iceberg catalogs, e.g. Hadoop and Hive, via REST metastore interfaces, thus facilitating metadata management.
+- **Query Engine**: Provides the computing environment for running data queries and analytics. It supports the [Themis Query Engine](/resources/cluster/#themis) which is provisioned through the [Cluster Resource](/resources/cluster/).
 
-**Apache Iceberg Integration**
+Together, these layers come together to form the DataOS Lakehouse architecture, ensuring it not only serves as a repository for vast amounts of data but also as a powerful component for data analysis and insights.
 
-Incorporates a hosted implementation of Apache Iceberg REST catalog, facilitating interaction with DataOS Lakehouse through Iceberg REST catalog API.
-
-## Structure of a Lakehouse manifest
-
-```yaml hl_lines="1-10 12-16 18-32 34-36 38-40"
-# Resource-meta section (1)
-name: alphaomega
-version: v1alpha
-type: lakehouse
-tags:
-  - Iceberg
-  - Azure
-description: Icebase depot of storage-type S3
-owner: iamgroot
-layer: user
-
-# Lakehouse-specific section (2)
-lakehouse:
-  type: iceberg
-  compute: runnable-default
-  iceberg:
-
-    # Storage configuration (3)
-    storage:
-      type: s3
-      s3:
-        bucket: dataos-lakehouse   
-        relativePath: /test
-      secrets:
-        - name: alphaomega0public0storage-r
-          keys:
-            - alphaomega0public0storage-r
-          allkeys: true 
-        - name: alphaomega0public0storage-rw
-          keys:
-            - alphaomega0public0storage-rw
-          allkeys: true  
-    
-    # Metastore configuration (4)
-    metastore:
-      type: "iceberg-rest-catalog"
-    
-    # Query engine configuration (5)
-    queryEngine:
-      type: themis
-```
-
-
-1.  **Resource meta section** within a manifest file comprises metadata attributes universally applicable to all [Resource-types](/resources/types_of_dataos_resources/). To learn more about how to configure attributes within this section, refer to the link: [Attributes of Resource meta section](/resources/resource_attributes/).
-
-2.  **Lakehouse-specific section** within a manifest file comprises attributes specific to the Lakehouse Resource. This section is further subdivided into: Storage, Metastore, and Query Engine section. To learn more about how to configure attributes of Lakehouse-specific section, refer the link: [Attributes of Lakehouse-specific section](/resources/lakehouse/manifest_attributes/).
-
-3.  **Storage configuration**
-
-4.  **Metastore configuration**
-
-5.  **Query Engine configuration**
-
-
-## How to create a Lakehouse?
-
-Data developers can create a Lakehouse Resource by creating a YAML manifest and applying it via the DataOS [CLI](/interfaces/cli/).
+## How to create and manage a Lakehouse?
 
 ### **Prerequisites**
 
-#### **Object Storage account**
+Before proceeding with the Lakehouse creation, ensure the following prerequisites are met:
 
-To successfully create a Lakehouse, data developers need access to an object storage solution. It's essential to have the storage credentials and define the access level—either read or read-write—based on your specific requirements. Supported object storage solutions include:
+**Object Storage account**
+
+Data developers need access to an object storage solution. Ensure you have the storage credentials ready with 'Storage Admin' access level. The following object storage solutions are supported:
 
 - Azure Blob File System Storage (ABFSS)
 - Windows Azure Storage Blob Service (WASBS)
 - Amazon Simple Storage Service (Amazon S3)
 - Google Cloud Storage (GCS)
 
-#### **Get an Operator tag**
+**Access level permission**
 
-Setting up a Lakehouse instance involves setting up [Cluster](/resources/cluster/) in the hindsight which requires the `roles:id:operator` tag. 
+To set up a Lakehouse in DataOS, besides possessing an object storage account with appropriate permissions, you also require specific tags or use-cases that authorize you to create and manage a Lakehouse within DataOS. 
+
+<aside class="callout">
+🗣 To acquire the necessary tags and use-cases, please contact the DataOS Operator in your organization.
+</aside>
+
+### **Creating a Lakehouse**
 
 #### **Create Instance Secrets**
 
-Instance-secrets allow data developers to securely store critical information, including data source credentials and other sensitive data, in the Heimdall vault for accessibility throughout the entire DataOS instance. To create an instance-secret, data developers must create an Instance-secret manifest and deploy it using the DataOS CLI.
+[Instance Secrets](/resources/instance_secret/) are vital for securely storing sensitive information like data source credentials. These Instance-secrets ensure that credentials are kept safe in the [Heimdall](/architecture/#heimdall) vault, making them accessible throughout the DataOS instance without exposing them directly in your Lakehouse manifest file. Here’s how you can create Instance-secrets:
 
-**Instance-secret manifest file**
+**Steps to Create Instance Secrets**
 
-The Instance-secret manifest file must include the data source credentials for one of the supported object storage solutions (ABFSS, WASBS, Amazon S3, or GCS), along with the appropriate level of access control configuration (r or rw). 
+- **Prepare the manifest file for Instance-secret:** You need to create a manifest file (YAML configuration file) that contains the source credentials for your chosen object storage solution ([ABFSS](/resources/instance_secret/#abfss), [WASBS](/resources/instance_secret/#wasbs), [Amazon S3](/resources/instance_secret/#s3), or [GCS](/resources/instance_secret/#gcs)). This file should also specify the level of access control (read-only ‘r’ or read-write ‘rw’) that the Lakehouse will have over the object storage. A sample Instance-secret manifest is provided below: 
 
-The configuration of the manifest file will differ based on the storage solution and the access level determined for your use case. The variations for these configurations are detailed below
-
-<div class="grid" markdown>
-
-=== "ABFSS"
-
-    To create an instance-secret for securely accessing ABFSS, the following details are required:
-
-      - `${abfss-depot-name}`: Define the name of your ABFSS depot using the format `${lakehouse-name}0${workspace-name}0storage`. For instance, if your `${lakehouse-name}` is alpha and `${workspace-name}` is testing and the `acl`(access control list) is `rw`, then the instance secret name will be `alpha0testing0storage`.
-      - `${description}`: Provide a brief description of the instance-secret's purpose. This field is optional but recommended for easier management and identification of instance-secrets.
-      - `${azure-endpoint-suffix}`: The endpoint suffix for your Azure storage account, which varies by cloud environment. 
-      - `${azure-storage-account-key}`: The access key for your Azure storage account. This key is essential for authentication and must be kept secure.
-      - `${azure-storage-account-name}`: The name of your Azure storage account. This name is used in conjunction with the endpoint suffix to form the base URL for your ABFSS resources.
-    
-    Ensure that you replace each placeholder (e.g., `${abfss-depot-name}`, `${azure-endpoint-suffix}`) with the actual values pertaining to your Azure account and ABFSS configuration. 
-
-    === "Read-only instance-secret"
-        ```yaml title="instance_secret_abfss_read.yaml"
-        --8<-- "examples/resources/lakehouse/abfss/resource_instance_secret_abfss_read.yaml"
-        ```
-    === "Read-write instance-secret"
-        ```yaml title="instance_secret_abfss_read_write.yaml"
-        --8<-- "examples/resources/lakehouse/abfss/resource_instance_secret_abfss_read_write.yaml"
-        ```
-
-=== "WASBS"
-
-    To create an instance-secret for securely accessing WASBS, the following details are required:
-
-      - `${wasbs-depot-name}`: Define the name of your WASBS depot using the format `${lakehouse-name}0${workspace-name}0storage`. For instance, if your `${lakehouse-name}` is alpha and `${workspace-name}` is testing, then the `${gcs-depot-name}` will be alpha0testing0storage.
-      - `${description}`: Provide a brief description of the instance-secret's purpose. This field is optional but recommended for easier management and identification of instance-secrets.
-      - `${azure-endpoint-suffix}`: The endpoint suffix for your Azure storage account, which varies by cloud environment. 
-      - `${azure-storage-account-key}`: The access key for your Azure storage account. This key is essential for authentication and must be kept secure.
-      - `${azure-storage-account-name}`: The name of your Azure storage account. This name is used in conjunction with the endpoint suffix to form the base URL for your WASBS resources.
-    
-    Ensure that you replace each placeholder (e.g., `${wasbs-depot-name}`, `${azure-endpoint-suffix}`) with the actual values pertaining to your Azure account and WASBS configuration. 
-
-    === "Read-only instance-secret"
-        ```yaml title="instance_secret_wasbs_read.yaml"
-        --8<-- "examples/resources/lakehouse/wasbs/resource_instance_secret_wasbs_read.yaml"
-        ```
-    === "Read-write instance-secret"
-        ```yaml title="instance_secret_wasbs_read_write.yaml"
-        --8<-- "examples/resources/lakehouse/wasbs/resource_instance_secret_wasbs_read_write.yaml"
-        ```
-
-=== "GCS"
-
-    To configure your instance-secret maniest for GCS access, you'll need to gather the following details:
-
-      - `${gcs-depot-name}`:  Define the name of your GCS depot using the format `${lakehouse-name}0${workspace-name}0storage`. For instance, if your `${lakehouse-name}` is alpha and `${workspace-name}` is testing, then the `${gcs-depot-name}` will be alpha0testing0storage.
-      - `${description}`: Provide a brief description of the instance-secret's purpose. This field is optional but recommended for easier management and identification of instance-secrets.
-      - `${project-id}`: The unique identifier of the Google Cloud project that your GCS bucket resides in. You can find this information in the Google Cloud Console under the 'Project Info' section.
-      - `${email}`:  The email address associated with the Google Cloud service account that will be used for accessing GCS. This service account should have the necessary permissions to perform operations on the GCS bucket.
-      - `${gcskey_json}`: The JSON key file of the Google Cloud service account. This file contains the private key and other credentials that are required for authenticating the service account. It can be obtained by creating a service account key in the Google Cloud Console.
-
-    After collecting the above details, depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below. In the chosen template, replace the placeholders (`${gcs-depot-name}`, `${project-id}`, `${email}`, `${gcskey_json}`, and optionally `${description}`) with the actual values you gathered and save it locally on your system.
-
-    === "Read-only instance-secret"
-        ```yaml title="instance_secret_gcs_read.yaml"
-        --8<-- "examples/resources/lakehouse/gcs/resource_instance_secret_gcs_read.yaml"
-        ```
-    === "Read-write instance-secret"
-        ```yaml title="instance_secret_gcs_read_write.yaml"
-        --8<-- "examples/resources/lakehouse/gcs/resource_instance_secret_gcs_read_write.yaml"
-        ```
-=== "S3"
-
-    To create an instance-secret for securely accessing Amazon S3, the following details are required:
-
-      - `${s3-depot-name}`: Define the name of your S3 depot using the format `${lakehouse-name}0${workspace-name}0storage`. For instance, if your `${lakehouse-name}` is alpha and `${workspace-name}` is testing, then the `${gcs-depot-name}` will be alpha0testing0storage.
-      - `${description}`: Provide a brief description of the instance-secret's purpose. This field is optional but recommended for easier management and identification of instance-secrets.
-      - `${access-key-id}`: Your access key ID. This key serves as an identifier for your IAM user or role.
-      - `${aws-access-key-id`}: AWS-specific access key ID, required for authenticating requests made to AWS services.
-      - `${aws-secret-access-key}`: The secret access key for AWS. It's used in conjunction with the AWS access key ID to sign programmatic requests to AWS.
-      - `${secret-key}`: The secret key associated with your access key ID. Together, they authenticate requests to AWS services.
-    
-    Ensure that you replace each placeholder (e.g., `${depot-name}`, `${accesskeyid}`) with the actual values pertaining to your AWS account and S3 configuration. 
-
-    === "Read-only instance-secret"
-        ```yaml title="instance_secret_s3_read.yaml" 
-        --8<-- "examples/resources/lakehouse/s3/resource_instance_secret_s3_read.yaml"
-        ```
-    === "Read-write instance-secret"
-        ```yaml title="instance_secret_s3_read_write.yaml"
-        --8<-- "examples/resources/lakehouse/s3/resource_instance_secret_s3_read_write.yaml"
-        ```
-
-</div>
-
-**Apply the Instance-secret manifest file**
-
-After creating the manifest file for the Instance-secret Resource, apply it using the DataOS CLI to instantiate the Resource-instance in the DataOS environment. To apply the Lakehouse YAML file, utilize the [`apply`](/interfaces/cli/command_reference/#apply) command.
-
-```shell
-dataos-ctl apply -f ${manifest-file-path}
-``` 
-
-The `${manifest-file-path}` is a placeholder for the path to your manifest file. This can be either a relative path from your current directory or an absolute path. Ensure that you replace the placeholder (`${manifest-file-path}`) with the actual manifest file path.
-
-Sample
-
-```shell
-dataos-ctl resource apply -f lakehouse/instance_secret_read.yaml 
-```
-
-**Verify Instance-secret creation**
-
-To ensure that your Instance-secret has been successfully created, you can verify it in two ways:
-
-Check the name of the newly created Instance-secret in the list of Instance-secret created by you using the `resource get` command:
-
-```shell
-dataos-ctl resource get -t instance-secret
-```
-
-Alternatively, retrieve the list of all Instance-secret created by all users in a particular domain by appending `-a` flag:
-
-```shell
-dataos-ctl resource get -t instance-secret -a
-```
-
-You can also access the details of any created Instance-secret through the DataOS GUI in the Resource tab of the  [Operations](/interfaces/operations/) app.
-
-### **Procedure**
-
-#### **Create a Lakehouse manifest file**
-
-A Lakehouse YAML manifest can be structurally broken down into following sections:
-
-- [Resource meta section](#resource-meta-section)
-- [Lakehouse-specific section](#lakehouse-specific-section)
-	- [Storage configuration](#storage-configuration)
-	- [Metastore configuration](#metastore-configuration)
-	- [Query Engine configuration](#query-engine-configuration)
-
-#### **Resource meta section**
-
-In DataOS, a Lakehouse is categorized as a [Resource-type](/resources/types_of_dataos_resources/). The Resource meta section within the YAML manifest encompasses attributes universally applicable to all Resource-types. The provided YAML codeblock elucidates the requisite attributes for this section: 
-
-=== "Syntax"
-
-    ```yaml title="resource_lakehouse_meta_section.yaml"
-    # Resource-meta section
-    name: ${resource-name}
-    version: v1alpha
-    type: lakehouse
-    tags:
-      - ${tag1}
-      - ${tag2}
-    description: ${description}
-    owner: ${userid-of-owner}
-    layer: user
-    lakehouse:
-      # attributes of lakehouse-specific section
-    ```
-=== "Sample"
-
-    ```yaml title="sample_resource_lakehouse_meta_section.yaml"
-    # Resource-meta section
-    name: alphaomega
-    version: v1alpha
-    type: lakehouse
-    tags:
-      - Iceberg
-      - Azure
-    description: Icebase depot of storage-type S3
-    owner: iamgroot
-    layer: user
-    lakehouse:
-      # attributes of lakehouse-specific section
-    ```
-
-For more information about the various attributes in Resource meta section, refer to the [Attributes of Resource meta section](/resources/resource_attributes/).
-
-#### **Lakehouse-specific section**
-
-The Lakehouse-specific section encompasses attributes specific to the Lakehouse Resource:
-
-=== "Basic configuration"
-
-    The basic configuration of a manifest snippet includes only the essential attributes required for establishing a Lakehouse.
-
-    === "Syntax"
-
-        ```yaml title="lakehouse_specific_section_basic_syntax.yaml"
-        lakehouse:
-          type: iceberg
-          compute: ${compute-name}
-          iceberg:
-            # Storage section 
-            storage:
-              type: s3/gcs/abfss/wasbs # possible value: s3, gcs, wasbs, abfss
-              s3/gcs/abfss/wasbs:
-                ${source-specific-attributes}
-
-          # For S3
-              # s3:
-              #   bucket: ${bucket-name}
-              #   relativePath: ${relative-path}
-
-          # For ABFSS
-              # abfss:
-              #   account: ${account}
-              #   container: ${container}
-              #   relativePath: ${relativepath}
-              #   endpointSuffix: ${endpointsuffix}
-              #   format: Iceberg
-          # For WASBS
-              # wasbs:
-              #   account: ${account}
-              #   container: ${container}
-              #   relativePath: ${relativepath}
-              #   endpointSuffix: ${endpointsuffix}
-              #   format: Iceberg
-          # For GCS
-              # gcs:
-              #   bucket: ${gcs-bucket}
-              #   relativePath: ${relative-path}
-              #   format: Iceberg 
-
-            # Metastore section 
-            metastore:
-              type: ${metastore-type}
-              # ...other Metastore-specific attributes
-            # Query engine section 
-            queryEngine:
-              type: ${query-engine-type}
-              # ...other Query-engine-specific attributes
-        ```
-    === "Sample"
-
-        For S3 bucket, the lakehouse-specific section is as follows:
-
-        ```yaml title="lakehouse_specific_section_basic_sample.yaml"
-        lakehouse:
-          type: iceberg
-          compute: query-default
-          iceberg:
-            storage:
-              type: s3
-              s3:
-                bucket: lakehouse-bucket
-                relativePath: /lakehouse 
-              secrets:
-                - name: alphaomega0public0storage-r
-                  keys:
-                    - alphaomega0public0storage-r
-                  allkeys: true    
-                - name: alphaomega0public0storage-rw
-                  keys:
-                    - alphaomega0public0storage-rw
-                  allkeys: true 
-            metastore:
-              type: iceberg-rest-catalog
-            queryEngine:
-              type: themis
-        ```
-
-    <center>
-
-    | Attribute | Data Type | Default Value | Possible Value | Requirement |
-    | --- | --- | --- | --- | --- |
-    | [`lakehouse`](/resources/lakehouse/manifest_attributes/#lakehouse) | mapping | none | none | mandatory |
-    | [`type`](/resources/lakehouse/manifest_attributes/#type) | string | none | `iceberg` | mandatory |
-    | [`compute`](/resources/lakehouse/manifest_attributes/#compute) | string | none | `query-default` | mandatory |
-    | [`iceberg`](/resources/lakehouse/manifest_attributes/#iceberg) | mapping | none | none | mandatory |
-    | [`storage`](/resources/lakehouse/manifest_attributes/#storage) | mapping | none | none | mandatory |
-    | [`metastore`](/resources/lakehouse/manifest_attributes/#metastore) | mapping | none | none | optional |
-    | [`queryEngine`](/resources/lakehouse/manifest_attributes/#queryEngine) | mapping | none | none | optional |
-
-    </center>
-
-
-=== "Advanced configuration"
-
-    The advanced configuration covers the full spectrum of attributes that can be specified within the Lakehouse-specific section a manifest for comprehensive customization.
-
-    ```yaml title="lakehouse_specific_section_advanced.yaml"
-    # Configuration for Lakehouse-specific section
-    lakehouse:
-      type: ABFSS                                 # Storage-type (mandatory)
-      compute: runnable-default                   # Compute name (mandatory)
-      runAsApiKey: abcdefghijklmnopqrstuvwxyz     # DataOS API key (optional)
-      runAsUser: iamgroot                         # User ID of use-case assignee (optional)
-      iceberg: 
-        # Storage section: Comprises attributes specific to storage configuration
-        storage:                                  # Storage section (mandatory)
-          # ...attributes specific to storage configuration
-        # Metastore section: Comprises attributes specific to metastore configuration
-        metastore:                                # Metastore section (optional)
-          # ...attributes specific to metastore configuration
-        # Query Engine configuration (optional)
-        queryEngine:                              
-          # ...attributes specific to the query-engine configuration
-    ```
-    <center>
-
-    | Attribute | Data Type | Default Value | Possible Value | Requirement |
-    | --- | --- | --- | --- | --- |
-    | [`lakehouse`](/resources/lakehouse/manifest_attributes/#lakehouse) | mapping | none | none | mandatory |
-    | [`type`](/resources/lakehouse/manifest_attributes/#type) | string | none | ABFSS, GCS, S3 | mandatory |
-    | [`compute`](/resources/lakehouse/manifest_attributes/#compute) | string | none | any valid string | mandatory |
-    | [`runAsApiKey`](/resources/lakehouse/manifest_attributes/#runasapikey) | string | none | any valid string | optional |
-    | [`runAsUser`](/resources/lakehouse/manifest_attributes/#runasuser) | string | none | any valid string | optional |
-    | [`iceberg`](/resources/lakehouse/manifest_attributes/#iceberg) | mapping | none | none | optional |
-    | [`storage`](/resources/lakehouse/manifest_attributes/#storage) | mapping | none | none | mandatory in `iceberg` |
-    | [`metastore`](/resources/lakehouse/manifest_attributes/#metastore) | mapping | none | none | optional in `iceberg` |
-    | [`queryEngine`](/resources/lakehouse/manifest_attributes/#queryengine) | mapping | none | none | optional in `iceberg` |
-
-    </center>
-
-##### **Storage configuration**
-
-The storage configuration is a fundamental aspect of defining a Lakehouse, ensuring data is stored efficiently and securely. Through the use of Instance-secrets, sensitive information like source credentials can be securely referred within the manifest file. The storage configuraiton encompass attributes specific to the object storage type (such as ABFSS, GCS, WASBS, or S3) and configuring access through securely managed secrets.
-
-=== "Using Instance-secret"
-
-    ```yaml
-    storage: 
-      depotName: depot name 			 # Name of depot (optional)
-      type: abfss 					 # Object store type (mandatory)
-      abfss/gcs/wasbs/s3: 			 # Depot type (optional)
-        # ... attributes specific to depot-type
-      secret: 
-        - name: mysecret 			 # Secret Name (mandatory)
-          workspace: public 		 # Workspace Name (optional)
-          key: username 			 # Key (optional)
-          keys: 					 # Keys (optional)
-            - username
-            - password
-          allKeys: true 			 # All Keys (optional)
-          consumptionType: envVars # Secret consumption type (optional)
-    ```
-
-    <center>
-
-    | Attribute | Data Type | Default Value | Possible Value | Requirement |
-    | --- | --- | --- | --- | --- |
-    | [`storage`](/resources/lakehouse/manifest_attributes/#storage) | object | none | none | mandatory |
-    | [`depotName`](/resources/lakehouse/manifest_attributes/#depotname) | string | none | any valid string | optional |
-    | [`type`](/resources/lakehouse/manifest_attributes/#type) | string | none | abfss | mandatory |
-    | [`abfss/gcs/wasbs/s3`](/resources/lakehouse/manifest_attributes/#abfssgcswasbss3) | object | none | none | optional |
-    | [`depot configuration`](/resources/lakehouse/manifest_attributes/#depotconfiguration) | object | none | none | as per depot type |
-    | [`secret`](/resources/lakehouse/manifest_attributes/#secret) | object | none | none | mandatory |
-    | [`name`](/resources/lakehouse/manifest_attributes/#name) (under `secret`) | string | none | any valid string | mandatory |
-    | [`workspace`](/resources/lakehouse/manifest_attributes/#workspace) (under `secret`) | string | none | any valid string | optional |
-    | [`key`](/resources/lakehouse/manifest_attributes/#key) (under `secret`) | string | none | any valid string | optional |
-    | [`keys`](/resources/lakehouse/manifest_attributes/#keys) (under `secret`) | array | none | any valid strings | optional |
-    | [`allKeys`](/resources/lakehouse/manifest_attributes/#allkeys) (under `secret`) | boolean | none | true/false | optional |
-    | [`consumptionType`](/resources/lakehouse/manifest_attributes/#consumptiontype) (under `secret`) | string | none | envVars | optional |
-
-    </center>
-
-    Attributes-specific to the depot-type.
-
-
-    === "ABFSS"
-
+    ???tip "Sample Instance Secret manifest file"
+        
         ```yaml
-        abfss:
-          account: random 						# ABFSS Account (optional)
-          container: alpha 						# Container (optional)
-          endpointSuffix: new 					# End Point Suffix (optional)
-          format: iceberg 						# File Format (optional)
-          icebergCatalogType: hadoop 				# Iceberg Catalog Type (optional)
-          metastoreType: iceberg-rest 			# Metastore type (optional)
-          metastoreUrl: https://random-url.com	# Metastore URL (optional)
-          relativePath: tmdc-dataos 				# Relative Path (optional)
+        name: depotsecret-r # Resource name (mandatory)
+        version: v1 # Manifest version (mandatory)
+        type: instance-secret # Resource-type (mandatory)
+        tags: # Tags (optional)
+          - just for practice
+        description: instance secret configuration # Description of Resource (optional)
+        layer: user
+        instance-secret: # Instance Secret mapping (mandatory)
+          type: key-value-properties # Type of Instance-secret (mandatory)
+          acl: r # Access control list (mandatory)
+          data: # Data section mapping (mandatory)
+            username: iamgroot
+            password: yourpassword
         ```
+        
 
-        <center>
+    You can refer to the following link to get the [templates for the Instance-secret manifests for object stores](/resources/instance_secret/#object-store).
 
-        | Attribute | Data Type | Default Value | Possible Value | Requirement |
-        | --- | --- | --- | --- | --- |
-        | [`abfss`](/resources/lakehouse/manifest_attributes/#abfss) | object | none | none | optional |
-        | [`account`](/resources/lakehouse/manifest_attributes/#account) | string | none | any valid ABFSS account | optional |
-        | [`container`](/resources/lakehouse/manifest_attributes/#container) | string | none | any valid container name | optional |
-        | [`endpointSuffix`](/resources/lakehouse/manifest_attributes/#endpointsuffix) | string | none | any valid endpoint suffix | optional |
-        | [`format`](/resources/lakehouse/manifest_attributes/#format) | string | none | any valid file format | optional |
-        | [`icebergCatalogType`](/resources/lakehouse/manifest_attributes/#icebergcatalogtype) | string | none | any valid Iceberg catalog type | optional |
-        | [`metastoreType`](/resources/lakehouse/manifest_attributes/#metastoretype) | string | none | any valid metastore type | optional |
-        | [`metastoreUrl`](/resources/lakehouse/manifest_attributes/#metastoreurl) | string | none | any valid URL | optional |
-        | [`relativePath`](/resources/lakehouse/manifest_attributes/#relativepath) | string | none | any valid relative path | optional |
+- **Applying the Manifest file using DataOS CLI:** Once your manifest file is ready, you can apply it using the [DataOS Command Line Interface (CLI)](/interfaces/cli/), by the following command:
 
-        </center>
-
-    === "GCS"
-
-        ```yaml
-        gcs:
-          bucket: bucket-testing 					# GCS Bucket (optional)
-          format: format 							# Format (optional)
-          icebergCatalogType: hadoop 				# Iceberg Catalog Type (optional)
-          metastoreType: iceberg-rest 			# Meta Store type (optional)
-          metastoreUrl: https://random-url.com    # Meta Store URL (optional)
-          relativePath: tmdc-dataos 				# Relative Path (optional)
-        ```
-
-        <center>
-
-        | Attribute | Data Type | Default Value | Possible Value | Requirement |
-        | --- | --- | --- | --- | --- |
-        | [`gcs`](/resources/lakehouse/manifest_attributes/#gcs) | object | none | none | optional |
-        | [`bucket`](/resources/lakehouse/manifest_attributes/#bucket) | string | none | any valid GCS bucket name | optional |
-        | [`format`](/resources/lakehouse/manifest_attributes/#format) | string | none | any valid format | optional |
-        | [`icebergCatalogType`](/resources/lakehouse/manifest_attributes/#icebergcatalogtype) | string | none | hadoop | optional |
-        | [`metastoreType`](/resources/lakehouse/manifest_attributes/#metastoretype) | string | none | iceberg-rest | optional |
-        | [`metastoreUrl`](/resources/lakehouse/manifest_attributes/#metastoreurl) | string | none | any valid URL | optional |
-        | [`relativePath`](/resources/lakehouse/manifest_attributes/#relativepath) | string | none | any valid relative path | optional |
-
-        </center>
-
-    === "S3"
-
-        ```yaml
-        s3:
-          bucket: bucket-testing	    		# GCS Bucket (optional)
-          format: format 			 			# Format (optional)
-          icebergCatalogType: hadoop  		# Iceberg Catalog Type (optional)
-          metastoreType: iceberg-rest		    # Meta Store type (optional)
-          metastoreUrl: iceberg-rest		    # Meta Store URL (optional)
-          relativePath: tmdc-dataos			# Relative Path (optional)
-          scheme: abcd 						# Scheme (optional)
-        ```
-
-        <center>
-
-        | Attribute | Data Type | Default Value | Possible Value | Requirement |
-        | --- | --- | --- | --- | --- |
-        | [`s3`](/resources/lakehouse/manifest_attributes/#s3) | object | none | none | optional |
-        | [`bucket`](/resources/lakehouse/manifest_attributes/#bucket) | string | none | any valid S3 bucket name | optional |
-        | [`format`](/resources/lakehouse/manifest_attributes/#format) | string | none | any valid format | optional |
-        | [`icebergCatalogType`](/resources/lakehouse/manifest_attributes/#icebergcatalogtype) | string | none | hadoop | optional |
-        | [`metastoreType`](/resources/lakehouse/manifest_attributes/#metastoretype) | string | none | iceberg-rest | optional |
-        | [`metastoreUrl`](/resources/lakehouse/manifest_attributes/#metastoreurl) | string | none | any valid URL | optional |
-        | [`relativePath`](/resources/lakehouse/manifest_attributes/#relativepath) | string | none | any valid relative path | optional |
-        | [`scheme`](/resources/lakehouse/manifest_attributes/#scheme) | string | none | any valid scheme | optional |
-
-        </center>
-
-    === "WASBS"
-
-        ```yaml
-        wasbs:
-          account: random 						# WASBS Account (optional)
-          container: alpha 						# Container (optional)
-          endpointSuffix: new 					# End Point Suffix (optional)
-          format: iceberg 						# File Format (optional)
-          icebergCatalogType: hadoop 				# Iceberg Catalog Type (optional)
-          metastoreType: iceberg-rest 			# Metastore type (optional)
-          metastoreUrl: https://random-url.com	# Metastore URL (optional)
-          relativePath: tmdc-dataos 				# Relative Path (optional)
-        ```
-
-        <center>
-
-        | Attribute | Data Type | Default Value | Possible Value | Requirement |
-        | --- | --- | --- | --- | --- |
-        | [`wasbs`](/resources/lakehouse/manifest_attributes/#wasbs) | object | none | none | optional |
-        | [`account`](/resources/lakehouse/manifest_attributes/#account) | string | none | any valid WASBS account | optional |
-        | [`container`](/resources/lakehouse/manifest_attributes/#container) | string | none | any valid container name | optional |
-        | [`endpointSuffix`](/resources/lakehouse/manifest_attributes/#endpointsuffix) | string | none | any valid endpoint suffix | optional |
-        | [`format`](/resources/lakehouse/manifest_attributes/#format) | string | none | any valid file format | optional |
-        | [`icebergCatalogType`](/resources/lakehouse/manifest_attributes/#icebergcatalogtype) | string | none | any valid Iceberg catalog type | optional |
-        | [`metastoreType`](/resources/lakehouse/manifest_attributes/#metastoretype) | string | none | any valid metastore type | optional |
-        | [`metastoreUrl`](/resources/lakehouse/manifest_attributes/#metastoreurl) | string | none | any valid URL | optional |
-        | [`relativePath`](/resources/lakehouse/manifest_attributes/#relativepath) | string | none | any valid relative path | optional |
-
-        </center>
-
-
-
-
-##### **Metastore configuration**
-
-The metastore plays a pivotal role in a Lakehouse, serving as the central repository for metadata about data structures like tables, views, and schemas. This metadata is crucial for data management tasks such as querying, data discovery, and schema validation. Configuring the metastore properly is essential for ensuring seamless access and manipulation of stored data.
-
-The configuration of the metastore can be tailored to meet the specific needs of a Lakehouse, ranging from basic setups with minimal attributes to advanced configurations that leverage additional features for enhanced performance and scalability. The basic configuration requires specifying the metastore type, such as `iceberg-rest-catalog`, to define the underlying technology or service used for metadata storage. On the other hand, the advanced configuration allows for the specification of attributes like the number of replicas, autoscaling options, and resource allocation for CPU and memory, providing greater control over the metastore's performance and resource usage.
-
-=== "Basic configuration"
-
-    ```yaml
-    metastore: 									  # Metastore section (optional)
-      type: iceberg-rest-catlog 				  # Metastore type (mandatory)
-    ```
-
-    <center>
-
-    | Attribute | Data Type | Default Value | Possible Value | Requirement |
-    | --- | --- | --- | --- | --- |
-    | [`metastore`](/resources/lakehouse/manifest_attributes/#metastore) | mapping | none | none | optional |
-    | [`type`](/resources/lakehouse/manifest_attributes/#type) | string | none | iceberg-rest-catlog | mandatory |
+    === "Command"
     
-    </center>
+        ```shell
+        dataos-ctl resource apply -f ${manifest-file-path} -w ${workspace}
+        ```
+    === "Example"
 
-=== "Advanced configuration"
+        ```shell
+        dataos-ctl resource apply -f data_product/instance_secret.yaml -w curriculum
+        ```
+    
+    Alternate command
 
-    ```yaml
-    metastore: 									  # Metastore section (optional)
-      type: iceberg-rest-catlog 				  # Metastore type (mandatory)
-      replicas: 2 							  # Number of replicas (optional)
-      autoScaling: 							  # Autoscaling configuration (optional)
-        enabled: true 						  # Enable autoscaling (optional)
-        minReplicas: 2 						  # Minimum number of replicas (optional)
-        maxReplicas: 4 					  	  # Maximum number of replicas (optional)
-        targetMemoryUtilizationPercentage: 60 # Target Memory Utilization Percentage (optional)
-        targetCPUUtilizationPercentage: 60 	  # Target CPU Utilization Percentage (optional)
-      resources: 								  # CPU and memory resources (optional)
-        requests: 
-          cpu: 1Gi 						  # Requested CPU resources (optional)
-          memory: 400m 					  # Requested Memory resources (optional)
-        limits:
-          cpu: 1Gi 						  # CPU resource limits (optional)
-          memory: 400m 					  # Memory resource limits (optional)
+    === "Command"
+
+        ```shell
+        dataos-ctl apply -f ${manifest-file-path} -w ${workspace}
+        ```
+
+    === "Example"
+
+        ```shell
+        dataos-ctl apply -f ../data_product/instance_secret.yaml -w curriculum
+        ```
+
+- **Verify Instance-secret creation:** To ensure that your Instance-secret has been successfully created, you can verify it in two ways:
+    
+    Check the name of the newly created Instance-secret in the list of Instance-secret created by you using the `resource get` command:
+    
+    ```shell
+    dataos-ctl resource get -t instance-secret
     ```
-
-
-    <center>
-
-    | Attribute | Data Type | Default Value | Possible Value | Requirement |
-    | --- | --- | --- | --- | --- |
-    | [`metastore`](/resources/lakehouse/manifest_attributes/#metastore) | mapping | none | none | optional |
-    | [`type`](/resources/lakehouse/manifest_attributes/#type) | string | none | iceberg-rest-catlog | mandatory |
-    | [`replicas`](/resources/lakehouse/manifest_attributes/#replicas) | integer | none | any valid positive integer | optional |
-    | [`autoScaling`](/resources/lakehouse/manifest_attributes/#autoscaling) | mapping | none | none | optional |
-    | [`enabled`](/resources/lakehouse/manifest_attributes/#enabled) | boolean | none | true/false | optional |
-    | [`minReplicas`](/resources/lakehouse/manifest_attributes/#minreplicas) | integer | none | any valid integer | optional |
-    | [`maxReplicas`](/resources/lakehouse/manifest_attributes/#maxreplicas) | integer | none | any valid integer | optional |
-    | [`targetMemoryUtilizationPercentage`](/resources/lakehouse/manifest_attributes/#targetmemoryutilizationpercentage) | integer | none | any valid percentage | optional |
-    | [`targetCPUUtilizationPercentage`](/resources/lakehouse/manifest_attributes/#targetcpuutilizationpercentage) | integer | none | any valid percentage | optional |
-    | [`resources`](/resources/lakehouse/manifest_attributes/#resources) | mapping | none | none | optional |
-    | [`requests`](/resources/lakehouse/manifest_attributes/#requests) | mapping | none | none | optional |
-    | [`cpu`](/resources/lakehouse/manifest_attributes/#cpu) | string | none | any valid resource amount | optional |
-    | [`memory`](/resources/lakehouse/manifest_attributes/#memory) | string | none | any valid resource amount | optional |
-    | [`limits`](/resources/lakehouse/manifest_attributes/#limits) | mapping | none | none | optional |
-    | [`cpu`](/resources/lakehouse/manifest_attributes/#cpu) | string | none | any valid resource amount | optional |
-    | [`memory`](/resources/lakehouse/manifest_attributes/#memory) | string | none | any valid resource amount | optional |
-
-    </center>
-
-##### **Query Engine configuration**
-
-The configuration of the query engine is a crucial component in tailoring the Lakehouse to meet specific data processing requirements. A query engine defines the computational backbone of the Lakehouse, enabling efficient data querying and processing capabilities. At its core, the query engine configuration outlines the type of engine to be used, such as Themis, along with optional specifications for resource allocation and operational parameters to optimize performance.
-
-For general use cases, a basic configuration may suffice, requiring only the specification of the query engine type. This minimal setup is suitable for environments where default resource allocations and settings meet the Lakehouse's needs. However, advanced configurations offer a deeper level of customization. They allow administrators to specify detailed resource requests and limits for CPU and memory, ensuring that the query engine operates within designated resource boundaries for both efficiency and cost-effectiveness.
-
-=== "Basic configuration"
-
-    ```yaml
-    queryEngine:
-      type: themis
+    
+    Alternatively, retrieve the list of all Instance-secret created by all users in a DataOS instance by appending `-a` flag:
+    
+    ```shell
+    dataos-ctl resource get -t instance-secret -a
     ```
-    <center>
+    
+    You can also access the details of any created Instance-secret through the DataOS GUI in the Resource tab of the [Operations](/interfaces/operations/) app.
+    
 
-    | Attribute | Data Type | Default Value | Possible Value | Requirement |
-    | --- | --- | --- | --- | --- |
-    | [`queryEngine`](/resources/lakehouse/manifest_attributes/#queryengine) | object | none | none | mandatory |
-    | [`type`](/resources/lakehouse/manifest_attributes/#type) | string | none | themis | mandatory |
+For more information about Instance-secret, refer to the documentation: [Instance-secret](/resources/instance_secret/).
 
-    </center>
+#### **Draft a Lakehouse manifest file**
 
-=== "Advanced configuration"
+Once you have created Instance-secrets, now its time to create a Lakehouse by applying the Lakehouse manifest file using the [DataOS CLI](/interfaces/cli/). The Lakehouse manifest file is divided into several sections, each responsible for specifying different aspects of the Lakehouse. The sections are provided below:
 
-    ```yaml
-    queryEngine:
-      type: themis	 			
-      resources: 					
-        requests: 
-          cpu: ${requested-cpu-resource}	 		
-          memory: ${requested-memory-resource}	 
-        limits:
-          cpu: ${cpu-resource-limits}	 		
-          memory: ${memory-resource-limits}
-      themis: 			
-        envs: 
-          ${key1}: ${value1}
-        themisConf:
-          ${key1}: ${value1}
-        spark: 
-          driver:				
-            memory: ${spark-driver-memory}
-            cpu: ${spark-driver-cpu} 		
-          executor: 		
-            memory: ${spark-executor-memory}
-            cpu: ${spark-executor-cpu}
-            instanceCount: ${instance-count}
-            maxInstanceCount: ${maximum-instance-count}
-          sparkConf: 
-            ${key1}: ${value1}				 
-    ```
-    <center>
+- [Resource meta section](/resources/lakehouse/#resource-meta-section)
+- [Lakehouse-specific section](/resources/lakehouse/#lakehouse-specific-section)
+    - [Storage section](/resources/lakehouse/#storage-configuration)
+    - [Metastore section](/resources/lakehouse/#metastore-configuration)
+    - [Query Engine section](/resources/lakehouse/#query-engine-configuration)
 
-    | Attribute | Data Type | Default Value | Possible Value | Requirement |
-    | --- | --- | --- | --- | --- |
-    | [`queryEngine`](/resources/lakehouse/manifest_attributes/#queryengine) | object | none | none | mandatory |
-    | [`type`](/resources/lakehouse/manifest_attributes/#type) | string | none | themis | mandatory |
-    | [`resources`](/resources/lakehouse/manifest_attributes/#resources) | object | none | none | optional |
-    | [`requests`](/resources/lakehouse/manifest_attributes/#requests) | object | none | none | optional |
-    | [`cpu`](/resources/lakehouse/manifest_attributes/#cpu) (under `requests`) | string | none | any valid CPU resource amount | optional |
-    | [`memory`](/resources/lakehouse/manifest_attributes/#memory) (under `requests`) | string | none | any valid memory resource amount | optional |
-    | [`limits`](/resources/lakehouse/manifest_attributes/#limits) | object | none | none | optional |
-    | [`cpu`](/resources/lakehouse/manifest_attributes/#cpu) (under `limits`) | string | none | any valid CPU resource limit | optional |
-    | [`memory`](/resources/lakehouse/manifest_attributes/#memory) (under `limits`) | string | none | any valid memory resource limit | optional |
-    | [`themis`](/resources/lakehouse/manifest_attributes/#themisminerva) | object | none | none | optional |
-    | [`envs`](/resources/lakehouse/manifest_attributes/#envs) | object | none | none | optional |
-    | [`themisConf`](/resources/lakehouse/manifest_attributes/#themisconf) | object | none | none | optional |
-    | [`spark`](/resources/lakehouse/manifest_attributes/#spark) | object | none | none | mandatory |
-    | [`driver`](/resources/lakehouse/manifest_attributes/#driver) (under `spark`) | object | none | none | mandatory |
-    | [`memory`](/resources/lakehouse/manifest_attributes/#memory) (under `driver`) | string | none | any valid memory amount | mandatory |
-    | [`cpu`](/resources/lakehouse/manifest_attributes/#cpu) (under `driver`) | string | none | any valid CPU resource | mandatory |
-    | [`executor`](/resources/lakehouse/manifest_attributes/#executor) (under `spark`) | object | none | none | mandatory |
-    | [`memory`](/resources/lakehouse/manifest_attributes/#memory) (under `executor`) | string | none | any valid memory amount | mandatory |
-    | [`cpu`](/resources/lakehouse/manifest_attributes/#cpu) (under `executor`) | string | none | any valid CPU resource | mandatory |
-    | [`instanceCount`](/resources/lakehouse/manifest_attributes/#instancecount) (under `executor`) | integer | none | any valid integer | mandatory |
-    | [`maxInstanceCount`](/resources/lakehouse/manifest_attributes/#maxinstancecount) (under `executor`) | integer | none | any valid integer | mandatory |
-    | [`sparkConf`](/resources/lakehouse/manifest_attributes/#sparkconf) (under `spark`) | object | none | none | optional |
+A sample Lakehouse manifest file is provided below; the sections that make up the various parts of the manifest file are described after that.
 
-    </center>
+???tip "Sample Lakehouse manifest file"
 
-??? tip "Sample Lakehouse manifest"
-
-    ```yaml
-
-    # Resource-meta section
+    ```yaml hl_lines="1-10 12-16 18-32 34-36 38-40"
+    # Resource-meta section (1)
     name: alphaomega
     version: v1alpha
     type: lakehouse
@@ -801,87 +200,733 @@ For general use cases, a basic configuration may suffice, requiring only the spe
     owner: iamgroot
     layer: user
 
-    # Lakehouse-specific section
+    # Lakehouse-specific section (2)
     lakehouse:
       type: iceberg
       compute: runnable-default
       iceberg:
+
+        # Storage section (3)
         storage:
+          depotName: alphaomega
           type: s3
           s3:
             bucket: dataos-lakehouse   
             relativePath: /test
           secrets:
-            - name: alphaomega0public0storage-r
+            - name: alphaomega-r
               keys:
-                - alphaomega0public0storage-r
+                - alphaomega-r
               allkeys: true 
-            - name: alphaomega0public0storage-rw
+            - name: alphaomega-rw
               keys:
-                - alphaomega0public0storage-rw
-              allkeys: true    
+                - alphaomega-rw
+              allkeys: true  
+        
+        # Metastore section (4)
         metastore:
           type: "iceberg-rest-catalog"
+        
+        # Query engine section (5)
         queryEngine:
           type: themis
     ```
 
-### **Apply the Lakehouse manifest**
+    1.  **Resource meta section** within a manifest file comprises metadata attributes universally applicable to all [Resource-types](/resources/types_of_dataos_resources/). To learn more about how to configure attributes within this section, refer to the link: [Attributes of Resource meta section](/resources/resource_attributes/).
+
+    2.  **Lakehouse-specific section** within a manifest file comprises attributes specific to the Lakehouse Resource. This section is further subdivided into: Storage, Metastore, and Query Engine section. To learn more about how to configure attributes of Lakehouse-specific section, refer the link: [Attributes of Lakehouse-specific section](/resources/lakehouse/manifest_attributes/).
+
+    3.  **Storage configuration**
+
+    4.  **Metastore configuration**
+
+    5.  **Query Engine configuration**
+
+
+**Resource meta section**
+
+This section serves as the header of the manifest file, defining the overall characteristics of the Lakehouse Resource you wish to create. It includes attributes applicable to all [types of Resources](/resources/types_of_dataos_resources/) in DataOS. These attributes help DataOS in identifying, categorizing, and managing the Resource within its ecosystem. The code block below describes the attributes of this section:
+
+=== "Syntax"
+
+    ```yaml
+    # Resource-meta section
+    name: ${resource-name} # mandatory
+    version: v1alpha # mandatory
+    type: lakehouse # optional
+    tags: # optional
+      - ${tag1}
+      - ${tag2}
+    description: ${description} # optional
+    owner: ${userid-of-owner} # optional
+    layer: user # optional
+    ```
+
+=== "Example"
+
+    ```yaml
+    # Resource-meta section
+    name: lakehouse-s3 # mandatory
+    version: v1alpha # mandatory
+    type: lakehouse # mandatory
+    tags: # optional
+      - lakehouse
+      - s3
+    description: The manifest file for Lakehouse Resource # optional
+    owner: iamgroot # optional
+    layer: user # optional
+    ```
+
+Refer to the [Attributes of Resource meta section](/resources/resource_attributes/) for more information about the various attributes in the Resource meta section.
+
+**Lakehouse-specific section**
+
+Following the Resource meta section, the Lakehouse-specific section contains configurations unique to the Lakehouse Resource. This section is divided into three separate sections, each critical to the Lakehouse’s functionality: 
+
+- Storage section
+- Metastore section
+- Query engine section
+
+**Storage section**
+
+This section of the Lakehouse manifest file specifies the connection to the underlying object storage solution (e.g., ABFSS, WASBS, Amazon S3, GCS). Instance-secrets enable the secure reference of sensitive data within the manifest. The Storage section's configurations facilitate the creation of a Depot, abstracting the storage setup and ensuring secured data access in the object storage solution. This setup varies across different source systems, as detailed in the tabs below:
+
+=== "ABFSS"
+
+    To setup a Lakehouse on top of ABFSS source system, you need to configure the `storage` with `type: abfss`. The code block below elucidates the storage section configuration for 'ABFSS':
+
+    === "Syntax"
+
+        ```yaml
+        storage:
+          depotName: ${depot-name} # optional
+          type: abfss # mandatory
+          abfss: # optional
+            account: ${abfss-account} # optional
+            container: ${container} # optional
+            endpointSuffix: ${endpoint-suffix}
+            format: ${format} # optional
+            icebergCatalogType: ${iceberg-catalog-type} # optional
+            metastoreType: ${metastore-type} # optional
+            metastoreUrl: ${metastore-url} # optional
+            relativePath: ${relative-path} # optional
+          secrets:
+            - name: ${referred-secret-name} # mandatory
+              workspace: ${secret-workspace} # optional 
+              key: ${secret-key} # optional
+              keys: # optional 
+                - ${key1}
+                - ${key2}
+              allKeys: ${all-keys-or-not} # optional
+              consumptionType: ${consumption-type} # optional
+        ```
+
+    === "Example"
+
+        ```yaml
+        storage:
+          type: "abfss"
+          abfss:
+            depotName: abfsslakehouse
+            account: abfssstorage
+            container: lake01
+            relativePath: "/dataos"
+            format: ICEBERG
+            endpointSuffix: dfs.core.windows.net
+          secrets:
+            - name: abfsslakehouse-rw
+              keys:
+                - abfsslakehouse-rw
+              allkeys: true    
+            - name: abfsslakehouse-r
+              keys:
+                - abfsslakehouse-r
+              allkeys: true 
+        ```
+    The table below summarizes the attributes of 'abfss' storage configuration:
+    <center>
+
+    | Attribute&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Data Type | Default Value | Possible Value | Requirement |
+    | --- | --- | --- | --- | --- |
+    | [`storage`](/resources/lakehouse/manifest_attributes/#storage) | mapping | none | none | mandatory |
+    | [`depotName`](/resources/lakehouse/manifest_attributes/#depotname) | string | ${lakehouse-name}0<br>${workspace}0<br>storage | A valid string that matches<br> the regex pattern <br>`[a-z]([a-z0-9]*)`. Special <br>characters, except for<br> hyphens/dashes, are <br> not allowed. The maximum <br>length is 48 characters. | optional |
+    | [`type`](/resources/lakehouse/manifest_attributes/#type) | string | none | abfss | mandatory |
+    | [`abfss`](/resources/lakehouse/manifest_attributes/#abfss) | mapping | none | none | optional |
+    | [`account`](/resources/lakehouse/manifest_attributes/#abfss) | string | none | valid ABFSS account | optional |
+    | [`container`](/resources/lakehouse/manifest_attributes/#abfss) | string | none | valid container name | optional |
+    | [`endpointSuffix`](/resources/lakehouse/manifest_attributes/#abfss) | string | none | valid endpoint suffix | optional |
+    | [`format`](/resources/lakehouse/manifest_attributes/#abfss) | string | Iceberg | Iceberg | optional |
+    | [`icebergCatalogType`](/resources/lakehouse/manifest_attributes/#abfss) | string | hadoop | hadoop, hive | optional |
+    | [`metastoreType`](/resources/lakehouse/manifest_attributes/#abfss) | string | iceberg-rest-catalog | iceberg-rest-catalog | optional |
+    | [`metastoreUrl`](/resources/lakehouse/manifest_attributes/#abfss) | string | none | valid URL | optional |
+    | [`relativePath`](/resources/lakehouse/manifest_attributes/#abfss) | string | none | valid relative path | optional |
+    | [`secret`](/resources/lakehouse/manifest_attributes/#secret) | mapping | none | none | mandatory |
+    | [`name`](/resources/lakehouse/manifest_attributes/#name) | string | none | valid Secret name | mandatory |
+    | [`workspace`](/resources/lakehouse/manifest_attributes/#workspace) | string | none | valid Workspace name and<br> must be less than '32'<br> chars and conform to<br> the following regex: <br>`[a-z]([-a-z0-9]*[a-z0-9])?` | optional |
+    | [`key`](/resources/lakehouse/manifest_attributes/#key) | string | none | valid key | optional |
+    | [`keys`](/resources/lakehouse/manifest_attributes/#keys) | list of strings | none | valid keys  | optional |
+    | [`allKeys`](/resources/lakehouse/manifest_attributes/#allkeys) | boolean | false | true/false | optional |
+    | [`consumptionType`](/resources/lakehouse/manifest_attributes/#consumptiontype) | string | envVars | envVars, propFile | optional |
+
+    <i>Attributes of ABFSS storage configuration</i>
+
+    </center>
+
+=== "GCS"
+
+    To setup a Lakehouse on top of GCS source system, you need to configure the `storage` with `type: gcs`. The code block below elucidates the storage section configuration for 'GCS':
+
+    === "Syntax"
+
+        ```yaml
+        storage:
+          depotName: ${depot-name} # optional
+          type: gcs # mandatory
+          gcs: # mandatory
+            bucket: ${gcs-bucket} # mandatory
+            format: ${format} # mandatory
+            icebergCatalogType: ${iceberg-catalog-type} # optional
+            metastoreType: ${metastore-type} # optional
+            metastoreUrl: ${metastore-url} # optional
+            relativePath: ${relative-path} # optional
+          secrets:
+            - name: ${referred-secret-name} # mandatory
+              workspace: ${secret-workspace} # optional 
+              key: ${secret-key} # optional
+              keys: # optional 
+                - ${key1}
+                - ${key2}
+              allKeys: ${all-keys-or-not} # optional
+              consumptionType: ${consumption-type} # optional
+        ```
+
+    === "Example"
+
+        ```yaml
+        storage:
+          depotName: gcslakehouse
+          type: gcs
+          gcs:
+            bucket: gcsbucket
+            relativePath: "/sanity"
+            format: iceberg      
+          secrets:
+            - name: gcslakehouse-rw
+              keys:
+                - gcslakehouse-rw
+              allkeys: true    
+            - name: gcslakehouse-r
+              keys:
+                - gcslakehouse-r
+              allkeys: true 
+        ```
+
+    The table below summarizes the attributes of 'gcs' storage configuration:
+    <center>
+
+    | Attribute&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Data Type | Default Value | Possible Value | Requirement |
+    | --- | --- | --- | --- | --- |
+    | [`storage`](/resources/lakehouse/manifest_attributes/#storage) | mapping | none | none | mandatory |
+    | [`depotName`](/resources/lakehouse/manifest_attributes/#depotname) | string | ${lakehouse-name}0<br>${workspace}0<br>storage | A valid string that matches<br> the regex pattern <br>`[a-z]([a-z0-9]*)`. Special <br>characters, except for<br> hyphens/dashes, are <br> not allowed. The maximum <br>length is 48 characters. | optional |
+    | [`type`](/resources/lakehouse/manifest_attributes/#type) | string | none | gcs | mandatory |
+    | [`gcs`](/resources/lakehouse/manifest_attributes/#gcs) | mapping | none | none | optional |
+    | [`bucket`](/resources/lakehouse/manifest_attributes/#gcs) | string | none | valid GCS bucket name | optional |
+    | [`format`](/resources/lakehouse/manifest_attributes/#gcs) | string | Iceberg | Iceberg | optional |
+    | [`icebergCatalogType`](/resources/lakehouse/manifest_attributes/#gcs) | string | none | hadoop, hive | optional |
+    | [`metastoreType`](/resources/lakehouse/manifest_attributes/#gcs) | string | iceberg-rest-catalog | iceberg-rest-catalog | optional |
+    | [`metastoreUrl`](/resources/lakehouse/manifest_attributes/#gcs) | string | none | valid metastore URL | optional |
+    | [`relativePath`](/resources/lakehouse/manifest_attributes/#gcs) | string | none | valid relative path | optional |
+    | [`secret`](/resources/lakehouse/manifest_attributes/#secret) | mapping | none | none | mandatory |
+    | [`name`](/resources/lakehouse/manifest_attributes/#name) | string | none | valid Secret name | mandatory |
+    | [`workspace`](/resources/lakehouse/manifest_attributes/#workspace) | string | none | valid Workspace name and<br> must be less than '32'<br> chars and conform to<br> the following regex: <br>`[a-z]([-a-z0-9]*[a-z0-9])?` | optional |
+    | [`key`](/resources/lakehouse/manifest_attributes/#key) | string | none | valid key | optional |
+    | [`keys`](/resources/lakehouse/manifest_attributes/#keys) | list of strings | none | valid keys  | optional |
+    | [`allKeys`](/resources/lakehouse/manifest_attributes/#allkeys) | boolean | false | true/false | optional |
+    | [`consumptionType`](/resources/lakehouse/manifest_attributes/#consumptiontype) | string | envVars | envVars, propFile | optional |
+
+    <i>Attributes of ABFSS storage configuration</i>
+
+    </center>
+
+=== "S3"
+
+    To setup a Lakehouse on top of S3 source system, you need to configure the `storage` with `type: s3`. The code block below elucidates the storage section configuration for 'S3':
+
+    === "Syntax"
+
+        ```yaml
+        storage:
+          depotName: ${depot-name} # optional
+          type: s3 # mandatory
+          s3: # mandatory
+            bucket: ${s3-bucket} # mandatory
+            format: ${format} # mandatory
+            icebergCatalogType: ${iceberg-catalog-type} # optional
+            metastoreType: ${metastore-type} # optional
+            metastoreUrl: ${metastore-url} # optional
+            relativePath: ${relative-path} # optional
+            scheme: ${scheme} # optional
+          secrets:
+            - name: ${referred-secret-name} # mandatory
+              workspace: ${secret-workspace} # optional 
+              key: ${secret-key} # optional
+              keys: # optional 
+                - ${key1}
+                - ${key2}
+              allKeys: ${all-keys-or-not} # optional
+              consumptionType: ${consumption-type} # optional
+        ``` 
+
+    === "Example"
+
+        ```yaml
+        storage:
+          depotName: s3test
+          type: "s3"
+          s3:
+            bucket: lake001-dev        # "tmdc-dataos-testing"
+            relativePath: /sanitys3       
+          secrets:
+            - name: s3test-rw
+              keys:
+                - s3test-rw
+              allkeys: true    
+            - name: s3test-r
+              keys:
+                - s3test-r
+              allkeys: true 
+        ``` 
+
+    The table below summarizes the attributes of 's3' storage configuration:
+    <center>
+
+    | Attribute&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Data Type | Default Value | Possible Value | Requirement |
+    | --- | --- | --- | --- | --- |
+    | [`storage`](/resources/lakehouse/manifest_attributes/#storage) | mapping | none | none | mandatory |
+    | [`depotName`](/resources/lakehouse/manifest_attributes/#depotname) | string | ${lakehouse-name}0<br>${workspace}0<br>storage | A valid string that matches<br> the regex pattern <br>`[a-z]([a-z0-9]*)`. Special <br>characters, except for<br> hyphens/dashes, are <br> not allowed. The maximum <br>length is 48 characters. | optional |
+    | [`type`](/resources/lakehouse/manifest_attributes/#type) | string | none | s3 | mandatory |
+    | [`s3`](/resources/lakehouse/manifest_attributes/#s3) | mapping | none | none | optional |
+    | [`bucket`](/resources/lakehouse/manifest_attributes/#s3) | string | none | valid S3 bucket name | optional |
+    | [`format`](/resources/lakehouse/manifest_attributes/#s3) | string | Iceberg | Iceberg | optional |
+    | [`icebergCatalogType`](/resources/lakehouse/manifest_attributes/#s3) | string | none | hadoop, hive | optional |
+    | [`metastoreType`](/resources/lakehouse/manifest_attributes/#s3) | string | iceberg-rest-catalog | iceberg-rest-catalog | optional |
+    | [`metastoreUrl`](/resources/lakehouse/manifest_attributes/#s3) | string | none | valid URL | optional |
+    | [`relativePath`](/resources/lakehouse/manifest_attributes/#s3) | string | none | valid relative path | optional |
+    | [`scheme`](/resources/lakehouse/manifest_attributes/#s3) | string | none | valid scheme (e.g., s3://) | optional |
+    | [`secret`](/resources/lakehouse/manifest_attributes/#secret) | mapping | none | none | mandatory |
+    | [`name`](/resources/lakehouse/manifest_attributes/#name) | string | none | valid Secret name | mandatory |
+    | [`workspace`](/resources/lakehouse/manifest_attributes/#workspace) | string | none | valid Workspace name and<br> must be less than '32'<br> chars and conform to<br> the following regex: <br>`[a-z]([-a-z0-9]*[a-z0-9])?` | optional |
+    | [`key`](/resources/lakehouse/manifest_attributes/#key) | string | none | valid key | optional |
+    | [`keys`](/resources/lakehouse/manifest_attributes/#keys) | list of strings | none | valid keys  | optional |
+    | [`allKeys`](/resources/lakehouse/manifest_attributes/#allkeys) | boolean | false | true/false | optional |
+    | [`consumptionType`](/resources/lakehouse/manifest_attributes/#consumptiontype) | string | envVars | envVars, propFile | optional |
+
+    <i>Attributes of S3 storage configuration</i>
+
+    </center>
+
+=== "WASBS"
+
+    To setup a Lakehouse on top of WASBS source system, you need to configure the `storage` with `type: wasbs`. The code block below elucidates the storage section configuration for 'WASBS':
+
+    === "Syntax"
+
+        ```yaml
+        storage:
+          depotName: ${depot-name} # optional
+          type: wasbs # mandatory
+          wasbs: # optional
+            account: ${abfss-account} # optional
+            container: ${container} # optional
+            endpointSuffix: ${endpoint-suffix}
+            format: ${format} # optional
+            icebergCatalogType: ${iceberg-catalog-type} # optional
+            metastoreType: ${metastore-type} # optional
+            metastoreUrl: ${metastore-url} # optional
+            relativePath: ${relative-path} # optional
+          secrets:
+            - name: ${referred-secret-name} # mandatory
+              workspace: ${secret-workspace} # optional 
+              key: ${secret-key} # optional
+              keys: # optional 
+                - ${key1}
+                - ${key2}
+              allKeys: ${all-keys-or-not} # optional
+              consumptionType: ${consumption-type} # optional
+        ```
+
+    === "Example"
+
+        ```yaml
+        storage:
+          type: "wasbs"
+          wasbs:
+            depotName: wasbslakehouse
+            account: wasbsstorage
+            container: lake01
+            relativePath: "/dataos"
+            format: ICEBERG
+            endpointSuffix: dfs.core.windows.net
+          secrets:
+            - name: wasbslakehouse-rw
+              keys:
+                - wasbslakehouse-rw
+              allkeys: true    
+            - name: wasbslakehouse-r
+              keys:
+                - wasbslakehouse-r
+              allkeys: true 
+        ```
+    The table below summarizes the attributes of 'wasbs' storage configuration:
+    <center>
+
+    | Attribute&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Data Type | Default Value | Possible Value | Requirement |
+    | --- | --- | --- | --- | --- |
+    | [`storage`](/resources/lakehouse/manifest_attributes/#storage) | mapping | none | none | mandatory |
+    | [`depotName`](/resources/lakehouse/manifest_attributes/#depotname) | string | ${lakehouse-name}0<br>${workspace}0<br>storage | A valid string that matches<br> the regex pattern <br>`[a-z]([a-z0-9]*)`. Special <br>characters, except for<br> hyphens/dashes, are <br> not allowed. The maximum <br>length is 48 characters. | optional |
+    | [`type`](/resources/lakehouse/manifest_attributes/#type) | string | none | wasbs | mandatory |
+    | [`wasbs`](/resources/lakehouse/manifest_attributes/#abfss) | mapping | none | none | optional |
+    | [`account`](/resources/lakehouse/manifest_attributes/#abfss) | string | none | valid ABFSS account | optional |
+    | [`container`](/resources/lakehouse/manifest_attributes/#abfss) | string | none | valid container name | optional |
+    | [`endpointSuffix`](/resources/lakehouse/manifest_attributes/#abfss) | string | none | valid endpoint suffix | optional |
+    | [`format`](/resources/lakehouse/manifest_attributes/#abfss) | string | Iceberg | Iceberg | optional |
+    | [`icebergCatalogType`](/resources/lakehouse/manifest_attributes/#abfss) | string | hadoop | hadoop, hive | optional |
+    | [`metastoreType`](/resources/lakehouse/manifest_attributes/#abfss) | string | iceberg-rest-catalog | iceberg-rest-catalog | optional |
+    | [`metastoreUrl`](/resources/lakehouse/manifest_attributes/#abfss) | string | none | valid URL | optional |
+    | [`relativePath`](/resources/lakehouse/manifest_attributes/#abfss) | string | none | valid relative path | optional |
+    | [`secret`](/resources/lakehouse/manifest_attributes/#secret) | mapping | none | none | mandatory |
+    | [`name`](/resources/lakehouse/manifest_attributes/#name) | string | none | valid Secret name | mandatory |
+    | [`workspace`](/resources/lakehouse/manifest_attributes/#workspace) | string | none | valid Workspace name and<br> must be less than '32'<br> chars and conform to<br> the following regex: <br>`[a-z]([-a-z0-9]*[a-z0-9])?` | optional |
+    | [`key`](/resources/lakehouse/manifest_attributes/#key) | string | none | valid key | optional |
+    | [`keys`](/resources/lakehouse/manifest_attributes/#keys) | list of strings | none | valid keys  | optional |
+    | [`allKeys`](/resources/lakehouse/manifest_attributes/#allkeys) | boolean | false | true/false | optional |
+    | [`consumptionType`](/resources/lakehouse/manifest_attributes/#consumptiontype) | string | envVars | envVars, propFile | optional |
+
+    <i>Attributes of WASBS storage configuration</i>
+
+    </center>
+
+**Metastore section**
+
+This section outlines the metastore configuration, which manages metadata for the data stored in the Lakehouse storage. It includes the metastore service type and detailed setup instructions.
+
+Configurations range from simple, requiring just the metastore type (e.g., `iceberg-rest-catalog`), to complex, incorporating additional features for enhanced scalability and performance. Advanced configurations may detail the number of replicas, autoscaling capabilities, and specific resource allocations.
+
+=== "Basic configuration"
+
+    === "Syntax"
+
+        ```yaml
+        lakehouse:
+          metastore:
+            type: ${metasatore-type}
+        ```
+    === "Example"
+
+        ```yaml
+        lakehouse:
+          metastore:
+            type: iceberg-rest-catalog
+        ```
+
+    The table below elucidates the basic configuration attributes of Metastore section:
+
+    <center>
+
+    | Attribute | Data Type | Default Value | Possible Value | Requirement |
+    | --- | --- | --- | --- | --- |
+    | [metastore](/resources/lakehouse/manifest_attributes/#metastore) | mapping | none | none | optional |
+    | [type](/resources/lakehouse/manifest_attributes/#type) | string | none | iceberg-rest-catalog | mandatory |
+
+    <i>Basic configuration attributes of Metastore section</i>
+    </center>
+
+
+=== "Advanced configuration"
+
+    === "Syntax"
+
+        ```yaml
+        metastore:
+          type: ${metastore-type} # mandatory
+          replicas: ${number-of-replicas}
+          autoScaling:
+            enabled: ${enable-autoscaling}
+            minReplicas: ${minimum-number-of-replicas}
+            maxReplicas: ${maximum-number-of-replicas}
+            targetMemoryUtilizationPercentage: ${target-memory-utilization-percentage}
+            targetCPUUtilizationPercentage: ${target-cpu-utilization-percentage}
+          resources:
+            requests:
+              cpu: ${requested-cpu-resource}
+              memory: ${requested-memory-resource}
+            limits:
+              cpu: ${requested-cpu-resource}
+              memory: ${requested-memory-resource}
+        ```
+
+    === "Example"
+
+        ```yaml
+        metastore:
+          type: iceberg-rest-catalog # mandatory
+          replicas: 2
+          autoScaling:
+            enabled: true
+            minReplicas: 2
+            maxReplicas: 4
+            targetMemoryUtilizationPercentage: 60
+            targetCPUUtilizationPercentage: 60
+          resources:
+            requests:
+              cpu: 1Gi
+              memory: 400m
+            limits:
+              cpu: 2Gi
+              memory: 1000m
+        ```
+
+    The table below elucidates the basic configuration attributes of Metastore section:
+
+    | Attribute | Data Type | Default Value | Possible Value | Requirement |
+    | --- | --- | --- | --- | --- |
+    | [metastore](/resources/lakehouse/manifest_attributes/#metastore) | mapping | none | none | optional |
+    | [type](/resources/lakehouse/manifest_attributes/#type) | string | none | iceberg-rest-catalog | mandatory |
+    | [replicas](/resources/lakehouse/manifest_attributes/#replicas) | integer | none | any valid positive integer | optional |
+    | [autoscaling](/resources/lakehouse/manifest_attributes/#autoscaling) | mapping | none | none | optional |
+    | [enabled](/resources/lakehouse/manifest_attributes/#enabled) | boolean | false | true/false | optional |
+    | [minReplicas](/resources/lakehouse/manifest_attributes/#minreplicas) | integer | none | any valid integer | optional |
+    | [maxReplicas](/resources/lakehouse/manifest_attributes/#maxreplicas) | integer | none | any valid integer greater than `minReplicas` | optional |
+    | [targetMemoryUtilizationPercentage](/resources/lakehouse/manifest_attributes/#targetmemoryutilizationpercentage) | integer | none | any valid percentage | optional |
+    | [targetCPUUtilizationPercentage](/resources/lakehouse/manifest_attributes/#targetcpuutilizationpercentage) | integer | none | any valid percentage | optional |
+    | [resources](/resources/lakehouse/manifest_attributes/#resources) | mapping | none | none | optional |
+    | [requests](/resources/lakehouse/manifest_attributes/#requests) | mapping | none | none | optional |
+    | [cpu](/resources/lakehouse/manifest_attributes/#cpu) | string | none | any valid resource amount | optional |
+    | [memory](/resources/lakehouse/manifest_attributes/#memory) | string | none | any valid resource amount | optional |
+    | [limits](/resources/lakehouse/manifest_attributes/#limits) | mapping | none | none | optional |
+    | [cpu](/resources/lakehouse/manifest_attributes/#cpu) | string | none | any valid resource amount | optional |
+    | [memory](/resources/lakehouse/manifest_attributes/#memory) | string | none | any valid resource amount | optional |
+
+    <i>Advanced configuration attributes of Metastore section</i>
+    </center>
+
+**Query Engine section**
+
+The query engine section facilitates the creation of a [Cluster Resource](/resources/cluster/), enabling data queries against the Lakehouse storage. Currently, only the [Themis query engine](/resources/cluster/#themis) is supported.
+
+Basic configurations might be adequate for standard use cases, outlining merely the type of query engine. For environments demanding more precise resource management, advanced configurations offer customization options, including specific CPU and memory requests and limits, to ensure the query engine operates efficiently within set resource constraints.
+
+
+=== "Basic configuration"
+
+    === "Syntax"
+
+        ```yaml
+        queryEngine:
+          type: ${query-engine-type}
+        ```
+    === "Example"
+
+        ```yaml
+        queryEngine:
+          type: themis
+        ```
+
+    The table below elucidates the basic configuration attributes of Metastore section:
+
+    <center>
+
+    | Attribute | Data Type | Default Value | Possible Value | Requirement |
+    | --- | --- | --- | --- | --- |
+    | [queryEngine](/resources/lakehouse/manifest_attributes/#queryengine) | mapping | none | none | optional |
+    | [type](/resources/lakehouse/manifest_attributes/#type) | string | none | themis | mandatory |
+
+    <i>Basic configuration attributes of Query Engine section</i>
+    </center>
+
+
+=== "Advanced configuration"
+
+    === "Syntax"
+
+        ```yaml
+        queryEngine:
+          type: ${query-engine-type} # mandatory
+          resources:
+            requests:
+              cpu: ${requested-cpu-resource}
+              memory: ${requested-memory-resource}
+            limits:
+              cpu: ${requested-cpu-resource}
+              memory: ${requested-memory-resource}
+          themis:
+            envs:
+              ${environment-variables}
+            themisConf:
+              ${themis-configuration}
+            spark:
+              driver: 
+                resources:
+                  requests:
+                    cpu: ${requested-cpu-resource}
+                    memory: ${requested-memory-resource}
+                  limits:
+                    cpu: ${requested-cpu-resource}
+                    memory: ${requested-memory-resource}
+                instanceCount: ${instance-count} # mandatory
+                maxInstanceCount: ${max-instance-count} # mandatory
+              executor:
+                resources:
+                  requests:
+                    cpu: ${requested-cpu-resource}
+                    memory: ${requested-memory-resource}
+                  limits:
+                    cpu: ${requested-cpu-resource}
+                    memory: ${requested-memory-resource}
+                instanceCount: ${instance-count} # mandatory
+                maxInstanceCount: ${max-instance-count} # mandatory
+              sparkConf:
+                ${spark-configuration}
+          storageAcl: ${storage-acl} # mandatory
+        ```
+
+    === "Example"
+
+        ```yaml
+        queryEngine:
+          type: themis # mandatory
+          resources:
+            requests:
+              cpu: 1000m
+              memory: 2Gi
+            limits:
+              cpu: 2000m
+              memory: 4Gi
+          themis:
+            envs:
+              alpha: beta
+            themisConf:
+              "kyuubi.frontend.thrift.binary.bind.host": "0.0.0.0"
+              "kyuubi.frontend.thrift.binary.bind.port": "10101"
+            spark:
+              driver: 
+                resources:
+                  requests:
+                    cpu: 1Gi
+                    memory: 400m
+                  limits:
+                    cpu: 2Gi
+                    memory: 1000m
+                instanceCount: 2 # mandatory
+                maxInstanceCount: 3 # mandatory
+              executor:
+                resources:
+                  requests:
+                    cpu: 1Gi
+                    memory: 400m
+                  limits:
+                    cpu: 2Gi
+                    memory: 1000m
+                instanceCount: 2 # mandatory
+                maxInstanceCount: 3 # mandatory
+              sparkConf:
+                spark.dynamicAllocation.enabled: true
+          storageAcl: r # mandatory
+        ```
+
+    The table below elucidates the advanced configuration attributes of Query Engine section:
+
+    | Attribute | Data Type | Default Value | Possible Value | Requirement |
+    | --- | --- | --- | --- | --- |
+    | [queryEngine](/resources/lakehouse/manifest_attributes/#queryengine | mapping | none | none | mandatory |
+    | [type](/resources/lakehouse/manifest_attributes/#type | string | none | themis | mandatory |
+    | [resources](/resources/lakehouse/manifest_attributes/#resources | mapping | none | none | optional |
+    | [requests](/resources/lakehouse/manifest_attributes/#requests | mapping | none | none | optional |
+    | [cpu](/resources/lakehouse/manifest_attributes/#cpu (under requests) | string | none | any valid CPU resource amount | optional |
+    | [memory](/resources/lakehouse/manifest_attributes/#memory (under requests) | string | none | any valid memory resource amount | optional |
+    | [limits](/resources/lakehouse/manifest_attributes/#limits | mapping | none | none | optional |
+    | [cpu](/resources/lakehouse/manifest_attributes/#cpu (under limits) | string | none | any valid CPU resource limit | optional |
+    | [memory](/resources/lakehouse/manifest_attributes/#memory (under limits) | string | none | any valid memory resource limit | optional |
+    | [themis](/resources/lakehouse/manifest_attributes/#themis | mapping | none | none | optional |
+    | [envs](/resources/lakehouse/manifest_attributes/#envs | mapping | none | none | optional |
+    | [themisConf](/resources/lakehouse/manifest_attributes/#themisconf | mapping | none | none | optional |
+    | [spark](/resources/lakehouse/manifest_attributes/#spark | mapping | none | none | mandatory |
+    | [driver](/resources/lakehouse/manifest_attributes/#driver (under spark) | mapping | none | none | mandatory |
+    | [memory](/resources/lakehouse/manifest_attributes/#memory (under driver) | string | none | any valid memory amount | mandatory |
+    | [cpu](/resources/lakehouse/manifest_attributes/#cpu (under driver) | string | none | any valid CPU resource | mandatory |
+    | [executor](/resources/lakehouse/manifest_attributes/#executor (under spark) | mapping | none | none | mandatory |
+    | [memory](/resources/lakehouse/manifest_attributes/#memory (under executor) | string | none | any valid memory amount | mandatory |
+    | [cpu](/resources/lakehouse/manifest_attributes/#cpu (under executor) | string | none | any valid CPU resource | mandatory |
+    | [instanceCount](/resources/lakehouse/manifest_attributes/#instancecount (under executor) | integer | none | any valid integer | mandatory |
+    | [maxInstanceCount](/resources/lakehouse/manifest_attributes/#maxinstancecount (under executor) | integer | none | any valid integer | mandatory |
+    | [sparkConf](/resources/lakehouse/manifest_attributes/#sparkconf (under spark) | mapping | none | none | optional |
+
+    <i>Advanced configuration attributes of Query Engine section</i>
+    </center>
+
+#### **Apply the Lakehouse manifest**
 
 After creating the manifest file for the Lakehouse Resource, it's time to apply it to instantiate the Resource-instance in the DataOS environment. To apply the Lakehouse manifest file, utilize the [`apply`](/interfaces/cli/command_reference/#apply) command.
 
-```shell
-dataos-ctl apply -f ${yaml config file path} - w ${workspace name}
-```
-Sample
+=== "Command"
 
-```shell
-dataos-ctl apply -f dataproducts/new-lakehouse.yaml -w curriculum
-```
+    ```shell
+    dataos-ctl apply -f ${manifest-file-path} - w ${workspace}
+    ```
 
+=== "Example"
 
+    ```shell
+    dataos-ctl apply -f dataproducts/new-lakehouse.yaml -w curriculum
+    ```
 
-### **Verify Lakehouse Creation**
+### **Managing a Lakehouse**
+
+#### **Verify Lakehouse Creation**
 
 To ensure that your Lakehouse has been successfully created, you can verify it in two ways:
 
 Check the name of the newly created Lakehouse in the list of lakehouses created by you in a particular Workspace:
 
 ```shell
-dataos-ctl get -t lakehouse - w ${{workspace name}}
-# Sample
-dataos-ctl get -t lakehouse -w curriculum
+dataos-ctl get -t lakehouse - w ${workspace name}
 ```
 
-Alternatively, retrieve the list of all Lakehouses created in the Workspace by appending `-a` flag:
+Sample
 
 ```shell
-dataos-ctl get -t lakehouse -w ${{workspace name}} -a
+dataos-ctl get -t lakehouse -w curriculum
+```
+
+Alternatively, retrieve the list of all Lakehouses created in the Workspace by appending `-a` flag:
+
+```shell
+dataos-ctl get -t lakehouse -w ${workspace name} -a
 # Sample
 dataos-ctl get -t lakehouse -w curriculum
 ```
 
-You can also access the details of any created Lakehouse through the DataOS GUI in the Resource tab of the  [Operations App.](/interfaces/operations/)
+You can also access the details of any created Lakehouse through the DataOS GUI in the Resource tab of the  [Operations](/interfaces/operations/) app.
 
-### **Deleting a Lakehouse**
+#### **Deleting a Lakehouse**
 
-Use the [`delete`](/interfaces/cli/command_reference/#delete) command to remove the specific Lakehouse Resource-instance from the DataOS environment. There are three ways to delete a Lakehouse as shown below.
+Use the [`delete`](/interfaces/cli/command_reference/#delete) command to remove the specific Lakehouse Resource Instance from the DataOS environment. As shown below, there are three ways to delete a Lakehouse.
 
-**Method 1:** Copy the name to Workspace from the output table of the [`get`](/interfaces/cli/command_reference/#get) command and use it as a string in the delete command.
+**Method 1:** Copy the name to Workspace from the output table of the [`get`](/interfaces/cli/command_reference/#get) command and use it as a string in the delete command.
 
 Command
 
 ```shell
-dataos-ctl delete -i "${{name to workspace in the output table from get status command}}"
+dataos-ctl delete -i "${name to workspace in the output table from get status command}"
 ```
 
-Example:
+Example
 
 ```shell
 dataos-ctl delete -i "cnt-lakehouse-demo-01 | v1alpha | lakehouse | public"
 ```
 
-Output:
+Output
 
 ```shell
 INFO[0000] 🗑 delete...
@@ -890,44 +935,44 @@ INFO[0003] 🗑 deleting(public) cnt-lakehouse-demo-01:v1alpha:lakehouse...delet
 INFO[0003] 🗑 delete...complete
 ```
 
-**Method 2:** Specify the path of the YAML file and use the [`delete`](/interfaces/cli/command_reference/#delete) command.
+**Method 2:** Specify the path of the YAML file and use the [`delete`](/interfaces/cli/command_reference/#delete) command.
 
-Command:
+Command
 
 ```shell
-dataos-ctl delete -f ${{file-path}}
+dataos-ctl delete -f ${manifest-file-path}
 ```
 
-Example:
+Example
 
-```shell
+```bash
 dataos-ctl delete -f /home/desktop/connect-city/config_v1alpha.yaml
 ```
 
-Output:
+Output
 
-```shell
+```bash
 INFO[0000] 🗑 delete...
 INFO[0000] 🗑 deleting(public) cnt-lakehouse-demo-010:v1alpha:lakehouse...
 INFO[0001] 🗑 deleting(public) cnt-lakehouse-demo-010:v1alpha:lakehouse...deleted
 INFO[0001] 🗑 delete...complete
 ```
 
-**Method 3:** Specify the Workspace, Resource-type, and Lakehouse name in the [`delete`](/interfaces/cli/command_reference/#delete) command.
+**Method 3:** Specify the Workspace, Resource-type, and Lakehouse name in the [`delete`](/interfaces/cli/command_reference/#delete) command.
 
-Command:
+Command
 
 ```shell
-dataos-ctl delete -w ${{workspace}} -t lakehouse -n ${{lakehouse name}}
+dataos-ctl delete -w ${workspace} -t lakehouse -n ${lakehouse name}
 ```
 
-Example:
+Example
 
 ```shell
 dataos-ctl delete -w public -t lakehouse -n cnt-product-demo-01
 ```
 
-Output:
+Output
 
 ```shell
 INFO[0000] 🗑 delete...
@@ -936,23 +981,37 @@ INFO[0001] 🗑 deleting(public) cnt-city-demo-010:v1alpha:lakehouse...deleted
 INFO[0001] 🗑 delete...complete
 ```
 
+## How to configure a Lakehouse manifest file?
 
-## Attributes of Lakehouse manifest
+The Attributes of Lakehouse manifest define the key properties and configurations that can be used to specify and customize Lakehouse Resources within a manifest file. These attributes allow data developers to define the structure and behavior of their Lakehouse Resources. For comprehensive information on each attribute and its usage, please refer to the link: [Attributes of Lakehouse manifest](/resources/lakehouse/manifest_attributes)
 
-The Attributes of Lakehouse manifest define the key properties and configurations that can be used to specify and customize Lakehouse Resources within a manifest file. These attributes allow data developers to define the structure and behavior of their Lakehouse Resources. For comprehensive information on each attribute and its usage, please refer to the link: [Attributes of Lakehouse manifest](/resources/lakehouse/manifest_attributes/).
 
-## Lakehouse DDL/DML Command Reference
+## How to use a Lakehouse in DataOS?
 
-Various CLI commands related to performing DDL/DML operations on datasets in a Lakehouse: [Lakehouse command reference](/resources/lakehouse/command_reference/).
-
-## Case Scenario
-
-- [How to create a Lakehouse on ABFSS data source?](/resources/lakehouse/case_scenario/how_to_create_a_lakehouse_on_abfss_data_source/)
-- [How to create a Lakehouse on WASBS data source?](/resources/lakehouse/case_scenario/how_to_create_a_lakehouse_on_wasbs_data_source/)
-- [How to create a Lakehouse on S3 data source?](/resources/lakehouse/case_scenario/how_to_create_a_lakehouse_on_s3_data_source/)
-- [How to create a Lakehouse on GCS data source?](/resources/lakehouse/case_scenario/how_to_create_a_lakehouse_on_gcs_data_source/)
+- [DDL/DML operations using DataOS CLI](/resources/lakehouse/command_reference/)
+- [Iceberg Metadata Tables in Lakehouse](/resources/lakehouse/iceberg_metadata_tables/)
+- [How to create a Lakehouse on ABFSS data source?](/resources/lakehouse/usage_examples/how_to_create_a_lakehouse_on_abfss_data_source/)
+- [How to create a Lakehouse on WASBS data source?](/resources/lakehouse/usage_examples/how_to_create_a_lakehouse_on_wasbs_data_source/)
+- [How to create a Lakehouse on S3 data source?](/resources/lakehouse/usage_examples/how_to_create_a_lakehouse_on_s3_data_source/)
+- [How to create a Lakehouse on GCS data source?](/resources/lakehouse/usage_examples/how_to_create_a_lakehouse_on_gcs_data_source/)
 - [How to create, fetch, and drop dataset in a Lakehouse using CLI commands?](/resources/lakehouse/command_reference/case_scenario_create_fetch_and_drop_dataset/)
 - [How to perform Iceberg dataset maintainence in a Lakehouse using CLI commands?](/resources/lakehouse/command_reference/case_scenario_maintenance/)
 - [How to perform partitioning on Lakehouse datasets using CLI commands?](/resources/lakehouse/command_reference/case_scenario_partitioning/)
 - [How to perform schema evolution on Lakehouse datasets using CLI commands?](/resources/lakehouse/command_reference/case_scenario_schema_evolution/)
 - [How to manipulate table properties of Lakehouse datasets using CLI commands?](/resources/lakehouse/command_reference/case_scenario_table_properties/)
+
+<!-- 
+
+## Frequently Asked Questions (FAQs)
+
+**Questions: What's the Difference Between Lakehouse and Icebase?**
+
+Lakehouse represents a comprehensive data management architecture, encompassing storage, computation, and metadata management capabilities. Within this architecture, Icebase serves as the storage component. It focuses primarily on storing data, while the broader Lakehouse framework integrates Icebase for storage, employs a query engine for data computation, and utilizes a metastore for managing data's metadata. Essentially, Icebase is a part of the Lakehouse, dedicated to storage.
+
+**How Do I Migrate from Icebase to Lakehouse?**
+
+To migrate from Icebase to a Lakehouse configuration, follow these steps:
+
+1. Initiate the creation of a Lakehouse resource within your DataOS environment.
+2. During the Lakehouse resource setup, assign a storage name that corresponds to your current Icebase depot name. This ensures continuity and prevents disruptions in dependent workflows or processes.
+3. Once the Lakehouse is operational and verified to be functioning as expected, proceed to decommission the standalone Icebase depot. This action should be taken only after thorough validation to ensure all data and workflows are seamlessly integrated into the Lakehouse environment. -->

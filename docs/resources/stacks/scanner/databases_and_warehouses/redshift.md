@@ -1,4 +1,4 @@
-# Redshift
+# Scanner for Redshift
 
 You can scan metadata from Redshift with depot/non depot Scanner workflows. In this document, find requirements and YAML configurations to connect to Redshift for extracting entity metadata. 
 
@@ -14,10 +14,8 @@ To scan metadata from a Redshift data source, you need the following:
 
 DataOS allows you to connect to a database with JDBC driver to read data from tables using Depot. You can also scan metadata from an REDSHIFT-type depot with Scanner workflows.The Depot enables access to all schemas visible to the specified user in the configured database, REDSHIFT. 
 
-< aside style="background-color:#FFE5CC; padding:15px; border-radius:5px;">
-🗣 Ensure that the depot is created for your MySQL database and you have `Read` access.
-
-</aside>
+< aside class="callout">
+🗣 Ensure that the depot is created for your MySQL database and you have `Read` access.</aside>
 
 **Depot Scan Workflow YAML**
 

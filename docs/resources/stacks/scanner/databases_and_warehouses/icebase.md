@@ -1,4 +1,4 @@
-# Icebase
+# Scanner for Icebase
 
 DataOS allows you to create a Depot of type 'ICEBASE' to read the schemas/tables stored in DataOS’s lakehouse called Icebase.  The created Depot enables you to read the stored data in datasets. You can scan metadata from the ICEBASE-type depot with the Scanner workflows.
 

@@ -1,0 +1,23 @@
+name: {{redshift-depot-name}}
+version: v1
+type: depot
+tags:
+  - {{redshift}}
+layer: user
+description: {{Redshift Sample data}}
+depot:
+  type: REDSHIFT
+  spec:
+    host: {{hostname}}
+    subprotocol: {{subprotocol}}
+    port: {{5439}}
+    database: {{sample-database}}
+    bucket: {{tmdc-dataos}}
+    relativePath: {{development/redshift/data_02/}}
+  external: {{true}}
+  secrets:
+    - name: {{redshift-instance-secret-name}}-r
+      allkeys: true
+
+    - name: {{redshift-instance-secret-name}}-rw
+      allkeys: true

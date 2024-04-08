@@ -101,15 +101,36 @@ The below table summarizes various properties within a Scanner workflow YAML.
 
 To learn more about these fields, their possible values, example usage, refer to [Attributes of Scanner YAML](scanner/field_ref.md).
 
-### **Supported Data Sources**
+## Supported Data Sources
 
-Here you can find templates for the depot/non-depot Scanner workflows. 
+Here you can find templates for the depot/non-depot Scanner workflows for the supported data sources.
 
+| Type             | Data Source      | Scanner|
+|------------------|------------------|------|
+| Database         | Maria DB         |[Link](/resources/stacks/scanner/databases_and_warehouses/mariadb/)    |
+| Database         | MSSQL            |[Link](/resources/stacks/scanner/databases_and_warehouses/mssql/)    |
+| Database         | MYSQL            |[Link](/resources/stacks/scanner/databases_and_warehouses/mysql/)   |
+| Database         | Oracle           |[Link](/resources/stacks/scanner/databases_and_warehouses/oracle/)      |
+| Database         | PostgreSQL       |[Link](/resources/stacks/scanner/databases_and_warehouses/postgresql/)      |
+| Data Warehouse   | BigQuery         |[Link](/resources/stacks/scanner/databases_and_warehouses/bigquery/)      |
+| Data Warehouse   | AzureSQL         |[Link](/resources/stacks/scanner/databases_and_warehouses/azuresql/)      |
+| Data Warehouse   | Redshift         |[Link](/resources/stacks/scanner/databases_and_warehouses/redshift/)      |
+| Data Warehouse   | Snowflake        |[Link](/resources/stacks/scanner/databases_and_warehouses/snowflake/)      |
+| Lakehouse        | Icebase          |[Link](/resources/stacks/scanner/databases_and_warehouses/icebase/)     |
+| Messaging Service| Kafka            |[Link](/resources/stacks/scanner/messag_servicesg/kafka/)     |
+| Messaging Service| Fastbase/Pulsar  |[Link](/resources/stacks/scanner/messaging_services/fastbase/)    |
+| Dashboard Service| Atlas            |[Link](/resources/stacks/scanner/dashboards/atlas_scan/)      |
+| Dashboard Service| Redash           |[Link](/resources/stacks/scanner/dashboards/redash_scan/)      |
+| Dashboard Service| Superset         |[Link](/resources/stacks/scanner/dashboards/superset_scan/)      |
+
+
+
+<!-- 
 [Databases and Warehouses](scanner/databases_and_warehouses.md)
 
 [Messaging Services](scanner/messaging_services.md)
 
-[Dashboard Services](scanner/dashboards.md)
+[Dashboard Services](scanner/dashboards.md) -->
 
 <aside class="callout">
 🗣 You can perform both depot scans and non-depot scans on all the data sources where you have established depots. The distinction lies in the fact that non-depot scans require you to furnish connection information and credentials within the Scanner YAML file. Whereas, for depot scans, you only need to provide the depot name or address.
