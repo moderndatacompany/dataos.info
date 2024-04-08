@@ -141,6 +141,7 @@ nav:
          - Overview: resources.md
          - Bundle: resources/bundle.md
          - Cluster: resources/cluster.md
+         - Database: resources/database.md
          - Compute: resources/compute.md
          - Depot: resources/depot.md
          - 'Instance Secret': resources/instance_secret.md 
@@ -177,7 +178,7 @@ nav:
          - Metis: interfaces/metis.md
          - Notebook: interfaces/notebook.md
          - Operations: interfaces/operations.md
-        #  - Superset: interfaces/superset.md
+         - Superset: interfaces/superset.md
          - Workbench: interfaces/workbench.md        
 
 # to be hidden from the top navigation bar on the webpages
