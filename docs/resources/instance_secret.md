@@ -1,10 +1,14 @@
-<!-- ![Instance Secret Icon](/resources/instance_secret/instance_secret_icon.svg){ align=left } -->
+# :resources-instancesecret: Instance Secret
 
-# Instance Secret
+An Instance Secret is a [DataOS Resource](/resources/) designed for securely storing sensitive information at the DataOS instance level. This encompasses sensitive information like usernames, passwords, certificates, tokens, and keys. The primary purpose of Instance Secret is to address the inherent exposure risk associated with directly embedding such confidential data within application code or manifest file (YAML configuration files). 
 
-An Instance Secret is a [DataOS resource](../resources.md) designed for securely storing sensitive information at the instance level. This encompasses items like usernames, passwords, certificates, tokens, and keys.
+Instance secrets establish a critical segregation between sensitive data and Resource definitions. This division minimizes the chances of inadvertent exposure during various Resource management phases, including creation, viewing, or editing. By leveraging Instance Secrets, data developers ensure the safeguarding of sensitive information, thereby mitigating security vulnerabilities inherent in their data workflows.
 
-Instance Secret's significance lies in its ability to provide an instance level security for such confidential information, ensuring that it is safeguarded across the entire DataOS Instance. Consolidating sensitive data at this level, offers convenience and efficiency in managing access and permissions, thereby enhancing overall security measures within the platform.
+<aside class="callout">
+
+🗣️ In the DataOS ecosystem, there are two specialized Resources designed to protect sensitive information: Instance Secret and <a href="/resources/secret/">Secret</a>. The Instance Secret offers a wider scope, extending across the entirety of the <a href="/resources/types_of_dataos_resources/#instance-level-resources">DataOS Instance</a>. Resources within any Workspace can utilize Instance Secrets for securely retrieving sensitive data. In contrast, Secrets are limited to the <a href="/resources/types_of_dataos_resources/#workspace-level-resources">Workspace level</a>, accessible exclusively within a specific Workspace and only by Resources associated with that Workspace.
+</aside>
+
 
 <div class="grid cards" markdown>
 
@@ -12,36 +16,36 @@ Instance Secret's significance lies in its ability to provide an instance level 
 
     ---
 
-    Instance Secrets provide secure storage for sensitive information, reducing exposure risks inherent in embedding such data directly in resource configurations.
+    Learn how to create and manage an Instance secret in DataOS.
 
-    [:octicons-arrow-right-24: Create Instance Secret](/resources/instance_secret/#how-to-create-an-instance-secret)
+    [:octicons-arrow-right-24: Create and manage an Instance Secret](/resources/instance_secret/#how-to-create-an-instance-secret)
 
 
--   :material-script-text-outline:{ .lg .middle } **How to refer an Instance Secret into Depot?**
+-   :material-script-text-outline:{ .lg .middle } **How to refer an Instance Secret in other DataOS Resources?**
 
     ---
 
-    An Intsnace Secret manifest file includes resource meta and Secret specific sections with attributes that must be configured for creating a Secret.
+    Discover how to use Instance Secrets to securely refer sensitive information in other DataOS Resources.
 
-    [:octicons-arrow-right-24: Refering Instance Secrets](/resources/instance_secret/#how-to-refer-instance-secret-into-various-depots)
-
+    [:octicons-arrow-right-24: Referring Instance Secrets](/resources/instance_secret/#how-to-refer-instance-secret-in-other-dataos-resources)
 
 
 -   :material-clock-fast:{ .lg .middle } **Types of Instance Secrets**
 
     ---
 
-    DataOS Instance Secret types securely store diverse sensitive data, addressing specific needs like cloud credentials, image pulling, key-value pairs, metadata, and SSL/TLS certificates.
+    Different types of Instance Secret securely store diverse sensitive data, addressing specific needs like key-value pairs, certificates, etc.
 
-    [:octicons-arrow-right-24: Types](../resources/instance_secret/instance_secret_attributes.md)
+    [:octicons-arrow-right-24: Types of Instance Secret](/resources/instance_secret/#types-of-instance-secret)
 
 
--   :material-console:{ .lg .middle } **Instance Secret Template**
+-   :material-console:{ .lg .middle } **Instance Secret Templates**
 
     ---
 
-    Instance Secret Resource can be refered into various types of Depots.
+    Explore manifest file templates of various data source-specific Instance Secrets like Bigquery, PostgreSQL, Google Cloud Storage, and many more.
 
+    
 
     [:octicons-arrow-right-24: Example](/resources/instance_secret/#instance-secret-templates)
      
@@ -49,157 +53,181 @@ Instance Secret's significance lies in its ability to provide an instance level 
 
 
 
-## How to create an Instance Secret?
+## How to create and manage an Instance Secret?
 
 To create an Instance Secret Resource in DataOS, ensure you have access to the [DataOS Command Line Interface (CLI)](../interfaces/cli.md) and the required permissions. Then, follow the provided steps to complete the creation process efficiently and securely.
 
-### **Structure of Instance Secret YAML file**
+### **Structure of an Instance Secret manifest file**
 
-The YAML structure for the Instance Secret is outlined as follows:
+The structure of the Instance Secret manifest file is outlined as follows:
 
-![Instance Secret YAML Structure](/resources/instance_secret/Slide1.jpg)
+![Instance Secret Manifest Structure](/resources/instance_secret/instance_secret_manifest_structure.jpg)
 
 
-### **Create an Instance Secret YAML configuration**
+### **Create an Instance Secret manifest file**
 
-Begin by creating a manifest file that will hold the configuration details for your Instance Secret.
-### **Resource meta section**
+Begin by creating a manifest file that will hold the configuration details for your Instance Secret. A sample manifest is provided below:
 
-The Insatnce Secret manifest snippet provided below serves as a reference for the Resource meta section, outlining essential declarations for Instance Secrets. Note that while some attributes are optional, others are mandatory for consistency across all resource types.
+???tip "Sample Instance Secret manifest"
+
+    ```yaml title="sample_instance_secret_manifest.yaml"
+    # Resource meta section
+    name: depotsecret-r # Resource name (mandatory)
+    version: v1 # Manifest version (mandatory)
+    type: instance-secret # Resource-type (mandatory)
+    tags: # Tags (optional)
+    - just for practice
+    description: instance secret configuration # Description of Resource (optional)
+    layer: user
+
+    # Instance Secret-specific section
+    instance-secret: # Instance Secret mapping (mandatory)
+      type: key-value-properties # Type of Instance-secret (mandatory)
+      acl: r # Access control list (mandatory)
+      data: # Data section mapping (mandatory)
+        username: iamgroot
+        password: yourpassword
+    ```
+
+
+#### **Resource meta section**
+
+The Instance Secret manifest comprise of a Resource meta section that outlines essential metadata attributes applicable to all Resource-types. Note that within this section some attributes are optional, while others are mandatory.
 
 ```yaml
 # Resource meta section
-name: {{depotsecret-r}} # Resource name (mandatory)
-version: {{v1}} # Manifest version (mandatory)
-type: {{resource-type}} # Resource-type (mandatory)
+name: ${depotsecret-r} # Resource name (mandatory)
+version: v1 # Manifest version (mandatory)
+type: instance-secret # Resource-type (mandatory)
 tags: 
-  - just for practice # Tags (optional)
-description: {{resource description}}
-owner: iamgroot
-layer: user # Layer (user)
+  - ${new instance secret} # Tags (optional)
+  - ${resource}
+description: ${resource description} # Description (optional)
+owner: ${iamgroot} # Owner's DataOS UserID (optional)
+layer: ${user} # Layer (optional)
+instance-secret: # Instance-secret specific section
 ```
-For more information about the various attributes in Resource meta section, refer to the Attributes of [Resource meta section](../resources/resource_attributes.md).
+<center><i>Resource meta section of the manifest file</i></center>
 
-### **Instance-Secret specific section**
+For more information about the various attributes in Resource meta section, refer to the [Attributes of Resource meta section](/resources/resource_attributes/).
 
-This section focuses on Instance Secret attributes, outlining essential details such as Instance Secret type, access control list (ACL), and required key-value pairs. Additionally, it allows for the optional inclusion of file paths for manifest files.
+#### **Instance Secret specific section**
+
+This section focuses on Instance Secret attributes, outlining details such as Instance Secret `type`, `acl`(access control list), sensitive `data` to be stored. Additionally, it allows for the optional inclusion of file paths of sensitive information to be stored using the `files` attribute.
 
 ```yaml
-# Instance-secret specific section
-instance-secret:
-  type: key-value-properties # Type of Instance-secret (mandatory)
+instance-secret: # Instance-secret specific section
+  type: ${{key-value-properties}} # Type of Instance-secret (mandatory)
   acl: ${{r|rw}} # Access control list (mandatory)
-  data: # Data section mapping (mandatory)
+  data: # Data section mapping (either files or data is required)
     ${{username: iamgroot}}
     ${{password: abcd1234}}
-	files: # Manifest file path (optional)
-		${{xyz: /home/instance-secret.yaml}}
+  files: # Manifest file path (either files or data is required)
+    ${{xyz: /home/instance-secret.yaml}}
 ```
+<center><i>Instance-secret specific section of the manifest file</i></center>
 
-#### **Instance Secret YAML Configuration Fields**
+The table below summarizes the attributes of Instance-secret specific section:
 
-| Field | Data Type | Default Value | Possible Value | Requirement |
+| Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`instance-secret`](./instance_secret/instance_secret_attributes.md#instance-secret) | object | none | none | mandatory |
-| [`type`](./instance_secret/instance_secret_attributes.md#instance-secret) | string | none | cloud-kernel, cloud-kernel-image-pull, key-value, key-value-properties, certificates | mandatory |
-| [`acl`](./instance_secret/instance_secret_attributes.md#instance-secret) | string | none | r, rw | mandatory |
-| [`data`](./instance_secret/instance_secret_attributes.md#instance-secret) | object | none | none | mandatory |
-| [`files`](./instance_secret/instance_secret_attributes.md#instance-secret) | string | none | file-path | optional |
+| [`instance-secret`](/resources/instance_secret/manifest_attributes/#instance-secret) | mapping | none | none | mandatory |
+| [`type`](/resources/instance_secret/manifest_attributes/#type) | string | none | cloud-kernel, key-value, key-value-properties, certificates | mandatory |
+| [`acl`](/resources/instance_secret/manifest_attributes/#acl) | string | none | r, rw | mandatory |
+| [`data`](/resources/instance_secret/manifest_attributes/#data) | mapping | none | none | mandatory |
+| [`files`](/resources/instance_secret/manifest_attributes/#files) | string | none | file-path | optional |
 
 
-For more information about the various attributes in Instance Secret specific section, refer to the Attributes of [Instance Secret specific section](./instance_secret/instance_secret_attributes.md).
+For more information about the various attributes in Instance Secret specific section, refer to the [Attributes of Instance Secret specific section](/resources/instance_secret/manifest_attributes/).
 
 
 
-### **Apply the Instance Secret YAML**
+### **Apply the Instance Secret manifest**
 
-To implement the Instance Secret YAML, you can utilize the [DataOS Command Line Interface (CLI)](../interfaces/cli.md) by explicitly indicating the path to the YAML file. When applying the YAML file, note that Instance Secrets do not require workspace specification. The apply command is as follows:
+To create an Instance Secret Resource-instance within the DataOS, use the `apply` command. When applying the manifest file from the DataOS CLI, make sure you don't specify Workspace as Instance Secrets are [Instance-level Resource](/resources/types_of_dataos_resources/#instance-level-resources). The `apply` command is as follows:
 
 === "Command"
     ```shell
-    dataos-ctl apply -f ${path/instance_secret.yaml} -w ${name of the workspace}
+    dataos-ctl resource apply -f ${path/instance_secret.yaml}
+    ```
+    Alternate
+    ```shell
+    dataos-ctl apply -f ${path/instance_secret.yaml}
     ```
 === "Example Usage"
     ```shell
-    dataos-ctl apply -f myinstance_secrets.yaml -w sandbox
+    dataos-ctl apply -f depot_secret.yaml
+    ```
+    Alternate
+    ```shell
+    dataos-ctl apply -f depot_secret.yaml
+    ```
+    Expected output:
+
+    ```shell
+    $ dataos-ctl apply -f depot_secret.yaml
+    INFO[0000] 🛠 apply...                                   
+    INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
+    INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
+    INFO[0004] 🛠 apply...complete
     ```
 
-Alternative to the above apply command.
+### **Managing an Instance-Secret**
+
+#### **Validate the Instance Secret**
+
+To validate the proper creation of the Instance Secret Resource within the DataOS environment, employ the `get` command. Execute the following command to ascertain the existence of the Instance Secret Resource:
 
 === "Command"
-    ```shell
-    dataos-ctl resource apply -f ${path/instance_secret.yaml} -w ${name of the workspace}
-    ```
-=== "Example Usage"
-    ```shell
-    dataos-ctl resource apply -f myinstance_secrets.yaml -w sandbox
-    ```
-Expected output:
+    - To get the details of instance-secret created by the user who applies the instance-secret, use the following command:
 
-```shell
-$ dataos-ctl apply -f /home/office/YAMLS/depot_secret.yaml
-INFO[0000] 🛠 apply...                                   
-INFO[0000] 🔧 applying depotsecret-r:v1:instance-secret... 
-INFO[0004] 🔧 applying depotsecret-r:v1:instance-secret...created 
-INFO[0004] 🛠 apply...complete
-```
+        ```shell
+        dataos-ctl resource get -t instance-secret
+        ```
+        Alternate
 
-## How to manage an Instance-Secret?
+        ```shell
+        dataos-ctl get -t instance-secret
+        ```
+    - To get the details of instance-secret created by all the users within the DataOS Instance, use the above command with `-a` flag:
 
-### **Validate the Instance Secret**
+        ```shell
+        dataos-ctl resource get -t instance-secret -a
+        ```
+        Alternate
 
-To validate the proper creation of the Instance Secret Resource within the DataOS environment, employ the `get` command. Execute the following command to ascertain the existence and correctness of the Instance Secret Resource:
+        ```shell
+        dataos-ctl get -t instance-secret -a
+        ```
 
-=== "Command"
-
-    ```shell
-    dataos-ctl get -t instance-secret -w {{workspace}}
-    ```
-
-=== "Example Usage"
-
-    ```shell
-    dataos-ctl get -t instance-secret -w sandbox
-    ```
-
-
-### **Delete the Instance Secret**
-
-To remove the Instance Secret Resource from the DataOS environment, utilize the `delete` command within the Command Line Interface (CLI). Execute the following command to initiate the deletion process:
-
-**delete command structure for -t (type) and -n (name)**
-
-=== "Command"
-
-    ```shell
-    dataos-ctl delete -t {{resource-type}} -n {{resource-name}}
-    ```
 
 === "Example Usage"
 
     ```shell
-    dataos-ctl delete -t instance-secret -n myinstance_secret
+    dataos-ctl get -t instance-secret
     ```
-
-
-**delete command structure for -i (identifier)**
-
-=== "Command"
-
+    Alternate
     ```shell
-    dataos-ctl delete -i {{resource-name:version:resource-type}}
+    dataos-ctl resource get -t instance-secret -a
     ```
-
-=== "Example Usage"
-
+    Expected Output
     ```shell
-    dataos-ctl delete -i myinstance_secret:v1:instance-secret
+    INFO[0000] 🔍 get...                                     
+    INFO[0000] 🔍 get...complete                             
+
+            NAME     | VERSION |      TYPE       | WORKSPACE | STATUS |  RUNTIME  |  OWNER             
+    -----------------|---------|-----------------|-----------|--------|-----------|------------------------------
+         depotsecret | v1      | instance-secret |           | active |           | iamgroot               
     ```
 
 
-Before you can delete an Instance Secret, you need to make sure there are no other resources still utilizing it. For example, if a Depot has a dependency on an Instance Secret, trying to delete that Instance Secret will cause an error. So, you'll need to remove the Depot first, and then you can delete the Instance Secret. This rule applies to both Instance Secrets and [Secrets](../resources/secret_updated.md).
+#### **Delete the Instance Secret**
 
-An error will be thrown if any resource has a dependency on Instance Secret as shown below.
+<aside class="callout">
+🗣️ Before you can delete an Instance Secret, you need to make sure there are no other Resources dependent on it. For example, if a Depot has a dependency on an Instance Secret, trying to delete that Instance Secret will cause an error. So, you'll need to remove the Depot first, and then you can delete the Instance Secret. This rule applies to not just Depot, but all dependent Resources, such as Workflow, Service, Worker, etc.
+
+<details><summary>Error</summary>
+The following error will be thrown if any Resource has a dependency on Instance Secret as shown below.
 
 Example usage:
 
@@ -211,26 +239,120 @@ INFO[0001] 🗑 deleting sampleinstsecret:v1:instance-secret...error
 WARN[0001] 🗑 delete...error                             
 ERRO[0001] Invalid Parameter - failure deleting instance resource : cannot delete resource, it is a dependency of 'depot:v2alpha:sampleinstdepot'
 ```
+</aside>
 
-```shell
-dataos-ctl delete -t depot -n sampleinstdepot
-INFO[0000] 🗑 delete...                                  
-INFO[0000] 🗑 deleting sampleinstdepot:depot...nothing   
-INFO[0000] 🗑 delete...complete
-```
+To remove the Instance Secret Resource from the DataOS environment, utilize the `delete` command. Execute the following command to initiate the deletion process:
 
-```shell
-dataos-ctl delete -t instance-secret -n sampleinstsecret
-INFO[0000] 🗑 delete...                                  
-INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...nothing 
-INFO[0000] 🗑 delete...complete
-```
+**Deleting using the -t (type) and -n (name) flag**
 
-## How to refer Instance Secret into various Depots?
+=== "Command"
 
-To access the stored secret data in DataOS, you can reference them in your code using the `secrets` and `dataosSecrets` mechanisms. These identifiers ensure secure referencing of Instance Secrets across different Depots, enhancing system security and operational integrity.
+    ```shell
+    dataos-ctl resource delete -t ${resource-type} -n ${resource-name}
+    ```
+    Alternate
+    ```shell
+    dataos-ctl delete -t ${resource-type} -n ${resource-name}
+    ```
 
-The secrets identifier is used for referencing an Instance Secret in DataOS. However, it's important to note that you cannot use the same identifier to refer to pre-existing secrets in Depots. For referencing secrets across various DataOS Resources, the `dataosSecrets` identifier is used.
+=== "Example Usage"
+
+    ```shell
+    dataos-ctl resource delete -t instance-secret -n myinstance_secret
+    ```
+    Alternate
+    ```shell
+    dataos-ctl delete -t instance-secret -n myinstance_secret
+    ```
+
+
+**Deleting using the -i (identifier) flag**
+
+=== "Command"
+
+    ```shell
+    dataos-ctl resource delete -i ${resource-name:version:resource-type}
+    ```
+    Alternate
+    ```shell
+    dataos-ctl resource delete -i ${resource-name:version:resource-type}
+    ```
+
+=== "Example Usage"
+
+    ```shell
+    dataos-ctl delete -i myinstance_secret:v1:instance-secret
+    ```
+    Expected output
+    ```shell
+    dataos-ctl delete -t instance-secret -n sampleinstsecret
+    INFO[0000] 🗑 delete...                                  
+    INFO[0000] 🗑 deleting sampleinstsecret:instance-secret...nothing 
+    INFO[0000] 🗑 delete...complete
+    ```
+
+## Types of Instance Secrets
+
+When creating Instance Secret Resource, you can specify its type using the `type` field within the `instance-secret` section. The Instance Secret type is used to facilitate programmatic handling of the Secret data.
+
+DataOS provides several built-in types for some common usage scenarios. These types vary in terms of the validations performed and the constraints DataOS imposes on them.
+
+| Instance Secret Type | Description |
+| --- | --- |
+| `cloud-kernel` | This type stores arbitrary user-defined data in the form of key-value pair as a Kubernetes Secret with the same name as the Instance Secret Resource. |
+| `key-value` | This type stores arbitrary user-defined data as key-value pairs within an Instance Secret, with each pair being encoded separately in base64 format. |
+| `key-value-properties` | This type conserves arbitrary user-defined data as an Instance Secret by transforming multiple key-value pairs into a singular key-value pair, which is then encoded in base64 format. |
+| `certificates` | This is an instance secret type used to securely store certificates, which are often necessary for secured communication in the system.  |
+
+
+For a more detailed analysis of each type and to explore the syntax, please navigate the below tabs.
+
+=== "cloud-kernel"
+
+    The cloud-kernel instance secret type means that a Kubernetes secret will be created with the same name as the Instance Secret Resource.
+
+    **Syntax**
+
+    ```yaml title="instance_secret_type_cloud_kernel.yaml"
+    --8<-- "examples/resources/instance_secret/types_of_instance_secret/cloud_kernel.yaml"
+    ```
+
+=== "key-value"
+
+
+    This Instance Secret type is for storing simple pairs of keys and values. They are stored in Heimdall vault.
+
+    **Syntax**
+
+    ```yaml title="instance_secret_type_key_value.yaml"
+    --8<-- "examples/resources/instance_secret/types_of_instance_secret/key_value.yaml"
+    ```
+
+    When you store an Instance Secret as a key-value type, the system passes the instance secret in the format they are stated, without any alterations.
+
+=== "key-value-properties"
+
+    This type is similar to key-value, but the difference lies in the way the system passes the data. In the key-value-properties type, the system passes all the key-value pairs as one single field, while in the case of the key-value type, they are passed as separate fields.
+
+    **Syntax**
+
+    ```yaml title="instance_secret_type_key_value_properties.yaml"
+    --8<-- "examples/resources/instance_secret/types_of_instance_secret/key_value_properties.yaml"
+    ```
+
+=== "certificates"
+
+    This type is used to store TLS certificates and keys. The most common usage scenario is Ingress resource termination, but this type is also sometimes used with other resources.
+
+    **Syntax**
+
+    ```yaml  title="instance_secret_type_certificates.yaml"
+    --8<-- "examples/resources/instance_secret/types_of_instance_secret/certificates.yaml"
+    ```
+
+## How to refer Instance Secret in other DataOS Resources?
+
+To access the stored secret data in DataOS, you can reference them in your code using the `dataosSecrets` attribute. This identifier ensures secure referencing of Instance Secrets across different Resources, enhancing system security and operational integrity.
 
 **Syntax**
 
@@ -245,24 +367,36 @@ dataosSecrets:
     allKeys: ${true-or-false} # Optional
     consumptionType: ${envVars} # Optional, possible values: envVars, propfile and file.
 ```
-Create a manifest file for your Depot. In the application spec of your Depot, ensure to incorporate a reference to the Instance Secret to uphold confidentiality and security measures.
 
-=== "Instance Secret for acl:r"
-    ```yaml title="instance_secret.yaml"
-        --8<-- "examples/resources/instance_secret/depot/secret.yaml"
-    ```
-=== "Instance Secret for acl:rw"
-    ```yaml title="instance_secret.yaml"
-        --8<-- "examples/resources/instance_secret/depot/secret_rw.yaml"
-    ```
+=== "Referring Instance Secret in Depot"
 
-=== "Depot"
+    To refer to an instance-secret in Depots, follow these steps:
+
+    1. **Ensure Creation of Instance-Secret:** First, make sure you have created the respective instance-secret.
+
+    2. **Use `dataosSecrets` Identifier:** In the depot manifest, use the `dataosSecrets` identifier to refer to the instance-secret.
+
+    For read-only access to a depot, create read-only secrets. For read-write access, create both read and read-write instance-secrets. This is necessary because when providing someone else access to the Depot, you can grant either read or read-write access using either CLI or Bifrost UI. For either type of access, the person will have access to the respective instance-secret.
+
+    === "Read-only Instance Secret"
+
+        ```yaml title="read_instance_secret.yaml"
+        --8<-- "examples/resources/instance_secret/referencing_instance_secret_in_depot/sample_secret_r.yaml"
+        ```
+
+    === "Read-write Instance Secret"
+
+        ```yaml title="read_write_instance_secret.yaml"
+        --8<-- "examples/resources/instance_secret/referencing_instance_secret_in_depot/sample_secret_rw.yaml"
+        ```
+
+    Now while creating the manifest file for your Depot, ensure to include a reference to the Instance Secret using the `dataosSecrets` identifier, instead of directly specifying the secret using the `connectionSecrets` attribute:
+
+    === "Depot"
+
     ```yaml title="depot.yaml"
-        --8<-- "examples/resources/instance_secret/depot/depot.yaml"
+    --8<-- "examples/resources/instance_secret/referencing_instance_secret_in_depot/sample_depot.yaml"
     ```
-
-
-*Know more about Depot: [Depot](./depot00.md)*
 
 <aside class="callout">
 
@@ -272,105 +406,121 @@ Create a manifest file for your Depot. In the application spec of your Depot, en
 
 ## Instance Secret Templates
 
+
 <div class="grid" markdown>
 
 === "Object Store"
 
-    Object stores, such as Azure Blob Storage (WASBS) and Azure Blob File System (ABFSS), are distributed storage systems designed to store and manage large amounts of unstructured data. Instance-Secrets are configured to securely access and interact with the respective object store.
+    Object stores are distributed storage systems designed to store and manage large amounts of unstructured data. Instance-Secrets can configured to securely store sensitive information of the following object stores:
 
     === "ABFSS"
 
-        To create an instance-secret for securely accessing ABFSS, the following details are required:
-
-          - `name`: Define the name of your ABFSS depot using the format `${lakehouse-name}0${workspace-name}0storage`. For instance, if your `${lakehouse-name}` is alpha and `${workspace-name}` is testing and the `acl`(access control list) is `rw`, then the instance secret name will be `alpha0testing0storage`.
-          - `description`: Provide a brief description of the instance-secret's purpose. This field is optional but recommended for easier management and identification of instance-secrets.
-          - `azureendpointsuffix`: The endpoint suffix for your Azure storage account, which varies by cloud environment. 
-          - `azurestorageaccountkey`: The access key for your Azure storage account. This key is essential for authentication and must be kept secure.
-          - `azurestorageaccountname`: The name of your Azure storage account. This name is used in conjunction with the endpoint suffix to form the base URL for your ABFSS resources.
-    
-        Ensure that you replace each placeholder (e.g., `${abfss-depot-name}`, `${azure-endpoint-suffix}`) with the actual values pertaining to your Azure account and ABFSS configuration. 
+        The manifest files provided below are the templates for securely storing ABFSS credentials. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
         === "Read-only instance-secret"
             ```yaml title="instance_secret_abfss_read.yaml"
-            --8<-- "examples/resources/lakehouse/abfss/resource_instance_secret_abfss_read.yaml"
+            --8<-- "examples/resources/instance_secret/abfss/abfss_r.yaml"
             ```
         === "Read-write instance-secret"
             ```yaml title="instance_secret_abfss_read_write.yaml"
-            --8<-- "examples/resources/lakehouse/abfss/resource_instance_secret_abfss_read_write.yaml"
+            --8<-- "examples/resources/instance_secret/abfss/abfss_rw.yaml"
             ```
+
+        To configure the template, the details required are provided below. Ensure that you replace each placeholder (e.g., `${abfss-depot-name}`, `${azure-endpoint-suffix}`) with the actual values pertaining to your Azure account and ABFSS configuration. 
+
+          - `name`: Define the name of your Instance secret `${abfss-depot-name}-${acl}`. For instance, if your `${abfss-depot-name}` is alpha and the `acl`(access control list) is `rw`, then the instance secret `name` will be `alpha-rw`.
+          - `description`: Provide a brief description of the instance-secret's purpose. This field is optional but recommended for easier management and identification of instance-secrets.
+          - `azureendpointsuffix`: The endpoint suffix for your Azure storage account. 
+          - `azurestorageaccountkey`: The access key for your Azure storage account.
+          - `azurestorageaccountname`: The name of your Azure storage account. This name is used in conjunction with the endpoint suffix to form the base URL for your ABFSS resources.
+    
+        
 
     === "WASBS"
 
-        To create an instance-secret for securely accessing WASBS, the following details are required:
-
-          - `name`: Define the name of your WASBS depot using the format `${lakehouse-name}0${workspace-name}0storage`. For instance, if your `${lakehouse-name}` is alpha and `${workspace-name}` is testing, then the `${gcs-depot-name}` will be alpha0testing0storage.
-          - `description`: Provide a brief description of the instance-secret's purpose. This field is optional but recommended for easier management and identification of instance-secrets.
-          - `azureendpointsuffix`: The endpoint suffix for your Azure storage account, which varies by cloud environment. 
-          - `azurestorageaccountkey`: The access key for your Azure storage account. This key is essential for authentication and must be kept secure.
-          - `azurestorageaccountname`: The name of your Azure storage account. This name is used in conjunction with the endpoint suffix to form the base URL for your WASBS resources.
-    
-        Ensure that you replace each placeholder (e.g., `${wasbs-depot-name}`, `${azure-endpoint-suffix}`) with the actual values pertaining to your Azure account and WASBS configuration. 
+        The manifest files provided below are the templates for securely storing WASBS credentials. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
         === "Read-only instance-secret"
             ```yaml title="instance_secret_wasbs_read.yaml"
-            --8<-- "examples/resources/lakehouse/wasbs/resource_instance_secret_wasbs_read.yaml"
+            --8<-- "examples/resources/instance_secret/wasbs/wasbs_r.yaml"
             ```
         === "Read-write instance-secret"
             ```yaml title="instance_secret_wasbs_read_write.yaml"
-            --8<-- "examples/resources/lakehouse/wasbs/resource_instance_secret_wasbs_read_write.yaml"
+            --8<-- "examples/resources/instance_secret/wasbs/wasbs_rw.yaml"
             ```
+
+        To configure the above WASBS instance-secret templates, the details required are provided below. Ensure that you replace each placeholder (e.g., `${wasbs-depot-name}`, `${azure-endpoint-suffix}`) with the actual values pertaining to your Azure account and WASBS configuration. 
+
+          - `name`: Define the name of your Instance secret `${wasbs-depot-name}-${acl}`. For instance, if your `${wasbs-depot-name}` is alpha and the `acl`(access control list) is `rw`, then the instance secret `name` will be `alpha-rw`.
+          - `description`: Provide a brief description of the instance-secret's purpose. This field is optional but recommended for easier management and identification of instance-secrets.
+          - `azureendpointsuffix`: The endpoint suffix for your Azure storage account. 
+          - `azurestorageaccountkey`: The access key for your Azure storage account. 
+          - `azurestorageaccountname`: The name of your Azure storage account. This name is used in conjunction with the endpoint suffix to form the base URL for your WASBS resources.
 
     === "GCS"
 
-        To configure your instance-secret maniest for GCS access, you'll need to gather the following details:
+        The manifest files provided below are the templates for securely storing GCS credentials. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
-          - `name`:  Define the name of your GCS depot using the format `${lakehouse-name}0${workspace-name}0storage`. For instance, if your `${lakehouse-name}` is alpha and `${workspace-name}` is testing, then the `${gcs-depot-name}` will be alpha0testing0storage.
+        === "Read-only instance-secret"
+            ```yaml title="instance_secret_gcs_read.yaml"
+            --8<-- "examples/resources/instance_secret/gcs/gcs_r.yaml"
+            ```
+        === "Read-write instance-secret"
+            ```yaml title="instance_secret_gcs_read_write.yaml"
+            --8<-- "examples/resources/instance_secret/gcs/gcs_rw.yaml"
+            ```
+
+        To configure the above GCS instance-secret templates, the details required are provided below. In the chosen template, replace the placeholders (`${gcs-depot-name}`, `${project-id}`, `${email}`, `${gcskey_json}`, and optionally `${description}`) with the actual values.
+
+          - `name`: Define the name of your Instance secret `${gcs-depot-name}-${acl}`. For instance, if your `${gcs-depot-name}` is alpha and the `acl`(access control list) is `rw`, then the instance secret `name` will be `alpha-rw`.
           - `description`: Provide a brief description of the instance-secret's purpose. This field is optional but recommended for easier management and identification of instance-secrets.
           - `projectid`: The unique identifier of the Google Cloud project that your GCS bucket resides in. You can find this information in the Google Cloud Console under the 'Project Info' section.
           - `email`:  The email address associated with the Google Cloud service account that will be used for accessing GCS. This service account should have the necessary permissions to perform operations on the GCS bucket.
           - `gcskey_json`: The JSON key file of the Google Cloud service account. This file contains the private key and other credentials that are required for authenticating the service account. It can be obtained by creating a service account key in the Google Cloud Console.
 
-        After collecting the above details, depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below. In the chosen template, replace the placeholders (`${gcs-depot-name}`, `${project-id}`, `${email}`, `${gcskey_json}`, and optionally `${description}`) with the actual values you gathered and save it locally on your system.
 
-        === "Read-only instance-secret"
-            ```yaml title="instance_secret_gcs_read.yaml"
-            --8<-- "examples/resources/lakehouse/gcs/resource_instance_secret_gcs_read.yaml"
-            ```
-        === "Read-write instance-secret"
-            ```yaml title="instance_secret_gcs_read_write.yaml"
-            --8<-- "examples/resources/lakehouse/gcs/resource_instance_secret_gcs_read_write.yaml"
-            ```
     === "S3"
 
-        To create an instance-secret for securely accessing Amazon S3, the following details are required:
+        The manifest files provided below are the templates for securely storing GCS credentials. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
-          - `name`: Define the name of your S3 depot using the format `${lakehouse-name}0${workspace-name}0storage`. For instance, if your `${lakehouse-name}` is alpha and `${workspace-name}` is testing, then the `${gcs-depot-name}` will be alpha0testing0storage.
+        === "Read-only instance-secret"
+            ```yaml title="instance_secret_s3_read.yaml" 
+            --8<-- "examples/resources/instance_secret/s3/s3_r.yaml"
+            ```
+        === "Read-write instance-secret"
+            ```yaml title="instance_secret_s3_read_write.yaml"
+            --8<-- "examples/resources/instance_secret/s3/s3_rw.yaml"
+            ```
+
+        To configure the above S3 instance-secret templates, the details required are provided below. Ensure that you replace each placeholder (e.g., `${s3-depot-name}`, `${access-key-id}`) with the actual values pertaining to your AWS account and S3 configuration. 
+
+          - `name`: Define the name of your Instance secret `${s3-depot-name}-${acl}`. For instance, if your `${s3-depot-name}` is alpha and the `acl`(access control list) is `rw`, then the instance secret `name` will be `alpha-rw`.
           - `description`: Provide a brief description of the instance-secret's purpose. This field is optional but recommended for easier management and identification of instance-secrets.
           - `access-key-id`: Your access key ID. This key serves as an identifier for your IAM user or role.
           - `awsaccesskeyid`: AWS-specific access key ID, required for authenticating requests made to AWS services.
           - `awssecretaccesskey`: The secret access key for AWS. It's used in conjunction with the AWS access key ID to sign programmatic requests to AWS.
           - `secretkey`: The secret key associated with your access key ID. Together, they authenticate requests to AWS services.
-    
-        Ensure that you replace each placeholder (e.g., `${depot-name}`, `${accesskeyid}`) with the actual values pertaining to your AWS account and S3 configuration. 
-
-        === "Read-only instance-secret"
-            ```yaml title="instance_secret_s3_read.yaml" 
-            --8<-- "examples/resources/lakehouse/s3/resource_instance_secret_s3_read.yaml"
-            ```
-        === "Read-write instance-secret"
-            ```yaml title="instance_secret_s3_read_write.yaml"
-            --8<-- "examples/resources/lakehouse/s3/resource_instance_secret_s3_read_write.yaml"
-            ```
 
 === "Data Warehouse"
 
-    A data warehouse serves as a centralized repository for structured data, enabling efficient query and analysis. Instance-Secrets are configured to securely access and interact with the respective data warehouses, with specific details like project IDs and access keys.
+    A data warehouse serves as a centralized repository for structured data, enabling efficient query and analysis. Instance-Secrets can be configured for securely storing credentials for the Amazon Redshift, Snowflake, and Google Bigquery Warehouses in the following ways:
 
     === "Bigquery"
-        
-        To create an instance-secret for securely accessing Google BigQuery, the following details are required:
 
-          - `name`: Define the name of your BigQuery depot using the format `${lakehouse-name}0${workspace-name}0storage`. For instance, if your `${lakehouse-name}` is `alpha` and `${workspace-name}` is `testing`, then the `${bigquery-depot-name}` will be `alpha0testing0storage`.
+        The manifest files provided below are the templates for securely storing Google Bigquery credentials. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+
+        === "Read-only instance-secret"
+            ```yaml title="instance_secret_bigquery_read.yaml" 
+            --8<-- "examples/resources/instance_secret/bigquery/bigquery_r.yaml"
+            ```
+        === "Read-write instance-secret"
+            ```yaml title="instance_secret_bigquery_read_write.yaml"
+            --8<-- "examples/resources/instance_secret/bigquery/bigquery_rw.yaml"
+            ```
+        
+        To create an instance-secret for securely storing Google BigQuery credentials, the details required are provided below. Ensure that you replace each placeholder (e.g., `${bigquery-depot-name}`, `${projectid}`, `${email}`) with the actual values pertaining to your Google Cloud account and BigQuery configuration.
+
+          - `name`: Define the name of your Instance secret `${bigquery-depot-name}-${acl}`. For instance, if your `${bigquery-depot-name}` is alpha and the `acl`(access control list) is `rw`, then the instance secret `name` will be `alpha-rw`.
   
           - `description`: Provide a brief description of the instance-secret's purpose. This field is optional but recommended for easier management and identification of instance-secrets.
 
@@ -378,22 +528,25 @@ Create a manifest file for your Depot. In the application spec of your Depot, en
 
           - `email`: The email ID associated with your BigQuery account. This information is essential for specifying the user account that will be used to access BigQuery resources.
 
-        Ensure that you replace each placeholder (e.g., `${depot-name}`, `${projectid}`, `${email}`) with the actual values pertaining to your Google Cloud account and BigQuery configuration.
+          - `json_keyfile`: The JSON key file of the Google Cloud service account. This file contains the private key and other credentials that are required for authenticating the service account. It can be obtained by creating a service account key in the Google Cloud Console.
 
         
-        === "Read-only instance-secret"
-            ```yaml title="instance_secret_bigquery_read.yaml" 
-            --8<-- "examples/resources/instance_secret/bigquery/bigquery.yaml"
-            ```
-        === "Read-write instance-secret"
-            ```yaml title="instance_secret_bigquery_read_write.yaml"
-            --8<-- "examples/resources/instance_secret/bigquery/bigquery_rw.yaml"
-            ```
     === "Redshift"
 
-        To create an instance-secret for securely accessing Amazon Redshift, the following details are required:
+        The manifest files provided below are the templates for securely storing Amazon Redshift credentials. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
-          - `name`: Define the name of your Redshift depot using the format ${depot-name}. For instance, if your ${depot-name} is "analytics" and ${workspace-name} is "production", then the ${redshift-depot-name} will be analytics-production-r.
+        === "Read-only instance-secret"
+            ```yaml title="instance_secret_redshift_read.yaml" 
+            --8<-- "examples/resources/instance_secret/redshift/redshift_r.yaml"
+            ```
+        === "Read-write instance-secret"
+            ```yaml title="instance_secret_redshift_read_write.yaml"
+            --8<-- "examples/resources/instance_secret/redshift/redshift_rw.yaml"
+            ```
+
+        To create an instance-secret for securely storing Amazon Redshift credentials, the details required are provided below. Ensure that you replace each placeholder (e.g., ${redshift-depot-name}, ${username}, ${access key}) with the actual values pertaining to your Redshift and AWS account configuration.
+
+          - `name`: Define the name of your Instance secret `${redshift-depot-name}-${acl}`. For instance, if your `${redshift-depot-name}` is alpha and the `acl`(access control list) is `rw`, then the instance secret `name` will be `alpha-rw`.
 
           - `description`: Provide a brief description of the instance-secret's purpose. This field is optional but recommended for easier management and identification of instance-secrets.
 
@@ -405,51 +558,53 @@ Create a manifest file for your Depot. In the application spec of your Depot, en
 
           - `awssecretaccesskey`: The secret access key for AWS. It's used in conjunction with the AWS access key ID to sign programmatic requests to AWS, including Redshift.
 
-        Ensure that you replace each placeholder (e.g., ${redshift-depot-name}, ${username}, ${access key}) with the actual values pertaining to your Redshift and AWS account configuration.
-
-
-        === "Read-only instance-secret"
-            ```yaml title="instance_secret_redshift_read.yaml" 
-            --8<-- "examples/resources/instance_secret/redshift/redshift.yaml"
-            ```
-        === "Read-write instance-secret"
-            ```yaml title="instance_secret_redshift_read_write.yaml"
-            --8<-- "examples/resources/instance_secret/redshift/redshift_rw.yaml"
-            ```
-
     === "Snowflake"
 
-        To create an instance-secret for securely accessing Snowflake, the following details are required:
-
-          - `name`: Define the name of your Snowflake depot using the format `${depot-name}`. For instance, if your `${depot-name}` is "analytics" and `${workspace-name}` is "production", then the `${snowflake-depot-name}` will be `analytics-production-r`.
-
-          - `description`: Provide a brief description of the instance-secret's purpose. This field is optional but recommended for easier management and identification of instance-secrets.
-
-          - `${{username}}`: Your Snowflake username. This is the identifier for your Snowflake user account.
-
-          - `${{password}}`: The password associated with your Snowflake username. It is used for authenticating requests to your Snowflake account.
-
-        Ensure that you replace each placeholder (e.g., `${snowflake-depot-name}`, `${username}`) with the actual values pertaining to your Snowflake account configuration.
-
+        The manifest files provided below are the templates for securely storing Snowflake credentials. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
         === "Read-only instance-secret"
             ```yaml title="instance_secret_snowflake_read.yaml" 
-            --8<-- "examples/resources/instance_secret/snowflake/snowflakes.yaml"
+            --8<-- "examples/resources/instance_secret/snowflake/snowflake_r.yaml"
             ```
         === "Read-write instance-secret"
             ```yaml title="instance_secret_snowflake_read_write.yaml"
             --8<-- "examples/resources/instance_secret/snowflake/snowflake_rw.yaml"
             ```
 
+
+        To create an instance-secret for securely storing Snowflake credentials, the details required are provided below. Ensure that you replace each placeholder (e.g., `${snowflake-depot-name}`, `${username}`) with the actual values pertaining to your Snowflake account configuration.
+
+          - `name`: Define the name of your Instance secret `${snowflake-depot-name}-${acl}`. For instance, if your `${snowflake-depot-name}` is alpha and the `acl`(access control list) is `rw`, then the instance secret `name` will be `alpha-rw`.
+
+          - `description`: Provide a brief description of the instance-secret's purpose. This field is optional but recommended for easier management and identification of instance-secrets.
+
+          - `username`: Your Snowflake username. This is the identifier for your Snowflake user account.
+
+          - `password`: The password associated with your Snowflake username. It is used for authenticating requests to your Snowflake account.
+
+        
+
 === "SQL Database"
 
     SQL databases are typically centralized systems designed for structured data, organized into tables with a predefined schema. Instance-Secrets are configured to securely access and interact with the respective SQL databases.
 
-    === "MYSQL"
+    === "MySQL"
 
-        To create an instance-secret for securely accessing MySQL, the following details are required:
+        The manifest files provided below are the templates for securely storing MySQL credentials. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
-          - `name`: Define the name of your MySQL depot using the format `${depot-name}`. For instance, if your `${depot-name}` is "database" and `${workspace-name}` is "production", then the `${mysql-depot-name}` will be `database-production-r`.
+        === "Read-only instance-secret"
+            ```yaml title="instance_secret_mysql_read.yaml" 
+            --8<-- "examples/resources/instance_secret/mysql/mysql_r.yaml"
+            ```
+        === "Read-write instance-secret"
+            ```yaml title="instance_secret_mysql_read_write.yaml"
+            --8<-- "examples/resources/instance_secret/mysql/mysql_rw.yaml"
+            ```
+
+
+        To create an instance-secret for securely storing MySQL credentials, the details required are provided below. Ensure that you replace each placeholder (e.g., `${mysql-depot-name}`, `${username}`) with the actual values pertaining to your MySQL account configuration.
+
+          - `name`: Define the name of your Instance secret `${mysql-depot-name}-${acl}`. For instance, if your `${mysql-depot-name}` is alpha and the `acl`(access control list) is `rw`, then the instance secret `name` will be `alpha-rw`.
 
           - `description`: Provide a brief description of the instance-secret's purpose. This field is optional but recommended for easier management and identification of instance-secrets.
 
@@ -457,23 +612,23 @@ Create a manifest file for your Depot. In the application spec of your Depot, en
 
           - `password`: The password associated with your MySQL username. It is used for authenticating requests to your MySQL database.
 
-        Ensure that you replace each placeholder (e.g., `${mysql-depot-name}`, `${username}`) with the actual values pertaining to your MySQL account configuration.
-
-
-        === "Read-only instance-secret"
-            ```yaml title="instance_secret_mysql_read.yaml" 
-            --8<-- "examples/resources/instance_secret/mysql/mysql.yaml"
-            ```
-        === "Read-write instance-secret"
-            ```yaml title="instance_secret_mysql_read_write.yaml"
-            --8<-- "examples/resources/instance_secret/mysql/mysql_rw.yaml"
-            ```
-
     === "MSSQL"
 
-        To create an instance-secret for securely accessing Microsoft SQL Server (MSSQL), the following details are required:
+        The manifest files provided below are the templates for securely storing MSSQL credentials. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
-          - `name`: Define the name of your MSSQL depot using the format `${depot-name}`. For instance, if your `${depot-name}` is "database" and `${workspace-name}` is "production", then the `${mssql-depot-name}` will be `database-production-r`.
+        === "Read-only instance-secret"
+            ```yaml title="instance_secret_mssql_read.yaml" 
+            --8<-- "examples/resources/instance_secret/mssql/mssql_r.yaml"
+            ```
+        === "Read-write instance-secret"
+            ```yaml title="instance_secret_mssql_read_write.yaml"
+            --8<-- "examples/resources/instance_secret/mssql/mssql_rw.yaml"
+            ```
+
+
+        To create an instance-secret for securely storing MSSQL credentials, the details required are provided below. Ensure that you replace each placeholder (e.g., `${mssql-depot-name}`, `${username}`) with the actual values pertaining to your MSSQL account configuration.
+
+          - `name`: Define the name of your Instance secret `${mssql-depot-name}-${acl}`. For instance, if your `${mssql-depot-name}` is alpha and the `acl`(access control list) is `rw`, then the instance secret `name` will be `alpha-rw`.
 
           - `description`: Provide a brief description of the instance-secret's purpose. This field is optional but recommended for easier management and identification of instance-secrets.
 
@@ -481,23 +636,22 @@ Create a manifest file for your Depot. In the application spec of your Depot, en
 
           - `password`: The password associated with your MSSQL username. It is used for authenticating requests to your MSSQL database.
 
-        Ensure that you replace each placeholder (e.g., `${mssql-depot-name}`, `${username}`) with the actual values pertaining to your MSSQL account configuration.
-
-
-        === "Read-only instance-secret"
-            ```yaml title="instance_secret_mssql_read.yaml" 
-            --8<-- "examples/resources/instance_secret/mssql/mssql.yaml"
-            ```
-        === "Read-write instance-secret"
-            ```yaml title="instance_secret_mssql_read_write.yaml"
-            --8<-- "examples/resources/instance_secret/mssql/mssql_rw.yaml"
-            ```
-
     === "JDBC"
 
-        To create an instance-secret for securely accessing a database via JDBC, the following details are required:
+        The manifest files provided below are the templates for securely storing JDBC credentials. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
-          - `name`: Define the name of your JDBC depot using the format `${depot-name}`. For instance, if your `${depot-name}` is "data" and `${workspace-name}` is "production", then the `${jdbc-depot-name}` will be `data-production-r`.
+        === "Read-only instance-secret"
+            ```yaml title="instance_secret_jdbc_read.yaml" 
+            --8<-- "examples/resources/instance_secret/jdbc/jdbc_r.yaml"
+            ```
+        === "Read-write instance-secret"
+            ```yaml title="instance_secret_jdbc_read_write.yaml"
+            --8<-- "examples/resources/instance_secret/jdbc/jdbc_rw.yaml"
+            ```
+
+        To create an instance-secret for securely storing JDBC credentials, the details required are provided below. Ensure that you replace each placeholder (e.g., `${jdbc-depot-name}`, `${username}`) with the actual values pertaining to your JDBC account configuration.
+
+          - `name`: Define the name of your Instance secret `${jdbc-depot-name}-${acl}`. For instance, if your `${jdbc-depot-name}` is alpha and the `acl`(access control list) is `rw`, then the instance secret `name` will be `alpha-rw`.
 
           - `description`: Provide a brief description of the instance-secret's purpose. This field is optional but recommended for easier management and identification of instance-secrets.
 
@@ -505,23 +659,23 @@ Create a manifest file for your Depot. In the application spec of your Depot, en
 
           - `password`: The password associated with your JDBC username. It is used for authenticating requests when connecting to the database via JDBC.
 
-        Ensure that you replace each placeholder (e.g., `${jdbc-depot-name}`, `${username}`) with the actual values pertaining to your JDBC configuration.
-
-
-        === "Read-only instance-secret"
-            ```yaml title="instance_secret_jdbc_read.yaml" 
-            --8<-- "examples/resources/instance_secret/jdbc/jdbc.yaml"
-            ```
-        === "Read-write instance-secret"
-            ```yaml title="instance_secret_jdbc_read_write.yaml"
-            --8<-- "examples/resources/instance_secret/jdbc/jdbc_rw.yaml"
-            ```
-
     === "Oracle"
 
-        To create an instance-secret for securely accessing Oracle, the following details are required:
+        The manifest files provided below are the templates for securely storing Oracle credentials. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
-          - `name`: Define the name of your Oracle depot using the format `${depot-name}`. For instance, if your `${depot-name}` is "database" and `${workspace-name}` is "production", then the `${oracle-depot-name}` will be `database-production-r`.
+        === "Read-only instance-secret"
+            ```yaml title="instance_secret_oracle_read.yaml" 
+            --8<-- "examples/resources/instance_secret/oracle/oracle_r.yaml"
+            ```
+        === "Read-write instance-secret"
+            ```yaml title="instance_secret_oracle_read_write.yaml"
+            --8<-- "examples/resources/instance_secret/oracle/oracle_rw.yaml"
+            ```
+
+
+        To create an instance-secret for securely storing Oracle credentials, the details required are provided below. Ensure that you replace each placeholder (e.g., `${oracle-depot-name}`, `${username}`) with the actual values pertaining to your Oracle account configuration.
+
+          - `name`: Define the name of your Instance secret `${oracle-depot-name}-${acl}`. For instance, if your `${oracle-depot-name}` is alpha and the `acl`(access control list) is `rw`, then the instance secret `name` will be `alpha-rw`.
 
           - `description`: Provide a brief description of the instance-secret's purpose. This field is optional but recommended for easier management and identification of instance-secrets.
 
@@ -529,51 +683,50 @@ Create a manifest file for your Depot. In the application spec of your Depot, en
 
           - `password`: The password associated with your Oracle username. It is used for authenticating requests to your Oracle database.
 
-        Ensure that you replace each placeholder (e.g., `${oracle-depot-name}`, `${username}`) with the actual values pertaining to your Oracle account configuration.
-
-
-        === "Read-only instance-secret"
-            ```yaml title="instance_secret_oracle_read.yaml" 
-            --8<-- "examples/resources/instance_secret/oracle/oracle.yaml"
-            ```
-        === "Read-write instance-secret"
-            ```yaml title="instance_secret_oracle_read_write.yaml"
-            --8<-- "examples/resources/instance_secret/oracle/oracle_rw.yaml"
-            ```
-
     === "Postgres"
 
-        To create an instance-secret for securely accessing PostgreSQL, the following details are required:
+        The manifest files provided below are the templates for securely storing Postgres credentials. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
-          - `name`: Define the name of your PostgreSQL depot using the format `${depot-name}`. For instance, if your `${depot-name}` is "database" and `${workspace-name}` is "production", then the `${postgres-depot-name}` will be `database-production-r`.
+        === "Read-only instance-secret"
+            ```yaml title="instance_secret_postgres_read.yaml" 
+            --8<-- "examples/resources/instance_secret/postgres/postgres_r.yaml"
+            ```
+        === "Read-write instance-secret"
+            ```yaml title="instance_secret_postgres_read_write.yaml"
+            --8<-- "examples/resources/instance_secret/postgres/postgres_rw.yaml"
+            ```
+
+        To create an instance-secret for securely storing Postgres credentials, the details required are provided below. Ensure that you replace each placeholder (e.g., `${postgres-depot-name}`, `${username}`) with the actual values pertaining to your Postgres account configuration.
+
+          - `name`: Define the name of your Instance secret `${postgres-depot-name}-${acl}`. For instance, if your `${postgres-depot-name}` is alpha and the `acl`(access control list) is `rw`, then the instance secret `name` will be `alpha-rw`.
 
           - `description`: Provide a brief description of the instance-secret's purpose. This field is optional but recommended for easier management and identification of instance-secrets.
 
           - `username`: Your PostgreSQL username. This is the identifier for your PostgreSQL user account.
 
           - `password`: The password associated with your PostgreSQL username. It is used for authenticating requests to your PostgreSQL database.
-
-        Ensure that you replace each placeholder (e.g., `${postgres-depot-name}`, `${username}`) with the actual values pertaining to your PostgreSQL account configuration.
-
-
-        === "Read-only instance-secret"
-            ```yaml title="instance_secret_postgres_read.yaml" 
-            --8<-- "examples/resources/instance_secret/postgres/postgres.yaml"
-            ```
-        === "Read-write instance-secret"
-            ```yaml title="instance_secret_postgres_read_write.yaml"
-            --8<-- "examples/resources/instance_secret/postgres/postgres_rw.yaml"
-            ```
         
 === "NoSQL Database"
 
-    NoSQL databases are designed for flexible, distributed data storage, accommodating unstructured or semi-structured data. Instance-Secrets are configured to securely access and interact with the respective NoSQL databases.
+    NoSQL databases are designed for flexible, distributed data storage, accommodating unstructured or semi-structured data. Instance-Secrets are configured to securely access and interact with the respective NonSQL databases. 
 
     === "MongoDB"
 
-        To create an instance-secret for securely accessing MongoDB, the following details are required:
 
-          - `name`: Define the name of your MongoDB depot using the format `${depot-name}`. For instance, if your `${depot-name}` is "data" and `${workspace-name}` is "production", then the `${mongodb-depot-name}` will be `data-production-r`.
+        The manifest files provided below are the templates for securely storing MongoDB credentials. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+
+        === "Read-only instance-secret"
+            ```yaml title="instance_secret_mongodb_read.yaml" 
+            --8<-- "examples/resources/instance_secret/mongodb/mongodb_r.yaml"
+            ```
+        === "Read-write instance-secret"
+            ```yaml title="instance_secret_mongodb_read_write.yaml"
+            --8<-- "examples/resources/instance_secret/mongodb/mongodb_rw.yaml"
+            ```
+
+        To create an instance-secret for securely storing MongoDB credentials, the details required are provided below. Ensure that you replace each placeholder (e.g., `${mongodb-depot-name}`, `${username}`) with the actual values pertaining to your MongoDB account configuration.
+
+          - `name`: Define the name of your Instance secret `${mongodb-depot-name}-${acl}`. For instance, if your `${mongodb-depot-name}` is alpha and the `acl`(access control list) is `rw`, then the instance secret `name` will be `alpha-rw`.
 
           - `description`: Provide a brief description of the instance-secret's purpose. This field is optional but recommended for easier management and identification of instance-secrets.
 
@@ -581,45 +734,32 @@ Create a manifest file for your Depot. In the application spec of your Depot, en
 
           - `password`: The password associated with your MongoDB username. It is used for authenticating requests to your MongoDB database.
 
-        Ensure that you replace each placeholder (e.g., `${mongodb-depot-name}`, `${username}`) with the actual values pertaining to your MongoDB account configuration.
-
-
-        === "Read-only instance-secret"
-            ```yaml title="instance_secret_mongo_read.yaml" 
-            --8<-- "examples/resources/instance_secret/mongodb/mongodb.yaml"
-            ```
-        === "Read-write instance-secret"
-            ```yaml title="instance_secret_mongo_read_write.yaml"
-            --8<-- "examples/resources/instance_secret/mongodb/mongodb_rw.yaml"
-            ```
-
         
 === "Streaming"
 
-    Streaming refers to the continuous and real-time transmission of data from a source to a destination. Instance-Secrets are configured to securely access and interact with the respective streaming platforms.
+    Streaming refers to the continuous and real-time transmission of data from a source to a destination. nstance-Secrets are configured to securely access and interact with the respective Streaming platforms. 
 
     === "Eventhub" 
 
-        To create an instance-secret for securely accessing Azure Event Hubs, the following details are required:
+        The manifest files provided below are the templates for securely storing Eventhub credentials. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
 
-          - `name`: Define the name of your Event Hub depot using the format `${depot-name}`. For instance, if your `${depot-name}` is "events" and `${workspace-name}` is "production", then the `${eventhub-depot-name}` will be `events-production-r`.
+        === "Read-only instance-secret"
+            ```yaml title="instance_secret_eventhub_read.yaml" 
+            --8<-- "examples/resources/instance_secret/eventhub/eventhub_r.yaml"
+            ```
+        === "Read-write instance-secret"
+            ```yaml title="instance_secret_eventhub_read_write.yaml"
+            --8<-- "examples/resources/instance_secret/eventhub/eventhub_rw.yaml"
+            ```
+
+        To create an instance-secret for securely storing Eventhub credentials, the details required are provided below. Ensure that you replace each placeholder (e.g., `${eventhub-depot-name}`, `${EH_SHARED_ACCESS_KEY_NAME}`) with the actual values pertaining to your Azure Event Hub configuration.
+
+          - `name`: Define the name of your Instance secret `${eventhub-depot-name}-${acl}`. For instance, if your `${eventhub-depot-name}` is alpha and the `acl`(access control list) is `rw`, then the instance secret `name` will be `alpha-rw`.
 
           - `description`: Provide a brief description of the instance-secret's purpose. This field is optional but recommended for easier management and identification of instance-secrets.
 
           - `eh_shared_access_key_name`: Your Azure Event Hub shared access key name. This is the identifier for your Event Hub.
 
           - `eh_shared_access_key`: The shared access key associated with your Azure Event Hub. It is used for authenticating requests to your Event Hub.
-
-        Ensure that you replace each placeholder (e.g., `${eventhub-depot-name}`, `${EH_SHARED_ACCESS_KEY_NAME}`) with the actual values pertaining to your Azure Event Hub configuration.
-
-
-        === "Read-only instance-secret"
-            ```yaml title="instance_secret_read.yaml" 
-            --8<-- "examples/resources/instance_secret/eventhub/eventhub.yaml"
-            ```
-        === "Read-write instance-secret"
-            ```yaml title="instance_secret_read_write.yaml"
-            --8<-- "examples/resources/instance_secret/eventhub/eventhub_rw.yaml"
-            ```
 
 </div>

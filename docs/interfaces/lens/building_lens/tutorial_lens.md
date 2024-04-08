@@ -1255,7 +1255,7 @@ Lens is created in DataOS environment, you can use it to gain insights from your
 
 ![Lens_created.png](tutorial_lens/Lens_created.png)
 
-Click on the Lense to see its schema, various entities and relationships which you defined in YAML.
+Click on the Lens to see its schema, various entities and relationships which you defined in YAML.
 
 ![schema_relation.png](tutorial_lens/schema_relation.png)
 
@@ -1265,7 +1265,7 @@ Below is a graphical diagram illustrating the relationships between different en
 
 Next, let's dive into the analysis of date-wise orders.
 
-1. Open **Lens Explore**, where you will find a list of entities along with their fields, dimensions, and measures.
+1. Open **Lens Explorer**, where you will find a list of entities along with their fields, dimensions, and measures.
 2. Start by selecting the entities and the specific fields, dimensions, or measures you want to analyze.
 3. Run your query, and if necessary, provide any parameter values required for your analysis.
 4. You will see the results and charts displayed on the screen. Behind the scenes, Lens will automatically generate a Lens query for your selection and also generate the corresponding SQL query.

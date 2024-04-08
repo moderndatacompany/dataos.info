@@ -1,0 +1,19 @@
+name: {{"sanityeventhub01"}}
+version: v1
+type: depot
+tags:
+  - {{Eventhub}}
+  - {{Sanity}}
+layer: user
+depot:
+  type: "EVENTHUB"
+  compute: {{runnable-default}}
+  spec:
+    endpoint: {{"sb://event-hubns.servicebus.windows.net/"}}
+  external: {{true}}
+  secrets:
+    - name: {{eh-instance-secret-name}}-r
+      allkeys: true
+
+    - name: {{eh-instance-secret-name}}-rw
+      allkeys: true

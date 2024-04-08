@@ -29,7 +29,7 @@ A Cluster Resource can be provisioned [on-demand](./cluster/on_demand_computing.
 
     Understand how to interact with a Cluster in DataOS.
     
-    [:octicons-arrow-right-24: Working of a Cluster](#interacting-with-clusters)
+    [:octicons-arrow-right-24: Interacting with a Cluster](#interacting-with-clusters)
 
 -   :material-content-duplicate:{ .lg .middle } **How to tune a Cluster's performance?**
 
@@ -675,4 +675,8 @@ By utilizing these connectors, you can perform data analyses directly on the dat
 
 ## Cluster Usage Examples
 
-Refer to the Cluster Resource [Usage Examples](./cluster/examples.md) documentation for a comprehensive understanding of how Cluster can be utilized. It provides detailed examples and practical implementations to help data developers leverage the Cluster Resource efficiently.
+Refer to the Cluster Resource Usage Examples documentation for a comprehensive understanding of how Cluster can be utilized. It provides detailed examples and practical implementations to help data developers leverage the Cluster Resource efficiently.
+
+- [How to restart and scale the Cluster on a pre-defined schedule?](./cluster/examples/cluster_maintenance.md)
+
+- [How to create multiple Cluster using a single manifest file?](./cluster/examples/multiple_cluster_setup.md)

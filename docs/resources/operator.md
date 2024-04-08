@@ -29,7 +29,7 @@ The Operator establishes a common management plane to orchestrate external resou
 
 **Scalability and Speed**
 
-In collaboration with the Bundle Resource within the DataOS, the Operator automates processes, thus accelerating both the scale and speed of data product creation. 
+In collaboration with the [Bundle](/resources/bundle/) Resource within the DataOS, the Operator automates processes, thus accelerating both the scale and speed of data product creation. 
 
 **Collaboration**
 
@@ -67,18 +67,18 @@ Creating your operator involves a series of logical steps, as outlined below:
     b. [OController Interface](#implementing-the-operator-interfaces)<br>
     c. [Message Handler Interface](#implementing-the-operator-interfaces)
 2. [Dockerize the Code](#dockerize-the-code)
-3. [YAML manifest for Operator](#yaml-manifest-for-operator)
-4. [Apply the Operator manifest](#apply-the-operator-yaml)
-5. [Verify Operator creation]()
-6. [YAML manifest for Resource (external Resource)]()
-7. [Apply the Resource manifest]()
-8. [Get Status of Resource]()
-9. [Check Status on Azure Data Factory UI]()
-10. [Metadata Synchronization in DataOS]()
+3. [Create manifest file for an Operator](#create-a-manifest-for-operator)
+4. [Apply the Operator manifest](#apply-the-operator-manifest)
+5. [Verify Operator creation](#verify-operator-creation)
+6. [Manifest for Resource (external Resource)](#manifest-for-a-resource)
+7. [Apply the Resource manifest](#apply-the-resource-manifest)
+8. [Get Status of Resource](#get-status-of-pipeline-run)
+9. [Check Status on Azure Data Factory UI](#check-the-status-on-azure-data-factory-ui)
+10. [Metadata Synchronization in DataOS](#metadata-synchronization-in-dataos)
 
 #### **Implementing the Operator Interfaces**
 
-The first step in creating an operator is implementing three key interfaces: Reconciler, OController, and Message Handler Interface using the the [DataOS SDK-Go](https://bitbucket.org/rubik_/dataos-sdk-go). 
+The first step in creating an Operator is implementing three key interfaces: Reconciler, OController, and Message Handler Interface using the the [DataOS SDK-Go](https://bitbucket.org/rubik_/dataos-sdk-go). 
 
 <aside class="callout">
 🗣 Implementing the Operator interfaces requires a good understanding of <b>Kubernetes</b> and associated terminology. If the Operator is present within the DataOS context, you can directly proceed to <a href="/resources/operator/#yaml-manifest-for-resource">creating the Resource manifest for the external Resource.</a>
@@ -144,7 +144,7 @@ Sample Implementation for the interfaces can be found [here.](https://bitbucket.
 
 After implementing the required interfaces, dockerize your code and move the image to a docker container registry.
 
-#### **YAML manifest for Operator**
+#### **Create a Manifest for Operator**
 
 Once you have done that proceed to create a YAML manifest for your Operator. An Operator Resource YAML manifest can be structurally broken down into following sections:
 
@@ -288,7 +288,7 @@ You can also pass the Azure-specific Secrets seperately.
 
 <details><summary>How to pass Secrets as a Resource and refer them in a separate Resource?</summary>
     
-<b>Create a Secret Resource YAML</b>
+<b>Create a Secret Resource manifest</b>
     
 ```yaml
 name: ${{adf-operator}}
@@ -521,7 +521,7 @@ You can also access the details of any created Operator through the DataOS GUI i
 
 </center>
 
-#### **YAML manifest for Resource**
+#### **Manifest for a Resource**
 
 Now once we have created an Operator, we would need to create a Resource (external Resource) which is an Azure Data Factory pipeline that would be managed by this Operator. In DataOS, the process of creating external Resources involves utilizing a specific type of Resource called, aptly, "**Resource**." These Resources are categorized as second-class Resources, distinct from the first-class Resources like Workflow, Service, and Policy.
 
@@ -555,7 +555,7 @@ When creating Resources with this approach, the Operator's JSON Schema plays a v
 
 </aside>
 
-#### **Apply the Resource YAML**
+#### **Apply the Resource manifest**
 
 To trigger a pipeline run, you can apply the Resource YAML using the following command:
 

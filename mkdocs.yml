@@ -16,10 +16,13 @@ theme:
         - navigation.tracking
         - content.code.copy
         - content.code.annotate
-        - content.tabs.link
+        # - content.tabs.link
         - content.tooltips
 #          - toc.follow
 #          - toc.integrate
+        - search.suggest
+        # - search.highlighting
+        - search.share
     icon:
       admonition:
         note: octicons/tag-16
@@ -56,6 +59,7 @@ theme:
             name: Switch to light mode
 plugins:
     - search
+    - tags
     # - mkdocs-versioning:
     #     version: v0.2
 extra:
@@ -106,7 +110,8 @@ markdown_extensions:
       linenums_style: pymdownx-inline
       anchor_linenums: true
   - pymdownx.inlinehilite
-  - pymdownx.snippets
+  - pymdownx.snippets:
+      base_path: docs/
   - pymdownx.smartsymbols
   - pymdownx.tabbed:
       alternate_style: true
@@ -115,7 +120,7 @@ markdown_extensions:
           case: lower
   - pymdownx.tasklist
   - pymdownx.tilde
-#   - pymdownx.extra
+#  - pymdownx.extra
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
@@ -136,6 +141,7 @@ nav:
          - Overview: resources.md
          - Bundle: resources/bundle.md
          - Cluster: resources/cluster.md
+         - Database: resources/database.md
          - Compute: resources/compute.md
          - Depot: resources/depot.md
          - 'Instance Secret': resources/instance_secret.md 
@@ -172,7 +178,7 @@ nav:
          - Metis: interfaces/metis.md
          - Notebook: interfaces/notebook.md
          - Operations: interfaces/operations.md
-        #  - Superset: interfaces/superset.md
+         - Superset: interfaces/superset.md
          - Workbench: interfaces/workbench.md        
 
 # to be hidden from the top navigation bar on the webpages
