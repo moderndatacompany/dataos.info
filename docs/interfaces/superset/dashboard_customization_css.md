@@ -131,19 +131,19 @@ transform: translateX(-50%);
 
 ![Untitled](/interfaces/superset/dashboard_customization/h.png)
 
-`**position: absolute**`
+**`position: absolute`**
 
 When an element is positioned absolutely, it is removed from the normal flow of the document, and its position is calculated based on the nearest positioned ancestor (or the document itself if there is no positioned ancestor).
 
-`**top: 320px**`
+**`top: 320px`**
 
 Sets the distance from the top of the containing element.
 
-`**left:40%**`
+**`left:40%`**
 
 Positions the left edge of the title at 40% of the containing element's width.
 
-`**transform: translatex(-50%)**`
+**`transform: translatex(-50%)`**
 
 Used to horizontally center the title, adjusting it by 50% of its width.
 
@@ -160,6 +160,6 @@ Hide chart titles at your discretion using the provided CSS code:
 ![Untitled](/interfaces/superset/dashboard_customization/i.png)
 
 <aside class="callout">
-🗣 In Superset, `!important` can be used in custom CSS rules to ensure they take precedence over existing styles. While `!important` can be effective for overriding styles, it should be used sparingly to maintain code readability and avoid potential conflicts.
+🗣 In Superset, <code>!important</code> can be used in custom CSS rules to ensure they take precedence over existing styles. While `!important` can be effective for overriding styles, it should be used sparingly to maintain code readability and avoid potential conflicts.
 
 </aside>
