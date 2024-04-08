@@ -1,8 +1,8 @@
 # :resources-database: Database
 
-A Database [Resource](/resources/) in DataOS acts as a repository for storing transaction data, utilizing a managed Postgres relational database. It fulfills the transactional data storage needs of custom data applications developed on top of DataOS. Internal applications like [Lens](/docs/interfaces/lens.md), [Metis](/docs/interfaces/metis.md), etc., also leverage the Database Resource for their transactional data storage. Utilizing a [Service](./service.md) supported by the [Beacon Stack](./stacks/beacon.md) facilitates CRUD operations (Create, Read, Update, Delete) on data assets stored in the Database, ensuring smooth connectivity between the data application and the Database. For analytical operations, users can utilize the [Flare Stack](./stacks/flare.md) to move the data from transactional data storage to other [Depots](./depot.md) or [Lakehouses](./lakehouse.md).
+A Database [Resource](/resources/) in DataOS acts as a repository for storing transaction data, utilizing a managed Postgres relational database. It fulfills the transactional data storage needs of custom data applications developed on top of DataOS. Internal applications like [Lens](/docs/interfaces/lens.md), Metis, etc., also leverage the Database Resource for their transactional data storage. Utilizing a [Service](./service.md) supported by the [Beacon Stack](./stacks/beacon.md) facilitates CRUD operations (Create, Read, Update, Delete) on data assets stored in the Database, ensuring smooth connectivity between the data application and the Database. For analytical operations, users can utilize the [Flare Stack](./stacks/flare.md)to move the data from transactional data storage to other [Depots](./depot.md) or [Lakehouses](./lakehouse.md).
 
-<center>![Check Database](./database/database.png)</center>
+![Check Database](/resources/database/databases.png)
 <center><i>Database Resource</i></center>
 
 ???info "Info"
@@ -140,7 +140,7 @@ The Database-specific section of a Database manifest comprises attributes-specif
       migrate:
         includes:
           - {{migration-directory}}     # Address to all migrations (relative path)
-        command: {{migration-command}}   # ("up" or "down")
+        command: {{migration-command}}   # Specify the migration command (e.g., "up" or "drop table")
     ```
 === "Sample"
 
@@ -155,15 +155,15 @@ The table below describes the various attributes used for defining conditions:
 
 | Attribute          | Data Type | Default Value | Possible Values                 | Requirement |
 |--------------------|-----------|---------------|---------------------------------|-------------|
-| [`database`](./database/database_manifest_attributes.md#database)        | mapping    | none          | none                            | mandatory   |
-| [`migrate`](./database/database_manifest_attributes.md#migrate)       |     | none          | none                            | mandatory   |
-| [`includes`](./database/database_manifest_attributes.md#includes)         | string    | none          | any valid path                  | mandatory   |
-| [`includesInline`](./database/database_manifest_attributes.md#includesInline)   | object    | none          | Key-value pairs of strings      | optional    |
-| [`command`](./database/database_manifest_attributes.md#)          | string    | none          | up/down                         | mandatory   |
-| [`parameter`](./database/database_manifest_attributes.md#parameter)        | string    | none          | none                            | optional    |
+| `database`(./database/database_manifest_attributes.md#database)        | object    | none          | none                            | mandatory   |
+| `migrate`(./database/database_manifest_attributes.md#migrate)       | object    | none          | none                            | mandatory   |
+| `includes`(./database/database_manifest_attributes.md#includes)         | string    | none          | any valid path                  | mandatory   |
+| `includesInline`(./database/database_manifest_attributes.md#includesInline)   | object    | none          | Key-value pairs of strings      | optional    |
+| `command`(./database/database_manifest_attributes.md#)          | string    | none          | up/down                         | mandatory   |
+| `parameter`(./database/database_manifest_attributes.md#parameter)        | string    | none          | none                            | optional    |
 
 
-For more information about the below attributes, refer to the link [Attributes of Database](/docs/resources/database/database_manifest_attributes.md)
+For more information about the below attributes, refer to the link [Attributes of Database](./database/yaml_configurations_attributes.md)
 
 
 #### **Migrate Configuration**
@@ -251,23 +251,6 @@ These comprises of two ways to define migrations in migration attribute.
               created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
         ```
 
-???info "📖 Best Practice"
-
-      - Numeric Prefixing:
-          Prefix filenames with a numeric sequence for a clear execution order.
-      - File Naming Format:
-          Use `<anything>.up.sql` and `<anything>.down.sql` for migration files.
-
-      - Example:
-
-      ```sql
-      001_initialize.up.sql
-      001_initialize.down.sql
-      002_add_column.up.sql
-      002_add_column.down.sql
-      003_update_data.up.sql
-      003_update_data.down.sql
-      ```
 
 ##### **command**
 
@@ -310,11 +293,11 @@ After successfully creating the Database manifest, it’s time to apply manifest
 === "Example"
 
     ```bash
-    dataos-ctl resource apply -f database.yaml -w sandbox
+    dataos-ctl resource apply -f database.yaml -w public
     # Expected Output
     INFO[0000] 🛠 apply...                                   
-    INFO[0000] 🔧 applying(sandbox) product_db:v1:database... 
-    INFO[0027] 🔧 applying(sandbox) product_db:v1:database...created 
+    INFO[0000] 🔧 applying(public) product_db:v1:database... 
+    INFO[0027] 🔧 applying(public) product_db:v1:database...created 
     INFO[0027] 🛠 apply...complete
     ```
 
@@ -333,11 +316,11 @@ To check the successful creation of database in DataOS use the following two met
 === "Example"
 
     ```bash
-    dataos-ctl resource get -t database -w sandbox
+    dataos-ctl resource get -t database -w public 
     # Expected Output
       NAME  | VERSION |   TYPE   | WORKSPACE | STATUS | RUNTIME |     OWNER       
     --------|---------|----------|-----------|--------|---------|-----------------
-    product_db | v1      | database | sandbox    | active |         | aayushisolanki  
+    product_db | v1      | database | public    | active |         | aayushisolanki  
     ```
 
 If the status is ‘active’, re run or use `-r` to refresh the command to get runtime as ‘succeeded’.
@@ -353,7 +336,7 @@ To retrieve the list of all Databases created in the Workspace, add the `-a` fla
 
 === "Example"
      ```shell
-     dataos-ctl resource get -t database -w sandbox -a
+     dataos-ctl resource get -t database -w public -a
      ```
 
 ### **Create a Policy**
@@ -383,7 +366,7 @@ For detailed customization options and additional attributes of the Policy Resou
 === "Example"
 
     ```bash
-    dataos-ctl resource apply -f policy.yaml  -w sandbox
+    dataos-ctl resource apply -f policy.yaml  -w public
     ```
 
 ### **Create a Service**
@@ -406,7 +389,7 @@ For detailed customization options and additional attributes of the Resource Sec
 === "Example"
 
     ```bash
-    dataos-ctl resource apply -f beacon_service_up.yaml -w sandbox
+    dataos-ctl resource apply -f beacon_service_up.yaml -w public 
     ```
 
 #### **Verify Service Creation**
@@ -414,7 +397,7 @@ For detailed customization options and additional attributes of the Resource Sec
 To check the successful completion of Service use the following command:
 
 ```bash
-dataos-ctl resource get -t service -w sandbox
+dataos-ctl resource get -t service -w public 
 ```
 
 #### **Expected Output**
@@ -422,9 +405,9 @@ dataos-ctl resource get -t service -w sandbox
 ```bash
   		NAME      | VERSION |  TYPE   | WORKSPACE | STATUS |  RUNTIME  |     OWNER       
 ----------------|---------|---------|-----------|--------|-----------|-----------------
-  employee-test | v1      | service | sandbox   | active | running:1 | iamgroot
-  product-test  | v1      | service | sandbox    | active | running:1 | iamgroot  
-  products-test | v1      | service | sandbox   | active | running:1 | iamgroot
+  employee-test | v1      | service | public    | active | running:1 | iamgroot
+  product-test  | v1      | service | public    | active | running:1 | iamgroot  
+  products-test | v1      | service | public    | active | running:1 | iamgroot
 ```
 
 you can now access the PostgreSQL database using the exposed API by
@@ -441,6 +424,7 @@ To validate the outcome, execute a request to the designated URL:
 
     ```shells
     https://humorous-adder.dataos.app/products_db/api/v1/products
+    ```
     #Expected Output
     ```json
         0
@@ -469,7 +453,7 @@ When a Database creation or service encounters errors, data developers can emplo
 - **Check Database and Service Logs**
 
   ```shell
-  dataos-ctl resources get -t database -w sandbox -n product_db -d
+  dataos-ctl resources get -t database -w public -n product_db -d
   ```
 #### **Deleting a Database and Service**
 
@@ -500,6 +484,8 @@ Similarly to delete a Service replace type with Service
 
 ## Possible Errors
 
+
+
 ### Dependency Error
 
 During the deletion of a Database, several errors may arise, particularly when dependencies exist or due to various operational issues.
@@ -507,7 +493,7 @@ During the deletion of a Database, several errors may arise, particularly when d
 === "Error"
         
       ```bash
-      Error: Unable to delete the database 'force' as it is a dependency of 'service:v1:force-test:sandbox'.
+      Error: Unable to delete the database 'force' as it is a dependency of 'service:v1:force-test:public'.
       ```
         
 ===  "Solution"
@@ -516,13 +502,13 @@ During the deletion of a Database, several errors may arise, particularly when d
     
       ```bash
       # Get status of services
-      dataos-ctl get -t service -w sandbox
+      dataos-ctl get -t service -w public 
 
       # Delete the dependent service
       dataos-ctl resource delete -t service -n force-test 
       ```
 
 
-<!-- ## Database Usage Examples
+## Database Usage Examples
 
-- [] -->
+- []

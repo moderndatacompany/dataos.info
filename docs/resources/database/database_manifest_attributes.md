@@ -1,10 +1,28 @@
 # Attributes of Database manifest
 
-**Structure of Database YAML configuration**
+**Structure of Database manifest**
+```yaml
+ database:
+    migrate:                  #mandatory
+        includes: 
+            - migrations/     # all up & down sql files.
 
-**Attributes configuration**
+        command: up           # in case of drop table, write down.
+        
+        includesInline: |
+	        "CREATE TABLE users (
+	        id SERIAL PRIMARY KEY,
+	        username VARCHAR(50) NOT NULL,
+	        email VARCHAR(100) NOT NULL"
+	        
+        parameter: example
 
-`database` 
+     manageAsUser:          #string       
+```
+
+**Database-specific section Attributes**
+
+## `database` 
 
 **Description:** The `database` attribute is used to define a Database Resource in YAML. This mapping defines the configuration for a Database within the DataOS environment.
 
@@ -19,7 +37,7 @@ database:
     {} # database attributes go here
 ```
 
-`migrate`
+### **`migrate`**
 
 **Description:** Configures database migration settings, allowing the application of changes to the database schema over time for seamless updates as the application evolves. It specifies the directory and command for managing migrations.
 
@@ -35,7 +53,7 @@ migration:
 	command:
 ```
 
-`includes`
+#### **`includes`**
 
 **Description:** Points to the directory (`products_migration/`) containing all migration files. These files provide instructions for modifying the database schema, enabling organized management of database changes and versioning.
 
@@ -50,7 +68,7 @@ includes:
 	- {{ my_migrations/}}
 ```
 
-`includesInline`
+#### **`includesInline`**
 
 **Description:** It is an object property that uses a pattern property to allow keys of any string and values that must be strings. It is used to represent inline or embedded migration scripts directly within the configuration.
 
@@ -66,7 +84,7 @@ includesInline:
   script2: "ALTER TABLE users ADD COLUMN email VARCHAR(255);"
 ```
 
-`command`
+#### **`command`**
 
 **Description:** Specifies the type of migration operation to be performed. In this case, "up" signifies applying migrations. Adjust accordingly for rollback operations, such as "down".
 
@@ -80,3 +98,20 @@ includesInline:
 migrate:
 	command:up/down
 ```
+
+#### **`parameter`**
+
+**Description:** 
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | optional | none | none |
+
+
+**Example usage:**
+
+```yaml
+migrate:
+	parameter: 3
+```
+
