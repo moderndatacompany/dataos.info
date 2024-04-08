@@ -1,0 +1,25 @@
+name: {{filter-health-persons}}
+version: v1
+type: policy
+tags:
+  - {{dataos:type:resource}}
+  - {{dataos:type:cluster-resource}}
+  - {{dataos:resource:policy}}
+  - {{dataos:layer:user}}
+description: {{data policy to filter according to ethnicity type is equals Not Span/Hispanic}}
+owner: {{iamgroot}}
+layer: user
+policy:
+  data:
+    dataset_id: {{icebase.retail.city}}
+    priority: {{75}}
+    type: filter
+    filters:
+      - column: {{proc_code}}
+        operator: {{equals}}
+        value: {{CAR004}}
+    selector:
+      user:
+        match: {{any}}
+        tags:
+          - {{roles:id:limited-access}}

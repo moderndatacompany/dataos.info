@@ -15,6 +15,8 @@ To establish a connection to Kafka, you need to provide the following informatio
 
 To create a Depot of type 'KAFKA', utilize the following template:
 
+=== "v1"
+
 ```yaml
 name: {{depot-name}}
 version: v1
@@ -34,3 +36,23 @@ depot:
     schemaRegistryUrl: {{http://20.9.63.231:8081/}}
 ```
 
+=== "v2alpha"
+
+```yaml
+name: {{depot-name}}
+version: v2alpha
+type: depot
+tags:
+  - {{tag1}}
+owner: {{owner-name}}
+layer: user
+depot:
+  type: KAFKA                     
+  description: {{description}}
+  external: {{true}}
+  kafka:                           
+    brokers:
+      - {{broker1}}
+      - {{broker2}}
+    schemaRegistryUrl: {{http://20.9.63.231:8081/}}
+```

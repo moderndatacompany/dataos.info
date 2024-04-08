@@ -1,180 +1,94 @@
 # :resources-database: Database
 
-Database as a [Resource](/resources/) within DataOS is declared for creating a database within DataOS. It is treated as a first-class resource, encapsulating the fundamental unit for storing and organizing structured data using PostgreSQL. The classification of Databases as a resource type within the DataOS ecosystem allows for systematic management, provisioning, and utilization of databases in a standardized manner.
+A Database [Resource](/resources/) in DataOS acts as a repository for storing transaction data, utilizing a managed Postgres relational database. It fulfills the transactional data storage needs of custom data applications developed on top of DataOS. Internal applications like [Lens](/docs/interfaces/lens.md), [Metis](/docs/interfaces/metis.md), etc., also leverage the Database Resource for their transactional data storage. Utilizing a [Service](./service.md) supported by the [Beacon Stack](./stacks/beacon.md) facilitates CRUD operations (Create, Read, Update, Delete) on data assets stored in the Database, ensuring smooth connectivity between the data application and the Database. For analytical operations, users can utilize the [Flare Stack](./stacks/flare.md) to move the data from transactional data storage to other [Depots](./depot.md) or [Lakehouses](./lakehouse.md).
 
-<aside class=”callout”>
+<center>![Check Database](./database/database.png)</center>
+<center><i>Database Resource</i></center>
 
- Database is a Workspace-level Resource type.
+???info "Info"
 
-</aside>
+    A Database is a Workspace-level Resource-type, implying that its scope is limited to a particular Workspace.
 
 
 <div class="grid cards" markdown>
 
--   :material-card-bulleted-settings-outline:{ .lg .middle } **Key Features of Database**
+-   :material-card-bulleted-settings-outline:{ .lg .middle } **How to create and manage a Database?**
 
     ---
 
-    Understand the need of Database as a Resource in DataOS.
+    Learn how to create and manage a Database in DataOS.
 
-    [:octicons-arrow-right-24: Key Features](#key-features-of-database)
+    [:octicons-arrow-right-24: Create and Manage Database](#how-to-create-and-manage-a-database)
 
 
--   :material-list-box-outline:{ .lg .middle } **How to create a Database?**
-
-    ---
-
-    Learn how to create a database yaml specific to PostgreSQL.
-
-    [:octicons-arrow-right-24: Create a Database](#how-to-create-a-database?)
-
--   :material-network-pos:{ .lg .middle } **Possible Errors**
+-   :material-network-pos:{ .lg .middle } **How to configure a database manifest file?**
 
     ---
 
-    Discover potential errors and solutions for each
+    Discover how to configure a Database manifest file by adjusting its attributes.
 
     
-    [:octicons-arrow-right-24: Possible Errors](#possible-errors)
+    [:octicons-arrow-right-24: Database Attributes](./database/yaml_configurations_attributes.md)
 
--   :material-content-duplicate:{ .lg .middle } **Case Scenarios**
+
+-   :material-list-box-outline:{ .lg .middle } **Possible Errors**
 
     ---
 
-    Understand a end to end use case of using a database
+    Explore common errors encountered during configuration and troubleshooting strategies.
 
-    [:octicons-arrow-right-24:  Possible errors](#case-scenarios)
+
+    [:octicons-arrow-right-24: Explore possible errors](#possible-errors)
+
+
+-   :material-content-duplicate:{ .lg .middle } **Database Usage Example**
+
+    ---
+
+    Explore examples showcasing the usage of Database in various scenarios.
+
+
+    [:octicons-arrow-right-24:  Database Usage Examples](#database-usage-examples)
 
 </div>
 
 
+## How to Create and Manage a Database?
 
-## Key Features of Database
+To create a Database in DataOS, follow the below steps:
 
-### **Transactional Data Storage**
-
-A Database serves as a Resource, guaranteeing systematic storage of data generated and consumed by various applications within DataOS. The Beacon Service, through its exposed API endpoints, facilitates a seamless connection between applications and the Database, fostering a resourceful data storage hub.
-
-### **CRUD Operations for Data Assets**
-
-The Beacon Service enables CRUD operations (Create, Read, Update, Delete) on data assets stored in the PostgreSQL database. This functionality is pivotal for applications within DataOS to manipulate and interact with the underlying data efficiently.
-
-To learn more about the Beacon refer [Becon Resource](/resources/stacks/beacon/#configure-beacon-stack-specific-section)
+ - Create a Database manifest file
+ - Apply the Database manifest file
+ - Verify Database creation
 
 
-## How to Create a Database?
-
-To create a Database Resource specific to PostgreSQL define a YAML configuration file create a dedicated folder `migration` to store all Database migration files.
-
-### **Create a Migration File**
-
-Creating a migration in SQL typically involves defining changes to a Database schema, such as creating or altering tables, adding or modifying columns, or establishing relationships between tables.
-
-In your migration folder, create a new SQL file, e.g., `001_migration_up.sql`, and write the migration script to define the changes to the Database schema.
-
-**Database Migrations**
-
-=== "Up Migration"
-
-    The "up" migration is responsible for applying changes to the database schema, facilitating the transition to a newer version. 
-
-    ```sql
-    -- Creating a new table
-    CREATE TABLE users (
-        id SERIAL PRIMARY KEY,
-        username VARCHAR(50) NOT NULL,
-        email VARCHAR(100) NOT NULL
-    );
-
-    -- Adding a new column to an existing table
-    ALTER TABLE users
-    ADD COLUMN published_at TIMESTAMP;
-    ```
-=== "Down Migration"
-
-    Conversely, the "down" migration serves the purpose of reverting changes made by the "up" migration. This is crucial for scenarios requiring a rollback to a previous version. 
-
-    ```sql
-    -- Dropping the new table
-    DROP TABLE IF EXISTS users;
-
-    -- Removing the added column
-    ALTER TABLE users
-    DROP COLUMN IF EXISTS published_at;
-    ```
-
-???note "Example Database migration"
-
-    ```sql  title="initial.up.sql"
-    CREATE TABLE IF NOT EXISTS products(
-
-        sproduct_id SERIAL PRIMARY KEY,
-        product_name VARCHAR(100) NOT NULL,
-        category VARCHAR(50),
-        price NUMERIC(10, 2) NOT NULL,
-        stock_quantity INT NOT NULL,
-        description TEXT,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    );
-    ```
-    ```sql title="insert.up.sql"
-    INSERT INTO products (id, product_name, category, price, stock_quantity)
-    VALUES
-      (1, 'Laptop', 'Electronics', 999.99, 20),
-      (2, 'Smartphone', 'Electronics', 499.99, 30),
-      (3, 'Coffee Maker', 'Appliances', 79.99, 15),
-      (4, 'Running Shoes', 'Apparel', 59.99, 25),
-      (5, 'Backpack', 'Accessories', 39.99, 40);
-    ```
-
-
-!!!info "📖 Best Practice"
-
-    - Numeric Prefixing:
-        Prefix filenames with a numeric sequence for a clear execution order.
-    - File Naming Format:
-        Use `<anything>.up.sql` and `<anything>.down.sql` for migration files.
-    - Serialization for Multiple Operations:
-        Serialize filenames when multiple operations are needed for the same update.
-
-    - Example:
-
-    ```sql
-    001_initialize.up.sql
-    001_initialize.down.sql
-    002_add_column.up.sql
-    002_add_column.down.sql
-    003_update_data.up.sql
-    003_update_data.down.sql
-    ```
-
-
-### **Create a manifest file**
+### **Create a Database manifest file**
 
 A sample Database mainfest file is given below:
 
 ???note "Example Database manifest"
+ 
+    === "Embeded migration"
 
-    ```yaml
-    # Resource-meta section (1)
-    name: product_db   #database name
-    version: v1                      
-    type: database
-    description: product_db database created for testing.
-    tags:
-        - database
-    # Database specific section (2)
-    database:
-    migrate:
-        includes:
-            - migrations/     # all up & down sql files.
-        command: up           # in case of drop table, write down.
-    ```
+          ```yaml
+          # Resource-meta section (1)
+          name: product_db   #database name
+          version: v1                      
+          type: database
+          description: product_db database created for testing.
+          tags:
+              - database
+          # Database specific section (2)
+          database:
+          migrate:
+              includes:
+                  - migrations/     # all up & down sql files.
+              command: up           # in case of drop table, write down.
+          ```
 
-    1.  [Resource meta section](#resource-meta-section) within a manifest file comprises metadata attributes universally applicable to all [Resource-types](/resources/types_of_dataos_resources/). To learn more about how to configure attributes within this section, refer to the link: [Attributes of Resource meta section](/resources/resource_attributes/).
+        1.  [Resource meta section](#resource-meta-section) within a manifest file comprises metadata attributes universally applicable to all [Resource-types](/resources/types_of_dataos_resources/). To learn more about how to configure attributes within this section, refer to the link: [Attributes of Resource meta section](/resources/resource_attributes/).
 
-    2.  [Database-specific section](#database-specific-section) within a manifest file comprises attributes specific to the Database Resource. To learn more about how to configure attributes of Database-specific section, refer the 
-
+        2.  [Database-specific section](#database-specific-section) within a manifest file comprises attributes specific to the Database Resource. To learn more about how to configure attributes of Database-specific section, refer the [Attributes of Database-specific section](./database/database_manifest_attributes.md)
 
 
 The YAML configuration file for creating a Database has the following sections:
@@ -182,14 +96,9 @@ The YAML configuration file for creating a Database has the following sections:
 - [Resource meta section](#resource-meta-section)
 - [Database-specific Section](#database-specific-section)
 
-
-<!-- **Configuring the Resource meta section** -->
-
-Resource meta section is common for declaring all kinds of resources in DataOS however the version, name and type change according to resource type but are mandatory fields
-
 #### **Resource meta section**
 
-Resource meta section is common for declaring all kinds of resources in DataOS however the version, name and type change according to resource type but are mandatory fields. The provided codeblock elucidates the requisite attributes for this section:
+In DataOS, a Database is categorized as a [Resource-type](./types_of_dataos_resources.md). The Resource meta section within the YAML manifest encompasses attributes universally applicable to all Resource-types. The provided YAML codeblock elucidates the requisite attributes for this section:
 
 === "Syntax"
 
@@ -221,9 +130,8 @@ For more information about the various attributes in Resource meta section, refe
 
 #### **Database-specific section**
 
-This section is intended for defining database migration settings within the resource section of DataOS. Crucial fields like migrate, includes are mandatory. The configuration allows you to specify the migration directory and command (e.g., "up" or "drop table") for effective management of database schema changes.
+The Database-specific section of a Database manifest comprises attributes-specific to the Database Resource.
 
-The below YAML provides a high-level structure for the Database-specific section:
 
 === "Syntax"
 
@@ -232,7 +140,7 @@ The below YAML provides a high-level structure for the Database-specific section
       migrate:
         includes:
           - {{migration-directory}}     # Address to all migrations (relative path)
-        command: {{migration-command}}   # Specify the migration command (e.g., "up" or "drop table")
+        command: {{migration-command}}   # ("up" or "down")
     ```
 === "Sample"
 
@@ -245,35 +153,168 @@ The below YAML provides a high-level structure for the Database-specific section
     ```
 The table below describes the various attributes used for defining conditions:
 
-| Attribute   | Data Type | Default Value                             | Possible Value                  | Requirement |
-|-------------|-----------|-------------------------------------------|---------------------------------|-------------|
-| `database`  | object  | none                                      | none                            | mandatory   |
-| `migrate`   | object  | none                                      | none                            | mandatory   |
-| `includes`  | string  | none                                      | none                            | mandatory   |
-| `command`   | string  | none                                      | none                            | mandatory   |
-| `description` | string | none                                      | none                            | optional    |
-| `owner`     | string  | ID of the user who deploys the Resource  |                                 | optional    |
-| `layer`     | string  | user                                      |                                 | optional    |
+| Attribute          | Data Type | Default Value | Possible Values                 | Requirement |
+|--------------------|-----------|---------------|---------------------------------|-------------|
+| [`database`](./database/database_manifest_attributes.md#database)        | mapping    | none          | none                            | mandatory   |
+| [`migrate`](./database/database_manifest_attributes.md#migrate)       |     | none          | none                            | mandatory   |
+| [`includes`](./database/database_manifest_attributes.md#includes)         | string    | none          | any valid path                  | mandatory   |
+| [`includesInline`](./database/database_manifest_attributes.md#includesInline)   | object    | none          | Key-value pairs of strings      | optional    |
+| [`command`](./database/database_manifest_attributes.md#)          | string    | none          | up/down                         | mandatory   |
+| [`parameter`](./database/database_manifest_attributes.md#parameter)        | string    | none          | none                            | optional    |
 
-For more information about the below attributes, refer to the link [Attributes of Database](./database/yaml_configurations_attributes.md)
+
+For more information about the below attributes, refer to the link [Attributes of Database](/docs/resources/database/database_manifest_attributes.md)
+
+
+#### **Migrate Configuration**
+
+The migration in Database Resource typically involves defining changes to a Database schema, such as creating or altering tables, adding or modifying columns, or establishing relationships between tables.
+
+???note "Example migration"
+
+    ```sql  title="001_create.up.sql"
+
+        CREATE TABLE user (
+        user_id INT PRIMARY KEY,
+        username VARCHAR(50),
+        email VARCHAR(100),
+        created_at TIMESTAMP
+        );
+    ```
+    ```sql title="002_insert.up.sql"
+        INSERT INTO user (user_id, username, email, created_at) VALUES
+        (1, 'JohnDoe', 'john@example.com', '2024-03-29 10:00:00'),
+        (2, 'JaneSmith', 'jane@example.com', '2024-03-29 11:00:00'),
+        (3, 'AliceJones', 'alice@example.com', '2024-03-29 12:00:00');
+
+        -- Removing the added column
+        ALTER TABLE users
+        DROP COLUMN IF EXISTS created_at;
+    ```
+    ``` sql title="0021_drop.down.sql"
+    -- Dropping the new table
+        DROP TABLE IF EXISTS users;
+    ```
+
+These comprises of two ways to define migrations in migration attribute.
+
+- Embed an external directory for migration.
+- Provide the migration within the Database manifest.
+
+===  "External to manifest"
+
+    To embed an external scripts for migration, create a folder with name `migration`. In your migration folder, create a new SQL file, e.g., `001_migration_up.sql`, and write the migration script to define the changes to the Database schema.
+
+    === "Syntax"
+
+          ```yaml
+          migrate:
+            includes:
+              - ${migration_folder_path}  #address to all migrations
+          ```
+    === "Example"
+        
+          ```yaml
+          migrate:
+            includes:
+              - migration/
+          ```
+
+===  "Embedded within manifest"
+
+      Inline migration involves embedding migration logic directly within the application 
+      code or database management tool. While simpler to implement for small projects, it may lead to complexity for long complex migrations.
+
+
+    === "Syntax"
+
+        ```yaml
+        migrate:
+          includesInline:
+            migration: |
+              ${sql script}
+        ```
+
+    === "Example"
+
+        ```yaml
+        migrate:
+          includesInline:
+            migration: |
+              CREATE TABLE IF NOT EXISTS products(
+              sproduct_id SERIAL PRIMARY KEY,
+              product_name VARCHAR(100) NOT NULL,
+              category VARCHAR(50),
+              price NUMERIC(10, 2) NOT NULL,
+              stock_quantity INT NOT NULL,
+              description TEXT,
+              created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+        ```
+
+???info "📖 Best Practice"
+
+      - Numeric Prefixing:
+          Prefix filenames with a numeric sequence for a clear execution order.
+      - File Naming Format:
+          Use `<anything>.up.sql` and `<anything>.down.sql` for migration files.
+
+      - Example:
+
+      ```sql
+      001_initialize.up.sql
+      001_initialize.down.sql
+      002_add_column.up.sql
+      002_add_column.down.sql
+      003_update_data.up.sql
+      003_update_data.down.sql
+      ```
+
+##### **command**
+
+The migration attribute in Database consists of two commands, one to migrate `up` and another to migrate `down`. The `up` migration is responsible for applying changes to the database schema, facilitating the transition to a newer version. Conversely, the `down` migration serves the purpose of reverting changes made by the `up` migration. This is crucial for scenarios requiring a rollback to a previous version.
+
+
+=== "Syntax"
+
+      ```yaml hl_lines="5"
+      database:                              
+        migrate:
+          includes:
+              - migration/ 
+          command: ${up}      # in case of drop table, write `down`
+      ```
+
+
+=== "Example"
+      
+      ```yaml hl_lines="5"
+      database:                               
+        migrate:
+          includes:
+              - migration/ 
+          command: up        # in case of drop table, write `down`
+      ```                 
+
+![Database migration](/resource/database/migration.png)
 
 #### **Apply the Database manifest**
 
-After successfully creating the Database YAML file, it’s time to apply manifest to the resource-workspace in the DataOS environment. To apply the Database YAML file, utilize the `apply` command.
+After successfully creating the Database manifest, it’s time to apply manifest to the resource-workspace in the DataOS environment. To apply the Database manifest, utilize the `apply` command.
 
 === "Command"
 
     ```bash
-    dataos-ctl apply -f ${yaml-file-path} -w ${workspace-name}
+    dataos-ctl resource apply -f ${manifest-file-path} -w ${workspace-name}
     ```
+
 === "Example"
 
     ```bash
-    dataos-ctl resource apply -f database.yaml -w public
+    dataos-ctl resource apply -f database.yaml -w sandbox
     # Expected Output
     INFO[0000] 🛠 apply...                                   
-    INFO[0000] 🔧 applying(public) product_db:v1:database... 
-    INFO[0027] 🔧 applying(public) product_db:v1:database...created 
+    INFO[0000] 🔧 applying(sandbox) product_db:v1:database... 
+    INFO[0027] 🔧 applying(sandbox) product_db:v1:database...created 
     INFO[0027] 🛠 apply...complete
     ```
 
@@ -292,18 +333,19 @@ To check the successful creation of database in DataOS use the following two met
 === "Example"
 
     ```bash
-    dataos-ctl resource get -t database -w public 
-
+    dataos-ctl resource get -t database -w sandbox
     # Expected Output
-
       NAME  | VERSION |   TYPE   | WORKSPACE | STATUS | RUNTIME |     OWNER       
     --------|---------|----------|-----------|--------|---------|-----------------
-    product_db | v1      | database | public    | active |         | aayushisolanki  
+    product_db | v1      | database | sandbox    | active |         | aayushisolanki  
     ```
 
 If the status is ‘active’, re run or use `-r` to refresh the command to get runtime as ‘succeeded’.
 
-- **Retrieve All Databases in a Workspace:** To retrieve the list of all Databases created in the Workspace, add the `-a` flag to the command:
+- **Retrieve All Databases in a Workspace:**
+
+To retrieve the list of all Databases created in the Workspace, add the `-a` flag to the command:
+ 
 === "Command"
      ```shell
      dataos-ctl resource get -t database -w ${workspace-name} -a
@@ -311,7 +353,7 @@ If the status is ‘active’, re run or use `-r` to refresh the command to get 
 
 === "Example"
      ```shell
-     dataos-ctl resource get -t database -w public -a
+     dataos-ctl resource get -t database -w sandbox -a
      ```
 
 ### **Create a Policy**
@@ -341,7 +383,7 @@ For detailed customization options and additional attributes of the Policy Resou
 === "Example"
 
     ```bash
-    dataos-ctl resource apply -f policy.yaml  -w public
+    dataos-ctl resource apply -f policy.yaml  -w sandbox
     ```
 
 ### **Create a Service**
@@ -364,15 +406,15 @@ For detailed customization options and additional attributes of the Resource Sec
 === "Example"
 
     ```bash
-    dataos-ctl resource apply -f beacon_service_up.yaml -w public 
+    dataos-ctl resource apply -f beacon_service_up.yaml -w sandbox
     ```
 
-#### **Verify Creation**
+#### **Verify Service Creation**
 
 To check the successful completion of Service use the following command:
 
 ```bash
-dataos-ctl resource get -t service -w public 
+dataos-ctl resource get -t service -w sandbox
 ```
 
 #### **Expected Output**
@@ -380,44 +422,43 @@ dataos-ctl resource get -t service -w public
 ```bash
   		NAME      | VERSION |  TYPE   | WORKSPACE | STATUS |  RUNTIME  |     OWNER       
 ----------------|---------|---------|-----------|--------|-----------|-----------------
-  employee-test | v1      | service | public    | active | running:1 | iamgroot
-  product-test  | v1      | service | public    | active | running:1 | iamgroot  
-  products-test | v1      | service | public    | active | running:1 | iamgroot
+  employee-test | v1      | service | sandbox   | active | running:1 | iamgroot
+  product-test  | v1      | service | sandbox    | active | running:1 | iamgroot  
+  products-test | v1      | service | sandbox   | active | running:1 | iamgroot
 ```
 
-#### **Validate the outcome**
+you can now access the PostgreSQL database using the exposed API by
 
 To validate the outcome, execute a request to the designated URL:
 
 === "Syntax"
 
     ```shell
-    https://${current_enviroment}.dataos.app/${table_name}/api/v1
+    https://${current_enviroment}.dataos.app/${database_path}/{table_name}
     ```
 
 === "Example"
 
     ```shells
-    https://humorous-adder.dataos.app/product/api/v1
+    https://humorous-adder.dataos.app/products_db/api/v1/products
+    #Expected Output
+    ```json
+        0
+    id              1
+    product_name    "Laptop"
+    category        "Electronics"
+    price           999.99
+    stock_quantity  20
+    1
+    id              2
+    product_name    "Smartphone"
+    category        "Electronics"
+    price           499.99
+    stock_quantity  30
     ```
 
 This action will enable verification of the expected result by accessing the provided endpoint.
 
-
-#### **Accessing Data**
-
-To view the contents of the newly established database, simply extend the API endpoint with /tablename in browser.
-
-=== "Syntax"
-
-    ```shell
-    https://humorous-adder.dataos.app/${database_name}/api/v1/${tablename}
-    ```
-=== "Example"
-
-    ```shell
-    https://humorous-adder.dataos.app/product_db/api/v1/products
-    ```
 ### **Managing a Database**
 
 #### **Debugging a Database**
@@ -428,7 +469,7 @@ When a Database creation or service encounters errors, data developers can emplo
 - **Check Database and Service Logs**
 
   ```shell
-  dataos-ctl resources get -t database -w public -n product_db -d
+  dataos-ctl resources get -t database -w sandbox -n product_db -d
   ```
 #### **Deleting a Database and Service**
 
@@ -454,11 +495,34 @@ There are 3 ways to delete Database(or any Resource):
     dataos-ctl delete -f ${file-path}
     ```
 
-To delete a Service replace type with Service
+Similarly to delete a Service replace type with Service
+
 
 ## Possible Errors
 
+### Dependency Error
 
-## Case Scenarios
+During the deletion of a Database, several errors may arise, particularly when dependencies exist or due to various operational issues.
 
-- []
+=== "Error"
+        
+      ```bash
+      Error: Unable to delete the database 'force' as it is a dependency of 'service:v1:force-test:sandbox'.
+      ```
+        
+===  "Solution"
+
+    Identify and eliminate the dependent service prior to Database deletion and delete it
+    
+      ```bash
+      # Get status of services
+      dataos-ctl get -t service -w sandbox
+
+      # Delete the dependent service
+      dataos-ctl resource delete -t service -n force-test 
+      ```
+
+
+<!-- ## Database Usage Examples
+
+- [] -->

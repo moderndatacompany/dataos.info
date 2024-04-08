@@ -1,0 +1,21 @@
+name: {{"sanitygcs01"}}
+version: v2alpha
+type: depot
+tags:
+  - {{GCS}}
+  - {{Sanity}}
+layer: user
+depot:
+  type: GCS
+  description: {{"GCS depot for sanity"}}
+  compute: {{runnable-default}}
+  gcs:
+    bucket: {{"airbyte-minio-testing"}}
+    relativePath: {{"/sanity"}}
+  external: {{true}}
+  secrets:
+    - name: {{gcs-instance-secret-name}}-r
+      allkeys: true
+
+    - name: {{gcs-instance-secret-name}}-rw
+      allkeys: true

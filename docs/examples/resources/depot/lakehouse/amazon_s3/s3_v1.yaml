@@ -1,0 +1,22 @@
+name: {{depot-name}}
+version: v1
+type: depot
+tags:
+  - {{tag1}}
+owner: {{owner-name}}
+layer: user
+description: {{description}}
+depot:
+  type: S3                                          
+  external: {{true}}
+  spec:                                            
+    scheme: {{s3a}}
+    bucket: {{project-name}}
+    relativePath: {{relative-path}}
+    format: {{format}}
+  secrets:
+    - name: {{s3-instance-secret-name}}-r
+      allkeys: true
+
+    - name: {{s3-instance-secret-name}}-rw
+      allkeys: true

@@ -13,22 +13,45 @@ To establish a connection with Pulsar, the following information is required:
 
 To create a Depot of type 'PULSAR,' utilize the following template:
 
-```yaml
-name: {{depot-name}}
-version: v1
-type: depot
-tags:
-  - {{tag1}}
-  - {{tag2}}
-owner: {{owner-name}}
-layer: user
-depot:
-  type: PULSAR       
-  description: {{description}}
-  external: {{true}}
-  spec:              
-    adminUrl: {{admin-url}}
-    serviceUrl: {{service-url}}
-    tenant: {{system}}
-# Ensure to obtain the correct tenant name and other specifications from your organization.
-```
+=== "v1"
+    ```yaml
+    name: {{depot-name}}
+    version: v1
+    type: depot
+    tags:
+      - {{tag1}}
+      - {{tag2}}
+    owner: {{owner-name}}
+    layer: user
+    depot:
+      type: PULSAR       
+      description: {{description}}
+      external: {{true}}
+      spec:              
+        adminUrl: {{admin-url}}
+        serviceUrl: {{service-url}}
+        tenant: {{system}}
+    # Ensure to obtain the correct tenant name and other specifications from your organization.
+    ```
+
+=== "v2alpha"
+
+    ```yaml
+    name: {{depot-name}}
+    version: v2alpha
+    type: depot
+    tags:
+      - {{tag1}}
+      - {{tag2}}
+    owner: {{owner-name}}
+    layer: user
+    depot:
+      type: PULSAR       
+      description: {{description}}
+      external: {{true}}
+      pulsar:              
+        adminUrl: {{admin-url}}
+        serviceUrl: {{service-url}}
+        tenant: {{system}}
+    # Ensure to obtain the correct tenant name and other specifications from your organization.
+    ```
