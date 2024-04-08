@@ -985,18 +985,11 @@ INFO[0001] 🗑 delete...complete
 
 The Attributes of Lakehouse manifest define the key properties and configurations that can be used to specify and customize Lakehouse Resources within a manifest file. These attributes allow data developers to define the structure and behavior of their Lakehouse Resources. For comprehensive information on each attribute and its usage, please refer to the link: [Attributes of Lakehouse manifest](/resources/lakehouse/manifest_attributes)
 
-## Iceberg Metadata Tables in Lakehouse storage
-
-[](/resources/lakehouse/iceberg_metadata_tables/)
 
 ## How to use a Lakehouse in DataOS?
 
-### **Performing DDL/DML operations using CLI**
-
-[DDL/DML operations using DataOS CLI](/resources/lakehouse/command_reference/)
-
-### **Usage Examples**
-
+- [DDL/DML operations using DataOS CLI](/resources/lakehouse/command_reference/)
+- [Iceberg Metadata Tables in Lakehouse](/resources/lakehouse/iceberg_metadata_tables/)
 - [How to create a Lakehouse on ABFSS data source?](/resources/lakehouse/usage_examples/how_to_create_a_lakehouse_on_abfss_data_source/)
 - [How to create a Lakehouse on WASBS data source?](/resources/lakehouse/usage_examples/how_to_create_a_lakehouse_on_wasbs_data_source/)
 - [How to create a Lakehouse on S3 data source?](/resources/lakehouse/usage_examples/how_to_create_a_lakehouse_on_s3_data_source/)
@@ -1007,7 +1000,7 @@ The Attributes of Lakehouse manifest define the key properties and configuration
 - [How to perform schema evolution on Lakehouse datasets using CLI commands?](/resources/lakehouse/command_reference/case_scenario_schema_evolution/)
 - [How to manipulate table properties of Lakehouse datasets using CLI commands?](/resources/lakehouse/command_reference/case_scenario_table_properties/)
 
-
+<!-- 
 
 ## Frequently Asked Questions (FAQs)
 
@@ -1021,4 +1014,4 @@ To migrate from Icebase to a Lakehouse configuration, follow these steps:
 
 1. Initiate the creation of a Lakehouse resource within your DataOS environment.
 2. During the Lakehouse resource setup, assign a storage name that corresponds to your current Icebase depot name. This ensures continuity and prevents disruptions in dependent workflows or processes.
-3. Once the Lakehouse is operational and verified to be functioning as expected, proceed to decommission the standalone Icebase depot. This action should be taken only after thorough validation to ensure all data and workflows are seamlessly integrated into the Lakehouse environment.
+3. Once the Lakehouse is operational and verified to be functioning as expected, proceed to decommission the standalone Icebase depot. This action should be taken only after thorough validation to ensure all data and workflows are seamlessly integrated into the Lakehouse environment. -->
