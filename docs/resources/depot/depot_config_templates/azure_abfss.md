@@ -53,7 +53,7 @@ To create a Depot of type ‘ABFSS‘, utilize the following template:
 
     ```yaml
     name: {{depot-name}}
-    version: v1
+    version: v2alpha
     type: depot
     tags:
       - {{tag1}}
@@ -76,7 +76,7 @@ To create a Depot of type ‘ABFSS‘, utilize the following template:
           data:
             azurestorageaccountname: {{account-name}}
             azurestorageaccountkey: {{account-key}}
-      spec:                                             
+      abfss:                                             
         account: {{account-name}}
         container: {{container-name}}
         relativePath: {{relative-path}}

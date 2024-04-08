@@ -1,0 +1,24 @@
+name: {{depot-name}}
+version: v1
+type: depot
+tags:
+  - {{tag1}}
+  - {{tag2}}
+owner: {{owner-name}}
+layer: user
+depot:
+  type: ABFSS                                       
+  description: {{description}}
+  external: {{true}}
+  compute: {{runnable-default}}
+  secrets:
+    - name: {{abfss-instance-secret-name}}-r
+      allkeys: true
+
+    - name: {{abfss-instance-secret-name}}-rw
+      allkeys: true
+  spec:                                             
+    account: {{account-name}}
+    container: {{container-name}}
+    relativePath: {{relative-path}}
+    format: {{format}}
