@@ -1,0 +1,30 @@
+name: {{depot-name}}
+version: v2alpha
+type: depot
+tags:
+  - {{tag1}}
+owner: {{owner-name}}
+layer: user
+depot:
+  type: JDBC                                      
+  description: {{description}}
+  external: {{true}}
+  connectionSecret:                              
+    - acl: rw
+      type: key-value-properties
+      data:
+        username: {{jdbc-username}}
+        password: {{jdbc-password}}
+    - acl: r
+      type: key-value-properties
+      data:
+        username: {{jdbc-username}}
+        password: {{jdbc-password}}
+  jdbc:                                           
+    subprotocol: {{subprotocol}}
+    host: {{host}}
+    port: {{port}}
+    database: {{database-name}}
+    params:
+      {{"key1": "value1"}}
+      {{"key2": "value2"}}
