@@ -1,0 +1,22 @@
+name: {{depot-name}}
+version: v2alpha
+type: depot
+tags:
+  - {{dropzone}}
+  - {{oracle}}
+layer: user
+depot:
+  type: ORACLE                                    
+  description: {{"Oracle Sample data"}}
+  oracle:
+    subprotocol: {{subprotocol}} # for example "oracle:thin"                                     
+    host: {{host}}
+    port: {{port}}
+    service: {{service}}
+  external: {{true}}
+  connectionSecret:
+    - acl: {{rw}}
+      type: key-value-properties
+      data:
+        username: {{username}}
+        password: {{password}}
