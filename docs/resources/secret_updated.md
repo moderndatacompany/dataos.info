@@ -2,16 +2,15 @@
 
 # :resources-secret: Secret
 
-In DataOS, Secrets are [Resources](../resources.md) designed for the secure storage of sensitive information, including usernames, passwords, certificates, tokens, or keys within the confines of a specific **DataOS Workspace**. The primary purpose of Secrets is to address the inherent exposure risk associated with directly embedding such confidential data within application code or configuration files.
+In DataOS, Secrets are [Resources](../resources.md) designed for the secure storage of sensitive information, including usernames, passwords, certificates, tokens, or keys within the confines of a specific [DataOS Workspace](../resources/types_of_dataos_resources.md). 
 
-Data developers leverage Secrets in DataOS to achieve a crucial separation of sensitive data from Resource definitions. This segregation minimizes the likelihood of accidental exposure during the various phases of Resource management, including creation, viewing, or editing. Using Secrets, data developers ensure that sensitive information remains protected, reducing security vulnerabilities in their data workflows.
+To mitigate the risk of exposing confidential data, Secrets in DataOS separate sensitive information from application code or configuration files. This practice minimizes the chance of accidental exposure during resource management phases like creation, viewing, or editing. By leveraging Secrets, data developers safeguard sensitive information, thus reducing security vulnerabilities in their data workflows.
 
-Data developers can exercise precise control over who can retrieve credentials from Secrets. Heimdall's fine-grained permissions enable effective management of access, ensuring that only authorized users or applications can access sensitive information when needed.
+Operators can exercise precise control over who can retrieve credentials from Secrets, if in your organisation any data developer need access to secrets you can assign them a 'read secret' use case using [Bifrost](../interfaces/bifrost.md).
 
 <aside class="callout">
 
-Each Secret within DataOS is intricately linked to a specific Workspace. This association effectively confines the accessibility and application of the Secret to the boundaries of that particular Workspace, reinforcing data security measures.
-While Workspace-level confidentiality is maintained for Secrets, it's essential to recognize that instance secrets exhibit a broader scope, spanning across the entirety of the DataOS Instance.
+🗣️ Each Secret in DataOS is linked to a specific <a href="https://dataos.info/resources/types_of_dataos_resources/#workspace-level-resources">Workspace</a>, confining its accessibility and application within that Workspace. This reinforces data security measures by ensuring that Secrets are only accessible within their designated Workspace. However, it's important to note that <a href="https://dataos.info/resources/instance_secret/">Instance-secret</a> have a broader scope, spanning across the entirety of the <a href="https://dataos.info/resources/types_of_dataos_resources/#instance-level-resources">DataOS instance</a> .
 
 </aside>
 
@@ -22,56 +21,58 @@ While Workspace-level confidentiality is maintained for Secrets, it's essential 
 
     ---
 
-    Secrets provide secure storage for sensitive information, reducing exposure risks inherent in embedding such data directly in resource configurations.
+    Learn how to create and manage a Secret in DataOS.
 
     [:octicons-arrow-right-24: Create Secret](/resources/secret_updated/#how-to-create-a-secret)
 
 
--   :material-script-text-outline:{ .lg .middle } **How to refer a Secret into other Resources?**
+-   :material-script-text-outline:{ .lg .middle } **How to configure a Secret manifest file?**
 
     ---
 
-    A Secret manifest file includes resource meta and Secret specific sections with attributes that must be configured for creating a Secret.
+    Discover how to configure a Secret manifest file by adjusting its attributes.
 
-    [:octicons-arrow-right-24: Refering Secrets](#how-to-refer-secrets-in-other-dataos-resources)
-
-
-
--   :material-clock-fast:{ .lg .middle } **Types of Secrets**
-
-    ---
-
-    DataOS Secret types securely store diverse sensitive data, addressing specific needs like cloud credentials, image pulling, key-value pairs, metadata, and SSL/TLS certificates.
-
-    [:octicons-arrow-right-24: Types](../resources/secret_updated/secrets_attributes.md)
+    [:octicons-arrow-right-24: Configure Secret](#create-a-secret-manifest-file)
 
 
--   :material-console:{ .lg .middle } **Example Usage**
+
+-   :material-clock-fast:{ .lg .middle } **Different types of Secrets**
 
     ---
 
-    Secret Resources streamline secure image pulling from container registries, preventing exposure of authentication data in configuration files.
+    Different types of Secret securely store diverse sensitive data, addressing specific needs like docker credentials, certificates, etc.
+
+    [:octicons-arrow-right-24: Types](../resources/secret_updated/secrets_attributes/#types-of-secret)
 
 
-    [:octicons-arrow-right-24: Example](/resources/secret_updated/#referencing-secrets-to-pull-images-from-private-container-registry)
+-   :material-console:{ .lg .middle } **How to refer to Secrets in other DataOS Resources?**
+
+    ---
+
+    Learn how to leverage DataOS Secrets to securely refer sensitive information in other DataOS Resources.
+
+
+    [:octicons-arrow-right-24: Refer Secret](/resources/secret_updated/#how-to-refer-secrets-in-other-dataos-resources)
 </div>
 
 
 ## How to create a Secret?
 
-Secrets are deployed using YAML files through the [Command Line Interface (CLI)](../interfaces/cli.md). During this deployment, Poros, the Resource Manager, orchestrates the forwarding of Secret Resource YAMLs to Heimdall, the Governance Engine within DataOS.
-To create a Secret Resource in DataOS, follow these steps. This guide assumes you have the necessary permissions and access to the DataOS [Command Line Interface (CLI)](../interfaces/cli.md).
+Secrets are deployed using manifest files through the [Command Line Interface (CLI)](../interfaces/cli.md). During this deployment, Poros, the Resource Manager, orchestrates the forwarding of Secret Resource YAMLs to Heimdall, the Governance Engine within DataOS.
+To create a Secret Resource in DataOS, follow these steps. This guide assumes you have the necessary permissions and access to the DataOS [CLI](../interfaces/cli.md).
 
 ### **Create a Secret manifest file**
 
-Begin by creating a manifest file that will hold the configuration details for your Secret.
+Begin by creating a manifest file that will hold the configuration details for your Secret.The structure of the Secret manifest file is provided in the image given below:
 
-![Secret YAML structure](/resources/secret_updated/Slide1.jpg)
+![Secret manifest structure](/resources/secret_updated/Slide1.jpg)
+The manifest file of a Secret Resource can be broken down into two separate sections - Resource meta section and Secret-specific section.
+
 
 
 #### **Resource meta section**
 
-The Resource meta section of the YAML configuration file encompasses attributes that maintain uniformity across all resource types. The provided YAML snippet illustrates the key-value pairs that must be declared in this section:
+The Resource meta section of the manifest configuration file encompasses attributes that maintain uniformity across all resource types. The provided manifest snippet illustrates the key-value pairs that must be declared in this section:
 
 ```yaml
 name: ${{resource-name}} 
@@ -88,39 +89,53 @@ For more information about the various attributes in Resource meta section, refe
 
 #### **Secret-specific section**
 
-The Secret-specific Section of the YAML configuration file includes key-value pairs specific to the type of Secret being created. The following YAML snippet illustrates the key values to be declared in this section:
+The Secret-specific Section of the manifest configuration file includes key-value pairs specific to the type of Secret being created. The following manifest snippet illustrates the key values to be declared in this section:
 
-```yaml
-secret:
-  type: ${{secret-subtype}} # Mandatory
-  acl: ${{access-control-level}} # Mandatory
-  data:                   # Mandatory
-    ${{key1}}: ${{value1}} 
-    ${{key2}}: ${{value2}}
-  files: # Manifest file path (optional)
-		${{xyz: /home/secret.yaml}}
-```
+=== "Syntax"
+    ```yaml
+    secret:
+    type: ${{secret-subtype}} # Mandatory
+    acl: ${{access-control-level}} # Mandatory
+    data:                   # Mandatory
+        ${{key1}}: ${{value1}} 
+        ${{key2}}: ${{value2}}
+    files: # Manifest file path (optional)
+      ${{xyz: /home/secret.yaml}}
+    ```
+=== "Example Usage"
+    ```yaml
+    secret:
+    type: key-value-properties # Mandatory
+    acl: r # Mandatory
+    data:                   # Mandatory
+        username: iamgroot
+        password: qwerrty
+    files: # Manifest file path (optional)
+      json_keyfile:  "/home/secret.json"
+    ```
 
-#### **Secret YAML Configuration Fields**
+
+#### **Secret manifest Fields**
+The table below provides a summary of the various attributes of the Secret-specific section:
 
 | Field | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`secret`](./secret_updated/secrets_attributes.md#secret-attributes-configuration) | object | none | none | mandatory |
+| [`secret`](./secret_updated/secrets_attributes.md) | object | none | none | mandatory |
 | [`type`](./secret_updated/secrets_attributes.md#types-of-secret) | string | none | cloud-kernel, cloud-kernel-image-pull, key-value, key-value-properties, certificates | mandatory |
 | [`acl`](./secret_updated/secrets_attributes.md#secretacl) | string | none | r, rw | mandatory |
-| [`data`](./secret_updated/secrets_attributes.md#secret-data) | object | none | none | mandatory |
+| [`data`](./secret_updated/secrets_attributes.md#secret-data) | mapping | none | none | mandatory |
 | [`files`](./secret_updated/secrets_attributes.md#secret-file) | string | none | file-path | optional |
 
 
 For more information about the various attributes in Secret specific section, refer to the Attributes of [Secret specific section](./secret_updated/secrets_attributes.md).
 
-### **Apply the Secret configurations**
+### **Apply the Secret manifest**
 
-To apply the Secret YAML, utilize the DataOS [Command Line Interface (CLI)](../interfaces/cli.md) by explicitly specifying the path to the YAML file and the designated workspace. The apply command is provided below:
+To apply the Secret manifest, utilize the DataOS [CLI](../interfaces/cli.md) by explicitly specifying the path to the manifest file and the designated workspace. The apply command is provided below:
 
 === "Command"
     ```shell
-    dataos-ctl apply -f ${path/secret.yaml} -w ${name of the workspace}
+    dataos-ctl apply -f ${path-to-secret-yaml} -w ${name-of-the-workspace}
     ```
 === "Example Usage"
     ```shell
@@ -140,8 +155,7 @@ Alternative to the above apply command.
 
 <aside class="callout">
 
-🗣 If a workspace is not explicitly specified during the application process, the system will default to the "public" workspace. This default behavior ensures seamless execution, allowing for the application of the Secret YAML within the public workspace without the need for an explicit workspace designation.
-
+🗣 If a workspace is not explicitly specified during the application process, the system will default to the "public" workspace. 
 </aside>
 
 ## How to manage a Secret?
@@ -153,33 +167,79 @@ To validate the proper creation of the Secret Resource within the DataOS environ
 === "Command"
 
     ```shell
-    dataos-ctl get -t secret -w {{workspace}}
+    dataos-ctl get -t secret -w ${workspace}
     ```
 
 === "Example Usage"
 
     ```shell
     dataos-ctl get -t secret -w sandbox
+
+    Expected Output:
+    🔍 get...                                     
+    🔍 get...complete                             
+
+        NAME     | VERSION |      TYPE       | WORKSPACE | STATUS | RUNTIME |    OWNER     
+    -------------|---------|-----------------|-----------|--------|---------|--------------
+      mysecret   |   v1    |    secret       |  sandbox  | active |         | iamgroot 
+
+    ```
+**Alternative command:**
+
+=== "Command"
+
+    ```shell
+    dataos-ctl resource get -t secret -w ${workspace}
+    ```
+
+=== "Example Usage"
+
+    ```shell
+    dataos-ctl resource get -t secret -w sandbox
+
+    Expected Output:
+    🔍 get...                                     
+    🔍 get...complete                             
+
+        NAME     | VERSION |      TYPE       | WORKSPACE | STATUS | RUNTIME |    OWNER     
+    -------------|---------|-----------------|-----------|--------|---------|--------------
+      mysecret   |   v1    |    secret       |  sandbox  | active |         | iamgroot 
     ```
 
 ### **Delete the Secret**
 
-To remove the Secret Resource from the DataOS environment, utilize the `delete` command within the [Command Line Interface (CLI)](../interfaces/cli.md). Execute the following command to initiate the deletion process:
+To remove the Secret Resource from the DataOS environment, utilize the `delete` command within the [CLI](../interfaces/cli.md). Execute the following command to initiate the deletion process:
+
+<aside class="callout">
+🗣 Before you can delete a Secret, you need to make sure there are no other resources still utilizing it. For example, if a Workflow has a dependency on a Secret, trying to delete that Secret will cause an error. So, you'll need to remove the Workflow first, and then you can delete the Secret. This rule applies to both <a href="https://dataos.info/resources/instance_secret/">Instance secret</a> and Secrets.
+</aside>
+
 
 **delete command structure for -t (type) and -n (name)**
 
 === "Command"
 
     ```shell
-    dataos-ctl delete -t {{resource-type}} -n {{resource-name}}
+    dataos-ctl delete -t {{resource-type}} -n {{resource-name}} -w ${workspace}
     ```
 
 === "Example Usage"
 
     ```shell
-    dataos-ctl delete -t secret -n mysecret
+    dataos-ctl delete -t secret -n mysecret -w sandbox
+    ```
+**Altenative command:**
+=== "Command"
+
+    ```shell
+    dataos-ctl resource delete -t {{resource-type}} -n {{resource-name}} -w ${workspace}
     ```
 
+=== "Example Usage"
+
+    ```shell
+    dataos-ctl resource delete -t secret -n mysecret -w sandbox
+    ```
 
 **delete command structure for -i (identifier)**
 
@@ -195,28 +255,43 @@ To remove the Secret Resource from the DataOS environment, utilize the `delete` 
     dataos-ctl delete -i mysecret:v1:secret
     ```
 
-Before you can delete a Secret, you need to make sure there are no other resources still utilizing it. For example, if a Workflow has a dependency on a Secret, trying to delete that Secret will cause an error. So, you'll need to remove the Workflow first, and then you can delete the Secret. This rule applies to both [Instance Secrets](../resources/instance_secret.md) and Secrets.
 
 ## How to refer Secrets in other DataOS Resources?
 
-To access the stored secret data in DataOS, you can reference them in your code using the secrets and dataosSecrets mechanisms. These identifiers ensure secure referencing of Secrets across different resources, enhancing system security and operational integrity.
+To access the stored secret data in DataOS, you can reference them in your code using the `secrets` and `dataosSecrets` identifier. These identifiers ensure secure referencing of Secrets across different resources, enhancing system security and operational integrity.
 
-The secrets identifier is used for creating a Secret in DataOS. However, it's important to note that you cannot use the same identifier to refer to pre-existing secrets in other Resources. For referencing secrets across various DataOS Resources, the dataosSecrets identifier is used.
+<aside class="callout">
+
+🗣 When you use the <code>secrets</code> identifier while referencing, the encrypted secrets are visible during linting, which is a process to check for errors, but they remain visible to end-users. So, while they are encrypted, they can still be seen by people accessing the configuration. On the other hand, if you use <code>dataosSecrets</code> identifier, during linting, the secrets are completely hidden within the configuration. This provides a higher level of security and confidentiality because even during checks for errors, the secrets are not exposed.
+</aside>
 
 **Syntax**
 
-```yaml
-dataosSecrets:
-  - name: ${your-secret-name} # Mandatory
-    workspace: ${secret-workspace} # Optional
-    key: ${key of your secret} # Optional, used when only single key is required.
-    keys:            # Optional, used when multiple key is required.
-      - ${secret_key}
-      - ${secret-key}
-    allKeys: ${true-or-false} # Optional
-    consumptionType: ${envVars} # Optional, possible values: envVars, propfile and file.
-```
-
+=== "dataosSecrets"
+    ```yaml
+    dataosSecrets:
+    - name: ${your-secret-name} # Mandatory
+        workspace: ${secret-workspace} # Optional
+        key: ${key of your secret} # Optional, used when only single key is required.
+        keys:            # Optional, used when multiple key is required.
+        - ${secret_key}
+        - ${secret-key}
+        allKeys: ${true-or-false} # Optional
+        consumptionType: ${envVars} # Optional, possible values: envVars, propfile and file.
+    ```
+=== "secrets"    
+    ```yaml
+    secrets:
+    - name: ${your-secret-name} # Mandatory
+        workspace: ${secret-workspace} # Optional
+        key: ${key of your secret} # Optional, used when only single key is required.
+        keys:            # Optional, used when multiple key is required.
+        - ${secret_key}
+        - ${secret-key}
+        allKeys: ${true-or-false} # Optional
+        consumptionType: ${envVars} # Optional, possible values: envVars, propfile and file.
+    ```
+Let's see how you can refer secrets in various resources: 
 
 === "In Service"
 
@@ -224,41 +299,41 @@ dataosSecrets:
 
 
     === "Secret"
-        ```yaml title="secret_service.yaml"
-            --8<-- "examples/resources/secret/service/secret_service.yaml"
+        ```yaml title="secret.yaml"
+        --8<-- "examples/resources/secret/service/secret_service.yaml"
         ```
 
     === "Service"
         ```yaml title="service.yaml"
-            --8<-- "examples/resources/secret/service/service.yaml"
+        --8<-- "examples/resources/secret/service/service.yaml"
         ```
 
 === "In Workflow"
 
-    [Workflow](./workflow.md) often orchestrates various processes, involving different services and components, each requiring access to sensitive information such as API keys, authentication tokens, or database credentials. Instead of embedding these secrets directly in the workflow configuration, it is advisable to leverage references to the Secret Resources.
+    The [Workflow](./workflow.md) in DataOS serves as a Resource for orchestrating data processing tasks with dependencies. It enables the creation of complex data workflows by defining a hierarchy based on a dependency mechanism some requiring access to sensitive information such as API keys, authentication tokens, or database credentials. Instead of embedding these secrets directly in the workflow configuration, it is advisable to leverage references to the Secret Resource.
 
     === "Secret"
-        ```yaml title="secret_workflow.yaml"
-            --8<-- "examples/resources/secret/workflow/secret_workflow.yaml"
+        ```yaml title="secret.yaml"
+        --8<-- "examples/resources/secret/workflow/secret_workflow.yaml"
         ```
 
     === "Workflow"
         ```yaml title="workflow.yaml"
-            --8<-- "examples/resources/secret/workflow/workflow.yaml"
+        --8<-- "examples/resources/secret/workflow/workflow.yaml"
         ```    
 
 === "In Worker"
 
-    Within the framework of DataOS, a [Worker Resource](./worker.md) is defined as an enduring operation that systematically performs designated tasks or computations over a protracted duration. Workers are capable of securely accessing confidential information, such as API keys, through the referencing of secrets, thereby ensuring the safeguarding of sensitive data.
+    A [Worker Resource](./worker.md) in DataOS is a long-running process responsible for performing specific tasks or computations indefinitely. Workers are capable of securely accessing confidential information, such as API keys, through the referencing of secrets, thereby ensuring the safeguarding of sensitive data.
 
     === "Secret"
-        ```yaml title="secret_worker.yaml"
-            --8<-- "examples/resources/secret/worker/secret_worker.yaml"
+        ```yaml title="secret.yaml"
+        --8<-- "examples/resources/secret/worker/secret_worker.yaml"
         ```
 
     === "Worker"
         ```yaml title="worker.yaml"
-            --8<-- "examples/resources/secret/worker/worker.yaml"
+        --8<-- "examples/resources/secret/worker/worker.yaml"
         ```
 
 === "In Cluster"
@@ -266,13 +341,13 @@ dataosSecrets:
     A Cluster in DataOS is a Resource that encompasses a set of computational resources and configurations necessary for executing data engineering and analytics tasks. Clusters are capable of securely accessing confidential information through the referencing of secrets, thereby ensuring the safeguarding of sensitive data.
     
     === "Secret"
-        ```yaml title="secret_cluster.yaml"
-            --8<-- "examples/resources/secret/cluster/cluster_secret.yaml"
+        ```yaml title="secret.yaml"
+        --8<-- "examples/resources/secret/cluster/cluster_secret.yaml"
         ```
 
     === "Cluster"
         ```yaml title="cluster.yaml"
-            --8<-- "examples/resources/secret/cluster/cluster.yaml"
+        --8<-- "examples/resources/secret/cluster/cluster.yaml"
         ```
 
 
@@ -284,21 +359,10 @@ Container registries, pivotal for storing and managing images, including essenti
 
 === "secret"
     ```yaml title="secret_image.yaml"
-        --8<-- "examples/resources/secret/docker_image/secret_image.yaml"
+    --8<-- "examples/resources/secret/docker_image/secret_image.yaml"
     ```
 
 === "pull-image"    
     ```yaml title="refer_image_secret.yaml"
-        --8<-- "examples/resources/secret/docker_image/alpha.yaml"
+    --8<-- "examples/resources/secret/docker_image/alpha.yaml"
     ```
-
-
-<aside class="callout">
-
-🗣 When you use the `secrets` attribute, the encrypted secrets are visible during linting, which is a process to check for errors, but they remain visible to end-users. So, while they are encrypted, they can still be seen by people accessing the configuration.
-
-On the other hand, if you use `dataosSecrets`, during linting, the secrets are completely hidden within the configuration. This provides a higher level of security and confidentiality because even during checks for errors, the secrets are not exposed.
-
-This difference allows for precise control over how sensitive information is exposed within the configuration environment, ensuring that only authorized individuals can access it.
-
-</aside>
