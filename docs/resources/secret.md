@@ -42,7 +42,7 @@ Operators can exercise precise control over who can retrieve credentials from Se
 
     Different types of Secret securely store diverse sensitive data, addressing specific needs like docker credentials, certificates, etc.
 
-    [:octicons-arrow-right-24: Types](../resources/secret/secrets_attributes/#types-of-secret)
+    [:octicons-arrow-right-24: Types](../resources/secret/secrets_attributes.md#secret-specific-section-attributes)
 
 
 -   :material-console:{ .lg .middle } **How to refer to Secrets in other DataOS Resources?**
