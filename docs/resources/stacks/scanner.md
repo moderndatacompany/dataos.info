@@ -104,6 +104,7 @@ To learn more about these fields, their possible values, example usage, refer to
 ## Supported Data Sources
 
 Here you can find templates for the depot/non-depot Scanner workflows for the supported data sources.
+<center>
 
 | Type             | Data Source      | Scanner|
 |------------------|------------------|------|
@@ -123,7 +124,7 @@ Here you can find templates for the depot/non-depot Scanner workflows for the su
 | Dashboard Service| Redash           |[Link](/resources/stacks/scanner/dashboards/redash_scan/)      |
 | Dashboard Service| Superset         |[Link](/resources/stacks/scanner/dashboards/superset_scan/)      |
 
-
+</center>
 
 <!-- 
 [Databases and Warehouses](scanner/databases_and_warehouses.md)

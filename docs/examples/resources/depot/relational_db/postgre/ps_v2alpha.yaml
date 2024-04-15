@@ -1,0 +1,21 @@
+name: {{postgresdb}}
+version: v2alpha
+type: depot
+layer: user
+depot:
+  type: JDBC                  
+  description: {{To write data to postgresql database}}
+  external: {{true}}
+  connectionSecret:           
+    - acl: rw
+      type: key-value-properties
+      data:
+        username: {{username}}
+        password: {{password}}
+  postgresql:                        
+    subprotocol: "postgresql"
+    host: {{host}}
+    port: {{port}}
+    database: {{postgres}}
+    params: #Required 
+      sslmode: {{disable}}

@@ -1,8 +1,9 @@
-# Secret Specific Attributes
+#  Attributes of Secret-specific section
 
-## Secret manifest
+## Structure of Secret manifest
 
 === "Syntax"
+
     ```yaml
     secret:
       type: ${{secret_subtype}}
@@ -10,36 +11,38 @@
       data:
         ${{key1}}: ${{value1}}
         ${{key2}}: ${{value2}}
+      file:   #Optional
+        ${{xyz}}: ${{file-path}}  
     ```
 
-=== "Example Usage"    
+=== "Example Usage"  
+
     ```yaml
     secret:
       type: key-value
       acl: rw
       data:
-        username: john_doe
+        username: iamgroot
         password: secure_password
     ```
+## Secret-specific section attributes
 
-Description: The Secret-specific Section comprising properties of Secret Resources.
+**`secret`**
 
-Data Type: Object
+**Description**: `secret` comprising various configurations specific to the Secret.
 
-Requirement: Mandatory
+| Default Value | Possible Values                                    | Data Type | Requirement |
+|---------------|-----------------------------------------------------|-----------|-------------|
+| None          | None | list of mappings   | Mandatory  |
 
 
-## **Types of Secret**
+**`type`**
 
-Description: Specifies the type of Secret within DataOS.
+**Description**: `type` specifies the type of Secret within DataOS.
 
-Default Value: None
-
-Possible Value: cloud-kernel, cloud-kernel-image-pull, key-value, key-value-properties, certificate
-
-Data Type: String
-
-Requirement: Mandatory
+| Default Value | Possible Values                                    | Data Type | Requirement |
+|---------------|-----------------------------------------------------|-----------|-------------|
+| None          | cloud-kernel, cloud-kernel-image-pull, key-value, key-value-properties, certificate | String    | Mandatory  |
 
 Lets see each type of secrets one by one:
 
@@ -212,14 +215,18 @@ The main difference between "key-value" and "key-value-properties" secret types 
 
 - **key-value-properties**: In contrast, the system passes all the secrets as one single field, treating them collectively, but it also allows for associating additional metadata or properties with each key-value pair. Additionally, this type supports referencing a file containing the secret value, providing flexibility in managing larger sets of data.
 
+**`acl`**
 
+**Description**: Access control list, defining the level of permissions for the secret.
 
-
-## **Secret:acl**
+| Default Value | Possible Values            | Data Type | Requirement |
+|---------------|----------------------------|-----------|-------------|
+| None          | r (Read), rw (Read-Write) | String    | Mandatory   |
 
 Example Usage:
 
 === "read-only"
+
     ```yaml
     secret:
       type: key-value
@@ -229,6 +236,7 @@ Example Usage:
         password: secure_password
     ```
 === "read-write"
+
     ```yaml
     secret:
       type: key-value
@@ -238,17 +246,9 @@ Example Usage:
         password: secure_password
     ```
 
-Description: Access control list, defining the level of permissions for the secret.
+**`data`**
 
-Default Value: None
-
-Possible Values: r (Read), rw (Read-Write)
-
-Data Type: String
-
-Requirement: Mandatory
-
-## **Secret: Data**
+**Description**: `data` comprises the various key value pairs of sensitive informations such as username and password.
 
 Example Usage:
 
@@ -284,11 +284,17 @@ As per the Secret type, the data-specific section can contain different attribut
 
 These key-value pair can be different as per the different types of resources.
 
-## **Secret: File**
+**`file`**
 
-Example Usage:
+**Description**: You can directly pass the file containing your credentials.
+
+| Default Value | Possible Values  | Data Type | Requirement |
+|---------------|------------------|-----------|-------------|
+| None          | Secret-file-path| String    | Optional    |
+
 
 === "Syntax"
+
     ```yaml
     secret:
       type: ${{key-value}}
@@ -300,6 +306,7 @@ Example Usage:
     ```
 
 === "Example Usage"
+
     ```yaml
     secret:
       type: key-value-properties
@@ -309,12 +316,3 @@ Example Usage:
         password: secure_password
       file: path/file
     ```
-Description: You can directly pass the file containing your credentials.
-
-Default Value: None
-
-Possible Values: path to your file.
-
-Data Type: String
-
-Requirement: Optional
