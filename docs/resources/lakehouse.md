@@ -10,7 +10,7 @@ Lakehouse is a [DataOS Resource](/resources/) that merges Apache Iceberg table f
 
 <aside class="callout">
 
-🗣️ The Lakehouse is designated as a <a href="/resources/types_of_dataos_resources/#workspace-level-resources">Workspace-level</a> DataOS Resource. This classification enables the creation of separate Lakehouses within distinct Workspaces, facilitating workload and data isolation. 
+🗣️ The Lakehouse is designated as a <a href="/resources/types_of_dataos_resources/#workspace-level-resources">Workspace-level</a> DataOS Resource. This classification enables the creation of separate Lakehouses within distinct Workspaces. 
 
 </aside>
 
@@ -46,9 +46,9 @@ Lakehouse is a [DataOS Resource](/resources/) that merges Apache Iceberg table f
 
     ---
 
-    Explore examples showcasing the usage of Lakehouse in various scenarios.
+    Explore examples showcasing the usage of Lakehouse Resource in various scenarios.
     
-    [:octicons-arrow-right-24: Lakehouse usage examples](/resources/lakehouse/#case-scenario)
+    [:octicons-arrow-right-24: Lakehouse usage examples](/resources/lakehouse/#how-to-use-a-lakehouse-in-dataos)
 
 </div>
 
@@ -178,17 +178,17 @@ For more information about Instance-secret, refer to the documentation: [Instanc
 
 Once you have created Instance-secrets, now its time to create a Lakehouse by applying the Lakehouse manifest file using the [DataOS CLI](/interfaces/cli/). The Lakehouse manifest file is divided into several sections, each responsible for specifying different aspects of the Lakehouse. The sections are provided below:
 
-- [Resource meta section](/resources/lakehouse/#resource-meta-section)
-- [Lakehouse-specific section](/resources/lakehouse/#lakehouse-specific-section)
-    - [Storage section](/resources/lakehouse/#storage-configuration)
-    - [Metastore section](/resources/lakehouse/#metastore-configuration)
-    - [Query Engine section](/resources/lakehouse/#query-engine-configuration)
+- Resource meta section
+- Lakehouse-specific section
+    - Storage section
+    - Metastore section
+    - Query Engine section
 
 A sample Lakehouse manifest file is provided below; the sections that make up the various parts of the manifest file are described after that.
 
 ???tip "Sample Lakehouse manifest file"
 
-    ```yaml hl_lines="1-10 12-16 18-32 34-36 38-40"
+    ```yaml hl_lines="1-10 12-16 18-33 35-37 39-41"
     # Resource-meta section (1)
     name: alphaomega
     version: v1alpha
@@ -236,16 +236,16 @@ A sample Lakehouse manifest file is provided below; the sections that make up th
 
     2.  **Lakehouse-specific section** within a manifest file comprises attributes specific to the Lakehouse Resource. This section is further subdivided into: Storage, Metastore, and Query Engine section. To learn more about how to configure attributes of Lakehouse-specific section, refer the link: [Attributes of Lakehouse-specific section](/resources/lakehouse/manifest_attributes/).
 
-    3.  **Storage configuration**
+    3.  **Storage section** comprises attributes for storage configuration.
 
-    4.  **Metastore configuration**
+    4.  **Metastore section** comprises attributes for metastore configuration.
 
-    5.  **Query Engine configuration**
+    5.  **Query Engine section** comprises attributes for query engine configuration.
 
 
 **Resource meta section**
 
-This section serves as the header of the manifest file, defining the overall characteristics of the Lakehouse Resource you wish to create. It includes attributes applicable to all [types of Resources](/resources/types_of_dataos_resources/) in DataOS. These attributes help DataOS in identifying, categorizing, and managing the Resource within its ecosystem. The code block below describes the attributes of this section:
+This section serves as the header of the manifest file, defining the overall characteristics of the Lakehouse Resource you wish to create. It includes attributes common to all [types of Resources](/resources/types_of_dataos_resources/) in DataOS. These attributes help DataOS in identifying, categorizing, and managing the Resource within its ecosystem. The code block below describes the attributes of this section:
 
 === "Syntax"
 
@@ -281,7 +281,57 @@ Refer to the [Attributes of Resource meta section](/resources/resource_attribute
 
 **Lakehouse-specific section**
 
-Following the Resource meta section, the Lakehouse-specific section contains configurations unique to the Lakehouse Resource. This section is divided into three separate sections, each critical to the Lakehouse’s functionality: 
+Following the Resource meta section, the Lakehouse-specific section contains configurations unique to the Lakehouse Resource. 
+
+=== "Syntax"
+
+    ```yaml
+    lakehouse:
+      type: ${lakehouse-type} # mandatory 
+      compute: ${compute} # mandatory 
+      runAsApiKey: ${dataos-apikey} # optional
+      runAsUser: ${user-id} # optional
+      iceberg: # mandatory
+        storage: 
+          # storage section attributes
+        metaStore: 
+          # metastore section attributes
+        queryEngine: # 
+          # query engine section attributes
+
+    ```
+
+=== "Example"
+
+    ```yaml
+    lakehouse:
+      type: iceberg # mandatory 
+      compute: query-default # mandatory 
+      runAsApiKey: abcdefghijklmnopqrstuvwxyz # optional
+      runAsUser: iamgroot # optional
+      iceberg: # mandatory
+        storage: 
+          # storage section attributes
+        metaStore:
+          # metastore section attributes
+        queryEngine:
+          # query engine section attributes
+    ```
+
+| Attribute&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Data Type | Default Value | Possible Value | Requirement |
+| --- | --- | --- | --- | --- |
+| [`lakehouse`](/resources/lakehouse/manifest_attributes/#lakehouse) | mapping | none | none | mandatory |
+| [`type`](/resources/lakehouse/manifest_attributes/#type) | string | none | iceberg | mandatory |
+| [`compute`](/resources/lakehouse/manifest_attributes/#compute) | string | none | valid query-type Compute Resource name  | mandatory |
+| [`runAsApiKey`](/resources/lakehouse/manifest_attributes/#runasapikey) | mapping | api key of user applying the Lakehouse | any valid DataOS apikey | optional |
+| [`runAsUser`](/resources/lakehouse/manifest_attributes/#runasuser) | string | user-id of owner | user-id of use-case assignee | optional |
+| [`iceberg`](/resources/lakehouse/manifest_attributes/#iceberg) | mapping | none | none | mandatory |
+| [`storage`](/resources/lakehouse/manifest_attributes/#storage) | mapping | none | valid storage configuration | mandatory |
+| [`metaStore`](/resources/lakehouse/manifest_attributes/#metastore) | mapping | none | valid metastore configuration | optional |
+| [`queryEngine`](/resources/lakehouse/manifest_attributes/#queryengine) | mapping | none | valid query engine configuration | optional |
+
+
+This section is divided into three separate sections, each critical to the Lakehouse’s functionality: 
 
 - Storage section
 - Metastore section
@@ -289,7 +339,7 @@ Following the Resource meta section, the Lakehouse-specific section contains con
 
 **Storage section**
 
-This section of the Lakehouse manifest file specifies the connection to the underlying object storage solution (e.g., ABFSS, WASBS, Amazon S3, GCS). Instance-secrets enable the secure reference of sensitive data within the manifest. The Storage section's configurations facilitate the creation of a Depot, abstracting the storage setup and ensuring secured data access in the object storage solution. This setup varies across different source systems, as detailed in the tabs below:
+This section of the Lakehouse manifest file specifies the connection to the underlying object storage solution (e.g., ABFSS, WASBS, Amazon S3, GCS). Instance-secrets enable the secure reference of sensitive data within the manifest. The Storage section's configurations facilitate the creation of a [Depot](/resources/depot/), abstracting the storage setup and ensuring secured data access in the object storage solution. This setup varies across different source systems, as detailed in the tabs below:
 
 === "ABFSS"
 
@@ -350,7 +400,7 @@ This section of the Lakehouse manifest file specifies the connection to the unde
     | --- | --- | --- | --- | --- |
     | [`storage`](/resources/lakehouse/manifest_attributes/#storage) | mapping | none | none | mandatory |
     | [`depotName`](/resources/lakehouse/manifest_attributes/#depotname) | string | ${lakehouse-name}0<br>${workspace}0<br>storage | A valid string that matches<br> the regex pattern <br>`[a-z]([a-z0-9]*)`. Special <br>characters, except for<br> hyphens/dashes, are <br> not allowed. The maximum <br>length is 48 characters. | optional |
-    | [`type`](/resources/lakehouse/manifest_attributes/#type) | string | none | abfss | mandatory |
+    | [`type`](/resources/lakehouse/manifest_attributes/#type_1) | string | none | abfss | mandatory |
     | [`abfss`](/resources/lakehouse/manifest_attributes/#abfss) | mapping | none | none | optional |
     | [`account`](/resources/lakehouse/manifest_attributes/#abfss) | string | none | valid ABFSS account | optional |
     | [`container`](/resources/lakehouse/manifest_attributes/#abfss) | string | none | valid container name | optional |
@@ -444,7 +494,7 @@ This section of the Lakehouse manifest file specifies the connection to the unde
     | [`allKeys`](/resources/lakehouse/manifest_attributes/#allkeys) | boolean | false | true/false | optional |
     | [`consumptionType`](/resources/lakehouse/manifest_attributes/#consumptiontype) | string | envVars | envVars, propFile | optional |
 
-    <i>Attributes of ABFSS storage configuration</i>
+    <i>Attributes of GCS storage configuration</i>
 
     </center>
 
@@ -635,8 +685,8 @@ Configurations range from simple, requiring just the metastore type (e.g., `iceb
 
     | Attribute | Data Type | Default Value | Possible Value | Requirement |
     | --- | --- | --- | --- | --- |
-    | [metastore](/resources/lakehouse/manifest_attributes/#metastore) | mapping | none | none | optional |
-    | [type](/resources/lakehouse/manifest_attributes/#type) | string | none | iceberg-rest-catalog | mandatory |
+    | [`metastore`](/resources/lakehouse/manifest_attributes/#metastore) | mapping | none | none | optional |
+    | [`type`](/resources/lakehouse/manifest_attributes/#type) | string | none | iceberg-rest-catalog | mandatory |
 
     <i>Basic configuration attributes of Metastore section</i>
     </center>
@@ -690,22 +740,20 @@ Configurations range from simple, requiring just the metastore type (e.g., `iceb
 
     | Attribute | Data Type | Default Value | Possible Value | Requirement |
     | --- | --- | --- | --- | --- |
-    | [metastore](/resources/lakehouse/manifest_attributes/#metastore) | mapping | none | none | optional |
-    | [type](/resources/lakehouse/manifest_attributes/#type) | string | none | iceberg-rest-catalog | mandatory |
-    | [replicas](/resources/lakehouse/manifest_attributes/#replicas) | integer | none | any valid positive integer | optional |
-    | [autoscaling](/resources/lakehouse/manifest_attributes/#autoscaling) | mapping | none | none | optional |
-    | [enabled](/resources/lakehouse/manifest_attributes/#enabled) | boolean | false | true/false | optional |
-    | [minReplicas](/resources/lakehouse/manifest_attributes/#minreplicas) | integer | none | any valid integer | optional |
-    | [maxReplicas](/resources/lakehouse/manifest_attributes/#maxreplicas) | integer | none | any valid integer greater than `minReplicas` | optional |
-    | [targetMemoryUtilizationPercentage](/resources/lakehouse/manifest_attributes/#targetmemoryutilizationpercentage) | integer | none | any valid percentage | optional |
-    | [targetCPUUtilizationPercentage](/resources/lakehouse/manifest_attributes/#targetcpuutilizationpercentage) | integer | none | any valid percentage | optional |
-    | [resources](/resources/lakehouse/manifest_attributes/#resources) | mapping | none | none | optional |
-    | [requests](/resources/lakehouse/manifest_attributes/#requests) | mapping | none | none | optional |
-    | [cpu](/resources/lakehouse/manifest_attributes/#cpu) | string | none | any valid resource amount | optional |
-    | [memory](/resources/lakehouse/manifest_attributes/#memory) | string | none | any valid resource amount | optional |
-    | [limits](/resources/lakehouse/manifest_attributes/#limits) | mapping | none | none | optional |
-    | [cpu](/resources/lakehouse/manifest_attributes/#cpu) | string | none | any valid resource amount | optional |
-    | [memory](/resources/lakehouse/manifest_attributes/#memory) | string | none | any valid resource amount | optional |
+    | [`metastore`](/resources/lakehouse/manifest_attributes/#metastore) | mapping | none | none | optional |
+    | [`type`](/resources/lakehouse/manifest_attributes/#type_2) | string | none | iceberg-rest-catalog | mandatory |
+    | [`replicas`](/resources/lakehouse/manifest_attributes/#replicas) | integer | none | any valid positive integer | optional |
+    | [`autoscaling`](/resources/lakehouse/manifest_attributes/#autoscaling) | mapping | none | none | optional |
+    | [`enabled`](/resources/lakehouse/manifest_attributes/#enabled) | boolean | false | true/false | optional |
+    | [`minReplicas`](/resources/lakehouse/manifest_attributes/#minreplicas) | integer | none | any valid integer | optional |
+    | [`maxReplicas`](/resources/lakehouse/manifest_attributes/#maxreplicas) | integer | none | any valid integer greater than `minReplicas` | optional |
+    | [`targetMemoryUtilizationPercentage`](/resources/lakehouse/manifest_attributes/#targetmemoryutilizationpercentage) | integer | none | any valid percentage | optional |
+    | [`targetCPUUtilizationPercentage`](/resources/lakehouse/manifest_attributes/#targetcpuutilizationpercentage) | integer | none | any valid percentage | optional |
+    | [`resources`](/resources/lakehouse/manifest_attributes/#resources) | mapping | none | none | optional |
+    | [`requests`](/resources/lakehouse/manifest_attributes/#requests) | mapping | none | none | optional |
+    | [`limits`](/resources/lakehouse/manifest_attributes/#limits) | mapping | none | none | optional |
+    | [`cpu`](/resources/lakehouse/manifest_attributes/#cpu) | string | none | any valid resource amount | optional |
+    | [`memory`](/resources/lakehouse/manifest_attributes/#memory) | string | none | any valid resource amount | optional |
 
     <i>Advanced configuration attributes of Metastore section</i>
     </center>
@@ -738,8 +786,8 @@ Basic configurations might be adequate for standard use cases, outlining merely 
 
     | Attribute | Data Type | Default Value | Possible Value | Requirement |
     | --- | --- | --- | --- | --- |
-    | [queryEngine](/resources/lakehouse/manifest_attributes/#queryengine) | mapping | none | none | optional |
-    | [type](/resources/lakehouse/manifest_attributes/#type) | string | none | themis | mandatory |
+    | [`queryEngine`](/resources/lakehouse/manifest_attributes/#queryengine) | mapping | none | none | optional |
+    | [`type`](/resources/lakehouse/manifest_attributes/#type) | string | none | themis | mandatory |
 
     <i>Basic configuration attributes of Query Engine section</i>
     </center>
@@ -838,28 +886,28 @@ Basic configurations might be adequate for standard use cases, outlining merely 
 
     | Attribute | Data Type | Default Value | Possible Value | Requirement |
     | --- | --- | --- | --- | --- |
-    | [queryEngine](/resources/lakehouse/manifest_attributes/#queryengine | mapping | none | none | mandatory |
-    | [type](/resources/lakehouse/manifest_attributes/#type | string | none | themis | mandatory |
-    | [resources](/resources/lakehouse/manifest_attributes/#resources | mapping | none | none | optional |
-    | [requests](/resources/lakehouse/manifest_attributes/#requests | mapping | none | none | optional |
-    | [cpu](/resources/lakehouse/manifest_attributes/#cpu (under requests) | string | none | any valid CPU resource amount | optional |
-    | [memory](/resources/lakehouse/manifest_attributes/#memory (under requests) | string | none | any valid memory resource amount | optional |
-    | [limits](/resources/lakehouse/manifest_attributes/#limits | mapping | none | none | optional |
-    | [cpu](/resources/lakehouse/manifest_attributes/#cpu (under limits) | string | none | any valid CPU resource limit | optional |
-    | [memory](/resources/lakehouse/manifest_attributes/#memory (under limits) | string | none | any valid memory resource limit | optional |
-    | [themis](/resources/lakehouse/manifest_attributes/#themis | mapping | none | none | optional |
-    | [envs](/resources/lakehouse/manifest_attributes/#envs | mapping | none | none | optional |
-    | [themisConf](/resources/lakehouse/manifest_attributes/#themisconf | mapping | none | none | optional |
-    | [spark](/resources/lakehouse/manifest_attributes/#spark | mapping | none | none | mandatory |
-    | [driver](/resources/lakehouse/manifest_attributes/#driver (under spark) | mapping | none | none | mandatory |
-    | [memory](/resources/lakehouse/manifest_attributes/#memory (under driver) | string | none | any valid memory amount | mandatory |
-    | [cpu](/resources/lakehouse/manifest_attributes/#cpu (under driver) | string | none | any valid CPU resource | mandatory |
-    | [executor](/resources/lakehouse/manifest_attributes/#executor (under spark) | mapping | none | none | mandatory |
-    | [memory](/resources/lakehouse/manifest_attributes/#memory (under executor) | string | none | any valid memory amount | mandatory |
-    | [cpu](/resources/lakehouse/manifest_attributes/#cpu (under executor) | string | none | any valid CPU resource | mandatory |
-    | [instanceCount](/resources/lakehouse/manifest_attributes/#instancecount (under executor) | integer | none | any valid integer | mandatory |
-    | [maxInstanceCount](/resources/lakehouse/manifest_attributes/#maxinstancecount (under executor) | integer | none | any valid integer | mandatory |
-    | [sparkConf](/resources/lakehouse/manifest_attributes/#sparkconf (under spark) | mapping | none | none | optional |
+    | [`queryEngine`](/resources/lakehouse/manifest_attributes/#queryengine) | mapping | none | none | mandatory |
+    | [`type`](/resources/lakehouse/manifest_attributes/#type) | string | none | themis | mandatory |
+    | [`resources`](/resources/lakehouse/manifest_attributes/#resources) | mapping | none | none | optional |
+    | [`requests`](/resources/lakehouse/manifest_attributes/#requests) | mapping | none | none | optional |
+    | [`cpu`](/resources/lakehouse/manifest_attributes/#cpu) | string | none | any valid CPU resource amount | optional |
+    | [`memory`](/resources/lakehouse/manifest_attributes/#memory) | string | none | any valid memory resource amount | optional |
+    | [`limits`](/resources/lakehouse/manifest_attributes/#limits) | mapping | none | none | optional |
+    | [`cpu`](/resources/lakehouse/manifest_attributes/#cpu) | string | none | any valid CPU resource limit | optional |
+    | [`memory`](/resources/lakehouse/manifest_attributes/#memory) | string | none | any valid memory resource limit | optional |
+    | [`themis`](/resources/lakehouse/manifest_attributes/#themis) | mapping | none | none | optional |
+    | [`envs`](/resources/lakehouse/manifest_attributes/#envs) | mapping | none | none | optional |
+    | [`themisConf`](/resources/lakehouse/manifest_attributes/#themisconf) | mapping | none | none | optional |
+    | [`spark`](/resources/lakehouse/manifest_attributes/#spark) | mapping | none | none | mandatory |
+    | [`driver`](/resources/lakehouse/manifest_attributes/#driver) | mapping | none | none | mandatory |
+    | [`memory`](/resources/lakehouse/manifest_attributes/#memory) | string | none | any valid memory amount | mandatory |
+    | [`cpu`](/resources/lakehouse/manifest_attributes/#cpu) | string | none | any valid CPU resource | mandatory |
+    | [`executor`](/resources/lakehouse/manifest_attributes/#executor) | mapping | none | none | mandatory |
+    | [`memory`](/resources/lakehouse/manifest_attributes/#memory) | string | none | any valid memory amount | mandatory |
+    | [`cpu`](/resources/lakehouse/manifest_attributes/#cpu) | string | none | any valid CPU resource | mandatory |
+    | [`instanceCount`](/resources/lakehouse/manifest_attributes/#instancecount) | integer | none | any valid integer | mandatory |
+    | [`maxInstanceCount`](/resources/lakehouse/manifest_attributes/#maxinstancecount) | integer | none | any valid integer | mandatory |
+    | [`sparkConf`](/resources/lakehouse/manifest_attributes/#sparkconf) | mapping | none | none | optional |
 
     <i>Advanced configuration attributes of Query Engine section</i>
     </center>
@@ -879,6 +927,13 @@ After creating the manifest file for the Lakehouse Resource, it's time to apply 
     ```shell
     dataos-ctl apply -f dataproducts/new-lakehouse.yaml -w curriculum
     ```
+
+The links provided below showcase the process of creating Lakehouse for a particular data source:
+
+- [How to create a Lakehouse on ABFSS data source?](/resources/lakehouse/usage_examples/how_to_create_a_lakehouse_on_abfss_data_source/)
+- [How to create a Lakehouse on WASBS data source?](/resources/lakehouse/usage_examples/how_to_create_a_lakehouse_on_wasbs_data_source/)
+- [How to create a Lakehouse on S3 data source?](/resources/lakehouse/usage_examples/how_to_create_a_lakehouse_on_s3_data_source/)
+- [How to create a Lakehouse on GCS data source?](/resources/lakehouse/usage_examples/how_to_create_a_lakehouse_on_gcs_data_source/)
 
 ### **Managing a Lakehouse**
 
@@ -983,35 +1038,19 @@ INFO[0001] 🗑 delete...complete
 
 ## How to configure a Lakehouse manifest file?
 
-The Attributes of Lakehouse manifest define the key properties and configurations that can be used to specify and customize Lakehouse Resources within a manifest file. These attributes allow data developers to define the structure and behavior of their Lakehouse Resources. For comprehensive information on each attribute and its usage, please refer to the link: [Attributes of Lakehouse manifest](/resources/lakehouse/manifest_attributes)
+The Attributes of Lakehouse manifest define the key properties and configurations that can be used to specify and customize Lakehouse Resources within a manifest file. These attributes allow data developers to define the structure and behavior of their Lakehouse Resources. For comprehensive information on each attribute and its usage, please refer to the link: [Attributes of Lakehouse manifest](/resources/lakehouse/manifest_attributes).
 
+## How to manage Lakehouse Resource and datasets using CLI?
+
+This section provides a comprehensive guide for managing Lakehouse Resource and inspecting datasets stored in Lakehouse storage. Utilizing the `dataset` command, users can perform a wide array of Data Definition Language (DDL)-related tasks, streamlining operations such as adding or removing columns, editing dataset metadata, and listing snapshots, among others. To learn more about these commands, refer to the link: [Lakehouse Command Reference](/resources/lakehouse/command_reference/).
 
 ## How to use a Lakehouse in DataOS?
 
-- [DDL/DML operations using DataOS CLI](/resources/lakehouse/command_reference/)
+- [How to ensure high data quality in Lakehouse Storage using the Write-Audit-Publish pattern?](/resources/lakehouse/usage_examples/write_audit_publish_pattern_in_lakehouse_storage/)
 - [Iceberg Metadata Tables in Lakehouse](/resources/lakehouse/iceberg_metadata_tables/)
-- [How to create a Lakehouse on ABFSS data source?](/resources/lakehouse/usage_examples/how_to_create_a_lakehouse_on_abfss_data_source/)
-- [How to create a Lakehouse on WASBS data source?](/resources/lakehouse/usage_examples/how_to_create_a_lakehouse_on_wasbs_data_source/)
-- [How to create a Lakehouse on S3 data source?](/resources/lakehouse/usage_examples/how_to_create_a_lakehouse_on_s3_data_source/)
-- [How to create a Lakehouse on GCS data source?](/resources/lakehouse/usage_examples/how_to_create_a_lakehouse_on_gcs_data_source/)
+- [How to use Iceberg metadata tables to extract insights in Lakehouse storage?](/resources/lakehouse/using_metadata_tables_to_extract_insights_in_lakehouse/)
 - [How to create, fetch, and drop dataset in a Lakehouse using CLI commands?](/resources/lakehouse/command_reference/case_scenario_create_fetch_and_drop_dataset/)
 - [How to perform Iceberg dataset maintainence in a Lakehouse using CLI commands?](/resources/lakehouse/command_reference/case_scenario_maintenance/)
 - [How to perform partitioning on Lakehouse datasets using CLI commands?](/resources/lakehouse/command_reference/case_scenario_partitioning/)
 - [How to perform schema evolution on Lakehouse datasets using CLI commands?](/resources/lakehouse/command_reference/case_scenario_schema_evolution/)
 - [How to manipulate table properties of Lakehouse datasets using CLI commands?](/resources/lakehouse/command_reference/case_scenario_table_properties/)
-
-<!-- 
-
-## Frequently Asked Questions (FAQs)
-
-**Questions: What's the Difference Between Lakehouse and Icebase?**
-
-Lakehouse represents a comprehensive data management architecture, encompassing storage, computation, and metadata management capabilities. Within this architecture, Icebase serves as the storage component. It focuses primarily on storing data, while the broader Lakehouse framework integrates Icebase for storage, employs a query engine for data computation, and utilizes a metastore for managing data's metadata. Essentially, Icebase is a part of the Lakehouse, dedicated to storage.
-
-**How Do I Migrate from Icebase to Lakehouse?**
-
-To migrate from Icebase to a Lakehouse configuration, follow these steps:
-
-1. Initiate the creation of a Lakehouse resource within your DataOS environment.
-2. During the Lakehouse resource setup, assign a storage name that corresponds to your current Icebase depot name. This ensures continuity and prevents disruptions in dependent workflows or processes.
-3. Once the Lakehouse is operational and verified to be functioning as expected, proceed to decommission the standalone Icebase depot. This action should be taken only after thorough validation to ensure all data and workflows are seamlessly integrated into the Lakehouse environment. -->
