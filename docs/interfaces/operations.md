@@ -263,7 +263,7 @@ You can get this information in multiple ways. To determine the node associated 
 
 1. Navigate to the **Core Kernel** tab within the **Operations** App and  and then to the list of the Pods.
     
-    ![core_kernel.png](operations/core_kernel.png)
+    ![core_kernel.png](operations/core_kernel_2.png)
     
 2. Select the desired pod and access its YAML configuration by clicking on the **Pod YAML** tab.
     
