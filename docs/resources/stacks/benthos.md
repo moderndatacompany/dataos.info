@@ -2,10 +2,10 @@
 
 Benthos is a high-performance and resilient stream processing stack within DataOS that provides an easy-to-use declarative YAML programming paradigm for performing common data engineering tasks such as transformation, mapping, schema validation, filtering, hydrating, multiplexing, and enrichment with simple, chained, stateless processing steps. It allows users to quickly adapt their data pipelines as requirements change by interacting with other services and then can write to one or more sinks with the spectrum of connectors available out-of-the-box with it.
 
-![Benthos within DataOS](./benthos/untitled.png)
 
 <center>
 
+![Benthos within DataOS](./benthos/benthos_overview.png)
 <i>Placement of Benthos stack within DataOS</i>
 </center>
 

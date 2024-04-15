@@ -15,11 +15,11 @@ The Monitor [Resource](../resources.md) is an integral part of DataOS's Observab
     [:octicons-arrow-right-24: Create and manage a Monitor](#how-to-create-and-manage-a-monitor)
 
 
--   :material-list-box-outline:{ .lg .middle } **How to configure a Monitor manifest file?**
+-   :material-list-box-outline:{ .lg .middle } **How to configure the manifest file of Monitor?**
 
     ---
 
-    Discover how to configure a Monitor manifest file by adjusting its attributes.
+    Discover how to configure the manifest file of Monitor by adjusting its attributes.
 
     [:octicons-arrow-right-24: Monitor attributes](/resources/monitor/manifest_attributes/)
 
@@ -31,13 +31,13 @@ The Monitor [Resource](../resources.md) is an integral part of DataOS's Observab
     
     [:octicons-arrow-right-24: Working of a Monitor](#how-does-a-monitor-work)
 
--   :material-content-duplicate:{ .lg .middle } **Monitor usage examples**
+-   :material-content-duplicate:{ .lg .middle } **Monitor recipes**
 
     ---
 
     Explore examples showcasing the usage of Monitor in various scenarios.
 
-    [:octicons-arrow-right-24:  Monitor usage examples](#monitor-usage-examples)
+    [:octicons-arrow-right-24:  Monitor usage examples](#monitor-recipes)
 
 </div>
 
@@ -112,23 +112,17 @@ Monitor Service is responsible for cross-checking the [condition](#key-concepts-
 ##### **Monitor Type**
 
 Monitors within the DataOS are categorized into three distinct types, differentiated by the data source format they interrogate and the data type they assess. This classification ensures that users can select the most appropriate monitor type for their specific requirements. The following table provides a clear breakdown of these monitor types along with their corresponding data source types, data types, and condition definitions.
-
 <center>
-
-| Data Source Type    | Data Type | Condition Definition       | Monitor Type      | Type Attribute Value&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
-|---------------------|-----------|----------------------------|-------------------| -------|
-| Icebase, Prometheus | Numeric   | SQL Query, PROM Query      | <a href="/resources/monitor/#equation-monitor">Equation Monitor</a>  | <code>type: equation_monitor</code> |
-| APIs                | String    | JQ Filtering and value matching | <a href="/resources/monitor/#report-monitor">Report Monitor</a>    | <code>type: report_monitor</code> |
-
-</center>
 
 Monitors are classified into three types based on the format of the data source they query and the data type they evaluate. 
 
-| Data Source Type | Data Type | Condition definition | Monitor Type |
+| Monitor Type | Data Source Type | Data Type | Condition definition | 
 | --- | --- | --- | --- |
-| Icebase, Prometheus | Numeric | SQL Query, PROM Query | Equation Monitor |
-| APIs | String  | JQ Filtering and value matching | Report Monitor |
-| Fastbase Topic | String  | JQ Filtering and value matching | Stream Monitor |
+| Equation Monitor | Icebase, Prometheus, Postgres | Numeric | SQL Query, PROM Query | 
+| Report Monitor | APIs | String  | JQ Filtering and value matching | 
+| Stream Monitor | Fastbase Topic | String  | JQ Filtering and value matching | 
+
+</center>
 
 ### **Report Monitor**
 
@@ -247,8 +241,8 @@ Monitors within the DataOS are categorized into three distinct types, differenti
 
 | Data Source Type    | Data Type | Condition Definition       | Monitor Type      | Type Attribute Value&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
 |---------------------|-----------|----------------------------|-------------------| -------|
-| Icebase, Prometheus | Numeric   | SQL Query, PROM Query      | <a href="/resources/monitor/#equation-monitor">Equation Monitor</a>  | <code>type: equation_monitor</code> |
-| APIs                | String    | JQ Filtering and value matching | <a href="/resources/monitor/#report-monitor">Report Monitor</a>    | <code>type: report_monitor</code> |
+| Icebase, Prometheus, Postgres | Numeric   | SQL Query, PROM Query      | Equation Monitor  | <code>type: equation_monitor</code> |
+| APIs                | String    | JQ Filtering and value matching | Report Monitor    | <code>type: report_monitor</code> |
 
 </center>
 
@@ -381,7 +375,7 @@ monitor:
 <td><a href="/resources/monitor/manifest_attributes/#type-2"><code>type</code></td>
 <td>string</td>
 <td>none</td>
-<td>prom, trino</td>
+<td>prom, trino, postgres</td>
 <td>mandatory</td>
 </tr>
 <tr>
@@ -755,6 +749,34 @@ To retrieve the status of a specific Monitor including details in the result, us
 dataos-ctl resource get -t monitor -w curriculum -n ${{monitor name}} -d
 ```
 
+### **Get runtime status of a Monitor**
+
+To retrieve the runtime status of a Monitor, use the command:
+
+```shell
+dataos-ctl get runtime -i 'monitorname | version | resourcetype | workspace'
+e.g.,
+dataos-ctl get runtime -i 'runtimedatatoolmonitor | v1alpha | monitor | public'
+```
+
+**Example Responses**
+
+- **Response for Step 1 (Monitor Details):**
+  ```plaintext
+  NAME                     | VERSION | TYPE    | WORKSPACE | STATUS | RUNTIME                  | OWNER
+  -------------------------|---------|---------|-----------|--------|--------------------------|--------------
+  runtimedatatoolmonitor   | v1alpha | monitor | public    | active | next:2024-03-12T14:22:00 | iamgroot
+  ```
+
+- **Response for Step 2 (Runtime Status):**
+  ```plaintext
+  RUN ID       | STARTED                   | FINISHED                  | RUN STATUS | RESULT
+  -------------|---------------------------|---------------------------|------------|----------------------------------------------------------------------------------------
+  dff8x9an6xvk | 2024-03-12T14:20:00+05:30 | 2024-03-12T14:20:00+05:30 | completed  | 🟩 monitor condition met for monitor: 'runtimedatatoolmonitor_public', created incident 'dff8x9rrzv9c'
+  ```
+
+
+
 ### **Deleting a Monitor** 
 
 Before deleting a Monitor, you must delete all Resources that are dependent on it like Pagers. This step ensures that there are no dependencies left that could cause issues during deletion. Once it's done, use the `resource delete` command to remove the specific Bundle Resource-instance from the DataOS environment:
@@ -817,4 +839,6 @@ dataos-ctl resource delete -i "my-monitor | v1alpha | monitor |  curriculum    "
         info: builder encountered an error
     ```
 
-## Monitor Usage Examples
+## Monitor recipes
+
+- [How to use equation monitor on top of Postgres data source?](./monitor/equation_monitor_on_postgres.md)

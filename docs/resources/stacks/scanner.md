@@ -104,6 +104,7 @@ To learn more about these fields, their possible values, example usage, refer to
 ## Supported Data Sources
 
 Here you can find templates for the depot/non-depot Scanner workflows for the supported data sources.
+<center>
 
 | Type             | Data Source      | Scanner|
 |------------------|------------------|------|
@@ -117,13 +118,13 @@ Here you can find templates for the depot/non-depot Scanner workflows for the su
 | Data Warehouse   | Redshift         |[Link](/resources/stacks/scanner/databases_and_warehouses/redshift/)      |
 | Data Warehouse   | Snowflake        |[Link](/resources/stacks/scanner/databases_and_warehouses/snowflake/)      |
 | Lakehouse        | Icebase          |[Link](/resources/stacks/scanner/databases_and_warehouses/icebase/)     |
-| Messaging Service| Kafka            |[Link](/resources/stacks/scanner/messag_servicesg/kafka/)     |
+| Messaging Service| Kafka            |[Link](/resources/stacks/scanner/messaging_services/kafka/)     |
 | Messaging Service| Fastbase/Pulsar  |[Link](/resources/stacks/scanner/messaging_services/fastbase/)    |
 | Dashboard Service| Atlas            |[Link](/resources/stacks/scanner/dashboards/atlas_scan/)      |
 | Dashboard Service| Redash           |[Link](/resources/stacks/scanner/dashboards/redash_scan/)      |
 | Dashboard Service| Superset         |[Link](/resources/stacks/scanner/dashboards/superset_scan/)      |
 
-
+</center>
 
 <!-- 
 [Databases and Warehouses](scanner/databases_and_warehouses.md)

@@ -74,7 +74,7 @@ A [Service](../service.md) is a long-running process designed to handle and resp
     stack: steampipestack:1.0
     ```
     
-- `envs`: Furnish the Steampipe Database password through the `STEAMPIPE_DATABASE_PASSWORD` environmental variable. Alternatively, create a separate Secret Resource, create a Secret Resource instance for the same by applying it from the CLI and reference the Secret using the `dataosSecrets` attribute within the Steampipe Service. For further details on this scenario, consult the documentation on [Referring Secrets in a Service Resource.](../secret/referencing_secrets/referencing_secrets_in_a_service.md)
+- `envs`: Furnish the Steampipe Database password through the `STEAMPIPE_DATABASE_PASSWORD` environmental variable. Alternatively, create a separate Secret Resource, create a Secret Resource instance for the same by applying it from the CLI and reference the Secret using the `dataosSecrets` attribute within the Steampipe Service. For further details on this scenario, consult the documentation on [Referring Secrets in a Service Resource.](/resources/secret/#how-to-refer-secrets-in-other-dataos-resources)
     
     ```yaml
     # For Referring Secrets from a pre-created Secret Resource

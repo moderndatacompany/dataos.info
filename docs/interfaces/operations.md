@@ -250,9 +250,35 @@ Let's say you have a data processing job that involves complex computations and 
 1. **Analyze Resource Utilization**: Observe the CPU, Memory, and Disk usage of the driver and executor nodes. You can monitor the resource consumption patterns and identify any bottlenecks or resource constraints that may be impacting the job performance. This information helps you determine if the allocated resources are sufficient for the workload or if adjustments need to be made.
 2. **Optimize Resource Allocation**: Based on the insights gained from the usage graphs, you can make informed decisions about resource allocation for your data processing job. If you observe that the job is CPU-intensive, you might allocate more CPU resources to the executor nodes. If memory usage is high, you can adjust the memory allocation to ensure optimal performance. Fine-tuning the resource allocation can help improve job execution time and overall efficiency.
 
-![Alt text](operations/runtime_usage_execute.png)
-<figcaption align = "center">Runtime usage </figcaption>
+   ![Alt text](operations/runtime_usage_execute.png)
+   <figcaption align = "center">Runtime usage </figcaption>
 
 By analyzing the resource utilization of the data processing job, it becomes apparent that the allocated resources are insufficient. The executor node is reaching its maximum limit, indicating a potential bottleneck in the processing pipeline. To optimize job performance and ensure efficient processing, it is recommended to increase the requested resources.
 
 By scaling up the allocated resources, such as CPU and Memory, the executor node will have more capacity to handle the workload. This can lead to improved processing speed, reduced latency, and overall better performance of the data processing job.
+
+### **Identifing the Node Associated with a Pod**
+
+You can get this information in multiple ways. To determine the node associated with a pod using the Operations app, follow these steps:
+
+1. Navigate to the **Core Kernel** tab within the **Operations** App and  and then to the list of the Pods.
+    
+    ![core_kernel.png](operations/core_kernel.png)
+    
+2. Select the desired pod and access its YAML configuration by clicking on the **Pod YAML** tab.
+    
+    ![pod_yaml.png](operations/pod_yaml.png)
+    
+3. In the YAML configuration file, locate the field `nodeName` by using the search function (`cmd+f` or `ctrl+f`). 
+    
+    ![node_name.png](operations/node_name.png)
+    
+By following these steps, you can easily identify the node associated with any pod. Additionally, for further observability, you have the option to access detailed node information via either the GUI or the CLI. 
+    
+1. You can find the list of compute nodes in the **Cloud Kernel** tab.
+    
+    ![compute_node.png](operations/compute_node.png)
+    
+2. You can get the details on the metrics around the Nodes on Grafana.
+    
+    ![metrics_grafana.png](operations/metrics_grafana.png)

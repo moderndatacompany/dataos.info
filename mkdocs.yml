@@ -150,7 +150,7 @@ nav:
          - Operator: resources/operator.md
          - Pager: resources/pager.md
          - Policy: resources/policy.md
-         - Secret: resources/secret_updated.md
+         - Secret: resources/secret.md
          - Service: resources/service.md 
          - Worker: resources/worker.md
          - Workflow: resources/workflow.md 

@@ -26,13 +26,13 @@ Lakehouse is a [DataOS Resource](/resources/) that merges Apache Iceberg table f
     [:octicons-arrow-right-24: Create and manage a Lakehouse](/resources/lakehouse/#how-to-create-and-manage-a-lakehouse)
 
 
--   :material-list-box-outline:{ .lg .middle } **How to configure a Lakehouse manifest file?**
+-   :material-list-box-outline:{ .lg .middle } **How to configure the manifest file of Lakehouse?**
 
     ---
 
-    Discover how to configure a Lakehouse manifest file by adjusting its attributes.
+    Discover how to configure the manifest file of a Lakehouse by adjusting its attributes.
 
-    [:octicons-arrow-right-24:  Lakehouse attributes](/resources/lakehouse/manifest_attributes/)
+    [:octicons-arrow-right-24: Lakehouse attributes](/resources/lakehouse/manifest_attributes/)
 
 -   :material-console:{ .lg .middle } **How to manage datasets in a Lakehouse?**
 
@@ -40,7 +40,7 @@ Lakehouse is a [DataOS Resource](/resources/) that merges Apache Iceberg table f
 
     Various CLI commands related to performing DDL/DML operations on datasets in a Lakehouse.
     
-    [:octicons-arrow-right-24:  Managing datasets in Lakehouse](/resources/lakehouse/command_reference/)
+    [:octicons-arrow-right-24: Managing datasets in Lakehouse](/resources/lakehouse/command_reference/)
 
 -   :material-content-duplicate:{ .lg .middle }  **How to use a Lakehouse in DataOS?**
 
@@ -48,7 +48,7 @@ Lakehouse is a [DataOS Resource](/resources/) that merges Apache Iceberg table f
 
     Explore examples showcasing the usage of Lakehouse Resource in various scenarios.
     
-    [:octicons-arrow-right-24: Lakehouse usage examples](/resources/lakehouse/#how-to-use-a-lakehouse-in-dataos)
+    [:octicons-arrow-right-24: Lakehouse usage recipes](/resources/lakehouse/#how-to-use-a-lakehouse-in-dataos)
 
 </div>
 
@@ -1036,9 +1036,9 @@ INFO[0001] 🗑 deleting(public) cnt-city-demo-010:v1alpha:lakehouse...deleted
 INFO[0001] 🗑 delete...complete
 ```
 
-## How to configure a Lakehouse manifest file?
+## How to configure the manifest file of Lakehouse?
 
-The Attributes of Lakehouse manifest define the key properties and configurations that can be used to specify and customize Lakehouse Resources within a manifest file. These attributes allow data developers to define the structure and behavior of their Lakehouse Resources. For comprehensive information on each attribute and its usage, please refer to the link: [Attributes of Lakehouse manifest](/resources/lakehouse/manifest_attributes).
+The Attributes of Lakehouse manifest define the key properties and configurations that can be used to specify and customize Lakehouse Resources within a manifest file. These attributes allow data developers to define the structure and behavior of their Lakehouse Resources. For comprehensive information on each attribute and its usage, please refer to the link: [Attributes of Lakehouse manifest](/resources/lakehouse/manifest_attributes/).
 
 ## How to manage Lakehouse Resource and datasets using CLI?
 
@@ -1046,6 +1046,7 @@ This section provides a comprehensive guide for managing Lakehouse Resource and 
 
 ## How to use a Lakehouse in DataOS?
 
+- [How to ensure high data quality in Lakehouse Storage using the Write-Audit-Publish pattern?](/resources/lakehouse/usage_examples/write_audit_publish_pattern_in_lakehouse_storage/)
 - [Iceberg Metadata Tables in Lakehouse](/resources/lakehouse/iceberg_metadata_tables/)
 - [How to use Iceberg metadata tables to extract insights in Lakehouse storage?](/resources/lakehouse/using_metadata_tables_to_extract_insights_in_lakehouse/)
 - [How to create, fetch, and drop dataset in a Lakehouse using CLI commands?](/resources/lakehouse/command_reference/case_scenario_create_fetch_and_drop_dataset/)

@@ -1,0 +1,25 @@
+name: {{mssql01}}
+version: v2alpha
+type: depot
+tags:
+  - {{dropzone}}
+  - {{mssql}}
+layer: user
+depot:
+  type: JDBC
+  description: {{MSSQL Sample data}}
+  jdbc:
+    subprotocol: {{sqlserver}}
+    host: {{host}}
+    port: {{port}}
+    database: {{database}}
+    params: # Required
+      encrypt: {{false}}
+  external: {{true}}
+  hiveSync: {{false}}
+  connectionSecret:
+    - acl: rw
+      type: key-value-properties
+      data:
+        username: {{username}}
+        password: {{password}}
