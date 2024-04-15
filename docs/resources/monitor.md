@@ -15,11 +15,11 @@ The Monitor [Resource](../resources.md) is an integral part of DataOS's Observab
     [:octicons-arrow-right-24: Create and manage a Monitor](#how-to-create-and-manage-a-monitor)
 
 
--   :material-list-box-outline:{ .lg .middle } **How to configure a Monitor manifest file?**
+-   :material-list-box-outline:{ .lg .middle } **How to configure the manifest file of Monitor?**
 
     ---
 
-    Discover how to configure a Monitor manifest file by adjusting its attributes.
+    Discover how to configure the manifest file of Monitor by adjusting its attributes.
 
     [:octicons-arrow-right-24: Monitor attributes](/resources/monitor/manifest_attributes/)
 
@@ -31,13 +31,13 @@ The Monitor [Resource](../resources.md) is an integral part of DataOS's Observab
     
     [:octicons-arrow-right-24: Working of a Monitor](#how-does-a-monitor-work)
 
--   :material-content-duplicate:{ .lg .middle } **Monitor usage examples**
+-   :material-content-duplicate:{ .lg .middle } **Monitor recipes**
 
     ---
 
     Explore examples showcasing the usage of Monitor in various scenarios.
 
-    [:octicons-arrow-right-24:  Monitor usage examples](#monitor-usage-examples)
+    [:octicons-arrow-right-24:  Monitor usage examples](#monitor-recipes)
 
 </div>
 
@@ -839,6 +839,6 @@ dataos-ctl resource delete -i "my-monitor | v1alpha | monitor |  curriculum    "
         info: builder encountered an error
     ```
 
-## Monitor Usage Examples
+## Monitor recipes
 
 - [How to use equation monitor on top of Postgres data source?](./monitor/equation_monitor_on_postgres.md)
