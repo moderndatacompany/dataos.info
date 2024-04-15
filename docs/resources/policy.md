@@ -143,7 +143,7 @@ To create a Policy, the first step is to create a Policy manifest file. A sample
                          
         1.  [Resource meta section](#resource-meta-section) within a manifest file comprises metadata attributes universally applicable to all [Resource-types](/resources/types_of_dataos_resources/). To learn more about how to configure attributes within this section, refer to the link: [Attributes of Resource meta section](/resources/resource_attributes/).
 
-        2.  [Policy-specific section](#policy-specific-section) within a manifest file comprises attributes specific to the Policy Resource. This section is different for Access and Data Policy .To learn more about how to configure attributes of Policy-specific section, refer to the link: [Attributes of Policy manifest](/resources/policy/manifest_attributes/).
+        2.  [Policy-specific section](#policy-specific-section) within a manifest file comprises attributes specific to the Policy Resource. This section is different for Access and Data Policy .To learn more about how to configure attributes of Policy-specific section, refer to the link: [Attributes of Policy manifest](/resources/policy/yaml_configuration_attributes/).
 
     === "Data Policy"
 

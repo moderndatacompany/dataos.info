@@ -15,11 +15,11 @@ A Cluster Resource can be provisioned [on-demand](./cluster/on_demand_computing.
     [:octicons-arrow-right-24: Create a Cluster](#how-to-create-a-cluster-resource)
 
 
--   :material-list-box-outline:{ .lg .middle } **How to configure a Cluster manifest file?**
+-   :material-list-box-outline:{ .lg .middle } **How to configure the manifest file of Cluster?**
 
     ---
 
-    Discover how to configure a Cluster manifest file by adjusting its attributes.
+    Discover how to configure the manifest file of a Cluster by adjusting its attributes.
 
     [:octicons-arrow-right-24: Cluster attributes](/resources/cluster/manifest_attributes/)
 

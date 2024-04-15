@@ -112,7 +112,7 @@ To create Depots, ensure that you possess the following tags: `roles:id:user`,�
 ### **Create a Manifest File**
 The manifest configuration file for a Depot can be divided into four main sections: [Resource section](#configure-resource-section), [Depot-specific section](#configure-depot-specific-section), [Connection Secrets section](#configure-connection-secrets-section), and [Specifications section](#configure-spec-section¶). Each section serves a distinct purpose and contains specific attributes.
 
-### **Configure Resource Section**
+**Configure Resource Section**
 
 The Resource section of the manifest configuration file consists of attributes that are common across all resource types. The following snippet demonstrates the key-value properties that need to be declared in this section:
 
@@ -142,7 +142,7 @@ The Resource section of the manifest configuration file consists of attributes t
 
 For more details regarding attributes in the Resource section, refer to the link: [Attributes of Resource Section.](../resources/resource_attributes.md)
 
-### **Configure Depot-specific Section**
+**Configure Depot-specific Section**
 
 The Depot-specific section of the configuration file includes key-value properties specific to the Depot-type being created. Each Depot type represents a Depot created for a particular data source. Multiple Depots can be established for the same data source, and they will be considered as a single depot type. The following snippet illustrates the key values to be declared in this section:
 
@@ -173,7 +173,7 @@ The table below elucidates the various attributes in the Depot-specific section:
 | [`spec`](./depot/depot_yaml_configuration_attributes.md#spec) | object | none | varies between data sources | mandatory |
 
 
-### **Configure Connection Secrets Section**
+**Configure Connection Secrets Section**
 
 The configuration of connection secrets is specific to each Depot type and depends on the underlying data source. The details for these connection secrets, such as credentials and authentication information, should be obtained from your enterprise or data source provider. For commonly used data sources, we have compiled the connection secrets [here.](../resources/depot/depot_config_templates.md) Please refer to these templates for guidance on how to configure the connection secrets for your specific data source.
 
@@ -305,7 +305,7 @@ By referencing the name of the Instance Secret, "mysql-secret," users can easily
 
 To learn more about Instance Secrets as a Resource and their usage, refer to the documentation [here](./instance_secret.md)
 
-#### **Configure Spec Section**
+**Configure Spec Section**
 
 The `spec` section in the manifest configuration file plays a crucial role in directing the Depot to the precise location of your data and providing it with the hierarchical structure of the data source. By defining the specification parameters, you establish a mapping between the data and the hierarchy followed within DataOS.
 
@@ -557,16 +557,20 @@ Icebase-type depots are designed to store data suitable for OLAP processes. It o
 
 Fastbase type-depots are optimized for handling streaming data workloads. It provides features such as [creating](https://dataos.info/resources/depot/fastbase/#create-dataset) and [listing topics](https://dataos.info/resources/depot/fastbase/#list-topics), which can be executed effortlessly using the DataOS CLI. To explore Fastbase further, consult the [link.](https://dataos.info/resources/depot/fastbase/)
 
+## **Data Integration - Supported Connectors in DataOS**
+
+The catalogue of data sources accessible by one or more components within DataOS is provided on the following page: [Supported Connectors in DataOS](https://dataos.info/resources/depot/list_of_connectors/)
+
 
 ## **Depot Configuration Templates**
 
-To facilitate the creation of depots accessing commonly used data sources, we have compiled a collection of pre-defined YAML configuration templates. These templates serve as a starting point, allowing you to quickly set up depots for popular data sources. 
+To facilitate the creation of depots accessing commonly used data sources, we have compiled a collection of pre-defined manifest templates. These templates serve as a starting point, allowing you to quickly set up depots for popular data sources. 
 
 To make the process of creating a Depot configuration easier, we provide a set of predefined templates for various data sources. These templates serve as a starting point for configuring your Depot based on the specific data source you are working with. Simply choose the template that corresponds to your organization's data source and follow the instructions provided to fill in the required information.
 
 <aside class=callout>
 
-🗣️ When using these templates, you will need to populate the key-value properties in the YAML config file with the appropriate values for your data source. This requires a basic understanding of your organization's data infrastructure and the necessary credentials or connection details.
+🗣️ When using these templates, you will need to populate the key-value properties in the manifest file with the appropriate values for your data source. This requires a basic understanding of your organization's data infrastructure and the necessary credentials or connection details.
 
 </aside>
 
@@ -1375,9 +1379,3 @@ You can access these templates by visiting the following links: 
                   {{"key1": "value1"}}
                   {{"key2": "value2"}}
             ```
-
-
-
-## **Data Integration - Supported Connectors in DataOS**
-
-The catalogue of data sources accessible by one or more components within DataOS is provided on the following page: [Supported Connectors in DataOS](https://dataos.info/resources/depot/list_of_connectors/)
