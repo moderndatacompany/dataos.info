@@ -3,7 +3,7 @@ name: databasetestdepot
 type: depot
 layer: user
 depot:
-  type: JDBC                                      # Depot type
+  type: JDBC                                # Depot type
   description: To write data to retaildb postgresql database
   external: false
   connectionSecret:                               # Data source specific configurations
@@ -11,9 +11,9 @@ depot:
       type: key-value-properties
       data:
         username: "postgres"
-        password: "MyPassword1234"
+        password: "049a1aa1a90e448fb0bd9dbc8babc226"
   spec:                                           # Data source specific configurations
-    host: customers-test1.public.svc.cluster.local
-    port: 8092
+    host: usr-db-dataos-ck-emergingh-dev.postgres.database.azure.com
+    port: 5432
     database: customersdb
     subprotocol: postgresql

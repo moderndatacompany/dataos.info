@@ -1,9 +1,0 @@
-# Use Database to Query Data using Workbench
-
-To enable the Minerva/Themis Query Engine to access database, you can create the Postgres [Depot](../depot.md). This allows you to query the data and create dashboards using the DataOS Workbench and Atlas
-
-## Create a Depot
-
-```yaml title="depot.yaml" 
---8<-- "examples/resources/database/depot_database.yaml"
-```

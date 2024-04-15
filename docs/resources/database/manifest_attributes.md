@@ -1,6 +1,7 @@
 # Attributes of Database manifest
 
-**Structure of Database manifest**
+## **Structure of Database manifest**
+
 ```yaml
 database:
   migrate:                  #mandatory
@@ -16,9 +17,9 @@ database:
   manageAsUser: iamgroot        #string       
 ```
 
-**Database-specific section Attributes**
+## **Database-specific section Attributes**
 
-## `database` 
+### `database` 
 
 **Description:** The database attributes is a mapping that defines the configuration for a Database within the DataOS environment.
 
@@ -90,6 +91,8 @@ includesInline:
 ##### **`command`**
 
 **Description:** The command attribute in databases involves up and down commands. up applies schema changes for version transition, while down reverts changes, crucial for rollbacks to previous versions.
+
+
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |

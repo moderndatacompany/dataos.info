@@ -78,7 +78,7 @@ To create a Database, the first step is to create a Database manifest file. A sa
 
     1.  [Resource meta section](#resource-meta-section) within a manifest file comprises metadata attributes universally applicable to all [Resource-types](/resources/types_of_dataos_resources/). To learn more about how to configure attributes within this section, refer to the link: [Attributes of Resource meta section](/resources/resource_attributes/).
 
-    2.  [Database-specific section](#database-specific-section) within a manifest file comprises attributes specific to the Database Resource. To learn more about how to configure attributes of Database-specific section, refer the [Attributes of Database-specific section](./database/database_manifest_attributes.md)
+    2.  [Database-specific section](#database-specific-section) within a manifest file comprises attributes specific to the Database Resource. To learn more about how to configure attributes of Database-specific section, refer the [Attributes of Database-specific section](./database/manifest_attributes.md)
 
 
 The manifest for creating a Database has the following two sections:
@@ -160,15 +160,15 @@ The table below describes the various attributes used for defining conditions:
 
 | Attribute          | Data Type | Default Value | Possible Values                 | Requirement |
 |--------------------|-----------|---------------|---------------------------------|-------------|
-| [`database`](./database/database_manifest_attributes.md#database)        | mapping    | none          | none                            | mandatory   |
-| [`migrate`](./database/database_manifest_attributes.md#migrate)       |  mapping      | none          | none                            | mandatory   |
-| [`includes`](./database/database_manifest_attributes.md#includes)         | list of strings    | none          | any valid path                  | optional   |
-| [`includesInline`](./database/database_manifest_attributes.md#includesInline)   | mapping     | none          | Key-value pairs of strings      | optional    |
-| [`command`](./database/database_manifest_attributes.md/#command)          | string    | none          | up/down                         | mandatory   |
-| [`parameter`](./database/database_manifest_attributes.md#parameter)        | string    | none          | integer value                            | optional    |
+| [`database`](./database/manifest_attributes.md#database)        | mapping    | none          | none                            | mandatory   |
+| [`migrate`](./database/manifest_attributes.md#migrate)       |  mapping      | none          | none                            | mandatory   |
+| [`includes`](./database/manifest_attributes.md#includes)         | list of strings    | none          | any valid path                  | optional   |
+| [`includesInline`](./database/manifest_attributes.md#includesInline)   | mapping     | none          | Key-value pairs of strings      | optional    |
+| [`command`](./database/manifest_attributes.md/#command)          | string    | none          | up/down                         | mandatory   |
+| [`parameter`](./database/manifest_attributes.md#parameter)        | string    | none          | integer value                            | optional    |
 
 
-For more information about the below attributes, refer to the link [Attributes of Database](/docs/resources/database/database_manifest_attributes.md)
+For more information about the below attributes, refer to the link [Attributes of Database](/docs/resources/database/manifest_attributes.md)
 
 
 **Migrate Configuration**
@@ -424,8 +424,9 @@ To validate the outcome, execute a request to the designated URL:
 
 === "Example"
 
-    ```shells
+    ```shell
     https://humorous-adder.dataos.app/products_db/api/v1/products
+    ```
     #Expected Output
     ```json
         0
@@ -462,7 +463,7 @@ During the deletion of a Database, several errors may arise, particularly when d
 
     Identify and eliminate the dependent service prior to Database deletion and delete it
     
-      ```bash
+      ```shell
       # Get status of services
       dataos-ctl get -t service -w curriculum
 
@@ -473,32 +474,4 @@ During the deletion of a Database, several errors may arise, particularly when d
 
 ## Database Usage Examples
 
-To enable the Minerva/Themis Query Engine to access database, you can create the Postgres [Depot](../depot.md). This allows you to query the data and create dashboards using the DataOS Workbench and Atlas
-
-## Create a Depot on the hosted Database Service
-
-Once you have the Database Service up and running, the next step involves creating a Depot on the Postgres Database associated with that Service. This necessitates the formulation of a Postgres Depot Manifest. Detailed configuration specifications are available on the PostgreSQL Depot config templates. In this specific context, certain attributes demand precise configuration, as outlined below:
-
-```yaml
-version: v1
-name: databasetestdepot
-type: depot
-layer: user
-depot:
-  type: JDBC                                # Depot type
-  description: To write data to retaildb postgresql database
-  external: false
-  connectionSecret:                               # Data source specific configurations
-    - acl: r
-      type: key-value-properties
-      data:
-        username: "postgres"
-        password: "049a1aa1a90e448fb0bd9dbc8babc226"
-  spec:                                           # Data source specific configurations
-    host: usr-db-dataos-ck-emergingh-dev.postgres.database.azure.com
-    port: 5432
-    database: customersdb
-    subprotocol: postgresql
-```
-
-  
+- [Use Database to Query Data using Workbench](./database/query_database.md)
