@@ -23,7 +23,7 @@ Operators can exercise precise control over who can retrieve credentials from Se
 
     Learn how to create and manage a Secret in DataOS.
 
-    [:octicons-arrow-right-24: Create Secret](/resources/secret_updated/#how-to-create-a-secret)
+    [:octicons-arrow-right-24: Create Secret](/resources/secret/#how-to-create-a-secret)
 
 
 -   :material-script-text-outline:{ .lg .middle } **How to configure a Secret manifest file?**
@@ -42,7 +42,7 @@ Operators can exercise precise control over who can retrieve credentials from Se
 
     Different types of Secret securely store diverse sensitive data, addressing specific needs like docker credentials, certificates, etc.
 
-    [:octicons-arrow-right-24: Types](../resources/secret_updated/secrets_attributes/#types-of-secret)
+    [:octicons-arrow-right-24: Types](../resources/secret/secrets_attributes/#types-of-secret)
 
 
 -   :material-console:{ .lg .middle } **How to refer to Secrets in other DataOS Resources?**
@@ -52,7 +52,7 @@ Operators can exercise precise control over who can retrieve credentials from Se
     Learn how to leverage DataOS Secrets to securely refer sensitive information in other DataOS Resources.
 
 
-    [:octicons-arrow-right-24: Refer Secret](/resources/secret_updated/#how-to-refer-secrets-in-other-dataos-resources)
+    [:octicons-arrow-right-24: Refer Secret](/resources/secret/#how-to-refer-secrets-in-other-dataos-resources)
 </div>
 
 
@@ -65,7 +65,7 @@ To create a Secret Resource in DataOS, follow these steps. This guide assumes yo
 
 Begin by creating a manifest file that will hold the configuration details for your Secret.The structure of the Secret manifest file is provided in the image given below:
 
-![Secret manifest structure](/resources/secret_updated/Slide1.jpg)
+![Secret manifest structure](/resources/secret/Slide1.jpg)
 The manifest file of a Secret Resource can be broken down into two separate sections - Resource meta section and Secret-specific section.
 
 
@@ -120,14 +120,14 @@ The table below provides a summary of the various attributes of the Secret-speci
 
 | Field | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`secret`](./secret_updated/secrets_attributes.md) | object | none | none | mandatory |
-| [`type`](./secret_updated/secrets_attributes.md#types-of-secret) | string | none | cloud-kernel, cloud-kernel-image-pull, key-value, key-value-properties, certificates | mandatory |
-| [`acl`](./secret_updated/secrets_attributes.md#secretacl) | string | none | r, rw | mandatory |
-| [`data`](./secret_updated/secrets_attributes.md#secret-data) | mapping | none | none | mandatory |
-| [`files`](./secret_updated/secrets_attributes.md#secret-file) | string | none | file-path | optional |
+| [`secret`](./secret/secrets_attributes.md) | object | none | none | mandatory |
+| [`type`](./secret/secrets_attributes.md#types-of-secret) | string | none | cloud-kernel, cloud-kernel-image-pull, key-value, key-value-properties, certificates | mandatory |
+| [`acl`](./secret/secrets_attributes.md#secretacl) | string | none | r, rw | mandatory |
+| [`data`](./secret/secrets_attributes.md#secret-data) | mapping | none | none | mandatory |
+| [`files`](./secret/secrets_attributes.md#secret-file) | string | none | file-path | optional |
 
 
-For more information about the various attributes in Secret specific section, refer to the Attributes of [Secret specific section](./secret_updated/secrets_attributes.md).
+For more information about the various attributes in Secret specific section, refer to the Attributes of [Secret specific section](./secret/secrets_attributes.md).
 
 ### **Apply the Secret manifest**
 
