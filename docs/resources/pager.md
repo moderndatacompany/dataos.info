@@ -522,6 +522,8 @@ A Pager within DataOS operates by continuously monitoring the incident stream fo
 
 ## Pager usage examples
 
-- [How to create a Pager for sending alerts to emails?]()
+- [How to create a custom body template for a Pager?](./pager/custom_body_template_for_pager.md)
+
+<!-- - [How to create a Pager for sending alerts to emails?]()
 - [How to create a Pager for sending alerts to Microsoft Teams channel?]()
-- [How to create a Pager for sending alerts to a Slack channel using a Webhook]()
+- [How to create a Pager for sending alerts to a Slack channel using a Webhook]() -->

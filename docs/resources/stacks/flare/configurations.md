@@ -38,6 +38,7 @@ stackSpec: # Flare Stack-specific section or mapping (mandatory)
         schemaSubject: custom-topic-value-schema-name # Subject name for schema registry (optional)
         schemaId: 2 # Schema ID in schema registry (optional)
         options: # Additional data load options (optional)
+          branch: b1
           key1: value1
           key2: value2
         incremental: # Incremental load configuration (optional)
@@ -82,6 +83,7 @@ stackSpec: # Flare Stack-specific section or mapping (mandatory)
         options: # Output options (optional)
           saveMode: overwrite # Data save mode (optional, default: overwrite)
           extraOptions:
+            branch: b2
             key1: value1
           compressionType: gzip # Compression type (optional)
           sort:
@@ -650,6 +652,31 @@ stackSpec:
 
 ```
 
+---
+
+##### **`branch`**
+
+**Description:** The `branch` attribute specifies the particular branch of an Iceberg-format dataset on which operations are to be conducted. It allows for precise targeting of dataset branches for input operations. If omitted, the default behavior is to operate on the `main` branch of the dataset. This attribute is crucial for ensuring that the operations are performed on the correct version of the data.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | optional | main | any valid branch name |
+
+**Example Usage:**
+
+For input datasets:
+```yaml
+inputs:
+  - name: sanity_city_input
+    dataset: dataos://icebase:retail/city
+    format: Iceberg
+    options:
+      branch: b1
+  # ...other input attributes
+```
+
+---
+
 #### **`incremental`**
 
 **Description:** The `incremental` attribute contains configurations for reading data incrementally (or incremental job). This includes the context, SQL for incremental extraction, keys for incremental processing, and state management. This is particularly useful when dealing with large datasets and performing incremental updates.
@@ -1076,6 +1103,31 @@ stackSpec:
           extraOptions:
             key1: value1
             # Additional extra options...
+```
+
+---
+
+###### **`branch`**
+
+**Description:** The `branch` attribute specifies the particular branch of an Iceberg-format dataset on which operations are to be conducted. It allows for precise targeting of dataset branches for output operations. If omitted, the default behavior is to operate on the `main` branch of the dataset. This attribute is crucial for ensuring that the operations are performed on the correct version of the data.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | optional | main | any valid branch name |
+
+**Example Usage:**
+
+For output datasets:
+```yaml
+outputs:
+  - name: cities
+    dataset: dataos://icebase:retail/city_01
+    format: ICEBERG
+    options:
+      extraOptions:
+        branch: b2
+      saveMode: append
+  # ...other output attributes
 ```
 
 ---

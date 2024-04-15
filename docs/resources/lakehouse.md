@@ -1046,6 +1046,7 @@ This section provides a comprehensive guide for managing Lakehouse Resource and 
 
 ## How to use a Lakehouse in DataOS?
 
+- [How to ensure high data quality in Lakehouse Storage using the Write-Audit-Publish pattern?](/resources/lakehouse/usage_examples/write_audit_publish_pattern_in_lakehouse_storage/)
 - [Iceberg Metadata Tables in Lakehouse](/resources/lakehouse/iceberg_metadata_tables/)
 - [How to use Iceberg metadata tables to extract insights in Lakehouse storage?](/resources/lakehouse/using_metadata_tables_to_extract_insights_in_lakehouse/)
 - [How to create, fetch, and drop dataset in a Lakehouse using CLI commands?](/resources/lakehouse/command_reference/case_scenario_create_fetch_and_drop_dataset/)

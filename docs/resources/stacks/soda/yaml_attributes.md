@@ -26,6 +26,7 @@ stackSpec:
       options:
         engine: minerva
         clusterName: miniature
+        branchName: test
       filter:
         name: filter_on_age
         where: age > 50
@@ -266,6 +267,27 @@ stackSpec:
     - dataset: dataos://icebase:retail/customer
       options:
         clusterName: miniature
+      # ...other inputs attributes
+```
+
+---
+
+##### **`branchName`**
+
+**Description:** This attribute allows users to specify the branch of an Iceberg dataset on which the checks should be executed. If the branch name is omitted, Soda defaults to running checks on the `main` branch. For targeted operations on specific branches, providing the branch name is essential.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | optional | main | any valid branch name |
+
+**Example Usage:**
+
+```yaml
+stackSpec:
+  inputs:
+    - dataset: dataos://icebase:retail/customer
+      options:
+        branchName: test
       # ...other inputs attributes
 ```
 
