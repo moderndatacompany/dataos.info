@@ -1,3 +1,9 @@
+---
+title: Compute
+search:
+  boost: 2
+---
+
 # :resources-compute: Compute
 
 Compute is a [DataOS Resource](../resources.md), designed to streamline the allocation of processing power for data-centric tasks such as data procesing, querying and machine learning workloads. It acts as an abstraction on top of **node pools**, which represent a group of virtual machines (VMs) characterized by congruent configurations. These configurations encompass CPU specifications, RAM capacity, network protocol, and storage drive types. These homogenous groupings are seamlessly accessible through a unique, identifiable name within DataOS and available to DataOS as a Compute Resource. This abstraction eliminates the necessity for developers to individually specify and provision VMs, thus optimizing resource allocation and streamlining the computational workflow.

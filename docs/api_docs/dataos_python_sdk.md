@@ -1,3 +1,10 @@
+---
+title: Python SDK
+search:
+  boost: 2
+---
+
+
 # DataOS SDK for Python
 
 The DataOS SDK for Python includes functionality to accelerate development with Python for the DataOS platform. It provides a cohesive set of APIs, each accessible through its respective services, enabling seamless interaction with the platform. By utilizing the SDK, data developers unlock the potential to construct innovative solutions and integrate them seamlessly into their existing resources.

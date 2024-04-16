@@ -1,3 +1,9 @@
+---
+title: Stack
+search:
+  boost: 4
+---
+
 # :resources-stack: Stack
 
 Stack is a [DataOS Resource](../resources.md) that acts as an execution engine and an extension point for integrating new programming paradigms within the platform. Stacks are composable and can be orchestrated using DataOS Resources such as a [Worker](./worker.md), [Service](./service.md), or within a designated job in a [Workflow](./workflow.md) Resource.
@@ -72,8 +78,7 @@ DataOS has two distinct resources that supports its interoperability and extensi
 
 ### **CLI**
 
-The DataOS Command-Line Interface (CLI), known as `dataos-ctl`, also serves as a Stack within the DataOS ecosystem. It enables users to programmatically execute CLI commands through a YAML manifest. To learn more about CLI Stack, refer to the link: [CLI](./stacks/cli.md).
-
+The DataOS Command-Line Interface (CLI), known as `dataos-ctl`, also serves as a Stack within the DataOS ecosystem. It enables users to programmatically execute CLI commands through a YAML manifest. To learn more about CLI Stack, refer to the link: [CLI](./stacks/cli_stack.md).
 
 
 ### **Data Toolbox**

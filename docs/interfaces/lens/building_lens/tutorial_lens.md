@@ -48,7 +48,7 @@ tag:
 
 Now define all the data elements with their attributes.
 
-![MicrosoftTeams-image (175).png](tutorial_lens/MicrosoftTeams-image_(175).png)
+![MicrosoftTeams-image (175).png](tutorial_lens/elements_lens.png)
 
 ### **Entities**
 We will start with mapping the `Customer` entity.
