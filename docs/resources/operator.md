@@ -1,3 +1,9 @@
+---
+title: Operator
+search:
+  boost: 2
+---
+
 # :resources-operator: Operator
 
 Operator is a [DataOS Resource](../resources.md) that provides a standardized interface for orchestrating resources situated outside the DataOS cluster, empowering data developers with the capability to invoke actions programmatically upon these external resources directly from interfaces of DataOS.
