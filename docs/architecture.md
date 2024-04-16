@@ -1,4 +1,7 @@
 ---
+title: Architecture
+search:
+  boost: 4
 hide:
   - navigation
 #   - toc

@@ -1,3 +1,9 @@
+---
+title: Scanner
+search:
+  boost: 2
+---
+
 # Scanner
 The Scanner stack in DataOS is a Python-based framework designed for developers to extract metadata from external source systems (such as RDBMS, Data Warehouses, Messaging services, Dashboards, etc.) and the components/services within the DataOS environment to extract information about Data products and DataOS Resources. 
 

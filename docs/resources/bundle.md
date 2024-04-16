@@ -1,3 +1,9 @@
+---
+title: Bundle
+search:
+  boost: 2
+---
+
 # :resources-bundle: Bundle
 
 A Bundle [Resource](../resources.md) within DataOS serves as a declarative and standardized mechanism for deploying a collection of Resources, data products, or applications in a single operation. It empowers data developers with the capability to programmatically orchestrate the deployment, scheduling, creation, and dismantling of code and infrastructure resources linked to these data products and applications in a unified manner. 

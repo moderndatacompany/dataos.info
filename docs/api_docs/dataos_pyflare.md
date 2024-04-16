@@ -1,3 +1,10 @@
+---
+title: Pyflare
+search:
+  boost: 2
+---
+
+
 # DataOS Pyflare
 
 The DataOS Pyflare is a Python library that streamlines data operations and faciltate seamless interactions with Apache Spark within DataOS. Its a wrapper around [Flare](../resources/stacks/flare.md), to enable Python support with DataOS capabilities. The library abstracts complexities inherent in data flow, allowing users to direct their focus toward data transformations and the formulation of business logic by simplifying the loading, transformation, and storage of data. It facilitates the integration of existing Spark Job code bases with DataOS, requiring minimal modifications.
