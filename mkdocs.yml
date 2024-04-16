@@ -160,7 +160,7 @@ nav:
               - Alpha: resources/stacks/alpha.md
               - Beacon: resources/stacks/beacon.md
               - Benthos: resources/stacks/benthos.md
-              - CLI: resources/stacks/cli.md
+              - 'CLI Stack': resources/stacks/cli_stack.md
               - Data Toolbox: resources/stacks/data_toolbox.md
               - Flare: resources/stacks/flare.md
               - Scanner: resources/stacks/scanner.md

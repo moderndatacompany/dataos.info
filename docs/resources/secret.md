@@ -1,4 +1,8 @@
-<!-- ![Secret Icon](/resources/secret_updated/Secret%20Icon.svg){ align=left } -->
+---
+title: Secret
+search:
+  boost: 2
+---
 
 # :resources-secret: Secret
 

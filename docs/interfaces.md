@@ -1,3 +1,11 @@
+---
+title: Interfaces
+search:
+  boost: 2
+---
+
+# Interfaces
+
 Interfaces in DataOS serve as vital points of communication and interaction between different services & the users. They facilitate seamless collaboration and independent functionality within DataOS. These interfaces provide powerful tools for efficient data operations,  and control over various activities. Whether you prefer the flexibility of the API, the command-driven power of the CLI, or the intuitive experience of the GUI, DataOS interfaces enable self-service data management. Let's explore these interfaces and their capabilities.
 
 ## Command Line Interface (CLI)

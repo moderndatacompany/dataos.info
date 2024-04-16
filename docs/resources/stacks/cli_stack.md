@@ -1,4 +1,10 @@
-# CLI
+---
+title: CLI Stack
+search:
+  boost: 2
+---
+
+# CLI Stack
 
 The DataOS Command-Line Interface (CLI) interface, or the **dataos-ctl**, can be operated as a [Stack](../stacks.md), allowing users to programmatically execute CLI commands using the YAML manifest and automate the process of command execution and Resource lifecycle management.
 

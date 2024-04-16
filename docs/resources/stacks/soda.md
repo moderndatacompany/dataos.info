@@ -1,3 +1,9 @@
+---
+title: Soda
+search:
+  boost: 2
+---
+
 # Soda
 
 Soda is a declarative [Stack](../stacks.md) for data quality testing within and beyond data pipelines, extending its capabilities, enhancing data observability and reliability across one or more datasets. It enables you to use the [Soda Checks Language (SodaCL)](https://docs.soda.io/soda-cl/soda-cl-overview.html) to turn user-defined inputs into aggregated SQL queries.

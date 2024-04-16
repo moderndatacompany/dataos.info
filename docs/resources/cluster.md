@@ -1,3 +1,9 @@
+---
+title: Cluster
+search:
+  boost: 2
+---
+
 # :resources-cluster: Cluster
 
 A Cluster in DataOS is a [Resource](../resources.md) that encompasses a set of computational resources and configurations necessary for executing data engineering and analytics tasks. It relies on the [Compute](./compute.md) Resource, which provides the required processing power for the workloads executed within the Cluster. 

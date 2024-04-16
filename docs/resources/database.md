@@ -1,3 +1,9 @@
+---
+title: Database
+search:
+  boost: 2
+---
+
 # :resources-database: Database
 
 A Database [Resource](/resources/) in DataOS acts as a repository for storing transaction data, utilizing a managed Postgres relational database. It fulfills the transactional data storage needs of custom data applications developed on top of DataOS. Internal applications like [Lens](../interfaces/lens.md), [Metis](../interfaces/metis.md), etc., also leverage the Database Resource for their transactional data storage. Utilizing a [Service](./service.md) supported by the [Beacon Stack](./stacks/beacon.md) facilitates CRUD operations (Create, Read, Update, Delete) on data assets stored in the Database, ensuring smooth connectivity between the data application and the Database. For analytical operations, users can utilize the [Flare Stack](./stacks/flare.md) to move the data from transactional data storage to other [Depots](./depot.md) or [Lakehouses](./lakehouse.md).
