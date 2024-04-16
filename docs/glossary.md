@@ -1,4 +1,7 @@
 ---
+title: Glossary
+search:
+  boost: 4
 hide:
   - navigation
   - toc

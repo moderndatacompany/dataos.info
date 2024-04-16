@@ -1,3 +1,9 @@
+---
+title: Worker
+search:
+  boost: 2
+---
+
 # :resources-worker: Worker
 
 A **Worker** Resource in DataOS is a long-running process responsible for performing specific tasks or computations indefinitely.

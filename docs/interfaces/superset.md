@@ -1,4 +1,8 @@
-![Superset Icon](/interfaces/superset/Superset.svg){ align=left }
+---
+title: Superset
+search:
+  boost: 2
+---
 
 # Superset
 

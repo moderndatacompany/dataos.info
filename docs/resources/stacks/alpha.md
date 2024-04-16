@@ -1,3 +1,9 @@
+---
+title: Alpha
+search:
+  boost: 2
+---
+
 # Alpha
 
 Alpha Stack is a declarative DevOps software development kit (SDK) to publish data-driven applications in production. As a cohesive stack, it seamlessly integrates with web-server-based application images constructed atop DataOS, empowering users to leverage DataOS's Compute Resource to execute external tools or applications. With Alpha Stack, application development is no longer bound by programming language constraints, as it enables the fluid deployment of diverse applications onto a robust, flexible infrastructure.
