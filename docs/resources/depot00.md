@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # :resources-depot: Depot
 
 Depot in DataOS is a [Resource](../resources.md) that acts as an intermediary, facilitating connectivity to diverse data sources by abstracting the complexities associated with the underlying source system (including protocols, credentials, and connection schemas). Depots enable users to establish connections and retrieve data from various data sources, such as file systems (e.g., [AWS S3](./depot/depot_config_templates/amazon_s3.md), [Google GCS](./depot/depot_config_templates/google_gcs.md), [Azure Blob Storage](./depot/depot_config_templates/azure_abfss.md)), data lake systems (e.g., Icebase), database systems (e.g., [Redshift](./depot/depot_config_templates/amazon_redshift.md), [SnowflakeDB](./depot/depot_config_templates/snowflake.md), [Bigquery](./depot/depot_config_templates/google_bigquery.md), [Postgres](./depot/depot_config_templates/postgresql.md)), and event systems (e.g., [Kafka](./depot/depot_config_templates/kafka.md), [Pulsar](./depot/depot_config_templates/apache_pulsar.md)).
