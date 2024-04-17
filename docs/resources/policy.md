@@ -1,3 +1,9 @@
+---
+title: Policy
+search:
+  boost: 2
+---
+
 # :resources-policy: Policy
 
 Policy is a [Resource](../resources.md) in DataOS that defines a set of rules or guardrails governing the behavior of users, be it individuals or applications/services. Within DataOS, Policies are enforced using [Attribute Based Access Control (ABAC)](./policy/understanding_abac_pdp_and_pep.md#attribute-based-access-control-abac) and define what [predicates](./policy/understanding_abac_pdp_and_pep.md#predicate) a user (a [subject](./policy/understanding_abac_pdp_and_pep.md#subject)) can perform on a dataset, API Path, or a Resource (an [object](./policy/understanding_abac_pdp_and_pep.md#object)), thus defining the constraints of the relationship between the subject and object.

@@ -1,8 +1,13 @@
-![Superset Icon](/interfaces/superset/Superset.svg){ align=left }
+---
+title: Superset
+search:
+  boost: 2
+---
 
 # Superset
 
 Superset is a business intelligence solution seamlessly integrated into DataOS. It offers the ability to craft tailored reports and dashboards with ease. Complex data can be represented effectively by utilizing a diverse set of visualization options inherent to Superset, facilitating clear interpretation for informed decision-making processes. 
+
 
 <div class="grid cards" markdown>
 
@@ -15,14 +20,14 @@ Superset is a business intelligence solution seamlessly integrated into DataOS. 
     [:octicons-arrow-right-24: Key features](/interfaces/superset/#features-of-superset)
 
 
--   :material-clock-fast:{ .lg .middle } **Getting Started**
+-   :material-clock-fast:{ .lg .middle } **Filtering and Drilling**
 
     ---
 
-    Getting started with Superset by launching it within DataOS enviroment.
+    Apply filters and drill through the dashboards.
 
 
-    [:octicons-arrow-right-24: Launching Superset](/interfaces/superset/#launching-superset)
+    [:octicons-arrow-right-24: Filtering and Drilling](/interfaces/superset/#dashboard-filtering-and-drilling)
 
 -   :material-clock-fast:{ .lg .middle } **How to create a Dashboard?**
 
@@ -69,7 +74,59 @@ Upon selection, the interface of Superset will open, presenting a layout resembl
 
 </aside>
 
-## Steps to Create the Dashboard
+We're ready to move forward now that we've covered what Superset is and its main features. We'll explore how to use Superset effectively. 
+
+The following are the two main purposes of the Superset:
+
+- Consumption of the existing Dashboards and Charts.
+- Creating and managing the Dashboards.
+
+Let’s see one by one each.
+
+## Consume the Dashboards
+
+Once Superset is launched, you'll be redirected to an interface where you can explore existing charts and dashboards without creating new ones. Let's see how you can effectively navigate the charts and dashboards, one step at a time.
+
+### **Explore Existing Dashboards**
+
+On the landing page of the Superset, click on the **Dashboards** tab, here you can view any existing dashboard as per your level of permissions.
+
+![Untitled](/interfaces/superset/Untitled%20(10).png)
+
+In the image above, you can observe the dashboard modified by, its publication status (published or drafted), the timestamp of the last modification, and the owner, and you can also access the dashboards by searching their name, owner, creator, status, favorite, or certificate in the search bar.
+
+After clicking on a particular dashboard you can explore the dashboards further.
+
+**Example:** From the above image as an example, on clicking the spirit_demo_dashboard you can explore the dashboard further.
+
+![Untitled](/interfaces/superset/untited_10.png)
+
+By clicking the kebab menu on the right corner of each chart, you can explore the individual chart’s options as per your level of permissions. 
+Now you can explore the dashboard further through filtering and drilling options provided by the Superset.
+
+#### **Dashboard Filtering and Drilling**
+
+Superset's Dashboard Filters provide robust data filtering capabilities through an intuitive interface. Featuring Value, Numerical Range, and Time-Based filters, it enables flexible data exploration. Both basic and advanced configurations enrich filtration options and usability. Below is the comprehensive list of filters offered by Superset.
+
+- [Filter Types](./superset/dashboard_filtering/filter_types.md)
+- [Parent-child Filter](./superset/dashboard_filtering/parent_child_filter.md)
+- [Pre-filter Data](./superset/dashboard_filtering/pre_filter.md)
+- [Sort Filter Values](./superset/dashboard_filtering/sort_filter_values.md)
+- [Single Value Range](./superset/dashboard_filtering/single_value_range.md)
+- [Filter Tooltip](./superset/dashboard_filtering/filter_tooltip.md)
+- [Managing Values](./superset/dashboard_filtering/managing_values.md)
+- [Scoping a Filter](./superset/dashboard_filtering/scoping.md)
+- [Cross-filtering](./superset/dashboard_filtering/cross_filtering.md)
+- [Managing Filters](./superset/dashboard_filtering/managing_filters.md)
+- [Drilling to Chart Details](./superset/dashboard_filtering/drilling.md)
+
+### **Explore Existing Charts**
+
+Similar to exploring the dashboards, you can explore individual charts by clicking on the **Charts** tab on the launching page.
+
+![Untitled](/interfaces/superset/Untitled%20(12).png)
+
+## **Steps to Create the Dashboard**
 
 Unlock the potential of your data with our step-by-step guide to building an impactful dashboard. Before we dive into the first step, envision the value your insights will bring—turning raw information into strategic clarity. Let’s embark on this journey of transforming data into informed decisions.
 
@@ -118,7 +175,7 @@ FROM `bigquery`.`dbt_asolanki`.`new_table`
 LIMIT 100
 ```
 
-#### **Saving query results as a dataset**
+**Saving query results as a dataset**
 
 Following successful query execution, you have the option to create a dataset by saving the query as a dataset under the "SAVE" option. This dataset can subsequently be utilized to generate visuals.
 
@@ -151,11 +208,11 @@ Now, you can choose the desired chart type and efficiently drag and drop columns
 
 To enhance your proficiency in creating impactful visualizations in Superset, we've curated resources on fundamental chart components and customization options. These guides aim to simplify the process of navigating through Superset's features:
 
-#### [Chart Components](../interfaces/superset/charts_components.md)
+#### [**Chart Components**](../interfaces/superset/charts_components.md)
 
 Explore the basic elements that makeup Superset charts, helping you grasp the essentials for constructing meaningful visual representations:
 
-#### [Charts Customization](../interfaces/superset/chart_customization.md)
+#### [**Charts Customization**](../interfaces/superset/chart_customization.md)
 
 Delve into the process of chart customization to tailor visualizations according to your analytical goals. This resource provides insights into adjusting appearances and behaviors for a personalized touch.
 

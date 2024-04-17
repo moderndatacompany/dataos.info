@@ -1,3 +1,9 @@
+---
+title: Audiences
+search:
+  boost: 2
+---
+
 # Audiences
 
 DataOS Audience is a customer segmentation app that helps businesses better understand their customers (or *audiences*) by grouping them based on key variables and providing deep insights into their behavior and value. It is a Lens derivative application that harnesses the semantic data models built via. Lens to separate out specific cohorts or groups of people that share common characteristics, traits, or behavior, which we call ***audiences***. 
