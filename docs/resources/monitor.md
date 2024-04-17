@@ -1,3 +1,9 @@
+---
+title: Monitor
+search:
+  boost: 4
+---
+
 # :resources-monitor: Monitor
 
 The Monitor [Resource](../resources.md) is an integral part of DataOS's Observability System, designed to trigger incidents based on specific [events](#key-concepts-of-monitor) or [metrics](#key-concepts-of-monitor). By leveraging the Monitor Resource alongside the [Pager](./pager.md) Resource, DataOS users can achieve comprehensive observability and proactive incident management, ensuring high system reliability and performance.

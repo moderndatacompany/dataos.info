@@ -1,3 +1,9 @@
+---
+title: Database
+search:
+  boost: 2
+---
+
 # :resources-database: Database
 
 A Database [Resource](/resources/) in DataOS acts as a repository for storing transaction data, utilizing a managed Postgres relational database. It fulfills the transactional data storage needs of custom data applications developed on top of DataOS. Internal applications like [Lens](../interfaces/lens.md), [Metis](../interfaces/metis.md), etc., also leverage the Database Resource for their transactional data storage. Utilizing a [Service](./service.md) supported by the [Beacon Stack](./stacks/beacon.md) facilitates CRUD operations (Create, Read, Update, Delete) on data assets stored in the Database, ensuring smooth connectivity between the data application and the Database. For analytical operations, users can utilize the [Flare Stack](./stacks/flare.md) to move the data from transactional data storage to other [Depots](./depot.md) or [Lakehouses](./lakehouse.md).
@@ -52,7 +58,8 @@ A Database [Resource](/resources/) in DataOS acts as a repository for storing tr
 </div>
 
 
-## How to create and manage a Database?
+## **How to create and manage a Database?**
+
 
 ### **Create a Database manifest file**
 
@@ -370,6 +377,9 @@ There are 3 ways to delete Database(or any Resource):
     dataos-ctl delete -f ${file-path}
     ```
 
+### **How to configure a Database manifest file?**
+
+The Database manifest files serves as the blueprint for defining the structure and behavior of Database Resources within DataOS. By configuring various attributes within the the Database manifest file, data developers can customize it to meet specific requirements. Below is an overview of the key attributes used to configure a the Database-specific section: [Attributes of a Database manifest](./database/manifest_attributes.md)
 
 ### **Create a Beacon Service**
 

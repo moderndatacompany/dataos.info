@@ -1,3 +1,9 @@
+---
+title: Instance Secret
+search:
+  boost: 2
+---
+
 # :resources-instancesecret: Instance Secret
 
 An Instance Secret is a [DataOS Resource](/resources/) designed for securely storing sensitive information at the DataOS instance level. This encompasses sensitive information like usernames, passwords, certificates, tokens, and keys. The primary purpose of Instance Secret is to address the inherent exposure risk associated with directly embedding such confidential data within application code or manifest file (YAML configuration files). 

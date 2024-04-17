@@ -1,3 +1,9 @@
+---
+title: Jupyter Notebook
+search:
+  boost: 2
+---
+
 # Jupyter Notebook
 
 Jupyter Notebook is a popular open-source web-based application that allows users to create and share documents that contain live code, equations, visualisations, and narrative text. It provides a user-friendly interface for interactive computing, data analysis, and data visualisation in several programming languages, including Python, R, and Julia.
