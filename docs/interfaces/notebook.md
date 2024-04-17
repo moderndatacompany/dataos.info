@@ -168,4 +168,4 @@ write_options = {
 # Save the dataset to Icebase using PyFlare SDK
 dataset = sdk.save(name="c181", format="iceberg", mode='overwrite', options=write_options)
 ```
-You have successfully Make sure to customize the database name, table name, and any additional options based on your specific use case.
+Your data is successfully written in Icebase. Make sure to customize the database name, table name, and any additional options based on your specific use case.
