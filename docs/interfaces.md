@@ -61,16 +61,15 @@ With Operations UI, monitor and administer DataOS platform activity, gaining rea
 
 Explore and query your data assets using SQL with Workbench. Powered by the Minerva query engine (built on top of Trino), Workbench supports both simple and complex queries across a large variety of data sources, including traditional relational databases (Oracle, PostgreSQL, Redshift, etc.) as well as other data sources such as S3, Kafka, and Pulsar. You can query and explore data from these data sources without bringing it to DataOS. To learn more, click [here](/interfaces/workbench/).
 
-**DataOS Home app also enables you to [manage your profile](/interfaces/#manage-profile), [access tokens](/interfaces/#create-tokens), and [view all the depots](/interfaces/#view-depots) that exist within the DataOS instance for accessing data.**
-
 ### **Manage Profile**
 
+DataOS Home app also enables you to manage your profile. 
 ![profile.png](interfaces/profileinfo.png)
 <figcaption align = "center">Profile Information </figcaption>
 
 ### **Create Tokens**
 
-API keys/tokens are used to authenticate requests to  DataOS resources. For example, when calling a service endpoint, you need to supply a valid API token in the HTTP `Authorization` header, with a valid token specified as the header value. You can generate API keys/tokens from DataOS UI as well as using DataOS CLI commands.
+API keys/tokens are used to authenticate requests to  DataOS resources. For example, when calling a service endpoint, you need to supply a valid API token in the HTTP `Authorization` header, with a valid token specified as the header value. You can generate API keys/tokens from DataOS Home app as well as using DataOS CLI commands.
 
 To learn more, refer to [Creating API Keys and Token](interfaces/create_token.md)
 
