@@ -4,9 +4,9 @@ A use-case consists of a combination of predicates (actions) and objects (entiti
 
 These Use-Cases can be broken down into smaller, more granular permissions, or bundled together. For instance, if a user has access to read lenses, it's likely they should also have access to manage lenses, as managing encompasses the ability to create and update lenses, in addition to reading them. Each use-case may involve predicates such as delete, get, patch, and post, which collectively determine the actions a user can perform.
 
-Assigning a use case proves especially valuable in scenarios where granting access to the entire set of entities associated with a role is not desired. Instead, it enables a highly restricted set of permissions tailored to a specific task. 
+Assigning a use-case proves especially valuable in scenarios where granting access to the entire set of entities associated with a role is not desired. Instead, it enables a highly restricted set of permissions tailored to a specific task. 
 
-For instance, if a data analyst or user within your company needs to query a specific dataset within a collection, granting access to all datasets in that collection is not advisable. In such cases, assigning a use case to that particular user appears more appropriate. 
+For instance, if a data analyst or user within your company needs to query a specific dataset within a collection, granting access to all datasets in that collection is not advisable. In such cases, assigning a use-case to that particular user appears more appropriate. By granting access to a specific dataset, you achieve a higher level of granularity in data access. Further refinement of data access can be achieved through authorization atoms. 
 
 The ‘Use-Cases’ tab in Bifrost lists all the possible actions needed to perform on various services and applications of DataOS as shown in figure 1. 
 
@@ -28,7 +28,7 @@ Lastly, In the grant section, you'll find a subsection labeled "Subject" where y
 
 ## How to grant a use case to a role?
 
-Granting a use-case to a role follows the same steps as [granting a use-case to a user](../bifrost_new/users.md#how-to-grant-a-use-case-to-a-user)but instead of navigating to users, you'll go to roles and select any existing role. Let's demonstrate this process by adding a use case named “Minerva Cluster Access" to the  `role:id:testrole`
+Granting a use-case to a role follows the same steps as [granting a use-case to a user](../bifrost_new/users.md#how-to-grant-a-use-case-to-a-user) but instead of navigating to users, you'll go to roles and select any existing role. Let's demonstrate this process by adding a use case named “Minerva Cluster Access" to the  `role:id:testrole`
 
 1. Navigate to Roles and select the "test role".
 2. Navigate to the grants section. Click on the "Grant Use-Case" button.
@@ -41,7 +41,7 @@ A success message will be displayed confirming that the use case has been succes
 
 In addition to granting the current use cases, you have the option to generate a new use case by creating a YAML use-case artifact. This is particularly useful if you identify a combination of predicate and object that isn't already present but could be relevant to your organization. To create a new use-case follow the below steps:
 
-1. Navigate to the use-cases tab in Bifrost
+1. Navigate to the Use-Cases tab in Bifrost
 
 2. Click on create Use-Case 
 
@@ -131,14 +131,14 @@ policy:
     allow: true
 ```
 
-## How to edit a Use-Case? (optional content)
+## How to edit a Use-Case? 
 
 To edit a Use-Case, you have two options. The first method is to delete the existing Use-Case and create a new one with the desired modifications. The second method involves editing the Use-Case that was generated during installation, as it's included in the installation file.
 
-## How to identify authorization atoms? (shift in pep?)
-
-To identify authorization atoms, navigate to the **Providers** section in Heimdall. Here, you can access the authorization atoms associated with each provider. For instance, when inspecting the authorization atoms for Lens, you may discover permissions like saving charts, running queries, viewing tabs, saving results, and accessing attribute information.
-
-Likewise, “Ingress Service” Provider governs and control access to all ingress services within the data OS network. Similarly, other providers like Metis contain distinct authorization atoms for various actions such as deleting, writing, and reading, as well as route access, such as admin user privileges.
-
 ## How to delete a Use-Case?
+
+To delete a Use-Case:
+
+1. Navigate to the Use-Case section within Bifrost.
+2. Locate and select the specific use-case you wish to delete.
+3. Scroll down to the options and choose "Delete Use-Case."
