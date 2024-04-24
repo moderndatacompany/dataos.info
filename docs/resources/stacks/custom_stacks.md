@@ -189,10 +189,9 @@ secretProjection:
 The image specification outlines attributes pertaining to the Docker image and associated details necessary for discovering and pulling it from the designated container registry.
 
 <aside>
-🗣 You have the flexibility to provide secrets for image retrieval either in the form of <a href="/resources/secret/referencing_secrets/referencing_secrets_to_pull_images_from_private_container_registry/"><code>imagePullSecret</code></a>or as environment variables.
+🗣 You have the flexibility to provide secrets for image retrieval either in the form of <a href="/resources/secret/#referencing-secrets-to-pull-images-from-private-container-registry"><code>imagePullSecret</code></a>or as environment variables.
 
 </aside>
-
 ```yaml
 image:
 	registry: docker.io
