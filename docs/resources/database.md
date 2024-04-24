@@ -169,15 +169,15 @@ The table below describes the various attributes used for defining conditions:
 
 | Attribute          | Data Type | Default Value | Possible Values                 | Requirement |
 |--------------------|-----------|---------------|---------------------------------|-------------|
-| [`database`](./database/manifest_attributes.md#database)        | mapping    | none          | none                            | mandatory   |
-| [`migrate`](./database/manifest_attributes.md#migrate)       |  mapping      | none          | none                            | mandatory   |
-| [`includes`](./database/manifest_attributes.md#includes)         | list of strings    | none          | any valid path                  | optional   |
-| [`includesInline`](./database/manifest_attributes.md#includesInline)   | mapping     | none          | Key-value pairs of strings      | optional    |
-| [`command`](./database/manifest_attributes.md/#command)          | string    | none          | up/down                         | mandatory   |
-| [`parameter`](./database/manifest_attributes.md#parameter)        | string    | none          | integer value                            | optional    |
+| [`database`](/resources/database/manifest_attributes/#database)        | mapping    | none          | none                            | mandatory   |
+| [`migrate`](/resources/database/manifest_attributes/#migrate)       |  mapping      | none          | none                            | mandatory   |
+| [`includes`](/resources/database/manifest_attributes/#includes)         | list of strings    | none          | any valid path                  | optional   |
+| [`includesInline`](/resources/database/manifest_attributes/#includesInline)   | mapping     | none          | Key-value pairs of strings      | optional    |
+| [`command`](/resources/database/manifest_attributes/#command)          | string    | none          | up/down                         | mandatory   |
+| [`parameter`](/resources/database/manifest_attributes/#parameter)        | string    | none          | integer value                            | optional    |
 
 
-For more information about the below attributes, refer to the link [Attributes of Database](/docs/resources/database/manifest_attributes.md)
+For more information about the below attributes, refer to the link [Attributes of Database](/resources/database/manifest_attributes/)
 
 
 **Migrate Configuration**
