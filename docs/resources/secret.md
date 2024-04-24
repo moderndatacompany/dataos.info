@@ -36,7 +36,7 @@ Operators can exercise precise control over who can retrieve credentials from Se
 
     Discover how to configure a Secret manifest file by adjusting its attributes.
 
-    [:octicons-arrow-right-24: Configure Secret](#create-a-secret-manifest-file)
+    [:octicons-arrow-right-24: Configure Secret](/resources/secret/secrets_attributes/)
 
 
 
@@ -46,7 +46,7 @@ Operators can exercise precise control over who can retrieve credentials from Se
 
     Different types of Secret securely store diverse sensitive data, addressing specific needs like docker credentials, certificates, etc.
 
-    [:octicons-arrow-right-24: Types](../resources/secret/secrets_attributes.md#secret-specific-section-attributes)
+    [:octicons-arrow-right-24: Types](/resources/secret/secrets_attributes/#type)
 
 
 -   :material-console:{ .lg .middle } **How to refer to Secrets in other DataOS Resources?**

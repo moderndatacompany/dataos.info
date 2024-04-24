@@ -141,8 +141,8 @@ nav:
          - Overview: resources.md
          - Bundle: resources/bundle.md
          - Cluster: resources/cluster.md
-         - Database: resources/database.md
          - Compute: resources/compute.md
+         - Database: resources/database.md
          - Depot: resources/depot.md
          - 'Instance Secret': resources/instance_secret.md 
          - Lakehouse: resources/lakehouse.md
