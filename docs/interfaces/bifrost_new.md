@@ -1,8 +1,8 @@
 # Bifrost
 
-Bifrost is a Graphical User Interface that enables you to create and manage access policies for applications, services, people & datasets. It is backed by the governance engine (policy engine) of DataOS, Heimdall.
+Bifrost is a Graphical User Interface that enables you to create and manage access policies for applications, services, people & datasets. It is backed by the governance engine of DataOS, Heimdall.
 
-All policies in DataOS are implemented as ABAC policies, giving users fine-grained control over all aspects of the operating system and their data landscape. To make the user interface intuitive, Bifrost appears to follow RBAC, but underneath it is still ABAC implementation of access control. The following page explains in detail how this framework is implemented in DataOS click [here](../interfaces/bifrost_new/abac_implementation_in_DataOS)
+All policies in DataOS are implemented as ABAC policies, giving users fine-grained control over all aspects of the operating system and their data landscape. To make the user interface intuitive, Bifrost appears to follow RBAC, but underneath it is still ABAC implementation of access control. The following page explains in detail how this framework is implemented in DataOS click [here](../interfaces/bifrost_new/abac_implementation_in_dataos.md)
 
 <aside class="callout">
 
@@ -18,11 +18,11 @@ Understanding how Bifrost works involves focusing on - Users, Use-cases, Grants,
 
 ## User
 
-An application or a person can serve as a User. Consider the User as the subject of the ABAC policy. Get the details of  'User' in Bifrost from [here](../interfaces/bifrost/users.md).
+An application or a person can serve as a User. Consider the User as the subject of the ABAC policy. Get the details of  'User' in Bifrost from [here](../interfaces/bifrost_new/users.md)
 
 ## Use-case
 
-A use case in Bifrost defines actions a user wants to perform on a specific object. Get the details of how use cases are created and assigned [here](../interfaces/bifrost/use_cases.md).
+A use case in Bifrost defines actions a user wants to perform on a specific object. Get the details of how use cases are created and assigned [here](../interfaces/bifrost_new/use_cases.md).
 
 ## Grant
 
@@ -34,7 +34,7 @@ While the ability to grant specific Use-Cases to individual users is necessary f
 
 ## Grant Requests
 
-The Grant Request section in Bifrost streamlines the process of managing access permissions requests. Users can initiate grant requests through the Bifrost UI or via CLI, detailing their desired access permissions. Administrators track pending requests, prioritize responses, and meticulously review details before approving or rejecting requests in alignment with organizational policies and security requirements. To know more about Grant Requests click [here](../interfaces/bifrost_new/grant_requests.md).
+The Grant Request section in Bifrost streamlines the process of managing access permissions requests. Users can initiate grant requests through the Bifrost UI or via [CLI](../interfaces/cli.md), detailing their desired access permissions. Administrators track pending requests, prioritize responses, and meticulously review details before approving or rejecting requests in alignment with organizational policies and security requirements. To know more about Grant Requests click [here](../interfaces/bifrost_new/grant_requests.md).
 
 ## How does Heimdall facilitate authorization?
 
@@ -54,17 +54,11 @@ Heimdall primitives are components of the Heimdall authentication, authorization
 
 ### **Providers**
 
-In DataOS, all resources or applications function as Policy Enforcement Points (PEPs) when interacted with by other resources, applications, or users. 
-
-In the **Providers** section in Heimdall Primitives, you can access the authorization atoms associated with each provider. For instance, when inspecting the authorization atoms for Lens, you may discover permissions like saving charts, running queries, viewing tabs, saving results, and accessing attribute information. Likewise, the “Ingress Service” Provider governs and controls access to all ingress services within the data OS network. Similarly, other providers like Metis contain distinct authorization atoms for various actions such as deleting, writing, and reading, as well as root access, such as admin user privileges.
+In DataOS, all resources or applications function as Policy Enforcement Points (PEPs) when interacted with by other resources, applications, or users. Here, you can also access the authorization atoms associated with each provider. For instance, when inspecting the authorization atoms for Lens, you may discover permissions like saving charts, running queries, viewing tabs, saving results, and accessing attribute information. Likewise, the “Ingress Service” Provider governs and controls access to all ingress services within the data OS network. Similarly, other providers like Metis contain distinct authorization atoms for various actions such as deleting, writing, and reading, as well as root access, such as admin user privileges.
 
 #### **How to register a PEP Provider?**
 
-When adding a new application to the DataOS environment, it's imperative to register it as a PEP to enable interaction. This document outlines the steps required to register a new PEP provider.
-
-### **PEP Provider Details**
-
-To register a new PEP provider, the following details are required:
+When adding a new application to the DataOS environment, it's imperative to register it as a PEP to enable interaction. To register a new PEP provider, the following details are required:
 
 - **Version**: Indicates the version of the PEP provider. For new applications in dataos, the version is typically set to `0.1.0`.
 - **ID**: Unique identifier for the PEP provider.
@@ -90,8 +84,6 @@ authorization_atoms:
 
 Ensure to replace `${cluster}` with the appropriate value when granting access.
 
-### **View and Manage on Bifrost**
-
 Once the PEP provider is registered, follow these steps to view and manage it on Bifrost:
 
 - The newly registered PEP (named Gateway PEP) will appear in the list of PEP Providers under the Heimdall Primitives.
@@ -101,7 +93,7 @@ Once the PEP provider is registered, follow these steps to view and manage it on
 
 ### **Policies**
 
-DataOS Policy within Heimdall Primitives is a rule defining the association of tags with subjects, predicates, other tags, or paths linked with objects to allow or deny access. Additionally, it imposes specific conditions on metadata, thereby governing access permissions to DataOS resources and environments. To know more about Policy click here (link policy doc?)
+DataOS [Policy](../resources/policy.md) within Heimdall Primitives is a rule defining the association of tags with subjects, predicates, other tags, or paths linked with objects to allow or deny access. Additionally, it imposes specific conditions on metadata, thereby governing access permissions to DataOS resources and environments.
 
 ### **Tag-Namespaces**
 
@@ -135,14 +127,15 @@ For instance, let’s create a new tag group called `testers`
 
 To create a new tag-namespace Open Bifrost navigate to Heimdall Primitives
 
-1. Click on tag-namespace
-2. Now click on create tag-namespace button
+- Click on tag-namespace
+- Now click on create tag-namespace button
 
 <center>![tag_namespace.png](../interfaces/bifrost_new/tag_namespace.png)</center>
 <center>users will be directed to a page where all existing tag-namespaces are listed 
 </center>
 
-3. The tag-namespace will be configured with the following details, as depicted in the figure below:
+The tag-namespace will be configured with the following details, as depicted in the figure below:
+
 - Name: tester
 - GLOB: tester:**
 - Type: subject
@@ -150,7 +143,7 @@ To create a new tag-namespace Open Bifrost navigate to Heimdall Primitives
 
 ![tag_namespace_config.png](../interfaces/bifrost_new/tag_namespace_config.png)
 
-4. A success message will be displayed confirming that the new tag-namespace has been added successfully. 
+- A success message will be displayed confirming that the new tag-namespace has been added successfully. 
 
 ### **Tags**
 
@@ -170,9 +163,3 @@ The diagram below summarizes how you can provide access through Bifrost.
 
 ![bifrost.png](../interfaces/bifrost_new/Bifrost.png)
 
-
-<aside class="callout">
-🗣 As part of our best practice, we suggest a cautious approach by setting up restricted access for all users, granting only minimum access privileges. This approach encourages granting access only when necessary and allows flexibility to gradually expand access as visibility and understanding of usage patterns increase over time.
-</aside>
-
-In certain instances, a single use case may be assigned to multiple roles within an organization's access control system. For example, suppose there are distinct roles such as `roles:id:marketing` and `roles id sales` . If an individual is a member of both teams, they hold both roles simultaneously. Consequently, they may inherit the same use case multiple times. Instead of listing the same use case multiple times, we provide a consolidated view highlighting the multiple roles through which individuals acquire identical access permissions. This approach enhances efficiency and simplifies access management within the system.
