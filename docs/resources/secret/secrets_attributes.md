@@ -27,7 +27,7 @@
     ```
 ## Secret-specific section attributes
 
-**`secret`**
+### **`secret`**
 
 **Description**: `secret` comprising various configurations specific to the Secret.
 
@@ -36,7 +36,7 @@
 | None          | None | list of mappings   | Mandatory  |
 
 
-**`type`**
+### **`type`**
 
 **Description**: `type` specifies the type of Secret within DataOS.
 
@@ -215,7 +215,7 @@ The main difference between "key-value" and "key-value-properties" secret types 
 
 - **key-value-properties**: In contrast, the system passes all the secrets as one single field, treating them collectively, but it also allows for associating additional metadata or properties with each key-value pair. Additionally, this type supports referencing a file containing the secret value, providing flexibility in managing larger sets of data.
 
-**`acl`**
+### **`acl`**
 
 **Description**: Access control list, defining the level of permissions for the secret.
 
@@ -246,7 +246,7 @@ Example Usage:
         password: secure_password
     ```
 
-**`data`**
+### **`data`**
 
 **Description**: `data` comprises the various key value pairs of sensitive informations such as username and password.
 
@@ -284,7 +284,7 @@ As per the Secret type, the data-specific section can contain different attribut
 
 These key-value pair can be different as per the different types of resources.
 
-**`file`**
+### **`file`**
 
 **Description**: You can directly pass the file containing your credentials.
 
