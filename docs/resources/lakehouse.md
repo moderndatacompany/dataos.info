@@ -967,12 +967,12 @@ You can also access the details of any created Lakehouse through the DataOS GUI 
 
 Use the [`delete`](/interfaces/cli/command_reference/#delete) command to remove the specific Lakehouse Resource Instance from the DataOS environment. As shown below, there are three ways to delete a Lakehouse.
 
-**Method 1:** Copy the name to Workspace from the output table of the [`get`](/interfaces/cli/command_reference/#get) command and use it as a string in the delete command.
+**Method 1:** Copy the Lakehouse name, version, Resource-type and Workspace name from the output of the [`get`](/interfaces/cli/command_reference/#get) command seperated by '|' enclosed within quotes and use it as a string in the delete command.
 
 Command
 
 ```shell
-dataos-ctl delete -i "${name to workspace in the output table from get status command}"
+dataos-ctl delete -i "${identifier string}"
 ```
 
 Example
