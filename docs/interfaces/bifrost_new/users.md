@@ -37,24 +37,27 @@ There's a difference between assigning a Role and granting a Use-Case to a user.
     
     With these Roles, the user can create and manage depots through the DataOS interface and perform other actions unrelated to depot creation.
     
-2. Another method to authorize the user to create Depots is by granting the Use-Case `Write Depot - DataOS Address`. This specific Use-Case
- allows the user to create depots but doesn't enable other actions. However, the user must include a new key-value property in the Depot's config file. They must declare the ID of the operator who authorized them to create the Depot. This ensures proper authorization. The reason being the user can create the Depot via the Operator and not because of the attributes associated with their profile.
+2. Another method to authorize the user to create [Depots](../../resources/depot.md) is by granting the Use-Case `Write Depot - DataOS Address`. This specific Use-Case
+ allows the user to create depots but doesn't enable other actions. However, the user must include a new key-value property in the Depot's config file. They must declare the ID of the operator who authorized them to create the Depot. This ensures proper authorization. The reason being the user can create the Depot via the Operator and not because of the attributes associated with their profile. A template is given below for the same.
 
-```yaml
-version: 
-name: 
-type: depot
-tags:
-layer: user
-depot:
-  type:
-  description: 
-  external:
-  runAsUser: #id of the person who assigned you the Use-Case
+???tip "Sample manifest template"
+    ```yaml
+    name: ${depot-name}
+    version: {version}
+    type: depot
+    tags: 
+     - ${tag1}
+     - ${tag2}
+    layer: user
+    depot:
+      type: ${depot type configuration}
+      description: ${description}
+      external: ${true}
+      runAsUser: ${iamgroot} #id of the person who assigned you the Use-Case
 
-  connectionSecret:
-  spec:
-```
+      connectionSecret:
+      spec:
+    ```
 
 ## How to add a user to a Role?
 

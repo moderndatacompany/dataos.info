@@ -2,19 +2,16 @@
 
 An access policy in DataOS defines permissions based on the ABAC authorization strategy. In ABAC (Attribute-based Access Control), the subject and objects of the policy are identified by their attributes. An attribute in Attribute-Based Access Control (ABAC) refers to any characteristic or property utilized to regulate access, with tags being a common attribute employed to identify subjects and objects. The attributes of both the subject and the object are defined and declared separately. 
 
-Elements of Access Control in DataOS
+**Elements of Access Control in DataOS**
 
-| Term | Description | Example |
-| --- | --- | --- |
-| Subject | The user (application or person) who/which wants to perform a certain action | users:id:metis (tag identifying Metis application as the user)
-users:id:iamgroot (tag identifying person with the name Iamgroot as the user) |
-| Predicate | The action to be performed | get, put, post (other HTTP & CRUD operations) |
-| Object | The entity on which the action is to be performed | dataos:resource:secret (the Secret resource-type as the object of the policy)
-/metis/** (an API path as the object) |
-| Tag | An attribute following a fixed glob pattern, as defined by its Tag-Namespace | dataos:layer:user
- or roles:id:operator |
-| Tag-Namespace | A grouping or container for tags following the same glob pattern | roles:**
-or  dataos:system:** |
+| Term           | Description                                                          | Example                                                                               |
+|----------------|----------------------------------------------------------------------|---------------------------------------------------------------------------------------|
+| Tag-Namespace | A grouping or container for tags following the same glob pattern     | `roles:**` or `dataos:system:**`                                                     |
+| Tag            | An attribute following a fixed glob pattern, as defined by its Tag-Namespace | `dataos:layer:user` or `roles:id:operator`                                             |
+| Subject        | The user (application or person) who/which wants to perform an action | `users:id:metis` (tag identifying Metis application as the user) `users:id:iamgroot` (tag identifying person with the name Iamgroot as the user) |
+| Object         | The entity on which the action is to be performed                   | `dataos:resource:secret` (the Secret resource-type as the object of the policy) `/metis/**` (an API path as the object) |
+| Predicate      | The action to be performed                                          | get, put, post (other HTTP & CRUD operations)                                         |
+
 
 ## Tag-Namespace
 
@@ -32,20 +29,20 @@ For instance, if a particular user John Doe has tags:
 The policies created with the above-given tags as subjects will apply to John Doe.
 
 <aside class="callout">
-🗣 To remove the permissions, the policies must be deleted
+🗣 To remove the permissions, the policies must be deleted.
 </aside>
 
 ## Subject
 
 The user (application or person) who/which wants to perform a certain action
 
-The attribute of the *subject* of a policy is always identified by a *tag*. For instance, the tag for the user tag namespace is `users:id:**`, similarly for  roles, it’s `roles:id:**`
+The attribute of the *subject* of a policy is always identified by a *tag*. For instance, the tag for the user tag namespace is `users:id:**`, similarly for  roles, it’s `roles:id:**`.
 
 ## Object
 
 The object is a target resource on which the subject would like to perform actions. A tag or path identifies the object. You can specify multiple tags/paths.
 
-The attribute of the *object* of a policy can be a tag or a path. For instance `users:id:depot-service` is the tag for object depot service  and `/ds/api/v3/**` is the path to the depot service
+The attribute of the *object* of a policy can be a tag or a path. For instance `users:id:depot-service` is the tag for object depot service  and `/ds/api/v3/**` is the path to the depot service.
 
 ## Predicate
 
