@@ -30,9 +30,9 @@ To create a custom role follow the below steps:
 
 - A success message will be displayed confirming that the use case has been successfully added to the role.
 
-<aside class="callout">
-After creating a new role, no users will be displayed initially. You must manually add users by navigating back to the Users tab and repeating the steps to <>>[assign a role to a specific user](../bifrost_new/users.md#how-to-add-a-user-to-a-role).
-</aside>
+??? Note
+    After creating a new role, no users will be displayed initially. You must manually add users by navigating back to the Users tab and repeating the steps to [assign a role to a specific user](../bifrost_new/users.md#how-to-add-a-user-to-a-role).
+
 
 ## How to delete a role?
 
