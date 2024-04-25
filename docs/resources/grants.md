@@ -105,19 +105,20 @@ The Grant-specific section of a Grant manifest comprises attributes-specific to 
         approve: false
       ```
 
-| Attribute | Data Type | Default Value | Possible Values | Requirement |
-| --- | --- | --- | --- | --- |
-| `grant` | mapping | none | valid grant-specific attributes | mandatory |
-| `policy_use_case_id` | string | none | Unique identifier for the policy use case | mandatory |
-| `subjects` | list of strings | none | List of subject identifiers | optional |
-| `values` | list of mapping | none | List of key-value pairs representing values | mandatory |
-| `approve` | boolean | false | true, false | optional |
-| `requester` | string | none | Unique identifier for the requester | optional |
-| `notes` | string | none | Textual notes or comments | optional |
-| `collection` | string | none | Unique identifier for the collection | optional |
-| `manageAsUser` | string | none | UserID of the Use Case Assignee | optional |
+| Attribute          | Data Type        | Default Value | Possible Values                                | Requirement |
+|--------------------|------------------|---------------|------------------------------------------------|-------------|
+| [`grant`](./grants/manifest_attribute.md#grant)               | mapping          | none          | valid grant-specific attributes               | mandatory   |
+| [`policy_use_case_id`](./grants/manifest_attribute.md#policy_use_case_id) | string           | none          | Unique identifier for the policy use case      | mandatory   |
+| [`subjects`](./grants/manifest_attribute.md#subjects)            | list of strings  | none          | List of subject identifiers                    | optional    |
+| [`values`](./grants/manifest_attribute.md#values)              | list of mapping  | none          | List of key-value pairs representing values   | mandatory   |
+| [`approve`](./grants/manifest_attribute.md#approve)             | boolean          | false         | true, false                                    | optional    |
+| [`requester`](./grants/manifest_attribute.md#requester)           | string           | none          | Unique identifier for the requester            | optional    |
+| [`notes`](./grants/manifest_attribute.md#notes)               | string           | none          | Textual notes or comments                      | optional    |
+| [`collection`](./grants/manifest_attribute.md#collection)          | string           | none          | Unique identifier for the collection           | optional    |
+| [`manageAsUser`](./grants/manifest_attribute.md#manageAsUser)       | string           | none          | UserID of the Use Case Assignee                | optional    |
 
-To know more  about the grant attributes click [here](./grants/attribute_manifest.md)
+
+To know more  about the grant attributes click [here](./grants/manifest_attribute.md)
 
 <aside class="callout">
 🗣  By default, the `approve` attribute is set to false. This signifies that grants specified in this YAML file are not automatically approved. Instead, they will appear as requests in the grant request section.
