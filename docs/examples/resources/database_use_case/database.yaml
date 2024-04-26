@@ -9,3 +9,4 @@ database:
     includes: 
       - migration/
     command: up
+  compute: runnable-default

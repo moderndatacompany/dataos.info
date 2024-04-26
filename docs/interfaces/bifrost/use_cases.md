@@ -1,6 +1,6 @@
 # Use-Cases
 
-A Use-case is made up of two things - *Predicates* & *Objects*. Predicate is the action, such as HTTP methods of the kind post, get, delete and others, which you want to perform on the Object. An object is an entity on which the action (predicate) is to be performed. An object can be a dataset, collection or data source, an API path of an application or service, or another *Subject*.
+A Use-case is made up of two things - **Predicates** & **Objects**. Predicate is the action, such as HTTP methods of the kind post, get, delete and others, which you want to perform on the Object. An object is an entity on which the action (predicate) is to be performed. An object can be a dataset, collection or data source, an API path of an application or service, or another **Subject**.
 
 The ‘Use-Cases’ tab in Bifrost lists all the possible actions you might need to perform on various services and applications of DataOS. Click on any one use-case to understand what you can & cannot do with it.
 

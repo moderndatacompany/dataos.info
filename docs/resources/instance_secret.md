@@ -24,7 +24,7 @@ Instance secrets establish a critical segregation between sensitive data and Res
 
     Learn how to create and manage an Instance secret in DataOS.
 
-    [:octicons-arrow-right-24: Create and manage an Instance Secret](/resources/instance_secret/#how-to-create-an-instance-secret)
+    [:octicons-arrow-right-24: Create and manage an Instance Secret](/resources/instance_secret/#how-to-create-and-manage-an-instance-secret)
 
 
 -   :material-script-text-outline:{ .lg .middle } **How to refer an Instance Secret in other DataOS Resources?**
@@ -42,7 +42,7 @@ Instance secrets establish a critical segregation between sensitive data and Res
 
     Different types of Instance Secret securely store diverse sensitive data, addressing specific needs like key-value pairs, certificates, etc.
 
-    [:octicons-arrow-right-24: Types of Instance Secret](/resources/instance_secret/#types-of-instance-secret)
+    [:octicons-arrow-right-24: Types of Instance Secret](/resources/instance_secret/#types-of-instance-secrets)
 
 
 -   :material-console:{ .lg .middle } **Instance Secret Templates**

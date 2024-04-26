@@ -33,7 +33,7 @@ A Database [Resource](/resources/) in DataOS acts as a repository for storing tr
     Discover how to configure a Database manifest file by adjusting its attributes.
 
     
-    [:octicons-arrow-right-24: Database Attributes](./database/manifest_attributes.md)
+    [:octicons-arrow-right-24: Database Attributes](#how-to-configure-a-database-manifest-file)
 
 
 -   :material-list-box-outline:{ .lg .middle } **Possible Errors**
@@ -146,6 +146,7 @@ The Database-specific section of a Database manifest comprises attributes-specif
             ${migration_script}
 
         command: ${migration-command}   # ("up" or "down")
+      compute: runnable-default
     ```
 === "Sample"
 
@@ -162,20 +163,21 @@ The Database-specific section of a Database manifest comprises attributes-specif
             price DECIMAL(10, 2),
             description TEXT);
         command: up  # Specify the migration command (e.g., "up" or "drop table")
+      compute: runnable-default
     ```
 The table below describes the various attributes used for defining conditions:
 
 | Attribute          | Data Type | Default Value | Possible Values                 | Requirement |
 |--------------------|-----------|---------------|---------------------------------|-------------|
-| [`database`](./database/manifest_attributes.md#database)        | mapping    | none          | none                            | mandatory   |
-| [`migrate`](./database/manifest_attributes.md#migrate)       |  mapping      | none          | none                            | mandatory   |
-| [`includes`](./database/manifest_attributes.md#includes)         | list of strings    | none          | any valid path                  | optional   |
-| [`includesInline`](./database/manifest_attributes.md#includesInline)   | mapping     | none          | Key-value pairs of strings      | optional    |
-| [`command`](./database/manifest_attributes.md/#command)          | string    | none          | up/down                         | mandatory   |
-| [`parameter`](./database/manifest_attributes.md#parameter)        | string    | none          | integer value                            | optional    |
+| [`database`](/resources/database/manifest_attributes/#database)        | mapping    | none          | none                            | mandatory   |
+| [`migrate`](/resources/database/manifest_attributes/#migrate)       |  mapping      | none          | none                            | mandatory   |
+| [`includes`](/resources/database/manifest_attributes/#includes)         | list of strings    | none          | any valid path                  | optional   |
+| [`includesInline`](/resources/database/manifest_attributes/#includesInline)   | mapping     | none          | Key-value pairs of strings      | optional    |
+| [`command`](/resources/database/manifest_attributes/#command)          | string    | none          | up/down                         | mandatory   |
+| [`parameter`](/resources/database/manifest_attributes/#parameter)        | string    | none          | integer value                            | optional    |
 
 
-For more information about the below attributes, refer to the link [Attributes of Database](/docs/resources/database/manifest_attributes.md)
+For more information about the below attributes, refer to the link [Attributes of Database](/resources/database/manifest_attributes/)
 
 
 **Migrate Configuration**
@@ -307,9 +309,9 @@ After successfully creating the Database manifest, it’s time to apply manifest
 
 #### **Verify Database creation**
 
-To check the successful creation of database in DataOS Workspace use the following two methods:
+To check the successful creation of Database in DataOS Workspace use the following two methods:
 
-- **Check the Database in a Workspace:** Use the following command to list the  created by you in a specific Workspace:
+- **Check the Database in a Workspace:** Use the following command to list the created Database in a specific Workspace:
 
 === "Command"
 
@@ -345,13 +347,13 @@ To retrieve the list of all Databases created in the Workspace, add the `-a` fla
 
 #### **Debugging a Database**
 
-When a Database creation or service encounters errors, data developers can employ various tactics to diagnose and resolve issues effectively. Here are the recommended debugging techniques:
+When a Database creation or service encounter errors, data developers can employ various tactics to diagnose and resolve issues effectively. Here are the recommended debugging techniques:
 
 
 - **Check the Database logs**
 
   ```shell
-  dataos-ctl resources get -t database -w curriculum -n products_db -d
+  dataos-ctl resource get -t database -w curriculum -n products_db -d
   ```
 #### **Deleting a Database and Service**
 
