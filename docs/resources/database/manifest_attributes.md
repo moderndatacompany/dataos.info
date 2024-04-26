@@ -34,7 +34,8 @@ database:
   migrate:                  #mandatory
     includes: 
       - migrations/     # all up & down sql files.
-    command: up           # in case of drop table, write down.  
+    command: up   
+  compute: runnable-default        # in case of drop table, write down.  
    # database attributes go here
 ```
 
@@ -135,3 +136,12 @@ migrate:
 ```yaml
 manageAsUser: iamgroot
 ```
+
+#### **`compute`**
+
+**Description:**  the `compute` attribute specifies the name of the Compute Resource-instance referred by the Cluster.
+
+
+| Data Type | Requirement | Default Value | Possible Value                  |
+|-----------|-------------|---------------|---------------------------------|
+| string    | mandatory    | none          | any valid Compute Resource-instance name |
