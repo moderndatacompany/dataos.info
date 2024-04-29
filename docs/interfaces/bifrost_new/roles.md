@@ -20,31 +20,27 @@ The Roles page provides a comprehensive view of system default roles, such as "d
 
 To create a custom role follow the below steps:
 
-1. Navigate to the Roles. Click on the “Create Role” button in the top right corner.
-2. Provide a Name for the role, such as "test role", and add a description if needed. Click on the "Create" button.
-3. A success message will be displayed confirming that the role has been created 
+- Navigate to the Roles. Click on the “Create Role” button in the top right corner.
 
-1. Navigate to the Roles. Click on the “Create Role” button in the top right corner.
+  <center>![roles.png](../bifrost_new/roles.png)</center>
 
-![roles.png](../bifrost_new/roles.png)
+- Provide a Name for the role, such as "test role" or “Test Role”s, and add a description if needed. Now, Click on the "Create" button to finalize the creation of the role.
 
-2. Provide a Name for the role, such as "test role" or “Test Role”s, and add a description if needed. Now, Click on the "Create" button to finalize the creation of the role.
+  <center>![roles2.png](../bifrost_new/roles2.png)</center>
 
-![roles2.png](../bifrost_new/roles2.png)
+- A success message will be displayed confirming that the use case has been successfully added to the role.
 
-3. A success message will be displayed confirming that the use case has been successfully added to the role.
+??? Note
+    After creating a new role, no users will be displayed initially. You must manually add users by navigating back to the Users tab and repeating the steps to [assign a role to a specific user](../bifrost_new/users.md#how-to-add-a-user-to-a-role).
 
-<aside class="callout">
-After creating a new role, no users will be displayed initially. You must manually add users by navigating back to the Users tab and repeating the steps to [assign a role to a specific user](../bifrost_new/users.md#how-to-add-a-user-to-a-role).
-</aside>
 
-### How to delete a role?
+## How to delete a role?
 
 To delete a specific role follow the below steps:
 
-1. Navigate to the roles section
-2. Click the role you wish to delete 
-3. Click on “Delete Role” button 
+- Navigate to the roles section
+- Click the role you wish to delete 
+- Click on “Delete Role” button 
 
 <aside class="callout">
 🗣 Deleting a custom role cannot be undone—it results in permanent removal from the system.
