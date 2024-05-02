@@ -1,29 +1,30 @@
 # Bifrost
 
-Bifrost is a Graphical User Interface that enables you to create and manage access policies for applications, services, people & datasets. It is backed by the governance engine of DataOS, Heimdall.
+Bifrost is a Graphical User Interface that enables you to create and manage access policies for applications, services, people & datasets. It is backed by the governance engine of DataOS, [Heimdall](../architecture.md#heimdall).
 
-All policies in DataOS are implemented as ABAC policies, giving users fine-grained control over all aspects of the operating system and their data landscape. To make the user interface intuitive, Bifrost appears to follow RBAC, but underneath it is still ABAC implementation of access control. The following page explains in detail how this framework is implemented in DataOS click [here](../interfaces/bifrost_new/abac_implementation_in_dataos.md)
+All policies in DataOS are implemented as [ABAC](../interfaces/bifrost_new/abac_implementation_in_dataos.md)
+ (Attribute Based Access Control) policies, giving users fine-grained control over all aspects of the operating system and their data landscape. To make the user interface intuitive, Bifrost appears to follow RBAC, but underneath it is still ABAC implementation of access control. The following page explains in detail how this framework is implemented in DataOS click [here](../interfaces/bifrost_new/abac_implementation_in_dataos.md).
 
-<!-- <aside class="callout"> -->
-??? Note
 
-    Using Bifrost requires operator-level permissions; in other words, the following tag must be assigned to the user: `roles:id:operator` All other users will have ‘view-only’ permission.
+<aside class="callout">
 
-<!-- </aside> -->
+    🗣 sUsing Bifrost requires operator-level permissions; in other words, the `roles:id:operator` tag must be assigned to the user. All other users will have ‘view-only’ permission.
+
+</aside>
 
 ## How does Bifrost work?
 
-DataOS enforces a default denial stance, requiring users must explicitly request access to perform any action within the system. It establishes a continuous authorization mechanism, where access permissions are dynamically evaluated each time a user attempts an action. Access is granted only if the user has the requisite permissions at that precise moment. Bifrost is a tool to implement this philosophy,  backed by Heimdall, the governance engine of DataOS implementing Attribute-Based Access Control (ABAC).
+DataOS enforces a zero default denial stance, requiring users must explicitly request access to perform any action within the system. It establishes a continuous authorization mechanism, where access permissions are dynamically evaluated each time a user attempts an action. Access is granted only if the user has the requisite permissions at that precise moment. Bifrost is a tool to implement this philosophy,  backed by Heimdall, the governance engine of DataOS implementing Attribute-Based Access Control (ABAC).
 
-Understanding how Bifrost works involves focusing on key concepts that we have defined below
+Understanding how Bifrost works involves focusing on key concepts that are defined as followings:
 
 ## User
 
-An application or a person can serve as a User. Consider the User as the [subject](./bifrost_new/abac_implementation_in_dataos.md#subject) of the ABAC policy. Get the details of  'User' in Bifrost from [here](../interfaces/bifrost_new/users.md)
+An application or a person can serve as a User. Consider the User as the [subject](./bifrost_new/abac_implementation_in_dataos.md#subject) of the ABAC policy. Get the details of  'User' in Bifrost from [here](../interfaces/bifrost_new/users.md).
 
-## Use-case
+## Use-cases
 
-A use case in Bifrost defines actions a user wants to perform on a specific object. Get the details of how use cases are created and assigned [here](../interfaces/bifrost_new/use_cases.md).
+A use case in Bifrost defines actions a user wants to perform on a specific [object](./bifrost_new/abac_implementation_in_dataos.md#object). Get the details of how use cases are created and assigned [here](../interfaces/bifrost_new/use_cases.md).
 
 ## Grant
 
