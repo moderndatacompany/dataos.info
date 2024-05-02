@@ -1,6 +1,6 @@
 # Grants
 
-A grant links the Subject-Predicate-Object relationship, generating an access policy. Through grants, administrators assign use cases to subjects either as users or roles, granting them access to specific parts of the system or data. This level of detail in access control enables administrators to regulate user interactions effectively. Grants facilitate the assignment of use cases to multiple roles and users, providing flexibility in access management. Grants can be implemented via [CLI](../interfaces/cli.md) or through the User Interface (UI). To learn about how  to create grant through UI click [here](../interfaces/bifrost_new/grants.md#how-to-create-policy-use-case-grant)
+A grant links the Subject-Predicate-Object relationship, generating an access [policy](.././resources/policy.md). Through grants, administrators assign use cases to subjects either as users or roles, granting them access to specific parts of the system or data. This level of detail in access control enables administrators to regulate user interactions effectively. Grants facilitate the assignment of use cases to multiple roles and users, providing flexibility in access management. Grants can be implemented via [CLI](../interfaces/cli.md) or through the User Interface (UI) called [Bifrost](../interfaces/bifrost_new.md). To learn about how  to create grant through UI click [here](../interfaces/bifrost_new/grants.md#how-to-create-policy-use-case-grant)
 
 ## How to create and manage Grant?
 
@@ -16,6 +16,7 @@ When utilizing the CLI, administrators apply the Grant manifest. An example of a
     layer: user
     tags:
     - governance
+    - grants
     grant:
       policy_use_case_id: run-as-user
       subjects:
@@ -52,7 +53,7 @@ In DataOS, a Grant is categorized as a [Resource-type](https://dataos.info/reso
       owner: ${userid-of-owner}
       layer: user
       grant:
-        # attributes of pager-specific section
+        # attributes of grant-specific section
       ```
 === "Example"
 
@@ -67,7 +68,7 @@ In DataOS, a Grant is categorized as a [Resource-type](https://dataos.info/reso
       owner: ${iamgroot}
       layer: user
       grant:
-        # attributes of pager-specific section
+        # attributes of grant-specific section
       ```
 
 For more information about the various attributes in Resource meta section, refer to the [Attributes of Resource meta section.](../resources/resource_attributes.md)
@@ -148,9 +149,10 @@ Upon applying the grant, administrators can track and manage grant requests thro
       INFO[0001] 🔧 applying test-user-runas-test-dev1:v1alpha:grant...updated
       ```
 
-After applying for the Grant via the CLI, the status or log can be viewed in the Grant request section of the Bifrost UI. 
+After applying for the Grant via the CLI, the status or log can be viewed in the Grant request section of the Bifrost UI as following. 
 
 <center>![grant1.png](../resources/grants/grant1.png)</center>
+<center>*user shraddhaade requested access to read resource system workspaces for user named test-developer to piyushjoshi*</center>
 
 Once the grant request is submitted, the operator views the request and makes a decision. If another operator views the request and finds it appropriate, they can also grant the request. 
 
@@ -159,6 +161,7 @@ Once the grant request is submitted, the operator views the request and makes a 
 The name of the operator who took the final decision will be recorded
 
 <center>![grant3.png](../resources/grants/grant3.png)</center>
+<center> operator named aayushisolanki granted this permission to test-developer</center>
 
 ## Managing Grant
 
@@ -208,8 +211,8 @@ To delete Grant that are no longer in use the following methods:
     dataos-ctl delete -f ${file-path}
     ```
 
-### **End to End Use-case**
+<!-- ### **End to End Use-case**
 
 [End-to-end use -case](https://www.notion.so/End-to-end-use-case-d5fd4432612d440c856be424a34d8c32?pvs=21)
 
-[Grants Attribute manifest ](https://www.notion.so/Grants-Attribute-manifest-43172ca953b1493892aabb9a00274e8a?pvs=21)
+[Grants Attribute manifest ](https://www.notion.so/Grants-Attribute-manifest-43172ca953b1493892aabb9a00274e8a?pvs=21) -->
