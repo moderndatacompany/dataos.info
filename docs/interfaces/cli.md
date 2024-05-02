@@ -412,6 +412,35 @@ INFO[0408] Are you operating the DataOS®? (Y,n)
 INFO[0452] 🚀 initialization...complete
 ```
 
+<details><summary>Potential Errors and Solutions</summary>
+
+<b>Error</b>
+<br>
+When attempting to log in using the <code>dataos-ctl</code> command-line tool, if the following sequence of log messages are observed:
+
+```shell
+iamgroot@abcs-MacBook-Pro-2 ~ % ./darwin-arm64/dataos-ctl login
+INFO[0000] 🔑 login...                                   
+ERRO[0000] no cred file, need to login                  
+WARN[0000] no cred file, logging in now, Config File ".dataos.cred.config" Not Found in "[/Users/fsnooruddin/.dataos/hawk]"
+ERRO[0000] 🔑 login...error                              
+ERRO[0000] Post "https://https//emerging-hawk.dataos.app/home//heimdall/api/v1/oidc/tickets": dial tcp: lookup https: no such host
+```
+<b>Solution</b>
+<br>
+
+The final error message indicates an issue with the URL used during the login process. Specifically, the URL contains an incorrect and duplicated protocol prefix (<code>https://https//</code>).
+<br>
+Ensure that the URL specified during initialization or within your configuration files is correctly formatted. The correct URL should not include the <code>https://</code> protocol as part of the hostname. Instead, use only the domain name.
+<br>
+<b>Correct URL Format</b>
+
+```shell
+INFO[0383] Please enter the fully qualified domain name of the DataOS® instance?  
+->vasudhaiva-kutumbakam.dataos.app
+```
+</details>
+
 ## Log in
 
 After the successful initialization of DataOS context, you can log in to your account with the following command. 

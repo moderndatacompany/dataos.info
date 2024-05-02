@@ -25,7 +25,6 @@ DataOS is the data operating system built to create, deploy & manage domain-spec
 DataOS is a distributed cloud computing system based on micro-services architecture. This makes the services within its collection -
 
 - Loosely coupled
-- Independently deployable
 - Work with different technologies and programming languages
 - Independently scalable
 
@@ -33,13 +32,13 @@ Each service within DataOS is self-contained and implements a single business ca
 
 ---
 These are some of the services of DataOS acting as a cohesive whole to form the unified architecture for data infrastructure:
-### Heimdall
+### **Heimdall**
 Heimdall is the governance engine for all access control within DataOS. Whether it is access to a dataset, an API path or other applications & services of the operating system, Heimdall acts as the Policy Decision Point (PDP) for ingress and authorizations.
-### Metis
+### **Metis**
 [Metis](./interfaces/metis.md) is the metadata manager of DataOS. It collates & curates operational metadata, technical & business metadata from various data sources, as well as DataOS Resources. Metis serves this metadata via a graphical user interface for consumption by data developers. Combined with Odin (service for Knowledge Graphs), it forms a semantic web to generate ontologies and creates a digital twin of an organization's data infrastructure. 
-### Gateway
+### **Gateway**
 A service which runs on top of the query engine, Minerva, and is responsible for managing Minerva clusters, user authentication (via calls to Heimdall), as well as data policy decisions. It acts as the PDP for data filtering and masking so that the data is not masked/filtered at the source directly, but at the time of query parsing.
-### Caretaker
+### **Caretaker**
 It captures, stores & serves information related to pods (such as pod states & aggregates) or compute nodes. It maintains the historical data in blob storage while serving the current states of running pods via the [Operations app](./interfaces/operations.md).
 
 ---
@@ -68,7 +67,7 @@ The [User Space](./architecture.md#user-space) is the layer of DataOS where data
 - Data developers & operators interact with these components via the interfaces provided in the form of CLI, GUI and APIs.
 
 Throughout this journey of data across various applications & services, the data remains secured with customized access & data policies, and the user has control & observability over both the data & the infrastructure. 
-### Infrastructure to build data-products
+### **Infrastructure to build data-products**
 DataOS specs resemble the principles of a Data Developer Platform, such as declarative infrastructure management and dynamic configuration management with access control & version control systems in place, among others. This makes it the infrastructure of choice for creating, deploying and managing data products at scale.
 
 - The depots & APIs provide the input/output ports, while the stacks like [Flare](./resources/stacks/flare.md) & [Benthos](./resources/stacks/benthos.md) are used to configure the transformation logic on the data products. All the while, the system provides you with end-to-end observability, monitoring & customizability to define metrics or SLOs for different stages of the data product’s lifecycle, and provision computes & clusters with DataOS Resources on demand.
@@ -91,15 +90,15 @@ The architecture of DataOS can be segregated into three logically separated laye
 <center><i>Layered Architecture of DataOS</i></center>
 <br/>
 
-### Cloud Kernel
+### **Cloud Kernel**
 It is an abstraction layer over the cloud APIs of cloud providers like AWS, GCP & Azure. It makes DataOS cloud-agnostic, meaning the user is not locked-in with any specific vendor. DataOS uses Kubernetes to containerize its applications & automate the provisioning & control of node pools. This layer is deployed as Infrastructure as Code (IaC) to provide consistency, idempotency, reliability, reusability & automation.
 
 It abstracts away the complexities of managing distributed systems, including tasks like workload distribution, resource provisioning, load balancing, and fault tolerance, making it easier for the Core Kernel & User Space to utilize the cloud resources seamlessly.
-### Core Kernel
+### **Core Kernel**
 It provides the next set of abstractions over the cloud layer, translating low-level APIs (low-level in terms of communication & function) to high-level APIs. Core Kernel serves as the traditional operating system kernel, responsible for OS functionalities that are independent of cloud-specific features. 
 
 From a user’s perspective, it handles system resources such as CPU scheduling, memory allocation and provides input/output ports for applications & services running on top of it. Core kernel incorporates drivers to enable communications between services and enforces access controls for both ingress & egress.
-### User Space
+### **User Space**
 User Space represents the domain of the operating system where data developers work. It allows the developers to isolate & segregate their work from other users, providing multi-tenancy to develop business-domain-specific data products. All the DataOS Resources are created, deployed & managed by users in this layer. User Space is itself segregated into two logically separated layers, viz.
 #### **User Layer**
 
