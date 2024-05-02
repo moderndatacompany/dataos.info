@@ -10,7 +10,6 @@ Soda is a declarative [Stack](../stacks.md) for data quality testing within and 
 
 ## How to run Soda checks?
 
-
 ### **Create a Workflow/Worker manifest**
 
 Soda operates as a Stack that can be orchestrated through various [Resources](../../resources.md), such as a [Workflow](../workflow.md), or a [Worker](../worker.md) Resource. The choice of orchestrator-type is contingent upon the specific use case being addressed.
