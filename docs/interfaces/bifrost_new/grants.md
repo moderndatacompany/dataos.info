@@ -23,11 +23,13 @@ policy_use_case_id: manage-pulsar
   subjects:
   - roles:id:operator
 ```
-- Click on the **Create** button to apply the use-case grant.
+-  Click on the **Create** button to apply the use-case grant.
 
 Following are some more sample grant manifest
 
 **Sample manifest 1**
+
+**Description:** This use-case authorize actions using a user id assigned to a app-user.
 
 ```yaml
 policy_use_case_id: authorize-with-userid
@@ -36,6 +38,8 @@ subjects:
 ```
 
 **Sample manifest 3**
+
+**Description:** This use-case allows certain subejcts identified by tag to read all topics in pulsar.
 
 ```yaml
 policy_use_case_id: read-topics
@@ -51,6 +55,8 @@ subjects:
 
 **Sample manifest 4**
 
+**Description:** This use-case allows subjects to create and update governance primitives; roles, providers, atoms, use-cases, grants, policies.
+
 ```yaml
 policy_use_case_id: create-update-governance-primitives
 subjects:
@@ -60,6 +66,9 @@ subjects:
 
 **Sample manifest 5**
 
+**Description:** This use-case allows subjects to delete governance-primitives; roles, providers, atoms, use-cases, grants, policies.
+
+
 ```yaml
 policy_use_case_id: delete-governance-primitives
 subjects:
@@ -68,5 +77,5 @@ subjects:
 ```
 
 <aside class="callout">
-🗣 To revoke a particular grant linked with a role, you'll need to delete it.
+🗣 To remove a specific permission associated with a role, you'll need to delete the corresponding grant.
 </aside>

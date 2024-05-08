@@ -8,7 +8,7 @@ All policies in DataOS are implemented as [ABAC](../interfaces/bifrost_new/abac_
 
 <aside class="callout">
 
-    🗣 sUsing Bifrost requires operator-level permissions; in other words, the `roles:id:operator` tag must be assigned to the user. All other users will have ‘view-only’ permission.
+    🗣 Using Bifrost requires operator-level permissions; in other words, the `roles:id:operator` tag must be assigned to the user. All other users will have ‘view-only’ permission.
 
 </aside>
 
@@ -28,7 +28,7 @@ A use case in Bifrost defines actions a user wants to perform on a specific [obj
 
 ## Grant
 
-A grant is how the Subject-Predicate-Object is linked, and an access policy is generated. This is where you assign use-cases to users, giving them access to specific parts of the system or data. Get the details of Grants [here](../interfaces/bifrost_new/grants.md)
+A grant is how the Subject-Predicate-Object is linked, and an access policy is generated. This is where you assign use-cases to users, giving them access to specific parts of the system or data. Get the details of Grants [here](../interfaces/bifrost_new/grants.md).
 
 ## Role
 
@@ -48,54 +48,11 @@ True to its name, the Policy Decision Point (PDP) is responsible for making poli
 
 **Policy Enforcement Point (PEP)**
 
-A Provider or Policy Enforcement Point (PEP) signifies the service at the point of access. Upon being accessed, it interacts with the Policy Decision Point (PDP), providing it with the necessary information to authorize the current context. Depending on the response received from the PDP, the PEP either permits or denies the user's intended action. For instance, during ingress, the proxy validates whether specific API paths are permissible or restricted and refrains from proxying the request if the PDP indicates denial.
+A Provider or Policy Enforcement Point (PEP) signifies the service at the point of access. Upon being accessed, it interacts with the Policy Decision Point (PDP), providing it with the necessary information to authorize the current context. Depending on the response received from the PDP, the PEP either permits or denies the user's intended action. For instance, when information enters the system, the proxy verifies if certain API paths are allowed or blocked. If the Policy Decision Point (PDP) indicates denial, the proxy decides not to forward the request.
 
 ## Heimdall Primitives
 
-Heimdall primitives are components of the Heimdall authentication, authorization, and governance engine within DataOS. This section provides access to various primitives and configurations related to access control and security.
-
-### **Providers**
-
-In DataOS, all resources or applications function as Policy Enforcement Points (PEPs) when interacted with by other resources, applications, or users. Here, you can also access the authorization atoms associated with each provider. For instance, when inspecting the authorization atoms for Lens, you may discover permissions like saving charts, running queries, viewing tabs, saving results, and accessing attribute information. Likewise, the “Ingress Service” Provider governs and controls access to all ingress services within the DataOS network. Similarly, other providers like Metis contain distinct authorization atoms for various actions such as deleting, writing, and reading, as well as root access, such as admin user privileges.
-
-#### **How to register a PEP Provider?**
-
-When adding a new application to the DataOS environment, it's imperative to register it as a PEP to enable interaction. To register a new PEP provider, the following details are required:
-
-- **Version**: Indicates the version of the PEP provider. For new applications in dataos, the version is typically set to `0.1.0`.
-- **ID**: Unique identifier for the PEP provider.
-- **Name**: Name of the PEP provider.
-- **Description**: Brief description of the PEP provider's purpose.
-- **Authorization Atoms:** Define authorization atoms for the PEP provider. Authorization atoms consist of predicates and objects, specifying the conditions under which access is granted or denied.
-
-For instance, when inspecting the authorization atoms for [Lens](../interfaces/lens.md), you may discover permissions like saving charts, running queries, viewing tabs, saving results, and accessing attribute information. Similarly, other providers like Metis contain distinct authorization atoms for various actions such as deleting, writing, and reading, as well as route access, such as admin user privileges. Once authorization atoms are created for the PEP provider, they can be combined in various combinations to address different use cases.
-
-Utilize the provided sample manifest template as a reference for registering the new PEP provider:
-
-???tip "Sample manifest"
-
-      ```yaml
-      #YAML to register a new PEP provider on Bifrost
-      version: 0.0.1
-      id: gateway-pep-provider
-      name: Gateway PEP
-      description: PEP to manage access to Minerva clusters
-      authorization_atoms:
-        - id: cluster-access
-          description: authorization atom to select clusters for running Minerva queries
-          predicate: select
-          tags: 
-            - dataos:resource:cluster:${cluster}
-      ```
-
-Ensure to replace `${cluster}` with the appropriate value when granting access.
-
-Once the PEP provider is registered, follow these steps to view and manage it on Bifrost:
-
-- The newly registered PEP (named Gateway PEP) will appear in the list of PEP Providers under the Heimdall Primitives.
-- Click on the PEP provider to view its details.
-- Click on an Authorization Atom to get its specific details.
-- If needed, you can delete the provider after it is created.
+Heimdall primitives are components of the Heimdall, the authentication, authorization, and governance engine within DataOS. This section provides access to various primitives and configurations related to access control and security. To know more click [here](./bifrost_new/heimdall_primitives.md)
 
 ### **Policies**
 
@@ -103,14 +60,14 @@ DataOS [Policy](../resources/policy.md) within Heimdall Primitives is a rule def
 
 ### **Tag-Namespaces**
 
-A tag-namespace is a container or group of tags for instance `roles:**`, `users:**`.  tag-namespaces are organized into three distinct categories serving specific purposes. One category is for creating tags assigned to subjects within an access policy. Another category is designated for tags assigned to objects in the policy. Lastly,  is a category employed for conveying non-mandatory information about either the subject or object involved in the policy.
+A Tag-Namespace is a container or group of tags. For instance `roles:**`is a container or group for different tags starting with "roles" like `roles:id:system-dev` or `roles:id:pii-reader`. Tag-Namespaces are organized into three distinct categories serving specific purposes. One category is for creating tags assigned to subjects within an access policy. Another category is designated for tags assigned to objects in the policy. Lastly,  is a category employed for conveying non-mandatory information about either the subject or object involved in the policy.
 
-During the installation of DataOS, system tags, and default policies are generated to facilitate core functionality. These tags encompass the following predefined tag namespaces by default:
+During the installation of DataOS, system tags, and default policies are generated to facilitate core functionality. These tags encompass the following predefined Tag-Namespaces by default:
 
-- `users:id:testuser`
-- `roles:id:operator`
-- `roles:id:app-user`
-- `roles:id:data-dev`
+- `users:**`
+- `roles:**`
+- `dataos:workspace:**`
+- `dataos:system:**`
 
 However, these are not the exclusive tags created during the installation process.
 
@@ -118,29 +75,29 @@ However, these are not the exclusive tags created during the installation proces
 🗣 New tag namespaces can be created to mimic the organizational structure for a particular use case.
 </aside>
 
-#### **How to create a tag-namespace?**
+#### **How to create a Tag-Namespace?**
 
-To create a tag-namespace, four fields need to be specified. These fields, along with their descriptions and examples, are outlined in the table below:
+To create a Tag-Namespace, four fields need to be specified. These fields, along with their descriptions and examples, are outlined in the table below:
 
 | Fields | Description | Example |
 | --- | --- | --- |
-| Name | declare a name for the tag-namespace  | test namespace |
+| Name | declare a name for the Tag-Namespace  | test namespace |
 | GLOB | define its glob pattern | `test:**` |
 | Type | depending on how the tags in this group will be used, declare one of these three values: subject/object/inform  | subject |
-| Description | describe in short the purpose for which the tags in this namespace will be created | tag-namespace created specifically to create test-roles for users |
+| Description | describe in short the purpose for which the tags in this namespace will be created | Tag-Namespace created specifically to create test-roles for users |
 
 For instance, let’s create a new tag group called `testers`
 
-To create a new tag-namespace Open Bifrost navigate to Heimdall Primitives
+To create a new Tag-Namespace Open Bifrost navigate to Heimdall Primitives
 
-- Click on tag-namespace
-- Now click on create tag-namespace button
+- Click on Tag-Namespace
+- Now click on create Tag-Namespace button
 
 <center>![tag_namespace.png](../interfaces/bifrost_new/tag_namespace.png)</center>
-<center>users will be directed to a page where all existing tag-namespaces are listed 
+<center>users will be directed to a page where all existing Tag-Namespaces are listed 
 </center>
 
-- The tag-namespace will be configured with the following details, as depicted in the figure below:
+- The Tag-Namespace will be configured with the following details, as depicted in the figure below:
 
   - Name: tester
   - GLOB: tester:**
@@ -149,7 +106,7 @@ To create a new tag-namespace Open Bifrost navigate to Heimdall Primitives
 
 ![tag_namespace_config.png](../interfaces/bifrost_new/tag_namespace_config.png)
 
-- A success message will be displayed confirming that the new tag-namespace has been added successfully. 
+- A success message will be displayed confirming that the new Tag-Namespace has been added successfully. 
 
 ### **Tags**
 
