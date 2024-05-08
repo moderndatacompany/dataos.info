@@ -1,6 +1,6 @@
 # Users
 
-The Users tab in Bifrost presents a list of users who have access to DataOS. Users can be categorized into two types **person** & **application**. New users can be added by clicking the ‘Create User’ button. However, it's important to note that new users of type applications, can only be added directly through Bifrost. Adding new user of person type requires access to your organization’s Active Directory.
+The Users tab in Bifrost presents a list of users who have access to DataOS. Users can be categorized into two types **person** & **application**. New users can be added by clicking the ‘Create User’ button. However, it's important to note that new users of type applications, can only be added directly through Bifrost.  Adding new user of person type requires access to your organization’s Active Directory.
 
 <aside class="callout">
 
@@ -55,7 +55,7 @@ There's a difference between assigning a Role and granting a Use-Case to a user.
 
 **Assigning Roles**  
 
-    Assigning `operator` roles involves granting specific sets of permissions or capabilities to a user. `operator` role encompass a broader scope of permissions beyond just depot creation, allowing the user to perform other tasks unrelated to depot management.
+  Assigning `operator` Roles involves granting specific sets of permissions or capabilities to a user. `roles:id:operator` role-tag encompass a broader scope of permissions beyond just depot creation, allowing the user to perform other tasks unrelated to depot management.
     
 **Granting Use-Cases**
 
@@ -65,7 +65,7 @@ There's a difference between assigning a Role and granting a Use-Case to a user.
   
   However, when granting this Use-Case, it's essential for the user to include additional attribute called `RunasUser` in the Depot's configuration file, which is used to declare the ID of the operator who authorized them to create the depot. This ensures accountability and proper authorization, as the user's ability to create the depot is tied to a specific authorization granted by an operator.
 
-???tip "Sample manifest template for depot creation 
+???tip "Sample manifest template for depot creation"
     ```yaml hl_lines="11"
     name: bigquerydepot
     version: v1
@@ -128,7 +128,7 @@ For instance, if you wish to assign the user a Role called "Pulsar Admin," you m
 
 ## How to delete a Role-tag of a user?
 
-You can delete a role-tag if it is no longer required for the user to have access corresponding to that particular role.
+You can delete a role-tag if it is no longer required for the user to have access corresponding to that particular Role.
 
 To delete the Role or Tag of a particular user, follow these steps:
 
