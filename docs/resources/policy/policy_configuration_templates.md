@@ -38,9 +38,10 @@ The provided template defines a policy that denies access to a dataset stored wi
 
 **Template**
 
+
 ```yaml
---8<-- "examples/resources/policy/access_policy/access_policy4.yaml" 
-``` 
+--8<-- "examples/resources/policy/access_policy/access_policy4.yaml"
+```
 
 **Enabling Predicates on a particular collection within a Depot for Subjects whose tags follow a Specific RegeX**
 
