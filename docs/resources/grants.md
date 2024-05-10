@@ -1,12 +1,12 @@
 # Grants
 
-A grant links the Subject-Predicate-Object relationship, generating an access [policy](.././resources/policy.md). Through grants, administrators assign use cases to subjects either as users or roles, granting them access to specific parts of the system or data. This level of detail in access control enables administrators to regulate user interactions effectively. Grants facilitate the assignment of use cases to multiple roles and users, providing flexibility in access management. Grants can be implemented via [CLI](../interfaces/cli.md) or through the User Interface (UI) called [Bifrost](../interfaces/bifrost_new.md). To learn about how  to create grant through UI click [here](../interfaces/bifrost_new/grants.md#how-to-create-policy-use-case-grant)
+A grant links the Subject-Predicate-Object relationship, generating an access [policy](.././resources/policy.md). Through grants, administrators assign use cases to subjects either as users or roles, granting them access to specific parts of the system or data. This level of detail in access control enables administrators to regulate user interactions effectively. Grants facilitate the assignment of use cases to multiple roles and users, providing flexibility in access management. Grants can be implemented via [CLI](../interfaces/cli.md) or through the [Bifrost](../interfaces/bifrost_new.md) Interface. To learn about how  to create grant through Bifrost click [here](../interfaces/bifrost_new/grants.md#how-to-create-policy-use-case-grant).
 
 ## How to create and manage Grant?
 
 ### **Create a Grant manifest file**
 
-When utilizing the CLI, administrators apply the Grant manifest. An example of a grant manifest is as follows:
+Data Developers can create a Grant Resource by applying the manifest file of a Grant from the DataOS CLI. An example of a grant manifest is as follows:
 ???tip "Example Grant manifest"
 
     ```yaml

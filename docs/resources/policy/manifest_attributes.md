@@ -474,14 +474,15 @@ user:
 ---
 
 #### **`match`**
-**Description:** This attribute<br>
+**Description:**  The `match` attribute specifies the match condition.<br>
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | --------------- | ----------------- | ------------------ |
 | string        | mandatory       | none              | any/all            |
 
-**Example Usage:** 
+**Additional Information:** - `any`- must match at least one tag - `all` - must match all tags
 
+**Example Usage:** 
 
 ```yaml
 match: any

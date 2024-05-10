@@ -45,7 +45,7 @@ grant:
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| string | required | none | Unique identifier for the policy use case |
+| string | required | none | inique identifier for the policy use case |
 
 **Example usage:**
 
@@ -59,7 +59,7 @@ policy-use-case-id: my_policy_use_case
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| list of strings | optional | none | List of subject identifiers |
+| list of strings | optional | none | list of subject identifiers |
 
 **Example usage:**
 
@@ -75,7 +75,7 @@ subjects:
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| list of mapping | optional | none | List of key-value pairs representing values |
+| list of mapping | optional | none | list of key-value pairs representing values |
 
 **Example usage:**
 
@@ -89,7 +89,7 @@ values:
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| string | optional | none | Valid path string indicating the resource location |
+| string | optional | none | valid path string indicating the resource location |
 
 **Example usage:**
 
@@ -117,7 +117,7 @@ approve: true
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| string | optional | none | Unique identifier for the requester |
+| string | optional | none | unique identifier for the requester |
 
 **Example usage:**
 
@@ -131,7 +131,7 @@ requester: user123
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| string | optional | none | Textual notes or comments |
+| string | optional | none | textual notes or comments |
 
 **Example usage:**
 
@@ -145,7 +145,7 @@ notes: This policy is for testing purposes.
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| string | optional | none | Unique identifier for the collection |
+| string | optional | none | unique identifier for the collection |
 
 **Example usage:**
 
@@ -159,7 +159,7 @@ collection: my_collection
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| string | optional | none | UserID of the Use Case Assignee |
+| string | optional | none | userid of the use-case assignee |
 
 **Example usage:**
 

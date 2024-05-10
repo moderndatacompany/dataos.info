@@ -3,7 +3,7 @@ A role in DataOS is a tag present in the tag-namespace called roles, with the gl
 
 For instance, when a new project is initiated within your company, involving specific users or team members assigned to work on it, and these individuals or roles require access to the same level of access for project completion, an alternative approach can be adopted. Instead of granting individual access to each person involved in the project, a new role can be created. Subsequently, users can be added to this role. For instance, if the project pertains to the marketing team, the role tag could be defined as `roles:id:marketing:userid`, indicating that this role is specific to the marketing project, granting access to the dataset within a particular database.
 
-The Roles page provides a comprehensive view of system default roles, such as "data dev" or "system," alongside custom roles tailored for specific use cases or as per organizational needs.
+The Roles page provides a comprehensive view of system default roles alongside custom roles tailored for specific use cases or as per organizational needs.
 
 <aside class="callout">
 🗣 The roles added during the installation process become permanent or default, and cannot be removed thereafter.
@@ -30,7 +30,7 @@ To create a custom role follow the below steps:
 
 - A success message will be displayed confirming that the use case has been successfully added to the role.
 
-??? Note
+!!! Note
     After creating a new role, no users will be displayed initially. You must manually add users by navigating back to the Users tab and repeating the steps to [assign a role to a specific user](../bifrost_new/users.md#how-to-add-a-user-to-a-role).
 
 
