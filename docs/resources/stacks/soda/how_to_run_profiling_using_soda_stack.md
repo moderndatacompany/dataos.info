@@ -12,7 +12,7 @@ workflow:
     - name: sample-profile-soda-01
       title: Sample profile data
       spec:
-        stack: soda
+        stack: soda+python:1.0
         soda:
             - dataset: dataos://icebase:retail/customer
               checks:

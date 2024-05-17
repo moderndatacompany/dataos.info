@@ -1,19 +1,19 @@
-# Alpha Stack within a Workflow
+# Container Stack within a Workflow
 
-You can also execute or call Alpha stack within a Workflow as given below:
+You can also execute or call Container stack within a Workflow as given below:
 
 ```yaml
-name: alpha-workflow
+name: container-workflow
 version: v1
 type: workflow
 workflow:
   dag:
     - name: drop-column
       spec:
-        stack: alpha
+        stack: container
         envs:
           LOG_LEVEL: debug
-        alpha:
+        stackSpec:
           image: <container-image-path>
           arguments:
             - dataset
@@ -22,10 +22,10 @@ workflow:
             - --name=country
     - name: add-column
       spec:
-        stack: alpha
+        stack: container
         envs:
           LOG_LEVEL: debug
-        alpha:
+        container:
           image: <container-image-path>
           arguments:
             - dataset

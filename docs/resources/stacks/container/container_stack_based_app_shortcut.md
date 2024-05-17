@@ -1,6 +1,6 @@
-# Creating shortcuts for Alpha Stack based applications
+# Creating shortcuts for Container Stack based applications
 
-In DataOS, the home page prominently showcases pre-built applications. Nevertheless, when a data developer hosts an application on the [Alpha Stack](../alpha.md), the responsibility for integrating a shortcut to their application and ensuring its accessibility to all users rests with them. 
+In DataOS, the home page prominently showcases pre-built applications. Nevertheless, when a data developer hosts an application on the [Container Stack](/resources/stacks/container/), the responsibility for integrating a shortcut to their application and ensuring its accessibility to all users rests with them. 
 
 This can be accomplished through the utilization of the `appDetailSpec` attribute. 
 
@@ -63,7 +63,7 @@ base64 -i {{file_path}}
 
 Following the successful transformation of the SVG image to a Base64 encoded string, it can be introduced as the value of the `icon` key within the `appDetailSpec`.
 
-### **Sample Alpha YAML**
+### **Sample Container manifest**
 
 The ensuing YAML example serves to illustrate the practical implementation of these directives.
 
@@ -93,7 +93,7 @@ service:
     noAuthentication: true
     path: /depot-catalyst
     stripPath: true
-  stack: alpha
+  stack: container
   compute: runnable-default 
   resources:
     requests:
@@ -105,7 +105,7 @@ service:
   envs:
     LOG_LEVEL: info
     DATAOS_ENV: 'https://{{dataos-context}}.dataos.app' 
-  alpha:
+  stackSpec:
     command: 
       - streamlit
     arguments:
@@ -122,15 +122,14 @@ Once you've successfully applied the YAML, your app icon will appear in the home
 
 <center>
 
-![Alpha Stack based App Shortcut](./alpha_stack_based_app_shortcut/alpha_stack_based_app_shortcut.png)
+![Container Stack based App Shortcut](./container_stack_based_app_shortcut/container_stack_based_app_shortcut.png)
 
 
-<i> Alpha Stack application icon on DataOS Home Page </i>
+<i> Container Stack application icon on DataOS Home Page </i>
 
 </center>
 
 ## Attributes of `appDetailSpec`
-
 
 
 ### **`name`**
