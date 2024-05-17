@@ -551,7 +551,7 @@ workflow:
       title: soda Sample Test Job
       description: This is sample job for soda dataos sdk
       spec:
-        stack: soda:1.0
+        stack: soda+python:1.0
         compute: runnable-default
         resources:
           requests:

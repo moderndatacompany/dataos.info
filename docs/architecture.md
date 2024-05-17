@@ -74,7 +74,7 @@ DataOS specs resemble the principles of a Data Developer Platform, such as decla
 - The separation of Compute & Storage allows the users to scale both independently & optimize costs while building & experimenting with new data products.
 - The native governance with Heimdall & Gateway ensures granular access control on every aspect of data products, Metis provides the ability to discover, understand & categorize the data products, and Poros automates the orchestration.
 - The interfaces of applications like [Lens](./interfaces/lens.md), [Workbench](./interfaces/workbench.md) & [Atlas](./interfaces/atlas.md) enable data developers to experiment with data products quickly and in a self-serve manner.
-- The niche capabilities as provided with DataOS Resources like [Service](./resources/service.md) & [Alpha stack](./resources/stacks/alpha.md) allow one to create data products even for the edge cases.
+- The niche capabilities as provided with DataOS Resources like [Service](./resources/service.md) & [Container stack](./resources/stacks/container.md) allow one to create data products even for the edge cases.
 - Abstractions over all the parts of the aforementioned micro-services architecture and the open standards used while building them makes the system flexible and customizable towards the addition of new tools & technologies. 
 
 > Having an operating system to perform all these tasks means that the developer experience is consistent & seamless, and the data product developers can focus on & accelerate building of data products to solve business problems rather than get bogged down with solving the problems for data teams of each domain within the organization.
