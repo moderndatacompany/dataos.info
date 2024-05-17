@@ -122,7 +122,7 @@ service:
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
-| list of strings | optional   | none                 | valid [tag](../policy/yaml_configuration_attributes.md#tags)
+| list of strings | optional   | none                 | valid [tag](../policy/manifest_attributes.md#tags)
 
 **Example Usage:**<br>
 ```yaml
