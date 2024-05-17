@@ -63,9 +63,9 @@ DataOS has two distinct resources that supports its interoperability and extensi
 ## Built-in Stacks in DataOS
 
 
-### **Alpha**
+### **Container**
 
-[Alpha](./stacks/alpha.md) Stack is a declarative DevOps SDK used for seamless deployment of data applications into production environments.
+[Container](./stacks/container.md) Stack is a declarative DevOps SDK used for seamless deployment of data applications into production environments.
 
 ### **Beacon**
 
