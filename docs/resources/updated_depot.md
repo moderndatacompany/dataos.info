@@ -456,7 +456,9 @@ Let's understand this hierarchy through real-world examples:
 
 Once you have the manifest file ready in your code editor, simply copy the path of the manifest file and apply it through the DataOS CLI, using the command given below:
 
-`dataos-ctl apply -f ${{yamlfilepath}}`
+``` shell
+dataos-ctl apply -f ${{yamlfilepath}}
+```
 
 ## **How to manage a Depot?**
 
@@ -466,11 +468,15 @@ To ensure that your depot has been successfully created, you can verify it in tw
 
 - Check the name of the newly created depot in the list of depots where you are named as the owner:
 
-`dataos-ctl get -t depot`
+``` shell
+dataos-ctl get -t depot
+```
 
 - Alternatively, retrieve the list of all depots created in your organization:
 
-`dataos-ctl get -t depot -a`
+``` shell
+dataos-ctl get -t depot -a
+```
 
 You can also access the details of any created Depot through the DataOS GUI in the [Operations App](../interfaces/operations.md) and [Metis UI](../interfaces/metis.md).
 
@@ -480,7 +486,10 @@ You can also access the details of any created Depot through the DataOS GUI in t
 
 If you need to delete a depot, use the following command in the DataOS CLI:
 
-`dataos-ctl delete -t depot -n ${{name of depot}}`
+``` shell
+dataos-ctl delete -t depot -n ${{name of depot}}
+```
+
 
 By executing the above command, the specified depot will be deleted from your DataOS environment.
 
@@ -496,13 +505,12 @@ Depots are compatible with different Stacks in DataOS. [Stacks](./stacks.md) pro
 
 The UDL references are used as addresses for your input and output datasets within the manifest configuration file.
 
-- **Referencing Depots within Stack manifest Configuration**
-
 ### **Limit Data Source's File Format**
 
 Another important function that a Depot can play is to limit the file type which you can read from and write to a particular data source. In the `spec` section of manifest config file, simply mention the `format` of the files you want to allow access for.
 
-`depot:
+``` yaml
+depot:
   type: S3
   description: ${{description}}
   external: true
@@ -511,10 +519,11 @@ Another important function that a Depot can play is to limit the file type which
     bucket: ${{bucket-name}}
     relativePath: "raw" 
     format: ${{format}}  # mention the file format, such as JSON, to only allow that file type`
-
+```
 For File based systems, if you define the format as ‘Iceberg’, you can choose the meta-store catalog between Hadoop and Hive. This is how you do it:
 
-`depot:
+``` yaml
+depot:
   type: ABFSS
   description: "ABFSS Iceberg depot for sanity"
   compute: runnable-default
@@ -525,12 +534,12 @@ For File based systems, if you define the format as ‘Iceberg’, you can choos
     format: ICEBERG
     endpointSuffix:
     icebergCatalogType: Hive`
-
+```
 If you do not mention the catalog name as Hive, it will use Hadoop as the default catalog for Iceberg format.
 
-!https://dataos.info/resources/depot/depot_catalog.png
 
-*Flow when Hive is chosen as the catalog type*
+![Depot Hierarchy](./depot/depot_catalog.png)
+<center><i>Flow when Hive is chosen as the catalog type</i></center>
 
 Hive, automatically keeps the pointer updated to the latest metadata version. If you use Hadoop, you have to manually do this by running the set metadata command as described on this page: [Set Metadata](../resources/depot/icebase.md)
 
