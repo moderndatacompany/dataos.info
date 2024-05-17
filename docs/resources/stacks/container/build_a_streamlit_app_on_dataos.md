@@ -1,6 +1,6 @@
 # Build a Streamlit App on DataOS
 
-Here’s a step-by-step guide on how to create a simple streamlit application, dockerize it, and then run it on top of DataOS using Alpha stack.
+Here’s a step-by-step guide on how to create a simple streamlit application, dockerize it, and then run it on top of DataOS using Container stack.
 
 ## Create a Streamlit Application
 
@@ -84,7 +84,7 @@ Finally, push the Docker image to Docker Hub using the following command:
 docker image push your-username/my-app:new
 ```
 
-## Create an Alpha YAML
+## Create a manifest file
 
 This command builds a Docker image named `my-app` using the `Dockerfile` in the current directory.
 
@@ -101,10 +101,10 @@ service: # Service Specific Section
     noAuthentication: true
     path: /stream # URL Path on which you wanna expose the application on
     stripPath: true
-  stack: alpha # Here stack is Alpha (What else did you think? Beta, Gamma !!!)
+  stack: container # Here stack is Container
   envs: # Environment Variables
     LOG_LEVEL: info # Log Level
-  alpha: # Alpha Stack Specific Section
+  stackSpec: # Container Stack-specific Section
     image: your-username/my-app:new # Image Repository and Tag
     command:
       - streamlit
@@ -118,7 +118,7 @@ service: # Service Specific Section
 Apply the YAML file using the `apply` command, as follows:
 
 ```shell
-dataos-ctl apply -f <path-to-file> -w <workspace>
+dataos-ctl apply -f ${path-to-file} -w ${workspace}
 ```
 
 ## Navigate over to the Web Browser
