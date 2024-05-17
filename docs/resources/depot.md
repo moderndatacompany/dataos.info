@@ -106,8 +106,12 @@ INFO[0000] 😃 user get...complete
                │             │        │                      │ roles:id:user,    
                │             │        │                      │ users:id:iamgroot
 ```
+To create Depots, ensure that you possess the following tags.
 
-To create Depots, ensure that you possess the following tags: `roles:id:user`, `roles:id:data-dev`, and `roles:id:system-dev`.
+- `roles:id:user`
+- `roles:id:data-dev`
+- `roles:id:system-dev`
+
 
 <aside class="callout">
 🗣 If you do not possess these tags, contact the DataOS Operator or Administrator within your organization to assign you the necessary tag or the use case for the creation of the depot.
@@ -251,7 +255,7 @@ The basic attributes filled in this section are provided in the table below:
 
 **Alternative Approach: Using Instance Secret**
 
-[Instance Secret](../resources/instance_secret.md) is also a [Resource](https://dataos.info/resources/) in DataOS that allows users to securely store sensitive piece of information such as username, password, etc. Using Secrets in conjunction with [Depots](../resources/updated_depot.md), [Stacks](../resources/stacks.md) allows for decoupling of sensitive information from Depot and Stack YAMLs. For more clarity, let’s take the example of MySQL data source to understand how you can use Instance Secret Resource for Depot creation:
+[Instance Secret](../resources/instance_secret.md) is also a [Resource](https://dataos.info/resources/) in DataOS that allows users to securely store sensitive piece of information such as username, password, etc. Using Secrets in conjunction with [Depots](../resources/depot.md), [Stacks](../resources/stacks.md) allows for decoupling of sensitive information from Depot and Stack YAMLs. For more clarity, let’s take the example of MySQL data source to understand how you can use Instance Secret Resource for Depot creation:
 
 - Create an Instance Secret file with the details on the connection secret:
 
