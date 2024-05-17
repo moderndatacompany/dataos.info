@@ -146,7 +146,7 @@ hide:
 | --- | --- |
 | [PDP](./resources/policy/understanding_abac_pdp_and_pep.md) | Policy Desicion Point is the service that evaluates a specific subject-predicate-object-metadata request against the current policies to determine if access to the DataOS resource/ environment is allowed or denied. |
 | [PEP](./resources/policy/understanding_abac_pdp_and_pep.md) | Policy Enforcement Point is responsible for execution of the decision returned from PDP. |
-| Poros | DataOS Poros is an orchestration engine for managing workflows, which are run for data transformation and movement. Working in coordination with Kubernetes, Poros efficiently allocates resources to various running jobs and services for data processing.  |
+| Poros | DataOS Poros is an orchestration engine for managing all DataOS Resources. It manages their lifecycle and versioning and works to reconcile the current state of Resources with the desired state. It is based on the operator pattern of Kubernetes.  |
 | [Policy](./resources/policy.md) | Policy is a DataOS Resource which governs the behaviour of users(applications and persons). In DataoS, two types of policies can be created- Access Policy & Data Policy.  |
 | [Profiling](/resources/stacks/flare/case_scenario/data_profiling_jobs/#data-profiling-jobs) | Data profiling is a process that involves examining data to gain insights into its structure, quality, and characteristics. In DataOS,  data profiling workflow aims to analyze data for valid formats, null values, and inconsistencies to enhance data quality. By utilizing basic statistics, it uncovers anomalies, redundancies, and provides insights into the validity of the data. |
 
