@@ -891,7 +891,7 @@ cluster:
 | ----------------- | -------------- | ------------------ | --------------------------- |
 | list of strings   | optional       | none               | any valid tag or pattern    |
 
-**Additional Information:** Multiple users can be specified using AND/OR Logical Rules. To know more, click [here](../policy/yaml_configuration_attributes.md#tags)<br>
+**Additional Information:** Multiple users can be specified using AND/OR Logical Rules. To know more, click [here](../policy/manifest_attributes.md#tags)<br>
 
 **Example Usage:**<br>
 ```yaml
