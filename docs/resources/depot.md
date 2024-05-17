@@ -1,112 +1,155 @@
 ---
-title: Depot
 search:
-  boost: 4
+  exclude: true
 ---
 
-# :resources-depot: Depot
+# Depot
 
-Depot in DataOS is a [Resource](../resources.md) that acts as an intermediary, facilitating connectivity to diverse data sources by abstracting the complexities associated with the underlying source system (including protocols, credentials, and connection schemas). It enables users to establish connections and retrieve data from various data sources, such as file systems (e.g., [AWS S3](./depot/depot_config_templates/amazon_s3.md), [Google GCS](./depot/depot_config_templates/google_gcs.md), [Azure Blob Storage](./depot/depot_config_templates/azure_abfss.md)), data lake systems (e.g., Icebase), database systems (e.g., [Redshift](./depot/depot_config_templates/amazon_redshift.md), [SnowflakeDB](./depot/depot_config_templates/snowflake.md), [Bigquery](./depot/depot_config_templates/google_bigquery.md), [Postgres](./depot/depot_config_templates/postgresql.md)), and event systems (e.g., [Kafka](./depot/depot_config_templates/kafka.md), [Pulsar](./depot/depot_config_templates/apache_pulsar.md)).
+Depot in DataOS is a [Resource](../resources.md) used to connect different data sources to DataOS by abstracting the complexities associated with the underlying source system (including protocols, credentials, and connection schemas). It enables users to establish connections and retrieve data from various data sources, such as file systems (e.g., AWS S3, Google GCS, Azure Blob Storage), data lake systems, database systems (e.g., Redshift, SnowflakeDB, Bigquery, Postgres), and event systems (e.g., Kafka, Pulsar) without moving the data. 
 
-The Depot serves as the registration of data locations to be made accessible to DataOS. Through the [Depot Service](#depot-service) each source system is assigned a unique address, referred to as a **Uniform Data Link (UDL)**. The UDL grants convenient access and manipulation of data within the source system, eliminating the need for repetitive credential entry. The UDL follows this format:
+<div class="grid cards" markdown>
 
-<center><b><span style="font-size: 20px;"><code>dataos://[depot]:[collection]/[dataset]</code></span></b></center>
+-   :material-format-list-bulleted-type:{ .lg .middle } **How to create and manage a Depot?**
 
-Leveraging the UDL enables access to datasets and seamless execution of various operations, including data transformation using various [Stacks](./stacks.md) and [Policy](./policy.md) assignment.
+    ---
 
-Regardless of the source system's internal naming conventions and structure, the UDL ensures consistency in referencing data. Within DataOS, the hierarchical structure of a data source is represented as follows:
+    Create Depots to set up the connection between DataOS and data source.
+
+    [:octicons-arrow-right-24: Create Depot](/resources/depot/#how-to-create-a-depot)
+
+
+-   :material-script-text-outline:{ .lg .middle } **How to utilize Depots?**
+
+    ---
+
+    Utilize depots to work on your data.
+
+    [:octicons-arrow-right-24: Utilizing Depots](/resources/depot/#how-to-utilize-depots)
+
+
+
+-   :material-clock-fast:{ .lg .middle } **Depot Templates**
+
+    ---
+
+    Depot example usage.
+
+    [:octicons-arrow-right-24: Configuration Template](/resources/depot/#depot-configuration-templates)
+
+
+-   :material-console:{ .lg .middle } **Data Integration**
+
+    ---
+
+    Depots support various data sources within DataOS.
+
+
+    [:octicons-arrow-right-24: Supported Connectors](/resources/depot/#data-integration-supported-connectors-in-dataos)
+     
+</div>
+
+Within DataOS, the hierarchical structure of a data source is represented as follows:
 
 ![Depot Hierarchy](./depot/udl.png)
 <center><i>Hierarchical Structure of a Data Source within DataOS</i></center>
 
-Once this mapping is established, [Depot Service](#depot-service) automatically generates the Uniform Data Link (UDL) that can be used throughout DataOS to access the data. As a reminder, the UDL has the format: `dataos://[depot]:[collection]/[dataset]`.
+The Depot serves as the registration of data locations to be made accessible to DataOS. Through the Depot Service, each source system is assigned a unique address, referred to as a **Uniform Data Link (UDL)**. The UDL grants convenient access and manipulation of data within the source system, eliminating the need for repetitive credential entry. The UDL follows this format:
 
-For simple file storage system, "Collection" can be analogous to "Folder," and "Dataset" can be equated to "File." The Depot's strength lies in its capacity to establish uniformity, eliminating concerns about varying source system terminologies.
+<center><b><span style="font-size: 20px;"><code>dataos://[depot]:[collection]/[dataset]</code></span></b></center>
 
-Once a Depot is created, all members of an organization gain secure access to datasets within the associated source system. The Depot not only facilitates data access but also assigns **default** [Access Policies](./policy.md#access-policy) to ensure data security. Moreover, users have the flexibility to define and utilize custom [Access Policies](./policy.md#access-policy) for the depot and [Data Policies](./policy.md#data-policy) for specific datasets within the Depot.
 
 <aside class="callout">
 
-🗣️ Depot provides 'access' to data, meaning that data remains within the source system and is neither moved nor duplicated. However, DataOS offers multiple <a href="/resources/stacks/">Stacks</a> such as <a href="/resources/stacks/flare/">Flare</a>, <a href="/resources/stacks/benthos/">Benthos</a>, etc. to perform ingestion, syndication, copying if the need arises.
+🗣 Depot Service is a DataOS Service that manages the Depot Resource. It facilitates in-depth introspection of depots and their associated storage engines. Once a Depot is created, users can obtain comprehensive information about the datasets contained within, including details such as constraints, partition, indexing, etc.
+
 </aside>
 
-## Structure of a Depot YAML
+Leveraging the UDL enables access to datasets and seamless execution of various operations, including data transformation using various Clusters and [Policy](../resources/policy.md) assignments.
+
+Once this mapping is established, Depot Service automatically generates the Uniform Data Link (UDL) that can be used throughout DataOS to access the data. As a reminder, the UDL has the format: `dataos://[depot]:[collection]/[dataset]`.
+
+For a simple file storage system, "Collection" can be analogous to "Folder," and "Dataset" can be equated to "File." The Depot's strength lies in its capacity to establish uniformity, eliminating concerns about varying source system terminologies.
+
+Once a Depot is created, all members of an organization gain secure access to datasets within the associated source system. The Depot not only facilitates data access but also assigns **default** [Access Policies](../resources/policy.md) to ensure data security. Moreover, users have the flexibility to define and utilize custom [Access Policies](https://dataos.info/resources/policy.md) for the depot and [Data Policies](https://dataos.info/resources/policy.md) for specific datasets within the Depot.
+
+<aside class="callout">
+ 🗣️ Depot provides 'access' to data, meaning that data remains within the source system and is neither moved nor duplicated. However, DataOS offers multiple Stacks such as Flare, Benthos, etc. to perform ingestion, querying, syndication, and copying if the need arises.
+
+</aside>
+
+
+
+## How to create a Depot?
+To create a Depot in DataOS, simply compose a manifest configuration file for a Depot and apply it using the DataOS [Command Line Interface (CLI)](../interfaces/cli.md).
+
+### **Structure of a Depot manifest**
 
 ![Structure of a Depot YAML](./depot/depot_yaml.png)
 
-<center><i>Structure of a Depot YAML</i></center>
-
-To know more about the attributes of Depot YAML Configuration, refer to the link: [Attributes of Depot YAML](./depot/depot_yaml_configuration_attributes.md)
-
-## Depot Service
-
-Depot Service is a DataOS Service that manages the Depot Resource. It facilitates in-depth introspection of depots and their associated storage engines. Once a Depot is created, users can obtain comprehensive information about the datasets contained within, including details such as constraints, partition, indexing, etc. 
-
-## How to create a Depot?
-
-To establish a Depot in DataOS, simply compose a YAML configuration file for a Depot and apply it using the DataOS [Command Line Interface (CLI)](../interfaces/cli.md).
+To know more about the attributes of Depot manifest Configuration, refer to the link: [Attributes of Depot manifest](../resources/depot/depot_yaml_configuration_attributes.md).
 
 ### **Prerequisites**
 
 Before proceeding with Depot creation, it is essential to ensure that you possess the required authorization. To confirm your eligibility, execute the following commands in the CLI:
 
-```shell
+```bash
 dataos-ctl user get
-
 # Expected Output
-INFO[0000] 😃 user get...                                                       
+INFO[0000] 😃 user get...                                
 INFO[0000] 😃 user get...complete                        
 
-       NAME      |      ID       |  TYPE  |         EMAIL          |              TAGS               
------------------|---------------|--------|------------------------|---------------------------------
-  IamGroot       | iamgroot      | person | iamgroot@tmdc.io       | roles:id:data-dev,              
-                 |               |        |                        | roles:id:operator,              
-                 |               |        |                        | roles:id:system-dev,            
-                 |               |        |                        | roles:id:user,                  
-                 |               |        |                        | users:id:iamgroot          
-
+      NAME     │     ID      │  TYPE  │        EMAIL         │              TAGS    
+───────────────┼─────────────┼────────┼──────────────────────┼────────────────────
+  IamGroot     │ iamgroot    │ person │ iamgroot@tmdc.io     │ roles:id:data-dev,  
+               │             │        │                      │ roles:id:operator,  
+               │             │        │                      │ roles:id:system-dev, 
+               │             │        │                      │ roles:id:user,    
+               │             │        │                      │ users:id:iamgroot
 ```
 
-To create Depots, ensure that you possess the following tags: `roles:id:user`, `roles:id:data-dev`, and `roles:id:system-dev`.
-
+To create Depots, ensure that you possess the following tags: `roles:id:user`, `roles:id:data-dev`, and `roles:id:system-dev`.
 
 <aside class="callout">
-🗣️ If you don not possess these tags, contact the DataOS Operator or Administrator within your organization to assign you the necessary tag or the use case for the creation of the depot.
+🗣 If you do not possess these tags, contact the DataOS Operator or Administrator within your organization to assign you the necessary tag or the use case for the creation of the depot.
+
 </aside>
 
-The creation of a Depot involves three simple steps:
+### **Create a Manifest File**
+The manifest configuration file for a Depot can be divided into four main sections: [Resource section](#configure-resource-section), [Depot-specific section](#configure-depot-specific-section), [Connection Secrets section](#configure-connection-secrets-section), and [Specifications section](#configure-spec-section¶). Each section serves a distinct purpose and contains specific attributes.
 
-- Create a YAML configuration file.
-- Apply the file using the DataOS CLI.
-- Verify the successful creation of the Depot.
+**Configure Resource Section**
 
+The Resource section of the manifest configuration file consists of attributes that are common across all resource types. The following snippet demonstrates the key-value properties that need to be declared in this section:
 
-### **Create a YAML File**
+=== "v1"
+    ```yaml
+    name: ${{mydepot}}
+    version: v1 
+    type: depot 
+    tags: 
+      - ${{dataos:type:resource}}
+    description: ${{This is a sample depot YAML configuration}} 
+    owner: ${{iamgroot}}
+    layer: user
+    ```
 
-The YAML configuration file for a Depot can be divided into four main sections: [Resource section](#configure-resource-section), [Depot-specific section](#configure-depot-specific-section), [Connection Secrets section](#configure-connection-secrets), and [Specifications section](#configuration-specifications-section). Each section serves a distinct purpose and contains specific attributes.
+=== "v2alpha"
+    ```yaml
+    name: ${{mydepot}}
+    version: v2alpha 
+    type: depot 
+    tags: 
+      - ${{dataos:type:resource}}
+    description: ${{This is a sample depot YAML configuration}} 
+    owner: ${{iamgroot}}
+    layer: user
+    ```
 
+For more details regarding attributes in the Resource section, refer to the link: [Attributes of Resource Section.](../resources/resource_attributes.md)
 
-#### **Configure Resource Section**
+**Configure Depot-specific Section**
 
-The Resource section of the YAML configuration file consists of attributes that are common across all resource-types. The following YAML snippet demonstrates the key-value properties that need to be declared in this section:
-
-```yaml
-name: ${{mydepot}}
-version: v1 
-type: depot 
-tags: 
-  - ${{dataos:type:resource}}
-description: ${{This is a sample depot YAML configuration}} 
-owner: ${{iamgroot}}
-layer: user
-```
-<center><i>Resource section YAML configuration</i></center>
-
-For more details regarding attributes in the Resource section, refer to the link: [Attributes of Resource Section.](./resource_attributes.md)
-
-#### **Configure Depot-specific Section**
-
-The Depot-specific section of the YAML configuration file includes key-value properties specific to the Depot-type being created. Each Depot-type represents a Depot created for a particular data source. Multiple Depots can be established for the same data source, and they will be considered as a single Depot-type. The following YAML snippet illustrates the key-values to be declared in this section:
+The Depot-specific section of the configuration file includes key-value properties specific to the Depot-type being created. Each Depot type represents a Depot created for a particular data source. Multiple Depots can be established for the same data source, and they will be considered as a single depot type. The following snippet illustrates the key values to be declared in this section:
 
 ```yaml
 depot:   
@@ -120,9 +163,6 @@ depot:
   specs:
     {}
 ```
-<center><i>Depot-specific section YAML configuration</i></center>
-
-<center>
 
 The table below elucidates the various attributes in the Depot-specific section:
 
@@ -132,66 +172,68 @@ The table below elucidates the various attributes in the Depot-specific section:
 | [`type`](./depot/depot_yaml_configuration_attributes.md#type) | string | none | ABFSS, WASBS, REDSHIFT,<br> S3, ELASTICSEARCH, EVENTHUB, PULSAR, BIGQUERY, GCS, JDBC, MSSQL, MYSQL, OPENSEARCH, ORACLE, POSTGRES, SNOWFLAKE | mandatory |
 | [`description`](./depot/depot_yaml_configuration_attributes.md#description) | string | none | any string | mandatory |
 | [`external`](./depot/depot_yaml_configuration_attributes.md#external) | boolean | false | true/false | mandatory |
+| [`source`](./depot/depot_yaml_configuration_attributes.md#source) | string | depot name | any string which is a valid depot name | optional |
+| [`compute`](./depot/depot_yaml_configuration_attributes.md#compute) | string | runnable-default | any custom Compute Resource | optional |
 | [`connectionSecret`](./depot/depot_yaml_configuration_attributes.md#connectionSecret) | object | none | varies between data sources | optional |
 | [`spec`](./depot/depot_yaml_configuration_attributes.md#spec) | object | none | varies between data sources | mandatory |
-| [`compute`](./depot/depot_yaml_configuration_attributes.md#compute) | string | runnable-default | any custom Compute Resource | optional |
-| [`source`](./depot/depot_yaml_configuration_attributes.md#source) | string | depot name | any string which is a valid depot name | optional |
-
-</center>
 
 
-#### **Configure Connection Secrets Section**
+**Configure Connection Secrets Section**
 
-The configuration of connection secrets is specific to each Depot-type and depends on the underlying data source. The details for these connection secrets, such as credentials and authentication information, should be obtained from your enterprise or data source provider. For commonly used data sources, we have compiled the connection secrets [here.](./depot/depot_config_templates.md) Please refer to these templates for guidance on how to configure the connection secrets for your specific data source.
+The configuration of connection secrets is specific to each Depot type and depends on the underlying data source. The details for these connection secrets, such as credentials and authentication information, should be obtained from your enterprise or data source provider. For commonly used data sources, we have compiled the connection secrets [here.](../resources/depot/depot_config_templates.md) Please refer to these templates for guidance on how to configure the connection secrets for your specific data source.
 
 <aside class="callout">
-🗣️ The credentials you use here need to have access to the schemas in the configured database.
+🗣 The credentials you use here need to have access to the schemas in the configured database.
+
 </aside>
 
 **Examples**
 
 Here are examples demonstrating how the key-value properties can be defined for different depot-types:
 
-For [BigQuery](./depot/depot_config_templates/google_bigquery.md), the `connectionSecret` section of the configuration file would appear as follows:
 
-```yaml
-#Properties depend on the underlying data source
-connectionSecret:                    
-  - acl: rw                        
-    type: key-value-properties
-    data:
-      projectid: ${{project-name}}
-      email: ${{email-id}}
-    files:
-      json_keyfile: ${{secrets/gcp-demo-sa.json}} #JSON file containing the credentials to read-write    
-  - acl: r                        
-    type: key-value-properties
-    files:
-      json_keyfile: ${{secrets/gcp-demo-sa.json}} #JSON file containing the credentials to read-only
-```
+=== "BigQuery"
+    For [BigQuery](../resources/depot/depot_config_templates/google_bigquery.md), the `connectionSecret` section of the configuration file would appear as follows:
+    ```yaml 
+    #Properties depend on the underlying data source
+    connectionSecret:                    
+      - acl: rw                        
+        type: key-value-properties
+        data:
+          projectid: ${{project-name}}
+          email: ${{email-id}}
+        files:
+          json_keyfile: ${{secrets/gcp-demo-sa.json}} #JSON file containing the credentials to read-write 
+      - acl: r                        
+        type: key-value-properties
+        files:
+          json_keyfile: ${{secrets/gcp-demo-sa.json}} #JSON file containing the credentials to read-only`  
+    ```
+=== "AWS S3"
+    This is how you can declare connection secrets to create a Depot for [AWS S3](../resources/depot/depot_config_templates/amazon_s3.md) storage:
 
-This is how you can declare connection secrets to create a Depot for [AWS S3](./depot/depot_config_templates/amazon_s3.md) storage:
+    ```yaml
+    connectionSecret:                     
+      - acl: rw                         
+        type: key-value-properties
+        data:                           #credentials required to access aws
+          awsaccesskeyid: ${{AWS_ACCESS_KEY_ID}}
+          awsbucketname: ${{bucket-name}}
+          awssecretaccesskey: ${{AWS_SECRET_ACCESS_KEY}}
+    ```
 
-```yaml
-connectionSecret:                     
-  - acl: rw                         
-    type: key-value-properties
-    data:                           #credentials required to access aws
-      awsaccesskeyid: ${{AWS_ACCESS_KEY_ID}}
-      awsbucketname: ${{bucket-name}}
-      awssecretaccesskey: ${{AWS_SECRET_ACCESS_KEY}}
-```
+=== "JDBC"
+    For accessing [JDBC](../resources/depot/depot_config_templates/jdbc.md), all you need is a username and password. Check it out below:
 
-For accessing [JDBC](./depot/depot_config_templates/jdbc.md), all you need is a username and password. Check it out below:
+    ```yaml
+    connectionSecret:
+      - acl: rw
+        type: key-value-properties
+        data:                            #for JDBC, the credentials you get from the data source should have permission to read/write schemas of the database being accessed 
+          username: ${{username}}
+          password: ${{password}}
+    ```
 
-```yaml
-connectionSecret:
-  - acl: rw
-    type: key-value-properties
-    data:                            #for JDBC, the credentials you get from the data source should have permission to read/write schemas of the database being accessed 
-      username: ${{username}}
-      password: ${{password}}
-```
 
 The basic attributes filled in this section are provided in the table below:
 
@@ -206,31 +248,30 @@ The basic attributes filled in this section are provided in the table below:
 
 </center>
 
-**Alternative Approach: Using Secrets**
 
-[Secret](./secret.md) is also a [Resource](../resources.md) in DataOS that allows users to securely store sensitive piece of information such as username, password, etc. Using Secrets in conjunction with [Depots](#depot), [Stacks](./stacks.md) allows for decoupling of sensitive information from Depot and Stack YAMLs. For more clarity, let’s take the example of MySQL data source to understand how you can use Secret Resource for Depot creation:
+**Alternative Approach: Using Instance Secret**
 
-- Create a YAML file with the details on the connection secret:
+[Instance Secret](../resources/instance_secret.md) is also a [Resource](https://dataos.info/resources/) in DataOS that allows users to securely store sensitive piece of information such as username, password, etc. Using Secrets in conjunction with [Depots](../resources/updated_depot.md), [Stacks](../resources/stacks.md) allows for decoupling of sensitive information from Depot and Stack YAMLs. For more clarity, let’s take the example of MySQL data source to understand how you can use Instance Secret Resource for Depot creation:
 
-  ```yaml
-  name: ${{mysql-secret}}
-  version: v1      
-  type: secret
-  secret:
-    type: key-value-properties
-    acl: rw
-    data:
-      connection-user: ${{user}}
-      connection-password: ${{password}}
-  ```
+- Create an Instance Secret file with the details on the connection secret:
 
+``` yaml
+name: ${{mysql-secret}}
+version: v1      
+type: instance-secret
+instance-secret:
+  type: key-value-properties
+  acl: rw
+  data:
+    connection-user: ${{user}}
+    connection-password: ${{password}}
+```
 - Apply this YAML file on DataOS CLI
 
-  ```shell
-  dataos-ctl apply -f ${{path/secret.yaml}} -w ${{name of the workspace}}
-  ```
+``` shell
+dataos-ctl apply -f ${{path/instance_secret.yaml}}
+```
 
-If you have created this [Secret](./secret.md) in a public Workspace, any user within your enterprise can refer to the Secret by its name, "mysql-secret".
 
 For example, if a user wishes to create a MySQL Depot, they can define a Depot configuration file as follows:
 
@@ -249,166 +290,177 @@ layer: user
 depot:
   type: MYSQL
   description: "MYSQL Sample data"
-  spec:
-    host: ${{host}}
-    port: ${{port}}
-  external: true
-  data:
-    connectionSecret:
-      name: "mysql-secret"     #secret name containing credential details
+spec:
+  host: ${{host}}
+  port: ${{port}}
+external: true
+dataosSecrets:
+  - name: depotsecret-r
+    keys:
+      - depotsecret-r
 
+  - name: depotsecret-rw
+    keys:
+      - depotsecret-rw
 ```
 
-By referencing the name of the Secret, "mysql-secret," users can easily incorporate the specified credentials into their Depot configuration. This approach ensures the secure handling and sharing of sensitive information.
+By referencing the name of the Instance Secret, "mysql-secret," users can easily incorporate the specified credentials into their Depot configuration. This approach ensures the secure handling and sharing of sensitive information.
 
 </details>
 
-To learn more about Secrets as a Resource and their usage, refer to the documentation [here](./secret.md)
+To learn more about Instance Secrets as a Resource and their usage, refer to the documentation [here](./instance_secret.md)
 
-#### **Configure Spec Section**
+**Configure Spec Section**
 
-The `spec` section in the YAML configuration file plays a crucial role in directing the Depot to the precise location of your data and providing it with the hierarchical structure of the data source. By defining the specification parameters, you establish a mapping between the data and the hierarchy followed within DataOS.
+The `spec` section in the manifest configuration file plays a crucial role in directing the Depot to the precise location of your data and providing it with the hierarchical structure of the data source. By defining the specification parameters, you establish a mapping between the data and the hierarchy followed within DataOS.
 
 Let's understand this hierarchy through real-world examples:
 
-In the case of BigQuery, the data is structured as "Projects" containing "Datasets" that, in turn, contain "Tables". In DataOS terminology, the "Project" corresponds to the "Depot", the "Dataset" corresponds to the "Collection", and the "Table" corresponds to the "Dataset".
 
-Consider the following structure in [BigQuery](./depot/depot_config_templates/google_bigquery.md):
-
-- Project name: `bigquery-public-data` (Depot)
-- Dataset name: `covid19_usa` (Collection)
-- Table name: `datafile_01` (Dataset)
-
-The UDL for accessing this data would be `dataos://bigquery-public-data:covid19_usa/datafile_01`.
-
-In the YAML example below, the necessary values are filled in to create a [BigQuery](./depot/depot_config_templates/google_bigquery.md) Depot:
-
-<details>
-<summary> Bigquery Depot YAML Configuration </summary>
-
-```yaml
-name: covidbq
-version: v1
-type: depot
-tags:
-  - bigquery
-layer: user
-depot:
-  type: BIGQUERY
-  description: "Covid public data in Google Cloud BigQuery"
-  external: true
-  spec:
-    project: bigquery-public-data
-```
-</details>
-
-In this example, the Depot is named "covidbq" and references the project "bigquery-public-data" within Google Cloud. As a result, all the datasets and tables within this project can be accessed using the UDL `dataos://covidbq:<collection name>/<dataset name>`.
-
-By appropriately configuring the specifications, you ensure that the Depot is accurately linked to the data source's structure, enabling seamless access and manipulation of datasets within DataOS.
-
-Depot provides flexibility in mapping the hierarchy for file storage systems. Let's consider the example of an [Amazon S3](./depot/depot_config_templates/amazon_s3.md) bucket, which has a flat structure consisting of buckets, folders, and objects. By understanding the hierarchy and utilizing the appropriate configurations, you can effectively map the structure to DataOS components.
-
-![Bucket](./depot/create_depot_2.png)
-<center><i>Amazon S3 Bucket Structure</i></center>
-
-Here's an example of creating a depot named 's3depot' that maps the following structure:
-
-- Bucket: `abcdata` (Depot)
-- Folder: `transactions` (Collection)
-- Objects: `file1` and `file2` (Datasets)
-
-In the YAML configuration, specify the bucket name and the relative path to the folder. The YAML example below demonstrates how this can be achieved:
-
-```yaml
-name: s3depot
-version: v1
-type: depot
-tags:
-  - S3
-layer: user
-depot:
-  type: S3
-  description: "AWS S3 Bucket for dummy data"
-  external: true
-  spec:
-    bucket: "abcdata"
-    relativePath:
-```
-
-If you omit the `relativePath` in the YAML configuration, the bucket itself becomes the depot in DataOS. In this case, the following UDLs can be used to read the data:
-
-- `dataos://s3depot:transactions/file1`
-- `dataos://s3depot:transactions/file2`
-
-Additionally, if there are objects present in the bucket outside the folder, you can use the following UDLs to read them:
-
-- `dataos://s3depot:none/online-transaction`
-- `dataos://s3depot:none/offline-transaction`
-
-<aside class="callout">
-🗣️ The name 'none' is used for the collection in this case since there is no three-level ordinal hierarchy. The objects 'online-transaction' and 'offline-transaction' are directly accessed as datasets in the S3 bucket.
-</aside>
-
-However, if you prefer to treat the 'transactions' folder itself as another object within the bucket rather than a folder, you can modify the UDLs as follows:
-
-- `dataos://s3depot:none/transactions/file1`
-- `dataos://s3depot:none/transactions/file2`
-
-In this case, the interpretation is that there is no collection in the bucket, and 'file1' and 'file2' are directly accessed as objects with the path '/transactions/file1' and '/transactions/file2'.
-
-When configuring the YAML for S3, if you include the `relativePath` as shown below, the 'transactions' folder is positioned as the depot:
-
-```yaml
-name: s3depot
-version: v1
-type: depot
-tags:
-  - S3
-layer: user
-depot:
-  type: S3
-  description: "AWS S3 Bucket for dummy data"
-  external: true
-  spec:
-    bucket: "abcdata"
-    relativePath: "/transactions"
-```
-
-Since the folder ‘transactions’ in the bucket has now been positioned as the depot, two things happen.
-
-First, you cannot read the object files online-transaction and offline-transaction using this depot.
-
-Secondly with this setup, you can read the files within the 'transactions' folder using the following UDLs:
-
-- `dataos://s3depot:none/file1`
-- `dataos://s3depot:none/file2`
-
-<aside class="callout">
-
-🗣️ When writing data to a source system, names like 'none' or 'system' cannot be used for the collection. Therefore, the output of a Flare job cannot have an address like <code>dataos://${{depot name}}:none/${{dataset name}}</code> or <code>dataos://${{depot name}}:system/${{dataset name}}</code>.
-</aside>
-
-For accessing data from [Kafka](./depot/depot_config_templates/kafka.md), where the structure consists of a broker list and topics, the `spec` section in the YAML configuration will point the depot to the broker list, and the datasets will map to the topic list. The format of the YAML will be as follows:
-
-```yaml
-depot:
-  type: KAFKA
-  description: ${{description}}
-  external: true
-  spec:
-    brokers:
-      - ${{broker1}}
-      - ${{broker2}}
-```
+=== "BigQuery"
 
 
+    In the case of BigQuery, the data is structured as "Projects" containing "Datasets" that, in turn, contain "Tables". In DataOS terminology, the "Project" corresponds to the "Depot", the "Dataset" corresponds to the "Collection", and the "Table" corresponds to the "Dataset".
+
+    Consider the following structure in [BigQuery](./depot/depot_config_templates/google_bigquery.md):
+
+    - Project name: `bigquery-public-data` (Depot)
+    - Dataset name: `covid19_usa` (Collection)
+    - Table name: `datafile_01` (Dataset)
+
+    The UDL for accessing this data would be `dataos://bigquery-public-data:covid19_usa/datafile_01`.
+
+    In the YAML example below, the necessary values are filled in to create a [BigQuery](../resources/depot/depot_config_templates/google_bigquery.md) Depot:
+
+    <details>
+    <summary> Bigquery Depot manifest Configuration </summary>
+
+    ```yaml
+    name: covidbq
+    version: v1
+    type: depot
+    tags:
+      - bigquery
+    layer: user
+    depot:
+      type: BIGQUERY
+      description: "Covid public data in Google Cloud BigQuery"
+      external: true
+      spec:
+        project: bigquery-public-data
+    ```
+    </details>
+
+    In this example, the Depot is named "covidbq" and references the project "bigquery-public-data" within Google Cloud. As a result, all the datasets and tables within this project can be accessed using the UDL `dataos://covidbq:<collection name>/<dataset name>`.
+
+    By appropriately configuring the specifications, you ensure that the Depot is accurately linked to the data source's structure, enabling seamless access and manipulation of datasets within DataOS.
+
+=== "Amazon S3"
+
+    Depot provides flexibility in mapping the hierarchy for file storage systems. Let's consider the example of an [Amazon S3](../resources/depot/depot_config_templates/amazon_s3.md) bucket, which has a flat structure consisting of buckets, folders, and objects. By understanding the hierarchy and utilizing the appropriate configurations, you can effectively map the structure to DataOS components.
+
+    ![Bucket](./depot/create_depot_2.png)
+    <center><i>Amazon S3 Bucket Structure</i></center>
+
+
+    Here's an example of creating a depot named 's3depot' that maps the following structure:
+
+    - Bucket: `abcdata` (Depot)
+    - Folder: `transactions` (Collection)
+    - Objects: `file1` and `file2` (Datasets)
+
+    In the YAML configuration, specify the bucket name and the relative path to the folder. The manifest example below demonstrates how this can be achieved:
+
+    ``` yaml
+    name: s3depot
+    version: v1
+    type: depot
+    tags:
+      - S3
+    layer: user
+    depot:
+      type: S3
+      description: "AWS S3 Bucket for dummy data"
+      external: true
+      spec:
+        bucket: "abcdata"
+        relativePath:
+    ```
+    If you omit the `relativePath` in the manifest configuration, the bucket itself becomes the depot in DataOS. In this case, the following UDLs can be used to read the data:
+
+    - `dataos://s3depot:transactions/file1`
+    - `dataos://s3depot:transactions/file2`
+
+    Additionally, if there are objects present in the bucket outside the folder, you can use the following UDLs to read them:
+
+    - `dataos://s3depot:none/online-transaction`
+    - `dataos://s3depot:none/offline-transaction`
+
+    <aside class="callout">
+    🗣️ The name 'none' is used for the collection in this case since there is no three-level ordinal hierarchy. The objects 'online-transaction' and 'offline-transaction' are directly accessed as datasets in the S3 bucket.
+    </aside>
+
+
+    However, if you prefer to treat the 'transactions' folder itself as another object within the bucket rather than a folder, you can modify the UDLs as follows:
+
+    - `dataos://s3depot:none/transactions/file1`
+    - `dataos://s3depot:none/transactions/file2`
+
+    In this case, the interpretation is that there is no collection in the bucket, and 'file1' and 'file2' are directly accessed as objects with the path '/transactions/file1' and '/transactions/file2'.
+
+    When configuring the manifets file for S3, if you include the `relativePath` as shown below, the 'transactions' folder is positioned as the depot:
+
+    ``` yaml
+    name: s3depot
+    version: v1
+    type: depot
+    tags:
+      - S3
+    layer: user
+    depot:
+      type: S3
+      description: "AWS S3 Bucket for dummy data"
+      external: true
+      spec:
+        bucket: "abcdata"
+        relativePath: "/transactions"
+    ```    
+
+    Since the folder ‘transactions’ in the bucket has now been positioned as the depot, two things happen.
+
+    First, you cannot read the object files online-transaction and offline-transaction using this depot.
+
+    Secondly with this setup, you can read the files within the 'transactions' folder using the following UDLs:
+
+    - `dataos://s3depot:none/file1`
+    - `dataos://s3depot:none/file2`
+
+    <aside class="callout">
+    🗣️ When writing data to a source system, names like 'none' or 'system' cannot be used for the collection. Therefore, the output of a Flare job cannot have an address like <code>dataos://${{depot name}}:none/${{dataset name}}</code> or <code>dataos://${{depot name}}:system/${{dataset name}}</code>.
+    </aside>
+
+=== "Kafka"
+
+    For accessing data from [Kafka](https://dataos.info/resources/depot/depot_config_templates/kafka/), where the structure consists of a broker list and topics, the `spec` section in the YAML configuration will point the depot to the broker list, and the datasets will map to the topic list. The format of the manifest file will be as follows:
+    ``` yaml
+    depot:
+      type: KAFKA
+      description: ${{description}}
+      external: true
+      spec:
+        brokers:
+          - ${{broker1}}
+          - ${{broker2}}
+    ```
 ### **Apply Depot YAML**
 
-Once you have the YAML file ready in your code editor, simply copy the path of the YAML file and apply it through the DataOS CLI, using the command given below:
+Once you have the manifest file ready in your code editor, simply copy the path of the manifest file and apply it through the DataOS CLI, using the command given below:
 
-```shell
+``` shell
 dataos-ctl apply -f ${{yamlfilepath}}
 ```
+
+## **How to manage a Depot?**
 
 ### **Verify Depot Creation**
 
@@ -416,47 +468,35 @@ To ensure that your depot has been successfully created, you can verify it in tw
 
 - Check the name of the newly created depot in the list of depots where you are named as the owner:
 
-  ```shell
-  dataos-ctl get -t depot
-  ```
+``` shell
+dataos-ctl get -t depot
+```
 
 - Alternatively, retrieve the list of all depots created in your organization:
 
-  ```shell
-  dataos-ctl get -t depot -a
-  ```
+``` shell
+dataos-ctl get -t depot -a
+```
 
-You can also access the details of any created Depot through the DataOS GUI in the [Operations App](../interfaces/operations.md) and [Metis UI](../interfaces/metis.md#metis-ui).
+You can also access the details of any created Depot through the DataOS GUI in the [Operations App](../interfaces/operations.md) and [Metis UI](../interfaces/metis.md).
 
 ### **Delete Depot**
 
-<aside class="best-practice">
-📖 Best Practice: <br>As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
+<aside class="callout">
+📖 <strong>Best Practice:</strong> As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
 </aside>
+
 
 If you need to delete a depot, use the following command in the DataOS CLI:
 
-```shell
+``` shell
 dataos-ctl delete -t depot -n ${{name of depot}}
 ```
 
+
 By executing the above command, the specified depot will be deleted from your DataOS environment.
 
-## Supported Storage Architectures in DataOS
-
-DataOS Depots facilitate seamless connectivity with diverse storage systems while eliminating the need for data relocation. This resolves challenges pertaining to accessibility across heterogeneous data sources. However, the escalating intricacy of pipelines and the exponential growth of data pose potential issues, resulting in cumbersome, expensive, and unattainable storage solutions. In order to address this critical concern, DataOS introduces support for two distinct and specialized storage architectures - [Icebase](./depot/icebase.md) Depot, the Unified Lakehouse designed for OLAP data, and [Fastbase](./depot/fastbase.md) Depot, the Unified Streaming solution tailored for handling streaming data.
-
-
-### **Icebase**
-
-Icebase-type depots are designed to store data suitable for OLAP processes. It offers built-in functionalities such as [schema evolution](./depot/icebase.md#schema-evolution), [upsert commands](./depot/icebase.md#creating-and-getting-datasets), and [time-travel capabilities](./depot/icebase.md#maintenance-snapshot-modelling-and-metadata-listing) for datasets. With Icebase, you can conveniently perform these actions directly through the DataOS CLI, eliminating the need for additional Stacks like [Flare](./stacks/flare.md). Moreover, queries executed on data stored in Icebase exhibit enhanced performance. For detailed information, refer to the Icebase [page.](./depot/icebase.md)
-
-### **Fastbase**
-
-Fastbase type-depots are optimized for handling streaming data workloads. It provides features such as [creating](./depot/fastbase.md#create-dataset) and [listing topics](./depot/fastbase.md#list-topics), which can be executed effortlessly using the DataOS CLI. To explore Fastbase further, consult the [link.](./depot/fastbase.md)
-
-
-## How to utilize Depots?
+## **How to utilize Depots?**
 
 Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to access data without physically moving it. The UDLs play a crucial role in various scenarios within DataOS.
 
@@ -466,52 +506,13 @@ Depots are compatible with different Stacks in DataOS. [Stacks](./stacks.md) pro
 
 [Flare](./stacks/flare.md) and [Scanner](./stacks/scanner.md) Stacks are supported by all Depots, while [Benthos](./stacks/benthos.md), the stream-processing Stack, is compatible with read/write operations from streaming depots like [Fastbase](./depot/fastbase.md) and Kafka Depots.
 
-The UDL references are used as addresses for your input and output datasets within the YAML configuration file.
-
-<details>
-<summary>Referencing Depots within Stack YAML Configuration</summary>
-
-<b>Flare YAML Input/Output UDL</b>
-
-```yaml
-# A section of the complete YAML file for Flare
-inputs:                                               
-  - name: customer_connect
-    dataset: dataos://crmbq:demo/customer_profiles # Example of input UDL
-outputs:
-  - name: output01
-    depot: dataos://filebase:raw01 # Example of output UDL
-```
-
-<b>Benthos YAML Output UDL</b>
-
-```yaml
-# A section of the complete YAML file for Benthos Output
-output: # Example of Output UDL
-  - broker:
-      pattern: fan_out
-      outputs:
-      - plugin:
-          address: dataos://fastbase:default/test08
-```
-
-<b>Data Toolbox Stack YAML UDL</b>
-
-```yaml
-toolbox: 
-  dataset: dataos://icebase:sample/city?acl=rw  #UDL
-  action: 
-    name: set_version
-    value: latest
-```
-
-</details>
+The UDL references are used as addresses for your input and output datasets within the manifest configuration file.
 
 ### **Limit Data Source's File Format**
 
-Another important function that a Depot can play is to limit the file type which you can read from and write to a particular data source. In the `spec` section of YAML config file, simply mention the `format` of the files you want to allow access for.
+Another important function that a Depot can play is to limit the file type which you can read from and write to a particular data source. In the `spec` section of manifest config file, simply mention the `format` of the files you want to allow access for.
 
-```yaml
+``` yaml
 depot:
   type: S3
   description: ${{description}}
@@ -520,12 +521,11 @@ depot:
     scheme: ${{s3a}}
     bucket: ${{bucket-name}}
     relativePath: "raw" 
-    format: ${{format}}  # mention the file format, such as JSON, to only allow that file type
+    format: ${{format}}  # mention the file format, such as JSON
 ```
-
 For File based systems, if you define the format as ‘Iceberg’, you can choose the meta-store catalog between Hadoop and Hive. This is how you do it:
 
-```yaml
+``` yaml
 depot:
   type: ABFSS
   description: "ABFSS Iceberg depot for sanity"
@@ -537,15 +537,14 @@ depot:
     format: ICEBERG
     endpointSuffix:
     icebergCatalogType: Hive
-
 ```
-
 If you do not mention the catalog name as Hive, it will use Hadoop as the default catalog for Iceberg format.
 
-![Flow when Hive is chosen as the catalog type](./depot/depot_catalog.png)
-<center> <i>Flow when Hive is chosen as the catalog type</i></center>
 
-Hive, automatically keeps the pointer updated to the latest metadata version. If you use Hadoop, you have to manually do this by running the set metadata command as described on this page: [Set Metadata](./depot/icebase.md#set-metadata)
+![Depot Hierarchy](./depot/depot_catalog.png)
+<center><i>Flow when Hive is chosen as the catalog type</i></center>
+
+Hive, automatically keeps the pointer updated to the latest metadata version. If you use Hadoop, you have to manually do this by running the set metadata command as described on this page: [Set Metadata](../resources/depot/icebase.md)
 
 ### **Scan and Catalog Metadata**
 
@@ -563,11 +562,837 @@ To enable the [Minerva](./cluster.md#minerva) Query Engine to access a specific 
 
 You can use Lens to create Data Models on top of Depots and explore them using the [Lens App UI.](../interfaces/lens.md)
 
+## **Supported Storage Architectures in DataOS**
 
-## Depot Configuration Templates
+DataOS Depots facilitate seamless connectivity with diverse storage systems while eliminating the need for data relocation. This resolves challenges pertaining to accessibility across heterogeneous data sources. However, the escalating intricacy of pipelines and the exponential growth of data pose potential issues, resulting in cumbersome, expensive, and unattainable storage solutions. In order to address this critical concern, DataOS introduces support for two distinct and specialized storage architectures - [Icebase](../resources/depot/icebase.md) Depot, the Unified Lakehouse designed for OLAP data, and [Fastbase](../resources/depot/fastbase.md) Depot, the Unified Streaming solution tailored for handling streaming data.
 
-To facilitate the creation of depots accessing commonly used data sources, we have compiled a collection of pre-defined YAML configuration templates. These templates serve as a starting point, allowing you to quickly set up depots for popular data sources. You can access the list of these templates by visiting the following page: [Depot Config Templates](./depot/depot_config_templates.md)
+### **Icebase**
 
-## Data Integration - Supported Connectors in DataOS
+Icebase-type depots are designed to store data suitable for OLAP processes. It offers built-in functionalities such as [schema evolution](https://dataos.info/resources/depot/icebase/#schema-evolution), [upsert commands](https://dataos.info/resources/depot/icebase/#creating-and-getting-datasets), and [time-travel capabilities](https://dataos.info/resources/depot/icebase/#maintenance-snapshot-modelling-and-metadata-listing) for datasets. With Icebase, you can conveniently perform these actions directly through the DataOS CLI, eliminating the need for additional Stacks like [Flare](https://dataos.info/resources/stacks/flare/). Moreover, queries executed on data stored in Icebase exhibit enhanced performance. For detailed information, refer to the Icebase [page.](https://dataos.info/resources/depot/icebase/)
 
-The catalogue of data sources accessible by one or more components within DataOS is provided on the following page: [Supported Connectors in DataOS](./depot/list_of_connectors.md)
+### **Fastbase**
+
+Fastbase type-depots are optimized for handling streaming data workloads. It provides features such as [creating](https://dataos.info/resources/depot/fastbase/#create-dataset) and [listing topics](https://dataos.info/resources/depot/fastbase/#list-topics), which can be executed effortlessly using the DataOS CLI. To explore Fastbase further, consult the [link.](https://dataos.info/resources/depot/fastbase/)
+
+## **Data Integration - Supported Connectors in DataOS**
+
+The catalogue of data sources accessible by one or more components within DataOS is provided on the following page: [Supported Connectors in DataOS](https://dataos.info/resources/depot/list_of_connectors/)
+
+
+## **Depot Configuration Templates**
+
+To facilitate the creation of depots accessing commonly used data sources, we have compiled a collection of pre-defined manifest templates. These templates serve as a starting point, allowing you to quickly set up depots for popular data sources. 
+
+To make the process of creating a Depot configuration easier, we provide a set of predefined templates for various data sources. These templates serve as a starting point for configuring your Depot based on the specific data source you are working with. Simply choose the template that corresponds to your organization's data source and follow the instructions provided to fill in the required information.
+
+<aside class=callout>
+
+🗣️ When using these templates, you will need to populate the key-value properties in the manifest file with the appropriate values for your data source. This requires a basic understanding of your organization's data infrastructure and the necessary credentials or connection details.
+
+</aside>
+
+You can access these templates by visiting the following links: 
+
+=== "Data <br> Warehouse"
+
+    === "Amazon Redshift"
+
+        DataOS provides the capability to establish a connection with the Amazon Redshift database. We have provided the template for the manifest file to establish this connection.
+
+        **Template**
+        To create a Depot of type ‘REDSHIFT‘, utilize the following template:
+
+        === "version v2alpha"
+            ```yaml title="redshift_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/data_warehouse/redshift/redshift_v2alpha.yaml"
+            ```
+        === "version v1"
+            ```yaml title="redshift_v1.yaml"
+            --8<-- "examples/resources/depot/data_warehouse/redshift/redshift_v1.yaml"
+            ```
+        Follow these steps to create the depot: 
+
+        - **Step 1**: Create Instance-secret to store the credentials, for more imformation about instance secret, refer to [Instance Secret](../resources/instance_secret.md). 
+        - **Step 2**: Copy the template from above and paste it in a code.
+        - **Step 3**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
+        - **Step 4**: Apply the file through DataOS CLI.
+        
+
+        **Requirements**
+        To establish a connection with Redshift, the following information is required:
+
+        - Hostname
+        - Port
+        - Database name
+        - User name and password
+
+        Additionally, when accessing the Redshift Database in Workflows or other DataOS Resources, the following details are also necessary:
+
+        - Bucket name where the data resides
+        - Relative path
+        - AWS access key
+        - AWS secret key
+
+    === "Google Bigquery"
+
+        DataOS enables the creation of a Depot of type 'BIGQUERY' to read data stored in BigQuery projects. Multiple Depots can be created, each pointing to a different project.
+
+        **Template**
+        To create a Depot of type 'BIGQUERY', utilize the following template:
+
+
+        === "version v2alpha"
+
+            ```yaml title="bigquery_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/data_warehouse/bigquery/bigquery_v2alpha.yaml"
+            ```
+
+        === "version v1"
+
+            ```yaml title="bigquery_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/data_warehouse/bigquery/bigquery_v1.yaml"
+            ```
+
+        **Requirements**
+        To establish a connection with BigQuery, the following information is required:
+
+        - Project ID: The identifier of the BigQuery project.
+        - Email ID: The email address associated with the BigQuery project.
+        - Credential properties in JSON file: A JSON file containing the necessary credential properties.
+        - Additional parameters: Any additional parameters required for the connection.
+
+    === "Snowflake"
+        DataOS provides integration with Snowflake, allowing you to seamlessly read data from Snowflake tables using Depots. Snowflake is a cloud-based data storage and analytics data warehouse offered as a Software-as-a-Service (SaaS) solution. It utilizes a new SQL database engine designed specifically for cloud infrastructure, enabling efficient access to Snowflake databases. 
+
+        **Template**
+        To create a Depot of type 'SNOWFLAKE', you can utilize the following YAML template as a starting point:
+
+        === "version v2alpha"
+
+            ```yaml title="snowflake_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/data_warehouse/snowflake/snowflake_v2alpha.yaml"
+            ```
+
+        === "version v1"
+
+            ```yaml title="snowflake_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/data_warehouse/snowflake/snowflake_v1.yaml"
+            ```   
+
+        **Requirements**
+
+        To establish a connection to Snowflake and create a Depot, you will need the following information:
+
+        - Snowflake Account URL: The URL of your Snowflake account.
+        - Snowflake Username: Your Snowflake login username.
+        - Snowflake User Password: The password associated with your Snowflake user account.
+        - Snowflake Database Name: The name of the Snowflake database you want to connect to.
+        - Database Schema: The schema in the Snowflake database where your desired table resides.    
+   
+
+=== "Lakehouse or <br> Data Lake"
+
+    === "Amazon s3"
+        DataOS provides the capability to establish a connection with the Amazon S3 buckets. We have provided the template for the manifest file to establish this connection.
+
+        **Template**
+        To create a Depot of type ‘S3‘, utilize the following template:
+
+        === "version v2alpha"
+
+            ```yaml title="s3_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/lakehouse/amazon_s3/s3_v2alpha.yaml"
+            ```
+
+        === "version v1"
+
+            ```yaml title="s3_v1.yaml" 
+            --8<-- "examples/resources/depot/lakehouse/amazon_s3/s3_v1.yaml"
+            ```   
+
+        Follow these steps to create the depot:
+
+        - **Step 1**: Copy the template from below and paste it in a code editor. 
+        - **Step 2**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
+        - **Step 3**: Apply the file through DataOS CLI
+
+        **Requirements**
+
+        To establish a connection with Amazon S3, the following information is required:
+
+        - AWS access key ID
+        - AWS bucket name
+        - Secret access key
+        - Scheme
+        - Relative Path
+        - Format
+
+
+    
+    === "ABFSS"
+
+        DataOS enables the creation of a Depot of type 'ABFSS' to facilitate the reading of data stored in an Azure Blob Storage account. This Depot provides access to the storage account, which can consist of multiple containers. A container serves as a grouping mechanism for multiple blobs. It is recommended to define a separate Depot for each container.
+
+        **Template**
+        To create a Depot of type ‘ABFSS‘, utilize the following template:
+
+        === "version v2alpha"
+
+            ```yaml title="abfss_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/lakehouse/abfss/abfss_v2alpha.yaml"
+            ```
+
+        === "version v1"
+
+            ```yaml title="abfss_v1.yaml" 
+            --8<-- "examples/resources/depot/lakehouse/abfss/abfss_v1.yaml"
+            ``` 
+
+        **Requirements**
+
+        To establish a connection with Azure ABFSS, the following information is required:
+
+        - Storage account name
+        - Storage account key
+        - Container
+        - Relative path
+        - Data format stored in the container    
+
+    === "WASBS"
+
+        DataOS enables the creation of a Depot of type 'WASBS' to facilitate the reading of data stored in Azure Data Lake Storage. This Depot enables access to the storage account, which can contain multiple containers. A container serves as a grouping of multiple blobs. It is recommended to define a separate Depot for each container.
+
+        **Template**
+        To create a Depot of type ‘WASBS‘, utilize the following template:
+
+        === "version v2alpha"
+
+            ```yaml title="wasbs_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/lakehouse/wasbs/wasbs_v2alpha.yaml"
+            ```
+
+        === "version v1"
+
+            ```yaml title="wasbs_v1.yaml" 
+            --8<-- "examples/resources/depot/lakehouse/wasbs/wasbs_v1.yaml"
+            ``` 
+
+        **Requirements**
+
+        To establish a connection with Azure WASBS, the following information is required:
+
+        - Storage account name
+        - Storage account key
+        - Container
+        - Relative path
+        - Format            
+
+
+
+    === "GCS"
+
+        DataOS provides the capability to connect to Google Cloud Storage data using Depot. 
+        
+        **Template**
+        To create a Depot of Google Cloud Storage, in the type field you will have to specify type 'GCS', and utilize the following template:
+
+        === "version v2alpha"
+
+            ```yaml title="gcs_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/lakehouse/gcs/gcs_v2alpha.yaml"
+            ```
+
+        === "version v1"
+
+            ```yaml title="gcs_v1.yaml" 
+            --8<-- "examples/resources/depot/lakehouse/gcs/gcs_v1.yaml"
+            ```        
+        
+        The Depot facilitates access to all documents that are visible to the specified user, allowing for text queries and analytics.
+
+        **Requirements**
+
+        To establish a connection with Google Cloud Storage (GCS), the following information is required:
+
+        - GCS Bucket
+        - Relative Path
+        - GCS Project ID
+        - GCS Account Email
+        - GCS Key
+
+    === "Icebase"
+
+        DataOS provides the capability to establish a connection with the Icebase Lakehouse over Amazon S3 or other object storages. We have provided the template for the manifest file to establish this connection.
+
+        **Template**
+        To create a Depot of type ‘S3‘, utilize the following template:
+
+        === "version v2alpha"
+
+            ```yaml title="icebase_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/lakehouse/icebase/icebase_v2alpha.yaml"
+            ```
+
+        === "version v1"
+
+            ```yaml title="icebase_v1.yaml" 
+            --8<-- "examples/resources/depot/lakehouse/icebase/icebase_v1.yaml"
+            ```     
+        Follow these steps to create the depot:
+
+        - **Step 1**: Copy the template from below and paste it in a code editor. 
+        - **Step 2**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
+        - **Step 3**: Apply the file through DataOS CLI
+
+        **Requirements**
+
+        To establish a connection with Amazon S3, the following information is required:
+
+        - AWS access key ID
+        - AWS bucket name
+        - Secret access key
+        - Scheme
+        - Relative Path
+        - Format    
+
+=== "Streaming <br> Source"
+
+    === "Apache pulsar"
+
+        DataOS provides the capability to create a Depot of type 'PULSAR' for reading topics and messages stored in Pulsar. This Depot facilitates the consumption of published topics and processing of incoming streams of messages.
+
+        **Template**
+        To create a Depot of type 'PULSAR,' utilize the following template:
+
+        === "version v2alpha"
+
+            ```yaml title="pulsar_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/streaming_source/apache_pulsar/pulsar_v2alpha.yaml"
+            ```
+
+        === "version v1"
+
+            ```yaml title="pulsar_v1.yaml" 
+            --8<-- "examples/resources/depot/streaming_source/apache_pulsar/pulsar_v1.yaml"
+            ``` 
+
+        **Requirements**
+
+        To establish a connection with Pulsar, the following information is required:
+
+        - Admin URL
+        - Service URL
+
+    === "Eventhub"
+
+        DataOS provides the capability to connect to Eventhub data using Depot. The Depot facilitates access to all documents that are visible to the specified user, allowing for text queries and analytics.
+
+        **Template**
+        To create a Depot of Eventhub, in the type field you will have to specify type 'EVENTHUB', and utilize the following template:
+
+        === "version v2alpha"
+
+            ```yaml title="eh_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/streaming_source/eventhub/eh_v2alpha.yaml"
+            ```
+
+        === "version v1"
+
+            ```yaml title="eh_v1.yaml" 
+            --8<-- "examples/resources/depot/streaming_source/eventhub/eh_v1.yaml"
+            ``` 
+
+        **Requirements**
+
+        To establish a connection with Eventhub, the following information is required:
+
+        - Endpoint
+        - Eventhub Shared Access Key Name
+        - Eventhub Shared Access Key   
+
+    === "Kafka"
+
+        DataOS allows you to create a Depot of type 'KAFKA' to read live topic data. This Depot enables you to access and consume real-time streaming data from Kafka.
+
+        **Template**
+
+        To create a Depot of type 'KAFKA', utilize the following template:
+
+        === "version v2alpha"
+
+            ```yaml title="kafka_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/streaming_source/eventhub/eh_v2alpha.yaml"
+            ```
+
+        === "version v1"
+
+            ```yaml title="kafka_v1.yaml" 
+            --8<-- "examples/resources/depot/streaming_source/eventhub/eh_v1.yaml"
+            ``` 
+
+        **Requirements**
+
+        - To connect to Kafka, you need:
+
+        - To establish a connection to Kafka, you need to provide the following information:
+
+        - KAFKA broker list: The list of brokers in the Kafka cluster. The broker list enables the Depot to fetch all the available topics in the Kafka cluster.
+        Schema Registry URL
+
+=== "NoSQL <br> Database"
+
+    === "Elasticsearch"
+
+        DataOS provides the capability to connect to Elasticsearch data using Depot. The Depot facilitates access to all documents that are visible to the specified user, allowing for text queries and analytics.
+
+        **Template**
+
+        To create a Depot of type ‘ELASTICSEARCH‘, utilize the following template:
+
+        === "version v2alpha"
+
+            ```yaml title="es_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/nosql_db/elasticsearch/es_v2alpha.yaml"
+            ```  
+
+        === "version v1"
+
+            ```yaml title="es_v1.yaml" 
+            --8<-- "examples/resources/depot/nosql_db/elasticsearch/es_v1.yaml"
+            ```      
+
+        **Requirements**
+
+        To establish a connection with Elasticsearch, the following information is required:
+
+        - Username
+        - Password
+        - Nodes (Hostname/URL of the server and ports)
+
+
+    === "MongoDB"
+
+        DataOS allows you to connect to MongoDB using Depot, enabling you to interact with your MongoDB database and perform various data operations. You can create a MongoDB Depot in DataOS by providing specific configurations.
+
+        **Template**
+
+        To create a Depot of type 'MONGODB', use the following template:
+
+        === "version v2alpha"
+
+            ```yaml title="mongo_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/nosql_db/mongodb/mongo_v2alpha.yaml"
+            ```  
+
+        === "version v1"
+
+            ```yaml title="mongo_v1.yaml" 
+            --8<-- "examples/resources/depot/nosql_db/mongodb/mongo_v1.yaml"
+            ```  
+
+        **Requirements**
+
+        To connect to MongoDB using DataOS and create a MongoDB Depot, the following information is required:
+
+        - Subprotocol: The Subprotocol of the MongoDB Server
+        - Nodes: Node
+        - Username: The username for authentication.
+        - Password: The password for authentication.
+
+
+    === "Opensearch"
+
+        DataOS provides the capability to connect to Opensearch data using Depot. The Depot facilitates access to all documents that are visible to the specified user, allowing for text queries and analytics.
+
+        **Template**
+
+        To create a Depot of Opensearch, in the type field you will have to specify type ‘ELASTICSEARCH‘, and utilize the following template:
+
+        === "version v2alpha"
+
+            ```yaml title="os_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/nosql_db/opensearch/os_v1.yaml"
+            ```  
+
+        === "version v1"
+
+            ```yaml title="os_v1.yaml" 
+            --8<-- "examples/resources/depot/nosql_db/opensearch/os_v2alpha.yaml"
+            ``` 
+
+        **Requirements**
+
+        To establish a connection with Opensearch, the following information is required:
+
+        - Username
+        - Password
+        - Nodes (Hostname/URL of the server and ports)
+
+
+=== "Relational <br> Database"
+
+    === "JDBC"
+
+        DataOS provides the capability to establish a connection to a database using the JDBC driver in order to read data from tables using a Depot. The Depot facilitates access to all schemas visible to the specified user within the configured database.
+
+        **Template**
+
+        To create a Depot of type ‘JDBC‘, utilize the following template:
+
+        === "version v2alpha"
+
+            ```yaml title="jdbc_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/relational_db/jdbc/jdbc_v2alpha.yaml"
+            ```  
+
+        === "version v1"
+
+            ```yaml title="jdbc_v1.yaml" 
+            --8<-- "examples/resources/depot/relational_db/jdbc/jdbc_v1.yaml"
+            ``` 
+
+        **Requirements**
+        To establish a JDBC connection, the following information is required:
+
+        - Database name: The name of the database you want to connect to.
+        - Subprotocol name: The subprotocol associated with the database (e.g., MySQL, PostgreSQL).
+        - Hostname/URL of the server, port, and parameters: The server's hostname or URL, along with the - port and any additional parameters needed for the connection.
+        - Username: The username to authenticate the JDBC connection.
+        - Password: The password associated with the provided username.
+
+        **Self-signed Certificate (SSL/TLS) Requirement**
+
+        If you are connecting to relational databases using the JDBC API and encounter self-signed certificate (SSL/TLS) requirements, you can disable encryption by modifying the YAML configuration file. Simply provide the necessary details for the subprotocol, host, port, database, and use the params field to specify the appropriate parameters for your specific source system as shown below:
+
+        === "v1"
+
+            ``` yaml
+            spec:             # version v1
+              subprotocol:
+              host: 
+              port: 
+              database:
+              params:
+            #use params for JDBC type connections where self-signed certificates have been enabled
+            ```
+        === "v2alpha"
+
+            ``` yaml
+            jdbc:             # version v2alpha
+              subprotocol:
+              host: 
+              port: 
+              database:
+              params:
+            #use params for JDBC type connections where self-signed certificates have been enabled
+
+            ```
+
+        The particular specifications to be filled within params depend on the source system.
+
+    === "MySQL"
+
+        DataOS allows you to connect to a MySQL database and read data from tables using Depots. A Depot provides access to all tables within the specified schema of the configured database. You can create multiple Depots to connect to different MySQL servers or databases.
+
+        **Template**
+
+        To create a Depot of type ‘MYSQL‘, utilize the following template:
+
+        **Use this template, if self-signed certificate is enabled.**
+
+        === "version v2alpha"
+
+            ```yaml title="mysql_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/relational_db/mysql/mysql_v2alpha.yaml"
+            ```  
+
+        === "version v1"
+
+            ```yaml title="mysql_v1.yaml" 
+            --8<-- "examples/resources/depot/relational_db/mysql/mysql_v1.yaml"
+            ``` 
+
+        **Requirements**
+
+        To connect to a MySQL database, you need the following information:
+
+        - Host URL and parameters: The URL or hostname of the MySQL server along with any additional parameters required for the connection.
+        - Port: The port number used for the MySQL connection.
+        - Username: The username for authentication.
+        - Password: The password for authentication.
+
+        **If self-signed certificates are not being used** by your organization, you can omit the params section within the spec:
+
+        === "v2alpha"
+
+            ``` yaml
+            name: {{"mysql01"}}
+            version: v2alpha
+            type: depot
+            tags:
+              - {{dropzone}}
+              - {{mysql}}
+            layer: user
+            depot:
+              type: MYSQL
+              description: {{"MYSQL Sample data"}}
+              mysql:
+                host: {{host}}
+                port: {{port}}
+              external: true
+              connectionSecret:
+                - acl: rw
+                  type: key-value-properties
+                  data:
+                    username: {{username}}
+                    password: {{password}}
+            ```
+        === "v1"
+        
+            ``` yaml
+
+            name: {{"mysql01"}}
+            version: v1
+            type: depot
+            tags:
+              - {{dropzone}}
+              - {{mysql}}
+            layer: user
+            depot:
+              type: MYSQL
+              description: {{"MYSQL Sample data"}}
+              spec:
+                host: {{host}}
+                port: {{port}}
+              external: true
+              connectionSecret:
+                - acl: rw
+                  type: key-value-properties
+                  data:
+                    username: {{username}}
+                    password: {{password}}
+            ```      
+
+
+    === "Microsoft SQL server"
+
+        DataOS allows you to connect to a Microsoft SQL Server database and read data from tables using Depots. A Depot provides access to all tables within the specified schema of the configured database. You can create multiple Depots to connect to different SQL servers or databases.
+
+        **Template**
+
+        To create a Depot of type ‘SQLSERVER‘, utilize the following template:
+
+        **Use this template, if self-signed certificate is enabled.**
+
+        === "version v2alpha"
+
+            ```yaml title="mssql_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/relational_db/mssql_server/mssql_v2alpha.yaml"
+            ```  
+
+        === "version v1"
+
+            ```yaml title="mssql_v1.yaml" 
+            --8<-- "examples/resources/depot/relational_db/mssql_server/mssql_v1.yaml"
+            ```         
+
+        **Requirements**
+        To connect to a Microsoft SQL Server database, you need the following information:
+
+        - Host URL and parameters: The URL or hostname of the SQL Server along with any additional parameters required for the connection.
+        - Database schema: The schema in the database where your tables are located.
+        - Port: The port number used for the SQL Server connection.
+        - Username: The username for authentication.
+        - Password: The password for authentication.
+
+        If self-signed certificates are not being used by your organization, you can omit the params section within the spec:
+
+        === "v2alpha"
+
+            ``` yaml
+            name: {{mssql01}}
+            version: v2alpha
+            type: depot
+            tags:
+              - {{dropzone}}
+              - {{mssql}}
+            layer: user
+            depot:
+              type: JDBC
+              description: {{MSSQL Sample data}}
+              jdbc:
+                subprotocol: sqlserver
+                host: {{host}}
+                port: {{port}}
+                database: {{database}}
+                params: {{'{"key":"value","key2":"value2"}'}}
+              external: {{true}}
+              connectionSecret:
+                - acl: rw
+                  type: key-value-properties
+                  data:
+                    username: {{username}}
+                    password: {{password}}
+            ```
+
+        === "v1"
+
+            ``` yaml
+            name: {{mssql01}}
+            version: v1
+            type: depot
+            tags:
+              - {{dropzone}}
+              - {{mssql}}
+            layer: user
+            depot:
+              type: JDBC
+              description: {{MSSQL Sample data}}
+              spec:
+                subprotocol: sqlserver
+                host: {{host}}
+                port: {{port}}
+                database: {{database}}
+                params: {{'{"key":"value","key2":"value2"}'}}
+              external: {{true}}
+              connectionSecret:
+                - acl: rw
+                  type: key-value-properties
+                  data:
+                    username: {{username}}
+                    password: {{password}}
+            ```
+
+    === "Oracle"
+
+        DataOS allows you to connect to an Oracle database and access data from tables using Depots. A Depot provides access to all schemas within the specified service in the configured database. You can create multiple Depots to connect to different Oracle servers or databases.
+
+        **Template**
+
+        To create a Depot of type ‘ORACLE‘, you can use the following template:
+
+        === "version v2alpha"
+
+            ```yaml title="oracle_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/relational_db/oracle/oracle_v2alpha.yaml"
+            ```  
+
+        === "version v1"
+
+            ```yaml title="oracle_v1.yaml" 
+            --8<-- "examples/resources/depot/relational_db/oracle/oracle_v1.yaml"
+            ```   
+
+        **Requirements**
+
+        To connect to an Oracle database, you need the following information:
+
+        - URL of your Oracle account: The URL or hostname of the Oracle database.
+        - User name: Your login user name.
+        - Password: Your password for authentication.
+        - Database name: The name of the Oracle database.
+        - Database schema: The schema where your table belongs.
+
+
+
+    === "PostgreSQL"
+
+        DataOS allows you to connect to a PostgreSQL database and read data from tables using Depots. A Depot provides access to all schemas visible to the specified user in the configured database.
+
+        **Template**
+
+        To create a Depot of type ‘POSTGRESQL‘, use the following template:
+
+        **Use this templates, if self-signed certificate is enabled.**
+
+        === "version v2alpha"
+
+            ```yaml title="ps_v2alpha.yaml" 
+            --8<-- "examples/resources/depot/relational_db/postgre/ps_v2alpha.yaml"
+            ```  
+
+        === "version v1"
+
+            ```yaml title="ps_v1.yaml" 
+            --8<-- "examples/resources/depot/relational_db/postgre/ps_v1.yaml"
+            ```  
+
+        **Requirements**
+        To create a Depot and connect to a PostgreSQL database, you need the following information:
+
+        - Database name: The name of the PostgreSQL database.
+        - Hostname/URL of the server: The hostname or URL of the PostgreSQL server.
+        - Parameters: Additional parameters for the connection, if required.
+        - Username: The username for authentication.
+        - Password: The password for authentication.
+
+        **If self-signed certificates are not being used** by your organization, for connection to these storage systems, then you do not need to write additional parameters within the spec section.
+
+
+        === "v2alpha"
+
+            ``` yaml
+            name: {{depot-name}}
+            version: v2alpha
+            type: depot
+            tags:
+              - {{tag1}}
+            owner: {{owner-name}}
+            layer: user
+            depot:
+              type: POSTGRESQL
+              description: {{description}}
+              external: true
+              connectionSecret:                               
+                - acl: rw
+                  type: key-value-properties
+                  data:
+                    username: {{posgresql-username}}
+                    password: {{posgresql-password}}
+                - acl: r
+                  type: key-value-properties
+                  data:
+                    username: {{posgresql-username}}
+                    password: {{posgresql-password}}
+              postgresql:                                          
+                host: {{host}}
+                port: {{port}}
+                database: {{database-name}}
+                params: # Optional
+                  {{"key1": "value1"}}
+                  {{"key2": "value2"}}
+            ```
+
+        === "v1"
+
+            ``` yaml
+            name: {{depot-name}}
+            version: v1
+            type: depot
+            tags:
+              - {{tag1}}
+            owner: {{owner-name}}
+            layer: user
+            depot:
+              type: POSTGRESQL
+              description: {{description}}
+              external: true
+              connectionSecret:                               
+                - acl: rw
+                  type: key-value-properties
+                  data:
+                    username: {{posgresql-username}}
+                    password: {{posgresql-password}}
+                - acl: r
+                  type: key-value-properties
+                  data:
+                    username: {{posgresql-username}}
+                    password: {{posgresql-password}}
+              spec:                                          
+                host: {{host}}
+                port: {{port}}
+                database: {{database-name}}
+                params: # Optional
+                  {{"key1": "value1"}}
+                  {{"key2": "value2"}}
+            ```
