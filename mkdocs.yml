@@ -7,8 +7,8 @@ theme:
     language: en
     features:
         - navigation.tabs
-        - navigation.sections
-        - navigation.expand
+        # - navigation.sections
+        # - navigation.expand
         - navigation.footer
         - navigation.indexes
         - navigation.instant

@@ -149,7 +149,7 @@ To create a Policy, the first step is to create a Policy manifest file. A sample
                          
         1.  [Resource meta section](#resource-meta-section) within a manifest file comprises metadata attributes universally applicable to all [Resource-types](/resources/types_of_dataos_resources/). To learn more about how to configure attributes within this section, refer to the link: [Attributes of Resource meta section](/resources/resource_attributes/).
 
-        2.  [Policy-specific section](#policy-specific-section) within a manifest file comprises attributes specific to the Policy Resource. This section is different for Access and Data Policy .To learn more about how to configure attributes of Policy-specific section, refer to the link: [Attributes of Policy manifest](/resources/policy/yaml_configuration_attributes/).
+        2.  [Policy-specific section](#policy-specific-section) within a manifest file comprises attributes specific to the Policy Resource. This section is different for Access and Data Policy .To learn more about how to configure attributes of Policy-specific section, refer to the link: [Attributes of Policy manifest](/resources/policy/manifest_attributes/).
 
     === "Data Policy"
 
@@ -320,18 +320,18 @@ The Policy-specific Section focuses on the configurations specific to the Policy
 
     | Field | Data Type | Default Value | Possible Value | Requirement |
     | --- | --- | --- | --- | --- |
-    | [`policy`](./policy/yaml_configuration_attributes.md#policy) | object | none | none | mandatory |
-    | [`access`](./policy/yaml_configuration_attributes.md#access) | object | none | none | mandatory |
-    | [`subjects`](./policy/yaml_configuration_attributes.md#subjects) | object | none | none | mandatory |
-    | [`tags`](./policy/yaml_configuration_attributes.md#tags) | list of strings | none | a valid DataOS tag | mandatory |
-    | [`predicates`](./policy/yaml_configuration_attributes.md#predicates) | list of strings | none | http or crud operations | mandatory |
-    | [`objects`](./policy/yaml_configuration_attributes.md#objects) | object | none | none | mandatory |
-    | [`paths`](./policy/yaml_configuration_attributes.md#paths) | list of strings | none | api paths, udl paths | mandatory |
-    | [`allow`](./policy/yaml_configuration_attributes.md#allow) | boolean | false | true/false | optional |
+    | [`policy`](./policy/manifest_attributes.md#policy) | object | none | none | mandatory |
+    | [`access`](./policy/manifest_attributes.md#access) | object | none | none | mandatory |
+    | [`subjects`](./policy/manifest_attributes.md#subjects) | object | none | none | mandatory |
+    | [`tags`](./policy/manifest_attributes.md#tags) | list of strings | none | a valid DataOS tag | mandatory |
+    | [`predicates`](./policy/manifest_attributes.md#predicates) | list of strings | none | http or crud operations | mandatory |
+    | [`objects`](./policy/manifest_attributes.md#objects) | object | none | none | mandatory |
+    | [`paths`](./policy/manifest_attributes.md#paths) | list of strings | none | api paths, udl paths | mandatory |
+    | [`allow`](./policy/manifest_attributes.md#allow) | boolean | false | true/false | optional |
 
     </center>
 
-    Here, the [`subjects`](./policy/yaml_configuration_attributes.md#subjects) represents the user, the [`objects`](./policy/yaml_configuration_attributes.md#objects) denotes the target (such as an API path or resource) that the user interacts with, and the [`predicates`](./policy/yaml_configuration_attributes.md#predicates) represents the action performed. The [`allow`](./policy/yaml_configuration_attributes.md#allow) field determines whether the policy grants or restricts access for the user to perform the specified action on the designated object. Refer to the [Attributes of Policy-specific section](./policy/yaml_configuration_attributes.md) for more details on configuring subjects, predicates, and objects.
+    Here, the [`subjects`](./policy/manifest_attributes.md#subjects) represents the user, the [`objects`](./policy/manifest_attributes.md#objects) denotes the target (such as an API path or resource) that the user interacts with, and the [`predicates`](./policy/manifest_attributes.md#predicates) represents the action performed. The [`allow`](./policy/manifest_attributes.md#allow) field determines whether the policy grants or restricts access for the user to perform the specified action on the designated object. Refer to the [Attributes of Policy-specific section](./policy/manifest_attributes.md) for more details on configuring subjects, predicates, and objects.
 
 === "Data Policy"
 
@@ -385,23 +385,23 @@ The Policy-specific Section focuses on the configurations specific to the Policy
 
         | Field        | Data Type       | Default Value | Possible Value                              | Requirement |
         |--------------|-----------------|---------------|---------------------------------------------|-------------|
-        | [`policy`](./policy/yaml_configuration_attributes.md#policy)       | object          | none          | none                                        | mandatory   |
-        | [`data`](./policy/yaml_configuration_attributes.md#data)           | object          | none          | none                                        | mandatory   |
-        | [`depot`](./policy/yaml_configuration_attributes.md#depot)         | string          | none          | any valid depot name or regex pattern      | optional    |
-        | [`collection`](./policy/yaml_configuration_attributes.md#collection)| string          | none          | any valid collection name or regex pattern | optional    |
-        | [`dataset_id`](./policy/yaml_configuration_attributes.md#dataset_id)| string          | none          | any valid dataset identifier                | mandatory    |
-        | [`priority`](./policy/yaml_configuration_attributes.md#priority)   | number          | none          | 0-100                                       | mandatory   |
-        | [`selector`](./policy/yaml_configuration_attributes.md#selector)   | object          | none          | none                                        | mandatory   |
-        | [`user`](./policy/yaml_configuration_attributes.md#user)           | object          | none          | none                                        | mandatory   |
-        | [`tags`](./policy/yaml_configuration_attributes.md#tags_1)         | list of strings | none          | a valid DataOS tag                          | mandatory   |
-        | [`column`](./policy/yaml_configuration_attributes.md#column)       | object          | none          | true/false                                  | optional    |
-        | [`names`](./policy/yaml_configuration_attributes.md#names)         | list of strings | none          | valid column name                           | optional    |
-        | [`tags`](./policy/yaml_configuration_attributes.md#tags_2)         | list of tags    | none          | valid column tag defined under a tag group  | optional    |
-        | [`type`](./policy/yaml_configuration_attributes.md#type)           | string          | none          | mask/filter                                 | mandatory   |
-        | [`filters`](./policy/yaml_configuration_attributes.md#filters)     | list            | none          | none                                        | mandatory   |
-        | [`column`](./policy/yaml_configuration_attributes.md#column_1)     | string          | none          | any valid column name                       | mandatory   |
-        | [`operator`](./policy/yaml_configuration_attributes.md#operator)   | string          | none          | any valid comparison operator (e.g., equals)| mandatory   |
-        | [`value`](./policy/yaml_configuration_attributes.md#value)         | string          | none          | any valid value for comparison              | mandatory   |
+        | [`policy`](./policy/manifest_attributes.md#policy)       | object          | none          | none                                        | mandatory   |
+        | [`data`](./policy/manifest_attributes.md#data)           | object          | none          | none                                        | mandatory   |
+        | [`depot`](./policy/manifest_attributes.md#depot)         | string          | none          | any valid depot name or regex pattern      | optional    |
+        | [`collection`](./policy/manifest_attributes.md#collection)| string          | none          | any valid collection name or regex pattern | optional    |
+        | [`dataset_id`](./policy/manifest_attributes.md#dataset_id)| string          | none          | any valid dataset identifier                | mandatory    |
+        | [`priority`](./policy/manifest_attributes.md#priority)   | number          | none          | 0-100                                       | mandatory   |
+        | [`selector`](./policy/manifest_attributes.md#selector)   | object          | none          | none                                        | mandatory   |
+        | [`user`](./policy/manifest_attributes.md#user)           | object          | none          | none                                        | mandatory   |
+        | [`tags`](./policy/manifest_attributes.md#tags_1)         | list of strings | none          | a valid DataOS tag                          | mandatory   |
+        | [`column`](./policy/manifest_attributes.md#column)       | object          | none          | true/false                                  | optional    |
+        | [`names`](./policy/manifest_attributes.md#names)         | list of strings | none          | valid column name                           | optional    |
+        | [`tags`](./policy/manifest_attributes.md#tags_2)         | list of tags    | none          | valid column tag defined under a tag group  | optional    |
+        | [`type`](./policy/manifest_attributes.md#type)           | string          | none          | mask/filter                                 | mandatory   |
+        | [`filters`](./policy/manifest_attributes.md#filters)     | list            | none          | none                                        | mandatory   |
+        | [`column`](./policy/manifest_attributes.md#column_1)     | string          | none          | any valid column name                       | mandatory   |
+        | [`operator`](./policy/manifest_attributes.md#operator)   | string          | none          | any valid comparison operator (e.g., equals)| mandatory   |
+        | [`value`](./policy/manifest_attributes.md#value)         | string          | none          | any valid value for comparison              | mandatory   |
 
         </center>
 
@@ -465,26 +465,26 @@ The Policy-specific Section focuses on the configurations specific to the Policy
 
         | Field | Data Type | Default Value | Possible Value | Requirement |
         | --- | --- | --- | --- | --- |
-        | [`policy`](./policy/yaml_configuration_attributes.md#policy) | object | none | none | mandatory |
-        | [`data`](./policy/yaml_configuration_attributes.md#data) | object | none | none | mandatory |
-        | [`depot`](./policy/yaml_configuration_attributes.md#depot) | string | none | any valid depot name or regex pattern | optional |
-        | [`collection`](./policy/yaml_configuration_attributes.md#collection) | string | none | any valid collection name or regex pattern | optional |
-        | [`dataset`](./policy/yaml_configuration_attributes.md#dataset) | string | none | any valid dataset name or regex pattern | optional |
-        | [`priority`](./policy/yaml_configuration_attributes.md#priority) | number | none | 0-100 | mandatory |
-        | [`selector`](./policy/yaml_configuration_attributes.md#selector) | object | none | none | mandatory |
-        | [`user`](./policy/yaml_configuration_attributes.md#user) | object | none | none | mandatory |
-        | [`tags`](./policy/yaml_configuration_attributes.md#tags_1) | list of strings | none | a valid DataOS tag | mandatory |
-        | [`column`](./policy/yaml_configuration_attributes.md#column) | object | none | true/false | optional |
-        | [`names`](./policy/yaml_configuration_attributes.md#names) | list of column names | none | valid column name | optional |
-        | [`tags`](./policy/yaml_configuration_attributes.md#tags_2) | list of tags | none | valid column tag defined under a tag group | optional |
-        | [`type`](./policy/yaml_configuration_attributes.md#type) | string | none | mask/filter | mandatory |
-        | [`mask`](./policy/yaml_configuration_attributes.md#mask) | object | none | none | mandatory |
+        | [`policy`](./policy/manifest_attributes.md#policy) | object | none | none | mandatory |
+        | [`data`](./policy/manifest_attributes.md#data) | object | none | none | mandatory |
+        | [`depot`](./policy/manifest_attributes.md#depot) | string | none | any valid depot name or regex pattern | optional |
+        | [`collection`](./policy/manifest_attributes.md#collection) | string | none | any valid collection name or regex pattern | optional |
+        | [`dataset`](./policy/manifest_attributes.md#dataset) | string | none | any valid dataset name or regex pattern | optional |
+        | [`priority`](./policy/manifest_attributes.md#priority) | number | none | 0-100 | mandatory |
+        | [`selector`](./policy/manifest_attributes.md#selector) | object | none | none | mandatory |
+        | [`user`](./policy/manifest_attributes.md#user) | object | none | none | mandatory |
+        | [`tags`](./policy/manifest_attributes.md#tags_1) | list of strings | none | a valid DataOS tag | mandatory |
+        | [`column`](./policy/manifest_attributes.md#column) | object | none | true/false | optional |
+        | [`names`](./policy/manifest_attributes.md#names) | list of column names | none | valid column name | optional |
+        | [`tags`](./policy/manifest_attributes.md#tags_2) | list of tags | none | valid column tag defined under a tag group | optional |
+        | [`type`](./policy/manifest_attributes.md#type) | string | none | mask/filter | mandatory |
+        | [`mask`](./policy/manifest_attributes.md#mask) | object | none | none | mandatory |
 
         </center>
 
-<!-- /[`filters`](./policy/yaml_configuration_attributes.md#filters) !-->
+<!-- /[`filters`](./policy/manifest_attributes.md#filters) !-->
 
-For detailed information on configuring the YAML file for a Data Policy, refer to the link: [Attributes of Policy-specific section.](./policy/yaml_configuration_attributes.md)
+For detailed information on configuring the YAML file for a Data Policy, refer to the link: [Attributes of Policy-specific section.](./policy/manifest_attributes.md)
 
 
 
