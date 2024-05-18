@@ -152,6 +152,8 @@ nav:
          - Policy: resources/policy.md
          - Secret: resources/secret.md
          - Service: resources/service.md 
+         - Worker: resources/worker.md
+         - Workflow: resources/workflow.md 
          - Stacks:
               - Introduction: resources/stacks.md
               - Beacon: resources/stacks/beacon.md
@@ -163,8 +165,6 @@ nav:
               - Scanner: resources/stacks/scanner.md
               - Soda: resources/stacks/soda.md
               - Steampipe: resources/stacks/steampipe.md
-         - Worker: resources/worker.md
-         - Workflow: resources/workflow.md 
 
                  
     - Interfaces:
