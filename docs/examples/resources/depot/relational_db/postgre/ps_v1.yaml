@@ -7,6 +7,11 @@ depot:
   description: {{To write data to postgresql database}}
   external: {{true}}
   connectionSecret:           
+    - acl: r
+      type: key-value-properties
+      data:
+        username: {{username}}
+        password: {{password}}  
     - acl: rw
       type: key-value-properties
       data:

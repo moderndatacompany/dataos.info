@@ -18,6 +18,11 @@ depot:
   external: {{true}}
   hiveSync: {{false}}
   connectionSecret:
+    - acl: r
+      type: key-value-properties
+      data:
+        username: {{username}}
+        password: {{password}}  
     - acl: rw
       type: key-value-properties
       data:

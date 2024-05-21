@@ -14,9 +14,12 @@ depot:
     format: ICEBERG
     scheme: s3a       
   external: true
-  secrets:
-    - name: {{icebase-s3-instance-secret-name}}-r
-      allkeys: true
-
-    - name: {{icebase-s3-instance-secret-name}}-rw
-      allkeys: true
+  connectionSecret:
+    - acl: rw
+      type: key-value-properties
+      data:
+        accesskeyid: $S3_ACCESS_KEY_ID
+        secretkey: $S3_SECRET_KEY
+        awsaccesskeyid: $S3_ACCESS_KEY_ID
+        awssecretaccesskey: $S3_SECRET_KEY
+        awsendpoint: $S3_ENDPOINT

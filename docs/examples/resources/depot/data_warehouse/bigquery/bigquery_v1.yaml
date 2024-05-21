@@ -10,12 +10,21 @@ depot:
   type: BIGQUERY                 
   description: {{description}}
   external: {{true}}
-  secrets:
-    - name: {{bq-instance-secret-name}}-r
-      allkeys: true
-
-    - name: {{bq-instance-secret-name}}-rw
-      allkeys: true
+  connectionSecret:            
+    - acl: rw
+      type: key-value-properties
+      data:
+        projectid: {{project-name}}
+        email: {{email-id}}
+      files:
+        json_keyfile: {{json-file-path}}
+    - acl: r
+      type: key-value-properties
+      data:
+        projectid: {{project-name}}
+        email: {{email-id}}
+      files:
+        json_keyfile: {{json-file-path}}
   spec:                           
     project: {{project-name}}
     params:
