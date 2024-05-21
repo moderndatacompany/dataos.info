@@ -13,9 +13,4 @@ depot:
     url: {{snowflake-url}}
     database: {{database-name}}
   external: true
-  secrets:
-    - name: {{sf-instance-secret-name}}-r
-      allkeys: true
-
-    - name: {{sf-instance-secret-name}}-rw
-      allkeys: true
+cc

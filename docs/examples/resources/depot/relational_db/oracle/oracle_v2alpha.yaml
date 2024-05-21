@@ -14,9 +14,9 @@ depot:
     port: {{port}}
     service: {{service}}
   external: {{true}}
-  connectionSecret:
-    - acl: {{rw}}
-      type: key-value-properties
-      data:
-        username: {{username}}
-        password: {{password}}
+  secrets:
+    - name: {{sf-instance-secret-name}}-r
+      allkeys: true
+
+    - name: {{sf-instance-secret-name}}-rw
+      allkeys: true

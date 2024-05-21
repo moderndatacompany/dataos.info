@@ -14,8 +14,12 @@ depot:
     port: {{port}}
     service: {{service}}
   external: {{true}}
-  connectionSecret:
-    - acl: {{rw}}
+    - acl: r
+      type: key-value-properties
+      data:
+        username: {{username}}
+        password: {{password}}  
+    - acl: rw
       type: key-value-properties
       data:
         username: {{username}}
