@@ -1,6 +1,6 @@
-# Attribute of Grant manifest 
+# Attributes of the Grant manifest 
 
-## Structure of the grants manifest
+## Structure of the Grant  manifest
 
 ```yaml
 name: test-user-runas-test-dev1
@@ -16,7 +16,7 @@ grant:
   values:
     run-as-dataos-resource: 
     - path : ${valid-path}
-  requester: manish
+  requester: iamgroot
   notes: the user test-user needs to runas the test-developer for data dev purposes
   approve: false
 ```

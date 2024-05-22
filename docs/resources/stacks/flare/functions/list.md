@@ -1452,7 +1452,7 @@
 
 <div class="grid" markdown>
 
-"Syntax"
+=== "Syntax"
 
     ```yaml
     functions:
@@ -1460,6 +1460,10 @@
         column: col_001
         method: trim
     ```
+
+=== "Example"
+
+
 </div>
 
 ### **`unfurl`**
