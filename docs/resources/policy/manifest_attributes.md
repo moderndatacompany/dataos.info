@@ -543,7 +543,7 @@ tags:
   - "dataos.city"
 ```
 <aside class="callout">
-🗣️ The specified tag must be associated with a corresponding tag group and follow the format <i> <tag_group>.<tag> </i>. For additional information on tag groups, please refer to the <a href="/interfaces/metis/navigating_metis_ui_how_to_guide/#adding-tag-categories-tags-and-glossary">Metis documentation</a>.
+🗣️ The specified tag must be *associated* with a corresponding tag group and follow the format. For additional information on tag groups, please refer to the <a href="/interfaces/metis/navigating_metis_ui_how_to_guide/#adding-tag-categories-tags-and-glossary">Metis documentation</a>.
 </aside>
 
 ---
