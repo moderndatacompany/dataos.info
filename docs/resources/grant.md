@@ -1,8 +1,17 @@
-# Grants
+---
+search:
+  exclude: true
+---
 
+<<<<<<< HEAD
 A grant links the Subject-Predicate-Object relationship, generating an [access policy](./policy/#types-of-policies). Through grant, administrators assign use cases to subjects, granting them access to specific parts of the system or data. This level of detail in access control enables administrators to regulate user interactions effectively. Grants facilitate the assignment of use cases to multiple roles and users, providing flexibility in access management. Grants can be implemented via [CLI](../interfaces/cli.md) or through the [Bifrost](../interfaces/bifrost_new.md) Interface. To learn about how  to create grant through Bifrost click [here](../interfaces/bifrost_new/grants.md#how-to-create-policy-use-case-grant).
+=======
+# Grant
+>>>>>>> 42f012fc8ff8a89483fa154c8d1af8d4dc06c0e5
 
-## How to create and manage Grant?
+A Grant [Resource](/resources/) links the Subject-Predicate-Object relationship, generating an access [policy](.././resources/policy.md). Through grants, administrators assign use cases to subjects either as users or roles, granting them access to specific parts of the system or data. This level of detail in access control enables administrators to regulate user interactions effectively. Grants facilitate the assignment of use cases to multiple roles and users, providing flexibility in access management. Grants can be implemented via [CLI](../interfaces/cli.md) or through the [Bifrost](../interfaces/bifrost_new.md) Interface. To learn about how  to create grant through Bifrost click [here](../interfaces/bifrost_new/grants.md#how-to-create-policy-use-case-grant).
+
+## How to create and manage a Grant Resource?
 
 ### **Create a Grant manifest file**
 
@@ -33,8 +42,8 @@ Data Developers can create a Grant Resource by applying the manifest file of a G
 
 The manifest for creating a Grant has the following two sections:
 
-- Resource meta section
-- Grant specific section
+- [Resource meta section](#resource-meta-section)
+- [Grant-specific section](#grant-specific-section)
 
 ### **Resource meta section**
 
@@ -109,6 +118,7 @@ The Grant-specific section of a Grant manifest comprises attributes-specific to 
 
 | Attribute          | Data Type        | Default Value | Possible Values                                | Requirement |
 |--------------------|------------------|---------------|------------------------------------------------|-------------|
+<<<<<<< HEAD
 | [`grant`](./grant/manifest_attribute.md#grant)               | mapping          | none          | valid grant-specific attributes               | mandatory   |
 | [`policy_use_case_id`](./grant/manifest_attribute.md#policy_use_case_id) | string           | none          | Unique identifier for the policy use case      | mandatory   |
 | [`subjects`](./grant/manifest_attribute.md#subjects)            | list of strings  | none          | List of subject identifiers                    | optional    |
@@ -121,6 +131,20 @@ The Grant-specific section of a Grant manifest comprises attributes-specific to 
 
 
 To know more  about the grant attributes click [here](./grant/manifest_attribute.md)
+=======
+| [`grant`](./grant/manifest_attributes.md#grant)               | mapping          | none          | valid grant-specific attributes               | mandatory   |
+| [`policy_use_case_id`](./grant/manifest_attributes.md#policy_use_case_id) | string           | none          | Unique identifier for the policy use case      | mandatory   |
+| [`subjects`](./grant/manifest_attributes.md#subjects)            | list of strings  | none          | List of subject identifiers                    | optional    |
+| [`values`](./grant/manifest_attributes.md#values)              | list of mapping  | none          | List of key-value pairs representing values   | mandatory   |
+| [`approve`](./grant/manifest_attributes.md#approve)             | boolean          | false         | true, false                                    | optional    |
+| [`requester`](./grant/manifest_attributes.md#requester)           | string           | none          | Unique identifier for the requester            | optional    |
+| [`notes`](./grant/manifest_attributes.md#notes)               | string           | none          | Textual notes or comments                      | optional    |
+| [`collection`](./grant/manifest_attributes.md#collection)          | string           | none          | Unique identifier for the collection           | optional    |
+| [`manageAsUser`](./grant/manifest_attributes.md#manageAsUser)       | string           | none          | UserID of the Use Case Assignee                | optional    |
+
+
+To know more  about the grant attributes click [here](./grant/manifest_attributes.md)
+>>>>>>> 42f012fc8ff8a89483fa154c8d1af8d4dc06c0e5
 
 <aside class="callout">
 🗣  By default, the `approve` attribute is set to false. This signifies that grants specified in this YAML file are not automatically approved. Instead, they will appear as requests in the grant request section.
@@ -136,13 +160,13 @@ Upon applying the grant, administrators can track and manage grant requests thro
 
 === "Syntax"
 
-      ```yaml
+      ```shell
       dataos-ctl resource apply -f ${manifest-file-path} 
       ```
 
 === "Example"
 
-      ```yaml
+      ```shell
       dataos-ctl resource apply -f grant.yaml  
       #Expected Output 
       INFO[0000] 🛠 apply...                                   
@@ -172,13 +196,13 @@ To check the successful creation of Grant in DataOS Workspace use the following 
 
 - **Check the Grant in a Workspace:** Use the following command to list the grant
 
-```yaml
+```shell
 dataos-ctl resource get -t grant 
 ```
 
 - **Retrieve all Databases in a Workspace:** To retrieve the list of all Grants created, add the `-a` flag to the command:
 
-```yaml
+```shell
 dataos-ctl resource get -t grant -a
 ```
 
@@ -186,7 +210,7 @@ dataos-ctl resource get -t grant -a
 
 When a Grant creation encounter errors, data developers can employ various tactics to diagnose and resolve issues effectively using command:
 
-```yaml
+```shell
 dataos-ctl get -t grant -n test-user-runas-test-dev1 -d
 ```
 
@@ -196,24 +220,18 @@ To delete Grant that are no longer in use the following methods:
 
 === "Method1"
 
-    ```yaml
+    ```shell
     dataos-ctl delete -t ${grant} -n ${name of grant}
     ```
 
 === "Method2"
 
-    ```yaml
+    ```shell
     dataos-ctl delete -i ${name to workspace the in the output table from get status command}
     ```
 
 === "Method3"
 
-    ```yaml
+    ```shell
     dataos-ctl delete -f ${file-path}
     ```
-
-<!-- ### **End to End Use-case**
-
-[End-to-end use -case](https://www.notion.so/End-to-end-use-case-d5fd4432612d440c856be424a34d8c32?pvs=21)
-
-[Grants Attribute manifest ](https://www.notion.so/Grants-Attribute-manifest-43172ca953b1493892aabb9a00274e8a?pvs=21) -->

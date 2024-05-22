@@ -150,7 +150,11 @@ To create a Policy, the first step is to create a Policy manifest file. A sample
                          
         1.  [Resource meta section](#resource-meta-section) within a manifest file comprises metadata attributes universally applicable to all [Resource-types](/resources/types_of_dataos_resources/). To learn more about how to configure attributes within this section, refer to the link: [Attributes of Resource meta section](/resources/resource_attributes/).
 
+<<<<<<< HEAD
         2.  [Policy-specific section](#policy-specific-section) within a manifest file comprises attributes specific to the Policy Resource. This section is different for Access and Data Policy .To learn more about how to configure attributes of Policy-specific section, refer to the link: [Attributes of Policy manifest](./policy/manifest_attributes.md).
+=======
+        2.  [Policy-specific section](#policy-specific-section) within a manifest file comprises attributes specific to the Policy Resource. This section is different for Access and Data Policy .To learn more about how to configure attributes of Policy-specific section, refer to the link: [Attributes of Policy manifest](/resources/policy/manifest_attributes/).
+>>>>>>> 42f012fc8ff8a89483fa154c8d1af8d4dc06c0e5
 
     === "Data Policy"
 
@@ -321,11 +325,19 @@ The Policy-specific Section focuses on the configurations specific to the Policy
 
     | Field | Data Type | Default Value | Possible Value | Requirement |
     | --- | --- | --- | --- | --- |
+<<<<<<< HEAD
     | [`policy`](./policy/manifest_attributes#policy) | object | none | none | mandatory |
     | [`access`](./policy/manifest_attributes#access) | object | none | none | mandatory |
     | [`subjects`](./policy/manifest_attributes#subjects) | object | none | none | mandatory |
     | [`tags`](./policy/manifest_attributes#tags) | list of strings | none | a valid DataOS tag | mandatory |
     | [`predicates`](./policy/manifest_attributes#predicates) | list of strings | none | http or crud operations | mandatory |
+=======
+    | [`policy`](./policy/manifest_attributes.md#policy) | object | none | none | mandatory |
+    | [`access`](./policy/manifest_attributes.md#access) | object | none | none | mandatory |
+    | [`subjects`](./policy/manifest_attributes.md#subjects) | object | none | none | mandatory |
+    | [`tags`](./policy/manifest_attributes.md#tags) | list of strings | none | a valid DataOS tag | mandatory |
+    | [`predicates`](./policy/manifest_attributes.md#predicates) | list of strings | none | http or crud operations | mandatory |
+>>>>>>> 42f012fc8ff8a89483fa154c8d1af8d4dc06c0e5
     | [`objects`](./policy/manifest_attributes.md#objects) | object | none | none | mandatory |
     | [`paths`](./policy/manifest_attributes.md#paths) | list of strings | none | api paths, udl paths | mandatory |
     | [`allow`](./policy/manifest_attributes.md#allow) | boolean | false | true/false | optional |
@@ -483,7 +495,11 @@ The Policy-specific Section focuses on the configurations specific to the Policy
 
         </center>
 
+<<<<<<< HEAD
 <!-- /[`filters`](./policy/manifest_attributes#filters) !-->
+=======
+<!-- /[`filters`](./policy/manifest_attributes.md#filters) !-->
+>>>>>>> 42f012fc8ff8a89483fa154c8d1af8d4dc06c0e5
 
 For detailed information on configuring the YAML file for a Data Policy, refer to the link: [Attributes of Policy-specific section.](./policy/manifest_attributes.md)
 

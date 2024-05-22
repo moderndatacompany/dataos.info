@@ -10,14 +10,11 @@ depot:
   type: ELASTICSEARCH              
   description: {{description}}
   external: {{true}}
-  connectionSecret:                
-    - acl: rw
-      values:
-        username: {{username}}
-        password: {{password}}
-    - acl: r
-      values:
-        username: {{username}}
-        password: {{password}}
+  secrets:
+    - name: {{sf-instance-secret-name}}-r
+      allkeys: true
+
+    - name: {{sf-instance-secret-name}}-rw
+      allkeys: true
   elasticsearch:                           
     nodes: {{["localhost:9092", "localhost:9093"]}}

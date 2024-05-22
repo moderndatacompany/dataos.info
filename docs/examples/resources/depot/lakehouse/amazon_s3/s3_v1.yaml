@@ -14,9 +14,18 @@ depot:
     bucket: {{project-name}}
     relativePath: {{relative-path}}
     format: {{format}}
-  secrets:
-    - name: {{s3-instance-secret-name}}-r
-      allkeys: true
-
-    - name: {{s3-instance-secret-name}}-rw
-      allkeys: true
+  connectionSecret:                                
+    - acl: rw
+      type: key-value-properties
+      data:
+        accesskeyid: {{AWS_ACCESS_KEY_ID}}
+        secretkey: {{AWS_SECRET_ACCESS_KEY}}
+        awsaccesskeyid: {{AWS_ACCESS_KEY_ID}}
+        awssecretaccesskey: {{AWS_SECRET_ACCESS_KEY}}
+    - acl: r
+      type: key-value-properties
+      data:
+        accesskeyid: {{AWS_ACCESS_KEY_ID}}
+        secretkey: {{AWS_SECRET_ACCESS_KEY}}
+        awsaccesskeyid: {{AWS_ACCESS_KEY_ID}}
+        awssecretaccesskey: {{AWS_SECRET_ACCESS_KEY}}

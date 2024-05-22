@@ -13,9 +13,11 @@ depot:
     bucket: {{"airbyte-minio-testing"}}
     relativePath: {{"/sanity"}}
   external: {{true}}
-  secrets:
-    - name: {{gcs-instance-secret-name}}-r
-      allkeys: true
-
-    - name: {{gcs-instance-secret-name}}-rw
-      allkeys: true
+  connectionSecret:
+    - acl: {{rw}}
+      type: key-value-properties
+      data:
+        projectid: {{$GCS_PROJECT_ID}}
+        email: {{$GCS_ACCOUNT_EMAIL}}
+      files:
+        gcskey_json: {{$GCS_KEY_JSON}}

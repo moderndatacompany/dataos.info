@@ -9,17 +9,12 @@ depot:
   type: JDBC                                      
   description: {{description}}
   external: {{true}}
-  connectionSecret:                              
-    - acl: rw
-      type: key-value-properties
-      data:
-        username: {{jdbc-username}}
-        password: {{jdbc-password}}
-    - acl: r
-      type: key-value-properties
-      data:
-        username: {{jdbc-username}}
-        password: {{jdbc-password}}
+  secrets:
+    - name: {{sf-instance-secret-name}}-r
+      allkeys: true
+
+    - name: {{sf-instance-secret-name}}-rw
+      allkeys: true
   jdbc:                                           
     subprotocol: {{subprotocol}}
     host: {{host}}
