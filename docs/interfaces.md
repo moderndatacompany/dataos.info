@@ -57,6 +57,9 @@ Leverage the power of Jupyter Notebook on DataOS for data science projects, codi
 
 With Operations UI, monitor and administer DataOS platform activity, gaining real-time visibility into resource utilization, cluster performance, and user activities. Keep your data ecosystem running smoothly and optimize resource allocation. To learn more, click [here](/interfaces/operations/).
 
+**Superset**
+Superset is a business intelligence solution seamlessly integrated into DataOS. It simplifies the creation of customized reports and dashboards, making it easy to visualize complex data. With a wide range of visualization options, Superset enables clear interpretation, aiding informed decision-making. to learn more, click [here](/interfaces/superset/).
+
 **Workbench**
 
 Explore and query your data assets using SQL with Workbench. Powered by the Minerva query engine (built on top of Trino), Workbench supports both simple and complex queries across a large variety of data sources, including traditional relational databases (Oracle, PostgreSQL, Redshift, etc.) as well as other data sources such as S3, Kafka, and Pulsar. You can query and explore data from these data sources without bringing it to DataOS. To learn more, click [here](/interfaces/workbench/).

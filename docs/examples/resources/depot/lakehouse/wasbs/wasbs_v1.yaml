@@ -11,12 +11,17 @@ depot:
   description: {{description}}
   external: {{true}}
   compute: {{runnable-default}}
-  secrets:
-    - name: {{wasbs-instance-secret-name}}-r
-      allkeys: true
-
-    - name: {{wasbs-instance-secret-name}}-rw
-      allkeys: true
+  connectionSecret:                                 
+    - acl: rw
+      type: key-value-properties
+      data:
+        azurestorageaccountname: {{account-name}}
+        azurestorageaccountkey: {{account-key}}
+    - acl: r
+      type: key-value-properties
+      data:
+        azurestorageaccountname: {{account-name}}
+        azurestorageaccountkey: {{account-key}}
   spec:                                          
     account: {{account-name}}
     container: {{container-name}}

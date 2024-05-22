@@ -7,8 +7,8 @@ theme:
     language: en
     features:
         - navigation.tabs
-        - navigation.sections
-        - navigation.expand
+        # - navigation.sections
+        # - navigation.expand
         - navigation.footer
         - navigation.indexes
         - navigation.instant
@@ -154,13 +154,12 @@ nav:
          - Service: resources/service.md 
          - Worker: resources/worker.md
          - Workflow: resources/workflow.md 
-
          - Stacks:
               - Introduction: resources/stacks.md
-              - Alpha: resources/stacks/alpha.md
               - Beacon: resources/stacks/beacon.md
               - Benthos: resources/stacks/benthos.md
               - 'CLI Stack': resources/stacks/cli_stack.md
+              - Container: resources/stacks/container.md
               - Data Toolbox: resources/stacks/data_toolbox.md
               - Flare: resources/stacks/flare.md
               - Scanner: resources/stacks/scanner.md

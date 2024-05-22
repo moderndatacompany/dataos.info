@@ -55,14 +55,14 @@ To create a Service Resource, you need to configure the YAML file with the appro
 
 A Service is a [Resource-type](./types_of_dataos_resources.md) in DataOS. Below is the YAML configuration for the Resource Meta Section:
 ```yaml
-name: ${{my-service}}
+name: ${my-service}
 version: v1 
 type: service 
 tags: 
-  - ${{dataos:type:resource}}
-  - ${{dataos:type:workspace-resource}}
-description: ${{This is a sample service YAML configuration}}
-owner: ${{iamgroot}}
+  - ${dataos:type:resource}
+  - ${dataos:type:workspace-resource}
+description: ${This is a sample service YAML configuration}
+owner: ${iamgroot}
 ```
 <center><i>Resource Meta Section Configuration for a Service</i></center>
 
@@ -74,24 +74,24 @@ The Service-specific Section contains configurations specific to the Service res
 
 ```yaml
 service: 
-    title: ${{"Hit Collector Service"}}
-    replicas: ${{1}}
+    title: ${"Hit Collector Service"}
+    replicas: ${1}
     autoScaling: 
-        enabled: ${{true}}
-        minReplicas: ${{2}}
-        maxReplicas: ${{4}}
-        targetMemoryUtilizationPercentage: ${{80}}
-        targetCPUUtilizationPercentage: ${{80}}
+        enabled: ${true}
+        minReplicas: ${2}
+        maxReplicas: ${4}
+        targetMemoryUtilizationPercentage: ${80}
+        targetCPUUtilizationPercentage: ${80}
     ingress: 
-        enabled: ${{true}}
-        stripPath: ${{false}}
-        path: ${{/hit-collector}}
-        noAuthentication: ${{true}}
-    stack: ${{stack}} # Specify stack here
-    logLevel: ${{INFO}}
-    dryRun: ${{true}}
-    servicePort: ${{8099}}
-    ${{Stack-specific-section}}
+        enabled: ${true}
+        stripPath: ${false}
+        path: ${/hit-collector}
+        noAuthentication: ${true}
+    stack: ${stack} # Specify stack here
+    logLevel: ${INFO}
+    dryRun: ${true}
+    servicePort: ${8099}
+    ${Stack-specific-section}
 ```
 <center><i>Service-specific Section Configuration</i></center>
 
@@ -101,7 +101,7 @@ The Stack-specific Section allows you to specify the desired stack for executing
 
 - [Benthos Stack](./stacks/benthos.md): The Benthos stack provides advanced capabilities for stream data processing and analysis.
 
-- [Alpha Stack](./stacks/alpha.md): The Alpha stack offers a powerful environment for hosting web-appliation, and custom Docker images atop DataOS.
+- [Container Stack](./stacks/container.md): The Container stack offers a powerful environment for hosting web-appliation, and custom Docker images atop DataOS.
 
 - [Beacon Stack](./stacks/beacon.md): The Beacon stack provides a comprehensive set of tools and utilities for managing PostsgreSQL Database.
 
@@ -247,7 +247,7 @@ service:
 Run the `apply` command on DataOS CLI to create the service resource in DataOS environment.
 
 ```shell
-dataos-ctl apply -f ${{filename.yaml}} -w ${{name of the workspace}}
+dataos-ctl apply -f ${filename.yaml} -w ${name of the workspace}
 ```
 
 To learn more about `apply` command, refer to the [CLI](../interfaces/cli/command_reference.md) section.
@@ -276,7 +276,7 @@ The table below presents an exhaustive list of key-value properties and their de
 | [`maxReplicas`](./service/yaml_configuration_attributes.md#maxreplicas) | integer | 1 | any positive integer | optional  |
 | [`targetMemoryUtilizationPercentage`](./service/yaml_configuration_attributes.md#targetmemoryutilizationpercentage) | integer | none | any positive integer | optional  |
 | [`targetCPUUtilizationPercentage`](./service/yaml_configuration_attributes.md#targetcpuutilizationpercentage) | integer | None | any positive integer | optional  |
-| [`stack`](./service/yaml_configuration_attributes.md#stack) | string | None | benthos/alpha/beacon | mandatory |
+| [`stack`](./service/yaml_configuration_attributes.md#stack) | string | None | benthos/container/beacon | mandatory |
 | [`logLevel`](./service/yaml_configuration_attributes.md#loglevel) | string | INFO | INFO/WARN/DEBUG/ERROR | optional |
 | [`configs`](./service/yaml_configuration_attributes.md#configs) | mapping | none | key-value pairs of configurations | optional |
 | [`envs`](./service/yaml_configuration_attributes.md#envs) | mapping | none | key-value pairs of environment variables | optional |

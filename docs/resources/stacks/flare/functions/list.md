@@ -1487,7 +1487,7 @@
 === "Example"
 
     ```yaml title="unfurl.yaml" hl_lines="51-55"
-      --8<-- "examples/resources/stacks/flare/functions/unfurl.yaml"             
+      --8<-- "examples/resources/stacks/flare/functions/unfurl.yaml" 
     ```
     Before
 
