@@ -8,9 +8,9 @@ workflow:
   schedule: 
     cron: ${{'*/10 * * * *'}}
     concurrencyPolicy: ${{Allow}}
-    startOn: ${{2022-01-01T23:30:30Z}}
     endOn: ${{2022-01-01T23:40:45Z}}
-    completeOn: ${{2022-01-01T23:30:45Z}}
+    timezone: ${{Asia/Kolkata}}
+
   dag: 
     - name: ${{job1-name}}
       description: ${{description}}
@@ -18,23 +18,123 @@ workflow:
       tags:
         - ${{tag1}}
         - ${{tag2}}
+      gcWhenComplete: true
       spec: 
-        stack: ${{stack1:version}}
-        compute: ${{compute-name}}
-        stack1: 
-          ${{stack1-specific-properties}}
+        stack: ${{flare:5.0}}
+        logLevel: ${{INFO}}
+        configs: 
+          ${{alpha: beta}}
+        envs: 
+          ${{random: delta}}
+        secrets: 
+          - ${{mysecret}}
+        dataosSecrets:
+          - name: ${{mysecret}}
+            workspace: ${{curriculum}}
+            key: ${{newone}}
+            keys:
+              - ${{newone}}
+              - ${{oldone}}
+            allKeys: ${{true}}
+            consumptionType: ${{envVars}}
+        dataosVolumes: 
+          - name: ${{myVolume}}
+            directory: ${{/file}}
+            readOnly: ${{true}}
+            subPath: ${{/random}}
+        tempVolume: ${{abcd}}
+        persistentVolume:
+          name: ${{myVolume}}
+          directory: ${{/file}}
+          readOnly: ${{true}}
+          subPath: ${{/random}}
+        compute: ${{compute resource name}}
+          requests:
+            cpu: ${{100Mi}}
+            memory: ${{100Gi}}
+          limits:
+            cpu: ${{100Mi}}
+            memory: ${{100Gi}}
+        dryRun: ${{true}}
+        runAsApiKey: ${{abcdefghijklmnopqrstuvwxyz}}
+        runAsUser: ${{iamgroot}}
+        topology:
+          name: ${{abcd}} 
+          type: ${{efgh}} 
+          doc: ${{abcd efgh}}
+          properties: 
+            ${{alpha: random}}
+          dependencies: 
+            - ${{abc}}
+        file: ${{abcd}}
+        retry: 
+          count: ${{2}} 
+          strategy: ${{"OnTransientError"}}
+          duration: <string>
+          maxDuration: <string> 
+
     - name: ${{job2-name}}
+      description: ${{description}}
+      title: ${{title of job}}
+      tags:
+        - ${{tag1}}
+        - ${{tag2}}
       spec: 
-        stack: ${{stack2:version}}
-        compute: ${{compute-name}}
-        stack2: 
-          ${{stack2-specific-properties}}
-      dependencies: 
-       - ${{job1-name}}
-    - name: ${{job3-name}}
-      file: ${{workflows/write-pulsar.yaml}}
-      dependencies: 
-       - ${{job2-name}}
+        stack: ${{flare:5.0}}
+        logLevel: ${{INFO}}
+        configs: 
+          ${{alpha: beta}}
+        envs: 
+          ${{random: delta}}
+        secrets: 
+          - ${{mysecret}}
+        dataosSecrets:
+          - name: ${{mysecret}}
+            workspace: ${{curriculum}}
+            key: ${{newone}}
+            keys:
+              - ${{newone}}
+              - ${{oldone}}
+            allKeys: ${{true}}
+            consumptionType: ${{envVars}}
+        dataosVolumes: 
+          - name: ${{myVolume}}
+            directory: ${{/file}}
+            readOnly: ${{true}}
+            subPath: ${{/random}}
+        tempVolume: ${{abcd}}
+        persistentVolume:
+          name: ${{myVolume}}
+          directory: ${{/file}}
+          readOnly: ${{true}}
+          subPath: ${{/random}}
+        compute: ${{compute resource name}}
+        resources:
+          requests:
+            cpu: ${{100Mi}}
+            memory: ${{100Gi}}
+          limits:
+            cpu: ${{100Mi}}
+            memory: ${{100Gi}}
+        dryRun: ${{true}}
+        runAsApiKey: ${{abcdefghijklmnopqrstuvwxyz}}
+        runAsUser: ${{iamgroot}}
+        topology:
+          name: ${{abcd}} 
+          type: ${{efgh}} 
+          doc: ${{abcd efgh}}
+          properties: 
+            ${{alpha: random}}
+          dependencies: 
+            - ${{abc}}
+        file: ${{string}}
+        retry: 
+          count: ${{2}}
+          strategy: ${{"OnTransientError"}}
+          duration: ${{string}}
+          maxDuration: ${{string}}
+        dependencies: 
+          - ${{xyz}}   
 ```
 <center><i> Structure of Workflow YAML configuration </i></center>
 
@@ -55,6 +155,21 @@ workflow:
     cron: '*/10 * * * *' 
   dag: 
     {} # List of Jobs
+```
+
+---
+
+### **`title`**
+<b>Description:</b> Title of Workflow <br>
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+|-----------|-------------|---------------|----------------|
+| string    | optional    | none          | any string     |
+
+<b>Example Usage:</b>
+
+```yaml
+title: Quality Assessment Workflow 
 ```
 
 ---
@@ -93,6 +208,7 @@ cron: '*/10 * * * *'
 ---
 
 ### **`concurrencyPolicy`**
+
 <b>Description:</b> the <code>concurrencyPolicy</code> attribute determines how concurrent executions of a Workflow, created by a scheduled Workflow, are handled<br>
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
@@ -112,68 +228,46 @@ concurrencyPolicy: Replace
 
 ---
 
-### **`startOn`**
-<b>Description:</b> specifies start time of a schedule in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format.<br>
-
-| **Data Type** | **Requirement** | **Default Value** | **Possible Value**                  |
-|-----------|-------------|---------------|---------------------------------|
-| string    | optional    | none          | any time provided in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format |
-
-<b>Example Usage:</b>
-
-```yaml
-startOn: 2022-01-01T23:30:45Z 
-```
-
----
-
 ### **`endOn`**
+
 <b>Description:</b> <code>endOn</code> terminates the scheduled Workflow run at the specified time, even if the last workflow run that got triggered before the threshold time isn’t complete <br>
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value**                  |
 |-----------|-------------|---------------|---------------------------------|
 | string    | optional    | none          | any time provided in ISO 8601 format |
 
+
 <b>Example Usage:</b>
 
+
 ```yaml
+
 endOn: 2022-01-01T23:30:45Z 
+
 ```
 
 ---
 
-### **`completeOn`**
-<b>Description:</b> <code>completeOn</code> signifies successful completion. completeOn will let the last workflow run if it was triggered before the specified time <br>
+### **`timezone`**
 
-| **Data Type** | **Requirement** | **Default Value** | **Possible Value**            |
-| ----------- | ------------- | --------------- | --------------------------- |
-|    string     |    optional     |       none        | any time provided in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format |
+**Description:** Time zone for scheduling the workflow.
 
-<b>Example Usage:</b>
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | mandatory | none | Asia/Kolkata, America/Los_Angeles, etc |
+
+**Example Usage:**
 
 ```yaml
-completeOn: 2022-01-01T23:30:45Z 
+timezone: Asia/Kolkata
 ```
 
 ---
 
-### **`title`**
-<b>Description:</b> title of Workflow <br>
-
-| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
-|-----------|-------------|---------------|----------------|
-| string    | optional    | none          | any string     |
-
-<b>Example Usage:</b>
-
-```yaml
-title: Quality Assessment Workflow 
-```
-
----
 
 ### **`dag`**
-<b>Description:</b> DAG is a <a href="/resources/workflow/#workflow-and-directed-acyclic-graph-dag">Directed Acyclic Graph</a>, a conceptual representation of a sequence of jobs (or activities). These jobs in a DAG are executed in the order of dependencies between them <br>
+
+<b>Description:</b> DAG is a <a href="/resources/workflow/#workflow-and-directed-acyclic-graph-dag">Directed Acyclic Graph</a>, a conceptual representation of a sequence of jobs (or activities). These jobs in a DAG are executed in the order of dependencies between them. <br>
 
 | **Data Type**        | **Requirement** | **Default Value** | **Possible Value** |
 |------------------|-------------|---------------|----------------|
@@ -205,6 +299,7 @@ dag:
 ```yaml
 name: flare-ingestion-job 
 ```
+
 ---
 
 ### **`title`**
@@ -221,6 +316,7 @@ title: Profiling Job
 ---
 
 ### **`description`**
+
 <b>Description:</b> text describing the Job <br>
 
 | **Data Type**   | **Requirement** | **Default Value** | **Possible Value** |
@@ -235,8 +331,26 @@ description: The job ingests customer data
 
 ---
 
+### **`tags`**
+
+**Description:** tags associated with the Workflow.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| list of strings | optional | none | valid [tags](https://dataos.info/resources/policy/manifest_attributes/#tags) |
+
+**Example Usage:**
+
+```yaml
+  tags:
+    - tag1
+    - tag2
+```
+
+---
+
 ### **`spec`**
-<b>Description:</b> specs of the Job <br>
+<b>Description:</b> Specs of the Job. <br>
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 |-----------|-------------|---------------|----------------|
@@ -245,11 +359,255 @@ description: The job ingests customer data
 <b>Example Usage:</b>
 
 ```yaml
+
 spec: 
-  stack: flare:4.0 
+  stack: flare:5.0 
   compute: runnable-default 
   flare: 
     {} # Flare Stack specific configurations
+
+```
+
+---
+
+### **`stack`**
+
+**Description:** The name and version of the [Stack](https://dataos.info/resources/stacks/) Resource which the Workflow orchestrates.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | mandatory | none | flare/toolBox/scanner/dataos-ctl/soda+python/steampipestack |
+
+**Additional Details:**
+To know more about each stack, go to [Stack](https://dataos.info/resources/stacks/).
+
+**Example Usage:**
+
+```yaml
+  stack: flare
+
+```
+
+---
+
+### **`logLevel`**
+
+**Description:**  The log level for the Service classifies entries in logs in terms of urgency which helps to filter logs during search and helps control the amount of information in logs.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | optional | INFO | INFO, WARN, DEBUG, ERROR |
+
+**Additional Details:** 
+
+- `INFO`: Designates informational messages that highlight the progress of the service.
+
+- `WARN`: Designates potentially harmful situations.
+
+- `DEBUG`: Designates fine-grained informational events that are most useful while debugging.
+
+- `ERROR`: Designates error events that might still allow the workflow to continue running.
+
+**Example Usage:**
+
+```yaml
+workflow:
+	logLevel: DEBUG
+```
+
+---
+
+
+### **`configs`**
+
+**Description:** additional optional configuration for the service.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| mapping | optional | none | key-value configurations |
+
+**Example Usage:**
+
+```yaml
+configs:
+  key1: value1
+  key2: value2
+```
+
+---
+
+
+### **`envs`**
+
+**Description:** environment variables for the Workflow.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| mapping | optional | none | key-value configurations |
+
+**Example Usage:**
+
+```yaml
+envs:
+  CONTAINER_NAME: 'itsrandom'
+```
+
+---
+
+### **`secrets`**
+
+**Description:** list of secrets associated with the Workflow.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| list of strings | optional | none | none |
+
+**Example Usage:**
+
+```yaml
+secrets:
+  - mysecret
+```
+
+---
+
+
+### **`dataosSecrets`**
+
+**Description:** list of [DataOS Secrets](https://dataos.info/resources/secret/) associated with the Workflow. Each DataOS Secret is a mapping containing various attributes.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| list of mappings | optional | none | none |
+
+**Example Usage:**
+
+```yaml
+workflow:
+  dataosSecrets:
+    - name: mysecret
+      workspace: curriculum
+      key: newone
+      keys:
+        - newone
+        - oldone
+      allKeys: true
+      consumptionType: envVars
+```
+
+---
+
+
+### **`dataosVolumes`**
+
+**Description:** list of DataOS Volumes associated with the Workflow. Each DataOS Volume is a mapping containing various attributes.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| list of mappings | optional | none | none |
+
+**Example Usage:**
+
+```yaml
+dataosVolumes:
+  - name: myVolume
+    directory: /file
+    readOnly: true
+    subPath: /random
+```
+
+---
+
+### **`tempVolume`**
+
+**Description:** The temporary volume of the Workflow.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | optional | none | any valid Volume name |
+
+**Example Usage:**
+
+```yaml
+tempVolume: abcd
+```
+
+---
+
+### **`persistentVolume`**
+
+**Description:** configuration for the persistent volume associated with the Workflow.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| mapping | optional | none | none |
+
+**Example Usage:**
+
+```yaml
+
+  persistentVolume:
+    name: myVolume
+    directory: /file
+    readOnly: true
+    subPath: /random
+```
+
+---
+
+### **`compute`**
+
+**Description:** the name of the [Compute](https://dataos.info/resources/compute/) Resource for the Workflow.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | mandatory | none | valid runnable-type Compute Resource name. |
+
+**Example Usage:**
+
+```yaml
+
+  compute: MyComputeResource
+```
+
+---
+
+### **`resources`**
+
+**Description:** Resource requests and limits for the Workflow. This includes CPU and memory specifications.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| mapping | optional | none | none |
+
+**Example Usage:**
+
+```yaml
+
+  resources:
+    requests:
+      cpu: 100Mi
+      memory: 100Gi
+    limits:
+      cpu: 100Mi
+      memory: 100Gi
+```
+
+---
+
+### **`dryRun`**
+
+**Description:** Indicates whether the workflow is in dry run mode. When enabled, the dryRun property deploys the Workflow to the cluster without submitting it.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| boolean | optional | true | true or false. |
+
+**Example Usage:**
+
+```yaml
+
+  dryRun: true
 ```
 
 ---
@@ -266,35 +624,69 @@ spec:
 ```yaml
 runAsUser: iamgroot 
 ```
+
 ---
 
-### **`compute`**
-<b>Description:</b> a <a href="/resources/compute/">Compute</a> Resource provides processing power for the job.  <br>
+### **`runAsApiKey`**
 
-| **Data Type**       | **Requirement** | **Default Value** | **Possible Value**                           |
-|-----------------|-------------|---------------|------------------------------------------|
-| string          | mandatory   | none          | runnable-default or any <br> other custom Compute <br> Resource created by <br> the user |
+**Description:** The runAsApiKey attribute allows a user to assume another user's identity by providing the latter's API key.
 
-<b>Example Usage:</b>
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | mandatory | none | any valid API key. |
+
+**Additional Details:** The apikey can be obtained by executing the following command from the CLI:
+
+`dataos-ctl user apikey get`
+
+In case no apikey is available, the below command can be run to create a new apikey
+
+`dataos-ctl user apikey create -n ${{name of the apikey}} -d ${{duration for the apikey to live}}`
+
+**Example Usage:**
 
 ```yaml
-compute: runnable-default 
+runAsApiKey: abcdefghijklmnopqrstuvwxyz
 ```
 
 ---
 
-### **`stack`**
-<b>Description:</b> <a href="/resources/stacks/">Stack</a> is a <a href="/resources/">Resource</a> that serves as a secondary extension point, enhancing the capabilities of a Workflow Resource by introducing additional programming paradigms.  <br>
+### **`topology`**
 
-| **Data Type**   | **Requirement** | **Default Value** | **Possible Value**                         |
-|-------------|-------------|---------------|----------------------------------------|
-| string      | mandatory   | none          | flare/toolbox/scanner/alpha            |
+**Description:** The `topology` attribute is used to define the topology of the Workflow. It specifies the elements and dependencies within the Workflow's topology.
 
-<b>Additional Details:</b> it is also possible to specify specific versions of the Stack. For example, you can use the notation <code>flare:4.0</code> to indicate a specific version. If no version is explicitly specified, the system will automatically select the latest stable version as the default option <br>
+| Data Type | Requirement | Default Value | Possible Values |
+| --- | --- | --- | --- |
+| list of mappings | mandatory | none | list of topology element definitions |
+
+**Example Usage:**
+
+```yaml
+topology:
+  - name: random            # mandatory
+    type: alpha             # mandatory
+    doc: new                # Documentation for the element
+    properties:
+      random: lost          # Custom properties for the element
+    dependencies:
+      - new1
+      - new2
+```
+
+---
+
+### **`file`**
+
+<b>Description:</b> attribute for specifying the file path for a Workflow YAML  <br>
+
+| **Data Type**   | **Requirement** | **Default Value** | **Possible Value** |
+|-------------|-------------|---------------|----------------|
+| string      | optional    | none          | none           |
+
 <b>Example Usage:</b>
 
 ```yaml
-stack: toolbox 
+file: workflow/new/random.yaml
 ```
 
 ---
@@ -352,7 +744,7 @@ strategy: "OnTransientError"
 
 ---
 
-### **`dependency`**
+### **`dependencies`**
 <b>Description:</b> specifies the dependency between jobs/Workflows  <br>
 
 | **Data Type**   | **Requirement** | **Default Value** | **Possible Value** |
@@ -362,20 +754,8 @@ strategy: "OnTransientError"
 <b>Example Usage:</b>
 
 ```yaml
-dependency: job2
+dependencies: job2
 ```
 
 ---
 
-### **`file`**
-<b>Description:</b> attribute for specifying the file path for a Workflow YAML  <br>
-
-| **Data Type**   | **Requirement** | **Default Value** | **Possible Value** |
-|-------------|-------------|---------------|----------------|
-| string      | optional    | none          | none           |
-
-<b>Example Usage:</b>
-
-```yaml
-file: workflow/new/random.yaml
-```
