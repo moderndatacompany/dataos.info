@@ -1,62 +1,63 @@
 #### DO NOT CHANGE ####
-site_name: All things DataOS
+site_name: DataOS Documentation 
 copyright: Copyright ⓒ 2024 The Modern Data Company
 theme:
-    name: material
-    custom_dir: overrides
-    language: en
-    features:
-        - navigation.tabs
-        - navigation.sections
-        - navigation.expand
-        - navigation.footer
-        - navigation.indexes
-        - navigation.instant
-        - navigation.top
-        - navigation.tracking
-        - content.code.copy
-        - content.code.annotate
-        # - content.tabs.link
-        - content.tooltips
-#          - toc.follow
-#          - toc.integrate
-        - search.suggest
-        # - search.highlighting
-        - search.share
-    icon:
-      admonition:
-        note: octicons/tag-16
-        abstract: octicons/checklist-16
-        info: octicons/info-16
-        tip: octicons/code-square-16
-        success: octicons/check-16
-        question: octicons/question-16
-        warning: octicons/alert-16
-        failure: octicons/x-circle-16
-        danger: octicons/zap-16
-        bug: octicons/bug-16
-        example: octicons/beaker-16
-        quote: octicons/quote-16
-    logo: assets/light-modern-logo.png
-    favicon: assets/favicon.png
-    logo_link_footer: https://themoderndatacompany.com
-    logo_footer: /assets/ModernLogo.png
-    font:
-        text: Inter
-        code: Roboto Mono
-    palette:
-      - scheme: default
-        primary: blue-grey
-        accent: blue-grey
-        toggle:
-            icon: material/brightness-7
-            name: Switch to dark mode
-      - scheme: slate
-        primary: grey
-        accent: grey
-        toggle:
-            icon: material/brightness-4
-            name: Switch to light mode
+  name: material
+  custom_dir: overrides
+  language: en
+  features:
+    - navigation.instant 
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.indexes
+    - toc.follow
+    - navigation.top
+
+    # - navigation.sections
+    # - navigation.expand
+    - content.code.copy
+    - content.code.annotate
+    # - content.tabs.link
+    - content.tooltips
+    - search.suggest
+    # - search.highlighting
+    - search.share
+  icon:
+    admonition:
+      note: octicons/tag-16
+      abstract: octicons/checklist-16
+      info: octicons/info-16
+      tip: octicons/code-square-16
+      success: octicons/check-16
+      question: octicons/question-16
+      warning: octicons/alert-16
+      failure: octicons/x-circle-16
+      danger: octicons/zap-16
+      bug: octicons/bug-16
+      example: octicons/beaker-16
+      quote: octicons/quote-16
+  logo: assets/light-modern-logo.png
+  favicon: assets/favicon.png
+  logo_link_footer: https://themoderndatacompany.com
+  logo_footer: /assets/ModernLogo.png
+  font:
+      text: Inter
+      code: Roboto Mono
+  palette:
+    - scheme: default
+      primary: blue-grey
+      accent: blue-grey
+      toggle:
+          icon: material/brightness-7
+          name: Switch to dark mode
+    - scheme: slate
+      primary: grey
+      accent: grey
+      toggle:
+          icon: material/brightness-4
+          name: Switch to light mode
 plugins:
     - search
     - tags
@@ -64,7 +65,6 @@ plugins:
     #     version: v0.2
 extra:
   generator: true
-  # section added by Manish
   analytics: 
     provider: google
     property: G-ZH4G0HKBQC
@@ -81,7 +81,6 @@ extra:
           data: 0
           note: >- 
             Thanks for your feedback!
-  # end of the section added by Manish
   annotate:
     json: [.s2]
   social:
@@ -136,52 +135,112 @@ markdown_extensions:
 
 #### Update for navigation tabs/options ####      
 nav:
+  - Home: 
     - Home: index.md
+    - Architecture: architecture/index.md
+    - Products: 
+      - products/index.md
+      - 'Data Product':
+        - products/data_product/index.md
+        - 'Quick Start': products/data_product/quick_start_guide.md
+        - 'How to':
+          - products
+        - 'Explanation': resources/monitor/explanation.md
+        - 'Reference': resources/monitor/reference.md
     - Resources:
-         - Overview: resources.md
-         - Bundle: resources/bundle.md
-         - Cluster: resources/cluster.md
-         - Compute: resources/compute.md
-         - Database: resources/database.md
-         - Depot: resources/depot.md
-         - 'Instance Secret': resources/instance_secret.md 
-         - Lakehouse: resources/lakehouse.md
-         - Monitor: resources/monitor.md
-         - Operator: resources/operator.md
-         - Pager: resources/pager.md
-         - Policy: resources/policy.md
-         - Secret: resources/secret.md
-         - Service: resources/service.md 
-         - Worker: resources/worker.md
-         - Workflow: resources/workflow.md 
+      - resources/index.md
+      - Monitor: 
+        - resources/monitor/index.md
+        - 'Quick Start': resources/monitor/quick_start_guide.md
+        - 'How to Guide':
+          - resources/monitor/how_to/index.md
+          - 'Monitor Cluster Memory Usage': resources/monitor/how_to/monitor_cluster_memory_usage.md
+          - 'Monitor Prometheus': resources/monitor/how_to/monitor_prometheus.md
+          - 'Monitor Profile Checks': resources/monitor/how_to/monitor_profile_checks.md
+        - 'Reference': resources/monitor/reference.md
+        - 'Explanation': resources/monitor/explanation.md
+    - Interfaces:
+      - interfaces/index.md
+      - 'Data Product Hub': 
+        - interfaces/data_product_hub/index.md
+        - 'Quick Start': interfaces/data_product_hub/quick_start_guide.md
+        - 'Explanation': interfaces/data_product_hub/explanation.md
+        - 'Reference': interfaces/data_product_hub/reference.md
+      - 'Atlas': 
+        - interfaces/data_product_hub/index.md
+        - 'Quick Start': interfaces/atlas/quick_start_guide.md
+        - 'Explanation': interfaces/atlas/explanation.md
+        - 'Reference': interfaces/atlas/reference.md
+      - Audiences: interfaces/index.md
+      - Bifrost: interfaces/index.md
+      - CLI: interfaces/index.md
+      - Lens: interfaces/index.md
+      - Metis: interfaces/index.md
+      - Notebook: interfaces/index.md
+      - Operations: interfaces/index.md
+      - Superset: interfaces/index.md
+      - Workbench: interfaces/index.md
+  - 'Getting started': 
+    - 'Getting Started': getting_started/index.md
+    - 'Installation': getting_started/installation.md
+    - 'Connect to data source': getting_started/connect_to_data_source.md
+    - 'Scan metadata': getting_started/scan_metadata.md
+    - 'Run ETL job': getting_started/run_etl_job.md
+  - Appendix: appendix.md
+  - Glossary: glossary.md
 
-         - Stacks:
-              - Introduction: resources/stacks.md
-              - Alpha: resources/stacks/alpha.md
-              - Beacon: resources/stacks/beacon.md
-              - Benthos: resources/stacks/benthos.md
-              - 'CLI Stack': resources/stacks/cli_stack.md
-              - Data Toolbox: resources/stacks/data_toolbox.md
-              - Flare: resources/stacks/flare.md
-              - Scanner: resources/stacks/scanner.md
-              - Soda: resources/stacks/soda.md
-              - Steampipe: resources/stacks/steampipe.md
+#   - Concepts: 
+#     - Resources:
+#       - Overview: resources.md
+#       - Bundle: resources/bundle.md
+#       - Cluster: resources/cluster.md
+#       - Compute: resources/compute.md
+#       - Database: resources/database.md
+#       - Depot: resources/depot.md
+#       - 'Instance Secret': resources/instance_secret.md 
+#       - Lakehouse: resources/lakehouse.md
+#       - Monitor: resources/monitor.md
+#       - Operator: resources/operator.md
+#       - Pager: resources/pager.md
+#       - Policy: resources/policy.md
+#       - Secret: resources/secret.md
+#       - Service: resources/service.md 
+#       - Worker: resources/worker.md
+#       - Workflow: resources/workflow.md 
+#       - Stacks:
+#         - Introduction: resources/stacks.md
+#         - Alpha: resources/stacks/alpha.md
+#         - Beacon: resources/stacks/beacon.md
+#         - Benthos: resources/stacks/benthos.md
+#         - 'CLI Stack': resources/stacks/cli_stack.md
+#         - Data Toolbox: resources/stacks/data_toolbox.md
+#         - Flare: resources/stacks/flare.md
+#         - Scanner: resources/stacks/scanner.md
+#         - Soda: resources/stacks/soda.md
+#         - Steampipe: resources/stacks/steampipe.md
 
                  
-    - Interfaces:
-         - Overview: interfaces.md
-         - Atlas: interfaces/atlas.md
-         - Audiences: interfaces/audiences.md
-         - Bifrost: interfaces/bifrost.md
-         - CLI: interfaces/cli.md
-         - Lens: interfaces/lens.md
-         - Metis: interfaces/metis.md
-         - Notebook: interfaces/notebook.md
-         - Operations: interfaces/operations.md
-         - Superset: interfaces/superset.md
-         - Workbench: interfaces/workbench.md        
+#     - Interfaces:
+#         - Overview: interfaces.md
+#         - Atlas: interfaces/atlas.md
+#         - Audiences: interfaces/audiences.md
+#         - Bifrost: interfaces/bifrost.md
+#         - CLI: interfaces/cli.md
+#         - Lens: interfaces/lens.md
+#         - Metis: interfaces/metis.md
+#         - Notebook: interfaces/notebook.md
+#         - Operations: interfaces/operations.md
+#         - Superset: interfaces/superset.md
+#         - Workbench: interfaces/workbench.md 
+#     - Architecture: architecture.md
+#     - Glossary: glossary.md
+#     - Videos: videos.md
+# #     - Tutorials:
+# #     - Guides:
+# #     - API:
+#     # - Reference: 
 
-# to be hidden from the top navigation bar on the webpages
-    - Architecture: architecture.md
-    - Glossary: glossary.md
-    - Videos: videos.md
+
+       
+
+# # to be hidden from the top navigation bar on the webpages

@@ -1,0 +1,22 @@
+name: "segment-app"
+version: v1
+type: policy
+layer: system
+description: "Allow user to access segment app rest apis"
+policy:
+  access:
+    subjects:
+      tags:
+        - - "dataos:u:user"
+    predicates:
+      - "GET"
+      - "POST"
+      - "OPTIONS"
+    objects:
+      paths:
+        - "/segmentapp/api/v1"
+    allow: true
+    metadata_conditions:
+      - type: date
+        options:
+          new: alpha
