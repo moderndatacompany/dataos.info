@@ -648,7 +648,7 @@ You can access these templates by visiting the following links: 
         - AWS access key
         - AWS secret key
 
-    === "Google Bigquery"
+    === "Google BigQuery"
 
         DataOS enables the creation of a Depot of type 'BIGQUERY' to read data stored in BigQuery projects. Multiple Depots can be created, each pointing to a different project. To create a Depot of type 'BIGQUERY', utilize the following template:
 
@@ -733,7 +733,7 @@ You can access these templates by visiting the following links: 
 
 === "Lakehouse or <br> Data Lake"
 
-    === "Amazon s3"
+    === "Amazon S3"
         DataOS provides the capability to establish a connection with the Amazon S3 buckets. We have provided the template for the manifest file to establish this connection. To create a Depot of type ‘S3‘, utilize the following template:
 
         <aside class=callout>
