@@ -583,7 +583,7 @@ Fastbase type-depots are optimized for handling streaming data workloads. It pro
 The catalogue of data sources accessible by one or more components within DataOS is provided on the following page: [Supported Connectors in DataOS](https://dataos.info/resources/depot/list_of_connectors/)
 
 
-## **Depot Configuration Templates**
+## **Templates of Depot for different source systems**
 
 To facilitate the creation of depots accessing commonly used data sources, we have compiled a collection of pre-defined manifest templates. These templates serve as a starting point, allowing you to quickly set up depots for popular data sources. 
 
@@ -957,10 +957,6 @@ You can access these templates by visiting the following links: 
 
         DataOS provides the capability to create a Depot of type 'PULSAR' for reading topics and messages stored in Pulsar. This Depot facilitates the consumption of published topics and processing of incoming streams of messages. To create a Depot of type 'PULSAR,' utilize the following template:
 
-        <aside class=callout>
-        🗣️ Please note that the credentials are directly specified in the depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](./instance_secret.md) as `secrets` or `dataosSecrets`.      
-        </aside>
-
         === "Inline Credentials"
 
             ```yaml title="pulsar_v1.yaml" 
@@ -969,18 +965,6 @@ You can access these templates by visiting the following links: 
             Follow these steps to create the depot: 
 
             - **Step 1**: Create a manifest file. 
-            - **Step 2**: Copy the template from above and paste it in a code.
-            - **Step 3**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
-            - **Step 4**: Apply the file through DataOS CLI.
-
-        === "Instance Secret Reference"
-
-            ```yaml title="pulsar_v2alpha.yaml" 
-            --8<-- "examples/resources/depot/streaming_source/apache_pulsar/pulsar_v2alpha.yaml"
-            ```
-            Follow these steps to create the depot: 
-
-            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about instance secret, refer to [Instance Secret](../resources/instance_secret.md). 
             - **Step 2**: Copy the template from above and paste it in a code.
             - **Step 3**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
             - **Step 4**: Apply the file through DataOS CLI.
@@ -1036,30 +1020,14 @@ You can access these templates by visiting the following links: 
 
         DataOS allows you to create a Depot of type 'KAFKA' to read live topic data. This Depot enables you to access and consume real-time streaming data from Kafka. To create a Depot of type 'KAFKA', utilize the following template:
 
-        <aside class=callout>
-        🗣️ Please note that the credentials are directly specified in the depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](./instance_secret.md) as `secrets` or `dataosSecrets`.      
-        </aside>
-
         === "Inline Credentials"
 
             ```yaml title="kafka_v1.yaml" 
-            --8<-- "examples/resources/depot/streaming_source/eventhub/eh_v1.yaml"
+            --8<-- "examples/resources/depot/streaming_source/kafka/kafka.yaml"
             ``` 
             Follow these steps to create the depot: 
 
             - **Step 1**: Create a manifest file. 
-            - **Step 2**: Copy the template from above and paste it in a code.
-            - **Step 3**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
-            - **Step 4**: Apply the file through DataOS CLI.
-
-        === "Instance Secret Reference"
-
-            ```yaml title="kafka_v2alpha.yaml" 
-            --8<-- "examples/resources/depot/streaming_source/eventhub/eh_v2alpha.yaml"
-            ```
-            Follow these steps to create the depot: 
-
-            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about instance secret, refer to [Instance Secret](../resources/instance_secret.md). 
             - **Step 2**: Copy the template from above and paste it in a code.
             - **Step 3**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
             - **Step 4**: Apply the file through DataOS CLI.
