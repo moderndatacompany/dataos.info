@@ -10,15 +10,12 @@ depot:
   type: OPENSEARCH           
   description: {{description}}
   external: {{true}}
-  connectionSecret:                
-    - acl: rw
-      values:
-        username: {{username}}
-        password: {{password}}
-    - acl: r
-      values:
-        username: {{opensearch-username}}
-        password: {{opensearch-password}}
+  secrets:
+    - name: {{sf-instance-secret-name}}-r
+      allkeys: true
+
+    - name: {{sf-instance-secret-name}}-rw
+      allkeys: true
   elasticesearch:                           
     nodes:
       - {{nodes}}

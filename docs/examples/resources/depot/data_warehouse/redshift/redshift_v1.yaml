@@ -15,9 +15,12 @@ depot:
     bucket: {{tmdc-dataos}}
     relativePath: {{development/redshift/data_02/}}
   external: {{true}}
-  secrets:
-    - name: {{redshift-instance-secret-name}}-r
-      allkeys: true
+  connectionSecret:
+    - acl: {{rw}}
+      type: key-value-properties
+      data:
+        username: {{username}}
+        password: {{password}}
+        awsaccesskeyid: {{access key}}
+        awssecretaccesskey: {{secret key}}
 
-    - name: {{redshift-instance-secret-name}}-rw
-      allkeys: true
