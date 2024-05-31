@@ -1,5 +1,5 @@
 ---
-title: Soda
+title: dbt
 search:
   boost: 2
 ---
@@ -14,9 +14,9 @@ dbt (data build tool) is a declarative [Stack](../stacks.md) within DataOS, acti
 
 **Prerequisites**
 
-  - **Basic to intermediate SQL:** if you know how to use the WHERE and GROUP BY clauses, you are good to go.
+   -  **Basic to intermediate SQL:** proficiency in utilizing the WHERE and GROUP BY clauses is essential.
 
-  - **Basics of data warehouses:** fundamental knowledge of data engineering is a giant plus. It shouldn’t be necessarily deep but enough to understand some of the key terms.
+   -  **Basics of data warehouses:** a foundational understanding of data engineering is highly beneficial. It doesn't need to be extensive, but grasping key concepts is important.
 
 # How to create and use dbt workflow?
 
@@ -27,7 +27,7 @@ dbt operates as a Stack that can be orchestrated through a [Workflow](../workflo
 **A DBT workflow is composed of the following sections:** 
 
 - [Workflow-specific section](#configure-the-dbt-workflow-specific-section)
-- [Stack-specific section]
+- [Stack-specific section]()
 
 
 ### **Configure the DBT Workflow-specific section**
@@ -36,23 +36,24 @@ The Workflow-specific section contains configurations specific to the Workflow R
 
 The code snippet provided below shows a sample Workflow manifest.
 
-??? Code Snippet for dbt Workflow manifest
-    
-  ```yaml
-    name: {{dbt-workflowname}}
+
+=== "Syntax"
+
+    ```yaml title="syntax_resource_pager_meta_section.yaml"
+    name: ${dbt-workflowname}
     version: v1
     type: workflow
     tags:
-      - {{tag1}}
-    description: {{DBT Sample Workflow}}
-    workspace: public
+      - ${tag1}
+    description: ${DBT Sample Workflow}
+    workspace: sandbox
     workflow:
       dag:
-        - name: {{dbt-jobname}}
-          title: {{title}}
+        - name: ${dbt-jobname}
+          title: ${title}
           spec:
             stack: dbt+python:1.0
-            compute: {{compute-name}}
+            compute: ${compute-name}
             resources:
               requests:
                 cpu: 1000m
@@ -60,10 +61,40 @@ The code snippet provided below shows a sample Workflow manifest.
               limits:
                 cpu: 1000m
                 memory: 250Mi
-            logLevel: {{log-level}}
+            logLevel: ${log-level}
             stackSpec:
               #stack specific section
-  ```
+    ```
+
+=== "Sample"  
+
+    ```yaml title="syntax_resource_pager_meta_section.yaml"
+    name: dbt-workflow-v01
+    version: v1
+    type: workflow
+    tags:
+      - tag1
+    description: DBT Sample Workflow
+    workspace: sandbox
+    workflow:
+      dag:
+        - name: dbt-workflow-job-v2
+          title: dbt Sample Test Jobs
+          spec:
+            stack: dbt+python:1.0
+            compute: 
+            resources:
+              requests:
+                cpu: 1000m
+                memory: 250Mi
+              limits:
+                cpu: 1000m
+                memory: 250Mi
+            logLevel: INFO
+            stackSpec:
+               #stack specific section
+    ```
+
 
 ### **Declare the configuration for DBT `stackSpec` section**
 
@@ -71,35 +102,72 @@ The [Workflow](../workflow.md) Resource comprises of a `stackSpec` section (or a
 
 The manifest below shows a sample structure of the DBT `stackSpec` Section:
 
-??? Code Snippet for `stackSpec` section 
+=== "Syntax"
 
     ```yaml 
     stackSpec:
-            profiles:
-              my_new_project:
-                target: dev
-                outputs:
-                  dev:
-                    type: {{data platform type}}
-                      ## database- specific connection details
-  
-            dbt_project:
-              name: 'my_new_project'
-              version: '1.0.0'
-              config-version: 2
-              model-paths: ${path of the model}
-              
-              profile: 'my_new_project'
-              target-path: "target"  # directory which will store compiled SQL files
-              clean-targets:         # directories to be removed by `dbt clean`
-                - "target"
-                - "dbt_packages"
-              models:
-                ${modelname}:
-                    +materialized: view
-            dbt_packages:
-              packages:
-                - git: "https://github.com/dataos/dbt101.git"
+      profiles:
+        my_new_project:
+          target: ${dev}
+          outputs:
+            dev:
+              type: ${data platform type}
+                #database- specific connection details
+
+      dbt_project:
+        name: ${project_name}
+        version: '1.0.0'
+        config-version: 2
+        model-paths: ${path of the model}
+        profile:  ${project_name}
+        target-path: "target"  #directory which will store compiled SQL files
+        clean-targets:         #directories to be removed by `dbt clean`
+          - "target"
+          - "dbt_packages"
+        models:
+          ${modelname}:
+              +materialized: view
+
+      dbt_packages:
+        packages:
+          - git: "https://github.com/dataos/dbt101.git"
+    ```
+
+=== "Sample"
+
+    ```yaml 
+    stackSpec:
+      profiles:
+        dbtlearnnew:
+          target: dev
+          outputs:
+            dev:
+              type: snowflake
+              account: wylos-aidb-aq8123
+                #account_id
+              user: iamgroot
+              password: iamgroot@123
+              database: SAMPLEDB
+              warehouse: COMPUTE_WH
+              schema: PUBLIC
+              role: DBTADMIN
+              threads: 4
+      dbt_project:
+        name: 'dbtlearnnew'
+        version: '1.0.0'
+        config-version: 2
+        model-paths: ["models"]
+        profile: 'dbtlearnnew'
+        target-path: "target"  #directory which will store compiled SQL files
+        clean-targets:         #directories to be removed by `dbt clean`
+          - "target"
+          - "dbt_packages"
+        models:
+          dbtlearnnew:
+                +materialized: view
+      dbt_packages:
+        packages:
+          - git: "https://github.com/dataos/dbt101.git"
     ```
 
 ### Stack spec section
@@ -114,66 +182,104 @@ Each of these sections is mapping and comprises several section-specific attribu
 
 ### **Profiles section**
 
-The `profiles.yml` file is a configuration file that specifies connection details for target databases. It includes information such as database type, host, username, password, and other relevant settings to connect to the data warehouse/platform.
+The `profiles.yml` file is a configuration file that specifies connection details for target databases. It includes information to connect to the data warehouse/platform.
 
-??? **Sample dbt profile**
-   ```yaml
+=== "Syntax"
+
+    ```yaml
     profiles:
-    	<profile-name>:
-    	  target: dev
-    	  outputs:
-    	    dev:
-    	      type: <bigquery | postgres | redshift | snowflake | other>
-    	      threads: 4
-    	      # database-specific connection details
-   ```
+      <profile-name>:
+        target: dev
+        outputs:
+          dev:
+            type: <bigquery | postgres | redshift | snowflake >
+            threads: 4
+            #database-specific connection details
+    ```
 
-The following table provides a comprehensive overview of the various attributes within the Profile-specific Section
+=== "Sample"
+
+    ```yaml
+    profiles:
+      my_new_project:
+        target: dev
+        outputs:
+          dev:
+            type: snowflake 
+            threads: 4
+            #datawarehouse-specific connection details
+    ```
+
+The following table provides a comprehensive overview of the various attributes within the Profile-specific Section.
     
 **Common Attributes**
 
 | Attributes | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| `profile` | mapping | none | The profile dbt uses to connect to data platform | mandatory |
-| `target` | string | none | dev, prod | mandatory |
-| `outputs` | mapping | none | - | mandatory |
+| `profile` | mapping | none |  my_project | mandatory |
+| `target` | string | none | dev| mandatory |
+| `outputs` | mapping | none | dev | mandatory |
 | `type` | string | none | bigquery, postgres | mandatory |
-| `threads` | string | none | Number of threads for dbt execution | mandatory |
+| `threads` | string | none | [1-4] | mandatory |
+
+<!-- Number of threads for dbt execution
+The profile dbt uses to connect to data platform -->
 
 ### **Project section**
 
-The `dbt_project.yml` serves as the primary configuration fil which informs DBT about the context of your project and how to transform your data.
+The `dbt_project.yml` serves as the primary configuration file which informs DBT about the context of your project and how to transform your data.
 
 It is crucial for  DRY (Don't Repeat Yourself) analytics code. Essentially, it acts as the repository for project-wide default configurations, and all objects will inherit from it unless overridden at the model level.
 
 To know about how to structure the project [Project structure](https://www.notion.so/Project-structure-8b04c17cbf684271ac8c916077d5f786?pvs=21)
 
+=== "Syntax"
 
-??? **Sample dbt project** title="dbt_project.yml"
-    
- ```  yaml
-  # Project names should contain only lowercase characters and underscores.
-  name: 'training_dbt'
-  version: '1.0.0'
-  config-version: 2
+    ```yaml title="syntax_dbt_project_section.yaml" 
+    #Project names should contain only lowercase characters and underscores.
+    name: ${project_name}
+    version: ${project_version}
+    config-version: 2
 
-  # This setting configures which "profile" dbt uses for this project.
-  profile: 'training_dbt'
+    #This setting configures which "profile" dbt uses for this project.
+    profile: ${profile_name}
 
-  # These configurations specify where dbt should look for different types of files.
-  # The `model-paths` config, for example, states that models in this project can be
-  # found in the "models/" directory. You probably won't need to change these!
-  model-paths: ["models"]
+    #These configurations specify where dbt should look for different types of files.
+    #The `model-paths` config, for example, states that models in this project can be
+    #found in the "models/" directory. You probably won't need to change these!
+    model-paths: [${model_paths}]
 
-  # Configuring models
-  models:
-    training_dbt:
-      example:
-      # Config indicated by + and applies to all files under models/example/
-      +materialised: view
-  ```
-    
-Attributes of profile in stackSpec section
+    #Configuring models
+    models:
+      ${project_name}:
+        ${model_group}:
+        #Config indicated by + and applies to all files under models/example/
+        +materialised: ${materialisation}
+    ```
+
+=== "Sample"
+      
+   ```yaml title="sample_dbt_project_section.yaml" 
+   name: training_dbt
+   version: 1.0.0
+   config-version: 2
+
+   profile: training_dbt
+
+     #These configurations specify where dbt should look for different types of files.
+     #The model-paths config, for example, states that models in this project can be
+     #found in the "models/" directory. You probably won't need to change these!
+     model-paths: [models]
+
+     #Configuring models
+     models:
+       training_dbt:
+         example:
+         #Config indicated by + and applies to all files under models/example/
+         +materialised: view
+    ```
+
+**Attributes of profile in `stackSpec` section**
 
 | Attributes | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
@@ -191,83 +297,97 @@ Attributes of profile in stackSpec section
 | `clean-targets` | list of strings  | none | List of clean targets for the project | optional |
 | `models` | list of dictionaries | none | List of model configurations | mandatory |
 
-[Attribute of dbt `stackSpec` ****section](https://www.notion.so/Attribute-of-dbt-stackSpec-section-6150f99201844a99a3c9e8a6f4aead5e?pvs=21)
+[Attribute of dbt `stackSpec` section](https://www.notion.so/Attribute-of-dbt-stackSpec-section-6150f99201844a99a3c9e8a6f4aead5e?pvs=21)
 
 ### `dbt_packages`
 
 The `dbt_packages` section is designed to specify the dbt projects that you wish to incorporate as dependencies. These projects, referred to as dbt packages, can be seamlessly integrated into your own dbt project, fostering modularity and code sharing.
 
-```yaml
-dbt_packages:
-	packages:
-  - git: <GIT_REPO_URL>
-```
+=== "Syntax"
 
-## Code samples
-
-- Sample manifest for dbt stack orchestrated using a Workflow
+    ```yaml
+    dbt_packages:
+      packages:
+      - git: <GIT_REPO_URL>
+    ```
+=== "Sample"
     
-```yaml
-  dbt_packages:
-    packages:
-      - git: "https://github.com/iamgroot/dbt-101.git"
-```
-    
+    ```yaml
+    dbt_packages:
+      packages:
+        - git: "https://github.com/iamgroot/dbt-101.git"
+    ```
+      
 **Apply the manifest using CLI**
 
 Use the apply command to apply the workflow using CLI.
 
-```shell
-dataos-ctl resource apply -f ${{path/file-name}} -w ${{workspace}} # By default the workspace is public
-```
+=== "Command"
+
+    ```shell
+    dataos-ctl resource apply -f ${yaml-file-path} -w ${workspace-name}
+    #or
+    dataos-ctl apply -f ${yaml-file-path} -w ${workspace-name}
+    ```
+=== "Example"
+
+    ```shell
+    dataos-ctl resource apply -f dbt.yaml -w sandbox # By default the workspace is public
+    #or
+    dataos-ctl apply -f dbt.yaml -w sandbox
+    ```
 
 **Get Status of the Workflow**
 
-command:
+=== "Command"
 
-```shell
-dataos-ctl resource get -t workflow -w public
-```
+    ```shell
+    dataos-ctl resource get -t ${workspace-name} -w {sandbox} -n ${workflow-name}
+    ```
 
-Output:
+=== "Example"
 
-```sql
-INFO[0000] 🔍 get...
-INFO[0001] 🔍 get...complete
+    ```shell
+    dataos-ctl resource get -t workflow -w sandbox -n dbt-worfklow-v01
+    #Expected Output
+    INFO[0000] 🔍 get...
+    INFO[0001] 🔍 get...complete
 
-          NAME        | VERSION |   TYPE   | WORKSPACE | STATUS | RUNTIME |   OWNER
-----------------------|---------|----------|-----------|--------|---------|-------------
-   dbt-workflow-v01   |   v1    | workflow |   public  | active | running |   tmdc
-```
+              NAME        | VERSION |   TYPE   | WORKSPACE | STATUS | RUNTIME |   OWNER
+    ----------------------|---------|----------|-----------|--------|---------|-------------
+      dbt-workflow-v01   |   v1    | workflow |   sandbox  | active | running |   tmdc
+    ```
 
 To check this information for all users in a specific Workspace, add the `-a` flag to the command as shown below.
 
-Command:
+=== "Command"
 
-```sql
-dataos-ctl resource get -t workflow -w public -a
-```
+    ```shell
+    dataos-ctl resource get -t workflow -w ${workspace-name} -a
+    ```
 
-Output:
+=== "Example"
 
-```sql
-INFO[0000] 🔍 get...
-INFO[0001] 🔍 get...complete
+    ```shell
+    dataos-ctl resource get -t workflow -w sandbox -a
+    #Expected Output
+    INFO[0000] 🔍 get...
+    INFO[0001] 🔍 get...complete
 
-          NAME           | VERSION |   TYPE   | WORKSPACE | STATUS |  RUNTIME  |       OWNER
--------------------------|---------|----------|-----------|--------|-----------|--------------------
-  dbt-workflow-v01       | v1      | workflow | public    | active | succeeded | wonderwoman
-  cnt-product-demo-01    | v1      | workflow | public    | active | running   | tmdc
-  cnt-product-demo-01-01 | v1      | workflow | public    | active | failed    | otheruser
-  cnt-city-demo-01001    | v1      | workflow | public    | active | succeeded | iamgroot
-```
+              NAME           | VERSION |   TYPE   | WORKSPACE | STATUS |  RUNTIME  |       OWNER
+    -------------------------|---------|----------|-----------|--------|-----------|--------------------
+      dbt-workflow-v01       | v1      | workflow | sandbox    | active | succeeded | wonderwoman
+      cnt-product-demo-01    | v1      | workflow | sandbox    | active | running   | tmdc
+      cnt-product-demo-01-01 | v1      | workflow | sandbox    | active | failed    | otheruser
+      cnt-city-demo-01001    | v1      | workflow | sandbox    | active | succeeded | iamgroot
+    ```
 
 **Get Runtime Information**
 
 To refresh or see updates on the Workflow progress, add the `-r` flag to the `[get runtime](https://dataos.info/interfaces/cli/command_reference/#get-runtime)` command:
 
 ```bash
-dataos-ctl -i get runtime " cnt-product-demo-01 | v1 | workflow | public" -r
+dataos-ctl -i get runtime " cnt-product-demo-01 | v1 | workflow | sandbox" -r
 ```
 
 Press `Ctrl + C` to exit.
@@ -326,7 +446,6 @@ For any additional flags, use help by appending `-h` with the respective command
     - Summarize payment amounts based on different payment types and order statuses.
     
     ```sql
-    
     -- int_payment_type_amount.sql
     with order_payments as (
         select * from {{ ref('stg_stripe_payment') }}
@@ -378,7 +497,6 @@ For any additional flags, use help by appending `-h` with the respective command
     )
     
     select * from customers
-    
     ```
     
     **Order Fact Creation:**
@@ -388,9 +506,7 @@ For any additional flags, use help by appending `-h` with the respective command
         - Introduce a flag (`is_order_completed`) indicating whether an order is completed or not based on its status.
     
     ```sql
-    
     -- fact_table
-    
     with orders as (
         select * from {{ ref('stg_jaffle_shop_orders' )}}
     ),
@@ -411,7 +527,6 @@ For any additional flags, use help by appending `-h` with the respective command
         end as is_order_completed
     from orders as ord
     left join payment_type_orders as pto ON ord.order_id = pto.order_id
-    
     ```
     
     1. **`fact_orders.sql`:**
@@ -483,7 +598,6 @@ For any additional flags, use help by appending `-h` with the respective command
     30,49.999,Silver
     50,9999999,Gold
     ```
-    
     run command to materialize CSV file into a table in data platform.
     
     ### Analyses Folder
@@ -538,57 +652,4 @@ For any additional flags, use help by appending `-h` with the respective command
         It will give each customer the total
         amount paid and its corresponding range
         
-        ### Documentation
-        
-        Example: _core_models.yml—YAML file with description parameter
-        
-        ```sql
-        version: 2
-        models:
-        - name: fct_orders
-        description: Analytical orders data.
-        columns:
-        - name: order_id
-        description: Primary key of the orders.
-        - name: customer_id
-        description: Foreign key of customers_id at dim_customers.
-        - name: order_date
-        description: Date that order was placed by the customer.
-        - name: cash_amount
-        description: Total amount paid in cash by the customer with "success" payment
-        status.
-        - name: credit_amount
-        description: Total amount paid in credit by the customer with "success"
-        payment status.
-        - name: total_amount
-        description: Total amount paid by the customer with "success" payment status.
-        - name: is_order_completed
-        description: "{{ doc('is_order_completed_docblock') }}"
-        - name: dim_customers
-        description: Customer data. It allows you to analyze customers perspective linked
-        facts.
-        columns:
-        - name: customer_id
-        description: Primary key of the customers.
-        - name: first_name
-        description: Customer first name.
-        - name: last_name
-        description: Customer last name.
-        ```
-        
-        Example: _core_doc.md—markdown file with a doc block
-        
-        ```sql
-        
-        {% docs is_order_completed_docblock %}
-        Binary data which states if the order is completed or not, considering the order
-        status. It can contain one of the following values:
-        | is_order_completed | definition
-        |
-        |--------------------|-----------------------------------------------------------|
-        | 0
-        | An order that is not completed yet, based on its status
-        |
-        | 1
-        ```
-
+       

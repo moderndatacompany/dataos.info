@@ -1452,7 +1452,7 @@
 
 <div class="grid" markdown>
 
-"Syntax"
+=== "Syntax"
 
     ```yaml
     functions:
@@ -1460,6 +1460,10 @@
         column: col_001
         method: trim
     ```
+
+=== "Example"
+
+
 </div>
 
 ### **`unfurl`**
@@ -1483,7 +1487,7 @@
 === "Example"
 
     ```yaml title="unfurl.yaml" hl_lines="51-55"
-      --8<-- "examples/resources/stacks/flare/functions/unfurl.yaml"             
+      --8<-- "examples/resources/stacks/flare/functions/unfurl.yaml" 
     ```
     Before
 

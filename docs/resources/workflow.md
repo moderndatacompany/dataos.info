@@ -135,10 +135,8 @@ The below table summarizes various attributes within the Workflow-specific secti
 | [`schedule`](./workflow/yaml_configuration_attributes.md#schedule) | mapping | none | none | optional**  |
 | [`cron`](./workflow/yaml_configuration_attributes.md#cron) | string | none | any valid [cron](https://en.wikipedia.org/wiki/Cron) expression. | optional**  |
 | [`concurrencyPolicy`](./workflow/yaml_configuration_attributes.md#concurrencypolicy) | string | Allow | Allow/Forbid/Replace | optional |
-| [`startOn`](./workflow/yaml_configuration_attributes.md#starton) | string | none | any time provided in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. | optional |
 | [`endOn`](./workflow/yaml_configuration_attributes.md#endon) | string | none | any time provided in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. | optional |
-| [`completeOn`](./workflow/yaml_configuration_attributes.md#completeon) | string | none | any time provided in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. | optional |
-| [`title`](./workflow/yaml_configuration_attributes.md#title) | string | none | any valid string | optional |
+| [`timezone`](./workflow/yaml_configuration_attributes.md#title) | string | none | any time zone provided in [Timezones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) | optional |
 
 </center>
 
