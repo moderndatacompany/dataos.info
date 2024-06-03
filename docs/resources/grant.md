@@ -3,11 +3,7 @@ search:
   exclude: true
 ---
 
-<<<<<<< HEAD
-A grant links the Subject-Predicate-Object relationship, generating an [access policy](./policy/#types-of-policies). Through grant, administrators assign use cases to subjects, granting them access to specific parts of the system or data. This level of detail in access control enables administrators to regulate user interactions effectively. Grants facilitate the assignment of use cases to multiple roles and users, providing flexibility in access management. Grants can be implemented via [CLI](../interfaces/cli.md) or through the [Bifrost](../interfaces/bifrost_new.md) Interface. To learn about how  to create grant through Bifrost click [here](../interfaces/bifrost_new/grants.md#how-to-create-policy-use-case-grant).
-=======
 # Grant
->>>>>>> 42f012fc8ff8a89483fa154c8d1af8d4dc06c0e5
 
 A Grant [Resource](/resources/) links the Subject-Predicate-Object relationship, generating an access [policy](.././resources/policy.md). Through grants, administrators assign use cases to subjects either as users or roles, granting them access to specific parts of the system or data. This level of detail in access control enables administrators to regulate user interactions effectively. Grants facilitate the assignment of use cases to multiple roles and users, providing flexibility in access management. Grants can be implemented via [CLI](../interfaces/cli.md) or through the [Bifrost](../interfaces/bifrost_new.md) Interface. To learn about how  to create grant through Bifrost click [here](../interfaces/bifrost_new/grants.md#how-to-create-policy-use-case-grant).
 
@@ -115,27 +111,13 @@ The Grant-specific section of a Grant manifest comprises attributes-specific to 
         notes: the user test-user needs to runasathe test-developer for data dev purposes
         approve: false
       ```
-
 | Attribute          | Data Type        | Default Value | Possible Values                                | Requirement |
 |--------------------|------------------|---------------|------------------------------------------------|-------------|
-<<<<<<< HEAD
-| [`grant`](./grant/manifest_attribute.md#grant)               | mapping          | none          | valid grant-specific attributes               | mandatory   |
-| [`policy_use_case_id`](./grant/manifest_attribute.md#policy_use_case_id) | string           | none          | Unique identifier for the policy use case      | mandatory   |
-| [`subjects`](./grant/manifest_attribute.md#subjects)            | list of strings  | none          | List of subject identifiers                    | optional    |
-| [`values`](./grant/manifest_attribute.md#values)              | list of mapping  | none          | List of key-value pairs representing values   | mandatory   |
-| [`approve`](./grant/manifest_attribute.md#approve)             | boolean          | false         | true, false                                    | optional    |
-| [`requester`](./grant/manifest_attribute.md#requester)           | string           | none          | Unique identifier for the requester            | optional    |
-| [`notes`](./grant/manifest_attribute.md#notes)               | string           | none          | Textual notes or comments                      | optional    |
-| [`collection`](./grant/manifest_attribute.md#collection)          | string           | none          | Unique identifier for the collection           | optional    |
-| [`manageAsUser`](./grant/manifest_attribute.md#manageAsUser)       | string           | none          | UserID of the Use Case Assignee                | optional    |
-
-
-To know more  about the grant attributes click [here](./grant/manifest_attribute.md)
-=======
 | [`grant`](./grant/manifest_attributes.md#grant)               | mapping          | none          | valid grant-specific attributes               | mandatory   |
 | [`policy_use_case_id`](./grant/manifest_attributes.md#policy_use_case_id) | string           | none          | Unique identifier for the policy use case      | mandatory   |
 | [`subjects`](./grant/manifest_attributes.md#subjects)            | list of strings  | none          | List of subject identifiers                    | optional    |
 | [`values`](./grant/manifest_attributes.md#values)              | list of mapping  | none          | List of key-value pairs representing values   | mandatory   |
+| [`path`](./grant/manifest_attributes.md#path)                 | string           | none          | valid path string indicating the resource location | optional    |
 | [`approve`](./grant/manifest_attributes.md#approve)             | boolean          | false         | true, false                                    | optional    |
 | [`requester`](./grant/manifest_attributes.md#requester)           | string           | none          | Unique identifier for the requester            | optional    |
 | [`notes`](./grant/manifest_attributes.md#notes)               | string           | none          | Textual notes or comments                      | optional    |
@@ -144,7 +126,6 @@ To know more  about the grant attributes click [here](./grant/manifest_attribute
 
 
 To know more  about the grant attributes click [here](./grant/manifest_attributes.md)
->>>>>>> 42f012fc8ff8a89483fa154c8d1af8d4dc06c0e5
 
 <aside class="callout">
 🗣  By default, the `approve` attribute is set to false. This signifies that grants specified in this YAML file are not automatically approved. Instead, they will appear as requests in the grant request section.

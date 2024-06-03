@@ -58,8 +58,8 @@
     ```
 === "Example"
 
-    ```yaml title="any_date.yaml" hl_lines="51-58"
-      --8<-- "examples/resources/stacks/flare/functions/any_date.yaml"                 
+    ```yaml
+      --8<-- "examples/resources/stacks/flare/functions/any_date.yaml"               
     ```
     Output
 

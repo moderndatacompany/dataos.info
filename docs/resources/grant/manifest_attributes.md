@@ -15,10 +15,11 @@ grant:
   - users:id:test-user
   values:
     run-as-dataos-resource: 
-    - path : ${valid-path}
+     - path : ${valid-path}
   requester: iamgroot
   notes: the user test-user needs to runas the test-developer for data dev purposes
   approve: false
+  manageAsUser: iamgroot
 ```
 
 ### Attributes of Grant Resource
