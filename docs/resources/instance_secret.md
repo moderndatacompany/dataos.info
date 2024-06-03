@@ -410,7 +410,7 @@ dataosSecrets:
 
 </aside>
 
-## Instance Secret Templates
+## Templates for Instance Secret of different source systems
 
 
 <div class="grid" markdown>
