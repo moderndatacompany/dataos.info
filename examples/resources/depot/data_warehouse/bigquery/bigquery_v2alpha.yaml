@@ -1,0 +1,23 @@
+name: {{depot-name}}
+version: v2alpha
+type: depot
+tags:
+  - {{dropzone}}
+  - {{bigquery}}
+owner: {{owner-name}}
+layer: user
+depot:
+  type: BIGQUERY                 
+  description: {{description}}
+  external: {{true}}
+  secrets:
+    - name: {{bq-instance-secret-name}}-r
+      allkeys: true
+
+    - name: {{bq-instance-secret-name}}-rw
+      allkeys: true
+  bigquery:                           
+    project: {{project-name}}
+    params:
+      {{"key1": "value1"}}
+      {{"key2": "value2"}}

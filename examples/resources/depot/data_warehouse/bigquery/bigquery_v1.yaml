@@ -1,0 +1,32 @@
+name: {{depot-name}}
+version: v1
+type: depot
+tags:
+  - {{dropzone}}
+  - {{bigquery}}
+owner: {{owner-name}}
+layer: user
+depot:
+  type: BIGQUERY                 
+  description: {{description}}
+  external: {{true}}
+  connectionSecret:            
+    - acl: rw
+      type: key-value-properties
+      data:
+        projectid: {{project-name}}
+        email: {{email-id}}
+      files:
+        json_keyfile: {{json-file-path}}
+    - acl: r
+      type: key-value-properties
+      data:
+        projectid: {{project-name}}
+        email: {{email-id}}
+      files:
+        json_keyfile: {{json-file-path}}
+  spec:                           
+    project: {{project-name}}
+    params:
+      {{"key1": "value1"}}
+      {{"key2": "value2"}}
