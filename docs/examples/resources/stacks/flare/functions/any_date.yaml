@@ -50,7 +50,9 @@ workflow:
 
                 functions:
                   - name: any_date 
-                    column: {{date_string_column_name}} 
-                    asColumn: {{column_name}} 
+                    column: date
+                    asColumn: new_date_format
                     rule: 
-                      - "【(?<year>\\d{4})\\W{1}(?<month>\\d{1,2})\\W{1}(?<day>\\d{1,2})[^\\d]? \\W*(?:at )?(?<hour>\\d{1,2}):(?<minute>\\d{1,2})(?::(?<second>\\d{1,2}))?(?:[.,](?<ns>\\d{1,9}))?(?<zero>z)?】"
+                      - "[(?<year>\\d{4})\\W{1}(?<month>\\d{1,2})\\W{1}(?<day>\\d{1,2})[^\\d]? \\
+                        W*(?:at )?(?<hour>\\d{1,2}):(?<minute>\\d{1,2})(?::(?<second>\\d{1,2}))?(?:[.,]
+                        (?<ns>\\d{1,9}))?(?<zero>z)?]"
