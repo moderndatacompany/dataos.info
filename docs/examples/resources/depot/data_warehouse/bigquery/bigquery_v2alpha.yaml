@@ -8,7 +8,7 @@ owner: {{owner-name}}
 layer: user
 depot:
   type: BIGQUERY                 
-  description: {{description}}
+  description: {{description}} # optional
   external: {{true}}
   secrets:
     - name: {{bq-instance-secret-name}}-r
@@ -16,8 +16,8 @@ depot:
 
     - name: {{bq-instance-secret-name}}-rw
       allkeys: true
-  bigquery:                           
-    project: {{project-name}}
-    params:
+  bigquery:  # optional                         
+    project: {{project-name}} # optional
+    params: # optional
       {{"key1": "value1"}}
       {{"key2": "value2"}}
