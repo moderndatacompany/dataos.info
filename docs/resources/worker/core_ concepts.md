@@ -1,4 +1,4 @@
-# Core Concepts: Worker
+# Worker: Core Concepts
 
 ## Key Characteristics
 
@@ -9,6 +9,8 @@
 - **Specialized Execution**: Worker is a self-contained system, an independent entity, ideal for executing specific tasks within a larger application, providing focused functionality.
 - **Autoscalability**: Workers can be autoscaled to handle larger workloads, making them highly adaptable.
 - **Robustness**: Workers are perfect for use cases where robustness and continuous execution are essential.
+
+A Worker is a runnable Resource, meaning it possesses a runtime, similar to a Workflow and a Service. While these Resources share some similarities, they also have distinct differences. For a detailed comparison, refer to the following link: [Workflow vs. Service vs. Worker](/workflow_vs_service_worker.md)
 
 ## Workflow, Service, and Worker: Key Differences
 

@@ -273,17 +273,17 @@ nav:
         - 'Explanation': resources/volume/explanation.md
       - Worker: 
         - resources/worker/index.md
-        - 'Quick Start': resources/worker/quick_start_guide.md
-        - 'How to Guide':
+        - 'Getting started': resources/worker/getting_started.md
+        - 'Recipes':
           - resources/worker/how_to_guide/index.md
-        - 'Reference': resources/worker/reference.md
-        - 'Explanation': resources/worker/explanation.md
+        - 'Configuration': resources/worker/configuration.md
+        - 'Core Concepts': resources/worker/core_concepts.md
       - Workflow: 
         - resources/workflow/index.md
         - 'Quick Start': resources/workflow/quick_start_guide.md
         - 'How to Guide':
           - resources/workflow/how_to_guide/index.md
-        - 'Reference': resources/workflow/reference.md
+        - 'Configuration': resources/workflow/reference.md
         - 'Explanation': resources/workflow/explanation.md
     - Interfaces:
       - interfaces/index.md
