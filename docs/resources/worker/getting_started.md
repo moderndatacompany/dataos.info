@@ -10,11 +10,12 @@ In DataOS, different actions require specific use cases that grant the necessary
 
 | **Action** | **Required Use Cases** |
 |------------|------------------------|
-| Create     | Read Workspace         |
-| Apply      | Read Workspace         |
 | Get        | Read Workspaces, Read Resources in User Specified Workspace / Read Resources in User Workspaces (for public and sandbox workspaces) |
-| Delete     | Update                 |
-| Log        | Update                 |
+| Create     | Create and Update Resources in User Workspace       |
+| Apply      | Create and Update Resources in User Workspace          |
+| Delete     | Delete Resources in User Workspace               |
+| Log        | Read Resource Logs in User Workspace                 |
+
 
 To assign use cases, you can either contact the DataOS Operator or create a Grant Request by creating a Grant Resource. The request will be validated by the DataOS Operator.
 
