@@ -10,11 +10,9 @@
 - **Autoscalability**: Workers can be autoscaled to handle larger workloads, making them highly adaptable.
 - **Robustness**: Workers are perfect for use cases where robustness and continuous execution are essential.
 
-A Worker is a runnable Resource, meaning it possesses a runtime, similar to a Workflow and a Service. While these Resources share some similarities, they also have distinct differences. For a detailed comparison, refer to the following link: [Workflow vs. Service vs. Worker](/workflow_vs_service_worker.md)
-
 ## Workflow, Service, and Worker: Key Differences
 
-[Workflow](./workflow.md), [Service](./service.md), and Worker are distinct [DataOS Resources](../resources.md), each with unique roles in the ecosystem. Data developers often face the dilemma of deciding when to use a Workflow, a Service, or a Worker in the DataOS environment. To aid in this decision-making process, the following table compares Workflow, Service, and Worker comprehensively, helping developers understand their distinct characteristics and optimal use cases within the DataOS ecosystem.
+[Workflow](./workflow.md), [Service](./service.md), and Worker are distinct runnable [DataOS Resources](../resources.md), each with unique roles in the ecosystem. Data developers often face the dilemma of deciding when to use a Workflow, a Service, or a Worker in the DataOS environment. To aid in this decision-making process, the following table compares Workflow, Service, and Worker comprehensively, helping developers understand their distinct characteristics and optimal use cases within the DataOS ecosystem.
 
 | Characteristic | Workflow | Service | Worker |
 | --- | --- | --- | --- |

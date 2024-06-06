@@ -8,10 +8,14 @@
 
 ## Configuration
 
-### **Resource meta section configuration**
+### **Resource meta section**
+
+This section serves as the header of the manifest file, defining the overall characteristics of the Worker Resource you wish to create. It includes attributes common to all types of Resources in DataOS. These attributes help DataOS in identifying, categorizing, and managing the Resource within its ecosystem. To learn about the Resources of this section, refer to the following link: [Attributes of Resource meta section]().
 
 
-### **Worker-specific section configuration**
+### **Worker-specific section**
+
+This section comprises attributes specific to the Worker Resource. The attributes within the section are listed below:
 
 
 #### **`worker`**
@@ -404,7 +408,7 @@ topology:
       - new2
 ```
 
-### **Stack-specific section configuration**
+### **Stack-specific section**
 
 #### **`stackSpec`**
 

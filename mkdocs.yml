@@ -273,9 +273,12 @@ nav:
         - 'Explanation': resources/volume/explanation.md
       - Worker: 
         - resources/worker/index.md
-        - 'Getting started': resources/worker/getting_started.md
+        - 'First Steps': resources/worker/first_steps.md
         - 'Recipes':
-          - resources/worker/how_to_guide/index.md
+          - 'Autoscale Workers': resources/worker/how_to_guide/autoscale_workers.md
+          - 'Referring Secrets': resources/worker/how_to_guide/referring_secrets_in_worker.md
+          - 'Transform stream data': resources/worker/how_to_guide/transforming_stream_data.md
+          - 'Sync data from Fastbase to Icebase': resources/worker/how_to_guide/transforming_stream_data.md
         - 'Configuration': resources/worker/configuration.md
         - 'Core Concepts': resources/worker/core_concepts.md
       - Workflow: 
