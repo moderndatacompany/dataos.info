@@ -266,11 +266,10 @@ nav:
         - 'Explanation': resources/lakehouse/explanation.md
       - Volume: 
         - resources/volume/index.md
-        - 'Quick Start': resources/volume/quick_start_guide.md
+        - 'Getting started': resources/volume/getting_started.md
         - 'How to Guide':
           - resources/volume/how_to_guide/index.md
-        - 'Reference': resources/volume/reference.md
-        - 'Explanation': resources/volume/explanation.md
+        - 'Configuration': resources/volume/configuration.md
       - Worker: 
         - resources/worker/index.md
         - 'First Steps': resources/worker/first_steps.md
