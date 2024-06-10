@@ -39,7 +39,7 @@ The code snippet provided below shows a sample Workflow manifest.
 
 === "Syntax"
 
-    ```yaml title="syntax_resource_pager_meta_section.yaml"
+    ```yaml title="syntax_resource_dbt_meta_section.yaml"
     name: ${dbt-workflowname}
     version: v1
     type: workflow
@@ -68,7 +68,7 @@ The code snippet provided below shows a sample Workflow manifest.
 
 === "Sample"  
 
-    ```yaml title="syntax_resource_pager_meta_section.yaml"
+    ```yaml title="syntax_resource_dbt_meta_section.yaml"
     name: dbt-workflow-v01
     version: v1
     type: workflow
@@ -104,7 +104,7 @@ The manifest below shows a sample structure of the DBT `stackSpec` Section:
 
 === "Syntax"
 
-    ```yaml 
+    ```yaml title="syntax_dbt_stackspec_section.yaml"
     stackSpec:
       profiles:
         my_new_project:
@@ -135,7 +135,7 @@ The manifest below shows a sample structure of the DBT `stackSpec` Section:
 
 === "Sample"
 
-    ```yaml 
+    ```yaml title="sample_dbt_stackspec_section.yaml"
     stackSpec:
       profiles:
         dbtlearnnew:
@@ -216,11 +216,11 @@ The following table provides a comprehensive overview of the various attributes 
 
 | Attributes | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| `profile` | mapping | none |  my_project | mandatory |
-| `target` | string | none | dev| mandatory |
-| `outputs` | mapping | none | dev | mandatory |
-| `type` | string | none | bigquery, postgres | mandatory |
-| `threads` | string | none | [1-4] | mandatory |
+| [`profile`] | mapping | none |  my_project | mandatory |
+| [`target`] | string | none | dev| mandatory |
+| [`outputs`] | mapping | none | dev | mandatory |
+| [`type`] | string | none | bigquery, postgres | mandatory |
+| [`threads`] | string | none | [1-4] | mandatory |
 
 <!-- Number of threads for dbt execution
 The profile dbt uses to connect to data platform -->
@@ -231,7 +231,7 @@ The `dbt_project.yml` serves as the primary configuration file which informs DBT
 
 It is crucial for  DRY (Don't Repeat Yourself) analytics code. Essentially, it acts as the repository for project-wide default configurations, and all objects will inherit from it unless overridden at the model level.
 
-To know about how to structure the project [Project structure](https://www.notion.so/Project-structure-8b04c17cbf684271ac8c916077d5f786?pvs=21)
+<!-- To know about how to structure the project [Project structure](https://www.notion.so/Project-structure-8b04c17cbf684271ac8c916077d5f786?pvs=21) -->
 
 === "Syntax"
 
@@ -257,33 +257,33 @@ To know about how to structure the project [Project structure](https://www.notio
         +materialised: ${materialisation}
     ```
 
-=== "Sample"
-      
-   ```yaml title="sample_dbt_project_section.yaml" 
-   name: training_dbt
-   version: 1.0.0
-   config-version: 2
+=== "Syntax"
 
-   profile: training_dbt
+    ```yaml title="sample_dbt_project_section.yaml" 
+    name: training_dbt
+    version: 1.0.0
+    config-version: 2
 
-     #These configurations specify where dbt should look for different types of files.
-     #The model-paths config, for example, states that models in this project can be
-     #found in the "models/" directory. You probably won't need to change these!
-     model-paths: [models]
+    profile: training_dbt
+      #These configurations specify where dbt should look for different types of files.
+      #The model-paths config, for example, states that models in this project can be
+      #found in the "models/" directory. You probably won't need to change these!
+      model-paths: [models]
 
-     #Configuring models
-     models:
-       training_dbt:
-         example:
-         #Config indicated by + and applies to all files under models/example/
-         +materialised: view
+      #Configuring models
+      models:
+        training_dbt:
+          example:
+          #Config indicated by + and applies to all files under models/example/
+          +materialised: view
     ```
 
-**Attributes of profile in `stackSpec` section**
+   
+**Attributes of project in stackSpec section**
 
 | Attributes | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| `name` | string | none | Your project’s name in snake case | mandatory |
+| `name` | string | none | Your project's name in snake case | mandatory |
 | `version` | version | none | Version of your project | mandatory |
 | `require-dbt-version` | version range | none | Restrict your project to only work with a range of dbt Core versions | optional |
 | `profile` | string | none | The profile dbt uses to connect to your data platform | mandatory |
@@ -297,9 +297,9 @@ To know about how to structure the project [Project structure](https://www.notio
 | `clean-targets` | list of strings  | none | List of clean targets for the project | optional |
 | `models` | list of dictionaries | none | List of model configurations | mandatory |
 
-[Attribute of dbt `stackSpec` section](https://www.notion.so/Attribute-of-dbt-stackSpec-section-6150f99201844a99a3c9e8a6f4aead5e?pvs=21)
+<!-- [Attribute of dbt `stackSpec` section](https://www.notion.so/Attribute-of-dbt-stackSpec-section-6150f99201844a99a3c9e8a6f4aead5e?pvs=21) -->
 
-### `dbt_packages`
+### **dbt_packages section**
 
 The `dbt_packages` section is designed to specify the dbt projects that you wish to incorporate as dependencies. These projects, referred to as dbt packages, can be seamlessly integrated into your own dbt project, fostering modularity and code sharing.
 
@@ -318,7 +318,7 @@ The `dbt_packages` section is designed to specify the dbt projects that you wish
         - git: "https://github.com/iamgroot/dbt-101.git"
     ```
       
-**Apply the manifest using CLI**
+### **Apply the manifest using CLI**
 
 Use the apply command to apply the workflow using CLI.
 
