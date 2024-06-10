@@ -335,19 +335,18 @@ policy:
     type: ${{filter/mask}}
     depot: ${{icebase}}
     collection: ${{data_uber}}
-		dataset: ${{sample_driver}}
+    dataset: ${{sample_driver}}
     priority: ${{90}}
     selector:
       user:
-			  match: any
+        match: any
         tags:
-					- "roles:id:testuser"
-			column:
-			  tags:
+          - "roles:id:testuser"
+      column:
+        tags:
           - "PII.email"
-          - "PII.income"
-    
-		${{filter/mask}}: 
+          - "PII.income"   
+	 ${{filter/mask}}: 
 ```
 
 ### **Configuration Attributes**

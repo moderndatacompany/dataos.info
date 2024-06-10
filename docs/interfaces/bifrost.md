@@ -125,5 +125,5 @@ When creating tags, it's crucial to note that each tag is within a specific tag-
 
 The diagram below summarizes how you can provide access through Bifrost.
 
-![bifrost.png](../interfaces/bifrost/Bifrost.png)
+![bifrost.png](../interfaces/bifrost/bifrost.png)
 
