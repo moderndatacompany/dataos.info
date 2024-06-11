@@ -396,260 +396,247 @@ For any additional flags, use help by appending `-h` with the respective command
 
 # Case study
 
-[End to end Analytics use case](https://www.notion.so/End-to-end-Analytics-use-case-dd50822055e84167b8f90ca0c3076311?pvs=21)
+<!-- [End to end Analytics use case](https://www.notion.so/End-to-end-Analytics-use-case-dd50822055e84167b8f90ca0c3076311?pvs=21) -->
+<!-- Draft 3 -->
+    
+### **Summary**
+    
+This dbt project aims to transform and prepare data through various stages, starting with cleaning and renaming in the staging phase, moving to intermediate transformations, building a core data layer, creating non-volatile datasets for mapping, and finally performing detailed analytics. The use cases highlight the specific objectives of each transformation, contributing to a comprehensive and well-organized data analytics workflow.
+    
+### Staging Folder
+    
+```sql title="stg_jaffle_shop_customers.sql"
+select
+    id as customer_id,
+    concat(first_name, ' ', last_name) as customer_name,
+    current_timestamp() as dp_load_date
+from {{ source('jaffle_shop', 'customers') }}
 
-- Draft 3
+```
+
+```sql title="stg_jaffle_shop_orders.sql"
+#Renamming columns for deeper understanding
+
+select
+    id as order_id,
+    user_id as customer_id,
+    order_date,
+    status,
+    _etl_loaded_at
+from {{ source('jaffle_shop', 'orders') }}
+```
+
+### Intermediate Folder
     
-    
-    ### Summary:
-    
-    This dbt project aims to transform and prepare data through various stages, starting with cleaning and renaming in the staging phase, moving to intermediate transformations, building a core data layer, creating non-volatile datasets for mapping, and finally performing detailed analytics. The use cases highlight the specific objectives of each transformation, contributing to a comprehensive and well-organized data analytics workflow.
-    
-    ### Staging Folder - Business Use Case:
-    
-    ```sql
-    --stg_jaffle_shop_customers.sql
-    select
-        id as customer_id,
-        concat(first_name, ' ', last_name) as customer_name,
-        current_timestamp() as dp_load_date
-    from {{ source('jaffle_shop', 'customers') }}
-    
-    ```
-    
-    ```sql
-    -- stg_jaffle_shop_orders.sql
-    -- Renamming columns for deeper understanding
-    
-    select
-        id as order_id,
-        user_id as customer_id,
-        order_date,
-        status,
-        _etl_loaded_at
-    from {{ source('jaffle_shop', 'orders') }}
-    
-    ```
-    
-    ### Intermediate Folder
-    
-    **Payment Type Analysis:**
-    
-    - Analyze payment data to understand the distribution of cash and credit payments.
-    
-    **Total Payment Amount Calculation:**
-    
-    - Calculate the total amount paid for orders with a "success" payment status.
-    
-    - **`in_payment_type_amount.sql`:**
-    - Create a CTE (`order_payments`) based on the `stg_stripe_payment`.
-    - Summarize payment amounts based on different payment types and order statuses.
-    
-    ```sql
-    -- int_payment_type_amount.sql
-    with order_payments as (
-        select * from {{ ref('stg_stripe_payment') }}
-    )
-    select
-        order_id,
-        sum(
-            case
-            when payment_type = 'cash' and
-                status = 'success'
-            then amount
-            else 0
-            end
-        ) as cash_amount,
-        sum(
-            case
-            when payment_type = 'credit' and
-                status = 'success'
-            then amount
-            else 0
-            end
-        ) as credit_amount,
-        sum(case
-            when status = 'success'
-            then amount
-            end
-        ) as total_amount
-    from order_payments
-    group by 1
-    
-    ```
-    
-    ### Marts/Core Folder
-    
-    1. **Customer Dimension Creation:**
-        - Create a dimensional view of customers, incorporating information from the staged customer data.
-    2. **Customer Data Exploration:**
-        - Use the `dim_customers` view for exploratory analysis and understanding customer attributes.
-    3. **`dim_customers.sql`:**
-        - **Transformation Objective:**
-            - Create a CTE (`customers`) based on the `stg_jaffle_shop_customers`.
-            - Select all columns from the `customers` CTE.
-    
-    ```sql
-    -- customers
-    
-    with customers as (
-        select * from {{ ref('stg_jaffle_shop_customers') }}
-    )
-    
-    select * from customers
-    ```
-    
-    **Order Fact Creation:**
-    
-    - Create a fact table (`fact_orders`) representing detailed order information, including payment types and amounts.
-    1. **Order Completion Flag:**
-        - Introduce a flag (`is_order_completed`) indicating whether an order is completed or not based on its status.
-    
-    ```sql
-    -- fact_table
-    with orders as (
-        select * from {{ ref('stg_jaffle_shop_orders' )}}
-    ),
-    payment_type_orders as (
-        select * from {{ ref('in_payment_type_amount_per_order' )}}
-    )
-    select
-        ord.order_id,
-        ord.customer_id,
-        ord.order_date,
-        pto.cash_amount,
-        pto.credit_amount,
-        pto.total_amount,
+**Payment Type Analysis:**
+
+- Analyze payment data to understand the distribution of cash and credit payments.
+
+**Total Payment Amount Calculation:**
+
+- Calculate the total amount paid for orders with a "success" payment status.
+
+- **`in_payment_type_amount.sql`:**
+- Create a CTE (`order_payments`) based on the `stg_stripe_payment`.
+- Summarize payment amounts based on different payment types and order statuses.
+
+```sql
+-- int_payment_type_amount.sql
+with order_payments as (
+    select * from {{ ref('stg_stripe_payment') }}
+)
+select
+    order_id,
+    sum(
         case
-        when status = 'completed'
-        then 1
+        when payment_type = 'cash' and
+            status = 'success'
+        then amount
         else 0
-        end as is_order_completed
-    from orders as ord
-    left join payment_type_orders as pto ON ord.order_id = pto.order_id
-    ```
+        end
+    ) as cash_amount,
+    sum(
+        case
+        when payment_type = 'credit' and
+            status = 'success'
+        then amount
+        else 0
+        end
+    ) as credit_amount,
+    sum(case
+        when status = 'success'
+        then amount
+        end
+    ) as total_amount
+from order_payments
+group by 1
+
+```
     
-    1. **`fact_orders.sql`:**
-        - **Transformation Objective:**
-            - Create CTEs (`orders` and `payment_type_orders`) based on the `stg_jaffle_shop_orders` and `in_payment_type_amount_per_order`.
-            - Perform final transformations, including joining relevant CTEs and calculating additional fields.
+### Marts/Core Folder
     
-    **Possible Business Use Cases:**
+1. **Customer Dimension Creation:**
+    - Create a dimensional view of customers, incorporating information from the staged customer data.
+2. **Customer Data Exploration:**
+    - Use the `dim_customers` view for exploratory analysis and understanding customer attributes.
+3. **`dim_customers.sql`:**
+    - **Transformation Objective:**
+        - Create a CTE (`customers`) based on the `stg_jaffle_shop_customers`.
+        - Select all columns from the `customers` CTE.
+
+```sql title="customers.sql"
+with customers as (
+    select * from {{ ref('stg_jaffle_shop_customers') }}
+)
+select * from customers
+```
+
+**Order Fact Creation:**
+
+- Create a fact table (`fact_orders`) representing detailed order information, including payment types and amounts.
+1. **Order Completion Flag:**
+    - Introduce a flag (`is_order_completed`) indicating whether an order is completed or not based on its status.
+
+```sql title="fact_orders.sql"
+-- fact_table
+with orders as (
+    select * from {{ ref('stg_jaffle_shop_orders' )}}
+),
+payment_type_orders as (
+    select * from {{ ref('in_payment_type_amount_per_order' )}}
+)
+select
+    ord.order_id,
+    ord.customer_id,
+    ord.order_date,
+    pto.cash_amount,
+    pto.credit_amount,
+    pto.total_amount,
+    case
+    when status = 'completed'
+    then 1
+    else 0
+    end as is_order_completed
+from orders as ord
+left join payment_type_orders as pto ON ord.order_id = pto.order_id
+```
     
-    1. **Customer Paid Amount Aggregation:**
-        - Aggregate the total paid amount for each customer based on completed orders.
-    2. **Customer Classification:**
-        - Classify customers into different categories (Regular, Bronze, Silver, Gold) based on their total paid amounts.
-    
-    ```sql
-    --  customer_range_based_on_total_paid_amount.sql
-    
-    with fact_orders as (
-        select * from {{ ref('fact_orders')}}
-    ),
-    dim_customers as (
-        select * from {{ ref('dim_customers' )}}
-    ),
-    total_amount_per_customer_on_orders_complete as (
-        select
-            cust.customer_id,
-            cust.customer_name,
-            SUM(total_amount) as global_paid_amount
-        from fact_orders as ord
-        left join dim_customers as cust ON ord.customer_id = cust.customer_id
-        where ord.is_order_completed = 1
-        group by cust.customer_id, customer_name
-    ),
-    customer_range_per_paid_amount as (
-        select * from {{ ref('seed_customer_range_per_paid_amount' )}}
-    )
+1. **`fact_orders.sql`:**
+    - **Transformation Objective:**
+        - Create CTEs (`orders` and `payment_type_orders`) based on the `stg_jaffle_shop_orders` and `in_payment_type_amount_per_order`.
+        - Perform final transformations, including joining relevant CTEs and calculating additional fields.
+
+**Possible Business Use Cases:**
+
+1. **Customer Paid Amount Aggregation:**
+    - Aggregate the total paid amount for each customer based on completed orders.
+2. **Customer Classification:**
+    - Classify customers into different categories (Regular, Bronze, Silver, Gold) based on their total paid amounts.
+
+```sql title="customer_range_based_on_total_paid_amount.sql"
+with fact_orders as (
+    select * from {{ ref('fact_orders')}}
+),
+dim_customers as (
+    select * from {{ ref('dim_customers' )}}
+),
+total_amount_per_customer_on_orders_complete as (
     select
-        tac.customer_id,
-        tac.customer_name,
-        tac.global_paid_amount,
-        crp.classification
-    from total_amount_per_customer_on_orders_complete as tac
-    left join customer_range_per_paid_amount as crp
-    on tac.global_paid_amount >= crp.min_range
-    and tac.global_paid_amount <= crp.max_range
-    
-    ```
-    
-    ### Seeds Folder - Business Use Case:
-    
-    **Objective:**
-    Create non-volatile datasets for mapping and enriching data.
-    
-    **Use Case:**
-    In the `seeds` folder, we store small datasets to map values.
-    
-    1. **`seed_customer_range_per_paid_amount.csv`:**
-        - **Transformation Objective:**
-            - Define ranges for customer classifications based on total paid amounts.
-            - Ranges include Regular, Bronze, Silver, and Gold classifications.
-    
-    Example:
-    
-    ```sql
-    --seed_customer_range_per_paid_amount.csv with ranges mapping
-    min_range,max_range,classification
-    0,9.999,Regular
-    10,29.999,Bronze
-    30,49.999,Silver
-    50,9999999,Gold
-    ```
-    run command to materialize CSV file into a table in data platform.
-    
-    ### Analyses Folder
-    
-    **Objective:**
-    Perform detailed analytics and generate insights for reporting.
-    
-    **Use Case:**
-    In the `analyses` folder, we create SQL queries to analyze and derive insights.
-    
-    1. **`customer_range_based_on_total_paid_amount.sql`:**
-        - **Transformation Objective:**
-            - Create CTEs based on `fact_orders`, `dim_customers`, `total_amount_per_customer_on_orders_complete`, and `customer_range_per_paid_amount`.
-            - Analyze and categorize customers based on their total paid amounts.
-            
-        
-        Example:
-        
-        ```sql
-         --customer_range_based_on_total_paid_amount.sql shows you, based on
-        the completed orders and the total amount paid, the customer classification range
-        with fct_orders as (
-        select * from {{ ref('fct_orders')}}
-        ),
-        dim_customers as (
-        select * from {{ ref('dim_customers' )}}
-        ),
-        total_amount_per_customer_on_orders_complete as (
-        select
         cust.customer_id,
-        cust.first_name,
+        cust.customer_name,
         SUM(total_amount) as global_paid_amount
-        from fct_orders as ord
-        left join dim_customers as cust ON ord.customer_id = cust.customer_id
-        where ord.is_order_completed = 1
-        group by cust.customer_id, first_name
-        ),
-        customer_range_per_paid_amount as (
-        select * from {{ ref('seed_customer_range_per_paid_amount' )}}
-        )
-        select
-        tac.customer_id,
-        tac.first_name,
-        tac.global_paid_amount,
-        crp.classification
-        from total_amount_per_customer_on_orders_complete as tac
-        left join customer_range_per_paid_amount as crp
-        on tac.global_paid_amount >= crp.min_range
-        and tac.global_paid_amount <= crp.max_range
-        ```
+    from fact_orders as ord
+    left join dim_customers as cust ON ord.customer_id = cust.customer_id
+    where ord.is_order_completed = 1
+    group by cust.customer_id, customer_name
+),
+customer_range_per_paid_amount as (
+    select * from {{ ref('seed_customer_range_per_paid_amount' )}}
+)
+select
+    tac.customer_id,
+    tac.customer_name,
+    tac.global_paid_amount,
+    crp.classification
+from total_amount_per_customer_on_orders_complete as tac
+left join customer_range_per_paid_amount as crp
+on tac.global_paid_amount >= crp.min_range
+and tac.global_paid_amount <= crp.max_range
+```
+### Seeds Folder
+    
+**Objective:**
+Create non-volatile datasets for mapping and enriching data.
+    
+**Use Case:**
+In the `seeds` folder, we store small datasets to map values.
+    
+1. **`seed_customer_range_per_paid_amount.csv`:**
+   - **Transformation Objective:**
+      - Define ranges for customer classifications based on total paid amounts.
+      - Ranges include Regular, Bronze, Silver, and Gold classifications.
+
+Example:
+    
+```sql title="seed_customer_range_per_paid_amount.csv"
+#with ranges mapping
+min_range,max_range,classification
+0,9.999,Regular
+10,29.999,Bronze
+30,49.999,Silver
+50,9999999,Gold
+```
+Run command to materialize CSV file into a table in data platform.
+    
+### Analyses Folder
+    
+**Objective:**
+Perform detailed analytics and generate insights for reporting.
+
+**Use Case:**
+In the `analyses` folder, we create SQL queries to analyze and derive insights.
+
+1. **`customer_range_based_on_total_paid_amount.sql`:**
+    - **Transformation Objective:**
+        - Create CTEs based on `fact_orders`, `dim_customers`, `total_amount_per_customer_on_orders_complete`, and `customer_range_per_paid_amount`.
+        - Analyze and categorize customers based on their total paid amounts.
         
-        It will give each customer the total
-        amount paid and its corresponding range
+    
+Example:
+    
+```sql title="customer_range_based_on_total_paid_amount.sql"
+  --customer_range_based_on_total_paid_amount.sql shows you, based on
+the completed orders and the total amount paid, the customer classification range
+with fct_orders as (
+select * from {{ ref('fct_orders')}}
+),
+dim_customers as (
+select * from {{ ref('dim_customers' )}}
+),
+total_amount_per_customer_on_orders_complete as (
+select
+cust.customer_id,
+cust.first_name,
+SUM(total_amount) as global_paid_amount
+from fct_orders as ord
+left join dim_customers as cust ON ord.customer_id = cust.customer_id
+where ord.is_order_completed = 1
+group by cust.customer_id, first_name
+),
+customer_range_per_paid_amount as (
+select * from {{ ref('seed_customer_range_per_paid_amount' )}}
+)
+select
+tac.customer_id,
+tac.first_name,
+tac.global_paid_amount,
+crp.classification
+from total_amount_per_customer_on_orders_complete as tac
+left join customer_range_per_paid_amount as crp
+on tac.global_paid_amount >= crp.min_range
+and tac.global_paid_amount <= crp.max_range
+```
         
+It will give each customer the total amount paid and its corresponding range.
+
        
