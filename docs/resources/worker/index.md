@@ -8,10 +8,28 @@ search:
 
 A Worker [Resource](/resources/) in DataOS is a long-running process responsible for performing specific tasks or computations indefinitely. To understand the key characteristics and what differentiates a Worker from a Workflow and a Service, refer to the following link: [Core Concepts](/resources/worker/core_concepts/).
 
+!!!tip "Worker in the Data Product Lifecycle"
+
+    Workers are integral to the **transformation phase** in the [Data Product Lifecycle](/products/data_product/). They are particularly useful when your transformation involves:
+
+    - **Indefinite Execution**: Continuously processing or transforming stream or batch data without a defined endpoint. For example, a Worker processing live sensor data from IoT devices and storing it in a dataset. 
+    - **Child/ Processes**: Creating child processes for a main process, allowing for modular and scalable task execution. Employing a Worker to handle background jobs in a web application.
+    - **Independent Processing**: Performing long-running transformations without requiring external network communication. Example, employing a Worker to continuously monitor
+
 <center>
 ![Worker overview](/resources/worker/worker.png)
 <i>Worker Resource in DataOS</i>
 </center>
+
+## Structure of Worker manifest
+
+=== "Syntax"
+    ![Worker manifest](/resources/worker/worker_annotated.png)
+
+=== "Code"
+    ```yaml title="worker_manifest_structure.yml"
+    --8<-- "examples/resources/worker/sample_worker.yml"
+    ```
 
 ## First Steps
 
