@@ -1,0 +1,57 @@
+version: v1
+name: profiler-raw-city-01
+type: workflow
+tags:
+- Fides
+- City
+- has_profile
+description: The job performs profiling on top of city data
+workflow:
+  title: City Profiler
+  dag:
+  - name: profiling-city01
+    title: Profiler City01
+    description: The job performs profiling on city01 data
+    spec:
+      envs:
+        DISABLE_RAW_FILE_SYSTEM_PERMISSION_SET: "true"
+      tags:
+      - Fides
+      - City
+      - has_profile
+      stack: flare:5.0
+      compute: runnable-default
+      title: City Profile
+
+      persistentVolume: # Define Persistent Volume
+        name: persistent-v
+        directory: fides 
+      flare:
+        driver:
+          coreLimit: 2400m
+          cores: 2
+          memory: 3072m
+        executor:
+          coreLimit: 2400m
+          cores: 2
+          instances: 1
+          memory: 4096m
+        job:
+          explain: true
+          logLevel: WARN
+
+          inputs:
+            - name: profile_city
+              dataset: dataos://icebase:retail/city01 # Dataset Name
+              format: iceberg
+
+          profile:
+            # basic | intermediate | advanced
+            level: basic
+            filters:
+              - type: expression
+                expression: "state_code='AL'" # Filter Expression
+
+        sparkConf:
+        - spark.sql.shuffle.partitions: 10
+        - spark.default.parallelism: 10
