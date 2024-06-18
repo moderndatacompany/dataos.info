@@ -18,7 +18,7 @@ This section serves as the header of the manifest file, defining the overall cha
 This section comprises attributes specific to the Worker Resource. The attributes within the section are listed below:
 
 
-#### **`worker`**
+##### **`worker`**
 
 **Description:** The `worker` attribute defines a mapping that contains attributes specific to the Worker resource-type. 
 
