@@ -166,14 +166,6 @@ subprotocol: postgresql
 Here, we will be using cluster to check whether we are able to query the database using workbench.
 
 
-## Create a Flare job manifest
-
-After succesful creation of PostgreSQL Database Depot. Now, We will migrate data from IceBase to the database via Flare stack.
-
-```yaml
---8<-- "examples/resources/database/use_case/product_flare.yml"
-```
-
 ## Create the Cluster manifest
 
 To verify the successful movement of the data from Icebase to productdb database, we will set up a cluster. This cluster will allow us to query the data using a workbench. Successful querying will confirm that the data has been correctly migrated.
@@ -183,6 +175,14 @@ To verify the successful movement of the data from Icebase to productdb database
 ```
 
 <aside class='callout'>Cluster creation is an optional step used solely for verifying database creation or to check if the schema has been successfully written to the database.</aside>
+
+## Create a Flare job manifest
+
+After succesful creation of PostgreSQL Database Depot. Now, We will migrate data from IceBase to the database via Flare stack.
+
+```yaml
+--8<-- "examples/resources/database/use_case/product_flare.yml"
+```
 
 Now, In the same directory, let's create a folder named `application` in it we will create a `requirements.txt`, `app.py`, and a `Dockerfile`.
 
@@ -200,13 +200,110 @@ streamlit==1.13.0
 
 ## Write your Streamlit app
 
-Write the desired streamlit app `app.py` configure it with the connection details
+Write the desired streamlit app `app.py` configure it with the connection details as highlighted below
 
-???tip title="app.py"
- 
-    ```yaml
-    --8<-- "examples/resources/database/001_migration.up.sql"
+```python title="app.py" hl_lines="24-34"
+--8<-- "examples/resources/database/use_case/streamlit.py"
+```
+
+## Create a Docker Image
+
+### **Build a Docker Image**
+
+Next, we need to create a Docker image for our application. Docker is a containerization platform that allows you to package your application and its dependencies into a single image that can be run in any environment.
+
+To create a Docker image, we need to create a `Dockerfile` that defines the build process.
+
+```docker title="Dockerfile" 
+# Use an official Python runtime as a parent image
+FROM python:3.7.6
+# Set the working directory in the container
+WORKDIR /application
+# Copy the current directory contents into the container at /app
+COPY requirements.txt ./requirements.txt
+# Install any needed packages specified in requirements.txt
+RUN pip3 install -r requirements.txt
+# Make port available to the world outside this container
+COPY streamlit.py .
+CMD streamlit run streamlit.py --server.port 8501  
+#/product_data
+```
+
+This Dockerfile starts with a lightweight Python 3.7.6 base image, installs all packages and libraries mentioned in requirments.txt, sets the working directory to `/app`, copies the `app.py` file into the container, and defines the command to run the application.
+
+To build the Docker image, run the following command in the same directory as your `Dockerfile`:
+
+
+```shell
+docker login --username=your-username
+```
+
+Replace `your-username` with your Docker Hub username, and input the password to login.
+
+### **Tag the Docker Image**
+
+To push an image to Docker Hub, your image needs to be tagged. In case it’s not tagged, you can use the below command.
+
+=== "Command"
+
+    ```shell
+    docker image tag my-app:new your-username/my-app:1.0.1
     ```
-Configure the Streamlit App section to connect with trigo
 
-## docker
+=== "Example"
+
+    ```shell
+    docker build -t iamgroot/my-first-db-st-app:1.0.1 .
+    ```
+
+Finally, push the Docker image to Docker Hub using the following command:
+
+
+=== "Command"
+
+    ```shell
+    docker push your-username/my-app:new
+    ```
+
+=== "Example"
+
+    ```shell
+    docker push iamgroot/my-first-db-st-app:1.0.1
+    ```
+
+
+## Create a Container manifest file
+
+```yaml
+--8<-- "examples/resources/database/use_case/product_container.yaml"
+```
+
+## Apply the container manifest file
+
+Apply the YAML file using the `apply` command, as follows:
+
+=== "Command"
+
+    ```shell
+    dataos-ctl apply -f ${path-to-file} -w ${workspace}
+    ```
+
+=== "Example"
+
+    ```shell
+    dataos-ctl apply -f iamgroot/product/product_container.yaml -w public
+    ```
+
+## Navigate over to the Web Browser
+
+You can see the streamlit UI, on the web browser at the following address
+
+`https://<dataos-context>/<path>` 
+
+for example, here the address will be:
+
+`https://liberal-donkey.dataos.app/product_data/`
+
+![Streamlit App](./build_a_streamlit_app_on_dataos/untitled.png)
+
+<center><i>Streamlit App on DataOS</i></center>
