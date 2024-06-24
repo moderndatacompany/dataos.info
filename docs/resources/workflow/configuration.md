@@ -116,13 +116,23 @@ concurrencyPolicy: Replace
 | string    | optional    | none          | any time provided in ISO 8601 format |
 
 
-<b>Example Usage:</b>
 
+
+
+**Example Usage:**
+
+The timestamp 2022-01-01T23:30:45Z follows the ISO 8601 format:
+
+- Date: 2022-01-01 (`YYYY-MM-DD`)
+- T: Separator indicating the start of the time portion in the datetime string.
+- Time: 23:30:45 (`hh:mm:ss`)
+- Timezone: Z (UTC)
+- Z: Indicates the time is in Coordinated Universal Time (UTC), also known as Zulu time.
+
+It represents `January 1, 2022, at 23:30:45 UTC`.
 
 ```yaml
-
 endOn: 2022-01-01T23:30:45Z 
-
 ```
 
 ---
@@ -211,6 +221,23 @@ description: The job ingests customer data
 ---
 
 ##### **`tags`**
+
+**Description:** tags associated with the Workflow.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| list of strings | optional | none | valid [tags](https://dataos.info/resources/policy/manifest_attributes/#tags) |
+
+**Example Usage:**
+
+```yaml
+  tags:
+    - tag1
+    - tag2
+```
+---
+
+##### **`gcWhenComplete`**
 
 **Description:** tags associated with the Workflow.
 

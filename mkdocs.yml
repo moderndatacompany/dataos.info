@@ -172,11 +172,11 @@ nav:
         - 'Explanation': resources/compute/explanation.md
       - Database: 
         - resources/database/index.md
-        - 'Quick Start': resources/database/quick_start_guide.md
-        - 'How to Guide':
-          - resources/database/how_to_guide/index.md
-        - 'Reference': resources/database/reference.md
-        - 'Explanation': resources/database/explanation.md
+        - 'First Steps': resources/database/first_steps.md
+        - 'Recipes':
+          - 'Streamlit App': resources/database/how_to_guide/how_to_run_a_streamlit_app_on_database.md
+        - 'Configuration': resources/database/configuration.md
+        - 'Core Concepts': resources/database/core_concepts.md
       - Depot: 
         - resources/depot/index.md
         - 'Quick Start': resources/depot/quick_start_guide.md

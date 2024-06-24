@@ -640,3 +640,4 @@ To deepen your understanding of Workflow Resource, explore the following case sc
 
 - [How to retry a job in the Workflow?](/resources/workflow/how_to_guide/retry_jobs)
 
+- [How to apply a workflow and get a runtime status of it using CLI Stack?](/resources/workflow/how_to_guide/apply_a_workflow_and_get_runtime_status_using_cli_stack/)

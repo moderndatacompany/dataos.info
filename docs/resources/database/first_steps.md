@@ -456,3 +456,4 @@ Database Resource is used to store data on the fly. Your next steps depend upon 
 
 - [How to query database data using workbench?](/resources/database/how_to_guide/query_database)
 
+- [How to back a streamlit application via database resource](/resources/database/how_to_guide/back_streamlit_via_database)
