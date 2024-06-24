@@ -193,11 +193,10 @@ nav:
         - 'Explanation': resources/grant/explanation.md
       - 'Instance Secret': 
         - resources/instance_secret/index.md
-        - 'Quick Start': resources/instance_secret/quick_start_guide.md
-        - 'How to Guide':
+        - 'First Steps': resources/instance_secret/quick_start_guide.md
+        - 'Recipes':
           - resources/instance_secret/how_to_guide/index.md
         - 'Reference': resources/instance_secret/reference.md
-        - 'Explanation': resources/instance_secret/explanation.md
       - Lakehouse: 
         - resources/lakehouse/index.md
         - 'Quick Start': resources/lakehouse/quick_start_guide.md
@@ -214,14 +213,14 @@ nav:
         - 'Explanation': resources/lens/explanation.md
       - Monitor: 
         - resources/monitor/index.md
-        - 'Quick Start': resources/monitor/quick_start_guide.md
+        - 'First Steps': resources/monitor/first_steps.md
         - 'How to Guide':
           - resources/monitor/how_to_guide/index.md
           - 'Monitor Cluster Memory Usage': resources/monitor/how_to_guide/monitor_cluster_memory_usage.md
           - 'Monitor Prometheus': resources/monitor/how_to_guide/monitor_prometheus.md
           - 'Monitor Profile Checks': resources/monitor/how_to_guide/monitor_profile_checks.md
         - 'Reference': resources/monitor/reference.md
-        - 'Explanation': resources/monitor/explanation.md
+        - 'Core Concepts': resources/monitor/core_concepts.md
       - Operator: 
         - resources/operator/index.md
         - 'Quick Start': resources/operator/quick_start_guide.md
