@@ -174,7 +174,7 @@ nav:
         - resources/database/index.md
         - 'First Steps': resources/database/first_steps.md
         - 'Recipes':
-          - 'Streamlit App': resources/database/how_to_guide/how_to_run_a_streamlit_app_on_database.md
+          - 'Streamlit App': resources/database/how_to_guide/back_streamlit_via_database.md
         - 'Configuration': resources/database/configuration.md
         - 'Core Concepts': resources/database/core_concepts.md
       - Depot: 

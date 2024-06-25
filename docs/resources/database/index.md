@@ -55,6 +55,12 @@ Database Resource in DataOS can be created by applying the manifest file using t
 ## Configuration
 
 The Database manifest files serves as the blueprint for defining the structure and behavior of Database Resources within DataOS. By configuring various attributes within the the Database manifest file, data developers can customize it to meet specific requirements. Below is an overview of the key attributes used to configure a the Database-specific section: [Attributes of Database manifest](/resources/database/configuration/).
+ 
+## Recipes
 
 
+Database Resource is used to store data on the fly. Your next steps depend upon whether you want to learn about what you can do with the database,  here are some how to guides to help you with that process:
 
+- [How to query database data using workbench?](/resources/database/how_to_guide/query_database)
+
+- [How to back a streamlit application via database resource](/resources/database/how_to_guide/back_streamlit_via_database)

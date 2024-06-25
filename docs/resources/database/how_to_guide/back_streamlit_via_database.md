@@ -202,7 +202,7 @@ streamlit==1.13.0
 
 Write the desired streamlit app `app.py` configure it with the connection details as highlighted below
 
-```python title="app.py" hl_lines="24-34"
+```python title="app.py" hl_lines="37-50"
 --8<-- "examples/resources/database/use_case/streamlit.py"
 ```
 
@@ -253,8 +253,56 @@ To push an image to Docker Hub, your image needs to be tagged. In case it’s no
 === "Example"
 
     ```shell
-    docker build -t iamgroot/my-first-db-st-app:1.0.1 .
+    docker build -t iamgroot/my-first-db-st-app:1.0.1 
     ```
+
+#### **List Docker Images**
+
+Now, Use the following command to list all Docker images on your system, this will also confirm that the Docker image you just build is available locally. 
+
+=== "Command"
+
+    This command will display a table of images with their REPOSITORY, TAG, IMAGE ID, CREATED, and SIZE.
+
+    ```yaml
+    docker images
+    ```
+
+=== "Output"
+
+    ```shell
+    REPOSITORY                                  TAG          IMAGE ID       CREATED         SIZE
+    iamgroot/my-first-db-st-app              1.0.4           3bcfa387913d   5 hours ago     1.41GB
+    my-first-db-st-app                           new         3bcfa387913d   5 hours ago     1.41GB
+    my-first-db-st                              1.0.3        ff101fffd5f3   17 hours ago    1.41GB
+    my-first-db-st                              latest       ff101fffd5f3   17 hours ago    1.41GB
+    iamgroot/my-first-db-st-app              1.0.2           a853294d3733   5 days ago      1.41GB
+    ```
+
+#### **Run the Docker Image**
+
+Before pushing a Docker image to a repository, it is crucial to verify that the image runs correctly on your local machine. To do the same run the following command:
+
+=== "Command"
+
+    This command will display a table of images with their REPOSITORY, TAG, IMAGE ID, CREATED, and SIZE.
+
+    ```yaml
+    docker images
+    ```
+
+=== "Output"
+
+    ```shell
+    REPOSITORY                                  TAG          IMAGE ID       CREATED         SIZE
+    iamgroot/my-first-db-st-app              1.0.4           3bcfa387913d   5 hours ago     1.41GB
+    my-first-db-st-app                           new         3bcfa387913d   5 hours ago     1.41GB
+    my-first-db-st                              1.0.3        ff101fffd5f3   17 hours ago    1.41GB
+    my-first-db-st                              latest       ff101fffd5f3   17 hours ago    1.41GB
+    iamgroot/my-first-db-st-app              1.0.2           a853294d3733   5 days ago      1.41GB
+    ```
+
+#### **Push the Docker Image**
 
 Finally, push the Docker image to Docker Hub using the following command:
 
@@ -262,7 +310,7 @@ Finally, push the Docker image to Docker Hub using the following command:
 === "Command"
 
     ```shell
-    docker push your-username/my-app:new
+    docker push your-username/my-app:<any-version>
     ```
 
 === "Example"
@@ -304,6 +352,6 @@ for example, here the address will be:
 
 `https://liberal-donkey.dataos.app/product_data/`
 
-![Streamlit App](./build_a_streamlit_app_on_dataos/untitled.png)
+![Streamlit App](/resources/database/how_to_guide/streamlit.png)
 
 <center><i>Streamlit App on DataOS</i></center>
