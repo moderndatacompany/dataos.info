@@ -1,9 +1,11 @@
-## How to create a Secret?
+# Secret: Fisrt Steps
+
+## Create a Secret
 
 Secrets are deployed using manifest files through the [Command Line Interface (CLI)](/interfaces/cli/). During this deployment, Poros, the Resource Manager, orchestrates the forwarding of Secret Resource YAMLs to Heimdall, the Governance Engine within DataOS.
 To create a Secret Resource in DataOS, follow these steps. This guide assumes you have the necessary permissions and access to the DataOS [CLI](/interfaces/cli/).
 
-### **Create a Secret manifest file**
+### **Create a manifest file**
 
 Begin by creating a manifest file that will hold the configuration details for your Secret.The structure of the Secret manifest file is provided in the image given below:
 
@@ -71,7 +73,7 @@ The table below provides a summary of the various attributes of the Secret-speci
 
 For more information about the various attributes in Secret specific section, refer to the Attributes of [Secret specific section](/resources/secret/configuration/).
 
-### **Apply the Secret manifest**
+### **Apply the manifest**
 
 To apply the Secret manifest, utilize the DataOS [CLI](/interfaces/cli/) by explicitly specifying the path to the manifest file and the designated workspace. The apply command is provided below:
 
@@ -100,7 +102,7 @@ Alternative to the above apply command.
 🗣 If a workspace is not explicitly specified during the application process, the system will default to the "public" workspace. 
 </aside>
 
-## How to manage a Secret?
+## Manage a Secret
 
 ### **Validate the Secret**
 

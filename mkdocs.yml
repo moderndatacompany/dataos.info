@@ -142,11 +142,15 @@ nav:
       - products/index.md
       - 'Data Product':
         - products/data_product/index.md
-        - 'Quick Start': products/data_product/quick_start_guide.md
         - 'How to':
-          - products
-        - 'Explanation': resources/monitor/explanation.md
-        - 'Reference': resources/monitor/reference.md
+          - products/data_product/how_to_guides/index.md
+          - 'Design': products/data_product/how_to_guides/design.md
+          - 'Build': products/data_product/how_to_guides/build.md
+          - 'Deploy': products/data_product/how_to_guides/deploy.md
+          - 'Manage and Iterate': products/data_product/how_to_guides/manage_and_iterate.md
+        - 'Recipes': 
+          - 'Create Data Product template using Cookiecutter': products/data_product/recipes/cookiecutter.md
+          - 'Deploy Data Product using CI/CD pipeline': products/data_product/recipes/ci_cd.md
     - Resources:
       - resources/index.md
       - Bundle: 
@@ -193,11 +197,8 @@ nav:
         - 'Explanation': resources/grant/explanation.md
       - 'Instance Secret': 
         - resources/instance_secret/index.md
-        - 'Quick Start': resources/instance_secret/quick_start_guide.md
-        - 'How to Guide':
-          - resources/instance_secret/how_to_guide/index.md
-        - 'Reference': resources/instance_secret/reference.md
-        - 'Explanation': resources/instance_secret/explanation.md
+        - 'First Steps': resources/instance_secret/first_steps.md
+        - 'Configurations': resources/instance_secret/configuration.md
       - Lakehouse: 
         - resources/lakehouse/index.md
         - 'Quick Start': resources/lakehouse/quick_start_guide.md
@@ -245,16 +246,16 @@ nav:
         - 'Explanation': resources/policy/explanation.md
       - Secret: 
         - resources/secret/index.md
-        - 'Quick Start': resources/secret/quick_start_guide.md
+        - 'First Steps': resources/secret/first_steps.md
+        - 'Configurations': resources/secret/configuration.md        
         - 'How to Guide':
-          - resources/secret/how_to_guide/index.md
-        - 'Reference': resources/secret/reference.md
-        - 'Explanation': resources/secret/explanation.md
+          - resources/secret/how_to_guide/recipe1.md
+          - resources/secret/how_to_guide/recipe2.md
       - Service: 
         - resources/service/index.md
         - 'Quick Start': resources/service/quick_start_guide.md
         - 'How to Guide':
-          - resources/service/how_to_guide/index.md
+          - resources/service/how_to_guide/recipes.md
         - 'Reference': resources/service/reference.md
         - 'Explanation': resources/service/explanation.md
       - Stack: 

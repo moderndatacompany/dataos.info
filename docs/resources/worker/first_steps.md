@@ -259,9 +259,9 @@ You can also access the details of any created Lakehouse through the DataOS GUI 
 
 ### **Deleting a Worker**
 
-Use the [`delete`](/interfaces/cli/command_reference/#delete) command to remove the specific Lakehouse Resource Instance from the DataOS environment. As shown below, there are three ways to delete a Lakehouse.
+Use the [`delete`](/interfaces/cli/command_reference/#delete) command to remove the Worker from the DataOS environment. As shown below, there are three ways to delete a Worker.
 
-**Method 1:** Copy the Lakehouse name, version, Resource-type and Workspace name from the output of the [`get`](/interfaces/cli/command_reference/#get) command seperated by '|' enclosed within quotes and use it as a string in the delete command.
+**Method 1:** Copy the Worker name, version, Resource-type and Workspace name from the output of the [`get`](/interfaces/cli/command_reference/#get) command seperated by '|' enclosed within quotes and use it as a string in the delete command.
 
 Command
 
@@ -272,15 +272,15 @@ dataos-ctl delete -i "${identifier string}"
 Example
 
 ```shell
-dataos-ctl delete -i "cnt-lakehouse-demo-01 | v1alpha | lakehouse | public"
+dataos-ctl delete -i "demo-01 | v1beta | worker | public"
 ```
 
 Output
 
 ```shell
 INFO[0000] 🗑 delete...
-INFO[0001] 🗑 deleting(public) cnt-lakehouse-demo-01:v1alpha:lakehouse...
-INFO[0003] 🗑 deleting(public) cnt-lakehouse-demo-01:v1alpha:lakehouse...deleted
+INFO[0001] 🗑 deleting(public) demo-01:v1beta:worker...
+INFO[0003] 🗑 deleting(public) demo-01:v1beta:worker...deleted
 INFO[0003] 🗑 delete...complete
 ```
 
@@ -294,40 +294,40 @@ dataos-ctl delete -f ${manifest-file-path}
 
 Example
 
-```bash
+```shell
 dataos-ctl delete -f /home/desktop/connect-city/config_v1alpha.yaml
 ```
 
 Output
 
-```bash
+```shell
 INFO[0000] 🗑 delete...
-INFO[0000] 🗑 deleting(public) cnt-lakehouse-demo-010:v1alpha:lakehouse...
-INFO[0001] 🗑 deleting(public) cnt-lakehouse-demo-010:v1alpha:lakehouse...deleted
-INFO[0001] 🗑 delete...complete
+INFO[0001] 🗑 deleting(public) demo-01:v1beta:worker...
+INFO[0003] 🗑 deleting(public) demo-01:v1beta:worker...deleted
+INFO[0003] 🗑 delete...complete
 ```
 
-**Method 3:** Specify the Workspace, Resource-type, and Lakehouse name in the [`delete`](/interfaces/cli/command_reference/#delete) command.
+**Method 3:** Specify the Workspace, Resource-type, and Worker name in the [`delete`](/interfaces/cli/command_reference/#delete) command.
 
 Command
 
 ```shell
-dataos-ctl delete -w ${workspace} -t lakehouse -n ${lakehouse name}
+dataos-ctl delete -w ${workspace} -t worker -n ${worker name}
 ```
 
 Example
 
 ```shell
-dataos-ctl delete -w public -t lakehouse -n cnt-product-demo-01
+dataos-ctl delete -w public -t worker -n demo-01
 ```
 
 Output
 
 ```shell
 INFO[0000] 🗑 delete...
-INFO[0000] 🗑 deleting(public) cnt-city-demo-010:v1alpha:lakehouse...
-INFO[0001] 🗑 deleting(public) cnt-city-demo-010:v1alpha:lakehouse...deleted
-INFO[0001] 🗑 delete...complete
+INFO[0001] 🗑 deleting(public) demo-01:v1beta:worker...
+INFO[0003] 🗑 deleting(public) demo-01:v1beta:worker...deleted
+INFO[0003] 🗑 delete...complete
 ```
 
 

@@ -1,26 +1,12 @@
-## How to refer Instance Secret in other DataOS Resources?
+# How to refer Instance Secret in other DataOS Resources?
 
-To access the stored secret data in DataOS, you can reference them in your code using the `dataosSecrets` attribute. This identifier ensures secure referencing of Instance Secrets for Depot resource, enhancing system security and operational integrity.
+To access the stored secret data in DataOS, you can reference them in your code using the `dataosSecrets` attribute. This identifier ensures secure referencing of Instance Secrets for various resources, enhancing system security and operational integrity.
 
-**Syntax**
-
-```yaml
-dataosSecrets:
-  - name: ${your-instance-secret-name}-r|rw # Mandatory
-    workspace: ${instance-secret-workspace} # Optional
-    key: ${key of your instance-secret} # Optional, used when only single key is required.
-    keys:            # Optional, used when multiple key is required.
-      - ${instance secret_key}
-      - ${instance secret-key}
-    allKeys: ${true-or-false} # Optional
-    consumptionType: ${envVars} # Optional, possible values: envVars, propfile and file.
-```
-
-**Referring Instance Secret in Depot**
+## **Referring Instance Secret in Depot**
 
 To refer to an instance-secret in Depots, follow these steps:
 
-1. **Ensure Creation of Instance-Secret:** First, make sure you have created the respective instance-secret.
+1. **Ensure Creation of Instance-Secret:** First, make sure you have created the respective instance-secrets.
 
 2. **Use `dataosSecrets` Identifier:** In the depot manifest, use the `dataosSecrets` identifier to refer to the instance-secret.
 
@@ -51,3 +37,6 @@ For read-only access to a depot, create read-only secrets. For read-write access
 🗣️ To ensure controlled access for read-write, it is essential to create two Instance Secrets: one with acl:r for read-only access and another with acl:rw for both read and write access and refer to both Instance-Secrets in a Depot as shown above. This enables precise management of permissions for different levels of access.
 
 </aside>
+
+## **Refering Instance Secret in Workflow**
+
