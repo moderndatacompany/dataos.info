@@ -6587,7 +6587,7 @@ html .md-typeset .footnote-ref {
     grid-gap: .4rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-    margin: 1em 0
+    margin: 1em 0;
 }
 
 .md-typeset .grid.cards>ol,
@@ -6603,7 +6603,7 @@ html .md-typeset .footnote-ref {
     display: block;
     margin: 0;
     padding: .8rem;
-    transition: border .25s, box-shadow .25s
+    transition: border .25s, box-shadow .25s;
 }
 
 .md-typeset .grid.cards>ol>li:focus-within,

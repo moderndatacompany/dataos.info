@@ -288,6 +288,147 @@ nav:
           - resources/workflow/how_to_guide/index.md
         - 'Configuration': resources/workflow/reference.md
         - 'Explanation': resources/workflow/explanation.md
+      - Characteristics: resources/characteristics.md
+      - Configuration: resources/resource_attributes.md
+      - Types: 
+        - resources/types/index.md
+        - Bundle: 
+          - resources/bundle/index.md
+          - 'Quick Start': resources/bundle/quick_start_guide.md
+          - 'How to Guide':
+            - resources/bundle/how_to_guide/index.md
+          - 'Reference': resources/bundle/reference.md
+          - 'Explanation': resources/bundle/explanation.md
+        - Cluster: 
+          - resources/cluster/index.md
+          - 'Quick Start': resources/cluster/quick_start_guide.md
+          - 'How to Guide':
+            - resources/cluster/how_to_guide/index.md
+          - 'Reference': resources/cluster/reference.md
+          - 'Explanation': resources/cluster/explanation.md
+        - Compute: 
+          - resources/compute/index.md
+          - 'Quick Start': resources/compute/quick_start_guide.md
+          - 'How to Guide':
+            - resources/compute/how_to_guide/index.md
+          - 'Reference': resources/compute/reference.md
+          - 'Explanation': resources/compute/explanation.md
+        - Database: 
+          - resources/database/index.md
+          - 'First Steps': resources/database/first_steps.md
+          - 'Recipes':
+            - 'Streamlit App': resources/database/how_to_guide/how_to_run_a_streamlit_app_on_database.md
+          - 'Configuration': resources/database/configuration.md
+          - 'Core Concepts': resources/database/core_concepts.md
+        - Depot: 
+          - resources/depot/index.md
+          - 'Quick Start': resources/depot/quick_start_guide.md
+          - 'How to Guide':
+            - resources/depot/how_to_guide/index.md
+          - 'Reference': resources/depot/reference.md
+          - 'Explanation': resources/depot/explanation.md
+        - Grant: 
+          - resources/grant/index.md
+          - 'Quick Start': resources/grant/quick_start_guide.md
+          - 'How to Guide':
+            - resources/grant/how_to_guide/index.md
+          - 'Reference': resources/grant/reference.md
+          - 'Explanation': resources/grant/explanation.md
+        - 'Instance Secret': 
+          - resources/instance_secret/index.md
+          - 'First Steps': resources/instance_secret/quick_start_guide.md
+          - 'Recipes':
+            - resources/instance_secret/how_to_guide/index.md
+          - 'Reference': resources/instance_secret/reference.md
+        - Lakehouse: 
+          - resources/lakehouse/index.md
+          - 'Quick Start': resources/lakehouse/quick_start_guide.md
+          - 'How to Guide':
+            - resources/lakehouse/how_to_guide/index.md
+          - 'Reference': resources/lakehouse/reference.md
+          - 'Explanation': resources/lakehouse/explanation.md
+        - Lens: 
+          - resources/lens/index.md
+          - 'Quick Start': resources/lens/quick_start_guide.md
+          - 'How to Guide':
+            - resources/lens/how_to_guide/index.md
+          - 'Reference': resources/lens/reference.md
+          - 'Explanation': resources/lens/explanation.md
+        - Monitor: 
+          - resources/monitor/index.md
+          - 'First Steps': resources/monitor/first_steps.md
+          - 'How to Guide':
+            - resources/monitor/how_to_guide/index.md
+            - 'Monitor Cluster Memory Usage': resources/monitor/how_to_guide/monitor_cluster_memory_usage.md
+            - 'Monitor Prometheus': resources/monitor/how_to_guide/monitor_prometheus.md
+            - 'Monitor Profile Checks': resources/monitor/how_to_guide/monitor_profile_checks.md
+          - 'Reference': resources/monitor/reference.md
+          - 'Core Concepts': resources/monitor/core_concepts.md
+        - Operator: 
+          - resources/operator/index.md
+          - 'Quick Start': resources/operator/quick_start_guide.md
+          - 'How to Guide':
+            - resources/operator/how_to_guide/index.md
+          - 'Reference': resources/operator/reference.md
+          - 'Explanation': resources/operator/explanation.md
+        - Pager: 
+          - resources/pager/index.md
+          - 'Quick Start': resources/pager/quick_start_guide.md
+          - 'How to Guide':
+            - resources/pager/how_to_guide/index.md
+          - 'Reference': resources/pager/reference.md
+          - 'Explanation': resources/pager/explanation.md
+        - Policy: 
+          - resources/policy/index.md
+          - 'Quick Start': resources/policy/quick_start_guide.md
+          - 'How to Guide':
+            - resources/policy/how_to_guide/index.md
+          - 'Reference': resources/policy/reference.md
+          - 'Explanation': resources/policy/explanation.md
+        - Secret: 
+          - resources/secret/index.md
+          - 'Quick Start': resources/secret/quick_start_guide.md
+          - 'How to Guide':
+            - resources/secret/how_to_guide/index.md
+          - 'Reference': resources/secret/reference.md
+          - 'Explanation': resources/secret/explanation.md
+        - Service: 
+          - resources/service/index.md
+          - 'Quick Start': resources/service/quick_start_guide.md
+          - 'How to Guide':
+            - resources/service/how_to_guide/index.md
+          - 'Reference': resources/service/reference.md
+          - 'Explanation': resources/service/explanation.md
+        - Stack: 
+          - resources/lakehouse/index.md
+          - 'Quick Start': resources/lakehouse/quick_start_guide.md
+          - 'How to Guide':
+            - resources/lakehouse/how_to_guide/index.md
+          - 'Reference': resources/lakehouse/reference.md
+          - 'Explanation': resources/lakehouse/explanation.md
+        - Volume: 
+          - resources/volume/index.md
+          - 'Getting started': resources/volume/getting_started.md
+          - 'How to Guide':
+            - resources/volume/how_to_guide/index.md
+          - 'Configuration': resources/volume/configuration.md
+        - Worker: 
+          - resources/worker/index.md
+          - 'First Steps': resources/worker/first_steps.md
+          - 'Recipes':
+            - 'Autoscale Workers': resources/worker/how_to_guide/autoscale_workers.md
+            - 'Referring Secrets': resources/worker/how_to_guide/referring_secrets_in_worker.md
+            - 'Transform stream data': resources/worker/how_to_guide/transforming_stream_data.md
+            - 'Sync data from Fastbase to Icebase': resources/worker/how_to_guide/transforming_stream_data.md
+          - 'Configuration': resources/worker/configuration.md
+          - 'Core Concepts': resources/worker/core_concepts.md
+        - Workflow: 
+          - resources/workflow/index.md
+          - 'Quick Start': resources/workflow/quick_start_guide.md
+          - 'How to Guide':
+            - resources/workflow/how_to_guide/index.md
+          - 'Configuration': resources/workflow/reference.md
+          - 'Explanation': resources/workflow/explanation.md
     - Interfaces:
       - interfaces/index.md
       - 'Data Product Hub': 
@@ -315,9 +456,9 @@ nav:
     - 'Connect to data source': getting_started/connect_to_data_source.md
     - 'Scan metadata': getting_started/scan_metadata.md
     - 'Run ETL job': getting_started/run_etl_job.md
-  - Appendix: appendix.md
+  - Reference: reference.md
   - Glossary: glossary.md
-
+  - Videos: videos.md
 #   - Concepts: 
 #     - Resources:
 #       - Overview: resources.md

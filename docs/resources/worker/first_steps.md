@@ -8,13 +8,15 @@ A Worker Resource instance can be deployed by applying the manifest file. But be
 
 In DataOS, different actions require specific use cases that grant the necessary permissions to execute a task. You can grant these use cases directly to a user or group them under a tag, which is then assigned to the user. The following table outlines various actions related to Worker Resources and the corresponding use cases required:
 
+
 | **Action** | **Required Use Cases** |
 |------------|------------------------|
-| Create a Worker   | [Read Workspace]()         |
-| Applying a Worker     | [Read Workspace]()         |
-| Get Workers in a Workspace       | [Read Workspaces]()<br>[Read Resources in User Specified Workspace]() OR<br>[Read Resources in User Workspaces]() (for public and sandbox workspaces) |
-| Delete Worker   | [Update]()                 |
-| Get Worker Logs   | [Update]()                 |
+| Get        | Read Workspaces, Read Resources in User Specified Workspace / Read Resources in User Workspaces (for public and sandbox workspaces) |
+| Create     | Create and Update Resources in User Workspace       |
+| Apply      | Create and Update Resources in User Workspace          |
+| Delete     | Delete Resources in User Workspace               |
+| Log        | Read Resource Logs in User Workspace                 |
+
 
 To assign use cases, you can either contact the DataOS Operator or create a Grant Request by creating a Grant Resource. The request will be validated by the DataOS Operator.
 
