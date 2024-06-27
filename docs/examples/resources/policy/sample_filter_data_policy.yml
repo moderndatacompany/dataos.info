@@ -1,0 +1,21 @@
+name: filtericebasecity
+version: v1
+type: policy
+layer: user
+description: "data policy to filter city data"
+policy:
+  data:
+    type: filter
+    name: "filtericebasecity"
+    priority: 1
+    selector:
+      user:
+        match: all
+        tags:
+          - "users:id:iamgroot"
+    dataset_id: "icebase.retail.city"
+    description: 'data policy to filter data on zip code'
+    filters:
+      - column: city_name
+        operator: not_equals
+        value: "Verbena"
