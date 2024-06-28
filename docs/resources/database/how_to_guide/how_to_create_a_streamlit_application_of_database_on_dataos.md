@@ -1,6 +1,15 @@
 # End to end use-case to back a streamlit application via Database resource
 
-Our goal is to back a Streamlit app with Database resource. This app will provide insights on the product data contained in the database. We will start by creating an initial schema migration and set up a database resource, configure a depot for data transfer, migrate data from IceBase to Database, validate with a cluster setup, and finally, dockerize and deploy the Streamlit app using Alpha Stack. To achieve this, follow this step by step guide
+Our goal is to back a Streamlit app with Database resource. 
+
+This app will provide insights on the product data contained in the database. 
+
+We will start by 
+  - creating an initial schema migration and \n
+  - set up a Database Resource resource, configure a depot for data transfer, \n
+  - migrate data from IceBase to Database, validate with a cluster setup, and finally, dockerize and deploy the Streamlit app using Alpha Stack.\n
+
+To achieve this, follow this step by step guide
 
 
 For this process, we need to maintain a folder with the following structure in the IDE:
@@ -23,7 +32,7 @@ project-directory/
 
 <aside class="callout">
 
-💡 If you already have a database that you want to use, feel free to <a href="https://dataos.info/resources/database/how_to_guide/back_streamlit_via_database/#create_a_database_manifest"> skip to the next step </a>.
+💡 If you already have a Database that you want to use, feel free to <a href="https://dataos.info/resources/database/how_to_guide/back_streamlit_via_database/#create-a-beacon-service"> skip to the next step </a>.
 
 </aside>
 
@@ -37,7 +46,7 @@ We will begin by creating a new migration that includes only the schema, without
 
 ## Create the Database manifest
 
-Following the schema setup, we will create a database resource based on the schema. 
+Following the schema setup, we will create a Database Resource based on the schema. 
 
 ```yaml title="product_database.yaml"
 --8<-- "examples/resources/database/use_case/product_database.yml"
@@ -78,10 +87,10 @@ Following the schema setup, we will create a database resource based on the sche
 
                     NAME               | VERSION |   TYPE   | WORKSPACE | STATUS |  RUNTIME  |     OWNER       
     -----------------------------------|---------|----------|-----------|--------|-----------|-----------------
-      productdb-2-m-database           | v1      | workflow | curriculum    | active | running   | iamgroot  
+      productdb-2-m-Database Resource           | v1      | workflow | curriculum    | active | running   | iamgroot  
     ```
 
-When you create a database a depot automatically gets created with the name {your_db}database. for e.g., if your database name is productdb the depot name will be like `productdbdatabase` which you can fetch using `get` command.
+When you create a Database Resource a depot automatically gets created with the name {your_db}database. for e.g., if your Database Resource name is productdb the depot name will be like `productdbdatabase` which you can fetch using `get` command.
 
 === "Command"
 
@@ -123,24 +132,24 @@ To access the Resource YAML, follow these steps within the Operations App:
 
 ## Create a Beacon Service
 
-Now, Create a Beacon Service to expose the PostgreSQL database on API. 
+Now, Create a Beacon Service to expose the PostgreSQL Database Resource on API. 
 
 ```yaml title="product_database.yaml" hl_lines="14"
 --8<-- "examples/resources/database/use_case/product_service.yml"
 ```
 Replace dataos_fqdn with the current value of your DataOS Fully Qualified Domain Name (FQDN). 
 
-you can now access the PostgreSQL database using the exposed API by
+you can now access the PostgreSQL Database Resource using the exposed API by
 
 To validate the outcome, execute a request to the designated URL as higlihted in the above manifest:
 
-A successful response with no errors indicates that the database has been successfully initialized with no data initally.
+A successful response with no errors indicates that the Database Resource has been successfully initialized with no data initally.
 
-<aside class='callout'>Service creation is an optional step used solely for verifying database creation or to check if the schema has been successfully written to the database.</aside>
+<aside class='callout'>Service creation is an optional step used solely for verifying Database creation or to check if the schema has been successfully written to the database.</aside>
 
 ## Create the Depot manifest
 
-Next, a depot will be established to connect PostgreSQL Database with DataOS. This depot will serves as an intermediary to facilitate data movement from from icebase depot to product database depot which is backed by postgreSQL Database.
+Next, a depot will be established to connect PostgreSQL Database with DataOS. This depot will serves as an intermediary to facilitate data movement from from icebase depot to product Database Resource depot which is backed by postgreSQL Database.
 
 Here we need information of the following attributes:
 
@@ -163,7 +172,7 @@ subprotocol: postgresql
 --8<-- "examples/resources/database/use_case/product_depot.yaml"
 ```
 
-Here, we will be using cluster to check whether we are able to query the database using workbench.
+Here, we will be using cluster to check whether we are able to query the Database using workbench.
 
 
 ## Create the Cluster manifest
@@ -174,11 +183,11 @@ To verify the successful movement of the data from Icebase to productdb database
 --8<-- "examples/resources/database/use_case/product_cluster.yml"
 ```
 
-<aside class='callout'>Cluster creation is an optional step used solely for verifying database creation or to check if the schema has been successfully written to the database.</aside>
+<aside class='callout'>Cluster creation is an optional step used solely for verifying Database creation or to check if the schema has been successfully written to the database.</aside>
 
 ## Create a Flare job manifest
 
-After succesful creation of PostgreSQL Database Depot. Now, We will migrate data from IceBase to the database via Flare stack.
+After succesful creation of PostgreSQL Database Depot. Now, We will migrate data from IceBase to the Database via Flare stack.
 
 ```yaml
 --8<-- "examples/resources/database/use_case/product_flare.yml"
