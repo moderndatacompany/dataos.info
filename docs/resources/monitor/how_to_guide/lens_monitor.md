@@ -40,3 +40,4 @@ monitor:
     category: equation
     severity: info
 ```
+To know more about the specific attributes, [refer to this](/resources/monitor/configuration/).
