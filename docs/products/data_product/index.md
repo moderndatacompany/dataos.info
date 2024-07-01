@@ -18,50 +18,53 @@ The development of the Data Product lifecycle consists of four key phases: desig
 
 ## Structure of Data Product Manifest
 
+=== "Syntax"
 
-```yaml
-# Product meta section
-name: {{dp-test}} # Product name (mandatory)
-version: {{v1alpha}} # Manifest version (mandatory)
-type: {{data}} # Product-type (mandatory)
-tags: # Tags (Optional)
-  - {{data-product}}
-  - {{dataos:type:product}}
-  - {{dataos:product:data}}
-description: {{the customer 360 view of the world}} # Descripton of the product (Optional)
-Purpose: {{This data product is intended to provide insights into the customer for strategic decisions on cross-selling additional products.}} # purpose (Optional)
-collaborators: # collaborators User ID (Optional)
-  - {{thor}}
-  - {{blackwidow}}
-  - {{loki}}
-owner: {{iamgroot}} # Owner (Optional)
-refs: # Reference (Optional)
-  - title: {{Bundle Info}} # Reference title (Mandatory if adding reference)
-    href: {{https://dataos.info/resources/bundle/}} # Reference link (Mandatory if adding reference)
-entity: {{product}} # Entity (Mandatory)
-# Data Product-specific section (Mandatory)
-v1alpha: # Data Product version
-  data:
-    resources: # Resource specific section(Mandatory)
-      - name: {{bundle-dp}} # Resource name (Mandatory)
-        type: {{bundle}} # Resource type (Mandatory)
-        version: {{v1beta}} # Resource version (Mandatory)
-        refType: {{dataos}} # Resource reference type (Mandatory)
-        workspace: {{public}} # Workspace (Requirement depends on the resource type)
-        description: {{this bundle resource is for a data product}} # Resource description (Optional)
-        purpose: {{deployment of data product resources}} # Purpose of the required resource (Optional)   
-    
-    inputs:
-      - description: Sales 360
-        purpose: source
-        refType: dataos
-        ref: dataos://bigquery:PUBLIC/MYTABLE
-    
-    outputs:
-      - description: Customer
-        purpose: consumption
-        refType: dataos_address
-        ref: dataos://icebase:sandbox/sales?acl=rw     
-```
+=== "Code"
+
+    ```yaml
+    # Product meta section
+    name: {{dp-test}} # Product name (mandatory)
+    version: {{v1alpha}} # Manifest version (mandatory)
+    type: {{data}} # Product-type (mandatory)
+    tags: # Tags (Optional)
+      - {{data-product}}
+      - {{dataos:type:product}}
+      - {{dataos:product:data}}
+    description: {{the customer 360 view of the world}} # Descripton of the product (Optional)
+    Purpose: {{This data product is intended to provide insights into the customer for strategic decisions on cross-selling additional products.}} # purpose (Optional)
+    collaborators: # collaborators User ID (Optional)
+      - {{thor}}
+      - {{blackwidow}}
+      - {{loki}}
+    owner: {{iamgroot}} # Owner (Optional)
+    refs: # Reference (Optional)
+      - title: {{Bundle Info}} # Reference title (Mandatory if adding reference)
+        href: {{https://dataos.info/resources/bundle/}} # Reference link (Mandatory if adding reference)
+    entity: {{product}} # Entity (Mandatory)
+    # Data Product-specific section (Mandatory)
+    v1alpha: # Data Product version
+      data:
+        resources: # Resource specific section(Mandatory)
+          - name: {{bundle-dp}} # Resource name (Mandatory)
+            type: {{bundle}} # Resource type (Mandatory)
+            version: {{v1beta}} # Resource version (Mandatory)
+            refType: {{dataos}} # Resource reference type (Mandatory)
+            workspace: {{public}} # Workspace (Requirement depends on the resource type)
+            description: {{this bundle resource is for a data product}} # Resource description (Optional)
+            purpose: {{deployment of data product resources}} # Purpose of the required resource (Optional)   
+        
+        inputs: # Input specific section (Mandatory)
+          - description: Sales 360
+            purpose: source
+            refType: dataos
+            ref: dataos://bigquery:PUBLIC/MYTABLE
+        
+        outputs: # Output specific section (Mandatory)
+          - description: Customer
+            purpose: consumption
+            refType: dataos_address
+            ref: dataos://icebase:sandbox/sales?acl=rw     
+    ```
 
 ## Templates
