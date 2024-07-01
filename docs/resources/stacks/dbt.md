@@ -605,8 +605,8 @@ In the `analyses` folder, we create SQL queries to analyze and derive insights.
 Example:
     
 ```sql title="customer_range_based_on_total_paid_amount.sql"
-  --customer_range_based_on_total_paid_amount.sql shows you, based on
-the completed orders and the total amount paid, the customer classification range
+#based on the completed orders and the total amount paid, the customer classification range.
+
 with fct_orders as (
 select * from {{ ref('fct_orders')}}
 ),
