@@ -1,11 +1,10 @@
 # Equation Monitor to observe Lens metrics
 
-Let's see how you can utilize Equation Monitor for observing Lens metrics.
+Equation Monitor can observe the Lens metrics to generate the incidents when the condition met.
 
 **Configuring Equation Monitor**
 
-This sample configuration demonstrates how to set up the Equation Monitor for observing the Lens matrics.
-
+This sample configuration demonstrates how to set up the Equation Monitor for observing the Lens. An incident will be generated if the calculated value of the left expression is less than the calculated value of the right expression.
 ```yaml
 name: monitor-lens-metric
 version: v1alpha

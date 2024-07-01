@@ -182,15 +182,13 @@ To know more about the cluster, [refer to this](https://dataos.info/resources/cl
 
 Now on Workbench, select your cluster and query the data.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/df1c6220-dfa3-4114-85a0-84a8510b0ad9/5c6c7b84-f53d-479a-b81a-204213e14fdb.png)
+![workbench](/products/data_product/how_to_guides/workbench.png)
 
 To know more about Workbench, [refer to this](https://dataos.info/interfaces/workbench/).
 
 ## **Data Product Architectural Design**
 
 Once you've explored the data, the next step is to plan the architectural design. This involves mapping out how different components, data pipelines, and workflows will integrate. The architecture design should be well-documented with diagrams and clear explanations of how each component interacts and the workflows they support. For data transformation tasks, tools like Flare jobs, SLOs (Service Level Objectives), and UI (User Interface) elements can be utilized to ensure efficient processing and visualization of data insights.
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/9be9a7f4-c345-4c13-98c7-f1e3922d334e/Untitled.png)
 
 ```markdown
 +-------------------------+                                     +-------------------+

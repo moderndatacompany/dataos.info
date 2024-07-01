@@ -143,7 +143,6 @@ nav:
       - 'Data Product':
         - products/data_product/index.md
         - 'How to':
-          - products/data_product/how_to_guides/index.md
           - 'Design': products/data_product/how_to_guides/design.md
           - 'Build': products/data_product/how_to_guides/build.md
           - 'Deploy': products/data_product/how_to_guides/deploy.md

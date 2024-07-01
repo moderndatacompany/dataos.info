@@ -406,7 +406,7 @@ refs: # Reference (optional)
 entity: {{product}} # Entity (Mandatory)
 ```
 
-For more information about the various attributes in the Product meta section, refer to the [Attributes of Product meta section](https://www.notion.so/Attributes-of-Product-Meta-Section-1f1dfee8bf034f4db54ffef02837b9fb?pvs=21).
+For more information about the various attributes in the Product meta section, refer to the [Attributes of Product meta section](/products/configurations/).
 
 **Data Product-specific section**
 
@@ -437,7 +437,7 @@ v1alpha: # Data Product version
         ref: dataos://icebase:google_analytics/ga_sessions_daily_data_raw             
 ```
 
-For more information about the various attributes in the Data Product-specific section, refer to the [Attributes of Data Product-Specific section](https://www.notion.so/Attributes-of-Data-Product-Specific-Section-30ea9e9fd5c844e49ec874483eb89570?pvs=21).
+For more information about the various attributes in the Data Product-specific section, refer to the [Attributes of Data Product-Specific section](/products/data_product/how_to_guides/configurations/).
 
 ### **Apply the Data Product manifest file**
 

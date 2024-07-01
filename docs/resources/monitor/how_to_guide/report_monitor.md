@@ -4,7 +4,7 @@ Report Monitor is suitable when the value you want to match is a string value. E
 
 **Configuring Report Monitor**
 
-This sample configuration demonstrates how to set up the Report Monitor for observing the runtime of a Workflow.
+This sample configuration demonstrates how to set up the Report Monitor to generate the incident when a workflow succeed. 
 
 ``` yaml
 # Resource meta section
@@ -39,4 +39,4 @@ monitor:
           value: succeeded
 ```
 
-To configure the Report Monitor you can test the API using postman by replacing the resource, version, resource name, and workspace, then configure the conditions accordingly.
+To configure the Report Monitor you can test the API using postman by replacing the resource, version, resource name, and workspace, then configure the conditions accordingly. To know more about the specific attributes, [refer to this](/resources/monitor/configuration/).
