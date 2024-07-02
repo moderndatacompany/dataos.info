@@ -3,11 +3,11 @@
 
 ## Create a Database
 
-To create a Database, the first step is to create a Database manifest file. But before creating a Worker Resource, ensure you have required use-cases assigned.
+To create a Database, the first step is to create a Database manifest file. But before creating a Database  Resource, ensure you have required use-cases assigned.
 
 ### **Get Appropriate Access Permission Use Case**
 
-In DataOS, different actions require specific use cases that grant the necessary permissions to execute a task. You can grant these use cases directly to a user or group them under a tag, which is then assigned to the user. The following table outlines various actions related to Worker Resources and the corresponding use cases required:
+In DataOS, different actions require specific use cases that grant the necessary permissions to execute a task. You can grant these use cases directly to a user or group them under a tag, which is then assigned to the user. The following table outlines various actions related to Database  Resource and the corresponding use cases required:
 
 | **Action** | **Required Use Cases** |
 |------------|------------------------|
@@ -17,20 +17,19 @@ In DataOS, different actions require specific use cases that grant the necessary
 | Delete     | Delete Resources in User Workspace               |
 | Log        | Read Resource Logs in User Workspace                 |
 
-To assign use cases, you can either contact the DataOS Operator or create a Grant Request by creating a Grant Resource. The request will be validated by the DataOS Operator.
+To assign use cases, you can either contact the DataOS Operator or create a Grant Request by creating a [Grant](/resources/grant) Resource. The request will be validated by the DataOS Operator.
 
 ### **Create a manifest file**
 
 To create a Database Resource, data developers can define a set of attributes in a manifest file, typically in YAML format, and deploy it using the DataOS Command Line Interface (CLI) or API. Below is a sample manifest file for Database Resource:
 
-???note "Sample Database manifest"
+???tip "Sample Database manifest"
 
     ```yaml title="sample_worker.yml"
     --8<-- "examples/resources/database/database.yaml"
     ```
 
-
-The manifest for creating a Database has the following two sections, , each requiring specific configuration:
+The manifest for creating a Database has the following two sections, each requiring specific configuration:
 
 - [Resource meta section](#resource-meta-section)
 - [Database-specific Section](#database-specific-section)
@@ -201,22 +200,27 @@ There are two ways to define migrations: .
       - File Naming Format:
           Use `<anything>.up.sql` and `<anything>.down.sql` for migration files.
 
-      - Example:
+        - Example:
 
-      ```sql
-      001_initialize.up.sql
-      001_initialize.down.sql
-      002_add_column.up.sql
-      002_add_column.down.sql
-      003_update_data.up.sql
-      003_update_data.down.sql
-      ```          
+        ```sql title="migration/"
+        001_initialize.up.sql
+        001_initialize.down.sql
+        002_add_column.up.sql
+        002_add_column.down.sql
+        003_update_data.up.sql
+        003_update_data.down.sql
+        ```          
+
+#### **Database Migrations**
+
+The Database attribute `migrate` consists of two commands, one to migrate `up` and another to migrate `down`. The `up` migration is responsible for applying changes to the database schema, facilitating the transition to a newer version. Conversely, the `down` migration serves the purpose of reverting changes made by the "up" migration. This is crucial for scenarios requiring a rollback to a previous version. Below is an example SQL script (`001_migration_down.sql`) demonstrating actions taken
+
 <center>![Database migration](/resources/database/migration.png)</center>
 <center><i>Database Migration </i></center>
 
 ### **Apply the Database manifest**
 
-After successfully creating the Database manifest, it’s time to apply manifest. To apply the Database manifest, utilize the `apply` command.
+After successfully creating the Database manifest, it’s time to apply manifest. To apply the Database manifest file to create a Resource-instance within the DataOS environment, utilize the `apply` command.
 
 === "Command"
 
@@ -241,7 +245,7 @@ After successfully creating the Database manifest, it’s time to apply manifest
 
 To check the successful creation of Database in DataOS Workspace use the following two methods:
 
-- **Check the Database in a Workspace:** Use the following command to list the created Database in a specific Workspace:
+**Check the Database in a Workspace:** Use the following command to list the created Database in a specific Workspace:
 
 === "Command"
 
@@ -257,11 +261,35 @@ To check the successful creation of Database in DataOS Workspace use the followi
     # Expected Output
     |    NAME     | VERSION |   TYPE    |  WORKSPACE  | STATUS | RUNTIME |     OWNER       |
     |-------------|---------|-----------|-------------|--------|---------|-----------------|
-    | products_db  |   v1    | database  | curriculum  | active |         | iamgroot |
+    | products_db |   v1    | database  | curriculum  | active |         |     iamgroot    |
+    |  products   | v1      | database  |   public    | active |         |    wonderwoman  |   
+    |  sampledb01 | v1      | database  |   public    | active |         | captainamerica  |  
+
     ```
 If the status is ‘active’, re run or use `-r` to refresh the command to get runtime as ‘succeeded’.
 
-- **Retrieve all Databases in a Workspace:**
+Alternatively, you can also use the following command:
+
+=== "Command"
+
+    ```bash
+    dataos-ctl get -t database -w ${workspace-name} 
+    ```
+
+=== "Example"
+
+    ```bash
+    dataos-ctl get -t database -w curriculum
+
+    # Expected Output
+    |    NAME     | VERSION |   TYPE    |  WORKSPACE  | STATUS | RUNTIME |     OWNER       |
+    |-------------|---------|-----------|-------------|--------|---------|-----------------|
+    | products_db |   v1    | database  | curriculum  | active |         |     iamgroot    |
+    |  products   | v1      | database  |   public    | active |         |    wonderwoman  |   
+    |  sampledb01 | v1      | database  |   public    | active |         | captainamerica  |  
+    ```
+
+**Retrieve all Databases in a Workspace:**
 
 To retrieve the list of all Databases created in the Workspace, add the `-a` flag to the command:
  
@@ -283,15 +311,13 @@ To retrieve the list of all Databases created in the Workspace, add the `-a` fla
 
 ### **Deleting a Database**
 
-As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
+As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, and reducing costs.
 
 There are 3 ways to delete Database(or any Resource):
 
-
-
-There are 3 ways to delete Service(or any Resource):
-
 === "Method 1"
+
+    This method deletes database(or any) based on direct specification of type, name, and workspace.
 
     === "Command"
 
@@ -306,6 +332,8 @@ There are 3 ways to delete Service(or any Resource):
 
 === "Method 2"
 
+    This method deletes based on a specific identifier string obtained from a status query.    
+
     === "Command"
 
         ```shell
@@ -319,7 +347,8 @@ There are 3 ways to delete Service(or any Resource):
 
 === "Method 3"
 
-    
+    This method deletes based on information stored in a configuration file.
+
     === "Command"
 
         ```shell
@@ -358,18 +387,27 @@ For detailed customization options and additional attributes of the Service Reso
 
 To check the successful completion of Service use the following command:
 
-```bash
-dataos-ctl resource get -t service -w curriculum
-```
-Expected output
+=== "Command"
 
-```bash
-  		NAME      | VERSION |  TYPE   | WORKSPACE | STATUS |  RUNTIME  |     OWNER       
-----------------|---------|---------|-----------|--------|-----------|-----------------
-  employee-test | v1      | service | curriculum   | active | running:1 | iamgroot
-  product-test  | v1      | service | curriculum   | active | running:1 | iamgroot  
-  products-test | v1      | service | curriculum   | active | running:1 | iamgroot
-```
+    ```bash
+    dataos-ctl resource get -t service -w {curriculum}
+    ```
+
+=== "Example"
+
+    ```bash
+    dataos-ctl resource get -t service -w curriculum
+    
+    #Expected output
+
+    ```bash
+          NAME      | VERSION |  TYPE   | WORKSPACE  | STATUS |  RUNTIME  |     OWNER       
+    ----------------|---------|---------|------------|--------|-----------|-----------------
+      employee-test | v1      | service | curriculum | active | running:1 | iamgroot
+      product-test  | v1      | service | curriculum | active | running:1 | iamgroot  
+      products-test | v1      | service | curriculum | active | running:1 | iamgroot
+    ```
+    ```
 
 you can now access the PostgreSQL database using the exposed API by
 
@@ -406,7 +444,7 @@ This action will enable verification of the expected result by accessing the pro
 
 ### **Deleting a Service**
 
-As part of best practices, it is recommended to regularly delete Resources that are no longer in use. This practice offers several benefits, including saving time and reducing costs.
+As you deleted Database, in same manner you can delete the Service after use.
 
 There are 3 ways to delete Service(or any Resource):
 
@@ -454,6 +492,6 @@ There are 3 ways to delete Service(or any Resource):
 
 Database Resource is used to store data on the fly. Your next steps depend upon whether you want to learn about what you can do with the database,  here are some how to guides to help you with that process:
 
-- [How to query database data using workbench?](/resources/database/how_to_guide/query_database)
+- [How to query a Database using Workbench?](/resources/database/how_to_guide/how_to_query_database_using_workbench)
 
-- [How to back a streamlit application via database resource](/resources/database/how_to_guide/back_streamlit_via_database)
+- [How to create a Streamlit application of Database Resource on top of a DataOS?](/resources/database/how_to_guide/how_to_create_a_streamlit_application_of_database_on_dataos)

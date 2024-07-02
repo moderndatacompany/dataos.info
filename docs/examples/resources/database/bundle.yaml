@@ -45,7 +45,7 @@ bundle:
    
     - id: create-cluster # Resource ID (mandatory)
       workspace: public # Workspace (optional)
-      file: ./cluster.yaml # Resource spec file (optional)
+      file: ./database_cluster.yaml # Resource spec file (optional)
       dependencyConditions: # Resource dependency conditions (optional)
         - resourceId: create-depot # Resource ID (mandatory)
           status: # Status dependency condition (optional)
