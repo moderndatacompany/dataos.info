@@ -12,8 +12,10 @@ After creating the template, you can now update the template with required confi
 
 - Open `username_mapping.py`  in your code editor.
     
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/29ad4455-ada3-43da-ad09-9c7a2a1281db/Untitled.png)
-    
+    <div style="text-align: center;">
+    <img src="/products/data_product/recipes/Untitled%20(12).png" alt="username_mapping" />
+    </div>
+
 - Add your Git username, Bitbucket username, and DataOS user ID in the specified order as shown below:
     
     ```python
@@ -41,16 +43,19 @@ After creating the template, you can now update the template with required confi
 - Navigate to your Bitbucket repository settings.
 - Go to `Repository Settings` > `Repository variables`.
 - Add repository variables as shown in the image provided, ensuring to input the correct credentials obtained from your DataOS specialist.
-    
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/23ee7af0-62cc-4448-9521-7a9575fffa09/Untitled.png)
-    
+    <div style="text-align: center;">
+    <img src="/products/data_product/recipes/Untitled%20(13).png" alt="username_mapping" />
+    </div>
 
 ## Push Changes
 
 - In your code editor terminal, push the changes to the main branch using an app password.
 - Pushing the changes will trigger the CI/CD pipeline to start deploying automatically. Alternatively, you can manually initiate the deployment by clicking on the `Run pipeline` option in the Pipelines section of your Bitbucket repository as shown below.
     
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/50059522-dc6f-4e76-88ef-e3b9e691198b/Untitled.png)
+    <div style="text-align: center;">
+    <img src="/products/data_product/recipes/image1.png" alt="username_mapping" />
+    </div>    
+
     
 
 By following the above steps, you'll successfully deploy your data product using the CI/CD pipeline. If you encounter any issues or need further assistance, don't hesitate to reach out to your DataOS specialist.
