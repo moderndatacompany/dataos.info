@@ -6,7 +6,7 @@ search:
 
 # :resources-policy: Policy
 
-Policy is a [Resource](../resources.md) in DataOS that defines a set of rules or guardrails governing the behavior of users, be it individuals or applications/services. Within DataOS, Policies are enforced using [Attribute Based Access Control (ABAC)](./policy/understanding_abac_pdp_and_pep.md#attribute-based-access-control-abac) and define what [predicates](./policy/understanding_abac_pdp_and_pep.md#predicate) a user (a [subject](./policy/understanding_abac_pdp_and_pep.md#subject) can perform on a dataset, API Path, or a Resource (an [object](./policy/understanding_abac_pdp_and_pep.md#object), thus defining the constraints of the relationship between the subject and object.
+Policy is a [Resource](/resources/) in DataOS that defines a set of rules or guardrails governing the behavior of users, be it individuals or applications/services. Within DataOS, Policies are enforced using [Attribute Based Access Control (ABAC)](/resourcespolicy/understanding_abac_pdp_and_pep#attribute-based-access-control-abac) and define what [predicates](/resourcespolicy/understanding_abac_pdp_and_pep#predicate) a user (a [subject](/resourcespolicy/understanding_abac_pdp_and_pep#subject) can perform on a dataset, API Path, or a Resource (an [object](/resources/policy/understanding_abac_pdp_and_pep#object), thus defining the constraints of the relationship between the subject and object. To understand the key characteristics of Policy, refer to the following link: [Core Concepts](/resources/policy/core_concepts/).
 
 !!!tip "Policy in the Data Product Lifecycle"
 
@@ -28,7 +28,7 @@ DataOS offers two primary categories of policies: Access Policy and Data Policy.
 
 === "Access Policy"
 
-    Access Policies serve as the initial layer of defense, overseeing user access and actions within the system. They establish a set of well-defined rules that determine whether a user, known as the [subject](./policy/understanding_abac_pdp_and_pep.md#subject), is authorized to perform a specific action, referred to as a [predicate](./policy/understanding_abac_pdp_and_pep/#predicate), on a given dataset, API path, or other resources, known as [objects](./policy/understanding_abac_pdp_and_pep.md#object). These policies serve as regulatory mechanisms, effectively governing user interactions and ensuring that access to specific actions is either granted or denied. This decision is based on the evaluation of attributes associated with the subjects and objects involved in the access request.
+    Access Policies serve as the initial layer of defense, overseeing user access and actions within the system. They establish a set of well-defined rules that determine whether a user, known as the [subject](/resources/policy/understanding_abac_pdp_and_pep#subject), is authorized to perform a specific action, referred to as a [predicate](/resources/policy/understanding_abac_pdp_and_pep/#predicate), on a given dataset, API path, or other resources, known as [objects](/resources/policy/understanding_abac_pdp_and_pep.mdobject). These policies serve as regulatory mechanisms, effectively governing user interactions and ensuring that access to specific actions is either granted or denied. This decision is based on the evaluation of attributes associated with the subjects and objects involved in the access request.
 
     ![Configuration of Access Policy](/resources/policy/governance_policies_access_policy.png)
 
@@ -62,7 +62,7 @@ DataOS offers two primary categories of policies: Access Policy and Data Policy.
 
         Such a policy ensures the protection of sensitive details, including but not limited to names, titles, addresses, etc.
 
-        You can apply the Mask policy, say to mask the column with ‘customer name’ in it, directly from the [Metis UI](../interfaces/metis.md) via policy tags or via [DataOS CLI](../interfaces/cli.md) by applying a manifest file. 
+        You can apply the Mask policy, say to mask the column with ‘customer name’ in it, directly from the [Metis UI](/interfaces/metis) via policy tags or via [DataOS CLI](/interfaces/cli) by applying a manifest file. 
 
     === "Data Filtering Policy"
 
@@ -133,14 +133,6 @@ Policy Resource in DataOS can be created by applying the manifest file using the
 Policy can be configured depending on the use case. For a detailed breakdown of the configuration options and attributes, please refer to the documentation: [Attributes of Policy manifest](/resources/policy/configuration/).
 
 ## Recipes
-
-Workers orchestrate Stacks to accomplish myriad tasks. Below are some recipes to help you configure and utilize Workers effectively:
-
-- [How to declare a Worker configuration within a Stack definition for seamless orchestration?](/resources/worker/how_to_guide/declare_a_stack_for_operation_with_a_worker/)
-- [How to use a Worker for syncing data from Fastbase Stream to Icebase using the Fast Fun Stack?](/resources/worker/how_to_guide/syncing_data_from_fastbase_stream_to_icebase/)
-- [How to use Workers for transforming Stream data using Benthos Stack?](/resources/worker/how_to_guide/transforming_stream_data/)
-- [How to autoscale Workers?](/resources/worker/how_to_guide/autoscale_workers/)
-- [How to refer Secrets in Worker configuration?](/resources/worker/how_to_guide/referring_secrets_in_worker/)
 
 
 
