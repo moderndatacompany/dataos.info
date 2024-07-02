@@ -178,7 +178,7 @@ You can also access the details of any created Monitor through the DataOS GUI in
 ### **Step 5: Get the Runtime status of the Monitor**
 
 ```shell
-dataos-ctl get runtime -i -t monitor -w public -n monitorthemisnew01
+dataos-ctl get runtime -t monitor -w public -n monitorthemisnew01
 # Expected output
 dataos-ctl resource get runtime -t monitor -w public -n monitorthemisnew01
 INFO[0000] 🔍 monitor...                                 

@@ -40,7 +40,9 @@ Follow these steps to create the Data Product template:
     - Open the [repository link](https://bitbucket.org/tmdc/dp-repo-template-v2/src/master/) in your browser.
     - Click on "Clone" and select `HTTPS`. Copy the provided link.
         
-        ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/599bbb8f-bdf0-4564-8261-c37ceeccd353/add9c92b-24d2-4553-9a08-2a7180f0cecd.png)
+        <div style="text-align: center;">
+        <img src="/products/data_product/recipes/cc.png" alt="username_mapping" />
+        </div>   
         
 4. **Run Cookiecutter**:
     - In your terminal, run the following command, replacing `<bitbucket-username>` with your Bitbucket username and `<repository-link>` with the copied link:

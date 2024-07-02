@@ -2,15 +2,16 @@
 
 A Data Product is a self-contained unit designed for handling and sharing analytical data, managed by a dedicated team. It includes data transformation code, input and output definitions, discovery and observability APIs, documentation, service level objectives (SLOs), access control mechanisms, and platform dependencies such as compute and storage resources. This design ensures that the Data Product can be developed, maintained, and deployed independently, providing a comprehensive and autonomous solution for data processing within a larger system.
 
-## Key Concepts of Data Product
+!!!tip "Key Concepts of Data Product"
 
-**Input**
+    **Input**
 
-Input refers to all the data received by a data product from various sources, which is then processed and utilized to generate outputs.
+    Input refers to all the data received by a data product from various sources, which is then processed and utilized to generate outputs.
 
-**Output**
+    **Output**
 
-Output refers to the data produced by a data product after processing the inputs, which then can be used by data consumers to generate insights.
+    Output refers to the data produced by a data product after processing the inputs, which then can be used by data consumers to generate insights.
+
 
 ## Data Product Lifecycle
 
@@ -67,4 +68,27 @@ The development of the Data Product lifecycle consists of four key phases: desig
             ref: dataos://icebase:sandbox/sales?acl=rw     
     ```
 
+## First Steps
+Data Product can be desgined, build, deployed and managed within DataOS, to know more about these steps refer to the following links:
+
+- [How to Design the Data Product?](/products/data_product/how_to_guides/design/)
+- [How to Build the Data Product?](/products/data_product/how_to_guides/build/)
+- [How to Deploy the Data Product?](/products/data_product/how_to_guides/deploy/)
+- [How to Manage/Iterate the Data Product?](/products/data_product/how_to_guides/manage_and_iterate/)
+
+## Configuration 
+
+Data Product can be configured to make the efficient business decisions based on reliable data. This section provides the detailed breakdown of each attribute, please refer to the documentation: [Attributes of Data Product manifest.](/products/data_product/configuration/)
+
+## Recipes
+
+Below are some recipes to help you configure Data Product effectively:
+
+- [How to Create Data Product template using Cookiecutter?](/products/data_product/recipes/cookiecutter/)
+- [How to Deploy Data Product using CI/CD pipeline?](/products/data_product/recipes/ci_cd/)
+
 ## Templates
+
+Below are some templates to help you to design the Data Product:
+
+- [Customer 360 Data Product](/products/data_product/templates/customer/)
