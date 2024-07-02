@@ -85,6 +85,6 @@ INFO[0000] 🗑 product delete...complete
 
 ### **Delete the metadata of the Data Product from Metis:**
 
-When clicking on your Data Product on Metis, clicking on the kebab menu of the right-corner you will have the option to delete the metadata from Metis as you can see below:
+When clicking on your Data Product on Metis, clicking on the menu of the right-corner you will have the option to delete the metadata from Metis as you can see below:
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/f6fba555-8d87-46a8-8ec1-55274402da17/Untitled.png)
+![delete](/products/data_product/how_to_guides/delete.png)

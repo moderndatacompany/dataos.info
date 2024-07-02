@@ -143,7 +143,6 @@ nav:
       - 'Data Product':
         - products/data_product/index.md
         - 'How to':
-          - products/data_product/how_to_guides/index.md
           - 'Design': products/data_product/how_to_guides/design.md
           - 'Build': products/data_product/how_to_guides/build.md
           - 'Deploy': products/data_product/how_to_guides/deploy.md
@@ -221,6 +220,7 @@ nav:
           - 'Monitor Cluster Memory Usage': resources/monitor/how_to_guide/monitor_cluster_memory_usage.md
           - 'Monitor Prometheus': resources/monitor/how_to_guide/monitor_prometheus.md
           - 'Monitor Profile Checks': resources/monitor/how_to_guide/monitor_profile_checks.md
+          - 'Monitor runtime and status': resources/monitor/how_to_guide/report_monitor.md
         - 'Reference': resources/monitor/reference.md
         - 'Explanation': resources/monitor/explanation.md
       - Operator: 
