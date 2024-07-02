@@ -8,7 +8,7 @@ search:
 
 DataOS Resources are atomic & logical units with their own life cycle. They can be composed together and also with other components to act as the building blocks of the system. Each Resource represents a higher-level abstraction which can be source controlled and managed using a version control system.
 
-DataOS Resources are categorized into two categories - [Workspace-level Resources](/resources/types_of_dataos_resources/#workspace-level-resources) & [Instance-level Resources](/resources/types_of_dataos_resources/#instance-level-resources).
+DataOS Resources are categorized into two categories - [Workspace-level Resources](/resources/types/#workspace-level-resources) & [Instance-level Resources](/resources/types/#instance-level-resources).
 
 ![Workspace-level DataOS Resources](/resources/workspace_dataos_resources.png)
 <center><i>Workspace-level DataOS Resources</i></center>
@@ -19,14 +19,13 @@ DataOS Resources are categorized into two categories - [Workspace-level Resource
 ## Types of DataOS Resources
 
 You can get an overview of each of these Resources on the following page -
-[Types of DataOS Resources](/resources/types_of_dataos_resources/).
-It is essential to note here that, as a data developer, you should think & plan your workloads in terms of DataOS Resources - that is also how the system works & has been built.
+[Types of DataOS Resources](/resources/types/). It is essential to note here that, as a data developer, you should think & plan your workloads in terms of DataOS Resources - that is also how the system works & has been built.
 
 ## Overarching Values
 
 Each DataOS Resource has been built for a specific purpose, for instance, Workflow has been built to run batch jobs, while Depot has been built to provide JDBC/ODBC connections to various data sources. The Resources are interoperable and can be composed together to implement various architectural designs for the data infrastructure of choice.
 
-Whether it is Lakehouse Architecture, Data Mesh, Data-first Stack or as an operational layer providing a unified experience on top of an existing data architecture - Resources confer the data operating system with modularization that allows it to be used for any of these use cases. The page on [Traits of DataOS Resources](/resources/characteristics/) describes the common properties enveloped within each DataOS Resource.
+Whether it is Lakehouse Architecture, Data Mesh, Data-first Stack or as an operational layer providing a unified experience on top of an existing data architecture - Resources confer the data operating system with modularization that allows it to be used for any of these use cases. The page on [Characteristics of DataOS Resources](/resources/characteristics/) describes the common properties enveloped within each DataOS Resource.
 
 ## Configuration of Resources
 
