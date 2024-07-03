@@ -12,7 +12,7 @@ Policy is a [Resource](/resources/) in DataOS that defines a set of rules or gua
 
     Policies are crucial to the governance phase in the Data Product Lifecycle. They provide the necessary framework to ensure that data usage complies with organizational standards and regulations, and they play a vital role in safeguarding data integrity and security. . Key benefits of implementing policies include:
 
-    - **Enhance Regulatory Compliance:** An increasingly complex regulatory climate makes it essential to establish robust data governance practices. Policies help avoid risks associated with noncompliance while proactively anticipating new regulations.
+    - **Enhance Regulatory Compliance:** Policies help avoid risks associated with noncompliance while proactively anticipating new regulations.
     - **Manage Risk More Easily:** Strong governance can allay concerns about exposure of sensitive data to unauthorized individuals or systems, preventing security breaches from malicious outsiders or insiders accessing data they shouldn’t.
     - **Allow More Personnel Access to More Data:** Strong data governance allows more personnel to access more data, with the confidence that they are getting access to the right data without negatively impacting the organization.
 
@@ -134,6 +134,5 @@ Policy can be configured depending on the use case. For a detailed breakdown of 
 
 ## Recipes
 
-
-
+[A end to end use-case on how to implement Access Policy](/resources/policy/how_to_guide/implementing_access_policy)
 

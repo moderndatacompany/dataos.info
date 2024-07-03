@@ -123,11 +123,11 @@ objects:
 | list of string| optional        | none               | valid paths        |
 
 **Example Usage:** 
-
 ```yaml
 paths:
   - /dataos/system/themis/**
 ```
+
 ---
 
 
@@ -228,7 +228,6 @@ name: my-first-access-policy
 | string        | optional        | false              | none       |
 
 **Example Usage:** 
-
 ```yaml
 description: this is a access policy
 ```
@@ -243,7 +242,6 @@ description: this is a access policy
 | string        | optional        | default            | none                |
 
 **Example Usage:** 
-
 ```yaml
 collection: default
 ```
@@ -370,7 +368,6 @@ dataset: city
 | mapping       | mandatory      | none                | none                |
 
 **Example Usage:**
-
 ```yaml
 selector:
   user:
@@ -390,7 +387,6 @@ selector:
 | mapping       | mandatory      | none                | none                |
 
 **Example Usage:** 
-
 ```yaml
 user:
   match: any
@@ -482,8 +478,7 @@ tags:
 | ------------- | --------------- | ----------------- | ------------------ |
 | mapping       | optional        | none              | depends on the masking strategy utilized |
 
-**Example Usage:** in this example policy, a predicate MUST be `read` OR `write` from the PEP to qualify for this policy to apply.
-
+**Example Usage:** 
 ```yaml
 mask:
   operator: hash
@@ -491,7 +486,24 @@ mask:
     algo: sha256
 ```
 
-**Additional Information:** for more information regarding the various masking strategies within DataOS refer to the link below
+#### **`operator`**
+
+**Description:** operator defines the data masking strategy<br>
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| ------------- | --------------- | ----------------- | ------------------ |
+| string       | mandatory        | none              | depends on the masking strategy utilized |
+
+**Example Usage:** 
+```yaml
+mask:
+  operator: hash
+  hash:
+    algo: sha256
+```
+
+
+**Additional Information:** 
 
 Masking strategies are key components in preserving data privacy and ensuring information security. These strategies encompass a set of operators or rules meticulously designed with the capability to be tailored based on user requirements.
 
@@ -510,35 +522,33 @@ In the following section, we delve into comprehensive explanations and syntax ex
 
 ##### **`bucket_number`**
 
-Using the `bucket_number` operator, numerical data can be categorized into defined range 'buckets.' Each data point is then replaced by the lower boundary of the bucket it falls into.
+Using the `bucket_number` operator, numerical data can be categorized into defined range 'buckets'. Each data point is then replaced by the lower boundary of the bucket it falls into.
 
-**Configuration Syntax**
+=== "Configuration Syntax"
 
-To leverage the `bucket_number` operator, incorporate the following YAML configuration in your data masking definition:
+    To leverage the `bucket_number` operator, incorporate the following YAML configuration in your data masking definitio. The`${bucket_list}` is a placeholder for your list of bucket ranges.
 
-```yaml
-mask:
-	operator: bucket_number 
-	bucket_number:
-	  buckets:
-			${{bucket-list}}
-```
+    ```yaml
+    mask:
+      operator: bucket_number 
+      bucket_number:
+        buckets:
+          ${bucket-list}
+    ```
 
-The `${{bucket_list}}` is a placeholder for your list of bucket ranges.
+=== "Example"
 
-**Example**
-
-```yaml
-mask:
-	operator: bucket_number 
-	bucket_number:
-	  buckets:
-	    - 20
-	    - 40
-	    - 60
-	    - 80
-	    - 100
-```
+    ```yaml
+    mask:
+      operator: bucket_number 
+      bucket_number:
+        buckets:
+          - 20
+          - 40
+          - 60
+          - 80
+          - 100
+    ```
 
 In this example, numerical data would be segmented into the indicated ranges. A value of 27, for example, would be bucketed to the 20 range, whereas a value of 77 would fall into the 60 range.
 
@@ -547,25 +557,25 @@ In this example, numerical data would be segmented into the indicated ranges. A 
 
 The `bucket_date` operator functions similarly to ‘bucket_number’ but is specifically tailored for date data types. This strategy enables the categorization of dates into various precision levels such as hour, day, week, or month.
 
-**Configuration Syntax** 
+=== "Configuration Syntax"
 
-To implement the ‘bucket_date’ operator, use the following YAML configuration:
+    To implement the ‘bucket_date’ operator, use the following YAML configuration:
 
-```yaml
-mask:
-  operator: bucket_date
-  bucket_date:
-    precision: ${{date-precision}} # Options: hour, day, week, month
-```
+    ```yaml
+    mask:
+      operator: bucket_date
+      bucket_date:
+        precision: ${date-precision} # Options: hour, day, week, month
+    ```
 
-**Example**
+=== "Example"
 
-```yaml
-mask:
-  operator: bucket_date
-  bucket_date:
-    precision: month 
-```
+    ```yaml
+    mask:
+      operator: bucket_date
+      bucket_date:
+        precision: month 
+    ```
 
 In this example, the `precision` field designates the granularity of the date bucketing to be at a 'month' level.
 
@@ -576,26 +586,25 @@ The hashing method is a powerful data masking technique wherein a specific input
 
 A unique and crucial characteristic of hashing is its irreversibility — once data is hashed, it cannot be converted back to its original state. This property makes hashing a particularly useful technique for masking sensitive textual data, such as passwords, or personally identifiable information (PII), such as names and email addresses.
 
-
-**Configuration Syntax**
-
 Hashing involves the use of a specific algorithm that performs the conversion from original data to hashed data. To implement hashing, you will need to specify the hashing algorithm you wish to use. The general syntax structure is as follows:
 
-```yaml
-mask:
-  operator: hash
-  hash:
-    algo: ${{algorithm-name}}
-```
+=== "Configuration Syntax"
 
-**Example**
+    ```yaml
+    mask:
+      operator: hash
+      hash:
+        algo: ${algorithm-name}
+    ```
 
-```yaml
-mask:
-  operator: hash
-  hash:
-    algo: sha256
-```
+=== "Example"
+
+    ```yaml
+    mask:
+      operator: hash
+      hash:
+        algo: sha256
+    ```
 
 In this YAML configuration, the operator `hash` is specified along with the SHA-256 algorithm (`algo: sha256`). The SHA-256 algorithm is a popular choice due to its strong security properties, but other algorithms could be used as per your requirements.
 
@@ -608,29 +617,27 @@ Redaction is a data masking strategy that aims to obscure or completely erase po
 
 For instance, the gender of every individual could be redacted and substituted with a consistent value, 'REDACTED'. Similarly, an individual's location information (which may include address, zip code, state, or country) could be redacted and replaced with 'REDACTED'.
 
-**Configuration Syntax**
+=== "Configuration Syntax"
 
-To implement the `redact` operator, the following YAML configuration can be utilized:
+    To implement the `redact` operator, the following YAML configuration can be utilized:
 
-```yaml
-mask:
-  operator: redact
-#   redact:
-#     replacement: ${{replacement-string}}
-#    hash: 
-#   algo: sha256
-```
+    ```yaml
+    mask:
+      operator: redact
+    #   redact:
+    #     replacement: ${replacement-string}
+    #    hash: 
+    #   algo: sha256
+    ```
 
-**Example**
+=== "Example"
 
-```yaml
-mask:
-  operator: redact
-  redact:
-    replacement: 'REDACTED'
-#	hash: # Why is the redact hash here?
-#  algo: sha256
-```
+    ```yaml
+    mask:
+      operator: redact
+      redact:
+        replacement: 'REDACTED'
+    ```
 
 The `replacement` field determines the string that will replace the redacted portions of data.
 
@@ -638,29 +645,27 @@ The `replacement` field determines the string that will replace the redacted por
 
 Random Pattern Masking involves the substitution of sensitive data with randomly produced equivalents that maintain the original data's format or structure. The fundamental goal is to ensure that the masked data is statistically representative and retains operational utility while safeguarding critical information. For example, it can be used to replace personal names with random strings or transform real addresses into plausible but entirely fictitious ones.
 
-**Configuration Syntax**
+=== "Configuration Syntax"
 
-To implement the `rand_pattern` operator, the following YAML configuration can be utilized:
+    To implement the `rand_pattern` operator, the following YAML configuration can be utilized:
 
-```yaml
-mask:
-  operator: rand_pattern
-  rand_pattern:
-    pattern: ${{random-pattern}}
-```
+    ```yaml
+    mask:
+      operator: rand_pattern
+      rand_pattern:
+        pattern: ${random-pattern}
+    ```
 
-Here, `${random-pattern}` is a placeholder for the random pattern you wish to apply.
+=== "Example"
 
-**Example**
+    Below is an example illustrating the usage of the `rand_pattern` operator:
 
-Below is an example illustrating the usage of the `rand_pattern` operator:
-
-```yaml
-mask:
-  operator: rand_pattern
-  rand_pattern:
-    pattern: '####-####-####'
-```
+    ```yaml
+    mask:
+      operator: rand_pattern
+      rand_pattern:
+        pattern: '####-####-####'
+    ```
 
 In this instance, the specified pattern '####-####-####' will generate random numbers in a format similar to a credit card number, preserving the structure of the original data but replacing it with randomly generated information.
 
@@ -671,49 +676,52 @@ In this instance, the specified pattern '####-####-####' will generate random nu
 
 The Regular Expression (Regex) Replacement strategy utilizes regular expressions to discern and mask identifiable patterns within the data. The identified patterns can be substituted with a predetermined value or random character(s). This strategy is particularly advantageous for masking data that follows a predictable pattern, such as email addresses, phone numbers, or credit card information.
 
-**Configuration Syntax**
 
-The `regex_replace` operator requires a `pattern` and a `replacement` field in its configuration. The general syntax structure is as follows:
+The `regex_replace` operator requires a `pattern` and a `replacement` field in its configuration. The general syntax structure is as follows. The `pattern` field expects a regular expression pattern as its value, while the `replacement` field expects the desired replacement string.:
 
-```yaml
-mask:
-  operator: regex_replace
-  regex_replace:
-    pattern: ${{regex-pattern}}
-    replacement: ${{replacement-pattern}}
-```
+=== "Configuration Syntax"
 
-The `pattern` field expects a regular expression pattern as its value, while the `replacement` field expects the desired replacement string.
+    ```yaml
+    mask:
+      operator: regex_replace
+      regex_replace:
+        pattern: ${regex-pattern}
+        replacement: ${replacement-pattern}
+    ```
 
-**Examples**
+=== "Example"
 
-```yaml
-mask:
-  operator: regex_replace
-  regex_replace:
-    pattern: .{5}$
-    replacement: xxxxx
-```
+    ```yaml
+    mask:
+      operator: regex_replace
+      regex_replace:
+        pattern: .{5}$
+        replacement: xxxxx
+    ```
 
-In the above example, the regular expression`.{5}$` represents any five characters at the end of a string. These characters will be replaced by 'xxxxx'.
+In the above example, the regular expression`.{5}$` represents any five characters at the end of a string. These characters will be replaced by 'xxxxx'. Here, the regular expression `[0-9]` denotes any single digit which will be replaced with '#'.
 
-```yaml
-mask:
-  operator: regex_replace
-  regex_replace:
-    pattern: '[0-9]'
-    replacement: '#'
-```
 
-Here, the regular expression `[0-9]` denotes any single digit which will be replaced with '#'.
+=== "Configuration Syntax"
 
-```yaml
-mask:
-  operator: regex_replace
-  regex_replace:
-    pattern: '[0-9](?=.*.{4})'
-    replacement: '#'
-```
+    ```yaml hl_lines="4-5"
+    mask:
+      operator: regex_replace
+      regex_replace:
+        pattern: '[0-9]'
+        replacement: '#'
+    ```
+
+
+=== "Example"
+
+    ```yaml hl_lines="4-5"
+    mask:
+      operator: regex_replace
+      regex_replace:
+        pattern: '[0-9](?=.*.{4})'
+        replacement: '#'
+    ```
 
 In this case, the regex pattern `[0-9](?=.*.{4})` identifies a digit followed by at least four characters. This digit will be replaced by '#'.
 
@@ -721,8 +729,6 @@ In this case, the regex pattern `[0-9](?=.*.{4})` identifies a digit followed by
 ##### **`pass_through`**
 
 The "Pass Through" strategy is used when certain data elements should not be masked or altered. With this technique, data developers can specify that certain data fields remain unchanged during the masking process. This approach is suitable for data that doesn't contain sensitive information or data that is already anonymized.
-
-**Configuration Syntax**
 
 To implement the `pass_through` operator, the following YAML configuration can be utilized:
 
@@ -737,28 +743,27 @@ mask:
 
 The data visibility for end users is limited due to the filtering policy. You can build a policy to eliminate results from a query's result set depending on comparison operators specified on a column, for example, some users won't be able to see data from the 'Florida' area.
 
-**Description:** section for defining data filter pattern<br>
-**Data Type:** list of mappings<br>
-**Requirement:** optional<br>
-**Default Value:** none<br>
-**Possible Value:** depends on the filter pattern utilized<br>
-**Additional Information:** 
+| **Data Type**     | **Requirement** | **Default Value** | **Possible Value** |
+| ----------------- | --------------- | ----------------- | ------------------ |
+| list of mappings  | optional        | none              | depends on the filter pattern utilized |
+
+
 **Example Usage:** 
 
 ```yaml
 filters: 
-  - column: ${{store_state_code}}
-    operator: ${{not_equals}}
-    value: ${{TN}}
+  - column: ${store_state_code}
+    operator: ${not_equals}
+    value: ${TN}
 ```
-
 ##### **`column`**
 
 **Description:** column name<br>
-**Data Type:** string<br>
-**Requirement:** mandatory<br>
-**Default Value:** none<br>
-**Possible Value:** valid column name<br>
+
+| **Data Type**     | **Requirement** | **Default Value** | **Possible Value** |
+| ----------------- | --------------- | ----------------- | ------------------ |
+| string            | mandatory       | none              | valid column name  |
+
 **Example Usage:** 
 
 ```yaml
@@ -768,10 +773,12 @@ column: store_state_code
 ##### **`operator`**
 
 **Description:** filter operator name<br>
-**Data Type:** string<br>
-**Requirement:** mandatory<br>
-**Default Value:** none<br>
-**Possible Value:** equals/not_equals<br>
+
+| **Data Type**     | **Requirement** | **Default Value** | **Possible Value** |
+| ----------------- | --------------- | ----------------- | ------------------ |
+| string            | mandatory       | none              | equals/not_equals  |
+
+
 **Example Usage:** 
 
 ```yaml
@@ -781,10 +788,12 @@ operator: not_equals
 ##### **`value`**
 
 **Description:** value on which filter is to be applied<br>
-**Data Type:** depends on `coloumn` data type<br>
-**Requirement:** mandatory<br>
-**Default Value:** none<br>
-**Possible Value:** any value within the column<br>
+
+| **Data Type**                   | **Requirement** | **Default Value** | **Possible Value**              |
+| ------------------------------- | --------------- | ----------------- | --------------------------------|
+| depends on `column` data type   | mandatory       | none              | any value within the column      |
+
+
 **Example Usage:** 
 
 ```yaml
