@@ -152,153 +152,13 @@ nav:
           - 'Deploy Data Product using CI/CD pipeline': products/data_product/recipes/ci_cd.md
     - Resources:
       - resources/index.md
-      - Bundle: 
-        - resources/bundle/index.md
-        - 'Quick Start': resources/bundle/quick_start_guide.md
-        - 'How to Guide':
-          - resources/bundle/how_to_guide/index.md
-        - 'Reference': resources/bundle/reference.md
-        - 'Explanation': resources/bundle/explanation.md
-      - Cluster: 
-        - resources/cluster/index.md
-        - 'Quick Start': resources/cluster/quick_start_guide.md
-        - 'How to Guide':
-          - resources/cluster/how_to_guide/index.md
-        - 'Reference': resources/cluster/reference.md
-        - 'Explanation': resources/cluster/explanation.md
-      - Compute: 
-        - resources/compute/index.md
-        - 'Quick Start': resources/compute/quick_start_guide.md
-        - 'How to Guide':
-          - resources/compute/how_to_guide/index.md
-        - 'Reference': resources/compute/reference.md
-        - 'Explanation': resources/compute/explanation.md
-      - Database: 
-        - resources/database/index.md
-        - 'Quick Start': resources/database/quick_start_guide.md
-        - 'How to Guide':
-          - resources/database/how_to_guide/index.md
-        - 'Reference': resources/database/reference.md
-        - 'Explanation': resources/database/explanation.md
-      - Depot: 
-        - resources/depot/index.md
-        - 'Quick Start': resources/depot/quick_start_guide.md
-        - 'How to Guide':
-          - resources/depot/how_to_guide/index.md
-        - 'Reference': resources/depot/reference.md
-        - 'Explanation': resources/depot/explanation.md
-      - Grant: 
-        - resources/grant/index.md
-        - 'Quick Start': resources/grant/quick_start_guide.md
-        - 'How to Guide':
-          - resources/grant/how_to_guide/index.md
-        - 'Reference': resources/grant/reference.md
-        - 'Explanation': resources/grant/explanation.md
-      - 'Instance Secret': 
-        - resources/instance_secret/index.md
-        - 'First Steps': resources/instance_secret/first_steps.md
-        - 'Configurations': resources/instance_secret/configuration.md
-      - Lakehouse: 
-        - resources/lakehouse/index.md
-        - 'Quick Start': resources/lakehouse/quick_start_guide.md
-        - 'How to Guide':
-          - resources/lakehouse/how_to_guide/index.md
-        - 'Reference': resources/lakehouse/reference.md
-        - 'Explanation': resources/lakehouse/explanation.md
-      - Lens: 
-        - resources/lens/index.md
-        - 'Quick Start': resources/lens/quick_start_guide.md
-        - 'How to Guide':
-          - resources/lens/how_to_guide/index.md
-        - 'Reference': resources/lens/reference.md
-        - 'Explanation': resources/lens/explanation.md
-      - Monitor: 
-        - resources/monitor/index.md
-        - 'Quick Start': resources/monitor/quick_start_guide.md
-        - 'How to Guide':
-          - resources/monitor/how_to_guide/index.md
-          - 'Monitor Cluster Memory Usage': resources/monitor/how_to_guide/monitor_cluster_memory_usage.md
-          - 'Monitor Prometheus': resources/monitor/how_to_guide/monitor_prometheus.md
-          - 'Monitor Profile Checks': resources/monitor/how_to_guide/monitor_profile_checks.md
-          - 'Monitor runtime and status': resources/monitor/how_to_guide/report_monitor.md
-        - 'Reference': resources/monitor/reference.md
-        - 'Explanation': resources/monitor/explanation.md
-      - Operator: 
-        - resources/operator/index.md
-        - 'Quick Start': resources/operator/quick_start_guide.md
-        - 'How to Guide':
-          - resources/operator/how_to_guide/index.md
-        - 'Reference': resources/operator/reference.md
-        - 'Explanation': resources/operator/explanation.md
-      - Pager: 
-        - resources/pager/index.md
-        - 'Quick Start': resources/pager/quick_start_guide.md
-        - 'How to Guide':
-          - resources/pager/how_to_guide/index.md
-        - 'Reference': resources/pager/reference.md
-        - 'Explanation': resources/pager/explanation.md
-      - Policy: 
-        - resources/policy/index.md
-        - 'Quick Start': resources/policy/quick_start_guide.md
-        - 'How to Guide':
-          - resources/policy/how_to_guide/index.md
-        - 'Reference': resources/policy/reference.md
-        - 'Explanation': resources/policy/explanation.md
-      - Secret: 
-        - resources/secret/index.md
-        - 'First Steps': resources/secret/first_steps.md
-        - 'Configurations': resources/secret/configuration.md        
-        - 'How to Guide':
-          - resources/secret/how_to_guide/recipe1.md
-          - resources/secret/how_to_guide/recipe2.md
-      - Service: 
-        - resources/service/index.md
-        - 'Quick Start': resources/service/quick_start_guide.md
-        - 'How to Guide':
-          - resources/service/how_to_guide/recipes.md
-        - 'Reference': resources/service/reference.md
-        - 'Explanation': resources/service/explanation.md
-      - Stack: 
-        - resources/lakehouse/index.md
-        - 'Quick Start': resources/lakehouse/quick_start_guide.md
-        - 'How to Guide':
-          - resources/lakehouse/how_to_guide/index.md
-        - 'Reference': resources/lakehouse/reference.md
-        - 'Explanation': resources/lakehouse/explanation.md
-      - Volume: 
-        - resources/volume/index.md
-        - 'Getting started': resources/volume/getting_started.md
-        - 'How to Guide':
-          - resources/volume/how_to_guide/index.md
-        - 'Configuration': resources/volume/configuration.md
-      - Worker: 
-        - resources/worker/index.md
-        - 'First Steps': resources/worker/first_steps.md
-        - 'Recipes':
-          - 'Autoscale Workers': resources/worker/how_to_guide/autoscale_workers.md
-          - 'Referring Secrets': resources/worker/how_to_guide/referring_secrets_in_worker.md
-          - 'Transform stream data': resources/worker/how_to_guide/transforming_stream_data.md
-          - 'Sync data from Fastbase to Icebase': resources/worker/how_to_guide/transforming_stream_data.md
-        - 'Configuration': resources/worker/configuration.md
-        - 'Core Concepts': resources/worker/core_concepts.md
-      - Workflow: 
-        - resources/workflow/index.md
-        - 'Quick Start': resources/workflow/quick_start_guide.md
-        - 'How to Guide':
-          - resources/workflow/how_to_guide/index.md
-        - 'Configuration': resources/workflow/reference.md
-        - 'Explanation': resources/workflow/explanation.md
       - Characteristics: resources/characteristics.md
       - Configuration: resources/resource_attributes.md
+      - 'YAML files': resources/yaml_configuration.md
       - Types: 
         - resources/types/index.md
         - Bundle: 
           - resources/bundle/index.md
-          - 'Quick Start': resources/bundle/quick_start_guide.md
-          - 'How to Guide':
-            - resources/bundle/how_to_guide/index.md
-          - 'Reference': resources/bundle/reference.md
-          - 'Explanation': resources/bundle/explanation.md
         - Cluster: 
           - resources/cluster/index.md
           - 'Quick Start': resources/cluster/quick_start_guide.md
@@ -308,11 +168,6 @@ nav:
           - 'Explanation': resources/cluster/explanation.md
         - Compute: 
           - resources/compute/index.md
-          - 'Quick Start': resources/compute/quick_start_guide.md
-          - 'How to Guide':
-            - resources/compute/how_to_guide/index.md
-          - 'Reference': resources/compute/reference.md
-          - 'Explanation': resources/compute/explanation.md
         - Database: 
           - resources/database/index.md
           - 'First Steps': resources/database/first_steps.md
@@ -366,11 +221,6 @@ nav:
           - 'Core Concepts': resources/monitor/core_concepts.md
         - Operator: 
           - resources/operator/index.md
-          - 'Quick Start': resources/operator/quick_start_guide.md
-          - 'How to Guide':
-            - resources/operator/how_to_guide/index.md
-          - 'Reference': resources/operator/reference.md
-          - 'Explanation': resources/operator/explanation.md
         - Pager: 
           - resources/pager/index.md
           - 'Quick Start': resources/pager/quick_start_guide.md
@@ -433,30 +283,50 @@ nav:
       - interfaces/index.md
       - 'Data Product Hub': 
         - interfaces/data_product_hub/index.md
-        - 'Quick Start': interfaces/data_product_hub/quick_start_guide.md
-        - 'Explanation': interfaces/data_product_hub/explanation.md
-        - 'Reference': interfaces/data_product_hub/reference.md
       - 'Atlas': 
-        - interfaces/data_product_hub/index.md
-        - 'Quick Start': interfaces/atlas/quick_start_guide.md
-        - 'Explanation': interfaces/atlas/explanation.md
-        - 'Reference': interfaces/atlas/reference.md
-      - Audiences: interfaces/index.md
-      - Bifrost: interfaces/index.md
-      - CLI: interfaces/index.md
-      - Lens: interfaces/index.md
-      - Metis: interfaces/index.md
-      - Notebook: interfaces/index.md
-      - Operations: interfaces/index.md
-      - Superset: interfaces/index.md
-      - Workbench: interfaces/index.md
+        - interfaces/atlas/index.md
+        - Dashboards: 
+          - interfaces/atlas/dashboards/index.md
+          - 'Adding Visualizations to Dashboard': interfaces/atlas/dashboards/adding_visualizations/index.md
+        - Queries: interfaces/atlas/queries.md
+        - Snippet: interfaces/atlas/snippet.md
+        - Alerts: interfaces/atlas/alerts.md
+        - Destinations: interfaces/atlas/destinations.md
+        - Integration: 
+          - interfaces/atlas/bi_tools/index.md
+          - 'Power BI': 
+            - interfaces/atlas/bi_tools/powerbi/index.md
+            - 'Using Connector': interfaces/atlas/bi_tools/powerbi/powerbi_custom_connector.md
+            - 'Using ODBC Driver': interfaces/atlas/bi_tools/powerbi/power_bi.md
+          - 'Tableau': interfaces/atlas/bi_tools/tableau/index.md
+          - 'IBM SPSS': interfaces/atlas/bi_tools/spss/index.md
+      - Audiences: 
+        - interfaces/audiences/index.md
+        - 'Audiences UI': interfaces/audiences/audiences_ui/index.md
+        - 'Getting Started': interfaces/audiences/getting_started/index.md
+      - Bifrost: 
+        - interfaces/bifrost/index.md
+      - CLI: 
+        - interfaces/cli/index.md
+      - Lens: 
+        - interfaces/lens/index.md
+      - Metis: 
+        - interfaces/metis/index.md
+      - Notebook: 
+        - interfaces/notebook/index.md
+      - Operations: 
+        - interfaces/operations/index.md
+      - Superset: 
+        - interfaces/superset/index.md
+      - Workbench: 
+        - interfaces/workbench/index.md
   - 'Getting started': 
     - 'Getting Started': getting_started/index.md
     - 'Installation': getting_started/installation.md
     - 'Connect to data source': getting_started/connect_to_data_source.md
     - 'Scan metadata': getting_started/scan_metadata.md
     - 'Run ETL job': getting_started/run_etl_job.md
-  - Reference: reference.md
+  - SDK: sdk.md
   - Glossary: glossary.md
   - Videos: videos.md
 #   - Concepts: 
