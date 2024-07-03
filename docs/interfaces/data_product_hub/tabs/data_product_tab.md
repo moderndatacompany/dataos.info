@@ -1,8 +1,10 @@
 # Data Products Tab
 
-The Data Product tab is the homepage of the Data Product Hub that showcases the list of Data Products that are deployed in the Data Product Hub. To add the Data Product on Data Product Hub you need to run the scanner workflow of Data Products. To search the Data Product of your choice you can filter out the Data Products by readiness, by type, and by use case just by clicking on the checkbox on the right panel of the Hub. You can also filter out the Data Products by domain just by clicking on a particular domain tab such as Customer Service. 
+**The Data Products** tab is the homepage of the Data Product Hub that showcases the list of Data Products that are deployed in the Data Product Hub. To add the Data Product on Data Product Hub you need to run the scanner workflow of Data Products. To search the Data Product of your choice you can filter out the Data Products by readiness, by type, and by use case just by clicking on the checkbox on the right panel of the Hub. You can also filter out the Data Products by domain just by clicking on a particular domain tab such as Customer Service. 
 
 <img src="/interfaces/data_product_hub/Untitled%20(14).png" alt="Outlined Image" style="border:2px solid black;">
+
+## Filter Options for Data Products
 
 You can apply various filters to filter out the Data Product of your requirement. Below are the filters that can be applied to Data Products.
 
@@ -26,7 +28,10 @@ In this tab, you can explore individual Data Products. Just click on a Data Prod
 
 <img src="/interfaces/data_product_hub/Untitled%20(17).png" alt="Outlined Image" style="border:2px solid black;">
 
-## Overview Tab
+## Tabs
+The Data Product Hub interface consists of various tabs, each serving a distinct purpose.
+
+### **Overview Tab**
 
 In the **Overview Tab,** you can see a brief overview of the Data Product such as purpose, use cases, owner, collaborators, users, number of queries, SLO adherence, and data flow.
 
@@ -56,7 +61,7 @@ In the **Overview Tab,** you can see a brief overview of the Data Product such a
 <img src="/interfaces/data_product_hub/Untitled%20(19).png" alt="Outlined Image" style="border:2px solid black;">
 
 
-## Performance Tab
+### **Performance Tab**
 
 **Performance Tab** shows the performance of the output tables, here you can check how many data fields are in each output Table and their SLO adherence based on the last ten runs.
 
@@ -66,7 +71,7 @@ You can also view the SLO checks in detail by clicking the **Details of the last
 
 <img src="/interfaces/data_product_hub/Untitled%20(21).png" alt="Outlined Image" style="border:2px solid black;">
 
-## Governance Tab
+### **Governance Tab**
 
 In the **Governance Tab**, If the Data Product incorporates access or data policy then the user has to send the request to the Data Product owner or the contributors to access the data.
 
@@ -85,13 +90,13 @@ On the right, a panel will open where you need to give the title for your reques
 
 </aside>
 
-## About Tab
+### **About Tab**
 
 **About Tab** describes the Data Product, which is defined while configuring the Data Product manifest file and can be changed later on Metis.
 
 <img src="/interfaces/data_product_hub/Untitled%20(25).png" alt="Outlined Image" style="border:2px solid black;">
 
-## Recent Updates Tab
+### **Recent Updates Tab**
 
 In the **Recent Updates Tab**, you can see all the recent updates made to the Data Product.
 

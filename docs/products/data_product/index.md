@@ -2,15 +2,11 @@
 
 A Data Product is a self-contained unit designed for handling and sharing analytical data, managed by a dedicated team. It includes data transformation code, input and output definitions, discovery and observability APIs, documentation, service level objectives (SLOs), access control mechanisms, and platform dependencies such as compute and storage resources. This design ensures that the Data Product can be developed, maintained, and deployed independently, providing a comprehensive and autonomous solution for data processing within a larger system.
 
-!!!tip "Key Concepts of Data Product"
+## Key Concepts of Data Product
 
-    **Input**
+**Input**: Input refers to all the data received by a data product from various sources, which is then processed and utilized to generate outputs.
 
-    Input refers to all the data received by a data product from various sources, which is then processed and utilized to generate outputs.
-
-    **Output**
-
-    Output refers to the data produced by a data product after processing the inputs, which then can be used by data consumers to generate insights.
+**Output**: Output refers to the data produced by a data product after processing the inputs, which then can be used by data consumers to generate insights.
 
 
 ## Data Product Lifecycle
@@ -20,6 +16,7 @@ The development of the Data Product lifecycle consists of four key phases: desig
 ## Structure of Data Product Manifest
 
 === "Syntax"
+    ![Worker manifest](/products/data_product/dp.jpg)
 
 === "Code"
 
