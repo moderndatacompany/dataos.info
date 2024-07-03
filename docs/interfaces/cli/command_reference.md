@@ -53,11 +53,9 @@ For Resources such as Depot, Policy, and Compute, the concept of Workspace has n
 
 </aside>
 
-To learn more, refer to [CLI Command Reference](cli/command_reference.md). The reference also contains the help content for all DataOS CLI commands.
-
 ## Command List
 
-You can get a complete list of all the commands, sub-commands, arguments and flags by using the help command within CLI itself.
+You can get a complete list of all the commands, sub-commands, arguments and flags by using the help command within CLI itself. It also contains the help content for all DataOS CLI commands.
 
 ### **`apply`**
 
