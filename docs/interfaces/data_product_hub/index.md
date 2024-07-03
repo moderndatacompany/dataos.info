@@ -1,4 +1,4 @@
-# Data Product Hub
+# :interfaces-dataproducthub: Data Product Hub
 
 The Data Product Hub is the central unit for exploring Data Products within the organization, enabling faster insights for Data Consumers. By providing a single point of access, it accelerates time-to-value by granting users quick access to trusted data, complete with lineage, quality checks, and popularity metrics. Users can search for data products using keywords or browse by domain, ensuring relevance to their needs. They can then explore the data to confirm suitability for their use case and request access if necessary. Finally, users can seamlessly access the data from their preferred tools, enhancing productivity and efficiency.
 
@@ -26,6 +26,6 @@ Data Product Hub home page:
 
 Data Product Hub GUI consists of three tabs, to know more about each tab follow the below links:
 
-- [Data Products](/interfaces/data_product_hub/tabs/data_product_tab/)
-- [Recent Updates](/interfaces/data_product_hub/tabs/recent_updates/) 
-- [About](/interfaces/data_product_hub/tabs/about/) 
+- [Data Products Tab](/interfaces/data_product_hub/tabs/data_product_tab/)
+- [Recent Updates Tab](/interfaces/data_product_hub/tabs/recent_updates/) 
+- [About Tab](/interfaces/data_product_hub/tabs/about/) 

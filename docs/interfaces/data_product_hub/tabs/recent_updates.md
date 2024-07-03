@@ -1,4 +1,4 @@
-# Recent Updates
+# Recent Updates Tab
 
 In this tab, you can see the latest updates on your starred Data Product.
 

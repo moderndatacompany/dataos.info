@@ -1,4 +1,4 @@
-# Data Products
+# Data Products Tab
 
 The Data Product tab is the homepage of the Data Product Hub that showcases the list of Data Products that are deployed in the Data Product Hub. To add the Data Product on Data Product Hub you need to run the scanner workflow of Data Products. To search the Data Product of your choice you can filter out the Data Products by readiness, by type, and by use case just by clicking on the checkbox on the right panel of the Hub. You can also filter out the Data Products by domain just by clicking on a particular domain tab such as Customer Service. 
 
