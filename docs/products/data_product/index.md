@@ -16,7 +16,7 @@ The development of the Data Product lifecycle consists of four key phases: desig
 ## Structure of Data Product Manifest
 
 === "Syntax"
-    ![Worker manifest](/products/data_product/dp.jpg)
+    <img src="/products/data_product/dp1.jpg" alt="Description" width="650">
 
 === "Code"
 
