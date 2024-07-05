@@ -34,7 +34,7 @@ workflow:
         stack: scanner:2.0
         compute: runnable-default
 				runAsUser: metis
-        scanner:
+        stackSpec:
           depot: oracle01          #depo name/address
           sourceConfig:
             config:

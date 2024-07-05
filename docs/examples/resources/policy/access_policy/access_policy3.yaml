@@ -1,16 +1,23 @@
-name: {{people-dw-access-policy}}
 version: v1
+name: test-policy-03
 type: policy
 layer: user
-description: {{Policy allows users having people-DW:user tag to read data from people_dw collection}}
+description: Policy allowing all users
 policy:
   access:
+    name:  test-policy-03
+    description: this is to test policy
+    collection: default
     subjects:
       tags:
-        - {{dataos:u:people-DW:user}}
+       - users:id:iamgroot      
     predicates:
-      - {{read}}
+      - "**"
     objects:
-      paths:
-        - {{dataos://icebase:people_dw/*}}
-    allow: {{true}}
+      tags:
+        - dataos:resource:cluster:minerva:system
+        - dataos:system:minerva:table:icebase:retail:city
+        - dataos:type:secret:icebase_r_r
+        - dataos:type:secret:icebase_rw_rw
+        - dataos:system:ds:dataset:icebase:retail:city 
+    allow: deny          # Granting access

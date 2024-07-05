@@ -105,6 +105,7 @@ In DataOS, a Database is categorized as a [Resource-type](./types_of_dataos_reso
     version: v1                           
     type: database                        
     description: ${description}
+    tags:
       - ${tag1}
       - ${tag2}
     owner: ${iamgroot}

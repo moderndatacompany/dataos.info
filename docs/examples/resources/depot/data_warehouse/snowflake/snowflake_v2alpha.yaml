@@ -13,4 +13,9 @@ depot:
     url: {{snowflake-url}}
     database: {{database-name}}
   external: true
-cc
+  secrets:
+    - name: {{redshift-instance-secret-name}}-r
+      allkeys: true
+
+    - name: {{redshift-instance-secret-name}}-rw
+      allkeys: true

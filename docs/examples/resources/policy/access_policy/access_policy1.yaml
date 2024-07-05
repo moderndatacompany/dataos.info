@@ -1,21 +1,24 @@
-name: {{access-policy-api-path}}
 version: v1
+name: test-policy-01
 type: policy
-tags:
-  - {{dataos:type:resource}}
-description: {{allow user to access rest apis}}
-layer: system 
+layer: user
+description: Policy allowing iamgroot user to query workbench
 policy:
   access:
+    name:  test-policy-01
+    description: this is to test access policy
+    collection: default
     subjects:
       tags:
-        - - {{dataos:u:user}}
+       - users:id:iamgroot      
     predicates:
-      - {{get}}
-      - {{post}}
-      - {{put}}
-      - {{options}}
+      - read
+      - select
     objects:
-      paths:
-        - {{/city/api/v1}}
-    allow: {{true}}
+      tags:
+        - dataos:resource:cluster:minerva:system   #minerva cluster access
+        - dataos:system:minerva:table:icebase:retail:city  #
+        - dataos:type:secret:icebase_r_r  #read specific secret
+        - dataos:type:secret:icebase_rw_rw  #read specific secret
+        - dataos:system:ds:dataset:icebase:retail:city  #read dataset
+    allow: true           # Granting access
