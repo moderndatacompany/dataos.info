@@ -34,7 +34,7 @@ workflow:
             memory: 5024Mi
         stack: scanner:2.0
         compute: runnable-default
-        scanner:
+        stackSpec:
           type: poros                   # Scanner type
           source: poros
           sourceConnection:

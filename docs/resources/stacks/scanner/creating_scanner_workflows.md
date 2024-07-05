@@ -28,7 +28,7 @@
     **`depot`**: Give the name or address of the depot. The Scanner job will scan all the datasets referred by a depot. Depot keeps connection details and secrets, so you do not need to give them explicitly in Scanner YAML.
     
     ```yaml
-    scanner:
+    stackSpec:
       depot: dataos://icebase       
     ```
 
@@ -42,7 +42,7 @@
     **`source`**: Here you need to explicitly provide the source name where the scanned metadata is saved within Metastore. On Metis UI, sources are listed for databases, messaging, dashboards, workflows, ML models, etc. 
     
     ```yaml
-    scanner:
+    stackSpec:
       type: snowflake
       source: samplexyz 
     ```
@@ -117,7 +117,7 @@
               stack: scanner:2.0               
               compute: runnable-default        
               runAsUser: metis                 
-              scanner:
+              stackSpec:
                 depot: snowflake03             
                 sourceConfig:
                   config:
@@ -164,7 +164,7 @@
               stack: scanner:2.0               
               compute: runnable-default        
               runAsUser: metis
-              scanner:
+              stackSpec:
                 type: snowflake                
                 source: sampleXyz              
                 sourceConnection:                    

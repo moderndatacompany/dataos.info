@@ -61,7 +61,7 @@ workflow:
         stack: scanner:2.0
         runAsUser: metis
         compute: runnable-default
-        scanner:
+        stackSpec:
           type: superset
           source: superset08     # can be given anything by your choice
           sourceConnection:
