@@ -31,7 +31,7 @@ workflow:
         stack: scanner:2.0
         compute: runnable-default
         runAsUser: metis
-        scanner:
+        stackSpec:
           depot: demopreppostgres          # Postgres depot name
           # sourceConfig:
           #   config:

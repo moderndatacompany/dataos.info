@@ -6,7 +6,7 @@ search:
 
 # :resources-policy: Policy
 
-Policy is a [Resource](../resources.md) in DataOS that defines a set of rules or guardrails governing the behavior of users, be it individuals or applications/services. Within DataOS, Policies are enforced using [Attribute Based Access Control (ABAC)](./policy/understanding_abac_pdp_and_pep.md#attribute-based-access-control-abac) and define what [predicates](./policy/understanding_abac_pdp_and_pep.md#predicate) a user (a [subject](./policy/understanding_abac_pdp_and_pep.md#subject) can perform on a dataset, API Path, or a Resource (an [object](./policy/understanding_abac_pdp_and_pep.md#object), thus defining the constraints of the relationship between the subject and object.
+Policy is a [Resource](../resources.md) in DataOS that defines a set of rules or guardrails governing the behavior of users, be it individuals or applications/services. Within DataOS, Policies are enforced using [Attribute Based Access Control (ABAC)](./policy/understanding_abac_pdp_and_pep.md#attribute-based-access-control-abac) and define what [predicates](./policy/understanding_abac_pdp_and_pep.md#predicate) a user (a [subject](./policy/understanding_abac_pdp_and_pep.md#subject)) can perform on a dataset, API Path, or a Resource (an [object](./policy/understanding_abac_pdp_and_pep.md#object)), thus defining the constraints of the relationship between the subject and object.
 
 The Policy Resource operates on "never trust, always verify" ethos. It enforce a default denial stance, requiring  users must explicitly request access to perform any action within the system. It establishes a continuous authorization mechanism, where access permissions are dynamically evaluated each time a user attempts an action. Access is granted only if the user has the requisite permissions at that precise moment.
 
@@ -136,6 +136,9 @@ To create a Policy, the first step is to create a Policy manifest file. A sample
         # Policy specific section (2)
         policy:
           access:
+            name: test-access-policy
+            description: this is a description of policy
+            collection: default
             subjects:
               tags:
                 - roles:id:user
@@ -235,15 +238,15 @@ To create a Policy YAML in DataOS, the initial step involves configuring the [Re
 === "Syntax"
 
     ```yaml
-    name: ${{my-policy}}
+    name: ${my-policy}
     version: v1 
     type: policy 
     tags: 
-      - ${{dataos:type:resource}}
-      - ${{dataos:type:cluster-resource}}
-    description: ${{This is a sample policy YAML configuration}} 
-    owner: ${{iamgroot}}
-    layer: ${{user}}
+      - ${dataos:type:resource}
+      - ${dataos:type:cluster-resource}
+    description: ${This is a sample policy YAML configuration} 
+    owner: ${iamgroot}
+    layer: ${user}
     ```
 
 === "Sample"
@@ -286,22 +289,28 @@ The Policy-specific Section focuses on the configurations specific to the Policy
         ```yaml
         policy:
           access:
+            name: ${test-access-policy}
+            description: ${this is a description of policy}
+            collection: default
             subjects:
               tags:
-                - ${{roles:id:user}}
-                - ${{roles:id:pii-reader}}
+                - ${roles:id:user}
+                - ${roles:id:pii-reader}
             predicates:
-              - ${{read}}
+              - ${read}
             objects:
               <tags/paths>:
-                - ${{tag/path}}
-            allow: ${{true}}
+                - ${tag/path}
+            allow: ${true}
         ```
     === "Sample"
 
         ```yaml
         policy:
           access:
+            name: test-access-policy
+            description: this is a description of policy
+            collection: default
             subjects:
               tags:
                 - roles:id:user
@@ -323,6 +332,9 @@ The Policy-specific Section focuses on the configurations specific to the Policy
     | --- | --- | --- | --- | --- |
     | [`policy`](./policy/manifest_attributes.md#policy) | object | none | none | mandatory |
     | [`access`](./policy/manifest_attributes.md#access) | object | none | none | mandatory |
+    | [`name`](./policy/manifest_attributes.md#name) | string | none | any string | optional |
+    | [`description`](./policy/manifest_attributes.md#description) | string | none | any string | optional |
+    | [`collection`](./policy/manifest_attributes.md#collection) | string | default | any string | optional |
     | [`subjects`](./policy/manifest_attributes.md#subjects) | object | none | none | mandatory |
     | [`tags`](./policy/manifest_attributes.md#tags) | list of strings | none | a valid DataOS tag | mandatory |
     | [`predicates`](./policy/manifest_attributes.md#predicates) | list of strings | none | http or crud operations | mandatory |
@@ -346,8 +358,8 @@ The Policy-specific Section focuses on the configurations specific to the Policy
                 type: filter
                 name: ${filterpolicyname}
                 description: ${sample data policy to filter data}
-                dataset_id: ${{depot.collection.dataset_name}}
-                priority: ${100}}
+                dataset_id: ${depot.collection.dataset_name}
+                priority: ${100}
                 selector:
                   user:
                   match: ${all|any}
@@ -396,7 +408,7 @@ The Policy-specific Section focuses on the configurations specific to the Policy
         | [`user`](./policy/manifest_attributes.md#user)           | object          | none          | none                                        | mandatory   |
         | [`tags`](./policy/manifest_attributes.md#tags_1)         | list of strings | none          | a valid DataOS tag                          | mandatory   |
         | [`column`](./policy/manifest_attributes.md#column)       | object          | none          | true/false                                  | optional    |
-        | [`names`](./policy/manifest_attributes.md#names)         | list of strings | none          | valid column name                           | optional    |
+        | [`name`](./policy/manifest_attributes.md#name)         | string | none          | valid column name                           | optional    |
         | [`tags`](./policy/manifest_attributes.md#tags_2)         | list of tags    | none          | valid column tag defined under a tag group  | optional    |
         | [`type`](./policy/manifest_attributes.md#type)           | string          | none          | mask/filter                                 | mandatory   |
         | [`filters`](./policy/manifest_attributes.md#filters)     | list            | none          | none                                        | mandatory   |

@@ -6,10 +6,10 @@ tags:
   - {{bigquery}}
 owner: {{owner-name}}
 layer: user
-depot:
-  type: BIGQUERY                 
-  description: {{description}}
-  external: {{true}}
+depot: # mandatory
+  type: BIGQUERY  # mandatory               
+  description: {{description}} # optional
+  external: {{true}} # mandatory
   connectionSecret:            
     - acl: rw
       type: key-value-properties
@@ -25,8 +25,8 @@ depot:
         email: {{email-id}}
       files:
         json_keyfile: {{json-file-path}}
-  spec:                           
-    project: {{project-name}}
-    params:
+  spec:  # optional                         
+    project: {{project-name}} # optional
+    params: # optional
       {{"key1": "value1"}}
       {{"key2": "value2"}}

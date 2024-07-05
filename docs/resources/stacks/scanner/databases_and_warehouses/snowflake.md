@@ -37,7 +37,7 @@ workflow:
         stack: scanner:2.0                              
         compute: runnable-default 
         runAsUser: metis                      
-        scanner:
+        stackSpec:
           depot: snowflake03       # Depot name or address
           sourceConfig:
             config:

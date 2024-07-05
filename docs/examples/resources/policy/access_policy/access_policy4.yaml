@@ -1,19 +1,26 @@
-name: {{deny-schema-policy}}
 version: v1
+name: test-policy-03
 type: policy
-tags:
-  - {{dataos:type:resource}}
-  - {{dataos:type:cluster-resource}}
-description: {{policy denying users to access a dataset}}
 layer: user
+description: Policy allowing all users
 policy:
   access:
+    name:  test-policy-03
+    description: this is to test policy
+    collection: default
     subjects:
       tags:
-        - - {{roles:id:tag:selective-restricted-access}}
+       - "users:id:**"
+       - "roles:id:**"
+        
     predicates:
-      - {{'**'}}
+      - read
+      - select
     objects:
-      paths:
-        - {{dataos://icebase:test/customer_test}}
-    allow: {{false}}
+      tags:
+        - dataos:resource:cluster:minerva:system   #minerva cluser access
+        - dataos:system:minerva:table:icebase:retail:* 
+        - dataos:type:secret:icebase_r_r
+        - dataos:type:secret:icebase_r_r #read secret
+        - dataos:system:ds:dataset:icebase:retail:city
+    allow: true           # Granting access

@@ -1,19 +1,23 @@
-name: {{test-access-healthcaredata}}
 version: v1
+name: test-policy-02
 type: policy
-tags:
-  - {{dataos:type:resource}}
-  - {{dataos:type:cluster-resource}}
-description: {{policy allowing users to read healthcare data.}}
-layer: user 
+layer: user
+description: Policy allowing all users
 policy:
   access:
+    name:  test-policy-02
+    description: this is to test policy
+    collection: default
     subjects:
       tags:
-        - - {{roles:id:healthcaredatauser}}
+       - users:id:iamgroot      
     predicates:
-      - {{read}}
+      - read
+      - select
     objects:
-      paths:
-        - {{dataos://icebase:test_healthcare/patients}}
-    allow: {{true}}
+      tags:
+        - dataos:resource:cluster:minerva:system   #minerva cluser access
+        - dataos:system:minerva:table:icebase:retail:* #read table
+        - dataos:type:secret:* #read secret
+        - dataos:system:ds:dataset:icebase:retail:*  #read dataset
+    allow: true           # Granting access
