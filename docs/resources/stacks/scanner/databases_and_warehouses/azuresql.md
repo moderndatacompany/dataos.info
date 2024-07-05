@@ -35,7 +35,7 @@ workflow:
         stack: scanner:2.0
         compute: runnable-default
         runAsUser: metis
-        scanner:
+        stackSpec:
           depot: azuresql
           sourceConfig:                 # Apply filter as per requirement
             config:

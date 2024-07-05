@@ -30,7 +30,7 @@ Here is an example of YAML configuration to connect to the source and reach the 
             stack: scanner:2.0
             compute: runnable-default
     				runAsUser: metis
-            scanner:
+            stackSpec:
               depot: kafka01
               # sourceConfig:
               #   config:
