@@ -1,6 +1,6 @@
 # How to build a Data Product?
 
-This section involves the building phase of the Data Product right from data connection to defining SLOs. DataOS provides flexible ways to build the data product. You can create the data product from scratch or reuse the existing one as per requirements. You can explore the data products in the Data Products Hub, an interface that lists all the existing data product information.
+Data Product is build by the Data Product Developers. This section involves the building phase of the Data Product right from data connection to defining SLOs. DataOS provides flexible ways to build the data product. You can create the data product from scratch or reuse the existing one as per requirements. You can explore the data products in the Data Products Hub, an interface that lists all the existing data product information.
 
 Let’s see the steps for building a Data Product:
 
@@ -18,9 +18,9 @@ Before proceeding with the Data Product creation, ensure that you have the neces
 From the design phase, it is clear which DataOS resources we require to build the Data Product, and these are Instance Secret, Depot, Cluster, Scanner, Flare, Policy, SODA Checks, Monitor, Pager, and Bundle. Let’s see how to create each one step by step. As we already created the depot and ran the depot scanner, we’ll directly jump into the data transformation step using Flare.
 
 <aside class="callout">
-🗣 Depending upon the use case more resources can be added or removed, to know more about the DataOS components refer to [dataos.info](http://dataos.info).
-
+🗣 Depending upon the use case more resources can be added or removed, to know more about the DataOS resources refer to <a href="https://dataos.info/resources/">DataOS Resources</a>.
 </aside>
+
 
 ### **Create the Flare Job for data transformation**
 
