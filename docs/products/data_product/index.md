@@ -1,6 +1,10 @@
 # Data Product
 
-## Overview
+!!!info "Overview"
+
+    This documentation is intended to provide structured information essential for understanding the purpose, functionality, and operational aspects of the Data Product. This documentation is crucial for both technical teams and stakeholders to ensure clarity, consistency, and effective management throughout the lifecycle of the Data Product.
+
+## Introduction
 
 A Data Product is a self-contained unit within DataOS designed for handling and sharing analytical data, developed and managed by the dedicated teams. It includes meta data, data transformation code, input and output definitions, discovery and observability, APIs, documentation, service level objectives (SLOs), governance, transformation and platform dependencies such as compute and storage resources. Data Product is reusable, composable, portable and cloud-agnostic.​
 
@@ -92,8 +96,7 @@ Data Product Developers designs, builds, and maintains the technical infrastruct
 
 **Data Product Consumer**
 
-Data Product Cosumers utilizes the Data Product to derive insights and make data-driven decisions. They explore output data, generate reports, and leverage visualizations for strategic planning and operational improvements. For Data Product Consumers, divisions encompass business analysts who derive insights, operational managers who optimize processes, executive stakeholders who rely on strategic insights, and data scientists, and data analysts who use advanced analytics and models.
-
+Data Product Cosumers utilizes the Data Product to derive insights and make data-driven decisions. They explore output data, generate reports, and leverage visualizations for strategic planning and operational improvements. For Data Product Consumers, divisions encompass business analysts who derive insights, operational managers who optimize processes, executive stakeholders who rely on strategic insights, and data scientists, and data analysts who use advanced analytics and models. Data consumers utilize the Data Product Hub to explore and obtain data products that align with their business requirements. They can review descriptions of the data products to determine suitability. Through an intuitive interface, data consumers can efficiently access the appropriate data they need.
 
 ## Types of Data Product
 
@@ -101,11 +104,12 @@ Data Products can be categorized based on their design and structure. The main t
 
 ### **Entity First Data Product**
 
-ntity-first Data Products are organized and structured based on the characteristics and origins of the underlying data sources themselves. There is emphasis on ensuring data quality, governance, and compliance with organizational standards and policies.​ They often aligning closely with the data domains of the organization.​ At times, they are also referred to as Source-aligned Data Products
+Entity-first Data Products are organized and structured based on the characteristics and origins of the underlying data sources themselves. There is emphasis on ensuring data quality, governance, and compliance with organizational standards and policies.​ They often aligning closely with the data domains of the organization.​ At times, they are also referred to as Source-aligned Data Products. Examples include Data Warehouses, which centralize and integrate data across an organization, and Master Data Management Systems, which ensure consistency and accuracy of key data entities like customers or products.
 
 ### **Model First Data Product**
 
-Model-first Data Products are designed and structured primarily around the needs, preferences, and use cases of the end-users or consumers of the data. There is emphasis on understanding the semantics and context in which users will interact with the data.​This essentially means modeling the outcome first (prototyping) and then putting the parts together to bring the product vision to life. ​At times, they are also referred to as Consumer-aligned Data Products.​
+Model-first Data Products are designed and structured primarily around the needs, preferences, and use cases of the end-users or consumers of the data. There is emphasis on understanding the semantics and context in which users will interact with the data.​This essentially means modeling the outcome first (prototyping) and then putting the parts together to bring the product vision to life. ​At times, they are also referred to as Consumer-aligned Data Products.​ Examples include Business Intelligence Dashboards that provide visual analytics for decision-making, Predictive Analytics Models that forecast future trends based on historical data, and Recommendation Systems that suggest items based on user behavior and preferences.
+
 
 ## Data Product Development Lifecycle
 
@@ -114,7 +118,7 @@ The development of the Data Product lifecycle consists of four key phases:
 
 The Design phase of Data Product Lifecycle is pivotal in aligning business objectives with actionable solutions. It begins with a comprehensive understanding of business goals and use cases, forming the basis for developing a robust solution architecture. To know more in detail, please refer to [How to Design a Data Product](/products/data_product/how_to_guides/design/).
 
-### **Build**
+### **Develop**
 
 The Build phase involves coding, configurations, and integrations to build data pipelines, application logic, and interfaces according to the solution architecture. Rigorous testing ensures functionality, performance, and reliability, with ongoing stakeholder collaboration to validate that the built product aligns with business objectives and technical specifications. To know more in detail, please refer to [How to Build a Data Product](/products/data_product/how_to_guides/build/).
 
@@ -125,7 +129,7 @@ The Deploy phase of Data Product lifecycle emphasis on making Data Products avai
 The Iterate phase in the Data Product Lifecycle focuses on continuous improvement and refinement based on feedback, usage patterns, and evolving business needs. It involves analyzing user interactions, performance metrics, and gathering stakeholder feedback to identify areas for enhancement or adjustment. To know more in detail, please refer to [How to Iterate the Data Product](/products/data_product/how_to_guides/manage_and_iterate/).
 
 
-<img src="/products/data_product/diagram.jpg" alt="Description" width="1500">
+<img src="/products/data_product/Untitled.jpg" alt="Description" width="1500">
 
 ## Structure of Data Product Manifest
 

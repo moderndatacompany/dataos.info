@@ -142,7 +142,7 @@ nav:
       - products/data_product/index.md
       - 'Data Product Lifecycle':
         - 'Design': products/data_product/how_to_guides/design.md
-        - 'Build': products/data_product/how_to_guides/build.md
+        - 'Develop': products/data_product/how_to_guides/build.md
         - 'Deploy': products/data_product/how_to_guides/deploy.md
         - 'Iterate': products/data_product/how_to_guides/manage_and_iterate.md
       - 'Recipes': 
