@@ -1,16 +1,16 @@
 # How to design the Data Product?
 
-The design phase of the data product development process within DataOS is crucial for ensuring that the final product meets the requirements and delivers value. This phase involves several steps, from initial requirement analysis to the final design iteration. To illustrate this process, we will use a real-life use case: Traffic Source Analysis using Google Analytics.
+Data Product is designed by the Data Product owners. The design phase of the data product development process within DataOS is crucial for ensuring that the final product meets the requirements and delivers value. The phase involves several steps, from initial requirement analysis to the final design iteration. To illustrate this process, we will use a real-life use case: Traffic Source Analysis using Google Analytics.
 
 To design the Data Product follow the below steps:
 
 ## Define Use-case
 
-The initial step in designing a Data Product is to define the use cases, a single data product can cater to multiple use cases. The use case for this particular example is to analyze the Traffic Source using Google Analytics. This analysis provides actionable insights, enabling data-driven decision-making to optimize marketing strategies and improve business outcomes. The intended audience includes data analysts, marketing teams, business stakeholders, and technical teams responsible for data product development. The requirements for this use case include access to Google Analytics data, an ETL (Extract, Transform, Load) process to clean and transform raw data, a data model to structure the transformed data, and visualization tools to present the analysis results. Additionally, secure data handling and storage must be ensured throughout the process.
+The initial step in designing a Data Product is to define the use cases, a single data product can cater to multiple use cases and all the way around. The use case for this particular example is to analyze the Traffic Source using Google Analytics. This analysis provides actionable insights, enabling data-driven decision-making to optimize marketing strategies and improve business outcomes. The intended audience includes data analysts, marketing teams, business stakeholders, and technical teams responsible for data product development. The requirements for this use case include access to Google Analytics data, an ETL (Extract, Transform, Load) process to clean and transform raw data, a data model to structure the transformed data, and visualization tools to present the analysis results. Additionally, secure data handling and storage must be ensured throughout the process.
 
 ## Data Understanding and Exploration
 
-To understand the data, you need to set up the data source connection to S3. Let’s see how can you set the data source connection using the Depot for S3.
+To understand the data, you need to set up the data source connection to S3 using Instance Secret and Depot. Let’s see how can you set the data source connection using the Depot for S3.
 
 <aside class="callout">
 
@@ -20,7 +20,7 @@ To understand the data, you need to set up the data source connection to S3. Let
 
 ### **Create an Instance Secret**
 
-To create a Depot you first need to create Instance-Secret resource which will hold credentials of the S3 source, simply compose a manifest file for an Instance-Secret as shown below
+To create a Depot without revealing the data source connection credentials, you first need to create an Instance-Secret resource which will hold credentials of the S3 source such as accesskeyid, awsaccesskeyid, awssecretaccesskey and secretkey. To create an Intsnace Secret simply compose a manifest file as shown below.
 
 ```yaml
 name: s3depot-r 
@@ -111,7 +111,7 @@ To know more about the Scanner, [refer to this](https://dataos.info/resources/st
 
 ### **Explore the Data**
 
-Now for data exploration, you can query the data using the workbench. To query the data on the workbench without moving the data you first need to create a Minerva or a Themis cluster that will target the Depot. By applying the below manifest file, you can create the cluster.
+Now for data exploration, you can query the data using the workbench. To query the data on the workbench without moving the data to Icebase, you first need to create a Minerva or a Themis cluster that will target the Depot. By applying the below manifest file, you can create the cluster.
 
 ```yaml
 version: v1
@@ -196,7 +196,7 @@ Once you've explored the data, the next step is to plan the architectural design
 |      Data Sources       +                                     |    Analytical     |
 |     (Google Analytics,  |                                     |    platforms      |
 |      Adobe Analytics,   |                                     |                   |
-|           etc.          |                                     |                   |
+|           etc.)         |                                     |                   |
 +-----------+-------------+                                     +---------+---------+
             |                                                             ^
             |                                                             |
