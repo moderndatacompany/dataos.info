@@ -1,0 +1,164 @@
+name: wf-customer-churn-quality
+version: v1
+type: workflow
+tags:
+  - demo.customer-churn
+  - Tier.Gold
+  - Domain.Finance
+description: The role involves conducting thorough and detailed quality analysis, including data assertion, of extensive customer churn data using the advanced features of the DataOS platform.
+workspace: public
+workflow:
+  schedule:
+    cron: '*/2 * * * *'
+    concurrencyPolicy: Forbid
+  dag:
+    - name: customer-churn
+      description: The role involves conducting thorough and detailed quality analysis, including data assertion, of customer churn enriched data using the advanced features of the DataOS platform.
+      title: Customer Churn Quality Assertion 
+      spec:
+        stack:  soda+python:1.0 
+        logLevel: INFO
+        compute: runnable-default
+        resources:
+          requests:
+            cpu: 1000m
+            memory: 250Mi
+          limits:
+            cpu: 1000m
+            memory: 250Mi
+        stackSpec:
+          inputs:
+            - dataset: dataos://icebase:sales_analytics/customer_churn?acl=rw
+              options:
+                engine: minerva
+                clusterName: system   
+              checks:
+              checks:
+                - invalid_count(churn_status) <= 0:
+                    valid regex: \b(?:Churned|Not Churned)\b
+
+                - missing_count(churn_status) = 0 
+
+                - missing_count(customer_count) = 0
+
+                - schema:
+                    name: Confirm that required columns are present
+                    warn:
+                      when required column missing: [churn_status, customer_count]
+                    fail:
+                      when required column missing:
+                        - churn_status
+                        - customer_count  
+```
+
+```yaml title="transaction-profiling-quality-checks.yml"
+name: profile-transaction-data
+version: v1
+type: workflow
+tags:
+  - profile
+description: this jobs profile data
+workspace: public
+workflow:
+  dag:
+    - name: sample-profile-soda-01
+      title: Sample profile data
+      spec:
+        stack: soda+python:1.0
+        compute: runnable-default
+        resources:
+          requests:
+            cpu: 1000m
+            memory: 250Mi
+          limits:
+            cpu: 1000m
+            memory: 250Mi
+        logLevel: INFO # WARNING, ERROR, DEBUG
+        stackSpec:  
+          inputs:
+            - dataset: dataos://icebase:sales_analytics/transaction_data
+              options:
+                engine: minerva
+                clusterName: system
+              checks:
+                - row_count between 10 and 10000
+                - missing_count(transaction_id) = 0
+                # - invalid_percent(phone_number) < 1 %:
+                #     valid format: 603-706-2239
+                - invalid_count(discount_percentage) = 0:
+                    valid min: 0
+                    valid max: 50
+                - duplicate_count(transaction_id) = 0
+                - schema:
+                    name: Confirm that required columns are present
+                    warn:
+                      when required column missing: [transaction_date]
+                    fail:
+                      when required column missing: [order_id]
+              profile:
+                columns:
+                  - "*"
+            
+```
+
+```yaml title="orders-enriched-qualitychecks.yml"
+name: wf-order-enriched-quality
+version: v1
+type: workflow
+tags:
+  - demo.orders
+  - Tier.Gold
+  - Domain.Finance
+description: The role involves conducting thorough and detailed quality analysis, including data assertion, of extensive order enriched data using the advanced features of the DataOS platform.
+workspace: public
+workflow:
+  schedule:
+    cron: '*/2 * * * *'
+    concurrencyPolicy: Forbid
+  dag:
+    - name: order-enriched
+      description: The role involves conducting thorough and detailed quality analysis, including data assertion, of extensive order enriched data using the advanced features of the DataOS platform.
+      title: Order Enriched Quality Assertion 
+      spec:
+        stack:  soda+python:1.0 
+        logLevel: INFO
+        compute: runnable-default
+        resources:
+          requests:
+            cpu: 1000m
+            memory: 250Mi
+          limits:
+            cpu: 1000m
+            memory: 250Mi
+        stackSpec:
+          inputs:
+            - dataset: dataos://icebase:sales_analytics/order_enriched?acl=rw
+              options:
+                engine: minerva
+                clusterName: system   
+              checks:
+              checks:
+                # - invalid_count(customer_id) = 0:
+                #     valid regex: ^[A-Za-z0-9]{5}$
+
+                - invalid_count(payment_method) <= 0:
+                    valid regex: \b(?:Credit Card|Apple Pay|Debit Card|COD|PayPal)\b                
+
+                - invalid_count(productsku) <= 0:
+                    valid regex: ^SKU\d{7}$
+                  
+                - invalid_percent(email_id) < 10%:
+                    valid regex: ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
+
+                - invalid_count(order_status) <= 0:
+                    valid regex: \b(?:Delivered|Shipped|Processing|Canceled)\b                       
+
+                - schema:
+                    name: Confirm that required columns are present
+                    warn:
+                      when required column missing: [order_id, customer_id, order_status]
+                    fail:
+                      when required column missing:
+                        - order_id
+                        - customer_id
+                        - productsku  
