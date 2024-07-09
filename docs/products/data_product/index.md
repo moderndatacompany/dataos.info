@@ -89,3 +89,5 @@ Below are some recipes to help you configure Data Product effectively:
 Below are some templates to help you to design the Data Product:
 
 - [Customer 360 Data Product](/products/data_product/templates/customer/)
+
+- [Sales 360 Data Product](/products/data_product/templates/sales_360/)
