@@ -40,9 +40,3 @@ cluster:
 
     depots:
       - address: dataos://crmbq:sales_360
-
-    catalogs:
-      - name: cache
-        type: memory
-        properties:
-          memory.max-data-per-node: "128MB"
