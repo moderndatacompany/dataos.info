@@ -13,7 +13,7 @@ In this step, we identify various data sources based on usecase. For instance, i
 
 ## Data Understanding and Exploration
 
-To understand the data, you need to set up the data source connection to S3 using Instance Secret and Depot. Let’s see how can you set the data source connection using the Depot for S3.
+To understand the data, you need to set up the data source connection to S3 using Instance Secret and Depot. Let’s see how can you set the data source connection using the Depot for S3. This step is depends on the Data Source.
 
 <aside class="callout">
 
@@ -189,7 +189,7 @@ Now on Workbench, select your cluster and query the data.
 
 To know more about Workbench, [refer to this](https://dataos.info/interfaces/workbench/).
 
-## **Data Product Architectural Design**
+## **Design Data Product solution architecture**
 
 Once you've explored the data, the next step is to plan the architectural design. This involves mapping out how different components, data pipelines, and workflows will integrate. The architecture design should be well-documented with diagrams and clear explanations of how each component interacts and the workflows they support. For data transformation tasks, tools like Flare jobs, SLOs (Service Level Objectives), and UI (User Interface) elements can be utilized to ensure efficient processing and visualization of data insights.
 
