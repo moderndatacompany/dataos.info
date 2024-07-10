@@ -48,7 +48,7 @@ For example, here the source is bigquery warehouse.
 Creating a bigquery depot with json file of the credentails of the client's warehouse.
 
 ```yaml title="bigquery_depot.yml" hl_lines="18"
---8<-- "examples/products/data/sales_360/depot.yml"
+--8<-- "examples/products/data/sales_360/sales_depot.yml"
 ```
 
 #### **Extract the Metadata**
@@ -64,8 +64,20 @@ To explore the metadata of the tables you can run a scanner. You can then access
 Now for data exploration, you can query the data using the workbench. To query the data on the workbench without moving the data you first need to create a Minerva or a Themis cluster that will target the Depot. By applying the below manifest file, you can create the cluster.
 
 ```yaml title="cluster01.yml"
---8<-- "examples/products/data/sales_360/cluster.yml"
+--8<-- "examples/products/data/sales_360/sales_cluster.yml"
 ```
+
+Now, to interact with  the newly created Cluster, execute the following steps:
+
+- **Accessing the Cluster:** Upon launching the Workbench application, the user is required to select the desired Cluster. In this instance, the cluster identified as `salesbq` is chosen.
+
+- **Execution of Queries**:
+    - **Catalog, Schema, and Table Selection**: The user must select the appropriate catalog, schema, and tables within the Workbench interface.
+    - **Query Execution**: After formulating the query, the user executes it by clicking the 'Run' button.
+    - **Result Retrieval**: The outcomes of the executed query are displayed in the pane situated below the query input area.
+
+For comprehensive details on the features and capabilities of Workbench, refer to the dedicated [Workbench](../interfaces/workbench.md) documentation.
+
 
 #### **Data Product Architectural Design**
 
@@ -151,21 +163,39 @@ Now, using customer and transaction data we will create a customer churn table t
 --8<-- "examples/products/data/sales_360/customer_churn.yml"
 ```
 
-#### **Data Profiling and Quality checks**
+Alternatively you can also use the [dag](/resources/workflow/#workflow-and-directed-acyclic-graph-dag) of the workflows to run jobs in sequence in one manifest only.
+
+
+#### **Create the Monitor for  observability of workflows**
+
+
+
+#### **Data Profiling**
 
 After Ingestion and transformation, it's necessary that we perform profiling and quality checks on our data as designed in the design phase.
 
+```yaml title="customer-profiling-quality-checks.yml"
+--8<-- "examples/products/data/sales_360/customer_profile.yml"
+```
+
+#### **Create the Monitor for observability of profiling**
 
 ```yaml title="customer-profiling-quality-checks.yml"
---8<-- "examples/products/data/sales_360/customer_quality.yml"
+--8<-- "examples/products/data/sales_360/profile_monitor.yml"
 ```
+
+#### **Data Quality Checks**
+
+```yaml title="customer-profiling-quality-checks.yml"
+--8<-- "examples/products/data/sales_360/profile_monitor.yml"
+```
+
 
 #### **Create the Bundle for applying all the resources**
 
 ```yaml
 --8<-- "examples/products/data/sales_360/product_bundle.yml"
 ```
-
 
 #### **Create the Data Product manifest file**
 

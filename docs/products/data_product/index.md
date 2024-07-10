@@ -201,10 +201,8 @@ Below are some recipes to help you configure Data Product effectively:
 
 Below are some templates to help you to design the Data Product:
 
-<<<<<<< HEAD
 - [Customer 360 Data Product](/products/data_product/templates/customer/)
 
 - [Sales 360 Data Product](/products/data_product/templates/sales_360/)
-=======
+
 - [FS Accelerator Data Product](/products/data_product/templates/accelerator/)
->>>>>>> e36c09b8f3e9b3feb169b71ebd1de47e7f0a76d7
