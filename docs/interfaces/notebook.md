@@ -1,3 +1,9 @@
+---
+title: Jupyter Notebook
+search:
+  boost: 2
+---
+
 # Jupyter Notebook
 
 Jupyter Notebook is a popular open-source web-based application that allows users to create and share documents that contain live code, equations, visualisations, and narrative text. It provides a user-friendly interface for interactive computing, data analysis, and data visualisation in several programming languages, including Python, R, and Julia.
@@ -168,4 +174,4 @@ write_options = {
 # Save the dataset to Icebase using PyFlare SDK
 dataset = sdk.save(name="c181", format="iceberg", mode='overwrite', options=write_options)
 ```
-You have successfully Make sure to customize the database name, table name, and any additional options based on your specific use case.
+Your data is successfully written in Icebase. Make sure to customize the database name, table name, and any additional options based on your specific use case.

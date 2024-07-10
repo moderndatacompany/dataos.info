@@ -14,28 +14,58 @@ To establish a connection with Elasticsearch, the following information is requi
 
 To create a Depot of type ‘ELASTICSEARCH‘, utilize the following template:
 
-```yaml
-name: {{depot-name}}
-version: v1
-type: depot
-tags:
-  - {{tag1}}
-  - {{tag2}}
-owner: {{owner-name}}
-layer: user
-depot:
-  type: ELASTICSEARCH              
-  description: {{description}}
-  external: {{true}}
-  connectionSecret:                
-    - acl: rw
-      values:
-        username: {{username}}
-        password: {{password}}
-    - acl: r
-      values:
-        username: {{username}}
-        password: {{password}}
-  spec:                           
-    nodes: {{["localhost:9092", "localhost:9093"]}}
-```
+=== "v1"
+
+    ```yaml
+    name: {{depot-name}}
+    version: v1
+    type: depot
+    tags:
+      - {{tag1}}
+      - {{tag2}}
+    owner: {{owner-name}}
+    layer: user
+    depot:
+      type: ELASTICSEARCH              
+      description: {{description}}
+      external: {{true}}
+      connectionSecret:                
+        - acl: rw
+          values:
+            username: {{username}}
+            password: {{password}}
+        - acl: r
+          values:
+            username: {{username}}
+            password: {{password}}
+      spec:                           
+        nodes: {{["localhost:9092", "localhost:9093"]}}
+    ```
+
+=== "v2alpha"
+
+    ```yaml
+    name: {{depot-name}}
+    version: v2alpha
+    type: depot
+    tags:
+      - {{tag1}}
+      - {{tag2}}
+    owner: {{owner-name}}
+    layer: user
+    depot:
+      type: ELASTICSEARCH              
+      description: {{description}}
+      external: {{true}}
+      connectionSecret:                
+        - acl: rw
+          values:
+            username: {{username}}
+            password: {{password}}
+        - acl: r
+          values:
+            username: {{username}}
+            password: {{password}}
+      elasticsearch:                           
+        nodes: {{["localhost:9092", "localhost:9093"]}}
+    ```

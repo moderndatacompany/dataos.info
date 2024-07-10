@@ -6,22 +6,22 @@
 stack: scanner:2.0               
 compute: runnable-default        
 runAsUser: metis                 
-scanner:
-depot: {{depot name/adddress}}             
-sourceConfig:
-config:
-    type: DatabaseMetadata         
-    databaseFilterPattern:
-      includes/excludes:
-        - {{regex}}
-    schemaFilterPattern:
-      includes/excludes:
-        - {{regex}}
-    tableFilterPattern:
-      includes/excludes:
-        - {{regex}}
-    markDeletedTables: true/false
-    includeViews: true/false
+stackSpec:
+  depot: {{depot name/adddress}}             
+  sourceConfig:
+  config:
+      type: DatabaseMetadata         
+      databaseFilterPattern:
+        includes/excludes:
+          - {{regex}}
+      schemaFilterPattern:
+        includes/excludes:
+          - {{regex}}
+      tableFilterPattern:
+        includes/excludes:
+          - {{regex}}
+      markDeletedTables: true/false
+      includeViews: true/false
 ```
     
 ## Syntax for Non-Depot Scan YAML File
@@ -30,29 +30,29 @@ config:
 stack: scanner:2.0               
 compute: runnable-default        
 runAsUser: metis
-scanner:
-type: {{source type}}                
-source: {{source name}}              
-sourceConnection:                    
-  config:
-    type: {{source connection type}}
-    username: {{username}}
-    password: {{password}}
-    account: {{account}}
-sourceConfig:                  
-  config:
-    type: {{metadata type}}         
-    databaseFilterPattern:
+stackSpec:
+  type: {{source type}}                
+  source: {{source name}}              
+  sourceConnection:                    
+    config:
+      type: {{source connection type}}
+      username: {{username}}
+      password: {{password}}
+      account: {{account}}
+  sourceConfig:                  
+    config:
+      type: {{metadata type}}         
+      databaseFilterPattern:
+        includes/excludes:
+          - <regex>
+      schemaFilterPattern:
+        includes/excludes:
+          - <regex>
+      tableFilterPattern:
       includes/excludes:
-        - <regex>
-    schemaFilterPattern:
-      includes/excludes:
-        - <regex>
-    tableFilterPattern:
-    includes/excludes:
-        - <regex>
-    markDeletedTables: true/false
-    includeViews: true/false
+          - <regex>
+      markDeletedTables: true/false
+      includeViews: true/false
 ```
     
 ## Configuration Attributes

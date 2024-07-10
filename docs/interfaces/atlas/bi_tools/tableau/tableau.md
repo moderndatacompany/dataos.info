@@ -13,7 +13,7 @@ DataOS and Tableau integration work to take advantage of that powerful visualiza
 - Tableau Desktop installed on your system - If Tableau is not installed on your system, you can download the latest version from the [Tableau website](https://www.tableau.com/products/desktop/download).
 - Java installed on your system- you can download the latest version from the [Latest Oracle Java](https://www.oracle.com/java/technologies/downloads/#jdk17-mac).
 - Driver - In order to connect to DataOS Catalog, you would have to install the driver.
-- DataOS API token - To authenticate and access DataOS, you need an API token.
+- DataOS Wrapped Token- To authenticate and access DataOS, you need a wrapped token. This token contains the API key along with the cluster name. 
 
 ## Download and install the driver
 
@@ -27,19 +27,20 @@ Check your Tableau version and follow the steps given below:
     
     - ~/Library/Tableau/Drivers for MAC
     - C:\Program Files\Tableau\Drivers for WINDOWS
+
 - Tableau: 10.0-2020.2 and below.
     
     a. Download the driver from [Tableau driver download page](https://www.tableau.com/support/drivers?__full-version=20204.21.0114.0916#presto).
     
     b. Select the operating system and bit version according to your system configurations.
     
-    ![integration](integration-tableau-driver-download_.png )
-    <figcaption align = "center"> Driver download</figcaption>
+       ![integration](integration-tableau-driver-download_.png )
+       <figcaption align = "center"> Driver download</figcaption>
     
     c. Click on the Download button (mac or Windows).
     
-    ![integration](integration-tableau-driver-downloadmac.png )
-    <figcaption align = "center">Driver download for Mac </figcaption>
+       ![integration](integration-tableau-driver-downloadmac.png )
+       <figcaption align = "center">Driver download for Mac </figcaption>
     
     d. Double-click on downloaded 'Simba Presto 1.1.pkg' for mac or Windows 64-bit driver to run the installer.
     
@@ -73,7 +74,37 @@ Check your Tableau version and follow the steps given below:
     ![integration](integration-key-created.png )
     <figcaption align = "center">Key created </figcaption>
 
-6. Click on the API key to copy it. You would need this API key to configure the Presto driver.
+6. Click on the API key to copy it. You would need this API key to create wrapped token.
+
+
+## Create Wrapped Token Using Terminal
+
+1. On CLI, use the command below to create a wrapped token. Provide the apikey token and name of the Cluster.
+
+```bash
+echo '{"token":"<apikey-token>","cluster":"<cluster-name>"}' | base64
+```
+2. For the following values of api-key and cluster-name, the command will appear as shown below:<br>
+   apikey-token = abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz <br>
+   cluster-name = miniature
+<br>Ensure that JSON string should not contain any spaces.
+```bash
+
+echo '{"token":"abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz","cluster":"miniature"}' | base64
+
+```
+3. Upon successful execution, the output will resemble the following, creating a token.
+
+```bash
+eyJ0b2tlbiI6ImFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6YWJjZGVmZ2hpamtsbW5vcHFyc3R1
+dnd4eXoiLCAiY2x1c3RlciI6ImphcnZpc2NsdXN0ZXIifQ
+```
+4. Once the token is created then align it in a single line. You would need this token to configure the Presto driver.
+
+```bash
+eyJ0b2tlbiI6ImFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6YWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXoiLCAiY2x1c3RlciI6ImphcnZpc2NsdXN0ZXIifQ
+```
+
 
 ## Configure driver on Tableau
 

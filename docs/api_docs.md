@@ -1,3 +1,9 @@
+---
+title: SDK and API Docs
+search:
+  boost: 2
+---
+
 # SDK and API Docs
 
 ## DataOS PyFlare

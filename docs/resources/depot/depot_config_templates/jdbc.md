@@ -16,45 +16,82 @@ To establish a JDBC connection, the following information is required:
 
 To create a Depot of type ‘JDBC‘, utilize the following template:
 
-```yaml
-name: {{depot-name}}
-version: v1
-type: depot
-tags:
-  - {{tag1}}
-owner: {{owner-name}}
-layer: user
-depot:
-  type: JDBC                                      
-  description: {{description}}
-  external: {{true}}
-  connectionSecret:                              
-    - acl: rw
-      type: key-value-properties
-      data:
-        username: {{jdbc-username}}
-        password: {{jdbc-password}}
-    - acl: r
-      type: key-value-properties
-      data:
-        username: {{jdbc-username}}
-        password: {{jdbc-password}}
-  spec:                                           
-    subprotocol: {{subprotocol}}
-    host: {{host}}
-    port: {{port}}
-    database: {{database-name}}
-    params:
-      {{"key1": "value1"}}
-      {{"key2": "value2"}}
-```
+=== "v1"
+
+    ```yaml
+    name: {{depot-name}}
+    version: v1
+    type: depot
+    tags:
+      - {{tag1}}
+    owner: {{owner-name}}
+    layer: user
+    depot:
+      type: JDBC                                      
+      description: {{description}}
+      external: {{true}}
+      connectionSecret:                              
+        - acl: rw
+          type: key-value-properties
+          data:
+            username: {{jdbc-username}}
+            password: {{jdbc-password}}
+        - acl: r
+          type: key-value-properties
+          data:
+            username: {{jdbc-username}}
+            password: {{jdbc-password}}
+      spec:                                           
+        subprotocol: {{subprotocol}}
+        host: {{host}}
+        port: {{port}}
+        database: {{database-name}}
+        params:
+          {{"key1": "value1"}}
+          {{"key2": "value2"}}
+    ```
+
+=== "v2alpha"
+
+    ```yaml
+    name: {{depot-name}}
+    version: v1
+    type: depot
+    tags:
+      - {{tag1}}
+    owner: {{owner-name}}
+    layer: user
+    depot:
+      type: JDBC                                      
+      description: {{description}}
+      external: {{true}}
+      connectionSecret:                              
+        - acl: rw
+          type: key-value-properties
+          data:
+            username: {{jdbc-username}}
+            password: {{jdbc-password}}
+        - acl: r
+          type: key-value-properties
+          data:
+            username: {{jdbc-username}}
+            password: {{jdbc-password}}
+      spec:                                           
+        subprotocol: {{subprotocol}}
+        host: {{host}}
+        port: {{port}}
+        database: {{database-name}}
+        params:
+          {{"key1": "value1"}}
+          {{"key2": "value2"}}
+    ```
 
 ### **Self-signed Certificate (SSL/TLS) Requirement**
 
 If you are connecting to relational databases using the JDBC API and encounter self-signed certificate (SSL/TLS) requirements, you can disable encryption by modifying the YAML configuration file. Simply provide the necessary details for the subprotocol, host, port, database, and use the params field to specify the appropriate parameters for your specific source system as shown below:
 
 ```yaml
-spec:
+spec:             # version v1
   subprotocol:
   host: 
   port: 

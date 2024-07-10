@@ -18,58 +18,120 @@ To create a Depot of type ‘SQLSERVER‘, utilize the following template:
 
 **Use this template, if self-signed certificate is enabled.**
 
-```yaml
-name: {{mssql01}}
-version: v1
-type: depot
-tags:
-  - {{dropzone}}
-  - {{mssql}}
-layer: user
-depot:
-  type: JDBC
-  description: {{MSSQL Sample data}}
-  spec:
-    subprotocol: {{sqlserver}}
-    host: {{host}}
-    port: {{port}}
-    database: {{database}}
-    params: # Required
-      encrypt: {{false}}
-  external: {{true}}
-  hiveSync: {{false}}
-  connectionSecret:
-    - acl: rw
-      type: key-value-properties
-      data:
-        username: {{username}}
-        password: {{password}}
-```
+=== "v1"
+
+    ```yaml
+    name: {{mssql01}}
+    version: v1
+    type: depot
+    tags:
+      - {{dropzone}}
+      - {{mssql}}
+    layer: user
+    depot:
+      type: JDBC
+      description: {{MSSQL Sample data}}
+      spec:
+        subprotocol: {{sqlserver}}
+        host: {{host}}
+        port: {{port}}
+        database: {{database}}
+        params: # Required
+          encrypt: {{false}}
+      external: {{true}}
+      hiveSync: {{false}}
+      connectionSecret:
+        - acl: rw
+          type: key-value-properties
+          data:
+            username: {{username}}
+            password: {{password}}
+    ```
+
+=== "v2alpha"
+
+    ```yaml
+    name: {{mssql01}}
+    version: v2alpha
+    type: depot
+    tags:
+      - {{dropzone}}
+      - {{mssql}}
+    layer: user
+    depot:
+      type: JDBC
+      description: {{MSSQL Sample data}}
+      jdbc:
+        subprotocol: {{sqlserver}}
+        host: {{host}}
+        port: {{port}}
+        database: {{database}}
+        params: # Required
+          encrypt: {{false}}
+      external: {{true}}
+      hiveSync: {{false}}
+      connectionSecret:
+        - acl: rw
+          type: key-value-properties
+          data:
+            username: {{username}}
+            password: {{password}}
+    ```
 
 **If self-signed certificates are not being used** by your organization, you can omit the params section within the spec:
 
-```yaml
-name: {{mssql01}}
-version: v1
-type: depot
-tags:
-  - {{dropzone}}
-  - {{mssql}}
-layer: user
-depot:
-  type: JDBC
-  description: {{MSSQL Sample data}}
-  spec:
-    subprotocol: sqlserver
-    host: {{host}}
-    port: {{port}}
-    database: {{database}}
-    params: {{'{"key":"value","key2":"value2"}'}}
-  external: {{true}}
-  connectionSecret:
-    - acl: rw
-      type: key-value-properties
-      data:
-        username: {{username}}
-        password: {{password}}
-```
+=== "v1"
+
+    ```yaml
+    name: {{mssql01}}
+    version: v1
+    type: depot
+    tags:
+      - {{dropzone}}
+      - {{mssql}}
+    layer: user
+    depot:
+      type: JDBC
+      description: {{MSSQL Sample data}}
+      spec:
+        subprotocol: sqlserver
+        host: {{host}}
+        port: {{port}}
+        database: {{database}}
+        params: {{'{"key":"value","key2":"value2"}'}}
+      external: {{true}}
+      connectionSecret:
+        - acl: rw
+          type: key-value-properties
+          data:
+            username: {{username}}
+            password: {{password}}
+    ```
+
+=== "v2alpha"
+
+    ```yaml
+    name: {{mssql01}}
+    version: v2alpha
+    type: depot
+    tags:
+      - {{dropzone}}
+      - {{mssql}}
+    layer: user
+    depot:
+      type: JDBC
+      description: {{MSSQL Sample data}}
+      jdbc:
+        subprotocol: sqlserver
+        host: {{host}}
+        port: {{port}}
+        database: {{database}}
+        params: {{'{"key":"value","key2":"value2"}'}}
+      external: {{true}}
+      connectionSecret:
+        - acl: rw
+          type: key-value-properties
+          data:
+            username: {{username}}
+            password: {{password}}
+    ```

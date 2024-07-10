@@ -1,4 +1,4 @@
-# Snowflake
+# Scanner for Snowflake
 
 You can scan metadata details such as schemas, tables, view details, etc., from SNOWFLAKE with depot/non-depot Scanner workflows. In this document, you will find requirements and YAML configurations to connect to SNOWFLAKE for extracting entity metadata. 
 
@@ -37,7 +37,7 @@ workflow:
         stack: scanner:2.0                              
         compute: runnable-default 
         runAsUser: metis                      
-        scanner:
+        stackSpec:
           depot: snowflake03       # Depot name or address
           sourceConfig:
             config:

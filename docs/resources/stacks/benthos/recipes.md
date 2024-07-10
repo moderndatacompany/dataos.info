@@ -18,7 +18,7 @@ Let's get cooking!
 
 ## Stock Data API
 
-[Stock Data API to Icebase](./recipes/stock_data_api_to_icebase.md)
+[Stock Data API to Icebase](./recipes/fetching_data_from_stock_data_api_using_benthos.md)
 
 ## How to perform rate limit 
 

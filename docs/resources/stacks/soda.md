@@ -1,9 +1,14 @@
+---
+title: Soda
+search:
+  boost: 2
+---
+
 # Soda
 
 Soda is a declarative [Stack](../stacks.md) for data quality testing within and beyond data pipelines, extending its capabilities, enhancing data observability and reliability across one or more datasets. It enables you to use the [Soda Checks Language (SodaCL)](https://docs.soda.io/soda-cl/soda-cl-overview.html) to turn user-defined inputs into aggregated SQL queries.
 
 ## How to run Soda checks?
-
 
 ### **Create a Workflow/Worker manifest**
 
@@ -114,6 +119,7 @@ stackSpec:
       options:
         engine: minerva
         clusterName: miniature
+        branchName: test
       filter:
         name: filter_on_age
         where: age > 50
@@ -497,6 +503,7 @@ The following table provides a comprehensive overview of the various attributes 
 | [`options`](./soda/yaml_attributes.md#options) | mapping | none | set_version | optional |
 | [`engine`](./soda/yaml_attributes.md#engine) | string | none | default / minerva | optional |
 | [`clusterName`](./soda/yaml_attributes.md#clustername) | string | none | valid cluster name | optional |
+| [`branchName`](./soda/yaml_attributes.md#branchname) | string | main | valid branch name in string format | optional |
 | [`filter`](./soda/yaml_attributes.md#filter) | mapping | none | none | optional |
 | [`name`](./soda/yaml_attributes.md#name) | string | none | valid filter name | optional |
 | [`where`](./soda/yaml_attributes.md#where) | string | none | valid filter condition | optional |
@@ -505,6 +512,24 @@ The following table provides a comprehensive overview of the various attributes 
 | [`checks`](./soda/yaml_attributes.md#checks) | list of mappings | none | valid SodaCL checks | mandatory |
 
 For further details regarding the Soda Stack-specific attributes, you can refer to the link: [Attributes of Soda Stack YAML](./soda/yaml_attributes.md).
+
+**Branch Name Configuration for Lakehouse storage or Icebase type Depots**
+
+In DataOS, Soda facilitates the execution of checks on different branches within a Lakehouse storage or Icebase-type Depot. By default, if no branch name is specified, Soda automatically targets the `main` branch. However, users have the option to direct the checks towards a specific branch by providing the branch name.
+
+To specify a branch name when running a check in a Depot that supports the Iceberg table format, follow the sample configuration below. This capability ensures checks are performed on the desired branch, enhancing the flexibility and accuracy of data management.
+
+```yaml
+stackSpec:
+  inputs:
+    - dataset: dataos://icebase:retail/customer
+      options:
+        engine: minerva
+        clusterName: miniature
+        branchName: test
+```
+
+This configuration illustrates how to set the `branchName` to "test". Adjust the `branchName` parameter to match the branch you intend to assess.
 
 ### **Code Samples**
 
@@ -526,7 +551,7 @@ workflow:
       title: soda Sample Test Job
       description: This is sample job for soda dataos sdk
       spec:
-        stack: soda:1.0
+        stack: soda+python:1.0
         compute: runnable-default
         resources:
           requests:
@@ -1041,6 +1066,7 @@ SELECT * FROM icebase.soda.soda_check_metrics_01 LIMIT 10
 <!-- - [How to run Soda checks for data quality evaluation using Soda Stack in DataOS?](./soda/how_to_run_soda_checks_using_soda_stack.md) -->
 
 - [How to run profiling using Soda Stack in DataOS?](./soda/how_to_run_profiling_using_soda_stack.md)
+- [How to run Soda checks on a specific branch of Iceberg dataset?](./soda/how_to_run_soda_checks_on_a_specific_branch_of_iceberg_dataset.md)
 
 
 

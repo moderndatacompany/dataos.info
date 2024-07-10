@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Beacon
 
 Beacon is a standalone HTTP server designed to facilitate the exposure of data objects and tables contained within PostgreSQL databases. The server offers two distinct flavors (or types) of HTTP APIs, including REST, which leverages the `beacon+rest` stack, and GraphQL, which utilizes the `beacon+graphql` stack.

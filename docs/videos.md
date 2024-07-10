@@ -1,4 +1,7 @@
 ---
+title: Videos
+search:
+  boost: 4
 hide:
   - navigation
 #   - toc

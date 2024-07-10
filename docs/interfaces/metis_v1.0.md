@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Metis
 
 Metis serves as a centralized hub for all types of metadata, offering a 360° view into every data product, covering a spectrum of data assets (ranging from tables to dashboards), and DataOS Resources such as Workflows, Services, Clusters, Policies, etc.

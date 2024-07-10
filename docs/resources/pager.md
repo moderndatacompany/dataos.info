@@ -1,3 +1,9 @@
+---
+title: Pager
+search:
+  boost: 2
+---
+
 # :resources-pager: Pager
 
 A Pager in DataOS is a [Resource](/resources/) that enables data developers to specify criteria for identifying an incident within the incident stream and delivering it to a user-specified destination. It operates by evaluating pre-defined conditions against incoming incident data from the incident stream. Upon identifying a match, it triggers an alert and delivers it to the specified destination.
@@ -13,16 +19,16 @@ The Pager along with [Monitor](/resources/monitor/) Resource comprise the backbo
 
     Learn how to create and manage a Pager in DataOS.
 
-    [:octicons-arrow-right-24: Create and manage a Pager](#how-to-create-and-manage-a-pager?)
+    [:octicons-arrow-right-24: Create and manage a Pager](#how-to-create-and-manage-a-pager)
 
 
--   :material-list-box-outline:{ .lg .middle } **How to configure a Pager manifest file?**
+-   :material-list-box-outline:{ .lg .middle } **How to configure the manifest file of Pager?**
 
     ---
 
-    Discover how to configure a Pager manifest file by adjusting its attributes.
+    Discover how to configure the manifest file of Pager by adjusting its attributes.
 
-    [:octicons-arrow-right-24: Pager attributes](/resources/pager/)
+    [:octicons-arrow-right-24: Pager attributes](/resources/pager/manifest_attributes/)
 
 -   :material-network-pos:{ .lg .middle } **How does a Pager work?**
 
@@ -31,9 +37,9 @@ The Pager along with [Monitor](/resources/monitor/) Resource comprise the backbo
     Understand the inner workings of a Pager within DataOS.
 
     
-    [:octicons-arrow-right-24: Working of a Pager](#how-does-a-pager-work?)
+    [:octicons-arrow-right-24: Working of a Pager](#how-does-a-pager-work)
 
--   :material-content-duplicate:{ .lg .middle } **Pager usage examples**
+-   :material-content-duplicate:{ .lg .middle } **Pager recipes**
 
     ---
 
@@ -520,8 +526,10 @@ A Pager within DataOS operates by continuously monitoring the incident stream fo
 ![Working of a Pager](/resources/pager/working_of_a_pager.png)
 <center><i>Working of a Pager</i></center>
 
-## Pager usage examples
+## Pager recipes
 
-- [How to create a Pager for sending alerts to emails?]()
+- [How to create a custom body template for a Pager?](./pager/custom_body_template_for_pager.md)
+
+<!-- - [How to create a Pager for sending alerts to emails?]()
 - [How to create a Pager for sending alerts to Microsoft Teams channel?]()
-- [How to create a Pager for sending alerts to a Slack channel using a Webhook]()
+- [How to create a Pager for sending alerts to a Slack channel using a Webhook]() -->

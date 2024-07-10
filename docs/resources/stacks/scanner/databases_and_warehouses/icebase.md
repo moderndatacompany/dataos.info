@@ -1,4 +1,4 @@
-# Icebase
+# Scanner for Icebase
 
 DataOS allows you to create a Depot of type 'ICEBASE' to read the schemas/tables stored in DataOS’s lakehouse called Icebase.  The created Depot enables you to read the stored data in datasets. You can scan metadata from the ICEBASE-type depot with the Scanner workflows.
 
@@ -33,19 +33,18 @@ version: v1
               - scanner2
             stack: scanner:2.0
             compute: runnable-default
-            scanner:
+            stackSpec:
               depot: dataos://icebase
-              
-                sourceConfig:
-                  config:
-                    type: DatabaseMetadata
-                    schemaFilterPattern:
-                      includes:
-                        - icebase
-                      excludes:
-                        - information_schema
-                        - sys
-                        - performance_schema
-                        - innodb
+              sourceConfig:
+                config:
+                  type: DatabaseMetadata
+                  schemaFilterPattern:
+                    includes:
+                      - icebase
+                    excludes:
+                      - information_schema
+                      - sys
+                      - performance_schema
+                      - innodb
 ```
 > After the successful workflow run, you can check the metadata of scanned Tables on Metis UI.

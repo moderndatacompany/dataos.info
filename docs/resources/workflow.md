@@ -1,3 +1,9 @@
+---
+title: Workflow
+search:
+  boost: 8
+---
+
 # :resources-workflow: Workflow
 
 The Workflow in DataOS serves as a [Resource](../resources.md) for orchestrating data processing tasks with dependencies. It enables the creation of complex data workflows by defining a hierarchy based on a dependency mechanism.
@@ -129,10 +135,8 @@ The below table summarizes various attributes within the Workflow-specific secti
 | [`schedule`](./workflow/yaml_configuration_attributes.md#schedule) | mapping | none | none | optional**  |
 | [`cron`](./workflow/yaml_configuration_attributes.md#cron) | string | none | any valid [cron](https://en.wikipedia.org/wiki/Cron) expression. | optional**  |
 | [`concurrencyPolicy`](./workflow/yaml_configuration_attributes.md#concurrencypolicy) | string | Allow | Allow/Forbid/Replace | optional |
-| [`startOn`](./workflow/yaml_configuration_attributes.md#starton) | string | none | any time provided in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. | optional |
 | [`endOn`](./workflow/yaml_configuration_attributes.md#endon) | string | none | any time provided in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. | optional |
-| [`completeOn`](./workflow/yaml_configuration_attributes.md#completeon) | string | none | any time provided in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. | optional |
-| [`title`](./workflow/yaml_configuration_attributes.md#title) | string | none | any valid string | optional |
+| [`timezone`](./workflow/yaml_configuration_attributes.md#title) | string | none | any time zone provided in [Timezones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) | optional |
 
 </center>
 
@@ -198,7 +202,7 @@ The below table summarizes various attributes of the Job-specific section.
 | [`limits`](./workflow/yaml_configuration_attributes.md#limits) | mapping | none | none | optional  |
 | [`cpu`](./workflow/yaml_configuration_attributes.md#cpu) | string | requests: 100m, limits: 400m | cpu units in milliCPU(m) or cpu core | optional  |
 | [`memory`](./workflow/yaml_configuration_attributes.md#memory) | string | requests: 100Mi, limits: 400Mi | memory in Mebibytes(Mi) or Gibibytes(Gi) | optional  |
-| [`stack`](./workflow/yaml_configuration_attributes.md#stack) | string | none | [flare](./stacks/flare.md)/[toolbox](./stacks/data_toolbox.md)/[scanner](./stacks/scanner.md)/<br>[alpha](./stacks/alpha.md) | mandatory |
+| [`stack`](./workflow/yaml_configuration_attributes.md#stack) | string | none | [flare](./stacks/flare.md)/[toolbox](./stacks/data_toolbox.md)/[scanner](./stacks/scanner.md)/<br>[container](./stacks/container.md) | mandatory |
 | [`retry`](./workflow/yaml_configuration_attributes.md#retry) | mapping | none | none | optional |
 | [`count`](./workflow/yaml_configuration_attributes.md#count) | integer | none | any positive integer | optional |
 | [`strategy`](./workflow/yaml_configuration_attributes.md#strategy) | string | none | [Always](./workflow/how_to_retry_jobs.md#always)/[OnFailure](./workflow/how_to_retry_jobs.md#onfailure)/<br>[OnError](./workflow/how_to_retry_jobs.md#onerror)/[OnTransientError](./workflow/how_to_retry_jobs.md#ontransienterror) | optional |
@@ -214,13 +218,13 @@ The Stack-specific Section allows you to specify the desired [Stack](./stacks.md
 
 - [Flare Stack](./stacks/flare.md): The Flare stack provides advanced capabilities for data processing and analysis.
 
-- [Alpha Stack](./stacks/alpha.md): The Alpha stack offers a powerful environment for hosting web-application, and custom Docker images atop DataOS.
+- [Container Stack](./stacks/container.md): The Container stack offers a powerful environment for hosting web-application, and custom Docker images atop DataOS.
 
 - [Data Toolbox Stack](./stacks/data_toolbox.md): The Data Toolbox stack provides a set of utilities for Depots storing Iceberg datasets, for e.g. Icebase.
 
 - [Scanner Stack](./stacks/scanner.md): The Scanner Stack provides metadata ingestion capabilities from a source.
 
-For more detailed instructions on setting up and customizing the Stack-specific Section attributes according to your needs, refer to the respective documentation of [Flare](./stacks/flare/configurations.md), [Alpha](./stacks/alpha.md#alpha-stack-section), [Data Toolbox](./stacks/data_toolbox/data_toolbox_grammar.md), [Scanner](./stacks/scanner/field_ref.md) Stack. Each Stack has its unique attributes that can enhance the functionality of your job.
+For more detailed instructions on setting up and customizing the Stack-specific Section attributes according to your needs, refer to the respective documentation of [Flare](./stacks/flare/configurations.md), [Container](./stacks/container.md#container-stack-section), [Data Toolbox](./stacks/data_toolbox/data_toolbox_grammar.md), [Scanner](./stacks/scanner/field_ref.md) Stack. Each Stack has its unique attributes that can enhance the functionality of your job.
 
 
 <details>

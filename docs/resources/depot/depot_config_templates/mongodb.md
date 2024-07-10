@@ -15,27 +15,56 @@ To connect to MongoDB using DataOS and create a MongoDB Depot, the following inf
 
 To create a Depot of type 'MONGODB', use the following template:
 
-```yaml
-name: {{depot-name}}
-version: v1
-type: depot
-tags:
-  - {{tag1}}
-  - {{tag2}}
-layer: user
-depot:
-  type: MONGODB                                 
-  description: {{description}}
-  compute: {{runnable-default}}
-  spec:                                          
-    subprotocol: {{"mongodb+srv"}}
-    nodes: {{["clusterabc.ezlggfy.mongodb.net"]}}
-  external: {{true}}
-  connectionSecret:                              
-    - acl: rw
-      type: key-value-properties
-      data:
-        username: {{username}}
-        password: {{password}}
-```
+=== "v1"
+
+    ```yaml
+    name: {{depot-name}}
+    version: v1
+    type: depot
+    tags:
+      - {{tag1}}
+      - {{tag2}}
+    layer: user
+    depot:
+      type: MONGODB                                 
+      description: {{description}}
+      compute: {{runnable-default}}
+      spec:                                          
+        subprotocol: {{"mongodb+srv"}}
+        nodes: {{["clusterabc.ezlggfy.mongodb.net"]}}
+      external: {{true}}
+      connectionSecret:                              
+        - acl: rw
+          type: key-value-properties
+          data:
+            username: {{username}}
+            password: {{password}}
+    ```
+
+=== "v2alpha"
+
+    ```yaml
+    name: {{depot-name}}
+    version: v2alpha
+    type: depot
+    tags:
+      - {{tag1}}
+      - {{tag2}}
+    layer: user
+    depot:
+      type: MONGODB                                 
+      description: {{description}}
+      compute: {{runnable-default}}
+      mongodb:                                          
+        subprotocol: {{"mongodb+srv"}}
+        nodes: {{["clusterabc.ezlggfy.mongodb.net"]}}
+      external: {{true}}
+      connectionSecret:                              
+        - acl: rw
+          type: key-value-properties
+          data:
+            username: {{username}}
+            password: {{password}}
+    ```
+
 

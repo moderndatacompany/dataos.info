@@ -1,0 +1,21 @@
+name: databasetestcluster
+version: v1
+type: cluster
+cluster:
+  compute: runnable-default
+  type: minerva
+  minerva:
+    replicas: 1
+    resources:
+      requests:
+        cpu: 2000m
+        memory: 2Gi
+      limits:
+        cpu: 2000m
+        memory: 2Gi
+    #Specify the targeted depot
+    depots:
+      - address: dataos://databasetestdepot:default
+    debug:
+      logLevel: DEBUG
+      trinoLogLevel: DEBUG

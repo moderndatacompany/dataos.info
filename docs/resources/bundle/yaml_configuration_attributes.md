@@ -1,4 +1,4 @@
-]# Attributes of Bundle YAML Manifest
+# Attributes of Bundle YAML Manifest
 
 ## Structure of Bundle YAML manifest
 

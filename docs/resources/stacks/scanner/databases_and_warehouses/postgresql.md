@@ -1,4 +1,4 @@
-# PostgreSQL
+# Scanner for PostgreSQL
 You can scan metadata from PostgreSQL with depot/non-depot Scanner workflows. In this document, find requirements and YAML configurations to connect to PostgreSQL for extracting entity metadata. 
 
 ## Requirements
@@ -31,7 +31,7 @@ workflow:
         stack: scanner:2.0
         compute: runnable-default
         runAsUser: metis
-        scanner:
+        stackSpec:
           depot: demopreppostgres          # Postgres depot name
           # sourceConfig:
           #   config:

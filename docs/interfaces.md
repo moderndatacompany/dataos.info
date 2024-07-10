@@ -1,3 +1,11 @@
+---
+title: Interfaces
+search:
+  boost: 2
+---
+
+# Interfaces
+
 Interfaces in DataOS serve as vital points of communication and interaction between different services & the users. They facilitate seamless collaboration and independent functionality within DataOS. These interfaces provide powerful tools for efficient data operations,  and control over various activities. Whether you prefer the flexibility of the API, the command-driven power of the CLI, or the intuitive experience of the GUI, DataOS interfaces enable self-service data management. Let's explore these interfaces and their capabilities.
 
 ## Command Line Interface (CLI)
@@ -49,20 +57,22 @@ Leverage the power of Jupyter Notebook on DataOS for data science projects, codi
 
 With Operations UI, monitor and administer DataOS platform activity, gaining real-time visibility into resource utilization, cluster performance, and user activities. Keep your data ecosystem running smoothly and optimize resource allocation. To learn more, click [here](/interfaces/operations/).
 
+**Superset**
+Superset is a business intelligence solution seamlessly integrated into DataOS. It simplifies the creation of customized reports and dashboards, making it easy to visualize complex data. With a wide range of visualization options, Superset enables clear interpretation, aiding informed decision-making. to learn more, click [here](/interfaces/superset/).
+
 **Workbench**
 
 Explore and query your data assets using SQL with Workbench. Powered by the Minerva query engine (built on top of Trino), Workbench supports both simple and complex queries across a large variety of data sources, including traditional relational databases (Oracle, PostgreSQL, Redshift, etc.) as well as other data sources such as S3, Kafka, and Pulsar. You can query and explore data from these data sources without bringing it to DataOS. To learn more, click [here](/interfaces/workbench/).
 
-**DataOS Home app also enables you to [manage your profile](/interfaces/#manage-profile), [access tokens](/interfaces/#create-tokens), and [view all the depots](/interfaces/#view-depots) that exist within the DataOS instance for accessing data.**
-
 ### **Manage Profile**
 
+DataOS Home app also enables you to manage your profile. 
 ![profile.png](interfaces/profileinfo.png)
 <figcaption align = "center">Profile Information </figcaption>
 
 ### **Create Tokens**
 
-API keys/tokens are used to authenticate requests to  DataOS resources. For example, when calling a service endpoint, you need to supply a valid API token in the HTTP `Authorization` header, with a valid token specified as the header value. You can generate API keys/tokens from DataOS UI as well as using DataOS CLI commands.
+API keys/tokens are used to authenticate requests to  DataOS resources. For example, when calling a service endpoint, you need to supply a valid API token in the HTTP `Authorization` header, with a valid token specified as the header value. You can generate API keys/tokens from DataOS Home app as well as using DataOS CLI commands.
 
 To learn more, refer to [Creating API Keys and Token](interfaces/create_token.md)
 

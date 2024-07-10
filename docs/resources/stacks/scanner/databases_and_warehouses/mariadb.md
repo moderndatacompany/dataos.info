@@ -1,4 +1,4 @@
-# MariaDB
+# Scanner for MariaDB
 
 You can scan metadata details such as schemas, tables, view details etc. from MariaDB with depot/non-depot Scanner workflows. In this document, find requirements and YAML configurations to connect to MariaDB for extracting entity metadata. 
 
@@ -36,7 +36,7 @@ workflow:
         stack: scanner:2.0
         compute: runnable-default
         runAsUser: metis
-        scanner:
+        stackSpec:
           depot: mariadb01
           # sourceConfig:
           #   config:

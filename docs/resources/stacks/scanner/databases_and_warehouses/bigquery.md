@@ -1,4 +1,4 @@
-# BigQuery
+# Scanner for BigQuery
 
 You can scan metadata from BigQuery with depot/non depot Scanner workflows. In this document, find requirements and YAML configurations to connect to BigQuery for extracting entity metadata. 
 
@@ -48,7 +48,7 @@ workflow:
         stack: scanner:2.0
         compute: runnable-default
         runAsUser: metis
-        scanner:
+        stackSpec:
           depot: demoprepbq           
           sourceConfig:           
             config:

@@ -2456,12 +2456,14 @@ html .md-footer-meta.md-typeset a:hover {
 
     .md-nav--primary .md-nav__title .md-nav__icon,
     .md-nav__toggle~.md-nav {
-        display: none
+        display: none;
+        height: 6px;
     }
 
     .md-nav__toggle:checked~.md-nav,
     .md-nav__toggle:indeterminate~.md-nav {
-        display: block
+        display: block;
+        height: 100%;
     }
 
     .md-nav__item--section {

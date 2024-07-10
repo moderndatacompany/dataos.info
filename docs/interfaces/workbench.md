@@ -1,3 +1,9 @@
+---
+title: Workbench
+search:
+  boost: 2
+---
+
 # Workbench
 
 DataOS Workbench is a web-based data exploration tool that allows you to run SQL queries on heterogeneous data sources simultaneously. It is backed by the Minerva query engine (built on top of Trino), hence it is ANSI SQL compliant. Workbench allows you to run simple & complex queries on all sorts of relational databases.

@@ -4,69 +4,69 @@
 
 ```yaml
 worker: 
-	title: ${{benthos}}
-	tags:
-		- ${{tag1}}
-		- ${{tag2}}
-	replicas: ${{1}}
-	autoscaling: 
-		enabled: ${{enable autoscaling}}
-		minReplicas: ${{1}}
-		maxReplicas: ${{3}}
-		targetMemoryUtilizationPercentage: ${{60}}
-		targetCPUUtilizationPercentage: ${{70}}
-	stack: ${{benthos}} # mandatory
-	logLevel: INFO
-	configs: 
-		${{alpha: beta}}
-		${{gamma: sigma}}
-	envs: 
-		${{PULSAR: random}}
-		${{SSL: crazy}}
-	secrets: 
-		- ${{mysecret}}
-	dataosSecrets:
-		- name: ${{random}} # mandatory
-			workspace: ${{delta}} # mandatory
-			key: ${{hola}}
-			keys: 
-				- ${{list}}
-				- ${{abcd}}
-			allKeys: true/false
-			consumptionType: hola
-	dataosVolumes: 
-		- name: devta
-			directory: manish
-			readOnly: true/false
-			subPath: dev/hola
-	tempVolume: hola
-	persistentVolume: 
-		name: devta
-		directory: manish
-		readOnly: true/false
-		subPath: dev/hola
-	compute: runnable-default # mandatory
-	resources:
-		requests:
-			cpu: 1000m
-			memory: 100Mi
-		limits:
-			cpu: 1000m
-			memory: 100Mi
-	dryRun: true/false
-	runAsApiKey: abcdefghijklmnopqrstuvwxyz
-	runAsUser: manishagrawal
-	topology:
-		- name: random # mandatory
-			type: alpha # mandatory
-			doc: new
-			properties:
-				random: lost 
-			dependencies:
-				- new1
-				- new2 
-	stackSpec/flare/benthos/toolbox/beacon/scanner/alpha: 
-		${{Stack-specific Attributes}}
+  title: ${{benthos}}
+  tags:
+    - ${{tag1}}
+    - ${{tag2}}
+  replicas: ${{1}}
+  autoscaling: 
+    enabled: ${{enable autoscaling}}
+    minReplicas: ${{1}}
+    maxReplicas: ${{3}}
+    targetMemoryUtilizationPercentage: ${{60}}
+    targetCPUUtilizationPercentage: ${{70}}
+  stack: ${{benthos}} # mandatory
+  logLevel: INFO
+  configs: 
+    ${{alpha: beta}}
+    ${{gamma: sigma}}
+  envs: 
+    ${{PULSAR: random}}
+    ${{SSL: crazy}}
+  secrets: 
+    - ${{mysecret}}
+  dataosSecrets:
+    - name: ${{random}} # mandatory
+      workspace: ${{delta}} # mandatory
+      key: ${{hola}}
+      keys: 
+        - ${{list}}
+        - ${{abcd}}
+      allKeys: true/false
+      consumptionType: hola
+  dataosVolumes: 
+    - name: devta
+      directory: manish
+      readOnly: true/false
+      subPath: dev/hola
+  tempVolume: hola
+  persistentVolume: 
+    name: devta
+    directory: manish
+    readOnly: true/false
+    subPath: dev/hola
+  compute: runnable-default # mandatory
+  resources:
+    requests:
+      cpu: 1000m
+      memory: 100Mi
+    limits:
+      cpu: 1000m
+      memory: 100Mi
+  dryRun: true/false
+  runAsApiKey: abcdefghijklmnopqrstuvwxyz
+  runAsUser: manishagrawal
+  topology:
+    - name: random # mandatory
+      type: alpha # mandatory
+      doc: new
+      properties:
+        random: lost 
+      dependencies:
+        - new1
+        - new2 
+  stackSpec/flare/benthos/toolbox/beacon/scanner/alpha: 
+    ${{Stack-specific Attributes}}
 ```
 
 ## Attributes configuration

@@ -7,8 +7,8 @@ theme:
     language: en
     features:
         - navigation.tabs
-        - navigation.sections
-        - navigation.expand
+        # - navigation.sections
+        # - navigation.expand
         - navigation.footer
         - navigation.indexes
         - navigation.instant
@@ -16,10 +16,13 @@ theme:
         - navigation.tracking
         - content.code.copy
         - content.code.annotate
-        - content.tabs.link
+        # - content.tabs.link
         - content.tooltips
 #          - toc.follow
 #          - toc.integrate
+        - search.suggest
+        # - search.highlighting
+        - search.share
     icon:
       admonition:
         note: octicons/tag-16
@@ -56,6 +59,7 @@ theme:
             name: Switch to light mode
 plugins:
     - search
+    - tags
     # - mkdocs-versioning:
     #     version: v0.2
 extra:
@@ -106,7 +110,8 @@ markdown_extensions:
       linenums_style: pymdownx-inline
       anchor_linenums: true
   - pymdownx.inlinehilite
-  - pymdownx.snippets
+  - pymdownx.snippets:
+      base_path: docs/
   - pymdownx.smartsymbols
   - pymdownx.tabbed:
       alternate_style: true
@@ -115,7 +120,7 @@ markdown_extensions:
           case: lower
   - pymdownx.tasklist
   - pymdownx.tilde
-#   - pymdownx.extra
+#  - pymdownx.extra
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
@@ -132,12 +137,12 @@ markdown_extensions:
 #### Update for navigation tabs/options ####      
 nav:
     - Home: index.md
-
     - Resources:
          - Overview: resources.md
          - Bundle: resources/bundle.md
          - Cluster: resources/cluster.md
          - Compute: resources/compute.md
+         - Database: resources/database.md
          - Depot: resources/depot.md
          - 'Instance Secret': resources/instance_secret.md 
          - Lakehouse: resources/lakehouse.md
@@ -145,22 +150,21 @@ nav:
          - Operator: resources/operator.md
          - Pager: resources/pager.md
          - Policy: resources/policy.md
-         - Secret: resources/secret_updated.md
-         - Service: resources/service.md 
-         - Worker: resources/worker.md
-         - Workflow: resources/workflow.md 
-
+         - Secret: resources/secret.md
+         - Service: resources/service.md
          - Stacks:
               - Introduction: resources/stacks.md
-              - Alpha: resources/stacks/alpha.md
               - Beacon: resources/stacks/beacon.md
               - Benthos: resources/stacks/benthos.md
-              - CLI: resources/stacks/cli.md
+              - 'CLI Stack': resources/stacks/cli_stack.md
+              - Container: resources/stacks/container.md
               - Data Toolbox: resources/stacks/data_toolbox.md
               - Flare: resources/stacks/flare.md
               - Scanner: resources/stacks/scanner.md
               - Soda: resources/stacks/soda.md
               - Steampipe: resources/stacks/steampipe.md
+         - Worker: resources/worker.md
+         - Workflow: resources/workflow.md 
 
                  
     - Interfaces:
@@ -173,7 +177,7 @@ nav:
          - Metis: interfaces/metis.md
          - Notebook: interfaces/notebook.md
          - Operations: interfaces/operations.md
-        #  - Superset: interfaces/superset.md
+         - Superset: interfaces/superset.md
          - Workbench: interfaces/workbench.md        
 
 # to be hidden from the top navigation bar on the webpages
