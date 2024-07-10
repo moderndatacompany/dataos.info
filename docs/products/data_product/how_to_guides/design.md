@@ -4,9 +4,12 @@ Data Product is designed by the Data Product owners. The design phase of the dat
 
 To design the Data Product follow the below steps:
 
-## Define Use-case
+## Define Use-case and Vision
 
-The initial step in designing a Data Product is to define the use cases, a single data product can cater to multiple use cases and all the way around. The use case for this particular example is to analyze the Traffic Source using Google Analytics. This analysis provides actionable insights, enabling data-driven decision-making to optimize marketing strategies and improve business outcomes. The intended audience includes data analysts, marketing teams, business stakeholders, and technical teams responsible for data product development. The requirements for this use case include access to Google Analytics data, an ETL (Extract, Transform, Load) process to clean and transform raw data, a data model to structure the transformed data, and visualization tools to present the analysis results. Additionally, secure data handling and storage must be ensured throughout the process.
+The initial step in designing a Data Product is to define the use cases, a single data product can cater to multiple use cases and all the way around. The use case for this particular example is to analyze the Website Traffic Source. This analysis provides actionable insights, enabling data-driven decision-making to optimize marketing strategies and improve business outcomes. The intended audience includes data analysts, marketing teams, business stakeholders, and technical teams responsible for data product development. The requirements for this use case include access to data source, an ETL (Extract, Transform, Load) process to clean and transform raw data, a data model to structure the transformed data, and visualization tools to present the analysis results. Additionally, secure data handling and storage must be ensured throughout the process.
+
+## Identify Data Sources
+In this step, we identify various data sources based on usecase. For instance, in traffic source analysis, data is sourced from Google Analytics to capture website traffic, user behavior, and acquisition channel data using the Google Analytics. Additionally, data is obtained from advertising platforms such as Google Ads or Facebook Ads to access campaign performance metrics. Not all use cases necessitate generating data from scratch, if the organization already possesses the required data in its databases, this step may be skipped.
 
 ## Data Understanding and Exploration
 
@@ -148,7 +151,7 @@ cluster:
       CONF__config__query.max-run-time: 30m  #total completion time for query
 
     workerEnvs:
-      CONF__config__query.max-memory-per-node: "38GB"
+      CONF__config__query.max-memory-per-node: "38GB"￼	/23 
       CONF__config__query.max-memory: "300GB"
       CONF__config__query.client.timeout: 12m
       CONF__config__query.max-execution-time: 25m    #total time taken including queued time + execution time
