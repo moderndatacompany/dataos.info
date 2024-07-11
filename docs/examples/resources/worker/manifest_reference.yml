@@ -1,0 +1,80 @@
+# RESOURCE META SECTION
+# Attributes commmon across all DataOS Resources
+name: ${{resource_name}} # Name of the Resource (e.g., my-first-worker)
+version: v1beta # Manifest version of the Resource
+type: worker # Type of Resource
+tags: # Tags for categorizing the Resource
+  - ${{tag_example_1}} # Tags (e.g., dataos:worker)
+  - ${{tag_example_2}} # Additional tags (e.g., dataos:workspace:curriculum)
+description: ${{resource_description}} # Description of the resource (e.g., Common attributes applicable to all DataOS Resources)
+owner: ${{resource_owner}} # Owner of the Resource (e.g., iamgroot)
+layer: ${{resource_layer}} # DataOS Layer (e.g., user, system)
+
+# WORKER-SPECIFIC SECTION
+# Attributes specific to Worker resource-type
+worker: # Worker-specific configuration
+  title: ${{worker_title}} # Title of the worker (e.g., benthos worker)
+  tags:
+    - ${{worker_tag1}} # Tags for the worker (e.g., dataos:worker)
+    - ${{worker_tag2}} # Additional tags (e.g., benthos-worker)
+  replicas: ${{worker_replicas}} # Number of replicas (e.g., 1)
+  autoscaling: # Autoscaling configuration
+    enabled: ${{autoscaling_enabled}} # Enable or disable autoscaling (e.g., true)
+    minReplicas: ${{min_replicas}} # Minimum number of replicas (e.g., 1)
+    maxReplicas: ${{max_replicas}} # Maximum number of replicas (e.g., 3)
+    targetMemoryUtilizationPercentage: ${{memory_utilization}} # Target memory utilization percentage (e.g., 60)
+    targetCPUUtilizationPercentage: ${{cpu_utilization}} # Target CPU utilization percentage (e.g., 70)
+  stack: ${{worker_stack}} # Stack used (mandatory) (e.g., benthos)
+  logLevel: ${{log_level}} # Logging level (e.g., INFO)
+  configs: # Configuration settings
+    ${{config_key1}}: ${{config_value1}} # Example configuration (e.g., alpha: beta)
+    ${{config_key2}}: ${{config_value2}} # Additional configuration (e.g., gamma: sigma)
+  envs: # Environment variables
+    ${{env_key1}}: ${{env_value1}} # Example environment variable (e.g., PULSAR: random)
+    ${{env_key2}}: ${{env_value2}} # Additional environment variable (e.g., SSL: crazy)
+  secrets: 
+    - ${{secret_name}} # List of secrets (e.g., mysecret)
+  dataosSecrets: # DataOS secrets configuration
+    - name: ${{secret_name}} # Name of the secret (mandatory) (e.g., random)
+      workspace: ${{secret_workspace}} # Workspace (mandatory) (e.g., delta)
+      key: ${{secret_key}} # Key (e.g., hola)
+      keys: 
+        - ${{secret_key1}} # List of keys (e.g., list)
+        - ${{secret_key2}} # Additional key (e.g., abcd)
+      allKeys: ${{all_keys_flag}} # Include all keys or not (e.g., true/false)
+      consumptionType: ${{consumption_type}} # Type of consumption (e.g., hola)
+  dataosVolumes: # DataOS volumes configuration
+    - name: ${{volume_name}} # Name of the volume (e.g., devta)
+      directory: ${{volume_directory}} # Directory (e.g., manish)
+      readOnly: ${{read_only_flag}} # Read-only flag (e.g., true/false)
+      subPath: ${{volume_subpath}} # Sub-path (e.g., dev/hola)
+  tempVolume: ${{temp_volume_name}} # Temporary volume (e.g., hola)
+  persistentVolume: # Persistent volume configuration
+    name: ${{persistent_volume_name}} # Name of the volume (e.g., tempvolume)
+    directory: ${{persistent_volume_directory}} # Directory (e.g., myvolume)
+    readOnly: ${{persistent_volume_read_only}} # Read-only flag (e.g., true/false)
+    subPath: ${{persistent_volume_subpath}} # Sub-path (e.g., dev/random)
+  compute: ${{compute_resource_name}} # Compute configuration (mandatory) (e.g., runnable-default)
+  resources: # Resource requests and limits
+    requests:
+      cpu: ${{cpu_request}} # CPU request (e.g., 1000m)
+      memory: ${{memory_request}} # Memory request (e.g., 100Mi)
+    limits:
+      cpu: ${{cpu_limit}} # CPU limit (e.g., 1000m)
+      memory: ${{memory_limit}} # Memory limit (e.g., 100Mi)
+  dryRun: ${{dry_run_flag}} # Dry run flag (e.g., true/false)
+  runAsApiKey: ${{api_key}} # API key for running the worker (e.g., abcdefghijklmnopqrstuvwxyz)
+  runAsUser: ${{run_as_user}} # User to run the worker as (e.g., manishagrawal)
+  topology: # Topology configuration
+    - name: ${{topology_name}} # Name of the topology (mandatory) (e.g., random)
+      type: ${{topology_type}} # Type of the topology (mandatory) (e.g., alpha)
+      doc: ${{topology_doc}} # Documentation link or description (e.g., new)
+      properties:
+        ${{property_key}}: ${{property_value}} # Example property (e.g., random: lost)
+      dependencies: # List of dependencies
+        - ${{dependency1}} # Example dependency (e.g., new1)
+        - ${{dependency2}} # Additional dependency (e.g., new2)
+# STACK-SPECIFIC SECTION
+# Attributes specific to the choosen Stack
+  stackSpec: 
+    ${{stack_specific_attributes}} # Additional stack-specific attributes (e.g., Stack-specific Attributes)

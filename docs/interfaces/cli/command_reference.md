@@ -1,7 +1,63 @@
 # CLI Command Reference
-You can get a complete list of all the commands, sub-commands, arguments and flags by using the help command within CLI itself.
 
-## `apply`
+This section will help you get started on the command structure followed by DataOS CLI.
+
+## Structure of the DataOS CLI Command
+
+```bash
+dataos-ctl <command> <subcommand> <flags parameters>
+```
+## DataOS CLI Commands
+
+You can generate a list of all available commands with -h or —help
+```bash
+dataos-ctl -h
+dataos-ctl --help
+```
+To get help for a specific command, use:
+```bash
+dataos-ctl <name of command> --help
+```
+
+A command can have more sub-commands and flags under it. You can again use the CLI help command to get details on the subcommand.
+
+```bash
+dataos-ctl <command-name> <subcommand-name> -h
+```
+
+A subcommand, in turn, might have more commands in its hierarchy or might only contain flags.
+
+In the example below, we have used the `get` command, followed by the flag -t. This flag must be followed by the name of the ‘type string’ (workflow, policy, depot, etc). The command below will give us the details of all the created depots (remove -a to list only the depots where you are the owner).
+
+
+```bash
+dataos-ctl get -t depot -a 
+
+```
+
+The string type ‘workflow’, being a runnable Resource of DataOS, must always be followed by the flag `-w <name of the workspace>`. The following command will list all the workflows running in the public workspace (remove -a to list only the workflows you are working on).
+
+```bash
+dataos-ctl get -t workflow -w public -a
+
+```
+
+Other DataOS Resources for which a workspace must always be defined are Secret, Service, Cluster, and Database (these are classified as **Workspace-level Resources**).
+
+For Resources such as Depot, Policy, and Compute, the concept of Workspace has no meaning (these are classified as **Instance-level Resources**). Hence you need not use the flag `-w <name of workspace>`.
+
+**Workspace** is like a tenant in DataOS. It provides a way to segregate your private work from the rest of the organization’s. Workspaces also serve as a sandbox environment where you can freely explore and experiment with data without impacting the production environment. This functionality enables you to test and refine your projects before deploying them to the public workspace or making them available for broader usage.
+
+<aside class="best-practice">
+📖 Best Practice: It is part of the best practice to create a private workspace with your name and then work in it.
+
+</aside>
+
+## Command List
+
+You can get a complete list of all the commands, sub-commands, arguments and flags by using the help command within CLI itself. It also contains the help content for all DataOS CLI commands.
+
+### **`apply`**
 
 Create and update resources in a DataOS cluster through running *apply command*. A resource in DataOS can mean a policy or depot or workflow/service/etc. This command manages applications through *.yaml* files defining DataOS resources. 
 
@@ -24,7 +80,7 @@ Flags:
   -w, --workspace string        Workspace to target resource (default "public")
 ```
 
-## `collation`
+### **`collation`**
 Interact with the Collation Service in the DataOS®
 
 ```shell
@@ -48,7 +104,7 @@ Use "dataos-ctl collation [command] --help" for more information about a command
 ```
 To learn more, refer to [Collation Command Group](collation/details.md).
 
-## `completion`
+### **`completion`**
 
 This mode places you in an interactive mode with auto-completion for the given shell (zsh or bash). To setup autocomplete in current bash shell, bash-completion package should be installed first.
 
@@ -82,7 +138,7 @@ Flags:
 -h, --help   help for completion
 ```
 
-## `context`
+### **`context`**
 
 Manage DataOS Contexts. A context represents the connection to a DataOS instance/environment and can be used to create depots, jobs, queries etc on that context.
 
@@ -108,7 +164,7 @@ Use "dataos-ctl context [command] --help" for more information about a command.
 To learn more, refer to [Context Command Group](context/details.md).
 
 
-## `dataset`
+### **`dataset`**
 
 Apply toolkit commands in the DataOS®.
 
@@ -143,7 +199,7 @@ Use "dataos-ctl dataset [command] --help" for more information about a command.
 ```
 To learn more, refer to [Dataset Command Group](dataset/details.md).
 
-## `delete`
+### **`delete`**
 
 Delete resources in the DataOS.
 
@@ -168,7 +224,7 @@ DataOS checks resource dependability while deleting resources.
 
 ![cli-resource-delete.png](cli-resource-delete.png)
 
-## `develop`
+### **`develop`**
 
 With this command, manage DataOS Development. You can test the changes on the local machine before directly applying on the server.
 
@@ -194,7 +250,7 @@ Use "dataos-ctl develop [command] --help" for more information about a command.
 ```
 To learn more, refer to [Develop Command Group](develop/details.md).
 
-## `doc`
+### **`doc`**
 Generate markdown documentation for every command
 
 ```shell
@@ -211,7 +267,8 @@ Global Flags:
 <aside class="callout">
 🗣 The generated .md files are located within the <i>dataos-ctl-docs</i> folder in your machine's default directory.
 </aside>
-## `domain`
+
+### **`domain`**
 Manage domains in the DataOS®
 ```shell
 
@@ -233,7 +290,7 @@ Use "dataos-ctl domain [command] --help" for more information about a command.
 ```
 To learn more, refer to [Domain Command Group](domain/details.md).
 
-## `fastbase`
+### **`fastbase`**
 Interact with the FastBase Depot in the DataOS®
 
 ```shell
@@ -256,7 +313,7 @@ Use "dataos-ctl fastbase [command] --help" for more information about a command.
 ```
 To learn more, refer to [Fastbase Command Group](fastbase/details.md).
 
-## `get`
+### **`get`**
 
 Use *get* to pull a list of resources you have currently on your DataOS cluster. The types of resources you can get include-depot, function, job, policy, service, secret.
 
@@ -310,7 +367,7 @@ INFO[0002] 🔍 workflow...complete
 
 To learn more, refer to [Get Command Group](get/details.md).
 
-## `health`
+### **`health`**
 
 Get health of DataOS CLI, DataOS resources and services. It checks if server is reachable and helps in troubleshooting.
 
@@ -334,7 +391,7 @@ INFO[0005] 🔗...https://formerly-saving-lynx.dataos.io
 INFO[0005] ⛅️...gcp
 ```
 
-## `help`
+### **`help`**
 
 Get help for any command in the application.
 
@@ -346,7 +403,7 @@ Flags:
 -h, --help   help for help
 ```
 
-## `init`
+### **`init`**
 
 Initialize the DataOS environment.
 
@@ -359,7 +416,7 @@ Flags:
 -n, --oldInitFlow   Use the old initialization flow
 
 ```
-## `jq`
+### **`jq`**
 JSON filter a manifest using a jq filter
 
 ```shell
@@ -372,7 +429,7 @@ Flags:
   -h, --help                  help for jq
   -f, --manifestFile string   Manifest file location
 ```
-## log
+### **`log`**
 
 Get the logs for a resource in the DataOS®
 
@@ -432,7 +489,7 @@ INFO[0003] 📃 log(public)...complete
 ...
 ```
 
-## `login`
+### **`login`**
 
 Log in to DataOS®
 
@@ -444,7 +501,7 @@ Flags:
 -h, --help      help for login
 ```
 
-## `maintenance`
+### **`maintenance`**
 
 Maintenance of the DataOS®
 
@@ -463,7 +520,7 @@ Flags:
 To learn more, refer to [Maintenance Command Group](maintenance/details.md).
 
 
-## `operate`
+### **`operate`**
 Operate the DataOS®
 
 ```shell
@@ -490,7 +547,7 @@ Use "dataos-ctl operate [command] --help" for more information about a command.
 ```
 <aside class="callout"> 🗣 The<i> <b>operate </b></i>command is intended for use by system administrators. If you would like more information about its various subcommands, please reach out to our Customer Success team.</aside>
 
-## `product`
+### **`product`**
 Manage products in the DataOS®
 
 ```shell
@@ -513,7 +570,7 @@ Use "dataos-ctl product [command] --help" for more information about a command.
 ```
 To learn more, refer to [Product Command Group](product/details.md).
 
-## `query-gateway`
+### **`query-gateway`**
 Interact with the Query Gateway in the DataOS®
 
 ```shell
@@ -534,7 +591,7 @@ Use "dataos-ctl query-gateway [command] --help" for more information about a com
 ```
 To learn more, refer to [Query-gateway Command Group](query-gateway/details.md).
 
-## `resource`
+### **`resource`**
 Manage resources in the DataOS®
 
 ```shell
@@ -563,7 +620,7 @@ Use "dataos-ctl resource [command] --help" for more information about a command.
 ```
 To learn more, refer to [Resource Command Group](resource/details.md).
 
-## `role`
+### **`role`**
 Manage DataOS® Roles
 
 ```shell
@@ -589,7 +646,7 @@ Use "dataos-ctl role [command] --help" for more information about a command.
 To learn more, refer to [Role Command Group](role/details.md).
 
 
-## `runtime`
+### **`runtime`**
 DataOS® runtime management commands
 
 ```shell
@@ -678,7 +735,7 @@ INFO[0000] 🔍 get...complete
   system-metadata-sync           | v1      | workflow | system    | active | next:2024-01-23T14:00:00+05:30 | metis       
 
 ```
-## `tcp-stream`
+### **`tcp-stream`**
 
 Open a tcp stream for resources in the DataOS®
 ```shell
@@ -701,7 +758,7 @@ Flags:
   -w, --workspace string       Workspace to target resource (default "public")
 ```
 
-## `tui`
+### **`tui`**
 Terminal UI of the DataOS®
 Dataos-ctl TUI is a Terminal User Interface for DataOS®. It shows all the key resources deployed on the server. You can click on the resource menu to see the corresponding details in the Resource Summary section. You can view artefacts and Run time services/resources and their YAML. You can also view logs for runtime.
 
@@ -716,7 +773,7 @@ Flags:
 -w, --workspaces string   list of workspaces to include, comma separated
 ```
 
-## `update`
+### **`update`**
 Update resources in the DataOS®
 
 ```shell
@@ -735,7 +792,7 @@ Flags:
 
 ```
 
-## `user`
+### **`user`**
 Manage DataOS® Users
 
 ```shell
@@ -764,7 +821,7 @@ Use "dataos-ctl user [command] --help" for more information about a command.
 ```
 To learn more, refer to [User Command Group](user/details.md).
 
-## `usql`
+### **`usql`**
 usql, the universal command-line interface for SQL databases
 
 ```shell
@@ -805,7 +862,7 @@ Flags:
       --version                display version and exit
 ```
 
-##  `version`
+### **`version`**
 
 Print the version number of DataOS.
 
@@ -817,7 +874,7 @@ Flags:
 -h, --help   help for version
 ```
 
-## `view`
+### **`view`**
 
 Use this command to open GUI applications from the terminal. 
 
@@ -837,7 +894,7 @@ dataos-ctl view -a workbench
 #this command will directly take you to the Workbench app in a new tab of the web browser 
 ```
 
-## `workspace`
+### **`workspace`**
 
 Manage DataOS workspaces.
 

@@ -81,11 +81,11 @@ Use `databaseFilterPattern` to determine which databases to include/exclude duri
  In this particular example, our objective is to ingest metadata of all databases that include the term "SNOWFLAKE" in their names. To achieve this, we would apply the filter pattern **`.*SNOWFLAKE.*`** in the `includes` property. Consequently, this filter pattern will ensure the ingestion of databases such as  `SNOWFLAKE`, `SNOWFLAKE_SAMPLE_DATA` and `TEST_SNOWFLAKE_DB`.
 
 ```yaml
-    sourceConfig:
-      config:
-        databaseFilterPattern:
-          includes:
-            - .*SNOWFLAKE.*
+sourceConfig:
+  config:
+    databaseFilterPattern:
+      includes:
+        - .*SNOWFLAKE.*
 ```
 
 **Example 2**

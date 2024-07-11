@@ -1,6 +1,6 @@
 # Use-Cases
 
-A use-case consists of a combination of [predicates](../bifrost/abac_implementation_in_dataos.md#predicate) (actions) and [objects](../bifrost/abac_implementation_in_dataos.md#objects) (entities upon which actions are performed), defining a specific set of permissions or actions granted to users. When you grant a use case to a user, establishing a link between the subject and the use-case. This connection, in the back end, results in the creation of an access policy.
+A use-case consists of a combination of [predicates](../bifrost/abac_implementation_in_dataos.md#predicate) (actions) and [objects](../bifrost/abac_implementation_in_dataos.md#object) (entities upon which actions are performed), defining a specific set of permissions or actions granted to users. When you grant a use case to a user, establishing a link between the subject and the use-case. This connection, in the back end, results in the creation of an access policy.
 
 These Use-Cases can be broken down into smaller, more granular permissions, or bundled together. For instance, if a user has access to read lens, it's likely they should also have access to manage lenses, as managing encompasses the ability to create and update lenses, in addition to reading them. Each use-case may involve predicates such as delete, get, patch, and post, which collectively determine the actions a user can perform.
 
@@ -49,7 +49,7 @@ In addition to granting the current use cases, you have the option to generate a
 A sample Use-Case manifest is given below:
 
 ???tip "Sample Use-Case manifest"
-    ```shell
+    ```yaml
     # Enter the Yaml Use-Case Artifact
     id: write-depot-dataset
     name: 'Write Depot - Dataset'

@@ -1,0 +1,122 @@
+# Resource meta section
+name: dataos-ctl-workflow-lifecycle-02
+version: v1
+type: workflow
+
+# Workflow-specific section
+workflow:
+  dag:
+
+# First Job
+  - name: create-workflow
+    spec:
+      stack: dataos-ctl # dataos-ctl stack name
+      compute: runnable-default
+
+        # Referred Instance secrets 
+      dataosSecrets:
+      - name: dataos-ctl-user-apikey # Instance secret name same as declared above
+        allKeys: true
+        consumptionType: envVars
+
+        # Stack-specific section
+      stackSpec:
+        arguments:
+          - resource
+          - apply
+          - -f
+          - /etc/dataos/config/manifest.yaml
+          - -w
+          - public
+
+        # Manifest for the Resource against which the above command is executed
+        manifest:
+         # Resource Section
+          #This is a icebase to icebase workflow hence it's way of giving input and output is diff.
+          version: v1 
+          name: wf-tmdc-01 
+          type: workflow 
+          tags:
+            - Connect
+            - City
+          description: The job ingests city data from dropzone into raw zone
+
+          # Workflow-specific Section
+          workflow:
+            title: Connect City
+            dag: 
+
+          # Job 1 Specific Section
+              - name: read-write-icebase # Job 1 name
+                title: City Dimension Ingester
+                description: The job ingests city data from dropzone into raw zone
+                spec:
+                  tags:
+                    - Connect
+                    - City
+                  stack: flare:4.0 # The job gets executed upon the Flare Stack, so its a Flare Job
+                  compute: runnable-default
+
+                  # Flare Stack-specific Section
+                  stackSpec:
+                    driver:
+                      coreLimit: 1100m
+                      cores: 1
+                      memory: 1048m
+                    job:
+                      explain: true  #job section will contain explain, log-level, inputs, outputs and steps
+                      logLevel: INFO
+
+                      inputs:
+                        - name: city_connect
+                          query: SELECT
+                                  *,
+                                  date_format (NOW(), 'yyyyMMddHHmm') AS version1,
+                                  NOW() AS ts_city1
+                                FROM
+                                  icebase.retail.city 
+                      #    dataset: dataos://icebase:retail/city
+                      #   format: Iceberg
+                          options: 
+                            SSL: "true"
+                            driver: "io.trino.jdbc.TrinoDriver"
+                            cluster: "system"
+
+                        #   schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc #schema path is not necessary for icebase to icebase
+
+                      outputs:
+                        - name: city_connect
+                          dataset: dataos://icebase:retail/city10?acl=rw
+                          format: Iceberg
+                          description: City data ingested from retail city
+                          tags:
+                            - retail
+                            - city
+                          options:
+                            saveMode: overwrite
+
+# Second Job
+  - name: get-workflow
+    spec:
+      stack: dataos-ctl
+      compute: runnable-default
+
+        # Referred Instance secrets 
+      dataosSecrets:
+      - name: dataos-ctl-user-apikey
+        allKeys: true
+        consumptionType: envVars
+
+        # Stack-specific section
+      stackSpec:
+        arguments:
+          - resource
+          - get
+          - -t
+          - workflow
+          - -n
+          - temp001
+          - -w
+          - public
+    dependencies:
+     - create-workflow # Second Job dependent on successful execution of First Job

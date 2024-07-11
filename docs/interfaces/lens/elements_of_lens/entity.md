@@ -7,7 +7,7 @@ An entity is your business objects such as Products, Orders, Customers, Supplier
 
 ## Properties
 
-### `name`
+### **`name`**
 
 There are specific rules to follow when naming entities within a Lens -
 
@@ -17,7 +17,7 @@ There are specific rules to follow when naming entities within a Lens -
 
 While naming an entity, you can stick to lower_case_with_underscores.
 
-### `sql`
+### **`sql`**
 
 This will also allow aggregating or filter the data to construct the desired entity.
 
@@ -93,7 +93,7 @@ entities:
       query: SELECT * FROM ${activity_stream.sql()} where activity = 'purchased_order'
 ```
 
-### `extends`
+### **`extends`**
 
 An entity can be extended to reuse all declared elements. In the example below, the selected_product entity is created by referencing the activity_stream entity.
 
@@ -121,7 +121,7 @@ entities:
 			------
 ```
 
-### `tags`
+### **`tags`**
 
 Multiple tags can be added to a lens. They aid in discoverability.
 

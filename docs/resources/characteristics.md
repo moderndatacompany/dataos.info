@@ -1,4 +1,4 @@
-# Common Traits of DataOS Resources
+# Common Characteristics of DataOS Resources
 
 While each Resource has its own specific attributes & usage, there are certain commonalities which are valid across the group. These are:
 
@@ -62,13 +62,13 @@ You will learn about interoperability & composability of Resources with more ext
 
 Each Resource acts as an abstraction that hides the underlying complexities of the system. User simply needs to mention the desired state without going into implementation details & procedural protocols. For instance, to apply a masking policy over a specific dataset, you can declaratively fill up the sections marked in the YAML given below.
 
-![Data policy to mask personal identification information](./properties/data_policy_to_mask_personal_identification_information.png)
+![Data policy to mask personal identification information](/resources/properties/data_policy_to_mask_personal_identification_information.png)
 
 <center><i>Data policy to mask personal identification information</i></center>
 
 ## Consistent Management
 
-The configuration files for all Resources are written in the form of declarative YAMLs as key-value pairs. The CRUD operations & deployments are performed using interfaces with consistent developer experience for all Resources. You can understand this point in detail by going through the section on [CRUD operations & config files](../resources.md#crud-operations-on-dataos-resources).
+The configuration files for all Resources are written in the form of declarative YAMLs as key-value pairs. The CRUD operations & deployments are performed using interfaces with consistent developer experience for all Resources. You can understand this point in detail by going through the section on [CRUD operations & config files](/resources/#crud-operations-on-dataos-resources).
 
 ### **Attributes of Resources**
 
@@ -88,7 +88,7 @@ description: # short description for the Resource you are creating
 # this is where the Resource specific properties begin
 ```
 
-You can learn more about these attributes on the page: [Attributes of Resource section.](./resource_attributes.md)
+You can learn more about these attributes on the page: [Attributes of Resource Meta section](/resources/manifest_attributes/).
 
 ### **Automation & Orchestration**
 

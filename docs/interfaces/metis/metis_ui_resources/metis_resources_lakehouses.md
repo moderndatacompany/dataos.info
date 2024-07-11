@@ -1,11 +1,11 @@
 # Metadata of Lakehouses on Metis UI
 
 <aside class="callout">
-🗣 This page guides you on exploring and managing metadata for Lakehouses on Metis. To learn in detail about the Lakehouse as a  DataOS Resource, refer to this <a href="/resources/">link</a>.
+🗣 This page guides you on exploring and managing metadata for Lakehouses on Metis. To learn in detail about the Lakehouse as a  DataOS Resource, refer to this <a href="/resources/lakehouse/">link</a>.
 
 </aside>
 
-Metis has integrated "Lakehouse" as a "Resource" type entity for storing metadata related to its configuration, such as compute used, depot used to refer, and metastore properties within DataOS. On selecting **Lakehouses,** the following information will appear on the screen:
+Metis has integrated "Lakehouse" as a "Resource" type entity for storing metadata related to its configuration, such as compute used, depot used to refer, and metastore properties within DataOS. On selecting **Lakehouses**, the following information will appear on the screen:
 
 ![lakehouses.png](metis_resources_lakehouses/lakehouses.png)
 <figcaption align = "center"> List of Lakehouses  </figcaption>

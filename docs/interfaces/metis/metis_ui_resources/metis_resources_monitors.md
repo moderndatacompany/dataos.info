@@ -1,7 +1,7 @@
 # Metadata of Monitors on Metis UI
 
 <aside class="callout">
-🗣 This page guides you on exploring and managing metadata for Monitors on Metis. To learn in detail about the Monitor as a DataOS Resource, refer to this <a href="/resources/">link</a>.
+🗣 This page guides you on exploring and managing metadata for Monitors on Metis. To learn in detail about the Monitor as a DataOS Resource, refer to this <a href="/resources/monitor/">link</a>.
 
 </aside>
 
