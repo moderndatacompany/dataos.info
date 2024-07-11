@@ -7,7 +7,7 @@ search:
 
 # DataOS Pyflare
 
-The DataOS Pyflare is a Python library that streamlines data operations and faciltate seamless interactions with Apache Spark within DataOS. Its a wrapper around [Flare](../resources/stacks/flare.md), to enable Python support with DataOS capabilities. The library abstracts complexities inherent in data flow, allowing users to direct their focus toward data transformations and the formulation of business logic by simplifying the loading, transformation, and storage of data. It facilitates the integration of existing Spark Job code bases with DataOS, requiring minimal modifications.
+The DataOS Pyflare is a Python library that streamlines data operations and faciltate seamless interactions with Apache Spark within DataOS. Its a wrapper around [Flare](/resources/stacks/flare/), to enable Python support with DataOS capabilities. The library abstracts complexities inherent in data flow, allowing users to direct their focus toward data transformations and the formulation of business logic by simplifying the loading, transformation, and storage of data. It facilitates the integration of existing Spark Job code bases with DataOS, requiring minimal modifications.
 
 <aside class="callout">
 🗣 Delve into the comprehensive <a href="/api_docs/dataos_pyflare/docs/pyflare.html">Pyflare Library Reference</a> for detailed insights into the diverse modules and classes encompassed by the Flare package. To know more about Flare's key features and initiation procedures, refer to the following sections.
@@ -34,7 +34,7 @@ Pyflare is finely tuned for the DataOS platform, rendering it an ideal choice fo
 
 ## Installation
 
-The Pyflare module is compatible with DataOS-native [Jupyter Notebooks](../interfaces/notebook.md) and can also be utilized in various Python programs across different environments, provided that the necessary JAR files are incorporated.
+The Pyflare module is compatible with DataOS-native [Jupyter Notebooks](/interfaces/notebook/) and can also be utilized in various Python programs across different environments, provided that the necessary JAR files are incorporated.
 
 ><b>Note:</b> If you are using DataOS-native Jupyter Notebooks or Python environment, you can skip the installation part and directly navigate to the <a href="#getting-started">Getting Started</a> section as the JAR files and modules are included automatically as part of the environment setup.
 
@@ -274,11 +274,11 @@ spark.stop()
 
 ## Code Samples
 
-- [ How to read and write partitioned data within Icebase Depot using Pyflare?](./dataos_pyflare/code_samples/read_write_partitioned_data.md)
+- [ How to read and write partitioned data within Icebase Depot using Pyflare?](/dataos_pyflare/code_samples/read_write_partitioned_data/)
 
-- [How to overwrite dynamic Iceberg partitions using Pyflare?](./dataos_pyflare/code_samples/overwrite_dynamic_iceberg_partitions.md)
+- [How to overwrite dynamic Iceberg partitions using Pyflare?](/dataos_pyflare/code_samples/overwrite_dynamic_iceberg_partitions/)
 
-- [How to write data in Avro format from Iceberg using Pyflare?](./dataos_pyflare/code_samples/write_avro_read_iceberg.md)
+- [How to write data in Avro format from Iceberg using Pyflare?](/dataos_pyflare/code_samples/write_avro_read_iceberg/)
 
 
 ## Pyflare Library Reference

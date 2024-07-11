@@ -1,13 +1,11 @@
 # Metadata of Operators on Metis UI
 
 <aside class="callout">
-🗣 This page guides you on exploring and managing metadata for Operators on Metis. To learn in detail about the Operator as a  DataOS Resource, refer to this <a href="/resources/">link</a>.
+🗣 This page guides you on exploring and managing metadata for Operators on Metis. To learn in detail about the Operator as a  DataOS Resource, refer to this <a href="/resources/operator/">link</a>.
 
 </aside>
 
 Metis has integrated "Operator" as a "Resource" type entity for storing metadata related to its configuration and state, such as external resources definitions,  computational components for managing the interactions with external resources, NATS cluster configuration, etc. On selecting **Operators,** the following information will appear on the screen:
-
-[screenshot]
 
 ## Filter pane
 

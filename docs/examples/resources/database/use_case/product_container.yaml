@@ -1,0 +1,29 @@
+version: v1 
+name: product-summary
+type: service 
+service: 
+  replicas: 1 
+  servicePort: 8501 
+  ingress: 
+    enabled: true 
+    noAuthentication: true 
+    path: /product_data
+    stripPath: true 
+  stack: container 
+  compute: runnable-default 
+  resources:
+    requests:
+      cpu: 300m
+      memory: 500Mi
+    limits:
+      cpu: 500m
+      memory: 1000Mi
+  envs: 
+    LOG_LEVEL: info 
+  stackSpec: 
+    command: 
+      - streamlit 
+    arguments: 
+      - run
+      - streamlit.py
+    image: iamgroot/my-first-db-st-app:1.0.1
