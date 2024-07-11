@@ -127,6 +127,6 @@ You can see the streamlit UI, on the web browser at the following address
 
 `https://<dataos-context>/<path>` 
 
-![Streamlit App](./build_a_streamlit_app_on_dataos/untitled.png)
+![Streamlit App](/resources/stacks/build_a_streamlit_app_on_dataos/untitled.png)
 
 <center><i>Streamlit App on DataOS</i></center>

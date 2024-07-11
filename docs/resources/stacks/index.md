@@ -6,9 +6,9 @@ search:
 
 # :resources-stack: Stack
 
-Stack is a [DataOS Resource](../resources.md) that acts as an execution engine and an extension point for integrating new programming paradigms within the platform. Stacks are composable and can be orchestrated using DataOS Resources such as a [Worker](./worker.md), [Service](./service.md), or within a designated job in a [Workflow](./workflow.md) Resource.
+Stack is a [DataOS Resource](/resources/) that acts as an execution engine and an extension point for integrating new programming paradigms within the platform. Stacks are composable and can be orchestrated using DataOS Resources such as a [Worker](/resources/worker), [Service](/resources/service), or within a designated job in a [Workflow](/resources/workflow) Resource.
 
-While certain pre-configured Stacks such as [Flare](./stacks/flare.md), [Benthos](./stacks/benthos.md), and [Scanner](./stacks/scanner.md) are natively available within DataOS, users retain the autonomy to define and deploy their own tailor-made Stacks.
+While certain pre-configured Stacks such as [Flare](/resources/stacks/flare), [Benthos](/resources/stacks/benthos), and [Scanner](/resources/stacks/scanner) are natively available within DataOS, users retain the autonomy to define and deploy their own tailor-made Stacks.
 
 <aside class="callout">
 
@@ -48,7 +48,7 @@ Data Developers can create tailor-made Stacks to incorporate their existing code
 
 ## Stack vs. Operator
 
-DataOS has two distinct resources that supports its interoperability and extensibility. One is the Stack and the other is the [Operator](./operator.md). Though both [Resource-types](./types_of_dataos_resources.md) are quite similar, yet they are relevant in different scenarios. The table below summarizes the difference between the two Resource-types.
+DataOS has two distinct resources that supports its interoperability and extensibility. One is the Stack and the other is the [Operator](/resources/operator). Though both [Resource-types](/resources/types_of_dataos_resources) are quite similar, yet they are relevant in different scenarios. The table below summarizes the difference between the two Resource-types.
 
 | Parameter | Stack | Operator |
 | --- | --- | --- |
@@ -65,38 +65,38 @@ DataOS has two distinct resources that supports its interoperability and extensi
 
 ### **Container**
 
-[Container](./stacks/container.md) Stack is a declarative DevOps SDK used for seamless deployment of data applications into production environments.
+[Container](/resources/stacks/container) Stack is a declarative DevOps SDK used for seamless deployment of data applications into production environments.
 
 ### **Beacon**
 
-[Beacon](./stacks/beacon.md) Stack is a standalone HTTP server that exposes API endpoints on top of a Postgres database. It offers a single flavor `beacon+rest` that enables exposure of REST APIs on Postgres database.
+[Beacon](/resources/stacks/beacon) Stack is a standalone HTTP server that exposes API endpoints on top of a Postgres database. It offers a single flavor `beacon+rest` that enables exposure of REST APIs on Postgres database.
 
 
 ### **Benthos**
 
-[Benthos](./stacks/benthos.md) is a high-performance, resilient, and declarative stream processing Stack.
+[Benthos](/resources/stacks/benthos) is a high-performance, resilient, and declarative stream processing Stack.
 
 ### **CLI**
 
-The DataOS Command-Line Interface (CLI), known as `dataos-ctl`, also serves as a Stack within the DataOS ecosystem. It enables users to programmatically execute CLI commands through a YAML manifest. To learn more about CLI Stack, refer to the link: [CLI](./stacks/cli_stack.md).
+The DataOS Command-Line Interface (CLI), known as `dataos-ctl`, also serves as a Stack within the DataOS ecosystem. It enables users to programmatically execute CLI commands through a YAML manifest. To learn more about CLI Stack, refer to the link: [CLI](/resources/stacks/cli_stack).
 
 
 ### **Data Toolbox**
 
-The [Data Toolbox](./stacks/data_toolbox.md) Stack provides functionality to update Iceberg metadata versions to the latest available or to any specific version.
+The [Data Toolbox](/resources/stacks/data_toolbox) Stack provides functionality to update Iceberg metadata versions to the latest available or to any specific version.
 
 ### **Flare**
 
-[Flare](./stacks/flare.md) is a powerful declarative Stack designed specifically for large-scale data processing tasks.
+[Flare](/resources/stacks/flare) is a powerful declarative Stack designed specifically for large-scale data processing tasks.
 
 
 ### **Scanner**
 
-The [Scanner](./stacks/scanner.md) Stack in DataOS is a Python-based framework that allows developers to extract metadata from external source systems (such as RDBMS, Data Warehouses, Messaging services, etc.) as well as components/services within the DataOS environment.
+The [Scanner](/resources/stacks/scanner) Stack in DataOS is a Python-based framework that allows developers to extract metadata from external source systems (such as RDBMS, Data Warehouses, Messaging services, etc.) as well as components/services within the DataOS environment.
 
 ### **Soda**
 
-Soda is a declarative Stack integrated into DataOS, specifically for data quality testing and profiling across one or more datasets. To learn more about Soda, refer to the link: [Soda](./stacks/soda.md).
+Soda is a declarative Stack integrated into DataOS, specifically for data quality testing and profiling across one or more datasets. To learn more about Soda, refer to the link: [Soda](/resources/stacks/soda).
 
 
 These built-in stacks offer a wide range of capabilities, empowering data developers to efficiently build, process, and manage data within the DataOS ecosystem.
@@ -105,6 +105,6 @@ These built-in stacks offer a wide range of capabilities, empowering data develo
 
 ## How to create your own Stack?
 
-Aside from the pre-defined Stacks within DataOS, data developers retain the autonomy to create their own tailor made Stacks to extend the existing capabilities of the platform and introduce new programming paradigms within DataOS. To learn more refer to the following link: [How to create your own custom Stack?](./stacks/custom_stacks.md)
+Aside from the pre-defined Stacks within DataOS, data developers retain the autonomy to create their own tailor made Stacks to extend the existing capabilities of the platform and introduce new programming paradigms within DataOS. To learn more refer to the following link: [How to create your own custom Stack?](/resources/stacks/custom_stacks)
 
 

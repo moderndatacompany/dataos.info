@@ -122,7 +122,7 @@ service:
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
-| list of strings | optional   | none                 | valid [tag](../policy/manifest_attributes.md#tags)
+| list of strings | optional   | none                 | valid [tag](/resources/policy/manifest_attributes#tags)
 
 **Example Usage:**<br>
 ```yaml
@@ -362,7 +362,7 @@ service:
 
 ### **`stack`**
 
-**Description:** the name and version of the [Stack](../stacks.md) Resource which the Service orchestrates.
+**Description:** the name and version of the [Stack](/resources/stacks) Resource which the Service orchestrates.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
@@ -458,7 +458,7 @@ service:
 
 ### **`dataosSecrets`**
 
-**Description:** list of [DataOS Secrets](../secret.md) associated with the Service. Each DataOS Secret is an mapping containing various attributes.
+**Description:** list of [DataOS Secrets](/resources/secret) associated with the Service. Each DataOS Secret is an mapping containing various attributes.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
@@ -538,7 +538,7 @@ service:
 
 ### **`compute`**
 
-**Description:** the name of the [Compute](../compute.md) Resource for the Service. 
+**Description:** the name of the [Compute](/resources/compute) Resource for the Service. 
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |

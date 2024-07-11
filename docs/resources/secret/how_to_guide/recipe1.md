@@ -37,7 +37,7 @@ Let's see how you can refer secrets in various resources:
 
 === "In Service"
 
-    In addition to serving as a conduit for real-time and streaming data exchanges, the [Service Resource](./service.md) within DataOS incorporates Secrets for secure access to confidential information. This ensures data privacy, and regulatory compliance, and facilitates timely insights and responses to dynamic information.
+    In addition to serving as a conduit for real-time and streaming data exchanges, the [Service Resource](/resourcesservice) within DataOS incorporates Secrets for secure access to confidential information. This ensures data privacy, and regulatory compliance, and facilitates timely insights and responses to dynamic information.
 
 
     === "Secret"
@@ -52,7 +52,7 @@ Let's see how you can refer secrets in various resources:
 
 === "In Workflow"
 
-    The [Workflow](./workflow.md) in DataOS serves as a Resource for orchestrating data processing tasks with dependencies. It enables the creation of complex data workflows by defining a hierarchy based on a dependency mechanism some requiring access to sensitive information such as API keys, authentication tokens, or database credentials. Instead of embedding these secrets directly in the workflow configuration, it is advisable to leverage references to the Secret Resource.
+    The [Workflow](/resourcesworkflow) in DataOS serves as a Resource for orchestrating data processing tasks with dependencies. It enables the creation of complex data workflows by defining a hierarchy based on a dependency mechanism some requiring access to sensitive information such as API keys, authentication tokens, or database credentials. Instead of embedding these secrets directly in the workflow configuration, it is advisable to leverage references to the Secret Resource.
 
     === "Secret"
         ```yaml title="secret.yaml"
@@ -66,7 +66,7 @@ Let's see how you can refer secrets in various resources:
 
 === "In Worker"
 
-    A [Worker Resource](./worker.md) in DataOS is a long-running process responsible for performing specific tasks or computations indefinitely. Workers are capable of securely accessing confidential information, such as API keys, through the referencing of secrets, thereby ensuring the safeguarding of sensitive data.
+    A [Worker Resource](/resourcesworker) in DataOS is a long-running process responsible for performing specific tasks or computations indefinitely. Workers are capable of securely accessing confidential information, such as API keys, through the referencing of secrets, thereby ensuring the safeguarding of sensitive data.
 
     === "Secret"
         ```yaml title="secret.yaml"

@@ -58,7 +58,7 @@ service:
 
 At the core of any Benthos Service lies the Service section, which is responsible for defining a Service resource through a set of YAML fields and configurations. A Service is a persistent process that either receives or delivers API requests. The Benthos stack is then invoked within the Service to effectuate the requisite transformations. For a deeper understanding of Service and its associated YAML configurations, please refer to the following page:
 
-[Service](../../service.md)
+[Service](/resources/service)
 
 ## Benthos Stack Section
 
@@ -94,7 +94,7 @@ These are the main components within Benthos and they provide the majority of us
 
 ### **Observability Components**
 
-There are also the observability components [http](../benthos/components/http.md), [logger](../benthos/components/logger.md), [metrics](../benthos/components/metrics.md), and [tracing](../benthos/components/tracers.md), which allow you to specify how Benthos exposes observability data:
+There are also the observability components [http](/resources/stacks/benthos/components/http), [logger](/resources/stacks/benthos/components/logger), [metrics](/resources/stacks/benthos/components/metrics), and [tracing](/resources/stacks/benthos/components/tracers), which allow you to specify how Benthos exposes observability data:
 
 ```yaml
 http:
@@ -118,7 +118,7 @@ tracer:
 
 ### **Resource Components**
 
-Finally, there are [caches](../benthos/components/caches.md) and [rate limits](../benthos/components/rate_limit.md). These are components that are referenced by core components and can be shared.
+Finally, there are [caches](/resources/stacks/benthos/components/caches) and [rate limits](/resources/stacks/benthos/components/rate_limit). These are components that are referenced by core components and can be shared.
 
 ```yaml
 input:
@@ -147,26 +147,26 @@ cache_resources:
       addresses: [ localhost:11211 ]
 ```
 
-It's also possible to configure inputs, outputs, and processors as resources which allows them to be reused throughout a configuration with the [`resource` input](../benthos/components/inputs.md),  [`resource` output](../benthos/components/output.md),  and [`resource` processor](../benthos/components/processors.md), respectively.
+It's also possible to configure inputs, outputs, and processors as resources which allows them to be reused throughout a configuration with the [`resource` input](/resources/stacks/benthos/components/inputs),  [`resource` output](/resources/stacks/benthos/components/output),  and [`resource` processor](/resources/stacks/benthos/components/processors), respectively.
 
 For a thorough and comprehensive understanding of these magnificent components, do peruse the pages that lie beyond the links below. You might discover hidden secrets, juicy details, or even a surprise cameo appearance from your favorite celebrity component. Who knows, the possibilities are endless!
 
-[HTTP](./components/http.md)
+[HTTP](/resources/stacks/benthos/components/http)
 
-[Inputs](./components/inputs.md)
+[Inputs](/resources/stacks/benthos/components/inputs)
 
-[Processors](./components/processors.md)
+[Processors](/resources/stacks/benthos/components/processors)
 
-[Output](./components/output.md)
+[Output](/resources/stacks/benthos/components/output)
 
-[Caches](./components/caches.md)
+[Caches](/resources/stacks/benthos/components/caches)
 
-[Rate Limit](./components/rate_limit.md)
+[Rate Limit](/resources/stacks/benthos/components/rate_limit)
 
-[Buffers](./components/buffers.md)
+[Buffers](/resources/stacks/benthos/components/buffers)
 
-[Metrics](./components/metrics.md)
+[Metrics](/resources/stacks/benthos/components/metrics)
 
-[Tracers](./components/tracers.md)
+[Tracers](/resources/stacks/benthos/components/tracers)
 
-[Logger](./components/logger.md)
+[Logger](/resources/stacks/benthos/components/logger)

@@ -84,7 +84,7 @@ Once you have created a Depot manifest, simply copy the  or relative path of the
 
 ## Target a cluster 
 
-Add Depot to Cluster Sources to enable the Minerva/Themis Query Engine to access database, you can create the Postgres [Depot](../depot.md). This allows you to query the data and create dashboards using the DataOS Workbench and Atlas
+Add Depot to Cluster Sources to enable the Minerva/Themis Query Engine to access database, you can create the Postgres [Depot](/resources/depot). This allows you to query the data and create dashboards using the DataOS Workbench and Atlas
 
 Create a new Cluster manifest with specified depot address. Below is a sample Cluster manifest provided for reference.
 
@@ -144,12 +144,12 @@ To verify the successful execution of the query, navigate to the Workbench, then
 - **Query Execution**: After formulating the query, the user executes it by clicking the 'Run' button.
 - **Result Retrieval**: The outcomes of the executed query are displayed in the pane situated below the query input area.
 
-<center> ![ Query Workbench](resources/database/query_workbench.png) </center>
+<center> ![ Query Workbench](/resources/database/query_workbench.png) </center>
 
 <center> Quering the customers database through Workbench</center>
 
 
-For comprehensive details on the features and capabilities of Workbench, refer to the dedicated [Workbench](resources/interfaces/workbench) documentation.
+For comprehensive details on the features and capabilities of Workbench, refer to the dedicated [Workbench](/interfaces/workbench) documentation.
 
 
 

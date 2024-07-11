@@ -32,7 +32,7 @@ The stored metadata is used by various DataOS components for discoverability, go
 
 </aside>
 
-![Metadata extraction using the Scanner stack](./scanner/scanner_framework.png)
+![Metadata extraction using the Scanner stack](/resources/stacks/scanner/scanner_framework.png)
 <figcaption align = "center">DataOS Scanner stack for metadata extraction</figcaption>
 
 Apart from the external applications, the Scanner stack can also extract metadata from various applications & services of DataOS. The scanner job reads related metadata and pushes it to the metadata store through the Metis REST API server. You can then explore this information through the Metis UI.
@@ -65,12 +65,12 @@ Within DataOS, different workflows can be deployed and scheduled, which will con
 
 You can write Scanner workflows in the form of a sequential YAML for a pull-based metadata extraction system built into DataOS for a wide variety of sources in your data stack. These workflows can be scheduled to run automatically at a specified frequency.
 
-![Scanner YAML](./scanner/scanner_yaml.png)
+![Scanner YAML](/resources/stacks/scanner/scanner_yaml.png)
 <figcaption align = "center">Scanner YAML Components</figcaption>
 
 Learn about the source connection and configuration options to create depot scan/non-depot scan workflow DAGs to scan entity metadata.
 
-[Creating Scanner Workflows](scanner/creating_scanner_workflows.md)
+[Creating Scanner Workflows](scanner/creating_scanner_workflows)
 
 ## Attributes of Scanner Workflow
 
@@ -105,7 +105,7 @@ The below table summarizes various properties within a Scanner workflow YAML.
 | [`ingestSampleData`](./field_ref/#ingestsampledata) |  boolean | `false` | `true` `false`                             | optional    | Applicable only in case of Messaging data source       |
 | [`markDeletedTopics`](./field_ref/#markdeletedtopics)| boolean | `false` | `true` `false`                            | optional    | Applicable only in case of Messaging data source       |
 
-To learn more about these fields, their possible values, example usage, refer to [Attributes of Scanner YAML](scanner/field_ref.md).
+To learn more about these fields, their possible values, example usage, refer to [Attributes of Scanner YAML](/resources/stacks/scanner/field_ref).
 
 ## Supported Data Sources
 
@@ -133,11 +133,11 @@ Here you can find templates for the depot/non-depot Scanner workflows for the su
 </center>
 
 <!-- 
-[Databases and Warehouses](scanner/databases_and_warehouses.md)
+[Databases and Warehouses](scanner/databases_and_warehouses)
 
-[Messaging Services](scanner/messaging_services.md)
+[Messaging Services](scanner/messaging_services)
 
-[Dashboard Services](scanner/dashboards.md) -->
+[Dashboard Services](scanner/dashboards) -->
 
 <aside class="callout">
 🗣 You can perform both depot scans and non-depot scans on all the data sources where you have established depots. The distinction lies in the fact that non-depot scans require you to furnish connection information and credentials within the Scanner YAML file. Whereas, for depot scans, you only need to provide the depot name or address.
@@ -579,4 +579,4 @@ worker:
 
 ## Common Errors
 
-[Common Scanner Errors](scanner/common_scanner_errors.md)
+[Common Scanner Errors](/resources/stacks/scanner/common_scanner_errors)

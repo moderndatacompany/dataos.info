@@ -26,7 +26,7 @@ dataos-ctl version
 
 If CLI is not updated to the latest version, navigate to the below page.
 
-[CLI](../../../../interfaces/cli.md) 
+[CLI](/interfaces/cli.md) 
 
 ### **Get the Pulsar-admin tag**
 

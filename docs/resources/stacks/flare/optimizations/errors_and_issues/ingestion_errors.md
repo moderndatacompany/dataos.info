@@ -50,7 +50,7 @@ This happens because the column has been `incremented` at the time of ingestion.
 
 ## Error: Apply Error
 
-![Untitled](./ingestion_errors/untitled.png)
+![Untitled](/resources/stacks/flare/ingestion_errors/untitled.png)
 
 ```bash
 tmdc@tmdc:~/data$ dataos-ctl apply -f data-ingestion/flare/super-dag/config-super-dag1.yaml -l  
