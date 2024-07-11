@@ -344,7 +344,7 @@ stackSpec:
 
 ## **`job`**
 
-**Description:** Job can be defined as the entities that make up the [Workflow](../../workflow.md). The `job` section includes various configurations related to job execution, such as logging, explanation mode, and subsections for specific job components.
+**Description:** Job can be defined as the entities that make up the [Workflow](/resources/workflow.md). The `job` section includes various configurations related to job execution, such as logging, explanation mode, and subsections for specific job components.
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
@@ -1617,7 +1617,7 @@ stackSpec:
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| list of mappings | optional | none | any custom or valid Flare functions provided in the document: [Flare Functions](./functions.md). |
+| list of mappings | optional | none | any custom or valid Flare functions provided in the document: [Flare Functions](/resources/stacks/flare/functions.md). |
 
 **Example Usage:**
 
@@ -1641,7 +1641,7 @@ stackSpec:
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| string | mandatory | none | any valid function name from amongst the following [Flare Functions](./functions.md).|
+| string | mandatory | none | any valid function name from amongst the following [Flare Functions](/resources/stacks/flare/functions.md).|
 
 **Example Usage:**
 
@@ -2134,7 +2134,7 @@ actions:
         "target-file-size-bytes": "<target-file-size>" # Target File Size in Bytes
 ```
 
-The `rewrite_dataset` action is beneficial in the case of streaming, where small data files can be compacted into larger files to improve query performance. To explore a case scenario on how to compact files using the `rewrite_dataset` action, click [here.](./case_scenario/rewrite_dataset.md)
+The `rewrite_dataset` action is beneficial in the case of streaming, where small data files can be compacted into larger files to improve query performance. To explore a case scenario on how to compact files using the `rewrite_dataset` action, click [here.](/resources/stacks/flare/case_scenario/rewrite_dataset.md)
 
 ---
 
@@ -2151,7 +2151,7 @@ actions:
     input: <input-dataset-name> # Input Dataset Name
 ```
 
-A case scenario illustrating the implementation of the `rewrite_manifest` action is given [here.](./case_scenario/rewrite_manifest_files.md)
+A case scenario illustrating the implementation of the `rewrite_manifest` action is given [here.](/resources/stacks/flare/case_scenario/rewrite_manifest_files.md)
 
 ---
 
@@ -2170,7 +2170,7 @@ actions:
       expireOlderThan: "<date-in-unix-format-as-a-string>" # Timestamp in Unix Format (All Snapshots older than timestamp are expired)
 ```
 
-Regularly expiring snapshots is recommended to delete data files that are no longer needed, and to keep the size of table metadata small. To view a case scenario for `expire_snapshots` action, click [here.](./case_scenario/expire_snapshots.md)
+Regularly expiring snapshots is recommended to delete data files that are no longer needed, and to keep the size of table metadata small. To view a case scenario for `expire_snapshots` action, click [here.](/resources/stacks/flare/case_scenario/expire_snapshots.md)
 
 ---
 
@@ -2191,7 +2191,7 @@ actions:
       olderThan: "<timestamp>" # Time to be provided in Unix Format
 ```
 
-Click [here](./case_scenario/remove_orphans.md) to view a case scenario depicting the use of `remove_orphans` action.
+Click [here](/resources/stacks/flare/case_scenario/remove_orphans.md) to view a case scenario depicting the use of `remove_orphans` action.
 
 ---
 
@@ -2209,7 +2209,7 @@ actions:
     deleteWhere: "<condition>" # Delete where the provided condition is true
 ```
 
-The `delete_from_dataset` can be used in multiple configurations, which have been showcased in the case scenarios [here.](./case_scenario/delete_from_dataset.md)
+The `delete_from_dataset` can be used in multiple configurations, which have been showcased in the case scenarios [here.](/resources/stacks/flare/case_scenario/delete_from_dataset.md)
 
 <aside class="callout">
 

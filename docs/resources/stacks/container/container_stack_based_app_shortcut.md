@@ -122,7 +122,7 @@ Once you've successfully applied the YAML, your app icon will appear in the home
 
 <center>
 
-![Container Stack based App Shortcut](./container_stack_based_app_shortcut/container_stack_based_app_shortcut.png)
+![Container Stack based App Shortcut](/resources/stacks/container_stack_based_app_shortcut/container_stack_based_app_shortcut.png)
 
 
 <i> Container Stack application icon on DataOS Home Page </i>

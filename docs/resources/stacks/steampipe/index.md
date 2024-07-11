@@ -6,7 +6,7 @@ search:
 
 # Steampipe
 
-Steampipe is a declarative [Stack](../stacks.md) integrated within the DataOS that exposes APIs and services as a high performance relational database, enabling data querying and analysis upon these dynamic data interfaces and cloud platforms using SQL-based queries. Leveraging the open-source [Steampipe](https://steampipe.io/docs), it provides an array of plugins for diverse data sources, enabling streamlined data retrieval.
+Steampipe is a declarative [Stack](/resources/stacks/stacks) integrated within the DataOS that exposes APIs and services as a high performance relational database, enabling data querying and analysis upon these dynamic data interfaces and cloud platforms using SQL-based queries. Leveraging the open-source [Steampipe](https://steampipe.io/docs), it provides an array of plugins for diverse data sources, enabling streamlined data retrieval.
 
 ## How to start using Steampipe Stack: Connecting to CSV
 
@@ -24,7 +24,7 @@ The below points outline the high-level steps involved in establishing a connect
 
 #### **Ensure the presence of a Steampipe Stack within the DataOS instance**
 
-Before commencing, ascertain the existence of a Steampipe Stack within the DataOS instance. Utilize the [`get`](../../interfaces/cli/command_reference.md#get) command to list all available the Stacks within the DataOS instance:
+Before commencing, ascertain the existence of a Steampipe Stack within the DataOS instance. Utilize the [`get`](/interfaces/cli/command_reference#get) command to list all available the Stacks within the DataOS instance:
 
 ```shell
 dataos-ctl get -t stack -a
@@ -58,7 +58,7 @@ INFO[0000] 🔍 get...complete
 ```
 </details>
 
-If the Steampipe Stack is not available within the DataOS instance, initiate the creation of a new Steampipe Stack. For detailed guidance on crafting a custom Stack within DataOS, consult the following resource: [How to create a custom Stack within DataOS?](./custom_stacks.md)
+If the Steampipe Stack is not available within the DataOS instance, initiate the creation of a new Steampipe Stack. For detailed guidance on crafting a custom Stack within DataOS, consult the following resource: [How to create a custom Stack within DataOS?](/resources/stackscustom_stacks)
 
 ### **Steps**
 
@@ -66,7 +66,7 @@ If the Steampipe Stack is not available within the DataOS instance, initiate the
 
 **Create a Service Manifest**
 
-A [Service](../service.md) is a long-running process designed to handle and respond to API requests, serves as the orchestrator for the Steampipe Stack. By applying the Service manifest from the DataOS CLI, a Service Resource instance can be created that orchestrates the Steampipe Stack. For the orchestration of the Steampipe Stack, certain attributes necessitate specific configurations
+A [Service](/resources/service) is a long-running process designed to handle and respond to API requests, serves as the orchestrator for the Steampipe Stack. By applying the Service manifest from the DataOS CLI, a Service Resource instance can be created that orchestrates the Steampipe Stack. For the orchestration of the Steampipe Stack, certain attributes necessitate specific configurations
 
 - `servicePort`: Set the `servicePort` to 9193 for the Steampipe Stack. Any deviation from this port number will result in errors.
     
@@ -156,7 +156,7 @@ A [Service](../service.md) is a long-running process designed to handle and resp
     ```
     
 
-For details on the remaining attributes, consult the documentation on [Attributes of the Service Manifest.](../service/yaml_configuration_attributes.md)
+For details on the remaining attributes, consult the documentation on [Attributes of the Service Manifest.](/resources/service/yaml_configuration_attributes)
 
 <details>
 <summary>Sample Service Resource manifest</summary>
@@ -202,7 +202,7 @@ service:
 
 **Apply the Service Resource manifest**
 
-Once you have created the Service manifest, [`apply`](../../interfaces/cli/command_reference.md#apply) it using the DataOS Command Line Interface (CLI) to instantiate a Service Resource instance. Execute the following command:
+Once you have created the Service manifest, [`apply`](/interfaces/cli/command_reference#apply) it using the DataOS Command Line Interface (CLI) to instantiate a Service Resource instance. Execute the following command:
 
 ```shell
 dataos-ctl apply -f ${{file-path}} -w ${{workspace-name}}
@@ -210,7 +210,7 @@ dataos-ctl apply -f ${{file-path}} -w ${{workspace-name}}
 
 **Verification and Status Confirmation**
 
-Validate the Service Resource instance creation by utilizing the [`get`](../../interfaces/cli/command_reference.md#get) command:
+Validate the Service Resource instance creation by utilizing the [`get`](/interfaces/cli/command_reference#get) command:
 
 ```shell
 dataos-ctl get -t service -w ${{workspace-name}}
@@ -220,7 +220,7 @@ dataos-ctl get -t service -w ${{workspace-name}}
 
 **Create a Depot Manifest** 
 
-Once you have the Steampipe Service up and running, the next step involves creating a Depot on the Postgres Database associated with that Service. This necessitates the formulation of a Postgres Depot Manifest. Detailed configuration specifications are available on the [PostgreSQL Depot config templates](../depot/depot_config_templates/postgresql.md). In this specific context, certain attributes demand precise configuration, as outlined below:
+Once you have the Steampipe Service up and running, the next step involves creating a Depot on the Postgres Database associated with that Service. This necessitates the formulation of a Postgres Depot Manifest. Detailed configuration specifications are available on the [PostgreSQL Depot config templates](/resources/depot/depot_config_templates/postgresql). In this specific context, certain attributes demand precise configuration, as outlined below:
 
 - `host`: Configure the host using the format given below:
     
@@ -245,7 +245,7 @@ Once you have the Steampipe Service up and running, the next step involves creat
     ```
     
 
-The remaining attributes can be adjusted in accordance with the information provided in the link: [PostgreSQL Depot Configuration.](../depot/depot_config_templates/postgresql.md)
+The remaining attributes can be adjusted in accordance with the information provided in the link: [PostgreSQL Depot Configuration.](/resources/depot/depot_config_templates/postgresql)
 
 <details>
 <summary>Sample Depot Resource manifest</summary>
@@ -278,7 +278,7 @@ depot:
 
 **Apply the Depot manifest**
 
-To create Depot Resource instance within the DataOS environment, use the [`apply`](../../interfaces/cli/command_reference.md#apply) command as shown below:
+To create Depot Resource instance within the DataOS environment, use the [`apply`](/interfaces/cli/command_reference#apply) command as shown below:
 
 ```shell
 dataos-ctl apply -f ${{depot manifest file path}}
@@ -286,7 +286,7 @@ dataos-ctl apply -f ${{depot manifest file path}}
 
 **Verify Depot Creation**
 
-Use the [`get`](../../interfaces/cli/command_reference.md#get) command to verify whether the depot is in an active state or not.
+Use the [`get`](/interfaces/cli/command_reference#get) command to verify whether the depot is in an active state or not.
 
 ```shell
 dataos-ctl get -t depot
@@ -294,7 +294,7 @@ dataos-ctl get -t depot
 
 #### **Validate the Depot using port-forward and USQL**
 
-Prior to directing queries towards a [Cluster](../cluster.md) through the Depot, it is advisable to validate the Depot's functionality. The DataOS CLI facilitates this validation.
+Prior to directing queries towards a [Cluster](/resources/cluster) through the Depot, it is advisable to validate the Depot's functionality. The DataOS CLI facilitates this validation.
 
 **Port Forwarding for Service Port**
 
@@ -368,7 +368,7 @@ cluster:
 
 **Apply the Cluster manifest**
 
-To create Cluster Resource instance within the DataOS environment, use the [`apply`](../../interfaces/cli/command_reference.md#apply) command as shown below:
+To create Cluster Resource instance within the DataOS environment, use the [`apply`](/interfaces/cli/command_reference#apply) command as shown below:
 
 ```shell
 dataos-ctl apply -f ${{cluster manifest file path}} -w ${{workspace name}}
@@ -376,7 +376,7 @@ dataos-ctl apply -f ${{cluster manifest file path}} -w ${{workspace name}}
 
 **Verification and Status Confirmation**
 
-Validate the Cluster Resource instance creation by utilizing the [`get`](../../interfaces/cli/command_reference.md#get) command:
+Validate the Cluster Resource instance creation by utilizing the [`get`](/interfaces/cli/command_reference#get) command:
 
 ```shell
 dataos-ctl get -t cluster -w ${{workspace-name}}
@@ -417,4 +417,4 @@ The Steampipe Stack in the DataOS relies on a predefined set of plugins installe
 
 ### **Installing additional plugins from Steampipe Hub**
 
-In cases where a data developer aims to connect to a source not covered by the plugins listed above, the developer must install the desired Steampipe plugin from the [Steampipe Plugin Hub](https://hub.steampipe.io/plugins) within the Steampipe image. Following the installation, a new image must be built, and the Stack within the new image should be updated or a new Stack created. Subsequently, this updated or new Stack can be employed to establish a connection to the desired source. Detailed steps for this process are available on the link: [Installing additional plugins within the Steampipe Stack.](./steampipe/installing_additional_plugins.md)
+In cases where a data developer aims to connect to a source not covered by the plugins listed above, the developer must install the desired Steampipe plugin from the [Steampipe Plugin Hub](https://hub.steampipe.io/plugins) within the Steampipe image. Following the installation, a new image must be built, and the Stack within the new image should be updated or a new Stack created. Subsequently, this updated or new Stack can be employed to establish a connection to the desired source. Detailed steps for this process are available on the link: [Installing additional plugins within the Steampipe Stack.](/resources/stackssteampipe/installing_additional_plugins)

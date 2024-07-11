@@ -11,7 +11,7 @@ Benthos is a high-performance and resilient stream processing stack within DataO
 
 <center>
 
-![Benthos within DataOS](./benthos/benthos_overview.png)
+![Benthos within DataOS](/resources/stacks/benthos/benthos_overview.png)
 <i>Placement of Benthos stack within DataOS</i>
 </center>
 
@@ -51,7 +51,7 @@ Now, let's dive into the details and explore Benthos further.
 
 ## Syntax of Benthos YAML Configuration
 
-![Benthos YAML Configuration Syntax](./benthos/benthos_syntax.png)
+![Benthos YAML Configuration Syntax](/resources/stacks/benthos/benthos_syntax.png)
 
 <center><i>Benthos YAML Configuration Syntax</i></center>
 
@@ -61,34 +61,34 @@ Now, let's dive into the details and explore Benthos further.
 
 Whether you're a seasoned data wrangler or a curious beginner, Benthos has something for you. Ready to take the plunge? Let's start by setting up Benthos locally.
 
-[Getting Started ](./benthos/getting_started.md)
+[Getting Started ](/resources/stacks/benthos/getting_started)
 
 ### **Setting Up Benthos on DataOS**
 
 In DataOS, a Benthos streaming pipeline is implemented using the Service resource. Benthos Services allow for the quick definition of stream and event processing pipelines. To start your Benthos journey on DataOS, refer to the link below
 
-[Benthos on DataOS](./benthos/benthos_on_dataos.md)
+[Benthos on DataOS](/resources/stacks/benthos/benthos_on_dataos)
 
 ## Components of Benthos Pipeline
 
 Benthos operates in a declarative manner, defining stream pipelines using a YAML configuration file. This file serves as a recipe, specifying the sources and transformation components required for data processing. Benthos offers a rich set of components within the YAML file. To learn more about these components, click on the link below:
 
-[Components](./benthos/components.md)
+[Components](/resources/stacks/benthos/components)
 
 ## Configuration
 
 Effective configuration is crucial for utilizing the Benthos stack efficiently. With the right configuration settings, you can optimize your data processing pipelines, achieve maximum throughput, and handle errors effectively. Explore our comprehensive list on Benthos configuration, covering basic setup to advanced techniques:
 
-[Configurations](./benthos/configurations.md)
+[Configurations](/resources/stacks/benthos/configurations)
 
 ## Bloblang Guide
 
 Tired of cumbersome data wrangling? Bloblang, the native mapping language of Benthos, provides a streamlined solution for data transformation. With its expressive and powerful syntax, Bloblang simplifies the process of transforming data without the need for complex scripts or convoluted pipelines. Discover the capabilities of Bloblang in our tutorial:
 
-[Bloblang ](./benthos/bloblang.md)
+[Bloblang ](/resources/stacks/benthos/bloblang)
 
 ## Recipes
 
 Benthos, with its modular architecture and extensive range of processors, inputs/outputs, is perfect for creating real-time data processing recipes. Our collection of use cases and case scenarios demonstrates how Benthos can solve common data processing challenges. Explore the possibilities with Benthos:
 
-[Recipes](./benthos/recipes.md)
+[Recipes](/resources/stacks/benthos/recipes)

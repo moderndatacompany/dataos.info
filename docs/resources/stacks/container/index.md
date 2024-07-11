@@ -12,7 +12,7 @@ When deploying an application using Container Stack, the containerized image con
 
 ## Syntax of Container Stack manifest
 
-![Container Manifest Configuration Syntax](./container/container_syntax.png)
+![Container Manifest Configuration Syntax](/resources/stacks/container/container_syntax.png)
 
 <center><i>Container manifest configuration syntax</i></center>
 
@@ -22,13 +22,13 @@ When deploying an application using Container Stack, the containerized image con
 
 To begin the journey with Container Stack, let’s take an image already available on the public DockerHub repository and run it atop DataOS through Container Stack. To know more, navigate to the link below:
 
-[Deploying Images on Public DockerHub ](./container/deploying_images_on_public_dockerhub.md)
+[Deploying Images on Public DockerHub ](/resources/stacks/container/deploying_images_on_public_dockerhub)
 
 ### **Deploying Images from a Private DockerHub Repository**
 
 You can also deploy custom-built images from a private DockerHub repository. To know more about this case scenario, navigate to the link below:
 
-[Deploying images on a Private DockerHub ](./container/deploying_images_on_a_private_dockerhub.md)
+[Deploying images on a Private DockerHub ](/resources/stacks/container/deploying_images_on_a_private_dockerhub)
 
 ## Components of Container Stack
 
@@ -121,8 +121,8 @@ arguments:
 
 ## Recipes
 
-[How to deploy a Streamlit App on DataOS](./container/build_a_streamlit_app_on_dataos.md)
+[How to deploy a Streamlit App on DataOS](/resources/stacks/container/build_a_streamlit_app_on_dataos)
 
-[Container Stack within a Workflow](./container/container_stack_within_a_workflow.md)
+[Container Stack within a Workflow](/resources/stacks/container/container_stack_within_a_workflow)
 
-[Creating shortcut for Container Stack based applications](./container/container_stack_based_app_shortcut.md)
+[Creating shortcut for Container Stack based applications](/resources/stacks/container/container_stack_based_app_shortcut)

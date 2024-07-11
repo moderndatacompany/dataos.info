@@ -23,7 +23,7 @@ curl --version
 
 If its installed move on to the next step, in case it is not installed follow the instruction guide below to install curl
 
-[Read on Curl Utility ](../../../../../interfaces/cli.md)
+[Read on Curl Utility ](/interfaces/cli)
 
 ## Get Started with Flare Standalone
 
@@ -143,7 +143,7 @@ https://mockdataosnew.blob.core.windows.net/dropzone001/customer-resources/sampl
 - **MacOSX Users -** MacOSX users will only s, ee one folder i.e. `sampledata`. The other folder, `__MACOSX`, will automatically get hidden.
 - **Linux Users -** Linux users will see,e two folders i.e. `sampledata` and `__MACOSX.`
 
-![Untitled](./local_to_local_using_docker/untitled.png)
+![Untitled](/resources/stacks/flare/local_to_local_using_docker/untitled.png)
 
 ### **Run the Sample Workflow**
 

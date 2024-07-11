@@ -6,11 +6,11 @@ search:
 
 # Data Toolbox
 
-Data Toolbox Stack or simply Toolbox Stack provides vital functionality in case of metadata updation in [Icebase](../depot.md#icebase) depots. When data is ingested into Icebase using [Flare](./flare.md) Stack, the metadata of ingested datasets needs to be registered with [Metis](../../interfaces/metis.md) before it can be queried using [Workbench](../../interfaces/workbench.md). The Data Toolbox allows `set_version` action on the data stored in the DataOS internal storage Icebase, which uses the Iceberg format. The [Metis](../../interfaces/metis.md) keeps track of the Iceberg table by storing a reference to the latest metadata file. Using the Data Toolbox `set_version` action, you can update the metadata version to the latest or any specific version.
+Data Toolbox Stack or simply Toolbox Stack provides vital functionality in case of metadata updation in [Icebase](/resources/depot#icebase) depots. When data is ingested into Icebase using [Flare](/resources/stacks/flare) Stack, the metadata of ingested datasets needs to be registered with [Metis](/interfaces/metis) before it can be queried using [Workbench](/interfaces/workbench). The Data Toolbox allows `set_version` action on the data stored in the DataOS internal storage Icebase, which uses the Iceberg format. The [Metis](/interfaces/metis) keeps track of the Iceberg table by storing a reference to the latest metadata file. Using the Data Toolbox `set_version` action, you can update the metadata version to the latest or any specific version.
 
 ## Syntax of Data Toolbox YAML Configuration
 
-![Data Toolbox YAML Configuration Syntax](./data_toolbox/data_toolbox_syntax.png)
+![Data Toolbox YAML Configuration Syntax](/resources/stacks/data_toolbox/data_toolbox_syntax.png)
 
 ## Performing Data Toolbox Actions
 
@@ -27,11 +27,11 @@ To perform a data toolbox action, follow the below steps:
 
 ### **Create a YAML file for Workflow**
 
-If you have already ingested data, you can create a separate workflow for toolbox action, as shown in the following YAML. To know more about workflows, click [here](../workflow.md). 
+If you have already ingested data, you can create a separate workflow for toolbox action, as shown in the following YAML. To know more about workflows, click [here](/resources/workflow). 
 
 ### **Define a Job that executes upon Toolbox Stack**
 
-Within the DAG, define a job that executes upon the Toolbox Stack. To know more about the various properties for a job executed upon toolbox stack, click [here](../workflow.md#configuring-the-dag-section). 
+Within the DAG, define a job that executes upon the Toolbox Stack. To know more about the various properties for a job executed upon toolbox stack, click [here](/resources/workflow#configuring-the-dag-section). 
 
 **Sample Toolbox Workflow**
 
@@ -55,14 +55,14 @@ The table below elucidates the various attributes within the Toolbox-specific Se
 
 | Field | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`toolbox`](./data_toolbox/data_toolbox_grammar.md#toolbox) | object | none | none | mandatory |
-| [`dataset`](./data_toolbox/data_toolbox_grammar.md#dataset) | string | none | any valid iceberg dataset udl address | mandatory |
-| [`action`](./data_toolbox/data_toolbox_grammar.md#action) | object | none | none | mandatory |
-| [`name`](./data_toolbox/data_toolbox_grammar.md#name) | string | none | set_version | mandatory |
-| [`value`](./data_toolbox/data_toolbox_grammar.md#value) | string | none | latest or any other specific metadata version | mandatory |
+| [`toolbox`](/resources/stacks/data_toolbox/data_toolbox_grammar#toolbox) | object | none | none | mandatory |
+| [`dataset`](/resources/stacks/data_toolbox/data_toolbox_grammar#dataset) | string | none | any valid iceberg dataset udl address | mandatory |
+| [`action`](/resources/stacks/data_toolbox/data_toolbox_grammar#action) | object | none | none | mandatory |
+| [`name`](/resources/stacks/data_toolbox/data_toolbox_grammar#name) | string | none | set_version | mandatory |
+| [`value`](/resources/stacks/data_toolbox/data_toolbox_grammar#value) | string | none | latest or any other specific metadata version | mandatory |
 
 
-To know more about Toolbox-specfic Section YAML Configuration fields, click [here.](./data_toolbox/data_toolbox_grammar.md)
+To know more about Toolbox-specfic Section YAML Configuration fields, click [here.](/resources/stacks/data_toolbox/data_toolbox_grammar)
 
 ### **Apply the Workflow using CLI**
 
@@ -158,5 +158,5 @@ workflow: # Workflow Section
 ```
 </details>
 
-Once you define the workflow, you can apply it using [CLI](../../interfaces/cli.md).
+Once you define the workflow, you can apply it using [CLI](/interfaces/cli).
 

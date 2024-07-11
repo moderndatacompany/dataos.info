@@ -5,7 +5,7 @@ search:
 
 # Grant
 
-A Grant [Resource](/resources/) links the Subject-Predicate-Object relationship, generating an access [policy](.././resources/policy.md). Through grants, administrators assign use cases to subjects either as users or roles, granting them access to specific parts of the system or data. This level of detail in access control enables administrators to regulate user interactions effectively. Grants facilitate the assignment of use cases to multiple roles and users, providing flexibility in access management. Grants can be implemented via [CLI](../interfaces/cli.md) or through the [Bifrost](../interfaces/bifrost.md) Interface. To learn about how  to create grant through Bifrost click [here](../interfaces/bifrost/grants.md#how-to-create-policy-use-case-grant).
+A Grant [Resource](/resources/) links the Subject-Predicate-Object relationship, generating an access [policy](/resources/policy). Through grants, administrators assign use cases to subjects either as users or roles, granting them access to specific parts of the system or data. This level of detail in access control enables administrators to regulate user interactions effectively. Grants facilitate the assignment of use cases to multiple roles and users, providing flexibility in access management. Grants can be implemented via [CLI](/interfaces/cli) or through the [Bifrost](/interfaces/bifrost) Interface. To learn about how  to create grant through Bifrost click [here](/interfaces/bifrost/grants#how-to-create-policy-use-case-grant).
 
 ## How to create and manage a Grant Resource?
 
@@ -29,7 +29,7 @@ Data Developers can create a Grant Resource by applying the manifest file of a G
         - users:id:test-user
       values:
         run-as-dataos-resource: 
-         - path : ${valid-path}
+         - path: ${valid-path}
       requester: iamgroot
       notes: the user test-user needs to runas the test-developer for data dev purposes
       approve: false
@@ -43,7 +43,7 @@ The manifest for creating a Grant has the following two sections:
 
 ### **Resource meta section**
 
-In DataOS, a Grant is categorized as a [Resource-type](https://dataos.info/resources/types_of_dataos_resources/). The Resource meta section within the manifest file encompasses attributes universally applicable to all Resource-types. The provided manifest file elucidates the requisite attributes for this section:
+In DataOS, a Grant is categorized as a [Resource-type](resources/types_of_dataos_resources). The Resource meta section within the manifest file encompasses attributes universally applicable to all Resource-types. The provided manifest file elucidates the requisite attributes for this section:
 
 === "Syntax"
 
@@ -77,7 +77,7 @@ In DataOS, a Grant is categorized as a [Resource-type](https://dataos.info/reso
         # attributes of grant-specific section
       ```
 
-For more information about the various attributes in Resource meta section, refer to the [Attributes of Resource meta section.](../resources/resource_attributes.md)
+For more information about the various attributes in Resource meta section, refer to the [Attributes of Resource meta section.](/resources/resource_attributes)
 
 ### **Grant-specific section**
 
@@ -92,7 +92,7 @@ The Grant-specific section of a Grant manifest comprises attributes-specific to 
         - ${users:id:test-user}
         values:
           run-as-dataos-resource: 
-          - path : ${valid-path}
+          - path: ${valid-path}
         requester: ${iamgroot}
         notes: ${the user test-user needs to runasathe test-developer for data dev purposes}
         approve: ${false}
@@ -113,19 +113,19 @@ The Grant-specific section of a Grant manifest comprises attributes-specific to 
       ```
 | Attribute          | Data Type        | Default Value | Possible Values                                | Requirement |
 |--------------------|------------------|---------------|------------------------------------------------|-------------|
-| [`grant`](./grant/manifest_attributes.md#grant)               | mapping          | none          | valid grant-specific attributes               | mandatory   |
-| [`policy_use_case_id`](./grant/manifest_attributes.md#policy_use_case_id) | string           | none          | Unique identifier for the policy use case      | mandatory   |
-| [`subjects`](./grant/manifest_attributes.md#subjects)            | list of strings  | none          | List of subject identifiers                    | optional    |
-| [`values`](./grant/manifest_attributes.md#values)              | list of mapping  | none          | List of key-value pairs representing values   | mandatory   |
-| [`path`](./grant/manifest_attributes.md#path)                 | string           | none          | valid path string indicating the resource location | optional    |
-| [`approve`](./grant/manifest_attributes.md#approve)             | boolean          | false         | true, false                                    | optional    |
-| [`requester`](./grant/manifest_attributes.md#requester)           | string           | none          | Unique identifier for the requester            | optional    |
-| [`notes`](./grant/manifest_attributes.md#notes)               | string           | none          | Textual notes or comments                      | optional    |
-| [`collection`](./grant/manifest_attributes.md#collection)          | string           | none          | Unique identifier for the collection           | optional    |
-| [`manageAsUser`](./grant/manifest_attributes.md#manageAsUser)       | string           | none          | UserID of the Use Case Assignee                | optional    |
+| [`grant`](/resources/grant/manifest_attributes#grant)               | mapping          | none          | valid grant-specific attributes               | mandatory   |
+| [`policy_use_case_id`](/resources/grant/manifest_attributes#policy_use_case_id) | string           | none          | Unique identifier for the policy use case      | mandatory   |
+| [`subjects`](/resources/grant/manifest_attributes#subjects)            | list of strings  | none          | List of subject identifiers                    | optional    |
+| [`values`](/resources/grant/manifest_attributes#values)              | list of mapping  | none          | List of key-value pairs representing values   | mandatory   |
+| [`path`](/resources/grant/manifest_attributes#path)                 | string           | none          | valid path string indicating the resource location | optional    |
+| [`approve`](/resources/grant/manifest_attributes#approve)             | boolean          | false         | true, false                                    | optional    |
+| [`requester`](/resources/grant/manifest_attributes#requester)           | string           | none          | Unique identifier for the requester            | optional    |
+| [`notes`](/resources/grant/manifest_attributes#notes)               | string           | none          | Textual notes or comments                      | optional    |
+| [`collection`](/resources/grant/manifest_attributes#collection)          | string           | none          | Unique identifier for the collection           | optional    |
+| [`manageAsUser`](/resources/grant/manifest_attributes#manageAsUser)       | string           | none          | UserID of the Use Case Assignee                | optional    |
 
 
-To know more  about the grant attributes click [here](./grant/manifest_attributes.md)
+To know more  about the grant attributes click [here](/resources/grant/manifest_attributes)
 
 <aside class="callout">
 🗣  By default, the `approve` attribute is set to false. This signifies that grants specified in this YAML file are not automatically approved. Instead, they will appear as requests in the grant request section.
@@ -157,16 +157,16 @@ Upon applying the grant, administrators can track and manage grant requests thro
 
 After applying for the Grant via the CLI, the status or log can be viewed in the Grant request section of the Bifrost UI as following. 
 
-<center>![grant1.png](../resources/grant/grant1.png)</center>
+<center>![grant1.png](/resources/grant/grant1.png)</center>
 <center>*user shraddhaade requested access to read resource system workspaces for user named test-developer to piyushjoshi*</center>
 
 Once the grant request is submitted, the operator views the request and makes a decision. If another operator views the request and finds it appropriate, they can also grant the request. 
 
-<center>![grant2.png](../resources/grant/grant2.png)</center>
+<center>![grant2.png](/resources/grant/grant2.png)</center>
 
 The name of the operator who took the final decision will be recorded
 
-<center>![grant3.png](../resources/grant/grant3.png)</center>
+<center>![grant3.png](/resources/grant/grant3.png)</center>
 <center> operator named aayushisolanki granted this permission to test-developer</center>
 
 ## Managing Grant
