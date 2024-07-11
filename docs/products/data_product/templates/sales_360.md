@@ -145,6 +145,10 @@ Ingesting and transforming following tables:
 
 where the only transformation is to change the case to lower case of all.
 
+```yaml title="dag_ingestion.yml"
+docs/examples/products/data/sales_360/dag/ingestion.yml
+```
+
 ```yaml title="transaction-ingests"
 --8<-- "examples/products/data/sales_360/transaction_ingest.yml"
 ```
