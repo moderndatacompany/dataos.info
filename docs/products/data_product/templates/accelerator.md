@@ -12,11 +12,9 @@ To create the Data Product within DataOS, following requirements were needed:
 - Basic understanding of Data Product principles and lifecycle management.
 
 
-## Define Usecase and Vision
+## Define Usecase
 
-- **Purpose clarity:** FS Accelerator involves providing a unified and persistent set of customer identifiers and attributes across organizational silos in the financial services domain.
-
-- **Business usecase:** Cross selling credit cards, based on the customer's transaction history.
+FS Accelerator involves providing a unified and persistent set of customer identifiers and attributes across organizational silos in the financial services domain. Cross selling credit cards, based on the customer's transaction history.
 
 ## Design
 Steps required to design the Data Product:
@@ -764,68 +762,567 @@ In this step we define the quality checks needed to measure the performance of t
 
 Steps required to build this Data Product are:
 
-### **Create Workflow for Data ingestion and profiling**
+### **Create Workflow for Data Ingestion and Transformation**
 
-The below workflow is designed to manage data processing and quality checks. Scheduled to run daily at a specified time, it coordinates various stages of data transformation, scanning, profiling, and quality assessment in a structured sequence. Each step is configured with retry mechanisms to handle potential failures, ensuring the overall pipeline operates reliably and efficiently.
+In this Data Product we are utilizing Workflow to orchestrates the transformation of customer entity data, ensuring it is structured and optimized for further querying and analysis. 
+
+
+<details>
+  <summary>Steps</summary>
+```sql
+SELECT
+  *
+FROM
+  customer_dp
+WHERE
+  LENGTH(cust_id) = 10
+  AND LENGTH(cust_first_name) <= 35
+  AND cust_first_name IS NOT NULL
+  AND REGEXP_like(cust_first_name, '^[a-zA-Z]+$')
+  AND LENGTH(cust_last_name) <= 35
+  AND LENGTH(cibil_score) = 3
+  AND cibil_score BETWEEN 300 and 900
+  AND cibil_check_date is not null 
+  AND country_code is not null
+  AND REGEXP_like(cust_last_name, '^[a-zA-Z]*$')
+  AND LENGTH(COALESCE(cust_middle_name, '') ) <= 35
+  or cust_middle_name is null
+  AND REGEXP_like(cust_middle_name, '^[a-zA-Z]*$')
+  AND LENGTH(mobile_number1) <= 10
+  AND LENGTH(customer_addressline1) <= 50
+  AND LENGTH(customer_addressline2) <= 50
+  AND LENGTH(customer_addressline3) <= 50
+  AND LENGTH(city) <= 30
+  AND LENGTH(state) <= 30
+  AND LENGTH(pin) <= 10
+  AND LENGTH(email_addr) <= 50
+  AND REGEXP_like(email_addr, '^[a-z0-9.]+@[a-z]+\.[a-z]{2,3}')
+  AND cust_segment IN ('Urban', 'Rural', 'Semi-Urban')
+  AND cust_title IN (
+    'Mr',
+    'Miss',
+    'Mrs',
+    'Mx',
+    'Dr'
+  )
+  AND customer_category IN ('Non Resident', 'Resident Indian')
+  AND customer_privelege IN ('Yes', 'No')
+  AND customer_type IN ('Personal', 'Corporate', 'Merchant')
+  AND gender IN (
+    'Male',
+    'Female',
+    'Non Binary',
+    'Transgender',
+    'Intersex',
+    'I prefer not to say'
+  )
+  AND marital_status IN (
+    'Single',
+    'Married',
+    'Widowed',
+    'I prefer not to say'
+  )
+  AND minor_flag IN ('Yes', 'No')
+  AND occupation IN ('Salaried', 'Non Salaried')
+  AND senior_citizen_flag IN ('Yes', 'No')
+  AND sourcing_channel IN ('Branch', 'Partner', 'Online')
+  AND customer_risk_category IN ('High', 'Medium', 'Low')
+  AND afflunce_level IN ('High', 'Medium', 'Low')
+  AND customer_status IN ('Active', 'Dormant', 'Deceased')
+  AND country IN (
+    'France',
+    'Italy',
+    'Spain',
+    'Germany',
+    'Netherlands',
+    'Australia',
+    'Brazil',
+    'Canada',
+    'India',
+    'Indonesia',
+    'Norway',
+    'Singapore',
+    'United States'
+  )
+  AND nationality IN (
+    'Australian',
+    'Brazilian',
+    'Canadian',
+    'European',
+    'Indian',
+    'Indonesian',
+    'Norwegian',
+    'Singaporean',
+    'American'
+  )
+  AND REGEXP_like(cast(cibil_check_date as string) , '^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$')
+```
+The above SQL queries will be used for orchestration in Workflows.
+
+```yaml
+sequence:
+  - name: final
+    doc: Selecting all columns from customer overview
+    sql: select * from customer
+    functions:
+      - name: cleanse_column_names
+      - name: change_column_case
+        case: lower
+
+      - name: drop
+        columns:
+          - "_c0"
+
+```
+The above yaml contains raw steps to orchestrate workflow.
+
+```yaml
+sequence:
+  - name: final
+    doc: Selecting all columns from customer overview
+    sqlFile: /jobsfolder/data-product/transformation/steps/customer-overview.sql
+    functions:
+      - name: cleanse_column_names
+      - name: change_column_case
+        case: lower
+```
+The above yamll contains steps to orchestrate workflow.
+
+</details>
+
+
+<details>
+  <summary>Worflow manifest</summary>
+
+```yaml
+version: v1
+name: wf-customer-overview-raw-data
+type: workflow
+tags:
+  - customer-overview
+description:  
+workflow:
+  title: Fs Customer Overview Raw  Dataset
+  dag:
+  - name: customer-overview-raw-data
+    title:  Fs Customer Overview Raw  Dataset
+    description: This job will give fs customer overview data 
+    spec:
+      stack: flare:4.0
+      compute: fs-runnable-default
+      flare:
+        driver:
+          coreLimit: 1800m
+          cores: 1
+          memory: 2048m
+        executor:
+          coreLimit: 3200m
+          cores: 1
+          instances: 2
+          memory: 3800m
+        job:
+          explain: true
+          inputs:
+            - name: customer
+              dataset:  dataos://twdepot:finance_service/customer_overview             
+              format: csv
+
+          logLevel: INFO
+          steps:
+            - /jobsfolder/data-product/transformation/steps/steps-raw.yaml
+          outputs:
+            - name: final
+              dataset: dataos://icebasetw:${SCHEMA}/customer_overview_raw?acl=rw  # option: icebase
+              format: iceberg
+              description: This dataset gives you details of all customer data and their corresponding attributes
+              tags:
+                - demo.customer
+              options:
+                  saveMode: overwrite # option: append
+                  iceberg:
+                    merge:
+                      onClause: "old.cust_id = new.cust_id AND old.modified_at = new.modified_at"
+                      whenClause: 
+                        "NOT MATCHED THEN INSERT *"
+                    properties:
+                      write.format.default: parquet
+                      write.metadata.compression-codec: gzip
+
+              title: Customer banking Raw Source Data  
+
+          variables:
+            keepSystemColumns: "false"
+        sparkConf:
+          - spark.sql.shuffle.partitions: 1
+          - spark.default.parallelism: 2
+          - spark.sql.extensions: org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions
+```
+
+</details>
+
+<details>
+  <summary>Worflow manifest</summary>
 
 ```yaml
 
 version: v1
-name: wf-customer-overview-pipeline
+name: fs-customer-overview-change
 type: workflow
-description: This workflow is apply ingestion profiling and quality on Finance Service Datasets.
+tags:
+  - financial_service 
+  - customer-overview
+description: This job will give fs customer overview dataset
 workflow:
-  schedule:
-    cron: '30 4 * * *'
-    concurrencyPolicy: Forbid 
-  title: Customer Overview Pipeline
+  title: Fs customer Overview Dataset
   dag:
-    - name: customer-overview-raw-data
-      file: /jobsfolder/data-product/transformation/config-customer-overview-raw.yaml
-      retry:
-        count: 2
-        strategy: "OnFailure"
+  - name: fs-customer-dp-dataset
+    title:  Fs Customer Overview Dataset
+    description: This job will give fs Customer overview data 
+    spec:
+      stack: flare:4.0
+      compute: fs-runnable-default
+      flare:
+        driver:
+          coreLimit: 1800m
+          cores: 1
+          memory: 2048m
+        executor:
+          coreLimit: 3200m
+          cores: 1
+          instances: 2
+          memory: 3800m
+        job:
+          explain: true
+          inputs:
+            - name: customer_dp
+              dataset: dataos://icebasetw:${SCHEMA}/customer_overview_raw?acl=rw                 
+              format: iceberg
+              incremental:
+                context: customer007
+                sql: >
+                  with cte as (
+                  SELECT
+                    cust_id,
+                    cast(cust_dob as date) cust_dob,
+                    cust_first_name,
+                    cust_last_name,
+                    cust_middle_name,
+                    cust_segment,
+                    cust_title,
+                    customer_category,
+                    customer_privelege,
+                    customer_type,
+                    email_addr,
+                    gender,
+                    marital_status,
+                    minor_flag,
+                    mobile_number1,
+                    nationality,
+                    occupation,
+                    senior_citizen_flag,
+                    sourcing_channel,
+                    customer_risk_category,
+                    afflunce_level,
+                    customer_status,
+                    customer_addressline1,
+                    customer_addressline2,
+                    customer_addressline3,
+                    city,
+                    state,
+                    country,
+                    pin,
+                    cast(created_at AS timestamp)  created_at,
+                    cast(modified_at AS timestamp)  modified_at,
+                    date(cast(cibil_check_date as timestamp)) cibil_check_date,
+                    cast(cibil_score as int) cibil_score,
+                    country_code,
+                    ROW_NUMBER() OVER (PARTITION BY cust_id ORDER BY modified_at DESC) as rn
+                    from customer007
+                    )
+                    select 
+                      cust_id,
+                      cust_dob,
+                      cust_first_name,
+                      cust_last_name,
+                      cust_middle_name,
+                      cust_segment,
+                      cust_title,
+                      customer_category,
+                      customer_privelege,
+                      customer_type,
+                      email_addr,
+                      gender,
+                      marital_status,
+                      minor_flag,
+                      mobile_number1,
+                      nationality,
+                      occupation,
+                      senior_citizen_flag,
+                      sourcing_channel,
+                      customer_risk_category,
+                      afflunce_level,
+                      customer_status,
+                      customer_addressline1,
+                      customer_addressline2,
+                      customer_addressline3,
+                      city,
+                      state,
+                      country,
+                      pin,
+                      created_at,
+                      modified_at,
+                      cibil_check_date,
+                      cibil_score,
+                      country_code
+                  FROM cte
+                    where rn = 1 and 1 = $|start| 
+                keys:
+                  - name: start 
+                    sql: select 1
 
-    - name: customer-overview-data-product
-      file: /jobsfolder/data-product/transformation/config-customer-overview.yaml
-      retry:
-        count: 2
-        strategy: "OnFailure"
-      dependencies:
-        - customer-overview-raw-data
-
-    - name: customer-overview-scanner
-      file: /jobsfolder/data-product/output/scanner/config-customer-overview.yaml
-      retry:
-        count: 2
-        strategy: "OnFailure"
-      dependencies:
-        - customer-overview-data-product
-
-    - name: customer-overview-profile
-      file: /jobsfolder/data-product/output/profile/config-customer-profile.yaml
-      retry:
-        count: 2
-        strategy: "OnFailure"
-      dependencies:
-        -  customer-overview-scanner
-
-    - name: customer-overview-quality
-      file: /jobsfolder/data-product/output/assertions/soda-customer.yaml
-      retry:
-        count: 2
-        strategy: "OnFailure"
-      dependencies:
-        - customer-overview-profile
-
+          logLevel: INFO
+          steps:
+            - /jobsfolder/data-product/transformation/steps/steps.yaml
+          outputs:
+            - name: final
+              dataset: dataos://icebasetw:${SCHEMA}/customer_overview_dp?acl=rw 
+              format: iceberg
+              description: This dataset gives you details of all customer and their corresponding attributes.
+              tags:
+                - demo.customer_dp
+              options:
+                  saveMode: overwrite
+                  iceberg:
+                    partitionSpec:
+                      - type: identity          
+                        column: country
+                      - type: identity
+                        column: state
+                    properties:
+                      write.format.default: parquet
+                      write.metadata.compression-codec: gzip
+        sparkConf:
+          - spark.sql.shuffle.partitions: 1
+          - spark.default.parallelism: 2
+          - spark.sql.extensions: org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions
 ```
+</details>
 
+The above workflows involve various data transformations and writing to Icebase. Similarly, transformations have been applied to other entities.
+
+### **Create workflow for Data Profiling**
+
+<details>
+  <summary>Worflow manifest</summary>
+```yaml
+version: v1
+name: wf-customer-overview-profile
+type: workflow
+tags:
+  - profiling
+description: The job performs profiling on customer data from icebase 
+workflow:
+  title: Customer Overview Profiler 
+  dag:
+  - name: customer-overview-profile
+    title: Customer Overview Profiler 
+    spec:
+      stack: flare:4.0
+      compute: fs-runnable-default
+      title: Customer Overview Profiler 
+      persistentVolume:
+        name: persistent-v
+        directory: fides
+      flare:
+        driver:
+          coreLimit: 1800m
+          cores: 1
+          memory: 2048m
+        executor:
+          coreLimit: 3200m
+          cores: 1
+          instances: 2
+          memory: 3800m
+        job:
+          explain: true
+          inputs:
+            - name: customer_data
+              dataset: dataos://icebasetw:${SCHEMA}/customer_overview_dp?acl=rw 
+              format: iceberg
+              incremental:
+                context: customer_dp_profile_03
+                sql: >
+                  SELECT
+                    cust_id,
+                    cust_dob,
+                    cust_first_name,
+                    cust_last_name,
+                    cust_middle_name,
+                    cust_segment,
+                    cust_title,
+                    customer_category,
+                    customer_privelege,
+                    customer_type,
+                    email_addr,
+                    gender,
+                    marital_status,
+                    minor_flag,
+                    nationality,
+                    occupation,
+                    senior_citizen_flag,
+                    sourcing_channel,
+                    customer_risk_category,
+                    afflunce_level,
+                    customer_status,
+                    cast(mobile_number1 AS string) AS mobile_number1,
+                    customer_addressline1,
+                    customer_addressline2,
+                    customer_addressline3,
+                    city,
+                    state,
+                    country,
+                    pin,
+                    created_at,
+                    modified_at
+                  FROM
+                    customer_dp_profile_03
+                  WHERE
+                    cust_segment = 'Semi'
+                    AND country = 'United States'
+                    AND occupation = 'Salaried'
+                    AND city = 'Chicago' 
+                    AND 1 = $|start|
+                keys:
+                  - name: start 
+                    sql: select 1
+          logLevel: INFO 
+          profile:
+            level: basic
+        sparkConf:
+          - spark.sql.adaptive.autoBroadcastJoinThreshold: 40m
+          - spark.dynamicAllocation.enabled: true
+          - spark.driver.maxResultSize: 0
+          - spark.dynamicAllocation.executorIdleTimeout: 120s
+          - spark.dynamicAllocation.initialExecutors: 1
+          - spark.dynamicAllocation.minExecutors: 1
+          - spark.dynamicAllocation.maxExecutors: 2
+          - spark.dynamicAllocation.shuffleTracking.enabled: true   
+```
+</details>
 
 ### **Create Policy for Governance**
 
+After transforming and storing the data in Icebase, we now have to apply Policy for data governance.
+
+```yaml
+version: v1
+name: customeroverviewrawpiipolicy
+type: policy
+layer: user
+description: "data policy to hash pii columns - test"
+owner:
+policy:
+  data:
+    type: mask
+    priority: 80
+    selector:
+      user:
+        match: any
+        tags:
+          - "roles:id:restricted-acess"
+      column:
+        tags:
+          - "TW.mask"
+    mask:
+      operator: hash
+      hash:
+        algo: sha256
+```
+
+The above data masking policy will mask the data for the users with restricted-access role.
+
+```yaml
+name: customerbucketdob
+version: v1
+type: policy
+layer: user
+description: "bucketing Date of Birth Sensitive information"
+policy:
+  data:
+    type: mask
+    priority: 85
+    selector:
+      user:
+        match: any
+        tags:
+          - "roles:id:dob-bucketing"
+      column:
+        tags:
+          - "TW.dob"  
+    mask:
+      operator: bucket_date
+      bucket_date:
+          precision : "quarter"
+```
+
+The above data masking policy will mask the specific columns with "TW.dob" tag, for the users with dob-bucketing role.
+
+```yaml
+version: v1
+name: customeroverviewrpiireaderpolicy
+type: policy
+layer: user
+description: "data policy to allow read of pii columns - test"
+owner:
+policy:
+  data:
+    type: mask
+    priority: 75
+    selector:
+      user:
+        match: any
+        tags:
+          - roles:id:pii-reader
+      column:
+        tags:
+          - "TW.mask"
+          - "TW.dob"
+    mask:
+      operator: pass_through
+```
+The above data masking policy will mask the columns with "TW.mask" and "TW.dob" tags, for the users with pii-reader role.
+
+### **Create Scanner workflow for metadata extraction**
+
+Scanner is a stack orchestrated by workflow to extract the metadata. Beolw scanner manifest, scans the metadata from the Depot named `icebasetw`and register it to Metis.
+
+```yaml
+version: v1
+name: wf-icebasetw-depot-scanner
+type: workflow
+tags:
+  - icebasetw
+description: The job scans schema tables and register metadata
+workflow:
+  dag:
+    - name: icebasetw-depot-scanner
+      description: The job scans schema from icebasetw depot tables and register metadata to metis
+      spec:
+        tags:
+          - scanner
+        stack: scanner:2.0
+        runAsUser: metis
+        compute: fs-runnable-default
+        scanner:
+          depot: dataos://icebasetw
+          sourceConfig:
+            config:
+              schemaFilterPattern:
+                includes:
+                  - ${SCHEMA}
+```
 
 ### **Create Soda workflow for quality checks**
-### **Create Scanner workflow for metadata extraction**
 
 ## Deploy
 
