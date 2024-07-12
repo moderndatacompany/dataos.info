@@ -1,6 +1,6 @@
 # How to design the Data Product?
 
-Data Product is designed by the Data Product owners. The design phase of the data product development process within DataOS is crucial for ensuring that the final product meets the requirements and delivers value. The phase involves several steps, from initial requirement analysis to the final design iteration. To illustrate this process, we will use a real-life use case: Traffic Source Analysis using Google Analytics.
+The design phase of the data product development process within DataOS is crucial for ensuring that the final product meets the requirements and delivers value. The phase involves several steps, from initial requirement analysis to the final design iteration. To illustrate this process, we will use a real-life use case: Traffic Source Analysis using Google Analytics.
 
 To design the Data Product, follow the steps outlined below. Depending on the specific Data Product, additional steps may need to be added or skipped:
 
