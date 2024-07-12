@@ -20,7 +20,7 @@ workflow:
 
 
     - name: product-data-quality
-      file: data_product_template/sales_360/quality/quality/product-quality.yaml
+      file: data_product_template/sales_360/quality/product-quality.yaml
       retry:
         count: 2
         strategy: "OnFailure"
@@ -28,7 +28,7 @@ workflow:
         - customer-data-quality
 
     - name: transaction-data-quality
-      file: data_product_template/sales_360/quality/quality/transactions-quality.yaml
+      file: data_product_template/sales_360/quality/transactions-quality.yaml
       retry:
         count: 2
         strategy: "OnFailure"
