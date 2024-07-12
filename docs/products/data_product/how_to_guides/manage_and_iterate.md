@@ -1,4 +1,4 @@
-# How to manage/iterate the Data Product?
+# How to iterate the Data Product?
 
 After successfully deploying the Data Product, it’s time to observe the results if the Data Product incorporates with your use-case or not, If the Data Product does not match the goal then you can iterate the process until your goal is achieved. 
 

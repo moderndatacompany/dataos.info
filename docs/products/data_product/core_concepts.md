@@ -1,4 +1,4 @@
-### **Key Concepts of Data Product**
+### **Key Facets of the Data Products**
 
 **Input**
 
@@ -25,7 +25,7 @@ The transformation aspect of a Data Product involves processing and manipulating
 Observability in data products involves systematically monitoring their health and performance to ensure continuous operation and enhance data reliability. This includes proactively tracking key metrics such as data availability, latency, and throughput, as well as detecting and alerting on anomalies or deviations from expected behaviors.
 Data profiling is a crucial component of observability, enabling a thorough examination, analysis, and summarization of data characteristics. This process helps identify and understand the structure, quality, and patterns within datasets. By profiling data, organizations gain insights into data distribution, completeness, and consistency, which are essential for ensuring data reliability and suitability for use.
 
-### **Core Priciples of the Data Product**
+### **Characteristics of the Data Products**
 The core principles of Data Products guide their design and development, ensuring they meet business goals, maintain high quality, and are user-centric. Here are the key principles:
 
 **Discoverable**
