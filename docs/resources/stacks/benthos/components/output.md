@@ -27,7 +27,7 @@ Outputs have an optional field `label` that can uniquely identify them in obse
 
 |Name|Category|
 |---|---|
-|[Fastbase Depot](./output/fastbase_depot.md)|Depot, Pulsar|
-|[kafka](./output/kafka_depot.md)|Depot, Kafka|
-|[Kafka](./output/kafka.md)|Kafka|
-|[Pulsar](./output/pulsar.md)|Pulsar|
+|[Fastbase Depot](/resources/stacks/benthos/components/output/fastbase_depot/)|Depot, Pulsar|
+|[kafka](/resources/stacks/benthos/components/output/kafka_depot/)|Depot, Kafka|
+|[Kafka](/resources/stacks/benthos/components/output/kafka/)|Kafka|
+|[Pulsar](/resources/stacks/benthos/components/output/pulsar/)|Pulsar|

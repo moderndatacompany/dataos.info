@@ -14,7 +14,7 @@ Operators can exercise precise control over who can retrieve credentials from Se
 
 <aside class="callout">
 
-🗣️ Each Secret in DataOS is linked to a specific <a href="https://dataos.info/resources/types_of_dataos_resources/#workspace-level-resources">Workspace</a>, confining its accessibility and application within that Workspace. This reinforces data security measures by ensuring that Secrets are only accessible within their designated Workspace. However, it's important to note that <a href="https://dataos.info/resources/instance_secret/">Instance-secret</a> have a broader scope, spanning across the entirety of the <a href="https://dataos.info/resources/types_of_dataos_resources/#instance-level-resources">DataOS instance</a> .
+🗣️ Each Secret in DataOS is linked to a specific <a href="/resources/types/#workspace-level-resources">Workspace</a>, confining its accessibility and application within that Workspace. This reinforces data security measures by ensuring that Secrets are only accessible within their designated Workspace. However, it's important to note that <a href="/resources/instance_secret/">Instance-secret</a> have a broader scope, spanning across the entirety of the <a href="/resources/types/#instance-level-resources">DataOS instance</a> .
 
 </aside>
 

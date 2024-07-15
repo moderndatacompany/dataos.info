@@ -34,9 +34,9 @@ input:
         resource: foobar
 ```
 
-You can find out more about resources in this [document](../configurations/resources.md).
+You can find out more about resources in this [document](/resources/stacks/benthos/configurations/resources/).
 
 |Name|Tags|
 |---|---|
-|[local](./rate_limit/local.md)|Local|
-|[redis](./rate_limit/redis.md)|Redis
+|[local](/resources/stacks/benthos/components/rate_limit/local/)|Local|
+|[redis](/resources/stacks/benthos/components/rate_limit/redis/)|Redis |

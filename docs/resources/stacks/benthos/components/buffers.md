@@ -12,9 +12,9 @@ Since buffers are able to modify (or disable) the transaction model within Benth
 
 | Name | Tags | 
 | ---  | ---  | 
-| [memory](./buffers/memory.md)| In Memory |
-| [none](./buffers/none.md) | No Buffer |
-| [sqlite](./buffers/sqlite.md) | SQLite |
-| [system_window](./buffers/system_window.md) | System Window |
+| [memory](/resources/stacks/benthos/components/buffers/memory/)| In Memory |
+| [none](/resources/stacks/benthos/components/buffers/none/) | No Buffer |
+| [sqlite](/resources/stacks/benthos/components/buffers/sqlite/) | SQLite |
+| [system_window](/resources/stacks/benthos/components/buffers/system_window/) | System Window |
 
 </center>
