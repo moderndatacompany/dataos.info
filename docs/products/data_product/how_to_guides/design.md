@@ -9,7 +9,7 @@ In this step, we identify various data sources based on usecase. For instance, i
 
 ## Data Understanding and Exploration
 
-To understand the data, you need to set up the data source connection to S3 using Instance Secret and Depot. Let’s see how can you set the data source connection using the Depot for S3. This step is depends on the Data Source.
+To understand the data, you need to set up the data source connection to S3 using [Instance Secret](/resources/instance_secret/) and [Depot](/resources/depot/). Let’s see how can you set the data source connection using the [Depot](/resources/depot/) for S3. This step is depends on the Data Source.
 
 <aside class="callout">
 
@@ -19,7 +19,7 @@ To understand the data, you need to set up the data source connection to S3 usin
 
 ### **Create an Instance Secret**
 
-To create a Depot without revealing the data source connection credentials, you first need to create an Instance-Secret resource which will hold credentials of the S3 source such as accesskeyid, awsaccesskeyid, awssecretaccesskey and secretkey. To create an Intsnace Secret simply compose a manifest file as shown below.
+To create a [Depot](/resources/depot/) without revealing the data source connection credentials, you first need to create an [Instance Secret](/resources/instance_secret/) resource which will hold credentials of the S3 source such as accesskeyid, awsaccesskeyid, awssecretaccesskey and secretkey. To create an [Instance Secret](/resources/instance_secret/) simply compose a manifest file as shown below.
 
 ```yaml
 name: s3depot-r 
@@ -70,7 +70,7 @@ replace the placeholder with the actual values and apply it using the following 
 dataos-ctl apply -f ${{yamlfilepath}}
 ```
 
-To know more about the Depot [refer to this](https://dataos.info/resources/depot/#apply-depot-yaml).
+To know more about the Depot [refer to this](https://dataos.info/resources/depot/).
 
 ### **Extract the Metadata**
 
@@ -189,28 +189,8 @@ To know more about Workbench, [refer to this](https://dataos.info/interfaces/wor
 
 Once you've explored the data, the next step is to plan the architectural design. This involves mapping out how different components, data pipelines, and workflows will integrate. The architecture design should be well-documented with diagrams and clear explanations of how each component interacts and the workflows they support. For data transformation tasks, tools like Flare jobs, SLOs (Service Level Objectives), and UI (User Interface) elements can be utilized to ensure efficient processing and visualization of data insights.
 
-```markdown
-+-------------------------+                                     +-------------------+
-|                         |                                     |                   |
-|      Data Sources       +                                     |    Analytical     |
-|     (Google Analytics,  |                                     |    platforms      |
-|      Adobe Analytics,   |                                     |                   |
-|           etc.)         |                                     |                   |
-+-----------+-------------+                                     +---------+---------+
-            |                                                             ^
-            |                                                             |
-            |                                                             |
-            |                                                             |
-            v                                                             |
-+-----------+-------------+      +-----------+-----------+      +---------+---------+
-|                         |      |                       |      |                   |
-|         Depot           +----->+     Workflow, Worker, +----->+   Service Level   |
-|    (Data Connection)    |      |         Service       |      |    Objectives     |
-+-------------------------+      | (Data Transformation) |      | (Quality Checks,  |
-                                 +-----------------------+      |  Policy, Monitor, |
-                                                                |  Pager)           |
-                                                                +-------------------+
-```
+<img src="/products/data_product/how_to_guides/flow.jpg" alt="Description" width="1500">
+
 
 For this particular example, the architectural design phase will also include the analytical elements and features that need to be included in the Traffic Source analysis. You can also define the input and output location in this step itself.
 
@@ -222,4 +202,4 @@ Performance targets refer to predefined goals or benchmarks related to the data 
 
 Once the Data Product design is finalized, it undergoes review sessions with key stakeholders and team members to ensure it meets all defined requirements and goals. Feedback from these sessions is carefully documented. If needed, the design is refined based on this feedback to improve its alignment with requirements. All changes made during this process are noted to ensure continuous improvement of the design phase.
 
-Once the design meets the requirements, the next phase involves building the Data Product.
+Once the design meets the requirements, the next phase involves [building the Data Product](/products/data_product/how_to_guides/build/).
