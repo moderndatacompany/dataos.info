@@ -141,10 +141,11 @@ nav:
     - 'Data Product': 
       - products/data_product/index.md
       - 'Data Product Life-cycle':
+        - products/data_product/how_to_guides/index.md
         - 'Design': products/data_product/how_to_guides/design.md
         - 'Build': products/data_product/how_to_guides/build.md
         - 'Deploy': products/data_product/how_to_guides/deploy.md
-        - 'Iterate': products/data_product/how_to_guides/manage_and_iterate.md
+        - 'Iterate': products/data_product/how_to_guides/iterate.md
       - 'Recipes': 
         - 'Create Data Product template using Cookiecutter': products/data_product/recipes/cookiecutter.md
         - 'Deploy Data Product using CI/CD pipeline': products/data_product/recipes/ci_cd.md

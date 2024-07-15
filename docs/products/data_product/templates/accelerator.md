@@ -1,4 +1,4 @@
-# FS Accelerator Data Product
+# Financial Services Accelerator Data Product
 
 Financial Services Accelerator is an entity-first Data Product designed to provide a unified and persistent set of identifiers and attributes that describe customers within the financial services domain. This data product aims to seamlessly connect customer data, product data, and transaction data across various organizational silos and business units. It is a master dataset continuously updated in real-time, ensuring accuracy and reliability. The steps required to develop this Data Product are given below. 
 
@@ -1416,7 +1416,7 @@ We have implemented the Flare stack, orchestrated by Workflow, to perform qualit
 
 ## Deploy
 
-Having developed the Data Product, we must make it accessible to various Data Product personas for management and consumption on the Data Product Hub. Below is the manifest file for the FS Accelerator Data Product.
+Having developed the Data Product, we must make it accessible to various Data Product personas for management and consumption on the Data Product Hub and Metis. Below is the manifest file for the FS Accelerator Data Product.
 
 ```yaml
 
