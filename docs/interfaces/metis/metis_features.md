@@ -6,7 +6,7 @@ Metis collects metadata by utilizing the Scanner stack and connecting with other
 
 This feature lets you see summaries of data change events around data entities whenever they are modified. You can view these changes across all data products, assets and Resources that you own or focus on specific ones. Follow datasets, topics, or Resources relevant to your work to stay updated. You can view the latest updates, conversations, and tasks assigned in the ‘**All Activity**’ section.
 
-![Activities around Assets and Resources ](metis_features/activity_feeds.png)
+![Activities around Assets and Resources ](/interfaces/metis/metis_features/activity_feeds.png)
 
 <figcaption align = "center">  </figcaption>Activities around DataOS entities 
 
@@ -23,42 +23,42 @@ With activity feeds, you can easily accomplish the following:
 
 Metis's search experience surfaces results across data assets, ML models, pipelines, dashboards, Resources, and more. 
 
-![search_filter.png](metis_features/search_filter.png)
+![search_filter.png](/interfaces/metis/metis_features/search_filter.png)
 <figcaption align = "center"> Search </figcaption>
 
 Metis not only helps you find and access data using search criteria for your data products, assets and Resources, but it also allows you to **filter** them based on attributes such as tier, domain, source name, schema databases, tags, owners, etc. 
 
-![filter.png](metis_features/filter.png)
+![filter.png](/interfaces/metis/metis_features/filter.png)
 <figcaption align = "center"> Filter based on attributes </figcaption>
 
 ### **Advance Filter**
 This option empowers you to define complex search criteria, allowing you to find data products, assets and Resources that precisely match specific metadata properties using **And/OR** operators.
 
-![advance_filter.png](metis_features/advance_filter.png)
+![advance_filter.png](/interfaces/metis/metis_features/advance_filter.png)
 <figcaption align = "center"> Advance filter conditions </figcaption>
 
 ## Exploration
 
-### Data Products Details
+### **Data Products Details**
 
 ### **Data Asset Details**
 
 Users can get a quick preview of asset information on the side panel. 
 
-![Quick information for data asset](metis_features/assets_info.png)
+![Quick information for data asset](/interfaces/metis/metis_features/assets_info.png)
 <figcaption align = "center"> Quick information </figcaption>
 
 
 By clicking on the dataset name, a **dataset details** page opens up to further deep-dive into schemas, configuration, lineage, etc. Suppose you want to know more about the tables; you can further drill down to answer questions such as who created/updated it, what each column means, what type of data it contains, what transformations are applied, and which datasets participated in the transformations, etc. From there, Metis offers the option to explore your data further by navigating to the workbench.
 
-![assets_detail.png](metis_features/assets_detail.png)
+![assets_detail.png](/interfaces/metis/metis_features/assets_detail.png)
 <figcaption align = "center"> Detail information </figcaption>
 
 ### **DataOS Resource Details**
 
 Metis lists all Resources, providing overviews and specific information about each instance. Users can further view more details about the Resource, such as its configuration and runtime information. For example, in the case of workflow, information such as topology and operational information on jobs, nodes, logs, resource utilization, and the status of jobs is available.
 
-![resources_info.png](metis_features/resources_info.png)
+![resources_info.png](/interfaces/metis/metis_features/resources_info.png)
 <figcaption align = "center"> DataOS Resource information </figcaption>
 
 <aside class="callout">
@@ -66,7 +66,7 @@ Metis lists all Resources, providing overviews and specific information about ea
 
 </aside>
 
-For detailed information about each resource, please refer to [DataOS Resources Metadata Deep Dive](metis_ui_resources.md) 
+For detailed information about each resource, please refer to [DataOS Resources Metadata Deep Dive](/interfaces/metis/metis_ui_resources/) 
 
 To gain an understanding of DataOS Resources, users can access the documentation with the ‘**Learn**’ option on Metis UI.
 
@@ -103,7 +103,7 @@ Glossaries describe business definitions and context for data. With the help of 
 
 Once you add a category for your glossary as per the business requirement, you can add terms and descriptions to it and declare their synonyms. All these terms are available to be added as tags for your entities in the drop down list. This facilitates self-service analytics, as business users do not depend on data teams to identify their relevant data product, assets or Resources.
 
-![Adding business terms to your dataset](metis_features/adding_glossaries.png)
+![Adding business terms to your dataset](/interfaces/metis/metis_features/adding_glossaries.png)
 
 <figcaption align = "center">Adding business terms to your dataset</figcaption>
 
@@ -116,14 +116,14 @@ Once you add a category for your glossary as per the business requirement, you c
 
 The Mutually Exclusive Property in the system enables users to designate tag groups and glossaries as mutually exclusive. When a tag group `domain` is marked as mutually exclusive, it implies that a metadata entity can be tagged to belong to either a finance, marketing, or sales domain.  It cannot belong to two or more domains simultaneously. This ensures that the entity's categorization remains distinct and avoids overlapping categories.
 
-![mutually_excl.png](metis_features/mutually_excl.png)
+![mutually_excl.png](/interfaces/metis/metis_features/mutually_excl.png)
 <figcaption align = "center"> Mutually exclusive property </figcaption>
 
 ## Deleted Entity Metadata
 
 Metis keeps rich metadata for the entities, about their structures, descriptions, tags, owners, importance, etc. This metadata is also about lineage, usage, and profiling data. When an entity is deleted, you may lose all this valuable information and experience broken metadata. Metis supports soft deletion, so these entities are not removed from the Metis DB but marked as deleted. Metis lets you choose to show deleted entities’ metadata to understand dependencies and fix broken metadata issues. Once deleted, these entities will not surface in search and exploration.
 
-![Deleted data on Metis UI](metis_features/show_deleted.png)
+![Deleted data on Metis UI](/interfaces/metis/metis_features/show_deleted.png)
 
 <figcaption align = "center"> Deleted data on Metis UI </figcaption>
 
@@ -131,14 +131,14 @@ Metis keeps rich metadata for the entities, about their structures, descriptions
 
 Quickly understand the end-to-end journey of data by tracing its lineage across datasets. This lineage gives a **granular job-level view** to help you get the details of data flow across workflows/jobs and the datasets they produce. Additionally, you can learn about the other dependent datasets. Users can edit the lineage view to include other connected assets and Resources.
 
-![lineage_new.png](metis_features/lineage_new.png)
+![lineage_new.png](/interfaces/metis/metis_features/lineage_new.png)
 <figcaption align = "center"> Lineage view </figcaption>
 
 ## Notifications
 
 Metis allows users to define fine-grain notifications for alerts when a change is made to data entities. You can select owners and various roles to be notified. It provides native integration with Teams, Slack, MS Webhook, etc. that receives all the data changes happening in your organization through APIs. This will generate organization-specific notifications when a change is made to data entities.  It also introduces the ability to send email alerts. For example, send an email to the governance team when a "PII" tag is added to any data asset, or you find a change in the schema that can impact other datasets.
 
-![notifications.png](metis_features/notifications.png)
+![notifications.png](/interfaces/metis/metis_features/notifications.png)
 <figcaption align = "center"> Notifications </figcaption>
 
 <aside class="callout">Only users having Metis admin roles can configure the SMTP settings for sending emails. </aside>
@@ -148,7 +148,7 @@ Metis allows users to define fine-grain notifications for alerts when a change i
 
 Metis leverages Deequ, a Spark-powered profiling engine, for data monitoring, quality checks, and profiling at scale. DataOS now also extends support to other profiling engines, such as SQL-powered SODA.
 
-![profile.png](metis_features/profile.png)
+![profile.png](/interfaces/metis/metis_features/profile.png)
 <figcaption align = "center"> Profiling information </figcaption>
 
 ## Data Quality
@@ -157,7 +157,7 @@ It is important to ensure that you are working with trusted and appropriate data
 
 On Metis UI, You can check the quality of your datasets by viewing information about the business-specific validation rules applied, passed, or failed.
 
-![data_quality.png](metis_features/data_quality.png)
+![data_quality.png](/interfaces/metis/metis_features/data_quality.png)
 <figcaption align = "center"> Data Quality SLO </figcaption>
 
 
@@ -178,17 +178,17 @@ Metis also provides in-depth topology information for your workloads, enabling u
 
 **Topology** focuses on the logic applied to transform data and can be accessed through **Logical Plan** and **Physical Plan** options. For instance, a Flare job typically comprises Input sources, transformations (tasks), and Output sources. The links between Input and Output sources contribute to Lineage, while the steps within transformations are part of Topology. 
 
-![topology.png](metis_features/topology.png)
+![topology.png](/interfaces/metis/metis_features/topology.png)
 <figcaption align = "center"> Dag of transformations </figcaption>
 
 With the **Usage** option, you can find resource utilization when resources are over-allocated or underutilized, enhancing observability.
 
-![resource_usage.png](metis_features/resource_usage.png)
+![resource_usage.png](/interfaces/metis/metis_features/resource_usage.png)
 <figcaption align = "center"> Resource utilization </figcaption>
 
 ## Metadata Versioning
 
 This feature records the changes in metadata. Metis maintains the version history for data products, assets and Resources that can help in the debugging process. You can view the version history to see if a recent change led to some inconsistencies in the data.
 
-![meta_version.png](metis_features/meta_version.png)
+![meta_version.png](/interfaces/metis/metis_features/meta_version.png)
 <figcaption align = "center"> Metadata Versions </figcaption>

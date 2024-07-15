@@ -6,7 +6,7 @@ Other than stating the description and type for a dimension, you can use propert
 
 ## Properties
 
-### `name`
+### **`name`**
 
 Similar to naming entities and fields, following rules can be adopted when naming dimensions.
 
@@ -14,11 +14,11 @@ Similar to naming entities and fields, following rules can be adopted when namin
 - It can contain a letter, number, or ‘_’
 - It needs a minimum length of 2 characters and cannot exceed 128 characters.
 
-### `description`
+### **`description`**
 
 To better understand the defined dimension, descriptions can be added. They also add clarity around its purpose and usage.
 
-### `type`
+### **`type`**
 
 You can assign various types to a dimension. Dimension’s expected value type includes -
 
@@ -31,7 +31,7 @@ You can assign various types to a dimension. Dimension’s expected value type i
 | date | Use a date type for the dimension if the SQL expression expects to return a value of the type date. |
 | bool | Used when a dimension contains boolean values |
 
-### `sql_snippet`
+### **`sql_snippet`**
 
 You can add any valid SQL expression to define a dimension. A field, dimension, or measure must already be defined if referenced while defining a dimension.
 
@@ -49,7 +49,7 @@ entity:
        sql_snippet: day(current_date - created_on)
 ```
 
-### `sub_query`
+### **`sub_query`**
 
 Within the dimension, you can use the subquery feature to reference measures from other entities. 
 
@@ -104,6 +104,6 @@ ORDER BY total DESC
 LIMIT 5;
 ```
 
-### `hidden`
+### **`hidden`**
 
 Hidden can be used to hide a dimension from the User Interface. Dimensions mainly used for deriving another dimension or measure and not needed for exploration can be hidden.

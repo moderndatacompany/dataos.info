@@ -147,67 +147,67 @@ Once the metadata is updated, it becomes discoverable and accessible through the
 
 ## Incremental Jobs
 
-Computes only the changed rows or files of data since the last build, reducing overall computation and latency. Incremental Jobs only compute the rows or files of data that have changed since the last build. They are suitable for processing event data and datasets with frequent changes. Incremental jobs reduce overall computation and significantly decrease end-to-end latency compared to batch jobs. Moreover, compute costs for incremental jobs can be lower than batch jobs when dealing with high-scale datasets, as the amount of actual computation is minimized. By processing only new data, incremental jobs eliminate the need to redo analysis on large datasets where most information remains unchanged. For case scenarios on Incremental Jobs, refer to [here](./case_scenario/incremental_jobs.md).
+Computes only the changed rows or files of data since the last build, reducing overall computation and latency. Incremental Jobs only compute the rows or files of data that have changed since the last build. They are suitable for processing event data and datasets with frequent changes. Incremental jobs reduce overall computation and significantly decrease end-to-end latency compared to batch jobs. Moreover, compute costs for incremental jobs can be lower than batch jobs when dealing with high-scale datasets, as the amount of actual computation is minimized. By processing only new data, incremental jobs eliminate the need to redo analysis on large datasets where most information remains unchanged. For case scenarios on Incremental Jobs, refer to [here](/resources/stacks/flare/case_scenario/incremental_jobs).
 
 
 
 
-[Incremental Job](./case_scenario/incremental_jobs.md)
+[Incremental Job](/resources/stacks/flare/case_scenario/incremental_jobs/)
 
 ## Data Transformation
 
-[Read and write from Iceberg branch](./case_scenario/iceberg_branch_read_write.md)
+[Read and write from Iceberg branch](/resources/stacks/flare/case_scenario/iceberg_branch_read_write/)
 
-[Data Profiling Jobs](./case_scenario/data_profiling_jobs.md)
+[Data Profiling Jobs](/resources/stacks/flare/case_scenario/data_profiling_jobs/)
 
-[Data Quality Jobs (Assertions)](./case_scenario/data_quality_jobs.md)
+[Data Quality Jobs (Assertions)](/resources/stacks/flare/case_scenario/data_quality_jobs/)
 
-[Compression](./case_scenario/compression.md)
+[Compression](/resources/stacks/flare/case_scenario/compression/)
 
-[Merge Data](./case_scenario/merge_data.md)
+[Merge Data](/resources/stacks/flare/case_scenario/merge_data/)
 
-[Enrichment](./case_scenario/enrichment.md)
+[Enrichment](/resources/stacks/flare/case_scenario/enrichment/)
 
-[Merge Into Functionality](./case_scenario/merge_into_functionality.md)
+[Merge Into Functionality](/resources/stacks/flare/case_scenario/merge_into_functionality/)
 
-[Partitioning](./case_scenario/partitioning.md)
+[Partitioning](/resources/stacks/flare/case_scenario/partitioning/)
 
-[Partition Evolution](./case_scenario/partition_evolution.md)
+[Partition Evolution](/resources/stacks/flare/case_scenario/partition_evolution/)
 
-[Data Replay](./case_scenario/data_replay.md)
+[Data Replay](/resources/stacks/flare/case_scenario/data_replay/)
 
-[Concurrent Writes](./case_scenario/concurrent_writes.md)
+[Concurrent Writes](/resources/stacks/flare/case_scenario/concurrent_writes/)
 
-[Query Dataset for Job in Progress](./case_scenario/query_dataset_for_job_in_progress.md)
+[Query Dataset for Job in Progress](/resources/stacks/flare/case_scenario/query_dataset_for_job_in_progress/)
 
-[Bucketing](./case_scenario/bucketing.md)
+[Bucketing](/resources/stacks/flare/case_scenario/bucketing/)
 
-[Caching](./case_scenario/caching.md)
+[Caching](/resources/stacks/flare/case_scenario/caching/)
 
-[Job Optimization by Tuning](./case_scenario/job_optimization_by_tuning.md)
+[Job Optimization by Tuning](/resources/stacks/flare/case_scenario/job_optimization_by_tuning/)
 
-[Column Tagging](./case_scenario/column_tagging.md)
+[Column Tagging](/resources/stacks/flare/case_scenario/column_tagging/)
 
 ## Data Syndication
 
-[Syndication](./case_scenario/syndication.md)
+[Syndication](/resources/stacks/flare/case_scenario/syndication/)
 
 ## Flare Actions
 
 > The below functionality is only supported in the DataOS managed depot, Icebase
 > 
 
-[Delete from Dataset](./case_scenario/delete_from_dataset.md)
+[Delete from Dataset](/resources/stacks/flare/case_scenario/delete_from_dataset/)
 
-[Expire Snapshots](./case_scenario/expire_snapshots.md)
+[Expire Snapshots](/resources/stacks/flare/case_scenario/expire_snapshots/)
 
-[Remove Orphans](./case_scenario/remove_orphans.md)
+[Remove Orphans](/resources/stacks/flare/case_scenario/remove_orphans/)
 
-[Rewrite Manifest Files](./case_scenario/rewrite_manifest_files.md)
+[Rewrite Manifest Files](/resources/stacks/flare/case_scenario/rewrite_manifest_files/)
 
 ### **Rewrite Orphans**
 
-The `remove_orphans` [action](./configurations.md#remove_orphans) cleans up orphans files older than a specified time period. This action may take a long time to finish if you have lots of files in data and metadata directories. It is recommended to execute this periodically, but you may not need to execute this often. 
+The `remove_orphans` [action](/resources/stacks/flare/configurations#remove_orphans/) cleans up orphans files older than a specified time period. This action may take a long time to finish if you have lots of files in data and metadata directories. It is recommended to execute this periodically, but you may not need to execute this often. 
 
 <aside>
 
@@ -261,7 +261,7 @@ workflow:
 
 ### **Rewrite Dataset**
 
-The [`rewrite_dataset`](./configurations.md#rewrite_dataset) action provided by DataOS allows for the parallel compaction of data files in Iceberg tables using Flare. This action efficiently reduces the size of data files to meet the specified target file size in bytes, as defined in the YAML configuration.
+The [`rewrite_dataset`](/resources/stacks/flare/configurations/#rewrite_dataset) action provided by DataOS allows for the parallel compaction of data files in Iceberg tables using Flare. This action efficiently reduces the size of data files to meet the specified target file size in bytes, as defined in the YAML configuration.
 
 <details><summary>Case Scenario</summary>
 

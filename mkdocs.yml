@@ -6,23 +6,25 @@ theme:
     custom_dir: overrides
     language: en
     features:
-        - navigation.tabs
-        # - navigation.sections
-        # - navigation.expand
-        - navigation.footer
-        - navigation.indexes
-        - navigation.instant
-        - navigation.top
-        - navigation.tracking
-        - content.code.copy
-        - content.code.annotate
-        # - content.tabs.link
-        - content.tooltips
-#          - toc.follow
-#          - toc.integrate
-        - search.suggest
-        # - search.highlighting
-        - search.share
+      - navigation.instant 
+      - navigation.instant.progress
+      - navigation.tracking
+      - navigation.footer
+      - navigation.tabs
+      - navigation.tabs.sticky
+      - navigation.indexes
+      - toc.follow
+      - navigation.top
+      - content.code.copy
+      - content.code.annotate
+      - content.tooltips
+      - search.suggest
+      - search.share
+      # - navigation.sections
+      # - navigation.expand
+      # - content.tabs.link
+      # - search.highlighting
+      # - toc.integrate
     icon:
       admonition:
         note: octicons/tag-16
@@ -64,7 +66,6 @@ plugins:
     #     version: v0.2
 extra:
   generator: true
-  # section added by Manish
   analytics: 
     provider: google
     property: G-ZH4G0HKBQC
@@ -81,7 +82,6 @@ extra:
           data: 0
           note: >- 
             Thanks for your feedback!
-  # end of the section added by Manish
   annotate:
     json: [.s2]
   social:
@@ -136,51 +136,114 @@ markdown_extensions:
 
 #### Update for navigation tabs/options ####      
 nav:
-    - Home: index.md
+  - Home: 
+    - index.md
+    - Architecture: architecture/index.md
     - Resources:
-         - Overview: resources.md
-         - Bundle: resources/bundle.md
-         - Cluster: resources/cluster.md
-         - Compute: resources/compute.md
-         - Database: resources/database.md
-         - Depot: resources/depot.md
-         - 'Instance Secret': resources/instance_secret.md 
-         - Lakehouse: resources/lakehouse.md
-         - Monitor: resources/monitor.md
-         - Operator: resources/operator.md
-         - Pager: resources/pager.md
-         - Policy: resources/policy.md
-         - Secret: resources/secret.md
-         - Service: resources/service.md
-         - Stacks:
-              - Introduction: resources/stacks.md
-              - Beacon: resources/stacks/beacon.md
-              - Benthos: resources/stacks/benthos.md
-              - 'CLI Stack': resources/stacks/cli_stack.md
-              - Container: resources/stacks/container.md
-              - Data Toolbox: resources/stacks/data_toolbox.md
-              - Flare: resources/stacks/flare.md
-              - Scanner: resources/stacks/scanner.md
-              - Soda: resources/stacks/soda.md
-              - Steampipe: resources/stacks/steampipe.md
-         - Worker: resources/worker.md
-         - Workflow: resources/workflow.md 
-
-                 
+      - resources/index.md
+      - Types:
+        - resources/types/index.md
+        - Bundle: 
+          - resources/bundle/index.md
+        - Cluster: 
+          - resources/cluster/index.md
+        - Compute: 
+          - resources/compute/index.md
+        - Database: 
+          - resources/database/index.md
+        - Depot: 
+          - resources/depot/index.md
+        - Grant:
+          - resources/grant/index.md
+        - Instance Secret: 
+          - resources/instance_secret/index.md
+        - Lakehouse: 
+          - resources/lakehouse/index.md
+        # - Lens:
+        #   - resources/lens/index.md
+        - Monitor: 
+          - resources/monitor/index.md
+        - Operator: 
+          - resources/operator/index.md
+        - Pager: 
+          - resources/pager/index.md
+        - Policy: 
+          - resources/policy/index.md
+        - Secret: 
+          - resources/secret/index.md
+        - Service: 
+          - resources/service/index.md
+        - Stacks:
+          - resources/stacks/index.md
+          - Beacon: 
+            - resources/stacks/beacon/index.md
+          - Benthos: 
+            - resources/stacks/benthos/index.md
+          - CLI Stack: 
+            - resources/stacks/cli_stack/index.md
+          - Container: 
+            - resources/stacks/container/index.md
+          - Data Toolbox: 
+            - resources/stacks/data_toolbox/index.md
+          - DBT: 
+            - resources/stacks/dbt/index.md
+          - Flare: 
+            - resources/stacks/flare/index.md
+          - Scanner: 
+            - resources/stacks/scanner/index.md
+          - Soda: 
+            - resources/stacks/soda/index.md
+          - Steampipe: 
+            - resources/stacks/steampipe/index.md
+        - Worker: 
+          - resources/worker/index.md
+        - Workflow: 
+          - resources/workflow/index.md
+      - Characteristics: resources/characteristics.md
+      - Configuration: resources/manifest_attributes.md
+      - YAML files: resources/yaml_configuration.md       
     - Interfaces:
-         - Overview: interfaces.md
-         - Atlas: interfaces/atlas.md
-         - Audiences: interfaces/audiences.md
-         - Bifrost: interfaces/bifrost.md
-         - CLI: interfaces/cli.md
-         - Lens: interfaces/lens.md
-         - Metis: interfaces/metis.md
-         - Notebook: interfaces/notebook.md
-         - Operations: interfaces/operations.md
-         - Superset: interfaces/superset.md
-         - Workbench: interfaces/workbench.md        
-
-# to be hidden from the top navigation bar on the webpages
-    - Architecture: architecture.md
-    - Glossary: glossary.md
-    - Videos: videos.md
+      - interfaces/index.md
+      - Atlas:
+        - interfaces/atlas/index.md
+      - Audiences: 
+        - interfaces/audiences/index.md
+      - Bifrost: 
+        - interfaces/bifrost/index.md
+      - CLI: 
+        - interfaces/cli/index.md
+      - Lens: 
+        - interfaces/lens/index.md
+      - Metis: 
+        - interfaces/metis/index.md
+      - Notebook: 
+        - interfaces/notebook/index.md
+      - Operations: 
+        - interfaces/operations/index.md
+      - Superset: 
+        - interfaces/superset/index.md
+      - Workbench: 
+        - interfaces/workbench/index.md
+    - SDK: 
+      - api_docs/index.md
+      - DataOS Python SDK: api_docs/dataos_python_sdk.md
+      - DataOS PyFlare SDK: api_docs/dataos_pyflare.md
+      - DataOS ScalaFlare SDK: api_docs/dataos_scala_sdk/index.html
+      - DataOS Kotlin SDK: api_docs/dataos_kotlin_sdk/index.html
+  - Data Product: 
+    - products/data_product/index.md
+    - Data Product Lifecycle:
+      - Design: products/data_product/how_to_guides/design.md
+      - Build: products/data_product/how_to_guides/build.md
+      - Deploy: products/data_product/how_to_guides/deploy.md
+      - Iterate: products/data_product/how_to_guides/manage_and_iterate.md
+    - Recipes: 
+      - Create Data Product template using Cookiecutter: products/data_product/recipes/cookiecutter.md
+      - Deploy Data Product using CI/CD pipeline: products/data_product/recipes/ci_cd.md
+    - Templates:
+      - Smart Home Data Product: products/data_product/templates/smarthome.md
+      - FS Accelerator Data Product: products/data_product/templates/accelerator.md
+      - Sales 360 Data Product: products/data_product/templates/sales_360.md
+    - Configurations: products/data_product/configuration.md  
+  - Glossary: glossary/index.md
+  - Videos: videos/index.md

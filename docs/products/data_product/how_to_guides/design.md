@@ -1,0 +1,226 @@
+# How to design the Data Product?
+
+Data Product is designed by the Data Product owners. The design phase of the data product development process within DataOS is crucial for ensuring that the final product meets the requirements and delivers value. The phase involves several steps, from initial requirement analysis to the final design iteration. To illustrate this process, we will use a real-life use case: Traffic Source Analysis using Google Analytics.
+
+To design the Data Product follow the below steps:
+
+## Define Use-case
+
+The initial step in designing a Data Product is to define the use cases, a single data product can cater to multiple use cases and all the way around. The use case for this particular example is to analyze the Traffic Source using Google Analytics. This analysis provides actionable insights, enabling data-driven decision-making to optimize marketing strategies and improve business outcomes. The intended audience includes data analysts, marketing teams, business stakeholders, and technical teams responsible for data product development. The requirements for this use case include access to Google Analytics data, an ETL (Extract, Transform, Load) process to clean and transform raw data, a data model to structure the transformed data, and visualization tools to present the analysis results. Additionally, secure data handling and storage must be ensured throughout the process.
+
+## Data Understanding and Exploration
+
+To understand the data, you need to set up the data source connection to S3 using Instance Secret and Depot. Let’s see how can you set the data source connection using the Depot for S3.
+
+<aside class="callout">
+
+🗣 Note that, to be able to create the depot you must have the necessary permissions. You can contact the DataOS operator of your organization.
+
+</aside>
+
+### **Create an Instance Secret**
+
+To create a Depot without revealing the data source connection credentials, you first need to create an Instance-Secret resource which will hold credentials of the S3 source such as accesskeyid, awsaccesskeyid, awssecretaccesskey and secretkey. To create an Intsnace Secret simply compose a manifest file as shown below.
+
+```yaml
+name: s3depot-r 
+version: v1 
+type: instance-secret
+description: S3 credentials 
+layer: user 
+instance-secret:
+  type: key-value-properties
+  acl: r 
+  data:
+    accesskeyid: ${access-key-id} 
+    awsaccesskeyid: ${aws-access-key-id} 
+    awssecretaccesskey: ${aws-secret-access-key} 
+    secretkey: ${secret-key} 
+```
+
+To know more about the Instance Secret, [refer to this.](/resources/instance_secret/)
+
+### **Create a Depot**
+
+To create a Depot in DataOS, simply compose a manifest file for a Depot as shown below:
+
+```yaml
+name: s3depot
+version: v2alpha
+type: depot
+layer: user
+depot:
+  type: S3
+  description: AWS S3 Bucket
+  secrets:
+    - name: s3depot-r # instance-secret
+      allkeys: true
+
+    - name: s3depot-rw # instance-secret
+      allkeys: true
+  external: false
+  compute: query-default
+  spec:
+    bucket: ga-data
+
+```
+
+replace the placeholder with the actual values and apply it using the following command on the DataOS [Command Line Interface (CLI)](https://dataos.info/interfaces/cli/).
+
+```bash
+dataos-ctl apply -f ${{yamlfilepath}}
+```
+
+To know more about the Depot [refer to this](https://dataos.info/resources/depot/#apply-depot-yaml).
+
+### **Extract the Metadata**
+
+Now run the Depot scanner to extract the metadata from the data source. You can then access the metadata on Metis UI. The Scanner manifest file is shown below:
+
+```yaml
+version: v1
+name: scan-depot
+type: workflow
+tags:
+  - Scanner
+title: {{Scan snowflake-depot}}
+description: |
+  {{The purpose of this workflow is to scan S3 Depot.}}
+workflow:
+  dag:
+    - name: scan-snowflake-db
+      title: Scan snowflake db
+      description: |
+        {{The purpose of this job is to scan gateway db and see if the scanner works fine with an S3 type of depot.}}
+      tags:
+        - Scanner
+      spec:
+        stack: scanner:2.0
+        compute: runnable-default
+        stackSpec:
+          depot: {{s3depot}} # depot name
+```
+
+replace the placeholder with the actual values and apply it using the following command on the DataOS [Command Line Interface (CLI)](https://dataos.info/interfaces/cli/).
+
+```bash
+dataos-ctl apply -f ${{yamlfilepath}}
+```
+
+To know more about the Scanner, [refer to this](https://dataos.info/resources/stacks/scanner/).
+
+### **Explore the Data**
+
+Now for data exploration, you can query the data using the workbench. To query the data on the workbench without moving the data to Icebase, you first need to create a Minerva or a Themis cluster that will target the Depot. By applying the below manifest file, you can create the cluster.
+
+```yaml
+version: v1
+name: advancedminerva
+type: cluster
+description: cluster testing
+tags:
+  - cluster
+  - advancedminerva
+cluster:
+  compute: advanced-query
+  runAsUser: minerva-cluster
+  maintenance:
+    restartCron: '13 1 */2 * *'
+  minerva:
+    selector:
+      users:
+        - "**"
+      sources:
+        - "**"
+    replicas: 5
+    resources:
+      requests:
+        cpu: 14000m
+        memory: 52Gi
+    debug:
+      logLevel: INFO
+      trinoLogLevel: DEBUG
+    coordinatorEnvs:
+      CONF__config__query.max-memory-per-node: "38GB"
+      CONF__config__query.max-memory: "300GB"
+      CONF__config__query.client.timeout: 12m
+      CONF__config__query.max-execution-time: 25m #total time taken including queued time + execution time
+      CONF__config__query.max-run-time: 30m  #total completion time for query
+
+    workerEnvs:
+      CONF__config__query.max-memory-per-node: "38GB"
+      CONF__config__query.max-memory: "300GB"
+      CONF__config__query.client.timeout: 12m
+      CONF__config__query.max-execution-time: 25m    #total time taken including queued time + execution time
+      CONF__config__query.max-run-time: 30m        #total completion time for query
+
+    depots:
+      - address: dataos://icebase:default
+        properties:
+          iceberg.file-format: PARQUET
+          iceberg.compression-codec: GZIP
+          hive.config.resources: "/usr/trino/etc/catalog/core-site.xml"
+      - address: dataos://redshift:default
+      - address: dataos://lensdb:default
+      - address: dataos://gateway:public
+      - address: dataos://metisdb:public
+
+    catalogs:
+      - name: cache
+        type: memory
+        properties:
+          memory.max-data-per-node: "128MB"
+```
+
+replace the placeholder with the actual values and apply it using the following command on the DataOS [Command Line Interface (CLI)](https://dataos.info/interfaces/cli/). You can get the Depot address from the Metis.
+
+```bash
+dataos-ctl apply -f ${{yamlfilepath}}
+```
+
+To know more about the cluster, [refer to this](https://dataos.info/resources/cluster/#setting-up-a-cluster). 
+
+Now on Workbench, select your cluster and query the data.
+
+![workbench](/products/data_product/how_to_guides/workbench.png)
+
+To know more about Workbench, [refer to this](https://dataos.info/interfaces/workbench/).
+
+## **Data Product Architectural Design**
+
+Once you've explored the data, the next step is to plan the architectural design. This involves mapping out how different components, data pipelines, and workflows will integrate. The architecture design should be well-documented with diagrams and clear explanations of how each component interacts and the workflows they support. For data transformation tasks, tools like Flare jobs, SLOs (Service Level Objectives), and UI (User Interface) elements can be utilized to ensure efficient processing and visualization of data insights.
+
+```markdown
++-------------------------+                                     +-------------------+
+|                         |                                     |                   |
+|      Data Sources       +                                     |    Analytical     |
+|     (Google Analytics,  |                                     |    platforms      |
+|      Adobe Analytics,   |                                     |                   |
+|           etc.)         |                                     |                   |
++-----------+-------------+                                     +---------+---------+
+            |                                                             ^
+            |                                                             |
+            |                                                             |
+            |                                                             |
+            v                                                             |
++-----------+-------------+      +-----------+-----------+      +---------+---------+
+|                         |      |                       |      |                   |
+|         Depot           +----->+     Workflow, Worker, +----->+   Service Level   |
+|    (Data Connection)    |      |         Service       |      |    Objectives     |
++-------------------------+      | (Data Transformation) |      | (Quality Checks,  |
+                                 +-----------------------+      |  Policy, Monitor, |
+                                                                |  Pager)           |
+                                                                +-------------------+
+```
+
+For this particular example, the architectural design phase will also include the analytical elements and features that need to be included in the Traffic Source analysis. You can also define the input and output location in this step itself.
+
+## Performance target
+
+Performance targets refer to predefined goals or benchmarks related to the data product's performance metrics. Examples include response time goals, such as achieving 95% of queries processed within 500 milliseconds, throughput targets like sustaining 1000 tasks per minute during peak periods, and resource utilization limits ensuring CPU usage remains below 80%. Quality metrics focus on maintaining data accuracy at 99%, while scalability objectives aim to accommodate a 50% increase in data volume without requiring additional infrastructure. Availability standards are set at achieving 99.99% uptime monthly. These targets guide system design and optimization efforts, aligning technical capabilities with business requirements for consistent performance and reliability.
+
+## Validation and Iteration
+
+Once the Data Product design is finalized, it undergoes review sessions with key stakeholders and team members to ensure it meets all defined requirements and goals. Feedback from these sessions is carefully documented. If needed, the design is refined based on this feedback to improve its alignment with requirements. All changes made during this process are noted to ensure continuous improvement of the design phase.
+
+Once the design meets the requirements, the next phase involves building the Data Product.

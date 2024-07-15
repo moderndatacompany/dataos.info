@@ -1,0 +1,104 @@
+version: v1
+name: wf-city
+type: workflow
+owner: iamgroot
+tags:
+  - Tier.Gold
+  - mpulse.altamed
+description: The "wf-city" is a data pipeline focused on ingesting city data from icebase to icebase AltaMed healthcare provider. It involves stages such as data ingestion, tranformation and profiling.
+workflow:
+  title: City Data Pipeline
+  dag: 
+   - name: city-data-ingestion
+     title: City Dimension Ingester
+     description: The job ingests city data from dropzone into raw zone
+     spec:
+       tags:
+        - Connect
+        - City
+     stack: flare:4.0 # The job gets executed upon the Flare Stack, so its a Flare Job
+     compute: runnable-default
+
+        # Flare Stack-specific Section
+     stackSpec:
+        driver:
+          coreLimit: 1100m
+          cores: 1
+          memory: 1048m
+          job:
+            explain: true  #job section will contain explain, log-level, inputs, outputs and steps
+            logLevel: INFO
+
+            inputs:
+              - name: city_connect
+                query: SELECT
+                        *,
+                        date_format (NOW(), 'yyyyMMddHHmm') AS version1,
+                        NOW() AS ts_city1
+                      FROM
+                        icebase.retail.city 
+                options: 
+                  SSL: "true"
+                  driver: "io.trino.jdbc.TrinoDriver"
+                  cluster: "system"
+
+            outputs:
+              - name: city_connect
+                dataset: dataos://icebase:retail/city01?acl=rw
+                format: Iceberg
+                description: City data ingested from retail city
+                tags:
+                  - retail
+                  - city
+                options:
+                  saveMode: overwrite
+
+   - name: icebase-city-profiling
+     title: Profiler City01
+     description: The job performs profiling on city01 data
+     spec:
+       envs:
+         DISABLE_RAW_FILE_SYSTEM_PERMISSION_SET: "true"
+       tags:
+       - Fides
+       - City
+       - has_profile
+       stack: flare:5.0
+       compute: runnable-default
+       title: City Profile
+
+       persistentVolume: # Define Persistent Volume
+         name: persistent-v
+         directory: fides 
+       flare:
+         driver:
+           coreLimit: 2400m
+           cores: 2
+           memory: 3072m
+         executor:
+           coreLimit: 2400m
+           cores: 2
+           instances: 1
+           memory: 4096m
+         job:
+           explain: true
+           logLevel: WARN
+
+           inputs:
+             - name: profile_city
+               dataset: dataos://icebase:retail/city01 # Dataset Name
+               format: iceberg
+
+           profile:
+             # basic | intermediate | advanced
+             level: basic
+             filters:
+               - type: expression
+                 expression: "state_code='AL'" # Filter Expression
+
+         sparkConf:
+         - spark.sql.shuffle.partitions: 10
+         - spark.default.parallelism: 10
+
+    dependencies:
+      - city-data-ingestion

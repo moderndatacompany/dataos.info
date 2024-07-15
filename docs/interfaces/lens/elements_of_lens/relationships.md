@@ -4,7 +4,7 @@ The relationship makes it easy for users to query dimensions and measure from mu
 
 ## Properties
 
-### `type`
+### **`type`**
 
 It helps you define the type of relationship between joined entities. Following are the supported relationship types -
 
@@ -14,7 +14,7 @@ It helps you define the type of relationship between joined entities. Following 
 | 1:N | One to many relationships with the other entity. A record in one entity is associated with multiple records in another entity. |
 | N:1 | Many to one relationship with the other entity. Relationship between more than one record of an entity with a single record in another entity.  |
 
-### `field`
+### **`field`**
 
 The joining key of the main entity that will be used to join the entities.
 
@@ -31,7 +31,7 @@ entities:
 	    field: customer_index
 ```
 
-### `target`
+### **`target`**
 
 The target entity with which you want to join your main entity.
 
@@ -58,11 +58,11 @@ entities:
       verified: true
 ```
 
-### `description`
+### **`description`**
 
 The description helps build context among teams. You can add descriptions to share the context of established relationships and defined criteria.
 
-### `sql_snippet`
+### **`sql_snippet`**
 
 The sql_snippet property aids in adding further criteria in the join clause. You can use ‘and’ or ‘or’ keywords to add the requirements.
 

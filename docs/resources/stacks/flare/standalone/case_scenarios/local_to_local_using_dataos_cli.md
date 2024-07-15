@@ -8,7 +8,7 @@ This article is a step-by-step guide to run Flare Standalone using DataOS Comman
 
 DataOS CLI should be installed on your system. If it's not installed, please look at this document for the installation steps.
 
-[CLI](../../../../../interfaces/cli.md)
+[CLI](/interfaces/cli)
 
 ### **Operationalize Docker if you want to Read/Write IO Locally**
 
@@ -45,7 +45,7 @@ https://mockdataosnew.blob.core.windows.net/dropzone001/customer-resources/sampl
 - **MacOSX Users -** MacOSX users will only see one folder, i.e., `sampledata`. The other folder, `__MACOSX`, will automatically get hidden.
 - **Linux Users -** Linux users, will see two folders, i.e., `sampledata` and `__MACOSX.`
 
-![Untitled](./local_to_local_using_docker/untitled.png)
+![Untitled](/resources/stacks/flare/local_to_local_using_docker/untitled.png)
 
 ### **Run Sample Workflow**
 

@@ -4,7 +4,7 @@ Fields are columns with a direct one-to-one mapping with the columns of your und
 
 ## Properties
 
-### `name`
+### **`name`**
 
 You need to use the following naming convention for assigning names to fields -
 
@@ -12,7 +12,7 @@ You need to use the following naming convention for assigning names to fields -
 - It should contain a letter, number, or ‘_’
 - It should have a minimum of 2 characters and cannot exceed 128 characters.
 
-### `description`
+### **`description`**
 
 Using the description property, you can describe and provide a better understanding of a field.
 
@@ -28,7 +28,7 @@ entities:
       description: Unique product identifier
 ```
 
-### `type`
+### **`type`**
 
 The field supports the following column types -
 
@@ -54,7 +54,7 @@ entities:
 
 A column must be defined as a dimension and cast into apt type if its data type is different from the field type.
 
-### `column`
+### **`column`**
 
 In this field, the property specifies the column that directly maps to your underlying data table. You cannot add a custom SQL expression.
 
@@ -72,7 +72,7 @@ entities:
 			column: product_id
 ```
 
-### `primary`
+### **`primary`**
 
 This property sets the column as a primary key, enabling joins with other entities. This column will be used for matching records. It will essentially help avoid duplication of rows. 
 
