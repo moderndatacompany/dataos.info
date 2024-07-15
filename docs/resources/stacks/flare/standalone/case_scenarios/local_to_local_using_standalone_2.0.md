@@ -19,7 +19,7 @@ dataos-ctl version
 
 If CLI is not updated to the latest version, navigate to the below page.
 
-[CLI](../../../../../interfaces/cli.md)
+[CLI](/interfaces/cli)
 
 ### **Operationalize Docker, if you wanna Read/Write IO Locally**
 
@@ -35,12 +35,12 @@ Flare Standalone uses Scala Programming Language. In case you don’t have any i
 
 1. Download the `flare-standalone-3.zip` folder provided below.
 
-[flare-standalone-3.zip](./local_to_local_using_standalone_2.0/flare_standalone_3.zip)
+[flare-standalone-3.zip](/resources/stacks/flare/local_to_local_using_standalone_2.0/flare_standalone_3.zip)
 
 1. Extract the downloaded `flare-standalone-3.zip` file. It contains only one folder by the name `standalone`. Open the code editor inside the `flare-standalone-3` folder.
 2. Now the scenario looks like the image below, where you have opened the code-editor inside the `flare-standalone-3` folder which contains the `standalone` folder which further contains one folder by the name `default` directory having the `transactions` data and another file by the name `local-read-write.yaml`.
 
-![Untitled](./local_to_local_using_standalone_2.0/untitled.png)
+![Untitled](/resources/stacks/flare/local_to_local_using_standalone_2.0/untitled.png)
 
 ### **Adding details to the Flare Standalone Workflow YAML**
 
@@ -118,9 +118,9 @@ dataos-ctl develop start -s flare:3.0 -i rubiklabs/flare3:6.0.93 -f standalone/l
 
 1. Since we have exposed the Spark Web UI on port 14042, we can type [localhost:14042](http://localhost:14042) in any web browser to check the status of the job
 
-![Untitled](../running_flare_standalone/untitled_1.png)
+![Untitled](/resources/stacks/flare/running_flare_standalone/untitled_1.png)
 
-To know more about the various sections of the Spark UI and what each one of them signifies, navigate to the [link](../../optimizations/inspecting_the_spark_ui.md)
+To know more about the various sections of the Spark UI and what each one of them signifies, navigate to the [link](/resources/stacks/flare/optimizations/inspecting_the_spark_ui)
 
 1. On successful execution, the Scala command line shell will open as below:
 
@@ -145,7 +145,7 @@ Type :help for more information.
 
 1. You can check the `dataout` folder under which the data is written.
 
-![Untitled](../running_flare_standalone/untitled_2.png)
+![Untitled](/resources/stacks/flare/running_flare_standalone/untitled_2.png)
 
 ### **Exploring Spark Commands in Scala Interactive Shell**
 

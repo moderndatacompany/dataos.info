@@ -1,0 +1,59 @@
+# RESOURCE META SECTION
+# Attributes common across all DataOS Resources
+name: ${{resource_name}} # Name of the Resource (e.g., my-first-monitor)
+version: v1alpha # Manifest version of the Resource
+type: monitor # Type of Resource
+tags: # Tags for categorizing the Resource
+  - ${{tag_example_1}} # Tags (e.g., dataos:monitor)
+  - ${{tag_example_2}} # Additional tags (e.g., dataos:workspace:curriculum)
+description: ${{resource_description}} # Description of the resource (e.g., Common attributes applicable to all DataOS Resources)
+owner: ${{resource_owner}} # Owner of the Resource (e.g., iamgroot)
+layer: ${{resource_layer}} # DataOS Layer (e.g., user, system)
+
+# MONITOR-SPECIFIC SECTION
+# Attributes specific to Monitor resource-type
+monitor:
+  schedule: '*/2 * * * *' # Cron schedule for the monitor
+  properties:
+    alpha: beta # Example property
+  timezone: ${{timezone}} # Timezone for the monitor (e.g., UTC)
+  incident: # Incident configuration (mandatory)
+    incident_type: field_profiling # Type of incident
+    asset: output_1 # Asset associated with the incident
+    column: column_2 # Column associated with the incident
+    severity: critical # Severity of the incident
+  type: equation_monitor # Type of monitor (mandatory)
+  equation:
+    leftExpression: # Left side of the equation (mandatory)
+      queryCoefficient: 1 # Coefficient for the query (mandatory)
+      queryConstant: 0 # Constant for the query (mandatory)
+      query: # Query configuration (mandatory)
+        type: prom # Type of query (mandatory)
+        cluster: thanos # Cluster for the query (mandatory)
+        ql: certmanager_certificate_expiration_timestamp_seconds{container="cert-manager-controller", endpoint="9402", exported_namespace="caretaker", instance="10.212.4.9:9402", issuer_group="cert-manager.io", issuer_kind="ClusterIssuer", issuer_name="ca", job="cert-manager-ds", name="caretaker-api-cert", namespace="cert-manager", pod="cert-manager-ds-7d8cc489dd-d46sb", service="cert-manager-ds"} - time() # Query language (mandatory)
+    rightExpression: # Right side of the equation (mandatory)
+      queryCoefficient: 1 # Coefficient for the query (mandatory)
+      queryConstant: 7766092 # Constant for the query (mandatory)
+      query: # Query configuration (mandatory)
+        type: trino # Type of query (mandatory)
+        cluster: themis # Cluster for the query (mandatory)
+        ql: SELECT metric_value FROM icebase.soda.soda_check_metrics_01 WHERE metric_name = 'missing_count' ORDER BY timestamp DESC LIMIT 1; # Query language (mandatory)
+      operator: equals # Operator for the equation (mandatory)
+  report: 
+    source: # Report source configuration (mandatory)
+      dataOSInstance:
+        path: /collated/api/v1/reports/resources/runtime?id=workflow:v1:snowflakescannerdepotis:public # Path for the report (mandatory)
+  conditions: # Conditions for the monitor (mandatory)
+    - valueComparison:
+        observationType: runtime # Type of observation (mandatory)
+        valueJqFilter: '.value' # JQ filter for the value (mandatory)
+        operator: equals # Operator for comparison (mandatory)
+        value: running # Value for comparison (mandatory)
+      durationComparison: 
+        observationType: runtime # Type of observation (mandatory)
+        selectorJqFilter: # Selector JQ filter (mandatory)
+        startedJqFilter: # Started JQ filter (mandatory)
+        completedJqFilter: # Completed JQ filter (mandatory)
+        operator: # Operator for comparison (mandatory)
+        value: # Value for comparison (mandatory)
+  runAsUser: iamgroot # User to run the monitor as (e.g., iamgroot)

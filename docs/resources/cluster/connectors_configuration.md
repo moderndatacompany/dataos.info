@@ -8,7 +8,7 @@ To define connectors for data sources in Minerva, you have the following options
 
 ### **Depot**
 
-If you have already defined Depots to access data sources, you can specify the addresses of these Depots in the DataOS YAML file to configure connectors. Additionally, you can include additional properties to optimize Minerva's performance. To know more about depots, click [here.](../depot.md)
+If you have already defined Depots to access data sources, you can specify the addresses of these Depots in the DataOS YAML file to configure connectors. Additionally, you can include additional properties to optimize Minerva's performance. To know more about depots, click [here.](/resources/depot)
 
 ### **Catalog** 
 This approach involves providing the name of the connector and its associated properties, such as the connection URL, username, and password for accessing the data source.
@@ -78,6 +78,6 @@ cluster:
 
 Once you have completed the setup of the connector configurations, you can access your data assets for a specific data source directly from DataOS Workbench. Workbench utilizes Minerva, which supports full SQL, and provides you with an intuitive interface for accessing your data sources as catalogs and exploring schemas.
 
-![accessing_catalogs_from_workbench](./connectors_configuration/minerva_workbench_catalog_table.png)
+![accessing_catalogs_from_workbench](/resources/cluster/connectors_configuration/minerva_workbench_catalog_table.png)
 
-To learn more, refer to the [Workbench](../../interfaces/workbench.md) documentation.
+To learn more, refer to the [Workbench](/interfaces/workbench) documentation.

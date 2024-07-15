@@ -4,7 +4,7 @@ Fastbase is a depot type within the DataOS that supports Apache Pulsar format fo
 
 ## Commands in DataOS
 
-DataOS allows users to manage Fastbase depots effortlessly using CLI. This functionality is made possible by the powerful API capabilities of [Depot Service](../depot.md#depot-service).
+DataOS allows users to manage Fastbase depots effortlessly using CLI. This functionality is made possible by the powerful API capabilities of [Depot Service](/resources/depot#depot-service).
 
 
 The primary command for interacting with the Fastbase Depot in DataOS is `dataos-ctl fastbase ${{sub-command}}`. Using this command, you can perform various operations related to Fastbase.
@@ -95,7 +95,7 @@ dataos-ctl dataset -a dataos://fastbase:default/${{topic-name}}  get
 
 Messages in Pulsar are published to topics and organized in a three-level hierarchy structure.
 
-![Pulsar Hierarchy](./fastbase/hierarchy.png)
+![Pulsar Hierarchy](/resources/depotfastbase/hierarchy.png)
 
 <center><i>Three Level Hierarchy Structure in Pulsar</i></center>
 

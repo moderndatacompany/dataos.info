@@ -11,15 +11,15 @@ metrics:
 
 The default metrics configuration is to expose Prometheus metrics on the service-wide HTTP endpoint at the endpoints `/metrics` and `/stats`.
 
-### Timings[](https://www.benthos.dev/docs/components/metrics/about#timings)
+### Timings
 
 It's worth noting that timing metrics within Benthos are measured in nanoseconds and are therefore named with a `_ns` suffix. However, some exporters do not support this level of precision and are downgraded, or have the unit converted for convenience. In these cases the exporter documentation outlines the conversion and why it is made.
 
-## Metric Names[](https://www.benthos.dev/docs/components/metrics/about#metric-names)
+## Metric Names
 
 Each major Benthos component type emits one or more metrics with the name prefixed by the type. These metrics are intended to provide an overview of behaviour, performance and health. Some specific component implementations may provide their own unique metrics on top of these standardised ones, these extra metrics can be found listed on their respective documentation pages.
 
-### Inputs[](https://www.benthos.dev/docs/components/metrics/about#inputs)
+### Inputs
 
 - `input_received`: A count of the number of messages received by the input.
 - `input_latency_ns`: Measures the roundtrip latency in nanoseconds from the point at which a message is read up to the moment the message has either been acknowledged by an output, has been stored within a buffer, or has been rejected (nacked).
@@ -28,7 +28,7 @@ Each major Benthos component type emits one or more metrics with the name prefix
 - `input_connection_failed`: A count of the number of times the input has failed to establish a connection to the target source.
 - `input_connection_lost`: A count of the number of times the input has lost a previously established connection to the target source.
 
-### Buffers[](https://www.benthos.dev/docs/components/metrics/about#buffers)
+### Buffers
 
 - `buffer_received`: A count of the number of messages written to the buffer.
 - `buffer_batch_received`: A count of the number of message batches written to the buffer.
@@ -37,7 +37,7 @@ Each major Benthos component type emits one or more metrics with the name prefix
 - `buffer_latency_ns`: Measures the roundtrip latency in nanoseconds from the point at which a message is read from the buffer up to the moment it has been acknowledged by the output.
 - `batch_created`: A count of each time a buffer-level batch has been created using a batching policy. Includes a label `mechanism` describing the particular mechanism that triggered it, one of; `count`, `size`, `period`, `check`.
 
-### Processors[](https://www.benthos.dev/docs/components/metrics/about#processors)
+### Processors
 
 - `processor_received`: A count of the number of messages the processor has been executed upon.
 - `processor_batch_received`: A count of the number of message batches the processor has been executed upon.
@@ -46,7 +46,7 @@ Each major Benthos component type emits one or more metrics with the name prefix
 - `processor_error`: A count of the number of times the processor has errored. In cases where an error is batch-wide the count is incremented by one, and therefore would not match the number of messages.
 - `processor_latency_ns`: Latency of message processing in nanoseconds. When a processor acts upon a batch of messages this latency measures the time taken to process all messages of the batch.
 
-### Outputs[](https://www.benthos.dev/docs/components/metrics/about#outputs)
+### Outputs
 
 - `output_sent`: A count of the number of messages sent by the output.
 - `output_batch_sent`: A count of the number of message batches sent by the output.
@@ -57,7 +57,7 @@ Each major Benthos component type emits one or more metrics with the name prefix
 - `output_connection_failed`: A count of the number of times the output has failed to establish a connection to the target sink.
 - `output_connection_lost`: A count of the number of times the output has lost a previously established connection to the target sink.
 
-### Caches[](https://www.benthos.dev/docs/components/metrics/about#caches)
+### Caches
 
 All cache metrics have a label `operation` denoting the operation that triggered the metric series, one of; `add`, `get`, `set` or `delete`.
 
@@ -67,31 +67,31 @@ All cache metrics have a label `operation` denoting the operation that trigger
 - `cache_not_found`: A count of the number of get operations that yielded no value due to the item not being found. This count is separate from `cache_error`.
 - `cache_duplicate`: A count of the number of add operations that were aborted due to the key already existing. This count is separate from `cache_error`.
 
-### Rate Limits[](https://www.benthos.dev/docs/components/metrics/about#rate-limits)
+### Rate Limits
 
 - `rate_limit_checked`: A count of the number of times the rate limit has been probed.
 - `rate_limit_triggered`: A count of the number of times the rate limit has been triggered by a probe.
 - `rate_limit_error`: A count of the number of times the rate limit has errored when probed.
 
-## Metric Labels[](https://www.benthos.dev/docs/components/metrics/about#metric-labels)
+## Metric Labels
 
 The standard metric names are unique to the component type, but a benthos config may consist of any number of component instantiations. In order to provide a metrics series that is unique for each instantiation Benthos adds labels (or tags) that uniquely identify the instantiation. These labels are as follows:
 
-### `path`[](https://www.benthos.dev/docs/components/metrics/about#path)
+### `path`
 
 The `path` label contains a string representation of the position of a component instantiation within a config in a format that would locate it within a Bloblang mapping, beginning at `root`. This path is a best attempt and may not exactly represent the source component position in all cases and is intended to be used for assisting observability only.
 
-This is the highest cardinality label since paths will change as configs are updated and expanded. It is therefore worth removing this label with a [mapping](https://www.benthos.dev/docs/components/metrics/about#metric-mapping) in cases where you wish to restrict the number of unique metric series.
+This is the highest cardinality label since paths will change as configs are updated and expanded. It is therefore worth removing this label with a [mapping](/resources/stacks/benthos/components/metrics/about/#metric-mapping) in cases where you wish to restrict the number of unique metric series.
 
-### `label`[](https://www.benthos.dev/docs/components/metrics/about#label)
+### `label`
 
 The `label` label contains the unique label configured for a component emitting the metric series, or is empty for components that do not have a configured label. This is the most useful label for uniquely identifying a series for a component.
 
-### `stream`[](https://www.benthos.dev/docs/components/metrics/about#stream)
+### `stream`
 
 The `stream` label is present in a metric series emitted from a stream config executed when Benthos is running in streams mode, and is populated with the stream name.
 
-## Example[](https://www.benthos.dev/docs/components/metrics/about#example)
+## Example
 
 The following Benthos configuration:
 
@@ -138,7 +138,7 @@ output_latency_ns{label="bar",path="root.output"}
 output_sent{label="bar",path="root.output"}
 ```
 
-## Metric Mapping[](https://www.benthos.dev/docs/components/metrics/about#metric-mapping)
+## Metric Mapping
 
 Since Benthos emits a large variety of metrics it is often useful to restrict or modify the metrics that are emitted. This can be done using the Bloblang mapping language in the field `metrics.mapping`. This is a mapping executed for each metric that is registered within the Benthos service and allows you to delete an entire series, modify the series name and delete or modify individual labels.
 
@@ -174,10 +174,10 @@ metrics:
 
 |Name|Category|
 |---|---|
-|[aws_cloudwatch](./metrics/aws_cloudwatch.md)|AWS|
-|[influxdb](./metrics/influxdb.md)|InfluxDB|
-|[json_api](./metrics/json_api.md)|JSON|
-|[logger](./metrics/logger.md)|Logger|
-|[none](./metrics/none.md)|None|
-|[prometheus](./metrics/prometheus.md)|Prometheus|
-|[statsd](./metrics/statsd.md)|StatsD|
+|[aws_cloudwatch](/resources/stacks/benthos/components/metrics/aws_cloudwatch/)|AWS|
+|[influxdb](/resources/stacks/benthos/components/metrics/influxdb/)|InfluxDB|
+|[json_api](/resources/stacks/benthos/components/metrics/json_api/)|JSON|
+|[logger](/resources/stacks/benthos/components/metrics/logger/)|Logger|
+|[none](/resources/stacks/benthos/components/metrics/none/)|None|
+|[prometheus](/resources/stacks/benthos/components/metrics/prometheus/)|Prometheus|
+|[statsd](/resources/stacks/benthos/components/metrics/statsd/)|StatsD|

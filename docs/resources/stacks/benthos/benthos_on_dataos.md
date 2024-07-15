@@ -72,7 +72,7 @@ service:
     - ${{service}}
 ```
 
-For a deeper understanding of Service and its associated YAML configurations, please refer to the [Service](../../service.md) page.
+For a deeper understanding of Service and its associated YAML configurations, please refer to the [Service](/resources/service) page.
 
 #### **Configuring Benthos Stack-specific Section**
 
@@ -90,7 +90,7 @@ benthos:
   output:
     ${{output-component}}
 ```
-The Benthos Stack-specific Section comprises of several components each of which have been elaborated in detail on the [components](./components.md) page.
+The Benthos Stack-specific Section comprises of several components each of which have been elaborated in detail on the [components](/resources/stacks/benthos/components) page.
 
 Let's break down each component:
 
@@ -106,7 +106,7 @@ http_client:
     Content-Type: ${{application/JSON}}
 ```
 
-You can refer to the `http_client` [input](./components/inputs/http_client.md) documentation for more details on available configuration options.
+You can refer to the `http_client` [input](/resources/stacks/benthos/components/inputs/http_client) documentation for more details on available configuration options.
 
 ##### **Pipeline Component**
 
@@ -127,7 +127,7 @@ pipeline:
         name = this.results.0.id.name
         city = this.results.0.location.city
 ```
-In this example, the `bloblang` processor is applied to the data stream. It extracts specific fields from the input data and assigns them to variables for further processing. Feel free to explore the available processors and their configurations in the Benthos [Processors](./components/processors.md) documentation.
+In this example, the `bloblang` processor is applied to the data stream. It extracts specific fields from the input data and assigns them to variables for further processing. Feel free to explore the available processors and their configurations in the Benthos [Processors](/resources/stacks/benthos/components/processors) documentation.
 
 ##### **Output Component**
 
@@ -159,7 +159,7 @@ output:
 
 In this example, the `output` is configured to use the `broker` pattern with a `fan_out` strategy. The data will be sent to both the `dataos_depot` plugin, specifically to the `fastbase:default/test007` address, and the `stdout` output for logging purposes.
 
-Feel free to explore the available output options and their configurations in the Benthos [outputs](./components/output.md) documentation.
+Feel free to explore the available output options and their configurations in the Benthos [outputs](/resources/stacks/benthos/components/output) documentation.
 
 ### **Apply the YAML file**
 

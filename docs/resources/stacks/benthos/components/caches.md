@@ -35,16 +35,16 @@ You can find out more about resources in this document.
 
 |Name|Tags|
 |---|---|
-|[aws_dyanamodb](./caches/aws_dyanamodb.md)|AWS|
-|[aws_s3](./caches/aws_s3.md)|AWS|
-|[couchbase](./caches/couchbase.md)|Couchbase|
-|[file](./caches/file.md)|Local|
-|[gcp_cloud_storage](./caches/gcp_cloud_storage.md)|GCP|
-|[memcached](./caches/memcached.md)|Memcached|
-|[memory](./caches/memory.md)|Memory|
-|[mongodb](./caches/mongodb.md)|MongoDB|
-|[multilevel](./caches/multilevel.md)|Multiple Cache Level|
-|[redis](./caches/redis.md)|Redis|
-|[ristretto](./caches/ristretto.md)|Ristretto|
+|[aws_dyanamodb](/resources/stacks/benthos/components/caches/aws_dyanamodb/)|AWS|
+|[aws_s3](/resources/stacks/benthos/components/caches/aws_s3/)|AWS|
+|[couchbase](/resources/stacks/benthos/components/caches/couchbase/)|Couchbase|
+|[file](/resources/stacks/benthos/components/caches/file/)|Local|
+|[gcp_cloud_storage](/resources/stacks/benthos/components/caches/gcp_cloud_storage/)|GCP|
+|[memcached](/resources/stacks/benthos/components/caches/memcached/)|Memcached|
+|[memory](/resources/stacks/benthos/components/caches/memory/)|Memory|
+|[mongodb](/resources/stacks/benthos/components/caches/mongodb/)|MongoDB|
+|[multilevel](/resources/stacks/benthos/components/caches/multilevel/)|Multiple Cache Level|
+|[redis](/resources/stacks/benthos/components/caches/redis/)|Redis|
+|[ristretto](/resources/stacks/benthos/components/caches/ristretto/)|Ristretto|
 
 </center>

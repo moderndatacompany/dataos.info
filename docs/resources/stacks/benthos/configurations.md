@@ -72,7 +72,7 @@ tracer:
 shutdown_timeout: 20s
 ```
 
-Most of these represent a section type, which you can read about in more detail in [this document.](./components.md)
+Most of these represent a section type, which you can read about in more detail in [this document](/resources/stacks/benthos/components/).
 
 These types are hierarchical. For example, an `input` can have a list of child `processor` types attached to it, which in turn can have their own `processor` children.
 
@@ -80,11 +80,11 @@ This is powerful but can potentially lead to large and cumbersome configuration 
 
 ## Testing
 
-For guidance on how to write and run unit tests for your configuration files, read this [guide.](./configurations/unit_testing.md)
+For guidance on how to write and run unit tests for your configuration files, read this [guide.](/resources/stacks/benthos/configurations/unit_testing/)
 
 ## Customizing Your Configuration
 
-Sometimes it's useful to write a configuration where certain fields can be defined during deployment. For this purpose, Benthos supports [environment variable interpolation](./configurations/interpolation.md), allowing you to set fields in your config with environment variables like so:
+Sometimes it's useful to write a configuration where certain fields can be defined during deployment. For this purpose, Benthos supports [environment variable interpolation](/resources/stacks/benthos/configurations/interpolation/), allowing you to set fields in your config with environment variables like so:
 
 ```yaml
 input:
@@ -99,7 +99,7 @@ This is very useful for sharing configuration files across different deployment 
 
 ## Reusing Configuration Snippets
 
-Sometimes it's necessary to use a rather large section multiple times. Instead of copy/pasting the configuration or using YAML anchors, you can define your section [as a resource](./configurations/resources.md) (this is not a DataOS resource).
+Sometimes it's necessary to use a rather large section multiple times. Instead of copy/pasting the configuration or using YAML anchors, you can define your section [as a resource](/resources/stacks/benthos/configurations/resources/) (this is not a DataOS resource).
 
 In the following example, we want to make an HTTP request with our payloads. Occasionally the payload might get rejected due to garbage within its contents, and so we catch these rejected requests, attempt to "cleanse" the contents, and try to make the same HTTP request again. Since the HTTP request section is quite large (and likely to change over time), we make sure to avoid duplicating it by defining it as a resource `get_foo`:
 
@@ -170,13 +170,13 @@ Or:
 benthos -r ./production/request.yaml -c ./config.yaml
 ```
 
-These flags also support wildcards, which allows you to import an entire directory of resource files like `benthos -r "./staging/*.yaml" -c ./config.yaml`. You can find out more about configuration resources in the [resources document.](./configurations/resources.md)
+These flags also support wildcards, which allows you to import an entire directory of resource files like `benthos -r "./staging/*.yaml" -c ./config.yaml`. You can find out more about configuration resources in the [resources document](/resources/stacks/benthos/configurations/resources/).
 
 ### **Templating**
 
 Resources can only be instantiated with a single configuration, which means they aren't suitable for cases where the configuration is required in multiple places but with slightly different parameters, ugh!
 
-But hey, why don't you chill out? Benthos has a (currently experimental) alternative feature called templates, with which it's possible to define a custom configuration schema and a template for building a configuration from that schema. You can read more about templates [in this guide.](./configurations/templating.md)
+But hey, why don't you chill out? Benthos has a (currently experimental) alternative feature called templates, with which it's possible to define a custom configuration schema and a template for building a configuration from that schema. You can read more about templates [in this guide](/resources/stacks/benthos/configurations/templating/).
 
 ## Reloading
 
@@ -282,38 +282,38 @@ This option takes effect after the `shutdown_delay` duration has passed if tha
 
 Learn more about these configurations in the pages given below:
 
-[Resources](./configurations/resources.md)
+[Resources](/resources/stacks/benthos//configurations/resources/)
 
-[Message Batching](./configurations/message_batching.md)
+[Message Batching](/resources/stacks/benthos/configurations/message_batching/)
 
-[Window Processing](./configurations/window_processing.md)
+[Window Processing](/resources/stacks/benthos/configurations/window_processing/)
 
-[Metadata](./configurations/metadata.md)
+[Metadata](/resources/stacks/benthos/configurations/metadata/)
 
-[Error Handling](./configurations/error_handling.md)
+[Error Handling](/resources/stacks/benthos/configurations/error_handling/)
 
-[Interpolation](./configurations/interpolation.md)
+[Interpolation](/resources/stacks/benthos/configurations/interpolation/)
 
-[Secrets](./configurations/secrets.md)
+[Secrets](/resources/stacks/benthos/configurations/secrets/)
 
-[Fields Paths](./configurations/fields_paths.md)
+[Fields Paths](/resources/stacks/benthos/configurations/fields_paths/)
 
-[Processing Pipelines](./configurations/processing_pipelines.md)
+[Processing Pipelines](/resources/stacks/benthos/configurations/processing_pipelines/)
 
-[Unit Testing](./configurations/unit_testing.md)
+[Unit Testing](/resources/stacks/benthos/configurations/unit_testing/)
 
-[Templating](./configurations/templating.md)
+[Templating](/resources/stacks/benthos/configurations/templating/)
 
-[Dynamic Inputs and Outputs](./configurations/dynamic_inputs_and_outputs.md)
+[Dynamic Inputs and Outputs](/resources/stacks/benthos/configurations/dynamic_inputs_and_outputs/)
 
-[Using CUE](./configurations/using_cue.md)
+[Using CUE](/resources/stacks/benthos/configurations/using_cue/)
 
-[Monitoring](./configurations/monitoring.md)
+[Monitoring](/resources/stacks/benthos/configurations/monitoring/)
 
-[Performance Tuning](./configurations/performance_tuning.md)
+[Performance Tuning](/resources/stacks/benthos/configurations/performance_tuning/)
 
-[Synchronous Responses](./configurations/synchronous_responses.md)
+[Synchronous Responses](/resources/stacks/benthos/configurations/synchronous_responses/)
 
-[Cloud Credentials](./configurations/cloud_credentials.md)
+[Cloud Credentials](/resources/stacks/benthos/configurations/cloud_credentials/)
 
-[Streams Mode](./configurations/streams_mode.md)
+[Streams Mode](/resources/stacks/benthos/configurations/streams_mode/)

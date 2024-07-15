@@ -22,7 +22,7 @@ WARNING: Although the configuration spec of this component is stable the format 
 
 |Name|Tags|
 |---|---|
-|[gcp_cloudtrace](./tracers/gcp_cloudtrace.md)|GCP|
-|[jaeger](./tracers/jaeger.md)|Jaeger|
-|[none](./tracers/none.md)|None|
-|[open_telemetry_collector](./tracers/open_telemetry_collector.md)|Open Telemetry Collector|
+|[gcp_cloudtrace](/resources/stacks/benthos/components/tracers/gcp_cloudtrace/)|GCP|
+|[jaeger](/resources/stacks/benthos/components/tracers/jaeger/)|Jaeger|
+|[none](/resources/stacks/benthos/components/tracers/none/)|None|
+|[open_telemetry_collector](/resources/stacks/benthos/components/tracers/open_telemetry_collector/)|Open Telemetry Collector|

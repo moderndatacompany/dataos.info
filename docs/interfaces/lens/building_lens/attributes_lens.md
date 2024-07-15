@@ -71,7 +71,7 @@ The entities are the core components that interact with different aspects of you
 | relationships | Defines the relationship of entities with other entities. An entity can be joined to other entities and have one-to-one, one-to-many, or many-to-one relationships. |
 | extends | This allows you to extend an existing entity to use all declared elements of the entity. |
 
-### SQL
+### **SQL**
 
 This section defines the query to map identified entity with physical data.
 
@@ -82,7 +82,7 @@ This section defines the query to map identified entity with physical data.
 | tables | Tables that are referred to in the supplied SQL query |
 | lenses | Lenses that are referred to in the supplied SQL query |
 
-### Fields
+### **Fields**
 
 **Fields** contain direct mappings to the underlying data source columns. Mention all the columns in the field that directly map to your underlying table.
 
@@ -98,7 +98,7 @@ This section defines the query to map identified entity with physical data.
 | column |  | Maps your field to the column in the physical table |
 | primary |  | Use this property to explicitly state whether the field needs to be considered a primary key. |
 
-### Dimensions
+### **Dimensions**
 
 **Dimensions** are columns containing qualitative data; they are groupable and can be used to query measures to varying levels of granularity. Dimensions can be:
 
@@ -118,7 +118,7 @@ This section defines the query to map identified entity with physical data.
 | sub_query |  | Allows referencing measures from other entities. It’s of boolean type. |
 | hidden |  | It will hide the dimension from the user interface if set to true. |
 
-### Measures
+### **Measures**
 
 **Measures** are essentially aggregated numerical values that stem from the quantitative columns of the underlying table. They are not limited to simple aggregations; you can also define more intricate and customized calculations using SQL snippets. A measure is an aggregated column that helps define business-specific metrics.
 
@@ -140,7 +140,7 @@ This section defines the query to map identified entity with physical data.
 | rolling_window |  | You can aggregate column values within a defined window, just like the SQL window function. |
 | hidden |  | It will hide the dimension from the user interface if set to true. |
 
-### Relationships
+### **Relationships**
 
 Relationships in data modeling are like connections between different data entities. They help you combine information from various sources to answer specific questions. These connections are typically one-way, similar to a left join in SQL, with one entity as the main focus. It's important to consider this direction when using relationships to ensure you get the results you need.
 
@@ -163,7 +163,7 @@ A defined relationship simplifies querying dimensions and measures from multiple
 
 Details of the attributes are here:
 
-### `entities`
+### **`entities`**
 
 **Description**: Entities describe business objects such as customers, products, and users or business-specific activities such as web and app events, downloads, and purchases.
 
@@ -174,7 +174,7 @@ entities:
  
 ```
 
-### `name`
+### **`name`**
 
 **Description:** name of the entity representing a business object.
 
@@ -195,7 +195,7 @@ entities:
   - name: retailer_info
 ```
 
-### `description`
+### **`description`**
 
 **Description:** Provide a description of the Lens.
 
@@ -210,7 +210,7 @@ description: Data Model for Sports Retail data
 
 ```
 
-### `tags`
+### **`tags`**
 
 Multiple tags can be added to an entity. They aid in discoverability.
 
@@ -226,7 +226,7 @@ entities:
       - brand
 ```
 
-### `sql`
+### **`sql`**
 
 **Description:** This section provides a way to write SQL and other properties to construct the entity.
 
@@ -242,7 +242,7 @@ entities:
     sql:
 ```
 
-### `query`
+### **`query`**
 
 **Description:** A query that runs against your data source to extract the entity table. This will also allow aggregating or filtering the data to construct the desired entity.
 
@@ -288,7 +288,7 @@ entities:
       query: SELECT * FROM ${activity_stream.sql()} where activity = 'purchased_order'
 ```
 
-### `columns`
+### **`columns`**
 
 **Description**: All the columns that are referenced in the query as fields. Columns must be specified in addition to the query property. It cannot be left empty. 
 
@@ -306,7 +306,7 @@ sql:
 			  - name: product_id
 ```
 
-### `tables`
+### **`tables`**
 
 **Description**: Tables that are referred to in the supplied SQL query.
 
@@ -324,7 +324,7 @@ entities:
         - icebase.test.products
 ```
 
-### `lenses`
+### **`lenses`**
 
 Description: Lenses that are referred to in the supplied SQL query (if any).
 
@@ -334,7 +334,7 @@ Example Usage:
 
 ```
 
-## `extends`
+### **`extends`**
 
 An entity can be extended to reuse all declared elements. In the example below, the **selected_product** entity is created by referencing the **activity_stream** entity.
 
@@ -362,7 +362,7 @@ entities:
 			------
 ```
 
-### `fields`
+### **`fields`**
 
 **Description:** Fields, also known as attributes or columns, are individual data elements within an entity. Each field represents a specific piece of information about the entity.
 
@@ -400,7 +400,7 @@ entities:
         primary: true
 ```
 
-### `name`
+### **`name`**
 
 **Description:** Name of the field.
 
@@ -408,7 +408,7 @@ entities:
 | --- | --- | --- | --- |
 | mapping | Mandatory |  |  |
 
-### `type`
+### **`type`**
 
 **Description:** Type of the field.
 
@@ -416,7 +416,7 @@ entities:
 | --- | --- | --- | --- |
 | mapping | Mandatory |  |  |
 
-### `description`
+### **`description`**
 
 **Description:** Description of the field.
 
@@ -424,7 +424,7 @@ entities:
 | --- | --- | --- | --- |
 | mapping | Mandatory |  |  |
 
-### `columns`
+### **`columns`**
 
 **Description:** It maps your field to the column in the physical table.
 
@@ -432,7 +432,7 @@ entities:
 | --- | --- | --- | --- |
 | mapping | Mandatory |  |  |
 
-### `primary`
+### **`primary`**
 
 **Description:** Use this property to explicitly state whether the field needs to be considered a primary key.
 
@@ -440,7 +440,7 @@ entities:
 | --- | --- | --- | --- |
 | mapping | Mandatory |  |  |
 
-### `Dimensions`
+### **`Dimensions`**
 
 Description: The Lens dimensions are columns containing qualitative data; they are groupable and can be used to query measures to varying levels of granularity.
 
@@ -461,7 +461,7 @@ For instance, dimensions for a *Customer entity* might include first name, last
 
 ```
 
-### name
+### **`name`**
 
 **Description:** Name of the dimension.
 
@@ -481,7 +481,7 @@ Similar to naming entities and fields, the following rules can be adopted when n
 
 ```
 
-### description
+### **`description`**
 
 **Description:** Description of the dimension to better understand the defined dimension. They also add clarity around its purpose and usage.
 
@@ -495,7 +495,7 @@ Similar to naming entities and fields, the following rules can be adopted when n
 
 ```
 
-### type
+### **`type`**
 
 **Description:** nsion. You can assign various types to a dimension. Dimension’s **expected value type** includes -
 
@@ -511,7 +511,7 @@ Similar to naming entities and fields, the following rules can be adopted when n
 
 ```
 
-### sql_snippet
+### **`sql_snippet`**
 
 **Description:** A query to extract dimensions from the physical table. You can add any valid SQL expression to define a dimension. A field, dimension, or measure must already be defined if referenced while defining a dimension.
 
@@ -528,7 +528,7 @@ dimensions:
        sql_snippet: day(current_date - created_on)
 ```
 
-## `sub_query`
+### **`sub_query`**
 
 Within the dimension, you can use the subquery feature to reference measures from other entities. 
 
@@ -586,13 +586,13 @@ ORDER BY total DESC
 LIMIT 5;
 ```
 
-## `hidden`
+### **`hidden`**
 
 Hidden can be used to hide a dimension from the User Interface. Dimensions mainly used for deriving another dimension or measure and not needed for exploration can be hidden.
 
 ## Measure
 
-## `name`
+### **`name`**
 
 For naming a measure, the following rules should be adopted.
 
@@ -600,11 +600,11 @@ For naming a measure, the following rules should be adopted.
 - It can contain a letter, number, or ‘_’
 - It needs a minimum length of 2 characters and cannot exceed 128 characters.
 
-## `description`
+### **`description`**
 
 Adding descriptions about a measure helps bring consensus between teams around the measure definition. 
 
-## `type`
+### **`type`**
 
 You can work with different types when defining measures. The `sql_snippet` parameter is required for all measures. You can reference a column directly, specify the aggregate type, or specify SQL expression to calculate a measure.
 
@@ -624,7 +624,7 @@ Supported **measure types:**
 
 Let’s dive into different types that can be assigned to a measure
 
-## `number`
+### **`number`**
 
 A valid SQL expression that returns a number or an integer can be assigned a number type. You can use a ‘number’ type measure if your expression results in an aggregated value.
 
@@ -635,7 +635,7 @@ measure:
    sql_snippet: count_if (events_event_name = 'Add_to_Cart')
 ```
 
-## `count`
+### **`count`**
 
 Gives the count of values for a column. It’s similar to the SQL count function. It accepts a valid sql expression as long as it returns a column. The count type expects a column.
 
@@ -659,15 +659,15 @@ Gives the count of values for a column. It’s similar to the SQL count function
 	   sql_snippet: ${product.quantity}
 ```
 
-## `count_distinct`
+### **`count_distinct`**
 
 Measure declared as type ‘count_distinct’ calculates the count of unique values within a column. Measure type ‘count_distinct’ expects a column from the sql_snippet.
 
-## `count_distinct_approx`
+### **`count_distinct_approx`**
 
 Measure declared as type ‘count_distinct_approx’ returns the approximate number of unique non-null values. It provides responsiveness in cases where the dataset is large and there are large no. of distinct values.
 
-## `sum`
+### **`sum`**
 
 Measure declared as type ‘sum’ calculates the sum of values within a column. Measure type ‘sum’ expects a column from the sql_snippet.
 
@@ -679,7 +679,7 @@ measure:
    type: sum
 ```
 
-## `avg`
+### **`avg`**
 
 Measure declared as type ‘avg’ returns an average of values within a column. Measure type ‘avg’ expects a column from the sql_snippet.
 
@@ -691,7 +691,7 @@ measure:
    type: avg
 ```
 
-## `min`
+### **`min`**
 
 Measure declared as type ‘min’ returns a minimum of values given in the snippet. Measure type ‘min’ expects a column from the sql_snippet.
 
@@ -709,11 +709,11 @@ entity:
       type: min
 ```
 
-## `max`
+### **`max`**
 
 Measure declared as type ‘min’ returns a maximum of values in a column. Measure type ‘min’ expects a column from the sql_snippet.
 
-## `running_total`
+### **`running_total`**
 
 Typically measure having the type running_total calculates the cumulative sum of values. It does a summation of current values and previous values in a column. For instance, it’s helpful when you want to get revenue till a specific date or stock in inventory to date.
 
@@ -725,7 +725,7 @@ Typically measure having the type running_total calculates the cumulative sum of
       type: running_total
 ```
 
-## `sql_snippet`
+### **`sql_snippet`**
 
 Allows you to define complex SQL expressions that column type measure is incapable of. It needs to be ensured that the measure type is correctly specified based on the value that sql_snippet is expected to return.
 
@@ -736,7 +736,7 @@ measure:
    type: number
 ```
 
-## `rolling_window`
+### **`rolling_window`**
 
 To calculate an aggregated measure within a defined window(day, week, month, etc.), you can use the rolling window property. 
 
@@ -766,13 +766,13 @@ entities:
          offset: start
 ```
 
-## `hidden`
+### **`hidden`**
 
 If the value is set to true the measure will not be shown on the user interface.
 
 # Relationships
 
-## `type`
+### **`type`**
 
 It helps you define the type of relationship between joined entities. Following are the supported relationship types -
 
@@ -782,7 +782,7 @@ It helps you define the type of relationship between joined entities. Following 
 | 1:N | One to many relationships with the other entity. A record in one entity is associated with multiple records in another entity. |
 | N:1 | Many to one relationship with the other entity. Relationship between more than one record of an entity with a single record in another entity.  |
 
-## `field`
+### **`field`**
 
 The joining key of the main entity that will be used to join the entities.
 
@@ -799,7 +799,7 @@ entities:
 	    field: customer_index
 ```
 
-## `target`
+### **`target`**
 
 The target entity with which you want to join your main entity.
 
@@ -826,11 +826,11 @@ entities:
       verified: true
 ```
 
-## `description`
+### **`description`**
 
 The description helps build context among teams. You can add descriptions to share the context of established relationships and defined criteria.
 
-## `sql_snippet`
+### **`sql_snippet`**
 
 The sql_snippet property aids in adding further criteria in the join clause. You can use ‘and’ or ‘or’ keywords to add the requirements.
 
