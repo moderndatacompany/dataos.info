@@ -6,55 +6,115 @@ In the rapidly evolving world of data, the need for robust, scalable, and effici
 
 DataOS is an enterprise-grade data product platform that enables organizations to build, manage, and share data products effortlessly. It provides the essential building blocks required by data developers to create powerful data products that drive significant business outcomes. With DataOS, end users can harness data for better decision-making, driving value across the organization.
 
-## Navigating dataos.info
-
-If you are new to DataOS, this is your go-to resource for getting started with key technical concepts. Understanding these will help you develop efficiently with DataOS. For experienced developers looking to build solutions, our comprehensive how-to guides and resources are available in a unified resource center. Whether you're starting out or diving deep, you’ll find everything you need right here.
-
 ## Discover the Essentials of DataOS
 
 Below, you will find detailed insights into the core aspects of DataOS, including its philosophy, architecture, and data products. Explore these sections to understand how DataOS can transform your data operations and drive business value.
 
-### **DataOS Philosophy**
+<div class="grid cards" markdown>
 
-Understand the philosophy behind DataOS, designed to simplify and abstract the complexities of traditional data infrastructure
+-   :material-card-bulleted-settings-outline:{ .lg .middle } **DataOS Philosophy**
 
-### **Architecture**
+    ---
 
-Learn about the architecture of DataOS, built to enhance developer experience, democratize data, and accelerate creation of data product
+    Understand the philosophy behind DataOS, designed to simplify and abstract the complexities of traditional data infrastructure.
 
-### **Data Product**
+    [:octicons-arrow-right-24: Read more]()
 
-Learn to create, deploy & manage domain specific data products at scale
 
-### **Getting Started with DataOS**
+-   :material-list-box-outline:{ .lg .middle } **Architecture**
 
-Quickly get hands on and up to speed with DataOS, and familiarize yourself with its capabilities
+    ---
 
-## Explore the Reference Docs
+    Learn about the architecture of DataOS, built to democratize data, and accelerate creation of data product.
 
-dataos.info provides comprehensive reference documentation, recipes and how-to guides for all types of users aiming to solve data problems and achieve business outcomes.
+    [:octicons-arrow-right-24: See more](/resources/pager/manifest_attributes/)
 
-### **Understand Interfaces**
+-   :material-network-pos:{ .lg .middle } **Data Product**
+
+    ---
+
+    Learn to create, deploy & manage domain specific data products at scale.
+
+    
+    [:octicons-arrow-right-24: Explore more](#how-does-a-pager-work)
+
+-   :material-content-duplicate:{ .lg .middle } **Getting Started with DataOS**
+
+    ---
+
+    Quickly get hands on and up to speed with DataOS, and familiarize yourself with its capabilities.
+
+    [:octicons-arrow-right-24:  Learn more](#pager-usage-examples)
+
+</div>
+
+## Understand Interfaces
 
 In this section, learn about the interfaces to interact with DataOS services and components for efficient data operations and control.
 
-Command Line Interface (CLI)
+<div class="grid cards" markdown>
 
-Graphical User Interface (GUI)
+- :fontawesome-brands-html5: Command Line Interface (CLI)
+- :fontawesome-brands-js: Graphical User Interface (GUI)
+- :fontawesome-brands-css3: Application Programming Interface (API & SDK)
 
-Application Programming Interface (API & SDK)
+</div>
 
-### **Understand DataOS Resources**
+## Understand DataOS Resources
 
 Before you start building Data Products, know about these DataOS Resources which act as building blocks for your data product.
 
-| [Bundle]()    | [Cluster]()   | [Compute]()   | [Database]()   |<br>
-| [Depot]()     | [Instance]()  | [Secret]()    | [Lakehouse]()  |<br>
-| [Lens]()      | [Monitor]()   | [Pager]()     | [Policy]()     |<br>
-| [Secret]()    | [Service]()   | [Worker]()    | [Workflow]()   |<br>
+<div class="grid cards" markdown>
+
+- :fontawesome-brands-html5: Bundle
+- :fontawesome-brands-js: Cluster
+- :fontawesome-brands-css3: Compute
+- :fontawesome-brands-html5: Database
+- :fontawesome-brands-js: Depot
+- :fontawesome-brands-css3: Grant
+- :fontawesome-brands-html5: Instance Secret
+- :fontawesome-brands-js: Lakehouse
+- :fontawesome-brands-css3: Lens
+- :fontawesome-brands-html5: Monitor
+- :fontawesome-brands-js: Operator
+- :fontawesome-brands-css3: Pager
+- :fontawesome-brands-html5: Policy
+- :fontawesome-brands-js: Secret
+- :fontawesome-brands-css3: Service
+- :fontawesome-brands-html5: Volume
+- :fontawesome-brands-js: Worker
+- :fontawesome-brands-css3: Workflow
+</div>
 
 ## Learning Resources
 
 Explore the tutorials and guides essential for building data products using DataOS.
 
-| [Quick Guides]() | [Video Tutorials]()| [Glossary]() |
+<div class="grid cards" markdown>
+
+-   :material-card-bulleted-settings-outline:{ .lg .middle } **Quick Guides**
+
+    ---
+
+    [:octicons-arrow-right-24: Learn more](#how-to-create-and-manage-a-pager)
+
+
+-   :material-list-box-outline:{ .lg .middle } **Video Tutorials**
+
+    ---
+
+    [:octicons-arrow-right-24: Learn more](/resources/pager/manifest_attributes/)
+
+-   :material-network-pos:{ .lg .middle } **Glossary**
+
+    ---
+
+    [:octicons-arrow-right-24: Learn more](#how-does-a-pager-work)
+
+-   :material-content-duplicate:{ .lg .middle } **SDK**
+
+    ---
+
+    [:octicons-arrow-right-24:  Learn more](#pager-usage-examples)
+
+</div>
