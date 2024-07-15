@@ -140,17 +140,15 @@ nav:
     - Architecture: architecture/index.md
     - 'Data Product': 
       - products/data_product/index.md
-      - 'Data Product Lifecycle':
-        - 'Define Usecase': products/data_product/how_to_guides/goals.md
+      - 'Data Product Life-cycle':
         - 'Design': products/data_product/how_to_guides/design.md
-        - 'Develop': products/data_product/how_to_guides/build.md
+        - 'Build': products/data_product/how_to_guides/build.md
         - 'Deploy': products/data_product/how_to_guides/deploy.md
         - 'Iterate': products/data_product/how_to_guides/manage_and_iterate.md
       - 'Recipes': 
         - 'Create Data Product template using Cookiecutter': products/data_product/recipes/cookiecutter.md
         - 'Deploy Data Product using CI/CD pipeline': products/data_product/recipes/ci_cd.md
       - 'Examples':
-        - 'Smart Home Data Product': products/data_product/templates/smarthome.md
         - 'FS Accelerator Data Product': products/data_product/templates/accelerator.md
         - 'Sales 360 Data Product' : products/data_product/templates/sales_360.md
       - 'Configurations': products/data_product/configuration.md   

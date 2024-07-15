@@ -1,6 +1,6 @@
 # FS Accelerator Data Product
 
-FS Accelerator is an entity-first Data Product designed to provide a unified and persistent set of identifiers and attributes that describe customers within the financial services domain. This data product aims to seamlessly connect customer data, product data, and transaction data across various organizational silos and business units. It is a master dataset continuously updated in real-time, ensuring accuracy and reliability. The steps required to develop this Data Product are given below. 
+Financial Services Accelerator is an entity-first Data Product designed to provide a unified and persistent set of identifiers and attributes that describe customers within the financial services domain. This data product aims to seamlessly connect customer data, product data, and transaction data across various organizational silos and business units. It is a master dataset continuously updated in real-time, ensuring accuracy and reliability. The steps required to develop this Data Product are given below. 
 
 ## Pre-requisites
 To create the Data Product within DataOS, following requirements were needed:
@@ -16,8 +16,11 @@ To create the Data Product within DataOS, following requirements were needed:
 
 FS Accelerator involves providing a unified and persistent set of customer identifiers and attributes across organizational silos in the financial services domain. Cross selling credit cards, based on the customer's transaction history.
 
+## Discover and Explore
+Upon defining the use case, it has been discovered that no existing Data Product addresses the requirements associated with this use case. Consequently, we will proceed with the development of a new Data Product tailored to meet the FS Accelerator use case.
+
 ## Design
-Steps required to design the Data Product:
+Steps required to design the Data Product are given below:
 
 ### **Define entities and schema**
 After deciding the business use case, we have to define the entities. We require the Product entity to get the details of the product (credit card), the customer entity to get the details of the customer, an Account information entity, and a transaction entity for transaction details. Each entities will have specified schema.
@@ -762,9 +765,9 @@ In this step we define the quality checks needed to measure the performance of t
 
 Steps required to build this Data Product are:
 
-### **Create Workflow for Data Ingestion and Transformation**
+### **Create Flare jobs for Data Ingestion and Transformation**
 
-In this Data Product we are utilizing Workflow to orchestrates the transformation of customer entity data, ensuring it is structured and optimized for further querying and analysis. 
+In this Data Product we are utilizing Flare stack for the transformation of customer entity data, ensuring it is structured and optimized for further querying and analysis. 
 
 
 <details>
@@ -892,7 +895,7 @@ The above yamll contains steps to orchestrate workflow.
 
 
 <details>
-  <summary>Worflow manifest</summary>
+  <summary>Flare Worflow manifest</summary>
 
 ```yaml
 version: v1
@@ -961,7 +964,7 @@ workflow:
 </details>
 
 <details>
-  <summary>Worflow manifest</summary>
+  <summary>Flare Worflow manifest</summary>
 
 ```yaml
 
@@ -1112,6 +1115,8 @@ The above workflows involve various data transformations and writing to Icebase.
 
 ### **Create workflow for Data Profiling**
 
+We utilized the Flare stack to carry out the data profiling task. Below is the manifest file for the data profiling job using the Flare stack.
+
 <details>
   <summary>Worflow manifest</summary>
 ```yaml
@@ -1212,7 +1217,7 @@ workflow:
 
 ### **Create Policy for Governance**
 
-After transforming and storing the data in Icebase, we now have to apply Policy for data governance.
+After transforming and storing the data in Icebase, we now need to implement data governance policies.
 
 ```yaml
 version: v1
@@ -1220,7 +1225,7 @@ name: customeroverviewrawpiipolicy
 type: policy
 layer: user
 description: "data policy to hash pii columns - test"
-owner:
+owner: iamgroot
 policy:
   data:
     type: mask
@@ -1294,7 +1299,7 @@ The above data masking policy will mask the columns with "TW.mask" and "TW.dob" 
 
 ### **Create Scanner workflow for metadata extraction**
 
-Scanner is a stack orchestrated by workflow to extract the metadata. Beolw scanner manifest, scans the metadata from the Depot named `icebasetw`and register it to Metis.
+The Scanner is a stack orchestrated by Workflow to extract metadata. The following Scanner manifest scans metadata from the Depot named `icebasetw` and registers it on Metis.
 
 ```yaml
 version: v1
@@ -1322,12 +1327,96 @@ workflow:
                   - ${SCHEMA}
 ```
 
-### **Create Soda workflow for quality checks**
+### **Create Flare jobs for quality checks**
+We have implemented the Flare stack, orchestrated by Workflow, to perform quality checks. Below is the manifest file for the Flare stack configuration used for these quality checks.
+
+```yaml
+  version: v1
+  name: wf-customer-data-quality
+  type: workflow
+  tags:
+    - demo.customer
+  description: The job performs metrics calculations  checks and metrix on customerdp overview
+  workflow:
+    title: Customer overview Quality Datasets
+    dag:
+      - name: customer-data-quality
+        title: Metrics and checks
+        description: The job performs metrics calculations  checks and metrix on customer overview
+        spec:
+          stack: flare:4.0
+          compute: runnable-default
+          title: Customerdp data Quality Datasets
+          description: The job performs metrics calculations  checks and metrix on customer overview
+          flare:
+            driver:
+              coreLimit: 2400m
+              cores: 2
+              memory: 3072m
+            executor:
+              coreLimit: 3400m
+              cores: 2
+              instances: 2
+              memory: 4096m
+            job:
+              explain: true
+              logLevel: INFO
+              inputs:
+                - name: source
+                  dataset:  dataos://icebasetw:${SCHEMA}/customer_overview_dp
+                  format: iceberg
+              assertions:
+                - column: cust_id
+                  validFormat:
+                    regex: ^[A-Za-z0-9]{10}$
+                  tests:
+                    - duplicate_count == 0
+                    - invalid_count == 0
+
+                - column: cust_segment
+                  validFormat:
+                    regex: ^\d{4}$
+                  tests:
+                    - duplicate_count == 0
+                    - missing_count <= 0
+
+                - column: sourcing_channel
+                  validFormat:
+                    regex: ^[A-Za-z]{20}$
+                  tests:
+                    - duplicate_count == 0
+                    - missing_count <= 0
+                    - invalid_count == 0
+
+                - column: customer_risk_category
+                  validFormat:
+                    regex: ^[A-Za-z]{10}$
+                  tests:
+                    - duplicate_count == 0
+                    - missing_count <= 0
+                    - invalid_count == 0
+
+                - column: customer_category  
+                  validFormat:
+                    regex: ^[A-Za-z]{4}$
+                  tests:
+                    - duplicate_count == 0
+                    - missing_count <= 0
+                    - invalid_count == 0
+
+                - column: customer_privelege  
+                  validFormat:
+                    regex: ^[A-Za-z]{10}$
+                  tests:
+                    - duplicate_count == 0
+                    - missing_count <= 0
+                    - invalid_count == 0
+```
+
 
 ## Deploy
 
-
-Below is the FS Acceletor Data Product manifest template, that will help Data Product personas in their own Data Product development lifecycle:
+Having developed the Data Product, we must make it accessible to various Data Product personas for management and consumption on the Data Product Hub. Below is the manifest file for the FS Accelerator Data Product.
 
 ```yaml
 
