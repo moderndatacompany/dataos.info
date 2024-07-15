@@ -311,7 +311,7 @@ Global Flags:
 
 Use "dataos-ctl fastbase [command] --help" for more information about a command.
 ```
-To learn more, refer to [Fastbase Command Group](fastbase/details.md).
+To learn more, refer to [Fastbase Command Group](/interfaces/cli/command_reference/fastbase/details/).
 
 ### **`get`**
 

@@ -159,8 +159,8 @@ nav:
           - resources/instance_secret/index.md
         - Lakehouse: 
           - resources/lakehouse/index.md
-        - Lens:
-          - resources/lens/index.md
+        # - Lens:
+        #   - resources/lens/index.md
         - Monitor: 
           - resources/monitor/index.md
         - Operator: 
