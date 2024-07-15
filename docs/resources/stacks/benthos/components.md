@@ -58,7 +58,7 @@ service:
 
 At the core of any Benthos Service lies the Service section, which is responsible for defining a Service resource through a set of YAML fields and configurations. A Service is a persistent process that either receives or delivers API requests. The Benthos stack is then invoked within the Service to effectuate the requisite transformations. For a deeper understanding of Service and its associated YAML configurations, please refer to the following page:
 
-[Service](/resources/service)
+[Service](/resources/service/)
 
 ## Benthos Stack Section
 
@@ -94,7 +94,7 @@ These are the main components within Benthos and they provide the majority of us
 
 ### **Observability Components**
 
-There are also the observability components [http](/resources/stacks/benthos/components/http), [logger](/resources/stacks/benthos/components/logger), [metrics](/resources/stacks/benthos/components/metrics), and [tracing](/resources/stacks/benthos/components/tracers), which allow you to specify how Benthos exposes observability data:
+There are also the observability components [http](/resources/stacks/benthos/components/http/), [logger](/resources/stacks/benthos/components/logger/), [metrics](/resources/stacks/benthos/components/metrics/), and [tracing](/resources/stacks/benthos/components/tracers/), which allow you to specify how Benthos exposes observability data:
 
 ```yaml
 http:
@@ -118,7 +118,7 @@ tracer:
 
 ### **Resource Components**
 
-Finally, there are [caches](/resources/stacks/benthos/components/caches) and [rate limits](/resources/stacks/benthos/components/rate_limit). These are components that are referenced by core components and can be shared.
+Finally, there are [caches](/resources/stacks/benthos/components/caches/) and [rate limits](/resources/stacks/benthos/components/rate_limit/). These are components that are referenced by core components and can be shared.
 
 ```yaml
 input:
@@ -147,26 +147,26 @@ cache_resources:
       addresses: [ localhost:11211 ]
 ```
 
-It's also possible to configure inputs, outputs, and processors as resources which allows them to be reused throughout a configuration with the [`resource` input](/resources/stacks/benthos/components/inputs),  [`resource` output](/resources/stacks/benthos/components/output),  and [`resource` processor](/resources/stacks/benthos/components/processors), respectively.
+It's also possible to configure inputs, outputs, and processors as resources which allows them to be reused throughout a configuration with the [`resource` input](/resources/stacks/benthos/components/inputs/),  [`resource` output](/resources/stacks/benthos/components/output/),  and [`resource` processor](/resources/stacks/benthos/components/processors/), respectively.
 
 For a thorough and comprehensive understanding of these magnificent components, do peruse the pages that lie beyond the links below. You might discover hidden secrets, juicy details, or even a surprise cameo appearance from your favorite celebrity component. Who knows, the possibilities are endless!
 
-[HTTP](/resources/stacks/benthos/components/http)
+[HTTP](/resources/stacks/benthos/components/http/)
 
-[Inputs](/resources/stacks/benthos/components/inputs)
+[Inputs](/resources/stacks/benthos/components/inputs/)
 
-[Processors](/resources/stacks/benthos/components/processors)
+[Processors](/resources/stacks/benthos/components/processors/)
 
-[Output](/resources/stacks/benthos/components/output)
+[Output](/resources/stacks/benthos/components/output/)
 
-[Caches](/resources/stacks/benthos/components/caches)
+[Caches](/resources/stacks/benthos/components/caches/)
 
-[Rate Limit](/resources/stacks/benthos/components/rate_limit)
+[Rate Limit](/resources/stacks/benthos/components/rate_limit/)
 
-[Buffers](/resources/stacks/benthos/components/buffers)
+[Buffers](/resources/stacks/benthos/components/buffers/)
 
-[Metrics](/resources/stacks/benthos/components/metrics)
+[Metrics](/resources/stacks/benthos/components/metrics/)
 
-[Tracers](/resources/stacks/benthos/components/tracers)
+[Tracers](/resources/stacks/benthos/components/tracers/)
 
-[Logger](/resources/stacks/benthos/components/logger)
+[Logger](/resources/stacks/benthos/components/logger/)

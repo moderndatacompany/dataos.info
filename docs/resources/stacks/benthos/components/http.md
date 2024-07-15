@@ -45,13 +45,13 @@ The field `enabled` can be set to `false` in order to disable the server.
 
 The field `root_path` specifies a general prefix for all endpoints, this can help isolate the service endpoints when using a reverse proxy with other shared services. All endpoints will still be registered at the root as well as behind the prefix, e.g. with a `root_path` set to `/foo` the endpoint `/version` will be accessible from both `/version` and `/foo/version`.
 
-## Enabling HTTPS[](https://www.benthos.dev/docs/components/http/about#enabling-https)
+## Enabling HTTPS
 
 By default, Benthos will serve traffic over HTTP. In order to enforce TLS and serve traffic exclusively over HTTPS, you must provide a `cert_file` and `key_file` path in your config, which points to a file containing a certificate and a matching private key for the server, respectively.
 
 If the certificate is signed by a certificate authority, the `cert_file` should be the concatenation of the server's certificate, any intermediates, and the CA's certificate.
 
-## Enabling Basic Authentication[](https://www.benthos.dev/docs/components/http/about#enabling-basic-authentication)
+## Enabling Basic Authentication
 
 By default, Benthos does not do any sort of authentication for the service-wide HTTP server. However, it's possible to configure basic authentication with the `basic_auth` field. Passwords configured must be hashed according to the specified algorithm and base64 encoded, for some hashing algorithms, you can do this using Benthos itself:
 
@@ -59,7 +59,7 @@ By default, Benthos does not do any sort of authentication for the service-wide 
 echo mynewpassword | benthos blobl 'root = content().hash("sha256").encode("base64")'
 ```
 
-## Endpoints[](https://www.benthos.dev/docs/components/http/about#endpoints)
+## Endpoints
 
 The following endpoints will be generally available when the HTTP server is enabled:
 
@@ -69,15 +69,15 @@ The following endpoints will be generally available when the HTTP server is enab
 - `/metrics`, `/stats` both provide metrics when the metrics type is either `json_api` or `prometheus`.
 - `/endpoints` provide a JSON object containing a list of available endpoints, including those registered by configured components.
 
-## CORS[](https://www.benthos.dev/docs/components/http/about#cors)
+## CORS
 
 In order to serve Cross-Origin Resource Sharing headers, which instruct browsers to allow CORS requests, set the subfield `cors.enabled` to `true`.
 
-### allowed_origins[](https://www.benthos.dev/docs/components/http/about#allowed_origins)
+### allowed_origins
 
 A list of allowed origins to connect from. The literal value `*` can be specified as a wildcard. Note `cors.enabled` must be set to `true` for this list to take effect.
 
-## Debug Endpoints[](https://www.benthos.dev/docs/components/http/about#debug-endpoints)
+## Debug Endpoints
 
 The field `debug_endpoints` when set to `true` prompts Benthos to register a few extra endpoints that can be useful for debugging performance or behavioral problems:
 
@@ -92,11 +92,11 @@ The field `debug_endpoints` when set to `true` prompts Benthos to register a
 - `/debug/pprof/trace` responds with the execution trace in binary form. Tracing lasts for duration specified in seconds GET parameter, or for 1 second if not specified.
 - `/debug/stack` returns a snapshot of the current service stack trace.
 
-## Fields[](https://www.benthos.dev/docs/components/http/about#fields)
+## Fields
 
 The schema of the `http` section is as follows:
 
-### `enabled`[](https://www.benthos.dev/docs/components/http/about#enabled)
+### `enabled`
 
 Whether to enable to HTTP server.
 
@@ -106,7 +106,7 @@ Whether to enable to HTTP server.
 
 ---
 
-### `address`[](https://www.benthos.dev/docs/components/http/about#address)
+### `address`
 
 The address to bind to.
 
@@ -116,7 +116,7 @@ The address to bind to.
 
 ---
 
-### `root_path`[](https://www.benthos.dev/docs/components/http/about#root_path)
+### `root_path`
 
 Specifies a general prefix for all endpoints, this can help isolate the service endpoints when using a reverse proxy with other shared services. All endpoints will still be registered at the root as well as behind the prefix, e.g. with a root_path set to `/foo` the endpoint `/version` will be accessible from both `/version` and `/foo/version`.
 
@@ -126,7 +126,7 @@ Specifies a general prefix for all endpoints, this can help isolate the service 
 
 ---
 
-### `debug_endpoints`[](https://www.benthos.dev/docs/components/http/about#debug_endpoints)
+### `debug_endpoints`
 
 Whether to register a few extra endpoints that can be useful for debugging performance or behavioral problems.
 
@@ -136,7 +136,7 @@ Whether to register a few extra endpoints that can be useful for debugging perfo
 
 ---
 
-### `cert_file`[](https://www.benthos.dev/docs/components/http/about#cert_file)
+### `cert_file`
 
 An optional certificate file for enabling TLS.
 
@@ -146,7 +146,7 @@ An optional certificate file for enabling TLS.
 
 ---
 
-### `key_file`[](https://www.benthos.dev/docs/components/http/about#key_file)
+### `key_file`
 
 An optional key file for enabling TLS.
 
@@ -156,7 +156,7 @@ An optional key file for enabling TLS.
 
 ---
 
-### `cors`[](https://www.benthos.dev/docs/components/http/about#cors-1)
+### `cors`
 
 Adds Cross-Origin Resource Sharing headers.
 
@@ -164,7 +164,7 @@ Adds Cross-Origin Resource Sharing headers.
 
 ---
 
-### `cors.enabled`[](https://www.benthos.dev/docs/components/http/about#corsenabled)
+### `cors.enabled`
 
 Whether to allow CORS requests.
 
@@ -174,7 +174,7 @@ Whether to allow CORS requests.
 
 ---
 
-### `cors.allowed_origins`[](https://www.benthos.dev/docs/components/http/about#corsallowed_origins)
+### `cors.allowed_origins`
 
 An explicit list of origins that are allowed for CORS requests.
 
@@ -184,7 +184,7 @@ An explicit list of origins that are allowed for CORS requests.
 
 ---
 
-### `basic_auth`[](https://www.benthos.dev/docs/components/http/about#basic_auth)
+### `basic_auth`
 
 Allows you to enforce and customize basic authentication for requests to the HTTP server.
 
@@ -192,7 +192,7 @@ Allows you to enforce and customize basic authentication for requests to the HTT
 
 ---
 
-### `basic_auth.enabled`[](https://www.benthos.dev/docs/components/http/about#basic_authenabled)
+### `basic_auth.enabled`
 
 Enable basic authentication
 
@@ -202,7 +202,7 @@ Enable basic authentication
 
 ---
 
-### `basic_auth.realm`[](https://www.benthos.dev/docs/components/http/about#basic_authrealm)
+### `basic_auth.realm`
 
 Custom realm name
 
@@ -212,7 +212,7 @@ Custom realm name
 
 ---
 
-### `basic_auth.username`[](https://www.benthos.dev/docs/components/http/about#basic_authusername)
+### `basic_auth.username`
 
 Username required to authenticate.
 
@@ -222,7 +222,7 @@ Username required to authenticate.
 
 ---
 
-### `basic_auth.password_hash`[](https://www.benthos.dev/docs/components/http/about#basic_authpassword_hash)
+### `basic_auth.password_hash`
 
 Hashed password required to authenticate. (base64 encoded)
 
@@ -232,7 +232,7 @@ Hashed password required to authenticate. (base64 encoded)
 
 ---
 
-### `basic_auth.algorithm`[](https://www.benthos.dev/docs/components/http/about#basic_authalgorithm)
+### `basic_auth.algorithm`
 
 Encryption algorithm used to generate `password_hash`.
 
@@ -254,7 +254,7 @@ algorithm: scrypt
 
 ---
 
-### `basic_auth.salt`[](https://www.benthos.dev/docs/components/http/about#basic_authsalt)
+### `basic_auth.salt`
 
 Salt for scrypt algorithm. (base64 encoded)
 

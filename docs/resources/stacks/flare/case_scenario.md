@@ -152,62 +152,62 @@ Computes only the changed rows or files of data since the last build, reducing o
 
 
 
-[Incremental Job](/resources/stacks/flare/case_scenario/incremental_jobs)
+[Incremental Job](/resources/stacks/flare/case_scenario/incremental_jobs/)
 
 ## Data Transformation
 
-[Read and write from Iceberg branch](/resources/stacks/flare/case_scenario/iceberg_branch_read_write)
+[Read and write from Iceberg branch](/resources/stacks/flare/case_scenario/iceberg_branch_read_write/)
 
-[Data Profiling Jobs](/resources/stacks/flare/case_scenario/data_profiling_jobs)
+[Data Profiling Jobs](/resources/stacks/flare/case_scenario/data_profiling_jobs/)
 
-[Data Quality Jobs (Assertions)](/resources/stacks/flare/case_scenario/data_quality_jobs)
+[Data Quality Jobs (Assertions)](/resources/stacks/flare/case_scenario/data_quality_jobs/)
 
-[Compression](/resources/stacks/flare/case_scenario/compression)
+[Compression](/resources/stacks/flare/case_scenario/compression/)
 
-[Merge Data](/resources/stacks/flare/case_scenario/merge_data)
+[Merge Data](/resources/stacks/flare/case_scenario/merge_data/)
 
-[Enrichment](/resources/stacks/flare/case_scenario/enrichment)
+[Enrichment](/resources/stacks/flare/case_scenario/enrichment/)
 
-[Merge Into Functionality](/resources/stacks/flare/case_scenario/merge_into_functionality)
+[Merge Into Functionality](/resources/stacks/flare/case_scenario/merge_into_functionality/)
 
-[Partitioning](/resources/stacks/flare/case_scenario/partitioning)
+[Partitioning](/resources/stacks/flare/case_scenario/partitioning/)
 
-[Partition Evolution](/resources/stacks/flare/case_scenario/partition_evolution)
+[Partition Evolution](/resources/stacks/flare/case_scenario/partition_evolution/)
 
-[Data Replay](/resources/stacks/flare/case_scenario/data_replay)
+[Data Replay](/resources/stacks/flare/case_scenario/data_replay/)
 
-[Concurrent Writes](/resources/stacks/flare/case_scenario/concurrent_writes)
+[Concurrent Writes](/resources/stacks/flare/case_scenario/concurrent_writes/)
 
-[Query Dataset for Job in Progress](/resources/stacks/flare/case_scenario/query_dataset_for_job_in_progress)
+[Query Dataset for Job in Progress](/resources/stacks/flare/case_scenario/query_dataset_for_job_in_progress/)
 
-[Bucketing](/resources/stacks/flare/case_scenario/bucketing)
+[Bucketing](/resources/stacks/flare/case_scenario/bucketing/)
 
-[Caching](/resources/stacks/flare/case_scenario/caching)
+[Caching](/resources/stacks/flare/case_scenario/caching/)
 
-[Job Optimization by Tuning](/resources/stacks/flare/case_scenario/job_optimization_by_tuning)
+[Job Optimization by Tuning](/resources/stacks/flare/case_scenario/job_optimization_by_tuning/)
 
-[Column Tagging](/resources/stacks/flare/case_scenario/column_tagging)
+[Column Tagging](/resources/stacks/flare/case_scenario/column_tagging/)
 
 ## Data Syndication
 
-[Syndication](/resources/stacks/flare/case_scenario/syndication)
+[Syndication](/resources/stacks/flare/case_scenario/syndication/)
 
 ## Flare Actions
 
 > The below functionality is only supported in the DataOS managed depot, Icebase
 > 
 
-[Delete from Dataset](/resources/stacks/flare/case_scenario/delete_from_dataset)
+[Delete from Dataset](/resources/stacks/flare/case_scenario/delete_from_dataset/)
 
-[Expire Snapshots](/resources/stacks/flare/case_scenario/expire_snapshots)
+[Expire Snapshots](/resources/stacks/flare/case_scenario/expire_snapshots/)
 
-[Remove Orphans](/resources/stacks/flare/case_scenario/remove_orphans)
+[Remove Orphans](/resources/stacks/flare/case_scenario/remove_orphans/)
 
-[Rewrite Manifest Files](/resources/stacks/flare/case_scenario/rewrite_manifest_files)
+[Rewrite Manifest Files](/resources/stacks/flare/case_scenario/rewrite_manifest_files/)
 
 ### **Rewrite Orphans**
 
-The `remove_orphans` [action](/resources/stacks/flare/configurations#remove_orphans) cleans up orphans files older than a specified time period. This action may take a long time to finish if you have lots of files in data and metadata directories. It is recommended to execute this periodically, but you may not need to execute this often. 
+The `remove_orphans` [action](/resources/stacks/flare/configurations#remove_orphans/) cleans up orphans files older than a specified time period. This action may take a long time to finish if you have lots of files in data and metadata directories. It is recommended to execute this periodically, but you may not need to execute this often. 
 
 <aside>
 
@@ -261,7 +261,7 @@ workflow:
 
 ### **Rewrite Dataset**
 
-The [`rewrite_dataset`](/resources/stacks/flare/configurations#rewrite_dataset) action provided by DataOS allows for the parallel compaction of data files in Iceberg tables using Flare. This action efficiently reduces the size of data files to meet the specified target file size in bytes, as defined in the YAML configuration.
+The [`rewrite_dataset`](/resources/stacks/flare/configurations/#rewrite_dataset) action provided by DataOS allows for the parallel compaction of data files in Iceberg tables using Flare. This action efficiently reduces the size of data files to meet the specified target file size in bytes, as defined in the YAML configuration.
 
 <details><summary>Case Scenario</summary>
 

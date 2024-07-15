@@ -6,18 +6,18 @@ search:
 
 # Soda
 
-Soda is a declarative [Stack](/resources//stacks) for data quality testing within and beyond data pipelines, extending its capabilities, enhancing data observability and reliability across one or more datasets. It enables you to use the [Soda Checks Language (SodaCL)](https://docs.soda.io/soda-cl/soda-cl-overview.html) to turn user-defined inputs into aggregated SQL queries.
+Soda is a declarative [Stack](/resources/stacks/) for data quality testing within and beyond data pipelines, extending its capabilities, enhancing data observability and reliability across one or more datasets. It enables you to use the [Soda Checks Language (SodaCL)](https://docs.soda.io/soda-cl/soda-cl-overview.html) to turn user-defined inputs into aggregated SQL queries.
 
 ## How to run Soda checks?
 
 ### **Create a Workflow/Worker manifest**
 
-Soda operates as a Stack that can be orchestrated through various [Resources](/resources/), such as a [Workflow](/resources/workflow), or a [Worker](/resources/worker) Resource. The choice of orchestrator-type is contingent upon the specific use case being addressed.
+Soda operates as a Stack that can be orchestrated through various [Resources](/resources/), such as a [Workflow](/resources/workflow/), or a [Worker](/resources/worker/) Resource. The choice of orchestrator-type is contingent upon the specific use case being addressed.
 
-- When dealing with batch workloads for executing quality checks and profiling, opt for the [Workflow](/resources/workflow) Resource.
-- For long-running, continuous workloads, the recommended choice is the [Worker](/resources/worker) Resource.
+- When dealing with batch workloads for executing quality checks and profiling, opt for the [Workflow](/resources/workflow/) Resource.
+- For long-running, continuous workloads, the recommended choice is the [Worker](/resources/worker/) Resource.
 
-For detailed insights into the selection and utilization of the appropriate Resource, please refer to the dedicated documentation for [Workflow](/resources/workflow) and [Worker](/resources/worker) Resources.
+For detailed insights into the selection and utilization of the appropriate Resource, please refer to the dedicated documentation for [Workflow](/resources/workflow/) and [Worker](/resources/worker/) Resources.
 
 <details><summary>Code Snippet for Workflow and Worker manifest</summary>
 
@@ -108,9 +108,9 @@ To learn more about the attributes of <a href="/resources/worker/">Worker</a> Re
 
 ### **Declare the configuration for Soda `stackSpec` section**
 
-The [Workflow](/resources/workflow) and [Worker](/resources/worker) Resource comprise of a [`stackSpec`](/resources/soda/yaml_attributes#stackspec) section (or a mapping) that comprises the attributes of the Stack to be orchestrated. In the context of Soda Stack, the StackSpec defines diverse datasets and their associated Soda checks. 
+The [Workflow](/resources/workflow/) and [Worker](/resources/worker/) Resource comprise of a [`stackSpec`](/resources/soda/yaml_attributes/#stackspec) section (or a mapping) that comprises the attributes of the Stack to be orchestrated. In the context of Soda Stack, the StackSpec defines diverse datasets and their associated Soda checks. 
 
-The YAML snippet below shows a sample structure of the Soda [`stackSpec`](/resources/soda/yaml_attributes#stackspec) section:
+The YAML snippet below shows a sample structure of the Soda [`stackSpec`](/resources/soda/yaml_attributes/#stackspec) section:
 
 ```yaml
 stackSpec:
@@ -140,7 +140,7 @@ This involves the declaration of following parts:
 
 #### **Declaring Input Dataset Address**
 
-The [`dataset`](/resources/soda/yaml_attributes#dataset) attribute allows data developer to specify the data source or dataset that requires data quality evaluations. It is declared in the form of a [Uniform Data Link [UDL]](/resources/depot), in the following format: `dataos://[depot]:[collection]/[dataset]`.
+The [`dataset`](/resources/soda/yaml_attributes/#dataset) attribute allows data developer to specify the data source or dataset that requires data quality evaluations. It is declared in the form of a [Uniform Data Link [UDL]](/resources/depot/), in the following format: `dataos://[depot]:[collection]/[dataset]`.
 
 ```yaml
 stackSpec:
@@ -164,7 +164,7 @@ Soda Stack utilzies SodaCL, a YAML-based, low-code, human-readable, domain-speci
 
 </center>
 
-The [`checks`](/resources/soda/yaml_attributes#checks) section allows users to specify a list of specific data quality checks or tests that will be performed on the designated dataset. These checks can be tailored to suit the unique requirements of the dataset and the data quality objectives.
+The [`checks`](/resources/soda/yaml_attributes/#checks) section allows users to specify a list of specific data quality checks or tests that will be performed on the designated dataset. These checks can be tailored to suit the unique requirements of the dataset and the data quality objectives.
 
 ```yaml
 # Checks for basic validations
@@ -274,7 +274,7 @@ You can refer to the Soda documentation for the grammar of check definitions: [S
 
 #### **Defining Columns to be Profiled (Optional)**
 
-The [`profile`](/resources/soda/yaml_attributes#profile) section enables you to specify a list of columns that require profiling. Profiling involves analysing and collecting information about the characteristics and data distribution in these columns. The profile section is especially beneficial for gaining insights into the data and comprehending it’s patterns.
+The [`profile`](/resources/soda/yaml_attributes/#profile) section enables you to specify a list of columns that require profiling. Profiling involves analysing and collecting information about the characteristics and data distribution in these columns. The profile section is especially beneficial for gaining insights into the data and comprehending it’s patterns.
 
 ```yaml
 stackSpec:
@@ -287,7 +287,7 @@ stackSpec:
 
 **Columns Specification**
 
-The [`columns`](/resources/soda/yaml_attributes#columns) attribute under the profile section is where you specify the list of columns you want to profile. Each column is represented as a string item in the list. 
+The [`columns`](/resources/soda/yaml_attributes/#columns) attribute under the profile section is where you specify the list of columns you want to profile. Each column is represented as a string item in the list. 
 
 You can provide the exact column name, or you can use special patterns to match multiple columns. The column matching patterns are provided in the list below:
 
@@ -336,7 +336,7 @@ You can provide the exact column name, or you can use special patterns to match 
 
 #### **Define Filters**
 
-The [`filter`](/resources/soda/yaml_attributes#filter) attribute or section works as a global filter for all checks specified within a dataset. 
+The [`filter`](/resources/soda/yaml_attributes/#filter) attribute or section works as a global filter for all checks specified within a dataset. 
 
 <aside class="callout">
 
@@ -344,7 +344,7 @@ The [`filter`](/resources/soda/yaml_attributes#filter) attribute or section work
 
 </aside>
 
-The following YAML sample demonstrates how the [`filter`](/resources/soda/yaml_attributes#filter) section can be employed to apply a global filter on all checks specified within the [`checks`](/resources/soda/yaml_attributes#checks) section.
+The following YAML sample demonstrates how the [`filter`](/resources/soda/yaml_attributes/#filter) section can be employed to apply a global filter on all checks specified within the [`checks`](/resources/soda/yaml_attributes/#checks) section.
 
 ```yaml
 stackSpec:
@@ -358,14 +358,14 @@ stackSpec:
 
 #### **Define Optional configuration**
 
-The [`options`](/resources/soda/yaml_attributes#options) section provides users with the flexibility to configure various attributes for connecting to data sources or data source options. These options encompass:
+The [`options`](/resources/soda/yaml_attributes/#options) section provides users with the flexibility to configure various attributes for connecting to data sources or data source options. These options encompass:
 
 **Engine**
 
-The [`engine`](/resources/soda/yaml_attributes#engine) attribute can assume two values: `minerva` and `default`. 
+The [`engine`](/resources/soda/yaml_attributes/#engine) attribute can assume two values: `minerva` and `default`. 
 
 - The `default` value executes queries on the data source.
-- The `minerva` option utilizes the DataOS query engine (Minerva) to execute queries on the depot connected to the cluster. When opting for `minerva`, specifying the [`clusterName`](/resources/soda/yaml_attributes#clustername) becomes mandatory.
+- The `minerva` option utilizes the DataOS query engine (Minerva) to execute queries on the depot connected to the cluster. When opting for `minerva`, specifying the [`clusterName`](/resources/soda/yaml_attributes/#clustername) becomes mandatory.
 
 <aside class="callout">
 🗣 For sources like <b>Icebase</b>, engine must be <code>minerva</code>. For more information, refer to the list of sources and supported engines provided below.
@@ -476,7 +476,7 @@ The [`engine`](/resources/soda/yaml_attributes#engine) attribute can assume two 
 
 **Cluster Name**
 
-If applicable, users can provide the [`clusterName`](/resources/soda/yaml_attributes#clustername) on which queries will run. This is a mandatory field in the case of the Minerva engine. You can check the cluster on which your depot is mounted in Workbench or check the cluster definition in the [Operations](/interfaces/operations) App.
+If applicable, users can provide the [`clusterName`](/resources/soda/yaml_attributes/#clustername) on which queries will run. This is a mandatory field in the case of the Minerva engine. You can check the cluster on which your depot is mounted in Workbench or check the cluster definition in the [Operations](/interfaces/operations/) App.
 
 <aside class="callout">
 
@@ -497,21 +497,21 @@ The following table provides a comprehensive overview of the various attributes 
 
 | Attribute | Data Type | Default Value | Possible Values | Requirement |
 | --- | --- | --- | --- | --- |
-| [`stackSpec`](/resources/stacks/soda/yaml_attributes#stackspec) | mapping | none | none | mandatory |
-| [`inputs`](/resources/stacks/soda/yaml_attributes#inputs) | list of mappings | none | any valid iceberg<br>dataset UDL address | mandatory |
-| [`dataset`](/resources/stacks/soda/yaml_attributes#dataset) | string | none | none | mandatory |
-| [`options`](/resources/stacks/soda/yaml_attributes#options) | mapping | none | set_version | optional |
-| [`engine`](/resources/stacks/soda/yaml_attributes#engine) | string | none | default / minerva | optional |
-| [`clusterName`](/resources/stacks/soda/yaml_attributes#clustername) | string | none | valid cluster name | optional |
-| [`branchName`](/resources/stacks/soda/yaml_attributes#branchname) | string | main | valid branch name in string format | optional |
-| [`filter`](/resources/stacks/soda/yaml_attributes#filter) | mapping | none | none | optional |
-| [`name`](/resources/stacks/soda/yaml_attributes#name) | string | none | valid filter name | optional |
-| [`where`](/resources/stacks/soda/yaml_attributes#where) | string | none | valid filter condition | optional |
-| [`profile`](/resources/stacks/soda/yaml_attributes#profile) | mapping | none | none | optional |
-| [`columns`](/resources/stacks/soda/yaml_attributes#columns) | list of strings | none | dataset column names | optional |
-| [`checks`](/resources/stacks/soda/yaml_attributes#checks) | list of mappings | none | valid SodaCL checks | mandatory |
+| [`stackSpec`](/resources/stacks/soda/yaml_attributes/#stackspec) | mapping | none | none | mandatory |
+| [`inputs`](/resources/stacks/soda/yaml_attributes/#inputs) | list of mappings | none | any valid iceberg<br>dataset UDL address | mandatory |
+| [`dataset`](/resources/stacks/soda/yaml_attributes/#dataset) | string | none | none | mandatory |
+| [`options`](/resources/stacks/soda/yaml_attributes/#options) | mapping | none | set_version | optional |
+| [`engine`](/resources/stacks/soda/yaml_attributes/#engine) | string | none | default / minerva | optional |
+| [`clusterName`](/resources/stacks/soda/yaml_attributes/#clustername) | string | none | valid cluster name | optional |
+| [`branchName`](/resources/stacks/soda/yaml_attributes/#branchname) | string | main | valid branch name in string format | optional |
+| [`filter`](/resources/stacks/soda/yaml_attributes/#filter) | mapping | none | none | optional |
+| [`name`](/resources/stacks/soda/yaml_attributes/#name) | string | none | valid filter name | optional |
+| [`where`](/resources/stacks/soda/yaml_attributes/#where) | string | none | valid filter condition | optional |
+| [`profile`](/resources/stacks/soda/yaml_attributes/#profile) | mapping | none | none | optional |
+| [`columns`](/resources/stacks/soda/yaml_attributes/#columns) | list of strings | none | dataset column names | optional |
+| [`checks`](/resources/stacks/soda/yaml_attributes/#checks) | list of mappings | none | valid SodaCL checks | mandatory |
 
-For further details regarding the Soda Stack-specific attributes, you can refer to the link: [Attributes of Soda Stack YAML](/resources/stacks/soda/yaml_attributes).
+For further details regarding the Soda Stack-specific attributes, you can refer to the link: [Attributes of Soda Stack YAML](/resources/stacks/soda/yaml_attributes/).
 
 **Branch Name Configuration for Lakehouse storage or Icebase type Depots**
 
@@ -745,9 +745,9 @@ dataos-ctl apply -f ${{path/file-name}} -w ${{workspace}} # By default the works
 
 ## Querying Profiling and Checks data
 
-Soda check results and profiling information are stored in Iceberg tables, and querying this information can be accomplished through [Workbench](/interfaces/workbench) App. 
+Soda check results and profiling information are stored in Iceberg tables, and querying this information can be accomplished through [Workbench](/interfaces/workbench/) App. 
 
-To do so, Workflows can be executed to sink the information related to Checks and Profiles into the [Icebase](/resources/depot#icebase) depot. The YAML for both Workflows is provided below.
+To do so, Workflows can be executed to sink the information related to Checks and Profiles into the [Icebase](/resources/depot/#icebase) depot. The YAML for both Workflows is provided below.
 
 <details>
 <summary>Workflow for sinking Soda Check information</summary>
@@ -1065,8 +1065,8 @@ SELECT * FROM icebase.soda.soda_check_metrics_01 LIMIT 10
 
 <!-- - [How to run Soda checks for data quality evaluation using Soda Stack in DataOS?](/resources/stacks/soda/how_to_run_soda_checks_using_soda_stack) -->
 
-- [How to run profiling using Soda Stack in DataOS?](/resources/stacks/soda/how_to_run_profiling_using_soda_stack)
-- [How to run Soda checks on a specific branch of Iceberg dataset?](/resources/stacks/soda/how_to_run_soda_checks_on_a_specific_branch_of_iceberg_dataset)
+- [How to run profiling using Soda Stack in DataOS?](/resources/stacks/soda/how_to_run_profiling_using_soda_stack/)
+- [How to run Soda checks on a specific branch of Iceberg dataset?](/resources/stacks/soda/how_to_run_soda_checks_on_a_specific_branch_of_iceberg_dataset/)
 
 
 

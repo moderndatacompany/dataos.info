@@ -1,6 +1,6 @@
 # Apply a Workflow and get runtime status using CLI Stack
 
-The dataos-ctl stack called [CLI Stack](/resources/stack/cli_stack) can be orchestrated using a Workflow Resource, where each job executes the command once and concludes the process upon completion. This plays a pivotal role in enabling Continuous Integration and Continuous Deployment (CI/CD) workflows that integrate multiple CLI commands, creating a cohesive and automated deployment process.
+The dataos-ctl stack called [CLI Stack](/resources/stack/cli_stack/) can be orchestrated using a Workflow Resource, where each job executes the command once and concludes the process upon completion. This plays a pivotal role in enabling Continuous Integration and Continuous Deployment (CI/CD) workflows that integrate multiple CLI commands, creating a cohesive and automated deployment process.
 
 ## How to use CLI Stack?
 
@@ -173,7 +173,7 @@ INFO[0001] 🔍 get...complete
 
 ### **Check Workflow Logs to validate execution**
 
-Copy the name to Workspace from the output table of the [`get`](/interfaces/cli/command_reference#get) command and use it as a string in the delete command.
+Copy the name to Workspace from the output table of the [`get`](/interfaces/cli/command_reference/#get) command and use it as a string in the delete command.
 
 === "Command"
 
