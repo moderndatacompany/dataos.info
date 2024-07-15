@@ -10,7 +10,7 @@ search:
 The DataOS SDK for Python includes functionality to accelerate development with Python for the DataOS platform. It provides a cohesive set of APIs, each accessible through its respective services, enabling seamless interaction with the platform. By utilizing the SDK, data developers unlock the potential to construct innovative solutions and integrate them seamlessly into their existing resources.
 
 <aside class="callout">
-🗣 Delve into the <a href="./reference_index.html">Python SDK Library Reference</a> for detailed insights into the diverse subpackages, modules and classes encompassed by the Python SDK package. To know more about the installation procedures, refer to the following section.
+🗣 Delve into the <a href="/api_docs/dataos_python_sdk/reference_index.html">Python SDK Library Reference</a> for detailed insights into the diverse subpackages, modules and classes encompassed by the Python SDK package. To know more about the installation procedures, refer to the following section.
 </aside>
 
 ## Installation
@@ -157,7 +157,7 @@ print(metadata)
 [MetadataVersionResponse(version='v1.gz.metadata.json', timestamp=1696940109201), MetadataVersionResponse(version='v2.gz.metadata.json', timestamp=1696940212855), MetadataVersionResponse(version='v3.gz.metadata.json', timestamp=1697550809632), MetadataVersionResponse(version='v4.gz.metadata.json', timestamp=1698387825353), MetadataVersionResponse(version='v5.gz.metadata.json', timestamp=1699016002681)]
 ```
 
-For additional information regarding the [subpackages](./dataos_python_sdk/depot_service.html#subpackages) and [submodules](./dataos_python_sdk/depot_service.html#submodules) contained within the [`depot_service`](./dataos_python_sdk/modules.html#depot-service) package, please refer to the respective links within the [Python SDK Library Reference](./dataos_python_sdk/reference_index.html).
+For additional information regarding the [subpackages](/api_docs/dataos_python_sdk/depot_service.html#subpackages) and [submodules](/api_docs/dataos_python_sdk/depot_service.html#submodules) contained within the [`depot_service`](/api_docs/dataos_python_sdk/modules.html#depot-service) package, please refer to the respective links within the [Python SDK Library Reference](/api_docs/dataos_python_sdk/reference_index.html).
 
 ### **Retrieve Dataset Statistics**
 
@@ -296,5 +296,5 @@ properties = {
 
 ## Python SDK Library Reference
 
-For a detailed reference guide on the Python SDK and its subpackages, modules, and classes, please visit the [Python SDK Library Reference.](./dataos_python_sdk/reference_index.html). 
+For a detailed reference guide on the Python SDK and its subpackages, modules, and classes, please visit the [Python SDK Library Reference.](/api_docs/dataos_python_sdk/reference_index.html). 
 

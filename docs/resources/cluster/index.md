@@ -600,7 +600,7 @@ To create a Cluster Resource within DataOS, you have two options:
 
     **Fill in the Required Fields**
 
-    Provide the necessary details in the required properties fields and click 'Create Cluster'. For more information on these properties, refer to the documentation [here.](/resources/cluster/manifest_attributes)
+    Provide the necessary details in the required properties fields and click 'Create Cluster'. For more information on these properties, refer to the documentation [here.](/resources/cluster/manifest_attributes/)
 
     ![Creating a Cluster Using Operations App UI 3](/resources/cluster/creating_cluster_using_operations_app_ui/cluster_4.png)
 

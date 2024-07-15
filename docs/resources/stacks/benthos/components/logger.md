@@ -26,9 +26,9 @@ logger:
     rotate: true
 ```
 
-## Fields[](https://www.benthos.dev/docs/components/logger/about#fields)
+## Fields
 
-### `level`[](https://www.benthos.dev/docs/components/logger/about#level)
+### `level`
 
 Set the minimum severity level for emitting logs.
 
@@ -45,7 +45,7 @@ Specify fields for optionally writing logs to a file.
 
 ---
 
-### `file.path`[](https://www.benthos.dev/docs/components/logger/about#filepath)
+### `file.path`
 
 The file path to write logs to, if the file does not exist it will be created. Leave this field empty or unset to disable file based logging.
 
@@ -55,7 +55,7 @@ The file path to write logs to, if the file does not exist it will be created. L
 
 ---
 
-### `file.rotate`[](https://www.benthos.dev/docs/components/logger/about#filerotate)
+### `file.rotate`
 
 Whether to rotate log files automatically.
 
@@ -65,7 +65,7 @@ Whether to rotate log files automatically.
 
 ---
 
-### `file.rotate_max_age_days`[](https://www.benthos.dev/docs/components/logger/about#filerotate_max_age_days)
+### `file.rotate_max_age_days`
 
 The maximum number of days to retain old log files based on the timestamp encoded in their filename, after which they are deleted. Setting to zero disables this mechanism.
 

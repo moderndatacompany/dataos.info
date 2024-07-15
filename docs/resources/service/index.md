@@ -8,7 +8,7 @@ search:
 
 A Service represents a long-running process that acts as a receiver and/or provider of APIs. It's a DataOS [Resource](/resources/), catering to various scenarios involving continuous real-time and streaming data flow. Whether it's event processing, streaming IoT data, log processing for network devices, real-time stock trade analysis, or dynamic user interfaces (UIs), the Service Resource enables data developers to gather, process, and analyze real-time/streaming data flow, enabling timely insights and swift response to the latest information.
 
-While resembling a [Workflow](/resources/workflow) in some aspects, a Service differentiates itself by not employing [Directed Acyclic Graphs (DAGs)](/resources/workflow#workflows-and-directed-acyclic-graphs-dags). Instead, a Service is provisioned as a runnable entity, albeit limited to utilizing a single [Stack](/resources/stacks) at a time. This contrasts with a [Workflow](/resources/workflow), which can accommodate multiple [jobs](/resources/workflow#workflows-and-directed-acyclic-graphs-dags) being executed upon separate [Stacks.](/resources/stacks)
+While resembling a [Workflow](/resources/workflow/) in some aspects, a Service differentiates itself by not employing [Directed Acyclic Graphs (DAGs)](/resources/workflow/#workflows-and-directed-acyclic-graphs-dags). Instead, a Service is provisioned as a runnable entity, albeit limited to utilizing a single [Stack](/resources/stacks) at a time. This contrasts with a [Workflow](/resources/workflow/), which can accommodate multiple [jobs](/resources/workflow/#workflows-and-directed-acyclic-graphs-dags) being executed upon separate [Stacks](/resources/stacks/).
 
 ## Core Concepts
 
@@ -53,7 +53,7 @@ To create a Service Resource, you need to configure the YAML file with the appro
 
 #### **Configure the Resource Meta Section**
 
-A Service is a [Resource-type](/resources/types_of_dataos_resources) in DataOS. Below is the YAML configuration for the Resource Meta Section:
+A Service is a [Resource-type](/resources/types/) in DataOS. Below is the YAML configuration for the Resource Meta Section:
 ```yaml
 name: ${my-service}
 version: v1 
@@ -66,7 +66,7 @@ owner: ${iamgroot}
 ```
 <center><i>Resource Meta Section Configuration for a Service</i></center>
 
-For detailed customization options and additional attributes of the Resource Section, refer to the link: [Attributes of Resource Meta Section.](/resources/resource_attributes)
+For detailed customization options and additional attributes of the Resource Section, refer to the link: [Attributes of Resource Meta Section.](/resources/manifest_attributes/)
 
 #### **Configuring the Service-specific Section**
 
@@ -99,11 +99,11 @@ service:
 
 The Stack-specific Section allows you to specify the desired stack for executing your service. Depending on your requirements, you can choose from the following supported stacks:
 
-- [Benthos Stack](/resources/stacks/benthos): The Benthos stack provides advanced capabilities for stream data processing and analysis.
+- [Benthos Stack](/resources/stacks/benthos/): The Benthos stack provides advanced capabilities for stream data processing and analysis.
 
-- [Container Stack](/resources/stacks/container): The Container stack offers a powerful environment for hosting web-appliation, and custom Docker images atop DataOS.
+- [Container Stack](/resources/stacks/container/): The Container stack offers a powerful environment for hosting web-appliation, and custom Docker images atop DataOS.
 
-- [Beacon Stack](/resources/stacks/beacon): The Beacon stack provides a comprehensive set of tools and utilities for managing PostsgreSQL Database.
+- [Beacon Stack](/resources/stacks/beacon/): The Beacon stack provides a comprehensive set of tools and utilities for managing PostsgreSQL Database.
 
 To configure the Stack-specific Section, refer to the appropriate stack documentation for detailed instructions on setting up and customizing the stack according to your needs. Each stack has its unique features and configurations that can enhance the functionality of your workflow. A sample is provided below.
 
@@ -250,7 +250,7 @@ Run the `apply` command on DataOS CLI to create the service resource in DataOS e
 dataos-ctl apply -f ${filename.yaml} -w ${name of the workspace}
 ```
 
-To learn more about `apply` command, refer to the [CLI](/interfaces/cli/command_reference) section.
+To learn more about `apply` command, refer to the [CLI](/interfaces/cli/command_reference/) section.
 
 ## Service YAML Configuration Field Reference
 
@@ -260,32 +260,32 @@ The table below presents an exhaustive list of key-value properties and their de
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`service`](/resources/service/yaml_configuration_attributes#service)| mapping | none | none | mandatory |
-| [`title`](/resources/service/yaml_configuration_attributes#title) | string | none | any string | optional |
-| [`tags`](/resources/service/yaml_configuration_attributes#tags) | list of strings | none | valid string | optional |
-| [`servicePort`](/resources/service/yaml_configuration_attributes#serviceport) | integer | none | any valid service port | optional |
-| [`ingress`](/resources/service/yaml_configuration_attributes#ingress) | mapping | none | none | mandatory  |
-| [`enabled`](/resources/service/yaml_configuration_attributes#enabled) | boolean | false | true/false | mandatory |
-| [`path`](/resources/service/yaml_configuration_attributes#path) | string | none | any valid path | mandatory |
-| [`stripPath`](/resources/service/yaml_configuration_attributes#strippath) | boolean | false | true/false | mandatory |
-| [`noAuthentication`](/resources/service/yaml_configuration_attributes#noauthentication) | boolean | false | true/false | optional |
-| [`replicas`](/resources/service/yaml_configuration_attributes#replicas) | integer | 1 | any positive integer | optional  |
-| [`autoscaling`](/resources/service/yaml_configuration_attributes#autoscaling) | mapping | none | none | optional |
-| [`enabled`](/resources/service/yaml_configuration_attributes#enabled-1) | boolean | false | true/false | optional |
-| [`minReplicas`](/resources/service/yaml_configuration_attributes#minreplicas) | integer | 1 | any positive integer | optional  |
-| [`maxReplicas`](/resources/service/yaml_configuration_attributes#maxreplicas) | integer | 1 | any positive integer | optional  |
-| [`targetMemoryUtilizationPercentage`](/resources/service/yaml_configuration_attributes#targetmemoryutilizationpercentage) | integer | none | any positive integer | optional  |
-| [`targetCPUUtilizationPercentage`](/resources/service/yaml_configuration_attributes#targetcpuutilizationpercentage) | integer | None | any positive integer | optional  |
-| [`stack`](/resources/service/yaml_configuration_attributes#stack) | string | None | benthos/container/beacon | mandatory |
-| [`logLevel`](/resources/service/yaml_configuration_attributes#loglevel) | string | INFO | INFO/WARN/DEBUG/ERROR | optional |
-| [`configs`](/resources/service/yaml_configuration_attributes#configs) | mapping | none | key-value pairs of configurations | optional |
-| [`envs`](/resources/service/yaml_configuration_attributes#envs) | mapping | none | key-value pairs of environment variables | optional |
-| [`compute`](/resources/service/yaml_configuration_attributes#compute) | string | none | runnable-default or any other custom Compute Resource | mandatory |
-| [`resources`](/resources/service/yaml_configuration_attributes#resources) | mapping | none | none | optional  |
-| [`runAsApiKey`](/resources/service/yaml_configuration_attributes#runasapikey) | string | user's API Key | any valid DataOS API Key | Optional  |
-| [`runAsUser`](/resources/service/yaml_configuration_attributes#runasuser) | string | user's User-id | userID of Use-Case Assignee | optional  |
-| [`dryRun`](/resources/service/yaml_configuration_attributes#dryrun) | boolean | false | true/false | optional |
+| [`service`](/resources/service/yaml_configuration_attributes/#service)| mapping | none | none | mandatory |
+| [`title`](/resources/service/yaml_configuration_attributes/#title) | string | none | any string | optional |
+| [`tags`](/resources/service/yaml_configuration_attributes/#tags) | list of strings | none | valid string | optional |
+| [`servicePort`](/resources/service/yaml_configuration_attributes/#serviceport) | integer | none | any valid service port | optional |
+| [`ingress`](/resources/service/yaml_configuration_attributes/#ingress) | mapping | none | none | mandatory  |
+| [`enabled`](/resources/service/yaml_configuration_attributes/#enabled) | boolean | false | true/false | mandatory |
+| [`path`](/resources/service/yaml_configuration_attributes/#path) | string | none | any valid path | mandatory |
+| [`stripPath`](/resources/service/yaml_configuration_attributes/#strippath) | boolean | false | true/false | mandatory |
+| [`noAuthentication`](/resources/service/yaml_configuration_attributes/#noauthentication) | boolean | false | true/false | optional |
+| [`replicas`](/resources/service/yaml_configuration_attributes/#replicas) | integer | 1 | any positive integer | optional  |
+| [`autoscaling`](/resources/service/yaml_configuration_attributes/#autoscaling) | mapping | none | none | optional |
+| [`enabled`](/resources/service/yaml_configuration_attributes/#enabled-1) | boolean | false | true/false | optional |
+| [`minReplicas`](/resources/service/yaml_configuration_attributes/#minreplicas) | integer | 1 | any positive integer | optional  |
+| [`maxReplicas`](/resources/service/yaml_configuration_attributes/#maxreplicas) | integer | 1 | any positive integer | optional  |
+| [`targetMemoryUtilizationPercentage`](/resources/service/yaml_configuration_attributes/#targetmemoryutilizationpercentage) | integer | none | any positive integer | optional  |
+| [`targetCPUUtilizationPercentage`](/resources/service/yaml_configuration_attributes/#targetcpuutilizationpercentage) | integer | None | any positive integer | optional  |
+| [`stack`](/resources/service/yaml_configuration_attributes/#stack) | string | None | benthos/container/beacon | mandatory |
+| [`logLevel`](/resources/service/yaml_configuration_attributes/#loglevel) | string | INFO | INFO/WARN/DEBUG/ERROR | optional |
+| [`configs`](/resources/service/yaml_configuration_attributes/#configs) | mapping | none | key-value pairs of configurations | optional |
+| [`envs`](/resources/service/yaml_configuration_attributes/#envs) | mapping | none | key-value pairs of environment variables | optional |
+| [`compute`](/resources/service/yaml_configuration_attributes/#compute) | string | none | runnable-default or any other custom Compute Resource | mandatory |
+| [`resources`](/resources/service/yaml_configuration_attributes/#resources) | mapping | none | none | optional  |
+| [`runAsApiKey`](/resources/service/yaml_configuration_attributes/#runasapikey) | string | user's API Key | any valid DataOS API Key | Optional  |
+| [`runAsUser`](/resources/service/yaml_configuration_attributes/#runasuser) | string | user's User-id | userID of Use-Case Assignee | optional  |
+| [`dryRun`](/resources/service/yaml_configuration_attributes/#dryrun) | boolean | false | true/false | optional |
 
 </center>
 
-For a detailed explanation of each attribute, consult the [Attributes of Service YAML.](/resources/service/yaml_configuration_attributes)
+For a detailed explanation of each attribute, consult the [Attributes of Service YAML](/resources/service/yaml_configuration_attributes/).

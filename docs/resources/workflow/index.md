@@ -42,12 +42,12 @@ Workflows can be configured to autoscale and match varying workload demands, ref
 Workflows orchestrate Stacks to accomplish myriad tasks. Below are some recipes to help you configure and utilize Workflows effectively:
 
 
-- [How to implement Single-run Workflow?](/resources/workflow/how_to_guide/single_run_workflow)
+- [How to implement Single-run Workflow?](/resources/workflow/how_to_guide/single_run_workflow/)
 
-- [How to run a Cron Workflow or a Scheduled Workflow?](/resources/workflow/how_to_guide/scheduled_workflow)
+- [How to run a Cron Workflow or a Scheduled Workflow?](/resources/workflow/how_to_guide/scheduled_workflow/)
 
-- [How to orchestrate multiple Workflows from a single Workflow?](/resources/workflow/how_to_guide/multiple_workflows_from_a_single_workflow)
+- [How to orchestrate multiple Workflows from a single Workflow?](/resources/workflow/how_to_guide/multiple_workflows_from_a_single_workflow/)
 
-- [How to retry a job in the Workflow?](/resources/workflow/how_to_guide/retry_jobs)
+- [How to retry a job in the Workflow?](/resources/workflow/how_to_guide/retry_jobs/)
 
 - [How to apply a workflow and get a runtime status of it using CLI Stack?](/resources/workflow/how_to_guide/apply_a_workflow_and_get_runtime_status_using_cli_stack/)

@@ -16,15 +16,15 @@ pipeline:
 
 The `threads` field in the pipeline section determines how many parallel processing threads are created. You can read more about parallel processing in the pipeline guide.
 
-## Labels[](https://www.benthos.dev/docs/components/processors/about#labels)
+## Labels
 
 Processors have an optional field `label` that can uniquely identify them in observability data such as metrics and logs. This can be useful when running configs with multiple nested processors, otherwise, their metrics labels will be generated based on their composition. For more information, check out the metrics documentation.
 
-## Error Handling[](https://www.benthos.dev/docs/components/processors/about#error-handling)
+## Error Handling
 
 Some processors have conditions whereby they might fail. Rather than throw these messages into the abyss, Benthos still attempts to send these messages onward and has mechanisms for filtering, recovering, or dead-letter queuing messages that have failed, which can be read about here.
 
-### Error Logs[](https://www.benthos.dev/docs/components/processors/about#error-logs)
+### Error Logs
 
 Errors that occur during processing can be roughly separated into two groups; those that are unexpected intermittent errors, such as connectivity problems, and those that are logical errors, such as bad input data or unmatched schemas.
 
@@ -37,7 +37,7 @@ logger:
   level: DEBUG
 ```
 
-## Using Processors as Outputs[](https://www.benthos.dev/docs/components/processors/about#using-processors-as-outputs)
+## Using Processors as Outputs
 
 It might be the case that a processor that results in a side effect, such as the  `sql_insert`  or  `redis` processors, is the only side effect of a pipeline and, therefore, could be considered the output.
 
@@ -57,21 +57,21 @@ output:
 
 The way this works is that if your processor with the side effect (`redis` in this case) succeeds, then the final `mapping` processor deletes the message, which results in an acknowledgment. If the processor fails, then the `try` block exits early without executing the `mapping` processor and instead, the message is routed to the `reject` output, which nacks the message with an error message containing the error obtained from the `redis` processor.
 
-## Categories[](https://www.benthos.dev/docs/components/processors/about#categories)
+## Categories
 
 <center>
 
 |Processors|Category|
 |---|---|
-|[bloblang](./processors/bloblang.md)|Processor|
-|[mapping](./processors/mapping.md)|Processor|
-|[log](./processors/log.md)|Processor|
-|[rate_limit](./processors/rate_limit.md)|Processor|
+|[bloblang](/resources/stacks/benthos/components/processors/bloblang/)|Processor|
+|[mapping](/resources/stacks/benthos/components/processors/mapping/)|Processor|
+|[log](/resources/stacks/benthos/components/processors/log/)|Processor|
+|[rate_limit](/resources/stacks/benthos/components/processors/rate_limit/)|Processor|
 
 </center>
 
 
-## Batching and Multiple Part Messages[](https://www.benthos.dev/docs/components/processors/about#batching-and-multiple-part-messages)
+## Batching and Multiple Part Messages
 
 All Benthos processors support multiple-part messages, which are synonymous with batches. This enables some cool windowed processing capabilities.
 

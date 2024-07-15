@@ -24,7 +24,7 @@ Some inputs have a logical end, for example, a `csv` input ends once the last
 
 It's also possible to specify a logical end for an input that otherwise doesn't have one with the `read_until` input, which checks a condition against each consumed message in order to determine whether it should be the last.
 
-## Brokering[](https://www.benthos.dev/docs/components/inputs/about#brokering)
+## Brokering
 
 Only one input is configured at the root of a Benthos config. However, the root input can be a broker which combines multiple inputs and merges the streams:
 
@@ -45,15 +45,15 @@ input:
           consumer_group: benthos_group
 ```
 
-## Labels[](https://www.benthos.dev/docs/components/inputs/about#labels)
+## Labels
 
 Inputs have an optional field `label` that can uniquely identify them in observability data such as metrics and logs. This can be useful when running configs with multiple inputs, otherwise their metrics labels will be generated based on their composition. For more information check out the metrics documentation.
 
-### Sequential Reads[](https://www.benthos.dev/docs/components/inputs/about#sequential-reads)
+### Sequential Reads
 
 Sometimes it's useful to consume a sequence of inputs, where an input is only consumed once its predecessor is drained fully, you can achieve this with the `sequence` input.
 
-## Generating Messages[](https://www.benthos.dev/docs/components/inputs/about#generating-messages)
+## Generating Messages
 
 It's possible to generate data with Benthos using the `generate` input, which is also a convenient way to trigger scheduled pipelines.
 
@@ -68,41 +68,41 @@ To access specific YAML configurations for each input source, users can refer to
 
 |Name|Category|
 |---|---|
-|[amqp_0_9](./inputs/amqp_0_9.md)|AMQP, Services|
-|[amqp_1](./inputs/amqp_1.md)|AMQP, Services|
-|[aws_kinesis](./inputs/aws_kinesis.md)|AWS, Services|
-|[aws_s3](./inputs/aws_s3.md)|AWS, Services|
-|[aws_sqs](./inputs/aws_sqs.md)|AWS, Services|
-|[azure_blob_storage](./inputs/azure_blob_storage.md)|Azure, Services|
-|[azure_queue_storage](./inputs/azure_queue_storage.md)|Azure, Services|
-|[azure_table_storage](./inputs/azure_table_storage.md)|Azure, Services|
-|[batched](./inputs/batched.md)|Utility|
-|[beanstalkd](./inputs/beanstalkd.md)|Services|
-|[broker](./inputs/broker.md)|Utility|
-|[cassandra](./inputs/cassandra.md)|Services|
-|[csv](./inputs/csv.md)|Local|
-|[discord](./inputs/discord.md)|Services, Social|
-|[dynamic](./inputs/dynamic.md)|Utility|
-|[file](./inputs/file.md)|Local|
-|[gcp_bigquery_select](./inputs/gcp_bigquery_select.md)|GCP, Services|
-|[gcp_cloud_storage](./inputs/gcp_cloud_storage.md)|GCP, Services|
-|[gcp_pubsub](./inputs/gcp_pubsub.md)|GCP, Services|
-|[generate](./inputs/generate.md)|Utility|
-|[hdfs](./inputs/hdfs.md)|Services|
-|[http_client](./inputs/http_client.md)|Network|
-|[http_server](./inputs/http_server.md)|Network|
-|[inproc](./inputs/inproc.md)|Utility|
-|[kafka](./inputs/kafka.md)|Services|
-|[kafka_franz](./inputs/kafka_franz.md)|Services|
-|[mongodb](./inputs/mongodb.md)|Services|
-|[nanomsg](./inputs/nanomsg.md)|Network|
-|[parquet](./inputs/parquet.md)|Local|
-|[pulsar](./inputs/pulsar.md)|Services|
-|[sftp](./inputs/sftp.md)|Network|
-|[socket](./inputs/socket.md)|Network|
-|[socket_server](./inputs/socket_server.md)|Network|
-|[stdin](./inputs/stdin.md)|Local|
-|[twitter_search](./inputs/twitter_search.md)|Services, Social|
-|[mqtt](./inputs/mqtt.md)|Services|
+|[amqp_0_9](/resources/stacks/benthos/components/inputs/amqp_0_9/)|AMQP, Services|
+|[amqp_1](/resources/stacks/benthos/components/inputs/amqp_1/)|AMQP, Services|
+|[aws_kinesis](/resources/stacks/benthos/components/inputs/aws_kinesis/)|AWS, Services|
+|[aws_s3](/resources/stacks/benthos/components/inputs/aws_s3/)|AWS, Services|
+|[aws_sqs](/resources/stacks/benthos/components/inputs/aws_sqs/)|AWS, Services|
+|[azure_blob_storage](/resources/stacks/benthos/components/inputs/azure_blob_storage/)|Azure, Services|
+|[azure_queue_storage](/resources/stacks/benthos/components/inputs/azure_queue_storage/)|Azure, Services|
+|[azure_table_storage](/resources/stacks/benthos/components/inputs/azure_table_storage/)|Azure, Services|
+|[batched](/resources/stacks/benthos/components/inputs/batched/)|Utility|
+|[beanstalkd](/resources/stacks/benthos/components/inputs/beanstalkd/)|Services|
+|[broker](/resources/stacks/benthos/components/inputs/broker/)|Utility|
+|[cassandra](/resources/stacks/benthos/components/inputs/cassandra/)|Services|
+|[csv](/resources/stacks/benthos/components/inputs/csv/)|Local|
+|[discord](/resources/stacks/benthos/components/inputs/discord/)|Services, Social|
+|[dynamic](/resources/stacks/benthos/components/inputs/dynamic/)|Utility|
+|[file](/resources/stacks/benthos/components/inputs/file/)|Local|
+|[gcp_bigquery_select](/resources/stacks/benthos/components/inputs/gcp_bigquery_select/)|GCP, Services|
+|[gcp_cloud_storage](/resources/stacks/benthos/components/inputs/gcp_cloud_storage/)|GCP, Services|
+|[gcp_pubsub](/resources/stacks/benthos/components/inputs/gcp_pubsub/)|GCP, Services|
+|[generate](/resources/stacks/benthos/components/inputs/generate/)|Utility|
+|[hdfs](/resources/stacks/benthos/components/inputs/hdfs/)|Services|
+|[http_client](/resources/stacks/benthos/components/inputs/http_client/)|Network|
+|[http_server](/resources/stacks/benthos/components/inputs/http_server/)|Network|
+|[inproc](/resources/stacks/benthos/components/inputs/inproc/)|Utility|
+|[kafka](/resources/stacks/benthos/components/inputs/kafka/)|Services|
+|[kafka_franz](/resources/stacks/benthos/components/inputs/kafka_franz/)|Services|
+|[mongodb](/resources/stacks/benthos/components/inputs/mongodb/)|Services|
+|[nanomsg](/resources/stacks/benthos/components/inputs/nanomsg/)|Network|
+|[parquet](/resources/stacks/benthos/components/inputs/parquet/)|Local|
+|[pulsar](/resources/stacks/benthos/components/inputs/pulsar/)|Services|
+|[sftp](/resources/stacks/benthos/components/inputs/sftp/)|Network|
+|[socket](/resources/stacks/benthos/components/inputs/socket/)|Network|
+|[socket_server](/resources/stacks/benthos/components/inputs/socket_server/)|Network|
+|[stdin](/resources/stacks/benthos/components/inputs/stdin/)|Local|
+|[twitter_search](/resources/stacks/benthos/components/inputs/twitter_search/)|Services, Social|
+|[mqtt](/resources/stacks/benthos/components/inputs/mqtt/)|Services|
 
 </center>
