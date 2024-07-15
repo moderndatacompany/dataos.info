@@ -67,21 +67,7 @@ Once use cases have been defined, the next step is to review the existing data p
 
 ## Data Product Development Life-cycle
 
-The Data Product Development Life-cycle consists of four key phases: Design, Develop, Deploy, and Iterate. It starts with Design, where business goals are translated into a solution architecture. The Develop phase involves building and testing the data product based on this design. Deploy focuses on releasing the product to users and ensuring it operates effectively in a production environment. Finally, Iterate emphasizes continuous improvement through feedback and performance analysis to adapt to evolving needs and enhance the product over time. To know more about each phase, please explore below sections.
-
-### **Design**
-
-The Design phase of Data Product life-cycle is pivotal in aligning business objectives with actionable solutions. It begins with a comprehensive understanding of business goals and use cases, forming the basis for developing a robust solution architecture. To know more in detail, please refer to [How to Design a Data Product](/products/data_product/how_to_guides/design/).
-
-### **Build**
-
-The Build phase involves coding, configurations, and integrations to build data pipelines, application logic, and interfaces according to the solution architecture. Rigorous testing ensures functionality, performance, and reliability, with ongoing stakeholder collaboration to validate that the built product aligns with business objectives and technical specifications. To know more in detail, please refer to [How to Build a Data Product](/products/data_product/how_to_guides/build/).
-
-### **Deploy**
-The Deploy phase of Data Product life-cycle emphasis on making Data Products available for Data Product personas. To know more, please refer to [How to Deploy a Data Product](/products/data_product/how_to_guides/deploy/).
-
-### **Iterate**
-The Iterate phase in the Data Product life-cycle focuses on continuous improvement and refinement based on feedback, usage patterns, and evolving business needs. It involves analyzing user interactions, performance metrics, and gathering stakeholder feedback to identify areas for enhancement or adjustment. To know more in detail, please refer to [How to Iterate the Data Product](/products/data_product/how_to_guides/manage_and_iterate/).
+The Data Product Development Life-cycle consists of four key phases: Design, Develop, Deploy, and Iterate. It starts with Design, where business goals are translated into a solution architecture. The Develop phase involves building and testing the data product based on this design. Deploy focuses on releasing the product to users and ensuring it operates effectively in a production environment. Finally, Iterate emphasizes continuous improvement through feedback and performance analysis to adapt to evolving needs and enhance the product over time. 
 
 
 
