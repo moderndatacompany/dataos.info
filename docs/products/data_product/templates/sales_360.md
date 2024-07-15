@@ -1,5 +1,5 @@
 
-# Case Study: StrideRight Shoes
+# Sales 360 Case Study: StrideRight Shoes
 
 ## Company Background
 
@@ -117,30 +117,7 @@ For comprehensive details on the features and capabilities of Workbench, refer t
 
 #### **Data Product Architectural Design**
 
-Once you've explored the data, the next step is to plan the architectural design. For example, In our case, the  Data Sources are Bigquery and Postgres to connect with  this sources we will need to create two Depots. The flare job will then use this depot and will faciliate easy ingestion and transformation from source to icebase. After ingestion, the data will must go through profiling and pass all the defined quality checks we will discuss this in detail in Build Phase. Then our data product will be ready to be used in a Analytical Platform.
-
-```markdown
-+-------------------------+                                     +-------------------+
-|                         |                                     |                   |
-|      Data Sources       +                                     |    Analytical     |
-|     (Bigquery,          |                                     |    platforms      |
-|      Postgres,          |                                     |                   |
-|           etc.)         |                                     |                   |
-+-----------+-------------+                                     +---------+---------+
-            |                                                             ^
-            |                                                             |
-            |                                                             |
-            |                                                             |
-            v                                                             |
-+-----------+-------------+      +-----------+-----------+      +---------+---------+
-|                         |      |                       |      |                   |
-|         Depot           +----->+     Workflow          +----->+     Objectives    |
-+-------------------------+      | (Data Transformation) |      | (Quality Checks)  |
-                                 +-----------------------+      |                   |
-                                                                |                   |
-                                                                +-------------------+
-```
-
+Once you've explored the data, the next step is to plan the architectural design. For example, In our case, the  Data Sources are Bigquery and Postgres to connect with  this sources we will need to create two Depots. The flare job will then use this depot and will faciliate easy ingestion and transformation from source to icebase. After ingestion, the data will must go through profiling and pass all the defined quality checks we will discuss this in detail in Build Phase. Then our data product will be ready to be used in a Analytical Platform.d
 
 <center> ![Architectural Diagram](/products/data_product/templates/architecture.png) </center> 
 
@@ -166,9 +143,9 @@ After finalizing the design of the Data Product, it undergoes review sessions wi
 
 Once the design aligns with requirements, the subsequent phase focuses on devloping the Data Product.
 
-## Develop
+## Build
 
-This section involves the devloping the Data Product right from data connection to defining SLOs. Here we will be creating resources and stacks and all other capabilities of DataOS to fulfill the design phase requirements.
+This section involves the buildin the Data Product right from data connection to defining SLOs. Here we will be creating resources and stacks and all other capabilities of DataOS to fulfill the design phase requirements.
 
 ### **Steps to Create a Data Product**
 
@@ -365,52 +342,6 @@ Here are all the mentioned quality checks manifest files:
 ```
 </details>
 
-#### **Create the Lens**
-
-##### **Developing a Conceptual Data Model**
-
-| Entity      | Fields and Dimensions                                                                                                                                     | Derived Dimensions                                                                                                                                                                              | Measure                                                                                               | Related To | Relationship |
-|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|------------|--------------|
-| Channel     | store_id, store_name, store_address, store_contact_email, store_contact_phone, platform_name, platform_url, country, currency, channel_type, nearest_offline_store |                                                                                                                                                                                                 | total_stores                                                                                          |            |              |
-| Customer    | customer_id, first_name, last_name, gender, phone_number, email_id, birth_date, age, education_level, marital_status, number_of_children, register_date, occupation, annual_income, hobbies, degree_of_loyalty, social_class, mailing_street, city, state, country, zip_code | full_name, age_group                                                                                                                                                                            | total_customers, average_age                                                                          | Transaction| 1:N          |
-| Products    | productid, skuid, productname, productcategory, subcategory, gender, price, cost, launchdate, designername, color, size, model                                 |                                                                                                                                                                                                 | total_products, average_price, total_cost, average_margin                                             |            |              |
-| Transaction | transaction_id, customer_id, transaction_date, order_id, transaction_amount, payment_method, transaction_type, transaction_status, order_delivery_date, discounted_amount, shipping_amount, order_total_amount, discount_percentage, shipping_address, billing_address, promo_code, shipping_method, order_status, skuid, store_id | full_address, transaction_year, transaction_month, transaction_day, order_delivery_duration, discount_applied, shipping_cost_category                                                          | total_transactions, total_revenue, average_transaction_amount, total_discounted_amount, total_shipping_amount, total_order_amount, transaction_percentage_with_discount, ups_delivered_percentage, canceled_order_percentage, monthly_revenue_curr, monthly_revenue_prev | Products, Channel | N:1, N:1   |
-|             |                                                                                                                                                            |                                                                                                                                                                                                 |                                                                                                       |            |              |
-
-
-<details> 
-  <summary> lens</summary>
-  
-```yaml title="sales_360_lens.yml"
---8<-- "examples/products/data/sales_360/lens.yml"
-```
-</details>
-
-#### **Create the Streamlit App for Data Consumer**
-
-This streamlit app will give you the details  of churned and not  churned customers so that all the customers who are going to churned can be retained bby contacting them and giving them special discounts.
-
-<details>
-  <summary>streamlit-app manifest file</summary>
-
-```yaml title="app.py"
---8<-- "examples/products/data/sales_360/app/customer_churn.py"
-```
-</details>
-
-The Output:
-
-<center> ![Streamlit](/products/data_product/templates/streamlit.png) </center>
-
-<center> The Streamit App for Customer Churn Details </center>
-
-
-#### **Create the Superset Dashboard**
-
-<center> ![Superset](/products/data_product/templates/superset.png) </center>
-
-<center> The Superset Dashboard for Sales 360 </center>
-
 #### **Create the Data Product manifest file**
 
 Here we will define our Input, Output  and transformations.
@@ -433,6 +364,7 @@ Here we will define our Input, Output  and transformations.
 
     - **Superset Dashboard** Sales intelligence dashboard.
 
+  - **SLOs:** Defining quality and profiling expectations and 
 
 ```yaml title="customer_data_product.yml"
 --8<-- "examples/products/data/sales_360/data_products/sales_360_dp.yml"
@@ -452,22 +384,68 @@ Once you've created your data product with all its functionalities and insights,
 
 Now, you can see your newly created data product in [DPH](/interfaces/data_product_hub)
 
-## **Iterate**
+## Monitor and Iterate
 
-Iterating a Data Product involves refining and enhancing it based on feedback, performance metrics, and evolving business requirements. If you need to iterate your Data Product based on feedback from data consumers, follow these steps:
+After deployment, monitor the Data Product's performance and continue to collect feedback. Iterate the process as needed to achieve the desired results. The improvements can include:
 
-  - Collect Feedback: Gather feedback from users and stakeholders regarding the Data Product's performance, usability, and effectiveness in solving the intended problem.
-
-  - Analyze Feedback: Identify common issues and suggestions for improvements. Prioritize these based on impact and feasibility.
-
-  - Plan Iteration: Define the scope of changes needed to address the feedback. Create a plan that includes tasks, timelines, and resources required for the iteration.
-
-  - Implement Changes: Update the Data Product according to the iteration plan. This might involve modifying data sources, transformation logic, data models, or visualization techniques.
-
-  - Validate Changes: Ensure that the changes meet the intended goals and do not introduce new issues. Validate the updated Data Product through testing and user acceptance.
-
-  - Deploy Updated Product: Deploy the updated Data Product to the production environment.
-
-  - Monitor and Iterate Again: After deployment, monitor the Data Product's performance and continue to collect feedback. Iterate the process as needed to achieve the desired results.
+ - Enhancing the level of data quality.
+ - Enriching the schema.
 
 By following these steps, you can continuously improve your Data Product to better meet user needs and business objectives.
+
+
+## Leveraging tools for consuming data products
+
+All the Data Visulaisationa tools such as Superset, PowerBI and Data Modelling tools such as Lens serve as a tool to consume the data products to derive the required actionable insights for which the data product was built.
+
+### **Lens**
+
+#### **Create the Lens**
+
+#### **Developing a Conceptual Data Model**
+
+| Entity      | Fields and Dimensions                                                                                                                                     | Derived Dimensions                                                                                                                                                                              | Measure                                                                                               | Related To | Relationship |
+|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|------------|--------------|
+| Channel     | store_id, store_name, store_address, store_contact_email, store_contact_phone, platform_name, platform_url, country, currency, channel_type, nearest_offline_store |                                                                                                                                                                                                 | total_stores                                                                                          |            |              |
+| Customer    | customer_id, first_name, last_name, gender, phone_number, email_id, birth_date, age, education_level, marital_status, number_of_children, register_date, occupation, annual_income, hobbies, degree_of_loyalty, social_class, mailing_street, city, state, country, zip_code | full_name, age_group                                                                                                                                                                            | total_customers, average_age                                                                          | Transaction| 1:N          |
+| Products    | productid, skuid, productname, productcategory, subcategory, gender, price, cost, launchdate, designername, color, size, model                                 |                                                                                                                                                                                                 | total_products, average_price, total_cost, average_margin                                             |            |              |
+| Transaction | transaction_id, customer_id, transaction_date, order_id, transaction_amount, payment_method, transaction_type, transaction_status, order_delivery_date, discounted_amount, shipping_amount, order_total_amount, discount_percentage, shipping_address, billing_address, promo_code, shipping_method, order_status, skuid, store_id | full_address, transaction_year, transaction_month, transaction_day, order_delivery_duration, discount_applied, shipping_cost_category                                                          | total_transactions, total_revenue, average_transaction_amount, total_discounted_amount, total_shipping_amount, total_order_amount, transaction_percentage_with_discount, ups_delivered_percentage, canceled_order_percentage, monthly_revenue_curr, monthly_revenue_prev | Products, Channel | N:1, N:1   |
+
+
+<center> ![Lens](products/data_product/templates/lens.png) </center>
+<center>  The Entity Relationship Diagram of the lens </center>
+
+
+
+<details> 
+  <summary> lens</summary>
+  
+```yaml title="sales_360_lens.yml"
+--8<-- "examples/products/data/sales_360/lens.yml"
+```
+</details>
+
+### **Streamlit App for Data Consumer**
+
+This streamlit app will give you the details  of churned and not  churned customers so that all the customers who are going to churned can be retained bby contacting them and giving them special discounts.
+
+<details>
+  <summary>streamlit-app manifest file</summary>
+
+```yaml title="app.py"
+--8<-- "examples/products/data/sales_360/app/customer_churn.py"
+```
+</details>
+
+The Output:
+
+<center> ![Streamlit](/products/data_product/templates/streamlit.png) </center>
+
+<center> The Streamit App for Customer Churn Details </center>
+
+
+### **Superset Dashboard**
+
+<center> ![Superset](/products/data_product/templates/superset.png) </center>
+
+<center> The Superset Dashboard for Sales 360 </center>
