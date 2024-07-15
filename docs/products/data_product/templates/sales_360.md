@@ -1,29 +1,40 @@
-# Sales 360 Data Product
 
-The Sales 360 data product is a structured dataset that contains comprehensive information about various entities within the organization. It serves as a central repository for product data, facilitating efficient management, analysis, and decision-making processes related to product operations, logistics, and customer engagement.
+# Case Study: StrideRight Shoes
 
-## Define  Vision
+## Company Background
 
-The vision for the Sales 360 Data Product is to become the definitive source of truth for all sales-related data within the organization. This data product aims to:
+StrideRight Shoes is a leading manufacturer and retailer specializing in high-quality footwear for various demographics, from children to adults. With a commitment to comfort, style, and durability, StrideRight Shoes aims to provide exceptional customer experiences both online and in-store.
 
-  - Enable a deeper understanding of the factors driving sales performance.
+## Challenges Faced
 
-  - Support continuous improvement and innovation in sales strategies and operations.
+ StrideRight Shoes experienced significant operational challenges, including quality issues, late deliveries, and sampling delays. These issues impacted sales effectiveness and customer satisfaction, highlighting the need for streamlined operations and improved customer engagement strategies.
 
-  - Enhance customer satisfaction and loyalty through better engagement and personalized experiences.
+## Vision
 
-  - Drive sustainable growth and profitability by leveraging insights gained from the data product.
+To revolutionize the footwear industry by leveraging advanced data analytics enhancing operational efficiency, and delivering personalized customer experiences that drive engagement, loyalty, and sustainable growth.
 
-## Define Use-case
 
-The primary use case for the Sales 360 Data Product is to analyze sales performance. This includes:
+## Goals and Objectives
 
-  - Tracking sales metrics such as revenue, units sold, and average transaction value.
-  - Identifying the most and least profitable products and services.
-  - Monitoring sales team performance and setting targets.
-  - Understanding customer purchase history and preferences.
-  - Analyzing the effectiveness of marketing campaigns and promotions.
-  - Forecasting future sales based on historical data and market trends.
+  -  **Increase Customer engagement and lower churn rate:** Understand customer preferences and provide personalized recommendations and targeted marketing campaigns.
+
+  -  **Operational Excellence:** Streamline operations to ensure timely deliveries, maintain high-quality standards, and optimize inventory management.
+
+  -  **Maximize revenue from high-value customers.** Integrate and analyze customer interaction and transaction data to derive actionable insights and stay ahead of market trends.
+
+
+## Use-cases
+
+1. **Personalized Marketing Campaigns:**  Tailor marketing efforts using customer data to create personalized recommendations and targeted campaigns.
+
+2. **Customer Churn Prediction:** Identify at-risk customers with predictive models and implement retention strategies to reduce churn.
+
+3. **Sales Performance Analysis:** Monitor and analyze sales data through interactive dashboards to identify trends and optimize marketing strategies.
+
+
+## Solution
+
+**Sales 360 Data Product:** The Sales 360 data product is a structured dataset that contains comprehensive information about various entities within the organization. It serves as a central repository for product data, facilitating efficient management, analysis, and decision-making processes related to product operations, logistics, and customer engagement.
 
 ## Pre-requisites
 
@@ -35,9 +46,16 @@ To create the Data Product within DataOS, following requirements were needed:
 
 ## Design Phase
 
+The individual responsible for designing the Sales 360 data product is the Data Product Owner.
+
+### **Define entities and schema**
+
+For our use case, we define the following entities: Customer, Product, Transaction, and Channel.
+
+
 ### **Data Understanding and Exploration**
 
-In the design phase of a data product, we define the scope and structure of the data product and plan its development. To plan things in the design phase, we need to first look up at the various  data that is going to be integrated and will be making Sales360 data product.
+In the design phase of a data product, we define the scope and structure of the data product and plan its development. To plan things in the design phase, we need to first look up at the various  data that is going to be integrated and will be making `Sales360` data product.
 
 For this project, we aim to create a Sales 360 data product that will integrate various tables from multiple sources. These sources must be connected to DataOS using Depot.
 
@@ -47,25 +65,43 @@ For example, here the source is bigquery warehouse.
 
 Creating a bigquery depot with json file of the credentails of the client's warehouse.
 
+
+<details>
+
+  <summary>bigquery depot manifest file</summary>
+
 ```yaml title="bigquery_depot.yml" hl_lines="18"
 --8<-- "examples/products/data/sales_360/sales_depot.yml"
 ```
+</details>
 
 #### **Extract the Metadata**
 
 To explore the metadata of the tables you can run a scanner. You can then access the metadata on Metis UI. The Scanner manifest file is shown below:
 
+<details>
+
+  <summary>scanner manifest file</summary>
+
 ```yaml title="scanner.yml"
 --8<-- "examples/products/data/sales_360/scanner.yml"
 ```
+</details>
+
 
 #### **Explore the Data**
 
 Now for data exploration, you can query the data using the workbench. To query the data on the workbench without moving the data you first need to create a Minerva or a Themis cluster that will target the Depot. By applying the below manifest file, you can create the cluster.
 
+
+<details>
+
+  <summary>cluster manifest file</summary>
+
 ```yaml title="cluster01.yml"
 --8<-- "examples/products/data/sales_360/sales_cluster.yml"
 ```
+<details>
 
 Now, to interact with  the newly created Cluster, execute the following steps:
 
@@ -76,7 +112,7 @@ Now, to interact with  the newly created Cluster, execute the following steps:
     - **Query Execution**: After formulating the query, the user executes it by clicking the 'Run' button.
     - **Result Retrieval**: The outcomes of the executed query are displayed in the pane situated below the query input area.
 
-For comprehensive details on the features and capabilities of Workbench, refer to the dedicated [Workbench](../interfaces/workbench.md) documentation.
+For comprehensive details on the features and capabilities of Workbench, refer to the dedicated [Workbench](/interfaces/workbench) documentation.
 
 
 #### **Data Product Architectural Design**
