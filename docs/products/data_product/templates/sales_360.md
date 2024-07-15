@@ -101,7 +101,7 @@ Now for data exploration, you can query the data using the workbench. To query t
 ```yaml title="cluster01.yml"
 --8<-- "examples/products/data/sales_360/sales_cluster.yml"
 ```
-<details>
+</details>
 
 Now, to interact with  the newly created Cluster, execute the following steps:
 
@@ -191,28 +191,28 @@ using super [dag](/resources/workflow/#workflow-and-directed-acyclic-graph-dag) 
 Here are the all mentioned ingested manifest files:
 
 <details>
-  <summary>config-customer-flare manifest file</summary>
+  <summary>customer manifest file</summary>
 
-```yaml title="transaction-ingests.yml"
---8<-- "examples/products/data/sales_360/customer_ingest.yml"
+```yaml title="customer-ingests.yml"
+--8<-- "examples/products/data/sales_360/ingestions/customer_ingest.yml"
 ```
 </details>
 
 
 <details>
-  <summary>config-transactions-flare manifest file</summary>
+  <summary>transactions manifest file</summary>
 
-```yaml title="customer-ingest.yml"
---8<-- "examples/products/data/sales_360/transaction_ingest.yml"
+```yaml title="transaction-ingest.yml"
+--8<-- "examples/products/data/sales_360/ingestions/transaction_ingest.yml"
 ```
 </details>
 
 
 <details>
-  <summary>config-products-flare manifest file</summary>
+  <summary>products manifest file</summary>
 
 ```yaml title="product-ingestion.yml"
---8<-- "examples/products/data/sales_360/product_ingest.yml"
+--8<-- "examples/products/data/sales_360/ingestions/product_ingest.yml"
 ```
 </details>
 
@@ -220,17 +220,28 @@ Here are the all mentioned ingested manifest files:
 Now, using customer and transaction data we will create a customer churn table that will give us the total count of churned and not churned customer.
 
 <details>
-  <summary>config-customer-churn-flare manifest file</summary>
+  <summary>customer-churn manifest file</summary>
 
 ```yaml title="customer-churn-ingestion.yml"
---8<-- "examples/products/data/sales_360/customer_churn.yml"
+--8<-- "examples/products/data/sales_360/ingestions/customer_churn.yml"
 ```
 </details>
+
+Similarly, we will join transaction, product, customer and order table to get a order-enriced table.
+
+<details>
+  <summary>orders-enriched manifest file</summary>
+
+```yaml title="orders-enriched-ingestion.yml"
+--8<-- "examples/products/data/sales_360/ingestions/orders.yml"
+```
+</details>
+
 
 #### **Create the Monitor and Pager for  observability of workflows**
 
 <details>
-  <summary>flare-transformation-and-ingestion-monitor manifest file</summary>
+  <summary>Ingestion monitor manifest file</summary>
 
 ```yaml title="transformation_and_ingestion_monitor.yml"
 --8<-- "examples/products/data/sales_360/observability/monitor/ingestion-monitor.yml"
@@ -238,7 +249,7 @@ Now, using customer and transaction data we will create a customer churn table t
 </details>
 
 <details>
-  <summary>flare-transformation-and-ingestion-pager manifest file</summary>
+  <summary>Ingestion pager manifest file</summary>
 
 ```yaml title="transformation_and_ingestion_pager.yml"
 --8<-- "examples/products/data/sales_360/observability/pagers/workflow_pager.yml"
@@ -286,7 +297,7 @@ Here are all the mentioned profiling manifest files:
   <summary>profiling-monitor manifest file</summary>
 
 ```yaml title="profiling_monitor.yml"
---8<-- "examples/products/data/sales_360/profile_monitor.yml"
+--8<-- "examples/products/data/sales_360/observability/monitor/profile_monitor.yml"
 ```
 </details>
 
@@ -354,6 +365,26 @@ Here are all the mentioned quality checks manifest files:
 ```
 </details>
 
+#### **Create the Lens**
+
+##### **Developing a Conceptual Data Model**
+
+| Entity      | Fields and Dimensions                                                                                                                                     | Derived Dimensions                                                                                                                                                                              | Measure                                                                                               | Related To | Relationship |
+|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|------------|--------------|
+| Channel     | store_id, store_name, store_address, store_contact_email, store_contact_phone, platform_name, platform_url, country, currency, channel_type, nearest_offline_store |                                                                                                                                                                                                 | total_stores                                                                                          |            |              |
+| Customer    | customer_id, first_name, last_name, gender, phone_number, email_id, birth_date, age, education_level, marital_status, number_of_children, register_date, occupation, annual_income, hobbies, degree_of_loyalty, social_class, mailing_street, city, state, country, zip_code | full_name, age_group                                                                                                                                                                            | total_customers, average_age                                                                          | Transaction| 1:N          |
+| Products    | productid, skuid, productname, productcategory, subcategory, gender, price, cost, launchdate, designername, color, size, model                                 |                                                                                                                                                                                                 | total_products, average_price, total_cost, average_margin                                             |            |              |
+| Transaction | transaction_id, customer_id, transaction_date, order_id, transaction_amount, payment_method, transaction_type, transaction_status, order_delivery_date, discounted_amount, shipping_amount, order_total_amount, discount_percentage, shipping_address, billing_address, promo_code, shipping_method, order_status, skuid, store_id | full_address, transaction_year, transaction_month, transaction_day, order_delivery_duration, discount_applied, shipping_cost_category                                                          | total_transactions, total_revenue, average_transaction_amount, total_discounted_amount, total_shipping_amount, total_order_amount, transaction_percentage_with_discount, ups_delivered_percentage, canceled_order_percentage, monthly_revenue_curr, monthly_revenue_prev | Products, Channel | N:1, N:1   |
+|             |                                                                                                                                                            |                                                                                                                                                                                                 |                                                                                                       |            |              |
+
+
+<details> 
+  <summary> lens</summary>
+  
+```yaml title="sales_360_lens.yml"
+--8<-- "examples/products/data/sales_360/lens.yml"
+```
+</details>
 
 #### **Create the Streamlit App for Data Consumer**
 
@@ -363,15 +394,22 @@ This streamlit app will give you the details  of churned and not  churned custom
   <summary>streamlit-app manifest file</summary>
 
 ```yaml title="app.py"
---8<-- "examples/products/data/sales_360/customer_churn.py"
+--8<-- "examples/products/data/sales_360/app/customer_churn.py"
 ```
 </details>
 
-**The Output:**
+The Output:
 
 <center> ![Streamlit](/products/data_product/templates/streamlit.png) </center>
 
 <center> The Streamit App for Customer Churn Details </center>
+
+
+#### **Create the Superset Dashboard**
+
+<center> ![Superset](/products/data_product/templates/superset.png) </center>
+
+<center> The Superset Dashboard for Sales 360 </center>
 
 #### **Create the Data Product manifest file**
 
@@ -384,23 +422,35 @@ Here we will define our Input, Output  and transformations.
     - **Read Input from BigQuery:** Ingest raw data as is from Bigquery, with the only transformation being the conversion of cases to lower case.
 
     - **Joined Customer and Transaction Tables:** Integrated data from the Customer and Transaction tables to identify customer-churn.
+
+    - **Orders enriched table** Integrated data from Customer, Product, Transaction and Orders table to create a Orders-enriched table.
     
   -  **Output** is defined as our complete data product ready to be consumed and can also be delivered to different platforms for different purpose like streamlit and [superset](/interfaces/superset) for data visualization, and [lens](/interfaces/lens) for data modeling.
 
+    - **Streamlit App:** for customer churn details.
+
+    - **Sales 360 Lens:** Data model for StrideRight Shoes sales intelligence and sales analysis.
+
+    - **Superset Dashboard** Sales intelligence dashboard.
+
+
 ```yaml title="customer_data_product.yml"
---8<-- "examples/products/data/sales_360/sales_360_dp.yml"
+--8<-- "examples/products/data/sales_360/data_products/sales_360_dp.yml"
 ```
 
 ## **Deploy**
 
 Once you've created your data product with all its functionalities and insights, the next step is to ensure it reaches its intended audience through platforms like Metis and the Data Product Hub. To achieve this, running the Scanner becomes crucial.
 
+
+<details>
+  <summary> data-product scanner </summary>
 ```yaml title="scanner_sales360.yml"
 --8<-- "examples/products/data/sales_360/product_scanner.yml"
 ```
+</details>
 
 Now, you can see your newly created data product in [DPH](/interfaces/data_product_hub)
-
 
 ## **Iterate**
 
