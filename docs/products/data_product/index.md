@@ -1,4 +1,4 @@
-# Data Product
+# # :products-dataproduct: Data Product
 
 ## Overview
 
@@ -197,4 +197,4 @@ Below are some recipes to help you configure Data Product effectively:
 
 Below are some templates to help you to design the Data Product:
 
-- [FS Accelerator Data Product](/products/data_product/templates/accelerator/)
+- [Financial Services Accelerator Data Product](/products/data_product/templates/accelerator/)
