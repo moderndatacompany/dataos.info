@@ -1,5 +1,9 @@
 # Getting Started with DataOS
 
+Welcome to DataOS! 
+
+DataOS enables you to effortlessly build, manage, and share data products that drive significant business outcomes. This guide provides a structured approach to familiarizing yourself with DataOS capabilities according to your role in the organization and your responsibilities.
+
 ## Initial Account Setup and Access to the DataOS Instance
 
 Contact DataOS administrator or your organization admin for sign-in details and appropriate access level according to your role in the organization.
@@ -44,7 +48,7 @@ Data Admins manage the DataOS platform and ensure its smooth operation. They han
 
 Persona: Data Analyst
 
-- **Discover Relevant Data Products**
+1. **Discover Relevant Data Products**
     1. Login to DataOS and click on **Data Product Hub.**
         
         ![dataos_home_dph.png](/getting_started/dataos_home_dph.png)
@@ -62,7 +66,7 @@ Persona: Data Analyst
         
         ![dp_filters.png](/getting_started/dp_filters.png)
         
-- **View Data Product Details**
+2. **View Data Product Details**
     1. **Click** on the data product card to access dedicated landing pages for each data product to view descriptions, purpose, data source information, and data flow.
         
         ![dp_details.png](/getting_started/dp_details.png)
@@ -77,14 +81,14 @@ Persona: Data Analyst
         
     4. Find the access permissions and if no access, initiate a request for the access.
         1. Click on **Check Access** and if required, click on **Request Access**.
-        
-- **Explore Data Product**
-    1. Click on the **Explore Data** 
+
+3. **Explore Data Product**
+    1. Click on the **Explore Data**.
     2. You will be directed to the Workbench app where you can enter queries to understand data.
         
         ![dp_dataset_workbench_query.png](/getting_started/dp_dataset_workbench_query.png)
         
-- **Activate Data Products**
+4. **Activate Data Products**
     
     You can use the data from this dataset for the following.
     
@@ -138,8 +142,3 @@ Persona: Analytics Engineer, Data Analyst, Data Product Developer
 4. Click on the dataset to see its details.
     
     ![dataset_details.png](/getting_started/dataset_details.png)
-    
-
-### **Creating Data Movement Workflows(Pipelines)**
-
-Persona: Data App Developer, Data Developer, Data Engineer

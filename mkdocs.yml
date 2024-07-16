@@ -139,6 +139,7 @@ nav:
   - Home: 
     - index.md
     - Architecture: architecture/index.md
+    - Philosophy: philosophy/index.md
     - Resources:
       - resources/index.md
       - Types:
@@ -313,6 +314,7 @@ nav:
       - DataOS PyFlare SDK: api_docs/dataos_pyflare.md
       - DataOS ScalaFlare SDK: api_docs/dataos_scala_sdk/index.html
       - DataOS Kotlin SDK: api_docs/dataos_kotlin_sdk/index.html
+  - Getting Started: getting_started/index.md
   - Data Product: 
     - products/data_product/index.md
     - Data Product Lifecycle:
