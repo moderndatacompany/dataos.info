@@ -4,7 +4,7 @@ search:
   boost: 2
 ---
 
-# Interfaces
+# :material-application-import: Interfaces
 
 Interfaces in DataOS serve as vital points of communication and interaction between different services & the users. They facilitate seamless collaboration and independent functionality within DataOS. These interfaces provide powerful tools for efficient data operations,  and control over various activities. Whether you prefer the flexibility of the API, the command-driven power of the CLI, or the intuitive experience of the GUI, DataOS interfaces enable self-service data management. Let's explore these interfaces and their capabilities.
 
@@ -18,68 +18,177 @@ The Graphical User Interface offers an intuitive and visually engaging way to in
 
 ## Application Programming Interface (API)
 
-The Application Programming Interface (API) in DataOS provides a way to interact with the core components, libraries, and services. APIs act as intermediaries, allowing users/applications to access DataOS functionality and resources. APIs empower data  developers to create diverse applications and services, leveraging the full functionality of DataOS. Learn about our SDKs on the following page: [DataOS SDKs](/api_docs/)
+The Application Programming Interface (API) in DataOS provides a way to interact with the core components, libraries, and services. APIs act as intermediaries, allowing users/applications to access DataOS functionality and resources. APIs empower data  developers to create diverse applications and services, leveraging the full functionality of DataOS. Learn about our SDKs on the following page: [DataOS SDKs](/api_docs/).
 
-<aside class="callout">The choice of interface (CLI, GUI or API) depends on factors such as specific applications, user requirements, and the capabilities of individual components. By leveraging these interfaces effectively, users can navigate their data journey within DataOS and unlock its full potential.</aside>
+<aside class="callout">
+🗣️ The choice of interface (CLI, GUI or API) depends on factors such as specific applications, user requirements, and the capabilities of individual components. By leveraging these interfaces effectively, users can navigate their data journey within DataOS and unlock its full potential.</aside>
 
 ## DataOS Home App- GUI to Interact with DataOS Components
 
 ### **Access Native Apps**
 From the DataOS Home app, you can access the unique capabilities of the components and apps.
-![dataos_homepage.png](/interfaces/dataos_homepage.png)
-<figcaption align = "center">DataOS Home App </figcaption>
+<center>
+![dataos_homepage.png](/interfaces/dataos_homepage.png){: style="width:31rem;" }
+<figcaption><i>DataOS Home App </i></figcaption>
+</center>
 
-**Atlas**
 
-An in-built BI solution to create visualizations, reports, and dashboards for powerful data storytelling and actionable insights. From the Atlas interface, you can manage queries, create snippets, set up alerts, and more. For more details, click [here](/interfaces/atlas/).
+Following native apps are available on DataOS Graphical User Interface:
 
-**Audience**
 
-Understand your customers by leveraging semantic data models built via Lens for customer segmentation and data-driven decisions using Audience UI. To learn more, click [here](/interfaces/audiences/).
 
-**Bifrost**
+<div class="grid cards" markdown>
 
-Take control of access policies for applications, services, people, and datasets to ensure secure and compliant data access. Bifrost leverages the governance engine of DataOS, Heimdall, to ensure secure and compliant data access through ABAC policies,  giving users fine-grained control over the data and resources. To learn more, click [here](/interfaces/bifrost/).
+-   :material-view-dashboard-outline:{ .lg .middle } **Atlas**
 
-**Lens**
+    ---
 
-Access and explore all the Lenses that are created to model data from diverse sources, create meaningful relationships between business concepts, define measures, and KPIs for data-informed decision-making. To explore, click [here](/interfaces/lens/). 
+    Create visualizations, reports, and dashboards. Manage queries, snippets, and alerts.
 
-**Metis**
+    [:octicons-arrow-right-24: Read more](/interfaces/atlas/)
 
-Discover, catalog, and observe enterprise data and Resources with comprehensive metadata management, providing technical and business context. Metis powers its UI by making the metadata available for users to explore and discover Products, Data Assets and DataOS Resources. To know more, click [here](/interfaces/metis/).
 
-**Notebook**
+-   :interfaces-audiences:{ .lg .middle } **Audience**
 
-Leverage the power of Jupyter Notebook on DataOS for data science projects, coding, analysis, and communication of insights. For more details, click [here](/interfaces/notebook/).
+    ---
 
-**Operations**
+    Leverage semantic models for customer segmentation and data-driven decisions.
 
-With Operations UI, monitor and administer DataOS platform activity, gaining real-time visibility into resource utilization, cluster performance, and user activities. Keep your data ecosystem running smoothly and optimize resource allocation. To learn more, click [here](/interfaces/operations/).
+    [:octicons-arrow-right-24: See more](/interfaces/audiences/)
 
-**Superset**
-Superset is a business intelligence solution seamlessly integrated into DataOS. It simplifies the creation of customized reports and dashboards, making it easy to visualize complex data. With a wide range of visualization options, Superset enables clear interpretation, aiding informed decision-making. to learn more, click [here](/interfaces/superset/).
+-   :material-security-network:{ .lg .middle } **Bifrost**
 
-**Workbench**
+    ---
 
-Explore and query your data assets using SQL with Workbench. Powered by the Minerva query engine (built on top of Trino), Workbench supports both simple and complex queries across a large variety of data sources, including traditional relational databases (Oracle, PostgreSQL, Redshift, etc.) as well as other data sources such as S3, Kafka, and Pulsar. You can query and explore data from these data sources without bringing it to DataOS. To learn more, click [here](/interfaces/workbench/).
+    Control access policies with fine-grained ABAC policies for secure data access.
+
+    
+    [:octicons-arrow-right-24: Explore more](/interfaces/bifrost/)
+
+-   :interfaces-dataproducthub:{ .lg .middle } **Data Product Hub**
+
+    ---
+
+    Central unit for exploring Data Products, accelerating time-to-value by granting quick access to trusted data with lineage, quality checks, and popularity metrics. 
+
+    [:octicons-arrow-right-24:  Learn more](/interfaces/data_product_hub/)
+
+-   :interfaces-lens:{ .lg .middle } **Lens**
+
+    ---
+
+    Model data, define measures, and create KPIs for data-informed decisions.
+
+    [:octicons-arrow-right-24:  Learn more](/interfaces/lens/)
+
+-   :interfaces-metis:{ .lg .middle } **Metis**
+
+    ---
+
+    Discover and catalog enterprise data with comprehensive metadata management.
+
+    [:octicons-arrow-right-24:  Learn more](/interfaces/metis/)
+
+-   :interfaces-notebook:{ .lg .middle } **Notebook**
+
+    ---
+
+    Use Jupyter Notebook on DataOS for data science projects and analysis.
+
+    [:octicons-arrow-right-24:  Learn more](/interfaces/notebook/)
+
+
+-   :interfaces-operations:{ .lg .middle } **Operations**
+
+    ---
+
+    Monitor and administer DataOS platform activity and optimize resource allocation.
+
+    [:octicons-arrow-right-24:  Learn more](/interfaces/operations/)
+
+-   :interfaces-workbench:{ .lg .middle } **Workbench**
+
+    ---
+
+    Query and explore data using SQL with the Minerva/Themis query engine.
+
+    [:octicons-arrow-right-24:  Learn more](/interfaces/workbench/)
+</div>
+
+<!-- **Superset**
+
+Superset is a business intelligence solution seamlessly integrated into DataOS. It simplifies the creation of customized reports and dashboards, making it easy to visualize complex data. With a wide range of visualization options, Superset enables clear interpretation, aiding informed decision-making. to learn more, click [here](/interfaces/superset/). -->
 
 ### **Manage Profile**
 
-DataOS Home app also enables you to manage your profile. 
-![profile.png](/interfaces/profileinfo.png)
-<figcaption align = "center">Profile Information </figcaption>
+DataOS Home app also enables you to manage your profile.
+<center> 
+![profile.png](/interfaces/profileinfo.png){: style="width:26rem;" }
+<figcaption align = "center"><i>Profile Information</i></figcaption>
+</center>
 
 ### **Create Tokens**
 
 API keys/tokens are used to authenticate requests to  DataOS resources. For example, when calling a service endpoint, you need to supply a valid API token in the HTTP `Authorization` header, with a valid token specified as the header value. You can generate API keys/tokens from DataOS Home app as well as using DataOS CLI commands.
 
-To learn more, refer to [Creating API Keys and Token](/interfaces/create_token/)
+#### **Create Tokens using GUI**
+
+1.  On the 'Profile' page, click on **Tokens**.
+
+2. Click on the **Add API Key** link.
+    <center>
+   ![integration-dataos-token-apikey.png](token_apikey.png){: style="width:41rem;" }
+   <figcaption align = "center"><i>Adding API key</i></figcaption>
+   </center>
+
+3. Type in the name for this token and also set the validity period of your token based on the security requirements as per your business needs. Click **Save** to create one for you.
+    <center>
+   ![integration-add-key.png](add_key.png){: style="width:41rem;" }
+   <figcaption align = "center"><i>Providing name for the token</i></figcaption>
+   </center>
+
+4. The API key is listed below. Clicking on the “eye icon” will make the full API key visible. Click on the API key to copy it.
+    <center>
+   ![integration-key-created.png](key_created.png){: style="width:41rem;" }
+   <figcaption align = "center"><i>API key created</i></figcaption>
+   </center>
+ 
+
+#### **Create Tokens Using CLI**
+
+Use the commands to:
+
+- List existing key
+- Create a new API key
+
+**List Existing Key**
+
+```bash
+tmdc@tmdc:~$ dataos-ctl user apikey get
+INFO[0000] 🔑 user apikey get...                         
+INFO[0000] 🔑 user apikey get...complete                 
+
+                                                 TOKEN                                                 |  TYPE  |      EXPIRATION      |                  NAME                   
+-------------------------------------------------------------------------------------------------------|--------|----------------------|-----------------------------------------
+  aH9sAY5fcXVpY2tseVXXXXXXXXXXXXppppppppppppppppcXTUzLTgaH999999999sAY5fcXaH9ssssssssssAY5fcX0| apikey | 2023-08-10T23:00:00Z | token_ad9baade458c5c6f3  
+  bbbbbbbbbI9sAY5fcXVpY2tseV9ldmVubHlfVjdF9raXQuM2ZiO0000000TI4ZTYaaaaaaaH9sAY5fcXTUzLTgaH9sAY5fcX5fcX0| apikey | 2023-06-19T08:00:00Z | token_bc6hggaa435v8b5f3
+```
+
+**Create a new API key**
+
+```bash
+tmdc@tmdc:~$ dataos-ctl user apikey create
+INFO[0000] 🔑 user apikey...                             
+INFO[0000] 🔑 user apikey...complete                     
+
+                                                   TOKEN                                                   |  TYPE  |      EXPIRATION      |                  NAME                    
+-----------------------------------------------------------------------------------------------------------|--------|----------------------|------------------------------------------
+  aH9sAY5fcXVpY2tseV9ldmVubHlfY29ycmVjdF9raXQuM2ZiOTI4ZTYaH9sAY5fcXTUzLTgaH9sAY5fcXaH9sAY5fcX0 | apikey | 2022-06-22T12:00:00Z | token_bc6hggaa435v8b5f3
+```
 
 ### **View Depots**
 You can see a complete list of depots created in your DataOS context for accessing data sources.
-![Depot](/interfaces/depots.png)
-<figcaption align = "center">Depots</figcaption>
-
-## Accessing DataOS from External Applications
-DataOS integrates with various other BI tools, enhancing the capabilities and functionality of your data analysis. To explore further information about these tools and their benefits, you can refer to [Integration with other BI tools](/interfaces/atlas/bi_tools/).
+<center>
+![Depot](/interfaces/depots.png){: style="width:41rem;" }
+<figcaption align = "center"><i>Depots</i></figcaption>
+</center>

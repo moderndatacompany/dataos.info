@@ -1,73 +1,152 @@
+# DataOS Documentaion
 
-# DataOS Philosophy
+In the rapidly evolving world of data, the need for robust, scalable, and efficient data products has never been more critical. DataOS is a platform designed to transform the way businesses create, manage, and leverage data products. By empowering business teams with the tools and autonomy to innovate, DataOS is setting a new standard in data product development.
 
-Embracing an Operating System for Data does not have to mean a radical or disruptive transformation of your data environment. In fact, it's quite the opposite - a way to cushion yourself against the rapid disruptions that the data industry is known to suffer from. Think of it more as a strategic evolution in your approach to managing data. Implementing an Operating System for data such as DataOS refines your data philosophy, allowing you to harness and operationalize your data more effectively without the heavy lifting often associated with tooling changes or migration.
+DataOS is an enterprise-grade data product platform that enables organizations to build, manage, and share data products effortlessly. It provides the essential building blocks required by data developers to create powerful data products that drive significant business outcomes. With DataOS, end users can harness data for better decision-making, driving value across the organization.
 
-At the heart of this strategic shift is the move from conventional, two-dimensional tables to dynamic [Data Products](https://datadeveloperplatform.org/what_is_data_developer_platform/#what-is-a-data-product). Where the former may seem like isolated units lost in the vast data ecosystem, Data Products represent a harmonious fusion of purpose and execution, facilitated elegantly at scale by the OS design.
+The primary inspiration for DataOS comes directly from its users. DataOS development is driven by core principles tailored to address specific user needs and challenges:
 
-DataOS, an OS designed specifically for data, offers the opportunity to craft an exceptional product experience around your data, tying your efforts directly to business value. With Data Products as the fundamental building blocks of software-like data stacks, DataOS becomes a practical solution for future-proofing your data strategy. It provides the necessary adaptability to navigate the ever-changing data landscape, from traditional and modern data stacks to more complex fabric and mesh-like frameworks. With DataOS, you're well-prepared for whatever the future of data brings.
+- **Consumption Ready Layer**: DataOS streamlines data product consumption with context-aware discovery, secure exploration, reliable quality, and multi-interface activation through its Self Serve Architecture.
+
+- **Data Product Lifecycle Management**: DataOS is built to serve data product consumers, including data analysts/scientists, and data app developers. It aims to capture the entire data product lifecycle, integrating data product consumers, owners, developers, and administrators under one roof. This holistic approach ensures seamless integration with tools that users already familiar with.
+
+- **Faster Time to Value**: DataOS accelerates the development process, enabling enterprises to gain insights quickly. This reduces the time to value substantially, fueling targeted campaigns, personalizing customer journeys, and enhancing profits faster.
+
+- **AI Ready**: Leveraging AI agents, DataOS enhances the user experience by providing heuristic assistance that evolves based on user feedback and needs.
+
+- **FinOps**: DataOS provides real-time insights into resource utilization, enabling organizations to monitor and control cloud spending effectively. This strategic approach not only promotes shared responsibility across teams but also drives significant cost savings, improves operational efficiency, and facilitates informed financial decisions.
+
+DataOS continuously evolves to meet the real-world needs of data professionals. DataOS significantly lowers the total cost of ownership by streamlining data operations through task automation, minimizing data movement, and simplifying maintenance.
+
+## Navigating dataos.info
+
+If you are new to DataOS, this is your go-to place for getting started with key technical concepts. Understanding these will help you develop efficiently with DataOS. For experienced developers looking to build solutions, our comprehensive how-to guides and reference docs are available to get you speed with data product creation. Whether you're starting out or diving deep, you’ll find everything you need right here.
+
+The documentation website features a comprehensive navigation system designed to ensures that users can efficiently find the information they need. The top menu bar includes essential options, providing quick access to key sections. Additionally, a multi-level index is displayed on the left menu, allowing users to easily explore and dive deeper into specific topics within each category. 
+
+### **Discover the Essentials of DataOS**
+
+Below, you will find detailed insights into the core aspects of DataOS, including its philosophy, architecture, and data products. Explore these sections to understand how DataOS can transform your data operations and drive business value.
+
+<div class="grid cards" markdown>
+
+-   :material-card-bulleted-settings-outline:{ .lg .middle } **Philosophy**
+
+    ---
+
+    Understand the philosophy behind DataOS, designed to simplify and abstract the complexities of traditional data infrastructure.
+
+    [:octicons-arrow-right-24: Read more](/philosophy/)
 
 
+-   :material-list-box-outline:{ .lg .middle } **Architecture**
 
-## Your Familiar Operating System
+    ---
 
-Operating systems have been at the heart of enabling masses to access and leverage countless benefits of digital applications without the need to be skilled in infrastructure and dirty plumbing. Even app developers who are into heavy engineering need not bootstrap the whole system from scratch to build their applications. Instead, they put together different unique capabilities available on the OS to spin up these applications and deploy at scale.
+    Learn about the architecture of DataOS, built to democratize data, and accelerate creation of data product.
 
-> It’s **fast**, **standardised**, and **targetedly valuable**.
-> 
+    [:octicons-arrow-right-24: See more](/architecture/)
 
-*Exhibit A*: Xcode on macOS. Imagine if developers were required to check in on the macOS infra and fix its hiccups - there wouldn’t be as many apps as Xcode has helped produce. The ones that would exist wouldn’t be as established with as many advanced, value-adding, and innovative features.
+-   :material-network-pos:{ .lg .middle } **Data Product**
 
-Sadly and a bit surprisingly, the data space is still in a phase where data engineers are required to heavily focus on infra maintenance. Their hands are always full with open tickets, most of them requesting a plumbing job. As it is, truly skilled experts in the data space are rare, and most of them are sucked into plumbing the data ecosystem instead of producing data applications that directly impact their team’s ROI.
-## An Operating System for Data
+    ---
 
-<aside class="callout">
-🗣️ DataOS is built with the same philosophy as an operating system.
-</aside>
-<br/>
+    Learn to create, deploy & manage domain specific data products at scale.
 
-DataOS is the data stack that confidently puts data first and resurrects teams from maintenance-first loops. Being data-first may seem the obvious choice, but prevalent practices in data do not reflect it. It is not uncommon to spend countless hours solving infrastructure drawbacks and maintaining data pipelines. But take a step back to our OS analogy, and it becomes evident that every organisation does not need its own operating system (infrastructure) to drive profitable applications. They can instead install an operating system for data and run with it. We would go out on a limb and say this is where the data industry is converging, and the ability to focus on applications at scale is already a must-have competitive edge.
+    
+    [:octicons-arrow-right-24: Explore more](/products/data_product/)
 
-As would be expected from an operating system for data, it abstracts all the nuances of low-level data management, which otherwise suck out most of the data developer’s active hours. It provides a set of tools and services to help data professionals manage and analyze data more effectively. As a direct implementation of the [data developer platform specification](http://datadeveloperplatform.org), DataOS includes tools for data integration, processing, storage, and analysis, as well as governance and monitoring features to ensure that data is managed, compliant and secure. 
+-   :material-content-duplicate:{ .lg .middle } **Getting Started with DataOS**
 
-In conjunction with DDP specs, DataOS is designed to provide data professionals with a set of building blocks that they can use to build data products, services, and data applications more quickly and efficiently. Data developers can quickly spawn new applications and rapidly deploy to multiple target environments with configuration templates and declarative workload specifications with consistent monitoring and testing for high uptime. By providing a unified and standardised platform for managing data, DataOS helps organizations make better use of their data assets and drive business value.
+    ---
 
-A declarative system (OS) drastically eliminates the scope of fragility with precision-driven configurations and surfaces frequently-required RCA lenses with recommendations on demand, optimising resources and ROI. Most importantly, it allows a direct and asynchronous interface between data developers and data, eliminating complex layers of the infrastructure through customisable abstractions. It is important not to confuse this with inflexibility - a data engineer can always open up the system to shift the gears very specifically.
-### DataOS Citizens
+    Quickly get hands on and up to speed with DataOS, and familiarize yourself with its capabilities.
 
-DataOS enables self-service for a broad band of data personas, including **data engineers, business users, and domain teams**. This again a direct parallel of the OS analogy. While a gamer uses a Mac to run games, an accountant uses the same machine to process heavy Excel files. While a musician uses a phone to create complex media files, a grandparent uses it to video call the grandkids.
+    [:octicons-arrow-right-24:  Learn more](/getting_started/)
 
-> Same platform. Different use cases.
-> 
-> 
-> Same infrastructure. Variety of simple and complex solutions.
-> 
+</div>
 
-In all cases, neither of the users needs to understand the low-level technology or build their applications from scratch to start using the applications for their desired outcomes. But does that mean there’s no one on the other end figuring out the infrastructure complexities of the laptops, PCs, and phones?
+### **Understand Interfaces**
 
-There indeed is a very small (compared to the size of the user base) team behind infrastructure development and maintenance, and their job is to ensure all the users on the other side have a seamless experience without the need to get into the nitty-gritty. If the infrastructure is well-kept, users are abstracted from the pains of booting, maintaining, and running the low-level nuances of day-to-day applications that directly bring them value. The only job of the data developer now is to build and enable data applications that directly power business value. And while the infrastructure takes care of the resources, environments, provisioning, and supervisory activities, a small dedicated platform team ensures that the infra is healthy and ready to do its job.
+In this section, learn about the interfaces to interact with DataOS services and components for efficient data operations and control.
 
-So is the case with a well-designed data developer platform. While smaller dedicated platform teams manage and regulate the infrastructure, larger teams of data developers are able to focus their time and effort on building data applications instead of worrying about plumbing issues. Applications across a broad range, including AI/ML, data sharing, and analytics, are all enabled at scale through the virtue of the same philosophy.
-### Why an OS for Data is the next step in the larger scheme of things?
+<div class="grid cards" markdown>
 
-As more tools pop in the data ecosystem, they increasingly develop the need to become independently operable, often based on user feedback. This results in multiple data catalogs, governance engines, observability engines and more heavy duplicates- all localised to different tools and restricted with specific access and operating patterns. The prevalent systems are mostly assembled in nature - as a result of ad-hoc solutioning. Any assembled data stack cannot be thought of as a product but a bunch of disparate capabilities thrown together in a mix.
+-   :material-card-bulleted-settings-outline:{ .lg .middle } **Command Line Interface (CLI)**
 
-What follows from assembled systems is the sudden overwhelm of managing multiple limbs of the system, and therefore, increasing complexity and friction for end users to get their hands on the data. While business domains, such as marketing, sales, support, etc., have to jump multiple hops to achieve the data they need, the organisation feels the pressure to lift all dependencies clogging the central data team and distributing the workload across these domains. While the idea seems very appealing on theoretical grounds, how feasible is it in the field? If we lay this idea on any working business model, there are a few consequences:
+    ---
 
-- Not enough skilled professionals to allocate to each individual domain - Practically, how feasible is the idea of having data teams for each domain?
-- Not enough professionals or budget to disrupt existing processes, detangle pipelines, and embed brand-new infrastructures.
-- Not enough experts to help train and onboard during migration.
+    The DataOS CLI enables efficient data operations, providing quick, flexible access to system functions for data engineers and administrators.
 
-It’s both a skill- and resource-deficit issue. Moreover, with decades spent on evolving data stacks with not much value to show, organisations are not ideally inclined to pour in more investments and efforts to rip and replace their work. In essence, 𝐀𝐮𝐭𝐨𝐧𝐨𝐦𝐲 instead should become the higher priority over Decentralisation if that is the ultimate objective.
+    [:octicons-arrow-right-24: Learn more](/interfaces/#command-line-interface-cli)
 
-<aside class="callout">
-🗣️ As we have established in the above sections, enabling autonomy for a host of personas is the number one objective of any operating system design. Teams can even use this autonomy and flexibility to create decentralised models with far less resources, but that is a secondary and one of many objectives that can be established through autonomy across several layers of data producers and engineers.
-</aside>
 
-### Bearing the Weight of Rapid Tech Evolution
+-   :material-list-box-outline:{ .lg .middle } **Graphical User Interface (GUI)**
 
-DataOS is a cushion for trends. It was not long ago when data fabric was taking the world by storm, while today, most conversations are inlining toward the data mesh. Tomorrow, there might be a new data design architecture that CTOs and CFOs fancy. The harsh reality is no one data design architecture is non-disruptive or simple to implement. It takes dedicated time, effort, and investment.
+    ---
 
-Does this mean that every time a new holy grail is discovered, the entire stack needs to be ripped off and expended? Not if you have a DDP in place. Let’s say the DDP is the decryptor of all the complex scriptures in the holy grail. You place the cup in the socket, and the hall lights up.
+    The Graphical User Interface provides an intuitive and visually appealing method for interacting with DataOS and its components.
 
-DataOS developed after the core principles, provides a set of primitives that the architect can compose together in any arrangement to enable higher-order complex design patterns. The primitives in the DDP are uniquely identified as non-negotiable atomic units of any data stack. What’s more is, due to workload-centric development capabilities, this process becomes almost declarative, saving tons of resources, time, and money.
+    [:octicons-arrow-right-24: Learn more](/interfaces/#graphical-user-interface-gui)
+
+-   :material-content-duplicate:{ .lg .middle } **Application Programming Interface (API & SDK)**
+
+    ---
+
+    The Application Programming Interface in DataOS enables seamless interaction with its core components, and libraries for creating diverse applications and services.
+
+    [:octicons-arrow-right-24:  Learn more](/api_docs/)
+
+</div>
+
+
+### **Understand DataOS Resources**
+
+Before you start building Data Products, know about these DataOS Resources which act as building blocks for your data product.
+
+<div class="grid cards" markdown>
+
+- :resources-bundle: [Bundle](/resources/bundle/)
+- :resources-cluster: [Cluster](/resources/cluster/)
+- :resources-compute: [Compute](/resources/compute/)
+- :resources-database: [Database](/resources/database/)
+- :resources-depot: [Depot](/resources/depot/)
+- :resources-worker: [Grant](/resources/grant/)
+- :resources-instancesecret: [Instance Secret](/resources/instance_secret/)
+- :resources-lakehouse:[Lakehouse](/resources/lakehouse/)
+- :resources-monitor: [Monitor](/resources/monitor/)
+- :resources-operator: [Operator](/resources/operator/)
+- :resources-pager: [Pager](/resources/pager/)
+- :resources-policy: [Policy](/resources/policy/)
+- :resources-secret: [Secret](/resources/secret/)
+- :resources-service: [Service](/resources/service/)
+- :resources-worker: [Volume](/resources/volume/)
+- :resources-worker: [Worker](/resources/worker/)
+- :resources-workflow: [Workflow](/resources/workflow/)
+</div>
+
+### **Learning Assets**
+
+Explore the tutorials and guides essential for building data products using DataOS.
+
+<div class="grid cards" markdown>
+
+-   :material-list-box-outline:{ .lg .middle } **Video Tutorials**
+
+    ---
+
+    [:octicons-arrow-right-24: Learn more](/videos/)
+
+-   :material-network-pos:{ .lg .middle } **Glossary**
+
+    ---
+
+    [:octicons-arrow-right-24: Learn more](/glossary/)
+
+-   :material-content-duplicate:{ .lg .middle } **Quick Guide**
+
+    ---
+
+    [:octicons-arrow-right-24:  Learn more]()
+
+</div>
