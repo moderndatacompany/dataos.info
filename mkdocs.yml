@@ -195,6 +195,8 @@ nav:
             - resources/stacks/soda/index.md
           - Steampipe: 
             - resources/stacks/steampipe/index.md
+        - Volume: 
+          - resources/volume/index.md
         - Worker: 
           - resources/worker/index.md
           - First Steps: resources/worker/first_steps.md
