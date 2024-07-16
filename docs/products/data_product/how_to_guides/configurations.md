@@ -1,4 +1,4 @@
-# Data Product-specific configuration
+# Data Product manifest file configuration
 
 The following attributes are declared for every Data Product deployed in a DataOS context. Some of these attributes/fields need to be mandatorily declared, while others are optional.
 
