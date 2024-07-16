@@ -1,42 +1,4 @@
-# Getting Started with DataOS
-
-## Initial Account Setup and Access to the DataOS Instance
-
-Contact DataOS administrator or your organization admin for sign-in details and appropriate access level according to your role in the organization.
-
-## Navigating DataOS
-
-Depending on your persona, understand about the various way to interact with DataOS instance and start your journey.  
-
-![Screenshot 2024-07-09 at 3.25.28 PM.png](/getting_started/dataos_home.png)
-
-## Key Personas of DataOS
-
-Before you proceed, understanding how the Data Product Hub (DPH) benefits various user personas with different responsibilities is crucial. By familiarizing yourself with these key personas and their interactions with the Data Product Hub, you can effectively harness the platform’s capabilities to drive data-informed decisions and achieve operational efficiency.
-
-### **Data Analyst**
-
-As a Data Analyst, your role within DataOS is crucial for transforming data into actionable insights. You will discover, explore, and activate data products to enhance your analytical workflows.
-
-### **Business Analysts**
-
-As a Business Analyst, your focus is on leveraging data to drive business strategy and decision-making. DataOS empowers you to easily find and utilize data products that align with your business needs.
-
-### **Data Scientists**
-
-Data Scientists are integral to leveraging advanced analytical techniques and machine learning algorithms to extract meaningful insights from data.
-
-### **Data Developer**
-
-Data Developers are responsible for creating and managing data products within DataOS. They design, build, and maintain the data infrastructure and pipelines, ensuring the data is accurate, reliable, and accessible.
-
-### **Data Product Owner**
-
-They oversee the lifecycle of data products within DataOS. They ensure the data meets quality standards and is compliant with regulatory requirements. They are accountable for the integrity and security of the data, managing its use, and governing its distribution.
-
-### **Data Admin**
-
-Data Admins manage the DataOS platform and ensure its smooth operation. They handle user access, monitor system performance, and maintain the platform's infrastructure. Their role is critical in providing a stable and secure environment for all data activities.
+# Data Analyst in DataOS
 
 ## Begin Your DataOS Journey
 
@@ -44,7 +6,7 @@ Data Admins manage the DataOS platform and ensure its smooth operation. They han
 
 Persona: Data Analyst
 
-- **Discover Relevant Data Products**
+1. **Discover Relevant Data Products**
     1. Login to DataOS and click on **Data Product Hub.**
         
         ![dataos_home_dph.png](/getting_started/dataos_home_dph.png)
@@ -62,7 +24,7 @@ Persona: Data Analyst
         
         ![dp_filters.png](/getting_started/dp_filters.png)
         
-- **View Data Product Details**
+2. **View Data Product Details**
     1. **Click** on the data product card to access dedicated landing pages for each data product to view descriptions, purpose, data source information, and data flow.
         
         ![dp_details.png](/getting_started/dp_details.png)
@@ -77,14 +39,14 @@ Persona: Data Analyst
         
     4. Find the access permissions and if no access, initiate a request for the access.
         1. Click on **Check Access** and if required, click on **Request Access**.
-        
-- **Explore Data Product**
-    1. Click on the **Explore Data** 
+
+3. **Explore Data Product**
+    1. Click on the **Explore Data**.
     2. You will be directed to the Workbench app where you can enter queries to understand data.
         
         ![dp_dataset_workbench_query.png](/getting_started/dp_dataset_workbench_query.png)
         
-- **Activate Data Products**
+4. **Activate Data Products**
     
     You can use the data from this dataset for the following.
     
@@ -138,8 +100,3 @@ Persona: Analytics Engineer, Data Analyst, Data Product Developer
 4. Click on the dataset to see its details.
     
     ![dataset_details.png](/getting_started/dataset_details.png)
-    
-
-### **Creating Data Movement Workflows(Pipelines)**
-
-Persona: Data App Developer, Data Developer, Data Engineer

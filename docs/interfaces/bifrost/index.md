@@ -1,4 +1,4 @@
-# Bifrost
+# :material-security-network: Bifrost
 
 Bifrost is a Graphical User Interface that enables you to create and manage access policies for applications, services, people & datasets. It is backed by the governance engine of DataOS, [Heimdall](/architecture/#heimdall).
 

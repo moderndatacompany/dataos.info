@@ -1,11 +1,6 @@
----
-search:
-  exclude: true
----
+# :material-card-account-details-star-outline: Grant
 
-# Grant
-
-A Grant [Resource](/resources/) links the Subject-Predicate-Object relationship, generating an access [policy](/resources/policy). Through grants, administrators assign use cases to subjects either as users or roles, granting them access to specific parts of the system or data. This level of detail in access control enables administrators to regulate user interactions effectively. Grants facilitate the assignment of use cases to multiple roles and users, providing flexibility in access management. Grants can be implemented via [CLI](/interfaces/cli) or through the [Bifrost](/interfaces/bifrost) Interface. To learn about how  to create grant through Bifrost click [here](/interfaces/bifrost/grants#how-to-create-policy-use-case-grant).
+A Grant [Resource](/resources/) links the Subject-Predicate-Object relationship, generating an access [policy](/resources/policy/). Through grants, administrators assign use cases to subjects either as users or roles, granting them access to specific parts of the system or data. This level of detail in access control enables administrators to regulate user interactions effectively. Grants facilitate the assignment of use cases to multiple roles and users, providing flexibility in access management. Grants can be implemented via [CLI](/interfaces/cli/) or through the [Bifrost](/interfaces/bifrost/) Interface. To learn about how  to create grant through Bifrost click [here](/interfaces/bifrost/grants/#how-to-create-policy-use-case-grant).
 
 ## How to create and manage a Grant Resource?
 
