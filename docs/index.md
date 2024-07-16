@@ -1,6 +1,6 @@
-# Home
+# DataOS Documentaion
 
-In the rapidly evolving world of data, the need for robust, scalable, and efficient data products has never been more critical. DataOS, is a platform designed to transform the way businesses create, manage, and leverage data products. By empowering business teams with the tools and autonomy to innovate, DataOS is setting a new standard in data product development.
+In the rapidly evolving world of data, the need for robust, scalable, and efficient data products has never been more critical. DataOS is a platform designed to transform the way businesses create, manage, and leverage data products. By empowering business teams with the tools and autonomy to innovate, DataOS is setting a new standard in data product development.
 
 DataOS is an enterprise-grade data product platform that enables organizations to build, manage, and share data products effortlessly. It provides the essential building blocks required by data developers to create powerful data products that drive significant business outcomes. With DataOS, end users can harness data for better decision-making, driving value across the organization.
 
@@ -125,7 +125,7 @@ Before you start building Data Products, know about these DataOS Resources which
 - :resources-workflow: [Workflow](/resources/workflow/)
 </div>
 
-### **Learning Resources**
+### **Learning Assets**
 
 Explore the tutorials and guides essential for building data products using DataOS.
 
