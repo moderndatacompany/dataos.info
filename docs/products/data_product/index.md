@@ -56,6 +56,31 @@ sharing, data monetization, analytics and application integration.
 
 </div>
 
+## Data Product Architecture
+The architecture of a Data Product within DataOS typically involves several key components that handle various aspects of data processing and management. This section outlines the primary ports of a Data Product and introduces the additional Experience Ports offered by DataOS.
+
+<center>
+![Data Product](/products/data_product/ach.jpg)
+<i>Data Product Architecture</i>
+</center>
+
+
+### **Input Ports**
+
+Input Ports are responsible for receiving data that will form the core of the Data Product. They specify the format and protocol required to ingest data from operational source systems or other data products. These ports can be one or many, depending on the number of data sources. They specify the data format (e.g., CSV, JSON, Parquet) and protocol (e.g., HTTP, FTP, JDBC) required for data ingestion.
+
+### **Output Ports**
+
+Output Ports define how the data is exposed and consumed by external systems or users. They outline the format and consumption protocol for making data available to stakeholders. They specify how data can be queried or accessed (e.g., REST API, SQL query) and may support various formats depending on consumption needs (e.g., JSON, XML).
+
+### **Control Ports**
+
+Control Ports are used for monitoring, logging, and managing the Data Product. They also provide metadata and descriptive information about the Data Product. These ports facilitate performance tracking and operational metrics through monitoring and logging. They offer access to metadata such as ownership, organizational unit, licensing, and versioning. Additionally, they provide integration with a data marketplace, offering public and self-description information.
+
+### **Experience Ports**
+
+Experience Ports are provided by DataOS to support additional consumption paradigms beyond the standard input, output, and control functionalities. They enable specialized access methods such as BI tools, AI integrations, and data applications. Examples include exposing the Data Product via a REST API using Talos, creating and managing a semantic model with DataOS’s Lens for improved data understanding, and implementing a chat interface using Lens-LLM systems for natural language interactions with the data.
+
 In the following sections, we have outlined the comprehensive thought process involved in developing a Data Product, from defining use cases to the deployment. 
 
 ## Define Usecases
@@ -63,11 +88,11 @@ In the following sections, we have outlined the comprehensive thought process in
 The development of a Data Product initialized by defining the use cases, a single data product can cater to multiple use cases and all the way around. Let's take an example, suppose our usecase is to analyze the Website Traffic Source. This analysis provides actionable insights, enabling data-driven decision-making to optimize marketing strategies and improve business outcomes. The intended audience includes data analysts, marketing teams, business stakeholders, and technical teams responsible for data product development. The requirements for this use case include access to data source, an ETL (Extract, Transform, Load) process to clean and transform raw data, a data model to structure the transformed data, and visualization tools to present the analysis results. Additionally, secure data handling and storage must be ensured throughout the process.
 
 ## Explore and Discover Data Products
-Once use cases have been defined, the next step is to review the existing data products available in the [Data Product Hub](/interfaces/data_product_hub/). If the available data products sufficiently address the use cases, there is no need to develop a new data product. However, if the existing data products do not meet the requirements of the use cases, we can proceed to the Data Product Development Life Cycle to create a new data product.
+Once use cases have been defined, the next step is to explore the existing data products available in the [Data Product Hub](/interfaces/data_product_hub/). If the available Data Products sufficiently address the use cases, there is no need to develop a new data product. However, if the existing data products do not meet the requirements of the use cases, we can proceed to the Data Product Development Life Cycle to create a new data product.
 
-## Data Product Development Life-cycle
+## Data Product Development Life cycle
 
-The Data Product Development Life-cycle consists of four key phases: Design, Develop, Deploy, and Iterate. It starts with Design, where business goals are translated into a solution architecture. The Develop phase involves building and testing the data product based on this design. Deploy focuses on releasing the product to users and ensuring it operates effectively in a production environment. Finally, Iterate emphasizes continuous improvement through feedback and performance analysis to adapt to evolving needs and enhance the product over time. 
+The Data Product Development Life cycle consists of four key phases: Design, Develop, Deploy, and Iterate. It starts with Design, where business goals are translated into a solution architecture. The Develop phase involves building and testing the data product based on this design. Deploy focuses on releasing the product to users and ensuring it operates effectively in a production environment. Finally, Iterate emphasizes continuous improvement through feedback and performance analysis to adapt to evolving needs and enhance the product over time. To know about Data Product Development Life cycle in detail, please [refer to this](/products/data_product/how_to_guides/).
 
 
 
@@ -132,14 +157,14 @@ Data Product can be configured to make the efficient business decisions based on
 
 ## Recipes
 
-Below are some recipes to help you configure Data Product effectively:
+ This section provides step-by-step guides to assist you in effectively configuring the Data Product to solve common challenges. Below are some recipes to help you configure Data Product effectively:
 
 - [How to Create Data Product template using Cookiecutter?](/products/data_product/recipes/cookiecutter/)
 - [How to Deploy Data Product using CI/CD pipeline?](/products/data_product/recipes/ci_cd/)
 
 ## Examples
 
-Below are some templates to help you to design the Data Product:
+This section provides practical, real-world scenarios demonstrating how to effectively develop a Data Product. Below are some examples to help you to understand the Data Product:
 
 - [Financial Services Accelerator Data Product](/products/data_product/templates/accelerator/)
 

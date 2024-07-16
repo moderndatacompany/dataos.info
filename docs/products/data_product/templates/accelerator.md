@@ -1461,20 +1461,20 @@ After the Data Product is successfully deployed, It is ready to be consumed by t
 This Data Product is utilized to generate dashboards in [Superset](/interfaces/superset/). We have developed three distinct dashboards: one for visualizing campaign performance, another for lead generation analysis, and a third for spend analysis. Let's see each one in detail.
 
 ### **Campaign Funnel Dashboard**
-This dashboard provides a comprehensive overview of a marketing campaign's performance by tracking the progression of customers through different stages of the campaign funnel. The dashboard is divided into two main sections: the Campaign Funnel and Campaign Stats.
+Campaign Funnel Dashboard provides a comprehensive overview of a marketing campaign's performance by tracking the progression of customers through different stages of the campaign funnel. The dashboard is divided into two main sections: the Campaign Funnel and Campaign Stats.
 
 <img src="/products/data_product/templates/campaign-funnel-dashboard-2024-07-15T11-07-45.626Z.jpg" alt="Description" width="1600">
 The Campaign Funnel section displays a bar chart of customers at various campaign stages for different archetypes: Deal Chasers, Financially Stressed, Generic, Prosperous and Content, Recovering Credit Users, and Self Aware Avoiders. Stages include Customer Reached, Explored Product, Started to Apply, Engagement, Completed Application, KYC, and Onboarded. The Campaign Stats section provides a table summarizing the count of customers at each stage for these archetypes, allowing for a quick comparison and highlighting campaign effectiveness for each group.
 
 
 ### **Lead Generation Dashboard**
-This dashboard provides an extensive overview of customer data, segmented across various dimensions to facilitate a deeper understanding of customer behaviors, demographics, and sales performance. The dashboard is divided into several key sections:
+Lead Generation Dashboard provides an extensive overview of customer data, segmented across various dimensions to facilitate a deeper understanding of customer behaviors, demographics, and sales performance. The dashboard is divided into several key sections:
 <img src="/products/data_product/templates/lead-generation-final-view-2024-07-15T11-08-51.641Z.jpg" alt="Description" width="1600">
 
 This dashboard displays key metrics: a total customer count of 520k, with segmentation by cross-sell archetypes shown in a pie chart. Sales data for various products and their contribution to total sales are visualized in a bar chart. Customer risk categories (Low, Medium, High) and affluence levels are also depicted in bar charts, each showing similar distributions (Low: 62%, Medium: 17%, High: 21%). Demographics are broken down into Rural (156k), Semi-Urban (126k), and Urban (238k) in another bar chart. Geographic distribution of customers by states is shown, along with a line chart tracking transaction counts and modes (UPI, QR, Card) over time. Lastly, a bar chart analyzes reasons for transactions, such as Exam, Food & Grocery, and Travel.
 
 ### **Spend Analysis Dashboard**
-This dashboard provides an in-depth analysis of customer spending behaviors over time, segmenting the data across various dimensions to offer a comprehensive view of spending patterns and trends. The dashboard is divided into several key sections:
+Spend Analysis Dashboard provides an in-depth analysis of customer spending behaviors over time, segmenting the data across various dimensions to offer a comprehensive view of spending patterns and trends. The dashboard is divided into several key sections:
 
 <img src="/products/data_product/templates/spend-analysis-2024-07-15T11-08-57.816Z.jpg" alt="Description" width="1600">
 
