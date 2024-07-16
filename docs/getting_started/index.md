@@ -25,12 +25,12 @@ Before you proceed, understanding how DataOS benefits various user personas with
 ### **Data Product Consumer**
 Data Product Consumers in DataOS encompass a variety of roles, such as Data Analysts, Business Analysts, and Data Scientists. Analysts play essential roles in leveraging data for actionable insights and strategic decision-making. They utilize DataOS to discover, explore, and activate data products, enabling them to transform raw data into valuable business intelligence and drive innovation. Data Scientists leverage advanced analytical techniques and machine learning algorithms to extract meaningful insights from data within DataOS.
 
-If you are a Data Product Consumer, click [here](/getting_started/dp_consumer/) to begin your DataOS journey.
+If you are a Data Product Consumer, click [here](/getting_started/data_product_consumer/) to begin your DataOS journey.
 
 ### **Data Product Developer**
 Data product developers create and manage data products within DataOS. They design, build, and maintain the data infrastructure and pipelines, ensuring data accuracy, reliability, and accessibility.
 
-If you are a Data Product Developer, click [here](/getting_started/dp_developer/) to begin your DataOS journey.
+If you are a Data Product Developer, click [here](/getting_started/data_product_developer/) to begin your DataOS journey.
 
 ### **Data Product Owner**
 Data Product Owners oversee the lifecycle of data products within DataOS. They ensure data quality and compliance with regulatory requirements, manage data integrity and security, and govern data distribution.
