@@ -1,5 +1,9 @@
 # Data Product Consumer Journey
 
+DataOS helps Data product consumers to discover, explore, and use data products. This allows them to turn data into insights, drive business strategy, and gain deeper insights with advanced analytics and machine learning.
+
+A DataOS consumer is typically responsible for the following activites.
+
 ## Discover Relevant Data Products
 
 1. Login to DataOS and click on **Data Product Hub.**
@@ -20,6 +24,7 @@
     ![dp_filters.png](/getting_started/dp_filters.png)
 
 ## View Data Product Details
+
 1. **Click** on the data product card to access dedicated landing pages for each data product to view descriptions, purpose, data source information, and data flow.
     
     ![dp_details.png](/getting_started/dp_details.png)
@@ -42,6 +47,28 @@
     
     ![dp_dataset_workbench_query.png](/getting_started/dp_dataset_workbench_query.png)
         
+## Perform Exploratory Data Analysis (EDA)
+
+DataOS Workbench is a data exploration tool that allows you to run SQL queries to find answers to your data-related questions. Upon opening the Workbench app, the first step is to select the Minerva cluster you wish to use for your analytics workload.
+    
+1. Select a Cluster to run your queries.
+    
+    ![selct_cluster.png](/getting_started/data_product_consumer/selct_cluster.png)
+    
+2. Select catalog, schema and table.
+    
+    ![select_catalog.png](/getting_started/data_product_consumer/select_catalog.png)
+    
+3. Write and run queries. 
+    
+    ![workbench_query.png](/getting_started/data_product_consumer/workbench_query.png)
+    
+    > Workbench also provides a Studio feature. Whether you're a seasoned SQL pro or just getting started, Studio's intuitive interface will help you craft powerful SQL statements with ease.
+    > 
+4. Rearrange and transform your data with Pivot.
+    
+    ![pivot.png](/getting_started/data_product_consumer/pivot.png)
+
 ## Activate Data Products
     
 You can use the data from this dataset for the following.
