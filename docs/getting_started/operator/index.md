@@ -1,4 +1,4 @@
-# Begin Your DataOS Journey
+# Operator Journey
 
 
 A DataOS Operator is typically responsible for the following activites to ensure smooth operations:
@@ -128,7 +128,7 @@ Track user, core, and cloud kernel resources, monitoring their utilization and a
 
     ![app](/getting_started/operator/resource_runtime.png)
 
-### Monitoring DataOS Infrastructure
+## Monitoring DataOS Infrastructure
 
 Grafana allows you to observe Kubernetes resource (compute & storage) utilization with built-in dashboards. You can leverage Grafana integration to visualize and explore metrics, logs, and traces within the DataOS environment.
 

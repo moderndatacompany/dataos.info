@@ -1,8 +1,6 @@
-# Begin Your DataOS Journey
+# Data Product Developer Journey
 
 ## Performing Exploratory Data Analysis (EDA)
-
-Persona: Data Product Developer
 
 1. Login to DataOS and access Workbench app.
     
@@ -29,8 +27,6 @@ Persona: Data Product Developer
 
 ## Exploring Data Assets
 
-Persona: Data Product Developer
-
 1. Login to DataOS and go to Metis app.
     
     ![dataoshome_metis.png](/getting_started/dataoshome_metis.png)
@@ -46,8 +42,6 @@ Persona: Data Product Developer
 4. Click on the dataset to see its details.
     
     ![dataset_details.png](/getting_started/dataset_details.png)
-
-## Install DataOS CLI
 
 
 
