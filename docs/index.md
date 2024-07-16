@@ -1,5 +1,4 @@
 # DataOS Documentaion
-# DataOS Documentation
 
 In the rapidly evolving world of data, the need for robust, scalable, and efficient data products has never been more critical. DataOS is a platform designed to transform the way businesses create, manage, and leverage data products. By empowering business teams with the tools and autonomy to innovate, DataOS is setting a new standard in data product development.
 
