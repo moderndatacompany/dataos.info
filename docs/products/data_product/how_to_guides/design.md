@@ -1,6 +1,6 @@
 # How to design the Data Product?
 
-The design phase of the data product development process within DataOS is crucial for ensuring that the final product meets the requirements and delivers value. The phase involves several steps, from initial requirement analysis to the final design iteration. To illustrate this process, we will use a real-life use case: Traffic Source Analysis using Google Analytics.
+The design phase of the Data Product development process within DataOS is crucial for ensuring that the final product meets the requirements and delivers value. The phase involves several steps, from initial requirement analysis to the final design iteration. To illustrate this process, we will use a real-life use case: Traffic Source Analysis using Google Analytics.
 
 To design the Data Product, follow the steps outlined below. Depending on the specific Data Product, additional steps may need to be added or skipped:
 
@@ -185,7 +185,7 @@ Now on Workbench, select your cluster and query the data.
 
 To know more about Workbench, [refer to this](https://dataos.info/interfaces/workbench/).
 
-## **Design Data Product solution architecture**
+## Design Data Product solution architecture
 
 Once you've explored the data, the next step is to plan the architectural design. This involves mapping out how different components, data pipelines, and workflows will integrate. The architecture design should be well-documented with diagrams and clear explanations of how each component interacts and the workflows they support. For data transformation tasks, tools like Flare jobs, SLOs (Service Level Objectives), and UI (User Interface) elements can be utilized to ensure efficient processing and visualization of data insights.
 
@@ -197,6 +197,141 @@ For this particular example, the architectural design phase will also include th
 ## Performance target
 
 Performance targets refer to predefined goals or benchmarks related to the data product's performance metrics. Examples include response time goals, such as achieving 95% of queries processed within 500 milliseconds, throughput targets like sustaining 1000 tasks per minute during peak periods, and resource utilization limits ensuring CPU usage remains below 80%. Quality metrics focus on maintaining data accuracy at 99%, while scalability objectives aim to accommodate a 50% increase in data volume without requiring additional infrastructure. Availability standards are set at achieving 99.99% uptime monthly. These targets guide system design and optimization efforts, aligning technical capabilities with business requirements for consistent performance and reliability.
+
+## Create the Data Product manifest file
+
+After defining the performance target, the final step is to configure the Data Product manifest file. Begin by creating a manifest file that will hold the configuration details for your Data Product. The structure of the Data Product manifest file is provided below.
+
+```yaml
+# Product meta section
+name: {{dp-test}} # Product name (mandatory)
+version: {{v1alpha}} # Manifest version (mandatory)
+type: {{data}} # Product-type (mandatory)
+tags: # Tags (Optional)
+  - {{data-product}}
+  - {{dataos:type:product}}
+  - {{dataos:product:data}}
+description: {{the customer 360 view of the world}} # Descripton of the product (Optional)
+Purpose: {{This data product is intended to provide insights into the customer for strategic decisions on cross-selling additional products.}} # purpose (Optional)
+collaborators: # collaborators User ID (Optional)
+  - {{thor}}
+  - {{blackwidow}}
+  - {{loki}}
+owner: {{iamgroot}} # Owner (Optional)
+refs: # Reference (Optional)
+  - title: {{Data Product Hub}} # Reference title (Mandatory if adding reference)
+    href: {{https://liberal-donkey.dataos.app/dph/data-products/all}} # Reference link (Mandatory if adding reference)
+entity: {{product}} # Entity (Mandatory)
+# Data Product-specific section (Mandatory)
+v1alpha: # Data Product version
+  data:
+    resources: # Resource specific section(Mandatory)
+      - name: {{bundle-dp}} # Resource name (Mandatory)
+        type: {{bundle}} # Resource type (Mandatory)
+        version: {{v1beta}} # Resource version (Mandatory)
+        refType: {{dataos}} # Resource reference type (Mandatory)
+        workspace: {{public}} # Workspace (Requirement depends on the resource type)
+        description: {{this bundle resource is for a data product}} # Resource description (Optional)
+        purpose: {{deployment of data product resources}} # Purpose of the required resource (Optional)   
+    
+    inputs:
+      - description: S3 Depot
+        purpose: source
+        refType: dataos
+        ref: dataos://s3depot:none/ga_data/
+    
+    outputs:
+      - description: Icebase Depot
+        purpose: consumption
+        refType: dataos_address
+        ref: dataos://icebase:google_analytics/ga_sessions_daily_data_raw    
+```
+
+The manifest file of a Data Product can be broken down into two sections: 
+
+1. Product Meta section
+2. Data Product-specific section 
+
+**Product Meta section**
+
+The Data Product manifest comprises a product meta section outlining essential metadata attributes applicable to all product types. Note that some attributes are optional within this section, while others are mandatory.
+
+```yaml
+# Product meta section
+name: {{dp-test}} # Product name (mandatory)
+version: {{v1alpha}} # Manifest version (mandatory)
+type: {{data}} # Product-type (mandatory)
+tags: # Tags (optional)
+  - {{data-product}}
+  - {{dataos:type:product}}
+  - {{dataos:product:data}}
+description: {{the customer 360 view of the world}} # Descripton of the product (optional)
+Purpose: {{This data product is intended to provide insights into the customer for strategic decisions on cross-selling additional products.}} # purpose (Optional)
+collaborators: # Collaborators User ID (optional)
+  - {{thor}}
+  - {{blackwidow}}
+  - {{loki}}
+owner: {{iamgroot}} # Owner (optional)
+refs: # Reference (optional)
+  - title: {{Data Product Hub}} # Reference title (Mandatory if adding reference)
+    href: {{https://liberal-donkey.dataos.app/dph/data-products/all}} # Reference link (Mandatory if adding reference)
+entity: {{product}} # Entity (Mandatory)
+```
+
+For more information about the various attributes in the Product meta section, refer to the [Attributes of Product meta section](/products/data_product/configuration/).
+
+**Data Product-specific section**
+
+This section focuses on Data Product-specific attributes, outlining resources, inputs, outputs, and use cases.
+
+```yaml
+v1alpha: # Data Product version
+  data:
+    resources: # Resource specific section(Mandatory)
+      - name: {{bundle-dp}} # Resource name (Mandatory)
+        type: {{bundle}} # Resource type (Mandatory)
+        version: {{v1beta}} # Resource version (Mandatory)
+        refType: {{dataos}} # Resource reference type (Mandatory)
+        workspace: {{public}} # Workspace (Requirement depends on the resource type)
+        description: {{this bundle resource is for a data product}} # Resource description (Optional)
+        purpose: {{deployment of data product resources}} # Purpose of the required resource (Optional)       
+       
+    inputs:
+      - description: S3 Depot
+        purpose: source
+        refType: dataos
+        ref: dataos://s3depot:none/ga_data/
+    
+    outputs:
+      - description: Icebase Depot
+        purpose: consumption
+        refType: dataos_address
+        ref: dataos://icebase:google_analytics/ga_sessions_daily_data_raw             
+```
+
+For more information about the various attributes in the Data Product-specific section, refer to the [Attributes of Data Product-Specific section](/products/data_product/configuration/).
+
+### **Apply the Data Product manifest file**
+
+To create a Data Product within the DataOS, use the `apply` command. When applying the manifest file from the DataOS CLI, `apply` command is as follows:
+
+Syntax:
+
+```bash
+dataos-ctl product apply -f ${path-to-dp-manifest-file}
+```
+
+Example Usage:
+
+```bash
+dataos-ctl product apply -f /home/iamgroot/office/firstdp.yaml
+# Expected Output:
+INFO[0000] 🛠 product apply...                           
+INFO[0000] 🔧 applying data:v1alpha:lens-dp-test...     
+INFO[0000] 🔧 applying data:v1alpha:lens-dp-test...created 
+INFO[0000] 🛠 product apply...complete 
+```
+
 
 ## Validation and Iteration
 

@@ -27,7 +27,7 @@ sharing, data monetization, analytics and application integration.
 
     Learn how to develop and manage a Data Product within DataOS.
 
-    [:octicons-arrow-right-24: Data Product Development Lifecycle](/products/data_product/#data-product-development-life-cycle)
+    [:octicons-arrow-right-24: Data Product Development Life cycle](/products/data_product/#data-product-development-life-cycle)
 
 
 -   :material-list-box-outline:{ .lg .middle } **How to configure the manifest file of a Data Product?**
@@ -158,7 +158,7 @@ Data Product can be configured to make the efficient business decisions based on
 
 ## Recipes
 
- This section provides step-by-step guides to assist you in effectively configuring the Data Product to solve common challenges. Below are some recipes to help you configure Data Product effectively:
+This section provides step-by-step guides to assist you in effectively configuring the Data Product to solve common challenges. Below are some recipes to help you configure Data Product effectively:
 
 - [How to Create Data Product template using Cookiecutter?](/products/data_product/recipes/cookiecutter/)
 - [How to Deploy Data Product using CI/CD pipeline?](/products/data_product/recipes/ci_cd/)
