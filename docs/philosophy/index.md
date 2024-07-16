@@ -1,9 +1,17 @@
+---
+title: Philosophy
+tags:
+    - Philosophy
+    - Data Developer Platform
+hide:
+    - tags
+---
 
-# :home-philosophy: Philosophy
+# :material-thought-bubble-outline: Philosophy
 
 Embracing an Operating System for Data does not have to mean a radical or disruptive transformation of your data environment. In fact, it's quite the opposite - a way to cushion yourself against the rapid disruptions that the data industry is known to suffer from. Think of it more as a strategic evolution in your approach to managing data. Implementing an Operating System for data such as DataOS refines your data philosophy, allowing you to harness and operationalize your data more effectively without the heavy lifting often associated with tooling changes or migration.
 
-At the heart of this strategic shift is the move from conventional, two-dimensional tables to dynamic [Data Products](https://datadeveloperplatform.org/what_is_data_developer_platform/#what-is-a-data-product). Where the former may seem like isolated units lost in the vast data ecosystem, Data Products represent a harmonious fusion of purpose and execution, facilitated elegantly at scale by the OS design.
+At the heart of this strategic shift is the move from conventional, two-dimensional tables to dynamic [Data Products](/products/data_product/). Where the former may seem like isolated units lost in the vast data ecosystem, Data Products represent a harmonious fusion of purpose and execution, facilitated elegantly at scale by the OS design.
 
 DataOS, an OS designed specifically for data, offers the opportunity to craft an exceptional product experience around your data, tying your efforts directly to business value. With Data Products as the fundamental building blocks of software-like data stacks, DataOS becomes a practical solution for future-proofing your data strategy. It provides the necessary adaptability to navigate the ever-changing data landscape, from traditional and modern data stacks to more complex fabric and mesh-like frameworks. With DataOS, you're well-prepared for whatever the future of data brings.
 
@@ -24,7 +32,6 @@ Sadly and a bit surprisingly, the data space is still in a phase where data engi
 <aside class="callout">
 🗣️ DataOS is built with the same philosophy as an operating system.
 </aside>
-<br/>
 
 DataOS is the data stack that confidently puts data first and resurrects teams from maintenance-first loops. Being data-first may seem the obvious choice, but prevalent practices in data do not reflect it. It is not uncommon to spend countless hours solving infrastructure drawbacks and maintaining data pipelines. But take a step back to our OS analogy, and it becomes evident that every organisation does not need its own operating system (infrastructure) to drive profitable applications. They can instead install an operating system for data and run with it. We would go out on a limb and say this is where the data industry is converging, and the ability to focus on applications at scale is already a must-have competitive edge.
 
@@ -33,7 +40,7 @@ As would be expected from an operating system for data, it abstracts all the nua
 In conjunction with DDP specs, DataOS is designed to provide data professionals with a set of building blocks that they can use to build data products, services, and data applications more quickly and efficiently. Data developers can quickly spawn new applications and rapidly deploy to multiple target environments with configuration templates and declarative workload specifications with consistent monitoring and testing for high uptime. By providing a unified and standardised platform for managing data, DataOS helps organizations make better use of their data assets and drive business value.
 
 A declarative system (OS) drastically eliminates the scope of fragility with precision-driven configurations and surfaces frequently-required RCA lenses with recommendations on demand, optimising resources and ROI. Most importantly, it allows a direct and asynchronous interface between data developers and data, eliminating complex layers of the infrastructure through customisable abstractions. It is important not to confuse this with inflexibility - a data engineer can always open up the system to shift the gears very specifically.
-### DataOS Citizens
+### **DataOS Citizens**
 
 DataOS enables self-service for a broad band of data personas, including **data engineers, business users, and domain teams**. This again a direct parallel of the OS analogy. While a gamer uses a Mac to run games, an accountant uses the same machine to process heavy Excel files. While a musician uses a phone to create complex media files, a grandparent uses it to video call the grandkids.
 
@@ -48,7 +55,7 @@ In all cases, neither of the users needs to understand the low-level technology 
 There indeed is a very small (compared to the size of the user base) team behind infrastructure development and maintenance, and their job is to ensure all the users on the other side have a seamless experience without the need to get into the nitty-gritty. If the infrastructure is well-kept, users are abstracted from the pains of booting, maintaining, and running the low-level nuances of day-to-day applications that directly bring them value. The only job of the data developer now is to build and enable data applications that directly power business value. And while the infrastructure takes care of the resources, environments, provisioning, and supervisory activities, a small dedicated platform team ensures that the infra is healthy and ready to do its job.
 
 So is the case with a well-designed data developer platform. While smaller dedicated platform teams manage and regulate the infrastructure, larger teams of data developers are able to focus their time and effort on building data applications instead of worrying about plumbing issues. Applications across a broad range, including AI/ML, data sharing, and analytics, are all enabled at scale through the virtue of the same philosophy.
-### Why an OS for Data is the next step in the larger scheme of things?
+### **Why an OS for Data is the next step in the larger scheme of things?**
 
 As more tools pop in the data ecosystem, they increasingly develop the need to become independently operable, often based on user feedback. This results in multiple data catalogs, governance engines, observability engines and more heavy duplicates- all localised to different tools and restricted with specific access and operating patterns. The prevalent systems are mostly assembled in nature - as a result of ad-hoc solutioning. Any assembled data stack cannot be thought of as a product but a bunch of disparate capabilities thrown together in a mix.
 
@@ -64,7 +71,7 @@ It’s both a skill- and resource-deficit issue. Moreover, with decades spent on
 🗣️ As we have established in the above sections, enabling autonomy for a host of personas is the number one objective of any operating system design. Teams can even use this autonomy and flexibility to create decentralised models with far less resources, but that is a secondary and one of many objectives that can be established through autonomy across several layers of data producers and engineers.
 </aside>
 
-### Bearing the Weight of Rapid Tech Evolution
+### **Bearing the Weight of Rapid Tech Evolution**
 
 DataOS is a cushion for trends. It was not long ago when data fabric was taking the world by storm, while today, most conversations are inlining toward the data mesh. Tomorrow, there might be a new data design architecture that CTOs and CFOs fancy. The harsh reality is no one data design architecture is non-disruptive or simple to implement. It takes dedicated time, effort, and investment.
 
