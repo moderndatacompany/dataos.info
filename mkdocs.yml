@@ -316,9 +316,10 @@ nav:
       - DataOS Kotlin SDK: api_docs/dataos_kotlin_sdk/index.html
   - Getting Started: 
     - getting_started/index.md
-    - Data Analyst: getting_started/data_analyst.md
-    - Data Engineer: getting_started/data_engineer.md
-    - Platform Administrator: getting_started/platform_administrator.md
+    - Data Product Consumer: getting_started/dp_consumer/index.md
+    - Data Product Developer: getting_started/dp_developer/index.md
+    # - Data Product Owner: getting_started/dp_owner/index.md
+    - Operator: getting_started/operator/index.md
   - Data Product: 
     - products/data_product/index.md
     - Data Product Life-cycle:

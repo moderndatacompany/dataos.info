@@ -1,10 +1,7 @@
-# Begin Your DataOS Journey
+# Data Product Consumer Journey
 
-## Quickly Find and Use Data Products
+## Discover Relevant Data Products
 
-Persona: Data Analyst
-
-1. **Discover Relevant Data Products**
     1. Login to DataOS and click on **Data Product Hub.**
         
         ![dataos_home_dph.png](/getting_started/dataos_home_dph.png)
@@ -22,7 +19,7 @@ Persona: Data Analyst
         
         ![dp_filters.png](/getting_started/dp_filters.png)
         
-2. **View Data Product Details**
+## View Data Product Details
     1. **Click** on the data product card to access dedicated landing pages for each data product to view descriptions, purpose, data source information, and data flow.
         
         ![dp_details.png](/getting_started/dp_details.png)
@@ -38,13 +35,14 @@ Persona: Data Analyst
     4. Find the access permissions and if no access, initiate a request for the access.
         1. Click on **Check Access** and if required, click on **Request Access**.
 
-3. **Explore Data Product**
+## Explore Data Product 
+
     1. Click on the **Explore Data**.
     2. You will be directed to the Workbench app where you can enter queries to understand data.
         
         ![dp_dataset_workbench_query.png](/getting_started/dp_dataset_workbench_query.png)
         
-4. **Activate Data Products**
+## Activate Data Products
     
     You can use the data from this dataset for the following.
     
