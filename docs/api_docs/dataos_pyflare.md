@@ -2,6 +2,10 @@
 title: Pyflare
 search:
   boost: 2
+tags:
+    - Pyflare
+    - SDK
+    - Python
 ---
 
 

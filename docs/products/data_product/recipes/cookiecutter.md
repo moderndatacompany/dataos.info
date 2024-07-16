@@ -12,7 +12,7 @@ This section outlines the steps to create a foundational template for a data pro
 
 - It is assumed that you possess a basic understanding of Bitbucket.
 
-- Before proceeding, ensure you have access to [Bitbucket Repository](https://bitbucket.org/tmdc/dp-repo-template-v2/src/master/) and the [necessary tags or use cases](https://www.notion.so/Data-Product-Documentation-WIP-58fa3e4494fa4f7ba5e2115876e0b797?pvs=21).
+- Before proceeding, ensure you have access to the [repository template](https://bitbucket.org/tmdc/dp-repo-template-v2/src/master/) and the necessary tags or use cases.
 
 ## **Steps to Create the Data Product Template**
 

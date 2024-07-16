@@ -2,9 +2,22 @@
 title: Architecture
 search:
   boost: 4
-# hide:
-#   - navigation
-#   - toc
+hide:
+  - tags
+tags:
+  - DataOS Architecture
+  - Architecture
+  - Microservices Architecture
+  - Heimdall
+  - Metis
+  - Gateway
+  - Caretaker
+  - Infrastructure
+  - Core Kernel
+  - Cloud Kernel
+  - User Space
+  - User Layer
+  - System Layer
 ---
 # :simple-buildkite: Architecture
 DataOS is the data operating system built to create, deploy & manage domain-specific data products at scale. Its architecture has been designed to enhance experience of data developers, decrease reliance on IT teams, democratize data, provide tangible ROI faster, and accelerate creation of data products. This page elucidates how the design of DataOS implements this data-first architecture.
@@ -14,9 +27,7 @@ DataOS is the data operating system built to create, deploy & manage domain-spec
 <ul>
   <li>As an implementation of micro-services design;</li>
   <li>A self-serve data infrastructure; and</li>
-  <li>As an operating system</li>
-</ul>
-</aside>
+  <li>As an operating system</li></ul></aside>
 
 > Each leads us to the same consensus - a modular, composable, and interoperable data infrastructure which is built on open standards - making it extensible, future-proof, and flexible enough to be used with your existing tools & infrastructure, while also empowering implementation of new patterns & frameworks, such as Data-first Stack, Data Mesh or Data Developer Platform.
 
@@ -52,9 +63,9 @@ Studying the implementation of the micro-services design of DataOS helps compreh
 
 Let us look at DataOS from the perspective of a data infrastructure.
 ## Data Infrastructure
-
-![Design showcasing data-flow patterns in the *User Space* of DataOS](/architecture/dataos_architecture.jpg)
-<center><i>Design showcasing data-flow patterns in the *User Space* of DataOS</i></center>
+<center>
+![Design showcasing data-flow patterns in the *User Space* of DataOS](/architecture/dataos_architecture.jpg){: style="width:31rem;" }
+<figcaption><i>Design showcasing data-flow patterns in the *User Space* of DataOS</i></figcaption></center>
 <br/>
 
 The [User Space](/architecture/#user-space) is the layer of DataOS where data developers work. A data developer, or a *data product developer*, interacts with the system through [interfaces](/interfaces/) in the *user layer*.
@@ -85,9 +96,9 @@ Let us delve into how such a vast system with complexities underneath can be cla
 
 ## Design of the Operating System
 The architecture of DataOS can be segregated into three logically separated layers - User Space, Core Kernel & Cloud Kernel. 
-
-![Layered Architecture of DataOS](/architecture/layered_arch.png)
-<center><i>Layered Architecture of DataOS</i></center>
+<center>
+![Layered Architecture of DataOS](/architecture/layered_arch.png){: style="width:41rem;" }
+<figcaption><i>Layered Architecture of DataOS</i></figcaption></center>
 <br/>
 
 ### **Cloud Kernel**
