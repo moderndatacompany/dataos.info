@@ -1,4 +1,8 @@
-# # :products-dataproduct: Data Product
+---
+title: Data Product
+---
+
+# :products-dataproduct: Data Product
 
 ## Overview
 
