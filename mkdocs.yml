@@ -138,75 +138,8 @@ markdown_extensions:
 nav:
   - Home: 
     - index.md
-    - Architecture: architecture/index.md
     - Philosophy: philosophy/index.md
-    - Resources:
-      - resources/index.md
-      - Types:
-        - resources/types/index.md
-        - Bundle: 
-          - resources/bundle/index.md
-        - Cluster: 
-          - resources/cluster/index.md
-        - Compute: 
-          - resources/compute/index.md
-        - Database: 
-          - resources/database/index.md
-        - Depot: 
-          - resources/depot/index.md
-        - Grant:
-          - resources/grant/index.md
-        - Instance Secret: 
-          - resources/instance_secret/index.md
-        - Lakehouse: 
-          - resources/lakehouse/index.md
-        # - Lens:
-        #   - resources/lens/index.md
-        - Monitor: 
-          - resources/monitor/index.md
-        - Operator: 
-          - resources/operator/index.md
-        - Pager: 
-          - resources/pager/index.md
-        - Policy: 
-          - resources/policy/index.md
-        - Secret: 
-          - resources/secret/index.md
-        - Service: 
-          - resources/service/index.md
-        - Stacks:
-          - resources/stacks/index.md
-          - Beacon: 
-            - resources/stacks/beacon/index.md
-          - Benthos: 
-            - resources/stacks/benthos/index.md
-          - CLI Stack: 
-            - resources/stacks/cli_stack/index.md
-          - Container: 
-            - resources/stacks/container/index.md
-          - Data Toolbox: 
-            - resources/stacks/data_toolbox/index.md
-          - DBT: 
-            - resources/stacks/dbt/index.md
-          - Flare: 
-            - resources/stacks/flare/index.md
-          - Scanner: 
-            - resources/stacks/scanner/index.md
-          - Soda: 
-            - resources/stacks/soda/index.md
-          - Steampipe: 
-            - resources/stacks/steampipe/index.md
-        - Volume: 
-          - resources/volume/index.md
-        - Worker: 
-          - resources/worker/index.md
-          - First Steps: resources/worker/first_steps.md
-          - Configuration: resources/worker/configuration.md
-        - Workflow: 
-          - resources/workflow/index.md
-      - Characteristics: resources/characteristics.md
-      - Configuration: resources/manifest_attributes.md
-      - YAML files: resources/yaml_configuration.md
+    - Architecture: architecture/index.md
     - Interfaces:
       - interfaces/index.md
       - 'Data Product Hub': 
@@ -308,27 +241,99 @@ nav:
         - interfaces/superset/index.md
       - Workbench: 
         - interfaces/workbench/index.md      
+    - Resources:
+      - resources/index.md
+      - Types:
+        - resources/types/index.md
+        - Bundle: 
+          - resources/bundle/index.md
+        - Cluster: 
+          - resources/cluster/index.md
+        - Compute: 
+          - resources/compute/index.md
+        - Database: 
+          - resources/database/index.md
+        - Depot: 
+          - resources/depot/index.md
+        - Grant:
+          - resources/grant/index.md
+        - Instance Secret: 
+          - resources/instance_secret/index.md
+        - Lakehouse: 
+          - resources/lakehouse/index.md
+        # - Lens:
+        #   - resources/lens/index.md
+        - Monitor: 
+          - resources/monitor/index.md
+        - Operator: 
+          - resources/operator/index.md
+        - Pager: 
+          - resources/pager/index.md
+        - Policy: 
+          - resources/policy/index.md
+        - Secret: 
+          - resources/secret/index.md
+        - Service: 
+          - resources/service/index.md
+        - Stacks:
+          - resources/stacks/index.md
+          - Beacon: 
+            - resources/stacks/beacon/index.md
+          - Benthos: 
+            - resources/stacks/benthos/index.md
+          - CLI Stack: 
+            - resources/stacks/cli_stack/index.md
+          - Container: 
+            - resources/stacks/container/index.md
+          - Data Toolbox: 
+            - resources/stacks/data_toolbox/index.md
+          - DBT: 
+            - resources/stacks/dbt/index.md
+          - Flare: 
+            - resources/stacks/flare/index.md
+          - Scanner: 
+            - resources/stacks/scanner/index.md
+          - Soda: 
+            - resources/stacks/soda/index.md
+          - Steampipe: 
+            - resources/stacks/steampipe/index.md
+        - Volume: 
+          - resources/volume/index.md
+        - Worker: 
+          - resources/worker/index.md
+          - First Steps: resources/worker/first_steps.md
+          - Configuration: resources/worker/configuration.md
+        - Workflow: 
+          - resources/workflow/index.md
+      - Characteristics: resources/characteristics.md
+      - Configuration: resources/manifest_attributes.md
+      - YAML files: resources/yaml_configuration.md
     - SDK: 
       - api_docs/index.md
       - DataOS Python SDK: api_docs/dataos_python_sdk.md
       - DataOS PyFlare SDK: api_docs/dataos_pyflare.md
       - DataOS ScalaFlare SDK: api_docs/dataos_scala_sdk/index.html
       - DataOS Kotlin SDK: api_docs/dataos_kotlin_sdk/index.html
-  - Getting Started: getting_started/index.md
+  - Getting Started: 
+    - getting_started/index.md
+    - Data Analyst: getting_started/data_analyst.md
+    - Data Engineer: getting_started/data_engineer.md
+    - Platform Administrator: getting_started/platform_administrator.md
   - Data Product: 
     - products/data_product/index.md
-    - Data Product Lifecycle:
+    - Data Product Life-cycle:
+      - products/data_product/how_to_guides/index.md
       - Design: products/data_product/how_to_guides/design.md
       - Build: products/data_product/how_to_guides/build.md
       - Deploy: products/data_product/how_to_guides/deploy.md
-      - Iterate: products/data_product/how_to_guides/manage_and_iterate.md
+      - Iterate: products/data_product/how_to_guides/iterate.md
     - Recipes: 
       - Create Data Product template using Cookiecutter: products/data_product/recipes/cookiecutter.md
       - Deploy Data Product using CI/CD pipeline: products/data_product/recipes/ci_cd.md
-    - Templates:
-      - Smart Home Data Product: products/data_product/templates/smarthome.md
+    - Examples:
       - FS Accelerator Data Product: products/data_product/templates/accelerator.md
-      - Sales 360 Data Product: products/data_product/templates/sales_360.md
-    - Configurations: products/data_product/configuration.md  
+      - Sales 360 Data Product : products/data_product/templates/sales_360.md
+    - Configurations: products/data_product/configuration.md   
+    - Core Concepts: products/data_product/core_concepts.md
   - Glossary: glossary/index.md
   - Videos: videos/index.md

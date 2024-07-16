@@ -5,7 +5,7 @@ search:
 ---
 
 
-# :resources-worker: Volume
+# Volume
 
 Fundamentally, a Volume [Resource](/resources/) in DataOS is a is a directory accessible to Pod containers, offering persistence and shared storage capabilities. 
 
