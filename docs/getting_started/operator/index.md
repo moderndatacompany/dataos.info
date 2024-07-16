@@ -96,7 +96,7 @@ Click [here](/resources/depots/), to access the Resource specific comprehensive 
 
 Gain valuable insights through cluster analysis, enabling operators to understand Cluster usage and optimize available clusters effectively. 
 
-1. Login to DataOS and click on **Superset**. This dashboarding tool is integrated into DataOS.
+1. Login to DataOS and click on **Superset**. DataOS allows you to integrate external tools seamlessly. 
    
     ![Cluster management](/getting_started/operator/home_superset.png)
    
@@ -104,7 +104,7 @@ Gain valuable insights through cluster analysis, enabling operators to understan
 
     ![app](/getting_started/operator/cu.png)
 
-View the query load distribution along with failed queries for each of the clusters up and running within DataOS instance.
+3. View the query load distribution along with failed queries for each of the clusters up and running within DataOS instance.
 
     ![Cluster management](/getting_started/operator/qu.png)
 
@@ -114,11 +114,11 @@ Track user, core, and cloud kernel resources, monitoring their utilization and a
 
 1. Login to DataOS and click on **Operations** app. 
    
-   ![app](/getting_started/operator/home_operations.png)
+    ![app](/getting_started/operator/home_operations.png)
 
 2. You can monitor Core Kernel, Cloud Kernel resources along with resources created by DataOS users,
 
-   ![app](/getting_started/operator/operations_app.png)
+    ![app](/getting_started/operator/operations_app.png)
 
 3. The "Resources" tab shows the user-created DataOS Resources, such as workflows, services, secrets, depots, clusters, compute, etc. This includes insights into the current running status of these resources, as well as the owner or creator of each resource.
 
