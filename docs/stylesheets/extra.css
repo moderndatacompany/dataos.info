@@ -1004,7 +1004,7 @@ body {
 .md-grid {
     margin-left: auto;
     margin-right: auto;
-    max-width: 61rem
+    max-width: initial;
 }
 
 .md-container {

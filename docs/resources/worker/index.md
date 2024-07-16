@@ -18,7 +18,7 @@ A Worker [Resource](/resources/) in DataOS is a long-running process responsible
 
 <center>
 ![Worker overview](/resources/worker/worker.png)
-<i>Worker Resource in DataOS</i>
+<figcaption><i>Worker Resource in DataOS</i></figcaption>
 </center>
 
 ## Structure of Worker manifest
