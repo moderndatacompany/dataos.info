@@ -113,7 +113,7 @@ Before you start building Data Products, know about these DataOS Resources which
 - :resources-depot: [Depot](/resources/depot/)
 - :resources-worker: [Grant](/resources/grant/)
 - :resources-instancesecret: [Instance Secret](/resources/instance_secret/)
-- :resources-lakehouse:[Lakehouse](/resources/lakehouse/)
+- :resources-lakehouse: [Lakehouse](/resources/lakehouse/)
 - :resources-monitor: [Monitor](/resources/monitor/)
 - :resources-operator: [Operator](/resources/operator/)
 - :resources-pager: [Pager](/resources/pager/)
