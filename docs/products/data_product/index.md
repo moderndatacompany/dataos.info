@@ -1,10 +1,19 @@
-# Data Product
+---
+title: Data Product
+search:
+  boost: 4
+tags:
+  - Data Product
+  - Data Product Architecture
+hide:
+  - tags
+---
+
+# :products-dataproduct: Data Product
 
 !!!info "Overview"
 
     This documentation is intended to provide structured information essential for understanding the Data Product's purpose, functionality, and operational aspects. This documentation is crucial for both technical teams and stakeholders to ensure clarity, consistency, and effective management throughout the lifecycle of the Data Product.
-
-## Introduction
 
 A Data Product is a self-contained unit within DataOS designed for handling and sharing analytical data, developed and managed by the dedicated teams. It includes meta data, data transformation code, input and output definitions, discovery and observability, APIs, documentation, service level objectives (SLOs), governance, transformation and platform dependencies such as compute and storage resources. Data Product is reusable, composable, portable and cloud-agnostic.​
 
@@ -17,7 +26,10 @@ sharing, data monetization, analytics and application integration.
 
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **-** Gartner<sup>&reg;</sup><span class="circle"></span>
 
-<img src="/products/data_product/diagram.jpg" alt="Description" width="1500">
+<center>
+![Data Product Development Life Cycle](/products/data_product/diagram.jpg){: style="width:36rem;" }
+<figcaption><i>Data Product Development Life Cycle</i></figcaption>
+</center>
 
 <div class="grid cards" markdown>
 
@@ -60,8 +72,8 @@ sharing, data monetization, analytics and application integration.
 The architecture of a Data Product within DataOS typically involves several key components that handle various aspects of data processing and management. This section outlines the primary ports of a Data Product and introduces the additional Experience Ports offered by DataOS.
 
 <center>
-![Data Product](/products/data_product/ach.jpg)
-<i>Data Product Architecture</i>
+![Data Product](/products/data_product/ach.jpg){: style="width:31rem;" }
+<figcaption><i>Data Product Architecture</i></figcaption>
 </center>
 
 
@@ -101,7 +113,10 @@ The Data Product Development Life cycle consists of four key phases: Design, Dev
 A Data Product manifest outlines essential metadata and configuration details about a Data Product. This structure can be modified based on specific requirements and additional metadata needed for the Data Product.
 
 === "Manifest Structure"
-    <img src="/products/data_product/schema.jpg" alt="Description" width="700">
+    <center>
+    ![Data Product](/products/data_product/schema.jpg){: style="width:26rem;" }
+    <figcaption><i>Data Product Architecture</i></figcaption>
+    </center>
 
 === "Code"
 
