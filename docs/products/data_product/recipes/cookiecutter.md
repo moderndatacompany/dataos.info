@@ -10,7 +10,9 @@ This section outlines the steps to create a foundational template for a data pro
 
 ## **Prerequisites**
 
-Before proceeding, ensure you have access to https://bitbucket.org/tmdc/dp-repo-template-v2/src/master/ and the [necessary tags or use cases](https://www.notion.so/Data-Product-Documentation-WIP-58fa3e4494fa4f7ba5e2115876e0b797?pvs=21).
+- It is assumed that you possess a basic understanding of Bitbucket.
+
+- Before proceeding, ensure you have access to [Bitbucket Repository](https://bitbucket.org/tmdc/dp-repo-template-v2/src/master/) and the [necessary tags or use cases](https://www.notion.so/Data-Product-Documentation-WIP-58fa3e4494fa4f7ba5e2115876e0b797?pvs=21).
 
 ## **Steps to Create the Data Product Template**
 
@@ -87,4 +89,4 @@ Follow these steps to create the Data Product template:
 10. **Verify Changes**:
     - Verify that all changes are reflected in your Bitbucket repository.
 
-By following these steps, you'll have successfully created a data product template in your Bitbucket repository. This template can now be customized and further developed according to the requirements and can be deployed using the CI/CD pipeline.
+By following these steps, you'll have a successfully created Data Product template in your Bitbucket repository. This template can now be customized and further developed according to the requirements and can be deployed using the CI/CD pipeline.

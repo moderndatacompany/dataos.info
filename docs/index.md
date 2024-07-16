@@ -1,4 +1,5 @@
 # DataOS Documentaion
+# DataOS Documentation
 
 In the rapidly evolving world of data, the need for robust, scalable, and efficient data products has never been more critical. DataOS is a platform designed to transform the way businesses create, manage, and leverage data products. By empowering business teams with the tools and autonomy to innovate, DataOS is setting a new standard in data product development.
 
@@ -137,22 +138,16 @@ Explore the tutorials and guides essential for building data products using Data
 
     [:octicons-arrow-right-24: Learn more](/videos/)
 
--   :material-card-bulleted-settings-outline:{ .lg .middle } **Quick Guides**
- 
-    ---
- 
-    [:octicons-arrow-right-24: Learn more]()
-
 -   :material-network-pos:{ .lg .middle } **Glossary**
 
     ---
 
     [:octicons-arrow-right-24: Learn more](/glossary/)
 
--   :material-content-duplicate:{ .lg .middle } **SDK**
+-   :material-content-duplicate:{ .lg .middle } **Quick Guide**
 
     ---
 
-    [:octicons-arrow-right-24:  Learn more](/api_docs/)
+    [:octicons-arrow-right-24:  Learn more]()
 
 </div>
