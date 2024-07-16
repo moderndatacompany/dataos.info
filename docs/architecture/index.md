@@ -6,7 +6,7 @@ search:
 #   - navigation
 #   - toc
 ---
-# Architecture
+# :simple-buildkite: Architecture
 DataOS is the data operating system built to create, deploy & manage domain-specific data products at scale. Its architecture has been designed to enhance experience of data developers, decrease reliance on IT teams, democratize data, provide tangible ROI faster, and accelerate creation of data products. This page elucidates how the design of DataOS implements this data-first architecture.
 
 <aside class="callout">
