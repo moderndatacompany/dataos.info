@@ -50,7 +50,7 @@ v1alpha: # Data Product version
 ```        
 
 
-## **Product meta section**
+## **Resource meta section**
 
 This section serves as the header of the manifest file, defining the overall characteristics of the Data Product you wish to create. It includes attributes common to all types of Products in DataOS. 
 
@@ -223,6 +223,9 @@ refs:
   - title: Lens Info 
     href: https://dataos.info/interfaces/lens/
 ```
+
+
+
 
 ## **Data Product-specific section**
 
