@@ -37,7 +37,7 @@ Data Product Owners oversee the lifecycle of data products within DataOS. They e
 
 If you are a Data Product Developer, click [here](/getting_started/dp_owner/) to begin your DataOS journey.
 
-- **Operator**
+### **Operator**
 Operators manage and operate data processes within DataOS and ensure its smooth operation. They handle user access, monitor system performance, and maintain the platform's infrastructure. Their role is critical in providing a stable and secure environment for all data activities.
 
 If you are an Operator, click [here](/getting_started/operator/) to begin your DataOS journey.
