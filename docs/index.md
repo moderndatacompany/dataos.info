@@ -100,7 +100,7 @@ In this section, learn about the interfaces to interact with DataOS services and
 </div>
 
 
-## Understand DataOS Resources
+### **Understand DataOS Resources**
 
 Before you start building Data Products, know about these DataOS Resources which act as building blocks for your data product.
 
@@ -125,7 +125,7 @@ Before you start building Data Products, know about these DataOS Resources which
 - :resources-workflow: [Workflow](/resources/workflow/)
 </div>
 
-## Learning Resources
+### **Learning Resources**
 
 Explore the tutorials and guides essential for building data products using DataOS.
 
@@ -136,7 +136,7 @@ Explore the tutorials and guides essential for building data products using Data
     ---
 
     [:octicons-arrow-right-24: Learn more](/videos/)
-    
+
 -   :material-card-bulleted-settings-outline:{ .lg .middle } **Quick Guides**
  
     ---
