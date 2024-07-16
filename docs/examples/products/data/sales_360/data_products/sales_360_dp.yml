@@ -16,16 +16,14 @@ collaborators:
   - loki
 refs:
   - title: sales_intelligence_lens
-    href: https://cheerful-maggot.dataos.app/lens/app/schema/sales_intelligence
+    href: https://liberal-donkey.dataos.app/lens/app/schema/sales_intelligence
 
   - title: sales_intelligence_dashboard
-    href: https://cheerful-maggot-superset.dataos.app/superset/dashboard/204
+    href: https://liberal-donkey-superset.dataos.app/superset/dashboard/204
 
   - title: sales_intelligence_app
-    href: https://cheerful-maggot.dataos.app/sales-analysis/
+    href: https://liberal-donkey.dataos.app/sales-analysis/
 
-  - title: iris_dashboard
-    href: https://cheerful-maggot.dataos.app/lens2/iris/public:sales-intelligence/dashboard/transaction_analysis
 entity: product
 v1alpha:
   data:
@@ -53,12 +51,12 @@ v1alpha:
       - description: orders
         purpose: source
         refType: dataos
-        ref: dataos://postgres:retail_accelerator/orders
+        ref: dataos://bigquery:sales_360/orders
 
       - description: A data product for products that optimizes products management using real-time data and advanced analytics for accurate demand forecasting.
         purpose: source
         refType: dataos
-        ref: dataos://snowflake:public/product        
+        ref: dataos://bigquery:sales_360/product        
 
 
     outputs:

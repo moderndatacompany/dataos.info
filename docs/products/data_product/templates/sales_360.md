@@ -1,20 +1,21 @@
 
 # Sales 360 Case Study: StrideRight Shoes
 
-## Company Background
+## Overview
+
+**Company Background**
 
 StrideRight Shoes is a leading manufacturer and retailer specializing in high-quality footwear for various demographics, from children to adults. With a commitment to comfort, style, and durability, StrideRight Shoes aims to provide exceptional customer experiences both online and in-store.
 
-## Challenges Faced
+**Challenges Faced**
 
  StrideRight Shoes experienced significant operational challenges, including quality issues, late deliveries, and sampling delays. These issues impacted sales effectiveness and customer satisfaction, highlighting the need for streamlined operations and improved customer engagement strategies.
 
-## Vision
+**Vision**
 
 To revolutionize the footwear industry by leveraging advanced data analytics enhancing operational efficiency, and delivering personalized customer experiences that drive engagement, loyalty, and sustainable growth.
 
-
-## Goals and Objectives
+**Goals and Objectives**
 
   -  **Increase Customer engagement and lower churn rate:** Understand customer preferences and provide personalized recommendations and targeted marketing campaigns.
 
@@ -23,7 +24,7 @@ To revolutionize the footwear industry by leveraging advanced data analytics enh
   -  **Maximize revenue from high-value customers.** Integrate and analyze customer interaction and transaction data to derive actionable insights and stay ahead of market trends.
 
 
-## Use-cases
+**Use-cases**
 
 1. **Personalized Marketing Campaigns:**  Tailor marketing efforts using customer data to create personalized recommendations and targeted campaigns.
 
@@ -32,11 +33,17 @@ To revolutionize the footwear industry by leveraging advanced data analytics enh
 3. **Sales Performance Analysis:** Monitor and analyze sales data through interactive dashboards to identify trends and optimize marketing strategies.
 
 
-## Solution
+**Solution**
 
 **Sales 360 Data Product:** The Sales 360 data product is a structured dataset that contains comprehensive information about various entities within the organization. It serves as a central repository for product data, facilitating efficient management, analysis, and decision-making processes related to product operations, logistics, and customer engagement.
 
-## Pre-requisites
+
+## Source Aligned Data Product
+
+ <center> ![source align](/products/data_product/templates/source_align_dp.png) </center>
+ <center> BigQuery Align Data Product </center>
+
+**Pre-requisites**
 
 To create the Data Product within DataOS, following requirements were needed:
 
@@ -50,21 +57,18 @@ The individual responsible for designing the Sales 360 data product is the Data 
 
 ### **Define entities and schema**
 
-For our use case, we define the following entities: Customer, Product, Transaction, and Channel.
+For our use case, we define the following entities: Customer, Product, Transaction, Order and Channel.
 
 
 ### **Data Understanding and Exploration**
 
-In the design phase of a data product, we define the scope and structure of the data product and plan its development. To plan things in the design phase, we need to first look up at the various  data that is going to be integrated and will be making `Sales360` data product.
+To plan things in the design phase, we need to first look up at the various  data that is going to be integrated and will be making `Sales360` data product.
 
-For this project, we aim to create a Sales 360 data product that will integrate various tables from multiple sources. These sources must be connected to DataOS using Depot.
+For this project, we aim to create a Sales 360 data product that will integrate various tables from BigQuery sources. These sources must be connected to DataOS using [Depot](/resources/depot).
 
-For example, here the source is bigquery warehouse. 
-
-#### **Create a Depot**
+**Create a Depot**
 
 Creating a bigquery depot with json file of the credentails of the client's warehouse.
-
 
 <details>
 
@@ -75,9 +79,9 @@ Creating a bigquery depot with json file of the credentails of the client's ware
 ```
 </details>
 
-#### **Extract the Metadata**
+**Extract the Metadata**
 
-To explore the metadata of the tables you can run a scanner. You can then access the metadata on Metis UI. The Scanner manifest file is shown below:
+To explore the metadata of the tables you can run a scanner. You can then access the metadata on [Metis UI](/interfaces/metis). The Scanner manifest file is shown below:
 
 <details>
 
@@ -89,7 +93,7 @@ To explore the metadata of the tables you can run a scanner. You can then access
 </details>
 
 
-#### **Explore the Data**
+**Explore the Data**
 
 Now for data exploration, you can query the data using the workbench. To query the data on the workbench without moving the data you first need to create a Minerva or a Themis cluster that will target the Depot. By applying the below manifest file, you can create the cluster.
 
@@ -103,25 +107,61 @@ Now for data exploration, you can query the data using the workbench. To query t
 ```
 </details>
 
-Now, to interact with  the newly created Cluster, execute the following steps:
+To interact with the newly created `salesbq` Cluster in Workbench:
 
-- **Accessing the Cluster:** Upon launching the Workbench application, the user is required to select the desired Cluster. In this instance, the cluster identified as `salesbq` is chosen.
+-  **Access the Cluster:** Open Workbench and select the `salesbq` cluster.
+-  **Execute Queries:** Choose the catalog, schema, and tables, then run your query using the 'Run' button.
+-  **Retrieve Results:** View the query results in the pane below the input area.
 
-- **Execution of Queries**:
-    - **Catalog, Schema, and Table Selection**: The user must select the appropriate catalog, schema, and tables within the Workbench interface.
-    - **Query Execution**: After formulating the query, the user executes it by clicking the 'Run' button.
-    - **Result Retrieval**: The outcomes of the executed query are displayed in the pane situated below the query input area.
+For more details, refer to the [Workbench](/interfaces/) documentation.
 
-For comprehensive details on the features and capabilities of Workbench, refer to the dedicated [Workbench](/interfaces/workbench) documentation.
-
-
-#### **Data Product Architectural Design**
+### **Data Product Architectural Design**
 
 Once you've explored the data, the next step is to plan the architectural design. For example, In our case, the  Data Sources are Bigquery and Postgres to connect with  this sources we will need to create two Depots. The flare job will then use this depot and will faciliate easy ingestion and transformation from source to icebase. After ingestion, the data will must go through profiling and pass all the defined quality checks we will discuss this in detail in Build Phase. Then our data product will be ready to be used in a Analytical Platform.d
 
 <center> ![Architectural Diagram](/products/data_product/templates/architecture.png) </center> 
 
-#### **Performance target**
+### **Data Product Prototype**
+
+Here we will define our Input, Output, Transformations and SLOs.
+
+  - **Input** acts as an intermediary connecting diverse data sources. You can define as many input ports as you would like for each database. Here our input is bigquery depot.
+
+  - **Transformation** is where you enrich the data to make it more useable  accurate and realiable. The stack we used for transformation is **`flare`**. The transformation stops involved were:
+
+    - **Read Input from BigQuery:** Ingest raw data as is from Bigquery, with the only transformation being the conversion of cases to lower case.
+
+    - **Joined Customer and Transaction Tables:** Integrated data from the Customer and Transaction tables to identify customer-churn.
+
+    - **Orders enriched table** Integrated data from Customer, Product, Transaction and Orders table to create a Orders-enriched table.
+    
+  -  **Output** is defined as our complete data product which is our order enriched table ready to be consumed and can also be delivered to different platforms for different purpose like streamlit for creating data applications and [superset](/interfaces/superset) for data visualization, and [lens](/interfaces/lens) for data modeling.
+
+    - **Streamlit App:** for customer churn details.
+
+    - **Sales 360 Lens:** Data model for StrideRight Shoes sales intelligence and sales analysis.
+
+    - **Superset Dashboard** Sales intelligence dashboard.
+
+  - **SLOs:** Defining quality and profiling expectations and access related conditions are defined here.
+
+```yaml title="data_product.yml"
+--8<-- "examples/products/data/sales_360/data_products/sales_360_dp.yml"
+```
+
+### **Data Product Scanner**
+
+<details>
+  <summary> data-product scanner </summary>
+
+```yaml title="scanner_sales360.yml"
+--8<-- "examples/products/data/sales_360/product_scanner.yml"
+```
+</details>
+
+Now, you can see your newly created data product in [DPH](/interfaces/data_product_hub)
+
+### **Performance target**
 
   - **Response Time Goals:** Achieve 95% of queries processed within 500 milliseconds.
 
@@ -137,21 +177,19 @@ Once you've explored the data, the next step is to plan the architectural design
 
 These targets guide system design and optimization efforts, ensuring technical capabilities meet business requirements for consistent performance and reliability.
 
-#### **Validation and Iteration**
+### **Validation and Iteration**
 
 After finalizing the design of the Data Product, it undergoes review sessions with key stakeholders and team members to verify compliance with defined requirements and goals. All modifications made during this phase are recorded to facilitate ongoing enhancements to the design.
 
 Once the design aligns with requirements, the subsequent phase focuses on devloping the Data Product.
 
-## Build
+## Build Phase
 
-This section involves the buildin the Data Product right from data connection to defining SLOs. Here we will be creating resources and stacks and all other capabilities of DataOS to fulfill the design phase requirements.
+This section involves the building and creating resources and stacks and all other capabilities of DataOS to fulfill the design phase requirements.
 
-### **Steps to Create a Data Product**
+From the design phase and Data Product Architectural Design, it is clear which DataOS resources we require to build the Data Product, and these are Depot, Cluster, Scanner, Flare, Monitor, Pager, SODA. Let’s see how to create each one step by step. As we already explored the data we’ll directly jump into the data transformation step using Flare.
 
-From the design phase and Data Product Architectural Design, it is clear which DataOS resources we require to build the Data Product, and these are Depot, Cluster, Scanner, Flare, Policy, SODA Checks and Bundle. Let’s see how to create each one step by step. As we already explored the data we’ll directly jump into the data transformation step using Flare.
-
-#### **Create the Flare Job for data ingestion and data transformation**
+### **Data Ingestion and Transformation**
 
 Ingesting and transforming following tables:
 
@@ -168,73 +206,44 @@ using super [dag](/resources/workflow/#workflow-and-directed-acyclic-graph-dag) 
 Here are the all mentioned ingested manifest files:
 
 <details>
-  <summary>customer manifest file</summary>
+
+  <summary>All ingested manifest files</summary>
 
 ```yaml title="customer-ingests.yml"
 --8<-- "examples/products/data/sales_360/ingestions/customer_ingest.yml"
 ```
-</details>
 
-
-<details>
   <summary>transactions manifest file</summary>
 
 ```yaml title="transaction-ingest.yml"
 --8<-- "examples/products/data/sales_360/ingestions/transaction_ingest.yml"
 ```
-</details>
-
-
-<details>
   <summary>products manifest file</summary>
 
 ```yaml title="product-ingestion.yml"
 --8<-- "examples/products/data/sales_360/ingestions/product_ingest.yml"
 ```
-</details>
-
 
 Now, using customer and transaction data we will create a customer churn table that will give us the total count of churned and not churned customer.
 
-<details>
   <summary>customer-churn manifest file</summary>
 
 ```yaml title="customer-churn-ingestion.yml"
 --8<-- "examples/products/data/sales_360/ingestions/customer_churn.yml"
 ```
-</details>
 
 Similarly, we will join transaction, product, customer and order table to get a order-enriced table.
 
-<details>
   <summary>orders-enriched manifest file</summary>
 
 ```yaml title="orders-enriched-ingestion.yml"
 --8<-- "examples/products/data/sales_360/ingestions/orders.yml"
 ```
+
 </details>
 
 
-#### **Create the Monitor and Pager for  observability of workflows**
-
-<details>
-  <summary>Ingestion monitor manifest file</summary>
-
-```yaml title="transformation_and_ingestion_monitor.yml"
---8<-- "examples/products/data/sales_360/observability/monitor/ingestion-monitor.yml"
-```
-</details>
-
-<details>
-  <summary>Ingestion pager manifest file</summary>
-
-```yaml title="transformation_and_ingestion_pager.yml"
---8<-- "examples/products/data/sales_360/observability/pagers/workflow_pager.yml"
-```
-</details>
-
-
-#### **Data Profiling**
+### **Data Profiling**
 
 After Ingestion and transformation, it's necessary that we perform profiling and quality checks on our data as designed in the design phase.
 
@@ -244,22 +253,18 @@ After Ingestion and transformation, it's necessary that we perform profiling and
 Here are all the mentioned profiling manifest files:
 
 <details>
-  <summary>customer-profile manifest file</summary>
+  <summary>All profiling manifest files</summary>
 
 ```yaml title="customer-profiling.yml"
 --8<-- "examples/products/data/sales_360/profiling_quality/customer_profile.yml"
 ```
-</details>
 
-<details>
   <summary>transactions-profile manifest file</summary>
 
 ```yaml title="transactions-profiling.yml"
 --8<-- "examples/products/data/sales_360/profiling_quality/transaction_profile.yml"
 ```
-</details>
 
-<details>
   <summary>products-profile manifest file</summary>
 
 ```yaml title="products-profiling.yml"
@@ -268,29 +273,7 @@ Here are all the mentioned profiling manifest files:
 </details>
 
 
-#### **Create the Monitor and Pager for observability of profiling**
-
-<details>
-  <summary>profiling-monitor manifest file</summary>
-
-```yaml title="profiling_monitor.yml"
---8<-- "examples/products/data/sales_360/observability/monitor/profile_monitor.yml"
-```
-</details>
-
-<details>
-  <summary>profiling-monitor manifest file</summary>
-
-```yaml title="profiling_pager.yml"
---8<-- "examples/products/data/sales_360/observability/pagers/profile_pager.yml"
-```
-</details>
-
-
-
-#### **Data Quality Checks**
-
-
+### **Data Quality Checks**
 
 ```yaml title="quality_checks_super_dag.yml"
 --8<-- "examples/products/data/sales_360/dag/quality_checks.yml"
@@ -300,22 +283,16 @@ Here are all the mentioned quality checks manifest files:
 
 
 <details>
-  <summary>customer-quality-checks manifest file</summary>
+  <summary>All quality-checks manifest file</summary>
 
 ```yaml title="customer_quality.yml"
 --8<-- "examples/products/data/sales_360/profiling_quality/customer_quality.yml"
 ```
-</details>
-
-<details>
   <summary>transactions-quality-checks manifest file</summary>
 
 ```yaml title="transactions_quality.yml"
 --8<-- "examples/products/data/sales_360/profiling_quality/transaction_quality.yml"
 ```
-</details>
-
-<details>
   <summary>products-quality-checks manifest file</summary>
 
 ```yaml title="products_quality.yml"
@@ -324,17 +301,39 @@ Here are all the mentioned quality checks manifest files:
 </details>
 
 
-#### **Create the Monitor and Pager for observability of quality checks**
+### **Data Observability**
 
 <details>
+  <summary>Ingestion monitor manifest file</summary>
+
+```yaml title="transformation_and_ingestion_monitor.yml"
+--8<-- "examples/products/data/sales_360/observability/monitor/ingestion-monitor.yml"
+```
+
+  <summary>Ingestion pager manifest file</summary>
+
+```yaml title="transformation_and_ingestion_pager.yml"
+--8<-- "examples/products/data/sales_360/observability/pagers/workflow_pager.yml"
+```
+
+  <summary>profiling-monitor manifest file</summary>
+
+```yaml title="profiling_monitor.yml"
+--8<-- "examples/products/data/sales_360/observability/monitor/profile_monitor.yml"
+```
+
+  <summary>profiling-monitor manifest file</summary>
+
+```yaml title="profiling_pager.yml"
+--8<-- "examples/products/data/sales_360/observability/pagers/profile_pager.yml"
+```
+
   <summary>quality-monitor manifest file</summary>
 
 ```yaml title="quality_monitor.yml"
 --8<-- "examples/products/data/sales_360/observability/monitor/quality_monitor.yml"
 ```
-</details>
 
-<details>
   <summary>quality-pager manifest file</summary>
 
 ```yaml title="quality_pager.yml"
@@ -342,49 +341,12 @@ Here are all the mentioned quality checks manifest files:
 ```
 </details>
 
-#### **Create the Data Product manifest file**
 
-Here we will define our Input, Output  and transformations.
-
-  - **Input** acts as an intermediary connecting diverse data sources. You can define as many input ports as you would like for each database. Here our input is bigquery depot.
-
-  - **Transformation** is where you enrich the data to make it more useable  accurate and realiable. The stack we used for transformation is **`flare`**. The transformation stops involved were:
-
-    - **Read Input from BigQuery:** Ingest raw data as is from Bigquery, with the only transformation being the conversion of cases to lower case.
-
-    - **Joined Customer and Transaction Tables:** Integrated data from the Customer and Transaction tables to identify customer-churn.
-
-    - **Orders enriched table** Integrated data from Customer, Product, Transaction and Orders table to create a Orders-enriched table.
-    
-  -  **Output** is defined as our complete data product ready to be consumed and can also be delivered to different platforms for different purpose like streamlit and [superset](/interfaces/superset) for data visualization, and [lens](/interfaces/lens) for data modeling.
-
-    - **Streamlit App:** for customer churn details.
-
-    - **Sales 360 Lens:** Data model for StrideRight Shoes sales intelligence and sales analysis.
-
-    - **Superset Dashboard** Sales intelligence dashboard.
-
-  - **SLOs:** Defining quality and profiling expectations and 
-
-```yaml title="customer_data_product.yml"
---8<-- "examples/products/data/sales_360/data_products/sales_360_dp.yml"
-```
-
-## **Deploy**
+## Deploy Phase
 
 Once you've created your data product with all its functionalities and insights, the next step is to ensure it reaches its intended audience through platforms like Metis and the Data Product Hub. To achieve this, running the Scanner becomes crucial.
 
-
-<details>
-  <summary> data-product scanner </summary>
-```yaml title="scanner_sales360.yml"
---8<-- "examples/products/data/sales_360/product_scanner.yml"
-```
-</details>
-
-Now, you can see your newly created data product in [DPH](/interfaces/data_product_hub)
-
-## Monitor and Iterate
+## Monitoring and Iteration Phase
 
 After deployment, monitor the Data Product's performance and continue to collect feedback. Iterate the process as needed to achieve the desired results. The improvements can include:
 
@@ -394,15 +356,19 @@ After deployment, monitor the Data Product's performance and continue to collect
 By following these steps, you can continuously improve your Data Product to better meet user needs and business objectives.
 
 
-## Leveraging tools for consuming data products
+## Data Products Consumption
 
 All the Data Visulaisationa tools such as Superset, PowerBI and Data Modelling tools such as Lens serve as a tool to consume the data products to derive the required actionable insights for which the data product was built.
 
-### **Lens**
+### **Building Data Model**
+ 
+**Create the Lens**
 
-#### **Create the Lens**
+<center> ![Lens](/products/data_product/templates/lens.png) </center>
+<center>  The Entity Relationship Diagram of the lens </center>
 
-#### **Developing a Conceptual Data Model**
+
+**Developing a Conceptual Data Model**
 
 | Entity      | Fields and Dimensions                                                                                                                                     | Derived Dimensions                                                                                                                                                                              | Measure                                                                                               | Related To | Relationship |
 |-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|------------|--------------|
@@ -410,11 +376,6 @@ All the Data Visulaisationa tools such as Superset, PowerBI and Data Modelling t
 | Customer    | customer_id, first_name, last_name, gender, phone_number, email_id, birth_date, age, education_level, marital_status, number_of_children, register_date, occupation, annual_income, hobbies, degree_of_loyalty, social_class, mailing_street, city, state, country, zip_code | full_name, age_group                                                                                                                                                                            | total_customers, average_age                                                                          | Transaction| 1:N          |
 | Products    | productid, skuid, productname, productcategory, subcategory, gender, price, cost, launchdate, designername, color, size, model                                 |                                                                                                                                                                                                 | total_products, average_price, total_cost, average_margin                                             |            |              |
 | Transaction | transaction_id, customer_id, transaction_date, order_id, transaction_amount, payment_method, transaction_type, transaction_status, order_delivery_date, discounted_amount, shipping_amount, order_total_amount, discount_percentage, shipping_address, billing_address, promo_code, shipping_method, order_status, skuid, store_id | full_address, transaction_year, transaction_month, transaction_day, order_delivery_duration, discount_applied, shipping_cost_category                                                          | total_transactions, total_revenue, average_transaction_amount, total_discounted_amount, total_shipping_amount, total_order_amount, transaction_percentage_with_discount, ups_delivered_percentage, canceled_order_percentage, monthly_revenue_curr, monthly_revenue_prev | Products, Channel | N:1, N:1   |
-
-
-<center> ![Lens](products/data_product/templates/lens.png) </center>
-<center>  The Entity Relationship Diagram of the lens </center>
-
 
 
 <details> 
@@ -425,7 +386,7 @@ All the Data Visulaisationa tools such as Superset, PowerBI and Data Modelling t
 ```
 </details>
 
-### **Streamlit App for Data Consumer**
+### **Building Data Application**
 
 This streamlit app will give you the details  of churned and not  churned customers so that all the customers who are going to churned can be retained bby contacting them and giving them special discounts.
 
@@ -437,14 +398,14 @@ This streamlit app will give you the details  of churned and not  churned custom
 ```
 </details>
 
-The Output:
+**The Output:**
 
 <center> ![Streamlit](/products/data_product/templates/streamlit.png) </center>
 
 <center> The Streamit App for Customer Churn Details </center>
 
 
-### **Superset Dashboard**
+### **Building Dashboards**
 
 <center> ![Superset](/products/data_product/templates/superset.png) </center>
 

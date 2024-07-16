@@ -1,5 +1,5 @@
 version: v1
-name: "salesbq"
+name: "bigquery"
 type: depot
 tags:
   - dropzone
