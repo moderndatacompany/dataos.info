@@ -4,19 +4,19 @@ In the rapidly evolving world of data, the need for robust, scalable, and effici
 
 DataOS is an enterprise-grade data product platform that enables organizations to build, manage, and share data products effortlessly. It provides the essential building blocks required by data developers to create powerful data products that drive significant business outcomes. With DataOS, end users can harness data for better decision-making, driving value across the organization.
 
-The development of DataOS is guided by a few core principles, each designed to address specific user needs and challenges:
+The primary inspiration for DataOS comes directly from its users. DataOS development is driven by core principles tailored to address specific user needs and challenges:
 
-- **Customer-Centric Design**: The primary inspiration for DataOS comes directly from its users.  DataOS continuously evolves to meet the real-world needs of data professionals.
+- **Consumption Ready Layer**: DataOS streamlines data product consumption with context-aware discovery, secure exploration, reliable quality, and multi-interface activation through its Self Serve Architecture.
 
-- **Streamlined Data Product Consumption**: DataOS streamlines data product consumption with context-aware discovery, secure exploration, reliable quality, and multi-interface activation through its Self Serve Architecture.
-
-- **AI Integration**: Leveraging AI agents, DataOS enhances the user experience by providing heuristic assistance that evolves based on user feedback and needs.
-
-- **Comprehensive Lifecycle Management**: DataOS is built to serve data product consumers, including data analysts/scientists, and data app developers. It aims to capture the entire data product lifecycle, integrating data product consumers, owners, developers, and administrators under one roof. This holistic approach ensures seamless integration with tools that users already familiar with.
+- **Data Product Lifecycle Management**: DataOS is built to serve data product consumers, including data analysts/scientists, and data app developers. It aims to capture the entire data product lifecycle, integrating data product consumers, owners, developers, and administrators under one roof. This holistic approach ensures seamless integration with tools that users already familiar with.
 
 - **Faster Time to Value**: DataOS accelerates the development process, enabling enterprises to gain insights quickly. This reduces the time to value substantially, fueling targeted campaigns, personalizing customer journeys, and enhancing profits faster.
 
-- **Reduced TCO**: DataOS significantly lowers the total cost of ownership by streamlining data operations through task automation, minimizing data movement, and simplifying maintenance.
+- **AI Ready**: Leveraging AI agents, DataOS enhances the user experience by providing heuristic assistance that evolves based on user feedback and needs.
+
+- **FinOps**: DataOS provides real-time insights into resource utilization, enabling organizations to monitor and control cloud spending effectively. This strategic approach not only promotes shared responsibility across teams but also drives significant cost savings, improves operational efficiency, and facilitates informed financial decisions.
+
+DataOS continuously evolves to meet the real-world needs of data professionals. DataOS significantly lowers the total cost of ownership by streamlining data operations through task automation, minimizing data movement, and simplifying maintenance.
 
 ## Navigating dataos.info
 
