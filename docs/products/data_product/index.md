@@ -81,7 +81,7 @@ Control Ports are used for monitoring, logging, and managing the Data Product. T
 
 Experience Ports are provided by DataOS to support additional consumption paradigms beyond the standard input, output, and control functionalities. They enable specialized access methods such as BI tools, AI integrations, and data applications. Examples include exposing the Data Product via a REST API using Talos, creating and managing a semantic model with DataOS’s Lens for improved data understanding, and implementing a chat interface using Lens-LLM systems for natural language interactions with the data.
 
-In the following sections, we have outlined the comprehensive thought process involved in developing a Data Product, from defining use cases to the deployment. 
+The following sections outline the comprehensive thought process of developing a Data Product, from defining use cases to the deployment.
 
 ## Define Usecases
 
@@ -94,6 +94,7 @@ Once use cases have been defined, the next step is to explore the existing data 
 
 The Data Product Development Life cycle consists of four key phases: Design, Develop, Deploy, and Iterate. It starts with Design, where business goals are translated into a solution architecture. The Develop phase involves building and testing the data product based on this design. Deploy focuses on releasing the product to users and ensuring it operates effectively in a production environment. Finally, Iterate emphasizes continuous improvement through feedback and performance analysis to adapt to evolving needs and enhance the product over time. To know about Data Product Development Life cycle in detail, please [refer to this](/products/data_product/how_to_guides/).
 
+After the successful deployment and any required iterations, the Data Product is now ready to be consumed by data consumers. They can utilize tools like [Lens](/interfaces/lens/) for data modeling, [Superset](/interfaces/superset/) for visualization, and data applications like Streamlit for interactive data solutions to effectively analyze and engage with the data.
 
 
 ## Structure of Data Product Manifest
