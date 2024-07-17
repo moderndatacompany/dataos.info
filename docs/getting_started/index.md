@@ -6,11 +6,11 @@ title: Getting Started
 
 Welcome to DataOS! 
 
-DataOS enables you to effortlessly build, manage, and share data products that drive significant business outcomes. This guide provides a structured approach to familiarizing yourself with DataOS capabilities according to your role in the organization and your responsibilities.
+DataOS enables you to build, manage, and share data products that drive significant business outcomes. This guide provides a structured approach to familiarizing yourself with DataOS capabilities according to your role and responsibilities within your organization.
 
 ## Initial Account Setup and Access to the DataOS Instance
 
-Contact DataOS administrator or your organization admin for sign-in details and appropriate access level according to your role in the organization.
+Contact the DataOS administrator or your organization's administrator for sign-in details and the appropriate access level according to your role in the organization.
 
 ## Navigating DataOS
 
@@ -20,7 +20,7 @@ Depending on your persona, discover the diverse ways to interact with your DataO
 
 ## Key Personas of DataOS
 
-Before you proceed, understanding how DataOS benefits various user personas with different responsibilities is crucial. By familiarizing yourself with these key personas and their interactions with DataOS, you can effectively harness the platform’s capabilities to drive data-informed decisions and achieve operational efficiency.
+Before you proceed, it is crucial to understand how DataOS benefits various user personas with different responsibilities. By familiarizing yourself with these key personas and their interactions with DataOS, you can effectively harness the platform's capabilities to drive data-informed decisions and achieve operational efficiency.
 
 ### **Data Product Consumer**
 Data Product Consumers in DataOS encompass a variety of roles, such as Data Analysts, Business Analysts, and Data Scientists. Analysts play essential roles in leveraging data for actionable insights and strategic decision-making. They utilize DataOS to discover, explore, and activate data products, enabling them to transform raw data into valuable business intelligence and drive innovation. Data Scientists leverage advanced analytical techniques and machine learning algorithms to extract meaningful insights from data within DataOS.
@@ -36,6 +36,8 @@ If you are a Data Product Developer, click [here](/getting_started/data_product_
 Data Product Owners oversee the lifecycle of data products within DataOS. They ensure data quality and compliance with regulatory requirements, manage data integrity and security, and govern data distribution.
 
 ### **Operator**
-Operators manage and operate data processes within DataOS and ensure its smooth operation. They handle user access, monitor system performance, and maintain the platform's infrastructure. Their role is critical in providing a stable and secure environment for all data activities.
+Operators manage and operate data processes within DataOS to ensure their smooth operation. They handle user access, monitor system performance, and maintain the platform's infrastructure. Their role is critical in providing a stable and secure environment for all data activities.
 
 If you are an Operator, click [here](/getting_started/operator/) to begin your DataOS journey.
+
+
