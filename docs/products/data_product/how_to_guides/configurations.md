@@ -2,7 +2,7 @@
 
 The following attributes are declared for every Data Product deployed in a DataOS context. Some of these attributes/fields need to be mandatorily declared, while others are optional.
 
-## Structure of Data Product manifest
+## Structure of Data Product manifest file
 
 ```yaml
 # Product meta section
