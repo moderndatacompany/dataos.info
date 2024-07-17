@@ -2,7 +2,7 @@
 
 Data Product Developers are responsible for creating and managing data products within DataOS. They design, build, and maintain the data infrastructure and pipelines, ensuring the data is accurate, reliable, and accessible.
 
-A Data product developer is typically responsible for the following activites.
+A Data product developer is typically responsible for the following activities.
 
 ## Understand Data Needs
 
@@ -12,14 +12,15 @@ A Data product developer is typically responsible for the following activites.
 
 
 ## Understanding Data Assets
-Data developers need to identify and evaluate the data sources to be integrated (databases, APIs, flat files, etc.) and determine the data formats, structures, and protocols of each source. DataOS Metis can help in understanding these details.
+
+Data developers need to identify and evaluate the data sources to be integrated (databases, APIs, flat files, etc.) and determine each source's data formats, structures, and protocols. DataOS Metis can help you understand these details.
 
 
 1. Login to DataOS and go to Metis app.
     
     ![dataoshome_metis.png](/getting_started/dataoshome_metis.png)
     
-2. Go to **Assets** tab. Enter search string to quickly find your data asset.
+2. Go to **Assets** tab. Enter a search string to find your data asset quickly.
     
     ![assets_metis.png](/getting_started/assets_metis.png)
     
@@ -27,15 +28,15 @@ Data developers need to identify and evaluate the data sources to be integrated 
     
     ![dataset_filtered.png](/getting_started/dataset_filtered.png)
     
-4. Click on the dataset to see its details such as schema, columns.
+4. Click on the dataset for details such as schema and columns.
     
     ![dataset_details.png](/getting_started/dataset_details.png)
 
-5. You can further explore the data asset by looking at its data. You can do this by writing queries. Metis enables you to open the data asset in Workbench.
+5. You can further explore the data asset by looking at its data and writing queries. Metis enables you to open the data asset in Workbench.
 
 ## Performing Exploratory Data Analysis (EDA)
 
-1. Open the data asset in Workbench app.
+1. Open the data asset in the Workbench app.
     
     ![dataoshome_workbench.png](/getting_started/dataoshome_workbench.png)
     
@@ -43,7 +44,7 @@ Data developers need to identify and evaluate the data sources to be integrated 
     
     ![selct_cluster.png](/getting_started/selct_cluster.png)
     
-3. Select catalog, schema and table.
+3. Select catalog, schema, and table.
     
     ![select_catalog.png](/getting_started/select_catalog.png)
     
@@ -64,11 +65,11 @@ Data developers need to identify and evaluate the data sources to be integrated 
 
 ## Build Pipeline for Data Movement
 
-1. Write YAML for Data Processing Workflow as per requirement. In the YAML, you need to specify input and output locations as depot addresses. Contact DataOS operator to provide you with this information.
+1. Write YAML for the Data Processing Workflow as per the requirement. In the YAML, you need to specify input and output locations as depot addresses—contact the DataOS operator for this information.
 
-2. Specify DataOS processing Stack, you are using for your workflow.
+2. Specify the DataOS processing Stack you are using for your Workflow.
 
-The following example YAML code demonstrate the various sections of the Workflow.
+The following example YAML code demonstrates the various sections of the Workflow.
 
 ```yaml
 version: v1
@@ -144,7 +145,7 @@ workflow:
 ```
 ## Run the Workflow 
 
-1. You need to run this Workflow by using *apply* command on DataOS CLI.
+1. You need to run this Workflow by using the *apply* command on DataOS CLI.
 
 2. Using DataOS CLI commands, you can check the runtime information of this Workflow.
 
@@ -152,6 +153,6 @@ workflow:
 
 Please note that this workflow will be part of the data product bundle. 
 
-Click [here](/resources/stacks/flare/), to access the DataOS Resource specific comprehensive documentaion on dataos.info. 
+Click [here](/resources/stacks/flare/), to access the comprehensive DataOS Resource specific documentaion on dataos.info. 
 
-Explore the rich set of DataOS resources, which serve as the building blocks for data products and processing stacks. Additionally, refer to the learning assets to master the required level of proficiency for the role of a data product developer.
+Explore the rich set of DataOS resources, which serve as the building blocks for data products and processing stacks. Additionally, refer to the learning assets to master the required proficiency level for the role of data product developer.
