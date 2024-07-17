@@ -48,7 +48,7 @@ v1alpha: # Data Product version
         refType: dataos_address
         ref: dataos://icebase:google_analytics/ga_sessions_daily_data_raw    
 ```
-To know more about the Product meta section, [refer to this](/products/data_product/configurations/).
+To know more about the Product meta section, [refer to this](/products/data_product/configuration/).
 
 Following are the details of each attributes  of Product specific section:
 

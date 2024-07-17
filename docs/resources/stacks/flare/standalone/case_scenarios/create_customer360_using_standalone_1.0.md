@@ -5,7 +5,7 @@ Now it's time for you to solve a Customer 360 on your own with a set of guided i
 
 After you have successfully installed Flare and run the sample workflow, you are ready to dive into the assignment and achieve a Customer 360 with guided steps. If you don’t know how to get the Flare Standalone running, navigate to the below link
 
-[Flare Standalone](/resources/stacks/flare/case_scenarios)
+[Flare Standalone](/resources/stacks/flare/case_scenarios/)
 
 A Customer 360 can be understood as an ‘insight’ a company discovers about its customers after integrating disparate datasets and loading them into one table. This helps in churning data-driven business decisions.
 
@@ -37,7 +37,7 @@ This tutorial helps you perform the steps you need to transform the given data i
 
 1. Download the `assignment.zip` given below
 
-[assignment.zip](/resources/stacks/flare/create_customer360_using_standalone_1.0/assignment.zip)
+[assignment.zip](/resources/stacks/flare/create_customer360_using_standalone_1.0/assignment.zip/)
 
 1. Extract the assignment zip file. This file contains the following:
     1.  `flareconfig` folder with `config.yaml`.

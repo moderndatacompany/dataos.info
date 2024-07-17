@@ -1,6 +1,6 @@
 # Scheduled or Cron Workflow
 
-The code snippet below illustrates a sample schedule Workflow for profiling using the [Flare](/resources/stacks/flare) Stack in output depots with [Iceberg file format with Hadoop Catalog type and REST Metastore.](/resources/depot#limit-data-sources-file-format). To understand schedule related attribute in details click [here](/resources/workflow/configuration/#schedule).
+The code snippet below illustrates a sample schedule Workflow for profiling using the [Flare](/resources/stacks/flare/) Stack in output depots with [Iceberg file format with Hadoop Catalog type and REST Metastore.](/resources/depot/#limit-data-sources-file-format). To understand schedule related attribute in details click [here](/resources/workflow/configuration/#schedule).
 
 The following code snippet defines a scheduling configuration for a workflow, setting specific rules for when and how the workflow should execute. Here is an extended description of each attribute in the schedule:
 

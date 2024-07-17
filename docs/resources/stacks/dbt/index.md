@@ -6,7 +6,7 @@ search:
 
 # DBT
 
-dbt (data build tool) is a declarative [Stack](/resources/stacks/resources/stacks) within DataOS, acting as the transformative force in ELT (Extract, Load, Transform), dbt focuses on optimizing and refining data already loaded into the database. It facilitates the centralization and modularization of analytics code, adopting a structured approach akin to software engineering practices. It enables collaborative work on data models, and versioning, before their deployment to production.  It establishes a connection with the data platform and executes SQL code within the warehouse to perform data transformations, fostering collaboration among you and your team by establishing a single source of truth for metrics, insights, and business terminology.
+dbt (data build tool) is a declarative [Stack](/resources/stacks/) within DataOS, acting as the transformative force in ELT (Extract, Load, Transform), dbt focuses on optimizing and refining data already loaded into the database. It facilitates the centralization and modularization of analytics code, adopting a structured approach akin to software engineering practices. It enables collaborative work on data models, and versioning, before their deployment to production.  It establishes a connection with the data platform and executes SQL code within the warehouse to perform data transformations, fostering collaboration among you and your team by establishing a single source of truth for metrics, insights, and business terminology.
 
 <aside class="callout">
 🗣️ It's crucial to understand that although dbt is highly proficient in transformation tasks, it does not manage the Extract and Load processes.
@@ -22,7 +22,7 @@ dbt (data build tool) is a declarative [Stack](/resources/stacks/resources/stack
 
 ### **Create a Workflow manifest**
 
-dbt operates as a Stack that can be orchestrated through a [Workflow](/resources/workflow/resources/stacks) Resource. A Workflow is a DataOS Resource that represents a Directed Acyclic Graph (DAG) of jobs, where each job is executed using a Stack. It acts as an orchestrator for a Stack. 
+dbt operates as a Stack that can be orchestrated through a [Workflow](/resources/workflow/) Resource. A Workflow is a DataOS Resource that represents a Directed Acyclic Graph (DAG) of jobs, where each job is executed using a Stack. It acts as an orchestrator for a Stack. 
 
 **A DBT workflow is composed of the following sections:** 
 
@@ -98,7 +98,7 @@ The code snippet provided below shows a sample Workflow manifest.
 
 ### **Declare the configuration for DBT `stackSpec` section**
 
-The [Workflow](/resources/workflow/resources/stacks) Resource comprises of a `stackSpec` section (or a mapping) containing the attributes of the Stack to be orchestrated. Specifically within the dbt Stack context, the stackSpec includes diverse configuration file.
+The [Workflow](/resources/workflow/) Resource comprises of a `stackSpec` section (or a mapping) containing the attributes of the Stack to be orchestrated. Specifically within the dbt Stack context, the stackSpec includes diverse configuration file.
 
 The manifest below shows a sample structure of the DBT `stackSpec` Section:
 
@@ -384,7 +384,7 @@ To check this information for all users in a specific Workspace, add the `-a` fl
 
 **Get Runtime Information**
 
-To refresh or see updates on the Workflow progress, add the `-r` flag to the `[get runtime](https://dataos.info/interfaces/cli/command_reference/#get-runtime)` command:
+To refresh or see updates on the Workflow progress, add the `-r` flag to the `[get runtime](/interfaces/cli/command_reference/#get-runtime)` command:
 
 ```bash
 dataos-ctl -i get runtime " cnt-product-demo-01 | v1 | workflow | sandbox" -r
