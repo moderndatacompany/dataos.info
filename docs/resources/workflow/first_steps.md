@@ -76,7 +76,7 @@ To configure a Workflow Resource, replace the values of `name`, `layer`, `tags`,
 
 #### **Workflow-specific section**
 
-The Workflow-specific sectionThe Workflow-specific section contains configurations specific to the Workflow Resource. DataOS supports two types of Workflows: [single-run](/resources/workflow/how_to_guide/single_run_workflow) and [scheduled](/resources/workflow/how_to_guide/scheduled_workflow) Workflow, each with its own YAML syntax. of a manifest file encompasses attributes specific to the Workflow Resource.
+The Workflow-specific sectionThe Workflow-specific section contains configurations specific to the Workflow Resource. DataOS supports two types of Workflows: [single-run](/resources/workflow/how_to_guide/single_run_workflow/) and [scheduled](/resources/workflow/how_to_guide/scheduled_workflow/) Workflow, each with its own YAML syntax. of a manifest file encompasses attributes specific to the Workflow Resource.
 
 **Single-Run Workflow YAML configuration**
 
@@ -91,7 +91,7 @@ workflow:
 
 **Scheduled Workflow YAML configuration**
 
-A [Scheduled Workflow](#scheduled-workflow) triggers a series of jobs or tasks at particular intervals or predetermined times. To create a scheduled Workflow, specify the [attributes](/resources/workflow/configuration#schedule) in the `schedule` section, in the following format:
+A [Scheduled Workflow](#scheduled-workflow) triggers a series of jobs or tasks at particular intervals or predetermined times. To create a scheduled Workflow, specify the [attributes](/resources/workflow/configuration/#schedule) in the `schedule` section, in the following format:
 ```yaml
 workflow:
   schedule:
@@ -107,7 +107,7 @@ A [Directed Acyclic Graph (DAG)](#workflow-and-directed-acyclic-graph-dag) repre
 
 **Job**
 
-A Job denotes a single processing task. Multiple jobs within a DAG can be linked sequentially or concurrently to achieve a specific result through [`dependencies`](/resources/workflow/yaml_configuration_attributes#dependency). Here is an example YAML syntax for two jobs linked by dependencies:
+A Job denotes a single processing task. Multiple jobs within a DAG can be linked sequentially or concurrently to achieve a specific result through [`dependencies`](/resources/workflow/yaml_configuration_attributes/#dependency). Here is an example YAML syntax for two jobs linked by dependencies:
 ```yaml
 dag: 
   - name: ${{job1 name}}
@@ -134,7 +134,7 @@ dag:
 ```
 <center><i>Job-specific section YAML configuration</i></center>
 
-Further, jobs can be retried automatically by pre-defining the retry strategy within the Workflow YAML. This could be helpful in case of job failures or unexpected errors. Learn about job retries by navigating to the following link: [How to retry failed jobs within a Workflow?](/resources/workflow/how_to_retry_jobs)
+Further, jobs can be retried automatically by pre-defining the retry strategy within the Workflow YAML. This could be helpful in case of job failures or unexpected errors. Learn about job retries by navigating to the following link: [How to retry failed jobs within a Workflow?](/resources/workflow/how_to_retry_jobs/)
 
 <aside class=callout>
 
@@ -146,15 +146,15 @@ Further, jobs can be retried automatically by pre-defining the retry strategy wi
 
 The Stack-specific Section allows you to specify the desired [Stack](/resources/stacks) for executing your Workflow. Depending on your requirements, you can choose from the following supported Stacks:
 
-- [Flare Stack](/resources/stacks/flare): The Flare stack provides advanced capabilities for data processing and analysis.
+- [Flare Stack](/resources/stacks/flare/): The Flare stack provides advanced capabilities for data processing and analysis.
 
-- [Container Stack](/resources/stacks/container): The Container stack offers a powerful environment for hosting web-application, and custom Docker images atop DataOS.
+- [Container Stack](/resources/stacks/container/): The Container stack offers a powerful environment for hosting web-application, and custom Docker images atop DataOS.
 
-- [Data Toolbox Stack](/resources/stacks/data_toolbox): The Data Toolbox stack provides a set of utilities for Depots storing Iceberg datasets, for e.g. Icebase.
+- [Data Toolbox Stack](/resources/stacks/data_toolbox/): The Data Toolbox stack provides a set of utilities for Depots storing Iceberg datasets, for e.g. Icebase.
 
-- [Scanner Stack](/resources/stacks/scanner): The Scanner Stack provides metadata ingestion capabilities from a source.
+- [Scanner Stack](/resources/stacks/scanner/): The Scanner Stack provides metadata ingestion capabilities from a source.
 
-For more detailed instructions on setting up and customizing the Stack-specific Section attributes according to your needs, refer to the respective documentation of [Flare](/resources/stacks/flare/configurations), [Container](/resources/stacks/container#container-stack-section), [Data Toolbox](/resources/stacks/data_toolbox/data_toolbox_grammar), [Scanner](/resources/stacks/scanner/field_ref) Stack. Each Stack has its unique attributes that can enhance the functionality of your job.
+For more detailed instructions on setting up and customizing the Stack-specific Section attributes according to your needs, refer to the respective documentation of [Flare](/resources/stacks/flare/configurations/), [Container](/resources/stacks/container/#container-stack-section), [Data Toolbox](/resources/stacks/data_toolbox/data_toolbox_grammar/), [Scanner](/resources/stacks/scanner/field_ref/) Stack. Each Stack has its unique attributes that can enhance the functionality of your job.
 
 
 <details>
@@ -216,7 +216,7 @@ workflow:
 
 ## Apply the Workflow YAML
 
-Once you have constructed the Workflow YAML file, it's time to [apply](/resources#apply) it and create the Workflow [Resource](/resources) within the DataOS environment. Use the following [`apply`](/interfaces/cli/command_reference#apply) 
+Once you have constructed the Workflow YAML file, it's time to [apply](/resources/#apply) it and create the Workflow [Resource](/resources/) within the DataOS environment. Use the following [`apply`](/interfaces/cli/command_reference/#apply) 
 
 === "Command"
 
@@ -229,7 +229,7 @@ Once you have constructed the Workflow YAML file, it's time to [apply](/resource
     dataos-ctl apply -f home/iamgroot/resource/workflow.yml -w curriculum
     ```
 
-Workspace specification is optional. In case its not provided the Workflow runs in the `curriculum` Workspace. To create a new Workspace, execute the [`workspace create`](/interfaces/cli/command_reference#workspace) command as shown below and then execute the above command:
+Workspace specification is optional. In case its not provided the Workflow runs in the `curriculum` Workspace. To create a new Workspace, execute the [`workspace create`](/interfaces/cli/command_reference/#workspace) command as shown below and then execute the above command:
 
 === "Command"
 
@@ -247,7 +247,7 @@ Workspace specification is optional. In case its not provided the Workflow runs 
 
 ### **Get Status of the Workflow**
 
-To retrieve information about the Workflow, use the [`get`](/interfaces/cli/command_reference#get) command in the [CLI](/interfaces/cli). The command below lists workflows created by the user in a specific Workspace. 
+To retrieve information about the Workflow, use the [`get`](/interfaces/cli/command_reference/#get) command in the [CLI](/interfaces/cli). The command below lists workflows created by the user in a specific Workspace. 
 
 === "Command"
 
@@ -287,7 +287,7 @@ INFO[0001] 🔍 get...complete
 
 ### **Get Runtime Information**
 
-To obtain the runtime status of the Workflow, use the [`get runtime`](/interfaces/cli/command_reference#get-runtime) 
+To obtain the runtime status of the Workflow, use the [`get runtime`](/interfaces/cli/command_reference/#get-runtime) 
 
 === "Command"
 
@@ -301,7 +301,7 @@ To obtain the runtime status of the Workflow, use the [`get runtime`](/interface
     dataos-ctl get runtime -w curriculum -t workflow -n cnt-product-demo-01
     ```
 
-Alternatively, you can extract the Workflow information from the output of the [`get`](/interfaces/cli/command_reference#get) command and pass it as a string to the [`get runtime`](/interfaces/cli/command_reference#get-runtime) command. Look for the relevant information (highlighted) in the [`get`](/interfaces/cli/command_reference#get) command output:
+Alternatively, you can extract the Workflow information from the output of the [`get`](/interfaces/cli/command_reference/#get) command and pass it as a string to the [`get runtime`](/interfaces/cli/command_reference/#get-runtime) command. Look for the relevant information (highlighted) in the [`get`](/interfaces/cli/command_reference/#get) command output:
 
 === "Command"
 
@@ -375,7 +375,7 @@ For any additional flags, use help by appending `-h` with the respective command
 
 ### **Check Logs for Errors**
 
-To check the logs for errors, retrieve the node name from the output of the [`get runtime`](/interfaces/cli/command_reference#get-runtime) command for the failed node, as shown [here](#get-runtime-information), and execute the command as shown below
+To check the logs for errors, retrieve the node name from the output of the `get runtime` command for the failed node, as shown [here](/interfaces/cli/command_reference/#get-runtime), and execute the command as shown below
 
 === "Command"
 
@@ -560,7 +560,7 @@ Command:
 ```shell
 dataos-ctl apply -f ${{file path}} -w ${{workspace}}
 ```
-Once you have applied the Workflow, check the runtime for its success by using the [`get runtime`](/interfaces/cli/command_reference#get-runtime) command
+Once you have applied the Workflow, check the runtime for its success by using the [`get runtime`](/interfaces/cli/command_reference/#get-runtime) command
 
 === "Command"
 
@@ -618,7 +618,7 @@ Make sure to replace `${{name to workspace in the output table from get status c
 
 ## How to setup alerts on Workflows?
 
-Workflow alerts play a vital role in the effective management of extensive Workflows and Jobs, enabling streamlined monitoring and prompt notifications in the event of failures. For detailed instructions on configuring Workflow alerts, refer to the documentation link: [Setting Up Workflow Alerts.](/dataos_alerts/workflow_alerts/)
+Workflow alerts play a vital role in the effective management of extensive Workflows and Jobs, enabling streamlined monitoring and prompt notifications in the event of failures. For detailed instructions on configuring Workflow alerts, refer to the documentation link: [Setting Up Workflow Alerts.](/resources/workflow/dataos_alerts/workflow_alerts/)
 
 
 <aside class="callout">
@@ -632,12 +632,12 @@ DataOS offers a diverse range of integrated alert mechanisms, emphasizing observ
 
 To deepen your understanding of Workflow Resource, explore the following case scenarios that cover different aspects and functionalities:
 
-- [How to implement Single-run Workflow?](/resources/workflow/how_to_guide/single_run_workflow)
+- [How to implement Single-run Workflow?](/resources/workflow/how_to_guide/single_run_workflow/)
 
-- [How to run a Cron Workflow or a Scheduled Workflow?](/resources/workflow/how_to_guide/scheduled_or_cron_workflow)
+- [How to run a Cron Workflow or a Scheduled Workflow?](/resources/workflow/how_to_guide/scheduled_or_cron_workflow/)
 
-- [How to orchestrate multiple Workflows from a single Workflow?](/resources/workflow/how_to_guide/multiple_workflows_from_a_single_workflow)
+- [How to orchestrate multiple Workflows from a single Workflow?](/resources/workflow/how_to_guide/multiple_workflows_from_a_single_workflow)/
 
-- [How to retry a job in the Workflow?](/resources/workflow/how_to_guide/retry_jobs)
+- [How to retry a job in the Workflow?](/resources/workflow/how_to_guide/retry_jobs/)
 
 - [How to apply a workflow and get a runtime status of it using CLI Stack?](/resources/workflow/how_to_guide/apply_a_workflow_and_get_runtime_status_using_cli_stack/)

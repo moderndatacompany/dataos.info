@@ -7,7 +7,7 @@
 
 Flare Standalone lets you explore DataOS Flare capabilities on your local system. It's a testing interface to let you check your code before implementing it into production. If you have already installed Flare Standalone, you can move on to the next section. If you haven’t navigate, to the below link.
 
-[Running Flare Standalone](../standalone/running_flare_standalone.md)
+[Running Flare Standalone](/resources/stacks/flare/standalone/running_flare_standalone/)
 
 ## Testing the Flare Job
 

@@ -91,7 +91,7 @@ workflow:
 
 In the succeeding list, we provide comprehensive information about these pre-defined functions and their usage.
 
-[List of Flare Functions](./functions/list.md)
+[List of Flare Functions](/resources/stacks/flare/functions/list/)
 
 # User-Defined Flare Functions
 

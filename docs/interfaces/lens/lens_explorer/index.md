@@ -10,7 +10,7 @@ Here is a quick guide for navigating through Lens Explorer.
  
 <center>
 
-![A graphical how to guide for Lens Explorer](./guide_lens_explorer.png)
+![A graphical how to guide for Lens Explorer](/interfaces/lens/lens_explorer/guide_lens_explorer.png)
 
 </center>
 

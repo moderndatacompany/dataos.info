@@ -1,6 +1,6 @@
 # Google Bigquery Depots
 
-Flare stack enables execution of jobs on top of Google Bigquery data source. To do so, you first need to create a Bigquery depot. If you have already created a depot, you can proceed with the following instructions. Otherwise, please refer to the [Biguery Depot Configuration](../../../depot/depot_config_templates/google_bigquery.md).
+Flare stack enables execution of jobs on top of Google Bigquery data source. To do so, you first need to create a Bigquery depot. If you have already created a depot, you can proceed with the following instructions. Otherwise, please refer to the [Biguery Depot Configuration](/resources/depot/depot_config_templates/google_bigquery/).
 
 ## Read Configuration
 

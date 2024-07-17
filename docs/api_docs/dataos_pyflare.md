@@ -278,11 +278,11 @@ spark.stop()
 
 ## Code Samples
 
-- [ How to read and write partitioned data within Icebase Depot using Pyflare?](/dataos_pyflare/code_samples/read_write_partitioned_data/)
+- [ How to read and write partitioned data within Icebase Depot using Pyflare?](/api_docs/dataos_pyflare/code_samples/read_write_partitioned_data/)
 
-- [How to overwrite dynamic Iceberg partitions using Pyflare?](/dataos_pyflare/code_samples/overwrite_dynamic_iceberg_partitions/)
+- [How to overwrite dynamic Iceberg partitions using Pyflare?](/api_docs/dataos_pyflare/code_samples/overwrite_dynamic_iceberg_partitions/)
 
-- [How to write data in Avro format from Iceberg using Pyflare?](/dataos_pyflare/code_samples/write_avro_read_iceberg/)
+- [How to write data in Avro format from Iceberg using Pyflare?](/api_docs/dataos_pyflare/code_samples/write_avro_read_iceberg/)
 
 
 ## Pyflare Library Reference

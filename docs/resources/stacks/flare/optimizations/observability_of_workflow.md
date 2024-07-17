@@ -16,20 +16,20 @@ Collated continuously captures checks for the deployment of any workflows, and s
 
 1. Go over to the Collated App, 
 
-![Untitled](./observability_of_workflow/untitled.png)
+![Untitled](/resources/stacks/flare/optimizations/observability_of_workflow/untitled.png)
 
 2. Within Collated, navigate to the Explorer Section, which has two sections resources and pods
 
-![Untitled](./observability_of_workflow/untitled_1.png)
+![Untitled](/resources/stacks/flare/optimizations/observability_of_workflow/untitled_1.png)
 
 3. The resources section consists of all the DataOS resources. Since we are looking for Flare Workflows, navigate to the workflow, within resources and from over there go v1, and public which is our workspace
 
-![Untitled](./observability_of_workflow/untitled_2.png)
+![Untitled](/resources/stacks/flare/optimizations/observability_of_workflow/untitled_2.png)
 
 4. As soon as you click on public a matrix of all the available workflows will pop up on the screen, since the name of our workflow is `wf-sample-002`, search it within the matrix and click on it.
 
-![Untitled](./observability_of_workflow/untitled_3.png)
+![Untitled](/resources/stacks/flare/optimizations/observability_of_workflow/untitled_3.png)
 
 5. A page containing all the information related to the workflow will pop-up, that includes, all its runtime details, when it was created when it was deleted, etc. 
 
-![Untitled](./observability_of_workflow/untitled_4.png)
+![Untitled](/resources/stacks/flare/optimizations/observability_of_workflow/untitled_4.png)
