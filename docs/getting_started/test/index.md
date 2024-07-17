@@ -3,55 +3,56 @@
 
 ### **Understand DataOS Resources**
 
-In DataOS, resources and processing stacks are categorized to align with traditional data processing methods, enhancing the understanding their capability.
+In this section, DataOS Resources are categorized to align with traditional data processing and management practices, helping you understand their capabilities.
 
 #### **Source Connectivity and Metadata management**
 
-This category includes DataOS Resources and Stacks designed to establish connections to various data sources and efficiently manage metadata.
-
+This category includes DataOS Resources that facilitate the connection to various data sources and manage the associated metadata, ensuring seamless data integration and organization.
 
 <div class= "grid cards" markdown>
 
 -   :resources-depot:{ .lg .middle } [**Depot**](/resources/depot/)
 
     ---
-    DataOS Resource used to connect different data sources to DataOS by abstracting the complexities associated with the underlying source system.
-    
+    To connect various data sources to DataOS, abstracting underlying complexities.   
 
 
--   :resources-depot:{ .lg .middle } [**Stack**](/resources/depot/)
+-   :resources-stack:{ .lg .middle } [**Stacks**](/resources/stacks/)
 
     ---
 
-    Key Stacks in this category are SODA and Scanner
+    Acts as an execution engine and integrates new programming paradigms. Key Stacks in this category are [Soda](/resources/stacks/soda/) and [Scanner](/resources/stacks/scanner/).
 
 </div>
 
 
 #### **Data Movement and Processing**
-This section includes resources for both batch and stream data processing.
+
+This category includes DataOS Resources that facilitate the movement and transformation of data.
 
 ##### **Batch Data**
 
+These DataOS Resources support batch data processing, enabling scheduled, large-scale data transformations and movements.
+
 <div class= "grid cards" markdown>
 
--   :resources-depot:{ .lg .middle } [**Workflow**](/resources/depot/)
+-   :resources-workflow:{ .lg .middle } [**Workflow**](/resources/workflow/)
 
     ---
-    DataOS Resource used to connect different data sources to DataOS by abstracting the complexities associated with the underlying source system.
+    Manages batch data processing tasks with dependencies.
 
--   :resources-depot:{ .lg .middle } [**Operator**](/resources/depot/)
+-   :resources-operator:{ .lg .middle } [**Operator**](/resources/operator/)
 
     ---
 
-    The Application Programming Interface in DataOS enables seamless interaction with its core components and libraries, enabling the creation of diverse applications and services.
+    Standardizes orchestration of external resources, enabling programmatic actions from DataOS interfaces.
     
 
--   :resources-depot:{ .lg .middle } [**Stack**](/resources/depot/)
+-   :resources-stack:{ .lg .middle } [**Stacks**](/resources/stacks/)
 
     ---
 
-    Key Stacks in this category are Flare, DBT, Data Toolbox and CLI Stack
+    Key Stacks in this category are [Flare](/resources/stacks/flare/), [DBT](/resources/stacks/dbt/), [Data Toolbox](/resources/stacks/data_toolbox/) and [CLI Stack](/resources/stacks/cli_stack/).
 
 </div>
 
@@ -59,207 +60,149 @@ This section includes resources for both batch and stream data processing.
 
 ##### **Stream Data**
 
+These DataOS Resources are designed for stream data processing, handling real-time data flows and continuous data ingestion.
+
 <div class= "grid cards" markdown>
 
--   :resources-depot:{ .lg .middle } [**Workflow**](/resources/depot/)
+-   :resources-workflow:{ .lg .middle } [**Workflow**](/resources/workflow/)
 
     ---
-    DataOS Resource used to connect different data sources to DataOS by abstracting the complexities associated with the underlying source system.
+    Manages stream data processing tasks by running them as micro batches.
 
--   :resources-depot:{ .lg .middle } [**Service**](/resources/depot/)
+-   :resources-service:{ .lg .middle } [**Service**](/resources/service/)
 
     ---
 
-    The Application Programming Interface in DataOS enables seamless interaction with its core components and libraries, enabling the creation of diverse applications and services.
+    Represents a long-running process that acts as a receiver and/or provider of APIs.
     
--   :resources-depot:{ .lg .middle } [**Worker**](/resources/depot/)
+-   :resources-worker:{ .lg .middle } [**Worker**](/resources/worker/)
 
     ---
 
-    The Application Programming Interface in DataOS enables seamless interaction with its core components and libraries, enabling the creation of diverse applications and services.
+    Represents a long-running process responsible for performing specific tasks or computations indefinitely.
 
--   :resources-depot:{ .lg .middle } [**Stack**](/resources/depot/)
+-   :resources-stack:{ .lg .middle } [**Stacks**](/resources/stacks/)
 
     ---
 
-    Key Stacks in this category are Flare and Benthos
+    Key Stacks in this category are [Flare](/resources/stacks/flare/) and [Benthos](/resources/stacks/benthos/).
+
 </div>
 
 
 #### **Storage**
 
-providing robust, persistent and scalable data storage solutions.
 
+This category includes DataOS Resources for providing robust, persistent and scalable data storage to store data efficiently and securely.
 
 <div class= "grid cards" markdown>
 
--   :resources-depot:{ .lg .middle } [**Volume**](/resources/depot/)
+-   :resources-volume:{ .lg .middle } [**Volume**](/resources/volume/)
 
     ---
-    DataOS Resource used to connect different data sources to DataOS by abstracting the complexities associated with the underlying source system.
+    Provides persistent shared storage for Pod containers.
 
--   :resources-depot:{ .lg .middle } [**Lakehouse**](/resources/depot/)
-]
-    ---
-
-    The Application Programming Interface in DataOS enables seamless interaction with its core components and libraries, enabling the creation of diverse applications and services.
+-   :resources-lakehouse:{ .lg .middle } [**Lakehouse**](/resources/lakehouse/)
     
--    :resources-depot:{ .lg .middle } [**Database**](/resources/depot/)
+    ---
+
+    A fully managed storage architecture that blends the strengths of data lakes and data warehouses.
+
+-    :resources-database:{ .lg .middle } [**Database**](/resources/database/)
 
     ---
 
-    The Application Programming Interface in DataOS enables seamless interaction with its core components and libraries, enabling the creation of diverse applications and services.
+    Acts as a repository for storing transaction data, utilizing a managed Postgres relational database.
 
--   :resources-depot:{ .lg .middle } [**Stack**](/resources/depot/)
+-   :resources-stack:{ .lg .middle } [**Stacks**](/resources/stacks/)
 
     ---
 
-    Key Stacks in this category is Beacon
+    Key Stack in this category is [Beacon](/resources/stacks/beacon/).
 </div>
 
 #### **Observability**
 
-These key Resources are essential for tracking system performance and managing alerts to ensure smooth operations.
+These key DataOS Resources are essential for tracking system performance and managing alerts, providing visibility into the health and status of the data infrastructure.
 
 <div class= "grid cards" markdown>
 
--   :resources-depot:{ .lg .middle } [**Monitor**](/resources/depot/)
+-   :resources-monitor:{ .lg .middle } [**Monitor**](/resources/monitor/)
 
     ---
-    DataOS Resource used to connect different data sources to DataOS by abstracting the complexities associated with the underlying source system.
+    Ensures system reliability and performance through observability and incident management.
 
--   :resources-depot:{ .lg .middle } [**Pager**](/resources/depot/)
+-   :resources-pager:{ .lg .middle } [**Pager**](/resources/pager/)
 
     ---
 
-    The Application Programming Interface in DataOS enables seamless interaction with its core components and libraries, enabling the creation of diverse applications and services.
-    
+    Enables developers to define criteria for identifying incidents from a stream, delivering alerts based on specified conditions.
 </div>
 
 #### **Security**
 
-They ensure data security and access control.
-
+These DataOS Resources ensure data security and access control, managing sensitive information and enforcing policies for data protection.
 
 <div class= "grid cards" markdown>
 
--   :resources-depot:{ .lg .middle } [**Instance-Secret**](/resources/depot/)
+-   :resources-instancesecret:{ .lg .middle } [**Instance-Secret**](/resources/instance_secret/)
 
     ---
-    DataOS Resource used to connect different data sources to DataOS by abstracting the complexities associated with the underlying source system.
+    Designed for securely storing sensitive information at the DataOS instance level, reducing exposure risks in application code or manifest files.
 
--   :resources-depot:{ .lg .middle } [**Secret**](/resources/depot/)
+-   :resources-secret:{ .lg .middle } [**Secret**](/resources/secret/)
 
     ---
 
-    The Application Programming Interface in DataOS enables seamless interaction with its core components and libraries, enabling the creation of diverse applications and services.
+    Designed for secure storage of sensitive information like passwords, certificates, tokens, or keys within a DataOS Workspace.
     
-- -   :resources-depot:{ .lg .middle } [**Policy**](/resources/depot/)
+-   :resources-policy:{ .lg .middle } [**Policy**](/resources/policy/)
 
     ---
 
-    The Application Programming Interface in DataOS enables seamless interaction with its core components and libraries, enabling the creation of diverse applications and services.
+    Defines rules governing user/application behavior, enforced through Attribute-Based Access Control. 
 
--   :resources-depot:{ .lg .middle } [**Grant**](/resources/depot/)
+-   :resources-worker:{ .lg .middle } [**Grant**](/resources/grant/)
 
     ---
 
-    Key Stacks in this category are Flare and Benthos
+    Links the Subject-Predicate-Object relationship to create access policies, granting specific system or data access.
 </div>
 
 #### **Deployement**
 
-They streamline the data product deployment process.
+These DataOS Resources streamline the deployment process of data products, facilitating the packaging, distribution, and execution of applications and services
 
 
 <div class= "grid cards" markdown>
 
--   :resources-depot:{ .lg .middle } **Bundle**
+-   :resources-bundle:{ .lg .middle } [**Bundle**](/resources/bundle/)
 
     ---
-    DataOS Resource used to connect different data sources to DataOS by abstracting the complexities associated with the underlying source system.
+    Standardizes the deployment of multiple Resources, data products, or applications in one operation.
 
--   :resources-depot:{ .lg .middle } **Service**
-
-    ---
-
-    The Application Programming Interface in DataOS enables seamless interaction with its core components and libraries, enabling the creation of diverse applications and services.
-    
-- -   :resources-depot:{ .lg .middle } **Worker**
+-   :resources-stack:{ .lg .middle } [**Stacks**](/resources/stacks/)
 
     ---
 
-    The Application Programming Interface in DataOS enables seamless interaction with its core components and libraries, enabling the creation of diverse applications and services.
-
--   :resources-depot:{ .lg .middle } **Stack**
-
-    ---
-
-    Key Stacks in this category are Container and SteamPipe
+    Key Stacks in this category are [Container](/resources/stacks/container/) and [SteamPipe](/resources/stacks/steampipe/).
 </div>
 
 #### **Infrastructure Resources**
 
-These Resources are used for managing computational power and infrastructure configurations. These Resources are dedicated to managing computational power and configuring infrastructure, essential for running your analytics and data processing workloads along with DataOS core components efficiently.
+This category includes DataOS Resources for managing computational power and infrastructure configurations, essential for running your analytics and data processing workloads. They ensure optimal performance and scalability of data processing environments.
 
 <div class= "grid cards" markdown>
 
--   :resources-depot:{ .lg .middle } **Cluster**
+-   :resources-cluster:{ .lg .middle } [**Cluster**](/resources/cluster/)
+
 
     ---
-    DataOS Resource used to connect different data sources to DataOS by abstracting the complexities associated with the underlying source system.
+    Provides the computational resources and configurations for data engineering and analytics tasks.
 
--   :resources-depot:{ .lg .middle } **Compute**
+-   :resources-compute:{ .lg .middle } [**Compute**](/resources/compute/)
 
     ---
 
-    The Application Programming Interface in DataOS enables seamless interaction with its core components and libraries, enabling the creation of diverse applications and services.
-    
+    Streamlines the allocation of processing power for data tasks, acting as an abstraction over node pools of similarly configured VMs.   
 </div>
-
-
-
-<div class= "grid cards" markdown>
-
-- :resources-bundle: [Bundle](/resources/bundle/)
-- :resources-cluster: [Cluster](/resources/cluster/)
-- :resources-compute: [Compute](/resources/compute/)
-- :resources-database: [Database](/resources/database/)
-- :resources-depot: [Depot](/resources/depot/)
-- :resources-worker: [Grant](/resources/grant/)
-- :resources-instancesecret: [Instance Secret](/resources/instance_secret/)
-- :resources-lakehouse: [Lakehouse](/resources/lakehouse/)
-- :resources-monitor: [Monitor](/resources/monitor/)
-- :resources-operator: [Operator](/resources/operator/)
-- :resources-pager: [Pager](/resources/pager/)
-- :resources-policy: [Policy](/resources/policy/)
-- :resources-secret: [Secret](/resources/secret/)
-- :resources-service: [Service](/resources/service/)
-- :resources-worker: [Volume](/resources/volume/)
-- :resources-worker: [Worker](/resources/worker/)
-- :resources-workflow: [Workflow](/resources/workflow/)
-</div>
-
-
-Data Movement and Processing
-This section includes resources for both batch and stream data processing.
-
-Batch Data
-DataOS provides Workflow, Operator, Flare, DBT, Data Toolbox, and CLI Stack for efficient batch data movement and processing.
-
-Stream Data
-For handling real-time data streams, DataOS utilizes Services, Workers, Workflow, Benthos, and Flare.
-
-Storage
-DataOS Resources for storage include Volume, Lakehouse, Database, and Beacon, 
-Observability
- Key resources are Monitor and Pager.
-
-Security
-These resources are crucial for maintaining data security and implementing access control mechanisms. Important resources include Secret, Instance-Secret, Policy, and Grant.
-
-Deployment
-These Resources streamline the deployment process of data products, ensuring efficient and reliable releases. Key resources include Bundle, Container, and SteamPipe.
-
-Infrastructure Resources
-These Resources are dedicated to managing computational power and configuring infrastructure, essential for running DataOS efficiently. Important resources include Compute and Cluster.
