@@ -10,7 +10,7 @@ Lakehouse is a [DataOS Resource](/resources/) that merges Apache Iceberg table f
 
 <aside class="callout">
 
-🗣️ The Lakehouse is designated as a <a href="/resources/types_of_dataos_resources/#workspace-level-resources">Workspace-level</a> DataOS Resource. This classification enables the creation of separate Lakehouses within distinct Workspaces. 
+🗣️ The Lakehouse is designated as a <a href="/resources/types/#workspace-level-resources">Workspace-level</a> DataOS Resource. This classification enables the creation of separate Lakehouses within distinct Workspaces. 
 
 </aside>
 
@@ -32,7 +32,7 @@ Lakehouse is a [DataOS Resource](/resources/) that merges Apache Iceberg table f
 
     Discover how to configure the manifest file of a Lakehouse by adjusting its attributes.
 
-    [:octicons-arrow-right-24: Lakehouse attributes](/resources/lakehouse/manifest_attributes/)
+    [:octicons-arrow-right-24: Lakehouse attributes](/resources/lakehouse/configurations/)
 
 -   :material-console:{ .lg .middle } **How to manage datasets in a Lakehouse?**
 
@@ -232,9 +232,9 @@ A sample Lakehouse manifest file is provided below; the sections that make up th
           type: themis
     ```
 
-    1.  **Resource meta section** within a manifest file comprises metadata attributes universally applicable to all [Resource-types](/resources/types_of_dataos_resources/). To learn more about how to configure attributes within this section, refer to the link: [Attributes of Resource meta section](/resources/resource_attributes/).
+    1.  **Resource meta section** within a manifest file comprises metadata attributes universally applicable to all [Resource-types](/resources/types_of_dataos_resources/). To learn more about how to configure attributes within this section, refer to the link: [Attributes of Resource meta section](/resources/manifest_attributes/).
 
-    2.  **Lakehouse-specific section** within a manifest file comprises attributes specific to the Lakehouse Resource. This section is further subdivided into: Storage, Metastore, and Query Engine section. To learn more about how to configure attributes of Lakehouse-specific section, refer the link: [Attributes of Lakehouse-specific section](/resources/lakehouse/manifest_attributes/).
+    2.  **Lakehouse-specific section** within a manifest file comprises attributes specific to the Lakehouse Resource. This section is further subdivided into: Storage, Metastore, and Query Engine section. To learn more about how to configure attributes of Lakehouse-specific section, refer the link: [Attributes of Lakehouse-specific section](/resources/lakehouse/configurations/).
 
     3.  **Storage section** comprises attributes for storage configuration.
 
@@ -245,7 +245,7 @@ A sample Lakehouse manifest file is provided below; the sections that make up th
 
 **Resource meta section**
 
-This section serves as the header of the manifest file, defining the overall characteristics of the Lakehouse Resource you wish to create. It includes attributes common to all [types of Resources](/resources/types_of_dataos_resources/) in DataOS. These attributes help DataOS in identifying, categorizing, and managing the Resource within its ecosystem. The code block below describes the attributes of this section:
+This section serves as the header of the manifest file, defining the overall characteristics of the Lakehouse Resource you wish to create. It includes attributes common to all [types of Resources](/resources/types/) in DataOS. These attributes help DataOS in identifying, categorizing, and managing the Resource within its ecosystem. The code block below describes the attributes of this section:
 
 === "Syntax"
 
@@ -277,7 +277,7 @@ This section serves as the header of the manifest file, defining the overall cha
     layer: user # optional
     ```
 
-Refer to the [Attributes of Resource meta section](/resources/resource_attributes/) for more information about the various attributes in the Resource meta section.
+Refer to the [Attributes of Resource meta section](/resources/manifest_attributes/) for more information about the various attributes in the Resource meta section.
 
 **Lakehouse-specific section**
 
@@ -320,15 +320,15 @@ Following the Resource meta section, the Lakehouse-specific section contains con
 
 | Attribute&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`lakehouse`](/resources/lakehouse/manifest_attributes/#lakehouse) | mapping | none | none | mandatory |
-| [`type`](/resources/lakehouse/manifest_attributes/#type) | string | none | iceberg | mandatory |
-| [`compute`](/resources/lakehouse/manifest_attributes/#compute) | string | none | valid query-type Compute Resource name  | mandatory |
-| [`runAsApiKey`](/resources/lakehouse/manifest_attributes/#runasapikey) | mapping | api key of user applying the Lakehouse | any valid DataOS apikey | optional |
-| [`runAsUser`](/resources/lakehouse/manifest_attributes/#runasuser) | string | user-id of owner | user-id of use-case assignee | optional |
-| [`iceberg`](/resources/lakehouse/manifest_attributes/#iceberg) | mapping | none | none | mandatory |
-| [`storage`](/resources/lakehouse/manifest_attributes/#storage) | mapping | none | valid storage configuration | mandatory |
-| [`metaStore`](/resources/lakehouse/manifest_attributes/#metastore) | mapping | none | valid metastore configuration | optional |
-| [`queryEngine`](/resources/lakehouse/manifest_attributes/#queryengine) | mapping | none | valid query engine configuration | optional |
+| [`lakehouse`](/resources/lakehouse/configurations/#lakehouse) | mapping | none | none | mandatory |
+| [`type`](/resources/lakehouse/configurations/#type) | string | none | iceberg | mandatory |
+| [`compute`](/resources/lakehouse/configurations/#compute) | string | none | valid query-type Compute Resource name  | mandatory |
+| [`runAsApiKey`](/resources/lakehouse/configurations/#runasapikey) | mapping | api key of user applying the Lakehouse | any valid DataOS apikey | optional |
+| [`runAsUser`](/resources/lakehouse/configurations/#runasuser) | string | user-id of owner | user-id of use-case assignee | optional |
+| [`iceberg`](/resources/lakehouse/configurations/#iceberg) | mapping | none | none | mandatory |
+| [`storage`](/resources/lakehouse/configurations/#storage) | mapping | none | valid storage configuration | mandatory |
+| [`metaStore`](/resources/lakehouse/configurations/#metastore) | mapping | none | valid metastore configuration | optional |
+| [`queryEngine`](/resources/lakehouse/configurations/#queryengine) | mapping | none | valid query engine configuration | optional |
 
 
 This section is divided into three separate sections, each critical to the Lakehouse’s functionality: 
@@ -398,25 +398,25 @@ This section of the Lakehouse manifest file specifies the connection to the unde
 
     | Attribute&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Data Type | Default Value | Possible Value | Requirement |
     | --- | --- | --- | --- | --- |
-    | [`storage`](/resources/lakehouse/manifest_attributes/#storage) | mapping | none | none | mandatory |
-    | [`depotName`](/resources/lakehouse/manifest_attributes/#depotname) | string | ${lakehouse-name}0<br>${workspace}0<br>storage | A valid string that matches<br> the regex pattern <br>`[a-z]([a-z0-9]*)`. Special <br>characters, except for<br> hyphens/dashes, are <br> not allowed. The maximum <br>length is 48 characters. | optional |
-    | [`type`](/resources/lakehouse/manifest_attributes/#type_1) | string | none | abfss | mandatory |
-    | [`abfss`](/resources/lakehouse/manifest_attributes/#abfss) | mapping | none | none | optional |
-    | [`account`](/resources/lakehouse/manifest_attributes/#abfss) | string | none | valid ABFSS account | optional |
-    | [`container`](/resources/lakehouse/manifest_attributes/#abfss) | string | none | valid container name | optional |
-    | [`endpointSuffix`](/resources/lakehouse/manifest_attributes/#abfss) | string | none | valid endpoint suffix | optional |
-    | [`format`](/resources/lakehouse/manifest_attributes/#abfss) | string | Iceberg | Iceberg | optional |
-    | [`icebergCatalogType`](/resources/lakehouse/manifest_attributes/#abfss) | string | hadoop | hadoop, hive | optional |
-    | [`metastoreType`](/resources/lakehouse/manifest_attributes/#abfss) | string | iceberg-rest-catalog | iceberg-rest-catalog | optional |
-    | [`metastoreUrl`](/resources/lakehouse/manifest_attributes/#abfss) | string | none | valid URL | optional |
-    | [`relativePath`](/resources/lakehouse/manifest_attributes/#abfss) | string | none | valid relative path | optional |
-    | [`secret`](/resources/lakehouse/manifest_attributes/#secret) | mapping | none | none | mandatory |
-    | [`name`](/resources/lakehouse/manifest_attributes/#name) | string | none | valid Secret name | mandatory |
-    | [`workspace`](/resources/lakehouse/manifest_attributes/#workspace) | string | none | valid Workspace name and<br> must be less than '32'<br> chars and conform to<br> the following regex: <br>`[a-z]([-a-z0-9]*[a-z0-9])?` | optional |
-    | [`key`](/resources/lakehouse/manifest_attributes/#key) | string | none | valid key | optional |
-    | [`keys`](/resources/lakehouse/manifest_attributes/#keys) | list of strings | none | valid keys  | optional |
-    | [`allKeys`](/resources/lakehouse/manifest_attributes/#allkeys) | boolean | false | true/false | optional |
-    | [`consumptionType`](/resources/lakehouse/manifest_attributes/#consumptiontype) | string | envVars | envVars, propFile | optional |
+    | [`storage`](/resources/lakehouse/configurations/#storage) | mapping | none | none | mandatory |
+    | [`depotName`](/resources/lakehouse/configurations/#depotname) | string | ${lakehouse-name}0<br>${workspace}0<br>storage | A valid string that matches<br> the regex pattern <br>`[a-z]([a-z0-9]*)`. Special <br>characters, except for<br> hyphens/dashes, are <br> not allowed. The maximum <br>length is 48 characters. | optional |
+    | [`type`](/resources/lakehouse/configurations/#type_1) | string | none | abfss | mandatory |
+    | [`abfss`](/resources/lakehouse/configurations/#abfss) | mapping | none | none | optional |
+    | [`account`](/resources/lakehouse/configurations/#abfss) | string | none | valid ABFSS account | optional |
+    | [`container`](/resources/lakehouse/configurations/#abfss) | string | none | valid container name | optional |
+    | [`endpointSuffix`](/resources/lakehouse/configurations/#abfss) | string | none | valid endpoint suffix | optional |
+    | [`format`](/resources/lakehouse/configurations/#abfss) | string | Iceberg | Iceberg | optional |
+    | [`icebergCatalogType`](/resources/lakehouse/configurations/#abfss) | string | hadoop | hadoop, hive | optional |
+    | [`metastoreType`](/resources/lakehouse/configurations/#abfss) | string | iceberg-rest-catalog | iceberg-rest-catalog | optional |
+    | [`metastoreUrl`](/resources/lakehouse/configurations/#abfss) | string | none | valid URL | optional |
+    | [`relativePath`](/resources/lakehouse/configurations/#abfss) | string | none | valid relative path | optional |
+    | [`secret`](/resources/lakehouse/configurations/#secret) | mapping | none | none | mandatory |
+    | [`name`](/resources/lakehouse/configurations/#name) | string | none | valid Secret name | mandatory |
+    | [`workspace`](/resources/lakehouse/configurations/#workspace) | string | none | valid Workspace name and<br> must be less than '32'<br> chars and conform to<br> the following regex: <br>`[a-z]([-a-z0-9]*[a-z0-9])?` | optional |
+    | [`key`](/resources/lakehouse/configurations/#key) | string | none | valid key | optional |
+    | [`keys`](/resources/lakehouse/configurations/#keys) | list of strings | none | valid keys  | optional |
+    | [`allKeys`](/resources/lakehouse/configurations/#allkeys) | boolean | false | true/false | optional |
+    | [`consumptionType`](/resources/lakehouse/configurations/#consumptiontype) | string | envVars | envVars, propFile | optional |
 
     <i>Attributes of ABFSS storage configuration</i>
 
@@ -476,23 +476,23 @@ This section of the Lakehouse manifest file specifies the connection to the unde
 
     | Attribute&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Data Type | Default Value | Possible Value | Requirement |
     | --- | --- | --- | --- | --- |
-    | [`storage`](/resources/lakehouse/manifest_attributes/#storage) | mapping | none | none | mandatory |
-    | [`depotName`](/resources/lakehouse/manifest_attributes/#depotname) | string | ${lakehouse-name}0<br>${workspace}0<br>storage | A valid string that matches<br> the regex pattern <br>`[a-z]([a-z0-9]*)`. Special <br>characters, except for<br> hyphens/dashes, are <br> not allowed. The maximum <br>length is 48 characters. | optional |
-    | [`type`](/resources/lakehouse/manifest_attributes/#type) | string | none | gcs | mandatory |
-    | [`gcs`](/resources/lakehouse/manifest_attributes/#gcs) | mapping | none | none | optional |
-    | [`bucket`](/resources/lakehouse/manifest_attributes/#gcs) | string | none | valid GCS bucket name | optional |
-    | [`format`](/resources/lakehouse/manifest_attributes/#gcs) | string | Iceberg | Iceberg | optional |
-    | [`icebergCatalogType`](/resources/lakehouse/manifest_attributes/#gcs) | string | none | hadoop, hive | optional |
-    | [`metastoreType`](/resources/lakehouse/manifest_attributes/#gcs) | string | iceberg-rest-catalog | iceberg-rest-catalog | optional |
-    | [`metastoreUrl`](/resources/lakehouse/manifest_attributes/#gcs) | string | none | valid metastore URL | optional |
-    | [`relativePath`](/resources/lakehouse/manifest_attributes/#gcs) | string | none | valid relative path | optional |
-    | [`secret`](/resources/lakehouse/manifest_attributes/#secret) | mapping | none | none | mandatory |
-    | [`name`](/resources/lakehouse/manifest_attributes/#name) | string | none | valid Secret name | mandatory |
-    | [`workspace`](/resources/lakehouse/manifest_attributes/#workspace) | string | none | valid Workspace name and<br> must be less than '32'<br> chars and conform to<br> the following regex: <br>`[a-z]([-a-z0-9]*[a-z0-9])?` | optional |
-    | [`key`](/resources/lakehouse/manifest_attributes/#key) | string | none | valid key | optional |
-    | [`keys`](/resources/lakehouse/manifest_attributes/#keys) | list of strings | none | valid keys  | optional |
-    | [`allKeys`](/resources/lakehouse/manifest_attributes/#allkeys) | boolean | false | true/false | optional |
-    | [`consumptionType`](/resources/lakehouse/manifest_attributes/#consumptiontype) | string | envVars | envVars, propFile | optional |
+    | [`storage`](/resources/lakehouse/configurations/#storage) | mapping | none | none | mandatory |
+    | [`depotName`](/resources/lakehouse/configurations/#depotname) | string | ${lakehouse-name}0<br>${workspace}0<br>storage | A valid string that matches<br> the regex pattern <br>`[a-z]([a-z0-9]*)`. Special <br>characters, except for<br> hyphens/dashes, are <br> not allowed. The maximum <br>length is 48 characters. | optional |
+    | [`type`](/resources/lakehouse/configurations/#type) | string | none | gcs | mandatory |
+    | [`gcs`](/resources/lakehouse/configurations/#gcs) | mapping | none | none | optional |
+    | [`bucket`](/resources/lakehouse/configurations/#gcs) | string | none | valid GCS bucket name | optional |
+    | [`format`](/resources/lakehouse/configurations/#gcs) | string | Iceberg | Iceberg | optional |
+    | [`icebergCatalogType`](/resources/lakehouse/configurations/#gcs) | string | none | hadoop, hive | optional |
+    | [`metastoreType`](/resources/lakehouse/configurations/#gcs) | string | iceberg-rest-catalog | iceberg-rest-catalog | optional |
+    | [`metastoreUrl`](/resources/lakehouse/configurations/#gcs) | string | none | valid metastore URL | optional |
+    | [`relativePath`](/resources/lakehouse/configurations/#gcs) | string | none | valid relative path | optional |
+    | [`secret`](/resources/lakehouse/configurations/#secret) | mapping | none | none | mandatory |
+    | [`name`](/resources/lakehouse/configurations/#name) | string | none | valid Secret name | mandatory |
+    | [`workspace`](/resources/lakehouse/configurations/#workspace) | string | none | valid Workspace name and<br> must be less than '32'<br> chars and conform to<br> the following regex: <br>`[a-z]([-a-z0-9]*[a-z0-9])?` | optional |
+    | [`key`](/resources/lakehouse/configurations/#key) | string | none | valid key | optional |
+    | [`keys`](/resources/lakehouse/configurations/#keys) | list of strings | none | valid keys  | optional |
+    | [`allKeys`](/resources/lakehouse/configurations/#allkeys) | boolean | false | true/false | optional |
+    | [`consumptionType`](/resources/lakehouse/configurations/#consumptiontype) | string | envVars | envVars, propFile | optional |
 
     <i>Attributes of GCS storage configuration</i>
 
@@ -552,24 +552,24 @@ This section of the Lakehouse manifest file specifies the connection to the unde
 
     | Attribute&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Data Type | Default Value | Possible Value | Requirement |
     | --- | --- | --- | --- | --- |
-    | [`storage`](/resources/lakehouse/manifest_attributes/#storage) | mapping | none | none | mandatory |
-    | [`depotName`](/resources/lakehouse/manifest_attributes/#depotname) | string | ${lakehouse-name}0<br>${workspace}0<br>storage | A valid string that matches<br> the regex pattern <br>`[a-z]([a-z0-9]*)`. Special <br>characters, except for<br> hyphens/dashes, are <br> not allowed. The maximum <br>length is 48 characters. | optional |
-    | [`type`](/resources/lakehouse/manifest_attributes/#type) | string | none | s3 | mandatory |
-    | [`s3`](/resources/lakehouse/manifest_attributes/#s3) | mapping | none | none | optional |
-    | [`bucket`](/resources/lakehouse/manifest_attributes/#s3) | string | none | valid S3 bucket name | optional |
-    | [`format`](/resources/lakehouse/manifest_attributes/#s3) | string | Iceberg | Iceberg | optional |
-    | [`icebergCatalogType`](/resources/lakehouse/manifest_attributes/#s3) | string | none | hadoop, hive | optional |
-    | [`metastoreType`](/resources/lakehouse/manifest_attributes/#s3) | string | iceberg-rest-catalog | iceberg-rest-catalog | optional |
-    | [`metastoreUrl`](/resources/lakehouse/manifest_attributes/#s3) | string | none | valid URL | optional |
-    | [`relativePath`](/resources/lakehouse/manifest_attributes/#s3) | string | none | valid relative path | optional |
-    | [`scheme`](/resources/lakehouse/manifest_attributes/#s3) | string | none | valid scheme (e.g., s3://) | optional |
-    | [`secret`](/resources/lakehouse/manifest_attributes/#secret) | mapping | none | none | mandatory |
-    | [`name`](/resources/lakehouse/manifest_attributes/#name) | string | none | valid Secret name | mandatory |
-    | [`workspace`](/resources/lakehouse/manifest_attributes/#workspace) | string | none | valid Workspace name and<br> must be less than '32'<br> chars and conform to<br> the following regex: <br>`[a-z]([-a-z0-9]*[a-z0-9])?` | optional |
-    | [`key`](/resources/lakehouse/manifest_attributes/#key) | string | none | valid key | optional |
-    | [`keys`](/resources/lakehouse/manifest_attributes/#keys) | list of strings | none | valid keys  | optional |
-    | [`allKeys`](/resources/lakehouse/manifest_attributes/#allkeys) | boolean | false | true/false | optional |
-    | [`consumptionType`](/resources/lakehouse/manifest_attributes/#consumptiontype) | string | envVars | envVars, propFile | optional |
+    | [`storage`](/resources/lakehouse/configurations/#storage) | mapping | none | none | mandatory |
+    | [`depotName`](/resources/lakehouse/configurations/#depotname) | string | ${lakehouse-name}0<br>${workspace}0<br>storage | A valid string that matches<br> the regex pattern <br>`[a-z]([a-z0-9]*)`. Special <br>characters, except for<br> hyphens/dashes, are <br> not allowed. The maximum <br>length is 48 characters. | optional |
+    | [`type`](/resources/lakehouse/configurations/#type) | string | none | s3 | mandatory |
+    | [`s3`](/resources/lakehouse/configurations/#s3) | mapping | none | none | optional |
+    | [`bucket`](/resources/lakehouse/configurations/#s3) | string | none | valid S3 bucket name | optional |
+    | [`format`](/resources/lakehouse/configurations/#s3) | string | Iceberg | Iceberg | optional |
+    | [`icebergCatalogType`](/resources/lakehouse/configurations/#s3) | string | none | hadoop, hive | optional |
+    | [`metastoreType`](/resources/lakehouse/configurations/#s3) | string | iceberg-rest-catalog | iceberg-rest-catalog | optional |
+    | [`metastoreUrl`](/resources/lakehouse/configurations/#s3) | string | none | valid URL | optional |
+    | [`relativePath`](/resources/lakehouse/configurations/#s3) | string | none | valid relative path | optional |
+    | [`scheme`](/resources/lakehouse/configurations/#s3) | string | none | valid scheme (e.g., s3://) | optional |
+    | [`secret`](/resources/lakehouse/configurations/#secret) | mapping | none | none | mandatory |
+    | [`name`](/resources/lakehouse/configurations/#name) | string | none | valid Secret name | mandatory |
+    | [`workspace`](/resources/lakehouse/configurations/#workspace) | string | none | valid Workspace name and<br> must be less than '32'<br> chars and conform to<br> the following regex: <br>`[a-z]([-a-z0-9]*[a-z0-9])?` | optional |
+    | [`key`](/resources/lakehouse/configurations/#key) | string | none | valid key | optional |
+    | [`keys`](/resources/lakehouse/configurations/#keys) | list of strings | none | valid keys  | optional |
+    | [`allKeys`](/resources/lakehouse/configurations/#allkeys) | boolean | false | true/false | optional |
+    | [`consumptionType`](/resources/lakehouse/configurations/#consumptiontype) | string | envVars | envVars, propFile | optional |
 
     <i>Attributes of S3 storage configuration</i>
 
@@ -632,25 +632,25 @@ This section of the Lakehouse manifest file specifies the connection to the unde
 
     | Attribute&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Data Type | Default Value | Possible Value | Requirement |
     | --- | --- | --- | --- | --- |
-    | [`storage`](/resources/lakehouse/manifest_attributes/#storage) | mapping | none | none | mandatory |
-    | [`depotName`](/resources/lakehouse/manifest_attributes/#depotname) | string | ${lakehouse-name}0<br>${workspace}0<br>storage | A valid string that matches<br> the regex pattern <br>`[a-z]([a-z0-9]*)`. Special <br>characters, except for<br> hyphens/dashes, are <br> not allowed. The maximum <br>length is 48 characters. | optional |
-    | [`type`](/resources/lakehouse/manifest_attributes/#type) | string | none | wasbs | mandatory |
-    | [`wasbs`](/resources/lakehouse/manifest_attributes/#abfss) | mapping | none | none | optional |
-    | [`account`](/resources/lakehouse/manifest_attributes/#abfss) | string | none | valid ABFSS account | optional |
-    | [`container`](/resources/lakehouse/manifest_attributes/#abfss) | string | none | valid container name | optional |
-    | [`endpointSuffix`](/resources/lakehouse/manifest_attributes/#abfss) | string | none | valid endpoint suffix | optional |
-    | [`format`](/resources/lakehouse/manifest_attributes/#abfss) | string | Iceberg | Iceberg | optional |
-    | [`icebergCatalogType`](/resources/lakehouse/manifest_attributes/#abfss) | string | hadoop | hadoop, hive | optional |
-    | [`metastoreType`](/resources/lakehouse/manifest_attributes/#abfss) | string | iceberg-rest-catalog | iceberg-rest-catalog | optional |
-    | [`metastoreUrl`](/resources/lakehouse/manifest_attributes/#abfss) | string | none | valid URL | optional |
-    | [`relativePath`](/resources/lakehouse/manifest_attributes/#abfss) | string | none | valid relative path | optional |
-    | [`secret`](/resources/lakehouse/manifest_attributes/#secret) | mapping | none | none | mandatory |
-    | [`name`](/resources/lakehouse/manifest_attributes/#name) | string | none | valid Secret name | mandatory |
-    | [`workspace`](/resources/lakehouse/manifest_attributes/#workspace) | string | none | valid Workspace name and<br> must be less than '32'<br> chars and conform to<br> the following regex: <br>`[a-z]([-a-z0-9]*[a-z0-9])?` | optional |
-    | [`key`](/resources/lakehouse/manifest_attributes/#key) | string | none | valid key | optional |
-    | [`keys`](/resources/lakehouse/manifest_attributes/#keys) | list of strings | none | valid keys  | optional |
-    | [`allKeys`](/resources/lakehouse/manifest_attributes/#allkeys) | boolean | false | true/false | optional |
-    | [`consumptionType`](/resources/lakehouse/manifest_attributes/#consumptiontype) | string | envVars | envVars, propFile | optional |
+    | [`storage`](/resources/lakehouse/configurations/#storage) | mapping | none | none | mandatory |
+    | [`depotName`](/resources/lakehouse/configurations/#depotname) | string | ${lakehouse-name}0<br>${workspace}0<br>storage | A valid string that matches<br> the regex pattern <br>`[a-z]([a-z0-9]*)`. Special <br>characters, except for<br> hyphens/dashes, are <br> not allowed. The maximum <br>length is 48 characters. | optional |
+    | [`type`](/resources/lakehouse/configurations/#type) | string | none | wasbs | mandatory |
+    | [`wasbs`](/resources/lakehouse/configurations/#abfss) | mapping | none | none | optional |
+    | [`account`](/resources/lakehouse/configurations/#abfss) | string | none | valid ABFSS account | optional |
+    | [`container`](/resources/lakehouse/configurations/#abfss) | string | none | valid container name | optional |
+    | [`endpointSuffix`](/resources/lakehouse/configurations/#abfss) | string | none | valid endpoint suffix | optional |
+    | [`format`](/resources/lakehouse/configurations/#abfss) | string | Iceberg | Iceberg | optional |
+    | [`icebergCatalogType`](/resources/lakehouse/configurations/#abfss) | string | hadoop | hadoop, hive | optional |
+    | [`metastoreType`](/resources/lakehouse/configurations/#abfss) | string | iceberg-rest-catalog | iceberg-rest-catalog | optional |
+    | [`metastoreUrl`](/resources/lakehouse/configurations/#abfss) | string | none | valid URL | optional |
+    | [`relativePath`](/resources/lakehouse/configurations/#abfss) | string | none | valid relative path | optional |
+    | [`secret`](/resources/lakehouse/configurations/#secret) | mapping | none | none | mandatory |
+    | [`name`](/resources/lakehouse/configurations/#name) | string | none | valid Secret name | mandatory |
+    | [`workspace`](/resources/lakehouse/configurations/#workspace) | string | none | valid Workspace name and<br> must be less than '32'<br> chars and conform to<br> the following regex: <br>`[a-z]([-a-z0-9]*[a-z0-9])?` | optional |
+    | [`key`](/resources/lakehouse/configurations/#key) | string | none | valid key | optional |
+    | [`keys`](/resources/lakehouse/configurations/#keys) | list of strings | none | valid keys  | optional |
+    | [`allKeys`](/resources/lakehouse/configurations/#allkeys) | boolean | false | true/false | optional |
+    | [`consumptionType`](/resources/lakehouse/configurations/#consumptiontype) | string | envVars | envVars, propFile | optional |
 
     <i>Attributes of WASBS storage configuration</i>
 
@@ -685,8 +685,8 @@ Configurations range from simple, requiring just the metastore type (e.g., `iceb
 
     | Attribute | Data Type | Default Value | Possible Value | Requirement |
     | --- | --- | --- | --- | --- |
-    | [`metastore`](/resources/lakehouse/manifest_attributes/#metastore) | mapping | none | none | optional |
-    | [`type`](/resources/lakehouse/manifest_attributes/#type) | string | none | iceberg-rest-catalog | mandatory |
+    | [`metastore`](/resources/lakehouse/configurations/#metastore) | mapping | none | none | optional |
+    | [`type`](/resources/lakehouse/configurations/#type) | string | none | iceberg-rest-catalog | mandatory |
 
     <i>Basic configuration attributes of Metastore section</i>
     </center>
@@ -740,20 +740,20 @@ Configurations range from simple, requiring just the metastore type (e.g., `iceb
 
     | Attribute | Data Type | Default Value | Possible Value | Requirement |
     | --- | --- | --- | --- | --- |
-    | [`metastore`](/resources/lakehouse/manifest_attributes/#metastore) | mapping | none | none | optional |
-    | [`type`](/resources/lakehouse/manifest_attributes/#type_2) | string | none | iceberg-rest-catalog | mandatory |
-    | [`replicas`](/resources/lakehouse/manifest_attributes/#replicas) | integer | none | any valid positive integer | optional |
-    | [`autoscaling`](/resources/lakehouse/manifest_attributes/#autoscaling) | mapping | none | none | optional |
-    | [`enabled`](/resources/lakehouse/manifest_attributes/#enabled) | boolean | false | true/false | optional |
-    | [`minReplicas`](/resources/lakehouse/manifest_attributes/#minreplicas) | integer | none | any valid integer | optional |
-    | [`maxReplicas`](/resources/lakehouse/manifest_attributes/#maxreplicas) | integer | none | any valid integer greater than `minReplicas` | optional |
-    | [`targetMemoryUtilizationPercentage`](/resources/lakehouse/manifest_attributes/#targetmemoryutilizationpercentage) | integer | none | any valid percentage | optional |
-    | [`targetCPUUtilizationPercentage`](/resources/lakehouse/manifest_attributes/#targetcpuutilizationpercentage) | integer | none | any valid percentage | optional |
-    | [`resources`](/resources/lakehouse/manifest_attributes/#resources) | mapping | none | none | optional |
-    | [`requests`](/resources/lakehouse/manifest_attributes/#requests) | mapping | none | none | optional |
-    | [`limits`](/resources/lakehouse/manifest_attributes/#limits) | mapping | none | none | optional |
-    | [`cpu`](/resources/lakehouse/manifest_attributes/#cpu) | string | none | any valid resource amount | optional |
-    | [`memory`](/resources/lakehouse/manifest_attributes/#memory) | string | none | any valid resource amount | optional |
+    | [`metastore`](/resources/lakehouse/configurations/#metastore) | mapping | none | none | optional |
+    | [`type`](/resources/lakehouse/configurations/#type_2) | string | none | iceberg-rest-catalog | mandatory |
+    | [`replicas`](/resources/lakehouse/configurations/#replicas) | integer | none | any valid positive integer | optional |
+    | [`autoscaling`](/resources/lakehouse/configurations/#autoscaling) | mapping | none | none | optional |
+    | [`enabled`](/resources/lakehouse/configurations/#enabled) | boolean | false | true/false | optional |
+    | [`minReplicas`](/resources/lakehouse/configurations/#minreplicas) | integer | none | any valid integer | optional |
+    | [`maxReplicas`](/resources/lakehouse/configurations/#maxreplicas) | integer | none | any valid integer greater than `minReplicas` | optional |
+    | [`targetMemoryUtilizationPercentage`](/resources/lakehouse/configurations/#targetmemoryutilizationpercentage) | integer | none | any valid percentage | optional |
+    | [`targetCPUUtilizationPercentage`](/resources/lakehouse/configurations/#targetcpuutilizationpercentage) | integer | none | any valid percentage | optional |
+    | [`resources`](/resources/lakehouse/configurations/#resources) | mapping | none | none | optional |
+    | [`requests`](/resources/lakehouse/configurations/#requests) | mapping | none | none | optional |
+    | [`limits`](/resources/lakehouse/configurations/#limits) | mapping | none | none | optional |
+    | [`cpu`](/resources/lakehouse/configurations/#cpu) | string | none | any valid resource amount | optional |
+    | [`memory`](/resources/lakehouse/configurations/#memory) | string | none | any valid resource amount | optional |
 
     <i>Advanced configuration attributes of Metastore section</i>
     </center>
@@ -786,8 +786,8 @@ Basic configurations might be adequate for standard use cases, outlining merely 
 
     | Attribute | Data Type | Default Value | Possible Value | Requirement |
     | --- | --- | --- | --- | --- |
-    | [`queryEngine`](/resources/lakehouse/manifest_attributes/#queryengine) | mapping | none | none | optional |
-    | [`type`](/resources/lakehouse/manifest_attributes/#type) | string | none | themis | mandatory |
+    | [`queryEngine`](/resources/lakehouse/configurations/#queryengine) | mapping | none | none | optional |
+    | [`type`](/resources/lakehouse/configurations/#type) | string | none | themis | mandatory |
 
     <i>Basic configuration attributes of Query Engine section</i>
     </center>
@@ -886,28 +886,28 @@ Basic configurations might be adequate for standard use cases, outlining merely 
 
     | Attribute | Data Type | Default Value | Possible Value | Requirement |
     | --- | --- | --- | --- | --- |
-    | [`queryEngine`](/resources/lakehouse/manifest_attributes/#queryengine) | mapping | none | none | mandatory |
-    | [`type`](/resources/lakehouse/manifest_attributes/#type) | string | none | themis | mandatory |
-    | [`resources`](/resources/lakehouse/manifest_attributes/#resources) | mapping | none | none | optional |
-    | [`requests`](/resources/lakehouse/manifest_attributes/#requests) | mapping | none | none | optional |
-    | [`cpu`](/resources/lakehouse/manifest_attributes/#cpu) | string | none | any valid CPU resource amount | optional |
-    | [`memory`](/resources/lakehouse/manifest_attributes/#memory) | string | none | any valid memory resource amount | optional |
-    | [`limits`](/resources/lakehouse/manifest_attributes/#limits) | mapping | none | none | optional |
-    | [`cpu`](/resources/lakehouse/manifest_attributes/#cpu) | string | none | any valid CPU resource limit | optional |
-    | [`memory`](/resources/lakehouse/manifest_attributes/#memory) | string | none | any valid memory resource limit | optional |
-    | [`themis`](/resources/lakehouse/manifest_attributes/#themis) | mapping | none | none | optional |
-    | [`envs`](/resources/lakehouse/manifest_attributes/#envs) | mapping | none | none | optional |
-    | [`themisConf`](/resources/lakehouse/manifest_attributes/#themisconf) | mapping | none | none | optional |
-    | [`spark`](/resources/lakehouse/manifest_attributes/#spark) | mapping | none | none | mandatory |
-    | [`driver`](/resources/lakehouse/manifest_attributes/#driver) | mapping | none | none | mandatory |
-    | [`memory`](/resources/lakehouse/manifest_attributes/#memory) | string | none | any valid memory amount | mandatory |
-    | [`cpu`](/resources/lakehouse/manifest_attributes/#cpu) | string | none | any valid CPU resource | mandatory |
-    | [`executor`](/resources/lakehouse/manifest_attributes/#executor) | mapping | none | none | mandatory |
-    | [`memory`](/resources/lakehouse/manifest_attributes/#memory) | string | none | any valid memory amount | mandatory |
-    | [`cpu`](/resources/lakehouse/manifest_attributes/#cpu) | string | none | any valid CPU resource | mandatory |
-    | [`instanceCount`](/resources/lakehouse/manifest_attributes/#instancecount) | integer | none | any valid integer | mandatory |
-    | [`maxInstanceCount`](/resources/lakehouse/manifest_attributes/#maxinstancecount) | integer | none | any valid integer | mandatory |
-    | [`sparkConf`](/resources/lakehouse/manifest_attributes/#sparkconf) | mapping | none | none | optional |
+    | [`queryEngine`](/resources/lakehouse/configurations/#queryengine) | mapping | none | none | mandatory |
+    | [`type`](/resources/lakehouse/configurations/#type) | string | none | themis | mandatory |
+    | [`resources`](/resources/lakehouse/configurations/#resources) | mapping | none | none | optional |
+    | [`requests`](/resources/lakehouse/configurations/#requests) | mapping | none | none | optional |
+    | [`cpu`](/resources/lakehouse/configurations/#cpu) | string | none | any valid CPU resource amount | optional |
+    | [`memory`](/resources/lakehouse/configurations/#memory) | string | none | any valid memory resource amount | optional |
+    | [`limits`](/resources/lakehouse/configurations/#limits) | mapping | none | none | optional |
+    | [`cpu`](/resources/lakehouse/configurations/#cpu) | string | none | any valid CPU resource limit | optional |
+    | [`memory`](/resources/lakehouse/configurations/#memory) | string | none | any valid memory resource limit | optional |
+    | [`themis`](/resources/lakehouse/configurations/#themis) | mapping | none | none | optional |
+    | [`envs`](/resources/lakehouse/configurations/#envs) | mapping | none | none | optional |
+    | [`themisConf`](/resources/lakehouse/configurations/#themisconf) | mapping | none | none | optional |
+    | [`spark`](/resources/lakehouse/configurations/#spark) | mapping | none | none | mandatory |
+    | [`driver`](/resources/lakehouse/configurations/#driver) | mapping | none | none | mandatory |
+    | [`memory`](/resources/lakehouse/configurations/#memory) | string | none | any valid memory amount | mandatory |
+    | [`cpu`](/resources/lakehouse/configurations/#cpu) | string | none | any valid CPU resource | mandatory |
+    | [`executor`](/resources/lakehouse/configurations/#executor) | mapping | none | none | mandatory |
+    | [`memory`](/resources/lakehouse/configurations/#memory) | string | none | any valid memory amount | mandatory |
+    | [`cpu`](/resources/lakehouse/configurations/#cpu) | string | none | any valid CPU resource | mandatory |
+    | [`instanceCount`](/resources/lakehouse/configurations/#instancecount) | integer | none | any valid integer | mandatory |
+    | [`maxInstanceCount`](/resources/lakehouse/configurations/#maxinstancecount) | integer | none | any valid integer | mandatory |
+    | [`sparkConf`](/resources/lakehouse/configurations/#sparkconf) | mapping | none | none | optional |
 
     <i>Advanced configuration attributes of Query Engine section</i>
     </center>
@@ -1038,7 +1038,7 @@ INFO[0001] 🗑 delete...complete
 
 ## How to configure the manifest file of Lakehouse?
 
-The Attributes of Lakehouse manifest define the key properties and configurations that can be used to specify and customize Lakehouse Resources within a manifest file. These attributes allow data developers to define the structure and behavior of their Lakehouse Resources. For comprehensive information on each attribute and its usage, please refer to the link: [Attributes of Lakehouse manifest](/resources/lakehouse/manifest_attributes/).
+The Attributes of Lakehouse manifest define the key properties and configurations that can be used to specify and customize Lakehouse Resources within a manifest file. These attributes allow data developers to define the structure and behavior of their Lakehouse Resources. For comprehensive information on each attribute and its usage, please refer to the link: [Attributes of Lakehouse manifest](/resources/lakehouse/configurations/).
 
 ## How to manage Lakehouse Resource and datasets using CLI?
 

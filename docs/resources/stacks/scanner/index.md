@@ -70,7 +70,7 @@ You can write Scanner workflows in the form of a sequential YAML for a pull-base
 
 Learn about the source connection and configuration options to create depot scan/non-depot scan workflow DAGs to scan entity metadata.
 
-[Creating Scanner Workflows](scanner/creating_scanner_workflows)
+[Creating Scanner Workflows](/resources/stacks/scanner/creating_scanner_workflows)
 
 ## Attributes of Scanner Workflow
 
@@ -105,7 +105,7 @@ The below table summarizes various properties within a Scanner workflow YAML.
 | [`ingestSampleData`](./field_ref/#ingestsampledata) |  boolean | `false` | `true` `false`                             | optional    | Applicable only in case of Messaging data source       |
 | [`markDeletedTopics`](./field_ref/#markdeletedtopics)| boolean | `false` | `true` `false`                            | optional    | Applicable only in case of Messaging data source       |
 
-To learn more about these fields, their possible values, example usage, refer to [Attributes of Scanner YAML](/resources/stacks/scanner/field_ref).
+To learn more about these fields, their possible values, example usage, refer to [Attributes of Scanner YAML](/resources/stacks/scanner/field_ref/).
 
 ## Supported Data Sources
 

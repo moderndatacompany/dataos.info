@@ -84,7 +84,7 @@ hide:
 | Term | Description |
 | --- | --- |
 | Hera| Hera is a source of record for lineage and topology that collates metadata from multiple sources, schedulers and/or data processing frameworks as long as the necessary integration is in place. It can receive lieneage information from workflow orchestration engine like Argo or Airflow, or a Jupyter notebook. |
-| [Heimdall](/architecture/heimdall_arch/) | Heimdall is the authentication, authorization, and governance engine in DataOS, responsible for implementing a robust security strategy. It ensures that only authorized users have access to DataOS resources. |
+| [Heimdall](/architecture/#heimdall/) | Heimdall is the authentication, authorization, and governance engine in DataOS, responsible for implementing a robust security strategy. It ensures that only authorized users have access to DataOS resources. |
 
 
 ## i
@@ -144,8 +144,8 @@ hide:
 
 | Term | Description |
 | --- | --- |
-| [PDP](/resources/policy/understanding_abac_pdp_and_pep/) | Policy Desicion Point is the service that evaluates a specific subject-predicate-object-metadata request against the current policies to determine if access to the DataOS resource/ environment is allowed or denied. |
-| [PEP](/resources/policy/understanding_abac_pdp_and_pep/) | Policy Enforcement Point is responsible for execution of the decision returned from PDP. |
+| [PDP](/resources/policy/core_concepts/#policy-decision-point-pdp) | Policy Desicion Point is the service that evaluates a specific subject-predicate-object-metadata request against the current policies to determine if access to the DataOS resource/ environment is allowed or denied. |
+| [PEP](/resources/policy/#policy-enforcement-point-pep/) | Policy Enforcement Point is responsible for execution of the decision returned from PDP. |
 | Poros | DataOS Poros is an orchestration engine for managing workflows, which are run for data transformation and movement. Working in coordination with Kubernetes, Poros efficiently allocates resources to various running jobs and services for data processing.  |
 | [Policy](/resources/policy/) | Policy is a DataOS Resource which governs the behaviour of users(applications and persons). In DataoS, two types of policies can be created- Access Policy & Data Policy.  |
 | [Profiling](/resources/stacks/flare/case_scenario/data_profiling_jobs/#data-profiling-jobs) | Data profiling is a process that involves examining data to gain insights into its structure, quality, and characteristics. In DataOS,  data profiling workflow aims to analyze data for valid formats, null values, and inconsistencies to enhance data quality. By utilizing basic statistics, it uncovers anomalies, redundancies, and provides insights into the validity of the data. |

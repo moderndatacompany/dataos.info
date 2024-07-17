@@ -6,9 +6,9 @@ search:
 
 # :resources-cluster: Cluster
 
-A Cluster in DataOS is a [Resource](/resources/) that encompasses a set of computational resources and configurations necessary for executing data engineering and analytics tasks. It relies on the [Compute](/resources/compute) Resource, which provides the required processing power for the workloads executed within the Cluster. 
+A Cluster in DataOS is a [Resource](/resources/) that encompasses a set of computational resources and configurations necessary for executing data engineering and analytics tasks. It relies on the [Compute](/resources/compute/) Resource, which provides the required processing power for the workloads executed within the Cluster. 
 
-A Cluster Resource can be provisioned [on-demand](/resources/cluster/on_demand_computing), allowing for efficient allocation of resources based on workload-specific requirements. This decoupling of computation and storage, facilitates flexibility, cost-efficiency and scalability.
+A Cluster Resource can be provisioned [on-demand](/resources/cluster/on_demand_computing/), allowing for efficient allocation of resources based on workload-specific requirements. This decoupling of computation and storage, facilitates flexibility, cost-efficiency and scalability.
 
 <div class="grid cards" markdown>
 
@@ -27,7 +27,7 @@ A Cluster Resource can be provisioned [on-demand](/resources/cluster/on_demand_c
 
     Discover how to configure the manifest file of a Cluster by adjusting its attributes.
 
-    [:octicons-arrow-right-24: Cluster attributes](/resources/cluster/manifest_attributes/)
+    [:octicons-arrow-right-24: Cluster attributes](/resources/cluster/configurations/)
 
 -   :material-network-pos:{ .lg .middle } **How to interact with a Cluster?**
 
@@ -73,7 +73,7 @@ To maximize performance, organizations can establish Minerva query engine cluste
 
 **Querying Diverse Data Sources**
 
-Minerva supports an extensive range of data sources, encompassing both traditional relational databases such as Oracle, PostgreSQL, MySQL, and Redshift, non-relational sources like Kafka and Cassandra, as well as object storages like Amazon S3, and Google Cloud Storage. This broad compatibility ensures seamless access to various data sources, enabling comprehensive and integrated analyses. To know more about the various data sources supported by Minerva, click on the following link: [Connectors Configuration](/resources/cluster/connectors_configuration).
+Minerva supports an extensive range of data sources, encompassing both traditional relational databases such as Oracle, PostgreSQL, MySQL, and Redshift, non-relational sources like Kafka and Cassandra, as well as object storages like Amazon S3, and Google Cloud Storage. This broad compatibility ensures seamless access to various data sources, enabling comprehensive and integrated analyses. To know more about the various data sources supported by Minerva, click on the following link: [Connectors Configuration](/resources/cluster/connectors_configuration/).
 
 **Query Execution Process**
 
@@ -238,7 +238,7 @@ To create a Cluster Resource within DataOS, you have two options:
 
     <center><i>Resource meta section of a Cluster manifest file</i></center>
 
-    For further details on each attribute, refer to the documentation: [Attributes of Resource-specific section](/resources/resource_attributes/).
+    For further details on each attribute, refer to the documentation: [Attributes of Resource-specific section](/resources/manifest_attributes/).
 
     #### **Cluster-specific section**
 
@@ -272,9 +272,9 @@ To create a Cluster Resource within DataOS, you have two options:
 
             | Field | Data Type | Default Value | Possible Value | Requirement |
             | --- | --- | --- | --- | --- |
-            | [`cluster`](/resources/cluster/manifest_attributes/#cluster) | mapping | none | none | mandatory |
-            | [`compute`](/resources/cluster/manifest_attributes/#compute) | string | none | query-default or any other query type custom Compute Resource | mandatory |
-            | [`type`](/resources/cluster/manifest_attributes/#type) | string | none | minerva/themis | mandatory |
+            | [`cluster`](/resources/cluster/configurations/#cluster) | mapping | none | none | mandatory |
+            | [`compute`](/resources/cluster/configurations/#compute) | string | none | query-default or any other query type custom Compute Resource | mandatory |
+            | [`type`](/resources/cluster/configurations/#type) | string | none | minerva/themis | mandatory |
 
     === "Advanced configuration"
 
@@ -330,21 +330,21 @@ To create a Cluster Resource within DataOS, you have two options:
 
             | Field | Data Type | Default Value | Possible Value | Requirement |
             | --- | --- | --- | --- | --- |
-            | [`cluster`](/resources/cluster/manifest_attributes#cluster) | mapping | none | none | mandatory |
-            | [`compute`](/resources/cluster/manifest_attributes#compute) | string | none | query-default or any other query type custom Compute Resource | mandatory |
-            | [`runAsUser`](/resources/cluster/manifest_attributes#runasuser) | string | none | userid of the use case assignee | optional |
-            | [`maintenance`](/resources/cluster/manifest_attributes#maintenance) | mapping | none | none | optional |
-            | [`restartCron`](/resources/cluster/manifest_attributes#restartcron) | string | none | any valid cron expression | optional |
-            | [`scalingCrons`](/resources/cluster/manifest_attributes#scalingcrons) | mapping | none | none | optional |
-            | [`cron`](/resources/cluster/manifest_attributes#cron) | string | none | any valid cron expression | optional |
-            | [`replicas`](/resources/cluster/manifest_attributes#replicas) | integer | 1 | positive integer | optional |
-            | [`resources`](/resources/cluster/manifest_attributes#resources) | mapping | none | none | optional |
-            | [`limits`](/resources/cluster/manifest_attributes#limits) | mapping | none | none | optional |
-            | [`cpu`](/resources/cluster/manifest_attributes#cpu) | string | requests: 100m, limits: 400m | number of cpu units in milliCPU(m) or cpu Core| optional |
-            | [`memory`](/resources/cluster/manifest_attributes#memory) | string | requests: 100Mi, limits: 400Mi | memory in Mebibytes(Mi) or Gibibytes(Gi) | optional |
-            | [`requests`](/resources/cluster/manifest_attributes#requests) | mapping | none | none | optional |
+            | [`cluster`](/resources/cluster/configurations#cluster) | mapping | none | none | mandatory |
+            | [`compute`](/resources/cluster/configurations#compute) | string | none | query-default or any other query type custom Compute Resource | mandatory |
+            | [`runAsUser`](/resources/cluster/configurations#runasuser) | string | none | userid of the use case assignee | optional |
+            | [`maintenance`](/resources/cluster/configurations#maintenance) | mapping | none | none | optional |
+            | [`restartCron`](/resources/cluster/configurations#restartcron) | string | none | any valid cron expression | optional |
+            | [`scalingCrons`](/resources/cluster/configurations#scalingcrons) | mapping | none | none | optional |
+            | [`cron`](/resources/cluster/configurations#cron) | string | none | any valid cron expression | optional |
+            | [`replicas`](/resources/cluster/configurations#replicas) | integer | 1 | positive integer | optional |
+            | [`resources`](/resources/cluster/configurations#resources) | mapping | none | none | optional |
+            | [`limits`](/resources/cluster/configurations#limits) | mapping | none | none | optional |
+            | [`cpu`](/resources/cluster/configurations#cpu) | string | requests: 100m, limits: 400m | number of cpu units in milliCPU(m) or cpu Core| optional |
+            | [`memory`](/resources/cluster/configurations#memory) | string | requests: 100Mi, limits: 400Mi | memory in Mebibytes(Mi) or Gibibytes(Gi) | optional |
+            | [`requests`](/resources/cluster/configurations#requests) | mapping | none | none | optional |
 
-    For additional information about attributes within the Cluster-specific section, refer to the link: [Attributes of Cluster-specific section.](/resources/cluster/manifest_attributes#cluster)
+    For additional information about attributes within the Cluster-specific section, refer to the link: [Attributes of Cluster-specific section.](/resources/cluster/configurations#cluster)
 
     For the two different types of Cluster the configuration varies, which are elucidated in the sections below:
 
@@ -389,29 +389,29 @@ To create a Cluster Resource within DataOS, you have two options:
 
         | Field | Data Type | Default Value | Possible Value | Requirement |
         | --- | --- | --- | --- | --- |
-        | [`minerva`](/resources/cluster/manifest_attributes#minerva) | mapping | none | none | mandatory |
-        | [`replicas`](/resources/cluster/manifest_attributes#replicas) | integer | 1 | 1-4 | mandatory |
-        | [`match`](/resources/cluster/manifest_attributes#match) | string | none | any/all | mandatory |
-        | [`priority`](/resources/cluster/manifest_attributes#priority) | integer | 10 | 1-5000 | mandatory |
-        | [`runAsApiKey`](/resources/cluster/manifest_attributes#runasapikey) | string | users dataos api key | any valid dataos api key | mandatory |
-        | [`runAsUser`](/resources/cluster/manifest_attributes#runasuser) | string | none | userid of the use case assignee | optional |
-        | [`resources`](/resources/cluster/manifest_attributes#resources) | mapping | none | none | optional |
-        | [`limits`](/resources/cluster/manifest_attributes#limits) | mapping | none | none | optional |
-        | [`cpu`](/resources/cluster/manifest_attributes#cpu) | string | requests: 100m, limits: 400m | number of cpu units in milliCPU(m) or cpu Core| optional |
-        | [`memory`](/resources/cluster/manifest_attributes#memory) | string | requests: 100Mi, limits: 400Mi | memory in Mebibytes(Mi) or Gibibytes(Gi) | optional |
-        | [`requests`](/resources/cluster/manifest_attributes#requests) | mapping | none | none | optional |
-        | [`debug`](/resources/cluster/manifest_attributes#debug) | mapping | none | none | mandatory |
-        | [`logLevel`](/resources/cluster/manifest_attributes#loglevel) | mapping | INFO | INFO/DEBUG/ERROR | optional |
-        | [`trinoLogLevel`](/resources/cluster/manifest_attributes#trinologlevel) | mapping | INFO | INFO/DEBUG/ERROR | optional |
-        | [`depots`](/resources/cluster/manifest_attributes#depots) | list of mappings | none | none | optional |
-        | [`address`](/resources/cluster/manifest_attributes#address) | string | none | valid depot udl address | optional |
-        | [`properties`](/resources/cluster/manifest_attributes#properties) | mapping | none | none | optional |
-        | [`catalogs`](/resources/cluster/manifest_attributes#catalogs) | list of mappings | none | none | optional |
-        | [`name`](/resources/cluster/manifest_attributes#name) | string | none | any valid string | optional |
-        | [`type`](/resources/cluster/manifest_attributes#type) | string | none | oracle/memory/wrangler/redshift | mandatory |
-        | [`properties`](/resources/cluster/manifest_attributes#properties_1) | mapping | none | valid connector properties | optional |
+        | [`minerva`](/resources/cluster/configurations#minerva) | mapping | none | none | mandatory |
+        | [`replicas`](/resources/cluster/configurations#replicas) | integer | 1 | 1-4 | mandatory |
+        | [`match`](/resources/cluster/configurations#match) | string | none | any/all | mandatory |
+        | [`priority`](/resources/cluster/configurations#priority) | integer | 10 | 1-5000 | mandatory |
+        | [`runAsApiKey`](/resources/cluster/configurations#runasapikey) | string | users dataos api key | any valid dataos api key | mandatory |
+        | [`runAsUser`](/resources/cluster/configurations#runasuser) | string | none | userid of the use case assignee | optional |
+        | [`resources`](/resources/cluster/configurations#resources) | mapping | none | none | optional |
+        | [`limits`](/resources/cluster/configurations#limits) | mapping | none | none | optional |
+        | [`cpu`](/resources/cluster/configurations#cpu) | string | requests: 100m, limits: 400m | number of cpu units in milliCPU(m) or cpu Core| optional |
+        | [`memory`](/resources/cluster/configurations#memory) | string | requests: 100Mi, limits: 400Mi | memory in Mebibytes(Mi) or Gibibytes(Gi) | optional |
+        | [`requests`](/resources/cluster/configurations#requests) | mapping | none | none | optional |
+        | [`debug`](/resources/cluster/configurations#debug) | mapping | none | none | mandatory |
+        | [`logLevel`](/resources/cluster/configurations#loglevel) | mapping | INFO | INFO/DEBUG/ERROR | optional |
+        | [`trinoLogLevel`](/resources/cluster/configurations#trinologlevel) | mapping | INFO | INFO/DEBUG/ERROR | optional |
+        | [`depots`](/resources/cluster/configurations#depots) | list of mappings | none | none | optional |
+        | [`address`](/resources/cluster/configurations#address) | string | none | valid depot udl address | optional |
+        | [`properties`](/resources/cluster/configurations#properties) | mapping | none | none | optional |
+        | [`catalogs`](/resources/cluster/configurations#catalogs) | list of mappings | none | none | optional |
+        | [`name`](/resources/cluster/configurations#name) | string | none | any valid string | optional |
+        | [`type`](/resources/cluster/configurations#type) | string | none | oracle/memory/wrangler/redshift | mandatory |
+        | [`properties`](/resources/cluster/configurations#properties_1) | mapping | none | valid connector properties | optional |
 
-        For additional information about attributes above attributes, refer to the [Attributes of Minerva-specific section.](/resources/cluster/manifest_attributes#minerva)
+        For additional information about attributes above attributes, refer to the [Attributes of Minerva-specific section.](/resources/cluster/configurations#minerva)
 
     === "Themis"
 
@@ -600,7 +600,7 @@ To create a Cluster Resource within DataOS, you have two options:
 
     **Fill in the Required Fields**
 
-    Provide the necessary details in the required properties fields and click 'Create Cluster'. For more information on these properties, refer to the documentation [here.](/resources/cluster/manifest_attributes/)
+    Provide the necessary details in the required properties fields and click 'Create Cluster'. For more information on these properties, refer to the documentation [here.](/resources/cluster/configurations/)
 
     ![Creating a Cluster Using Operations App UI 3](/resources/cluster/creating_cluster_using_operations_app_ui/cluster_4.png)
 
@@ -622,7 +622,7 @@ Clusters offers multiple methods for interacting with its features and functiona
 
 ### **Using CLI client**
 
-The Trino client is a command-line-based interactive interface that enables users to connect to both the Minerva and Themis Clusters. To learn more, click on the link: [How to setup CLI client.](/resources/cluster/cli_client)
+The Trino client is a command-line-based interactive interface that enables users to connect to both the Minerva and Themis Clusters. To learn more, click on the link: [How to setup CLI client.](/resources/cluster/cli_client/)
 
 
 ### **Using Workbench**
@@ -650,11 +650,11 @@ To interact with Clusters using the Workbench, execute the following steps:
 <i>Query result set</i>
 </center>
 
-For comprehensive details on the features and capabilities of Workbench, refer to the dedicated [Workbench](/interfaces/workbench) documentation.
+For comprehensive details on the features and capabilities of Workbench, refer to the dedicated [Workbench](/interfaces/workbench/) documentation.
 
 ### **Using Tableau, SPSS and Power BI**
 
-Users can leverage popular BI analytics platforms like Tableau, SPSS and Power BI to access data from DataOS via Cluster URL. To learn more, navigate to the link: [How to connect Cluster with Tableau, SPSS, and Power BI.](/interfaces/atlas/bi_tools)
+Users can leverage popular BI analytics platforms like Tableau, SPSS and Power BI to access data from DataOS via Cluster URL. To learn more, navigate to the link: [How to connect Cluster with Tableau, SPSS, and Power BI.](/interfaces/atlas/bi_tools/)
 
 ### **Using Spark Integration (Themis only)**
 
@@ -662,27 +662,27 @@ For more control over data and transformations, developers can utilize Spark ses
 
 ## Query Execution Optimization
 
-To achieve enhanced performance and cost efficiency when working with analytical workloads in DataOS, it is crucial to optimize your query execution on Minerva Clusters. The following considerations can assist you in accelerating your queries. For detailed information and guidance, please refer to the provided link: [How to optimize query execution.](/resources/cluster/query_optimization)
+To achieve enhanced performance and cost efficiency when working with analytical workloads in DataOS, it is crucial to optimize your query execution on Minerva Clusters. The following considerations can assist you in accelerating your queries. For detailed information and guidance, please refer to the provided link: [How to optimize query execution.](/resources/cluster/query_optimization/)
 
 
 ## Performance Tuning
 
-The Performance Tuning section is dedicated to enhancing the execution efficiency of queries within Minerva Clusters. It provides data developers with the means to attain optimal performance for analytical and exploratory workloads. By employing proven techniques for performance tuning, developers can streamline query execution, minimize resource consumption, and expedite data analysis. For more information, consult our [Performance Tuning](/resources/cluster/performance_tuning) page.
+The Performance Tuning section is dedicated to enhancing the execution efficiency of queries within Minerva Clusters. It provides data developers with the means to attain optimal performance for analytical and exploratory workloads. By employing proven techniques for performance tuning, developers can streamline query execution, minimize resource consumption, and expedite data analysis. For more information, consult our [Performance Tuning](/resources/cluster/performance_tuning/) page.
 
-The [Recommend Cluster Configuration](/resources/cluster/configuration_recommendations) contains recommendations specifically curated to maximize the efficiency and effectiveness of Minerva Cluster for specific scenarios.
+The [Recommend Cluster Configuration](/resources/cluster/configuration_recommendations/) contains recommendations specifically curated to maximize the efficiency and effectiveness of Minerva Cluster for specific scenarios.
 
 
 ## Connectors Configuration
 
 The Minerva query engine supports a wide range of connectors, including MySQL, PostgreSQL, Oracle, and Redshift. These connectors are configured in a YAML file, where they are mounted as catalogs. The catalogs store schemas and enable referencing of data sources through the respective connectors.
 
-By utilizing these connectors, you can perform data analyses directly on the data sources without the need to transfer the data to DataOS. This approach allows for efficient querying and exploration of data, minimizing data movement. To know more, click on the link: [Connectors Configuration.](/resources/cluster/connectors_configuration)
+By utilizing these connectors, you can perform data analyses directly on the data sources without the need to transfer the data to DataOS. This approach allows for efficient querying and exploration of data, minimizing data movement. To know more, click on the link: [Connectors Configuration.](/resources/cluster/connectors_configuration/)
 
 
 ## Cluster Usage Examples
 
 Refer to the Cluster Resource Usage Examples documentation for a comprehensive understanding of how Cluster can be utilized. It provides detailed examples and practical implementations to help data developers leverage the Cluster Resource efficiently.
 
-- [How to restart and scale the Cluster on a pre-defined schedule?](/resources/cluster/examples/cluster_maintenance)
+- [How to restart and scale the Cluster on a pre-defined schedule?](/resources/cluster/examples/cluster_maintenance/)
 
-- [How to create multiple Cluster using a single manifest file?](/resources/cluster/examples/multiple_cluster_setup)
+- [How to create multiple Cluster using a single manifest file?](/resources/cluster/examples/multiple_cluster_setup/)

@@ -6,7 +6,7 @@ search:
 
 # Data Toolbox
 
-Data Toolbox Stack or simply Toolbox Stack provides vital functionality in case of metadata updation in [Icebase](/resources/depot#icebase) depots. When data is ingested into Icebase using [Flare](/resources/stacks/flare) Stack, the metadata of ingested datasets needs to be registered with [Metis](/interfaces/metis) before it can be queried using [Workbench](/interfaces/workbench). The Data Toolbox allows `set_version` action on the data stored in the DataOS internal storage Icebase, which uses the Iceberg format. The [Metis](/interfaces/metis) keeps track of the Iceberg table by storing a reference to the latest metadata file. Using the Data Toolbox `set_version` action, you can update the metadata version to the latest or any specific version.
+Data Toolbox Stack or simply Toolbox Stack provides vital functionality in case of metadata updation in [Icebase](/resources/depot#icebase) depots. When data is ingested into Icebase using [Flare](/resources/stacks/flare/) Stack, the metadata of ingested datasets needs to be registered with [Metis](/interfaces/metis/) before it can be queried using [Workbench](/interfaces/workbench/). The Data Toolbox allows `set_version` action on the data stored in the DataOS internal storage Icebase, which uses the Iceberg format. The [Metis](/interfaces/metis/) keeps track of the Iceberg table by storing a reference to the latest metadata file. Using the Data Toolbox `set_version` action, you can update the metadata version to the latest or any specific version.
 
 ## Syntax of Data Toolbox YAML Configuration
 
@@ -27,7 +27,7 @@ To perform a data toolbox action, follow the below steps:
 
 ### **Create a YAML file for Workflow**
 
-If you have already ingested data, you can create a separate workflow for toolbox action, as shown in the following YAML. To know more about workflows, click [here](/resources/workflow). 
+If you have already ingested data, you can create a separate workflow for toolbox action, as shown in the following YAML. To know more about workflows, click [here](/resources/workflow/). 
 
 ### **Define a Job that executes upon Toolbox Stack**
 
@@ -158,5 +158,5 @@ workflow: # Workflow Section
 ```
 </details>
 
-Once you define the workflow, you can apply it using [CLI](/interfaces/cli).
+Once you define the workflow, you can apply it using [CLI](/interfaces/cli/).
 

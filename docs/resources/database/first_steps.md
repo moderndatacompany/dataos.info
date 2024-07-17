@@ -69,7 +69,7 @@ In DataOS, a Database is categorized as a Resource-type. The Resource meta secti
     layer: user 
     ```
 
-To configure a Database Resource, replace the values of `name`, `layer`, `tags`, `description`, and `owner` with appropriate values. For additional configuration information about the attributes of the Resource meta section, refer to the link: [Attributes of Resource meta section](/resources/resource_attributes/).
+To configure a Database Resource, replace the values of `name`, `layer`, `tags`, `description`, and `owner` with appropriate values. For additional configuration information about the attributes of the Resource meta section, refer to the link: [Attributes of Resource meta section](/resources/manifest_attributes/).
 
 #### **Database-specific section**
 
@@ -362,12 +362,12 @@ There are 3 ways to delete Database(or any Resource):
 
 ## **Create a Beacon Service**
 
-Create a [Beacon](/resources/stacks/beacon) Service to expose the PostgreSQL database on API. The syntax for the Beacon Service manifest file is provided below:
+Create a [Beacon](/resources/stacks/beacon/) Service to expose the PostgreSQL database on API. The syntax for the Beacon Service manifest file is provided below:
 
 ```yaml title="service.yaml" hl_lines="14"
 --8<-- "examples/resources/database/service.yaml"
 ```
-For detailed customization options and additional attributes of the Service Resource Section, refer to the link [Attributes of Service Section](/resources/service/configuration).
+For detailed customization options and additional attributes of the Service Resource Section, refer to the link [Attributes of Service Section](/resources/service/configurations/).
 
 ### **Apply the Service manifest**
 
@@ -492,6 +492,6 @@ There are 3 ways to delete Service(or any Resource):
 
 Database Resource is used to store data on the fly. Your next steps depend upon whether you want to learn about what you can do with the database,  here are some how to guides to help you with that process:
 
-- [How to query a Database using Workbench?](/resources/database/how_to_guide/how_to_query_database_using_workbench)
+- [How to query a Database using Workbench?](/resources/database/how_to_guide/how_to_query_database_using_workbench/)
 
-- [How to create a Streamlit application of Database Resource on top of a DataOS?](/resources/database/how_to_guide/how_to_create_a_streamlit_application_of_database_on_dataos)
+- [How to create a Streamlit application of Database Resource on top of a DataOS?](/resources/database/how_to_guide/how_to_create_a_streamlit_application_of_database_on_dataos/)

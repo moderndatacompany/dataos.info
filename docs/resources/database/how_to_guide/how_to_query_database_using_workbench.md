@@ -128,7 +128,7 @@ Create a new Cluster manifest with specified depot address. Below is a sample Cl
     
 ## Use Bundle Resource
 
-Alternatively, you can use [Bundle](resources/bundle) Resource to execute all Resources in one manifest file only.
+Alternatively, you can use [Bundle](/resources/bundle/) Resource to execute all Resources in one manifest file only.
 
 The sample Bundle manifest is given below:
 
@@ -149,7 +149,7 @@ To verify the successful execution of the query, navigate to the Workbench, then
 <center> Quering the customers database through Workbench</center>
 
 
-For comprehensive details on the features and capabilities of Workbench, refer to the dedicated [Workbench](/interfaces/workbench) documentation.
+For comprehensive details on the features and capabilities of Workbench, refer to the dedicated [Workbench](/interfaces/workbench/) documentation.
 
 
 

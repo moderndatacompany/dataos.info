@@ -1,6 +1,12 @@
 # :material-card-account-details-star-outline: Grant
 
+<<<<<<< HEAD
+# Grant
+
+A Grant [Resource](/resources/) links the Subject-Predicate-Object relationship, generating an access [policy](/resources/policy). Through grants, administrators assign use cases to subjects either as users or roles, granting them access to specific parts of the system or data. This level of detail in access control enables administrators to regulate user interactions effectively. Grants facilitate the assignment of use cases to multiple roles and users, providing flexibility in access management. Grants can be implemented via [CLI](/interfaces/cli) or through the [Bifrost](/interfaces/bifrost/) Interface. To learn about how  to create grant through Bifrost click [here](/interfaces/bifrost/grants/#how-to-create-policy-use-case-grant).
+=======
 A Grant [Resource](/resources/) links the Subject-Predicate-Object relationship, generating an access [policy](/resources/policy/). Through grants, administrators assign use cases to subjects either as users or roles, granting them access to specific parts of the system or data. This level of detail in access control enables administrators to regulate user interactions effectively. Grants facilitate the assignment of use cases to multiple roles and users, providing flexibility in access management. Grants can be implemented via [CLI](/interfaces/cli/) or through the [Bifrost](/interfaces/bifrost/) Interface. To learn about how  to create grant through Bifrost click [here](/interfaces/bifrost/grants/#how-to-create-policy-use-case-grant).
+>>>>>>> 44b12b77c6dc0a38e78ff132437ab1e12902c4b5
 
 ## How to create and manage a Grant Resource?
 
@@ -38,7 +44,7 @@ The manifest for creating a Grant has the following two sections:
 
 ### **Resource meta section**
 
-In DataOS, a Grant is categorized as a [Resource-type](resources/types_of_dataos_resources). The Resource meta section within the manifest file encompasses attributes universally applicable to all Resource-types. The provided manifest file elucidates the requisite attributes for this section:
+In DataOS, a Grant is categorized as a [Resource-type](/resources/types/). The Resource meta section within the manifest file encompasses attributes universally applicable to all Resource-types. The provided manifest file elucidates the requisite attributes for this section:
 
 === "Syntax"
 
@@ -108,19 +114,19 @@ The Grant-specific section of a Grant manifest comprises attributes-specific to 
       ```
 | Attribute          | Data Type        | Default Value | Possible Values                                | Requirement |
 |--------------------|------------------|---------------|------------------------------------------------|-------------|
-| [`grant`](/resources/grant/manifest_attributes#grant)               | mapping          | none          | valid grant-specific attributes               | mandatory   |
-| [`policy_use_case_id`](/resources/grant/manifest_attributes#policy_use_case_id) | string           | none          | Unique identifier for the policy use case      | mandatory   |
-| [`subjects`](/resources/grant/manifest_attributes#subjects)            | list of strings  | none          | List of subject identifiers                    | optional    |
-| [`values`](/resources/grant/manifest_attributes#values)              | list of mapping  | none          | List of key-value pairs representing values   | mandatory   |
-| [`path`](/resources/grant/manifest_attributes#path)                 | string           | none          | valid path string indicating the resource location | optional    |
-| [`approve`](/resources/grant/manifest_attributes#approve)             | boolean          | false         | true, false                                    | optional    |
-| [`requester`](/resources/grant/manifest_attributes#requester)           | string           | none          | Unique identifier for the requester            | optional    |
-| [`notes`](/resources/grant/manifest_attributes#notes)               | string           | none          | Textual notes or comments                      | optional    |
-| [`collection`](/resources/grant/manifest_attributes#collection)          | string           | none          | Unique identifier for the collection           | optional    |
-| [`manageAsUser`](/resources/grant/manifest_attributes#manageAsUser)       | string           | none          | UserID of the Use Case Assignee                | optional    |
+| [`grant`](/resources/grant/configurations#grant)               | mapping          | none          | valid grant-specific attributes               | mandatory   |
+| [`policy_use_case_id`](/resources/grant/configurations#policy_use_case_id) | string           | none          | Unique identifier for the policy use case      | mandatory   |
+| [`subjects`](/resources/grant/configurations#subjects)            | list of strings  | none          | List of subject identifiers                    | optional    |
+| [`values`](/resources/grant/configurations#values)              | list of mapping  | none          | List of key-value pairs representing values   | mandatory   |
+| [`path`](/resources/grant/configurations#path)                 | string           | none          | valid path string indicating the resource location | optional    |
+| [`approve`](/resources/grant/configurations#approve)             | boolean          | false         | true, false                                    | optional    |
+| [`requester`](/resources/grant/configurations#requester)           | string           | none          | Unique identifier for the requester            | optional    |
+| [`notes`](/resources/grant/configurations#notes)               | string           | none          | Textual notes or comments                      | optional    |
+| [`collection`](/resources/grant/configurations#collection)          | string           | none          | Unique identifier for the collection           | optional    |
+| [`manageAsUser`](/resources/grant/configurations#manageAsUser)       | string           | none          | UserID of the Use Case Assignee                | optional    |
 
 
-To know more  about the grant attributes click [here](/resources/grant/manifest_attributes)
+To know more  about the grant attributes click [here](/resources/grant/configurations/)
 
 <aside class="callout">
 🗣  By default, the `approve` attribute is set to false. This signifies that grants specified in this YAML file are not automatically approved. Instead, they will appear as requests in the grant request section.

@@ -81,7 +81,7 @@ The standard metric names are unique to the component type, but a benthos config
 
 The `path` label contains a string representation of the position of a component instantiation within a config in a format that would locate it within a Bloblang mapping, beginning at `root`. This path is a best attempt and may not exactly represent the source component position in all cases and is intended to be used for assisting observability only.
 
-This is the highest cardinality label since paths will change as configs are updated and expanded. It is therefore worth removing this label with a [mapping](/resources/stacks/benthos/components/metrics/about/#metric-mapping) in cases where you wish to restrict the number of unique metric series.
+This is the highest cardinality label since paths will change as configs are updated and expanded. It is therefore worth removing this label with a [mapping](/resources/stacks/benthos/components/metrics/#metric-mapping) in cases where you wish to restrict the number of unique metric series.
 
 ### `label`
 
