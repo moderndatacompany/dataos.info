@@ -1,7 +1,7 @@
 # Rewrite Manifest Files
 
 
-When a table’s write pattern doesn’t align with the query pattern, metadata can be rewritten to re-group data files into manifests using Flare stack’s `rewrite_manifest` [action](../configurations.md#rewrite_manifest)
+When a table’s write pattern doesn’t align with the query pattern, metadata can be rewritten to re-group data files into manifests using Flare stack’s `rewrite_manifest` [action](/resources/stacks/flare/configurations/#rewrite_manifest)
 
 ## Code Snippet
 

@@ -24,7 +24,7 @@ Monitor Resource in DataOS can be created by applying the manifest file using th
 
 ## Configuration
 
-Monitors can be configured to autoscale and match varying workload demands, reference pre-defined Secrets and Volumes, and more. The specific configurations may vary depending on the use case. For a detailed breakdown of the configuration options and attributes, please refer to the documentation: [Attributes of Monitor manifest](/resources/monitor/configuration/).
+Monitors can be configured to autoscale and match varying workload demands, reference pre-defined Secrets and Volumes, and more. The specific configurations may vary depending on the use case. For a detailed breakdown of the configuration options and attributes, please refer to the documentation: [Attributes of Monitor manifest](/resources/monitor/configurations/).
 
 
 

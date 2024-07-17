@@ -260,32 +260,32 @@ The table below presents an exhaustive list of key-value properties and their de
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`service`](/resources/service/yaml_configuration_attributes/#service)| mapping | none | none | mandatory |
-| [`title`](/resources/service/yaml_configuration_attributes/#title) | string | none | any string | optional |
-| [`tags`](/resources/service/yaml_configuration_attributes/#tags) | list of strings | none | valid string | optional |
-| [`servicePort`](/resources/service/yaml_configuration_attributes/#serviceport) | integer | none | any valid service port | optional |
-| [`ingress`](/resources/service/yaml_configuration_attributes/#ingress) | mapping | none | none | mandatory  |
-| [`enabled`](/resources/service/yaml_configuration_attributes/#enabled) | boolean | false | true/false | mandatory |
-| [`path`](/resources/service/yaml_configuration_attributes/#path) | string | none | any valid path | mandatory |
-| [`stripPath`](/resources/service/yaml_configuration_attributes/#strippath) | boolean | false | true/false | mandatory |
-| [`noAuthentication`](/resources/service/yaml_configuration_attributes/#noauthentication) | boolean | false | true/false | optional |
-| [`replicas`](/resources/service/yaml_configuration_attributes/#replicas) | integer | 1 | any positive integer | optional  |
-| [`autoscaling`](/resources/service/yaml_configuration_attributes/#autoscaling) | mapping | none | none | optional |
-| [`enabled`](/resources/service/yaml_configuration_attributes/#enabled-1) | boolean | false | true/false | optional |
-| [`minReplicas`](/resources/service/yaml_configuration_attributes/#minreplicas) | integer | 1 | any positive integer | optional  |
-| [`maxReplicas`](/resources/service/yaml_configuration_attributes/#maxreplicas) | integer | 1 | any positive integer | optional  |
-| [`targetMemoryUtilizationPercentage`](/resources/service/yaml_configuration_attributes/#targetmemoryutilizationpercentage) | integer | none | any positive integer | optional  |
-| [`targetCPUUtilizationPercentage`](/resources/service/yaml_configuration_attributes/#targetcpuutilizationpercentage) | integer | None | any positive integer | optional  |
-| [`stack`](/resources/service/yaml_configuration_attributes/#stack) | string | None | benthos/container/beacon | mandatory |
-| [`logLevel`](/resources/service/yaml_configuration_attributes/#loglevel) | string | INFO | INFO/WARN/DEBUG/ERROR | optional |
-| [`configs`](/resources/service/yaml_configuration_attributes/#configs) | mapping | none | key-value pairs of configurations | optional |
-| [`envs`](/resources/service/yaml_configuration_attributes/#envs) | mapping | none | key-value pairs of environment variables | optional |
-| [`compute`](/resources/service/yaml_configuration_attributes/#compute) | string | none | runnable-default or any other custom Compute Resource | mandatory |
-| [`resources`](/resources/service/yaml_configuration_attributes/#resources) | mapping | none | none | optional  |
-| [`runAsApiKey`](/resources/service/yaml_configuration_attributes/#runasapikey) | string | user's API Key | any valid DataOS API Key | Optional  |
-| [`runAsUser`](/resources/service/yaml_configuration_attributes/#runasuser) | string | user's User-id | userID of Use-Case Assignee | optional  |
-| [`dryRun`](/resources/service/yaml_configuration_attributes/#dryrun) | boolean | false | true/false | optional |
+| [`service`](/resources/service/configurations/#service)| mapping | none | none | mandatory |
+| [`title`](/resources/service/configurations/#title) | string | none | any string | optional |
+| [`tags`](/resources/service/configurations/#tags) | list of strings | none | valid string | optional |
+| [`servicePort`](/resources/service/configurations/#serviceport) | integer | none | any valid service port | optional |
+| [`ingress`](/resources/service/configurations/#ingress) | mapping | none | none | mandatory  |
+| [`enabled`](/resources/service/configurations/#enabled) | boolean | false | true/false | mandatory |
+| [`path`](/resources/service/configurations/#path) | string | none | any valid path | mandatory |
+| [`stripPath`](/resources/service/configurations/#strippath) | boolean | false | true/false | mandatory |
+| [`noAuthentication`](/resources/service/configurations/#noauthentication) | boolean | false | true/false | optional |
+| [`replicas`](/resources/service/configurations/#replicas) | integer | 1 | any positive integer | optional  |
+| [`autoscaling`](/resources/service/configurations/#autoscaling) | mapping | none | none | optional |
+| [`enabled`](/resources/service/configurations/#enabled-1) | boolean | false | true/false | optional |
+| [`minReplicas`](/resources/service/configurations/#minreplicas) | integer | 1 | any positive integer | optional  |
+| [`maxReplicas`](/resources/service/configurations/#maxreplicas) | integer | 1 | any positive integer | optional  |
+| [`targetMemoryUtilizationPercentage`](/resources/service/configurations/#targetmemoryutilizationpercentage) | integer | none | any positive integer | optional  |
+| [`targetCPUUtilizationPercentage`](/resources/service/configurations/#targetcpuutilizationpercentage) | integer | None | any positive integer | optional  |
+| [`stack`](/resources/service/configurations/#stack) | string | None | benthos/container/beacon | mandatory |
+| [`logLevel`](/resources/service/configurations/#loglevel) | string | INFO | INFO/WARN/DEBUG/ERROR | optional |
+| [`configs`](/resources/service/configurations/#configs) | mapping | none | key-value pairs of configurations | optional |
+| [`envs`](/resources/service/configurations/#envs) | mapping | none | key-value pairs of environment variables | optional |
+| [`compute`](/resources/service/configurations/#compute) | string | none | runnable-default or any other custom Compute Resource | mandatory |
+| [`resources`](/resources/service/configurations/#resources) | mapping | none | none | optional  |
+| [`runAsApiKey`](/resources/service/configurations/#runasapikey) | string | user's API Key | any valid DataOS API Key | Optional  |
+| [`runAsUser`](/resources/service/configurations/#runasuser) | string | user's User-id | userID of Use-Case Assignee | optional  |
+| [`dryRun`](/resources/service/configurations/#dryrun) | boolean | false | true/false | optional |
 
 </center>
 
-For a detailed explanation of each attribute, consult the [Attributes of Service YAML](/resources/service/yaml_configuration_attributes/).
+For a detailed explanation of each attribute, consult the [Attributes of Service YAML](/resources/service/configurations/).

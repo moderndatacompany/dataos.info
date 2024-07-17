@@ -69,7 +69,7 @@ The following YAML excerpt illustrates the attributes specified within this sect
       layer: user # DataOS Layer
       ```
 
-To configure a Worker Resource, replace the values of `name`, `layer`, `tags`, `description`, and `owner` with appropriate values. For additional configuration information about the attributes of the Resource meta section, refer to the link: [Attributes of Resource meta section](/resources/resource_attributes/).
+To configure a Worker Resource, replace the values of `name`, `layer`, `tags`, `description`, and `owner` with appropriate values. For additional configuration information about the attributes of the Resource meta section, refer to the link: [Attributes of Resource meta section](/resources/manifest_attributes/).
 
 #### **Worker-specific section**
 

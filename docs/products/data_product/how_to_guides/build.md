@@ -403,7 +403,11 @@ refs: # Reference (optional)
 entity: {{product}} # Entity (Mandatory)
 ```
 
+<<<<<<< HEAD
+For more information about the various attributes in the Product meta section, refer to the [Attributes of Product meta section](/products/data_products/configurations/).
+=======
 For more information about the various attributes in the Product meta section, refer to the [Attributes of Product meta section](/products/data_product/configuration/).
+>>>>>>> 44b12b77c6dc0a38e78ff132437ab1e12902c4b5
 
 **Data Product-specific section**
 

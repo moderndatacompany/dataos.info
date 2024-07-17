@@ -291,6 +291,7 @@ Use "dataos-ctl domain [command] --help" for more information about a command.
 To learn more, refer to [Domain Command Group](domain/details.md).
 
 ### **`fastbase`**
+
 Interact with the FastBase Depot in the DataOS®
 
 ```shell
@@ -311,7 +312,7 @@ Global Flags:
 
 Use "dataos-ctl fastbase [command] --help" for more information about a command.
 ```
-To learn more, refer to [Fastbase Command Group](/interfaces/cli/command_reference/fastbase/details/).
+To learn more, refer to [Fastbase Command Group](/interfaces/cli/command_reference/#fastbase).
 
 ### **`get`**
 

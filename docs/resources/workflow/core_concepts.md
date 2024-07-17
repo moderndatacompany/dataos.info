@@ -4,7 +4,7 @@ In DataOS, a Workflow represents a **Directed Acyclic Graph (DAG)**, where jobs 
 
 Within a Workflow, a **job** encompasses a series of processing tasks, each executed within its dedicated Kubernetes Pod. This architectural design ensures that the computational workload of one job does not hinder the performance of others, effectively avoiding bottlenecks.
 
-Furthermore, every job within a Directed Acyclic Graph (DAG) is associated with a specific [Stack](/resources/stacks). A Stack serves as an extension point within a job, offering users the ability to leverage different programming paradigms based on their specific requirements. For instance, if your objective involves data transformation, ingestion, or syndication, utilizing the [Flare](/resources/stacks/flare) Stack is recommended. DataOS provides a diverse range of pre-built stacks, including [Flare](/resources/stacks/flare), [Scanner](/resources/stacks/scanner) and more, enabling developers to seamlessly adopt various programming environments to suit their needs.
+Furthermore, every job within a Directed Acyclic Graph (DAG) is associated with a specific [Stack](/resources/stacks/). A Stack serves as an extension point within a job, offering users the ability to leverage different programming paradigms based on their specific requirements. For instance, if your objective involves data transformation, ingestion, or syndication, utilizing the [Flare](/resources/stacks/flare/) Stack is recommended. DataOS provides a diverse range of pre-built stacks, including [Flare](/resources/stacks/flare/), [Scanner](/resources/stacks/scanner/) and more, enabling developers to seamlessly adopt various programming environments to suit their needs.
 
 <center>
 
@@ -27,8 +27,8 @@ A Workflow in DataOS can be categorized as either [single-run](#single-run-workf
 
 ### **Single-run Workflow**
 
-Single-run Workflow represent a one-time execution of a sequence of jobs. These workflows do not include scheduling attributes and rely solely on the defined DAG structure and job dependencies. To explore a case scenario for a single-run Workflow, refer to the link: [How to implement Single-run Workflow?](/resources/workflow/how_to_guide/single_run_workflow)
+Single-run Workflow represent a one-time execution of a sequence of jobs. These workflows do not include scheduling attributes and rely solely on the defined DAG structure and job dependencies. To explore a case scenario for a single-run Workflow, refer to the link: [How to implement Single-run Workflow?](/resources/workflow/how_to_guide/single_run_workflow/)
 
 ### **Scheduled Workflow** 
 
-Scheduled Workflow enable the automated and recurring execution of jobs based on specified intervals or predetermined times. To schedule a Workflow, the `schedule` section or mapping along with the scheduling [attributes](/resources/workflow/yaml_configuration_attributes#schedule) must be added to the Workflow YAML configuration. Scheduled Workflow provide a powerful mechanism for automating job execution based on a [cron](/resources/workflow/configuration#cron) expression. To explore a case scenario for a Scheduled Workflow, refer to the link: [How to run a Cron or a Scheduled Workflow?](/resources/workflow/how_to_guide/scheduled_or_cron_workflow)
+Scheduled Workflow enable the automated and recurring execution of jobs based on specified intervals or predetermined times. To schedule a Workflow, the `schedule` section or mapping along with the scheduling [attributes](/resources/workflow/yaml_configuration_attributes/#schedule) must be added to the Workflow YAML configuration. Scheduled Workflow provide a powerful mechanism for automating job execution based on a [cron](/resources/workflow/configuration/#cron) expression. To explore a case scenario for a Scheduled Workflow, refer to the link: [How to run a Cron or a Scheduled Workflow?](/resources/workflow/how_to_guide/scheduled_or_cron_workflow/)

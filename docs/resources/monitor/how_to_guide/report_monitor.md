@@ -39,4 +39,4 @@ monitor:
           value: succeeded
 ```
 
-To configure the Report Monitor you can test the API using postman by replacing the resource, version, resource name, and workspace, then configure the conditions accordingly. To know more about the specific attributes, [refer to this](/resources/monitor/configuration/).
+To configure the Report Monitor you can test the API using postman by replacing the resource, version, resource name, and workspace, then configure the conditions accordingly. To know more about the specific attributes, [refer to this](/resources/monitor/configurations/).

@@ -2106,7 +2106,7 @@ In addition to the above mentioned sources, Airbyte has been seamlessly integrat
 
 ## BI Tools Connectors
 
-DataOS seamlessly integrates with multiple Business Intelligence (BI) Tools, including Tableau, PowerBI, and IBM SPSS Statistics. Refer to the link to know [more](/interfaces/atlas/bi_tools)
+DataOS seamlessly integrates with multiple Business Intelligence (BI) Tools, including Tableau, PowerBI, and IBM SPSS Statistics. Refer to the link to know [more](/interfaces/atlas/bi_tools/)
 
 ## High Touch Connectors
 

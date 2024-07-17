@@ -28,7 +28,7 @@ The Pager along with [Monitor](/resources/monitor/) Resource comprise the backbo
 
     Discover how to configure the manifest file of Pager by adjusting its attributes.
 
-    [:octicons-arrow-right-24: Pager attributes](/resources/pager/manifest_attributes/)
+    [:octicons-arrow-right-24: Pager attributes](/resources/pager/configurations/)
 
 -   :material-network-pos:{ .lg .middle } **How does a Pager work?**
 
@@ -128,11 +128,11 @@ To create a Pager, the first step is to create a Pager manifest file. A sample P
 
     1.  [Resource meta section](#resource-meta-section) within a manifest file comprises metadata attributes universally applicable to all [Resource-types](/resources/types_of_dataos_resources/). To learn more about how to configure attributes within this section, refer to the link: [Attributes of Resource meta section](/resources/resource_attributes/).
 
-    2.  [Pager-specific section](#pager-specific-section) within a manifest file comprises attributes specific to the Pager Resource. This section is further subdivided into: Conditions, and Output section. To learn more about how to configure attributes of Pager-specific section, refer to the link: [Attributes of Pager manifest](/resources/pager/manifest_attributes/).
+    2.  [Pager-specific section](#pager-specific-section) within a manifest file comprises attributes specific to the Pager Resource. This section is further subdivided into: Conditions, and Output section. To learn more about how to configure attributes of Pager-specific section, refer to the link: [Attributes of Pager manifest](/resources/pager/configurations/).
 
-    3.  [Conditions](#conditions) are defined using the information received on the incident payload against which the condition is matched. To learn more about the attributes of conditions, refer to the following [link](/resources/pager/manifest_attributes/#conditions)
+    3.  [Conditions](#conditions) are defined using the information received on the incident payload against which the condition is matched. To learn more about the attributes of conditions, refer to the following [link](/resources/pager/configurations/#conditions)
 
-    4.  [Output](#output) is the destination where the notification is delivered once the alert is triggered by the Pager Service. Learn more about the attributes of output, [here](/resources/pager/manifest_attributes/#output).
+    4.  [Output](#output) is the destination where the notification is delivered once the alert is triggered by the Pager Service. Learn more about the attributes of output, [here](/resources/pager/configurations/#output).
 
 The Pager manifest file is structurally comprised of the following sections:
 
@@ -241,14 +241,14 @@ The table below describes the various attributes used for defining conditions:
 
 | Attribute&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- | 
-| [`conditions`](/resources/pager/manifest_attributes/#conditions) | mapping | none | none | mandatory |
-| [`valueJqFilter`](/resources/pager/manifest_attributes/#valuejqfilter) | string | none | valid jq filter | mandatory |
-| [`operator`](/resources/pager/manifest_attributes/#operator) | string | none | equals | mandatory |
-| [`value`](/resources/pager/manifest_attributes/#value) | string | none | valid value | mandatory |
+| [`conditions`](/resources/pager/configurations/#conditions) | mapping | none | none | mandatory |
+| [`valueJqFilter`](/resources/pager/configurations/#valuejqfilter) | string | none | valid jq filter | mandatory |
+| [`operator`](/resources/pager/configurations/#operator) | string | none | equals | mandatory |
+| [`value`](/resources/pager/configurations/#value) | string | none | valid value | mandatory |
 
 </center>
 
-For more information about the below attributes, refer to the link: [Attributes of Pager manifest](/resources/pager/manifest_attributes/#conditions).
+For more information about the below attributes, refer to the link: [Attributes of Pager manifest](/resources/pager/configurations/#conditions).
 
 
 ##### **Output**
@@ -354,16 +354,16 @@ The table below describes the various attributes used for defining conditions:
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- | 
-| [`output`](/resources/pager/manifest_attributes/#output) | mapping | none | none | mandatory |
-| [`webhook`](/resources/pager/manifest_attributes/#webhook) | string | none | valid webhook attributes | mandatory |
-| [`url`](/resources/pager/manifest_attributes/#url) | string | none | valid webhook url | mandatory |
-| [`verb`](/resources/pager/manifest_attributes/#verb) | string | none | POST | mandatory |
-| [`headers`](/resources/pager/manifest_attributes/#headers) | string | none | valid api headers | mandatory |
-| [`authorization`](/resources/pager/manifest_attributes/#authorization) | string | none | valid api headers | mandatory |
+| [`output`](/resources/pager/configurations/#output) | mapping | none | none | mandatory |
+| [`webhook`](/resources/pager/configurations/#webhook) | string | none | valid webhook attributes | mandatory |
+| [`url`](/resources/pager/configurations/#url) | string | none | valid webhook url | mandatory |
+| [`verb`](/resources/pager/configurations/#verb) | string | none | POST | mandatory |
+| [`headers`](/resources/pager/configurations/#headers) | string | none | valid api headers | mandatory |
+| [`authorization`](/resources/pager/configurations/#authorization) | string | none | valid api headers | mandatory |
 
 </center>
 
-For more information about the below attributes, refer to the link below: [Attributes of Pager](/resources/pager/manifest_attributes/#output)
+For more information about the below attributes, refer to the link below: [Attributes of Pager](/resources/pager/configurations/#output)
 
 ### **Applying a Pager manifest**
 
@@ -506,7 +506,7 @@ After executing the delete command, you will receive a confirmation message indi
 
 ## How to configure a Pager manifest file?
 
-The Pager manifest file serves as the blueprint for defining the structure and behavior of Pager Resources within DataOS. By configuring various attributes within the the Pager manifest file, data developers can customize the functionality of their Pagers to meet specific requirements. Below is an overview of the key attributes used to configure a the Pager-specific section: [Attributes of a Pager manifest](/resources/pager/manifest_attributes/). 
+The Pager manifest file serves as the blueprint for defining the structure and behavior of Pager Resources within DataOS. By configuring various attributes within the the Pager manifest file, data developers can customize the functionality of their Pagers to meet specific requirements. Below is an overview of the key attributes used to configure a the Pager-specific section: [Attributes of a Pager manifest](/resources/pager/configurations/). 
 
 For details about the Resource meta section, refer to the [Attributes of Resource meta section](/resources/resource_attributes/)
 

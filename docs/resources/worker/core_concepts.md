@@ -12,7 +12,7 @@
 
 ## Workflow, Service, and Worker: Key Differences
 
-[Workflow](/resources/workflow), [Service](/resources/service), and Worker are distinct runnable [DataOS Resources](/resources/resources), each with unique roles in the ecosystem. Data developers often face the dilemma of deciding when to use a Workflow, a Service, or a Worker in the DataOS environment. To aid in this decision-making process, the following table compares Workflow, Service, and Worker comprehensively, helping developers understand their distinct characteristics and optimal use cases within the DataOS ecosystem.
+[Workflow](/resources/workflow), [Service](/resources/service), and Worker are distinct runnable [DataOS Resources](/resources/), each with unique roles in the ecosystem. Data developers often face the dilemma of deciding when to use a Workflow, a Service, or a Worker in the DataOS environment. To aid in this decision-making process, the following table compares Workflow, Service, and Worker comprehensively, helping developers understand their distinct characteristics and optimal use cases within the DataOS ecosystem.
 
 | Characteristic | Workflow | Service | Worker |
 | --- | --- | --- | --- |

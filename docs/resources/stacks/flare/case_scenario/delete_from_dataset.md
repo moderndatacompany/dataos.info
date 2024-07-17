@@ -3,7 +3,7 @@
 > Supported in Flare Stack Version `flare:4.0` only.
 > 
 
-The `delete_from_dataset` [action](../configurations.md#delete_from_dataset) removes data from tables upon a specified filter. There could be myriad such filter condition, two such scenarios are provided below.
+The `delete_from_dataset` [action](/resources/stacks/flare/configurations/#delete_from_dataset) removes data from tables upon a specified filter. There could be myriad such filter condition, two such scenarios are provided below.
 
 ## Code Snippet
 

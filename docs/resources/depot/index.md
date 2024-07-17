@@ -81,7 +81,7 @@ To create a Depot in DataOS, simply compose a manifest configuration file for a 
 
 ![Structure of a Depot YAML](/resources/depot_yaml.png)
 
-To know more about the attributes of Depot manifest Configuration, refer to the link: [Attributes of Depot manifest](/resources/depot/depot_yaml_configuration_attributes/).
+To know more about the attributes of Depot manifest Configuration, refer to the link: [Attributes of Depot manifest](/resources/depot/configurations/).
 
 ### **Prerequisites**
 
@@ -167,14 +167,14 @@ The table below elucidates the various attributes in the Depot-specific section:
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`depot`](/resources/depot/depot_yaml_configuration_attributes/#depot) | object | none | none | mandatory |
-| [`type`](/resources/depot/depot_yaml_configuration_attributes/#type) | string | none | ABFSS, WASBS, REDSHIFT,<br> S3, ELASTICSEARCH, EVENTHUB, PULSAR, BIGQUERY, GCS, JDBC, MSSQL, MYSQL, OPENSEARCH, ORACLE, POSTGRES, SNOWFLAKE | mandatory |
-| [`description`](/resources/depot/depot_yaml_configuration_attributes/#description) | string | none | any string | mandatory |
-| [`external`](/resources/depot/depot_yaml_configuration_attributes/#external) | boolean | false | true/false | mandatory |
-| [`source`](/resources/depot/depot_yaml_configuration_attributes/#source) | string | depot name | any string which is a valid depot name | optional |
-| [`compute`](/resources/depot/depot_yaml_configuration_attributes/#compute) | string | runnable-default | any custom Compute Resource | optional |
-| [`connectionSecret`](/resources/depot/depot_yaml_configuration_attributes/#connectionSecret) | object | none | varies between data sources | optional |
-| [`spec`](/resources/depot/depot_yaml_configuration_attributes/#spec) | object | none | varies between data sources | mandatory |
+| [`depot`](/resources/depot/configurations/#depot) | object | none | none | mandatory |
+| [`type`](/resources/depot/configurations/#type) | string | none | ABFSS, WASBS, REDSHIFT,<br> S3, ELASTICSEARCH, EVENTHUB, PULSAR, BIGQUERY, GCS, JDBC, MSSQL, MYSQL, OPENSEARCH, ORACLE, POSTGRES, SNOWFLAKE | mandatory |
+| [`description`](/resources/depot/configurations/#description) | string | none | any string | mandatory |
+| [`external`](/resources/depot/configurations/#external) | boolean | false | true/false | mandatory |
+| [`source`](/resources/depot/configurations/#source) | string | depot name | any string which is a valid depot name | optional |
+| [`compute`](/resources/depot/configurations/#compute) | string | runnable-default | any custom Compute Resource | optional |
+| [`connectionSecret`](/resources/depot/configurations/#connectionSecret) | object | none | varies between data sources | optional |
+| [`spec`](/resources/depot/configurations/#spec) | object | none | varies between data sources | mandatory |
 
 
 **Configure Connection Secrets Section**
@@ -240,10 +240,10 @@ The basic attributes filled in this section are provided in the table below:
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`acl`](/resources/depot/depot_yaml_configuration_attributes/#acl) | string | none | r/rw | mandatory |
-| [`type`](/resources/depot/depot_yaml_configuration_attributes/#type) | string | none | key-value properties | mandatory |
-| [`data`](/resources/depot/depot_yaml_configuration_attributes/#data) | object | none | fields within data varies between data sources | mandatory |
-| [`files`](/resources/depot/depot_yaml_configuration_attributes/#files) | string | none | valid file path | optional |
+| [`acl`](/resources/depot/configurations/#acl) | string | none | r/rw | mandatory |
+| [`type`](/resources/depot/configurations/#type) | string | none | key-value properties | mandatory |
+| [`data`](/resources/depot/configurations/#data) | object | none | fields within data varies between data sources | mandatory |
+| [`files`](/resources/depot/configurations/#files) | string | none | valid file path | optional |
 
 </center>
 
@@ -477,7 +477,7 @@ dataos-ctl get -t depot
 dataos-ctl get -t depot -a
 ```
 
-You can also access the details of any created Depot through the DataOS GUI in the [Operations App](/interfaces/operations) and [Metis UI](/interfaces/metis).
+You can also access the details of any created Depot through the DataOS GUI in the [Operations App](/interfaces/operations) and [Metis UI](/interfaces/metis/).
 
 ### **Delete Depot**
 
@@ -501,7 +501,7 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
 
 ### **Work with Stacks**
 
-Depots are compatible with different Stacks in DataOS. [Stacks](/resources/stacks/) provide distinct approaches to interact with the system and enable various programming paradigms in DataOS. Several Stacks are available that can be utilized with depots, including [Scanner](/resources/stacks/scanner/) for introspecting depots, [Flare](/resources/stacks/flare/) for data ingestion, transformation, syndication, etc., [Benthos](/resources/stacks/benthos/) for stream processing and [Data Toolbox](/resources/stacks/data_toolbox/) for managing [Icebase](/resources/depot/icebase) DDL and DML. 
+Depots are compatible with different Stacks in DataOS. [Stacks](/resources/stacks/) provide distinct approaches to interact with the system and enable various programming paradigms in DataOS. Several Stacks are available that can be utilized with depots, including [Scanner](/resources/stacks/scanner/) for introspecting depots, [Flare](/resources/stacks/flare/) for data ingestion, transformation, syndication, etc., [Benthos](/resources/stacks/benthos/) for stream processing and [Data Toolbox](/resources/stacks/data_toolbox/) for managing [Icebase](/resources/depot/icebase/) DDL and DML. 
 
 [Flare](/resources/stacks/flare/) and [Scanner](/resources/stacks/scanner/) Stacks are supported by all Depots, while [Benthos](/resources/stacks/benthos/), the stream-processing Stack, is compatible with read/write operations from streaming depots like [Fastbase](/resources/depot/fastbase/) and Kafka Depots.
 
@@ -563,7 +563,7 @@ You can use Lens to create Data Models on top of Depots and explore them using t
 
 ## **Supported Storage Architectures in DataOS**
 
-DataOS Depots facilitate seamless connectivity with diverse storage systems while eliminating the need for data relocation. This resolves challenges pertaining to accessibility across heterogeneous data sources. However, the escalating intricacy of pipelines and the exponential growth of data pose potential issues, resulting in cumbersome, expensive, and unattainable storage solutions. In order to address this critical concern, DataOS introduces support for two distinct and specialized storage architectures - [Icebase](/resources/depot/icebase) Depot, the Unified Lakehouse designed for OLAP data, and [Fastbase](/resources/depot/fastbase) Depot, the Unified Streaming solution tailored for handling streaming data.
+DataOS Depots facilitate seamless connectivity with diverse storage systems while eliminating the need for data relocation. This resolves challenges pertaining to accessibility across heterogeneous data sources. However, the escalating intricacy of pipelines and the exponential growth of data pose potential issues, resulting in cumbersome, expensive, and unattainable storage solutions. In order to address this critical concern, DataOS introduces support for two distinct and specialized storage architectures - [Icebase](/resources/depot/icebase/) Depot, the Unified Lakehouse designed for OLAP data, and [Fastbase](/resources/depot/fastbase) Depot, the Unified Streaming solution tailored for handling streaming data.
 
 ### **Icebase**
 
