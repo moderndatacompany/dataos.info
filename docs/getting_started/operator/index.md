@@ -1,7 +1,7 @@
 # Operator Journey
 
 
-A DataOS Operator is typically responsible for the following activites to ensure smooth operations:
+A DataOS Operator is typically responsible for the following activities to ensure smooth operations:
 
 ## Access Management
 
@@ -120,7 +120,7 @@ Track user, core, and cloud kernel resources, monitoring their utilization and a
 
     ![app](/getting_started/operator/operations_app.png)
 
-3. The "Resources" tab shows the user-created DataOS Resources, such as workflows, services, secrets, depots, clusters, compute, etc. This includes insights into the current running status of these resources, as well as the owner or creator of each resource.
+3. The "Resources" tab shows the user-created DataOS Resources, such as workflows, services, secrets, depots, clusters, compute, etc. This information includes insights into the current running status of these resources, and the owner or creator of each resource.
 
     ![app](/getting_started/operator/operations_workflow.png)
 
