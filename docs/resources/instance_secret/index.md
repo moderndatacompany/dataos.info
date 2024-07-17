@@ -405,7 +405,7 @@ Instance-secret Resource in DataOS can be created by applying the manifest file 
 
 ## Configuration
 
-Instance-secret can be configured to secure the credentials infromation in the form of key value pairs. For a detailed breakdown of the configuration options and attributes, please refer to the documentation: [Attributes of Instance Secret manifest](/resources/instance_secret/configuration/).
+Instance-secret can be configured to secure the credentials infromation in the form of key value pairs. For a detailed breakdown of the configuration options and attributes, please refer to the documentation: [Attributes of Instance Secret manifest](/resources/instance_secret/configurations/).
 
 
 ## Recipes

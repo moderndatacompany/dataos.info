@@ -2,7 +2,7 @@
 
 Let’s take a case scenario, where we read data from the Local system and write it to the environment Pulsar.
 
-To know more about the details of other supported input and output data sources navigate to the following [link](/resources/stacks/flare/standalone_yaml_configurations)
+To know more about the details of other supported input and output data sources navigate to the following [link](/resources/stacks/flare/standalone_yaml_configurations/)
 
 But before diving right into the programming stuff, let’s make sure that we have the required prerequisites.
 
@@ -62,7 +62,7 @@ Flare Standalone uses Scala Programming Language. In case you don’t have any i
 
 1. Download the `flare-standalone-2.zip` folder provided below
 
-[flare-standalone-2.zip](/resources/stacks/flare/local_to_cloud_using_standalone_2.0/flare_standalone_2.zip)
+[flare-standalone-2.zip](/resources/stacks/flare/local_to_cloud_using_standalone_2.0/flare_standalone_2.zip/)
 
 1. Extract the downloaded `flare-standalone-2.zip` file. It contains only one folder by the name `standalone`. Open the code editor inside the `flare-standalone-2` folder.
 2. Now the scenario looks like the image below, where you have opened the code-editor inside the `flare-standalone-2` folder which contains the `standalone` folder which further contains one folder by the name `default` directory having the `transactions` data and another file by the name `pulsar-write.yaml`
@@ -143,7 +143,7 @@ If you don’t have it you can also create a new one
     1. `<dataos-context>` - This is provided by the system administrator in your organization
     2. `<port>` - The serviceUrl and AdminUrl ports are available in the Operations App. To know more, navigate to the below page
     
-    [Getting the Port of Service and AdminUrl](/resources/stacks/flare/local_to_cloud_using_standalone_2.0/getting_the_port_of_serviceurl_and_adminurl)
+    [Getting the Port of Service and AdminUrl](/resources/stacks/flare/local_to_cloud_using_standalone_2.0/getting_the_port_of_serviceurl_and_adminurl/)
     
 
 ### **Running the Flare Workflow YAML**

@@ -46,4 +46,4 @@ worker:
         operator: greater_than
         value: '24.0'
 ```
-To know more about the specific attributes, [refer to this](/resources/monitor/configuration/).
+To know more about the specific attributes, [refer to this](/resources/monitor/configurations/).

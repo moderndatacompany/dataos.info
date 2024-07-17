@@ -19,7 +19,7 @@ Operator is a [DataOS Resource](/resources/) that provides a standardized interf
 At its core, an Operator empowers the DataOS orchestrator, referred to as *Poros*, to manage these external resources using custom-built Operators. 
 
 <aside class="callout">
-🗣️ The Operator is classified as an <a href="/resources/types_of_dataos_resources/#instance-level-resources">Instance-level</a> DataOS Resource. Its creation and management fall under the purview of either the <b>DataOS Operator/Administrator</b> or the <b>Platform Engineering</b> team within an organization.
+🗣️ The Operator is classified as an <a href="/resources/types/#instance-level-resources">Instance-level</a> DataOS Resource. Its creation and management fall under the purview of either the <b>DataOS Operator/Administrator</b> or the <b>Platform Engineering</b> team within an organization.
 
 </aside>
 
@@ -162,10 +162,10 @@ An Operator is classified as a [Resource-type](/resources/types/) within DataOS.
 
 The Operator-specific section is further divided into four distinct sections: *Computational components*, *Resource definition*, *NATS Cluster configuration*, *Enabled Workspaces*. Each of these sections should be appropriately configured when crafting an Operator YAML. 
 
-- **Computational Components:** Computational Components encapsulate the logic for managing the interactions with resources within the external platform/application/service (*external resource*), handling the entire lifecycle of associated resources. These components are responsible for reconciling resource states and translating them back to the DataOS orchestrator, *Poros*. The [`components`](/resources/operator/yaml_configuration_attributes/#components) section in the Operator-specific section is a list of mappings allowing you to define multiple computational components. Each component is either a [Worker](/resources/worker/) or a [Service](/resources/service/) Resource. These components can be customized with unique Docker images, secret configuration, and environment variables to facilitate their execution.
+- **Computational Components:** Computational Components encapsulate the logic for managing the interactions with resources within the external platform/application/service (*external resource*), handling the entire lifecycle of associated resources. These components are responsible for reconciling resource states and translating them back to the DataOS orchestrator, *Poros*. The [`components`](/resources/operator/configurations/#components) section in the Operator-specific section is a list of mappings allowing you to define multiple computational components. Each component is either a [Worker](/resources/worker/) or a [Service](/resources/service/) Resource. These components can be customized with unique Docker images, secret configuration, and environment variables to facilitate their execution.
 - **Resource Definition:** The Resource definition encompasses specifications for external resources to be orchestrated through DataOS. This definition acts as a comprehensive blueprint, providing all necessary information about the resource and the schema it must adhere to. The resource definition is flexible and can be tailored to suit the specific requirements of the external resource you intend to orchestrate. Multiple resources can be defined to interact with different external platforms as needed.
 - **NATS Cluster Configuration:** NATS is a lightweight pub-sub system. It is used to implement a Command Query Responsibility Segregation (CQRS)-based communication channel between the Operator Runtime, which lives in Poros, and the computational components mentioned above. It's a 2-way communication channel. The operator components have the specific knowledge regarding the management of the resources. They listen for commands and queries on the NATS Cluster. The Operator runtime communicates with the operator components using the specific commands for a Resource-type. Poros Operator takes care of manifesting the NATS Cluster.
-- **Enabled Workspaces:** The [`enabledWorkspaces`](/resources/operator/yaml_configuration_attributes/#enabledworkspaces-1) attribute is a list of strings for selectively specifying the Operator within specific workspaces.
+- **Enabled Workspaces:** The [`enabledWorkspaces`](/resources/operator/configurations/#enabledworkspaces-1) attribute is a list of strings for selectively specifying the Operator within specific workspaces.
 
 The following YAML manifest illustrates the attributes specified within the Operator YAML:
 
@@ -443,47 +443,47 @@ The table below summarizes the attributes of the Operator-specific section:
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`operator`](/resources/operator/yaml_configuration_attributes/#operator) | mapping | none | none | mandatory |
-| [`components`](/resources/operator/yaml_configuration_attributes/#components) | list of mappings | none | none | mandatory |
-| [`name`](/resources/operator/yaml_configuration_attributes/#name) | string | none | none  | mandatory |
-| [`type`](/resources/operator/yaml_configuration_attributes/#type) | string | none | service/worker  | mandatory |
-| [`compute`](/resources/operator/yaml_configuration_attributes/#compute) | string | none | runnable-default or any other custom Compute Resource name | mandatory |
-| [`runAsApiKey`](/resources/operator/yaml_configuration_attributes/#runasapikey) | string | Apikey of user | valid DataOS Apikey | mandatory |
-| [`runAsUser`](/resources/operator/yaml_configuration_attributes/#runasuser) | string | none | user-id of Use Case Assignee | optional |
-| [`image`](/resources/operator/yaml_configuration_attributes/#image) | string | none | valid image name | mandatory |
-| [`imagePullSecret`](/resources/operator/yaml_configuration_attributes/#imagepullsecret) | string | none | valid Secret Resource for pulling images from the Private Container Registry | optional |
-| [`command`](/resources/operator/yaml_configuration_attributes/#command) | list of strings | none | valid command | optional |
-| [`arguments`](/resources/operator/yaml_configuration_attributes/#arguments) | list of strings | none | valid arguments | optional |
-| [`replicas`](/resources/operator/yaml_configuration_attributes/#replicas) | integer | none | any integer  | mandatory |
-| [`environmentVars`](/resources/operator/yaml_configuration_attributes/#environmentvars) | mapping | none | list of available environment variables given here | optional |
-| [`secrets`](/resources/operator/yaml_configuration_attributes/#secrets) | mapping | none | none | optional |
-| [`name`](/resources/operator/yaml_configuration_attributes/#name-1) | string | none | valid Secret Resource name | mandatory |
-| [`workspace`](/resources/operator/yaml_configuration_attributes/#workspace) | string | none | valid Workspace name | mandatory |
-| [`ports`](/resources/operator/yaml_configuration_attributes/#ports) | list of mappings | none | none | optional |
-| [`name`](/resources/operator/yaml_configuration_attributes/#name-2) | string | none | valid string  | mandatory |
-| [`servicePort`](/resources/operator/yaml_configuration_attributes/#serviceport) | integer | none | valid port | mandatory |
-| [`targetPort`](/resources/operator/yaml_configuration_attributes/#targetport) | integer | none | valid port | mandatory |
-| [`resources`](/resources/operator/yaml_configuration_attributes/#resources) | mapping | none | none | mandatory |
-| [`name`](/resources/operator/yaml_configuration_attributes/#name-2) | string | none | valid resources name | mandatory |
-| [`nameJqFilter`](/resources/operator/yaml_configuration_attributes/#namejqfilter) | string | none | valid string | optional |
-| [`isRunnable`](/resources/operator/yaml_configuration_attributes/#isrunnable) | boolean | false | true/false | mandatory |
-| [`specSchema`](/resources/operator/yaml_configuration_attributes/#specschema) | mapping | none | none | optional |
-| [`jsonSchema`](/resources/operator/yaml_configuration_attributes/#jsonschema) | string | none | none | mandatory |
-| [`natsApi`](/resources/operator/yaml_configuration_attributes/#natsapi) | mapping | none | none | optional |
-| [`command`](/resources/operator/yaml_configuration_attributes/#command-1) | mapping | none | none | mandatory |
-| [`stream`](/resources/operator/yaml_configuration_attributes/#stream) | string | none | valid stream | mandatory |
-| [`subject`](/resources/operator/yaml_configuration_attributes/#subject) | string | none | valid subject | mandatory |
-| [`query`](/resources/operator/yaml_configuration_attributes/#query) | mapping | none | none | mandatory |
-| [`subject`](/resources/operator/yaml_configuration_attributes/#subject-1) | string | none | valid subject | mandatory |
-| [`replySubject`](/resources/operator/yaml_configuration_attributes/#replysubject-1) | string | none | valid replySubject  | mandatory |
-| [`natsClusterConfig`](/resources/operator/yaml_configuration_attributes/#natsclusterconfig) | mapping | none | none | mandatory |
-| [`name`](/resources/operator/yaml_configuration_attributes/#name-3) | string | none | valid name  | mandatory |
-| [`compute`](/resources/operator/yaml_configuration_attributes/#compute-1) | string | none | runnable-default or any other custom Compute Resource name | mandatory |
-| [`runAsUser`](/resources/operator/yaml_configuration_attributes/#runasuser-1) | string | none | user-id of Use Case Assignee | optional |
-| [`runAsApiKey`](/resources/operator/yaml_configuration_attributes/#runasapikey-1) | string | Apikey of user | valid DataOS Apikey (if not provided it takes the user’s default apikey) | mandatory |
-| [`enabledWorkspaces`](/resources/operator/yaml_configuration_attributes/#enabledworkspaces) | list of strings | none | valid DataOS Workspace | mandatory |
+| [`operator`](/resources/operator/configurations/#operator) | mapping | none | none | mandatory |
+| [`components`](/resources/operator/configurations/#components) | list of mappings | none | none | mandatory |
+| [`name`](/resources/operator/configurations/#name) | string | none | none  | mandatory |
+| [`type`](/resources/operator/configurations/#type) | string | none | service/worker  | mandatory |
+| [`compute`](/resources/operator/configurations/#compute) | string | none | runnable-default or any other custom Compute Resource name | mandatory |
+| [`runAsApiKey`](/resources/operator/configurations/#runasapikey) | string | Apikey of user | valid DataOS Apikey | mandatory |
+| [`runAsUser`](/resources/operator/configurations/#runasuser) | string | none | user-id of Use Case Assignee | optional |
+| [`image`](/resources/operator/configurations/#image) | string | none | valid image name | mandatory |
+| [`imagePullSecret`](/resources/operator/configurations/#imagepullsecret) | string | none | valid Secret Resource for pulling images from the Private Container Registry | optional |
+| [`command`](/resources/operator/configurations/#command) | list of strings | none | valid command | optional |
+| [`arguments`](/resources/operator/configurations/#arguments) | list of strings | none | valid arguments | optional |
+| [`replicas`](/resources/operator/configurations/#replicas) | integer | none | any integer  | mandatory |
+| [`environmentVars`](/resources/operator/configurations/#environmentvars) | mapping | none | list of available environment variables given here | optional |
+| [`secrets`](/resources/operator/configurations/#secrets) | mapping | none | none | optional |
+| [`name`](/resources/operator/configurations/#name-1) | string | none | valid Secret Resource name | mandatory |
+| [`workspace`](/resources/operator/configurations/#workspace) | string | none | valid Workspace name | mandatory |
+| [`ports`](/resources/operator/configurations/#ports) | list of mappings | none | none | optional |
+| [`name`](/resources/operator/configurations/#name-2) | string | none | valid string  | mandatory |
+| [`servicePort`](/resources/operator/configurations/#serviceport) | integer | none | valid port | mandatory |
+| [`targetPort`](/resources/operator/configurations/#targetport) | integer | none | valid port | mandatory |
+| [`resources`](/resources/operator/configurations/#resources) | mapping | none | none | mandatory |
+| [`name`](/resources/operator/configurations/#name-2) | string | none | valid resources name | mandatory |
+| [`nameJqFilter`](/resources/operator/configurations/#namejqfilter) | string | none | valid string | optional |
+| [`isRunnable`](/resources/operator/configurations/#isrunnable) | boolean | false | true/false | mandatory |
+| [`specSchema`](/resources/operator/configurations/#specschema) | mapping | none | none | optional |
+| [`jsonSchema`](/resources/operator/configurations/#jsonschema) | string | none | none | mandatory |
+| [`natsApi`](/resources/operator/configurations/#natsapi) | mapping | none | none | optional |
+| [`command`](/resources/operator/configurations/#command-1) | mapping | none | none | mandatory |
+| [`stream`](/resources/operator/configurations/#stream) | string | none | valid stream | mandatory |
+| [`subject`](/resources/operator/configurations/#subject) | string | none | valid subject | mandatory |
+| [`query`](/resources/operator/configurations/#query) | mapping | none | none | mandatory |
+| [`subject`](/resources/operator/configurations/#subject-1) | string | none | valid subject | mandatory |
+| [`replySubject`](/resources/operator/configurations/#replysubject-1) | string | none | valid replySubject  | mandatory |
+| [`natsClusterConfig`](/resources/operator/configurations/#natsclusterconfig) | mapping | none | none | mandatory |
+| [`name`](/resources/operator/configurations/#name-3) | string | none | valid name  | mandatory |
+| [`compute`](/resources/operator/configurations/#compute-1) | string | none | runnable-default or any other custom Compute Resource name | mandatory |
+| [`runAsUser`](/resources/operator/configurations/#runasuser-1) | string | none | user-id of Use Case Assignee | optional |
+| [`runAsApiKey`](/resources/operator/configurations/#runasapikey-1) | string | Apikey of user | valid DataOS Apikey (if not provided it takes the user’s default apikey) | mandatory |
+| [`enabledWorkspaces`](/resources/operator/configurations/#enabledworkspaces) | list of strings | none | valid DataOS Workspace | mandatory |
 
-For in-depth information about the attributes of the Operator-specific section, please consult the [Attributes of Operator-specific section.](/resources/operator/yaml_configuration_attributes/)
+For in-depth information about the attributes of the Operator-specific section, please consult the [Attributes of Operator-specific section.](/resources/operator/configurations/)
 
 #### **Apply the Operator manifest**
 

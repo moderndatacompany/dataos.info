@@ -5,7 +5,7 @@
 
 This case scenario describes a situation where your data source contains a large amount of data that are continuously updated. Reloading the entire data set can be time-consuming. So you want only to read new data, hence we would be using the incremental job or the incremental load method. The incremental load method (incremental job) is more efficient as compared to full data load (batch job) when working with a huge volume of data. 
 
-To know more about an Incremental Job, click [here](/resources/flare/#incremental-job)
+To know more about an Incremental Job, click [here](/resources/stacks/flare/case_scenario/#incremental-job)
 
 ## Implementation Flow
 
@@ -16,7 +16,7 @@ To know more about an Incremental Job, click [here](/resources/flare/#incrementa
 ## Implementation Flow (Altered)
 
 1. In this case scenario, we would run an incremental job to incrementally read data for 1 month from the `starting_date` on an interval of 1 month, starting from `start: 2020-01-01 00:00:00`.
-2. The Flare Workflow for the Incremental Job is provided in the [Code Snippet](/resources/incremental_jobs/#code-snippet) below.
+2. The Flare Workflow for the Incremental Job is provided in the [Code Snippet](/resources/stacks/flare/case_scenario/incremental_jobs/#code-snippet) below.
 3. Once you have the YAML apply it using CLI.
 
 ## Outcomes

@@ -6,9 +6,9 @@ search:
 
 # CLI Stack
 
-The DataOS Command-Line Interface (CLI) interface, or the **dataos-ctl**, can be operated as a [Stack](/resources/stacks), allowing users to programmatically execute CLI commands using the YAML manifest and automate the process of command execution and Resource lifecycle management.
+The DataOS Command-Line Interface (CLI) interface, or the **dataos-ctl**, can be operated as a [Stack](/resources/stacks/), allowing users to programmatically execute CLI commands using the YAML manifest and automate the process of command execution and Resource lifecycle management.
 
-The dataos-ctl stack can be orchestrated using a [Workflow](/resources/workflow) Resource, where each job executes the command once and concludes the process upon completion. This plays a pivotal role in enabling Continuous Integration and Continuous Deployment (CI/CD) workflows that integrate multiple CLI commands, creating a cohesive and automated deployment process.
+The dataos-ctl stack can be orchestrated using a [Workflow](/resources/workflow/) Resource, where each job executes the command once and concludes the process upon completion. This plays a pivotal role in enabling Continuous Integration and Continuous Deployment (CI/CD) workflows that integrate multiple CLI commands, creating a cohesive and automated deployment process.
 
 ## Necessity of CLI Stack
 
@@ -203,7 +203,7 @@ INFO[0001] 🔍 get...complete
 
 ### **Check Workflow Logs to validate execution**
 
-Copy the name to Workspace from the output table of the [`get`](/interfaces/cli/command_reference#get) command and use it as a string in the delete command.
+Copy the name to Workspace from the output table of the [`get`](/resources/stacks/cli/command_reference/#get) command and use it as a string in the delete command.
 
 ```shell
 dataos-ctl -i "${{copy the name to workspace in the output table from get command}}" --node ${{failed node name from get runtime command}} log
@@ -242,4 +242,4 @@ time="2023-12-29T05:44:09.135Z" level=info msg="sub-process exited" argo=true er
 
 ## Case Scenario
 
-- [How to apply a Service and get runtime status of it using CLI Stack?](resources/stacks/cli/apply_a_service_and_get_runtime_status_using_cli_stack)
+- [How to apply a Service and get runtime status of it using CLI Stack?](/resources/stacks/cli_stack/apply_a_service_and_get_runtime_status_using_cli_stack/)

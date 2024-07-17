@@ -157,22 +157,22 @@ This section will provide comprehensive information on how to provide advanced s
 
 | Data Source | Properties |
 | --- | --- |
-| AVRO | [Link](./object_storage_depots/source_configurations_by_data_formats.md#avro) |
-| CSV | [Link](./object_storage_depots/source_configurations_by_data_formats.md#csv) |
-| Iceberg | [Link](./object_storage_depots/source_configurations_by_data_formats.md#iceberg) |
-| JSON | [Link](./object_storage_depots/source_configurations_by_data_formats.md#json) |
-| ORC | [Link](./object_storage_depots/source_configurations_by_data_formats.md#orc) |
-| Parquet | [Link](./object_storage_depots/source_configurations_by_data_formats.md#parquet) |
-| Text | [Link](./object_storage_depots/source_configurations_by_data_formats.md#text) |
-| XLSX | [Link](./object_storage_depots/source_configurations_by_data_formats.md#xlsx) |
-| XML | [Link](./object_storage_depots/source_configurations_by_data_formats.md#xml) |
+| AVRO | [Link](/resources/stacks/flare/configuration_templates/object_storage_depots/source_configurations_by_data_formats#avro) |
+| CSV | [Link](/resources/stacks/flare/configuration_templates/object_storage_depots/source_configurations_by_data_formats#csv) |
+| Iceberg | [Link](/resources/stacks/flare/configuration_templates/object_storage_depots/source_configurations_by_data_formats#iceberg) |
+| JSON | [Link](/resources/stacks/flare/configuration_templates/object_storage_depots/source_configurations_by_data_formats#json) |
+| ORC | [Link](/resources/stacks/flare/configuration_templates/object_storage_depots/source_configurations_by_data_formats#orc) |
+| Parquet | [Link](/resources/stacks/flare/configuration_templates/object_storage_depots/source_configurations_by_data_formats#parquet) |
+| Text | [Link](/resources/stacks/flare/configuration_templates/object_storage_depots/source_configurations_by_data_formats#text) |
+| XLSX | [Link](/resources/stacks/flare/configuration_templates/object_storage_depots/source_configurations_by_data_formats#xlsx) |
+| XML | [Link](/resources/stacks/flare/configuration_templates/object_storage_depots/source_configurations_by_data_formats#xml) |
 
 Refer to the link below to know more.
 
-[Source Configurations by Data Formats](./object_storage_depots/source_configurations_by_data_formats.md)
+[Source Configurations by Data Formats](/resources/stacks/flare/configuration_templates/object_storage_depots/source_configurations_by_data_formats/)
 
 ## Schema Configurations
 
 This section delves into the realm of schema configurations, offering invaluable insights into managing and customizing schemas for various data sources in Flare. Refer to the link below.
 
-[Schema Configurations](./object_storage_depots/schema_configurations.md)
+[Schema Configurations](/resources/stacks/flare/configuration_templates/object_storage_depots/schema_configurations/)

@@ -39,9 +39,9 @@ To create a Policy, the first step is to create a Policy manifest file. A sample
             allow: true           # Granting access
         ```
                          
-        1.  [Resource meta section](#resource-meta-section) within a manifest file comprises metadata attributes universally applicable to all [Resource-types](/resources/types_of_dataos_resources/). To learn more about how to configure attributes within this section, refer to the link: [Attributes of Resource meta section](/resources/resource_attributes/).
+        1.  [Resource meta section](#resource-meta-section) within a manifest file comprises metadata attributes universally applicable to all [Resource-types](/resources/types/). To learn more about how to configure attributes within this section, refer to the link: [Attributes of Resource meta section](/resources/resource_attributes/).
 
-        2.  [Policy-specific section](#policy-specific-section) within a manifest file comprises attributes specific to the Policy Resource. This section is different for Access and Data Policy .To learn more about how to configure attributes of Policy-specific section, refer to the link: [Attributes of Policy manifest](/resources/policy/manifest_attributes/).
+        2.  [Policy-specific section](#policy-specific-section) within a manifest file comprises attributes specific to the Policy Resource. This section is different for Access and Data Policy .To learn more about how to configure attributes of Policy-specific section, refer to the link: [Attributes of Policy manifest](/resources/policy/configuration/).
 
     === "Data Policy"
 
@@ -122,7 +122,7 @@ The Policy manifest file is structurally comprised of the following sections:
 
 #### **Resource meta Section**
 
-To create a Policy YAML in DataOS, the initial step involves configuring the [Resource Section](/resources/resource_attributes) in a YAML file. This section defines various properties of the Policy Resource. The following is an example YAML configuration for the Resource Section:
+To create a Policy YAML in DataOS, the initial step involves configuring the [Resource Section](/resources/resource_attributes/) in a YAML file. This section defines various properties of the Policy Resource. The following is an example YAML configuration for the Resource Section:
 
 === "Syntax"
 
@@ -165,7 +165,7 @@ The Policy-specific Section focuses on the configurations specific to the Policy
 
 === "Access Policy"
 
-    Access Policies are defined using a [subject-predicate-object](/resources/policy/understanding_abac_pdp_and_pep#attribute-based-access-control-abac) triad. The YAML syntax for an Access Policy is as follows:
+    Access Policies are defined using a [subject-predicate-object](/resources/policy/core_concepts/) triad. The YAML syntax for an Access Policy is as follows:
 
     === "Syntax"
 
