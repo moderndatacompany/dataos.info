@@ -36,6 +36,8 @@ Data developers need to identify and evaluate the data sources to be integrated 
 
 ## Performing Exploratory Data Analysis (EDA)
 
+Exploratory Data Analysis is the initial examination of data that helps data product developers understand and make informed decisions. Before diving into building pipelines, or planning transformations, data exploration is crucial for understanding the dataset's features, data types, and distributions. Through queries, it identifies patterns, relationships, anomalies, and outliers within the data.
+
 1. Open the data asset in the Workbench app.
     
     ![dataoshome_workbench.png](/getting_started/dataoshome_workbench.png)
