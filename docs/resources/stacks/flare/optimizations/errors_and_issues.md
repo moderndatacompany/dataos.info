@@ -1,15 +1,15 @@
 # Flare Errors and Issues
 
 
-[Ingestion Errors](./errors_and_issues/ingestion_errors.md)
+[Ingestion Errors](/resources/stacks/flare/optimizations/errors_and_issues/ingestion_errors)
 
-[Transformation Errors](./errors_and_issues/transformation_errors.md)
+[Transformation Errors](/resources/stacks/flare/optimizations/errors_and_issues/transformation_errors)
 
-[Resource Allocation Errors](./errors_and_issues/resource_allocation_errors.md)
+[Resource Allocation Errors](/resources/stacks/flare/optimizations/errors_and_issues/resource_allocation_errors)
 
-[Streaming Errors](./errors_and_issues/streaming_errors.md)
+[Streaming Errors](/resources/stacks/flare/optimizations/errors_and_issues/streaming_errors)
 
-[Other Errors](./errors_and_issues/other_errors.md)
+[Other Errors](/resources/stacks/flare/optimizations/errors_and_issues/other_errors)
 
-[Linter Command Validation and Errors](./errors_and_issues/linter_command_validation_and_errors.md)
+[Linter Command Validation and Errors](/resources/stacks/flare/optimizations/errors_and_issues/linter_command_validation_and_errors)
 

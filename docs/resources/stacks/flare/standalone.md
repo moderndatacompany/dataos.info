@@ -15,7 +15,7 @@ The execution of a Flare Job involves submission to Poros, the resource manager 
 
 <center>
 
-![Flare Standalone: A testing interface for production-ready jobs](./standalone/standalone_new.svg)
+![Flare Standalone: A testing interface for production-ready jobs](/resources/stacks/flare/standalone/standalone_new.svg)
 
 <i>Flare Standalone: A testing interface for production-ready jobs</i>
 </center>
@@ -23,7 +23,7 @@ The execution of a Flare Job involves submission to Poros, the resource manager 
 > Check out what's new in the latest version of Standalone
 > 
 > 
-> [Standalone 2.0](./standalone/standalone_2.0.md)
+> [Standalone 2.0](/resources/stacks/flare/standalone/standalone_2.0/)
 > 
 
 ## Why Standalone?
@@ -63,19 +63,19 @@ dataos-ctl develop start -s flare -i rubiklabs/flare3:6.0.93 -f sample/standalon
 
 Enough with the theory! Let us now shift our focus from theoretical concepts and proceed toward practical implementation by executing a job on Flare Standalone. To achieve this, kindly navigate to the page provided below.
 
-[Running Flare Standalone](./standalone/running_flare_standalone.md)
+[Running Flare Standalone](/resources/stacks/flare/standalone/running_flare_standalone/)
 
 ### **From Standalone to Production**
 
 After testing a job locally, it is time to deploy it in production. But before you do it, there are a couple of changes that you need to make. Check out the changes on the below page. 
 
-[From Testing to Production](./standalone/from_standalone_to_production.md)
+[From Testing to Production](/resources/stacks/flare/standalone/from_standalone_to_production/)
 
 ## Case Scenarios
 
 Getting the Flare Standalone up and running on your local machine is easy. All transformation in Flare Standalone happens locally on your system, but the data source can either be on your local system or somewhere in the cloud. You can have different permutations and combinations depending on what source you want to read from and what source you want to write to. If you'd like to know more, you can go ahead and navigate to the below page.
 
-[Case Scenarios](./standalone/case_scenarios.md)
+[Case Scenarios](/resources/stacks/flare/standalone/case_scenarios/)
 
 # Supported Data Sources and Configurations
 

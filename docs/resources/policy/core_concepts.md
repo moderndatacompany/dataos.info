@@ -32,10 +32,10 @@ True to its name, the Policy Decision Point (PDP) is responsible for making poli
 
 A Policy Enforcement Point (PEP) signifies the service at the point of access. Upon being accessed, it interacts with the Policy Decision Point (PDP), providing it with the necessary information to authorize the current context. Depending on the response received from the PDP, the PEP either permits or denies the user's intended action. For instance, during ingress, the proxy validates whether specific API paths are permissible or restricted and refrains from proxying the request if the PDP indicates denial.
 
-![PDP and PEP](/resources/understanding_abac_pdp_and_pep/pdp_and_pep.png)
+![PDP and PEP](/resources/policy/pdp_and_pep.png)
 
-In this context, [Heimdall](/resources//resources/architecture#heimdall) serves as the PDP for access policies, and [Data Policies](/resources/policy#data-policy). The rest of the system's services function as PEPs, liaising with Heimdall for all authorization-related matters.
+In this context, [Heimdall](/architecture/#heimdall) serves as the PDP for access policies, and [Data Policies](/resources/policy/#data-policy). The rest of the system's services function as PEPs, liaising with Heimdall for all authorization-related matters.
 
 ## Policy Implementation Mechanism
 
-In the DataOS ecosystem, the [Heimdall](/resources/architecture#heimdall) governance engine operates as the [Policy Decision Point (PDP)](/resources/policy/understanding_abac_pdp_and_pep#policy-decision-point-pdp) for [Access Policies](#access-policy), while the [Minerva Gateway](/resources/architecture#gateway) serves as the PDP for [Data Policies](#data-policy). Both these elements jointly supervise the enforcement of policies across a range of Policy Enforcement Points (PEP), distributed throughout the DataOS ecosystem. Learn more about Policy implementation in DataOS, [here](/resources/policy/implementation_of_data_and_access_policy).
+In the DataOS ecosystem, the [Heimdall](/architecture/#heimdall) governance engine operates as the [Policy Decision Point (PDP)](/resources/policy/core_concepts/#policy-decision-point-pdp) for [Access Policies](#access-policy), while the [Minerva Gateway](/architecture/#gateway) serves as the PDP for [Data Policies](#data-policy). Both these elements jointly supervise the enforcement of policies across a range of Policy Enforcement Points (PEP), distributed throughout the DataOS ecosystem. Learn more about Policy implementation in DataOS, [here](/resources/policy/how_to_guide/implementating_access_policy).

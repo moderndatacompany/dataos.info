@@ -105,7 +105,7 @@ A Bundle Resource YAML manifest can be structurally broken down into following s
 
 #### **Configure the Resource meta section**
 
-In DataOS, a Bundle is categorized as a [Resource-type](/types_of_dataos_resources/). The Resource meta section within the YAML manifest encompasses attributes universally applicable to all Resource-types. The provided YAML codeblock elucidates the requisite attributes for this section: 
+In DataOS, a Bundle is categorized as a [Resource-type](/resources/types/). The Resource meta section within the YAML manifest encompasses attributes universally applicable to all Resource-types. The provided YAML codeblock elucidates the requisite attributes for this section: 
 
 ```yaml
 # Resource meta section
@@ -121,7 +121,7 @@ bundle: # Bundle-specific section mapping(mandatory)
   ${{Attributes of Bundle-specific section}}
 ```
 
-For more information, refer to the [Attributes of Resource Meta Section.](/resource_attributes/)
+For more information, refer to the [Attributes of Resource Meta Section.](/resources/manifest_attributes/)
 
 #### **Configure the Bundle-specific section**
 
@@ -151,12 +151,12 @@ bundle:
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`bundle`](/resources/bundle/yaml_configuration_attributes/#bundle) | mapping | none | none | mandatory |
-| [`schedule`](/resources/bundle/yaml_configuration_attributes/#schedule) | mapping | none | none | optional |
-| [`workspaces`](/resources/bundle/yaml_configuration_attributes/#workspaces)| list of mappings | none | none | optional |
-| [`resources`](/resources/bundle/yaml_configuration_attributes/#resources) | list of mappings | none | none | optional |
-| [`properties`](/resources/bundle/yaml_configuration_attributes/#properties) | mapping | none | none | optional |
-| [`manageAsUser`](/resources/bundle/yaml_configuration_attributes/#manageasuser) | string | UserID of Owner | UserID of use case assignee | optional |
+| [`bundle`](/resources/bundle/configurations/#bundle) | mapping | none | none | mandatory |
+| [`schedule`](/resources/bundle/configurations/#schedule) | mapping | none | none | optional |
+| [`workspaces`](/resources/bundle/configurations/#workspaces)| list of mappings | none | none | optional |
+| [`resources`](/resources/bundle/configurations/#resources) | list of mappings | none | none | optional |
+| [`properties`](/resources/bundle/configurations/#properties) | mapping | none | none | optional |
+| [`manageAsUser`](/resources/bundle/configurations/#manageasuser) | string | UserID of Owner | UserID of use case assignee | optional |
 
 </center>
 
@@ -181,11 +181,11 @@ Refer to the table below for a summary of the attributes within the Bundle Works
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`initialState`](/resources/bundle/yaml_configuration_attributes/#initialState) | string | none | create/delete | mandatory |
-| [`timezone`](/resources/bundle/yaml_configuration_attributes/#timezone) | string | none | valid timezone in the “Area/Location” format | mandatory |
-| [`create`](/resources/bundle/yaml_configuration_attributes/#create) | list of mappings | none | none | optional |
-| [`cron`](/resources/bundle/yaml_configuration_attributes/#cron) | string | none | valid cron expression | mandatory |
-| [`delete`](/resources/bundle/yaml_configuration_attributes/#delete) | list of mappings | none | none | optional |
+| [`initialState`](/resources/bundle/configurations/#initialState) | string | none | create/delete | mandatory |
+| [`timezone`](/resources/bundle/configurations/#timezone) | string | none | valid timezone in the “Area/Location” format | mandatory |
+| [`create`](/resources/bundle/configurations/#create) | list of mappings | none | none | optional |
+| [`cron`](/resources/bundle/configurations/#cron) | string | none | valid cron expression | mandatory |
+| [`delete`](/resources/bundle/configurations/#delete) | list of mappings | none | none | optional |
 
 </center>
 
@@ -222,11 +222,11 @@ Refer to the table below for a summary of the attributes within the Bundle Works
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`name`](/resources/bundle/yaml_configuration_attributes/#name) | string | none | valid Workspace name | mandatory |
-| [`description`](/resources/bundle/yaml_configuration_attributes/#description) | string | none | any valid string | optional |
-| [`tags`](/resources/bundle/yaml_configuration_attributes/#tags) | list of strings | none | any valid string | optional |
-| [`labels`](/resources/bundle/yaml_configuration_attributes/#labels) | mapping | none | valid key-value pairs | optional |
-| [`layer`](/resources/bundle/yaml_configuration_attributes/#layer) | string | none | user/system | mandatory |
+| [`name`](/resources/bundle/configurations/#name) | string | none | valid Workspace name | mandatory |
+| [`description`](/resources/bundle/configurations/#description) | string | none | any valid string | optional |
+| [`tags`](/resources/bundle/configurations/#tags) | list of strings | none | any valid string | optional |
+| [`labels`](/resources/bundle/configurations/#labels) | mapping | none | valid key-value pairs | optional |
+| [`layer`](/resources/bundle/configurations/#layer) | string | none | user/system | mandatory |
 
 </center>
 
@@ -264,17 +264,17 @@ Refer to the table below for a summary of the attributes within the Bundle Works
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`id`](/resources/bundle/yaml_configuration_attributes/#id) | string | none | valid string | mandatory |
-| [`workspace`](/resources/bundle/yaml_configuration_attributes/#workspace) | string | none | valid Workspace name | optional (Mandatory for Workspace-level Resources) |
-| [`spec`](/resources/bundle/yaml_configuration_attributes/#spec) | mapping | none | valid Resource spec | optional |
-| [`file`](/resources/bundle/yaml_configuration_attributes/#file) | string | none | valid Resource config file path | optional |
-| [`dependencies`](/resources/bundle/yaml_configuration_attributes/#dependencies) | list of strings | none | Resource ids within the DAG except the current one | optional |
-| [`dependencyConditions`](/resources/bundle/yaml_configuration_attributes/#dependencyConditions) | list of mappings | none | none | optional |
-| [`resourceId`](/resources/bundle/yaml_configuration_attributes/#resourceId) | string | none | ID of dependent Resource | mandatory |
-| [`status`](/resources/bundle/yaml_configuration_attributes/#status) | mapping | none | none | optional |
-| [`is`](/resources/bundle/yaml_configuration_attributes/#is) | list of strings | none | none | optional |
-| [`contains`](/resources/bundle/yaml_configuration_attributes/#contains) | list of strings | none | none | optional |
-| [`runtime`](/resources/bundle/yaml_configuration_attributes/#runtime) | mapping | none | none | optional |
+| [`id`](/resources/bundle/configurations/#id) | string | none | valid string | mandatory |
+| [`workspace`](/resources/bundle/configurations/#workspace) | string | none | valid Workspace name | optional (Mandatory for Workspace-level Resources) |
+| [`spec`](/resources/bundle/configurations/#spec) | mapping | none | valid Resource spec | optional |
+| [`file`](/resources/bundle/configurations/#file) | string | none | valid Resource config file path | optional |
+| [`dependencies`](/resources/bundle/configurations/#dependencies) | list of strings | none | Resource ids within the DAG except the current one | optional |
+| [`dependencyConditions`](/resources/bundle/configurations/#dependencyConditions) | list of mappings | none | none | optional |
+| [`resourceId`](/resources/bundle/configurations/#resourceId) | string | none | ID of dependent Resource | mandatory |
+| [`status`](/resources/bundle/configurations/#status) | mapping | none | none | optional |
+| [`is`](/resources/bundle/configurations/#is) | list of strings | none | none | optional |
+| [`contains`](/resources/bundle/configurations/#contains) | list of strings | none | none | optional |
+| [`runtime`](/resources/bundle/configurations/#runtime) | mapping | none | none | optional |
 
 </center>
 
@@ -295,7 +295,7 @@ Refer to the table below for a summary of the attributes within the additional p
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`properties`](/resources/bundle/yaml_configuration_attributes/#properties) | mapping | none | properties in the form of key-value pairs | optional |
+| [`properties`](/resources/bundle/configurations/#properties) | mapping | none | properties in the form of key-value pairs | optional |
 
 </center>
 

@@ -4,7 +4,7 @@
 
 Let's take a case scenario where we read data from the Pulsar and write it to the Local File System. After writing the data to the environment Pulsar, we also want to run some Scala commands to verify whether our data is written and has the appropriate schema.
 
-You can check out the [Standalone YAML configuration section](/resources/stacks/flare/standalone_yaml_configurations) for other inputs and outputs data sources.
+You can check out the [Standalone YAML configuration section](/resources/stacks/flare/standalone_yaml_configurations/) for other inputs and outputs data sources.
 
 But before diving right into the programming stuff, let's ensure you have the required prerequisites.
 
@@ -64,7 +64,7 @@ Flare Standalone uses Scala Programming Language. In case you don't know about S
 
 1. Download the `flare-standalone.zip` folder provided below
 
-[flare-standalone.zip](/resources/stacks/flare/running_flare_standalone/flare-standalone.zip)
+[flare-standalone.zip](/resources/stacks/flare/running_flare_standalone/flare-standalone.zip/)
 
 1. Extract the downloaded `flare-standalone.zip` file. It contains only one folder by the name `standalone`. Next, you can open the code editor inside the `flare-standalone` folder.
 2. Now the scenario looks like the image below, where you have opened the code editor inside the `flare-standalone` folder, which contains the `standalone` folder which further includes one folder by the name `dataout` and another file by the name `config.yaml`
@@ -154,7 +154,7 @@ dataos-ctl user apikey get
     1. `<dataos-context>` - The system administrator provides this in your organization
     2. `<port>` - The serviceUrl and AdminUrl ports are available in the Operations App. If you want to know more, you can go ahead and just navigate to the page below.
     
-    [Getting the Port of ServiceUrl and AdminUrl](./local_to_cloud_using_standalone_2.0/getting_the_port_of_serviceurl_and_adminurl)
+    [Getting the Port of ServiceUrl and AdminUrl](/resources/stacks/flare/standalone/case_scenarios/local_to_cloud_using_standalone_2.0/getting_the_port_of_serviceurl_and_adminurl/)
     
 
 ### **Running the Flare Workflow YAML**
@@ -184,7 +184,7 @@ If you have an Apple M1/M2 Chip system, use the `rubiklabs/flare3:6.0.93-xp.01` 
 
 ![Untitled](/resources/stacks/flare/running_flare_standalone/untitled_1.png)
 
-To know more about the various sections of the Spark UI and what each one of them signifies, navigate to the [link](optimizations/inspecting_the_spark_ui)
+To know more about the various sections of the Spark UI and what each one of them signifies, navigate to the [link](/resources/stacks/flare/standalone/case_scenarios/cloud_to_local_using_standalone_2.0/optimizations/inspecting_the_spark_ui/)
 
 1. On successful execution, the Scala command line shell will open as below:
 

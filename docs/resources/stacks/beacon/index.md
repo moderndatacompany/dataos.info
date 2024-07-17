@@ -71,7 +71,7 @@ service:
     PGRST_OPENAPI_SERVER_PROXY_URI: https://${{dataos-context}}.dataos.app/${{database-path}} # e.g. https://adapting-spaniel.dataos.app/stores/api/v1/
 ```
 
-For a deeper understanding of Service Resource and its YAML attributes, please refer to the [Attributes of Service Resource YAML](/resources/service/yaml_configuration_attributes/) page.
+For a deeper understanding of Service Resource and its YAML attributes, please refer to the [Attributes of Service Resource YAML](/resources/service/configurations/) page.
 
 #### **Configure Beacon Stack-specific Section**
 
@@ -98,17 +98,17 @@ The table below summarizes the various attributes within the Beacon Stack-specif
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`source`](/resources/stacks/beacon/beacon_yaml_attributes/#source) | mapping | none | none | mandatory |
-| [`type`](/resources/stacks/beacon/beacon_yaml_attributes/#type) | string | none | database | mandatory |
-| [`name`](/resources/stacks/beacon/beacon_yaml_attributes/#name) | string | none | any string | mandatory |
-| [`workspace`](/resources/stacks/beacon/beacon_yaml_attributes/#workspace) | string | public | any valid workspace name | mandatory |
-| [`topology`](/resources/stacks/beacon/beacon_yaml_attributes/#topology) | list of mapping | none | none | mandatory |
-| [`name`](/resources/stacks/beacon/beacon_yaml_attributes/#name-1) | string | none | any string | mandatory |
-| [`type`](/resources/stacks/beacon/beacon_yaml_attributes/#type-1) | string | none | input/output | mandatory |
-| [`doc`](/resources/stacks/beacon/beacon_yaml_attributes/#doc) | string | none | any string | optional |
-| [`dependencies`](/resources/stacks/beacon/beacon_yaml_attributes/#dependencies) | list of strings | none | any valid dependent topology name | mandatory |
+| [`source`](/resources/stacks/beacon/configurations/#source) | mapping | none | none | mandatory |
+| [`type`](/resources/stacks/beacon/configurations/#type) | string | none | database | mandatory |
+| [`name`](/resources/stacks/beacon/configurations/#name) | string | none | any string | mandatory |
+| [`workspace`](/resources/stacks/beacon/configurations/#workspace) | string | public | any valid workspace name | mandatory |
+| [`topology`](/resources/stacks/beacon/configurations/#topology) | list of mapping | none | none | mandatory |
+| [`name`](/resources/stacks/beacon/configurations/#name-1) | string | none | any string | mandatory |
+| [`type`](/resources/stacks/beacon/configurations/#type-1) | string | none | input/output | mandatory |
+| [`doc`](/resources/stacks/beacon/configurations/#doc) | string | none | any string | optional |
+| [`dependencies`](/resources/stacks/beacon/configurations/#dependencies) | list of strings | none | any valid dependent topology name | mandatory |
 
-Each of the attributes in this section has been elaborated in detail on the [Attribute of Beacon Stack](/resources/beacon/beacon_yaml_attributes/) page.
+Each of the attributes in this section has been elaborated in detail on the [Attribute of Beacon Stack](/resources/stacks/beacon/configurations/) page.
 
 ### **Apply the YAML file**
 
@@ -129,7 +129,7 @@ dataos-ctl -t service -w public -n pulsar-random  get runtime -r
 
 ## Case Scenarios
 
-- [Exposing REST API’s on Database using Beacon](/resources/beacon/exposing_rest_apis_on_database_using_beacon/)
+- [Exposing REST API’s on Database using Beacon](/resources/stacks/beacon/exposing_rest_apis_on_database_using_beacon/)
 
 - [Store APIs on Beacon ](/resources/stacks/beacon/store_apis_on_beacon/)
 
@@ -139,4 +139,4 @@ dataos-ctl -t service -w public -n pulsar-random  get runtime -r
 
 - [Mask Data After Moving from Database to Icebase ](/resources/stacks/beacon/mask_data_after_moving_from_database_to_icebase/)
 
-- [Exposing an API After Creating a Database ](/resources/beacon/exposing_an_api_after_creating_a_database/)
+- [Exposing an API After Creating a Database ](/resources/stacks/beacon/exposing_an_api_after_creating_a_database/)

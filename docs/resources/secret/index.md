@@ -24,7 +24,7 @@ Secret Resource in DataOS can be created by applying the manifest file using the
 
 ## Configuration
 
-Secret can be configured to secure the credentials infromation in the form of key value pairs. For a detailed breakdown of the configuration options and attributes, please refer to the documentation: [Attributes of Secret manifest](/resources/secret/configuration/).
+Secret can be configured to secure the credentials infromation in the form of key value pairs. For a detailed breakdown of the configuration options and attributes, please refer to the documentation: [Attributes of Secret manifest](/resources/secret/configurations/).
 
 ## Recipes
 
