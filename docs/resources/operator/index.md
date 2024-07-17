@@ -10,7 +10,7 @@ Operator is a [DataOS Resource](/resources/) that provides a standardized interf
 
 <center>
 
-![Operator Architecture](/resources/operator/operator_architecture.png)
+![Operator Architecture](/resources/operator/operator_architecture.png){: style="width:41rem;" }
 
 <i>High-level view of the Operator Resource within DataOS Architecture</i>
 

@@ -4,7 +4,7 @@ search:
   boost: 2
 ---
 
-# Atlas
+# :material-view-dashboard-outline: Atlas
 
 Atlas is a built-in business intelligence (BI) solution within DataOS that allows you to create customized reports/dashboards. By selecting appropriate visualizations offered by DataOS, complex data can be effectively represented and consumed for valuable insights and informed decision-making.
 

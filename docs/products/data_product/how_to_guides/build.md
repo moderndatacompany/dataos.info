@@ -1,6 +1,6 @@
 # How to build a Data Product?
 
-Data Product is build by the Data Product Developers. This section involves the building phase of the Data Product right from data connection to defining SLOs. DataOS provides flexible ways to build the data product. You can create the data product from scratch or reuse the existing one as per requirements. You can explore the data products in the Data Products Hub, an interface that lists all the existing data product information.
+Data Product is build by the Data Product Developers. This section involves the building phase of the Data Product right from data connection to defining SLOs. DataOS provides flexible ways to build the data product. You can create the Data Product from scratch or reuse the existing one as per requirements. You can explore the Data Products in the [Data Product Hub](/interfaces/data_product_hub/), an interface that lists all the existing data product information.
 
 Let’s see the steps for building a Data Product:
 
@@ -15,7 +15,7 @@ Before proceeding with the Data Product creation, ensure that you have the neces
 
 ## Steps to Create a Data Product
 
-From the design phase, it is clear which DataOS resources we require to build the Data Product, and these are Instance Secret, Depot, Cluster, Scanner, Flare, Policy, SODA Checks, Monitor, Pager, and Bundle. Let’s see how to create each one step by step. As we already created the depot and ran the depot scanner, we’ll directly jump into the data transformation step using Flare.
+From the design phase, it is clear which DataOS resources we require to build the Data Product, and these are [Instance Secret](/resources/instance_secret/), [Depot](/resources/depot/), [Cluster](/resources/cluster/), [Scanner](/resources/stack/), [Flare](/resources/stack/), [Policy](/resources/policy/), [SODA Checks](/resources/stack/), [Monitor](/resources/monitor/), [Pager](/resources/pager/), and [Bundle](/resources/bundle/). Let’s see how to create each one step by step. As we already created the depot and ran the depot scanner, we’ll directly jump into the data transformation step using Flare.
 
 <aside class="callout">
 🗣 Depending upon the use case more resources can be added or removed, to know more about the DataOS resources refer to <a href="https://dataos.info/resources/">DataOS Resources</a>.
@@ -24,7 +24,7 @@ From the design phase, it is clear which DataOS resources we require to build th
 
 ### **Create the Flare Job for data transformation**
 
-Flare is a stack orchestrated by the Workflow that abstracts Apache Spark for large-scale data processing, including ingestion, transformation, enrichment, profiling, quality assessment, and syndication for both batch and streaming data.
+[Flare](/resources/stack/) is a stack orchestrated by the [Workflow](/resources/workflow/) that abstracts Apache Spark for large-scale data processing, including ingestion, transformation, enrichment, profiling, quality assessment, and syndication for both batch and streaming data.
 
 Let’s see how you can utilize Flare for various transformations, we are taking the same example of Google Analytics here, to ingest raw data as is from S3, with the only transformation being the conversion of the date column to date_time since it's initially in varchar format.
 
@@ -126,7 +126,7 @@ Note that the above provided manifest file is just an example of how you can cre
 
 ### **Create the Monitor for observability**
 
-The Monitor Resource in DataOS's Observability System triggers incidents based on events or metrics alongside the [Pager](https://dataos.info/resources/pager/) Resource, enabling comprehensive observability and proactive incident management for high system reliability and performance.
+The [Monitor Resource](/resources/monitor/) in DataOS's Observability System triggers incidents based on events or metrics alongside the [Pager](/resources/pager/) Resource, enabling comprehensive observability and proactive incident management for high system reliability and performance.
 
 Let’s see how you can set up the monitor for workflow status.
 
@@ -272,10 +272,6 @@ After executing the above command, all the resources will be applied per the dep
 
 To learn more about the bundle, [refer to this](https://dataos.info/resources/bundle/).
 
-<aside>
-<img src="/icons/info-alternate_green.svg" alt="/icons/info-alternate_green.svg" width="40px" /> After this step, you can now utilize the output data for further analysis to gain insights.
-
-</aside>
 
 ### **Create a Policy to secure the data**
 
@@ -377,6 +373,7 @@ v1alpha: # Data Product version
 ```
 
 The manifest file of a Data Product can be broken down into two sections: 
+
 1. Product Meta section
 2. Data Product-specific section 
 
@@ -406,7 +403,11 @@ refs: # Reference (optional)
 entity: {{product}} # Entity (Mandatory)
 ```
 
+<<<<<<< HEAD
 For more information about the various attributes in the Product meta section, refer to the [Attributes of Product meta section](/products/data_products/configurations/).
+=======
+For more information about the various attributes in the Product meta section, refer to the [Attributes of Product meta section](/products/data_product/configuration/).
+>>>>>>> 44b12b77c6dc0a38e78ff132437ab1e12902c4b5
 
 **Data Product-specific section**
 
@@ -437,7 +438,7 @@ v1alpha: # Data Product version
         ref: dataos://icebase:google_analytics/ga_sessions_daily_data_raw             
 ```
 
-For more information about the various attributes in the Data Product-specific section, refer to the [Attributes of Data Product-Specific section](/products/data_product/how_to_guides/configurations/).
+For more information about the various attributes in the Data Product-specific section, refer to the [Attributes of Data Product-Specific section](/products/data_product/configuration/).
 
 ### **Apply the Data Product manifest file**
 

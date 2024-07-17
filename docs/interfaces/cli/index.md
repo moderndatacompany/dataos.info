@@ -4,7 +4,7 @@ search:
   boost: 4
 ---
 
-# CLI
+# :octicons-terminal-16: CLI
 
 DataOS CLI is a text-based interface that allows users to interact with the DataOS context via command prompts. It offers a consistent experience across operating systems like MacOS, Linux, and Windows.
 

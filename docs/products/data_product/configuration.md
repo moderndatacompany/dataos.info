@@ -2,7 +2,7 @@
 
 The following attributes are declared for every Data Product deployed in a DataOS context. Some of these attributes/fields need to be mandatorily declared, while others are optional.
 
-## Structure of Data Product manifest
+## Structure of Data Product manifest file
 
 ```yaml
 # Product meta section
@@ -50,7 +50,7 @@ v1alpha: # Data Product version
 ```        
 
 
-## **Resource meta section**
+## **Product meta section**
 
 This section serves as the header of the manifest file, defining the overall characteristics of the Data Product you wish to create. It includes attributes common to all types of Products in DataOS. 
 
