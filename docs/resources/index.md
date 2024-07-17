@@ -2,19 +2,28 @@
 title: Resources
 search:
   boost: 4
+tags:
+  - Resource
+  - DataOS Resource
+  - YAML features
+  - CRUD Operations
+hide:
+  - tags
 ---
 
-# DataOS Resources
+# :material-shape-outline: DataOS Resources
 
 DataOS Resources are atomic & logical units with their own life cycle. They can be composed together and also with other components to act as the building blocks of the system. Each Resource represents a higher-level abstraction which can be source controlled and managed using a version control system.
 
 DataOS Resources are categorized into two categories - [Workspace-level Resources](/resources/types/#workspace-level-resources) & [Instance-level Resources](/resources/types/#instance-level-resources).
 
-![Workspace-level DataOS Resources](/resources/workspace_dataos_resources.png)
-<center><i>Workspace-level DataOS Resources</i></center>
+<center>
+![Workspace-level DataOS Resources](/resources/workspace_dataos_resources.png){: style="width:31rem;" }
+<figcaption><i>Workspace-level DataOS Resources</i></figcaption></center>
 
-![Instance-level DataOS Resources](/resources/instance_dataos_resources.png)
-<center><i>Instance-level DataOS Resources</i></center>
+<center>
+![Instance-level DataOS Resources](/resources/instance_dataos_resources.png){: style="width:31rem;" }
+<figcaption><i>Instance-level DataOS Resources</i></figcaption></center>
 
 ## Types of DataOS Resources
 
@@ -35,23 +44,29 @@ Each instance of a Resource is defined by a collection of attributes declared in
 
 The image represents the configuration file of DataOS Resources.
 
-![Attributes used to define an instance of a Resource](/resources/sample_yaml.png) 
-<center><i>Attributes used to define an instance of a Resource</i></center>
+<center>
+![Attributes used to define an instance of a Resource](/resources/sample_yaml.png){: style="width:46rem;" }
+<figcaption><i>Attributes used to define an instance of a Resource</i></figcaption></center>
 
 The configuration files are *strongly-typed*, and the system flags an error when Resource files are applied with incorrect syntax. The table below gives an overview of how these attributes/fields are filled.
 
+
+<center>
+
 | Attribute | Data Type | Default Value | Requirement |
 | --- | --- | --- | --- |
-| [`name`](/resources/resource_attributes/#name) | string | none | mandatory |
-| [`version`](/resources/resource_attributes/#version) | string | none | mandatory |
-| [`type`](/resources/resource_attributes/#type) | string | none | mandatory |
-| [`tags`](/resources/resource_attributes/#tags) | string | depending on the Resource-instance, various tags are assigned by default | optional |
-| [`description`](/resources/resource_attributes/#description) | string | none | optional |
-| [`owner`](/resources/resource_attributes/#owner) | string | id of the user who deploys the Resource | optional |
-| [`layer`](/resources/resource_attributes/#layer) | string | user | optional |
-| [`<resource-type>`](/resources/resource_attributes/#resource-type) | mapping | none | mandatory |
+| [`name`](/resources/manifest_attributes/#name) | string | none | mandatory |
+| [`version`](/resources/manifest_attributes/#version) | string | none | mandatory |
+| [`type`](/resources/manifest_attributes/#type) | string | none | mandatory |
+| [`tags`](/resources/manifest_attributes/#tags) | string | depending on the Resource-instance,<br> various tags are assigned by default | optional |
+| [`description`](/resources/manifest_attributes/#description) | string | none | optional |
+| [`owner`](/resources/manifest_attributes/#owner) | string | id of the user who deploys the Resource | optional |
+| [`layer`](/resources/manifest_attributes/#layer) | string | user | optional |
+| [`<resource-type>`](/resources/manifest_attributes/#resource-type) | mapping | none | mandatory |
 
-Each Resource-type has a different evolutionary journey and usage. Hence, the values for fields, like `version` and `type`, are dependent on the Resource-type. The [Attributes of Resource Meta section](/resources/resource_attributes/) elucidates all fields and possible values which can be assigned for each of the key-value pair.
+</center>
+
+Each Resource-type has a different evolutionary journey and usage. Hence, the values for fields, like `version` and `type`, are dependent on the Resource-type. The [Attributes of Resource Meta section](/resources/manifest_attributes/) elucidates all fields and possible values which can be assigned for each of the key-value pair.
 
 These attributes not only define the instance of the Resource being deployed, but are stored as a ‘record of intent’ - once created, the underlying system will constantly work to ensure that the Resource exists and try to reconcile the current & desired states.
 

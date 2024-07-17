@@ -61,9 +61,9 @@ theme:
             name: Switch to light mode
 plugins:
     - search
-    - tags
-    # - mkdocs-versioning:
-    #     version: v0.2
+    - tags:
+        enabled: true
+        tags: false
 extra:
   generator: true
   analytics: 
@@ -138,7 +138,109 @@ markdown_extensions:
 nav:
   - Home: 
     - index.md
+    - Philosophy: philosophy/index.md
     - Architecture: architecture/index.md
+    - Interfaces:
+      - interfaces/index.md
+      - Atlas: 
+        - interfaces/atlas/index.md
+        - Dashboards: 
+          - interfaces/atlas/dashboards/index.md
+          - Adding Visualizations to Dashboard: interfaces/atlas/dashboards/adding_visualizations/index.md
+        - Queries: interfaces/atlas/queries.md
+        - Snippet: interfaces/atlas/snippet.md
+        - Alerts: interfaces/atlas/alerts.md
+        - Destinations: interfaces/atlas/destinations.md
+        - Integration: 
+          - interfaces/atlas/bi_tools/index.md
+          - Power BI: 
+            - interfaces/atlas/bi_tools/powerbi/index.md
+            - Using Connector: interfaces/atlas/bi_tools/powerbi/powerbi_custom_connector.md
+            - Using ODBC Driver: interfaces/atlas/bi_tools/powerbi/power_bi.md
+          - Tableau: interfaces/atlas/bi_tools/tableau/index.md
+          - IBM SPSS: interfaces/atlas/bi_tools/spss/index.md
+      - Audiences: 
+        - interfaces/audiences/index.md
+        - Audiences UI: interfaces/audiences/audiences_ui/index.md
+        - Getting Started: interfaces/audiences/getting_started/index.md
+      - Bifrost: 
+        - interfaces/bifrost/index.md
+        - ABAC Implementation: interfaces/bifrost/abac_implementation_in_dataos.md
+        - User: interfaces/bifrost/users.md
+        - Use-cases: interfaces/bifrost/use_cases.md
+        - Grant: interfaces/bifrost/grants.md
+        - Role: interfaces/bifrost/roles.md
+        - Grant Requests: interfaces/bifrost/grant_requests.md
+        - Heimdall Primitives: interfaces/bifrost/heimdall_primitives.md
+      - CLI: 
+        - interfaces/cli/index.md
+        - Installation: interfaces/cli/installation.md
+        - Initialization: interfaces/cli/initialization.md
+        - Command Reference: interfaces/cli/command_reference.md
+      - Data Product Hub: 
+        - interfaces/data_product_hub/index.md
+        - Data Products: interfaces/data_product_hub/tabs/data_product_tab.md
+        - Recent Updates: interfaces/data_product_hub/tabs/recent_updates.md
+        - About: interfaces/data_product_hub/tabs/about.md
+      - Lens: 
+        - interfaces/lens/index.md
+        - Building Lens: 
+          - interfaces/lens/building_lens/index.md
+          - Tutorial: interfaces/lens/building_lens/tutorial_lens.md
+          - Data Modelling Concepts: interfaces/lens/building_lens/data_modeling_concepts.md
+          - Lens Attributes: interfaces/lens/building_lens/attributes_lens.md
+          - Dynamic Parameters: interfaces/lens/building_lens/scenarios_dynamic_params.md
+        - Lens Explorer: interfaces/lens/lens_explorer/index.md
+        - Lens Ecosystem: 
+          - interfaces/lens/lens_ecosystem/index.md
+          - Lens Query: interfaces/lens/lens_ecosystem/lens_query.md
+        - Elements of Lens: 
+          - interfaces/lens/elements_of_lens/index.md
+          - Entities: interfaces/lens/elements_of_lens/entity.md
+          - Fields: interfaces/lens/elements_of_lens/fields.md
+          - Dimensions: interfaces/lens/elements_of_lens/dimensions.md
+          - Measures: interfaces/lens/elements_of_lens/measures.md
+          - Relationships: interfaces/lens/elements_of_lens/relationships.md
+      - Metis: 
+        - interfaces/metis/index.md
+        - Metis UI: 
+          - interfaces/metis/navigating_metis_ui_how_to_guide/index.md
+          - Pre-defined Roles and Policies: interfaces/metis/navigating_metis_ui_how_to_guide/pre_defined_roles_and_policies.md
+        - Key Features: interfaces/metis/metis_features.md
+        - Metadata of Products: 
+          - interfaces/metis/metis_ui_products/index.md
+          - Metadata of Data Products: interfaces/metis/metis_ui_products/metis_products_data_products.md
+        - Metadata of Data Assets: 
+          - interfaces/metis/metis_ui_assets/index.md
+          - Metadata of Tables: interfaces/metis/metis_ui_assets/metis_assets_tables.md
+          - Metadata of Topics: interfaces/metis/metis_ui_assets/metis_assets_topic.md
+          - Metadata of Dashboards: interfaces/metis/metis_ui_assets/metis_assets_dashboards.md
+        - Metadata of Resources: 
+          - interfaces/metis/metis_ui_resources/index.md
+          - Bundles: interfaces/metis/metis_ui_resources/metis_resources_bundles.md
+          - Clusters: interfaces/metis/metis_ui_resources/metis_resources_clusters.md
+          - Computes: interfaces/metis/metis_ui_resources/metis_resources_computes.md
+          - Databases: interfaces/metis/metis_ui_resources/metis_resources_databases.md
+          - Depots: interfaces/metis/metis_ui_resources/metis_resources_depots.md
+          - Instance Secret: interfaces/metis/metis_ui_resources/metis_resources_instance_secrets.md
+          - Lakehouses: interfaces/metis/metis_ui_resources/metis_resources_lakehouses.md
+          - Monitors: interfaces/metis/metis_ui_resources/metis_resources_monitors.md
+          - Operators: interfaces/metis/metis_ui_resources/metis_resources_operators.md
+          - Pagers: interfaces/metis/metis_ui_resources/metis_resources_pagers.md
+          - Policies: interfaces/metis/metis_ui_resources/metis_resources_policies.md
+          - Secrets: interfaces/metis/metis_ui_resources/metis_resources_secrets.md
+          - Services: interfaces/metis/metis_ui_resources/metis_resources_services.md
+          - Stacks: interfaces/metis/metis_ui_resources/metis_resources_stacks.md
+          - Workers: interfaces/metis/metis_ui_resources/metis_resources_workers.md
+          - Workflows: interfaces/metis/metis_ui_resources/metis_resources_workflows.md
+      - Notebook: 
+        - interfaces/notebook/index.md
+      - Operations: 
+        - interfaces/operations/index.md
+      # - Superset: 
+      #   - interfaces/superset/index.md
+      - Workbench: 
+        - interfaces/workbench/index.md      
     - Resources:
       - resources/index.md
       - Types:
@@ -195,55 +297,44 @@ nav:
             - resources/stacks/soda/index.md
           - Steampipe: 
             - resources/stacks/steampipe/index.md
+        - Volume: 
+          - resources/volume/index.md
         - Worker: 
           - resources/worker/index.md
+          - First Steps: resources/worker/first_steps.md
+          - Configuration: resources/worker/configuration.md
         - Workflow: 
           - resources/workflow/index.md
       - Characteristics: resources/characteristics.md
       - Configuration: resources/manifest_attributes.md
-      - YAML files: resources/yaml_configuration.md       
-    - Interfaces:
-      - interfaces/index.md
-      - Atlas:
-        - interfaces/atlas/index.md
-      - Audiences: 
-        - interfaces/audiences/index.md
-      - Bifrost: 
-        - interfaces/bifrost/index.md
-      - CLI: 
-        - interfaces/cli/index.md
-      - Lens: 
-        - interfaces/lens/index.md
-      - Metis: 
-        - interfaces/metis/index.md
-      - Notebook: 
-        - interfaces/notebook/index.md
-      - Operations: 
-        - interfaces/operations/index.md
-      - Superset: 
-        - interfaces/superset/index.md
-      - Workbench: 
-        - interfaces/workbench/index.md
+      - YAML files: resources/yaml_configuration.md
     - SDK: 
       - api_docs/index.md
       - DataOS Python SDK: api_docs/dataos_python_sdk.md
       - DataOS PyFlare SDK: api_docs/dataos_pyflare.md
-      - DataOS ScalaFlare SDK: api_docs/dataos_scala_sdk/index.html
+      - DataOS Flare SDK: api_docs/dataos_scala_sdk/index.html
       - DataOS Kotlin SDK: api_docs/dataos_kotlin_sdk/index.html
+  - Getting Started: 
+    - getting_started/index.md
+    - Data Product Consumer: getting_started/data_product_consumer/index.md
+    - Data Product Developer: getting_started/data_product_developer/index.md
+    # - Data Product Owner: getting_started/data_product_owner/index.md
+    - Operator: getting_started/operator/index.md
   - Data Product: 
     - products/data_product/index.md
-    - Data Product Lifecycle:
+    - Data Product Life-cycle:
+      - products/data_product/how_to_guides/index.md
       - Design: products/data_product/how_to_guides/design.md
       - Build: products/data_product/how_to_guides/build.md
       - Deploy: products/data_product/how_to_guides/deploy.md
-      - Iterate: products/data_product/how_to_guides/manage_and_iterate.md
+      - Iterate: products/data_product/how_to_guides/iterate.md
     - Recipes: 
       - Create Data Product template using Cookiecutter: products/data_product/recipes/cookiecutter.md
       - Deploy Data Product using CI/CD pipeline: products/data_product/recipes/ci_cd.md
-    - Templates:
-      - Smart Home Data Product: products/data_product/templates/smarthome.md
+    - Examples:
       - FS Accelerator Data Product: products/data_product/templates/accelerator.md
-      - Sales 360 Data Product: products/data_product/templates/sales_360.md
-    - Configurations: products/data_product/configuration.md  
+      - Sales 360 Data Product : products/data_product/templates/sales_360.md
+    - Configurations: products/data_product/configuration.md   
+    - Core Concepts: products/data_product/core_concepts.md
   - Glossary: glossary/index.md
   - Videos: videos/index.md
