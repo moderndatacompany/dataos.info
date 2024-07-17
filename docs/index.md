@@ -151,7 +151,7 @@ These DataOS Resources support batch data processing, enabling scheduled, large-
 
     ---
 
-    Key Stacks in this category are [Flare](/resources/stacks/flare/), [DBT](/resources/stacks/dbt/), [Data Toolbox](/resources/stacks/data_toolbox/) and [CLI Stack](/resources/stacks/cli_stack/).
+    Key Stacks in this category are [Flare](/resources/stacks/flare/), [DBT](/resources/stacks/dbt/), and [Data Toolbox](/resources/stacks/data_toolbox/)
 
 </div>
 
