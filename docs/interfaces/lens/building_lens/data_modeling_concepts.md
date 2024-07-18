@@ -9,8 +9,12 @@ The reason is that business users cannot codify their mental model of the busine
 
 And as a result, Data Analyst becomes a translator between business logic and data logic. 
 
-![datamodeling-1.png](data_modeling_concepts/datamodeling-1.png)
+<center>
 
+![datamodeling-1.png](data_modeling_concepts/datamodeling-1.png){: style="width:31rem;" }
+
+</center>
+ 
 This technique works well for small or few firms, but it won't function in more significant circumstances since it burdens data analysts, who become bottlenecks because everything must pass through them. At one point, a data analyst can be too preoccupied to focus on more worthwhile, long-term impact work because he is too busy crunching data for other stakeholders.
 
 So, there has to be a different approach to solving these issues. We map the knowledge of data analysts somewhere so everyone can use it. 
@@ -24,7 +28,12 @@ Of course, there are other reasons to do data modeling. Ease of exploration and 
 
 A data modeling layer is a piece of code that contains mappings between data and logic and relationships between datasets. Data modeling is the process of creating and maintaining this layer. 
 
-![data modeling 2.png](data_modeling_concepts/data_modeling_2.png)
+<center>
+
+![data modeling 2.png](data_modeling_concepts/data_modeling_2.png){: style="width:31rem;" }
+
+</center>
+
 
 After creating this data modeling layer, we can solve a lot of business use cases:
 
@@ -122,7 +131,11 @@ A dimensional schema physically separates the measures that quantify the busines
 - The structure resembles a star.
 - The fact table and each dimension table have a many-to-one relationship, as indicated by the branches at the ends of the links connecting the tables.
 
-![Copy of Untitled Diagram(6).png](data_modeling_concepts/Copy_of_Untitled_Diagram(6).png)
+<center>
+
+![Copy of Untitled Diagram(6).png](data_modeling_concepts/Copy_of_Untitled_Diagram(6).png){: style="width:31rem;" }
+
+</center>
 
 Fact Table: Transaction 
 
@@ -135,7 +148,11 @@ Dimension Table: customers, products, territories
 - Dimensional tables are usually normalized to the third standard form resulting in additional sub-dimension tables.
 - A snowflake schema can have any number of dimensions, and each dimension can have any number of levels.
 
-![Copy of Untitled Diagram(7).png](data_modeling_concepts/Copy_of_Untitled_Diagram(7).png)
+<center>
+
+![Copy of Untitled Diagram(7).png](data_modeling_concepts/Copy_of_Untitled_Diagram(7).png){: style="width:31rem;" }
+
+</center>
 
 ## Activity Schema
 
@@ -143,7 +160,11 @@ As data professionals, we deal with various problems when generating data, manip
 
 Funnel analysis becomes complicated when you are left with just two resources SQL and raw data. That’s where activity schema comes into the picture.
 
-![act-stream-image.png](data_modeling_concepts/act-stream-image.png)
+<center>
+
+![act-stream-image.png](data_modeling_concepts/act-stream-image.png){: style="width:31rem;" }
+
+</center>
 
 It is a framework for modeling data warehouses. A single time-series table is used to build an activity schema, with the option of adding a small number of enrichment tables for additional metadata.
 
@@ -160,7 +181,12 @@ An activity schema models an **entity** taking a sequence of **activities** ov
 
 </aside>
 
-![act-a-a.png](data_modeling_concepts/act-a-a.png)
+<center>
+
+![act-a-a.png](data_modeling_concepts/act-a-a.png){: style="width:31rem;" }
+
+</center>
+
 
 Each Activity schema defines a single business concept. For example, it can be an activity stream where information around the activities performed by every user on a site can be visited_campaign, selected_product(Add to cart), checked_out_product, etc., or there can be information around taxi sharing app where the activities can be view the web page, view taxi availability, book ride, etc. Every model in the activity schema runs around the timestamp.
 
@@ -171,7 +197,12 @@ Each Activity schema defines a single business concept. For example, it can be a
 
 </aside>
 
-![abc.png](data_modeling_concepts/abc.png)
+<center>
+
+![abc.png](data_modeling_concepts/abc.png){: style="width:31rem;" }
+
+</center>
+
 
 Activity Schema consists of two things :
 
@@ -180,13 +211,23 @@ Activity Schema consists of two things :
 
 Let’s assume you have a use case with six tables and have to create a dashboard that solves a client's demand.
 
-![db-dig.png](data_modeling_concepts/db-dig.png)
+<center>
+
+![db-dig.png](data_modeling_concepts/db-dig.png){: style="width:31rem;" }
+
+</center>
+
 
 Consider writing SQL queries for funnel analysis like no. of times the user did ‘Add to cart before making a ‘Purchase.’ Additionally, imagine grasping the 6-table schema and figuring out the joins or writing 100–200 lines of SQL to achieve your goal.
 Despite only having six tables, it's confusing when the real-world data become increasingly disorganized.
 
 Now while using activity schema, we have to model the raw data and create a table, say activity_stream 
 
-![act-db.png](data_modeling_concepts/act-db.png)
+<center>
+
+![act-db.png](data_modeling_concepts/act-db.png){: style="width:31rem;" }
+
+</center>
+
 
 We can see that we now have an activity table listing different activities(checkout, page view) performed by customers. This can help us write SQL queries to build funnel analysis.

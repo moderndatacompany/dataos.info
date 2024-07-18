@@ -29,7 +29,7 @@ Depot in DataOS is a [Resource](/resources/) used to connect different data sou
 
     Depot example usage.
 
-    [:octicons-arrow-right-24: Configuration Template](/resources/depot/#depot-configuration-templates)
+    [:octicons-arrow-right-24: Configuration Template](/resources/depot/#depot-config-templates)
 
 
 -   :material-console:{ .lg .middle } **Data Integration**

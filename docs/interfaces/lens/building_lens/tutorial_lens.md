@@ -48,7 +48,11 @@ tag:
 
 Now define all the data elements with their attributes.
 
-![MicrosoftTeams-image (175).png](tutorial_lens/elements_lens.png)
+<center>
+
+![MicrosoftTeams-image (175).png](tutorial_lens/elements_lens.png){: style="width:36rem;" }
+
+</center>
 
 ### **Entities**
 We will start with mapping the `Customer` entity.
@@ -1294,7 +1298,12 @@ The corresponding SQL query was generated for the Lens query.
 
 Select customer_key(**Customer**) and number of orders (**Sales**) for the running query.  You can choose the sorting order and limit the number of records in the user interface.
 
-![freq_order.png](tutorial_lens/freq_order.png)
+<center>
+
+![freq_order.png](tutorial_lens/freq_order.png){: style="width:36rem;" }
+
+</center>
+
 
 ### **Customer with Maximum Lifespan in Months**
 
@@ -1306,7 +1315,12 @@ Select the customer key, customer lifespan in months, and email address from the
 
 Select the product category share order and year from **Sales** entity.  Set the new value for the product category.
 
-![prod_cat_share.png](tutorial_lens/prod_cat_share.png)
+<center>
+
+![prod_cat_share.png](tutorial_lens/prod_cat_share.png){: style="width:36rem;" }
+
+</center>
+
 
 ### **Date-Wise Orders Analysis**
 
@@ -1318,4 +1332,9 @@ Select date-wise order (**Sales)** and the number of orders (**Sales**). Specify
 
 Select month1 revenue and month2 revenue (Sales) along with Product sub-category (Product). View the  query results for default values, or input your desired months and run the query. 
 
-![compare_2_months.png](tutorial_lens/compare_2_months.png)
+
+<center>
+
+![compare_2_months.png](tutorial_lens/compare_2_months.png){: style="width:36rem;" }
+
+</center>
