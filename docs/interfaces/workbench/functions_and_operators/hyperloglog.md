@@ -1,13 +1,13 @@
 # HyperLogLog functions
 
-Minerva implements the [approx_distinct()](./aggregate.md#approximate_distinct) function using the [HyperLogLog](https://en.wikipedia.org/wiki/HyperLogLog) data structure.
+Minerva implements the [approx_distinct()](/interfaces/workbench/functions_and_operators/aggregate/#approximate_distinct) function using the [HyperLogLog](https://en.wikipedia.org/wiki/HyperLogLog) data structure.
 
 
 ## Data Structures
 
 Minerva utilizes HyperLogLog data sketches, representing them as a collection of 32-bit buckets that store a maximum hash. These sketches can be stored either sparsely, functioning as a map from bucket ID to bucket, or densely, as a continuous memory block. Initially, the HyperLogLog data structure adopts the sparse representation and transitions to the dense format when deemed more efficient. In contrast, the P4HyperLogLog structure is initialized in a dense state and maintains this denseness throughout its lifetime.
 
-[HyperLogLog](./hyperloglog.md#hyperloglog) implicitly casts to [P4HyperLogLog](./hyperloglog.md#p4hyperloglog), while one can explicitly cast `HyperLogLog` to `P4HyperLogLog`:
+[HyperLogLog](/interfaces/workbench/functions_and_operators/hyperloglog/#hyperloglog) implicitly casts to [P4HyperLogLog](/interfaces/workbench/functions_and_operators/hyperloglog/#p4hyperloglog), while one can explicitly cast `HyperLogLog` to `P4HyperLogLog`:
 
 
 ```sql
@@ -17,9 +17,9 @@ cast(hll AS P4HyperLogLog)
 
 ## Serialization
 
-Serialization to and deserialization from varbinary empowers data sketches to be stored for subsequent use. When combined with the ability to merge multiple sketches, this facilitates the efficient computation of [approx_distinct()](./aggregate.md#approximate_distinct) for elements within a query partition. Consequently, the overall distinct count for an entire query can be determined with minimal computational cost.
+Serialization to and deserialization from varbinary empowers data sketches to be stored for subsequent use. When combined with the ability to merge multiple sketches, this facilitates the efficient computation of [approx_distinct()](/interfaces/workbench/functions_and_operators/aggregate/#approximate_distinct) for elements within a query partition. Consequently, the overall distinct count for an entire query can be determined with minimal computational cost.
 
-For instance, computing the HyperLogLog for daily unique users enables the incremental calculation of weekly or monthly unique users by aggregating the daily results. This approach is analogous to computing weekly revenue by summing daily revenue. HyperLogLog seamlessly replaces [approx_distinct()](./aggregate.md#approximate_distinct) with GROUPING SETS in various scenarios. Examples include:
+For instance, computing the HyperLogLog for daily unique users enables the incremental calculation of weekly or monthly unique users by aggregating the daily results. This approach is analogous to computing weekly revenue by summing daily revenue. HyperLogLog seamlessly replaces [approx_distinct()](/interfaces/workbench/functions_and_operators/aggregate/#approximate_distinct) with GROUPING SETS in various scenarios. Examples include:
 
 ```sql
 CREATE TABLE visit_summaries (
@@ -68,9 +68,9 @@ WHERE visit_date >= current_date - interval '7' day;
 
 HyperLogLog
 
-A HyperLogLog sketch allows efficient computation of [approx_distinct()](./aggregate.md#approximate_distinct). It starts as a sparse representation, switching to a dense representation when it becomes more efficient
+A HyperLogLog sketch allows efficient computation of [approx_distinct()](/interfaces/workbench/functions_and_operators/aggregate/#approximate_distinct). It starts as a sparse representation, switching to a dense representation when it becomes more efficient
 
 
 P4HyperLogLog
 
-A P4HyperLogLog sketch is similar to [HyperLogLog](./hyperloglog.md#hyperloglog), but it starts (and remains) in the dense representation.
+A P4HyperLogLog sketch is similar to [HyperLogLog](/interfaces/workbench/functions_and_operators/hyperloglog/#hyperloglog), but it starts (and remains) in the dense representation.

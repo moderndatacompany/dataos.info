@@ -37,7 +37,7 @@ Worker Resource in DataOS can be created by applying the manifest file using the
 
 ## Configuration
 
-Workers can be configured to autoscale and match varying workload demands, reference pre-defined Secrets and Volumes, and more. The specific configurations may vary depending on the use case. For a detailed breakdown of the configuration options and attributes, please refer to the documentation: [Attributes of Worker manifest](/resources/worker/configuration/).
+Workers can be configured to autoscale and match varying workload demands, reference pre-defined Secrets and Volumes, and more. The specific configurations may vary depending on the use case. For a detailed breakdown of the configuration options and attributes, please refer to the documentation: [Attributes of Worker manifest](/resources/worker/configurations/).
 
 <!-- ## Recipes
 

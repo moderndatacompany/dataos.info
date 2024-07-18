@@ -1,6 +1,6 @@
 # How to deploy the Data Product?
 
-You might have successfully created the data product, but in order to make it discoverable on [Metis](/interfaces/metis/) and [Data Product Hub](/interfaces/data_product_hub/), you have to run the [Scanner](/resources/stack/). To deploy your Data Product to the Data Product hub and Metis, you have to create a manifest file for a Data Product Scanner Workflow. You can find the manifest file below.
+You might have successfully created the data product, but in order to make it discoverable on [Metis](/interfaces/metis/) and [Data Product Hub](/interfaces/data_product_hub/), you have to run the [Scanner](/resources/stacks/). To deploy your Data Product to the Data Product hub and Metis, you have to create a manifest file for a Data Product Scanner Workflow. You can find the manifest file below.
 
 **Data Product scanner workflow manifest**
     
@@ -44,7 +44,7 @@ dataos-ctl resource apply -f ${path-to-your-scanner-manifest-file}
 
 ```
 
-After executing the above command successfully you’ll be able to search for your Data Product on [Metis UI](https://dataos.info/interfaces/metis/) and Data Product Hub UI. To learn more about the Scanner Workflow, go to [Scanner](https://dataos.info/resources/stacks/scanner/).
+After executing the above command successfully you’ll be able to search for your Data Product on [Metis UI](/interfaces/metis/) and Data Product Hub UI. To learn more about the Scanner Workflow, go to [Scanner](resources/stacks/scanner/).
 
 After successfully deploying the Data Product, it’s time to observe the results if the Data Product incorporates with your use-case or not, If the Data Product does not match the goal then you can iterate the process until your goal is achieved. 
 
