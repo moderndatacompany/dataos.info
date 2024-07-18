@@ -4,7 +4,7 @@ In the rapidly evolving world of data, the need for robust, scalable, and effici
 
 DataOS is an enterprise-grade data product platform that enables organizations to build, manage, and share data products. It provides the essential building blocks, data developers require to create powerful data products that drive significant business outcomes. 
 
-DataOS development is driven by core principles tailored to address the real-world needs and challenges of data professionals:
+DataOS development is driven by core principles tailored to address specific user needs and challenges:
 
 - **Consumption Ready Layer**: DataOS streamlines data product consumption with context-aware discovery, secure exploration, reliable quality, and multi-interface activation through its self-serve architecture.
 
@@ -16,7 +16,7 @@ DataOS development is driven by core principles tailored to address the real-wor
 
 - **FinOps**: DataOS provides real-time insights into resource utilization, enabling organizations to monitor and control cloud spending effectively. This strategic approach promotes shared responsibility across teams, drives significant cost savings, improves operational efficiency, and facilitates informed financial decisions.
 
-DataOS significantly lowers the total cost of ownership by streamlining data operations through task automation, minimizing data movement, and simplifying maintenance. 
+DataOS continuously evolves to meet the real-world needs of data professionals. It significantly lowers the total cost of ownership by streamlining data operations through task automation, minimizing data movement, and simplifying maintenance.
 
 ## Navigating Documentation
 
@@ -53,7 +53,7 @@ The following sections in the top menu bar of the documentation will help you ge
 
 ### **Core Aspects**
 
-The following sections of the documentation in the left menu provide detailed insights into the DataOS philosophy and its architecture. 
+The following sections of the documentation, located in the left menu, provide detailed insights into the DataOS philosophy and its architecture.
 
 <div class= "grid cards" markdown>
 
