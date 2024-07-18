@@ -3,7 +3,7 @@
 
 Bucketing is an optimization technique that helps to prevent the shuffling and sorting of data during compute-heavy operations such as joins. Based on the bucketing columns we specify, data is collected in a number of bins.
 
-![diagram 01.jpg](./bucketing/diagram_01.jpg)
+![diagram 01.jpg](/resources/stacks/flare/case_scenario/bucketing/diagram_01.jpg)
 
 ## Bucketing vs Partitioning
 

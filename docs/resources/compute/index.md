@@ -121,26 +121,26 @@ The table below presents an overview of attributes within a the Compute-specfic 
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`compute`](/resources/compute/yaml_configuration_attributes/#compute) | object | none | none | mandatory |
-| [`dataplane`](/resources/compute/yaml_configuration_attributes/#dataplane) | string | none | hub | mandatory |
-| [`purpose`](/resources/compute/yaml_configuration_attributes/#purpose) | string | none | runnable/query/gpu | mandatory |
-| [`nodePool`](/resources/compute/yaml_configuration_attributes/#nodepool) | object | none | none | mandatory  |
-| [`nodeSelector`](/resources/compute/yaml_configuration_attributes/#nodeselector) | object | none | none | mandatory |
-| [`tolerations`](/resources/compute/yaml_configuration_attributes/#tolerations) | object | none | none | mandatory |
-| [`key`](/resources/compute/yaml_configuration_attributes/#key) | string | none | any valid string | mandatory |
-| [`operator`](/resources/compute/yaml_configuration_attributes/#operator) | string | none | Equal/Exists | mandatory  |
-| [`value`](/resources/compute/yaml_configuration_attributes/#value) | string | none | query/runnable/gpu | mandatory |
-| [`effect`](/resources/compute/yaml_configuration_attributes/#effect) | string | none | NoSchedule/PreferNoSchedule/<br>NoExecute | mandatory |
+| [`compute`](/resources/compute/configurations/#compute) | object | none | none | mandatory |
+| [`dataplane`](/resources/compute/configurations/#dataplane) | string | none | hub | mandatory |
+| [`purpose`](/resources/compute/configurations/#purpose) | string | none | runnable/query/gpu | mandatory |
+| [`nodePool`](/resources/compute/configurations/#nodepool) | object | none | none | mandatory  |
+| [`nodeSelector`](/resources/compute/configurations/#nodeselector) | object | none | none | mandatory |
+| [`tolerations`](/resources/compute/configurations/#tolerations) | object | none | none | mandatory |
+| [`key`](/resources/compute/configurations/#key) | string | none | any valid string | mandatory |
+| [`operator`](/resources/compute/configurations/#operator) | string | none | Equal/Exists | mandatory  |
+| [`value`](/resources/compute/configurations/#value) | string | none | query/runnable/gpu | mandatory |
+| [`effect`](/resources/compute/configurations/#effect) | string | none | NoSchedule/PreferNoSchedule/<br>NoExecute | mandatory |
 
 </center>
 
-For more details about various attributes, refer to the [Attributes of Compute-specific section](/resources/compute/yaml_configuration_attributes/).
+For more details about various attributes, refer to the [Attributes of Compute-specific section](/resources/compute/configurations/).
 
 Additionally, if you are looking for pre-configured Compute templates tailored for specific workloads such as ETL, Machine Learning, and Query, refer to [Compute Templates.](/resources/compute/compute_templates/)
 
 ### **Applying the YAML**
 
-Once the Compute YAML file is prepared, the [`apply`](interfaces/cli/command_reference/#apply) command can be utilized to create a Compute Resource within the DataOS environment.
+Once the Compute YAML file is prepared, the [`apply`](/interfaces/cli/command_reference/#apply) command can be utilized to create a Compute Resource within the DataOS environment.
 
 ```shell
 dataos-ctl apply -f ${{path/file-name}}

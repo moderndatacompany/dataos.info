@@ -164,11 +164,11 @@ cluster:
 
 ### **`compute`**
 
-**Description:** the `compute` attribute specifies the name of the [Compute](/resources/compute) Resource-instance referred by the Cluster.
+**Description:** the `compute` attribute specifies the name of the [Compute](/resources/compute/) Resource-instance referred by the Cluster.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
-| string | mandatory | query-default | any valid [query-type](/resources/compute#query-compute) Compute Resource-instance name |
+| string | mandatory | query-default | any valid [query-type](/resources/compute/#query-compute) Compute Resource-instance name |
 
 **Example Usage:**<br>
 ```yaml
@@ -186,7 +186,7 @@ cluster:
 | ------------- | -------------- | ------------------- | ------------------- |
 | string | mandatory | abcdefghijklmnopqrstuvwxyz | any valid DataOS user API key |
 
-**Additional Details**: The apikey can be obtained by executing the following command from the [CLI](/interfaces/cli):
+**Additional Details**: The apikey can be obtained by executing the following command from the [CLI](/interfaces/cli/):
 
 ```shell
 dataos-ctl user apikey get
@@ -697,7 +697,7 @@ cluster:
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value**                                       |
 | ------------- | -------------- | ------------------ | --------------------------------------------------------- |
-| string        | optional       | none               | [View the list of all possible catalog types here](/resources/connectors_configuration) |
+| string        | optional       | none               | [View the list of all possible catalog types here](/resources/cluster/connectors_configuration) |
 
 **Example Usage:**<br>
 ```yaml

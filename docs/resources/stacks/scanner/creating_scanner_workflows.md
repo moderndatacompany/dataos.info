@@ -84,7 +84,7 @@
         
     <aside class="callout"> 🗣 Filter patterns support Regex in `includes` and `excludes` expressions. </aside>
       
-     Refer to [Filter Pattern Examples](creating_scanner_workflows/filter_pattern_examples.md)  for the example scenarios.
+     Refer to [Filter Pattern Examples](/resources/stacks/scanner/creating_scanner_workflows/filter_pattern_examples/)  for the example scenarios.
         
     
     **`markDeletedTables`**: Set this property to true to flag tables as soft-deleted if they are not present anymore in the source system. 
@@ -204,4 +204,4 @@
 ## Filter Pattern Examples
 The scanner stack offers a range of filter patterns, including the Database Filter Pattern, Schema Filter Pattern, and Table Filter Pattern for data sources such as databases and data warehouses. Likewise, in the context of messaging pipelines, you can employ the topic filter pattern. Users can exercise control over metadata scanning by utilizing these filters. 
 
-To know more about how to specify filters in different scenarios, refer to [Filter Pattern Examples](creating_scanner_workflows/filter_pattern_examples.md).    
+To know more about how to specify filters in different scenarios, refer to [Filter Pattern Examples](/resources/stacks/scanner/creating_scanner_workflows/filter_pattern_examples).    

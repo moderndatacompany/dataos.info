@@ -64,14 +64,14 @@ The table below provides a summary of the various attributes of the Secret-speci
 
 | Field | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`secret`](/resources/secret/secrets_attributes) | object | none | none | mandatory |
-| [`type`](/resources/secret/secrets_attributes#types-of-secret) | string | none | cloud-kernel, cloud-kernel-image-pull, key-value, key-value-properties, certificates | mandatory |
-| [`acl`](/resources/secret/secrets_attributes#secretacl) | string | none | r, rw | mandatory |
-| [`data`](/resources/secret/secrets_attributes#secret-data) | mapping | none | none | mandatory |
-| [`files`](/resources/secret/secrets_attributes#secret-file) | string | none | file-path | optional |
+| [`secret`](/resources/secret/configurations) | object | none | none | mandatory |
+| [`type`](/resources/secret/configurations#types-of-secret) | string | none | cloud-kernel, cloud-kernel-image-pull, key-value, key-value-properties, certificates | mandatory |
+| [`acl`](/resources/secret/configurations#secretacl) | string | none | r, rw | mandatory |
+| [`data`](/resources/secret/configurations#secret-data) | mapping | none | none | mandatory |
+| [`files`](/resources/secret/configurations#secret-file) | string | none | file-path | optional |
 
 
-For more information about the various attributes in Secret specific section, refer to the Attributes of [Secret specific section](/resources/secret/configuration/).
+For more information about the various attributes in Secret specific section, refer to the Attributes of [Secret specific section](/resources/secret/configurations/).
 
 ### **Apply the manifest**
 
@@ -152,7 +152,7 @@ To validate the proper creation of the Secret Resource within the DataOS environ
 
 ### **Delete the Secret**
 
-To remove the Secret Resource from the DataOS environment, utilize the `delete` command within the [CLI](/interfaces/cli). Execute the following command to initiate the deletion process:
+To remove the Secret Resource from the DataOS environment, utilize the `delete` command within the [CLI](/interfaces/cli/). Execute the following command to initiate the deletion process:
 
 <aside class="callout">
 🗣 Before you can delete a Secret, you need to make sure there are no other resources still utilizing it. For example, if a Workflow has a dependency on a Secret, trying to delete that Secret will cause an error. So, you'll need to remove the Workflow first, and then you can delete the Secret. This rule applies to both <a href="https://dataos.info/resources/instance_secret/">Instance secret</a> and Secrets.

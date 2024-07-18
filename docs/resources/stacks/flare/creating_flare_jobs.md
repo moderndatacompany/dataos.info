@@ -6,7 +6,7 @@ DataOS uses Flare workflows to carry out large-scale data transformation, ingest
 
 ![diagram 03.jpg](/resources/stacks/flare/basic_concepts/diagram_03.jpg)
 
-Flare is a declarative stack that can process large-scale data processing workflows using sequential YAML. On the other hand, a workflow is a primitive/Resource within DataOS that runs a sequence of jobs in a specific order. A workflow is a DAG (Directed Acyclic Graph) of jobs. To learn more about workflows, click [here](/resources/stacks/flare/workflow). 
+Flare is a declarative stack that can process large-scale data processing workflows using sequential YAML. On the other hand, a workflow is a primitive/Resource within DataOS that runs a sequence of jobs in a specific order. A workflow is a DAG (Directed Acyclic Graph) of jobs. To learn more about workflows, click [here](/resources/workflow/). 
 
 <aside class="callout">
 
@@ -16,7 +16,7 @@ Flare is a declarative stack that can process large-scale data processing workfl
 
 ## Deep Diving into a Flare Job
 
-A Job is a generalized way of defining a transformation task based on the scenario and use case; it requires the assistance of stacks to achieve the desired outcome. Any job is fully reliant on the completion of the job before it. E.g. A Flare Job represents a data processing workload which could be ingestion, transformation, profiling, syndication, etc., running on Flare stack, while in scenarios when the output dataset is to be stored in the Icebase depot, you also need the Toolbox stack along with the Flare Stack. If you would like to learn more about the Toolbox stack, click [here](/resources/stacks/flare/data_toolbox).
+A Job is a generalized way of defining a transformation task based on the scenario and use case; it requires the assistance of stacks to achieve the desired outcome. Any job is fully reliant on the completion of the job before it. E.g. A Flare Job represents a data processing workload which could be ingestion, transformation, profiling, syndication, etc., running on Flare stack, while in scenarios when the output dataset is to be stored in the Icebase depot, you also need the Toolbox stack along with the Flare Stack. If you would like to learn more about the Toolbox stack, click [here](/resources/stacks/data_toolbox/).
 
 In terms of YAML structure how a Flare Job is declared within the DAG, it comprises three sections: The Input (read data from), the Output (write data to), and the Steps (transformation of data during transit). 
 
@@ -33,7 +33,7 @@ However, before delving into the technical aspects of this task, it is vital to 
 
 Before proceeding, verify that the DataOS CLI is installed on your system. If it is, proceed to the next step. If not, use the provided link to install the CLI.
 
-[CLI](/interfaces/cli) 
+[CLI](/interfaces/cli/) 
 
 ### **Check Required Permissions to Run the Flare Workflow**
 
@@ -120,7 +120,7 @@ INFO[0000] 🔍 get...complete
 
 In case you don’t have the required depot in the list, you can create a YAML configuration file for a depot and apply it through CLI. To know more about creating a depot click on the below link 
 
-[Create Depot](/resources/depot#how-to-create-a-depot)
+[Create Depot](/resources/depot/#how-to-create-a-depot)
 
 ### **Check the type of workload you wanna run**
 
@@ -132,7 +132,7 @@ While for a streaming workload, you need to create two separate workflows one fo
 
 For small and medium-sized data it's best to stick to the default configurations, but if you wanna do some heavy lifting by running some hundred Gigabyte and even Terabyte-sized workloads you need to alter the configuration and optimize the job according to that. To know more about optimization click the below link
 
-[Flare Optimizations](/resources/stacks/flare/optimizations)
+[Flare Optimizations](/resources/stacks/flare/optimizations/)
 
 ## Getting started with Flare Job
 
@@ -216,7 +216,7 @@ workflow: # Workflow
 
 Save the YAML and copy its path. Path could be either relative or absolute.
 
-> To know more about the various Flare Stack YAML configurations, click [here](/resources/stacks/flare/configurations).
+> To know more about the various Flare Stack YAML configurations, click [here](/resources/stacks/flare/configurations/).
 >
 
 ### **Validate the YAML**
@@ -225,7 +225,7 @@ Before running the workflow, ensure the validity of the YAML using the Linter co
 
 In case you encounter errors, check out the below link
 
-[Flare Errors and Issues](/resources/stacks/flare/optimizations/errors_and_issues) 
+[Flare Errors and Issues](/resources/stacks/flare/optimizations/errors_and_issues/) 
 
 To use the linter command use the lint `-l` flag with the `apply` command. 
 
@@ -318,7 +318,7 @@ In spite of validating the YAML, there is a chance that the Flare job will fail 
 
 </aside>
 
-[Testing the Flare job on Flare Standalone](/resources/stacks/flare/creating_flare_jobs/testing_the_flare_job_on_flare_standalone)
+[Testing the Flare job on Flare Standalone](/resources/stacks/flare/creating_flare_jobs/testing_the_flare_job_on_flare_standalone/)
 
 ### **Applying the YAML**
 
@@ -762,7 +762,7 @@ You can also use the `set-metadata` Icebase command for Metadata Registration an
 dataos-ctl dataset -a dataos://icebase:retailsample/city set-metadata -v <latest|v2.gz.metadata.json>
 ```
 
-To know more about the Icebase approach click the [link](/resources/depot/icebase#set-metadata).
+To know more about the Icebase approach click the [link](/resources/depot/icebase/#set-metadata).
 
 #### **Check Registered Dataset with Metis**
 

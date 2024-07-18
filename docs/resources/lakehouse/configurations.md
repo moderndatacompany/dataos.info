@@ -626,7 +626,7 @@ lakehouse:
 
 **Sub-attributes:**
 
-Sub-attributes of `autoScaling` can be found on this [link](/resources/service/yaml_configuration_attributes/#autoscaling).
+Sub-attributes of `autoScaling` can be found on this [link](/resources/service/configurations/#autoscaling).
 
 ---
 
@@ -655,7 +655,7 @@ lakehouse:
 
 **Sub-attributes:**
 
-Sub-attributes of `resources` can be found on this [link](/resources/service/yaml_configuration_attributes/#resources).
+Sub-attributes of `resources` can be found on this [link](/resources/service/configurations/#resources).
 
 ---
 
@@ -728,7 +728,7 @@ lakehouse:
 
 **Sub-attributes:**
 
-Sub-attributes of `themis` can be found on this [link](/resources/cluster/manifest_attributes/#resources).
+Sub-attributes of `themis` can be found on this [link](/resources/cluster/configurations/#resources).
 
 ---
 
@@ -753,4 +753,4 @@ lakehouse:
 
 **Sub-attributes:**
 
-Sub-attributes of `themis` can be found on this [link](/resources/cluster/manifest_attributes/#themis).
+Sub-attributes of `themis` can be found on this [link](/resources/cluster/configurations/#themis).

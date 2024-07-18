@@ -226,7 +226,7 @@ description: The job ingests customer data
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| list of strings | optional | none | valid [tags](https://dataos.info/resources/policy/manifest_attributes/#tags) |
+| list of strings | optional | none | valid [tags](/resources/policy/configurations/#tags) |
 
 **Example Usage:**
 
@@ -243,7 +243,7 @@ description: The job ingests customer data
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| list of strings | optional | none | valid [tags](https://dataos.info/resources/policy/manifest_attributes/#tags) |
+| list of strings | optional | none | valid [tags](/resources/policy/configurations/#tags) |
 
 **Example Usage:**
 
@@ -278,14 +278,14 @@ spec:
 
 ##### **`stack`**
 
-**Description:** The name and version of the [Stack](https://dataos.info/resources/stacks/) Resource which the Workflow orchestrates.
+**Description:** The name and version of the [Stack](/resources/stacks/) Resource which the Workflow orchestrates.
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
 | string | mandatory | none | flare/toolBox/scanner/dataos-ctl/soda+python/steampipestack |
 
 **Additional Details:**
-To know more about each stack, go to [Stack](https://dataos.info/resources/stacks/).
+To know more about each stack, go to [Stack](/resources/stacks/).
 
 **Example Usage:**
 
@@ -380,7 +380,7 @@ secrets:
 
 ##### **`dataosSecrets`**
 
-**Description:** list of [DataOS Secrets](https://dataos.info/resources/secret/) associated with the Workflow. Each DataOS Secret is a mapping containing various attributes.
+**Description:** list of [DataOS Secrets](/resources/secret/) associated with the Workflow. Each DataOS Secret is a mapping containing various attributes.
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
@@ -463,7 +463,7 @@ tempVolume: abcd
 
 ##### **`compute`**
 
-**Description:** the name of the [Compute](https://dataos.info/resources/compute/) Resource for the Workflow.
+**Description:** the name of the [Compute](/resources/compute/) Resource for the Workflow.
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |

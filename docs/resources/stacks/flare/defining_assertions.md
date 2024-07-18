@@ -126,7 +126,7 @@ The below table summarizes various properties within an assertions section in Qu
 | [`regex`](/resources/stacks/flare/assertion_configuration/#regex) | string | Optional |
 | [`tests`](/resources/stacks/flare/assertion_configuration/#tests) | boolean  | Mandatory |
 
-To learn more about these attributes, their possible values, example usage, refer to [Assertions: Configuration Fields](assertion_configuration.md).
+To learn more about these attributes, their possible values, example usage, refer to [Assertions: Configuration Fields](assertion_configuration/).
 
 
 ## Different Ways to Define Assertions
@@ -480,4 +480,4 @@ When assertions fail, it results in the failure of the entire workflow, preventi
 
 ### **Case Scenario**
 
-To understand how assertions are used in different scenarios, refer to [Enhancing Data Integrity with Assertion Jobs](assertions_case_scenario.md).
+To understand how assertions are used in different scenarios, refer to [Enhancing Data Integrity with Assertion Jobs](assertions_case_scenario/).

@@ -104,7 +104,7 @@ Caching needs to be seen from the perspective of the data lineage, the DAG of tr
 
 To know more about caching and its implementation within Flare click on the below link
 
-[Case Scenario: Caching](../../case_scenario/caching.md)
+[Case Scenario: Caching](/resources/stacks/flare/case_scenario/caching)
 
 ## Broadcasting (Broadcast Joins)
 
@@ -116,4 +116,4 @@ An alternative to partitioning is Bucketing. Conceptually it tries to achieve th
 
 To know more about bucketing and its implementation within Flare click on the below link
 
-[Case Scenario: Bucketing](../../case_scenario/bucketing.md)
+[Case Scenario: Bucketing](/resources/stacks/flare/case_scenario/bucketing)
