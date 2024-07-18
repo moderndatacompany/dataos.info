@@ -226,7 +226,7 @@ description: The job ingests customer data
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| list of strings | optional | none | valid [tags](/resources/policy/manifest_attributes/#tags) |
+| list of strings | optional | none | valid [tags](/resources/policy/configurations/#tags) |
 
 **Example Usage:**
 
@@ -243,7 +243,7 @@ description: The job ingests customer data
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| list of strings | optional | none | valid [tags](/resources/policy/manifest_attributes/#tags) |
+| list of strings | optional | none | valid [tags](/resources/policy/configurations/#tags) |
 
 **Example Usage:**
 

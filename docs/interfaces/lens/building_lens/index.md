@@ -197,6 +197,7 @@ For additional information regarding the various elements of the Lens, including
 
 **The table below summarizes various attributes within the Lens YAML.**
 
+
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
 | entity | mapping |  | products, customers, orders, suppliers | Mandatory |
@@ -236,6 +237,8 @@ For additional information regarding the various elements of the Lens, including
 | description | string |  |  |  |
 | type | string |  |  |  |
 | sql_snippet | string |  |  |  |
+
+
 
 <details>
 <summary>
@@ -510,8 +513,12 @@ Let’s explore an analytical question through Lens Query:
 - To add a filter, open the Filter Pane, add a new rule to the Dimensions, select `product.product_category` and select the ‘==’ symbol, and type disease in the adjacent box (REMEMBER: though it’s a string, don’t use single or double quotes while typing disease)
 - To narrow down to states with more than 100,000 orders, add a rule to the Measures section and choose the measure `order.total_order_quantity`, then select the ‘>’ symbol and type 100000 in the adjacent box (don’t use quotes).
 - Now click **Run Query.**
-    
-    ![Untitled](/interfaces/lens/building_lens/untitled_2.png)
+
+<center>
+
+![Untitled](/interfaces/lens/building_lens/untitled_2.png){: style="width:41rem;" }
+
+</center>
     
     The table in the diagram above displays states with total order quantities exceeding one hundred thousand. Additionally, there's a customizable bar chart at the bottom that you can configure and export according to your requirements.
     
