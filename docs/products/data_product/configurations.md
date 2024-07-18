@@ -1,4 +1,4 @@
-# Data Product manifest file configuration
+# Data Product Configurations
 
 The following attributes are declared for every Data Product deployed in a DataOS context. Some of these attributes/fields need to be mandatorily declared, while others are optional.
 
@@ -10,19 +10,19 @@ name: {{dp-test}} # Product name (mandatory)
 version: {{v1alpha}} # Manifest version (mandatory)
 type: {{data}} # Product-type (mandatory)
 tags: # Tags (Optional)
-  - {{data-product}}
-  - {{dataos:type:product}}
-  - {{dataos:product:data}}
+- {{data-product}}
+- {{dataos:type:product}}
+- {{dataos:product:data}}
 description: {{the customer 360 view of the world}} # Descripton of the product (Optional)
 Purpose: {{This data product is intended to provide insights into the customer for strategic decisions on cross-selling additional products.}} # purpose (Optional)
 collaborators: # collaborators User ID (Optional)
-  - {{thor}}
-  - {{blackwidow}}
-  - {{loki}}
+- {{thor}}
+- {{blackwidow}}
+- {{loki}}
 owner: {{iamgroot}} # Owner (Optional)
 refs: # Reference (Optional)
-  - title: {{Data Product Hub}} # Reference title (Mandatory if adding reference)
-    href: {{https://liberal-donkey.dataos.app/dph/data-products/all}} # Reference link (Mandatory if adding reference)
+- title: {{Bundle Info}} # Reference title (Mandatory if adding reference)
+    href: {{https://dataos.info/resources/bundle/}} # Reference link (Mandatory if adding reference)
 entity: {{product}} # Entity (Mandatory)
 # Data Product-specific section (Mandatory)
 v1alpha: # Data Product version
@@ -36,23 +36,202 @@ v1alpha: # Data Product version
         description: {{this bundle resource is for a data product}} # Resource description (Optional)
         purpose: {{deployment of data product resources}} # Purpose of the required resource (Optional)   
     
-    inputs:
-      - description: S3 Depot
+    inputs: # Input specific section (Mandatory)
+      - description: Sales 360
         purpose: source
         refType: dataos
-        ref: dataos://s3depot:none/ga_data/
+        ref: dataos://bigquery:PUBLIC/MYTABLE
     
-    outputs:
-      - description: Icebase Depot
+    outputs: # Output specific section (Mandatory)
+      - description: Customer
         purpose: consumption
         refType: dataos_address
-        ref: dataos://icebase:google_analytics/ga_sessions_daily_data_raw    
+        ref: dataos://icebase:sandbox/sales?acl=rw  
+```        
+
+
+## **Product meta section**
+
+This section serves as the header of the manifest file, defining the overall characteristics of the Data Product you wish to create. It includes attributes common to all types of Products in DataOS. 
+
+### **`name`**
+
+
+**Description:** Unique identifier for the Product.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | mandatory | none | • alpha numeric values with the RegEx `[a-z0-9]([-a-z0-9]*[a-z0-9])`; a hyphen/dash is allowed as a special character<br>• total length of the string should be less than or equal to 48 characters |
+
+**Example Usage:**
+
+```yaml
+name: test-data-product
 ```
-To know more about the Product meta section, [refer to this](/products/data_product/configurations/).
 
-Following are the details of each attributes  of Product specific section:
+### **`version`**
 
-**`v1alpha`**
+**Description:** The version of the Product manifest file
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | mandatory | none | v1alpha |
+
+**Example Usage:**
+
+```yaml
+version: v1alpha
+```
+
+**`entity`**
+
+**Description:** Indicates the DataOS Entity to which the attributes apply, specified as "product".
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | mandatory | none | product, resource, workspace, domain |
+
+**Example Usage:**
+
+```yaml
+entity: product
+```
+
+### **`type`**
+
+**Description:** Indicates the type of product.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | mandatory | none | data |
+
+**Example Usage:**
+
+```yaml
+type: data
+```
+
+### **`tags`**
+
+**Description:** Tags associated with the product.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| list of strings | optional | none | list of strings |
+
+**Example Usage:**
+
+```yaml
+tags: 
+  - data-product
+  - dataos:type:product
+  - dataos:product:data
+```
+
+There are also some pre-defined tags that can help users to manage their Data Products effectively.
+
+**`Readiness.Ready to use`:** This tag defines the readiness of the Data Product, if the Data Product is ready to use then `Readiness.Ready to use` tag is required if you want users to use your Data Product as template `Readiness.Template` tag is required, this is completely optional but it is recommended to define the readiness of your Data Product so that business users can easily identify the Data Product.
+
+**`Type.3rd Party Data Product`:** This tag defines the type of the Data Product based on its data source, if the Data Product is incorporating data source outside of the organization then `Type.3rd Party Data Product` tag is required and if the Data Product incorporates data source inside of the organization then `Type.Internal Data Product` is required. This is completely optional but it is recommended to define the type of your Data Product so that business users can easily identify the Data Product.
+
+**`Domain.Customer Service`** tag is needed, The following are the pre-existing domains of the Data Product:
+
+- Customer Service
+- Executive Reporting
+- Finance
+- Marketing
+- Quality
+- Sales
+- Supply Chain
+
+<aside class="callout">
+🗣 Note that on Data Product Hub, the user can filter out the Data Products based on their readiness, type, and usecases.
+
+</aside>
+
+### **`description`**
+
+**Description:** A brief description of the product.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | optional | none | any string |
+
+**Example Usage:**
+
+```yaml
+description: the customer 360 view of the world
+```
+
+### **`purpose`**
+
+**Description:** Further elaboration on the purpose of the data product.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | optional | none | any string |
+
+**Example Usage:**
+
+```yaml
+purpose: The purpose of the data product is to provide comprehensive insights into the creditworthiness of companies. By leveraging various data points such as company contact information, credit score, company details, financial data, and industrial data, this product aims to assist users in making informed decisions related to credit risk assessment, investment opportunities, and business partnerships.
+```
+
+### **`collaborators`**
+
+**Description:** Optional field listing collaborators involved in developing or maintaining the product.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| list of strings | optional | none | list of strings, string must be an valid user-id |
+
+**Example Usage:**
+
+```yaml
+collaborators:
+  - thor
+  - blackwidow
+  - loki 
+```
+
+**`owner`**
+
+ **Description:** The owner of the Product.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | optional | none | valid user-id |
+
+**Example Usage:**
+
+```yaml
+owner: iamgroot
+```
+
+**`refs`**
+
+ **Description:** References associated with the product that can provide the additional information about it.
+ 
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| list of mappings | optional | none | mappings containing title and href address |
+
+**Example Usage:**
+
+```yaml
+refs:
+  - title: Lens Info 
+    href: https://dataos.info/interfaces/lens/
+```
+
+
+
+
+## **Data Product-specific section**
+
+This section comprises attributes specific to the Data Product. The attributes within the section are listed below:
+
+#### **`v1alpha`**
 
 **Description:** The `v1alpha` mapping comprises attributes for configuring a Data Product in DataOS.
 
@@ -71,7 +250,7 @@ v1alpha:
         ...
 ```
 
-**`data`**
+#### **`data`**
 
 **Description:** The `data` attribute is a mapping that comprises attributes for configuring a Data Product in DataOS, including resources, input, output, etc.
 
@@ -91,7 +270,7 @@ data:
 
 ### **Resource section configurations**
 
-**`resources`**
+#### **`resources`**
 
 **Description:** Represents the resource mappings associated with the data product.
 
@@ -112,7 +291,7 @@ resources:
     purpose: ingestion of data 
 ```
 
-**`description`**
+#### **`description`**
 
 **Description:** Describes the resource.
 
@@ -126,7 +305,7 @@ resources:
 description: Ingest lens Data 
 ```
 
-**`purpose`**
+#### **`purpose`**
 
 **Description:** Indicates the purpose of the resource.
 
@@ -140,7 +319,7 @@ description: Ingest lens Data
 purpose: ingestion of data 
 ```
 
-**`type`**
+#### **`type`**
 
 **Description:** Indicates the type of resource.
 
@@ -154,7 +333,7 @@ purpose: ingestion of data
 type: workflow
 ```
 
-**`version`**
+#### **`version`**
 
 **Description:** Represents the version of the resource.
 
@@ -190,7 +369,7 @@ type: workflow
 version: v1alpha
 ```
 
-**`refType`**
+#### **`refType`**
 
 **Description:** Represents the resource address or location.
 
@@ -204,7 +383,7 @@ version: v1alpha
 refType: dataos
 ```
 
-**`name`**
+#### **`name`**
 
 **Description:** Represents the unique identifier of the resource.
 
@@ -218,14 +397,13 @@ refType: dataos
 name: sales360test
 ```
 
-**`workspace`**
+#### **`workspace`**
 
 **Description:** Represents the workspace where the resource is located or managed.
 
 <aside class="callout">
-  🗣 Workspace is required and mandatory only for <a href="https://www.notion.so/Attributes-of-Data-Product-Specific-Section-30ea9e9fd5c844e49ec874483eb89570?pvs=21">workspace-level resources</a>.
+🗣 Workspace is required and mandatory only for <a href="/resources/index/">workspace-level resources</a>.
 </aside>
-
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
@@ -237,9 +415,9 @@ name: sales360test
 workspace: public 
 ```
 
-### **Input section configurations**
+### Input section configurations
 
-**`inputs`**
+#### **`inputs`**
 
 **Description:** Represents the input mappings.
 
@@ -247,10 +425,6 @@ workspace: public
 | --- | --- | --- | --- |
 | list of mappings | mandatory | none | none |
 
-<aside class="callout">
-🗣 As you can add multiple inputs and outputs, make sure to add all the input and output data sources as different resources may incorporate different input and output sources.
-
-</aside>
 
 **Example Usage:**
 
@@ -262,7 +436,7 @@ inputs:
     purpose: source 
 ```
 
-**`description`**
+#### **`description`**
 
 **Description:** Describes the input data.
 
@@ -276,7 +450,7 @@ inputs:
 description: Customer 
 ```
 
-**`purpose`**
+#### **`purpose`**
 
 **Description:** Indicates the purpose of the input.
 
@@ -290,7 +464,7 @@ description: Customer
  purpose: source 
 ```
 
-**`refType`**
+#### **`refType`**
 
 **Description:** Represents the reference type of the input.
 
@@ -304,7 +478,7 @@ description: Customer
 refType: dataos
 ```
 
-**`ref`**
+#### **`ref`**
 
 **Description:** Represents the reference address of the input.
 
@@ -318,9 +492,9 @@ refType: dataos
 ref: dataos://icebase:retail/customer  
 ```
 
-### **Output section configurations**
+### Output section configurations
 
-**`outputs`**
+#### **`outputs`**
 
 **Description:** Represents the input object.
 
@@ -338,7 +512,7 @@ ref: dataos://icebase:retail/customer
         purpose: consumption
 ```
 
-**`description`**
+#### **`description`**
 
 **Description:** Describes the input data.
 
@@ -352,7 +526,7 @@ ref: dataos://icebase:retail/customer
 description: Customer 360 
 ```
 
-**`purpose`**
+#### **`purpose`**
 
 **Description:** Indicates the purpose of the input.
 
@@ -366,7 +540,7 @@ description: Customer 360
 purpose: consumption
 ```
 
-**`refType`**
+#### **`refType`**
 
 **Description:** Represents the reference type of the input.
 
@@ -380,7 +554,7 @@ purpose: consumption
 refType: dataos_address
 ```
 
-**`ref`**
+#### **`ref`**
 
 **Description:** Represents the reference address of the input.
 
@@ -396,13 +570,14 @@ ref: dataos://icebase:retail/customer
 
 **Usecases section**
 
-**`useCases`**
+#### **`useCases`**
 
 **Description:** Lists the use cases associated with the data product.
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| list of strings | optional | none | • alpha numeric values with the RegEx[a-z0-9]([-a-z0-9]*[a-z0-9]); a hyphen/dash is allowed as a special character<br>• total length of the string should be less than or equal to 48 characters |
+| list of strings | optional | none | • alpha numeric values with the RegEx[a-z0-9][-a-z0-9]*[a-z0-9]; a hyphen/dash is allowed as a special character
+• total length of the string should be less than or equal to 48 characters |
 
 **Example Usage:**
 

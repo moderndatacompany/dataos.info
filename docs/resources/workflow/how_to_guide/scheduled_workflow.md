@@ -1,6 +1,6 @@
 # Scheduled or Cron Workflow
 
-The code snippet below illustrates a sample schedule Workflow for profiling using the [Flare](/resources/stacks/flare) Stack in output depots with [Iceberg file format with Hadoop Catalog type and REST Metastore.](/resources/depot#limit-data-sources-file-format). To understand schedule related attribute in details click [here](/resources/workflow/configuration/#schedule).
+The code snippet below illustrates a sample schedule Workflow for profiling using the [Flare](/resources/stacks/flare/) Stack in output depots with [Iceberg file format with Hadoop Catalog type and REST Metastore.](/resources/depot/#limit-data-sources-file-format). To understand schedule related attribute in details click [here](/resources/workflow/configurations/#schedule).
 
 The following code snippet defines a scheduling configuration for a workflow, setting specific rules for when and how the workflow should execute. Here is an extended description of each attribute in the schedule:
 
@@ -26,7 +26,7 @@ The remaining fields (* * * *) mean that this schedule applies to every hour of 
 ### **`concurrencyPolicy: Allow`**
 
 
-- **Allow:** This permits multiple instances of the workflow to run concurrently. If a new instance of the workflow is triggered before the previous one finishes, both will run simultaneously. To know more about different configuration values of concurrencyPolicy attribute click [here](/resources/workflow/configuration/#concurrencyPolicy)
+- **Allow:** This permits multiple instances of the workflow to run concurrently. If a new instance of the workflow is triggered before the previous one finishes, both will run simultaneously. To know more about different configuration values of concurrencyPolicy attribute click [here](/resources/workflow/configurations/#concurrencyPolicy)
 
 ### **`endOn: 2024-11-01T23:40:45Z`**
 

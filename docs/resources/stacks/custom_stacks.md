@@ -29,7 +29,7 @@ The below points outline the high-level steps involved in the creation of a cust
 The initial and primary phase in the creation of a new Stack involves the development of its code. The Stack image serves as a comprehensive representation of all the functionalities and capabilities inherent in the Stack, along with delineating its interaction dynamics with its orchestrating Resource.
 
 <aside class="best-practice">
-🗣 <b>Best Practice:</b> When crafting a customized Stack, it is advisable to assess the basic functionality of the Stack by testing its vanilla image on the <a href="/resources/stacks/alpha/">Alpha</a> Stack.
+🗣 <b>Best Practice:</b> When crafting a customized Stack, it is advisable to assess the basic functionality of the Stack by testing its vanilla image on the <a href="/resources/stacks/container/">Alpha</a> Stack.
 
 </aside>
 
@@ -50,7 +50,7 @@ The ensuing sections delineate the various sections of a Stack YAML.
 
 #### **Configure the Resource meta section**
 
-In DataOS, a Stack is categorized as a [Resource-type](/resources/types_of_dataos_resources). The Resource meta section within the YAML manifest encompasses attributes universally applicable to all Resource-types. The provided YAML codeblock elucidates the requisite attributes for this section:
+In DataOS, a Stack is categorized as a [Resource-type](/resources/types_of_dataos_resources/). The Resource meta section within the YAML manifest encompasses attributes universally applicable to all Resource-types. The provided YAML codeblock elucidates the requisite attributes for this section:
 
 ```yaml
 name: ${{my-stack}}
@@ -65,7 +65,7 @@ stack: # Stack-specific Section
   ${{Attributes of Stack-specific section}}
 ```
 
-For detailed information on the attributes within the Resource meta section, please refer to [Attributes of Resource Section](/resources/resource_attributes).
+For detailed information on the attributes within the Resource meta section, please refer to [Attributes of Resource Section](/resources/resource_attributes/).
 
 #### **Configure the Stack-specific section**
 
@@ -148,13 +148,13 @@ The attributes for the Stack meta section are summarized in the table below.
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`stack`](./custom_stacks/yaml_manifest_attributes#stack) | mapping | none | none | mandatory |
-| [`name`](./custom_stacks/yaml_manifest_attributes#name) | string | none | any valid string | mandatory |
-| [`flavor`](./custom_stacks/yaml_manifest_attributes#flavor) | string | none | any valid string | optional |
-| [`version`](./custom_stacks/yaml_manifest_attributes#version) | string | none | valid stack version | mandatory |
-| [`reconciler`](./custom_stacks/yaml_manifest_attributes#reconciler) | string | none | StackManager/<br>LegacyStackManager | mandatory |
+| [`stack`](/resources/stacks/custom_stacks/configurations/#stack) | mapping | none | none | mandatory |
+| [`name`](/resources/stacks/custom_stacks/configurations/#name) | string | none | any valid string | mandatory |
+| [`flavor`](/resources/stacks/custom_stacks/configurations/#flavor) | string | none | any valid string | optional |
+| [`version`](/resources/stacks/custom_stacks/configurations#version) | string | none | valid stack version | mandatory |
+| [`reconciler`](/resources/stacks/custom_stacks/configurations/#reconciler) | string | none | StackManager/<br>LegacyStackManager | mandatory |
 
-For additional details, regarding the various attributes refer to the: [Attributes of Stack Manifest](./custom_stacks/yaml_manifest_attributes).
+For additional details, regarding the various attributes refer to the: [Attributes of Stack Manifest](/resources/stacks/custom_stacks/configurations/).
 
 **DataOS Address JQ Filters specification**
 
@@ -168,7 +168,7 @@ dataOsAddressJqFilters:
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [dataOsAddressJqFilters](./custom_stacks/yaml_manifest_attributes#dataosaddressjqfilters) | list of strings | none | valid strings | optional |
+| [dataOsAddressJqFilters](/resources/stacks/custom_stacks/configurations/#dataosaddressjqfilters) | list of strings | none | valid strings | optional |
 
 **Secret Projection Type**
 
@@ -181,8 +181,8 @@ secretProjection:
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [secretProjection](./custom_stacks/yaml_manifest_attributes#secretprojection) | mapping | none | none | mandatory |
-| [type](./custom_stacks/yaml_manifest_attributes#type) | string | none | none | optional |
+| [secretProjection](/resources/stacks/custom_stacks/configurations/#secretprojection) | mapping | none | none | mandatory |
+| [type](/resources/stacks/custom_stacks/configurations/#type) | string | none | none | optional |
 
 **Image specification**
 
@@ -204,13 +204,13 @@ image:
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`image`](./custom_stacks/yaml_manifest_attributes#image) | mapping | none | none | optional |
-| [`registry`](./custom_stacks/yaml_manifest_attributes#registry) | string | none | valid container registry name | mandatory |
-| [`repository`](./custom_stacks/yaml_manifest_attributes#repository) | string | none | valid repository name | mandatory |
-| [`image`](./custom_stacks/yaml_manifest_attributes#image-1) | string | none | valid image name | mandatory |
-| [`tag`](./custom_stacks/yaml_manifest_attributes#tag) | string | none | valid image tag | mandatory |
-| [`auth`](./custom_stacks/yaml_manifest_attributes#auth) | mapping | none | none | optional |
-| [`imagePullSecret`](./custom_stacks/yaml_manifest_attributes#imagepullsecret) | string | none | valid imagePullSecret name | mandatory |
+| [`image`](/resources/stacks/custom_stacks/configurations/#image) | mapping | none | none | optional |
+| [`registry`](/resources/stacks/custom_stacks/configurations/#registry) | string | none | valid container registry name | mandatory |
+| [`repository`](/resources/stacks/custom_stacks/configurations/#repository) | string | none | valid repository name | mandatory |
+| [`image`](/resources/stacks/custom_stacks/configurations/#image-1) | string | none | valid image name | mandatory |
+| [`tag`](/resources/stacks/custom_stacks/configurations/#tag) | string | none | valid image tag | mandatory |
+| [`auth`](/resources/stacks/custom_stacks/configurations/#auth) | mapping | none | none | optional |
+| [`imagePullSecret`](/resources/stacks/custom_stacks/configurations/#imagepullsecret) | string | none | valid imagePullSecret name | mandatory |
 
 **Command and Argument specification** 
 
@@ -227,8 +227,8 @@ argument:
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`command`](./custom_stacks/yaml_manifest_attributes#command) | list of strings | none | valid command | optional |
-| [`arguments`](./custom_stacks/yaml_manifest_attributes#arguments) | list of strings | none | valid arguments | optional |
+| [`command`](/resources/stacks/custom_stacks/configurations/#command) | list of strings | none | valid command | optional |
+| [`arguments`](/resources/stacks/custom_stacks/configurations/#arguments) | list of strings | none | valid arguments | optional |
 
 **Environment Variable specification**
 
@@ -242,7 +242,7 @@ environmentVars:
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`environmentVars`](./custom_stacks/yaml_manifest_attributes#environmentvars) | mapping | none | key-value pairs of environment variables  | optional |
+| [`environmentVars`](/resources/stacks/custom_stacks/configurations/#environmentvars) | mapping | none | key-value pairs of environment variables  | optional |
 
 **Ports Specification**
 
@@ -257,10 +257,10 @@ ports:
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`ports`](./custom_stacks/yaml_manifest_attributes#ports) | mapping | none | none | optional |
-| [`name`](./custom_stacks/yaml_manifest_attributes#name-1) | string | none | valid port name | mandatory |
-| [`servicePort`](./custom_stacks/yaml_manifest_attributes#serviceport) | integer | none | valid port number | mandatory |
-| [`targetPort`](./custom_stacks/yaml_manifest_attributes#targetport) | integer | none | valid port number | mandatory |
+| [`ports`](/resources/stacks/custom_stacks/configurations/#ports) | mapping | none | none | optional |
+| [`name`](/resources/stacks/custom_stacks/configurations/#name-1) | string | none | valid port name | mandatory |
+| [`servicePort`](/resources/stacks/custom_stacks/configurations/#serviceport) | integer | none | valid port number | mandatory |
+| [`targetPort`](/resources/stacks/custom_stacks/configurations/#targetport) | integer | none | valid port number | mandatory |
 
 **StackSpec Value Schema section**
 
@@ -274,12 +274,12 @@ stackSpecValueSchema:
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`stackSpecValueSchema`](./custom_stacks/yaml_manifest_attributes#stackspecvalueschema) | mapping | none | none | optional |
-| [`jsonSchema`](./custom_stacks/yaml_manifest_attributes#jsonschema) | string | none | valid json schema in string format | mandatory |
+| [`stackSpecValueSchema`](/resources/stacks/custom_stacks/configurations/#stackspecvalueschema) | mapping | none | none | optional |
+| [`jsonSchema`](/resources/stacks/custom_stacks/configurations/#jsonschema) | string | none | valid json schema in string format | mandatory |
 
 **Orchestrator Configuration**
 
-A Stack encapsulates the logic pertaining to a specific task, while orchestrators like [Workflow](/resources/workflow), [Worker](/resources/worker), or [Service](/resources/service) define how the Stack should be utilized for a particular use case. On applying these orchestrators the Kubernetes Resources of the respective Stack gets created. The YAML structure of Stacks is created at runtime, providing users the flexibility to decide the desired Stack structure and the information to include in the Stack definition. Poros, the DataOS Orchestrator, does not have hardcoded configurations; instead, it allows users to customize the specification according to their requirements.
+A Stack encapsulates the logic pertaining to a specific task, while orchestrators like [Workflow](/resources/workflow/), [Worker](/resources/worker/), or [Service](/resources/service/) define how the Stack should be utilized for a particular use case. On applying these orchestrators the Kubernetes Resources of the respective Stack gets created. The YAML structure of Stacks is created at runtime, providing users the flexibility to decide the desired Stack structure and the information to include in the Stack definition. Poros, the DataOS Orchestrator, does not have hardcoded configurations; instead, it allows users to customize the specification according to their requirements.
 
 <aside class="callout">
 🗣 A Stack definition is not created every time an application, service, or job is run. Only aspects that are common, general, or standard need to be incorporated within the Stack definition. User-manipulatable information should be separately provided within the <code>stackSpec</code> attribute within the orchestrator.
@@ -289,7 +289,7 @@ When defining Stacks within the DataOS ecosystem, two primary approaches are eit
 
 ***Containerized Resources***
 
-By specifying the Containerized Resources within the Orchestrator config, users adhere to the standard default template provided by the DataOS Orchestrator, Poros. This template, which is a basic YAML configuration for the pods, comes with a predefined structure and attributes. The generic template can be overriden by passing a custom definition in the [`containerResourceTemplate`](./custom_stacks/yaml_manifest_attributes#containerresourcetemplate) attribute. Users only need to provide a [`configFileTemplate`](./custom_stacks/yaml_manifest_attributes#configfiletemplate) that the Stack will use. This is suitable for use cases where the standard template provided by Poros is sufficient. For tasks like consuming data from an API, performing transformations, and writing data to databases, users can rely on the default template without the need for additional pod information.
+By specifying the Containerized Resources within the Orchestrator config, users adhere to the standard default template provided by the DataOS Orchestrator, Poros. This template, which is a basic YAML configuration for the pods, comes with a predefined structure and attributes. The generic template can be overriden by passing a custom definition in the [`containerResourceTemplate`](/resources/stacks/custom_stacks/configurations/#containerresourcetemplate) attribute. Users only need to provide a [`configFileTemplate`](/resources/stacks/custom_stacks/configurations/#configfiletemplate) that the Stack will use. This is suitable for use cases where the standard template provided by Poros is sufficient. For tasks like consuming data from an API, performing transformations, and writing data to databases, users can rely on the default template without the need for additional pod information.
 
 ***Resource Dependent***
 
@@ -311,15 +311,15 @@ workflowJobConfig:
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`workflowJobConfig`](./custom_stacks/yaml_manifest_attributes#workflowjobconfig) | mapping | none | none | optional |
-| [`configFileTemplate`](./custom_stacks/yaml_manifest_attributes#configfiletemplate) | string | none | valid config file template | optional |
-| [`containerResourceTemplate`](./custom_stacks/yaml_manifest_attributes#containerresourcetemplate-1) | string | none | valid container resource template | optional |
-| [`resourceTemplateConfig`](./custom_stacks/yaml_manifest_attributes#resourcetemplateconfig) | mapping | none | none | optional |
-| [`resourceTemplate`](./custom_stacks/yaml_manifest_attributes#resourcetemplate) | string | none | valid resource template | mandatory |
-| [`successCondition`](./custom_stacks/yaml_manifest_attributes#successcondition) | string | none | valid success condition | mandatory |
-| [`failureCondition`](./custom_stacks/yaml_manifest_attributes#failurecondition) | string | none | valid failure condition | mandatory |
+| [`workflowJobConfig`](/resources/stacks/custom_stacks/configurations/#workflowjobconfig) | mapping | none | none | optional |
+| [`configFileTemplate`](/resources/stacks/custom_stacks/configurations/#configfiletemplate) | string | none | valid config file template | optional |
+| [`containerResourceTemplate`](/resources/stacks/custom_stacks/configurations/#containerresourcetemplate-1) | string | none | valid container resource template | optional |
+| [`resourceTemplateConfig`](/resources/stacks/custom_stacks/configurations/#resourcetemplateconfig) | mapping | none | none | optional |
+| [`resourceTemplate`](/resources/stacks/custom_stacks/configurations/#resourcetemplate) | string | none | valid resource template | mandatory |
+| [`successCondition`](/resources/stacks/custom_stacks/configurations/#successcondition) | string | none | valid success condition | mandatory |
+| [`failureCondition`](/resources/stacks/custom_stacks/configurations/#failurecondition) | string | none | valid failure condition | mandatory |
 
-To declare a Stack that will be orchestrated using a Workflow as a Containerized Resource, click on the link: [Stack orchestrated via a Workflow declared using a config template](./custom_stacks/case_scenarios/stack_orchestrated_by_a_workflow_declared_using_a_config_template). To declare a Stack using a custom Resource template that will be orchestrated using a Workflow, refer to the link: [Stack orchestrated via a Workflow declared using a Resource template](./custom_stacks/case_scenarios/stack_orchestrated_by_a_workflow_declared_using_a_resource_template).
+To declare a Stack that will be orchestrated using a Workflow as a Containerized Resource, click on the link: [Stack orchestrated via a Workflow declared using a config template](/resources/stacks/custom_stacks/case_scenarios/stack_orchestrated_by_a_workflow_declared_using_a_config_template/). To declare a Stack using a custom Resource template that will be orchestrated using a Workflow, refer to the link: [Stack orchestrated via a Workflow declared using a Resource template](/resources/stacks/custom_stacks/case_scenarios/stack_orchestrated_by_a_workflow_declared_using_a_resource_template/).
 
 Worker Configuration
 
@@ -332,12 +332,12 @@ workerConfig:
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`workerConfig`](./custom_stacks/yaml_manifest_attributes#workerconfig) | mapping | none | none | optional |
-| [`configFileTemplate`](./custom_stacks/yaml_manifest_attributes#configfiletemplate-1) | string | none | valid config file template | optional |
-| [`containerResourceTemplate`](./custom_stacks/yaml_manifest_attributes#containerresourcetemplate-1) | string | none | valid container Resource template | optional |
-| [`resourceTemplate`](./custom_stacks/yaml_manifest_attributes#resourcetemplate-1) | string | none | valid resource template | optional |
+| [`workerConfig`](/resources/stacks/custom_stacks/configurations/#workerconfig) | mapping | none | none | optional |
+| [`configFileTemplate`](/resources/stacks/custom_stacks/configurations/#configfiletemplate-1) | string | none | valid config file template | optional |
+| [`containerResourceTemplate`](/resources/stacks/custom_stacks/configurations/#containerresourcetemplate-1) | string | none | valid container Resource template | optional |
+| [`resourceTemplate`](/resources/stacks/custom_stacks/configurations/#resourcetemplate-1) | string | none | valid resource template | optional |
 
-To declare a Stack that will be orchestrated using a Worker as a Containerized Resource, refer to the link: [Stack orchestrated via a Worker declared using a config template](./custom_stacks/case_scenarios/stack_orchestrated_by_a_worker_declared_using_a_config_template). To declare a Stack using a custom Resource template that will be orchestrated using a Worker, refer to the following link: [Stack orchestrated via a Worker declared using a config template](./custom_stacks/case_scenarios/stack_orchestrated_by_a_worker_declared_using_a_resource_template).
+To declare a Stack that will be orchestrated using a Worker as a Containerized Resource, refer to the link: [Stack orchestrated via a Worker declared using a config template](/resources/stacks/custom_stack/case_scenarios/stack_orchestrated_by_a_worker_declared_using_a_config_template/). To declare a Stack using a custom Resource template that will be orchestrated using a Worker, refer to the following link: [Stack orchestrated via a Worker declared using a config template](/resources/stacks/custom_stacks/case_scenarios/stack_orchestrated_by_a_worker_declared_using_a_resource_template/).
 
 Service Configuration
 
@@ -349,26 +349,26 @@ serviceConfig:
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`serviceConfig`](./custom_stacks/yaml_manifest_attributes#serviceconfig) | mapping | none | none | optional |
-| [`configFileTemplate`](./custom_stacks/yaml_manifest_attributes#configfiletemplate-2) | string | none | valid config file template | optional |
-| [`containerResourceTemplate`](./custom_stacks/yaml_manifest_attributes#containerresourcetemplate-2) | string | none | valid container Resource template | optional
+| [`serviceConfig`](/resources/stacks/custom_stacks/configurations/#serviceconfig) | mapping | none | none | optional |
+| [`configFileTemplate`](/resources/stacks/custom_stacks/configurations/#configfiletemplate-2) | string | none | valid config file template | optional |
+| [`containerResourceTemplate`](/resources/stacks/custom_stacks/configurations/#containerresourcetemplate-2) | string | none | valid container Resource template | optional
  |
 
-To take a look at a case scenario, refer to the link: [Stack orchestrated by a Service declared using a config template](./custom_stacks/case_scenarios/stack_orchestrated_by_a_service_declared_using_a_config_template). 
+To take a look at a case scenario, refer to the link: [Stack orchestrated by a Service declared using a config template](/resources/stacks/custom_stacks/case_scenarios/stack_orchestrated_by_a_service_declared_using_a_config_template/). 
 
 <aside class="callout">
-🗣 A single Stack has the flexibility to be targeted by multiple orchestrators by providing the configuration for each of them. This allows users to orchestrate the same Stack using different orchestrators based on their specific requirements. For further details and examples, refer to the following link: [Multiple Orchestrator Configuration](./custom_stacks/case_scenarios/stack_orchestrated_by_a_service_declared_using_a_config_template).
+🗣 A single Stack has the flexibility to be targeted by multiple orchestrators by providing the configuration for each of them. This allows users to orchestrate the same Stack using different orchestrators based on their specific requirements. For further details and examples, refer to the following link: [Multiple Orchestrator Configuration](/resources/stacks/custom_stacks/case_scenarios/stack_orchestrated_by_a_service_declared_using_a_config_template).
 </aside>
 
 ### **Apply the Stack YAML manifest**
 
-Once the Stack YAML file is prepared, the [`apply`](/resources//resources/interfaces/cli/command_reference#apply) command can be utilized to create a Stack Resource within the DataOS environment.
+Once the Stack YAML file is prepared, the [`apply`](/interfaces/cli/command_reference/#apply) command can be utilized to create a Stack Resource within the DataOS environment.
 
 ```shell
 dataos-ctl apply -f ${{path/file-name}}
 ```
 
-Upon successful creation of a Stack Resource, [CRUD operations](/resources/#crud-operations-on-dataos-resources) can be performed on top of it, and it can be orchestrated by Resources such as [Workflow](/resources/workflow), [Worker](/resources/worker), or [Service](/resources/service), by specifying the Stack attribute within their respective YAMLs.
+Upon successful creation of a Stack Resource, [CRUD operations](/resources/#crud-operations-on-dataos-resources) can be performed on top of it, and it can be orchestrated by Resources such as [Workflow](/resources/workflow/), [Worker](/resources/worker/), or [Service](/resources/service/), by specifying the Stack attribute within their respective YAMLs.
 
 ### **Verify Stack creation**
 
@@ -394,10 +394,10 @@ Alternatively, retrieve the list of all Stacks created in your organization:
 dataos-ctl get -t operator -a
 ```
 
-You can also access the details of any created Stacks through the DataOS GUI in the [Operations App](/resources//resources/interfaces/operations).
+You can also access the details of any created Stacks through the DataOS GUI in the [Operations App](/interfaces/operations/).
 
 
 
 ## Attributes of Stack YAML manifest
 
-This section outlines the various attributes associated with a Stack Resource, providing essential details for customization and configuration. To know more, navigate to the link: [Attributes of Stack YAML manifest](./custom_stacks/yaml_manifest_attributes).
+This section outlines the various attributes associated with a Stack Resource, providing essential details for customization and configuration. To know more, navigate to the link: [Attributes of Stack YAML manifest](/resources/stacks/custom_stacks/configurations/).

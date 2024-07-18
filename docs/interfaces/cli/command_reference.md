@@ -102,7 +102,7 @@ Global Flags:
 Use "dataos-ctl collation [command] --help" for more information about a command.
 
 ```
-To learn more, refer to [Collation Command Group](collation/details.md).
+To learn more, refer to [Collation Command Group](/interfaces/cli/collation/details/).
 
 ### **`completion`**
 
@@ -161,7 +161,7 @@ Flags:
 Use "dataos-ctl context [command] --help" for more information about a command.
 ```
 
-To learn more, refer to [Context Command Group](context/details.md).
+To learn more, refer to [Context Command Group](/interfaces/cli/context/details/).
 
 
 ### **`dataset`**
@@ -197,7 +197,7 @@ Flags:
 
 Use "dataos-ctl dataset [command] --help" for more information about a command.
 ```
-To learn more, refer to [Dataset Command Group](dataset/details.md).
+To learn more, refer to [Dataset Command Group](/interfaces/cli/dataset/details/).
 
 ### **`delete`**
 
@@ -248,7 +248,7 @@ Flags:
 
 Use "dataos-ctl develop [command] --help" for more information about a command.
 ```
-To learn more, refer to [Develop Command Group](develop/details.md).
+To learn more, refer to [Develop Command Group](/interfaces/cli/develop/details/).
 
 ### **`doc`**
 Generate markdown documentation for every command
@@ -288,9 +288,10 @@ Global Flags:
 
 Use "dataos-ctl domain [command] --help" for more information about a command.
 ```
-To learn more, refer to [Domain Command Group](domain/details.md).
+To learn more, refer to [Domain Command Group](/interfaces/cli/domain/details/).
 
 ### **`fastbase`**
+
 Interact with the FastBase Depot in the DataOS®
 
 ```shell
@@ -311,7 +312,7 @@ Global Flags:
 
 Use "dataos-ctl fastbase [command] --help" for more information about a command.
 ```
-To learn more, refer to [Fastbase Command Group](/interfaces/cli/command_reference/fastbase/details/).
+To learn more, refer to [Fastbase Command Group](/interfaces/cli/fastbase/details/).
 
 ### **`get`**
 
@@ -365,7 +366,7 @@ INFO[0002] 🔍 workflow...complete
   quality-checks-test-cases | v1beta1 | workflow |  public   |   active   | succeeded | rakeshvishvakarma21  
 ```
 
-To learn more, refer to [Get Command Group](get/details.md).
+To learn more, refer to [Get Command Group](/interfaces/cli/get/details/).
 
 ### **`health`**
 
@@ -517,7 +518,7 @@ Available Commands:
 Flags:
   -h, --help   help for maintenance
 ```
-To learn more, refer to [Maintenance Command Group](maintenance/details.md).
+To learn more, refer to [Maintenance Command Group](/interfaces/cli/maintenance/details/).
 
 
 ### **`operate`**
@@ -568,7 +569,7 @@ Global Flags:
 
 Use "dataos-ctl product [command] --help" for more information about a command.
 ```
-To learn more, refer to [Product Command Group](product/details.md).
+To learn more, refer to [Product Command Group](/interfaces/cli/product/details/).
 
 ### **`query-gateway`**
 Interact with the Query Gateway in the DataOS®
@@ -589,7 +590,7 @@ Global Flags:
 
 Use "dataos-ctl query-gateway [command] --help" for more information about a command.
 ```
-To learn more, refer to [Query-gateway Command Group](query-gateway/details.md).
+To learn more, refer to [Query-gateway Command Group](/interfaces/cli/query-gateway/details/).
 
 ### **`resource`**
 Manage resources in the DataOS®
@@ -618,7 +619,7 @@ Global Flags:
 
 Use "dataos-ctl resource [command] --help" for more information about a command.
 ```
-To learn more, refer to [Resource Command Group](resource/details.md).
+To learn more, refer to [Resource Command Group](/interfaces/cli/resource/details/).
 
 ### **`role`**
 Manage DataOS® Roles
@@ -643,7 +644,7 @@ Global Flags:
 
 Use "dataos-ctl role [command] --help" for more information about a command.
 ```
-To learn more, refer to [Role Command Group](role/details.md).
+To learn more, refer to [Role Command Group](/interfaces/cli/role/details/).
 
 
 ### **`runtime`**
@@ -670,7 +671,7 @@ Global Flags:
 
 Use "dataos-ctl runtime [command] --help" for more information about a command.
 ```
-To learn more, refer to [Runtime Command Group](runtime/details.md).
+To learn more, refer to [Runtime Command Group](/interfaces/cli/runtime/details/).
 
 **Examples:**
 The "runtime run" sub-command initiates a directive to the Poros operator, instructing it to execute a workflow immediately. This functionality is applicable to both scheduled and one-time workflows. In the case of scheduled workflows, it triggers an immediate run, while for one-time workflows, it behaves same as 're-run' operation.
@@ -819,7 +820,7 @@ Global Flags:
 
 Use "dataos-ctl user [command] --help" for more information about a command.
 ```
-To learn more, refer to [User Command Group](user/details.md).
+To learn more, refer to [User Command Group](/interfaces/cli/user/details/).
 
 ### **`usql`**
 usql, the universal command-line interface for SQL databases
@@ -912,4 +913,4 @@ Flags:
 
 Use "dataos-ctl workspace [command] --help" for more information about a command.
 ```
-To learn more, refer to [Workspace Command Group](workspace/details.md).
+To learn more, refer to [Workspace Command Group](/interfaces/cli/workspace/details/).

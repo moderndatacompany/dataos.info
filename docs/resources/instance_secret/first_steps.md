@@ -85,14 +85,14 @@ The table below summarizes the attributes of Instance-secret specific section:
 
 | Attribute | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`instance-secret`](/resources/instance_secret/manifest_attributes/#instance-secret) | mapping | none | none | mandatory |
-| [`type`](/resources/instance_secret/manifest_attributes/#type) | string | none | cloud-kernel, key-value, key-value-properties, certificates | mandatory |
-| [`acl`](/resources/instance_secret/manifest_attributes/#acl) | string | none | r, rw | mandatory |
-| [`data`](/resources/instance_secret/manifest_attributes/#data) | mapping | none | none | mandatory |
-| [`files`](/resources/instance_secret/manifest_attributes/#files) | string | none | file-path | optional |
+| [`instance-secret`](/resources/instance_secret/configurations/#instance-secret) | mapping | none | none | mandatory |
+| [`type`](/resources/instance_secret/configurations/#type) | string | none | cloud-kernel, key-value, key-value-properties, certificates | mandatory |
+| [`acl`](/resources/instance_secret/configurations/#acl) | string | none | r, rw | mandatory |
+| [`data`](/resources/instance_secret/configurations/#data) | mapping | none | none | mandatory |
+| [`files`](/resources/instance_secret/configurations/#files) | string | none | file-path | optional |
 
 
-For more information about the various attributes in Instance Secret specific section, refer to the [Attributes of Instance Secret specific section](/resources/instance_secret/configuration/).
+For more information about the various attributes in Instance Secret specific section, refer to the [Attributes of Instance Secret specific section](/resources/instance_secret/configurations/).
 
 
 

@@ -1,3 +1,4 @@
+
 # Components
 
 Every Benthos pipeline is a YAML config file, which acts as a recipe book telling what ingredients (sources) to use and how to use them (transformation). Talking structurally, a Benthos YAML config is made up of several components. They are depicted in the YAML below:

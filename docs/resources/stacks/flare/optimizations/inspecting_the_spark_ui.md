@@ -3,7 +3,7 @@
 
 Spark provides an elaborate web UI that allows us to inspect various components of our Flare Jobs. It offers details on memory usage, jobs, stages, and tasks, as well as event timelines, logs, and various metrics and statistics that can give you insight into what transpires in your Flare Jobs, both at the Spark driver level and in individual executors.
 
-![The Spark UI ](./inspecting_the_spark_ui/untitled.png)
+![The Spark UI ](/resources/stacks/flare/optimizations/inspecting_the_spark_ui/untitled.png)
 
 <center><i>The Spark UI </i></center>
 
@@ -23,13 +23,13 @@ dataos-ctl develop port-forward -n ingest-fibo-raw-data-lqiw-1031175555-driver  
 
 To know more about each of the Spark UI Tabs and the information it contains visit the below link
 
-[Navigating through the Spark UI Tabs](./inspecting_the_spark_ui/navigating_through_the_spark_ui_tabs.md)
+[Navigating through the Spark UI Tabs](/resources/stacks/flare/optimizations/inspecting_the_spark_ui/navigating_through_the_spark_ui_tabs/)
 
 ## Case Scenario
 
 Now we are familiar with the various aspects of Spark UI, now let’s take a query and use the Spark UI to optimize it.
 
-[Case Scenario: Optimizing using Spark UI](./inspecting_the_spark_ui/case_scenario.md)
+[Case Scenario: Optimizing using Spark UI](/resources/stacks/flare/optimizations/inspecting_the_spark_ui/case_scenario/)
 
 ## Conclusion
 

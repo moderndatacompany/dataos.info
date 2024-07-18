@@ -44,7 +44,11 @@ You start by defining three measures:
 > *Just three measures and we can now view %age change for any event type compared to the previous period. Giving Lens consumer greater flexibility to vary the result*
 > 
 
-![Image](scenarios_dynamic_params/untitled.png)
+<center>
+
+![Image](scenarios_dynamic_params/untitled.png){: style="width:31rem;" }
+
+</center>
 
 ### **The Traditional Way**
 
@@ -103,7 +107,11 @@ Basically, the Brand share metric allows for a more specific analysis of the mar
   type: number
 ```
 
-![Image](scenarios_dynamic_params/untitled1.png)
+<center>
+
+![Image](scenarios_dynamic_params/untitled1.png){: style="width:36rem;" }
+
+</center>
 
 ### **The Traditional Way**
 
@@ -131,7 +139,12 @@ To achieve this goal there is a need to create a metric i.e churn rate so here t
   type: number
 ```
 
-![Image](scenarios_dynamic_params/untitled2.png)
+<center>
+
+![Image](scenarios_dynamic_params/untitled2.png){: style="width:36rem;" }
+
+</center>
+
 
 ## Conclusion
 
