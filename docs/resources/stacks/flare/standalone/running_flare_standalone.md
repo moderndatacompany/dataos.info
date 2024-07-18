@@ -7,7 +7,7 @@ This is a step-by-step guide to running Flare Standalone using DataOS Command Li
 
 Let's take a case scenario where we read data from the environment Pulsar and write it to the Local File System. After writing the data to the Local File System, we also want to run some Scala commands to verify whether our data is written and has the appropriate schema. 
 
-For other inputs and outputs data sources, you can check out the [Standalone YAML configuration section.](../configuration_templates.md)
+For other inputs and outputs data sources, you can check out the [Standalone YAML configuration section.](/resources/stacks/flare/configuration_templates)
 
 But before diving right into the programming stuff, let's ensure you have the required prerequisites.
 
@@ -66,12 +66,12 @@ Flare Standalone uses Scala Programming Language for data exploration. In case y
 
 - Download the `flare-standalone.zip` folder provided below
 
-[flare-standalone.zip](./running_flare_standalone/flare-standalone.zip)
+[flare-standalone.zip](/resources/stacks/flare/standalone/running_flare_standalone/flare-standalone.zip)
 
 1. Extract the downloaded `flare-standalone.zip` file. It contains only one folder by the name `standalone`. Next, open the code editor inside the `flare-standalone` folder.
 2. Now the scenario looks like the image below, where you have opened the code editor inside the `flare-standalone` folder, which contains the `standalone` folder which further includes one folder by the name `dataout` and another file by the name `config.yaml`
 
-![Untitled](./running_flare_standalone/untitled.png)
+![Untitled](/resources/stacks/flare/standalone/running_flare_standalone/untitled.png)
 
 ### **Adding details to the YAML file**
 
@@ -157,7 +157,7 @@ dataos-ctl user apikey get
     1. `<dataos-context>` - The system administrator provides this in your organization
     2. `<port>` - The serviceUrl and AdminUrl ports are available in the Operations App. To know more, navigate to the below page.
     
-    [Getting the Port of Service and AdminUrl](./running_flare_standalone/getting_the_port_of_service_and_adminurl.md)
+    [Getting the Port of Service and AdminUrl](/resources/stacks/flare/standalone/running_flare_standalone/getting_the_port_of_service_and_adminurl)
     
 
 ### **Running the Flare Workflow YAML**
@@ -186,9 +186,9 @@ If you have an Apple M1/M2 Chip system, use the <code>rubiklabs/flare3:6.0.93-xp
 
 - Since we have exposed the Spark Web UI on port 14042, we can type `[localhost:14042](http://localhost:14042)` in any web browser to check the status of the job
 
-![Untitled](./running_flare_standalone/untitled_1.png)
+![Untitled](/resources/stacks/flare/standalone/running_flare_standalone/untitled_1.png)
 
-To know more about the various sections of the Spark UI and what each one of them signifies, navigate to the [link](../optimizations/inspecting_the_spark_ui.md)
+To know more about the various sections of the Spark UI and what each one of them signifies, navigate to the [link](/resources/stacks/flare/optimizations/inspecting_the_spark_ui)
 
 - On successful execution, the Scala command line shell will open as below:
 
@@ -214,7 +214,7 @@ Type :help for more information.
 
 - You can check the `dataout` folder under which the data read from Pulsar is written.
 
-![Untitled](./running_flare_standalone/untitled_2.png)
+![Untitled](/resources/stacks/flare/standalone/running_flare_standalone/untitled_2.png)
 
 ### **Exploring Spark Commands in Scala Interactive Shell**
 
@@ -299,8 +299,8 @@ root
 
 Congratulations on successfully testing your job on Flare Standalone; ****you can now run them in production. But, before you do, there are some changes that you need to make before you run the job in production. If you want to know more about the changes, you can go to the below page.
 
-[From Standalone to Production](./from_standalone_to_production.md) 
+[From Standalone to Production](/resources/stacks/flare/standalone/from_standalone_to_production) 
 
 Wanna learn how to read and write locally using Flare Standalone, navigate to the below page
 
-[Local to Local using CLI ](./case_scenarios/local_to_cloud_using_standalone_2.0.md)
+[Local to Local using CLI ](/resources/stacks/flare/standalone/case_scenarios/local_to_cloud_using_standalone_2.0)

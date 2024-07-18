@@ -203,7 +203,7 @@ INFO[0001] 🔍 get...complete
 
 ### **Check Workflow Logs to validate execution**
 
-Copy the name to Workspace from the output table of the [`get`](/resources/stacks/cli/command_reference/#get) command and use it as a string in the delete command.
+Copy the name to Workspace from the output table of the [`get`](/interfaces/cli/command_reference/#get) command and use it as a string in the delete command.
 
 ```shell
 dataos-ctl -i "${{copy the name to workspace in the output table from get command}}" --node ${{failed node name from get runtime command}} log

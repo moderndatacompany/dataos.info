@@ -62,7 +62,7 @@ instance-secret: # Instance Secret mapping (mandatory)
 
 ```
 
-Click [here](/resources/instance_secrets/), to access the comprehensive Resource specific documentaion on dataos.info.
+Click [here](/resources/instance_secret/), to access the comprehensive Resource specific documentaion on dataos.info.
 
 ## Data Source Connectivity
 
@@ -90,7 +90,7 @@ snowflake:
         - depotsecret-rw
 ```
 
-Click [here](/resources/depots/), to access the comprehensive Resource specific documentaion on dataos.info.
+Click [here](/resources/depot/), to access the comprehensive Resource specific documentaion on dataos.info.
 
 ## Cluster Management
 

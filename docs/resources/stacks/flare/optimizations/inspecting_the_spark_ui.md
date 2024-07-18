@@ -29,7 +29,7 @@ To know more about each of the Spark UI Tabs and the information it contains vis
 
 Now we are familiar with the various aspects of Spark UI, now let’s take a query and use the Spark UI to optimize it.
 
-[Case Scenario: Optimizing using Spark UI](/resources/stacks/flare/optimizationsinspecting_the_spark_ui/case_scenario/)
+[Case Scenario: Optimizing using Spark UI](/resources/stacks/flare/optimizations/inspecting_the_spark_ui/case_scenario/)
 
 ## Conclusion
 

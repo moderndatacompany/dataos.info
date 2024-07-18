@@ -102,11 +102,11 @@ In this section, learn about the interfaces that interact with DataOS services a
 
 ### **Understand DataOS Resources**
 
-Before you start building Data Products, know about these DataOS Resources which act as building blocks for your data product. In this section, DataOS Resources are categorized to align with traditional data processing and management practices, helping you understand their capabilities.
+Resources section of the document will help you understand the primitives of DataOS that power the core functionalities necessary in any data stack. We have mapped these DataOS Resources to their functional role in the data stack:
 
 #### **Source Connectivity and Metadata management**
 
-This category includes DataOS Resources that facilitate the connection to various data sources and manage the associated metadata, ensuring seamless data integration and organization.
+This category includes DataOS Resources that facilitate the connection to various data sources, scan the metadata, and run quality checks & data profiling.
 
 <div class= "grid cards" markdown>
 
@@ -151,13 +151,13 @@ These DataOS Resources support batch data processing, enabling scheduled, large-
 
     ---
 
-    Key Stacks in this category are [Flare](/resources/stacks/flare/), [DBT](/resources/stacks/dbt/), [Data Toolbox](/resources/stacks/data_toolbox/) and [CLI Stack](/resources/stacks/cli_stack/).
+    Key Stacks in this category are [Flare](/resources/stacks/flare/), [DBT](/resources/stacks/dbt/), and [Data Toolbox](/resources/stacks/data_toolbox/)
 
 </div>
 
 
 
-##### **Stream Data**
+##### **Streaming Data**
 
 These DataOS Resources are designed for stream data processing, handling real-time data flows and continuous data ingestion.
 
@@ -192,7 +192,7 @@ These DataOS Resources are designed for stream data processing, handling real-ti
 #### **Storage**
 
 
-This category includes DataOS Resources for providing robust, persistent and scalable data storage to store data efficiently and securely.
+This category includes DataOS Resources for providing efficient & scalable data storage.
 
 <div class= "grid cards" markdown>
 
@@ -270,7 +270,7 @@ These DataOS Resources ensure data security and access control, managing sensiti
 
 #### **Deployement**
 
-These DataOS Resources streamline the deployment process of data products, facilitating the packaging, distribution, and execution of applications and services
+These DataOS Resources streamline the deployment process of data products, facilitate the packaging, distribution, and execution of applications and services.
 
 
 <div class= "grid cards" markdown>

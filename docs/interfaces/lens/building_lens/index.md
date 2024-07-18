@@ -458,7 +458,7 @@ After defining the Lens, the next step is to deploy it into the DataOS environme
 
 **Step 1: Get the Environment Token or API Key**
 
-- Get the environment token or API Key from the profile section of the current environment.  To get  the API Key from DataOS, click [here](/interfaces/create_token/).
+- Get the environment token or API Key from the profile section of the current environment.  To get  the API Key from DataOS, click [here](/interfaces/#create-tokens-using-cli).
     
 
 **Step 2: Install Postman**
