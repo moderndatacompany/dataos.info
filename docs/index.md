@@ -20,9 +20,9 @@ DataOS continuously evolves to meet the real-world needs of data professionals. 
 
 ## Navigating Documentation
 
-If you are new to DataOS, dataos.info is your go-to place for getting started with key technical concepts. Understanding these will help you develop efficiently with DataOS. For experienced developers looking to build solutions, our comprehensive how-to guides and reference docs are available to get you up to speed with data product creation. You'll find everything you need right here, whether starting out or diving deep.
+If you are new to DataOS, dataos.info is your go-to place for getting started with key technical concepts. Understanding these will help you develop data products efficiently with DataOS. For experienced developers looking to build solutions, our comprehensive how-to guides and reference docs are available to get you up to speed with data product creation. You'll find everything you need right here, whether starting out or diving deep.
 
-The documentation website features a comprehensive navigation system that ensures users can find the necessary information efficiently. The top menu bar includes essential options, providing quick access to key sections. A multi-level index is displayed on the left menu, allowing users to easily explore and dive deeper into specific topics within each category. 
+The documentation website features a comprehensive navigation systemThe top menu bar includes essential options, providing quick access to key sections. A multi-level index is displayed on the left menu, allowing users to easily explore and dive deeper into specific topics within each category. 
 
 ### **Discover the Essentials of DataOS**
 
@@ -68,7 +68,7 @@ The following documents will give you detailed insights into the core aspects of
 
 ### **Understand Interfaces**
 
-In this section, learn about the interfaces that interact with DataOS services and components for efficient data operations and control.
+The Interfaces section in the documentation introduces various ways to interact with DataOS services and components.
 
 <div class= "grid cards" markdown>
 
@@ -113,7 +113,7 @@ This category includes DataOS Resources that facilitate the connection to variou
 -   :resources-depot:{ .lg .middle } [**Depot**](/resources/depot/)
 
     ---
-    To connect various data sources to DataOS, abstracting underlying complexities.   
+    Connects various data sources to DataOS, abstracting underlying complexities.   
 
 
 -   :resources-stack:{ .lg .middle } [**Stacks**](/resources/stacks/)
@@ -308,7 +308,7 @@ This category includes DataOS Resources for managing computational power and inf
 
 ### **Learning Assets**
 
-Explore the tutorials and guides essential for building data products using DataOS.
+The following sections in the documentation help you understand various aspects of DataOS, which are essential for building data products using DataOS.
 
 <div class= "grid cards" markdown>
 
@@ -324,7 +324,7 @@ Explore the tutorials and guides essential for building data products using Data
 
     [:octicons-arrow-right-24: Learn more](/glossary/)
 
--   :material-content-duplicate:{ .lg .middle } **Quick Guide**
+-   :material-content-duplicate:{ .lg .middle } **Quick Guides**
 
     ---
 
