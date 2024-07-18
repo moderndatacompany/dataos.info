@@ -2,13 +2,13 @@
 
 DataOS helps Data product consumers discover, explore, and use data products, enabling them to turn data into insights, drive business strategy, and gain deeper insights with advanced analytics and machine learning.
 
-A DataOS consumer is typically responsible for the following activities.
+A data product consumer is typically responsible for the following activities.
 
 ## Discover Relevant Data Products
 
 1. Login to DataOS and click on **Data Product Hub.**
 
-    ![dataos_home_dph.png](/getting_started/dataos_home_dph.png)
+    ![dataos_home_dph.png](/getting_started/data_product_consumer/dataos__home.png)
 
 2. You can see the available data products on the screen.
 
