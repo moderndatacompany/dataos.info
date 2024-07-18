@@ -72,7 +72,7 @@ The following YAML excerpt illustrates the attributes specified within this sect
       workflow: 
       ```
 
-To configure a Workflow Resource, replace the values of `name`, `layer`, `tags`, `description`, and `owner` with appropriate values. For additional configuration information about the attributes of the Resource meta section, refer to the link: [Attributes of Resource meta section](/resources/resource_attributes/).
+To configure a Workflow Resource, replace the values of `name`, `layer`, `tags`, `description`, and `owner` with appropriate values. For additional configuration information about the attributes of the Resource meta section, refer to the link: [Attributes of Resource meta section](/resources/manifest_attributes/).
 
 #### **Workflow-specific section**
 
@@ -107,7 +107,7 @@ A [Directed Acyclic Graph (DAG)](#workflow-and-directed-acyclic-graph-dag) repre
 
 **Job**
 
-A Job denotes a single processing task. Multiple jobs within a DAG can be linked sequentially or concurrently to achieve a specific result through [`dependencies`](/resources/workflow/yaml_configuration_attributes/#dependency). Here is an example YAML syntax for two jobs linked by dependencies:
+A Job denotes a single processing task. Multiple jobs within a DAG can be linked sequentially or concurrently to achieve a specific result through [`dependencies`](/resources/workflow/configurations/#dependency). Here is an example YAML syntax for two jobs linked by dependencies:
 ```yaml
 dag: 
   - name: ${{job1 name}}
@@ -134,7 +134,7 @@ dag:
 ```
 <center><i>Job-specific section YAML configuration</i></center>
 
-Further, jobs can be retried automatically by pre-defining the retry strategy within the Workflow YAML. This could be helpful in case of job failures or unexpected errors. Learn about job retries by navigating to the following link: [How to retry failed jobs within a Workflow?](/resources/workflow/how_to_retry_jobs/)
+Further, jobs can be retried automatically by pre-defining the retry strategy within the Workflow YAML. This could be helpful in case of job failures or unexpected errors. Learn about job retries by navigating to the following link: [How to retry failed jobs within a Workflow?](/resources/workflow/how_to_guide/retry_jobs/)
 
 <aside class=callout>
 
@@ -618,7 +618,7 @@ Make sure to replace `${{name to workspace in the output table from get status c
 
 ## How to setup alerts on Workflows?
 
-Workflow alerts play a vital role in the effective management of extensive Workflows and Jobs, enabling streamlined monitoring and prompt notifications in the event of failures. For detailed instructions on configuring Workflow alerts, refer to the documentation link: [Setting Up Workflow Alerts.](/resources/workflow/dataos_alerts/workflow_alerts/)
+Workflow alerts play a vital role in the effective management of extensive Workflows and Jobs, enabling streamlined monitoring and prompt notifications in the event of failures. For detailed instructions on configuring Workflow alerts, refer to the documentation link: [Setting Up Workflow Alerts.](/dataos_alerts/workflow_alerts/)
 
 
 <aside class="callout">
@@ -634,7 +634,7 @@ To deepen your understanding of Workflow Resource, explore the following case sc
 
 - [How to implement Single-run Workflow?](/resources/workflow/how_to_guide/single_run_workflow/)
 
-- [How to run a Cron Workflow or a Scheduled Workflow?](/resources/workflow/how_to_guide/scheduled_or_cron_workflow/)
+- [How to run a Cron Workflow or a Scheduled Workflow?](/resources/workflow/how_to_guide/scheduled_workflow/)
 
 - [How to orchestrate multiple Workflows from a single Workflow?](/resources/workflow/how_to_guide/multiple_workflows_from_a_single_workflow)/
 

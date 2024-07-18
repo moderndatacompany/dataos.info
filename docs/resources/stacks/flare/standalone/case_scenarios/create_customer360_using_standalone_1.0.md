@@ -37,7 +37,7 @@ This tutorial helps you perform the steps you need to transform the given data i
 
 1. Download the `assignment.zip` given below
 
-[assignment.zip](/resources/stacks/flare/create_customer360_using_standalone_1.0/assignment.zip/)
+[assignment.zip](/resources/stacks/flare/standalone/case_scenarios/create_customer360_using_standalone_1.0/assignment.zip/)
 
 1. Extract the assignment zip file. This file contains the following:
     1.  `flareconfig` folder with `config.yaml`.
@@ -45,7 +45,7 @@ This tutorial helps you perform the steps you need to transform the given data i
     3. `config_template.yaml` file for your hands-on with Flare standalone capabilities.
     4. `config_solution.yaml` file containing complete queries for transformations.
     
-    ![assignment data folder.png](/resources/stacks/flare/create_customer360_using_standalone_1.0/assignment_data_folder.png)
+    ![assignment data folder.png](/resources/stacks/flare/standalone/case_scenarios/create_customer360_using_standalone_1.0/assignment_data_folder.png)
     
 
 ### **Create Datasets**
