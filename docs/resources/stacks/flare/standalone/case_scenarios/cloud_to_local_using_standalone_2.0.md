@@ -64,7 +64,7 @@ Flare Standalone uses Scala Programming Language. In case you don't know about S
 
 1. Download the `flare-standalone.zip` folder provided below
 
-[flare-standalone.zip](/resources/stacks/flare/running_flare_standalone/flare-standalone.zip/)
+[flare-standalone.zip](/resources/stacks/flare/standalone/running_flare_standalone/flare-standalone.zip/)
 
 1. Extract the downloaded `flare-standalone.zip` file. It contains only one folder by the name `standalone`. Next, you can open the code editor inside the `flare-standalone` folder.
 2. Now the scenario looks like the image below, where you have opened the code editor inside the `flare-standalone` folder, which contains the `standalone` folder which further includes one folder by the name `dataout` and another file by the name `config.yaml`
@@ -184,7 +184,7 @@ If you have an Apple M1/M2 Chip system, use the `rubiklabs/flare3:6.0.93-xp.01` 
 
 ![Untitled](/resources/stacks/flare/running_flare_standalone/untitled_1.png)
 
-To know more about the various sections of the Spark UI and what each one of them signifies, navigate to the [link](/resources/stacks/flare/standalone/case_scenarios/cloud_to_local_using_standalone_2.0/optimizations/inspecting_the_spark_ui/)
+To know more about the various sections of the Spark UI and what each one of them signifies, navigate to the [link](/resources/stacks/flare/optimizations/inspecting_the_spark_ui/)
 
 1. On successful execution, the Scala command line shell will open as below:
 

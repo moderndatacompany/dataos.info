@@ -61,6 +61,6 @@ The Database manifest files serves as the blueprint for defining the structure a
 
 Database Resource is used to store data on the fly. Your next steps depend upon whether you want to learn about what you can do with the database,  here are some how to guides to help you with that process:
 
-- [How to query database data using workbench?](/resources/database/how_to_guide/query_database/)
+- [How to query database data using workbench?](/resources/database/how_to_guide/how_to_query_database_using_workbench/)
 
-- [How to back a streamlit application via database resource](/resources/database/how_to_guide/back_streamlit_via_database/)
+- [How to back a streamlit application via database resource](/resources/database/how_to_guide/how_to_create_a_streamlit_application_of_database_on_dataos/)

@@ -302,7 +302,7 @@ nav:
         - Worker: 
           - resources/worker/index.md
           - First Steps: resources/worker/first_steps.md
-          - Configuration: resources/worker/configuration.md
+          - Configuration: resources/worker/configurations.md
         - Workflow: 
           - resources/workflow/index.md
       - Characteristics: resources/characteristics.md

@@ -195,7 +195,7 @@ After succesful creation of PostgreSQL Database Depot. Now, We will migrate data
 
 Now, In the same directory, let's create a folder named `application` in it we will create a `requirements.txt`, `app.py`, and a `Dockerfile`.
 
-Before moving to deploy streamlit in DataOS. You can download this zip folder to replicate the streamlit application. To download click [here](/resources/database/application.zip/)   
+Before moving to deploy streamlit in DataOS. You can download this zip folder to replicate the streamlit application. To download click [here](/resources/database/application.zip)  
 
 ## Add dependencies to your requirements file
 
