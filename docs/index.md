@@ -166,7 +166,7 @@ These DataOS Resources are designed for stream data processing, handling real-ti
 -   :resources-workflow:{ .lg .middle } [**Workflow**](/resources/workflow/)
 
     ---
-    Manages stream data processing tasks by running them as micro batches.
+    Manages stream data processing tasks by running them as micro-batches.
 
 -   :resources-service:{ .lg .middle } [**Service**](/resources/service/)
 
