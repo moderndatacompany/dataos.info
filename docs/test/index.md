@@ -34,7 +34,7 @@ The following sections in the top menu bar of the documentation will help you ge
 
     ---
 
-    Quickly get hands-on and up to speed with DataOS, and familiarize yourself with its capabilities.
+    Get hands-on and up to speed with DataOS, and familiarize yourself with its capabilities.
 
     [:octicons-arrow-right-24:  Learn more](/getting_started/)
 
@@ -53,7 +53,7 @@ The following sections in the top menu bar of the documentation will help you ge
 
 ### **Core Aspects**
 
-The following sections of the documentation, located in the left menu, provide detailed insights into the DataOS philosophy and its architecture.
+The following sections of the documentation, located on the left menu, provide detailed insights into the DataOS philosophy and its architecture.
 
 <div class= "grid cards" markdown>
 
