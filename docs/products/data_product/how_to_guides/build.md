@@ -1,6 +1,6 @@
 # How to build a Data Product?
 
-Data Product is build by the Data Product Developers. This section involves the building phase of the Data Product right from data connection to defining SLOs. DataOS provides flexible ways to build the data product. You can create the Data Product from scratch or reuse the existing one as per requirements. You can explore the Data Products in the [Data Product Hub](/interfaces/data_product_hub/), an interface that lists all the existing data product information.
+Data Product is build by the Data Product Developers. This section involves the building phase of the Data Product right from data connection to defining SLOs. DataOS provides flexible ways to build the Data Product. You can create the Data Product from scratch or reuse the existing one as per requirements. You can explore the Data Products in the [Data Product Hub](/interfaces/data_product_hub/), an interface that lists all the existing Data Product information.
 
 Let’s see the steps for building a Data Product:
 
@@ -15,7 +15,7 @@ Before proceeding with the Data Product creation, ensure that you have the neces
 
 ## Steps to Create a Data Product
 
-From the design phase, it is clear which DataOS resources we require to build the Data Product, and these are [Instance Secret](/resources/instance_secret/), [Depot](/resources/depot/), [Cluster](/resources/cluster/), [Scanner](/resources/stack/), [Flare](/resources/stack/), [Policy](/resources/policy/), [SODA Checks](/resources/stack/), [Monitor](/resources/monitor/), [Pager](/resources/pager/), and [Bundle](/resources/bundle/). Let’s see how to create each one step by step. As we already created the depot and ran the depot scanner, we’ll directly jump into the data transformation step using Flare.
+From the design phase, it is clear which DataOS resources we require to build the Data Product, and these are [Instance Secret](/resources/instance_secret/), [Depot](/resources/depot/), [Cluster](/resources/cluster/), [Scanner](/resources/stack/), [Flare](/resources/stack/), [Policy](/resources/policy/), [SODA Checks](/resources/stack/), [Monitor](/resources/monitor/), [Pager](/resources/pager/), and [Bundle](/resources/bundle/). Let’s see how to create each one step by step. As we already created the Depot and ran the Depot scanner, we’ll directly jump into the data transformation step using Flare.
 
 <aside class="callout">
 🗣 Depending upon the use case more resources can be added or removed, to know more about the DataOS resources refer to <a href="https://dataos.info/resources/">DataOS Resources</a>.
@@ -128,9 +128,9 @@ Note that the above provided manifest file is just an example of how you can cre
 
 The [Monitor Resource](/resources/monitor/) in DataOS's Observability System triggers incidents based on events or metrics alongside the [Pager](/resources/pager/) Resource, enabling comprehensive observability and proactive incident management for high system reliability and performance.
 
-Let’s see how you can set up the monitor for workflow status.
+Let’s see how you can set up the Monitor for Workflow status.
 
-Create a manifest file for the monitor as follows:
+Create a manifest file for the Monitor as follows:
 
 ```yaml
 name: runtime-monitor
@@ -161,7 +161,7 @@ monitor:
           value: failed
 ```
 
-The above sample configuration demonstrates how to set up the Equation Monitor to raise the incident whenever the workflow fails.
+The above sample configuration demonstrates how to set up the Equation Monitor to raise the incident whenever the Workflow fails.
 
 To know more about Monitor, [refer to this](https://dataos.info/resources/monitor/).
 
@@ -169,7 +169,7 @@ To know more about Monitor, [refer to this](https://dataos.info/resources/monito
 
 A Pager in DataOS evaluates incident data against predefined conditions, triggering alerts to specified destinations upon identifying a match, forming the backbone of DataOS Observability, and enabling proactive alerting with the Monitor Resource.
 
-Let’s see how you can set up a Pager to get an alert on MS Teams and Email on the incident raised by the Monitor whenever the workflow fails.
+Let’s see how you can set up a Pager to get an alert on MS Teams and Email on the incident raised by the Monitor whenever the Workflow fails.
 
 To create a Pager in DataOS, simply compose a manifest file for a Pager as shown below:
 
@@ -207,7 +207,7 @@ To know more about Pager, [refer to this](https://dataos.info/resources/pager/).
 
 With the help of Bundle, users can perform the deployment and management of multiple Resources in a single operation, organized as a flattened DAG with interconnected dependency nodes.
 
-Let’s see, how you can create the bundle resource to apply all the resources based on their dependencies. To create a Bundle in DataOS, simply compose a manifest file for a Bundle as shown below:
+Let’s see, how you can create the Bundle resource to apply all the resources based on their dependencies. To create a Bundle in DataOS, simply compose a manifest file for a Bundle as shown below:
 
 ```yaml
 # Resource meta section
@@ -270,14 +270,14 @@ dataos-ctl apply -f ${{yamlfilepath}}
 
 After executing the above command, all the resources will be applied per the dependencies.
 
-To learn more about the bundle, [refer to this](https://dataos.info/resources/bundle/).
+To learn more about the Bundle, [refer to this](https://dataos.info/resources/bundle/).
 
 
 ### **Create a Policy to secure the data**
 
 The Policy Resource in DataOS enforces a "never trust, always verify" ethos with ABAC, dynamically evaluating and granting access permissions only if explicitly requested and authorized at each action attempt.
 
-Let’s see how you can create a data policy for data masking:
+Let’s see how you can create a Data Policy for data masking:
 
 ```yaml
 name: email-masking-policy
@@ -309,150 +309,14 @@ policy:
           - roles:id:user
 ```
 
-The above manifest file illustrates data masking for masking the email ID of users having tag `roles:id:user`. Apply the following command on the DataOS [Command Line Interface (CLI)](https://dataos.info/interfaces/cli/).
+The above manifest file illustrates data masking for masking the email ID of users having tag `roles:id:user`. Apply the following command on the DataOS [Command Line Interface (CLI)](/interfaces/cli/).
 
 ```bash
 dataos-ctl apply -f ${{yamlfilepath}}
 ```
 
-After executing the above command, the policy will be applied.
+After executing the above command, the Policy will be applied.
 
-To know more about policy, [refer to this](https://dataos.info/resources/policy/).
+To know more about Policy, [refer to this](https://dataos.info/resources/policy/).
 
-### **Create the Data Product manifest file**
-
-After successfully executing the Bundle manifest, you’ll create a manifest file for the Data Product to which the bundle will be referred. 
-
-Let’s see how you can set up the Data Product.
-
-Begin by creating a manifest file that will hold the configuration details for your Data Product. The structure of the Data Product manifest file is provided below.
-
-```yaml
-# Product meta section
-name: {{dp-test}} # Product name (mandatory)
-version: {{v1alpha}} # Manifest version (mandatory)
-type: {{data}} # Product-type (mandatory)
-tags: # Tags (Optional)
-  - {{data-product}}
-  - {{dataos:type:product}}
-  - {{dataos:product:data}}
-description: {{the customer 360 view of the world}} # Descripton of the product (Optional)
-Purpose: {{This data product is intended to provide insights into the customer for strategic decisions on cross-selling additional products.}} # purpose (Optional)
-collaborators: # collaborators User ID (Optional)
-  - {{thor}}
-  - {{blackwidow}}
-  - {{loki}}
-owner: {{iamgroot}} # Owner (Optional)
-refs: # Reference (Optional)
-  - title: {{Data Product Hub}} # Reference title (Mandatory if adding reference)
-    href: {{https://liberal-donkey.dataos.app/dph/data-products/all}} # Reference link (Mandatory if adding reference)
-entity: {{product}} # Entity (Mandatory)
-# Data Product-specific section (Mandatory)
-v1alpha: # Data Product version
-  data:
-    resources: # Resource specific section(Mandatory)
-      - name: {{bundle-dp}} # Resource name (Mandatory)
-        type: {{bundle}} # Resource type (Mandatory)
-        version: {{v1beta}} # Resource version (Mandatory)
-        refType: {{dataos}} # Resource reference type (Mandatory)
-        workspace: {{public}} # Workspace (Requirement depends on the resource type)
-        description: {{this bundle resource is for a data product}} # Resource description (Optional)
-        purpose: {{deployment of data product resources}} # Purpose of the required resource (Optional)   
-    
-    inputs:
-      - description: S3 Depot
-        purpose: source
-        refType: dataos
-        ref: dataos://s3depot:none/ga_data/
-    
-    outputs:
-      - description: Icebase Depot
-        purpose: consumption
-        refType: dataos_address
-        ref: dataos://icebase:google_analytics/ga_sessions_daily_data_raw    
-```
-
-The manifest file of a Data Product can be broken down into two sections: 
-
-1. Product Meta section
-2. Data Product-specific section 
-
-**Product Meta section**
-
-The Data Product manifest comprises a product meta section outlining essential metadata attributes applicable to all product types. Note that some attributes are optional within this section, while others are mandatory.
-
-```yaml
-# Product meta section
-name: {{dp-test}} # Product name (mandatory)
-version: {{v1alpha}} # Manifest version (mandatory)
-type: {{data}} # Product-type (mandatory)
-tags: # Tags (optional)
-  - {{data-product}}
-  - {{dataos:type:product}}
-  - {{dataos:product:data}}
-description: {{the customer 360 view of the world}} # Descripton of the product (optional)
-Purpose: {{This data product is intended to provide insights into the customer for strategic decisions on cross-selling additional products.}} # purpose (Optional)
-collaborators: # Collaborators User ID (optional)
-  - {{thor}}
-  - {{blackwidow}}
-  - {{loki}}
-owner: {{iamgroot}} # Owner (optional)
-refs: # Reference (optional)
-  - title: {{Data Product Hub}} # Reference title (Mandatory if adding reference)
-    href: {{https://liberal-donkey.dataos.app/dph/data-products/all}} # Reference link (Mandatory if adding reference)
-entity: {{product}} # Entity (Mandatory)
-```
-
-For more information about the various attributes in the Product meta section, refer to the [Attributes of Product meta section](/products/data_products/configurations/).
-
-**Data Product-specific section**
-
-This section focuses on Data Product-specific attributes, outlining resources, inputs, outputs, and use cases.
-
-```yaml
-v1alpha: # Data Product version
-  data:
-    resources: # Resource specific section(Mandatory)
-      - name: {{bundle-dp}} # Resource name (Mandatory)
-        type: {{bundle}} # Resource type (Mandatory)
-        version: {{v1beta}} # Resource version (Mandatory)
-        refType: {{dataos}} # Resource reference type (Mandatory)
-        workspace: {{public}} # Workspace (Requirement depends on the resource type)
-        description: {{this bundle resource is for a data product}} # Resource description (Optional)
-        purpose: {{deployment of data product resources}} # Purpose of the required resource (Optional)       
-       
-    inputs:
-      - description: S3 Depot
-        purpose: source
-        refType: dataos
-        ref: dataos://s3depot:none/ga_data/
-    
-    outputs:
-      - description: Icebase Depot
-        purpose: consumption
-        refType: dataos_address
-        ref: dataos://icebase:google_analytics/ga_sessions_daily_data_raw             
-```
-
-For more information about the various attributes in the Data Product-specific section, refer to the [Attributes of Data Product-Specific section](/products/data_product/configuration/).
-
-### **Apply the Data Product manifest file**
-
-To create a Data Product within the DataOS, use the `apply` command. When applying the manifest file from the DataOS CLI, `apply` command is as follows:
-
-Syntax:
-
-```bash
-dataos-ctl product apply -f ${path-to-dp-manifest-file}
-```
-
-Example Usage:
-
-```bash
-dataos-ctl product apply -f /home/iamgroot/office/firstdp.yaml
-# Expected Output:
-INFO[0000] 🛠 product apply...                           
-INFO[0000] 🔧 applying data:v1alpha:lens-dp-test...     
-INFO[0000] 🔧 applying data:v1alpha:lens-dp-test...created 
-INFO[0000] 🛠 product apply...complete 
-```
+Now the Data Product is ready. You can explore the Data Product on [Data Product Hub](/interfaces/data_product_hub).

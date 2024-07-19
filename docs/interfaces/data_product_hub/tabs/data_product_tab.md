@@ -4,7 +4,7 @@
 
 
 <div style="text-align: center;">
-  <img src="/interfaces/data_product_hub/Untitled%20(14).png" alt="Outlined Image" style="border:2px solid black; width: 80%; height: auto;">
+  <img src="/interfaces/data_product_hub/Untitled%20(14).png" alt="Outlined Image" style="border:1px solid black; width: 80%; height: auto;">
 </div>
 
 
@@ -147,3 +147,4 @@ You can also explore and query the output data by clicking on the output dataset
 <div style="text-align: center;">
   <img src="/interfaces/data_product_hub/Untitled%20(27).png" alt="Outlined Image" style="border:2px solid black; width: 50%; height: auto;">
 </div>
+
