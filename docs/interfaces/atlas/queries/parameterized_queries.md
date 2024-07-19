@@ -62,18 +62,25 @@ Follow the below steps to add a parameter to your query.
 
 1. Click on the ‘Queries’ tab and open your query to edit.
     
-    ![Query editor](parameterized_queries/query1.png)
-    
-    <figcaption align = "center">Query editor</figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/parameterized_queries/query1.png" alt="Query editor" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Query editor</figcaption>
+  </div>
+</center>
+
     
 2. Click on `{{ }}` (keyboard shortcut `Cmd + P`). The parameter is inserted at the text caret, and the **Add Parameter** dialog appears.
 - **Keyword**: The keyword that represents the parameter in the query.
 - **Title**: The title that appears over the widget. By default, the title is the same as the keyword.
 - **Type**: Supported types are Text, Number, Date, Date and Time, Date and Time (with Seconds), Dropdown List, and Query Based Dropdown List. The default is **Text**.
     
-    ![Inputs while adding parameters](parameterized_queries/add_param.png)
-    
-    <figcaption align = "center">Inputs while adding parameters</figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/parameterized_queries/add_param.png" alt="Inputs while adding parameters" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Inputs while adding parameters</figcaption>
+  </div>
+</center>
     
 1. Enter the keyword, optionally override the title, and select the parameter type.
 2. Click **Add Parameter**. A parameter widget appears on the screen.
@@ -84,10 +91,14 @@ Follow the below steps to add a parameter to your query.
     
     > Enter the parameter value in the single quote for text type.
     > 
-    
-    ![Query with a text parameter](parameterized_queries/text.png)
-    
-    <figcaption align = "center">Query with a text parameter</figcaption>
+
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/parameterized_queries/text.png" alt="Query with a text parameter" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Query with a text parameter</figcaption>
+  </div>
+</center>
+
     
 
 <aside class="callout">
@@ -111,9 +122,12 @@ You will get a calendar-picking interface to provide the date values for your qu
 
 </aside>
 
-![Query result for the date parameter value ](parameterized_queries/query_date.png)
-
-<figcaption align = "center">Query result for the date parameter value </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/parameterized_queries/query_date.png" alt="Query result for the date parameter value" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Query result for the date parameter value</figcaption>
+  </div>
+</center>
 
 **Example Query:**
 
@@ -139,17 +153,23 @@ LIMIT 100
 When you select the Date Range parameter, two markers called `.start`
  and `.end` are inserted, which signify the beginning and end of your chosen date range. 
 
-![Selecting date range ](parameterized_queries/date_range_qp.png)
-
-<figcaption align = "center">Selecting date range </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/parameterized_queries/date_range_qp.png" alt="Selecting date range" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Selecting date range</figcaption>
+  </div>
+</center>
 
 **Options with Date and Date Range Parameter Values**
 
 When you add a Date or Date Range parameter to your query, the selection widget shows a **blue** **lightning** icon. Click the icon to see dynamic values like “Today”,  “Yesterday”, "Last Year" or "Last 50 Days", etc.
 
-![Quick options for the date range in the selection widget](parameterized_queries/query_para_last_yaer_2.png)
-
-<figcaption align = "center">Quick options for the date range in the selection widget</figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/parameterized_queries/query_para_last_yaer_2.png" alt="Quick options for the date range in the selection widget" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Quick options for the date range in the selection widget</figcaption>
+  </div>
+</center>
 
 **Example Query**:
 
@@ -177,9 +197,13 @@ When you want to restrict the possible values for the query parameter, you can u
 
 When the `Dropdown` option for the parameter type is selected from the parameter settings panel, a text box appears where you can enter your allowed values, each one separated by a new line.
 
-![Configuring dropdown list ](parameterized_queries/dropdown_list_2.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/parameterized_queries/dropdown_list_2.png" alt="Configuring dropdown list" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Configuring dropdown list</figcaption>
+  </div>
+</center>
 
-<figcaption align = "center">Configuring dropdown list </figcaption>
 
 <aside class="callout">
 🗣 Dropdown list options are considered text parameters, so if you want to use numbers/dates/datetime in your dropdown, you should take care of type conversions for the format your dataset column requires.
@@ -188,9 +212,12 @@ When the `Dropdown` option for the parameter type is selected from the parameter
 
 Once the parameter is defined, you can see the dropdown list in the Parameter Widget. Select the option(s) and apply changes to run the query.
 
-![Query output for multiple values selected from the dropdown](parameterized_queries/query_based_multi.png)
-
-<figcaption align = "center">Query output for multiple values selected from the dropdown</figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/parameterized_queries/query_based_multi.png" alt="Query output for multiple values selected from the dropdown" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Query output for multiple values selected from the dropdown</figcaption>
+  </div>
+</center>
 
 **Example Query:**
 
@@ -220,15 +247,21 @@ limit 10
 
 Dropdown list options can be tied to the results of an existing query. Just click `Query Based Dropdown List` for **Type** in the Parameter Settings panel. Select the target query in the Query to load dropdown values from.
 
-![Query parameter type selection](parameterized_queries/query_based3.png)
-
-<figcaption align = "center">Query parameter type selection</figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/parameterized_queries/query_based3.png" alt="Query parameter type selection" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Query parameter type selection</figcaption>
+  </div>
+</center>
 
 You have to save and publish the query whose output is to be used as dropdown options.
 
-![Query output for dropdown options](parameterized_queries/qoutput_dropdown.png)
-
-<figcaption align = "center">Query output for dropdown options</figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/parameterized_queries/qoutput_dropdown.png" alt="Query output for dropdown options" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Query output for dropdown options</figcaption>
+  </div>
+</center>
 
 ## Multiple Parameters
 
@@ -261,14 +294,20 @@ LIMIT 10
 
 Query output shows the data for the parameter values given at the run time.
 
-![Query with multiple parameters](parameterized_queries/multiple_query_parameters.png)
-
-<figcaption align = "center">Query with multiple parameters</figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/parameterized_queries/multiple_query_parameters.png" alt="Query with multiple parameters" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Query with multiple parameters</figcaption>
+  </div>
+</center>
 
 # Query Parameters on Dashboards
 
 When you add a visualization created based on a query having a parameter to your dashboard, the parameter value wizard will be available as shown in the below example dashboard. You can provide parameter values while refreshing specific or all visualizations on the dashboard.
 
-![Query Parameters on Dashboard](parameterized_queries/qp_dashboard.png)
-
-<figcaption align = "center">Query Parameters on Dashboard</figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/parameterized_queries/qp_dashboard.png" alt="Query Parameters on Dashboard" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Query Parameters on Dashboard</figcaption>
+  </div>
+</center>

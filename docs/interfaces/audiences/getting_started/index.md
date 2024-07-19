@@ -36,11 +36,12 @@ With the manifest file for the Lens being created, the next step is to deploy it
 Once the Lens is deployed in the DataOS environment, go to the Audiences application on the DataOS Homepage and navigate to the Builder section. When you deploy a Lens named "c360" that meets all the prerequisites, it instantly appears in the Audiences Builder. From there, you can explore the entities in the c360 model, review the different fields and measures associated with them, and visually examine the relationships between them. The below image depicts the various steps to be executed while building audiences:
  
 <center>
-
-![Audiences Builder](./audiences_builder.svg)
-
+  <div style="text-align: center;">
+    <img src="/interfaces/audiences/getting_started/audiences_builder.svg" alt="Audiences Builder" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Audiences Builder</figcaption>
+  </div>
 </center>
-<figcaption align = "center"> Audiences Builder  </figcaption>
+
 
 The following is a comprehensive procedure that outlines the steps depicted in the aforementioned diagram:
 
@@ -57,11 +58,12 @@ In this step, select a Cluster if it has not been pre-selected. If the desired c
 Upon selecting a Cluster, you will be presented with a summary of all available data. The bar graph in the block displays the percentage of the selected cohort's audience, taking into consideration that no filter conditions or parameters have been applied at this time.
  
 <center>
-
-![Summary statistics](./summary_statistics.png)
-
+  <div style="text-align: center;">
+    <img src="/interfaces/audiences/getting_started/summary_statistics.png" alt="Summary statistics" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Summary statistics</figcaption>
+  </div>
 </center>
-<figcaption align = "center"> Summary statistics </figcaption>
+
 
 The summary statistics reveal that out of the total data set, only 61.97% of individuals have email information available, 98.45% have phone numbers on record, and 99.74% have address information. These statistics are essential in determining the appropriate marketing channel to use.
 
@@ -70,20 +72,21 @@ The summary statistics reveal that out of the total data set, only 61.97% of ind
 The filter capabilities provide you with the ability to segment your target audience based on specific criteria and traits. For example, by implementing a filter on the metric of total activities, to evaluate the number of target audience members who have completed more than 5 activities, simply navigate to the "Activity Stream" section within Filters and select the "+ Add rule" button. Configure the operator to ">=" and set the value to "5," as illustrated below.
  
 <center>
-
-![Filter conditions](./filter_conditions.png)
-
+  <div style="text-align: center;">
+    <img src="/interfaces/audiences/getting_started/filter_conditions.png" alt="Filter conditions" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Filter conditions</figcaption>
+  </div>
 </center>
-<figcaption align = "center">Filter conditions  </figcaption>
 
-To access the values and frequency information for a specific column, click on the `i` icon located adjacent to the column name. This will bring up a pop-up window displaying the detailed information for that column.
- 
+To access the values and frequency information for a specific column, click on the <code>i</code> icon located adjacent to the column name. This will bring up a pop-up window displaying the detailed information for that column.
+
 <center>
-
-![Detailed Column Information](./detailed_column_information.png)
-
+  <div style="text-align: center;">
+    <img src="/interfaces/audiences/getting_started/detailed_column_information.png" alt="Detailed Column Information" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Detailed column information</figcaption>
+  </div>
 </center>
-<figcaption align = "center"> Detailed column information  </figcaption>
+
 
 #### **3.4: Update**
 
@@ -94,11 +97,12 @@ Upon clicking the "Update" button, the Summary Statistics for the selected cohor
 The audience whose activity meets or exceeds the threshold of 5 has now been acquired. The summary reveals that 85.3% of the 100% of the audience satisfies the criteria. Within this group, 60.24% have email addresses, 98.63% have phone numbers, and 100% have physical addresses.
  
 <center>
-
-![Summary](./summary.png)
-
+  <div style="text-align: center;">
+    <img src="/interfaces/audiences/getting_started/summary.png" alt="Summary" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Summary</figcaption>
+  </div>
 </center>
-<figcaption align = "center"> Summary </figcaption>
+
 
 Once you save the Audiences, they are saved in the [Audiences](/interfaces/audiences/audiences_ui/) by the name you provided earlier, and you can still make changes to them, but you cannot schedule them or query them using Workbench until you Publish them. 
 
@@ -113,11 +117,12 @@ Schedule the Audiences using the feature available in the Audiences App. You can
 <aside class="callout"> 🗣️ The Audience workflow will only commence another iteration once the previous one has been successfully concluded. If an error occurs prior to the next scheduled iteration, the workflow will initiate at the designated cron time.</aside>
  
 <center>
-
-![Scheduling Options](./scheduling_options.png)
-
+  <div style="text-align: center;">
+    <img src="/interfaces/audiences/getting_started/scheduling_options.png" alt="Scheduling Options" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Scheduling options</figcaption>
+  </div>
 </center>
-<figcaption align = "center"> Scheduling options </figcaption>
+
 
 #### **3.8: Save the Audiences. Again!!!**
 
