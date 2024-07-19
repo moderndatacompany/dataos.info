@@ -29,7 +29,7 @@ Depot in DataOS is a [Resource](/resources/) used to connect different data sou
 
     Depot example usage.
 
-    [:octicons-arrow-right-24: Configuration Template](/resources/depot/#depot-configuration-templates)
+    [:octicons-arrow-right-24: Configuration Template](/resources/depot/#depot-config-templates)
 
 
 -   :material-console:{ .lg .middle } **Data Integration**
@@ -79,7 +79,7 @@ To create a Depot in DataOS, simply compose a manifest configuration file for a 
 
 ### **Structure of a Depot manifest**
 
-![Structure of a Depot YAML](/resources/depot_yaml.png)
+![Structure of a Depot YAML](/resources/depot/depot_yaml.png)
 
 To know more about the attributes of Depot manifest Configuration, refer to the link: [Attributes of Depot manifest](/resources/depot/configurations/).
 
@@ -477,7 +477,7 @@ dataos-ctl get -t depot
 dataos-ctl get -t depot -a
 ```
 
-You can also access the details of any created Depot through the DataOS GUI in the [Operations App](/interfaces/operations) and [Metis UI](/interfaces/metis/).
+You can also access the details of any created Depot through the DataOS GUI in the [Operations App](/interfaces/operations/) and [Metis UI](/interfaces/metis/).
 
 ### **Delete Depot**
 

@@ -146,5 +146,5 @@ SELECT bitwise_right_shift_arithmetic( 12, 64); --  0
 SELECT bitwise_right_shift_arithmetic(-45, 64); -- -1
 ```
 
-See also [bitwise_aggregate_function](interfaces/workbenc/functions_and_operators/aggregate/#bitwise-aggregate-functions)
+See also [bitwise_aggregate_function](interfaces/workbench/functions_and_operators/aggregate/#bitwise-aggregate-functions)
 

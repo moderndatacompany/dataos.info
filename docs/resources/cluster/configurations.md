@@ -697,7 +697,7 @@ cluster:
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value**                                       |
 | ------------- | -------------- | ------------------ | --------------------------------------------------------- |
-| string        | optional       | none               | [View the list of all possible catalog types here](/resources/cluter/connectors_configuration) |
+| string        | optional       | none               | [View the list of all possible catalog types here](/resources/cluster/connectors_configuration) |
 
 **Example Usage:**<br>
 ```yaml
