@@ -22,16 +22,27 @@ To create a custom role follow the below steps:
 
 - Navigate to the Roles. Click on the “Create Role” button in the top right corner.
 
-  <center>![roles.png](../bifrost/roles.png)</center>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/bifrost/roles.png" alt="Roles" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Roles</figcaption>
+  </div>
+</center>
+
 
 - Provide a Name for the role, such as "test role" or “Test Role”s, and add a description if needed. Now, Click on the "Create" button to finalize the creation of the role.
 
-  <center>![roles2.png](../bifrost/roles2.png)</center>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/bifrost/roles2.png" alt="Roles" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Roles</figcaption>
+  </div>
+</center>
 
 - A success message will be displayed confirming that the use case has been successfully added to the role.
 
 !!! Note
-    After creating a new role, no users will be displayed initially. You must manually add users by navigating back to the Users tab and repeating the steps to [assign a role to a specific user](../bifrost/users.md#how-to-add-a-user-to-a-role).
+    After creating a new role, no users will be displayed initially. You must manually add users by navigating back to the Users tab and repeating the steps to [assign a role to a specific user](/interface/bifrost/users/#how-to-add-a-user-to-a-role).
 
 
 ## How to delete a role?

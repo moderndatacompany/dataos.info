@@ -12,8 +12,12 @@ The list contains the **Name**, targeted **Query**, **Created By, Created at, La
 
 An Alert can be added via the `Queries` section. The top right side menu shows '**Alerts[0]**'; clicking on that will open a panel that shows alerts created by you. It gives you the option to add a new alert. 
 
-![Setting up alerts](alerts/create_alert.png)
-<figcaption align = "center">Creating alerts </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/alerts/create_alert.png" alt="Setting up alerts" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Creating alerts</figcaption>
+  </div>
+</center>
 
 #### **Setting up Destination for Alerts**
 
@@ -25,9 +29,13 @@ If you wish to modify the settings or notification message, open the alert and c
 
 A message template consisting of input fields for the subject and body will be seen on the screen. You can customize the notification message with static content and built-in template variables.
 
-![Modifying alert settings](alerts/configure_alert.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/alerts/configure_alert.png" alt="Modifying alert settings" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Modifying alert settings</figcaption>
+  </div>
+</center>
 
-<figcaption align = "center">Modifying alert settings</figcaption>
 
 To learn more about creating alerts, refer to [Setting up Dashboard Alerts](/dataos_alerts/dashboard_alerts/).
 

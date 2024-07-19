@@ -18,11 +18,21 @@ Data Product Hub GUI is a collaborative interface for Data Products, it helps us
 
 To get started with the Data Product Hub, click on the **Data Product Hub**, you will be redirected to the Data Product Hub home page.
 
-<img src="/interfaces/data_product_hub/Untitled%20(12).png" alt="Outlined Image" style="border:2px solid black;">
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/data_product_hub/Untitled%20(12).png" alt="Outlined Image" style="border:1px solid black;">
+    <figcaption>Outlined Image</figcaption>
+  </div>
+</center>
 
 Data Product Hub home page:
 
-<img src="/interfaces/data_product_hub/Untitled%20(13).png" alt="Outlined Image" style="border:2px solid black;">
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/data_product_hub/Untitled%20(13).png" alt="Outlined Image" style="border:1px solid black;">
+    <figcaption>Outlined Image</figcaption>
+  </div>
+</center>
 
 Data Product Hub GUI consists of three tabs, to know more about each tab follow the below links:
 

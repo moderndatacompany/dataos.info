@@ -10,10 +10,11 @@ The reason is that business users cannot codify their mental model of the busine
 And as a result, Data Analyst becomes a translator between business logic and data logic. 
 
 <center>
-
-![datamodeling-1.png](data_modeling_concepts/datamodeling-1.png){: style="width:31rem;" }
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/building_lens/data_modeling_concepts/datamodeling-1.png" alt="Data Modeling Concept 1" style="width:31rem;">
+  </div>
 </center>
+
  
 This technique works well for small or few firms, but it won't function in more significant circumstances since it burdens data analysts, who become bottlenecks because everything must pass through them. At one point, a data analyst can be too preoccupied to focus on more worthwhile, long-term impact work because he is too busy crunching data for other stakeholders.
 
@@ -29,10 +30,11 @@ Of course, there are other reasons to do data modeling. Ease of exploration and 
 A data modeling layer is a piece of code that contains mappings between data and logic and relationships between datasets. Data modeling is the process of creating and maintaining this layer. 
 
 <center>
-
-![data modeling 2.png](data_modeling_concepts/data_modeling_2.png){: style="width:31rem;" }
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/building_lens/data_modeling_concepts/data_modeling_2.png" alt="Data Modeling Concept 2" style="width:31rem;">
+  </div>
 </center>
+
 
 
 After creating this data modeling layer, we can solve a lot of business use cases:
@@ -132,10 +134,11 @@ A dimensional schema physically separates the measures that quantify the busines
 - The fact table and each dimension table have a many-to-one relationship, as indicated by the branches at the ends of the links connecting the tables.
 
 <center>
-
-![Copy of Untitled Diagram(6).png](data_modeling_concepts/Copy_of_Untitled_Diagram(6).png){: style="width:31rem;" }
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/building_lens/data_modeling_concepts/Copy_of_Untitled_Diagram(6).png" alt="Diagram" style="width:31rem;">
+  </div>
 </center>
+
 
 Fact Table: Transaction 
 
@@ -149,10 +152,11 @@ Dimension Table: customers, products, territories
 - A snowflake schema can have any number of dimensions, and each dimension can have any number of levels.
 
 <center>
-
-![Copy of Untitled Diagram(7).png](data_modeling_concepts/Copy_of_Untitled_Diagram(7).png){: style="width:31rem;" }
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/building_lens/data_modeling_concepts/Copy_of_Untitled_Diagram(7).png" alt="Diagram" style="width:31rem;">
+  </div>
 </center>
+
 
 ## Activity Schema
 

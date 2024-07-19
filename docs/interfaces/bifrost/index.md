@@ -93,8 +93,18 @@ To create a new Tag-Namespace Open Bifrost navigate to Heimdall Primitives
 - Click on Tag-Namespace
 - Now click on create Tag-Namespace button
 
-<center>![tag_namespace.png](/interfaces/bifrost/tag_namespace.png)</center>
-<center>users will be directed to a page where all existing Tag-Namespaces are listed 
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/atlas_homepage.png" alt="Atlas interface" style="width:60rem; border:2px solid black;">
+    <figcaption><i>Atlas interface</i></figcaption>
+  </div>
+</center>
+
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/bifrost/tag_namespace.png" alt="Tag Namespace">
+    <figcaption><i>  Users will be directed to a page where all existing Tag-Namespaces are listed.</i></figcaption>
+  </div>
 </center>
 
 - The Tag-Namespace will be configured with the following details, as depicted in the figure below:
@@ -104,7 +114,12 @@ To create a new Tag-Namespace Open Bifrost navigate to Heimdall Primitives
   - Type: subject
   - Description: tester group
 
-![tag_namespace_config.png](/interfaces/bifrost/tag_namespace_config.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/bifrost/tag_namespace_config.png" alt="Tag Namespace Configuration" style="width: 60rem; border: 1px solid black;">
+  </div>
+</center>
+
 
 - A success message will be displayed confirming that the new Tag-Namespace has been added successfully. 
 
@@ -114,16 +129,21 @@ A tag is an attribute following a fixed glob pattern, as defined by its Tag-Name
 
  Under the "**Tags**" section, users can access a list of tags organized as follows:
 
-![list_of_tags.png](/interfaces/bifrost/list_of_tags.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/bifrost/list_of_tags.png" alt="List of Tags" style="width: 60rem; border: 1px solid black;">
+  </div>
+</center>
 
-<!-- 
-**How  to create a Tag?**
 
-When creating tags, it's crucial to note that each tag is within a specific tag-namespace, preventing the creation of random or unstructured tags within the system. -->
-
-### **Collections**
+<!-- ### **Collections** -->
 
 The diagram below summarizes how you can provide access through Bifrost.
 
-![bifrost.png](/interfaces/bifrost/bifrost.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/bifrost/bifrost.png" alt="Bifrost" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Bifrost</figcaption>
+  </div>
+</center>
 

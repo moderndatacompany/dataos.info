@@ -11,9 +11,13 @@ Query editor allows you to format your query and enable/disable the live auto-co
 
 </aside>
 
-![Query editor options](queries/query_editor.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/queries/query_editor.png" alt="Query editor options" style="width: 60rem; border: 1px solid black;">
+    <figcaption><i>Query editor options</i></figcaption>
+  </div>
+</center>
 
-<figcaption align = "center">Query editor options</figcaption>
 
 ## Query Parameters
 
@@ -21,9 +25,13 @@ Atlas allows you to write parameterized queries. A query parameter lets you subs
  is treated as a query parameter. Clicking on the double curly brackets, the **Add Parameter**
  dialog appears where you set the parameter and its type. The parameter is inserted at the text caret in your query. While running your query, you will get the option to provide the value for the defined parameter(s).
 
-![Adding query parameters](queries/add_parameter.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/queries/add_parameter.png" alt="Adding query parameters" style="width: 60rem; border: 1px solid black;">
+    <figcaption><i>Adding query parameters</i></figcaption>
+  </div>
+</center>
 
-<figcaption align = "center">Adding query parameters</figcaption>
 
 ### **Query Parameter Types**
 
@@ -41,9 +49,13 @@ To learn more about the parameter types and how to add parameters to the queries
     
 Click on the three dots to download a query result as a CSV, TSV, or Excel file.
     
-![Download option for query output](queries/download_query_result.png)
-    
-<figcaption align = "center">Download option for query output</figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/queries/download_query_result.png" alt="Download option for query output" style="width: 60rem; border: 1px solid black;">
+    <figcaption><i>Download option for query output</i></figcaption>
+  </div>
+</center>
+
     
 
 ### Manage Query
@@ -53,9 +65,14 @@ The following options appears by clicking on the three dots in the extreme right
 ### Fork a Query
 
 Sometimes you want to duplicate a query. You can do so by using the **Fork** option given in the menu. 
-![Three dots menu ](queries/three_dots.png)
 
-<figcaption align = "center">Options on the menu </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/queries/three_dots.png" alt="Three dots menu" style="width: 60rem; border: 1px solid black;">
+    <figcaption><i>Options on the menu</i></figcaption>
+  </div>
+</center>
+
 
 ### **Archive a Query**
 
@@ -77,9 +94,12 @@ Click on the default settings ‘**Never’** to customize it.
 
 A pop-up will appear with the scheduling options. Select the cadence and configure the corresponding settings that will appear on the screen, such as the end date for the scheduled execution or which day of the week to run the query. That’s pretty easy to do once you have this dialog box open. Once you set the schedule, your query will run automatically.
 
-![Refresh the schedule for query](queries/refresh_schedule.png)
-
-<figcaption align = "center">Refresh the schedule for query</figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/queries/refresh_schedule.png" alt="Refresh the schedule for query" style="width: 60rem; border: 1px solid black;">
+    <figcaptio>Refresh the schedule for query</figcaption>
+  </div>
+</center>
 
 ## View Alerts
 

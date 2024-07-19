@@ -4,9 +4,13 @@
 
 Clicking on **+Add New** will give you the following screen to add a new snippet. Provide a keyword for the trigger, which (if typed and tabbed) will be replaced with the entire snippet.
 
-![Creating a new snippet](snippet/create_snippet.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/snippet/create_snippet.png" alt="Creating a new snippet" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Creating a new snippet</figcaption>
+  </div>
+</center>
 
-<figcaption align = "center">Creating a new snippet</figcaption>
 
 ## Insert a Snippet
 

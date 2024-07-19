@@ -222,7 +222,13 @@ Flags:
 
 DataOS checks resource dependability while deleting resources.
 
-![cli-resource-delete.png](cli-resource-delete.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/cli-resource-delete.png" alt="CLI Resource Delete" style="width: 60rem; border: 1px solid black;">
+    <figcaption>CLI Resource Delete</figcaption>
+  </div>
+</center>
+
 
 ### **`develop`**
 
@@ -763,7 +769,12 @@ Flags:
 Terminal UI of the DataOS®
 Dataos-ctl TUI is a Terminal User Interface for DataOS®. It shows all the key resources deployed on the server. You can click on the resource menu to see the corresponding details in the Resource Summary section. You can view artefacts and Run time services/resources and their YAML. You can also view logs for runtime.
 
-![cli-tui.png](cli-tui.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/cli-tui.png" alt="CLI TUI" style="width: 60rem; border: 1px solid black;">
+  </div>
+</center>
+
 
 ```bash
 Usage:
