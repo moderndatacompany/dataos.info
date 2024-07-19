@@ -655,7 +655,7 @@ lakehouse:
 
 **Sub-attributes:**
 
-Sub-attributes of `resources` can be found on this [link](/resources/service/yaml_configuration_attributes/#resources).
+Sub-attributes of `resources` can be found on this [link](/resources/service/configurations/#resources).
 
 ---
 

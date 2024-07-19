@@ -402,7 +402,7 @@ name: sales360test
 **Description:** Represents the workspace where the resource is located or managed.
 
 <aside class="callout">
-🗣 Workspace is required and mandatory only for <a href="/resources/index">workspace-level resources</a>.
+🗣 Workspace is required and mandatory only for <a href="/resources/index/">workspace-level resources</a>.
 </aside>
 
 | Data Type | Requirement | Default Value | Possible Value |
@@ -576,7 +576,7 @@ ref: dataos://icebase:retail/customer
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| list of strings | optional | none | • alpha numeric values with the RegEx[a-z0-9]([-a-z0-9]*[a-z0-9]); a hyphen/dash is allowed as a special character
+| list of strings | optional | none | • alpha numeric values with the RegEx[a-z0-9][-a-z0-9]*[a-z0-9]; a hyphen/dash is allowed as a special character
 • total length of the string should be less than or equal to 48 characters |
 
 **Example Usage:**
