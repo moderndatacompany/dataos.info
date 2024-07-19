@@ -272,7 +272,7 @@ data:
 
 #### **`resources`**
 
-**Description:** Represents the resource mappings associated with the data product.
+**Description:** Represents the resource mappings associated with the Data Product.
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |

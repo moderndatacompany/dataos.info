@@ -36,7 +36,7 @@ workflow:
 ```
     
 
-To apply the scanner workflow manifest file, run the following command.
+To apply the Scanner Workflow manifest file, run the following command.
 
 ```shell
 
@@ -70,6 +70,8 @@ product get...complete
   
 
 ```
+## Deprecate the Data Product
+If a Data Product is no longer in use we can delete the Data Product. To delete a Data Product please follow the below steps.
 
 ### **Delete the Data Product**
 

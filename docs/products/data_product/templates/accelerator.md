@@ -767,7 +767,7 @@ Steps required to build this Data Product are:
 
 ### **Create Flare jobs for Data Ingestion and Transformation**
 
-In this Data Product we are utilizing Flare stack for the transformation of customer entity data, ensuring it is structured and optimized for further querying and analysis. 
+In this Data Product we are utilizing Flare Stack for the transformation of customer entity data, ensuring it is structured and optimized for further querying and analysis. 
 
 
 <details>
