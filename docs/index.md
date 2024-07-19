@@ -1,10 +1,10 @@
 # DataOS Documentaion
 
-In the rapidly evolving world of data, the need for robust, scalable, and efficient data products has never been more critical. DataOS is a platform that transforms how businesses create, manage, and leverage data products. By empowering business teams with the tools and autonomy to innovate, DataOS sets a new standard in data product development.
+In the rapidly evolving world of data, the need for robust, scalable, and efficient data products has never been more critical. DataOS is a platform that transforms how businesses create, manage, and leverage data products. DataOS empowers business teams to innovate by providing the tools and autonomy for data product development.
 
-DataOS is an enterprise-grade data product platform that enables organizations to build, manage, and share data products effortlessly. It provides the essential building blocks data developers require to create powerful data products that drive significant business outcomes. With DataOS, end users can harness data for better decision-making, driving value across the organization.
+DataOS is an enterprise-grade data product platform that enables organizations to build, manage, and share data products. It provides the essential building blocks, data developers require to create powerful data products that drive significant business outcomes. 
 
-The primary inspiration for DataOS comes directly from its users. DataOS development is driven by core principles tailored to address specific user needs and challenges:
+DataOS development is driven by core principles tailored to address specific user needs and challenges:
 
 - **Consumption Ready Layer**: DataOS streamlines data product consumption with context-aware discovery, secure exploration, reliable quality, and multi-interface activation through its self-serve architecture.
 
@@ -16,17 +16,44 @@ The primary inspiration for DataOS comes directly from its users. DataOS develop
 
 - **FinOps**: DataOS provides real-time insights into resource utilization, enabling organizations to monitor and control cloud spending effectively. This strategic approach promotes shared responsibility across teams, drives significant cost savings, improves operational efficiency, and facilitates informed financial decisions.
 
-DataOS continuously evolves to meet the real-world needs of data professionals. DataOS significantly lowers the total cost of ownership by streamlining data operations through task automation, minimizing data movement, and simplifying maintenance.
+DataOS continuously evolves to meet the real-world needs of data professionals. It significantly lowers the total cost of ownership by streamlining data operations through task automation, minimizing data movement, and simplifying maintenance.
 
 ## Navigating Documentation
 
-If you are new to DataOS, dataos.info is your go-to place for getting started with key technical concepts. Understanding these will help you develop data products efficiently with DataOS. For experienced developers looking to build solutions, our comprehensive how-to guides and reference docs are available to get you up to speed with data product creation. You'll find everything you need right here, whether starting out or diving deep.
+If you are new to DataOS, dataos.info is your go-to place for getting started with key technical concepts. Understanding these will help you develop data products efficiently with DataOS. For experienced developers looking to build solutions, how-to guides and reference docs are available to get you up to speed with data product creation. You'll find everything you need right here, whether starting or diving deep.
 
-The documentation website features a comprehensive navigation systemThe top menu bar includes essential options, providing quick access to key sections. A multi-level index is displayed on the left menu, allowing users to easily explore and dive deeper into specific topics within each category. 
+The documentation website features the top menu bar with the options like Getting Started, Data Products, Glossary, and Videos. A multi-level index is displayed on the left menu, allowing users to easily explore and dive deeper into specific topics within each category. 
 
-### **Discover the Essentials of DataOS**
+### **First Steps**
 
-The following documents will give you detailed insights into the core aspects of DataOS, including its philosophy, architecture, and data products. Explore these sections to understand how DataOS can transform your data operations and drive business value.
+The following sections in the top menu bar of the documentation will help you get started with DataOS.
+
+<div class= "grid cards" markdown>
+
+-   :material-content-duplicate:{ .lg .middle } **Getting Started**
+
+    ---
+
+    Get hands-on and up to speed with DataOS, and familiarize yourself with its capabilities.
+
+    [:octicons-arrow-right-24:  Learn more](/getting_started/)
+
+
+-   :material-network-pos:{ .lg .middle } **Data Product**
+
+    ---
+
+    Learn to create, deploy & manage domain-specific data products at scale.
+
+    
+    [:octicons-arrow-right-24: Explore more](/products/data_product/)
+
+
+</div>
+
+### **Core Aspects**
+
+The following sections of the documentation, located on the left menu, provide detailed insights into the DataOS philosophy and its architecture.
 
 <div class= "grid cards" markdown>
 
@@ -46,23 +73,6 @@ The following documents will give you detailed insights into the core aspects of
     Learn about the architecture of DataOS, built to democratize data, and accelerate data product creation.
 
     [:octicons-arrow-right-24: See more](/architecture/)
-
--   :material-network-pos:{ .lg .middle } **Data Product**
-
-    ---
-
-    Learn to create, deploy & manage domain-specific data products at scale.
-
-    
-    [:octicons-arrow-right-24: Explore more](/products/data_product/)
-
--   :material-content-duplicate:{ .lg .middle } **Getting Started with DataOS**
-
-    ---
-
-    Quickly get hands-on and up to speed with DataOS, and familiarize yourself with its capabilities.
-
-    [:octicons-arrow-right-24:  Learn more](/getting_started/)
 
 </div>
 
@@ -102,7 +112,7 @@ The Interfaces section in the documentation introduces various ways to interact 
 
 ### **Understand DataOS Resources**
 
-Resources section of the document will help you understand the primitives of DataOS that power the core functionalities necessary in any data stack. We have mapped these DataOS Resources to their functional role in the data stack:
+Resources section of the documentation will help you understand the primitives of DataOS that power the core functionalities necessary in any data stack. We have mapped these DataOS Resources to their functional role in the data stack:
 
 #### **Source Connectivity and Metadata management**
 
