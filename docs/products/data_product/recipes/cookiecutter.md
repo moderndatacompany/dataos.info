@@ -43,8 +43,9 @@ Follow these steps to create the Data Product template:
     - Click on "Clone" and select `HTTPS`. Copy the provided link.
         
         <div style="text-align: center;">
-        <img src="/products/data_product/recipes/cc.png" alt="username_mapping" />
-        </div>   
+        <img src="/products/data_product/recipes/cc.png" alt="Outlined Image" style="border:2px solid black; width: 50%; height: auto;">
+        </div>
+
         
 4. **Run Cookiecutter**:
     - In your terminal, run the following command, replacing `<bitbucket-username>` with your Bitbucket username and `<repository-link>` with the copied link:
