@@ -122,10 +122,14 @@ Superset is a business intelligence solution seamlessly integrated into DataOS. 
 ### **Manage Profile**
 
 DataOS Home app also enables you to manage your profile.
-<center> 
-![profile.png](/interfaces/profileinfo.png){: style="width:26rem;" }
-<figcaption align = "center"><i>Profile Information</i></figcaption>
+
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/profileinfo.png" alt="Profile Information" style="width:26rem; border:1px solid black;">
+    <figcaption align="center"><i>Profile Information</i></figcaption>
+  </div>
 </center>
+
 
 ### **Create Tokens**
 
@@ -136,22 +140,34 @@ API keys/tokens are used to authenticate requests to  DataOS resources. For exam
 1.  On the 'Profile' page, click on **Tokens**.
 
 2. Click on the **Add API Key** link.
-    <center>
-   ![integration-dataos-token-apikey.png](token_apikey.png){: style="width:41rem;" }
-   <figcaption align = "center"><i>Adding API key</i></figcaption>
-   </center>
+
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/token_apikey.png" alt="Adding API key" style="width:41rem; border:1px solid black;">
+    <figcaption align="center"><i>Adding API key</i></figcaption>
+  </div>
+</center>
+
 
 3. Type in the name for this token and also set the validity period of your token based on the security requirements as per your business needs. Click **Save** to create one for you.
-    <center>
-   ![integration-add-key.png](add_key.png){: style="width:41rem;" }
-   <figcaption align = "center"><i>Providing name for the token</i></figcaption>
-   </center>
+
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/add_key.png" alt="Providing name for the token" style="width:41rem; border:1px solid black;">
+    <figcaption align="center"><i>Providing name for the token</i></figcaption>
+  </div>
+</center>
+
 
 4. The API key is listed below. Clicking on the “eye icon” will make the full API key visible. Click on the API key to copy it.
-    <center>
-   ![integration-key-created.png](key_created.png){: style="width:41rem;" }
-   <figcaption align = "center"><i>API key created</i></figcaption>
-   </center>
+
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/key_created.png" alt="API key created" style="width:41rem; border:1px solid black;">
+    <figcaption align="center"><i>API key created</i></figcaption>
+  </div>
+</center>
+
  
 
 #### **Create Tokens Using CLI**
@@ -188,7 +204,11 @@ INFO[0000] 🔑 user apikey...complete
 
 ### **View Depots**
 You can see a complete list of depots created in your DataOS context for accessing data sources.
+
 <center>
-![Depot](/interfaces/depots.png){: style="width:41rem;" }
-<figcaption align = "center"><i>Depots</i></figcaption>
+  <div style="text-align: center;">
+    <img src="/interfaces/depots.png" alt="Depots" style="width:41rem; border:1px solid black;">
+    <figcaption align="center"><i>Depots</i></figcaption>
+  </div>
 </center>
+

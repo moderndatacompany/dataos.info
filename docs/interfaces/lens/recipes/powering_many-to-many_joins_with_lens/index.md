@@ -37,11 +37,11 @@ To answer it, we would need a junction table that can pave the path of the join 
 The Direction of Join
 
 > 🗣 Note: The direction of the join will always be the
-[transitive join](../working_with_transitive_joins.md).
+[transitive join](/interfaces/lens/recipes/working_with_transitive_joins/).
  
 <center>
 
-![Picture](./untitled.png)
+![Picture](/interfaces/lens/recipes/powering_many-to-many_joins_with_lens/untitled.png)
 
 </center>
 
@@ -129,40 +129,34 @@ Below are the screenshots, depicting how you can answer the different questions 
 
 1. All orders placed for different product_category
  
-    <center>
+<center>
+  <div style="text-align: center;">
+    <img src="/docs/interfaces/lens/recipes/powering_many-to-many_joins_with_lens/untitled1.png" alt="Order key with category key" style="width:100%; border:1px solid black;">
+    <figcaption align="center">Order key with category key</figcaption>
+  </div>
+</center>
 
-    ![Order key with category key](./untitled_1.png)
-
-    </center>
-
-    <figcaption align = "center">Order key with category key</figcaption>
-    <br>
 
 1. All products belonging to a category
  
-    <center>
-
-    ![Category with product](./untitled_2.png)
-
-    </center>
-
-
-    <figcaption align = "center">Category with product</figcaption>
-    <br>
+<center>
+  <div style="text-align: center;">
+    <img src="/docs/interfaces/lens/recipes/powering_many-to-many_joins_with_lens/untitled_2.png" alt="Category with product" style="width:100%; border:1px solid black;">
+    <figcaption align="center">Category with product</figcaption>
+  </div>
+</center>
 
 1. Combining sales and product to view all products placed for an order
     
     *Can only be answered if you have a many-to-many join*
          
-    <center>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/recipes/powering_many-to-many_joins_with_lens/untitled_3.png" alt="Set of combinations of orders with product" style="width:100%; border:1px solid black;">
+    <figcaption align="center">Set of combinations of orders with product</figcaption>
+  </div>
+</center>
 
-    ![Set of combinations of orders with product](./untitled_3.png)
-
-    </center>
-
-    <figcaption align = "center">Set of combinations of orders with product</figcaption>
-
-    <br>
 
 ## Managing cases without a junction table
 

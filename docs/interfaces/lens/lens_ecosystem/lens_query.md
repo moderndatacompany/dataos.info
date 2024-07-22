@@ -7,13 +7,11 @@ The Lens can be queried by the end-user using Lens Queries which are essentially
 Currently, one can access the Lens service via Gateway. Queries from various interfaces like Lens Explorer, Workbench, Atlas, Tableau, Power BI, etc., land on Gateway. Gateway analyses each incoming query and decides whether to invoke Lens Service or not. If the service has to be used, Gateway will send the query text to Lens Service, and the transpiler within the Lens Service will return the expanded SQL query to the Gateway. After receiving the expanded SQL query, Gateway sends it to Minerva for execution. Minerva, with the help of Heimdall, implements policies and returns the governed result to the Gateway.
  
 <center>
-
-![Picture](./lens_query/query_lifecycle.png)
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/lens_ecosystem/lens_query/query_lifecycle.png" alt="Lifecycle of a Lens Query" style="width:100%; border:1px solid black;">
+    <figcaption align="center">Lifecycle of a Lens Query</figcaption>
+  </div>
 </center>
-
-<figcaption align = "center">Lifecycle of a Lens Query</figcaption>
-<br>
 
 
 ## Lens Query Grammar
@@ -147,4 +145,4 @@ FROM
 ## Lens Query Language (LQL) Errors and Solutions
 When you run a Lens query on Workbench, Notebook or any other interface like BI tools, you might come across errors concerning syntax or case sensitivity in date filters. These issues can prevent the Lens query from functioning properly. Refer to the following document for the common errors and their solutions.
 
-[Lens Query Language (LQL) Common Errors](lens_query/lens_query_language_error.md)
+[Lens Query Language (LQL) Common Errors](/interfaces/lens/lens_ecosystem/lens_query/lens_query_language_error/)

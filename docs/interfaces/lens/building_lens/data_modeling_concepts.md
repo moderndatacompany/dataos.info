@@ -10,9 +10,7 @@ The reason is that business users cannot codify their mental model of the busine
 And as a result, Data Analyst becomes a translator between business logic and data logic. 
 
 <center>
-  <div style="text-align: center;">
-    <img src="/interfaces/lens/building_lens/data_modeling_concepts/datamodeling-1.png" alt="Data Modeling Concept 1" style="width:31rem;">
-  </div>
+    <img src="/interfaces/lens/building_lens/data_modeling_concepts/datamodeling-1.png" >
 </center>
 
  
@@ -21,6 +19,7 @@ This technique works well for small or few firms, but it won't function in more 
 So, there has to be a different approach to solving these issues. We map the knowledge of data analysts somewhere so everyone can use it. 
 
 <aside class="callout">
+
 🗣 Data modeling is the process of conceptually representing data objects, connections between data objects, and the rules that govern them. The data model emphasizes what data is needed and how it should be organized.
 
 </aside>
@@ -34,7 +33,6 @@ A data modeling layer is a piece of code that contains mappings between data and
     <img src="/interfaces/lens/building_lens/data_modeling_concepts/data_modeling_2.png" alt="Data Modeling Concept 2" style="width:31rem;">
   </div>
 </center>
-
 
 
 After creating this data modeling layer, we can solve a lot of business use cases:
@@ -135,7 +133,7 @@ A dimensional schema physically separates the measures that quantify the busines
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/lens/building_lens/data_modeling_concepts/Copy_of_Untitled_Diagram(6).png" alt="Diagram" style="width:31rem;">
+    <img src="/interfaces/lens/building_lens/data_modeling_concepts/Copy_of_Untitled_Diagram(6).png" alt="Diagram" style="width:100%; border:1px solid black;">
   </div>
 </center>
 
@@ -153,7 +151,7 @@ Dimension Table: customers, products, territories
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/lens/building_lens/data_modeling_concepts/Copy_of_Untitled_Diagram(7).png" alt="Diagram" style="width:31rem;">
+    <img src="/interfaces/lens/building_lens/data_modeling_concepts/Copy_of_Untitled_Diagram(7).png" alt="Diagram" style="width:100%; border:1px solid black;">
   </div>
 </center>
 
@@ -165,10 +163,11 @@ As data professionals, we deal with various problems when generating data, manip
 Funnel analysis becomes complicated when you are left with just two resources SQL and raw data. That’s where activity schema comes into the picture.
 
 <center>
-
-![act-stream-image.png](data_modeling_concepts/act-stream-image.png){: style="width:31rem;" }
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/building_lens/data_modeling_concepts/act-stream-image.png" alt="Act Stream" style="width:100%; border:2px solid black;">
+  </div>
 </center>
+
 
 It is a framework for modeling data warehouses. A single time-series table is used to build an activity schema, with the option of adding a small number of enrichment tables for additional metadata.
 
@@ -186,9 +185,9 @@ An activity schema models an **entity** taking a sequence of **activities** ov
 </aside>
 
 <center>
-
-![act-a-a.png](data_modeling_concepts/act-a-a.png){: style="width:31rem;" }
-
+  <div style="text-align: center;">
+    <img src="/data_modeling_concepts/act-a-a.png" style="width:100%; border:1px solid black;">
+  </div>
 </center>
 
 
@@ -202,9 +201,9 @@ Each Activity schema defines a single business concept. For example, it can be a
 </aside>
 
 <center>
-
-![abc.png](data_modeling_concepts/abc.png){: style="width:31rem;" }
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/building_lens/data_modeling_concepts/abc.png" alt="ABC Diagram" style="width:100%; border:1px solid black;">
+  </div>
 </center>
 
 
@@ -216,9 +215,9 @@ Activity Schema consists of two things :
 Let’s assume you have a use case with six tables and have to create a dashboard that solves a client's demand.
 
 <center>
-
-![db-dig.png](data_modeling_concepts/db-dig.png){: style="width:31rem;" }
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/building_lens/data_modeling_concepts/db-dig.png" alt="DB Diagram" style="width:100%; border:1px solid black;">
+  </div>
 </center>
 
 
@@ -228,9 +227,9 @@ Despite only having six tables, it's confusing when the real-world data become i
 Now while using activity schema, we have to model the raw data and create a table, say activity_stream 
 
 <center>
-
-![act-db.png](data_modeling_concepts/act-db.png){: style="width:31rem;" }
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/building_lens/data_modeling_concepts/act-db.png" alt="ACT Database" style="width:60%; border:1px solid black;">
+  </div>
 </center>
 
 
