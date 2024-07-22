@@ -13,8 +13,9 @@ After creating the template, you can now update the template with required confi
 - Open `username_mapping.py`  in your code editor.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/recipes/Untitled%20(12).png" alt="username_mapping" />
+    <img src="/products/data_product/recipes/Untitled%20(12).png" alt="Outlined Image" style="border:1px solid black; width: 35%; height: auto;">
     </div>
+
 
 - Add your Git username, Bitbucket username, and DataOS user ID in the specified order as shown below:
     
@@ -44,8 +45,10 @@ After creating the template, you can now update the template with required confi
 - Go to `Repository Settings` > `Repository variables`.
 - Add repository variables as shown in the image provided, ensuring to input the correct credentials obtained from your DataOS specialist.
     <div style="text-align: center;">
-    <img src="/products/data_product/recipes/Untitled%20(13).png" alt="username_mapping" />
+    <img src="/products/data_product/recipes/Untitled%20(13).png" alt="username_mapping" style="border:1px solid black; width: 80%; height: auto;">
     </div>
+
+
 
 ## Push Changes
 
@@ -53,8 +56,9 @@ After creating the template, you can now update the template with required confi
 - Pushing the changes will trigger the CI/CD pipeline to start deploying automatically. Alternatively, you can manually initiate the deployment by clicking on the `Run pipeline` option in the Pipelines section of your Bitbucket repository as shown below.
     
     <div style="text-align: center;">
-    <img src="/products/data_product/recipes/image1.png" alt="username_mapping" />
-    </div>    
+    <img src="/products/data_product/recipes/image1.png" alt="username_mapping" style="border:1px solid black; width: 80%; height: auto;">
+    </div>
+ 
 
     
 
