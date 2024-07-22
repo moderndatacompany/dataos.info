@@ -11,15 +11,23 @@ This documentation aims to help users understand and address common errors encou
 
 An ambiguous error may occur when copying LQL containing measures/dimensions, typically due to a space between the "(" symbol and the word "PARAMS." This can result in syntax errors, impacting query functionality.
 
-![Ambiguous error due to space](lens_query_language_error/error_due_to_space.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/lens_ecosystem/lens_query/lens_query_language_error/error_due_to_space.png" alt="Ambiguous error due to space" style="width:100%; border:1px solid black;">
+    <figcaption><i>Ambiguous error due to space</i></figcaption>
+  </div>
+</center>
 
-Ambiguous error due to space
 
 ### **Suggested Solution**
 
 To resolve this error, remove the space between the "(" symbol and the word "PARAMS" in the LQL query. This modification should rectify the syntax error and make the query functional again. 
 
-![solution_remove_space.png](lens_query_language_error/solution_remove_space.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/lens_ecosystem/lens_query/lens_query_language_error/solution_remove_space.png" alt="Solution to remove space" style="width:100%; border:1px solid black;">
+  </div>
+</center>
 
 Here's how the LQL query should look after this modification:
 
@@ -50,14 +58,21 @@ FROM
 
 In LQL, using uppercase keywords like "AFTER" in date filters may lead to errors, as the system expects these keywords to be in lowercase.
 
-![Error due to uppercase keywords](lens_query_language_error/syntax_error.png)
-
-Error due to uppercase keywords
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/lens_ecosystem/lens_query/lens_query_language_error/syntax_error.png" alt="Error due to uppercase keywords" style="width:100%; border:1px solid black;">
+    <figcaption><i>Error due to uppercase keywords</i></figcaption>
+  </div>
+</center>
 
 ### **Suggested Solution**
 Ensure keywords like "AFTER" and “BEFORE” are in lowercase. Modify the LQL query accordingly:
 
-![solution_changecase.png](lens_query_language_error/solution_changecase.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/lens_ecosystem/lens_query/lens_query_language_error/solution_changecase.png" alt="Solution change case" style="width:100%; border:1px solid black;">
+  </div>
+</center>
 
 Here's how the LQL query should look after this modification:
 
@@ -87,17 +102,23 @@ FROM
 
 Performing operations inside LQL subqueries from the DataOS Workbench can result in syntax errors, especially if not using the specified syntax for LQL queries.
 
-![Error due to renaming of column inside the sub query](lens_query_language_error/rename_inside_subquery.png)
-
-Error due to renaming of column inside the sub query
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/lens_ecosystem/lens_query/lens_query_language_error/rename_inside_subquery.png" alt="Error" style="width:100%; border:1px solid black;">
+    <figcaption><i>Error due to renaming of column inside the sub query</i></figcaption>
+  </div>
+</center>
 
 ### **Suggested Solution**
 
 Follow the correct syntax for operations like renaming columns, casting functions, or using range functions in LQL queries. Ensure these operations are executed outside the sub-query to avoid syntax errors.
 
-![Rename and cast operations outside the sub-query](lens_query_language_error/solution_rename.png)
-
-Rename and cast operations outside the sub-query
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/lens_ecosystem/lens_query/lens_query_language_error/solution_rename.png" alt="Rename and cast operations outside the sub-query" style="width:100%; border:1px solid black;">
+    <figcaption><i>Rename and cast operations outside the sub-query</i></figcaption>
+  </div>
+</center>
 
 **a) Renaming Column**
 
@@ -153,11 +174,18 @@ The problem seems to be arising due to there being no space between the "(" symb
 
 The issue likely arises because there is no space between the "(" symbol and the word "RANGE." This absence of space can cause a syntax error. 
 
-![Error due to no space after RANGE keyword](lens_query_language_error/error_range.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/lens_ecosystem/lens_query/lens_query_language_error/error_range.png" alt="Error due to no space after RANGE keyword" style="width:100%; border:1px solid black;">
+    <figcaption><i>Error due to no space after RANGE keyword</i></figcaption>
+  </div>
+</center>
 
-Error due to no space after RANGE keyword
-
-![solution_add_space.png](lens_query_language_error/solution_add_space.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/lens_ecosystem/lens_query/lens_query_language_error/solution_add_space.png" alt="Solution to add space" style="width:100%; border:1px solid black;">
+  </div>
+</center>
 
 ### **Suggested Solution**
 

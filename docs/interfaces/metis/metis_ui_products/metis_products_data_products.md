@@ -4,8 +4,13 @@ Metis collects metadata of data products. The collected metadata is stored in th
 
 On selecting **Data Products**,the following information will appear on the screen:
 
-![dps.png](metis_products_data_products/dps.png)
-<figcaption align = "center"> List of data products </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/metis_products_data_products/dps.png" alt="List of data products" style="border:1px solid black;">
+    <figcaption align="center">List of data products</figcaption>
+  </div>
+</center>
+
 
 ## Filter pane
 
@@ -44,8 +49,13 @@ Each data product in the list will feature a Card view that displays the followi
 
 In the Card view, click anywhere except the data product name to get the overview for quick reference.
 
-![dp_overview.png](metis_products_data_products/dp_overview.png)
-<figcaption align = "center"> Quick information on the side pane  </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/metis_products_data_products/dp_overview.png" alt="Quick information on the side pane" style="border:1px solid black;">
+    <figcaption align="center">Quick information on the side pane</figcaption>
+  </div>
+</center>
+
 
 This includes the following quick reference information:
 
@@ -86,20 +96,35 @@ The subsequent **tabs** on the Details Page provide more detailed information on
 
 ### **Details**
 
-![dp_details.png](metis_products_data_products/dp_details.png)
-<figcaption align = "center"> Comprehensive details for a product </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/metis_products_data_products/dp_details.png" alt="Comprehensive details for a product" style="border:1px solid black;">
+    <figcaption align="center">Comprehensive details for a product</figcaption>
+  </div>
+</center>
+
 
 ### **Outputs**
 
-![dp_outputs.png](metis_products_data_products/dp_outputs.png)
-<figcaption align = "center">  Outputs provided by data product</figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/metis_products_data_products/dp_outputs.png" alt="Outputs provided by data product" style="border:1px solid black;">
+    <figcaption align="center">Outputs provided by data product</figcaption>
+  </div>
+</center>
+
 
 ### **SLOs**
 
 You can view the list of Service Level objectives (quality tests) created for your data product to monitor the data quality and the status of each run. 
 
-![dp_slo.png](metis_products_data_products/dp_slo.png)
-<figcaption align = "center">SLOs for data product  </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/metis_products_data_products/dp_slo.png" alt="SLOs for data product" style="border:1px solid black;">
+    <figcaption align="center">SLOs for data product</figcaption>
+  </div>
+</center>
+
 
 Here, you will get the information about the tests designed as per the quality objectives set for your data product.
 
@@ -111,22 +136,37 @@ Here, you will get the information about the tests designed as per the quality o
 
 Click on the information icon to see the details of SLO. You can select the number of days to observe the trend.
 
-![dp_slodetails.png](metis_products_data_products/dp_slodetails.png)
-<figcaption align = "center"> SLO details </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/metis_products_data_products/dp_slodetails.png" alt="SLO details" style="border:1px solid black;">
+    <figcaption align="center">SLO details</figcaption>
+  </div>
+</center>
+
 
 ### **Policies**
 
 Here, you can get the information about the access rights for the resources of a data product. In case you dont have enough access rights then the applied policies will be listed for your information. You can contact administrator to get the access to the resources needed. The details include the resource name and policies applied and access information.
 
-![dp_policy.png](metis_products_data_products/dp_policy.png)
-<figcaption align = "center"> Information about access rights </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/metis_products_data_products/dp_policy.png" alt="Information about access rights" style="border:1px solid black;">
+    <figcaption align="center">Information about access rights</figcaption>
+  </div>
+</center>
+
 
 ### **Lineage**
 
 The lineage graph illustrates the relationships between workflows/jobs and derived datasets, providing a clear representation of how data entities are related and how they may have changed over time. You can get the details of data flow across workflows and the datasets they produce. Additionally, you can learn about the other dependent datasets. You can explore more by clicking on the dataset/workflow nodes of the lineage graph.
 
-![dp_lineage.png](metis_products_data_products/dp_lineage.png)
-<figcaption align = "center"> Data product lineage </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/metis_products_data_products/dp_lineage.png" alt="Data product lineage" style="border:1px solid black;">
+    <figcaption align="center">Data product lineage</figcaption>
+  </div>
+</center>
+
 
 ### **Activity Feeds & Tasks**
 
@@ -136,5 +176,9 @@ This section compiles all activities, including tasks and conversations, providi
 
 This tab displays information about the resources associated with your data product. The data product comprises these resources.
 
-![dp_resources.png](metis_products_data_products/dp_resources.png)
-<figcaption align = "center">Resources in data product  </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/metis_products_data_products/dp_resources.png" alt="Resources in data product" style="border:1px solid black;">
+    <figcaption align="center">Resources in data product</figcaption>
+  </div>
+</center>
