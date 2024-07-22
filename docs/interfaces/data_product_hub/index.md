@@ -36,7 +36,7 @@ Data Product Hub home page:
 </center>
 =======
 <div style="text-align: center;">
-  <img src="/interfaces/data_product_hub/Untitled%20(12).png" alt="Outlined Image" style="border:2px solid black;">
+  <img src="/interfaces/data_product_hub/Untitled%20(12).png" alt="Outlined Image" style="border:2px solid black; ">
 </div>
 
 
