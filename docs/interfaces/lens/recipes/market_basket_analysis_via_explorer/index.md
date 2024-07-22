@@ -35,9 +35,9 @@ Our goal is to identify top-selling brands by analyzing brands with high repurch
 Once we have selected the dimensions and measures in the resulting table, we can filter our results to only include brands belonging to the ‘Spirit’ category sold in the winter of 2021. We can additionally order and limit our results to only show the top 5 brands.
  
 <center>
-
-![Picture](./untitled.png)
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/recipes/market_basket_analysis_via_explorer/untitled.png" alt="Picture" style="width:100%; border:1px solid black;">
+  </div>
 </center>
 
 Just a matter of a few clicks, and we have our findings.
@@ -53,10 +53,11 @@ Based on the previous analysis, we have narrowed down the product for which we w
 In the Options section, we can set filters to achieve whatever level of granularity we want.
  
 <center>
-
-![Picture](./untitled_1.png)
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/recipes/market_basket_analysis_via_explorer/untitled_1.png" alt="Picture" style="width:100%; border:1px solid black;">
+  </div>
 </center>
+
 
 ### Findings
 
@@ -69,10 +70,11 @@ We now have our Audience of loyal brand customers. All we need is the product fr
 After getting our Brand Loyal customers, we now wish to identify the product that is frequently purchased together with ‘Captain Morgan’s Spiced Rum.’ Once we have the frequently purchased product, we can run a recommendation campaign for our Loyal customers.
  
 <center>
-
-![Picture](./untitled_2.png)
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/recipes/market_basket_analysis_via_explorer/untitled_2.png" alt="Picture" style="width:100%; border:1px solid black;">
+  </div>
 </center>
+
 
 ### Findings
 
@@ -87,10 +89,11 @@ It’s time to analyze our campaign performance.
 After running the campaign, we wish to track Total Revenue metrics that will help us understand if the campaign was a success or a failure. We will observe total revenue for Crown Royal’s corporate class ‘Whisky’ daily for the last seven days.
  
 <center>
-
-![Picture](./untitled_3.png)
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/recipes/market_basket_analysis_via_explorer/untitled_3.png" alt="Picture" style="width:100%; border:1px solid black;">
+  </div>
 </center>
+
 
 ### Findings
 
@@ -101,33 +104,31 @@ We observe a dip of 10.3% compared to last week in revenue.
 After observing a dip in the revenue despite running the campaign, we would want to track order cancellations to understand the anomalies further.
  
 <center>
-
-![Picture](./untitled_4.png)
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/recipes/market_basket_analysis_via_explorer/untitled_4.png" alt="Picture" style="width:100%; border:1px solid black;">
+  </div>
 </center>
+
 
 We can further drill down to identify what all dimensions are resulting in these anomalies.
  
 <center>
-
-![Overall anomaly detection](./untitled_5.png)
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/recipes/market_basket_analysis_via_explorer/untitled_5.png" alt="Overall anomaly detection" style="width:100%; border:1px solid black;">
+    <figcaption align = "center">Overall anomaly detection</figcaption>
+  </div>
 </center>
 
-<figcaption align = "center">Overall anomaly detection</figcaption>
-<br>
 
 We can also check anomalies for specific dimensions if there are any.
  
 <center>
-
-![Anomalies detection Sub-Dimensions](./untitled_6.png)
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/recipes/market_basket_analysis_via_explorer/untitled_6.png" alt="Anomalies detection Sub-Dimensions" style="width:100%; border:1px solid black;">
+    <figcaption align = "center">Anomalies detection Sub-Dimensions</figcaption>
+  </div>
 </center>
 
-<figcaption align = "center">Anomalies detection Sub-Dimensions</figcaption>
-
-<br>
 
 ### Findings
 
@@ -140,10 +141,11 @@ We can also check anomalies for specific dimensions if there are any.
 After observing the metrics affecting our campaign, we want to investigate whether increased back order rates are causing order cancellation. If yes, which are the top three brands with high back order rates? Based on the investigation, we will exclude them from our campaign.
  
 <center>
-
-![Picture](./untitled_7.png)
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/recipes/market_basket_analysis_via_explorer/untitled_7.png" alt="Picture" style="width:100%; border:1px solid black;">
+  </div>
 </center>
+
 
 ### Findings
 

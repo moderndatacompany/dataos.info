@@ -49,10 +49,11 @@ tag:
 Now define all the data elements with their attributes.
 
 <center>
-
-![MicrosoftTeams-image (175).png](tutorial_lens/elements_lens.png){: style="width:36rem;" }
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/building_lens/tutorial_lens/elements_lens.png" alt="MicrosoftTeams-image (175)" style="width:36rem; border:1px solid black;">
+  </div>
 </center>
+
 
 ### **Entities**
 We will start with mapping the `Customer` entity.
@@ -1247,25 +1248,46 @@ Here is the complete example for the sports retail data lens.
 
 After defining the Lens, the next step is to deploy it into the DataOS environment.
 
-![postman1.png](tutorial_lens/postman1.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/building_lens/tutorial_lens/postman1.png" alt="postman1" style="width:36rem; border:1px solid black;">
+  </div>
+</center>
 
-For the deployment process, the Lens YAML code is copied into the body section and the headers are selected in Postman. Finally, "Send" button is clicked to initiate the deployment.
+<p>For the deployment process, the Lens YAML code is copied into the body section and the headers are selected in Postman. Finally, "Send" button is clicked to initiate the deployment.</p>
 
-![postman2.png](tutorial_lens/postman2.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/building_lens/tutorial_lens/postman2.png" alt="postman2" style="width:36rem; border:1px solid black;">
+  </div>
+</center>
 
-## Accessing Lens
+Accessing Lens
 
 Lens is created in DataOS environment, you can use it to gain insights from your data, run queries, generate visualizations, and perform various analyses.
 
-![Lens_created.png](tutorial_lens/Lens_created.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/building_lens/tutorial_lens/Lens_created.png" alt="Lens Created" style="width:36rem; border:1px solid black;">
+  </div>
+</center>
 
 Click on the Lens to see its schema, various entities and relationships which you defined in YAML.
 
-![schema_relation.png](tutorial_lens/schema_relation.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/building_lens/tutorial_lens/schema_relation.png" alt="Schema Relation" style="width:36rem; border:1px solid black;">
+  </div>
+</center>
 
 Below is a graphical diagram illustrating the relationships between different entities:
 
-![diagram.png](tutorial_lens/diagram.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/building_lens/tutorial_lens/diagram.png" alt="Diagram" style="width:36rem; border:1px solid black;">
+  </div>
+</center>
+
 
 Next, let's dive into the analysis of date-wise orders.
 
@@ -1274,7 +1296,11 @@ Next, let's dive into the analysis of date-wise orders.
 3. Run your query, and if necessary, provide any parameter values required for your analysis.
 4. You will see the results and charts displayed on the screen. Behind the scenes, Lens will automatically generate a Lens query for your selection and also generate the corresponding SQL query.
 
-![date_wise_order_param.png](tutorial_lens/date_wise_order_param.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/building_lens/tutorial_lens/date_wise_order_param.png" alt="Date Wise Order Param" style="width:36rem; border:1px solid black;">
+  </div>
+</center>
 
 ## Running Queries
 
@@ -1284,24 +1310,39 @@ As we have fields, dimensions, and measures in place, it is very easy to use Len
 
 Select the number of returns (**Returns**) and execute the query. You can also visualize the data using a chart. This analysis is valuable for identifying customer dissatisfaction and assessing product performance. It enables proactive measures to address any issues.
 
-![return_by_country.png](tutorial_lens/return_by_country.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/building_lens/tutorial_lens/return_by_country.png" alt="Return by Country" style="width:36rem; border:1px solid black;">
+  </div>
+</center>
+
 
 Automatically Generated Lens Query:
 
-![returns_country_lquery.png](tutorial_lens/returns_country_lquery.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/building_lens/tutorial_lens/returns_country_lquery.png" alt="Automatically Generated Lens Query" style="width:36rem; border:1px solid black;">
+  </div>
+</center>
 
 The corresponding SQL query was generated for the Lens query.
 
-![returns_country_query.png](tutorial_lens/returns_country_query.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/building_lens/tutorial_lens/returns_country_query.png" alt="Generated SQL Query" style="width:36rem; border:1px solid black;">
+  </div>
+</center>
+
 
 ### **Most Frequent Order Analysis**
 
 Select customer_key(**Customer**) and number of orders (**Sales**) for the running query.  You can choose the sorting order and limit the number of records in the user interface.
 
+
 <center>
-
-![freq_order.png](tutorial_lens/freq_order.png){: style="width:36rem;" }
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/building_lens/freq_order.png" alt="Frequency Order" style="width:36rem; border:1px solid black;">
+  </div>
 </center>
 
 
@@ -1309,16 +1350,21 @@ Select customer_key(**Customer**) and number of orders (**Sales**) for the runni
 
 Select the customer key, customer lifespan in months, and email address from the **Customer** entity. This query helps run email campaigns targeting loyal customers.
 
-![lifespan.png](tutorial_lens/lifespan.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/building_lens/tutorial_lens/lifespan.png" alt="Lifespan" style="width:36rem; border:1px solid black;">
+  </div>
+</center>
+
 
 ### **Product Category Share Order by Year**
 
 Select the product category share order and year from **Sales** entity.  Set the new value for the product category.
 
 <center>
-
-![prod_cat_share.png](tutorial_lens/prod_cat_share.png){: style="width:36rem;" }
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/building_lens/tutorial_lens/prod_cat_share.png" alt="Product Category Share" style="width:36rem; border:1px solid black;">
+  </div>
 </center>
 
 
@@ -1326,7 +1372,12 @@ Select the product category share order and year from **Sales** entity.  Set the
 
 Select date-wise order (**Sales)** and the number of orders (**Sales**). Specify a specific date as input and execute the query.
 
-![date_wise_orders.png](tutorial_lens/date_wise_orders.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/building_lens/tutorial_lens/date_wise_orders.png" alt="Date Wise Orders" style="width:36rem; border:1px solid black;">
+  </div>
+</center>
+
 
 ### **Compare Two Months' Revenue by Sub-Category**
 
@@ -1334,7 +1385,8 @@ Select month1 revenue and month2 revenue (Sales) along with Product sub-category
 
 
 <center>
-
-![compare_2_months.png](tutorial_lens/compare_2_months.png){: style="width:36rem;" }
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/building_lens/tutorial_lens/compare_2_months.png" alt="Compare 2 Months" style="width:36rem; border:1px solid black;">
+  </div>
 </center>
+

@@ -13,14 +13,21 @@ To learn more about how to create and add visualization to your dashboard, click
 
 Any dashboard created by a user can be shared with another user via the 'Manage Permissions' option. Any user added can edit the Dashboard, i.e., add/edit and delete visualizations, rearrange the windows, etc. However, the author of the dashboard reserves the right to share the dashboard and add other users.
 
-![Sharing a dashboard](/interfaces/atlas/dashboards/manage_permissions.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/dashboards/manage_permissions.png" alt="Sharing a dashboard" style="width:60rem; border:1px solid black;">
+    <figcaption><i>Sharing a dashboard</i></figcaption>
+  </div>
+</center>
 
-<figcaption align = "center">Sharing a dashboard</figcaption>
 
 ## Dashboard Refresh
 
 To force a refresh, click the **Refresh** button on the upper-right of the dashboard editor. This runs all the dashboard queries and updates its visualizations.
 
-![Refresh schedule options](/interfaces/atlas/dashboards/refresh.png)
-
-<figcaption align = "center">Refresh schedule options</figcaption>
+<center>
+ <div style="text-align: center;">
+    <img src="/interfaces/atlas/dashboards/refresh.png" alt="Sharing a dashboard" style="width:60rem; border:1px solid black;">  
+    <figcaption><i>Refresh schedule options</i></figcaption>
+  </div>
+</center>

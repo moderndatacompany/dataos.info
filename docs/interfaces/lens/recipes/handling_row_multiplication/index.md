@@ -102,11 +102,10 @@ select * from lens(select clickstream.abc from retail)
 ```
 
 While querying ‘order_id_clickstream,’ we will get a row multiplication error.
- 
 <center>
-
-![Picture](./untitled.png)
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/recipes/handling_row_multiplication/untitled.png" alt="Picture" style="width:100%; border:1px solid black;">
+  </div>
 </center>
 
 A clickstream entity is called in the query results in row multiplication as multiple rows are generated for the ‘order_id_clickstream’ column instead of a single unique row. Since clickstream’s dimension is referencing the order entity, which has multiple rows corresponding to each row of clickstream.

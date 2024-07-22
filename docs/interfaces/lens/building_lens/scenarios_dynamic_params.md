@@ -45,10 +45,11 @@ You start by defining three measures:
 > 
 
 <center>
-
-![Image](scenarios_dynamic_params/untitled.png){: style="width:31rem;" }
-
+  <div style="text-align: center;">
+    <img src="/scenarios_dynamic_params/untitled.png" alt="Image" style="width:31rem; border:1px solid black;">
+  </div>
 </center>
+
 
 ### **The Traditional Way**
 
@@ -140,9 +141,9 @@ To achieve this goal there is a need to create a metric i.e churn rate so here t
 ```
 
 <center>
-
-![Image](scenarios_dynamic_params/untitled2.png){: style="width:36rem;" }
-
+  <div style="text-align: center;">
+    <img src="/scenarios_dynamic_params/untitled1.png" alt="Image" style="width:36rem; border:1px solid black;">
+  </div>
 </center>
 
 

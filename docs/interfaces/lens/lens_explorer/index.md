@@ -9,13 +9,11 @@ Users can visually compose search queries ranging from simple filters to using p
 Here is a quick guide for navigating through Lens Explorer.
  
 <center>
-
-![A graphical how to guide for Lens Explorer](/interfaces/lens/lens_explorer/guide_lens_explorer.png)
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/lens_explorer/guide_lens_explorer.png" alt="A graphical how to guide for Lens Explorer" style="width:100%; border:1px solid black;">
+    <figcaption><i>A graphical how to guide for Lens Explorer</i></figcaption>
+  </div>
 </center>
-
-<figcaption align = "center">A graphical how to guide for Lens Explorer</figcaption>
-<br>
 
 ## Procedure to Explore a Lens
 
@@ -27,6 +25,7 @@ Follow the steps within the Lens Explorer:
 - Step 4: Apply Params
 - Step 5: Run the Query
 - Step 6: Visualize the Results
+
 <aside class="callout">
 The presentation of the query results adheres to the data policies applied to the base table from which the lens is derived.
 </aside>

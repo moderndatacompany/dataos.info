@@ -8,8 +8,13 @@ The Users tab in Bifrost presents a list of users who have access to DataOS. Use
 
 </aside>
 
-<center>![userpanel](./userpanel.png)</center>
-<center>User tab in Bifrost</center>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/bifrost/userpanel.png" alt="User tab in Bifrost" style="width: 60rem; border: 1px solid black;">
+    <figcaption>User tab in Bifrost</figcaption>
+  </div>
+</center>
+
 
 ## User Details Panel
 
@@ -17,28 +22,49 @@ Clicking on a user in the list opens a detailed view, showcasing additional info
 
 - **Info:** Provides additional information or metadata about the user.
 
-<center>![userpanel](./userpanel2.png)</center>
-<center>Info section</center>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/bifrost/userpanel2.png" alt="Info section" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Info section</figcaption>
+  </div>
+</center>
 
 - **Tags:** Contains the list of tags the user possesses, who assigned it, and an action button to delete the certain tag.
 
-<center>![userpanel](./userpanel3.png)</center>
-<center>Tags section</center>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/bifrost/userpanel3.png" alt="Tags section" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Tags section</figcaption>
+  </div>
+</center>
 
--  **Grants:** Displays a summary of Use-Cases granted to the user. Furthermore, clicking on a Use-Case will display the list of tags have previously been assigned to this Use-Case. You can [Grant a Use-Case to the User](../bifrost/users.md#how-to-grant-a-use-case-to-a-user).
+- **Grants:** Displays a summary of Use-Cases granted to the user. Furthermore, clicking on a Use-Case will display the list of tags have previously been assigned to this Use-Case. You can [Grant a Use-Case to the User](/interfaces/bifrost/users#how-to-grant-a-use-case-to-a-user).
 
-<center>![userpanel](./userpanel4.png)</center>
-<center>Grants section</center>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/bifrost/userpanel4.png" alt="Grants section" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Grants section</figcaption>
+  </div>
+</center>
 
--  **Change Logs:** Logs any changes to the user's profile, providing an audit trail.
+- **Change Logs:** Logs any changes to the user's profile, providing an audit trail.
 
-<center>![userpanel](./userpanel5.png)</center>
-<center>Change logs section</center>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/bifrost/userpanel5.png" alt="Change logs section" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Change logs section</figcaption>
+  </div>
+</center>
 
 - **Advanced:** Contains federated User ID and Connection ID. The system assigns a unique identifier known as the federated user ID and Connection ID to each user for identification and authentication purposes. By default, the system uses the federated user ID to identify users. Alternatively, you can add other properties for user identification using “Add Property”.
 
-<center>![userpanel](./userpanel6.png)</center>
-<center>Advanced section</center>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/bifrost/userpanel6.png" alt="Advanced section" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Advanced section</figcaption>
+  </div>
+</center>
+
 
 ## How to create a User of type Application?
 
@@ -66,6 +92,7 @@ There's a difference between assigning a Role and granting a Use-Case to a user.
   However, when granting this Use-Case, it's essential for the user to include additional attribute called `RunasUser` in the Depot's configuration file, which is used to declare the ID of the operator who authorized them to create the depot. This ensures accountability and proper authorization, as the user's ability to create the depot is tied to a specific authorization granted by an operator.
 
 ???tip "Sample manifest template for depot creation"
+
     ```yaml hl_lines="11"
     name: bigquerydepot
     version: v1
@@ -85,7 +112,7 @@ There's a difference between assigning a Role and granting a Use-Case to a user.
             projectid: dbt-analytics-engineer-412212
             email: dbt-user@dbt-analytics-engineer-412212.iam.gserviceaccount.com
           files:
-            json_keyfile: ./bigquery.json
+            json_keyfile: /interfaces/bifrost/bigquery.json
       spec:                           
         project: dbt-analytics-engineer-412212
     ```
@@ -93,26 +120,42 @@ There's a difference between assigning a Role and granting a Use-Case to a user.
 ## How to add a user to a Role?
 
 To add a user to a Role follow the below steps:
-
 - Navigate to the users and select the desired user.
 
-  <center>![user1.png](../bifrost/users1.png)</center>
-  <center> Users tab </center>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/bifrost/users1.png" alt="Users tab" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Users tab</figcaption>
+  </div>
+</center>
 
 - Click on the user to access their details. Now, proceed to the "Tags" section and click on the "Add Role" button.
 
-  <center>![user2.png](../bifrost/users2.png)</center>
-   <center> Tags section under Users tab</center>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/bifrost/users2.png" alt="Tags section under Users tab" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Tags section under Users tab</figcaption>
+  </div>
+</center>
 
 - Search for "Role pulsar admin" and select it from the options provided. and click on "Add" to assign the Role.
 
-  <center>![user3.png](../bifrost/users3.png)</center>
-  <center> Add Role button under Tags section of Users tab</center>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/bifrost/users3.png" alt="Add Role button under Tags section of Users tab" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Add Role button under Tags section of Users tab</figcaption>
+  </div>
+</center>
 
 - Upon successful assignment, you will see the `roles:id:pulsar-admin` Role added to the list of the user's existing Tags and Roles.
 
-  <center>![user4.png](../bifrost/users4.png)</center>
-  <center> New Role tag added in the Tags section</center>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/bifrost/users4.png" alt="New Role tag added in the Tags section" style="width: 60rem; border: 1px solid black;">
+    <figcaption>New Role tag added in the Tags section</figcaption>
+  </div>
+</center>
+
 
 As seen, when assigning a Role, a corresponding Tag is assigned to the user. Alternatively, you can also add the Tag directly by following the below steps.
 
@@ -144,14 +187,22 @@ Following these steps will result in the selected Role or Tag being removed from
 
 - Navigate to the Grants section of the Users tab on Bifrost and select the particular user.
 
-<center>![grant_usecase_minerva1.png](../bifrost/grant_usecase_minerva1.png)</center>
-<center>All Use-cases assigned to the user are displayed</center>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/bifrost/grant_usecase_minerva1.png" alt="All Use-cases assigned to the user are displayed" style="width: 60rem; border: 1px solid black;">
+    <figcaption>All Use-cases assigned to the user are displayed</figcaption>
+  </div>
+</center>
 
 - Click on **Grant-Use-case**.
 - In the search-box, type in minerva and select **“Minerva Cluster Access”**.
-    
-<center>![grant_usecase_minerva2.png](../bifrost/grant_usecase_minerva2.png)</center>
-<center>Minerva Cluster Access Use-Case displayed</center>
+
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/bifrost/grant_usecase_minerva2.png" alt="Minerva Cluster Access Use-Case displayed" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Minerva Cluster Access Use-Case displayed</figcaption>
+  </div>
+</center>
 
 - Provide values for the feilds according to your use-case. Let’s say you want access to the miniature cluster, its catalog is icebase, under schema retail, which have table city:
     
@@ -171,4 +222,4 @@ Following these steps will result in the selected Role or Tag being removed from
     To grant a Use-Case to a Role follow the same steps just instead of going to user now you will go to Roles and select any existing Role.
 
 
-In addition to granting existing Use-Cases, you can also create a new Use-Case by generating a YAML Use-Case artifact. This is particularly useful if you identify a combination of predicate and object that isn't already present but may be relevant to your organization. To initiate the creation of a new Use-Case manifest file, click [here](../bifrost/use_cases.md#how-to-create-a-new-use-case).
+In addition to granting existing Use-Cases, you can also create a new Use-Case by generating a YAML Use-Case artifact. This is particularly useful if you identify a combination of predicate and object that isn't already present but may be relevant to your organization. To initiate the creation of a new Use-Case manifest file, click [here](/interfaces/bifrost/use_cases#how-to-create-a-new-use-case).
