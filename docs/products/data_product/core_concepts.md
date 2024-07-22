@@ -87,7 +87,7 @@ Data Product Developers designs, builds, and maintains the technical infrastruct
 
 ### **Data Product Consumer**
 
-Data Product Cosumers utilizes the Data Product to derive insights and make data-driven decisions. They explore output data, generate reports, and leverage visualizations for strategic planning and operational improvements. For Data Product Consumers, divisions encompass business analysts who derive insights, operational managers who optimize processes, executive stakeholders who rely on strategic insights, and data scientists, and data analysts who use advanced analytics and models. Data consumers utilize the Data Product Hub to explore and obtain data products that align with their business requirements. They can review descriptions of the data products to determine suitability. Through an intuitive interface, data consumers can efficiently access the appropriate data they need.
+Data Product Cosumers utilizes the Data Product to derive insights and make data-driven decisions. They explore output data, generate reports, and leverage visualizations for strategic planning and operational improvements. For Data Product Consumers, divisions encompass business analysts who derive insights, operational managers who optimize processes, executive stakeholders who rely on strategic insights, and data scientists, and data analysts who use advanced analytics and models. Data consumers utilize the Data Product Hub to explore and obtain the Data products that align with their business requirements. They can review descriptions of the Data Products to determine suitability. Through an intuitive interface, data consumers can efficiently access the appropriate data they need.
 
 ## Types of Data Product
 

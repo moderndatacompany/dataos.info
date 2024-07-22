@@ -156,7 +156,7 @@ nav:
           - Power BI: 
             - interfaces/atlas/bi_tools/powerbi/index.md
             - Using Connector: interfaces/atlas/bi_tools/powerbi/powerbi_custom_connector.md
-            - Using ODBC Driver: interfaces/atlas/bi_tools/powerbi/power_bi.md
+            - Using ODBC Driver: interfaces/atlas/bi_tools/powerbi/using_odbc_driver.md
           - Tableau: interfaces/atlas/bi_tools/tableau/index.md
           - IBM SPSS: interfaces/atlas/bi_tools/spss/index.md
       - Audiences: 
@@ -334,7 +334,7 @@ nav:
     - Examples:
       - FS Accelerator Data Product: products/data_product/templates/accelerator.md
       - Sales 360 Data Product : products/data_product/templates/sales_360.md
-    - Configurations: products/data_product/configuration.md   
+    - Configurations: products/data_product/configurations.md   
     - Core Concepts: products/data_product/core_concepts.md
   - Glossary: glossary/index.md
   - Videos: videos/index.md

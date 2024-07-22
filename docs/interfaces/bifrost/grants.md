@@ -14,7 +14,12 @@ While it's straightforward to assign use-cases to individual users via the Bifro
 
 - On Bifrost UI, goto the **Grants** tab, where you can view all the grants (use-cases assigned to users). Click on **Create Grant.**
 
-  <center>![create_grant.png](../bifrost/create_grant.png)</center>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/bifrost/create_grant.png" alt="Create Grant" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Create Grant</figcaption>
+  </div>
+</center>
 
 -  In the create grant dialog box, define a grant manifest. A sample grant manifest is given
 

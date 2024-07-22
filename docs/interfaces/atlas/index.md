@@ -23,8 +23,14 @@ Atlas is a built-in business intelligence (BI) solution within DataOS that allow
 
 On the DataOS home page, click on **Atlas**.
 
-![atlas_homepage.png](/interfaces/atlas/atlas_homepage.png)
-<figcaption align = "center">Atlas interface</figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/atlas_homepage.png" alt="Atlas interface" style="width:60rem; border:2px solid black;">
+    <figcaption><i>Atlas interface</i></figcaption>
+  </div>
+</center>
+
+
 
 On the app’s landing screen, you can do the following:
 
@@ -33,6 +39,7 @@ On the app’s landing screen, you can do the following:
 On the landing page of the Atlas app, dashboard names are listed along with tags, creator, and time of creation. It also lists dashboards that have been shared with you. Atlas provides the ability to enhance the discoverability of your dashboards by adding tags. These tags serve as descriptive labels that help categorize and organize your dashboards. Additionally, you can mark certain dashboards as favorites, enabling quick access to your most frequently used or important dashboards.
 
 To learn more about the process of creating and publishing dashboards, click on the link below:
+
 
 [Dashboards](/interfaces/atlas/dashboards/)
 

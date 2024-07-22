@@ -18,13 +18,22 @@ DataOS and SPSS Statistics integration works to take advantage of powerful stati
 
 1. Download it from [Presto ODBC & JDBC Drivers download page](https://www.magnitude.com/drivers/presto-odbc-jdbc).
 
-    ![integration]( integration-presto-download.png)
-    <figcaption align = "center">Driver down;oad </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/bi_tools/spss/integration-presto-download.png" alt="Driver download" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Driver download</figcaption>
+  </div>
+</center>
 
-2.  To run the installer, double-click on the downloaded Simba Presto XX-bit installer file. Select the 32-bit or 64-bit version according to your system configurations.
+2. To run the installer, double-click on the downloaded Simba Presto XX-bit installer file. Select the 32-bit or 64-bit version according to your system configurations.
 
-    ![integration](integration-presto-setup.png)
-    <figcaption align = "center">Driver setup </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/bi_tools/spss/integration-presto-setup.png" alt="Driver setup" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Driver setup</figcaption>
+  </div>
+</center>
+
 
     Follow these steps for a successful installation.
 
@@ -40,13 +49,22 @@ DataOS and SPSS Statistics integration works to take advantage of powerful stati
 
     e. When the installation completes, click Finish.
 
-    ![integration]( integration-presto-setup-finish.png)
-    <figcaption align = "center">Setup complete </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/bi_tools/spss/integration-presto-setup-finish.png" alt="Setup complete" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Setup complete</figcaption>
+  </div>
+</center>
 
 3. After successful installation, copy the license file (that you have received in your email) into the \lib subfolder of the Simba installation folder.
 
-    ![integration]( integration-presto-license-lib.png)
-    <figcaption align = "center">License file </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/bi_tools/spss/integration-presto-license-lib.png" alt="License file" style="width: 60rem; border: 1px solid black;">
+    <figcaption>License file</figcaption>
+  </div>
+</center>
+
 
     > 📌 Note: Contact your network administrator in case you encounter an error due to not having required admin privileges.
     > 
@@ -55,28 +73,49 @@ DataOS and SPSS Statistics integration works to take advantage of powerful stati
 
 1. Sign in to your DataOS instance with your username and password. On the DataOS home page, click on Profile.
 
-    ![integration](integration-dataos-homepage.png )
-    <figcaption align = "center"> DataOS homepage</figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/bi_tools/spss/integration-dataos-homepage.png" alt="DataOS homepage" style="width: 60rem; border: 1px solid black;">
+    <figcaption>DataOS homepage</figcaption>
+  </div>
+</center>
 
 2. On the 'Profile' page, click on Tokens.
 
-    ![integration](integration-dataos-profile.png )
-    <figcaption align = "center"> Profile</figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/bi_tools/spss/integration-dataos-profile.png" alt="Profile" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Profile</figcaption>
+  </div>
+</center>
 
-3. Click on the Add API Key link on the Tokens tab:
+3. Click on the Add API Key link on the Tokens tab:
 
-    ![integration](integration-dataos-token-apikey.png)
-    <figcaption align = "center">API key </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/bi_tools/spss/integration-dataos-token-apikey.png" alt="API key" style="width: 60rem; border: 1px solid black;">
+    <figcaption>API key</figcaption>
+  </div>
+</center>
 
 4. Type in a name for this token and also set the validity period of your token based on the security requirements as per your business needs. Click Save to create one for you.
 
-    ![integration](integration-add-key.png )
-    <figcaption align = "center"> Add key</figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/bi_tools/spss/integration-add-key.png" alt="Add key" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Add key</figcaption>
+  </div>
+</center>
 
 5. The API key is listed below. Click on the “eye icon” on the right side to make the full API key visible.
 
-    ![integration]( integration-key-created.png)
-    <figcaption align = "center">Key created </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/bi_tools/spss/integration-key-created.png" alt="Key created" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Key created</figcaption>
+  </div>
+</center>
+
 
 6. Click on the API key to copy it. You need this API key to configure the Simba Presto driver.
 
@@ -89,20 +128,33 @@ To use the Simba Presto ODBC Driver in the SPSS Statistics application, you need
 
 1. Launch SPSS Statistics. Double-click on the New Database Query.
 
-    ![integration]( integration-spss-new-database-query.png)
-    <figcaption align = "center">New database query </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/bi_tools/spss/integration-spss-new-database-query.png" alt="New database query" style="width: 60rem; border: 1px solid black;">
+    <figcaption>New database query</figcaption>
+  </div>
+</center>
 
 2. Click on Add ODBC DataSource.
 
-    ![integration](integration-spss-add-datasource.png )
-    <figcaption align = "center">Add data source </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/bi_tools/spss/integration-spss-add-datasource.png" alt="Add data source" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Add data source</figcaption>
+  </div>
+</center>
 
 3. In ODBC Data Source Administrator (64-bit or 32-bit) dialog box, click the System DSN tab.
 
 4. In the list of DSNs, select Simba Presto ODBC DSN and then click Configure.
 
-    ![integration](integration-odbc-systemdsn.png )
-    <figcaption align = "center">Select DSN </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/bi_tools/spss/integration-odbc-systemdsn.png" alt="Select DSN" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Select DSN</figcaption>
+  </div>
+</center>
+
 
 5. In the DSN Setup dialog box, provide the following inputs:
 
@@ -116,19 +168,31 @@ To use the Simba Presto ODBC Driver in the SPSS Statistics application, you need
         - Catalog (e.g. icebase)
         - Schema (optional)
             
-            ![integration](new_image_(1).png )
-            <figcaption align = "center">Inputs for DSN setup </figcaption>
-        
-    
-6. In the DSN Setup dialog box, click SSL Options and enable SSL.    
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/bi_tools/spss/new_image_(1).png" alt="Inputs for DSN setup" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Inputs for DSN setup</figcaption>
+  </div>
+</center>
 
-    ![integration](enable_ssn.png )
-    <figcaption align = "center">Enable SSN </figcaption>
+6. In the DSN Setup dialog box, click SSL Options and enable SSL.
 
-7. Click Test. and if successful, press OK to close the Test Results dialog box.
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/bi_tools/spss/enable_ssn.png" alt="Enable SSN" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Enable SSN</figcaption>
+  </div>
+</center>
 
-    ![integration](integration-prestodsn-testsuccess.png )
-    <figcaption align = "center">Test success </figcaption>
+7. Click Test, and if successful, press OK to close the Test Results dialog box.
+
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/bi_tools/spss/integration-prestodsn-testsuccess.png" alt="Test success" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Test success</figcaption>
+  </div>
+</center>
+
 
 8. Click OK to save your DSN.
 
@@ -139,30 +203,54 @@ To use the Simba Presto ODBC Driver in the SPSS Statistics application, you need
 
 1. Launch SPSS Statistics. Click on the New Database Query option.
 
-    ![integration](integration-spss-new-database-query_1.png )
-    <figcaption align = "center"> Database query option</figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/bi_tools/spss/integration-spss-new-database-query_1.png" alt="Database query option" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Database query option</figcaption>
+  </div>
+</center>
 
 2. Select the DSN you tested successfully during the DSN setup process, and double-click.
 
-    ![integration](integration-spss-select-dsn.png )
-    <figcaption align = "center">Select DSN </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/bi_tools/spss/integration-spss-select-dsn.png" alt="Select DSN" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Select DSN</figcaption>
+  </div>
+</center>
 
 3. Enter IBM SPSS credentials in the dialogue box and click on Connect.
 
-    ![integration]( integration-spss-dsn-login.png)
-    <figcaption align = "center">DSN login </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/bi_tools/spss/integration-spss-dsn-login.png" alt="DSN login" style="width: 60rem; border: 1px solid black;">
+    <figcaption>DSN login</figcaption>
+  </div>
+</center>
 
 4. On a successful connection, you can see the DataOS tables in the left panel. Select the table and click the Arrow button.
 
-    ![integration](integration-spss-select-table.png )
-    <figcaption align = "center">Select table </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/bi_tools/spss/integration-spss-select-table.png" alt="Select table" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Select table</figcaption>
+  </div>
+</center>
 
 5. You can see the fields of the selected table.
 
-    ![integration](integration-spss-table-fields.png )
-    <figcaption align = "center">Table fields </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/bi_tools/spss/integration-spss-table-fields.png" alt="Table fields" style="width: 60rem; border: 1px solid black;">
+    <figcaption>Table fields</figcaption>
+  </div>
+</center>
 
 6. Now you can explore and visualize this data in SPSS Statistics.
 
-    ![integration](integration-spss-table-data.png )
-    <figcaption align = "center"> SPSS table data</figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/atlas/bi_tools/spss/integration-spss-table-data.png" alt="SPSS table data" style="width: 60rem; border: 1px solid black;">
+    <figcaption>SPSS table data</figcaption>
+  </div>
+</center>
