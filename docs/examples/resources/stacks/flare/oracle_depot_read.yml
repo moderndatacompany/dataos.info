@@ -1,0 +1,40 @@
+version: v1
+name: read-write-oracle-a02
+type: workflow
+tags:
+  - Connect
+  - City
+description: The job ingests city data from dropzone into raw zone
+workflow:
+  title: Connect City
+  dag:
+    - name: read-oracle-a02
+      title: City Dimension Ingester
+      description: The job ingests city data from dropzone into raw zone
+      spec:
+        tags:
+          - Connect
+          - City
+        stack: flare:5.0
+        compute: runnable-default
+        stackSpec:
+          job:
+            explain: true
+            logLevel: INFO
+            inputs:
+              - name: city_connect
+                dataset: dataos://sanityoraclealok01:dev/oracle_write
+                options:
+                  driver: oracle.jdbc.driver.OracleDriver
+            outputs:
+              - name: cities
+                dataset: dataos://icebase:sanity/sanity_read_oracle?acl=rw
+                format: iceberg
+                options:
+                  saveMode: append
+            steps:
+              - sequence:
+                - name: cities
+                  doc: Pick all columns from cities and add version as yyyyMMddHHmm formatted
+                    timestamp.
+                  sql: SELECT * FROM city_connect LIMIT 100

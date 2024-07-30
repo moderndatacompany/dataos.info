@@ -32,13 +32,13 @@ workflow:
       title: Metrics and checks
       description: The job performs metrics calculations and checks on order enriched data
       spec:
-        stack: flare:3.0
+        stack: flare:5.0
         compute: runnable-default
         tags:
           - Metrics
         title: Metrics and checks
         description: The job performs metrics calculations and checks on order enriched data
-        flare:
+        stackSpec:
           driver:
             coreLimit: 3000m
             cores: 2
@@ -114,7 +114,7 @@ workflow:
     - name: checks-tool
       spec:
         stack: toolbox
-        toolbox:
+        stackSpec:
           dataset: dataos://icebase:sys01/quality_checks?acl=rw
           action:
             name: set_version
@@ -136,7 +136,7 @@ workflow:
     - name: tool-metrics
       spec:
         stack: toolbox
-        toolbox:
+        stackSpec:
           dataset: dataos://icebase:sys01/quality_metrics?acl=rw
           action:
             name: set_version
@@ -170,9 +170,9 @@ workflow: # Workflow Section
         tags: # Tags
           - Assertions
           - Quality
-        stack: flare:4.0 # Flare Stack Version (Here its 4.0)
+        stack: flare:5.0 # Flare Stack Version (Here its 4.0)
         compute: runnable-default # Compute
-        flare: # Flare Section
+        stackSpec: # Flare Section
           job: # Job Section
             explain: true # Explain
             logLevel: INFO # Loglevel
