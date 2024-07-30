@@ -1,0 +1,37 @@
+version: v1
+name: abfss-read-avro
+type: workflow
+tags:
+  - Connect
+  - City
+description: The job ingests city data from dropzone into raw zone
+workflow:
+  title: Connect City avro
+  dag:
+    - name: city-abfss-read-avro
+      title: City Dimension Ingester
+      description: The job ingests city data from dropzone into raw zone
+      spec:
+        tags:
+          - Connect
+          - City
+        stack: flare:5.0
+        compute: runnable-default
+        stackSpec:
+          job:
+            explain: true
+            inputs:
+              - name: city_connect # dataset name
+                dataset: dataos://thirdparty01:sampledata/avro # dataset UDL
+                format: avro # file format
+            logLevel: INFO
+            outputs:
+              - name: output01
+                dataset: dataos://icebase:retail/abfss_read_avro01?acl=rw
+                format: iceberg
+                options:
+                  saveMode: append
+            steps:
+              - sequence:
+                - name: output01
+                  sql: SELECT * FROM city_connect

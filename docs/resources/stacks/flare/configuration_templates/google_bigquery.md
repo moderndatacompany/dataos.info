@@ -1,6 +1,6 @@
 # Google Bigquery Depots
 
-Flare stack enables execution of jobs on top of Google Bigquery data source. To do so, you first need to create a Bigquery depot. If you have already created a depot, you can proceed with the following instructions. Otherwise, please refer to the [Biguery Depot Configuration](/resources/depot/depot_config_templates/google_bigquery/).
+Flare stack enables execution of jobs on top of Google Bigquery data source. To do so, you first need to create a Bigquery depot. If you have already created a depot, you can proceed with the following instructions. Otherwise, please refer to the [Biguery Depot](/resources/depot/depot_config_templates/google_bigquery/).
 
 ## Read Configuration
 
@@ -17,45 +17,10 @@ inputs:
 
 Consider a scenario where the dataset named `city` is stored in a BigQuery Depot at the address `dataos://bqdepot:state/city`, and you need to read this data from the source Bigquery depot, perform some transformation steps, and write it to Icebase, a managed depot within DataOS. The read config YAML will be as follows:
 
-```yaml
-name: bq-read-01
-version: v1
-type: workflow
-tags:
-  - bq
-  - City
-description: This job read data from azure and writes to S3
-title: Write bq
-workflow:
-  dag:
-    - name: city-read-bq-01
-      title: City read bq
-      description: This job read data from azure and writes to Sbq
-      spec:
-        tags:
-          - Connect
-          - City
-        stack: flare:4.0
-        compute: runnable-default
-        flare:
-          job:
-            explain: true
-            inputs:
-              - name: city
-                dataset: dataos://bqdepot:state/city
-                format: bigquery
-            logLevel: INFO
-            outputs:
-              - name: finalDf
-                dataset: dataos://icebase:sanity/city?acl=rw
-                format: iceberg
-                options:
-                  saveMode: overwrite
-            steps:
-              - sequence:
-                  - name: finalDf
-                    sql: SELECT * FROM city_connect
+```yaml title="bigquery_depot_read.yml"
+--8<-- "examples/resources/stacks/flare/bigquery_depot_read.yml"
 ```
+
 </details>
 
 ## Write Configuration
@@ -77,145 +42,76 @@ outputs:
 
 Let’s take a case scenario where the output dataset is to be stored in Bigquery Depot and you have to read data from the Icebase depot within the DataOS The write config YAML will be as follows
 
-```yaml
-version: v1
-name: bq-read-write-02
-type: workflow
-tags:
-  - bq
-  - City
-title: Write bq
-workflow:
-  dag:
-    - name: city-write-bq-02
-      title: City write bq
-      description: This job read data from azure and writes to Sbq
-      spec:
-        tags:
-          - Connect
-          - City
-        stack: flare:3.0
-        compute: runnable-default
-        flare:
-          job:
-            explain: true
-            inputs:
-              - name: city_connect
-                dataset: dataos://thirdparty01:none/city
-                format: csv
-                schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
-            logLevel: INFO
-            outputs:
-              - name: finalDf
-                dataset: dataos://yakdevbq:dev/city_bq?acl=rw
-                format: Bigquery
-                options:
-                  saveMode: append
-                  bigquery:
-                    temporaryBucket: tmdc-development-new
-            steps:
-              - sequence:
-                  - name: finalDf
-                    sql: SELECT * FROM city_connect
+
+```yaml title="bigquery_depot_write.yml"
+--8<-- "examples/resources/stacks/flare/bigquery_depot_write.yml"
 ```
 
+### **Methods for Writing Data to BigQuery**
 
+Writing data to BigQuery can be achieved using two methods: [Direct](#direct-write-method) and [Indirect](#indirect-write-method).
 
-## Read Config
+<aside class="callout">
+🗣 The default <code>writeMethod</code> is indirect.
 
-For reading data, the `name`, `dataset`, and `format` properties in the `inputs` section of the YAML configuration need to be configured. Here's an example configuration for the inputs section:
+</aside>
 
-```yaml
-inputs:
-  - name: city_connect
-    dataset: dataos://yakdevbq:dev/city_bq
-    format: Bigquery
-```
+#### **Direct Write Method**
 
-**Sample Read Configuration YAML:**
-
-Consider a scenario where the dataset is stored in a BigQuery Depot, and you need to read data from the source, perform some transformation steps, and write it to Icebase, a managed depot within DataOS. The read config YAML will be as follows:
-
-```yaml
-version: v1
-name: bq-read-02
-type: workflow
-tags:
-  - bq
-  - City
-description: This job reads data from Azure and writes to S3
-title: Write bq
-workflow:
-  dag:
-    - name: city-read-bq-02
-      title: City read bq
-      description: This job reads data from Azure and writes to Sbq
-      spec:
-        tags:
-          - Connect
-          - City
-        stack: flare:3.0
-        compute: runnable-default
-        flare:
-          job:
-            explain: true
-            inputs:
-              - name: city_connect
-                dataset: dataos://yakdevbq:dev/city_bq
-                format: Bigquery
-
-            logLevel: INFO
-            outputs:
-              - name: finalDf
-                dataset: dataos://icebase:retail/read_bq?acl=rw
-                format: Iceberg
-                options:
-                  saveMode: append
-            steps:
-              - sequence:
-                  - name: finalDf
-                    sql: SELECT * FROM city_connect
-```
-
-## Write Config
-
-To write data to a BigQuery depot, the `name`, `dataset`, and `format` properties in the `outputs` section of the YAML configuration need to be set. Here's an example configuration for the outputs section:
+The direct method writes data directly into a BigQuery table without using a temporary bucket. This method uses the [BigQuery Storage Write API](https://cloud.google.com/bigquery/docs/write-api). To enable this, set the `writeMethod` to `direct`:
 
 ```yaml
 outputs:
-  - name: finalDf
-    dataset: dataos://yakdevbq:dev/city_bq?acl=rw
-    format: Bigquery
+  - dataset: dataos://sanitybigquery:dev/bigquery_table?acl=rw
+    format: bigquery
+    name: finalDf
     options:
       saveMode: append
-      bigquery:
-        temporaryBucket: tmdc-development-new
+      extraOptions:
+        writeMethod: direct
 ```
 
-**Sample Write Configuration YAML:**
+<aside class="callout">
+🗣 Writing to existing partitioned tables (date partitioned, ingestion time partitioned, and range partitioned) in APPEND mode and OVERWRITE mode (only date and range partitioned) is fully supported by the connector and the BigQuery Storage Write API. The use of <code>datePartition</code>, <code>partitionField</code>, <code>partitionType</code>, <code>partitionRangeStart</code>, <code>partitionRangeEnd</code>, <code>partitionRangeInterval</code> is not supported by the direct write method.
 
-Consider a scenario where the output dataset needs to be stored in a BigQuery Depot, and you need to read data from the Icebase depot within DataOS. The write config YAML will be as follows:
+</aside>
+
+#### **Indirect Write Method**
+
+In the indirect method, data is first written to a GCS bucket and then loaded into BigQuery via a load operation. A GCS bucket must be configured to indicate the temporary data location. Data is temporarily stored using `parquet`, `orc`, or `avro` formats, with `parquet` being the default.
+
+> Parquet does not support Map data types. If using Flare to write data, which adds a `__metadata` column of Map type, use `avro` as the `intermediateFormat`.
+> 
 
 ```yaml
-version: v1
-name: bq-read-write-02
-type: workflow
-tags:
-  - bq
-  - City
-title: Write bq
-workflow:
-  dag:
-    - name: city-write-bq-02
-      title: City write bq
-      description: This job reads data from Azure and writes to Sbq
-      spec:
-        tags:
-          - Connect
-          - City
-        stack: flare:3.0
-        compute: runnable-default
-        flare:
-          job:
-            explain: true
-            inputs
+outputs:
+  - dataset: dataos://sanitybigquery:dev/bigquery_write_nabeel_103?acl=rw
+    format: bigquery
+    name: finalDf
+    options:
+      bigquery:
+        temporaryBucket: tmdc-development-new
+        persistentBucket: tmdc-development-new
+      saveMode: append
+      extraOptions:
+        temporaryGcsBucket: tmdc-development-new
+        persistentGcsBucket: tmdc-development-new
+        intermediateFormat: avro
+```
+
+> There are two ways to specify the bucket, either in `bigquery` or `extraOptions`. But for `indirect` write method, it has to be specified in the `extraOptions`.
+> 
+
+**Attributes Description**
+
+| Attribute | Description | Usage |
+| --- | --- | --- |
+| `writeMethod` | Controls the method for writing data to BigQuery. Available values are direct for the BigQuery Storage Write API and indirect for writing data first to GCS and then triggers a BigQuery load operation. (Optional, defaults to indirect) | Write |
+| `temporaryGcsBucket` | The GCS bucket temporarily holding data before loading into BigQuery. Not supported by the direct write method. | Write |
+| `persistentGcsBucket` | The GCS bucket holding data before loading into BigQuery. If set, data won't be deleted after writing to BigQuery. Not supported by the direct write method. | Write |
+| `intermediateFormat` | Format of data before loading into BigQuery, either "parquet", "orc", or "avro". Defaults to parquet. Supported only for the indirect write method. | Write |
+
+<aside class="callout">
+🗣 Reading all data types is supported except `BIGNUMERIC`. BigQuery's BigNumeric has a precision of 76.76 (the 77th digit is partial) and scale of 38. Since this precision and scale is beyond spark's DecimalType (38 scale and 38 precision) support, it means that BigNumeric fields with precision larger than 38 cannot be used.
+
+</aside>

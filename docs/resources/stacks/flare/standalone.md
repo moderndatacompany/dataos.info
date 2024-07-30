@@ -49,9 +49,9 @@ dataos-ctl develop start -s flare -i rubiklabs/flare3:6.0.93 -f sample/standalon
 | develop                                                  | Manage DataOS development.                                                                         |
 | start                                                    | Start development container                                                                       |
 | -s                                                       | Stack flag                                                                                        |
-| flare                                                    | Stack along with version as argument. You can also provide a specific version for flare, like flare:3.0, flare:4.0 |
+| flare                                                    | Stack along with version as argument. You can also provide a specific version for flare, like flare:4.0, flare:5.0 |
 | -i                                                       | Image Flag (Optional)                                                                             |
-| rubiklabs/flare3:6.0.93                                  | Custom Image (Optional)                                                                           |
+| rubiklabs/flare4:6.0.93                                  | Custom Image (Optional)                                                                           |
 | -f                                                       | File path flag                                                                                    |
 | sampledata/standalone-config/config.yaml                 | File path as argument (can be either relative or absolute)                                          |
 | -d                                                       | Directory Path flag                                                                               |

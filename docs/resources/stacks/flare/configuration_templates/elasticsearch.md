@@ -1,6 +1,6 @@
 # Elasticsearch Depots
 
-To start executing Flare Jobs on Elasticsearch Depots, you first need to set up an Elasticsearch Depot. If you haven’t done it, navigate to the below link
+To start executing Flare Jobs on Elasticsearch Depots, you first need to set up an Elasticsearch Depot. If you haven’t done it, navigate to the following link: [Elasticsearch Depot](/resources/depot/depot_config_templates/elasticsearch/).
 
 ## Read Configuration
 
@@ -17,53 +17,19 @@ inputs:
 ```
 By setting `es.nodes.wan.only`, the connector will limit its network usage and instead of connecting directly to the target resource shards, it will make connections to the Elasticsearch cluster only.
 
-**Sample Read configuration YAML**
+**Sample Read configuration manifest**
 
-Let’s take a case scenario where we read the dataset from Elasticsearch depot and store it in the Icebase depot within the DataOS. The read config YAML will be as follows
+Let’s take a case scenario where we read the dataset from Elasticsearch depot and store it in the Lakehouse within the DataOS. The read config manifest will be as follows:
 
-```yaml
-version: v1
-name: read-elasticsearch-01
-type: workflow
-tags:
-  - elasticsearch
-  - read
-description: this jobs reads data from elasticsearch and writes to icebase
-workflow:
-  dag:
-    - name: elasticsearch-read-b-01
-      title: read data from elasticsearch
-      description: read data from elasticsearch
-      spec:
-        tags:
-          - Connect
-        stack: flare:3.0
-        compute: runnable-default
-        flare:
-          job:
-            explain: true
-            inputs:
-              - name: input
-                dataset:  dataos://elasticsearch:default/elastic_write
-                format: elasticsearch
-                options:
-                  es.nodes.wan.only: 'true'
-            logLevel: INFO
-            outputs:
-              - name: output02
-                dataset: dataos://icebase:sample/read_elasticsearch?acl=rw
-                format: iceberg
-                options:
-                  saveMode: append
-            steps:
-              - sequence:
-                  - name: output02
-                    sql: SELECT * FROM input
-```
+!!!tip "Sample Read configuration manifest"
+
+    ```yaml title="elasticsearch_depot_read.yml"
+    --8<-- "examples/resources/stacks/flare/elasticsearch_depot_read.yml"
+    ```
 
 ## Write Configuration
 
-For writing the data to an Elasticsearch depot, we need to configure the `name`, `dataset`, `format`, in the `outputs` section of the YAML. For instance, if your dataset name is `output01`, the dataset is to be stored at the location `dataos://elasticsearch:default/elastic_write` and the file format is `elasticsearch`. Then the inputs section will be as follows-
+For writing the data to an Elasticsearch Depot, we need to configure the `name`, `dataset`, `format`, in the `outputs` section of the manifest. For instance, if your dataset name is `output01`, the dataset is to be stored at the location `dataos://elasticsearch:default/elastic_write` and the file format is `elasticsearch`. Then the inputs section will be as follows-
 
 ```yaml
 outputs:
@@ -72,47 +38,10 @@ outputs:
     format: elasticsearch
 ```
 
-**Sample Read configuration YAML**
+**Sample Read configuration manifest**
 
-Let’s take a case scenario where we have to write the dataset to the an Elasticsearch depot from the thirdparty depot. The write config YAML will be as follows
+Let’s take a case scenario where we have to write the dataset to the an Elasticsearch Depot from the thirdparty Depot. The write config manifest will be as follows:
 
-```yaml
-version: v1
-name: write-elasticsearch-b-0001
-type: workflow
-tags:
-  - elasticsearch
-  - write
-description: this jobs reads data from thirdparty and writes to elasticsearch
-workflow:
-  title: Connect City
-  dag:
-    - name: elasticsearch-write-b-01
-      title: write data to elasticsearch
-      description: write data to elasticsearch
-      spec:
-        tags:
-          - Connect
-          - City
-        stack: flare:3.0
-        compute: runnable-default
-        flare:
-          job:
-            explain: true
-            inputs:
-              - name: city_connect
-                dataset: dataos://thirdparty01:none/city
-                format: csv
-                schemaPath: dataos://thirdparty01:none/schemas/avsc/city.avsc
-            logLevel: INFO
-            outputs:
-              - name: output01
-                dataset: dataos://elasticsearch:default/elastic_write?acl=rw
-                format: elasticsearch
-                options:
-                  saveMode: append
-            steps:
-              - sequence:
-                  - name: output01
-                    sql: SELECT * FROM city_connect
+```yaml title="elasticsearch_depot_read.yml"
+--8<-- "examples/resources/stacks/flare/elasticsearch_depot_write.yml"
 ```

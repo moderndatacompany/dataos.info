@@ -19,13 +19,13 @@ workflow:
         DISABLE_RAW_FILE_SYSTEM_PERMISSION_SET: "true"
       tags:
       - {{tags}}
-      stack: flare:4.0
+      stack: flare:5.0
       compute: runnable-default
 
       persistentVolume: # Define Persistent Volume
         name: persistent-v
         directory: fides 
-      flare:
+      stackSpec:
         job:
           inputs:
             - name: profile_city
