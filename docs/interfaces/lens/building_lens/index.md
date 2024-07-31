@@ -174,7 +174,12 @@ Once your logical data model is in place, data engineers can start referring to 
 
 ### **Syntax of a Lens YAML**
 
-![lens-yaml-skeleton.png](/interfaces/lens/building_lens/lens-yaml-skeleton.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/building_lens/lens-yaml-skeleton.png" alt="Lens YAML Skeleton" style="width:46rem; border:1px solid black;">
+    <figcaption><i>Lens YAML Skeleton</i></figcaption>
+  </div>
+</center>
 
 ### **Creating a Lens YAML**
 
@@ -475,7 +480,11 @@ Create a lens or update an existing Lens.
 
 - In the ‘**Headers**’ section, add the following headers:
     
-    ![Untitled](/interfaces/lens/building_lens/untitled.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/building_lens/untitled.png" alt="Untitled" style="width:46rem; border:1px solid black;">
+  </div>
+</center>
     
 - Write Lens in the ‘**Body**’ Section. Choose ‘**raw**’ as the text format
 - In the ‘**Param**’ section, select dryrun=false.
@@ -486,7 +495,12 @@ Create a lens or update an existing Lens.
         Example: *https://enough-kingfish.dataos.app/lens/api/v1/lenses?dryrun=false*
         
     
-    ![Untitled](/interfaces/lens/building_lens/untitled_1.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/building_lens/untitled_1.png" alt="Untitled" style="width:41rem; border:1px solid black;">
+    <figcaption><i>Untitled</i></figcaption>
+  </div>
+</center>
     
 
 ## Querying Lens
@@ -515,10 +529,11 @@ Let’s explore an analytical question through Lens Query:
 - Now click **Run Query.**
 
 <center>
-
-![Untitled](/interfaces/lens/building_lens/untitled_2.png){: style="width:41rem;" }
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/building_lens/untitled_2.png" alt="Untitled" style="width:41rem; border:1px solid black;">
+  </div>
 </center>
+
     
     The table in the diagram above displays states with total order quantities exceeding one hundred thousand. Additionally, there's a customizable bar chart at the bottom that you can configure and export according to your requirements.
     
@@ -585,3 +600,4 @@ Params are useful to power multiple use cases without having to define multiple 
 This tutorial walks you through the complete process of developing and designing a **Sports Retail Data** Lens. By following these steps and considering your data, questions, and user needs, you can effectively determine the dimensions to incorporate into your lens for a meaningful data exploration and analysis experience.
 
 [Tutorial: Step-by-Step Lens Creation](/interfaces/lens/building_lens/tutorial_lens/)
+

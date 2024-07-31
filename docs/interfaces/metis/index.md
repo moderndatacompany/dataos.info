@@ -20,8 +20,13 @@ It seamlessly combines the functionalities of a modern Data Catalog and an enter
 
 Metis UI is a collaborative interface for diverse data users to navigate through the data ecosystem in an enterprise. Metis UI helps users search, discover, understand, and trust [data products](/products/data_product/), **data** **assets** (tables, pipelines, dashboards, etc.), and [DataOS Resources](/resources/) (Workflows, Services, Stacks, etc.) that exist for the entire organization. Users can easily collaborate with other team members, inform them about the updates on these assets, observe the changes in the metadata through versions, and accomplish more.
 
-![Metis UI](/interfaces/metis/metis.png)
-<figcaption align = "center"> DataOS Metis App </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis.png" alt="Metis UI" style="border:1px solid black;">
+    <figcaption align="center"><i>DataOS Metis App</i></figcaption>
+  </div>
+</center>
+
 
 The homepage of Metis UI showcases a comprehensive overview of activities related to your data entities. For detailed information about the metadata of these entities, refer to the following sections:
 

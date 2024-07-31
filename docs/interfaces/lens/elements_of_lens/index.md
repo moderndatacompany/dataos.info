@@ -38,7 +38,7 @@ Supported properties by fields
 | `primary` | Use this property to explicitly state whether the field needs to be considered a primary key. | Optional |
 
 To know more about fields, refer to
-[Fields](./fields.md).
+[Fields](/interfaces/lens/elements_of_lens/fields/).
 
 ## Dimensions
 
@@ -63,7 +63,7 @@ Supported properties for dimensions
 | `hidden` | It will hide the dimension from the user interface if set to true. | Optional |
 
 To know more about dimensions, refer to
-[Dimensions](./dimensions.md).
+[Dimensionsdimen](/interfaces/lens/elements_of_lens/dimensions/).
 
 ## Measures
 
@@ -83,7 +83,7 @@ Supported properties for measures
 | `hidden` | It will hide the dimension from the user interface if set to true. | Optional |
 
 To know more about measures, refer to
-[Measures](./measures.md).
+[Measures](/interfaces/lens/elements_of_lens/measures/).
 
 ## Relationships
 
@@ -102,4 +102,4 @@ Supported properties for relationships
 | `sql_snippet` |  | If you have more than one clause in your join statement, you can add a query for it. | Optional |
 
 To learn more about relationships, refer to
-[Relationships](./relationships.md).
+[Relationships](/interfaces/lens/elements_of_lens/relationships/).
