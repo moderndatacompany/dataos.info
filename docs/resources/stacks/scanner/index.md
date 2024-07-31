@@ -153,6 +153,7 @@ Data product Scanner workflows is for collecting metadata related to Data produc
 This Scanner workflow reads the metadata and stores it in Metis DB. This metadata helps you understand data product's life cycle along with the data access permissions, infrastructure resources used for creating it.
 
 <details><summary> Scanner for Data Product</summary>
+
 ```yaml
 version: v1
 name: scanner2-data-product
@@ -331,6 +332,7 @@ A continuous running service reads about these statistics (metadata extraction r
 The objective of this worker is to proactively scan data profiling information, which includes descriptive statistics for datasets stored in Icebase. It operates in response to a triggered data profiling job, publishing the metadata to the Metis DB.
 
 <details><summary>Indexer Service for Data Profiling</summary>
+
 ```yaml
 name: dataset-profiling-indexer
 version: v1beta
@@ -381,6 +383,7 @@ Service Level objectives(SLOs) are business-specific validation rules applied to
 This worker is a continuous running service, designed to reactively scan datasets and ingest quality checks and metrics data along with their pass/fail status whenever a Flare data quality scan is initiated. The acquired metadata related to data quality is then published to the Metis DB, contributing to a comprehensive understanding of data quality. 
 
 <details><summary>Indexer Service for Data Quality</summary>
+
 ```yaml
 name: dataset-quality-checks-indexer
 version: v1beta

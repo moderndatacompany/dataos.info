@@ -53,9 +53,9 @@ workflow:
         tags:
           - Connect
           - NY-Taxi
-        stack: flare:4.0
+        stack: flare:5.0
         compute: runnable-default
-        flare:
+        stackSpec:
           job:
             explain: true
             inputs:

@@ -27,8 +27,8 @@ workflow:
       tags:
       - Compression
       - Cloudevent
-      stack: flare:3.0
-      flare:
+      stack: flare:5.0
+      stackSpec:
         driver:
           coreLimit: 1200m
           cores: 1
@@ -70,9 +70,9 @@ workflow:
       tags:
       - Compression
       - NyTaxi
-      stack: flare:3.0
+      stack: flare:5.0
       compute: runnable-default
-      flare:
+      stackSpec:
         driver:
           coreLimit: 1200m
           cores: 1

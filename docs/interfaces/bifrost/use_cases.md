@@ -28,7 +28,7 @@ To update the path value, navigate to the Variable section, where the actual pat
 
 Lastly, In the grant section, you'll find a subsection labeled "**Subject**" where you can determine who has been granted access to the use-case thus far.
 
-<center>![grant_usecases.png](/interfaces/bifrost/grant_usecases.png)</center>
+<center>![grant_usecases](/interfaces/bifrost/grant_usecases.png)</center>
 
 ## How to grant a use case to a role?
 

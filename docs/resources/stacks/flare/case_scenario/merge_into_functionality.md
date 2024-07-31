@@ -168,7 +168,7 @@ workflow:
       - name: dt-city  # datatool to update table metadata for Trino Query Engine 
         spec: 
           stack: toolbox 
-          toolbox: 
+          stackSpec: 
               dataset: dataos://icebase:test/"icebase"."test".city_merge_alok_111?acl=rw 
               action: 
                 name: set_version 

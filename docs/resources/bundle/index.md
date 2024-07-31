@@ -195,9 +195,9 @@ Within a Bundle, you have the option to deploy Workspace-level Resources in a ne
 
 <aside class="callout">
 
-🗣 The Workspaces specified within a Bundle does not dictate the location of Bundle creation. Instead, it pertains to the Workspace designated to encompass all <a href="/resources/types_of_dataos_resources/#workspace-level-resources">Workspace-level Resources</a> (such as <a href="/resources/workflow/">Workflow</a>, <a href="/resources/service/">Service</a>, <a href="/resources/worker/">Worker</a>, <a href="/resources/secret/">Secret</a>, Database, <a href="/resources/lakehouse/">Lakehouse</a> and <a href="/resources/cluster/">Cluster</a>) housed within the Bundle.
+🗣 The Workspaces specified within a Bundle does not dictate the location of Bundle creation. Instead, it pertains to the Workspace designated to encompass all <a href="/resources/types/#workspace-level-resources">Workspace-level Resources</a> (such as <a href="/resources/workflow/">Workflow</a>, <a href="/resources/service/">Service</a>, <a href="/resources/worker/">Worker</a>, <a href="/resources/secret/">Secret</a>, Database, <a href="/resources/lakehouse/">Lakehouse</a> and <a href="/resources/cluster/">Cluster</a>) housed within the Bundle.
 
-It is noteworthy that the Workspace-level Resources present in a Bundle can also be instantiated within other Workspaces, not necessarily that was created using the Bundle. But, the <a href="/resources/types_of_dataos_resources/#instance-level-resources">Instance-level Resources</a>, irrespective of their presence within a Bundle, such as <a href="/resources/depot/">Depot</a>, <a href="/resources/policy/">Policy</a>, <a href="/resources/compute/">Compute</a>, <a href="/resources/stacks/">Stacks</a>, Instance-Secret, <a href="/resources/operator/">Operator</a>, or even another Bundle, maintain their instance-level scope and are not constrained to a specific Workspace.
+It is noteworthy that the Workspace-level Resources present in a Bundle can also be instantiated within other Workspaces, not necessarily that was created using the Bundle. But, the <a href="/resources/types/#instance-level-resources">Instance-level Resources</a>, irrespective of their presence within a Bundle, such as <a href="/resources/depot/">Depot</a>, <a href="/resources/policy/">Policy</a>, <a href="/resources/compute/">Compute</a>, <a href="/resources/stacks/">Stacks</a>, Instance-Secret, <a href="/resources/operator/">Operator</a>, or even another Bundle, maintain their instance-level scope and are not constrained to a specific Workspace.
 
 </aside>
 
@@ -301,162 +301,11 @@ Refer to the table below for a summary of the attributes within the additional p
 
 Data developers can alter the customize the behaviour of Bundle Resources by configuring the sections and attributes as needed. For a detailed insights into the description and constraints of the attributes within the Bundle-specific section, please consult the 'Attributes of Bundle-specific Section' documentation page.
 
-<details>
-<summary>Sample Bundle YAML manifest</summary>
+???tip "Sample Bundle YAML manifest"
 
-```yaml
-# Resource meta section
-name: alphabeta
-version: v1beta
-type: bundle
-tags:
-  - dataproduct
-  - product
-description: This bundle resource is for product data product.
-layer: "user"
-
-# Bundle-specific section
-bundle:
-
-# Bundle workspaces section
-  workspaces:
-    - name: testingspace
-      description: This workspace runs dataos bundle resource for demo
-      tags:
-        - dataproduct
-        - product
-        - bundleResource
-      labels:
-        "name": dataproductBundleResources
-      layer: user
-
-# Bundle resources section
-  resources:
-    - id: depot
-      spec: 
-        name: snowflakedepot01
-        version: v1
-        type: depot
-        tags:
-          - snowflake
-          - depot
-        layer: user
-        depot:
-          type: snowflake
-          description: snowflake depot
-          spec:
-            warehouse: DATAOS_WAREHOUSE
-            url: jk42400.europe-west4.gcp.snowflakecomputing.com
-            database: snowflake_sample_data
-          external: true
-          connectionSecret: 
-            - acl: rw 
-              type: key-value-properties
-              data: 
-                username: XPLORERSDATA
-                password: Priyansh@2007
-
-    - id: scanner
-      spec: 
-        version: v1
-        name: snowflakedepotscanner
-        type: workflow
-        tags:
-          - Scanner
-        title: Scan snowflake-depot
-        description: |
-          The purpose of this workflow is to scan snowflake and see if scanner works fine with a snowflake of depot.
-        workflow:
-          dag:
-            - name: scan-snowflake
-              title: Scan snowflake
-              description: |
-                The purpose of this job is to snowflake and see if scanner works fine with a snowflake type of depot.
-              tags:
-                - Scanner
-              spec:
-                stack: scanner:2.0
-                compute: runnable-default
-                # runAsUser: metis
-                stackSpec:
-                  depot: snowflakedepot01
-                  sourceConfig:
-                    config:
-                      schemaFilterPattern:
-                        includes:
-                          - ^tpch_sf10$
-                      tableFilterPattern:
-                        includes:
-                          - customer
-                          - nation
-                          - region
-      workspace: testingspace
-      dependencies:
-        - depot
-      dependencyConditions:
-        - resourceId: depot
-          status:
-            is:
-              - active
-
-    - id: profiling
-      spec: 
-        version: v1
-        name: snowflakedepotprofiling
-        type: workflow
-        tags:
-          - profiling
-        description: The job performs profiling on snowflake depot
-        workflow:
-          title: Snowflake Profiling
-          dag:
-          - name: snowflake-profile
-            title: Snowflake Depot Profiling
-            spec:
-              stack: flare:4.0
-              compute: runnable-default
-              title: Profiling  
-              persistentVolume:
-                name: persistent-v
-                directory: fides
-              stackSpec:
-                driver:
-                  coreLimit: 1200m
-                  cores: 1
-                  memory: 1024m
-                executor:
-                  coreLimit: 1200m
-                  cores: 1
-                  instances: 1
-                  memory: 1200m
-                job:
-                  explain: true
-                  inputs:
-                    - name: snowflake_profiled_data
-                      dataset: dataos://snowflakedepot01:tpch_sf10/region?acl=rw
-                      format: snowflake
-                      options:
-                        sfWarehouse: DATAOS_WAREHOUSE
-                  logLevel: INFO
-                  profile:
-                    level: basic
-                sparkConf:
-                  - spark.sql.shuffle.partitions: 10
-                  - spark.default.parallelism: 10
-      workspace: testingspace
-      dependencies:
-        - scanner
-      dependencyConditions:
-        - resourceId: scanner
-          status:
-            is:
-              - active
-          runtime:
-            is:
-              - succeeded
-```
-
-</details>
+    ```yaml title="monitor_manifest_structure.yml"
+    --8<-- "examples/resources/bundle/sample_bundle.yml"
+    ```
 
 
 ### **Apply the Bundle YAML**

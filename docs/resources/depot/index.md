@@ -53,6 +53,7 @@ The Depot serves as the registration of data locations to be made accessible to 
 <center><b><span style="font-size: 20px;"><code>dataos://[depot]:[collection]/[dataset]</code></span></b></center>
 
 
+
 <aside class="callout">
 
 🗣 Depot Service is a DataOS Service that manages the Depot Resource. It facilitates in-depth introspection of depots and their associated storage engines. Once a Depot is created, users can obtain comprehensive information about the datasets contained within, including details such as constraints, partition, indexing, etc.
@@ -79,7 +80,12 @@ To create a Depot in DataOS, simply compose a manifest configuration file for a 
 
 ### **Structure of a Depot manifest**
 
-![Structure of a Depot YAML](/resources/depot/depot_yaml.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/resources/depot/depot_yaml.png" alt_text = "Structure of a Depot manifest" style="border:1px solid black;">
+  </div>
+</center>
+
 
 To know more about the attributes of Depot manifest Configuration, refer to the link: [Attributes of Depot manifest](/resources/depot/configurations/).
 
