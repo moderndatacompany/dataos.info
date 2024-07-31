@@ -216,7 +216,7 @@ workflow:
     spec:
       stack: toolbox
       compute: runnable-default
-      toolbox:
+      stackSpec:
         dataset: dataos://icebase:countries_states_cities/cities?acl=rw
         action:
           name: set_version
@@ -226,7 +226,7 @@ workflow:
     spec:
       stack: toolbox
       compute: runnable-default
-      toolbox:
+      stackSpec:
         dataset: dataos://icebase:countries_states_cities/states?acl=rw
         action:
           name: set_version
@@ -236,7 +236,7 @@ workflow:
     spec:
       stack: toolbox
       compute: runnable-default
-      toolbox:
+      stackSpec:
         dataset: dataos://icebase:countries_states_cities/countries?acl=rw
         action:
           name: set_version
@@ -246,7 +246,7 @@ workflow:
     spec:
       stack: toolbox
       compute: runnable-default
-      toolbox:
+      stackSpec:
         dataset: dataos://icebase:countries_states_cities/enriched_cities_states_countries?acl=rw
         action:
           name: set_version

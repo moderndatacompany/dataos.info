@@ -166,7 +166,7 @@ workflow:
     - name: dt-orders-last-8
       spec:
         stack: toolbox
-        toolbox:
+        stackSpec:
           dataset: dataos://icebase:sample/customer_trans_latest_five_03?acl=rw
           action:
             name: set_version

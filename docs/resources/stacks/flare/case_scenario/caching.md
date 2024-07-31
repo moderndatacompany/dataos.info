@@ -21,9 +21,9 @@ workflow:
       spec:
         tags:
           - Report-Table
-        stack: flare:1.0
+        stack: flare:5.0
         tempVolume: 500Gi
-        flare:
+        stackSpec:
           driver:
             coreLimit: 3500m
             cores: 1
@@ -1026,7 +1026,7 @@ workflow:
     - name: dt-labor-history-l-n
       spec:
         stack: toolbox
-        toolbox:
+        stackSpec:
           dataset: dataos://icebase:report/labor_history?acl=rw
           action:
             name: set_version
