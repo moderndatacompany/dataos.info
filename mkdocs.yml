@@ -155,13 +155,8 @@ nav:
           - interfaces/atlas/bi_tools/index.md
           - Power BI: 
             - interfaces/atlas/bi_tools/powerbi/index.md
-            - Using Connector: interfaces/atlas/bi_tools/powerbi/powerbi_custom_connector.md
-            - Using ODBC Driver: interfaces/atlas/bi_tools/powerbi/using_odbc_driver.md
-<<<<<<< HEAD
             - Using Connector: interfaces/atlas/bi_tools/powerbi/dataos_connector_powerbi.md
-            - Using ODBC Driver: interfaces/atlas/bi_tools/powerbi/power_bi.md
-=======
->>>>>>> origin/dev
+            - Using ODBC Driver: interfaces/atlas/bi_tools/powerbi/using_odbc_driver.md
           - Tableau: interfaces/atlas/bi_tools/tableau/index.md
           - IBM SPSS: interfaces/atlas/bi_tools/spss/index.md
       - Audiences: 

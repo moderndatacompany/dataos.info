@@ -285,7 +285,7 @@ workflow:
     spec:
       stack: toolbox 
       compute: runnable-default
-      toolbox:
+      stackSpec:
         dataset: dataos://icebase:retail/city01
         action:
           name: set_version
