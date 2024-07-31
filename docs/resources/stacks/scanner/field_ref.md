@@ -123,7 +123,7 @@ runAsUser: metis
 **Additional information**: The Scanner job will scan all the datasets referred by a depot. Scanner workflow will automatically create a source (with the same name as the depot name) where the scanned metadata is saved within Metastore. <br>
 **Example Usage**:  
 ```yaml
-scanner:   
+stackSpec:   
   depot: dataos://icebase            
 ```
 
@@ -137,7 +137,7 @@ scanner:
 
 <br> **Example Usage**: 
 ```yaml
-scanner:
+stackSpec:
   type: snowflake
 ```
     
@@ -151,7 +151,7 @@ scanner:
 **Additional information**: On Metis UI, sources are listed for databases, messaging, dashboards, workflows, ML models, etc. Under the given source name, you can see the information about all the entities scanned for a data source. <br>
 **Example Usage**: 
 ```yaml
-scanner:
+stackSpec:
   source: samplexyz 
 ```
 <aside class="callout"> When the metadata source is not referenced by the depot, you need to provide the source connection details and credentials <b>explicitly</b>. </aside>
@@ -247,11 +247,11 @@ sourceConfig:
 **Example Usage**:
 ```yaml
 sourceConfig:
-      config:
-        type: DatabaseMetadata
-        databaseFilterPattern:
-          includes:
-            - TMDCSNOWFLAKEDB
+  config:
+    type: DatabaseMetadata
+    databaseFilterPattern:
+      includes:
+        - TMDCSNOWFLAKEDB
 ```
 
 ### **`schemaFilterPattern`**
@@ -277,13 +277,13 @@ sourceConfig:
 
 **Example Usage**:
 ```yaml
-    sourceConfig:
-      config:
-        schemaFilterPattern:
-          excludes:
-            - mysql.*
-            - information_schema.*
-            - ^sys.*
+sourceConfig:
+  config:
+    schemaFilterPattern:
+      excludes:
+        - mysql.*
+        - information_schema.*
+        - ^sys.*
 ```
 
 <b>Additional information</b>: Applicable in case of databases/warehouses <br>
@@ -339,11 +339,11 @@ sourceConfig:
 
 **Example Usage**:
 ```yaml
-    sourceConfig:
-      config:
-        topicFilterPattern:
-          includes:
-            - ^topic00.*
+sourceConfig:
+  config:
+    topicFilterPattern:
+      includes:
+        - ^topic00.*
 
 
 ```     

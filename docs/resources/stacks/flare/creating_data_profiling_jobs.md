@@ -101,14 +101,14 @@ workflow:
       - Fides
       - City
       - has_profile
-      stack: flare:3.0
+      stack: flare:5.0
       compute: runnable-default
       title: City Profile
 
       persistentVolume: # Define Persistent Volume
         name: persistent-v
         directory: fides 
-      flare:
+      stackSpec:
         driver:
           coreLimit: 2400m
           cores: 2

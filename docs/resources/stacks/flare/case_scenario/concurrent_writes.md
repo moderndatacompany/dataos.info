@@ -46,8 +46,8 @@ workflow:
       tags:
       - Connect
       - NY-Taxi
-      stack: flare:1.0
-      flare:
+      stack: flare:5.0
+      stackSpec:
         job:
           explain: true
           inputs:
@@ -98,8 +98,8 @@ workflow:
       tags:
       - Connect
       - NY-Taxi
-      stack: flare:1.0
-      flare:
+      stack: flare:5.0
+      stackSpec:
         job:
           explain: true
           inputs:
@@ -156,7 +156,7 @@ workflow:
       stack: alpha
       envs:
         LOG_LEVEL: debug
-      alpha:
+      stackSpec:
         image: rubiklabs/dataos-tool:0.0.26
 
         arguments:

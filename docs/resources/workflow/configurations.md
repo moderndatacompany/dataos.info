@@ -169,9 +169,9 @@ timezone: Asia/Kolkata
 dag: 
   - name: profiling-job 
     spec: 
-      stack: flare:4.0 
+      stack: flare:5.0 
       compute: runnable-default 
-      flare: 
+      stackSpec: 
         {} # Flare Stack-specific attributes
 ```
 
@@ -269,7 +269,7 @@ description: The job ingests customer data
 spec: 
   stack: flare:5.0 
   compute: runnable-default 
-  flare: 
+  stackSpec: 
     {} # Flare Stack specific configurations
 
 ```

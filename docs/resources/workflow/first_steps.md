@@ -588,7 +588,7 @@ INFO[0002] 🔍 workflow...complete
 
   JOB NAME |   STACK    |        JOB TITLE        | JOB DEPENDENCIES
 -----------|------------|-------------------------|-------------------
-  city-999 | flare:2.0  | City Dimension Ingester |                   
+  city-999 | flare:5.0  | City Dimension Ingester |                   
   system   | dataos_cli | System Runnable Steps   |                   
 
     RUNTIME  | PROGRESS |          STARTED          |         FINISHED

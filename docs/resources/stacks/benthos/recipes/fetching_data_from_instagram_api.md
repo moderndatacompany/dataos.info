@@ -172,9 +172,9 @@ workflow:
       spec:
         tags:
           - insta    
-        stack: flare:2.0  
+        stack: flare:5.0  
 
-        flare:
+        stackSpec:
           driver:
             coreLimit: 2000m
             cores: 1
@@ -220,7 +220,7 @@ workflow:
     - name: dt-test13
       spec:
         stack: toolbox
-        toolbox:
+        stackSpec:
           dataset: dataos://icebase:sample/test13?acl=rw
           action:
             name: set_version
