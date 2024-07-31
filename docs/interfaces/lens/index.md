@@ -9,9 +9,9 @@ search:
 Lens is a consistent modeling layer capable of accessing and modeling data from disparate sources. It not only supports the ability to connect underlying data to real-world business objects but also enables you to formulate and delineate measures, KPIs, and relationships between different business concepts, thereby facilitating data-driven decision-making. Lens promotes data definition sharing and brings consensus among teams around data definitions, creating a unified and consolidated view of data across the organization. It is designed to break down data silos and foster mutual agreement between data producers and consumers by implementing Data Contracts.
 
 <center>
-
-![Picture](/interfaces/lens/lens.png)
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/lens.png" alt="Lens" style="border:1px solid black;">
+  </div>
 </center>
 
 <figcaption align = "center">Placement of Lens Ecosystem between Sources and Data Consumers</figcaption>
@@ -26,23 +26,22 @@ Lens can be built on all sources that Depots support. Lens lets you connect to a
 On opening the Lens app, you can view all the Lenses created and available to consume.
 
 <center>
-
-![Lens Home Page](/interfaces/lens/lens_homepage.png){: style="width:46rem;" }
-
-<figcaption><i>Lenses</i></figcaption> 
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/lens_homepage.png" alt="Lens Home Page" style="width:46rem; border:1px solid black;">
+    <figcaption><i>Lenses</i></figcaption>
+  </div>
 </center>
  
 
 Clicking on the specific Lens will open the details where entities and their schema are displayed along with   the tabs to see the relationship of the entities and definitions.
 
 <center>
-
-![Lens Details](/interfaces/lens/lens_details.png){: style="width:46rem;" }
-
-<figcaption><i> Lens details </i></figcaption> 
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/lens_details.png" alt="Lens Details" style="width:46rem; border:1px solid black;">
+    <figcaption><i>Lens details</i></figcaption>
+  </div>
 </center>
+
 
 ## Lens utilities
 
@@ -55,12 +54,12 @@ Lens Explorer is a discover and analyze tool for answering questions about anyth
 Lens Explorer's drag-and-drop interface allows users to easily build customized segments, generate insights, and create a comprehensive view for their data from the deployed Lens. They can query Lens to get answers to complex data questions in an exploratory fashion. Lens Explorer can assist personas such as Business Analysts, Product Managers, Product Analysts, and many more to move faster in their data journey. To learn more, refer to [Lens Explorer](/interfaces/lens/lens_explorer/).
 
 <center>
-
-![Lens Details](/interfaces/lens/lens_details_explorer.png){: style="width:46rem;" }
-
-<figcaption><i> Lens Explorer </i></figcaption> 
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/lens_details_explorer.png" alt="Lens Explorer" style="width:46rem; border:1px solid black;">
+    <figcaption><i>Lens Explorer</i></figcaption>
+  </div>
 </center>
+
 
 ### **Lens Views** 
 
@@ -71,12 +70,12 @@ Upon publication, the Views become part of a list accessible under the "Views" s
 Furthermore, the system supports a dynamic experience, as users can refresh the analysis with updated data by re-executing the query associated with each View. 
 
 <center>
-
-![Graphical User Interface of the Lens Views](/interfaces/lens/lens_ecosystem/lens_views.png){: style="width:46rem;" }
-
-<figcaption><i> Graphical User Interface of the Lens Views </i></figcaption> 
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/lens_ecosystem/lens_views.png" alt="Graphical User Interface of the Lens Views" style="width:46rem; border:1px solid black;">
+    <figcaption><i>Graphical User Interface of the Lens Views</i></figcaption>
+  </div>
 </center>
+
 
 #### **Creating a Lens View**
 
@@ -85,12 +84,12 @@ When users compose queries on Lens Explorer and analyze the result sets as a tab
 1. Open the Lens Explorer and compose a query by selecting the required dimensions and measures.
 
 <center>
-
-![save_view_option.png](/interfaces/lens/save_view_option.png){: style="width:46rem;" }
-
-<figcaption><i> Saving option </figcaption> </i></figcaption> 
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/save_view_option.png" alt="Saving option" style="width:46rem; border:1px solid black;">
+    <figcaption><i>Saving option</i></figcaption>
+  </div>
 </center>
+
 
     
     
@@ -98,46 +97,43 @@ When users compose queries on Lens Explorer and analyze the result sets as a tab
 
 
 <center>
-
-![save_view.png](/interfaces/lens/save_view.png){: style="width:46rem;" }
-
-<figcaption><i> Saving option </figcaption> </i></figcaption> 
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/save_view.png" alt="Saving option" style="width:46rem; border:1px solid black;">
+    <figcaption><i>Saving option</i></figcaption>
+  </div>
 </center>
+
 
   
     
 3. The View is successfully created and is currently in Draft mode. In this state, the View is exclusively accessible to its creator;  other users cannot view or access it.
 
 <center>
-
-![draft_view.png](/interfaces/lens/draft_view.png){: style="width:46rem;" }
-
-<figcaption><i> Draft view </figcaption> </i></figcaption> 
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/draft_view.png" alt="Draft view" style="width:46rem; border:1px solid black;">
+    <figcaption><i>Draft view</i></figcaption>
+  </div>
 </center>
-    
+
 
 4. To make this View available to other users, you need to publish it. 
 
 <center>
-
-![publish view.png](/interfaces/lens/publish_view.png){: style="width:46rem;" }
-
-<figcaption><i> Publishing Lens view </figcaption> </i></figcaption> 
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/publish_view.png" alt="Publishing Lens view" style="width:46rem; border:1px solid black;">
+    <figcaption><i>Publishing Lens view</i></figcaption>
+  </div>
 </center>
-    
-  
-5. Once published, it will be removed from the draft mode and become available under **Views**. 
+
+5. Once published, it will be removed from the draft mode and become available under **Views**.
 
 <center>
-
-![published_views.png](/interfaces/lens/published_views.png){: style="width:46rem;" }
-
-<figcaption><i> Published Lens Views </figcaption> </i></figcaption> 
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/published_views.png" alt="Published Lens Views" style="width:46rem; border:1px solid black;">
+    <figcaption><i>Published Lens Views</i></figcaption>
+  </div>
 </center>
+
 
 
 #### **Editing an Existing View**
@@ -145,12 +141,12 @@ When users compose queries on Lens Explorer and analyze the result sets as a tab
 Users can edit an existing Lens View that they own.
 
 <center>
-
-![edit view.png](/interfaces/lens/edit_view.png){: style="width:46rem;" }
-
-<figcaption><i> Editing a Lens View </figcaption> </i></figcaption> 
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/edit_view.png" alt="Editing a Lens View" style="width:46rem; border:1px solid black;">
+    <figcaption><i>Editing a Lens View</i></figcaption>
+  </div>
 </center>
+
 
 
 #### **Cloning a Lens View**
@@ -163,24 +159,22 @@ Follow the steps to create a clone of an existing Lens View:
 
 
 <center>
-
-![*Clone a Lens view*](/interfaces/lens/clone_view.png){: style="width:46rem;" }
-
-<figcaption><i> Clone a Lens view </figcaption> </i></figcaption> 
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/clone_view.png" alt="Clone a Lens view" style="width:46rem; border:1px solid black;">
+    <figcaption><i>Clone a Lens view</i></figcaption>
+  </div>
 </center>
     
     
 2. Make the required modifications, then click **Run Query** to generate the view. After the query execution is completed, users will be presented with the option to **Save View**.
 
-
 <center>
-
-![save_clone.png](/interfaces/lens/save_clone.png){: style="width:46rem;" }
-
-<figcaption><i> Saving cloned Lens View </figcaption> </i></figcaption> 
-
+  <div style="text-align: center;">
+    <img src="/interfaces/lens/save_clone.png" alt="Saving cloned Lens View" style="width:46rem; border:1px solid black;">
+    <figcaption><i>Saving cloned Lens View</i></figcaption>
+  </div>
 </center>
+
     
 
 3. Input a new name and description for the cloned view to save it. By default, the cloned view is saved in the draft mode, and to make it available to all the users, it should be published as shown above.
@@ -198,3 +192,9 @@ The fundamental constituents of both Lens and contract encompass an amalgamation
 
 ## Building Lens
 For a comprehensive guide on creating and deploying a Lens, refer to the [Building a Lens](/interfaces/lens/building_lens/) section.
+
+## Recipes
+ 
+here are some recipes to help you build lens
+
+[recipes](/interfaces/lens/recipes/recipes/)

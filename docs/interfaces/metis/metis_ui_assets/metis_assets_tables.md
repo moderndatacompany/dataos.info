@@ -4,8 +4,13 @@ The Scanner workflow extracts both general and detailed information from structu
 
 On selecting **Tables,** the following information will appear on the screen:
 
-![tables.png](metis_assets_tables/tables.png)
-<figcaption align = "center">List of tables  </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_assets/metis_assets_tables/tables.png" alt="List of tables" style="border:1px solid black;">
+    <figcaption align="center">List of tables</figcaption>
+  </div>
+</center>
+
 
 ## Filter pane
 
@@ -51,8 +56,13 @@ Each table in the list will feature a Card view that displays the following info
 
 In the Card view, click anywhere except the table name to get the overview for quick reference.
 
-![tables_ov.png](metis_assets_tables/tables_ov.png)
-<figcaption align = "center"> Quick information </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_assets/metis_assets_tables/tables_ov.png" alt="Quick information" style="border:1px solid black;">
+    <figcaption align="center">Quick information</figcaption>
+  </div>
+</center>
+
 
 This includes the following quick reference information:
 
@@ -106,8 +116,13 @@ The subsequent **tabs** on the Details Page provide more detailed information on
 
 ### **Schema**
 
-![tables_schema.png](metis_assets_tables/tables_schema.png)
-<figcaption align = "center"> Schema of table </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_assets/metis_assets_tables/tables_schema.png" alt="Schema of table" style="border:1px solid black;">
+    <figcaption align="center">Schema of table</figcaption>
+  </div>
+</center>
+
 
 ### **Activity Feeds & Tasks**
 
@@ -121,15 +136,25 @@ Here, you can access information about the queries executed on a specific table/
 
 This tab shows the data profiling information for your table/dataset and data types, null values %, distinct value %, and unique values % for each column., which will help you to assess the accuracy, completeness, and validity of the data. 
 
-![tables_profile.png](metis_assets_tables/tables_profile.png)
-<figcaption align = "center"> Profiling information </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_assets/metis_assets_tables/tables_profile.png" alt="Profiling information" style="border:1px solid black;">
+    <figcaption align="center">Profiling information</figcaption>
+  </div>
+</center>
+
 
 ### **Data Quality**
 
 You can view the list of quality tests (assertions)created for your dataset to monitor the data quality and the status of each run. 
 
-![table_qcheck.png](metis_assets_tables/table_qcheck.png)
-<figcaption align = "center"> List of quality tests </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_assets/metis_assets_tables/table_qcheck.png" alt="List of quality tests" style="border:1px solid black;">
+    <figcaption align="center">List of quality tests</figcaption>
+  </div>
+</center>
+
 
 Here, you will get the information about the tests designed as per the quality objectives set for your datasets and ots columns.
 
@@ -145,15 +170,25 @@ Here, you will get the information about the tests designed as per the quality o
 
 Click on the test result to see the details of a specific SLO.
 
-![tables_qlty.png](metis_assets_tables/tables_qlty.png)
-<figcaption align = "center"> Details of a quality test  </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_assets/metis_assets_tables/tables_qlty.png" alt="Details of a quality test" style="border:1px solid black;">
+    <figcaption align="center">Details of a quality test</figcaption>
+  </div>
+</center>
+
 
 ### **Lineage**
 
 The lineage graph illustrates the relationships between workflows and derived datasets, providing a clear representation of how data entities are related and how they may have changed over time. You can get the details of data flow across workflows and the datasets they produce. Additionally, you can learn about the other dependent datasets. You can explore more by clicking on the dataset/workflow nodes of the lineage graph.
 
-![tables_lineage.png](metis_assets_tables/tables_lineage.png)
-<figcaption align = "center"> Lineage view </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_assets/metis_assets_tables/tables_lineage.png" alt="Lineage view" style="border:1px solid black;">
+    <figcaption align="center">Lineage view</figcaption>
+  </div>
+</center>
+
 
 You can explore more by clicking on the dataset/workflow nodes of the lineage graph.
 
@@ -161,12 +196,21 @@ You can explore more by clicking on the dataset/workflow nodes of the lineage gr
 
 It opens up the side pane to display additional information. It gives you links for Source, Database, Schema to further explore them. Users also get the option to switch to the Workbench app to run queries and explore the dataset.
 
-![tables_leneageset.png](metis_assets_tables/tables_lineage_dataset.png)
-<figcaption align = "center"> Dataset information  </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_assets/metis_assets_tables/tables_lineage_dataset.png" alt="Dataset information" style="border:1px solid black;">
+    <figcaption align="center">Dataset information</figcaption>
+  </div>
+</center>
+
 
 ***Job***
 
 Users will get the Workflow information on the side pane and link to Workflow Resource to know more about.
 
-![tables_lineage_job.png](metis_assets_tables/tables_lineage_job.png)
-<figcaption align = "center">Job details  </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_assets/metis_assets_tables/tables_lineage_job.png" alt="Job details" style="border:1px solid black;">
+    <figcaption align="center">Job details</figcaption>
+  </div>
+</center>
