@@ -2,20 +2,17 @@
 
 **The Data Products** tab is the homepage of the Data Product Hub that showcases the list of Data Products that are deployed in the Data Product Hub. To add the Data Product on Data Product Hub you need to run the scanner workflow of Data Products. To search the Data Product of your choice you can filter out the Data Products by readiness, by type, and by use case just by clicking on the checkbox on the right panel of the Hub. You can also filter out the Data Products by domain just by clicking on a particular domain tab such as Customer Service. 
 
-<<<<<<< HEAD
 <center>
   <div style="text-align: center;">
     <img src="/interfaces/data_product_hub/Untitled%20(14).png" alt="Outlined Image" style="border:1px solid black;">
     <figcaption>Outlined Image</figcaption>
   </div>
 </center>
-=======
 
 <div style="text-align: center;">
   <img src="/interfaces/data_product_hub/Untitled%20(14).png" alt="Outlined Image" style="border:1px solid black; width: 80%; height: auto;">
 </div>
 
->>>>>>> f6bf2e59173d09c494d5cfe7f5873add34868a8f
 
 ## Filter Options for Data Products
 
@@ -31,23 +28,19 @@ You can apply various filters to filter out the Data Product of your requirement
 
 **By Keywords:** You can search Data Products by keywords mentioned in the Data Product name. For example, if you search the ‘new’ keyword in the search bar on the right corner and click enter, it will list all the Data Products with the ‘new’ keyword in their name, as you can see below.
 
-<<<<<<< HEAD
 <center>
   <div style="text-align: center;">
     <img src="/interfaces/data_product_hub/Untitled%20(15).png" alt="Outlined Image" style="border:1px solid black;">
     <figcaption>Outlined Image</figcaption>
   </div>
 </center>
-=======
 
 <div style="text-align: center;">
   <img src="/interfaces/data_product_hub/Untitled%20(15).png" alt="Outlined Image" style="border:2px solid black; width: 80%; height: auto;">
 </div>
->>>>>>> f6bf2e59173d09c494d5cfe7f5873add34868a8f
 
 By Favourites:</strong> You can filter out all the bookmarked Data Products by clicking on the ‘star’ symbol.
 
-<<<<<<< HEAD
 <center>
   <div style="text-align: center;">
     <img src="/interfaces/data_product_hub/Untitled%20(16).png" alt="Outlined Image" style="border:1px solid black;">
@@ -63,7 +56,6 @@ In this tab, you can explore individual Data Products. Just click on a Data Prod
     <figcaption>Outlined Image</figcaption>
   </div>
 </center>
-=======
 
 <div style="text-align: center;">
   <img src="/interfaces/data_product_hub/Untitled%20(16).png" alt="Outlined Image" style="border:2px solid black; width: 50%; height: auto;">
@@ -75,7 +67,6 @@ In this tab, you can explore individual Data Products. Just click on a Data Prod
 <div style="text-align: center;">
   <img src="/interfaces/data_product_hub/Untitled%20(17).png" alt="Outlined Image" style="border:2px solid black; width: 80%; height: auto;">
 </div>
->>>>>>> f6bf2e59173d09c494d5cfe7f5873add34868a8f
 
 
 ## Tabs
@@ -99,18 +90,15 @@ In the **Overview Tab,** you can see a brief overview of the Data Product such a
 
 **SLO Adherence:** Service Level Objectives (SLOs) are our Data Product's defined data quality standards, ensuring it meets user expectations and business needs. We continuously monitor our data product against these SLOs using data quality checks to identify and address any deviations promptly. SLO Adherence indicates the success rate of data quality checks and can be calculated as `SLO Adherence (%) = (Total Checks Passed / Total Checks Applied) * 100` based on the last 10 checks applied.
 
-<<<<<<< HEAD
 <center>
   <div style="text-align: center;">
     <img src="/interfaces/data_product_hub/Untitled%20(18).png" alt="Outlined Image" style="border:1px solid black;">
   </div>
 </center>
-=======
 
 <div style="text-align: center;">
   <img src="/interfaces/data_product_hub/Untitled%20(18).png" alt="Outlined Image" style="border:2px solid black; width: 80%; height: auto;">
 </div>
->>>>>>> f6bf2e59173d09c494d5cfe7f5873add34868a8f
 
 <aside class="callout">
 🗣 Remember that quality checks can be applied to both input and output data.
