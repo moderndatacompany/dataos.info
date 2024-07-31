@@ -1464,20 +1464,38 @@ This Data Product is utilized to generate dashboards in [Superset](/interfaces/s
 ### **Campaign Funnel Dashboard**
 Campaign Funnel Dashboard provides a comprehensive overview of a marketing campaign's performance by tracking the progression of customers through different stages of the campaign funnel. The dashboard is divided into two main sections: the Campaign Funnel and Campaign Stats.
 
-<img src="/products/data_product/templates/campaign-funnel-dashboard-2024-07-15T11-07-45.626Z.jpg" alt="Description" width="1600">
+<center>
+  <div style="text-align: center;">
+    <img src="/products/data_product/templates/campaign-funnel-dashboard-2024-07-15T11-07-45.626Z.jpg" alt="Outlined Image" style="border:1px solid black; width: 80%; height: auto;">
+  </div>
+</center>
+
+
 The Campaign Funnel section displays a bar chart of customers at various campaign stages for different archetypes: Deal Chasers, Financially Stressed, Generic, Prosperous and Content, Recovering Credit Users, and Self Aware Avoiders. Stages include Customer Reached, Explored Product, Started to Apply, Engagement, Completed Application, KYC, and Onboarded. The Campaign Stats section provides a table summarizing the count of customers at each stage for these archetypes, allowing for a quick comparison and highlighting campaign effectiveness for each group.
 
 
 ### **Lead Generation Dashboard**
 Lead Generation Dashboard provides an extensive overview of customer data, segmented across various dimensions to facilitate a deeper understanding of customer behaviors, demographics, and sales performance. The dashboard is divided into several key sections:
-<img src="/products/data_product/templates/lead-generation-final-view-2024-07-15T11-08-51.641Z.jpg" alt="Description" width="1600">
+
+
+<center>
+  <div style="text-align: center;">
+    <img src="/products/data_product/templates/lead-generation-final-view-2024-07-15T11-08-51.641Z.jpg" alt="Outlined Image" style="border:1px solid black; width: 80%; height: auto;">
+  </div>
+</center>
+
 
 This dashboard displays key metrics: a total customer count of 520k, with segmentation by cross-sell archetypes shown in a pie chart. Sales data for various products and their contribution to total sales are visualized in a bar chart. Customer risk categories (Low, Medium, High) and affluence levels are also depicted in bar charts, each showing similar distributions (Low: 62%, Medium: 17%, High: 21%). Demographics are broken down into Rural (156k), Semi-Urban (126k), and Urban (238k) in another bar chart. Geographic distribution of customers by states is shown, along with a line chart tracking transaction counts and modes (UPI, QR, Card) over time. Lastly, a bar chart analyzes reasons for transactions, such as Exam, Food & Grocery, and Travel.
 
 ### **Spend Analysis Dashboard**
 Spend Analysis Dashboard provides an in-depth analysis of customer spending behaviors over time, segmenting the data across various dimensions to offer a comprehensive view of spending patterns and trends. The dashboard is divided into several key sections:
 
-<img src="/products/data_product/templates/spend-analysis-2024-07-15T11-08-57.816Z.jpg" alt="Description" width="1600">
+
+<center>
+  <div style="text-align: center;">
+    <img src="/products/data_product/templates/spend-analysis-2024-07-15T11-08-57.816Z.jpg" alt="Outlined Image" style="border:1px solid black; width: 80%; height: auto;">
+  </div>
+</center>
 
 This dashboard tracks customer spending with a line chart showing a cumulative spend of 20.3M over time. Category-wise spending (Travel, Ecom, Food & Grocery) trends are also highlighted. A pie chart shows customer distribution, with 65,516 in the Low Spend segment. Another pie chart depicts spending distribution, with Low Spend at 25.5B. A Sankey diagram illustrates spend flow across dimensions like Travel, Food & Grocery, UPI, and Card. Transaction amounts for different reasons are compared in a bar chart: Low Spend (Ecom: 5.28B, Food & Grocery: 11.8B, Travel: 8.9B) and Medium Spend (Ecom: 4.73M, Food & Grocery: 6.52M, Travel: 7.14M). Finally, a treemap shows the relative size of spend dimensions, including Low Spend (25.5B), Food & Grocery (6.1B), Travel (8.9B), UPI (1.95B), Card (3.24B), and Exam (5.28B).
 

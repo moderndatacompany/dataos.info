@@ -10,9 +10,6 @@ The Monitor [Resource](/resources/) is an integral part of DataOS’ Observabili
 
 ## Structure of Monitor manifest
 
-=== "Syntax"
-    ![Monitor manifest](/resources/worker/worker_annotated.png)
-
 === "Code"
     ```yaml title="monitor_manifest_structure.yml"
     --8<-- "examples/resources/monitor/equation_manifest.yaml"

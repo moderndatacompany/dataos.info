@@ -8,6 +8,14 @@
     <figcaption>Outlined Image</figcaption>
   </div>
 </center>
+<<<<<<< HEAD
+
+<div style="text-align: center;">
+  <img src="/interfaces/data_product_hub/Untitled%20(14).png" alt="Outlined Image" style="border:1px solid black; width: 80%; height: auto;">
+</div>
+
+=======
+>>>>>>> origin/dev
 
 ## Filter Options for Data Products
 
@@ -29,6 +37,13 @@ You can apply various filters to filter out the Data Product of your requirement
     <figcaption>Outlined Image</figcaption>
   </div>
 </center>
+<<<<<<< HEAD
+
+<div style="text-align: center;">
+  <img src="/interfaces/data_product_hub/Untitled%20(15).png" alt="Outlined Image" style="border:2px solid black; width: 80%; height: auto;">
+</div>
+=======
+>>>>>>> origin/dev
 
 By Favourites:</strong> You can filter out all the bookmarked Data Products by clicking on the ‘star’ symbol.
 
@@ -47,6 +62,20 @@ In this tab, you can explore individual Data Products. Just click on a Data Prod
     <figcaption>Outlined Image</figcaption>
   </div>
 </center>
+<<<<<<< HEAD
+
+<div style="text-align: center;">
+  <img src="/interfaces/data_product_hub/Untitled%20(16).png" alt="Outlined Image" style="border:2px solid black; width: 50%; height: auto;">
+</div>
+
+In this tab, you can explore individual Data Products. Just click on a Data Product of your choice, and an interface will open that resembles the below image.
+
+
+<div style="text-align: center;">
+  <img src="/interfaces/data_product_hub/Untitled%20(17).png" alt="Outlined Image" style="border:2px solid black; width: 80%; height: auto;">
+</div>
+=======
+>>>>>>> origin/dev
 
 
 ## Tabs
@@ -75,6 +104,13 @@ In the **Overview Tab,** you can see a brief overview of the Data Product such a
     <img src="/interfaces/data_product_hub/Untitled%20(18).png" alt="Outlined Image" style="border:1px solid black;">
   </div>
 </center>
+<<<<<<< HEAD
+
+<div style="text-align: center;">
+  <img src="/interfaces/data_product_hub/Untitled%20(18).png" alt="Outlined Image" style="border:2px solid black; width: 80%; height: auto;">
+</div>
+=======
+>>>>>>> origin/dev
 
 <aside class="callout">
 🗣 Remember that quality checks can be applied to both input and output data.
