@@ -1,7 +1,7 @@
 # Toolbox Stack Grammar
 
 ```yaml
-toolbox: 
+stackSpec: 
   dataset: dataos://icebase:sample/city?acl=rw 
   action: 
     name: set_version 
@@ -10,7 +10,7 @@ toolbox:
 
 ## Configuration Attributes
 
-### **`toolbox`**
+### **`stackSpec`**
 
 **Description:** specifies the toolbox-stack specific section<br>
 **Data Type:** object<br>
@@ -19,7 +19,7 @@ toolbox:
 **Possible Value:** none<br>
 **Example Usage:**<br>
 ```yaml
-toolbox:
+stackSpec:
   {}
 ```
 

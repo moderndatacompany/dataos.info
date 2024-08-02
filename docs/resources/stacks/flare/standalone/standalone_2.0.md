@@ -22,7 +22,7 @@
 | IO to Read/Write Data | Uses dataset | Uses Datasource |
 | Source Support | Works on Local File system-mounted data | Works on Object storage, Warehouses, relational and NoSQL data sources, as well as local file system-mounted data. To check out the list of support sources click [here](./standalone_yaml_configurations.md) |
 | Support to expose SparkUI to localhost | No | Yes |
-| Support for configuring flare versions | Only supported the default version that came out of the box; no configuration permitted. | Flare stack version can be configured, e.g., flare:3.0, flare:4.0 |
+| Support for configuring flare versions | Only supported the default version that came out of the box; no configuration permitted. | Flare stack version can be configured, e.g., flare:4.0, flare:5.0 |
 | Support for custom flare image hosted in docker registry | No custom image support | Supports all custom image tags to run Standalone |
 | Support for Apple M1/M2 Chip | The intermediate transformation required for M1/M2 support | Native M1/M2 chip support |
 

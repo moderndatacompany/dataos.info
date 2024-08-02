@@ -956,9 +956,9 @@ workflow:
     title:  Fs Customer Overview Raw  Dataset
     description: This job will give fs customer overview data 
     spec:
-      stack: flare:4.0
+      stack: flare:5.0
       compute: fs-runnable-default
-      flare:
+      stackSpec:
         driver:
           coreLimit: 1800m
           cores: 1
@@ -1027,9 +1027,9 @@ workflow:
     title:  Fs Customer Overview Dataset
     description: This job will give fs Customer overview data 
     spec:
-      stack: flare:4.0
+      stack: flare:5.0
       compute: fs-runnable-default
-      flare:
+      stackSpec:
         driver:
           coreLimit: 1800m
           cores: 1
@@ -1164,6 +1164,7 @@ We utilized the Flare stack to carry out the data profiling task. Below is the m
 
 <details>
   <summary>Worflow manifest</summary>
+
 ```yaml
 version: v1
 name: wf-customer-overview-profile
@@ -1177,13 +1178,13 @@ workflow:
   - name: customer-overview-profile
     title: Customer Overview Profiler 
     spec:
-      stack: flare:4.0
+      stack: flare:5.0
       compute: fs-runnable-default
       title: Customer Overview Profiler 
       persistentVolume:
         name: persistent-v
         directory: fides
-      flare:
+      stackSpec:
         driver:
           coreLimit: 1800m
           cores: 1
@@ -1363,7 +1364,7 @@ workflow:
         stack: scanner:2.0
         runAsUser: metis
         compute: fs-runnable-default
-        scanner:
+        stackSpec:
           depot: dataos://icebasetw
           sourceConfig:
             config:
@@ -1389,11 +1390,11 @@ We have implemented the Flare stack, orchestrated by Workflow, to perform qualit
         title: Metrics and checks
         description: The job performs metrics calculations  checks and metrix on customer overview
         spec:
-          stack: flare:4.0
+          stack: flare:5.0
           compute: runnable-default
           title: Customerdp data Quality Datasets
           description: The job performs metrics calculations  checks and metrix on customer overview
-          flare:
+          stackSpec:
             driver:
               coreLimit: 2400m
               cores: 2
