@@ -21,7 +21,7 @@ spec:
   stack: scanner:2.0
   compute: runnable-default
   runAsUser: metis                #run as Metis user
-  scanner:
+  stackSpec:
     depot: demoprepbq
           
 ```

@@ -76,10 +76,10 @@ workflow:
           - standalone
           - writeJob
           - opensearch
-        stack: flare:3.0
+        stack: flare:5.0
         compute: runnable-default
         tier: connect
-        flare:
+        stackSpec:
           job:
             explain: true
             inputs:

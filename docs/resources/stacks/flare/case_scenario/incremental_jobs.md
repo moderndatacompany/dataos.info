@@ -99,7 +99,7 @@ workflow:
     spec:
       stack: toolbox
       compute: runnable-default
-      toolbox:
+      stackSpec:
         dataset: dataos://icebase:sample/order_incremental_08?acl=rw
         action:
           name: set_version

@@ -74,7 +74,7 @@ workflow:
     spec:
       stack: toolbox
     compute: runnable-default
-      toolbox:
+      stackSpec:
         dataset: dataos://icebase:retail/city_merge_01?acl=rw
         action:
           name: set_version

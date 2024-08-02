@@ -111,12 +111,12 @@ Here's a more detailed step-by-step guide to fetching data from the Stock data A
           spec:
             tags:
               - Connect
-            stack: flare:1.0
+            stack: flare:5.0
     
     # a dataos APIkey is required of operator tag.
             envs: 
               DATAOS_RUN_AS_APIKEY: dG9rZW5fc29jaWFsbHlfdHlwaWNhbGx5X2dyYXRlZnVsX3NuYWlsLjAyYzhiZWU4LWJkNzctNDQ2Zi1hMzJlLTJhZGNjMjg5OGM3Ng==
-            flare:
+            stackSpec:
               job:
                 explain: true
     #enter the name of depo "/stockdatapple" is the pulsar topic name
@@ -152,7 +152,7 @@ Here's a more detailed step-by-step guide to fetching data from the Stock data A
         - name: dataos-tool-pulsar
           spec:
             stack: toolbox
-            toolbox:
+            stackSpec:
               dataset: dataos://icebase:sample/stock_pulsar?acl=rw
               action:
                 name: set_version

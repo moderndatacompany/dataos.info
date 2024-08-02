@@ -180,16 +180,16 @@ To parse environment variables in the configuration file of a Resource, follow t
       dag:
         - name: 
           spec: 
-            stack: flare:4.0 
+            stack: flare:5.0 
             compute: 
-            flare:
-            job:
-              explain: true
-              logLevel: ${VARIABLE2}
-              showPreviewLines: 2
-              inputs: 
-              steps: 
-              outputs: 
+            stackSpec:
+              job:
+                explain: true
+                logLevel: ${VARIABLE2}
+                showPreviewLines: 2
+                inputs: 
+                steps: 
+                outputs: 
     ```
     
 2. The values for the fields, where environment variables have been used, can now be set while applying the config file through DataOS CLI.
@@ -214,16 +214,16 @@ To parse environment variables in the configuration file of a Resource, follow t
       dag:
         - name: 
           spec: 
-            stack: flare:4.0 
+            stack: flare:5.0 
             compute: 
-            flare:
-            job:
-              explain: true
-              logLevel: value2
-              showPreviewLines: 2
-              inputs: 
-              steps: 
-              outputs: 
+            stackSpec:
+              job:
+                explain: true
+                logLevel: value2
+                showPreviewLines: 2
+                inputs: 
+                steps: 
+                outputs: 
     ```
     
 
