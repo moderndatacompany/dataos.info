@@ -31,10 +31,7 @@ Here, Clusters will be listed. You can customize how the list is displayed. On t
 | Option | Description |
 | --- | --- |
 | Search Result | Count of Clusters |
-| Sorting | Choose the Sorting order
-- Last updated
-- Relevance
-- Ascending/Descending order. |
+| Sorting | Choose the Sorting order<br><ul><li>Last updated</li><br><li>Relevance</li><br><li>Ascending/Descending order</li></ul> |
 
 Each Cluster in the list will display the following information:
 
@@ -90,9 +87,9 @@ In addition to basic Cluster information, the following details and options are 
 | Domain | Allows the user to add the predefined domain name. |
 | State | Cluster state  |
 | Tags | Add/Remove tags/glossary terms/tag groups. |
-| Request Tags Update (?) | Request updates in tags and assign users to do it. |
+| Request Tags Update (? icon) | Request updates in tags and assign users to do it. |
 | Description | Allows the user to edit the description |
-| Request Description Update (?) | Request updates in the description and assign users to do it |
+| Request Description Update (? icon) | Request updates in the description and assign users to do it |
 | Tasks | Option to view tasks created. In the side pane, the user will get the option to create a new task |
 | Conversations | View conversations in the side pane. The user will get the option to start a new conversation by clicking on the ‘+’ sign |
 
@@ -109,9 +106,8 @@ The subsequent tabs will provide you with more detailed information, as explaine
 | Aggregate Status |  |
 | Compute | Compute resources used for allocating processing power; default is query-default |
 | Run As User | Authority granted to perform operations on behalf of the assigned user ID |
-| Configurations
-- Requests
-- Limits | CPU and Memory allocation |
+| Configurations <br><ul><li>Requests</li><br><li>Limits</li></ul> | CPU and Memory allocation |
+| Catalogs | List of queryable sources |
 | Life Cycle Events | Logs significant occurrences such as creation and deletion |
 
 ### **Activity Feeds & Tasks**
