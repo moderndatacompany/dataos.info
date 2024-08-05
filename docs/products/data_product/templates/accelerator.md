@@ -1,6 +1,6 @@
 # Financial Services Accelerator Data Product
 
-Financial Services Accelerator is an entity-first Data Product designed to provide a unified and persistent set of identifiers and attributes that describe customers within the financial services domain. This data product aims to seamlessly connect customer data, product data, and transaction data across various organizational silos and business units. It is a master dataset continuously updated in real-time, ensuring accuracy and reliability. The steps required to develop this Data Product are given below. 
+Financial Services Accelerator is a Data Product designed to provide a unified and persistent set of identifiers and attributes that describe customers within the financial services domain. This Data Product aims to seamlessly connect customer data, product data, and transaction data across various organizational silos and business units. It is a master dataset continuously updated in real-time, ensuring accuracy and reliability. The steps required to develop this Data Product are given below. 
 
 ## Pre-requisites
 To create the Data Product within DataOS, following requirements were needed:
@@ -760,6 +760,51 @@ In this step, we determined the specific resources required to develop this Data
 ### **Define performance target**
 
 In this step we define the quality checks needed to measure the performance of the Data Product.
+
+### **Create Data Product manifest file**
+
+This is the final step, where we create a manifest file for Data Product as given below:
+
+```yaml
+name: customer-overview-dp
+version: v1alpha
+type: data
+tags:
+  - data-product
+  - dataos:type:product
+  - dataos:product:data
+  - dataos:product:data:customer-overview-dp
+description: A unified, accurate, and persistent set of identifiers and attributes that describe a customer and that can be used to connect customer data across multiple organizational silos, and business processes and units. This mastered data, that is continuously live and up-to-date, can be fed to operational and analytical systems to drive business.
+entity: product
+v1alpha:
+  data:
+    domain: financial-services
+    resources:
+      - description: Data Product pipeline
+        purpose: build the data product's data set
+        type: workflow
+        version: v1
+        refType: dataos
+        name: wf-customer-overview-pipeline
+        workspace: fs-domain-workspace
+    inputs:
+      - description: customer_overview
+        purpose: source
+        refType: dataos
+        ref: dataos://twdepot:finance_service/customer_overview
+    outputs:
+      - description: Data Product Dataset
+        purpose: consumption
+        refType: dataos_address
+        ref: dataos://icebasetw:fs_accelerator/customer_overview_dp
+
+```
+
+Apply the Data Product manifest file by executing the below command:
+
+```shell
+dataos-ctl product apply -f ${path-to-dp-manifest-file}
+```
 
 ## Develop
 

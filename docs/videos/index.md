@@ -2,8 +2,8 @@
 title: Videos
 search:
   boost: 4
-hide:
-  - navigation
+# hide:
+#   - navigation
 #   - toc
 ---
 # Videos
