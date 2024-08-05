@@ -16,7 +16,12 @@ For illustration purpose, we will connect with Snowflake data source.
 ### **Required Permissions** 
 
 1. To scan metadata from Snowflake source system, the Snowflake user must have USAGE privileges on required schemas.
-    ![data source](/quick_guides/scan_metadata/depot/permission_snowflake.png)
+   ![data source](/quick_guides/scan_metadata/depot/permission_snowflake.png)
+
+    <aside class="callout">  
+     The required permissions and privileges will change according to the data source. For more about data source-specific permissions, refer to the [Scanner](/resources/stacks/scanner/#supported-data-sources) documentation.
+
+    </aside>
 
 2. To run the Scanner workflow, a user must have Metis admin access or a grant for the “Run as Scanner User” use case.
 
@@ -70,7 +75,32 @@ Let us build a Scanner workflow to scan the data source. The workflow includes t
 4. Use `includes:` and `excludes:` to specify schema/table names or a regex rule to include/exclude tables while scanning the schema.
 
 ```yaml
-scannertest.yaml
+version: v1
+name: snowflake-scanner-test                               
+type: workflow
+tags:
+  - snowflake-scanner-test
+description: The workflow scans the schema of tables and registers their metadata
+workflow:
+  dag:
+    - name: scanner2-snowflake
+      description: The job scans schema from sanity snowflake depot tables and registers their metadata on metis2
+      spec:
+        stack: scanner:2.0                            
+        compute: runnable-default
+        stackSpec:
+          depot: snowflaketestsource 
+          sourceConfig:
+            config:
+              schemaFilterPattern:
+                includes:
+                  - TPCH_SF1$
+              tableFilterPattern: 
+                includes:
+                  - region
+                  - supplier
+                  - Customer
+                  - ORDERS
               
 ```
 
@@ -83,9 +113,13 @@ scannertest.yaml
 
 ## Metadata Source Created on Metis
 
+On Metis UI, goto Settings > Databases to access it.
+
 ![sfdatasource on metis.png](/quick_guides/scan_metadata/depot/snowflake_scanned.png)
 
 ## Scanned Database
+
+Click on the database.
 
 ![snowflake databases.png](/quick_guides/scan_metadata/depot/snowflake_databases.png)
 
@@ -127,11 +161,11 @@ sourceConfig:
         - ORDERS
 ```
 
-### The metadata for all other tables was scanned.
+The metadata for all other tables was scanned.
 
 ![snowflake tables for exclude filter.png](/quick_guides/scan_metadata/depot/snowflake_tables_exclude_filter.png)
 
-# More Examples with `regex` Filter Pattern
+## More Examples with `regex` Filter Pattern
 
 1. To scan all the schemas in the **SNOWFLAKE_SAMPLE_DATA** database. 
     
