@@ -25,7 +25,7 @@ With activity feeds, you can easily accomplish the following:
 
 ### **Search and Filter**
 
-Metis's search experience surfaces results across data assets, ML models, pipelines, dashboards, Resources, and more. 
+Metis's search experience surfaces results across data assets such as Tables, Topics, ML models, Pipelines, Dashboards, Resources, and more. 
 
 <center>
   <div style="text-align: center;">
@@ -35,12 +35,21 @@ Metis's search experience surfaces results across data assets, ML models, pipeli
 </center>
 
 
-Metis not only helps you find and access data using search criteria for your data products, assets and Resources, but it also allows you to **filter** them based on attributes such as tier, domain, source name, schema databases, tags, owners, etc. 
+Metis not only helps you find and access data using search criteria for your data products, assets and Resources, but it also allows you to **filter** them based on attributes such as database, depots, domain, owner, schema, source, source type, tags, tier, etc. 
 
 <center>
   <div style="text-align: center;">
     <img src="/interfaces/metis/metis_features/filter.png" alt="Filter" style="border:1px solid black;">
     <figcaption align="center"><i>Filter based on attributes</i></figcaption>
+  </div>
+</center>
+
+To narrow down the list of datasets, you can use the filter facet dropdown to select the specific depot you need. This action will refresh the dataset list, displaying only those that match your selected depot criteria.
+
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_features/depot_filter.png" alt="Depot Filter" style="border:1px solid black;">
+    <figcaption align="center"><i>Filter based on Depot attribute</i></figcaption>
   </div>
 </center>
 
