@@ -1,6 +1,6 @@
 # Quick Start Guides
 
-Welcome to the Learning Hub! These quick start guides will help you navigate through the essentials of DataOS, setting you up for success.
+
 
 ## :resources-depot: Connecting with Data Sources
 
@@ -8,9 +8,9 @@ Learn how to connect DataOS to various data sources, ensuring seamless integrati
 
 <div class= "grid cards" markdown>
 
--   [Depot creation with DataOS GUI](/quick_guides/depot_creation_gui/)
+-   [Depot Creation with DataOS GUI](/quick_guides/depot_creation_gui/)
 
--    [Depot creation with DataOS CLI](/quick_guides/depot_creation_cli/)
+-   [Depot Creation with DataOS CLI](/quick_guides/depot_creation_cli/)
 
 </div>
 

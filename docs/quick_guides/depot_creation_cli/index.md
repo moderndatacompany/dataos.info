@@ -1,4 +1,4 @@
-# Depot creation with DataOS CLI
+# Depot Creation with DataOS CLI
 
 !!! info "Information"
     Depot is a DataOS Resource that simplifies connectivity to different data sources by abstracting the complexities of the underlying systems. This guide provides step-by-step instructions for creating a Depot using CLI.

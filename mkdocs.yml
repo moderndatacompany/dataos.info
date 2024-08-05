@@ -337,5 +337,7 @@ nav:
     - Configurations: products/data_product/configurations.md   
     - Core Concepts: products/data_product/core_concepts.md
   - Glossary: glossary/index.md
-  - Quick Start Guides: quick_guides/index.md
-  - Videos: videos/index.md
+  - Learn:
+    - learn/index.md
+    - Quick Start Guides: quick_guides/index.md
+    - Videos: videos/index.md
