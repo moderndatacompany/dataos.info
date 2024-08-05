@@ -222,8 +222,9 @@ nav:
           - Computes: interfaces/metis/metis_ui_resources/metis_resources_computes.md
           - Databases: interfaces/metis/metis_ui_resources/metis_resources_databases.md
           - Depots: interfaces/metis/metis_ui_resources/metis_resources_depots.md
-          - Instance Secret: interfaces/metis/metis_ui_resources/metis_resources_instance_secrets.md
+          - Instance Secrets: interfaces/metis/metis_ui_resources/metis_resources_instance_secrets.md
           - Lakehouses: interfaces/metis/metis_ui_resources/metis_resources_lakehouses.md
+          - Lenses: interfaces/metis/metis_ui_resources/metis_resources_lenses.md
           - Monitors: interfaces/metis/metis_ui_resources/metis_resources_monitors.md
           - Operators: interfaces/metis/metis_ui_resources/metis_resources_operators.md
           - Pagers: interfaces/metis/metis_ui_resources/metis_resources_pagers.md
