@@ -155,10 +155,6 @@ nav:
           - interfaces/atlas/bi_tools/index.md
           - Power BI: 
             - interfaces/atlas/bi_tools/powerbi/index.md
-            - Using Connector: interfaces/atlas/bi_tools/powerbi/powerbi_custom_connector.md
-            - Using ODBC Driver: interfaces/atlas/bi_tools/powerbi/using_odbc_driver.md
-            - Using Connector: interfaces/atlas/bi_tools/powerbi/dataos_connector_powerbi.md
-            - Using ODBC Driver: interfaces/atlas/bi_tools/powerbi/power_bi.md
             - Using Connector: interfaces/atlas/bi_tools/powerbi/dataos_connector_powerbi.md
             - Using ODBC Driver: interfaces/atlas/bi_tools/powerbi/using_odbc_driver.md
           - Tableau: interfaces/atlas/bi_tools/tableau/index.md
@@ -341,4 +337,5 @@ nav:
     - Configurations: products/data_product/configurations.md   
     - Core Concepts: products/data_product/core_concepts.md
   - Glossary: glossary/index.md
+  - Quick Start Guides: quick_guides/index.md
   - Videos: videos/index.md
