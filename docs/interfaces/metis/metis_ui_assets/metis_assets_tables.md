@@ -1,6 +1,6 @@
 # Metadata of Tables on Metis UI
 
-The Scanner workflow extracts both general and detailed information from structured data sources, about datasets/tables. This includes general details like names, owners, and tags, along with more intricate metadata such as table schemas, column names, descriptions, data types, quality, transformations, and relationships. The collected metadata is stored in the Metis DB, and the Metis UI presents this wealth of information under the '**Tables**' section. Users can efficiently locate, access, and interpret these assets and their associated data.
+The Scanner workflow extracts both general and detailed information from structured data sources, about datasets/tables/logical table/logical view. This includes general details like names, owners, and tags, along with more intricate metadata such as table schemas, column names, descriptions, data types, quality, transformations, and relationships. The collected metadata is stored in the Metis DB, and the Metis UI presents this wealth of information under the '**Tables**' section. Users can efficiently locate, access, and interpret these assets and their associated data.
 
 On selecting **Tables,** the following information will appear on the screen:
 
@@ -19,15 +19,15 @@ The filter pane allows you to filter the tables list on the basis of the followi
 | Attribute | Description |
 | --- | --- |
 | Advance Filter | Filter Tables using the syntax editor, applying various criteria with 'and/or' conditions for a more refined search. |
-| Show Deleted | Set the toggle to list deleted Tables. |
 | Database | Choose database(s) to filter the list |
+| Depots | Choose Depot(s) to filter the list |
 | Domain | Select a domain like Marketing, or Finance, etc., to filter the tables list for associated domains. |
 | Owner | Name of the user for the data asset |
 | Schema | Choose schema(s) to filter the list |
 | Source | Select the source(s) to filter the list |
-| Tag | Filter the list for tags. |
+| Source Type | Select the source type to filter the list |
+| Tags | Filter the list for tags. |
 | Tier | Tier associated with the importance and criticality of the asset, such as Gold, Silver, etc. |
-| Type |  |
 
 ## Result pane
 
@@ -35,9 +35,7 @@ Here, assets will be listed. Users have the following options to customize how t
 
 | Option | Description |
 | --- | --- |
-| Sorting | Choose the Sorting order
-- Last updated
-- Relevance |
+| Sorting | Choose the Sorting order<ul><li>Last Updated</li><li>Relevance</li> |
 |  | Ascending/Descending order |
 
 Each table in the list will feature a Card view that displays the following information for that particular table:
@@ -70,7 +68,7 @@ This includes the following quick reference information:
 | --- | --- | --- |
 | Info |  |  |
 |  | Name | Name of the table/dataset, clicking on it will open its detail view in the new tab. |
-|  | Type | Data Source |
+|  | Type | Data Source type |
 |  | Queries | Information about the queries executed on this specific table. |
 |  | Columns | Total number of columns in the table |
 | Profile and Data Quality |  |  |
@@ -95,7 +93,7 @@ In addition to basic table information, the following details and options are pr
 
 | Attribute | Description |
 | --- | --- |
-| Asset Type | Table |
+| Asset Type | Table/LogicalView/LogicalTable |
 | Meta Version | Provides information on the latest Meta version. Click to see the version history and corresponding updates.  |
 | Updated | Provides last updated time  |
 | Follow | Gives the user an option to follow the table to receive updates and view its follower count. |
@@ -214,3 +212,7 @@ Users will get the Workflow information on the side pane and link to Workflow Re
     <figcaption align="center">Job details</figcaption>
   </div>
 </center>
+
+### **Policies**
+
+Provides details related to the access permission of a user over the asset.
