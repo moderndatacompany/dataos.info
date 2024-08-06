@@ -1,0 +1,35 @@
+version: v1
+name: wf-operational-analysis-profile-v1-pipeline
+type: workflow
+tags:
+  - Tier.Gold
+  - company.company
+description: The ' wf-operational-analysis-profile-pipeline' is a data pipeline focused on managing and analyzing company data, particularly contact information. It involves stages such as data profile, cleaning, transformation, and quality assurance to derive insights for enhancing operational efficiency and supporting various business processes.
+workflow:
+  schedule:
+    cron: '*/60 * * * *'
+    concurrencyPolicy: Forbid
+  title: Company Detail profile Pipeline
+  dag: 
+    - name: customer-data-profile
+      file: data_product_template/sales_360/profiling/config-customer-profile.yaml
+      retry:
+        count: 2
+        strategy: "OnFailure"
+
+
+    - name: product-data-profile
+      file: data_product_template/sales_360/profiling/products-profile.yamll
+      retry:
+        count: 2
+        strategy: "OnFailure"
+      dependencies:
+        - customer-data-profile
+
+    - name: transaction-data-profile
+      file: data_product_template/sales_360/profiling/config-transactions-profile.yaml
+      retry:
+        count: 2
+        strategy: "OnFailure"
+      dependencies:
+        - product-data-profile
