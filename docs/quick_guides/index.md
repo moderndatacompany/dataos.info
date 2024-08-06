@@ -46,3 +46,13 @@ Learn how to examine and experiment with logical models using the Lens component
      
 </div>
 
+## :material-scanner: Scanning Metadata
+
+Learn how to utilize the Scanner stack within DataOS to extract metadata from a variety of external source systems such as relational databases, data warehouses, messaging services, dashboards, and more. 
+
+<div class= "grid cards" markdown>
+
+-   [Scan Metadata](/quick_guides/scan_metadata/)
+     
+</div>
+
