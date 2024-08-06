@@ -340,5 +340,27 @@ nav:
   - Glossary: glossary/index.md
   - Learn:
     - learn/index.md
-    - Quick Start Guides: quick_guides/index.md
+    - Quick Start Guides: 
+      - quick_guides/index.md
+      - Connecting with Data Sources:
+        - Using GUI: 
+          - quick_guides/depot_creation_gui/index.md
+        - Using CLI: 
+          - quick_guides/depot_creation_cli/index.md
+      - Performing Exloratory Data Analysis:
+        - Running your first data Query: 
+          - quick_guides/first_query/index.md
+        - Arranging and Transforming data with Pivot: 
+          - quick_guides/eda_pivot/index.md
+        - Writing Comlex Queries: 
+          - quick_guides/sql_query_studio/index.md
+        - Querying diverse data sources: 
+          - quick_guides/query_diverse_data_source/index.md
+      - Access a Data Model using Lens:
+        - Creating a Lens: 
+          - quick_guides/create_lens/index.md
+        - Using a Lens: 
+          - quick_guides/use_lens/index.md
+        - Creating Dashboard with LQL: 
+          - quick_guides/create_dashboard_lql/index.md
     - Videos: videos/index.md
