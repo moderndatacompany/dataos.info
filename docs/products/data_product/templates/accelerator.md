@@ -14,7 +14,7 @@ To create the Data Product within DataOS, following requirements were needed:
 
 ## Define Usecase
 
-FS Accelerator involves providing a unified and persistent set of customer identifiers and attributes across organizational silos in the financial services domain. Cross selling credit cards, based on the customer's transaction history.
+FS Accelerator involves providing a unified and persistent set of customer identifiers and attributes across organizational silos in the financial services domain. This example involves cross selling credit cards, based on the customer's transaction history.
 
 ## Discover and Explore
 Upon defining the use case, it has been discovered that no existing Data Product addresses the requirements associated with this use case. Consequently, we will proceed with the development of a new Data Product tailored to meet the FS Accelerator use case.
