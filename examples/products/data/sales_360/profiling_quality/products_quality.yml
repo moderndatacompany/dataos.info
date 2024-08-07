@@ -1,0 +1,51 @@
+name: wf-product-quality
+version: v1
+type: workflow
+tags:
+  - demo.product
+  - Tier.Gold
+  - "Domain.Supply Chain"
+description: The role involves conducting thorough and detailed quality analysis, including data assertion, of extensive raw product data using the advanced features of the DataOS platform.
+workspace: public
+workflow:
+  dag:
+    - name: product-quality
+      description: The role involves conducting thorough and detailed quality analysis, including data assertion, of extensive raw product data using the advanced features of the DataOS platform.
+      title: product Quality Assertion 
+      spec:
+        stack:  soda+python:1.0 
+        logLevel: INFO
+        compute: runnable-default
+        resources:
+          requests:
+            cpu: 1000m
+            memory: 250Mi
+          limits:
+            cpu: 1000m
+            memory: 250Mi
+        stackSpec:
+          inputs:
+            - dataset: dataos://icebase:sales_360/products?acl=rw
+              options:
+                engine: minerva
+                clusterName: system   
+              checks:
+                - missing_count(skuid) = 0 
+
+                - duplicate_count(skuid) = 0
+                  
+
+                - invalid_count(gender) <= 0:
+                    valid regex: \b(?:Male|Female|Unisex)\b
+
+                
+                - invalid_count(color) <= 0:
+                    valid regex: \b(?:Gray|Red|White|Black|Blue)\b
+
+
+                - invalid_count(size) <= 0:
+                    valid regex: \b(?:S|XXL|XL|M|L)\b
+
+
+                - invalid_count(productcategory) <= 0:
+                    valid regex: \b(?:Apparel|Footwear)\b
