@@ -64,7 +64,7 @@
     ```
     
     
-    <aside class="callout"> 🗣 Connection details will depend on the underlying data source to be scanned. Click here to learn more about the data source specific configuration properties.</aside>
+    <aside class="callout"> 🗣 Connection details will depend on the underlying data source to be scanned. Click <a href="/resources/stacks/scanner/#supported-data-sources">here </a> to learn more about the source specific configuration properties.</aside>
     
     
     
