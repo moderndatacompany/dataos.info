@@ -1,21 +1,30 @@
 # Scanning Metadata using Depot
 
 !!! info "Information"
-    This guide explains how dataOS Depots are used to connect to the metadata source and extract the metadata of various entities. It enables you to scan all datasets referenced by a depot. You need to provide the depot name or address to establish a connection to the data source.
+    This guide explains the steps to create a Scanner Workflow using DataOS Depot to connect to the metadata source and extract the metadata of various entities. It enables you to scan all datasets referenced by a Depot. 
+
+## Quick Steps
+
+Follow the below steps:
+
+<center>
+<div style="text-align: center;">
+<img src="/quick_guides/scan_metadata/depot/4_scan_depot.png" alt="Steps to create Scanner Workflow" style="border: 1px solid black;">
+</div>
+</center>
 
 ## Scanner Workflow using a Depot
-
-We will connect with a data source by creating a Depot and then will use the depot to scan the metadata for the entities.
+You need to provide the depot name or address to establish a connection to the data source.
 
 ### **Source Data in Snowflake**
-For illustration purpose, we will connect with Snowflake data source.
+For illustration purposes, we will connect with the Snowflake data source.
 
 ![data source](/quick_guides/scan_metadata/depot/snowflake_data.png)
 
 
-### **Required Permissions** 
+### **Step 1: Check Required Permissions** 
 
-1. To scan metadata from Snowflake source system, the Snowflake user must have USAGE privileges on required schemas.
+1. To scan metadata from the Snowflake source system, the Snowflake user must have USAGE privileges on required schemas.
    ![data source](/quick_guides/scan_metadata/depot/permission_snowflake.png)
 
     <aside class="callout">  
@@ -25,9 +34,10 @@ For illustration purpose, we will connect with Snowflake data source.
 
 2. To run the Scanner workflow, a user must have Metis admin access or a grant for the “Run as Scanner User” use case.
 
-3. Ensure the depot for Snowflake is created and you have Read access. If not exists then create a Depot.
+3. Ensure the depot for Snowflake is created and you have Read access. If it does not exist, then create a Depot.
 
-### **Create a Depot to Connect with Snowflake**
+### **Step 2: Create a Depot to Connect with Snowflake**
+We will connect with a data source by creating a Depot and then will use the depot to scan the metadata for the entities.
  
 1. Create a Depot manifest file.
 Here is the Depot YAML containing the `warehouse`, `URL`, and `database` to connect to Snowflake. The  Depot enables access to all schemas in the configured database. 
@@ -63,10 +73,10 @@ depot:
 dataos-ctl apply -f ${{path/instance_secret.yaml}}
 ```
 
-### **Write Scanner Workflow**
+### **Step 3: Write Scanner Workflow with Filter Patterns**
 Let us build a Scanner workflow to scan the data source. The workflow includes the `depot name` and `filter patterns`. Filter patterns enable you to control whether or not to include databases/schemas/tables as part of metadata ingestion.
 
-1. In the YAML file, provide the workflow properties, such as version, name, description, tags, etc. 
+1. Provide the workflow properties, such as version, name, description, tags, etc., in the YAML file.  
 
 2. Provide the depot name or address(Universal Data Link) to connect to the data source.
 
@@ -109,21 +119,19 @@ workflow:
 
 </aside>
 
-# Output
+### **Step 4: Check Metadata Source Created on Metis**
 
-## Metadata Source Created on Metis
-
-On Metis UI, goto Settings > Databases to access it.
+On Metis UI, go to Settings > Databases to access it.
 
 ![sfdatasource on metis.png](/quick_guides/scan_metadata/depot/snowflake_scanned.png)
 
-## Scanned Database
+**Scanned Database**
 
 Click on the database.
 
 ![snowflake databases.png](/quick_guides/scan_metadata/depot/snowflake_databases.png)
 
-## Scanned Tables on Metis using `includes` Filter Pattern
+**Scanned Tables on Metis using `includes` Filter Pattern**
 
 ```yaml
 sourceConfig:
@@ -141,11 +149,11 @@ sourceConfig:
 
 ![snowflake tables included.png](/quick_guides/scan_metadata/depot/snowflake_tables_included.png)
 
-## Schema of the Scanned Customer Table (validate with the source)
+**Schema of the Scanned Customer Table (validate with the source)**
 
 ![Cust schema on Metis.png](/quick_guides/scan_metadata/depot/cust_schema_on_metis.png)
 
-## Scanned Tables on Metis using `excludes` Filter Pattern
+**Scanned Tables on Metis using `excludes` Filter Pattern**
 
 ```yaml
 sourceConfig:
@@ -203,3 +211,4 @@ The metadata for all other tables was scanned.
     ```
 
 
+To know more about how to specify filters in different scenarios, refer to [Filter Pattern Examples](/resources/stacks/scanner/creating_scanner_workflows/filter_pattern_examples/).
