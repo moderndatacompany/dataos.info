@@ -95,13 +95,6 @@ In the **Overview Tab,** you can see a brief overview of the Data Product such a
     <img src="/interfaces/data_product_hub/Untitled%20(18).png" alt="Outlined Image" style="border:1px solid black;">
   </div>
 </center>
-<<<<<<< HEAD
-
-<div style="text-align: center;">
-  <img src="/interfaces/data_product_hub/Untitled%20(18).png" alt="Outlined Image" style="border:2px solid black; width: 80%; height: auto;">
-</div>
-=======
->>>>>>> origin/dev
 
 <aside class="callout">
 🗣 Remember that quality checks can be applied to both input and output data.
@@ -188,6 +181,7 @@ In the <strong>Recent Updates Tab</strong>, you can see all the recent updates m
 <div style="text-align: center;">
   <img src="/interfaces/data_product_hub/Untitled%20(26).png" alt="Outlined Image" style="border:1px solid black; width: 80%; height: auto;">
 </div>
+
 You can also explore and query the output data by clicking on the output dataset in the **Explore Data** drop-down menu in the right corner. It will redirect you to the workbench where you can query.
 
 
