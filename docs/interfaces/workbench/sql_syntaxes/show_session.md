@@ -8,7 +8,7 @@ SHOW SESSION [ LIKE pattern ]
 
 ## Description
 
-List the current [**session properties**](./set_session.md).
+List the current [**session properties**](/interfaces/workbench/sql_syntaxes/set_session/).
 
 Specify a pattern in the optional `LIKE` clause to filter the results to the desired subset. For example, the following query allows you to find session properties that begin with `query`:
 
@@ -18,6 +18,6 @@ SHOW SESSION LIKE 'query%'
 
 ## See also
 
-[RESET SESSION](./reset_session.md) 
+[RESET SESSION](/interfaces/workbench/sql_syntaxes/reset_session/) 
 
-[SET SESSION](./set_session.md)
+[SET SESSION](/interfaces/workbench/sql_syntaxes/set_session/)

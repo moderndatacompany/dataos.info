@@ -61,7 +61,9 @@ Superset is a business intelligence solution seamlessly integrated into DataOS. 
 
 To initiate Superset within the DataOS environment, navigate to the "Apps" section and select the "Superset" option. 
 
-![Untitled](/interfaces/superset/Untitled%20(2).png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/Untitled%20(2).png" alt="Superset" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 Upon selection, the interface of Superset will open, presenting a layout resembling the following:
 
@@ -91,7 +93,9 @@ Once Superset is launched, you'll be redirected to an interface where you can ex
 
 On the landing page of the Superset, click on the **Dashboards** tab, here you can view any existing dashboard as per your level of permissions.
 
-![Untitled](/interfaces/superset/Untitled%20(10).png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/Untitled%20(10).png" alt="Untitled image" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 In the image above, you can observe the dashboard modified by, its publication status (published or drafted), the timestamp of the last modification, and the owner, and you can also access the dashboards by searching their name, owner, creator, status, favorite, or certificate in the search bar.
 
@@ -124,7 +128,9 @@ Superset's Dashboard Filters provide robust data filtering capabilities through 
 
 Similar to exploring the dashboards, you can explore individual charts by clicking on the **Charts** tab on the launching page.
 
-![Untitled](/interfaces/superset/Untitled%20(12).png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/untited_10.png" alt="Untitled image" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 ## **Steps to Create the Dashboard**
 
@@ -141,7 +147,9 @@ Let’s see how you can add a Database to Superset:-
 3. Click on the **+DATABASE** icon.
 4. Now you can select the database you want to add, fill in the required credentials, and add the database.
 
-![Untitled](/interfaces/superset/Untitled%20(4).png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/Untitled%20(4).png" alt="Untitled image" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 Check out the list of Databases supported by Superset in DataOS, [here](/interfaces/superset/supported_databases/).
 
@@ -179,7 +187,10 @@ LIMIT 100
 
 Following successful query execution, you have the option to create a dataset by saving the query as a dataset under the "SAVE" option. This dataset can subsequently be utilized to generate visuals.
 
-![Untitled](/interfaces/superset/Untitled%20(6).png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/Untitled%20(6).png" alt="Untitled image" style="border:1px solid black; width: 80%; height: auto;">
+</div>
+
 
 After saving the dataset you will be redirected to an interface where you can create charts. By default, it will automatically create the table chart but you can always change it to the chart of your choice.
 
@@ -189,7 +200,9 @@ As you have already seen how you can create the dataset from the query, you can 
 
 In the Datasets tab, select "+ DATASET". Choose the database, schema, and table, then click "CREATE DATASET AND CREATE CHARTS". You'll be redirected to an interface where you can create charts by selecting the dataset and the chart type. 
 
-![Untitled](/interfaces/superset/Untitled%20(7).png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/Untitled%20(7).png" alt="Untitled image" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 <aside class="callout">
 🗣 Creating datasets this way has limitations compared to creating them via query. With queries, you can efficiently select all necessary data at once and apply filtration and transformation as needed, offering greater flexibility and efficiency in dataset creation.
@@ -202,7 +215,10 @@ Upon creating the dataset through query or interface, you will be redirected to 
 
 After creating the chart via query you will be redirected to the following interface:
 
-![Untitled](/interfaces/superset/Untitled%20(8).png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/Untitled%20(8).png" alt="Untitled image" style="border:1px solid black; width: 80%; height: auto;">
+</div>
+
 
 Now, you can choose the desired chart type and efficiently drag and drop columns into the required fields. Subsequently, update the chart to reflect your desired configuration. Ensure to give your chart a meaningful name and save it.
 

@@ -7,8 +7,13 @@
 
 Metis has integrated "Workflow" as a "Resource”  type entity for storing metadata related to its source and transformations within DataOS. On selecting **Workflows,** the following information will be presented on the screen:
 
-![workflows.png](metis_resources_workflows/workflows.png)
-<figcaption align = "center"> List of Workflows  </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_resources/metis_resources_workflows/workflows.png" alt="List of Workflows" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>List of Workflows</figcaption>
+  </div>
+</center>
+
 
 ## Filter pane
 
@@ -50,8 +55,13 @@ Each Workflow in the list features a Card view that presents key information for
 
 In the Card view, click anywhere except the resource name provides a quick overview.
 
-![workflow_overview.png](metis_resources_workflows/workflow_overview.png)
-<figcaption align = "center"> Quick information  </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_resources/metis_resources_workflows/workflow_overview.png" alt="Quick information" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Quick information</figcaption>
+  </div>
+</center>
+
 
 This includes the following quick reference information:
 
@@ -69,8 +79,13 @@ This includes the following quick reference information:
 
 In the Result or Overview pane, clicking on the name of the Workflow opens the Resource Details page, which includes:
 
-![wf_details.png](metis_resources_workflows/wf_details.png)
-<figcaption align = "center"> Comprehensive details  </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_resources/metis_resources_workflows/wf_details.png" alt="Comprehensive details" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Comprehensive details</figcaption>
+  </div>
+</center>
+
 
 ### **Workflow Information**
 
@@ -113,8 +128,11 @@ The subsequent **tabs** will provide you with more detailed information, as expl
 **Dag** 
 
 A Directed Acyclic Graph (DAG) is a conceptual representation of a sequence of jobs or activities. In a DAG, these jobs are executed in the order of their dependencies.
-
-![wf_jobs.png](metis_resources_workflows/wf_jobs.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_resources/metis_resources_workflows/wf_jobs.png" alt="Workflow jobs" style="border:1px solid black; width: 80%; height: auto">
+  </div>
+</center>
 
 **List**
 
@@ -122,9 +140,9 @@ In this section, you can view a list of jobs, along with their names and descrip
 
 Click on a job to learn more about the following:
 
-- [Details](metis_resources_workflows.md)
-- [Topology](metis_resources_workflows.md)
-- [Lineage](metis_resources_workflows.md)
+- [Details](/interfaces/metis/metis_ui_resources/metis_resources_workflows/)
+- [Topology](/interfaces/metis/metis_ui_resourcesmetis_resources_workflows/)
+- [Lineage](/interfaces/metis/metis_ui_resourcesmetis_resources_workflows/)
 
 **Details**
 
@@ -137,20 +155,30 @@ Click on a job to learn more about the following:
 | Configurations
 - Requests
 - Limits
- | CPU and Memory allocation |
+| CPU and Memory allocation |
 | Stack Specification | A segment of the YAML file specifying the input, output, and steps for the transformation in the data processing job. |
 
 **Topology**
 
 This section represents the Dag (of Transformations)**,** outlining the steps defined in the Flare job. It may include one or more sequences for executing the steps necessary for performing transformations or applying Flare functions or commands. Each intermediate step in a sequence may generate a view referenced in subsequent actions or outputs. Here, users can view these sequences, SQL statements, and Flare functions used for transformations. 
 
-![image](metis_resources_workflows/wf_job_topology.png)
-<figcaption align = "center">Dag of transformations  </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_resources/metis_resources_workflows/wf_job_topology.png" alt="Dag of transformations" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Dag of transformations</figcaption>
+  </div>
+</center>
+
 
 - Clicking on the **SQL statement** will display the following details on the side pane:
     
-    ![image](metis_resources_workflows/wf_job_topology_sql.png)
-    <figcaption align = "center"> SQL statement </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_resources/metis_resources_workflows/wf_job_topology_sql.png" alt="SQL statement" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>SQL statement</figcaption>
+  </div>
+</center>
+
     
     | Attribute | Description |
     | --- | --- |
@@ -161,14 +189,21 @@ This section represents the Dag (of Transformations)**,** outlining the steps de
     | Depends | Specifies the dependency |
 - Clicking on the **data frame (intermediate view)** will display the following details on the side pane:
     
-    ![image](metis_resources_workflows/wf_job_topology_frame.png)
-    <figcaption align = "center"> Data frame details </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_resources/metis_resources_workflows/wf_job_topology_frame.png" alt="Data frame details" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Data frame details</figcaption>
+  </div>
+</center>
+
+
     | Attribute | Description |
     | --- | --- |
     | Name | Name of the underlying selected entity |
     | Type | Type of selected entity within dag, such as step, function, frame, etc. |
     | Doc | Details provided for the transformation defined in the step |
     | Depends | Specifies the dependency |
+
 - Clicking on the **Flare function** will display the following details on the side pane:
     
     | Attribute | Description |
@@ -182,8 +217,13 @@ This section represents the Dag (of Transformations)**,** outlining the steps de
 
 The lineage graph visually portrays the relationships between workflows and derived datasets, offering a clear representation of how data entities are related and how they might have changed over time.
 
-![image](metis_resources_workflows/wf_job_lineage.png)
-<figcaption align = "center"> Relationship betwen workflows and generated datasets  </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_resources/metis_resources_workflows/wf_job_lineage.png" alt="Relationship between workflows and generated datasets" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Relationship between workflows and generated datasets</figcaption>
+  </div>
+</center>
+
 
 ### **Activity Feeds & Tasks**
 
@@ -197,8 +237,13 @@ This section provides details about the manifest. A manifest file is a YAML con
 
 This section includes a summary of the workflow run history.
 
-![wf_runhistory.png](metis_resources_workflows/wf_runhistory.png)
-<figcaption align = "center">Workflow run history  </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_resources/metis_resources_workflows/wf_runhistory.png" alt="Workflow run history" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Workflow run history</figcaption>
+  </div>
+</center>
+
 
 | Attribute | Description |
 | --- | --- |
@@ -213,8 +258,13 @@ This section includes a summary of the workflow run history.
     
     To get the workflow run details, click **Run History** >> **RunID >> Logical Plan >> Job >> Run Details**
     
-    ![Screen Shot 2023-09-13 at 8.03.09 PM.png](metis_resources_workflows/Screen_Shot_2023-09-13_at_8.03.09_PM.png)
-    <figcaption align = "center"> Run details </figcaption>
+    <center>
+      <div style="text-align: center;">
+        <img src="/interfaces/metis/metis_ui_resources/metis_resources_workflows/Screen_Shot_2023-09-13_at_8.03.09_PM.png" alt="Run details" style="border:1px solid black; width: 80%; height: auto">
+        <figcaption>Run details</figcaption>
+      </div>
+    </center>
+
     
     #### **Pod Details**
     
@@ -222,12 +272,21 @@ This section includes a summary of the workflow run history.
     
     You can access pod details, pod usage, and pod logs
     
-    ![Screen Shot 2023-09-13 at 8.06.25 PM.png](metis_resources_workflows/Screen_Shot_2023-09-13_at_8.06.25_PM.png)
-    <figcaption align = "center"> Pod details </figcaption>
+    <center>
+      <div style="text-align: center;">
+        <img src="/interfaces/metis/metis_ui_resources/metis_resources_workflows/Screen_Shot_2023-09-13_at_8.06.25_PM.png" alt="Pod details" style="border:1px solid black; width: 80%; height: auto">
+        <figcaption>Pod details</figcaption>
+      </div>
+    </center>
+
     
     #### **Resource Usage**
     
     To get the workflow run details, click **Run History** >> **RunID >> Job >> Resource Usage**
     
-    ![Screen Shot 2023-09-13 at 7.47.31 PM.png](metis_resources_workflows/Screen_Shot_2023-09-13_at_7.47.31_PM.png)
-    <figcaption align = "center"> Resource usage </figcaption>
+    <center>
+      <div style="text-align: center;">
+        <img src="/interfaces/metis/metis_ui_resources/metis_resources_workflows/Screen_Shot_2023-09-13_at_7.47.31_PM.png" alt="Resource usage" style="border:1px solid black; width: 80%; height: auto">
+        <figcaption>Resource usage</figcaption>
+      </div>
+    </center>

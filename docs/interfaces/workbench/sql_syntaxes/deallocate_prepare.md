@@ -20,8 +20,8 @@ DEALLOCATE PREPARE my_query;
 
 ## See also
 
-[PREPARE](./prepare.md) 
+[PREPARE](/interfaces/workbench/sql_syntaxes/prepare/) 
 
-[EXECUTE](./execute.md) 
+[EXECUTE](/interfaces/workbench/sql_syntaxes/execute/) 
 
-[EXECUTE IMMEDIATE](./execute_immediate.md)
+[EXECUTE IMMEDIATE](/interfaces/workbench/sql_syntaxes/execute_immediate/)

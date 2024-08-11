@@ -11,7 +11,7 @@ AS query
 
 ## Description
 
-Create a new view of a [SELECT](./select.md) query. The view is a logical table that can be referenced by future queries. Views do not contain any data. Instead, the query stored by the view is executed every time the view is referenced by another query.
+Create a new view of a [SELECT](/interfaces/workbench/sql_syntaxes/select/) query. The view is a logical table that can be referenced by future queries. Views do not contain any data. Instead, the query stored by the view is executed every time the view is referenced by another query.
 
 The optional `OR REPLACE` clause causes the view to be replaced if it already exists rather than raising an error.
 
@@ -62,6 +62,6 @@ FROM orders
 
 ## See also
 
-[DROP VIEW](./drop_view.md)
+[DROP VIEW](/interfaces/workbench/sql_syntaxes/drop_view/)
 
-[SHOW CREATE VIEW](./show_create_view.md)
+[SHOW CREATE VIEW](/interfaces/workbench/sql_syntaxes/show_create_view/)

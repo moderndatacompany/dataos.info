@@ -42,8 +42,8 @@ SELECT name FROM nation WHERE regionkey = 1 AND nationkey < 3;
 
 ## See also
 
-[PREPARE](./prepare.md) 
+[PREPARE](/interfaces/workbench/sql_syntaxes/prepare/) 
 
-[DEALLOCATE PREPARE](./deallocate_prepare.md) 
+[DEALLOCATE PREPARE](/interfaces/workbench/sql_syntaxes/deallocate_prepare/) 
 
-[EXECUTE IMMEDIATE](./execute_immediate.md)
+[EXECUTE IMMEDIATE](/interfaces/workbench/sql_syntaxes/execute_immediate/)

@@ -15,7 +15,7 @@ The following configuration options are available for these filter types:
 
 ## **Pre-filter Data**
 
-In the [Parent-child Filter,](./parent_child_filter.md) we utilized the "Values are dependent on other filters" option to establish a parent-child relationship between the **Select Item Type** and **Select Item** value filters, respectively.
+In the [Parent-child Filter,](/interfaces/superset/dashboard_filtering/parent_child_filter/) we utilized the "Values are dependent on other filters" option to establish a parent-child relationship between the **Select Item Type** and **Select Item** value filters, respectively.
 
 Recall that in the **Select Item Type** filter, all available item types were present as selectable options in the dropdown.
 
@@ -33,12 +33,14 @@ Upon completion, remember to click **Save** for the pre-filter and then **Save**
 
 The configuration should look as follows:
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/pre_filter/Untitled%20(10).png" alt="Your Image Description" />
-</p>
+
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/pre_filter/Untitled%20(10).png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 Navigating back to the dashboard, you can see that the **Select Platform** filter now only displays the three pre-filtered values:
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/pre_filter/Untitled%20(11).png" alt="Your Image Description" />
-</p>
+
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/pre_filter/Untitled%20(11).png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>

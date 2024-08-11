@@ -29,6 +29,6 @@ START TRANSACTION READ WRITE, ISOLATION LEVEL SERIALIZABLE;
 
 ## See also
 
-[COMMIT](./commit.md) 
+[COMMIT](/interfaces/workbench/sql_syntaxes/commit/) 
 
-[ROLLBACK](./rollback.md)
+[ROLLBACK](/interfaces/workbench/sql_syntaxes/rollback/)

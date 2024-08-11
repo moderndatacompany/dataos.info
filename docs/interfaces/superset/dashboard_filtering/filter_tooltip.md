@@ -26,12 +26,12 @@ The Description option is used to create a tooltip icon that reveals descriptive
 
 To use, in the **Description** field, enter a brief description of the filter.
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/filter_tooltip/Untitled%20(10).png" alt="Your Image Description" />
-</p>
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/filter_tooltip/Untitled%20(10).png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
-When done, select **Save**. The tooltip appears as follows:
+When done, select <strong>Save</strong>. The tooltip appears as follows:
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/filter_tooltip/Untitled%20(11).png" alt="Your Image Description" />
-</p>
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/filter_tooltip/Untitled%20(11).png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>

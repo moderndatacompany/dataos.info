@@ -34,4 +34,4 @@ SHOW CREATE TABLE sf1.orders;
 
 ## See also
 
-[CREATE TABLE](./create_table.md)
+[CREATE TABLE](/interfaces/workbench/sql_syntaxes/create_table/)

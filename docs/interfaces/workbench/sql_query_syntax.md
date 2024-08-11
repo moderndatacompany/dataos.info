@@ -4,61 +4,61 @@ This section describes the SQL syntax used in Minerva. A reference to the suppo
 
 <!--[ALTER MATERIALIZED VIEW](./sql_syntaxes/alter_materialized_view.md) -->
 
-[ALTER SCHEMA](./sql_syntaxes/alter_schema.md)
+[ALTER SCHEMA](/interfaces/workbench/sql_syntaxes/alter_schema/)
 
-[ALTER TABLE](./sql_syntaxes/alter_table.md)
+[ALTER TABLE](/interfaces/workbench/sql_syntaxes/alter_table/)
 
-[ALTER VIEW](./sql_syntaxes/alter_view.md)
+[ALTER VIEW](/interfaces/workbench/sql_syntaxes/alter_view/)
 
-[ANALYZE](./sql_syntaxes/analyze.md)
+[ANALYZE](/interfaces/workbench/sql_syntaxes/analyze/)
 
-[CALL](./sql_syntaxes/call.md)
+[CALL](/interfaces/workbench/sql_syntaxes/call/)
 
-[COMMENT](./sql_syntaxes/comment.md)
+[COMMENT](/interfaces/workbench/sql_syntaxes/comment/)
 
-[COMMIT](./sql_syntaxes/commit.md)
+[COMMIT](/interfaces/workbench/sql_syntaxes/commit/)
 
 <!--[CREATE MATERIALIZED VIEW](./sql_syntaxes/create_materialized_view.md) -->
 
 <!--[CREATE ROLE](./sql_syntaxes/create_role.md)-->
 
-[CREATE SCHEMA](./sql_syntaxes/create_schema.md)
+[CREATE SCHEMA](/interfaces/workbench/sql_syntaxes/create_schema/)
 
-[CREATE TABLE](./sql_syntaxes/create_table.md)
+[CREATE TABLE](/interfaces/workbench/sql_syntaxes/create_table/)
 
-[CREATE TABLE AS](./sql_syntaxes/create_table_as.md)
+[CREATE TABLE AS](/interfaces/workbench/sql_syntaxes/create_table_as/)
 
-[CREATE VIEW](./sql_syntaxes/create_view.md)
+[CREATE VIEW](/interfaces/workbench/sql_syntaxes/create_view/)
 
-[DEALLOCATE PREPARE](./sql_syntaxes/deallocate_prepare.md)
+[DEALLOCATE PREPARE](/interfaces/workbench/sql_syntaxes/deallocate_prepare/)
 
-[DELETE](./sql_syntaxes/delete.md)
+[DELETE](/interfaces/workbench/sql_syntaxes/delete/)
 
 <!--[DENY](./sql_syntaxes/deny.md)-->
 
-[DESCRIBE](./sql_syntaxes/describe.md)
+[DESCRIBE](/interfaces/workbench/sql_syntaxes/describe/)
 
-[DESCRIBE INPUT](./sql_syntaxes/describe_input.md)
+[DESCRIBE INPUT](/interfaces/workbench/sql_syntaxes/describe_input/)
 
-[DESCRIBE OUTPUT](./sql_syntaxes/describe_output.md)
+[DESCRIBE OUTPUT](/interfaces/workbench/sql_syntaxes/describe_output/)
 
 <!--[DROP MATERIALIZED VIEW](./sql_syntaxes/drop_materialized_view.md) -->
 
 <!--[DROP ROLE](./sql_syntaxes/drop_role.md)-->
 
-[DROP SCHEMA](./sql_syntaxes/drop_schema.md)
+[DROP SCHEMA](/interfaces/workbench/sql_syntaxes/drop_schema/)
 
-[DROP TABLE](./sql_syntaxes/drop_table.md)
+[DROP TABLE](/interfaces/workbench/sql_syntaxes/drop_table/)
 
-[DROP VIEW](./sql_syntaxes/drop_view.md)
+[DROP VIEW](/interfaces/workbench/sql_syntaxes/drop_view/)
 
-[EXECUTE](./sql_syntaxes/execute.md)
+[EXECUTE](/interfaces/workbench/sql_syntaxes/execute/)
 
-[EXECUTE IMMEDIATE](./sql_syntaxes/execute_immediate.md)
+[EXECUTE IMMEDIATE](/interfaces/workbench/sql_syntaxes/execute_immediate/)
 
-[EXPLAIN](./sql_syntaxes/explain.md)
+[EXPLAIN](/interfaces/workbench/sql_syntaxes/explain/)
 
-[EXPLAIN ANALYZE](./sql_syntaxes/explain_analyze.md)
+[EXPLAIN ANALYZE](/interfaces/workbench/sql_syntaxes/explain_analyze/)
 
 <!--[GRANT](./sql_syntaxes/grant.md)-->
 
@@ -66,47 +66,47 @@ This section describes the SQL syntax used in Minerva. A reference to the suppo
 
 <!--[INSERT](./sql_syntaxes/insert.md)-->
 
-[MATCH_RECOGNIZE](./sql_syntaxes/match_recognize.md)
+[MATCH_RECOGNIZE](/interfaces/workbench/sql_syntaxes/match_recognize/)
 
-[MERGE](./sql_syntaxes/merge.md)
+[MERGE](/interfaces/workbench/sql_syntaxes/merge/)
 
-[Row pattern recognition in window structures](./sql_syntaxes/row_pattern_recognition_in_window_structures.md)
+[Row pattern recognition in window structures](/interfaces/workbench/sql_syntaxes/row_pattern_recognition_in_window_structures/)
 
-[PREPARE](./sql_syntaxes/prepare.md)
+[PREPARE](/interfaces/workbench/sql_syntaxes/prepare/)
 
 <!--[REFRESH MATERIALIZED VIEW](./sql_syntaxes/refresh_materialized_view.md) -->
 
-[RESET SESSION](./sql_syntaxes/reset_session.md)
+[RESET SESSION](/interfaces/workbench/sql_syntaxes/reset_session/)
 
 <!--[REVOKE](./sql_syntaxes/revoke.md)-->
 
 <!--[REVOKE ROLES](./sql_syntaxes/revoke_roles.md)-->
 
-[ROLLBACK](./sql_syntaxes/rollback.md)
+[ROLLBACK](/interfaces/workbench/sql_syntaxes/rollback/)
 
-[SELECT](./sql_syntaxes/select.md)
+[SELECT](/interfaces/workbench/sql_syntaxes/select/)
 
-[SET PATH](./sql_syntaxes/set_path.md)
+[SET PATH](/interfaces/workbench/sql_syntaxes/set_path/)
 
 <!--[SET ROLE](./sql_syntaxes/set_role.md)-->
 
-[SET SESSION](./sql_syntaxes/set_session.md)
+[SET SESSION](/interfaces/workbench/sql_syntaxes/set_session/)
 
-[SET TIME ZONE](./sql_syntaxes/set_time_zone.md)
+[SET TIME ZONE](/interfaces/workbench/sql_syntaxes/set_time_zone/)
 
-[SHOW CATALOGS](./sql_syntaxes/show_catalogs.md)
+[SHOW CATALOGS](/interfaces/workbench/sql_syntaxes/show_catalogs/)
 
-[SHOW COLUMNS](./sql_syntaxes/show_columns.md)
+[SHOW COLUMNS](/interfaces/workbench/sql_syntaxes/show_columns/)
 
 <!--[SHOW CREATE MATERIALIZED VIEW](./sql_syntaxes/show_create_materialized_view.md) -->
 
-[SHOW CREATE SCHEMA](./sql_syntaxes/show_create_schema.md)
+[SHOW CREATE SCHEMA](/interfaces/workbench/sql_syntaxes/show_create_schema/)
 
-[SHOW CREATE TABLE](./sql_syntaxes/show_create_table.md)
+[SHOW CREATE TABLE](/interfaces/workbench/sql_syntaxes/show_create_table/)
 
-[SHOW CREATE VIEW](./sql_syntaxes/show_create_view.md)
+[SHOW CREATE VIEW](/interfaces/workbench/sql_syntaxes/show_create_view/)
 
-[SHOW FUNCTIONS](./sql_syntaxes/show_functions.md)
+[SHOW FUNCTIONS](/interfaces/workbench/sql_syntaxes/show_functions/)
 
 <!--[SHOW GRANTS](./sql_syntaxes/show_grants.md)
 -->
@@ -114,20 +114,20 @@ This section describes the SQL syntax used in Minerva. A reference to the suppo
 
 <!-- [SHOW ROLES](./sql_syntaxes/show_roles.md) -->
 
-[SHOW SCHEMAS](./sql_syntaxes/show_schemas.md)
+[SHOW SCHEMAS](/interfaces/workbench/sql_syntaxes/show_schemas/)
 
-[SHOW SESSION](./sql_syntaxes/show_session.md)
+[SHOW SESSION](/interfaces/workbench/sql_syntaxes/show_session/)
 
-[SHOW STATS](./sql_syntaxes/show_stats.md)
+[SHOW STATS](/interfaces/workbench/sql_syntaxes/show_stats/)
 
-[SHOW TABLES](./sql_syntaxes/show_tables.md)
+[SHOW TABLES](/interfaces/workbench/sql_syntaxes/show_tables/)
 
-[START TRANSACTION](./sql_syntaxes/start_transaction.md)
+[START TRANSACTION](/interfaces/workbench/sql_syntaxes/start_transaction/)
 
-[TRUNCATE](./sql_syntaxes/truncate.md)
+[TRUNCATE](/interfaces/workbench/sql_syntaxes/truncate/)
 
-[UPDATE](./sql_syntaxes/update.md)
+[UPDATE](/interfaces/workbench/sql_syntaxes/update/)
 
-[USE](./sql_syntaxes/use.md)
+[USE](/interfaces/workbench/sql_syntaxes/use/)
 
-[VALUES](./sql_syntaxes/values.md)
+[VALUES](/interfaces/workbench/sql_syntaxes/values/)

@@ -25,24 +25,24 @@ Within the *Filter Configuration* panel, opt for **Single Value**.
 
 Then, select a single value type:
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/single_value_range/Untitled%20(10).png" alt="Your Image Description" />
-</p>
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/single_value_range/Untitled%20(10).png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 **Minimum**: In the numerical range filter, there exists only one anchor point, which is employed to designate a minimum (i.e., starting point) for a range. For instance, if "26" is chosen, then all values greater than or equal to 26 will be encompassed by the filter. It's worth noting the presence of a blue highlight, indicating the filtered range.
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/single_value_range/Untitled%20(11).png" alt="Your Image Description" />
-</p>
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/single_value_range/Untitled%20(11).png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 **Exact**: The numerical range filter consists of a single anchor point, employed to specify an exact value. Only chart data corresponding to the selected value will be incorporated.
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/single_value_range/Untitled%20(12).png" alt="Your Image Description" />
-</p>
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/single_value_range/Untitled%20(12).png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 **Maximum**: In the numerical range filter, there exists only one anchor point, utilized to designate a maximum (i.e., ending point) for a range. For instance, if "63" is selected, then all values less than or equal to 63 will be encompassed by the filter. It's worth noting the presence of a blue highlight, indicating the filtered range.
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/single_value_range/Untitled%20(13).png" alt="Your Image Description" />
-</p>
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/single_value_range/Untitled%20(13).png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
