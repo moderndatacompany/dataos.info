@@ -10,10 +10,9 @@ The reason is that business users cannot codify their mental model of the busine
 And as a result, Data Analyst becomes a translator between business logic and data logic. 
 
 <center>
-    <img src="/interfaces/lens/building_lens/data_modeling_concepts/datamodeling-1.png" >
+    <img src="/interfaces/lens/building_lens/data_modeling_concepts/datamodeling-1.png">
 </center>
 
- 
 This technique works well for small or few firms, but it won't function in more significant circumstances since it burdens data analysts, who become bottlenecks because everything must pass through them. At one point, a data analyst can be too preoccupied to focus on more worthwhile, long-term impact work because he is too busy crunching data for other stakeholders.
 
 So, there has to be a different approach to solving these issues. We map the knowledge of data analysts somewhere so everyone can use it. 
@@ -30,7 +29,7 @@ A data modeling layer is a piece of code that contains mappings between data and
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/lens/building_lens/data_modeling_concepts/data_modeling_2.png" alt="Data Modeling Concept 2" style="width:31rem;">
+    <img src="/interfaces/lens/building_lens/data_modeling_concepts/data_modeling_2.png" alt="Data Modeling Concept 2">
   </div>
 </center>
 
@@ -133,7 +132,7 @@ A dimensional schema physically separates the measures that quantify the busines
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/lens/building_lens/data_modeling_concepts/Copy_of_Untitled_Diagram(6).png" alt="Diagram" style="width:100%; border:1px solid black;">
+    <img src="/interfaces/lens/building_lens/data_modeling_concepts/Copy_of_Untitled_Diagram(6).png" alt="Diagram" style="border:1px solid black; width: 80%; height: auto;">
   </div>
 </center>
 
@@ -164,7 +163,7 @@ Funnel analysis becomes complicated when you are left with just two resources SQ
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/lens/building_lens/data_modeling_concepts/act-stream-image.png" alt="Act Stream" style="width:100%; border:2px solid black;">
+    <img src="/interfaces/lens/building_lens/data_modeling_concepts/act-stream-image.png" alt="Act Stream" style="border:1px solid black; width: 80%; height: auto;">
   </div>
 </center>
 
@@ -186,7 +185,7 @@ An activity schema models an **entity** taking a sequence of **activities** ov
 
 <center>
   <div style="text-align: center;">
-    <img src="/data_modeling_concepts/act-a-a.png" style="width:100%; border:1px solid black;">
+    <img src="/data_modeling_concepts/act-a-a.png" style="border:1px solid black; width: 80%; height: auto;">
   </div>
 </center>
 
@@ -202,7 +201,7 @@ Each Activity schema defines a single business concept. For example, it can be a
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/lens/building_lens/data_modeling_concepts/abc.png" alt="ABC Diagram" style="width:100%; border:1px solid black;">
+    <img src="/interfaces/lens/building_lens/data_modeling_concepts/abc.png" alt="ABC Diagram" style="border:1px solid black; width: 80%; height: auto;">
   </div>
 </center>
 
@@ -216,7 +215,7 @@ Let’s assume you have a use case with six tables and have to create a dashboar
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/lens/building_lens/data_modeling_concepts/db-dig.png" alt="DB Diagram" style="width:100%; border:1px solid black;">
+    <img src="/interfaces/lens/building_lens/data_modeling_concepts/db-dig.png" alt="DB Diagram" style="border:1px solid black; width: 80%; height: auto;">
   </div>
 </center>
 
@@ -228,7 +227,7 @@ Now while using activity schema, we have to model the raw data and create a tabl
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/lens/building_lens/data_modeling_concepts/act-db.png" alt="ACT Database" style="width:60%; border:1px solid black;">
+    <img src="/interfaces/lens/building_lens/data_modeling_concepts/act-db.png" alt="ACT Database" style="border:1px solid black; width: 80%; height: auto;">
   </div>
 </center>
 

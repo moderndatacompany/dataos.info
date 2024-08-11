@@ -35,22 +35,19 @@ On the DataOS home page, click on 'Operations'. The following types of resources
 
 By navigating to the "Resources" tab, the detailed information about the DataOS primitives created  by users can be accessed such as workflows, services, secrets, depots, clusters, compute, etc. This includes insights into the current running status of these resources, as well as the owner or creator of each resource. The "Resources" tab provides a centralized view of the user-created components, allowing users to monitor and manage their resources effectively. 
  
-<center>
-
-![Picture](/interfaces/operations/user_space.png)
-</center>
-<figcaption align = "center"> User space resources</figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/operations/user_space.png" alt="Node details" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption> User space resources</figcaption>
+</div>
 
 **Resource Runtime**
 
 Click on the resource to get its details, YAML, and runtime information. Here, the details of the pods, their status and the nodes selected for running these pods is displayed. Clicking on `Refresh On` will update the information automatically.
- 
-<center>
 
-![Picture](/interfaces/operations/resourceruntime.png)
-
-</center>
-<figcaption align = "center">Runtime information </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/operations/resourceruntime.png" alt="Node details" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption> Runtime information </figcaption>
+</div>
 
 **Resource YAML**
 
@@ -63,12 +60,11 @@ All these YAMLs also have the auto-generated section ‘status’ that conveys i
 
 Under Runtime Nodes, click on a node to get the runtime YAML, Logs, and Runtime Node Usage. Here you will get the container details, their state, and pod lifecycle conditions(Ready, PodScheduled…) with a status (True, False or Unknown) that make up the ‘computed state’ of a pod at any time.
  
-<center>
+<div style="text-align: center;">
+  <img src="/interfaces/operations/runtime_nodedetail.png" alt="Node details" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Node details</figcaption>
+</div>
 
-![Picture](/interfaces/operations/runtime_nodedetail.png)
-
-</center>
-<figcaption align = "center">Node details </figcaption>
 
 **Runtime Node Logs**
 
@@ -80,32 +76,44 @@ Runtime Node Logs provide a near real-time view. These logs provide insights int
 
 **Runtime Node Usage**
 Check how much memory and CPU is utilized by a Node.
-<center>
 
-![Picture](/interfaces/operations/runtimenodeusage.png)
+<div style="text-align: center;">
+  <img src="/interfaces/operations/runtimenodeusage.png" alt="Node details" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Node usage </figcaption>
+</div>
 
-</center>
-<figcaption align = "center">Node usage </figcaption>
 
 ### **Minerva Queries**
 Here, users can view Minerva queries and perform various tasks related to query monitoring, and analysis. Once a query is submitted, the information such as query ID, source from where query is submitted (such as trino python client, Workbench or Flare), cluster used, user who submitted the query along with creation time is shown. Queries can be analyzed selecting source/cluster/user of interest.
 
-![Picture](/interfaces/operations/minerva_query1.png)
-<figcaption align = "center">Minerva queries </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/operations/minerva_query1.png" alt="Node details" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Minerva queries </figcaption>
+</div>
 
 Additionally, it enables query profiling, allowing users to analyze query performance, identify bottlenecks, and optimize their queries if needed. It offers detailed execution plans, resource utilization information, and other performance-related metrics.
-![Picture](/interfaces/operations/query_detail.png)
-<figcaption align = "center">Query details </figcaption>
+
+<div style="text-align: center;">
+  <img src="/interfaces/operations/query_detail.png" alt="Node details" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Query details </figcaption>
+</div>
 
 ### **Cluster Analysis**
 Select `Cluster` resource for User Space resources. Cluster analysis option appears on the screen. View the query load distribution along with failed queries for each of the clusters up and running within DataOS instance.
-![Picture](/interfaces/operations/cluster_analysis1.png)
-<figcaption align = "center">Query load distribution </figcaption>
+
+<div style="text-align: center;">
+  <img src="/interfaces/operations/cluster_analysis1.png" alt="Node details" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Query load distribution </figcaption>
+</div>
 
 ### **Create Resources**
 Operations App provides users with the ability to easily create resources directly from the user interface. This functionality eliminates the need to rely on writing YAML for the resource and using CLI for resource creation, thus helps streamlining the resource management process within the DataOS platform.
-![Picture](/interfaces/operations/create_resource1.png)
-<figcaption align = "center">Create Minerva cluster </figcaption>
+
+<div style="text-align: center;">
+  <img src="/interfaces/operations/create_resource1.png" alt="Create Minerva cluster" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Create Minerva cluster</figcaption>
+</div>
+
 
 <aside class="callout">
 🗣 You need ‘Operator’ level permissions to view the Core kernel and Cloud Kernel resources.</aside>
@@ -119,8 +127,10 @@ When DataOS components are deployed in Kubernetes, that Deployment creates Pods 
 
 *DataOS components are deployed in separate namespaces.* After selecting the namespace, you can see components deployed in that namespace. Here you will get the pod details for the  DataOS components for the selected namespace and the phase. 
 
-![Picture](/interfaces/operations/corekernel.png)
-<figcaption align = "center"> Core kernel pods</figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/operations/corekernel.png" alt="Create Minerva cluster" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Core kernel pods</figcaption>
+</div>
 
 The phase of a Pod is a simple, high-level summary of where the Pod is in its lifecycle.
 
@@ -147,13 +157,11 @@ This gives you pod and container details and container status. You will also get
 - `Ready`: the Pod is able to serve requests.
 
 The pod lifecycle conditions are with a status (True, False, or Unknown) that makes up a pod's ‘computed state’ at any time. You can track the state of each container inside a Pod.
- 
-<center>
 
-![Picture](/interfaces/operations/core_kernel_pod_details.png)
-<figcaption align = "center">Pod details </figcaption>
-
-</center>
+<div style="text-align: center;">
+  <img src="/interfaces/operations/core_kernel_pod_details.png" alt="Create Minerva cluster" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Pod details </figcaption>
+</div>
 
 **Pod YAML**
 
@@ -193,12 +201,10 @@ Ingresses are configured within the DataOS platform for specific namespaces such
 
 Within a cloud environment, compute nodes form a core of resources. They supply the processing, memory, network, and storage that virtual machine instances need. When an instance is created, it is matched to a compute node with the available resources. Here you can access the details about these compute nodes, their creation time, and cloud service provider.
  
-<center>
-
-![Picture](/interfaces/operations/cloud_kernel_node.png)
-
-</center>
-<figcaption align = "center">Compute node details</figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/operations/cloud_kernel_node.png" alt="Compute node details" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Pod details </figcaption>
+</div>
 
 ### **Compute Node Details**
 
@@ -239,11 +245,15 @@ One use case for utilizing resource runtime logs is to troubleshoot problems wit
 Let's say you have a Flare job that moves data from a source system to a destination system. During the execution of the pipeline, you encounter unexpected errors or data discrepancies. One effective way to achieve this is by analyzing the logs generated by the driver and executor nodes.
 
 **Analyzing the Driver Logs**: Look for progress indicators (such as completed stages, tasks, or data processing operations) and for any warning or error/exception messages that might indicate potential issues or failures. 
-![Alt text](/interfaces/operations/runtime_logs_driver.png)
-<figcaption align = "center">Driver logs </figcaption>
+
+<div style="text-align: center;">
+  <img src="/interfaces/operations/runtime_logs_driver.png" alt="Compute node details" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Driver logs </figcaption>
+</div>
+
 **Analyzing the Executor Logs**: - Access the logs of individual executor nodes. These logs provide insights into the specific tasks performed by each executor. Look for task-level progress updates, including completed, failed, or ongoing tasks or any error/exceptions.
-![Alt text](/interfaces/operations/run_time_logs_execute.png)
-<figcaption align = "center">Executor logs</figcaption>
+
+
 
 Use the insights gained from the logs to fine-tune the configuration and parameters of the workload, if applicable.
 
@@ -256,8 +266,11 @@ Let's say you have a data processing job that involves complex computations and 
 1. **Analyze Resource Utilization**: Observe the CPU, Memory, and Disk usage of the driver and executor nodes. You can monitor the resource consumption patterns and identify any bottlenecks or resource constraints that may be impacting the job performance. This information helps you determine if the allocated resources are sufficient for the workload or if adjustments need to be made.
 2. **Optimize Resource Allocation**: Based on the insights gained from the usage graphs, you can make informed decisions about resource allocation for your data processing job. If you observe that the job is CPU-intensive, you might allocate more CPU resources to the executor nodes. If memory usage is high, you can adjust the memory allocation to ensure optimal performance. Fine-tuning the resource allocation can help improve job execution time and overall efficiency.
 
-   ![Alt text](/interfaces/operations/runtime_usage_execute.png)
-   <figcaption align = "center">Runtime usage </figcaption>
+
+<div style="text-align: center;">
+  <img src="/interfaces/operations/runtime_usage_execute.png" alt="Compute node details" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Runtime usage</figcaption>
+</div>
 
 By analyzing the resource utilization of the data processing job, it becomes apparent that the allocated resources are insufficient. The executor node is reaching its maximum limit, indicating a potential bottleneck in the processing pipeline. To optimize job performance and ensure efficient processing, it is recommended to increase the requested resources.
 
@@ -268,23 +281,34 @@ By scaling up the allocated resources, such as CPU and Memory, the executor node
 You can get this information in multiple ways. To determine the node associated with a pod using the Operations app, follow these steps:
 
 1. Navigate to the **Core Kernel** tab within the **Operations** App and  and then to the list of the Pods.
-    
-    ![core_kernel.png](/interfaces/operations/core_kernel_2.png)
-    
+
+
+  <div style="text-align: center;">
+    <img src="/interfaces/operations/core_kernel_2.png" alt="Compute node details" style="border:1px solid black; width: 80%; height: auto;">
+  </div>
+      
 2. Select the desired pod and access its YAML configuration by clicking on the **Pod YAML** tab.
-    
-    ![pod_yaml.png](/interfaces/operations/pod_yaml.png)
-    
+
+  <div style="text-align: center;">
+    <img src="/interfaces/operations/pod_yaml.png" alt="Compute node details" style="border:1px solid black; width: 80%; height: auto;">
+  </div>
+      
 3. In the YAML configuration file, locate the field `nodeName` by using the search function (`cmd+f` or `ctrl+f`). 
-    
-    ![node_name.png](/interfaces/operations/node_name.png)
-    
+
+  <div style="text-align: center;">
+    <img src="/interfaces/operations/node_name.png" alt="Compute node details" style="border:1px solid black; width: 80%; height: auto;">
+  </div>
+        
 By following these steps, you can easily identify the node associated with any pod. Additionally, for further observability, you have the option to access detailed node information via either the GUI or the CLI. 
     
 1. You can find the list of compute nodes in the **Cloud Kernel** tab.
-    
-    ![compute_node.png](/interfaces/operations/compute_node.png)
-    
+
+  <div style="text-align: center;">
+    <img src="/interfaces/operations/compute_node.png" alt="Compute node details" style="border:1px solid black; width: 80%; height: auto;">
+  </div>
+        
 2. You can get the details on the metrics around the Nodes on Grafana.
     
-    ![metrics_grafana.png](/interfaces/operations/metrics_grafana.png)
+  <div style="text-align: center;">
+    <img src="/interfaces/operations/metrics_grafana.png" alt="Compute node details" style="border:1px solid black; width: 80%; height: auto;">
+  </div>

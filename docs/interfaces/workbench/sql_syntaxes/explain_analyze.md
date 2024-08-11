@@ -105,4 +105,4 @@ WHERE orderdate > date '1995-01-01';
 
 ## See also
 
-[EXPLAIN](./explain.md)
+[EXPLAIN](/interfaces/workbench/sql_syntaxes/explain/)

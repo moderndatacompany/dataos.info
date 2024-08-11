@@ -8,7 +8,7 @@ This feature lets you see summaries of data change events around data entities w
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/metis/metis_features/activity_feeds.png" alt="Activities around Assets and Resources" style="border:1px solid black;">
+    <img src="/interfaces/metis/metis_features/activity_feeds.png" alt="Activities around Assets and Resources" style="border:1px solid black; width: 80%; height: auto">
     <figcaption align="center">Activities around DataOS entities</figcaption>
   </div>
 </center>
@@ -29,7 +29,7 @@ Metis's search experience surfaces results across data assets such as Tables, To
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/metis/metis_features/search_filter.png" alt="Search Filter" style="border:1px solid black;">
+    <img src="/interfaces/metis/metis_features/search_filter.png" alt="Search Filter" style="border:1px solid black;  width: 80%; height: auto"">
     <figcaption align="center"><i>Search</i></figcaption>
   </div>
 </center>
@@ -39,8 +39,8 @@ Metis not only helps you find and access data using search criteria for your dat
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/metis/metis_features/filter.png" alt="Filter" style="border:1px solid black;">
-    <figcaption align="center"><i>Filter based on attributes</i></figcaption>
+    <img src="/interfaces/metis/metis_features/filter.png" alt="Filter" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption><i>Filter based on attributes</i></figcaption>
   </div>
 </center>
 
@@ -48,7 +48,7 @@ To narrow down the list of datasets, you can use the filter facet dropdown to se
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/metis/metis_features/depot_filter.png" alt="Depot Filter" style="border:1px solid black;">
+    <img src="/interfaces/metis/metis_features/depot_filter.png" alt="Depot Filter" style="border:1px solid black; width: 80%; height: auto">
     <figcaption align="center"><i>Filter based on Depot attribute</i></figcaption>
   </div>
 </center>
@@ -59,7 +59,7 @@ This option empowers you to define complex search criteria, allowing you to find
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/metis/metis_features/advance_filter.png" alt="Advance Filter" style="border:1px solid black;">
+    <img src="/interfaces/metis/metis_features/advance_filter.png" alt="Advance Filter" style="border:1px solid black; width: 80%; height: auto"">
     <figcaption align="center"><i>Advance filter conditions</i></figcaption>
   </div>
 </center>
@@ -75,7 +75,7 @@ Users can get a quick preview of asset information on the side panel.
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/metis/metis_features/assets_info.png" alt="Quick Information" style="border:1px solid black;">
+    <img src="/interfaces/metis/metis_features/assets_info.png" alt="Quick Information" style="border:1px solid black; width: 80%; height: auto"">
     <figcaption align="center"><i>Quick information</i></figcaption>
   </div>
 </center>
@@ -147,7 +147,7 @@ Once you add a category for your glossary as per the business requirement, you c
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/metis/metis_features/adding_glossaries.png" alt="Adding business terms to your dataset" style="border:1px solid black;">
+    <img src="/interfaces/metis/metis_features/adding_glossaries.png" alt="Adding business terms to your dataset" style="border:1px solid black; width: 80%; height: auto"">
     <figcaption align="center"><i>Adding business terms to your dataset</i></figcaption>
   </div>
 </center>
@@ -164,7 +164,7 @@ The Mutually Exclusive Property in the system enables users to designate tag gro
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/metis/metis_features/mutually_excl.png" alt="Mutually exclusive property" style="border:1px solid black;">
+    <img src="/interfaces/metis/metis_features/mutually_excl.png" alt="Mutually exclusive property" style="border:1px solid black; width: 80%; height: auto"">
     <figcaption align="center"><i>Mutually exclusive property</i></figcaption>
   </div>
 </center>
@@ -175,7 +175,7 @@ Metis keeps rich metadata for the entities, about their structures, descriptions
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/metis/metis_features/show_deleted.png" alt="Deleted data on Metis UI" style="border:1px solid black;">
+    <img src="/interfaces/metis/metis_features/show_deleted.png" alt="Deleted data on Metis UI" style="border:1px solid black; width: 80%; height: auto"">
     <figcaption align="center"><i>Deleted data on Metis UI</i></figcaption>
   </div>
 </center>
@@ -187,7 +187,7 @@ Quickly understand the end-to-end journey of data by tracing its lineage across 
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/metis/metis_features/lineage_new.png" alt="Lineage view" style="border:1px solid black;">
+    <img src="/interfaces/metis/metis_features/lineage_new.png" alt="Lineage view" style="border:1px solid black; width: 80%; height: auto"">
     <figcaption align="center"><i>Lineage view</i></figcaption>
   </div>
 </center>
@@ -199,7 +199,7 @@ Metis allows users to define fine-grain notifications for alerts when a change i
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/metis/metis_features/notifications.png" alt="Notifications" style="border:1px solid black;">
+    <img src="/interfaces/metis/metis_features/notifications.png" alt="Notifications" style="border:1px solid black; width: 80%; height: auto"">
     <figcaption align="center"><i>Notifications</i></figcaption>
   </div>
 </center>
@@ -214,7 +214,7 @@ Metis leverages Deequ, a Spark-powered profiling engine, for data monitoring, qu
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/metis/metis_features/profile.png" alt="Profiling information" style="border:1px solid black;">
+    <img src="/interfaces/metis/metis_features/profile.png" alt="Profiling information" style="border:1px solid black; width: 80%; height: auto"">
     <figcaption align="center"><i>Profiling information</i></figcaption>
   </div>
 </center>
@@ -228,7 +228,7 @@ On Metis UI, You can check the quality of your datasets by viewing information a
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/metis/metis_features/data_quality.png" alt="Data Quality SLO" style="border:1px solid black;">
+    <img src="/interfaces/metis/metis_features/data_quality.png" alt="Data Quality SLO" style="border:1px solid black; width: 80%; height: auto"">
     <figcaption align="center"><i>Data Quality SLO</i></figcaption>
   </div>
 </center>
@@ -253,7 +253,7 @@ Metis also provides in-depth topology information for your workloads, enabling u
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/metis/metis_features/topology.png" alt="Dag of transformations" style="border:1px solid black;">
+    <img src="/interfaces/metis/metis_features/topology.png" alt="Dag of transformations" style="border:1px solid black; width: 80%; height: auto"">
     <figcaption align="center"><i>Dag of transformations</i></figcaption>
   </div>
 </center>
@@ -262,7 +262,7 @@ With the **Usage** option, you can find resource utilization when resources are 
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/metis/metis_features/resource_usage.png" alt="Resource utilization" style="border:1px solid black;">
+    <img src="/interfaces/metis/metis_features/resource_usage.png" alt="Resource utilization" style="border:1px solid black; width: 80%; height: auto"">
     <figcaption align="center"><i>Resource utilization</i></figcaption>
   </div>
 </center>
@@ -274,7 +274,7 @@ This feature records the changes in metadata. Metis maintains the version histor
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/metis/metis_features/meta_version.png" alt="Metadata Versions" style="border:1px solid black;">
+    <img src="/interfaces/metis/metis_features/meta_version.png" alt="Metadata Versions" style="border:1px solid black; width: 80%; height: auto"">
     <figcaption align="center"><i>Metadata Versions</i></figcaption>
   </div>
 </center>

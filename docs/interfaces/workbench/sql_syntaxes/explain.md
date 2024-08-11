@@ -763,4 +763,4 @@ SELECT * FROM lineitem WHERE shipdate = '2020-02-01' AND quantity > 10;
 
 ## See also
 
-[EXPLAIN ANALYZE](./explain_analyze.md)
+[EXPLAIN ANALYZE](/interfaces/workbench/sql_syntaxes/explain_analyze/)

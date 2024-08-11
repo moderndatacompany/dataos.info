@@ -19,6 +19,6 @@ ROLLBACK WORK;
 
 ## See also
 
-[COMMIT](./commit.md) 
+[COMMIT](/interfaces/workbench/sql_syntaxes/commit/) 
 
-[START TRANSACTION](./start_transaction.md)
+[START TRANSACTION](/interfaces/workbench/sql_syntaxes/start_transaction/)

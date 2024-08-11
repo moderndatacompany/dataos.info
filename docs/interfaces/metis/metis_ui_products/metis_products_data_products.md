@@ -6,8 +6,8 @@ On selecting **Data Products**,the following information will appear on the scre
 
 <center>
   <div style="text-align: center;">
-    <img src="/metis_products_data_products/dps.png" alt="List of data products" style="border:1px solid black;">
-    <figcaption align="center">List of data products</figcaption>
+    <img src="/interfaces/metis/metis_ui_products/metis_products_data_products/dps.png" alt="List of data products" style="border:1px solid black; width: 80%; height: auto"">
+    <figcaption>List of data products</figcaption>
   </div>
 </center>
 
@@ -51,8 +51,8 @@ In the Card view, click anywhere except the data product name to get the overvie
 
 <center>
   <div style="text-align: center;">
-    <img src="/metis_products_data_products/dp_overview.png" alt="Quick information on the side pane" style="border:1px solid black;">
-    <figcaption align="center">Quick information on the side pane</figcaption>
+    <img src="interfaces/metis/metis_ui_products/metis_products_data_products/dp_overview.png" alt="Quick information on the side pane" style="border:1px solid black; width: 80%; height: auto"">
+    <figcaption>Quick information on the side pane</figcaption>
   </div>
 </center>
 
@@ -98,8 +98,8 @@ The subsequent **tabs** on the Details Page provide more detailed information on
 
 <center>
   <div style="text-align: center;">
-    <img src="/metis_products_data_products/dp_details.png" alt="Comprehensive details for a product" style="border:1px solid black;">
-    <figcaption align="center">Comprehensive details for a product</figcaption>
+    <img src="/interfaces/metis/metis_ui_products/metis_products_data_products/dp_details.png" alt="Comprehensive details for a product" style="border:1px solid black; width: 80%; height: auto"">
+    <figcaption>Comprehensive details for a product</figcaption>
   </div>
 </center>
 
@@ -108,8 +108,8 @@ The subsequent **tabs** on the Details Page provide more detailed information on
 
 <center>
   <div style="text-align: center;">
-    <img src="/metis_products_data_products/dp_outputs.png" alt="Outputs provided by data product" style="border:1px solid black;">
-    <figcaption align="center">Outputs provided by data product</figcaption>
+    <img src="/interfaces/metis/metis_ui_products/metis_products_data_products/dp_outputs.png" alt="Outputs provided by data product" style="border:1px solid black; width: 80%; height: auto"">
+    <figcaption>Outputs provided by data product</figcaption>
   </div>
 </center>
 
@@ -120,8 +120,8 @@ You can view the list of Service Level objectives (quality tests) created for yo
 
 <center>
   <div style="text-align: center;">
-    <img src="/metis_products_data_products/dp_slo.png" alt="SLOs for data product" style="border:1px solid black;">
-    <figcaption align="center">SLOs for data product</figcaption>
+    <img src="/interfaces/metis/metis_ui_products/metis_products_data_products/dp_slo.png" alt="SLOs for data product" style="border:1px solid black; width: 80%; height: auto"">
+    <figcaption>SLOs for data product</figcaption>
   </div>
 </center>
 
@@ -138,8 +138,8 @@ Click on the information icon to see the details of SLO. You can select the numb
 
 <center>
   <div style="text-align: center;">
-    <img src="/metis_products_data_products/dp_slodetails.png" alt="SLO details" style="border:1px solid black;">
-    <figcaption align="center">SLO details</figcaption>
+    <img src="/interfaces/metis/metis_ui_products/metis_products_data_products/dp_slodetails.png" alt="SLO details" style="border:1px solid black; width: 80%; height: auto"">
+    <figcaption>SLO details</figcaption>
   </div>
 </center>
 
@@ -150,8 +150,8 @@ Here, you can get the information about the access rights for the resources of a
 
 <center>
   <div style="text-align: center;">
-    <img src="/metis_products_data_products/dp_policy.png" alt="Information about access rights" style="border:1px solid black;">
-    <figcaption align="center">Information about access rights</figcaption>
+    <img src="/interfaces/metis/metis_ui_products/metis_products_data_products/dp_policy.png" alt="Information about access rights" style="border:1px solid black;width: 80%; height: auto"">
+    <figcaption>Information about access rights</figcaption>
   </div>
 </center>
 
@@ -162,8 +162,8 @@ The lineage graph illustrates the relationships between workflows/jobs and deriv
 
 <center>
   <div style="text-align: center;">
-    <img src="/metis_products_data_products/dp_lineage.png" alt="Data product lineage" style="border:1px solid black;">
-    <figcaption align="center">Data product lineage</figcaption>
+    <img src="/interfaces/metis/metis_ui_products/metis_products_data_products/dp_lineage.png" alt="Data product lineage" style="border:1px solid black; width: 80%; height: auto"">
+    <figcaption>Data product lineage</figcaption>
   </div>
 </center>
 
@@ -178,7 +178,7 @@ This tab displays information about the resources associated with your data prod
 
 <center>
   <div style="text-align: center;">
-    <img src="/metis_products_data_products/dp_resources.png" alt="Resources in data product" style="border:1px solid black;">
-    <figcaption align="center">Resources in data product</figcaption>
+    <img src="/interfaces/metis/metis_ui_products/metis_products_data_products/dp_resources.png" alt="Resources in data product" style="border:1px solid black;width: 80%; height: auto"">
+    <figcaption>Resources in data product</figcaption>
   </div>
 </center>

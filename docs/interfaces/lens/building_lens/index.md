@@ -482,7 +482,7 @@ Create a lens or update an existing Lens.
     
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/lens/building_lens/untitled.png" alt="Untitled" style="width:46rem; border:1px solid black;">
+    <img src="/interfaces/lens/building_lens/untitled.png" alt="Untitled" style="border:1px solid black; width: 60%; height: auto;">
   </div>
 </center>
     
@@ -497,8 +497,7 @@ Create a lens or update an existing Lens.
     
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/lens/building_lens/untitled_1.png" alt="Untitled" style="width:41rem; border:1px solid black;">
-    <figcaption><i>Untitled</i></figcaption>
+    <img src="/interfaces/lens/building_lens/untitled_1.png" alt="Untitled" style="border:1px solid black; width: 60%; height: auto;">
   </div>
 </center>
     
@@ -530,7 +529,7 @@ Let’s explore an analytical question through Lens Query:
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/lens/building_lens/untitled_2.png" alt="Untitled" style="width:41rem; border:1px solid black;">
+    <img src="/interfaces/lens/building_lens/untitled_2.png" alt="Untitled" style="border:1px solid black; width: 60%; height: auto;">
   </div>
 </center>
 

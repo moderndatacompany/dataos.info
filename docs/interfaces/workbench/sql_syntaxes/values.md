@@ -16,7 +16,7 @@ where `row` is a single expression or
 
 Defines a literal inline table.
 
-`VALUES` can be used anywhere a query can be used (e.g., the `FROM` clause of a [**SELECT**](./select.md), an **INSERT**, or even at the top level). `VALUES` creates an anonymous table without column names, but the table and columns can be named using an `AS` clause with column aliases.
+`VALUES` can be used anywhere a query can be used (e.g., the `FROM` clause of a [**SELECT**](/interfaces/workbench/sql_syntaxes/select/), an **INSERT**, or even at the top level). `VALUES` creates an anonymous table without column names, but the table and columns can be named using an `AS` clause with column aliases.
 
 ## Examples
 
@@ -62,4 +62,4 @@ SELECT * FROM (
 
 <!-- [INSERT](./insert.md)  -->
 
-[SELECT](./select.md)
+[SELECT](/interfaces/workbench/sql_syntaxes/select/)

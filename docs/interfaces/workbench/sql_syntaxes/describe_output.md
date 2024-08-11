@@ -72,4 +72,4 @@ DESCRIBE OUTPUT my_create;
 
 ## See also
 
-[PREPARE](./prepare.md)
+[PREPARE](/interfaces/workbench/sql_syntaxes/prepare/)

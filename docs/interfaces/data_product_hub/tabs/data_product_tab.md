@@ -27,15 +27,6 @@ You can apply various filters to filter out the Data Product of your requirement
 
 By Favourites:</strong> You can filter out all the bookmarked Data Products by clicking on the ‘star’ symbol.
 
-<center>
-  <div style="text-align: center;">
-    <img src="/interfaces/data_product_hub/Untitled%20(16).png" alt="Outlined Image" style="border:1px solid black;">
-    <figcaption>Outlined Image</figcaption>
-  </div>
-</center>
-
-In this tab, you can explore individual Data Products. Just click on a Data Product of your choice, and an interface will open that resembles the below image.
-
 <div style="text-align: center;">
   <img src="/interfaces/data_product_hub/Untitled%20(16).png" alt="Outlined Image" style="border:2px solid black; width: 50%; height: auto;">
 </div>
