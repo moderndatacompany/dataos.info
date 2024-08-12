@@ -14,7 +14,7 @@ cluster:
         cpu: 2000m
         memory: 2Gi
     depots:
-      - address: dataos://salesbq:sales_360
+      - address: dataos://bigquery:sales_360
     debug:
       logLevel: DEBUG
       trinoLogLevel: DEBUG

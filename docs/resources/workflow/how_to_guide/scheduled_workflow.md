@@ -12,7 +12,6 @@ This setup ensures the workflow is triggered every 2 minutes, regardless of the 
     --8<-- "examples/resources/workflow/scheduled_workflow.yml"
     ```
 
-
 This code snippet will run the workflow in every 2 minutes on the given date to read data from pulsar topic and write to icebase whose detailed explanation is  given below .
 
 ### **`cron: '*/2 * * * *'`**
@@ -34,7 +33,7 @@ The endOn attribute defines the expiration time for the schedule. The workflow w
 
 2024-11-01T23:40:45Z indicates that the workflow will stop being triggered after 23:40:45 UTC on November 1, 2024.The time is in Coordinated Universal Time (UTC).
 
-###**`timezone: Asia/Kolkata`**
+### **`timezone: Asia/Kolkata`**
 
 The timezone attribute specifies the time zone for the cron schedule. Here, Asia/Kolkata is used:
 
