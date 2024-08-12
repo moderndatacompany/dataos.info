@@ -152,17 +152,23 @@ Upon applying the grant, administrators can track and manage grant requests thro
 
 After applying for the Grant via the CLI, the status or log can be viewed in the Grant request section of the Bifrost UI as following. 
 
-<center>![grant1.png](/resources/grant/grant1.png)</center>
-<center>*user shraddhaade requested access to read resource system workspaces for user named test-developer to piyushjoshi*</center>
+<div style="text-align: center;">
+  <img src="/resources/grant/grant1.png" alt="grant1" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>*user shraddhaade requested access to read resource system workspaces for user named test-developer to piyushjoshi*</i></figcaption>
+</div>
 
 Once the grant request is submitted, the operator views the request and makes a decision. If another operator views the request and finds it appropriate, they can also grant the request. 
 
-<center>![grant2.png](/resources/grant/grant2.png)</center>
+<div style="text-align: center;">
+  <img src="/resources/grant/grant2.png" alt="grant2" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 The name of the operator who took the final decision will be recorded
 
-<center>![grant3.png](/resources/grant/grant3.png)</center>
-<center> operator named aayushisolanki granted this permission to test-developer</center>
+<div style="text-align: center;">
+  <img src="/resources/grant/grant3.png" alt="grant3" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>*operator named aayushisolanki granted this permission to test-developer*</i></figcaption>
+</div>
 
 ## Managing Grant
 
