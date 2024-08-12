@@ -8,19 +8,19 @@
 - Added support to expose SparkUI to localhost.
 - Support for custom image tag to run Standalone.
 
-<center>
+<div style="text-align: center;">
+  <img src="/resources/stacks/flare/standalone/standalone_2.0/flare.svg" alt="Flare" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>Diagram contrasting Flare Standalone 1.0 and 2.0</i></figcaption>
+</div>
 
-![Diagram contrasting Flare Standalone 1.0 and 2.0](./standalone_2.0/flare.svg)
 
-<i>Diagram contrasting Flare Standalone 1.0 and 2.0</i>
-</center>
 
 ## Contrasting Flare Standalone 1.0 and 2.0
 
 | **Parameter** | **Standalone 1.0** | **Standalone 2.0** |
 | --- | --- | --- |
 | IO to Read/Write Data | Uses dataset | Uses Datasource |
-| Source Support | Works on Local File system-mounted data | Works on Object storage, Warehouses, relational and NoSQL data sources, as well as local file system-mounted data. To check out the list of support sources click [here](./standalone_yaml_configurations.md) |
+| Source Support | Works on Local File system-mounted data | Works on Object storage, Warehouses, relational and NoSQL data sources, as well as local file system-mounted data. To check out the list of support sources click [here](/resources/stacks/flare/standalone/standalone_yaml_configurations/) |
 | Support to expose SparkUI to localhost | No | Yes |
 | Support for configuring flare versions | Only supported the default version that came out of the box; no configuration permitted. | Flare stack version can be configured, e.g., flare:4.0, flare:5.0 |
 | Support for custom flare image hosted in docker registry | No custom image support | Supports all custom image tags to run Standalone |

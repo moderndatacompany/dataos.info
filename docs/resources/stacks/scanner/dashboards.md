@@ -5,8 +5,8 @@ Metadata can be retrieved from the dashboard services using non-depot Scanner wo
 
 This is a list of supported dashboard services from which metadata can be extracted. 
 
-[Atlas](dashboards/atlas_scan.md)
+[Atlas](/resources/stacks/scanner/dashboards/atlas_scan/)
 
-[Redash](dashboards/redash_scan.md)
+[Redash](/resources/stacks/scanner/dashboards/redash_scan/)
 
-[Superset](dashboards/superset_scan.md)
+[Superset](/resources/stacks/scanner/dashboards/superset_scan/)

@@ -22,12 +22,11 @@ The user must have the `dataos:u:toolbox-user` tag. To check whether you have a 
 dataos-ctl user get
 ```
 
-> Note: Ensure you are logged into DataOS before executing the above command. In case you haven’t logged in, run `dataos-ctl login` in the terminal.
+> **Note:** Ensure you are logged into DataOS before executing the above command. In case you haven’t logged in, run `dataos-ctl login` in the terminal.
 > 
 
-<aside>
+<aside class="callout">
 🗣️ Some basic knowledge of Scala Programming Language is also needed
-
 </aside>
 
 ## Getting started with Flare Standalone
@@ -45,7 +44,10 @@ https://mockdataosnew.blob.core.windows.net/dropzone001/customer-resources/sampl
 - **MacOSX Users -** MacOSX users will only see one folder, i.e., `sampledata`. The other folder, `__MACOSX`, will automatically get hidden.
 - **Linux Users -** Linux users, will see two folders, i.e., `sampledata` and `__MACOSX.`
 
-![Untitled](/resources/stacks/flare/local_to_local_using_docker/untitled.png)
+<div style="text-align: center;">
+  <img src="/resources/stacks/flare/standalone/case_scenarios/local_to_local_using_docker/untitled.png" alt="Fill in the required fields" style="border:1px solid black; width: 80%; height: auto;">
+</div>
+
 
 ### **Run Sample Workflow**
 
@@ -139,8 +141,8 @@ Anatomy of the command:
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Command to operate DataOS CLI (Command Line Interface). CTL stands for control. | Manage DataOS development | Start development container | Stack flag | Stack along with version as argument | File path flag | File path as argument (can be either relative or absolute) | Directory Path flag | Path of the folder where all the datasets are stored. (The content of this directory is mounted on the Docker within /data/examples/) |
 
-<aside>
-🗣️ **Note:** In case when you don’t have the version mentioned above downloaded, it will download first, and then you may proceed with then the execution will start. If you have it installed already; it will jump onto the command execution directly.
+<aside class="callout">
+🗣️ <b>Note:</b> In case when you don’t have the version mentioned above downloaded, it will download first, and then you may proceed with then the execution will start. If you have it installed already; it will jump onto the command execution directly.
 
 </aside>
 
@@ -164,8 +166,8 @@ Type :help for more information.
 scala>
 ```
 
-<aside>
-💡 **Note**: If you’re running the command for the first time or using an old image, executing the command will download the latest image.
+<aside class="callout">
+💡 <b>Note</b>: If you’re running the command for the first time or using an old image, executing the command will download the latest image.
 
 </aside>
 
@@ -275,7 +277,7 @@ scala> spark.sql("SELECT * FROM customers_final").show(false)
 
 **Once you have successfully tested your Flare jobs, you can run them in production.** 
 
-<aside>
+<aside class="callout">
 💡 You will need to edit the Flare workflow YAML to specify resources and paths of the input tables, which are stored, in depots.
 
 </aside>

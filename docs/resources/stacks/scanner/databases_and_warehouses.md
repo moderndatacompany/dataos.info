@@ -5,18 +5,18 @@ This is a list of supported data sources from which metadata can be extracted.
 
 ## Databases
 
-[MariaDB](databases_and_warehouses/mariadb.md)
+[MariaDB](/resources/stacks/scanner/databases_and_warehouses/mariadb/)
 
-[PostgreSQL](databases_and_warehouses/postgresql.md)
+[PostgreSQL](/resources/stacks/scanner/databases_and_warehouses/postgresql/)
 
 ## Data Warehouses
 
-[BigQuery](databases_and_warehouses/bigquery.md)
+[BigQuery](/resources/stacks/scanner/databases_and_warehouses/bigquery/)
 
-[Redshift](databases_and_warehouses/redshift.md)
+[Redshift](/resources/stacks/scanner/databases_and_warehouses/redshift/)
 
-[Snowflake](databases_and_warehouses/snowflake.md)
+[Snowflake](/resources/stacks/scanner/databases_and_warehouses/snowflake/)
 
 ## Lakehouse
 
-[Icebase](databases_and_warehouses/icebase.md)
+[Icebase](/resources/stacks/scanner/databases_and_warehouses/icebase/)
