@@ -27,14 +27,14 @@ The Application Programming Interface (API) in DataOS provides a way to interact
 
 ### **Access Native Apps**
 From the DataOS Home app, you can access the unique capabilities of the components and apps.
+
 <center>
-![dataos_homepage.png](/interfaces/dataos_homepage.png){: style="width:31rem;" }
-<figcaption><i>DataOS Home App </i></figcaption>
+  <img src="/interfaces/dataos_homepage.png" style="width:31rem;" alt="DataOS Home App">
+  <figcaption><i>DataOS Home App</i></figcaption>
 </center>
 
 
 Following native apps are available on DataOS Graphical User Interface:
-
 
 
 <div class="grid cards" markdown>
