@@ -41,7 +41,7 @@ workflow:
                 format: Iceberg
                 description: The transaxtion table is a structured dataset that contains comprehensive information about various transaxtion within the organization. It serves as a central repository for transaxtion data, facilitating efficient management, analysis, and decision-making processes related to transaxtion operations, logistics, and transaxtion engagement.
                 tags:
-                   - demo.transaxtion
+                   - demo.transaction
                 options:
                   saveMode: overwrite
                   iceberg:

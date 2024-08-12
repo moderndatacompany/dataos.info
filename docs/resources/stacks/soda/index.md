@@ -156,13 +156,10 @@ stackSpec:
 
 Soda Stack utilzies SodaCL, a YAML-based, low-code, human-readable, domain-specific language for data reliability and data quality management. SodaCL enables data developers to write checks for data quality, then run a scan of the data in the data source to execute those checks.
 
-<center>
-
-![Soda Check Anatomy](/resources/stacks/soda/soda_check.png)
-
-<i>Anatomy of a regular check in Soda. The dataset identifier is the name of the dataset on which you want to run the check. A metric is a property of the dataset that you wish to evaluate. The threshold is the metric value you want to check for during a scan. </i>
-
-</center>
+<div style="text-align: center;">
+  <img src="/resources/stacks/soda/soda_check.png" alt="SODA" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>Anatomy of a regular check in Soda. The dataset identifier is the name of the dataset on which you want to run the check. A metric is a property of the dataset that you wish to evaluate. The threshold is the metric value you want to check for during a scan.</i></figcaption>
+</div>
 
 The [`checks`](/resources/stacks/soda/configurations/#checks) section allows users to specify a list of specific data quality checks or tests that will be performed on the designated dataset. These checks can be tailored to suit the unique requirements of the dataset and the data quality objectives.
 
