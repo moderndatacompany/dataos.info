@@ -1,11 +1,15 @@
 In Superset, a table chart is a visual representation of tabular data, displaying information in rows and columns.
 
-![Untitled](/interfaces/superset/charts_components/table_interface.png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/charts_components/table_interface.png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 
 Common components such as METRIC, FILTERS, ROW LIMIT, ROLLING FUNCTION, PERIOD, and MIN PERIOD are already covered in the '[Common Charts Components](../charts_components.md)' section for reference.
 
-![Untitled](/interfaces/superset/charts_components/table.png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/charts_components/table.png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 Let’s see its specific components one by one:
 

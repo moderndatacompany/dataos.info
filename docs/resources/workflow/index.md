@@ -20,8 +20,6 @@ The Workflow in DataOS serves as a [Resource](/resources/) for orchestrating dat
 
 ## Structure of Workflow manifest
 
-=== "Syntax"
-    ![Workflow manifest](/resources/workflow/worker_annotated.png) 
 
 === "Code"
     ```yaml title="worker_manifest_structure.yml"

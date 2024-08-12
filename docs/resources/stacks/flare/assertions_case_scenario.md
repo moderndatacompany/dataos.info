@@ -133,9 +133,10 @@ In this process, it initially evaluates the assertion, and only if all the check
     ```
     
 2. Data is ingested successfully. Run the query on Workbench.
-    
-    ![pre_sink_assertion_pass.png](pre_sink_assertion_pass.png)
-    
+
+    <div style="text-align: center;">
+      <img src="/resources/stacks/flare/pre_sink_assertion_pass.png" alt="pre_sink_assertion_pass.png" style="border:1px solid black; width: 80%; height: auto;">
+    </div>
 
 ## Handling Quality Check Failures
 

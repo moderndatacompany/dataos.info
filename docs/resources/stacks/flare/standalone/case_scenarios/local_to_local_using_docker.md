@@ -44,10 +44,10 @@ https://mockdataosnew.blob.core.windows.net/dropzone001/customer-resources/flare
  docker load < flare.tar
 ```
 
-> Note: For Mac OS, a docker container should be running to perform this command.
+> **Note:** For Mac OS, a docker container should be running to perform this command.
 > 
 
-> Note:  For Linux OS, while running this command if you get the message “Permission Denied”, run this command with ‘sudo’.
+> **Note:**  For Linux OS, while running this command if you get the message “Permission Denied”, run this command with ‘sudo’.
 > 
 
 Output
@@ -99,8 +99,8 @@ rubiklabs/flare2:5.9.2 start
 }
 ```
 
-<aside>
-🗣️ The Flare standalone image is for an **amd64 chip**. If you are using an **M1 Mac machine**, you may face some performance issues. You need to add a '**--platform=linux/amd64**' tag in the docker command in the given shell script. This spins up Flare standalone on your M1 Mac without any issues.
+<aside class="callout">
+🗣️ The Flare standalone image is for an **amd64 chip**. If you are using an <b>M1 Mac machine</b>, you may face some performance issues. You need to add a '<b>--platform=linux/amd64</b>' tag in the docker command in the given shell script. This spins up Flare standalone on your M1 Mac without any issues.
 
 </aside>
 
@@ -143,7 +143,9 @@ https://mockdataosnew.blob.core.windows.net/dropzone001/customer-resources/sampl
 - **MacOSX Users -** MacOSX users will only s, ee one folder i.e. `sampledata`. The other folder, `__MACOSX`, will automatically get hidden.
 - **Linux Users -** Linux users will see,e two folders i.e. `sampledata` and `__MACOSX.`
 
-![Untitled](/resources/stacks/flare/local_to_local_using_docker/untitled.png)
+<div style="text-align: center;">
+  <img src="/resources/stacks/flare/standalone/case_scenarios/local_to_local_using_docker/untitled.png" alt="Fill in the required fields" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 ### **Run the Sample Workflow**
 
@@ -218,7 +220,7 @@ The sample Flare workflow joins customer and city datasets and creates a new enr
 flare --data $PWD  --config $PWD/flareconfig
 ```
 
-> Note: Following any error, if you cannot run the above command, refer here for an additional flag for your docker command if you are using an M1 Mac machine.
+> **Note:** Following any error, if you cannot run the above command, refer here for an additional flag for your docker command if you are using an M1 Mac machine.
 > 
 
 ```bash
@@ -231,9 +233,8 @@ docker run --rm -it --platform=linux/amd64 \
                rubiklabs/flare2:5.9.2 start
 ```
 
-<aside>
+<aside class="callout">
 🗣️ While running it for the first time, it will download all required files so it may take a few minutes.
-
 </aside>
 
 You should see the Scala interactive shell to indicate a successful start of Flare Standalone.
@@ -325,10 +326,10 @@ Output
 only showing top 5 rows
 ```
 
-<aside>
-💡 **You have now successfully installed Flare standalone and verified the same by running a Flare workflow to ingest sample data and perform transformations.**
+<aside class="callout">
+💡 <b>You have now successfully installed Flare standalone and verified the same by running a Flare workflow to ingest sample data and perform transformations.</b>
 
 </aside>
 
-> Note: To exit the Scala SQL shell, press `Ctrl + C`.
+> **Note:** To exit the Scala SQL shell, press `Ctrl + C`.
 > 

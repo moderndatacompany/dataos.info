@@ -9,7 +9,7 @@ RESET SESSION catalog.name
 
 ## Description
 
-Reset a [**session property**](./set_session.md) value to the default value.
+Reset a [**session property**](/interfaces/workbench/sql_syntaxes/set_session/) value to the default value.
 
 ## Examples
 
@@ -20,6 +20,6 @@ RESET SESSION hive.optimized_reader_enabled;
 
 ## See also
 
-[SET SESSION](./set_session.md) 
+[SET SESSION](/interfaces/workbench/sql_syntaxes/set_session/) 
 
-[SHOW SESSION](./show_session.md)
+[SHOW SESSION](/interfaces/workbench/sql_syntaxes/show_session/)

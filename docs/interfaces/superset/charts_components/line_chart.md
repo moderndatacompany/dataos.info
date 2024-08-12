@@ -1,12 +1,16 @@
 # Line Chart
 The line chart in Superset is a versatile tool for visualizing trends and patterns in your data. Whether you're tracking time-series data or exploring relationships between different variables, the line chart provides a clear and intuitive representation.
 
-![Untitled](/interfaces/superset/charts_components/line_interface.png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/charts_components/line_interface.png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
-On selecting the Line chart, you can then proceed with its components. Common components such as METRIC, FILTERS, ROW LIMIT, SORT BY, ROLLING FUNCTION, PERIOD, and MIN PERIOD are already covered in the '[Common Charts Components](../charts_components.md)' section for reference.
+On selecting the Line chart, you can then proceed with its components. Common components such as METRIC, FILTERS, ROW LIMIT, SORT BY, ROLLING FUNCTION, PERIOD, and MIN PERIOD are already covered in the '<a href="/interfaces/superset/charts_components/">Common Charts Components</a>' section for reference.
 
+<div style="text-align: center;">
+  <img src="/interfaces/superset/charts_components/line.png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
-![Untitled](/interfaces/superset/charts_components/line.png)
 
 1. **X-Axis: (Mandatory)**
     - Represents the horizontal axis, typically displaying time or categorical data.

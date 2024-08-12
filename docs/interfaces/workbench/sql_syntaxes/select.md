@@ -34,7 +34,7 @@ table_name [ [ AS ] alias [ ( column_alias [, ...] ) ] ]
     [ [ AS ] alias [ ( column_alias [, ...] ) ] ]
 ```
 
-For detailed description of `MATCH_RECOGNIZE` clause, see [**pattern recognition in FROM clause**](./match_recognize.md).
+For detailed description of `MATCH_RECOGNIZE` clause, see [**pattern recognition in FROM clause**](/interfaces/workbench/sql_syntaxes/match_recognize/).
 
 ```yaml
 TABLE (table_function_invocation) [ [ AS ] alias [ ( column_alias [, ...] ) ] ]
@@ -146,7 +146,7 @@ The following limitations apply as a result of following the SQL standard and du
 - usage of outer joins, set operations, limit clause, and others is not always allowed in the step relation
 - recursion depth is fixed, defaults to `10`, and doesn’t depend on the actual query results
 
-You can adjust the recursion depth with the [**session property**](./set_session.md) `max_recursion_depth`. When changing the value consider that the size of the query plan growth is quadratic with the recursion depth.
+You can adjust the recursion depth with the [**session property**](/interfaces/workbench/sql_syntaxes/set_session/) `max_recursion_depth`. When changing the value consider that the size of the query plan growth is quadratic with the recursion depth.
 
 ## SELECT clause
 
@@ -594,7 +594,7 @@ A window specification has the following components:
 - The existing window name, which refers to a named window specification in the `WINDOW` clause. The window specification associated with the referenced name is the basis of the current specification.
 - The partition specification, which separates the input rows into different partitions. This is analogous to how the `GROUP BY` clause separates rows into different groups for aggregate functions.
 - The ordering specification, which determines the order in which input rows will be processed by the window function.
-- The window frame, which specifies a sliding window of rows to be processed by the function for a given row. If the frame is not specified, it defaults to `RANGE UNBOUNDED PRECEDING`, which is the same as `RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW`. This frame contains all rows from the start of the partition up to the last peer of the current row. In the absence of `ORDER BY`, all rows are considered peers, so `RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW` is equivalent to `BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING`. The window frame syntax supports additional clauses for row pattern recognition. If the row pattern recognition clauses are specified, the window frame for a particular row consists of the rows matched by a pattern starting from that row. Additionally, if the frame specifies row pattern measures, they can be called over the window, similarly to window functions. For more details, see [**Row pattern recognition in window structures**](./row_pattern_recognition_in_window_structures.md).
+- The window frame, which specifies a sliding window of rows to be processed by the function for a given row. If the frame is not specified, it defaults to `RANGE UNBOUNDED PRECEDING`, which is the same as `RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW`. This frame contains all rows from the start of the partition up to the last peer of the current row. In the absence of `ORDER BY`, all rows are considered peers, so `RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW` is equivalent to `BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING`. The window frame syntax supports additional clauses for row pattern recognition. If the row pattern recognition clauses are specified, the window frame for a particular row consists of the rows matched by a pattern starting from that row. Additionally, if the frame specifies row pattern measures, they can be called over the window, similarly to window functions. For more details, see [**Row pattern recognition in window structures**](/interfaces/workbench/sql_syntaxes/row_pattern_recognition_in_window_structures/).
 
 Each window component is optional. If a window specification does not specify window partitioning, ordering or frame, those components are obtained from the window specification referenced by the `existing window name`, or from another window specification in the reference chain. In case when there is no `existing window name` specified, or none of the referenced window specifications contains the component, the default value is used.
 

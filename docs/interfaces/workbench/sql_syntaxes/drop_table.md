@@ -28,6 +28,6 @@ DROP TABLE IF EXISTS orders_by_date
 
 ## See also
 
-[ALTER TABLE](./alter_table.md) 
+[ALTER TABLE](/interfaces/workbench/sql_syntaxes/alter_table/) 
 
 [CREATE TABLE](./create_table.md)
