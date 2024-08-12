@@ -1,6 +1,6 @@
 # Learn
 
-Welcome to the Learning Hub! These quick start guides and videos will help you navigate through the essentials of DataOS, setting you up for success.
+Welcome to the Learning Hub! These quick start guides and videos will help you navigate through the essentials of DataOS.
 
 <div class= "grid cards" markdown>
 

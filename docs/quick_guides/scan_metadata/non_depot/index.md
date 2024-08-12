@@ -15,7 +15,7 @@ Follow the below steps:
 
 For illustration purposes, we will connect with the **BigQuery** data source.
 
-## Step 1: Check Required Permissions
+### **Step 1: Check Required Permissions**
 
 1. You should have enough access to fetch the required metadata from the metadata source. The following list describes the minimum permissions needed for BigQuery.
     
@@ -40,7 +40,7 @@ For illustration purposes, we will connect with the **BigQuery** data source.
     
 2. To run the scanner workflow, a user must have either Metis admin access or be granted access to the "**Run as Scanner User"** use case.
 
-## Step 2: Create Scanner Workflow
+### **Step 2: Create Scanner Workflow**
 
 Let us create a Scanner workflow with `sourceConnection` and `sourceConfig` sections, where we can provide connection information for the metadata source.
 
@@ -191,7 +191,7 @@ Let us create a Scanner workflow with `sourceConnection` and `sourceConfig` sect
     ```
     </details>
 
-## Step 3: Check Scanned Metadata on Metis
+### **Step 3: Check Scanned Metadata on Metis**
 
 After the successful workflow run, scanned metadata is registered with Metis. You can check the metadata of scanned databases/schemas/tables on Metis UI. To see it, go to the Metis app -> Settings -> Databases. 
 
@@ -199,10 +199,24 @@ The following metadata source is created (as configured in the Scanner Workflow)
 
 ![bigquery scanned source.png](/quick_guides/scan_metadata/non_depot/bigquery_scanned_source.png)
 
-## Scanned Database
+**Scanned Database**
 
 ![bigquery schemas.png](/quick_guides/scan_metadata/non_depot/bigquery_database.png)
 
-## Scanned Schemas 
+**Scanned Schemas** 
 
 ![bigquery tables.png](/quick_guides/scan_metadata/non_depot/bigquery_schemas.png)
+
+## Scheduling Scanner Workflow Run
+
+Scanner workflows are either single-time run or scheduled to run at a specific cadence. To schedule a workflow, you must add the schedule property defining a cron in `workflow` section.
+```yaml
+workflow:
+  title: scheduled Scanner Workflow
+  schedule: 
+    cron: '*/2 * * * *'  #every 2 minute  [Minute, Hour, day of the month ,month, dayoftheweek]
+    concurrencyPolicy: Allow #forbid/replace
+    endOn: 2024-11-01T23:40:45Z
+    timezone: Asia/Kolkata
+```
+To learn more about these properties, refer to [Schedulable workflows](/resources/workflow/how_to_guide/scheduled_workflow/).
