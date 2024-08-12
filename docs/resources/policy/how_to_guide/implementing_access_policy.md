@@ -31,8 +31,10 @@ Sample Ingested Dataset
 
 By default, access to ingested datasets on Workbench is denied due to the DataOS default policy applied during installation, which restricts all DataOS users from accessing these datasets.
 
-![Sample inaccessible dataset](./access_denied.png)
-<center><i>Dataset access denied</i></center>
+<div style="text-align: center;">
+  <img src="/resources/policy/how_to_guide/access_denied.png" alt="Sample inaccessible dataset" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Dataset access denied</ficaption>
+</div>
 
 ## Implementation of Access Policy
 
@@ -71,8 +73,10 @@ dataos-ctl apply -f {{file path}}
 
 Once the Policy is applied, all users will be able to access this dataset from Workbench.
 
-![Access allowed](./allow_access.png)
-<center><i>Dataset accessible after implementing the Policy</i></center>
+<div style="text-align: center;">
+  <img src="/resources/policy/how_to_guide/allow_access.png" alt="Access allowed" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Dataset accessible after implementing the Policy</ficaption>
+</div>
 
 ## Granting Access via Custom Tags
 
@@ -137,14 +141,19 @@ INFO[0003] 🏷 User tag added successfully.
 
 These tags can also be viewed in the user's profile on the DataOS UI.
 
-![Tags on user’s profile page](./ui_new_tag.png)
 
-<center><i>Tags displayed on user's profile page</i></center>
+<div style="text-align: center;">
+  <img src="/resources/policy/how_to_guide/ui_new_tag.png" alt="Tags on user’s profile page" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Tags displayed on user's profile page</ficaption>
+</div>
+
 
 The user with the identifier 'iamgroot' can now access and query the sample dataset due to the access policy implemented with the custom tag.
 
 The following screenshot displays the query result on the DataOS Workbench.
 
-![Access allowed](./allow_access.png)
 
-<center><i>Dataset accessible after adding a custom tag</i></center>
+<div style="text-align: center;">
+  <img src="/resources/policy/how_to_guide/allow_access.png" alt="Access allowed" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Dataset accessible after adding a custom tag</ficaption>
+</div>

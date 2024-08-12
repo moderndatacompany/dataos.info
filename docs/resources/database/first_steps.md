@@ -213,10 +213,12 @@ There are two ways to define migrations: .
 
 #### **Database Migrations**
 
-The Database attribute `migrate` consists of two commands, one to migrate `up` and another to migrate `down`. The `up` migration is responsible for applying changes to the database schema, facilitating the transition to a newer version. Conversely, the `down` migration serves the purpose of reverting changes made by the "up" migration. This is crucial for scenarios requiring a rollback to a previous version. Below is an example SQL script (`001_migration_down.sql`) demonstrating actions taken
+The Database attribute `migrate` consists of two commands, one to migrate `up` and another to migrate `down`. The `up` migration is responsible for applying changes to the database schema, facilitating the transition to a newer version. Conversely, the `down` migration serves the purpose of reverting changes made by the "up" migration. This is crucial for scenarios requiring a rollback to a previous version. Below is an example SQL script (`001_migration_down.sql`) demonstrating actions taken.
 
-<center>![Database migration](/resources/database/migration.png)</center>
-<center><i>Database Migration </i></center>
+<div style="text-align: center;">
+  <img src="/resources/database/migration.png" alt="Database Migration " style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>Database Migration </i></figcaption>
+</div>
 
 ### **Apply the Database manifest**
 

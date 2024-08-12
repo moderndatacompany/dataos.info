@@ -7,8 +7,11 @@
 
 Metis has integrated "**Lens**" as a "Resource type" entity for storing metadata related to its entities. On selecting **Lens**, the following information will appear on the screen:
 
-![lenses.png](metis_resources_lenses/lenses.png)
-<figcaption align = "center"> List of Lenses  </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_lenses/lenses.png" alt="List of Lenses" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>List of Lenses</figcaption>
+</div>
+
 
 ## Filter pane
 
@@ -50,8 +53,11 @@ Each Lens in the list will display the following information:
 
 Click anywhere except the Lens name to view the overview pane. 
 
-![lens_overview.png](metis_resources_lenses/lens_overview.png)
-<figcaption align = "center"> Quick information  </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_lenses/lens_overview.png" alt="Quick information" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Quick information</figcaption>
+</div>
+
 
 This includes the following quick reference information:
 
@@ -68,8 +74,11 @@ This includes the following quick reference information:
 
 In the Result or Overview pane, click on the name of the Lens to open the Resource Details page, which includes:
 
-![cluster_details.png](metis_resources_lenses/lens_details.png)
-<figcaption align = "center"> Comprehensive details  </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_lenses/lens_details.png" alt="Comprehensive details" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Comprehensive details</figcaption>
+</div>
+
 
 ### **Cluster Information**
 In addition to basic Cluster information, the following details and options are provided.
@@ -126,8 +135,11 @@ This space lists all activities, including tasks and conversations around the sp
 
 This section provides an overview of the Lens API Instances, Workers, and Router. 
 
-![lens_runtime.png](metis_resources_lenses/runtime.png)
-<figcaption align = "center">Runtime information </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_lenses/runtime.png" alt="Runtime information" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Runtime information</figcaption>
+</div>
+
 
 You can access more details by clicking on the link.
 

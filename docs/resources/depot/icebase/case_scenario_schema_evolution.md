@@ -43,8 +43,9 @@ Only the following column data types are supported
 
 Initial Schema observed in Workbench
 
-
-![Schema Evolution 1](./case_scenario_schema_evolution/1.png)
+<div style="text-align: center;">
+  <img src="/resources/depot/icebase/case_scenario_schema_evolution/1.png" alt="case_scenario_schema_evolution" style="width: 60%; height: auto;">
+</div>
 
 Let's add a new column called `new1` into the city dataset with a type `string`. Execute the following code in the terminal.
 
@@ -77,8 +78,10 @@ INFO[0001] 📂 set metadata...completed
 
 Observe the change in the workbench; a new field by the name `new1` is added
 
+<div style="text-align: center;">
+  <img src="/resources/depot/icebase/case_scenario_schema_evolution/2.png" alt="Schema Evolution 2" style="width: 60%; height: auto;">
+</div>
 
-![Schema Evolution 2](./case_scenario_schema_evolution/2.png)
 
 ## Drop Field/Column
 
@@ -88,8 +91,9 @@ To remove an existing column from the table or a nested struct, the following co
 dataos-ctl dataset -a dataos://icebase:retail/city drop-field \
 -n ${{column-name}}
 ```
-
-![Schema Evolution 3](./case_scenario_schema_evolution/2.png)
+<div style="text-align: center;">
+  <img src="/resources/depot/icebase/case_scenario_schema_evolution/3.png" alt="Schema Evolution 3" style="width: 60%; height: auto;">
+</div>
 
 Let’s remove column `new1` from the city dataset. Execute the following code in the terminal
 
@@ -121,7 +125,11 @@ INFO[0001] 📂 set metadata...completed
 
 Observe the change in the workbench; the `new1` column is removed
 
-![Schema Evolution 4](./case_scenario_schema_evolution/1.png)
+<div style="text-align: center;">
+  <img src="/resources/depot/icebase/case_scenario_schema_evolution/1.png" alt="Schema Evolution 1" style="width: 60%; height: auto;">
+</div>
+
+<!-- ![Schema Evolution 4](./case_scenario_schema_evolution/1.png) !-->
 
 ## Rename Field/Column
 
@@ -135,7 +143,11 @@ dataos-ctl dataset -a dataos://icebase:retail/city rename-field \
 
 Let’s rename the column `city_name` in the city dataset to `name`. For this following code needs to be executed -
 
-![Schema Evolution 5](./case_scenario_schema_evolution/4.png)
+<div style="text-align: center;">
+  <img src="/resources/depot/icebase/case_scenario_schema_evolution/4.png" alt="Schema Evolution 5" style="width: 60%; height: auto;">
+</div>
+
+<!-- ![Schema Evolution 5](./case_scenario_schema_evolution/4.png) -->
 
 ```shell
 dataos-ctl dataset -a dataos://icebase:retail/city rename-field \
@@ -166,7 +178,11 @@ INFO[0001] 📂 set metadata...completed
 
 The `city_name` column is renamed to `name`. As observed below
 
-![Schema Evolution 6](./case_scenario_schema_evolution/6.png)
+<div style="text-align: center;">
+  <img src="/resources/depot/icebase/case_scenario_schema_evolution/6.png" alt="Schema Evolution 6" style="width: 60%; height: auto;">
+</div>
+
+<!-- ![Schema Evolution 6](./case_scenario_schema_evolution/6.png) -->
 
 ## Update Field/Column
 
@@ -179,15 +195,15 @@ dataos-ctl dataset -a dataos://icebase:retail/city update-field \
 ```
 
 >
-🗣 Updating column [type](./case_scenario_schema_evolution.md) is limited to only certain data types for any particular type 
+🗣 Updating column [type](/resources/depot/icebase/case_scenario_schema_evolution.md) is limited to only certain data types for any particular type 
 - `integer` to `long`
 - `float` to `double`
 - Increasing the precision of `decimal` type
 >
 
-
-
-![Schema Evolution 1](./case_scenario_schema_evolution/1.png)
+<div style="text-align: center;">
+  <img src="/resources/depot/icebase/case_scenario_schema_evolution/1.png" alt="Schema Evolution 1" style="width: 60%; height: auto;">
+</div>
 
 Let’s update the `zip_code` column type from `INTEGER (integer)` to `BIGINT (long)`. The code is as follows -
 
@@ -220,5 +236,6 @@ INFO[0001] 📂 set metadata...completed
 
 The type of `zip_code` is changed from `INTEGER (integer)` to `BIGINT (long)`
 
-
-![Untitled 8](./case_scenario_schema_evolution/8.png)
+<div style="text-align: center;">
+  <img src="/resources/depot/icebase/case_scenario_schema_evolution/8.png" alt="Schema Evolution 8" style="width: 60%; height: auto;">
+</div>

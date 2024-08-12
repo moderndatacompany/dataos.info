@@ -71,7 +71,9 @@ Flare Standalone uses Scala Programming Language for data exploration. In case y
 1. Extract the downloaded `flare-standalone.zip` file. It contains only one folder by the name `standalone`. Next, open the code editor inside the `flare-standalone` folder.
 2. Now the scenario looks like the image below, where you have opened the code editor inside the `flare-standalone` folder, which contains the `standalone` folder which further includes one folder by the name `dataout` and another file by the name `config.yaml`
 
-![Untitled](/resources/stacks/flare/standalone/running_flare_standalone/untitled.png)
+<div style="text-align: center;">
+  <img src="/resources/stacks/flare/standalone/running_flare_standalone/untitled.png" alt="Create Resource Section" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 ### **Adding details to the YAML file**
 
@@ -186,7 +188,9 @@ If you have an Apple M1/M2 Chip system, use the <code>rubiklabs/flare3:6.0.93-xp
 
 - Since we have exposed the Spark Web UI on port 14042, we can type `[localhost:14042](http://localhost:14042)` in any web browser to check the status of the job
 
-![Untitled](/resources/stacks/flare/standalone/running_flare_standalone/untitled_1.png)
+<div style="text-align: center;">
+  <img src="/resources/stacks/flare/standalone/running_flare_standalone/untitled_1.png" alt="Create Resource Section" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 To know more about the various sections of the Spark UI and what each one of them signifies, navigate to the [link](/resources/stacks/flare/optimizations/inspecting_the_spark_ui)
 
@@ -214,7 +218,9 @@ Type :help for more information.
 
 - You can check the `dataout` folder under which the data read from Pulsar is written.
 
-![Untitled](/resources/stacks/flare/standalone/running_flare_standalone/untitled_2.png)
+<div style="text-align: center;">
+  <img src="/resources/stacks/flare/standalone/running_flare_standalone/untitled_2.png" alt="Create Resource Section" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 ### **Exploring Spark Commands in Scala Interactive Shell**
 

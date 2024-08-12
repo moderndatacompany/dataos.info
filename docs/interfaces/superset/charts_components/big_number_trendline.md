@@ -1,12 +1,16 @@
 # Big Number with Trendline
 The Big Number with Trendline chart in Superset is a combination of a simple number display and a line graph. It shows you the current values and how they've changed over time. This combo is great for quickly understanding important insights. It's the perfect tool for highlighting key metrics and their trends, and it is useful for showcasing important data points like KPIs.
 
-![Untitled](/interfaces/superset/charts_components/big_numb_trendline_interface.png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/charts_components/big_numb_trendline_interface.png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
-On selecting the Big Number with Trendline chart, you can then proceed with its components. Common components such as METRIC, FILTERS, ROLLING FUNCTION, PERIOD, and MIN PERIOD are already covered in the '[Common Charts Components](../charts_components.md)' section for reference.
+On selecting the Big Number with Trendline chart, you can then proceed with its components. Common components such as METRIC, FILTERS, ROLLING FUNCTION, PERIOD, and MIN PERIOD are already covered in the '[Common Charts Components](/interfaces/superset/charts_components/)' section for reference.
 
 
-![Untitled](/interfaces/superset/charts_components/big_number_with_trendline.png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/charts_components/big_number_with_trendline.png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
  Let’s see its specific components one by one:
 
@@ -34,5 +38,4 @@ On selecting the Big Number with Trendline chart, you can then proceed with its 
 
 <aside class="callout">
 🗣 While the temporal X-axis and time grain are mandatory, the other components are optional, providing flexibility for customization based on analytical requirements and preferences.
-
 </aside>

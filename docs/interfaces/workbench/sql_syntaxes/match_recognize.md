@@ -56,7 +56,7 @@ In the following sections, all subclauses of the `MATCH_RECOGNIZE` clause are 
 PARTITION BY custkey
 ```
 
-The `PARTITION BY` clause allows you to break up the input table into separate sections, that are independently processed for pattern matching. Without a partition declaration, the whole input table is used. This behavior is analogous to the semantics of `PARTITION BY` clause in [**window specification**](./select.md). In the example, the `orders` table is partitioned by the `custkey` value, so that pattern matching is performed for all orders of a specific customer independently from orders of other customers.
+The `PARTITION BY` clause allows you to break up the input table into separate sections, that are independently processed for pattern matching. Without a partition declaration, the whole input table is used. This behavior is analogous to the semantics of `PARTITION BY` clause in [**window specification**](/interfaces/workbench/sql_syntaxes/select/). In the example, the `orders` table is partitioned by the `custkey` value, so that pattern matching is performed for all orders of a specific customer independently from orders of other customers.
 
 ```yaml
 ORDER BY orderdate
@@ -80,11 +80,11 @@ A measure expression is a scalar expression whose value is computed based on a m
 
 `LAST(U.totalprice) AS top_price` returns the highest price in the match. It is the price in the last row associated with `C` or `D`, which is also the final row of the match.
 
-Measure expressions can refer to the columns of the input table. They also allow special syntax to combine the input information with the details of the match (see [**Row pattern recognition expressions**](./match_recognize.md)).
+Measure expressions can refer to the columns of the input table. They also allow special syntax to combine the input information with the details of the match (see [**Row pattern recognition expressions**](/interfaces/workbench/sql_syntaxes/match_recognize/).
 
 Each measure defines an output column of the pattern recognition. The column can be referenced with the `measure_name`.
 
-The `MEASURES` clause is optional. When no measures are specified, certain input columns (depending on [**ROWS PER MATCH**](./match_recognize.md) clause) are the output of the pattern recognition.
+The `MEASURES` clause is optional. When no measures are specified, certain input columns (depending on [**ROWS PER MATCH**](/interfaces/workbench/sql_syntaxes/match_recognize/) clause) are the output of the pattern recognition.
 
 ## Rows per match
 
@@ -102,7 +102,7 @@ ALL ROWS PER MATCH
 
 `ONE ROW PER MATCH` is the default option. For every match, a single row of output is produced. Output consists of `PARTITION BY` columns and measures. The output is also produced for empty matches, based on their starting rows. Rows that are unmatched (that is, neither included in some non-empty match, nor being the starting row of an empty match), are not included in the output.
 
-For `ALL ROWS PER MATCH`, every row of a match produces an output row, unless it is excluded from the output by the [**exclusion syntax**](./match_recognize.md). Output consists of `PARTITION BY` columns, `ORDER BY` columns, measures and remaining columns from the input table. By default, empty matches are shown and unmatched rows are skipped, similarly as with the `ONE ROW PER MATCH` option. However, this behavior can be changed by modifiers:
+For `ALL ROWS PER MATCH`, every row of a match produces an output row, unless it is excluded from the output by the [**exclusion syntax**](/interfaces/workbench/sql_syntaxes/match_recognize/). Output consists of `PARTITION BY` columns, `ORDER BY` columns, measures and remaining columns from the input table. By default, empty matches are shown and unmatched rows are skipped, similarly as with the `ONE ROW PER MATCH` option. However, this behavior can be changed by modifiers:
 
 ```yaml
 ALL ROWS PER MATCH SHOW EMPTY MATCHES
@@ -122,7 +122,7 @@ ALL ROWS PER MATCH WITH UNMATCHED ROWS
 
 shows empty matches and produces additional output row for each unmatched row.
 
-There are special rules for computing row pattern measures for empty matches and unmatched rows. They are explained in [**Evaluating expressions in empty matches and unmatched rows**](./match_recognize.md).
+There are special rules for computing row pattern measures for empty matches and unmatched rows. They are explained in [**Evaluating expressions in empty matches and unmatched rows**](/interfaces/workbench/sql_syntaxes/match_recognize/).
 
 Unmatched rows can only occur when the pattern does not allow an empty match. Otherwise, they are considered as starting rows of empty matches. The option `ALL ROWS PER MATCH WITH UNMATCHED ROWS` is recommended when pattern recognition is expected to pass all input rows, and it is not certain whether the pattern allows an empty match.
 
@@ -146,7 +146,7 @@ AFTER MATCH SKIP TO NEXT ROW
 
 In the example, if a V-shape is detected, further overlapping matches are found, starting from consecutive rows on the descending slope of the “V”. Skipping to the next row is the default behavior after detecting an empty match or unmatched row.
 
-The following `AFTER MATCH SKIP` options allow to resume pattern matching based on the components of the pattern. Pattern matching starts from the last (default) or first row matched to a certain row pattern variable. It can be either a primary pattern variable (they are explained in [**Row pattern syntax**](./match_recognize.md)) or a [**union variable**](./match_recognize.md):
+The following `AFTER MATCH SKIP` options allow to resume pattern matching based on the components of the pattern. Pattern matching starts from the last (default) or first row matched to a certain row pattern variable. It can be either a primary pattern variable (they are explained in [**Row pattern syntax**](/interfaces/workbench/sql_syntaxes/match_recognize/) or a [**union variable**](/interfaces/workbench/sql_syntaxes/match_recognize/):
 
 ```yaml
 AFTER MATCH SKIP TO [ FIRST | LAST ] pattern_variable
@@ -164,7 +164,7 @@ Row pattern is a form of a regular expression with some syntactical extensions s
 PATTERN ( row_pattern )
 ```
 
-The basic element of row pattern is a primary pattern variable. Like pattern matching in character strings searches for characters, pattern matching in row sequences searches for rows which can be “labeled” with certain primary pattern variables. A primary pattern variable has a form of an identifier and is [**defined**](./match_recognize.md) by a boolean condition. This condition determines whether a particular input row can be mapped to this variable and take part in the match.
+The basic element of row pattern is a primary pattern variable. Like pattern matching in character strings searches for characters, pattern matching in row sequences searches for rows which can be “labeled” with certain primary pattern variables. A primary pattern variable has a form of an identifier and is [**defined**](/interfaces/workbench/sql_syntaxes/match_recognize/) by a boolean condition. This condition determines whether a particular input row can be mapped to this variable and take part in the match.
 
 In the example `PATTERN (A B+ C+ D+)`, there are four primary pattern variables: `A`, `B`, `C`, and `D`.
 
@@ -278,7 +278,7 @@ Quantifiers are greedy by default. It means that higher number of repetitions is
 
 ## Row pattern union variables
 
-As explained in [**Row pattern syntax**](./match_recognize.md), primary pattern variables are the basic elements of row pattern. In addition to primary pattern variables, you can define union variables. They are introduced in the `SUBSET` clause:
+As explained in [**Row pattern syntax**](/interfaces/workbench/sql_syntaxes/match_recognize/), primary pattern variables are the basic elements of row pattern. In addition to primary pattern variables, you can define union variables. They are introduced in the `SUBSET` clause:
 
 ```yaml
 SUBSET U = (C, D), ...
@@ -304,11 +304,11 @@ The mechanism of matching variables to rows shows the difference between pattern
 
 It is not required that every primary variable has a definition in the `DEFINE` clause. Variables not mentioned in the `DEFINE` clause are implicitly associated with `true` condition, which means that they can be matched to every row.
 
-Boolean expressions in the `DEFINE` clause allow the same special syntax as expressions in the `MEASURES` clause. Details are explained in [**Row pattern recognition expressions**](./match_recognize.md).
+Boolean expressions in the `DEFINE` clause allow the same special syntax as expressions in the `MEASURES` clause. Details are explained in [**Row pattern recognition expressions**](/interfaces/workbench/sql_syntaxes/match_recognize/).
 
 ## Row pattern recognition expressions
 
-Expressions in [**MEASURES**](./match_recognize.md) and [**DEFINE**](./match_recognize.md) clauses are scalar expressions evaluated over rows of the input table. They support special syntax, specific to pattern recognition context. They can combine input information with the information about the current match. Special syntax allows to access pattern variables assigned to rows, browse rows based on how they are matched, and refer to the sequential number of the match.
+Expressions in [**MEASURES**](/interfaces/workbench/sql_syntaxes/match_recognize/) and [**DEFINE**](/interfaces/workbench/sql_syntaxes/match_recognize/) clauses are scalar expressions evaluated over rows of the input table. They support special syntax, specific to pattern recognition context. They can combine input information with the information about the current match. Special syntax allows to access pattern variables assigned to rows, browse rows based on how they are matched, and refer to the sequential number of the match.
 
 ### pattern variable references
 
@@ -420,7 +420,7 @@ LAST(A.totalprice + B.totalprice)
 
 ### Aggregate functions
 
-It is allowed to use aggregate functions in a row pattern recognition context. Aggregate functions are evaluated over all rows of the current match or over a subset of rows based on the matched pattern variables. The [**running and final semantics**](./match_recognize.md) are supported, with `running` as the default.
+It is allowed to use aggregate functions in a row pattern recognition context. Aggregate functions are evaluated over all rows of the current match or over a subset of rows based on the matched pattern variables. The [**running and final semantics**](/interfaces/workbench/sql_syntaxes/match_recognize/) are supported, with `running` as the default.
 
 The following expression returns the average value of the `totalprice` column for all rows matched to pattern variable `A`:
 
@@ -550,6 +550,6 @@ When evaluating row pattern measures for an empty match:
 - `match_number` function returns the sequential number of the match
 - all aggregate functions are evaluated over an empty set of rows
 
-Like every match, an empty match has its starting row. All input values which are to be output along with the measures (as explained in [**Rows per match**](./match_recognize.md)), are the values from the starting row.
+Like every match, an empty match has its starting row. All input values which are to be output along with the measures (as explained in [**Rows per match**](/interfaces/workbench/sql_syntaxes/match_recognize/), are the values from the starting row.
 
-An unmatched row is a row that is neither part of any non-empty match nor the starting row of an empty match. With the option `ALL ROWS PER MATCH WITH UNMATCHED ROWS`, a single output row is produced. In that row, all row pattern measures are `null`. All input values which are to be output along with the measures (as explained in [**Rows per match**](./match_recognize.md)), are the values from the unmatched row. Using the `match_number` function as a measure can help differentiate between an empty match and unmatched row.
+An unmatched row is a row that is neither part of any non-empty match nor the starting row of an empty match. With the option `ALL ROWS PER MATCH WITH UNMATCHED ROWS`, a single output row is produced. In that row, all row pattern measures are `null`. All input values which are to be output along with the measures (as explained in [**Rows per match**](/interfaces/workbench/sql_syntaxes/match_recognize/), are the values from the unmatched row. Using the `match_number` function as a measure can help differentiate between an empty match and unmatched row.

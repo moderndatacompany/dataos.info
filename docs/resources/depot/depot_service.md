@@ -2,13 +2,13 @@
 
 Depot Service is a DataOS Service that manages the Depot resource. Depots are a way to abstract and manage various data systems such as data warehouses, databases, object stores, and more. They provide a unified interface and set of APIs to work with different data sources, simplifying the work of data engineers.
 
-![Diagrammatic Representation of Depot Service](./depot_service/depot_service.png)
 
-<center><i>Diagrammatic Representation of Depot Service</i></center>
+<div style="text-align: center;">
+  <img src="/resources/depot/depot_service/depot_service.png" alt="Diagrammatic Representation of Depot Service" style="border:1px solid black; width: 90%; height: auto;">
+  <figcaption><i>Diagrammatic Representation of Depot Service</i></figcaption>
+</div>
 
 ## Source Systems
-
-
 
 Depot can handle four broad types of data sources, categorized as either managed or unmanaged:
 

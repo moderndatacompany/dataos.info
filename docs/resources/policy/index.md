@@ -17,9 +17,11 @@ DataOS offers two primary categories of policies: Access Policy and Data Policy.
 
     Access Policies serve as the initial layer of defense, overseeing user access and actions within the system. They establish a set of well-defined rules that determine whether a user, known as the [subject](/resources/policy/core_concepts/#subject), is authorized to perform a specific action, referred to as a [predicate](/resources/policy/core_concepts/#predicate), on a given dataset, API path, or other resources, known as [objects](/resources/policy/core_concepts/#object). These policies serve as regulatory mechanisms, effectively governing user interactions and ensuring that access to specific actions is either granted or denied. This decision is based on the evaluation of attributes associated with the subjects and objects involved in the access request.
 
-    ![Configuration of Access Policy](/resources/policy/governance_policies_access_policy.png)
+    <div style="text-align: center;">
+      <img src="/resources/policy/governance_policies_access_policy.png" alt="Access Policy" style="border:1px solid black; width: 80%; height: auto;">
+    </div>
 
-    <center><i>Access Policy </i></center> 
+
 
 === "Data Policy"
 
@@ -27,9 +29,9 @@ DataOS offers two primary categories of policies: Access Policy and Data Policy.
 
     For example, when working with a dataset that includes a column labeled `credit_card_number`, it is crucial to protect the sensitive information it contains from unintended exposure. Employing data masking policies or applying data anonymization methods becomes essential to secure the contents of this specific column.
 
-    ![Data Policy YAML configuration](/resources/policy/governance_policies_data_policy.png)
-
-    <center><i>Data Policy </i></center> 
+    <div style="text-align: center;">
+      <img src="/resources/policy/governance_policies_data_policy.png" alt="Data Policy" style="border:1px solid black; width: 80%; height: auto;">
+    </div>
 
     Within Data Policy, we have two separate types one is the [Data Masking Policy](#data-masking-policy), and another is the [Data Filtering Policy](#data-filtering-policy). 
 

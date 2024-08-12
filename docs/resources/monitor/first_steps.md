@@ -289,7 +289,8 @@ INFO[0003] 🔮 develop observability...complete
 
 Your next steps depend upon whether you want to set up alerts on top of the incidents generated using Monitor or want to learn about the different types and key concepts associated with Monito:
 
-- Learn how to set up alerts on top of incidents generated using Pager Resource. See [Pager: Quick Start Guide]()
-- Set up incidents on top of events using Report Monitor. See [How to Create a Report Monitor](/resources/monitor/how_to_guide/report_monitor/)
-- Set up incidents on top of streaming data using Stream Monitor. Learn [How to Create a Stream Monitor](/resources/monitor/how_to_guide/stream_monitor/)
-- Set up incidents on top of Lens using Equation Monitor. See [How to Create a Equation Monitor on top of Lens](/resources/monitor/how_to_guide/lens_monitor/)
+- Learn how to set up alerts on top of incidents generated using Pager Resource. See [Pager: Quick Start Guide.]()
+- Add context column to the Monitor. Learn [How to add context column to the Monitors?](/resources/monitor/how_to_guide/context_column/)
+- Set up incidents on top of events using Report Monitor. See [How to Create a Report Monitor?](/resources/monitor/how_to_guide/report_monitor/)
+- Set up incidents on top of streaming data using Stream Monitor. Learn [How to Create a Stream Monitor?](/resources/monitor/how_to_guide/stream_monitor/)
+- Set up incidents on top of Lens using Equation Monitor. See [How to Create a Equation Monitor on top of Lens<](/resources/monitor/how_to_guide/lens_monitor/)

@@ -34,6 +34,6 @@ DROP SCHEMA archive CASCADE
 
 ## See also
 
-[ALTER SCHEMA](./alter_schema.md) 
+[ALTER SCHEMA](/interfaces/workbench/sql_syntaxes/alter_schema/) 
 
-[CREATE SCHEMA](./create_schema.md)
+[CREATE SCHEMA](/interfaces/workbench/sql_syntaxes/create_schema/)
