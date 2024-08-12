@@ -8,13 +8,10 @@ search:
 
 Operator is a [DataOS Resource](/resources/) that provides a standardized interface for orchestrating resources situated outside the DataOS cluster, empowering data developers with the capability to invoke actions programmatically upon these external resources directly from interfaces of DataOS.
 
-<center>
-
-![Operator Architecture](/resources/operator/operator_architecture.png){: style="width:41rem;" }
-
-<i>High-level view of the Operator Resource within DataOS Architecture</i>
-
-</center>
+<div style="text-align: center;">
+  <img src="/resources/operator/operator_architecture.png" alt="Operator Architecture" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>High-level view of the Operator Resource within DataOS Architecture</i></figcaption>
+</div>
 
 At its core, an Operator empowers the DataOS orchestrator, referred to as *Poros*, to manage these external resources using custom-built Operators. 
 
@@ -519,6 +516,11 @@ dataos-ctl get -t operator -a
 
 You can also access the details of any created Operator through the DataOS GUI in the [Operations App.](/interfaces/operations/)
 
+<div style="text-align: center;">
+  <img src="/resources/operator/operator_manifestation.png" alt="Manifestation of Operator" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>Manifestation of Operator in DataOS</i></figcaption>
+</div>
+
 <center>
 
 ![Manifestation of Operator](/resources/operator/operator_manifestation.png)
@@ -595,26 +597,23 @@ Once we apply we can go over on the Azure Data Factory UI.
 
 **Before Pipeline run**
 
-<center>
-
-![ADF Before Pipeline Run](/resources/operator/adf_before_pipeline_run.png)
-
-<i>Azure Data Factory UI before pipeline run</i>
-</center>
+<div style="text-align: center;">
+  <img src="/resources/operator/adf_before_pipeline_run.png" alt="ADF Before Pipeline Run" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>Azure Data Factory UI before pipeline run</i></figcaption>
+</div>
 
 **After Pipeline run**
 
-<center>
+<div style="text-align: center;">
+  <img src="/resources/operator/adf_after_pipeline_run_1.png" alt="ADF After Pipeline Run" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>Azure Data Factory UI after pipeline run</i></figcaption>
+</div>
 
-![ADF After Pipeline Run](/resources/operator/adf_after_pipeline_run_1.png)
+<div style="text-align: center;">
+  <img src="/resources/operator/adf_after_pipeline_run_2.png" alt="ADF Pipeline Runs" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>Azure Data Factory UI various pipeline runs</i></figcaption>
+</div>
 
-<i>Azure Data Factory UI after pipeline run</i>
-
-![ADF Pipeline Runs](/resources/operator/adf_after_pipeline_run_2.png)
-
-<i>Azure Data Factory UI various pipeline runs</i>
-
-</center>
 
 #### **Metadata Synchronization in DataOS**
 
@@ -640,12 +639,10 @@ dataos-ctl delete -t operator -n ${{name of operator}}
 
 ## How does the Operator Work?
 
-<center>
-
-![Working of Operator](/resources/operator/operator_working.png)
-<i>Working of an Operator</i>
-
-</center>
+<div style="text-align: center;">
+  <img src="/resources/operator/operator_working.png" alt="Working of Operator" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>Working of an Operator</i></figcaption>
+</div>
 
 The diagram illustrates the workings of the DataOS Kubernetes Cluster and the process that unfolds when applying an Operator YAML via the DataOS Command Line Interface (CLI).
 
@@ -661,12 +658,11 @@ The diagram illustrates the workings of the DataOS Kubernetes Cluster and the pr
     1. **Command:** When executing commands such as creating, updating, or deleting, the system forwards these actions to the NATS Cluster. The NATS Cluster then communicates with the compute component associated with the Operator, which subsequently dispatches the pertinent information to the external platform or service.
     2. **Query:** Simultaneously, the system offers a querying mechanism for retrieving information about the status and details of the service. Executing the `dataos-ctl get` command initiates a query operation, which traverses through the NATS Cluster. The query is then directed to the entity store within the computational component, which maintains the desired state information.
 
-    <center>
 
-![Operator control flow](/resources/operator/operator_behind_the_scenes.png)
-<i>Operator behind the scenes</i>
-
-</center>
+<div style="text-align: center;">
+  <img src="/resources/operator/operator_behind_the_scenes.png" alt="Working of Operator" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>Operator behind the scenes</i></figcaption>
+</div>
 
 ## Case Scenarios
 
