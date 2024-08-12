@@ -212,3 +212,17 @@ The metadata for all other tables was scanned.
 
 
 To know more about how to specify filters in different scenarios, refer to [Filter Pattern Examples](/resources/stacks/scanner/creating_scanner_workflows/filter_pattern_examples/).
+
+## Scheduling Scanner Workflow Run
+
+Scanner workflows are either single-time run or scheduled to run at a specific cadence. To schedule a workflow, you must add the schedule property defining a cron in `workflow` section.
+```yaml
+workflow:
+  title: scheduled Scanner Workflow
+  schedule: 
+    cron: '*/2 * * * *'  #every 2 minute  [Minute, Hour, day of the month ,month, dayoftheweek]
+    concurrencyPolicy: Allow #forbid/replace
+    endOn: 2024-11-01T23:40:45Z
+    timezone: Asia/Kolkata
+```
+To learn more about these properties, refer to [Schedulable workflows](/resources/workflow/how_to_guide/scheduled_workflow/).

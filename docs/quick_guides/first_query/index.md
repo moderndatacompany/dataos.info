@@ -3,7 +3,7 @@
 !!! info "Information"
     DataOS Workbench is a web-based data exploration tool that allows you to run simple & complex queries on all sorts of relational databases, storage systems, and lakehouses. You can also run SQL queries on heterogeneous data sources simultaneously. This guide offers a quick introduction to using Workbench.
 
-## Steps to Run Your Query
+## Key Steps
 
 Follow the below steps:
 
@@ -24,12 +24,13 @@ Workbench uses two main query engines:
 - **Themis (based on SparkSQL)**: An elastic SQL query engine optimized for fast, distributed querying of large datasets. It supports sources like Hive, HBase, HDFS, and Kafka. It is more versatile than Minerva due to its dynamic adaptability to workload demands.
 
 Choose the appropriate cluster where you want to run your queries.
-
-1. Select a Cluster from the list of available clusters.
     
-    ![selct_cluster.png](/quick_guides/first_query/selct_cluster.png)
+![selct_cluster.png](/quick_guides/first_query/selct_cluster.png)
 
-## Step 2: Choose Catalog and Table 
+<aside class="callout">
+🗣 Workbench, powered by the Minerva/Themis query engine, provides the unique capability to directly query the source systems without the need to ingest the data into DataOS. This feature facilitates faster data exploration and analysis by eliminating the need for data movement.</aside>
+
+## Step 2: Choose Catalog, Schema and Table 
     
 Select catalog, schema, and table.
     
