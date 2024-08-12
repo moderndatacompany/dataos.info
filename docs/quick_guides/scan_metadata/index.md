@@ -10,7 +10,7 @@ The Scanner stack in DataOS is  designed for developers to extract metadata from
 -   [Depot Scan Workflow](/quick_guides/scan_metadata/depot/)
 
     ---
-    With this type of Scanner workflow, depots are used to get connected to the metadata source to extract Entities’ metadata. It enables you to scan all the datasets referred by a depot. You need to provide the depot name or address, which will connect to the data source. 
+    With this type of Scanner workflow, depots are used to get connected to the metadata source to extract Entities’ metadata. It enables you to scan all the datasets referred by a Depot. You need to provide the depot name or address, which will connect to the data source. 
     
 -   [Non-Depot Scan Workflow](/quick_guides/scan_metadata/non_depot/)
 
@@ -21,6 +21,6 @@ The Scanner stack in DataOS is  designed for developers to extract metadata from
 
 <aside class="callout">
 
-🗣 The non-Depot scan can help extract metadata from sources where depot creation is not supported or when you do not have an already created depot.
+🗣 The non-Depot scan can help extract metadata from sources where Depot creation is not supported or when you do not have an already created Depot.
 </aside>
 
