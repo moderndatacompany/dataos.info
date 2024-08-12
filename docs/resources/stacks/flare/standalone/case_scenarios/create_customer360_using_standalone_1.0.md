@@ -25,9 +25,12 @@ In this case, you have to prepare Customer 360 data by aggregating data from the
 
 A complete step-by-step run-through with the defined problem statement and the user journey to the desired output.
 
-![Flow diagram explaining data transformations in Flare standalone achieving Customer 360.](/resources/stacks/flare/create_customer360_using_standalone_1.0/c360_diagram_new2.png)
+<div style="text-align: center;">
+  <img src="/resources/stacks/flare/standalone/case_scenarios/create_customer360_using_standalone_1.0/c360_diagram_new2.png" alt="Flow Diagram" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>Flow diagram explaining data transformations in Flare standalone achieving Customer 360</i></figcaption>
+</div>
 
-Flow diagram explaining data transformations in Flare standalone achieving Customer 360.
+
 
 ## Steps to Perform
 
@@ -44,9 +47,13 @@ This tutorial helps you perform the steps you need to transform the given data i
     2.  `data` folder containing sample data files.
     3. `config_template.yaml` file for your hands-on with Flare standalone capabilities.
     4. `config_solution.yaml` file containing complete queries for transformations.
-    
-    ![assignment data folder.png](/resources/stacks/flare/standalone/case_scenarios/create_customer360_using_standalone_1.0/assignment_data_folder.png)
-    
+
+    <div style="text-align: center;">
+      <img src="/resources/stacks/flare/standalone/case_scenarios/create_customer360_using_standalone_1.0/assignment_data_folder.png" alt="assignment data folder" style="border:1px solid black; width: 80%; height: auto;">
+      <figcaption><i>assignment data folder</i></figcaption>
+    </div>
+
+  
 
 ### **Create Datasets**
 
@@ -229,7 +236,7 @@ Type :help for more information.
 > **Note**: Refer to the additional flag for your docker command if you are using an **M1 Mac machine**.
 > 
 
-<aside>
+<aside class="callout">
 💡 Flare standalone will mount the `flareconfig` and `datadir` folders in the docker container for config.yaml and input files, respectively. It will also mount the `dataout` folder where the generated data frames will be written. The details of the data frames to be saved are given in the sink section of the `config.yaml`.
 
 </aside>
@@ -261,7 +268,7 @@ To create Customer 360 data, you must apply a series of transformations. First, 
 > 
 - Select all columns from the `input_stores`data frame and rename the `store_id` column to `s_id`. Here you will use the Flare function ‘**rename_all**’ This snippet shows how you can apply the **Flare functions** by providing the function name and required columns that will be passed as parameters to the process. The Flare function is used after the SQL query is executed.
 
-<aside>
+<aside class="callout">
 🗣️ Renaming the column is done here to avoid ambiguity with column names when you perform joins.
 
 </aside>
@@ -579,7 +586,7 @@ only showing top 5 rows
 > **Note:** To exit the Scala SQL shell, press `Ctrl+c`.
 > 
 
-<aside>
+<aside class="callout">
 💡 Please ensure that all these transformation steps are completed in `config_template.yaml`.
 
 </aside>
@@ -637,9 +644,8 @@ scala> tables
 ```
 </details>
 
-<aside>
+<aside class="callout">
 🗣️ After following all the above steps, you have successfully created Customer 360 data which can be used in various scenarios using Flare standalone.
-
 </aside>
 
 ### **Validate the Outcome**
