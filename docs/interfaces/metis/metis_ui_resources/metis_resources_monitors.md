@@ -7,8 +7,11 @@
 
 Metis has integrated "Monitor" as a "Resource" type entity for storing metadata related to events, metrics, and incidents that are raised when the defined condition does not meet the specified criterion for an asset within DataOS. On selecting **Monitors,** the following information will appear on the screen:
 
-![monitors.png](metis_resources_monitors/monitors.png)
-<figcaption align = "center"> List of Monitors  </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_monitors/monitors.png" alt="List of Monitors" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>List of Monitors</figcaption>
+</div>
+
 
 ## Filter pane
 
@@ -48,8 +51,11 @@ Each Monitor resource in the list will have a Card view that displays the follow
 
 In the Card view, click anywhere except the resource name to get the overview.
 
-![monitor_overview.png](metis_resources_monitors/monitor_overview.png)
-<figcaption align = "center"> Quick information  </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_monitors/monitor_overview.png" alt="Quick information" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Quick information</figcaption>
+</div>
+
 
 This includes the following information for quick reference:
 
@@ -66,8 +72,11 @@ This includes the following information for quick reference:
 
 In the Result or Overview pane, click on the name of the Monitor to open the Resource Details page, which includes:
 
-![monitors_details.png](metis_resources_monitors/monitors_details.png)
-<figcaption align = "center"> Comprehensive details  </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_monitors/monitors_details.png" alt="Comprehensive details" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Comprehensive details</figcaption>
+</div>
+
 
 ### **Monitor Information**
 

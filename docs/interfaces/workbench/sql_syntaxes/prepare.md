@@ -19,7 +19,7 @@ PREPARE my_select1 FROM
 SELECT * FROM nation;
 ```
 
-Prepare a select query that includes parameters. The values to compare with `regionkey` and `nationkey` will be filled in with the [**EXECUTE**](./execute.md) statement:
+Prepare a select query that includes parameters. The values to compare with `regionkey` and `nationkey` will be filled in with the [**EXECUTE**](/interfaces/workbench/sql_syntaxes/execute/) statement:
 
 ```yaml
 PREPARE my_select2 FROM
@@ -35,12 +35,12 @@ INSERT INTO cities VALUES (1, 'San Francisco');
 
 ## See also
 
-[EXECUTE](./execute.md) 
+[EXECUTE](/interfaces/workbench/sql_syntaxes/execute/) 
 
-[DEALLOCATE PREPARE](./deallocate_prepare.md) 
+[DEALLOCATE PREPARE](/interfaces/workbench/sql_syntaxes/deallocate_prepare/) 
 
-[EXECUTE IMMEDIATE](./execute_immediate.md) 
+[EXECUTE IMMEDIATE](/interfaces/workbench/sql_syntaxes/execute_immediate/) 
 
-[DESCRIBE INPUT](./describe_input.md) 
+[DESCRIBE INPUT](/interfaces/workbench/sql_syntaxes/describe_input/) 
 
-[DESCRIBE OUTPUT](./describe_output.md)
+[DESCRIBE OUTPUT](/interfaces/workbench/sql_syntaxes/describe_output/)

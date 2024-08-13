@@ -12,9 +12,11 @@ DataOS Workbench is a web-based data exploration tool that allows you to run SQL
 
 Upon opening the Workbench app, the first step is to select the Minerva cluster you wish to use. This cluster is committed to executing SQL scripts , and its selection is based on the specific computing requirements. The on-demand compute provisioning in Minerva enables you to meet the fluctuating computational requirements of your data assets. The availability of datasets for query is dependent on the inclusion of depots and catalogs within the Minerva cluster.
 
-![Cluster selection](/interfaces/workbench/select_cluster.png)
+<div style="text-align: center;">
+  <img src="/interfaces/workbench/select_cluster.png" alt="Cluster selection" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Cluster selection</figcaption>
+</div>
 
-<figcaption align = "center">Cluster selection</figcaption>
 
 In the details of the Minerva cluster, one will see the names of the data sources that can be queried with that cluster. The `Catalogs` section includes the names of the depots and catalogs (data sources for which the depot has not been created, but which you can still query through DataOS). The datasets accessible for querying are dependent on the presence of depots and catalogs within the Minerva cluster.
 
@@ -25,9 +27,13 @@ In the details of the Minerva cluster, one will see the names of the data source
 ## Querying Data
 The next step is to select the names of the `Catalog`, `Schema`, and `Table` where the data is located. 
 
-![workbench_homepage.png](/interfaces/workbench/workbench_homepage.png)
+<div style="text-align: center;">
+  <img src="/interfaces/workbench/workbench_homepage.png" alt="Query and result panes" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Query and result panes</figcaption>
+</div>
 
-<figcaption align = "center">Query and result panes</figcaption>
+
+
 Once you select a table from the list of tables, its columns and data types appear on the screen. The mapping from source data to tables is defined by the connector. For relational databases, depot translates to `Catalog` in Workbench, while Collection to `Schema`, and Dataset to `Table`.
 
 A fully-qualified table name such as `icebase.audience.customers_large_data` refers to the Table `customers_large_data` in the Schema `audience` which is in the Catalog `icebase`.
@@ -49,15 +55,18 @@ Find the list of all the functions supported by Minerva.
 
 The Studio feature is designed to streamline the process of writing complex and time-consuming SQL queries. With its intuitive interface, you can effortlessly generate SQL statements by selecting the desired Aggregates and Measures, or Raw Records and columns.
 
-![Studio feature](/interfaces/workbench/wb_studio.png)
+<div style="text-align: center;">
+  <img src="/interfaces/workbench/wb_studio.png" alt="Studio feature" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Studio feature</figcaption>
+</div>
 
-<figcaption align = "center">Studio feature</figcaption>
 
 Now choose the fields per your intentions. Once done, click Generate SQL.
 
-![Perform aggregations, calculate measures](/interfaces/workbench/wb_studio_aggr.png)
-
-<figcaption align = "center">Perform aggregations, calculate measures</figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/workbench/wb_studio_aggr.png" alt="Perform aggregations, calculate measures" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Perform aggregations, calculate measures</figcaption>
+</div>
 
 The prepend toggle allows you to keep the previous SQL statements in the query pane while generating the new statements. To remove previously generated SQL statements, disable prepend.
 
@@ -71,9 +80,10 @@ One can now directly export the results of the query to a BI tool. Refer to the 
 
 Atlas is an in-built BI solution that is used to create customized reports/dashboards on any datasets with visualizations. In the result pane, hover over the three vertically aligned dots. Click it, and go to the Atlas option.
 
-![Atlas option](/interfaces/workbench/more_options.png)
-
-<figcaption align = "center">Atlas option</figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/workbench/more_options.png" alt="Atlas option" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Atlas option</figcaption>
+</div>
 
 When you select the Atlas option, the pop-up will ask you for the query name. Type a name and click on `Export` it. It will immediately open Atlas in a new tab. 
 
@@ -85,29 +95,36 @@ Use this feature to get the Query Plan. It gives you access to both the Raw Data
 
 To analyze, select the entire query and click the magnifying glass with the lightning symbol on it (shortcut key: ctrl/cmd + shift + enter).
 
-![Analyze query](/interfaces/workbench/analyze_query.png)
-
-<figcaption align = "center">Analyze query</figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/workbench/analyze_query.png" alt="Analyze query" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Analyze query</figcaption>
+</div>
 
 Clicking on the ℹ️  button will take you to the detailed Query Plan
 
-![Detailed Query Plan](/interfaces/workbench/detail_query.png)
+<div style="text-align: center;">
+  <img src="/interfaces/workbench/detail_query.png" alt="Detailed Query Plan" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Detailed Query Plan</figcaption>
+</div>
 
-<figcaption align = "center">Detailed Query Plan</figcaption>
 
 ### Runtime Stats
 
 The Runtime Stats option appears while the query is still running. It will not be available once the query has been completed.
 
-![Runtime Stats option can be seen in the result pane](/interfaces/workbench/runtime_stats.png)
-
-<figcaption align = "center">Runtime Stats option can be seen in the result pane</figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/workbench/runtime_stats.png" alt="Runtime Stats option can be seen in the result pane" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Runtime Stats option can be seen in the result pane</figcaption>
+</div>
 
 Clicking on the `Runtime stats` tab will take you to a new tab in the web browser that will hold vital information about the query you ran.
 
-![Available options](/interfaces/workbench/query_analysis.png)
+<div style="text-align: center;">
+  <img src="/interfaces/workbench/query_analysis.png" alt="Available options" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Available options</figcaption>
+</div>
 
-<figcaption align = "center">Available options</figcaption>
+
 <aside class="callout">
 🗣 The statistical information about Query Runtime is stored in Metis and can be accessed through the Metis user interface (UI).
 </aside>
@@ -148,21 +165,29 @@ Graphically represents each stage as a flowchart. The information here will be a
 
 <figcaption align = "center">An example of flowchart of a Stage</figcaption>
 
+<div style="text-align: center;">
+  <img src="/interfaces/workbench/stage_Performance.png" alt="An example of flowchart of a Stage" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>An example of flowchart of a Stage</figcaption>
+</div>
+
+
 **Splits**
 
 Splits are sections of a larger data set. Minerva coordinator retrieves a list of all the splits that are available for a table, through the connector for a particular `Catalog`. As mentioned earlier, Tasks operate on Splits, which is to say that at the lowest level Stages retrieve data via Splits.
 
-![Splits](/interfaces/workbench/splits.png)
-
-<figcaption align = "center">Splits </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/workbench/splits.png" alt="Splits" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Splits</figcaption>
+</div>
 
 ### **Query Details**
 
 The details of the query can be seen after it has run. Click the bar showing the result of a particular query.
 
-![Query and its output](/interfaces/workbench/query_details.png)
-
-<figcaption align = "center">Query and its output</figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/workbench/query_details.png" alt="Query and its output" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Query and its output</figcaption>
+</div>
 
 **Query**
 
@@ -176,9 +201,11 @@ Stats will give you information relating to the status of the query, query id, C
 
 This will display all the policies that are applied to the dataset you have queried. If a governance policy has been applied to the table being queried, you will see the cautionary triangle in the result bar of the result pane.
 
-![The red cautionary triangle indicates you have limited permission to query this Table](/interfaces/workbench/policies_applied.png)
 
-<figcaption align = "center">Limited permission to query this Table</figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/workbench/policies_applied.png" alt="Limited permission to query this Table" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Limited permission to query this Table</figcaption>
+</div>
 
 Data policies (mask and filter) can be created to guide what data the user sees once they access a dataset. To learn more, refer to Data Policies.
 
@@ -196,15 +223,17 @@ Workbench interface allows you to compare the results of two queries without hav
 
 Select the two query results as shown in the image and click Compare option.
 
-![You can compare the results of 2 queries at a time](/interfaces/workbench/campare.png)
-
-<figcaption align = "center">Results of 2 queries at a time to compare</figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/workbench/campare.png" alt="Results of 2 queries at a time to compare" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Results of 2 queries at a time to compare</figcaption>
+</div>
 
 In the example shown, we have compared the results of two queries, one of them had customer names masked in the input dataset. Scroll each output dataset horizontally to compare specific columns.
 
-![Query compare result](/interfaces/workbench/query_compare_result.png)
-
-<figcaption align = "center">Query compare result</figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/workbench/query_compare_result.png" alt="Query compare result" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Query compare result</figcaption>
+</div>
 
 ### **Pivot**
 
@@ -213,20 +242,25 @@ In the example shown, we have compared the results of two queries, one of them h
 With DataOS workbench, you can pivot your output tables/datasets through a click-and-drag interface and rearrange and transform your data. This eliminates the need to manually write complex SQL statements for pivoting operations. 
 Click the option for More, and go to the Pivot option.
 
-![Pivot and other option](/interfaces/workbench/pivot.png)
+<div style="text-align: center;">
+  <img src="/interfaces/workbench/pivot.png" alt="Pivot and other option" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Pivot and other option</figcaption>
+</div>
 
-<figcaption align = "center">Pivot and other option</figcaption>
 
 Pivot option opens up a new pop-up window where you can find all the columns (where at least one row doesn’t have the null value) listed at the top. Filters can be applied on each attribute visible in the list.
 
-![You can also apply filters on each attribute visible in the list. ](/interfaces/workbench/apply_filters.png)
-<figcaption align = "center">Applying filters </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/workbench/apply_filters.png" alt="Applying filters" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Applying filters</figcaption>
+</div>
 
 You can now pick and drop these attributes to the empty space as either row names or column names for a new table/dataset. In the example, we have picked ‘customer_no’ and ‘site’ as the row values, while ‘channel_code’ as the columnar values.
 
-![Pivot table created](/interfaces/workbench/pivot_created.png)
-
-<figcaption align = "center">Pivot table created</figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/workbench/pivot_created.png" alt="Pivot table created" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Pivot table created</figcaption>
+</div>
 
 You can do a lot more in Pivot, such as create charts and heat-maps, perform aggregations, among other things. 
 
@@ -242,9 +276,10 @@ This stores the SQL statements executed by you in the last 4 weeks.
 
 The saved SQL scripts appear in the Saved benches list. 
 
-![saved_benches.png](/interfaces/workbench/saved_benches.png)
-
-<figcaption align = "center">Saved benches</figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/workbench/saved_benches.png" alt="Saved benches" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Saved benches</figcaption>
+</div>
 
 ### **Private/Shared Bench**
 SQL statements that you save are available to you only. You can choose to share your SQL statements with other members of your enterprise. Simply save the bench, and click on the Private button to share a bench with other users.

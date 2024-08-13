@@ -1,13 +1,17 @@
 In Superset, a pivot table is a sophisticated data analysis tool that transforms raw data into a structured table, offering a dynamic way to organize and summarize information. This visualization allows users to flexibly arrange dimensions and metrics, apply aggregations, and dynamically pivot rows and columns. By providing a comprehensive view of multidimensional data, the pivot table empowers users to explore relationships, identify patterns, and make informed decisions based on a clear and organized presentation of their data. Let’s see its specific components one by one:
 
-![Untitled](/interfaces/superset/charts_components/pivot_interface.png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/charts_components/pivot_interface.png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 On selecting the Pivot Table chart, you can then proceed with its components.
 
-![Untitled](/interfaces/superset/charts_components/pivot.png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/charts_components/pivot.png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 
-Common components such as METRIC and FILTERS are already covered in the '[Common Charts Components](../charts_components.md)' section for reference.
+Common components such as METRIC and FILTERS are already covered in the '[Common Charts Components](/interfaces/superset/charts_components/)' section for reference.
 
 
 

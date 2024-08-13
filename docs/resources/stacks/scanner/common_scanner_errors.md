@@ -6,7 +6,10 @@ When you run a Scanner workflow, you may see errors that can affect the metadata
 
 Sometimes a user might get an ERROR 403 (Example Below) while running the Scanner Jobs.
 
-![error1.png](common_scanner_errors/error1.png)
+<div style="text-align: center;">
+  <img src="/resources/stacks/scanner/common_scanner_errors/error1.png" alt="Scanner" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>Common Scanner error 1</i></figcaption>
+</div>
 
 ### **Suggested Solution**
 
@@ -50,7 +53,6 @@ WHERE  grantee = 'MY_USER_Name'
 
 <aside class="callout">
 🗣 The errors thrown in the case of Redshift and PostgresSQL databases are mostly the same. Please check if you have enough permissions to scan the metadata from the underlying sources.
-
 </aside>
 
 To learn more, click here.
@@ -61,7 +63,11 @@ To learn more, click here.
 
 You may get the following error for value is not a valid enumeration member or extra fields not permitted.
 
-![error3.png](common_scanner_errors/error3.png)
+<div style="text-align: center;">
+  <img src="/resources/stacks/scanner/common_scanner_errors/error3.png" alt="Scanner" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>Common Scanner error 3</i></figcaption>
+</div>
+
 
 ### **Suggested Solution**
 
@@ -71,7 +77,10 @@ Check the `scanner` section of your YAML file. You have mistyped the property na
 
 In case of Snowflake, you may get the following error while scanning data for warehouse is not configured for this depot.
 
-![error4.png](common_scanner_errors/error4.png)
+<div style="text-align: center;">
+  <img src="/resources/stacks/scanner/common_scanner_errors/error4.png" alt="Scanner" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>Common Scanner error 4</i></figcaption>
+</div>
 
 ### **Suggested Solution**
 
@@ -81,6 +90,9 @@ If you encounter the error mentioned above, it indicates that the Snowflake depo
 
 You will encounter this error when you try to scan unstructured data stored in File/blob storage.
 
-![error5.png](common_scanner_errors/error5.png)
+<div style="text-align: center;">
+  <img src="/resources/stacks/scanner/common_scanner_errors/error5.png" alt="Scanner" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>Common Scanner error 5</i></figcaption>
+</div>
 
 > **Note:** At present, scanning the metadata of File Systems/Blob storage(Unstructured data) is not supported.

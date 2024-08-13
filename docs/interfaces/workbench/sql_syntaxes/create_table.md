@@ -19,7 +19,7 @@ table_name (
 
 ## Description
 
-Create a new, empty table with the specified columns. Use [CREATE TABLE AS](./create_table_as.md) to create a table with data.
+Create a new, empty table with the specified columns. Use [CREATE TABLE AS](/interfaces/workbench/sql_syntaxes/create_table_as/) to create a table with data.
 
 The optional `IF NOT EXISTS` clause causes the error to be suppressed if the table already exists.
 
@@ -77,10 +77,10 @@ CREATE TABLE bigger_orders (
 
 ## See also
 
-[ALTER TABLE](./alter_table.md) 
+[ALTER TABLE](/interfaces/workbench/sql_syntaxes/alter_table/) 
 
-[DROP TABLE](./drop_table.md) 
+[DROP TABLE](/interfaces/workbench/sql_syntaxes/drop_table/) 
 
-[CREATE TABLE AS](./create_table_as.md) 
+[CREATE TABLE AS](/interfaces/workbench/sql_syntaxes/create_table_as/) 
 
-[SHOW CREATE TABLE](./show_create_table.md)
+[SHOW CREATE TABLE](/interfaces/workbench/sql_syntaxes/show_create_table/)

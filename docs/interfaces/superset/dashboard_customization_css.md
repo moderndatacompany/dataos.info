@@ -19,7 +19,9 @@ To modify the background color of the entire dashboard, kindly implement the fol
 }
 ```
 
-![Untitled](/interfaces/superset/dashboard_customization/a.png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_customization/a.png" alt="Untitled image" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 Observe live updates as you make modifications.
 
@@ -30,12 +32,16 @@ Likewise, you have the option to alter the background color of all charts by uti
   background-color: black;
 }
 ```
-
-![Untitled](/interfaces/superset/dashboard_customization/b.png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_customization/b.png" alt="Untitled image" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 To customize a specific chart, inspect the chart to obtain its unique chart ID. Subsequently, utilize the identified chart ID in the following CSS code for precise customization:
 
-![Untitled](/interfaces/superset/dashboard_customization/j.png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_customization/j.png" alt="Untitled image" style="border:1px solid black; width: 80%; height: auto;">
+</div>
+
 
 ```css
 #chart-id-1 {
@@ -43,7 +49,9 @@ To customize a specific chart, inspect the chart to obtain its unique chart ID. 
 }
 ```
 
-![Untitled](/interfaces/superset/dashboard_customization/c.png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_customization/c.png" alt="Untitled image" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 ## Margin and Padding
 
@@ -60,7 +68,9 @@ Modify the margin and padding effortlessly with the provided CSS code:
 }
 ```
 
-![Untitled](/interfaces/superset/dashboard_customization/d.png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_customization/d.png" alt="Untitled image" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 ## Fonts
 
@@ -76,7 +86,9 @@ Refine the aesthetic of your entire dashboard by adjusting the font family throu
 }
 ```
 
-![Untitled](/interfaces/superset/dashboard_customization/e.png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_customization/e.png" alt="Untitled image" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 ### **Font color**
 
@@ -87,8 +99,9 @@ Adjust the font color of the chart's title seamlessly using CSS:
   color: #ff9900;
 }
 ```
-
-![Untitled](/interfaces/superset/dashboard_customization/f.png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_customization/f.png" alt="Untitled image" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 ### **Font size**
 
@@ -98,10 +111,10 @@ Modify the font size of the chart's title effortlessly through CSS:
 .header-title {
     font-size: 15px;
 }
-
 ```
-
-![Untitled](/interfaces/superset/dashboard_customization/g.png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_customization/g.png" alt="Untitled image" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 Explore various font sizes to achieve the desired visual impact.
 
@@ -129,7 +142,10 @@ transform: translateX(-50%);
 }
 ```
 
-![Untitled](/interfaces/superset/dashboard_customization/h.png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_customization/h.png" alt="Untitled image" style="border:1px solid black; width: 80%; height: auto;">
+</div>
+
 
 **`position: absolute`**
 
@@ -157,7 +173,9 @@ Hide chart titles at your discretion using the provided CSS code:
 }
 ```
 
-![Untitled](/interfaces/superset/dashboard_customization/i.png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_customization/i.png" alt="Untitled image" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 <aside class="callout">
 🗣 In Superset, <code>!important</code> can be used in custom CSS rules to ensure they take precedence over existing styles. While <code>!important</code> can be effective for overriding styles, it should be used sparingly to maintain code readability and avoid potential conflicts.

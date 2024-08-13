@@ -1,6 +1,6 @@
 # Standalone YAML Configurations
 
-![Flare Standalone ex.svg](./standalone_yaml_configurations/flare_standalone_ex.svg)
+![Flare Standalone ex.svg](/resources/stacks/flare/standalone/standalone_yaml_configurations/flare_standalone_ex.svg)
 
 Flare Standalone supports reading and writing data from any source which Flare supports. It could be Object Storage, Relational Databases, NoSQL Databases, Data Warehouses, and Streaming sources like Kafka.
 
@@ -50,19 +50,19 @@ Flare Standalone currently supports the following Object Storage - Azure Blob Fi
 
 Azure Blob Storage is a storage service by Microsoft. You can go to the page below to learn more about Flare Standalone YAML configurations for ABFSS Data Source.
 
-[Azure Blob Storage (ABFSS)](./standalone_yaml_configurations/azure_abfss.md)
+[Azure Blob Storage (ABFSS)](/resources/stacks/flare/standalone/standalone_yaml_configurations/azure_abfss/)
 
 #### **Google Cloud Storage (GCS)**
 
 Google Cloud Storage is a service for storing your objects in Google Cloud. You can go to the page below to learn more about  Flare Standalone YAML configurations for GCS data sources.
 
-[Google Cloud Storage (GCS)](./standalone_yaml_configurations/google_cloud_storage.md)
+[Google Cloud Storage (GCS)](/resources/stacks/flare/standalone/standalone_yaml_configurations/google_cloud_storage/)
 
 #### **Amazon Simple Storage Service (S3)**
 
 Amazon Simple Storage Service (S3) is an object storage service. To know more about Flare Standalone YAML configurations for the S3 data source, you can just go to the below page.
 
-[Amazon Simple Storage Service (S3)](./standalone_yaml_configurations/amazon_s3.md)
+[Amazon Simple Storage Service (S3)](/resources/stacks/flare/standalone/standalone_yaml_configurations/amazon_s3/)
 
 ### **NoSQL Data Source**
 
@@ -70,7 +70,7 @@ Amazon Simple Storage Service (S3) is an object storage service. To know more ab
 
 Elasticsearch is an open-source, document-oriented, NoSQL database. To know more about Flare Standalone YAML configuration for Elasticsearch, you can go to the below page.
 
-[Elasticsearch](./standalone_yaml_configurations/elasticsearch.md)
+[Elasticsearch](/resources/stacks/flare/standalone/standalone_yaml_configurations/elasticsearch/)
 
 ### **Streaming Data Sources**
 
@@ -80,19 +80,19 @@ Flare Standalone supports Kafka, Pulsar, and Eventhub Streaming data sources. Pl
 
 Apache Kafka is an open-source distributed event streaming platform. To know more about Flare Standalone YAML configuration for Kafka data source, you can just go to the below page.
 
-[Kafka](./standalone_yaml_configurations/kafka.md)
+[Kafka](/resources/stacks/flare/standalone/standalone_yaml_configurations/kafka/)
 
 #### **Pulsar**
 
 Apache Pulsar is a cloud-native, distributed, open-source pub-sub messaging and streaming platform. If you would like to learn more about Flare Standalone YAML configuration for Pulsar, you can go to the page below.
 
-[Pulsar](./standalone_yaml_configurations/pulsar.md)
+[Pulsar](/resources/stacks/flare/standalone/standalone_yaml_configurations/pulsar/)
 
 #### **Eventhub**
 
 Azure Event Hubs is a big data streaming platform and event ingestion service. To know more about Flare Standalone YAML configuration for Eventhub data sources, you can just go to the below page.
 
-[EventHub](./standalone_yaml_configurations/eventhub.md)
+[EventHub](/resources/stacks/flare/standalone/standalone_yaml_configurations/eventhub/)
 
 ### **Warehouse Data Sources**
 
@@ -102,19 +102,19 @@ Among warehouses, Flare Standalone currently supports Snowflake, Amazon Redshift
 
 Amazon Redshift is a fully managed petabyte-scale Cloud-based Data Warehouse service designed by Amazon to handle extensive data. To know more about Flare Standalone YAML configuration for the Redshift data source, you can just go to the below page.
 
-[Redshift](./standalone_yaml_configurations/amazon_redshift.md)
+[Redshift](/resources/stacks/flare/standalone/standalone_yaml_configurations/amazon_redshift/)
 
 #### **Snowflake**
 
 Snowflake is a data-warehousing platform for creating big data products. To know more about Flare Standalone YAML configuration for Snowflake data source, you can just go to the below page.
 
-[Snowflake](./standalone_yaml_configurations/snowflake.md)
+[Snowflake](/resources/stacks/flare/standalone/standalone_yaml_configurations/snowflake/)
 
 #### **Bigquery**
 
 Google BigQuery is a Cloud-based Data Warehouse that offers a big data analytic web service for processing large datasets over petabytes of data. You can go to the page below to learn more about Flare Standalone configuration for Bigquery data sources.
 
-[Bigquery](./standalone_yaml_configurations/google_bigquery.md)
+[Bigquery](/resources/stacks/flare/standalone/standalone_yaml_configurations/google_bigquery/)
 
 ### **JDBC Data Sources**
 
@@ -124,10 +124,10 @@ Among the JDBC-supported data sources, Standalone currently supports MySQL and P
 
 MySQL is an open-source database. To know more about Flare Standalone YAML configuration for MySQL Data Source, you can go to the below page.
 
-[MySQL](./standalone_yaml_configurations/mysql.md)
+[MySQL](/resources/stacks/flare/standalone/standalone_yaml_configurations/mysql/)
 
 #### **Postgres**
 
 Postgres is a robust, open-source relational database. You can go to the page below to learn more about Standalone configuration for Postgres Data Source.
 
-[Postgres](./standalone_yaml_configurations/postgres.md)
+[Postgres](/resources/stacks/flare/standalone/standalone_yaml_configurations/postgres/)

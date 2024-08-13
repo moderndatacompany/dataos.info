@@ -95,9 +95,10 @@ dataos-ctl dataset -a dataos://fastbase:default/${{topic-name}}  get
 
 Messages in Pulsar are published to topics and organized in a three-level hierarchy structure.
 
-![Pulsar Hierarchy](/resources/depotfastbase/hierarchy.png)
-
-<center><i>Three Level Hierarchy Structure in Pulsar</i></center>
+<div style="text-align: center;">
+  <img src="/resources/depot/fastbase/hierarchy.png" alt="Pulsar Hierarchy" style="border:1px solid black; width: 90%; height: auto;">
+  <figcaption><i>Three Level Hierarchy Structure in Pulsar</i></figcaption>
+</div>
 
 - One `tenant` represents a specific business unit or a product line. Topics created under a `tenant` share the same business context that is distinct from others.
 - Within one `tenant`, topics having similar behavioral characteristics and can be further grouped into smaller administrative units called `namespace`. Different policies such as message retention or expiry policy, can be set either at the `namespace` level or at an individual `topic` level. Policies set at the `namespace` level will apply to all topics under the `namespace`.

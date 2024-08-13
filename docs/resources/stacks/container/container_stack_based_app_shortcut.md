@@ -120,14 +120,11 @@ service:
 
 Once you've successfully applied the YAML, your app icon will appear in the home page of the environment along with other apps as shown in the screenshot below.
 
-<center>
+<div style="text-align: center;">
+  <img src="/resources/stacks/container/container_stack_based_app_shortcut/container_stack_based_app_shortcut.png" alt="Container Stack based App Shortcut" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>Container Stack application icon on DataOS Home Page</i></figcaption>
+</div>
 
-![Container Stack based App Shortcut](/resources/stacks/container/container_stack_based_app_shortcut/container_stack_based_app_shortcut.png)
-
-
-<i> Container Stack application icon on DataOS Home Page </i>
-
-</center>
 
 ## Attributes of `appDetailSpec`
 

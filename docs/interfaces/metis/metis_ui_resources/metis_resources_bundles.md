@@ -5,8 +5,11 @@
 
 Metis has integrated "Bundle" as a "Resource" type for storing metadata related to the collection of Resources deployed as part of a bundle. On selecting **Bundle,** the following information will appear on the screen:
 
-![bundles.png](metis_resources_bundles/bundles.png)
-<figcaption align = "center"> List of bundles </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_bundles/bundles.png" alt="List of bundles" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>List of bundles</figcaption>
+</div>
+
 
 ## Filter pane
 
@@ -45,8 +48,11 @@ Each bundle resource in the list will have a Card view that displays the followi
 
 In the card view, click anywhere except the resource name to get the overview.
 
-![bundle_overview.png](metis_resources_bundles/bundle_overview.png)
-<figcaption align = "center"> Quick information  </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_bundles/bundle_overview.png" alt="Quick information" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Quick information</figcaption>
+</div>
+
 
 This includes the following quick reference information:
 
@@ -63,8 +69,11 @@ This includes the following quick reference information:
 
 In the Result or Overview pane, click on the name of the Bundle to open the Details page, which includes:
 
-![bundle_details.png](/interfaces/metis/metis_ui_resources/metis_resources_bundles/bundle_details.png)
-<figcaption align = "center"> Comprehensive details  </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_bundles/bundle_details.png" alt="Comprehensive details" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Comprehensive details</figcaption>
+</div>
+
 
 ### **Bundle Information**
 
@@ -107,7 +116,10 @@ The subsequent tabs will provide you with more detailed information, as explaine
 
 A Directed Acyclic Graph (DAG) is a conceptual representation of a sequence of Resources. In a DAG, these resources are deployed in the order of their dependencies.
 
-![bundle_resources.png](metis_resources_bundles/bundle_resources.png)
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_bundles/bundle_resources.png" alt="Bundle resources" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Bundle resources</figcaption>
+</div>
 
 **List**
 

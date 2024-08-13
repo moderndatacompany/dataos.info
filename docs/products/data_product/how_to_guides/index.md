@@ -5,7 +5,7 @@ To know more about each phase, please explore below sections.
 
 ## Design
 
-The Design phase of Data Product life-cycle is pivotal in aligning business objectives with actionable solutions. It begins with a comprehensive understanding of business goals and use cases, forming the basis for developing a robust solution architecture. To know more in detail, please refer to [How to Design a Data Product](/products/data_product/how_to_guides/design/).
+The Design phase of the Data Product life-cycle is pivotal in aligning business objectives with actionable solutions. It begins with a comprehensive understanding of business goals and use cases, forming the basis for developing a robust solution architecture. DataOS resources required to design a Data Product are [Instance Secret](/resources/instance_secret/), [Depot](/resources/depot/), [Cluster](/resources/cluster/), and [Stacks](/resources/stacks/). DataOS also provides interfaces that help to design the Data Product such as [Data Product Hub](/interfaces/data_product_hub) where you can explore existing Data Products, [Workbench](/interfaces/workbench) to query your data source without moving the data, and [Metis](/interfaces/metis) to get insight about the data. To know more in detail, please refer to  [How to Design a Data Product](/products/data_product/how_to_guides/design/).
 
 ## Build
 

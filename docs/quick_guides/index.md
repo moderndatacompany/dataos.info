@@ -32,9 +32,9 @@ Learn how to explore and analyze data using the Workbench component of DataOS. D
 
 </div>
 
-## :interfaces-lens: Using Lens to Access a Model
+## :interfaces-lens: Using Data Modeling Layer
 
-Learn how to examine and experiment with logical models using the Lens component of DataOS. Lens will help you to understand data relationships and conduct experiments to derive insights from the data.
+Learn how to examine and experiment with logical models, the Lens component of DataOS. Lens will help you to understand data relationships and conduct experiments to derive insights from the data.
 
 <div class= "grid cards" markdown>
 
@@ -56,3 +56,14 @@ Learn how to utilize the Scanner stack within DataOS to extract metadata from a 
      
 </div>
 
+## :material-cable-data: Creating ETL Pipelines
+
+Learn to create ETL pipelines tailored for both batch and real time data processing. DataOS provides necessary processing frameworks to efficiently extract, process and load data.
+
+<div class= "grid cards" markdown>
+
+-   [Batch Data Processing using Flare Stack](/quick_guides/creating_etl_pipelines/flare_job/)
+
+-   [Store Query Results as Dataset with Flare](/quick_guides/creating_etl_pipelines/query_as_input_flare/)
+     
+</div>

@@ -12,7 +12,7 @@ AS query
 
 ## Description
 
-Create a new table containing the result of a [SELECT](./select.md) query. Use [CREATE TABLE](./create_table.md) to create an empty table.
+Create a new table containing the result of a [SELECT](/interfaces/workbench/sql_syntaxes/select/) query. Use [CREATE TABLE](/interfaces/workbench/sql_syntaxes/create_table/) to create an empty table.
 
 The optional `IF NOT EXISTS` clause causes the error to be suppressed if the table already exists.
 
@@ -65,6 +65,7 @@ WITH NO DATA
 
 ## See also
 
-[CREATE TABLE](./create_table.md) 
+[CREATE TABLE](/interfaces/workbench/sql_syntaxes/create_table/) 
 
-[SELECT](./select.md)
+[SELECT](/interfaces/workbench/sql_syntaxes/select/)
+

@@ -6,9 +6,13 @@ We'll introduce the concept of scoping, which can be accessed via the **Scoping*
   <img src="/interfaces/superset/dashboard_filtering/scoping/Untitled%20(10).png" alt="Your Image Description" />
 </p>
 
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/scoping/Untitled%20(10).png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
+
 To access the **Scoping** tab, navigate to the Filter Bar on your dashboard and choose "Add/Edit Filters". Within the Filters window, select the filter you wish to adjust the scoping for, and then click on the **Scoping** tab.
 
-To change the scoping of a **Cross Filter,** please see [Cross-filtering](./cross_filtering.md).
+To change the scoping of a **Cross Filter,** please see [Cross-filtering](/interfaces/superset/dashboard_filtering/cross_filtering/).
 
 ## **Scoping a Filter**
 
@@ -31,6 +35,10 @@ This default scoping can then be modified by accessing the **Scoping** tab.
   <img src="/interfaces/superset/dashboard_filtering/scoping/Untitled%20(11).png" alt="Your Image Description" />
 </p>
 
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/scoping/Untitled%20(11).png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
+
 To specify individual charts that can be filtered, choose **Apply to specific panels**.
 
 All charts and tabs within the dashboard are displayed in a hierarchical outline format, with a checkbox assigned to each one.
@@ -43,3 +51,7 @@ To prevent a chart from being filtered, simply deselect the corresponding checkb
 <p align="center">
   <img src="/interfaces/superset/dashboard_filtering/scoping/Untitled%20(12).png" alt="Your Image Description" />
 </p>
+
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/scoping/Untitled%20(12).png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>

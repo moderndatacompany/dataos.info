@@ -18,4 +18,4 @@ workflow:
         stack: scanner:2.0
         compute: runnable-default
         stackSpec:
-          depot: salesbq # depot name
+          depot: bigquery # depot name
