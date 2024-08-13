@@ -352,15 +352,22 @@ nav:
           - quick_guides/first_query/index.md
         - Arranging and Transforming data with Pivot: 
           - quick_guides/eda_pivot/index.md
-        - Writing Comlex Queries: 
+        - Writing Complex Queries: 
           - quick_guides/sql_query_studio/index.md
-        - Querying diverse data sources: 
+        - Querying Diverse Data sources: 
           - quick_guides/query_diverse_data_source/index.md
-      - Access a Data Model using Lens:
+      - Using Data Modeling Layer:
         - Creating a Lens: 
           - quick_guides/create_lens/index.md
         - Using a Lens: 
           - quick_guides/use_lens/index.md
         - Creating Dashboard with LQL: 
           - quick_guides/create_dashboard_lql/index.md
+      - Scanning Metadata: quick_guides/scan_metadata/index.md
+      - Creating ETL Pipelines:
+        - Batch Data Processing using Flare:
+          - quick_guides/creating_etl_pipelines/flare_job/index.md
+        - Storing Query Results as Dataset with Flare:
+          - quick_guides/creating_etl_pipelines/query_as_input_flare/index.md
+
     - Videos: videos/index.md
