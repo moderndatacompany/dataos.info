@@ -105,22 +105,23 @@ The manifest YAML file is a comprehensive configuration for setting up and runni
     
 4. **Stack Specification**: Describes the inputs, outputs, and sequence of data transformation steps, including SQL queries and functions.
     
-    a. **Input Source**
+    a. **Input Source(s)**
+
         ```yaml
-        stackSpec:         
-                job:            
-                    explain: true
-                    logLevel: INFO            
-                    inputs:                                
-                    - name: customers_data                                                                                            
-                        dataset: dataos://thirdparty01:sports_data/customers/
-                        format: CSV
-                        options:
-                        inferSchema: true
+          stackSpec:         
+                  job:            
+                      explain: true
+                      logLevel: INFO            
+                      inputs:                                
+                      - name: customers_data                                                                                            
+                          dataset: dataos://thirdparty01:sports_data/customers/
+                          format: CSV
+                          options:
+                          inferSchema: true
         ```
     b. **Transformation Steps**
         
-    ```yaml
+      ```yaml  
         steps:              
           - sequence:                  
             - name: customer                          
@@ -148,19 +149,20 @@ The manifest YAML file is a comprehensive configuration for setting up and runni
                     - name: any_date 
                     column: birth_date
                     asColumn: birth_date 
-        ```
+      ```
     c. **Output Destination**
-        ```yaml  
-            outputs:              
-                - name: customer
-                dataset: dataos://icebase:sports/customers?acl=rw
-                format: Iceberg
-                title: sports_data
-                description: this dataset contains customer data 
-                tags:                                                                     
-                    - customer
-                options:                  
-                    saveMode: overwrite
+
+        ```yaml 
+          outputs:              
+              - name: customer
+              dataset: dataos://icebase:sports/customers?acl=rw
+              format: Iceberg
+              title: sports_data
+              description: this dataset contains customer data 
+              tags:                                                                     
+                  - customer
+              options:                  
+                  saveMode: overwrite
         ```
     
 <details><summary>Here is the complete manifest file.</summary>
