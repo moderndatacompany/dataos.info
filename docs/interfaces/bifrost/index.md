@@ -95,13 +95,6 @@ To create a new Tag-Namespace Open Bifrost navigate to Heimdall Primitives
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/atlas/atlas_homepage.png" alt="Atlas interface" style="width:60rem; border:2px solid black;">
-    <figcaption><i>Atlas interface</i></figcaption>
-  </div>
-</center>
-
-<center>
-  <div style="text-align: center;">
     <img src="/interfaces/bifrost/tag_namespace.png" alt="Tag Namespace">
     <figcaption><i>  Users will be directed to a page where all existing Tag-Namespaces are listed.</i></figcaption>
   </div>
@@ -116,7 +109,7 @@ To create a new Tag-Namespace Open Bifrost navigate to Heimdall Primitives
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/bifrost/tag_namespace_config.png" alt="Tag Namespace Configuration" style="width: 60rem; border: 1px solid black;">
+    <img src="/interfaces/bifrost/tag_namespace_config.png" alt="Tag Namespace Configuration" style="border: 1px solid black; width: 80%, height: auto; ">
   </div>
 </center>
 
