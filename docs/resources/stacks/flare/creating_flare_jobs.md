@@ -4,7 +4,9 @@
 
 DataOS uses Flare workflows to carry out large-scale data transformation, ingestion, profiling, syndication, and even a combination of these tasks.
 
-![diagram 03.jpg](/resources/stacks/flare/basic_concepts/diagram_03.jpg)
+<div style="text-align: center;">
+  <img src="/resources/stacks/flare/basic_concepts/diagram_03.jpg" alt="diagram 03.jpg" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 Flare is a declarative stack that can process large-scale data processing workflows using sequential YAML. On the other hand, a workflow is a primitive/Resource within DataOS that runs a sequence of jobs in a specific order. A workflow is a DAG (Directed Acyclic Graph) of jobs. To learn more about workflows, click [here](/resources/workflow/). 
 

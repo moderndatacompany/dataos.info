@@ -9,8 +9,11 @@ Metis has integrated "Compute" as a "Resource” type entity for storing metadat
 
 On selecting **Computes,** the following information will appear on the screen:
 
-![computes.png](metis_resources_computes/computes.png)
-<figcaption align = "center"> List of compute resources </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_computes/computes.png" alt="List of compute resources" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>List of compute resources</figcaption>
+</div>
+
 
 ## Filter pane
 
@@ -49,8 +52,11 @@ Each compute resource in the list will have a Card view that displays the follow
 
 In the card view, click anywhere except the resource name to get the overview.
 
-![compute_overview.png](metis_resources_computes/compute_overview.png)
-<figcaption align = "center"> Quick information  </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_computes/compute_overview.png" alt="Quick information" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Quick information</figcaption>
+</div>
+
 
 This includes the following quick reference information:
 
@@ -67,8 +73,11 @@ This includes the following quick reference information:
 
 In the Result or Overview pane, click on the name of the Compute to open the Resource Details page, which includes:
 
-![compute_details.png](metis_resources_computes/compute_details.png)
-<figcaption align = "center"> Comprehensive details </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_computes/compute_details.png" alt="Comprehensive details" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Comprehensive details</figcaption>
+</div>
+
 
 ### **Compute Information**
 

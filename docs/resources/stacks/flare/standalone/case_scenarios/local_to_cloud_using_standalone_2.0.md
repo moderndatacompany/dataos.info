@@ -43,7 +43,7 @@ dataos-ctl user get
 
 ```
 
-<aside>
+<aside class="callout">
 🗣️ In the case where you don’t have the `pulsar-admin` tag contact the system administrator.
 
 </aside>
@@ -67,7 +67,10 @@ Flare Standalone uses Scala Programming Language. In case you don’t have any i
 1. Extract the downloaded `flare-standalone-2.zip` file. It contains only one folder by the name `standalone`. Open the code editor inside the `flare-standalone-2` folder.
 2. Now the scenario looks like the image below, where you have opened the code-editor inside the `flare-standalone-2` folder which contains the `standalone` folder which further contains one folder by the name `default` directory having the `transactions` data and another file by the name `pulsar-write.yaml`
 
-![Untitled](/resources/stacks/flare/standalone/case_scenarios/local_to_cloud_using_standalone_2.0/untitled.png)
+<div style="text-align: center;">
+  <img src="/resources/stacks/flare/standalone/case_scenarios/local_to_local_using_standalone_2.0/untitled.png" alt="Untitled" style="border:1px solid black; width: 80%; height: auto;">
+</div>
+
 
 ### **Adding details to the Flare Standalone Workflow YAML**
 
@@ -163,14 +166,17 @@ dataos-ctl develop start -s flare:3.0 -i rubiklabs/flare3:6.0.93 -f standalone/p
 > **Note:** The path of `pulsar-write.yaml` and `standalone` directory could either be absolute or relative path. The port number by default is set at 14040, but if you have a job already running on 14040 you can configure it to a different port e.g. 14044.
 > 
 
-<aside>
-🗣️ **Note:** In case when you don’t have the above-mentioned version or image of the flare stack downloaded, it will download it first from the docker registry, and then the execution will start. If you have it installed already, it will jump onto running the job directly. If you have an Apple M1/M2 Chip system, use the `rubiklabs/flare3:6.0.93-xp.01`  docker image.
+<aside class="callout">
+🗣️ <b>Note:</b> In case when you don’t have the above-mentioned version or image of the flare stack downloaded, it will download it first from the docker registry, and then the execution will start. If you have it installed already, it will jump onto running the job directly. If you have an Apple M1/M2 Chip system, use the `rubiklabs/flare3:6.0.93-xp.01`  docker image.
 
 </aside>
 
 1. Since we have exposed the Spark Web UI on port 14044, we can type [localhost:14042](http://localhost:14042) in any web browser to check the status of the Job
 
-![Untitled](/resources/stacks/flare/standalone/case_scenarios/local_to_cloud_using_standalone_2.0/untitled_1.png)
+<div style="text-align: center;">
+  <img src="/resources/stacks/flare/standalone/case_scenarios/local_to_cloud_using_standalone_2.0/untitled_1.png" alt="Flare standalone" style="border:1px solid black; width: 80%; height: auto;">
+</div>
+
 
 To know more about the various sections of the Spark UI and what each one of them signifies navigate to the [link](/resources/stacks/flare/optimizations/inspecting_the_spark_ui)
 

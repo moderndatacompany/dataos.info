@@ -43,8 +43,11 @@ Only the following column data types are supported
 
 Initial Schema observed in Workbench
 
+<div style="text-align: center;">
+  <img src="/resources/lakehouse/command_reference/case_scenario_schema_evolution/1.png" alt="Schema Evolution 1" style="width: 60%; height: auto;">
+</div>
 
-![Schema Evolution 1](./case_scenario_schema_evolution/1.png)
+<!-- ![Schema Evolution 1](./case_scenario_schema_evolution/1.png) -->
 
 Let's add a new column called `new1` into the city dataset with a type `string`. Execute the following code in the terminal.
 
@@ -77,8 +80,9 @@ INFO[0001] 📂 set metadata...completed
 
 Observe the change in the workbench; a new field by the name `new1` is added
 
-
-![Schema Evolution 2](./case_scenario_schema_evolution/2.png)
+<div style="text-align: center;">
+  <img src="/resources/lakehouse/command_reference/case_scenario_schema_evolution/2.png" alt="Schema Evolution 2" style="width: 50%; height: auto;">
+</div>
 
 ## Drop Field/Column
 
@@ -89,7 +93,11 @@ dataos-ctl dataset -a dataos://icebase:retail/city drop-field \
 -n ${{column-name}}
 ```
 
-![Schema Evolution 3](./case_scenario_schema_evolution/2.png)
+<div style="text-align: center;">
+  <img src="/resources/lakehouse/command_reference/case_scenario_schema_evolution/2.png" alt="Schema Evolution 2" style="width: 50%; height: auto;">
+</div>
+
+<!-- ![Schema Evolution 3](./case_scenario_schema_evolution/2.png) -->
 
 Let’s remove column `new1` from the city dataset. Execute the following code in the terminal
 
@@ -121,7 +129,11 @@ INFO[0001] 📂 set metadata...completed
 
 Observe the change in the workbench; the `new1` column is removed
 
-![Schema Evolution 4](./case_scenario_schema_evolution/1.png)
+<div style="text-align: center;">
+  <img src="/resources/lakehouse/command_reference/case_scenario_schema_evolution/1.png" alt="Schema Evolution 1" style="width: 50%; height: auto;">
+</div>
+
+<!-- ![Schema Evolution 4](./case_scenario_schema_evolution/1.png) -->
 
 ## Rename Field/Column
 
@@ -135,7 +147,11 @@ dataos-ctl dataset -a dataos://icebase:retail/city rename-field \
 
 Let’s rename the column `city_name` in the city dataset to `name`. For this following code needs to be executed -
 
-![Schema Evolution 5](./case_scenario_schema_evolution/4.png)
+<div style="text-align: center;">
+  <img src="/resources/lakehouse/command_reference/case_scenario_schema_evolution/4.png" alt="Schema Evolution 5" style="width: 50%; height: auto;">
+</div>
+
+<!-- ![Schema Evolution 5](./case_scenario_schema_evolution/4.png) -->
 
 ```shell
 dataos-ctl dataset -a dataos://icebase:retail/city rename-field \
@@ -166,7 +182,11 @@ INFO[0001] 📂 set metadata...completed
 
 The `city_name` column is renamed to `name`. As observed below
 
-![Schema Evolution 6](./case_scenario_schema_evolution/6.png)
+<div style="text-align: center;">
+  <img src="/resources/lakehouse/command_reference/case_scenario_schema_evolution/6.png" alt="Schema Evolution 6" style="width: 50%; height: auto;">
+</div>
+
+<!-- ![Schema Evolution 6](./case_scenario_schema_evolution/6.png) -->
 
 ## Update Field/Column
 
@@ -185,9 +205,11 @@ dataos-ctl dataset -a dataos://icebase:retail/city update-field \
 - Increasing the precision of `decimal` type
 >
 
+<div style="text-align: center;">
+  <img src="/resources/lakehouse/command_reference/case_scenario_schema_evolution/1.png" alt="Schema Evolution 1" style="width: 50%; height: auto;">
+</div>
 
-
-![Schema Evolution 1](./case_scenario_schema_evolution/1.png)
+<!-- ![Schema Evolution 1](./case_scenario_schema_evolution/1.png) -->
 
 Let’s update the `zip_code` column type from `INTEGER (integer)` to `BIGINT (long)`. The code is as follows -
 
@@ -220,5 +242,8 @@ INFO[0001] 📂 set metadata...completed
 
 The type of `zip_code` is changed from `INTEGER (integer)` to `BIGINT (long)`
 
+<div style="text-align: center;">
+  <img src="/resources/lakehouse/command_reference/case_scenario_schema_evolution/8.png" alt="Untitled 8" style="width: 50%; height: auto;">
+</div>
 
-![Untitled 8](./case_scenario_schema_evolution/8.png)
+<!-- ![Untitled 8](./case_scenario_schema_evolution/8.png) -->

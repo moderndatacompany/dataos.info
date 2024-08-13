@@ -7,8 +7,11 @@
 
 Metis has integrated "Depot" as a "Resource type" for storing metadata related to connecting data sources, Compute resources defined for the depots, connection secrets, and more. On selecting **Depots,** the following information will appear on the screen:
 
-![depots.png](metis_resources_depots/depots.png)
-<figcaption align = "center"> List of Depots  </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_depots/depots.png" alt="List of Depots" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>List of Depots</figcaption>
+</div>
+
 
 ## Filter pane
 
@@ -49,8 +52,11 @@ Each Depot in the list will feature a card view that displays the following info
 
 In the card view, click anywhere except the resource name to get the overview.
 
-![depot_overview.png](metis_resources_depots/depot_overview.png)
-<figcaption align = "center"> Quick information  </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_depots/depot_overview.png" alt="Quick information" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Quick information</figcaption>
+</div>
+
 
 | Attribute | Description |
 | --- | --- |
@@ -67,8 +73,11 @@ In the card view, click anywhere except the resource name to get the overview.
 
 In the Result or Overview pane, click on the name of the Depot to open the Resource Details page, which includes:
 
-![depots_details.png](metis_resources_depots/depots_details.png)
-<figcaption align = "center"> Comprehensive details  </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_depots/depots_details.png" alt="Comprehensive details" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Comprehensive details</figcaption>
+</div>
+
 
 ### **Depot Information**
 
@@ -123,8 +132,11 @@ This section offers comprehensive information regarding the depot's manifest. A 
 
 This section provides an overview of the depot's execution history. It offers a concise summary of past runs, allowing users to quickly access information about the depot's previous operations and performance. Click on the link to know more details.
 
-![depot_runtime.png](metis_resources_depots/depot_runtime.png)
-<figcaption align = "center"> Runtime for file based and blob storage depots </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_depots/depot_runtime.png" alt="Runtime for file based and blob storage depots" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Runtime for file based and blob storage depots</figcaption>
+</div>
+
 
 You can access the following:
 

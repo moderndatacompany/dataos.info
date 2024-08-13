@@ -7,8 +7,13 @@
 
 Metis has integrated "Worker" as a "Resource” type entity for storing metadata related to the long-running process within DataOS to perform specific tasks or computations. On selecting **Workers,** the following information will appear on the screen:
 
-![workers.png](metis_resources_workers/workers.png)
-<figcaption align = "center"> List of Workers </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_resources/metis_resources_workers/workers.png" alt="List of Workers" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>List of Workers</figcaption>
+  </div>
+</center>
+
 
 ## Filter pane
 
@@ -48,8 +53,13 @@ Each worker resource in the list will have a Card view that displays the followi
 
 In the card view, click anywhere except the resource name to get the overview.
 
-![workers_overview.png](metis_resources_workers/workers_overview.png)
-<figcaption align = "center"> Quick information  </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_resources/metis_resources_workers/workers_overview.png" alt="Quick information" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Quick information</figcaption>
+  </div>
+</center>
+
 
 This includes the following quick reference information:
 
@@ -66,8 +76,13 @@ This includes the following quick reference information:
 
 In the Result or Overview pane, click on the name of the Worker to open the Resource Details page, which includes:
 
-![workers_details.png](metis_resources_workers/workers_details.png)
-<figcaption align = "center"> Comprehensive details  </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_resources/metis_resources_workers/workers_details.png" alt="Comprehensive details" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Comprehensive details</figcaption>
+  </div>
+</center>
+
 
 ### Workers Information
 
@@ -108,8 +123,12 @@ A Directed Acyclic Graph (DAG) is a conceptual representation of a sequence of a
 
 Clicking on the **Input** will display the following details in the side pane:
 
-![Screen Shot 2023-09-18 at 1.37.27 PM.png](metis_resources_workers/Screen_Shot_2023-09-18_at_1.37.27_PM.png)
-<figcaption align = "center"> dag of activities </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_resources/metis_resources_workers/Screen_Shot_2023-09-18_at_1.37.27_PM.png" alt="Dag of activities" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Dag of activities</figcaption>
+  </div>
+</center>
 
 | Attribute | Description |
 | --- | --- |
@@ -131,8 +150,13 @@ Clicking on the **Input** will display the following details in the side pane:
 
 Clicking on the **Output** will display the following details in the side pane:
 
-![Screen Shot 2023-09-18 at 1.40.05 PM.png](metis_resources_workers/Screen_Shot_2023-09-18_at_1.40.05_PM.png)
-<figcaption align = "center"> Output details </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_resources/metis_resources_workers/Screen_Shot_2023-09-18_at_1.40.05_PM.png" alt="Output details" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Output details</figcaption>
+  </div>
+</center>
+
 
 | Attribute | Description |
 | --- | --- |
@@ -150,8 +174,13 @@ This space lists all activities, including tasks and conversations around the sp
 
 This section provides an overview of the Worker's execution history. It offers a concise summary of past runs, allowing users to quickly access information about the Worker's previous operations and performance.
 
-![workers_rt.png](metis_resources_workers/workers_rt.png)
-<figcaption align = "center">Run history  </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_resources/metis_resources_workers/workers_rt.png" alt="Run history" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Run history</figcaption>
+  </div>
+</center>
+
 
 You can further access:
 

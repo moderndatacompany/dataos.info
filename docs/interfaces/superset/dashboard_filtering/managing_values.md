@@ -34,21 +34,21 @@ Mark the checkbox, **Can select multiple values**, to enable the selection of mu
 
 For instance, let's create a **Value** filter utilizing the **item_type** column. By activating **Can select multiple values**, we can specify multiple default values in the **Filter has default value** field — in this scenario, we'll opt for the "beer" and "liqueur" item types.
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/managing_values/Untitled%20(10).png" alt="Your Image Description" />
-</p>
-
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/managing_values/Untitled%20(10).png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 The configuration would look as follows:
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/managing_values/Untitled%20(11).png" alt="Your Image Description" />
-</p>
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/managing_values/Untitled%20(11).png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
+
 and the filter, "Item Type" would feature the two pre-selected default values:
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/managing_values/Untitled%20(12).png" alt="Your Image Description" />
-</p>
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/managing_values/Untitled%20(12).png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 ---
 
@@ -74,15 +74,16 @@ An exemplary scenario involves employing a dataset with frequently changing valu
 
 To witness this in operation, try enabling this option for the **Select Item** filter.
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/managing_values/Untitled%20(13).png" alt="Your Image Description" />
-</p>
+
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/managing_values/Untitled%20(13).png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
+
 The first data point in the item_type column is "1800 Taquila”, after saving, you'll notice that the **1800 Taquila** value is automatically pre-selected as a default value for the **Select Item**  filter.
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/managing_values/Untitled%20(14).png" alt="Your Image Description" />
-</p>
-
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/managing_values/Untitled%20(14).png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 
 ## **Dynamically Search All Filter Values**
@@ -91,9 +92,10 @@ The first data point in the item_type column is "1800 Taquila”, after saving, 
 
 This option facilitates dynamic searching when selecting a filter value, meaning that values matching the typed text will appear as selectable options.
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/managing_values/Untitled%20(15).png" alt="Your Image Description" />
-</p>
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/managing_values/Untitled%20(15).png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
+
 
 This advanced setting is particularly advantageous when dealing with extensive datasets. By default, each filter loads a maximum of 1,000 choices when the page is loaded. If your column contains more than 1,000 values, enabling **Dynamically search all filter values** supports large datasets and enhances the user-friendliness of the value selection process.
 
@@ -113,14 +115,15 @@ Instead of including filter values, the inverse selection option enables you to 
 
 To utilize this feature, navigate to the **Select Item** filter, and within the *Filter Settings* panel, select **Inverse selection**. Then, click **Save**.
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/managing_values/Untitled%20(16).png" alt="Your Image Description" />
-</p>
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/managing_values/Untitled%20(16).png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 Now let's observe it in action. In the example below, we have chosen the F1800 Tequila, Corona, and Modelo Item values — take note of the "No" circle-with-bar icon displayed next to the selected icons. Upon applying this filter, all Item values will be showcased on the dashboard, excluding the F1800 Tequila, Corona, and Modelo
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/managing_values/Untitled%20(17).png" alt="Your Image Description" />
-</p>
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/managing_values/Untitled%20(17).png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
+
 
 To undo a selected value, simply re-select it — the exclusion action works as a toggle.

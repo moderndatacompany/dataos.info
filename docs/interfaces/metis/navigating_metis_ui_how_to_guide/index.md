@@ -6,8 +6,13 @@ Metis is a one-stop solution for data discoverability and managing all aspects o
 
 The homepage of Metis UI showcases a comprehensive overview of activities related to your data entities (Data products, data assets and DataOS Resources). Users can navigate through and interact with these entities for further exploration and management.
 
-![Metis UI - landing page](/interfaces/metis/navigating_metis_ui_how_to_guide/landing_page.png)
-<figcaption align = "center">Metis UI - landing page  </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/navigating_metis_ui_how_to_guide/landing_page.png" alt="Metis UI - landing page" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Metis UI - landing page</figcaption>
+  </div>
+</center>
+
 
 This document will cover the essential details about how to perform various functionalities, such as adding a glossary, starting conversations for collaboration, and many more.
 
@@ -30,15 +35,25 @@ Here are some scenarios where using these terms can be powerful:
 
 1. On Metis UI, click on **Govern →Tag Groups**. 
     
-    ![tag_groups.png](/interfaces/metis/navigating_metis_ui_how_to_guide/tag_groups.png)
-    <figcaption align = "center"> Tag groups </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/navigating_metis_ui_how_to_guide/tag_groups.png" alt="Tag groups" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Tag groups</figcaption>
+  </div>
+</center>
+
     
 2. Clicking on the + Add Tag will open the screen to add a new tag group and its description.
     
      
     
-    ![new_tag_group.png](/interfaces/metis/navigating_metis_ui_how_to_guide/new_tag_group.png)
-    <figcaption align = "center"> New tag group creation </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/navigating_metis_ui_how_to_guide/new_tag_group.png" alt="New tag group creation" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>New tag group creation</figcaption>
+  </div>
+</center>
+
     
 3. Enable **Mutually Exclusive** Property to designate tag groups as mutually exclusive. When a tag group is marked as mutually exclusive, it implies that a metadata entity can be tagged to belong to one of the available tags defined in the group.  To learn more, refer to [Mutually Exclusive Tag Groups](/interfaces/metis/metis_features/#mutually-exclusive-tag-groups). 
 4. Add new tags with proper descriptions for the newly added category and save them. Now, these tags can be added to the data entities.
@@ -53,9 +68,13 @@ Here are some scenarios where using these terms can be powerful:
 1. On Metis UI, click on **Govern →** **Glossary**.
 2. Clicking on + Add Glossary will open up the following form:
     
-    ![Adding glossary](/interfaces/metis/navigating_metis_ui_how_to_guide/add_glossary.png)
-    
-    <figcaption align = "center"> Adding glossary </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/navigating_metis_ui_how_to_guide/add_glossary.png" alt="Adding glossary" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Adding glossary</figcaption>
+  </div>
+</center>
+
     
 3. Enable Mutually Exclusive Property to designate the glossary as mutually exclusive. When a Glossary is marked as mutually exclusive, it implies that a metadata entity can be tagged to any of the single glossary terms.  It can not have two or more glossary terms attached to it simultaneously.
 4. Add owners and reviewers and save it. Your glossary will appear on the left pane.
@@ -64,9 +83,13 @@ Here are some scenarios where using these terms can be powerful:
 1. To create a glossary term, select the newly added glossary on the left pane and then select the **Add term** button on the page.
 2. Give this new term a name, which must be unique in the glossary. 
     
-    ![Adding references and synonyms for the glossary term ](/interfaces/metis/navigating_metis_ui_how_to_guide/add_glossary_term.png)
-    
-    <figcaption align = "center"> Adding references and synonyms for the glossary term  </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/navigating_metis_ui_how_to_guide/add_glossary_term.png" alt="Adding references and synonyms for the glossary term" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Adding references and synonyms for the glossary term</figcaption>
+  </div>
+</center>
+
     
     > Metis enables you to add rich formatting to glossary term. For example, you can add `bold`, `underline`, or `italic` formatting to the text. You can also create tables, bulleted lists, or hyperlinks to external resources.
     > 
@@ -87,8 +110,13 @@ To import a glossary into Metis:
     
 2. Click on the **⋮** icon and **Export** the glossary file. If you have glossary terms in your Glossary, the same will be exported as a CSV file. If there are no terms in the Glossary, then a blank CSV template will be downloaded.
     
-    ![image](/interfaces/metis/navigating_metis_ui_how_to_guide/glossary_add_term_option.png)
-    <figcaption align = "center"> Glossary options </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/navigating_metis_ui_how_to_guide/glossary_add_term_option.png" alt="Glossary options" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Glossary options</figcaption>
+  </div>
+</center>
+
     
 3. Once you have the template, you can fill in the following details:
     - **parent** - The parent column helps to define the hierarchy of the glossary terms. If you leave this field blank, the Term will be created at the root level. If you want to create a hierarchy of Glossary Terms, the parent details must be entered as per the hierarchy. For example, from the Glossary level, `Banking.Account.Savings Account`
@@ -103,11 +131,22 @@ To import a glossary into Metis:
 4. Once you have added the values for the above fields in CSV you can upload it via **Import** option. 
     
        
-    ![Untitled](/interfaces/metis/navigating_metis_ui_how_to_guide/glossary_upload_option.png)
-    <figcaption align = "center">Glossary bulk upload option</figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/navigating_metis_ui_how_to_guide/glossary_upload_option.png" alt="Glossary bulk upload option" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Glossary bulk upload option</figcaption>
+  </div>
+</center>
+
 5. Choose the file to be uploaded and the Glossary will be populated.
-    ![Untitled](/interfaces/metis/navigating_metis_ui_how_to_guide/glossary_upload.png)
-    <figcaption align = "center"> Upload CSV file </figcaption>
+
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/navigating_metis_ui_how_to_guide/glossary_upload.png" alt="Upload CSV file" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Upload CSV file</figcaption>
+  </div>
+</center>
+
 
 
 <aside class="callout">
@@ -118,17 +157,25 @@ To import a glossary into Metis:
 
 On the DataOS entity detailspage, click on the highlighted Edit icon. Choose a tag from a list of tags defined in Metis for various categories.
 
-![Adding tags to data asset](/interfaces/metis/navigating_metis_ui_how_to_guide/add_tags.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/navigating_metis_ui_how_to_guide/add_tags.png" alt="Adding tags to data asset" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Adding tags to data asset</figcaption>
+  </div>
+</center>
 
-<figcaption align = "center"> Adding tags to data asset </figcaption>
 
 ### **How to Add Tag Tiers**
 
 On the DataOS entity detailspage, click on the edit icon next to the Tag Tier.
 
-![Edit tag tier](/interfaces/metis/navigating_metis_ui_how_to_guide/add_tier.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/navigating_metis_ui_how_to_guide/add_tier.png" alt="Edit tag tier" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Edit tag tier</figcaption>
+  </div>
+</center>
 
-<figcaption align = "center"> Edit tag tier </figcaption>
 
 ## How to Collaborate with Team Members
 
@@ -140,14 +187,23 @@ You can create and reply to entire conversation threads around various activitie
 
 1. On the entity DataOS entity detailspage, click on the highlighted icon for conversations. The number on it denotes the messages in the conversation thread. The right pane will show the conversations.
     
-    ![Conversations around data asset](/interfaces/metis/navigating_metis_ui_how_to_guide/add_conversation.png)
-    
-    <figcaption align = "center"> Conversations around data asset </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/navigating_metis_ui_how_to_guide/add_conversation.png" alt="Conversations around data asset" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Conversations around data asset</figcaption>
+  </div>
+</center>
+
     
 2. A side pane will open.
     
-    ![conversation.png](/interfaces/metis/navigating_metis_ui_how_to_guide/conversation.png)
-    <figcaption align = "center"> Conversation </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/navigating_metis_ui_how_to_guide/conversation.png" alt="Conversation" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Conversation</figcaption>
+  </div>
+</center>
+
     
 3. Clicking on the **+** sign will open the editor for the new conversation.
     
@@ -158,10 +214,13 @@ You can create and reply to entire conversation threads around various activitie
     
 4. You can also add conversation threads to the columns of your dataset.
     
-    ![Conversation thread on the column](/interfaces/metis/navigating_metis_ui_how_to_guide/conversations_column.png)
-    
-    <figcaption align = "center"> Conversation thread on the column </figcaption>
-    
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/navigating_metis_ui_how_to_guide/conversations_column.png" alt="Conversation thread on the column" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Conversation thread on the column</figcaption>
+  </div>
+</center>
+
 
 ### **Create Announcements**
 
@@ -171,16 +230,25 @@ These announcements can be scheduled with a start date and an end date. All the 
 
 1. On the DataOS entity details page, click on the vertical three-dot menu to get the option to add an announcement for the asset.
 
-![Creating announcements to inform team members about data asset updates](/interfaces/metis/navigating_metis_ui_how_to_guide/announcements.png)
-<figcaption align = "center">Creating announcements to inform team members about updates  </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/navigating_metis_ui_how_to_guide/announcements.png" alt="Creating announcements to inform team members about data asset updates" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Creating announcements to inform team members about updates</figcaption>
+  </div>
+</center>
+
 
 
 1. Clicking on the **Add Announcements** button will open the dialog box to enter the details, such as title, description, start and end date.
 2. On Metis UI, under ‘All Activity’, users can view the announcements. Users can add reactions using emojis and reply to the announcement.
 
-![Announcements in user’s activity](/interfaces/metis/navigating_metis_ui_how_to_guide/announcement_created.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/navigating_metis_ui_how_to_guide/announcement_created.png" alt="Announcements in user’s activity" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Announcements in user’s activity</figcaption>
+  </div>
+</center>
 
-<figcaption align = "center"> Announcements in user’s activity </figcaption>
 
 ### **Create Tasks for Team Members**
 
@@ -188,21 +256,35 @@ You can create tasks for requesting updates on data assets, such as creating tag
 
 1. On the DataOS entity detailspage, click on the highlighted icon to get the option to add a task.
     
-    ![Create task option](/interfaces/metis/navigating_metis_ui_how_to_guide/create_task_option.png)
-    
-    <figcaption align = "center">  </figcaption>Create task option
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/navigating_metis_ui_how_to_guide/create_task_option.png" alt="Create task option" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Create task option</figcaption>
+  </div>
+</center>
+
     
 2. Create the task and provide the description for it. You also need to assign team members by adding @ symbol. This task will appear in Activities for the assignee.
     
-    ![create_task.png](/interfaces/metis/navigating_metis_ui_how_to_guide/create_task.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/navigating_metis_ui_how_to_guide/create_task.png" alt="Create task" style="border:1px solid black; width: 80%; height: auto">
+  </div>
+</center>
+
     
 
 ## How to Manage Ownerships
 
 On the DataOS entity detailspage, click on the edit icon next to **No Owner.** You can add the team or individual person as an owner of the data asset.
 
-![add_owner.png](/interfaces/metis/navigating_metis_ui_how_to_guide/add_owner.png)
-<figcaption align = "center">Adding owner  </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/navigating_metis_ui_how_to_guide/add_owner.png" alt="Adding owner" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Adding owner</figcaption>
+  </div>
+</center>
+
 
 ## How to Create Roles and Policies
 
@@ -222,10 +304,13 @@ Roles can be assigned from the user profile on the Metis UI.
 1. On the Metis UI page, navigate to the **Settings** tab. 
 2. Clicking on the **Users** in the left pane will show the list of users. Open the specific user’s profile. In the left pane, edit the roles given to the user. A drop-down list will show the configured roles to choose from.
     
-    ![Adding roles to the user](/interfaces/metis/navigating_metis_ui_how_to_guide/roleto_user.png)
-    
-    <figcaption align = "center"> Adding roles to the user </figcaption>
-    
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/navigating_metis_ui_how_to_guide/roleto_user.png" alt="Adding roles to the user" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Adding roles to the user</figcaption>
+  </div>
+</center>
+
 
 <aside class="callout">
 🗣 The Metis Admin role can be given from the Metis UI by a user with ‘Admin’ privileges. You can also contact the DataOS system administrator to assign you the ‘**Admin**’ role by adding the `roles:direct:metis` tag to your DataOS user profile.
@@ -254,11 +339,14 @@ On the DataOS entity detailspage, you will see the following fingerprinting data
 3. For each label, you will get an option to **accept** the label to tag the fingerprint to the column or **discard** the label.
 4. The confidence score reflects the system's degree of certainty that the identified label/classification is correct.
 5. Once you accept the label, it will be added as a tag to the column.
-    
-    ![Automatically identified columns](/interfaces/metis/navigating_metis_ui_how_to_guide/fingerprinting.png)
-    
-    <figcaption align = "center"> Automatically identified columns </figcaption>
-    
+
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/navigating_metis_ui_how_to_guide/fingerprinting.png" alt="Automatically identified columns" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Automatically identified columns</figcaption>
+  </div>
+</center>
+
 
 ## How to Visualize Data Quality Tests
 
@@ -268,16 +356,23 @@ You can view the list of quality tests (SLOs)created for the columns of your dat
 
 1. On the Metis UI page, click on **Govern > Quality**. You will see the list of test suits appeared on the screen.
 
-![Test suits ](/interfaces/metis/navigating_metis_ui_how_to_guide/testsuit_option.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/navigating_metis_ui_how_to_guide/testsuit_option.png" alt="Test suits" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Test suits</figcaption>
+  </div>
+</center>
 
-<figcaption align = "center"> Test suits  </figcaption>
 
 1. Select the test suit for which you want to see quality test results. The list shows the latest test run results for all the datasets and their columns. 
 2. Expand to see all the test results for a dataset column for the particular time period.
 
-![Test results for the dataset for a selected time period](/interfaces/metis/navigating_metis_ui_how_to_guide/test_cases.png)
-
-<figcaption align = "center"> Test results for the dataset for a selected time period </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/navigating_metis_ui_how_to_guide/test_cases.png" alt="Test results for the dataset for a selected time period" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Test results for the dataset for a selected time period</figcaption>
+  </div>
+</center>
 
 ### **Dataset View**
 
@@ -307,8 +402,13 @@ Metis allows users to define fine-grain notifications for alerts. You can select
 - **Email:**
     - For email alerts, provide configure settings for SMTP Server.
     
-    ![notifications.png](/interfaces/metis/navigating_metis_ui_how_to_guide/notifications.png)
-    <figcaption align = "center"> Configurations for mails </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/navigating_metis_ui_how_to_guide/notifications.png" alt="Configurations for mails" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Configurations for mails</figcaption>
+  </div>
+</center>
+
 
 <aside class="callout">
 🗣 Only users having Metis admin roles can configure the SMTP settings for sending emails.

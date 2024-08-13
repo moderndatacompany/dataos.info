@@ -138,4 +138,4 @@ ALTER TABLE hive.schema.test_table EXECUTE optimize(file_size_threshold => '10MB
 
 ## See also
 
-[CREATE TABLE](./create_table.md)
+[CREATE TABLE](/interfaces/workbench/sql_syntaxes/create_table/)

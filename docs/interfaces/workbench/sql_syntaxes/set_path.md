@@ -10,7 +10,7 @@ SET PATH path-element[, ...]
 
 Define a collection of paths to functions or table functions in specific catalogs and schemas for the current session.
 
-Each path-element uses a period-separated syntax to specify the catalog name and schema location `<catalog>.<schema>` of the function, or only the schema location `<schema>` in the current catalog. The current catalog is set with [**USE**](./use.md), or as part of a client tool connection. Catalog and schema must exist.
+Each path-element uses a period-separated syntax to specify the catalog name and schema location `<catalog>.<schema>` of the function, or only the schema location `<schema>` in the current catalog. The current catalog is set with [**USE**](/interfaces/workbench/sql_syntaxes/use/), or as part of a client tool connection. Catalog and schema must exist.
 
 ## Examples
 
@@ -38,4 +38,4 @@ FROM
 
 ## See also
 
-[USE](./use.md)
+[USE](/interfaces/workbench/sql_syntaxes/use/)
