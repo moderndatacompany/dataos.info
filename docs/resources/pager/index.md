@@ -442,8 +442,10 @@ When a Pager encounters errors, data developers can employ various tactics to di
 
     - Navigate to the Operations App, and switch to its Core Kernel Tab, within the Pods section you will find the Pager API Service pod. By clicking on it you check out the Pod Details, Pod YAML, Pod Logs, and Pod Usage.
 
-    ![Check Pager Service Logs](/resources/pager/operations_app_pager_service.png)
-<center><i>Pager Service pod logs</i></center>
+    <div style="text-align: center;">
+      <img src="/resources/pager/operations_app_pager_service.png" alt="Check Pager Service Logs" style="border:1px solid black; width: 80%; height: auto;">
+      <figcaption><i>Pager Service pod logs</i></figcaption>
+    </div>
 
     - Analyze the logs for any error messages or exceptions that might provide insights into the cause of the issue.
 
@@ -523,8 +525,10 @@ A Pager within DataOS operates by continuously monitoring the incident stream fo
 
 4. **Destination Delivery:** Depending on the configuration, the alert is delivered to the specified destination. For example, if the Pager is configured to send alerts via email, it will generate an email containing details of the incident and send it to the designated email addresses.
 
-![Working of a Pager](/resources/pager/working_of_a_pager.png)
-<center><i>Working of a Pager</i></center>
+<div style="text-align: center;">
+  <img src="/resources/pager/working_of_a_pager.png" alt="Working of a Pager" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>Working of a Pager</i></figcaption>
+</div>
 
 ## Pager recipes
 

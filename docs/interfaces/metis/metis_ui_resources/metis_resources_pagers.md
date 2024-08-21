@@ -7,8 +7,11 @@
 
 Metis has integrated "Pager" as a "Resource" type entity for storing metadata related to its configuration and state, such as conditions that the incident must meet to raise a notification. ,  destinations, etc. On selecting **Pagers,** the following information will appear on the screen:
 
-![Metis Pagers](metis_resources_pagers/pagers.png)
-<figcaption align = "center"> List of Pagers  </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_pagers/pagers.png" alt="List of Pagers" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>List of Pagers</figcaption>
+</div>
+
 
 ## Filter pane
 
@@ -48,8 +51,11 @@ Each Pager resource in the list will have a Card view that displays the followin
 
 In the card view, click anywhere except the resource name to get the overview.
 
-![image](metis_resources_pagers/pager_overview.png)
-<figcaption align = "center"> Quick information  </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_pagers/pager_overview.png" alt="Quick information" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Quick information</figcaption>
+</div>
+
 
 This includes the following information for quick reference:
 
@@ -65,8 +71,11 @@ This includes the following information for quick reference:
 
 In the Result or Overview pane, click on the name of the Pager to open the Resource Details page, which includes:
 
-![Metis Secrets Capture3.PNG.png](metis_resources_pagers/pager_details.png)
-<figcaption align = "center"> Comprehensive details  </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_pagers/pager_details.png" alt="Comprehensive details" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Comprehensive details</figcaption>
+</div>
+
 
 ### **Pager Information**
 

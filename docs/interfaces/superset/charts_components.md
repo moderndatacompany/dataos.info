@@ -2,7 +2,9 @@
 
 In Superset, every chart has its special components, but there are also common components that show up in various charts. Let's take a closer look at these common components.
 
-![Untitled](/interfaces/superset/charts_components/Untitled.png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/charts_components/Untitled.png" alt="Untitled image" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 ### **1. Metrics (Mandatory)**
 
@@ -56,24 +58,24 @@ A Rolling Window refers to a statistical analysis method applied to time-series 
 
 Enhance your understanding of chart components, tailored to specific characteristics of popular chart types:
 
-- [Big Number with Trendline](../superset/charts_components/big_number_trendline.md)
+- [Big Number with Trendline](/interfaces/superset/charts_components/big_number_trendline.md)
 
-- [Big Number](../superset/charts_components/big_number.md)
+- [Big Number](/interfaces/superset/charts_components/big_number.md)
 
-- [Table](../superset/charts_components/table.md)
+- [Table](/interfaces/superset/charts_components/table.md)
 
-- [Pivot Table](../superset/charts_components/pivot_table.md)
+- [Pivot Table](/interfaces/superset/charts_components/pivot_table.md)
 
-- [Line Chart](../superset/charts_components/line_chart.md)
+- [Line Chart](/interfaces/superset/charts_components/line_chart.md)
 
-- [Area Chart](../superset/charts_components/area_chart.md)
+- [Area Chart](/interfaces/superset/charts_components/area_chart.md)
 
-- [Bar Chart](../superset/charts_components/bar_chart.md)
+- [Bar Chart](/interfaces/superset/charts_components/bar_chart.md)
 
-- [Scatter Plot](../superset/charts_components/scatter_plot.md)
+- [Scatter Plot](/interfaces/superset/charts_components/scatter_plot.md)
 
-- [Pie Chart](../superset/charts_components/pie_chart.md)
+- [Pie Chart](/interfaces/superset/charts_components/pie_chart.md)
 
-- [World Map](../superset/charts_components/world_map.md)
+- [World Map](/interfaces/superset/charts_components/world_map.md)
 
-- [Bar Chart (legacy)](../superset/charts_components/bar_chart_legacy.md)
+- [Bar Chart (legacy)](/interfaces/superset/charts_components/bar_chart_legacy.md)

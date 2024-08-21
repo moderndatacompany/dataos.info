@@ -12,85 +12,83 @@ In this example scenario, our objective is to validate and maintain the data int
 2. **Prevent Duplicate Entries:** Verify that there are not more than 5 duplicate values in our dataset. The "distinct value" count should exceed 5, ensuring that there are no excessive duplications of registration records.
 <details><summary>Assertion YAML</summary>
     
-    ```yaml
-    version: v1
-    name: assertion-job-wf
-    type: workflow
-    title: assertions for a sample data ingestion
-    description: assertions for a sample data ingestion
-    workflow:
-      dag:
-        - name: wf-assertion-job
-          title: sample data ingestion assertion job
-          description: sample data ingestion assertion job
-          spec:
-            stack: flare:4.0
-            compute: runnable-default
-            flare:
-              job:
-                explain: true
-                logLevel: INFO
-                # showPreviewLines: 2
-                inputs:
-                  - name: sample_data
-                    dataset: dataos://thirdparty001:uber_data/passenger_data/
-                    format: csv
-                    schemaType: sparkjson                     
-                    schemaPath: dataos://thirdparty001:uber_data/schema/passenger_schema.json
+```yaml
+version: v1
+name: assertion-job-wf
+type: workflow
+title: assertions for a sample data ingestion
+description: assertions for a sample data ingestion
+workflow:
+  dag:
+    - name: wf-assertion-job
+      title: sample data ingestion assertion job
+      description: sample data ingestion assertion job
+      spec:
+        stack: flare:5.0
+        compute: runnable-default
+        stackSpec:
+          job:
+            explain: true
+            logLevel: INFO
+            # showPreviewLines: 2
+            inputs:
+              - name: sample_data
+                dataset: dataos://thirdparty001:uber_data/passenger_data/
+                format: csv
+                schemaType: sparkjson                     
+                schemaPath: dataos://thirdparty001:uber_data/schema/passenger_schema.json
+            logLevel: INFO
+            steps:              
+              - sequence:                  
+                - name: passenger                           
+                  sql: > 
+                    SELECT *
+                    from sample_data   
+                  functions: 
+                      - name: cleanse_column_names
+
+                      - name: change_column_case 
+                        case: lower
+
+            outputs:              
+              - name: passenger
+                dataset: dataos://icebase:sports/sample_passenger_assertion?acl=rw
+                format: Iceberg
+                title: data_uber
+                description: this dataset contains passenger csv from data_uber 
+                tags:                                                                     
+                  - passenger
+                assertions:
+                  - column: pass_id
+                    tests:
+                      - distinct_count > 5
+                      - missing_count = 0
+
+                  - column: sign_up_date
+                    tests:
+                      - distinct_count > 50
+                      - missing_count < 10
+
+                options:                  
+                  saveMode: overwrite
+                  iceberg:
+                    properties:
+                      write.format.default: parquet
+                      write.metadata.compression-codec: gzip
+
     
-                logLevel: INFO
-    
-                steps:              
-                  - sequence:                  
-                    - name: passenger                           
-                      sql: > 
-                        SELECT *
-                        from sample_data   
-                      functions: 
-                          - name: cleanse_column_names
-    
-                          - name: change_column_case 
-                            case: lower
-    
-                outputs:              
-                  - name: passenger
-                    dataset: dataos://icebase:sports/sample_passenger_assertion?acl=rw
-                    format: Iceberg
-                    title: data_uber
-                    description: this dataset contains passenger csv from data_uber 
-                    tags:                                                                     
-                      - passenger
-                    assertions:
-                      - column: pass_id
-                        tests:
-                          - distinct_count > 5
-                          - missing_count = 0
-    
-                      - column: sign_up_date
-                        tests:
-                          - distinct_count > 50
-                          - missing_count < 10
-    
-                    options:                  
-                      saveMode: overwrite
-                      iceberg:
-                        properties:
-                          write.format.default: parquet
-                          write.metadata.compression-codec: gzip
-    
-        
-        - name: dataos-tool-uber-data-test-passenger
-          spec:        
-            stack: toolbox
-            compute: runnable-default
-            toolbox:          
-              dataset: dataos://icebase:sports/sample_passenger_assertion?acl=rw
-              action:            
-                name: set_version
-                value: latest
-          dependencies:        
-            - wf-assertion-job
-    ```
+    - name: dataos-tool-uber-data-test-passenger
+      spec:        
+        stack: toolbox
+        compute: runnable-default
+        stackSpec:          
+          dataset: dataos://icebase:sports/sample_passenger_assertion?acl=rw
+          action:            
+            name: set_version
+            value: latest
+      dependencies:        
+        - wf-assertion-job
+```
 </details>   
 
 ### **Workflow Execution**
@@ -120,7 +118,7 @@ In this process, it initially evaluates the assertion, and only if all the check
     ---------------------------------------|------------|--------------------------------|-------------------
       dataos-tool-uber-data-test-passenger | toolbox    |                                | wf-assertion-job  
       system                               | dataos_cli | System Runnable Steps          |                   
-      wf-assertion-job                     | flare:4.0  | sample data ingestion          |                   
+      wf-assertion-job                     | flare:5.0  | sample data ingestion          |                   
                                            |            | assertion job                  |                   
     
        RUNTIME  | PROGRESS |          STARTED          |         FINISHED           
@@ -135,9 +133,10 @@ In this process, it initially evaluates the assertion, and only if all the check
     ```
     
 2. Data is ingested successfully. Run the query on Workbench.
-    
-    ![pre_sink_assertion_pass.png](pre_sink_assertion_pass.png)
-    
+
+    <div style="text-align: center;">
+      <img src="/resources/stacks/flare/pre_sink_assertion_pass.png" alt="pre_sink_assertion_pass.png" style="border:1px solid black; width: 80%; height: auto;">
+    </div>
 
 ## Handling Quality Check Failures
 
@@ -147,84 +146,84 @@ The following example demonstrates this scenario. We will incorporate an asserti
 
 <details><summary>Assertion YAML</summary>
     
-    ```yaml
-    version: v1
-    name: assertion-job-wf
-    type: workflow
-    title: assertions for a sample data ingestion
-    description: assertions for a sample data ingestion
-    workflow:
-      dag:
-        - name: wf-assertion-job
-          title: sample data ingestion assertion job
-          description: sample data ingestion assertion job
-          spec:
-            stack: flare:4.0
-            compute: runnable-default
-            flare:
-              job:
-                explain: true
-                logLevel: INFO
-                # showPreviewLines: 2
-                inputs:
-                  - name: sample_data
-                    dataset: dataos://thirdparty001:uber_data/passenger_data/
-                    format: csv
-                    schemaType: sparkjson                     
-                    schemaPath: dataos://thirdparty001:uber_data/schema/passenger_schema.json
+```yaml
+version: v1
+name: assertion-job-wf
+type: workflow
+title: assertions for a sample data ingestion
+description: assertions for a sample data ingestion
+workflow:
+  dag:
+    - name: wf-assertion-job
+      title: sample data ingestion assertion job
+      description: sample data ingestion assertion job
+      spec:
+        stack: flare:5.0
+        compute: runnable-default
+        stackSpec:
+          job:
+            explain: true
+            logLevel: INFO
+            # showPreviewLines: 2
+            inputs:
+              - name: sample_data
+                dataset: dataos://thirdparty001:uber_data/passenger_data/
+                format: csv
+                schemaType: sparkjson                     
+                schemaPath: dataos://thirdparty001:uber_data/schema/passenger_schema.json
+
+            logLevel: INFO
+
+            steps:              
+              - sequence:                  
+                - name: passenger                           
+                  sql: > 
+                    SELECT *
+                    from sample_data   
+                  functions: 
+                      - name: cleanse_column_names
+
+                      - name: change_column_case 
+                        case: lower
+            outputs:              
+              - name: passenger
+                dataset: dataos://icebase:sports/sample_passenger_assertion?acl=rw
+                format: Iceberg
+                title: data_uber
+                description: this dataset contains passenger csv from data_uber 
+                tags:                                                                     
+                  - passenger
+                assertions:
+                  - column: pass_id
+                    tests:
+                      - distinct_count > 5
+                      - missing_count > 5 
+
+                  - column: pass_email
+                    tests:
+                      - distinct_count > 50
+                      - missing_count = 0
+
+                options:                  
+                  saveMode: overwrite
+                  iceberg:
+                    properties:
+                      write.format.default: parquet
+                      write.metadata.compression-codec: gzip
+
     
-                logLevel: INFO
-    
-                steps:              
-                  - sequence:                  
-                    - name: passenger                           
-                      sql: > 
-                        SELECT *
-                        from sample_data   
-                      functions: 
-                          - name: cleanse_column_names
-    
-                          - name: change_column_case 
-                            case: lower
-                outputs:              
-                  - name: passenger
-                    dataset: dataos://icebase:sports/sample_passenger_assertion?acl=rw
-                    format: Iceberg
-                    title: data_uber
-                    description: this dataset contains passenger csv from data_uber 
-                    tags:                                                                     
-                      - passenger
-                    assertions:
-                      - column: pass_id
-                        tests:
-                          - distinct_count > 5
-                          - missing_count > 5 
-    
-                      - column: pass_email
-                        tests:
-                          - distinct_count > 50
-                          - missing_count = 0
-    
-                    options:                  
-                      saveMode: overwrite
-                      iceberg:
-                        properties:
-                          write.format.default: parquet
-                          write.metadata.compression-codec: gzip
-    
-        
-        - name: dataos-tool-uber-data-test-passenger
-          spec:        
-            stack: toolbox
-            compute: runnable-default
-            toolbox:          
-              dataset: dataos://icebase:sports/sample_passenger_assertion?acl=rw
-              action:            
-                name: set_version
-                value: latest
-          dependencies:        
-            - wf-assertion-job
-    ```
+    - name: dataos-tool-uber-data-test-passenger
+      spec:        
+        stack: toolbox
+        compute: runnable-default
+        stackSpec:          
+          dataset: dataos://icebase:sports/sample_passenger_assertion?acl=rw
+          action:            
+            name: set_version
+            value: latest
+      dependencies:        
+        - wf-assertion-job
+```
 </details>
  
 1. Apply the job using the "dataos-ctl" command, and afterward, retrieve the runtime information. You'll quickly observe that the driver node has encountered a failure.
@@ -242,7 +241,7 @@ The following example demonstrates this scenario. We will incorporate an asserti
     ---------------------------------------|------------|--------------------------------|-------------------
       dataos-tool-uber-data-test-passenger | toolbox    |                                | wf-assertion-job  
       system                               | dataos_cli | System Runnable Steps          |                   
-      wf-assertion-job                     | flare:4.0  | sample data ingestion          |                   
+      wf-assertion-job                     | flare:5.0  | sample data ingestion          |                   
                                            |            | assertion job                  |                   
     
       RUNTIME | PROGRESS |          STARTED          | FINISHED  

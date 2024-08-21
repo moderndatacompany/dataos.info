@@ -18,11 +18,16 @@ You need to have a runnable instance of DataOS CLI installed on your system. To 
 
 Search for swagger-ui on Docker Hub. 
 
-![Untitled](/resources/stacks/container/deploying_images_on_public_dockerhub/untitled.png)
+<div style="text-align: center;">
+  <img src="/resources/stacks/container/deploying_images_on_public_dockerhub/untitled.png" alt="Container" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 If you need a specific build, navigate to the **Tags** section and choose the specific build you want.
 
-![Untitled](/resources/stacks/container/deploying_images_on_public_dockerhub/untitled_1.png)
+<div style="text-align: center;">
+  <img src="/resources/stacks/container/deploying_images_on_public_dockerhub/untitled_1.png" alt="Container" style="border:1px solid black; width: 80%; height: auto;">
+</div>
+
 
 <aside>
 🗣️ In case you don’t provide the specific build version, it will automatically pick out the latest image from Docker Hub.
@@ -80,4 +85,6 @@ Once you have successfully applied the web-server application, you can go over t
 Path : `https://<dataos-context>/<path-provided-in-yaml>/`
 Example: `https://alpha-omega.dataos.app/swagger-ui`
 
-![Untitled](/resources/stacks/container/deploying_images_on_public_dockerhub/untitled_2.png)
+<div style="text-align: center;">
+  <img src="/resources/stacks/container/deploying_images_on_public_dockerhub/untitled_2.png" alt="Container" style="border:1px solid black; width: 80%; height: auto;">
+</div>

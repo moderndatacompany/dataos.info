@@ -37,10 +37,10 @@ workflow:
           - standalone
           - readJob
           - postgres
-        stack: flare:3.0
+        stack: flare:5.0
         compute: runnable-default
         tier: connect
-        flare:
+        stackSpec:
           job:
             explain: true
             logLevel: INFO
@@ -108,10 +108,10 @@ workflow:
         tags:
           - Postgres
           - Standalone
-        stack: flare:3.0
+        stack: flare:5.0
         compute: runnable-default
         tier: connect
-        flare:
+        stackSpec:
           job:
             explain: true
             logLevel: INFO

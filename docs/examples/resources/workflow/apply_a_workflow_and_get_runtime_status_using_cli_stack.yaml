@@ -54,7 +54,7 @@ workflow:
                   tags:
                     - Connect
                     - City
-                  stack: flare:4.0 # The job gets executed upon the Flare Stack, so its a Flare Job
+                  stack: flare:5.0 # The job gets executed upon the Flare Stack, so its a Flare Job
                   compute: runnable-default
 
                   # Flare Stack-specific Section

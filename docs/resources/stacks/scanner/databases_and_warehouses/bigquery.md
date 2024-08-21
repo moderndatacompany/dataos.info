@@ -144,7 +144,7 @@ workflow:
         stack: scanner:2.0
         compute: runnable-default
 				runAsUser: metis
-        scanner:
+        stackSpec:
           type: bigquery
           source: BigQuerySource_ND
           sourceConnection:

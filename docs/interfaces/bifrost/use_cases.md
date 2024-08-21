@@ -12,7 +12,7 @@ The ‘**Use-Cases**’ tab in Bifrost lists all the possible actions needed to 
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/bifrost/usecases.png" alt="Use-Cases" style="width: 60rem; border: 1px solid black;">
+    <img src="/interfaces/bifrost/use_cases/usecases.png" alt="Use-Cases" style="width: 80%; border: 1px solid black; heigt:auto">
     <figcaption>Use-Cases tab in Bifrost</figcaption>
   </div>
 </center>
@@ -28,7 +28,10 @@ To update the path value, navigate to the Variable section, where the actual pat
 
 Lastly, In the grant section, you'll find a subsection labeled "**Subject**" where you can determine who has been granted access to the use-case thus far.
 
-<center>![grant_usecases](/interfaces/bifrost/grant_usecases.png)</center>
+<div style="text-align: center;">
+    <img src="/interfaces/bifrost/use_cases/grant_usecases.png" alt="grant_usecases" style="width: 80%; height: auto; border: 1px solid black;">
+    <figcaption>Grant Use-Cases</figcaption>
+</div>
 
 ## How to grant a use case to a role?
 

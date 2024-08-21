@@ -27,8 +27,8 @@ workflow:
   dag:
     - name: sample
       spec:
-        stack: flare:3.0
-        flare:
+        stack: flare:5.0
+        stackSpec:
           driver:    
             coreLimit: 12000m
             cores: 2
@@ -127,9 +127,9 @@ workflow:
       tags:
       - Connect
       - City
-      stack: flare:3.0
+      stack: flare:5.0
       compute: runnable-default
-      flare:
+      stackSpec:
         job:
           explain: true
           inputs:

@@ -7,8 +7,13 @@
 
 Metis has integrated "Service" as a "Resource type" for storing metadata related to its port, socket, replicas, stack, etc., within DataOS. On selecting **Services,** the following information will appear on the screen:
 
-![services.png](metis_resources_services/services.png)
-<figcaption align = "center"> List of Services  </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_resources/metis_resources_services/services.png" alt="List of Services" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>List of Services</figcaption>
+  </div>
+</center>
+
 
 ## Filter pane
 
@@ -48,8 +53,13 @@ Each service in the list will feature a **Card view** that displays the followin
 
 In the card view, click anywhere except the resource name to get the overview.
 
-![services_overview.png](metis_resources_services/services_overview.png)
-<figcaption align = "center"> Quick information  </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_resources/metis_resources_services/services_overview.png" alt="Quick information" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Quick information</figcaption>
+  </div>
+</center>
+
 
 This includes the following quick reference information:
 
@@ -114,12 +124,20 @@ The subsequent tabs will provide you with more detailed information, as explaine
 
 A Directed Acyclic Graph (DAG) is a conceptual representation of a sequence of activities. For the Service, this shows the input and processing steps and output.
 
-![services_topology.png](metis_resources_services/services_topology.png)
-<figcaption align = "center"> Dag of activities </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_resources/metis_resources_services/services_topology.png" alt="Dag of activities" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Dag of activities</figcaption>
+  </div>
+</center>
 
-Clicking on the input will display the following details in the side pane:
-![image](metis_resources_services/service_topology_input.png)
-<figcaption align = "center"> Input details </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_resources/metis_resources_services/service_topology_input.png" alt="Input details" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Input details</figcaption>
+  </div>
+</center>
+
 
 | Attribute | Description |
 | --- | --- |
@@ -140,8 +158,11 @@ Clicking on the input will display the following details in the side pane:
 | Verb | Specifies the HTTP method used for the request, in this case, "GET." |
 
 Clicking on the processor will display the following details in the side pane:
-![image](metis_resources_services/service_topology_processor.png)
-<figcaption align = "center"> Processor details </figcaption>
+
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_services/service_topology_processor.png" alt="Processor details" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Processor details</figcaption>
+</div>
 
 | Attribute | Description |
 | --- | --- |
@@ -152,8 +173,12 @@ Clicking on the processor will display the following details in the side pane:
 | Depends | States dependency if any. In this case, log |
 
 Clicking on the output will display the following details in the side pane:
-![image](metis_resources_services/service_topology_output.png)
-<figcaption align = "center"> Output details </figcaption>
+
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_services/service_topology_output.png" alt="Output details" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Output details</figcaption>
+</div>
+
 
 | Attribute | Description |
 | --- | --- |
@@ -171,8 +196,10 @@ This space lists all activities, including tasks and conversations around the sp
 
 This section provides an overview of the service's execution history. It offers a concise summary of past service runs, allowing users to quickly access information about the service's previous operations and performance.
 
-![services_runtime.png](metis_resources_services/services_runtime.png)
-<figcaption align = "center"> Run history </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_services/services_runtime.png" alt="Run history" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Run history</figcaption>
+</div>
 
 | Attribute | Description |
 | --- | --- |

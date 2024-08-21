@@ -20,8 +20,7 @@ To get started with the Data Product Hub, click on the **Data Product Hub**, you
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/data_product_hub/Untitled%20(12).png" alt="Outlined Image" style="border:1px solid black;">
-    <figcaption>Outlined Image</figcaption>
+    <img src="/interfaces/data_product_hub/Untitled%20(12).png" style="border:1px solid black;">
   </div>
 </center>
 
@@ -29,8 +28,7 @@ Data Product Hub home page:
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/data_product_hub/Untitled%20(13).png" alt="Outlined Image" style="border:1px solid black;">
-    <figcaption>Outlined Image</figcaption>
+    <img src="/interfaces/data_product_hub/Untitled%20(13).png" style="border:2px solid black;">
   </div>
 </center>
 

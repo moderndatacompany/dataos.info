@@ -11,9 +11,10 @@ To showcase all the data comprising a chart, you can utilize the Drill to Detail
 1. Right-click on the vertical ellipsis (⋮) menu of a chart within the dashboard.
 2. Select **Drill to detail** to access the complete table view.
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/drilling/Untitled%20(10).png" alt="Your Image Description" />
-</p>
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/drilling/Untitled%20(10).png" alt="Your Image Description" style="border:1px solid black; width: 60%; height: auto;">
+</div>
+
 
 
 ## **Drill to Detail on a Chart**
@@ -23,9 +24,10 @@ You can also directly interact with the chart to display all relevant data.
 1. Right-click on any part of a chart.
 2. Choose **Drill to detail** to access the full table view.
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/drilling/Untitled%20(11).png" alt="Your Image Description" />
-</p>
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/drilling/Untitled%20(11).png" alt="Your Image Description" style="border:1px solid black; width: 60%; height: auto;">
+</div>
+
 
 ## **Drill to Detail By on a Chart**
 
@@ -36,9 +38,10 @@ Drill to Detail By offers an interactive approach to transition from a high-leve
 1. Right-click on the dimension values displayed on the chart.
 2. Choose **Drill to detail by.**
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/drilling/Untitled%20(12).png" alt="Your Image Description" />
-</p>
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/drilling/Untitled%20(12).png" alt="Your Image Description" style="border:1px solid black; width: 60%; height: auto;">
+</div>
+
 
 ## **Tips**
 
@@ -46,6 +49,6 @@ Drill to Detail By offers an interactive approach to transition from a high-leve
 - You can scroll down to 50 rows per page on a Drill to Detail table.
 - When applicable, the Drill to Detail table shows the formatted data by default. You can change the column formatting to the original value by clicking the gear icon.
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/drilling/Untitled%20(13).png" alt="Your Image Description" />
-</p>
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/drilling/Untitled%20(13).png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>

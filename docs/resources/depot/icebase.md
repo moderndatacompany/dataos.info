@@ -1,6 +1,6 @@
 # Icebase
 
-Icebase is a depot type within DataOS that leverages the power of the Apache Iceberg table format. It integrates with popular object storage systems like [Azure Data Lake](./depot_config_templates/azure_abfss.md), [Google Cloud Storage](./depot_config_templates/google_gcs.md), and [Amazon S3](./depot_config_templates/amazon_s3.md), following the Lakehouse pattern. By utilizing Iceberg, Icebase provides a robust OLAP (Online Analytical Processing) system that simplifies data lake access, making it as user-friendly and accessible as traditional data warehouses.
+Icebase is a depot type within DataOS that leverages the power of the Apache Iceberg table format. It integrates with popular object storage systems like [Azure Data Lake](/resources/depot/depot_config_templates/azure_abfss/), [Google Cloud Storage](/resources/depot/depot_config_templates/google_gcs), and [Amazon S3](/resources/depot/depot_config_templates/amazon_s3/), following the Lakehouse pattern. By utilizing Iceberg, Icebase provides a robust OLAP (Online Analytical Processing) system that simplifies data lake access, making it as user-friendly and accessible as traditional data warehouses.
 
 
 >Apache Iceberg, also known as Iceberg, is an open-source and high-performance table format specifically designed for storing large-scale analytic datasets, including petabyte-scale data. As a valuable addition to the big data ecosystem, Iceberg is optimized to handle vast amounts of data efficiently.
@@ -119,7 +119,7 @@ dataos-ctl dataset -a ${{udl}} drop --purge true
 # '-p' or '--purge' flags denote the purge value
 ```
 
-[Case Scenario: Create, Get, and Drop Dataset](./icebase/case_scenario_create_fetch_and_drop_dataset.md)
+[Case Scenario: Create, Get, and Drop Dataset](/resources/depot/icebase/case_scenario_create_fetch_and_drop_dataset/)
 
 ---
 
@@ -168,7 +168,7 @@ dataos-ctl dataset -a dataos://icebase:retail/city remove-properties \
 
 For more details and use cases, refer to the following link
 
-[Case Scenario: Table Properties](./icebase/case_scenario_table_properties.md)
+[Case Scenario: Table Properties](/resources/depot/icebase/case_scenario_table_properties/)
 
 ---
 
@@ -269,7 +269,7 @@ dataos-ctl dataset -a dataos://depot:collection/dataset update-field \
 
 For more details and use, case refer to the following link  
 
-[Case Scenario: Schema Evolution](./icebase/case_scenario_schema_evolution.md)
+[Case Scenario: Schema Evolution](/resources/depot/icebase/case_scenario_schema_evolution/)
 
 ---
 
@@ -344,7 +344,7 @@ dataos-ctl dataset -a dataos://icebase:retail/city update-partition \
 
 For more details and use cases, refer to the below link
 
-[Case Scenario: Partitioning](./icebase/case_scenario_partitioning.md)
+[Case Scenario: Partitioning](/resources/depot/icebase/case_scenario_partitioning/)
 
 ---
 
@@ -392,4 +392,4 @@ dataos-ctl dataset -a dataos://icebase:retail/city set-metadata \
 
 For more details and use cases, refer to the following link
 
-[Case Scenario: Maintenance (Snapshots and Meta Data Listing)](./icebase/case_scenario_maintenance.md)
+[Case Scenario: Maintenance (Snapshots and Meta Data Listing)](/resources/depot/icebase/case_scenario_maintenance/)

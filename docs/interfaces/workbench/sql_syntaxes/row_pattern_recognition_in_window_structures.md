@@ -1,6 +1,6 @@
 # Row pattern recognition in window structures
 
-A window structure can be defined in the `WINDOW` clause or in the `OVER` clause of a window operation. In both cases, the window specification can include row pattern recognition clauses. They are part of the window frame. The syntax and semantics of row pattern recognition in window are similar to those of the [**MATCH_RECOGNIZE**](./match_recognize.md) clause.
+A window structure can be defined in the `WINDOW` clause or in the `OVER` clause of a window operation. In both cases, the window specification can include row pattern recognition clauses. They are part of the window frame. The syntax and semantics of row pattern recognition in window are similar to those of the [**MATCH_RECOGNIZE**](/interfaces/workbench/sql_syntaxes/match_recognize/) clause.
 
 This section explains the details of row pattern recognition in window structures, and highlights the similarities and the differences between both pattern recognition mechanisms.
 
@@ -61,11 +61,11 @@ For every input row processed by the window, the portion of rows enclosed by the
 
 Besides the `frame_extent`, pattern matching requires the `PATTERN` and `DEFINE` clauses.
 
-The `PATTERN` clause specifies a row pattern, which is a form of a regular expression with some syntactical extensions. The row pattern syntax is similar to the [**row pattern syntax in MATCH_RECOGNIZE**](./match_recognize.md). However, the anchor patterns `^` and `$` are not allowed in a window specification.
+The `PATTERN` clause specifies a row pattern, which is a form of a regular expression with some syntactical extensions. The row pattern syntax is similar to the [**row pattern syntax in MATCH_RECOGNIZE**](/interfaces/workbench/sql_syntaxes/match_recognize/). However, the anchor patterns `^` and `$` are not allowed in a window specification.
 
-The `DEFINE` clause defines the row pattern primary variables in terms of boolean conditions that must be satisfied. It is similar to the [**DEFINE clause of MATCH_RECOGNIZE**](./match_recognize.md). The only difference is that the window syntax does not support the `MATCH_NUMBER` function.
+The `DEFINE` clause defines the row pattern primary variables in terms of boolean conditions that must be satisfied. It is similar to the [**DEFINE clause of MATCH_RECOGNIZE**](/interfaces/workbench/sql_syntaxes/match_recognize/). The only difference is that the window syntax does not support the `MATCH_NUMBER` function.
 
-The `MEASURES` clause is syntactically similar to the [**MEASURES clause of MATCH_RECOGNIZE**](./match_recognize.md). The only limitation is that the `MATCH_NUMBER` function is not allowed. However, the semantics of this clause differs between `MATCH_RECOGNIZE` and window. While in `MATCH_RECOGNIZE` every measure produces an output column, the measures in window should be considered as **definitions** associated with the window structure. They can be called over the window, in the same manner as regular window functions:
+The `MEASURES` clause is syntactically similar to the [**MEASURES clause of MATCH_RECOGNIZE**](/interfaces/workbench/sql_syntaxes/match_recognize/). The only limitation is that the `MATCH_NUMBER` function is not allowed. However, the semantics of this clause differs between `MATCH_RECOGNIZE` and window. While in `MATCH_RECOGNIZE` every measure produces an output column, the measures in window should be considered as **definitions** associated with the window structure. They can be called over the window, in the same manner as regular window functions:
 
 ```yaml
 SELECT cust_key, value OVER w, label OVER w
@@ -88,11 +88,11 @@ Measures defined in a window can be referenced in the `SELECT` clause and in t
 
 The `RUNNING` and `FINAL` keywords are allowed in the `MEASURES` clause. They can precede a logical navigation function `FIRST` or `LAST`, or an aggregate function. However, they have no effect. Every computation is performed from the position of the final row of the match, so the semantics is effectively `FINAL`.
 
-The `AFTER MATCH SKIP` clause has the same syntax as the [**AFTER MATCH SKIP clause of MATCH_RECOGNIZE**](./match_recognize.md).
+The `AFTER MATCH SKIP` clause has the same syntax as the [**AFTER MATCH SKIP clause of MATCH_RECOGNIZE**](/interfaces/workbench/sql_syntaxes/match_recognize/).
 
 The `INITIAL` or `SEEK` modifier is specific to row pattern recognition in window. With `INITIAL`, which is the default, the pattern match for an input row can only be found starting from that row. With `SEEK`, if there is no match starting from the current row, the engine tries to find a match starting from subsequent rows within the frame. As a result, it is possible to associate an input row with a match which is detached from that row.
 
-The `SUBSET` clause is used to define [**union variables**](./match_recognize.md) as sets of primary pattern variables. You can use union variables to refer to a set of rows matched to any primary pattern variable from the subset:
+The `SUBSET` clause is used to define [**union variables**](/interfaces/workbench/sql_syntaxes/match_recognize/) as sets of primary pattern variables. You can use union variables to refer to a set of rows matched to any primary pattern variable from the subset:
 
 ```yaml
 SUBSET U = (A, B)

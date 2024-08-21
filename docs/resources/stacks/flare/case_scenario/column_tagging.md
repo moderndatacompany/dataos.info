@@ -97,9 +97,9 @@ workflow: # Workflow Section
       # - PII.DateOfBirth
       # - Tier.Bronze
       # - XYZ.Job
-      stack: flare:4.0 # Stack Version (Here its 4.0)
+      stack: flare:5.0 # Stack Version (Here its 4.0)
       compute: runnable-default # Compute
-      flare: # Flare Section
+      stackSpec: # Flare Section
         job: # Job Section
           explain: true # Explain
           logLevel: INFO # Loglevel

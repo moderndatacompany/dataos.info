@@ -34,9 +34,9 @@ workflow:
         tags:
           - Connect
           - City
-        stack: flare:3.0
+        stack: flare:5.0
         compute: runnable-default
-        flare:
+        stackSpec:
           job:
             explain: true
             inputs:
@@ -92,9 +92,9 @@ workflow:
       spec:
         tags:
           - Connect
-        stack: flare:4.0
+        stack: flare:5.0
         compute: runnable-default
-        flare:
+        stackSpec:
           job:
             explain: true
             streaming:
@@ -134,7 +134,7 @@ workflow:
       spec:
         stack: toolbox
         compute: runnable-default
-        toolbox:
+        stackSpec:
           dataset: dataos://icebase:kafka/random_users_icebase01?acl=rw
           action:
             name: set_version
@@ -239,9 +239,9 @@ workflow:
       spec: 
         tags: 
           - orphans
-        stack: flare:4.0 
+        stack: flare:5.0 
         compute: runnable-default 
-        flare: 
+        stackSpec: 
           job: 
             explain: true 
             logLevel: INFO 
@@ -281,9 +281,9 @@ workflow:
       spec: 
         tags: 
           - Rewrite
-        stack: flare:4.0 
+        stack: flare:5.0 
         compute: runnable-default 
-        flare: 
+        stackSpec: 
           job: 
             explain: true 
             logLevel: INFO 

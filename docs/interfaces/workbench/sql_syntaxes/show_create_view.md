@@ -12,4 +12,4 @@ Show the SQL statement that creates the specified view.
 
 ## See also
 
-[CREATE VIEW](./create_view.md)
+[CREATE VIEW](/interfaces/workbench/sql_syntaxes/create_view/)

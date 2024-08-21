@@ -45,7 +45,7 @@ To revolutionize the footwear industry by leveraging advanced data analytics enh
 
 **Pre-requisites**
 
-To create the Data Product within DataOS, following requirements were needed:
+To create the Data Product within DataOS, make sure you have:
 
 - Necessary permissions to create and manage Data Products.
 
@@ -57,14 +57,14 @@ The individual responsible for designing the Sales 360 data product is the Data 
 
 ### **Define entities and schema**
 
-For our use case, we define the following entities: Customer, Product, Transaction, Order and Channel.
+For our use case, we define the following entities: **Customer, Product, Transaction, Order** and **Channel**.
 
 
 ### **Data Understanding and Exploration**
 
 To plan things in the design phase, we need to first look up at the various  data that is going to be integrated and will be making `Sales360` data product.
 
-For this project, we aim to create a Sales 360 data product that will integrate various tables from BigQuery sources. These sources must be connected to DataOS using [Depot](/resources/depot).
+For this project, we aim to create a Sales 360 data product that will integrate various tables from BigQuery sources. These sources must be connected to DataOS using [Depot](/resources/depot/).
 
 **Create a Depot**
 
@@ -81,7 +81,7 @@ Creating a bigquery depot with json file of the credentails of the client's ware
 
 **Extract the Metadata**
 
-To explore the metadata of the tables you can run a scanner. You can then access the metadata on [Metis UI](/interfaces/metis). The Scanner manifest file is shown below:
+To explore the metadata of the tables you can run a scanner. You can then access the metadata on [Metis UI](/interfaces/metis/). The Scanner manifest file is shown below:
 
 <details>
 
@@ -95,7 +95,7 @@ To explore the metadata of the tables you can run a scanner. You can then access
 
 **Explore the Data**
 
-Now for data exploration, you can query the data using the workbench. To query the data on the workbench without moving the data you first need to create a Minerva or a Themis cluster that will target the Depot. By applying the below manifest file, you can create the cluster.
+Now for data exploration, you can query the data using the workbench. To query the data on the workbench without moving the data you first need to create a Minerva or a Themis cluster that will target the `bigquery` Depot. By applying the below manifest file, you can create the cluster.
 
 
 <details>
@@ -107,17 +107,17 @@ Now for data exploration, you can query the data using the workbench. To query t
 ```
 </details>
 
-To interact with the newly created `salesbq` Cluster in Workbench:
+To interact with the newly created `bqcluster` Cluster in Workbench:
 
--  **Access the Cluster:** Open Workbench and select the `salesbq` cluster.
+-  **Access the Cluster:** Open Workbench and select the `bqcluster` cluster.
 -  **Execute Queries:** Choose the catalog, schema, and tables, then run your query using the 'Run' button.
 -  **Retrieve Results:** View the query results in the pane below the input area.
 
-For more details, refer to the [Workbench](/interfaces/) documentation.
+For more details, refer to the [Workbench](/interfaces/workbench/) documentation.
 
 ### **Data Product Architectural Design**
 
-Once you've explored the data, the next step is to plan the architectural design. For example, In our case, the  Data Sources are Bigquery and Postgres to connect with  this sources we will need to create two Depots. The flare job will then use this depot and will faciliate easy ingestion and transformation from source to icebase. After ingestion, the data will must go through profiling and pass all the defined quality checks we will discuss this in detail in Build Phase. Then our data product will be ready to be used in a Analytical Platform.d
+Once you've explored the data, the next step is to plan the architectural design. For example, In our case, the  Data Sources is Bigquery and to connect with  this source we will need to create Depots. The flare job will then use this depot and will faciliate easy ingestion and transformation from source to icebase. After ingestion, the data will must go through profiling and pass all the defined quality checks we will discuss this in detail in Build Phase. Then our data product will be ready to be used in a Analytical Platform.
 
 <center> ![Architectural Diagram](/products/data_product/templates/architecture.png) </center> 
 
@@ -125,7 +125,7 @@ Once you've explored the data, the next step is to plan the architectural design
 
 Here we will define our Input, Output, Transformations and SLOs.
 
-  - **Input** acts as an intermediary connecting diverse data sources. You can define as many input ports as you would like for each database. Here our input is bigquery depot.
+  - **Input** acts as an intermediary connecting diverse data sources. You can define as many input ports as you would like for each database. Here our input is `bigquery` depot.
 
   - **Transformation** is where you enrich the data to make it more useable  accurate and realiable. The stack we used for transformation is **`flare`**. The transformation stops involved were:
 
@@ -135,7 +135,7 @@ Here we will define our Input, Output, Transformations and SLOs.
 
     - **Orders enriched table** Integrated data from Customer, Product, Transaction and Orders table to create a Orders-enriched table.
     
-  -  **Output** is defined as our complete data product which is our order enriched table ready to be consumed and can also be delivered to different platforms for different purpose like streamlit for creating data applications and [superset](/interfaces/superset) for data visualization, and [lens](/interfaces/lens) for data modeling.
+  -  **Output** is defined as our complete data product which is our order enriched table ready to be consumed and can also be delivered to different platforms for different purpose like streamlit for creating data applications and [superset](/interfaces/superset/) for data visualization, and [lens](/interfaces/lens/) for data modeling.
 
     - **Streamlit App:** for customer churn details.
 
@@ -159,7 +159,7 @@ Here we will define our Input, Output, Transformations and SLOs.
 ```
 </details>
 
-Now, you can see your newly created data product in [DPH](/interfaces/data_product_hub)
+Now, you can see your newly created data product in [DPH](/interfaces/data_product_hub/)
 
 ### **Performance target**
 
@@ -400,13 +400,15 @@ This streamlit app will give you the details  of churned and not  churned custom
 
 **The Output:**
 
-<center> ![Streamlit](/products/data_product/templates/streamlit.png) </center>
-
-<center> The Streamit App for Customer Churn Details </center>
+<div style="text-align: center;">
+  <img src="/products/data_product/templates/streamlit.png" alt="Sales 360 Product" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>The Streamit App for Customer Churn Details</i></figcaption>
+</div>
 
 
 ### **Building Dashboards**
 
-<center> ![Superset](/products/data_product/templates/superset.png) </center>
-
-<center> The Superset Dashboard for Sales 360 </center>
+<div style="text-align: center;">
+  <img src="/products/data_product/templates/superset.png" alt="Sales 360 Product" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>The Superset Dashboard for Sales 360</i></figcaption>
+</div>

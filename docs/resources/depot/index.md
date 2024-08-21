@@ -45,12 +45,16 @@ Depot in DataOS is a [Resource](/resources/) used to connect different data sou
 
 Within DataOS, the hierarchical structure of a data source is represented as follows:
 
-![Depot Hierarchy](/resources/depot/udl.png)
-<center><i>Hierarchical Structure of a Data Source within DataOS</i></center>
+<div style="text-align: center;">
+  <img src="/resources/depot/udl.png" alt="Hierarchical Structure of a Data Source within DataOS" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>Hierarchical Structure of a Data Source within DataOS</i></figcaption>
+</div>
+
 
 The Depot serves as the registration of data locations to be made accessible to DataOS. Through the Depot Service, each source system is assigned a unique address, referred to as a **Uniform Data Link (UDL)**. The UDL grants convenient access and manipulation of data within the source system, eliminating the need for repetitive credential entry. The UDL follows this format:
 
 <center><b><span style="font-size: 20px;"><code>dataos://[depot]:[collection]/[dataset]</code></span></b></center>
+
 
 
 <aside class="callout">
@@ -79,7 +83,12 @@ To create a Depot in DataOS, simply compose a manifest configuration file for a 
 
 ### **Structure of a Depot manifest**
 
-![Structure of a Depot YAML](/resources/depot/depot_yaml.png)
+<center>
+  <div style="text-align: center;">
+    <img src="/resources/depot/depot_yaml.png" alt_text = "Structure of a Depot manifest" style="border:1px solid black;">
+  </div>
+</center>
+
 
 To know more about the attributes of Depot manifest Configuration, refer to the link: [Attributes of Depot manifest](/resources/depot/configurations/).
 

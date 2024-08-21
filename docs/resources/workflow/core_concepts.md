@@ -6,13 +6,11 @@ Within a Workflow, a **job** encompasses a series of processing tasks, each exec
 
 Furthermore, every job within a Directed Acyclic Graph (DAG) is associated with a specific [Stack](/resources/stacks/). A Stack serves as an extension point within a job, offering users the ability to leverage different programming paradigms based on their specific requirements. For instance, if your objective involves data transformation, ingestion, or syndication, utilizing the [Flare](/resources/stacks/flare/) Stack is recommended. DataOS provides a diverse range of pre-built stacks, including [Flare](/resources/stacks/flare/), [Scanner](/resources/stacks/scanner/) and more, enabling developers to seamlessly adopt various programming environments to suit their needs.
 
-<center>
+<div style="text-align: center;">
+  <img src="/resources/workflow/workflow_overview.png" alt="Illustration of Workflow Resource" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>Illustration of Workflow Resource</i></figcaption>
+</div>
 
-![Illustration of Workflow Resource](/resources/workflow/workflow_overview.png)
-
-</center>
-
-<center><i>Illustration of Workflow Resource</i></center>
 
 In the above illustration, **Job 1** is the first job to be executed as it has no dependencies. Once **Job 1** completes, both **Job 2** and **Job 3** can run concurrently or parallely. Only after the successful completion of both **Job 2** and **Job 3**, **Job 4** becomes eligible for execution. Finally, **Job 5** can be executed sequentially after **Job 4** successfully finishes. This hierarchical structure ensures optimal job execution without creating bottlenecks.
 

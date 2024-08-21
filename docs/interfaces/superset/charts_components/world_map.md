@@ -1,10 +1,15 @@
 The World Map Chart in Superset is a geographic visualization that highlights data points across different locations on a world map.
 
-![Untitled](/interfaces/superset/charts_components/world_interface.png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/charts_components/world_interface.png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
+
 
 On selecting the World map chart, you can then proceed with its components.
 
-![Untitled](/interfaces/superset/charts_components/world.png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/charts_components/world.png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 1. **Country Column (Mandatory):**
     - Choose the column containing country names for mapping on the World Map Chart.

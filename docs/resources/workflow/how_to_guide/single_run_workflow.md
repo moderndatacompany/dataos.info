@@ -3,12 +3,10 @@
 A [Single-run Workflow](/resources/workflow/core_concepts/#single-run-workflow) represent a single-time execution of a sequence of jobs. It does not include a [`schedule`](/resources/workflow/configuration/#schedule) section.
 
 <center>
-
-![Illustration of a Single-run Workflow](/resources/workflow/sample_workflow.svg)
-
+  <img src="/resources/workflow/sample_workflow.svg" alt="Illustration of a Single-run Workflow">
+  <figcaption>Illustration of a Single-run Workflow</figcaption>
 </center>
 
-<center> *Illustration of a Single-run Workflow*</center>
 
 **Code Snippet**
 

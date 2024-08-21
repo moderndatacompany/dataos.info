@@ -51,45 +51,8 @@ inputs:
 
 Let’s take a case scenario where the dataset is stored in Azure Blob File System (ABFSS) and you have to read data from the source, perform some transformation steps and write it to the Icebase, which is a managed depot within the DataOS. The read config YAML will be as follows
 
-```yaml
-version: v1
-name: abfss-read-avro
-type: workflow
-tags:
-  - Connect
-  - City
-description: The job ingests city data from dropzone into raw zone
-workflow:
-  title: Connect City avro
-  dag:
-    - name: city-abfss-read-avro
-      title: City Dimension Ingester
-      description: The job ingests city data from dropzone into raw zone
-      spec:
-        tags:
-          - Connect
-          - City
-        stack: flare:3.0
-        compute: runnable-default
-        flare:
-          job:
-            explain: true
-            inputs:
-              - name: city_connect # dataset name
-                dataset: dataos://thirdparty01:sampledata/avro # dataset UDL
-                format: avro # file format
-
-            logLevel: INFO
-            outputs:
-              - name: output01
-                dataset: dataos://icebase:retail/abfss_read_avro01?acl=rw
-                format: iceberg
-                options:
-                  saveMode: append
-            steps:
-              - sequence:
-                - name: output01
-                  sql: SELECT * FROM city_connect
+```yaml title="object_storage_depots_read.yml"
+--8<-- "examples/resources/stacks/flare/object_storage_depots_read.yml"
 ```
 
 ### **Write Config**
@@ -110,43 +73,8 @@ outputs:
 
 Let’s take a case scenario where the output dataset is to be stored in Azure Blob File System Depot (ABFSS), and you have to read data from the Icebase depot within the DataOS. The write config YAML will be as follows
 
-```yaml
-version: v1
-name: abfss-write-avro
-type: workflow
-tags:
-  - Connect
-  - City
-description: The job ingests city data from dropzone into raw zone
-workflow:
-  title: Connect City avro
-  dag:
-    - name: city-abfss-write-avro
-      title: City Dimension Ingester
-      description: The job ingests city data from dropzone into raw zone
-      spec:
-        tags:
-          - Connect
-          - City
-        stack: flare:3.0
-        compute: runnable-default
-        flare:
-          job:
-            explain: true
-            inputs:
-              - name: city_connect
-                dataset: dataos://icebase:retail/city
-                format: iceberg
-
-            logLevel: INFO
-            outputs:
-              - name: output01 #output dataset name
-                dataset: dataos://thirdparty01:sampledata?acl=rw #output dataset address
-                format: avro # file format
-            steps:
-              - sequence:
-                  - name: output01
-                    sql: SELECT * FROM city_connect
+```yaml title="object_storage_depots_write.yml"
+--8<-- "examples/resources/stacks/flare/object_storage_depots_write.yml"
 ```
 
 ## Advanced Configurations

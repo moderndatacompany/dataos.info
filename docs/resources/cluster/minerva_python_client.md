@@ -137,8 +137,11 @@ res = pd.read_sql(q, conn)
 res
 ```
 **Output:**
-![image](lens_query_output.png)
-<figcaption align = "center">Lens query output </figcaption>
+
+<div style="text-align: center;">
+  <img src="/resources/cluster/lens_query_output.png" alt="Lens query output" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>Lens query output</i></figcaption>
+</div>
 
 ### **SQLAlchemy**
 

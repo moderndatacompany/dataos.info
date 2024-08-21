@@ -68,6 +68,6 @@ CREATE SCHEMA web AUTHORIZATION ROLE PUBLIC WITH ( LOCATION = '/hive/data/web' )
 
 ## See also
 
-[ALTER SCHEMA](./alter_schema.md) 
+[ALTER SCHEMA](/interfaces/workbench/sql_syntaxes/alter_schema/) 
 
-[DROP SCHEMA](./drop_schema.md)
+[DROP SCHEMA](/interfaces/workbench/sql_syntaxes/drop_schema/)
