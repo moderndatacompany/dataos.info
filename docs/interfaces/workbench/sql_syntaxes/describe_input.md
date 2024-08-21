@@ -51,4 +51,4 @@ DESCRIBE INPUT my_select2;
 
 ## See also
 
-[PREPARE](./prepare.md)
+[PREPARE](/interfaces/workbench/sql_syntaxes/prepare/)

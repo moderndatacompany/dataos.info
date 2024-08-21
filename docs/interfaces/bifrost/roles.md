@@ -24,7 +24,7 @@ To create a custom role follow the below steps:
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/bifrost/roles.png" alt="Roles" style="width: 60rem; border: 1px solid black;">
+    <img src="/interfaces/bifrost/roles/roles.png" alt="Roles" style="width: 60rem; border: 1px solid black; width: 80% height: auto">
     <figcaption>Roles</figcaption>
   </div>
 </center>
@@ -34,7 +34,7 @@ To create a custom role follow the below steps:
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/bifrost/roles2.png" alt="Roles" style="width: 60rem; border: 1px solid black;">
+    <img src="/interfaces/bifrost/roles/roles2.png" alt="Roles" style="width: 60rem; border: 1px solid black; width: 80% height: auto">
     <figcaption>Roles</figcaption>
   </div>
 </center>

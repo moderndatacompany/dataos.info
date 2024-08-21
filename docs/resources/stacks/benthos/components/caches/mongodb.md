@@ -3,9 +3,7 @@
 Tags: MongoDB
 
 <aside>
-🗣 **EXPERIMENTAL**
-
-This component is experimental and, therefore, subject to change or removal outside of major version releases.
+🗣 <b>EXPERIMENTAL</b> This component is experimental and, therefore, subject to change or removal outside of major version releases.
 
 </aside>
 

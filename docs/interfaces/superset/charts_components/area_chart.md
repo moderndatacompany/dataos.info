@@ -1,11 +1,16 @@
 The area chart in Superset is a powerful data visualization tool designed to showcase and compare quantitative data trends over time or across categories. This chart type particularly illustrates cumulative values and highlights patterns between different series. 
 
-![Untitled](/interfaces/superset/charts_components/area_interface.png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/charts_components/area_interface.png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
-On selecting the Area chart, you can then proceed with its components. Common components such as METRIC, FILTERS, ROW LIMIT, SORT BY, ROLLING FUNCTION, PERIOD, and MIN PERIOD are already covered in the '[Common Charts Components](../charts_components.md)' section for reference.
+On selecting the Area chart, you can then proceed with its components. Common components such as METRIC, FILTERS, ROW LIMIT, SORT BY, ROLLING FUNCTION, PERIOD, and MIN PERIOD are already covered in the '[Common Charts Components](/interfaces/superset/charts_components/)' section for reference.
 
 
-![Untitled](/interfaces/superset/charts_components/area.png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/charts_components/area.png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
+
 
 1. **X-Axis: (Mandatory)**
     - Represents the horizontal axis, typically displaying time or categorical data.

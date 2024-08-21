@@ -140,7 +140,7 @@ To do this, use three dashes `---` to separate the two entities. For example, we
 6. The pipe character is used to represent multiline string. This is useful when dealing with complex or larger data. For example,
     
     ```yaml
-    flare:
+    stackSpec:
       job:
         inputs:
           - name:

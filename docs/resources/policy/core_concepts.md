@@ -32,7 +32,9 @@ True to its name, the Policy Decision Point (PDP) is responsible for making poli
 
 A Policy Enforcement Point (PEP) signifies the service at the point of access. Upon being accessed, it interacts with the Policy Decision Point (PDP), providing it with the necessary information to authorize the current context. Depending on the response received from the PDP, the PEP either permits or denies the user's intended action. For instance, during ingress, the proxy validates whether specific API paths are permissible or restricted and refrains from proxying the request if the PDP indicates denial.
 
-![PDP and PEP](/resources/policy/pdp_and_pep.png)
+<div style="text-align: center;">
+  <img src="/resources/policy/pdp_and_pep.png" alt="PDP and PEP" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 In this context, [Heimdall](/architecture/#heimdall) serves as the PDP for access policies, and [Data Policies](/resources/policy/#data-policy). The rest of the system's services function as PEPs, liaising with Heimdall for all authorization-related matters.
 
