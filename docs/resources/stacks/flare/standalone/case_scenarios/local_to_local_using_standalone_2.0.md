@@ -145,7 +145,9 @@ Type :help for more information.
 
 1. You can check the `dataout` folder under which the data is written.
 
-![Untitled](/resources/stacks/flare/running_flare_standalone/untitled_2.png)
+<div style="text-align: center;">
+  <img src="/resources/stacks/flare/running_flare_standalone/untitled_2.png" alt="Fill in the required fields" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 ### **Exploring Spark Commands in Scala Interactive Shell**
 
