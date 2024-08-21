@@ -12,4 +12,4 @@ Show the SQL statement that creates the specified schema.
 
 ## See also
 
-[CREATE SCHEMA](./create_schema.md)
+[CREATE SCHEMA](/interfaces/workbench/sql_syntaxes/create_schema/)

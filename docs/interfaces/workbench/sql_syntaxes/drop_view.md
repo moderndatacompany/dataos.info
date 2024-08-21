@@ -28,4 +28,4 @@ DROP VIEW IF EXISTS orders_by_date
 
 ## See also
 
-[CREATE VIEW](./create_view.md)
+[CREATE VIEW](/interfaces/workbench/sql_syntaxes/create_view/)

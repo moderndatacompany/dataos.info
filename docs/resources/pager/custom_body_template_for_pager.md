@@ -68,7 +68,7 @@ pager:
 
 ## Output
 
-<center>
-![Custom Body Template Output](./usage_examples/custom_body_template.png)
-<i>MS Team notification output</i>
-</center>
+<div style="text-align: center;">
+  <img src="/resources/pager/usage_examples/custom_body_template.png" alt="Custom Body Template Output" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>MS Team notification output</i></figcaption>
+</div>

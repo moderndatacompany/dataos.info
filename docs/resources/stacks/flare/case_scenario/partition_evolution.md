@@ -108,7 +108,7 @@ workflow:
   - name: dataos-tool-partition
     spec:
       stack: toolbox
-      toolbox:
+      stackSpec:
         dataset: dataos://icebase:raw01/ny_taxi_partition_01
         action:
           name: set_version

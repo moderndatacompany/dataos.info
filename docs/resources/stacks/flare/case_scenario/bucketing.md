@@ -40,9 +40,9 @@ workflow:
   dag:
     - name: sample
       spec:
-        stack: flare:3.0
+        stack: flare:5.0
         compute: runnable-default
-        flare:
+        stackSpec:
           driver:    
             coreLimit: 12000m
             cores: 2
@@ -111,7 +111,7 @@ workflow:
     spec:
       stack: toolbox
       compute: runnable-default
-      toolbox:
+      stackSpec:
         dataset: dataos://icebase:sample/unpivot_data_02
         action:
           name: set_version
@@ -130,9 +130,9 @@ workflow:
   dag:
     - name: sample
       spec:
-        stack: flare:3.0
+        stack: flare:5.0
         compute: runnable-default
-        flare:
+        stackSpec:
           driver:    
             coreLimit: 2200m
             cores: 2
@@ -210,7 +210,7 @@ workflow:
     spec:
       stack: toolbox
       compute: runnable-default
-      toolbox:
+      stackSpec:
         dataset: dataos://icebase:sample/bucket_large_data_02
         action:
           name: set_version

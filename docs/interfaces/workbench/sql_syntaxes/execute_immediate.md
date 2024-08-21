@@ -37,8 +37,8 @@ DEALLOCATE PREPARE statement_name
 
 ## See also
 
-[EXECUTE](./execute.md) 
+[EXECUTE](/interfaces/workbench/sql_syntaxes/execute/) 
 
-[PREPARE](./prepare.md) 
+[PREPARE](/interfaces/workbench/sql_syntaxes/prepare/) 
 
-[DEALLOCATE PREPARE](./deallocate_prepare.md)
+[DEALLOCATE PREPARE](/interfaces/workbench/sql_syntaxes/deallocate_prepare/)

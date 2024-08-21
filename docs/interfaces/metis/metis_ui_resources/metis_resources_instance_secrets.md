@@ -7,8 +7,11 @@
 
 Metis has integrated "Instance-Secret" as a "Resource" type entity for storing metadata related to the source for which it is created, and its current state within DataOS. On selecting **Instance-Secrets,** the following information will appear on the screen:
 
-![isecrets.png](metis_resources_instance_secrets/isecrets.png)
-<figcaption align = "center"> List of Instance Secrets  </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_instance_secrets/isecrets.png" alt="List of Instance Secrets" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>List of Instance Secrets</figcaption>
+</div>
+
 
 ## Filter pane
 
@@ -46,8 +49,11 @@ Each Instance Secret resource in the list will have a Card view that displays th
 
 In the card view, click anywhere except the resource name to get the overview.
 
-![isecret_overview.png](metis_resources_instance_secrets/isecret_overview.png)
-<figcaption align = "center"> Quick information  </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_instance_secrets/isecret_overview.png" alt="Quick information" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Quick information</figcaption>
+</div>
+
 
 This includes the following information for quick reference:
 

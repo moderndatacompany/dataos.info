@@ -1,0 +1,59 @@
+name: wf-customer-quality
+version: v1
+type: workflow
+tags:
+  - demo.customer
+  - Tier.Gold
+  - Domain.Finance
+description: The role involves conducting thorough and detailed quality analysis, including data assertion, of extensive raw customer data using the advanced features of the DataOS platform.
+workspace: public
+workflow:
+  dag:
+    - name: customer-quality
+      description: The role involves conducting thorough and detailed quality analysis, including data assertion, of extensive raw customer data using the advanced features of the DataOS platform.
+      title: customer Quality Assertion 
+      spec:
+        stack:  soda+python:1.0 
+        logLevel: INFO
+        compute: runnable-default
+        resources:
+          requests:
+            cpu: 1000m
+            memory: 250Mi
+          limits:
+            cpu: 1000m
+            memory: 250Mi
+        stackSpec:
+          inputs:
+            - dataset: dataos://icebase:sales_360/customer?acl=rw
+              options:
+                engine: minerva
+                clusterName: system   
+              checks:
+              checks:
+                # - invalid_count(customer_id) = 0:
+                #     valid regex: ^[A-Za-z0-9]{5}$
+
+                - invalid_count(gender) <= 0:
+                    valid regex: \b(?:MALE|FEMALE|OTHER)\b
+                  
+                - invalid_percent(email_id) < 10%:
+                    valid regex: ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
+                   
+
+                - invalid_count(social_class) <= 0:
+                    valid regex: \b(?:Lower Class|Middle Class|Upper Class)\b   
+
+                - schema:
+                    name: Confirm that required columns are present
+                    warn:
+                      when required column missing: [customer_id, gender, email_id, phone_number]
+                    fail:
+                      when required column missing:
+                        - customer_id
+                        - gender
+                        - email_id 
+                
+
+
+

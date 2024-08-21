@@ -4,7 +4,9 @@
 
 DataOS uses Flare workflows to carry out large-scale data transformation, ingestion, profiling, syndication, and even a combination of these tasks.
 
-![diagram 03.jpg](/resources/stacks/flare/basic_concepts/diagram_03.jpg)
+<div style="text-align: center;">
+  <img src="/resources/stacks/flare/basic_concepts/diagram_03.jpg" alt="diagram 03.jpg" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 Flare is a declarative stack that can process large-scale data processing workflows using sequential YAML. On the other hand, a workflow is a primitive/Resource within DataOS that runs a sequence of jobs in a specific order. A workflow is a DAG (Directed Acyclic Graph) of jobs. To learn more about workflows, click [here](/resources/workflow/). 
 
@@ -167,9 +169,9 @@ workflow: # Workflow
       tags:
       - Connect
       - City
-      stack: flare:3.0 # Stack is Flare, so its Flare Job
+      stack: flare:5.0 # Stack is Flare, so its Flare Job
       compute: runnable-default
-      flare:
+      stackSpec:
         job:
           explain: true
           logLevel: INFO
@@ -264,8 +266,8 @@ workflow:
       tags:
       - Connect
       - City
-      stack: flare:3.0
-      flare:
+      stack: flare:5.0
+      stackSpec:
         job:
           explain: true
           inputs:
@@ -442,7 +444,7 @@ INFO[0001] 🔍 workflow...complete
 
   JOB NAME |   STACK    |        JOB TITLE        | JOB DEPENDENCIES  
 -----------|------------|-------------------------|-------------------
-  city-001 | flare:3.0  | City Dimension Ingester |                   
+  city-001 | flare:5.0  | City Dimension Ingester |                   
   system   | dataos_cli | System Runnable Steps   |                   
 
   RUNTIME | PROGRESS |          STARTED          |         FINISHED           
@@ -482,7 +484,7 @@ INFO[0001] 🔍 workflow...complete
 
   JOB NAME |   STACK    |        JOB TITLE        | JOB DEPENDENCIES  
 -----------|------------|-------------------------|-------------------
-  city-001 | flare:2.0  | City Dimension Ingester |                   
+  city-001 | flare:5.0  | City Dimension Ingester |                   
   system   | dataos_cli | System Runnable Steps   |                   
 
   RUNTIME | PROGRESS |          STARTED          |         FINISHED           
@@ -706,7 +708,7 @@ INFO[0002] 🔍 workflow...complete
 
   JOB NAME |   STACK    |        JOB TITLE        | JOB DEPENDENCIES  
 -----------|------------|-------------------------|-------------------
-  city-999 | flare:2.0  | City Dimension Ingester |                   
+  city-999 | flare:5.0  | City Dimension Ingester |                   
   system   | dataos_cli | System Runnable Steps   |                   
 
     RUNTIME  | PROGRESS |          STARTED          |         FINISHED           
@@ -747,7 +749,7 @@ workflow:
 	    spec:
 	      stack: toolbox # Stack is Toolbox, so its a Toolbox Job
 	      compute: runnable-default
-	      toolbox:
+	      stackSpec:
 	        dataset: dataos://icebase:retailsample/city?acl=rw
 	        action:
 	          name: set_version

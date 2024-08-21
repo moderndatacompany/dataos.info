@@ -2,18 +2,19 @@
 
 To create and manage the filters, on the left corner of the dashboard click on the blue arrow `→|`, and you will be redirected to the **Add and edit filters** interface.
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/filter_types/Untitled%20(10).png" alt="Your Image Description" />
-</p>
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/filter_types/Untitled%20(10).png" alt="Your Image Description" style="border:1px solid black; width: 30%; height: auto;">
+</div>
 
 
 ## **Filter Types**
 
 In the window labeled **Add and edit filters** below, you'll see two tabs: **Settings** and **Scoping**. Our immediate attention will be on the  **Settings** tab, which is the default selection.
 
-![Untitled](/interfaces/superset/dashboard_filtering/filter_types/image.png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/filter_types/image.png" alt="Your Image Description" style="border:1px solid black; width: 70%; height: auto;">
+</div>
 
-The initial section comprises four mandatory fields:
 
 - **Type of Filter**: Choose from various filter types, such as **Value**, **Numerical Range**, **Time Range**, **Time Column**, and **Time Grain** (see individual descriptions below).
 - **Dataset**: Select the dataset to be used for the dashboard's charts. By default, all datasets linked to the dashboard's charts will be accessible for selection. This option is visible when either the **Value**, **Numerical Range**, **Time Column**, or **Time Grain** filter types are chosen.
@@ -28,15 +29,15 @@ For instance: If you opt for a **Value** filter type and then, in the **Column**
 
 Here's what the configuration might look like:
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/filter_types/Untitled%20(11).png" alt="Your Image Description" />
-</p>
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/filter_types/Untitled%20(11).png" alt="Your Image Description" style="border:1px solid black; width: 60%; height: auto;">
+</div>
 
 and the drop-down filter, titled "Select the year" from the **Filter Name** field, looks as follows:
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/filter_types/Untitled%20(12).png" alt="Your Image Description" />
-</p>
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/filter_types/Untitled%20(12).png" alt="Your Image Description" style="border:1px solid black; width: 60%; height: auto;">
+</div>
 
 In the above example, we opted to filter by the year 2022.
 
@@ -50,29 +51,31 @@ For instance: If you choose a **Numerical Range** filter type and then, in the *
 
 Here's what the configuration might look like:
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/filter_types/Untitled%20(13).png" alt="Your Image Description" />
-</p>
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/filter_types/Untitled%20(13).png" alt="Your Image Description" style="border:1px solid black; width: 70%; height: auto;">
+</div>
+
 
 and the range slider filter, titled "Select a Range" from the **Filter Name** field, appears as follows:
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/filter_types/range.png" alt="Your Image Description" />
-</p>
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/filter_types/range.png" alt="Your Image Description" style="border:1px solid black; width: 50%; height: auto;">
+</div>
+
 
 In the above example, we choose to specify a range from 43 to 64.
 
 Note that you can inspect the minimum slider setting by hovering your cursor over the leftmost anchor point.
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/filter_types/min.png" alt="Your Image Description" />
-</p>
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/filter_types/min.png" alt="Your Image Description" style="border:1px solid black; width: 50%; height: auto;">
+</div>
 
 Note that you can inspect the maximum slider setting by hovering your cursor over the rightmost anchor point.
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/filter_types/max.png" alt="Your Image Description" />
-</p>
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/filter_types/max.png" alt="Your Image Description" style="border:1px solid black; width: 50%; height: auto;">
+</div>
 
 To implement the filter, specify a numerical range and then click on **Apply Filters**. Subsequently, the charts within the dashboard will refresh, exhibiting the filtered data.
 
@@ -84,17 +87,19 @@ This filter type implements a button filter that, when chosen, activates the Sup
 
 Here's what the configuration will look like:
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/filter_types/time.png" alt="Your Image Description" />
-</p>
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/filter_types/time.png" alt="Your Image Description" style="border:1px solid black; width: 60%; height: auto;">
+</div>
+
 
 In this example, we specified a default value of "Last Year" and defined a filter name of "Select Time Range".
 
 This configuration will look like:
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/filter_types/Untitled%20(15).png" alt="Your Image Description" />
-</p>
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/filter_types/Untitled%20(15).png" alt="Your Image Description" style="border:1px solid black; width: 50%; height: auto;">
+</div>
+
 
 To apply the filter, select and configure a time range, then select **Apply Filters**. The charts within the dashboard will refresh and display the filtered data.
 
@@ -108,16 +113,16 @@ The **Time Column** filter type is most suitable when there are *several* time c
 
 Here's what the configuration might look like:
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/filter_types/Untitled%20(16).png" alt="Your Image Description" />
-</p>
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/filter_types/Untitled%20(16).png" alt="Your Image Description" style="border:1px solid black; width: 50%; height: auto;">
+</div>
+
 
 and the drop-down filter, titled "Select Time Column" from the **Filter Name** field, appears as follows:
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/filter_types/Untitled%20(17).png" alt="Your Image Description" />
-</p>
-
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/filter_types/Untitled%20(17).png" alt="Your Image Description" style="border:1px solid black; width: 50%; height: auto;">
+</div>
 
 To apply the dashboard-level time column, select a time column option and then select **Apply Filters**. The charts within the dashboard will refresh and display the filtered data.
 
@@ -127,15 +132,15 @@ This filter type generates a drop-down menu that allows you to select a time gra
 
 Here's what the configuration might look like:
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/filter_types/grain.png" alt="Your Image Description" />
-</p>
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/filter_types/grain.png" alt="Your Image Description" style="border:1px solid black; width: 50%; height: auto;">
+</div>
 
 and the drop-down filter, titled "Select Time Grain" from the **Filter Name** field, appears as follows:
 
-<p align="center">
-  <img src="/interfaces/superset/dashboard_filtering/filter_types/Untitled%20(18).png" alt="Your Image Description" />
-</p>
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_filtering/filter_types/Untitled%20(18).png" alt="Your Image Description" style="border:1px solid black; width: 60%; height: auto;">
+</div>
 
 In the above example, we choose to specify a time grain of **Minute**.
 

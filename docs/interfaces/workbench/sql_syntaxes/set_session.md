@@ -36,6 +36,6 @@ The example `acc01.optimize_locality_enabled` catalog session property does no
 
 ## See also
 
-[RESET SESSION](./reset_session.md) 
+[RESET SESSION](/interfaces/workbench/sql_syntaxes/reset_session/) 
 
-[SHOW SESSION](./show_session.md)
+[SHOW SESSION](/interfaces/workbench/sql_syntaxes/show_session/)

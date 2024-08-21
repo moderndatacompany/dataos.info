@@ -7,8 +7,11 @@
 
 Metis has integrated "**Cluster**" as a "Resource type" entity for storing metadata related to its Compute and configuration settings, Cluster analysis to view the query load distribution along with failed queries for each of the clusters up and running within the DataOS instance. On selecting **Clusters,** the following information will appear on the screen:
 
-![clusters.png](metis_resources_clusters/clusters.png)
-<figcaption align = "center"> List of Clusters  </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_clusters/clusters.png" alt="List of Clusters" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>List of Clusters</figcaption>
+</div>
+
 
 ## Filter pane
 
@@ -31,10 +34,7 @@ Here, Clusters will be listed. You can customize how the list is displayed. On t
 | Option | Description |
 | --- | --- |
 | Search Result | Count of Clusters |
-| Sorting | Choose the Sorting order
-- Last updated
-- Relevance
-- Ascending/Descending order. |
+| Sorting | Choose the Sorting order<br><ul><li>Last updated</li><br><li>Relevance</li><br><li>Ascending/Descending order</li></ul> |
 
 Each Cluster in the list will display the following information:
 
@@ -51,9 +51,11 @@ Each Cluster in the list will display the following information:
 ## Overview pane
 
 Click anywhere except the Cluster name to view the overview. 
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_clusters/cluster_overview.png" alt="Quick information" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Quick information</figcaption>
+</div>
 
-![cluster_overview.png](metis_resources_clusters/cluster_overview.png)
-<figcaption align = "center"> Quick information  </figcaption>
 
 This includes the following quick reference information:
 
@@ -71,8 +73,11 @@ This includes the following quick reference information:
 
 In the Result or Overview pane, click on the name of the Cluster to open the Resource Details page, which includes:
 
-![cluster_details.png](metis_resources_clusters/cluster_details.png)
-<figcaption align = "center"> Comprehensive details  </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_clusters/cluster_details.png" alt="Comprehensive details" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Comprehensive details</figcaption>
+</div>
+
 
 ### **Cluster Information**
 In addition to basic Cluster information, the following details and options are provided.
@@ -90,9 +95,9 @@ In addition to basic Cluster information, the following details and options are 
 | Domain | Allows the user to add the predefined domain name. |
 | State | Cluster state  |
 | Tags | Add/Remove tags/glossary terms/tag groups. |
-| Request Tags Update (?) | Request updates in tags and assign users to do it. |
+| Request Tags Update (? icon) | Request updates in tags and assign users to do it. |
 | Description | Allows the user to edit the description |
-| Request Description Update (?) | Request updates in the description and assign users to do it |
+| Request Description Update (? icon) | Request updates in the description and assign users to do it |
 | Tasks | Option to view tasks created. In the side pane, the user will get the option to create a new task |
 | Conversations | View conversations in the side pane. The user will get the option to start a new conversation by clicking on the ‘+’ sign |
 
@@ -109,9 +114,8 @@ The subsequent tabs will provide you with more detailed information, as explaine
 | Aggregate Status |  |
 | Compute | Compute resources used for allocating processing power; default is query-default |
 | Run As User | Authority granted to perform operations on behalf of the assigned user ID |
-| Configurations
-- Requests
-- Limits | CPU and Memory allocation |
+| Configurations <br><ul><li>Requests</li><br><li>Limits</li></ul> | CPU and Memory allocation |
+| Catalogs | List of queryable sources |
 | Life Cycle Events | Logs significant occurrences such as creation and deletion |
 
 ### **Activity Feeds & Tasks**
@@ -126,8 +130,11 @@ This section offers comprehensive information regarding the cluster's manifest. 
 
 This section provides an overview of the cluster's execution history. It offers a concise summary of past runs, allowing users to quickly access information about the cluster's previous operations and performance.
 
-![cluster_runtime.png](metis_resources_clusters/cluster_runtime.png)
-<figcaption align = "center">Runtime information  </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_clusters/cluster_runtime.png" alt="Runtime information" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Runtime information</figcaption>
+</div>
+
 
 You can access more details by clicking on the link.
 
@@ -155,5 +162,7 @@ This option empowers you to gain valuable insights into the performance and effi
 
 The cluster analysis provides visibility into any failed queries within the cluster running within the DataOS instance. This information is invaluable for troubleshooting issues and ensuring the smooth operation of your data processing infrastructure.
 
-![Screen Shot 2023-09-18 at 10.56.46 AM.png](metis_resources_clusters/Screen_Shot_2023-09-18_at_10.56.46_AM.png)
-<figcaption align = "center"> Cluster analysis </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_clusters/Screen_Shot_2023-09-18_at_10.56.46_AM.png" alt="Cluster analysis" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Cluster analysis</figcaption>
+</div>

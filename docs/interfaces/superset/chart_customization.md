@@ -2,7 +2,9 @@
 
 Customizing charts in Superset allows you to enhance visual representation by adding more details, colors, and features. This guide provides an overview of common customization options for various charts, empowering you to tailor visuals to your specific needs.
 
-![Untitled](/interfaces/superset/charts_customization/Untitled.png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/charts_customization/Untitled.png" alt="Untitled image" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 ## Chart Orientation
 

@@ -1,6 +1,6 @@
 # Financial Services Accelerator Data Product
 
-Financial Services Accelerator is an entity-first Data Product designed to provide a unified and persistent set of identifiers and attributes that describe customers within the financial services domain. This data product aims to seamlessly connect customer data, product data, and transaction data across various organizational silos and business units. It is a master dataset continuously updated in real-time, ensuring accuracy and reliability. The steps required to develop this Data Product are given below. 
+Financial Services Accelerator is a Data Product designed to provide a unified and persistent set of identifiers and attributes that describe customers within the financial services domain. This Data Product aims to seamlessly connect customer data, product data, and transaction data across various organizational silos and business units. It is a master dataset continuously updated in real-time, ensuring accuracy and reliability. The steps required to develop this Data Product are given below. 
 
 ## Pre-requisites
 To create the Data Product within DataOS, following requirements were needed:
@@ -14,7 +14,7 @@ To create the Data Product within DataOS, following requirements were needed:
 
 ## Define Usecase
 
-FS Accelerator involves providing a unified and persistent set of customer identifiers and attributes across organizational silos in the financial services domain. Cross selling credit cards, based on the customer's transaction history.
+FS Accelerator involves providing a unified and persistent set of customer identifiers and attributes across organizational silos in the financial services domain. This example involves cross selling credit cards, based on the customer's transaction history.
 
 ## Discover and Explore
 Upon defining the use case, it has been discovered that no existing Data Product addresses the requirements associated with this use case. Consequently, we will proceed with the development of a new Data Product tailored to meet the FS Accelerator use case.
@@ -761,6 +761,51 @@ In this step, we determined the specific resources required to develop this Data
 
 In this step we define the quality checks needed to measure the performance of the Data Product.
 
+### **Create Data Product manifest file**
+
+This is the final step, where we create a manifest file for Data Product as given below:
+
+```yaml
+name: customer-overview-dp
+version: v1alpha
+type: data
+tags:
+  - data-product
+  - dataos:type:product
+  - dataos:product:data
+  - dataos:product:data:customer-overview-dp
+description: A unified, accurate, and persistent set of identifiers and attributes that describe a customer and that can be used to connect customer data across multiple organizational silos, and business processes and units. This mastered data, that is continuously live and up-to-date, can be fed to operational and analytical systems to drive business.
+entity: product
+v1alpha:
+  data:
+    domain: financial-services
+    resources:
+      - description: Data Product pipeline
+        purpose: build the data product's data set
+        type: workflow
+        version: v1
+        refType: dataos
+        name: wf-customer-overview-pipeline
+        workspace: fs-domain-workspace
+    inputs:
+      - description: customer_overview
+        purpose: source
+        refType: dataos
+        ref: dataos://twdepot:finance_service/customer_overview
+    outputs:
+      - description: Data Product Dataset
+        purpose: consumption
+        refType: dataos_address
+        ref: dataos://icebasetw:fs_accelerator/customer_overview_dp
+
+```
+
+Apply the Data Product manifest file by executing the below command:
+
+```shell
+dataos-ctl product apply -f ${path-to-dp-manifest-file}
+```
+
 ## Develop
 
 Steps required to build this Data Product are:
@@ -911,9 +956,9 @@ workflow:
     title:  Fs Customer Overview Raw  Dataset
     description: This job will give fs customer overview data 
     spec:
-      stack: flare:4.0
+      stack: flare:5.0
       compute: fs-runnable-default
-      flare:
+      stackSpec:
         driver:
           coreLimit: 1800m
           cores: 1
@@ -982,9 +1027,9 @@ workflow:
     title:  Fs Customer Overview Dataset
     description: This job will give fs Customer overview data 
     spec:
-      stack: flare:4.0
+      stack: flare:5.0
       compute: fs-runnable-default
-      flare:
+      stackSpec:
         driver:
           coreLimit: 1800m
           cores: 1
@@ -1119,6 +1164,7 @@ We utilized the Flare stack to carry out the data profiling task. Below is the m
 
 <details>
   <summary>Worflow manifest</summary>
+
 ```yaml
 version: v1
 name: wf-customer-overview-profile
@@ -1132,13 +1178,13 @@ workflow:
   - name: customer-overview-profile
     title: Customer Overview Profiler 
     spec:
-      stack: flare:4.0
+      stack: flare:5.0
       compute: fs-runnable-default
       title: Customer Overview Profiler 
       persistentVolume:
         name: persistent-v
         directory: fides
-      flare:
+      stackSpec:
         driver:
           coreLimit: 1800m
           cores: 1
@@ -1318,7 +1364,7 @@ workflow:
         stack: scanner:2.0
         runAsUser: metis
         compute: fs-runnable-default
-        scanner:
+        stackSpec:
           depot: dataos://icebasetw
           sourceConfig:
             config:
@@ -1344,11 +1390,11 @@ We have implemented the Flare stack, orchestrated by Workflow, to perform qualit
         title: Metrics and checks
         description: The job performs metrics calculations  checks and metrix on customer overview
         spec:
-          stack: flare:4.0
+          stack: flare:5.0
           compute: runnable-default
           title: Customerdp data Quality Datasets
           description: The job performs metrics calculations  checks and metrix on customer overview
-          flare:
+          stackSpec:
             driver:
               coreLimit: 2400m
               cores: 2
@@ -1463,20 +1509,38 @@ This Data Product is utilized to generate dashboards in [Superset](/interfaces/s
 ### **Campaign Funnel Dashboard**
 Campaign Funnel Dashboard provides a comprehensive overview of a marketing campaign's performance by tracking the progression of customers through different stages of the campaign funnel. The dashboard is divided into two main sections: the Campaign Funnel and Campaign Stats.
 
-<img src="/products/data_product/templates/campaign-funnel-dashboard-2024-07-15T11-07-45.626Z.jpg" alt="Description" width="1600">
+<center>
+  <div style="text-align: center;">
+    <img src="/products/data_product/templates/campaign-funnel-dashboard-2024-07-15T11-07-45.626Z.jpg" alt="Outlined Image" style="border:1px solid black; width: 80%; height: auto;">
+  </div>
+</center>
+
+
 The Campaign Funnel section displays a bar chart of customers at various campaign stages for different archetypes: Deal Chasers, Financially Stressed, Generic, Prosperous and Content, Recovering Credit Users, and Self Aware Avoiders. Stages include Customer Reached, Explored Product, Started to Apply, Engagement, Completed Application, KYC, and Onboarded. The Campaign Stats section provides a table summarizing the count of customers at each stage for these archetypes, allowing for a quick comparison and highlighting campaign effectiveness for each group.
 
 
 ### **Lead Generation Dashboard**
 Lead Generation Dashboard provides an extensive overview of customer data, segmented across various dimensions to facilitate a deeper understanding of customer behaviors, demographics, and sales performance. The dashboard is divided into several key sections:
-<img src="/products/data_product/templates/lead-generation-final-view-2024-07-15T11-08-51.641Z.jpg" alt="Description" width="1600">
+
+
+<center>
+  <div style="text-align: center;">
+    <img src="/products/data_product/templates/lead-generation-final-view-2024-07-15T11-08-51.641Z.jpg" alt="Outlined Image" style="border:1px solid black; width: 80%; height: auto;">
+  </div>
+</center>
+
 
 This dashboard displays key metrics: a total customer count of 520k, with segmentation by cross-sell archetypes shown in a pie chart. Sales data for various products and their contribution to total sales are visualized in a bar chart. Customer risk categories (Low, Medium, High) and affluence levels are also depicted in bar charts, each showing similar distributions (Low: 62%, Medium: 17%, High: 21%). Demographics are broken down into Rural (156k), Semi-Urban (126k), and Urban (238k) in another bar chart. Geographic distribution of customers by states is shown, along with a line chart tracking transaction counts and modes (UPI, QR, Card) over time. Lastly, a bar chart analyzes reasons for transactions, such as Exam, Food & Grocery, and Travel.
 
 ### **Spend Analysis Dashboard**
 Spend Analysis Dashboard provides an in-depth analysis of customer spending behaviors over time, segmenting the data across various dimensions to offer a comprehensive view of spending patterns and trends. The dashboard is divided into several key sections:
 
-<img src="/products/data_product/templates/spend-analysis-2024-07-15T11-08-57.816Z.jpg" alt="Description" width="1600">
+
+<center>
+  <div style="text-align: center;">
+    <img src="/products/data_product/templates/spend-analysis-2024-07-15T11-08-57.816Z.jpg" alt="Outlined Image" style="border:1px solid black; width: 80%; height: auto;">
+  </div>
+</center>
 
 This dashboard tracks customer spending with a line chart showing a cumulative spend of 20.3M over time. Category-wise spending (Travel, Ecom, Food & Grocery) trends are also highlighted. A pie chart shows customer distribution, with 65,516 in the Low Spend segment. Another pie chart depicts spending distribution, with Low Spend at 25.5B. A Sankey diagram illustrates spend flow across dimensions like Travel, Food & Grocery, UPI, and Card. Transaction amounts for different reasons are compared in a bar chart: Low Spend (Ecom: 5.28B, Food & Grocery: 11.8B, Travel: 8.9B) and Medium Spend (Ecom: 4.73M, Food & Grocery: 6.52M, Travel: 7.14M). Finally, a treemap shows the relative size of spend dimensions, including Low Spend (25.5B), Food & Grocery (6.1B), Travel (8.9B), UPI (1.95B), Card (3.24B), and Exam (5.28B).
 

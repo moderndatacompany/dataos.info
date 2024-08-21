@@ -7,8 +7,13 @@
 
 Metis has integrated "Stack" as a "Resource” type entity for storing metadata related to the unique attributes that define its capabilities within DataOS. On selecting **Stacks,** the following information will appear on the screen:
 
-![stacks.png](metis_resources_stacks/stacks.png)
-<figcaption align = "center"> List of Stacks  </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_resources/metis_resources_stacks/stacks.png" alt="List of Stacks" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>List of Stacks</figcaption>
+  </div>
+</center>
+
 
 ## Filter pane
 
@@ -46,8 +51,13 @@ Each stack resource in the list will have a Card view that displays the followin
 
 In the card view, click anywhere except the resource name to get the overview.
 
-![stack_overview.png](metis_resources_stacks/stack_overview.png)
-<figcaption align = "center"> Quick information  </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_resources/metis_resources_stacks/stack_overview.png" alt="Quick information" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Quick information</figcaption>
+  </div>
+</center>
+
 
 This includes the following information for quick reference:
 
@@ -65,8 +75,13 @@ This includes the following information for quick reference:
 
 In the Result or Overview pane, click on the name of the Stack to open the Resource Details page, which includes:
 
-![stack_detail.png](metis_resources_stacks/stack_detail.png)
-<figcaption align = "center"> Comprehensive details  </figcaption>
+<center>
+  <div style="text-align: center;">
+    <img src="/interfaces/metis/metis_ui_resources/metis_resources_stacks/stack_detail.png" alt="Comprehensive details" style="border:1px solid black; width: 80%; height: auto">
+    <figcaption>Comprehensive details</figcaption>
+  </div>
+</center>
+
 
 ### Stacks Information
 

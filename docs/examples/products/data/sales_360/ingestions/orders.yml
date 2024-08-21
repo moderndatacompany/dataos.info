@@ -1,0 +1,181 @@
+version: v1
+name: wf-order-enriched-data
+type: workflow
+tags:
+  - company.order_enriched
+  - Tier.Gold
+  - Domain.Finance
+description: The job is to ingest order enriched data for company StrideRight Shoes from Bigquery Source to Icebase.
+workflow:
+  title: Order Enriched Data
+  dag:
+    - name: order-enriched-data
+      description: The job is to ingest order enriched data for company StrideRight Shoes from Bigquery Source to Icebase.
+      title: Order Enriched Data
+      spec:
+        tags:
+          - company.order_enriched
+        stack: flare:4.0
+        compute: runnable-default
+        stackSpec:
+          driver:
+            coreLimit: 2200m
+            cores: 2
+            memory: 2824m
+          executor:
+            coreLimit: 3200m    
+            cores: 2
+            instances: 2
+            memory: 4024m
+          job:
+            explain: true
+            inputs:
+              - name: transactions
+                dataset: dataos://bigquery:sales_360/transaction?acl=rw
+                options:
+                  driver: org.postgresql.Driver
+
+              - name: order_data
+                dataset: dataos://bigquery:sales_360/order_data?acl=rw
+                options:
+                  driver: org.postgresql.Driver
+
+              - name: order_line_item
+                dataset: dataos://bigquery:sales_360/order_line_item?acl=rw
+                options:
+                  driver: org.postgresql.Driver
+
+              - name: product
+                dataset: dataos://bigquery:sales_360/product?acl=rw
+                options:
+                  driver: org.postgresql.Driver
+
+              - name: customer
+                dataset: dataos://bigquery:sales_360/customers?acl=rw  
+
+            logLevel: INFO
+            outputs:
+              - name: final
+                dataset: dataos://icebase:sales_analytics/order_enriched?acl=rw
+                format: Iceberg
+                description: The "order_enriched" table contains a dataset that has been augmented with additional information to provide deeper insights or to support more comprehensive analyses. This enrichment process involves integrating supplementary data from various sources or applying data transformation and enhancement techniques to the original dataset. Here are some common characteristics of an enriched table.
+                tags:
+                  - company.order_enriched
+                options:
+                  saveMode: overwrite
+                  iceberg:
+                    properties:
+                      write.format.default: parquet
+                      write.metadata.compression-codec: gzip
+                title: order enriched data
+
+            steps:
+              - sequence:
+                  - name: transaction
+                    sql: |
+                      SELECT
+                        transaction_id,
+                        customer_id,
+                        transaction_date,
+                        order_id,
+                        transaction_amount,
+                        payment_method
+                      FROM
+                        transactions
+                      WHERE
+                        transaction_date <= CURRENT_TIMESTAMP
+                        AND year(transaction_date) = 2024
+                    functions:
+                      - name: cleanse_column_names
+                      - name: change_column_case 
+                        case: lower
+
+                  - name: orders
+                    sql: |
+                      SELECT
+                        o.order_id,
+                        customer_id,
+                        o.order_date,
+                        olt.productsku,
+                        order_delivery_date,
+                        order_total_amount,
+                        shipping_method,
+                        order_status
+                      FROM
+                        order_data o
+                        LEFT JOIN order_line_item olt ON o.order_id = olt.order_id
+                      WHERE
+                        o.order_date <= CURRENT_TIMESTAMP
+                        AND year(o.order_date) = 2024
+                    functions:
+                      - name: cleanse_column_names
+                      - name: change_column_case 
+                        case: lower
+
+
+                  - name: order_trans
+                    sql: |
+                      SELECT
+                        o.order_id,
+                        o.customer_id,
+                        o.productsku ,
+                        o.order_date,
+                        order_delivery_date,
+                        order_total_amount,
+                        shipping_method,
+                        order_status,
+                        transaction_id,
+                        transaction_date,
+                        transaction_amount,
+                        payment_method,
+                        product_category,
+                        model_name,
+                        brand_name,
+                        product_name,
+                        product_size
+                      FROM
+                        orders o
+                        LEFT JOIN transaction t ON o.order_id = t.order_id
+                        LEFT JOIN product p ON o.productsku = p.sku_id 
+                    functions:
+                      - name: cleanse_column_names
+                      - name: change_column_case 
+                        case: lower
+
+                  - name: final
+                    sql: |
+                      SELECT
+                        order_id,
+                        ot.customer_id,
+                        productsku ,
+                        cast(order_date as timestamp) as order_date,
+                        cast(order_delivery_date as timestamp) as order_delivery_date,
+                        cast(order_total_amount as double) as order_total_amount,
+                        shipping_method,
+                        order_status,
+                        transaction_id,
+                        cast(transaction_date as timestamp) as transaction_date,
+                        cast(transaction_amount as timestamp) as transaction_amount,
+                        payment_method,
+                        product_category,
+                        model_name,
+                        brand_name,
+                        product_name,
+                        product_size
+                        first_name,
+                        last_name,
+                        gender,
+                        phone_number,
+                        email_id,
+                        cast(age as int) as age,
+                        city,
+                        state,
+                        country,
+                        zip_code
+                      FROM
+                        order_trans ot
+                        LEFT JOIN customer c ON ot.customer_id = c.customer_id
+                    functions:
+                      - name: cleanse_column_names
+                      - name: change_column_case 
+                        case: lower

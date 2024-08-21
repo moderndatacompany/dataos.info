@@ -46,9 +46,9 @@ workflow:
       spec:
         tags:
           - GA-Sessions-Daily-Data-Raw
-        stack: flare:4.0
+        stack: flare:5.0
         compute: runnable-default
-        flare:
+        stackSpec:
           driver:
             coreLimit: 6000m
             cores: 2
@@ -113,7 +113,7 @@ workflow:
       spec:
         stack: toolbox
         compute: runnable-default
-        toolbox:
+        stackSpec:
           dataset: dataos://icebase:google_analytics/ga_sessions_daily_data_raw?acl=rw
           action:
             name: set_version

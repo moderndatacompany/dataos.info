@@ -6,13 +6,19 @@ Customize your dashboards to improve the user experience and better align with t
 
 Superset has a variety of layout elements that can be used to organize and segment your content on dashboards. To add one, navigate to the LAYOUT ELEMENTS tab and drag and drop it to your dashboard:
 
-![Untitled](/interfaces/superset/dashboard_customization/1.png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_customization/1.png" alt="Untitled image" style="border:1px solid black; width: 80%; height: auto;">
+</div>
+
 
 ### Tabs
 
 Tabs are used to segment your charts into different groups.
 
-![Untitled](/interfaces/superset/dashboard_customization/2.jpeg)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_customization/1.png" alt="Untitled image" style="border:1px solid black; width: 80%; height: auto;">
+</div>
+
 
 <aside class="callout">
 🗣 Remember to drag and drop the tabs element at the very beginning of your dashboard.
@@ -22,34 +28,39 @@ Tabs are used to segment your charts into different groups.
 
 Rows and Columns can be added to configure the chart layout further.
 
-![Untitled](/interfaces/superset/dashboard_customization/3.jpeg)
-
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_customization/3.png" alt="Untitled image" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 Similar to columns, Incorporating column elements into your dashboard requires adequate space allocation. If space becomes limited, consider adjusting the ratios of existing charts to create room.
 
-![Untitled](/interfaces/superset/dashboard_customization/4.jpeg)
-
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_customization/4.png" alt="Untitled image" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 ### Header
 
 Header is used to add titles.
 
-![Untitled](/interfaces/superset/dashboard_customization/5.jpeg)
-
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_customization/5.png" alt="Untitled image" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 ### Text
 
 Text can be used to add text and advanced features, such as images, markdown, and HTML content.
 
-![Untitled](/interfaces/superset/dashboard_customization/6.jpeg)
-
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_customization/6.png" alt="Untitled image" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 ### Divider
 
 Divider is useful to isolate the parts of your dashboard.
 
-![Untitled](/interfaces/superset/dashboard_customization/7.jpeg)
-
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_customization/7.png" alt="Untitled image" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 ## **Adding Tables to Dashboards**
 
@@ -74,7 +85,9 @@ Adding tables to your dashboards, using HTML with the **Text** element, is also 
 
 Just paste the above HTML code into the text element by replacing the header titles and other values with respective column names and their actual values.
 
-![Untitled](/interfaces/superset/dashboard_customization/8.png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_customization/8.png" alt="Untitled image" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 ## Color Palettes
 
@@ -96,6 +109,10 @@ Superset would use the same color for metrics/dimensions displayed on multiple c
 4. Expand the **ADVANCED** section.
 5. Under the **JSON METADATA** inside “color_scheme” write your color scheme name of which colors you want for your labels then under label_colors give the label name and color code of your choice. For example:
 
-![Untitled](/interfaces/superset/dashboard_customization/9.png)
+
+<div style="text-align: center;">
+  <img src="/interfaces/superset/dashboard_customization/9.png" alt="Untitled image" style="border:1px solid black; width: 80%; height: auto;">
+</div>
+
 
 Just change the color_scheme with your desired color_scheme and under the label_colors write your label name along with your desired color code.

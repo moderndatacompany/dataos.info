@@ -45,7 +45,7 @@ workflow:
       spec: 
       stack: toolbox 
       compute: runnable-default 
-      toolbox: 
+      stackSpec: 
         dataset: dataos://icebase:sample/city?acl=rw 
         action: 
           name: set_version 
@@ -55,7 +55,7 @@ The table below elucidates the various attributes within the Toolbox-specific Se
 
 | Field | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`toolbox`](/resources/stacks/data_toolbox/data_toolbox_grammar#toolbox) | object | none | none | mandatory |
+| [`stackSpec`](/resources/stacks/data_toolbox/data_toolbox_grammar#toolbox) | object | none | none | mandatory |
 | [`dataset`](/resources/stacks/data_toolbox/data_toolbox_grammar#dataset) | string | none | any valid iceberg dataset udl address | mandatory |
 | [`action`](/resources/stacks/data_toolbox/data_toolbox_grammar#action) | object | none | none | mandatory |
 | [`name`](/resources/stacks/data_toolbox/data_toolbox_grammar#name) | string | none | set_version | mandatory |
@@ -99,9 +99,9 @@ workflow: # Workflow Section
       tags:
       - Connect
       - City
-      stack: flare:3.0
+      stack: flare:5.0
       compute: runnable-default
-      flare:
+      stackSpec:
         job:
           explain: true
           logLevel: INFO
@@ -149,7 +149,7 @@ workflow: # Workflow Section
     spec:
       stack: toolbox
       compute: runnable-default
-      toolbox:
+      stackSpec:
         dataset: dataos://icebase:retail/city01
         action:
           name: set_version

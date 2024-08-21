@@ -10,4 +10,4 @@ DESCRIBE table_name
 
 `DESCRIBE` is an alias for
 
-[SHOW COLUMNS](./show_columns.md)
+[SHOW COLUMNS](/interfaces/workbench/sql_syntaxes/show_columns/)
