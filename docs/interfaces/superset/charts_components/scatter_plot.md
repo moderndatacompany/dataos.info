@@ -1,11 +1,14 @@
 The Scatter Plot in Superset is a visualization that displays data points on a two-dimensional plane, where each point represents the value of two metrics. It's particularly for identifying relationships or correlations between two variables.
 
-![Untitled](/interfaces/superset/charts_components/scatter_interface.png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/charts_components/scatter_interface.png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 On selecting the Scatter plot chart, you can then proceed with its components. Common components such as METRIC, FILTERS, ROW LIMIT, ROLLING FUNCTION, PERIOD, and MIN PERIOD are already covered in the '[Common Charts Components](../charts_components.md)' section for reference.
 
-
-![Untitled](/interfaces/superset/charts_components/scatter.png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/charts_components/scatter.png" alt="Your Image Description" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 1. **X-Axis (Mandatory):**
     - Represents the horizontal axis, typically displaying time or categorical data.

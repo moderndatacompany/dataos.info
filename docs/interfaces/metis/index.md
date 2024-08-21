@@ -22,11 +22,11 @@ Metis UI is a collaborative interface for diverse data users to navigate through
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/metis/metis.png" alt="Metis UI" style="border:1px solid black;">
+    <img src="/interfaces/metis/metis.png" alt="Metis UI" style="border:1px solid black; width: 80%; height: auto;">
     <figcaption align="center"><i>DataOS Metis App</i></figcaption>
   </div>
 </center>
-
+    
 
 The homepage of Metis UI showcases a comprehensive overview of activities related to your data entities. For detailed information about the metadata of these entities, refer to the following sections:
 

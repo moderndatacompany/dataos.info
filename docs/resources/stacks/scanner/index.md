@@ -32,8 +32,10 @@ The stored metadata is used by various DataOS components for discoverability, go
 
 </aside>
 
-![Metadata extraction using the Scanner stack](/resources/stacks/scanner/scanner_framework.png)
-<figcaption align = "center">DataOS Scanner stack for metadata extraction</figcaption>
+<div style="text-align: center;">
+  <img src="/resources/stacks/scanner/scanner_framework.png" alt="Metadata extraction using the Scanner stack" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>DataOS Scanner stack for metadata extraction</i></figcaption>
+</div>
 
 Apart from the external applications, the Scanner stack can also extract metadata from various applications & services of DataOS. The scanner job reads related metadata and pushes it to the metadata store through the Metis REST API server. You can then explore this information through the Metis UI.
 
@@ -73,37 +75,37 @@ Learn about the source connection and configuration options to create depot scan
 [Creating Scanner Workflows](/resources/stacks/scanner/creating_scanner_workflows)
 
 ## Attributes of Scanner Workflow
-
+docs/resources/stacks/scanner/field_ref.md
 The below table summarizes various properties within a Scanner workflow YAML.
 
 | Attribute                           | Data Type  | Default Value | Possible Value                                   | Requirement |
 | ----------------------------------- | ---------- | ------------- | ----------------------------------------------- | ----------- |
-| [`spec`](./field_ref/#spec)         | mapping    |               |                                                 | Mandatory    |
-| [`stack`](./field_ref/#stack)       | string     |               | `scanner`                                       | Mandatory    |
-| [`compute`](./field_ref/#compute)   | string     | `runnable-default` | `mycompute`                                 | Mandatory |
-| [`runAsUser`](./field_ref/#runasuser)| string    |               | `metis`                                         | Mandatory    |
-| [`depot`](./field_ref/#depot)       | string     |               | `dataos://icebase`                              | Mandatory    | in case of Depot scan only.
-| [`type`](./field_ref/#type)         | string     | Source-specific | `bigquery`                                      | Mandatory    | In case of non-Depot scan
-| [`source`](./field_ref/#source)     | string     |               | `bigquery_metasource`                           | Mandatory    | In case of non-Depot scan
-| [`sourceConnection`](./field_ref/#sourceconnection) | mapping | |               | Mandatory    |
-| [`type`](./field_ref/#type_1)       | string     | Source-specific | `BigQuery`                                      | Mandatory    | In case of non-Depot scan
-| [`username`](./field_ref/#username) | string     | Source-specific | `projectID` `email` `hostport`                  | Mandatory    | In case of non-Depot scan
-| [`sourceConfig`](./field_ref/#sourceconfig) | mapping | |               | Mandatory    |
-| [`type`](./field_ref/#type_2)       | string     |               | `DatabaseMetadata`  `MessagingMetadata`        | Mandatory    | In case of non-Depot scan
-| [`databaseFilterPattern`](./field_ref/#databasefilterpattern) | mapping | | | Mandatory    |
-| [`includes/exclude`](./field_ref/#includes-or-excludes)| string | | `^SNOWFLAKE.*`                               | optional    | Applicable only in case of Database/Warehouse data source |
-| [`schemaFilterPattern`](./field_ref/#schemafilterpattern) | mapping | | | Mandatory    |
-| [`includes/excludes`](./field_ref/#includes-or-excludes_1) | string | | `^public$`                              | optional    | Applicable only in case of Database/Warehouse data source |
-| [`tableFilterPattern`](./field_ref/#tablefilterpattern) | mapping | | | mandatory   |                                                       |
-| [`includes/excludes`](./field_ref/#includes-or-excludes_2) | string | | `^public$`                              | optional    | Applicable only in case of Database/Warehouse data source |
-| [`topicFilterPattern`](./field_ref/#topicfilterpattern) | mapping | | | Mandatory    |
-| [`includes/excludes`](./field_ref/#includes-or-excludes_3)| string | | `foo` `bar`                               | optional    | Applicable only in case of Messaging data source     |
-| [`includeViews`](./field_ref/#includeviews) | boolean | `false`       | `true` `false`                              | optional    | Applicable only in case of Database/Warehouse data source |
-| [`markDeletedTables`](./field_ref/#markdeletedtables) | boolean | `false` | `true` `false`                            | optional    | Applicable only in case of Database/Warehouse data source |
-| [`markDeletedTablesFromFilterOnly`](./field_ref/#markdeletedtablesfromfilteronly) | boolean | `false`  | `true` `false` | optional | Applicable only in case of Database/Warehouse data source |
-| [`enableDebugLog`](./field_ref/#enabledebuglog) | boolean | `false` | `true` `false`                               | optional    | All                                                   |
-| [`ingestSampleData`](./field_ref/#ingestsampledata) |  boolean | `false` | `true` `false`                             | optional    | Applicable only in case of Messaging data source       |
-| [`markDeletedTopics`](./field_ref/#markdeletedtopics)| boolean | `false` | `true` `false`                            | optional    | Applicable only in case of Messaging data source       |
+| [`spec`](/resources/stacks/scanner/field_ref/#spec)         | mapping    |               |                                                 | Mandatory    |
+| [`stack`](/resources/stacks/scanner/field_ref/#stack)       | string     |               | `scanner`                                       | Mandatory    |
+| [`compute`](/resources/stacks/scanner/field_ref/#compute)   | string     | `runnable-default` | `mycompute`                                 | Mandatory |
+| [`runAsUser`](/resources/stacks/scanner/field_ref/#runasuser)| string    |               | `metis`                                         | Mandatory    |
+| [`depot`](/resources/stacks/scanner/field_ref/#depot)       | string     |               | `dataos://icebase`                              | Mandatory    | in case of Depot scan only.
+| [`type`](/resources/stacks/scanner/field_ref/#type)         | string     | Source-specific | `bigquery`                                      | Mandatory    | In case of non-Depot scan
+| [`source`](/resources/stacks/scanner/field_ref/#source)     | string     |               | `bigquery_metasource`                           | Mandatory    | In case of non-Depot scan
+| [`sourceConnection`](/resources/stacks/scanner/field_ref/#sourceconnection) | mapping | |               | Mandatory    |
+| [`type`](/resources/stacks/scanner/field_ref/#type_1)       | string     | Source-specific | `BigQuery`                                      | Mandatory    | In case of non-Depot scan
+| [`username`](/resources/stacks/scanner/field_ref/#username) | string     | Source-specific | `projectID` `email` `hostport`                  | Mandatory    | In case of non-Depot scan
+| [`sourceConfig`](/resources/stacks/scanner/field_ref/#sourceconfig) | mapping | |               | Mandatory    |
+| [`type`](/resources/stacks/scanner/field_ref/#type_2)       | string     |               | `DatabaseMetadata`  `MessagingMetadata`        | Mandatory    | In case of non-Depot scan
+| [`databaseFilterPattern`](/resources/stacks/scanner/field_ref/#databasefilterpattern) | mapping | | | Mandatory    |
+| [`includes/exclude`](/resources/stacks/scanner/field_ref/#includes-or-excludes)| string | | `^SNOWFLAKE.*`                               | optional    | Applicable only in case of Database/Warehouse data source |
+| [`schemaFilterPattern`](/resources/stacks/scanner/field_ref/#schemafilterpattern) | mapping | | | Mandatory    |
+| [`includes/excludes`](/resources/stacks/scanner/field_ref/#includes-or-excludes_1) | string | | `^public$`                              | optional    | Applicable only in case of Database/Warehouse data source |
+| [`tableFilterPattern`](/resources/stacks/scanner/field_ref/#tablefilterpattern) | mapping | | | mandatory   |                                                       |
+| [`includes/excludes`](/resources/stacks/scanner/field_ref/#includes-or-excludes_2) | string | | `^public$`                              | optional    | Applicable only in case of Database/Warehouse data source |
+| [`topicFilterPattern`](/resources/stacks/scanner/field_ref/#topicfilterpattern) | mapping | | | Mandatory    |
+| [`includes/excludes`](/resources/stacks/scanner/field_ref/#includes-or-excludes_3)| string | | `foo` `bar`                               | optional    | Applicable only in case of Messaging data source     |
+| [`includeViews`](/resources/stacks/scanner/field_ref/#includeviews) | boolean | `false`       | `true` `false`                              | optional    | Applicable only in case of Database/Warehouse data source |
+| [`markDeletedTables`](/resources/stacks/scanner/field_ref/#markdeletedtables) | boolean | `false` | `true` `false`                            | optional    | Applicable only in case of Database/Warehouse data source |
+| [`markDeletedTablesFromFilterOnly`](/resources/stacks/scanner/field_ref/#markdeletedtablesfromfilteronly) | boolean | `false`  | `true` `false` | optional | Applicable only in case of Database/Warehouse data source |
+| [`enableDebugLog`](/resources/stacks/scanner/field_ref/#enabledebuglog) | boolean | `false` | `true` `false`                               | optional    | All                                                   |
+| [`ingestSampleData`](/resources/stacks/scanner/field_ref/#ingestsampledata) |  boolean | `false` | `true` `false`                             | optional    | Applicable only in case of Messaging data source       |
+| [`markDeletedTopics`](/resources/stacks/scanner/field_ref/#markdeletedtopics)| boolean | `false` | `true` `false`                            | optional    | Applicable only in case of Messaging data source       |
 
 To learn more about these fields, their possible values, example usage, refer to [Attributes of Scanner YAML](/resources/stacks/scanner/field_ref/).
 
@@ -153,6 +155,7 @@ Data product Scanner workflows is for collecting metadata related to Data produc
 This Scanner workflow reads the metadata and stores it in Metis DB. This metadata helps you understand data product's life cycle along with the data access permissions, infrastructure resources used for creating it.
 
 <details><summary> Scanner for Data Product</summary>
+
 ```yaml
 version: v1
 name: scanner2-data-product
@@ -331,6 +334,7 @@ A continuous running service reads about these statistics (metadata extraction r
 The objective of this worker is to proactively scan data profiling information, which includes descriptive statistics for datasets stored in Icebase. It operates in response to a triggered data profiling job, publishing the metadata to the Metis DB.
 
 <details><summary>Indexer Service for Data Profiling</summary>
+
 ```yaml
 name: dataset-profiling-indexer
 version: v1beta
@@ -381,6 +385,7 @@ Service Level objectives(SLOs) are business-specific validation rules applied to
 This worker is a continuous running service, designed to reactively scan datasets and ingest quality checks and metrics data along with their pass/fail status whenever a Flare data quality scan is initiated. The acquired metadata related to data quality is then published to the Metis DB, contributing to a comprehensive understanding of data quality. 
 
 <details><summary>Indexer Service for Data Quality</summary>
+
 ```yaml
 name: dataset-quality-checks-indexer
 version: v1beta

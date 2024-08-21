@@ -4,19 +4,26 @@
 
 Welcome to the Superstore Sales Performance Dashboard, a comprehensive tool designed to provide valuable insights into the superstore sales data. This dashboard is crafted to empower decision-makers by offering a clear and interactive view of sales performance utilizing multiple tabs grouped by category, city, region, and customers.
 
-![Untitled](/interfaces/superset/1.jpeg)
-<figcaption align = "center">Sales performance by Region</figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/superset/1.jpeg" alt="Sales performance by Region" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Sales performance by Region</figcaption>
+</div>
 
+<div style="text-align: center;">
+  <img src="/interfaces/superset/2.jpeg" alt="Sales performance by Category" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Sales performance by Category</figcaption>
+</div>
 
-![Untitled](/interfaces/superset/2.jpeg)
-<figcaption align = "center">Sales performance by Category</figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/superset/3.jpeg" alt="Sales performance by City" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Sales performance by City</figcaption>
+</div>
 
+<div style="text-align: center;">
+  <img src="/interfaces/superset/4.jpeg" alt="Sales performance by Customer" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Sales performance by Customer</figcaption>
+</div>
 
-![Untitled](/interfaces/superset/3.jpeg)
-<figcaption align = "center">Sales performance by City</figcaption>
-
-![Untitled](/interfaces/superset/4.jpeg)
-<figcaption align = "center">Sales performance by Customer</figcaption>
 
 
 ## **Data Source Information**
@@ -50,7 +57,12 @@ Welcome to the Superstore Sales Performance Dashboard, a comprehensive tool desi
     - **Discount (FLOAT):** Discount applied to the order.
     - **Profit (FLOAT):** Profit generated from the order.
 
-![Untitled](/interfaces/superset/5.png)
+
+<div style="text-align: center;">
+  <img src="/interfaces/superset/5.png" alt="Sales performance by Customer" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Sales performance by Customer</figcaption>
+</div>
+
 
 ## Steps for Creating the Dashboard
 
@@ -121,11 +133,18 @@ Create the following charts for the “by customer” tab.
 
 - Change the default color scheme to the "Airbnb color scheme" for a visually appealing theme.
 
-![Untitled](/interfaces/superset/6.png)
+<div style="text-align: center;">
+  <img src="/interfaces/superset/6.png" alt="Sales performance by Customer" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Sales performance by Customer</figcaption>
+</div>
 
 - Use the CSS editor to customize the dashboard:
     - Change the background color of the entire dashboard.
     - Adjust the background color of each chart individually.
     - Modify the color and size of each chart's title.
 
-![Untitled](/interfaces/superset/7.png)
+
+<div style="text-align: center;">
+  <img src="/interfaces/superset/7.png" alt="Sales performance by Customer" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>Sales performance by Customer</figcaption>
+</div>

@@ -7,8 +7,11 @@
 
 Metis has integrated "Lakehouse" as a "Resource" type entity for storing metadata related to its configuration, such as compute used, depot used to refer, and metastore properties within DataOS. On selecting **Lakehouses**, the following information will appear on the screen:
 
-![lakehouses.png](metis_resources_lakehouses/lakehouses.png)
-<figcaption align = "center"> List of Lakehouses  </figcaption>
+<div style="text-align: center;">
+  <img src="/interfaces/metis/metis_ui_resources/metis_resources_lakehouses/lakehouses.png" alt="List of Lakehouses" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>List of Lakehouses</figcaption>
+</div>
+
 
 ## Filter pane
 

@@ -35,6 +35,9 @@ The Monitor Service has two major components - Monitor DB and Scheduler. Monitor
 
 Monitor Service is responsible for cross-checking the [condition](/resources/monitor/#key-concepts-of-monitor) declared by the user with an Event/Metric generated in the system. If the condition is fulfilled, it publishes the information mentioned in the manifest file as an [incident](/resources/monitor/#key-concepts-of-monitor) to a [Fastbase](/resources/depot/fastbase/) topic. This Fastbase topic is a store based on the Pulsar DB system.
 
-*Working of a Monitor Service*
 
-!https://dataos.info/resources/monitor/working_of_a_monitor_service.png
+<div style="text-align: center;">
+  <img src="/resources/monitor/working_of_a_monitor_service.png" alt="working_of_a_monitor_service" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>Working of a Monitor Service
+</i></figcaption>
+</div>

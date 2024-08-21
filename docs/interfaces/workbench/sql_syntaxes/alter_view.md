@@ -27,4 +27,4 @@ ALTER VIEW people SET AUTHORIZATION alice
 
 ## See also
 
-[CREATE VIEW](./create_view.md)
+[CREATE VIEW](/interfaces/workbench/sql_syntaxes/create_view/)

@@ -1,0 +1,44 @@
+version: v1
+name: read-eventhub-03
+type: workflow
+tags:
+  - eventhub
+  - read
+description: this jobs reads data from eventhub and writes to icebase
+workflow:
+  dag:
+    - name: eventhub-read-b-03
+      title: read data from eventhub
+      description: read data from eventhub
+      spec:
+        tags:
+          - Connect
+        stack: flare:5.0
+        compute: runnable-default
+        stackSpec:
+          job:
+            explain: true
+            inputs:
+              - name: input
+                dataset: dataos://eventhub01:default/eventhub01
+                options:
+                  "eventhubs.endingposition": "{\"offset\":\"@latest\",\"seqNo\":-1,\"enqueuedTime\":null,\"isInclusive\":false}"
+                  "eventhubs.startingposition": "{\"offset\":\"-1\",\"seqNo\":-1,\"enqueuedTime\":null,\"isInclusive\":true}"
+                  "eventhubs.consumergroup": "dataos"
+                isStream: false
+            logLevel: INFO
+            outputs:
+              - name: input
+                dataset: dataos://icebase:sample/read_event_hub?acl=rw
+                format: Iceberg
+                options:
+                  saveMode: append
+    - name: dataos-tool-eventhub
+      spec:
+        stack: toolbox
+        compute: runnable-default
+        stackSpec:
+          dataset: dataos://icebase:sample/read_event_hub?acl=rw
+          action:
+            name: set_version
+            value: latest

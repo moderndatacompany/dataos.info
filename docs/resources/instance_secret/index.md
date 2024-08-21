@@ -410,14 +410,6 @@ Instance-secret can be configured to secure the credentials infromation in the f
 
 ## Recipes
 
-Below are some recipes to help you configure and utilize Instance Secret effectively:
-
 [How to refer Instance Secret in other DataOS Resources?](/resources/instance_secret/how_to_guide/recipe_1/)
-
-How to securely refer to sensitive information using Instance Secrets in various components such as Depots, Workflow, Worker, and Service?
-
-How to access code from a private repository by referring credentials through instance secrets, ensuring secure access to sensitive code repositories?
-
-How to create multiple instance secrets using a single manifest file, simplifying the management of secrets across different services?
 
 ---

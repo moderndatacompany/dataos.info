@@ -45,9 +45,8 @@ dataos-ctl user get
 
 ```
 
-<aside>
+<aside class="callout">
 🗣️ If you don't have the `pulsar-admin` tag, contact the system administrator.
-
 </aside>
 
 ### **Operationalize Docker if you want to Read/Write IO Locally**
@@ -69,7 +68,10 @@ Flare Standalone uses Scala Programming Language. In case you don't know about S
 1. Extract the downloaded `flare-standalone.zip` file. It contains only one folder by the name `standalone`. Next, you can open the code editor inside the `flare-standalone` folder.
 2. Now the scenario looks like the image below, where you have opened the code editor inside the `flare-standalone` folder, which contains the `standalone` folder which further includes one folder by the name `dataout` and another file by the name `config.yaml`
 
-![Untitled](/resources/stacks/flare/running_flare_standalone/untitled.png)
+<div style="text-align: center;">
+  <img src="/resources/stacks/flare/standalone/running_flare_standalone/untitled.png" alt="Standalone" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>flare standalone folder</i></figcaption>
+</div>
 
 ### **Adding details to the Flare Standalone Workflow YAML**
 
@@ -148,7 +150,7 @@ You can store the data and the `config.yaml` anywhere you want, you have to conf
 dataos-ctl user apikey get
 ```
 
-       If you don't have it, you can also create a new one
+If you don't have it, you can also create a new one
 
 1. The last and final aspect that's missing is the `serviceUrl` and `adminUrl`, for which you require two things 
     1. `<dataos-context>` - The system administrator provides this in your organization
@@ -159,7 +161,7 @@ dataos-ctl user apikey get
 
 ### **Running the Flare Workflow YAML**
 
-1. You can use the below command to run the `config.`yaml.
+- You can use the below command to run the `config.`yaml.
 
 ```bash
 dataos-ctl develop start -s <flare-version> -i <custom-image> -f <path-of-config.yaml> -d <path-of-data-directory> -P <port-number>
@@ -174,15 +176,17 @@ dataos-ctl develop start -s flare:3.0 -i rubiklabs/flare3:6.0.93 -f standalone/c
 > **Note:** The `config.yaml` and data directory path could be either absolute or relative. The port number by default is set at 14040, but if you have a job already running on 14040, you can configure it to a different port, e.g., 14042.
 > 
 
-<aside>
-🗣️ **Note:** In case when you don't have the version mentioned above or the image of the flare stack downloaded, it will download first, and then the execution will start. If you have it installed already; it will directly execute the job. 
+<aside class="callout">
+🗣️ <b>Note:</b> In case when you don't have the version mentioned above or the image of the flare stack downloaded, it will download first, and then the execution will start. If you have it installed already; it will directly execute the job. 
 If you have an Apple M1/M2 Chip system, use the `rubiklabs/flare3:6.0.93-xp.01`  docker image.
 
 </aside>
 
 1. Since we have exposed the Spark Web UI on port 14042, we can type [localhost:14042](http://localhost:14042) in any web browser to check the status of the job
 
-![Untitled](/resources/stacks/flare/running_flare_standalone/untitled_1.png)
+<div style="text-align: center;">
+  <img src="/resources/stacks/flare/standalone/running_flare_standalone/untitled_1.png" alt="Flare Standalone" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 To know more about the various sections of the Spark UI and what each one of them signifies, navigate to the [link](/resources/stacks/flare/optimizations/inspecting_the_spark_ui/)
 
@@ -209,7 +213,9 @@ Type :help for more information.
 
 1. You can check the `dataout` folder under which the data read from Pulsar is written
 
-![Untitled](/resources/stacks/flare/running_flare_standalone/untitled_2.png)
+<div style="text-align: center;">
+  <img src="/resources/stacks/flare/standalone/running_flare_standalone/untitled_2.png" alt="Fill in the required fields" style="border:1px solid black; width: 80%; height: auto;">
+</div>
 
 ### **Exploring Spark Commands in Scala Interactive Shell**
 

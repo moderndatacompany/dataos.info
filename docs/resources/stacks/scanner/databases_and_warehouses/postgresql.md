@@ -82,7 +82,7 @@ workflow:
         stack: scanner:2.0
         compute: runnable-default
         runAsUser: metis
-        scanner:
+        stackSpec:
           type: postgres
           source: PostgresSource_ND01
           sourceConnection:
