@@ -4,50 +4,144 @@ The following attributes are declared for every Data Product deployed in a DataO
 
 ## Structure of Data Product manifest file
 
-```yaml
-# Product meta section
-name: {{dp-test}} # Product name (mandatory)
-version: {{v1alpha}} # Manifest version (mandatory)
-type: {{data}} # Product-type (mandatory)
-tags: # Tags (Optional)
-- {{data-product}}
-- {{dataos:type:product}}
-- {{dataos:product:data}}
-description: {{the customer 360 view of the world}} # Descripton of the product (Optional)
-Purpose: {{This data product is intended to provide insights into the customer for strategic decisions on cross-selling additional products.}} # purpose (Optional)
-collaborators: # collaborators User ID (Optional)
-- {{thor}}
-- {{blackwidow}}
-- {{loki}}
-owner: {{iamgroot}} # Owner (Optional)
-refs: # Reference (Optional)
-- title: {{Bundle Info}} # Reference title (Mandatory if adding reference)
-    href: {{https://dataos.info/resources/bundle/}} # Reference link (Mandatory if adding reference)
-entity: {{product}} # Entity (Mandatory)
-# Data Product-specific section (Mandatory)
-v1alpha: # Data Product version
-  data:
-    resources: # Resource specific section(Mandatory)
-      - name: {{bundle-dp}} # Resource name (Mandatory)
-        type: {{bundle}} # Resource type (Mandatory)
-        version: {{v1beta}} # Resource version (Mandatory)
-        refType: {{dataos}} # Resource reference type (Mandatory)
-        workspace: {{public}} # Workspace (Requirement depends on the resource type)
-        description: {{this bundle resource is for a data product}} # Resource description (Optional)
-        purpose: {{deployment of data product resources}} # Purpose of the required resource (Optional)   
-    
-    inputs: # Input specific section (Mandatory)
-      - description: Sales 360
-        purpose: source
-        refType: dataos
-        ref: dataos://bigquery:PUBLIC/MYTABLE
-    
-    outputs: # Output specific section (Mandatory)
-      - description: Customer
-        purpose: consumption
-        refType: dataos_address
-        ref: dataos://icebase:sandbox/sales?acl=rw  
-```        
+=== "version:v1alpha"
+
+    ```yaml
+    # Product meta section
+    name: ${{dp-test}} # Product name (mandatory)
+    version: v1alpha # Manifest version (mandatory)
+    type: ${{data}} # Product-type (mandatory)
+    tags: # Tags (Optional)
+      - ${{data-product}}
+      - ${{dataos:type:product}}
+      - ${{dataos:product:data}}
+    description: ${{the customer 360 view of the world}} # Descripton of the product (Optional)
+    Purpose: ${{This data product is intended to provide insights into the customer for strategic decisions on cross-selling additional products.}} # purpose (Optional)
+    collaborators: # collaborators User ID (Optional)
+      - ${{thor}}
+      - ${{blackwidow}}
+      - ${{loki}}
+    owner: ${{iamgroot}} # Owner (Optional)
+    refs: # Reference (Optional)
+      - title: ${{Data Product Hub}} # Reference title (Mandatory if adding reference)
+        href: ${{https://liberal-donkey.dataos.app/dph/data-products/all}} # Reference link (Mandatory if adding reference)
+    entity: ${{product}} # Entity (Mandatory)
+    # Data Product-specific section (Mandatory)
+    v1alpha: # Data Product version
+      data:
+        resources: # Resource specific section(Mandatory)
+          - name: ${{bundle-dp}} # Resource name (Mandatory)
+            type: ${{bundle}} # Resource type (Mandatory)
+            version: ${{v1beta}} # Resource version (Mandatory)
+            refType: ${{dataos}} # Resource reference type (Mandatory)
+            workspace: ${{public}} # Workspace (Requirement depends on the resource type)
+            description: ${{this bundle resource is for a data product}} # Resource description (Optional)
+            purpose: ${deployment of data product resources}} # Purpose of the required resource (Optional)   
+        
+        inputs:
+          - description: S3 Depot
+            purpose: source
+            refType: dataos
+            ref: dataos://s3depot:none/ga_data/
+        
+        outputs:
+          - description: Icebase Depot
+            purpose: consumption
+            refType: dataos_address
+            ref: dataos://icebase:google_analytics/ga_sessions_daily_data_raw  
+    ```        
+=== "version:v1beta"
+
+    ```yaml
+    # Product meta section
+    name: ${{sales-360}} # Product name (mandatory)
+    version: v1beta # Manifest version (mandatory)
+    entity: ${{product}} # Entity type (mandatory)
+    type: ${{data}} # Product type (mandatory)
+    purpose: ${{Sales360 enables data analysts to efficiently explore and analyze sales data, with robust capabilities across product and customer dimensions.}} # Purpose (optional)
+    tags: # Tags (Optional)
+      - ${{DPDomain.sales}}
+      - ${[DPTier.Consumer-aligned}}
+      - ${{DPUsecase.purchase behaviour}}
+    description: ${{Sales360 enables data analysts to efficiently explore and analyze sales data, with robust capabilities across product and customer dimensions.}} # Descripton of the product (Optional)
+    refs: # Reference (Optional)
+    - title: ${{'Workspace Info'}} # Reference title (Mandatory if adding reference)
+      href: ${{https://dataos.info/interfaces/cli/command_reference/#workspace}} # Reference link (Mandatory if adding reference)
+
+    # Data Product-specific section (Mandatory)
+    v1beta: # Data Product version
+      data:
+        meta:
+          foo: bar
+        collaborators: # Collaborators (mandatory)
+          - name: ${{iamgroot}} # Collaborator's name 
+            description: ${{owner}} #Collaborator's description
+          - name: ${{itsthor}} # Collaborator's name 
+            description: ${{developer}} #Collaborator's description
+          - name: ${{itsloki}} # Collaborator's name 
+            description: ${{consumer}} #Collaborator's description
+        relatedDataProducts: # (optional)
+          - ${{data:v1beta:customer-360-demov3}}
+
+        resource: # Resource specific section (mandatory)
+          description: ${{'Ingest data'}} # Resource description (optional)
+          purpose: ${{'ingestion'}} # Resource purpose (optional)
+          refType: ${{dataos}} # Resource reference type (Mandatory) 
+          ref: ${{bundle:v1beta:sales-data-pipeline}} # Resource reference
+
+        inputs: # Input specific section (mandatory)
+        - description: ${{icebase.sales360mockdb.f_sales}} # Input decsription
+          purpose: ${{source}} # Input purpose
+          refType: ${{depot}} # Input reference type
+          ref: ${{dataos://icebase:sales360mockdb/f_sales}} # Input reference
+
+        - description: ${{customer data pulling from s3 bucket}} 
+          purpose: ${{source}}
+          refType: ${{dataos}}
+          ref: ${{dataset:icebase:sales360mockdb:customer_data_master}}
+
+        - description: ${{product data pulling from s3 bucket}}
+          purpose: ${{source}}
+          refType: ${{dataos}}
+          ref: ${{dataset:icebase:sales360mockdb:product_data_master}}
+
+        outputs:
+        - description: ${{sales data}} # Output description
+          purpose: ${{source}} # Output purpose
+          refType: ${{dataos}} # Output reference type
+          ref: ${{dataset:icebase:flash:f_sales}} # Output reference
+          checks: 
+            availability: ${{bar}} 
+        ports: 
+          lens: 
+            ref: ${{lens:v1alpha:sales360:public}} # Lens reference
+            refType: ${{dataos}} # Reference type
+            meta: 
+              foo: bar 
+          talos: 
+          - ref: ${{service:v1:sales360-talos:public}} #  Talos reference
+            refType: ${{dataos}} # Reference type
+            meta: 
+              foo: bar 
+          rest: 
+          - url: https://liberal-donkey.dataos.app/lens2/api/public:sales360/v2/rest # API endpoint url
+            meta: 
+              foo: bar 
+          postgres: 
+          - host: ${{tcp.liberal-donkey.dataos.app}} 
+            port: ${{5432}} 
+            params: 
+              ssl: ${{true}} 
+            meta: 
+              foo: bar 
+        metrics: 
+          - description: ${{understand proof revenue across product dimensions}} # Metrics description
+            purpose: ${{metric analysis}} # Metrics purpose
+            refType: ${{depot}} # Metrics reference type
+            ref: ${{lens:public:sales360:wallet_sales_view}} # Metrics reference
+
+    ```
+
 
 
 ## **Product meta section**
@@ -229,9 +323,9 @@ refs:
 
 ## **Data Product-specific section**
 
-This section comprises attributes specific to the Data Product. The attributes within the section are listed below:
+Data Product-specific section is different for different versions. This section comprises attributes specific to the Data Product for each version. The attributes within the section are listed below:
 
-#### **`v1alpha`**
+### **`v1alpha`**
 
 **Description:** The `v1alpha` mapping comprises attributes for configuring a Data Product in DataOS.
 
@@ -267,8 +361,6 @@ data:
       type: lens 
       ...
 ```
-
-### **Resource section configurations**
 
 #### **`resources`**
 
@@ -415,8 +507,6 @@ name: sales360test
 workspace: public 
 ```
 
-### Input section configurations
-
 #### **`inputs`**
 
 **Description:** Represents the input mappings.
@@ -491,8 +581,6 @@ refType: dataos
 ```yaml
 ref: dataos://icebase:retail/customer  
 ```
-
-### Output section configurations
 
 #### **`outputs`**
 
@@ -587,3 +675,275 @@ usecases:
   - check-usecase-01
   - check-usecase-02 
 ```
+
+### **`v1beta`**
+
+**Description:** Specifies the version of the Data Product.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | mandatory | none | v1beta |
+
+**Example Usage:**
+
+```yaml
+v1beta:
+  data: # Data Product version details
+    meta:
+      foo: bar
+```
+
+#### **`data`**
+
+**Description:** Contains additional sections related to the Data Product.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| object | mandatory | none | Contains `meta`, `collaborators`, `relatedDataProducts`, `resource`, `inputs`, `outputs`, `ports`, and `metrics`. |
+
+**Example Usage:**
+
+```yaml
+data:
+  meta:
+    foo: bar
+```
+
+#### **`meta`**
+
+**Description:** An optional section for additional metadata.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| object | optional | none | Contains key-value pairs for metadata. |
+
+**Example Usage:**
+
+```yaml
+meta:
+  foo: bar
+```
+
+#### **`collaborators`**
+
+**Description:** Specifies the list of collaborators involved with the Data Product.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| list of objects | mandatory | none | Each object contains `name` and `description`. |
+
+**Example Usage:**
+
+```yaml
+collaborators:
+  - name: ${{iamgroot}}
+    description: ${{owner}}
+  - name: ${{itsthor}}
+    description: ${{developer}}
+  - name: ${{itsloki}}
+    description: ${{consumer}}
+```
+
+#### **`name`**
+
+**Description:** The name of the collaborator.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | mandatory | none | Any valid string representing the collaborator's identity. |
+
+**Example Usage:**
+
+```yaml
+name: ${{iamgroot}}
+```
+
+#### **`description`**
+
+**Description:** A brief description of the collaborator's role.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | mandatory | none | Example roles include owner, developer, consumer. |
+
+**Example Usage:**
+
+```yaml
+description: ${{owner}}
+```
+
+#### **`relatedDataProducts`**
+
+**Description:** Lists related Data Products connected or associated with the current Data Product.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| list of strings | optional | none | Each string references another Data Product by specifying the version and name. |
+
+**Example Usage:**
+
+```yaml
+relatedDataProducts:
+  - ${{data:v1beta:customer-360-demov3}}
+```
+
+#### **`resource`**
+
+**Description:** Defines the resources utilized by the Data Product.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| object | mandatory | none | Contains fields like `description`, `purpose`, `refType`, and `ref`. |
+
+**Example Usage:**
+
+```yaml
+resource:
+  description: ${{'Ingest data'}}
+  purpose: ${{'ingestion'}}
+  refType: ${{dataos}}
+  ref: ${{bundle:v1beta:sales-data-pipeline}}
+```
+
+#### **`description (resource)`**
+
+**Description:** A brief description of the resource.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | optional | none | Any string describing the resource. |
+
+**Example Usage:**
+
+```yaml
+description: ${{'Ingest data'}}
+```
+
+#### **`purpose (resource)`**
+
+**Description:** The purpose of the resource.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | optional | none | Possible values include specific purposes like `ingestion`. |
+
+**Example Usage:**
+
+```yaml
+purpose: ${{'ingestion'}}
+```
+
+#### **`refType`**
+
+**Description:** The reference type of the resource.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | mandatory | none | Example: `dataos`. |
+
+**Example Usage:**
+
+```yaml
+refType: ${{dataos}}
+```
+
+#### **`ref`**
+
+**Description:** The reference of the resource.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| string | mandatory | none | Example: `bundle:v1beta:sales-data-pipeline`. |
+
+**Example Usage:**
+
+```yaml
+ref: ${{bundle:v1beta:sales-data-pipeline}}
+```
+
+#### **`inputs`**
+
+**Description:** Lists the input data sources required by the Data Product.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| list of objects | mandatory | none | Each object describes an input with fields like `description`, `purpose`, `refType`, and `ref`. |
+
+**Example Usage:**
+
+```yaml
+inputs:
+  - description: ${{icebase.sales360mockdb.f_sales}}
+    purpose: ${{source}}
+    refType: ${{depot}}
+    ref: ${{dataos://icebase:sales360mockdb/f_sales}}
+  - description: ${{customer data pulling from s3 bucket}}
+    purpose: ${{source}}
+    refType: ${{dataos}}
+    ref: ${{dataset:icebase:sales360mockdb:customer_data_master}}
+```
+
+#### **`outputs`**
+
+**Description:** Specifies the output data generated by the Data Product.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| list of objects | mandatory | none | Each object details an output with fields like `description`, `purpose`, `refType`, `ref`, and optional `checks`. |
+
+**Example Usage:**
+
+```yaml
+yamlCopy code
+outputs:
+  - description: ${{sales data}}
+    purpose: ${{source}}
+    refType: ${{dataos}}
+    ref: ${{dataset:icebase:flash:f_sales}}
+    checks:
+      availability: ${{bar}}
+
+```
+
+#### **`ports`**
+
+**Description:** Defines the ports for accessing the Data Product through various services.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| object | mandatory | none | Contains `lens`, `talos`, `rest`, and `postgres` sections for different types of ports. |
+
+**Example Usage:**
+
+```yaml
+ports:
+  lens:
+    ref: ${{lens:v1alpha:sales360:public}}
+    refType: ${{dataos}}
+    meta:
+      foo: bar
+  talos:
+    - ref: ${{service:v1:sales360-talos:public}}
+      refType: ${{dataos}}
+      meta:
+        foo: bar
+```
+
+#### **`metrics`**
+
+**Description:** Lists the metrics related to the Data Product, used for analysis and monitoring.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| list of objects | optional | none | Each object contains fields like `description`, `purpose`, `refType`, and `ref`. |
+
+**Example Usage:**
+
+```yaml
+metrics:
+  - description: ${{understand proof revenue across product dimensions}}
+    purpose: ${{metric analysis}}
+    refType: ${{depot}}
+    ref: ${{lens:public:sales360:wallet_sales_view}}
+```
+

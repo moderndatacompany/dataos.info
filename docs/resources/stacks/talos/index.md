@@ -5,11 +5,8 @@ Talos is a [Stack](/resources/stacks/) within DataOS that aims to help data deve
 *It turns your SQL into APIs in no time!*
 
 !!!tip "Talos within the Data Product Life-cycle"
-<<<<<<< HEAD
     Talos operates within the consumption layer of the Data Product Life Cycle within DataOS, facilitating access and usability for consumers, whether they are external systems, applications, or end-users. The Talos API endpoints are crucial in this process, offering a standardized and flexible interface for accessing and consuming Data Products via API. Talos is particularly valuable when Data Products need to be accessed or consumed outside the DataOS environment via API.
-=======
     Talos operates within the consumption layer of the Data Product Life Cycle within DataOS, facilitating access and usability for consumers, whether they are external systems, applications, or end-users. Talos API endpoints are crucial in this process, offering a standardized and flexible interface for accessing and consuming Data Products via API. Talos is particularly valuable when Data Products need to be accessed or consumed outside the DataOS environment trhough an API.
->>>>>>> cd0566077d2f99e75defe1e54b690030ef634b50
 
 
 <div style="text-align: center;">
@@ -29,11 +26,8 @@ To fully utilize the capabilities of Talos, it is essential to familiarize yours
 
 - **Rapid API Development:** Talos transforms your SQL queries into APIs swiftly, allowing developers to focus on higher-level application logic rather than manual API coding. Talos utilizes [SQL templates](/resources/stacks/talos/set_up/) to streamline API creation, reducing development time and complexity.
 
-<<<<<<< HEAD
 - **Enhanced Performance:** Talos employs in-memory database as a caching layer to enhance query speed and minimize API response times, ensuring a more efficient interaction with data sources.
-=======
 - **Enhanced Performance:** Talos employs in-memory database as a [caching layer](/resources/stacks/talos/recipes/caching/) to enhance query speed and minimize API response times, ensuring a more efficient interaction with data sources.
->>>>>>> cd0566077d2f99e75defe1e54b690030ef634b50
 
 - **Scalability and Maintenance:** A structured, template-driven approach makes it easier to scale and maintain APIs, adapting to changes in data schemas or business logic with minimal manual intervention.
 
@@ -87,11 +81,8 @@ This section provides step-by-step guides to assist you in effectively configuri
 - [How to set up Talos for Postgres?](/resources/stacks/talos/recipes/recipe5/)
 - [How to apply data masking while exposing data through an API?](/resources/stacks/talos/recipes/recipe6/)
 - [How to use external API as a data source?](/resources/stacks/talos/recipes/recipe7/)
-<<<<<<< HEAD
-=======
 - [How to fetch data exposed by Talos from the third-party tools?](/resources/stacks/talos/recipes/recipe8/)
 - [Caching Datasets](/resources/stacks/talos/recipes/caching/)
->>>>>>> cd0566077d2f99e75defe1e54b690030ef634b50
 
 ## Example
 
