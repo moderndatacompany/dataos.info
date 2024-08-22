@@ -250,6 +250,7 @@ nav:
           - resources/bundle/index.md
         - Cluster: 
           - resources/cluster/index.md
+          - Configurations: resources/cluster/configurations.md
         - Compute: 
           - resources/compute/index.md
         - Database: 
@@ -258,6 +259,7 @@ nav:
           - resources/depot/index.md
         - Grant:
           - resources/grant/index.md
+          - Configuration: resources/grant/configurations.md
         - Instance Secret: 
           - resources/instance_secret/index.md
         - Lakehouse: 

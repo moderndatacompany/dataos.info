@@ -1,10 +1,17 @@
 # Talos
 
-Talos is a [stack](/resources/stacks/) within DataOS that aims to help data developers deliver [RESTful APIs](https://www.redhat.com/en/topics/api/what-is-a-rest-api) from various data sources like databases, data warehouses, and data lakes. It simplifies how you write database queries and works well with standard methods for creating APIs, allowing developers to quickly build APIs for AI agents, applications, and other data-driven solutions.
+Talos is a [Stack](/resources/stacks/) within DataOS that aims to help data developers deliver [RESTful APIs](https://www.redhat.com/en/topics/api/what-is-a-rest-api) from various data sources like databases, data warehouses, and data lakes. It simplifies how you write database queries and works well with standard methods for creating APIs, allowing developers to quickly build APIs for AI agents, applications, and other data-driven solutions.
 
 *It turns your SQL into APIs in no time!*
 
-![talos_new.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/6d23cea7-9cde-4bc5-b57b-5d8045dac3af/talos_new.jpg)
+!!!tip "Talos within the Data Product Life-cycle"
+    Talos operates within the consumption layer of the Data Product Life Cycle within DataOS, facilitating access and usability for consumers, whether they are external systems, applications, or end-users. Talos API endpoints are crucial in this process, offering a standardized and flexible interface for accessing and consuming Data Products via API. Talos is particularly valuable when Data Products need to be accessed or consumed outside the DataOS environment trhough an API.
+
+
+<div style="text-align: center;">
+  <img src="/resources/stacks/talos/flowchart.jpg" style="border:1px solid black; width: 60%; height: auto;">
+</div>
+
 
 ## Why Talos?
 
@@ -16,33 +23,26 @@ Talos simplifies this process by providing a standardized framework for creating
 
 To fully utilize the capabilities of Talos, it is essential to familiarize yourself with the available features and functionalities. Here's a brief overview of the key features:
 
-### **Building Data API**
+- **Rapid API Development:** Talos transforms your SQL queries into APIs swiftly, allowing developers to focus on higher-level application logic rather than manual API coding. Talos utilizes [SQL templates](/resources/stacks/talos/set_up/) to streamline API creation, reducing development time and complexity.
 
-- Talos supports various data sources such as Snowflake, Redshift, Postgre, BigQuery, [Depot](/resources/depot/) (Snowflake, Redshift, Postgre, BigQuery), Lens, and Flash.
-- Leverage the power of SQL templates to encapsulate your logic and transformations. Discover how to structure and write SQL templates that serve as the foundation for your data APIs, enabling you to manipulate and transform data easily.
-- Explore techniques for caching datasets in Talos to optimize query performance and reduce the load on data sources. This feature lets you store and reuse intermediate results, improving overall API response times.
-- Learn how to handle errors effectively in Talos. This section guides you through error handling strategies, including throwing errors when parameters are invalid or missing data.
-- Discover how to validate and sanitize API parameters in Talos. This feature ensures the input data is validated and meets the required criteria, reducing the risk of incorrect or malicious requests.
-- Explore the mechanisms and practices for handling data privacy in Talos. It encompasses practices and measures implemented to safeguard personal, confidential, or regulated information from unauthorized access, misuse, or disclosure.
+- **Enhanced Performance:** Talos employs in-memory database as a [caching layer](/resources/stacks/talos/recipes/caching/) to enhance query speed and minimize API response times, ensuring a more efficient interaction with data sources.
 
-### **API Catalog & Documentation**
+- **Scalability and Maintenance:** A structured, template-driven approach makes it easier to scale and maintain APIs, adapting to changes in data schemas or business logic with minimal manual intervention.
 
-- **API Catalog:** Learn how to create an API catalog with Talos, which provides a centralized repository for all your data APIs. This catalog enables easy discovery, management, and sharing of APIs within your organization.
-- **API Documentation:** Understand how to generate comprehensive API documentation (OpenAPI Specification) with Talos, including endpoints, parameters, response formats, and examples.
+- **Standardization and Integration:** Leverages OpenAPI for standardized API interaction, promoting interoperability and ease of integration with various systems and tools.
 
-### **API Configuration**
+- **Accessibility and Usability:** Facilitates secure and scalable data sharing, making data more accessible to AI agents and other applications such as Appsmith.
 
-Discover the extensibility of Talos through API plugins. This section explains how to leverage pre-built plugins to enhance the functionality of your Data APIs, including Response Format, Pagination, CORS, Rate Limit, and Access Log.
+- **Advanced Error Handling and Data Privacy:** Includes strategies for handling errors, such as invalid parameters or missing data, to ensure robust API performance. Implements practices for safeguarding personal and sensitive data, adhering to privacy regulations and standards.
 
-### **Deployment and Maintenance**
+- **Local Execution and Docker Integration:** Simplified [local setup](/resources/stacks/talos/local_set_up/) with make start and Docker Compose integration for easier development and testing of Talos.
 
-Understand the deployment and maintenance considerations for Talos in a production environment. This section covers topics such as packaging and deploying your APIs.
 
 ## How does Talos work?
 
 ### **Build**
 
-Talos offers a development experience similar to DBT. Just insert variables into your templated SQL. Talos accepts input from your API and generates SQL statements on the fly.
+Talos allows you to insert variables into your templated SQL. It accepts input from your API and generates SQL statements on the fly.
 
 ### **Accelerate**
 
@@ -52,22 +52,21 @@ Talos uses DuckDB as a caching layer, boosting query speed and reducing API res
 
 Talos offers many data-sharing options, seamlessly integrating your data into familiar applications within your workflow and building AI agents.
 
-## Setting up Talos within DataOS
+## How to set up Talos?
 
-This section will guide you through setting up the Talos within DataOS to help you build your API efficiently. To set up Talos, [please refer to this](/resources/stacks/talos/set_up/).
+Talos provides the necessary tools and capabilities to streamline API development and deployment within DataOS, ensuring that your processes are efficient and scalable. In the following sections, you'll find detailed instructions on how to set up Talos within DataOS and locally, tailored to fit your specific needs.
 
-## Setting up Talos locally
+### **Setting up Talos within DataOS**
 
-This section will guide you through setting up the Talos locally to help you build your API efficiently. To set up Talos, [please refer to this](/resources/stacks/talos/local_set_up/).
+Setting up Talos within DataOS involves configuring it to align with the existing API management practices. This setup ensures that Talos operates seamlessly within your DataOS environment. For step-by-step instructions, [please refer to this guide](/resources/stacks/talos/set_up/).
+
+### **Setting up Talos locally**
+
+For the users, who prefer or need to run Talos on their local machines, this setup provides flexibility and control over your development environment. Setting up Talos locally is perfect for users who are in the early stages of API development. This method ensures that you can build and test your APIs in a familiar environment before deploying them to a broader audience. To set up Talos locally, [please refer to this](/resources/stacks/talos/local_set_up/).
 
 ## Configurations
+To configure Talos effectively, it's essential to understand each attribute of the manifest files. This section provides detailed descriptions of the key configuration files used in Talos, helping you set up and customize Talos efficiently. For detailed information on each file, please refer to [this section](/resources/stacks/talos/configuration/).
 
-This section describes each attribute of the manifest files of Talos to help you configure Talos efficiently. Please follow the below links:
-
-- [`config.yaml`](/resources/stacks/talos/configurations/config/)
-- [`docker-compose.yaml`](/resources/stacks/talos/configurations/docker_compose/)
-- [`apis`](/resources/stacks/talos/configurations/apis/)
-- [`service.yaml`](/resources/stacks/talos/configurations/service/)
 
 ## Recipes
 
@@ -81,6 +80,7 @@ This section provides step-by-step guides to assist you in effectively configuri
 - [How to apply data masking while exposing data through an API?](/resources/stacks/talos/recipes/recipe6/)
 - [How to use external API as a data source?](/resources/stacks/talos/recipes/recipe7/)
 - [How to fetch data exposed by Talos from the third-party tools?](/resources/stacks/talos/recipes/recipe8/)
+- [Caching Datasets](/resources/stacks/talos/recipes/caching/)
 
 ## Example
 
@@ -88,9 +88,11 @@ This section provides practical, real-world scenarios demonstrating how to devel
 
 - [Covid-19](/resources/stacks/talos/example/)
 
+You can refer to the recipes section for more examples.
+
 ## Best Practices
 
-When utilizing Talos to develop data APIs, ensuring best practices is paramount to safeguarding sensitive information. Here are essential best practices to consider:
+When developing data APIs with Talos, following best practices is crucial for securing sensitive information and ensuring efficient operation. These practices encompass both API design and SQL usage.
 
 - [API Best Practices](/resources/stacks/talos/best_practices/api/)
 - [SQL Best Practices](/resources/stacks/talos/best_practices/sql/)

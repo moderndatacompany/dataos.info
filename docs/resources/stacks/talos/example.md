@@ -4,9 +4,7 @@ In this example, we utilized the WHO COVID-19 dataset to expose data on countrie
 
 ## Pre-requisites
 
-- Extract the zip and initialize it with Bitbucket.
-    
-    [Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/e5d3ccb1-9156-4caa-b024-3a6c0c6fab5a/Untitled.zip)
+- Extract the zip and initialize it with Bitbucket. [Talos Zip](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/e5d3ccb1-9156-4caa-b024-3a6c0c6fab5a/Untitled.zip)
     
 
 ## Steps
@@ -172,4 +170,6 @@ The following steps are followed to set up the Talos for this example:
 
 5. Now use the `docker-compose up` command on the terminal. Now the Talos set-up is ready. you can access the data on your browser using the DataOS API Key as shown below.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/2edc409f-c8fb-418c-8a1b-8d9e156025a6/Untitled.png)
+<div style="text-align: center;">
+  <img src="/resources/stacks/talos/result.png" style="border:1px solid black; width: 60%; height: auto;">
+</div>
