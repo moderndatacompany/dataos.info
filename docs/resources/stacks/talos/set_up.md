@@ -2,9 +2,35 @@
 
 This section involves a step-by-step guide to set up Talos within DataOS enviroment using [Service](/resources/service/) resource. By following this guide, you will be able to effectively implement Talos in your DataOS environment.
 
-## Pre-requisite
+## Pre-requisites
 
 Extract the [zip](/resources/stacks/talos/talos.zip) and initialize it with Bitbucket.
+
+Following are the steps to initialize the directory with Bitbucket, Assuming you have Git installed on your local machine:
+
+- Locally, navigate to the root directory of your existing source.
+
+- Initialize the project by running the following commands in the terminal:
+
+  ```shell
+  git init
+  git add --all
+  git commit -m "Initial Commit"
+  ```
+
+- Log into Bitbucket Server and create a new repository.
+
+- Locate the clone URL in the nav panel on the left (for example: https://username@your.bitbucket.domain:7999 /yourproject/repo.git).
+
+- Push your files to the repository by running the following commands in the terminal (change the URL accordingly):
+
+```shell
+git remote add origin https://username@your.bitbucket.domain:7999/yourproject/repo.git 
+git push -u origin master
+```
+
+Done! Your repository is now available in Bitbucket Server.
+
 
 ## Steps
 
@@ -67,14 +93,14 @@ Steps to set up Talos for Depot source type. Types of Depot supported by Talos a
     
     To know more about each attribute, [please refer to this](/resources/stacks/talos/configurations/apis/).
 
-5. Push the changes to your Bitbucket repository as shown below:
+4. Push the changes to your Bitbucket repository as shown below:
 
-<div style="text-align: center;">
-  <img src="/resources/stacks/talos/image1.png" style="border:1px solid black; width: 40%; height: auto;">
-</div>
+    <div style="text-align: center;">
+      <img src="/resources/stacks/talos/image1.png" style="border:1px solid black; width: 40%; height: auto;">
+    </div>
 
 
-1. To run it as a Service, create an Instance Secret to store your Bitbucket credentials. This step ensures that the necessary authentication details are securely stored and accessible for the Service.
+5. To run it as a Service, create an Instance Secret to store your Bitbucket credentials. This step ensures that the necessary authentication details are securely stored and accessible for the Service.
     
     ```yaml
     name: ${{bitrepo}}-r
@@ -94,8 +120,10 @@ Steps to set up Talos for Depot source type. Types of Depot supported by Talos a
     
     - Go to settings, then click on Personal Bitbucket settings.
     - Go to App passwords create one and paste the password into your Instance Secret manifest file.
-        
-        ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/f2a9e006-6401-4684-9bc4-ba59acc0c695/Untitled.png)
+
+    <div style="text-align: center;">
+      <img src="/resources/stacks/talos/app.png" style="border:1px solid black; width: 50%; height: auto;">
+    </div>
         
     
     Apply the Instance Secret manifest file by executing the below command:
@@ -106,7 +134,7 @@ Steps to set up Talos for Depot source type. Types of Depot supported by Talos a
     
     To know more about Instance Secret, [please refer to this](https://dataos.info/resources/instance_secret/).
     
-2. Now create a manifest file for the Service as shown below.
+6. Now create a manifest file for the Service as shown below.
     
     ```yaml
     name: ${{talos-test}} # service name
@@ -153,7 +181,7 @@ Steps to set up Talos for Depot source type. Types of Depot supported by Talos a
     
     To know more about each attribute, [please refer to this](docs/resources/stacks/talos/configurations/service/).
     
-3. Apply the Service manifest by executing the below command:
+7. Apply the Service manifest by executing the below command:
     
     ```bash
     dataos-ctl resource apply -f /home/office/talos/service.yaml 
@@ -207,7 +235,7 @@ Steps to set up Talos for Depot source type. Types of Depot supported by Talos a
     INFO  [CLI] 🚀 Server is listening at port 3000.
     ```
     
-4. Now you can access the data on the API endpoint using Postman, as shown below:
+8. Now you can access the data on the API endpoint using Postman, as shown below:
 
     <div style="text-align: center;">
     <img src="/resources/stacks/talos/image2.png" style="border:1px solid black; width: 40%; height: auto;">
@@ -216,7 +244,7 @@ Steps to set up Talos for Depot source type. Types of Depot supported by Talos a
     
     You can even hit the endpoint `/doc/postman?apikey='xxxxxxxxx'` to download the postman collection and import the `.json` collection into postman.
     
-5. Authenticate the API endpoints by passing the API Key as query param as shown below.
+9. Authenticate the API endpoints by passing the API Key as query param as shown below.
     
     ```bash
     curl --location 'https://liberal-donkey.dataos.app/talos/pubic:talos-test/api/table?apikey=xxxx' 
