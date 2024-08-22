@@ -4,6 +4,7 @@ Similarly, with any other Rest APIs, the API created by Talos can be used by ext
 
 ## Steps to create the dashboard on AppSmith using Talos API Key
 
+<<<<<<< HEAD
 1. Go to [AppSmith's](https://www.appsmith.com/) official website, and navigate to the Try Cloud button.
     
     ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/4fd09937-62b0-4c4b-82fb-74d83dfcc144/image.png)
@@ -53,3 +54,99 @@ Similarly, with any other Rest APIs, the API created by Talos can be used by ext
     ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/6c314262-e09c-431b-b243-c8dc2e8816f6/image.png)
     
 13.
+=======
+- Go to [AppSmith's](https://www.appsmith.com/) official website, and navigate to the Try Cloud button.
+
+  <div style="text-align: center;">
+    <img src="/resources/stacks/talos/image.png" style="border:1px solid black; width: 80%; height: auto;">
+  </div>
+    
+    
+- You will be redirected to the login page of AppSmith as shown below:
+    
+<div style="text-align: center;">
+  <img src="/resources/stacks/talos/image%20(1).png" style="border:1px solid black; width: 80%; height: auto;">
+</div>
+
+    
+- After signing in, you will be redirected to the AppSmith interface where you can start creating dashboard as shown below:
+    
+<div style="text-align: center;">
+  <img src="/resources/stacks/talos/image%20(2).png" style="border:1px solid black; width: 60%; height: auto;">
+</div>
+
+
+    
+- Create a new workspace, by clicking on the `+` on the left panel as shown below.
+
+<div style="text-align: center;">
+  <img src="/resources/stacks/talos/image%20(3).png" style="border:1px solid black; width: 60%; height: auto;">
+</div>
+
+
+    
+- Create a new application as shown below.
+
+<div style="text-align: center;">
+  <img src="/resources/stacks/talos/image%20(4).png" style="border:1px solid black; width: 60%; height: auto;">
+</div>
+
+
+    
+- To connect the data, on the right panel, navigate to the Connect data button.
+
+<div style="text-align: center;">
+  <img src="/resources/stacks/talos/image%20(5).png" style="border:1px solid black; width: 60%; height: auto;">
+</div>
+
+
+
+    
+- Then select `Authenticated API` option as shown below.
+
+<div style="text-align: center;">
+  <img src="/resources/stacks/talos/image%20(6).png" style="border:1px solid black; width: 60%; height: auto;">
+</div>
+
+     
+    
+- In the `URL` section give your API endpoint URL and select `Bearer` as Authentication Type and give your DataOS API key.
+
+<div style="text-align: center;">
+  <img src="/resources/stacks/talos/image%20(7).png" style="border:1px solid black; width: 60%; height: auto;">
+</div>
+
+     
+    
+- Then click on Save.
+
+<div style="text-align: center;">
+  <img src="/resources/stacks/talos/image%20(8).png" style="border:1px solid black; width: 60%; height: auto;">
+</div>
+
+     
+    
+- Then on the same interface, create a new API as shown below.
+
+<div style="text-align: center;">
+  <img src="/resources/stacks/talos/image%20(9).png" style="border:1px solid black; width: 60%; height: auto;">
+</div>
+
+     
+    
+- Then click on `Run` , execution will look like the following.
+
+<div style="text-align: center;">
+  <img src="/resources/stacks/talos/image%20(10).png" style="border:1px solid black; width: 60%; height: auto;">
+</div>
+
+     
+    
+- Add the visuals of your preference to create a dashboard by drag and drop by selecting the data.
+
+<div style="text-align: center;">
+  <img src="/resources/stacks/talos/image%20(11).png" style="border:1px solid black; width: 60%; height: auto;">
+</div>
+
+     
+>>>>>>> cd0566077d2f99e75defe1e54b690030ef634b50
