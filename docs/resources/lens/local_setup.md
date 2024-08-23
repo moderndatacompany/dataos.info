@@ -36,16 +36,13 @@ model
 
 2.  Configure the docker-compose.yml file to add data source details and update Lens meta details.  
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/7844dbb5-a3ef-4a14-9d69-157d7db3468c/22aec1bf-aa13-4d75-afff-db07f5042456.png)
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/de231747-29f8-4266-9bf1-677c3a245898/2568b8f7-efb1-4936-ac9f-639c5a19d2d1.png)
 
 
 ## Configure the docker-compose manifest file
 
 The `docker-compose.yml` file defines how to set up and run your Docker containers for Lens 2.0. Customize this file to fit your specific environment and requirements.
 
-Syntax and Example
 
 ```bash
 version: "2.2"
@@ -91,7 +88,7 @@ NODE_ENV: production
 services:
 api:
 restart: always
-image: rubiklabs/lens2:0.35.18-50
+image: rubiklabs/lens2:0.35.55-01 
 ports:
 - 4000:4000
 - 25432:5432
@@ -178,7 +175,101 @@ You can start Lens locally by running:
 
     ```bash
     lens2-api-1  | Loaded  /app/scripts/config.js
-    lens2-api-1  | 🔥 Table Store (0.35.40) is assigned to 3030 port.
+    lens2-api-1  | 🔥 Table Store (0.35.55-01 ) is assigned to 3030 port.
     lens2-api-1  | 🔗 Lens2 SQL Service (PostgreSQL) is listening on 0.0.0.0:5432
-    lens2-api-1  | 🚀 Lens2 API server (0.35.41-05) is listening on 4000
+    lens2-api-1  | 🚀 Lens2 API server (0.35.55-01 ) is listening on 4000
     ```
+
+## Interacting with Lens in Local Environment
+
+Now that Lens is successfully running locally without errors, you can begin interacting with it using SQL APIs, REST APIs, or GraphQL APIs. This local setup allows you to thoroughly test Lens before proceeding to deployment, ensuring all functionalities are working as expected.
+
+>Note: Ensure that the API Key is correctly passed as defined in your docker-compose.yml.
+>
+
+### **Interacting via SQL API**
+
+Lens 2.0 exposes a PostgreSQL-compatible interface, enabling you to query Lens tables and views using standard PostgreSQL syntax.
+
+To interact with Lens via PostgreSQL, you have the following options:
+
+- **PostgreSQL Client (psql):** This command-line tool allows direct interaction with your PostgreSQL database. Use psql to run queries, manage your database, and perform various administrative tasks.
+
+- **VS Code Extension:** Use the PostgreSQL Client extension for Visual Studio Code. This extension enables SQL query execution and database management within VS Code.
+
+**PostgreSQL Client(psql)**
+
+The following setup will allow access using `user` as the username, `password` as the password, and any valid string as the database name in format `lens:<workspace_name>:<lens_name>.
+
+=== "Syntax"
+
+    psql -h <host_name> -p <port_name> -d <database_name>
+
+=== "Example"
+
+    psql -h localhost -p 25432 -d lens:public:sales_analysis
+
+**Connection Details:**
+
+Use the following details to connect to the Postgresql interface:
+
+<aside class="callout">
+💡 Always refer to 'ports' within the services section in `docker-compose.yml` for the exposed port.
+</aside>
+
+**Using VS Code Extension:**
+
+- Install the PostgreSQL Client extension.
+
+- Click the Create Connection button on the left side panel.
+
+- Configure the connection with the following details and click +connect:
+
+| **POSTGRES PROPERTY** | **DESCRIPTION** | **EXAMPLE** |
+| --- | --- | --- |
+| Host  | host name | `localhost` |
+| Port | port name | `25432` |
+| Database | database name | `postgres` |
+| Username | dataos-username | `postgres` |
+| Password | dataos-user-apikey | `dskhcknskhknsmdnalklquajzZr=` |
+
+- Once connected, hover over the postgres folder and click the terminal icon to open the terminal for querying.
+
+- Execute queries in the terminal as needed. For example:
+
+```sql
+postgres=> \d #listing all the tables and databases
+
+#Expected_output
+ Schema |         Name         | Type  |  Owner   
+--------+----------------------+-------+----------
+ public | channel              | table | postgres
+ public | customer             | table | postgres
+ public | product_analysis     | table | postgres
+ public | products             | table | postgres
+ public | transaction_analysis | table | postgres
+ public | transactions         | table | postgres
+(6 rows)
+```
+
+### **Interacting Via REST API**
+
+The REST API is enabled by default and secured using API scopes. It consists of a base path and API scopes:
+
+- **Base Path:** All REST API endpoints are prefixed with /lens2/api. For example, /v2/meta is available at /lens2/api/<data_model_name>/v2/meta.
+
+- **API Scopes:** Endpoints are secured by API scopes, restricting access based on user permissions. Follow the principle of least privilege to grant only necessary access.
+
+To explore various API endpoints and scopes, refer to the [API Endpoints and Scopes](/resources/lens/api_endpoints_and_scopes) page.
+
+You can use [Postman](https://www.postman.com/) to interact with Lens REST APIs. Start by importing the following Postman collection:
+
+[Lens2-API](/resources/lens/local_setup/Lens2-APIs.postman_collection.json)
+
+
+
+
+
+
+
+
