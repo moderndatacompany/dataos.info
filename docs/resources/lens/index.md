@@ -41,25 +41,27 @@ Lens  is optimized for performance, particularly when working with large dataset
 **Query Engine:** Lens  supports Themis, a Spark-native query engine, which further boosts performance, ensuring that data teams can handle large-scale queries with improved efficiency and speed.
 
 
-## Lens Local Set-up
+## Lens Set-up
 
 **Pre-requisites**
 
-Before setting up Lens 2.0, ensure you have the following dependencies installed on your system
+Before setting up Lens, ensure you have the following dependencies installed on your system
 
-1. Docker  (Docker to run Lens 2 in an isolated environment on our local system)
+1. Docker  (Docker to run Lens in an isolated environment on our local system)
 2. Docker-compose  (Lens leverages Docker Compose for configuring multi-container Docker applications)
 3. Postman App/Postman VSCode Extension (For querying and testing lens)
 4. VS Code (Code editor to build Lens Model YAMLs)
-5. VS Code Plugin (This is optional. It will aid in creating Lens 2.0 views and tables)
+5. VS Code Plugin (This is optional. It will aid in creating Lens views and tables)
 
-To install the above prerequisites, refer to the detailed doc [here](/resources/lens/prerequisites).
+To install the above prerequisites, refer to the detailed doc [here](/resources/lens/prerequisites/).
 
-If you are familiar with how to set up and run a Lens Project and you have an existing Lens Model that you want to run, directly jump to this step
+Once you've completed the prerequisite setup, proceed to the next step by following this link to begin the [Lens set-up](/resources/lens/local_setup/).
+
+If you are familiar with how to set up and run a Lens Project and you have an existing Lens Model that you want to run, directly [jump to this step](/resources/lens/)
 
 ## How to consume Lens ?
 
-Now that Lens  has successfully run locally without any errors, you can proceed to utilize it by querying or [consuming Lens](https://www.notion.so/How-to-Consume-Lens-2-0-5aead18ee43443cf95c14c622216b575?pvs=21). By consuming Lens locally using GraphQL REST APIs and SQL APIs, you are testing its functionality before deploying it. This ensures that everything works as expected in your local environment before moving to the deployment phase. 
+After successfully running Lens locally without errors, you can now begin utilizing it by [querying or consuming Lens](/resources/lens/test). Consuming Lens locally through GraphQL REST APIs and SQL APIs allows you to test its functionality in your local environment, ensuring everything works as expected before moving to the deployment phase. This step is crucial for validating your setup and making sure Lens operates smoothly prior to full-scale deployment.
 
 ## Deploy
 
@@ -104,8 +106,3 @@ https://liberal-donkey.dataos.app/lens2/studio/public:sales-intelligence/explore
 [How to Consume Lens ](https://www.notion.so/How-to-Consume-Lens-2-0-5aead18ee43443cf95c14c622216b575?pvs=21)
 
 [Deploying Lens](https://www.notion.so/Deploying-Lens-98553d2e1a7d425080cee8247b49f457?pvs=21)
-
-```bash
-export PGPASSWORD='dG9rZW5fZ3JhdGVmdWxseV9ldmVubHlfb3Blbl9naWJib24uYzQ3MjAyNjItYTQ1ZC00MzM1LWE5ZjgtOGZjYWI2NDNjNzRl' && psql -U postgres -h localhost -p 25432 -d postgres
-
-```
