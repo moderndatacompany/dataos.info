@@ -9,10 +9,6 @@ Talos is a [Stack](/resources/stacks/) within DataOS that aims to help data deve
     Talos operates within the consumption layer of the Data Product Life Cycle within DataOS, facilitating access and usability for consumers, whether they are external systems, applications, or end-users. Talos API endpoints are crucial in this process, offering a standardized and flexible interface for accessing and consuming Data Products via API. Talos is particularly valuable when Data Products need to be accessed or consumed outside the DataOS environment trhough an API.
 
 
-<div style="text-align: center;">
-  <img src="/resources/stacks/talos/flowchart.jpg" style="border:1px solid black; width: 60%; height: auto;">
-</div>
-
 
 ## Why Talos?
 
@@ -26,7 +22,6 @@ To fully utilize the capabilities of Talos, it is essential to familiarize yours
 
 - **Rapid API Development:** Talos transforms your SQL queries into APIs swiftly, allowing developers to focus on higher-level application logic rather than manual API coding. Talos utilizes [SQL templates](/resources/stacks/talos/set_up/) to streamline API creation, reducing development time and complexity.
 
-- **Enhanced Performance:** Talos employs in-memory database as a caching layer to enhance query speed and minimize API response times, ensuring a more efficient interaction with data sources.
 - **Enhanced Performance:** Talos employs in-memory database as a [caching layer](/resources/stacks/talos/recipes/caching/) to enhance query speed and minimize API response times, ensuring a more efficient interaction with data sources.
 
 - **Scalability and Maintenance:** A structured, template-driven approach makes it easier to scale and maintain APIs, adapting to changes in data schemas or business logic with minimal manual intervention.
@@ -42,13 +37,21 @@ To fully utilize the capabilities of Talos, it is essential to familiarize yours
 
 ## How does Talos work?
 
+By leveraging Hemidall for authentication, Flash for caching, and SQL templates for simple query execution, Talos ensures secure, efficient, and reliable API services. Its RESTful architecture, automated documentation generation, and observability features simplify development and integration.
+
+<center>
+  <img src="/resources/stacks/talos/chart.jpg" alt="Talos" style="width:40rem; border: 1px solid black; padding: 5px;" />
+  <figcaption><i>Talos Framework</i></figcaption>
+</center>
+
+
 ### **Build**
 
 Talos allows you to insert variables into your templated SQL. It accepts input from your API and generates SQL statements on the fly.
 
 ### **Accelerate**
 
-Talos uses DuckDB as a caching layer, boosting query speed and reducing API response time. This means faster, smoother data APIs for you and less strain on your data sources.
+Talos uses in-memory databases as a caching layer, boosting query speed and reducing API response time. This means faster, smoother data APIs for you and less strain on your data sources.
 
 ### **Share**
 
