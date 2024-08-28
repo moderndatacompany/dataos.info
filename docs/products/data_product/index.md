@@ -27,6 +27,7 @@ sharing, data monetization, analytics and application integration.
 </center>
 
 
+
 <div class="grid cards" markdown>
 
 -   :material-clock-fast:{ .lg .middle } **How to develop a Data Product?**

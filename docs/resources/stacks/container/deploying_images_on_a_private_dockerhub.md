@@ -6,8 +6,8 @@ Container Stack allows you to pass your secret keys and credentials as environme
 
 ```yaml
 # Images
-name: docker-secrets
-version: v1
+name: docker-image
+version: v1beta1
 type: secret
 secret:
   type: cloud-kernel-image-pull
@@ -31,7 +31,7 @@ The `type` field should be set to "cloud-kernel-image-pull", which will generate
 
 Apply the Secret to the desired workspace where the Container Service or Workflow will be executed.
 
-```shell
+```bash
 dataos-ctl apply -f ${path-to-secret-yaml} -w ${name of the workspace}
 ```
 
@@ -66,7 +66,7 @@ workflow:
       compute: runnable-default
       stackSpec:
         image: docker.io/helloworldimage/helloworldimage:tag
-        imagePullSecret: docker-secrets
+        imagePullSecret: dockers-secrets
         command:
           - python
 ```

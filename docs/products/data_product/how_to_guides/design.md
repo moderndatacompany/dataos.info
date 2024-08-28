@@ -181,7 +181,9 @@ To know more about the Cluster, [refer to this](https://dataos.info/resources/cl
 
 Now on Workbench, select your Cluster and query the data.
 
-![workbench](/products/data_product/how_to_guides/workbench.png)
+<div style="text-align: center;">
+  <img src="/products/data_product/how_to_guides/workbench.png" style="border:1px solid black; width: 60%; height: auto;">
+</div>
 
 To know more about Workbench, [refer to this](https://dataos.info/interfaces/workbench/).
 
@@ -189,7 +191,9 @@ To know more about Workbench, [refer to this](https://dataos.info/interfaces/wor
 
 Once you've explored the data, the next step is to plan the architectural design. This involves mapping out how different components, data pipelines, and workflows will integrate. The architecture design should be well-documented with diagrams and clear explanations of how each component interacts and the workflows they support. For data transformation tasks, tools like Flare jobs, SLOs (Service Level Objectives), and UI (User Interface) elements can be utilized to ensure efficient processing and visualization of data insights.
 
-<img src="/products/data_product/how_to_guides/flow.jpg" alt="Description" width="1500">
+<div style="text-align: center;">
+  <img src="/products/data_product/how_to_guides/flow.jpg" style="border:1px solid black; width: 60%; height: auto;">
+</div>
 
 
 For this particular example, the architectural design phase will also include the analytical elements and features that need to be included in the Traffic Source analysis. You can also define the input and output location in this step itself.
@@ -212,50 +216,142 @@ Let’s see how you can set up the Data Product.
 
 Begin by creating a manifest file that will hold the configuration details for your Data Product. The structure of the Data Product manifest file is provided below.
 
-```yaml
-# Product meta section
-name: {{dp-test}} # Product name (mandatory)
-version: {{v1alpha}} # Manifest version (mandatory)
-type: {{data}} # Product-type (mandatory)
-tags: # Tags (Optional)
-  - {{data-product}}
-  - {{dataos:type:product}}
-  - {{dataos:product:data}}
-description: {{the customer 360 view of the world}} # Descripton of the product (Optional)
-Purpose: {{This data product is intended to provide insights into the customer for strategic decisions on cross-selling additional products.}} # purpose (Optional)
-collaborators: # collaborators User ID (Optional)
-  - {{thor}}
-  - {{blackwidow}}
-  - {{loki}}
-owner: {{iamgroot}} # Owner (Optional)
-refs: # Reference (Optional)
-  - title: {{Data Product Hub}} # Reference title (Mandatory if adding reference)
-    href: {{https://liberal-donkey.dataos.app/dph/data-products/all}} # Reference link (Mandatory if adding reference)
-entity: {{product}} # Entity (Mandatory)
-# Data Product-specific section (Mandatory)
-v1alpha: # Data Product version
-  data:
-    resources: # Resource specific section(Mandatory)
-      - name: {{bundle-dp}} # Resource name (Mandatory)
-        type: {{bundle}} # Resource type (Mandatory)
-        version: {{v1beta}} # Resource version (Mandatory)
-        refType: {{dataos}} # Resource reference type (Mandatory)
-        workspace: {{public}} # Workspace (Requirement depends on the resource type)
-        description: {{this bundle resource is for a data product}} # Resource description (Optional)
-        purpose: {{deployment of data product resources}} # Purpose of the required resource (Optional)   
-    
-    inputs:
-      - description: S3 Depot
-        purpose: source
-        refType: dataos
-        ref: dataos://s3depot:none/ga_data/
-    
-    outputs:
-      - description: Icebase Depot
-        purpose: consumption
-        refType: dataos_address
-        ref: dataos://icebase:google_analytics/ga_sessions_daily_data_raw    
-```
+=== "version: v1alpha"
+
+    ```yaml
+    # Product meta section
+    name: ${{dp-test}} # Product name (mandatory)
+    version: v1alpha # Manifest version (mandatory)
+    type: ${{data}} # Product-type (mandatory)
+    tags: # Tags (Optional)
+      - ${{data-product}}
+      - ${{dataos:type:product}}
+      - ${{dataos:product:data}}
+    description: ${{the customer 360 view of the world}} # Descripton of the product (Optional)
+    Purpose: ${{This data product is intended to provide insights into the customer for strategic decisions on cross-selling additional products.}} # purpose (Optional)
+    collaborators: # collaborators User ID (Optional)
+      - ${{thor}}
+      - ${{blackwidow}}
+      - ${{loki}}
+    owner: ${{iamgroot}} # Owner (Optional)
+    refs: # Reference (Optional)
+      - title: ${{Data Product Hub}} # Reference title (Mandatory if adding reference)
+        href: ${{https://liberal-donkey.dataos.app/dph/data-products/all}} # Reference link (Mandatory if adding reference)
+    entity: ${{product}} # Entity (Mandatory)
+    # Data Product-specific section (Mandatory)
+    v1alpha: # Data Product version
+      data:
+        resources: # Resource specific section(Mandatory)
+          - name: ${{bundle-dp}} # Resource name (Mandatory)
+            type: ${{bundle}} # Resource type (Mandatory)
+            version: ${{v1beta}} # Resource version (Mandatory)
+            refType: ${{dataos}} # Resource reference type (Mandatory)
+            workspace: ${{public}} # Workspace (Requirement depends on the resource type)
+            description: ${{this bundle resource is for a data product}} # Resource description (Optional)
+            purpose: ${deployment of data product resources}} # Purpose of the required resource (Optional)   
+        
+        inputs:
+          - description: S3 Depot
+            purpose: source
+            refType: dataos
+            ref: dataos://s3depot:none/ga_data/
+        
+        outputs:
+          - description: Icebase Depot
+            purpose: consumption
+            refType: dataos_address
+            ref: dataos://icebase:google_analytics/ga_sessions_daily_data_raw    
+    ```
+=== "version: v1beta"
+
+    ``` yaml
+    # Product meta section
+    name: ${{sales-360}} # Product name (mandatory)
+    version: v1beta # Manifest version (mandatory)
+    entity: ${{product}} # Entity type (mandatory)
+    type: ${{data}} # Product type (mandatory)
+    purpose: ${{Sales360 enables data analysts to efficiently explore and analyze sales data, with robust capabilities across product and customer dimensions.}} # Purpose (optional)
+    tags: # Tags (Optional)
+      - ${{DPDomain.sales}}
+      - ${[DPTier.Consumer-aligned}}
+      - ${{DPUsecase.purchase behaviour}}
+    description: ${{Sales360 enables data analysts to efficiently explore and analyze sales data, with robust capabilities across product and customer dimensions.}} # Descripton of the product (Optional)
+    refs: # Reference (Optional)
+    - title: ${{'Workspace Info'}} # Reference title (Mandatory if adding reference)
+      href: ${{https://dataos.info/interfaces/cli/command_reference/#workspace}} # Reference link (Mandatory if adding reference)
+
+    # Data Product-specific section (Mandatory)
+    v1beta: # Data Product version
+      data:
+        meta:
+          foo: bar
+        collaborators: # Collaborators (mandatory)
+          - name: ${{iamgroot}} # Collaborator's name 
+            description: ${{owner}} #Collaborator's description
+          - name: ${{itsthor}} # Collaborator's name 
+            description: ${{developer}} #Collaborator's description
+          - name: ${{itsloki}} # Collaborator's name 
+            description: ${{consumer}} #Collaborator's description
+        relatedDataProducts: # (optional)
+          - ${{data:v1beta:customer-360-demov3}}
+
+        resource: # Resource specific section (mandatory)
+          description: ${{'Ingest data'}} # Resource description (optional)
+          purpose: ${{'ingestion'}} # Resource purpose (optional)
+          refType: ${{dataos}} # Resource reference type (Mandatory) 
+          ref: ${{bundle:v1beta:sales-data-pipeline}} # Resource reference
+
+        inputs: # Input specific section (mandatory)
+        - description: ${{icebase.sales360mockdb.f_sales}} # Input decsription
+          purpose: ${{source}} # Input purpose
+          refType: ${{depot}} # Input reference type
+          ref: ${{dataos://icebase:sales360mockdb/f_sales}} # Input reference
+
+        - description: ${{customer data pulling from s3 bucket}} 
+          purpose: ${{source}}
+          refType: ${{dataos}}
+          ref: ${{dataset:icebase:sales360mockdb:customer_data_master}}
+
+        - description: ${{product data pulling from s3 bucket}}
+          purpose: ${{source}}
+          refType: ${{dataos}}
+          ref: ${{dataset:icebase:sales360mockdb:product_data_master}}
+
+        outputs:
+        - description: ${{sales data}} # Output description
+          purpose: ${{source}} # Output purpose
+          refType: ${{dataos}} # Output reference type
+          ref: ${{dataset:icebase:flash:f_sales}} # Output reference
+          checks: 
+            availability: ${{bar}} 
+        ports: 
+          lens: 
+            ref: ${{lens:v1alpha:sales360:public}} # Lens reference
+            refType: ${{dataos}} # Reference type
+            meta: 
+              foo: bar 
+          talos: 
+          - ref: ${{service:v1:sales360-talos:public}} #  Talos reference
+            refType: ${{dataos}} # Reference type
+            meta: 
+              foo: bar 
+          rest: 
+          - url: https://liberal-donkey.dataos.app/lens2/api/public:sales360/v2/rest # API endpoint url
+            meta: 
+              foo: bar 
+          postgres: 
+          - host: ${{tcp.liberal-donkey.dataos.app}} 
+            port: ${{5432}} 
+            params: 
+              ssl: ${{true}} 
+            meta: 
+              foo: bar 
+        metrics: 
+          - description: ${{understand proof revenue across product dimensions}} # Metrics description
+            purpose: ${{metric analysis}} # Metrics purpose
+            refType: ${{depot}} # Metrics reference type
+            ref: ${{lens:public:sales360:wallet_sales_view}} # Metrics reference
+    ```
 
 The manifest file of a Data Product can be broken down into two sections: 
 
@@ -288,38 +384,117 @@ refs: # Reference (optional)
 entity: {{product}} # Entity (Mandatory)
 ```
 
-For more information about the various attributes in the Product meta section, refer to the [Attributes of Product meta section](/products/data_products/configurations/).
+For more information about the various attributes in the Product meta section, refer to the [Attributes of Product meta section](/products/data_product/configurations/).
 
 ### **Data Product-specific section**
 
 This section focuses on Data Product-specific attributes, outlining resources, inputs, outputs, and use cases.
 
-```yaml
-v1alpha: # Data Product version
-  data:
-    resources: # Resource specific section(Mandatory)
-      - name: {{bundle-dp}} # Resource name (Mandatory)
-        type: {{bundle}} # Resource type (Mandatory)
-        version: {{v1beta}} # Resource version (Mandatory)
-        refType: {{dataos}} # Resource reference type (Mandatory)
-        workspace: {{public}} # Workspace (Requirement depends on the resource type)
-        description: {{this bundle resource is for a data product}} # Resource description (Optional)
-        purpose: {{deployment of data product resources}} # Purpose of the required resource (Optional)       
-       
-    inputs:
-      - description: S3 Depot
-        purpose: source
-        refType: dataos
-        ref: dataos://s3depot:none/ga_data/
-    
-    outputs:
-      - description: Icebase Depot
-        purpose: consumption
-        refType: dataos_address
-        ref: dataos://icebase:google_analytics/ga_sessions_daily_data_raw             
-```
+=== "version:v1alpha"
 
-For more information about the various attributes in the Data Product-specific section, refer to the [Attributes of Data Product-Specific section](/products/data_product/configuration/).
+    ```yaml
+    v1alpha: # Data Product version
+      data:
+        resources: # Resource specific section(Mandatory)
+          - name: {{bundle-dp}} # Resource name (Mandatory)
+            type: {{bundle}} # Resource type (Mandatory)
+            version: {{v1beta}} # Resource version (Mandatory)
+            refType: {{dataos}} # Resource reference type (Mandatory)
+            workspace: {{public}} # Workspace (Requirement depends on the resource type)
+            description: {{this bundle resource is for a data product}} # Resource description (Optional)
+            purpose: {{deployment of data product resources}} # Purpose of the required resource (Optional)       
+          
+        inputs:
+          - description: S3 Depot
+            purpose: source
+            refType: dataos
+            ref: dataos://s3depot:none/ga_data/
+        
+        outputs:
+          - description: Icebase Depot
+            purpose: consumption
+            refType: dataos_address
+            ref: dataos://icebase:google_analytics/ga_sessions_daily_data_raw             
+    ```
+=== "version:v1beta"
+
+    ```yaml
+    # Data Product-specific section (Mandatory)
+    v1beta: # Data Product version
+      data:
+        meta:
+          foo: bar
+        collaborators: # Collaborators (mandatory)
+          - name: ${{iamgroot}} # Collaborator's name 
+            description: ${{owner}} #Collaborator's description
+          - name: ${{itsthor}} # Collaborator's name 
+            description: ${{developer}} #Collaborator's description
+          - name: ${{itsloki}} # Collaborator's name 
+            description: ${{consumer}} #Collaborator's description
+        relatedDataProducts: # (optional)
+          - ${{data:v1beta:customer-360-demov3}}
+
+        resource: # Resource specific section (mandatory)
+          description: ${{'Ingest data'}} # Resource description (optional)
+          purpose: ${{'ingestion'}} # Resource purpose (optional)
+          refType: ${{dataos}} # Resource reference type (Mandatory) 
+          ref: ${{bundle:v1beta:sales-data-pipeline}} # Resource reference
+
+        inputs: # Input specific section (mandatory)
+        - description: ${{icebase.sales360mockdb.f_sales}} # Input decsription
+          purpose: ${{source}} # Input purpose
+          refType: ${{depot}} # Input reference type
+          ref: ${{dataos://icebase:sales360mockdb/f_sales}} # Input reference
+
+        - description: ${{customer data pulling from s3 bucket}} 
+          purpose: ${{source}}
+          refType: ${{dataos}}
+          ref: ${{dataset:icebase:sales360mockdb:customer_data_master}}
+
+        - description: ${{product data pulling from s3 bucket}}
+          purpose: ${{source}}
+          refType: ${{dataos}}
+          ref: ${{dataset:icebase:sales360mockdb:product_data_master}}
+
+        outputs:
+        - description: ${{sales data}} # Output description
+          purpose: ${{source}} # Output purpose
+          refType: ${{dataos}} # Output reference type
+          ref: ${{dataset:icebase:flash:f_sales}} # Output reference
+          checks: 
+            availability: ${{bar}} 
+        ports: 
+          lens: 
+            ref: ${{lens:v1alpha:sales360:public}} # Lens reference
+            refType: ${{dataos}} # Reference type
+            meta: 
+              foo: bar 
+          talos: 
+          - ref: ${{service:v1:sales360-talos:public}} #  Talos reference
+            refType: ${{dataos}} # Reference type
+            meta: 
+              foo: bar 
+          rest: 
+          - url: https://liberal-donkey.dataos.app/lens2/api/public:sales360/v2/rest # API endpoint url
+            meta: 
+              foo: bar 
+          postgres: 
+          - host: ${{tcp.liberal-donkey.dataos.app}} 
+            port: ${{5432}} 
+            params: 
+              ssl: ${{true}} 
+            meta: 
+              foo: bar 
+        metrics: 
+          - description: ${{understand proof revenue across product dimensions}} # Metrics description
+            purpose: ${{metric analysis}} # Metrics purpose
+            refType: ${{depot}} # Metrics reference type
+            ref: ${{lens:public:sales360:wallet_sales_view}} # Metrics reference
+
+    ```
+
+
+For more information about the various attributes in the Data Product-specific section, refer to the [Attributes of Data Product-Specific section](/products/data_product/configurations/).
 
 ## **Apply the Data Product manifest file**
 
