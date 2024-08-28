@@ -1,12 +1,11 @@
 # Talos
 
-Talos is a [Stack](/resources/stacks/) within DataOS that aims to help data developers deliver [RESTful APIs](https://www.redhat.com/en/topics/api/what-is-a-rest-api) from various data sources like databases, data warehouses, and data lakes. It simplifies how you write database queries and works well with standard methods for creating APIs, allowing developers to quickly build APIs for AI agents, applications, and other data-driven solutions.
+Talos is a [Stack](/resources/stacks/) within DataOS designed to streamline the creation of data APIs ( [RESTful APIs](https://www.redhat.com/en/topics/api/what-is-a-rest-api) ), facilitating seamless access to data from diverse sources such as databases, data warehouses, and data lakes. By simplifying the process of writing and managing database queries, Talos enables rapid development and integration of APIs into various applications and AI agents. 
 
 *It turns your SQL into APIs in no time!*
 
 !!!tip "Talos within the Data Product Life-cycle"
     Talos operates within the consumption layer of the Data Product Life Cycle within DataOS, facilitating access and usability for consumers, whether they are external systems, applications, or end-users. The Talos API endpoints are crucial in this process, offering a standardized and flexible interface for accessing and consuming Data Products via API. Talos is particularly valuable when Data Products need to be accessed or consumed outside the DataOS environment via API.
-    Talos operates within the consumption layer of the Data Product Life Cycle within DataOS, facilitating access and usability for consumers, whether they are external systems, applications, or end-users. Talos API endpoints are crucial in this process, offering a standardized and flexible interface for accessing and consuming Data Products via API. Talos is particularly valuable when Data Products need to be accessed or consumed outside the DataOS environment trhough an API.
 
 
 
@@ -47,15 +46,15 @@ By leveraging Hemidall for authentication, Flash for caching, and SQL templates 
 
 ### **Build**
 
-Talos allows you to insert variables into your templated SQL. It accepts input from your API and generates SQL statements on the fly.
+Talos streamlines the process of creating robust and scalable Data APIs by utilizing SQL templates. Users can connect to various data sources and define their data logic through these templates, which encapsulate complex queries and transformations in a simplified manner. This phase involves writing and organizing SQL templates that serve as the backbone of the APIs, validating API parameters, handling errors, and implementing caching strategies to optimize data retrieval and processing.
 
 ### **Accelerate**
 
-Talos uses in-memory databases as a caching layer, boosting query speed and reducing API response time. This means faster, smoother data APIs for you and less strain on your data sources.
+Talos focuses on optimizing the performance of the APIs. It enhances query performance through efficient SQL construction and caching, ensuring rapid response times even with large datasets. Talos supports scalability by enabling easy adjustments to handle increased data volume or request load. Integrations with tools like dbt and language models from Hugging Face further streamline query generation and development, helping to maintain high performance and efficiency.
 
 ### **Share**
 
-Talos offers many data-sharing options, seamlessly integrating your data into familiar applications within your workflow and building AI agents.
+Talos enhances the accessibility and usability of the Data APIs created. It provides features for generating detailed API documentation, which includes descriptions of endpoints, parameters, and response formats, ensuring that users and stakeholders can easily understand and utilize the APIs.
 
 ## How to set up Talos?
 
