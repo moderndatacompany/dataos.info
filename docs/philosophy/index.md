@@ -7,7 +7,7 @@ hide:
     - tags
 ---
 
-# :material-thought-bubble-outline: Philosophy
+# :material-thought-bubble-outline: DataOS Philosophy
 
 Embracing an Operating System for Data does not have to mean a radical or disruptive transformation of your data environment. In fact, it's quite the opposite - a way to cushion yourself against the rapid disruptions that the data industry is known to suffer from. Think of it more as a strategic evolution in your approach to managing data. Implementing an Operating System for data such as DataOS refines your data philosophy, allowing you to harness and operationalize your data more effectively without the heavy lifting often associated with tooling changes or migration.
 
