@@ -182,7 +182,7 @@ To know more about the Cluster, [refer to this](https://dataos.info/resources/cl
 Now on Workbench, select your Cluster and query the data.
 
 <div style="text-align: center;">
-  <img src="/products/data_product/how_to_guides/workbench.png" style="border:1px solid black; width: 80%; height: auto;">
+  <img src="/products/data_product/how_to_guides/workbench.png" style="border:1px solid black; width: 60%; height: auto;">
 </div>
 
 To know more about Workbench, [refer to this](https://dataos.info/interfaces/workbench/).
@@ -192,7 +192,7 @@ To know more about Workbench, [refer to this](https://dataos.info/interfaces/wor
 Once you've explored the data, the next step is to plan the architectural design. This involves mapping out how different components, data pipelines, and workflows will integrate. The architecture design should be well-documented with diagrams and clear explanations of how each component interacts and the workflows they support. For data transformation tasks, tools like Flare jobs, SLOs (Service Level Objectives), and UI (User Interface) elements can be utilized to ensure efficient processing and visualization of data insights.
 
 <div style="text-align: center;">
-  <img src="/products/data_product/how_to_guides/flow.jpg" style="border:1px solid black; width: 80%; height: auto;">
+  <img src="/products/data_product/how_to_guides/flow.jpg" style="border:1px solid black; width: 60%; height: auto;">
 </div>
 
 
@@ -384,7 +384,7 @@ refs: # Reference (optional)
 entity: {{product}} # Entity (Mandatory)
 ```
 
-For more information about the various attributes in the Product meta section, refer to the [Attributes of Product meta section](/products/data_products/configurations/).
+For more information about the various attributes in the Product meta section, refer to the [Attributes of Product meta section](/products/data_product/configurations/).
 
 ### **Data Product-specific section**
 
