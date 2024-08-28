@@ -166,7 +166,7 @@ LENS2_LOCAL_PG_USER=iamgroot
 | `LENS2_DB_HOST` | The host URL for the database | A valid database host URL of the form `tcp.${DATAOS-FQDN}` where `${DATAOS-FQDN}` is the placeholder for DataOS’ fully qualified domain name. Replace the placeholder with your respective domain name. | `tcp.alpha-omega.dataos.app` | ✅ |
 | `LENS2_DB_PORT` | The port for the database connection | A valid port number | `7432` | ❌ |
 | `LENS2_DB_USER` | The DataOS user-id used to connect to the database. It can be retrieved from the second column of the output by running the `dataos-ctl user get` command from the DataOS CLI | A valid DataOS user-id | `iamgroot` | ✅ |
-| `LENS2_DB_PASS` | The DataOS Wrap Token that serves as a password used to connect to the database | A valid Cluster Wrap Token. Learn more about how to create a Cluster Wrap Token [**here.**](https://www.notion.so/ac6f155294244807bc2272083f082f60?pvs=21) | `abcdefghijklmnopqrstuvwxyz` | ✅ |
+| `LENS2_DB_PASS` | The DataOS Wrap Token that serves as a password used to connect to the database | A valid Cluster Wrap Token. Learn more about how to create a Cluster Wrap Token [**here.**](https://www.notion.so/ac6f155294244607bc2272083f082f60?pvs=21) | `abcdefghijklmnopqrstuvwxyz` | ✅ |
 | `LENS2_DB_PRESTO_CATALOG` | The catalog within Themis to connect to | A valid catalog name  | `icebase` | ✅ |
 | `LENS2_DB_SSL` | If `true`, enable SSL encryption for database connections from Lens2. | `true`, `false` | `true` | ❌ |
 | `LENS2_CONCURRENCY` | The number of concurrent connections each queue has to the database. Default is `2` | 3,4 | `2` |  |
@@ -175,7 +175,7 @@ LENS2_LOCAL_PG_USER=iamgroot
 ## Check Query Stats for Themis
 
 <aside class="callout">
-💡  Please ensure you have the required permission to access the Operations.
+💡 Please ensure you have the required permission to access the Operations.
 </aside>
 
 To check the query statistics, please follow the steps below:
@@ -185,7 +185,7 @@ To check the query statistics, please follow the steps below:
     Navigate to the Themis cluster. You should see a screen similar to the image below:
 
   <div style="text-align: center;">
-    <img src="/resources/lens/data_sources/Themis/Untitled(7).png" alt="Untitled" style="max-width: 100%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/data_sources/Themis/Untitled(7).png" alt="Untitled" style="max-width: 80%; height: auto; border: 1px solid #000;">
   </div>
 
 2. **Select the Running Driver**
@@ -193,7 +193,7 @@ To check the query statistics, please follow the steps below:
   Choose the running driver. **This driver will always be the same, regardless of the user, as queries will be directed to the creator of the Themis cluster**. The running driver remains consistent for all users.
   
   <div style="text-align: center;">
-      <img src="/resources/lens/data_sources/Themis/Untitled(9).png" alt="Untitled" style="max-width: 100%; height: auto; border: 1px solid #000;">
+      <img src="/resources/lens/data_sources/Themis/Untitled(9).png" alt="Untitled" style="max-width: 80%; height: auto; border: 1px solid #000;">
   </div>
 
 
@@ -211,6 +211,6 @@ dataos-ctl -t cluster -w public -n themislens --node themis-themislens-iamgroot-
 You should see the following interface:
 
 <div style="text-align: center;">
-    <img src="/resources/lens/data_sources/Themis/Untitled(9).png" alt="Untitled" style="max-width: 100%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/data_sources/Themis/Untitled(9).png" alt="Untitled" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 

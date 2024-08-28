@@ -93,7 +93,7 @@ LENS2_SOURCE_CATALOG_NAME: ${redshiftdepot}
 2. **Search for "Redshift" in the AWS Console search bar.**
 
 <div style="text-align: center;">
-    <img src="/resources/lens/data_sources/awsredshift/Untitled1.png" alt="Untitled" style="max-width: 100%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/data_sources/awsredshift/Untitled1.png" alt="Untitled" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 ### 2. **Select Redshift Cluster**
@@ -102,7 +102,7 @@ LENS2_SOURCE_CATALOG_NAME: ${redshiftdepot}
 2. **Select the appropriate region** and **choose the desired cluster name** from the list.
 
 <div style="text-align: center;">
-    <img src="/resources/lens/data_sources/awsredshift/Untitled2.png" alt="Untitled" style="max-width: 100%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/data_sources/awsredshift/Untitled2.png" alt="Untitled" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 ### 3. Access Query Monitoring
@@ -111,7 +111,7 @@ LENS2_SOURCE_CATALOG_NAME: ${redshiftdepot}
 2. **Navigate to the "Query monitoring" tab** to view query statistics
 
 <div style="text-align: center;">
-    <img src="/resources/lens/data_sources/awsredshift/Untitled3.png" alt="Untitled" style="max-width: 100%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/data_sources/awsredshift/Untitled3.png" alt="Untitled" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 ### 4. View Running and Completed Queries
@@ -119,7 +119,7 @@ LENS2_SOURCE_CATALOG_NAME: ${redshiftdepot}
 1. **In the "Query monitoring" tab**, you will see a list of running  and completed queries.
 
 <div style="text-align: center;">
-    <img src="/resources/lens/data_sources/awsredshift/Untitled4.png" alt="Untitled" style="max-width: 100%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/data_sources/awsredshift/Untitled4.png" alt="Untitled" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 ### 5. Monitor Specific Query
@@ -128,10 +128,10 @@ LENS2_SOURCE_CATALOG_NAME: ${redshiftdepot}
 2. **View the query statistics**, as shown in the example below.
 
 <div style="text-align: center;">
-    <img src="/resources/lens/data_sources/awsredshift/Untitled5.png" alt="Untitled" style="max-width: 100%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/data_sources/awsredshift/Untitled5.png" alt="Untitled" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 
 <div style="text-align: center;">
-    <img src="/resources/lens/data_sources/awsredshift/Untitled6.png" alt="Untitled" style="max-width: 100%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/data_sources/awsredshift/Untitled6.png" alt="Untitled" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>

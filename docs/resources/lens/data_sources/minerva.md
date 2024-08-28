@@ -95,7 +95,7 @@ To check the query statistics, please follow the steps below:
   - You can also filter by cluster, username, and other criteria as per your choice.
 
   <div style="text-align: center;">
-      <img src="docs/resources/lens/data_sources/minerva/Untitled1.png" alt="Untitled" style="max-width: 100%; height: auto; border: 1px solid #000;">
+      <img src="docs/resources/lens/data_sources/minerva/Untitled1.png" alt="Untitled" style="max-width: 80%; height: auto; border: 1px solid #000;">
   </div>
 
 2. **Select the Query ID**
@@ -103,5 +103,5 @@ To check the query statistics, please follow the steps below:
   Choose the query ID you are interested in. You will then be able to check the statistics, as shown in the example below:
     
   <div style="text-align: center;">
-      <img src="docs/resources/lens/data_sources/minerva/Untitled1.png" alt="Untitled" style="max-width: 100%; height: auto; border: 1px solid #000;">
+      <img src="docs/resources/lens/data_sources/minerva/Untitled1.png" alt="Untitled" style="max-width: 80%; height: auto; border: 1px solid #000;">
   </div>
