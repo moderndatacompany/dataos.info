@@ -150,7 +150,15 @@ Type :help for more information.
 1. You can check the `dataout` folder under which the data is written.
 
 <div style="text-align: center;">
+<<<<<<< HEAD
+<<<<<<< HEAD
   <img src="docs/resources/stacks/flare/standalone/running_flare_standalone/untitled.png" alt="Flare" style="border:1px solid black; width: 80%; height: auto;">
+=======
+  <img src="/resources/stacks/flare/running_flare_standalone/untitled_2.png" alt="Fill in the required fields" style="border:1px solid black; width: 80%; height: auto;">
+>>>>>>> 9a49780 (updated lens doc)
+=======
+  <img src="docs/resources/stacks/flare/standalone/running_flare_standalone/untitled.png" alt="Flare" style="border:1px solid black; width: 80%; height: auto;">
+>>>>>>> cd0566077d2f99e75defe1e54b690030ef634b50
 </div>
 
 ### **Exploring Spark Commands in Scala Interactive Shell**
