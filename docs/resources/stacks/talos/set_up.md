@@ -112,8 +112,8 @@ Steps to set up Talos for Depot source type. Types of Depot supported by Talos a
       type: ${{key-value}}
       acl: ${{r}}
       data:
-        GITSYNC_USERNAME: ${{"iamgroot7340"}}# Bitbucket username
-        GITSYNC_PASSWORD: ${{"ATBBe2we5UPdGVthtEHnjkLDHL7443AC"}}# Bitbukcet app password
+        GITSYNC_USERNAME: ${{"iamgroot7340"}} # Bitbucket username
+        GITSYNC_PASSWORD: ${{"ATBBe2we5UPdGVthtEHnjkLDHL7443AC"}} # Bitbukcet app password
     ```
     
     To create an app password in Bitbucket follow the below steps:
