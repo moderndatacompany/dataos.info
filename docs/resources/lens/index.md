@@ -58,7 +58,7 @@ To install the above prerequisites, refer to the detailed doc [here](/resources/
 Once you've completed the prerequisite setup, proceed to the next step by following this link to begin the [Lens set-up](/resources/lens/local_setup/).
 
 If you are familiar with how to set up and run a Lens Project and you have an existing Lens Model that you want to run, directly [jump to this step](/resources/lens/)
-
+<!-- 
 ## How to consume Lens ?
 
 After successfully running Lens locally without errors, you can now begin utilizing it by [querying or consuming Lens](/resources/lens/test). Consuming Lens locally through GraphQL REST APIs and SQL APIs allows you to test its functionality in your local environment, ensuring everything works as expected before moving to the deployment phase. This step is crucial for validating your setup and making sure Lens operates smoothly prior to full-scale deployment.
@@ -105,4 +105,4 @@ https://liberal-donkey.dataos.app/lens2/studio/public:sales-intelligence/explore
 
 [How to Consume Lens ](https://www.notion.so/How-to-Consume-Lens-2-0-5aead18ee43443cf95c14c622216b575?pvs=21)
 
-[Deploying Lens](https://www.notion.so/Deploying-Lens-98553d2e1a7d425080cee8247b49f457?pvs=21)
+[Deploying Lens](https://www.notion.so/Deploying-Lens-98553d2e1a7d425080cee8247b49f457?pvs=21) -->
