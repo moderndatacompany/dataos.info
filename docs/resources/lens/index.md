@@ -7,8 +7,8 @@ As a core resource within the DataOS ecosystem, Lens  enhances the entire data p
 > The data modeling layer serves as an interface that overlays the underlying data, consistently presenting business users with familiar and well-defined terms like "product," "customer," or "revenue." This abstraction enables users to access and consume data in a way that aligns with their understanding, facilitating self-service analytics and reducing dependence on data engineers for ad-hoc data requests. 
 
 <div style="text-align: center;">
-    <img src="/resources/lens/lens.png" alt="Untitled(5)" style="max-width: 100%; height: auto; border: 1px solid #000;">
-   <figcaption>Placement of Lens Ecosystem between Sources and Data Consumers<figcaption>
+    <img src="/resources/lens/lens_diagram.png" alt="Untitled(5)" style="max-width: 100%; height: auto; border: 1px solid #000;">
+   <figcaption>Lens Ecosystem<figcaption>
 </div>
 
                                                     
@@ -16,30 +16,29 @@ As a core resource within the DataOS ecosystem, Lens  enhances the entire data p
 
 Lens  is engineered to handle complex and large-scale data models with ease. Key features include:
 
-**Code Modularity:** The platform supports modular code structures, simplifying the maintenance of extensive models, especially when dealing with entities, dimensions, and measures. This modularity facilitates efficient development and management, enabling teams to navigate large codebases without unnecessary complexity.
+- **Code Modularity:** The platform supports modular code structures, simplifying the maintenance of extensive models, especially when dealing with entities, dimensions, and measures. This modularity facilitates efficient development and management, enabling teams to navigate large codebases without unnecessary complexity.
 
-**YAML Boilerplate Generation:** Lens  offers a tailored template generator through its VS Code plugin, streamlining the creation of Lens YAML files. This enhancement reduces the manual effort involved in setting up and ensures consistency across models.
+- **YAML Template Generation:** Lens  offers a tailored template generator through its VS Code plugin, streamlining the creation of Lens YAML files. This enhancement reduces the manual effort involved in setting up and ensures consistency across models.
 
-**Advanced Linter Capabilities:** With refined linter functionalities, Lens  provides more relevant and precise error detection during deployment. This improvement helps developers address issues more effectively, reducing the time spent troubleshooting generic or irrelevant errors.
+- **Advanced Linter Capabilities:** With refined linter functionalities, Lens  provides more relevant and precise error detection during deployment. This improvement helps developers address issues more effectively, reducing the time spent troubleshooting generic or irrelevant errors.
 
-**Real-time Verification and Validation:** A local development environment in Lens  enables real-time inspection and validation of models, minimizing the back-and-forth often associated with SQL syntax errors. The inclusion of a web app for model inspection further enhances the development process, ensuring that issues are identified and resolved before deployment.
+- **Real-time Verification and Validation:** A local development environment in Lens  enables real-time inspection and validation of models, minimizing the back-and-forth often associated with SQL syntax errors. The inclusion of a web app for model inspection further enhances the development process, ensuring that issues are identified and resolved before deployment.
 
-**Customizable Views:** Lens  introduces customizable views, allowing users to create multiple data slices tailored to their specific business needs. These views can be easily edited, queried, and seamlessly integrated with BI tools, offering greater flexibility in data analysis and reporting.
+- **Customizable Views:** Lens  introduces customizable views, allowing users to create multiple data slices tailored to their specific business needs. These views can be easily edited, queried, and seamlessly integrated with BI tools, offering greater flexibility in data analysis and reporting.
 
-### **Interoperability Enhancements**
+### **Interoperability**
 
 Lens  is designed to work seamlessly with external applications and tools, making it easier to integrate with existing workflows:
 
-**API Support:** With the addition of Postgres API, Rest API, and GraphQL support, Lens  simplifies application development, enabling smoother interactions with external systems and reducing the need for manual translation of LQL to SQL.
+- **API Support:** With the addition of Postgres API, Rest API, and GraphQL support, Lens  simplifies application development, enabling smoother interactions with external systems.
 
-**First-Class Integration:** Lens  offers robust integration with Superset, with ongoing efforts to extend this seamless connectivity to Tableau and PowerBI. This integration ensures that data models can be effectively utilized across various BI platforms, enhancing the overall analytics experience.
+- **First-Class BI Integration:** Lens  offers robust integration with Superset, with ongoing efforts to extend this seamless connectivity to Tableau and PowerBI. This integration ensures that data models can be effectively utilized across various BI platforms, enhancing the overall analytics experience.
 
-### **Performance Enhancements**
+### **Performance**
 
 Lens  is optimized for performance, particularly when working with large datasets:
 
-**Query Engine:** Lens  supports Themis, a Spark-native query engine, which further boosts performance, ensuring that data teams can handle large-scale queries with improved efficiency and speed.
-
+- **Flash:**  Designed to work with DataOS Lakehouse and Iceberg-format depots. Flash enhances query performance by leveraging DuckDB for in-memory execution which further boosts performance, ensuring that data teams can handle large-scale queries with improved efficiency and speed.
 
 ## Lens Set-up
 
@@ -53,11 +52,27 @@ Before setting up Lens, ensure you have the following dependencies installed on 
 4. VS Code (Code editor to build Lens Model YAMLs)
 5. VS Code Plugin (This is optional. It will aid in creating Lens views and tables)
 
-To install the above prerequisites, refer to the detailed doc [here](/resources/lens/prerequisites/).
+To install the above prerequisites, refer to the detailed doc [here](/resources/lens/installing_prerequisites/).
 
-Once you've completed the prerequisite setup, proceed to the next step by following this link to begin the [Lens set-up](/resources/lens/local_setup/).
 
 If you are familiar with how to set up and run a Lens Project and you have an existing Lens Model that you want to run, directly [jump to this step](/resources/lens/)
+
+
+## Getting Started with Lens
+
+Once you've completed the prerequisite setup, proceed to the next step.
+
+We’ll start by creating a new Lens project and generating a data model. Once the model is ready, we’ll test it locally to ensure it's error-free before running queries using Lens Studio and its APIs.
+
+This guide will walk you through the following tasks:
+
+[**Lens set-up**](/resources/lens/local_setup/).
+
+
+
+
+
+
 <!-- 
 ## How to consume Lens ?
 
