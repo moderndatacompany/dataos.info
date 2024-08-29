@@ -70,5 +70,8 @@ This guide will walk you through the following tasks:
 
 
 
+## Configurations
+
+Lens is configured via [environment variables](/resources/lens/data_sources/) and configurating attributes in a configuration file of `docker-compose.yml` or `lens.yml`. Usually, both would be used to configure Lens deployment. To know different configuration properties click [here](/resources/lens/configuration/)
 
 
