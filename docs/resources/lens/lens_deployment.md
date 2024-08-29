@@ -7,7 +7,7 @@ This guide provides instructions for setting up Lens in the DataOS environment, 
 Before initiating the deployment process, please ensure you have the following:
 
 - A directory containing your Lens model.
-- Access to a hosted code repository, such as Bitbucket, GitHub, AWS CodeCommit, etc.
+- Access to a hosted code repository, such as **Bitbucket**, **GitHub**, **AWS CodeCommit**, etc.
 - Operator level access permission
 
 >If you are new to setting the Lens model directory refer to the detailed doc [here](/resources/lens/local_setup/).**
@@ -78,7 +78,7 @@ Define the Instance Secret Resource in a YAML file. Below is a template you can 
 Deploy the Instance Secret to DataOS using the `apply` command.
 
 <aside class="callout">
-🗣 When applying the manifest file for Instance-secret from CLI, make sure you don't specify Workspace as Instance Secrets are <a href="https://dataos.info/resources/types_of_dataos_resources/#instance-level-resources" target="_blank">Instance-level Resource</a>.
+🗣 When applying the manifest file for Instance-secret from CLI, make sure you don't specify Workspace as Instance Secrets are <a href="https://dataos.info/resources/types/#instance-level-resources" target="_blank">Instance-level Resource</a>.
 </aside>
 
 
@@ -170,13 +170,18 @@ To get the details of instance-secret created by all the users within the DataOS
       bitbucket-r              | v1      | instance-secret |           | active |         | iamgroot  
     ```
 
+<aside class="callout">
+🗣 Ensure that you remember the name of the created **instance secret**, as it will be used in the secrets attribute section of the Lens manifest file. This name is crucial for proper configuration and access within your Lens environment.
+
+</aside>
+
 ### **Step 3: Create a Lens Resource manifest file**
 
 A Lens manifest file incorporates the configuration of the Lens Resource. The manifest file for the Lens is composed of several sections which define the configuration of various components associated with the Lens Resource.
 The different sections of the Lens manifest file are provided below:
 
-1. Resource meta section
-2. Lens-specific section
+1. **Resource meta section**
+2. **Lens-specific section**
 
 ```yaml
 # RESOURCE META SECTION
@@ -245,3 +250,96 @@ lens:
 ```
 
 For more information on how to configure a Lens manifest file, refer to the link: [Configuration Fields of the Deployment Manifest File (YAML) for Lens Resource](/resources/lens/configuration/lens_manifest/)
+
+### **Step 4: Apply the manifest file of Lens Resource using DataOS CLI**
+
+Deploy the Lens model to DataOS using the `apply` command.
+
+<aside class="callout">
+🗣 When applying the manifest file from the DataOS CLI, make sure you specify the Workspace as Lens is a [Workspace-level Resource] <a href="https://dataos.info/resources/types/#workspace-level-resources" target="blank"> Workspace-level Resource</a>.
+
+</aside>
+
+The `apply` command is as follows:
+
+=== "Command"
+
+    ```bash
+    dataos-ctl resource apply -f ${manifest-file-path} -w ${workspace}
+    ```
+    
+    Alternatively, you can also use the below command:
+    
+    ```bash
+    dataos-ctl apply -f ${manifest-file-path} -w ${workspace}
+    ```
+    
+    Replace `${manifest-file-path}` with the path to your Lens manifest file, and `${workspace}` with the name of the Workspace.
+
+=== "Example"
+ 
+    ```bash
+    dataos-ctl resource apply -f ./lens/lens.yml -w curriculum
+    # Expected output
+    INFO[0000] 🛠 apply...                                   
+    INFO[0000] 🔧 applying(curriculum) sales360:v1alpha:lens... 
+    INFO[0001] 🔧 applying(curriculum) sales360:v1alpha:lens...created 
+    INFO[0001] 🛠 apply...complete 
+    ```
+
+
+### **Step 5: Validate Lens Resource creation**
+
+To validate the proper creation of the Lens Resource within the DataOS environment, employ the `get` command. Execute the following commands to ascertain the existence of the Lens Resource:
+ 
+ - To get the details of the Lens created by the user who applies the Lens, use the following command:
+     
+     ```bash
+     dataos-ctl resource get -t lens -w ${workspace}
+     ```
+     
+     Alternatively, you can also use the below command.
+     
+     ```bash
+     dataos-ctl get -t lens -w ${workspace}
+     ```
+     
+     Example
+     
+     ```bash
+     dataos-ctl get -t lens -w curriculum
+     # Expected Output
+     INFO[0000] 🔍 get...                                     
+     INFO[0000] 🔍 get...complete                             
+     
+           NAME     | VERSION | TYPE | WORKSPACE  | STATUS | RUNTIME |    OWNER     
+     ---------------|---------|------|------------|--------|---------|--------------
+         sales360   | v1alpha | lens | curriculum | active |         |  iamgroot
+     ```
+     
+ - To get the details of Lens created by all the users within the DataOS Instance, use the above command with `-a` flag:
+     
+     ```bash
+     dataos-ctl resource get -t lens -w ${workspace} -a
+     ```
+     
+     Alternatively, you can use the following command:
+     
+     ```bash
+     dataos-ctl get -t lens -w ${workspace} -a
+     ```
+     
+     Example
+     
+     ```bash
+     dataos-ctl get -t lens -w curriculum -a
+     # Expected Output
+     INFO[0000] 🔍 get...                                     
+     INFO[0000] 🔍 get...complete                             
+     
+           NAME      | VERSION | TYPE | WORKSPACE  | STATUS | RUNTIME |    OWNER     
+     ----------------|---------|------|------------|--------|---------|--------------
+         sales360    | v1alpha | lens | curriculum | active |         |  iamgroot
+         customer360 | v1alpha | lens | curriculum | active |         |  thor
+     ```
+
