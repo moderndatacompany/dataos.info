@@ -6,11 +6,11 @@ This guide provides instructions for setting up Lens in the DataOS environment, 
 
 Before initiating the deployment process, please ensure you have the following:
 
-1. A directory containing your Lens model.
-2. Access to a hosted code repository, such as Bitbucket, GitHub, AWS CodeCommit, etc.
-3. Operator level access permission
+- A directory containing your Lens model.
+- Access to a hosted code repository, such as Bitbucket, GitHub, AWS CodeCommit, etc.
+- Operator level access permission
 
-**If you are new to setting the Lens model directory refer to the detailed doc [here](/resources/lens/local_setup/).**
+>If you are new to setting the Lens model directory refer to the detailed doc [here](/resources/lens/local_setup/).**
 
 ## Deployment Process
 
@@ -18,7 +18,8 @@ Follow the steps below to deploy Lens on DataOS:
 
 ### **Step 1: Push the Lens model directory to a code repository**
 
-> **Pushing to a public code repository**
+**Pushing to a public code repository**
+
 First, push your local Lens model directory to a hosted code repository. This can be done on hosted code repository like [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/push-code-to-bitbucket/), [GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github), [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/getting-started.html) etc.
 
 
@@ -34,36 +35,56 @@ Create and configure an Instance Secret to secure your code repository credentia
 
 Define the Instance Secret Resource in a YAML file. Below is a template you can use for Bitbucket, substituting `${USERNAME}` and `${PASSWORD}` with your actual Bitbucket credentials:
 
+=== "Syntax"
 
-```yaml
-# RESOURCE META SECTION
-name: bitbucket-r # Secret Resource name (mandatory)
-version: v1 # Secret manifest version (mandatory)
-type: instance-secret # Type of Resource (mandatory)
-description: Bitbucket read secrets for code repository # Secret Resource description (optional)
-layer: user # DataOS Layer (optional)
+    ```yaml
+    # RESOURCE META SECTION
+    name: ${bitbucket-r }# Secret Resource name (mandatory)
+    version: v1 # Secret manifest version (mandatory)
+    type: instance-secret # Type of Resource (mandatory)
+    description: Bitbucket read secrets for code repository # Secret Resource description (optional)
+    layer: user # DataOS Layer (optional)
 
-# INSTANCE SECRET-SPECIFIC SECTION
-instance-secret: 
-  type: key-value # Type of Instance-secret (mandatory)
-  acl: r # Access control list (mandatory)
-  data: # Data (mandatory)
-    GITSYNC_USERNAME: ${USERNAME}
-    GITSYNC_PASSWORD: ${PASSWORD}
-```
+    # INSTANCE SECRET-SPECIFIC SECTION
+    instance-secret: 
+      type: key-value # Type of Instance-secret (mandatory)
+      acl: r # Access control list (mandatory)
+      data: # Data (mandatory)
+        GITSYNC_USERNAME: ${USERNAME}
+        GITSYNC_PASSWORD: ${PASSWORD}
+    ```
+
+=== "Example"
+
+    ```yaml
+    # RESOURCE META SECTION
+    name: bitbucket-r # Secret Resource name (mandatory)
+    version: v1 # Secret manifest version (mandatory)
+    type: instance-secret # Type of Resource (mandatory)
+    description: Bitbucket read secrets for code repository # Secret Resource description (optional)
+    layer: user # DataOS Layer (optional)
+
+    # INSTANCE SECRET-SPECIFIC SECTION
+    instance-secret: 
+      type: key-value # Type of Instance-secret (mandatory)
+      acl: r # Access control list (mandatory)
+      data: # Data (mandatory)
+        GITSYNC_USERNAME: iamgroot
+        GITSYNC_PASSWORD: <git_token>
+    ```
 
 **Apply the Instance Secret manifest**
 
 Deploy the Instance Secret to DataOS using the `apply` command.
 
 <aside class="callout">
-🗣 When applying the manifest file for Instance-secret from CLI, make sure you don't specify Workspace as Instance Secrets are [Instance-level Resource](https://dataos.info/resources/types_of_dataos_resources/#instance-level-resources).
-
+🗣 When applying the manifest file for Instance-secret from CLI, make sure you don't specify Workspace as Instance Secrets are <a href="https://dataos.info/resources/types_of_dataos_resources/#instance-level-resources" target="_blank">Instance-level Resource</a>.
 </aside>
+
 
 The `apply` command is as follows:
 
-=== "command"
+=== "Command"
 
     ```bash
     dataos-ctl resource apply -f ${manifest-file-path}
@@ -94,17 +115,17 @@ To validate the proper creation of the Instance Secret Resource within the DataO
 
 To get the details of instance-secret created by the user who applies the instance-secret, use the following command:
 
-=== "command"
+=== "Command"
       
     ```bash
     dataos-ctl resource get -t instance-secret
     ```
       
-      Alternatively, you can also use the below command.
+    Alternatively, you can also use the below command.
       
-      ```bash
-      dataos-ctl get -t instance-secret
-      ```
+    ```bash
+    dataos-ctl get -t instance-secret
+    ```
     
 === "Example"
     
@@ -121,7 +142,7 @@ To get the details of instance-secret created by the user who applies the instan
     
 To get the details of instance-secret created by all the users within the DataOS Instance, use the above command with `-a` flag:
 
-=== "command"
+=== "Command"
     
     ```bash
     dataos-ctl resource get -t instance-secret -a
