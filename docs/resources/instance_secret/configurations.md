@@ -27,7 +27,7 @@ instance-secret: # Instance Secret mapping (mandatory)
 ### **Resource meta section**
 
 The Instance Secret manifest comprise of a Resource meta section that outlines essential metadata attributes applicable to all Resource-types. Note that within this section some attributes are optional, while others are mandatory.
-For more information about the various attributes in Resource meta section, refer to the [Attributes of Resource meta section](/resources/resource_attributes/).
+For more information about the various attributes in Resource meta section, refer to the [Attributes of Resource meta section](/resources/manifest_attributes/).
 
 ### **Instance Secret Specific Section**
 

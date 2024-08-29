@@ -126,7 +126,7 @@ To create a Pager, the first step is to create a Pager manifest file. A sample P
             }
     ```
 
-    1.  [Resource meta section](#resource-meta-section) within a manifest file comprises metadata attributes universally applicable to all [Resource-types](/resources/types_of_dataos_resources/). To learn more about how to configure attributes within this section, refer to the link: [Attributes of Resource meta section](/resources/resource_attributes/).
+    1.  [Resource meta section](#resource-meta-section) within a manifest file comprises metadata attributes universally applicable to all [Resource-types](/resources/types_of_dataos_resources/). To learn more about how to configure attributes within this section, refer to the link: [Attributes of Resource meta section](/resources/manifest_attributes/).
 
     2.  [Pager-specific section](#pager-specific-section) within a manifest file comprises attributes specific to the Pager Resource. This section is further subdivided into: Conditions, and Output section. To learn more about how to configure attributes of Pager-specific section, refer to the link: [Attributes of Pager manifest](/resources/pager/configurations/).
 
@@ -178,7 +178,7 @@ In DataOS, a Pager is categorized as a [Resource-type](/resources/types_of_datao
       # attributes of pager-specific section
     ```
 
-For more information about the various attributes in Resource meta section, refer to the [Attributes of Resource meta section](/resources/resource_attributes/).
+For more information about the various attributes in Resource meta section, refer to the [Attributes of Resource meta section](/resources/manifest_attributes/).
 
 #### **Pager-specific section**
 
@@ -510,7 +510,7 @@ After executing the delete command, you will receive a confirmation message indi
 
 The Pager manifest file serves as the blueprint for defining the structure and behavior of Pager Resources within DataOS. By configuring various attributes within the the Pager manifest file, data developers can customize the functionality of their Pagers to meet specific requirements. Below is an overview of the key attributes used to configure a the Pager-specific section: [Attributes of a Pager manifest](/resources/pager/configurations/). 
 
-For details about the Resource meta section, refer to the [Attributes of Resource meta section](/resources/resource_attributes/)
+For details about the Resource meta section, refer to the [Attributes of Resource meta section](/resources/manifest_attributes/)
 
 
 ## How does a Pager work?

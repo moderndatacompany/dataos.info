@@ -42,15 +42,15 @@ The following YAML excerpt illustrates the attributes specified within this sect
 === "Syntax"
 
       ```yaml
-      name: ${resource_name} # Name of the Resource (mandatory)
+      name: ${{resource_name}} # Name of the Resource (mandatory)
       version: v1beta # Manifest version of the Resource (mandatory)
       type: volume # Type of Resource (mandatory)
       tags: # Tags for categorizing the Resource (optional)
-        - ${tag_example_1} 
-        - ${tag_example_2} 
-      description: ${resource_description} # Description (optional)
-      owner: ${resource_owner} # Owner of the Resource (optional, default to user-id of user deploying the resource)
-      layer: ${resource_layer} # DataOS Layer 
+        - ${{tag_example_1}}
+        - ${{tag_example_2}}
+      description: ${{resource_description}} # Description (optional)
+      owner: ${{resource_owner}} # Owner of the Resource (optional, default to user-id of user deploying the resource)
+      layer: ${{resource_layer}} # DataOS Layer 
       ```
 === "Example"
 
@@ -66,7 +66,7 @@ The following YAML excerpt illustrates the attributes specified within this sect
       layer: user
       ```
 
-To configure a volume Resource, replace the values of `name`, `layer`, `tags`, `description`, and `owner` with appropriate values. For additional configuration information about the attributes of the Resource meta section, refer to the link: [Attributes of Resource meta section](/resources/resource_attributes/)
+To configure a volume Resource, replace the values of `name`, `layer`, `tags`, `description`, and `owner` with appropriate values. For additional configuration information about the attributes of the Resource meta section, refer to the link: [Attributes of Resource meta section](/resources/manifest_attributes/).
 
 #### **Configuring the Volume-specific section**
 
@@ -79,9 +79,9 @@ The Volume-specific section of a manifest file encompasses attributes specific t
 
           ```yaml
           volume:
-            size: ${1Gi}  #100Gi, 50Mi, 10Ti, 500Mi
-            accessMode: ${ReadWriteMany}  #ReadWriteOnce, ReadOnlyMany.
-            type: ${temp}
+            size: ${{size}}  #100Gi, 50Mi, 10Ti, 500Mi
+            accessMode: ${{access_mode}}  #ReadWriteOnce, ReadOnlyMany.
+            type: ${{type}}
           ```
 
     === "Example"
@@ -92,5 +92,51 @@ The Volume-specific section of a manifest file encompasses attributes specific t
             accessMode: ReadWriteMany  #ReadWriteOnce, ReadOnlyMany.
             type: temp
           ```
+
+
+### **Apply the Volume manifest**
+
+After creating the Volume manifest file, it's time to apply it to instantiate the Resource-instance in the DataOS environment. To apply the manifest file, utilize the  `apply`  command.
+
+```shell
+dataos-ctl resource apply -f ${{yaml config file path}} -w ${{workspace}}
+
+# Sample
+dataos-ctl resource apply -f /home/Desktop/my-volume.yaml -w curriculum
+```
+
+### **Verify Volume Creation**
+
+To ensure that your Volume has been successfully created, you can verify it in two ways:
+
+Check the name of the newly created Volume in the list of volumes created by you in a specific Workspace:
+
+```shell
+dataos-ctl get -t volume -w ${{workspace}}
+```
+
+Alternatively, retrieve the list of all volumes created in your organization:
+
+```shell
+dataos-ctl get -t volume -w ${{workspace}} -a
+```
+
+You can also access the details of any created Volume through the DataOS GUI in the [Operations App.](/interfaces/operations/)
+
+### **Deleting Volumes**
+
+Use the `delete` command to remove the specific Volume Resource-instance from the DataOS environment:
+
+```shell
+# METHOD 1
+dataos-ctl delete -t volume -n ${{name of Volume}}
+# Sample
+dataos-ctl delete -t volume -n my-volume
+
+# METHOD 2
+dataos-ctl delete -i "${{identifier string for a resource}}"
+# Sample 
+dataos-ctl delete -i "my-volume | v1beta | volume | curriculum "
+```
 
 
