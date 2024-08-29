@@ -72,7 +72,7 @@ In DataOS, a Grant is categorized as a [Resource-type](/resources/types/). The 
         # attributes of grant-specific section
       ```
 
-For more information about the various attributes in Resource meta section, refer to the [Attributes of Resource meta section.](/resources/resource_attributes)
+For more information about the various attributes in Resource meta section, refer to the [Attributes of Resource meta section.](/resources/manifest_attributes)
 
 ### **Grant-specific section**
 
