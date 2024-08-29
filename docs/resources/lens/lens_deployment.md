@@ -343,3 +343,6 @@ To validate the proper creation of the Lens Resource within the DataOS environme
          customer360 | v1alpha | lens | curriculum | active |         |  thor
      ```
 
+## Next Step
+
+[Consumption of Deployed Lens](/resources/lens/consumption_of_deployed_lens/)

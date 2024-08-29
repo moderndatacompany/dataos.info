@@ -75,3 +75,16 @@ This guide will walk you through the following tasks:
 Lens is configured via [environment variables](/resources/lens/data_sources/) and configurating attributes in a configuration file of `docker-compose.yml` or `lens.yml`. Usually, both would be used to configure Lens deployment. To know different configuration properties click [here](/resources/lens/configuration/)
 
 
+## Consumption of Deployed Lens
+
+After creating a Lens data model, you would like to ask questions to it, i.e., run queries against this data model. [This page](/resources/lens/consumption_of_deployed_lens/) describes the common concepts of querying Lens through different ways.
+
+All queries share the same query format.
+
+
+
+
+
+
+
+
