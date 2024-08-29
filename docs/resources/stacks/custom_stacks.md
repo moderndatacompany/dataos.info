@@ -65,7 +65,7 @@ stack: # Stack-specific Section
   ${{Attributes of Stack-specific section}}
 ```
 
-For detailed information on the attributes within the Resource meta section, please refer to [Attributes of Resource Section](/resources/resource_attributes/).
+For detailed information on the attributes within the Resource meta section, please refer to [Attributes of Resource Section](/resources/manifest_attributes/).
 
 #### **Configure the Stack-specific section**
 
