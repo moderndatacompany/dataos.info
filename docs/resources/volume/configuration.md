@@ -1,9 +1,9 @@
 # Attributes of Volume Manifest
 
-## Structure of Worker manifest
+## Structure of Volume manifest
 
-```yaml title=""
---8 "/home/aayushisolanki/V3/dataos.info/docs/examples/resources/volume/manifest_reference.yaml"
+```yaml title="Volume Manifest Reference"
+--8 "examples/resources/volume/manifest_reference.yaml"
 ```
 
 ## Configuration
