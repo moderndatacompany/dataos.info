@@ -166,7 +166,7 @@ df.head()
     
 
 <aside class="callout">
-👉🏻 <b>For the meta API endpoint, employ the GET method, while for other endpoints, utilize the POST method. </b>
+💡 <b>For the meta API endpoint, employ the `GET` method, while for other endpoints, utilize the `POST` method. </b>
 
 </aside>
 
@@ -284,55 +284,54 @@ conn.close()
 
 Here is the complete script for reference:
 
-- code
     
-    ```python
-    !pip install psycopg2
-    import psycopg2
-    import pandas as pd
-    
-    # Define your lens connection details
-    db_username = '**' #dataos username
-    db_password = '***' #apikey
-    db_host = 'tcp.liberal-donkey.dataos.app' 
-    db_port = '6432'
-    db_name = 'lens:public:customer'  # The name of your lens
-    
-    # Create the connection string
-    conn = psycopg2.connect(
-            host=db_host,
-            database=db_name,
-            user=db_username,
-            password=db_password,
-            port=db_port
-        )
-    print("Connection successful")
-    # Create a cursor object
-    cur = conn.cursor()
-    
-    # Show the tables
-    cur.execute("SELECT table_name FROM information_schema.tables WHERE table_schema='public';")
-    tables = cur.fetchall()
-    
-    # Convert the result to a readable format using pandas
-    tables_df = pd.DataFrame(tables, columns=['Table Name'])
-    print(tables_df)
-    
-    #Column Names in Table with Data Type
-    query = f"""SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'customer';"""
-    cur.execute(query)
-    result = cur.fetchall()
-    result_df = pd.DataFrame(result, columns=['Column Name', 'Data Type'])
-    result_df
-    
-    #Query the Table with Column Name
-    query = f"SELECT customer_id,degree_of_loyalty FROM customer;"
-    cur.execute(query)
-    result = cur.fetchall()
-    result_df = pd.DataFrame(result, columns=['customer_id','degree_of_loyalty'])
-    result_df
-    
-    # Close the cursor and connection
-    cur.close()
-    conn.close()
-    ```
+```python
+!pip install psycopg2
+import psycopg2
+import pandas as pd
+
+# Define your lens connection details
+db_username = '**' #dataos username
+db_password = '***' #apikey
+db_host = 'tcp.liberal-donkey.dataos.app' 
+db_port = '6432'
+db_name = 'lens:public:customer'  # The name of your lens
+
+# Create the connection string
+conn = psycopg2.connect(
+        host=db_host,
+        database=db_name,
+        user=db_username,
+        password=db_password,
+        port=db_port
+    )
+print("Connection successful")
+# Create a cursor object
+cur = conn.cursor()
+
+# Show the tables
+cur.execute("SELECT table_name FROM information_schema.tables WHERE table_schema='public';")
+tables = cur.fetchall()
+
+# Convert the result to a readable format using pandas
+tables_df = pd.DataFrame(tables, columns=['Table Name'])
+print(tables_df)
+
+#Column Names in Table with Data Type
+query = f"""SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'customer';"""
+cur.execute(query)
+result = cur.fetchall()
+result_df = pd.DataFrame(result, columns=['Column Name', 'Data Type'])
+result_df
+
+#Query the Table with Column Name
+query = f"SELECT customer_id,degree_of_loyalty FROM customer;"
+cur.execute(query)
+result = cur.fetchall()
+result_df = pd.DataFrame(result, columns=['customer_id','degree_of_loyalty'])
+result_df
+
+# Close the cursor and connection
+cur.close()
+conn.close()
+```
