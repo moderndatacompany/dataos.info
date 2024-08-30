@@ -40,7 +40,7 @@ tables:
 
 **Parameters Supported**
 
-The table declaration involves the following parameters →
+The table declaration involves the following parameters:
 
 | **Parameter** | **Description** | **Possible Value** | **Best Practice** |
 | --- | --- | --- | --- |
@@ -72,7 +72,7 @@ Three types of joins are supported: `one-to-one`, `one-to-many`, `many-to-one`
 
 ## Dimensions
 
-The dimension declaration involves the following properties →
+The dimension declaration involves the following properties:
 
 | **Property** | **Description** | **Possible Value** | **Best Practice** | **Example Usage** |
 | --- | --- | --- | --- | --- |
@@ -93,7 +93,7 @@ The dimension declaration involves the following properties →
 
 ## Measures
 
-The measure declaration involves the following properties →
+The measure declaration involves the following properties:
 
 | **Property** | **Description** | **Possible Value** | **Best Practice** | **Usage** |
 | --- | --- | --- | --- | --- |
@@ -101,10 +101,10 @@ The measure declaration involves the following properties →
 | `sql` | SQL expression to define the measure |  | In SQL, custom SQL expressions can be defined.<br>- Useful for specifying formulas.<br>- Helps calculate other measures in SQL. |  |
 | `title` | Human-readable title of the measure | String | Provide a clear and concise title for better readability and user understanding |  |
 | `type` | The data type of the measure | `time`, `string`, `number`, `boolean`, `count`, `sum`, `count_distinct`, `count_distinct_approx`, `avg`, `min`, `max` | Choose the appropriate type to match the measure's calculation method |  |
-| `description` | Description of the measure's purpose | String |  |  |
+| `description` | Description of the measure's purpose | String | Highlight Purpose and Usage |  |
 | `public` | Controls visibility of the measure | True, False | Set to **`True`** for key measures that should be visible by default |  |
-| `filters` | Filters applied to the measure | SQL conditions | To aggregate a measure for a specific category, apply a filter.<br> For example, apply a filter for product category. | Example: `{table}.{dimension_name} = 'dimension_value'`<br> e.g. `sales.product_category = 'Electronics'` |
-| `rollingWindow` | Defines a rolling window for time-based measures | { trailing: **`time period`** } | Use for calculating measures over a specific time window, such as trailing 7 days or trailing 1 month. | **Example**:<br> ```measures: - name: rolling_count_month<br>SQL: id<br>type: count<br>rolling_window:<br>trailing: 1 month<br>offset: end```<br>- **`trailing`** and **`leading`** parameters define window size.<br>- **`offset`** can be `start` or `end` of the date range |
+| `filters` | Filters applied to the measure | SQL conditions | To aggregate a measure for a specific category, apply a filter.<br> For example, apply a filter for product category. | **Syntax:** `{table}.{dimension_name} = 'dimension_value'`<br> **e.g.** `sales.product_category = 'Electronics'` |
+| `rollingWindow` | Defines a rolling window for time-based measures | { trailing: **`time period`** } | Use for calculating measures over a specific time window, such as trailing 7 days or trailing 1 month. | **Example:** <br><br>measures:<br>&nbsp;&nbsp;name: count_month<br>&nbsp;&nbsp;SQL: id<br>&nbsp;&nbsp;type: count<br>&nbsp;&nbsp;rolling_window:<br>&nbsp;&nbsp;&nbsp;&nbsp;trailing: 1 month<br>&nbsp;&nbsp;&nbsp;&nbsp;offset: end<br><br>- **`trailing`** and **`leading`** parameters define window size. <br>- **`offset`** can be `start` or `end` of the date range |
 | `drillMembers` | Define drill-down fields on a measure | Array of dimensions | Define drill members to enable detailed exploration of a measure across dimensions specified on the dashboard |  |
 | `format` | Format the output of measures |  |  |  |
 | `meta` | Custom metadata |  |  |  |
@@ -113,12 +113,12 @@ The measure declaration involves the following properties →
 
 Segments are pre-defined groups of filters. 
 
-The segment declaration involves the following properties →
+The segment declaration involves the following properties 
 
 | Property | Description | Possible Value |
 | --- | --- | --- |
 | `name` | Specify the name of the dimension | NA |
 | `public` | Controls visibility of dimension, i.e. whether the dimension is visible to all users or hidden | `True`, `False` |
-| `sql` | Add filter criteria →
+| `sql` | Add filter criteria:
 table.{dimension} = “dimension_values” | NA |
 | `meta` | Custom metadata. This is also used to define `secure` sub property | NA |
