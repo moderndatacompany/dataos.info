@@ -239,7 +239,7 @@ tables:
 Using the `{TABLE}` variable keeps the data model code DRY and easy to maintain.
 
 <aside class="callout">
-🗣 <br>Recommended:</br> Use the <br>`TABLE`</br> context variable to reference columns or members of the current table.
+🗣 <b>Recommended:</b> Use the <b>`TABLE`</b> context variable to reference columns or members of the current table.
 
 </aside>
 
@@ -272,7 +272,7 @@ tables:
 ```
 
 <aside class="callout">
-🗣 <br>Recommended:</br> Use the <br>`TABLE`</br> context variable to reference dimensions or measures of the current table, ensuring your data model code remains DRY and easy to maintain.
+🗣 <b>Recommended:</b> Use the <b>`TABLE`</b> context variable to reference dimensions or measures of the current table, ensuring your data model code remains DRY and easy to maintain.
 
 </aside>
 
