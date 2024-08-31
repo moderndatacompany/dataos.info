@@ -1,3 +1,9 @@
+---
+title: Service
+search:
+  boost: 4
+---
+
 # Lens
 
 Lens  is a logical modeling layer designed to empower analytical engineers, the key architects of business intelligence, with a model-first approach. By leveraging Lens , data products can be created to inform decision-making, ensuring that data is logically organized and aligned with business objectives from the outset. To understand about the Model-first approach click [here](/resources/lens/core_concepts/)

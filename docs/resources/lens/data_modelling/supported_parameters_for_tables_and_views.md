@@ -42,9 +42,7 @@ tables:
 
 The table declaration involves the following parameters:
 
-| **Parameter** | **Description** | **Possible Value** | **Best Practice** |
-| --- | --- | --- | --- |
-| **Field** | **Description** | **Pattern** | **Example** |
+| **Property** | **Description** | **Possible Value** | **Best Practice** |
 | --- | --- | --- | --- |
 | `name` | Specify the name of the table:<br>- Should start with a letter only<br>- Can only contain letters, numbers, and underscores | ^[a-zA-Z][a-zA-Z0-9_]*$ | Use snake_case. For example: `sales_insight` |
 | `sql` | Add a reference to the SQL file to map data to the table. SQL mapping is maintained in a separate file | NA | Keep SQL clearly named for easy maintenance.  |
