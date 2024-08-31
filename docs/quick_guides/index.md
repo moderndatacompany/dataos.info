@@ -38,6 +38,20 @@ Learn how to examine and experiment with logical models, the Lens component of D
 
 <div class= "grid cards" markdown>
 
+-   [Defining a Data Model](/quick_guides/define_data_model/)
+
+-   [Creating a Data Model](/quick_guides/create_data_model/)
+
+-   [Testing a Data Model locally](/quick_guides/test_data_model/)
+
+-   [Deploying Data model to DataOS](/quick_guides/deploy_data_model/)
+     
+</div>
+
+If you’re working with a previous version of Lens, the following guides will be helpful.
+
+<div class= "grid cards" markdown>
+
 -   [Creating a Lens](/quick_guides/create_lens/)
 
 -   [Using Lens](/quick_guides/use_lens/)
