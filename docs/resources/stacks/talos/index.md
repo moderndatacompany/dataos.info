@@ -85,6 +85,7 @@ This section provides step-by-step guides to assist you in effectively configuri
 - [How to use external API as a data source?](/resources/stacks/talos/recipes/recipe7/)
 - [How to fetch data exposed by Talos from the third-party tools?](/resources/stacks/talos/recipes/recipe8/)
 - [Caching Datasets](/resources/stacks/talos/recipes/caching/)
+- [How to generate the comprehensive API documentation?](/resources/stacks/talos/recipes/recipe9/)
 
 ## Example
 

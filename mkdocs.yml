@@ -359,6 +359,14 @@ nav:
         - Querying Diverse Data sources: 
           - quick_guides/query_diverse_data_source/index.md
       - Using Data Modeling Layer:
+        - Defining a Data Model:
+          - quick_guides/define_data_model/index.md
+        - Creating a Data Model:
+          - quick_guides/create_data_model/index.md
+        - Testing a Data Model:
+          - quick_guides/test_data_model/index.md
+        - Deploying a Data Model:
+          - quick_guides/deploy_data_model/index.md
         - Creating a Lens: 
           - quick_guides/create_lens/index.md
         - Using a Lens: 
