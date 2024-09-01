@@ -1,4 +1,4 @@
-# Lens Local Setup
+# Lens Setup
 
 Set up the Lens project folder containing the Dockerfile and the model folder and user_groups.yml. 
 
@@ -9,7 +9,7 @@ In the Model folder, you'll define your Lens model, including SQL mapping, logic
 
 Set up the Lens project folder or you can download this template for 
 
-[lens template](/resources/lens/local_setup/lens-project-template.zip)
+[lens template](/resources/lens/lens_setup/lens-project-template.zip)
 
 - Open the Model folder in the editor of your choice. Your Model folder will have the following hierarchy:
 
@@ -37,7 +37,7 @@ docker-compose.yml // Orchestrates multi-container services (e.g., database, web
     - Presently, we have a 'default' user group defined in the YAML that includes all users.
 
 - **Add a docker-compose.yml**
-    - Docker compose is used to test the Lens locally before deployment.
+    - Docker compose is used to test the Lens in the development enviroment before deployment.
     - Here add data source details and update Lens meta details.  
 
 
@@ -187,7 +187,7 @@ You can test Lens in the development environment by running:
 
 ## Interacting with Lens in Development Environment
 
-Now that Lens is successfully running without errors, you can begin interacting with it using SQL APIs, REST APIs, or GraphQL APIs. This local setup allows you to thoroughly test Lens before proceeding to deployment, ensuring all functionalities are working as expected.
+Now that Lens is successfully running without errors, you can begin interacting with it using SQL APIs, REST APIs, or GraphQL APIs. This setup allows you to thoroughly test Lens before proceeding to deployment, ensuring all functionalities are working as expected.
 
 ### **Interacting via SQL API**
 
@@ -266,7 +266,7 @@ To explore various API endpoints and scopes, refer to the [API Endpoints and Sco
 
 You can use [Postman](https://www.postman.com/) to interact with Lens REST APIs. Start by importing the following Postman collection:
 
-[Lens2-API](/resources/lens/local_setup/Lens2-APIs.postman_collection.json)
+[Lens2-API](/resources/lens/lens_setup/Lens2-APIs.postman_collection.json)
 
 [**Next Step: Deploying Lens model on DataOS**](/resources/lens/lens_deployment/)
 

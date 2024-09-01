@@ -49,11 +49,11 @@ user_groups: # List of user groups
 - Maintain a consistent naming convention across all user groups. For e.g. use underscores or hyphens consistently, and stick with it across all groups (e.g., `data_analyst` or `data-analyst`).
 -  Avoid using abbreviations or acronyms that might be unclear. For e.g.  Instead of `name: eng_grp`, use name: `engineer_group`. Use `name: data_engineer` instead of `name: de`. |
 | `description` | A brief description of the user group. | optional | The description should explain the user group’s purpose and the type of users it contains. E.g.  |
-| `api_scopes` | A list of API scopes that the user group members are allowed to access. Each scope represents specific endpoints or functionality. The following `api_scopes` are currently supported:
+| `api_scopes` | A list of API scopes that the user group members are allowed to access. Each scope represents specific endpoints or functionality. Click`api_scopes` arcurrently supported:
 
-- `meta`: Provides access to metadata-related endpoints. This scope allows users to view metadata, which typically includes information about sources, authors, timezones, security context, user groups, etc. Providing access to the `meta` API scope grants a user access to the Model and Explore Tab of the Lens Studio Interface. But to fetch insights using the Explore interface, a user also requires the `data` API scope.
-- `data`: Allows access to data endpoints. This scope enables users to retrieve, and analyze data.
-- `graphql`: Grants access to GraphQL endpoints. GraphQL is a query language for APIs that allows clients to request only the data they need. This scope enables users to perform GraphQL queries and mutations. Granting access to the `graphql` API scope provides access to the GraphQL tab of the Lens studio interface, but to run queries over data you will also require the `data` API scope.
+- `meta`: Provides access to metadata-related endpoints.
+- `data`: This scope enables users to retrieve, and analyze data.
+- `graphql`: Grants access to GraphQL endpoints. GraphQL is a query language for APIs that allows clients to request only the data they need. 
 - `jobs`: Provides access to job-related endpoints. 
 - `source`: Grants access to source-related endpoints.  | optional (by default all `api_scopes` are included if not explicitly specified) | Follow the principle of least privilege and grant users the minimum level of access required to perform their job functions |
 | `includes` | A list of users to be included in the user group. This can be specific user IDs or patterns to include multiple users. Use `"*"` to include all users or specify user IDs. | mandatory | If the number of users is less, prefer using explicit user identifiers (e.g., `users:id:johndoe`) over generic patterns (e.g., `*`). |
