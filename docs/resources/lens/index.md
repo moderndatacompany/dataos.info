@@ -1,5 +1,5 @@
 ---
-title: Service
+title: Lens
 search:
   boost: 4
 ---

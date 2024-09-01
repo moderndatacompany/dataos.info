@@ -1,3 +1,5 @@
+# Consumption usin SQL APIs
+
 In this guide, we'll walk you through the steps to connect to a deployed Lens using a SQL client (like `psql` and `dataos-ctl usql` interfaces. 
 
 ## Retrieve or Create Your API Key Token
@@ -100,7 +102,7 @@ To create a wrap token for a Lens, you can use the following commands for Unix-l
 **Unix-like Systems (e.g., Linux, macOS)**
 
 ```bash
-echo '{"apikey":"<your_api_key_here>","lens2":"<workspace>:<lens_name>"}' | base64
+echo '{"apikey":"<API_KEY>","lens2":"<WORKSPACE>:<LENS_NAME>"}' | base64
 ```
 
 Replace `<your_api_key_here>`, `<workspace>`, and `<lens_name>` with your actual API key, deploying Workspace name, and Lens Resource name. This command will encode the JSON object into base64 format, producing a wrap token.
@@ -122,7 +124,7 @@ Replace `<your_api_key_here>`, `<workspace>`, and `<lens_name>` with your actual
     psql -h tcp.<dataos-fqdn> -p 6432
     ```
     
-    Replace the `<dataos-fqdn>` with your DataOS Fully qualified domain name.
+    Replace the `<dataos-fqdn>` with your DataOS Fully qualified domain name. For instance, `liberal-donkey.dataos.app`.s 
     
 3. Enter your ‘**Wrap Token**’ in place of password when prompted.
 4. You should now be connected to the Lens. You can verify the connection by listing the available relations using the `\dt` command:

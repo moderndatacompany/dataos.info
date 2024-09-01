@@ -1,4 +1,6 @@
-# Structure of Lens manifest
+# Attribute of Lens  manifest
+
+## Structure of Lens manifest
 
 ```yaml
 # RESOURCE META SECTION
@@ -6,212 +8,87 @@ name: saleslens # Lens Resource name (mandatory)
 version: v1alpha # Resource manifest version (mandatory)
 type: lens # Type of Resource (mandatory)
 tags: # Tags (optional)
-	- sales
-	- lens
-	- resource
+ - sales
+ - lens
+ - resource
 owner: iamgroot # Resource owner (optional)
 layer: user # DataOS Layer (optional)
 
 # LENS-SPECIFIC SECTION
 lens:
-	compute: runnable-default # Compute Resource name (mandatory)
-	runAsApiKey: abcdefghijklmnopqrstuvwxyz # DataOS APIkey (optional)
-	runAsUser: iamgroot # DataOS UserID (optional)
-	secrets: # Referred Instance-secret configuration (**mandatory for private repository)
-		- name: bitbucket-r # Instance-secret name (mandatory)
-			key: abcd # Key to be referred (optional)
-			keys: # List of keys to be referred (optional)
-				- abcd
-				- efgh
-			allKeys: true # Whether all keys are required or not (optional)
-			consumptionType: envVars # Secret consumption type (optional)
-	source: # mandatory
-		type: themis # mandatory
-		name: minithemis # mandatory
-		catalog: icebase
-	repo: # Code repository configuration (mandatory)
-		url: https://www.bitbucket.org/abcd/lens2 # Code Repository URL (mandatory)
-		lensBaseDir: lens2/sales/model # mandatory
-		syncFlags: # what are these?
-			- --ref=lens2test
-	api:
-		logLevel: INFO  
-		replicas: 3
-		autoScaling:
-			enabled: true
-			minReplicas: 1
-			maxReplicas: 3
-			targetMemoryUtilizationPercentage: 60
-			targetCPUUtilizationPercentage: 60
-		resources:
-			requests:
-				cpu: 4Gi
-				memory: 1000m
-			limits:
-				cpu: 16Gi
-				memory: 2000m
-	router:
-		logLevel: INFO
-		resources:
-			requests:
-				cpu: 4Gi
-				memory: 1000m
-			limits:
-				cpu: 16Gi
-				memory: 2000m		
-	worker:
-		logLevel: INFO
-		replicas: 2
-		resources:
-			requests:
-				cpu: 4Gi
-				memory: 1000m
-			limits:
-				cpu: 16Gi
-				memory: 2000m		
-	iris:
-		logLevel: INFO
-		resources:
-			requests:
-				cpu: 4Gi
-				memory: 1000m
-			limits:
-				cpu: 16Gi
-				memory: 2000m
+ compute: runnable-default # Compute Resource name (mandatory)
+ runAsApiKey: abcdefghijklmnopqrstuvwxyz # DataOS APIkey (optional)
+ runAsUser: iamgroot # DataOS UserID (optional)
+ secrets: # Referred Instance-secret configuration (**mandatory for private repository)
+	- name: bitbucket-r # Instance-secret name (mandatory)
+		key: abcd # Key to be referred (optional)
+		keys: # List of keys to be referred (optional)
+			- abcd
+			- efgh
+		allKeys: true # Whether all keys are required or not (optional)
+		consumptionType: envVars # Secret consumption type (optional)
+ source: # mandatory
+	type: themis # mandatory
+	name: minithemis # mandatory
+	catalog: icebase
+ repo: # Code repository configuration (mandatory)
+	url: https://www.bitbucket.org/abcd/lens2 # Code Repository URL (mandatory)
+	lensBaseDir: lens2/sales/model # mandatory
+	syncFlags: # what are these?
+		- --ref=lens2test
+ api:
+	logLevel: INFO  
+	replicas: 3
+	autoScaling:
+		enabled: true
+		minReplicas: 1
+		maxReplicas: 3
+		targetMemoryUtilizationPercentage: 60
+		targetCPUUtilizationPercentage: 60
+ resources:
+	requests:
+		cpu: 4Gi
+		memory: 1000m
+	limits:
+		cpu: 16Gi
+		memory: 2000m
+ router:
+	logLevel: INFO
+	resources:
+	requests:
+		cpu: 4Gi
+		memory: 1000m
+	limits:
+		cpu: 16Gi
+		memory: 2000m		
+ worker:
+	logLevel: INFO
+	replicas: 2
+	resources:
+		requests:
+			cpu: 4Gi
+			memory: 1000m
+		limits:
+			cpu: 16Gi
+			memory: 2000m		
+ iris:
+	logLevel: INFO
+	resources:
+		requests:
+			cpu: 4Gi
+			memory: 1000m
+		limits:
+			cpu: 16Gi
+			memory: 2000m
 ```
 
 # Resource meta section configuration
 
-### **`name`**
-
-**Description:** Declare a name for the Lens Resource
-
-| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
-| --- | --- | --- | --- |
-| string | mandatory | none | • alphanumeric values with the RegEx`[a-z0-9]([-a-z0-9]*[a-z0-9])`; a hyphen/dash is allowed as a special character
-• total length of the string should be less than or equal to 48 characters
-• names of cluster & depot have a different RegEx`[a-z]([a-z0-9]*)`; a hyphen/dash is not allowed as a special character |
-
-**Additional information:** Two Resources in the same workspace cannot have the same name.
-
-**Example usage:**
-
-```yaml
-name: sales360lens
-```
-
----
-
-### **`version`**
-
-**Description:** The version of the Lens manifest Resource
-
-| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
-| --- | --- | --- | --- |
-| string | mandatory | none | v1alpha |
-
-**Example usage:**
-
-```yaml
-version: v1alpha
-```
-
----
-
-### **`type`**
-
-**Description:** Provide the value for the resource type. Here its lens.
-
-| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
-| --- | --- | --- | --- |
-| string | mandatory | none | lens |
-
-**Example usage:**
-
-```yaml
-type: lens
-```
-
----
-
-### **`tags`**
-
-**Description:** Assign tags to the Lens Resource-instance
-
-| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
-| --- | --- | --- | --- |
-| mapping | mandatory | none | any string; special characters are allowed |
-
-**Example usage:**
-
-```yaml
-tags:
-	- lens
-	- sales360
-	- resource
-```
-
----
-
-### **`description`**
-
-**Description:** Assign description to Lens Resource
-
-| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
-| --- | --- | --- | --- |
-| string | optional | none | any string |
-
-**Additional information:** the description can be within quotes or without.
-
-> YAML supports scalars such as strings, numbers, booleans, and null. A scalar value can be unquoted, within single quotes (') or double quotes ("). When the scalar contains a special character, the value must be declared within quotes.
-> 
-
-**Example usage:**
-
-```yaml
-description: "This is a sample description of a Lens Resource"
-```
-
----
-
-### **`owner`**
-
-**Description:** Identification of the user
-
-| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
-| --- | --- | --- | --- |
-| string | optional | id of the user applying the Resource | any valid dataos user id |
-
-**Additional information:** when no ID is provided, or an incorrect ID is provided, the system automatically corrects it to the ID of the user who applied the Resource on DataOS CLI
-
-**Example usage:**
-
-```yaml
-owner: iamgroot
-```
-
----
-
-### **`layer`**
-
-**Description:** Declare the name of the layer for which the Lens Resource is going to be deployed
-
-| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
-| --- | --- | --- | --- |
-| string | optional | user | user/system |
-
-**Additional information:** From a user's perspective, the operating system can be envisaged as working at two levels - user layer & system layer. This is only a logical separation to understand the workings of the system.
-
-**Example usage:**
-
-```yaml
-layer: user
-```
----
+Click [here](/resources/manifest_attributes) to know Resource meta section configuration.
 
 # Lens-specific section configuration
 
-### `lens`
+### **`lens`**
 
 **Description:** The `lens` attribute defines a mapping of Lens Resource-specific attributes.
 
@@ -223,9 +100,9 @@ layer: user
 
 ```yaml
 lens:
-	compute: runnable-default 
-	runAsApiKey: abcdefghijklmnopqrstuvwxyz
-	runAsUser: iamgroot
+ compute: runnable-default 
+ runAsApiKey: abcdefghijklmnopqrstuvwxyz
+ runAsUser: iamgroot
 	# additional Lens-specific attributes
 ```
 
@@ -233,7 +110,7 @@ lens:
 
 ### **`compute`**
 
-**Description:** Defines the [Compute Resource](https://dataos.info/resources/compute/) to be used by the Lens. The value should match a pre-defined Compute Resource within DataOS that suits the workload requirements of the Lens model.
+**Description:** Defines the [Compute Resource](/resources/compute/) to be used by the Lens. The value should match a pre-defined Compute Resource within DataOS that suits the workload requirements of the Lens model.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | --- | --- | --- | --- |
@@ -243,7 +120,7 @@ lens:
 
 ```yaml
 lens:
-	compute: runnable-default
+ compute: runnable-default
 ```
 
 ---
@@ -251,15 +128,14 @@ lens:
 ### **`runAsApiKey`**
 
 <aside class="callout">
-🗣 Before applying the manifest file of Resource comprising the apikey of the use-case assignee using the `runAsApiKey` attribute, make sure that you have the appropriate use-case assigned by the same person.
-
+🗣 The <b>runAsApiKey<b> attribute allows a user to assume the identity of another user through the provision of the latter's API key.
 </aside>
 
 **Description:** The `runAsApiKey` attribute allows a user to assume the identity of another user by providing the latter's API key.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | --- | --- | --- | --- |
-| string | optional | apikey of the owner applying the Resource | apikey of the use-case assignee |
+| string | optional | DataOS APIKEY of the owner| apikey of the use-case assignee |
 
 **Additional Details**: The apikey can be obtained by executing the following command from the CLI:
 
@@ -283,7 +159,7 @@ dataos-ctl user apikey create -n myapikey -d 30d
 
 ```yaml
 lens:
-  runAsApiKey: abcdefghijklmnopqrstuvwxyz
+ runAsApiKey: abcdefghijklmnopqrstuvwxyz
 ```
 
 ---
@@ -291,8 +167,7 @@ lens:
 ### **`runAsUser`**
 
 <aside class="callout">
-🗣 Before applying the manifest file of Resource comprising the user-id of the use-case assignee using the `runAsUser` attribute, make sure that you have the appropriate use-case assigned by the same person.
-
+🗣 Before applying the manifest file for a resource that includes the user ID of the use-case assignee using the runAsUser attribute, ensure that the same person has assigned the appropriate use-case to you
 </aside>
 
 **Description:** When the `runAsUser` attribute is configured with the UserID of the use-case assignee, it grants the authority to perform operations on behalf of that user.
@@ -305,7 +180,7 @@ lens:
 
 ```yaml
 lens:
-  runAsUser: iamgroot
+ runAsUser: iamgroot
 ```
 
 ---
@@ -335,11 +210,11 @@ type: instance-secret
 description: "bitbucket read secrets for lens repos"
 layer: user
 instance-secret:
-  type: key-value
-  acl: r
-  data:
-    GITSYNC_USERNAME: ${USERNAME}
-    GITSYNC_PASSWORD: ${PASSWORD}
+ type: key-value
+ acl: r
+ data:
+  GITSYNC_USERNAME: ${USERNAME}
+  GITSYNC_PASSWORD: ${PASSWORD}
 ```
 
 ```yaml
@@ -352,7 +227,7 @@ lens:
 
 ---
 
-### `source`
+### **`source`**
 
 **Description:** Specifies the source configuration from which the Lens will be mapped.
 
@@ -362,7 +237,8 @@ lens:
 
 **Attributes of `source`:**
 
-- `type`: The source type defines the type of data source to which your Lens will be mapped. This is a mandatory attribute, declared as a string. Possible types are `themis`, `trino`, etc.
+- `type`: The source type defines the type of data source to which your Lens will be mapped. This is a mandatory attribute, declared as a string. Possible types are **`themis`**, **`trino`**, etc.
+
 - `name`: The identifier for the source to which Lens will be mapped. This is a mandatory attribute, declared as a string.
 - catalog: ()
 
@@ -370,9 +246,9 @@ lens:
 
 ```yaml
 lens:
-  source:
-    type: themis
-    name: minithemis
+ source:
+  type: themis
+  name: minithemis
 ```
 
 ---
@@ -387,20 +263,20 @@ lens:
 
 **Attributes for `repo`**
 
-- **`url`**: URL of the repository containing the Lens model. This is a mandatory attribute
-- **`lensBaseDir`**: The path to the specific directory within the repository where the model files are stored. This is also mandatory.
-- **`secretId`**: Identifier for a secret. It's usually of the form `${secret_name}_${acl}.` All hyphens within the secret name are also replaced by _.
-- **`syncFlags`**: Additional flags that control the synchronization behavior. Used to declare the specific branch in the repository using the `--ref=${branch_name}` flag.
+- **`url`**: URL of the repository containing the Lens codes and model. This is a mandatory attribute.
+- **`lensBaseDir`**: The path to the specific directory within the repository where the model files are stored. This is a mandatory field that tells the system where to look for model configurations within the repository.
+- **`secretId`**: Identifier for a secret. It's usually of the form `${secret_name}_${acl}.` All hyphens within the secret name are also replaced by _.It is mandatory only in case of private repository.  
+- **`syncFlags`**: Additional flags that control the synchronization behavior. Used to declare the specific branch in the repository using the `--ref=${branch_name}` flag. The default branch will be the main or master branch.
 
 **Example Usage:**
 
 ```yaml
 lens:
-	repo: 
-		url: https://www.bitbucket.org/abcd/lens2
-		lensBaseDir: lens2/sales/model 
-		secretId: bitbucket_r_r
-		syncFlags: 
+ repo: 
+	url: https://www.bitbucket.org/abcd/lens2
+	lensBaseDir: lens2/sales/model 
+	secretId: bitbucket_r_r
+	syncFlags: 
 			- --ref=lens2
 ```
 
@@ -417,10 +293,10 @@ lens:
 **Attributes for `api`**
 
 - **`logLevel`**: The log level for the API instance classifies entries in logs in terms of urgency, which helps to filter logs during searches and helps control the amount of information in logs. By default, it's INFO. Possible values include INFO, WARN, DEBUG, and ERROR. Each of the possible values is used in a specific scenario as provided below:
-    - `INFO`*:* Designates informational messages that highlight the progress of the workload
-    - `WARN`*:* Designates potentially harmful situations
-    - `DEBUG`*:* Designates fine-grained informational events that are most useful while debugging
-    - `ERROR`*:* Designates error events that might still allow the workflow to continue running
+    - **`INFO`** Designates informational messages that highlight the progress of the workload
+    - **`WARN`** Designates potentially harmful situations
+    - **`DEBUG`** Designates fine-grained informational events that are most useful while debugging
+    - **`ERROR`** Designates error events that might still allow the workflow to continue running
 
 - **`replicas`**: Number of API instances to deploy. By default, it's 1, and it could be any positive integer.
 
@@ -446,25 +322,25 @@ lens:
 
 ```yaml
 lens:
-  api:  
-    replicas: 2 
-    logLevel: info
-    envs:
-	    LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
+ api:  
+  replicas: 2 
+  logLevel: info
+   envs:
+	  LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
     resources:
-      requests:
-        cpu: 100m
-        memory: 256Mi
-      limits:
-        cpu: 2000m
-        memory: 2048Mi
+     requests:
+      cpu: 100m
+      memory: 256Mi
+     limits:
+      cpu: 2000m
+      memory: 2048Mi
 ```
 
 ---
 
 ### **`worker`**
 
-**Description:** Defines configurations for Workers of Lens.
+  **Description:** Defines worker instance of Lens.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | --- | --- | --- | --- |
@@ -473,10 +349,10 @@ lens:
 **Attributes for `worker`**
 
 - **`logLevel`**: The log level for the Worker classifies entries in logs in terms of urgency, which helps to filter logs during searches and helps control the amount of information in logs. By default, it's INFO. Possible values include INFO, WARN, DEBUG, and ERROR. Each of the possible values is used in a specific scenario as provided below:
-    - `INFO`*:* Designates informational messages that highlight the progress of the workload
-    - `WARN`*:* Designates potentially harmful situations
-    - `DEBUG`*:* Designates fine-grained informational events that are most useful while debugging
-    - `ERROR`*:* Designates error events that might still allow the workflow to continue running
+    - **`INFO`** Designates informational messages that highlight the progress of the workload
+    - `WARN`: Designates potentially harmful situations
+    - **`DEBUG`** Designates fine-grained informational events that are most useful while debugging
+    - **`ERROR`** Designates error events that might still allow the workflow to continue running
 
 - **`replicas`**: Number of Worker to deploy. By default, it's 1, and it could be any positive integer.
 
@@ -488,18 +364,18 @@ lens:
 
 ```yaml
 lens:
-  worker: 
-    replicas: 1 
-    logLevel: info
+ worker: 
+  replicas: 1 
+   logLevel: info
     envs:
-	    LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
+	   LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
     resources: # optional
-      requests:
-        cpu: 100m
-        memory: 256Mi
-      limits:
-        cpu: 6000m
-        memory: 6048M
+     requests:
+      cpu: 100m
+      memory: 256Mi
+     limits:
+      cpu: 6000m
+      memory: 6048M
 ```
 
 ---
@@ -516,14 +392,14 @@ lens:
 
 - **`logLevel`**: The log level for the Router classifies entries in logs in terms of urgency, which helps to filter logs during searches and helps control the amount of information in logs. By default, it's INFO. Possible values include INFO, WARN, DEBUG, and ERROR. Each of the possible values is used in a specific scenario as provided below:
 
-    - `INFO`*:* Designates informational messages that highlight the progress of the workload
-    - `WARN`*:* Designates potentially harmful situations
-    - `DEBUG`*:* Designates fine-grained informational events that are most useful while debugging
-    - `ERROR`*:* Designates error events that might still allow the workflow to continue running
+    - **`INFO`** Designates informational messages that highlight the progress of the workload
+    - **`WARN`** Designates potentially harmful situations
+    - **`DEBUG`** Designates fine-grained informational events that are most useful while debugging
+    - **`ERROR`** Designates error events that might still allow the workflow to continue running
 
-- **`replicas`**: Number of Router to deploy. By default, it's 1, and it could be any positive integer.
+- **`replicas`** Number of Router to deploy. By default, it's 1, and it could be any positive integer.
 
-- **`resources`**: CPU and memory resource requests and limits. By default, the CPU and memory requests are 100m and 100Mi, while limits are 400m and 400Mi, respectively. The CPU units are declared in milliCPU(m) or CPU core, while memory is declared in Mebibytes (Mi) or Gibibytes (Gi).
+- **`resources`** CPU and memory resource requests and limits. By default, the CPU and memory requests are 100m and 100Mi, while limits are 400m and 400Mi, respectively. The CPU units are declared in milliCPU(m) or CPU core, while memory is declared in Mebibytes (Mi) or Gibibytes (Gi).
 
 - **`envs`**: Environment variables for Router.
 
@@ -531,22 +407,22 @@ lens:
 
 ```yaml
 lens:
-  router: 
-    logLevel: info 
-    envs:
-	    LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-    resources: # optional
-      requests:
-        cpu: 100m
-        memory: 256Mi
-      limits:
-        cpu: 6000m
-        memory: 6048Mi
+ router: 
+  logLevel: info 
+   envs:
+	  LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
+   resources: # optional
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 6000m
+      memory: 6048Mi
 ```
 
 ---
 
-### `iris`
+### **`iris`**
 
 **Description:** Manages interaction with Iris dashboards.
 
@@ -558,10 +434,10 @@ lens:
 
 - **`logLevel`**: The log level for Iris classifies entries in logs in terms of urgency, which helps to filter logs during searches and helps control the amount of information in logs. By default, it's INFO. Possible values include INFO, WARN, DEBUG, and ERROR. Each of the possible values is used in a specific scenario as provided below:
 
-    - `INFO`*:* Designates informational messages that highlight the progress of the workload
-    - `WARN`*:* Designates potentially harmful situations
-    - `DEBUG`*:* Designates fine-grained informational events that are most useful while debugging
-    - `ERROR`*:* Designates error events that might still allow the workflow to continue running
+    - **`INFO`** Designates informational messages that highlight the progress of the workload
+    - **`WARN`** Designates potentially harmful situations
+    - **`DEBUG`** Designates fine-grained informational events that are most useful while debugging
+    - **`ERROR`** Designates error events that might still allow the workflow to continue running
 
 - **`replicas`**: Number of Iris replicas to deploy. By default, it's 1, and it could be any positive integer.
 
@@ -573,13 +449,13 @@ lens:
 
 ```yaml
 lens:
-  iris: 
-    logLevel: info 
-    resources: # optional
-      requests:
-        cpu: 100m
-        memory: 256Mi
-      limits:
-        cpu: 6000m
-        memory: 6048Mi
+ iris: 
+  logLevel: info 
+  resources: # optional
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 6000m
+      memory: 6048Mi
 ```

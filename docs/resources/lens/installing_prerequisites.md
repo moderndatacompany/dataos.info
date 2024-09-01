@@ -225,4 +225,4 @@ With all prerequisites including Docker, VS Code, Python, and Postman installed,
 
 ## Next Steps:
 
-[Lens Local Set-up](/resources/lens/local_setup/)
+[Lens Local Set-up](/resources/lens/lens_setup/)
