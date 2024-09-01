@@ -73,7 +73,7 @@ Upon successful completion, you will receive a response:
 **Terminal**
 
 <div style="text-align: center;">
-    <img src="/resources/lens/configuration/superset1.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/configuration/bi_integration/superset1.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
     <figcaption> Superset Curl Command executed in Terminal
 </div>
 
@@ -85,13 +85,13 @@ Please follow the steps outlined to see the result:
 ### **Step 2 Go to DataOS**: Select Superset.
 
   <div style="text-align: center;">
-      <img src="/resources/lens/configuration/superset2.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+      <img src="/resources/lens/configuration/bi_integration/superset2.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
   </div>
 
 ### **Step 3 Navigate to Datasets Tab:** Here, each entity will be available in the form of datasets.
 
   <div style="text-align: center;">
-      <img src="/resources/lens/configuration/superset3.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+      <img src="/resources/lens/configuration/bi_integration/superset3.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
   </div>
 
 Everything is set up now. Explore and perform further analysis in Superset.
@@ -144,7 +144,7 @@ Go to the Explore tab on the left side. You’ll see the required tables and vie
 In the screenshot below, there are three sources: one for tables and two for views.
 
 <div style="text-align: center;">
-    <img src="/resources/lens/configuration/tableau1.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/configuration/bi_integration/tableau1.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 ### **Step 3: Explore and Create Visualizations**
@@ -153,7 +153,7 @@ Go to the Home tab on the left side and click on 'New'. Under it, click on 'Work
 
 
 <div style="text-align: center;">
-    <img src="/resources/lens/configuration/tableau2.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/configuration/bi_integration/tableau2.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 ### **Step 4: Connect to Data**
@@ -162,7 +162,7 @@ Once you click on 'Workbook', it’ll take you to 'Connect to Data'. Select eith
 
 
 <div style="text-align: center;">
-    <img src="/resources/lens/configuration/tableau3.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/configuration/bi_integration/tableau3.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 
@@ -170,7 +170,7 @@ As you click on 'Connect', it’ll ask you for username and password. Enter the 
 
 
 <div style="text-align: center;">
-    <img src="/resources/lens/configuration/tableau4.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/configuration/bi_integration/tableau4.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 ### **Step 5: Start Using the Model**
@@ -178,7 +178,7 @@ As you click on 'Connect', it’ll ask you for username and password. Enter the 
 Once you enter the credentials and click on 'Sign In', you’re ready to use the model for your visualization purposes.
 
 <div style="text-align: center;">
-    <img src="/resources/lens/configuration/tableau5.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/configuration/bi_integration/tableau5.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 **Note:**
@@ -211,7 +211,7 @@ https://liberal-donkey.dataos.app/lens2/sync/api/v1/<source_name>/<lens_name> --
 After running the command, a zip file will be downloaded to your chosen directory.
 
 <div style="text-align: center;">
-    <img src="/resources/lens/configuration/powerbi1.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/configuration/bi_integration/powerbi1.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 
@@ -222,7 +222,7 @@ Unzip the file. You will find three folders inside.
 
 
 <div style="text-align: center;">
-    <img src="/resources/lens/configuration/powerbi2.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/configuration/bi_integration/powerbi2.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 ###  **Step 4: Open the Power BI File**
@@ -231,7 +231,7 @@ Open the Power BI file using Power BI Desktop.
 
 
 <div style="text-align: center;">
-    <img src="/resources/lens/configuration/powerbi3.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/configuration/bi_integration/powerbi3.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 ### **Step 5: Enter Credentials**
@@ -239,11 +239,11 @@ Open the Power BI file using Power BI Desktop.
 Once the file is opened, you will see a popup. Enter your DataOS username and API key.
 
 <div style="text-align: center;">
-    <img src="/resources/lens/configuration/powerbi4.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/configuration/bi_integration/powerbi4.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 <div style="text-align: center;">
-    <img src="/resources/lens/configuration/powerbi5.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/configuration/bi_integration/powerbi5.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 ### **Step 6: Connect to DataOS**
@@ -252,7 +252,7 @@ Click the connect button. A popup will appear. Click OK.
 
 
 <div style="text-align: center;">
-    <img src="/resources/lens/configuration/powerbi6.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/configuration/bi_integration/powerbi6.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 ### **Step 7: Access Tables with Dimensions and Measures**
@@ -261,7 +261,7 @@ After connecting, you will be able to see tables and views with dimensions and m
 
 
 <div style="text-align: center;">
-    <img src="/resources/lens/configuration/powerbi7.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/configuration/bi_integration/powerbi7.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 **Note:**
@@ -281,7 +281,7 @@ Visit the [Analyze in Excel for Power BI Desktop](https://www.sqlbi.com/tools/an
 Once the extension is installed, a new tab labeled "Analyze in Excel" will appear in Power BI Desktop.
 
 <div style="text-align: center;">
-    <img src="/resources/lens/configuration/excel1.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/configuration/bi_integration/excel1.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 ### **Step 3: Export to Excel**:
@@ -298,5 +298,5 @@ Ensure that Power BI Desktop remains open while you are working in Excel, as Pow
 In Excel, you can now use PivotTables, charts, and other Excel features to analyze the data coming from Power BI.
 
 <div style="text-align: center;">
-    <img src="/resources/lens/configuration/excel2.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/configuration/bi_integration/excel2.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
