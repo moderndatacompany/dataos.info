@@ -10,7 +10,7 @@ Before initiating the deployment process, please ensure you have the following:
 - Access to a hosted code repository, such as **Bitbucket**, **GitHub**, **AWS CodeCommit**, etc.
 - Operator level access permission
 
->If you are new to setting the Lens model directory refer to the detailed doc [here](/resources/lens/local_setup/).**
+>If you are new to setting the Lens model directory refer to the detailed doc [here](/resources/lens/lens_setup/).
 
 ## Deployment Process
 
@@ -113,7 +113,7 @@ The `apply` command is as follows:
 
 To validate the proper creation of the Instance Secret Resource within the DataOS environment, employ the `get` command. Execute the following commands to ascertain the existence of the Instance Secret Resource:
 
-To get the details of instance-secret created by the user who applies the instance-secret, use the following command:
+To get the details of Instance-secret created by the user who applies the Instance-secret, use the following command:
 
 === "Command"
       
@@ -140,7 +140,7 @@ To get the details of instance-secret created by the user who applies the instan
       bitbucket-r              | v1      | instance-secret |           | active |         | iamgroot  
     ```
     
-To get the details of instance-secret created by all the users within the DataOS Instance, use the above command with `-a` flag:
+To get the details of Instance-secret created by all the users within the DataOS Instance, use the above command with `-a` flag:
 
 === "Command"
     
@@ -171,7 +171,7 @@ To get the details of instance-secret created by all the users within the DataOS
     ```
 
 <aside class="callout">
-🗣 Ensure that you remember the name of the created **instance secret**, as it will be used in the secrets attribute section of the Lens manifest file. This name is crucial for proper configuration and access within your Lens environment.
+🗣 Ensure that you remember the name of the created **Instance secret**, as it will be used in the secrets attribute section of the Lens manifest file. This name is crucial for proper configuration and access within your Lens environment.
 
 </aside>
 
