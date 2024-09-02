@@ -18,9 +18,12 @@ The goal represents the overarching objective of the organization or domain. It 
 
 Value objectives are specific outcomes or benefits that contribute to achieving the overarching goal. These objectives are tangible, measurable, and aligned with customer needs, business objectives, and strategic priorities.
 
-![Untitled(4).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/1ce251dd-48be-4e60-8bc4-27f0e800a5a4/Untitled(4).png)
-
-                                                             *Goal Value Tree*
+<center>
+  <div style="text-align: center;">
+    <img src="/resources/lens/goal_value_tree.jpg" alt="lens_example" style="width: 80%; border: 1px solid black; height: auto">
+    <figcaption>Goal Value Tree</figcaption>
+  </div>
+</center>
 
 ### **Determine Drivers**
 

@@ -1,4 +1,4 @@
-# BI Integraions 
+# BI Integrations 
 
 ## Pre-requisites
 
