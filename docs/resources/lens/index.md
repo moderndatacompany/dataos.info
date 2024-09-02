@@ -13,7 +13,7 @@ As a core resource within the DataOS ecosystem, Lens  enhances the entire data p
 > The data modeling layer serves as an interface that overlays the underlying data, consistently presenting business users with familiar and well-defined terms like "product," "customer," or "revenue." This abstraction enables users to access and consume data in a way that aligns with their understanding, facilitating self-service analytics and reducing dependence on data engineers for ad-hoc data requests. 
 
 <div style="text-align: center;">
-    <img src="/resources/lens/lens_diagram.png" alt="Untitled(5)" style="max-width: 100%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/lens_diagram.jpg" alt="Untitled(5)" style="max-width: 100%; height: auto; border: 1px solid #000;">
    <figcaption>Lens Ecosystem<figcaption>
 </div>
 
@@ -61,7 +61,7 @@ Before setting up Lens, ensure you have the following dependencies installed on 
 To install the above prerequisites, refer to the detailed doc [here](/resources/lens/installing_prerequisites/).
 
 
-If you are familiar with how to set up and run a Lens Project and you have an existing Lens Model that you want to run, directly [jump to this step](/resources/lens/)
+If you are familiar with how to set up and run a Lens Project and you have an existing Lens Model that you want to run, directly [jump to this step](/resources/lens/#getting-started-with-lens)
 
 
 ## Getting Started with Lens

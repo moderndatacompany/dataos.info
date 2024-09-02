@@ -223,6 +223,6 @@ Postman is a tool that allows data developers to perform querying and testing wi
 With all prerequisites including Docker, VS Code, Python, and Postman installed, you are now ready to build Lens models on your local system. 
 
 
-## Next Steps:
+## Next Steps
 
-[Lens Local Set-up](/resources/lens/lens_setup/)
+[Lens Set-up](/resources/lens/lens_setup/)

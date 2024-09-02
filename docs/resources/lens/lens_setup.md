@@ -5,9 +5,9 @@ Set up the Lens project folder containing the Dockerfile and the model folder an
 In the Model folder, you'll define your Lens model, including SQL mapping, logical tables, logical views, and user groups. Each folder has a specific file related to your Lens model
 
 
-### **Set Up Lens Project**
+### **Set Up Lens Project Folder**
 
-Set up the Lens project folder or you can download this template for 
+Set up the Lens project folder or you can download the following template 
 
 [lens template](/resources/lens/lens_setup/lens-project-template.zip)
 
