@@ -26,25 +26,15 @@ As a core resource within the DataOS ecosystem, Lens  enhances the entire data p
 
 Lens  is engineered to handle complex and large-scale data models with ease. Key features include:
 
-- **Code Modularity**
+- **Code Modularity:** Lens supports modular code structures, simplifying the maintenance of extensive models, particularly when dealing with entities, dimensions, and measures. This modularity enables efficient development and management, allowing teams to navigate large codebases with reduced complexity.
 
-  Lens supports modular code structures, simplifying the maintenance of extensive models, particularly when dealing with entities, dimensions, and measures. This modularity enables efficient development and management, allowing teams to navigate large codebases with reduced complexity.
+- **YAML Template Generation:** Lens offers a tailored YAML template generator through its VS Code plugin, streamlining the creation of Lens YAML files. This feature reduces manual effort, ensuring consistency across models and speeding up the setup process.
 
-- **YAML Template Generation**
+- **Advanced Linter Capabilities:** With enhanced linter functionalities, Lens provides more accurate and relevant error detection during deployment. Developers can quickly identify and resolve issues, reducing time spent on troubleshooting non-essential errors.
 
-  Lens offers a tailored YAML template generator through its VS Code plugin, streamlining the creation of Lens YAML files. This feature reduces manual effort, ensuring consistency across models and speeding up the setup process.
+- **Real-time Verification and Validation:** Lens features a local development environment that supports real-time inspection and validation of models. This minimizes delays caused by SQL syntax errors, and the inclusion of a web app for model inspection allows issues to be identified and resolved before deployment.
 
-- **Advanced Linter Capabilities**
-
-  With enhanced linter functionalities, Lens provides more accurate and relevant error detection during deployment. Developers can quickly identify and resolve issues, reducing time spent on troubleshooting non-essential errors.
-
-- **Real-time Verification and Validation**
-
-  Lens features a local development environment that supports real-time inspection and validation of models. This minimizes delays caused by SQL syntax errors, and the inclusion of a web app for model inspection allows issues to be identified and resolved before deployment.
-
-- **Customizable Views**
-
-  Lens enables users to create customizable views, allowing for multiple data slices tailored to specific business needs. These views can be easily edited, queried, and integrated with BI tools, offering greater flexibility in data analysis and reporting.
+- **Customizable Views:** Lens enables users to create customizable views, allowing for multiple data slices tailored to specific business needs. These views can be easily edited, queried, and integrated with BI tools, offering greater flexibility in data analysis and reporting.
 
 - **Interoperability**
 
