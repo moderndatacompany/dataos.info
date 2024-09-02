@@ -2,9 +2,9 @@
 
 Lens provides a GraphQL API interface for querying your deployed model. This document will guide you through the process of accessing the GraphQL interface and executing queries against the Lens model. You can interact with the Lens GraphQLAPI either through:
 
-1. [**Lens Studio**](/resources/lens/consumption_of_deployed_lens/consumption_using_graphql/#method-1:-accessing-graphql-via-lens-studio): DataOS interface that serves as an interactive in-browser tool for writing GraphQL queries on top of deployed Lens.
+1. [**Lens Studio**](/resources/lens/consumption_using_graphql/#method-1:-accessing-graphql-via-lens-studio): DataOS interface that serves as an interactive in-browser tool for writing GraphQL queries on top of deployed Lens.
 
-2. [**Postman**](/resources/lens/consumption_of_deployed_lens/consumption_using_graphql/#method-1:-accessing-graphql-via-postman): For more manual query execution and testing.
+2. [**Postman**](/resources/lens/consumption_using_graphql/#method-2:-accessing-graphql-via-postman): For more manual query execution and testing.
 
 ## How to access GraphQL?
 
@@ -14,15 +14,22 @@ The GraphQL Tab in Lens Studio provides an interactive environment for writing a
 
 ### **Step 1: Navigate to the deployed Lens on Metis UI**
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/66c3969c-8022-4269-a3c7-bff8859d8802/Untitled.png)
+<div style="text-align: center;">
+    <img src="/resources/lens/consumption_of_deployed_lens/graphql/graphql1.png" alt="graphql" style="max-width: 80%; height: auto; border: 1px solid #000;">
+</div>
+
 
 ### **Step 2: Click on the ‘Explore in Studio’ Button**
 
-![annotely_image (2).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/c208927f-586e-422f-bfd9-2929b92b7b1c/annotely_image_(2).png)
+<div style="text-align: center;">
+    <img src="/resources/lens/consumption_of_deployed_lens/graphql/graphql2.png" alt="graphql" style="max-width: 80%; height: auto; border: 1px solid #000;">
+</div>
 
 ### **Step 3: Navigate to the ‘Explore’ tab on Studio**
 
-![annotely_image (1).png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/32885c63-c383-41de-9a25-06cdf09110fc/annotely_image_(1).png)
+<div style="text-align: center;">
+    <img src="/resources/lens/consumption_of_deployed_lens/graphql/graphql3.png" alt="graphql" style="max-width: 80%; height: auto; border: 1px solid #000;">
+</div>
 
 ### **Step 4: Create the GraphQL Query**
 

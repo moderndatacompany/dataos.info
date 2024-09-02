@@ -5,7 +5,7 @@ Iris serves as an operational dashboard, providing a swift overview of your key 
 For instance the following ‘wallet_sales_view’ iris board shows weekly performance of revenue and wallet share
 
 <div style="text-align: center;">
-    <img src="/resources/lens/consumption_of_deployed_lens/iris_board.png" alt="Iris board" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/consumption_of_deployed_lens/iris/iris_board.png" alt="Iris board" style="max-width: 80%; height: auto; border: 1px solid #000;">
     <figcaption> wallet_sales_view View in Iris Board</figcaption>
 </div>
 
