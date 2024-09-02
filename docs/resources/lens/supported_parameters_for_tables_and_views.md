@@ -5,6 +5,11 @@
 > To draw a parallel with Lens 1.0, **‘Table’ is equivalent to the concept of ‘Entity’**.
 > 
 
+<div style="text-align: left; padding-left: 1em;">
+    <img src="/resources/lens/tables_views.png" alt="Iris board" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <figcaption> Tables and Views </figcaption>
+</div>
+
 A table is a logical construct used to define an entity. It contains information about joins (relationships), dimensions, measures, and segments. Each table is defined in a separate YAML file. 
 
 **Example**
