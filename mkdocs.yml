@@ -300,6 +300,28 @@ nav:
             - resources/stacks/soda/index.md
           - Steampipe: 
             - resources/stacks/steampipe/index.md
+          - Talos:
+            - resources/stacks/talos/index.md
+            - Setting Up Talos: 
+              - On Local: resources/stacks/talos/local_set_up.md
+              - On DataOS: resources/stacks/talos/set_up.md
+            - Configurations: resources/stacks/talos/configuration.md
+            - Supported Sources:
+              - Lens: resources/stacks/talos/recipes/recipe1.md
+              - Flash: resources/stacks/talos/recipes/recipe2.md
+              - Redshift: resources/stacks/talos/recipes/recipe3.md
+              - Snowflake: resources/stacks/talos/recipes/recipe4.md
+              - Postgres: resources/stacks/talos/recipes/recipe5.md
+            - Recipes: 
+              - Apply data masking: resources/stacks/talos/recipes/recipe6.md
+              - Fetch data from third party tools: resources/stacks/talos/recipes/recipe8.md
+              - Caching datasets: resources/stacks/talos/recipes/caching.md
+              - Generate API documentation: resources/stacks/talos/recipes/recipe9.md
+              - External API as data source: resources/stacks/talos/recipes/recipe7.md
+            - Example: resources/stacks/talos/example.md
+            - Best Practices:
+              - API: resources/stacks/talos/best_practices/api.md
+              - SQL: resources/stacks/talos/best_practices/sql.md
         - Volume: 
           - resources/volume/index.md
         - Worker: 
