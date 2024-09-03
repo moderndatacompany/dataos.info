@@ -140,40 +140,8 @@ nav:
     - index.md
     - Philosophy: philosophy/index.md
     - Architecture: architecture/index.md
-    - Interfaces: interfaces/index.md
-    - Resources:
-      - resources/index.md
-      - Types:
-        - resources/types/index.md
-      - Characteristics: resources/characteristics.md
-      - Configuration: resources/manifest_attributes.md
-      - YAML files: resources/yaml_configuration.md
-    - SDK: 
-      - api_docs/index.md
-  - Getting Started: 
-    - getting_started/index.md
-    - Data Product Consumer: getting_started/data_product_consumer/index.md
-    - Data Product Developer: getting_started/data_product_developer/index.md
-    # - Data Product Owner: getting_started/data_product_owner/index.md
-    - Operator: getting_started/operator/index.md
-  - Data Product: 
-    - products/data_product/index.md
-    - Data Product Lifecycle:
-      - products/data_product/how_to_guides/index.md
-      - Design: products/data_product/how_to_guides/design.md
-      - Build: products/data_product/how_to_guides/build.md
-      - Deploy: products/data_product/how_to_guides/deploy.md
-      - Iterate: products/data_product/how_to_guides/iterate.md
-    - Recipes: 
-      - Create Data Product template using Cookiecutter: products/data_product/recipes/cookiecutter.md
-      - Deploy Data Product using CI/CD pipeline: products/data_product/recipes/ci_cd.md
-    - Examples:
-      - Financial Services Accelerator Data Product: products/data_product/templates/accelerator.md
-      - Sales 360 Data Product : products/data_product/templates/sales_360.md
-    - Configurations: products/data_product/configurations.md   
-    - Core Concepts: products/data_product/core_concepts.md
-  - Developer:
-    - Interfaces:
+    - Interfaces: 
+      - interfaces/index.md
       - Atlas: 
         - interfaces/atlas/index.md
         - Dashboards: 
@@ -273,8 +241,11 @@ nav:
       # - Superset: 
       #   - interfaces/superset/index.md
       - Workbench: 
-        - interfaces/workbench/index.md 
-    - Resources: 
+        - interfaces/workbench/index.md
+    - Resources:
+      - resources/index.md
+      - Types:
+        - resources/types/index.md
         - Bundle: 
           - resources/bundle/index.md
         - Cluster: 
@@ -366,11 +337,37 @@ nav:
           - Configuration: resources/worker/configurations.md
         - Workflow: 
           - resources/workflow/index.md
+      - Characteristics: resources/characteristics.md
+      - Configuration: resources/manifest_attributes.md
+      - YAML files: resources/yaml_configuration.md
     - SDK: 
+      - api_docs/index.md
       - DataOS Python SDK: api_docs/dataos_python_sdk.md
       - DataOS PyFlare SDK: api_docs/dataos_pyflare.md
       - DataOS Flare SDK: api_docs/dataos_scala_sdk/index.html
       - DataOS Kotlin SDK: api_docs/dataos_kotlin_sdk/index.html
+  - Getting Started: 
+    - getting_started/index.md
+    - Data Product Consumer: getting_started/data_product_consumer/index.md
+    - Data Product Developer: getting_started/data_product_developer/index.md
+    # - Data Product Owner: getting_started/data_product_owner/index.md
+    - Operator: getting_started/operator/index.md
+  - Data Product: 
+    - products/data_product/index.md
+    - Data Product Lifecycle:
+      - products/data_product/how_to_guides/index.md
+      - Design: products/data_product/how_to_guides/design.md
+      - Build: products/data_product/how_to_guides/build.md
+      - Deploy: products/data_product/how_to_guides/deploy.md
+      - Iterate: products/data_product/how_to_guides/iterate.md
+    - Recipes: 
+      - Create Data Product template using Cookiecutter: products/data_product/recipes/cookiecutter.md
+      - Deploy Data Product using CI/CD pipeline: products/data_product/recipes/ci_cd.md
+    - Examples:
+      - Financial Services Accelerator Data Product: products/data_product/templates/accelerator.md
+      - Sales 360 Data Product : products/data_product/templates/sales_360.md
+    - Configurations: products/data_product/configurations.md   
+    - Core Concepts: products/data_product/core_concepts.md
   - Glossary: glossary/index.md
   - Learn:
     - learn/index.md

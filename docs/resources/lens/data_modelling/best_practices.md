@@ -1,3 +1,9 @@
+---
+title: Best Practices
+search:
+  exclude: true
+---
+
 # Best Practices
 
 ## Naming Conventions
