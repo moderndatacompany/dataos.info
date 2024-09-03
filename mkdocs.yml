@@ -295,6 +295,8 @@ nav:
           - resources/lakehouse/index.md
         # - Lens:
         #   - resources/lens/index.md
+        #   - Core Concepts: resources/lens/core_concepts.md
+
         - Monitor: 
           - resources/monitor/index.md
         - Operator: 
