@@ -12,6 +12,10 @@ The following Resources are considered Workspace-level Resources:
 
 A DataOS Resource to create, manage and optimize computational resources & configurations for both simple & advanced analytics and data processing. You will find the details on the following link: [Cluster](/resources/cluster/).
 
+### **Database**
+
+A Database Resource acts as a repository for storing transaction data, utilizing a managed Postgres relational database. To learn more about Database Resource, please refer to the link: [Database](/resources/database/).
+
 
 ### **Lakehouse** 
 
@@ -19,13 +23,17 @@ A DataOS Resource to create, manage and optimize computational resources & confi
 
 DataOS Lakehouse integrates Apache Iceberg table format with cloud object storage to offer a fully managed storage solution. It replicates traditional data warehouse functionalities, such as table creation with defined schemas and data manipulation via various tools. To learn more about Lakehouse, refer to the following link: [Lakehouse](/resources/lakehouse/).
 
+### **Lens**
+
+Lens is a logical modelling layer within DataOS desgined for accessing tabular data in data warehouses or lakehouses. To learn more about Lens, refer to the following link: [Lens](/resources/lens/).
+
 ### **Monitor**
 
 The Monitor is a DataOS Resource that allows one to raise incidents corresponding to the occurrence of certain events or metrics in the system. More details about the Monitor are available on the following page: [Monitor](/resources/monitor/).
 
 ### **Pager**
 
-A Pager Resource enables users to specify criteria for identifying an incident from the incident stream and delivering it to a user-specified destination. 
+A Pager Resource enables users to specify criteria for identifying an incident from the incident stream and delivering it to a user-specified destination. Learn more about Pager on the following link: [Pager](/resources/pager/).
 
 
 ### **Secret**
@@ -35,6 +43,10 @@ The Resource to store sensitive information such as passwords, tokens or keys in
 ### **Service**
 
 Service can be conceptualized as a long-running process that is receiving or/and serving an API, or even a UI. It can be used for scenarios that need a continuous flow of real-time data, such as event processing, streaming IoT and more. You will find the details of this *runnable resource* here: [Service](/resources/service/).
+
+### **Volume**
+
+A Volume Resource in DataOS offers persistent and shared storage solutions for containerized applications. Learn more about Volume on the following link: [Volume](/resources/volume/).
 
 ### **Worker**
 
@@ -64,11 +76,16 @@ The Bundle Resource is a Resource management construct that streamlines the depl
 
 Compute is essentially a node pool of homogeneous virtual machines. They allow you to configure the processing power associated with your data workloads. Read about them in detail on the following page: [Compute](/resources/compute/).
 
+
 ### **Depot**
 
 Depots provide you with a uniform way to connect with the variety of data sources in your organization. Depots abstract away the different protocols and complexities of the source systems to present a common taxonomy and method to address these source systems. Learn how to create & use depots on this link: [Depot](/resources/depot/).
 
-### **Instance Secrets**
+### **Grant**
+
+A Grant Resource enables administrators assign use cases to subjects either as users or roles, granting them access to specific parts of the system or data. To learn more about Grant, refer to the following link: [Grant](/resources/grant/).
+
+### **Instance Secret**
 
 An Instance Secret is a Resource within DataOS for securely storing confidential information at the DataOS Instance level. Its scope spans the entire DataOS Instance, enabling access across all Workspaces. Conversely, a Secret is limited in accessibility, allowing access solely to Resources within the Workspace where it's created. 
 
