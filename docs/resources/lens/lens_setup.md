@@ -161,10 +161,7 @@ Modify the docker-compose.yml file to tailor it to include environment-URL, lens
 
 Once you've completed the Lens setup(adding source connection detail) and have defined the Lens model you can start Lens. It is considered a good practice to test your Lens and ensuring the data model is error free before deploying it. the docker-compose file will help us for the same.
 
-> <b>Note:</b> Ensure your working directory is the Lens project directory
-
-
-><b>Note:</b> Ensure that the API Key is correctly passed as defined in your docker-compose.yml.
+> <b>Note:</b> Ensure your working directory is the Lens project directory and that the API Key is correctly passed as defined in your docker-compose.yml.
 
 You can test Lens in the development environment by running:
 
@@ -205,7 +202,7 @@ The following setup will allow access using `user` as the username, `password` a
 
 === "Syntax"
 
-    psql -h <host_name> -p <port_name> -d <database_name>
+    psql -h ${host_name} -p ${port_name} -d ${database_name}
 
 === "Example"
 
