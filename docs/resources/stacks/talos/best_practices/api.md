@@ -1,3 +1,5 @@
+# API Best Practices
+
 Welcome to the API Design Best Practices guide for Talos. This document provides detailed guidelines and examples to help you design efficient, secure, and user-friendly APIs.
 
 ## 1. Use RESTful Principles
