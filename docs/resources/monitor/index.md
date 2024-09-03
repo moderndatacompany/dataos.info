@@ -12,8 +12,37 @@ The Monitor [Resource](/resources/) is an integral part of DataOS’ Observabili
 
 === "Code"
 
-    ```yaml title="monitor_manifest_structure.yml"
-    --8<-- "examples/resources/monitor/equation_manifest.yaml"
+    ```yaml title="monitor_manifest_structure.yaml"
+    # Resource meta section
+    name: ${{runtime-monitor}}
+    version: ${{v1alpha}}
+    type: monitor
+    tags:
+      - ${{dataos:type:resource}}
+      - ${{dataos:layer:user}}
+    description: ${{Attention! workflow run is succeeded.}}
+    layer: ${{user}}
+    monitor:
+
+    # Monitor-specific section
+      schedule: ${{'*/3 * * * *'}}
+      incident:
+        name: ${{workflowrunning}}
+        severity: ${{high}}
+        incidentType: ${{workflowruntime}}
+        
+      type: {{report_monitor}}
+    # Report Monitor specification
+      report:
+        source:
+          dataOsInstance:
+            path: ${{/collated/api/v1/reports/resources/runtime?id=workflow:v1:scan-data-product-test:public}}
+        conditions:
+          - valueComparison:
+              observationType: ${{runtime}}
+              valueJqFilter: ${{'.value'}
+              operator: ${{equals}}
+              value: ${{succeeded}}}
     ```
 
 ## First Steps

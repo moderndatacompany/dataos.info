@@ -4,8 +4,8 @@ Talos is a [Stack](/resources/stacks/) within DataOS designed to streamline the 
 
 *It turns your SQL into APIs in no time!*
 
-!!!tip "Talos within the Data Product Life-cycle"
-    Talos operates within the consumption layer of the Data Product Life Cycle within DataOS, facilitating access and usability for consumers, whether they are external systems, applications, or end-users. The Talos API endpoints are crucial in this process, offering a standardized and flexible interface for accessing and consuming Data Products via API. Talos is particularly valuable when Data Products need to be accessed or consumed outside the DataOS environment via API.
+!!!tip "Talos within the Data Product Life Cycle"
+    Talos operates within the consumption layer of the Data Product Life Cycle within DataOS, facilitating access and usability for consumers, whether they are external systems, applications, or end-users. The Talos API endpoints are crucial in this process, offering a standardized and flexible interface for accessing and consuming Data Products via APIs. Talos is particularly valuable when Data Products need to be accessed or consumed outside the DataOS environment via API.
 
 
 
@@ -25,7 +25,7 @@ To fully utilize the capabilities of Talos, it is essential to familiarize yours
 
 - **Scalability and Maintenance:** A structured, template-driven approach makes it easier to scale and maintain APIs, adapting to changes in data schemas or business logic with minimal manual intervention.
 
-- **Standardization and Integration:** Leverages OpenAPI for standardized API interaction, promoting interoperability and ease of integration with various systems and tools.
+- **Standardization and Integration:** Leverages OpenAPI for standardized [API interaction](/resources/stacks/talos/recipes/recipe9/), promoting interoperability and ease of integration with various systems and tools.
 
 - **Accessibility and Usability:** Facilitates secure and scalable data sharing, making data more accessible to AI agents and other applications such as Appsmith.
 
@@ -69,22 +69,23 @@ Setting up Talos within DataOS involves configuring it to align with the existin
 For the users, who prefer or need to run Talos on their local machines, this setup provides flexibility and control over your development environment. Setting up Talos locally is perfect for users who are in the early stages of API development. This method ensures that you can build and test your APIs in a familiar environment before deploying them to a broader audience. To set up Talos locally, [please refer to this](/resources/stacks/talos/local_set_up/).
 
 ## Configurations
-To configure Talos effectively, it's essential to understand each attribute of the manifest files. This section provides detailed descriptions of the key configuration files used in Talos, helping you set up and customize Talos efficiently. For detailed information on each file, please refer to [this section](/resources/stacks/talos/configuration/).
+To configure Talos effectively, it's essential to understand each attribute of the manifest files. This section provides detailed descriptions of the key configuration files used in Talos, helping you set up and customize Talos efficiently. For detailed information on each file, please refer to [this section](/resources/stacks/talos/configurations/).
 
 
 ## Recipes
 
 This section provides step-by-step guides to assist you in effectively configuring the Talos to solve common challenges. Below are some recipes to help you configure Talos effectively:
 
-- [How to set up Talos for Lens?](/resources/stacks/talos/recipes/recipe1/)
-- [How to set up Talos for Flash?](/resources/stacks/talos/recipes/recipe2/)
-- [How to set up Talos for Redshift?](/resources/stacks/talos/recipes/recipe3/)
-- [How to set up Talos for Snowflake?](/resources/stacks/talos/recipes/recipe4/)
-- [How to set up Talos for Postgres?](/resources/stacks/talos/recipes/recipe5/)
-- [How to apply data masking while exposing data through an API?](/resources/stacks/talos/recipes/recipe6/)
-- [How to use external API as a data source?](/resources/stacks/talos/recipes/recipe7/)
-- [How to fetch data exposed by Talos from the third-party tools?](/resources/stacks/talos/recipes/recipe8/)
+- [How to set up Talos for Lens?](/resources/stacks/talos/recipes/lens_setup/)
+- [How to set up Talos for Flash?](/resources/stacks/talos/recipes/flash_setup/)
+- [How to set up Talos for Redshift?](/resources/stacks/talos/recipes/redshift/)
+- [How to set up Talos for Snowflake?](/resources/stacks/talos/recipes/snowflake/)
+- [How to set up Talos for Postgres?](/resources/stacks/talos/recipes/postgres/)
+- [How to apply data masking while exposing data through an API?](/resources/stacks/talos/recipes/data_masking/)
+- [How to use external API as a data source?](/resources/stacks/talos/recipes/external_api/)
+- [How to fetch data exposed by Talos from the third-party tools?](/resources/stacks/talos/external_tools/)
 - [Caching Datasets](/resources/stacks/talos/recipes/caching/)
+- [How to generate the comprehensive API documentation?](/resources/stacks/talos/recipes/api_documentation/)
 
 ## Example
 
