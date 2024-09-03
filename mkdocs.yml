@@ -396,6 +396,10 @@ nav:
           - quick_guides/test_data_model/index.md
         - Deploying a Data Model:
           - quick_guides/deploy_data_model/index.md
+        - Exploring Lens on Catalog:
+          - quick_guides/exploring_lens_on_metis/index.md
+        - Working on Lens Studio:
+          - quick_guides/working_on_lens_studio/index.md
         - Creating a Lens: 
           - quick_guides/create_lens/index.md
         - Using a Lens: 
