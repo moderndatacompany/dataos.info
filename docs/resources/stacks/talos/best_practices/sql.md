@@ -1,3 +1,5 @@
+# SQL Best Practices
+
 Welcome to the SQL Best Practices guide for Talos. This document is designed to help you write efficient, readable, and maintainable SQL queries. Whether you're a beginner or an advanced user, following these best practices will ensure your queries perform well and are easy to understand.
 
 ## 1. Use Clear and Consistent Naming Conventions
