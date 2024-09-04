@@ -1,4 +1,4 @@
-# Creating a Lens
+# Creating a Lens (Lens 1.0)
 
 !!! info "Information"
     This guide will walk you through the steps of setting up and utilizing a data analysis lens tailored for a sports retail scenario. By following this guide, you'll be able to explore sales, customer, and product data to gain valuable insights for optimizing business strategies and enhancing customer satisfaction.
