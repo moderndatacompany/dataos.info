@@ -1,3 +1,9 @@
+---
+title: Data Sources
+search: 
+  exclude: true
+---
+
 # Data Sources
 
 ## Connecting to sources via Depot/Cluster

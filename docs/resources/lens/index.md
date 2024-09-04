@@ -1,27 +1,34 @@
 ---
 title: Lens
 search:
-  boost: 4
+  exclude: true
 ---
 
 # :resources-lens: Lens
 
-Lens is a data product consumption layer designed for accessing tabular data in data warehouses or lakehouses. It operates on top of physical tables, allowing the extension of these tables into Logical Tables by adding logical columns (measures) and relationships. Lens exposes APIs such as JDBC, HTTP, and GraphQL for accessing modified data.
 
-It is intended strictly for direct data consumption and should not be used as a layer for building additional microservices.
+Lens [Resource](/resources/) in DataOS is a logical modelling layer desgined for accessing tabular data in data warehouses or lakehouses. It operates on top of physical tables, allowing the extension of these tables into Logical Tables by adding logical columns (measures) and relationships. It  empowers analytical engineers, the key architects of business intelligence, with a model-first approach.  To understand about the Model-first approach click [here](/resources/lens/core_concepts/). 
 
-It  empowers analytical engineers, the key architects of business intelligence, with a model-first approach. By leveraging Lens , data products can be created to inform decision-making, ensuring that data is logically organized and aligned with business objectives from the outset. To understand about the Model-first approach click [here](/resources/lens/core_concepts/).
 
-As a core resource within the DataOS ecosystem, Lens  enhances the entire data product lifecycle, delivering substantial improvements in developer experience, consumption patterns, and overall data management.
+!!!tip "Lens within the Data Product Lifecycle"
 
-> The data modeling layer serves as an interface that overlays the underlying data, consistently presenting business users with familiar and well-defined terms like "product," "customer," or "revenue." This abstraction enables users to access and consume data in a way that aligns with their understanding, facilitating self-service analytics and reducing dependence on data engineers for ad-hoc data requests. 
+    Lens operates within the consumption layer of the Data Product Life Cycle within DataOS, By leveraging Lens , data products can be created to inform decision-making, ensuring that data is logically organized and aligned with business objectives from the outset. To consume it, Lens exposes APIs such as JDBC, HTTP, and GraphQL.
+
+
 
 <div style="text-align: center;">
     <img src="/resources/lens/lens_diagram.jpg" alt="Untitled(5)" style="max-width: 80%; height: auto; border: 1px solid #000;">
    <figcaption>Lens Ecosystem<figcaption>
 </div>
 
-                                                    
+
+
+## Why Lens?
+
+The data modeling layer serves as an interface that overlays the underlying data, consistently presenting business users with familiar and well-defined terms like "product," "customer," or "revenue." This abstraction enables users to access and consume data in a way that aligns with their understanding, facilitating self-service analytics and reducing dependence on data engineers for ad-hoc data requests. 
+
+As a core Resource within the DataOS ecosystem, Lens  enhances the entire data product lifecycle, delivering substantial improvements in developer experience, consumption patterns, and overall data management.
+
 ## Key features of Lens 
 
 Lens  is engineered to handle complex and large-scale data models with ease. Key features include:
@@ -37,18 +44,18 @@ Lens  is engineered to handle complex and large-scale data models with ease. Key
 - **Customizable Views:** Lens enables users to create customizable views, allowing for multiple data slices tailored to specific business needs. These views can be easily edited, queried, and integrated with BI tools, offering greater flexibility in data analysis and reporting.
 
 - **Interoperability**
+    
+    Lens is designed for seamless integration with external applications and tools, enhancing interoperability across various systems:
 
-Lens is designed for seamless integration with external applications and tools, enhancing interoperability across various systems:
+    - **API Support:** Lens simplifies application development with support for Postgres API, REST API, and GraphQL, enabling smoother interactions with external systems.
 
-  - **API Support:** Lens simplifies application development with support for Postgres API, REST API, and GraphQL, enabling smoother interactions with external systems.
+    - **First-Class BI Integration:** Lens offers robust integration with Superset, and ongoing efforts aim to extend connectivity to Tableau and PowerBI. This integration ensures that data models can be easily utilized across various BI platforms, improving the overall analytics experience.
 
-  - **First-Class BI Integration:** Lens offers robust integration with Superset, and ongoing efforts aim to extend connectivity to Tableau and PowerBI. This integration ensures that data models can be easily utilized across various BI platforms, improving the overall analytics experience.
+- **Performance Optimization**
 
-**Performance Optimization**
+    Lens is optimized to deliver high performance, especially when dealing with large datasets:
 
-Lens is optimized to deliver high performance, especially when dealing with large datasets:
-
-  - **Flash:** Designed to work with DataOS Lakehouse and Iceberg-format depots, Flash improves query performance by leveraging DuckDB for in-memory execution. This optimization ensures that data teams can efficiently handle large-scale queries with enhanced speed and performance.
+    - **Flash:** Designed to work with DataOS Lakehouse and Iceberg-format depots, Flash improves query performance by leveraging DuckDB for in-memory execution. This optimization ensures that data teams can efficiently handle large-scale queries with enhanced speed and performance.
 
 ## Lens Set-up
 
