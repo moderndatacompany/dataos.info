@@ -50,17 +50,9 @@ Learn how to examine and experiment with logical models, the Lens component of D
      
 </div>
 
-If you’re working with a previous version of Lens, the following guides will be helpful.
-
-<div class= "grid cards" markdown>
-
--   [Creating a Lens](/quick_guides/create_lens/)
-
--   [Using Lens](/quick_guides/use_lens/)
-
--   [Creating Dashboard with LQL](/quick_guides/create_dashboard_lql/)
-     
-</div>
+<aside class="callout">
+🗣 If you’re working with Lens 1.0, click <a href="/quick_guides/lens1/">here</a> to check out the guides for assistance.
+</aside>
 
 ## :material-scanner: Scanning Metadata
 

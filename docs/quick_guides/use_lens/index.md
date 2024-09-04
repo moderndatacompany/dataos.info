@@ -1,4 +1,4 @@
-# Using Lens
+# Using Lens (Lens 1.0)
 
 !!! info "Information"
     Lens is a powerful tool within DataOS that allows you to explore and analyze your data with ease. Follow this comprehensive guide to learn how to make the most out of Lens.

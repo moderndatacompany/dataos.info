@@ -16,7 +16,7 @@ With Lens Studio,  you can access your Lens to examine the same data model from 
 
 When you first open Lens Studio, you’ll see the following interface, designed for efficient data exploration.
 
-### Exploring your Lens
+### **Exploring your Lens**
 
 ![lens_studio (1).png](/quick_guides/working_on_lens_studio/lens_studio_(1).png)
 
@@ -37,7 +37,7 @@ When you first open Lens Studio, you’ll see the following interface, designed 
         
     3. **History**: Review and Reflect with the History Feature. You can keep track of your analytical journey by accessing and replaying past actions.
 
-### Understanding Your Data Model
+### **Understanding Your Data Model**
 
 Go to the **Model** tab to explore the schema and fields.
 
@@ -98,7 +98,7 @@ Apply filters and sorting to narrow down your data. Focus on the segments that m
     ![filter_criterion_query_run.png](/quick_guides/working_on_lens_studio/filter_criterion_query_run.png)
     
 
-### Segments for Targeted Data Analysis.
+### **Segments for Targeted Data Analysis**
 
 Segments are like pre-set filters you create when setting up your business object’s manifest. Think of them as shortcuts to analyze by demographics, purchase behavior, and more.
 
@@ -126,7 +126,7 @@ Switch between different views such as **Table**, **Chart**, and **Pivot** to vi
     ![configure_chart.png](/quick_guides/working_on_lens_studio/configure_chart.png)
     
 
-### Data Aggregation and Rearrangement with Pivot Feature
+### **Data Aggregation and Rearrangement with Pivot Feature**
 
 The Pivot feature helps you transform and simplify your data dynamically. It turns complex datasets into clear, insightful summaries, making it easier to spot trends and patterns.
 
@@ -141,7 +141,7 @@ The Pivot feature helps you transform and simplify your data dynamically. It tur
 
 </aside>
 
-### Accessing and Replaying Past Analyses
+### **Accessing and Replaying Past Analyses**
 
 The **History** feature in Lens Studio allows you to track and revisit your past data exploration. Whether you want to review the steps you took to reach a particular insight or need to retrace your work, the History feature provides a chronological log of all your actions within the studio.
 
@@ -157,7 +157,7 @@ The **History** feature in Lens Studio allows you to track and revisit your past
 
 </aside>
 
-### Data Protection **Policies** and Viewing User Groups
+### **Data Protection Policies and Viewing User Groups**
 
 In the Lens model, data is safeguarded by robust policies that ensure sensitive information remains secure. These policies govern access control, determining who can view, or interact with specific data. They also define how data should be masked to prevent unauthorized access to sensitive details.
 
@@ -176,7 +176,7 @@ To control data visibility based on user groups, row filter policies can also be
 
 In Lens Studio, go to **Model tab**. you can easily check the permissions associated with your Lens model and its data:
 
-![Model_overview.png](/quick_guides/working_on_lens_studio/Model_overview.png)
+![model_overview.png](/quick_guides/working_on_lens_studio/model_overview1.png)
 
 **Masking Applied for the Data**
 
