@@ -1,3 +1,11 @@
+---
+title: Model-first Approach
+search:
+  exclude: true
+---
+
+# The Model-First Approach
+
 The model-first approach emphasizes the logical organization and design of data from the outset to address both immediate tactical queries and overarching strategic inquiries in business operations.
 
 By transitioning from ad-hoc data organization and querying methods to a well-defined logical modeling layer, this approach enables data and business intelligence teams to unlock enhanced capabilities. It simplifies the retrieval of metric variants, reduces maintenance overhead, and allows for seamless modifications to models. This strategic shift ensures that downstream datasets and dashboards remain up-to-date, empowering teams to iterate and adapt quickly while fostering a data-driven culture.

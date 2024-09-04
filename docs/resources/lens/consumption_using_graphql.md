@@ -1,3 +1,9 @@
+---
+title: Consumption of Lens using GraphQL
+search:
+  exclude: true
+---
+
 # Consumption of Lens using GraphQL
 
 Lens provides a GraphQL API interface for querying your deployed model. This document will guide you through the process of accessing the GraphQL interface and executing queries against the Lens model. You can interact with the Lens GraphQLAPI either through:
@@ -8,30 +14,30 @@ Lens provides a GraphQL API interface for querying your deployed model. This doc
 
 ## How to access GraphQL?
 
-## Method 1: Accessing GraphQL via Lens Studio
+### **Method 1: Accessing GraphQL via Lens Studio**
 
 The GraphQL Tab in Lens Studio provides an interactive environment for writing and executing GraphQL queries.
 
-### **Step 1: Navigate to the deployed Lens on Metis UI**
+**Step 1: Navigate to the deployed Lens on Metis UI**
 
 <div style="text-align: center;">
     <img src="/resources/lens/consumption_of_deployed_lens/graphql/graphql1.png" alt="graphql" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 
-### **Step 2: Click on the ‘Explore in Studio’ Button**
+**Step 2: Click on the ‘Explore in Studio’ Button**
 
 <div style="text-align: center;">
     <img src="/resources/lens/consumption_of_deployed_lens/graphql/graphql2.png" alt="graphql" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-### **Step 3: Navigate to the ‘Explore’ tab on Studio**
+**Step 3: Navigate to the ‘Explore’ tab on Studio**
 
 <div style="text-align: center;">
     <img src="/resources/lens/consumption_of_deployed_lens/graphql/graphql3.png" alt="graphql" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-### **Step 4: Create the GraphQL Query**
+**Step 4: Create the GraphQL Query**
 
 1. In the left pane, enter your GraphQL query. You can press `Ctrl` + `Space` to bring up the autocomplete window. For example:
 
@@ -62,20 +68,20 @@ You can now press the ‘Execute’ button or press `Ctrl` + `Enter` to run the 
 ```
 
 
-## Method 2: Accessing GraphQL via Postman
+### **Method 2: Accessing GraphQL via Postman**
 
 This section guides you through accessing Lens's GraphQL API using Postman or a web browser. This method is suitable for developers who prefer a more hands-on approach to testing and querying the API outside of Lens Studio.
 
-### **Step 1: Setting Up Postman**
+**Step 1: Setting Up Postman**
 
 Ensure you have Postman installed either as an application or as a Visual Studio Code Extension. If not, you can refer to the following link.
 
-### **Step 2: Create a New Request**
+**Step 2: Create a New Request**
 
 1. Open Postman and click on `New` to create a new request.
 2. Select `HTTPS Request`.
 
-### **Step 3: Configure the Request**
+**Step 3: Configure the Request**
 
 1. **URL**: Enter the URL of your deployed GraphQL endpoint. Sample URLs for localhost and DataOS environment are provided below:
 **For locally hosted Lens**, the endpoint will be as follows**:**
@@ -104,14 +110,14 @@ Ensure you have Postman installed either as an application or as a Visual Studio
     
 2. **Request Method**: Select `POST` as the request method.
 
-### **Step 4: Set Up Headers**
+**Step 4: Set Up Headers**
 
 1. Click on the `Headers` tab.
 2. Add the following headers:
     - Key: `apikey`
     - Value: `DATAOS_APIKEY_TOKEN` (replace `DATAOS_APIKEY_TOKEN` with the actual token by using the `dataos-ctl user apikey get` or `dataos-ctl user apikey create` command).
 
-### **Step 5: Create the GraphQL Query**
+**Step 5: Create the GraphQL Query**
 
 1. Click on the `Body` tab.
 2. Select `GraphQL` from the dropdown.

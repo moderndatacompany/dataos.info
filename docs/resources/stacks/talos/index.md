@@ -69,7 +69,7 @@ Setting up Talos within DataOS involves configuring it to align with the existin
 For the users, who prefer or need to run Talos on their local machines, this setup provides flexibility and control over your development environment. Setting up Talos locally is perfect for users who are in the early stages of API development. This method ensures that you can build and test your APIs in a familiar environment before deploying them to a broader audience. To set up Talos locally, [please refer to this](/resources/stacks/talos/local_set_up/).
 
 ## Configurations
-To configure Talos effectively, it's essential to understand each attribute of the manifest files. This section provides detailed descriptions of the key configuration files used in Talos, helping you set up and customize Talos efficiently. For detailed information on each file, please refer to [this section](/resources/stacks/talos/configuration/).
+To configure Talos effectively, it's essential to understand each attribute of the manifest files. This section provides detailed descriptions of the key configuration files used in Talos, helping you set up and customize Talos efficiently. For detailed information on each file, please refer to [this section](/resources/stacks/talos/configurations/).
 
 
 ## Recipes

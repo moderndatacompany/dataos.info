@@ -1,3 +1,11 @@
+---
+title: Working with User Groups and Data Policies
+search:
+  exclude: true
+---
+
+# Working with User Groups and Data Policies
+
 In Lens, you can secure data in logical tables by defining data policies on their dimensions and segments. This guide will walk you through the steps to create user groups and apply data policies effectively.
 
 ## Creating User Groups
@@ -64,7 +72,7 @@ includes:
 excludes: 
 - `users:id:johndoe` |
 
-## **Group Priority**
+## Group Priority
 
 When a user is included in multiple user groups, the group listed first in the configuration file will determine the user's access level. This means that the permissions of the first group take precedence over any subsequent groups.
 
@@ -101,14 +109,14 @@ In this example:
 
 Data policies can be applied to dimensions and segments of tables to control data access and masking.
 
-### Defining Data Masking Policy on a Table’s Dimension
+### **Defining Data Masking Policy on a Table’s Dimension**
 
 You can mask data on a table's dimension using the `secure` property in the meta section. Two data masking functions are available:
 
 - **Redact**: Replaces the value with the string `redact`.
 - **md5**: Hashes the value using the MD5 algorithm.
 
-### Step 1: Define the Data Masking Function
+#### **Step 1: Define the Data Masking Function**
 
 Include the masking function in the `meta` section of your dimension definition:
 
@@ -127,7 +135,7 @@ Include the masking function in the `meta` section of your dimension definition:
           - default
 ```
 
-### Step 2: Configure User Group Policies
+#### **Step 2: Configure User Group Policies**
 
 You can configure user group policies to control access:
 
@@ -159,11 +167,11 @@ meta:
 
 ```
 
-### Defining Row Filter Policy on a Table’s Segment
+### **Defining Row Filter Policy on a Table’s Segment**
 
 Apply a row filter policy to show specific data based on user groups.
 
-### Step 1: Define the Row Filter Policy
+#### **Step 1: Define the Row Filter Policy**
 
 Add the filter policy to the `segments` section of your table definition:
 
