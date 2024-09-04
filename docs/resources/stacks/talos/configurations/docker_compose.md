@@ -43,7 +43,7 @@ networks:
     driver: bridge
 ```
 
-### `version`
+### **`version`**
 
 **Description:** Specifies the version of the Docker Compose file format.
 
@@ -59,17 +59,17 @@ version: "2.2"
 
 ---
 
-### `services`
+### **`services`**
 
 **Description:** Defines the services (containers) that will be part of this Docker Compose configuration.
 
 ---
 
-### `pg-db`
+### **`pg-db`**
 
 **Description:** Configuration for the PostgreSQL database service.
 
-### `build`
+### **`build`**
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
@@ -83,7 +83,7 @@ build: ./database
 
 ---
 
-### `container_name`
+### **`container_name`**
 
 **Description:** Custom name for the container. This is useful for easier identification and management of the container.
 
@@ -99,7 +99,7 @@ container_name: employee-db
 
 ---
 
-### `environment`
+### **`environment`**
 
 **Description:** Key-value pairs for environment variables that will be set inside the container.
 
@@ -117,7 +117,7 @@ environment:
 
 ---
 
-### `ports`
+### **`ports`**
 
 **Description:** List of port mappings between the host and the container. It specifies which ports on the host will be forwarded to ports on the container.
 
@@ -134,7 +134,7 @@ ports:
 
 ---
 
-### `networks`
+### **`networks`**
 
 **Description:** List of networks the service is connected to. This defines which Docker networks the service will use.
 
@@ -151,7 +151,7 @@ networks:
 
 ---
 
-### `healthcheck`
+### **`healthcheck`**
 
 **Description:** Configuration for health checks on the service. It includes the test command, the interval between checks, the timeout for each check, and the number of retries before marking the service as unhealthy.
 
@@ -171,13 +171,13 @@ healthcheck:
 
 ---
 
-### `talos`
+### **`talos`**
 
 **Description:** Configuration for the Talos service.
 
 ---
 
-### `image`
+### **`image`**
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
@@ -191,7 +191,7 @@ image: rubiklabs/talos:0.1.6
 
 ---
 
-### `ports`
+### **`ports`**
 
 **Description:** List of port mappings between the host and the container. It specifies which ports on the host will be forwarded to ports on the container.
 
@@ -208,7 +208,7 @@ ports:
 
 ---
 
-### `volumes`
+### **`volumes`**
 
 **Description:** List of volume mounts between the host and the container. It specifies which directories or files on the host will be mounted into the container.
 
@@ -225,7 +225,7 @@ volumes:
 
 ---
 
-### `environment`
+### **`environment`**
 
 **Description:** Key-value pairs for environment variables that will be set inside the container.
 
@@ -244,7 +244,7 @@ environment:
 
 ---
 
-### `tty`
+### **`tty`**
 
 **Description:** Allocate a TTY for the container. This is useful for interactive processes and debugging.
 
@@ -260,7 +260,7 @@ tty: true
 
 ---
 
-### `depends_on`
+### **`depends_on`**
 
 **Description:** Dependency configuration for service startup order. It ensures that the specified service is available and healthy before starting the dependent service.
 
@@ -278,7 +278,7 @@ depends_on:
 
 ---
 
-### `networks`
+### **`networks`**
 
 **Description:** List of networks the service is connected to. This defines which Docker networks the service will use.
 
@@ -295,13 +295,13 @@ networks:
 
 ---
 
-### `app-network`
+### **`app-network`**
 
 **Description:** Configuration for a network used by the services.
 
 ---
 
-### `dri`
+### **`dri`**
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |

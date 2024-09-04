@@ -1,4 +1,4 @@
-# Creating a Dashboard with LQL
+# Creating a Dashboard with LQL (Lens 1.0)
 
 !!! info "Information"
     This guide will teach you how to create charts and dashboards in the Navigator using datasets generated through Lens Query Language. It provides a step-by-step process to help you turn your lens findings into impactful visual insights.
@@ -12,7 +12,7 @@ Navigator operates on "Datasets". This means we'll need to create a Dataset powe
 
 To get started, head over to the Navigator application directly from the DataOS home page.
 
-![dashboard_home.png](/quick_guides/create_dashboard_lql/dashboard_home.png)
+![dashboard_home.png](/quick_guides/create_dashboard_lql/navigator_home.png)
 
 ## Creating Dashboards
 
@@ -22,7 +22,7 @@ Let's create a blank Dashboard before we start.
 
 1. Navigate to the "**Dashboards**" tab. Click the "**+Dashboard**" button.
     
-    ![dashboard_home](/quick_guides/create_dashboard_lql/dashboards_option.png)
+    ![dashboard_home](/quick_guides/create_dashboard_lql/dashboard_home.png)
     
 2. You'll now have a new dashboard with the title [untitled dashboard].  Let's rename it to "Sales Performance Analysis”. Don't forget to click on the "**Save**" button to ensure your changes are preserved.
     
