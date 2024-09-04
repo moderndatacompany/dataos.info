@@ -1,4 +1,10 @@
-# What is an Iris board?
+---
+title: Consumption of Lens using Iris Board
+search: 
+  exclude: true
+---
+
+# Consumption of Lens using Iris Board
 
 Iris serves as an operational dashboard, providing a swift overview of your key performance metrics(measures) over time. It enables you to delve deeper into these metrics(measures) across various dimensions, aiding in the understanding of anomalies or observed differences. You can expose your Lens View to Iris boards, allowing you to observe measures across various dimensions defined within it.
 

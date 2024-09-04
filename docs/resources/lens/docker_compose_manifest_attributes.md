@@ -1,47 +1,59 @@
+---
+title: Attributes of Docker Compose manifest
+search: 
+  exclude: true
+---
+
 # Attributes of Docker Compose manifest
 
 ## Structure of docker-compose manifest
 
 ```yaml
-version: "2.2"
+ version: "2.2"
 
 x-lens2-environment: &lens2-environment
   # DataOS
-  DATAOS_BASE_URL: https://liberal-monkey.dataos.app/
+  DATAOS_FQDN: liberal-donkey.dataos.app
   # Overview
-  LENS2_NAME: sales360
-  LENS2_DESCRIPTION: "Ecommerce use case on Adventureworks sales data"
-  LENS2_TAGS: "lens2, ecom, sales and customer insights"
-  LENS2_AUTHORS: "iamgroot, ironman"
+  LENS2_NAME: lens-audit
+  LENS2_DESCRIPTION: "Ecommerce use case on Lens2 audit data"
+  LENS2_TAGS: "lens2"
+  LENS2_AUTHORS: "iamgroot"
+  LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
+
   # Data Source
-  LENS2_DB_HOST: tcp.glad-rattler.dataos.app
-  LENS2_DB_PORT: 7432
-  LENS2_DB_USER: shubhanshujain
-  LENS2_DB_PASS: "HVnVjeTQwTjJGa1ptTmxZUzB5TVRobUxUUTNZamt0WWpWalppMWlNbVJpTVdZME1tVmh=="
-  LENS2_DB_PRESTO_CATALOG: icebase
-  LENS2_DB_SSL: true
-  LENS2_DB_TYPE: trino  
+  LENS2_SOURCE_TYPE: minerva
+  LENS2_SOURCE_NAME: system
+  LENS2_SOURCE_CATALOG_NAME: icebase
+  DATAOS_RUN_AS_APIKEY: bGVuc21lItYTVmYi05MjE4YWRiMDY2YmE=
+
   # Log
   LENS2_LOG_LEVEL: error
-  CACHE_LOG_LEVEL: "error"
+  CACHE_LOG_LEVEL: "trace"
+
+
   # Operation
-  LENS2_DEV_MODE: true   
+  LENS2_DEV_MODE: true
+  LENS2_DEV_MODE_PLAYGROUND: false
   LENS2_REFRESH_WORKER: true
   LENS2_SCHEMA_PATH: model
   LENS2_PG_SQL_PORT: 5432
+  CACHE_DATA_DIR: "/var/work/.store"
+  NODE_ENV: production
+  LENS2_ALLOW_UNGROUPED_WITHOUT_PRIMARY_KEY: "true"
 
 services:
   api:
     restart: always
-    image: rubiklabs/lens2:0.35.55-01 
+    image: rubiklabs/lens2:0.35.55-06
     ports:
       - 4000:4000
       - 25432:5432
+      - 13306:13306
     environment:
       <<: *lens2-environment   
     volumes:
       - ./model:/etc/dataos/work/model
-      # - ./config.js:/etc/dataos/work/config.js
 ```
 
 # Configuration
@@ -64,20 +76,20 @@ version: "2.2"
 
 ### **`x-lens2-environment`**
 
-**Description:** Environment variables for the Lens2 application.
+**Description:** Environment variables for the Lens.
 
 **Example usage:**
 
 ```yaml
 x-lens2-environment: &lens2-environment
   DATAOS_BASE_URL: <https://set-walleye.dataos.app/>
-  LENS2_NAME: lenovo
+  LENS2_NAME: lens-testing
   LENS2_DESCRIPTION: "Ecommerce use case on Adventureworks sales data"
   LENS2_TAGS: "lens2, ecom, sales and customer insights"
-  LENS2_AUTHORS: "rakeshvishvakarma, shubhanshu"
+  LENS2_AUTHORS: "iamgroot, ironman"
   LENS2_DB_HOST: tcp.set-walleye.dataos.app
   LENS2_DB_PORT: 7432
-  LENS2_DB_USER: mansisingh
+  LENS2_DB_USER: iamgroot
   LENS2_DB_PASS: "eyJ0b2tlbiI6IlpHVjJhV05sWDJWMlpXNTBjeTR3WkRjNE1USTNaQzFoTURKaUxUUmpZamt0WWpZek9DMDBZamMwTTJFME16WXlZekU9IiwgImNsdXN0ZXIiOiJzeXN0ZW0ifQo="
   LENS2_DB_PRESTO_CATALOG: icebase
   LENS2_DB_SSL: true
@@ -88,7 +100,7 @@ x-lens2-environment: &lens2-environment
   LENS2_REFRESH_WORKER: true
   LENS2_SCHEMA_PATH: model
   LENS2_PG_SQL_PORT: 5432
-  CUBESTORE_DATA_DIR: "/var/work/.store"
+  CACHE_DATA_DIR: "/var/work/.store"
 
 ```
 
@@ -112,7 +124,7 @@ x-lens2-environment: &lens2-environment
 - **LENS2_REFRESH_WORKER:** Refresh worker toggle for Lens.
 - **LENS2_SCHEMA_PATH:** Schema path for Lens.
 - **LENS2_PG_SQL_PORT:** PostgreSQL port for Lens.
-- **CUBESTORE_DATA_DIR:** Data directory for CubeStore.
+- **CACHE_DATA_DIR:** Data directory for Lens.
 
 ---
 

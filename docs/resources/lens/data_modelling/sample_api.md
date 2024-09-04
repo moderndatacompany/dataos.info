@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 | `api_scopes` | A list of API scopes that the user group members are allowed to access. Each scope represents specific endpoints or functionality. The following `api_scopes` are currently supported:
 
 - `meta`: Provides access to metadata-related endpoints. This scope allows users to view metadata, which typically includes information about sources, authors, timezones, security context, user groups, etc. Providing access to the `meta` API scope grants a user access to the Model and Explore Tab of the Lens Studio Interface. But to fetch insights using the Explore interface, a user also requires the `data` API scope.
