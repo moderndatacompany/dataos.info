@@ -1,16 +1,16 @@
 ---
 title: Lens
 search:
-  boost: 4
+  exclude: true
 ---
 
 # :resources-lens: Lens
 
 
-Lens is a  logical modelling layer within DataOS desgined for accessing tabular data in data warehouses or lakehouses. It operates on top of physical tables, allowing the extension of these tables into Logical Tables by adding logical columns (measures) and relationships. It  empowers analytical engineers, the key architects of business intelligence, with a model-first approach.  To understand about the Model-first approach click [here](/resources/lens/core_concepts/). 
+Lens [Resource](/resources/) in DataOS is a logical modelling layer desgined for accessing tabular data in data warehouses or lakehouses. It operates on top of physical tables, allowing the extension of these tables into Logical Tables by adding logical columns (measures) and relationships. It  empowers analytical engineers, the key architects of business intelligence, with a model-first approach.  To understand about the Model-first approach click [here](/resources/lens/core_concepts/). 
 
 
-!!!tip "Lens within the Data Product Life-cycle"
+!!!tip "Lens within the Data Product Lifecycle"
 
     Lens operates within the consumption layer of the Data Product Life Cycle within DataOS, By leveraging Lens , data products can be created to inform decision-making, ensuring that data is logically organized and aligned with business objectives from the outset. To consume it, Lens exposes APIs such as JDBC, HTTP, and GraphQL.
 

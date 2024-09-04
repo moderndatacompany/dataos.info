@@ -1,3 +1,8 @@
+---
+title: API Endpoints and Scopes
+search:
+  exclude: true
+---
 
 # API Endpoints and Scopes
 

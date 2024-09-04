@@ -1,10 +1,16 @@
+---
+title: Do's and Dont's
+search:
+  exclude: true
+---
+
 This documentation provides guidelines for using Lens functionalities, including when to create views and best practices to avoid errors.
 
 # Do’s
 
 ## Data Modelling
 
-### Calling a Measure to Create Another Measure in the Same Table
+### **Calling a Measure to Create Another Measure in the Same Table**
 
 When creating a measure that references another measure within the same table, use curly braces `{}`.
 
@@ -27,7 +33,7 @@ When creating a measure that references another measure within the same table, u
   type: number
 ```
 
-### Proxy Dimension: Referencing Dimensions from Another Table
+### **Proxy Dimension: Referencing Dimensions from Another Table**
 
 To reference a dimension from one table while creating a measure in another, use the curly braces `{}`. Specify the dimension using `{table.column}` if it is from another table, or `{column name}` if it is within the same table.
 
@@ -43,7 +49,7 @@ measures:
     type: sum
 ```
 
-### Calling a Measure from Another Table
+### **Calling a Measure from Another Table**
 
 When referencing a measure from another table, set `sub_query` to `true`.
 
@@ -54,7 +60,7 @@ When referencing a measure from another table, set `sub_query` to `true`.
   type: number
 ```
 
-### Transforming Dimension and Calling it in a Measure
+### **Transforming Dimension and Calling it in a Measure**
 
 Use curly braces `{}` when calling a transformed dimension within measures.
 
@@ -124,7 +130,7 @@ views:
 
 Lens data models support Jinja macros, allowing you to define reusable snippets of code. This feature helps in creating dynamic data models and SQL properties efficiently.
 
-### Dynamic Data Models
+### **Dynamic Data Models**
 
 In the example below, we define a macro called `dimension()` which generates a dimension. This macro is then invoked multiple times to generate various dimensions.
 
@@ -164,7 +170,7 @@ tables:
       {{ dimension('county_name', description='County name of the customer.') }}
 ```
 
-### SQL Property
+### **SQL Property**
 
 Macros can also be used to generate SQL snippets for use in the `sql` property. For example, to avoid division by zero errors when creating measures, define a macro and use it in multiple measures.
 
@@ -182,7 +188,7 @@ measures:
     type: number
 ```
 
-### Dynamic Segments with Secure Access
+### **Dynamic Segments with Secure Access**
 
 You can create dynamic segments with secure access using Jinja macros. This example sets up segments for different categories with user group restrictions.
 

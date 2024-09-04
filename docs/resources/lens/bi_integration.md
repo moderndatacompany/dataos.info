@@ -1,3 +1,9 @@
+---
+title: BI Integrations
+search: 
+  exclude: true
+---
+
 # BI Integrations 
 
 ## Pre-requisites
@@ -10,7 +16,7 @@
 
 The following `curl` command is used to synchronize data from Lens to a Superset. It posts configuration details required for integration.
 
-### **Step 1: Run the curl command**
+**Step 1: Run the curl command**
 
 To sync your Lens 2.0 model with Superset, execute the following curl command:
 
@@ -82,13 +88,13 @@ Once you execute the command in the terminal, the results will be visible in the
 
 Please follow the steps outlined to see the result:
 
-### **Step 2 Go to DataOS**: Select Superset.
+**Step 2 Go to DataOS**: Select Superset.
 
   <div style="text-align: center;">
       <img src="/resources/lens/bi_integration/superset2.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
   </div>
 
-### **Step 3 Navigate to Datasets Tab:** Here, each entity will be available in the form of datasets.
+**Step 3 Navigate to Datasets Tab:** Here, each entity will be available in the form of datasets.
 
   <div style="text-align: center;">
       <img src="/resources/lens/bi_integration/superset3.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
@@ -100,7 +106,7 @@ Everything is set up now. Explore and perform further analysis in Superset.
 
 To sync your Lens 2.0 model with Tableau, execute the following curl command:
 
-### **Step 1: Run the curl command**
+**Step 1: Run the curl command**
 
 To sync your Lens 2.0 model with Tableau, you need the following credentials:
 
@@ -137,7 +143,7 @@ You can obtain these when you **log in** to Tableau. You’ll see the **URL** li
 
 </aside>
 
-### **Step 2: Go to tableau**
+**Step 2: Go to tableau**
 
 Go to the Explore tab on the left side. You’ll see the required tables and views in your project.
 
@@ -147,7 +153,7 @@ In the screenshot below, there are three sources: one for tables and two for vie
     <img src="/resources/lens/bi_integration/tableau1.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-### **Step 3: Explore and Create Visualizations**
+**Step 3: Explore and Create Visualizations**
 
 Go to the Home tab on the left side and click on 'New'. Under it, click on 'Workbook'.
 
@@ -156,7 +162,7 @@ Go to the Home tab on the left side and click on 'New'. Under it, click on 'Work
     <img src="/resources/lens/bi_integration/tableau2.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-### **Step 4: Connect to Data**
+**Step 4: Connect to Data**
 
 Once you click on 'Workbook', it’ll take you to 'Connect to Data'. Select either views or tables and click on 'Connect'.
 
@@ -173,7 +179,7 @@ As you click on 'Connect', it’ll ask you for username and password. Enter the 
     <img src="/resources/lens/bi_integration/tableau4.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-### **Step 5: Start Using the Model**
+**Step 5: Start Using the Model**
 
 Once you enter the credentials and click on 'Sign In', you’re ready to use the model for your visualization purposes.
 
@@ -194,7 +200,7 @@ Once you enter the credentials and click on 'Sign In', you’re ready to use the
 
 ## Power BI
 
-###  **Step 1: Run the curl command**
+**Step 1: Run the curl command**
 
 To sync your Lens 2.0 model with Power BI, execute the following curl command in your terminal:
 
@@ -206,7 +212,7 @@ curl --location --request POST 'https://liberal-donkey.dataos.app/lens2/sync/api
 https://liberal-donkey.dataos.app/lens2/sync/api/v1/<source_name>/<lens_name> --header 'apikey: <apikey>'
 ```
 
-### **Step 2: Download the Zip File**
+**Step 2: Download the Zip File**
 
 After running the command, a zip file will be downloaded to your chosen directory.
 
@@ -216,7 +222,7 @@ After running the command, a zip file will be downloaded to your chosen director
 
 
 
-### **Step 3: Unzip the File**
+**Step 3: Unzip the File**
 
 Unzip the file. You will find three folders inside.
 
@@ -225,7 +231,7 @@ Unzip the file. You will find three folders inside.
     <img src="/resources/lens/bi_integration/powerbi2.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-###  **Step 4: Open the Power BI File**
+**Step 4: Open the Power BI File**
 
 Open the Power BI file using Power BI Desktop.
 
@@ -234,7 +240,7 @@ Open the Power BI file using Power BI Desktop.
     <img src="/resources/lens/bi_integration/powerbi3.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-### **Step 5: Enter Credentials**
+**Step 5: Enter Credentials**
 
 Once the file is opened, you will see a popup. Enter your DataOS username and API key.
 
@@ -246,7 +252,7 @@ Once the file is opened, you will see a popup. Enter your DataOS username and AP
     <img src="/resources/lens/bi_integration/powerbi5.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-### **Step 6: Connect to DataOS**
+**Step 6: Connect to DataOS**
 
 Click the connect button. A popup will appear. Click OK.
 
@@ -255,7 +261,7 @@ Click the connect button. A popup will appear. Click OK.
     <img src="/resources/lens/bi_integration/powerbi6.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-### **Step 7: Access Tables with Dimensions and Measures**
+**Step 7: Access Tables with Dimensions and Measures**
 
 After connecting, you will be able to see tables and views with dimensions and measures.
 
@@ -272,11 +278,11 @@ After connecting, you will be able to see tables and views with dimensions and m
 
 ## Excel
 
-### **Step 1: Install the Analyze in Excel Feature**:
+**Step 1: Install the Analyze in Excel Feature**:
 
 Visit the [Analyze in Excel for Power BI Desktop](https://www.sqlbi.com/tools/analyze-in-excel-for-power-bi-desktop/) link and follow the instructions to download and install the necessary extension.
 
-### **Step 2: Use the Analyze in Excel Feature**:
+**Step 2: Use the Analyze in Excel Feature**:
 
 Once the extension is installed, a new tab labeled "Analyze in Excel" will appear in Power BI Desktop.
 
@@ -284,16 +290,16 @@ Once the extension is installed, a new tab labeled "Analyze in Excel" will appea
     <img src="/resources/lens/bi_integration/excel1.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-### **Step 3: Export to Excel**:
+**Step 3: Export to Excel**:
 
 - Click on the "Analyze in Excel" tab.
 - This action will open Excel and establish a connection to the Power BI dataset or report.
 
-### **Step 4: Verify Power BI is Running**:
+**Step 4: Verify Power BI is Running**:
 
 Ensure that Power BI Desktop remains open while you are working in Excel, as Power BI acts as the server for the data connection.
 
-### **Step 5: Work in Excel**:
+**Step 5: Work in Excel**:
 
 In Excel, you can now use PivotTables, charts, and other Excel features to analyze the data coming from Power BI.
 

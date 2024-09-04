@@ -1,7 +1,5 @@
 # Quick Start Guides
 
-
-
 ## :resources-depot: Connecting with Data Sources
 
 Learn how to connect DataOS to various data sources, ensuring seamless integration and data flow. Depot makes it easy to connect and get data from different sources, such as files, databases, event systems, and more—all without moving the data around.
@@ -45,6 +43,10 @@ Learn how to examine and experiment with logical models, the Lens component of D
 -   [Testing a Data Model locally](/quick_guides/test_data_model/)
 
 -   [Deploying Data model to DataOS](/quick_guides/deploy_data_model/)
+
+-   [Exploring Lens Model on Catalog](/quick_guides/exploring_lens_on_metis/)
+
+-   [Working on Lens Studio](/quick_guides/working_on_lens_studio/)
      
 </div>
 
