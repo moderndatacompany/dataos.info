@@ -59,35 +59,15 @@ Lens  is engineered to handle complex and large-scale data models with ease. Key
 
 ## Lens Set-up
 
-**Pre-requisites**
+The process begins with creating a new Lens project and generating a data model. Once the model is prepared, it will be tested within the development environment to ensure it is error-free before deployment. 
 
-Before setting up Lens, ensure you have the following dependencies installed on your system:
-
-1. Docker  (Docker to run Lens in an isolated environment on our local system)
-2. Docker-compose  (Lens leverages Docker Compose for configuring multi-container Docker applications)
-3. Postman App/Postman VSCode Extension (For querying and testing lens)
-4. VS Code (Code editor to build Lens Model YAMLs)
-5. VS Code Plugin (This is optional. It will aid in creating Lens views and tables)
-
-To install the above prerequisites, refer to the detailed doc [here](/resources/lens/installing_prerequisites/).
-
-
-If you are familiar with how to set up and run a Lens Project and you have an existing Lens Model that you want to run, directly [jump to this step](/resources/lens/#getting-started-with-lens)
-
-
-## Getting Started with Lens
-
-Once you've completed the prerequisite setup, proceed to the next step.
-
-We’ll start by creating a new Lens project and generating a data model. Once the model is ready, we’ll test it in our development environment itself to ensure it is error-free before using it.
-
-This guide will walk you through the following tasks:
+This guide will cover the following tasks:
 
 [Lens set-up](/resources/lens/lens_setup/).
 
 ## Configurations
 
-Lens is configured via [environment variables](/resources/lens/data_sources/) and configurating attributes in a configuration file of `docker-compose.yml` or `lens.yml`. Usually, both would be used to configure Lens deployment.Here is a comprehensive guide to APIs and configuring supported properties.
+Lens can be configured to connect to different sources using data source attributes and configurable attributes in the `docker-compose.yml` or `lens.yml` manifest files. Here is a comprehensive guide to APIs and configuring supported properties.
 
 - [Supported Data Sources](/resources/lens/data_sources/)
     Explore the list of data sources that are supported by our system.
@@ -115,19 +95,15 @@ Lens is configured via [environment variables](/resources/lens/data_sources/) an
 
 After creating a Lens data model, you would like to ask questions to it, i.e., run queries against this data model. The following pages describes the common concepts of querying Lens through different ways. Although, All queries share the same query format.
 
-We have various ways to consume or interact with our newly created Lens or data model.
+There are various ways to consume or interact with Lens or data model.
 
 The consumption can be done using following ways:
 
-- [Consumption of Lens using Iris Dashboard](/resources/lens/consumption_using_iris_dashboard/)
-
 - [Consumption of Lens using SQL APIs](/resources/lens/consumption_using_sql_apis/)
-
-- [Consumption of Lens using REST APIs](/resources/lens/consumption_using_rest_apis/)
 
 - [Consumption of Lens using Python](/resources/lens/consumption_using_python/)
 
-
+- [Consumption of Lens usin Rest APIs](/resources/lens/consumptions_using_rest_apis/)
 
 
 
