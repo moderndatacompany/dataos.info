@@ -30,9 +30,9 @@ Learn how to explore and analyze data using the Workbench component of DataOS. D
 
 </div>
 
-## :interfaces-lens: Using Data Modeling Layer
+## :interfaces-lens: Designing and Creating Data Modeling Layer
 
-Learn how to examine and experiment with logical models, the Lens component of DataOS. Lens will help you to understand data relationships and conduct experiments to derive insights from the data.
+Learn how to define and create a data model, the Lens component of DataOS, turning your conceptual design into a functional logical data model. Lens empowers you to answer key questions and track essential metrics.
 
 <div class= "grid cards" markdown>
 
@@ -43,6 +43,14 @@ Learn how to examine and experiment with logical models, the Lens component of D
 -   [Testing a Data Model locally](/quick_guides/test_data_model/)
 
 -   [Deploying Data model to DataOS](/quick_guides/deploy_data_model/)
+     
+</div>
+
+## :material-google-lens: Exploring and Using Data Modeling Layer
+
+Learn how to examine and experiment with logical data models, the Lens component of DataOS. Lens will help you to understand data relationships and conduct experiments to derive insights from the data.
+
+<div class= "grid cards" markdown>
 
 -   [Exploring Lens Model on Catalog](/quick_guides/exploring_lens_on_metis/)
 
