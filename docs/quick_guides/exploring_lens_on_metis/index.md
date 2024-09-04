@@ -15,14 +15,14 @@ We have created an example Lens for analyzing retail data. This Lens lets you ga
     🗣 Apply filters to easily search and locate the specific Lens you need. You can filter by Lens name, type, or other attributes to streamline your search.
     </aside>
     
-2. Once you locate the example retail data Lens, click on its name to access more detailed information. You can click on various tabs to get a snapshot of what the Lens is designed to analyze, helping you quickly understand its relevance to your business needs.
+2. Once you locate the example retail data Lens, click on its name. This action will take you to a detailed view which includes essential information such as the Lens's name, owner, version, and its current state. You can explore various tabs. Each tab provides insights into Lens model, permissions, activity logs, and lifecycle events, including creation and deletion timestamps. 
     
     ![lens_details_on_metis.png](/quick_guides/exploring_lens_on_metis/lens_details_on_metis.png)
     
 
 ## Step 2: Exploring the Lens Model
 
-The Lens model defines how data is structured and connected across various tables and fields. In this view, you’ll find logical tables and business views. You can observe the relationships among these tables and understand how business views are derived to monitor key metrics effectively.
+Check out the Lens model to see the structure and connections within your data. This view highlights the logical tables and business views, helping you visualize how data relationships are formed and how they drive the tracking of important metrics.
 
 - **Understand Relationships:** View how different tables/views are connected.
 - **Navigate Through Tables:** Click on different logical tables to explore their content and how they relate to one another.
@@ -38,11 +38,11 @@ The Lens model defines how data is structured and connected across various table
 
 ## Step 3: Analyzing Logical Tables and Fields
 
-Dive deeper into the logical tables to understand the specific fields available for analysis. Each field represents a piece of data that you can use to build queries and generate reports.
+Dive deeper into the logical tables to understand the specific fields available for analysis. Each field represents a piece of data that you can use to build queries for insights.
 
 ![lens_table_fields_metis.png](/quick_guides/exploring_lens_on_metis/lens_table_fields_metis.png)
 
-Check table dimensions, measures, segmentation
+Check table dimensions, measures, segmentation.
 
 ![lens_table_fields_sidepane.png](/quick_guides/exploring_lens_on_metis/lens_table_fields_sidepane.png)
 
@@ -71,7 +71,7 @@ A typical deployment of a Lens Resource includes the following components:
 
 ![Lens_runtime_on_metis.png](/quick_guides/exploring_lens_on_metis/Lens_runtime_on_metis.png)
 
-## Step 7: Exploring Assets
+## Step 7: Lens Manifest
 
 This tab displays details about the manifest, a YAML file that outlines your Lens model’s configuration. It includes metadata, service settings (such as log levels, resource requests and limits, and replicas), compute settings, source connection type, and repository URL with the base directory for Lens models.
 
@@ -79,7 +79,7 @@ This tab displays details about the manifest, a YAML file that outlines your Len
 
 ## Step 8: Exploring Assets
 
-This option allows you to explore all the logical tables and business views connected to the Lens. It helps you understand how data from different sources is integrated and utilized, and you can easily trace its path from physical tables to downstream derived business views.
+This option allows you to explore all the logical tables and business views connected to the Lens. You can view the source physical table that the logical table is derived from and the business view created using that logical table.
 
 ![explore_assets_lens_option.png](/quick_guides/exploring_lens_on_metis/explore_assets_lens_option.png)
 
@@ -91,7 +91,7 @@ This option allows you to explore all the logical tables and business views conn
     
     ![lens_table_details_metis.png](/quick_guides/exploring_lens_on_metis/lens_table_details_metis.png)
     
-3. Click on the lineage to understand its journey. You can view the source physical table that the logical table is derived from and the business view created using that logical table.
+3. Click on the lineage to understand its journey. This feature allows you to trace the complete path of each logical table and business view, starting from the source physical tables. You can follow how data from these physical tables is transformed and utilized to create downstream business views, offering a clear picture of data integration and its flow within the Lens.
     
     **Lineage of Logical Table defined in Lens** 
     
