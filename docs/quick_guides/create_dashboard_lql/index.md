@@ -1,4 +1,4 @@
-# Creating a Dashboard with LQL
+# Creating a Dashboard with LQL (Lens 1.0)
 
 !!! info "Information"
     This guide will teach you how to create charts and dashboards in the Navigator using datasets generated through Lens Query Language. It provides a step-by-step process to help you turn your lens findings into impactful visual insights.
