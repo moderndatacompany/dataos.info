@@ -45,7 +45,7 @@ service: # service specific section
         - '--ref=main'
 ```
 
-### `name`
+### **`name`**
 
 **Description:** Unique identifier for the Talos service.
 
@@ -59,7 +59,7 @@ service: # service specific section
 name: talos-test
 ```
 
-### `version`
+### **`version`**
 
 **Description:** The version of the Talos service.
 
@@ -73,7 +73,7 @@ name: talos-test
 version: v1
 ```
 
-### `type`
+### **`type`**
 
 **Description:** The type of resource this configuration represents.
 
@@ -87,7 +87,7 @@ version: v1
 type: service
 ```
 
-### `tags`
+### **`tags`**
 
 **Description:** Tags associated with the Talos service.
 
@@ -105,7 +105,7 @@ tags:
   - dataos:layer:user
 ```
 
-### `description`
+### **`description`**
 
 **Description:** A brief description of the Talos service.
 
@@ -119,7 +119,7 @@ tags:
 description: Talos Service
 ```
 
-### `workspace`
+### **`workspace`**
 
 **Description:** The workspace environment where the Talos service is deployed.
 
@@ -133,14 +133,14 @@ description: Talos Service
 workspace: public
 ```
 
-### `service`
+### **`service`**
 
 **Description:** Configuration specific to the Talos service.
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
 
-### `servicePort`
+### **`servicePort`**
 
 **Description:** Port on which the service will run.
 
@@ -154,14 +154,14 @@ workspace: public
 servicePort: 3000
 ```
 
-### `ingress`
+### **`ingress`**
 
 **Description:** Ingress settings for routing traffic to the service.
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
 
-### `enabled`
+### **`enabled`**
 
 **Description:** Whether ingress is enabled.
 
@@ -175,7 +175,7 @@ servicePort: 3000
 enabled: true
 ```
 
-### `stripPath`
+### **`stripPath`**
 
 **Description:** Whether to strip the path from the incoming requests.
 
@@ -189,7 +189,7 @@ enabled: true
 stripPath: true
 ```
 
-### `path`
+### **`path`**
 
 **Description:** Path pattern for ingress routing.
 
@@ -203,7 +203,7 @@ stripPath: true
 path: /talos/${{workspace}}:${{service-name}}
 ```
 
-### `noAuthentication`
+### **`noAuthentication`**
 
 **Description:** Whether authentication is required.
 
@@ -217,7 +217,7 @@ path: /talos/${{workspace}}:${{service-name}}
 noAuthentication: true
 ```
 
-### `replicas`
+### **`replicas`**
 
 **Description:** Number of replicas for the service.
 
@@ -231,7 +231,7 @@ noAuthentication: true
 replicas: 1
 ```
 
-### `logLevel`
+### **`logLevel`**
 
 **Description:** Logging level for the service.
 
@@ -245,7 +245,7 @@ replicas: 1
 logLevel: DEBUG
 ```
 
-### `compute`
+### **`compute`**
 
 **Description:** Compute resource configuration.
 
@@ -259,14 +259,14 @@ logLevel: DEBUG
 compute: runnable-default
 ```
 
-### `envs`
+### **`envs`**
 
 **Description:** Environment variables for the service.
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
 
-### `TALOS_SCHEMA_PATH`
+### **`TALOS_SCHEMA_PATH`**
 
 **Description:** Path to the Talos schema.
 
@@ -280,7 +280,7 @@ compute: runnable-default
 TALOS_SCHEMA_PATH: ${{talos/setup}}
 ```
 
-### `TALOS_BASE_PATH`
+### **`TALOS_BASE_PATH`**
 
 **Description:** Base path for Talos service.
 
@@ -294,21 +294,21 @@ TALOS_SCHEMA_PATH: ${{talos/setup}}
 TALOS_BASE_PATH: /talos/public:${{talos-test}}
 ```
 
-### `resources`
+### **`resources`**
 
 **Description:** Resource requests and limits for the service.
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
 
-### `requests`
+### **`requests`**
 
 **Description:** Minimum resources requested by the service.
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
 
-### `cpu`
+### **`cpu`**
 
 **Description:** Minimum CPU resources.
 
@@ -322,7 +322,7 @@ TALOS_BASE_PATH: /talos/public:${{talos-test}}
 cpu: ${{100m}}
 ```
 
-### `memory`
+### **`memory`**
 
 **Description:** Minimum memory resources.
 
@@ -336,14 +336,14 @@ cpu: ${{100m}}
 memory: ${{128Mi}}
 ```
 
-### `limits`
+### **`limits`**
 
 **Description:** Maximum resources allowed for the service.
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
 
-### `cpu`
+### **`cpu`**
 
 **Description:** Maximum CPU resources.
 
@@ -357,7 +357,7 @@ memory: ${{128Mi}}
 cpu: ${{500m}
 ```
 
-### `memory`
+### **`memory`**
 
 **Description:** Maximum memory resources.
 
@@ -371,7 +371,7 @@ cpu: ${{500m}
 memory: ${{512Mi}}
 ```
 
-### `stack`
+### **`stack`**
 
 **Description:** Version of the Talos stack being used.
 
@@ -385,14 +385,14 @@ memory: ${{512Mi}}
 stack: talos:2.0
 ```
 
-### `dataosSecrets`
+### **`dataosSecrets`**
 
 **Description:** Secrets used by the Talos service.
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
 
-### `name`
+### **`name`**
 
 **Description:** Name of the secret.
 
@@ -406,7 +406,7 @@ stack: talos:2.0
 name: ${{bitrepo-r}}
 ```
 
-### `allKeys`
+### **`allKeys`**
 
 **Description:** Whether all keys in the secret are to be used.
 
@@ -420,21 +420,21 @@ name: ${{bitrepo-r}}
 allKeys: true
 ```
 
-### `stackSpec`
+### **`stackSpec`**
 
 **Description:** Specification for the stack configuration.
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
 
-### `repo`
+### **`repo`**
 
 **Description:** Repository configuration for the stack.
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
 
-### `url`
+### **`url`**
 
 **Description:** URL of the repository.
 
@@ -448,7 +448,7 @@ allKeys: true
 url: ${{https://bitbucket.org/mywork15/talos/}
 ```
 
-### `projectDirectory`
+### **`projectDirectory`**
 
 **Description:** Directory within the repository.
 
@@ -462,7 +462,7 @@ url: ${{https://bitbucket.org/mywork15/talos/}
 projectDirectory: ${{talos/setup}}
 ```
 
-### `syncFlags`
+### **`syncFlags`**
 
 **Description:** Flags for repository synchronization.
 

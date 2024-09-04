@@ -26,14 +26,14 @@ In the example provided, `productname` represents a placeholder for accessing a 
 To access this API documentation, on your browser, open this link `http://localhost:3000/doc?apikey=xxx` by providing your DataOS API token which you have used to configure Talos.
 
 <center>
-  <img src="/resources/stacks/talos/img1.png" alt="Talos" style="width:60rem; border: 1px solid black;" />
+  <img src="/resources/stacks/talos/img1.png" alt="Talos" style="width:50rem; border: 1px solid black;" />
   <figcaption><i>Talos API Documentation</i></figcaption>
 </center>
 
 You can also include a sample section to illustrate the metadata of the dataset. For example, by providing sample parameters, data developers can gain a clearer understanding of the data exposed by the API, as shown below.
 
 <center>
-  <img src="/resources/stacks/talos/img2.png" alt="Talos" style="width:60rem; border: 1px solid black;" />
+  <img src="/resources/stacks/talos/img2.png" alt="Talos" style="width:50rem; border: 1px solid black;" />
   <figcaption><i>Talos API Documentation</i></figcaption>
 </center>
 

@@ -30,9 +30,9 @@ Learn how to explore and analyze data using the Workbench component of DataOS. D
 
 </div>
 
-## :interfaces-lens: Using Data Modeling Layer
+## :interfaces-lens: Designing and Creating Data Modeling Layer
 
-Learn how to examine and experiment with logical models, the Lens component of DataOS. Lens will help you to understand data relationships and conduct experiments to derive insights from the data.
+Learn how to define and create a data model, the Lens component of DataOS, turning your conceptual design into a functional logical data model. Lens empowers you to answer key questions and track essential metrics.
 
 <div class= "grid cards" markdown>
 
@@ -43,6 +43,14 @@ Learn how to examine and experiment with logical models, the Lens component of D
 -   [Testing a Data Model locally](/quick_guides/test_data_model/)
 
 -   [Deploying Data model to DataOS](/quick_guides/deploy_data_model/)
+     
+</div>
+
+## :material-google-lens: Exploring and Using Data Modeling Layer
+
+Learn how to examine and experiment with logical data models, the Lens component of DataOS. Lens will help you to understand data relationships and conduct experiments to derive insights from the data.
+
+<div class= "grid cards" markdown>
 
 -   [Exploring Lens Model on Catalog](/quick_guides/exploring_lens_on_metis/)
 
@@ -50,17 +58,9 @@ Learn how to examine and experiment with logical models, the Lens component of D
      
 </div>
 
-If you’re working with a previous version of Lens, the following guides will be helpful.
-
-<div class= "grid cards" markdown>
-
--   [Creating a Lens](/quick_guides/create_lens/)
-
--   [Using Lens](/quick_guides/use_lens/)
-
--   [Creating Dashboard with LQL](/quick_guides/create_dashboard_lql/)
-     
-</div>
+<aside class="callout">
+🗣 If you’re working with Lens 1.0, click <a href="/quick_guides/lens1/">here</a> to check out the guides for assistance.
+</aside>
 
 ## :material-scanner: Scanning Metadata
 

@@ -1,4 +1,4 @@
-# Talos Configurations (apis)
+#  Talos API configurations
 
 While configuring Talos, the `apis` folder contains an SQL file and a manifest file, an SQL file is where you write your queries, and the manifest file contains the URL path, description, source, and allowed user groups.
 
@@ -15,7 +15,7 @@ allow:  # allowed user groups
   - datadev
 ```
 
-### `urlPath`
+### **`urlPath`**
 
 **Description:** API endpoint path.
 
@@ -29,7 +29,7 @@ allow:  # allowed user groups
 urlPath: /table
 ```
 
-### `description`
+### **`description`**
 
 **Description:** Brief description about the data.
 
@@ -43,7 +43,7 @@ urlPath: /table
 description: product list
 ```
 
-### `source`
+### **`source`**
 
 **Description:** The source name from which data is sourced.
 
@@ -57,7 +57,7 @@ description: product list
 source: ${{snowflakedepot}}
 ```
 
-### `allow`
+### **`allow`**
 
 **Description:** List of allowed user groups.
 
