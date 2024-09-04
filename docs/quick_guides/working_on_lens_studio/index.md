@@ -1,14 +1,14 @@
 # Working on Lens Studio
 
 !!! info "Information"
-    This guide will help you leverage the Lens Studio features to access the data model and efficiently analyze and visualize your data.
+    This guide will walk you through using Lens Studio to explore and analyze your data model effectively, helping you unlock insights with ease.
 
 
 With Lens Studio,  you can access your Lens to examine the same data model from diverse perspectives. Studio makes it easy to analyze data across different dimensions, providing the ability to slice and dice information to uncover insights.
 
 **Key Features** 
 
-- Write queries by selecting dimensions and measures to create tailored views to focus on specific data aspects.
+- Write queries by selecting dimensions and measures to create tailored views to focus on the data that matters most.
 - Examine the data model from multiple angles by using filters and sorting.
 - Use segments to apply pre-defined group filters.
 
@@ -20,11 +20,11 @@ When you first open Lens Studio, you’ll see the following interface, designed 
 
 ![lens_studio (1).png](/quick_guides/working_on_lens_studio/lens_studio_(1).png)
 
-1. **Tables and Views**: On the left panel, you can see the list of tables and views.
-2. **Selecting Dimensions and Measures**: Click on a table or view to expand and see its dimensions and measures. Select the ones you need for your analysis.
+1. **Tables and Views**: Check out the left panel to find all your tables and views. It’s your starting point for diving into your data.
+2. **Selecting Dimensions and Measures**: Click on any table or view to expand it and see all the dimensions and measures. Pick what you need for your analysis and start exploring!
 3. **Building Queries**: Select dimensions and measures to create your queries.
-4. **Running Queries**: Click the "Run Query" button to execute your query and see the results.
-5. **Applying Filters:** Filters help you focus on the data that matters by removing unnecessary details or including specific segments.
+4. **Running Queries**: Hit the "Run Query" button to see your results.  It’s that easy!
+5. **Applying Filters:** Use filters to zero in on what really matters. They help you remove unnecessary data and spotlight specific segments.
 6. **Visualizing Data:** Switch between **Table**, **Chart**, and **Pivot** views to visualize your data in different formats.
 7. **Perspectives and History:** Navigate through various options in the side menu.
     1. **Business Perspective:**  This view presents the measures and dimensions available across various tables and business views, making it easier to analyze business-specific data.
@@ -32,8 +32,6 @@ When you first open Lens Studio, you’ll see the following interface, designed 
         ![business_user_perspective.png](/quick_guides/working_on_lens_studio/business_user_perspective.png)
         
     2. **Developer Perspective:** Gain insight into the measures and dimensions defined within logical tables and business views. This perspective provides detailed information tailored for developers working on the underlying tables and views.
-        
-        Developer perspective
         
         ![developer_perspective.png](/quick_guides/working_on_lens_studio/developer_perspective.png)
         
@@ -65,7 +63,7 @@ Go to the **Model** tab to explore the schema and fields.
 
 ### **Building  and Running Queries**
 
-Use dimensions and measures from your data model to create queries.
+Mix and match dimensions and measures from your data model to create queries to extract meaningful insights.
 
 1. Expand a table or view, then select the dimensions and measures needed for your analysis. Selected fields will be added to members. 
     
@@ -81,7 +79,7 @@ Use dimensions and measures from your data model to create queries.
 
 ### **Applying Filters**
 
-Use filters and sorting options to narrow down your data, focusing on specific segments. They help you to identify patterns and reveal relationships and insights. Example: Apply filters based on date ranges, categories, etc.
+Apply filters and sorting to narrow down your data. Focus on the segments that matter and uncover those hidden insights. They help you to identify patterns and reveal relationships and insights. Example: Apply filters based on date ranges, categories, etc.
 
 1. Here’s the query to analyze transaction revenues by product category and payment type. The relevant fields have been selected for the query.
     
@@ -102,7 +100,7 @@ Use filters and sorting options to narrow down your data, focusing on specific s
 
 ### Segments for Targeted Data Analysis.
 
-Segments are pre-defined groups of filters. Segments are created while defining the business object's manifest file, such as Segment by demographics, purchase behavior, etc.
+Segments are like pre-set filters you create when setting up your business object’s manifest. Think of them as shortcuts to analyze by demographics, purchase behavior, and more.
 
 1. Suppose we're focusing on data for loyal customers, and we've already defined a loyal customer segment with the relevant filter criteria. You can apply this segment to filter the data. For demonstration, the query lists customers along with their loyalty status. 
     
@@ -116,7 +114,7 @@ Segments are pre-defined groups of filters. Segments are created while defining 
 
 ### **Visualizing Data**
 
-Switch between different views such as **Table**, **Chart**, and **Pivot** to visualize your data effectively.
+Switch between different views such as **Table**, **Chart**, and **Pivot** to visualize your data in the way that makes the most sense for your analysis.
 
 1. Once you run a query and select the Chart option, a default chart will be generated for your data.
 2. You can select the chart type that best represents your data for analysis. For date-wise revenue analysis, a line graph is more suitable for visualizing trends over time.
@@ -167,7 +165,7 @@ In the Lens model, data is safeguarded by robust policies that ensure sensitive 
 
 Data masking policies can be defined on dimensions and measures to protect sensitive information. Masked data is partially or fully hidden, depending on the policies in place:
 
-- Masked fields often appear with asterisks (e.g., ***1234) or other placeholders like redact.
+- Masked data shows up with asterisks (like ***1234) or other placeholders, like redact, to keep sensitive information hidden.
 - Only users with the appropriate permissions can view the full data.
 
 **Viewing User Groups**
