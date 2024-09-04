@@ -1,5 +1,5 @@
 # How to set up Talos Locally?
-This section involves setp-by-step guide to set up Talos on your local enviroment. 
+This section involves step-by-step guide to set up Talos on your local enviroment. 
 
 ## Pre-requisite
 
@@ -9,7 +9,7 @@ This section involves setp-by-step guide to set up Talos on your local enviromen
 
 ## Steps
 
-1. Create a Depot of type BigQuery, below is the sample manifest file of BigQuery Depot.
+1. Create a [Depot](/resources/depot/) of type BigQuery, below is the sample manifest file of BigQuery Depot.
     
     ```yaml
     name: crmbq
@@ -33,13 +33,13 @@ This section involves setp-by-step guide to set up Talos on your local enviromen
         - type: key-value-properties
           acl: rw
           data:
-            crmbq: '**********************************'
-            crmbq_gcp-demo-write-sa.json: '***************************************************'
+            crmbq: 'ABCD1234EFGH5678IJKL9012MNOP3456'
+            crmbq_gcp-demo-write-sa.json: secrets/gcp-demo-sa.json #JSON file containing the credentials to read-write
         - type: key-value-properties
           acl: r
           data:
-            crmbq: '********************************************************'
-            crmbq_gcp-demo-write-sa.json: '************************************************'
+            crmbq: 'ABCD1234EFGH5678IJKL9012MNOP3456'
+            crmbq_gcp-demo-write-sa.json: secrets/gcp-demo-sa.json #JSON file containing the credentials to read
       external: true
       resources:
         requests:
@@ -53,7 +53,7 @@ This section involves setp-by-step guide to set up Talos on your local enviromen
         project: dataos-ck-trs-yak-dev
     ```
     
-    To know more about the Depot, please refer to this.
+    To know more about Depot, please [refer to this](/resources/depot/).
     
 2. Apply the Depot manifest file by executing the following command:
     
@@ -62,7 +62,7 @@ This section involves setp-by-step guide to set up Talos on your local enviromen
     ```
     
     <aside class="callout">
-    🗣 Before moving into the next steps make sure that your Depot is active.
+    🗣 Before moving into the next steps make sure that your Depot is active. You can excute `dataos-ctl get -t depot` command on your terminal to check if Depot is active or not. 
     
     </aside>
     
@@ -73,7 +73,7 @@ This section involves setp-by-step guide to set up Talos on your local enviromen
     description: A talos-depot-postgres app
     version: 0.1.6
     auth:
-      heimdallUrl: https://<<dataos-context>>/heimdall
+      heimdallUrl: https://${{dataos-context}}/heimdall
     logLevel: 'DEBUG'
     sources:
       - name: crmbq # depot name
@@ -92,8 +92,8 @@ This section involves setp-by-step guide to set up Talos on your local enviromen
         volumes:
           - /home/Desktop/talos-examples/depot/depot-bigquery:/etc/dataos/work
         environment:
-          DATAOS_RUN_AS_USER: shraddhaade
-          DATAOS_RUN_AS_APIKEY: dG9rZW5fYWRtaXR0ZWRseV9uYXR1cmFsbHlfZW5hYmxpbmdfb3J5eC5lODg2MjIyZC05NDMwLTQ4MWEtYjU3MC01YTJiZWY5MjI5OGE=
+          DATAOS_RUN_AS_USER: iamgroot
+          DATAOS_RUN_AS_APIKEY: dG9rZW5fYWRtaXR0ZWRseV9uYXR1cmFsbHlfZW5hYmxpbmdfb3J5eC5lODg2MjIyfgjg05NWEtYjU3MC01YTJiZWY5MjI5OGE=
           DATAOS_FQDN: liberal-donkey.dataos.app
         tty: true
     ```
@@ -111,7 +111,6 @@ This section involves setp-by-step guide to set up Talos on your local enviromen
     ```
     
 7. Now run `docker-compose up` on the terminal. The output should look like the following:
-    - output
         
         ```bash
         docker-compose up
@@ -220,3 +219,6 @@ This section involves setp-by-step guide to set up Talos on your local enviromen
     <div style="text-align: center;">
     <img src="/resources/stacks/talos/image3.png" style="border:1px solid black; width: 80%; height: auto;">
     </div>
+
+[**Next Step: Setting up Talos within DataOS**](/resources/stacks/talos/set_up/)
+
