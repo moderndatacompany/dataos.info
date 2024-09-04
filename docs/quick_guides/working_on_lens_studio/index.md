@@ -8,19 +8,19 @@ With Lens Studio,  you can access your Lens to examine the same data model from 
 
 **Key Features** 
 
-- Write queries by selecting dimensions and measures to create tailored views to focus on the data that matters most.
-- Examine the data model from multiple angles by using filters and sorting.
-- Use segments to apply pre-defined group filters.
+- Run queries by selecting dimensions and measures to create tailored views to focus on the data that matters most.
+- Explore the data model from multiple angles by using filters and sorting.
+- Use segments to apply pre-defined filters.
 
 ## Navigating the Lens Studio
 
-When you first open Lens Studio, you’ll see the following interface, designed for efficient data exploration.
+When you first open Lens Studio, you’ll see the following interface.
 
 ### **Exploring your Lens**
 
 ![lens_studio (1).png](/quick_guides/working_on_lens_studio/lens_studio_(1).png)
 
-1. **Tables and Views**: Check out the left panel to find all your tables and views. It’s your starting point for diving into your data.
+1. **Tables and Views**: Check out the left panel to find all your logical tables and views. It’s your starting point for diving into your data.
 2. **Selecting Dimensions and Measures**: Click on any table or view to expand it and see all the dimensions and measures. Pick what you need for your analysis and start exploring!
 3. **Building Queries**: Select dimensions and measures to create your queries.
 4. **Running Queries**: Hit the "Run Query" button to see your results.  It’s that easy!
