@@ -48,7 +48,7 @@ sources:
         database: employee
 ```
 
-### `name`
+### **`name`**
 
 **Description:** Unique identifier for the Talos.
 
@@ -64,7 +64,7 @@ The total length of the string should be less than or equal to 48 characters |
 name: employee
 ```
 
-### `description`
+### **`description`**
 
 **Description:** Brief description of the Talos.
 
@@ -78,7 +78,7 @@ name: employee
 description: A talos app
 ```
 
-### `version`
+### **`version`**
 
 **Description:** The version of the Talos.
 
@@ -94,7 +94,7 @@ The total length of the string should be less than or equal to 48 characters |
 version: 0.1.6
 ```
 
-### `logLevel`
+### **`logLevel`**
 
 **Description:** The level of logging detail.
 
@@ -108,7 +108,7 @@ version: 0.1.6
 logLevel: DEBUG
 ```
 
-### `auth`
+### **`auth`**
 
 **Description:** Authentication configuration.
 
@@ -149,7 +149,7 @@ auth:
 - **includes**: Specifies roles or users included in the group.
 - **excludes**: Specifies roles or users excluded from the group.
 
-### `metrics`
+### **`metrics`**
 
 **Description:** Configuration for metrics collection.
 
