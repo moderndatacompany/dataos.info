@@ -63,7 +63,6 @@
     ```
     
 5. Run `docker-compose up` on the terminal. The output should look like the following:
-    - output
         
         ```bash
         docker-compose up
@@ -515,5 +514,7 @@
     
     Successful execution will look like the following:
     
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/0f2a273c-e45e-4be6-8b36-9bd8cb9af33e/Untitled.png)
+    <center>
+      <img src="/resources/stacks/talos/endpoint.png" alt="Talos" style="width:30rem; border: 1px solid black; padding: 5px;" />
+      <figcaption><i>Talos Framework</i></figcaption>
+    </center>

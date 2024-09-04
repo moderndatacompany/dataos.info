@@ -7,14 +7,14 @@ Similarly, with any other Rest APIs, the API created by Talos can be used by ext
 - Go to [AppSmith's](https://www.appsmith.com/) official website, and navigate to the Try Cloud button.
 
   <div style="text-align: center;">
-    <img src="/resources/stacks/talos/image.png" style="border:1px solid black; width: 80%; height: auto;">
+    <img src="/resources/stacks/talos/image.png" style="border:1px solid black; width: 60%; height: auto;">
   </div>
     
     
 - You will be redirected to the login page of AppSmith as shown below:
     
 <div style="text-align: center;">
-  <img src="/resources/stacks/talos/image%20(1).png" style="border:1px solid black; width: 80%; height: auto;">
+  <img src="/resources/stacks/talos/image%20(1).png" style="border:1px solid black; width: 60%; height: auto;">
 </div>
 
     
