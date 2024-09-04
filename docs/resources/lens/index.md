@@ -27,7 +27,7 @@ Lens is a  logical modelling layer within DataOS desgined for accessing tabular 
 
 The data modeling layer serves as an interface that overlays the underlying data, consistently presenting business users with familiar and well-defined terms like "product," "customer," or "revenue." This abstraction enables users to access and consume data in a way that aligns with their understanding, facilitating self-service analytics and reducing dependence on data engineers for ad-hoc data requests. 
 
-As a core resource within the DataOS ecosystem, Lens  enhances the entire data product lifecycle, delivering substantial improvements in developer experience, consumption patterns, and overall data management.
+As a core Resource within the DataOS ecosystem, Lens  enhances the entire data product lifecycle, delivering substantial improvements in developer experience, consumption patterns, and overall data management.
 
 ## Key features of Lens 
 
@@ -44,18 +44,18 @@ Lens  is engineered to handle complex and large-scale data models with ease. Key
 - **Customizable Views:** Lens enables users to create customizable views, allowing for multiple data slices tailored to specific business needs. These views can be easily edited, queried, and integrated with BI tools, offering greater flexibility in data analysis and reporting.
 
 - **Interoperability**
+    
+    Lens is designed for seamless integration with external applications and tools, enhancing interoperability across various systems:
 
-  Lens is designed for seamless integration with external applications and tools, enhancing interoperability across various systems:
+    - **API Support:** Lens simplifies application development with support for Postgres API, REST API, and GraphQL, enabling smoother interactions with external systems.
 
-  - **API Support:** Lens simplifies application development with support for Postgres API, REST API, and GraphQL, enabling smoother interactions with external systems.
+    - **First-Class BI Integration:** Lens offers robust integration with Superset, and ongoing efforts aim to extend connectivity to Tableau and PowerBI. This integration ensures that data models can be easily utilized across various BI platforms, improving the overall analytics experience.
 
-  - **First-Class BI Integration:** Lens offers robust integration with Superset, and ongoing efforts aim to extend connectivity to Tableau and PowerBI. This integration ensures that data models can be easily utilized across various BI platforms, improving the overall analytics experience.
+- **Performance Optimization**
 
-**Performance Optimization**
+    Lens is optimized to deliver high performance, especially when dealing with large datasets:
 
-  Lens is optimized to deliver high performance, especially when dealing with large datasets:
-
-  - **Flash:** Designed to work with DataOS Lakehouse and Iceberg-format depots, Flash improves query performance by leveraging DuckDB for in-memory execution. This optimization ensures that data teams can efficiently handle large-scale queries with enhanced speed and performance.
+    - **Flash:** Designed to work with DataOS Lakehouse and Iceberg-format depots, Flash improves query performance by leveraging DuckDB for in-memory execution. This optimization ensures that data teams can efficiently handle large-scale queries with enhanced speed and performance.
 
 ## Lens Set-up
 
