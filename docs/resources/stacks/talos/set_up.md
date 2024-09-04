@@ -1,6 +1,6 @@
 # Setting up Talos within DataOS
 
-This section involves a step-by-step guide to set up Talos within DataOS enviroment using [Service](/resources/service/) resource. By following this guide, you will be able to effectively implement Talos in your DataOS environment.
+This section involves a step-by-step guide to set up Talos within DataOS enviroment using [Service](/resources/service/) Resource. By following this guide, you will be able to effectively implement Talos in your DataOS environment.
 
 ## Pre-requisites
 
@@ -34,9 +34,9 @@ Done! Your repository is now available in Bitbucket Server.
 
 ## Steps
 
-Steps to set up Talos for Depot source type. Types of Depot supported by Talos are BigQuery, Snowflake, Postgres, and Redshift.  To set up Talos within DataOS as a Service follow the below steps.
+Steps to set up Talos for [Depot](/resources/depot/) source type. Types of Depot supported by Talos are BigQuery, Snowflake, Postgres, and Redshift.  To set up Talos within DataOS as a Service follow the below steps.
 
-1. Open the repository using code editor. Navigate to the `setup` folder and open the `config.yaml` manifest file. Within this file, update the fields for name, description, version, dataos context, source name, and source type to ensure they accurately reflect your specific configurations and align with requirements.
+1. Open the repository using code editor. Navigate to the `setup` folder and open the `config.yaml` manifest file. Within this file, update the attributes for name, description, version, dataos context, source name, and source type to ensure they accurately reflect your specific configurations and align with requirements.
     
     ```yaml
     name: ${{superstore}}
@@ -57,7 +57,7 @@ Steps to set up Talos for Depot source type. Types of Depot supported by Talos a
     
     To know more about each attribute, [please refer to this](/resources/stacks/talos/configurations/config/).
     
-2. Open the `docker-compose.yaml` manifest file and update it by adding your DataOS username and API key. Enter your DataOS username in the `DATAOS_RUN_AS_USER` field and your DataOS API key in the `DATAOS_RUN_AS_APIKEY` field. 
+2. Open the `docker-compose.yaml` manifest file and update it by adding your DataOS username and API key. Enter your DataOS username in the `DATAOS_RUN_AS_USER` attribute and your DataOS API key in the `DATAOS_RUN_AS_APIKEY` attribute. 
     
     ```yaml
     version: "2.2"
@@ -77,7 +77,7 @@ Steps to set up Talos for Depot source type. Types of Depot supported by Talos a
     
     To know more about each attribute, [please refer to this](/resources/stacks/talos/configurations/docker_compose/).
     
-3. Open the `apis` folder within the `setup` directory and access the `table.sql` and `table.yaml` files. Update the SQL queries in `table.sql` and modify the `urlPath`, `description`, and `source` fields in `table.yaml` to accurately reflect your API's data access paths and configuration details. Ensure that both the queries and the YAML configuration are properly aligned with your API requirements. Additionally, you may add multiple SQL files and their corresponding manifest files within the `apis` folder as needed.
+3. Open the `apis` folder within the `setup` directory and access the `table.sql` and `table.yaml` files. Update the SQL queries in `table.sql` and modify the `urlPath`, `description`, and `source` attributes in `table.yaml` to accurately reflect your API's data access paths and configuration details. Ensure that both the queries and the YAML configuration are properly aligned with your API requirements. Additionally, you may add multiple SQL files and their corresponding manifest files within the `apis` folder as needed.
     
     ```sql
     # table.sql
@@ -113,7 +113,7 @@ Steps to set up Talos for Depot source type. Types of Depot supported by Talos a
       acl: ${{r}}
       data:
         GITSYNC_USERNAME: ${{"iamgroot7340"}} # Bitbucket username
-        GITSYNC_PASSWORD: ${{"ATBBe2we5UPdGVthtEHnjkLDHL7443AC"}} # Bitbukcet app password
+        GITSYNC_PASSWORD: ${{"ATBBe2we5UPdGVthtEfhgfjhgkLDHL7443AC"}} # Bitbukcet app password
     ```
     
     To create an app password in Bitbucket follow the below steps:
@@ -179,22 +179,31 @@ Steps to set up Talos for Depot source type. Types of Depot supported by Talos a
             - '--ref=main'
     ```
     
-    To know more about each attribute, [please refer to this](docs/resources/stacks/talos/configurations/service/).
+    To know more about each attribute, [please refer to this](/resources/stacks/talos/configurations/service/).
     
 7. Apply the Service manifest by executing the below command:
-    
-    ```bash
-    dataos-ctl resource apply -f /home/office/talos/service.yaml 
-    ```
-    
+
+    === "Code"
+        
+        ```bash
+        dataos-ctl resource apply -f ${{/home/office/talos/service.yaml}} 
+        ```
+    === "Example Usage"  
+
+        ```bash
+        dataos-ctl resource apply -f /home/office/talos/service.yaml
+
+        ```  
+
+
     To check if the service is running successfully, execute the following command.
-    
+
     ```bash
     dataos-ctl log -t service -n ${{service-name}} -w ${{workspace}}
     ```
-    
+
     Successful execution will look like the following:
-    
+
     ```bash
     EBUG [CORE] Duckdb config: TimeZone = Etc/UTC
     2024-07-31 08:51:12.566  
@@ -238,7 +247,7 @@ Steps to set up Talos for Depot source type. Types of Depot supported by Talos a
 8. Now you can access the data on the API endpoint using Postman, as shown below:
 
     <div style="text-align: center;">
-    <img src="/resources/stacks/talos/image2.png" style="border:1px solid black; width: 40%; height: auto;">
+    <img src="/resources/stacks/talos/image2.png" style="border:1px solid black; width: 60%; height: auto;">
     </div>
 
     
