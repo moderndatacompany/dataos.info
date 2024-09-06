@@ -1,7 +1,5 @@
 ---
 title: Working with User Groups and Data Policies
-search:
-  exclude: true
 ---
 
 # Working with User Groups and Data Policies

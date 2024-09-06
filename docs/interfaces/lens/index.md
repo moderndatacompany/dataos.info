@@ -1,7 +1,7 @@
 ---
 title: Lens
 search:
-  boost: 2
+  exclude: true
 ---
 
 # :interfaces-lens: Lens

@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Lens Ecosystem
 
 The Lens Ecosystem consists of the following components:

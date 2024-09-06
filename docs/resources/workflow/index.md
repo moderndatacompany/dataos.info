@@ -33,7 +33,7 @@ Workflow Resource in DataOS can be created by applying the manifest file using t
 
 ## Configuration
 
-Workflows can be configured to autoscale and match varying workload demands, reference pre-defined Secrets and Volumes, and more. DataOS supports two types of Workflows: single-run and scheduled Workflow, each with its own YAML syntax. The specific configurations may vary depending on the use case. For a detailed breakdown of the configuration options and attributes, please refer to the documentation: [Attributes of Workflow manifest](/resources/workflow/configuration/).
+Workflows can be configured to autoscale and match varying workload demands, reference pre-defined Secrets and Volumes, and more. DataOS supports two types of Workflows: single-run and scheduled Workflow, each with its own YAML syntax. The specific configurations may vary depending on the use case. For a detailed breakdown of the configuration options and attributes, please refer to the documentation: [Attributes of Workflow manifest](/resources/workflow/configurations/).
 
 ## Recipes
 
@@ -47,5 +47,3 @@ Workflows orchestrate Stacks to accomplish myriad tasks. Below are some recipes 
 - [How to orchestrate multiple Workflows from a single Workflow?](/resources/workflow/how_to_guide/multiple_workflows_from_a_single_workflow/)
 
 - [How to retry a job in the Workflow?](/resources/workflow/how_to_guide/retry_jobs/)
-
-- [How to apply a workflow and get a runtime status of it using CLI Stack?](/resources/workflow/how_to_guide/apply_a_workflow_and_get_runtime_status_using_cli_stack/)

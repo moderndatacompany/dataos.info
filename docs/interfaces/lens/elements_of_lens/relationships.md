@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Relationships
 
 The relationship makes it easy for users to query dimensions and measure from multiple entities. It allows users to define relations between different entities. All joins are generated as Left Joins. The entity in which the relationship is defined serves as the main table for the left join. Considering the direction of joining is imperative to get the desired results.

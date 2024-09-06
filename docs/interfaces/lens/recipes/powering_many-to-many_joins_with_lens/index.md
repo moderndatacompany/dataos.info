@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Powering Many-to-Many joins with Lens
 
 ## Understanding Many-to-Many Join

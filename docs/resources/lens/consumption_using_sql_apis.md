@@ -1,7 +1,5 @@
 ---
 title: Consumption of Lens using SQL APIs
-search: 
-  exclude: true
 ---
 
 # Consumption of Lens using SQL APIs

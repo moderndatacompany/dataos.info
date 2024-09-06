@@ -1,3 +1,9 @@
+---
+title: Talos
+search:
+  boost: 4
+---
+
 # Talos
 
 Talos is a [Stack](/resources/stacks/) within DataOS designed to streamline the creation of data APIs ([RESTful APIs](https://www.redhat.com/en/topics/api/what-is-a-rest-api)), facilitating seamless access to data from diverse sources such as databases, data warehouses, and data lakes. By simplifying the process of writing and managing database queries, Talos enables rapid development and integration of APIs into various applications and AI agents. 

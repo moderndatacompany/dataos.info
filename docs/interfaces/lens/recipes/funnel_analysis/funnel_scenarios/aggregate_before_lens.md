@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Aggregate Before Lens
 
 Adds a GROUPING of all append activities that took place PRIOR to the principal activity.

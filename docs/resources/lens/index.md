@@ -1,7 +1,7 @@
 ---
 title: Lens
 search:
-  exclude: true
+  boost: 4
 ---
 
 # :resources-lens: Lens

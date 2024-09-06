@@ -1,7 +1,8 @@
 ---
-search: 
-  exclude: true
+title: Lens Installation Prerequisites
 ---
+
+# Lens Installation Prerequisites
 
 Before setting up Lens on your local system, ensure you meet the following requirements.
 

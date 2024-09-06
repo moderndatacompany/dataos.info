@@ -1,7 +1,5 @@
 ---
 title: Consumption of Lens using Python
-search: 
-  exclude: true
 ---
 
 # Consumption of Lens using Python

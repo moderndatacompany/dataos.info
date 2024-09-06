@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Aggregate After Lens
 
 Aggregates all of the append activities that took place after the original activity and appends them (opposite of Aggregate Before).
