@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Fields
 
 Fields are columns with a direct one-to-one mapping with the columns of your underlying data tables. Fields can contain unique identifiers too. Within a field, if the ‘primary’ property is set to True, Lens will use this as a joining key with other entities.

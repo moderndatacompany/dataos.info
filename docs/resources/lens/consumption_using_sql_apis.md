@@ -1,7 +1,5 @@
 ---
 title: Consumption of Lens using SQL APIs
-search: 
-  exclude: true
 ---
 
 # Consumption of Lens using SQL APIs
@@ -50,27 +48,29 @@ If you get a similar output, create a new apikey.
 
 To generate a new API key, use the `apikey create` command with the following syntax:
 
-```bash
-dataos-ctl user apikey create -d ${{duration}} -i ${{user-id}} -n ${{apikey-name}}
-```
-**Command Parameters**
+=== "Command"
 
-- `-d`, `--duration` flag (optional): Specifies the lifetime of the API key. Acceptable units are `m` for minutes and `h` for hours. The default duration is "`24h`".
-- `-i`, `--id` flag (optional): Identifies the user ID.
-- `-n`, `--name` flag (optional): Assigns a name to the API key.
+    ```bash
+    dataos-ctl user apikey create -d ${{duration}} -i ${{user-id}} -n ${{apikey-name}}
+    ```
+    **Command Parameters**
 
-```bash
-# Example
-dataos-ctl user apikey create -d 21h -i iamgroot -n marvel
-# Expected Output
-# This command will generate a new API key, with output similar to the following:
-INFO[0000] 🔑 user apikey...
-INFO[0001] 🔑 user apikey...complete
+    - `-d`, `--duration` flag (optional): Specifies the lifetime of the API key. Acceptable units are `m` for minutes and `h` for hours. The default duration is "`24h`".
+    - `-i`, `--id` flag (optional): Identifies the user ID.
+    - `-n`, `--name` flag (optional): Assigns a name to the API key.
 
-                             TOKEN                             │  TYPE  │        EXPIRATION         │  NAME
-───────────────────────────────────────────────────────────────┼────────┼───────────────────────────┼─────────
-     bWFydmVsLmY4NTA1MzMwLThhZWItNDIwMS04MTNjLTUwOWYyMTY3ZDM=  │ apikey │ 2024-02-22T15:30:00+05:30 │ marvel
-```
+=== "Example"
+
+    ```bash
+    dataos-ctl user apikey create -d 21h -i iamgroot -n marvel
+    # Expected Output
+    INFO[0000] 🔑 user apikey...
+    INFO[0001] 🔑 user apikey...complete
+
+                                TOKEN                             │  TYPE  │        EXPIRATION         │  NAME
+    ───────────────────────────────────────────────────────────────┼────────┼───────────────────────────┼─────────
+        bWFydmVsLmY4NTA1MzMwLThhZWItNDIwMS04MTNjLTUwOWYyMTY3ZDM=  │ apikey │ 2024-02-22T15:30:00+05:30 │ marvel
+    ```
 
 Copy the value of the Token column for the procedure ahead.
 
@@ -78,48 +78,54 @@ Copy the value of the Token column for the procedure ahead.
 
 To identify the Lens name for generating a Cluster Token, you'll need to list all Lenses within a specific Workspace. Use the following command to retrieve a comprehensive list of Lenses:
 
-```bash
-dataos-ctl resource get -t lens -w ${workspace} -a
-```
+=== "Command"
 
-This command requires specifying the workspace name to filter the Lens accordingly.
+    This command requires specifying the workspace name to filter the Lens accordingly.
 
-```bash
-# Example
-# For a workspace named "curriculum", the command and its expected output are as follows:
-dataos-ctl resource get -t lens -w curriculum -a
-# Expected Output
-INFO[0000] 🔍 get...                                     
-INFO[0000] 🔍 get...complete                             
+    ```bash
+    dataos-ctl resource get -t lens -w ${workspace} -a
+    ```
 
-              NAME             | VERSION |  TYPE   | WORKSPACE  | STATUS |   RUNTIME   |     OWNER        
--------------------------------|---------|---------|------------|--------|-------------|-------------------
-         monitor360            | v1      | cluster | curriculum | active | running:1   |     thor       
-         sales360              | v1      | cluster | curriculum | active | running:1   |     ironman  
-         finance360            | v1      | cluster | curriculum | active | running:2   |     thanos  
-```
+
+=== "Example"
+
+    ```bash
+    # For a workspace named "curriculum", the command and its expected output are as follows:
+    dataos-ctl resource get -t lens -w curriculum -a
+    # Expected Output
+    INFO[0000] 🔍 get...                                     
+    INFO[0000] 🔍 get...complete                             
+
+                  NAME             | VERSION |  TYPE   | WORKSPACE  | STATUS |   RUNTIME   |     OWNER        
+    -------------------------------|---------|---------|------------|--------|-------------|-------------------
+            monitor360            | v1      | cluster | curriculum | active | running:1   |     thor       
+            sales360              | v1      | cluster | curriculum | active | running:1   |     ironman  
+            finance360            | v1      | cluster | curriculum | active | running:2   |     thanos  
+    ```
 
 For the rest of the documentation, we will use be using the `sales360` and the apikey token to create a wrapped token.
 
 ## Creating a Wrap Token for Lens
 
-To create a wrap token for a Lens, you can use the following commands for Unix-like systems (such as Linux or macOS) and Windows, respectively:
+To create a wrap token for a Lens, you can use the following commands for Unix-based systems (such as Linux or macOS) and Windows, respectively:
 
-**Unix-like Systems (e.g., Linux, macOS)**
+=== "Unix-Based Systems"
 
-```bash
-echo '{"apikey":"<API_KEY>","lens2":"<WORKSPACE>:<LENS_NAME>"}' | base64
-```
+    Replace `<your_api_key_here>`, `<workspace>`, and `<lens_name>` with your actual API key, deploying Workspace name, and Lens Resource name. This command will encode the JSON object into base64 format, producing a wrap token.
 
-Replace `<your_api_key_here>`, `<workspace>`, and `<lens_name>` with your actual API key, deploying Workspace name, and Lens Resource name. This command will encode the JSON object into base64 format, producing a wrap token.
+    ```bash
+    echo '{"apikey":"<API_KEY>","lens2":"<WORKSPACE>:<LENS_NAME>"}' | base64
+    ```
 
-**Windows**
 
-```powershell
-[System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes('{"apikey":"<your_api_key_here>","lens2": "<workspace>:<lens_name>"}'))
-```
 
-Replace `<your_api_key_here>`, `<workspace>`, and `<lens_name>` with your actual API key, deploying Workspace name and Lens Resource name. This PowerShell command will encode the JSON object into base64 format, creating the wrap token.
+=== "Windows"
+
+    Replace `<your_api_key_here>`, `<workspace>`, and `<lens_name>` with your actual API key, deploying Workspace name and Lens Resource name. This PowerShell command will encode the JSON object into base64 format, creating the wrap token.
+
+    ```powershell
+    [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes('{"apikey":"<your_api_key_here>","lens2": "<workspace>:<lens_name>"}'))
+    ```
 
 ## Connecting to Lens using `psql`
 
@@ -130,7 +136,7 @@ Replace `<your_api_key_here>`, `<workspace>`, and `<lens_name>` with your actual
     psql -h tcp.<dataos-fqdn> -p 6432
     ```
     
-    Replace the `<dataos-fqdn>` with your DataOS Fully qualified domain name. For instance, `liberal-donkey.dataos.app`.s 
+    Replace the `<dataos-fqdn>` with your DataOS Fully qualified domain name. For instance, `liberal-donkey.dataos.app`.
     
 3. Enter your ‘**Wrap Token**’ in place of password when prompted.
 4. You should now be connected to the Lens. You can verify the connection by listing the available relations using the `\dt` command:

@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Dynamic Parameters in Query
 
 At times you might want to vary the results of your query based on the inputs. Let’s suppose you want to view the running total of items sold for a specific category or monthly active users for a particular month. But you want to define the specific category or month during runtime. You can use ‘params’. 

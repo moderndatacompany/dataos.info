@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Working with Transitive Joins
 
 ## Overview

@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Using Measure and Dimension Interchangeably
 
 You can interchangeably call and use a measure or a dimension within a lens. There can be different scenarios where you would refer to measures or dimensions conversely within or between entities. Let's look at a few scenarios

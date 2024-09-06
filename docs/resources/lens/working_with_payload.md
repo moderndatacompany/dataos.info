@@ -1,10 +1,8 @@
 ---
-title: Working with Payload
-search: 
-  exclude: true
+title: Working with Payload in Lens
 ---
 
-# Working with Payload
+# Working with Payload in Lens
 
 ## Introduction
 

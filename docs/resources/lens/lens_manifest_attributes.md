@@ -1,7 +1,5 @@
 ---
 title: Attributes of Lens manifest
-search: 
-  exclude: true
 ---
 
 # Attribute of Lens  manifest
@@ -25,7 +23,7 @@ lens:
  compute: runnable-default # Compute Resource name (mandatory)
  runAsApiKey: abcdefghijklmnopqrstuvwxyz # DataOS APIkey (optional)
  runAsUser: iamgroot # DataOS UserID (optional)
- secrets: # Referred Instance-secret configuration (**mandatory for private repository)
+ secrets: # Referred Instance-secret configuration (mandatory for private repository)
 	- name: bitbucket-r # Instance-secret name (mandatory)
 		key: abcd # Key to be referred (optional)
 		keys: # List of keys to be referred (optional)
@@ -88,11 +86,11 @@ lens:
 			memory: 2000m
 ```
 
-# Resource meta section configuration
+## Resource meta section configuration
 
 Click [here](/resources/manifest_attributes) to know Resource meta section configuration.
 
-# Lens-specific section configuration
+## Lens-specific section configuration
 
 ### **`lens`**
 
@@ -134,7 +132,7 @@ lens:
 ### **`runAsApiKey`**
 
 <aside class="callout">
-🗣 The <b>runAsApiKey<b> attribute allows a user to assume the identity of another user through the provision of the latter's API key.
+🗣 The <b>runAsApiKey</b> attribute allows a user to assume the identity of another user through the provision of the latter's API key.
 </aside>
 
 **Description:** The `runAsApiKey` attribute allows a user to assume the identity of another user by providing the latter's API key.
@@ -346,7 +344,7 @@ lens:
 
 ### **`worker`**
 
-  **Description:** Defines worker instance of Lens.
+**Description:** Defines worker instance of Lens.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | --- | --- | --- | --- |

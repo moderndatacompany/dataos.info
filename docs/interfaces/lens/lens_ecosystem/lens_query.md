@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Lens Query
 
 The Lens can be queried by the end-user using Lens Queries which are essentially abstracted SQL queries. The query API exposes the Lens, enabling the end-user to query it. Upon defining and deploying a data model, you can start querying the model. Users with limited SQL proficiency can explore the model using *Lens Explorer -* a low code, intuitive, drag-and-drop data exploration utility. 

@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Dimensions
 
 Dimensions are categorical or qualitative data describing measures at different granularity levels. You can drill down into the dataset using dimensions to filter your query results further. Dimensions can be used when defining a custom column.

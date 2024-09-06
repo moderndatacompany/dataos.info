@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Recipes
 
 - [Customer360](/interfaces/lens/recipes/customer360/)

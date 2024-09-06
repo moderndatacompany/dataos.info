@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Building Lens
 Creating Lenses involves several key steps. Here's a structured guide to help you navigate the process.
 ## Lens Modeling

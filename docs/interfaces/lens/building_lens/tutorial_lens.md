@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Tutorial: Step-by-Step Lens Creation
 
 ## **Scenario: Sports Retail Data Analysis**

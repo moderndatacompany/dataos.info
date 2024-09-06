@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Aggregate all Ever Lens
 
 Regardless of when the primary activity took place, appends an aggregation of all append activities that happened ever.

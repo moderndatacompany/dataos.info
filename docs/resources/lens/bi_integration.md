@@ -1,7 +1,5 @@
 ---
 title: BI Integrations
-search: 
-  exclude: true
 ---
 
 # BI Integrations 

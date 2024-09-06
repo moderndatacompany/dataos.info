@@ -30,9 +30,13 @@ Learn how to explore and analyze data using the Workbench component of DataOS. D
 
 </div>
 
-## :interfaces-lens: Designing and Creating Data Modeling Layer
+## :interfaces-lens: Working with Data Modeling Layer
 
-Learn how to define and create a data model, the Lens component of DataOS, turning your conceptual design into a functional logical data model. Lens empowers you to answer key questions and track essential metrics.
+The Data Modeling Layer, Lens component of DataOS provides a user-friendly interface for interacting with your data. It abstracts the complexities of the underlying data structure and presents it in familiar business terms, making it easier to answer key questions and track essential metrics.
+
+### **Designing and Creating Data Modeling Layer**
+
+Learn how to define and create a data model, turning your conceptual design into a functional logical data model. 
 
 <div class= "grid cards" markdown>
 
@@ -46,9 +50,9 @@ Learn how to define and create a data model, the Lens component of DataOS, turni
      
 </div>
 
-## :material-google-lens: Exploring and Using Data Modeling Layer
+### **Exploring and Using Data Modeling Layer**
 
-Learn how to examine and experiment with logical data models, the Lens component of DataOS. Lens will help you to understand data relationships and conduct experiments to derive insights from the data.
+Learn how to examine and experiment with logical data models. Lens will help you to understand data relationships and conduct experiments to derive insights from the data.
 
 <div class= "grid cards" markdown>
 

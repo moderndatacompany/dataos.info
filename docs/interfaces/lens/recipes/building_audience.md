@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Building Audience
 
 There are different analytical use cases that various business personas might want to power. One such widely used use case is creating audiences. 
