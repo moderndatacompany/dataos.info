@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Last in Between Lens
 
 Appends the LAST append action that took place between the primary activity in question and the primary activity that follows it. In other words, add the last activity that occurred before the subsequent main activity.

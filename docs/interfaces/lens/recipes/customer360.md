@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Customer360
 
 The 360-degree view of the customer includes every interaction, from a website inquiry to a product purchase to a customer support ticket. A comprehensive 360-degree view of the customers has economic benefits like increased revenues with better cross-selling and up-selling opportunities. Organizations can also support better customer experience for more personalized marketing experiences - driving higher conversation rates and revenues.

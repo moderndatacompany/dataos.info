@@ -150,62 +150,13 @@ This section involves step-by-step guide to set up Talos on your local enviromen
         depot-postgres-talos-1  |   }
         depot-postgres-talos-1  | ]
         depot-postgres-talos-1  | - Building project...
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.626  
-        depot-postgres-talos-1  | DEBUG [BUILD]
-        depot-postgres-talos-1  | Initializing data source: mock
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.627  
-        depot-postgres-talos-1  | DEBUG [BUILD] Data source mock initialized
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.628  
-        depot-postgres-talos-1  | DEBUG [BUILD] Initializing data source: bq
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.628  
-        depot-postgres-talos-1  | DEBUG [BUILD] Data source bq initialized
+        depot-postgres-talos-1  | ✔ Built successfully.
+        depot-postgres-talos-1  | 2024-09-05 12:54:13.100  
+        depot-postgres-talos-1  | INFO  [CLI]
+        depot-postgres-talos-1  | Starting server...
         depot-postgres-talos-1  | 
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.629  DEBUG
-        depot-postgres-talos-1  | [BUILD] Initializing data source: clickhouse
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.629  
-        depot-postgres-talos-1  | DEBUG [BUILD] Data source clickhouse initialized
-        depot-postgres-talos-1  | 
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.630  DEBUG [BUILD] Initializing data source: duckdb
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.636  DEBUG
-        depot-postgres-talos-1  | [CORE] Create connection for talos.cache
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.637  
-        depot-postgres-talos-1  | DEBUG [CORE] Open database in automatic mode
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.650  
-        depot-postgres-talos-1  | DEBUG
-        depot-postgres-talos-1  | [CORE] Installed httpfs extension
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.653  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: access_mode = automatic
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.653  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: allow_persistent_secrets = true
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.654  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: checkpoint_threshold = 16.0 MiB
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.654  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: debug_checkpoint_abort = none
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.654  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: storage_compatibility_version = v0.10.2
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.654  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: debug_force_external = false
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.655  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: debug_force_no_cross_product = false
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.655  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: debug_asof_iejoin = false
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.655  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: prefer_range_joins = false
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.655  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: debug_window_mode = NULL
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.656  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: default_collation =
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.656  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: default_order = asc
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.656  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: default_null_order = nulls_last
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.656  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: disabled_filesystems =
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.656  
-        depot-postgres-talos-1  | DEBUG [CORE] Duckdb config: disabled_optimizers =  
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.657  DEBUG [CORE] Duckdb config: enable_external_access = true
-        depot-postgres-talos-1  | 
-        
+        depot-postgres-talos-1  | 2024-09-05 12:54:13.163  INFO  [CLI]
+        depot-postgres-talos-1  | 🚀 Server is listening at port 3000.        
         ```
         
 8. Now you are ready to fetch your data using your DataOS API key. On your browser copy the below link by updating the path and API key with your actual DataOS API key:

@@ -22,7 +22,7 @@ When you first open Lens Studio, you’ll see the following interface.
 
 1. **Tables and Views**: Check out the left panel to find all your logical tables and views. It’s your starting point for diving into your data.
 2. **Selecting Dimensions and Measures**: Click on any table or view to expand it and see all the dimensions and measures. Pick what you need for your analysis and start exploring!
-3. **Building Queries**: Select dimensions and measures to create your queries.
+3. **Building Queries**: Select dimensions and measures to include in your queries. Once selected, they show up in the members list.
 4. **Running Queries**: Hit the "Run Query" button to see your results.  It’s that easy!
 5. **Applying Filters:** Use filters to zero in on what really matters. They help you remove unnecessary data and spotlight specific segments.
 6. **Visualizing Data:** Switch between **Table**, **Chart**, and **Pivot** views to visualize your data in different formats.
@@ -66,16 +66,16 @@ Go to the **Model** tab to explore the schema and fields.
 Mix and match dimensions and measures from your data model to create queries to extract meaningful insights.
 
 1. Expand a table or view, then select the dimensions and measures needed for your analysis. Selected fields will be added to members. 
+
+2. You may use some dimensions and measures for filtering purposes but not want them to appear in the results. To hide these items from the query results, click the eye icon next to them. 
+
+3. To remove items from the member list entirely, hover over the item and click the minus (-) button.
     
-    <aside class="callout">
-    🗣 You can choose to show or hide a field in the query result by clicking the eye icon next to it in the members’ list.
+4. Click the "Run Query" button to execute and view results.
     
-    </aside>
+    ![simple_query.png](/quick_guides/working_on_lens_studio/ssimple_query.png)
     
-2. Click the "Run Query" button to execute and view results.
-    
-    ![simple_query.png](/quick_guides/working_on_lens_studio/simple_query.png)
-    
+5. You can rename this query by clicking the pencil icon. To build a new query, click the plus (+) sign.
 
 ### **Applying Filters**
 
@@ -150,7 +150,7 @@ The **History** feature in Lens Studio allows you to track and revisit your past
     
     ![history.png](/quick_guides/working_on_lens_studio/history.png)
     
-3. Run the query to ****restore your workspace to any previous state by selecting the desired entry in the history. This allows you to continue working from that point without having to manually redo your steps.
+3. Run the query to restore your workspace to any previous state by selecting the desired entry in the history. This allows you to continue working from that point without having to manually redo your steps.
 
 <aside class="callout">
 🗣 This feature is especially useful if you want to replicate or refine a previous analysis. It saves time by letting you quickly revisit and validate past analysis states, as all steps are tracked.

@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Funnel Analysis
 
 Funnel analysis helps businesses trace users’ journeys as they perform a series of activities that lead toward a defined goal. It helps investigate the activities performed by users, estimates the duration it takes for a user to perform an activity, tracks conversion time from one activity to another, and much more. It is essentially analyzing your core customer activities over time.

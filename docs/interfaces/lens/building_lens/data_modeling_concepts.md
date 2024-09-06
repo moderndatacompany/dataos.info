@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Data Modeling Concepts
 
 Data modeling concepts are becoming increasingly important as businesses use data-related applications to manage their massive data assets.

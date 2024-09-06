@@ -1,15 +1,25 @@
 ---
-title: Lens API Endpoints and Scopes
+title: Consumption of Lens using REST APIs
 ---
 
-# Lens API Endpoints and Scopes
+# Consumption of Lens using REST APIs
 
-Each REST API endpoint belongs to an API scope, e.g., the `**/v2/load**` endpoint belongs to the `**data**` scope. API scopes provide a way to secure access to API endpoints, allowing you to limit accessibility to specific users or roles, or disallow access entirely. By default, API endpoints in all scopes (except for jobs) are accessible to everyone, allowing broad access unless specifically restricted. 
+REST API enables Lens to deliver data over the HTTP protocol. It is is enabled by default and secured using [API scopes](/resources/lens/consumption_usin_rest_apis/#api-endpoints-and-scopes). It consists of a base path and API scopes:
+
+- **Base Path:** All REST API endpoints are prefixed with `/lens2/api`. For example, `/v2/meta` is available at `/lens2/api/<lens_name>/v2/meta`
+
+- **API Scopes:** Endpoints are secured by API scopes, restricting access based on user permissions. Follows the principle of least privilege to grant only necessary access.
+
+You can use [Postman](https://www.postman.com/) to interact with Lens via REST APIs. Start by importing the following Postman collection, 
+testing each endpoint.
+
+[Lens2-API](/resources/lens/lens_setup/Lens2-APIs.postman_collection.json) 
 
 You can manage API access using the [user_groups](/resources/lens/user_groups/). The default user group ensures that API endpoints in all scopes are accessible to everyone. You can create custom user groups by defining roles and associating specific users with these roles in the user_group.yml file. To know more about user groups click [here](/resources/lens/user_groups/).
 
 
 The following `api_scopes` are currently supported:
+
 <div style="text-align: center;">
   <table style="margin: 0 auto; border-collapse: collapse; text-align: center;">
     <tr>
@@ -47,6 +57,14 @@ Lens uses API tokens to authorize requests and also for passing additional secur
 
 The API Token is passed via the Authorization Header. The token itself is a `dataos-user-apikey`.
 
+**Ensure the following header is passed in Authorization when running the APIs-**
+    
+```bash
+Type: Bearer Token
+Token: ${Your DataOS API Key} #Use the API key of the env defined in docker-compose.yml
+```
+Replace the placeholder with the DataOS API Key.
+
 ## meta scope
 
 Provides access to metadata-related endpoints. This scope allows users to view metadata, which typically includes information about sources, authors, timezones, security context, user groups, etc.
@@ -70,13 +88,10 @@ Get meta-information for lens and views defined in the data model. Information a
 **Example response:**
 
 ```json
-{
+{{
     "name": 
-    "description": 
-
-    ],
-    "authors": [
-    ],
+    "description": [],
+    "authors": [],
     "devMode": true,
     "source": {
         "type": "minerva",
@@ -201,7 +216,7 @@ configure the body with the JSON Query Format similar to `/load`.
 
 Grants access to GraphQL endpoints. GraphQL is a query language for APIs that allows clients to request only the data they need. This scope enables users to perform GraphQL queries and mutations.
 
-## source scope:
+## source scope
 
 Grants access to source-related endpoints. 
 
@@ -272,10 +287,11 @@ GET http://localhost:4000/lens2/api/v2/default/schemas/sales360/tables/customers
 
 <h3><strong><code>/v2/default/load-source?responseType=default</code> endpoint</strong></h3>
 
-
 This endpoint is used to load data from a specified source into Lens 2.0. The responseType parameter defines the type of response expected. In this case, it’s set to default.
 
-## Continue wait
+## Possible Responses
+
+**Continue wait**
 
 If the request takes too long to be processed, Lens Backend responds with { "error": "Continue wait" } and 200 status code. This is how the long polling mechanism in Lens is implemented. Clients should continuously retry the same query in a loop until they get a successful result. Subsequent calls to the Lens endpoints are idempotent and don't lead to scheduling new database queries if not required by the refresh_key. Also, receiving Continue wait doesn't mean the database query has been canceled, and it's actually still being processed by the Lens. Database queries that weren't started and are no longer waited by the client's long polling loop will be marked as orphaned and removed from the querying queue.
 
@@ -285,7 +301,7 @@ Possible reasons of **Continue wait**:
     
 - There are many queries requested and Lens backend queues them to save database from overloading.
 
-## Error Handling
+### **Error Handling**
 
 Lens REST API has basic errors and HTTP Error codes for all requests.
 

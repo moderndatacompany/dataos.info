@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Handling Row Multiplication
 
 Relationship handles the complexity of joining, but to get good results, we must ensure we define it correctly. When we define a many-to-one relationship within the main entity, where the main entity has many rows corresponding to a single row of the target entity, we might get multiple rows. 

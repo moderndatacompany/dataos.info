@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # First in Between Lens
 
 Adds the FIRST append activity that took place BETWEEN that primary activity and its subsequent occurrence. Or, to put it another way, add the initial activity that took place before the next main activity.

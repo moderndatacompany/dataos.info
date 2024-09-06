@@ -1,23 +1,28 @@
 ---
-title: Lens Setup
-search: 
-  exclude: true
+title: Setting Up Lens
 ---
 
-# Lens Setup
+# Setting Up Lens
 
-Set up the Lens project folder containing the Dockerfile and the model folder and user_groups.yml. 
+Set up the Lens project folder to include the Dockerfile, model folder, and `user_groups.yml` file.
 
-In the Model folder, you'll define your Lens model, including SQL mapping, logical tables, logical views, and user groups. Each folder has a specific file related to your Lens model
+In the Model folder, the Lens model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each folder contains specific files related to the Lens model.
 
+### **Prerequisites**
+
+Before setting up Lens, ensure you have all its dependencies installed.
+
+The following page will provide step-by-step instructions and additional resources to help you install and configure these dependencies, ensuring a smooth setup process for Lens.
+
+[Prerequisites for Lens](/resources/lens/installing_prerequisites/)
 
 ### **Set Up Lens Project Folder**
 
-Set up the Lens project folder or you can download the following template 
+Set up the Lens project folder or you can download the following template.
 
 [lens template](/resources/lens/lens_setup/lens-project-template.zip)
 
-- Open the Model folder in the editor of your choice. Your Model folder will have the following hierarchy:
+- Open the Model folder in the preferred editor. The Model folder will have the following hierarchy:
 
 ``` bash
 model
@@ -33,8 +38,10 @@ docker-compose.yml // Orchestrates multi-container services (e.g., database, web
 
 - **`sqls` Folder**
     - This directory will contain SQL scripts corresponding to the dimensions of your tables.  A dedicated SQL file needs to be maintained for each table. The SQL dialect used will be source-specific.
+
 - **Create `tables` Folder**
     - This directory will store your logical tables, with each table defined in a separate YAML file.
+    
 - **Create `views` Folder**
     - This directory will store all your logical views.
 
@@ -44,6 +51,7 @@ docker-compose.yml // Orchestrates multi-container services (e.g., database, web
 
 - **Add a docker-compose.yml**
     - Docker compose is used to test the Lens in the development enviroment before deployment.
+
     - Here add data source details and update Lens meta details.  
 
 
@@ -91,7 +99,6 @@ LENS2_REFRESH_WORKER: true
 LENS2_SCHEMA_PATH: model
 LENS2_PG_SQL_PORT: 5432
 CACHE_DATA_DIR: "/var/work/.store"
-NODE_ENV: production
 
 services:
 api:
@@ -133,9 +140,9 @@ Modify the docker-compose.yml file to tailor it to include environment-URL, lens
 
   - If connecting via the depot, refer to the provided environmental variables in the syntax below. Currently, supported depot types include - JDBC, PostgreSQL, MySQL, MS SQL, Snowflake, Bigquery, and Redshift.
           
-  **(Ensure you have access to the compute of the source. This needs to be verified at source end.)**
+  >Ensure you have access to the compute of the source. This needs to be verified at source end.
 
-  Environment variable for connecting via depot
+  **Data Source attributes for connecting via depot**
 
   ```yaml
     # Data Source
@@ -145,7 +152,7 @@ Modify the docker-compose.yml file to tailor it to include environment-URL, lens
     DATAOS_RUN_AS_APIKEY: ****** # Add the user API Key for the env
   ```
 
-  Environment variable to connect via Minerva or Themis
+  **Data Source attributes to connect via Minerva or Themis Cluster**
 
   ```yaml
     # Data Source
@@ -157,7 +164,7 @@ Modify the docker-compose.yml file to tailor it to include environment-URL, lens
   ```
           
       
-  - If connecting without a depot, consult the [environmental variables guide](/resources/lens/data_sources) for different sources, as each may require a specific set of settings.
+  - When connecting with different sources, refer to the [data source guide](/resources/lens/data_sources/) for various sources, as each may need its own specific settings."
 
 4. **Verify Service Configuration:**
 
@@ -179,8 +186,8 @@ You can test Lens in the development environment by running:
 
 === "Output"
 
-    The output lo like following indicates that the lens server has started locally
-
+   The following output indicates that the Lens server has successfully started locally.
+  
     ```bash
     lens2-api-1  | Loaded  /app/scripts/config.js
     lens2-api-1  | 🔥 Table Store (0.35.55-01 ) is assigned to 3030 port.
@@ -204,15 +211,19 @@ To interact with Lens via PostgreSQL, you have the following options:
 
 **PostgreSQL Client(psql)**
 
-The following setup will allow access using `user` as the username, `password` as the password, and any valid string as the database name in format `lens:<workspace_name>:<lens_name>.
+The following setup will allow access using `user` as the username, `password` as the password, and any valid string as the database name in format `lens:${workspace_name}:${lens_name}.
 
 === "Syntax"
 
+    ```bash
     psql -h ${host_name} -p ${port_name} -d ${database_name}
+    ```
 
 === "Example"
 
+    ```bash
     psql -h localhost -p 25432 -d lens:public:sales_analysis
+    ```
 
 **Connection Details:**
 
@@ -259,19 +270,77 @@ postgres=> \d #listing all the tables and databases
 
 ### **Interacting Via REST API**
 
-The REST API is enabled by default and secured using API scopes. It consists of a base path and API scopes:
+To interact with REST APIs. You can use tools like `curl`, [Postman](https://www.postman.com/).
 
-- **Base Path:** All REST API endpoints are prefixed with /lens2/api. For example, /v2/meta is available at /lens2/api/<data_model_name>/v2/meta.
-
-- **API Scopes:** Endpoints are secured by API scopes, restricting access based on user permissions. Follow the principle of least privilege to grant only necessary access.
-
-To explore various API endpoints and scopes, refer to the [API Endpoints and Scopes](/resources/lens/api_endpoints_and_scopes) page.
-
-You can use [Postman](https://www.postman.com/) to interact with Lens REST APIs. Start by importing the following Postman collection:
+For instance, to test Lens in your development environment using Postman, upload the following API collection to Postman.
 
 [Lens2-API](/resources/lens/lens_setup/Lens2-APIs.postman_collection.json)
 
-[**Next Step: Deploying Lens model on DataOS**](/resources/lens/lens_deployment/)
+
+Now, to make a basic `GET` request using Postman, follow these steps:
+
+1. **Create a New Request**:
+    - Open Postman and click on the **New** button in the top left corner.
+    - Select **Request** from the dropdown menu.
+2. **Configure the Request**:
+    - **Enter Request Name**: Provide a name for your request.
+    - **Select Collection**: Choose the uploaded collection.
+3. **Set the HTTPS Method**:
+    - In the request tab, select `GET` from the dropdown menu next to the URL input field.
+4. **Enter the Request URL**:
+    - Enter the full URL for the API endpoint you want to access. For example:
+        
+        ```bash
+        http://localhost:8080/lens2/api/${lens_name}/v2/meta
+        ```
+    **Command Paramter**
+
+      - `localhost:8080` represents the local or development environment for Lens, used for building and testing configurations.
+      - `/lens2/api/` is the api prefix
+      - `${lens_name}` is the placeholder for lens, replace it to the actual lens undergoin testing.
+          
+5. **Ensure the following header is passed in Authorization when running the API**
+      
+      ```bash
+      Type: Bearer Token
+      Token: <Your API Key> #Use the API key of the env defined in docker-compose.yml
+      ```
+6. Click **Send**
+
+**Example response:**
+
+```json
+{
+  "name": 
+  "description": [],
+  "authors": [],
+  "devMode": true,
+  "source": {
+      "type": "minerva",
+      }
+          },
+  "timeZones": ["UTC"],
+  "tables": [
+      {
+          "name": "product_analysis",
+          "type": "view",
+          "title": "Product Analysis",
+          
+               }     ]
+                
+            
+```
+
+
+
+>*You can now successfully test your lens in postman via REST APIS.*
+
+To interact with the deployed lens read the detailed doc [here](/resources/lens/consumption_using_rest_apis/)
+
+
+## Next Step
+
+[Deploying Lens model on DataOS](/resources/lens/lens_deployment/)
 
 
 

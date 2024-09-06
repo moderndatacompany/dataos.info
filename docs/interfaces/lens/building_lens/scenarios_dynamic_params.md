@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Scenarios: Dynamic Parameters in Query
 
 When analyzing data, it may be beneficial to consider multiple input perspectives. This can be achieved through the use of parameters. Parameters introduce flexibility and reusability in measures and dimensions, allowing the users to vary results on basis of inputs. 

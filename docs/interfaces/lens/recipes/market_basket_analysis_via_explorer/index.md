@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Market Basket Analysis via Explorer
 
 Lens, an ecosystem-enabling entity layer, lets business users consume ontologies in different contexts. Business users and data app developers can use the lens ecosystem to power a variety of use cases. 

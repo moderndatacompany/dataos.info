@@ -1,4 +1,4 @@
-# AWS Redshift
+# Postgres
 
 ## Prerequisites
 
