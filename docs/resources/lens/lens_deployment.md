@@ -1,7 +1,5 @@
 ---
 title: Deploying Lens model on DataOS
-search: 
-  exclude: true
 ---
 
 # Deploying Lens model on DataOS 

@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Entity
 
 > 🗣 An object in a data model is referred to as a data entity.

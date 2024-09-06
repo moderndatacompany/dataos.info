@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Measures
 
 A measure is an aggregated column that helps define business-specific metrics.

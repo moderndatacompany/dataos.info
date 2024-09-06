@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Aggregation in Between Lens
 
 Adds a GROUPING of all the append actions that took place between the primary activity in question and the primary activity that follows it.

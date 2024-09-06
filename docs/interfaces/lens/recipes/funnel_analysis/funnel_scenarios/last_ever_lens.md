@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Last Ever Lens
 
 ## Last Ever

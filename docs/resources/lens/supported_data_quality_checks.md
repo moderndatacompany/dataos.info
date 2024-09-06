@@ -1,7 +1,5 @@
 ---
 title: Supported Data Quality Checks
-search: 
-  exclude: true
 ---
 
 # Supported Data Quality Checks

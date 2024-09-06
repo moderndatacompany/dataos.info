@@ -1,7 +1,5 @@
 ---
 title: Model-first Approach
-search:
-  exclude: true
 ---
 
 # The Model-First Approach

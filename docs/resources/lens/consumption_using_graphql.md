@@ -1,7 +1,5 @@
 ---
 title: Consumption of Lens using GraphQL
-search:
-  exclude: true
 ---
 
 # Consumption of Lens using GraphQL
@@ -195,7 +193,8 @@ query LensQuery {
   "account": {
     "city": "Charleston"
   }
-},
+},search: 
+  exclude: true
 {
   "account": {
     "city": "Chicago"

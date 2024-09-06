@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Elements of Lens
 
 The Lens is composed of elements such as fields, entities, dimensions, and measures. The objective of these elements is to define the structure and logic of data models. They introduce opinionated simplicity in explaining the reasoning for business concepts.

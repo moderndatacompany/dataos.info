@@ -1,10 +1,8 @@
 ---
 title: Best Practices
-search:
-  exclude: true
 ---
 
-# Best Practices
+# Lens Best Practices
 
 ## Naming Conventions
 
@@ -114,7 +112,8 @@ In the example below, the `full_name` dimension references the `name` and `surna
 ```yaml
 tables:
   - name: customer
-    sql: {{ load_sql('customer') }}
+    sql: {{ load_sql('customer') }}search:
+  exclude: true
     description: Table containing information about customers
     public: true
     meta:

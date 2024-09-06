@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Attributes of Lens YAML
 
 ## Syntax of a Lens YAML

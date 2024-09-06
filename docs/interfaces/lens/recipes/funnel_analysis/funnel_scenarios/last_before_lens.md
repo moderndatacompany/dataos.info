@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Last Before Lens
 
 The last append action that occurred prior to the primary activity was appended.

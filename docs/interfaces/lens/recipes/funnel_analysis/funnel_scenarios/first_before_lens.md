@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # First Before Lens
 
 ## First Before
