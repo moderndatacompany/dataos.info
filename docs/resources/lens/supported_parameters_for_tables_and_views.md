@@ -1,9 +1,3 @@
----
-title: Supported parameters for Tables and Views
-search: 
-  exclude: true
----
-
 # Supported parameters for Tables and Views
 
 ## Table

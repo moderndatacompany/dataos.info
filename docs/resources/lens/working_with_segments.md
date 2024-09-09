@@ -1,9 +1,3 @@
----
-title: Working with Segments
-search:
-  exclude: true
----
-
 # Working with Segments
 
 ## When to use Segments?

@@ -1,9 +1,3 @@
----
-title: API Endpoints and Scopes
-search:
-  exclude: true
----
-
 # API Endpoints and Scopes
 
 Each REST API endpoint belongs to an API scope, e.g., the `/v2/load` endpoint belongs to the `data` scope. API scopes provide a way to secure access to API endpoints, allowing you to limit accessibility to specific users or roles, or disallow access entirely. By default, API endpoints in all scopes (except for jobs) are accessible to everyone, allowing broad access unless specifically restricted. 

@@ -1,9 +1,3 @@
----
-title: Consumption of Lens using GraphQL
-search:
-  exclude: true
----
-
 # Exploration of Lens using GraphQL
 
 Lens provides a GraphQL API interface for querying your deployed model. This document will guide you through the process of accessing the GraphQL interface and executing queries against the Lens model. You can interact with the Lens GraphQLAPI either through:

@@ -1,9 +1,3 @@
----
-title: Lens Setup
-search: 
-  exclude: true
----
-
 # Lens Setup
 
 Set up the Lens project folder to include the Dockerfile, model folder, and `user_groups.yml` file.

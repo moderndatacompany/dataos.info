@@ -1,9 +1,3 @@
----
-title: Lens
-search:
-  exclude: true
----
-
 # :resources-lens: Lens
 
 
