@@ -477,10 +477,11 @@ nav:
         - Resource Manifest: resources/lens/lens_manifest_attributes.md
         - Docker Compose Manifest: resources/lens/docker_compose_manifest_attributes.md
         - API Endpoints and Scopes: resources/lens/api_endpoints_and_scopes.md
-      - Consumption:
-        - Using SQL APIs: resources/lens/consumption_using_sql_apis.md
+      - Exploration:
+        - Using GraphQL: resources/lens/exploration_of_lens_using_graphql.md
+        - Using SQL APIs: resources/lens/exploration_of_lens_using_sql_apis.md
         - Using Python: resources/lens/consumption_using_python.md
-        - Using REST APIs: resources/lens/consumptions_using_rest_apis.md
+        - Using REST APIs: resources/lens/exploration_using_rest_apis.md
     - Monitor: 
       - resources/monitor/index.md
       - First Steps: resources/monitor/first_steps.md
