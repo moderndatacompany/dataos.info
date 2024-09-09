@@ -1,5 +1,7 @@
 ---
 title: Attributes of Lens manifest
+search: 
+  exclude: true
 ---
 
 # Attribute of Lens  manifest
@@ -38,6 +40,7 @@ lens:
  repo: # Code repository configuration (mandatory)
 	url: https://www.bitbucket.org/abcd/lens2 # Code Repository URL (mandatory)
 	lensBaseDir: lens2/sales/model # mandatory
+  secretId: bitbucket_r_r
 	syncFlags: # what are these?
 		- --ref=lens2test
  api:
@@ -85,12 +88,13 @@ lens:
 			cpu: 16Gi
 			memory: 2000m
 ```
+## Configuration
 
-## Resource meta section configuration
+### **Resource meta section**
 
 Click [here](/resources/manifest_attributes) to know Resource meta section configuration.
 
-## Lens-specific section configuration
+## **Lens-specific section**
 
 ### **`lens`**
 
@@ -207,8 +211,8 @@ lens:
 
 **Example Usage:** If the codebase for your Lens is stored in a private code repository, you can create a Secret for the same and refer to it within the manifest file of Lens in the following way:
 
-```yaml
-name: bitbucket-r
+```yaml title="instance_secret.yml"
+name: github-r
 version: v1
 type: instance-secret
 description: "bitbucket read secrets for lens repos"
@@ -225,7 +229,7 @@ instance-secret:
 # Referred in Lens manifest file
 lens:
 	secrets:
-	  - name: bitbucket-r
+	  - name: github-r
 	    allkeys: true
 ```
 
@@ -277,9 +281,9 @@ lens:
 ```yaml
 lens:
  repo: 
-	url: https://www.bitbucket.org/abcd/lens2
+	url: https://github.com/abcd/lens2
 	lensBaseDir: lens2/sales/model 
-	secretId: bitbucket_r_r
+	secretId: github-r
 	syncFlags: 
 			- --ref=lens2
 ```
@@ -312,10 +316,10 @@ lens:
     - **`targetMemoryUtilizationPercentage`**: The target memory utilization percentage for autoscaling is the average memory usage of all pods in a deployment across the last minute divided by the requested CPU of this deployment. If the mean of the pods' CPU utilization is higher than the target you defined, then your replicas will be adjusted. Its value could be any integer between 0 to 100.
     - **`targetCPUUtilizationPercentage`**:  The target CPU utilization percentage for autoscaling is the average CPU usage of all pods in a deployment across the last minute divided by the requested CPU of this deployment. If the mean of the pods' memory utilization is higher than the target you defined, then your replicas will be adjusted. Its value could be any integer between 0 to 100.
 
-- **`metricEndpoint`**: Specifies the metric collection endpoint configuration. It further contains two attributes, `port`, and `path`.
+<!-- - **`metricEndpoint`**: Specifies the metric collection endpoint configuration. It further contains two attributes, `port`, and `path`.
 
     - **`port`**: Port number for the metric endpoint.
-    - **`path`**: Path at which metrics are available.
+    - **`path`**: Path at which metrics are available. -->
 
 - **`resources`**: CPU and memory resource requests and limits. By default, the CPU and memory requests are 100m and 100Mi, while limits are 400m and 400Mi, respectively. The CPU units are declared in milliCPU(m) or CPU core, while memory is declared in Mebibytes (Mi) or Gibibytes (Gi).
 
