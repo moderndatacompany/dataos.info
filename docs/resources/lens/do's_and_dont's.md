@@ -1,8 +1,10 @@
 ---
 title: Do's and Dont's
+search:
+  exclude: true
 ---
 
-# Do’s
+# Do’s and Dont's 
 
 This documentation provides guidelines for using Lens functionalities, including when to create views and best practices to avoid errors.
 
@@ -210,7 +212,7 @@ segments:
   {% endfor %}
 ```
 
-### User Group Configuration
+### **User Group Configuration**
 
 ```yaml
 user_groups:
@@ -313,93 +315,94 @@ tables:
 
 ## Avoid Filtering Measures and Dimensions from the Same Table with OR Operator
 
-Measures and dimensions from the same table cannot be filtered simultaneously using the OR operator.
+Measures and dimensions from the same table cannot be filtered simultaneously using the 'OR' operator.
 
-**Incorrect Example:**
+=== "Incorrect Example"
 
-```json
-{
-  "measures": [
-    "sales.total_revenue"
-  ],
-  "dimensions": [
-    "sales.site_number"
-  ],
-  "segments": [],
-  "filters": [
+    ```json
+    {
+      "measures": [
+        "sales.total_revenue"
+      ],
+      "dimensions": [
+        "sales.site_number"
+      ],
+      "segments": [],
+      "filters": [
+        {
+          "or": [
+            {
+              "member": "sales.site_number",
+              "operator": "equals",
+              "values": [
+                "1",
+                "21"
+              ]
+            },
+            {
+              "member": "sales.total_revenue",
+              "operator": "gt",
+              "values": [
+                "0"
+              ]
+            }
+          ]
+        }
+      ],
+      "timeDimensions": [],
+      "limit": 10,
+      "offset": 0
+    }
+    ```
+
+=== "Correct Example"
+
+    Avoid combining dimensions and measures in the same 'OR' condition. Use separate conditions for clarity.
+
+    ```json
     {
       "or": [
+        {
+          "member": "sales.invoice_no",
+          "operator": "equals",
+          "values": [
+            "448",
+            "1265",
+            "45",
+            "517",
+            "2874",
+            "1",
+            "837"
+          ]
+        },
         {
           "member": "sales.site_number",
           "operator": "equals",
           "values": [
             "1",
-            "21"
+            "21",
+            "6",
+            "18"
           ]
         },
         {
-          "member": "sales.total_revenue",
+          "member": "sales.posting_period",
+          "operator": "inDateRange",
+          "values": [
+            "2022-01-01",
+            "2024-06-01"
+          ]
+        },
+        {
+          "member": "sales.revenue",
           "operator": "gt",
           "values": [
-            "0"
+            "30000"
           ]
         }
       ]
     }
-  ],
-  "timeDimensions": [],
-  "limit": 10,
-  "offset": 0
-}
-```
+    ```
 
-**Correct Example:**
-
-Avoid combining dimensions and measures in the same OR condition. Use separate conditions for clarity.
-
-```json
-{
-  "or": [
-    {
-      "member": "sales.invoice_no",
-      "operator": "equals",
-      "values": [
-        "448",
-        "1265",
-        "45",
-        "517",
-        "2874",
-        "1",
-        "837"
-      ]
-    },
-    {
-      "member": "sales.site_number",
-      "operator": "equals",
-      "values": [
-        "1",
-        "21",
-        "6",
-        "18"
-      ]
-    },
-    {
-      "member": "sales.posting_period",
-      "operator": "inDateRange",
-      "values": [
-        "2022-01-01",
-        "2024-06-01"
-      ]
-    },
-    {
-      "member": "sales.revenue",
-      "operator": "gt",
-      "values": [
-        "30000"
-      ]
-    }
-  ]
-}
-```
 
 By adhering to these guidelines, you can avoid common pitfalls and ensure your lenses function correctly and efficiently.

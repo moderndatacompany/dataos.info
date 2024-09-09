@@ -1,5 +1,7 @@
 ---
 title: Working with Segments
+search:
+  exclude: true
 ---
 
 # Working with Segments

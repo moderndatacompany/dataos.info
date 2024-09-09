@@ -1,12 +1,16 @@
 ---
 title: Supported parameters for Tables and Views
+search: 
+  exclude: true
 ---
 
 # Supported parameters for Tables and Views
 
 ## Table
 
-> To draw a parallel with Lens 1.0, **‘Table’ is equivalent to the concept of ‘Entity’**.
+A table is a logical construct used to define an entity. It contains information about joins (relationships), dimensions, measures, and segments. Each table is defined in a separate YAML file. 
+
+> To draw a parallel with common data modelling concepts, **‘Table’ is equivalent to the concept of ‘Entity’**.
 > 
 
 <div style="text-align: left; padding-left: 1em;">
@@ -14,7 +18,6 @@ title: Supported parameters for Tables and Views
     <figcaption> Tables and Views </figcaption>
 </div>
 
-A table is a logical construct used to define an entity. It contains information about joins (relationships), dimensions, measures, and segments. Each table is defined in a separate YAML file. 
 
 **Example**
 
@@ -126,6 +129,7 @@ The segment declaration involves the following properties
 | --- | --- | --- |
 | `name` | Specify the name of the dimension | NA |
 | `public` | Controls visibility of dimension, i.e. whether the dimension is visible to all users or hidden | `True`, `False` |
-| `sql` | Add filter criteria:
-table.{dimension} = “dimension_values” | NA |
+| `sql` | Add filter criteria: table.{dimension} = “dimension_values” | NA |
 | `meta` | Custom metadata. This is also used to define `secure` sub property | NA |
+
+To know more about segments click [here](/resources/lens/working_with_segments/)

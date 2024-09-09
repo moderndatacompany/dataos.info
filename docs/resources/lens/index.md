@@ -1,7 +1,7 @@
 ---
 title: Lens
 search:
-  boost: 4
+  exclude: true
 ---
 
 # :resources-lens: Lens
@@ -84,29 +84,54 @@ Lens can be configured to connect to different sources using data source attribu
 - [Working with Payload](/resources/lens/working_with_payload/)
     Learn how to work with payloads for querying and interacting with the system.
 
-- [Supported Data Quality Checks](/resources/lens/supported_data_quality_checks/)
-    Find information on the data quality checks supported by our system to ensure data accuracy and integrity.
+- [Working with User Groups and Data Policies](/resources/lens/working_with_user_groups_and_data_policies/)
+
+<!-- - [Supported Data Quality Checks](/resources/lens/supported_data_quality_checks/)
+    Find information on the data quality checks supported by our system to ensure data accuracy and integrity. -->
 
 - [Supported Parameters for Table & Views](/resources/lens/supported_parameters_for_tables_and_views/)
     Discover the parameters you can use for configuring tables and views in the system.
 
 
-## Consumption of Deployed Lens
+## Exploration of Deployed Lens
 
-After creating a Lens data model, you would like to ask questions to it, i.e., run queries against this data model. The following pages describes the common concepts of querying Lens through different ways. Although, All queries share the same query format.
+After creating a Lens data model, the next step is to explore it—this means interacting with the model by running queries. The following section explains the key concepts for querying Lens through various methods, though all queries follow the same general format. Multiple ways are available to explore or interact with the Lens model or its underlying data, allowing you to ask meaningful questions of the data and retrieve valuable insights.
 
-There are various ways to consume or interact with Lens or data model.
+Exploration can be performed using the following methods:
 
-The consumption can be done using following ways:
+- [Exploration of Lens using SQL APIs](/resources/lens/exploration_of_lens_using_sql_apis/)
 
-- [Consumption of Lens using SQL APIs](/resources/lens/consumption_using_sql_apis/)
+- [Exploration of Lens using Python](/resources/lens/exploration_of_lens_using_python/)
 
-- [Consumption of Lens using Python](/resources/lens/consumption_using_python/)
+- [Exploration of Lens using Rest APIs](/resources/lens/exploration_of_lens_using_rest_apis/)
 
-- [Consumption of Lens usin Rest APIs](/resources/lens/consumptions_using_rest_apis/)
+- [Exploration of Lens using GraphQL](/resources/lens/exploration_of_lens_using_graphql/)
 
 
+## Data Modelling
 
+Data modeling is the process of defining and structuring raw data into organized and meaningful business definitions. It involves creating logical schemas, relationships, and aggregations to represent how data is stored, processed, and accessed. Effective data modeling ensures optimal performance for queries and allows users to extract valuable insights without modifying the underlying data structure. 
+
+Below are resources to guide you through essential aspects of data modeling to optimize performance and accuracy.
+
+  - [Best Practices](/resources/lens/best_practices/)
+    Explore recommended guidelines and techniques to create efficient and scalable data models.
+
+  - [Do's and Don'ts](/resources/lens/do's_and_dont's/)
+    A concise list of actions to follow and pitfalls to avoid when designing your data model.
+
+  - [Working with Segments](/resources/lens/working_with_segments) 
+    Learn how to create and manage data segments to improve query performance and user experience.
+
+  - [Supported Parameters for Tables and Views](/resources/lens/supported_parameters_for_tables_and_views/)
+    Understand the role of logical tables and views in data models.
+
+
+## Optimizing Lens Model
+
+The Lens semantic layer provides several optimization techniques that can significantly enhance the performance of data queries. The following page explores best practices and strategies for fine-tuning your Lens model to maximize efficiency. 
+
+[Optimizing Lens Model: Best Practices for the Semantic Layer](/resources/lens/fine_tuning_a_lens_model/)
 
 
 

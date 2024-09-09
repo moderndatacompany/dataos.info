@@ -1,17 +1,19 @@
 ---
 title: Data Sources
+search: 
+  exclude: true
 ---
 
 # Data Sources
 
 ## Connecting to sources via Depot/Cluster
 
-- [Bigquery](/resources/lens/data_sources/bigquery/)
+[Bigquery](/resources/lens/data_sources/bigquery/)
 
-- [AWS Redshift](/resources/lens/data_sources/awsredshift/)
+[AWS Redshift](/resources/lens/data_sources/awsredshift/)
 
-- [Themis](/resources/lens/data_sources/themis/)
+[Themis](/resources/lens/data_sources/themis/)
 
-- [Postgres](/resources/lens/data_sources/postgres/)
+[Postgres](/resources/lens/data_sources/postgres/)
 
-- [Minerva](/resources/lens/data_sources/minerva/)
+[Minerva](/resources/lens/data_sources/minerva/)

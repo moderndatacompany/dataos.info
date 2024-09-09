@@ -1,5 +1,7 @@
 ---
 title: BI Integrations
+search: 
+  exclude: true
 ---
 
 # BI Integrations 
@@ -7,7 +9,7 @@ title: BI Integrations
 ## Pre-requisites
 
 - **Curl**: Ensure you have `curl` installed on your system. For Windows users, you may need to use `curl.exe`. 
-- **Lens 2.0 API Endpoint**: The API endpoint provided by Lens 2.0 to sync the data with meta endpoint access.
+- **Lens API Endpoint**: The API endpoint provided by Lens to sync the data with meta endpoint access.
 - **Access Credentials**: For Superset, you will need access credentials such as username, password, and host.
 
 ## Superset
@@ -16,7 +18,7 @@ The following `curl` command is used to synchronize data from Lens to a Superset
 
 **Step 1: Run the curl command**
 
-To sync your Lens 2.0 model with Superset, execute the following curl command:
+To sync your Lens model with Superset, execute the following curl command:
 
 === "Syntax"
 
@@ -89,7 +91,8 @@ Please follow the steps outlined to see the result:
 **Step 2 Go to DataOS**: Select Superset.
 
   <div style="text-align: center;">
-      <img src="/resources/lens/bi_integration/superset2.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+      <img src="/resources/lens/
+      bi_integration/superset2.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
   </div>
 
 **Step 3 Navigate to Datasets Tab:** Here, each entity will be available in the form of datasets.
@@ -102,11 +105,11 @@ Everything is set up now. Explore and perform further analysis in Superset.
 
 ## Tableau
 
-To sync your Lens 2.0 model with Tableau, execute the following curl command:
+To sync your Lens model with Tableau, execute the following curl command:
 
 **Step 1: Run the curl command**
 
-To sync your Lens 2.0 model with Tableau, you need the following credentials:
+To sync your Lens model with Tableau, you need the following credentials:
 
 ```bash
 curl --location --request POST 'http://127.0.0.1:5000/lens2/sync/api/v1/tableau/public:company-intelligence' \
@@ -200,7 +203,7 @@ Once you enter the credentials and click on 'Sign In', you’re ready to use the
 
 **Step 1: Run the curl command**
 
-To sync your Lens 2.0 model with Power BI, execute the following curl command in your terminal:
+To sync your Lens model with Power BI, execute the following curl command in your terminal:
 
 ```bash
 curl --location --request POST 'https://liberal-donkey.dataos.app/lens2/sync/api/v1/powerbi/public:sales360' --header 'apikey: <apikey>'
