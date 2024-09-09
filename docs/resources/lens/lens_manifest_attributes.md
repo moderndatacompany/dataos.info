@@ -1,9 +1,3 @@
----
-title: Attributes of Lens manifest
-search: 
-  exclude: true
----
-
 # Attribute of Lens  manifest
 
 ## Structure of Lens manifest

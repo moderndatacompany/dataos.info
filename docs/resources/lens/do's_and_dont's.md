@@ -1,9 +1,3 @@
----
-title: Do's and Dont's
-search:
-  exclude: true
----
-
 # Do’s and Dont's 
 
 This documentation provides guidelines for using Lens functionalities, including when to create views and best practices to avoid errors.

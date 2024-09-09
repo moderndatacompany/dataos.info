@@ -1,6 +1,5 @@
 # Fine tuning a Lens model
 
-
 Lens offers multiple levers at different layers that dynamically improve the performance of your query. These caches can be used to accelerate long-running scans, and aggregate and filter operations.
 
 You can adopt different caching approaches to fine-tune the performance of your Lens:

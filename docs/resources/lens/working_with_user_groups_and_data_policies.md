@@ -1,9 +1,3 @@
----
-title: Working with User Groups and Data Policies
-search:
-  exclude: true
----
-
 # Working with User Groups and Data Policies
 
 In Lens, you can secure data in logical tables by defining data policies on their dimensions and segments. This guide will walk you through the steps to create user groups and apply data policies effectively.

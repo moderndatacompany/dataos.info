@@ -1,9 +1,3 @@
----
-title: Attributes of Docker Compose manifest
-search: 
-  exclude: true
----
-
 # Attributes of Docker Compose manifest
 
 ## Structure of docker-compose manifest
