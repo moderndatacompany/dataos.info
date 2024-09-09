@@ -1,8 +1,4 @@
----
-title: Consumption of Lens using Python
----
-
-# Consumption of Lens using Python
+# Exploration of Lens using Python
 
 ## Using Lens APIs
 

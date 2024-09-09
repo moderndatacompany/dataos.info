@@ -1,8 +1,4 @@
----
-title: Consumption of Lens using SQL APIs
----
-
-# Consumption of Lens using SQL APIs
+# Exploration of Lens using SQL APIs
 
 In this guide, we'll walk you through the steps to connect to a deployed Lens using a SQL client (like `psql` and `dataos-ctl usql` interfaces. 
 
