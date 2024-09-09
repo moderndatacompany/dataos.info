@@ -93,7 +93,7 @@ This section involves step-by-step guide to set up Talos on your local enviromen
           - /home/Desktop/talos-examples/depot/depot-bigquery:/etc/dataos/work
         environment:
           DATAOS_RUN_AS_USER: iamgroot
-          DATAOS_RUN_AS_APIKEY: dG9rZW5fYWRtaXR0ZWRseV9uYXR1cmFsbHlfZW5hYmxpbmdfb3J5eC5lODg2MjIyfgjg05NWEtYjU3MC01YTJiZWY5MjI5OGE=
+          DATAOS_RUN_AS_APIKEY: dG9rZW5fYWRtaXR0ZWRseV9uYXR1cmFsbHlfZW5hYmxpbmdfb3J5eC5lODg2MjIyfNWEtYjU3MC01YTJiZWY5MjI5OGE=
           DATAOS_FQDN: liberal-donkey.dataos.app
         tty: true
     ```
@@ -162,7 +162,7 @@ This section involves step-by-step guide to set up Talos on your local enviromen
 8. Now you are ready to fetch your data using your DataOS API key. On your browser copy the below link by updating the path and API key with your actual DataOS API key:
     
     ```
-    http://localhost:3000/api/customer?apikey=dG9rZW5fYWRt9uYXR1cmFsbHlfZgfhgu567rgdffC5lODg2MjIyZC05NDMwLTQ4MWEtYjU3MC01YTJiZWY5MjI5OGE=
+    http://localhost:3000/api/customer?apikey=dG9rZW5fYWRt9uYXR1cmFsbHlfZgfhgu567rgdffC5lODg2MjIyZC05NDMwLTQU3MC01YTJiZWY5MjI5OGE=
     ```
     
     Successful execution will look like the following:
