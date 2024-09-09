@@ -170,3 +170,6 @@ segments:
 ```
 
 **Example:** Filtering rows to show only online sales data to all user groups except `reader`.
+
+
+> <b>Note:</b> When you apply any data policy in Lens, it automatically propagates from the Lens model to all BI tool syncs. For example, if you redact the email column for a specific user group using a data policy in Lens, that column will remain redacted when users from that group sync their Lens model with BI tools like Tableau or Power BI. 
