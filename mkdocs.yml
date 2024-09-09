@@ -620,6 +620,9 @@ nav:
           - quick_guides/exploring_lens_on_metis/index.md
         - Working on Lens Studio:
           - quick_guides/working_on_lens_studio/index.md
+        - Working with Payloads:
+          - quick_guides/working_with_payload/index.md
+          - Example Scenarios: quick_guides/working_with_payload/filter_operator_example_scenarios/index.md
         - Creating a Lens: 
           - quick_guides/create_lens/index.md
         - Using a Lens: 
