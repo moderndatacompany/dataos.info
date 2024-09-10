@@ -1,4 +1,4 @@
-# Quick Guide: Deploying Your Data Model
+# Deploying Your Data Model
 
 !!! info "Information"
     Ready to deploy your Lens model on DataOS? This quick guide will walk you through the process, ensuring a smooth and secure deployment. Let's get your Lens Resource up and running in no time!
