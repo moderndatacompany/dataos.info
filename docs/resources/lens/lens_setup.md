@@ -32,7 +32,7 @@ model
 docker-compose.yml // Orchestrates multi-container services (e.g., database, web server)
 ```
 
-- **`sqls` Folder**
+- **Create `sqls` Folder**
     - This directory will contain SQL scripts corresponding to the dimensions of tables.  A dedicated SQL file needs to be maintained for each table. The SQL dialect used will be source-specific.
 
 - **Create `tables` Folder**
