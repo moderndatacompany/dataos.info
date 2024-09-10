@@ -1,4 +1,4 @@
-# Quick Guide: Defining Data Model
+# Defining Data Model
 
 !!! info "Information"
     Before diving into designing your Lens, start by defining the key questions you want to answer and the metrics you'll need. Consider the specific aspects of your data you wish to analyze. For instance, with retail data, you might explore which products are top sellers in various regions or identify the customers with the highest spending. By focusing on these outcomes, you'll ensure your Lens is tailored to your exact requirements.

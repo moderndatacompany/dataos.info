@@ -1,4 +1,4 @@
-# Quick Guide: Creating Data Model (Lens)
+# Creating Data Model (Lens)
 
 !!! info "Information"
     This guide offers step-by-step instructions to help you create a Lens model in DataOS, transforming your conceptual design into a functional data model. By following this guide, you'll learn how to structure and organize your data effectively, ensuring it meets your analytical and business needs.
@@ -17,13 +17,13 @@ Follow the below steps to create a data model (Lens).
 
 ## Pre-requisites
 
-- **VS Code**: A code editor to build Lens Model YAMLs.
+-  A code editor for creating manifest files (YAML) of the Lens model. 
 
 ## Step 1: Set Up Lens Model Folder
 
 **Download the Lens Project Template** which includes the necessary folder hierarchy. Rename it as needed.
 
-**Download:** [lens-project-template.zip](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/3485591c-b77e-4359-a7b5-bdc04f270939/lens-project-template.zip)
+**Download:** [lens-project-template.zip](/resources/lens/lens_setup/lens-project-template.zip)
 
 <aside class="callout">
 🗣 When you download the template, you'll find a `docker-compose.yml` file included. This file is only needed if you plan to test your Lens model locally before deploying it to production.
@@ -32,11 +32,11 @@ Follow the below steps to create a data model (Lens).
 
 ### **Model Folder Structure:**
 
-The model folder structure is essential for managing your SQL scripts and business entity manifest files.
-
 The model folder structure is essential for managing your SQL scripts and business entity manifest files for your Lens model.
 
-![lens_model_folders.png](/quick_guides/create_data_model/lens_model_folders.png)
+<div style="text-align: center; padding-left: 1em;">
+<img src="/quick_guides/create_data_model/lens_model_folders.png" alt="flens_model_folders.png" style="max-width: 40%; height: auto; border: 1px solid #000;">
+</div>
 
 ## Step 2: Define SQL Scripts for Tables
 
@@ -51,9 +51,9 @@ FROM
 
 **Example SQL Files**
 
-For our data model, we are fetching Customer, Product, and Transaction data from DataOS lakehouse storage Icebase.
+For our data model, we are fetching Customer, Product, and Transaction data from DataOS lakehouse storage.
 
-Here are the SQLs for the tables, identified as business objects during the conceptually designing our data model. This will help extract relevant fields from the source for our data model based on our analytical requirement.
+Here are the SQL scripts for the tables, identified as business objects during the conceptual design of our data model. This will help extract relevant fields from the source for our data model based on our analytical requirement.
 
 <details><summary>Customer.sql</summary>
     
@@ -264,11 +264,23 @@ Defines segments/complex filters that can be used during analysis.
 | `name` | The name of the segment. |
 | `public` | Specifies visibility of the segment. |
 | `sql` | SQL condition for the segment filter. |
-| `meta` | Metadata for security and user groups.
-• **`secure`**: Defines user group access for the segment.
+| `meta` | This field is used to define custom metadata. Under secure, you can specify, as sub-property, the list of user groups to which the segment is applicable.  |
 
-    ◦ **`user_groups`**: List of user groups for which the segment is applicable. For example, `default` includes all users by default. |
 
+```yaml
+meta:
+  secure:
+  user_groups: 
+      includes:
+      - type_analyst
+      - type_scientist
+      excludes:
+      - default
+```
+
+<aside class="callout">
+🗣 The order of the user groups matters. Data security policies set by an earlier user group take precedence over those defined by any following user groups.
+</aside>
 **Example YAML Files** 
 
 Here are the manifest files of the tables for the business entities for our data model.
@@ -986,7 +998,9 @@ user_groups:
 
 This is how folder structure looks like for our data model.
 
-![folder_structure_data_model.png](/quick_guides/create_data_model/folder_structure_data_model.png)
+<div style="text-align: center; padding-left: 1em;">
+<img src="/quick_guides/create_data_model/folder_structure_data_model.png" alt="folder_structure_data_model.png" style="max-width: 40%; height: auto; border: 1px solid #000;">
+</div>
 
 ## Next Steps
 
