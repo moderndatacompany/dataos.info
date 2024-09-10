@@ -1,7 +1,3 @@
----
-title: Deploying Lens model on DataOS
----
-
 # Deploying Lens model on DataOS 
 
 This guide provides instructions for setting up Lens in the DataOS environment, importing an existing Lens project from a local machine using SSH, and integrating it with your database, utilizing version control tools such as Bitbucket or Git for seamless CI/CD integration.

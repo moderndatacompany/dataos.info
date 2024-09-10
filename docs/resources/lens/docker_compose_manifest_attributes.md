@@ -1,10 +1,6 @@
----
-title: Attributes of Lens Docker Compose manifest
----
+# Attributes of Docker Compose manifest
 
-# Attributes of Lens Docker Compose manifest
-
-## Structure of Lens Docker Compose manifest
+## Structure of docker-compose manifest
 
 ```yaml
  version: "2.2"
@@ -54,7 +50,7 @@ services:
       - ./model:/etc/dataos/work/model
 ```
 
-## Configuration
+# Configuration
 
 ### **`version`**
 
@@ -126,9 +122,11 @@ x-lens2-environment: &lens2-environment
 
 ---
 
+# Services section configuration
+
 ### **`api`**
 
-**Description:** API service configuration for the Lens.
+API service configuration for the Lens.
 
 **Example usage:**
 
@@ -146,9 +144,9 @@ services:
       - ./model:/etc/dataos/work/model
 ```
 
----
+**Fields:**
 
-### **restart** 
+**restart** 
 
 **Description:** Restart policy for the API service.
 
@@ -162,9 +160,7 @@ services:
 restart: always
 ```
 
----
-
-### **image** 
+**image** 
 
 **Description:** Docker image for the API service.
 
@@ -178,9 +174,7 @@ restart: always
 image: rubiklabs/lens2:0.35.55-01 
 ```
 
----
-
-### **ports**
+**ports**
 
 **Description:**  Ports mapping for the API service.
 
@@ -195,10 +189,8 @@ ports:
   - 4000:4000
   - 25432:5432
 ```
-
----
-
-### **environment**
+        
+**environment**
 
 **Description:** Environment variables for the service.
 
@@ -213,9 +205,7 @@ environment:
   <<: *lens2-environment
 ```
         
----
-
-### **volumes** 
+**volumes** Volume mappings for the API service.
 
 **Description:** The volume mappings for the API service.
 

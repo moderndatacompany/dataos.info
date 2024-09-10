@@ -1,8 +1,4 @@
----
-title: Working with Payload in Lens
----
-
-# Working with Payload in Lens
+# Working with Payload
 
 ## Introduction
 

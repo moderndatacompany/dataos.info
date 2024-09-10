@@ -1,10 +1,6 @@
----
-title: Lens API Endpoints and Scopes
----
+# API Endpoints and Scopes
 
-# Lens API Endpoints and Scopes
-
-Each REST API endpoint belongs to an API scope, e.g., the `**/v2/load**` endpoint belongs to the `**data**` scope. API scopes provide a way to secure access to API endpoints, allowing you to limit accessibility to specific users or roles, or disallow access entirely. By default, API endpoints in all scopes (except for jobs) are accessible to everyone, allowing broad access unless specifically restricted. 
+Each REST API endpoint belongs to an API scope, e.g., the `/v2/load` endpoint belongs to the `data` scope. API scopes provide a way to secure access to API endpoints, allowing you to limit accessibility to specific users or roles, or disallow access entirely. By default, API endpoints in all scopes (except for jobs) are accessible to everyone, allowing broad access unless specifically restricted. 
 
 You can manage API access using the [user_groups](/resources/lens/user_groups/). The default user group ensures that API endpoints in all scopes are accessible to everyone. You can create custom user groups by defining roles and associating specific users with these roles in the user_group.yml file. To know more about user groups click [here](/resources/lens/user_groups/).
 
@@ -51,20 +47,20 @@ The API Token is passed via the Authorization Header. The token itself is a `dat
 
 Provides access to metadata-related endpoints. This scope allows users to view metadata, which typically includes information about sources, authors, timezones, security context, user groups, etc.
 
-<h3><strong><code>\v2\meta</code> endpoint</strong></h3>
+### **meta endpoint**
 
 Get meta-information for lens and views defined in the data model. Information about lens and lens with "**public: false**" will not be returned.
 
 === "Syntax"
 
     ```bash
-    http://<host_name>:<port_name>/lens2/api/<data_model_name>/v2/meta
+    http://<DATAOS_FQDN>/lens2/api/<data_model_name>/v2/meta
     ```
 
 === "Example"
 
     ```bash
-    http://localhost:4000/lens2/api/sales_analysis/v2/meta
+    http://liberal-monkey.dataos.app/lens2/api/sales_analysis/v2/meta
     ```
   
 **Example response:**
@@ -102,7 +98,7 @@ Get meta-information for lens and views defined in the data model. Information a
 
 ## data scope
 
-<h3><strong><code>/v2/load</code> endpoint</strong></h3>
+### **load endpoint**
 
 Executes queries to retrieve data based on the specified dimensions, measures, and filters. When you need to perform data analysis or retrieve specific data from the data model. 
 
@@ -110,30 +106,35 @@ Use `POST` request method along with `/load` endpoint to add or update the data.
 
 You can use either of the following methods:
 
-=== "Syntax"   
+=== "Method 1"
 
-    ```bash
-    http://<host_name>:<port_name>/lens2/api/<data_model_name>/v2/load?query=<query_parameters>
-    ```
-=== "Example"
+    === "Syntax"   
 
-    ```bash
-    http://localhost:4000/lens2/api/sales_analysis/v2/load?query={"dimensions":["customer.customer_id","customer.annual_income"],"measures":["customer.total_customers", "customer.average_age"]}
-    ```
+        ```bash
+        http://<DATAOS_FQDN>/lens2/api/<data_model_name>/v2/load?query=<query_parameters>
+        ```
+    === "Example"
 
-=== "Syntax"  
+        ```bash
+        http://<liberal-monkey.dataos.app>/lens2/api/sales_analysis/v2/load?query={"dimensions":["customer.customer_id","customer.annual_income"],"measures":["customer.total_customers", "customer.average_age"]}
+        ```
+=== "Method 2"
 
-    ```bash
-    http://<host_name>:<port_name>/lens2/api/<data_model_name>/v2/load
-    ```  
+    === "Syntax"  
 
-=== "Example"
-                                                                                
-    ```bash
-    http://localhost:4000/lens2/api/sales_analysis/v2/load?query={"dimensions":["customer.customer_id","customer.annual_income"],"measures":["customer.total_customers", "customer.average_age"]}
-    ```                                                         
+        ```bash
+        http://<DATAOS_FQDN>/lens2/api/<data_model_name>/v2/load
+        ```  
 
-In the POST request body, include the query parameters in the JSON Query Format:
+    === "Example"
+                                                                                    
+        ```bash
+        http://liberal-monkey.dataos.app/lens2/api/sales_analysis/v2/load?query={"dimensions":["customer.customer_id","customer.annual_income"],"measures":["customer.total_customers", "customer.average_age"]}
+        ```                                                         
+
+In the `POST` request body, include the query parameters in the JSON Query Format:
+
+**Example Query**
 
 ```bash
 {
@@ -187,21 +188,21 @@ In the POST request body, include the query parameters in the JSON Query Format:
 }
 ```
 
-<h3><strong><code>/v2/sql</code> endpoint</strong></h3>
+### **sql endpoint**
 
 Alternatively, you can use `/sql` endpoint.
 
 ```bash
-http://localhost:4000/lens2/api/sales_analysis/v2/sql
+http://liberal-monkey.dataos.app/lens2/api/sales_analysis/v2/sql
 ```
 
 configure the body with the JSON Query Format similar to `/load`.
 
 ## graphql
 
-Grants access to GraphQL endpoints. GraphQL is a query language for APIs that allows clients to request only the data they need. This scope enables users to perform GraphQL queries and mutations.
+Grants access to GraphQL endpoints. GraphQL is a query language for APIs that allows clients to request only the data they need. This scope enables users to perform GraphQL queries and mutations. To know more about How to use GraphQL click [here](/resources/lens/exploration_of_lens_using_graphql/)
 
-## source scope:
+## source 
 
 Grants access to source-related endpoints. 
 
@@ -236,46 +237,205 @@ Grants access to source-related endpoints.
   </table>
 </div>
 
-<h3><strong><code>/v2/default/schemas</code> endpoint</strong></h3>
+<!-- ### **default/schemas endpoint**
 
 
 This endpoint retrieves all the schemas available within the source depot. For example if source is icebase it will get the list of all the schemas present in icebase depot.
 
 **Example Request**
 
-```http
-GET http://localhost:4000/lens2/api/v2/default/schemas
+```
+GET | http://liberal-monkey.dataos.app/lens2/api/v2/default/schemas
 ```
 
-**Example Response**
+**Example Response** -->
 
-<h3><strong><code>/v2/default/schemas/&lt;collection_name&gt;/tables</code> endpoint</strong></h3>
 
+
+### **Default Schema Collection Tables Endpoint**
 
 This endpoint fetches all tables within a specified schema (collection).
 
 **Example Requests**
 
+For instance, if you want to fetch all tables in sandbox schema
+
+```
+GET | https://liberal-monkey.dataos.app/lens2/api/public:sales360/v2/default/schemas/sandbox/tables
+```
+
 **Example Response**
+
+```json
+{
+    "data": {
+        "members": [
+            "schema_name",
+            "table_name"
+        ],
+        "dataset": [
+            [
+                "sandbox",
+                "customer"
+            ],
+    
+            [
+                "sandbox",
+                "locations"
+            ],
+        
+            [
+                "sandbox",
+                "products"
+            ],
+            [
+                "sandbox",
+                "items"
+            ],
+        
+            [
+                "sandbox",
+                "transactions"
+            ],
+            [
+                "sandbox",
+                "company_data"
+            ],
+        
+            [
+                "sandbox",
+                "sales"
+            ],
+
+  
+            [
+                "sandbox",
+                "ratings"
+            ],
+            
+        ]
+    }
+}
+```
  
-<h3><strong><code>/v2/default/schemas/&lt;collection_name&gt;/tables/&lt;table_name&gt;</code> endpoint</strong></h3>
+### **Specific Table in Schema Collection Endpoint:**
 
 This endpoint retrieves detailed information about a specific table within a schema.
 
 **Example Requests**
 
-```http
-GET http://localhost:4000/lens2/api/v2/default/schemas/sales360/tables/customers
+For example, to retrieve the details of the city table within the sales360 schema, you can use the following query.
+
+```
+GET | http://liberal-monkey.dataos.app/lens2/api/v2/default/schemas/sales360/tables/city
 ```
 
 **Example Response**
 
-<h3><strong><code>/v2/default/load-source?responseType=default</code> endpoint</strong></h3>
 
+```json
+{
+    "data": {
+        "members": [
+            "column_name",
+            "table_name",
+            "schema_name",
+            "data_type",
+            "foreign_keys"
+        ],
+        "dataset": [
+            [
+                "__metadata",
+                "city",
+                "retail",
+                "map(varchar, varchar)",
+                []
+            ],
+            [
+                "city_id",
+                "city",
+                "retail",
+                "varchar",
+                []
+            ],
+            [
+                "zip_code",
+                "city",
+                "retail",
+                "integer",
+                []
+            ],
+            [
+                "city_name",
+                "city",
+                "retail",
+                "varchar",
+                []
+            ],
+            [
+                "county_name",
+                "city",
+                "retail",
+                "varchar",
+                []
+            ],
+            [
+                "state_code",
+                "city",
+                "retail",
+                "varchar",
+                []
+            ],
+            [
+                "state_name",
+                "city",
+                "retail",
+                "varchar",
+                []
+            ],
+            [
+                "version",
+                "city",
+                "retail",
+                "varchar",
+                []
+            ],
+            [
+                "ts_city",
+                "city",
+                "retail",
+                "timestamp(6) with time zone",
+                []
+            ],
+            [
+                "decimal_column",
+                "city",
+                "retail",
+                "decimal(7,3)",
+                []
+            ],
+            [
+                "string",
+                "city",
+                "retail",
+                "varchar",
+                []
+            ]
+        ]
+    }
+}
+```
+<!-- ### **Default Load Source with Response Type Endpoint**
 
-This endpoint is used to load data from a specified source into Lens 2.0. The responseType parameter defines the type of response expected. In this case, it’s set to default.
+```
+default/load-source?responseType=default endpoint
+```
 
-## Continue wait
+This endpoint is used to load data from a specified source into Lens. The responseType parameter defines the type of response expected. In this case, it’s set to default. -->
+
+## Possible Responses
+
+### **Continue wait**
 
 If the request takes too long to be processed, Lens Backend responds with { "error": "Continue wait" } and 200 status code. This is how the long polling mechanism in Lens is implemented. Clients should continuously retry the same query in a loop until they get a successful result. Subsequent calls to the Lens endpoints are idempotent and don't lead to scheduling new database queries if not required by the refresh_key. Also, receiving Continue wait doesn't mean the database query has been canceled, and it's actually still being processed by the Lens. Database queries that weren't started and are no longer waited by the client's long polling loop will be marked as orphaned and removed from the querying queue.
 

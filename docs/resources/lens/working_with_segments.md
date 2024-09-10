@@ -1,7 +1,3 @@
----
-title: Working with Segments
----
-
 # Working with Segments
 
 ## When to use Segments?

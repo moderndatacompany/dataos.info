@@ -59,6 +59,8 @@ Learn how to examine and experiment with logical data models. Lens will help you
 -   [Exploring Lens Model on Catalog](/quick_guides/exploring_lens_on_metis/)
 
 -   [Working on Lens Studio](/quick_guides/working_on_lens_studio/)
+
+-   [Working with Payloads](/quick_guides/working_with_payload/)
      
 </div>
 

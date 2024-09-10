@@ -1,12 +1,9 @@
----
-title: Consumption of Lens using REST APIs
----
+# Exploration of Lens using REST APIs
 
-# Consumption of Lens using REST APIs
-
-REST API enables Lens to deliver data over the HTTP protocol. It is is enabled by default and secured using [API scopes](/resources/lens/consumption_usin_rest_apis/#api-endpoints-and-scopes). It consists of a base path and API scopes:
+REST API enables Lens to deliver data over the HTTP protocol. It is is enabled by default and secured using [API scopes](/resources/lens/exploration_of_lens_using_rest_apis/#api-endpoints-and-scopes). It consists of a base path and API scopes:
 
 - **Base Path:** All REST API endpoints are prefixed with `/lens2/api`. For example, `/v2/meta` is available at `/lens2/api/<lens_name>/v2/meta`
+.
 
 - **API Scopes:** Endpoints are secured by API scopes, restricting access based on user permissions. Follows the principle of least privilege to grant only necessary access.
 
@@ -82,7 +79,7 @@ Get meta-information for lens and views defined in the data model. Information a
 === "Example"
 
     ```bash
-    http://localhost:4000/lens2/api/sales_analysis/v2/meta
+    http://liberal_monkey.dataos.app/lens2/api/sales_analysis/v2/meta
     ```
   
 **Example response:**

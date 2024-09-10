@@ -1,7 +1,3 @@
----
-title: Working with User Groups and Data Policies
----
-
 # Working with User Groups and Data Policies
 
 In Lens, you can secure data in logical tables by defining data policies on their dimensions and segments. This guide will walk you through the steps to create user groups and apply data policies effectively.
@@ -51,24 +47,11 @@ user_groups: # List of user groups
 | **Attribute** | **Description** | **Requirement** | **Best Practice** |
 | --- | --- | --- | --- |
 | `user_groups` | The top-level mapping contains the list of user groups. Each user group defines a set of users and respective access controls.  | mandatory |  |
-| `name` | The name of the user group.  | mandatory | - It should be unique and descriptive to identify the group's purpose, or role of the group such as `data analyst`, `developer`, etc.
-- Maintain a consistent naming convention across all user groups. For e.g. use underscores or hyphens consistently, and stick with it across all groups (e.g., `data_analyst` or `data-analyst`).
--  Avoid using abbreviations or acronyms that might be unclear. For e.g.  Instead of `name: eng_grp`, use name: `engineer_group`. Use `name: data_engineer` instead of `name: de`. |
-| `description` | A brief description of the user group. | optional | The description should explain the user group’s purpose and the type of users it contains. E.g.  |
-| `api_scopes` | A list of API scopes that the user group members are allowed to access. Each scope represents specific endpoints or functionality. Click`api_scopes` arcurrently supported:
+| `name`      | The name of the user group.                                                                                                                   | mandatory                                                                                                               | - It should be unique and descriptive to identify the group's purpose, or role such as `data analyst`, `developer`, etc.<br> &nbsp; - Maintain a consistent naming convention across all user groups. For example, use underscores or hyphens consistently, and stick with it across all groups (e.g., `data_analyst` or `data-analyst`).<br> &nbsp; - Avoid using abbreviations or acronyms that might be unclear. For example, instead of `name: eng_grp`, use `name: engineer_group`. Use `name: data_engineer` instead of `name: de`. |
+| `includes`  | A list of users to be included in the user group. This can be specific user IDs or patterns to include multiple users. Use `"*"` to include all users or specify user IDs. | mandatory                                                                                                               | - If the number of users is small, prefer using explicit user identifiers (e.g., `users:id:johndoe`) over generic patterns (e.g., `*`).<br> &nbsp &nbsp &nbsp &nbsp; - Example:<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>includes:<br> - `"*"`<br>|
+| `excludes`  | A list of users to be excluded from the user group. This can be specific user IDs or patterns to exclude certain users from the group.           | optional                                                                                                                | - If including all users, use `excludes` to remove specific users who should not have access.<br> &nbsp; &nbsp;&nbsp;&nbsp; - Example:<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>excludes:<br> - `users:id:johndoe`<br>|
 
-- `meta`: Provides access to metadata-related endpoints.
-- `data`: This scope enables users to retrieve, and analyze data.
-- `graphql`: Grants access to GraphQL endpoints. GraphQL is a query language for APIs that allows clients to request only the data they need. 
-- `jobs`: Provides access to job-related endpoints. 
-- `source`: Grants access to source-related endpoints.  | optional (by default all `api_scopes` are included if not explicitly specified) | Follow the principle of least privilege and grant users the minimum level of access required to perform their job functions |
-| `includes` | A list of users to be included in the user group. This can be specific user IDs or patterns to include multiple users. Use `"*"` to include all users or specify user IDs. | mandatory | If the number of users is less, prefer using explicit user identifiers (e.g., `users:id:johndoe`) over generic patterns (e.g., `*`). |
-| `excludes` | A list of users to be excluded from the user group. This can be specific user IDs or patterns to exclude certain users from the group. | optional | If including all users, use `excludes` to remove specific users who should not have access.
-For e.g.
-includes: 
-  - `"*"`
-excludes: 
-- `users:id:johndoe` |
+
 
 ## Group Priority
 
@@ -187,3 +170,6 @@ segments:
 ```
 
 **Example:** Filtering rows to show only online sales data to all user groups except `reader`.
+
+
+> <b>Note:</b> When you apply any data policy in Lens, it automatically propagates from the Lens model to all BI tool syncs. For example, if you redact the email column for a specific user group using a data policy in Lens, that column will remain redacted when users from that group sync their Lens model with BI tools like Tableau or Power BI. 
