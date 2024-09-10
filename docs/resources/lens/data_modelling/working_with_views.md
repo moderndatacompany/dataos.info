@@ -1,5 +1,7 @@
 ---
 title: Working with Views
+search:
+  exclude: true
 ---
 
 # Working with Views

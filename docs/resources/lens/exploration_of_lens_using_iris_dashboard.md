@@ -1,10 +1,10 @@
 ---
-title: Consumption of Lens using Iris Board
+title: Exploration of Lens using Iris Board
 search: 
   exclude: true
 ---
-
-# Consumption of Lens using Iris Board
+<!-- 
+# Exploration of Lens using Iris Board
 
 Iris serves as an operational dashboard, providing a swift overview of your key performance metrics(measures) over time. It enables you to delve deeper into these metrics(measures) across various dimensions, aiding in the understanding of anomalies or observed differences. You can expose your Lens View to Iris boards, allowing you to observe measures across various dimensions defined within it.
 
@@ -71,4 +71,4 @@ Alternatively, you can navigate through the following steps:
 - Access the **Resources** section.
 - Select the **Lens** resource.
 - Locate your deployed Lens and click on it.
-- You will find the **Iris** link button—click it to view your View in Iris Board.
+- You will find the **Iris** link button—click it to view your View in Iris Board. -->

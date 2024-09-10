@@ -1,7 +1,3 @@
----
-title: Model-first Approach
----
-
 # The Model-First Approach
 
 The model-first approach emphasizes the logical organization and design of data from the outset to address both immediate tactical queries and overarching strategic inquiries in business operations.

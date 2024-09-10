@@ -1,4 +1,4 @@
-# Quick Guide: Testing Data Model Locally
+# Testing Data Model Locally
 
 !!! info "Information"
     This guide offers a step-by-step approach to validating your SQL queries within the data model, enabling you to test them directly on your local machine. Testing your Lens model locally is a best practice, ensuring that the resulting tables and joins function as intended before deploying them in a production environment on DataOS.
@@ -36,8 +36,9 @@ Refer to the [Quick Guide: Creating Data Model (Lens)](/quick_guides/create_data
 
 When you download the Lens Project Template, it includes `docker-compose.yml` and the necessary folder hierarchy. This file is essential for testing your Lens setup locally.
 
-**Syntax**
+This template is pre-configured with most of the necessary settings, so you only need to update a few fields to suit your specific needs.
 
+<details><summary>Click here to see the docker-compose.yml file</summary>
 ```yaml
 version: "2.2"
 
@@ -93,8 +94,9 @@ environment:
 volumes:
 - ./model:/etc/dataos/work/model
 ```
+</details>
 
-Modify the `docker-compose.yml` file to include your environment's URL, lens metadata, and source details, ensuring the setup is tailored to your specific needs.
+Modify the `docker-compose.yml` file to include your environment's URL, Lens metadata, and source details, ensuring the setup is tailored to your specific needs.
 
 1. **Environment URL:**
     
@@ -133,10 +135,11 @@ Modify the `docker-compose.yml` file to include your environment's URL, lens met
       LENS2_SOURCE_CATALOG_NAME: catalog_name #add the catalog name
       DATAOS_RUN_AS_APIKEY: ******
     ```  
-<!--     
+    <!--     
     🗣 If connecting without a Depot, refer to the [environmental variables guide](https://www.notion.so/Supported-Sources-5d0da3eaf1b14eca82e4d7d1aafe6b86?pvs=21) for different sources, as each may require a specific set of settings.
      -->    
 4. **Verify Service Configuration:**
+
     - Ensure that the image tag is up to date or is the same as the one you pulled in the prerequisite stage.
 
 ## Step 2: Starting Your Lens Locally
