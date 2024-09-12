@@ -1,4 +1,4 @@
-# Exploration of Lens using GraphQL
+# Exploration of deployed Lens using GraphQL
 
 Lens provides a GraphQL API interface for querying your deployed model. This document will guide you through the process of accessing the GraphQL interface and executing queries against the Lens model. You can interact with the Lens GraphQLAPI either through:
 
@@ -12,26 +12,26 @@ Lens provides a GraphQL API interface for querying your deployed model. This doc
 
 The GraphQL Tab in Lens Studio provides an interactive environment for writing and executing GraphQL queries.
 
-**Step 1:** Navigate to the deployed Lens on Metis UI
+**Step 1:** Navigate to the deployed Lens on [Metis UI](/interfaces/metis/).
 
 <div style="text-align: center;">
     <img src="/resources/lens/consumption_of_deployed_lens/graphql/graphql1.png" alt="graphql" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 
-**Step 2:** Click on the ‘Explore in Studio’ Button
+**Step 2:** Click on the ‘Explore in Studio’ Button.
 
 <div style="text-align: center;">
     <img src="/resources/lens/consumption_of_deployed_lens/graphql/graphql2.png" alt="graphql" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-**Step 3:** Navigate to the ‘Explore’ tab on Studio
+**Step 3:** Navigate to the **GraphQL** tab on Studio.
 
 <div style="text-align: center;">
     <img src="/resources/lens/consumption_of_deployed_lens/graphql/graphql3.png" alt="graphql" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-**Step 4:** Create the GraphQL Query
+**Step 4:** Create the GraphQL Query.
 
 1. In the left pane, enter your GraphQL query. You can press `Ctrl` + `Space` to bring up the autocomplete window. For example:
 
