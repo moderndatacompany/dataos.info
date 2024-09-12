@@ -1,4 +1,4 @@
-# Data Governance
+# Data governance
 
 You can govern data access based on individual user or user groups, allowing you to control the level of data visibility and interaction according to each group's role. Follow the below section to create a user group. In this section, we will guide you to create user groups. 
 
@@ -10,7 +10,7 @@ auth:
   heimdallUrl: https://${{cheerful-maggot.dataos.app}}/heimdall
 ```
 
-## Add User group 
+## Add user group 
 
 Add user groups to control the access to API in `config.yaml`.
 
