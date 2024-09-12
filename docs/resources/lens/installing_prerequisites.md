@@ -10,7 +10,7 @@ Before setting up Lens on your local system, ensure you meet the following requi
 
 ### **Docker**
 
-Docker is required to run Lens in an isolated environment on a local system. This guide provides instructions for installing Docker if it is not already installed. If Docker is already installed, the next step in the setup process can be skipped.
+Docker is required to run Lens in an isolated environment on a local system. This guide provides instructions for installing Docker if it is not already installed. If Docker is already installed, you can jump to the [next step](/resou) in the setup process.
 
 **Checking for Existing Installation**
 
@@ -121,30 +121,25 @@ Lens includes a Visual Studio Code extension that enhances the efficiency and pr
 
 - **MacOS**: For MacOS users, installation instructions can be found in the [Install VS Code on macOS guide](https://code.visualstudio.com/docs/setup/mac).
 
-**Installing the Lens Visual Studio Code Extension Post-Installation**
+
+### **Lens2 VS Code Extension**
 
 After installing VS Code, the development environment can be enhanced by installing the Lens VS Code extension:
 
-1. **Launch VS Code:** Open Visual Studio Code on the computer.
+1. Open Visual Studio Code on the computer.
 
-2. **Access the Extension Marketplace:**
+2. Click on the Extensions view icon in the Sidebar or press **Ctrl+Shift+X**.
 
-    Click on the Extensions view icon in the Sidebar or press Ctrl+Shift+X.
-
-3. **Search and Install the Lens Extension:**
-
-    In the Extensions view, type Lens2 into the search field and press Enter.
+3. In the Extensions view, type **lens2** into the search field and press **Enter** and Click **Install**.
 
 <center>
   <div style="text-align: center;">
     <img src="/resources/lens/installing_prerequisites/lens_extension.png" alt="lens_example" style="width: 40%; border: 1px solid black; height: auto">
-    <figcaption>Lens2 VS Code Extension</figcaption>
+    <figcaption>lens2 VS Code Extension</figcaption>
   </div>
 </center>
 
-- Find the Lens2 extension in the list and click the **Install** button.
-
-**Note:** The dataos-lens2 extension depends on the Red Hat YAML extension. Ensure that it is also installed, using a similar procedure.
+**Note:** The dataos-lens2 extension depends on the **Red Hat YAML extension**. Ensure that it is also installed, using a similar procedure.
 
 <center>
   <div style="text-align: center;">
@@ -153,6 +148,19 @@ After installing VS Code, the development environment can be enhanced by install
   </div>
 </center>
 
+Type the following commands to quickly generate Lens2 tables, views, dimensions, measures, joins, preaggregations and segments:
+
+- lens2_tables
+- lens2_views
+- lens2_measure
+- lens2_dimension
+
+<center>
+  <div style="text-align: center;">
+    <img src="/resources/lens/installing_prerequisites/lens2extension.gif" alt="lens_example" style="width: 60%; border: 1px solid black; height: auto">
+    <figcaption>typing lens2_tables and click enter to getYAML Template .</figcaption>
+  </div>
+</center>
 
 ### **Python**
 
@@ -168,38 +176,28 @@ Python 3.8.14
 
 - The expected output should be **`Python 3.X`** or another version that is greater than 3.7.  If the existing version is not greater than 3.7, update Python to a newer version.
 
-**Installing Python**
+**Installing Python** 
 
 If Python is not already installed on the system, follow the steps below to download and install the appropriate version.
 
-1. **Access the Installation Guide**:
+1. **Access the Installation Guide**: Visit the [Python Installation Guide](https://realpython.com/installing-python/#how-to-install-python-on-windows). This guide provides detailed instructions for installing Python on various operating systems, including Windows, macOS, and Linux.
 
-  - Visit the [Python Installation Guide](https://realpython.com/installing-python/#how-to-install-python-on-windows). This guide provides detailed instructions for installing Python on various operating systems, including Windows, macOS, and Linux.
-
-2. **Download Python**:
-
-  - From the guide, select the link corresponding to the operating system and download the latest version of Python.
+2. **Download Python**: From the guide, select the link corresponding to the operating system and download the latest version of Python.
           
   <aside class="callout">
   🗣 Ensure that the version is 3.7 or higher to meet Lens requirements.
   </aside>
         
-3. **Install Python**:
+3. **Install Python**: Run the downloaded installer. Be sure to check the box that says "Add Python 3.x to PATH" before clicking "Install Now". This step is crucial as it makes Python accessible from the command line.
 
-  - Run the downloaded installer. Be sure to check the box that says "Add Python 3.x to PATH" before clicking "Install Now". This step is crucial as it makes Python accessible from the command line.
-
-4. **Verify Installation**:
-
-  - After installation, open a command line interface and run the following  command to check the installed version of Python:
+4. **Verify Installation**: After installation, open a command line interface and run the following  command to check the installed version of Python:
           
     ```bash
     python3 -V
     ```
-  - The expected output should be **`Python 3.X`** or another version that is greater than 3.7.
+   - The expected output should be **`Python 3.X`** or another version that is greater than 3.7.
 
-5. **Update Python**:
-
-- If installed version of Python is older than 3.7, follow the guide on [Updating Python](https://ioflood.com/blog/update-python-step-by-step-guide/) to upgrade to a newer version that meets the Lens prerequisites.
+5. **Update Python**: If installed version of Python is older than 3.7, follow the guide on [Updating Python](https://ioflood.com/blog/update-python-step-by-step-guide/) to upgrade to a newer version that meets the Lens prerequisites.
     
 ### **Postman**
 
@@ -210,7 +208,7 @@ Postman is a tool that allows data developers to perform querying and testing wi
 
 Alternatively, you can also install Postman Extension on your Code Editor.
 
-- Search for "Postman" in the VS Code Extensions Marketplace and install the Postman extension.
+- Search for **Postman** in the VS Code Extensions Marketplace and install the Postman extension.
 
 - Open the extension within VS Code to start creating and sending requests directly from the editor.
     

@@ -1,12 +1,12 @@
 # Deploying Lens model on DataOS 
 
-This guide provides instructions for setting up Lens in the DataOS environment, importing an existing Lens project from a local machine using SSH, and integrating it with your database, utilizing version control tools such as Bitbucket or Git for seamless CI/CD integration.
+This guide provides instructions for setting up Lens in the DataOS environment, importing an existing Lens project from a local machine using SSH, utilizing version control tools such as Bitbucket or Git for seamless CI/CD integration.
 
 ## Pre-requisites
 
 Before initiating the deployment process, please ensure you have the following:
 
-- A directory containing your Lens model.
+- A directory containing Lens model.
 - Access to a hosted code repository, such as **Bitbucket**, **GitHub**, **AWS CodeCommit**, etc.
 - Operator level access permission
 
@@ -24,7 +24,7 @@ First, push your Lens model directory to a hosted code repository. This can be d
 
 
 <aside class="callout">
-🗣 If your code repository is private, you will need to create Instance Secrets with your repository credentials for later use during deployment. Public code repositories do not require Step 2.
+🗣 If your code repository is private, you will need to create <b>Instance Secrets</b> with your repository credentials for later use during deployment. Public code repositories do not require Step 2.
 </aside>
 
 ### **Step 2: Create Instance Secrets for Code Repository Credentials**
@@ -171,7 +171,7 @@ To get the details of Instance-secret created by all the users within the DataOS
     ```
 
 <aside class="callout">
-🗣 Ensure that you remember the name of the created **Instance secret**, as it will be used in the secrets attribute section of the Lens manifest file. This name is crucial for proper configuration and access within your Lens environment.
+🗣 Ensure that you remember the name of the created <b>Instance secret</b>, as it will be used in the secrets attribute section of the Lens manifest file. This name is crucial for proper configuration and access within your Lens environment.
 
 </aside>
 
@@ -256,7 +256,7 @@ For more information on how to configure a Lens manifest file, refer to the link
 Deploy the Lens model to DataOS using the `apply` command.
 
 <aside class="callout">
-🗣 When applying the manifest file from the DataOS CLI, make sure you specify the Workspace as Lens is a [Workspace-level Resource] <a href="https://dataos.info/resources/types/#workspace-level-resources" target="blank"> Workspace-level Resource</a>.
+🗣 When applying the manifest file from the DataOS CLI, make sure you specify the Workspace as Lens is a <a href="https://dataos.info/resources/types/#workspace-level-resources" target="blank"> Workspace-level Resource</a>.
 
 </aside>
 
@@ -345,4 +345,9 @@ To validate the proper creation of the Lens Resource within the DataOS environme
 
 ## Next Step
 
-[Consumption of Deployed Lens](/resources/lens/consumption_of_deployed_lens/)
+Exploration of Deployed Lens:
+
+- [Exploration of deployed Lens using SQL APIs](/resources/lens/exploration_of_deployed_lens_using_sql_apis/)
+- [Exploration of deployed Lens using Python](/resources/lens/exploration_of_deployed_lens_using_python/)
+- [Exploration of deployed Lens using REST APIs](/resources/lens/exploration_of_deployed_lens_using_rest_apis/)
+- [Exploration of deployed Lens using GraphQL](/resources/lens/exploration_of_deployed_lens_using_graphql/)
