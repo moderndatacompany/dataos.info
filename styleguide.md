@@ -259,7 +259,7 @@ https://moderndatacompany.github.io/dataos.info/
 - Stuff inside the toggle is written here. <br>
 - Toggle can contain code blocks or quotes or callouts <br>
 - Why this Kolaveri di
-<details>  
+</details>  
   
   ```bash
   code block! finally!
@@ -267,7 +267,8 @@ https://moderndatacompany.github.io/dataos.info/
   
   
   <!-- colour options -->
-  # Callouts
+
+# Callouts
 
 1.
 
@@ -608,5 +609,85 @@ https://moderndatacompany.github.io/dataos.info/
 
 <!-- colour options end here -->
      
+
+## Design element
+
+Add multiple images in a single slide! Just copy and edit the below code to add the images.
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .carousel {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .carousel img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .carousel-dots {
+            text-align: center;
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+        }
+        .carousel-dot {
+            display: inline-block;
+            height: 12px;
+            width: 12px;
+            margin: 0 4px;
+            background-color: #bbb;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .active {
+            background-color: #717171;
+        }
+    </style>
+</head>
+<body>
+
+<div class="carousel">
+    <img src="https://via.placeholder.com/600x300?text=Image+1" style="display: block;">
+    <img src="https://via.placeholder.com/600x300?text=Image+2" style="display: none;">
+    <img src="https://via.placeholder.com/600x300?text=Image+3" style="display: none;">
+    <div class="carousel-dots">
+        <span class="carousel-dot active" onclick="currentSlide(1)"></span>
+        <span class="carousel-dot" onclick="currentSlide(2)"></span>
+        <span class="carousel-dot" onclick="currentSlide(3)"></span>
+    </div>
+</div>
+
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.querySelectorAll(".carousel img");
+        var dots = document.querySelectorAll(".carousel-dot");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+    }
+</script>
+
+</body>
+</html>
 
 

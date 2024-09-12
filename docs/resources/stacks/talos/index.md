@@ -152,3 +152,5 @@ When developing data APIs with Talos, following best practices is crucial for se
 
 - [API Best Practices](/resources/stacks/talos/best_practices/api/)
 - [SQL Best Practices](/resources/stacks/talos/best_practices/sql/)
+
+

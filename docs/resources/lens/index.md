@@ -57,7 +57,7 @@ The process begins with creating a new Lens project and generating a data model.
 
 This guide will cover the following tasks:
 
-[Lens set-up](/resources/lens/lens_setup/).
+[Lens set-up](/resources/lens/lens_setup/)
 
 ## Configurations
 
