@@ -17,7 +17,7 @@ sources:
 
 In the configuration, `tmp` means there will be a new folder called `tmp` in the root directory of the project you created.
 
-## Caching Query Results
+## Caching query results
 
 To utilise the caching layer, you can enclose your SQL query inside the `{% cache %}` and `{% endcache %}` tags. For example:
 
@@ -75,7 +75,7 @@ cache:
 		    runImmediately : true # boolean value  
 ```
 
-## Reusing Cached Results
+## Reusing cached results
 
 Talos provides the ability to keep the query result from the cache layer in a variable, which can be reused in subsequent queries. For example:
 

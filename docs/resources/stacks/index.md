@@ -16,7 +16,7 @@ While certain pre-configured Stacks such as [Flare](/resources/stacks/flare/), [
 
 </aside>
 
-## Key Features of Stacks
+## Key features of Stacks
 
 **Custom Computing Environments**
 
@@ -99,7 +99,7 @@ The [Scanner](/resources/stacks/scanner/) Stack in DataOS is a Python-based fr
 Soda is a declarative Stack integrated into DataOS, specifically for data quality testing and profiling across one or more datasets. To learn more about Soda, refer to the link: [Soda](/resources/stacks/soda/).
 
 
-These built-in stacks offer a wide range of capabilities, empowering data developers to efficiently build, process, and manage data within the DataOS ecosystem.
+These built-in Stacks offer a wide range of capabilities, empowering data developers to efficiently build, process, and manage data within the DataOS ecosystem.
 
 
 
