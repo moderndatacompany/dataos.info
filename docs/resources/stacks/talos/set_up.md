@@ -106,7 +106,7 @@ To know more about each attribute, [please refer to this](/resources/stacks/talo
 Push the changes to your working bitbucket repository as shown below:
 
 <center>
-  <img src="/resources/stacks/talos/image1.png" alt="Talos" style="width:30rem; border: 1px solid black; padding: 5px;" />
+  <img src="/resources/stacks/talos/image1.png" alt="Talos" style="width:20rem; border: 1px solid black; padding: 5px;" />
 </center>
 
 ### **Create an Instance Secret**
@@ -253,17 +253,17 @@ To know more about Instance Secret, [please refer to this](https://dataos.info/r
 - Now you can access the data on the API endpoint using Postman, as shown below:
     
     <center>
-      <img src="/resources/stacks/talos/image2.jpg" alt="Talos" style="width:40rem; border: 1px solid black; padding: 5px;" />
+      <img src="/resources/stacks/talos/image2.png" alt="Talos" style="width:40rem; border: 1px solid black; padding: 5px;" />
     </center>
 
     You can even hit the endpoint `/doc/postman?apikey='xxxxxxxxx'` to download the postman collection and import the `.json` collection into postman.
     
-- Authenticate the API endpoints by passing the API Key as query param as shown below.
+- Authenticate the API endpoints by passing the API Key on [DataOS CLI](/resources/stacks/cli_stack/), as query param as shown below.
     
     ```bash
-    curl --location 'https://liberal-donkey.dataos.app/talos/pubic:talos-test/api/table?apikey=xxxx' \
-    ```
-    
+    curl --location 'https://liberal-donkey.dataos.app/talos/pubic:talos-test/api/table?apikey=xxxx' 
+    ```    
+
 
 ## Additional Steps
 
