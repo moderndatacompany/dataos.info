@@ -270,16 +270,15 @@ Defines segments/complex filters that can be used during analysis.
 ```yaml
 meta:
   secure:
-  user_groups: 
+    user_groups: 
       includes:
-      - type_analyst
-      - type_scientist
+        - type_analyst
       excludes:
-      - default
+        - default
 ```
 
 <aside class="callout">
-🗣 The order of the user groups matters. Data security policies set by an earlier user group take precedence over those defined by any following user groups.
+🗣 Mentioning a user group when defining segments automatically applies the filter criteria to that group.
 </aside>
 **Example YAML Files** 
 
