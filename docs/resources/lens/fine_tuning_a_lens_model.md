@@ -29,17 +29,17 @@ Pre-buffering frequently accessed views or subsets of views can reduce the laten
 
 To determine if buffering is necessary, consider the following:
 
-    Performance Requirements: If the application requires fast data access, buffering can improve performance.
-    Frequency of Access: Frequently accessed views are good candidates for buffering.
-    Data Volume: Views with large datasets may benefit from caching to reduce retrieval time.
+- **Performance Requirements:** If the application requires fast data access, buffering can improve performance.
+- **Frequency of Access:** Frequently accessed views are good candidates for buffering.
+- **Data Volume:** Views with large datasets may benefit from caching to reduce retrieval time.
 
 **Example:**
 
 A SQL API call frequently retrieves revenue, wallet_share, and source data for specific time periods. Buffering this data improves the speed of retrieval for these queries.
 
-### Conclusively
+## Summary of Optimization Strategies
 
-Lens provides two caching layers—Flash, and Buffer—to optimize query performance at different stages. Users can decide whether to use these layers based on their specific use case and set the refresh intervals for each caching layer. Additionally, the semantic layer allows users to select the compute clusters and query engines for running data models, ensuring that they can leverage the optimization features of the source system when necessary.
+Lens provides two caching layers Flash, and Buffer, to optimize query performance at different stages. Users can decide whether to use these layers based on their specific use case and set the refresh intervals for each caching layer. Additionally, the semantic layer allows users to select the compute clusters and query engines for running data models, ensuring that they can leverage the optimization features of the source system when necessary.
 
 While the semantic layer provides these functionalities to accelerate and optimize query performance at different stages of the data flow, it is essential to follow best practices in data modeling to ensure optimal performance, including efficient SQL writing, logical table materialization, and caching strategies.
 

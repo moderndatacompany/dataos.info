@@ -1,8 +1,8 @@
-# API Best Practices
+# API best practices
 
 Welcome to the API Design Best Practices guide for Talos. This document provides detailed guidelines and examples to help you design efficient, secure, and user-friendly APIs.
 
-## 1. Use RESTful Principles
+## 1. Use RESTful principles
 
 Adhering to REST principles ensures your API is intuitive and scalable.
 
@@ -18,7 +18,7 @@ DELETE /api/v1/customers/{id}
 - Use standard HTTP methods (GET, POST, PUT, DELETE).
 - Keep operations stateless.
 
-## 2. Version Your API
+## 2. Version your API
 
 Versioning helps manage changes without breaking existing integrations.
 
@@ -31,7 +31,7 @@ GET /api/v2/orders
 
 - Include the version in the URL path.
 
-## 3. Consistent Naming Conventions
+## 3. Consistent naming conventions
 
 Use clear, descriptive, and consistent names for endpoints.
 
@@ -45,7 +45,7 @@ GET /api/v1/users/{userId}/orders
 - Use plural nouns for resource names.
 - Keep endpoint paths readable and intuitive.
 
-## 4. Error Handling
+## 4. Error handling
 
 Provide meaningful error messages using standard HTTP status codes.
 
@@ -72,7 +72,7 @@ Maintain comprehensive and up-to-date API documentation.
 - Use tools like OpenAPI to generate documentation.
 - Include examples and usage guidelines.
 
-## 6. Authentication and Authorization
+## 6. Authentication and authorization
 
 Implement robust security measures to protect your API.
 
@@ -98,7 +98,7 @@ GET /api/v1/products?page=2&limit=50
 
 - Include parameters for page number and page size.
 
-## 8. Data Formats
+## 8. Data formats
 
 Support multiple data formats like JSON and XML.
 
@@ -124,7 +124,7 @@ Cache-Control: max-age=3600
 
 - Use appropriate cache headers.
 
-## 10. Rate Limiting
+## 10. Rate limiting
 
 Apply rate limiting to prevent abuse and ensure fair usage.
 
@@ -153,11 +153,11 @@ Content-Security-Policy: default-src 'self'
 - Enforce HTTPS.
 - Validate and sanitize inputs.
 
-## Advanced API Design
+## Advanced API design
 
 Advanced API design involves an API with Parameters, Path, Query, and Header.
 
-### Endpoint: Search Products
+### Endpoint: Search products
 
 **Description**: Search for products based on various criteria.
 
@@ -178,7 +178,7 @@ Advanced API design involves an API with Parameters, Path, Query, and Header.
     - `Authorization` (string, required): Bearer token for authentication.
     
 
-**Request Example**:
+**Request example**:
 
 ```
 GET /api/v1/products/search?q=smartphone&category=electronics&price_min=100&price_max=1000&sort=price HTTP/1.1
@@ -186,7 +186,7 @@ Host: <DataOSCONTEXT>
 Authorization: Bearer <TOKEN>
 ```
 
-**Response Example**:
+**Response example**:
 
 ```json
 {

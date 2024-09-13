@@ -2,7 +2,7 @@
 
 Talos provides a comprehensive metrics monitoring system that can be accessed via the `/metric` endpoint. This system offers two types of metrics: Summary and Histogram. Below is a detailed explanation of how to configure and use these metrics.
 
-## Enabling the Metrics
+## Enabling the metrics
 
 ### **Summary**
 
@@ -38,7 +38,7 @@ metrics:
 - **type**: Specifies that the metric type is a histogram.
 - **buckets**: A list of bucket boundaries for the histogram. These buckets define the range of values for the histogram bins.
 
-## Viewing Metrics
+## Viewing metrics
 
 After configuring your metrics in `config.yaml`, you can view the metrics by accessing the `/metric` endpoint in your browser or via a tool like `curl`:
 

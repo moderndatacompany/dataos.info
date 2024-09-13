@@ -114,9 +114,9 @@ Use it when you need an exact match. It supports multiple values.
     
 **Example Payload and Result:** Retrieving the customer IDs and countries for customers based in the USA, limited to 10 results. You can see the results in Table Section 
 
-<div style="text-align: left; padding-left: 1em;">
+<div style="text-align: center;">
     <img src="/resources/lens/working_with_payloads/image(2).png" alt="Iris board" style="max-width: 90%; height: auto; border: 1px solid #000;">
-    <figcaption>Lens Interface</figcaption>
+    <figcaption>equals</figcaption>
 </div>
 
 #### **`notEquals`**

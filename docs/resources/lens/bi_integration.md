@@ -50,7 +50,7 @@ To sync your Lens model with Superset, execute the following curl command:
 
 - **`--header 'Content-Type: application/json'`**: This specifies the content type as JSON.
 
-- **`Lens_Name`: Your lens name. Example `sample360`.**
+- **`Lens_Name`: Your lens name. Example `sales360`.**
 
 - **`API_Key`: Your DataOS API key in your `docker-compose.yaml`.**
 
@@ -60,23 +60,11 @@ Upon initiation, you will receive a response:
 {
     "message": "started"
 }
-```
-
-Upon successful completion, you will receive a response:
-
-```bash
+...
 {
     "message": "Superset project creation and sync completed successfully."
 }
 ```
-
-**Terminal**
-
-<div style="text-align: center;">
-    <img src="/resources/lens/bi_integration/superset1.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
-    <figcaption> Superset Curl Command executed in Terminal
-</div>
-
 
 Once you execute the command in the terminal, the results will be visible in the Superset app, as demonstrated below:
 
@@ -85,8 +73,7 @@ Please follow the steps outlined to see the result:
 **Step 2 Go to DataOS**: Select Superset.
 
   <div style="text-align: center;">
-      <img src="/resources/lens/
-      bi_integration/superset2.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+      <img src="/resources/lens/bi_integration/superset2.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
   </div>
 
 **Step 3 Navigate to Datasets Tab:** Here, each entity will be available in the form of datasets.
@@ -128,7 +115,7 @@ curl --location --request POST 'http://127.0.0.1:5000/lens2/sync/api/v1/tableau/
 
 **`<URL>` :** This endpoint is used to sync a specified Lens model to Tableau for public access. 
 
-Parameters
+**Parameters**
 
 `<DATAOS_FQDN>`: Replace `<DATAOS_FQDN>` with the current Fully Qualified Domain Name (FQDN) where you have deployed your Lens instance. For example, if your FQDN is `liberal-monkey.dataos.app`, replace it accordingly. In this case, "liberal monkey" would be your context name.
 
@@ -140,23 +127,19 @@ Parameters
 dataos-ctl user apikey get
 ```
 
-`H "Content-Type: application/json"`:
+**`H "Content-Type: application/json"`:** This header specifies that the data being sent is in JSON format.
 
-This header specifies that the data being sent is in JSON format.
-
-`-data-raw`:
-
-Sends the raw JSON payload directly to the server:
+**`-data-raw`:** Sends the raw JSON payload directly to the server:
 
 - `project_name`: Replace `<PROJECT_NAME>` with the Tableau project name.
 - `username`: The Tableau username.
 - `password`: The password associated with the Tableau account.
 - `site_id`: The site ID, in this case `tableausuer@123`.
-- `server_address`: The address of the Tableau server (e.g., `https://prod-apnortheast-a.online.tableau.com`. Tableau server config are only needed in case of user wants to publish generated tds files at tableau server.
+- `server_address`: The address of the Tableau server (e.g., `https://prod-apnortheast-a.online.tableau.com`). Tableau server config are only needed in case of user wants to publish generated tds files at tableau server.
 
 You can obtain these when you **log in** to Tableau. You’ll see the **URL** like below:
 
-[https://prod-apnortheast-a.online.tableau.com/#/site/iamgroota891fef336/home](https://prod-apnortheast-a.online.tableau.com/#/site/iamgroot1086a891fef336/home)
+https://prod-apnortheast-a.online.tableau.com/#/site/iamgroot1086a891fef336/home
 
 here: **iamgroot1086a891fef336**  is your **site_id.**
 
