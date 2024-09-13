@@ -161,9 +161,9 @@ Filter operators let you refine your data queries. Here are the main ones:
 These operators help with exact matches, wildcard searches, and filtering based on numerical or date ranges. For more details and examples, check out the [Filter Operators: Example Scenarios](/quick_guides/working_with_payload/filter_operator_example_scenarios/).
 
 <aside class="callout">
-🗣 When you filter on a **dimension**, you're narrowing down the raw data **before** any calculations take place. For example, if you filter by "customer age < 50," only the data for customers under 50 is used in the calculations.
+🗣 When you filter on a <b>dimension</b>, you're narrowing down the raw data <b>before</b> any calculations take place. For example, if you filter by "customer age < 50," only the data for customers under 50 is used in the calculations.
 
-On the other hand, when you filter on a **measure**, you're filtering **after** calculations are done. For instance, if you filter by "average sales > $100," you're applying the filter after the system has already calculated the average sales for each group.
+On the other hand, when you filter on a <<b>>measure</b>, you're filtering <b>after</b> calculations are done. For instance, if you filter by "average sales > $100," you're applying the filter after the system has already calculated the average sales for each group.
 
 </aside>
 
@@ -192,7 +192,9 @@ In Lens, time dimensions allow you to group and filter data by time. Use the `ti
 
 **Result:**
 
-![time_dim.png](/quick_guides/working_with_payload/time_dim.png)
+<div style="text-align: center; padding-left: 1em;">
+<img src="/quick_guides/working_with_payload/time_dim.png" alt="time_dim.png" style="max-width: 50%; height: auto; border: 1px solid #000;">
+</div>
 
 #### **Boolean Logical Operators**
 
