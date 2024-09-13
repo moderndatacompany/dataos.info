@@ -1,12 +1,12 @@
 # :resources-lens: Lens
 
 
-Lens [Resource](/resources/) in DataOS is a logical modelling layer desgined for accessing tabular data in data warehouses or lakehouses. It operates on top of physical tables, allowing the extension of these tables into Logical Tables by adding logical columns (measures) and relationships. It  empowers analytical engineers, the key architects of business intelligence, with a model-first approach.  To understand about the Model-first approach click [here](/resources/lens/core_concepts/). 
+Lens [Resource](/resources/) in DataOS is a logical modelling layer designed for accessing tabular data in data warehouses or lakehouses. It operates on top of physical tables, allowing the extension of these tables into Logical Tables by adding logical columns (measures) and relationships. It  empowers analytical engineers, the key architects of business intelligence, with a model-first approach.  To understand about the different elements of lens click [here](/resources/lens/core_concepts/). 
 
 
 !!!tip "Lens within the Data Product Lifecycle"
 
-    Lens operates within the consumption layer of the Data Product Life Cycle within DataOS, By leveraging Lens , data products can be created to inform decision-making, ensuring that data is logically organized and aligned with business objectives from the outset. To consume it, Lens exposes APIs such as JDBC, HTTP, and GraphQL.
+    Lens operates within the consumption layer of the Data Product Life Cycle within DataOS, By leveraging Lens, data products can be created to inform decision-making, ensuring that data is logically organized and aligned with business objectives from the outset. To consume it, Lens exposes APIs such as JDBC, HTTP, and GraphQL.
 
 
 
@@ -31,25 +31,17 @@ Lens  is engineered to handle complex and large-scale data models with ease. Key
 
 - **YAML Template Generation:** Lens offers a tailored YAML template generator through its VS Code plugin, streamlining the creation of Lens YAML files. This feature reduces manual effort, ensuring consistency across models and speeding up the setup process.
 
-- **Advanced Linter Capabilities:** With enhanced linter functionalities, Lens provides more accurate and relevant error detection during deployment. Developers can quickly identify and resolve issues, reducing time spent on troubleshooting non-essential errors.
-
 - **Real-time Verification and Validation:** Lens features a local development environment that supports real-time inspection and validation of models. This minimizes delays caused by SQL syntax errors, and the inclusion of a web app for model inspection allows issues to be identified and resolved before deployment.
-
-- **Customizable Views:** Lens enables users to create customizable views, allowing for multiple data slices tailored to specific business needs. These views can be easily edited, queried, and integrated with BI tools, offering greater flexibility in data analysis and reporting.
 
 - **Interoperability**
     
     Lens is designed for seamless integration with external applications and tools, enhancing interoperability across various systems:
 
-    - **API Support:** Lens simplifies application development with support for Postgres API, REST API, and GraphQL, enabling smoother interactions with external systems.
+    + **API Support:** Lens simplifies application development with support for Postgres API, REST API, and GraphQL, enabling smoother interactions with external systems.
 
-    - **First-Class BI Integration:** Lens offers robust integration with Superset, and ongoing efforts aim to extend connectivity to Tableau and PowerBI. This integration ensures that data models can be easily utilized across various BI platforms, improving the overall analytics experience.
+    + **First-Class BI Integration:** Lens offers robust integration with Superset, and ongoing efforts aim to extend connectivity to Tableau and PowerBI. This integration ensures that data models can be easily utilized across various BI platforms, improving the overall analytics experience.
 
-- **Performance Optimization**
-
-    Lens is optimized to deliver high performance, especially when dealing with large datasets:
-
-    - **Flash:** Designed to work with DataOS Lakehouse and Iceberg-format depots, Flash improves query performance by leveraging DuckDB for in-memory execution. This optimization ensures that data teams can efficiently handle large-scale queries with enhanced speed and performance.
+- **Performance Optimization through Flash:** Designed to work with DataOS Lakehouse and Iceberg-format depots, Flash improves query performance by leveraging in-memory execution. This optimization ensures that data teams can efficiently handle large-scale queries with enhanced speed and performance.
 
 ## Lens Set-up
 
@@ -57,7 +49,7 @@ The process begins with creating a new Lens project and generating a data model.
 
 This guide will cover the following tasks:
 
-[Lens set-up](/resources/lens/lens_setup/).
+[Lens set-up](/resources/lens/lens_setup/)
 
 ## Configurations
 
@@ -78,13 +70,16 @@ Lens can be configured to connect to different sources using data source attribu
 - [Working with Payload](/resources/lens/working_with_payload/)
     Learn how to work with payloads for querying and interacting with the system.
 
-- [Working with User Groups and Data Policies](/resources/lens/working_with_user_groups_and_data_policies/)
+- [Working with User Groups and Data Policies](/resources/lens/working_with_user_groups_and_data_policies/)    
+    Learn how to configure user groups and enforce data policies for secure and organized access to data resources.
+
+- [Supported Parameters for Table & Views](/resources/lens/supported_parameters_for_tables_and_views/)
+    Discover the parameters you can use for configuring tables and views in the system.
+
 
 <!-- - [Supported Data Quality Checks](/resources/lens/supported_data_quality_checks/)
     Find information on the data quality checks supported by our system to ensure data accuracy and integrity. -->
 
-- [Supported Parameters for Table & Views](/resources/lens/supported_parameters_for_tables_and_views/)
-    Discover the parameters you can use for configuring tables and views in the system.
 
 
 ## Exploration of Deployed Lens
@@ -93,13 +88,13 @@ After creating a Lens data model, the next step is to explore it—this means in
 
 Exploration can be performed using the following methods:
 
-- [Exploration of Lens using SQL APIs](/resources/lens/exploration_of_lens_using_sql_apis/)
+- [Exploration of deployed Lens using SQL APIs](/resources/lens/exploration_of_lens_using_sql_apis/)
 
-- [Exploration of Lens using Python](/resources/lens/exploration_of_lens_using_python/)
+- [Exploration of deployed Lens using Python](/resources/lens/exploration_of_lens_using_python/)
 
-- [Exploration of Lens using Rest APIs](/resources/lens/exploration_of_lens_using_rest_apis/)
+- [Exploration of deployed Lens using Rest APIs](/resources/lens/exploration_of_lens_using_rest_apis/)
 
-- [Exploration of Lens using GraphQL](/resources/lens/exploration_of_lens_using_graphql/)
+- [Exploration of deployed Lens using GraphQL](/resources/lens/exploration_of_lens_using_graphql/)
 
 
 ## Data Modelling
@@ -117,8 +112,8 @@ Below are resources to guide you through essential aspects of data modeling to o
   - [Working with Segments](/resources/lens/working_with_segments) 
     Learn how to create and manage data segments to improve query performance and user experience.
 
-  - [Supported Parameters for Tables and Views](/resources/lens/supported_parameters_for_tables_and_views/)
-    Understand the role of logical tables and views in data models.
+  <!-- - [Supported Parameters for Tables and Views](/resources/lens/supported_parameters_for_tables_and_views/)
+    Understand the role of logical tables and views in data models. -->
 
 
 ## Optimizing Lens Model

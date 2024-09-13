@@ -3,7 +3,7 @@
 Validators are tools used to ensure that the input parameters of API requests meet predefined criteria and formats before they are processed. Validators enforce rules on the data provided by users, helping to maintain data integrity, improve security, and ensure consistent behavior of the API. In this section, you can find techniques to apply and manage the validators.
 
 
-## Applying Validators
+## Applying validators
 
 Apply validators with the validation filters to validate API parameters. Each validator has a corresponding filter with an `is_` prefix, such as the `is_integer` filter for the integer validator.
 
@@ -17,7 +17,7 @@ WHERE order_id = {{ context.params.order_id | is_required | is_uuid }}
 
 ```
 
-## Setting Arguments for Validators
+## Setting arguments for validators
 
 To set arguments for validators, use Python's keyword arguments syntax:
 
@@ -30,7 +30,7 @@ AND price = {{ context.params.price | is_integer(min=0, max=1000000) }}
 
 ```
 
-## Handling Error Responses for Invalid Requests
+## Handling error responses for invalid requests
 
 If a request doesn't meet the validator requirements, Talos rejects the request and returns an error response. Here's an example:
 
@@ -54,9 +54,9 @@ If you send a request with `GET<endpoint>/api/orders?price=1000001`, Talos retu
 
 This approach ensures that only valid requests are processed, providing better error handling and more informative feedback to clients.
 
-## Supported Validators
+## Supported validators
 
-### **`is_required` - Required Validator**
+### **`is_required` - Required validator**
 
 Makes the request parameter field required, using Joi for validation.
 
@@ -84,7 +84,7 @@ Makes the request parameter field required, using Joi for validation.
 
     ```
 
-### **Error Response**
+### **Error response**
 
 When sending a request with `GET<endpoint>/api/dep_users?department=null`, it returns an HTTP status code 400 and the following message:
 
@@ -96,7 +96,7 @@ When sending a request with `GET<endpoint>/api/dep_users?department=null`, it r
 
 ```
 
-### **`is_uuid` - UUID Validator**
+### **`is_uuid` - UUID validator**
 
 Validates the UUID format for the request parameter.
 
@@ -125,7 +125,7 @@ Validates the UUID format for the request parameter.
 
 ---
 
-### `is_date` - Date Validator
+### `is_date` - Date validator
 
 Validates the date format for the request parameter.
 
@@ -153,7 +153,7 @@ Validates the date format for the request parameter.
 
 ---
 
-### `is_string` - String Validator
+### `is_string` - String validator
 
 Validates the string format for the request parameter.
 
@@ -201,7 +201,7 @@ Validates the string format for the request parameter.
     ```
 
 
-### **`is_integer` - Integer Validator**
+### **`is_integer` - Integer validator**
 
 Validates the integer format for the request parameter.
 

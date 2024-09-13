@@ -35,7 +35,7 @@ Done! Your repository is now available in Bitbucket Server.
 
 ## Steps
 
-### **Connect to the Data Source**
+### **Connect to the data source**
 
 Open the repository on your preferred code editor. Navigate to the `setup` folder and open the `config.yaml` manifest file which will contain the Talos app name, description, version, authentication details, and source connection information. Within this file, update the attributes for name, description, version, DataOS context, source name, and source type to ensure they accurately reflect your specific configurations and align with requirements.
 
@@ -106,7 +106,7 @@ To know more about each attribute, [please refer to this](/resources/stacks/talo
 Push the changes to your working bitbucket repository as shown below:
 
 <center>
-  <img src="/resources/stacks/talos/image1.png" alt="Talos" style="width:30rem; border: 1px solid black; padding: 5px;" />
+  <img src="/resources/stacks/talos/image1.png" alt="Talos" style="width:20rem; border: 1px solid black; padding: 5px;" />
 </center>
 
 ### **Create an Instance Secret**
@@ -253,40 +253,40 @@ To know more about Instance Secret, [please refer to this](https://dataos.info/r
 - Now you can access the data on the API endpoint using Postman, as shown below:
     
     <center>
-      <img src="/resources/stacks/talos/image2.jpg" alt="Talos" style="width:40rem; border: 1px solid black; padding: 5px;" />
+      <img src="/resources/stacks/talos/image2.png" alt="Talos" style="width:40rem; border: 1px solid black; padding: 5px;" />
     </center>
 
     You can even hit the endpoint `/doc/postman?apikey='xxxxxxxxx'` to download the postman collection and import the `.json` collection into postman.
     
-- Authenticate the API endpoints by passing the API Key as query param as shown below.
+- Authenticate the API endpoints by passing the API Key on [DataOS CLI](/resources/stacks/cli_stack/), as query param as shown below.
     
     ```bash
-    curl --location 'https://liberal-donkey.dataos.app/talos/pubic:talos-test/api/table?apikey=xxxx' \
-    ```
-    
+    curl --location 'https://liberal-donkey.dataos.app/talos/pubic:talos-test/api/table?apikey=xxxx' 
+    ```    
 
-## Additional Steps
 
-### **Caching Datasets**
+## Additional steps
+
+### **Caching datasets**
 
 Talos allows you to cache the dataset to improve the performance and efficiency of your API queries. With the `{% cache %}` tag, you can query results directly from the cache layer storage, reducing the need for repeated queries to the data source. To explore how to use this feature effectively, please [refer to this](/resources/stacks/talos/recipes/caching/).
 
-### **API Documentation**
+### **API documentation**
 
 Talos allows you to automatically generate and serve the API documentation. To automate API documentation generation, please [refer to this](/resources/stacks/talos/recipes/api_documentation/).
 
-### **Data Governance**
+### **Data governance**
 
 You can govern data access based on user groups, allowing you to control the level of data visibility and interaction according to each group's role. For more detailed information on how to configure access controls for user groups, please [refer to this](/resources/stacks/talos/recipes/data_governance/).
 
-### **Data Masking**
+### **Data masking**
 With Talos, you can mask the data for the API endpoint by defining user groups on their segments and dimensions. To explore more about data masking in Talos, please [refer to this](/resources/stacks/talos/recipes/data_masking/).
 
-### **Handling Error**
+### **Handling error**
 When the template encounters an error during execution, Talos halts further execution and sends an error code to the user, rather than returning query results. To learn more about error handling, please [refer to this](/resources/stacks/talos/recipes/error_handling/).
 
 ### **Monitoring metrics**
 You can monitor the real-time updates on API metrics through the /metrics endpoint. To enable monitoring feature, please [refer to this](/resources/stacks/talos/recipes/monitoring/).
 
-### **Adding Validators**
+### **Adding validators**
 Validators are tools used to ensure that the input parameters of API requests meet predefined criteria and formats before they are processed. Validators enforce rules on the data provided by users, helping to maintain data integrity, improve security, and ensure consistent behavior of the API. To add validators, please [refer to this](/resources/stacks/talos/recipes/validating_parameters/).

@@ -32,7 +32,7 @@ model
 docker-compose.yml // Orchestrates multi-container services (e.g., database, web server)
 ```
 
-- **`sqls` Folder**
+- **Create `sqls` Folder**
     - This directory will contain SQL scripts corresponding to the dimensions of tables.  A dedicated SQL file needs to be maintained for each table. The SQL dialect used will be source-specific.
 
 - **Create `tables` Folder**
@@ -124,11 +124,11 @@ Modify the docker-compose.yml file to tailor it to include environment-URL, lens
       
     ```yaml
     # Overview
-      LENS2_NAME: lens_name 
-      LENS2_DESCRIPTION: "Purpose of the lens"
-      LENS2_TAGS: "lens2, ecom, sales and customer insights" #add tags for better discoverability
-      LENS2_AUTHORS: "author_name" #add the owner name here
-      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
+    LENS2_NAME: lens_name 
+    LENS2_DESCRIPTION: "Purpose of the lens"
+    LENS2_TAGS: "lens2, ecom, sales and customer insights" #add tags for better discoverability
+    LENS2_AUTHORS: "author_name" #add the owner name here
+    LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
     ```
 3. **Customize the source details:**
 
@@ -187,11 +187,11 @@ Lens can be tested in the development environment by running:
     lens2-api-1  | 🚀 Lens2 API server (0.35.55-01 ) is listening on 4000
     ```
 
-## Testing Lens in Development Environment
+## Exploring Lens in Development Environment
 
 Now that Lens is successfully running without errors, one can begin interacting with it using SQL APIs, REST APIs, or GraphQL APIs. This setup allows to thoroughly test Lens before proceeding to deployment, ensuring all functionalities are working as expected.
 
-### **Testing via SQL API**
+### **Exploring Lens via SQL API**
 
 Lens exposes a PostgreSQL-compatible interface, enabling to query Lens tables and views using standard PostgreSQL syntax.
 
@@ -261,48 +261,48 @@ postgres=> \dt #listing all the tables in the connected database.
 ```
 **Here are some more commands for reference**
 
-Show the schema and details of a specific table.
+- Show the schema and details of a specific table.
 
-```bash 
-\d [table_name]
-```
-for example:
+    ```bash 
+    \d [table_name]
+    ```
+    for example:
 
-```bash
-\d customers
-```
+    ```bash
+    \d customers
+    ```
 
-List all databases in the PostgreSQL server.
+- List all databases in the PostgreSQL server.
 
-```bash
-\l
-```
+    ```bash
+    \l
+    ```
 
-List all roles and users.
+- List all roles and users.
 
-```bash
-\du
-```
+    ```bash
+    \du
+    ```
 
-List all schemas in the database.
+- List all schemas in the database.
 
-```bash
-\dn
-```
+    ```bash
+    \dn
+    ```
 
-List all views in the connected database.
+- List all views in the connected database.
 
-```bash
-\dv
-```
+    ```bash
+    \dv
+    ```
 
-Exit the PostgreSQL prompt.
+- Exit the PostgreSQL prompt.
 
-```bash
-\q
-```
+    ```bash
+    \q
+    ```
 
-### **Testing Via REST API**
+### **Exploring Lens Via REST API**
 
 To interact with REST APIs use tools like `curl`, [Postman](https://www.postman.com/).
 
@@ -331,7 +331,7 @@ Now, to make a basic `GET` request using Postman, follow these steps:
 
       - `localhost:8080` represents the local or development environment for Lens, used for building and testing configurations.
       - `/lens2/api/` is the api prefix
-      - `${lens_name}` is the placeholder for lens, replace it to the actual lens undergoin testing.
+      - `${lens_name}` is the placeholder for lens, replace it to the actual lens undergoing testing. For example, sales360, retail360.
           
 5. **Ensure the following header is passed in Authorization when running the API**
       
@@ -339,37 +339,37 @@ Now, to make a basic `GET` request using Postman, follow these steps:
       Type: Bearer Token
       Token: <DATAOS API Key> #Use the API key of the env defined in docker-compose.yml
       ```
+
 6. Click **Send**
 
 **Example response:**
 
 ```json
 {
-  "name": 
+  "name": "",
   "description": [],
   "authors": [],
   "devMode": true,
   "source": {
-      "type": "minerva",
-      }
-          },
+    "type": "minerva"
+  },
   "timeZones": ["UTC"],
   "tables": [
-      {
-          "name": "product_analysis",
-          "type": "view",
-          "title": "Product Analysis",
-          
-               }     ]
-                
+    {
+      "name": "product_analysis",
+      "type": "view",
+      "title": "Product Analysis"
+    }
+  ]
+}            
             
 ```
 
 
 
->*You can now successfully test your lens in  development environment postman via REST APIS.*
+*You can now successfully test your lens in  development environment using postman via REST APIS.*
 
-To interact with the deployed lens read the detailed doc [here](/resources/lens/exploration_of_lens_using_rest_apis/)
+To interact with the deployed lens using REST APIs read the detailed doc [here](/resources/lens/exploration_of_deployed_lens_using_rest_apis/)
 
 
 ## Next Step

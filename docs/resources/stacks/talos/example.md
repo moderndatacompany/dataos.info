@@ -2,6 +2,7 @@
 
 In this example, we utilized the WHO COVID-19 dataset to expose data on countries, maximum cases, minimum cases, reports, and WHO regions through an API using Talos.
 
+
 ## Pre-requisites
 
 - Extract the zip and initialize it with Bitbucket. [Talos Zip](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/e5d3ccb1-9156-4caa-b024-3a6c0c6fab5a/Untitled.zip)

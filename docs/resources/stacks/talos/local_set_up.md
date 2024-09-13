@@ -1,4 +1,4 @@
-# How to set up Talos Locally?
+# How to set up Talos locally?
 This section involves step-by-step guide to set up Talos on your local enviroment. 
 
 ## Pre-requisite
@@ -9,7 +9,7 @@ This section involves step-by-step guide to set up Talos on your local enviromen
 
 ## Steps
 
-1. Create a [Depot](/resources/depot/) of type BigQuery, below is the sample manifest file of BigQuery Depot.
+1. Create a [Depot](/resources/depot/) for your data source, below is the sample manifest file of BigQuery Depot.
     
     ```yaml
     name: crmbq
@@ -66,7 +66,7 @@ This section involves step-by-step guide to set up Talos on your local enviromen
     
     </aside>
     
-3. Open the talos repository with a code editor (VS Code), navigate to `config.yaml` manifest file and update the name, description, version, dataos context, Depot name, and Depot type.
+3. Open the Talos repository with your preferred code editor, navigate to `config.yaml` manifest file and update the name, description, version, dataos context, Depot name, and Depot type.
     
     ```yaml
     name: postgres_city
@@ -98,8 +98,7 @@ This section involves step-by-step guide to set up Talos on your local enviromen
         tty: true
     ```
     
-6. Navigate to `apis` folder create two files, one with `.sql` and one with `.yaml` extension for example create two file one can be `table1.sql` and another one can be `table1.yaml` as shown below.
-    
+6. Navigate to `apis` folder create two files, one with `.sql` and one with `.yaml` extension for example create two file one can be `table1.sql` and another one can be `table1.yaml` as shown below. You can add multiple SQL file and their corresponding manifest file with `.yaml` extension as per your use case.    
     ```sql
     SELECT first_name, last_name FROM demo.customer_profiles LIMIT 10;
     ```

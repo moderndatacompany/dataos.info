@@ -1,4 +1,4 @@
-# Error Handling
+# Error handling
 
 Talos SQL Templates, like most programming languages, support error handling. To define an exception in your SQL templates, use the `{% error "ERROR_CODE" %}` syntax. When the template encounters an error during execution, Talos halts further execution and sends an error code to the client, rather than returning query results.
 
