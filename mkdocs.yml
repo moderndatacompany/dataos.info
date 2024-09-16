@@ -472,7 +472,6 @@ nav:
         - BI Integration: resources/lens/bi_integration.md
         - Working with Payload: resources/lens/working_with_payload.md
         # - Supported Data Quality Checks: resources/lens/supported_data_quality_checks.md
-        - Supported Parameters for Tables and Views: resources/lens/supported_parameters_for_tables_and_views.md
       - Reference: 
         - Resource Manifest: resources/lens/lens_manifest_attributes.md
         - Docker Compose Manifest: resources/lens/docker_compose_manifest_attributes.md
@@ -625,6 +624,8 @@ nav:
         - Working with Payloads:
           - quick_guides/working_with_payload/index.md
           - Example Scenarios: quick_guides/working_with_payload/filter_operator_example_scenarios/index.md
+        - Pre-defined Filtering using Segemnts:
+          - quick_guides/working_with_segments/index.md
         - Creating a Lens: 
           - quick_guides/create_lens/index.md
         - Using a Lens: 
