@@ -38,7 +38,7 @@ The structure of the Instance Secret manifest file is outlined as follows:
 
 ## Templates
 
-To facilitate the creation of Instance Secret accessing commonly used data sources, we have compiled a collection of pre-defined manifest templates. These templates serve as a starting point.
+To facilitate the creation of Instance Secret accessing commonly used data sources and repositories, we have compiled a collection of pre-defined manifest templates. These templates serve as a starting point.
 
 <div class="grid" markdown>
 
@@ -395,11 +395,46 @@ To facilitate the creation of Instance Secret accessing commonly used data sourc
 
           - `eh_shared_access_key`: The shared access key associated with your Azure Event Hub. It is used for authenticating requests to your Event Hub.
 
+=== "Respositories"
+    A repository is a central storage location where code, documentation, and related files are managed and versioned. It allows developers to track changes over time, collaborate on code by merging contributions from multiple developers, and maintain a history of modifications. Repositories within DataOS support version control systems like Git, Bitbucket and AWS CodeCommit.
+
+    === "Git"
+        === "Read-only instance-secret"
+            ```yaml title="instance_secret.yaml" 
+            --8<-- "examples/resources/instance_secret/repositories/git.yaml"
+            ```
+        === "Read-write instance-secret"
+            ```yaml title="instance_secret_read_write.yaml"
+            --8<-- "examples/resources/instance_secret/repositories/git_rw.yaml"
+            ```
+
+
+
+    === "Bitbucket"
+        === "Read-only instance-secret"
+            ```yaml title="instance_secret.yaml" 
+            --8<-- "examples/resources/instance_secret/repositories/bit.yaml"
+            ```
+        === "Read-write instance-secret"
+            ```yaml title="instance_secret_read_write.yaml"
+            --8<-- "examples/resources/instance_secret/repositories/bit_rw.yaml"
+            ```
+
+    === "AWS CodeCommit"
+        === "Read-only instance-secret"
+            ```yaml title="instance_secret.yaml" 
+            --8<-- "examples/resources/instance_secret/repositories/awscodecommit.yaml"
+            ```
+        === "Read-write instance-secret"
+            ```yaml title="instance_secret_read_write.yaml"
+            --8<-- "examples/resources/instance_secret/repositories/awscodecommit_rw.yaml"
+            ```
+
 </div>
 
 ---
 
-## First Steps
+## First steps
 
 Instance-secret Resource in DataOS can be created by applying the manifest file using the DataOS CLI. To learn more about this process, navigate to the link: [First steps](/resources/instance_secret/first_steps/).
 

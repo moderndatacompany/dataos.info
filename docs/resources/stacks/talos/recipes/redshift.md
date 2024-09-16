@@ -2,7 +2,7 @@
 
 This section will guide you in setting up the Redshift Database and exposing the data through APIs.
 
-## Setting Up Tickit Database on AWS Redshift
+## Setting up tickit database on AWS Redshift
 
 The `Tickit`, an online ticket sales company wants to generate comprehensive reports on event sales, user preferences, and venue performance to enhance business strategies and customer experiences.
 
@@ -12,9 +12,9 @@ The `Tickit`, an online ticket sales company wants to generate comprehensive rep
 - AWS CLI installed and configured
 - SQL client tool (e.g., SQL Workbench/J)
 
-### Step-by-Step Guide
+### Step-by-step guide
 
-1. **Create a Redshift Cluster:**
+1. **Create a Redshift cluster:**
     - Sign in to the [AWS Management Console](https://aws.amazon.com/console/).
     - Navigate to **Amazon Redshift**.
     - Click **Create cluster** and configure the cluster settings:
@@ -25,21 +25,21 @@ The `Tickit`, an online ticket sales company wants to generate comprehensive rep
         - **Master username:** `your-username`
         - **Master user password:** `your-password`
     - Click **Create cluster** and wait for the cluster to become available.
-2. **Configure Security Group:**
-    - Navigate to **VPC** > **Security Groups**.
+2. **Configure security group:**
+    - Navigate to **VPC** > **Security groups**.
     - Select the security group associated with your Redshift cluster.
     - Add an inbound rule to allow traffic on port `5439` (default Redshift port) from your IP address.
-3. **Connect to the Redshift Cluster:**
+3. **Connect to the Redshift cluster:**
     - Use a SQL client tool to connect to the Redshift cluster:
         - **Host:** `<your-cluster-endpoint>`
         - **Port:** `5439`
         - **Database:** `tickit`
         - **Username:** `your-username`
         - **Password:** `your-password`
-4. **Create Tickit Schema and Tables:**
+4. **Create tickit schema and tables:**
     - Download the Tickit dataset from the AWS documentation [Tickit Database Script](https://docs.aws.amazon.com/redshift/latest/dg/c_sampledb.html).
     - Execute the downloaded SQL script to create the schema and tables in your Redshift database.
-5. **Load Sample Data:**
+5. **Load sample data:**
     - Ensure your data files (e.g., `allevents_pipe.txt`) are stored in an S3 bucket.
     - Use the `COPY` command to load data into the tables:
         
@@ -52,7 +52,7 @@ The `Tickit`, an online ticket sales company wants to generate comprehensive rep
         
         ```
         
-6. **Verify Data Loading:**
+6. **Verify data loading:**
     - Run SQL queries to verify the data has been loaded correctly:
         
         ```sql
@@ -63,7 +63,7 @@ The `Tickit`, an online ticket sales company wants to generate comprehensive rep
 
 Following these steps, you will have the Tickit database set up on AWS Redshift, ready for querying and reporting through the Talos API framework.
 
-## Setting Up Talos
+## Setting up Talos
 
 In this section, we’ll set up Talos to expose category popularity data through the API. 
 
@@ -72,7 +72,7 @@ In this section, we’ll set up Talos to expose category popularity data through
 - Redshift Database set up
 - Docker initialization
 
-### Step-by-Step Guide
+### Step-by-step guide
 
 1. Create a working repository for Talos, inside this repository, create a `config.yaml` file with the following code to define the base configuration for Talos by updating the name, description, version, DataOS context, and connection details :
     
@@ -114,7 +114,7 @@ In this section, we’ll set up Talos to expose category popularity data through
     GROUP BY category.catname;
     ```
     
-    YAML Configuration (`categorypopularity.yaml`)
+    manifest file Configuration (`categorypopularity.yaml`)
     
     ```yaml
     urlPath: /categories/popularity
@@ -259,9 +259,9 @@ In this section, we’ll set up Talos to expose category popularity data through
 
 Similarly, for different queries, you just need to make changes in `apis` folder.
 
-- **Event Details API**
+- **Event details API**
     
-    YAML Configuration (`eventdetails.yaml`):
+    Manifest Configuration (`eventdetails.yaml`):
     
     ```yaml
     urlPath: /events/:id
@@ -282,9 +282,9 @@ Similarly, for different queries, you just need to make changes in `apis` folder
     ```
     
 
-- **Create All Events API**
+- **Create all events API**
     
-    YAML Configuration (`events.yaml`)
+    Manifest Configuration (`events.yaml`)
     
     ```yaml
     urlPath: /events
@@ -306,9 +306,9 @@ Similarly, for different queries, you just need to make changes in `apis` folder
     ```
     
 
-- **Create Sales by Event API**
+- **Create sales by event API**
     
-    YAML Configuration (`getsalesbyevent.yaml`)
+    Manifest Configuration (`getsalesbyevent.yaml`)
     
     ```yaml
     urlPath: /events/:id/sales
@@ -327,9 +327,9 @@ Similarly, for different queries, you just need to make changes in `apis` folder
     ```
     
 
-- **Create User Purchase History API**
+- **Create user purchase history API**
     
-    YAML Configuration (`getuserpurchasehistory.yaml`)
+    Manifest Configuration (`getuserpurchasehistory.yaml`)
     
     ```yaml
     urlPath: /users/:bid/purchases
@@ -353,9 +353,9 @@ Similarly, for different queries, you just need to make changes in `apis` folder
     ```
     
 
-- **Create Venue Performance API**
+- **Create venue performance API**
     
-    YAML Configuration (`venueperformance.yaml`)
+    Manifest Configuration (`venueperformance.yaml`)
     
     ```yaml
     urlPath: /venues/:id/performance

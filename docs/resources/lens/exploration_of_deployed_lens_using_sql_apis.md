@@ -132,7 +132,7 @@ To create a wrap token for a Lens, you can use the following commands for Unix-b
     psql -h tcp.<dataos-fqdn> -p 6432
     ```
     
-    Replace the `<dataos-fqdn>` with your DataOS Fully qualified domain name. For instance, `liberal-donkey.dataos.app`.
+    Replace the `<dataos-fqdn>` with your DataOS Fully qualified domain name. For instance, `liberal-monkey.dataos.app`.
     
 3. Enter your ‘**Wrap Token**’ in place of password when prompted.
 4. You should now be connected to the Lens. You can verify the connection by listing the available relations using the `\dt` command:
