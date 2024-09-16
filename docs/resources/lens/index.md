@@ -6,7 +6,7 @@ Lens [Resource](/resources/) in DataOS is a logical modelling layer designed for
 
 !!!tip "Lens within the Data Product Lifecycle"
 
-    Lens operates within the consumption layer of the Data Product Life Cycle within DataOS, By leveraging Lens, data products can be created to inform decision-making, ensuring that data is logically organized and aligned with business objectives from the outset. To consume it, Lens exposes APIs such as JDBC, HTTP, and GraphQL.
+    Lens operates within the consumption layer of the Data Product Life Cycle within DataOS, By leveraging Lens, Data Products can be created to inform decision-making, ensuring that data is logically organized and aligned with business objectives from the outset. To consume it, Lens exposes APIs such as JDBC, HTTP, and GraphQL.
 
 
 
@@ -21,7 +21,7 @@ Lens [Resource](/resources/) in DataOS is a logical modelling layer designed for
 
 The data modeling layer serves as an interface that overlays the underlying data, consistently presenting business users with familiar and well-defined terms like "product," "customer," or "revenue." This abstraction enables users to access and consume data in a way that aligns with their understanding, facilitating self-service analytics and reducing dependence on data engineers for ad-hoc data requests. 
 
-As a core Resource within the DataOS ecosystem, Lens  enhances the entire data product lifecycle, delivering substantial improvements in developer experience, consumption patterns, and overall data management.
+As a resource within the DataOS ecosystem, Lens enhances Data Product consumption by delivering improvements in how Data Products are accessed and utilized. It streamlines the developer experience in developer experience, consumption patterns, focusing specifically on refining the use and interaction with data products.
 
 ## Key features of Lens 
 
@@ -29,7 +29,7 @@ Lens  is engineered to handle complex and large-scale data models with ease. Key
 
 - **Code Modularity:** Lens supports modular code structures, simplifying the maintenance of extensive models, particularly when dealing with entities, dimensions, and measures. This modularity enables efficient development and management, allowing teams to navigate large codebases with reduced complexity.
 
-- **YAML Template Generation:** Lens offers a tailored YAML template generator through its VS Code plugin, streamlining the creation of Lens YAML files. This feature reduces manual effort, ensuring consistency across models and speeding up the setup process.
+- **YAML Template Generation:** Lens offers a tailored YAML template generator through its VS Code plugin, streamlining the creation of Lens YAML files. This feature reduces manual effort, ensuring consistency across models and speeding up the setup process, offering an efficient way to generate tables, views, dimensions, measures, joins, and segments. For detailed steps on installing and using the Lens VS Code extension, visit the [Lens VS Code Extension Guide](/resources/lens/installing_prerequisites/#lens2-vs-code-extension).
 
 - **Real-time Verification and Validation:** Lens features a local development environment that supports real-time inspection and validation of models. This minimizes delays caused by SQL syntax errors, and the inclusion of a web app for model inspection allows issues to be identified and resolved before deployment.
 
@@ -87,9 +87,9 @@ After creating a Lens data model, the next step is to explore it—this means in
 
 Exploration can be performed using the following methods:
 
-- [Exploration of deployed Lens using SQL APIs](/resources/lens/exploration_of__deployed_lens_using_sql_apis/)
+- [Exploration of deployed Lens using SQL APIs](/resources/lens/exploration_of_deployed_lens_using_sql_apis/)
 
-- [Exploration of deployed Lens using Python](/resources/lens/exploration_of__deployed_lens_using_python/)
+- [Exploration of deployed Lens using Python](/resources/lens/exploration_of_deployed_lens_using_python/)
 
 - [Exploration of deployed Lens using Rest APIs](/resources/lens/exploration_of_deployed_lens_using_rest_apis/)
 
