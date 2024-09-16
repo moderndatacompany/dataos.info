@@ -463,7 +463,7 @@ nav:
       - Core Concepts: resources/lens/core_concepts.md
       - Configurations: 
         - Supported Data Sources: 
-          - resources/lens/data_sources.md
+        # resources/lens/data_sources.md
           - Bigquery: resources/lens/data_sources/bigquery.md
           - Minerva: resources/lens/data_sources/minerva.md
           - Postgres: resources/lens/data_sources/postgres.md
@@ -471,7 +471,7 @@ nav:
           - Themis: resources/lens/data_sources/themis.md
         - BI Integration: resources/lens/bi_integration.md
         - Working with Payload: resources/lens/working_with_payload.md
-        - Supported Data Quality Checks: resources/lens/supported_data_quality_checks.md
+        # - Supported Data Quality Checks: resources/lens/supported_data_quality_checks.md
         - Supported Parameters for Tables and Views: resources/lens/supported_parameters_for_tables_and_views.md
       - Reference: 
         - Resource Manifest: resources/lens/lens_manifest_attributes.md
@@ -480,8 +480,9 @@ nav:
       - Exploration:
         - Using GraphQL: resources/lens/exploration_of_lens_using_graphql.md
         - Using SQL APIs: resources/lens/exploration_of_lens_using_sql_apis.md
-        - Using Python: resources/lens/consumption_using_python.md
+        - Using Python: resources/lens/exploration_of_lens_using_python.md
         - Using REST APIs: resources/lens/exploration_using_rest_apis.md
+      - Optimizing Lens Model: resources/lens/fine_tuning_a_lens_model.md
     - Monitor: 
       - resources/monitor/index.md
       - First Steps: resources/monitor/first_steps.md

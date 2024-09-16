@@ -2,7 +2,7 @@
 
 Welcome to the SQL Best Practices guide for Talos. This document is designed to help you write efficient, readable, and maintainable SQL queries. Whether you're a beginner or an advanced user, following these best practices will ensure your queries perform well and are easy to understand.
 
-## 1. Use Clear and Consistent Naming Conventions
+## 1. Use clear and consistent naming conventions
 
 **Example:**
 
@@ -14,7 +14,7 @@ FROM customers;
 - Use `snake_case` for column and table names.
 - Be descriptive but concise.
 
-## 2. Optimize Queries
+## 2. Optimize queries
 
 **Example:**
 
@@ -36,7 +36,7 @@ CREATE INDEX idx_customer_id ON orders (customer_id);
 
 - Use indexes on columns frequently used in `WHERE`, `JOIN`, and `ORDER BY` clauses.
 
-## 3. Normalize Data
+## 3. Normalize data
 
 **Example:**
 
@@ -58,7 +58,7 @@ CREATE TABLE orders (
 
 - Normalize data to reduce redundancy and improve data integrity.
 
-## 4. Write Readable Code
+## 4. Write readable code
 
 **Example:**
 
@@ -82,7 +82,7 @@ ORDER BY
 - Use indentation and line breaks.
 - Comment on complex queries to explain logic.
 
-## 5. Handle NULLs Properly
+## 5. Handle NULLs properly
 
 **Example:**
 
@@ -99,7 +99,7 @@ WHERE
 
 - Use `IS NULL` and `IS NOT NULL` to handle `NULL` values correctly.
 
-## 6. Use Transactions
+## 6. Use transactions
 
 **Example:**
 
@@ -114,7 +114,7 @@ COMMIT;
 
 - Wrap related operations in transactions to ensure data consistency.
 
-## 7. Avoid Subqueries in the SELECT Clause
+## 7. Avoid subqueries in the SELECT clause
 
 **Example:**
 
@@ -138,7 +138,7 @@ JOIN
 
 - Use `JOINs` instead of subqueries for better performance and readability.
 
-## 8. Use Parameterized Queries
+## 8. Use parameterized queries
 
 **Example:**
 
@@ -149,7 +149,7 @@ cursor.execute("SELECT * FROM customers WHERE customer_id = %s", (customer_id,))
 
 - Use parameterized queries to prevent SQL injection attacks.
 
-## 9. Test and Validate
+## 9. Test and validate
 
 **Example:**
 
@@ -166,7 +166,7 @@ WHERE
 
 - Test queries to ensure they return the expected results and perform well.
 
-## 10. Monitor Performance
+## 10. Monitor performance
 
 **Example:**
 
@@ -177,7 +177,7 @@ EXPLAIN SELECT * FROM orders WHERE customer_id = 1;
 
 - Use database tools to monitor and analyze query performance, and optimize as necessary.
 
-## Advanced SQL Techniques
+## Advanced SQL techniques
 
 ### Common Table Expressions (CTEs)
 
@@ -206,7 +206,7 @@ JOIN
 
 - Use CTEs to simplify complex queries and improve readability.
 
-### Window Functions
+### Window functions
 
 ```sql
 SELECT

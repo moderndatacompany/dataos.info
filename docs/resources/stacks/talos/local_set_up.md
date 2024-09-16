@@ -1,4 +1,4 @@
-# How to set up Talos Locally?
+# How to set up Talos locally?
 This section involves step-by-step guide to set up Talos on your local enviroment. 
 
 ## Pre-requisite
