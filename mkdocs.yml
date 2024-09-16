@@ -472,16 +472,15 @@ nav:
         - BI Integration: resources/lens/bi_integration.md
         - Working with Payload: resources/lens/working_with_payload.md
         # - Supported Data Quality Checks: resources/lens/supported_data_quality_checks.md
-        - Supported Parameters for Tables and Views: resources/lens/supported_parameters_for_tables_and_views.md
       - Reference: 
         - Resource Manifest: resources/lens/lens_manifest_attributes.md
         - Docker Compose Manifest: resources/lens/docker_compose_manifest_attributes.md
         - API Endpoints and Scopes: resources/lens/api_endpoints_and_scopes.md
       - Exploration:
-        - Using GraphQL: resources/lens/exploration_of_lens_using_graphql.md
-        - Using SQL APIs: resources/lens/exploration_of_lens_using_sql_apis.md
-        - Using Python: resources/lens/exploration_of_lens_using_python.md
-        - Using REST APIs: resources/lens/exploration_using_rest_apis.md
+        - Using GraphQL: resources/lens/exploration_of_deployed_lens_using_graphql.md
+        - Using SQL APIs: resources/lens/exploration_of_deployed_lens_using_sql_apis.md
+        - Using Python: resources/lens/exploration_of_deployed_lens_using_python.md
+        - Using REST APIs: resources/lens/exploration_of_deployed_lens_using_rest_apis.md
       - Optimizing Lens Model: resources/lens/fine_tuning_a_lens_model.md
     - Monitor: 
       - resources/monitor/index.md
@@ -625,6 +624,8 @@ nav:
         - Working with Payloads:
           - quick_guides/working_with_payload/index.md
           - Example Scenarios: quick_guides/working_with_payload/filter_operator_example_scenarios/index.md
+        - Pre-defined Filtering using Segemnts:
+          - quick_guides/working_with_segments/index.md
         - Creating a Lens: 
           - quick_guides/create_lens/index.md
         - Using a Lens: 
