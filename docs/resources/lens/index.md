@@ -33,14 +33,13 @@ Lens  is engineered to handle complex and large-scale data models with ease. Key
 
 - **Real-time Verification and Validation:** Lens features a local development environment that supports real-time inspection and validation of models. This minimizes delays caused by SQL syntax errors, and the inclusion of a web app for model inspection allows issues to be identified and resolved before deployment.
 
-- **Interoperability**
-    
-    Lens is designed for seamless integration with external applications and tools, enhancing interoperability across various systems:
+- **API Support**
 
-    + **API Support:** Lens simplifies application development with support for Postgres API, REST API, and GraphQL, enabling smoother interactions with external systems.
+Lens enhances interoperability by simplifying application development with support for Postgres API, REST API, and GraphQL. These integrations enable smoother interactions with external systems and applications. For detailed information on using these APIs, see the API Documentation.
 
-    + **First-Class BI Integration:** Lens offers robust integration with Superset, and ongoing efforts aim to extend connectivity to Tableau and PowerBI. This integration ensures that data models can be easily utilized across various BI platforms, improving the overall analytics experience.
+- **First-Class BI Integration**
 
+Lens improves interoperability through robust integration with Superset, with ongoing efforts to extend connectivity to Tableau and PowerBI. This ensures that data models can be easily utilized across various BI platforms, enhancing the overall analytics experience. For more details on BI integration, visit the BI Integration Guide.
 - **Performance Optimization through Flash:** Designed to work with DataOS Lakehouse and Iceberg-format depots, Flash improves query performance by leveraging in-memory execution. This optimization ensures that data teams can efficiently handle large-scale queries with enhanced speed and performance.
 
 ## Lens Set-up
@@ -88,13 +87,13 @@ After creating a Lens data model, the next step is to explore it—this means in
 
 Exploration can be performed using the following methods:
 
-- [Exploration of deployed Lens using SQL APIs](/resources/lens/exploration_of_lens_using_sql_apis/)
+- [Exploration of deployed Lens using SQL APIs](/resources/lens/exploration_of__deployed_lens_using_sql_apis/)
 
-- [Exploration of deployed Lens using Python](/resources/lens/exploration_of_lens_using_python/)
+- [Exploration of deployed Lens using Python](/resources/lens/exploration_of__deployed_lens_using_python/)
 
-- [Exploration of deployed Lens using Rest APIs](/resources/lens/exploration_of_lens_using_rest_apis/)
+- [Exploration of deployed Lens using Rest APIs](/resources/lens/exploration_of_deployed_lens_using_rest_apis/)
 
-- [Exploration of deployed Lens using GraphQL](/resources/lens/exploration_of_lens_using_graphql/)
+- [Exploration of deployed Lens using GraphQL](/resources/lens/exploration_of_deployed_lens_using_graphql/)
 
 
 ## Data Modelling
