@@ -10,7 +10,7 @@ The following section provides an overview of the data sources accessible by one
 
 ## Supported Connectors
 
-| Data Source                                          | Type                             | Depot <br> (connect) | Minerva <br> (query) | Predicate Pushdown Support (Minerva) | Flare <br> (ingest) | Scanner <br> (metadata scan) |
+| Data Source                                          | Type                             | Depot <br> (connect) | Minerva <br> (query) | Predicate Pushdown Support (Minerva) | Flare <br> (extract, transform, load) | Scanner <br> (metadata scan) |
 |------------------------------------------------------|----------------------------------|-------|---------|----------------------------|-------|---------|
 | ElasticSearch                                        | Database                         | :white_check_mark:           | :white_check_mark:         | :white_large_square:       | :white_check_mark:       | :white_large_square:     |
 | Icebase (Iceberg Format)                             | Database                         | :white_check_mark:           | :white_check_mark:         | :white_large_square:       | :white_check_mark:       | :white_check_mark:     |
