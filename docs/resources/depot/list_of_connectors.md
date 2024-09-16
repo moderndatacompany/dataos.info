@@ -6,7 +6,7 @@ The following section provides an overview of the data sources accessible by one
 🗣️ In relation to Minerva (DataOS's query engine), the supported source systems for predicate query pushdown are also indicated.*
 </aside>
 
-> In the table below, a :white_check_mark: signifies that the feature is supported, whereas a :white_large_square: indicates it is not.
+> In the table below, a :white_check_mark: signifies that the data source is supported by the specific component, whereas a :white_large_square: indicates it is not.
 
 ## Supported Connectors
 
