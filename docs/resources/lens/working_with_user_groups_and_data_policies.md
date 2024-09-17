@@ -1,6 +1,8 @@
 # Working with User Groups and Data Policies
 
-In Lens, you can secure data in logical tables by defining data policies on their dimensions and segments. This guide will walk you through the steps to create user groups and apply data policies effectively.
+Lens allows you to secure data in logical tables by defining data policies on their dimensions and segments. User groups are used to manage both data access and API scopes, which control access to specific functionalities and endpoints. This forms part of the access policy, ensuring users interact only with the data and features they are authorized to use.
+
+Additionally, this governance extends to the Lens Studio Interface, where access to specific tabs and functionalities can be controlled. This setup helps in enforcing granular access controls and permissions, supporting compliance with organizational and regulatory standards.
 
 ## Creating User Groups
 
