@@ -3,12 +3,14 @@
 The following section provides an overview of the data sources accessible by one or more components within DataOS.
 
 <aside class="callout">
-🗣️ In relation to Minerva (DataOS's query engine), the supported source systems for query pushdown are also indicated.*
+🗣️ In relation to Minerva (DataOS's query engine), the supported source systems for predicate query pushdown are also indicated.*
 </aside>
+
+> In the table below, a :white_check_mark: signifies that the data source is supported by the specific component, whereas a :white_large_square: indicates it is not.
 
 ## Supported Connectors
 
-| Data Source                                          | Type                             | Depot | Minerva | Pushdown Support (Minerva) | Flare | Scanner |
+| Data Source                                          | Type                             | Depot <br> (connect) | Minerva <br> (query) | Predicate Pushdown Support (Minerva) | Flare <br> (extract, transform, load) | Scanner <br> (metadata scan) |
 |------------------------------------------------------|----------------------------------|-------|---------|----------------------------|-------|---------|
 | ElasticSearch                                        | Database                         | :white_check_mark:           | :white_check_mark:         | :white_large_square:       | :white_check_mark:       | :white_large_square:     |
 | Icebase (Iceberg Format)                             | Database                         | :white_check_mark:           | :white_check_mark:         | :white_large_square:       | :white_check_mark:       | :white_check_mark:     |

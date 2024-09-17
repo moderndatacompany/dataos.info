@@ -357,7 +357,11 @@ You have successfully installed the CLI, now the next step is to [initialize](#i
 
 6. Open Winrar and highlight the zipped .tar file (it should appear with other downloaded files in the lower part of the page), and click the **“Extract to”** button on the top. Place it in your chosen directory. 
 
-   You will always use this directory to run DataOS. To open the DataOS from anywhere in the system, place the extracted file in a directory that is in your PATH. To add the directory in PATH, refer to [Setting the Path and Variables in Windows](/interfaces/cli/windows_path_setting/).
+   You will always use this directory to run DataOS. 
+   
+   To open the DataOS from anywhere in the system, place the extracted file in a directory that is in your PATH. To add the directory in PATH, refer to [Setting the Path and Variables in Windows](/interfaces/cli/windows_path_setting/).
+
+   > Important: If you have not added the directory containing the dataos-ctl executable to your PATH variables, you must use `.\dataos-ctl `to run the command. Once you add the directory to the PATH variable, you can simply use `dataos-ctl` from any location.
 
 You have successfully installed the CLI, now the next step is to initialize the DataOS context.
 
