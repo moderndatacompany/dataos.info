@@ -17,7 +17,7 @@ Lens [Resource](/resources/) in DataOS is a logical modelling layer designed for
 
 
 
-## Why Lens?
+**Why Lens?**
 
 The data modeling layer serves as an interface that overlays the underlying data, consistently presenting business users with familiar and well-defined terms like "product," "customer," or "revenue." This abstraction enables users to access and consume data in a way that aligns with their understanding, facilitating self-service analytics and reducing dependence on data engineers for ad-hoc data requests. 
 
@@ -33,14 +33,16 @@ Lens  is engineered to handle complex and large-scale data models with ease. Key
 
 - **Real-time Verification and Validation:** Lens features a local development environment that supports real-time inspection and validation of models. This minimizes delays caused by SQL syntax errors, and the inclusion of a web app for model inspection allows issues to be identified and resolved before deployment.
 
-- **API Support**
+- **Segments:** [Segments](/resources/lens/working_with_segments/) are predefined filters that enable the definition of complex filtering logic in SQL. They allow you to create specific subsets of data, such as users from a particular city, which can be reused across different queries and reports. This feature helps streamline the data exploration process by simplifying the creation of reusable filters.
 
-Lens enhances interoperability by simplifying application development with support for Postgres API, REST API, and GraphQL. These integrations enable smoother interactions with external systems and applications. For detailed information on using these APIs, see the API Documentation.
+- **API Support:** Lens enhances interoperability by simplifying application development with support for [Postgres API](/resources/lens/exploration_of_deployed_lens_using_sql_apis/), [REST API](/resources/lens/exploration_of_deployed_lens_using_rest_apis/), and [GraphQL](/resources/lens/exploration_of_deployed_lens_using_graphql/). Additionally, learn how to [work with payloads](/resources/lens/working_with_payloads/) for querying and interacting with the system in the API Documentation.
 
-- **First-Class BI Integration**
+- **Governance and Access Control:** Lens ensures data governance through[ user group management and data policies](/resources/lens/working_with_user_groups_and_data_policies/), enabling precise control over who can access and interact with data models. 
 
-Lens improves interoperability through robust integration with Superset, with ongoing efforts to extend connectivity to Tableau and PowerBI. This ensures that data models can be easily utilized across various BI platforms, enhancing the overall analytics experience. For more details on BI integration, visit the BI Integration Guide.
-- **Performance Optimization through Flash:** Designed to work with DataOS Lakehouse and Iceberg-format depots, Flash improves query performance by leveraging in-memory execution. This optimization ensures that data teams can efficiently handle large-scale queries with enhanced speed and performance.
+- **BI Integration:** Lens improves interoperability through robust integration with Superset, with ongoing efforts to extend connectivity to Tableau and PowerBI. This ensures that data models can be easily utilized across various BI platforms, enhancing the overall analytics experience. For more details on BI integration, visit the [BI Integration Guide](/resources/lens/bi_integration/).
+
+
+- **Performance Optimization through Flash:** Designed to work with DataOS Lakehouse and Iceberg-format depots, [Flash](/resources/stacks/flash/) improves query performance by leveraging in-memory execution. This optimization ensures that data teams can efficiently handle large-scale queries with enhanced speed and performance.
 
 ## Lens Set-up
 
@@ -57,8 +59,8 @@ Lens can be configured to connect to different sources using data source attribu
 - [Supported Data Sources](/resources/lens/data_sources/)
     Explore the list of data sources that are supported by our system.
 
-- [BI Integration](/resources/lens/bi_integration/)
-    Learn how to connect and integrate visualization tools with our system for effective data representation.
+<!-- - [BI Integration](/resources/lens/bi_integration/)
+    Learn how to connect and integrate visualization tools with our system for effective data representation. -->
 
 - [Configuration Fields of the Deployment Manifest File (YAML) for Lens Resource](/resources/lens/lens_manifest_attributes/)
     Understand the various configuration fields available in the deployment manifest file for Lens resources.
@@ -69,12 +71,12 @@ Lens can be configured to connect to different sources using data source attribu
 - [Working with Payload](/resources/lens/working_with_payload/)
     Learn how to work with payloads for querying and interacting with the system.
 
-- [Working with User Groups and Data Policies](/resources/lens/working_with_user_groups_and_data_policies/)    
-    Learn how to configure user groups and enforce data policies for secure and organized access to data resources.
+<!-- - [Working with User Groups and Data Policies](/resources/lens/working_with_user_groups_and_data_policies/)    
+    Learn how to configure user groups and enforce data policies for secure and organized access to data resources. -->
 
-- [Supported Parameters for Table & Views](/resources/lens/supported_parameters_for_tables_and_views/)
+<!-- - [Supported Parameters for Table & Views](/resources/lens/supported_parameters_for_tables_and_views/)
     Discover the parameters you can use for configuring tables and views in the system.
-
+ -->
 
 <!-- - [Supported Data Quality Checks](/resources/lens/supported_data_quality_checks/)
     Find information on the data quality checks supported by our system to ensure data accuracy and integrity. -->
@@ -108,8 +110,9 @@ Below are resources to guide you through essential aspects of data modeling to o
   - [Do's and Don'ts](/resources/lens/do's_and_dont's/)
     A concise list of actions to follow and pitfalls to avoid when designing your data model.
 
-  - [Working with Segments](/resources/lens/working_with_segments) 
-    Learn how to create and manage data segments to improve query performance and user experience.
+  - [Error reference](/resources/lens/errors/)
+  <!-- - [Working with Segments](/resources/lens/working_with_segments/) 
+    Learn how to create and manage data segments to improve query performance and user experience. -->
 
   <!-- - [Supported Parameters for Tables and Views](/resources/lens/supported_parameters_for_tables_and_views/)
     Understand the role of logical tables and views in data models. -->

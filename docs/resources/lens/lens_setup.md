@@ -1,5 +1,8 @@
 # Lens Setup
 
+!!! abstract "Qucik Guide"
+    To quickly get started with creating a Lens model in DataOS, follow the [quick guide on creating a Lens model](/quick_guides/create_data_model/). This guide provides step-by-step instructions to help you transform your conceptual design into a functional data model, ensuring effective data structuring and organization to meet your analytical and business needs.
+
 Set up the Lens project folder to include the Dockerfile, model folder, and `user_groups.yml` file.
 
 In the Model folder, the Lens model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each folder contains specific files related to the Lens model.
@@ -47,7 +50,6 @@ docker-compose.yml // Orchestrates multi-container services (e.g., database, web
 
 - **Add a docker-compose.yml**
     - Docker compose is used to test the Lens in the development enviroment before deployment.
-
     - Here add data source details and update Lens meta details.  
 
 
@@ -56,7 +58,9 @@ docker-compose.yml // Orchestrates multi-container services (e.g., database, web
 The `docker-compose.yml` file defines how to set up and run Docker containers for Lens. Customize this file to specific environment and requirements.
 
 
-```bash
+<details><summary>Click here to see the docker-compose.yml file</summary>
+
+```yaml
 version: "2.2"
 
 x-lens2-environment: &lens2-environment
@@ -110,6 +114,7 @@ environment:
 volumes:
 - ./model:/etc/dataos/work/model
 ```
+</details>
 
 Modify the docker-compose.yml file to tailor it to include environment-URL, lens meta info, and, source details as per requirement - 
 
@@ -188,6 +193,9 @@ Lens can be tested in the development environment by running:
     ```
 
 ## Exploring Lens in Development Environment
+
+!!! abstract "Quick Guide"
+    To quickly get started with testing Lens locally, follow the [quick guide on testing your Lens model locally](/resources/lens/testing_locally/). This guide provides a step-by-step approach to validating your SQL queries within the data model and ensures that tables and joins work as expected before deploying them to DataOS.
 
 Now that Lens is successfully running without errors, one can begin interacting with it using SQL APIs, REST APIs, or GraphQL APIs. This setup allows to thoroughly test Lens before proceeding to deployment, ensuring all functionalities are working as expected.
 

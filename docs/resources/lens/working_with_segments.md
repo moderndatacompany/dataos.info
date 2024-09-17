@@ -1,5 +1,9 @@
 # Working with Segments
 
+!!! abstract "Quick Guide"
+    To quickly get started with testing Lens locally or in development environment, follow the [quick guide on testing your Lens model locally](/resources/lens/testing_locally/). This guide provides a step-by-step approach to validating your SQL queries within the data model and ensures that tables and joins work as expected before deploying them to DataOS.
+
+
 ## When to use Segments?
 
 - **Complex Filtering Logic**: Segments are ideal for defining complex filtering logic in SQL that can be reused across multiple queries.
@@ -28,3 +32,4 @@ You can leverage filtering keywords such as ‘LIKE’ to define filtering crite
       - name: common_state
         sql: "{TABLE}.state = 'Illinois' or {TABLE}.state like '%Ohio%'"
 ```
+
