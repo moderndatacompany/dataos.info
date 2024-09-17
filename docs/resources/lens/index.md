@@ -35,7 +35,7 @@ Lens  is engineered to handle complex and large-scale data models with ease. Key
 
 - **Segments:** [Segments](/resources/lens/working_with_segments/) are predefined filters that enable the definition of complex filtering logic in SQL. They allow you to create specific subsets of data, such as users from a particular city, which can be reused across different queries and reports. This feature helps streamline the data exploration process by simplifying the creation of reusable filters.
 
-- **API Support:** Lens enhances interoperability by simplifying application development with support for [Postgres API](/resources/lens/exploration_of_deployed_lens_using_sql_apis/), [REST API](/resources/lens/exploration_of_deployed_lens_using_rest_apis/), and [GraphQL](/resources/lens/exploration_of_deployed_lens_using_graphql/). Additionally, learn how to [work with payloads](/resources/lens/working_with_payloads) for querying and interacting with the system in the API Documentation.
+- **API Support:** Lens enhances interoperability by simplifying application development with support for [Postgres API](/resources/lens/exploration_of_deployed_lens_using_sql_apis/), [REST API](/resources/lens/exploration_of_deployed_lens_using_rest_apis/), and [GraphQL](/resources/lens/exploration_of_deployed_lens_using_graphql/). Additionally, learn how to [work with payloads](/resources/lens/working_with_payloads/) for querying and interacting with the system in the API Documentation.
 
 - **Governance and Access Control:** Lens ensures data governance through[ user group management and data policies](/resources/lens/working_with_user_groups_and_data_policies/), enabling precise control over who can access and interact with data models. 
 
@@ -110,8 +110,8 @@ Below are resources to guide you through essential aspects of data modeling to o
   - [Do's and Don'ts](/resources/lens/do's_and_dont's/)
     A concise list of actions to follow and pitfalls to avoid when designing your data model.
 
-  - [Working with Segments](/resources/lens/working_with_segments/) 
-    Learn how to create and manage data segments to improve query performance and user experience.
+  <!-- - [Working with Segments](/resources/lens/working_with_segments/) 
+    Learn how to create and manage data segments to improve query performance and user experience. -->
 
   <!-- - [Supported Parameters for Tables and Views](/resources/lens/supported_parameters_for_tables_and_views/)
     Understand the role of logical tables and views in data models. -->
