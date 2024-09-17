@@ -28,10 +28,7 @@ The following attributes will come under the `segments` section.
 | `name` | The name of the segment. |
 | `public` | Specifies visibility of the segment. |
 | `sql` | SQL condition for the segment filter. |
-| `meta` | Metadata for security and user groups.
-• **`secure`**: Defines user group access for the segment.
-
-    ◦ **`user_groups`**: List of user groups that the segment applies to. For example, `default` includes all users by default. |
+| `meta` | Metadata for security and user groups. Define the list of user groups that the segment applies to under the secure sub-property, which controls access. For example, the default group includes all users by default.|
 
 For example:
 
