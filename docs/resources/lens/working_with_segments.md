@@ -1,5 +1,10 @@
 # Working with Segments
 
+!!! info "Quick Guide"
+    To quickly get started with segments, click [here](/quick_guides/working_with_segments/). This guide walks you through defining and applying segments in Lens, which can be used during analysis. Segments help save time and make your complex filtering logic reusable.
+ 
+
+
 ## When to use Segments?
 
 - **Complex Filtering Logic**: Segments are ideal for defining complex filtering logic in SQL that can be reused across multiple queries.
@@ -28,3 +33,4 @@ You can leverage filtering keywords such as ‘LIKE’ to define filtering crite
       - name: common_state
         sql: "{TABLE}.state = 'Illinois' or {TABLE}.state like '%Ohio%'"
 ```
+
