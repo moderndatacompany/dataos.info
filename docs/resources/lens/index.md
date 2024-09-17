@@ -110,6 +110,7 @@ Below are resources to guide you through essential aspects of data modeling to o
   - [Do's and Don'ts](/resources/lens/do's_and_dont's/)
     A concise list of actions to follow and pitfalls to avoid when designing your data model.
 
+  - [Error reference](/resources/lens/errors/)
   <!-- - [Working with Segments](/resources/lens/working_with_segments/) 
     Learn how to create and manage data segments to improve query performance and user experience. -->
 
