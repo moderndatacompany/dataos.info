@@ -1,8 +1,7 @@
 # Working with Segments
 
-!!! info "Quick Guide"
-    To quickly get started with segments, click [here](/quick_guides/working_with_segments/). This guide walks you through defining and applying segments in Lens, which can be used during analysis. Segments help save time and make your complex filtering logic reusable.
- 
+!!! abstract "Quick Guide"
+    To quickly get started with testing Lens locally or in development environment, follow the [quick guide on testing your Lens model locally](/resources/lens/testing_locally/). This guide provides a step-by-step approach to validating your SQL queries within the data model and ensures that tables and joins work as expected before deploying them to DataOS.
 
 
 ## When to use Segments?

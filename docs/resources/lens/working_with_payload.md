@@ -1,5 +1,9 @@
 # Working with Payload
 
+!!! abstract "Quick Guide"
+    To quickly get started with payloads in Lens, follow the [quick guide on working with payloads](/quick_guides/working_with_payload/). It covers the essentials of payload structure and demonstrates how to adjust your queries using JSON to efficiently filter and sort data.
+
+
 ## Introduction
 
 In the context of **Lens**, a **payload** refers to the data sent within the body of an API request, typically in **JSON format**, to define specific query instructions. This payload includes measures, dimensions, filters, and other query components used to interact with Lens’s data models. It serves as the essential data package the client sends to Lens’s API, allowing the system to process and return results based on the query defined in the payload. The payload specifies the actual query logic, such as aggregations or filters, that Lens will act upon to retrieve the desired data.
@@ -443,4 +447,3 @@ Filters can contain `or` and `and` logical operators. Logical operators have
 </div>
 
 
-[Explore quick guide on working with payloads](/quick_guides/working_with_payload/)
