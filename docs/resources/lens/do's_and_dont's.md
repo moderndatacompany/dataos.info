@@ -260,7 +260,6 @@ user_groups:
       - graphql
       - jobs
       - source
-
 ```
 
 By leveraging Jinja macros, you can create efficient, reusable, and dynamic configurations in your Lens data models.
