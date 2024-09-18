@@ -21,7 +21,7 @@ Lens [Resource](/resources/) in DataOS is a logical modelling layer designed for
 
 The data modeling layer serves as an interface that overlays the underlying data, consistently presenting business users with familiar and well-defined terms like "product," "customer," or "revenue." This abstraction enables users to access and consume data in a way that aligns with their understanding, facilitating self-service analytics and reducing dependence on data engineers for ad-hoc data requests. 
 
-As a resource within the DataOS ecosystem, Lens enhances Data Product consumption by delivering improvements in how Data Products are accessed and utilized. It streamlines the developer experience in developer experience, consumption patterns, focusing specifically on refining the use and interaction with data products.
+As a resource within the DataOS ecosystem, Lens enhances Data Product consumption by delivering improvements in how Data Products are accessed and utilized. It streamlines the developer experience in consumption patterns, focusing specifically on refining the use and interaction with data products.
 
 ## Key features of Lens 
 
@@ -39,7 +39,7 @@ Lens  is engineered to handle complex and large-scale data models with ease. Key
 
 - **Governance and Access Control:** Lens ensures data governance through[ user group management and data policies](/resources/lens/working_with_user_groups_and_data_policies/), enabling precise control over who can access and interact with data models. 
 
-- **BI Integration:** Lens improves interoperability through robust integration with Superset, with ongoing efforts to extend connectivity to Tableau and PowerBI. This ensures that data models can be easily utilized across various BI platforms, enhancing the overall analytics experience. For more details on BI integration, visit the [BI Integration Guide](/resources/lens/bi_integration/).
+- **BI Integration:** Lens improves interoperability through robust integration with Superset, Tableau and PowerBI. This ensures that data models can be easily utilized across various BI platforms, enhancing the overall analytics experience. For more details on BI integration, visit the [BI Integration Guide](/resources/lens/bi_integration/).
 
 
 - **Performance Optimization through Flash:** Designed to work with DataOS Lakehouse and Iceberg-format depots, [Flash](/resources/stacks/flash/) improves query performance by leveraging in-memory execution. This optimization ensures that data teams can efficiently handle large-scale queries with enhanced speed and performance.
@@ -111,6 +111,8 @@ Below are resources to guide you through essential aspects of data modeling to o
     A concise list of actions to follow and pitfalls to avoid when designing your data model.
 
   - [Error reference](/resources/lens/errors/)
+    A quick reference for understanding and resolving common errors in data modeling.
+    
   <!-- - [Working with Segments](/resources/lens/working_with_segments/) 
     Learn how to create and manage data segments to improve query performance and user experience. -->
 
