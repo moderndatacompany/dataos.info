@@ -63,6 +63,8 @@ Learn how to examine and experiment with logical data models. Lens will help you
 -   [Working with Payloads](/quick_guides/working_with_payload/)
 
 -   [Pre-defined Filtering with Segments](/quick_guides/working_with_segments/)
+
+-   [Defining Data Policies](/quick_guides/apply_data_policy_lens/)
      
 </div>
 

@@ -246,117 +246,211 @@ nav:
       - resources/index.md
       - Types:
         - resources/types/index.md
-      #   - Bundle: 
-      #     - resources/bundle/index.md
-      #   - Cluster: 
-      #     - resources/cluster/index.md
-      #     - Configurations: resources/cluster/configurations.md
-      #   - Compute: 
-      #     - resources/compute/index.md
-      #   - Database: 
-      #     - resources/database/index.md
-      #   - Depot: 
-      #     - resources/depot/index.md
-      #   - Grant:
-      #     - resources/grant/index.md
-      #     - Configuration: resources/grant/configurations.md
-      #   - Instance Secret: 
-      #     - resources/instance_secret/index.md
-      #   - Lakehouse: 
-      #     - resources/lakehouse/index.md
-      #   - Lens:
-      #     - resources/lens/index.md
-      #     - Setup Lens: resources/lens/lens_setup.md
-      #     - Core Concepts: resources/lens/core_concepts.md
-      #     - Configurations: 
-      #       - Supported Data Sources: 
-      #         - resources/lens/data_sources.md
-      #         - Bigquery: resources/lens/data_sources/bigquery.md
-      #         - Minerva: resources/lens/data_sources/minerva.md
-      #         - Postgres: resources/lens/data_sources/postgres.md
-      #         - Redshift: resources/lens/data_sources/awsredshift.md
-      #         - Themis: resources/lens/data_sources/themis.md
-      #       - BI Integration: resources/lens/bi_integration.md
-      #       - Working with Payload: resources/lens/working_with_payload.md
-      #       - Supported Data Quality Checks: resources/lens/supported_data_quality_checks.md
-      #       - Supported Parameters for Tables and Views: resources/lens/supported_parameters_for_tables_and_views.md
-      #     - Reference: 
-      #       - Resource Manifest: resources/lens/lens_manifest_attributes.md
-      #       - Docker Compose Manifest: resources/lens/docker_compose_manifest_attributes.md
-      #       - API Endpoints and Scopes: resources/lens/api_endpoints_and_scopes.md
-      #     - Consumption:
-      #       - Using SQL APIs: resources/lens/consumption_using_sql_apis.md
-      #       - Using Python: resources/lens/consumption_using_python.md
-      #       - Using REST APIs: resources/lens/consumptions_using_rest_apis.md
-      #   - Monitor: 
-      #     - resources/monitor/index.md
-      #   - Operator: 
-      #     - resources/operator/index.md
-      #   - Pager: 
-      #     - resources/pager/index.md
-      #   - Policy: 
-      #     - resources/policy/index.md
-      #   - Secret: 
-      #     - resources/secret/index.md
-      #   - Service: 
-      #     - resources/service/index.md
-      #   - Stacks:
-      #     - resources/stacks/index.md
-      #     - Beacon: 
-      #       - resources/stacks/beacon/index.md
-      #     - Benthos: 
-      #       - resources/stacks/benthos/index.md
-      #     - CLI Stack: 
-      #       - resources/stacks/cli_stack/index.md
-      #     - Container: 
-      #       - resources/stacks/container/index.md
-      #     - Data Toolbox: 
-      #       - resources/stacks/data_toolbox/index.md
-      #     - DBT: 
-      #       - resources/stacks/dbt/index.md
-      #     - Flare: 
-      #       - resources/stacks/flare/index.md
-      #     - Scanner: 
-      #       - resources/stacks/scanner/index.md
-      #     - Soda: 
-      #       - resources/stacks/soda/index.md
-      #     - Steampipe: 
-      #       - resources/stacks/steampipe/index.md
-      #     - Talos:
-      #       - resources/stacks/talos/index.md
-      #       - Setting Up Talos: 
-      #         - On Local: resources/stacks/talos/local_set_up.md
-      #         - On DataOS: resources/stacks/talos/set_up.md
-      #       - Configurations: 
-      #         - resources/stacks/talos/configurations/index.md
-      #         - config.yaml: resources/stacks/talos/configurations/config.md
-      #         - docker-compose.yaml: resources/stacks/talos/configurations/docker_compose.md
-      #         - apis: resources/stacks/talos/configurations/apis.md
-      #         - service.yaml: resources/stacks/talos/configurations/service.md
-      #       - Supported Sources:
-      #         - Lens: resources/stacks/talos/recipes/lens_setup.md
-      #         - Flash: resources/stacks/talos/recipes/flash_setup.md
-      #         - Redshift: resources/stacks/talos/recipes/redshift.md
-      #         - Snowflake: resources/stacks/talos/recipes/snowflake.md
-      #         - Postgres: resources/stacks/talos/recipes/postgres.md
-      #       - Recipes: 
-      #         - Apply data masking: resources/stacks/talos/recipes/data_masking.md
-      #         - Fetch data from third party tools: resources/stacks/talos/recipes/external_tools.md
-      #         - Caching datasets: resources/stacks/talos/recipes/caching.md
-      #         - Generate API documentation: resources/stacks/talos/recipes/api_documentation.md
-      #         - External API as data source: resources/stacks/talos/recipes/external_api.md
-      #       - Example: resources/stacks/talos/example.md
-      #       - Best Practices:
-      #         - API: resources/stacks/talos/best_practices/api.md
-      #         - SQL: resources/stacks/talos/best_practices/sql.md
-      #   - Volume: 
-      #     - resources/volume/index.md
-      #   - Worker: 
-      #     - resources/worker/index.md
-      #     - First Steps: resources/worker/first_steps.md
-      #     - Configuration: resources/worker/configurations.md
-      #   - Workflow: 
-      #     - resources/workflow/index.md
+        - Bundle: 
+          - resources/bundle/index.md
+          - Configurations: resources/bundle/configurations.md
+          - Templates: resources/bundle/bundle_templates.md
+        - Cluster: 
+          - resources/cluster/index.md
+          - Configurations: 
+            - Manifest Reference: resources/cluster/configurations.md
+            - Connectors: resources/cluster/connectors_configuration.md
+            - Setting Up CLI Client: resources/cluster/cli_client.md
+          - Tuning:
+            - Query Execution Optimization: resources/cluster/query_optimization.md
+            - Performance Tuning: resources/cluster/performance_tuning.md
+            - Recommended Configuration: resources/cluster/configuration_recommendations.md
+          - Examples:
+            - Restart and scale Cluster on a pre-defined schedule: resources/cluster/examples/cluster_maintenance.md
+            - Multiple Cluster Setup using single manifest: resources/cluster/examples/multiple_cluster_setup.md
+          - Core Concepts: 
+            - On-demand Computing: resources/cluster/on_demand_computing.md
+        - Compute: 
+          - resources/compute/index.md
+          - Configurations: resources/compute/configurations.md
+          - Templates: resources/compute/compute_templates.md
+        - Database: 
+          - resources/database/index.md
+          - First Steps: resources/database/first_steps.md
+          - Configurations: resources/database/configurations.md
+          - Recipes:
+            - Query Database using Workbench: resources/database/how_to_guide/how_to_query_database_using_workbench.md
+            - Building Streamlit applications backed by Database: resources/database/how_to_guide/how_to_create_a_streamlit_application_of_database_on_dataos.md
+        - Depot: 
+          - resources/depot/index.md
+          - Supported Sources: resources/depot/#templates-of-depot-for-different-source-systems
+          - Configurations: resources/depot/configurations.md
+          - Supported Storage Architecture: 
+            - Icebase: 
+              - resources/depot/icebase.md
+              - Create, Get, and Drop Dataset: resources/depot/icebase/case_scenario_create_fetch_and_drop_dataset.md
+              - Table Properties: resources/depot/icebase/case_scenario_table_properties.md
+              - Schema Evolution: resources/depot/icebase/case_scenario_schema_evolution.md
+              - Partitioning: resources/depot/icebase/case_scenario_partitioning.md
+              - Maintenance (Snapshots and Metadata listing): resources/depot/icebase/case_scenario_maintenance.md
+            - Fastbase: resources/depot/fastbase.md
+          - Supported Connectors: resources/depot/list_of_connectors.md
+        - Grant:
+          - resources/grant/index.md
+          - Configuration: resources/grant/configurations.md
+        - Instance Secret: 
+          - resources/instance_secret/index.md
+          - First Steps: resources/instance_secret/first_steps.md
+          - Templates: resources/instance_secret/#templates
+          - Configurations: resources/instance_secret/configurations.md
+          - Recipes: 
+            - Referring Instance Secrets in other Resources: resources/instance_secret/how_to_guide/recipe_1.md
+        - Lakehouse: 
+          - resources/lakehouse/index.md
+          - Configurations: 
+            - Manifest Reference: resources/lakehouse/configurations.md
+            - Command Reference: resources/lakehouse/command_reference.md
+            - Iceberg Metadata Tables: resources/lakehouse/iceberg_metadata_tables.md
+          - Recipes: 
+            - Ensure high data quality using Write-Audit-Publish (WAP) Pattern: resources/lakehouse/usage_examples/write_audit_publish_pattern_in_lakehouse_storage.md
+            - Use Iceberg metadata tables to extract insights: resources/lakehouse/using_metadata_tables_to_extract_insights_in_lakehouse.md
+            - Create, Get, and Drop Dataset: resources/lakehouse/command_reference/case_scenario_create_fetch_and_drop_dataset.md
+            - Table Properties: resources/lakehouse/command_reference/case_scenario_table_properties.md
+            - Schema Evolution: resources/lakehouse/command_reference/case_scenario_schema_evolution.md
+            - Partitioning: resources/lakehouse/command_reference/case_scenario_partitioning.md
+            - Maintenance (Snapshots and Metadata listing): resources/lakehouse/command_reference/case_scenario_maintenance.md
+        - Lens:
+          - resources/lens/index.md
+          - Setup Lens: resources/lens/lens_setup.md
+          - Core Concepts: resources/lens/core_concepts.md
+          - Configurations: 
+            - Supported Data Sources: 
+            # resources/lens/data_sources.md
+              - Bigquery: resources/lens/data_sources/bigquery.md
+              - Minerva: resources/lens/data_sources/minerva.md
+              - Postgres: resources/lens/data_sources/postgres.md
+              - Redshift: resources/lens/data_sources/awsredshift.md
+              - Themis: resources/lens/data_sources/themis.md
+            - BI Integration: resources/lens/bi_integration.md
+            - Working with Payload: resources/lens/working_with_payload.md
+            # - Supported Data Quality Checks: resources/lens/supported_data_quality_checks.md
+          - Reference: 
+            - Resource Manifest: resources/lens/lens_manifest_attributes.md
+            - Docker Compose Manifest: resources/lens/docker_compose_manifest_attributes.md
+            - API Endpoints and Scopes: resources/lens/api_endpoints_and_scopes.md
+          - Exploration:
+            - Using GraphQL: resources/lens/exploration_of_deployed_lens_using_graphql.md
+            - Using SQL APIs: resources/lens/exploration_of_deployed_lens_using_sql_apis.md
+            - Using Python: resources/lens/exploration_of_deployed_lens_using_python.md
+            - Using REST APIs: resources/lens/exploration_of_deployed_lens_using_rest_apis.md
+          - Data Modelling: 
+            - Best Practices: resources/lens/best_practices.md
+            - Do's and Dont's: resources/lens/do's_and_dont's.md
+            - Errors: resources/lens/errors.md
+          - Optimizing Lens Model: resources/lens/fine_tuning_a_lens_model.md
+        
+        - Monitor: 
+          - resources/monitor/index.md
+          - First Steps: resources/monitor/first_steps.md
+          - Configurations: resources/monitor/configurations.md
+          - Recipes: 
+            - Add context columns to Monitors: resources/monitor/how_to_guide/context_column.md
+            - Create a Report Monitor: resources/monitor/how_to_guide/report_monitor.md
+            - Create a Stream Monitor: resources/monitor/how_to_guide/stream_monitor.md
+            - Create an Equation Monitor on Lens: resources/monitor/how_to_guide/lens_monitor.md
+            - Create an Equation Monitor on Postgres: resources/monitor/equation_monitor_on_postgres.md
+            - Generate incidents for certificate expiration: resources/monitor/how_to_guide/certificate_expiration_monitoring.md
+        - Operator: 
+          - resources/operator/index.md
+          - Configurations: resources/operator/configurations.md
+          - Recipes: 
+            - Orchestrate Hightouch pipeline using Hightouch Factory Operator: resources/operator/case_scenario/hightouch_factory_operator.md
+        - Pager: 
+          - resources/pager/index.md
+          - Configurations: resources/pager/configurations.md
+          - Recipes: 
+            - Create a Custom Body Template for Pager: resources/pager/custom_body_template_for_pager.md
+        - Policy: 
+          - resources/policy/index.md
+          - First Steps: resources/policy/first_steps.md
+          - Configurations: resources/policy/configurations.md
+          - Recipes: 
+            - End-to-end use-case on how to implement access policy: resources/policy/how_to_guide/implementing_access_policy.md
+          - Core Concepts: resources/policy/core_concepts.md
+        - Secret: 
+          - resources/secret/index.md
+          - First Steps: resources/secret/first_steps.md
+          - Configurations: resources/secret/configurations.md
+          - Recipes: 
+            - Refer secrets in other DataOS Resources: resources/secret/how_to_guide/recipe1.md
+            - Setup secrets to pull images from a private container registry: resources/secret/how_to_guide/recipe2.md
+        - Service: 
+          - resources/service/index.md
+          - Configurations: resources/service/configurations.md
+        - Stacks:
+          - resources/stacks/index.md
+          - Beacon: 
+            - resources/stacks/beacon/index.md
+          - Benthos: 
+            - resources/stacks/benthos/index.md
+          - CLI Stack: 
+            - resources/stacks/cli_stack/index.md
+          - Container: 
+            - resources/stacks/container/index.md
+          - Data Toolbox: 
+            - resources/stacks/data_toolbox/index.md
+          - DBT: 
+            - resources/stacks/dbt/index.md
+          - Flare: 
+            - resources/stacks/flare/index.md
+          - Scanner: 
+            - resources/stacks/scanner/index.md
+          - Soda: 
+            - resources/stacks/soda/index.md
+          - Steampipe: 
+            - resources/stacks/steampipe/index.md
+          - Talos:
+            - resources/stacks/talos/index.md
+            - Setting Up Talos: 
+              - On Local: resources/stacks/talos/local_set_up.md
+              - On DataOS: resources/stacks/talos/set_up.md
+            - Configurations: 
+              - resources/stacks/talos/configurations/index.md
+              - config.yaml: resources/stacks/talos/configurations/config.md
+              - docker-compose.yaml: resources/stacks/talos/configurations/docker_compose.md
+              - apis: resources/stacks/talos/configurations/apis.md
+              - service.yaml: resources/stacks/talos/configurations/service.md
+            - Supported Sources:
+              - Lens: resources/stacks/talos/recipes/lens_setup.md
+              - Flash: resources/stacks/talos/recipes/flash_setup.md
+              - Redshift: resources/stacks/talos/recipes/redshift.md
+              - Snowflake: resources/stacks/talos/recipes/snowflake.md
+              - Postgres: resources/stacks/talos/recipes/postgres.md
+            - Recipes: 
+              - Apply data masking: resources/stacks/talos/recipes/data_masking.md
+              - Fetch data from third party tools: resources/stacks/talos/recipes/external_tools.md
+              - Caching datasets: resources/stacks/talos/recipes/caching.md
+              - Generate API documentation: resources/stacks/talos/recipes/api_documentation.md
+              - External API as data source: resources/stacks/talos/recipes/external_api.md
+            - Example: resources/stacks/talos/example.md
+            - Best Practices:
+              - API: resources/stacks/talos/best_practices/api.md
+              - SQL: resources/stacks/talos/best_practices/sql.md
+          - Custom Stack: 
+            - resources/stacks/custom_stacks.md
+            - Configurations: resources/stacks/custom_stacks/configurations.md
+        - Volume: 
+          - resources/volume/index.md
+          - Getting Started: resources/volume/getting_started.md
+          - Configurations: resources/volume/configuration.md
+        - Worker: 
+          - resources/worker/index.md
+          - First Steps: resources/worker/first_steps.md
+          - Configuration: resources/worker/configurations.md
+        - Workflow: 
+          - resources/workflow/index.md
+          - First Steps: resources/workflow/first_steps.md
+          - Configurations: resources/workflow/configurations.md
+          - Recipes: 
+            - Implement Single-run Workflow: resources/workflow/how_to_guide/single_run_workflow.md
+            - Run Cron/Scheduled Workflow: resources/workflow/how_to_guide/scheduled_workflow.md
+            - Orchestrate multiple Workflows from a single Workflow: resources/workflow/how_to_guide/multiple_workflows_from_a_single_workflow.md
+            - Retry a Job in Workflow: resources/workflow/how_to_guide/retry_jobs.md
       - Characteristics: resources/characteristics.md
       - Configuration: resources/manifest_attributes.md
       - YAML files: resources/yaml_configuration.md
@@ -388,207 +482,6 @@ nav:
       - Sales 360 Data Product : products/data_product/templates/sales_360.md
     - Configurations: products/data_product/configurations.md   
     - Core Concepts: products/data_product/core_concepts.md
-  - Develop: 
-    - Bundle: 
-      - resources/bundle/index.md
-      - Configurations: resources/bundle/configurations.md
-      - Templates: resources/bundle/bundle_templates.md
-    - Cluster: 
-      - resources/cluster/index.md
-      - Configurations: 
-        - Manifest Reference: resources/cluster/configurations.md
-        - Connectors: resources/cluster/connectors_configuration.md
-        - Setting Up CLI Client: resources/cluster/cli_client.md
-      - Tuning:
-        - Query Execution Optimization: resources/cluster/query_optimization.md
-        - Performance Tuning: resources/cluster/performance_tuning.md
-        - Recommended Configuration: resources/cluster/configuration_recommendations.md
-      - Examples:
-        - Restart and scale Cluster on a pre-defined schedule: resources/cluster/examples/cluster_maintenance.md
-        - Multiple Cluster Setup using single manifest: resources/cluster/examples/multiple_cluster_setup.md
-      - Core Concepts: 
-        - On-demand Computing: resources/cluster/on_demand_computing.md
-    - Compute: 
-      - resources/compute/index.md
-      - Configurations: resources/compute/configurations.md
-      - Templates: resources/compute/compute_templates.md
-    - Database: 
-      - resources/database/index.md
-      - First Steps: resources/database/first_steps.md
-      - Configurations: resources/database/configurations.md
-      - Recipes:
-        - Query Database using Workbench: resources/database/how_to_guide/how_to_query_database_using_workbench.md
-        - Building Streamlit applications backed by Database: resources/database/how_to_guide/how_to_create_a_streamlit_application_of_database_on_dataos.md
-    - Depot: 
-      - resources/depot/index.md
-      - Supported Sources: resources/depot/#templates-of-depot-for-different-source-systems
-      - Configurations: resources/depot/configurations.md
-      - Supported Storage Architecture: 
-        - Icebase: 
-          - resources/depot/icebase.md
-          - Create, Get, and Drop Dataset: resources/depot/icebase/case_scenario_create_fetch_and_drop_dataset.md
-          - Table Properties: resources/depot/icebase/case_scenario_table_properties.md
-          - Schema Evolution: resources/depot/icebase/case_scenario_schema_evolution.md
-          - Partitioning: resources/depot/icebase/case_scenario_partitioning.md
-          - Maintenance (Snapshots and Metadata listing): resources/depot/icebase/case_scenario_maintenance.md
-        - Fastbase: resources/depot/fastbase.md
-      - Supported Connectors: resources/depot/list_of_connectors.md
-    - Grant:
-      - resources/grant/index.md
-      - Configuration: resources/grant/configurations.md
-    - Instance Secret: 
-      - resources/instance_secret/index.md
-      - First Steps: resources/instance_secret/first_steps.md
-      - Templates: resources/instance_secret/#templates
-      - Configurations: resources/instance_secret/configurations.md
-      - Recipes: 
-        - Referring Instance Secrets in other Resources: resources/instance_secret/how_to_guide/recipe_1.md
-    - Lakehouse: 
-      - resources/lakehouse/index.md
-      - Configurations: 
-        - Manifest Reference: resources/lakehouse/configurations.md
-        - Command Reference: resources/lakehouse/command_reference.md
-        - Iceberg Metadata Tables: resources/lakehouse/iceberg_metadata_tables.md
-      - Recipes: 
-        - Ensure high data quality using Write-Audit-Publish (WAP) Pattern: resources/lakehouse/usage_examples/write_audit_publish_pattern_in_lakehouse_storage.md
-        - Use Iceberg metadata tables to extract insights: resources/lakehouse/using_metadata_tables_to_extract_insights_in_lakehouse.md
-        - Create, Get, and Drop Dataset: resources/lakehouse/command_reference/case_scenario_create_fetch_and_drop_dataset.md
-        - Table Properties: resources/lakehouse/command_reference/case_scenario_table_properties.md
-        - Schema Evolution: resources/lakehouse/command_reference/case_scenario_schema_evolution.md
-        - Partitioning: resources/lakehouse/command_reference/case_scenario_partitioning.md
-        - Maintenance (Snapshots and Metadata listing): resources/lakehouse/command_reference/case_scenario_maintenance.md
-    - Lens:
-      - resources/lens/index.md
-      - Setup Lens: resources/lens/lens_setup.md
-      - Core Concepts: resources/lens/core_concepts.md
-      - Configurations: 
-        - Supported Data Sources: 
-        # resources/lens/data_sources.md
-          - Bigquery: resources/lens/data_sources/bigquery.md
-          - Minerva: resources/lens/data_sources/minerva.md
-          - Postgres: resources/lens/data_sources/postgres.md
-          - Redshift: resources/lens/data_sources/awsredshift.md
-          - Themis: resources/lens/data_sources/themis.md
-        - BI Integration: resources/lens/bi_integration.md
-        - Working with Payload: resources/lens/working_with_payload.md
-        # - Supported Data Quality Checks: resources/lens/supported_data_quality_checks.md
-      - Reference: 
-        - Resource Manifest: resources/lens/lens_manifest_attributes.md
-        - Docker Compose Manifest: resources/lens/docker_compose_manifest_attributes.md
-        - API Endpoints and Scopes: resources/lens/api_endpoints_and_scopes.md
-      - Exploration:
-        - Using GraphQL: resources/lens/exploration_of_deployed_lens_using_graphql.md
-        - Using SQL APIs: resources/lens/exploration_of_deployed_lens_using_sql_apis.md
-        - Using Python: resources/lens/exploration_of_deployed_lens_using_python.md
-        - Using REST APIs: resources/lens/exploration_of_deployed_lens_using_rest_apis.md
-      - Optimizing Lens Model: resources/lens/fine_tuning_a_lens_model.md
-    - Monitor: 
-      - resources/monitor/index.md
-      - First Steps: resources/monitor/first_steps.md
-      - Configurations: resources/monitor/configurations.md
-      - Recipes: 
-        - Add context columns to Monitors: resources/monitor/how_to_guide/context_column.md
-        - Create a Report Monitor: resources/monitor/how_to_guide/report_monitor.md
-        - Create a Stream Monitor: resources/monitor/how_to_guide/stream_monitor.md
-        - Create an Equation Monitor on Lens: resources/monitor/how_to_guide/lens_monitor.md
-        - Create an Equation Monitor on Postgres: resources/monitor/equation_monitor_on_postgres.md
-        - Generate incidents for certificate expiration: resources/monitor/how_to_guide/certificate_expiration_monitoring.md
-    - Operator: 
-      - resources/operator/index.md
-      - Configurations: resources/operator/configurations.md
-      - Recipes: 
-        - Orchestrate Hightouch pipeline using Hightouch Factory Operator: resources/operator/case_scenario/hightouch_factory_operator.md
-    - Pager: 
-      - resources/pager/index.md
-      - Configurations: resources/pager/configurations.md
-      - Recipes: 
-        - Create a Custom Body Template for Pager: resources/pager/custom_body_template_for_pager.md
-    - Policy: 
-      - resources/policy/index.md
-      - First Steps: resources/policy/first_steps.md
-      - Configurations: resources/policy/configurations.md
-      - Recipes: 
-        - End-to-end use-case on how to implement access policy: resources/policy/how_to_guide/implementing_access_policy.md
-      - Core Concepts: resources/policy/core_concepts.md
-    - Secret: 
-      - resources/secret/index.md
-      - First Steps: resources/secret/first_steps.md
-      - Configurations: resources/secret/configurations.md
-      - Recipes: 
-        - Refer secrets in other DataOS Resources: resources/secret/how_to_guide/recipe1.md
-        - Setup secrets to pull images from a private container registry: resources/secret/how_to_guide/recipe2.md
-    - Service: 
-      - resources/service/index.md
-      - Configurations: resources/service/configurations.md
-    - Stacks:
-      - resources/stacks/index.md
-      - Beacon: 
-        - resources/stacks/beacon/index.md
-      - Benthos: 
-        - resources/stacks/benthos/index.md
-      - CLI Stack: 
-        - resources/stacks/cli_stack/index.md
-      - Container: 
-        - resources/stacks/container/index.md
-      - Data Toolbox: 
-        - resources/stacks/data_toolbox/index.md
-      - DBT: 
-        - resources/stacks/dbt/index.md
-      - Flare: 
-        - resources/stacks/flare/index.md
-      - Scanner: 
-        - resources/stacks/scanner/index.md
-      - Soda: 
-        - resources/stacks/soda/index.md
-      - Steampipe: 
-        - resources/stacks/steampipe/index.md
-      - Talos:
-        - resources/stacks/talos/index.md
-        - Setting Up Talos: 
-          - On Local: resources/stacks/talos/local_set_up.md
-          - On DataOS: resources/stacks/talos/set_up.md
-        - Configurations: 
-          - resources/stacks/talos/configurations/index.md
-          - config.yaml: resources/stacks/talos/configurations/config.md
-          - docker-compose.yaml: resources/stacks/talos/configurations/docker_compose.md
-          - apis: resources/stacks/talos/configurations/apis.md
-          - service.yaml: resources/stacks/talos/configurations/service.md
-        - Supported Sources:
-          - Lens: resources/stacks/talos/recipes/lens_setup.md
-          - Flash: resources/stacks/talos/recipes/flash_setup.md
-          - Redshift: resources/stacks/talos/recipes/redshift.md
-          - Snowflake: resources/stacks/talos/recipes/snowflake.md
-          - Postgres: resources/stacks/talos/recipes/postgres.md
-        - Recipes: 
-          - Apply data masking: resources/stacks/talos/recipes/data_masking.md
-          - Fetch data from third party tools: resources/stacks/talos/recipes/external_tools.md
-          - Caching datasets: resources/stacks/talos/recipes/caching.md
-          - Generate API documentation: resources/stacks/talos/recipes/api_documentation.md
-          - External API as data source: resources/stacks/talos/recipes/external_api.md
-        - Example: resources/stacks/talos/example.md
-        - Best Practices:
-          - API: resources/stacks/talos/best_practices/api.md
-          - SQL: resources/stacks/talos/best_practices/sql.md
-      - Custom Stack: 
-        - resources/stacks/custom_stacks.md
-        - Configurations: resources/stacks/custom_stacks/configurations.md
-    - Volume: 
-      - resources/volume/index.md
-      - Getting Started: resources/volume/getting_started.md
-      - Configurations: resources/volume/configuration.md
-    - Worker: 
-      - resources/worker/index.md
-      - First Steps: resources/worker/first_steps.md
-      - Configuration: resources/worker/configurations.md
-    - Workflow: 
-      - resources/workflow/index.md
-      - First Steps: resources/workflow/first_steps.md
-      - Configurations: resources/workflow/configurations.md
-      - Recipes: 
-        - Implement Single-run Workflow: resources/workflow/how_to_guide/single_run_workflow.md
-        - Run Cron/Scheduled Workflow: resources/workflow/how_to_guide/scheduled_workflow.md
-        - Orchestrate multiple Workflows from a single Workflow: resources/workflow/how_to_guide/multiple_workflows_from_a_single_workflow.md
-        - Retry a Job in Workflow: resources/workflow/how_to_guide/retry_jobs.md
   - Glossary: glossary/index.md
   - Learn:
     - learn/index.md
@@ -626,12 +519,14 @@ nav:
           - Example Scenarios: quick_guides/working_with_payload/filter_operator_example_scenarios/index.md
         - Pre-defined Filtering using Segemnts:
           - quick_guides/working_with_segments/index.md
-        - Creating a Lens: 
-          - quick_guides/create_lens/index.md
-        - Using a Lens: 
-          - quick_guides/use_lens/index.md
-        - Creating Dashboard with LQL: 
-          - quick_guides/create_dashboard_lql/index.md
+        - Defining Data Policies:
+          - quick_guides/apply_data_policy_lens/index.md 
+        # - Creating a Lens: 
+        #   - quick_guides/create_lens/index.md
+        # - Using a Lens: 
+        #   - quick_guides/use_lens/index.md
+        # - Creating Dashboard with LQL: 
+        #   - quick_guides/create_dashboard_lql/index.md
       - Scanning Metadata: quick_guides/scan_metadata/index.md
       - Creating ETL Pipelines:
         - Batch Data Processing using Flare:
