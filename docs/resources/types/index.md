@@ -23,9 +23,9 @@ A Database Resource acts as a repository for storing transaction data, utilizing
 
 DataOS Lakehouse integrates Apache Iceberg table format with cloud object storage to offer a fully managed storage solution. It replicates traditional data warehouse functionalities, such as table creation with defined schemas and data manipulation via various tools. To learn more about Lakehouse, refer to the following link: [Lakehouse](/resources/lakehouse/).
 
-<!-- ### **Lens**
+### **Lens**
 
-Lens is a logical modelling layer within DataOS desgined for accessing tabular data in data warehouses or lakehouses. To learn more about Lens, refer to the following link: [Lens](/resources/lens/). -->
+Lens Resource is a logical modelling layer within DataOS desgined for accessing tabular data in data warehouses or lakehouses. To learn more about Lens, refer to the following link: [Lens](/resources/lens/).
 
 ### **Monitor**
 
