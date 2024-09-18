@@ -111,7 +111,7 @@ tables:
 
 Dimensions represent the properties of a single data point in the table.
 
-```yaml owner.yaml
+```yaml title="owner.yaml"
 tables:
 
   - name: owner

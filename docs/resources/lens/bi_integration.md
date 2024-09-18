@@ -113,15 +113,15 @@ curl --location --request POST 'http://127.0.0.1:5000/lens2/sync/api/v1/tableau/
 
 **Command Parameters:**
 
-**`<URL>` :** This endpoint is used to sync a specified Lens model to Tableau for public access. 
+**`<URL>`:** This endpoint is used to sync a specified Lens model to Tableau for public access. 
 
 **Parameters**
 
-`<DATAOS_FQDN>`: Replace `<DATAOS_FQDN>` with the current Fully Qualified Domain Name (FQDN) where you have deployed your Lens instance. For example, if your FQDN is `liberal-monkey.dataos.app`, replace it accordingly. In this case, "liberal monkey" would be your context name.
+**`DATAOS_FQDN`**: Replace `<DATAOS_FQDN>` with the current Fully Qualified Domain Name (FQDN) where you have deployed your Lens instance. For example, if your FQDN is `liberal-monkey.dataos.app`, replace it accordingly. In this case, "liberal monkey" would be your context name.
 
-`<LENS_NAME>`: The name of the Lens model that you wish to sync with Tableau. For example `sales360`.
+**`<LENS_NAME>`**: The name of the Lens model that you wish to sync with Tableau. For example `sales360`.
 
-`<apikey>`: You can get the API key using the following command
+**`<apikey>`**: You can get the API key using the following command
 
 ```bash
 dataos-ctl user apikey get
