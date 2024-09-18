@@ -1,0 +1,21 @@
+# Error reference
+
+When working with Lens, various error messages may appear in logs and API responses. This section provides a list of common errors along with guidance for resolving them.
+
+## Can't find join path
+
+This error occurs when a query includes members from Lens that cannot be joined to form a valid query to the upstream data source. 
+
+It is recommended to verify that all necessary joins are defined and that they have the correct directions. 
+
+For those building custom data applications, utilizing the meta endpoint of the REST API can assist in selecting members that can be joined together.
+
+## Can't parse timestamp
+
+
+This error indicates that the data source was unable to interpret the value of a time dimension as a valid timestamp. Reviewing the format of the time dimension and ensuring it matches the expected timestamp format can resolve this issue.
+
+
+## Primary key is required when join is defined
+
+This error suggests that a lens with joins has been defined without specifying a primary key. To resolve this, ensure that a primary key is set for any lens that includes joins.
