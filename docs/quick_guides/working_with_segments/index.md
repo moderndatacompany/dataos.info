@@ -11,11 +11,11 @@ Segments are predefined groups of filters that are written in the Lens YAML conf
 
 1. **Complex Filtering Logic**
 
-Segments are perfect for situations where complex filtering logic is needed. For instance, if your SQL queries need to filter data in intricate ways, such as applying multiple conditions across columns, Segments can help streamline this process. Instead of applying multiple filter conditions for every query, you can define them once as a reusable Segment.
+  Segments are perfect for situations where complex filtering logic is needed. For instance, if your SQL queries need to filter data in intricate ways, such as applying multiple conditions across columns, Segments can help streamline this process. Instead of applying multiple filter conditions for every query, you can define them once as a reusable Segment.
 
 2. **Reusability**
 
-Segments come in handy when you notice certain filters frequently reused across different queries. If the filter values remain relatively constant—such as filtering for specific regions, dates, or product categories—you can define them as Segments to make your queries cleaner and more efficient. 
+  Segments come in handy when you notice certain filters frequently reused across different queries. If the filter values remain relatively constant—such as filtering for specific regions, dates, or product categories—you can define them as Segments to make your queries cleaner and more efficient. 
 
 ## Step 2: Defining Segments
 
@@ -72,7 +72,7 @@ segments:
 This filter matches records where the state is "Illinois" or where the state contains "Ohio" in any part of the field.
 
 <aside class="callout">
-🗣 Make sure to test the Segment by running queries. This ensures that the SQL expression works as expected and returns the correct subset of data. You can check the criterion on Workbench or test the segment locally using Postman.
+🗣 Make sure to test the segment by running queries. This ensures that the SQL expression works as expected and returns the correct subset of data. You can check the criterion on Workbench or test the segment locally using Postman.
 </aside>
 
 ### **Best Practices**
@@ -114,7 +114,7 @@ Once defined, segments can be applied across queries in the Lens Studio interfac
     ![seg_payload.png](/quick_guides/working_with_segments/seg_payload.png)
     
 
-## Example Scenarios
+### **Example Scenarios**
 
 Let’s walk through some practical use cases in the **retail360 Lens** using predefined segments. Suppose you want to analyze customer details that can be used for targeted promotions or analysis.
 
