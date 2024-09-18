@@ -1,5 +1,10 @@
 # Elements of Lens
 
+<div style="text-align: center;">
+    <img src="/resources/lens/tables_views.png" alt="Iris board" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <figcaption> Tables and Views </figcaption>
+</div>
+
 ## Table
 
 A table is a logical construct used to define an entity. It contains information about joins (relationships), dimensions, measures, and segments. Each table is defined in a separate YAML file. 
@@ -7,46 +12,59 @@ A table is a logical construct used to define an entity. It contains information
 > To draw a parallel with common data modelling concepts, **‘Table’ is equivalent to the concept of ‘Entity’**.
 > 
 
-<div style="text-align: left; padding-left: 1em;">
-    <img src="/resources/lens/tables_views.png" alt="Iris board" style="max-width: 80%; height: auto; border: 1px solid #000;">
-    <figcaption> Tables and Views </figcaption>
-</div>
+We'll use a sample database with two tables, owner and contacts to illustrate the concepts throughout this page:
+
+`owner` Table
+
+| owner_id | owner_name     | owner_email          | city         |
+|----------|----------------|----------------------|--------------|
+| 1        | Alice Johnson  | alice@example.com    | New York     |
+| 2        | Bob Smith      | bob@example.com      | San Francisco|
+| 3        | Charlie Brown  | charlie@example.com  | Los Angeles  |
+| 4        | David Williams | david@example.com    | Chicago      |
+| 5        | Emma Davis     | emma@example.com     | Miami        |
+
+`contacts` Table
+
+| contact_id | owner_id | contact_name   | contact_email         | phone_number    |
+|------------|----------|----------------|-----------------------|-----------------|
+| 1          | 1        | John Doe       | john.doe@example.com  | 123-456-7890    |
+| 2          | 2        | Jane Smith     | jane.smith@example.com| 987-654-3210    |
+| 3          | 3        | Michael Brown  | michael.b@example.com | 555-123-4567    |
+| 4          | 4        | Sarah Johnson  | sarah.j@example.com   | 444-222-3333    |
+| 5          | 5        | Robert Wilson  | robert.w@example.com  | 777-888-9999    |
 
 
 **Example**
 
-In the example below the account table is defined for a sales analytics lens 
+In the example below the account table is defined for a sales analytics lens:
 
 ```yaml
 tables:
-  - name: account
-    sql: {{ load_sql('account') }}
-    description: Table containing information about the account
+  - name: owner
+    sql: {{ load_sql('owner') }}
+    description: Table containing information about the owners.
     data_source: icebase
-    public: true
+    public: true   
+```
+You can also use the `tables` attribute to accommodate more complex SQL queries:
 
-    dimensions:
-      - name: customer_id
-        column: customer_id
-        type: string
-        description: Concatenation for customer and product.
-        primary_key: true
-        
-      - name: city
-        column: city
-        type: string
-        description: City of the customer.        
-        
-    measures:
-      - name: total_accounts
-        type: number
-        description: Total customers.
-        sql: count(distinct {TABLE.customer_id})       
+```yaml
+tables:
+  - name: owner
+    sql: >
+      SELECT *
+      FROM owner_id, email
+      WHERE owner.owner_id = contacts.owner_id
 ```
 
-**Parameters Supported**
+Within each tables dimensions, measures, and segments are defined. Joins are used to define relations between tables.
 
-The table declaration involves the following parameters:
+<!-- Note that tables attribute support extended functionality, and data blending. -->
+ 
+**Attribute**
+
+The table declaration involves the following attributes:
 
 | **Property** | **Description** | **Possible Value** | **Best Practice** |
 | --- | --- | --- | --- |
@@ -64,13 +82,9 @@ The table declaration involves the following parameters:
 
 The join parameter can be used to define the relationship between two tables. Lens employs left join for all joins it generates. It's important to note that the table (referred to as the base table) in which the join is specified will always be positioned on the left side of the join.
 
-Three types of joins are supported:
+There are three types of join relationships (one_to_one, one_to_many, and many_to_one) and a few other concepts.
 
-- `one-to-one`
-- `one-to-many`
-- `many-to-one`
-
-**Supported Parameters**
+**Attributes**
 
 | Property  | Description |
 | --- | --- |
@@ -82,18 +96,41 @@ Three types of joins are supported:
 
 In this example, we define the base table and outline its relationship with another table. Specifically, multiple transactions can reference the same product, establishing a `many-to-one` relationship between the transactions table and the products table. In this context, the placeholder {TABLE} refers to the base table, which is the transactions table.
 
-``` title="transactions.yaml"
+``` title="owner.yaml"
 tables:
-  - name: transactions
-    sql: {{ load_sql('transactions') }}
-    description: Table containing information about customer records.
+  - name: owner
+    sql: {{ load_sql('owner') }}
+    description: Table containing information about owner records.
     joins:
-      - name: products
-        relationship: many_to_one
-        sql: "{TABLE.skuid}= {products.skuid}"   
+      - name: contacts
+        relationship: one_to_many
+        sql: "{TABLE.owner_id}= {contacts.owner_id}"   
 ``` 
 
 ## Dimensions
+
+Dimensions represent the properties of a single data point in the table.
+
+```yaml owner.yaml
+tables:
+
+  - name: owner
+    sql: {{ load_sql('owner') }}
+    description: Table containing information about owner records.
+    
+    dimensions:
+      - name: owner_id
+        type: string
+        description: Unique identifier for each owner.
+        sql: owner_id
+        primary_key: true
+        public: true
+
+      - name: email
+        type: string
+        description: Email address of the owner.
+        sql: email
+```
 
 The dimension declaration involves the following properties:
 
@@ -109,10 +146,18 @@ The dimension declaration involves the following properties:
 | `meta` |  | Key-value pairs | Use metadata to provide additional context about the dimension, such as tags, or custom attributes |  
 | `case` | Defines dimension based on SQL conditions <br><br> - `when` parameters declare a series of SQL conditions and `labels` that are returned if the condition is true <br>- `else` parameter declares the default `label` that would be returned | SQL conditions and labels | Use for creating conditional dimensions |  
 | `format` | Specifies the format of the dimension, particularly useful for time |  |   |
-| `sub_query` | Sub-query for the dimension. Set the flag to reference a measure in dimension |  | Use to define complex dimensions using sub-queries |  
+| `sub_query` | Sub-query for the dimension. Set the flag to reference a measure of one table in dimension of another |  | Use to define complex dimensions using sub-queries |  
 | `propagate_filters_to_sub_query` | Determines if filters should propagate to sub-queries | True, False | Use this property to control the behavior of filters in complex queries |  
 
 ## Measures
+
+Measures are quantifications — fields like order subtotal, quantity of items purchased, or duration spent on a specific page. Measures are therefore computable. Say you have a measure, quantity of items purchased: you can do things like calculate the average quantity ordered, sort by descending quantities, sum all quantities, and so on.
+
+**Measure Additivity:**
+
+Additivity is a property of measures that tells us if we can break down or combine measure values across different categories. In simpler terms, it means that if we have a measure for a group of dimensions (like sales for different regions), we can add or combine these values to get a measure for a smaller subset of those dimensions (like sales for a specific region).
+
+Additivity of a measure depends on its type. Only measures with the following types are considered additive: count, count_distinct_approx, min, max, sum. Measures with all other types are considered non-additive.
 
 The measure declaration involves the following properties:
 
@@ -130,6 +175,20 @@ The measure declaration involves the following properties:
 | `format` | Format the output of measures |  |  |  |
 | `meta` | Custom metadata |  |  |  |
 
+
+```yaml owner.yaml
+tables:
+  - name: owner
+    sql: {{ load_sql('owner') }}
+    description: Table containing information about owners.
+    
+    measures:
+      - name: count
+        sql: customer_id
+        type: count_distinct
+        description: Total number of owners.
+```
+
 ## Segments
 
 Segments are pre-defined groups of filters. 
@@ -144,3 +203,52 @@ The segment declaration involves the following properties
 | `meta` | Custom metadata. This is also used to define `secure` sub property | NA |
 
 To know more about segments click [here](/resources/lens/working_with_segments/)
+
+
+``` owners.yaml
+tables:
+  - name: owners
+    # ...
+
+    segments:
+      - name: active_owners
+        sql: "{TABLE}.status = 'active'"
+```
+
+A more thorough introduction can be found in [Working with Segments](/resources/lens/working_with_segments/).
+
+## Views
+
+Views sit on top of the data graph of cubes and create a abstraction of whole data model with which data consumers can interact. They serve as a layer for defining metrics, providing a simplified interface for end-users to interact objectively with key metrics instead of the entire data model.
+
+A view reference serves as a way to access dimensions, measures, and segments from multiple logical tables. It does not define any measures, dimensions, or segments on its own.
+
+In the example below, we create the `transaction_analysis` view which includes select members from transactions, and products tables:
+
+```yaml
+views:
+  - name: owner_contact_analysis
+    description: View containing detailed information about owners and their associated contacts
+    public: true
+
+    tables:
+      - join_path: owners
+        prefix: true
+        includes:
+          - owner_id
+          - owner_name
+          - owner_status
+          - owner_value
+          - owner_city
+
+      - join_path: contacts
+        prefix: true
+        includes:
+          - contact_id
+          - contact_name
+          - contact_email
+          - contact_phone
+          - contact_owner_id
+```
+A more thorough introduction can be found in [Working with Views](/resources/lens/working_with_views/).
+

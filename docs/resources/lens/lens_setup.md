@@ -3,10 +3,6 @@
 !!! abstract "Qucik Guide"
     To quickly get started with creating a Lens model in DataOS, follow the [quick guide on creating a Lens model](/quick_guides/create_data_model/). This guide provides step-by-step instructions to help you transform your conceptual design into a functional data model, ensuring effective data structuring and organization to meet your analytical and business needs.
 
-Set up the Lens project folder to include the Dockerfile, model folder, and `user_groups.yml` file.
-
-In the Model folder, the Lens model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each folder contains specific files related to the Lens model.
-
 ### **Prerequisites**
 
 Before setting up Lens, ensure you have all its dependencies installed.
@@ -17,7 +13,9 @@ The following page will provide step-by-step instructions and additional resourc
 
 ### **Set Up Lens Project Folder**
 
-Set up the Lens project folder or you can download the following template.
+Set up the Lens project folder to include the Dockerfile, model folder, and `user_groups.yml` file.
+
+In the Model folder, the Lens model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each folder contains specific files related to the Lens model or you can download the following template to quickly get started.
 
 [lens template](/resources/lens/lens_setup/lens-project-template.zip)
 

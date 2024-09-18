@@ -481,7 +481,12 @@ nav:
         - Using SQL APIs: resources/lens/exploration_of_deployed_lens_using_sql_apis.md
         - Using Python: resources/lens/exploration_of_deployed_lens_using_python.md
         - Using REST APIs: resources/lens/exploration_of_deployed_lens_using_rest_apis.md
+      - Data Modelling: 
+        - Best Practices: resources/lens/best_practices.md
+        - Do's and Dont's: resources/lens/do's_and_dont's.md
+        - Errors: resources/lens/errors.md
       - Optimizing Lens Model: resources/lens/fine_tuning_a_lens_model.md
+    
     - Monitor: 
       - resources/monitor/index.md
       - First Steps: resources/monitor/first_steps.md
