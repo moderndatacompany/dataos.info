@@ -626,6 +626,8 @@ nav:
           - Example Scenarios: quick_guides/working_with_payload/filter_operator_example_scenarios/index.md
         - Pre-defined Filtering using Segemnts:
           - quick_guides/working_with_segments/index.md
+        - Defining Data Policies:
+          - quick_guides/apply_data_policy_lens/index.md 
         - Creating a Lens: 
           - quick_guides/create_lens/index.md
         - Using a Lens: 
