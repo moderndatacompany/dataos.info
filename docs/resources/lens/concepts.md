@@ -1,7 +1,7 @@
 # Elements of Lens
 
 <div style="text-align: center;">
-    <img src="/resources/lens/tables_views.png" alt="Iris board" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/tables_views.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">
     <figcaption> Tables and Views </figcaption>
 </div>
 

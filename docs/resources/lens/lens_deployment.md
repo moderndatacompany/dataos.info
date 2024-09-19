@@ -180,86 +180,80 @@ To get the details of Instance-secret created by all the users within the DataOS
 
 ### **Step 3: Create a Lens Resource manifest file**
 
-A Lens manifest file incorporates the configuration of the Lens Resource. The manifest file for the Lens is composed of several sections which define the configuration of various components associated with the Lens Resource.
-The different sections of the Lens manifest file are provided below:
+Begin by creating a manifest file that will hold the configuration details for your Lens Resource. The structure of the Lens manifest file is provided below.
 
-1. **Resource meta section**
-2. **Lens-specific section**
+???tip "Sample Lens manifest"
 
-```yaml
-# RESOURCE META SECTION
-name: sales360test # Lens Resource name (mandatory)
-version: v1alpha # Lens manifest version (mandatory)
-layer: user # DataOS Layer (optional)
-type: lens # Type of Resource (mandatory)
-tags: # Tags (optional)
-  - lens
-description: sales360 lens deployment on DataOS # Lens Resource description (optional)
+    ```yaml
+    --8<-- "/examples/lens/sample_lens_manifest.yml"
+    ```
 
-# LENS-SPECIFIC SECTION
-lens:
-  compute: runnable-default # Compute Resource that Lens should utilize (mandatory)
-  secrets: # Referred Instance-secret configuration (**mandatory for private code repository, not required for public repository)
-    - name: bitbucket-r # Referred Instance Secret name (mandatory)
-      allKeys: true # All keys within the secret are required or not (optional)
-  source: # Data Source configuration
-    type: minerva # Source type 
-    name: system # Source name
-    catalog: icebase #in case of minerva or themis
-  repo: # Lens
-   model code repository configuration (mandatory)
-    url: https://bitbucket.org/rubik_/customize-solutions # URL of repository containing the Lens model (mandatory)
-    lensBaseDir: customize-solutions/lens/sales360/model # Relative path of the Lens 'model' directory in repository (mandatory)
-    syncFlags: # Additional flags used during synchronization, such as specific branch.
-      - --ref=lens # Repository Branch 
-  api: # API Instances configuration (optional)
-    replicas: 1 # Number of API instance replicas (optional)
-    logLevel: info  # Logging granularity (optional)
-    resources: # CPU and memory configurations for API Instances (optional)
-      requests:
-        cpu: 100m
-        memory: 256Mi
-      limits:
-        cpu: 2000m
-        memory: 2048Mi
-  worker: # Worker configuration (optional)
-    replicas: 2 # Number of Worker replicas (optional)
-    logLevel: info # Logging level (optional)
-    resources: # CPU and memory configurations for Worker (optional)
-      requests:
-        cpu: 100m
-        memory: 256Mi
-      limits:
-        cpu: 6000m
-        memory: 6048Mi
-  router: # Router configuration (optional)
-    logLevel: info  # Level of log detail (optional)
-    resources: # CPU and memory resource specifications for the router (optional)
-      requests:
-        cpu: 100m
-        memory: 256Mi
-      limits:
-        cpu: 6000m
-        memory: 6048Mi
-  iris:
-	  logLevel: info
-    resources: # CPU and memory resource specifications for the iris board (optional)
-      requests:
-        cpu: 100m
-        memory: 256Mi
-      limits:
-        cpu: 6000m
-        memory: 6048Mi
-```
+The manifest file of a Lens can be broken down into two sections:
 
-For more information on how to configure a Lens manifest file, refer to the link: [Configuration Fields of the Deployment Manifest File (YAML) for Lens Resource](/resources/lens/configuration/lens_manifest/)
+1. Resource meta section
+2. Lens-specific section
+
+### **Resource-meta Section**
+
+In DataOS, a Lens is categorized as a Resource type. The YAML configuration file for a Lens Resource includes a Resource meta section, which contains attributes shared among all Resource types.
+
+The following YAML excerpt illustrates the attributes specified within this section:
+
+
+=== "Syntax"
+
+      ```yaml
+      name: ${{resource_name}} # Name of the Resource (mandatory)
+      version: v1alpha # Manifest version of the Resource (mandatory)
+      type: lens # Type of Resource (mandatory)
+      tags: # Tags for categorizing the Resource (optional)
+        - ${{tag_example_1}} 
+        - ${{tag_example_2}} 
+      description: ${{resource_description}} # Description (optional)
+      owner: ${{resource_owner}} # Owner of the Resource (optional, default value: user-id of user deploying the resource)
+      layer: ${{resource_layer}} # DataOS Layer (optional, default value: user)
+      lens: # lens-specific Section
+        ${{Attributes of lens-specific Section}}
+      ```
+=== "Example"
+
+      ```yaml
+      name: my-first-lens # Name of the Resource
+      version: v1alpha # Manifest version of the Resource
+      type: lens # Type of Resource
+      tags: # Tags for categorizing the Resource
+        - dataos:lens 
+        - lens 
+      description: Common attributes applicable to all DataOS Resources # Description
+      owner: iamgroot # Owner of the Resource
+      layer: user # DataOS Layer
+      lens: 
+        # .... 
+      ```
+
+To configure a lens Resource, replace the values of `name`, `layer`, `tags`, `description`, and `owner` with appropriate values. For additional configuration information about the attributes of the Resource meta section, refer to the link: [Attributes of Resource meta section](/resources/manifest_attributes/).
+
+### **Lens-specific section**
+
+A typical deployment of a Lens Resource includes the following components:
+
+| Section  | Description |
+|----------|-------------|
+| **Source** | Defines the configuration of the data source for data processing and querying. |
+| **Repo**   | Outlines the configuration of the code repository where the model used by Lens resides. |
+| **API**    | Configures an API service that processes incoming requests, connecting to the database for raw data. A single instance is provisioned by default, but the system can auto-scale to add more instances based on workload demands, with a recommendation of one instance for every 5-10 requests per second. |
+| **Worker** | When `LENS2_REFRESH_WORKER` is set to true, a Refresh Worker manages and refreshes the memory cache in the background, keeping refresh keys for all data models up-to-date. It invalidates the in-memory cache but does not populate it, which is done lazily during query execution. |
+| **Router**  | Configures a Router Service responsible for receiving queries from Lens, managing metadata, and handling query planning and distribution to the workers. Lens communicates only with the Router, not directly with the workers. |
+
+For more information on how to configure a Lens manifest file, refer to the link: [Configuration Fields of the Deployment Manifest File (YAML) for Lens Resource](/resources/lens/lens_manifest_attributes/)
 
 ### **Step 4: Apply the manifest file of Lens Resource using DataOS CLI**
 
 Deploy the Lens model to DataOS using the `apply` command.
 
-<aside class="callout">
-🗣 When applying the manifest file from the DataOS CLI, make sure you specify the Workspace as Lens is a <a href="https://dataos.info/resources/types/#workspace-level-resources" target="blank"> Workspace-level Resource</a>.
+<aside class="callout"> 
+
+When applying the manifest file from the DataOS CLI, make sure you specify the Workspace as Lens is a <a href="https://dataos.info/resources/types/#workspace-level-resources" target="blank"> Workspace-level Resource</a>.
 
 </aside>
 
