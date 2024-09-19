@@ -1,7 +1,7 @@
 ---
 title: Policy
 search:
-  boost: 2
+  boost: 4
 ---
 
 # :resources-policy: Policy
@@ -123,5 +123,8 @@ Policy can be configured depending on the use case. For a detailed breakdown of 
 
 ## Recipes
 
-[A end to end use-case on how to implement Access Policy](/resources/policy/how_to_guide/implementing_access_policy/)
+- [A end to end use-case on how to implement Access Policy](/resources/policy/how_to_guide/implementing_access_policy/)
 
+- [A end to end use-case on how to implement Filter Data Policy](/resources/policy/how_to_guide/implementing_filter_data_policy)
+
+- [A end to end use-case on how to implement Masking Data Policy](/resources/policy/how_to_guide/implementing_masking_data_policy)
