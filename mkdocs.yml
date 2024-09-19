@@ -316,7 +316,11 @@ nav:
             - Maintenance (Snapshots and Metadata listing): resources/lakehouse/command_reference/case_scenario_maintenance.md
         - Lens:
           - resources/lens/index.md
-          - Lens Setup: resources/lens/lens_setup.md
+          - Lens Setup: 
+            resources/lens/lens_setup.md
+            - Optimizing Lens testing in local development: resources/lens/optimizing_lens_testing_in_local_development.md
+            - Lens Deployment: resources/lens/lens_deployment.md
+    
           - Data Modelling: 
             - Overview: resources/lens/overview.md
             - Concepts: resources/lens/concepts.md
