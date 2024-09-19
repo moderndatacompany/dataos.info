@@ -122,7 +122,7 @@ Lens includes a Visual Studio Code extension that enhances the efficiency and pr
 - **MacOS**: For MacOS users, installation instructions can be found in the [Install VS Code on macOS guide](https://code.visualstudio.com/docs/setup/mac).
 
 
-### **Lens2 VS Code Extension**
+<!-- ### **Lens2 VS Code Extension**
 
 After installing VS Code, the development environment can be enhanced by installing the Lens VS Code extension:
 
@@ -160,7 +160,7 @@ Type the following commands to quickly generate Lens2 tables, views, dimensions,
     <img src="/resources/lens/installing_prerequisites/lens2extension.gif" alt="lens_example" style="width: 60%; border: 1px solid black; height: auto">
     <figcaption>typing lens2_tables and click enter to getYAML Template .</figcaption>
   </div>
-</center>
+</center> -->
 
 ### **Python**
 
