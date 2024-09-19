@@ -2,7 +2,7 @@
 
 ## Granting Access to Users Using Pre-defined Tags
 
-**Case Scenario**
+**Case scenario**
 
 Suppose a new user wants to query the database on Workbench but initially does not have access to the datasets. The user can request access from the operator. The operator has two ways to grant the required permissions:
 
@@ -11,13 +11,13 @@ Suppose a new user wants to query the database on Workbench but initially does n
   2.  Create a policy that combines all the permissions required to access the dataset: This method is more efficient for comprehensive access requirements.
 
 
-#### Understanding the Policy Structure
+#### Understanding the Policy structure
 
 In a policy, we define:
 
-    **Subject:** The person who needs access, identified by a tag. For example, the tag for the user iamgroot is users:id:iamgroot.
-    **Predicate:** The actions the user wants to perform, such as `read` and `select`.
-    **Object:** The entities on which the actions will be performed. This can be defined using object tags or object paths (API paths).
+- **Subject:** The person who needs access, identified by a tag. For example, the tag for the user iamgroot is users:id:iamgroot.
+- **Predicate:** The actions the user wants to perform, such as `read` and `select`.
+- **Object:** The entities on which the actions will be performed. This can be defined using object tags or object paths (API paths).
 
 | **Object**         | **Object Tags**                                 | **Description**                                                    | **Predicate** |
 |--------------------|-------------------------------------------------|--------------------------------------------------------------------|---------------|
@@ -25,11 +25,7 @@ In a policy, we define:
 | Minerva Table      | dataos:system:minerva:table:icebase:retail:city | Access given to a user or a role to query a specific table         | select        |
 
 
-user with user tag `user:id:iamgroot` needs
-
-Sample Ingested Dataset
-
-By default, access to ingested datasets on Workbench is denied due to the DataOS default policy applied during installation, which restricts all DataOS users from accessing these datasets.
+User with user tag `user:id:iamgroot` needs access to **Sample Ingested Dataset**. By default, access to ingested datasets on Workbench is denied due to the DataOS default policy applied during installation, which restricts all DataOS users from accessing these datasets.
 
 <div style="text-align: center;">
   <img src="/resources/policy/how_to_guide/access_denied.png" alt="Sample inaccessible dataset" style="border:1px solid black; width: 80%; height: auto;">
@@ -38,7 +34,7 @@ By default, access to ingested datasets on Workbench is denied due to the DataOS
 
 ## Implementation of Access Policy
 
-### **Creating a YAML Configuration**
+### **Creating a Acces Policy manifest file**
 
 To enable access to the dataset, a Policy Resource can be used to grant access to pre-existing users or a subset of those users. Below is an example Policy configuration:
 
