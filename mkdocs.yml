@@ -316,32 +316,40 @@ nav:
             - Maintenance (Snapshots and Metadata listing): resources/lakehouse/command_reference/case_scenario_maintenance.md
         - Lens:
           - resources/lens/index.md
-          - Setup Lens: resources/lens/lens_setup.md
-          - Core Concepts: resources/lens/core_concepts.md
+          - Lens Setup: 
+            resources/lens/lens_setup.md
+            - Optimizing Lens testing in local development: resources/lens/optimizing_lens_testing_in_local_development.md
+            - Lens Deployment: resources/lens/lens_deployment.md
+    
+          - Data Modelling: 
+            - Overview: resources/lens/overview.md
+            - Concepts: resources/lens/concepts.md
+            - Best Practices: resources/lens/best_practices.md
+            - Do's and Dont's: resources/lens/do's_and_dont's.md
+            - Errors: resources/lens/errors.md
           - Configurations: 
-            - Supported Data Sources: 
+            - Lens Manifest: resources/lens/lens_manifest_attributes.md
+            - Docker Compose Manifest: resources/lens/docker_compose_manifest_attributes.md
+          - Supported Data Sources: 
             # resources/lens/data_sources.md
               - Bigquery: resources/lens/data_sources/bigquery.md
               - Minerva: resources/lens/data_sources/minerva.md
               - Postgres: resources/lens/data_sources/postgres.md
               - Redshift: resources/lens/data_sources/awsredshift.md
               - Themis: resources/lens/data_sources/themis.md
+          - APIs & Integraions:
+            - API Endpoints and Scopes: resources/lens/api_endpoints_and_scopes.md
             - BI Integration: resources/lens/bi_integration.md
-            - Working with Payload: resources/lens/working_with_payload.md
             # - Supported Data Quality Checks: resources/lens/supported_data_quality_checks.md
           - Reference: 
-            - Resource Manifest: resources/lens/lens_manifest_attributes.md
-            - Docker Compose Manifest: resources/lens/docker_compose_manifest_attributes.md
-            - API Endpoints and Scopes: resources/lens/api_endpoints_and_scopes.md
+            - Working with Payload: resources/lens/working_with_payload.md
+            - Working with Segments: resources/lens/working_with_segments.md
+            - Working with Views: resources/lens/working_with_views.md
           - Exploration:
             - Using GraphQL: resources/lens/exploration_of_deployed_lens_using_graphql.md
             - Using SQL APIs: resources/lens/exploration_of_deployed_lens_using_sql_apis.md
             - Using Python: resources/lens/exploration_of_deployed_lens_using_python.md
             - Using REST APIs: resources/lens/exploration_of_deployed_lens_using_rest_apis.md
-          - Data Modelling: 
-            - Best Practices: resources/lens/best_practices.md
-            - Do's and Dont's: resources/lens/do's_and_dont's.md
-            - Errors: resources/lens/errors.md
           - Optimizing Lens Model: resources/lens/fine_tuning_a_lens_model.md
         
         - Monitor: 
