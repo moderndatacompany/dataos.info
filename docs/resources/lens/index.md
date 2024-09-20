@@ -1,7 +1,7 @@
 # :resources-lens: Lens
 
 
-Lens [Resource](/resources/) in DataOS is a logical modelling layer designed for accessing tabular data in data warehouses or lakehouses. It operates on top of physical tables, allowing the extension of these tables into Logical Tables by adding logical columns (measures) and relationships. It  empowers analytical engineers, the key architects of business intelligence, with a model-first approach.  To understand about the different elements of lens click [here](/resources/lens/concepts/). 
+Lens [Resource](/resources/) in DataOS is a logical modelling layer designed for accessing tabular data in data warehouses or lakehouses. It operates on top of physical tables, allowing the extension of these tables into logical tables by adding logical columns (measures) and relationships. It  empowers analytical engineers, the key architects of business intelligence, with a model-first approach.  To understand about the different elements of lens click [here](/resources/lens/concepts/). 
 
 
 !!!tip "Lens within the Data Product Lifecycle"
@@ -44,23 +44,25 @@ Lens  is engineered to handle complex and large-scale data models with ease. Key
 
 - **Performance Optimization through Flash:** Designed to work with DataOS Lakehouse and Iceberg-format depots, [Flash](/resources/stacks/flash/) improves query performance by leveraging in-memory execution. This optimization ensures that data teams can efficiently handle large-scale queries with enhanced speed and performance.
 
-## Lens Set-up
+## How to build Lens?
 
 The process begins with creating a new Lens project and generating a data model. Once the model is prepared, it will be tested within the development environment to ensure it is error-free before deployment. 
 
-This guide will cover the following tasks:
+#### **Lens model folder set-up**
 
-[Lens set-up](/resources/lens/lens_setup/)
+The initial step involves setting up the folder structure for your Lens project. [This section](/resources/lens/lens_model_folder_setup/) will guide you through organizing your project files, including the model configuration files and necessary resources, in a structured and maintainable way.
+
+#### **Develop Lens locally**
+
+Before deploying your Lens models into the DataOS environment, you can build and test your models on your local system. [This guide](/resources/lens/optimizing_lens_testing_in_local_development/) includes the steps to develop and test Lens models locally, ensuring they function as intended.
+
+#### **Develop Lens within DataOS**
+
+[This section](/resources/lens/lens_deployment/) involves the step-by-step guide on building and deploying Lens models within the DataOS environment. You will learn how to use Lens to generate and deploy data models, making sure they integrate seamlessly with the broader DataOS ecosystem.
 
 ## Configurations
 
 Lens can be configured to connect to different sources using data source attributes and configurable attributes in the `docker-compose.yml` or `lens.yml` manifest files. Here is a comprehensive guide to APIs and configuring supported properties.
-
-- [Supported Data Sources](/resources/lens/data_sources/)
-    Explore the list of data sources that are supported by our system.
-
-<!-- - [BI Integration](/resources/lens/bi_integration/)
-    Learn how to connect and integrate visualization tools with our system for effective data representation. -->
 
 - [Configuration Fields of the Deployment Manifest File (YAML) for Lens Resource](/resources/lens/lens_manifest_attributes/)
     Understand the various configuration fields available in the deployment manifest file for Lens resources.
@@ -68,8 +70,15 @@ Lens can be configured to connect to different sources using data source attribu
 - [Configuration Fields of the Docker Compose File](/resources/lens/docker_compose_manifest_attributes/)
     Review the configuration fields and settings in the Docker Compose file for orchestrating multi-container applications.
 
-- [Working with Payload](/resources/lens/working_with_payload/)
-    Learn how to work with payloads for querying and interacting with the system.
+
+<!-- - [Supported Data Sources](/resources/lens/data_sources/)
+    Explore the list of data sources that are supported by our system. -->
+
+<!-- - [BI Integration](/resources/lens/bi_integration/)
+    Learn how to connect and integrate visualization tools with our system for effective data representation. -->
+
+<!-- - [Working with Payload](/resources/lens/working_with_payload/)
+    Learn how to work with payloads for querying and interacting with the system. -->
 
 <!-- - [Working with User Groups and Data Policies](/resources/lens/working_with_user_groups_and_data_policies/)    
     Learn how to configure user groups and enforce data policies for secure and organized access to data resources. -->
@@ -85,9 +94,7 @@ Lens can be configured to connect to different sources using data source attribu
 
 ## Exploration of Deployed Lens
 
-After creating a Lens data model, the next step is to explore it—this means interacting with the model by running queries. The following section explains the key concepts for querying Lens through various methods, though all queries follow the same general format. Multiple ways are available to explore or interact with the Lens model or its underlying data, allowing you to ask meaningful questions of the data and retrieve valuable insights.
-
-Exploration can be performed using the following methods:
+After creating a Lens data model, the next step is to explore it—this means interacting with the model by running queries. The following section explains the key concepts for querying Lens through various methods, though all queries follow the same general format. Multiple ways are available to explore or interact with the Lens model or its underlying data, allowing you to ask meaningful questions of the data and retrieve valuable insights. Exploration can be performed using the following methods:
 
 - [Exploration of deployed Lens using SQL APIs](/resources/lens/exploration_of_deployed_lens_using_sql_apis/)
 
@@ -100,9 +107,9 @@ Exploration can be performed using the following methods:
 
 ## Data Modelling
 
-Data modeling is the process of defining and structuring raw data into organized and meaningful business definitions. It involves creating logical schemas, relationships, and aggregations to represent how data is stored, processed, and accessed. Effective data modeling ensures optimal performance for queries and allows users to extract valuable insights without modifying the underlying data structure. 
+[Data modeling](/resources/lens/overview/) is the process of defining and structuring raw data into organized and meaningful business definitions. It involves creating logical schemas, relationships, and aggregations to represent how data is stored, processed, and accessed. Effective data modeling ensures optimal performance for queries and allows users to extract valuable insights without modifying the underlying data structure. Below are resources to guide you through essential aspects of data modeling to optimize performance and accuracy.
 
-Below are resources to guide you through essential aspects of data modeling to optimize performance and accuracy.
+  - [Data Modelling Concepts](/resources/lens/concepts/)
 
   - [Best Practices](/resources/lens/best_practices/)
     Explore recommended guidelines and techniques to create efficient and scalable data models.

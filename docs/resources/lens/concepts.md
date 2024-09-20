@@ -58,7 +58,7 @@ tables:
       WHERE owner.owner_id = contacts.owner_id
 ```
 
-Within each tables dimensions, measures, and segments are defined. Joins are used to define relations between tables.
+> Within each tables dimensions, measures, and segments are defined. Joins are used to define relations between tables.
 
 <!-- Note that tables attribute support extended functionality, and data blending. -->
  
@@ -86,7 +86,7 @@ There are three types of join relationships (one_to_one, one_to_many, and many_t
 
 **Attributes**
 
-| Property  | Description |
+| **Property**  | **Description** |
 | --- | --- |
 | `name` | Candidate target table for joining with the base table |
 | `relationship` | Type of join relationship with other tables - `one-to-one`, `one-to-many`,`many-to-one` |
@@ -191,21 +191,20 @@ tables:
 
 ## Segments
 
-Segments are pre-defined groups of filters. 
+Segments are pre-defined groups of filters.
 
-The segment declaration involves the following properties 
+The segment declaration involves the following properties:
 
-| Property | Description | Possible Value |
-| --- | --- | --- |
-| `name` | Specify the name of the dimension | NA |
-| `public` | Controls visibility of dimension, i.e. whether the dimension is visible to all users or hidden | `True`, `False` |
-| `sql` | Add filter criteria: table.{dimension} = “dimension_values” | NA |
-| `meta` | Custom metadata. This is also used to define `secure` sub property | NA |
+| **Property**  | **Description**  | **Possible Value**  |
+| --------------| ---------------- | ------------------- |
+| `name`        | Specify the name of the dimension.         | NA               |
+| `public`      | Controls visibility of dimension, i.e. whether the dimension is visible to all users or hidden | `True`, `False` |
+| `sql`         | Add filter criteria: table.{dimension} = “dimension_values”  | NA               |
+| `meta`        | Custom metadata. This is also used to define `secure` sub property | NA               |
 
-To know more about segments click [here](/resources/lens/working_with_segments/)
+In the below example, we define a filter for active owners. Similarly, we can create a filter for non-active owners to differentiate.
 
-
-``` owners.yaml
+```yaml title="owners.yaml"
 tables:
   - name: owners
     # ...
@@ -219,9 +218,7 @@ A more thorough introduction can be found in [Working with Segments](/resources/
 
 ## Views
 
-Views sit on top of the data graph of cubes and create a abstraction of whole data model with which data consumers can interact. They serve as a layer for defining metrics, providing a simplified interface for end-users to interact objectively with key metrics instead of the entire data model.
-
-A view reference serves as a way to access dimensions, measures, and segments from multiple logical tables. It does not define any measures, dimensions, or segments on its own.
+Views sit on top of the data graph of cubes and create a abstraction of whole data model with which data consumers can interact. They serve as a layer for defining metrics, providing a simplified interface for end-users to interact objectively with key metrics instead of the entire data model. A view reference serves as a way to access dimensions, measures, and segments from multiple logical tables. It does not define any measures, dimensions, or segments on its own.
 
 In the example below, we create the `transaction_analysis` view which includes select members from transactions, and products tables:
 
