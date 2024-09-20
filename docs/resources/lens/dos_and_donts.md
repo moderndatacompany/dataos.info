@@ -1,15 +1,16 @@
-# Do’s and Dont's 
+# Do's and Dont's 
 
 This documentation provides guidelines for using Lens functionalities, including when to create views and best practices to avoid errors.
 
-## Data Modelling
+## Do's
 
-### **Calling a Measure to Create Another Measure in the Same Table**
+### **Data Modelling**
+
+#### **Calling a Measure to Create Another Measure in the Same Table**
 
 When creating a measure that references another measure within the same table, use curly braces `{}`.
 
 ```yaml
-
 - name: current_month_sum
   sql: sellingprice
   type: sum
@@ -27,7 +28,7 @@ When creating a measure that references another measure within the same table, u
   type: number
 ```
 
-### **Proxy Dimension: Referencing Dimensions from Another Table**
+#### **Proxy Dimension: Referencing Dimensions from Another Table**
 
 To reference a dimension from one table while creating a measure in another, use the curly braces `{}`. Specify the dimension using `{table.column}` if it is from another table, or `{column name}` if it is within the same table.
 
@@ -43,7 +44,7 @@ measures:
     type: sum
 ```
 
-### **Calling a Measure from Another Table**
+#### **Calling a Measure from Another Table**
 
 When referencing a measure from another table, set `sub_query` to `true`.
 
@@ -54,7 +55,7 @@ When referencing a measure from another table, set `sub_query` to `true`.
   type: number
 ```
 
-### **Transforming Dimension and Calling it in a Measure**
+#### **Transforming Dimension and Calling it in a Measure**
 
 Use curly braces `{}` when calling a transformed dimension within measures.
 
@@ -72,7 +73,7 @@ measures:
       - sql: year({quarter}) = 1
 ```
 
-## Views
+### **Views**
 
 1. **Purpose:** Create views to provide a limited part of your data model to the consumer layer, such as any BI tool. Views are useful for defining metrics, managing governance and data access, and controlling ambiguous join paths.
 2. **Members:** Views do not have their own members. Instead, use the `table` or `includes` parameters to incorporate measures and dimensions from other tables into the view.
@@ -120,11 +121,11 @@ views:
           - state
 ```
 
-## Jinja Macros
+### **Jinja Macros**
 
 Lens data models support Jinja macros, allowing you to define reusable snippets of code. This feature helps in creating dynamic data models and SQL properties efficiently.
 
-### **Dynamic Data Models**
+#### **Dynamic Data Models**
 
 In the example below, we define a macro called `dimension()` which generates a dimension. This macro is then invoked multiple times to generate various dimensions.
 
@@ -164,7 +165,7 @@ tables:
       {{ dimension('county_name', description='County name of the customer.') }}
 ```
 
-### **SQL Property**
+#### **SQL Property**
 
 Macros can also be used to generate SQL snippets for use in the `sql` property. For example, to avoid division by zero errors when creating measures, define a macro and use it in multiple measures.
 
@@ -182,7 +183,7 @@ measures:
     type: number
 ```
 
-### **Dynamic Segments with Secure Access**
+#### **Dynamic Segments with Secure Access**
 
 You can create dynamic segments with secure access using Jinja macros. This example sets up segments for different categories with user group restrictions.
 
@@ -206,7 +207,7 @@ segments:
   {% endfor %}
 ```
 
-### **User Group Configuration**
+#### **User Group Configuration**
 
 ```yaml
 user_groups:
@@ -264,11 +265,11 @@ user_groups:
 
 By leveraging Jinja macros, you can create efficient, reusable, and dynamic configurations in your Lens data models.
 
-# Don’t
+## Don’t
 
 When creating lenses, avoid the following practices to ensure functionality and maintainability:
 
-## Avoid Using Curly Braces `{}` in Descriptions
+### **Avoid Using Curly Braces `{}` in Descriptions**
 
 Since Jinja is supported, using curly braces `{}` in descriptions can cause issues.
 
@@ -282,7 +283,7 @@ dimensions:
     description: It is the primary key of sales
 ```
 
-## Avoid Using Single Quotes in Measures, Dimensions, and Segments
+### **Avoid Using Single Quotes in Measures, Dimensions, and Segments**
 
 Using single quotes can throw errors. Instead, use double quotes.
 
@@ -306,7 +307,7 @@ tables:
         type: string
 ```
 
-## Avoid Filtering Measures and Dimensions from the Same Table with OR Operator
+### **Avoid Filtering Measures and Dimensions from the Same Table with OR Operator**
 
 Measures and dimensions from the same table cannot be filtered simultaneously using the 'OR' operator.
 
@@ -398,4 +399,4 @@ Measures and dimensions from the same table cannot be filtered simultaneously us
     ```
 
 
-By adhering to these guidelines, you can avoid common pitfalls and ensure your lenses function correctly and efficiently.
+By adhering to these guidelines, you can avoid common pitfalls and ensure your lens functions correctly and efficiently.
