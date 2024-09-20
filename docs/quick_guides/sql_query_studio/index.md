@@ -103,9 +103,10 @@ In Studio, follow the below steps to customize the SQL statement by adding a fil
 4. Choose the field that represents time.
 5. Specify filter condition with AND/OR operator.
 6. Click **Generate SQL**.
-
-    ![select_filters.png](/quick_guides/sql_query_studio/select_filters.png)
-
+    
+    <div style="text-align: left; padding-left: 1em;">
+      <img src="/quick_guides/sql_query_studio/select_filters.png" alt="Image" style="max-width: 30%; height: auto; border: 1px solid #000;">
+    </div>
 7. Run the generated query.
     
     ![image](/quick_guides/sql_query_studio/run_query.png)

@@ -34,7 +34,7 @@ Follow the below steps to create a data model (Lens).
 
 The model folder structure is essential for managing your SQL scripts and business entity manifest files for your Lens model.
 
-<div style="text-align: center; padding-left: 1em;">
+<div style="text-align: left; padding-left: 1em;">
 <img src="/quick_guides/create_data_model/lens_model_folders.png" alt="flens_model_folders.png" style="max-width: 40%; height: auto; border: 1px solid #000;">
 </div>
 
@@ -838,6 +838,7 @@ The YAML configuration contains the various attributes and nested sections.
     | `description` | A description of the view's purpose or content. |
     | `public` | Indicates whether the view is publicly accessible. |
     | `meta` | Metadata related to the view, such as export settings. |
+
 2. **`meta`**
     
     Within the `meta` section of the view, you can define additional metadata, including export settings and time zone information:
@@ -848,6 +849,7 @@ The YAML configuration contains the various attributes and nested sections.
     | `iris` | Configuration related to Iris export settings. |
     | `timeseries` | Field used for time series data in Iris. |
     | `available_time_zones` | List of time zones available for time series data. |
+
 3. **`tables`** 
     
     The `tables` section within a view specifies which tables are included in the view and how they should be joined:
@@ -997,8 +999,8 @@ user_groups:
 
 This is how folder structure looks like for our data model.
 
-<div style="text-align: center; padding-left: 1em;">
-<img src="/quick_guides/create_data_model/folder_structure_data_model.png" alt="folder_structure_data_model.png" style="max-width: 40%; height: auto; border: 1px solid #000;">
+<div style="text-align: left; padding-left: 1em;">
+<img src="/quick_guides/create_data_model/folder_structure_data_model.png" alt="folder_structure_data_model.png" style="max-width: 35%; height: auto; border: 1px solid #000;">
 </div>
 
 ## Next Steps
