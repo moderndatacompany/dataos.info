@@ -33,3 +33,29 @@ You can leverage filtering keywords such as ‘LIKE’ to define filtering crite
         sql: "{TABLE}.state = 'Illinois' or {TABLE}.state like '%Ohio%'"
 ```
 
+
+
+## Defining Row Filter Policy on Segment
+
+Data policies can be defined directly on segments to enforce data governance and compliance. This ensures that access and interaction with different subsets of data are managed effectively. It applies a row filter data policy to show specific data based on user groups.
+
+Let's demonstrate an example by adding the filter policy to the `segments` section of a table definition:
+
+**Example:** Filtering rows to show only online sales data to all user groups except `reader`.
+
+  ```yaml
+  table: 
+
+    #...
+
+    segments:
+      - name: online_sales
+        sql: "{TABLE}.order_mode = 'online'"
+        meta:
+          secure:
+            user_groups:
+              includes:
+                - *
+              excludes:
+                - reader
+  ```

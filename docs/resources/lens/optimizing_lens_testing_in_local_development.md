@@ -266,7 +266,7 @@ To interact with REST APIs use tools like `curl`, [Postman](https://www.postman.
 
 For instance, to test Lens in development environment using Postman, upload the following API collection to Postman.
 
-[Lens2-API](/resources/lens/lens_setup/Lens2-APIs.postman_collection.json)
+[Lens2-API](/resources/lens/lens_model_folder_setup/Lens2-APIs.postman_collection.json)
 
 
 Now, to make a basic `GET` request using Postman, follow these steps:
