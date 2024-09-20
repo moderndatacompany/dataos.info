@@ -141,7 +141,7 @@ To create a wrap token for a Lens, you can use the following commands for Unix-b
     iamgroot=> \dt
     ```
     
-    Expected output
+    **Expected output**
     
     ```bash
     Password for user iamgroot: 

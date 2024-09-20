@@ -8,7 +8,7 @@
 - Names can include letters, numbers, and underscore (`_`) symbols only.
 
 <aside class="callout">
-💡 <b>Recommended:</b> Use <b>snake_case</b> for naming.
+🗣️ <b>Recommended:</b> Use <b>snake_case</b> for naming.
 
 </aside>
 
@@ -18,7 +18,7 @@
 - Views: `opportunities`, `cloud_accounts`, `arr`
 - Measures: `count`, `avg_price`, `total_amount_shipped`
 - Dimensions: `name`, `is_shipped`, `created_at`
-- Pre-aggregations: `main`, `orders_by_status`, `lambda_invoices`
+<!-- - Pre-aggregations: `main`, `orders_by_status`, `lambda_invoices` -->
 
 ---
 
@@ -99,7 +99,7 @@ tables:
 
 This works well for simple cases. However, if your tables have joins and the joined tables have columns with the same name, the generated SQL query might become ambiguous. Here’s how to avoid that:
 
-**`{member}`**
+### **`{member}`**
 
 When defining measures and dimensions, you can reference other members of the same table by wrapping their names in curly braces.
 
@@ -148,7 +148,7 @@ tables:
       type: number
 ```
 
-**`{tablename}.column` and `{tablename.member}`**
+### **`{tablename}.column` and `{tablename.member}`**
 
 Qualify column and member names with the table name to remove ambiguity when tables are joined and reference members of other tables.
 
@@ -190,12 +190,12 @@ tables:
 ```
 
 <aside class="callout">
-🗣 Using fully-qualified names is encouraged in production as it removes ambiguity and keeps the data model code maintainable.
+🗣️ Using fully-qualified names is encouraged in production as it removes ambiguity and keeps the data model code maintainable.
 </aside>
 
 However, always referring to the current table by its name can lead to code repetition. Here’s how to solve that:
 
-**`{TABLE}` Variable**
+### **`{TABLE}` Variable**
 
 Use the `{TABLE}` variable to reference the current table, avoiding the need to repeat its name.
 
@@ -239,11 +239,11 @@ tables:
 Using the `{TABLE}` variable keeps the data model code DRY and easy to maintain.
 
 <aside class="callout">
-🗣 <b>Recommended:</b> Use the <b>`TABLE`</b> context variable to reference columns or members of the current table.
+🗣️ <b>Recommended:</b> Use the <b>`TABLE`</b> context variable to reference columns or members of the current table.
 
 </aside>
 
-For more examples, refer to [Do’s And Don’ts](/resources/lens/data_modelling/do's_and_dont's/).
+For more examples, refer to [Do’s And Don’ts](/resources/lens/dos_and_donts/).
 
 ### **Non-SQL References**
 
@@ -272,7 +272,7 @@ tables:
 ```
 
 <aside class="callout">
-🗣 <b>Recommended:</b> Use the <b>`TABLE`</b> context variable to reference dimensions or measures of the current table, ensuring your data model code remains DRY and easy to maintain.
+🗣️ <b>Recommended:</b> Use the <b>`TABLE`</b> context variable to reference dimensions or measures of the current table, ensuring your data model code remains DRY and easy to maintain.
 
 </aside>
 
@@ -284,7 +284,7 @@ tables:
 
 ## Payload Edit
 
-For more information on handling JSON payloads, refer to [Working with Payload](/resources/lens/data_modelling/working_with_payload/).
+For more information on handling JSON payloads, refer to [Working with Payload](/resources/lens/working_with_payload/).
 
 ## Commenting in SQL Files
 

@@ -13,7 +13,7 @@ Before initiating the deployment process, please ensure you have the following:
 - Access to a hosted code repository, such as **Bitbucket**, **GitHub**, **AWS CodeCommit**, etc.
 - Operator level access permission
 
->If you are new to setting the Lens model directory refer to the detailed doc [here](/resources/lens/lens_setup/).
+>If you are new to setting the Lens model directory refer to the detailed doc [here](/resources/lens/lens_model_folder_setup/).
 
 ## Deployment Process
 
@@ -27,7 +27,7 @@ First, push your Lens model directory to a hosted code repository. This can be d
 
 
 <aside class="callout">
-🗣 If your code repository is private, you will need to create <b>Instance Secrets</b> with your repository credentials for later use during deployment. Public code repositories do not require Step 2.
+🗣️ If your code repository is private, you will need to create <b>Instance Secrets</b> with your repository credentials for later use during deployment. Public code repositories do not require Step 2.
 </aside>
 
 ### **Step 2: Create Instance Secrets for Code Repository Credentials**
@@ -42,7 +42,7 @@ Define the Instance Secret Resource in a YAML file. Below is a template you can 
 
     ```yaml
     # RESOURCE META SECTION
-    name: ${bitbucket-r }# Secret Resource name (mandatory)
+    name: ${bitbucket-r } # Secret Resource name (mandatory)
     version: v1 # Secret manifest version (mandatory)
     type: instance-secret # Type of Resource (mandatory)
     description: Bitbucket read secrets for code repository # Secret Resource description (optional)
@@ -81,19 +81,13 @@ Define the Instance Secret Resource in a YAML file. Below is a template you can 
 Deploy the Instance Secret to DataOS using the `apply` command.
 
 <aside class="callout">
-🗣 When applying the manifest file for Instance-secret from CLI, make sure you don't specify Workspace as Instance Secrets are <a href="https://dataos.info/resources/types/#instance-level-resources" target="_blank">Instance-level Resource</a>.
+🗣️ When applying the manifest file for Instance-secret from CLI, make sure you don't specify Workspace as Instance Secrets are <a href="https://dataos.info/resources/types/#instance-level-resources" target="_blank">Instance-level Resource</a>.
 </aside>
 
 
 The `apply` command is as follows:
 
 === "Command"
-
-    ```bash
-    dataos-ctl resource apply -f ${manifest-file-path}
-    ```
-
-    Alternatively, you can also use the below command:
 
     ```bash
     dataos-ctl apply -f ${manifest-file-path}
@@ -104,7 +98,7 @@ The `apply` command is as follows:
 === "Example"
 
     ```bash
-    dataos-ctl resource apply -f ./lens/instance_secret.yml
+    dataos-ctl apply -f ./lens/instance_secret.yml
     # Expected output
     INFO[0000] 🛠 apply...                                   
     INFO[0000] 🔧 applying bitbucket-r:v1:instance-secret... 
@@ -112,69 +106,8 @@ The `apply` command is as follows:
     INFO[0001] 🛠 apply...complete 
     ```
 
-**Verify Instance-secret creation**
-
-To validate the proper creation of the Instance Secret Resource within the DataOS environment, employ the `get` command. Execute the following commands to ascertain the existence of the Instance Secret Resource:
-
-To get the details of Instance-secret created by the user who applies the Instance-secret, use the following command:
-
-=== "Command"
-      
-    ```bash
-    dataos-ctl resource get -t instance-secret
-    ```
-      
-    Alternatively, you can also use the below command.
-      
-    ```bash
-    dataos-ctl get -t instance-secret
-    ```
-    
-=== "Example"
-    
-    ```bash
-    dataos-ctl get -t instance-secret
-    # Expected Output
-    INFO[0000] 🔍 get...                                     
-    INFO[0000] 🔍 get...complete                             
-    
-                NAME           | VERSION |      TYPE       | WORKSPACE | STATUS | RUNTIME |   OWNER          
-    ---------------------------|---------|-----------------|-----------|--------|---------|-----------------------
-      bitbucket-r              | v1      | instance-secret |           | active |         | iamgroot  
-    ```
-    
-To get the details of Instance-secret created by all the users within the DataOS Instance, use the above command with `-a` flag:
-
-=== "Command"
-    
-    ```bash
-    dataos-ctl resource get -t instance-secret -a
-    ```
-    
-    Alternatively, you can use the following command:
-    
-    ```bash
-    dataos-ctl get -t instance-secret -a
-    ```
-    
-=== "Example"
-
-    ```shell
-    dataos-ctl get -t instance-secret -a
-
-    # Expected Output
-    INFO[0000] 🔍 get...                                     
-    INFO[0000] 🔍 get...complete                             
-
-                NAME           | VERSION |      TYPE       | WORKSPACE | STATUS | RUNTIME |        OWNER          
-    ---------------------------|---------|-----------------|-----------|--------|---------|-----------------------
-      abfss-r                  | v1      | instance-secret |           | active |         | thor          
-      gcsdepot-r               | v1      | instance-secret |           | active |         | ironman            
-      bitbucket-r              | v1      | instance-secret |           | active |         | iamgroot  
-    ```
-
 <aside class="callout">
-🗣 Ensure that you remember the name of the created <b>Instance secret</b>, as it will be used in the secrets attribute section of the Lens manifest file. This name is crucial for proper configuration and access within your Lens environment.
+🗣️ Ensure that you remember the name of the created <b>Instance secret</b>, as it will be used in the secrets attribute section of the Lens manifest file. This name is crucial for proper configuration and access within your Lens environment.
 
 </aside>
 
@@ -185,7 +118,69 @@ Begin by creating a manifest file that will hold the configuration details for y
 ???tip "Sample Lens manifest"
 
     ```yaml
-    --8<-- "/examples/lens/sample_lens_manifest.yml"
+    # RESOURCE META SECTION
+    name: sales360test # Lens Resource name (mandatory)
+    version: v1alpha # Lens manifest version (mandatory)
+    layer: user # DataOS Layer (optional)
+    type: lens # Type of Resource (mandatory)
+    tags: # Tags (optional)
+    - lens
+    description: sales360 lens deployment on DataOS # Lens Resource description (optional)
+
+    # LENS-SPECIFIC SECTION
+    lens:
+    compute: runnable-default # Compute Resource that Lens should utilize (mandatory)
+    secrets: # Referred Instance-secret configuration (**mandatory for private code repository, not required for public repository)
+    - name: bitbucket-r # Referred Instance Secret name (mandatory)
+        allKeys: true # All keys within the secret are required or not (optional)
+    source: # Data Source configuration
+    type: minerva # Source type 
+    name: system # Source name
+    catalog: icebase #in case of minerva or themis
+    repo: # Lens
+    #model code repository configuration (mandatory)
+    url: https://bitbucket.org/iamgroot/lens # URL of repository containing the Lens model (mandatory)
+    lensBaseDir: lens/sales360/model # Relative path of the Lens 'model' directory in repository (mandatory)
+    syncFlags: # Additional flags used during synchronization, such as specific branch.
+        - --ref=lens # Repository Branch 
+    api: # API Instances configuration (optional)
+    replicas: 1 # Number of API instance replicas (optional)
+    logLevel: info  # Logging granularity (optional)
+    resources: # CPU and memory configurations for API Instances (optional)
+        requests:
+        cpu: 100m
+        memory: 256Mi
+        limits:
+        cpu: 2000m
+        memory: 2048Mi
+    worker: # Worker configuration (optional)
+    replicas: 2 # Number of Worker replicas (optional)
+    logLevel: info # Logging level (optional)
+    resources: # CPU and memory configurations for Worker (optional)
+        requests:
+        cpu: 100m
+        memory: 256Mi
+        limits:
+        cpu: 6000m
+        memory: 6048Mi
+    router: # Router configuration (optional)
+    logLevel: info  # Level of log detail (optional)
+    resources: # CPU and memory resource specifications for the router (optional)
+        requests:
+        cpu: 100m
+        memory: 256Mi
+        limits:
+        cpu: 6000m
+        memory: 6048Mi
+    # iris:
+    #   logLevel: info
+    #   resources: # CPU and memory resource specifications for the iris board (optional)
+    #     requests:
+    #       cpu: 100m
+    #       memory: 256Mi
+    #     limits:
+    #       cpu: 6000m
+    #       memory: 6048Mi
     ```
 
 The manifest file of a Lens can be broken down into two sections:
@@ -253,19 +248,13 @@ Deploy the Lens model to DataOS using the `apply` command.
 
 <aside class="callout"> 
 
-When applying the manifest file from the DataOS CLI, make sure you specify the Workspace as Lens is a <a href="https://dataos.info/resources/types/#workspace-level-resources" target="blank"> Workspace-level Resource</a>.
+💡 When applying the manifest file from the DataOS CLI, make sure you specify the Workspace as Lens is a <a href="https://dataos.info/resources/types/#workspace-level-resources" target="blank"> Workspace-level Resource</a>.
 
 </aside>
 
 The `apply` command is as follows:
 
 === "Command"
-
-    ```bash
-    dataos-ctl resource apply -f ${manifest-file-path} -w ${workspace}
-    ```
-    
-    Alternatively, you can also use the below command:
     
     ```bash
     dataos-ctl apply -f ${manifest-file-path} -w ${workspace}
@@ -276,7 +265,7 @@ The `apply` command is as follows:
 === "Example"
  
     ```bash
-    dataos-ctl resource apply -f ./lens/lens.yml -w curriculum
+    dataos-ctl apply -f ./lens/lens.yml -w curriculum
     # Expected output
     INFO[0000] 🛠 apply...                                   
     INFO[0000] 🔧 applying(curriculum) sales360:v1alpha:lens... 
@@ -290,12 +279,6 @@ The `apply` command is as follows:
 To validate the proper creation of the Lens Resource within the DataOS environment, employ the `get` command. Execute the following commands to ascertain the existence of the Lens Resource:
  
  - To get the details of the Lens created by the user who applies the Lens, use the following command:
-     
-     ```bash
-     dataos-ctl resource get -t lens -w ${workspace}
-     ```
-     
-     Alternatively, you can also use the below command.
      
      ```bash
      dataos-ctl get -t lens -w ${workspace}
@@ -316,11 +299,6 @@ To validate the proper creation of the Lens Resource within the DataOS environme
      
  - To get the details of Lens created by all the users within the DataOS Instance, use the above command with `-a` flag:
      
-     ```bash
-     dataos-ctl resource get -t lens -w ${workspace} -a
-     ```
-     
-     Alternatively, you can use the following command:
      
      ```bash
      dataos-ctl get -t lens -w ${workspace} -a

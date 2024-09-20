@@ -4,15 +4,11 @@ Lens allows you to secure data in logical tables by defining data policies on th
 
 Additionally, this governance extends to the Lens Studio Interface, where access to specific tabs and functionalities can be controlled. This setup helps in enforcing granular access controls and permissions, supporting compliance with organizational and regulatory standards.
 
-## Creating User Groups
-
-User groups are a way to organize users for managing access to various API scopes and easier application of data policies for different categories of users.
+## **Procedure**
 
 Follow these steps to create and manage user groups:
 
-### **Step 1: Create the `user_groups.yml` File**
-
-Create a `user_groups.yml` file in your model folder.
+### **Step 1** Create a `user_groups.yml` file in your model folder.
 
 ```latex
 model/
@@ -25,9 +21,7 @@ model/
 └── **user_groups.yml**
 ```
 
-### **Step 2: Define User Groups**
-
-Add user groups to the `user-group.yml` file using the following format:
+### **Step 2**  Define user groups using the following format:
 
 ```yaml
 user_groups: # List of user groups
@@ -88,7 +82,7 @@ In this example:
 - `exampleuser` is included in both the `analyst` and `engineer` groups.
 - Since the `analyst` group is listed before the `engineer` group, `exampleuser` will have the permissions of the `analyst` group.
 
-## Defining Data Policies
+## Data Policies
 
 Data policies can be applied to dimensions and segments of tables to control data access and masking.
 
@@ -99,79 +93,80 @@ You can mask data on a table's dimension using the `secure` property in the meta
 - **Redact**: Replaces the value with the string `redact`.
 - **md5**: Hashes the value using the MD5 algorithm.
 
-#### **Step 1: Define the Data Masking Function**
+#### **Step 1 Define the Data Masking Function** 
 
-Include the masking function in the `meta` section of your dimension definition:
+- Include the masking function in the `meta` section of your dimension definition:
 
-```yaml
-- name: gender
-  description: Flag indicating whether the consumer is male or female
-  sql: gender
-  type: string
-  meta:
-    secure:
-      func: redact
-      user_groups:
-        includes:
-          - dataconsumer
-        excludes:
-          - default
-```
+  ```yaml
+  - name: gender
+    description: Flag indicating whether the consumer is male or female
+    sql: gender
+    type: string
+    meta:
+      secure:
+        func: redact
+        user_groups:
+          includes:
+            - dataconsumer
+          excludes:
+            - default
+  ```
 
 #### **Step 2: Configure User Group Policies**
 
-You can configure user group policies to control access:
+- You can configure user group policies to control access:
 
-```yaml
-# 1. Secure for everyone
-meta:
-  secure:
-    func: redact | md5
-    user_groups: "*"
+    ```yaml
+    # 1. Secure for everyone
+    meta:
+      secure:
+        func: redact | md5
+        user_groups: "*"
 
-# 2. Secure for everyone, except for specific user_group
-meta:
-  secure:
-    func: redact | md5
-    user_groups:
-      includes: "*"
-      excludes:
-        - default
+    # 2. Secure for everyone, except for specific user_group
+    meta:
+      secure:
+        func: redact | md5
+        user_groups:
+          includes: "*"
+          excludes:
+            - default
 
-# 3. Secure for specific user_group and exclude some
-meta:
-  secure:
-    func: redact | md5
-    user_groups:
-      includes:
-        - reader
-      excludes:
-        - default
+    # 3. Secure for specific user_group and exclude some
+    meta:
+      secure:
+        func: redact | md5
+        user_groups:
+          includes:
+            - reader
+          excludes:
+            - default
 
-```
+    ```
 
 ### **Defining Row Filter Policy on a Table’s Segment**
 
-Apply a row filter policy to show specific data based on user groups.
+- Apply a row filter policy to show specific data based on user groups.
 
 #### **Step 1: Define the Row Filter Policy**
 
-Add the filter policy to the `segments` section of your table definition:
-
-```yaml
-segments:
-  - name: online_sales
-    sql: "{TABLE}.order_mode = 'online'"
-    meta:
-      secure:
-        user_groups:
-          includes:
-            - *
-          excludes:
-            - reader
-```
+- Add the filter policy to the `segments` section of your table definition:
 
 **Example:** Filtering rows to show only online sales data to all user groups except `reader`.
+
+  ```yaml
+  segments:
+    - name: online_sales
+      sql: "{TABLE}.order_mode = 'online'"
+      meta:
+        secure:
+          user_groups:
+            includes:
+              - *
+            excludes:
+              - reader
+  ```
+
 
 
 > <b>Note:</b> When you apply any data policy in Lens, it automatically propagates from the Lens model to all BI tool syncs. For example, if you redact the email column for a specific user group using a data policy in Lens, that column will remain redacted when users from that group sync their Lens model with BI tools like Tableau or Power BI. 
