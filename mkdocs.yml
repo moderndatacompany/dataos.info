@@ -316,7 +316,10 @@ nav:
             - Maintenance (Snapshots and Metadata listing): resources/lakehouse/command_reference/case_scenario_maintenance.md
         - Lens:
           - resources/lens/index.md
-          - Lens Setup: resources/lens/lens_setup.md
+          - Lens Setup: 
+              - Lens Model Folder Setup: resources/lens/lens_model_folder_setup.md
+              - Develop Lens Locally: resources/lens/optimizing_lens_testing_in_local_development.md
+              - Develop Lens in DataOS: resources/lens/lens_deployment.md
             # - Optimizing Lens testing in local development: resources/lens/optimizing_lens_testing_in_local_development.md
             # - Lens Deployment: resources/lens/lens_deployment.md
     
@@ -324,7 +327,7 @@ nav:
             - Overview: resources/lens/overview.md
             - Concepts: resources/lens/concepts.md
             - Best Practices: resources/lens/best_practices.md
-            - Do's and Dont's: resources/lens/do's_and_dont's.md
+            - Do's and Dont's: resources/lens/dos_and_donts.md
             - Errors: resources/lens/errors.md
           - Configurations: 
             - Lens Manifest: resources/lens/lens_manifest_attributes.md

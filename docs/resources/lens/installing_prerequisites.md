@@ -185,7 +185,7 @@ If Python is not already installed on the system, follow the steps below to down
 2. **Download Python**: From the guide, select the link corresponding to the operating system and download the latest version of Python.
           
   <aside class="callout">
-  🗣 Ensure that the version is 3.7 or higher to meet Lens requirements.
+  🗣️ Ensure that the version is 3.7 or higher to meet Lens requirements.
   </aside>
         
 3. **Install Python**: Run the downloaded installer. Be sure to check the box that says "Add Python 3.x to PATH" before clicking "Install Now". This step is crucial as it makes Python accessible from the command line.
@@ -223,4 +223,4 @@ With all prerequisites including Docker, VS Code, Python, and Postman installed,
 
 ## Next Steps
 
-[Lens Project Folder Set-up](/resources/lens/lens_setup/#set-up-lens-project-folder)
+[Lens Model Folder Setup](/resources/lens/lens_model_folder_setup/)
