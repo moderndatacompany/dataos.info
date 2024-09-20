@@ -192,7 +192,7 @@ In Lens, time dimensions allow you to group and filter data by time. Use the `ti
 
 **Result:**
 
-<div style="text-align: center; padding-left: 1em;">
+<div style="text-align: left; padding-left: 1em;">
 <img src="/quick_guides/working_with_payload/time_dim.png" alt="time_dim.png" style="max-width: 50%; height: auto; border: 1px solid #000;">
 </div>
 

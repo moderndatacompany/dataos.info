@@ -106,4 +106,4 @@ This option allows you to explore all the logical tables and business views conn
 
 To examine the data model from diverse perspectives, explore your Lens in the Studio. Studio makes it easy to analyze data across multiple dimensions, enabling you to slice and dice information to reveal valuable insights.
 
-[Working on Lens Studio WIP](https://www.notion.so/Working-on-Lens-Studio-WIP-86214f85ce574478b53092a5bc11528b?pvs=21)
+[Working on Lens Studio](/quick_guides/working_on_lens_studio/)
