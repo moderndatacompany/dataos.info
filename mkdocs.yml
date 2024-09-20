@@ -318,8 +318,8 @@ nav:
           - resources/lens/index.md
           - Lens Setup: 
               - Lens Model Folder Setup: resources/lens/lens_model_folder_setup.md
-              - Develop Lens Locally: /resources/lens/optimizing_lens_testing_in_local_development.md
-              - Develop Lens in DataOS: /resources/lens/lens_deployment.md
+              - Develop Lens Locally: resources/lens/optimizing_lens_testing_in_local_development.md
+              - Develop Lens in DataOS: resources/lens/lens_deployment.md
             # - Optimizing Lens testing in local development: resources/lens/optimizing_lens_testing_in_local_development.md
             # - Lens Deployment: resources/lens/lens_deployment.md
     
