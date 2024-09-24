@@ -9,11 +9,11 @@ Segments are predefined groups of filters that are written in the Lens YAML conf
 
 **When to Use Segments**
 
-1. **Complex Filtering Logic**
+- **Complex Filtering Logic**
 
   Segments are perfect for situations where complex filtering logic is needed. For instance, if your SQL queries need to filter data in intricate ways, such as applying multiple conditions across columns, Segments can help streamline this process. Instead of applying multiple filter conditions for every query, you can define them once as a reusable Segment.
 
-2. **Reusability**
+- **Reusability**
 
   Segments come in handy when you notice certain filters frequently reused across different queries. If the filter values remain relatively constant—such as filtering for specific regions, dates, or product categories—you can define them as Segments to make your queries cleaner and more efficient. 
 
