@@ -144,14 +144,14 @@ Curl is a command-line tool used for transferring data with URLs, making it a co
     ```
 
     - **Replace `<URL>` with the appropriate endpoint based on your environment:**
-      - For local development, use:
-        ```html
-        http://localhost:4000/lens2/api/<NAME_OF_LENS>/v2/graphql
-        ```
-      - For a deployed Lens model, use:
-        ```html
-        https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/graphql
-        ```
+        - For local development, use:
+            ```html
+            http://localhost:4000/lens2/api/<NAME_OF_LENS>/v2/graphql
+            ```
+        - For a deployed Lens model, use:
+            ```html
+            https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/graphql
+            ```
 
     - **Replace `<DATAOS_API_KEY>` with your actual DataOS API key.** Refer to the [Generating an API Key](#generating-an-api-key) section for more information on obtaining an API key.
 
