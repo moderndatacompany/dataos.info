@@ -166,7 +166,7 @@ LENS2_LOCAL_PG_USER=iamgroot
 | `LENS2_DB_HOST` | The host URL for the database | A valid database host URL of the form `tcp.${DATAOS-FQDN}` where `${DATAOS-FQDN}` is the placeholder for DataOS’ fully qualified domain name. Replace the placeholder with your respective domain name. | `tcp.alpha-omega.dataos.app` | ✅ |
 | `LENS2_DB_PORT` | The port for the database connection | A valid port number | `7432` | ❌ |
 | `LENS2_DB_USER` | The DataOS user-id used to connect to the database. It can be retrieved from the second column of the output by running the `dataos-ctl user get` command from the DataOS CLI | A valid DataOS user-id | `iamgroot` | ✅ |
-| `LENS2_DB_PASS` | The DataOS Wrap Token that serves as a password used to connect to the database | A valid Cluster Wrap Token. Learn more about how to create a Cluster Wrap Token [**here.**](https://www.notion.so/ac6f155294244607bc2272083f082f60?pvs=21) | `abcdefghijklmnopqrstuvwxyz` | ✅ |
+| `LENS2_DB_PASS` | The DataOS Wrap Token that serves as a password used to connect to the database | A valid Cluster Wrap Token. Learn more about how to create a Cluster Wrap Token [**here.**](/interfaces/atlas/bi_tools/tableau/#generate-dataos-api-token) | `abcdefghijklmnopqrstuvwxyz` | ✅ |
 | `LENS2_DB_PRESTO_CATALOG` | The catalog within Themis to connect to | A valid catalog name  | `icebase` | ✅ |
 | `LENS2_DB_SSL` | If `true`, enable SSL encryption for database connections from Lens2. | `true`, `false` | `true` | ❌ |
 | `LENS2_CONCURRENCY` | The number of concurrent connections each queue has to the database. Default is `2` | 3,4 | `2` |  |
