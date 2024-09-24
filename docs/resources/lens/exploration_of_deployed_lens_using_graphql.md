@@ -1,164 +1,296 @@
-# Exploration of deployed Lens using GraphQL
+# Exploration of Lens using GraphQL
 
-Lens provides a GraphQL API interface for querying your deployed model. This document will guide you through the process of accessing the GraphQL interface and executing queries against the Lens model. You can interact with the Lens GraphQLAPI either through:
+This guide provides comprehensive instructions for accessing and interacting with the Lens GraphQL API. You can interact with the Lens GraphQL API using:
 
-1. **Lens Studio**: DataOS interface that serves as an interactive in-browser tool for writing GraphQL queries on top of deployed Lens.
+1. **Lens Studio**: An interactive in-browser tool for writing and executing GraphQL queries.
+2. **Curl**: A command-line tool for transferring data with URLs, useful for automated scripts.
+3. **Python**: Use Python's `requests` library for more complex interactions with the API.
 
-2. **Postman**:For more manual query execution and testing.
+## Authentication and Authorization
 
-## How to access GraphQL?
+To securely interact with the Lens GraphQL API, you must authenticate your requests using a **DataOS API key** and ensure proper user group configurations. This section explains how to generate an API key and configure user groups for accessing the API.
 
-### **Method 1: Accessing GraphQL via Lens Studio**
+### **Generating a DataOS API Key**
 
-The GraphQL Tab in Lens Studio provides an interactive environment for writing and executing GraphQL queries.
+To authenticate API requests, you need a DataOS API key. This key validates your identity and ensures only authorized users can access and query the data.
 
-**Step 1:** Navigate to the deployed Lens on [Metis UI](/interfaces/metis/).
+**Steps to Generate an API Key:**
 
-<div style="text-align: center;">
-    <img src="/resources/lens/consumption_of_deployed_lens/graphql/graphql1.png" alt="graphql" style="max-width: 80%; height: auto; border: 1px solid #000;">
-</div>
-
-
-**Step 2:** Click on the ‘Explore in Studio’ Button.
-
-<div style="text-align: center;">
-    <img src="/resources/lens/consumption_of_deployed_lens/graphql/graphql2.png" alt="graphql" style="max-width: 80%; height: auto; border: 1px solid #000;">
-</div>
-
-**Step 3:** Navigate to the **GraphQL** tab on Studio.
-
-<div style="text-align: center;">
-    <img src="/resources/lens/consumption_of_deployed_lens/graphql/graphql3.png" alt="graphql" style="max-width: 80%; height: auto; border: 1px solid #000;">
-</div>
-
-**Step 4:** Create the GraphQL Query.
-
-1. In the left pane, enter your GraphQL query. You can press `Ctrl` + `Space` to bring up the autocomplete window. For example:
-
-```graphql
-query LensQuery {
-    table {
-      wallet_sales_view {
-      revenue
-    }
-    }
-  }
-```
-
-You can now press the ‘Execute’ button or press `Ctrl` + `Enter` to run the GraphQL Query. The output will be displayed on the right side as follows:
-
-```graphql
-{
-    "data": {
-        "table": [
-            {
-                "wallet_sales_view": {
-                    "revenue": 77835071
-                }
-            }
-        ]
-    }
-}
-```
-
-
-### **Method 2: Accessing GraphQL via Postman**
-
-This section guides you through accessing Lens's GraphQL API using Postman or a web browser. This method is suitable for developers who prefer a more hands-on approach to testing and querying the API outside of Lens Studio.
-
-**Step 1:** Setting Up Postman
-
-Ensure you have Postman installed either as an application or as a Visual Studio Code Extension. If not, you can refer to the following link.
-
-**Step 2:** Create a New Request
-
-1. Open Postman and click on `New` to create a new request.
-2. Select `HTTPS Request`.
-
-**Step 3:** Configure the Request
-
-- **URL**: Enter the URL of your deployed GraphQL endpoint. Sample URLs for localhost and DataOS environment are provided below:
-
-=== "Lens in Development environment"
-
-    For locally hosted Lens, the endpoint will be as follows:
-        
-    === "Syntax"
-
-        ```graphql
-        https://localhost:4000/lens2/api/<name-of-lens>/v2/graphql
-        ```
-    
-    === "Example"
-
-        For instance, if the `<name-of-lens>` is `mylens` the URL will be as follows:
-        
-        ```graphql
-        https://localhost:4000/lens2/api/mylens/v2/graphql
-        ```
-      
-=== "Deployed Lens"
-
-    For Lens deployed on DataOS Environment, the endpoint will be as follows:
-
-    === "Syntax"
-        
-        ```graphql
-        https://<dataos-fqdn>/lens2/api/<workspace>:<name-of-lens>/v2/graphql
-        ```
-    
-    === "Example"
-
-        For example, if the `<dataos-fqdn>` is `alpha-omega.dataos.app`, `<workspace>` in which Lens is deployed is `sandbox`, and the `<name-of-lens>` is `mylens`, the URL will be following:
-        
-        ```graphql
-        https://alpha-omega.dataos.app/lens2/api/sandbox:mylens/v2/graphql
-        ```
-      
-- **Request Method**: Select `POST` as the request method.
-
-**Step 4:** Set Up Headers
-
-1. Click on the `Headers` tab.
-2. Add the following headers:
-    - Key: `apikey`
-    - Value: `DATAOS_APIKEY_TOKEN` (replace `DATAOS_APIKEY_TOKEN` with the actual token by using the `dataos-ctl user apikey get` or `dataos-ctl user apikey create` command).
-
-**Step 5:** Create the GraphQL Query
-
-1. Click on the `Body` tab.
-2. Select `GraphQL` from the dropdown.
-3. Enter your GraphQL query. For instance:
-    
-=== "GraphQL Query"
-
-    ```graphql
-    query LensQuery {
-      table {
-        wallet_sales_view {
-        revenue
-      }
-      }
-    }
+1. Open your terminal and run the following command to create a new API key:
+    ```bash
+    dataos-ctl user apikey create
     ```
+2. To view existing API keys, use:
+    ```bash
+    dataos-ctl user apikey get
+    ```
+3. Note down your API key and keep it secure. You will use this key to authenticate your API requests.
 
-=== "Expected Output"
+APIkey tokens can also be fetched from the DataOS GUI, for more details refer to the [documentation here](/interfaces/#create-tokens).
+
+### **Configuring User Groups**
+
+To access and query data via the GraphQL endpoint, users must be part of a user group with the required permissions. The necessary permissions are defined using the `api_scopes` attribute within the user group configuration located in the Lens directory.
+
+**Example User Group Configuration**
+
+The following YAML configuration demonstrates how to set up user groups with different levels of access:
+
+```yaml
+user_groups:
+  # User group with full access to GraphQL API and data querying capabilities
+  - name: engineer
+    description: Data Analyst
+    api_scopes:
+      - meta      # For accessing metadata
+      - graphql   # For accessing the GraphQL API
+      - data      # For querying the data
+    includes:
+      - users:id:exampleuser
+
+  # User group with access to GraphQL API but no data querying capabilities
+  - name: analyst
+    description: Data Engineer
+    api_scopes:
+      - meta
+      - graphql
+    includes:
+      - users:id:testuser
+
+  # User group without access to GraphQL API or data querying capabilities
+  - name: testuser
+    description: Data Engineer
+    api_scopes:
+      - meta
+    includes:
+      - users:id:testuser
+```
+
+**Explanation of the Configuration:**
+
+- **`engineer` Group:** This group can access the GraphQL API and query data because it includes both the `graphql` and `data` `api_scopes`. This setup is ideal for data analysts who need full access to perform data analysis.
+- **`analyst` Group:** This group can access the GraphQL API but cannot query the data because the `data` scope is missing. This is useful for scenarios where users need to view metadata but not interact with the actual data.
+- **`testuser` Group:** This group cannot access the GraphQL API or query data because both the `graphql` and `data` scopes are missing. This configuration can be used for users who only need metadata access.
+
+!!!note
+    The user groups configured above only manage access permissions at the consumption level within DataOS. However, source-level permissions defined by the source administrator (e.g., in Snowflake or BigQuery) remain applicable. For sources accessible through the DataOS Query Engine (Minerva/Themis), you can define source-level permissions using the [Bifrost](/interfaces/bifrost/) application in the DataOS GUI or using the [Policy](/resources/policy/) and [Grant](/resources/grant/) Resource using DataOS CLI.
+
+## How to access the GraphQL API?
+
+### **Using Lens Studio**
+
+Lens Studio provides an intuitive, in-browser interface to interact with the GraphQL API.
+
+1. **Open Lens Studio:** Go to the Metis application on the DataOS GUI and navigate to your deployed Lens model.
+
+    <div style="text-align: center;">
+        <img src="/resources/lens/consumption_of_deployed_lens/graphql/graphql1.png" alt="graphql" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    </div>
+    <figcaption><i><center>Deployed Lens Resource on Metis UI</center></i></figcaption>
+
+2. **Access GraphQL Tab:** Click on the ‘Explore in Studio’ button and go to the GraphQL tab.
+
+    <div style="text-align: center;">
+        <img src="/resources/lens/consumption_of_deployed_lens/graphql/graphql2.png" alt="graphql" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    </div>
+    <figcaption><i><center>Lens Details Page and Explore in Studio Button</center></i></figcaption>
+
+3. **Compose a Query:** Enter your GraphQL query in the left pane.  
+
+    <div style="text-align: center;">
+        <img src="/resources/lens/consumption_of_deployed_lens/graphql/graphql3.png" alt="graphql" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    </div>
+    <figcaption><i><center>GraphQL Tab on Lens Studio</center></i></figcaption>
+
+      You can press `Ctrl + Space` to bring up the autocomplete window. For example:
+
+      ```graphql
+      query LensQuery {
+          table {
+            wallet_sales_view {
+            revenue
+          }
+          }
+        }
+      ```
+
+4. **Execute the Query:** Click the 'Execute' button or press `Ctrl + Enter` to run the query. The results will appear in the right pane.
 
     ```graphql
     {
-      "data": {
-          "table": [
-              {
-                  "wallet_sales_view": {
-                      "revenue": 77835071
-                  }
-              }
-          ]
-      }
+        "data": {
+            "table": [
+                {
+                    "wallet_sales_view": {
+                        "revenue": 77835071
+                    }
+                }
+            ]
+        }
     }
     ```
 
-## Query Examples
+### **Using Curl**
+
+Curl is a command-line tool used for transferring data with URLs, making it a convenient choice for interacting with APIs directly from the terminal. Ensure that `curl` is installed on your system before proceeding.
+
+1. **Prepare the Request:** To send a GraphQL query using Curl, construct your request with the following template:
+
+    ```shell
+    curl -X POST <URL> \
+    -H "Content-Type: application/json" \
+    -H "apikey: <DATAOS_API_KEY>" \
+    -d '{"query": "<GRAPHQL_QUERY>"}'
+    ```
+
+    - Replace `<URL>` with the appropriate endpoint based on your environment:
+      - For local development, use:
+        ```html
+        http://localhost:4000/lens2/api/<NAME_OF_LENS>/v2/graphql
+        ```
+      - For a deployed Lens model, use:
+        ```html
+        https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/graphql
+        ```
+
+    - Replace `<DATAOS_API_KEY>` with your actual DataOS API key. Refer to the [Generating an API Key](#generating-an-api-key) section for more information on obtaining an API key.
+
+    - Replace `<DATAOS_FQDN>` with the fully qualified domain name of your DataOS instance. For example: `alpha-omega.dataos.app` or `happy-kangaroo.dataos.app`.
+
+    - Replace `<WORKSPACE>` with the DataOS Workspace name where the Lens is deployed.
+
+    - Replace `<NAME_OF_LENS>` with the name of your deployed Lens model. This corresponds to the specific Lens model you want to query.
+
+    - Replace `<GRAPHQL_QUERY>` with your GraphQL query. Make sure to format the query as a valid JSON string.
+
+    **Sample Request:**
+
+    ```shell
+    curl -X POST https://alpha-omega.dataos.app/lens2/api/public:lakehouse-insights01/v2/graphql \
+    -H "Content-Type: application/json" \
+    -H "apikey: abcdefghijklmnopqrstuvwxyz" \
+    -d '{"query": "query LensQuery { table { total_operations { lakehouse_insights_total_data_size_in_gb lakehouse_insights_table_name } } }"}'
+    ```
+
+2. **Execute the Command:** Run the command in your terminal to execute the query and view the response.
+
+> Ensure you replace the placeholders with the actual values specific to your environment. Properly formatted queries and valid API keys are essential for successful API interactions.
+
+### **Using Python**
+
+Python provides a flexible and powerful way to interact with the Lens GraphQL API. It is especially useful for building automation scripts or for use in data analysis workflows. Ensure that Python and the `requests` library are installed on your system before proceeding.
+
+1. **Install the `requests` Library:**
+
+    If you haven’t already installed the `requests` library, you can do so by running the following command:
+
+    ```shell
+    pip install requests
+    ```
+
+2. **Prepare the Python Script:**
+
+    Use the following template to create a Python script for querying the Lens GraphQL API:
+
+    ```python
+    import requests
+
+    # Define the URL of the Lens GraphQL endpoint
+    url = "<URL>"
+
+    # Define the headers including the API key
+    headers = {
+        "Content-Type": "application/json",
+        "apikey": "<DATAOS_API_KEY>"
+    }
+
+    # Define your GraphQL query
+    query = """
+    <GRAPHQL_QUERY>
+    """
+
+    # Send the POST request
+    response = requests.post(url, headers=headers, json={'query': query})
+
+    # Print the response
+    print(response.json())
+    ```
+
+    - **Replace `<URL>` with the appropriate endpoint based on your environment:**
+      - For local development, use:
+        ```plaintext
+        http://localhost:4000/lens2/api/<NAME_OF_LENS>/v2/graphql
+        ```
+      - For a deployed Lens model, use:
+        ```plaintext
+        https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/graphql
+        ```
+
+    - **Replace `<DATAOS_API_KEY>` with your actual DataOS API key.** Refer to the [Generating an API Key](#generating-an-api-key) section for more information on obtaining an API key.
+
+    - **Replace `<DATAOS_FQDN>` with the fully qualified domain name of your DataOS instance.** For example: `alpha-omega.dataos.app` or `happy-kangaroo.dataos.app`.
+
+    - **Replace `<WORKSPACE>` with the workspace name associated with your Lens model.** This is typically the name of the DataOS Workspace where the Lens is deployed. For example: `public`, `sandbox`, etc.
+
+    - **Replace `<NAME_OF_LENS>` with the name of your deployed Lens model.** This corresponds to the specific Lens model you want to query.
+
+    - **Replace `<GRAPHQL_QUERY>` with the specific fields you want to query from your GraphQL schema.** Make sure to format the query string as valid JSON.
+
+    **Sample Script:**
+
+    ```python
+    import requests
+
+    # Define the URL of the Lens GraphQL endpoint
+    url = "https://alpha-omega.dataos.app/lens2/api/public:lakehouse-insights01/v2/graphql"
+
+    # Define the headers including the API key
+    headers = {
+        "Content-Type": "application/json",
+        "apikey": "abcdefghijklmnopqrstuvwxyz"
+    }
+
+    # Define your GraphQL query
+    query = """
+      query LensQuery {
+        table {
+          total_operations {
+            lakehouse_insights_total_data_size_in_gb
+            lakehouse_insights_table_name
+          }
+        }
+      }
+    """
+
+    # Send the POST request
+    response = requests.post(url, headers=headers, json={'query': query})
+
+    # Print the response
+    print(response.json())
+    ```
+
+    In the above sample:
+    - `<URL>` is `https://alpha-omega.dataos.app/lens2/api/public:lakehouse-insights01/v2/graphql`
+    - `<DATAOS_API_KEY>` is `abcdefghijklmnopqrstuvwxyz` (replace with your actual API key)
+    - `<WORKSPACE>` is `public`
+    - `<NAME_OF_LENS>` is `lakehouse-insights01`
+    - The query fetches `lakehouse_insights_total_data_size_in_gb` and `lakehouse_insights_table_name` fields from the `total_operations` table.
+
+3. **Run the Script:**
+
+    Save the script as a `.py` file and execute it using the following command in your terminal:
+
+    ```shell
+    python <your_script_name>.py
+    ```
+
+    This will send the GraphQL query to the Lens API and print the response to your terminal.
+
+> **Note:** Ensure you replace the placeholders with the actual values specific to your environment. Properly formatted queries and valid API keys are essential for successful API interactions.
+
+## GraphQL Query Examples
+
+This section provides sample GraphQL queries that you can use directly in Lens Studio. You can also use these queries with the <GRAPHQL_QUERY> placeholder in the Curl and Python methods described earlier.
 
 ### **Querying a dimension**
 
