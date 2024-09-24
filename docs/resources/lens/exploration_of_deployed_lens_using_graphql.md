@@ -2,9 +2,9 @@
 
 This guide provides comprehensive instructions for accessing and interacting with the Lens GraphQL API. You can interact with the Lens GraphQL API using:
 
-1. **Lens Studio**: An interactive in-browser tool for writing and executing GraphQL queries.
-2. **Curl**: A command-line tool for transferring data with URLs, useful for automated scripts.
-3. **Python**: Use Python's `requests` library for more complex interactions with the API.
+1. [**Lens Studio**](#using-lens-studio): An interactive in-browser tool for writing and executing GraphQL queries.
+2. [**Curl**](#using-curl): A command-line tool for transferring data with URLs, useful for automated scripts.
+3. [**Python**](#using-python): Use Python's `requests` library for more complex interactions with the API.
 
 ## Authentication and Authorization
 
@@ -68,9 +68,9 @@ user_groups:
 
 **Explanation of the Configuration:**
 
-- **`engineer` Group:** This group can access the GraphQL API and query data because it includes both the `graphql` and `data` `api_scopes`. This setup is ideal for data analysts who need full access to perform data analysis.
-- **`analyst` Group:** This group can access the GraphQL API but cannot query the data because the `data` scope is missing. This is useful for scenarios where users need to view metadata but not interact with the actual data.
-- **`testuser` Group:** This group cannot access the GraphQL API or query data because both the `graphql` and `data` scopes are missing. This configuration can be used for users who only need metadata access.
+- **`engineer` Group:** This group can access the GraphQL API and query data because it includes both the `graphql` and `data` `api_scopes`. 
+- **`analyst` Group:** This group can access the GraphQL API but cannot query the data because the `data` scope is missing. 
+- **`testuser` Group:** This group cannot access the GraphQL API or query data because both the `graphql` and `data` scopes are missing. 
 
 !!!note
     The user groups configured above only manage access permissions at the consumption level within DataOS. However, source-level permissions defined by the source administrator (e.g., in Snowflake or BigQuery) remain applicable. For sources accessible through the DataOS Query Engine (Minerva/Themis), you can define source-level permissions using the [Bifrost](/interfaces/bifrost/) application in the DataOS GUI or using the [Policy](/resources/policy/) and [Grant](/resources/grant/) Resource using DataOS CLI.
@@ -143,7 +143,7 @@ Curl is a command-line tool used for transferring data with URLs, making it a co
     -d '{"query": "<GRAPHQL_QUERY>"}'
     ```
 
-    - Replace `<URL>` with the appropriate endpoint based on your environment:
+    - **Replace `<URL>` with the appropriate endpoint based on your environment:**
       - For local development, use:
         ```html
         http://localhost:4000/lens2/api/<NAME_OF_LENS>/v2/graphql
@@ -153,15 +153,15 @@ Curl is a command-line tool used for transferring data with URLs, making it a co
         https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/graphql
         ```
 
-    - Replace `<DATAOS_API_KEY>` with your actual DataOS API key. Refer to the [Generating an API Key](#generating-an-api-key) section for more information on obtaining an API key.
+    - **Replace `<DATAOS_API_KEY>` with your actual DataOS API key.** Refer to the [Generating an API Key](#generating-an-api-key) section for more information on obtaining an API key.
 
-    - Replace `<DATAOS_FQDN>` with the fully qualified domain name of your DataOS instance. For example: `alpha-omega.dataos.app` or `happy-kangaroo.dataos.app`.
+    - **Replace `<DATAOS_FQDN>` with the fully qualified domain name of your DataOS instance.** For example: `alpha-omega.dataos.app` or `happy-kangaroo.dataos.app`.
 
-    - Replace `<WORKSPACE>` with the DataOS Workspace name where the Lens is deployed.
+    - **Replace `<WORKSPACE>` with the DataOS Workspace name** where the Lens is deployed.
 
-    - Replace `<NAME_OF_LENS>` with the name of your deployed Lens model. This corresponds to the specific Lens model you want to query.
+    - **Replace `<NAME_OF_LENS>` with the name of your deployed Lens model.** This corresponds to the specific Lens model you want to query.
 
-    - Replace `<GRAPHQL_QUERY>` with your GraphQL query. Make sure to format the query as a valid JSON string.
+    - **Replace `<GRAPHQL_QUERY>` with your GraphQL query.** Make sure to format the query as a valid JSON string.
 
     **Sample Request:**
 
