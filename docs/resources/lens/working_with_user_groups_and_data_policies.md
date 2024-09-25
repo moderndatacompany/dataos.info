@@ -18,7 +18,7 @@ model/
 │   └── account.yml
 ├── views/
 │   └── engagement.yml
-└── **user_groups.yml**
+└── user_groups.yml
 ```
 
 ### **Step 2**  Define user groups using the following format:
@@ -31,8 +31,8 @@ user_groups: # List of user groups
       - meta
       - data
       - graphql
-      - jobs
-      - source
+      # - jobs
+      # - source
     includes: # Users to include in this group
       - users:id:thor
       - users:id:ironman
@@ -43,11 +43,13 @@ user_groups: # List of user groups
 | **Attribute** | **Description** | **Requirement** | **Best Practice** |
 | --- | --- | --- | --- |
 | `user_groups` | The top-level mapping contains the list of user groups. Each user group defines a set of users and respective access controls.  | mandatory |  |
-| `name`      | The name of the user group.                                                                                                                   | mandatory                                                                                                               | - It should be unique and descriptive to identify the group's purpose, or role such as `data analyst`, `developer`, etc.<br> &nbsp; - Maintain a consistent naming convention across all user groups. For example, use underscores or hyphens consistently, and stick with it across all groups (e.g., `data_analyst` or `data-analyst`).<br> &nbsp; - Avoid using abbreviations or acronyms that might be unclear. For example, instead of `name: eng_grp`, use `name: engineer_group`. Use `name: data_engineer` instead of `name: de`. |
-| `includes`  | A list of users to be included in the user group. This can be specific user IDs or patterns to include multiple users. Use `"*"` to include all users or specify user IDs. | mandatory                                                                                                               | - If the number of users is small, prefer using explicit user identifiers (e.g., `users:id:johndoe`) over generic patterns (e.g., `*`).<br> &nbsp &nbsp &nbsp &nbsp; - Example:<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>includes:<br> - `"*"`<br>|
-| `excludes`  | A list of users to be excluded from the user group. This can be specific user IDs or patterns to exclude certain users from the group.           | optional                                                                                                                | - If including all users, use `excludes` to remove specific users who should not have access.<br> &nbsp; &nbsp;&nbsp;&nbsp; - Example:<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>excludes:<br> - `users:id:johndoe`<br>|
+| `name` | The name of the user group. | mandatory | - It should be unique and descriptive to identify the group's purpose, or role such as `data analyst`, `developer`, etc.<br> &nbsp; - Maintain a consistent naming convention across all user groups. For example, use underscores or hyphens consistently, and stick with it across all groups (e.g., `data_analyst` or `data-analyst`).<br> &nbsp; - Avoid using abbreviations or acronyms that might be unclear. For example, instead of `name: eng_grp`, use `name: engineer_group`. Use `name: data_engineer` instead of `name: de`. |
+| `description` | A brief description of the user group. | optional | - The description should explain the user group’s purpose and the type of users it contains. <br> E.g., "This group contains data analysts who are responsible for reporting and data visualization tasks." |
+| `api_scopes`** | A list of API scopes that the user group members are allowed to access. Each scope represents specific endpoints or functionality. To kow more about **`api_scopes_and_their_endpoints`** click [here](/resources/lens/api_endpoints_and_scopes/) | optional (by default all api_scopes are included if not explicitly specified) | - Follow the principle of least privilege and grant users the minimum level of access required to perform their job functions. <br><br> - The following `api_scopes` are currently supported:<br> &nbsp;&nbsp; • `meta`: Provides access to metadata-related endpoints.<br> &nbsp;&nbsp; • `data`: Allows access to data endpoints. This scope enables users to retrieve, and analyze data.<br> &nbsp;&nbsp; • `graphql`: Grants access to GraphQL endpoints.<br> &nbsp;&nbsp; <br> &nbsp;&nbsp; |
+| `includes` | A list of users to be included in the user group. This can be specific user IDs or patterns to include multiple users. Use `"*"` to include all users or specify user IDs. | mandatory | - If the number of users is small, prefer using explicit user identifiers (e.g., `users:id:johndoe`) over generic patterns (e.g., `*`). <br> &nbsp;&nbsp;<br> - Example:<br> includes:<br> - `"*"`<br> |
+| `excludes` | A list of users to be excluded from the user group. This can be specific user IDs or patterns to exclude certain users from the group. | optional | - If including all users, use `excludes` to remove specific users who should not have access.<br> &nbsp;&nbsp;<br> - Example:<br> excludes:<br> - `users:id:johndoe`<br> |
 
-
+`api_scopes`** To know more about the api scopes and their endpoints click [here](/resources/lens/api_endpoints_and_scopes/)
 
 ## Group Priority
 
@@ -95,7 +97,7 @@ You can mask data on a table's dimension using the `secure` property in the meta
 
 #### **Step 1 Define the Data Masking Function** 
 
-- Include the masking function in the `meta` section of your dimension definition:
+- Include the masking function in the `meta` section of your dimension definition. Here we have masked the gender column for the  specific group `dataconsumer` but the same column is not redacted for the users in the default group. That means everybody can see the row values of gender column except for the users in `dataconsumer` group.
 
   ```yaml
   - name: gender
@@ -123,7 +125,7 @@ You can mask data on a table's dimension using the `secure` property in the meta
         func: redact | md5
         user_groups: "*"
 
-    # 2. Secure for everyone, except for specific user_group
+    # 2. Secure for everyone, except for specific user_group (default)
     meta:
       secure:
         func: redact | md5
@@ -132,7 +134,7 @@ You can mask data on a table's dimension using the `secure` property in the meta
           excludes:
             - default
 
-    # 3. Secure for specific user_group and exclude some
+    # 3. Secure for specific user_group (reader) and exclude some (default)
     meta:
       secure:
         func: redact | md5
@@ -146,7 +148,7 @@ You can mask data on a table's dimension using the `secure` property in the meta
 
 ### **Defining Row Filter Policy on a Table’s Segment**
 
-- Apply a row filter policy to show specific data based on user groups.
+You can apply a row filter policy to show specific data based on user groups.
 
 #### **Step 1: Define the Row Filter Policy**
 

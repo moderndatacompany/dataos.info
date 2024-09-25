@@ -12,7 +12,7 @@ testing each endpoint.
 
 [Lens2-API](/resources/lens/lens_setup/Lens2-APIs.postman_collection.json) 
 
-You can manage API access using the [user_groups](/resources/lens/user_groups/). The default user group ensures that API endpoints in all scopes are accessible to everyone. You can create custom user groups by defining roles and associating specific users with these roles in the user_group.yml file. To know more about user groups click [here](/resources/lens/user_groups/).
+You can manage API access using the [user_groups](/resources/lens/working_with_user_groups_and_data_policies/). The default user group ensures that API endpoints in all scopes are accessible to everyone. You can create custom user groups by defining roles and associating specific users with these roles in the user_group.yml file. To know more about user groups click [here](/resources/lens/working_with_user_groups_and_data_policies/).
 
 
 The following `api_scopes` are currently supported:
@@ -122,29 +122,43 @@ Use `POST` request method along with `/load` endpoint to add or update the data.
 
 You can use either of the following methods:
 
-=== "Syntax"   
+- **URL**: Enter the URL of your RESTAPI endpoint. Sample URLs for localhost and DataOS environment are provided below:
 
-    ```bash
-    http://<host_name>:<port_name>/lens2/api/<data_model_name>/v2/load?query=<query_parameters>
-    ```
-=== "Example"
+=== "Lens in Development environment"
 
-    ```bash
-    http://localhost:4000/lens2/api/sales_analysis/v2/load?query={"dimensions":["customer.customer_id","customer.annual_income"],"measures":["customer.total_customers", "customer.average_age"]}
-    ```
+    For locally hosted Lens, the endpoint will be as follows:
+        
+    === "Syntax"
 
-=== "Syntax"  
+        ```graphql
+        https://localhost:4000/lens2/api/<name-of-lens>/v2/graphql
+        ```
+    
+    === "Example"
 
-    ```bash
-    http://<host_name>:<port_name>/lens2/api/<data_model_name>/v2/load
-    ```  
+        For instance, if the `<name-of-lens>` is `mylens` the URL will be as follows:
+        
+        ```graphql
+        https://localhost:4000/lens2/api/mylens/v2/graphql
+        ```
+      
+=== "Deployed Lens"
 
-=== "Example"
-                                                                                
-    ```bash
-    http://localhost:4000/lens2/api/sales_analysis/v2/load?query={"dimensions":["customer.customer_id","customer.annual_income"],"measures":["customer.total_customers", "customer.average_age"]}
-    ```                                                         
+    For Lens deployed on DataOS Environment, the endpoint will be as follows:
 
+    === "Syntax"
+        
+        ```graphql
+        https://<dataos-fqdn>/lens2/api/<workspace>:<name-of-lens>/v2/graphql
+        ```
+    
+    === "Example"
+
+        For example, if the `<dataos-fqdn>` is `alpha-omega.dataos.app`, `<workspace>` in which Lens is deployed is `sandbox`, and the `<name-of-lens>` is `mylens`, the URL will be following:
+        
+        ```graphql
+        https://alpha-omega.dataos.app/lens2/api/sandbox:mylens/v2/graphql
+        ```
 In the POST request body, include the query parameters in the JSON Query Format:
 
 ```bash

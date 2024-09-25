@@ -12,28 +12,37 @@
 
 ## How to define Segments?
 
-Segments are pre-defined groups of filters. It provides the ability to define Segments (filters) as code within the Lens YAML. They can be used to define repetitively used groups of filters by the stakeholders. Segments are defined within a Lens table’s schema.
+Segments are pre-defined groups of filters. It provides the ability to define Segments (filters) as code within the Lens YAML. They can be used to define repetitively used groups of filters by the stakeholders. Segments are defined within a Lens table’s schema. Utilize the **`sql`** parameter to define how a segment filters out a subset of data, ensuring the SQL expression is valid within a **`WHERE`** statement.
 
-- Utilize the **`sql`** parameter to define how a segment filters out a subset of data, ensuring the SQL expression is valid within a **`WHERE`** statement.
-- You can use ‘OR’ to define a filter involving multiple columns
+- Use **‘OR’** to define a filter involving multiple columns
 
-An example segment declaration to create a group of commonly used state filters:
+  An example segment declaration to create a group of commonly used state filters:
 
-```yaml
-    segments:
-      - name: common_state
-        sql: "{TABLE}.state = 'Illinois' or {TABLE}.state = 'Ohio'"
-```
+  ```yaml
+      segments:
+        - name: common_state
+          sql: "{TABLE}.state = 'Illinois'"
+  ```
 
-You can leverage filtering keywords such as ‘LIKE’ to define filtering criteria
+- You can leverage filtering keywords such as **‘LIKE’** to define filtering criteria
+  
+  Below  example Segment filters for records where the state is Illinois or Ohio.
 
-```yaml
-    segments:
-      - name: common_state
-        sql: "{TABLE}.state = 'Illinois' or {TABLE}.state like '%Ohio%'"
-```
+  ```yaml
+      segments:
+        - name: common_state
+          sql: "{TABLE}.state = 'Illinois' or {TABLE}.state like '%Ohio%'"
+  ```
 
+- You can include logical operators like **OR and AND** to create dynamic criteria for segments. This is useful when you need to apply filters to more than one column.
 
+  Below example Segment filters records where the region is "Midwest" or the sales are greater than 1000.
+
+  ```yaml
+  segments:
+    - name: common_state
+      sql: "{TABLE}.state = 'Illinois' or {TABLE}.state = 'Ohio'"
+  ```
 
 ## Defining Row Filter Policy on Segment
 
@@ -41,7 +50,7 @@ Data policies can be defined directly on segments to enforce data governance and
 
 Let's demonstrate an example by adding the filter policy to the `segments` section of a table definition:
 
-**Example:** Filtering rows to show only online sales data to all user groups except `reader`.
+**Example:** Filtering rows to show online sales data to '`type-analyst` user groups and hide  `reader` user groups.
 
   ```yaml
   table: 
@@ -55,7 +64,7 @@ Let's demonstrate an example by adding the filter policy to the `segments` secti
           secure:
             user_groups:
               includes:
-                - *
-              excludes:
                 - reader
+              excludes:
+                - type-analyst
   ```
