@@ -347,6 +347,7 @@ nav:
             - Working with Payload: resources/lens/working_with_payload.md
             - Working with Segments: resources/lens/working_with_segments.md
             - Working with Views: resources/lens/working_with_views.md
+            - Working with User Groups: resources/lens/working_with_user_groups_and_data_policies.md
           - Exploration:
             - Using GraphQL: resources/lens/exploration_of_deployed_lens_using_graphql.md
             - Using SQL APIs: resources/lens/exploration_of_deployed_lens_using_sql_apis.md
