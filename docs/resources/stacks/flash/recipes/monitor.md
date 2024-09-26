@@ -1,0 +1,58 @@
+# Monitoring cached dataset
+
+To monitor the cached dataset, it is mandatory to provide the `ingress` attribute in Flash Service manifest file, as shown below.
+
+```yaml
+    service:
+      servicePort: ${{8080}}
+      servicePorts:
+      - name: ${{backup}}
+        servicePort: ${{5433}}
+      ingress:
+        enabled: ${{true}}
+        stripPath: ${{false}}
+        path: ${{/flash/public:flash-test-6}}
+        noAuthentication: ${{true}}
+      replicas: ${{1}}
+      logLevel: ${{info}}
+      compute: ${{runnable-default}}
+      envs:
+        APP_BASE_PATH: ${{'dataos-basepath'}}
+        FLASH_BASE_PATH: ${{/flash/public:flash-test-6}}
+      resources:
+        requests:
+          cpu: ${{500m}}
+          memory: ${{512Mi}}
+        limits:
+          cpu: ${{1000m}}
+          memory: ${{1024Mi}}
+```
+The `ingress` attribute will enable you to add inspect web app path, through which you can monitor the cached datasets.
+
+To open the web app, simply copy the ingress path from Metis as shown below.
+
+<center>
+  <img src="/resources/stacks/flash/annotely_image%20(30).png" alt="Metis" style="width:40rem; border: 1px solid black; padding: 5px;" />
+  <figcaption><i>Metis Interface</i></figcaption>
+</center>
+
+and browse the URL with syntax similar to `<DataOS env URL>/flash/workspace:service_name` by providing DataOS environment URL and ingress path, which will open an interface similar to this:
+
+<center>
+  <img src="/resources/stacks/flash/webapp.png" alt="Metis" style="width:40rem; border: 1px solid black; padding: 5px;" />
+  <figcaption><i>Flash web app</i></figcaption>
+</center>
+
+Let's explore each elements of the web app to better undertand and monitor the cached dataset.
+
+### **Meta**
+
+### **Data Cached**
+
+### **Inspection**
+
+### **Queries**
+
+
+
+

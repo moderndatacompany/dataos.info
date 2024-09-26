@@ -1,49 +1,119 @@
-# Usecase
-
-Efficient Customer Insights with Talos.
-
-## Overview
-
-A retail company, "RetailCorp," has an extensive database with multiple tables for customer information, product details, store data, and more. They need to build a robust and scalable API to provide real-time insights into their customer base and product performance. Currently, they face challenges with manual API development, integrating various data sources, and ensuring data security and scalability.
-
-## Current Challenges
-
-- **Manual API Development:** Developing APIs for querying data from various tables requires extensive manual coding and integration efforts. The company’s development team struggles with ensuring reliability and efficiency.
-
-- **Integration Complexity:** The need to combine data from different tables (e.g., /customers, /products, /stores) complicates the process, as each source has different formats and protocols.
-- **Security and Compliance:** Ensuring data security and compliance with regulations is challenging, especially when dealing with sensitive customer information.
-- **Scalability Issues:** As data grows, the performance of custom APIs can degrade, impacting user experience.
-- **Documentation and Usability:** Lack of standardized documentation makes it difficult for developers and AI systems to interact with APIs effectively.
-
-Solution with Talos:
-
-Rapid Development and Integration:
-
-SQL Templates for API Creation: With Talos, RetailCorp can use SQL templates to define API endpoints. For instance, they can create an API endpoint to retrieve customer insights by combining data from /customers, /products, and /stores tables using a single SQL query.
-Reduced Coding Effort: Talos abstracts the complexities of direct database interactions, allowing the team to focus on higher-level logic and business rules. This significantly speeds up the development process.
-Simplified Data Integration:
-
-Unified API Interface: Talos allows RetailCorp to seamlessly combine data from different sources. For example, a single API endpoint can provide comprehensive customer insights by aggregating data from various tables, making it easier for applications and AI systems to retrieve and analyze relevant information.
-Enhanced Security and Compliance:
-
-Data Masking and Validation: Talos ensures data security by masking sensitive information in SQL templates and validating API parameters to prevent malicious requests. This protects customer data and helps RetailCorp comply with regulations like GDPR.
-Heimdall Authentication: Secure access to APIs is managed through Heimdall, providing robust authentication and authorization mechanisms to control who can access the data.
-Scalability and Performance:
-
-Caching: Talos includes dataset caching to improve API response times and reduce the load on data sources. Cached results ensure faster access to frequently requested data, enhancing the performance of customer insights queries.
-Scalable Architecture: Talos’s template-driven approach allows RetailCorp to scale their APIs efficiently. As data volume and user demand increase, Talos handles these changes seamlessly without extensive manual adjustments.
-Standardized Documentation and Observability:
-
-Automated Documentation: Talos generates OpenAPI documents automatically, providing clear and standardized documentation for the APIs. This makes it easier for developers and AI systems to understand and interact with the APIs.
-Real-time Monitoring: Talos provides real-time metrics and observability through the /metrics endpoint. RetailCorp can monitor API performance and quickly address any issues that arise.
-Example API Endpoints with Talos:
-
-Customer Insights: /customer_insights — Aggregates data from /customers, /products, and /stores to provide comprehensive insights about customer behavior and product performance.
-Store Performance: /store_performance/:id — Retrieves performance metrics for a specific store, including sales data and customer interactions.
-Product Trends: /product_trends — Analyzes product sales trends across different stores and customer segments.
-Conclusion: By leveraging Talos, RetailCorp can efficiently build, scale, and manage their data APIs with reduced development effort and improved performance. Talos’s SQL templates simplify data integration, enhance security, and ensure scalable and reliable API services, addressing the company’s key challenges and enabling them to deliver valuable insights to stakeholders more effectively.
 
 
+
+
+# Talos Use Case for Financial Services
+Consider a financial services company that needs to provide up-to-date customer insights to its various internal applications, AI agents, and external partner systems. These insights are derived from multiple data sources, such as customer transactions, behavior patterns, and demographic details, stored in a data lakehouse. The challenge lies in combining data from disparate systems and delivering it via APIs for consumption by internal and external stakeholders in a secure, scalable, and efficient manner.
+
+## Setup and Initialization with Talos
+
+Using Talos, the company’s data team can rapidly build and expose APIs based on SQL templates that query and transform data stored in their data warehouse. To set up Talos within the DataOS environment, the team must first create the Talos project folder and initialize it using Bitbucket.
+
+### **1. Set up the Talos project folder**
+Download or set up the Talos project template and initialize it using Bitbucket. Follow these steps:
+
+- Initialize the project using Git:
+
+    ```shell
+    git init
+    git add --all
+    git commit -m "Initial Commit"
+    ```
+- Push the repository to Bitbucket:
+
+    ```shell
+    git remote add origin https://username@your.bitbucket.domain/repo.git
+    git push -u origin master
+    ```
+
+    
+### **2. Connect to the data source**
+The data team connects Talos to the company’s data warehouse by configuring the `config.yaml` manifest file, specifying the data sources and authentication details.
+
+Example configuration:
+
+``` yaml
+name: customer-insights
+description: A Talos app for customer data
+version: 0.1.6
+auth:
+  heimdallUrl: https://liberal-donkey.dataos.app/heimdall
+sources:
+  - name: customer-data-lake
+    type: depot
+```
+
+### **3. Exposing APIs for Internal and External Consumption**
+
+With Talos, the data team can create APIs for multiple datasets. For example, to build an API that provides a unified view of a customer's lifetime value by combining data from customer accounts, transaction histories, and marketing engagement data, they need to define SQL templates:
+
+SQL template configuration
+Open the apis folder, create a customer_lifetime_value.sql file, and write the SQL query to pull data from multiple sources:
+
+sql
+Copy code
+SELECT c.customer_id, SUM(t.amount) AS lifetime_value
+FROM customers c
+JOIN transactions t ON c.customer_id = t.customer_id
+JOIN marketing_engagement m ON c.customer_id = m.customer_id
+GROUP BY c.customer_id;
+API configuration
+Update the customer_lifetime_value.yaml to define the API endpoint and configure it:
+
+yaml
+Copy code
+urlPath: /customer-lifetime-value
+description: Customer Lifetime Value API
+source: customer-data-lake
+Caching Datasets for Improved Performance
+To improve performance, Talos offers caching capabilities that allow frequently accessed datasets to be stored in cache. The data team can utilize this feature to ensure quick API responses without overloading the database:
+
+Caching dataset configuration
+Add a caching mechanism within the SQL query to cache the results:
+
+sql
+Copy code
+{% cache 600 %}
+SELECT c.customer_id, SUM(t.amount) AS lifetime_value
+FROM customers c
+JOIN transactions t ON c.customer_id = t.customer_id
+GROUP BY c.customer_id;
+This ensures that results are cached for 10 minutes, improving the API's response time.
+
+Data Governance and Security with Talos
+The company’s data governance policies are enforced using Talos' built-in security features. For instance, the data masking feature ensures that sensitive customer information, such as personally identifiable details, is protected:
+
+Data masking
+The team can apply data masking rules based on user roles in the SQL queries:
+
+sql
+Copy code
+SELECT c.customer_id, 
+  CASE 
+    WHEN user_role = 'admin' THEN c.sensitive_data
+    ELSE '***' 
+  END AS masked_data
+FROM customers c;
+Authentication with Heimdall
+Secure access to the API is ensured by integrating Heimdall authentication, which manages the access control for various users, ensuring only authorized personnel can view sensitive data.
+
+Scaling and Monitoring APIs
+With Talos, the company can easily scale its APIs and monitor their performance:
+
+Monitoring API performance
+Talos provides built-in monitoring of API metrics through the /metrics endpoint. The data team can configure this to track API performance and ensure system health.
+
+Scaling API services
+Talos allows for scaling the number of replicas for API services by configuring the service.yaml file:
+
+yaml
+Copy code
+service:
+  replicas: 3
+This ensures that the API can handle increased traffic from internal applications, AI agents, and external partner systems.
+
+Conclusion
+With Talos, the financial services company can rapidly develop, secure, and scale APIs to deliver timely customer insights. The caching, governance, and API monitoring features further enhance the system's efficiency and reliability, allowing the company to meet its business needs while maintaining robust security and governance practices.
 
 
 
