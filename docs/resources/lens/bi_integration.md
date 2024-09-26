@@ -35,7 +35,7 @@ The following `curl` command is used to synchronize data from Lens to a Superset
 
     ```bash
     curl --location --request POST 'https://liberal-donkey.dataos.app/lens2/sync/api/v1/superset/public:company-intelligence' \
-    --header 'apikey: aueniekQa==' \
+    --header 'apikey: abcdefghijkQq=' \
     --header 'Content-Type: application/json' \
     --data-raw '
     {

@@ -1,23 +1,26 @@
 # Exploration of Lens using REST APIs
 
-REST API enables Lens to deliver data over the HTTP protocol. It is is enabled by default and secured using [API scopes](/resources/lens/exploration_of_lens_using_rest_apis/#api-endpoints-and-scopes). It consists of a base path and API scopes:
+REST API enables Lens to deliver data over the HTTP protocol. It is is enabled by default and secured using [API scopes](/resources/lens/#api-endpoints-and-scopes). It consists of a base path and API scopes:
 
 - **Base Path:** All REST API endpoints are prefixed with `/lens2/api`. For example, `/v2/meta` is available at `/lens2/api/<lens_name>/v2/meta`
 .
 
 - **API Scopes:** Endpoints are secured by API scopes, restricting access based on user permissions. Follows the principle of least privilege to grant only necessary access.
 
-You can use [Postman](https://www.postman.com/) to interact with Lens via REST APIs. Start by importing the following Postman collection, 
-testing each endpoint.
+**API Endpoint Request Methods and Body Types**
 
-[Lens2-API](/resources/lens/lens_setup/Lens2-APIs.postman_collection.json) 
+When accessing different API endpoints, the request method and the format of the request body vary. Below is a breakdown of how to interact with each endpoint.
 
-You can manage API access using the [user_groups](/resources/lens/working_with_user_groups_and_data_policies/). The default user group ensures that API endpoints in all scopes are accessible to everyone. You can create custom user groups by defining roles and associating specific users with these roles in the user_group.yml file. To know more about user groups click [here](/resources/lens/working_with_user_groups_and_data_policies/).
+| **Endpoint** | **Method** | **Request Body Type**        | **Body Format Example**                                                                                                                                                                                                                      |
+|--------------|------------|------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `meta`       | GET        | N/A                          | N/A                                                                                                                                                                                                                                         |
+| `graphql`    | POST       | GraphQL query                 | graphql<br>query LensQuery {<br> table(limit: 10, offset: 0) {<br> products {<br> productcategory<br> average_price<br> average_margin<br> }<br> }<br> }                                                                              |
+| `load`       | POST       | Raw or JSON                   | json<br>{<br> "query": {<br> "dimensions": ["products.productcategory"],<br> "measures": ["products.average_price", "products.average_margin"]<br> }<br                                                                            |
+| `sql`        | POST       | Raw or JSON                   | json<br>{<br> "query": {<br> "dimensions": ["products.productcategory"],<br> "measures": ["products.average_price", "products.average_margin"]<br> }<br>}                                                                   |
 
 
-The following `api_scopes` are currently supported:
 
-<div style="text-align: center;">
+<!-- <div style="text-align: center;">
   <table style="margin: 0 auto; border-collapse: collapse; text-align: center;">
     <tr>
       <th><strong>API scope</strong></th>
@@ -25,15 +28,15 @@ The following `api_scopes` are currently supported:
     </tr>
     <tr>
       <td><a href="/resources/lens/api_endpoints_and_scopes/#meta-scope"><strong>meta</strong></a></td>
-      <td><strong>/v2/meta</strong></td>
+      <td>/v2/meta</td>
     </tr>
     <tr>
       <td><a href="/resources/lens/api_endpoints_and_scopes/#load"><strong>data</strong></a></td>
-      <td><strong>- /v2/load<br>- /v2/sql</strong></td>
+      <td>- /v2/load<br>- /v2/sql</td>
     </tr>
     <tr>
       <td><a href="/resources/lens/api_endpoints_and_scopes/#graphql"><strong>graphql</strong></a></td>
-      <td><strong>/v2/graphql</strong></td>
+      <td>/v2/graphql</td>
     </tr>
     <tr>
       <td><a href="/resources/lens/api_endpoints_and_scopes/#source"><strong>source</strong></a></td>
@@ -43,264 +46,276 @@ The following `api_scopes` are currently supported:
     </tr>
   </table>
   <figcaption style="margin-top: 10px;">List of API Scopes and their Endpoints</figcaption>
-</div>
+</div> -->
+
+You can explore lens using REST APIs using the following methods:
+
+1. [**Postman**](#using-postman): A API Testing tool for data application developers
+2. [**Curl**](#using-curl): A command-line tool for transferring data with URLs, useful for automated scripts.
+3. [**Python**](#using-python): Use Python's `requests` library for more complex interactions with the API.
 
 
-## Prerequisites
+## Authentication and Authorization
 
-### **Authentication**
+To securely interact with the Lens GraphQL API, you must authenticate your requests using a **DataOS API key** and ensure proper user group configurations. This section explains how to generate an API key and configure user groups for accessing the API.
 
-Lens uses API tokens to authorize requests and also for passing additional security context.
+### **Generating a DataOS API Key**
 
-The API Token is passed via the Authorization Header. The token itself is a `dataos-user-apikey`.
+To authenticate API requests, you need a DataOS API key. This key validates your identity and ensures only authorized users can access and query the data.
 
-**Ensure the following header is passed in Authorization when running the APIs-**
-    
-```bash
-Type: Bearer Token
-Token: ${Your DataOS API Key} #Use the API key of the env defined in docker-compose.yml
+**Steps to Generate an API Key:**
+
+1. Open your terminal and run the following command to create a new API key:
+    ```bash
+    dataos-ctl user apikey create
+    ```
+2. To view existing API keys, use:
+    ```bash
+    dataos-ctl user apikey get
+    ```
+3. Note down your API key and keep it secure. You will use this key to authenticate your API requests.
+
+API key tokens can also be fetched from the DataOS GUI, for more details refer to the [documentation here](/interfaces/#create-tokens).
+
+
+### **Configuring User Groups**
+
+To access and query data via the GraphQL endpoint, users must be part of a user group with the required permissions. The necessary permissions are defined using the `api_scopes` attribute within the user group configuration located in the Lens directory. To know more about user groups and data policy click [here](/resources/lens/working_with_user_groups_and_data_policies/)
+
+**Example User Group Configuration**
+
+The following YAML configuration demonstrates how to set up user groups with different levels of access:
+
+```yaml
+user_groups:
+  # User group with full access to GraphQL API and data querying capabilities
+  - name: engineer
+    description: Data Analyst
+    api_scopes:
+      - meta      # For accessing metadata
+      - graphql   # For accessing the GraphQL API
+      - data      # For querying the data
+    includes:
+      - users:id:exampleuser
+
+  # User group with access to GraphQL API but no data querying capabilities
+  - name: analyst
+    description: Data Engineer
+    api_scopes:
+      - meta
+      - graphql
+    includes:
+      - users:id:testuser
+
+  # User group without access to GraphQL API or data querying capabilities
+  - name: testuser
+    description: Data Engineer
+    api_scopes:
+      - meta
+    includes:
+      - users:id:testuser
 ```
-Replace the placeholder with the DataOS API Key.
 
-## meta scope
+**Explanation of the Configuration:**
 
-Provides access to metadata-related endpoints. This scope allows users to view metadata, which typically includes information about sources, authors, timezones, security context, user groups, etc.
+- **`engineer` Group:** This group can access the GraphQL API and query data because it includes both the `graphql` and `data` `api_scopes`. 
+- **`analyst` Group:** This group can access the GraphQL API but cannot query the data because the `data` scope is missing. 
+- **`testuser` Group:** This group cannot access the GraphQL API or query data because both the `graphql` and `data` scopes are missing. 
 
-<h3><strong><code>\v2\meta</code> endpoint</strong></h3>
+!!!note
+    The user groups configured above only manage access permissions at the consumption level within DataOS. However, source-level permissions defined by the source administrator (e.g., in Snowflake or BigQuery) remain applicable. For sources accessible through the DataOS Query Engine (Minerva/Themis), you can define source-level permissions using the [Bifrost](/interfaces/bifrost/) application in the DataOS GUI or using the [Policy](/resources/policy/) and [Grant](/resources/grant/) Resource using DataOS CLI.
 
-Get meta-information for lens and views defined in the data model. Information about lens and lens with "**public: false**" will not be returned.
+### **Using Postman**
 
-=== "Syntax"
+You can use [Postman](https://www.postman.com/) to interact with Lens via REST APIs. Start by importing the following Postman collection, 
+testing each endpoint.
+
+[Lens2-API](/resources/lens/lens_model_folder_setup/Lens2-APIs.postman_collection.json) 
+
+When working with a Postman collection to test APIs, you typically need to configure authorization, set request methods, and provide the request body. Below are the steps to get started:
+
+1. **Open Postman and import the Postman collection:**
+
+    - Open Postman and click on the Import button located at the top-left corner.
+    - Import the Postman Collection file you’ve been given. For example, if you import the Lens 2 API collection from the provided link, you will see a collection of API requests neatly organized into folders.
+
+        <div style="text-align: center;">
+        <img src="/resources/lens/exploring_deployed_lens_using_rest_apis/Untitled1.png" alt="psotman" style="max-width: 80%; height: auto; border: 1px solid #000;">
+        </div>
+        <figcaption><i><center>Postman</center></i></figcaption>
+
+2. **Set up Authorization (bearer token):**
+
+    - Once the collection is imported, click on the specific API request you want to test.
+    - Go to the Authorization tab.
+    - From the Type dropdown, select Bearer Token.
+    - In the Token field, paste your Bearer token, which you have received from your authentication process.
+    - This token grants you access to the meta and data scopes.
+
+3. **Set the Request type:**
+
+    - Select the API method you want to use (e.g., GET, POST) from the dropdown next to the API URL.
+
+4. **Prepare the URL and Query the API:**
+
+    - Testing all scopes and their endpoints by preparing the URL according to what data you want to fetch.
 
     ```bash
-    http://<host_name>:<port_name>/lens2/api/<data_model_name>/v2/meta
+    http://<URL>/lens2/api/<WORKSPACE_NAME>:<LENS_NAME>/v2/<ENDPOINT>
     ```
 
-=== "Example"
+     - **Replace `<URL>` with the appropriate endpoint based on your environment:**
+        - For local development, use:
+          ```plaintext
+          http://localhost:4000/lens2/api/<NAME_OF_LENS>/v2/meta
+          ```
+        - For a deployed Lens model, use:
+          ```plaintext
+          https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/meta
+          ```
 
-    ```bash
-    http://liberal_monkey.dataos.app/lens2/api/sales_analysis/v2/meta
-    ```
-  
-**Example response:**
+    - **Replace `<DATAOS_API_KEY>` with your actual DataOS API key.** Refer to the [Generating an API Key](#generating-an-api-key) section for more information on obtaining an API key.
 
-```json
-{{
-    "name": 
-    "description": [],
-    "authors": [],
-    "devMode": true,
-    "source": {
-        "type": "minerva",
-        }
-           },
-    "timeZones": [
-        "UTC"
-    ],
-    "tables": [
-        {
-            "name": "product_analysis",
-            "type": "view",
-            "title": "Product Analysis",
-           
-                    ]
-                }
-            
-```
+    - **Replace `<DATAOS_FQDN>` with the fully qualified domain name of your DataOS instance.** For example: `alpha-omega.dataos.app` or `happy-kangaroo.dataos.app`.
 
-<aside class="callout">
-💡 Providing access to the `<b>meta</b>` API scope grants a user access to the Model and Explore Tab of the Lens Studio Interface. But to fetch insights using the Explore interface, a user also requires the <b>`data`</b> API scope.
-</aside>
+    - **Replace `<WORKSPACE>` with the workspace name associated with your Lens model.** This is typically the name of the DataOS Workspace where the Lens is deployed. For example: `public`, `sandbox`, etc.
 
-## data scope
+    - **Replace `<NAME_OF_LENS>` with the name of your deployed Lens model.** This corresponds to the specific Lens model you want to query. For e.g. `sales360`.
 
-<h3><strong><code>/v2/load</code> endpoint</strong></h3>
+    - **Replace **`<ENDPOINT>`** with the specific endpoint you wish to access.** For e.g. `meta`, `load`, `graphql`.
 
-Executes queries to retrieve data based on the specified dimensions, measures, and filters. When you need to perform data analysis or retrieve specific data from the data model. 
+    - **Replace `<QUERY>` with the specific fields you want to query from schema.** Make sure to format the query string as valid JSON.
 
-Use `POST` request method along with `/load` endpoint to add or update the data.
+5. **Set the Request Body in Postman (for POST Methods):**
 
-You can use either of the following methods:
+    - If your request is a POST (e.g., for `graphql`, `load`, or `sql` endpoints), you will need to configure the Body tab in Postman according to the endpoints.
 
-- **URL**: Enter the URL of your RESTAPI endpoint. Sample URLs for localhost and DataOS environment are provided below:
+    === "For `graphql` endpoint"
 
-=== "Lens in Development environment"
+        <div style="text-align: center;">
+        <img src="/resources/lens/exploring_deployed_lens_using_rest_apis/graphql.png" alt="graphql" style="max-width: 80%; height: auto; border: 1px solid #000;">
+        </div>
+        <figcaption><i><center>Postman Request</center></i></figcaption>
 
-    For locally hosted Lens, the endpoint will be as follows:
-        
-    === "Syntax"
+        - In the `Body` tab, select `GraphQL` from the format options.
+        - Enter the GraphQL query in the provided field in the following format.
 
         ```graphql
-        https://localhost:4000/lens2/api/<name-of-lens>/v2/graphql
-        ```
-    
-    === "Example"
-
-        For instance, if the `<name-of-lens>` is `mylens` the URL will be as follows:
-        
-        ```graphql
-        https://localhost:4000/lens2/api/mylens/v2/graphql
-        ```
-      
-=== "Deployed Lens"
-
-    For Lens deployed on DataOS Environment, the endpoint will be as follows:
-
-    === "Syntax"
-        
-        ```graphql
-        https://<dataos-fqdn>/lens2/api/<workspace>:<name-of-lens>/v2/graphql
-        ```
-    
-    === "Example"
-
-        For example, if the `<dataos-fqdn>` is `alpha-omega.dataos.app`, `<workspace>` in which Lens is deployed is `sandbox`, and the `<name-of-lens>` is `mylens`, the URL will be following:
-        
-        ```graphql
-        https://alpha-omega.dataos.app/lens2/api/sandbox:mylens/v2/graphql
-        ```
-In the POST request body, include the query parameters in the JSON Query Format:
-
-```bash
-{
-    "query": {
-        "dimensions": ["customer.customer_id", "customer.annual_income"],
-        "measures": ["customer.total_customers", "customer.average_age"],
-        "limit": 50
-    }
-}
-```
-
-**Example response:**
-
-```bash
-{
-  "query": [
-    {
-      "name": "Customers",
-      "title": "Customers",
-      "meta": {
-          "someKey": "someValue",
-          "nested": {
-            "someKey": "someValue"
+        query LensQuery {
+          table(limit: 10, offset: 0) {
+            <TABLENAME> {
+              <DIMENSION>
+              <MEASURE_1>
+              <MEAUSRE_2>
+            }
           }
-      },
-      "connectedComponent": 1,
-      "measures": [
-        {
-          "name": "customers.count",
-          "title": "Customers Count",
-          "shortTitle": "Count",
-          "aliasName": "customers.count",
-          "type": "number",
-          "aggType": "count",
-          "drillMembers": ["customers.id", "customers.city", "customers.createdAt"]
         }
-      ],
-      "dimensions": [
+        ```
+
+        - Replace table name and choose requried dimensions and measures. 
+
+        - **For Example:** If you want to  compare the average price and average margin of two major categories: Apparel and Footwear. The  request body will be:
+
+            === "Query"
+
+                ```graphql
+                query LensQuery {
+                  table(limit: 10, offset: 0) {
+                    products {
+                      productcategory
+                      average_price
+                      average_margin
+                    }
+                  }
+                }
+                ```
+            === "Response"
+
+                ```
+                {
+                  "data": {
+                    "table": [
+                      {
+                        "products": {
+                          "productcategory": "Apparel",
+                          "average_price": 84.94859281437131,
+                          "average_margin": 50.872714570858385
+                        }
+                      },
+                      {
+                        "products": {
+                          "productcategory": "Footwear",
+                          "average_price": 83.98569138276541,
+                          "average_margin": 49.84462925851698
+                        }
+                      }
+                    ]
+                  }
+                }
+                ```
+
+    === "For `load` or `sql` endpoint"
+
+
+        <div style="text-align: center;">
+        <img src="/resources/lens/exploring_deployed_lens_using_rest_apis/json.png" alt="graphql" style="max-width: 80%; height: auto; border: 1px solid #000;">
+        </div>
+        <figcaption><i><center>Postman Request</center></i></figcaption>
+
+        - In the `Body` tab, select `raw`.
+        - From the dropdown next to  `raw`, select `JSON`.
+        - Enter the `JSON` query in the request body in the following format.
+
+
+        ```json
         {
-          "name": "customers.city",
-          "title": "Customers City",
-          "type": "string",
-          "aliasName": "customers.city",
-          "shortTitle": "City",
-          "suggestFilterValues": true
+            "query": {
+            "dimensions": [
+                "TABLE_NAME.DIMENSIONNAME"
+            ],
+            "measures": [
+                "TABLE_NAME.MEASURE_1",
+                "TABLE_NAME.MEASURE_2"
+            ]
+            }
         }
-      ],
-      "segments": []
-    }
-  ]
-}
-```
-
-<h3><strong><code>/v2/sql</code> endpoint</strong></h3>
-
-Alternatively, you can use `/sql` endpoint.
-
-```bash
-http://localhost:4000/lens2/api/sales_analysis/v2/sql
-```
-
-configure the body with the JSON Query Format similar to `/load`.
-
-## graphql
-
-Grants access to GraphQL endpoints. GraphQL is a query language for APIs that allows clients to request only the data they need. This scope enables users to perform GraphQL queries and mutations.
-
-## source scope
-
-Grants access to source-related endpoints. 
-
-<div style="display: flex; justify-content: center;">
-  <table style="border-collapse: collapse; text-align: center;">
-    <tr>
-      <th><strong>`Parameter`</strong></th>
-      <th><strong>Description</strong></th>
-      <th><strong>Action</strong></th>
-    </tr>
-    <tr>
-      <td><strong>`schemas`</strong></td>
-      <td>An array of schema names in the data source.</td>
-      <td><strong>GET</strong></td>
-    </tr>
-    <tr>
-      <td><strong>`tables`</strong></td>
-      <td>An array of schemas and table names in the data source.</td>
-      <td><strong>GET</strong></td>
-    </tr>
-    <tr>
-      <td><strong>`describe-table`</strong></td>
-      <td>Describes the given source table.</td>
-      <td><strong>GET</strong></td>
-    </tr>
-    <tr>
-      <td><strong>`load-source`</strong></td>
-      <td>Loads all datasets of the source.</td>
-      <td><strong>POST</strong></td>
-    </tr>
-
-  </table>
-</div>
-
-<h3><strong><code>/v2/default/schemas</code> endpoint</strong></h3>
+        ```
 
 
-This endpoint retrieves all the schemas available within the source depot. For example if source is icebase it will get the list of all the schemas present in icebase depot.
+        - Replace table name and choose requried dimensions and measures. 
 
-**Example Request**
+        - **For Example:** If you want to  compare the average price and average margin of two major categories: Apparel and Footwear. The  request body for load endpoint will be:
 
-```http
-GET http://localhost:4000/lens2/api/v2/default/schemas
-```
+            === "Query"
 
-**Example Response**
+                ```json
+                {
+                    "query": {
+                    "dimensions": [
+                        "products.productcategory"
+                    ],
+                    "measures": [
+                        "products.average_price",
+                        "products.average_margin"
+                    ]
+                    }
+                }
+                ```
 
-<h3><strong><code>/v2/default/schemas/&lt;collection_name&gt;/tables</code> endpoint</strong></h3>
+            === "Response"
+
+                ```json
+                {"query":{"dimensions":["products.productcategory"],"measures":["products.average_price","products.average_margin"],"limit":10000,"timezone":"UTC","filters":[],"timeDimensions":[],"segments":[],"meta":{"secured":{"segments":[],"dimensions":[]}},"rowLimit":10000},"data":[{"products.productcategory":"Apparel","products.average_price":84.94859281437131,"products.average_margin":50.872714570858385},{"products.productcategory":"Footwear","products.average_price":83.98569138276541,"products.average_margin":49.84462925851698}],"lastRefreshTime":"2024-09-26T06:44:34.180Z","refreshKeyValues":[[{"refresh_key":"14394441"}]],"usedPreAggregations":{},"transformedQuery":{"sortedDimensions":["products.productcategory"],"sortedTimeDimensions":[],"timeDimensions":[],"measures":["products.average_price","products.average_margin"],"leafMeasureAdditive":false,"leafMeasures":["products.average_price","products.average_margin"],"measureToLeafMeasures":{"products.average_price":[{"measure":"products.average_price","additive":false,"type":"avg"}],"products.average_margin":[{"measure":"products.average_margin","additive":false,"type":"number"}]},"hasNoTimeDimensionsWithoutGranularity":true,"allFiltersWithinSelectedDimensions":true,"isAdditive":false,"granularityHierarchies":{"year":["year","quarter","month","month","day","hour","minute","second"],"quarter":["quarter","month","day","hour","minute","second"],"month":["month","day","hour","minute","second"],"week":["week","day","hour","minute","second"],"day":["day","hour","minute","second"],"hour":["hour","minute","second"],"minute":["minute","second"],"second":["second"]},"hasMultipliedMeasures":false,"hasCumulativeMeasures":false,"windowGranularity":null,"filterDimensionsSingleValueEqual":{},"ownedDimensions":["products.productcategory"],"ownedTimeDimensionsWithRollupGranularity":[],"ownedTimeDimensionsAsIs":[],"allBackAliasMembers":{},"hasPostAggregate":false},"annotation":{"measures":{"products.average_price":{"title":"Products Average Price","shortTitle":"Average Price","description":"Average price of the products","type":"number","drillMembers":[],"drillMembersGrouped":{"measures":[],"dimensions":[]}},"products.average_margin":{"title":"Products Average Margin","shortTitle":"Average Margin","description":"Average profit margin per product","type":"number","drillMembers":[],"drillMembersGrouped":{"measures":[],"dimensions":[]}}},"dimensions":{"products.productcategory":{"title":"Products Productcategory","shortTitle":"Productcategory","description":"Category to which the product belongs.","type":"string","meta":{"__secured":false,"secured":false}}},"segments":{},"timeDimensions":{}},"dataSource":"default","dbType":"trino","extDbType":"cubestore","external":false,"slowQuery":false,"total":null,"requestId":"1b38b4b6-9cab-4c45-8759-dbfc34759ff3-span-1"}
+                ```
+
+                - You can prettify this JSON Structure.
+
+6. **Click Send**
+
+    - Once the body is set up for the specific endpoint, click **Send** to execute the request.
 
 
-This endpoint fetches all tables within a specified schema (collection).
-
-**Example Requests**
-
-**Example Response**
- 
-<h3><strong><code>/v2/default/schemas/&lt;collection_name&gt;/tables/&lt;table_name&gt;</code> endpoint</strong></h3>
-
-This endpoint retrieves detailed information about a specific table within a schema.
-
-**Example Requests**
-
-```http
-GET http://localhost:4000/lens2/api/v2/default/schemas/sales360/tables/customers
-```
-
-**Example Response**
-
-<h3><strong><code>/v2/default/load-source?responseType=default</code> endpoint</strong></h3>
-
-This endpoint is used to load data from a specified source into Lens 2.0. The responseType parameter defines the type of response expected. In this case, it’s set to default.
-
-## Possible Responses
+#### **Possible Responses for Postman**
 
 **Continue wait**
 
@@ -312,7 +327,7 @@ Possible reasons of **Continue wait**:
     
 - There are many queries requested and Lens backend queues them to save database from overloading.
 
-### **Error Handling**
+#### **Error Response for Postman**
 
 Lens REST API has basic errors and HTTP Error codes for all requests.
 
@@ -345,5 +360,191 @@ Lens REST API has basic errors and HTTP Error codes for all requests.
     </tr>
   </table>
 </div>
+
+
+
+
+### **Using Curl**
+
+Curl is a command-line tool used for transferring data with URLs, making it a convenient choice for interacting with APIs directly from the terminal. Ensure that `curl` is installed on your system before proceeding.
+
+
+1. **Prepare the Request:** To send a GraphQL query using Curl, construct your request with the following template:
+
+    ```shell
+    curl -X POST <URL> \
+    -H "Content-Type: application/json" \
+    -H "apikey: <DATAOS_API_KEY>" \
+    -d '{"query": "<QUERY>"}'
+    ```
+
+    - **Replace `<URL>` with the appropriate endpoint based on your environment:**
+        - For local development, use:
+            ```html
+            http://localhost:4000/lens2/api/<NAME_OF_LENS>/v2/load
+            ```
+        - For a deployed Lens model, use:
+            ```html
+            https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/load
+            ```
+
+    - **Replace `<DATAOS_API_KEY>` with your actual DataOS API key.** Refer to the [Generating an API Key](#generating-an-api-key) section for more information on obtaining an API key.
+
+    - **Replace `<DATAOS_FQDN>` with the fully qualified domain name of your DataOS instance.** For example: `alpha-omega.dataos.app` or `happy-kangaroo.dataos.app`.
+
+    - **Replace `<WORKSPACE>` with the DataOS Workspace name** where the Lens is deployed.
+
+    - **Replace `<NAME_OF_LENS>` with the name of your deployed Lens model.** This corresponds to the specific Lens model you want to query.
+
+    - **Replace `<QUERY>` with your query.** Make sure to format the query as a valid JSON string. Make sure you paste the query body as per the endpoint.
+
+    **Sample Request:**
+
+    === "Graphql"
+
+        ```shell
+        curl -X POST https://alpha-omega.dataos.app/lens2/api/public:sales-analysis/v2/graphql \
+        -H "Content-Type: application/json" \
+        -H "apikey: abcdefghijklmnopqrstuvwxyz" \
+        -d '{"query": "query LensQuery { table { product { category avg_margin } } }"}'
+        ```
+    === "Load and SQL"
+
+        ```shell
+        curl -X POST 'http://liberal-donkey.dataos.app/lens2/api/public:sales-analysis/v2/load' \
+        --header 'Content-Type: application/json' \
+        --header 'Authorization: Bearer dG9rZW5fc3RlYWRpbHlfbWVyZWx5X2Z1bl9veXN0ZXIuMjNjYTdkYzktOGU2Zi00MmIzLTgxMjktM2MxNDY5MTNlYzdl' \
+        --data '{
+            "query": {
+                "dimensions": [
+                    "products.productcategory"
+                ],
+                "measures": [
+                    "products.average_price",
+                    "products.average_margin"
+                ]
+            }
+        }'
+        ```
+
+2. **Execute the Command:** Run the command in your terminal to execute the query and view the response.
+
+> Ensure you replace the placeholders with the actual values specific to your environment. Properly formatted queries and valid API keys are essential for successful API interactions.
+
+
+
+
+### **Using Python**
+
+Python provides a flexible and powerful way to interact with the Lens GraphQL API. It is especially useful for building automation scripts or for use in data analysis workflows. Ensure that Python and the `requests` library are installed on your system before proceeding.
+
+1. **Install the `requests` Library:**
+
+    If you haven’t already installed the `requests` library, you can do so by running the following command:
+
+    ```shell
+    pip install requests
+    ```
+
+2. **Prepare the Python Script:**
+
+    Use the following template to create a Python script for querying the Lens GraphQL API:
+
+    ```python
+    import requests
+
+    # Define the URL of the Lens GraphQL endpoint
+    url = "<URL>"
+
+    # Define the headers including the API key
+    headers = {
+        "Content-Type": "application/json",
+        "apikey": "<DATAOS_API_KEY>"
+    }
+
+    # Define your GraphQL query
+    query = """
+    <QUERY>
+    """
+
+    # Send the POST request
+    response = requests.post(url, headers=headers, json={'query': query})
+
+    # Print the response
+    print(response.json())
+    ```
+
+    - **Replace `<URL>` with the appropriate endpoint based on your environment:**
+      - For local development, use:
+        ```plaintext
+        http://localhost:4000/lens2/api/<NAME_OF_LENS>/v2/load
+        ```
+      - For a deployed Lens model, use:
+        ```plaintext
+        https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/load
+        ```
+
+    - **Replace `<DATAOS_API_KEY>` with your actual DataOS API key.** Refer to the [Generating an API Key](#generating-an-api-key) section for more information on obtaining an API key.
+
+    - **Replace `<DATAOS_FQDN>` with the fully qualified domain name of your DataOS instance.** For example: `alpha-omega.dataos.app` or `happy-kangaroo.dataos.app`.
+
+    - **Replace `<WORKSPACE>` with the workspace name associated with your Lens model.** This is typically the name of the DataOS Workspace where the Lens is deployed. For example: `public`, `sandbox`, etc.
+
+    - **Replace `<NAME_OF_LENS>` with the name of your deployed Lens model.** This corresponds to the specific Lens model you want to query.
+
+    - **Replace `<GRAPHQL_QUERY>` with the specific fields you want to query from your GraphQL schema.** Make sure to format the query string as valid JSON.
+
+    **Sample Script:**
+
+    ```python
+    import requests
+
+    # Define the URL of the Lens GraphQL endpoint
+    url = "https://alpha-omega.dataos.app/lens2/api/public:sales-analysis/v2/load"
+
+    # Define the headers including the API key
+    headers = {
+        "Content-Type": "application/json",
+        "apikey": "abcdefghijklmnopqrstuvwxyz"
+    }
+
+    # Define your GraphQL query
+    query = """
+      query LensQuery {
+        table {
+          products {
+            categories
+            avg_margin
+          }
+        }
+      }
+    """
+
+    # Send the POST request
+    response = requests.post(url, headers=headers, json={'query': query})
+
+    # Print the response
+    print(response.json())
+    ```
+
+    In the above sample:
+    - `<URL>` is `https://alpha-omega.dataos.app/lens2/api/public:sales-analysis/v2/graphql`
+    - `<DATAOS_API_KEY>` is `abcdefghijklmnopqrstuvwxyz` (replace with your actual API key)
+    - `<WORKSPACE>` is `public`
+    - `<NAME_OF_LENS>` is `sales-analysis`
+    - The query fetches `category` and `avg_price` fields from the `products` table.
+
+3. **Run the Script:**
+
+    Save the script as a `.py` file and execute it using the following command in your terminal:
+
+    ```shell
+    python <your_script_name>.py
+    ```
+
+    This will send the query to the Lens API and print the response to your terminal.
+
+> **Note:** Ensure you replace the placeholders with the actual values specific to your environment. Properly formatted queries and valid API keys are essential for successful API interactions.
+
 
 
