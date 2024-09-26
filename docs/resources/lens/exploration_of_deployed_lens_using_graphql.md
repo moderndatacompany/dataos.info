@@ -5,6 +5,7 @@ This guide provides comprehensive instructions for accessing and interacting wit
 1. [**Lens Studio**](#using-lens-studio): An interactive in-browser tool for writing and executing GraphQL queries.
 2. [**Curl**](#using-curl): A command-line tool for transferring data with URLs, useful for automated scripts.
 3. [**Python**](#using-python): Use Python's `requests` library for more complex interactions with the API.
+4. [**Postman**](#using-postman): Use Postman API platform to start using and testing REST APIs.
 
 ## Authentication and Authorization
 
@@ -287,6 +288,126 @@ Python provides a flexible and powerful way to interact with the Lens GraphQL AP
     This will send the GraphQL query to the Lens API and print the response to your terminal.
 
 > **Note:** Ensure you replace the placeholders with the actual values specific to your environment. Properly formatted queries and valid API keys are essential for successful API interactions.
+
+### **Using Postman**
+
+When working with a Postman collection to test APIs, you typically need to configure authorization, set request methods, and provide the request body. Below are the steps to get started:
+
+1. **Open Postman and import the Postman collection:**
+
+    - Open Postman and click on the **Import** button located at the top-left corner.
+    - Import the Postman Collection file you’ve been given. For example, if you import the Lens API collection from the provided link, you will see a collection of API requests neatly organized into folders. Refer to the below image for subsequent steps.
+
+        <div style="text-align: center;">
+        <img src="/resources/lens/exploring_deployed_lens_using_rest_apis/Untitled1.png" alt="postman" style="max-width: 80%; height: auto; border: 1px solid #000;">
+        </div>
+        <figcaption><i><center>Postman</center></i></figcaption>
+
+2. **Set up Authorization (bearer token):**
+
+    - Once the collection is imported, click on the specific API request you want to test.
+    - Go to the **Authorization** tab.
+    - From the **Auth Type** dropdown, select **Bearer Token**.
+    - In the Token field, paste your Bearer token, which you have received from your authentication process.
+    - This token grants you access to the meta and data scopes.
+
+3. **Set the Request type:**
+
+    - Select the API request type as `POST` from the dropdown next to the API URL.
+
+4. **Prepare the URL and Query the API:**
+
+    - Prepare the URL according to what data you want to fetch.
+
+    ```bash
+    http://<URL>/lens2/api/<WORKSPACE_NAME>:<LENS_NAME>/v2/<ENDPOINT>
+    ```
+
+     - **Replace `<URL>` with the appropriate endpoint based on your environment:**
+        - For local development, use:
+          ```plaintext
+          http://localhost:4000/lens2/api/<NAME_OF_LENS>/v2/graphl
+          ```
+        - For a deployed Lens model, use:
+          ```plaintext
+          https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/graphql
+          ```
+
+    - **Replace `<DATAOS_API_KEY>` with your actual DataOS API key.** Refer to the [Generating an API Key](#generating-an-api-key) section for more information on obtaining an API key.
+
+    - **Replace `<DATAOS_FQDN>` with the fully qualified domain name of your DataOS instance.** For example: `alpha-omega.dataos.app` or `happy-kangaroo.dataos.app`.
+
+    - **Replace `<WORKSPACE>` with the workspace name associated with your Lens model.** This is typically the name of the DataOS Workspace where the Lens is deployed. For example: `public`, `sandbox`, etc.
+
+    - **Replace `<NAME_OF_LENS>` with the name of your deployed Lens model.** This corresponds to the specific Lens model you want to query. For e.g. `sales360`.
+
+    - **Replace `<QUERY>` with the specific fields you want to query from schema.** Make sure to format the query string as valid JSON.
+
+5. **Set the Request Body in Postman (for POST Methods):**
+
+    - for `POST` requests, you will need to configure the Body tab for graphql. Refer to the below image for subsequent steps.
+
+        <div style="text-align: center;">
+        <img src="/resources/lens/exploring_deployed_lens_using_rest_apis/graphql.png" alt="graphql" style="max-width: 80%; height: auto; border: 1px solid #000;">
+        </div>
+        <figcaption><i><center>Postman GraphQL request body tab</center></i></figcaption>
+
+        - In the `Body` tab, select `GraphQL` from the format options.
+        - Enter the GraphQL query in the provided field in the following format.
+
+        ```graphql
+        query LensQuery {
+          table(limit: 10, offset: 0) {
+            <TABLENAME> {
+              <DIMENSION>
+              <MEASURE_1>
+              <MEAUSRE_2>
+            }
+          }
+        }
+        ```
+
+        - Replace table name and choose requried dimensions and measures. 
+
+        - **For Example:** If you want to  compare the average price and average margin of two major categories: Apparel and Footwear for the `products` table. The  request body will be:
+
+            === "Query"
+
+                ```graphql
+                query LensQuery {
+                  table(limit: 10, offset: 0) {
+                    products {
+                      productcategory
+                      average_price
+                      average_margin
+                    }
+                  }
+                }
+                ```
+            === "Response"
+
+                ```
+                {
+                  "data": {
+                    "table": [
+                      {
+                        "products": {
+                          "productcategory": "Apparel",
+                          "average_price": 84.94859281437131,
+                          "average_margin": 50.872714570858385
+                        }
+                      },
+                      {
+                        "products": {
+                          "productcategory": "Footwear",
+                          "average_price": 83.98569138276541,
+                          "average_margin": 49.84462925851698
+                        }
+                      }
+                    ]
+                  }
+                }
+                ```
 
 ## GraphQL Query Examples
 
