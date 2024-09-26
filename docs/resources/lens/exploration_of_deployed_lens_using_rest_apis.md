@@ -1,6 +1,6 @@
 # Exploration of Lens using REST APIs
 
-REST API enables Lens to deliver data over the HTTP protocol. It is is enabled by default and secured using [API scopes](/resources/lens/#api-endpoints-and-scopes). It consists of a base path and API scopes:
+REST API enables Lens to deliver data over the HTTP protocol. It is is enabled by default and secured using [API scopes](/resources/lens/api_endpoints_and_scopes/). It consists of a base path and API scopes:
 
 - **Base Path:** All REST API endpoints are prefixed with `/lens2/api`. For example, `/v2/meta` is available at `/lens2/api/<lens_name>/v2/meta`
 .
