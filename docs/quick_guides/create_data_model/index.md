@@ -23,7 +23,7 @@ Follow the below steps to create a data model (Lens).
 
 **Download the Lens Project Template** which includes the necessary folder hierarchy. Rename it as needed.
 
-**Download:** [lens-project-template.zip](/resources/lens/lens_setup/lens-project-template.zip)
+**Download:** [lens-project-template.zip](/resources/lens/lens_model_folder_setup/lens-project-template.zip)
 
 <aside class="callout">
 🗣 When you download the template, you'll find a `docker-compose.yml` file included. This file is only needed if you plan to test your Lens model locally before deploying it to production.

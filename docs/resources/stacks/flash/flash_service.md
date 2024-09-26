@@ -121,35 +121,69 @@ Once you have the Flash Stack, follow the below steps to create the Flash Servic
 2. Create a Flash Service manifest file specifying the datasets to be cached, the schedule, and initialization. A sample is provided below:
     
     ```yaml
-    name: flash-service
+    name: ${{flash-test}}
     version: v1
     type: service
     tags:
-      - service
-    description: Flash service
-    workspace: public
+      - ${{service}}
+    description: ${{flash service}}
+    workspace: ${{public}}
     service:
-      servicePort: 5433
-      replicas: 1
-      logLevel: info
-      compute: runnable-default
+      servicePort: ${{8080}}
+      servicePorts:
+      - name: ${{backup}}
+        servicePort: ${{5433}}
+      ingress:
+        enabled: ${{true}}
+        stripPath: ${{false}}
+        path: ${{/flash/public:flash-test-6}}
+        noAuthentication: ${{true}}
+      replicas: ${{1}}
+      logLevel: ${{info}}
+      compute: ${{runnable-default}}
+      envs:
+        APP_BASE_PATH: ${{'dataos-basepath'}}
+        FLASH_BASE_PATH: ${{/flash/public:flash-test-6}}
       resources:
         requests:
-          cpu: 1000m
-          memory: 1024Mi
-      stack: flash+python:1.0
+          cpu: ${{500m}}
+          memory: ${{512Mi}}
+        limits:
+          cpu: ${{1000m}}
+          memory: ${{1024Mi}}
+      stack: flash+python:2.0
       stackSpec:
-    	 # Datasets
         datasets:
-          - address: dataos://icebase:retail/customer
-            name: customer
-    	 # Init
-        init:
-          - create table mycustomer as (select * from customer)
+          - name: ${{records}}
+            address: ${dataos://icebase:flash/records}}
+
+          - name: ${{f_sales}}
+            depot: ${{dataos://bigquery}}
+            sql: ${{SELECT * FROM sales_360.f_sales}}
+            meta:
+              bucket: ${{tmdcdemogcs}}
+            refresh:
+              expression: ${{"*/2 * * * *"}}
+              sql: ${{SELECT MAX(invoice_dt_sk) FROM sales_360.f_sales}}
+              where: ${{invoice_dt_sk > PREVIOUS_SQL_RUN_VALUE}}
     
+          - name: ${{duplicate_sales}}
+            depot: ${{dataos://bigquery}}
+           sql: ${{SELECT * FROM sales_360.f_sales}}
+            meta:
+              bucket: ${{tmdcdemogcs}}
+            refresh:
+              expression: ${{"*/4 * * * *"}}
+              sql: ${{SELECT MAX(invoice_dt_sk) FROM sales_360.f_sales}}
+              where: ${{invoice_dt_sk > CURRENT_SQL_RUN_VALUE}}
+
+
+        init:
+          - ${{create table f_sales as (select * from records)}}
+
         schedule:
-          - expression: "*/2 * * * *"
-            sql: INSERT INTO mycustomer BY NAME (select * from customer);
+          - expression: ${{"*/2 * * * *"}}
+            sql: ${{INSERT INTO f_sales BY NAME (select * from records);}}
     ```
     
     The following table provides the details of attributes to be declared in the Flash Stack-specific section:

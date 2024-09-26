@@ -26,32 +26,30 @@ Developers today must undertake a more manual and more complex process to stream
 
 ### **Conventional Methods and Challenges**
 
+Here are some common challenges encountered when developing APIs using conventional methods.
+
+
 **Custom API development**
 
-- **Time-consuming:** Developing APIs requires extensive manual coding, which can be particularly labor-intensive for complex systems or when integrating various data sources.
-- **Error-Prone:** Manual coding introduces a higher likelihood of bugs and errors, potentially impacting the API’s reliability and efficiency.
+Developing APIs requires extensive manual coding, which can be particularly labor-intensive for complex systems or when integrating various data sources. Manual coding introduces a higher likelihood of bugs and errors, potentially impacting the API’s reliability and efficiency.
 
 **Integration Complexity**
 
-- **Diverse Data Sources:** Combining data from various sources with different formats and protocols demands significant expertise and effort.
-- **Lack of Standardization:** The absence of a unified approach means that APIs might use different conventions, complicating consistent interaction for AI systems.
+Combining data from various sources with different formats and protocols demands significant expertise and effort. The absence of a unified approach means that APIs might use different conventions, complicating consistent interaction for AI systems.
 
 **Security and Compliance**
 
-- **Security Risks:** Protecting APIs from security threats and ensuring compliance with regulations such as GDPR or HIPAA involves additional measures, including robust authentication, authorization, and encryption.
-- **Maintenance Overhead:** Security and compliance standards can change, requiring ongoing updates and maintenance of APIs to stay compliant.
+Protecting APIs from security threats and ensuring compliance with regulations such as GDPR or HIPAA involves additional measures, including robust authentication, authorization, and encryption. Security and compliance standards can change, requiring ongoing updates and maintenance of APIs to stay compliant.
 
 **Scalability and Performance**
 
-- **Scalability Concerns:** Custom APIs may not always be designed with scalability in mind, which can lead to performance issues as demand or data volume increases.
-- **Resource Intensive:** Achieving optimal performance and scalability often demands substantial development resources and infrastructure.
+Custom APIs may not always be designed with scalability in mind, which can lead to performance issues as demand or data volume increases. Achieving optimal performance and scalability often demands substantial development resources and infrastructure.
 
 **Documentation and Usability**
 
-- **Lack of Documentation:** Effective documentation is crucial for making APIs understandable and usable by other developers or AI systems, but it can sometimes be inadequately addressed.
-- **Usability Issues:** Without thorough and clear documentation, integrating and using APIs becomes more challenging for others.
+Effective documentation is crucial for making APIs understandable and usable by other developers or AI systems, but it can sometimes be inadequately addressed. Without thorough and clear documentation, integrating and using APIs becomes more challenging for others.
 
-### **Discover what Talos can do for you**
+### **Features of Talos**
 
 By leveraging Heimdall for authentication and [SQL templates](/resources/stacks/talos/set_up/#writing-sql-templates) for simple query execution, Talos ensures secure, efficient, and reliable API services. Its RESTful architecture, automated documentation generation, and observability features simplify development and integration.
 
@@ -140,7 +138,7 @@ This section provides step-by-step guides to assist you in effectively configuri
 
 ## **APIs in action: Exploring Talos use cases**
 
-This section involves the practical, real-world scenarios demonstrating how to consume the data with Talos effectively. Below are some examples to help you to understand Talos effectively:
+This section involves the practical, real-world scenarios demonstrating how to consume the data with Talos effectively.
 
 - [Covid-19](/resources/stacks/talos/example/)
 
