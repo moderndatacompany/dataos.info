@@ -71,14 +71,14 @@ volumes:
 
 Configure the `docker-compose.yml` manifest file to tailor it to include environment-URL, lens meta info, and, source details as per requirement: 
 
-1. **Adjust the environment URL according to preferences.**
+-  **Adjust the environment URL according to preferences.**
     
     ```yaml
     # edit this section in your docker-compose.yml file
     # DataOS
       DATAOS_FQDN: emerging-hawk.dataos.app #add the URL for the environment you prefer to use. 
     ```   
-2. **Update Lens meta info, including name, description, tags, and author details.**
+- **Update Lens meta info, including name, description, tags, and author details.**
       
     ```yaml
     # Overview
@@ -88,37 +88,38 @@ Configure the `docker-compose.yml` manifest file to tailor it to include environ
     LENS2_AUTHORS: "author_name" #add the owner name here
     LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
     ```
-3. **Customize the source details:**
+- **Customize the source details:**
 
-    - If connecting via the depot, refer to the provided environmental   variables in the syntax below. Currently, supported depot types include JDBC, PostgreSQL, MySQL, MS SQL, Snowflake, Bigquery, and Redshift.
-            
-        >Ensure access to the compute of the source. This needs to be verified at source end.
+    - If connecting via the depot, refer to the provided environmental variables in the syntax below. Currently, supported depot types include JDBC, PostgreSQL, MySQL, MS SQL, Snowflake, Bigquery, and Redshift.
+     
+     > Ensure access to the compute of the source. This needs to be verified at source end.
 
-        **Data Source attributes for connecting via depot**
+     **Data Source attributes for connecting via depot:**
 
-        ```yaml
-        # Data Source
-        # This defines env variables for connecting to the source via the depot
-        LENS2_SOURCE_TYPE: depot
-        LENS2_SOURCE_NAME: depot_name #add the name of the depot 
-        DATAOS_RUN_AS_APIKEY: ****** # Add the user API Key for the env
-        ```
+     ```yaml
+     # Data Source
+     # This defines env variables for connecting to the source via the depot
+     LENS2_SOURCE_TYPE: depot
+     LENS2_SOURCE_NAME: depot_name #add the name of the depot 
+     DATAOS_RUN_AS_APIKEY: ****** # Add the user API Key for the env
+     ```
 
-        **Data Source attributes to connect via Minerva or Themis Cluster**
+     **Data Source attributes to connect via Minerva or Themis Cluster:**
 
-        ```yaml
-        # Data Source
-        # This defines env variables for connecting to the source via the cluster
-        LENS2_SOURCE_TYPE: minerva #If you want to connect via Themis, change the source type to Themis 
-        LENS2_SOURCE_NAME: cluster_name #add the cluster name
-        LENS2_SOURCE_CATALOG_NAME: catalog_name #add the catalog name
-        DATAOS_RUN_AS_APIKEY: ******
-        ```         
+     ```yaml
+     # Data Source
+     # This defines env variables for connecting to the source via the cluster
+     LENS2_SOURCE_TYPE: minerva #If you want to connect via Themis, change the source type to Themis 
+     LENS2_SOURCE_NAME: cluster_name #add the cluster name
+     LENS2_SOURCE_CATALOG_NAME: catalog_name #add the catalog name
+     DATAOS_RUN_AS_APIKEY: ******
+     ```
     - When connecting with different sources, refer to the [data source guide](/resources/lens/data_sources/) for various sources, as each may need its own specific settings.
 
-4. **Verify Service Configuration:**
+- **Verify Service Configuration:**
 
     - In the service configuration, the image attribute specifies the container image to be used. Ensure that the image tag is up to date or matches the version pulled during the prerequisite setup.
+
 
 ## Testing Lens in development environment
 
@@ -134,7 +135,7 @@ Lens can be tested in the development environment by running:
 
 === "Output"
 
-   The following output indicates that the Lens server has successfully started locally.
+    The following output indicates that the Lens server has successfully started locally.
   
     ```bash
     lens2-api-1  | Loaded  /app/scripts/config.js
