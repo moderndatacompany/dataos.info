@@ -1,7 +1,7 @@
 # Lens model folder setup
 
 !!! abstract "Quick Guide"
-    To quickly get started with creating a Lens model in DataOS, follow the [quick guide on creating a Lens model](/resources/lens/installing_prerequisites/). This guide provides step-by-step instructions to help you transform your conceptual design into a functional data model, ensuring effective data structuring and organization to meet your analytical and business needs.
+    To quickly get started with creating a Lens model in DataOS, follow the [quick guide on creating a Lens model](/quick_guides/create_data_model/). This guide provides step-by-step instructions to help you transform your conceptual design into a functional data model, ensuring effective data structuring and organization to meet your analytical and business needs.
 
 ### **Prerequisites**
 
