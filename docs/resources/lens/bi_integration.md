@@ -35,7 +35,7 @@ The following `curl` command is used to synchronize data from Lens to a Superset
 
     ```bash
     curl --location --request POST 'https://liberal-donkey.dataos.app/lens2/sync/api/v1/superset/public:company-intelligence' \
-    --header 'apikey: aueniekQa==' \
+    --header 'apikey: abcdefghijkQq=' \
     --header 'Content-Type: application/json' \
     --data-raw '
     {
@@ -208,14 +208,15 @@ As you click on 'Connect', it’ll ask you for username and password. Enter the 
 
     - Use time or date fields in Tableau only for **dimension-based** filtering or grouping.
     - For time-based calculations, limit aggregations to **MIN()** or **MAX()** functions.
-    <aside class="callout">
-    📌 This limitation is specific to Tableau's handling of time data types as measures and does not affect other aspects of the Lens semantic layer's functionality.
-
-    </aside>
 
 2. **String Data Type to Geographical**
 
 When connecting a dataset to Tableau, it automatically detects fields such as **City** and **Country** and converts them from string data types to **Geography** types. This enables Tableau to treat these fields as geographical locations, allowing features like map visualizations and geospatial analysis without the need for manual adjustments.
+
+<aside class="callout">
+📌 All limitations are specific to Tableau's handling of time data types as measures and does not affect other aspects of the Lens semantic layer's functionality.
+
+</aside>
 
 ## Power BI
 
