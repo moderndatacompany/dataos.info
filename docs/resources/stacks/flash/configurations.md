@@ -1,35 +1,69 @@
 This section involves details of each attribute to help you better understand the Flash Service configurations.
 
 ```yaml
-# resource meta section
-name: ${{flash-service}} # mandatory
-version: v1 # mandatory
-type: service # mandatory
-tags: # optional
-  - service
-description: Flash service # optional
-workspace: public # optional
-# resource specific section
-service: # mandatory
-  servicePort: 5433
-  replicas: 1
-  logLevel: info
-  compute: runnable-default
+name: ${{flash-test}}
+version: v1
+type: service
+tags:
+  - ${{service}}
+description: ${{flash service}}
+workspace: ${{public}}
+service:
+  servicePort: ${{8080}}
+  servicePorts:
+  - name: ${{backup}}
+    servicePort: ${{5433}}
+  ingress:
+    enabled: ${{true}}
+    stripPath: ${{false}}
+    path: ${{/flash/public:flash-test-6}}
+    noAuthentication: ${{true}}
+  replicas: ${{1}}
+  logLevel: ${{info}}
+  compute: ${{runnable-default}}
+  envs:
+    APP_BASE_PATH: ${{'dataos-basepath'}}
+    FLASH_BASE_PATH: ${{/flash/public:flash-test-6}}
   resources:
     requests:
-      cpu: 1000m
-      memory: 1024Mi
-  stack: flash+python:1.0
-  stackSpec: # mandatory
-    summarise: true
-    datasets: # mandatory
-      - address: dataos://icebase:retail/customer # mandatory
-        name: customer # mandatory
+      cpu: ${{500m}}
+      memory: ${{512Mi}}
+    limits:
+      cpu: ${{1000m}}
+      memory: ${{1024Mi}}
+  stack: flash+python:2.0
+  stackSpec:
+    datasets:
+      - name: ${{records}}
+        address: ${dataos://icebase:flash/records}}
+
+      - name: ${{f_sales}}
+        depot: ${{dataos://bigquery}}
+        sql: ${{SELECT * FROM sales_360.f_sales}}
+        meta:
+          bucket: ${{tmdcdemogcs}}
+        refresh:
+          expression: ${{"*/2 * * * *"}}
+          sql: ${{SELECT MAX(invoice_dt_sk) FROM sales_360.f_sales}}
+          where: ${{invoice_dt_sk > PREVIOUS_SQL_RUN_VALUE}}
+
+      - name: ${{duplicate_sales}}
+        depot: ${{dataos://bigquery}}
+        sql: ${{SELECT * FROM sales_360.f_sales}}
+        meta:
+          bucket: ${{tmdcdemogcs}}
+        refresh:
+          expression: ${{"*/4 * * * *"}}
+          sql: ${{SELECT MAX(invoice_dt_sk) FROM sales_360.f_sales}}
+          where: ${{invoice_dt_sk > CURRENT_SQL_RUN_VALUE}}
+
+
     init:
-      - create table mycustomer as (select * from customer)
+      - ${{create table f_sales as (select * from records)}}
+
     schedule:
-      - expression: "*/2 * * * *"
-        sql: INSERT INTO mycustomer BY NAME (select * from customer);
+      - expression: ${{"*/2 * * * *"}}
+        sql: ${{INSERT INTO f_sales BY NAME (select * from records);}}
 ```
 
 To know more about the Resource meta section, please [refer to this](https://dataos.info/resources/manifest_attributes/).
@@ -55,8 +89,111 @@ To know more about the Resource meta section, please [refer to this](https://dat
 **Example Usage:**
 
 ```yaml
-servicePort: 5433
+servicePort: 8080
 ```
+
+### **`servicePorts`**
+
+**Description:** A backup Service port. 
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
+| --- | --- | --- | --- |
+| integer | optional | none | Any valid port number |
+
+**Example Usage:**
+
+```yaml
+servicePorts:
+  - name: backup
+    servicePort: 5433
+```
+
+### **`ingress`**
+
+**Description:** configuration for the service's ingress. Ingress exposes HTTP and HTTPS routes from outside DataOS to services within DataOS. Configure the incoming port for the service to allow access to DataOS resources from external links.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| --- | --- | --- | --- |
+| mapping | optional | none | none |
+
+**Example Usage:**
+
+``` yaml
+service:
+  ingress: 
+      enabled: true
+      noAuthentication: true
+      path: /flash/public:flash-test 
+      stripPath: true
+```
+
+You can access the ingress path on [Metis](/interfaces/metis/), as shown below.
+
+<center>
+  <img src="/resources/stacks/flash/annotely_image%20(30).png" alt="Metis" style="width:40rem; border: 1px solid black; padding: 5px;" />
+  <figcaption><i>Metis Interface</i></figcaption>
+</center>
+
+
+
+### **`enabled`**
+**Description:** indicates whether ingress is enabled for the service.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| --- | --- | --- | --- |
+| boolean | optional | false | true/false |
+
+**Example Usage:**
+
+``` yaml
+service:
+  ingress:
+    enabled: true
+```
+
+
+### **`path`**
+**Description:** the path for the Service's ingress configuration. If a Service by the same path already exists, it would get replaced.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| --- | --- | --- | --- |
+| string | optional | none | any valid path |
+
+**Example Usage:**
+
+``` yaml
+service:
+  ingress:
+    path: /flash/public:flash-test 
+```
+
+### **`stripPath`**
+
+**Description:** indicates whether to strip the path from incoming requests in the ingress configuration.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| --- | --- | --- | --- |
+| boolean | optional | false | true/false |
+
+**Example Usage:**
+
+``` yaml
+service:
+  ingress:
+    stripPath: true
+```
+
+
+### **`noAuthentication`**
+
+**Description:** indicates whether authentication is disabled for the ingress configuration.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| --- | --- | --- | --- |
+| boolean | optional | true | true or false. |
+
+
+
 
 ### **`replicas`**
 
@@ -100,6 +237,22 @@ logLevel: info
 compute: runnable-default
 ```
 
+### **`envs`**
+
+**Description:** environment variables for the service.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| --- | --- | --- | --- |
+| mapping | optional | none | key-value configurations |
+
+**Example Usage:**
+
+``` yaml
+envs:
+  APP_BASE_PATH: 'dataos-basepath'
+  FLASH_BASE_PATH: /flash/public:flash-test
+```
+
 ### **`resources`**
 
 **Description:** Resource allocation details for the service.
@@ -111,10 +264,10 @@ compute: runnable-default
 **Example Usage:**
 
 ```yaml
-  resources:
-    requests:
-      cpu: 1000m
-      memory: 1024Mi
+resources:
+  requests:
+    cpu: 1000m
+    memory: 1024Mi
 ```
 
 ### **`requests`**
