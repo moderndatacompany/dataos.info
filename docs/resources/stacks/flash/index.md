@@ -27,9 +27,14 @@ Understanding each attribute of the manifest file is essential to configuring Fl
 
 Flash supports BigQuery, Snowflake, Redshift, and Iceberg types of Depots. This section involves steps to configure Flash service for each of these Depots. For more details, [please refer to this](/resources/stacks/flash/data_sources/).
 
+## Monitoring the cached dataset
+
+You can monitor the CPU and memory usage of the cached dataset, the number of users querying the cached data, the total number of queries executed, as well as details of each query such as the user ID, execution time, status (whether the query is completed, in progress, or encountered an error). To know more information, [please refer to this](/resources/stacks/flash/recipes/monitor/).
+
 ## Best Practices
 
 This section involves best practices for configuring and optimizing the Flash Service to handle query processing efficiently and support concurrent query execution. It covers key areas such as indexing strategies, configuration parameters, and the use of persistent volumes. To learn more about best practices, please [refer to this](/resources/stacks/flash/best_practices/).
+
 
 ## Recipes
 
