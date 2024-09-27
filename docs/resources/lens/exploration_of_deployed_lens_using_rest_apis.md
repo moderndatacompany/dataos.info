@@ -14,39 +14,10 @@ When accessing different API endpoints, the request method and the format of the
 | **Endpoint** | **Method** | **Request Body Type**        | **Body Format Example**                                                                                                                                                                                                                      |
 |--------------|------------|------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `meta`       | GET        | N/A                          | N/A                                                                                                                                                                                                                                         |
-| `graphql`    | POST       | GraphQL query                 | graphql<br>query LensQuery {<br> table(limit: 10, offset: 0) {<br> products {<br> productcategory<br> average_price<br> average_margin<br> }<br> }<br> }                                                                              |
-| `load`       | POST       | Raw or JSON                   | json<br>{<br> "query": {<br> "dimensions": ["products.productcategory"],<br> "measures": ["products.average_price", "products.average_margin"]<br> }<br                                                                            |
-| `sql`        | POST       | Raw or JSON                   | json<br>{<br> "query": {<br> "dimensions": ["products.productcategory"],<br> "measures": ["products.average_price", "products.average_margin"]<br> }<br>}                                                                   |
+| `graphql`    | POST       | GraphQL query                 | **graphql format** <br><br>query LensQuery {<br> table(limit: 10, offset: 0) {<br> products {<br> productcategory<br> average_price<br> average_margin<br> }}<br>}                                                                              |
+| `load`       | POST       | Raw or JSON                   | **json format** <br><br>{<br> "query": {<br> "dimensions": ["products.productcategory"],<br> "measures": ["products.average_price", "products.average_margin"]}<br> }                                                                          |
+| `sql`        | POST       | Raw or JSON                   | **json format**<br><br>{<br> "query": {<br> "dimensions": ["products.productcategory"],<br> "measures": ["products.average_price", "products.average_margin"] } <br> }                                                                   |
 
-
-
-<!-- <div style="text-align: center;">
-  <table style="margin: 0 auto; border-collapse: collapse; text-align: center;">
-    <tr>
-      <th><strong>API scope</strong></th>
-      <th><strong>REST API endpoints</strong></th>
-    </tr>
-    <tr>
-      <td><a href="/resources/lens/api_endpoints_and_scopes/#meta-scope"><strong>meta</strong></a></td>
-      <td>/v2/meta</td>
-    </tr>
-    <tr>
-      <td><a href="/resources/lens/api_endpoints_and_scopes/#load"><strong>data</strong></a></td>
-      <td>- /v2/load<br>- /v2/sql</td>
-    </tr>
-    <tr>
-      <td><a href="/resources/lens/api_endpoints_and_scopes/#graphql"><strong>graphql</strong></a></td>
-      <td>/v2/graphql</td>
-    </tr>
-    <tr>
-      <td><a href="/resources/lens/api_endpoints_and_scopes/#source"><strong>source</strong></a></td>
-      <td><strong>- /v2/default/schemas/<br>
-      - /v2/default/schemas/sandbox/tables<br>
-      - /v2/default/schemas/retail/tables/city</strong></td>
-    </tr>
-  </table>
-  <figcaption style="margin-top: 10px;">List of API Scopes and their Endpoints</figcaption>
-</div> -->
 
 You can explore lens using REST APIs using the following methods:
 
@@ -57,7 +28,7 @@ You can explore lens using REST APIs using the following methods:
 
 ## Authentication and Authorization
 
-To securely interact with the Lens GraphQL API, you must authenticate your requests using a **DataOS API key** and ensure proper user group configurations. This section explains how to generate an API key and configure user groups for accessing the API.
+To securely interact with the Lens RESTA API, you must authenticate your requests using a **DataOS API key** and ensure proper user group configurations. This section explains how to generate an API key and configure user groups for accessing the API.
 
 ### **Generating a DataOS API Key**
 
@@ -80,7 +51,7 @@ API key tokens can also be fetched from the DataOS GUI, for more details refer t
 
 ### **Configuring User Groups**
 
-To access and query data via the GraphQL endpoint, users must be part of a user group with the required permissions. The necessary permissions are defined using the `api_scopes` attribute within the user group configuration located in the Lens directory. To know more about user groups and data policy click [here](/resources/lens/working_with_user_groups_and_data_policies/)
+To access and query data via the RESTAPI endpoint, users must be part of a user group with the required permissions. The necessary permissions are defined using the `api_scopes` attribute within the user group configuration located in the Lens directory. To know more about user groups and data policy click [here](/resources/lens/working_with_user_groups_and_data_policies/)
 
 **Example User Group Configuration**
 
@@ -88,7 +59,7 @@ The following YAML configuration demonstrates how to set up user groups with dif
 
 ```yaml
 user_groups:
-  # User group with full access to GraphQL API and data querying capabilities
+  # User group with full access to GRAPHQL API and data querying capabilities
   - name: engineer
     description: Data Analyst
     api_scopes:
@@ -98,7 +69,7 @@ user_groups:
     includes:
       - users:id:exampleuser
 
-  # User group with access to GraphQL API but no data querying capabilities
+  # User group with access to GRAPHQL API but no data querying capabilities
   - name: analyst
     description: Data Engineer
     api_scopes:
@@ -107,7 +78,7 @@ user_groups:
     includes:
       - users:id:testuser
 
-  # User group without access to GraphQL API or data querying capabilities
+  # User group without access to GRAPHQL API or data querying capabilities
   - name: testuser
     description: Data Engineer
     api_scopes:
@@ -118,47 +89,50 @@ user_groups:
 
 **Explanation of the Configuration:**
 
-- **`engineer` Group:** This group can access the GraphQL API and query data because it includes both the `graphql` and `data` `api_scopes`. 
-- **`analyst` Group:** This group can access the GraphQL API but cannot query the data because the `data` scope is missing. 
-- **`testuser` Group:** This group cannot access the GraphQL API or query data because both the `graphql` and `data` scopes are missing. 
+- **`engineer` Group:** This group can access the RESTAPI API and query data because it includes both the `graphql` and `data` `api_scopes`. 
+- **`analyst` Group:** This group can access the RESTAPI API but cannot query the data because the `data` scope is missing. 
+- **`testuser` Group:** This group cannot access the RESTAPI API or query data because both the `graphql` and `data` scopes are missing. 
 
 !!!note
     The user groups configured above only manage access permissions at the consumption level within DataOS. However, source-level permissions defined by the source administrator (e.g., in Snowflake or BigQuery) remain applicable. For sources accessible through the DataOS Query Engine (Minerva/Themis), you can define source-level permissions using the [Bifrost](/interfaces/bifrost/) application in the DataOS GUI or using the [Policy](/resources/policy/) and [Grant](/resources/grant/) Resource using DataOS CLI.
 
+
+## How to access the RESTAPIs?
+
+
 ### **Using Postman**
 
-You can use [Postman](https://www.postman.com/) to interact with Lens via REST APIs. Start by importing the following Postman collection, 
-testing each endpoint.
+You can use [Postman](https://www.postman.com/) to interact with Lens via REST APIs. Start by importing the following Postman collection.
 
-[Lens2-API](/resources/lens/lens_model_folder_setup/Lens2-APIs.postman_collection.json) 
+[Lens-API Postman Collection](/resources/lens/lens_model_folder_setup/Lens2-APIs.postman_collection.json) 
 
 When working with a Postman collection to test APIs, you typically need to configure authorization, set request methods, and provide the request body. Below are the steps to get started:
 
 1. **Open Postman and import the Postman collection:**
 
     - Open Postman and click on the Import button located at the top-left corner.
-    - Import the Postman Collection file you’ve been given. For example, if you import the Lens 2 API collection from the provided link, you will see a collection of API requests neatly organized into folders.
+    - Import the Postman Collection file you’ve been given. For example, if you import the Lens API collection from the provided link, you will see a collection of API requests neatly organized into folders.
 
         <div style="text-align: center;">
-        <img src="/resources/lens/exploring_deployed_lens_using_rest_apis/Untitled1.png" alt="psotman" style="max-width: 80%; height: auto; border: 1px solid #000;">
+        <img src="/resources/lens/exploring_deployed_lens_using_rest_apis/Untitled1.png" alt="postman" style="max-width: 80%; height: auto; border: 1px solid #000;">
         </div>
         <figcaption><i><center>Postman</center></i></figcaption>
 
 2. **Set up Authorization (bearer token):**
 
     - Once the collection is imported, click on the specific API request you want to test.
-    - Go to the Authorization tab.
-    - From the Type dropdown, select Bearer Token.
+    - Go to the **Authorization** tab.
+    - From the **Auth Type** dropdown, select **Bearer Token**.
     - In the Token field, paste your Bearer token, which you have received from your authentication process.
     - This token grants you access to the meta and data scopes.
 
 3. **Set the Request type:**
 
-    - Select the API method you want to use (e.g., GET, POST) from the dropdown next to the API URL.
+    - Select the API method you want to use (e.g., `GET`, `POST`) from the dropdown next to the API URL.
 
 4. **Prepare the URL and Query the API:**
 
-    - Testing all scopes and their endpoints by preparing the URL according to what data you want to fetch.
+    - Prepare the URL according to what data you want to fetch.
 
     ```bash
     http://<URL>/lens2/api/<WORKSPACE_NAME>:<LENS_NAME>/v2/<ENDPOINT>
@@ -188,9 +162,11 @@ When working with a Postman collection to test APIs, you typically need to confi
 
 5. **Set the Request Body in Postman (for POST Methods):**
 
-    - If your request is a POST (e.g., for `graphql`, `load`, or `sql` endpoints), you will need to configure the Body tab in Postman according to the endpoints.
+    - If your request is a POST (e.g., for `graphql`, `load`, or `sql` endpoints), you will need to configure the **Body** tab in Postman according to the endpoints.
 
     === "For `graphql` endpoint"
+
+        - Refer to the below image for subsequent steps.
 
         <div style="text-align: center;">
         <img src="/resources/lens/exploring_deployed_lens_using_rest_apis/graphql.png" alt="graphql" style="max-width: 80%; height: auto; border: 1px solid #000;">
@@ -256,6 +232,7 @@ When working with a Postman collection to test APIs, you typically need to confi
 
     === "For `load` or `sql` endpoint"
 
+        - Refer to the below image for subsequent steps.
 
         <div style="text-align: center;">
         <img src="/resources/lens/exploring_deployed_lens_using_rest_apis/json.png" alt="graphql" style="max-width: 80%; height: auto; border: 1px solid #000;">
@@ -315,19 +292,19 @@ When working with a Postman collection to test APIs, you typically need to confi
     - Once the body is set up for the specific endpoint, click **Send** to execute the request.
 
 
-#### **Possible Responses for Postman**
+#### **Possible Responses**
 
 **Continue wait**
 
 If the request takes too long to be processed, Lens Backend responds with { "error": "Continue wait" } and 200 status code. This is how the long polling mechanism in Lens is implemented. Clients should continuously retry the same query in a loop until they get a successful result. Subsequent calls to the Lens endpoints are idempotent and don't lead to scheduling new database queries if not required by the refresh_key. Also, receiving Continue wait doesn't mean the database query has been canceled, and it's actually still being processed by the Lens. Database queries that weren't started and are no longer waited by the client's long polling loop will be marked as orphaned and removed from the querying queue.
 
-Possible reasons of **Continue wait**:
+**Possible reasons of Continue wait**:
 
 - The query requested is heavy, and it takes some time for the database to process it. Clients should wait for its completion, continuously sending the same REST API request. continueWaitTimeout can be adjusted in order to change the time Lens waits before returning Continue wait message.
     
 - There are many queries requested and Lens backend queues them to save database from overloading.
 
-#### **Error Response for Postman**
+#### **Error Response**
 
 Lens REST API has basic errors and HTTP Error codes for all requests.
 
@@ -406,7 +383,7 @@ Curl is a command-line tool used for transferring data with URLs, making it a co
         curl -X POST https://alpha-omega.dataos.app/lens2/api/public:sales-analysis/v2/graphql \
         -H "Content-Type: application/json" \
         -H "apikey: abcdefghijklmnopqrstuvwxyz" \
-        -d '{"query": "query LensQuery { table { product { category avg_margin } } }"}'
+        -d '{"query": "query LensQuery { table { product { productcategory average_margin } } }"}'
         ```
     === "Load and SQL"
 
@@ -436,7 +413,7 @@ Curl is a command-line tool used for transferring data with URLs, making it a co
 
 ### **Using Python**
 
-Python provides a flexible and powerful way to interact with the Lens GraphQL API. It is especially useful for building automation scripts or for use in data analysis workflows. Ensure that Python and the `requests` library are installed on your system before proceeding.
+Python provides a flexible and powerful way to interact with the Lens RESTAPI API. It is especially useful for building automation scripts or for use in data analysis workflows. Ensure that Python and the `requests` library are installed on your system before proceeding.
 
 1. **Install the `requests` Library:**
 
@@ -448,12 +425,12 @@ Python provides a flexible and powerful way to interact with the Lens GraphQL AP
 
 2. **Prepare the Python Script:**
 
-    Use the following template to create a Python script for querying the Lens GraphQL API:
+    Use the following template to create a Python script for querying the Lens RESTAPI API:
 
     ```python
     import requests
 
-    # Define the URL of the Lens GraphQL endpoint
+    # Define the URL of the Lens RESTAPI endpoint
     url = "<URL>"
 
     # Define the headers including the API key
@@ -462,7 +439,7 @@ Python provides a flexible and powerful way to interact with the Lens GraphQL AP
         "apikey": "<DATAOS_API_KEY>"
     }
 
-    # Define your GraphQL query
+    # Define your RESTAPI query
     query = """
     <QUERY>
     """
@@ -492,14 +469,14 @@ Python provides a flexible and powerful way to interact with the Lens GraphQL AP
 
     - **Replace `<NAME_OF_LENS>` with the name of your deployed Lens model.** This corresponds to the specific Lens model you want to query.
 
-    - **Replace `<GRAPHQL_QUERY>` with the specific fields you want to query from your GraphQL schema.** Make sure to format the query string as valid JSON.
+    - **Replace `<QUERY>` with the specific fields you want to query from your schema.** Make sure to format the query string as valid JSON.
 
     **Sample Script:**
 
     ```python
     import requests
 
-    # Define the URL of the Lens GraphQL endpoint
+    # Define the URL of the Lens RESTAPI endpoint
     url = "https://alpha-omega.dataos.app/lens2/api/public:sales-analysis/v2/load"
 
     # Define the headers including the API key
@@ -508,13 +485,13 @@ Python provides a flexible and powerful way to interact with the Lens GraphQL AP
         "apikey": "abcdefghijklmnopqrstuvwxyz"
     }
 
-    # Define your GraphQL query
+    # Define your RESTAPI query
     query = """
       query LensQuery {
         table {
           products {
             categories
-            avg_margin
+            average_margin
           }
         }
       }
@@ -528,11 +505,11 @@ Python provides a flexible and powerful way to interact with the Lens GraphQL AP
     ```
 
     In the above sample:
-    - `<URL>` is `https://alpha-omega.dataos.app/lens2/api/public:sales-analysis/v2/graphql`
+    - `<URL>` is `https://alpha-omega.dataos.app/lens2/api/public:sales-analysis/v2/load`
     - `<DATAOS_API_KEY>` is `abcdefghijklmnopqrstuvwxyz` (replace with your actual API key)
     - `<WORKSPACE>` is `public`
     - `<NAME_OF_LENS>` is `sales-analysis`
-    - The query fetches `category` and `avg_price` fields from the `products` table.
+    - The query fetches `productcategory` and `average_price` fields from the `products` table.
 
 3. **Run the Script:**
 
