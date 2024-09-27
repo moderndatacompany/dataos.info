@@ -379,7 +379,7 @@ lens:
 | string        | optional       | INFO               | Valid log level from amongst<br> INFO, WARN DEBUG, ERROR
 
 <b>Additional Details:</b><br>
-- <i>INFO:</i> Designates informational messages that highlight the progress of the service.<br>
+- <i>INFO:</i> Designates informational messages that highlight the progress of the API Instance.<br>
 - <i>WARN:</i> Designates potentially harmful situations.<br>
 - <i>DEBUG:</i> Designates fine-grained informational events that are most useful while debugging.<br>
 - <i>ERROR:</i> Desingates error events that might still allow the workflow to continue running.<br>
