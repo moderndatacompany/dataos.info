@@ -12,7 +12,7 @@ A table is a logical construct used to define an entity. It contains information
 > To draw a parallel with common data modelling concepts, **‘Table’ is equivalent to the concept of ‘Entity’**.
 > 
 
-We'll use a sample database with two tables, owner and contacts to illustrate the concepts throughout this page:
+We'll use a sample database with two tables, `owner` and `contacts` to illustrate the concepts throughout this page:
 
 `owner` Table
 
@@ -37,7 +37,7 @@ We'll use a sample database with two tables, owner and contacts to illustrate th
 
 **Example**
 
-In the example below the account table is defined for a sales analytics lens:
+In the example below the `owner` table is defined for a sales analytics lens:
 
 ```yaml
 tables:
@@ -58,7 +58,7 @@ tables:
       WHERE owner.owner_id = contacts.owner_id
 ```
 
-> Within each tables dimensions, measures, and segments are defined. Joins are used to define relations between tables.
+> Within each table, dimensions, measures, and segments are defined. Joins are used to define relations between tables.
 
 <!-- Note that tables attribute support extended functionality, and data blending. -->
  
@@ -176,7 +176,7 @@ The measure declaration involves the following properties:
 | `meta` | Custom metadata |  |  |  |
 
 
-```yaml owner.yaml
+```yaml title="owner.yaml"
 tables:
   - name: owner
     sql: {{ load_sql('owner') }}
@@ -195,9 +195,9 @@ Segments are pre-defined groups of filters.
 
 The segment declaration involves the following properties:
 
-| **Property**  | **Description**  | **Possible Value**  |
-| --------------| ---------------- | ------------------- |
-| `name`        | Specify the name of the dimension.         | NA               |
+| **Property**  | **Description**  | **Possible Value**    |
+| --------------| ---------------- | --------------------- |
+| `name`        | Specify the name of the dimension. | NA  |
 | `public`      | Controls visibility of dimension, i.e. whether the dimension is visible to all users or hidden | `True`, `False` |
 | `sql`         | Add filter criteria: table.{dimension} = “dimension_values”  | NA               |
 | `meta`        | Custom metadata. This is also used to define `secure` sub property | NA               |
@@ -219,6 +219,7 @@ A more thorough introduction can be found in [Working with Segments](/resources/
 ## Views
 
 Views sit on top of the data graph of cubes and create a abstraction of whole data model with which data consumers can interact. They serve as a layer for defining metrics, providing a simplified interface for end-users to interact objectively with key metrics instead of the entire data model. A view reference serves as a way to access dimensions, measures, and segments from multiple logical tables. It does not define any measures, dimensions, or segments on its own.
+
 
 In the example below, we create the `transaction_analysis` view which includes select members from transactions, and products tables:
 

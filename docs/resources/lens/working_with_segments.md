@@ -19,9 +19,9 @@ Segments are pre-defined groups of filters. It provides the ability to define Se
   An example segment declaration to create a group of commonly used state filters:
 
   ```yaml
-      segments:
-        - name: common_state
-          sql: "{TABLE}.state = 'Illinois'"
+  segments:
+    - name: common_state
+      sql: "{TABLE}.state = 'Illinois'"
   ```
 
 - You can leverage filtering keywords such as **‘LIKE’** to define filtering criteria
@@ -29,9 +29,9 @@ Segments are pre-defined groups of filters. It provides the ability to define Se
   Below  example Segment filters for records where the state is Illinois or Ohio.
 
   ```yaml
-      segments:
-        - name: common_state
-          sql: "{TABLE}.state = 'Illinois' or {TABLE}.state like '%Ohio%'"
+  segments:
+    - name: common_state
+      sql: "{TABLE}.state = 'Illinois' or {TABLE}.state like '%Ohio%'"
   ```
 
 - You can include logical operators like **OR and AND** to create dynamic criteria for segments. This is useful when you need to apply filters to more than one column.
