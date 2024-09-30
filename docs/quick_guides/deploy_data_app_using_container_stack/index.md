@@ -19,8 +19,8 @@ For illustration of the process, we'll create a basic Streamlit application. Str
     
     Run the application on your machine. When you run this application locally, it will be launched in your default web browser.
     
-    ```sql
-    **streamlit run {path}/appname.py**
+    ```shell
+    streamlit run {path}/appname.py
     ```
     
     Here's a simple example of Calculator app designed for basic arithmetic operations.
@@ -143,7 +143,7 @@ Now we'll package our application into a Docker image. Docker simplifies deployi
     
     This command builds an image named `calculator-app` with the `new` tag.
     
-    ![Image](/quick_guides/deply_data_app_using_container_stack/build_image.png)
+    ![Image](/quick_guides/deploy_data_app_using_container_stack/build_image.png)
     
 
 ## **Step 3: Push the Docker Image to Container Registry**
@@ -180,7 +180,7 @@ We'll upload our Docker image to a container registry for storage and deployment
     docker image push your-username/calculator-app:v1
     ```
     
-    ![Image](/quick_guides/deply_data_app_using_container_stack/docker_image_push.png)
+    ![Image](/quick_guides/deploy_data_app_using_container_stack/docker_image_push.png)
     
 
 ## Step 4: **Secrets to Pull Images from Private Container Registry**
@@ -344,11 +344,11 @@ Access the deployed Streamlit application on the web browser with the following 
 
 - URL: **`https://<dataos-context>/<path>`**
 
-<aside>
+Provide the required inputs and click on the 'Calculate' button.
+
+![calculator_app.png](/quick_guides/deploy_data_app_using_container_stack/calculator_app.png)
+
+<aside class="callout">
 🗣 Your application can be showcased on the DataOS homepage. Reach out to the DataOS administrator to explore this opportunity further.
 
 </aside>
-
-Provide the required inputs and click on the Calculate button.
-
-![calculator_app.png](/quick_guides/deply_data_app_using_container_stack/calculator_app.png)
