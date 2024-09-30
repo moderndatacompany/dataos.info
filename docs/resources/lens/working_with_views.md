@@ -46,6 +46,7 @@
 === "Example"
 
     ```yaml
+    view:
       - name: generated_sales_across_territory
         description: View containing total and average sales for different territories
         public: true
