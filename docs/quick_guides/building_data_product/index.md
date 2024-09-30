@@ -1,7 +1,7 @@
 # Building Data Products
 
 !!! info "Information"
-    This quick guide provides an overview of designing and building a data product, from defining use cases to creating a functional product. It helps users understand how to identify business needs, set up data ingestion, transformation, quality checks. Additionally, it explains how to create a data product specification file for a data product that delivers valuable business insights through enriched datasets, Metrics, APIs, and logical data model.
+    This quick guide provides an overview of designing and building a data product, from defining use cases to creating a functional product. It helps users understand how to identify business needs, set up data ingestion, transformation, quality checks. Additionally, it explains how to create a manifest file for a data product that delivers valuable business insights through enriched datasets, Metrics, APIs, and logical data model.
 
 <center>
 <div style="text-align: center;">
