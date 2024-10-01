@@ -36,9 +36,7 @@ The development of a Data Product begins with defining use cases. A single data 
 
 The audience for this data product could include **sales teams, marketing analysts, business stakeholders**, and **data science teams**. These insights help refine sales and marketing strategies, ultimately boosting customer retention and business growth.
 
-### **Requirements for Building the Data Product**
-
-Consider the following key aspects:
+To effectively design the data product, consider the following key aspects:
 
 - **Input Data Sources:** Determine the necessary data inputs required to build the product. These might include transactional data, customer demographic data, and product inventory data.
 - **ETL Process:** Extract, clean, and transform raw data from different systems (e-commerce, CRM, etc.)
@@ -50,7 +48,7 @@ Consider the following key aspects:
 
 ## Building Data Product
 
-Once you are done with the designing phase for your data product, it is time to put together various Resources that take care of data ingestion and transformation, credential management, quality rules, etc. 
+After completing the design phase, it's time to assemble the necessary resources for building your data product. This involves setting up data ingestion and transformation processes, managing credentials, enforcing quality rules, and more. 
 
 **Example Scenario:** 
 
@@ -605,7 +603,7 @@ You can also check your data product on Data Product Hub.
     
 2. Click on the data product to view its details.
     
-
+    ![dpdetails_on_dph.png](/quick_guides/building_data_product/dp_details_dph.png)
 ## Download Data Product Code Files
 
 **Download the Data Product** [dp_retail360.zip](/quick_guides/building_data_product/dp_retail360.zip) which includes the necessary DataOS Resources, Lens model, API service, etc.
