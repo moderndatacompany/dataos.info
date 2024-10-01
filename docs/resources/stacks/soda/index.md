@@ -124,7 +124,11 @@ stackSpec:
         name: filter_on_age
         where: age > 50
       checks:
-        - row_count between 10 and 1000
+        - missing_count(snapshot_id) = 0:
+            name: Completeness of the Snapshot ID Column #add the name
+            attributes:
+              title: Completeness of the Snapshot ID Column
+              category: Completeness
       profile:
         columns:
           - "*"
@@ -164,49 +168,75 @@ Soda Stack utilzies SodaCL, a YAML-based, low-code, human-readable, domain-speci
 The [`checks`](/resources/stacks/soda/configurations/#checks) section allows users to specify a list of specific data quality checks or tests that will be performed on the designated dataset. These checks can be tailored to suit the unique requirements of the dataset and the data quality objectives.
 
 ```yaml
-# Checks for basic validations
+# Checks for basic validations would be named in `Validity` category
 
 stackSpec:
   inputs:
     - dataset: dataos://icebase:retail/customer
       checks:
-        - row_count between 10 and 1000
-        - missing_count(birth_date) = 0
-        - invalid_percent(phone) < 1 %:
-            valid format: phone number
+        - row_count between 1 and 170:
+            attributes:
+              category: Accuracy
+        - missing_count(customer_no) = 0:
+            attributes:
+              category: Completeness
+        - invalid_percent(customer_name) < 1%:
+            valid max length: 27
+            filter: site_number > 0
+            attributes:
+              category: Validity     
+        # - invalid_percent(phone) < 1 %:
+        #     valid format: phone number
         - invalid_count(number_cars_owned) = 0:
             valid min: 1
             valid max: 6
-        - duplicate_count(phone) = 0
+            attributes:
+              category: Validity
+        - duplicate_count(phone) = 0:
+            attributes:
+              category: Uniqueness
+        - invalid_count(site_number) < 0:
+            valid min: 5
+            valid max: 98
+            attributes:
+              category: Validity
       # ...other inputs attributes
 
 stackSpec:
   inputs:
     - dataset: dataos://icebase:retail/customer
       checks:
-      - avg(safety_stock_level) > 50
+      - avg(safety_stock_level) > 50:
+          attributes:
+            category: Accuracy
       # ...other inputs attributes
 
 ---
 
-# Check for freshness 
+# Check for Freshness would be categorised in `Freshness` category 
 
 stackSpec:
   inputs:
     - dataset: dataos://icebase:retail/customer
       checks:
-      - freshness (start_date) < 1d
+        - freshness(test) < 551d:
+            name: Freshness01
+            attributes:
+              category: Freshness
       # ...other inputs attributes
 
 ---
 
-# Check for referential integrity
+# Check for Accuracy Category
 
 stackSpec:
   inputs:
     - dataset: dataos://icebase:retail/customer
       checks:
-        - values in (department_group_name) must exist in dim_employee (department_name)
+        - values in (city_name) must exist in city (city_name):
+            samples limit: 20
+            attributes:
+              category: Accuracy
       # ...other inputs attributes
 ```
 
@@ -217,34 +247,78 @@ stackSpec:
 ```yaml
 stackSpec:
   inputs:
-    - dataset: dataos://icebase:retail/customer
+    - dataset: dataos://icebase:retail/customer              
+      options:
+          engine: minerva
+          clusterName: system
+      
+      
       checks:
-        - row_count between 10 and 1000
-        - row_count between (10 and 55)
-        - missing_count(birthdate) = 0
-        - invalid_percent(phone_number) < 1 %:
-            valid format: phone number
+        - row_count between 1 and 170:
+            attributes:
+               category: Accuracy
+        - row_count same as city:
+            name: Cross check customer datasets
+            attributes:
+              category: Accuracy
+
+        - missing_count(license_type) < 1:
+            missing values: [NA, n/a]
+            attributes:
+              category: Completeness
+
+        - invalid_percent(customer_name) < 1%:
+            valid max length: 27
+            filter: site_number > 0
+            attributes:
+              category: Validity
+
         - invalid_count(number_of_children) < 0:
             valid min: 0
             valid max: 6
+            attributes:
+              category: Validity
         - min(age) > 30:
             filter: marital_status = 'Married'
-        - duplicate_count(phone_number) = 0
-        - row_count same as city
-        - duplicate_count(customer_index) > 10
-        - duplicate_percent(customer_index) < 0.10
-        - failed rows:
-            samples limit: 70
-            fail condition: age < 18  and age >= 50
-        - failed rows:
-            fail query: |
-              SELECT DISTINCT customer_index
-              FROM customer as customer
-        - freshness(ts_customer) < 1d
-        - freshness(ts_customer) < 5d
-        - max(age) <= 100
-        - max_length(first_name) = 8
-        - values in (occupation) must exist in city (city_name)
+            attributes:
+              category: Accuracy
+        - duplicate_count(customer_no) = 0:
+           attributes:
+            category: Uniqueness
+        - duplicate_count(customer_index) > 10:
+            attributes:
+              category: Uniqueness
+        - duplicate_percent(customer_index) < 0.10:
+            attributes:
+              category: Uniqueness
+
+        # - failed rows:
+        #     samples limit: 70
+        #     fail condition: age < 18  and age >= 50
+        # - failed rows:
+        #     fail query: |
+        #       SELECT DISTINCT customer_index
+        #       FROM customer as customer
+
+
+        - freshness(last_commit_time) < 7d:  # This timestamp indicates when the customer record was last updated
+              name: freshness_of_the_last_commit
+              attributes:
+                title: Freshness of the Last commit
+                category: Freshness
+
+        - max(age) <= 100:
+            attributes:
+              category: Accuracy
+        - max_length(first_name) = 8:
+            attributes:
+              category: Accuracy
+ 
+        - values in (city_name) must exist in city (city_name):
+            samples limit: 20
+            attributes:
+              category: Accuracy
+
         - schema:
             name: Confirm that required columns are present
             warn:
@@ -253,6 +327,8 @@ stackSpec:
               when required column missing:
                 - age
                 - no_phone
+            attributes:
+              category: Schema
         - schema:
             warn:
               when forbidden column present: [Voldemort]
@@ -262,6 +338,9 @@ stackSpec:
               when forbidden column present: [Pii*]
               when wrong column type:
                 number_of_children: DOUBLE
+            attributes:
+              category: Schema
+
     # ...other inputs attributes
 ```
 
@@ -563,19 +642,28 @@ workflow:
             # Redshift
             - dataset: dataos://sanityredshift:public/redshift_write_12
               checks:
-                - row_count between 10 and 1000
+                - row_count between 10 and 1000:
+                    attributes:
+                      category: Accuracy
+              
             # Oracle
             - dataset: dataos://sanityoracle:dev/oracle_write_12
               checks:
-                - row_count between 10 and 1000
+                - row_count between 10 and 1000:
+                    attributes:
+                      category: Accuracy
             # MySql
             - dataset: dataos://sanitymysql:tmdc/mysql_write_csv_12
               checks:
-                - row_count between 10 and 1000
+                - row_count between 10 and 1000:
+                    attributes:
+                      category: Accuracy
             # MSSQL
             - dataset: dataos://sanitymssql:tmdc/mssql_write_csv_12
               checks:
-                - row_count between 10 and 1000
+                - row_count between 10 and 1000:
+                    attributes:
+                      category: Accuracy
             # Minerva
             - dataset: dataos://icebase:retail/customer
               options:
@@ -588,32 +676,67 @@ workflow:
                   - include d*
                   - e*
               checks:
-                - row_count between 10 and 1000
-                - row_count between (10 and 55)
-                - missing_count(birthdate) = 0
-                - invalid_percent(phone_number) < 1 %:
-                    valid format: phone number
+                - row_count between 10 and 1000:
+                    attributes:
+                      category: Accuracy
+                - row_count between (10 and 55):
+                    attributes:
+                      category: Accuracy
+                - missing_count(birthdate) = 0:
+                    attributes:
+                      category: Completeness
+                # - invalid_percent(phone_number) < 1 %:
+                #     valid format: phone number
                 - invalid_count(number_of_children) < 0:
                     valid min: 0
                     valid max: 6
+                    attributes:
+                      category: Validity
                 - min(age) > 30:
                     filter: marital_status = 'Married'
-                - duplicate_count(phone_number) = 0
-                - row_count same as city
-                - duplicate_count(customer_index) > 10
-                - duplicate_percent(customer_index) < 0.10
-                - failed rows:
-                    samples limit: 70
-                    fail condition: age < 18  and age >= 50
-                - failed rows:
-                    fail query: |
-                      SELECT DISTINCT customer_index
-                      FROM customer as customer
-                - freshness(ts_customer) < 1d
-                - freshness(ts_customer) < 5d
-                - max(age) <= 100
-                - max_length(first_name) = 8
-                - values in (occupation) must exist in city (city_name)
+                      attributes:
+                        category: Accuracy
+
+                - duplicate_count(phone_number) = 0:
+                    attributes:
+                      category: Uniqueness
+                - row_count same as city:
+                    name: Cross check customer datasets
+                    attributes:
+                      category: Accuracy
+
+                - duplicate_count(customer_index) > 10:
+                    attributes:
+                      category: Uniqueness               
+                - duplicate_percent(customer_index) < 0.10:
+                    attributes:
+                      category: Uniqueness
+                # - failed rows:
+                #     samples limit: 70
+                #     fail condition: age < 18  and age >= 50
+                # - failed rows:
+                #     fail query: |
+                #       SELECT DISTINCT customer_index
+                #       FROM customer as customer
+                - freshness(ts_customer) < 1d:
+                    name: Freshness01
+                    attributes:
+                      category: Freshness
+                - freshness(ts_customer) < 5d:
+                    name: Freshness02
+                    attributes:
+                      category: Freshness
+                - max(age) <= 100:
+                    attributes:
+                      category: Accuracy
+                # - max_length(first_name) = 8:
+                #     attributes:
+                #       category: Accuracy
+                - values in (occupation) must exist in city (city_name):
+                    samples limit: 20
+                    attributes:
+                      category: Accuracy
+                      
                 - schema:
                     name: Confirm that required columns are present
                     warn:
@@ -622,6 +745,8 @@ workflow:
                       when required column missing:
                         - age
                         - no_phone
+                    attributes:
+                      category: Schema
                 - schema:
                     warn:
                       when forbidden column present: [Voldemort]
@@ -631,20 +756,28 @@ workflow:
                       when forbidden column present: [Pii*]
                       when wrong column type:
                         number_of_children: DOUBLE
+                    attributes:
+                      category: Schema
             # Postgres
             - dataset: dataos://metisdb:public/classification
               checks:
-                - row_count between 0 and 1000
+                - row_count between 0 and 1000:
+                    attributes:
+                      category: Accuracy
             # Big Query
             - dataset: dataos://distribution:distribution/dc_info
               checks:
-              - row_count between 0 and 1000
+              - row_count between 0 and 1000:
+
             # Snowflake
             - dataset: dataos://sodasnowflake:TPCH_SF10/CUSTOMER
               options: # this option is default no need to set, added for example.
                 engine: default
               checks:
-                - row_count between 10 and 1000
+                - row_count between 10 and 1000:
+                    attributes:
+                      category: Accuracy
+
 ```
 </details>
 
@@ -689,32 +822,78 @@ worker:
             - include d*
             - e*
         checks:
-          - row_count between 10 and 1000
-          - row_count between (10 and 55)
-          - missing_count(birthdate) = 0
-          - invalid_percent(phone_number) < 1 %:
-              valid format: phone number
+          - row_count between 10 and 1000:
+              attributes:
+                category: Accuracy
+
+          - row_count between (10 and 55):
+              attributes:
+                category: Accuracy
+        
+          - missing_count(birthdate) = 0:
+              attributes:
+                category: Completeness
+
+          # - invalid_percent(phone_number) < 1 %:
+          #     valid format: phone number
           - invalid_count(number_of_children) < 0:
               valid min: 0
               valid max: 6
+              attributes:
+                category: Validity
+
+
           - min(age) > 30:
               filter: marital_status = 'Married'
-          - duplicate_count(phone_number) = 0
-          - row_count same as city
-          - duplicate_count(customer_index) > 10
-          - duplicate_percent(customer_index) < 0.10
-          - failed rows:
-              samples limit: 70
-              fail condition: age < 18  and age >= 50
-          - failed rows:
-              fail query: |
-                SELECT DISTINCT customer_index
-                FROM customer as customer
-          - freshness(ts_customer) < 1d
-          - freshness(ts_customer) < 5d
-          - max(age) <= 100
-          - max_length(first_name) = 8
-          - values in (occupation) must exist in city (city_name)
+                attributes:
+                  category: Accuracy
+
+          - duplicate_count(phone_number) = 0:
+              attributes:
+                category: Uniqueness  
+          - row_count same as city:
+              name: Cross check customer datasets
+              attributes:
+                category: Accuracy
+
+          - duplicate_count(customer_index) > 10:
+              attributes:
+                category: Uniqueness
+
+
+
+          - duplicate_percent(customer_index) < 0.10:
+              attributes:
+                category: Uniqueness
+          # - failed rows:
+          #     samples limit: 70
+          #     fail condition: age < 18  and age >= 50
+          # - failed rows:
+          #     fail query: |
+          #       SELECT DISTINCT customer_index
+          #       FROM customer as customer
+
+          - freshness(ts_customer) < 1d:
+              name: Freshness01
+              attributes:
+                category: Freshness
+          - freshness(ts_customer) < 5d:
+              name: Freshness02
+              attributes:
+                category: Freshness
+               
+          - max(age) <= 100:
+              attributes:
+                category: Accuracy
+          # - max_length(first_name) = 8:
+          #     attributes:
+          #       category: Accuracy
+          - values in (occupation) must exist in city (city_name):
+              samples limit: 20
+              attributes:
+                category: Accuracy               
+
+
           - schema:
               name: Confirm that required columns are present
               warn:
@@ -723,11 +902,15 @@ worker:
                 when required column missing:
                   - age
                   - no_phone
+              attributes:
+                category: Schema
           - schema:
               warn:
                 when forbidden column present: [Voldemort]
                 when wrong column type:
                   first_name: int
+              attributes:
+                category: Schema
 ```
 </details>
 

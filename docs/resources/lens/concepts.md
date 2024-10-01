@@ -218,7 +218,7 @@ A more thorough introduction can be found in [Working with Segments](/resources/
 
 ## Views
 
-Views sit on top of the data graph of cubes and create a abstraction of whole data model with which data consumers can interact. They serve as a layer for defining metrics, providing a simplified interface for end-users to interact objectively with key metrics instead of the entire data model. A view reference serves as a way to access dimensions, measures, and segments from multiple logical tables. It does not define any measures, dimensions, or segments on its own.
+Views sit on top of the data graph of lens and create a abstraction of whole data model with which data consumers can interact. They serve as a layer for defining metrics, providing a simplified interface for end-users to interact objectively with key metrics instead of the entire data model. A view reference serves as a way to access dimensions, measures, and segments from multiple logical tables. It does not define any measures, dimensions, or segments on its own.
 
 
 In the example below, we create the `transaction_analysis` view which includes select members from transactions, and products tables:

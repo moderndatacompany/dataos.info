@@ -8,19 +8,28 @@ stackSpec:
     # Redshift
     - dataset: dataos://redshiftdepot:public/redshift_write_12
       checks:
-        - row_count between 10 and 1000
+        - row_count between 10 and 1000:
+            attributes:
+              category: Accuracy
+
     # Oracle
     - dataset: dataos://oracledepot:dev/oracle_write_12
       checks:
-        - row_count between 10 and 1000
+        - row_count between 10 and 1000:
+            attributes:
+              category: Accuracy
     # MySql
     - dataset: dataos://mysqldepot:tmdc/mysql_write_csv_12
       checks:
-        - row_count between 10 and 1000
+        - row_count between 10 and 1000:
+            attributes:
+              category: Accuracy
     # MSSQL
     - dataset: dataos://mssqldepot:tmdc/mssql_write_csv_12
       checks:
-        - row_count between 10 and 1000
+        - row_count between 10 and 1000:
+            attributes:
+              category: Accuracy
     # Minerva
     - dataset: dataos://icebase:retail/customer
       options:
@@ -37,32 +46,65 @@ stackSpec:
           - include d*
           - e*
       checks:
-        - row_count between 10 and 1000
-        - row_count between (10 and 55)
-        - missing_count(birthdate) = 0
-        - invalid_percent(phone_number) < 1 %:
-            valid format: phone number
+        - row_count between 10 and 1000:
+            attributes:
+              category: Accuracy
+        - row_count between (10 and 55):
+            attributes:
+              category: Accuracy
+        - missing_count(birthdate) = 0:
+            attributes:
+              category: Completeness
+
+        # - invalid_percent(phone_number) < 1 %:
+        #     valid format: phone number
         - invalid_count(number_of_children) < 0:
             valid min: 0
             valid max: 6
+            attributes:
+              category: Validity
         - min(age) > 30:
             filter: marital_status = 'Married'
-        - duplicate_count(phone_number) = 0
-        - row_count same as city
-        - duplicate_count(customer_index) > 10
-        - duplicate_percent(customer_index) < 0.10
-        - failed rows:
-            samples limit: 70
-            fail condition: age < 18  and age >= 50
-        - failed rows:
-            fail query: |
-              SELECT DISTINCT customer_index
-              FROM customer as customer
-        - freshness(ts_customer) < 1d
-        - freshness(ts_customer) < 5d
-        - max(age) <= 100
-        - max_length(first_name) = 8
-        - values in (occupation) must exist in city (city_name)
+            attributes:
+              category: Accuracy
+        - duplicate_count(phone_number) = 0:
+            attributes:
+              category: Uniqueness
+        - row_count same as city:
+            name: Cross check customer datasets
+            attributes:
+              category: Accuracy
+        - duplicate_count(customer_index) > 10:
+            attributes:
+              category: Uniqueness
+        - duplicate_percent(customer_index) < 0.10:
+            attributes:
+              category: Uniqueness
+        # - failed rows:
+        #     samples limit: 70
+        #     fail condition: age < 18  and age >= 50
+        # - failed rows:
+        #     fail query: |
+        #       SELECT DISTINCT customer_index
+        #       FROM customer as customer
+        - freshness(ts_customer) < 1d:
+            name: Freshness01
+            attributes:
+              category: Freshness
+        - freshness(ts_customer) < 5d:
+            name: Freshness02
+            attributes:
+              category: Freshness
+        - max(age) <= 100:
+            attributes:
+              category: Accuracy
+        - max_length(first_name) = 8:
+            attributes:
+              category: Accuracy
+        - values in (occupation) must exist in city (city_name):
+            attributes:
+              category: Accuracy
+
         - schema:
             name: Confirm that required columns are present
             warn:
@@ -71,6 +113,8 @@ stackSpec:
               when required column missing:
                 - age
                 - no_phone
+            attributes:
+              category: Schema
         - schema:
             warn:
               when forbidden column present: [Voldemort]
@@ -80,20 +124,28 @@ stackSpec:
               when forbidden column present: [Pii*]
               when wrong column type:
                 number_of_children: DOUBLE
+            attributes:
+              category: Schema
     # Postgres
     - dataset: dataos://postgresdepot:public/classification
       checks:
-        - row_count between 0 and 1000
+        - row_count between 0 and 1000:
+            attributes:
+              category: Accuracy
     # Big Query
     - dataset: dataos://bigquerydepot:distribution/dc_info
       checks:
-      - row_count between 0 and 1000
+      - row_count between 0 and 1000:
+            attributes:
+              category: Accuracy
     # Snowflake
     - dataset: dataos://snowflakedepot:TPCH_SF10/CUSTOMER
       options: # this option is default no need to set, added for example.
         engine: default
       checks:
-        - row_count between 10 and 1000
+        - row_count between 10 and 1000:
+            attributes:
+              category: Accuracy      
 ```
 
 ## Configuration Attributes
@@ -131,7 +183,9 @@ stackSpec:
   inputs:
     - dataset: dataos://sanityredshift:public/redshift_write_12
       checks:
-        - row_count between 10 and 1000
+        - row_count between 10 and 1000:
+            attributes:
+              category: Accuracy
     # ... (other dataset inputs)
 ```
 
@@ -171,7 +225,9 @@ stackSpec:
   inputs:
     - dataset: dataos://sanityredshift:public/redshift_write_12
       checks:
-        - row_count between 10 and 1000
+        - row_count between 10 and 1000:
+            attributes:
+              category: Accuracy
     # ... (other checks for the dataset)
 ```
 
