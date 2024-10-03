@@ -77,7 +77,24 @@ With Talos, you can mask the data for the API endpoint by defining user groups o
     allow:
       - intern
       - datadev
+    filters:
+      - description: Allow only certain department
+        userGroups:
+          - reader
+          - default
+      - description: Indian Content Only
+        userGroups:
+          - asian
+          - indian
+    depends:
+      - table: departments
+        columns:
+          - IT
+          - Finance
     ```
-    
+
+- Descriptions for filters explain how various user groups will access content. This improves the API documentation by offering clear guidance for users interacting with the API.
+
+- External dependencies, such as tables and columns, have been included to clarify what the API relies on. This adds context to the API documentation, helping users better understand the data sources involved.
 
 Now you are ready to expose your data via APIs securly.

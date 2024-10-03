@@ -36,20 +36,34 @@ workflow:
                 columns:
                   - "*"
               checks:
-                - row_count between 10 and 1000
-                - missing_count(zip_code) = 0
+                - row_count between 10 and 1000:
+                    attributes:
+                      category: Accuracy          
+                - missing_count(zip_code) = 0:
+                    attributes:
+                      category: Completeness
                 - invalid_count(zip_code) < 0:
                     valid min: 500
                     valid max: 99403
                     filter: state_code = 'AL'
-                - duplicate_count(zip_code) = 0
-                - duplicate_count(zip_code) > 10
-                - duplicate_percent(zip_code) < 0.10
-                - failed rows:
-                    samples limit: 70
-                    fail condition: zip_code < 18  and zip_code >= 50
-                - freshness(ts_city) < 1d
-                - max_length(state_name) = 8
+                    attributes:
+                      category: Validity
+                - duplicate_count(zip_code) = 0:
+                    attributes:
+                      category: Uniqueness
+                - duplicate_count(zip_code) > 10:
+                    attributes:
+                      category: Uniqueness
+                - duplicate_percent(zip_code) < 0.10:
+                    attributes:
+                      category: Uniqueness
+                # - failed rows:
+                #     samples limit: 70
+                #     fail condition: zip_code < 18  and zip_code >= 50
+                - freshness(ts_city) < 1d:
+                    attributes:
+                      category: Freshness
+                # - max_length(state_name) = 8
                 - schema:
                     name: Confirm that required columns are present
                     warn:
@@ -58,9 +72,14 @@ workflow:
                       when required column missing:
                         - city_id
                         - no_phone
+                    attributes:
+                      category: Schema
+
                 - schema:
                     fail:
                       when forbidden column present: [Pii*]
                       when wrong column type:
                         state_code: DOUBLE
+                    attributes:
+                      category: Schema
 ```
