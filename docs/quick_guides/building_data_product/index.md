@@ -598,6 +598,7 @@ You can also check your data product on Data Product Hub.
 2. Click on the data product to view its details.
     
     ![dpdetails_on_dph.png](/quick_guides/building_data_product/dp_details_dph.png)
+
 ## Download Data Product Code Files
 
 **Download the Data Product** [dp_retail360.zip](/quick_guides/building_data_product/dp_retail360.zip) which includes the necessary DataOS Resources, Lens model, API service, etc.
