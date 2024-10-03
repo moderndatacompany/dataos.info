@@ -9,9 +9,7 @@ To illustrate the process, we'll create a simple Streamlit application. Streamli
 
 ## **Step 1: Create a Data Application**
 
-For illustration of the process, we'll create a basic Streamlit application. Streamlit is a powerful Python library that enables the rapid development of interactive web applications.
-
-1. **Write Your Python Script**
+1. **Write Your Application Code**
     
     Create a Python file named **`appname.py`** for your Streamlit application. 
     

@@ -25,7 +25,7 @@ Alternatively, having specific use cases assigned can also grant you access.
 
 For more details, visit [Bifrost](https://dataos.info/interfaces/bifrost/).
 
-> DataOS gives you everything you need to build a Data Product—whether starting from scratch or reusing an existing one. You can explore the Data Products Hub to discover and learn about all available data products, each with detailed information to help you get started or find inspiration.
+> DataOS gives you everything you need to build a Data Product—whether starting from scratch or reusing an existing one. You can explore the Data Product Hub to discover and learn about all available data products, each with detailed information to help you get started or find inspiration.
 > 
 
 ## Designing Data Product
@@ -36,9 +36,7 @@ The development of a Data Product begins with defining use cases. A single data 
 
 The audience for this data product could include **sales teams, marketing analysts, business stakeholders**, and **data science teams**. These insights help refine sales and marketing strategies, ultimately boosting customer retention and business growth.
 
-### **Requirements for Building the Data Product**
-
-Consider the following key aspects:
+To effectively design the data product, consider the following key aspects:
 
 - **Input Data Sources:** Determine the necessary data inputs required to build the product. These might include transactional data, customer demographic data, and product inventory data.
 - **ETL Process:** Extract, clean, and transform raw data from different systems (e-commerce, CRM, etc.)
@@ -50,7 +48,7 @@ Consider the following key aspects:
 
 ## Building Data Product
 
-Once you are done with the designing phase for your data product, it is time to put together various Resources that take care of data ingestion and transformation, credential management, quality rules, etc. 
+After completing the design phase, it's time to assemble the necessary resources for building your data product. This involves setting up data ingestion and transformation processes, managing credentials, enforcing quality rules, and more. 
 
 **Example Scenario:** 
 
@@ -154,16 +152,10 @@ This section outlines essential metadata attributes for the product.
 - **Type:** `data` Specifies that the product handles data.
 - **Purpose:** Defines the objective and impact of the product.
 - **Tags:** Tags provide important context for categorizing the data product on the DPH (Data Product Hub). These tags are used to populate three important data points on the DPH UI - `Domain`, `Usecase` and `Tier`
-    
-    It is now mandatory to use the following tag formats:
-    
-    - DPDomain.______
-    - DPUsecase.______
-    - DPTier.______
 - **Description:** Provides an overview of what the Data Product delivers.
 - **Refs**: Include reference links in the DP spec file to add any additional context to the DP.  Provide `title` and link `href`.
     
-    The following code snippet shows how the above properties come in spec file is for our example.
+    The following code snippet shows how the above properties come in spec file for our example.
     
     ```yaml
     version: v1beta
@@ -605,6 +597,7 @@ You can also check your data product on Data Product Hub.
     
 2. Click on the data product to view its details.
     
+    ![dpdetails_on_dph.png](/quick_guides/building_data_product/dp_details_dph.png)
 
 ## Download Data Product Code Files
 
