@@ -25,7 +25,7 @@ Alternatively, having specific use cases assigned can also grant you access.
 
 For more details, visit [Bifrost](https://dataos.info/interfaces/bifrost/).
 
-> DataOS gives you everything you need to build a Data Product—whether starting from scratch or reusing an existing one. You can explore the Data Products Hub to discover and learn about all available data products, each with detailed information to help you get started or find inspiration.
+> DataOS gives you everything you need to build a Data Product—whether starting from scratch or reusing an existing one. You can explore the Data Product Hub to discover and learn about all available data products, each with detailed information to help you get started or find inspiration.
 > 
 
 ## Designing Data Product
@@ -152,16 +152,10 @@ This section outlines essential metadata attributes for the product.
 - **Type:** `data` Specifies that the product handles data.
 - **Purpose:** Defines the objective and impact of the product.
 - **Tags:** Tags provide important context for categorizing the data product on the DPH (Data Product Hub). These tags are used to populate three important data points on the DPH UI - `Domain`, `Usecase` and `Tier`
-    
-    It is now mandatory to use the following tag formats:
-    
-    - DPDomain.______
-    - DPUsecase.______
-    - DPTier.______
 - **Description:** Provides an overview of what the Data Product delivers.
 - **Refs**: Include reference links in the DP spec file to add any additional context to the DP.  Provide `title` and link `href`.
     
-    The following code snippet shows how the above properties come in spec file is for our example.
+    The following code snippet shows how the above properties come in spec file for our example.
     
     ```yaml
     version: v1beta
