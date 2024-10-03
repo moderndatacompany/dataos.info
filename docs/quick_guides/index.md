@@ -72,6 +72,15 @@ Learn how to examine and experiment with logical data models. Lens will help you
 🗣 If you’re working with Lens 1.0, click <a href="/quick_guides/lens1/">here</a> to check out the guides for assistance.
 </aside>
 
+## :products-dataproduct: Designing and Building Data Products
+Learn to develop reusable and composable Data Products that streamline data management and provide valuable business insights across the organization.
+
+<div class= "grid cards" markdown>
+
+-   [Building Data Products](/quick_guides/building_data_product/)
+
+</div>
+
 ## :material-scanner: Scanning Metadata
 
 Learn how to utilize the Scanner stack within DataOS to extract metadata from a variety of external source systems such as relational databases, data warehouses, messaging services, dashboards, and more. 
@@ -93,3 +102,11 @@ Learn to create ETL pipelines tailored for both batch and real time data process
 -   [Store Query Results as Dataset with Flare](/quick_guides/creating_etl_pipelines/query_as_input_flare/)
      
 </div>
+
+## :resources-stack: Deploying Data Applications on DataOS 
+
+Learn to deploy your data applications—whether developed with Streamlit, Django, Flask, or your preferred tool—on DataOS using the Container stack.
+
+<div class= "grid cards" markdown>
+
+-   [Deploying Data Application Using Container Stack](/quick_guides/deploy_data_app_using_container_stack/)
