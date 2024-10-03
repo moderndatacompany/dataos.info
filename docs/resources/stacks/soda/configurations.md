@@ -53,7 +53,9 @@ stackSpec:
             attributes:
               category: Accuracy
         - missing_count(birthdate) = 0:
+            name: Compelteness of the birthdate column
             attributes:
+              title: Completeness of the Birthdate Column
               category: Completeness
 
         # - invalid_percent(phone_number) < 1 %:
@@ -90,6 +92,7 @@ stackSpec:
         - freshness(ts_customer) < 1d:
             name: Freshness01
             attributes:
+              title: Freshness of the last commit
               category: Freshness
         - freshness(ts_customer) < 5d:
             name: Freshness02
@@ -191,7 +194,7 @@ stackSpec:
 
 ---
 
-#### **`dataset`**
+### **`dataset`**
 
 **Description:** Dataset specification, including the source and path. Specify the data source or dataset on which you want to run data quality checks.
 
@@ -210,7 +213,7 @@ stackSpec:
 
 ---
 
-#### **`checks`**
+### **`checks`**
 
 **Description:** List of checks associated with the dataset input. Here you will specify a list of specific data quality checks or tests that will be performed on the designated dataset. These checks can be tailored to suit the unique requirements of the dataset and the data quality objectives. 
 
@@ -233,7 +236,101 @@ stackSpec:
 
 ---
 
-#### **`options`**
+
+
+
+### **`name`**
+
+**Description:**  Name of the check.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+|  string | mandatory | none | none |
+
+```yaml
+stackSpec:
+  inputs:
+    - dataset: dataos://sanityredshift:public/redshift_write_12
+      checks:
+        - row_count between 10 and 1000:
+            name: row count 
+            attributes:
+              category: Accuracy
+    # ... (other checks for the dataset)
+```
+
+---
+
+### **`attributes`**
+
+**Description:**  Additional metadata that describes or categorizes the check, such as accuracy, completeness, or consistency.
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --- | --- | --- | --- |
+| list of mappings | mandatory | none | none |
+
+```yaml
+stackSpec:
+  inputs:
+    - dataset: dataos://sanityredshift:public/redshift_write_12
+      checks:
+        - row_count between 10 and 1000:
+            attributes:
+              category: Accuracy
+    # ... (other checks for the dataset)
+```
+
+---
+
+### **`title`**
+
+**Description:**  A descriptive title for the specific check being applied. It is used to give a human-readable name to the check, as the check itself may have a technical name or underscores (e.g., row_count).
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --------- | ----------- | ------------- | -------------- |
+|   string  |   optional  |     none      |     none       |
+
+```yaml
+stackSpec:
+  inputs:
+    - dataset: dataos://sanityredshift:public/redshift_write_12
+      checks:
+        - row_count between 10 and 1000:
+            attributes:
+              title: Row Count between 10 and 1000
+              category: Accuracy
+    # ... (other checks for the dataset)
+```
+
+**Additional Information:**
+
+The system takes the `title` attribute as the first priority for Display Name. If the title is not present, the `name` attribute is displayed. 
+
+---
+
+
+### **`category`**
+
+**Description:**  The category under which the check falls, such as Freshness, Accuracy, etc.	
+
+| Data Type | Requirement | Default Value | Possible Value |
+| --------- | ----------- | ------------- | -------------- |
+|   string  |   optional  |     none      |     none       |
+
+```yaml
+stackSpec:
+  inputs:
+    - dataset: dataos://sanityredshift:public/redshift_write_12
+      checks:
+        - row_count between 10 and 1000:
+            attributes:
+              title: Row Count between 10 and 1000
+              category: Accuracy
+    # ... (other checks for the dataset)
+```
+---
+
+### **`options`**
 
 **Description:** Options associated with the dataset input, such as the engine or cluster name. Here, you can configure how you want to connect to the data source and run the check. Pass the following information - 
 
@@ -255,7 +352,7 @@ stackSpec:
 
 ---
 
-##### **`engine`**
+### **`engine`**
 
 **Description:** Engine option for the dataset input. The engine key can have two values: "minerva" and "default". The "default" value executes queries on the native engine of the data source, while "minerva" uses the DataOS query engine to run queries. 
 
@@ -307,7 +404,7 @@ stackSpec:
 
 ---
 
-##### **`clusterName`**
+### **`clusterName`**
 
 **Description:** Here, the users can specify the cluster name on which the queries will run. If the engine is Minerva, this is a mandatory field. You can check the cluster on which your depot is mounted in Workbench or check the cluster definition in Operations.
 
@@ -328,7 +425,7 @@ stackSpec:
 
 ---
 
-##### **`branchName`**
+### **`branchName`**
 
 **Description:** This attribute allows users to specify the branch of an Iceberg dataset on which the checks should be executed. If the branch name is omitted, Soda defaults to running checks on the `main` branch. For targeted operations on specific branches, providing the branch name is essential.
 
@@ -349,7 +446,7 @@ stackSpec:
 
 ---
 
-#### **`filter`**
+### **`filter`**
 
 **Description:** The `filter` attribute mapping or filter section serves as a global filter for all checks specified within a dataset. It is essential to note that this global filter functionality differs from the filter applied within the check section.
 
@@ -371,7 +468,7 @@ stackSpec:
 
 ---
 
-##### **`name`**
+### **`name`**
 
 **Description:** The `name` attribute provides a unique name to the filter.
 
@@ -392,7 +489,7 @@ stackSpec:
 
 ---
 
-##### **`where`**
+### **`where`**
 
 **Description:** The `where` attribute is used to specify the filter condition.
 
@@ -413,7 +510,7 @@ stackSpec:
 
 ---
 
-#### **`profile`**
+### **`profile`**
 
 **Description:** Profile specification for the dataset input, including column selections. Here you can specify a list of columns that require profiling. Column profile information is used to understand the characteristics and data distribution in the specified columns, such as the calculated mean value of data in a column, the maximum and minimum values in a column, and the number of rows with missing data. 
 
@@ -440,7 +537,7 @@ stackSpec:
 
 ---
 
-##### **`columns`**
+### **`columns`**
 
 **Description:** List of column specifications for profiling the dataset.
 
