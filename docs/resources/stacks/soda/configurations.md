@@ -309,13 +309,16 @@ The system takes the `title` attribute as the first priority for Display Name. I
 ---
 
 
+
 ### **`category`**
 
 **Description:**  The category under which the check falls, such as Freshness, Accuracy, etc.	
 
+
 | Data Type | Requirement | Default Value | Possible Value |
 | --------- | ----------- | ------------- | -------------- |
 |   string  |   optional  |     none      |     none       |
+
 
 ```yaml
 stackSpec:
@@ -328,6 +331,21 @@ stackSpec:
               category: Accuracy
     # ... (other checks for the dataset)
 ```
+
+**Additional Information**
+
+It is necessary to add the category of the checks, as this allows the category to be populated in the Data Product Hub (DPH). By specifying a category, checks are better organized and easily searchable, ensuring that users can quickly understand the type of validation being applied. There are total six types of categories of check:
+
+- Freshness
+- Schema
+- Validity
+- Completeness
+- Uniqueness
+- Accuracy
+
+---
+
+
 ---
 
 ### **`options`**
