@@ -79,8 +79,8 @@ stack:
   reconciler: "stackManager"
 
 # DataOS Address JqFilter
-	dataOsAddressJqFilters:
-	  - .inputs[]
+  dataOsAddressJqFilters:
+    - .inputs[]
     - .outputs[]
 
 # Secret Projection
