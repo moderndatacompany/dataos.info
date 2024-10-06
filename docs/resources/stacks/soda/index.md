@@ -176,6 +176,7 @@ stackSpec:
       checks:
         - row_count between 1 and 170:
             attributes:
+              title: Row Count Between 1 and 170
               category: Accuracy
         - missing_count(customer_no) = 0:
             attributes:
