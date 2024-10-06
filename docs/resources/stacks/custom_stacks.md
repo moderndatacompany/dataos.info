@@ -337,7 +337,7 @@ workerConfig:
 | [`containerResourceTemplate`](/resources/stacks/custom_stacks/configurations/#containerresourcetemplate-1) | string | none | valid container Resource template | optional |
 | [`resourceTemplate`](/resources/stacks/custom_stacks/configurations/#resourcetemplate-1) | string | none | valid resource template | optional |
 
-To declare a Stack that will be orchestrated using a Worker as a Containerized Resource, refer to the link: [Stack orchestrated via a Worker declared using a config template](/resources/stacks/custom_stack/case_scenarios/stack_orchestrated_by_a_worker_declared_using_a_config_template/). To declare a Stack using a custom Resource template that will be orchestrated using a Worker, refer to the following link: [Stack orchestrated via a Worker declared using a config template](/resources/stacks/custom_stacks/case_scenarios/stack_orchestrated_by_a_worker_declared_using_a_resource_template/).
+To declare a Stack that will be orchestrated using a Worker as a Containerized Resource, refer to the link: [Stack orchestrated via a Worker declared using a config template](/resources/stacks/custom_stacks/case_scenarios/stack_orchestrated_by_a_workflow_declared_using_a_config_template/). To declare a Stack using a custom Resource template that will be orchestrated using a Worker, refer to the following link: [Stack orchestrated via a Worker declared using a config template](/resources/stacks/custom_stacks/case_scenarios/stack_orchestrated_by_a_worker_declared_using_a_resource_template/).
 
 Service Configuration
 

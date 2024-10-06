@@ -114,7 +114,7 @@ After creating a Lens data model, the next step is to explore it—this means in
   - [Best Practices](/resources/lens/best_practices/)
     Explore recommended guidelines and techniques to create efficient and scalable data models.
 
-  - [Do's and Don'ts](/resources/lens/do's_and_dont's/)
+  - [Do's and Don'ts](/resources/lens/dos_and_donts/)
     A concise list of actions to follow and pitfalls to avoid when designing your data model.
 
   - [Error reference](/resources/lens/errors/)

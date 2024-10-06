@@ -697,7 +697,7 @@ cluster:
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value**                                       |
 | ------------- | -------------- | ------------------ | --------------------------------------------------------- |
-| string        | optional       | none               | [View the list of all possible catalog types here](/resources/cluster/connectors_configuration) |
+| string        | optional       | none               | [View the list of all possible catalog types here](/resources/cluster/connectors_configuration/) |
 
 **Example Usage:**<br>
 ```yaml
@@ -891,7 +891,7 @@ cluster:
 | ----------------- | -------------- | ------------------ | --------------------------- |
 | list of strings   | optional       | none               | any valid tag or pattern    |
 
-**Additional Information:** Multiple users can be specified using AND/OR Logical Rules. To know more, click [here](/resources/policy/rules_for_and_or_relationship)<br>
+**Additional Information:** Multiple users can be specified using AND/OR Logical Rules. To know more, click [here](/resources/policy/rules_for_and_or_relationship/).<br>
 
 **Example Usage:**<br>
 ```yaml

@@ -195,7 +195,7 @@ dataos-ctl dataset -a dataos://icebase:retail/city update-field \
 ```
 
 >
-🗣 Updating column [type](/resources/depot/icebase/case_scenario_schema_evolution.md) is limited to only certain data types for any particular type 
+🗣 Updating column [type](/resources/depot/icebase/case_scenario_schema_evolution/) is limited to only certain data types for any particular type 
 - `integer` to `long`
 - `float` to `double`
 - Increasing the precision of `decimal` type
