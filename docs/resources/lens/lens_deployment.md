@@ -318,6 +318,12 @@ To validate the proper creation of the Lens Resource within the DataOS environme
          customer360 | v1alpha | lens | curriculum | active |         |  thor
      ```
 
+<aside class="callout"> 
+
+💡 Once deployed, the lens will be able to explore in the Lens Studio. This is where business user can interact with the model.
+</aside>
+
+
 ## Next Step
 
 Exploration of Deployed Lens:

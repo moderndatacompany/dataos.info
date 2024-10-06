@@ -207,7 +207,7 @@ Computes only the changed rows or files of data since the last build, reducing o
 
 ### **Rewrite Orphans**
 
-The `remove_orphans` [action](/resources/stacks/flare/configurations#remove_orphans/) cleans up orphans files older than a specified time period. This action may take a long time to finish if you have lots of files in data and metadata directories. It is recommended to execute this periodically, but you may not need to execute this often. 
+The `remove_orphans` [action](/resources/stacks/flare/configurations/#remove_orphans) cleans up orphans files older than a specified time period. This action may take a long time to finish if you have lots of files in data and metadata directories. It is recommended to execute this periodically, but you may not need to execute this often. 
 
 <aside>
 

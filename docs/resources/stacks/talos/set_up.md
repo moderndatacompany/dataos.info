@@ -78,7 +78,7 @@ services:
     tty: true
 ```
 
-To know more about each attribute, [please refer to this](/resources/stacks/talos/configurations/docker-compose/).
+To know more about each attribute, [please refer to this](/resources/stacks/talos/configurations/docker_compose/).
 
 ### **Writing SQL templates**
 
