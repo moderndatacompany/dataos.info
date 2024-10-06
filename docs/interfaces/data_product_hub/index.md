@@ -92,7 +92,7 @@ The DPH acts as a central layer for generating APIs, connecting to BI/analytics 
 
 Discover the right Data Products to make timely business decisions. In this section, you will explore the DPH interface in detail to discover the potential Data Products for your specific use case. To get started with the DPH, click on the **Data Product Hub 2.0**, you will be redirected to the Data Product Hub home page.
 
-> [Data Product Discovery](/interfaces/data_product_hub/discovery.md)
+> [Data Product Discovery](/interfaces/data_product_hub/discovery/)
 
 <center>
   <img src="/interfaces/data_product_hub/dataos.png" alt="DPH" style="width:50rem; border: 1px solid black;" />
@@ -105,7 +105,7 @@ Discover the right Data Products to make timely business decisions. In this sect
 
 The **Explore** feature allows you to drill deeper into the details of a Data Product. It presents data in visual forms such as tables and charts, provides details on the data model, and allows you to query in GraphQL enabling you to analyze the data before consuming it via APIs or BI tools.
 
-> [Data Product Exploration](/interfaces/data_product_hub/exploration.md)
+> [Data Product Exploration](/interfaces/data_product_hub/exploration/)
 
 <aside class="callout">
 
@@ -176,6 +176,9 @@ The BI Sync feature in the DPH enables seamless integration with popular busines
 
 
 
+
+
+
 ### **AI/ML**
 
 You can consume the data products curated in the DPH into data science notebooks such as Jupyter Notebook to power your AI/ML use cases.
@@ -228,6 +231,7 @@ You can consume the Data Product to create data applications via REST APIs.
 
 
 </div>
+
 
 
 ## Best Practices
