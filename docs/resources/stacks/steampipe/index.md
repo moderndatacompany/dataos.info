@@ -167,36 +167,36 @@ name: steampipe-csv
 version: v1
 type: service
 tags:
-    - service
-    - steampipe
+  - service
+  - steampipe
 description: Steampipe CSV Service
 
 # Service-specific section
 service:
-    servicePort: 9193 # Mandatory value: 9193
-    replicas: 1
-    stack: steampipestack:1.0 # Stack name and version
-    logLevel: INFO
-    compute: runnable-default
+  servicePort: 9193 # Mandatory value: 9193
+  replicas: 1
+  stack: steampipestack:1.0 # Stack name and version
+  logLevel: INFO
+  compute: runnable-default
 
 # Uncomment the relevant section based on secret handling preference
 
 # For Referring Secrets from a pre-created Secret Resource
-    # dataosSecrets: 
-    #   - name: steampipedb
-    #     workspace: steampipe
-    #     allKeys: true
-    #     consumptionType: envVars
+  # dataosSecrets: 
+  #   - name: steampipedb
+  #     workspace: steampipe
+  #     allKeys: true
+  #     consumptionType: envVars
 
 # For Supplying Secrets as Environment Variables
-    envs:
+  envs:
     STEAMPIPE_DATABASE_PASSWORD: "${{steampipe database password}}"
 
-    configs:
+  configs:
     csv.spc: "/home/iamgroot/modern_office/stack/dataos_steampipe/steampipe_csv/config/csv.spc"
 
 # Stack-Specific Section
-    stackSpec: {}
+  stackSpec: {}
 ```
 </details>
 
@@ -259,20 +259,20 @@ layer: user
 
 # Depot-specific section
 depot:
-    type: JDBC                                # Depot type
-    description: To write data to retaildb postgresql database
-    external: true
-    connectionSecret:                               # Data source specific configurations
+  type: JDBC                                # Depot type
+  description: To write data to retaildb postgresql database
+  external: true
+  connectionSecret:                               # Data source specific configurations
     - acl: r
-        type: key-value-properties
-        data:
-        username: "steampipe"
-        password: "${{steampipe depot password}}"
-    spec:                                           # Data source specific configurations
-    host: steampipe-csv.public.svc.cluster.local
-    port: 9193
-    database: steampipe
-    subprotocol: postgresql
+      type: key-value-properties
+      data:
+      username: "steampipe"
+      password: "${{steampipe depot password}}"
+  spec:                                           # Data source specific configurations
+  host: steampipe-csv.public.svc.cluster.local
+  port: 9193
+  database: steampipe
+  subprotocol: postgresql
 ```
 </details>
 
@@ -340,6 +340,7 @@ type: cluster
 # Cluster-specific section
 cluster:
   compute: runnable-default
+  type: minerva
   minerva:
     replicas: 1
     resources:
@@ -356,14 +357,6 @@ cluster:
     debug:
       logLevel: DEBUG
       trinoLogLevel: DEBUG
-    selector:
-      users:
-        - '**'
-      tags: []
-      sources:
-        - '**'
-      match: ""
-      priority: ""
 ```
 
 **Apply the Cluster manifest**
