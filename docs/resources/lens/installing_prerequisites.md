@@ -10,7 +10,7 @@ Before setting up Lens on your local system, ensure you meet the following requi
 
 ### **Docker**
 
-Docker is required to run Lens in an isolated environment on a local system. This guide provides instructions for installing Docker if it is not already installed. If Docker is already installed, you can jump to the [next step](/resou) in the setup process.
+Docker is required to run Lens in an isolated environment on a local system. This guide provides instructions for installing Docker if it is not already installed. If Docker is already installed, you can jump to the [next step](/resources/lens/installing_prerequisites/#visual-studio-code) in the setup process.
 
 **Checking for Existing Installation**
 

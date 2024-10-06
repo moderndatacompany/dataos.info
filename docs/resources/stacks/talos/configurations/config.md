@@ -54,7 +54,7 @@ sources:
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
-| string | mandatory | none | Alphanumeric values with the RegEx [a-z0-9]([-a-z0-9]*[a-z0-9])
+| string | mandatory | none | Alphanumeric values with the RegEx `[a-z0-9]([-a-z0-9]*[a-z0-9])`
 A hyphen/dash is allowed as a special character
 The total length of the string should be less than or equal to 48 characters |
 
@@ -84,7 +84,7 @@ description: A talos app
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
-| string | mandatory | none | Alphanumeric values with the RegEx [a-z0-9]([-a-z0-9]*[a-z0-9])
+| string | mandatory | none | Alphanumeric values with the RegEx `[a-z0-9]([-a-z0-9]*[a-z0-9])`
 A hyphen/dash is allowed as a special character
 The total length of the string should be less than or equal to 48 characters |
 
@@ -376,7 +376,6 @@ cachePath: tmp
 **Example Usage:**
 
 ```yaml
-yamlCopy code
 sources:
   - name: pg
     type: pg
