@@ -102,7 +102,7 @@ The screen will expand as you click on Expand to show the Logical Tables side pa
 The **History** section tracks the queries executed on a timestamp's data model. This allows users to revisit previous queries and review their selected dimensions, measures, filters, and results. It's beneficial for auditing, troubleshooting, or repeating previous analyses. 
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/image%20(26).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/image%20(26).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
 <figcaption><i>Data Product Hub Interface</i></figcaption>
 </center>
 
@@ -114,7 +114,7 @@ For instance, a query might have been executed 32 minutes ago, using the **city 
 In the **Data Product Exploration** interface, a user's query can be saved as a **Perspective**. A Perspective captures the current state of the query, including all selected dimensions, measures, metrics, filters, and any applied settings (e.g., time zones or limits). Once saved, Perspectives can be accessed at any time from the **Perspective** tab, allowing users to revisit or share their specific analyses without recreating the queries. By saving a Perspective, users can efficiently store and retrieve their specific analyses for continuous use or collaboration with team members.
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/image%20(27).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/image%20(27).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
 <figcaption><i>Data Product Hub Interface</i></figcaption>
 </center>
 
@@ -144,7 +144,7 @@ Perspectives listed in the sales360 data product
 Users can click the **Perspective** tab and view all saved perspectives, allowing them to reload the exact configuration of any previously saved query.
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/image%20(30).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/image%20(30).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
 <figcaption><i>Data Product Hub Interface</i></figcaption>
 </center>
 
@@ -156,7 +156,7 @@ Users can click the **Perspective** tab and view all saved perspectives, allowin
 The drop-down menu under **Logical Tables** allows users to switch between Logical Tables, Entities, or Metrics.
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/image%20(31).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/image%20(31).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
 <figcaption><i>Drop down menu</i></figcaption>
 </center>
 
@@ -169,7 +169,7 @@ This is the default view in the sidebar. It shows a list of logical tables, whic
 **For** **example**, the above image contains three logical tables: account, product, and sales.
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/Screenshot%20from%202024-09-23%2014-51-05.png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/Screenshot%20from%202024-09-23%2014-51-05.png" alt="DPH" style="width:25rem; border: 1px solid black;" />
 <figcaption><i>Logical Tables and Search bar</i></figcaption>
 </center>
 
@@ -178,7 +178,7 @@ As you expand a particular table, you will see the list of all its dimensions an
 **Search Bar**: Just below the Logical Tables title, the search bar allows users to filter and quickly find specific tables, dimensions, or measures by typing keywords.
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/image%20(32).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/image%20(32).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
 </center>
 
 
@@ -189,7 +189,7 @@ As you expand a particular table, you will see the list of all its dimensions an
 **Entities** serve as a layer atop the data graph of tables, presenting an abstraction of the entire data model for consumers to interact with. They serve as a layer for defining metrics, providing a simplified interface for end-users to interact objectively with key metrics instead of the entire data model. In an entity-first approach, views are built around entities in your data model. Views are built as denormalized tables, bringing measures and dimensions from multiple logical tables. They don’t have measures, dimensions, or segments of their own.
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/image%20(33).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/image%20(33).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
 <figcaption><i>Entities</i></figcaption>
 </center>
 
@@ -204,7 +204,7 @@ As you expand a particular table, you will see the list of all its dimensions an
 - **Step 2**: Select the relevant metric based on your analysis needs. For example, if you are interested in tracking sales, you might select **aggregated_qtr_revenue_metric.sales_sales_aggregate_qtr_revenue_2024**.
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/image%20(34).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/image%20(34).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
 <figcaption><i>Metircs</i></figcaption>
 </center>
 
@@ -229,7 +229,7 @@ the **Members Tab** dynamically displays the dimensions and measures selected by
 Suppose you select the dimension **`account, city`,** and measure **`account. Total_accounts`** will immediately appear in the **Members tab**, indicating that they are active in the query. Similarly, clicking on (-) sign will remove the selected member from the selection.
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/image%20(35).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/image%20(35).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
 </center>
 
 
@@ -276,7 +276,7 @@ The following are the options for displaying the results:
 
 
 - **Chart**: This option allows users to visualize the query results in a graphical format. Various charts (e.g., bar, line, pie) can be used to display trends, comparisons, and distributions visually.
-    /home/shraddhaade/doc/dataos.info/docs/interfaces/data_product_hub/exploration/Screenshot from 2024-09-24 12-49-14.png
+
 
     <center>
     <img src="/interfaces/data_product_hub/exploration/Screenshot%20from%202024-09-24%2012-49-14.png" alt="DPH" style="width:50rem; border: 1px solid black;" />
@@ -327,7 +327,9 @@ The left-side navigation panel provides key options to explore the model in diff
 - **Graph**: The default view, showing a visual lineage of how different tables and entities are interconnected. This interactive graph shows relationships between tables and views. Let us understand graph tab more with an detailed example.
 - Our example has three main entities or logical tables: **account**, **sales**, and **product,** and two **metrics, conversion_rate and qtd_revenue,** represented by a wave-like icon. **Metrics** are derived from one or more logical tables to track performance or monitor trends, using defined measures and dimensions from these tables.The **Graph tab** visually displays how these logical tables and metrics are interconnected, providing an interactive way to explore data relationships and schema details.
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/f628b3ad-3695-4dd9-93d9-befb41bfa869/image.png)
+<center>
+<img src="/interfaces/data_product_hub/exploration/image%20(39).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+</center>
 
 Here's how it works in more detail:
 
