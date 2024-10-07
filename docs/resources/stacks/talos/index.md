@@ -111,7 +111,7 @@ Talos provides the necessary tools and capabilities to streamline API developmen
 
 ### **Develop APIs locally**
 
-Before deploying your APIs into the DataOS environment you can build and test your APIs on your local system. [This guide]() includes the steps to build APIs locally using Talos. 
+Before deploying your APIs into the DataOS environment you can build and test your APIs on your local system. [This guide](/resources/stacks/talos/local_set_up/) includes the steps to build APIs locally using Talos. 
 
 ### **Develop APIs within DataOS**
 

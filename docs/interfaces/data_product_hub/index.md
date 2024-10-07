@@ -129,7 +129,7 @@ The BI Sync feature in the DPH enables seamless integration with popular busines
 
     Tableau Cloud allows you to access and share your visualizations online. For more details, refer to the link below:
 
-    [:octicons-arrow-right-24: Tableau Cloud Integration](/interfaces/data_product_hub/#data-product-discovery)
+    [:octicons-arrow-right-24: Tableau Cloud Integration](/interfaces/data_product_hub/activation/bi_sync/tableau_cloud/)
 
 
 -   :material-script-text-outline:{ .lg .middle } **Power BI**
@@ -138,7 +138,7 @@ The BI Sync feature in the DPH enables seamless integration with popular busines
 
     The BI Sync feature also supports Power BI, a data visualization tool from Microsoft. This integration ensures that your data products are automatically available within Power BI, facilitating interactive data exploration and reporting.
 
-    [:octicons-arrow-right-24: PowerBI](/interfaces/data_product_hub/#data-product-exploration)
+    [:octicons-arrow-right-24: PowerBI](/interfaces/data_product_hub/activation/bi_sync/powerbi/)
 
 
 
@@ -148,7 +148,7 @@ The BI Sync feature in the DPH enables seamless integration with popular busines
 
     Tableau Desktop is a powerful visual analytics tool that enables in-depth data exploration. For more information, visit the link below:
 
-    [:octicons-arrow-right-24: Tableau Desktop IntegrationData Product Consumption](/interfaces/data_product_hub/#data-product-activation)
+    [:octicons-arrow-right-24: Tableau Desktop IntegrationData Product Consumption](/interfaces/data_product_hub/activation/bi_sync/tableau_desk/)
 
 
 -   :material-console:{ .lg .middle } **Microsoft Excel**
@@ -158,7 +158,7 @@ The BI Sync feature in the DPH enables seamless integration with popular busines
     Microsoft Excel remains a popular tool for data analysis and reporting. For more information, visit the link below:
 
 
-    [:octicons-arrow-right-24: Microsoft Excel Integration](/interfaces/data_product_hub/#recipes)
+    [:octicons-arrow-right-24: Microsoft Excel Integration](/interfaces/data_product_hub/activation/bi_sync/excel/)
      
 
 -   :material-console:{ .lg .middle } **Apache Superset**
@@ -168,12 +168,10 @@ The BI Sync feature in the DPH enables seamless integration with popular busines
     For users of Apache Superset, an open-source data exploration and visualization platform, the DPH provides automatic synchronization through BI Sync. Set up the connection through the link below.
 
 
-    [:octicons-arrow-right-24: Apache Superset](/interfaces/data_product_hub/#recipes)
+    [:octicons-arrow-right-24: Apache Superset](/interfaces/data_product_hub/activation/bi_sync/superset/)
 
 
 </div>
-
-
 
 
 
@@ -191,7 +189,7 @@ You can consume the data products curated in the DPH into data science notebooks
 
     For more details, refer to the link below:
 
-    [:octicons-arrow-right-24: Jupyter Notebook Integration](/interfaces/data_product_hub/#data-product-discovery)
+    [:octicons-arrow-right-24: Jupyter Notebook Integration](/interfaces/data_product_hub/activation/jupyter/)
 
 
 </div>
@@ -209,7 +207,7 @@ You can develop applications on top of your Data Product through PostgreSQL or G
 
     For more information, visit the link below:
 
-    [:octicons-arrow-right-24: Postgres and GraphQL integration](/interfaces/data_product_hub/#data-product-activation)
+    [:octicons-arrow-right-24: Postgres and GraphQL integration](/interfaces/data_product_hub/activation/app_development/)
 
 </div>
 
@@ -227,7 +225,7 @@ You can consume the Data Product to create data applications via REST APIs.
 
     For more details, refer to the link below:
 
-    [:octicons-arrow-right-24: Data APIs](/interfaces/data_product_hub/#data-product-discovery)
+    [:octicons-arrow-right-24: Data APIs](/interfaces/data_product_hub/activation/data_api/)
 
 
 </div>
@@ -246,26 +244,22 @@ This section is designed to provide detailed, step-by-step guides for solving sp
 
 > [Data Product Hub Recipe](/interfaces/data_product_hub/recipe/)
 
-1. [**Discovering a Data Product**](https://www.notion.so/Data-Product-Hub-Recipe-WIP-10ac5c1d48768076a6b3fc1d9a6f8c18?pvs=21)
+1. [**Discovering a Data Product**](/interfaces/data_product_hub/recipe/#discovering-a-data-product)
 
     This recipe introduces you to the process of discovering relevant Data Products within the DPH using a real-life use case. It guides the user on how to filter by specific domains, such as **Corporate Finance**, to find the most relevant Data Products for the use case. 
 
-2. [**Exploring a Data Product**](https://www.notion.so/Data-Product-Hub-Recipe-WIP-10ac5c1d48768076a6b3fc1d9a6f8c18?pvs=21)
-
-    Once a relevant Data Product is discovered, this recipe explains how to explore its features in detail. You will learn to navigate through the **Overview, Input, Output,** **Models, Metrics, Data APIs,** **Quality, and Access Options** tabs to understand the origin, datasets, quality metrics of the Data Product, and much more. This exploration helps users ensure that the data is suitable for their specific use case.
-
-3. [**Activating a Data Product via BI Sync**](https://www.notion.so/Data-Product-Hub-Recipe-WIP-10ac5c1d48768076a6b3fc1d9a6f8c18?pvs=21)
+3. [**Activating a Data Product via BI Sync**](/interfaces/data_product_hub/recipe/#activating-the-data-product-via-bi-sync)
 
     This recipe outlines the steps to activate a Data Product through **BI Sync** for seamless integration with **Tableau Cloud**. It will guide you through connecting the Data Product to Tableau, activating it, and setting up a real-time dashboard to visualize key financial and operational metrics. 
 
-4. [**Consuming Data Products on Tableau Cloud**](https://www.notion.so/Data-Product-Hub-Recipe-WIP-10ac5c1d48768076a6b3fc1d9a6f8c18?pvs=21)
+4. [**Consuming Data Products on Tableau Cloud**](/interfaces/data_product_hub/recipe/#consuming-the-data-product-on-tableau-cloud)
 
     After activating a Data Product, this recipe shows users how to consume it on **Tableau Cloud**. It provides steps for creating a workbook, connecting to the data source, and building visualizations to display financial and performance indicators. 
 
-5. [**Exploring the Data Product**](https://www.notion.so/Data-Product-Hub-Recipe-WIP-10ac5c1d48768076a6b3fc1d9a6f8c18?pvs=21)
+5. [**Exploring the Data Product**](/interfaces/data_product_hub/recipe/#exploring-the-data-product)
 
     In this recipe, you can explore the Data Product in detail using the **Explore** feature of the Data Product Hub. 
 
-6. [**Activating a Data Product via Jupyter Notebook**](https://www.notion.so/Data-Product-Hub-Recipe-WIP-10ac5c1d48768076a6b3fc1d9a6f8c18?pvs=21)
+6. [**Activating a Data Product via Jupyter Notebook**](/interfaces/data_product_hub/recipe/#activating-the-data-product-via-jupyter-notebook)
 
     This recipe explains how to activate a Data Product for use in the **Jupyter Notebook**. It guides you through downloading and running a Jupyter Notebook with Data Product APIs, enabling you to build advanced models and conduct machine learning tasks.
