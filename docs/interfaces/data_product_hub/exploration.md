@@ -341,7 +341,10 @@ Further, when you click on any logical tables or metrics, a detailed tab opens o
 - It shows how this table is connected to other entities in the system, such as **accounts**, **products**, and other metrics.
 - When you click on the **sales** table, a detailed tab opens on the side, displaying all the **defined segments, measures, and dimensions** within this table. Each attribute is accompanied by its **data type** (e.g., numeric, string, date) to help you understand the table's schema clearly.
 
-![Screencastfrom2024-10-0312-01-49-ezgif.com-video-to-gif-converter.gif](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/2f480583-f977-4e6f-9b36-f89cbdc89b74/Screencastfrom2024-10-0312-01-49-ezgif.com-video-to-gif-converter.gif)
+<center>
+<img src="/interfaces/data_product_hub/exploration/Screencastfrom2024-10-0312-01-49-ezgif.com-video-to-gif-converter%20(1).gif" alt="DPH" style="width:50rem; border: 1px solid black;" />
+</center>
+
 
 **Schema Breakdown**
 
@@ -358,7 +361,12 @@ Metrics are a type of view. All metrics are represented by a wave-like icon rese
 
 When a **metric** references a **measure** or **dimension** from a **logical table**, it adopts the naming convention `table_name + field_name`. This approach ensures that users can easily identify the origin of each measure or dimension used in a metric, promoting transparency and data lineage. For example, the measure **frequency** from the **Sales Table** is renamed **sales_frequency** when used in the **Conversion Rate Metric** to indicate its origin.
 
-![Screenshot from 2024-10-01 18-32-47.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/c9fe0bf3-7223-4b60-836a-7868c5e7839e/Screenshot_from_2024-10-01_18-32-47.png)
+
+<center>
+<img src="/interfaces/data_product_hub/exploration/Screenshot%20from%202024-10-01 18-32-47.png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+</center>
+
+
 
 *Dashed blue lines visually indicate the relationships between the **Sales Table** and the **conversion_rate** metric. The lines highlight which **dimensions** and **measures** from the **Sales Table** are used to calculate the **conversion_rate** metric.*
 
@@ -366,7 +374,11 @@ Similarly,  **QTD Revenue** metrics leverage fields from multiple logical tables
 
 *The **blue dashed lines** in the graph visualization represent the relationships between the logical tables and the metrics, indicating how data from each table feeds into the metric calculations. This visual connection helps users understand how measures and dimensions from different sources contribute to the overall metric. All fields are prefixed with their respective table name (e.g., **sales_**, **product_**, **account_**), showing which fields from different tables are contributing to the metric.*
 
-![Screenshot from 2024-10-01 18-39-56.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/cbc96863-16de-49cb-9286-56cf053da053/Screenshot_from_2024-10-01_18-39-56.png)
+
+<center>
+<img src="/interfaces/data_product_hub/exploration/Screenshot%20from%202024-10-01 18-39-56.png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+</center>
+
 
 - **Schema**: This section contains detailed information about the structure of the tables, views, and entities within the data model. Users can view columns, data types, and relationships, making it easier to understand how data is stored and linked within the product.
 
@@ -379,7 +391,10 @@ In this example, there are two user groups: **nonproof_analyst** and **default**
 - The **nonproof_analyst** group includes a user identified by the tag `users:id:kanakgupta`.
 - The **default** group includes all members, providing universal access to anyone not explicitly excluded from the model.
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/7185db8a-75d1-4ba9-804b-a5f217e7d587/image.png)
+<center>
+<img src="/interfaces/data_product_hub/exploration/image%20(40).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+</center>
+
 
 Further, when you click on the account table, The following sections are displayed.
 
@@ -399,23 +414,34 @@ Further, when you click on the account table, The following sections are display
     - **Secure**: Indicates whether access to certain fields is restricted based on user permissions. For example, here, the email column is secured and redacted.
     - **Aliases**: Provides alternate names for fields if defined.
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/d42d1e1e-859e-42dd-b66c-ef2b097d022e/image.png)
 
-*Account table Schema*
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/fca2e2aa-e2f3-4e1b-a55a-b0ec1e50d1a2/image.png)
+<center>
+<img src="/interfaces/data_product_hub/exploration/image%20(41).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+<figcaption><i>Account Table Schema</i></figcaption>
+</center>
 
-*The secure column header indicates that the Email column is redacted.*
+
+<center>
+<img src="/interfaces/data_product_hub/exploration/image%20(42).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+<figcaption><i>The secure column header indicates that the Email column is redacted</i></figcaption>
+</center>
 
 One can explore the details on each table. For example, if we click on the account table, we can see details like the total number of measures and dimensions and details like whether the table is public or not. It also exposes the underlying data type, aggregate type, and its SQL.
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/0bc6cda9-b248-453f-bb37-b365320a374e/image.png)
+<center>
+<img src="/interfaces/data_product_hub/exploration/image%20(43).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+</center>
 
 - **Files**: This contains all relevant SQL files, tables, views, and YAML files (e.g., user groups) necessary to define the **Lens**. Here, users can explore the actual implementation and configuration of the model, making it useful for developers or advanced users who need to see the code and metadata behind the data product.
 
 For example, In the above image are the YAML Implementation files for the Lens model of the data product for all entities. One can also view the lens artifact in the Metis by clicking on **Open in Metis** button in the right side corner 
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/2a3410de-46dc-4d2c-86b0-6dca832bed56/image.png)
+
+<center>
+<img src="/interfaces/data_product_hub/exploration/image%20(44).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+</center>
+
 
 ## GraphQL Tab
 
