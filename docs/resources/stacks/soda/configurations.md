@@ -334,7 +334,7 @@ stackSpec:
 
 **Additional Information**
 
-It is necessary to add the category of the checks, as this allows the category to be populated in the Data Product Hub (DPH). By specifying a category, checks are better organized and easily searchable, ensuring that users can quickly understand the type of validation being applied. There are total six types of categories of check:
+It is necessary to add the category of the checks, as this allows the category to be populated in the [Data Product Hub (DPH)](/interfaces/data_product_hub/). By specifying a category, checks are better organized and easily searchable, ensuring that users can quickly understand the type of validation being applied. There are total six types of categories of check:
 
   - Freshness
   - Schema
@@ -348,6 +348,8 @@ It is necessary to add the category of the checks, as this allows the category t
 ### **`options`**
 
 **Description:** Options associated with the dataset input, such as the engine or cluster name. Here, you can configure how you want to connect to the data source and run the check. Pass the following information - 
+
+
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
 | mapping | optional | none | mapping containing options in key-value pairs |

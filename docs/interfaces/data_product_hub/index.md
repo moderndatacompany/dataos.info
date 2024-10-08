@@ -1,91 +1,50 @@
-# Data Product Hub
+# :interfaces-dataproducthub: Data Product Hub
 
-Data Product Hub (DPH) is a Graphical User Interface within DataOS where data analysts, business analysts, data scientists, and data app developers can discover actionable [Data Products](/products/data_product/) and perspectives. These Data Products are meticulously curated to provide business value and serve as a robust foundation for executing various use cases. Key use cases include **Analytics, AI/ML, GenAI/LLM on structured enterprise data, and data sharing**.
+Data Product Hub (DPH) is a Graphical User Interface within DataOS where data analysts, business analysts, data scientists, and data app developers can discover actionable [Data Products](/products/data_product/) and perspectives. These Data Products are meticulously curated to provide business value and serve as a robust foundation for executing various use cases. Key use cases include **Analytics**, **AI/ML**, **GenAI/LLM on structured enterprise data**, and **data sharing**.
 
 In addition, the DPH offers access to **DataAPIs** built on top of the Data Product layer, enhancing the ability to integrate and utilize data seamlessly. This platform effectively bridges the gap between IT-managed data infrastructure and business teams, enabling consistent data access despite changes in the underlying data systems. By providing curated, trusted data in multiple formats, the DPH significantly accelerates **time-to-value** for new use cases, helping organizations reduce **data total cost of ownership (TCO)** and achieve **more efficient and streamlined workflows**.
 
-<div class="grid cards" markdown>
-
--   :material-format-list-bulleted-type:{ .lg .middle } **How to discover the Data Products?**
-
-    ---
-
-    Discover the Data Products by getting started with DPH.
-
-    [:octicons-arrow-right-24: Discover Data Products](/interfaces/data_product_hub/#data-product-discovery)
-
-
--   :material-script-text-outline:{ .lg .middle } **How to explore Data Products?**
-
-    ---
-
-    Explore the Data Products in detail.
-
-    [:octicons-arrow-right-24: Explore Data Products](/interfaces/data_product_hub/#data-product-exploration)
-
-
-
--   :material-clock-fast:{ .lg .middle } **How to consume a Data Product?**
-
-    ---
-
-    Consume the Data Product via various mediums.
-
-    [:octicons-arrow-right-24: Data Product Consumption](/interfaces/data_product_hub/#data-product-activation)
-
-
--   :material-console:{ .lg .middle } **Recipes**
-
-    ---
-
-    Recipes, that includes real life use case for better understanding.
-
-
-    [:octicons-arrow-right-24: Recipes](/interfaces/data_product_hub/#recipes)
-     
-</div>
-
 ## Key Features
 
-This section covers the key features of the DPH.
+This section covers the key features of the Data Product Hub.
 
 ### **Self-Service Data Consumption**
 
-Using DPH, business users can independently discover, explore, and leverage purposefully designed Data Products tailored to their needs. 
+Using Data Product Hub, business users can independently discover, explore, and leverage purposefully designed Data Products tailored to their needs. 
 
 <center>
   <img src="/interfaces/data_product_hub/image%20(25).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
-  <figcaption><i>Data Product Hub Interface</i></figcaption>
+  <figcaption><i>Self-service Data Consumption</i></figcaption>
 </center>
 
 
 ### **Trust and Governance**
 
-Data governance and quality are top priorities, making sure that data is accurate, compliant, and trustworthy.
+Data Product Hub provides a robust foundation for trust and governance, ensuring data is reliable, secure, and compliant with organizational policies.
 
 <center>
   <img src="/interfaces/data_product_hub/image%20(26).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
-  <figcaption><i>Data Product Hub Interface</i></figcaption>
+  <figcaption><i>Trust and Governance</i></figcaption>
 </center>
 
 
 
 ### **Embedded Context**
 
-DPH provides lineage, quality metrics, usage patterns, governance details, semantic definitions, and documentation for each Data Product. 
+Data Product Hub provides lineage, quality metrics, usage patterns, governance details, semantic definitions, and documentation for each Data Product. 
 
 <center>
   <img src="/interfaces/data_product_hub/image%20(27).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
-  <figcaption><i>Data Product Hub Interface</i></figcaption>
+  <figcaption><i>Embedded Context</i></figcaption>
 </center>
 
 ### **Seamless Integrations**
 
-The DPH acts as a central layer for generating APIs, connecting to BI/analytics tools, and,  AI and ML tools, ensuring seamless integration and smooth access to metrics and insights.
+The Data Product Hub acts as a central layer for generating APIs, connecting to BI/analytics tools, and,  AI and ML tools, ensuring seamless integration and smooth access to metrics and insights.
 
 <center>
   <img src="/interfaces/data_product_hub/image%20(28).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
-  <figcaption><i>Data Product Hub Interface</i></figcaption>
+  <figcaption><i>Seamless Integrations</i></figcaption>
 </center>
 
 ## **Data Product Discovery**
@@ -96,22 +55,25 @@ Discover the right Data Products to make timely business decisions. In this sect
 
 <center>
   <img src="/interfaces/data_product_hub/dataos.png" alt="DPH" style="width:50rem; border: 1px solid black;" />
-  <figcaption><i>DataOS Interface</i></figcaption>
+  <figcaption><i>Data Product Hub on DataOS Home Page</i></figcaption>
 </center>
 
+---
 
 
 ## Data Product Exploration
 
-The **Explore** feature allows you to drill deeper into the details of a Data Product. It presents data in visual forms such as tables and charts, provides details on the data model, and allows you to query in GraphQL enabling you to analyze the data before consuming it via APIs or BI tools.
-
-> [Data Product Exploration](/interfaces/data_product_hub/exploration/)
+The **Explore** button on the Data Product Hub interface allows you to drill deeper into the details of a Data Product. It presents data in visual forms such as tables and charts, provides details on the data model, and allows you to query using GraphQL enabling you to analyze the data before consuming it via APIs or BI tools.
 
 <aside class="callout">
 
 🗣 If no model is exposed by the Data Product, the Explore feature will be unavailable.
 
 </aside>
+
+> [Data Product Exploration](/interfaces/data_product_hub/exploration/)
+
+---
 
 ## Data Product Activation
 
@@ -123,7 +85,7 @@ The BI Sync feature in the DPH enables seamless integration with popular busines
 
 <div class="grid cards" markdown>
 
--   :material-format-list-bulleted-type:{ .lg .middle } **Tableau Cloud**
+-   :interfaces-tableau:{ .lg .middle } **Tableau Cloud**
 
     ---
 
@@ -132,26 +94,26 @@ The BI Sync feature in the DPH enables seamless integration with popular busines
     [:octicons-arrow-right-24: Tableau Cloud Integration](/interfaces/data_product_hub/activation/bi_sync/tableau_cloud/)
 
 
--   :material-script-text-outline:{ .lg .middle } **Power BI**
+-   :interfaces-powerbi:{ .lg .middle } **Power BI**
 
     ---
 
     The BI Sync feature also supports Power BI, a data visualization tool from Microsoft. This integration ensures that your data products are automatically available within Power BI, facilitating interactive data exploration and reporting.
 
-    [:octicons-arrow-right-24: PowerBI](/interfaces/data_product_hub/activation/bi_sync/powerbi/)
+    [:octicons-arrow-right-24: PowerBI Integration](/interfaces/data_product_hub/activation/bi_sync/powerbi/)
 
 
 
--   :material-clock-fast:{ .lg .middle } **Tableau Desktop**
+-   :interfaces-tableau:{ .lg .middle } **Tableau Desktop**
 
     ---
 
     Tableau Desktop is a powerful visual analytics tool that enables in-depth data exploration. For more information, visit the link below:
 
-    [:octicons-arrow-right-24: Tableau Desktop IntegrationData Product Consumption](/interfaces/data_product_hub/activation/bi_sync/tableau_desk/)
+    [:octicons-arrow-right-24: Tableau Desktop Integration](/interfaces/data_product_hub/activation/bi_sync/tableau_desk/)
 
 
--   :material-console:{ .lg .middle } **Microsoft Excel**
+-   :interfaces-excel:{ .lg .middle } **Microsoft Excel**
 
     ---
 
@@ -161,7 +123,7 @@ The BI Sync feature in the DPH enables seamless integration with popular busines
     [:octicons-arrow-right-24: Microsoft Excel Integration](/interfaces/data_product_hub/activation/bi_sync/excel/)
      
 
--   :material-console:{ .lg .middle } **Apache Superset**
+-   :interfaces-superset:{ .lg .middle } **Apache Superset**
 
     ---
 
@@ -174,16 +136,13 @@ The BI Sync feature in the DPH enables seamless integration with popular busines
 </div>
 
 
-
-
-
 ### **AI/ML**
 
 You can consume the data products curated in the DPH into data science notebooks such as Jupyter Notebook to power your AI/ML use cases.
 
 <div class="grid cards" markdown>
 
--   :material-format-list-bulleted-type:{ .lg .middle } **Jupyter Notebook**
+-   :interfaces-notebook:{ .lg .middle } **Jupyter Notebook**
 
     ---
 
@@ -201,11 +160,11 @@ You can develop applications on top of your Data Product through PostgreSQL or G
 
 <div class="grid cards" markdown>
 
--   :material-clock-fast:{ .lg .middle } **Postgres and GraphQL**
+-   :material-clock-fast:{ .lg .middle } **App Development**
 
     ---
 
-    For more information, visit the link below:
+    Develop data applications using PostgreSQL and GraphQL API endpoint. Refer to the link for more details:
 
     [:octicons-arrow-right-24: Postgres and GraphQL integration](/interfaces/data_product_hub/activation/app_development/)
 
@@ -219,7 +178,7 @@ You can consume the Data Product to create data applications via REST APIs.
 
 <div class="grid cards" markdown>
 
--   :material-format-list-bulleted-type:{ .lg .middle } **REST APIs**
+-   :material-format-list-bulleted-type:{ .lg .middle } **Data APIs**
 
     ---
 
@@ -230,7 +189,7 @@ You can consume the Data Product to create data applications via REST APIs.
 
 </div>
 
-
+---
 
 ## Best Practices
 
@@ -238,28 +197,22 @@ This section outlines essential strategies to ensure efficient and optimal usage
 
 > [Best Practices](/interfaces/data_product_hub/bestpractices/)
 
+---
+
 ## Recipes
 
 This section is designed to provide detailed, step-by-step guides for solving specific business use cases using the Data Product Hub. Each recipe focuses on a particular aspect of DPH, such as discovering relevant Data Products, exploring them in-depth, and integrating the data into external tools like BI platforms and Jupyter Notebooks. These recipes demonstrate how data analysts and business users can collaborate to solve real-world challenges efficiently.
 
 > [Data Product Hub Recipe](/interfaces/data_product_hub/recipe/)
 
-1. [**Discovering a Data Product**](/interfaces/data_product_hub/recipe/#discovering-a-data-product)
+The above recipe incorporates the following seperate sections:
 
-    This recipe introduces you to the process of discovering relevant Data Products within the DPH using a real-life use case. It guides the user on how to filter by specific domains, such as **Corporate Finance**, to find the most relevant Data Products for the use case. 
+1. [Discovering a Data Product](/interfaces/data_product_hub/recipe/#discovering-a-data-product): This recipe introduces you to the process of discovering relevant Data Products within the DPH using a real-life use case. It guides the user on how to filter by specific domains, such as **Corporate Finance**, to find the most relevant Data Products for the use case. 
 
-3. [**Activating a Data Product via BI Sync**](/interfaces/data_product_hub/recipe/#activating-the-data-product-via-bi-sync)
+3. [Activating a Data Product via BI Sync](/interfaces/data_product_hub/recipe/#activating-the-data-product-via-bi-sync): This recipe outlines the steps to activate a Data Product through **BI Sync** for seamless integration with **Tableau Cloud**. It will guide you through connecting the Data Product to Tableau, activating it, and setting up a real-time dashboard to visualize key financial and operational metrics. 
 
-    This recipe outlines the steps to activate a Data Product through **BI Sync** for seamless integration with **Tableau Cloud**. It will guide you through connecting the Data Product to Tableau, activating it, and setting up a real-time dashboard to visualize key financial and operational metrics. 
+4. [Consuming Data Products on Tableau Cloud](/interfaces/data_product_hub/recipe/#consuming-the-data-product-on-tableau-cloud): After activating a Data Product, this recipe shows users how to consume it on **Tableau Cloud**. It provides steps for creating a workbook, connecting to the data source, and building visualizations to display financial and performance indicators. 
 
-4. [**Consuming Data Products on Tableau Cloud**](/interfaces/data_product_hub/recipe/#consuming-the-data-product-on-tableau-cloud)
+5. [Exploring the Data Product](/interfaces/data_product_hub/recipe/#exploring-the-data-product): In this recipe, you can explore the Data Product in detail using the **Explore** feature of the Data Product Hub. 
 
-    After activating a Data Product, this recipe shows users how to consume it on **Tableau Cloud**. It provides steps for creating a workbook, connecting to the data source, and building visualizations to display financial and performance indicators. 
-
-5. [**Exploring the Data Product**](/interfaces/data_product_hub/recipe/#exploring-the-data-product)
-
-    In this recipe, you can explore the Data Product in detail using the **Explore** feature of the Data Product Hub. 
-
-6. [**Activating a Data Product via Jupyter Notebook**](/interfaces/data_product_hub/recipe/#activating-the-data-product-via-jupyter-notebook)
-
-    This recipe explains how to activate a Data Product for use in the **Jupyter Notebook**. It guides you through downloading and running a Jupyter Notebook with Data Product APIs, enabling you to build advanced models and conduct machine learning tasks.
+6. [Activating a Data Product via Jupyter Notebook](/interfaces/data_product_hub/recipe/#activating-the-data-product-via-jupyter-notebook): This recipe explains how to activate a Data Product for use in the **Jupyter Notebook**. It guides you through downloading and running a Jupyter Notebook with Data Product APIs, enabling you to build advanced models and conduct machine learning tasks.

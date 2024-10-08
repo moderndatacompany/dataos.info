@@ -32,8 +32,8 @@ To create a Workflow Resource, data developers can define a set of attributes in
 The manifest file for a Workflow Resource consists of three main sections, each requiring specific configuration:
 
 - [Resource Meta Section](#resource-meta-section): Contains attributes shared among all types of Resources.
-- [Workflow-Specific Section](#workflow-specific-section): Includes attributes unique to the Workflow Resource.
-- [Job-specific Section](#job-specific section): Includes attributes unique to the Job.
+- [Workflow-specific Section](#workflow-specific-section): Includes attributes unique to the Workflow Resource.
+- [Job-specific Section](#job-specific-section): Includes attributes unique to the Job.
 - [Stack-Specific Section](#stack-specific-section): Encompasses attributes specific to the Stack orchestrated by the Workflow, which can vary depending on the Stack.
 
 #### **Resource meta section**
@@ -80,7 +80,7 @@ The Workflow-specific sectionThe Workflow-specific section contains configuratio
 
 **Single-Run Workflow YAML configuration**
 
-A [Single-run Workflow](#single-run-workflow) executes only once. It does not include a schedule section. The YAML configuration for a single-run Workflow is as follows:
+A Single-run Workflow executes only once. It does not include a schedule section. The YAML configuration for a single-run Workflow is as follows:
 
 ```yaml
 workflow:
@@ -91,7 +91,7 @@ workflow:
 
 **Scheduled Workflow YAML configuration**
 
-A [Scheduled Workflow](#scheduled-workflow) triggers a series of jobs or tasks at particular intervals or predetermined times. To create a scheduled Workflow, specify the [attributes](/resources/workflow/configuration/#schedule) in the `schedule` section, in the following format:
+A Scheduled Workflow triggers a series of jobs or tasks at particular intervals or predetermined times. To create a scheduled Workflow, specify the [attributes](/resources/workflow/configurations/) in the [`schedule`](/resources/workflow/configurations/#schedule) section, in the following format:
 ```yaml
 workflow:
   schedule:
@@ -101,13 +101,13 @@ workflow:
 ```
 <center><i>Workflow-specific section configuration for Scheduled Workflow</i></center>
 
-#### **Configure the Job-specific Section**
+#### **Job-specific Section**
 
-A [Directed Acyclic Graph (DAG)](#workflow-and-directed-acyclic-graph-dag) represents the sequence and dependencies between various jobs within the Workflow. A DAG must contain at least one job.
+A [Directed Acyclic Graph (DAG)](/resources/workflow/core_concepts/#workflow-and-directed-acyclic-graph-dag) represents the sequence and dependencies between various jobs within the Workflow. A DAG must contain at least one job.
 
 **Job**
 
-A Job denotes a single processing task. Multiple jobs within a DAG can be linked sequentially or concurrently to achieve a specific result through [`dependencies`](/resources/workflow/configurations/#dependency). Here is an example YAML syntax for two jobs linked by dependencies:
+A Job denotes a single processing task. Multiple jobs within a DAG can be linked sequentially or concurrently to achieve a specific result through [`dependencies`](/resources/workflow/configurations/#dependencies). Here is an example YAML syntax for two jobs linked by dependencies:
 ```yaml
 dag: 
   - name: ${{job1 name}}
@@ -142,7 +142,7 @@ Further, jobs can be retried automatically by pre-defining the retry strategy wi
 
 </aside>
 
-#### **Configure the Stack-specific Section**
+#### **Stack-specific Section**
 
 The Stack-specific Section allows you to specify the desired [Stack](/resources/stacks) for executing your Workflow. Depending on your requirements, you can choose from the following supported Stacks:
 
@@ -287,7 +287,8 @@ INFO[0001] 🔍 get...complete
 
 ### **Get Runtime Information**
 
-To obtain the runtime status of the Workflow, use the [`get runtime`](/interfaces/cli/command_reference/#get-runtime) 
+To obtain the runtime status of the Workflow, use the [`get runtime`](/interfaces/cli/command_reference/#runtime) 
+
 
 === "Command"
 
@@ -301,7 +302,7 @@ To obtain the runtime status of the Workflow, use the [`get runtime`](/interface
     dataos-ctl get runtime -w curriculum -t workflow -n cnt-product-demo-01
     ```
 
-Alternatively, you can extract the Workflow information from the output of the [`get`](/interfaces/cli/command_reference/#get) command and pass it as a string to the [`get runtime`](/interfaces/cli/command_reference/#get-runtime) command. Look for the relevant information (highlighted) in the [`get`](/interfaces/cli/command_reference/#get) command output:
+Alternatively, you can extract the Workflow information from the output of the [`get`](/interfaces/cli/command_reference/#get) command and pass it as a string to the [`get runtime`](/interfaces/cli/command_reference/runtime) command. Look for the relevant information (highlighted) in the [`get`](/interfaces/cli/command_reference/#get) command output:
 
 === "Command"
 
@@ -361,7 +362,7 @@ INFO[0001] 🔍 workflow...complete
 
 ### **Get Runtime Refresh**
 
-To refresh or see updates on the Workflow progress, add the `-r` flag to the [`get runtime`](/interfaces/cli/command_reference#get-runtime) command:
+To refresh or see updates on the Workflow progress, add the `-r` flag to the [`get runtime`](/interfaces/cli/command_reference#runtime) command:
 
 ```shell
 dataos-ctl -i get runtime " cnt-product-demo-01 | v1 | workflow | curriculum" -r
@@ -375,7 +376,7 @@ For any additional flags, use help by appending `-h` with the respective command
 
 ### **Check Logs for Errors**
 
-To check the logs for errors, retrieve the node name from the output of the `get runtime` command for the failed node, as shown [here](/interfaces/cli/command_reference/#get-runtime), and execute the command as shown below
+To check the logs for errors, retrieve the node name from the output of the `get runtime` command for the failed node, as shown [here](/interfaces/cli/command_reference/#runtime), and execute the command as shown below
 
 === "Command"
 
@@ -560,7 +561,7 @@ Command:
 ```shell
 dataos-ctl apply -f ${{file path}} -w ${{workspace}}
 ```
-Once you have applied the Workflow, check the runtime for its success by using the [`get runtime`](/interfaces/cli/command_reference/#get-runtime) command
+Once you have applied the Workflow, check the runtime for its success by using the [`get runtime`](/interfaces/cli/command_reference/runtime) command
 
 === "Command"
 
