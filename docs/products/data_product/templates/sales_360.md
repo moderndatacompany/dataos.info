@@ -1,5 +1,5 @@
 
-# Sales 360 Case Study: StrideRight Shoes
+# Sales 360 Data Product Example: StrideRight Shoes
 
 ## Overview
 

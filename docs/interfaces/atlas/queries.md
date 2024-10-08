@@ -43,7 +43,7 @@ Atlas allows you to write parameterized queries. A query parameter lets you subs
     
 To learn more about the parameter types and how to add parameters to the queries, click here.
     
-[Parameterized Queries](queries/parameterized_queries.md)
+[Parameterized Queries](/interfaces/atlas/queries/parameterized_queries/)
     
 ## Download query result
     

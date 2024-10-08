@@ -20,11 +20,9 @@ The Workflow in DataOS serves as a [Resource](/resources/) for orchestrating dat
 
 ## Structure of Workflow manifest
 
-
-=== "Code"
-    ```yaml title="worker_manifest_structure.yml"
-    --8<-- "examples/resources/workflow/workflow.yml"
-    ```
+```yaml title="worker_manifest_structure.yml"
+--8<-- "examples/resources/workflow/workflow.yml"
+```
 
 
 ## First Steps
@@ -47,3 +45,5 @@ Workflows orchestrate Stacks to accomplish myriad tasks. Below are some recipes 
 - [How to orchestrate multiple Workflows from a single Workflow?](/resources/workflow/how_to_guide/multiple_workflows_from_a_single_workflow/)
 
 - [How to retry a job in the Workflow?](/resources/workflow/how_to_guide/retry_jobs/)
+
+- [How to apply a workflow and get runitme status CLI Stack](/resources/workflow/how_to_guide/apply_a_workflow_and_get_runtime_status_using_cli_stack/)

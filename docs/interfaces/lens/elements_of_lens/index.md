@@ -23,7 +23,7 @@ Apart from the `name` and `description` of an entity, entity declaration within 
 | `extend` | This allows you to extend an existing entity to use all declared elements of the entity. | Optional |
 
 To learn more about entities, refer to
-[Entity](./entity.md).
+[Entity](/interfaces/lens/elements_of_lens/entity/)
 
 ## Field
 
@@ -68,7 +68,7 @@ Supported properties for dimensions
 | `hidden` | It will hide the dimension from the user interface if set to true. | Optional |
 
 To know more about dimensions, refer to
-[Dimensionsdimen](/interfaces/lens/elements_of_lens/dimensions/).
+[Dimensions](/interfaces/lens/elements_of_lens/dimensions/).
 
 ## Measures
 

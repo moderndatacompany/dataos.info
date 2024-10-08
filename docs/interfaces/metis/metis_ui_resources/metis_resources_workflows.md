@@ -141,8 +141,8 @@ In this section, you can view a list of jobs, along with their names and descrip
 Click on a job to learn more about the following:
 
 - [Details](/interfaces/metis/metis_ui_resources/metis_resources_workflows/)
-- [Topology](/interfaces/metis/metis_ui_resourcesmetis_resources_workflows/)
-- [Lineage](/interfaces/metis/metis_ui_resourcesmetis_resources_workflows/)
+- [Topology](/interfaces/metis/metis_ui_resources/metis_resources_workflows/)
+- [Lineage](/interfaces/metis/metis_ui_resources/metis_resources_workflows/)
 
 **Details**
 

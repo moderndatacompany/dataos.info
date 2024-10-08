@@ -179,9 +179,20 @@ nav:
         - Command Reference: interfaces/cli/command_reference.md
       - Data Product Hub: 
         - interfaces/data_product_hub/index.md
-        - Data Products: interfaces/data_product_hub/tabs/data_product_tab.md
-        - Recent Updates: interfaces/data_product_hub/tabs/recent_updates.md
-        - About: interfaces/data_product_hub/tabs/about.md
+        - Data Product Discovery: interfaces/data_product_hub/discovery.md
+        - Data Product Exploration: interfaces/data_product_hub/exploration.md
+        - Data Product Activation:
+          - BI Sync: 
+            - Tableau Cloud: interfaces/data_product_hub/activation/bi_sync/tableau_cloud.md
+            - Power BI: interfaces/data_product_hub/activation/bi_sync/powerbi.md
+            - Tableau Desktop: interfaces/data_product_hub/activation/bi_sync/tableau_desk.md
+            - Microsoft Excel: interfaces/data_product_hub/activation/bi_sync/excel.md
+            - Apache Superset: interfaces/data_product_hub/activation/bi_sync/superset.md
+          - AI/ML: interfaces/data_product_hub/activation/jupyter.md
+          - App Development: interfaces/data_product_hub/activation/app_development.md
+          - Data APIs: interfaces/data_product_hub/activation/data_api.md
+        - Best Practices: interfaces/data_product_hub/bestpractices.md 
+        - Recipes: interfaces/data_product_hub/recipe.md
       - Lens: 
         - interfaces/lens/index.md
         - Building Lens: 
