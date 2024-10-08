@@ -134,11 +134,6 @@ The following attributes are declared for every Data Product deployed in a DataO
               ssl: ${{true}} 
             meta: 
               foo: bar 
-        metrics: 
-          - description: ${{understand proof revenue across product dimensions}} # Metrics description
-            purpose: ${{metric analysis}} # Metrics purpose
-            refType: ${{depot}} # Metrics reference type
-            ref: ${{lens:public:sales360:wallet_sales_view}} # Metrics reference
 
     ```
 
@@ -927,23 +922,5 @@ ports:
       refType: ${{dataos}}
       meta:
         foo: bar
-```
-
-#### **`metrics`**
-
-**Description:** Lists the metrics related to the Data Product, used for analysis and monitoring.
-
-| Data Type | Requirement | Default Value | Possible Value |
-| --- | --- | --- | --- |
-| list of objects | optional | none | Each object contains fields like `description`, `purpose`, `refType`, and `ref`. |
-
-**Example Usage:**
-
-```yaml
-metrics:
-  - description: ${{understand proof revenue across product dimensions}}
-    purpose: ${{metric analysis}}
-    refType: ${{depot}}
-    ref: ${{lens:public:sales360:wallet_sales_view}}
 ```
 
