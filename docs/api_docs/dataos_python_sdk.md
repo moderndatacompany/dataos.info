@@ -5,6 +5,7 @@ search:
 tags:
     - Python
     - SDK
+    - Python SDK
 ---
 
 

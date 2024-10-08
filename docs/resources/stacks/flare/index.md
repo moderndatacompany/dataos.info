@@ -1,10 +1,10 @@
 ---
-title: Flare
+title: Flare Stack
 search:
   boost: 2
 ---
 
-# Flare
+# Flare Stack
 
 Flare is a declarative [Stack](/resources/stacks/) for large-scale data processing within DataOS. It leverages a YAML-based declarative programming paradigm, built as an abstraction over Apache Spark, to provide a comprehensive solution for data ingestion, transformation, enrichment, profiling, quality assessment and syndication on both batch and streaming data.
 

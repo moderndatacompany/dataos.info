@@ -5,8 +5,6 @@ search:
 tags:
   - Resource
   - DataOS Resource
-  - YAML features
-  - CRUD Operations
 hide:
   - tags
 ---

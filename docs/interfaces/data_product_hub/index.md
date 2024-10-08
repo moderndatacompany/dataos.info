@@ -1,3 +1,15 @@
+---
+title: Data Product Hub
+search:
+  boost: 4
+tags:
+  - Data Product Hub
+  - DPH
+  - Data Product Catalog
+hide:
+  - tags
+---
+
 # :interfaces-dataproducthub: Data Product Hub
 
 Data Product Hub (DPH) is a Graphical User Interface within DataOS where data analysts, business analysts, data scientists, and data app developers can discover actionable [Data Products](/products/data_product/) and perspectives. These Data Products are meticulously curated to provide business value and serve as a robust foundation for executing various use cases. Key use cases include **Analytics**, **AI/ML**, **GenAI/LLM on structured enterprise data**, and **data sharing**.
