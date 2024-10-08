@@ -420,6 +420,8 @@ nav:
             - resources/stacks/dbt/index.md
           - Flare: 
             - resources/stacks/flare/index.md
+          - Flash:
+            - resources/stacks/flash/index.md
           - Scanner: 
             - resources/stacks/scanner/index.md
           - Soda: 

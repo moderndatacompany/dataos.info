@@ -1,3 +1,9 @@
+---
+title: About
+search:
+  exclude: true
+---
+
 # About Tab
 
 This tab briefly describes the Data Product and the Data Product Hub.
