@@ -1,6 +1,6 @@
 # Recipe
 
-In this section, we will explore a recipe to explore Data Product Hub.
+In this section, we will explore a recipe to explore Data Product Hub using a real life use case.
 
 ## Problem Statement
 
