@@ -22,7 +22,7 @@ A simple yet powerful way to find data products is by typing the name, descripti
 
 <center>
   <img src="/interfaces/data_product_hub/discovery/annotely_image%20(1)%20(1).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-  <figcaption><i>Data Product Hub Interface</i></figcaption>
+  <figcaption><i>Keyword Search</i></figcaption>
 </center>
 
 
@@ -36,7 +36,7 @@ Multiple filter options further help narrow the search by using parameters **Ti
 
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(2)%20(1).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>Filters</i></figcaption>
     </center>
     
 
@@ -46,7 +46,7 @@ The search results by default are categorized by use cases. Users can also categ
 
 <center>
   <img src="/interfaces/data_product_hub/discovery/annotely_image%20(3)%20(1).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-  <figcaption><i>Data Product Hub Interface</i></figcaption>
+  <figcaption><i>Categorize by Domain</i></figcaption>
 </center>
 
 
@@ -56,17 +56,17 @@ You can find recently searched Data Products in the 'Recent' tab, as illustrated
 
 <center>
   <img src="/interfaces/data_product_hub/discovery/annotely_image%20(31)%20(1).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-  <figcaption><i>Data Product Hub Interface</i></figcaption>
+  <figcaption><i>Recently searched Data Products</i></figcaption>
 </center>
 
 
-### Favorites
+### **Favorites**
 
 In the ‘Favorites’ tab, you can find all the starred Data Products.
 
 <center>
   <img src="/interfaces/data_product_hub/discovery/annotely_image%20(32)%20(1).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-  <figcaption><i>Data Product Hub Interface</i></figcaption>
+  <figcaption><i>Favorites</i></figcaption>
 </center>
 
 
@@ -76,7 +76,7 @@ For each of the Data Products displayed on the Data Products page, some basic in
 
 <center>
   <img src="/interfaces/data_product_hub/discovery/image%20(30).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
-  <figcaption><i>Data Product Hub Interface</i></figcaption>
+  <figcaption><i>Data Products Page</i></figcaption>
 </center>
 
 Data Product Hub provides a detailed preview of the data asset on the right side panel. Just click on the space next to the relevant data asset to get a quick preview.
@@ -91,7 +91,7 @@ Along with that, it showcases a button displaying conformation with defined **Ac
 
 <center>
   <img src="/interfaces/data_product_hub/discovery/annotely_image%20(4)%20(1).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-  <figcaption><i>Data Product Hub Interface</i></figcaption>
+  <figcaption><i>Data Product Details Page</i></figcaption>
 </center>
 
 
@@ -112,7 +112,7 @@ On the top right of the data product details page, we can view details on:
     </center>
 
 
-### **Data Product tab**
+### **Data Product tabs**
 
 There are separate tabs each for Overview, Inputs, Outputs, Model, Metrics, Data APIs, Quality, and Access Options based on the respective data asset selected. Let's take a look at each of the tabs.
 
@@ -133,12 +133,12 @@ The Overview Tab will display the visual snapshot of your Data Product's work: f
 
 <center>
   <img src="/interfaces/data_product_hub/discovery/annotely_image%20(5)%20(1).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-  <figcaption><i>Data Product Hub Interface</i></figcaption>
+  <figcaption><i>Overview Tab</i></figcaption>
 </center>
 
 The ‘Inputs’ section displays all the datasets fed into the Data Product, while the ‘Output’ section lists the materialized tables generated from it. A Data Product doesn't need to have output, there can be a Data Product that exposes models. A Data Product presents only one model at a time, along with its associated metrics. Metrics are unavailable if the model is not built on top of the Data Product. The ‘Access Options’, list all the available consumption options to share the Data Product.
 
-**Inputs tab**
+#### **Inputs tab**
 
 Within the Inputs Tab, you will find all the tables and their schemas that feed into the data product, including those sourced from other data products. For each table you will see the Name of the Table, Tier, Domain, Owner, Access Permission, Uniform Data Link (UDL) Address, and the various data products the particular table is part of.
 
@@ -148,7 +148,7 @@ In addition to that you can open up a specific table within Metis, the DataOS Ca
 
 <center>
   <img src="/interfaces/data_product_hub/discovery/annotely_image%20(6)%20(1).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-  <figcaption><i>Data Product Hub Interface</i></figcaption>
+  <figcaption><i>Inputs Tab</i></figcaption>
 </center>
 
 
@@ -156,13 +156,13 @@ To know more about the access permissions, click on ‘Restricted Access’, whi
 
 <center>
   <img src="/interfaces/data_product_hub/discovery/image%20(31).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
-  <figcaption><i>Data Product Hub Interface</i></figcaption>
+  <figcaption><i>Restricted Access</i></figcaption>
 </center>
 
 
 The restricted access panel will give information about the filters and the policies applied to the input dataset as shown in the above image, if data masking is applied then it will show which column is masked along with the masking type. 
 
-**Outputs tab**
+#### **Outputs tab**
 
 The Output Tab displays the materialized tables generated by the Data Product, ready to be used on their own or combined with others to create new insights and Data Products. For each table you will see the Name of the Table, Tier, Domain, Owner, Access Permission, Uniform Data Link (UDL) Address, and the various Data Products the particular table is part of.
 
@@ -172,20 +172,20 @@ In addition to that you can open up a specific table within Metis, the DataOS Ca
 
 <center>
   <img src="/interfaces/data_product_hub/discovery/annotely_image%20(7)%20(2).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-  <figcaption><i>Data Product Hub Interface</i></figcaption>
+  <figcaption><i>Outputs Tab</i></figcaption>
 </center>
 
-**Model tab**
+#### **Model tab**
 
 The Model tab displays a logical model, a representation of the Lens model built on top of the Data Product, shaping the data into meaningful insights for easier analysis and understanding.
 
 <center>
   <img src="/interfaces/data_product_hub/discovery/annotely_image%20(8)%20(1).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-  <figcaption><i>Data Product Hub Interface</i></figcaption>
+  <figcaption><i>Model Tab</i></figcaption>
 </center>
 
 
-**Metrics tab**
+#### **Metrics tab**
 
 In the Metrics tab, you can explore the key business metrics derived from the lens models to observe the performance and make data-driven decisions with ease. 
 
@@ -195,11 +195,11 @@ In the Metrics tab, you can explore the key business metrics derived from the le
 
 </aside>
 
-- In the image below, you can see a metric ‘Cloud Service Cost’ with its description and the number of measures, dimensions, and segments used to derive the metric. By clicking on the **Quick Insights** **Explore** link you can further explore the metrics.
+- In the image below, you can see a metric ‘Cloud Service Cost’ with its description and the number of measures, dimensions, and segments used to derive the metric. By clicking on the **Quick Insights** or **Explore** link you can further explore the metrics.
 
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(10)%20(1).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>Quick Insights and Explore</i></figcaption>
     </center>
 
     
@@ -208,7 +208,7 @@ In the Metrics tab, you can explore the key business metrics derived from the le
 
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(11)%20(1).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>References</i></figcaption>
     </center>
 
     
@@ -216,13 +216,13 @@ In the Metrics tab, you can explore the key business metrics derived from the le
 
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(12)%20(1).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>Measures and Dimensions</i></figcaption>
     </center>
 
 
     
 
-**Data APIs tab**
+#### **Data APIs tab**
 
 In the Data APIs tab, you can explore the API endpoints to develop the data applications. 
 
@@ -236,7 +236,7 @@ In the Data APIs tab, you can explore the API endpoints to develop the data appl
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(13)%20(1).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>API Endpoint Collections</i></figcaption>
     </center>
 
     
@@ -244,7 +244,7 @@ In the Data APIs tab, you can explore the API endpoints to develop the data appl
 
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(15)%20(1).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>Download OpenAPI spec and Postman collection</i></figcaption>
     </center>
 
     
@@ -252,7 +252,7 @@ In the Data APIs tab, you can explore the API endpoints to develop the data appl
 
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(32).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>Postman Application</i></figcaption>
     </center>
 
  
@@ -261,7 +261,7 @@ In the Data APIs tab, you can explore the API endpoints to develop the data appl
 
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(17)%20(1).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>Import collection</i></figcaption>
     </center>
 
     
@@ -269,7 +269,7 @@ In the Data APIs tab, you can explore the API endpoints to develop the data appl
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(18)%20(1).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>View Complete Documentation</i></figcaption>
     </center>
 
 
@@ -278,7 +278,7 @@ In the Data APIs tab, you can explore the API endpoints to develop the data appl
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(33).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>Open Request</i></figcaption>
     </center>
 
     
@@ -286,15 +286,15 @@ In the Data APIs tab, you can explore the API endpoints to develop the data appl
 
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(34).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>Copy the Base URL</i></figcaption>
     </center>
     
     
-- Past the copied URL in place of `{{baseUrl}}`, give your DataOS API key as a bearer token, and click on the send after which you can access the data as shown below. You can use this API endpoint along with the bearer token to build your data application.
+- Paste the copied URL in place of `{{baseUrl}}`, give your DataOS API key as a bearer token, and click on the send after which you can access the data as shown below. You can use this API endpoint along with the bearer token to build your data application.
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(19)%20(1).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>Paste the copied URL</i></figcaption>
     </center>
 
     
@@ -302,7 +302,7 @@ In the Data APIs tab, you can explore the API endpoints to develop the data appl
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(20)%20(1).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>API Endpoint Access</i></figcaption>
     </center>
 
     
@@ -310,7 +310,7 @@ In the Data APIs tab, you can explore the API endpoints to develop the data appl
 
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(35).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>Authorization</i></figcaption>
     </center>
     
     
@@ -318,7 +318,7 @@ In the Data APIs tab, you can explore the API endpoints to develop the data appl
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(36).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>Response section</i></figcaption>
     </center>
 
     
@@ -333,13 +333,13 @@ In the Data APIs tab, you can explore the API endpoints to develop the data appl
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(37).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>Response Samples</i></figcaption>
     </center>
     
     **GET /top_brand_list** is the **API endpoint** that you will call using the HTTP `GET` method. It retrieves data related to a list of top brands. Typically, `GET` methods are used to retrieve data from a server without modifying it.
     
 
-**Quality tab**
+#### **Quality tab**
 
 The **Quality tab** provides insights into the health and quality of your input and output data, allowing you to monitor and ensure that the data meets expected standards across several quality checks. 
 
@@ -385,7 +385,7 @@ Quality is categorized into six types, that is Schema, Freshness, Validity, Comp
 
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(21)%20(1).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>Quality Tab</i></figcaption>
     </center>
 
 
@@ -395,7 +395,7 @@ Quality is categorized into six types, that is Schema, Freshness, Validity, Comp
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(38).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>Trend chart</i></figcaption>
     </center>
 
     
@@ -403,30 +403,30 @@ Quality is categorized into six types, that is Schema, Freshness, Validity, Comp
 
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(39).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>Applied Checks and their status</i></figcaption>
     </center>
 
     
 
-**Access Options tab**
+#### **Access Options tab**
 
-The **Access Options** tab allows users to connect their Data Products to various [BI (Business Intelligence)](https://www.notion.so/Data-Product-Hub-Documentation-WIP-101c5c1d487680779460eaed43c13518?pvs=21), [AI and ML](https://www.notion.so/Data-Product-Hub-Documentation-WIP-101c5c1d487680779460eaed43c13518?pvs=21), [app development](https://www.notion.so/Data-Product-Hub-Documentation-WIP-101c5c1d487680779460eaed43c13518?pvs=21), and [Data API](https://www.notion.so/Data-Product-Hub-Documentation-WIP-101c5c1d487680779460eaed43c13518?pvs=21) tools like Power BI, Excel, Tableau, Apache Superset, Jupyter Notebook, etc. 
+The **Access Options** tab allows users to connect their Data Products to various [BI (Business Intelligence)](/interfaces/data_product_hub/#bi-sync), [AI and ML](/interfaces/data_product_hub/#aiml), [app development](/interfaces/data_product_hub/#app-development), and [Data API](/interfaces/data_product_hub/#data-apis) tools like Power BI, Excel, Tableau, Apache Superset, Jupyter Notebook, etc. 
 
 <center>
 <img src="/interfaces/data_product_hub/discovery/annotely_image%20(22)%20(1).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-<figcaption><i>Data Product Hub Interface</i></figcaption>
+<figcaption><i>Access Options Tab</i></figcaption>
 </center>
 
 
-To know more about access options, please [refer to this section](https://www.notion.so/Data-Product-Hub-Documentation-WIP-101c5c1d487680779460eaed43c13518?pvs=21). 
+To know more about access options, please [refer to this section](/interfaces/data_product_hub/discovery/#access-options-tab). 
 
-### **Perspectives tab**
+## **Perspectives**
 
 In the Perspectives tab, you can access the saved explorations of the Data Products as perspectives.
 
 <center>
 <img src="/interfaces/data_product_hub/discovery/image%20(40).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
-<figcaption><i>Data Product Hub Interface</i></figcaption>
+<figcaption><i>Perspectives Tab</i></figcaption>
 </center>
 
 
@@ -439,7 +439,7 @@ Follow the below steps to save your Data Product exploration as a perspective to
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(23)%20(1).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>Choose and Navigate</i></figcaption>
     </center>
 
 
@@ -448,7 +448,7 @@ Follow the below steps to save your Data Product exploration as a perspective to
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(41).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>Navigate to Explore Tab</i></figcaption>
     </center>
 
     
@@ -456,14 +456,14 @@ Follow the below steps to save your Data Product exploration as a perspective to
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(42).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>Save Perspective</i></figcaption>
     </center>
 
 4.  On clicking the ‘Saved Perspective’ button, it will open a dialogue box prompting for the name and description of your perspective.
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(43).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>Dialogue Box</i></figcaption>
     </center>
 
 
@@ -471,7 +471,7 @@ Follow the below steps to save your Data Product exploration as a perspective to
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(44).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>Save</i></figcaption>
     </center>
 
 
@@ -484,7 +484,7 @@ After saving your exploration as a perspective to access it later on the Perspec
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(45).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>Navigate to Perspectives Tab</i></figcaption>
     </center>
 
 
@@ -492,7 +492,7 @@ After saving your exploration as a perspective to access it later on the Perspec
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(46).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>Search</i></figcaption>
     </center>
 
 
@@ -500,7 +500,7 @@ After saving your exploration as a perspective to access it later on the Perspec
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(47).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>Filter</i></figcaption>
     </center>
 
 
@@ -509,14 +509,14 @@ After saving your exploration as a perspective to access it later on the Perspec
 
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(25)%20(1).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>Filter using 'Data Products'</i></figcaption>
     </center>
     
 
 
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(24)%20(1).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>Filter using 'Tags'</i></figcaption>
     </center>
 
     
@@ -525,7 +525,7 @@ After saving your exploration as a perspective to access it later on the Perspec
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(26)%20(1).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>List Perspectives</i></figcaption>
     </center>
 
 
@@ -534,12 +534,12 @@ After saving your exploration as a perspective to access it later on the Perspec
 
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(48).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-    <figcaption><i>Data Product Hub Interface</i></figcaption>
+    <figcaption><i>Explore</i></figcaption>
     </center>
     
 
 
-### ** Metrics tab**
+## **Metrics**
 
 In the Metrics tab, you can access the actionable and reliable key insights of the Data Products to get information, assess operations, and make quick and right decisions for your business. To explore the ‘Metric’ tab, navigate to the Metric tab, and you’ll see a short description on the tab, by default, you’ll be able to see all the metrics grouped by use cases.
 
@@ -548,13 +548,13 @@ In the Metrics tab, you can access the actionable and reliable key insights of t
 
 <center>
 <img src="/interfaces/data_product_hub/discovery/image%20(49).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
-<figcaption><i>Data Product Hub Interface</i></figcaption>
+<figcaption><i>Metrics Tab</i></figcaption>
 </center>
 
 
 <center>
 <img src="/interfaces/data_product_hub/discovery/image%20(50).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
-<figcaption><i>Data Product Hub Interface</i></figcaption>
+<figcaption><i>Metrics Listing Page</i></figcaption>
 </center>
 
 
@@ -564,7 +564,7 @@ In the search bar, you can directly search for the potential metrics by keywords
 
 <center>
 <img src="/interfaces/data_product_hub/discovery/image%20(51).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
-<figcaption><i>Data Product Hub Interface</i></figcaption>
+<figcaption><i>Search the metrics by keyword</i></figcaption>
 </center>
 
 
@@ -574,7 +574,7 @@ You can filter out the metrics by the particular owner, by navigating to the ‘
 
 <center>
 <img src="/interfaces/data_product_hub/discovery/image%20(52).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
-<figcaption><i>Data Product Hub Interface</i></figcaption>
+<figcaption><i>Filter the metrics</i></figcaption>
 </center>
 
 
@@ -584,6 +584,6 @@ On navigating to the Metrics tab, by default, it recommends the metrics grouped 
 
 <center>
 <img src="/interfaces/data_product_hub/discovery/image%20(53).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
-<figcaption><i>Data Product Hub Interface</i></figcaption>
+<figcaption><i>Metrics recommendations based on domains</i></figcaption>
 </center>
 
