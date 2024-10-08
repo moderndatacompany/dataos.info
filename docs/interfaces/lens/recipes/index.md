@@ -21,4 +21,4 @@ search:
 
 - [Using Measure and Dimension Interchangeably](/interfaces/lens/recipes/using_measure_and_dimension_interchangeably/)
 
-- [Powering Many-to-Many joins with Lens](/interfaces/lens/recipes/powering_many-to-many_joins_with_lens/powering_many-to-many_joins_with_lens/)
+- [Powering Many-to-Many joins with Lens](/interfaces/lens/recipes/powering_many-to-many_joins_with_lens/)

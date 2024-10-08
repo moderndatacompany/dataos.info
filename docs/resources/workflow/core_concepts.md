@@ -15,7 +15,7 @@ Furthermore, every job within a Directed Acyclic Graph (DAG) is associated with 
 In the above illustration, **Job 1** is the first job to be executed as it has no dependencies. Once **Job 1** completes, both **Job 2** and **Job 3** can run concurrently or parallely. Only after the successful completion of both **Job 2** and **Job 3**, **Job 4** becomes eligible for execution. Finally, **Job 5** can be executed sequentially after **Job 4** successfully finishes. This hierarchical structure ensures optimal job execution without creating bottlenecks.
 
 <aside class=callout>
-🗣️ A Directed Acyclic Graph may have multiple root nodes, which means that a Workflow can contain both jobs and other nested Workflows stored in different locations. This feature allows for the decomposition of complex workflows into manageable components. For more information on this scenario, refer to <a href="/resources/workflow/orchestrating_multiple_workflows_from_a_single_workflow/">Orchestrating Multiple Workflows from a Single Workflow.</a>
+🗣️ A Directed Acyclic Graph may have multiple root nodes, which means that a Workflow can contain both jobs and other nested Workflows stored in different locations. This feature allows for the decomposition of complex workflows into manageable components. For more information on this scenario, refer to <a href="/resources/workflow/how_to_guide/multiple_workflows_from_a_single_workflow/">Orchestrating Multiple Workflows from a Single Workflow.</a>
 </aside>
 
 
@@ -29,4 +29,4 @@ Single-run Workflow represent a one-time execution of a sequence of jobs. These 
 
 ### **Scheduled Workflow** 
 
-Scheduled Workflow enable the automated and recurring execution of jobs based on specified intervals or predetermined times. To schedule a Workflow, the `schedule` section or mapping along with the scheduling [attributes](/resources/workflow/yaml_configuration_attributes/#schedule) must be added to the Workflow YAML configuration. Scheduled Workflow provide a powerful mechanism for automating job execution based on a [cron](/resources/workflow/configuration/#cron) expression. To explore a case scenario for a Scheduled Workflow, refer to the link: [How to run a Cron or a Scheduled Workflow?](/resources/workflow/how_to_guide/scheduled_or_cron_workflow/)
+Scheduled Workflow enable the automated and recurring execution of jobs based on specified intervals or predetermined times. To schedule a Workflow, the `schedule` section or mapping along with the scheduling [attributes](/resources/workflow/configurations/) must be added to the Workflow YAML configuration. Scheduled Workflow provide a powerful mechanism for automating job execution based on a [cron](/resources/workflow/configurations/#cron) expression. To explore a case scenario for a Scheduled Workflow, refer to the link: [How to run a Cron or a Scheduled Workflow?](/resources/workflow/how_to_guide/scheduled_workflow/)

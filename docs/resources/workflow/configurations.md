@@ -95,6 +95,7 @@ cron: '*/10 * * * *'
 |    string     |    optional     |       Allow       | Allow/Forbid/Replace |
 
 <b>Additional Details:</b> <br>
+
 - <i> <code>concurrencyPolicy: Forbid</code> -</i> When the <code>concurrencyPolicy</code> is set to <code>Forbid</code>, the Schedule/Cron Workflow strictly prohibits concurrent runs. In this scenario, if it is time for a new Workflow run and the previous Workflow run is still in progress, the cron Workflow will skip the new Workflow run altogether.  <br>
 - <i> <code>concurrencyPolicy: Allow</code> -</i> On the other hand, setting the <code>concurrencyPolicy</code> to <code>Allow</code> enables the Schedule/Cron Workflow to accommodate concurrent executions. If it is time for a new Workflow run and the previous Workflow run has not completed yet, the cron Workflow will proceed with the new Workflow run concurrently.  <br>
 - <i> <code>concurrencyPolicy: Replace</code> -</i> When the <code>concurrencyPolicy</code> is set to <code>Replace</code>, the Schedule/Cron Workflow handles concurrent executions by replacing the currently running Workflow run with a new Workflow run if it is time for the next job Workflow and the previous one is still in progress.  <br>
@@ -156,7 +157,7 @@ timezone: Asia/Kolkata
 
 ##### **`dag`**
 
-<b>Description:</b> DAG is a <a href="/resources/workflow/#workflow-and-directed-acyclic-graph-dag">Directed Acyclic Graph</a>, a conceptual representation of a sequence of jobs (or activities). These jobs in a DAG are executed in the order of dependencies between them. <br>
+<b>Description:</b> DAG is a <a href="/resources/workflow/core_concepts/#workflow-and-directed-acyclic-graph-dag">Directed Acyclic Graph</a>, a conceptual representation of a sequence of jobs (or activities). These jobs in a DAG are executed in the order of dependencies between them. <br>
 
 | **Data Type**        | **Requirement** | **Default Value** | **Possible Value** |
 |------------------|-------------|---------------|----------------|
@@ -231,10 +232,10 @@ description: The job ingests customer data
 **Example Usage:**
 
 ```yaml
-  tags:
-    - tag1
-    - tag2
-```
+tags:
+  - tag1
+  - tag2
+``` 
 ---
 
 ##### **`gcWhenComplete`**
@@ -306,13 +307,13 @@ To know more about each stack, go to [Stack](/resources/stacks/).
 
 **Additional Details:** 
 
-- `INFO`: Designates informational messages that highlight the progress of the service.
+- `INFO`: Designates informational messages that highlight the progress of the service.
 
-- `WARN`: Designates potentially harmful situations.
+- `WARN`: Designates potentially harmful situations.
 
-- `DEBUG`: Designates fine-grained informational events that are most useful while debugging.
+- `DEBUG`: Designates fine-grained informational events that are most useful while debugging.
 
-- `ERROR`: Designates error events that might still allow the workflow to continue running.
+- `ERROR`: Designates error events that might still allow the workflow to continue running.
 
 **Example Usage:**
 

@@ -29,7 +29,7 @@ Depot in DataOS is a [Resource](/resources/) used to connect different data sou
 
     Depot example usage.
 
-    [:octicons-arrow-right-24: Configuration Template](/resources/depot/#depot-config-templates)
+    [:octicons-arrow-right-24: Configuration Template](/resources/depot/#templates-of-depot-for-different-source-systems)
 
 
 -   :material-console:{ .lg .middle } **Data Integration**
@@ -580,7 +580,7 @@ Icebase-type depots are designed to store data suitable for OLAP processes. It o
 
 ### **Fastbase**
 
-Fastbase type-depots are optimized for handling streaming data workloads. It provides features such as [creating](/resources/depot/fastbase/#create-dataset) and [listing topics](/resources/depot/fastbase/#list-topics), which can be executed effortlessly using the DataOS CLI. To explore Fastbase further, consult the [link](/resources/depot/fastbase/).
+Fastbase type-depots are optimized for handling streaming data workloads. It provides features such as [creating](/resources/depot/fastbase/#create-a-dataset) and [listing topics](/resources/depot/fastbase/#list-topics), which can be executed effortlessly using the DataOS CLI. To explore Fastbase further, consult the [link](/resources/depot/fastbase/).
 
 ## **Data Integration - Supported Connectors in DataOS**
 
