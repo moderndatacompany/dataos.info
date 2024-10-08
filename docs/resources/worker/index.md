@@ -1,7 +1,7 @@
 ---
 title: Worker
 search:
-  boost: 2
+  boost: 4
 ---
 
 # :resources-worker: Worker

@@ -1,3 +1,14 @@
+---
+title: Types of DataOS Resources
+search:
+  boost: 2
+tags:
+  - Resource-types
+  - Type
+hide:
+  - tags
+---
+
 # Types of DataOS Resources
 
 The categorization of Resources in DataOS is based on the concept of Workspace. **Workspace** is like a tenant in DataOS. You can use it to create isolated work environments for your or your team’s work. By default, all Resources are created in the *public Workspace*.

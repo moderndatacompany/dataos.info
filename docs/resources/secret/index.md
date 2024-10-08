@@ -1,7 +1,7 @@
 ---
 title: Secret
 search:
-  boost: 2
+  boost: 3
 ---
 
 # :resources-secret: Secret

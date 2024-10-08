@@ -1,7 +1,7 @@
 ---
 title: Operator
 search:
-  boost: 2
+  boost: 4
 ---
 
 # :resources-operator: Operator
