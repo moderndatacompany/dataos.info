@@ -15,7 +15,7 @@ Before proceeding with the Data Product creation, ensure that you have the neces
 
 ## Steps to Create a Data Product
 
-From the design phase, it is clear which DataOS resources we require to build the Data Product, and these are [Instance Secret](/resources/instance_secret/), [Depot](/resources/depot/), [Cluster](/resources/cluster/), [Scanner](/resources/stack/), [Flare](/resources/stack/), [Policy](/resources/policy/), [SODA Checks](/resources/stack/), [Monitor](/resources/monitor/), [Pager](/resources/pager/), and [Bundle](/resources/bundle/). Let’s see how to create each one step by step. As we already created the Depot and ran the Depot scanner, we’ll directly jump into the data transformation step using Flare.
+From the design phase, it is clear which DataOS resources we require to build the Data Product, and these are [Instance Secret](/resources/instance_secret/), [Depot](/resources/depot/), [Cluster](/resources/cluster/), [Scanner](/resources/stack/scanner/), [Flare](/resources/stack/flare), [Policy](/resources/policy/), [SODA Checks](/resources/stack/soda/), [Monitor](/resources/monitor/), [Pager](/resources/pager/), and [Bundle](/resources/bundle/). Let’s see how to create each one step by step. As we already created the Depot and ran the Depot scanner, we’ll directly jump into the data transformation step using Flare.
 
 <aside class="callout">
 🗣 Depending upon the use case more resources can be added or removed, to know more about the DataOS resources refer to <a href="https://dataos.info/resources/">DataOS Resources</a>.
@@ -24,7 +24,7 @@ From the design phase, it is clear which DataOS resources we require to build th
 
 ### **Create the Flare Job for data transformation**
 
-[Flare](/resources/stack/) is a stack orchestrated by the [Workflow](/resources/workflow/) that abstracts Apache Spark for large-scale data processing, including ingestion, transformation, enrichment, profiling, quality assessment, and syndication for both batch and streaming data.
+[Flare](/resources/stack/flare) is a stack orchestrated by the [Workflow](/resources/workflow/) that abstracts Apache Spark for large-scale data processing, including ingestion, transformation, enrichment, profiling, quality assessment, and syndication for both batch and streaming data.
 
 Let’s see how you can utilize Flare for various transformations, we are taking the same example of Google Analytics here, to ingest raw data as is from S3, with the only transformation being the conversion of the date column to date_time since it's initially in varchar format.
 

@@ -197,4 +197,4 @@ For a comprehensive guide on creating and deploying a Lens, refer to the [Buildi
  
 here are some recipes to help you build lens
 
-[recipes](/interfaces/lens/recipes/recipes/)
+[recipes](/interfaces/lens/recipes/)

@@ -41,10 +41,7 @@ The following `api_scopes` are currently supported:
 
 To securely interact with the Lens APIs, you must authenticate your requests using a DataOS API key and ensure proper user group configurations. This section explains how to generate an API key and configure user groups for accessing the API.
 
-
-#### **Generating a DataOS API Key**
-
-**Steps to Generate an API Key:**
+#### **Steps to Generate an API Key:**
 
 1. Open your terminal and run the following command to create a new API key:
 
@@ -153,61 +150,61 @@ You can use either of the following methods:
         http://liberal-monkey.dataos.app/lens2/api/sales_analysis/v2/load?query={"dimensions":["customer.customer_id","customer.annual_income"],"measures":["customer.total_customers", "customer.average_age"]}
         ```                                                         
 
-In the `POST` request body, include the query parameters in the JSON Query Format:
+    In the `POST` request body, include the query parameters in the JSON Query Format:
 
-**Example Query**
+    **Example Query**
 
-```bash
-{
-    "query": {
-        "dimensions": ["customer.customer_id", "customer.annual_income"],
-        "measures": ["customer.total_customers", "customer.average_age"],
-        "limit": 50
-    }
-}
-```
-
-**Example response:**
-
-```bash
-{
-  "query": [
+    ```bash
     {
-      "name": "Customers",
-      "title": "Customers",
-      "meta": {
-          "someKey": "someValue",
-          "nested": {
-            "someKey": "someValue"
-          }
-      },
-      "connectedComponent": 1,
-      "measures": [
-        {
-          "name": "customers.count",
-          "title": "Customers Count",
-          "shortTitle": "Count",
-          "aliasName": "customers.count",
-          "type": "number",
-          "aggType": "count",
-          "drillMembers": ["customers.id", "customers.city", "customers.createdAt"]
+        "query": {
+            "dimensions": ["customer.customer_id", "customer.annual_income"],
+            "measures": ["customer.total_customers", "customer.average_age"],
+            "limit": 50
         }
-      ],
-      "dimensions": [
-        {
-          "name": "customers.city",
-          "title": "Customers City",
-          "type": "string",
-          "aliasName": "customers.city",
-          "shortTitle": "City",
-          "suggestFilterValues": true
-        }
-      ],
-      "segments": []
     }
-  ]
-}
-```
+    ```
+
+    **Example response:**
+
+    ```bash
+    {
+      "query": [
+        {
+          "name": "Customers",
+          "title": "Customers",
+          "meta": {
+              "someKey": "someValue",
+              "nested": {
+                "someKey": "someValue"
+              }
+          },
+          "connectedComponent": 1,
+          "measures": [
+            {
+              "name": "customers.count",
+              "title": "Customers Count",
+              "shortTitle": "Count",
+              "aliasName": "customers.count",
+              "type": "number",
+              "aggType": "count",
+              "drillMembers": ["customers.id", "customers.city", "customers.createdAt"]
+            }
+          ],
+          "dimensions": [
+            {
+              "name": "customers.city",
+              "title": "Customers City",
+              "type": "string",
+              "aliasName": "customers.city",
+              "shortTitle": "City",
+              "suggestFilterValues": true
+            }
+          ],
+          "segments": []
+        }
+      ]
+    }
+    ```
 
 ### **/v2/sql**
 
@@ -221,7 +218,7 @@ configure the body with the JSON Query Format similar to `/load`.
 
 ## graphql
 
-Grants access to GraphQL endpoints. GraphQL is a query language for APIs that allows clients to request only the data they need. This scope enables users to perform GraphQL queries and mutations. To know more about How to use GraphQL click [here](/resources/lens/exploration_of_lens_using_graphql/)
+Grants access to GraphQL endpoints. GraphQL is a query language for APIs that allows clients to request only the data they need. This scope enables users to perform GraphQL queries and mutations. To know more about How to use GraphQL click [here](/resources/lens/exploration_of_deployed_lens_using_graphql/)
 
 ## Possible Responses
 

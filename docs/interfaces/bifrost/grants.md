@@ -16,7 +16,7 @@ While it's straightforward to assign use-cases to individual users via the Bifro
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/bifrost/create_grant.png" alt="Create Grant" style="width: 60rem; border: 1px solid black;">
+    <img src="/interfaces/bifrost/grants/create_grant.png" alt="Create Grant" style="width: 60rem; border: 1px solid black;">
     <figcaption>Create Grant</figcaption>
   </div>
 </center>
