@@ -572,7 +572,7 @@ You can use Lens to create Data Models on top of Depots and explore them using t
 
 ## **Supported Storage Architectures in DataOS**
 
-DataOS Depots facilitate seamless connectivity with diverse storage systems while eliminating the need for data relocation. This resolves challenges pertaining to accessibility across heterogeneous data sources. However, the escalating intricacy of pipelines and the exponential growth of data pose potential issues, resulting in cumbersome, expensive, and unattainable storage solutions. In order to address this critical concern, DataOS introduces support for two distinct and specialized storage architectures - [Icebase](/resources/depot/icebase/) Depot, the Unified Lakehouse designed for OLAP data, and [Fastbase](/resources/depot/fastbase) Depot, the Unified Streaming solution tailored for handling streaming data.
+DataOS Depots facilitate seamless connectivity with diverse storage systems while eliminating the need for data relocation. This resolves challenges pertaining to accessibility across heterogeneous data sources. However, the escalating intricacy of pipelines and the exponential growth of data pose potential issues, resulting in cumbersome, expensive, and unattainable storage solutions. In order to address this critical concern, DataOS introduces support for two distinct and specialized storage architectures - [Icebase](/resources/depot/icebase/) Depot, the Unified Lakehouse designed for OLAP data, and [Fastbase](/resources/depot/fastbase/) Depot, the Unified Streaming solution tailored for handling streaming data.
 
 ### **Icebase**
 
