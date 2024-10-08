@@ -21,7 +21,7 @@ dataos-ctl version
 
 If CLI is not updated to the latest version, navigate to the below page
 
-[CLI](/interfaces/cli)
+[CLI](/interfaces/cli/)
 
 ### **Get the Pulsar-admin tag**
 
@@ -62,7 +62,7 @@ Flare Standalone uses Scala Programming Language. In case you don’t have any i
 
 1. Download the `flare-standalone-2.zip` folder provided below
 
-[flare-standalone-2.zip](/resources/stacks/flare/standalone/case_scenarios/local_to_cloud_using_standalone_2.0/flare_standalone_2.zip/)
+[flare-standalone-2.zip](/resources/stacks/flare/standalone/case_scenarios/local_to_cloud_using_standalone_2.0/flare_standalone_2.zip)
 
 1. Extract the downloaded `flare-standalone-2.zip` file. It contains only one folder by the name `standalone`. Open the code editor inside the `flare-standalone-2` folder.
 2. Now the scenario looks like the image below, where you have opened the code-editor inside the `flare-standalone-2` folder which contains the `standalone` folder which further contains one folder by the name `default` directory having the `transactions` data and another file by the name `pulsar-write.yaml`

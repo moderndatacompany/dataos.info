@@ -1,0 +1,45 @@
+name: talos02
+version: v1
+type: service
+tags:
+  - service
+  - dataos:type:resource
+  - dataos:resource:service
+  - dataos:layer:user
+description: Talos Service
+workspace: public
+service:
+  servicePort: 3000
+  ingress:
+    enabled: true
+    stripPath: true
+    path: /talos/public:talos02
+    noAuthentication: true
+  replicas: 1
+  logLevel: DEBUG
+  compute: runnable-default
+  envs:
+    TALOS_SCHEMA_PATH: lens2/setup/talos1
+    TALOS_BASE_PATH: /talos/public:talos02
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+  stack: talos:2.0
+  
+  dataosSecrets:            # instance secret reference
+    - name: codecommit-r
+      allKeys: true
+
+    - name: codecommit-rw
+      allkeys: true
+
+  stackSpec:
+    repo:
+      url: https://git-codecommit.ap-south-1.amazonaws.com/v1/repos/lens2/
+      projectDirectory: lens2/setup/talos1
+      syncFlags:
+        - '--ref=master'

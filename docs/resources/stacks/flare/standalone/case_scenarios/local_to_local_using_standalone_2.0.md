@@ -19,7 +19,7 @@ dataos-ctl version
 
 If CLI is not updated to the latest version, navigate to the below page.
 
-[CLI](/interfaces/cli)
+[CLI](/interfaces/cli/)
 
 ### **Operationalize Docker, if you wanna Read/Write IO Locally**
 

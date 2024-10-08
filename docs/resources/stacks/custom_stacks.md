@@ -38,7 +38,7 @@ In order for a Stack to leverage the existing DataOS guarantees, such as depot a
 Upon completion, containerize the code and transfer it to a container registry.
 
 <aside class="callout">
-🗣 When pushing the image to a container registry, document the details of names of <code>registry</code>, <code>repository</code>, <code>image</code>, and <code>tag</code>. These particulars are later utilized in the Stack YAML manifest for pulling the image from the container registry. For a private container registry, authentication details can be provided in the form of Secret Resource and can be referenced within the YAML manifest using the <code>imagePullSecret</code> attribute. For more information about pulling images from private container registry, refer to the link: <a href="/resources/secret/referencing_secrets/referencing_secrets_to_pull_images_from_private_container_registry/">Referencing Secrets to pull images from private container registry</a>.
+🗣 When pushing the image to a container registry, document the details of names of <code>registry</code>, <code>repository</code>, <code>image</code>, and <code>tag</code>. These particulars are later utilized in the Stack YAML manifest for pulling the image from the container registry. For a private container registry, authentication details can be provided in the form of Secret Resource and can be referenced within the YAML manifest using the <code>imagePullSecret</code> attribute. For more information about pulling images from private container registry, refer to the link: <a href="/resources/secret/how_to_guide/recipe2/#pull-image">Referencing Secrets to pull images from private container registry</a>.
 
 </aside>
 
@@ -79,8 +79,8 @@ stack:
   reconciler: "stackManager"
 
 # DataOS Address JqFilter
-	dataOsAddressJqFilters:
-	  - .inputs[]
+  dataOsAddressJqFilters:
+    - .inputs[]
     - .outputs[]
 
 # Secret Projection
@@ -337,7 +337,7 @@ workerConfig:
 | [`containerResourceTemplate`](/resources/stacks/custom_stacks/configurations/#containerresourcetemplate-1) | string | none | valid container Resource template | optional |
 | [`resourceTemplate`](/resources/stacks/custom_stacks/configurations/#resourcetemplate-1) | string | none | valid resource template | optional |
 
-To declare a Stack that will be orchestrated using a Worker as a Containerized Resource, refer to the link: [Stack orchestrated via a Worker declared using a config template](/resources/stacks/custom_stack/case_scenarios/stack_orchestrated_by_a_worker_declared_using_a_config_template/). To declare a Stack using a custom Resource template that will be orchestrated using a Worker, refer to the following link: [Stack orchestrated via a Worker declared using a config template](/resources/stacks/custom_stacks/case_scenarios/stack_orchestrated_by_a_worker_declared_using_a_resource_template/).
+To declare a Stack that will be orchestrated using a Worker as a Containerized Resource, refer to the link: [Stack orchestrated via a Worker declared using a config template](/resources/stacks/custom_stacks/case_scenarios/stack_orchestrated_by_a_workflow_declared_using_a_config_template/). To declare a Stack using a custom Resource template that will be orchestrated using a Worker, refer to the following link: [Stack orchestrated via a Worker declared using a config template](/resources/stacks/custom_stacks/case_scenarios/stack_orchestrated_by_a_worker_declared_using_a_resource_template/).
 
 Service Configuration
 

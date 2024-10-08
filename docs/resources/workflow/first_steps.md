@@ -637,7 +637,7 @@ To deepen your understanding of Workflow Resource, explore the following case sc
 
 - [How to run a Cron Workflow or a Scheduled Workflow?](/resources/workflow/how_to_guide/scheduled_workflow/)
 
-- [How to orchestrate multiple Workflows from a single Workflow?](/resources/workflow/how_to_guide/multiple_workflows_from_a_single_workflow)/
+- [How to orchestrate multiple Workflows from a single Workflow?](/resources/workflow/how_to_guide/multiple_workflows_from_a_single_workflow/)
 
 - [How to retry a job in the Workflow?](/resources/workflow/how_to_guide/retry_jobs/)
 

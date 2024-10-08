@@ -102,7 +102,7 @@ The screen will expand as you click on Expand to show the Logical Tables side pa
 The **History** section tracks the queries executed on a timestamp's data model. This allows users to revisit previous queries and review their selected dimensions, measures, filters, and results. It's beneficial for auditing, troubleshooting, or repeating previous analyses. 
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/image%20(26).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/image%20(26).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
 <figcaption><i>Data Product Hub Interface</i></figcaption>
 </center>
 
@@ -114,7 +114,7 @@ For instance, a query might have been executed 32 minutes ago, using the **city 
 In the **Data Product Exploration** interface, a user's query can be saved as a **Perspective**. A Perspective captures the current state of the query, including all selected dimensions, measures, metrics, filters, and any applied settings (e.g., time zones or limits). Once saved, Perspectives can be accessed at any time from the **Perspective** tab, allowing users to revisit or share their specific analyses without recreating the queries. By saving a Perspective, users can efficiently store and retrieve their specific analyses for continuous use or collaboration with team members.
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/image%20(27).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/image%20(27).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
 <figcaption><i>Data Product Hub Interface</i></figcaption>
 </center>
 
@@ -144,7 +144,7 @@ Perspectives listed in the sales360 data product
 Users can click the **Perspective** tab and view all saved perspectives, allowing them to reload the exact configuration of any previously saved query.
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/image%20(30).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/image%20(30).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
 <figcaption><i>Data Product Hub Interface</i></figcaption>
 </center>
 
@@ -156,7 +156,7 @@ Users can click the **Perspective** tab and view all saved perspectives, allowin
 The drop-down menu under **Logical Tables** allows users to switch between Logical Tables, Entities, or Metrics.
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/image%20(31).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/image%20(31).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
 <figcaption><i>Drop down menu</i></figcaption>
 </center>
 
@@ -169,7 +169,7 @@ This is the default view in the sidebar. It shows a list of logical tables, whic
 **For** **example**, the above image contains three logical tables: account, product, and sales.
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/Screenshot%20from%202024-09-23%2014-51-05.png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/Screenshot%20from%202024-09-23%2014-51-05.png" alt="DPH" style="width:25rem; border: 1px solid black;" />
 <figcaption><i>Logical Tables and Search bar</i></figcaption>
 </center>
 
@@ -178,7 +178,7 @@ As you expand a particular table, you will see the list of all its dimensions an
 **Search Bar**: Just below the Logical Tables title, the search bar allows users to filter and quickly find specific tables, dimensions, or measures by typing keywords.
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/image%20(32).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/image%20(32).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
 </center>
 
 
@@ -189,7 +189,7 @@ As you expand a particular table, you will see the list of all its dimensions an
 **Entities** serve as a layer atop the data graph of tables, presenting an abstraction of the entire data model for consumers to interact with. They serve as a layer for defining metrics, providing a simplified interface for end-users to interact objectively with key metrics instead of the entire data model. In an entity-first approach, views are built around entities in your data model. Views are built as denormalized tables, bringing measures and dimensions from multiple logical tables. They don’t have measures, dimensions, or segments of their own.
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/image%20(33).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/image%20(33).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
 <figcaption><i>Entities</i></figcaption>
 </center>
 
@@ -204,7 +204,7 @@ As you expand a particular table, you will see the list of all its dimensions an
 - **Step 2**: Select the relevant metric based on your analysis needs. For example, if you are interested in tracking sales, you might select **aggregated_qtr_revenue_metric.sales_sales_aggregate_qtr_revenue_2024**.
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/image%20(34).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/image%20(34).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
 <figcaption><i>Metircs</i></figcaption>
 </center>
 
@@ -229,7 +229,7 @@ the **Members Tab** dynamically displays the dimensions and measures selected by
 Suppose you select the dimension **`account, city`,** and measure **`account. Total_accounts`** will immediately appear in the **Members tab**, indicating that they are active in the query. Similarly, clicking on (-) sign will remove the selected member from the selection.
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/image%20(35).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/image%20(35).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
 </center>
 
 
@@ -276,7 +276,7 @@ The following are the options for displaying the results:
 
 
 - **Chart**: This option allows users to visualize the query results in a graphical format. Various charts (e.g., bar, line, pie) can be used to display trends, comparisons, and distributions visually.
-    /home/shraddhaade/doc/dataos.info/docs/interfaces/data_product_hub/exploration/Screenshot from 2024-09-24 12-49-14.png
+
 
     <center>
     <img src="/interfaces/data_product_hub/exploration/Screenshot%20from%202024-09-24%2012-49-14.png" alt="DPH" style="width:50rem; border: 1px solid black;" />
@@ -327,7 +327,9 @@ The left-side navigation panel provides key options to explore the model in diff
 - **Graph**: The default view, showing a visual lineage of how different tables and entities are interconnected. This interactive graph shows relationships between tables and views. Let us understand graph tab more with an detailed example.
 - Our example has three main entities or logical tables: **account**, **sales**, and **product,** and two **metrics, conversion_rate and qtd_revenue,** represented by a wave-like icon. **Metrics** are derived from one or more logical tables to track performance or monitor trends, using defined measures and dimensions from these tables.The **Graph tab** visually displays how these logical tables and metrics are interconnected, providing an interactive way to explore data relationships and schema details.
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/f628b3ad-3695-4dd9-93d9-befb41bfa869/image.png)
+<center>
+<img src="/interfaces/data_product_hub/exploration/image%20(39).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+</center>
 
 Here's how it works in more detail:
 
@@ -339,7 +341,10 @@ Further, when you click on any logical tables or metrics, a detailed tab opens o
 - It shows how this table is connected to other entities in the system, such as **accounts**, **products**, and other metrics.
 - When you click on the **sales** table, a detailed tab opens on the side, displaying all the **defined segments, measures, and dimensions** within this table. Each attribute is accompanied by its **data type** (e.g., numeric, string, date) to help you understand the table's schema clearly.
 
-![Screencastfrom2024-10-0312-01-49-ezgif.com-video-to-gif-converter.gif](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/2f480583-f977-4e6f-9b36-f89cbdc89b74/Screencastfrom2024-10-0312-01-49-ezgif.com-video-to-gif-converter.gif)
+<center>
+<img src="/interfaces/data_product_hub/exploration/Screencastfrom2024-10-0312-01-49-ezgif.com-video-to-gif-converter%20(1).gif" alt="DPH" style="width:50rem; border: 1px solid black;" />
+</center>
+
 
 **Schema Breakdown**
 
@@ -356,7 +361,12 @@ Metrics are a type of view. All metrics are represented by a wave-like icon rese
 
 When a **metric** references a **measure** or **dimension** from a **logical table**, it adopts the naming convention `table_name + field_name`. This approach ensures that users can easily identify the origin of each measure or dimension used in a metric, promoting transparency and data lineage. For example, the measure **frequency** from the **Sales Table** is renamed **sales_frequency** when used in the **Conversion Rate Metric** to indicate its origin.
 
-![Screenshot from 2024-10-01 18-32-47.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/c9fe0bf3-7223-4b60-836a-7868c5e7839e/Screenshot_from_2024-10-01_18-32-47.png)
+
+<center>
+<img src="/interfaces/data_product_hub/exploration/Screenshot%20from%202024-10-01 18-32-47.png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+</center>
+
+
 
 *Dashed blue lines visually indicate the relationships between the **Sales Table** and the **conversion_rate** metric. The lines highlight which **dimensions** and **measures** from the **Sales Table** are used to calculate the **conversion_rate** metric.*
 
@@ -364,7 +374,11 @@ Similarly,  **QTD Revenue** metrics leverage fields from multiple logical tables
 
 *The **blue dashed lines** in the graph visualization represent the relationships between the logical tables and the metrics, indicating how data from each table feeds into the metric calculations. This visual connection helps users understand how measures and dimensions from different sources contribute to the overall metric. All fields are prefixed with their respective table name (e.g., **sales_**, **product_**, **account_**), showing which fields from different tables are contributing to the metric.*
 
-![Screenshot from 2024-10-01 18-39-56.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/cbc96863-16de-49cb-9286-56cf053da053/Screenshot_from_2024-10-01_18-39-56.png)
+
+<center>
+<img src="/interfaces/data_product_hub/exploration/Screenshot%20from%202024-10-01 18-39-56.png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+</center>
+
 
 - **Schema**: This section contains detailed information about the structure of the tables, views, and entities within the data model. Users can view columns, data types, and relationships, making it easier to understand how data is stored and linked within the product.
 
@@ -377,7 +391,10 @@ In this example, there are two user groups: **nonproof_analyst** and **default**
 - The **nonproof_analyst** group includes a user identified by the tag `users:id:kanakgupta`.
 - The **default** group includes all members, providing universal access to anyone not explicitly excluded from the model.
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/7185db8a-75d1-4ba9-804b-a5f217e7d587/image.png)
+<center>
+<img src="/interfaces/data_product_hub/exploration/image%20(40).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+</center>
+
 
 Further, when you click on the account table, The following sections are displayed.
 
@@ -397,23 +414,34 @@ Further, when you click on the account table, The following sections are display
     - **Secure**: Indicates whether access to certain fields is restricted based on user permissions. For example, here, the email column is secured and redacted.
     - **Aliases**: Provides alternate names for fields if defined.
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/d42d1e1e-859e-42dd-b66c-ef2b097d022e/image.png)
 
-*Account table Schema*
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/fca2e2aa-e2f3-4e1b-a55a-b0ec1e50d1a2/image.png)
+<center>
+<img src="/interfaces/data_product_hub/exploration/image%20(41).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+<figcaption><i>Account Table Schema</i></figcaption>
+</center>
 
-*The secure column header indicates that the Email column is redacted.*
+
+<center>
+<img src="/interfaces/data_product_hub/exploration/image%20(42).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+<figcaption><i>The secure column header indicates that the Email column is redacted</i></figcaption>
+</center>
 
 One can explore the details on each table. For example, if we click on the account table, we can see details like the total number of measures and dimensions and details like whether the table is public or not. It also exposes the underlying data type, aggregate type, and its SQL.
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/0bc6cda9-b248-453f-bb37-b365320a374e/image.png)
+<center>
+<img src="/interfaces/data_product_hub/exploration/image%20(43).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+</center>
 
 - **Files**: This contains all relevant SQL files, tables, views, and YAML files (e.g., user groups) necessary to define the **Lens**. Here, users can explore the actual implementation and configuration of the model, making it useful for developers or advanced users who need to see the code and metadata behind the data product.
 
 For example, In the above image are the YAML Implementation files for the Lens model of the data product for all entities. One can also view the lens artifact in the Metis by clicking on **Open in Metis** button in the right side corner 
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/2a3410de-46dc-4d2c-86b0-6dca832bed56/image.png)
+
+<center>
+<img src="/interfaces/data_product_hub/exploration/image%20(44).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+</center>
+
 
 ## GraphQL Tab
 

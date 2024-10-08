@@ -494,7 +494,7 @@ name: sales360test
 **Description:** Represents the workspace where the resource is located or managed.
 
 <aside class="callout">
-🗣 Workspace is required and mandatory only for <a href="/resources/index/">workspace-level resources</a>.
+🗣 Workspace is required and mandatory only for <a href="/resources/types/#workspace-level-resources">workspace-level resources</a>.
 </aside>
 
 | Data Type | Requirement | Default Value | Possible Value |
