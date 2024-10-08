@@ -111,11 +111,11 @@ Talos provides the necessary tools and capabilities to streamline API developmen
 
 ### **Develop APIs locally**
 
-Before deploying your APIs into the DataOS environment you can build and test your APIs on your local system. [This guide]() includes the steps to build APIs locally using Talos. 
+Before deploying your APIs into the DataOS environment you can build and test your APIs on your local system. [This guide](/resources/stacks/talos/local_set_up/) includes the steps to build APIs locally using Talos. 
 
 ### **Develop APIs within DataOS**
 
-[This section](/resources/stacks/talos/set_up/) involves the step-by-step guide on building and deploying APIs within DataOS using Talos. Talos is orchestrated by the [Service Resource](https://dataos.info/resources/service/) to streamline the API creation.
+[This section](/resources/stacks/talos/set_up/) involves the step-by-step guide on building and deploying APIs within DataOS using Talos. Talos is orchestrated by the [Service Resource](/resources/service/) to streamline the API creation.
 
 ## Configurations
 To configure Talos effectively, it's essential to understand each attribute of the manifest files. This section provides detailed descriptions of the key configuration files used in Talos, helping you set up and customize Talos efficiently. For detailed information on each file, please refer to [this section](/resources/stacks/talos/configurations/).

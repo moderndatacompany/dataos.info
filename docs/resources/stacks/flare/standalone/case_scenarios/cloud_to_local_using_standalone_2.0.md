@@ -4,7 +4,7 @@
 
 Let's take a case scenario where we read data from the Pulsar and write it to the Local File System. After writing the data to the environment Pulsar, we also want to run some Scala commands to verify whether our data is written and has the appropriate schema.
 
-You can check out the [Standalone YAML configuration section](/resources/stacks/flare/standalone_yaml_configurations/) for other inputs and outputs data sources.
+You can check out the [Standalone YAML configuration section](/resources/stacks/flare/configurations/) for other inputs and outputs data sources.
 
 But before diving right into the programming stuff, let's ensure you have the required prerequisites.
 
@@ -23,7 +23,7 @@ dataos-ctl version
 
 If CLI is not updated to the latest version, navigate to the below page
 
-[CLI](/interfaces/cli)
+[CLI](/interfaces/cli/)
 
 ### **Get the Pulsar-admin tag**
 
@@ -63,7 +63,7 @@ Flare Standalone uses Scala Programming Language. In case you don't know about S
 
 1. Download the `flare-standalone.zip` folder provided below
 
-[flare-standalone.zip](/resources/stacks/flare/standalone/running_flare_standalone/flare-standalone.zip/)
+[flare-standalone.zip](/resources/stacks/flare/standalone/running_flare_standalone/flare-standalone.zip)
 
 1. Extract the downloaded `flare-standalone.zip` file. It contains only one folder by the name `standalone`. Next, you can open the code editor inside the `flare-standalone` folder.
 2. Now the scenario looks like the image below, where you have opened the code editor inside the `flare-standalone` folder, which contains the `standalone` folder which further includes one folder by the name `dataout` and another file by the name `config.yaml`
