@@ -54,11 +54,27 @@ Let's first examine the state of our Age column data before implementing the pol
 5. In the Tag column, click on the **Add** button and select the appropriate tag, such as **`PII.Age`**, to apply to the column.
 
     <div style="text-align: center;">
-    <img src="/resources/policy/how_to_guide/customertable.png" alt="Sample inaccessible dataset" style="border:1px solid black; width: 80%; height: auto;">
+    <img src="/resources/policy/how_to_guide/customer_table_01.png" alt="Sample inaccessible dataset" style="border:1px solid black; width: 80%; height: auto;">
     <figcaption> Applying PII.Age tag on Age column in customer table</ficaption>
     </div>
 
 *You have now successfully applied a tag to the Age column.*
+
+6. Once the tag is applied, the policy associated with the tag, which is based on bucket age, will be enforced on the Age column. You can verify this in the Workbench, where datasets with an active policy will display a red triangle icon, indicating that the policy is in active state. Additionally, after applying the tag, you will notice that the ages are now successfully bucketed in their respective groups.
+
+    <div style="text-align: center;">
+    <img src="/resources/policy/how_to_guide/Pasted image.png" alt="Sample inaccessible dataset" style="border:1px solid black; width: 80%; height: auto;">
+    <figcaption> After applying the tag the age bucket data policy is activated </ficaption>
+    </div>
+
+
+7. You can further review the age bucket logic by clicking on the red triangle icon. In the Governance tab, you'll find the SQL logic that applied the bucketing through casting.
+
+    <div style="text-align: center;">
+    <img src="/resources/policy/how_to_guide/csutomer_table_02.png" alt="Sample inaccessible dataset" style="border:1px solid black; width: 80%; height: auto;">
+    <figcaption> Governance tab </ficaption>
+    </div>
+
 
 ## How to implement Data Policy using custom Data Masking Policies?
 
@@ -66,23 +82,15 @@ Let's first examine the state of our Age column data before implementing the pol
 
 To create a new tag within Metis, follow these steps:
 
-**Access Metis:** Log in to the Metis platform using your credentials.
+- **Access Metis:** Log in to the Metis platform using your credentials.
 
-**Navigate to Governance:**
+- **Navigate to Governance:** Click on the Govern button located in the top right corner of the page.
 
-Click on the Govern button located in the top right corner of the page.
+- **Access Tag Groups:** Choose the appropriate tag group like `PII` where you want to create a new tag, or create a new tag group if needed.
 
-**Access Tag Groups:**
+- **Add a New Tag:** Click on the Add Tag button in the top right corner to initiate the creation of a new tag. for instance, `mycustomtag`.
 
-Choose the appropriate tag group like `PII` where you want to create a new tag, or create a new tag group if needed.
-
-**Add a New Tag:**
-
-Click on the Add Tag button in the top right corner to initiate the creation of a new tag. for instance, `mycustomtag`.
-
-**Define Tag Details:**
-
-Provide a Name and Description for the new tag to clearly identify its purpose and usage.
+-**Define Tag Details:** Provide a Name and Description for the new tag to clearly identify its purpose and usage.
 
 
 ### **Create a Data Policy manifest file**
@@ -90,14 +98,51 @@ Provide a Name and Description for the new tag to clearly identify its purpose a
 After creating the tag, the next step is to define the policy associated with it. For example, if you need to customize an age bucket data masking policy for the tag PII.mycustomtag, the policy structure will be as follows:
 
 
-???tip "Filter Policy for city not equals to Verbena"
+???tip "Custom age bucketing data policy"
 
     ```yaml
-    --8<-- "/examples/resources/policy/sample_mask_data_policy.yml"
+    name: bucketage
+    version: v1
+    type: policy
+    layer: user
+    description: "data policy to filter zip data"
+    policy:
+    data:
+        priority: 1
+        type: mask
+        depot: icebase
+        collection: retail
+        dataset: customer
+        selector:
+        column:
+            tags:
+            - PII.mycustomtag
+        user:
+            match: any
+            tags:
+            - "roles:id:user"
+        mask:
+        operator: bucket_number
+        bucket_number:
+            buckets:
+            - 15
+            - 25
+            - 30
+            - 35
+            - 40
+            - 45
+            - 50
+            - 55
+            - 60
+        name: age_masking_policy
+        description: An age bucket is formed by grouping the ages together. Based on defined
+        age buckets, the age of individuals is redacted and anonymized. If an
+        individual’s age falls under a defined bucket, it is replaced with the
+        lowest value of the bucket.
     ```
 
-### **Assign tag to the appropriate column of the dataset
-**
+### **Assign tag to the appropriate column of the dataset**
+
 Once the tag has been created and its associated policy defined, the next step is to apply this tag to the appropriate column within the dataset. This ensures that the policy is enforced on the specified data. Follow these steps to apply the tag:
 
 **Navigate to the Dataset:** Open the Metis platform and locate the dataset you want to modify.
