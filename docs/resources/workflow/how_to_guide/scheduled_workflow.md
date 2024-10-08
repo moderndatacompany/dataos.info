@@ -25,7 +25,7 @@ The remaining fields (* * * *) mean that this schedule applies to every hour of 
 ### **`concurrencyPolicy: Allow`**
 
 
-- **Allow:** This permits multiple instances of the workflow to run concurrently. If a new instance of the workflow is triggered before the previous one finishes, both will run simultaneously. To know more about different configuration values of concurrencyPolicy attribute click [here](/resources/workflow/configurations/#concurrencyPolicy)
+- **Allow:** This permits multiple instances of the workflow to run concurrently. If a new instance of the workflow is triggered before the previous one finishes, both will run simultaneously. To know more about different configuration values of concurrencyPolicy attribute click [here](/resources/workflow/configurations/#concurrencypolicy)
 
 ### **`endOn: 2024-11-01T23:40:45Z`**
 

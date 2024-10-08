@@ -25,7 +25,7 @@ This video encapsulates everything you need to know in order to quickly get star
 <li>know how to connect with a specific context of DataOS, and</li>
 <li>know how to write the commands in CLI</li>
 </ul>
-For further details, refer to the reference document on [DataOS CLI](/interfaces/cli)
+For further details, refer to the reference document on [DataOS CLI](/interfaces/cli/)
 
 ---
 
