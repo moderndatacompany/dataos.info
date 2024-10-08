@@ -29,18 +29,37 @@ The goal is to filter out all data rows where the city equals "Verbena." This fi
 
 To implement the filter policy that restricts access based on city data, use the following YAML structure:
 
-
 ???tip "Filter Policy for city not equals to Verbena"
 
     ```yaml
-    --8<-- "/examples/resources/policy/sample_filter_data_policy01.yml"
+    name: filtericebasecity
+    version: v1
+    type: policy
+    layer: user
+    description: "data policy to filter city data"
+    policy:
+      data:
+        type: filter
+        name: "filtericebasecity"
+        priority: 1
+        selector:
+          user:
+            match: all
+            tags:
+              - "users:id:iamgroot"
+        dataset_id: "icebase.retail.city"
+        description: 'data policy to filter data on city'
+        filters:
+          - column: city_name
+            operator: not_equals
+            value: "Verbena"
     ```
 
 **After applying filter on city not equals to Verbena**
 
 <div style="text-align: center;">
   <img src="/resources/policy/how_to_guide/afterfilter01.png" alt="Sample inaccessible dataset" style="border:1px solid black; width: 80%; height: auto;">
-  <figcaption>Access to all cities except Verbena</ficaption>
+  <figcaption>The user having access to all cities except Verbena</ficaption>
 </div>
 
 In this scenario, the policy applies a filter on the city_name column, restricting access to rows where city_name is Verbena. If the operator assigns this filter to the user tagged as `users:id:iamgroot`, the user will not be able to view any data rows where the city is Verbena.
@@ -54,14 +73,34 @@ Conversely, another user `ironman` is specifically responsible for Verbena, a fi
 ???tip "Filter Policy for city not equals to Verbena"
 
     ```yaml
-    --8<-- "/examples/resources/policy/sample_filter_data_policy02.yml"
+    name: filtericebasecity
+    version: v1
+    type: policy
+    layer: user
+    description: "data policy to filter city data"
+    policy:
+      data:
+        type: filter
+        name: "filtericebasecity"
+        priority: 1
+        selector:
+          user:
+            match: all
+            tags:
+              - "users:id:iamgroot"
+        dataset_id: "icebase.retail.city"
+        description: 'data policy to filter data on city'
+        filters:
+          - column: city_name
+            operator: equals
+            value: "Verbena"
     ```
 
 **After applying filter on city equals to Verbena**
 
 <div style="text-align: center;">
-  <img src="/resources/policy/how_to_guide/afterfilter01.png" alt="Sample inaccessible dataset" style="border:1px solid black; width: 80%; height: auto;">
-  <figcaption>Access to all cities except Verbena</ficaption>
+  <img src="/resources/policy/how_to_guide/Untitled.png" alt="Sample inaccessible dataset" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption>The user iamgroot has access to only Verbena city</ficaption>
 </div>
 
 In this scenario, the policy applies a filter on the city_name column, restricting access to all citites except when city_name is Verbena. If the operator assigns this filter to the user tagged as `users:id:ironman`, the user will not be able to view any data rows of city other than Verbena.

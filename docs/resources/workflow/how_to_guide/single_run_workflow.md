@@ -1,6 +1,6 @@
 # Single-Run Workflow
 
-A [Single-run Workflow](/resources/workflow/core_concepts/#single-run-workflow) represent a single-time execution of a sequence of jobs. It does not include a [`schedule`](/resources/workflow/configuration/#schedule) section.
+A [Single-run Workflow](/resources/workflow/core_concepts/#single-run-workflow) represent a single-time execution of a sequence of jobs. It does not include a [`schedule`](/resources/workflow/configurations/#schedule) section.
 
 <center>
   <img src="/resources/workflow/sample_workflow.svg" alt="Illustration of a Single-run Workflow">

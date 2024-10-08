@@ -224,7 +224,7 @@ DataOS checks resource dependability while deleting resources.
 
 <center>
   <div style="text-align: center;">
-    <img src="/cli-resource-delete.png" alt="CLI Resource Delete" style="width: 60rem; border: 1px solid black;">
+    <img src="/interfaces/cli/cli-resource-delete.png" alt="CLI Resource Delete" style="width: 60rem; border: 1px solid black;">
     <figcaption>CLI Resource Delete</figcaption>
   </div>
 </center>
@@ -771,7 +771,7 @@ Dataos-ctl TUI is a Terminal User Interface for DataOS®. It shows all the key 
 
 <center>
   <div style="text-align: center;">
-    <img src="/cli-tui.png" alt="CLI TUI" style="width: 60rem; border: 1px solid black;">
+    <img src="/interfaces/cli/cli-tui.png" alt="CLI TUI" style="width: 60rem; border: 1px solid black;">
   </div>
 </center>
 

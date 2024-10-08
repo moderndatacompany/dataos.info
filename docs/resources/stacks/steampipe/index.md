@@ -24,7 +24,7 @@ The below points outline the high-level steps involved in establishing a connect
 
 #### **Ensure the presence of a Steampipe Stack within the DataOS instance**
 
-Before commencing, ascertain the existence of a Steampipe Stack within the DataOS instance. Utilize the [`get`](/interfaces/cli/command_reference#get) command to list all available the Stacks within the DataOS instance:
+Before commencing, ascertain the existence of a Steampipe Stack within the DataOS instance. Utilize the [`get`](/interfaces/cli/command_reference/#get) command to list all available the Stacks within the DataOS instance:
 
 ```shell
 dataos-ctl get -t stack -a
@@ -202,7 +202,7 @@ service:
 
 **Apply the Service Resource manifest**
 
-Once you have created the Service manifest, [`apply`](/interfaces/cli/command_reference/#apply) it using the DataOS Command Line Interface (CLI) to instantiate a Service Resource instance. Execute the following command:
+Once you have created the Service manifest, [`apply`](/interfaces/cli/command_reference#apply) it using the DataOS Command Line Interface (CLI) to instantiate a Service Resource instance. Execute the following command:
 
 ```shell
 dataos-ctl apply -f ${{file-path}} -w ${{workspace-name}}
