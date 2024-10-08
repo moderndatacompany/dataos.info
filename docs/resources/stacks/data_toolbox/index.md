@@ -1,10 +1,10 @@
 ---
-title: Data Toolbox
+title: Toolbox Stack
 search:
-  boost: 2
+  boost: 4
 ---
 
-# Data Toolbox
+# Toolbox Stack
 
 Data Toolbox Stack or simply Toolbox Stack provides vital functionality in case of metadata updation in [Icebase](/resources/depot#icebase) depots. When data is ingested into Icebase using [Flare](/resources/stacks/flare/) Stack, the metadata of ingested datasets needs to be registered with [Metis](/interfaces/metis/) before it can be queried using [Workbench](/interfaces/workbench/). The Data Toolbox allows `set_version` action on the data stored in the DataOS internal storage Icebase, which uses the Iceberg format. The [Metis](/interfaces/metis/) keeps track of the Iceberg table by storing a reference to the latest metadata file. Using the Data Toolbox `set_version` action, you can update the metadata version to the latest or any specific version.
 

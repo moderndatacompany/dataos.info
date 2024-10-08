@@ -1,10 +1,10 @@
 ---
-title: Container
+title: Container Stack
 search:
   boost: 2
 ---
 
-# Container
+# Container Stack
 
 Container [Stack](/resources/stacks/) is a declarative DevOps software development kit (SDK) to publish data-driven applications in production. As a cohesive Stack, it seamlessly integrates with web-server-based application images constructed atop DataOS, empowering users to leverage DataOS's [Compute](/resources/compute/) Resource to execute external tools or applications. With Container Stack, application development is no longer bound by programming language constraints, as it enables the fluid deployment of diverse applications onto a robust, flexible infrastructure.
 
