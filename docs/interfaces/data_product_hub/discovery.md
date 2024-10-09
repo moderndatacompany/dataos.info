@@ -147,7 +147,7 @@ Below that you will find a search bar that enables you to search various columns
 In addition to that you can open up a specific table within Metis, the DataOS Catalog to get comprehensive metadata of that table, as well as in the Workbench App for exploratory analysis using SQL.
 
 <center>
-  <img src="/interfaces/data_product_hub/discovery/annotely_image%20(6)%20(1).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
+  <img src="/interfaces/data_product_hub/annotely_image%20(6)%20(1).png" alt="DPH" style="width:55rem; border: 1px solid black;" />
   <figcaption><i>Inputs Tab</i></figcaption>
 </center>
 
