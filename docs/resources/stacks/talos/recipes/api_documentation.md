@@ -50,6 +50,78 @@ For detailed information about each attribute, please refer to the below table.
 | `description`  | string    | none          |  any description    | optional     |
 | `validators`   | object    | none          | `required'          | optional     |
 
+## Additional Parameters
+
+Below are some additional parameters you can add in the `api.yaml` manifest file to enhance the API documentation.
+
+### **Filters**
+
+Added detailed descriptions for filters to explain how different user groups will access content. This enhances the documentation, providing clear guidance for users interacting with the API.
+
+```yaml
+filters:
+  - description: Allow only 'US' content
+    userGroups:
+      - reader
+      - default
+  - description: Indian Content Only
+    userGroups:
+      - asian
+      - indian
+```
+
+For detailed information about each attribute, please refer to the below table.
+
+| Attribute    | Data Type | Default Value | Possible Value  | Requirement                           |
+|--------------|-----------|---------------|-----------------|---------------------------------------|
+| `description`| string    | none          | any description | optional                              |
+| `userGroups` | array     | none          | defined user groups | mandatory (at least one value must be specified) |
+
+
+
+### **Dependencies**
+
+Included descriptions of external dependencies, such as tables and columns, that the API relies on. This adds context to the API documentation, ensuring users understand the data sources involved.
+
+```yaml
+
+depends:
+  - table: dataos://icebase:default/country
+    columns:
+      - Country
+      - Country_code
+      - WHO_region
+
+```
+For detailed information about each attribute, please refer to the below table.
+
+| Attribute  | Data Type | Default Value | Possible Value                                | Requirement                           |
+|------------|-----------|---------------|-----------------------------------------------|---------------------------------------|
+| `table`    | string    | none          | table name           | mandatory                             |
+| `columns`  | array     | none          | column name      | mandatory (at least one column must be specified) |
+
+
+
+### **Headers**
+
+Added detailed context about the headers used in the API, including their purpose and value. This helps developers understand how headers should be managed in requests and responses.
+
+```yaml
+headers:
+  - key: my-personal-key
+    value: super-hot-value
+  - key: Cache-Control
+    value: max-age=604800
+```
+
+For detailed information about each attribute, please refer to the below table.
+
+| Attribute | Data Type | Default Value | Possible Value                | Requirement                           |
+|-----------|-----------|---------------|-------------------------------|---------------------------------------|
+| `key`     | string    | none          | any key | mandatory                             |
+| `value`   | string    | none          | value corresponding to the key | mandatory                             |
+
+
 ## Access the API documentation
 
 To access this API documentation, on your browser, open this link `http://localhost:3000/doc?apikey=xxx` by providing your DataOS API token which you have used to configure Talos. You can also download OpenAPI specification in the JSON format by clicking on the Download button as shown below.
