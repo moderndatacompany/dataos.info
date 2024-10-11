@@ -109,7 +109,9 @@ tables:
 
 ## Dimensions
 
-Dimensions represent the properties of a single data point in the table.
+Dimensions represent the properties of a single data point in the table. They are descriptive attributes, often text values, that provide context to the data in a fact table. For example, in a sales database, attributes like "Product Name," "Category," and "Region," are called dimensions of that table which help to categorize and provide context for the sales entity. The dimensions serve as the guidelines for data analysts to view the information from different angles and apply different filtering criteria.
+
+For instance, in the following yaml, a entity owner is defined who's unique characterisitcs such as id, email are called dimensions. 
 
 ```yaml title="owner.yaml"
 tables:
@@ -139,7 +141,7 @@ The dimension declaration involves the following properties:
 | `name` | Unique identifier of the dimension | ^[a-zA-Z][a-zA-Z0-9_]*$ | Use snake_case. <br> For example: **`order_date`** |  
 | `title` | Human-readable title of the dimension. Use ‘title’ to change the display name | String | Provide a clear and concise title for better readability and user understanding |  
 | `description` | Description of the dimension's purpose | String | Provide a detailed description to explain the dimension's business value |  
-| `column` | Add a reference to the column defined in the table’s SQL |   You can define custom SQL in a table’s dimension but as a best practice, we recommend defining it in a table’s SQL. | |  
+| `column` |  References the column defined in the table’s SQL. While custom SQL can be defined in a table’s dimension, best practice suggests that it should be defined in the table’s SQL. | 
 | `public` | Controls visibility of dimension, i.e. whether the dimension is visible to all users or hidden. If not mentioned explicitly, by default this property is true  | True, False | Set to **`True`** for key dimensions that should be visible by default |  
 | `primary_key` | The key on which the join relationship will be defined | Column name | Ensure each dimension has a unique primary key to maintain data integrity |  
 | `type` | The data type of the dimension | string, number, time, boolean | Choose the appropriate data type to ensure proper sorting and filtering​ |  
@@ -151,7 +153,7 @@ The dimension declaration involves the following properties:
 
 ## Measures
 
-Measures are quantifications — fields like order subtotal, quantity of items purchased, or duration spent on a specific page. Measures are therefore computable. Say you have a measure, quantity of items purchased: you can do things like calculate the average quantity ordered, sort by descending quantities, sum all quantities, and so on.
+Measures are quantifications, representing fields such as order subtotal, quantity of items purchased, or duration spent on a specific page. They encompass any measurable numerical value on which statistical calculations can be applied, including sum, average, and variance. For instance, with a measure like quantity of items purchased, operations can include calculating the average quantity ordered, sorting by descending quantities, summing all quantities, and performing various statistical analyses.
 
 **Measure Additivity:**
 

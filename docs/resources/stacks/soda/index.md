@@ -246,106 +246,106 @@ stackSpec:
 <summary>Sample Soda checks</summary>
 
 ```yaml
-stackSpec:
-  inputs:
-    - dataset: dataos://icebase:retail/customer              
-      options:
-          engine: minerva
-          clusterName: system
-      
-      
-      checks:
-        - row_count between 1 and 170:
-            attributes:
-               category: Accuracy
-        - row_count same as city:
-            name: Cross check customer datasets
-            attributes:
-              category: Accuracy
+name: soda-customer-checks
+version: v1
+type: workflow
+tags:
+  - workflow
+  - soda-checks
+description: Empowering sales360 dp.
+workspace: public
+workflow:
+  dag:
+    - name: soda-job-v1
+      spec:
+        stack: soda+python:1.0
+        compute: runnable-default
+        resources:
+          requests:
+            cpu: 1000m
+            memory: 250Mi
+          limits:
+            cpu: 1000m
+            memory: 250Mi
+        logLevel: INFO # WARNING, ERROR, DEBUG
+        stackSpec:
+          inputs:
+            - dataset: dataos://icebase:sales_360/account
+              options:
+                engine: minerva
+                clusterName: system
+              profile:
+                columns:
+                  - site_number
+                  - customer_no
+                  - city
+              checks:
 
-        - missing_count(license_type) < 1:
-            missing values: [NA, n/a]
-            attributes:
-              category: Completeness
+                - schema:
+                    name: Confirm that required columns are present
+                    warn:
+                      when required column missing: [customer_name,premise_code]
+                    fail:
+                      when required column missing: 
+                        - city
+                      when wrong column type:
+                        site_number: integer
 
-        - invalid_percent(customer_name) < 1%:
-            valid max length: 27
-            filter: site_number > 0
-            attributes:
-              category: Validity
+                - invalid_count(customer_name) = 0 :
+                    valid min length: 5
+                    name: First name has 5 or more characters
+                    warn: when between 5 and 27
+                    fail: when > 27  
 
-        - invalid_count(number_of_children) < 0:
-            valid min: 0
-            valid max: 6
-            attributes:
-              category: Validity
-        - min(age) > 30:
-            filter: marital_status = 'Married'
-            attributes:
-              category: Accuracy
-        - duplicate_count(customer_no) = 0:
-           attributes:
-            category: Uniqueness
-        - duplicate_count(customer_index) > 10:
-            attributes:
-              category: Uniqueness
-        - duplicate_percent(customer_index) < 0.10:
-            attributes:
-              category: Uniqueness
+                - invalid_percent(customer_name) < 1%:
+                    valid max length: 27
+                    filter: site_number > 0
 
-        # - failed rows:
-        #     samples limit: 70
-        #     fail condition: age < 18  and age >= 50
-        # - failed rows:
-        #     fail query: |
-        #       SELECT DISTINCT customer_index
-        #       FROM customer as customer
+                - invalid_count(site_number) < 0:
+                    valid min: 5
+                    valid max: 98
 
+                - missing_percent("phone_number") = 0
 
-        - freshness(last_commit_time) < 7d:  # This timestamp indicates when the customer record was last updated
-              name: freshness_of_the_last_commit
-              attributes:
-                title: Freshness of the Last commit
-                category: Freshness
+                - duplicate_percent(customer_no) < 1%
 
-        - max(age) <= 100:
-            attributes:
-              category: Accuracy
-        - max_length(first_name) = 8:
-            attributes:
-              category: Accuracy
- 
-        - values in (city_name) must exist in city (city_name):
-            samples limit: 20
-            attributes:
-              category: Accuracy
-
-        - schema:
-            name: Confirm that required columns are present
-            warn:
-              when required column missing: [first_name, last_name]
-            fail:
-              when required column missing:
-                - age
-                - no_phone
-            attributes:
-              category: Schema
-        - schema:
-            warn:
-              when forbidden column present: [Voldemort]
-              when wrong column type:
-                first_name: int
-            fail:
-              when forbidden column present: [Pii*]
-              when wrong column type:
-                number_of_children: DOUBLE
-            attributes:
-              category: Schema
-
+                - row_count between 1 and 170
+                - avg_length(address) > 16
+                - min(customer_no) > 0:
+                    filter: site_number = 3
     # ...other inputs attributes
 ```
 
 </details>
+
+[Data Product Hub](/interfaces/data_product_hub/) consolidates the status of all your data quality checks under the **Quality** tab, giving a comprehensive view of the health of your data assets.   There are two ways for a check and its latest result to appear on the dashboard:
+
+**Manual Scans with Scanner:** When you define checks in a YAML file and run a scanner using the Soda Library, the checks and their results are displayed in the Checks dashboard.
+
+**Scheduled Scans by Soda Workflow:** When Soda runs a scheduled workflow, the checks and their latest results automatically appear on the Checks dashboard.
+
+Each check result on the dashboard indicates whether it has passed or failed based on the specific quality dimension it is assessing. For Instance, in the below provided image, we can see the status of various data quality checks:
+
+- Accuracy: Passed, as indicated by the green checkmark.
+- Completeness: Passed, with a green checkmark.
+- Freshness: Flagged with a warning (⚠), suggesting the data might not be up-to-date.
+- Schema: Also flagged (⚠), which could mean there are schema mismatches or other issues with the data structure.
+- Uniqueness: Passed successfully.
+- Validity: Passed, indicating the data adheres to the expected validation rules.
+
+<div style="text-align: center;">
+  <img src="/resources/stacks/soda/soda_checks_01.png" alt="SODA" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>Checks Symbol</i></figcaption>
+</div>
+
+When you click on any of the check, a detailed trend chart appears, displaying the specific times the check was executed along with the percentage of SLO compliance over time. The chart includes a graphical representation of how the data met the predefined quality standards, with 100% indicating full compliance. Any dips in the line graph highlight potential issues during specific check runs. Additionally, the dashboard may show more information like dataset details and error messages, offering a comprehensive view of the data quality trends over time. For instance, here you can see that the Trend Chart of the Validity check which indicates the time checks were ran against the percentage of SLOs.
+
+<div style="text-align: center;">
+  <img src="/resources/stacks/soda/image.png" alt="SODA" style="border:1px solid black; width: 80%; height: auto;">
+  <figcaption><i>Checks Symbol</i></figcaption>
+</div>
+
+The detailed trend chart shows that the data quality check was consistently run at 8:05 AM on several specific dates, including September 25, 26, 28, and daily from October 1 to 9. This regular cadence indicates the check was scheduled to run at the same time on these dates, ensuring continuous monitoring. The trend line remains at 100%, meaning the data met all SLO criteria during each check. For more details on the Quality tab refer [this link](/interfaces/data_product_hub/discovery/#data-product-tab) and scroll to Quality tab.
 
 You can refer to the Soda documentation for the grammar of check definitions: [Soda CL Reference](https://docs.soda.io/soda-cl/soda-cl-overview.html).
 

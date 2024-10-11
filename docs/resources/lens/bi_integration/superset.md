@@ -1,21 +1,20 @@
-
 # Superset
 
-## Pre-requisites
+## Prerequisites
 
-- **Curl**: Ensure you have `curl` installed on your system. For Windows users, you may need to use `curl.exe`. 
+- **Curl**: Ensure `curl` is installed on the system. For Windows users, `curl.exe` may be required.
 
-- **Lens API Endpoint**: The API endpoint provided by Lens to sync the data with meta endpoint access.
+- **Lens API Endpoint**: The API endpoint provided by Lens to sync data with meta endpoint access.
 
-- **Access Credentials**: For Superset, you will need access credentials such as username, password, and host.
+- **Access Credentials**: Access credentials such as username, password, and host are required for Superset.
 
-For Superset, you will need to supply your Superset login credentials (username and password), along with the host address where Superset is hosted. The command will establish a database and table with a live connection to the Lens model in Superset. This configuration enables direct interaction with and visualization of data from Lens within the Superset environment.
+Superset requires the login credentials (username and password) and the host address where Superset is hosted. The command establishes a database and table with a live connection to the Lens model in Superset, enabling direct interaction with and visualization of data from Lens within the Superset environment.
 
 ## Steps
 
 **Step 1: Run the curl command**
 
-To sync your Lens model with Superset, follow the below steps:
+To sync the Lens model with Superset, follow these steps:
 
 === "Syntax"
 
@@ -41,29 +40,27 @@ To sync your Lens model with Superset, follow the below steps:
     {
         "username": "adder_1",
         "password": "adder_1",
-        "host": "https://superset-liberal-monkey.dataos.app""
+        "host": "https://superset-liberal-monkey.dataos.app"
     }
     ```
 
 **Command Parameters:**
 
-- **`URL`**: `https://liberal-monkey.dataos.app/lens2/sync/api/v1/superset/public:sales360` This is the endpoint for syncing with Superset.
+- **`URL`**: `https://liberal-monkey.dataos.app/lens2/sync/api/v1/superset/public:sales360`. This is the endpoint for syncing with Superset.
 
-- **`DataOS FQDN`: any current DataOS  FQDN. For example,** `liberal-monkey.dataos.app`
+- **`DataOS FQDN`**: Current DataOS FQDN, for example, `liberal-monkey.dataos.app`.
 
-- **`--header 'Content-Type: application/json'`**: This specifies the content type as JSON.
+- **`--header 'Content-Type: application/json'`**: Specifies the content type as JSON.
 
-- **`Lens_Name`: Your lens name. Example `sales360`.**
+- **`Lens_Name`**: Name of the Lens, for example, `sales360`.
 
-- **`API_Key`: Your DataOS API key:
-        
-    The DataOS API key for the user can be obtained by executing the command below.
+- **`API_Key`**: DataOS API key. The DataOS API key for the user can be obtained by executing the command below.
 
     ```bash
     dataos-ctl user apikey get
     ```
-    
-Upon initiation, you will receive a response:
+
+Upon initiation, a response will be received:
 
 ```bash
 {
@@ -73,9 +70,9 @@ Upon initiation, you will receive a response:
 {
     "message": "Superset project creation and sync completed successfully."
 }
-```
+`
 
-Once you execute the command in the terminal, the results will be visible in the Superset app, as demonstrated below:
+Once the command is executed in the terminal, results will be visible in the Superset app as demonstrated below:
 
 Please follow the steps outlined to see the result:
 
@@ -91,7 +88,7 @@ Please follow the steps outlined to see the result:
       <img src="/resources/lens/bi_integration/superset3.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
   </div>
 
-Everything is set up now. Explore and perform further analysis in Superset.
+The setup is complete. Further exploration and analysis can be performed in Superset.
 
 
 ## Data Policies and Security

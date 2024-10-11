@@ -2,70 +2,352 @@
 
 ## Views in Lens
 
-- Views serve as a layer atop the data graph of tables, presenting an abstraction of the entire data model for consumers to interact.
-- They serve as a layer for defining metrics, providing a simplified interface for end-users to interact objectively with key metrics instead of the entire data model
+- Views serve as a layer atop the data graph of tables, presenting an abstraction of the entire data model with which consumers can interact.
+- They serve as a layer for defining metrics, providing a simplified interface for end-users to interact objectively with key metrics instead of the entire data model.
 - View reference dimensions, measures, and segments from multiple logical tables. It doesn’t have any measure, dimension, or segment of its own.
 
-## When to Define Views?
+## When to define Views?
 
-- **Defining Metrics**: Views allow you to define metrics by including measures and dimensions from different tables. This enables you to create denormalized tables that comprehensively address a specific use case. For instance, you can have a view that gives you all the dimensions and measures to understand ‘Weekly Spirits Sales in Florida’
+- **Defining Metrics**: Views allow you to define metrics by including measures and dimensions from different tables. This enables you to create denormalized tables that comprehensively address a specific use case. For instance, you can have a view that gives you all the dimensions and measures to understand ‘Weekly Spirits Sales in Florida’.
 - **Providing a Simplified Interface**: By exposing only the relevant measures and dimensions, views make it easier for users to understand and query the data, reducing the complexity of the underlying data model.
 
-## How to Define Views?
+## How to define Views?
 
-<!-- <aside class="callout">
-💡 You can also expose a view to create operational boards ‘Iris Board’ to monitor key metrics. Learn more about it [here](https://www.notion.so/Consuming-Lens-Views-via-Iris-board-92d1e436fe79476ab85a967112fe4ea8?pvs=21)
+When designing how your semantic layer will be exposed and consumed by end users, you can follow either an **entity-first approach** or a **metrics-first approach.** In both cases, views will be used to build the semantic layer interface.
 
-</aside> -->
+### **Entity-first**
+
+In an entity-first approach, views are built around entities in your data model. Views are built as denormalized tables, bringing measures and dimensions from different tables needed to describe the entity fully.
+
+In the example below, we create the `customer_churn_prediction` to describe the `customer`,  entity. It has multiple measures and dimensions from multiple logical tables such as `marketing_campaign`, `purchase_data`.
+
+```yaml
+views:
+   - name: customer_churn_prediction
+     description: It is containing the customer churn information.
+     public: true
+     meta:
+       export_to_iris: true
+     tables:
+       - join_path: marketing_campaign
+         prefix: true
+         includes:
+           - engagement_with_campaign1
+           - acceptedcmp1
+           - customer_id
+           - engagement_score
+
+       - join_path: customer
+         prefix: true
+         includes:
+           - country
+           - customer_segments
+
+       - join_path: purchase_data
+         prefix: true
+         includes:
+           - purchase_date  
+           - recency
+           - frequency
+           - churn_probability_score
+           - churn_rate
+           - purchases
+
+```
+
+<aside class="callout">
+
+To populate an Entity view on Iris, one must use the `export_to_iris` attribute. However, same is not the case in the Metric view.
+
+</aside>
+
+
+
+### **Metrics-First Approach**
+
+The **metrics-first approach** builds views around key performance metrics in a data model. Each view focuses on a specific measure and includes all relevant dimensions for grouping, filtering, and tracking time. This approach helps business teams make informed, data-driven decisions by providing clear, consistent, actionable metrics.
+
+**Key Benefits of the Metrics-First Approach**
+
+- **Operational Evaluation**: Empowers users to understand key business performance metrics, enabling them to answer critical questions such as:
+    - What happened?
+    - Why did it happen?
+    - What will happen next?
+    - What should we do in response?
+- **Simplified Analysis**: By focusing on a single measure, each view allows for efficient and straightforward analysis, ensuring clarity in data interpretation.
+- **Consistency**: Each metric is centrally defined, ensuring consistency across various tools and reports, thus eliminating discrepancies in business performance analysis.
+
+A metric in the metrics-first approach typically includes:
+
+- **Metric Name**: A clear, descriptive name that reflects the purpose of the metric.
+- **Measure**: The key performance indicator or value being tracked (e.g., customer churn rate).
+- **Time Dimension**: The period over which the metric is measured (e.g., daily, weekly). To access the time granularity feature, you must mention the timestamp data type instead of the time and date data type.
+- **Related Dimensions**: Additional attributes or dimensions (such as customer demographics, region, or product type) that allow for further breakdown and analysis.
+
+Views are named after the specific metric they represent, making them easy to identify and work within various systems. 
 
 === "Syntax"
 
     ```yaml
     views:
-      - name: # name of the view 
-        description: # description of the view
-        public: # set this property as 'true' or 'false' to control the visibility
-        meta: # metadata properties to export views to Iris board
-          export_to_board: true # set this property to true if you want to export the view 
-          board:
-            timeseries: sales.posting_date # define a time dimension to be used to create the time-series chart
-            includes: # define the list of dimensions/measures to be included in the board
-            excludes: # define the list of dimensions/measures to be excluded from the board
-      
-
-        # An array where you can refer to multiple tables. 
-        # List the tables whose measure and dimensions need to be included in the view
+      - name: {metric_name}
+        description: {Description_of_the metric}
+        public: {true}
+        meta:
+          title: {title_name_of_the_metric}
+          tags:   
+            - DPDomain.{Domain_name}
+            - DPUsecase.{Use_case}
+            - DPTier.{Tier}
+          metric:
+            expression: {"*/45  * * * *"}
+            timezone: {"UTC"}
+            window: {"day"}
+            excludes: 
+            - {purchases}
         tables:
-          - join_path: # the name of the table
-            prefix: false
-            includes: # dimension/measure from the table that should be part of the view
-            excludes: # dimension/measure from the table that should be part of the view
-            
+          - join_path: {Tablename}
+            prefix: {true}
+            includes:
+              - {metric}
+              - {dimension that is used to calculate measure}
+              - {time dimension}  #timestamp datatype
+              - {another dimension to drill down}
+              
     ```
 
 === "Example"
 
     ```yaml
-    view:
-      - name: generated_sales_across_territory
-        description: View containing total and average sales for different territories
+    #example 1 (single metric)
+    views:
+      - name: cloud_service_cost
+        description: This metric tracks the total costs associated with cloud services, providing insights into resource usage, billing trends, and cost optimization opportunities. It helps organizations manage cloud expenditures and improve financial efficiency.
         public: true
         meta:
-          export_to_board: false 
-
+          metric:
+            expression: "*/5  * * * *"
+            timezone: "UTC"
+            window: "week" #day, month, quarter, year
         tables:
-          - join_path: sales_order_header
+          - join_path: billing
             prefix: true
             includes:
-              - total_sales_amount
-              - average_order_value
-              - total_orders_count
-              - order_mode
-              - online_sales
-
-          - join_path: sales_person
-            prefix: true
-            includes: "*"
-            excludes:
-              - territory_id
+              - cost_by_cloud_service
+              - billing_date
     ```
+
+If needed, you can create multiple views for different use cases from a single entity. This approach prevents users from being overwhelmed with too much data by presenting focused data slices in separate views, each highlighting only relevant measures and dimensions.
+
+**Multiple metrics in the single view**
+
+```yaml
+#example 2 (multiple metrics in the same views YAML)
+views:
+  - name: conversion_rate
+    description: This metric tracks the percentage of leads or prospects who successfully converted into paying customers over a month time period. It provides insights into the effectiveness of marketing efforts and sales processes.
+    public: true
+    meta:
+      tags: 
+        - DPDomain.Sales OPS
+        - DPUsecase.Purchasing Behaviour Analysis
+        - DPTier.Consumer Aligned
+      metric:
+        expression: "*/5  * * * *"
+        timezone: "UTC"
+        window: "month"
+    tables:
+      - join_path: sales
+        prefix: true
+        includes:
+          - frequency
+          - customer_no
+          - invoice_date
+
+  - name: qtd_revenue
+    description: This metric tracks the total revenue generated in the current quarter to date (QTD). It provides insights into financial performance over the quarter, helping to evaluate growth trends and revenue targets.
+    public: true
+    meta:
+      tags: 
+        - DPDomain.Sales
+        - DPUsecase.Purchasing Behaviour Analysis
+        - DPTier.Consumer Aligned
+      metric:
+        expression: "*/5  * * * *"
+        timezone: "UTC"
+        window: "month"
+
+    tables:
+      - join_path: sales
+        prefix: true
+        includes:
+          - total_revenue
+          - invoice_date
+          - source
+
+      - join_path: product
+        prefix: true
+        includes:
+          - category
+          - brand
+          - class
+
+      - join_path: account
+        prefix: true
+        includes:
+          - site_name
+          - state
+          - license_type
+          - customer_name
+```
+
+## **Exploration and Activation**
+
+- **Exploration**: Views can be explored using tools such as **Iris Board,** which provides automated, dynamic dashboards for visualizing and analyzing performance metrics. These tools help detect anomalies and reveal trends over time. You can also query the view in Lens Studio directly.
+- **Activation**: Metrics can be embedded into operational workflows, triggering alerts, populating Excel models for cross-tab analysis, or integrated into email automation tools for marketing or retention strategies.
+- You can explore the view via
+    - Lens Studio
+    - Iris Board
+    - Data Product Hub
+
+### **Lens Studio**
+
+To explore the views via **Lens Studio,** follow the below steps:
+
+**Step 1: Access Lens Studio** Navigate to the DataOS Home Page and click on **Lens2**.
+
+  <div style="text-align: center;">
+      <img src="/resources/lens/working_with_views/lens01.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">
+      <figcaption> Home Page </figcaption>
+  </div>
+
+  - This action will open a Lens Studio page, as shown below. Here, you will be greeted with a welcome message that includes a link redirecting you to [Metis](/interfaces/metis/), where you can discover the list of lens resource.
+
+  <div style="text-align: center;">
+      <img src="/resources/lens/working_with_views/lens02.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">
+      <figcaption> Lens Studio Page </figcaption>
+  </div>
+
+**Step 2: View the List of Lenses**
+
+  - From the given list of lenses, users can select the desired lens to explore.
+
+  - Users can search for a specific lens in the Resource section using the search bar.
+
+  - Additionally, advanced filter options are available to narrow down the list of lenses. Filters allow users to sort lenses by parameters such as domain, owner, source, state, tags, tier, and workspace.
+
+
+  <div style="text-align: center;">
+      <img src="/resources/lens/working_with_views/lens03.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">
+      <figcaption> Metis </figcaption>
+  </div>
+
+
+
+**Step 3: Selecting a Lens** 
+
+- Select a desired lens from the list to explore. For example, apply the advanced filter state: active to filter only the active lenses. From the filtered list, select the lens **Churn Prediction** to view detailed information, including metadata, usage history, and related resources.
+
+<div style="text-align: center;">
+    <img src="/resources/lens/working_with_views/lens04.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <figcaption> Metis search and filter Lens </figcaption>
+</div>
+
+
+- Upon selection, the corresponding interface for the selected lens will open.\
+
+- Click on the **Explore in Studio** button.
+<div style="text-align: center;">
+    <img src="/resources/lens/working_with_views/lens05.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <figcaption> Lens in Metis </figcaption>
+</div>
+
+**Step 4: Exploring a View**
+
+- In the **Explore** interface, click the **View** tab to query and access all associated views.
+- Select a view from the list to display its available measures and dimensions in the dropdown menu.
+- Choose the required measures and dimensions, then click the **Run Query** button to execute the query.
+
+<div style="text-align: center;">
+    <img src="/resources/lens/working_with_views/lens06.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <figcaption> Views in Lens Explorer </figcaption>
+</div>
+
+
+### **Iris Board in Metis**
+
+To explore the view via Iris Board, follow the same steps as above to navigate to the Lens Studio page.
+
+<div style="text-align: center;">
+    <img src="/resources/lens/working_with_views/iris01.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <figcaption> Iris button on Metis </figcaption>
+</div>
+
+Once on the Lens Studio page, click the Iris button located beside the Explore button to explore the view via the Iris Board. An Iris board exploration page will be displayed, listing all the views.
+
+<div style="text-align: center;">
+    <img src="/resources/lens/working_with_views/iris02.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <figcaption> View in Iris </figcaption>
+</div>
+
+### Exploring Views on Data Products Hub
+
+Follow these steps to explore views and metrics within the Data Products Hub (DPH).
+
+**Step 1: Access DataOS Home Page**
+
+- Open the **DataOS Home Page** in your browser.
+- On the home page, click on the **Data Products Hub** application.
+
+<div style="text-align: center;">
+    <img src="/resources/lens/working_with_views/dph1.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <figcaption> DataOS Home Page </figcaption>
+</div>
+
+**Step 2: Search for a Data Product**
+
+- Use the search bar in **Data Products Hub 2.0** to find the desired data product. For example, search for *Customer Churn Prediction*. 
+
+<div style="text-align: center;">
+    <img src="/resources/lens/working_with_views/dph2.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <figcaption> Data Product Hub </figcaption>
+</div>
+
+**Step 3: Explore Metrics**
+
+- The **Overview** tab will load by default.
+- Click on either **Entitites** or **Metrics** tab to view all available views for the selected data product.
+- This section provides an overview of the metric-first approach and displays key metrics associated with the data product.
+    
+<div style="text-align: center;">
+    <img src="/resources/lens/working_with_views/dph3.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <figcaption>  </figcaption>
+</div>
+    
+
+**Step 4: View Data Lineage**
+
+- You can trace the data source for each metric. For example, a metric for *Customer Churn Prediction* might be sourced from the *purchase_data* table.
+- To explore data lineage, click on the drop-down arrow. This will show the origin of the metric, including the table and dimensions used in the calculation.
+- The lineage view also helps you understand how the metric is calculated and which data sources contribute to it.
+    
+<div style="text-align: center;">
+    <img src="/resources/lens/working_with_views/dph4.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <figcaption> Data Lineage </figcaption>
+</div>
+    
+
+**Step 5: Access the Iris Board for Metric Analysis**
+
+- Click on the Quick Insights link at the **References** section's top-r**ight** corner.
+- This will take you directly to the **Iris Board**, where you can observe and analyze the metric view in more detail.
+
+**6. Navigate to the DPH Studio**
+
+- Next to the **Quick Insights** button, click the **Explore** button.
+- This will open the **DPH Exploration Page**, with the default tab set to **Studio**. Query your metrics here
+    
+<div style="text-align: center;">
+    <img src="/resources/lens/working_with_views/dph5.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    <figcaption> Data Lineage </figcaption>
+</div>
