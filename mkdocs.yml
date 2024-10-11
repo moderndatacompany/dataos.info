@@ -179,6 +179,7 @@ nav:
         - Command Reference: interfaces/cli/command_reference.md
       - Data Product Hub: 
         - interfaces/data_product_hub/index.md
+        - Core Concepts: interfaces/data_product_hub/core_concepts.md
         - Data Product Discovery: interfaces/data_product_hub/discovery.md
         - Data Product Exploration: interfaces/data_product_hub/exploration.md
         - Data Product Activation:
@@ -192,7 +193,7 @@ nav:
           - App Development: interfaces/data_product_hub/activation/app_development.md
           - Data APIs: interfaces/data_product_hub/activation/data_api.md
         - Best Practices: interfaces/data_product_hub/bestpractices.md 
-        - Recipes: interfaces/data_product_hub/recipe.md
+        - Examples: interfaces/data_product_hub/recipe.md
       - Lens: 
         - interfaces/lens/index.md
         - Building Lens: 
@@ -466,6 +467,7 @@ nav:
           - resources/worker/index.md
           - First Steps: resources/worker/first_steps.md
           - Configuration: resources/worker/configurations.md
+          - Core Concepts: resources/worker/core_concepts.md
         - Workflow: 
           - resources/workflow/index.md
           - First Steps: resources/workflow/first_steps.md
