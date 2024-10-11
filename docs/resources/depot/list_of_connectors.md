@@ -18,7 +18,7 @@ The connector support table lists various data sources and their compatibility w
 - **Predicate Pushdown Support (Minerva):** Indicates whether Minerva can optimize queries by pushing filters and predicates directly to the data source, reducing data transfer and improving performance.
 - **Themis:** Indicates whether the source can be queried using [Themis](/resources/cluster/#themis), DataOS' dynamic federation engine that supports SparkSQL. Themis auto-scales per query, and user-based scaling boundaries can be defined. It is designed to complete queries reliably in failure-prone scenarios but is generally slower than Minerva, making it less suited for real-time analysis.
 - **Flare:** Determines if ETL operations with this data source can be performed using [Flare Stack](/resources/stacks/flare/), which is built on Apache Spark for large-scale data processing.
-- **Scanner:** Indicates whether [Scanner](/resources/stacks/scanner/) can extract metadata from this source. Scanner is a DataOS Stack designed for metadata extraction from external systems.
+- **Scanner:** Indicates whether [Scanner](/resources/stacks/scanner/) can extract metadata from this source. Scanner is a DataOS Stack designed for metadata extraction from various systems.
 
 
 ## Supported Connectors
