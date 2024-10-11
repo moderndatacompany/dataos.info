@@ -1,322 +1,317 @@
-# Recipe
+# Example
 
-In this section, we will explore a recipe to explore Data Product Hub using a real life use case.
+In this section, a real-life use case is explained to demonstrate how Data Product Hub can be utilized.
 
-## Problem Statement
+## Problem statement
 
-John, a senior investment analyst at a finance company, aims to assess investor risk, evaluate company valuations, and identify high-potential companies for hedge fund portfolios. To achieve this, he will collaborate with Max, a data analyst, to create a comprehensive dashboard for corporate performance and hedge fund metrics, to optimize investment strategies and manage risk effectively. Following are the key areas that need to be highlighted:
+John, a senior investment analyst at a finance company, aims to assess investor risk, evaluate company valuations, and identify high-potential companies for hedge fund portfolios. To achieve this, collaboration will take place with Max, a data analyst, to develop a comprehensive dashboard for corporate performance and hedge fund metrics, designed to optimize investment strategies and manage risk effectively. The key areas to be highlighted are as follows:
 
-1. **Performance by Industry and Sector:** Assess the performance of different industries and sectors to identify trends and areas for investment opportunities. 
-2. **Top-Performing Companies:** Identify which companies are performing best in terms of key financial indicators.
-3. **Revenue and Financial Impact Analysis:** Analyze revenue and financial metrics to understand the impact of each company on overall portfolio performance.
-4. **Operational Efficiency Metrics:** Determine operational efficiency to gauge financial health and identify areas for operational improvements.
-5. **Debt and Risk Analysis:** Compare companies based on their debt levels to manage investment risk and optimize portfolio allocation.
-6. **Financial Growth Patterns:** Identify patterns in financial growth to uncover potential investment opportunities and refine strategies.
-7. **Hedge Fund Metrics Overview:** Compare hedge fund metrics to optimize investment decisions and manage fund performance.
-8. **Regional Performance Comparison:** Compare the performance of companies across different countries to identify regional trends and opportunities.
-9. **Investor Risk Assessment:** Use financial metrics to assess and manage investor risk within the portfolio.
+1. Performance by Industry and Sector: The performance of different industries and sectors will be assessed to identify trends and areas for investment opportunities.
+2. Top-Performing Companies: Companies will be identified based on their performance using key financial indicators.
+3. Revenue and Financial Impact Analysis: Revenue and financial metrics will be analyzed to determine their impact on overall portfolio performance.
+4. Operational Efficiency Metrics: Operational efficiency will be measured to assess financial health and identify areas for operational improvements.
+5. Debt and Risk Analysis: Companies will be compared based on their debt levels to manage investment risk and optimize portfolio allocation.
+6. Financial Growth Patterns: Financial growth patterns will be identified to uncover potential investment opportunities and refine strategies.
+7. Hedge Fund Metrics Overview: Hedge fund metrics will be compared to optimize investment decisions and manage fund performance.
+8. Regional Performance Comparison: The performance of companies across different countries will be compared to identify regional trends and opportunities.
+9. Investor Risk Assessment: Financial metrics will be used to assess and manage investor risk within the portfolio.
 
-The goal is to enhance their ability to assess corporate performance, manage hedge fund metrics, and optimize investment strategies, leading to improved decision-making and portfolio performance.
+The goal is to enhance the ability to assess corporate performance, manage hedge fund metrics, and optimize investment strategies, leading to improved decision-making and portfolio performance.
+
 
 ## Discovering a Data Product
 
-To solve the problem, Max uses the Data Product Hub, a Graphical User Interface within DataOS where data analysts can discover actionable [Data Products](/products/data_product/). Max follows the steps below to identify the potential Data Products to solve his use case.
+To address the problem, the Data Product Hub, a graphical user interface within DataOS, is utilized by Max, a data analyst. This platform allows data analysts to discover actionable [Data Products](/products/data_product/). The steps below are followed to identify relevant Data Products for solving the use case.
 
-1. To get started with the Data Product Hub, Max clicks on the **Data Product Hub 2.0** within the DataOS User Interface.
-    
+1. The Data Product Hub 2.0 is accessed within the DataOS user interface to begin exploring the Data Product Hub.
+
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(1).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/recipe/image%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
     <figcaption><i>DataOS User Interface</i></figcaption>
     </center>
 
+2. After login, it redirected to the Data Product Hub home page, as displayed below.
 
-2. Max is redirected to the Data Product Hub home page after login, as shown below.
-    
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(2).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/recipe/image%20(2).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
     <figcaption><i>Data Product Hub Home Page</i></figcaption>
-    </center>  
+    </center>
 
+3. By default, Data Product recommendations are displayed based on the use case. However, to find Data Products in the 'Corporate Finance' domain, the Filters drop-down menu is accessed. The Domain option is selected, and 'Corporate Finance' is chosen, as shown below.
 
-3. The home page consists of Data Product recommendations based on the use case by default, but Max wants the Data Product recommendations of the ‘Corporate Finance’ domain, so he clicks on the **Filters** drop-down menu on the left side and selects the **Domain** option where he tick marks the ‘Corporate Finance’ option, as shown below.
-    
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(3).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
-    </center>  
+    <img src="/interfaces/data_product_hub/recipe/image%20(3).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
+    </center>
 
-4. Max gets recommendations for Data Products in the Corporate Finance domain as shown below, he discovers a relevant Data Product ‘Corp Market Performance’, which will help him to evaluate the stock market risks.
-    
-    <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(4).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
-    </center>  
+4. Recommendations for Data Products within the Corporate Finance domain are displayed. The 'Corp Market Performance' Data Product is identified as relevant for evaluating stock market risks.
 
-5. To solve his use case, **Max** also needs to identify high-potential companies for hedge fund portfolios, tracking key financial indicators, and operational efficiency. He has found this Data Product in the recommendations as well. The Data Product ‘Corp Performance’ provides critical insights into identifying high-potential companies for hedge fund portfolios, tracking key financial indicators, operational efficiency, and performance metrics.
+    <center>
+    <img src="/interfaces/data_product_hub/recipe/image%20(4).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    </center>
 
-6. Max now started exploring the ‘Corp Market Performance’ Data Product. He first clicks on the ‘Corp Market Performance’ Data Product which will open an interface where he can see all the details of this specific Data Product as shown below.
-    
-    <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(5).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
-    </center>  
+5. The 'Corp Performance' Data Product is also found in the recommendations. This Data Product assists in identifying high-potential companies for hedge fund portfolios, tracking key financial indicators, and monitoring operational efficiency.
 
+6. The 'Corp Market Performance' Data Product is selected for further exploration. This opens an interface where all details of the specific Data Product are displayed, as shown below.
 
-7. Max explores each tab, in the **Overview tab,** he gets the details on the lineage of the Data Product to find the origin of the Data Product with **Inputs** which shows all the input datasets fed into the Data Product, **Outputs** which shows all the datasets generated from the Data Product, **Access options** which show the various options through which the Data Product can be consumed, **Models** which show various lens models that are consuming the Data Product. 
-    
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(6).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
-    </center>  
-      
-8. In the **Input tabs,** he explores the input datasets in detail. It provides him with a short description of the dataset, its tier, domain, owner, restricted access depending on the policy applied, the DataOS address of the dataset, and the Data Products in which the input dataset is used as input, as shown below. 
-    
+    <img src="/interfaces/data_product_hub/recipe/image%20(5).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    </center>
+
+7. Each tab of the Data Product is examined. In the Overview tab, the lineage of the Data Product is reviewed, including Inputs (input datasets), Outputs (datasets generated from the Data Product), Access options (ways the Data Product can be consumed), and Models (lens models consuming the Data Product).
+
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(7).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
-    </center>  
-       
-    He also, search the columns by name in the search bar as shown below.
-    
+    <img src="/interfaces/data_product_hub/recipe/image%20(6).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    </center>
+
+8. The Input tab is used to explore input datasets in detail, providing a description of the dataset, its tier, domain, owner, and access restrictions, along with the DataOS address and other related Data Products.
+
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(8).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
-    </center>  
-      
-9. Below the search bar, he has the information about each column in a tabular format where he has details about the data types of each column as shown below.
-    
+    <img src="/interfaces/data_product_hub/recipe/image%20(7).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    </center>
+
+    Dataset columns can be searched by name using the search bar, as shown below.
+
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(9).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
-    </center>  
-       
-10. Similarly, Max explored the Output tab where he can see the details of the output dataset named `market_data` generated by the Data Product to see if he has all the necessary dimensions and measures available for his use case.
-    
+    <img src="/interfaces/data_product_hub/recipe/image%20(8).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
+    </center>
+
+9. Information about each column is provided in a tabular format, including data types of each column, as displayed below.
+
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(11).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
-    </center>  
-       
-11. Max finds two dimensions, `marketid`and `companyid` and a few measures, `capitalexpenditures`, `shareholdersequity`, `marketpershare`, `equitypershare`, `dividendpershare`, `netincome`, and `net_profit_after_tax` that will help him with this use case.
-    
+    <img src="/interfaces/data_product_hub/recipe/image%20(9).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    </center>
+
+10. The Output tab is explored to examine the output dataset named `market_data`, ensuring all necessary dimensions and measures are available for the use case.
+
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(12).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
-    </center>  
-       
-12. In the **Quality tab**, Max sees all the SLOs (Service Level Objectives) or quality checks applied to the output data, Freshness has 0% SLO adherence, Schema has 100% SLO adherence, Validity has 0% SLO adherence, completeness has 100% SLO adherence, Uniqueness has 0% SLO adherence, and Accuracy has 0% SLO adherence. Max continues further as the output data is complete and has the correct schema that will help him with his use case.
-    
+    <img src="/interfaces/data_product_hub/recipe/image%20(11).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    </center>
+
+11. Two dimensions, `marketid` and `companyid`, are identified along with measures such as `capitalexpenditures`, `shareholdersequity`, `marketpershare`, `equitypershare`, `dividendpershare`, `netincome`, and `net_profit_after_tax`, which will assist with the use case.
+
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(13).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
-    </center>  
-        
+    <img src="/interfaces/data_product_hub/recipe/image%20(12).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    </center>
+
+12. In the Quality tab, Service Level Objectives (SLOs) are reviewed, including adherence levels for freshness, schema, validity, completeness, uniqueness, and accuracy. Despite some SLOs having 0% adherence, the output data is determined to be complete with the correct schema.
+
+    <center>
+    <img src="/interfaces/data_product_hub/recipe/image%20(13).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    </center>
+
     <aside class="callout">
-    🗣 Service Level Objectives (SLOs) are our Data Product's defined data quality standards, ensuring it meets user expectations and business needs. We continuously monitor our Data Product against these SLOs using data quality checks to identify and address any deviations promptly. SLO Adherence indicates the success rate of data quality checks and can be calculated as `SLO Adherence (%) = (Total Checks Passed / Total Checks Applied) * 100`.
+    🗣 Service Level Objectives (SLOs) are the defined data quality standards for the Data Product, ensuring alignment with user expectations and business needs. Continuous monitoring of the Data Product is conducted against these SLOs using data quality checks to promptly identify and address any deviations. SLO adherence represents the success rate of these data quality checks and is calculated as SLO Adherence (%) = (Total Checks Passed / Total Checks Applied) * 100.
     </aside>
-    
-13. In the **Access Options tab**, Max sees all the options through which he can consume this Data Product, he found the option **Tableau Cloud** is helpful for dashboard creation.
-    
-    <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(14).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
-    </center>  
-       
-14. But before that, Max wants to explore this Data Product further by clicking on the **Explore button** in the right corner as shown below.
-    
-    <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(49).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
-    </center>  
-    
 
-15. **The Explore button** will open a studio interface as shown below, where Max can explore the iris board which he examines, by clicking on the `market_data`, measures like `price_to_earnings_ratio`, `return_on_equity_ratio`, `earnings_per_share`, and `dividend_yield_ratio` to evaluate how well companies are performing. This helps him in assessing profitability, valuation, and return on investment. To use the iris board efficiently, Max clicked on the `price_to_earnings_ratio` measure and `company_id` as a dimension which will be reflected on the Members tab, on clicking the `Run Query` button on the right side he can examine the table then he clicked the **Chart tab** to ****visualize the data points as shown below.
-    
+13. In the Access Options tab, various options for consuming the Data Product are reviewed. The Tableau Cloud option is identified as useful for dashboard creation.
+
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(16).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
-    </center>  
-       
+    <img src="/interfaces/data_product_hub/recipe/image%20(14).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    </center>
+
+14. Before consuming the Data Product, Max clicks on the Explore button in the top-right corner to further examine it.
+
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(17).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
-    </center>  
-       
-16. Max further explored to:
-    - Examine `dividend_per_share`, `total_dividend_per_share`, and `earnings_per_share` to understand the company's profitability and its policy on dividend distribution.
-        
-        <center>
-        <img src="/interfaces/data_product_hub/recipe/image%20(18).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
-        </center>  
-        
-    - Analyze `total_shareholders_equity` to understand the overall financial health and stability of the company.
-        
-        <center>
-        <img src="/interfaces/data_product_hub/recipe/image%20(19).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
-        </center>  
-        
-    - Examine `total_market_per_share`, `marketpershare`, and `total_dividend_per_share` to gauge how the company's shares are performing in the market.
-        
-        <center>
-        <img src="/interfaces/data_product_hub/recipe/image%20(20).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
-        </center>  
-        
-    - Examine `total_net_income` and `total_net_profit_after_tax` to determine the overall profitability and efficiency of the company. This is crucial for evaluating how well the company converts revenue into profit.
-        
-        <center>
-        <img src="/interfaces/data_product_hub/recipe/image%20(21).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
-        </center>  
-        
-    - Analyze `shareholdersequity`, `capitalexpenditures`, and `total_debt_hid` to understand how effectively the company is managing its capital and investments.
-        
-        <center>
-        <img src="/interfaces/data_product_hub/recipe/image%20(22).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
-        </center>  
-        
-    - Analyze ratios `debt_equity_ratio` and `equity_multiplier` to assess financial risk and stability. High leverage or poor ratios could indicate potential risk areas.
-        
-        <center>
-        <img src="/interfaces/data_product_hub/recipe/image%20(23).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
-        </center>  
-             
-17. Max bookmarked the Data Product to favorites to get daily updates as he will be using this Data Product for his use case. He can later find the bookmarked Data Products in the Favorites tab in the **Data Products tab** as shown below.
-    
+    <img src="/interfaces/data_product_hub/recipe/image%20(49).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
+    </center>
+
+15. Clicking the Explore button opens a studio interface. Within this interface, Max explores the iris board. For this use case, the `price_to_earnings_ratio` measure and `company_id` dimension are selected. The Run Query button is clicked to examine the table, followed by clicking the Chart tab to visualize the data points.
+
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(25).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
-    </center>  
-        
-18. Similarly, Max also explores the ‘Corp Performance’ Data Product as this one also helps with his use case. He finds all the necessary measures and dimensions required for his use case.
+    <img src="/interfaces/data_product_hub/recipe/image%20(16).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    </center>
+
+    <center>
+    <img src="/interfaces/data_product_hub/recipe/image%20(17).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    </center>
+
+16. Additional exploration includes:
+    - Analyzing `dividend_per_share`, `total_dividend_per_share`, and `earnings_per_share` to assess profitability and dividend distribution policies.
+
+        <center>
+        <img src="/interfaces/data_product_hub/recipe/image%20(18).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+        </center>
+
+    - Examining `total_shareholders_equity` to evaluate the financial health and stability of the company.
+
+        <center>
+        <img src="/interfaces/data_product_hub/recipe/image%20(19).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+        </center>
+
+    - Exploring `total_market_per_share`, `marketpershare`, and `total_dividend_per_share` to gauge stock performance.
+
+        <center>
+        <img src="/interfaces/data_product_hub/recipe/image%20(20).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+        </center>
+
+    - Investigating `total_net_income` and `total_net_profit_after_tax` to measure profitability and efficiency.
+
+        <center>
+        <img src="/interfaces/data_product_hub/recipe/image%20(21).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+        </center>
+
+    - Analyzing `shareholdersequity`, `capitalexpenditures`, and `total_debt_hid` to assess capital management.
+
+        <center>
+        <img src="/interfaces/data_product_hub/recipe/image%20(22).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+        </center>
+
+    - Examining the `debt_equity_ratio` and `equity_multiplier` to evaluate financial risk and stability.
+
+        <center>
+        <img src="/interfaces/data_product_hub/recipe/image%20(23).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+        </center>
+
+17. The Data Product is bookmarked for daily updates. Bookmarked Data Products can be accessed later from the Favorites tab in the Data Products section.
+
+    <center>
+    <img src="/interfaces/data_product_hub/recipe/image%20(25).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+    </center>
+
+18. Similarly, the ‘Corp Performance’ Data Product is explored. All necessary measures and dimensions required for the use case are identified.
+
 
 ## Activating the Data Product via BI Sync
 
-Then he goes back to the ‘Corp Market Performance’ Data Product to share it with Tableau.
+The ‘Corp Market Performance’ Data Product is returned to in order to share it with Tableau.
 
-Max followed the below steps to share the Data Product with Tableau:
+The steps below are followed to share the Data Product with Tableau:
 
-1. He goes to the **Access Options tab** and finds the option of Tableau Cloud under the BI Sync section as shown below.
+1. The Access Options tab is navigated to, where the Tableau Cloud option is found under the BI Sync section, as shown below.
     
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(26).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/recipe/image%20(26).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
     </center>  
         
-2. Then he clicked on the **Add connection** where he needed to provide Tableau Cloud credentials such as Project Name, Server Name, Site Id, Username, and Password. 
+2. The Add connection button is selected, where Tableau Cloud credentials such as Project Name, Server Name, Site Id, Username, and Password are required. 
     
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(27).png" alt="DPH" style="width:30rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/recipe/image%20(27).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
     </center>  
         
-3. After giving the required credentials, Max clicked on the **Activate** button, which will activate the Data Product which means now Max can consume this Data Product on Tableau Cloud to create Dashboard. This step will create a new project in Tableau Cloud named ‘Corporate finance’.
+3. After the credentials are provided, the Activate button is selected. This activates the Data Product, allowing it to be consumed on Tableau Cloud for dashboard creation. A new project in Tableau Cloud is created, named ‘Corporate finance’.
     
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(28).png" alt="DPH" style="width:30rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/recipe/image%20(28).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
     </center>  
-        
 
 ## Consuming the Data Product on Tableau Cloud
 
-After successfully activating all the required Data Products, Max is ready to create the dashboard on Tableau Cloud. Let’s see how he initialized dashboard creation in the Tableau cloud with the following steps:
+Once the required Data Products are activated, the dashboard on Tableau Cloud is created by following these steps:
 
-1. Max logged in to Tableau Cloud using his Tableau Cloud username and password which he provided while activating the Data Products, then he was redirected to the Tableau Cloud home page as shown below.
+1. Tableau Cloud is logged into using the previously provided credentials, and the user is redirected to the Tableau Cloud home page, as shown below.
     
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(29).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/recipe/image%20(29).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
     </center>  
         
+2. The Manage Projects option on the home page is selected, as shown below.
 
-2. He clicked on the **Manage Projects** option on the home page as shown below.
-
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(30).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/recipe/image%20(30).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
     </center>  
         
-3. **The Manage Projects** option will open an interface where Max finds all the projects he has worked on, where he also finds the newly created project ‘Corporate finance’ as shown below.
+3. The Manage Projects option opens an interface where all projects, including the newly created ‘Corporate finance’ project, are listed, as shown below.
     
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(31).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/recipe/image%20(31).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
     </center>  
         
-4. He clicked on the ‘Corporate finance’ project, where he could see the data sources that he can consume to create the dashboard.
+4. The ‘Corporate finance’ project is selected, displaying the data sources available for dashboard creation.
     
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(32).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/recipe/image%20(32).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
     </center>  
         
-5. Then he clicked on the menu option at the right corner of the data source and selected the **New Workbook** option as shown below.
+5. The menu option in the top-right corner of the data source is selected, followed by the New Workbook option, as shown below.
     
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(33).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/recipe/image%20(33).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
     </center>  
         
-6. To create a new workbook, Max was asked to provide his DataOS username and API key as the password to sign in to the data source to open the view.
+6. To create a new workbook, the DataOS username and API key are provided as the password to sign in to the data source.
     
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(34).png" alt="DPH" style="width:30rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/recipe/image%20(34).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
     </center>  
         
-7. After signing in, he is redirected to the workbook where he can start creating the dashboard.
+7. After signing in, redirection to the workbook occurs, allowing the dashboard to be created.
     
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(35).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/recipe/image%20(35).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
     </center>  
-        
 
 ## Exploring the Data Product
 
-After successfully setting up the dashboard with the relevant data products, Max wants to take the analysis one step further by adding forecasting capabilities to predict future trends for their hedge fund portfolio. This will help John make informed investment decisions and anticipate potential risks. for which Max followed the below steps:
+With the dashboard setup completed, the next step involves adding forecasting capabilities to predict future trends for the hedge fund portfolio. This assists in making informed investment decisions and anticipating risks. The following steps are taken:
 
-1. Max goes back to the Data Product Hub and continues his data analysis journey, by clicking on the ‘Explore’ button an interface will open where he can perform cross Data Product analysis and determine if he has enough data to build a forecast model.
+1. The Data Product Hub is revisited, and the Explore button is selected, opening an interface to perform cross Data Product analysis. This analysis helps determine if enough data is available to build a forecast model.
     
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(36).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/recipe/image%20(36).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
     </center>  
-        
-    - Max begins by comparing the **Corp Market Performance** and **Corp Performance** data products to analyze how companies perform across different **industries and sectors**. He focuses on metrics like **net income**, **revenue growth**, and **operational efficiency** to understand which companies in various sectors are delivering the strongest financial results.
+
+    - The Corp Market Performance and Corp Performance Data Products are compared to analyze company performance across different industries and sectors. Focus is placed on metrics like net income, revenue growth, and operational efficiency to assess which companies in various sectors deliver the strongest financial results.
         
         <center>
-        <img src="/interfaces/data_product_hub/recipe/image%20(37).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+        <img src="/interfaces/data_product_hub/recipe/image%20(37).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
         </center>  
         
-    - He filters the data to focus on specific sectors such as ‘Financial Services’, identifying the companies with the highest **earnings per share** and **net income**. This helps him narrow down high-performing companies that should be prioritized for hedge fund allocation.
+    - Data is filtered to focus on sectors such as ‘Financial Services’, identifying companies with the highest earnings per share and net income, narrowing down high-performing companies for hedge fund allocation.
         
         <center>
-        <img src="/interfaces/data_product_hub/recipe/image%20(38).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+        <img src="/interfaces/data_product_hub/recipe/image%20(38).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
         </center>  
         
-    - Max saves his exploration as a perspective as he will need to revisit these insights more often for his use case. He clicked on the Save Perspective option as shown below.
+    - The exploration is saved as a perspective, ensuring that these insights can be revisited frequently. The Save Perspective option is selected, as shown below.
         
         <center>
-        <img src="/interfaces/data_product_hub/recipe/image%20(39).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+        <img src="/interfaces/data_product_hub/recipe/image%20(39).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
         </center>  
-        
-2. To save the perspective, Max has to provide the name and description of his exploration so that he can revisit these insights later.
+
+2. To save the perspective, a name and description of the exploration are provided for future reference.
     
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(40).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/recipe/image%20(40).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
     </center>  
-        
-3. To revisit the perspective, Max has to navigate to the Perspectives tab as shown below.
+
+3. The saved perspective is accessed by navigating to the Perspectives tab, as shown below.
     
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(41).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/recipe/image%20(41).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
     </center>  
-        
-4. In the Perspective tab, he searched for his saved perspective by name as shown below.
+
+4. The perspective is searched by name within the Perspectives tab, as shown below.
     
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(42).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/recipe/image%20(42).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
     </center>  
-        
-5. On clicking the perspective, Max is redirected to the Explore interface where he can access all the perspectives created on the Data Product along with his own.
+
+5. Selecting the perspective redirects to the Explore interface, where all perspectives created on the Data Product, including the saved one, can be accessed.
     
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(43).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/recipe/image%20(43).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
     </center>  
-        
 
 ## Activating the Data Product via Jupyter Notebook
 
-Now after exploring the Data Product, Max is ready to build models, for which he needs to activate the Data Product via Jupyter Notebook, to do so he followed the below steps:
+Once the Data Product is explored, the next step is to build models. The Data Product is activated via Jupyter Notebook by following these steps:
 
-1. He goes back to the ‘Corp Market Performance’ Data Product and navigates to the Access Options tab, in the AI and ML section he clicks on the Download, which downloads a `.ipynb` file.
+1. The Corp Market Performance Data Product is navigated to, and the Access Options tab is accessed. In the AI and ML section, the Download button is selected, downloading a `.ipynb` file.
     
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(44).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/recipe/image%20(44).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
     </center>  
-        
-2. Max opens the .`ipynb` file with Visual Studio as shown below.
+
+2. The `.ipynb` file is opened using Visual Studio, as shown below.
     
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(45).png" alt="DPH" style="width:30rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/recipe/image%20(45).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
     </center>  
-        
-3. He chooses to go with REST API templates. Which looks like the following.
-    - REST API template
+
+3. The REST API template is selected, which appears as follows:
+
+    - REST API template:
         
         ```python
         # Import necessary libraries
@@ -335,35 +330,15 @@ Now after exploring the Data Product, Max is ready to build models, for which he
             }
         })
         
-        # Query Example: This is how your query should look like.
-        
-            # "query": {
-            #     "measures": [
-            #         "sales.total_quantities_sold", 
-            #         "sales.proof_revenue"
-            #     ],
-            #     "dimensions": [
-            #         "inventory.warehouse"
-            #     ],
-            #     "timeDimensions": [
-            #         {
-            #             "dimension": "sales.invoice_date",
-            #             "granularity": "day"
-            #         }
-            #     ],
-            #     "limit": 1000,
-            #     "responseFormat": "compact"
-            # }
-        
         # Headers
         headers = {
             'Content-Type': 'application/json',
             'apikey': apikey
         }
-        
+
         # Fetch data from API
         def fetch_data_from_api(api_url, payload, headers=None):
-            response = requests.post(api_url, headers=headers, data=payload)
+            response is = requests.post(api_url, headers=headers, data=payload)
             
             if response.status_code == 200:
                 data = response.json()
@@ -383,33 +358,34 @@ Now after exploring the Data Product, Max is ready to build models, for which he
                 print("Ready for AI/ML model building.")
             else:
                 print("Failed to fetch data.")
-        
         ```
+
+
+
+
         
-4. In the template, Max got to know that he needed to provide the API URL as api_url and the DataOS API key as apikey for which in DPH he navigated to the Data APIs section from where he downloaded the Postman collection and OpenAPI specification to explore and test the API endpoint.
+4. In the template, it is determined that the API URL must be provided as `api_url` and the DataOS API key as `apikey`. To retrieve these, the Data APIs section in DPH is navigated, where the Postman collection and OpenAPI specification are downloaded to explore and test the API endpoint.
     
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(46).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/recipe/image%20(46).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
     </center>  
         
-5. Max opened the Postman application and imported the Postman collection to test the API endpoint.
+5. The Postman application is opened, and the Postman collection is imported to test the API endpoint.
     
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(47).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/recipe/image%20(47).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
     </center>  
         
- 
-        
-6. He copied the base URL, pasted it in place of {{baseUrl}}, provided his DataOS API key as a bearer token, and clicked Send. He found out that the API endpoint was working fine.
+6. The base URL is copied, pasted in place of `{{baseUrl}}`, and the DataOS API key is provided as a bearer token. The Send button is selected, confirming that the API endpoint is functioning correctly.
 
     <center>
-    <img src="/interfaces/data_product_hub/recipe/image%20(48).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/recipe/image%20(48).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
     </center> 
 
-7. Now he provided the API URL and API key on the REST API template and executed the code. Max is ready to build a Forecasting model.
+7. The API URL and API key are provided in the REST API template, and the code is executed. The system is now ready to build a forecasting model.
 
-8. Then Max requested **Eric, the Data Product owner** to include columns related to forecasting in the 'Corp Performance' data product.
+8. A request is made to Eric, the Data Product owner, to include columns related to forecasting in the 'Corp Performance' data product.
 
-Through his thorough exploration and utilization of Data Product Hub within DataOS, Max successfully discovers and activates relevant data products like **Corp Market Performance** and **Corp Performance**. By leveraging these Data Products, he provides John, the senior investment analyst, with key insights into corporate performance, industry trends, and operational efficiency, enabling data-driven decision-making for hedge fund strategies.
+Through a thorough exploration and utilization of the Data Product Hub within DataOS, relevant Data Products such as Corp Market Performance and Corp Performance are successfully discovered and activated. By leveraging these Data Products, key insights into corporate performance, industry trends, and operational efficiency are provided to John, the senior investment analyst, enabling data-driven decision-making for hedge fund strategies.
 
-Max's ability to integrate data with Tableau Cloud for seamless dashboard creation and his use of Jupyter Notebook to build forecasting models demonstrate how effectively DataOS empowers data analysts to manage complex financial use cases. With the added collaboration from the Data Product owner, Eric, to incorporate additional forecasting columns, Max ensures that John’s hedge fund strategies are optimized for future growth and risk mitigation.
+The seamless integration of data with Tableau Cloud for dashboard creation and the use of Jupyter Notebook to build forecasting models demonstrate how effectively DataOS supports data analysts in managing complex financial use cases. With the collaboration from the Data Product owner, Eric, to include additional forecasting columns, the hedge fund strategies are optimized for future growth and risk mitigation.

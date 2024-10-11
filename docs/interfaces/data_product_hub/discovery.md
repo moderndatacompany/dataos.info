@@ -1,4 +1,4 @@
-# Data Product Discovery
+# Data Product discovery
 
 Discovering data among thousands of datasets is difficult without rich metadata and faceted search. The Data Product Hub is used as a single Data Product catalog that aggregates metadata about all Data Products and presents the appropriate information to users based on their needs. The Data Product Hub is intended to help data consumers make timely decisions with the right data.
 
@@ -10,7 +10,7 @@ A user-friendly interface is provided for Data Product discovery. Data Products 
 </center>
 
 
-## How to discover Data Products of Interest
+## How to discover the Data Products of interest ?
 
 The Data Product discovery process is simplified with the following strategies.
 
@@ -73,7 +73,7 @@ All starred Data Products can be found in the 'Favorites' tab.
 </center>
 
 
-## Get a Quick Glance of the Data Products
+## Get a quick glance of the Data Products
 
 For each Data Product displayed on the Data Products page, some basic information is shown on the Data Product card. The name of the Data Product, description, tier, and domain information can be viewed for each Data Product, while each one is categorized by use-case.
 
@@ -85,7 +85,7 @@ For each Data Product displayed on the Data Products page, some basic informatio
 
 A preview of the Data Products is provided by the Data Product Hub on the right-side panel. Clicking on the space next to the relevant Data Products allows for a quick preview.
 
-## Detailed View of the Data Products
+## Detailed view of the Data Products
 
 On clicking a Data Product, an interface is opened that provides an overview of the Data Product. In the following section, each part of the Data Product Hub interface is explained in detail.
 
@@ -143,15 +143,15 @@ The Overview Tab will display the visual snapshot of your Data Product's work: f
   <figcaption><i>Overview Tab</i></figcaption>
 </center>
 
-The ‘Inputs’ section displays all the datasets fed into the Data Product, while the ‘Output’ section lists the materialized tables generated from it. A Data Product doesn't need to have output, there can be a Data Product that exposes models. A Data Product presents only one model at a time, along with its associated metrics. Metrics are unavailable if the model is not built on top of the Data Product. The ‘Access Options’, list all the available consumption options to share the Data Product.
+The 'Inputs' section displays all the datasets that are fed into the Data Product, while the 'Output' section lists the materialized tables that are generated from it. An output does not need to be present for a Data Product, as there can be Data Products that expose models. Only one model is presented by a Data Product at a time, along with its associated metrics. Metrics are not available if the model is not built on top of the Data Product. The 'Access Options' lists all the available consumption options for sharing the Data Product.
 
 #### **Inputs tab**
 
-Within the Inputs Tab, you will find all the tables and their schemas that feed into the data product, including those sourced from other data products. For each table you will see the Name of the Table, Tier, Domain, Owner, Access Permission, Uniform Data Link (UDL) Address, and the various data products the particular table is part of.
+Within the Inputs Tab, all tables and their schemas that feed into the Data Product, including those sourced from other Data Products, are displayed. For each table, the name of the table, tier, domain, owner, access permission, Uniform Data Link (UDL) address, and the various Data Products the particular table is part of are shown.
 
-Below that you will find a search bar that enables you to search various columns with the table, you can also see other details of a specific column such as Data Type, Description, Tags, and Glossary Terms.
+Below that, a search bar is provided to enable searching for various columns within the table. Other details of a specific column, such as data type, description, tags, and glossary terms, can also be viewed.
 
-In addition to that you can open up a specific table within Metis, the DataOS Catalog to get comprehensive metadata of that table, as well as in the Workbench App for exploratory analysis using SQL.
+Additionally, a specific table can be opened within Metis, the DataOS catalog, to get comprehensive metadata of that table, or in the Workbench App for exploratory analysis using SQL.
 
 <center>
   <img src="/interfaces/data_product_hub/annotely_image%20(6)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -159,7 +159,8 @@ In addition to that you can open up a specific table within Metis, the DataOS Ca
 </center>
 
 
-To know more about the access permissions, click on ‘Restricted Access’, which will open a right panel as shown below.
+
+To learn more about access permissions, click 'Restricted Access', which will open a right panel as shown below.
 
 <center>
   <img src="/interfaces/data_product_hub/discovery/image%20(31).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -167,15 +168,15 @@ To know more about the access permissions, click on ‘Restricted Access’, whi
 </center>
 
 
-The restricted access panel will give information about the filters and the policies applied to the input dataset as shown in the above image, if data masking is applied then it will show which column is masked along with the masking type. 
+Information about the filters and policies applied to the input dataset is provided in the restricted access panel, as shown in the above image. If data masking is applied, the panel will indicate which column is masked along with the masking policy type.
 
 #### **Outputs tab**
 
-The Output Tab displays the materialized tables generated by the Data Product, ready to be used on their own or combined with others to create new insights and Data Products. For each table you will see the Name of the Table, Tier, Domain, Owner, Access Permission, Uniform Data Link (UDL) Address, and the various Data Products the particular table is part of.
+The materialized tables generated by the Data Product are displayed in the Output Tab, ready for use on their own or for combining with others to create new insights and Data Products. For each table, the name of the table, Tier, Domain, Owner, Access Permission, Uniform Data Link (UDL) Address, and the various Data Products the particular table is part of are shown.
 
-Below that you will find a search bar that enables you to search various columns with the table, you can also see other details of a specific column such as Data Type, Description, Tags, and Glossary Terms.
+Below that, a search bar is provided to enable searching for various columns within the table. Other details of a specific column, such as Data Type, Description, Tags, and Glossary Terms, can also be viewed.
 
-In addition to that you can open up a specific table within Metis, the DataOS Catalog to get comprehensive metadata of that table, as well as in the Workbench App for exploratory analysis using SQL.
+Additionally, a specific table can be opened within Metis, the DataOS Catalog, to get comprehensive metadata of that table, or in the Workbench App for exploratory analysis using SQL.
 
 <center>
   <img src="/interfaces/data_product_hub/discovery/annotely_image%20(7)%20(2).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -184,7 +185,7 @@ In addition to that you can open up a specific table within Metis, the DataOS Ca
 
 #### **Model tab**
 
-The Model tab displays a logical model, a representation of the Lens model built on top of the Data Product, shaping the data into meaningful insights for easier analysis and understanding.
+A data model, representing the Lens model built on top of the Data Product, is displayed in the Model tab, shaping the data into meaningful insights for easier analysis and understanding.
 
 <center>
   <img src="/interfaces/data_product_hub/discovery/annotely_image%20(8)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -194,15 +195,16 @@ The Model tab displays a logical model, a representation of the Lens model built
 
 #### **Metrics tab**
 
-In the Metrics tab, you can explore the key business metrics derived from the lens models to observe the performance and make data-driven decisions with ease. 
+Key business metrics derived from the Lens models can be explored in the Metrics tab to observe performance and make data-driven decisions with ease.
+
 
 <aside class="callout">
 
-🗣 If a Data Product does not have any metrics built on top of it, the Metric tab will not be available.
+🗣 If no model is exposed by the Data Product, the Metric tab will not be available.
 
 </aside>
 
-- In the image below, you can see a metric ‘Cloud Service Cost’ with its description and the number of measures, dimensions, and segments used to derive the metric. By clicking on the **Quick Insights** or **Explore** link you can further explore the metrics.
+- In the image below, a metric 'Cloud Service Cost' is shown along with its description and the number of measures, dimensions, and segments used to derive the metric. By clicking on the quick insights or explore link, the metrics can be further explored.
 
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(10)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -211,7 +213,7 @@ In the Metrics tab, you can explore the key business metrics derived from the le
 
     
 
-- Below you can see the **References** section that shows the lineage with the flow, from which dataset, the metric is derived.
+- Below, the references section is shown, which displays the lineage, including the flow and the dataset from which the metric is derived.
 
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(11)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -219,7 +221,7 @@ In the Metrics tab, you can explore the key business metrics derived from the le
     </center>
 
     
-- The **Measures** and **Dimensions** section gives details of each dimension and measure used to derive the metric such as name, data type, description, and alias.
+- The measures and dimensions sections provide details of each dimension and measure used to derive the metric, including the name, data type, description, and alias.
 
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(12)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -231,15 +233,15 @@ In the Metrics tab, you can explore the key business metrics derived from the le
 
 #### **Data APIs tab**
 
-In the Data APIs tab, you can explore the API endpoints to develop the data applications. 
+API endpoints for developing data applications can be explored in the Data APIs tab.
 
 <aside class="callout">
 
-🗣 If a Data Product does not have any APIs built on top of it, the Data API tab will not be available.
+🗣 If no APIs are built on top of a Data Product, the Data API tab will not be available.
 
 </aside>
 
-- On clicking the Data APIs tab, it will list all the API endpoint collections. by clicking on a particular endpoint, you can see a short description of the API collection as shown below.
+- On the Data APIs tab, all API endpoint collections are listed. By clicking on a particular endpoint, a short description of the API collection is displayed, as shown below.
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(13)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -247,7 +249,7 @@ In the Data APIs tab, you can explore the API endpoints to develop the data appl
     </center>
 
     
-- You can download the OpenAPI specifications and Postman collection for each endpoint by clicking on the **Download OpenAPI Spec** and **Download Postman Collection** respectively.
+- The OpenAPI specifications and Postman collection for each endpoint can be downloaded by clicking on **Download OpenAPI Spec** and **Download Postman Collection**, respectively.
 
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(15)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -255,7 +257,7 @@ In the Data APIs tab, you can explore the API endpoints to develop the data appl
     </center>
 
     
-- After downloading the OpenAPI Spec and Postman Collection, open the Postman application.
+- After downloading the OpenAPI spec and Postman collection, open the Postman application to proceed further.
 
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(32).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -264,7 +266,7 @@ In the Data APIs tab, you can explore the API endpoints to develop the data appl
 
  
     
-- Go to Collections, click on import, and select the files option, in which you have to select the downloaded JSON file.
+- Navigate to collections in Postman, click on import, and select the files option to choose the downloaded JSON file.
 
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(17)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -272,7 +274,7 @@ In the Data APIs tab, you can explore the API endpoints to develop the data appl
     </center>
 
     
-- On clicking the ‘View complete documentation’ link, it will open an OpenAPI documentation as shown below.
+- The **View complete documentation** link will open the OpenAPI documentation, as shown below.
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(18)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -281,7 +283,7 @@ In the Data APIs tab, you can explore the API endpoints to develop the data appl
 
 
     
-- To hit the API endpoint on Postman, click on the ‘Open request’ link as shown in the above image, which will open the below interface.
+- To hit the API endpoint in Postman, click on the 'Open request' link, as shown in the above image, which will open the interface below.
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(33).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -297,7 +299,7 @@ In the Data APIs tab, you can explore the API endpoints to develop the data appl
     </center>
     
     
-- Paste the copied URL in place of `{{baseUrl}}`, give your DataOS API key as a bearer token, and click on the send after which you can access the data as shown below. You can use this API endpoint along with the bearer token to build your data application.
+- Paste the copied URL in place of {{baseUrl}}, provide the DataOS API key as a bearer token, and click on send to access the data, as shown below. This API endpoint, along with the bearer token, can be used to build your data application.
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(19)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -305,7 +307,7 @@ In the Data APIs tab, you can explore the API endpoints to develop the data appl
     </center>
 
     
-- Now on the Data APIs tab, by clicking on the particular API endpoint you can see who has access to the endpoint, the description of the endpoint, authorization details, response details, and the response samples.
+- On the Data APIs tab, clicking on a particular API endpoint will display information about who has access to the endpoint, the endpoint's description, authorization details, response details, and response samples.
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(20)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -313,7 +315,8 @@ In the Data APIs tab, you can explore the API endpoints to develop the data appl
     </center>
 
     
-- **Authorizations - bearerToken** indicates that the API requires an authorization token, specifically a **Bearer Token** for authentication. **Bearer Token** is a type of token that must be included in the HTTP header when making requests to the API. The format of the token is **JWT** (JSON Web Token), which is a compact, URL-safe means of representing claims to be transferred between two parties.
+- **Authorizations - bearerToken** indicates that the API requires an authorization token, specifically a **Bearer Token** for authentication. A **Bearer Token** is a type of token that must be included in the HTTP header when making requests to the API. The format of the token is **JWT** (JSON Web Token), which is a compact, URL-safe means of representing claims to be transferred between two parties.
+
 
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(35).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
@@ -321,7 +324,8 @@ In the Data APIs tab, you can explore the API endpoints to develop the data appl
     </center>
     
     
-- In the **Responses section,** a **200 response** indicates that the request was successful, and the API is returning data as expected. The response schema is in **application/json** format, which means the data will be returned in JSON format. The response schema defines the structure of the data returned when the API responds with a **200 (OK)** status.
+- In the **Responses section**, a **200 response** indicates that the request was successful, and the API is returning data as expected. The response schema is in **application/json** format, meaning the data will be returned in JSON format. The response schema defines the structure of the data returned when the API responds with a **200 (OK)** status.
+
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(36).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
@@ -330,27 +334,32 @@ In the Data APIs tab, you can explore the API endpoints to develop the data appl
 
     
     In this case, the API returns the following fields:
-    
-    - **total_revenue (string)**: This field provides the total revenue generated by the brand. The value is expected to be a string, even though it represents financial information (likely formatted with currency symbols or as a string for other reasons). The description indicates that this data provides insight into the financial performance of the brand.
+
+    - **total_revenue (string)**: This field provides the total revenue generated by the brand. The value is expected to be a string, even though it represents financial information. The description indicates that this data provides insight into the financial performance of the brand.
+
     - **brand (string)**: This field contains the name of the brand being analyzed. It represents the company related to the revenue data.
+
+    The **5XX** status code refers to a server-side error. If the API is unable to process the request due to an internal issue or failure, it will return a **5XX** response. This indicates a problem on the server, not with the client's request. Server-side errors generally imply that something unexpected happened on the server while trying to handle the request, and the client cannot resolve these issues without intervention from the server team.
+
     
-    The **5XX** status code refers to a server-side error. If the API is unable to process the request due to an internal issue or failure, it will return a 5XX response. This indicates a problem on the server, not with the client's request.
-    
-- The **Response Samples** section provides a sample of what the successful **200** response would look like when calling this API. The sample JSON response provided in the below image has two fields **total_revenue** and **brand.** In this sample, both `total_revenue` and `brand` are shown as placeholder strings. In a real response, `total_revenue` will be a string representing the revenue (like `"10000 USD"`), and the `brand` will be the actual brand name (like `"Nike"` ).
+- The **Response Samples** section provides an example of what the successful **200** response would look like when calling this API. The sample JSON response shown in the image below contains two fields: **total_revenue** and **brand**. In this sample, both `total_revenue` and `brand` are represented as placeholder strings. In a real response, `total_revenue` will be a string representing the revenue (e.g., `"10000 USD"`), and `brand` will be the actual brand name (e.g., `"Nike"`).
+
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(37).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
     <figcaption><i>Response Samples</i></figcaption>
     </center>
     
-    **GET /top_brand_list** is the **API endpoint** that you will call using the HTTP `GET` method. It retrieves data related to a list of top brands. Typically, `GET` methods are used to retrieve data from a server without modifying it.
+    **GET /top_brand_list** is the **API endpoint** that is called using the HTTP `GET` method. It retrieves data related to a list of top brands. Typically, `GET` methods are used to retrieve data from a server without modifying it.
+
     
 
 #### **Quality tab**
 
-The **Quality tab** provides insights into the health and quality of your input and output data, allowing you to monitor and ensure that the data meets expected standards across several quality checks. 
+The **Quality tab** provides insights into the health and quality of input and output data, allowing for monitoring and ensuring that the data meets expected standards across several quality checks.
 
-Quality is categorized into six types, that is Schema, Freshness, Validity, Completeness, Uniqueness, and Accuracy.
+Quality is categorized into six types: Schema, Freshness, Validity, Completeness, Uniqueness, and Accuracy.
+
 
 <div style="text-align: center;">
   <table border="1" cellpadding="10" cellspacing="0">
@@ -387,7 +396,7 @@ Quality is categorized into six types, that is Schema, Freshness, Validity, Comp
 
 
 
-- In the image below, it tracks aspects like completeness, schema validation, uniqueness, and accuracy.
+- In the image below, aspects such as completeness, schema validation, uniqueness, and accuracy are tracked.
     
 
     <center>
@@ -397,8 +406,11 @@ Quality is categorized into six types, that is Schema, Freshness, Validity, Comp
 
 
     
-- In the above image, data have 100% completeness which ensures that essential fields do not contain missing or null values.
-- Trend Chart displays the completeness over time. The y-axis represents completeness as a percentage (0-100%), while the x-axis represents the timeline. In this case, the chart indicates a consistent **100% completeness** for the period shown (up to September 13th), meaning no data was missing.
+- In the above image, the data shows 100% completeness, ensuring that essential fields do not contain missing or null values.
+
+
+- The trend chart displays completeness over time. The y-axis represents completeness as a percentage (0-100%), while the x-axis represents the timeline. In this case, the chart indicates consistent **100% completeness** for the period shown (up to September 13th), meaning no data was missing.
+
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(38).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -406,7 +418,8 @@ Quality is categorized into six types, that is Schema, Freshness, Validity, Comp
     </center>
 
     
-- Below you can see the applied checks and their status. In this case the `f_sales` dataset, the completeness check focuses on ensuring that critical columns are fully populated. `f_sales_invoice_no_completeness_of_the_invoice_number_column` check ensures that the `invoice_number` column in the `f_sales` dataset does not have missing or null values. A green checkmark (✔) indicates that the check has passed successfully. In this case, there are no missing invoice numbers, and the dataset is 100% complete in this aspect.
+- Below, you can see the applied checks and their status. In this case, for the `f_sales` dataset, the completeness check focuses on ensuring that critical columns are fully populated. The `f_sales_invoice_no_completeness_of_the_invoice_number_column` check ensures that the `invoice_number` column in the `f_sales` dataset does not have missing or null values. A green checkmark (✔) indicates that the check has passed successfully. In this case, there are no missing invoice numbers, and the dataset is 100% complete in this aspect.
+
 
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(39).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -417,7 +430,8 @@ Quality is categorized into six types, that is Schema, Freshness, Validity, Comp
 
 #### **Access options tab**
 
-The **Access options** tab allows users to connect their Data Products to various [BI (Business Intelligence)](/interfaces/data_product_hub/#bi-sync), [AI and ML](/interfaces/data_product_hub/#aiml), [app development](/interfaces/data_product_hub/#app-development), and [Data API](/interfaces/data_product_hub/#data-apis) tools like Power BI, Excel, Tableau, Apache Superset, Jupyter Notebook, etc. 
+The **Access options** tab allows users to connect their Data Products to various [BI (Business Intelligence)](/interfaces/data_product_hub/#bi-sync), [AI and ML](/interfaces/data_product_hub/#aiml), [app development](/interfaces/data_product_hub/#app-development), and [Data API](/interfaces/data_product_hub/#data-apis) tools such as Power BI, Excel, Tableau, Apache Superset, and Jupyter Notebook.
+
 
 <center>
 <img src="/interfaces/data_product_hub/discovery/annotely_image%20(22)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -429,7 +443,8 @@ To know more about access options, please [refer to this section](/interfaces/da
 
 ## **Perspectives**
 
-In the Perspectives tab, you can access the saved explorations of the Data Products as Perspectives.
+In the **Perspectives** tab, saved explorations of the Data Products can be accessed as Perspectives.
+
 
 <center>
 <img src="/interfaces/data_product_hub/discovery/image%20(40).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
@@ -440,9 +455,11 @@ In the Perspectives tab, you can access the saved explorations of the Data Produ
 
 **How to create a Perspective?**
 
-Follow the below steps to save your Data Product exploration as a Perspective to access it later on the Perspective tab.
+Follow the steps below to save your Data Product exploration as a Perspective, allowing you to access it later in the **Perspective** tab.
 
-1. Choose the Data Product of your choice and navigate to the ‘Explore’ button. 
+
+1. Choose the Data Product of choice and navigate to the **Explore** button.
+ 
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(23)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -451,8 +468,8 @@ Follow the below steps to save your Data Product exploration as a Perspective to
 
 
     
-2. Click the ‘Explore’ tab, where you can start exploring the Data Product.
-    
+2. Click the **Explore** tab to begin exploring the Data Product.
+
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(41).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
     <figcaption><i>Navigate to Explore Tab</i></figcaption>
@@ -460,13 +477,15 @@ Follow the below steps to save your Data Product exploration as a Perspective to
 
     
 3. After exploration, navigate to the **Save Perspective** button.
+
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(42).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
     <figcaption><i>Save Perspective</i></figcaption>
     </center>
 
-4.  On clicking the ‘Saved Perspective’ button, it will open a dialogue box prompting for the name and description of your perspective.
+4.  Clicking the **Save Perspective** button will open a dialog box prompting users for the name and description of your perspective.
+
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(43).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
@@ -474,7 +493,8 @@ Follow the below steps to save your Data Product exploration as a Perspective to
     </center>
 
 
-5. Give your exploration a name and description (optional) and click on ‘Save’.
+5. Provide a name and, optionally, a description for the exploration, then click on **Save**.
+
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(44).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
@@ -483,11 +503,12 @@ Follow the below steps to save your Data Product exploration as a Perspective to
 
 
 
-**How to access the perspectives?**
+**How to access the Perspectives?**
 
-After saving your exploration as a perspective to access it later on the Perspective tab follow the below steps.
+After saving the exploration as a perspective, follow the steps below to access it later in the **Perspective** tab.
 
-1. Navigate to the ‘Perspectives’ tab, where you can access all the perspectives given by name, tags, data product, and owner. 
+1. Navigate to the **Perspectives** tab, where all perspectives are accessible by name, tags, data product, and owner.
+
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(45).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -495,7 +516,8 @@ After saving your exploration as a perspective to access it later on the Perspec
     </center>
 
 
-2. In the search bar, you can directly search for the perspectives by name or keywords used in a name.
+2. In the search bar, perspectives can be directly searched by name or keywords used in the name.
+
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(46).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
@@ -503,7 +525,8 @@ After saving your exploration as a perspective to access it later on the Perspec
     </center>
 
 
-3. You can filter out the perspectives by the owners, navigate to the ‘Filters’ drop-down, click on the ‘Owner’ option, and select the owner of your choice.
+3. Perspectives can be filtered by owners. Navigate to the **Filters** dropdown, click on the **Owner** option, and select the owner of choice.
+
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(47).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
@@ -512,7 +535,8 @@ After saving your exploration as a perspective to access it later on the Perspec
 
 
 
-4. Similarly, as the ‘Owner’, you can filter out the perspectives by the ‘Data Products’ and ‘Tags’. 
+4. Similarly, perspectives can be filtered by **Data Products** and **Tags**, just as with **Owner**.
+
 
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(25)%20(1).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
@@ -528,7 +552,8 @@ After saving your exploration as a perspective to access it later on the Perspec
 
     
     
-5. For example, on selecting the ‘corp-market-performance’ Data Product on the Filters options, it will list out all the perspectives created on that Data Product as shown   below. 
+5. For example, selecting the **corp-market-performance** Data Product in the filters options will list all the Perspectives created for that Data Product, as shown below.
+
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(26)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -537,7 +562,8 @@ After saving your exploration as a perspective to access it later on the Perspec
 
 
     
-6. On clicking any perspective it will redirect you to the Explore page of the Data Product on which the particular perspective is created as shown below, where you can continue with your exploration.
+6. Clicking on any Perspective will redirect you to the explore page of the Data Product for which the particular Perspective is created, as shown below, allowing you to continue your exploration.
+
 
     <center>
     <img src="/interfaces/data_product_hub/discovery/image%20(48).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -548,10 +574,14 @@ After saving your exploration as a perspective to access it later on the Perspec
 
 ## **Metrics**
 
-In the Metrics tab, you can access the actionable and reliable key insights of the Data Products to get information, assess operations, and make quick and right decisions for your business. To explore the ‘Metric’ tab, navigate to the Metric tab, and you’ll see a short description on the tab, by default, you’ll be able to see all the metrics grouped by use cases.
+In the **Metrics** tab, key insights of the Data Products can be accessed to gather information, assess operations, and make quick, informed business decisions. To explore the **Metrics** tab, navigate to it, and a short description will be displayed. By default, all metrics are displayed grouped by use cases.
 
-> A metric is an entity that, by default, provides a logical view of the logical table, containing only one measure and a time dimension.
 
+<aside class="callout">
+
+🗣 A metric is an entity that, by default, provides a logical view of the logical table, containing only one measure and a time dimension.
+
+</aside>
 
 <center>
 <img src="/interfaces/data_product_hub/discovery/image%20(49).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
@@ -565,9 +595,10 @@ In the Metrics tab, you can access the actionable and reliable key insights of t
 </center>
 
 
-**Search the metrics by keyword**
+**Search the Metrics by keyword**
 
-In the search bar, you can directly search for the potential metrics by keywords, just enter the name or keyword used in the metric name as shown below.
+Metrics of interest can be directly searched in the search bar by entering the name or keyword used in the metric name, as shown below.
+
 
 <center>
 <img src="/interfaces/data_product_hub/discovery/image%20(51).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
@@ -575,9 +606,10 @@ In the search bar, you can directly search for the potential metrics by keywords
 </center>
 
 
-**Filter the metrics**
+**Filter the Metrics**
 
-You can filter out the metrics by the particular owner, by navigating to the ‘Filter’ drop-down, clicking on the owners, and selecting the owner of your choice   
+Metrics can be filtered by a particular owner by navigating to the **Filter** dropdown, clicking on **Owners**, and selecting the desired owner.
+ 
 
 <center>
 <img src="/interfaces/data_product_hub/discovery/image%20(52).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
@@ -587,7 +619,7 @@ You can filter out the metrics by the particular owner, by navigating to the ‘
 
 **Metrics recommendations based on domains**
 
-On navigating to the Metrics tab, by default, it recommends the metrics grouped by use cases, if you want the metrics recommendation based on the domain, simply navigate to the ‘Use-case’ drop-down and select the ‘Domain’ option, now you’ll get the metrics recommendation grouped by domains. 
+By default, the **Metrics** tab recommends metrics grouped by use cases. To get metric recommendations based on the domain, navigate to the **Use-case** dropdown, select the **Domain** option, and the metrics will be grouped by domains.
 
 <center>
 <img src="/interfaces/data_product_hub/discovery/image%20(53).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
