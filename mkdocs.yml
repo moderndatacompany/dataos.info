@@ -467,6 +467,7 @@ nav:
           - resources/worker/index.md
           - First Steps: resources/worker/first_steps.md
           - Configuration: resources/worker/configurations.md
+          - Core Concepts: resources/worker/core_concepts.md
         - Workflow: 
           - resources/workflow/index.md
           - First Steps: resources/workflow/first_steps.md
