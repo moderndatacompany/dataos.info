@@ -294,7 +294,7 @@ nav:
           - Configurations: resources/depot/configurations.md
           - Supported Storage Architecture: 
             - Icebase: 
-              - resources/depot/icebase.md
+              - resources/depot/icebase/index.md
               - Create, Get, and Drop Dataset: resources/depot/icebase/case_scenario_create_fetch_and_drop_dataset.md
               - Table Properties: resources/depot/icebase/case_scenario_table_properties.md
               - Schema Evolution: resources/depot/icebase/case_scenario_schema_evolution.md

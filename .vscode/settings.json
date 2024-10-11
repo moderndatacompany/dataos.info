@@ -5,5 +5,21 @@
             "scheme": "file",
             "pattern": "docs/resources/workflow.md"
         }
+    ],
+    "sqltools.connections": [
+        {
+            "trinoOptions": {
+                "ssl": {
+                    "rejectUnauthorized": false
+                }
+            },
+            "previewLimit": 50,
+            "driver": "Trino Driver",
+            "name": "abcd",
+            "server": "https://tcp.liberal-donkey.dataos.app:7432",
+            "catalog": "minervatest",
+            "user": "piyushjoshi",
+            "password": "eyJ0b2tlbiI6ImRHOXJaVzVmZFc1a2RXeDVYMlp2Y20xaGJHeDVYMlZ1WjJGbmFXNW5YM0JwY21GdWFHRXVObUkyT1dFMU1EZ3RNR05rWkMwMFpEbGxMV0k0TTJVdE9UWXlaVEk0TXpFMllXTTUiLCJjbHVzdGVyIjoibWluZXJ2YXRlc3QifQ=="
+        }
     ]
 }
