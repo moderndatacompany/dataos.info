@@ -1,10 +1,10 @@
-# Best Practices
+# Best practices
 
-Welcome to the best practices guide on Data Product Hub to help you utilize DPH effectively.
+Welcome to the best practices guide on Data Product Hub, designed to help effectively utilize Data Product Hub.
 
 ## 1. Add to favorites
 
-It is a best practice to add the potential Data Products to favorites so that you can easily access them by navigating to the ‘Favorites’ tabs.  
+Adding potential Data Products to **[Favorites](/interfaces/data_product_hub/discovery/#favorites)** is recommended as a best practice, allowing easy access by navigating to the **Favorites** tab.
 
 
 <center>
@@ -12,13 +12,13 @@ It is a best practice to add the potential Data Products to favorites so that yo
 </center>
 
 
-## 2. Save exploration as a perspective
+## 2. Save exploration as a Perspective
 
-Save the exploration as perspective so that you can easily access them later avoiding the repetitive steps.
+Save the exploration as a [Perspective](/interfaces/data_product_hub/discovery/#perspectives) to enable easy access later, avoiding repetitive steps.
 
-## 3. Observe the potential metrics regularly
+## 3. Observe the potential Metrics regularly
 
-As a Data Product consumer, they must observe the potential metrics regularly for timely decision-making and to avoid potential risks. It is also recommended to add the potential metrics to the favorites so that you can easily access them.
+As a Data Product consumer, regularly observing potential [Metrics](/interfaces/data_product_hub/discovery/#metrics) is crucial for timely decision-making and avoiding potential risks. It is also recommended to add metrics of interest to **Favorites** for easy access.
 
 <center>
 <img src="/interfaces/data_product_hub/exploration/image%20(41).png" alt="DPH" style="width:50rem; border: 1px solid black;" />

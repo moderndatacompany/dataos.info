@@ -2,7 +2,7 @@
 
 ## **Data Product Exploration Button**
 
-The **Exploration** button allows users to explore the **Lens model** associated with the selected **data product**. By clicking this button, users can interact with the data model's pre-defined dimensions, measures, and segments, enabling them to visualize, filter, and analyze the data directly within the Lens. This provides an intuitive interface for business users and data analysts to explore the underlying data model without writing queries, offering insights through an easy-to-use exploratory environment.
+The **Exploration** button allows users to explore the **Lens model** associated with the selected **Data Product**. By clicking this button, users can interact with the data model's pre-defined dimensions, measures, and segments, enabling them to visualize, filter, and analyze the data directly within the Lens. This provides an intuitive interface for business users and data analysts to explore the underlying data model without writing queries, offering insights through an easy-to-use exploratory environment.
 
 <center>
 <img src="/interfaces/data_product_hub/exploration/image%20(25).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
@@ -19,15 +19,15 @@ When you click on the **Explore** button, the **Explore Page** opens. The **Stud
 
 ## **1. Header and Page Context Information**
 
-At the top of the page, you’ll always see the title of the data product you are exploring. For example, "Sales-360-data-product-v12," helps identify the specific version of the product.
+At the top of the page, you’ll always see the title of the Data Product you are exploring. For example, "Sales-360-data-product-v12," helps identify the specific version of the product.
 
-- **Data Product Title**: At the top of the page, you’ll always see the title of the data product you are exploring. For example, "**Sales-360-data-product-v12**," helps identify the specific version of the product. On top of the title is the business unit or function for which data product was created, giving context on its origin. For instance, here, the business unit is Sales.
-- **Description**: Below the title, a description gives an overview of the data product's purpose. In this case, it’s described as a "customer 360 view of the world."
-- **Tier | Use-case |Team Information**: The header contains essential information, including the data product's tier (e.g., Aggregated, Source aligned, etc.), its primary use case (e.g., Demand Forecast, Performance monitoring, etc.), and the list of contributors or collaborators involved in creating and maintaining the product (e.g., Aakansha Jain, Darpan Vyas, etc.). This provides users with a clear understanding of the product's purpose and the key stakeholders behind it, ensuring transparency and context.
+- **Data Product Title**: At the top of the page, you’ll always see the title of the Data Product you are exploring. For example, "**Sales-360-data-product-v12**," helps identify the specific version of the product. On top of the title is the business unit or function for which data product was created, giving context on its origin. For instance, here, the business unit is Sales.
+- **Description**: Below the title, a description gives an overview of the Data Product's purpose. In this case, it’s described as a "customer 360 view of the world."
+- **Tier | Use-case |Team Information**: The header contains essential information, including the Data Product's tier (e.g., Aggregated, Source aligned, etc.), its primary use case (e.g., Demand Forecast, Performance monitoring, etc.), and the list of contributors or collaborators involved in creating and maintaining the product (e.g., Aakansha Jain, Darpan Vyas, etc.). This provides users with a clear understanding of the product's purpose and the key stakeholders behind it, ensuring transparency and context.
 
 ## **2. Star Button and BI Sync**
 
-Star buttons let you favoritise the data product. In contrast, BI Sync opens the BI Sync functionality, which enables you to sync the data product to PowerBI, Tableau Cloud, Tableau Desktop, and Apache Superset.
+Star buttons let you favoritise the Data Product. In contrast, BI Sync opens the BI Sync functionality, which enables you to sync the Data Product to PowerBI, Tableau Cloud, Tableau Desktop, and Apache Superset.
 
 ## **3. Source Details**
 
@@ -36,8 +36,8 @@ When you click on the **Source** section, it displays details of the source on w
 - **Type**: Indicates the type of cluster source is linked to. In this case, the type is **Minerva.** It can either be **Themis or Flash.**
 - **Dialect**: The query language or SQL dialect used for interacting with the data. For this product, the dialect is **Trino.**
 - **Connection**: The connection string or URL links the data product to its source. This example defines the connection as **minerva://miniature**, indicating the internal connection point to the miniature cluster.
-- **Database**: The database name is not explicitly shown in the given details, but this field would typically indicate the database within the system where the data product is stored.
-- **Host**: Provides the host or context details where the data source is hosted. In this example, **tcp.liberal-donkey.dataos.app** is the context where the data product exists.
+- **Database**: The database name is not explicitly shown in the given details, but this field would typically indicate the database within the system where the Data Product is stored.
+- **Host**: Provides the host or context details where the data source is hosted. In this example, **tcp.liberal-donkey.dataos.app** is the context where the Data Product exists.
 - **Watch:** To watch the health of the Cluster, Click on the watch button.
 
 <center>
@@ -62,7 +62,7 @@ As soon as you click on the **Watch** button, you can return to the source by cl
 
 ## **4. Navigation Tabs**
 
-Further, It contains three tabs for exploring the data product in detail. 
+Further, It contains three tabs for exploring the Data Product in detail. 
 
 - **Model Tab**
 - **Studio Tab**
@@ -119,7 +119,7 @@ In the **Data Product Exploration** interface, a user's query can be saved as a 
 </center>
 
 
-Perspectives listed in the sales360 data product
+Perspectives listed in the sales360 Data Product
 
 ### **How to Save and Use Perspectives?**
 
@@ -139,7 +139,7 @@ Perspectives listed in the sales360 data product
 </center>
 
 
-**Accessing Saved Perspectives**: After saving, the query will be available under the **Perspective** tab for the particular data product (e.g., **Sales 360**).
+**Accessing Saved Perspectives**: After saving, the query will be available under the **Perspective** tab for the particular Data Product (e.g., **Sales 360**).
 
 Users can click the **Perspective** tab and view all saved perspectives, allowing them to reload the exact configuration of any previously saved query.
 
@@ -365,7 +365,6 @@ When a **metric** references a **measure** or **dimension** from a **logical tab
 <center>
 <img src="/interfaces/data_product_hub/exploration/Screenshot%20from%202024-10-01 18-32-47.png" alt="DPH" style="width:50rem; border: 1px solid black;" />
 </center>
-
 
 
 *Dashed blue lines visually indicate the relationships between the **Sales Table** and the **conversion_rate** metric. The lines highlight which **dimensions** and **measures** from the **Sales Table** are used to calculate the **conversion_rate** metric.*

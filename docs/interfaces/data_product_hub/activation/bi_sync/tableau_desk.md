@@ -1,18 +1,18 @@
 # Tableau Desktop Integration
 
-1. **Navigate to the Data Product Hub:** Start by accessing the **Home Page** of DataOS. From there, navigate to the **Data Product Hub**, where you can explore various data products available within the platform.
+1. **Navigate to the Data Product Hub:** Start by accessing the **Home Page** of DataOS. From there, navigate to the **Data Product Hub**, where you can explore various Data Products available within the platform.
 
     <center>
     <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(20).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
     </center>
 
-2. In the Data Product Hub, browse through the list of data products. Click on the specific data product you wish to integrate with Tableau. For example, select **Sales360** from the list to explore the **Sales360** data product in Tableau.
+2. In the Data Product Hub, browse through the list of Data Products. Click on the specific data product you wish to integrate with Tableau. For example, select **Sales360** from the list to explore the **Sales360** data product in Tableau.
 
     <center>
     <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(21).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
     </center>
 
-3. **Access Integration Options:** Navigate to the Access Options tab once you’ve selected a data product. Here, you’ll find various methods to access and interact with the data product in the BI Sync tab and locate **Tableau Desktop.**
+3. **Access Integration Options:** Navigate to the Access Options tab once you’ve selected a Data Product. Here, you’ll find various methods to access and interact with the Data Product in the BI Sync tab and locate **Tableau Desktop.**
 
     <center>
     <img src="/interfaces/data_product_hub/activation/bi_sync/Screenshot%20from%202024-09-21%2000-14-20.png" alt="DPH" style="width:50rem; border: 1px solid black;" />
