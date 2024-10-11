@@ -6,74 +6,47 @@ A data product consumer is typically responsible for the following activities.
 
 ## Discover Relevant Data Products
 
-1. Login to DataOS and click on **Data Product Hub.**
+1. Log in to DataOS and click on **Data Product Hub.**
 
     ![dataos_home_dph.png](/getting_started/data_product_consumer/dataos__home.png)
 
-2. You can see the available data products on the screen.
+2. You can see the available data products on the screen. 
+    ![dph.png](/getting_started/data_product_consumer/dph2.png)
+    By default, the data products are grouped according to the usecases, but you can also categorize them by domain.
+    ![dph.png](/getting_started/data_product_consumer/arrange_by_domain.png)
 
-    ![dph.png](/getting_started/dph.png)
+3. Enter the name, description or usecase into the DPH search bar to find relevant data products. The search results are displayed, each with a data product card.
 
-3. Enter a keyword or phrase into the DPH search bar to find relevant data products. The search results are displayed, each with a data product card.
+    ![dp_search.png](/getting_started/data_product_consumer/dph_search.png)
 
-    ![dp_search.png](/getting_started/dp_search.png)
+4. You can apply filters by selecting tier, domain, Usecase and Owners to narrow search results.
 
-4. Get a quick overview of critical information, such as SLO adherence.
-
-5. You can apply filters such as data product type and use cases to narrow search results.
-
-    ![dp_filters.png](/getting_started/dp_filters.png)
+    ![dp_filters.png](/getting_started/data_product_consumer/dph_filter.png)
 
 ## View Data Product Details
 
-1. **Click** on the data product card to access dedicated landing pages for each data product, where you can view descriptions, purpose, data source information, and data flow.
+1. **Click** on the data product card to access dedicated landing pages for each data product, where you can view the information about inputs, output, logical model, metrics, quality, access options, etc.
     
-    ![dp_details.png](/getting_started/dp_details.png)
+    ![dp_details.png](/getting_started/data_product_consumer/dp_overview.png)
     
-2. Check column details and use cases.
+2. Click on the tabs to view detailed information about each one. For example, click on **Quality** to review data quality reports (SLO adherence) for accuracy, validity, etc., and assess data suitability for reporting needs.
     
-    ![dp_columns.png](/getting_started/dp_columns.png)
+    ![dp_quality.png](/getting_started/data_product_consumer/dp_quality.png) 
+
+3. The following image shows the associated logical model. 
     
-3. Review data quality (SLO adherence)reports and sample previews to assess data suitability for their reporting needs.
-    
-    ![details_run.png](/getting_started/details_run.png)
-    
-4. Find the access permissions by clicking on **Check Access**, and if there is no access, initiate a request for the access.  
+    ![dp_model.png](/getting_started/data_product_consumer/dp_model.png)
 
 ## Explore Data Product 
 
-1. Click on the **Explore Data**.
+1. Click on **Explore**.
 
-2. You will be directed to the Workbench app, where you can enter queries to understand data.
+2. You will be directed to the Studio, where you can enter queries to understand data.
     
-    ![dp_dataset_workbench_query.png](/getting_started/dp_dataset_workbench_query.png)
-        
-## Perform Exploratory Data Analysis (EDA)
+    ![dp_explore.png](/getting_started/data_product_consumer/dp_explore.png)
 
-DataOS Workbench is a data exploration tool that allows you to run SQL queries to find answers to your data-related questions. Upon opening the Workbench app, the first step is to select the Minerva cluster you wish to use for your analytics workload.
+## Activate Data Product
     
-1. Select a Cluster to run your queries.
-    
-    ![selct_cluster.png](/getting_started/data_product_consumer/selct_cluster.png)
-    
-2. Select catalog, schema, and table.
-    
-    ![select_catalog.png](/getting_started/data_product_consumer/select_catalog.png)
-    
-3. Write and run queries. 
-    
-    ![workbench_query.png](/getting_started/data_product_consumer/workbench_query.png)
-    
-    > Workbench also provides a Studio feature. Whether you're a seasoned SQL pro or just getting started, Studio's intuitive interface will help you craft powerful SQL statements with ease.
-    > 
-4. Rearrange and transform your data with Pivot.
-    
-    ![pivot.png](/getting_started/data_product_consumer/pivot.png)
+Check the access options for the data product: you can use a BI tool to create dashboards from the data product, integrate the data with AI/ML tools and frameworks, or develop applications. Additionally, you can access the data through exposed data APIs for further customization and integration.
 
-## Activate Data Products
-    
-You can use the data from this dataset for the following.
-
-1. Use the BI tool to create a dashboard from the data product
-2. Integrate data with AI/ML tools and frameworks
-3. Develop models and algorithms to extract deeper insights
+![dp_access.png](/getting_started/data_product_consumer/dp_access_options.png)
