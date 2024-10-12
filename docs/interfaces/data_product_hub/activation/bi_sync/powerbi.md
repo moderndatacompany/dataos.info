@@ -1,12 +1,20 @@
 # PowerBI Integration
 
+<<<<<<< HEAD
 ## Steps
+=======
+1. Navigate to the **Data Product Hub**, Access the **Home Page** of DataOS. From there, navigate to the **Data Product Hub**, where you can explore various Data Products available within the platform.
+>>>>>>> 83f1c68a2524e022232f273f92e8edb848d70816
 
 The following steps outline the process for integrating PowerBI with DataOS:
 
 ### **Step 1: Navigate to the Data Product Hub**
 
+<<<<<<< HEAD
 Access the **Home Page** of DataOS. From there, navigate to the **Data Product Hub** to explore the various data products available within the platform.
+=======
+2. In the Data Product Hub, browse through the list of Data Products. Click on the specific data product you wish to integrate with PowerBI. For example, select **Sales360** from the list to explore **Sales360** Data Product.
+>>>>>>> 83f1c68a2524e022232f273f92e8edb848d70816
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -14,7 +22,7 @@ Access the **Home Page** of DataOS. From there, navigate to the **Data Product H
 
 ### **Step 2: Browse and Select a Data Product**
 
-In the Data Product Hub, users should browse through the list of data products. Clicking on a specific data product to integrate with PowerBI is essential. For example, selecting **Sales360** from the list allows exploration of the **Sales360** data product.
+In the Data Product Hub, users should browse through the list of data products. Clicking on a specific data product to integrate with PowerBI. For example, selecting **Sales360** from the list allows exploration of the **Sales360** data product.
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(2).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -22,7 +30,11 @@ In the Data Product Hub, users should browse through the list of data products. 
 
 ### **Step 3: Access Integration Options**
 
+<<<<<<< HEAD
 After selecting a data product, navigate to the **Access Options** tab. Within this tab, various methods to access and interact with the data product can be found, including options for **Excel and PowerBI**.
+=======
+4. Locate the downloaded ZIP file on the local system and unzip the folder. Three files will be present in the folder. Open the 'public_sales360' file in Power BI. Ensure that all three files are kept together, as the other two files are essential for the semantic sync of the Data Product. 
+>>>>>>> 83f1c68a2524e022232f273f92e8edb848d70816
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(3).png" alt="DPH" style="width:40rem; border: 1px solid black;" />

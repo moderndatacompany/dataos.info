@@ -1,3417 +1,663 @@
-# Data Integration - Supported Connectors in DataOS
+# DataOS Supported Connectors
 
-The following section provides an overview of the data sources accessible by one or more components within DataOS.
+This document provides an overview of the data sources supported by DataOS. It is designed to help users understand which data sources are supported by each component, enabling effective planning of data integration and processing workflows.
 
-<aside class="callout">
-🗣️ In relation to Minerva (DataOS's query engine), the supported source systems for predicate query pushdown are also indicated.*
-</aside>
+## Integration with DataOS Components
 
-> In the table below, a :white_check_mark: signifies that the data source is supported by the specific component, whereas a :white_large_square: indicates it is not.
+The connector support table lists various data sources and their compatibility with key DataOS components. Use this table to understand the capabilities of each component in relation to specific data sources.
+
+- :white_check_mark: **Supported:** The data source is compatible with the DataOS component.
+- :white_large_square: **Not Supported:** The data source is not compatible with the component.
+
+**Table Legend**
+
+- **Data Source:** The name of the database, data warehouse, data lake, messaging system, or other data source.
+- **Type:** The category of the data source (e.g., Database, Data Warehouse, Messaging System).
+- **Depot:** Indicates whether DataOS can connect to this source using the [Depot Resource](/resources/depot/).
+- **Minerva:** Specifies if this data source can be queried directly using [Minerva Cluster](/resources/cluster/#minerva). Minerva is DataOS' high-performance, static federation engine, designed for executing queries in specific scenarios that require fail-fast architecture and faster performance. Minerva can query data from sources via two mechanisms: through Depots (for sources connected via the Depot Interface) or via catalogs (for sources where Depots cannot be created but can still be queried). For exploring Depot support for a particular source, contact our teams to discuss potential solutions.
+- **Predicate Pushdown Support (Minerva):** Indicates whether Minerva can optimize queries by pushing filters and predicates directly to the data source, reducing data transfer and improving performance.
+- **Themis:** Indicates whether the source can be queried using [Themis](/resources/cluster/#themis), DataOS' dynamic federation engine that supports SparkSQL. Themis auto-scales per query, and user-based scaling boundaries can be defined. It is designed to complete queries reliably in failure-prone scenarios but is generally slower than Minerva, making it less suited for real-time analysis.
+- **Flare:** Determines if ETL operations with this data source can be performed using [Flare Stack](/resources/stacks/flare/), which is built on Apache Spark for large-scale data processing.
+- **Scanner:** Indicates whether [Scanner](/resources/stacks/scanner/) can extract metadata from this source. Scanner is a DataOS Stack designed for metadata extraction from various systems.
+
 
 ## Supported Connectors
 
-| Data Source                                          | Type                             | Depot <br> (connect) | Minerva <br> (query) | Predicate Pushdown Support (Minerva) | Flare <br> (extract, transform, load) | Scanner <br> (metadata scan) |
-|------------------------------------------------------|----------------------------------|-------|---------|----------------------------|-------|---------|
-| ElasticSearch                                        | Database                         | :white_check_mark:           | :white_check_mark:         | :white_large_square:       | :white_check_mark:       | :white_large_square:     |
-| Icebase (Iceberg Format)                             | Database                         | :white_check_mark:           | :white_check_mark:         | :white_large_square:       | :white_check_mark:       | :white_check_mark:     |
-| MySQL                                                | Database                         | :white_check_mark:           | :white_check_mark:         | :white_check_mark:         | :white_check_mark:       | :white_check_mark:     |
-| MS SQL                                               | Database                         | :white_check_mark:           | :white_check_mark:         | :white_check_mark:         | :white_check_mark:       | :white_check_mark:     |
-| MongoDB                                              | Database                         | :white_check_mark:           | :white_check_mark:         | :white_large_square:       | :white_check_mark:       | :white_large_square:     |
-| Oracle                                               | Database                         | :white_check_mark:           | :white_check_mark:         | :white_check_mark:         | :white_check_mark:       | :white_check_mark:     |
-| PostgreSQL                                          | Database                         | :white_check_mark:           | :white_check_mark:         | :white_large_square:       | :white_check_mark:       | :white_check_mark:     
-| Eventhub                                             | Messaging & Streaming Datastore | :white_check_mark:           | :white_large_square:       | :white_large_square:       | :white_check_mark:       | :white_large_square:   |
-| Fastbase (Pulsar)                                    | Messaging & Streaming Datastore | :white_check_mark:           | :white_large_square:       | :white_large_square:       | :white_check_mark:       | :white_check_mark:     |
-| Kafka                                                | Messaging & Streaming Datastore | :white_check_mark:           | :white_check_mark:         | :white_large_square:       | :white_check_mark:       | :white_check_mark:     
-| AWS Redshift                                         | Warehouses & Data Lake           | :white_check_mark:           | :white_check_mark:         | :white_large_square:       | :white_check_mark:       | :white_check_mark:     |
-| AWS S3 Blob Storage                                  | Warehouses & Data Lake           | :white_check_mark:           | :white_large_square:       | :white_large_square:       | :white_check_mark:       | :white_large_square:   |
-| ABFSS (Azure Data Lake Gen2)                         | Warehouses & Data Lake           | :white_check_mark:           | :white_large_square:       | :white_large_square:       | :white_check_mark:       | :white_large_square:   |
-| WASBS (Azure Blob Storage)                           | Warehouses & Data Lake           | :white_check_mark:           | :white_large_square:       | :white_large_square:       | :white_check_mark:       | :white_large_square:   |
-| BigQuery                                             | Warehouses & Data Lake           | :white_check_mark:           | :white_check_mark:         | :white_large_square:       | :white_check_mark:       | :white_check_mark:     |
-| GCS (Google Cloud Storage)                           | Warehouses & Data Lake           | :white_check_mark:           | :white_large_square:       | :white_large_square:       | :white_check_mark:       | :white_large_square:   |
-| Snowflake                                            | Warehouses & Data Lake           | :white_check_mark:           | :white_large_square:       | :white_large_square:       | :white_check_mark:       | :white_check_mark:     
-| "JDBC (any source exposed via JDBC driver is supported, e.g. MSSQL Server, SAP Hana)" | Miscellaneous                    | :white_check_mark:           | :white_check_mark:         | :white_large_square:       | :white_check_mark:       | :white_check_mark:     |
-| OpenSearch                                           | Miscellaneous                    | :white_check_mark:           | :white_large_square:       | :white_large_square:       | :white_check_mark:       | :white_large_square:   
-| Accumulo                                             | Databases                        | :white_large_square:         | :white_check_mark:         | :white_large_square:       | :white_large_square:     | :white_large_square:   |
-| Cassandra                                            | Databases                        | :white_large_square:         | :white_check_mark:         | :white_large_square:       | :white_large_square:     | :white_large_square:   |
-| ClickHouse                                           | Databases                        | :white_large_square:         | :white_check_mark:         | :white_check_mark:         | :white_large_square:     | :white_check_mark:     |
-| DB2 (IBM)                                            | Databases                        | :white_large_square:         | :white_large_square:       | :white_large_square:       | :white_large_square:     | :white_check_mark:     |
-| DOMO Database                                        | Databases                        | :white_large_square:         | :white_large_square:       | :white_large_square:       | :white_large_square:     | :white_check_mark:     |
-| Ignite                                               | Databases (for in-memory computing) | :white_large_square:         | :white_check_mark:         | :white_check_mark:         | :white_large_square:     | :white_large_square:   |
-| Kudu                                                 | Databases                        | :white_large_square:         | :white_check_mark:         | :white_large_square:       | :white_large_square:     | :white_large_square:   |
-| Phoenix                                              | Databases                        | :white_large_square:         | :white_check_mark:         | :white_large_square:       | :white_large_square:     | :white_large_square:   |
-| Pinot                                                | Databases                        | :white_large_square:         | :white_check_mark:         | :white_check_mark:         | :white_large_square:     | :white_large_square:   |
-| Prometheus                                           | Databases (Metrics Collection & Time-series DB)| :white_large_square:         | :white_check_mark:         | :white_large_square:       | :white_large_square:     | :white_large_square:   |
-| SingleStore                                          | Databases                        | :white_large_square:         | :white_check_mark:         | :white_check_mark:         | :white_large_square:     | :white_check_mark:     
-| Azure Databricks                                     | Warehouses & Data lakes          | :white_large_square:         | :white_large_square:       | :white_large_square:       | :white_large_square:     | :white_check_mark:     |
-| Hive                                                 | Warehouses & Data Lake           | :white_large_square:         | :white_check_mark:         | :white_large_square:       | :white_large_square:     | :white_check_mark:     |
-| Hudi                                                 | Warehouses & Data Lake           | :white_large_square:         | :white_check_mark:         | :white_large_square:       | :white_large_square:     | :white_large_square:   |
-| MariaDB                                              | Warehouses & Data lakes          | :white_large_square:         | :white_check_mark:         | :white_check_mark:         | :white_large_square:     | :white_check_mark:     |
-| Delta Lake                                           | Lakehouse                        | :white_large_square:         | :white_check_mark:         | :white_large_square:       | :white_large_square:     | :white_large_square:   
-| Atop                                                 | Miscellaneous (Linux Server Performance Analysis Tool) | :white_large_square:         | :white_check_mark:         | :white_large_square:       | :white_large_square:     | :white_large_square:   |
-| AWS Glue                                             | Miscellaneous (Data Integration Service) | :white_large_square:         | :white_large_square:       | :white_large_square:       | :white_large_square:     | :white_check_mark:     |
-| AWS Athena                                           | Miscellaneous (Interactive Analytics Service) | :white_large_square:         | :white_large_square:       | :white_large_square:       | :white_large_square:     | :white_check_mark:     |
-| Druid                                                | Miscellaneous (for Real-time Analytics) | :white_large_square:         | :white_check_mark:         | :white_large_square:       | :white_large_square:     | :white_check_mark:     |
-| Google Sheets                                        | File System                      | :white_large_square:         | :white_check_mark:         | :white_large_square:       | :white_large_square:     | :white_large_square:   |
-| JMX                                                  | Miscellaneous                    | :white_large_square:         | :white_check_mark:         | :white_large_square:       | :white_large_square:     | :white_large_square:   |
-| Kinesis                                              | Messaging & Streaming Platform   | :white_large_square:         | :white_check_mark:         | :white_large_square:       | :white_large_square:     | :white_large_square:   |
-| Redis                                                | Miscellaneous                    | :white_large_square:         | :white_check_mark:         | :white_check_mark:         | :white_large_square:     | :white_large_square:   |
+| Data Source                                          | Type                             | Depot <br> (connect) | Minerva <br> (query) | Predicate Pushdown <br> Support (Minerva) | Themis <br> (query) | Flare <br> (extract, transform, load) | Scanner <br> (metadata scan) | 
+|------------------------------------------------------|----------------------------------|----------------------|-----------------------|--------------------------------------------|----------------------|---------------------------------------|-------------------------------|
+| **ElasticSearch**                                    | Database                         | :white_check_mark:   | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_check_mark:                    | :white_large_square:          |
+| **DataOS Lakehouse (Iceberg Format)**                         | Data Warehouse & Data Lake                         | :white_check_mark:   | :white_check_mark:    | :white_large_square:                       | :white_check_mark:   | :white_check_mark:                    | :white_check_mark:            |
+| **MySQL**                                            | Database                         | :white_check_mark:   | :white_check_mark:    | :white_check_mark:                         | :white_check_mark:   | :white_check_mark:                    | :white_check_mark:            |
+| **Microsoft SQL Server**                             | Database                         | :white_check_mark:   | :white_check_mark:    | :white_check_mark:                         | :white_large_square: | :white_check_mark:                    | :white_check_mark:            |
+| **MongoDB**                                          | Database                         | :white_check_mark:   | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_check_mark:                    | :white_large_square:          |
+| **Oracle**                                           | Database                         | :white_check_mark:   | :white_check_mark:    | :white_check_mark:                         | :white_large_square: | :white_check_mark:                    | :white_check_mark:            |
+| **PostgreSQL**                                       | Database                         | :white_check_mark:   | :white_check_mark:    | :white_large_square:                       | :white_check_mark:   | :white_check_mark:                    | :white_check_mark:            |
+| **EventHub**                                         | Messaging & Streaming Datastore  | :white_check_mark:   | :white_large_square:  | :white_large_square:                       | :white_large_square: | :white_check_mark:                    | :white_large_square:          |
+| **Fastbase (Pulsar)**                                | Messaging & Streaming Datastore  | :white_check_mark:   | :white_large_square:  | :white_large_square:                       | :white_large_square: | :white_check_mark:                    | :white_check_mark:            |
+| **Kafka**                                            | Messaging & Streaming Datastore  | :white_check_mark:   | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_check_mark:                    | :white_check_mark:            |
+| **AWS Redshift**                                     | Data Warehouse & Data Lake       | :white_check_mark:   | :white_check_mark:    | :white_large_square:                       | :white_check_mark:   | :white_check_mark:                    | :white_check_mark:            |
+| **AWS S3 Blob Storage**                              | Data Warehouse & Data Lake       | :white_check_mark:   | :white_large_square:  | :white_large_square:                       | :white_large_square: | :white_check_mark:                    | :white_large_square:          |
+| **Azure Data Lake Gen2 (ABFSS)**                     | Data Warehouse & Data Lake       | :white_check_mark:   | :white_large_square:  | :white_large_square:                       | :white_large_square: | :white_check_mark:                    | :white_large_square:          |
+| **Azure Blob Storage (WASBS)**                       | Data Warehouse & Data Lake       | :white_check_mark:   | :white_large_square:  | :white_large_square:                       | :white_large_square: | :white_check_mark:                    | :white_large_square:          |
+| **BigQuery**                                         | Data Warehouse & Data Lake       | :white_check_mark:   | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_check_mark:                    | :white_check_mark:            |
+| **Google Cloud Storage (GCS)**                       | Data Warehouse & Data Lake       | :white_check_mark:   | :white_large_square:  | :white_large_square:                       | :white_large_square: | :white_check_mark:                    | :white_large_square:          |
+| **Snowflake**                                        | Data Warehouse & Data Lake       | :white_check_mark:   | :white_large_square:  | :white_large_square:                       | :white_check_mark:   | :white_check_mark:                    | :white_check_mark:            |
+| **JDBC Sources**<br>(e.g., SAP HANA, IBM Db2)        | Miscellaneous                    | :white_check_mark:   | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_check_mark:                    | :white_check_mark:            |
+| **OpenSearch**                                       | Miscellaneous                    | :white_check_mark:   | :white_large_square:  | :white_large_square:                       | :white_large_square: | :white_check_mark:                    | :white_large_square:          |
+| **Accumulo**                                         | Database                         | :white_large_square: | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_large_square:          |
+| **Cassandra**                                        | Database                         | :white_large_square: | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_large_square:          |
+| **ClickHouse**                                       | Database                         | :white_large_square: | :white_check_mark:    | :white_check_mark:                         | :white_large_square: | :white_large_square:                 | :white_check_mark:            |
+| **IBM Db2**                                          | Database                         | :white_large_square: | :white_large_square:  | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_check_mark:            |
+| **DOMO Database**                                    | Database                         | :white_large_square: | :white_large_square:  | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_check_mark:            |
+| **Apache Ignite**                                    | Database (In-Memory Computing)   | :white_large_square: | :white_check_mark:    | :white_check_mark:                         | :white_large_square: | :white_large_square:                 | :white_large_square:          |
+| **Apache Kudu**                                      | Database                         | :white_large_square: | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_large_square:          |
+| **Apache Phoenix**                                   | Database                         | :white_large_square: | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_large_square:          |
+| **Apache Pinot**                                     | Database                         | :white_large_square: | :white_check_mark:    | :white_check_mark:                         | :white_large_square: | :white_large_square:                 | :white_large_square:          |
+| **Prometheus**                                       | Time-Series Database             | :white_large_square: | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_large_square:          |
+| **SingleStore**                                      | Database                         | :white_large_square: | :white_check_mark:    | :white_check_mark:                         | :white_large_square: | :white_large_square:                 | :white_check_mark:            |
+| **Azure Databricks**                                 | Data Warehouse & Data Lake       | :white_large_square: | :white_large_square:  | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_check_mark:            |
+| **Apache Hive**                                      | Data Warehouse & Data Lake       | :white_large_square: | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_check_mark:            |
+| **Apache Hudi**                                      | Data Lake                        | :white_large_square: | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_large_square:          |
+| **MariaDB**                                          | Database                         | :white_large_square: | :white_check_mark:    | :white_check_mark:                         | :white_large_square: | :white_large_square:                 | :white_check_mark:            |
+| **Delta Lake**                                       | Data Lakehouse                   | :white_large_square: | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_large_square:          |
+| **Atop**                                             | Performance Analysis Tool        | :white_large_square: | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_large_square:          |
+| **AWS Glue**                                         | Data Integration Service         | :white_large_square: | :white_large_square:  | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_check_mark:            |
+| **AWS Athena**                                       | Interactive Analytics Service    | :white_large_square: | :white_large_square:  | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_check_mark:            |
+| **Apache Druid**                                     | Real-time Analytics Database     | :white_large_square: | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_check_mark:            |
+| **Google Sheets**                                    | Spreadsheet                      | :white_large_square: | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_large_square:          |
+| **JMX**                                              | Monitoring Tool                  | :white_large_square: | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_large_square:          |
+| **Amazon Kinesis**                                   | Streaming Platform               | :white_large_square: | :white_check_mark:    | :white_large_square:                       | :white_large_square: | :white_large_square:                 | :white_large_square:          |
+| **Redis**                                            | In-Memory Data Store             | :white_large_square: | :white_check_mark:    | :white_check_mark:                         | :white_large_square: | :white_large_square:                 | :white_large_square:          |
 
 
-## Airbyte - Connectors
+## Integration with Third-Party Tools
 
-In addition to the above mentioned sources, Airbyte has been seamlessly integrated into DataOS's Technology Stack. This integration empowers us to facilitate connectivity with approximately **300 data sources**, encompassing a wide array of WebAPIs and Analytics Tools. Refer to the comprehensive list below:
+DataOS extends its connectivity through integration with third-party tools, broadening the range of supported data sources.
 
-<details>
-<summary>List of connectors supported by Airbyte</summary>
+### **Airbyte Connectors**
 
-<table>
-  <thead>
-    <tr>
-      <th>Sno.</th>
-      <th>Connector Name</th>
-      <th>Type</th>
-      <th>Sources</th>
-      <th>Destinations</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>AlloyDB for Postgre SQL</td>
-      <td>Databases</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Apache Doris</td>
-      <td>Databases</td>
-      <td></td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Apache Iceberg</td>
-      <td>Databases</td>
-      <td></td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>Apache Kafka</td>
-      <td>Databases</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>Click House</td>
-      <td>Databases</td>
-      <td>Yes</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>CockroachDB</td>
-      <td>Databases</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>Convex.dev</td>
-      <td>Databases</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>8</td>
-      <td>DuckDB</td>
-      <td>Databases</td>
-      <td></td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>9</td>
-      <td>DynamoDB</td>
-      <td>Databases</td>
-      <td>Yes</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>10</td>
-      <td>Elasticsearch</td>
-      <td>Databases</td>
-      <td>Yes</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>11</td>
-      <td>Fauna</td>
-      <td>Databases</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>12</td>
-      <td>Firebase</td>
-      <td>Databases</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>13</td>
-      <td>Google Pubsub</td>
-      <td>Databases</td>
-      <td></td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>14</td>
-      <td>IBM Db2</td>
-      <td>Databases</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>15</td>
-      <td>Kafka</td>
-      <td>Databases</td>
-      <td></td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>16</td>
-      <td>MSSQL SQL Server</td>
-      <td>Databases</td>
-      <td>Yes</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>17</td>
-      <td>MySQL</td>
-      <td>Databases</td>
-      <td>Yes</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>18</td>
-      <td>MongoDB</td>
-      <td>Databases</td>
-      <td>Yes</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>19</td>
-      <td>Microsoft Dataverse</td>
-      <td>Databases</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>20</td>
-      <td>Oracle DB</td>
-      <td>Databases</td>
-      <td>Yes</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>21</td>
-      <td>Postgre SQL</td>
-      <td>Databases</td>
-      <td>Yes</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>22</td>
-      <td>Pulsar</td>
-      <td>Databases</td>
-      <td>Yes</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>23</td>
-      <td>TiDB</td>
-      <td>Databases</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>24</td>
-      <td>Yugabytedb</td>
-      <td>Databases</td>
-      <td></td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>25</td>
-      <td>S3</td>
-      <td>Warehouses and Lakes</td>
-      <td>Yes</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>26</td>
-      <td>BigQuery</td>
-      <td>Warehouses and Lakes</td>
-      <td>Yes</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>27</td>
-      <td>MariaDB Columnstore</td>
-      <td>Warehouses and Lakes</td>
-      <td></td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>28</td>
-      <td>Firebolt</td>
-      <td>Warehouses and Lakes</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>29</td>
-      <td>Azure Blob Storage</td>
-      <td>Warehouses and Lakes</td>
-      <td></td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>30</td>
-      <td>Azure Table Storage</td>
-      <td>Warehouses and Lakes</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>31</td>
-      <td>S3 Glue</td>
-      <td>Warehouses and Lakes</td>
-      <td></td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>32</td>
-      <td>Redshift</td>
-      <td>Warehouses and Lakes</td>
-      <td>Yes</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>33</td>
-      <td>Google Cloud Storage</td>
-      <td>Warehouses and Lakes</td>
-      <td></td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>34</td>
-      <td>Snowflake Data Cloud</td>
-      <td>Warehouses and Lakes</td>
-      <td>Yes</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>35</td>
-      <td>Teradata</td>
-      <td>Warehouses and Lakes</td>
-      <td></td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>36</td>
-      <td>Databricks Lakehouse</td>
-      <td>Warehouses and Lakes</td>
-      <td></td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>37</td>
-      <td>AWS</td>
-      <td>Warehouses and Lakes</td>
-      <td></td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>38</td>
-      <td>AWS Cloud Trail</td>
-      <td>Engineering Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>39</td>
-      <td>Amazon SQS</td>
-      <td>Engineering Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>40</td>
-      <td>Auth0</td>
-      <td>Engineering Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>41</td>
-      <td>Ashby</td>
-      <td>Engineering Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>42</td>
-      <td>Convex</td>
-      <td>Engineering Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>43</td>
-      <td>Courier</td>
-      <td>Engineering Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>44</td>
-      <td>Datadog</td>
-      <td>Engineering Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>45</td>
-      <td>Dockerhub</td>
-      <td>Engineering Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>46</td>
-      <td>E2E Testing</td>
-      <td>Engineering Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>47</td>
-      <td>GitLab</td>
-      <td>Engineering Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>48</td>
-      <td>Harness</td>
-      <td>Engineering Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>49</td>
-      <td>Intruder</td>
-      <td>Engineering Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>50</td>
-      <td>K6 Cloud</td>
-      <td>Engineering Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>51</td>
-      <td>PagerDuty</td>
-      <td>Engineering Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>52</td>
-      <td>Jira</td>
-      <td>Engineering Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>53</td>
-      <td>Jenkins</td>
-      <td>Engineering Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>54</td>
-      <td>MeiliSearch</td>
-      <td>Engineering Analytics</td>
-      <td></td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>55</td>
-      <td>PyPI</td>
-      <td>Engineering Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>56</td>
-      <td>Rest Api</td>
-      <td>Engineering Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>57</td>
-      <td>Sentry</td>
-      <td>Engineering Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>58</td>
-      <td>SonarCloud</td>
-      <td>Engineering Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>59</td>
-      <td>Statuspage</td>
-      <td>Engineering Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>60</td>
-      <td>Statuspage.io</td>
-      <td>Engineering Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>61</td>
-      <td>Streamr</td>
-      <td>Engineering Analytics</td>
-      <td></td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>62</td>
-      <td>Typesense</td>
-      <td>Engineering Analytics</td>
-      <td></td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>63</td>
-      <td>Vantage</td>
-      <td>Engineering Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>64</td>
-      <td>VictorOps</td>
-      <td>Engineering Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>65</td>
-      <td>App follow</td>
-      <td>Product Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>66</td>
-      <td>Adjust</td>
-      <td>Product Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>67</td>
-      <td>Aha</td>
-      <td>Product Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>68</td>
-      <td>Amplitude</td>
-      <td>Product Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>69</td>
-      <td>Chartmogul</td>
-      <td>Product Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>70</td>
-      <td>Config Cat</td>
-      <td>Product Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>71</td>
-      <td>Keen</td>
-      <td>Product Analytics</td>
-      <td></td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>72</td>
-      <td>Launch Darkly</td>
-      <td>Product Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>73</td>
-      <td>Looker</td>
-      <td>Product Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>74</td>
-      <td>Mixpanel</td>
-      <td>Product Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>75</td>
-      <td>Metabase</td>
-      <td>Product Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>76</td>
-      <td>Plausible</td>
-      <td>Product Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>77</td>
-      <td>Posthog</td>
-      <td>Product Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>78</td>
-      <td>Microsoft Dynamics NAV</td>
-      <td>Product Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>79</td>
-      <td>Facebook Marketing</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>80</td>
-      <td>Facebook Pages</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>81</td>
-      <td>Google Ads</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>82</td>
-      <td>Google Analytics</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>83</td>
-      <td>Google Search Console</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>84</td>
-      <td>Instagram</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>85</td>
-      <td>Webflow</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>86</td>
-      <td>Active Campaign</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>87</td>
-      <td>Amazon Ads</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>88</td>
-      <td>Bing Ads</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>89</td>
-      <td>Braze</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>90</td>
-      <td>Cart</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>91</td>
-      <td>Emarsys</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>92</td>
-      <td>Formidable Forms</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>93</td>
-      <td>Heap</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>94</td>
-      <td>HubSpot</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>95</td>
-      <td>HubSpot CRM</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>96</td>
-      <td>HubSpot Marketing</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>97</td>
-      <td>Iterable</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>98</td>
-      <td>Klaviyo</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>99</td>
-      <td>LinkedIn Pages</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>100</td>
-      <td>LinkedIn</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>101</td>
-      <td>Mailchimp</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>102</td>
-      <td>Marketo</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>103</td>
-      <td>Microsoft Advertising</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>104</td>
-      <td>Microsoft Dynamics 365</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>105</td>
-      <td>Twitter Ads</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>106</td>
-      <td>LinkedIn Ads</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>107</td>
-      <td>Lokalise</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>108</td>
-      <td>Mailchimp</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>109</td>
-      <td>Mailgun</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>110</td>
-      <td>Mailjet Email</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>111</td>
-      <td>Mailjet SMS</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>112</td>
-      <td>Marketo</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>113</td>
-      <td>N8n</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>114</td>
-      <td>Omnisend</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>115</td>
-      <td>OneSignal</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>116</td>
-      <td>Orbit.love</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>117</td>
-      <td>PartnerStack</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>118</td>
-      <td>Pinterest Ads</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>119</td>
-      <td>Postmark App</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>120</td>
-      <td>Qualaroo</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>121</td>
-      <td>RD Station Marketing</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>122</td>
-      <td>SendGrid</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>123</td>
-      <td>Sendinblue</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>124</td>
-      <td>Short.io</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>125</td>
-      <td>Smaily</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>126</td>
-      <td>SmartEngage</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>127</td>
-      <td>Snapchat Marketing</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>128</td>
-      <td>SurveyMonkey</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>129</td>
-      <td>SurveySparrow</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>130</td>
-      <td>TikTok for Business Marketing</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>131</td>
-      <td>Twilio</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>132</td>
-      <td>Twitter</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>133</td>
-      <td>Tyntec SMS</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>134</td>
-      <td>Typeform</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>135</td>
-      <td>Whisky Hunter</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>136</td>
-      <td>Wordpress</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>137</td>
-      <td>Yandex Metrica</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>138</td>
-      <td>YouTube Analytics</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>139</td>
-      <td>Zapier Supported Storage</td>
-      <td>Marketing Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>140</td>
-      <td>App Store</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>141</td>
-      <td>Asana</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>142</td>
-      <td>Alpha Vantage</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>143</td>
-      <td>Airtable</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>144</td>
-      <td>Amazon Seller Partner</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>145</td>
-      <td>BambooHR</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>146</td>
-      <td>Big Commerce</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>147</td>
-      <td>Braintree</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>148</td>
-      <td>Chargebee</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>149</td>
-      <td>Chargify</td>
-      <td>Finance & Ops Analytics</td>
-      <td></td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>150</td>
-      <td>ClickUp</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>151</td>
-      <td>Clockify</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>152</td>
-      <td>Coin API</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>153</td>
-      <td>Coin Gecko Coins</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>154</td>
-      <td>CoinMarketCap</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>155</td>
-      <td>Exchange Rates API</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>156</td>
-      <td>Fastbill</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>157</td>
-      <td>Confluence</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>158</td>
-      <td>Commerce tools</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>159</td>
-      <td>Flexport</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>160</td>
-      <td>GetLago</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>161</td>
-      <td>Glassfrog</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>162</td>
-      <td>GoCardless</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>163</td>
-      <td>Greenhouse</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>164</td>
-      <td>Gutendex</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>165</td>
-      <td>Google Directory</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>166</td>
-      <td>Harvest</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>167</td>
-      <td>Hubplanner</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>168</td>
-      <td>Klarna</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>169</td>
-      <td>Lever Hiring</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>170</td>
-      <td>Kyriba</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>171</td>
-      <td>Linnworks</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>172</td>
-      <td>Notion</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>173</td>
-      <td>Okta</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>174</td>
-      <td>Google Workspace Admin Reports</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>175</td>
-      <td>Microsoft Dynamics AX</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>176</td>
-      <td>Microsoft Teams</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>177</td>
-      <td>Microsoft Dynamics GP</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>178</td>
-      <td>My Hours</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>179</td>
-      <td>Netsuite</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>180</td>
-      <td>Oracle PeopleSoft</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>181</td>
-      <td>Orb</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>182</td>
-      <td>Pagar.me</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>183</td>
-      <td>PayPal Transaction</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>184</td>
-      <td>Plaid</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>185</td>
-      <td>PrestaShop</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>186</td>
-      <td>Primetric</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>187</td>
-      <td>QuickBooks</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>188</td>
-      <td>Railz</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>189</td>
-      <td>Recharge</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>190</td>
-      <td>Recruitee</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>191</td>
-      <td>Recurly</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>192</td>
-      <td>Rocket.chat</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>Sno.</th>
-      <th>Connector Name</th>
-      <th>Type</th>
-      <th>Sources</th>
-      <th>Destinations</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>193</td>
-      <td>SAP Business One</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>194</td>
-      <td>SAP Fieldglass</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>195</td>
-      <td>Shopify</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>196</td>
-      <td>Slack</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>197</td>
-      <td>Spree Commerce</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>198</td>
-      <td>Square</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>199</td>
-      <td>Stripe</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>200</td>
-      <td>Tempo</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>201</td>
-      <td>Timely</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>202</td>
-      <td>Toggl</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>203</td>
-      <td>Trello</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>204</td>
-      <td>Visma E-conomic</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>205</td>
-      <td>WooCommerce</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>206</td>
-      <td>Workramp</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>207</td>
-      <td>Wrike</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>208</td>
-      <td>Younium</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>209</td>
-      <td>Zenefits</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>210</td>
-      <td>Zencart</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>211</td>
-      <td>Zoom</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>212</td>
-      <td>Zuora</td>
-      <td>Finance & Ops Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>213</td>
-      <td>Salesforce</td>
-      <td>Sales & Support Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>214</td>
-      <td>Close.com</td>
-      <td>Sales & Support Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>215</td>
-      <td>Coda</td>
-      <td>Sales & Support Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>216</td>
-      <td>Delighted</td>
-      <td>Sales & Support Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>217</td>
-      <td>Dixa</td>
-      <td>Sales & Support Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>218</td>
-      <td>Drift</td>
-      <td>Sales & Support Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>219</td>
-      <td>Freshcaller</td>
-      <td>Sales & Support Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>220</td>
-      <td>Freshdesk</td>
-      <td>Sales & Support Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>221</td>
-      <td>Freshsales</td>
-      <td>Sales & Support Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>222</td>
-      <td>Intercom</td>
-      <td>Sales & Support Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>223</td>
-      <td>Kustomer</td>
-      <td>Sales & Support Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>224</td>
-      <td>Oracle Siebel CRM</td>
-      <td>Sales & Support Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>225</td>
-      <td>Outreach</td>
-      <td>Sales & Support Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>226</td>
-      <td>PersistIq</td>
-      <td>Sales & Support Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>227</td>
-      <td>Pipedrive</td>
-      <td>Sales & Support Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>228</td>
-      <td>Reply.io</td>
-      <td>Sales & Support Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>229</td>
-      <td>Retently</td>
-      <td>Sales & Support Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>230</td>
-      <td>SalesLoft</td>
-      <td>Sales & Support Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>231</td>
-      <td>Sugar CRM</td>
-      <td>Sales & Support Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>232</td>
-      <td>TalkDesk Explore</td>
-      <td>Sales & Support Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>233</td>
-      <td>Vitally</td>
-      <td>Sales & Support Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>234</td>
-      <td>Zendesk Chat</td>
-      <td>Sales & Support Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>235</td>
-      <td>Zendesk Sell</td>
-      <td>Sales & Support Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>236</td>
-      <td>Zendesk Sunshine</td>
-      <td>Sales & Support Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>237</td>
-      <td>Zendesk Support</td>
-      <td>Sales & Support Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>238</td>
-      <td>Zendesk Talk</td>
-      <td>Sales & Support Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>239</td>
-      <td>Zenloop</td>
-      <td>Sales & Support Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>240</td>
-      <td>Zoho CRM</td>
-      <td>Sales & Support Analytics</td>
-      <td>Yes</td>
-      <td></td>
-    </tr>
-  <tr>
-    <td>241</td>
-    <td>Microsoft Dynamics Customer Engagement</td>
-    <td>Sales & Support Analytics</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>242</td>
-    <td>Google Sheets</td>
-    <td>Files</td>
-    <td>Yes</td>
-    <td>Yes</td>
-  </tr>
-  <tr>
-    <td>243</td>
-    <td>CSV</td>
-    <td>Files</td>
-    <td>Yes</td>
-    <td>Yes</td>
-  </tr>
-  <tr>
-    <td>244</td>
-    <td>Excel</td>
-    <td>Files</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>245</td>
-    <td>Feather</td>
-    <td>Files</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>246</td>
-    <td>JSON File</td>
-    <td>Files</td>
-    <td>Yes</td>
-    <td>Yes</td>
-  </tr>
-  <tr>
-    <td>247</td>
-    <td>SFTP</td>
-    <td>Files</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>248</td>
-    <td>Parquet File</td>
-    <td>Files</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>249</td>
-    <td>Smartsheets</td>
-    <td>Files</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>250</td>
-    <td>Apify</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>251</td>
-    <td>Breezometer</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>252</td>
-    <td>Faker</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>253</td>
-    <td>NASA</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>254</td>
-    <td>New York Times</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>255</td>
-    <td>News API</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>256</td>
-    <td>IP2Whois</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>257</td>
-    <td>Google Webfonts</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>258</td>
-    <td>Newsdata</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>259</td>
-    <td>OpenWeather</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>260</td>
-    <td>Oura</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>261</td>
-    <td>Pexels API</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>262</td>
-    <td>Pocket</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>263</td>
-    <td>PokéAPI</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>264</td>
-    <td>Polygon</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>265</td>
-    <td>Public API</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>266</td>
-    <td>Punk API</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>267</td>
-    <td>REST Countries</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>268</td>
-    <td>RKI Covid</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>269</td>
-    <td>RSS</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>270</td>
-    <td>Recreation.gov</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>271</td>
-    <td>SFTP Bulk</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>272</td>
-    <td>SearchMetrics</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>273</td>
-    <td>Secoda</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>274</td>
-    <td>Senseforce</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>275</td>
-    <td>SpaceX API</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>276</td>
-    <td>Strava</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>277</td>
-    <td>TMDb</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>278</td>
-    <td>TVMaze Schedule</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>279</td>
-    <td>The Guardian API</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>280</td>
-    <td>US Census</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>281</td>
-    <td>Waiteraid</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>282</td>
-    <td>Weatherstack</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>283</td>
-    <td>Wikipedia Pageviews</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>284</td>
-    <td>xkcd</td>
-    <td>Others</td>
-    <td>Yes</td>
-    <td></td>
-  </tr>
-</tbody>
-</table>
+DataOS integrates with Airbyte, allowing you to connect to over 300 additional data sources, including various SaaS applications and databases.
 
-</details>
+???info "Airbyte Supported Sources"
+
+    <center>
+
+    | Sno. | Connector Name               | Type                    | Sources | Destinations |
+    |------|------------------------------|-------------------------|---------|--------------|
+    | 1    | AlloyDB for Postgre SQL       | Databases               | Yes     |              |
+    | 2    | Apache Doris                  | Databases               |         | Yes          |
+    | 3    | Apache Iceberg                | Databases               |         | Yes          |
+    | 4    | Apache Kafka                  | Databases               | Yes     |              |
+    | 5    | Click House                   | Databases               | Yes     | Yes          |
+    | 6    | CockroachDB                   | Databases               | Yes     |              |
+    | 7    | Convex.dev                    | Databases               | Yes     |              |
+    | 8    | DuckDB                        | Databases               |         | Yes          |
+    | 9    | DynamoDB                      | Databases               | Yes     | Yes          |
+    | 10   | Elasticsearch                 | Databases               | Yes     | Yes          |
+    | 11   | Fauna                         | Databases               | Yes     |              |
+    | 12   | Firebase                      | Databases               | Yes     |              |
+    | 13   | Google Pubsub                 | Databases               |         | Yes          |
+    | 14   | IBM Db2                       | Databases               | Yes     |              |
+    | 15   | Kafka                         | Databases               |         | Yes          |
+    | 16   | MSSQL SQL Server              | Databases               | Yes     | Yes          |
+    | 17   | MySQL                         | Databases               | Yes     | Yes          |
+    | 18   | MongoDB                       | Databases               | Yes     | Yes          |
+    | 19   | Microsoft Dataverse           | Databases               | Yes     |              |
+    | 20   | Oracle DB                     | Databases               | Yes     | Yes          |
+    | 21   | Postgre SQL                   | Databases               | Yes     | Yes          |
+    | 22   | Pulsar                        | Databases               | Yes     | Yes          |
+    | 23   | TiDB                          | Databases               | Yes     |              |
+    | 24   | Yugabytedb                    | Databases               |         | Yes          |
+    | 25   | S3                             | Warehouses and Lakes    | Yes     | Yes          |
+    | 26   | BigQuery                      | Warehouses and Lakes    | Yes     | Yes          |
+    | 27   | MariaDB Columnstore           | Warehouses and Lakes    |         | Yes          |
+    | 28   | Firebolt                      | Warehouses and Lakes    | Yes     |              |
+    | 29   | Azure Blob Storage            | Warehouses and Lakes    |         | Yes          |
+    | 30   | Azure Table Storage           | Warehouses and Lakes    | Yes     |              |
+    | 31   | S3 Glue                       | Warehouses and Lakes    |         | Yes          |
+    | 32   | Redshift                      | Warehouses and Lakes    | Yes     | Yes          |
+    | 33   | Google Cloud Storage          | Warehouses and Lakes    |         | Yes          |
+    | 34   | Snowflake Data Cloud          | Warehouses and Lakes    | Yes     | Yes          |
+    | 35   | Teradata                      | Warehouses and Lakes    |         | Yes          |
+    | 36   | Databricks Lakehouse          | Warehouses and Lakes    |         | Yes          |
+    | 37   | AWS                           | Warehouses and Lakes    |         | Yes          |
+    | 38   | AWS Cloud Trail               | Engineering Analytics   | Yes     |              |
+    | 39   | Amazon SQS                    | Engineering Analytics   | Yes     |              |
+    | 40   | Auth0                         | Engineering Analytics   | Yes     |              |
+    | 41   | Ashby                         | Engineering Analytics   | Yes     |              |
+    | 42   | Convex                        | Engineering Analytics   | Yes     |              |
+    | 43   | Courier                       | Engineering Analytics   | Yes     |              |
+    | 44   | Datadog                       | Engineering Analytics   | Yes     |              |
+    | 45   | Dockerhub                     | Engineering Analytics   | Yes     |              |
+    | 46   | E2E Testing                   | Engineering Analytics   | Yes     |              |
+    | 47   | GitLab                        | Engineering Analytics   | Yes     |              |
+    | 48   | Harness                       | Engineering Analytics   | Yes     |              |
+    | 49   | Intruder                      | Engineering Analytics   | Yes     |              |
+    | 50   | K6 Cloud                      | Engineering Analytics   | Yes     |              |
+    | 51   | PagerDuty                     | Engineering Analytics   | Yes     |              |
+    | 52   | Jira                          | Engineering Analytics   | Yes     |              |
+    | 53   | Jenkins                       | Engineering Analytics   | Yes     |              |
+    | 54   | MeiliSearch                   | Engineering Analytics   |         | Yes          |
+    | 55   | PyPI                          | Engineering Analytics   | Yes     |              |
+    | 56   | Rest Api                      | Engineering Analytics   | Yes     |              |
+    | 57   | Sentry                        | Engineering Analytics   | Yes     |              |
+    | 58   | SonarCloud                    | Engineering Analytics   | Yes     |              |
+    | 59   | Statuspage                    | Engineering Analytics   | Yes     |              |
+    | 60   | Statuspage.io                 | Engineering Analytics   | Yes     |              |
+    | 61   | Streamr                       | Engineering Analytics   |         | Yes          |
+    | 62   | Typesense                     | Engineering Analytics   |         | Yes          |
+    | 63   | Vantage                       | Engineering Analytics   | Yes     |              |
+    | 64   | VictorOps                     | Engineering Analytics   | Yes     |              |
+    | 65   | App follow                    | Product Analytics       | Yes     |              |
+    | 66   | Adjust                        | Product Analytics       | Yes     |              |
+    | 67   | Aha                           | Product Analytics       | Yes     |              |
+    | 68   | Amplitude                     | Product Analytics       | Yes     |              |
+    | 69   | Chartmogul                    | Product Analytics       | Yes     |              |
+    | 70   | Config Cat                    | Product Analytics       | Yes     |              |
+    | 71   | Keen                          | Product Analytics       |         | Yes          |
+    | 72   | Launch Darkly                 | Product Analytics       | Yes     |              |
+    | 73   | Looker                        | Product Analytics       | Yes     |              |
+    | 74   | Mixpanel                      | Product Analytics       | Yes     |              |
+    | 75   | Metabase                      | Product Analytics       | Yes     |              |
+    | 76   | Plausible                     | Product Analytics       | Yes     |              |
+    | 77   | Posthog                       | Product Analytics       | Yes     |              |
+    | 78   | Microsoft Dynamics NAV        | Product Analytics       | Yes     |              |
+    | 79   | Facebook Marketing            | Marketing Analytics     | Yes     |              |
+    | 80   | Facebook Pages                | Marketing Analytics     | Yes     |              |
+    | 81   | Google Ads                    | Marketing Analytics     | Yes     |              |
+    | 82   | Google Analytics              | Marketing Analytics     | Yes     |              |
+    | 83   | Google Search Console         | Marketing Analytics     | Yes     |              |
+    | 84   | Instagram                     | Marketing Analytics     | Yes     |              |
+    | 85   | Webflow                       | Marketing Analytics     | Yes     |              |
+    | 86   | Active Campaign               | Marketing Analytics     | Yes     |              |
+    | 87   | Amazon Ads                    | Marketing Analytics     | Yes     |              |
+    | 88   | Bing Ads                      | Marketing Analytics     | Yes     |              |
+    | 89   | Braze                         | Marketing Analytics     | Yes     |              |
+    | 90   | Cart                          | Marketing Analytics     | Yes     |              |
+    | 91   | Emarsys                       | Marketing Analytics     | Yes     |              |
+    | 92   | Formidable Forms              | Marketing Analytics     | Yes     |              |
+    | 93   | Heap                          | Marketing Analytics     | Yes     |              |
+    | 94   | HubSpot                       | Marketing Analytics     | Yes     |              |
+    | 95   | HubSpot CRM                   | Marketing Analytics     | Yes     |              |
+    | 96   | HubSpot Marketing             | Marketing Analytics     | Yes     |              |
+    | 97   | Iterable                      | Marketing Analytics     | Yes     |              |
+    | 98   | Klaviyo                       | Marketing Analytics     | Yes     |              |
+    | 99   | LinkedIn Pages                | Marketing Analytics     | Yes     |              |
+    | 100  | LinkedIn                      | Marketing Analytics     | Yes     |              |
+    | 101  | Mailchimp                     | Marketing Analytics     | Yes     |              |
+    | 102  | Marketo                       | Marketing Analytics     | Yes     |              |
+    | 103  | Microsoft Advertising         | Marketing Analytics     | Yes     |              |
+    | 104  | Microsoft Dynamics 365        | Marketing Analytics     | Yes     |              |
+    | 105  | Twitter Ads                   | Marketing Analytics     | Yes     |              |
+    | 106  | LinkedIn Ads                  | Marketing Analytics     | Yes     |              |
+    | 107  | Lokalise                      | Marketing Analytics     | Yes     |              |
+    | 108  | Mailchimp                     | Marketing Analytics     | Yes     |              |
+    | 109  | Mailgun                       | Marketing Analytics     | Yes     |              |
+    | 110  | Mailjet Email                 | Marketing Analytics     | Yes     |              |
+    | 111  | Mailjet SMS                   | Marketing Analytics     | Yes     |              |
+    | 112  | Marketo                       | Marketing Analytics     | Yes     |              |
+    | 113  | N8n                           | Marketing Analytics     | Yes     |              |
+    | 114  | Omnisend                      | Marketing Analytics     | Yes     |              |
+    | 115  | OneSignal                     | Marketing Analytics     | Yes     |              |
+    | 116  | Orbit.love                    | Marketing Analytics     | Yes     |              |
+    | 117  | PartnerStack                  | Marketing Analytics     | Yes     |              |
+    | 118  | Pinterest Ads                 | Marketing Analytics     | Yes     |              |
+    | 119  | Postmark App                  | Marketing Analytics     | Yes     |              |
+    | 120  | Qualaroo                     | Marketing Analytics      | Yes     |              |
+    | 121  | RD Station Marketing          | Marketing Analytics      | Yes     |              |
+    | 122  | SendGrid                      | Marketing Analytics      | Yes     |              |
+    | 123  | Sendinblue                    | Marketing Analytics      | Yes     |              |
+    | 124  | Short.io                      | Marketing Analytics      | Yes     |              |
+    | 125  | Smaily                        | Marketing Analytics      | Yes     |              |
+    | 126  | SmartEngage                   | Marketing Analytics      | Yes     |              |
+    | 127  | Snapchat Marketing            | Marketing Analytics      | Yes     |              |
+    | 128  | SurveyMonkey                  | Marketing Analytics      | Yes     |              |
+    | 129  | SurveySparrow                 | Marketing Analytics      | Yes     |              |
+    | 130  | TikTok for Business Marketing | Marketing Analytics      | Yes     |              |
+    | 131  | Twilio                        | Marketing Analytics      | Yes     |              |
+    | 132  | Twitter                       | Marketing Analytics      | Yes     |              |
+    | 133  | Tyntec SMS                    | Marketing Analytics      | Yes     |              |
+    | 134  | Typeform                      | Marketing Analytics      | Yes     |              |
+    | 135  | Whisky Hunter                 | Marketing Analytics      | Yes     |              |
+    | 136  | Wordpress                     | Marketing Analytics      | Yes     |              |
+    | 137  | Yandex Metrica                | Marketing Analytics      | Yes     |              |
+    | 138  | YouTube Analytics             | Marketing Analytics      | Yes     |              |
+    | 139  | Zapier Supported Storage      | Marketing Analytics      | Yes     |              |
+    | 140  | App Store                     | Finance & Ops Analytics  | Yes     |              |
+    | 141  | Asana                         | Finance & Ops Analytics  | Yes     |              |
+    | 142  | Alpha Vantage                 | Finance & Ops Analytics  | Yes     |              |
+    | 143  | Airtable                      | Finance & Ops Analytics  | Yes     |              |
+    | 144  | Amazon Seller Partner         | Finance & Ops Analytics  | Yes     |              |
+    | 145  | BambooHR                      | Finance & Ops Analytics  | Yes     |              |
+    | 146  | Big Commerce                  | Finance & Ops Analytics  | Yes     |              |
+    | 147  | Braintree                     | Finance & Ops Analytics  | Yes     |              |
+    | 148  | Chargebee                     | Finance & Ops Analytics  | Yes     |              |
+    | 149  | Chargify                     | Finance & Ops Analytics   |         | Yes          |
+    | 150  | ClickUp                      | Finance & Ops Analytics   | Yes     |              |
+    | 151  | Clockify                     | Finance & Ops Analytics   | Yes     |              |
+    | 152  | Coin API                     | Finance & Ops Analytics   | Yes     |              |
+    | 153  | Coin Gecko Coins             | Finance & Ops Analytics   | Yes     |              |
+    | 154  | CoinMarketCap                | Finance & Ops Analytics   | Yes     |              |
+    | 155  | Exchange Rates API           | Finance & Ops Analytics   | Yes     |              |
+    | 156  | Fastbill                     | Finance & Ops Analytics   | Yes     |              |
+    | 157  | Confluence                   | Finance & Ops Analytics   | Yes     |              |
+    | 158  | Commerce tools               | Finance & Ops Analytics   | Yes     |              |
+    | 159  | Flexport                     | Finance & Ops Analytics   | Yes     |              |
+    | 160  | GetLago                      | Finance & Ops Analytics   | Yes     |              |
+    | 161  | Glassfrog                    | Finance & Ops Analytics   | Yes     |              |
+    | 162  | GoCardless                   | Finance & Ops Analytics   | Yes     |              |
+    | 163  | Greenhouse                   | Finance & Ops Analytics   | Yes     |              |
+    | 164  | Gutendex                     | Finance & Ops Analytics   | Yes     |              |
+    | 165  | Google Directory             | Finance & Ops Analytics   | Yes     |              |
+    | 166  | Harvest                      | Finance & Ops Analytics   | Yes     |              |
+    | 167  | Hubplanner                   | Finance & Ops Analytics   | Yes     |              |
+    | 168  | Klarna                       | Finance & Ops Analytics   | Yes     |              |
+    | 169  | Lever Hiring                 | Finance & Ops Analytics   | Yes     |              |
+    | 170  | Kyriba                      | Finance & Ops Analytics    | Yes     |              |
+    | 171  | Linnworks                   | Finance & Ops Analytics    | Yes     |              |
+    | 172  | Notion                      | Finance & Ops Analytics    | Yes     |              |
+    | 173  | Okta                        | Finance & Ops Analytics    | Yes     |              |
+    | 174  | Google Workspace Admin Reports | Finance & Ops Analytics | Yes     |              |
+    | 175  | Microsoft Dynamics AX        | Finance & Ops Analytics   | Yes     |              |
+    | 176  | Microsoft Teams              | Finance & Ops Analytics   | Yes     |              |
+    | 177  | Microsoft Dynamics GP        | Finance & Ops Analytics   | Yes     |              |
+    | 178  | My Hours                    | Finance & Ops Analytics    | Yes     |              |
+    | 179  | Netsuite                    | Finance & Ops Analytics    | Yes     |              |
+    | 180  | Oracle PeopleSoft           | Finance & Ops Analytics    | Yes     |              |
+    | 181  | Orb                         | Finance & Ops Analytics    | Yes     |              |
+    | 182  | Pagar.me                    | Finance & Ops Analytics    | Yes     |              |
+    | 183  | PayPal Transaction          | Finance & Ops Analytics    | Yes     |              |
+    | 184  | Plaid                       | Finance & Ops Analytics    | Yes     |              |
+    | 185  | PrestaShop                  | Finance & Ops Analytics    | Yes     |              |
+    | 186  | Primetric                  | Finance & Ops Analytics     | Yes     |              |
+    | 187  | QuickBooks                 | Finance & Ops Analytics     | Yes     |              |
+    | 188  | Railz                      | Finance & Ops Analytics     | Yes     |              |
+    | 189  | Recharge                   | Finance & Ops Analytics     | Yes     |              |
+    | 190  | Recruitee                  | Finance & Ops Analytics     | Yes     |              |
+    | 191  | Recurly                    | Finance & Ops Analytics     | Yes     |              |
+    | 192  | Rocket.chat                | Finance & Ops Analytics     | Yes     |              |
+    | 193  | SAP Business One           | Finance & Ops Analytics     | Yes     |              |
+    | 194  | SAP Fieldglass             | Finance & Ops Analytics     | Yes     |              |
+    | 195  | Shopify                    | Finance & Ops Analytics     | Yes     |              |
+    | 196  | Slack                      | Finance & Ops Analytics     | Yes     |              |
+    | 197  | Spree Commerce             | Finance & Ops Analytics     | Yes     |              |
+    | 198  | Square                     | Finance & Ops Analytics     | Yes     |              |
+    | 199  | Stripe                     | Finance & Ops Analytics     | Yes     |              |
+    | 200  | Tempo                      | Finance & Ops Analytics     | Yes     |              |
+    | 201  | Timely                     | Finance & Ops Analytics     | Yes     |              |
+    | 202  | Toggl                      | Finance & Ops Analytics     | Yes     |              |
+    | 203  | Trello                     | Finance & Ops Analytics     | Yes     |              |
+    | 204  | Visma E-conomic            | Finance & Ops Analytics     | Yes     |              |
+    | 205  | WooCommerce                | Finance & Ops Analytics     | Yes     |              |
+    | 206  | Workramp                   | Finance & Ops Analytics     | Yes     |              |
+    | 207  | Wrike                      | Finance & Ops Analytics     | Yes     |              |
+    | 208  | Younium                    | Finance & Ops Analytics     | Yes     |              |
+    | 209  | Zenefits                   | Finance & Ops Analytics     | Yes     |              |
+    | 210  | Zencart                    | Finance & Ops Analytics     | Yes     |              |
+    | 211  | Zoom                       | Finance & Ops Analytics     | Yes     |              |
+    | 212  | Zuora                      | Finance & Ops Analytics     | Yes     |              |
+    | 213  | Salesforce                 | Sales & Support Analytics   | Yes     |              |
+    | 214  | Close.com                  | Sales & Support Analytics   | Yes     |              |
+    | 215  | Coda                       | Sales & Support Analytics   | Yes     |              |
+    | 216  | Delighted                  | Sales & Support Analytics   | Yes     |              |
+    | 217  | Dixa                       | Sales & Support Analytics   | Yes     |              |
+    | 218  | Drift                      | Sales & Support Analytics   | Yes     |              |
+    | 219  | Freshcaller                | Sales & Support Analytics   | Yes     |              |
+    | 220  | Freshdesk                  | Sales & Support Analytics   | Yes     |              |
+    | 221  | Freshsales                | Sales & Support Analytics    | Yes     |              |
+    | 222  | Intercom                  | Sales & Support Analytics    | Yes     |              |
+    | 223  | Kustomer                  | Sales & Support Analytics    | Yes     |              |
+    | 224  | Oracle Siebel CRM         | Sales & Support Analytics    | Yes     |              |
+    | 225  | Outreach                 | Sales & Support Analytics     | Yes     |              |
+    | 226  | PersistIq                | Sales & Support Analytics     | Yes     |              |
+    | 227  | Pipedrive                | Sales & Support Analytics     | Yes     |              |
+    | 228  | Reply.io                 | Sales & Support Analytics     | Yes     |              |
+    | 229  | Retently                | Sales & Support Analytics      | Yes     |              |
+    | 230  | SalesLoft               | Sales & Support Analytics      | Yes     |              |
+    | 231  | Sugar CRM               | Sales & Support Analytics      | Yes     |              |
+    | 232  | TalkDesk Explore        | Sales & Support Analytics      | Yes     |              |
+    | 233  | Vitally                 | Sales & Support Analytics      | Yes     |              |
+    | 234  | Zendesk Chat            | Sales & Support Analytics      | Yes     |              |
+    | 235  | Zendesk Sell            | Sales & Support Analytics      | Yes     |              |
+    | 236  | Zendesk Sunshine        | Sales & Support Analytics      | Yes     |              |
+    | 237  | Zendesk Support         | Sales & Support Analytics      | Yes     |              |
+    | 238  | Zendesk Talk            | Sales & Support Analytics      | Yes     |              |
+    | 239  | Zenloop                | Sales & Support Analytics       | Yes     |              |
+    | 240  | Zoho CRM               | Sales & Support Analytics       | Yes     |              |
+    | 241  | Microsoft Dynamics Customer Engagement | Sales & Support Analytics | Yes  |              |
+    | 242  | Google Sheets           | Files                     | Yes     | Yes          |
+    | 243  | CSV                      | Files                     | Yes     | Yes          |
+    | 244  | Excel                    | Files                     | Yes     |              |
+    | 245  | Feather                  | Files                     | Yes     |              |
+    | 246  | JSON File                | Files                     | Yes     | Yes          |
+    | 247  | SFTP                     | Files                     | Yes     |              |
+    | 248  | Parquet File             | Files                     | Yes     |              |
+    | 249  | Smartsheets              | Files                     | Yes     |              |
+    | 250  | Apify                    | Others                    | Yes     |              |
+    | 251  | Breezometer              | Others                    | Yes     |              |
+    | 252  | Faker                    | Others                    | Yes     |              |
+    | 253  | NASA                     | Others                    | Yes     |              |
+    | 254  | New York Times           | Others                    | Yes     |              |
+    | 255  | News API                 | Others                    | Yes     |              |
+    | 256  | IP2Whois                 | Others                    | Yes     |              |
+    | 257  | Google Webfonts          | Others                    | Yes     |              |
+    | 258  | Newsdata                 | Others                    | Yes     |              |
+    | 259  | OpenWeather              | Others                    | Yes     |              |
+    | 260  | Oura                     | Others                    | Yes     |              |
+    | 261  | Pexels API               | Others                    | Yes     |              |
+    | 262  | Pocket                   | Others                    | Yes     |              |
+    | 263  | PokéAPI                  | Others                    | Yes     |              |
+    | 264  | Polygon                  | Others                    | Yes     |              |
+    | 265  | Public API               | Others                    | Yes     |              |
+    | 266  | Punk API                 | Others                    | Yes     |              |
+    | 267  | REST Countries           | Others                    | Yes     |              |
+    | 268  | RKI Covid                | Others                    | Yes     |              |
+    | 269  | RSS                      | Others                    | Yes     |              |
+    | 270  | Recreation.gov           | Others                    | Yes     |              |
+    | 271  | SFTP Bulk                | Others                    | Yes     |              |
+    | 272  | SearchMetrics            | Others                    | Yes     |              |
+    | 273  | Secoda                   | Others                    | Yes     |              |
+    | 274  | Senseforce               | Others                    | Yes     |              |
+    | 275  | SpaceX API               | Others                    | Yes     |              |
+    | 276  | Strava                   | Others                    | Yes     |              |
+    | 277  | TMDb                     | Others                    | Yes     |              |
+    | 278  | TVMaze Schedule          | Others                    | Yes     |              |
+    | 279  | The Guardian API         | Others                    | Yes     |              |
+    | 280  | US Census                | Others                    | Yes     |              |
+    | 281  | Waiteraid                | Others                    | Yes     |              |
+    | 282  | Weatherstack             | Others                    | Yes     |              |
+    | 283  | Wikipedia Pageviews      | Others                    | Yes     |              |
+    | 284  | xkcd                     | Others                    | Yes     |              |
+
+    </center>
+
+### **Business Intelligence (BI) Tools**
+DataOS supports seamless integration with popular BI tools:
+
+- [Tableau Cloud](/interfaces/data_product_hub/activation/bi_sync/tableau_cloud/)
+- [Tableau Desktop](/interfaces/data_product_hub/activation/bi_sync/tableau_desk/)
+- [Power BI](/interfaces/data_product_hub/activation/bi_sync/powerbi/)
+- [Apache Superset](/interfaces/data_product_hub/activation/bi_sync/superset/)
 
 
-## BI Tools Connectors
+Connection with [Microsoft Excel](/interfaces/data_product_hub/activation/bi_sync/excel/) is feasible thorough the Power BI Connector.
 
-DataOS seamlessly integrates with multiple Business Intelligence (BI) Tools, including Tableau, PowerBI, and IBM SPSS Statistics. Refer to the link to know [more](/interfaces/atlas/bi_tools/)
+This enables you to visualize and analyze data processed through DataOS using your preferred BI platforms.
 
-## High Touch Connectors
+### **HighTouch Connectors**
 
-DataOS also provides integration with HighTouch, enabling the syndication of data from diverse Data Warehouses, Spreadsheets, and Data Lakes to over 125 Software-as-a-Service (SaaS) tools and Business Applications. This functionality empowers various Reverse-ETL use cases.
+Integration with HighTouch enables reverse-ETL use cases, allowing data to be syndicated from DataOS to over 125 SaaS tools and business applications.
 
-Refer to the following list of supported Destinations and Sources within HighTouch:
+???info "HighTouch Supported Sources"
 
-<details><summary>List of Sources supported by Hightouch</summary>
-<center>
-<table>
-  <thead>
-    <tr>
-      <th>Sno.</th>
-      <th>Connector Name</th>
-      <th>Type</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>AlloyDB</td>
-      <td>Data System</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Amazon Athena</td>
-      <td>Data System</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Amazon Redshift</td>
-      <td>Data System</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>Azure Synapse</td>
-      <td>Data System</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>ClickHouse</td>
-      <td>Data System</td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>Databricks</td>
-      <td>Data System</td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>Elasticsearch</td>
-      <td>Data System</td>
-    </tr>
-    <tr>
-      <td>8</td>
-      <td>Firebolt</td>
-      <td>Data System</td>
-    </tr>
-    <tr>
-      <td>9</td>
-      <td>Google BigQuery</td>
-      <td>Data System</td>
-    </tr>
-    <tr>
-      <td>10</td>
-      <td>Greenplum Database</td>
-      <td>Data System</td>
-    </tr>
-    <tr>
-      <td>11</td>
-      <td>Microsoft SQL Server</td>
-      <td>Data System</td>
-    </tr>
-    <tr>
-      <td>12</td>
-      <td>MongoDB</td>
-      <td>Data System</td>
-    </tr>
-    <tr>
-      <td>13</td>
-      <td>MySQL</td>
-      <td>Data System</td>
-    </tr>
-    <tr>
-      <td>14</td>
-      <td>Oracle</td>
-      <td>Data System</td>
-    </tr>
-    <tr>
-      <td>15</td>
-      <td>Palantir Foundary</td>
-      <td>Data System</td>
-    </tr>
-    <tr>
-      <td>16</td>
-      <td>PlanetScale</td>
-      <td>Data System</td>
-    </tr>
-    <tr>
-      <td>17</td>
-      <td>PostgreSQL</td>
-      <td>Data System</td>
-    </tr>
-    <tr>
-      <td>18</td>
-      <td>Rockset</td>
-      <td>Data System</td>
-    </tr>
-    <tr>
-      <td>19</td>
-      <td>Snowflake</td>
-      <td>Data System</td>
-    </tr>
-    <tr>
-      <td>20</td>
-      <td>Trino</td>
-      <td>Data System</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>21</td>
-      <td>Amazon S3</td>
-      <td>Other</td>
-    </tr>
-    <tr>
-      <td>22</td>
-      <td>Azure Blob Storage</td>
-      <td>Other</td>
-    </tr>
-    <tr>
-      <td>23</td>
-      <td>Google Cloud Storage</td>
-      <td>Other</td>
-    </tr>
-    <tr>
-      <td>24</td>
-      <td>Metabase</td>
-      <td>Other</td>
-    </tr>
-    <tr>
-      <td>25</td>
-      <td>Mixpanel Cohort</td>
-      <td>Other</td>
-    </tr>
-    <tr>
-      <td>26</td>
-      <td>SFTP</td>
-      <td>Other</td>
-    </tr>
-    <tr>
-      <td>27</td>
-      <td>Tableau</td>
-      <td>Other</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>28</td>
-      <td>Airtable</td>
-      <td>Spreadsheets</td>
-    </tr>
-    <tr>
-      <td>29</td>
-      <td>Google Sheets</td>
-      <td>Spreadsheets</td>
-    </tr>
-    <tr>
-      <td>30</td>
-      <td>Microsoft Excel</td>
-      <td>Spreadsheets</td>
-    </tr>
-  </tbody>
-</table>
-</center>
+    <center>
 
-</details>
+    | S.No | Connector Name         | Type            |
+    |------|------------------------|-----------------|
+    | 1    | Airtable               | Data Storage    |
+    | 2    | Athena                 | Query Service   |
+    | 3    | Azure Blob Storage      | Data Storage    |
+    | 4    | Azure Synapse           | Data Warehouse  |
+    | 5    | Bigquery                | Data Warehouse  |
+    | 6    | ClickHouse              | Database        |
+    | 7    | Databricks              | Data Platform   |
+    | 8    | Datawarehouse.io        | Data Platform   |
+    | 9    | Elasticsearch           | Search Engine   |
+    | 10   | Firebolt                | Database        |
+    | 11   | Google Cloud Storage    | Data Storage    |
+    | 12   | Google Sheets           | Spreadsheet     |
+    | 13   | Greenplum Database      | Database        |
+    | 14   | Materialize             | Database        |
+    | 15   | Metabase                | BI Tool         |
+    | 16   | Microsoft Excel         | Spreadsheet     |
+    | 17   | Microsoft Fabric        | Data Platform   |
+    | 18   | Mixpanel Cohorts        | Analytics       |
+    | 19   | MongoDB                 | Database        |
+    | 20   | MySQL                   | Database        |
+    | 21   | OracleDB                | Database        |
+    | 22   | Palantir Foundry        | Data Platform   |
+    | 23   | PlanetScale             | Database        |
+    | 24   | PostgreSQL              | Database        |
+    | 25   | Redshift                | Data Warehouse  |
+    | 26   | Rockset                 | Analytics DB    |
+    | 27   | S3                      | Data Storage    |
+    | 28   | SFTP                    | File Transfer   |
+    | 29   | SingleStore             | Database        |
+    | 30   | Snowflake               | Data Warehouse  |
+    | 31   | SQL Server              | Database        |
+    | 32   | Tableau                 | BI Tool         |
+    | 33   | Teradata Vantage        | Data Warehouse  |
+    | 34   | Trino                   | Query Service   |
 
+    </center>
 
-<details><summary>List of Destinations supported by Hightouch</summary>
+???info "HighTouch Supported Destinations"
 
-<table>
-  <thead>
-    <tr>
-      <th>Sno.</th>
-      <th>Connector Name</th>
-      <th>Type</th>
-      <th>Additional Capability</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>AlloyDB</td>
-      <td>Databases</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>CockroachDB</td>
-      <td>Databases</td>
-      <td>Developer tool and Advertising</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>DynamoDB</td>
-      <td>Databases</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>HubDB</td>
-      <td>Databases</td>
-      <td>Email, Sales, Live chat and help desk</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>IBMDB2</td>
-      <td>Databases</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>MariaDB</td>
-      <td>Databases</td>
-      <td>Developer Tool</td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>MongoDB</td>
-      <td>Databases</td>
-      <td>Developer Tool</td>
-    </tr>
-    <tr>
-      <td>8</td>
-      <td>OracleDB</td>
-      <td>Databases</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>9</td>
-      <td>Firestore</td>
-      <td>Databases</td>
-      <td>Developer Tool</td>
-    </tr>
-    <tr>
-      <td>10</td>
-      <td>Hightouch Personalization API</td>
-      <td>Databases</td>
-      <td>Developer Tool and Product Experience</td>
-    </tr>
-    <tr>
-      <td>11</td>
-      <td>MySQL</td>
-      <td>Databases</td>
-      <td>Developer Tool</td>
-    </tr>
-    <tr>
-      <td>12</td>
-      <td>PostgreSQL</td>
-      <td>Databases</td>
-      <td>Developer Tool</td>
-    </tr>
-    <tr>
-      <td>13</td>
-      <td>Redis</td>
-      <td>Databases</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>14</td>
-      <td>Rockset</td>
-      <td>Databases</td>
-      <td>Developer Tool</td>
-    </tr>
-    <tr>
-      <td>15</td>
-      <td>SQLServer</td>
-      <td>Databases</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>16</td>
-      <td>Adobe Target</td>
-      <td>Analytics</td>
-      <td>Product Experience</td>
-    </tr>
-    <tr>
-      <td>17</td>
-      <td>Algolia</td>
-      <td>Analytics</td>
-      <td>Product Experience</td>
-    </tr>
-    <tr>
-      <td>18</td>
-      <td>Amplitude</td>
-      <td>Analytics</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>19</td>
-      <td>Calixa</td>
-      <td>Analytics</td>
-      <td>CRM and Customer Success</td>
-    </tr>
-    <tr>
-      <td>20</td>
-      <td>ChartMogul</td>
-      <td>Analytics</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>21</td>
-      <td>FullStory</td>
-      <td>Analytics</td>
-      <td>Product Experience and Surveys</td>
-    </tr>
-    <tr>
-      <td>22</td>
-      <td>Gainsight</td>
-      <td>Analytics</td>
-      <td>Customer Success, Product Experience and Surveys</td>
-    </tr>
-    <tr>
-      <td>23</td>
-      <td>GainsightPX</td>
-      <td>Analytics</td>
-      <td>Customer Success, Product Experience and Surveys</td>
-    </tr>
-    <tr>
-      <td>24</td>
-      <td>Google Analytics</td>
-      <td>Analytics</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>25</td>
-      <td>Heap</td>
-      <td>Analytics</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>26</td>
-      <td>Mixpanel</td>
-      <td>Analytics</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>27</td>
-      <td>MoEngage</td>
-      <td>Analytics</td>
-      <td>Email, SMS and Push</td>
-    </tr>
-    <tr>
-      <td>28</td>
-      <td>mParticle</td>
-      <td>Analytics</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>29</td>
-      <td>Optimizely</td>
-      <td>Analytics</td>
-      <td>Product Experience</td>
-    </tr>
-    <tr>
-      <td>30</td>
-      <td>Orbit</td>
-      <td>Analytics</td>
-      <td>CRM and Customer Success</td>
-    </tr>
-    <tr>
-      <td>31</td>
-      <td>Pendo</td>
-      <td>Analytics</td>
-      <td>Product Experience and Surveys</td>
-    </tr>
-    <tr>
-      <td>32</td>
-      <td>Planhat</td>
-      <td>Analytics</td>
-      <td>Customer Success</td>
-    </tr>
-    <tr>
-      <td>33</td>
-      <td>PostHog</td>
-      <td>Analytics</td>
-      <td>Product Experience</td>
-    </tr>
-    <tr>
-      <td>34</td>
-      <td>Rudderstack</td>
-      <td>Analytics</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>35</td>
-      <td>Segment</td>
-      <td>Analytics</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>36</td>
-      <td>Singular</td>
-      <td>Analytics</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>37</td>
-      <td>Statsig</td>
-      <td>Analytics</td>
-      <td>Product Experience</td>
-    </tr>
-    <tr>
-      <td>38</td>
-      <td>Vitally</td>
-      <td>Analytics</td>
-      <td>Customer Success and Surveys</td>
-    </tr>
-    <tr>
-      <td>39</td>
-      <td>Anaplan</td>
-      <td>Finance and ERP</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>40</td>
-      <td>Microsoft Dynamics 365</td>
-      <td>Finance and ERP</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>41</td>
-      <td>NetSuite (REST)</td>
-      <td>Finance and ERP</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>42</td>
-      <td>NetSuite (SOAP)</td>
-      <td>Finance and ERP</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>43</td>
-      <td>QuickBooks</td>
-      <td>Finance and ERP</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>44</td>
-      <td>Sage Intacct</td>
-      <td>Finance and ERP</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>45</td>
-      <td>SAPS/4HANA</td>
-      <td>Finance and ERP</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>46</td>
-      <td>Workday</td>
-      <td>Finance and ERP</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>47</td>
-      <td>Xero</td>
-      <td>Finance and ERP</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>48</td>
-      <td>Zuora</td>
-      <td>Finance and ERP</td>
-      <td>Payments</td>
-    </tr>
-    <tr>
-      <td>49</td>
-      <td>Azure Blob Storage</td>
-      <td>File Storage</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>50</td>
-      <td>Box</td>
-      <td>File Storage</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>51</td>
-      <td>Dropbox</td>
-      <td>File Storage</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>52</td>
-      <td>Google Cloud Storage</td>
-      <td>File Storage</td>
-      <td>Developer Tools</td>
-    </tr>
-    <tr>
-      <td>53</td>
-      <td>Google Drive</td>
-      <td>File Storage</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>54</td>
-      <td>Microsoft OneDrive</td>
-      <td>File Storage</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>55</td>
-      <td>S3</td>
-      <td>File Storage</td>
-      <td>Developer Tools</td>
-    </tr>
-    <tr>
-      <td>56</td>
-      <td>SFTP</td>
-      <td>File Storage</td>
-      <td>Developer Tools</td>
-    </tr>
-    <tr>
-      <td>57</td>
-      <td>ActiveCampaign</td>
-      <td>CRM</td>
-      <td>Email and Sales</td>
-    </tr>
-    <tr>
-      <td>58</td>
-      <td>Attio</td>
-      <td>CRM</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>59</td>
-      <td>Close</td>
-      <td>CRM</td>
-      <td>Email and Sales</td>
-    </tr>
-    <tr>
-      <td>60</td>
-      <td>Correlated</td>
-      <td>CRM</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>61</td>
-      <td>Freshsales</td>
-      <td>CRM</td>
-      <td>Email, Sales, Live chat and help desk</td>
-    </tr>
-    <tr>
-      <td>62</td>
-      <td>HubSpot</td>
-      <td>CRM</td>
-      <td>Email, Sales and Live chat and help desk</td>
-    </tr>
-    <tr>
-      <td>63</td>
-      <td>Kustomer</td>
-      <td>CRM</td>
-      <td>Customer Success, Email, Live chat and help desk, SMS and Push.</td>
-    </tr>
-    <tr>
-      <td>64</td>
-      <td>Microsoft Dynamics 365</td>
-      <td>CRM</td>
-      <td>Finance and ERP</td>
-    </tr>
-    <tr>
-      <td>65</td>
-      <td>NCR Advanced Marketing Solution</td>
-      <td>CRM</td>
-      <td>Advertising</td>
-    </tr>
-    <tr>
-      <td>66</td>
-      <td>Pipedrive</td>
-      <td>CRM</td>
-      <td>Email and Sales</td>
-    </tr>
-    <tr>
-      <td>67</td>
-      <td>Salesforce</td>
-      <td>CRM</td>
-      <td>Customer Success, and Sales</td>
-    </tr>
-    <tr>
-      <td>68</td>
-      <td>Salesforce (Sandbox)</td>
-      <td>CRM</td>
-      <td>Customer Success, and Sales</td>
-    </tr>
-    <tr>
-      <td>69</td>
-      <td>Salesloft</td>
-      <td>CRM</td>
-      <td>Email and Sales</td>
-    </tr>
-    <tr>
-      <td>70</td>
-      <td>Zoho CRM</td>
-      <td>CRM</td>
-      <td>Email and Sales</td>
-    </tr>
-    <tr>
-      <td>71</td>
-      <td>ChurnZero</td>
-      <td>Customer Success</td>
-      <td>Product Experience and Surveys</td>
-    </tr>
-    <tr>
-      <td>72</td>
-      <td>ClientSuccess</td>
-      <td>Customer Success</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>73</td>
-      <td>Freshdesk</td>
-      <td>Customer Success</td>
-      <td>Live Chat & help desk</td>
-    </tr>
-    <tr>
-      <td>74</td>
-      <td>Intercom</td>
-      <td>Customer Success</td>
-      <td>Email. Live chat & help desk, product experience, Sales and Surveys</td>
-    </tr>
-    <tr>
-      <td>75</td>
-      <td>Planhat</td>
-      <td>Customer Success</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>76</td>
-      <td>SMTP Email</td>
-      <td>Customer Success</td>
-      <td>Email</td>
-    </tr>
-    <tr>
-      <td>77</td>
-      <td>Totango</td>
-      <td>Customer Success</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>78</td>
-      <td>Amazon EventBridge</td>
-      <td>Developer Tools</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>79</td>
-      <td>Amazon Kinesis</td>
-      <td>Developer Tools</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>80</td>
-      <td>Amazon SNS</td>
-      <td>Developer Tools</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>81</td>
-      <td>Amazon SQS</td>
-      <td>Developer Tools</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>82</td>
-      <td>Apache Kafka</td>
-      <td>Developer Tools</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>83</td>
-      <td>Auth0</td>
-      <td>Developer Tools</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>84</td>
-      <td>AWS Lambda</td>
-      <td>Developer Tools</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>85</td>
-      <td>Azure Functions</td>
-      <td>Developer Tools</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>86</td>
-      <td>Embedded Destination</td>
-      <td>Developer Tools</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>87</td>
-      <td>Google Cloud Functions</td>
-      <td>Developer Tools</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>88</td>
-      <td>Google Cloud Pub/Sub</td>
-      <td>Developer Tools</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>89</td>
-      <td>HTTP Request</td>
-      <td>Developer Tools</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>90</td>
-      <td>RabbitMQ</td>
-      <td>Developer Tools</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>91</td>
-      <td>Webflow</td>
-      <td>Developer Tools</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>92</td>
-      <td>Zapier</td>
-      <td>Developer Tools</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>93</td>
-      <td>Attentive</td>
-      <td>E-commerce</td>
-      <td>SMS &amp; Push and Advertising</td>
-    </tr>
-    <tr>
-      <td>94</td>
-      <td>BigCommerce</td>
-      <td>E-commerce</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>95</td>
-      <td>Bloomreach</td>
-      <td>E-commerce</td>
-      <td>Email, SMS &amp; Push</td>
-    </tr>
-    <tr>
-      <td>96</td>
-      <td>Facebook Product Catalog</td>
-      <td>E-commerce</td>
-      <td>Advertising</td>
-    </tr>
-    <tr>
-      <td>97</td>
-      <td>Rokt</td>
-      <td>E-commerce</td>
-      <td>Advertising</td>
-    </tr>
-    <tr>
-      <td>98</td>
-      <td>Shopify</td>
-      <td>E-commerce</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>99</td>
-      <td>Acoustic</td>
-      <td>Email</td>
-      <td>SMS &amp; Push</td>
-    </tr>
-    <tr>
-      <td>100</td>
-      <td>Braze</td>
-      <td>Email</td>
-      <td>SMS &amp; Push</td>
-    </tr>
-    <tr>
-      <td>101</td>
-      <td>Braze Cohorts</td>
-      <td>Email</td>
-      <td>SMS &amp; Push</td>
-    </tr>
-    <tr>
-      <td>102</td>
-      <td>Campaign Monitor</td>
-      <td>Email</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>103</td>
-      <td>Campaigner</td>
-      <td>Email</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>104</td>
-      <td>Clever Tap</td>
-      <td>Email</td>
-      <td>SMS &amp; Push</td>
-    </tr>
-    <tr>
-      <td>105</td>
-      <td>Cordial</td>
-      <td>Email</td>
-      <td>SMS &amp; Push</td>
-    </tr>
-    <tr>
-      <td>106</td>
-      <td>Courier</td>
-      <td>Email</td>
-      <td>Internal Notification, SMS &amp; Push</td>
-    </tr>
-    <tr>
-      <td>107</td>
-      <td>Customer.io</td>
-      <td>Email</td>
-      <td>SMS &amp; Push</td>
-    </tr>
-    <tr>
-      <td>108</td>
-      <td>Drift</td>
-      <td>Email</td>
-      <td>Live chat &amp; help desk, Sales</td>
-    </tr>
-    <tr>
-      <td>109</td>
-      <td>Eloqua</td>
-      <td>Email</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>110</td>
-      <td>Emarsys</td>
-      <td>Email</td>
-      <td>SMS and Push</td>
-    </tr>
-    <tr>
-      <td>111</td>
-      <td>Help Scout</td>
-      <td>Email</td>
-      <td>Live chat &amp; help desk</td>
-    </tr>
-    <tr>
-      <td>112</td>
-      <td>Iterable</td>
-      <td>Email</td>
-      <td>SMS &amp; Push</td>
-    </tr>
-    <tr>
-      <td>113</td>
-      <td>Klaviyo</td>
-      <td>Email</td>
-      <td>SMS &amp; Push</td>
-    </tr>
-    <tr>
-      <td>114</td>
-      <td>Mailchimp</td>
-      <td>Email</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>115</td>
-      <td>Marketo</td>
-      <td>Email</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>116</td>
-      <td>OneSignal</td>
-      <td>Email</td>
-      <td>SMS &amp; Push</td>
-    </tr>
-    <tr>
-      <td>117</td>
-      <td>Ortto</td>
-      <td>Email</td>
-      <td>SMS &amp; Push</td>
-    </tr>
-    <tr>
-      <td>118</td>
-      <td>Outreach</td>
-      <td>Email</td>
-      <td>Sales</td>
-    </tr>
-    <tr>
-      <td>119</td>
-      <td>Reply.io</td>
-      <td>Email</td>
-      <td>Sales</td>
-    </tr>
-    <tr>
-      <td>120</td>
-      <td>Responsys</td>
-      <td>Email</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>121</td>
-      <td>Retention Science</td>
-      <td>Email</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>122</td>
-      <td>Sailthru</td>
-      <td>Email</td>
-      <td>SMS &amp; Push</td>
-    </tr>
-    <tr>
-      <td>123</td>
-      <td>Salesforce Marketing Cloud</td>
-      <td>Email</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>124</td>
-      <td>Salesforce Pardot</td>
-      <td>Email</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>125</td>
-      <td>Salesforce Pardot (Sandbox)</td>
-      <td>Email</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>126</td>
-      <td>SendGrid</td>
-      <td>Email</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>127</td>
-      <td>Vero</td>
-      <td>Email</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>128</td>
-      <td>Mattermost</td>
-      <td>Internal Notifications</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>129</td>
-      <td>Microsoft Teams</td>
-      <td>Internal Notifications</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>130</td>
-      <td>Slack</td>
-      <td>Internal Notifications</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>131</td>
-      <td>Front</td>
-      <td>Live chat &amp; help desk</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>132</td>
-      <td>Gladly</td>
-      <td>Live chat &amp; help desk</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>133</td>
-      <td>Zendesk</td>
-      <td>Live chat &amp; help desk</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>134</td>
-      <td>Chargebee</td>
-      <td>Payments</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>135</td>
-      <td>Stripe</td>
-      <td>Payments</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>136</td>
-      <td>Zuora</td>
-      <td>Payments</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>137</td>
-      <td>Appcues</td>
-      <td>Product Experience</td>
-      <td>Surveys</td>
-    </tr>
-    <tr>
-      <td>138</td>
-      <td>Chameleon</td>
-      <td>Product Experience</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>139</td>
-      <td>LaunchDarkly</td>
-      <td>Product Experience</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>140</td>
-      <td>Userflow</td>
-      <td>Product Experience</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>141</td>
-      <td>Airtable</td>
-      <td>Productivity Tools</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>142</td>
-      <td>Asana</td>
-      <td>Productivity Tools</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>143</td>
-      <td>ClickUp</td>
-      <td>Productivity Tools</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>144</td>
-      <td>Google Sheets</td>
-      <td>Productivity Tools</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>145</td>
-      <td>Google Sheets (Service Account)</td>
-      <td>Productivity Tools</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>146</td>
-      <td>Jira</td>
-      <td>Productivity Tools</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>147</td>
-      <td>Microsoft Excel</td>
-      <td>Productivity Tools</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>148</td>
-      <td>Notion</td>
-      <td>Productivity Tools</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>149</td>
-      <td>ServiceNow</td>
-      <td>Productivity Tools</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>150</td>
-      <td>KakaoTalk</td>
-      <td>SMS &amp; Push</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>151</td>
-      <td>Line</td>
-      <td>SMS &amp; Push</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>152</td>
-      <td>WhatsApp</td>
-      <td>SMS &amp; Push</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>153</td>
-      <td>Gong</td>
-      <td>Sales</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>154</td>
-      <td>Partnerstack</td>
-      <td>Sales</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>156</td>
-      <td>Delighted</td>
-      <td>Surveys</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>157</td>
-      <td>Qualtrics</td>
-      <td>Surveys</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>158</td>
-      <td>User Interviews</td>
-      <td>Surveys</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>159</td>
-      <td>Amazon Ads</td>
-      <td>Advertising</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>160</td>
-      <td>Amobee</td>
-      <td>Advertising</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>161</td>
-      <td>Beeswax</td>
-      <td>Advertising</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>162</td>
-      <td>Bing Ads</td>
-      <td>Advertising</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>163</td>
-      <td>CitrusAd</td>
-      <td>Advertising</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>164</td>
-      <td>Criteo</td>
-      <td>Advertising</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>165</td>
-      <td>eBay</td>
-      <td>Advertising</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>166</td>
-      <td>Facebook Conversions</td>
-      <td>Advertising</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>167</td>
-      <td>Facebook Custom Audiences</td>
-      <td>Advertising</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>168</td>
-      <td>Facebook Offline Conversions</td>
-      <td>Advertising</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>169</td>
-      <td>Google Ad Manager 360</td>
-      <td>Advertising</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>170</td>
-      <td>Google Ads</td>
-      <td>Advertising</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>171</td>
-      <td>Google Campaign Manager 360</td>
-      <td>Advertising</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>172</td>
-      <td>Google Display &amp; Video 360</td>
-      <td>Advertising</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>173</td>
-      <td>Google Search Ads 360</td>
-      <td>Advertising</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>174</td>
-      <td>LinkedIn Ads</td>
-      <td>Advertising</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>175</td>
-      <td>NCR Advanced Marketing Solution</td>
-      <td>Advertising</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>176</td>
-      <td>Pinterest Ads</td>
-      <td>Advertising</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>177</td>
-      <td>Reddit Ads</td>
-      <td>Advertising</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>178</td>
-      <td>Rokt</td>
-      <td>Advertising</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>179</td>
-      <td>Snapchat</td>
-      <td>Advertising</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>180</td>
-      <td>Spotify</td>
-      <td>Advertising</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>181</td>
-      <td>StackAdapt</td>
-      <td>Advertising</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>182</td>
-      <td>The Trade Desk</td>
-      <td>Advertising</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>183</td>
-      <td>TikTok</td>
-      <td>Advertising</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>184</td>
-      <td>Twitter Ads</td>
-      <td>Advertising</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>185</td>
-      <td>Yahoo</td>
-      <td>Advertising</td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
+    <center>
 
-</details>
+    | S.No | Connector Name                  | Type                 |
+    |------|---------------------------------|----------------------|
+    | 1    | Acoustic                        | Marketing Platform   |
+    | 2    | ActiveCampaign                  | Marketing Automation |
+    | 3    | Adikteev                        | Advertising Platform |
+    | 4    | Adjust                          | Mobile Analytics     |
+    | 5    | Adobe Campaign Classic          | Marketing Automation |
+    | 6    | Adobe Target                    | Personalization Tool |
+    | 7    | Airship                         | Mobile Marketing     |
+    | 8    | Airtable                        | Data Storage         |
+    | 9    | Algolia                         | Search Platform      |
+    | 10   | AlloyDB                         | Database             |
+    | 11   | Amazon Ads DSP and AMC          | Advertising Platform |
+    | 12   | Amazon EventBridge              | Event Bus            |
+    | 13   | Amazon Kinesis                  | Streaming Data       |
+    | 14   | Amazon SQS                      | Queue Service        |
+    | 15   | Amobee                          | Advertising Platform |
+    | 16   | Amplitude                       | Analytics Platform   |
+    | 17   | Anaplan                         | Planning Platform    |
+    | 18   | Apache Kafka                    | Streaming Platform   |
+    | 19   | Apollo.io                       | Sales Platform       |
+    | 20   | Appcues                         | User Experience      |
+    | 21   | AppsFlyer                       | Mobile Analytics     |
+    | 22   | Asana                           | Project Management   |
+    | 23   | Athena                          | Query Service        |
+    | 24   | Attentive                       | SMS Marketing        |
+    | 25   | Attio                           | CRM                  |
+    | 26   | Auth0                           | Identity Management  |
+    | 27   | AWS Lambda                      | Serverless Compute   |
+    | 28   | Azure Blob Storage              | Data Storage         |
+    | 29   | Azure Functions                 | Serverless Compute   |
+    | 30   | Beeswax                         | Advertising Platform |
+    | 31   | BigCommerce                     | E-Commerce Platform  |
+    | 32   | BigQuery                        | Data Warehouse       |
+    | 33   | Bloomreach                      | Commerce Experience  |
+    | 34   | Box                             | Cloud Storage        |
+    | 35   | Braze                           | Customer Engagement  |
+    | 36   | Braze Cohorts                   | Customer Segmentation|
+    | 37   | Brevo                           | Email Marketing      |
+    | 38   | Calixa                          | Customer Data        |
+    | 39   | Campaign Monitor                | Email Marketing      |
+    | 40   | Campaigner                      | Email Marketing      |
+    | 41   | Chameleon                       | Product Tours        |
+    | 42   | Chargebee                       | Subscription Billing |
+    | 43   | ChartMogul                      | Subscription Analytics|
+    | 44   | ChurnZero                       | Customer Success     |
+    | 45   | CitrusAd                        | Retail Media         |
+    | 46   | CJ Affiliate                    | Affiliate Marketing  |
+    | 47   | CleverTap                       | Mobile Marketing     |
+    | 48   | ClickUp                         | Project Management   |
+    | 49   | ClientSuccess                   | Customer Success     |
+    | 50   | Close                           | CRM                  |
+    | 51   | CockroachDB                     | Database             |
+    | 52   | Common Room                     | Community Management |
+    | 53   | Cordial                         | Email Marketing      |
+    | 54   | Courier                         | Notification Service |
+    | 55   | Criteo                          | Advertising Platform |
+    | 56   | Customer.io                     | Email Marketing      |
+    | 57   | Delighted                       | Customer Feedback    |
+    | 58   | Drift                           | Conversational Marketing |
+    | 59   | Dropbox                         | Cloud Storage        |
+    | 60   | Dynamic Yield                   | Personalization      |
+    | 61   | DynamoDB                        | NoSQL Database       |
+    | 62   | Dynata                          | Data Platform        |
+    | 63   | Elasticsearch                   | Search Engine        |
+    | 64   | Eloqua                          | Marketing Automation |
+    | 65   | Emarsys                         | Customer Engagement  |
+    | 66   | Embedded Destination            | Data Integration     |
+    | 67   | EnjoyHQ                         | User Research        |
+    | 68   | Facebook Conversions            | Advertising Analytics|
+    | 69   | Facebook Custom Audience        | Advertising Platform |
+    | 70   | Facebook Offline Conversions    | Advertising Analytics|
+    | 71   | Facebook Product Catalog        | Advertising Platform |
+    | 72   | Firestore                       | NoSQL Database       |
+    | 73   | Freshdesk                       | Customer Support     |
+    | 74   | Freshsales                     | CRM                  |
+    | 75   | Front                           | Customer Support     |
+    | 76   | FullStory                       | Digital Experience   |
+    | 77   | Gainsight                       | Customer Success     |
+    | 78   | Gainsight PX                    | Product Experience   |
+    | 79   | Genesys                         | Customer Experience  |
+    | 80   | Gladly                          | Customer Service     |
+    | 81   | Gong                            | Revenue Intelligence |
+    | 82   | Google Ad Manager 360           | Advertising Platform |
+    | 83   | Google ADH (BigQuery)           | Analytics Platform   |
+    | 84   | Google Ads                      | Advertising Platform |
+    | 85   | Google Analytics                | Web Analytics        |
+    | 86   | Google Campaign Manager 360     | Advertising Platform |
+    | 87   | Google Cloud Functions          | Serverless Compute   |
+    | 88   | Google Cloud Pub/Sub            | Messaging Service    |
+    | 89   | Google Cloud Storage            | Cloud Storage        |
+    | 90   | Google Display & Video 360      | Advertising Platform |
+    | 91   | Google Drive                    | Cloud Storage        |
+    | 92   | Google Retail                   | Commerce Platform    |
+    | 93   | Google Search Ads 360           | Advertising Platform |
+    | 94   | Google Sheets                   | Spreadsheet          |
+    | 95   | Google Sheets - Service Account | Spreadsheet          |
+    | 96   | Google Sheets - User Account    | Spreadsheet          |
+    | 97   | Heap                            | Analytics Platform   |
+    | 98   | Help Scout                      | Customer Support     |
+    | 99   | Hightouch Personalization API   | Personalization      |
+    | 100  | HTTP Request                    | API                  |
+    | 101  | HubDB                           | CMS Database         |
+    | 102  | HubSpot                         | CRM                  |
+    | 103  | Insider InOne                   | Customer Engagement  |
+    | 104  | Intercom                        | Customer Messaging   |
+    | 105  | iSpot.tv                        | Advertising Platform |
+    | 106  | Iterable                        | Marketing Automation |
+    | 107  | Jira                            | Project Management   |
+    | 108  | Kameleon                        | Personalization      |
+    | 109  | Klaviyo                         | Email Marketing      |
+    | 110  | Kustomer                        | Customer Service     |
+    | 111  | LaunchDarkly                    | Feature Management   |
+    | 112  | LINE Ads                        | Advertising Platform |
+    | 113  | LinkedIn Ads                    | Advertising Platform |
+    | 114  | Mailchimp                       | Email Marketing      |
+    | 115  | MariaDB                         | Database             |
+    | 116  | Marigold Engage (Selligent)     | Email Marketing      |
+    | 117  | Marigold Engage+                | Email Marketing      |
+    | 118  | Marketo                         | Marketing Automation |
+    | 119  | Mattermost                      | Collaboration Tool   |
+    | 120  | Maxio                           | Subscription Billing |
+    | 121  | Medallia                        | Customer Feedback    |
+    | 122  | Microsoft Ads (Bing Ads)        | Advertising Platform |
+    | 123  | Microsoft Dynamics 365          | CRM                  |
+    | 124  | Microsoft Excel                 | Spreadsheet          |
+    | 125  | Microsoft OneDrive              | Cloud Storage        |
+    | 126  | Microsoft Teams                 | Collaboration Tool   |
+    | 127  | MinIO                           | Object Storage       |
+    | 128  | Mixpanel                        | Product Analytics    |
+    | 129  | MoEngage                        | Customer Engagement  |
+    | 130  | Monday                          | Project Management   |
+    | 131  | MongoDB                         | NoSQL Database       |
+    | 132  | mParticle                       | Customer Data Platform|
+    | 133  | MySQL                           | Database             |
+    | 134  | NCR Advanced Marketing Solution | Marketing Platform   |
+    | 135  | NetSuite (REST)                 | ERP                  |
+    | 136  | NetSuite (SOAP)                 | ERP                  |
+    | 137  | Nextdoor                        | Advertising Platform |
+    | 138  | Notion                          | Collaboration Tool   |
+    | 139  | OfferFit                        | Personalization      |
+    | 140  | OneSignal                       | Push Notifications   |
+    | 141  | OpenSearch                      | Search Engine        |
+    | 142  | Optimizely                      | A/B Testing          |
+    | 143  | Oracle DB                       | Database             |
+    | 144  | Orbit                           | Community Management |
+    | 145  | Ortto                           | Marketing Automation |
+    | 146  | Outreach                        | Sales Engagement     |
+    | 147  | Partnerstack                    | Partner Management   |
+    | 148  | Pendo                            | Product Analytics    |
+    | 149  | Pinterest Ads                   | Advertising Platform |
+    | 150  | Pipedrive                       | CRM                  |
+    | 151  | PlanetScale                     | Database             |
+    | 152  | Planhat                         | Customer Success     |
+    | 153  | Poplar                          | Advertising Platform |
+    | 154  | PostgreSQL                      | Database             |
+    | 155  | PostHog                         | Product Analytics    |
+    | 156  | Qualtrics                       | Customer Experience  |
+    | 157  | QuickBooks                      | Accounting           |
+    | 158  | RabbitMQ                        | Messaging Service    |
+    | 159  | Reddit Ads                      | Advertising Platform |
+    | 160  | Redis                           | NoSQL Database       |
+    | 161  | Reply.io                        | Sales Engagement     |
+    | 162  | Responsys                       | Marketing Automation |
+    | 163  | Retention Science               | Marketing Automation |
+    | 164  | Rockerbox                       | Marketing Analytics  |
+    | 165  | Rockset                         | Analytics Database   |
+    | 166  | Rokt                            | Marketing Platform   |
+    | 167  | Rudderstack                     | Customer Data Platform|
+    | 168  | S3                              | Cloud Storage        |
+    | 169  | Sage Intacct                    | Accounting           |
+    | 170  | Sailthru                        | Email Marketing      |
+    | 171  | Salesforce                      | CRM                  |
+    | 172  | Salesforce (Sandbox)            | CRM                  |
+    | 173  | Salesforce Commerce Cloud       | E-Commerce Platform  |
+    | 174  | Salesforce Marketing Cloud      | Marketing Automation |
+    | 175  | Salesforce Pardot               | Marketing Automation |
+    | 176  | Salesforce Pardot (Sandbox)     | Marketing Automation |
+    | 177  | Salesloft                       | Sales Engagement     |
+    | 178  | Samsung Ads                     | Advertising Platform |
+    | 179  | SAP HANA                        | Database             |
+    | 180  | SAP IBP                         | Supply Chain Planning|
+    | 181  | Segment                         | Customer Data Platform|
+    | 182  | ServiceNow                      | IT Service Management|
+    | 183  | SFTP                            | File Transfer        |
+    | 184  | Shopify                         | E-Commerce Platform  |
+    | 185  | Singular                        | Marketing Analytics  |
+    | 186  | Slack                           | Collaboration Tool   |
+    | 187  | Smartsheet                      | Project Management   |
+    | 188  | SMTP Email                      | Email Service        |
+    | 189  | Snapchat                        | Advertising Platform |
+    | 190  | Snowflake                       | Data Warehouse       |
+    | 191  | Split                           | Feature Management   |
+    | 192  | SQL Server                      | Database             |
+    | 193  | StackAdapt                      | Advertising Platform |
+    | 194  | Statsig                         | Feature Management   |
+    | 195  | Stripe                          | Payment Platform     |
+    | 196  | SugarCRM                        | CRM                  |
+    | 197  | Tableau                         | BI Tool              |
+    | 198  | Taboola                         | Advertising Platform |
+    | 199  | The Trade Desk                  | Advertising Platform |
+    | 200  | TikTok                          | Advertising Platform |
+    | 201  | Totango                         | Customer Success     |
+    | 202  | Twilio                          | Communication Platform|
+    | 203  | Twilio SendGrid                 | Email Service        |
+    | 204  | Upland Waterfall                | Advertising Platform |
+    | 205  | User Interviews                 | User Research        |
+    | 206  | Userflow                        | Onboarding Platform  |
+    | 207  | Vero Cloud                      | Email Marketing      |
+    | 208  | Vistar Media                    | Advertising Platform |
+    | 209  | Vitally                         | Customer Success     |
+    | 210  | Vizio Ads                       | Advertising Platform |
+    | 211  | Webflow                         | Website Builder      |
+    | 212  | WhatsApp                        | Communication Tool   |
+    | 213  | Workday                         | ERP                  |
+    | 214  | Workday Adaptive Planning       | Planning Platform    |
+    | 215  | X Ads (formerly Twitter Ads)    | Advertising Platform |
+    | 216  | Xandr                           | Advertising Platform |
+    | 217  | Xero                            | Accounting           |
+    | 218  | Yahoo                           | Advertising Platform |
+    | 219  | Zapier                          | Automation Tool      |
+    | 220  | Zendesk                         | Customer Support     |
+    | 221  | Zoho CRM                        | CRM                  |
+    | 222  | Zuora                           | Subscription Billing |
 
+    </center>

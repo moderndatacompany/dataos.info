@@ -1,10 +1,10 @@
 ---
-title: Beacon
+title: Beacon Stack
 search:
   boost: 2
 ---
 
-# Beacon
+# Beacon Stack
 
 Beacon is a standalone HTTP server designed to facilitate the exposure of data objects and tables contained within PostgreSQL databases. The server offers a `beacon+rest` [Stack](/resources/stacks/), which exposes entities within a PostgreSQL database through a RESTful API, enabling simple CRUD Operations such as GET, POST, PUT, DELETE.
 

@@ -1,10 +1,10 @@
 ---
-title: dbt
+title: dbt Stack
 search:
   boost: 2
 ---
 
-# DBT
+# DBT Stack
 
 dbt (data build tool) is a declarative [Stack](/resources/stacks/) within DataOS, acting as the transformative force in ELT (Extract, Load, Transform), dbt focuses on optimizing and refining data already loaded into the database. It facilitates the centralization and modularization of analytics code, adopting a structured approach akin to software engineering practices. It enables collaborative work on data models, and versioning, before their deployment to production.  It establishes a connection with the data platform and executes SQL code within the warehouse to perform data transformations, fostering collaboration among you and your team by establishing a single source of truth for metrics, insights, and business terminology.
 

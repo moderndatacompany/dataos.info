@@ -1,10 +1,10 @@
 ---
-title: Steampipe
+title: Steampipe Stack
 search:
   boost: 2
 ---
 
-# Steampipe
+# Steampipe Stack
 
 Steampipe is a declarative [Stack](/resources/stacks/) integrated within the DataOS that exposes APIs and services as a high performance relational database, enabling data querying and analysis upon these dynamic data interfaces and cloud platforms using SQL-based queries. Leveraging the open-source [Steampipe](https://steampipe.io/docs), it provides an array of plugins for diverse data sources, enabling streamlined data retrieval.
 

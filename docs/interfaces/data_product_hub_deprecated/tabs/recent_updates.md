@@ -1,3 +1,9 @@
+---
+title: Recent Updates
+search:
+  exclude: true
+---
+
 # Recent Updates Tab
 
 In this tab, you can see the latest updates on your starred Data Product.

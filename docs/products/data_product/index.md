@@ -4,7 +4,6 @@ search:
   boost: 4
 tags:
   - Data Product
-  - Data Product Architecture
 hide:
   - tags
 ---

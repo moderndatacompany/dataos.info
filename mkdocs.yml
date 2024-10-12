@@ -179,11 +179,21 @@ nav:
         - Command Reference: interfaces/cli/command_reference.md
       - Data Product Hub: 
         - interfaces/data_product_hub/index.md
+        - Core Concepts: interfaces/data_product_hub/core_concepts.md
         - Data Product Discovery: interfaces/data_product_hub/discovery.md
         - Data Product Exploration: interfaces/data_product_hub/exploration.md
-        - Data Product Activation: interfaces/data_product_hub/index.md
+        - Data Product Activation:
+          - BI Sync: 
+            - Tableau Cloud: interfaces/data_product_hub/activation/bi_sync/tableau_cloud.md
+            - Power BI: interfaces/data_product_hub/activation/bi_sync/powerbi.md
+            - Tableau Desktop: interfaces/data_product_hub/activation/bi_sync/tableau_desk.md
+            - Microsoft Excel: interfaces/data_product_hub/activation/bi_sync/excel.md
+            - Apache Superset: interfaces/data_product_hub/activation/bi_sync/superset.md
+          - AI/ML: interfaces/data_product_hub/activation/jupyter.md
+          - App Development: interfaces/data_product_hub/activation/app_development.md
+          - Data APIs: interfaces/data_product_hub/activation/data_api.md
         - Best Practices: interfaces/data_product_hub/bestpractices.md 
-        - Recipes: interfaces/data_product_hub/recipe.md
+        - Examples: interfaces/data_product_hub/recipe.md
       - Lens: 
         - interfaces/lens/index.md
         - Building Lens: 
@@ -284,7 +294,7 @@ nav:
           - Configurations: resources/depot/configurations.md
           - Supported Storage Architecture: 
             - Icebase: 
-              - resources/depot/icebase.md
+              - resources/depot/icebase/index.md
               - Create, Get, and Drop Dataset: resources/depot/icebase/case_scenario_create_fetch_and_drop_dataset.md
               - Table Properties: resources/depot/icebase/case_scenario_table_properties.md
               - Schema Evolution: resources/depot/icebase/case_scenario_schema_evolution.md
@@ -411,6 +421,8 @@ nav:
             - resources/stacks/dbt/index.md
           - Flare: 
             - resources/stacks/flare/index.md
+          - Flash:
+            - resources/stacks/flash/index.md
           - Scanner: 
             - resources/stacks/scanner/index.md
           - Soda: 

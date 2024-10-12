@@ -1,3 +1,9 @@
+---
+title: Learn
+search:
+  boost: 2
+---
+
 # Learn
 
 Welcome to the Learning Hub! These quick start guides and videos will help you navigate through the essentials of DataOS.

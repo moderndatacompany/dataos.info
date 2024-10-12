@@ -1,16 +1,28 @@
 # Tableau Desktop Integration
 
+<<<<<<< HEAD
 ## Steps
+=======
+1. **Navigate to the Data Product Hub:** Start by accessing the **Home Page** of DataOS. From there, navigate to the **Data Product Hub**, where you can explore various Data Products available within the platform.
+>>>>>>> 83f1c68a2524e022232f273f92e8edb848d70816
 
 The following steps outline the process for integrating Tableau Desktop with DataOS:
 
+<<<<<<< HEAD
 ### **Step 1: Navigate to the Data Product Hub**
+=======
+2. In the Data Product Hub, browse through the list of Data Products. Click on the specific data product you wish to integrate with Tableau. For example, select **Sales360** from the list to explore the **Sales360** data product in Tableau.
+>>>>>>> 83f1c68a2524e022232f273f92e8edb848d70816
 
 Access the **Home Page** of DataOS. From the home page, navigate to the **Data Product Hub** to explore the various data products available within the platform.
 
+<<<<<<< HEAD
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(20).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
+=======
+3. **Access Integration Options:** Navigate to the Access Options tab once you’ve selected a Data Product. Here, you’ll find various methods to access and interact with the Data Product in the BI Sync tab and locate **Tableau Desktop.**
+>>>>>>> 83f1c68a2524e022232f273f92e8edb848d70816
 
 ### **Step 2: Browse and Select a Data Product**
 
