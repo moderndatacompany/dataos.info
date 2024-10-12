@@ -2,7 +2,11 @@
 
 ## **Data Product Exploration Button**
 
+<<<<<<< HEAD
 The **Exploration** button allows users to explore the data model ([Lens](/resources/lens/)) associated with the selected **Data Product**. By clicking this button, users can interact with the data model's pre-defined dimensions, measures, and segments, enabling them to visualize, filter, and analyze the data directly within the Lens. This provides an intuitive interface for business users and data analysts to explore the underlying data model without writing queries, offering insights through an easy-to-use exploratory environment.
+=======
+The **Exploration** button allows users to explore the **Lens model** associated with the selected **Data Product**. By clicking this button, users can interact with the data model's pre-defined dimensions, measures, and segments, enabling them to visualize, filter, and analyze the data directly within the Lens. This provides an intuitive interface for business users and data analysts to explore the underlying data model without writing queries, offering insights through an easy-to-use exploratory environment.
+>>>>>>> 83f1c68a2524e022232f273f92e8edb848d70816
 
 <center>
 <img src="/interfaces/data_product_hub/exploration/image%20(25).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
@@ -20,7 +24,11 @@ When you click on the **Explore** button, the **Explore Page** opens. The **Stud
 
 At the top of the page, you’ll always see the title of the Data Product you are exploring. For example, "Sales-360-data-product-v12," helps identify the specific version of the product.
 
+<<<<<<< HEAD
 - **Data Product Title**: At the top of the page, you’ll always see the title of the Data Product you are exploring. For example, "**Sales-360-data-product-v12**," helps identify the specific version of the product. On top of the title is the business unit or function for which Data Product was created, giving context on its origin. For instance, here, the business unit is Sales.
+=======
+- **Data Product Title**: At the top of the page, you’ll always see the title of the Data Product you are exploring. For example, "**Sales-360-data-product-v12**," helps identify the specific version of the product. On top of the title is the business unit or function for which data product was created, giving context on its origin. For instance, here, the business unit is Sales.
+>>>>>>> 83f1c68a2524e022232f273f92e8edb848d70816
 - **Description**: Below the title, a description gives an overview of the Data Product's purpose. In this case, it’s described as a "customer 360 view of the world."
 - **Tier | Use-case |Team Information**: The header contains essential information, including the Data Product's tier (e.g., Aggregated, Source aligned, etc.), its primary use case (e.g., Demand Forecast, Performance monitoring, etc.), and the list of contributors or collaborators involved in creating and maintaining the product (e.g., Aakansha Jain, Darpan Vyas, etc.). This provides users with a clear understanding of the product's purpose and the key stakeholders behind it, ensuring transparency and context.
 
@@ -34,7 +42,11 @@ When you click on the **Source** section, it displays details of the source on w
 
 - **Type**: Indicates the type of cluster source is linked to. In this case, the type is **Minerva.** It can either be **Themis or Flash.**
 - **Dialect**: The query language or SQL dialect used for interacting with the data. For this product, the dialect is **Trino.**
+<<<<<<< HEAD
 - **Connection**: The connection string or URL links the Data Product to its source. This example defines the connection as **minerva://miniature**, indicating the internal connection point to the miniature cluster.
+=======
+- **Connection**: The connection string or URL links the data product to its source. This example defines the connection as **minerva://miniature**, indicating the internal connection point to the miniature cluster.
+>>>>>>> 83f1c68a2524e022232f273f92e8edb848d70816
 - **Database**: The database name is not explicitly shown in the given details, but this field would typically indicate the database within the system where the Data Product is stored.
 - **Host**: Provides the host or context details where the data source is hosted. In this example, **tcp.liberal-donkey.dataos.app** is the context where the Data Product exists.
 - **Watch:** To watch the health of the Cluster, Click on the watch button.
@@ -485,6 +497,10 @@ When a **metric** references a **measure** or **dimension** from a **logical tab
 <img src="/interfaces/data_product_hub/exploration/Screenshot%20from%202024-10-01 18-32-47.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 83f1c68a2524e022232f273f92e8edb848d70816
 *Dashed blue lines visually indicate the relationships between the **Sales Table** and the **conversion_rate** metric. The lines highlight which **dimensions** and **measures** from the **Sales Table** are used to calculate the **conversion_rate** metric.*
 
 Similarly,  **QTD Revenue** Metrics leverage fields from multiple logical tables—**Sales**, **Product**, and **Account**—to offer a rich, multi-dimensional view of performance. Using **join paths in the manifest file** ensures that fields are correctly referenced, maintaining clarity and consistency across the data model.

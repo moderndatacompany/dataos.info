@@ -9,7 +9,6 @@ tags:
   - Architecture
   - Microservices Architecture
   - Heimdall
-  - Metis
   - Gateway
   - Caretaker
   - Infrastructure

@@ -1,7 +1,7 @@
 ---
 title: Metis
 search:
-  boost: 2
+  boost: 4
 ---
 
 # :interfaces-metis: Metis

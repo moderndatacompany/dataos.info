@@ -1,4 +1,10 @@
-# Flash
+---
+title: Flash Stack
+search:
+  boost: 2
+---
+
+# Flash Stack
 
 Flash is a Stack designed to manage and control query costs and performance within DataOS. It achieves this by caching datasets using an in-memory database system.
 

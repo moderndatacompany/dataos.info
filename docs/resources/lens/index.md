@@ -1,3 +1,9 @@
+---
+title: Lens
+search:
+  boost: 4
+---
+
 # :resources-lens: Lens
 
 

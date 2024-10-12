@@ -6,6 +6,7 @@ tags:
     - Pyflare
     - SDK
     - Python
+    - DataOS Pyflare
 ---
 
 
