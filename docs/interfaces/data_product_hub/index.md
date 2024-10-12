@@ -16,7 +16,7 @@ The Data Product Hub is a Graphical User Interface within DataOS where actionabl
 
 In addition, access to DataAPIs, built on top of the Data Product layer is offered by the Data Product Hub, enhancing the ability to integrate and utilize data seamlessly. The platform bridges the gap between IT-managed data infrastructure and business teams, enabling consistent data access despite changes in the underlying data systems. By providing curated, trusted data in multiple formats, time-to-value for new use cases is significantly accelerated by the Data Product Hub, helping organizations reduce data total cost of ownership (TCO) and achieve more efficient and streamlined workflows.
 
-## Key Features
+## Key features
 
 The key features of the Data Product Hub are covered in this section.
 
@@ -72,7 +72,7 @@ For more information, check out the [Data Product discovery](/interfaces/data_pr
 
 
 
-## Data Product Exploration
+## Data Product exploration
 
 The Explore button on the Data Product Hub interface allows deeper exploration into the details of a Data Product. Data can be presented in visual forms such as tables and charts, details on the data model are provided, and queries can be executed using GraphQL, enabling analysis of the data before consumption via APIs or BI tools. For more information, check out the [Data Product Exploration](/interfaces/data_product_hub/exploration/).
 
@@ -85,7 +85,7 @@ The Explore button on the Data Product Hub interface allows deeper exploration i
 
 
 
-## Data Product Activation
+## Data Product activation
 
 Multiple ways to access and interact with Data Products are offered by Data Product Hub, whether using BI tools, AI/ML notebooks, or API endpoints for application development.
 
@@ -204,7 +204,7 @@ The Data Product can be consumed for various use cases via REST APIs.
 </div>
 
 
-## Best Practices
+## Best practices
 
 Essential strategies to ensure efficient and optimal usage of the Data Product Hub are outlined in this section. Key recommendations are emphasized for users to effectively manage and utilize Data Products. For more information, check out the [best practices](/interfaces/data_product_hub/bestpractices/).
 

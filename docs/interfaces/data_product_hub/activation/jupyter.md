@@ -2,20 +2,22 @@
 
 You can consume a Data Product to build the AI/ML models using Jupyter Notebook. Following are the steps to connect the Data Product to the Jupyter Notebooks.
 
-1. Go to the **Access Options tab** of your Data Product, on the **App Development** section, and click on the **Download**, it will download a `.ipynb` file.
+## Method 1
+
+1. Go to the Access Options tab of your Data Product, on the App Development section, and click on the Download, it will download a `.ipynb` file.
 
     <center>
-    <img src="/interfaces/data_product_hub/activation/image%20(26).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/activation/image%20(26).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
     </center>
 
 
 1. Download the file and open it in any IDE, such as VS Code or PyCharm. This `ipynb` file contains the templates to consume the Data Product via Rest APIs, PostgreSQL interface, and GraphQL APIs, and source native interface.
     
     <center>
-    <img src="/interfaces/data_product_hub/activation/image%20(27).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/activation/image%20(27).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
     </center>
 
-2. To consume the Data Product via **Rest APIs**, you first need to create the API using Talos Stack. Follow the steps listed in the [Talos Stack documentation](/resources/stacks/talos/) to create the API. 
+2. To consume the Data Product via Rest APIs, you first need to create the API using Talos Stack. Follow the steps listed in the [Talos Stack documentation](/resources/stacks/talos/) to create the API. 
 
 3. Edit the template by providing, the API URL and API key and your actual query by taking help from the query example given in the template as shown below and run the code.
     - Rest APIs template
@@ -87,7 +89,7 @@ You can consume a Data Product to build the AI/ML models using Jupyter Notebook.
                 print("Failed to fetch data.")
         ```
         
-4.  To consume the Data Product via the **PostgreSQL** interface, you need to provide the `dbname`,  `user`, `password`,  `host`, and `port` of your PostgreSQL server in the code, also write the query in the query section, and run the code.
+4.  To consume the Data Product via the PostgreSQL interface, you need to provide the `dbname`,  `user`, `password`,  `host`, and `port` of your PostgreSQL server in the code, also write the query in the query section, and run the code.
     - PostgreSQL template
         
         ```python
@@ -99,7 +101,7 @@ You can consume a Data Product to build the AI/ML models using Jupyter Notebook.
         # Database connection details
         dbname = "postgres"
         user = "postgres"
-        password = "***********************"
+        password = "*"
         host = "tcp.lucky-possum.dataos.app"
         port = "6432"
         
@@ -128,7 +130,7 @@ You can consume a Data Product to build the AI/ML models using Jupyter Notebook.
         
         ```
         
-5. To consume the Data Product via **GraphQL**, you must provide your GraphQL API URL,  API key, and GraphQL query as shown in the template.
+5. To consume the Data Product via GraphQL, you must provide your GraphQL API URL,  API key, and GraphQL query as shown in the template.
     - GraphQL template
         
         ```python
@@ -202,18 +204,18 @@ You can consume a Data Product to build the AI/ML models using Jupyter Notebook.
         
 6. After executing the code, you are ready to build AI/ML models.
 
-## An alternative way to consume the Data Product via Jupyter Notebooks
+## Method 2
 
 1. Download the Postman collection and open it on the Postman application. 
     
     <center>
-    <img src="/interfaces/data_product_hub/activation/annotely_image%20(28).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/activation/annotely_image%20(28).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
     </center>
    
 2. Hit the endpoint. 
     
     <center>
-    <img src="/interfaces/data_product_hub/activation/image%20(28).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/activation/image%20(28).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
     </center>
   
 3. Navigate to the ‘Code’ icon.
@@ -225,17 +227,17 @@ You can consume a Data Product to build the AI/ML models using Jupyter Notebook.
 4. From the drop-down menu, select ‘Python - Requests’ as shown below.
 
     <center>
-    <img src="/interfaces/data_product_hub/activation/image%20(30).png" alt="DPH" style="width:30rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/activation/image%20(30).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
     </center>
 
 5. Copy the code snippet and paste it on your Jupyter Notebook.
     
     <center>
-    <img src="/interfaces/data_product_hub/activation/image%20(31).png" alt="DPH" style="width:30rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/activation/image%20(31).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
     </center>
 
 6. Execute the code and you are ready to build your AI/ML model. Successful execution will look like the following.
     
     <center>
-    <img src="/interfaces/data_product_hub/activation/image%20(32).png" alt="DPH" style="width:50rem; border: 1px solid black;" />
+    <img src="/interfaces/data_product_hub/activation/image%20(32).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
     </center>   
