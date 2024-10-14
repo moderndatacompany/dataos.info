@@ -68,7 +68,7 @@ Click the connect button. A popup will appear; click OK.
 <img src="/interfaces/data_product_hub/activation/bi_sync/untitled18.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
 
-### ** Step 7: View Data in Power BI**
+### **Step 7: View Data in Power BI**
 
 After connecting, users can see tables and views containing dimensions and measures.
 
