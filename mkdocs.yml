@@ -179,7 +179,6 @@ nav:
         - Command Reference: interfaces/cli/command_reference.md
       - Data Product Hub: 
         - interfaces/data_product_hub/index.md
-        - Core Concepts: interfaces/data_product_hub/core_concepts.md
         - Data Product Discovery: interfaces/data_product_hub/discovery.md
         - Data Product Exploration: interfaces/data_product_hub/exploration.md
         - Data Product Activation:
@@ -194,25 +193,25 @@ nav:
           - Data APIs: interfaces/data_product_hub/activation/data_api.md
         - Best Practices: interfaces/data_product_hub/bestpractices.md 
         - Examples: interfaces/data_product_hub/recipe.md
-      - Lens: 
-        - interfaces/lens/index.md
-        - Building Lens: 
-          - interfaces/lens/building_lens/index.md
-          - Tutorial: interfaces/lens/building_lens/tutorial_lens.md
-          - Data Modelling Concepts: interfaces/lens/building_lens/data_modeling_concepts.md
-          - Lens Attributes: interfaces/lens/building_lens/attributes_lens.md
-          - Dynamic Parameters: interfaces/lens/building_lens/scenarios_dynamic_params.md
-        - Lens Explorer: interfaces/lens/lens_explorer/index.md
-        - Lens Ecosystem: 
-          - interfaces/lens/lens_ecosystem/index.md
-          - Lens Query: interfaces/lens/lens_ecosystem/lens_query.md
-        - Elements of Lens: 
-          - interfaces/lens/elements_of_lens/index.md
-          - Entities: interfaces/lens/elements_of_lens/entity.md
-          - Fields: interfaces/lens/elements_of_lens/fields.md
-          - Dimensions: interfaces/lens/elements_of_lens/dimensions.md
-          - Measures: interfaces/lens/elements_of_lens/measures.md
-          - Relationships: interfaces/lens/elements_of_lens/relationships.md
+      # - Lens: 
+      #   - interfaces/lens/index.md
+      #   - Building Lens: 
+      #     - interfaces/lens/building_lens/index.md
+      #     - Tutorial: interfaces/lens/building_lens/tutorial_lens.md
+      #     - Data Modelling Concepts: interfaces/lens/building_lens/data_modeling_concepts.md
+      #     - Lens Attributes: interfaces/lens/building_lens/attributes_lens.md
+      #     - Dynamic Parameters: interfaces/lens/building_lens/scenarios_dynamic_params.md
+      #   - Lens Explorer: interfaces/lens/lens_explorer/index.md
+      #   - Lens Ecosystem: 
+      #     - interfaces/lens/lens_ecosystem/index.md
+      #     - Lens Query: interfaces/lens/lens_ecosystem/lens_query.md
+      #   - Elements of Lens: 
+      #     - interfaces/lens/elements_of_lens/index.md
+      #     - Entities: interfaces/lens/elements_of_lens/entity.md
+      #     - Fields: interfaces/lens/elements_of_lens/fields.md
+      #     - Dimensions: interfaces/lens/elements_of_lens/dimensions.md
+      #     - Measures: interfaces/lens/elements_of_lens/measures.md
+      #     - Relationships: interfaces/lens/elements_of_lens/relationships.md
       - Metis: 
         - interfaces/metis/index.md
         - Metis UI: 

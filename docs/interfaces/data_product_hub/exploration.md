@@ -1,52 +1,54 @@
 # Explore a Data Product
 
-## **Data Product Exploration Button**
+This guide provides an overview of the key user interface components of the Explorer Page of the Data Prodcut in the Data Product Hub.
 
-<<<<<<< HEAD
+## Data Product Exploration Button
+
 The **Exploration** button allows users to explore the data model ([Lens](/resources/lens/)) associated with the selected **Data Product**. By clicking this button, users can interact with the data model's pre-defined dimensions, measures, and segments, enabling them to visualize, filter, and analyze the data directly within the Lens. This provides an intuitive interface for business users and data analysts to explore the underlying data model without writing queries, offering insights through an easy-to-use exploratory environment.
-=======
-The **Exploration** button allows users to explore the **Lens model** associated with the selected **Data Product**. By clicking this button, users can interact with the data model's pre-defined dimensions, measures, and segments, enabling them to visualize, filter, and analyze the data directly within the Lens. This provides an intuitive interface for business users and data analysts to explore the underlying data model without writing queries, offering insights through an easy-to-use exploratory environment.
->>>>>>> 83f1c68a2524e022232f273f92e8edb848d70816
 
 <center>
 <img src="/interfaces/data_product_hub/exploration/image%20(25).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
 <figcaption><i> Explore button </i></figcaption>
 </center>
     
-When you click on the **Explore** button, the **Explore Page** opens. The **Studio** tab is displayed by default, other tabs include Model and GraphQL. 
-
+Clicking the Explore button opens the Explore Page, with the Studio tab displayed by default. Other available tabs include Model and GraphQL.
+ 
 <center>
 <img src="/interfaces/data_product_hub/exploration/annotely_image%20(2)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 <figcaption><i>Data Product Hub Interface</i></figcaption>
 </center>
 
-## **1. Header and Page Context Information**
+- [Header and Page Context Information](#header-and-page-context-information)
+- [Star Button and BI Sync](#star-button-and-bi-sync)
+- [Source Details](#source-details)
+- [Navigation Tabs](#navigation-tabs)
+- [Left Panel (Logical Tables, Entities, Metrics)](#drop-down-menu-logical-table-entities-metrics)
+- [Drop-down Menu (Logical Table, Entities, Metrics)](#drop-down-menu-logical-table-entities-metrics)
+- [Members and Filters](#members-and-filters)
+- [Saving Queries](#saving-queries)
+- [Result Display and Visualization Panel](#result-display-and-visualization-panels)
 
-At the top of the page, you’ll always see the title of the Data Product you are exploring. For example, "Sales-360-data-product-v12," helps identify the specific version of the product.
 
-<<<<<<< HEAD
-- **Data Product Title**: At the top of the page, you’ll always see the title of the Data Product you are exploring. For example, "**Sales-360-data-product-v12**," helps identify the specific version of the product. On top of the title is the business unit or function for which Data Product was created, giving context on its origin. For instance, here, the business unit is Sales.
-=======
-- **Data Product Title**: At the top of the page, you’ll always see the title of the Data Product you are exploring. For example, "**Sales-360-data-product-v12**," helps identify the specific version of the product. On top of the title is the business unit or function for which data product was created, giving context on its origin. For instance, here, the business unit is Sales.
->>>>>>> 83f1c68a2524e022232f273f92e8edb848d70816
+### Header and Page Context Information
+
+The top of the page displays key information about the Data Product being explored, providing context and clarity for users.
+
+- **Data Product Title**: The title of the Data Product is always visible at the top of the page. For example, "Sales-360-data-product-v12". Above the title, the associated business unit or function for which the Data Product was created is displayed, offering context regarding its origin. In this example, the business unit is "Sales".
 - **Description**: Below the title, a description gives an overview of the Data Product's purpose. In this case, it’s described as a "customer 360 view of the world."
 - **Tier | Use-case |Team Information**: The header contains essential information, including the Data Product's tier (e.g., Aggregated, Source aligned, etc.), its primary use case (e.g., Demand Forecast, Performance monitoring, etc.), and the list of contributors or collaborators involved in creating and maintaining the product (e.g., Aakansha Jain, Darpan Vyas, etc.). This provides users with a clear understanding of the product's purpose and the key stakeholders behind it, ensuring transparency and context.
 
-## **2. Star Button and BI Sync**
+### **Star Button and BI Sync**
 
-Star buttons let you favoritise the Data Product. In contrast, BI Sync opens the BI Sync functionality, which enables you to sync the Data Product to PowerBI, Tableau Cloud, Tableau Desktop, and Apache Superset.
+The Star button allows users to mark the Data Product as a favorite. The BI Sync option opens the BI Sync functionality, enabling synchronization of the Data Product with tools such as PowerBI, Tableau Cloud, Tableau Desktop, and Apache Superset.
 
-## **3. Source Details**
 
-When you click on the **Source** section, it displays details of the source on which the Lens model is built, and you can also check the source health. As you click on it, the following information is displayed.
+### **Source Details**
+
+Clicking the Source section displays details of the source on which the Lens model is built, along with the option to check the source's health. Upon selection, the following information is shown.
 
 - **Type**: Indicates the type of cluster source is linked to. In this case, the type is **Minerva.** It can either be **Themis or Flash.**
 - **Dialect**: The query language or SQL dialect used for interacting with the data. For this product, the dialect is **Trino.**
-<<<<<<< HEAD
 - **Connection**: The connection string or URL links the Data Product to its source. This example defines the connection as **minerva://miniature**, indicating the internal connection point to the miniature cluster.
-=======
-- **Connection**: The connection string or URL links the data product to its source. This example defines the connection as **minerva://miniature**, indicating the internal connection point to the miniature cluster.
->>>>>>> 83f1c68a2524e022232f273f92e8edb848d70816
 - **Database**: The database name is not explicitly shown in the given details, but this field would typically indicate the database within the system where the Data Product is stored.
 - **Host**: Provides the host or context details where the data source is hosted. In this example, **tcp.liberal-donkey.dataos.app** is the context where the Data Product exists.
 - **Watch:** To watch the health of the Cluster, Click on the watch button.
@@ -56,11 +58,10 @@ When you click on the **Source** section, it displays details of the source on w
 <figcaption><i>Source health</i></figcaption>
 </center>
 
-
-As soon as you click on the **Watch** button, you can return to the source by clicking on the cross button to see the status of source health. Now, hover over the Cluster name **Minerva** here to see the health status. The green dot signals good health and that your query will run smoothly. In contrast, red signals that Cluster is not available.
+Clicking the Watch button allows users to return to the source and view the source health status by selecting the cross button. Hovering over the Cluster name, such as Minerva, will display the health status. A green dot indicates good health and that queries will run smoothly, while a red dot indicates that the cluster is unavailable.
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/Screenshot%20from%202024-09-27 18-01-51.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/Screenshot%20from%202024-09-27 18-01-51.png" alt="DPH" style="width:25rem; border: 1px solid black;" />
 <figcaption><i>Red signal: Cluster is not ready for queries</i></figcaption>
 </center>
 
@@ -71,7 +72,7 @@ As soon as you click on the **Watch** button, you can return to the source by cl
 </center>
 
 
-## **4. Navigation Tabs**
+### **Navigation Tabs**
 
 Further, It contains three tabs for exploring the Data Product in detail. 
 
@@ -81,46 +82,43 @@ Further, It contains three tabs for exploring the Data Product in detail.
 
 *Let’s first understand the default studio tab*
 
-### Studio Tab
+#### **Studio Tab**
 
- When you first open the Explore page, the **Studio** tab is displayed by default. This tab provides an interactive workspace to design queries, view tables, pivot tables, charts, and more. It is the primary tool for exploring and visualizing data without technical coding.
+When the Explore page is first opened, the Studio tab is displayed by default. This tab provides an interactive workspace for designing queries, viewing tables, pivot tables, charts, and other visualizations. It serves as the primary tool for exploring and analyzing data without the need for technical coding.
 
 This page is divided into **five primary sections**, each serving a specific purpose in the exploration and querying of Data Products:
 
-- [Left Panel](https://www.notion.so/Data-Product-Exploration-831e609058fd46c4aa21d1ee59ef55aa?pvs=21)
-- [Drop down Menu](https://www.notion.so/Data-Product-Exploration-831e609058fd46c4aa21d1ee59ef55aa?pvs=21)
-- [Members and filters](https://www.notion.so/Data-Product-Exploration-831e609058fd46c4aa21d1ee59ef55aa?pvs=21)
-- [Result Pane](https://www.notion.so/Data-Product-Exploration-831e609058fd46c4aa21d1ee59ef55aa?pvs=21)
+- [Left Panel](#left-panel)
+- [Drop down Menu](#drop-down-menu-logical-table-entities-metrics)
+- [Members and filters](#members-and-filters)
+- [Result Pane](#result-display-and-visualization-panels)
 
-## 5. Left Panel
+### **Left Panel**
 
 Here are the key components in the sidebar navigation
 
-- [Expand/Collapse All](https://www.notion.so/Data-Product-Exploration-831e609058fd46c4aa21d1ee59ef55aa?pvs=21)
-- [History](https://www.notion.so/Data-Product-Exploration-831e609058fd46c4aa21d1ee59ef55aa?pvs=21)
-- [Perspective](https://www.notion.so/Data-Product-Exploration-831e609058fd46c4aa21d1ee59ef55aa?pvs=21)
+- [Expand/Collapse All](#expandcollapse-all)
+- [History](#history)
+- [Perspective](#perspectives)
 
-### **Expand/Collapse All**
+#### **Expand/Collapse All**
 
 An option to show or hide all the logical table Panel.
 
-[The screen will expand as you click on Expand to show the logical table side panel.](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/53ba3ef2-ed6b-4932-a081-76f89f0c2684/expand_collapse.webm)
+Selecting "Expand" will increase the screen size to display the logical table side panel.
 
-The screen will expand as you click on Expand to show the logical table side panel.
+#### **History**
 
-### **History**
-
-The **History** section tracks the queries executed on a timestamp's data model. This allows users to revisit previous queries and review their selected dimensions, measures, filters, and results. It's beneficial for auditing, troubleshooting, or repeating previous analyses. 
+This section logs queries executed on a data model using timestamp format. This allows users to revisit previous queries and review their selected dimensions, measures, filters, and results. It's beneficial for auditing, troubleshooting, or repeating previous analyses. 
 
 <center>
 <img src="/interfaces/data_product_hub/exploration/image%20(26).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
 <figcaption><i>History</i></figcaption>
 </center>
 
-
 For instance, a query might have been executed 32 minutes ago, using the **city dimension** and **total accounts measure** to analyze the total accounts across various cities. 
 
-### **Perspectives**
+#### **Perspectives**
 
 In the **Data Product Exploration** interface, a user's query can be saved as a **Perspective**. A Perspective captures the current state of the query, including all selected dimensions, measures, metrics, filters, and any applied settings (e.g., time zones or limits). Once saved, Perspectives can be accessed at any time from the **Perspective** tab, allowing users to revisit or share their specific analyses without recreating the queries. By saving a Perspective, users can efficiently store and retrieve their specific analyses for continuous use or collaboration with team members.
 
@@ -132,9 +130,10 @@ In the **Data Product Exploration** interface, a user's query can be saved as a 
 
 Perspectives listed in the sales360 Data Product
 
-### **How to Save and Use Perspectives?**
+#### **How to Save and Use Perspectives?**
 
-**Running a Query:** After selecting dimensions, measures, and running a query, you can save it to avoid re-configuring it later. For example, To find the total count of accounts in each city, select the **city dimension** and measure the **accounts count** from the **accounts** table. Click **Run Query Button.**
+**Running a Query:** After selecting dimensions, measures, and running a query, it can be saved to avoid reconfiguring it later. For example, to find the total count of accounts in each city, select the **city dimension** and the **accounts count** measure from the **accounts** table. Then, click the **Run Query** button.
+
 
 <center>
 <img src="/interfaces/data_product_hub/exploration/image%20(28).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -162,7 +161,7 @@ Users can click the **Perspective** tab and view all saved Perspectives, allowin
 
 **Re-running a Perspective**: To re-run a saved Perspective, select it from the list. This reloads the query and all settings and filters, making it easy to regenerate the results or apply new changes.
 
-## **6. Drop-down Menu: logical table, Entities, Metrics**
+### **Drop-down Menu: logical table, Entities, Metrics**
 
 The drop-down menu under **logical table** allows users to switch between logical table, Entities, or Metrics.
 
@@ -173,7 +172,7 @@ The drop-down menu under **logical table** allows users to switch between logica
 
 
 
-### **logical table**
+#### **logical table**
 
 This is the default view in the sidebar. It shows a list of logical tables, which are structured datasets containing dimensions and measures. Logical tables are often used for performing queries, such as analyzing account data, product information, or sales figures.
 
@@ -184,7 +183,7 @@ This is the default view in the sidebar. It shows a list of logical tables, whic
 <figcaption><i>logical table and Search bar</i></figcaption>
 </center>
 
-As you expand a particular table, you will see the list of all its dimensions and measures. In this case, the table named `account` is visible with various components such as **Measures** (e.g., `total_accounts`, `avg_rev_subquery`) and **Dimensions** (e.g., `city`, `address`).
+As a particular table is expanded, the list of all its dimensions and measures is displayed. In this case, the table named account is visible with various components such as Measures (e.g., `total_accounts`, `avg_rev_subquery`) and Dimensions (e.g., `city`, `address`).
 
 **Search Bar**: Just below the logical table title, the search bar allows users to filter and quickly find specific tables, dimensions, or measures by typing keywords.
 
@@ -192,12 +191,11 @@ As you expand a particular table, you will see the list of all its dimensions an
 <img src="/interfaces/data_product_hub/exploration/image%20(32).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
 </center>
 
-
 *Besides, Logical tables the model also contains views. In the **Lens model**, users can create two types of **views**, each serving a different purpose and approach in how data is accessed and presented. Here's a differentiation between the two types of views:*
 
-### **Entities**
+#### **Entities**
 
-**Entities** serve as a layer atop the data graph of tables, presenting an abstraction of the entire data model for consumers to interact with. They serve as a layer for defining metrics, providing a simplified interface for end-users to interact with key metrics instead of the entire data model. In an entity-first approach, views are built around entities in your data model. Views are built as denormalized tables, bringing measures and dimensions from multiple logical tables. They don’t have measures, dimensions, or segments of their own.
+**Entities** serve as a layer atop the data graph of tables, presenting an abstraction of the entire data model for consumers to interact with. They serve as a layer for defining metrics, providing a simplified interface for end-users to interact with key metrics instead of the entire data model. In an entity-first approach, views are built around entities in the data model. Views are built as denormalized tables, bringing measures and dimensions from multiple logical tables. They don’t have measures, dimensions, or segments of their own.
 
 <center>
 <img src="/interfaces/data_product_hub/exploration/image%20(33).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
@@ -205,14 +203,14 @@ As you expand a particular table, you will see the list of all its dimensions an
 </center>
 
 
-### **Metrics**
+#### **Metrics**
 
-**Metrics** are presented as a **drop-down list option** allowing users to select from predefined key performance indicators (KPIs). These Metrics provide quantifiable measures crucial for assessing the performance of specific data points within the Data Product. For example, selecting the metric **aggregated_qtr_revenue_metric.sales_sales_aggregate_qtr_revenue_2024** would allow users to analyze quarterly revenue for different product brands.
+Metrics are presented as a **drop-down list option** allowing users to select from predefined key performance indicators (KPIs). These Metrics provide quantifiable measures crucial for assessing the performance of specific data points within the Data Product. For example, selecting the metric **aggregated_qtr_revenue_metric.sales_sales_aggregate_qtr_revenue_2024** would allow users to analyze quarterly revenue for different product brands. To know more about how to create the matrixs refer [this link](/resources/lens/working_with_views/#metrics-first-approach)
 
-### **How to Use Metrics in the UI**:
+##### **How to Use Metrics in the UI**:
 
 - **Step 1**: Click on the **Metrics** from the drop-down list in the left sidebar
-- **Step 2**: Select the relevant metric based on your analysis needs. For example, if you are interested in tracking sales, you might select **aggregated_qtr_revenue_metric.sales_sales_aggregate_qtr_revenue_2024**.
+- **Step 2**: Select the relevant metric based on analytical needs. For example, to track sales, **aggregated_qtr_revenue_metric.sales_sales_aggregate_qtr_revenue_2024** may be selected.
 
 <center>
 <img src="/interfaces/data_product_hub/exploration/image%20(34).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
@@ -220,7 +218,8 @@ As you expand a particular table, you will see the list of all its dimensions an
 </center>
 
 
-- **Step 3**: The selected metric will be added to your query. When combined with dimensions (like **sales source** or **product brand**), it will give you a complete performance view.
+- **Step 3**: The selected metric will be added to the query. When combined with dimensions (like **sales source** or **product brand**), it will give a complete performance view.
+
 - **Step 4**: Run the query to get the results and review how the selected metric performs over time, across categories, or compared to benchmarks.
     
     In this case, the metric **aggregated_qtr_revenue_metric.sales_sales_aggregate_qtr_revenue_2024** is used along with two dimensions:
@@ -231,43 +230,41 @@ As you expand a particular table, you will see the list of all its dimensions an
     After running the query using this metric and dimensions, the result shows the revenue generated by each brand based on the sales source (proof/nonproof). 
     
 
-## 7. Members and Filters
+### **Members and Filters**
 
 the **Members Tab** dynamically displays the dimensions and measures selected by the user from the list of available entities (such as "sales" or "account"). This tab allows users to track and manage the dimensions and measures used in a query.  One can unselect selected members using the **minus (-)** icon.  It also allows users to modify these selections with **visibility** and **filter** controls. The **Clear** button at the top of the **Members Tab** removes all selected dimensions and measures, resetting the query.
 
 **Example**:
 
-Suppose you select the dimension **`account, city`,** and measure **`account. Total_accounts`** will immediately appear in the **Members tab**, indicating that they are active in the query. Similarly, clicking on (-) sign will remove the selected member from the selection.
+Selecting the dimension `account`, `city` and the measure account `total_accounts` will immediately add them to the **Members** tab, indicating their activation in the query. Similarly, clicking the (-) sign will remove the selected member from the query.
 
 <center>
 <img src="/interfaces/data_product_hub/exploration/image%20(35).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
 </center>
 
 
-- **Visibility Control**: An "eye" icon next to each member allows you to toggle the visibility of the selected dimension or measure in the query results.
+- **Visibility Control**: The "eye" icon next to each member allows toggling the visibility of selected dimensions or measures in the query results.
     
-    **Example**: If you hide the visibility of **`total_accounts`** using the "eye" icon, you will only see the **city names** in the query result, and the **total accounts** count will not be shown. This feature is useful when you want to focus on specific data points without deleting the measure entirely from the query.
-    
+    **Example**: Hiding the visibility of total_accounts using the "eye" icon will display only the city names in the query results, while the total accounts count will be hidden. This feature is useful for focusing on specific data points without removing the measure entirely from the query.
+
     <center>
     <img src="/interfaces/data_product_hub/exploration/Screenshot%20from%202024-09-24%2012-04-00.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
     </center>
 
-    
-
 - **Filtering Option**: A "filter" icon allows users to apply filters to the selected dimension or measure directly from the **Members Tab**.
-    
-    **Example**: If you click the filter icon on the **city** dimension and apply a filter that says **"city is not equal to Sacramento"**, the query result will show data for all cities **except Sacramento**. Once the filter is applied, click **Run Query** to see the filtered results.
+
+    **Example:** Clicking the filter icon on the `city` dimension and applying the filter "city is not equal to Sacramento" will display data for all cities except Sacramento. After applying the filter, click **Run Query** to view the filtered results.
     
     <center>
     <img src="/interfaces/data_product_hub/exploration/image%20(36).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
     </center>
 
 
-## 8. Saving Queries
+### **Saving Queries**
 
 Query data and save them with a suitable name so they can be viewed later.
 
-## **9. Result Display and Visualization Panel**
+### **Result Display and Visualization Panels**
 
 The **Result Display and Visualization Panel** is where users can choose how to view the outcomes of their queries. Once dimensions and measures are selected in the **Members Tab** and the query is executed, this panel offers multiple options for displaying the results. The panel provides flexible visual formats, allowing users to explore data in ways that best suit their analysis needs. Additionally, controls for **Timezone**, **Limit**, and **Offset** enable users to further customize how the data is presented, ensuring a comprehensive and user-friendly data exploration experience.
 
@@ -278,7 +275,7 @@ The following are the options for displaying the results:
 - [Pivot](/interfaces/data_product_hub/exploration#pivot)
 - [Integration](/interfaces/data_product_hub/exploration#integration)
 
-### **Table**
+#### **Table**
 
  This option displays the query results in a tabular format. It’s ideal for users who prefer to see data in rows and columns for easy comparison and detailed analysis.
 
@@ -288,7 +285,7 @@ The following are the options for displaying the results:
 </center>
 
 
-### **Chart**
+#### **Chart**
 
 This option allows users to visualize the query results in a graphical format. Various charts (e.g., bar, line, pie) can be used to display trends, comparisons, and distributions visually.
 
@@ -300,7 +297,7 @@ This option allows users to visualize the query results in a graphical format. V
 
     
 
-### **Pivot**
+#### **Pivot**
 
 This option allows for interactive analysis. Users can group, summarize, and manipulate the data to create custom views and insights. Pivot tables are useful for dynamic data exploration.
 
@@ -310,12 +307,12 @@ This option allows for interactive analysis. Users can group, summarize, and man
 </center>
 
 
-### **Integration**
+#### **Integration**
 
 The **Integration** tab enables users to integrate the query results with other tools or services. This is particularly useful for exporting or connecting the data to external platforms for further processing or visualization. This gives data app developers the functionality to fetch real-time data and display it visually in the dashboard or create an application on top of it.
 
 
-You can integrate the data model via:
+The data model can be integrated through the following methods:
 
 - CURL
 - GraphQL
@@ -327,11 +324,11 @@ You can integrate the data model via:
 </center>
 
 
-For instance, You want to retrieve the total number of accounts grouped by city using an API, verify the output using a curl command, and then automate the process using Python. Here’s a practical example that demonstrates how to utilize the given curl command step-by-step, along with integrating it into a Python application workflow.
+For instance, to retrieve the total number of accounts grouped by city using an API, verify the output using a curl command, and then automate the process using Python. Here’s a practical example that demonstrates how to utilize the given curl command step-by-step, along with integrating it into a Python application workflow.
 
 Steps to Follow:
 
-**Step 1: Select Desired Measures and Dimensions** First, select the `total_account` measure and the `city` dimension from the side pane. As you select, the curl command for the particular query gets generated.  Here's the generated command:
+**Step 1: Select Desired Measures and Dimensions** First, select the `total_account` measure and the `city` dimension from the side pane. As selections are made, the curl command for the query is automatically generated. Here's the generated command:
 
 ```bash
 curl --location 'https://lucky-eagle.dataos.app/lens2/api/public:purchasebehavior360/v2/load' \
@@ -352,13 +349,13 @@ curl --location 'https://lucky-eagle.dataos.app/lens2/api/public:purchasebehavio
 } }'
 ```
 
-**Step 2: Execute the Command in Your Terminal**
+**Step 2: Execute the Command in the Terminal**
 
-- Copy the entire command and replace YOUR_API_KEY with your actual API key.
+- Copy the entire command and replace DATAOS_API_KEY with the actual API key.
 
-- Open your terminal (Command Prompt on Windows or Terminal on macOS/Linux/Windows) and paste the modified command into your terminal and press Enter.
+- Open the terminal (Command Prompt on Windows or Terminal on macOS/Linux/Windows) and paste the modified command into the terminal and press Enter.
 
-- The provided curl command retrieves data about the total accounts per city in json format. Here is your response will look like:
+- The provided curl command retrieves data about the total accounts per city in json format. The response will appear as follows:
 
 ```json
 {"query":{"measures":["account.total_accounts"],"dimensions":["account.city"],"segments":[],"filters":[],"timeDimensions":[],"limit":15,"offset":0,"timezone":"UTC","meta":{"secured":{"segments":[],"dimensions":[]}},"rowLimit":15},"data":[{"account.city":"Los Angeles","account.total_accounts":59},{"account.city":"Chicago","account.total_accounts":12},{"account.city":"Kansas City","account.total_accounts":11},{"account.city":"San Francisco","account.total_accounts":8},{"account.city":"New York","account.total_accounts":6},{"account.city":"Greenville","account.total_accounts":5},{"account.city":"Miami","account.total_accounts":5},{"account.city":"Philadelphia","account.total_accounts":5},{"account.city":"Houston","account.total_accounts":5},{"account.city":"Sacramento","account.total_accounts":4},{"account.city":"Omaha","account.total_accounts":4},{"account.city":"Cincinnati","account.total_accounts":3},{"account.city":"Jacksonville","account.total_accounts":2},{"account.city":"San Jose","account.total_accounts":2},{"account.city":"Spokane","account.total_accounts":2}],"lastRefreshTime":"2024-10-09T07:32:55.554Z","refreshKeyValues":[[{"refresh_key":"14403825"}]] 
@@ -366,7 +363,7 @@ curl --location 'https://lucky-eagle.dataos.app/lens2/api/public:purchasebehavio
 
 - Check to ensure the output is correct and contains the expected data.
 
-**Step 3: Integrate the Command into Your Application's Workflow** Once you've confirmed the output is correct, you can automate the data retrieval using a Python script with the requests library.
+**Step 3: Integrate the Command into the Application's Workflow** Once the output is confirmed to be correct, data retrieval can be automated using a Python script with the requests library.
 
 ???tip "Python Script"
 
@@ -379,7 +376,7 @@ curl --location 'https://lucky-eagle.dataos.app/lens2/api/public:purchasebehavio
     url = 'https://lucky-possum.dataos.app/lens2/api/public:purchasebehavior360/v2/load'
     headers = {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer dG9rZW5fYWN0dWFsbHlfYWR2ZXJzZWx5X2luc3BpcmVkX3JvYmluLmVkY2VlNmU2LTJmNWQtNDdjNy05M2I1LThmNWFjN2MzZjEyNA=='  # Replace with your actual API key
+        'Authorization': 'Bearer dG9rZW5fYWN0dWFsbHlfYWR2ZXJzZWx5X2luc3BpcmVkX3JvYmluLmVkY2VlNmU2LTJmNWQtNDdjNy05M2I1LThmNWFjN2MzZjEyNA=='  # Replace with the actual DATAOS API key
     }
 
     # Define the payload for the API request
@@ -445,9 +442,9 @@ curl --location 'https://lucky-eagle.dataos.app/lens2/api/public:purchasebehavio
 - **Run Query Button**: Once dimensions and measures are selected, this button executes the query and updates the results in the selected view format (table, chart, pivot).
 - **Save Perspective**: After running a query, users can save the configuration as a **Perspective** to easily return to the same query setup in the future.
 
-## Model Tab
+### **Model Tab**
 
-The Model tab offers insights into the underlying structure of the Data Product. It allows users to view and understand the data model, which is particularly useful for data architects or advanced users who need to know how different tables and fields are connected. This tab gives you a comprehensive view of relationships between datasets, enabling a better understanding of data lineage and dependencies.
+The Model tab offers insights into the underlying structure of the Data Product. It allows users to view and understand the data model, which is particularly useful for data architects or advanced users who need to know how different tables and fields are connected. This tab gives a comprehensive view of relationships between datasets, enabling a better understanding of data lineage and dependencies.
 
 **Left-side Navigation Panel**
 
@@ -462,13 +459,13 @@ The left-side navigation panel provides key options to explore the model in diff
 
 Here's how it works in more detail:
 
-Further, when you click on any logical table or Metrics, a detailed tab opens on the side, displaying all the **defined measures and dimensions** within this table. Each attribute is accompanied by its **data type** (e.g., numeric, string, date) to understand the table's schema clearly. Let us dive deep into th**e sales logical table**
+When any logical table or metric is selected, a detailed tab opens on the side, displaying all the defined measures and dimensions within the table. Each attribute is listed with its corresponding data type (e.g., numeric, string, date), providing a clear understanding of the table's schema. The following section will explore the `sales` logical table in detail.
 
-### **Sales (logical table):**
+#### **Sales (logical table):**
 
 - This is a logical table containing information about **sales**.
 - It shows how this table is connected to other entities in the system, such as **accounts**, **products**, and other metrics.
-- When you click on the **sales** table, a detailed tab opens on the side, displaying all the **defined segments, measures, and dimensions** within this table. Each attribute is accompanied by its **data type** (e.g., numeric, string, date) to help you understand the table's schema clearly.
+- Clicking on the `sales` table opens a detailed tab on the side, displaying all the defined segments, measures, and dimensions within the table. Each attribute is listed with its corresponding data type (e.g., numeric, string, date) to provide a clear understanding of the table's schema.
 
 <!-- <center>
 <img src="/interfaces/data_product_hub/exploration/dph_explorer_optimized_01.gif" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -483,11 +480,11 @@ Further, when you click on any logical table or Metrics, a detailed tab opens on
 - **Segments**: Subsets or groupings of sales data, such as **proof_sales** and **nonproof_sales**.
 - **Measures**: Quantitative attributes that are crucial for calculations. Examples: **recency and frequency.**
 - **Dimensions**: Categorical attributes that describe data segments or groupings. Examples: **invoice_no** **invoice_date.**
-- You can explore more details by clicking on the **Schema** dropdown.
+- More details can be explored by selecting the **Schema** dropdown.
 
  *Let us also understand a Metric by giving an example.*
 
-### **Metric**
+#### **Metric**
 
 Metrics are a type of view. All Metrics are represented by a wave-like icon resembling a formula, indicating that they are **Metrics**. **Metrics** are a type of **view** in the data model. Unlike logical tables, they do not have their dimensions or measures. Instead, they reference the dimensions and measures of **logical tables**. For example, the **conversion_rate** metric tracks the percentage of leads or prospects that convert into paying customers over a defined period (e.g., a month). However, It relies on fields from the **Sales Table.**
 
@@ -497,10 +494,6 @@ When a **metric** references a **measure** or **dimension** from a **logical tab
 <img src="/interfaces/data_product_hub/exploration/Screenshot%20from%202024-10-01 18-32-47.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 83f1c68a2524e022232f273f92e8edb848d70816
 *Dashed blue lines visually indicate the relationships between the **Sales Table** and the **conversion_rate** metric. The lines highlight which **dimensions** and **measures** from the **Sales Table** are used to calculate the **conversion_rate** metric.*
 
 Similarly,  **QTD Revenue** Metrics leverage fields from multiple logical tables—**Sales**, **Product**, and **Account**—to offer a rich, multi-dimensional view of performance. Using **join paths in the manifest file** ensures that fields are correctly referenced, maintaining clarity and consistency across the data model.
@@ -515,7 +508,7 @@ Similarly,  **QTD Revenue** Metrics leverage fields from multiple logical tables
 
 - **Schema**: This section contains detailed information about the structure of the tables, views, and entities within the data model. Users can view columns, data types, and relationships, making it easier to understand how data is stored and linked within the product.
 
-### **Schema Section Components**
+#### **Schema Section Components**
 
 **Overview:** The **User Groups** section on the right panel details the access permissions applied to each user group and the API scopes that are granted. The **Security** section displays the redacted column name.
 
@@ -529,7 +522,7 @@ In this example, there are two user groups: **nonproof_analyst** and **default**
 </center>
 
 
-Further, when you click on the account table, The following sections are displayed.
+When the account table is selected, the following sections are displayed.
 
 1. **logical table Overview**:
     - **Table Name**: The logical table name (e.g., **account**) is displayed, providing context on the explored dataset.
@@ -568,12 +561,11 @@ One can explore the details on each table. For example, if we click on the accou
 
 For example, In the above image are the YAML Implementation files for the Lens model of the Data Product for all entities. One can also view the Lens artifact in the Metis by clicking on **Open in Metis** button in the right side corner 
 
-
 <center>
 <img src="/interfaces/data_product_hub/exploration/image%20(44).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
 
+### **GraphQL Tab**
 
-## GraphQL Tab
+The GraphQL tab provides an interface for advanced users and developers to write and execute GraphQL queries. GraphQL enables precise data retrieval, allowing full control over the structure of the returned data. This is useful for performing complex or customized data extractions that extend beyond the standard capabilities of the Studio interface.
 
-For advanced users or developers, the **GraphQL** tab provides a powerful interface for writing and running GraphQL queries. GraphQL allows for precise data retrieval, giving you complete control over the structure of the data you receive. This is particularly useful when you need more complex or customized data extractions that go beyond the capabilities of the standard Studio interface.

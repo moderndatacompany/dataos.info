@@ -77,6 +77,10 @@ Lens can be configured to connect to different sources using data source attribu
     Review the configuration fields and settings in the Docker Compose file for orchestrating multi-container applications.
 
 
+<aside class="callout">
+If working with Lens 1.0 interface, click [here](/interfaces/lens/).
+</aside>
+
 <!-- - [Supported Data Sources](/resources/lens/data_sources/)
     Explore the list of data sources that are supported by our system. -->
 
