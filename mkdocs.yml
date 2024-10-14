@@ -179,7 +179,6 @@ nav:
         - Command Reference: interfaces/cli/command_reference.md
       - Data Product Hub: 
         - interfaces/data_product_hub/index.md
-        - Core Concepts: interfaces/data_product_hub/core_concepts.md
         - Data Product Discovery: interfaces/data_product_hub/discovery.md
         - Data Product Exploration: interfaces/data_product_hub/exploration.md
         - Data Product Activation:
