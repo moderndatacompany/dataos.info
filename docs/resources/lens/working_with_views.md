@@ -15,7 +15,7 @@
 
 When designing how your semantic layer will be exposed and consumed by end users, you can follow either an **entity-first approach** or a **metrics-first approach.** In both cases, views will be used to build the semantic layer interface.
 
-### **Entity-first**
+### **Entity-first approach**
 
 In an entity-first approach, views are built around entities in your data model. Views are built as denormalized tables, bringing measures and dimensions from different tables needed to describe the entity fully.
 

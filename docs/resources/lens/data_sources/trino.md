@@ -5,8 +5,8 @@
 ### **Prerequisites**
 
 - The hostname for the Trino database server.
-- The username for the DataOS User
-- The name of the database to use with the Minerva query engine database server
+- The username for the DataOS User.
+- The name of the database to use with the Minerva query engine database server.
 
 ### **Setup**
 
@@ -70,7 +70,6 @@ DATAOS_USER_APIKEY=abcdeghijklmopqrstuvwxyz
 LENS2_DEPOT_SERVICE_URL="https://alpha-omega.dataos.app/ds" 
 LENS2_HEIMDALL_BASE_URL="https://alpa-omega.dataos.app/heimdall" 
 
-# Check whether this is even required or not
 LENS2_SOURCE_TYPE=trino
 LENS2_SOURCE_NAME=system
 LENS2_SOURCE_CATALOG_NAME=icebase 
