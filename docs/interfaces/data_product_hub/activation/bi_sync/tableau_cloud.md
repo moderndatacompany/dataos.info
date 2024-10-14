@@ -1,10 +1,6 @@
 ## Steps for Integrating Data Products with Tableau
 
-<<<<<<< HEAD
 This document outlines the steps required to integrate data products from DataOS with Tableau.
-=======
-1. **Navigate to the Data Product Hub:** Start by accessing the **Home Page** of DataOS. From there, navigate to the **Data Product Hub**, where you can explore various Data Products available within the platform.
->>>>>>> 83f1c68a2524e022232f273f92e8edb848d70816
 
 ### **Step 1: Navigate to the Data Product Hub**
 
@@ -138,11 +134,7 @@ After signing in, users will be redirected to the workbook, where dashboard crea
 
 An error will occur during synchronization if any entity in the data model lacks a defined relationship. To resolve this issue, the entity can be hidden to avoid synchronization errors.
 
-<<<<<<< HEAD
 **2. Live Connection**
-=======
-3. **Access Integration Options:** Navigate to the Access Options tab once you’ve selected a Data Product. Here, you’ll find various methods to access and interact with the Data Product.
->>>>>>> 83f1c68a2524e022232f273f92e8edb848d70816
 
 The connection between the Lens semantic layer and Tableau Cloud is live. This means that any changes to the underlying data or measure logic will automatically be reflected in Tableau.
 
