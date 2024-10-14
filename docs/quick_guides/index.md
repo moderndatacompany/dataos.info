@@ -103,10 +103,11 @@ Learn to create ETL pipelines tailored for both batch and real time data process
      
 </div>
 
-## :resources-stack: Deploying Data Applications on DataOS 
+## :resources-stack: Deploying and Securing Data Applications on DataOS 
 
-Learn to deploy your data applications—whether developed with Streamlit, Django, Flask, or your preferred tool—on DataOS using the Container stack.
-
+Learn to deploy your data applications—whether developed with Streamlit, Django, Flask, or your preferred tool—on DataOS using the Container stack. Make sure that your application is accessible to only authorized users.
 <div class= "grid cards" markdown>
 
 -   [Deploying Data Application Using Container Stack](/quick_guides/deploy_data_app_using_container_stack/)
+
+-   [Securing Deployed Data Application](/quick_guides/secure_deployed_app/)
