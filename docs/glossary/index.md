@@ -54,7 +54,7 @@ hide:
 | [Data Toolbox](/resources/stacks/data_toolbox/) | The Data Toolbox Stack is used to update metadata for the data that is ingested into Icebase using Flare Stack. The metadata of the ingested datasets needs to be registered with Metis before it can be queried using Workbench.|
 | [Depot](/resources/depot/) | Depot is a Dataos Resource that simplifies connectivity to different data sources by abstracting the complexities of the underlying systems.  Depots handle protocols, credentials, and connection schemas, making it easier for users to access and utilize data from diverse sources, including file systems, data lake systems, database systems, and event systems |
 | Dropzone | Dropzone is a depot in DataOS referring to an object storage. This storage is used as data lake to easily and securely upload files. |
-
+| [Dimensions](/resources/lens/concepts/#dimensions) | Dimensions are descriptive attributes, often text values, which help to categorize and provide context for the entity. |
 
 ## e 
 
@@ -122,6 +122,8 @@ hide:
 | --- | --- |
 | [Metis](/interfaces/metis/) | Metis is a metadata manager, cataloging service, and database within the DataOS environment assissting with discoverability and observability capabilities for your enterprise data. |
 | [Minerva](/resources/cluster/#minerva) | Minerva is a query engine that enables access to data for business insights. It is an interactive query engine based on Trino that makes it easy to analyze big data using SQL. |
+|[Measures](/resources/lens/concepts/#measures)|Measures are quantifications or numerical value on which statistical calculations can be applied.|
+|Metric|A metric is a focused measurement in a data model that highlights key performance indicators. It includes relevant dimensions for grouping and filtering, enabling clear analysis of business performance. |
 
 ## n 
 
@@ -189,6 +191,17 @@ hide:
 | Unified Architecture | The unified architecture of DataOS refers to the cohesive and integrated design approach that combines various components, services, and technologies into a unified system. It enables data management, processing, and analysis, ensuring seamless interoperability and consistent user experience across different functionalities and applications within DataOS.|
 | [Uniform Data Link](/resources/depot/#depot) | The Depot serves as the registration of data locations to be made accessible to DataOS. Once the Depot is created, each source system is assigned a unique address, referred to as a Uniform Data Link (UDL). Regardless of the source system's internal naming conventions and structure, the UDL ensures consistency in referencing data.  |
 | [User Space](/architecture/#user-space) | User Space represents the domain of the operating system where data developers work and create resources such as workflows, services, secrets, depots, clusters, compute, etc for data processing jobs, services, and analytics workloads. Operations UI provides a way for users to observe and monitor these resources and their runtimes to debug if any issues.|
+
+## v
+
+| Term | Description |
+| ---- | ----------- | 
+|[Views](/resources/lens/concepts/#views)|Views are abstractions that provide a simplified interface for interacting with a data model. They allow users to access key metrics and relevant information without needing to navigate the entire underlying data structure. A view serves as a reference point to dimensions, measures, and segments from multiple logical tables, but does not define any metrics or attributes independently.
+
+
+
+|
+
 
 ## w 
 
