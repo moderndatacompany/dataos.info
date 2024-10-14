@@ -8,13 +8,12 @@ While migrating to Bigquery the following aspects need to be considered:
 
 - SQL dialect should be changed to the Bigquery one
 - The table naming should be of the following format `project_id.dataset.table` 
-- Do not use VARCHAR as a datatype
-- Use extract date function of the Bigquery
+- Do not use `VARCHAR` as a datatype
+- Use `Extract` date function of the Bigquery
 
 ### **Docker Compose Manifest File**
 
-The highlighted attributes are all the required attributes.
-
+Ensure that the necessary attributes are highlighted in the Docker Compose Manifest file for proper configuration during the connection setup process.
 
 ```yaml hl_lines="13-15"
 version: "2.2"
