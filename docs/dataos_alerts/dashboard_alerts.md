@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Setting Up Dashboard Alerts
 
 This guide will walk you through the process of creating custom dashboard alerts. To stay updated with daily metrics such as sales, stock, revenue, orders, and operating costs. DataOS provides numerous alert options, including Email, Slack, Webhook, Mattermost, Chatworks, and Pagerduty.

@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Integrating DataOS with Power BI
 
 Power BI is a business analytics service to provide interactive visualizations and business intelligence capabilities. DataOS and Power BI seamless integration works to take advantage of that powerful visualization tehnology, on the data pulled from DataOS.

@@ -895,7 +895,7 @@ Usage:
 dataos-ctl view [flags]
 
 Flags:
--a, --application string   The application to view in your default browser: apps, datanet, workbench, atlas
+-a, --application string   The application to view in your default browser: home, metis, workbench, operations, bifrost
 -h, --help                 help for view
 ```
 

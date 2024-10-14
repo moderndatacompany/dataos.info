@@ -14,7 +14,7 @@ The DataOS CLI provides a command-line environment for efficient and streamlined
 
 ## Graphical User Interface (GUI)
 
-The Graphical User Interface offers an intuitive and visually engaging way to interact with DataOS and its components.  This makes DataOS accessible to users with varying technical expertise, enhancing user experience and usability. For example, applications like Atlas and Lens Explorer provide graphical user interfaces for tasks such as creating visualizations, building dashboards, and interacting with the semantic layer.
+The Graphical User Interface offers an intuitive and visually engaging way to interact with DataOS and its components.  This makes DataOS accessible to users with varying technical expertise, enhancing user experience and usability. For example, applications like Data Product Hub and Lens Studio provide graphical user interfaces for tasks such as creating visualizations, building dashboards, and interacting with the semantic layer.
 
 ## Application Programming Interface (API)
 
@@ -39,13 +39,13 @@ Following native apps are available on DataOS Graphical User Interface:
 
 <div class="grid cards" markdown>
 
--   :material-view-dashboard-outline:{ .lg .middle } **Atlas**
+<!-- -   :material-view-dashboard-outline:{ .lg .middle } **Atlas**
 
     ---
 
     Create visualizations, reports, and dashboards. Manage queries, snippets, and alerts.
 
-    [:octicons-arrow-right-24: Read more](/interfaces/atlas/)
+    [:octicons-arrow-right-24: Read more](/interfaces/atlas/) -->
 
 
 -   :interfaces-audiences:{ .lg .middle } **Audience**
