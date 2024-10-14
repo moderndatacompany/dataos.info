@@ -29,11 +29,15 @@ Clicking the Explore button opens the Explore Page, with the Studio tab displaye
 - [Result Display and Visualization Panel](#result-display-and-visualization-panels)
 
 
+<<<<<<< HEAD
 ### Header and Page Context Information
 
 The top of the page displays key information about the Data Product being explored, providing context and clarity for users.
 
 - **Data Product Title**: The title of the Data Product is always visible at the top of the page. For example, "Sales-360-data-product-v12". Above the title, the associated business unit or function for which the Data Product was created is displayed, offering context regarding its origin. In this example, the business unit is "Sales".
+=======
+- **Data Product Title**: At the top of the page, you’ll always see the title of the Data Product you are exploring. For example, "**Sales-360-data-product-v12**," helps identify the specific version of the product. On top of the title is the business unit or function for which Data Product was created, giving context on its origin. For instance, here, the business unit is Sales.
+>>>>>>> dad0f961537458a851127e65c0847bb5484a57be
 - **Description**: Below the title, a description gives an overview of the Data Product's purpose. In this case, it’s described as a "customer 360 view of the world."
 - **Tier | Use-case |Team Information**: The header contains essential information, including the Data Product's tier (e.g., Aggregated, Source aligned, etc.), its primary use case (e.g., Demand Forecast, Performance monitoring, etc.), and the list of contributors or collaborators involved in creating and maintaining the product (e.g., Aakansha Jain, Darpan Vyas, etc.). This provides users with a clear understanding of the product's purpose and the key stakeholders behind it, ensuring transparency and context.
 

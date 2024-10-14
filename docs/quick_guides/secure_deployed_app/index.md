@@ -1,6 +1,7 @@
 # Securing Deployed Apps on DataOS
 
-This quick guide covers the implementation of different levels of authentication and authorization for a **Streamlit Calculator app**. By using DataOS services like Heimdall and Bifrost, the app provides secure and fine-grained access control for its users.
+!!! info "Information" 
+    This quick guide covers the implementation of different levels of authentication and authorization for a **Streamlit Calculator app**. By using DataOS services like Heimdall and Bifrost, the app provides secure and fine-grained access control for its users.
 
 ## What’s Covered?
 
@@ -515,29 +516,24 @@ With these steps, your Streamlit app will have secure, flexible, and granular ac
 ## Permissions in Action for Calculator App
 
 - If a user is not authorized to access the application, they will see the following message:
-
-  <div style="text-align: left; padding-left: 1em;">
-    <img src="/quick_guides/secure_deployed_app/app_not_allowed.png" alt="Image" style="max-width: 60%; height: auto; border: 1px solid #000;">
-  </div>
+    <div style="text-align: left; padding-left: 1em;">
+        <img src="/quick_guides/secure_deployed_app/app_not_allowed.png" alt="Image" style="max-width: 60%; height: auto;">
+    </div>
   
 - Once authorized, the user will be able to access the application.
-
-  ![app_allowed.png](/quick_guides/secure_deployed_app/app_allowed.png)
+    ![app_allowed.png](/quick_guides/secure_deployed_app/app_allowed.png)
 
 - Suppose a user has the following permissions.
-
   ![user_permissions.png](/quick_guides/secure_deployed_app/user_permissions.png)
 
 - In this case, they can perform multiplication, as shown below:
-
   ![multi_access.png](/quick_guides/secure_deployed_app/multi_access.png)
 
 - However, they are not authorized to perform division operations:
-
   ![div_no_access.png](/quick_guides/secure_deployed_app/div_no_access.png)
 
 On Bifrost, these permission can be managed easily for the users via use-cases, already defined for the application.
 
 ## Download Application Code
 
-Click on this link- [Streamlit Calculator Application](/quick_guides/secure_deployed_app/streamlit-app.zip) to download the entire application code.
+Click on this link- [Streamlit Calculator Application](/quick_guides/secure_deployed_app/streamlit-application.zip) to download the entire application code.

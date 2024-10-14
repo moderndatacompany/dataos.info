@@ -179,7 +179,6 @@ nav:
         - Command Reference: interfaces/cli/command_reference.md
       - Data Product Hub: 
         - interfaces/data_product_hub/index.md
-        - Core Concepts: interfaces/data_product_hub/core_concepts.md
         - Data Product Discovery: interfaces/data_product_hub/discovery.md
         - Data Product Exploration: interfaces/data_product_hub/exploration.md
         - Data Product Activation:
@@ -560,5 +559,9 @@ nav:
           - quick_guides/creating_etl_pipelines/flare_job/index.md
         - Storing Query Results as Dataset with Flare:
           - quick_guides/creating_etl_pipelines/query_as_input_flare/index.md
-      - Deploying Data Application Using Container Stack: quick_guides/deploy_data_app_using_container_stack/index.md
+      - Deploying and Securing Data Applications:
+        - Deploying Data Application Using Container Stack: 
+          - quick_guides/deploy_data_app_using_container_stack/index.md
+        - Securing Deployed Data Applications: 
+          - quick_guides/secure_deployed_app/index.md
     - Videos: videos/index.md
