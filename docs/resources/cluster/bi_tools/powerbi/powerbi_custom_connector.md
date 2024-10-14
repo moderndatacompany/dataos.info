@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # DataOS Power BI Connector
 
 The DataOS Power BI Connector is engineered to facilitate integration between the DataOS platform and Power BI. This custom connector empowers users to seamlessly import DataOS data into Power BI, providing an additional interface for DataOS access combined with Power BI's visualization and dashboarding capabilities.

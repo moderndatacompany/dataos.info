@@ -84,7 +84,7 @@ DataOS specs resemble the principles of a Data Developer Platform, such as decla
 - The depots & APIs provide the input/output ports, while the stacks like [Flare](/resources/stacks/flare/) & [Benthos](/resources/stacks/benthos/) are used to configure the transformation logic on the data products. All the while, the system provides you with end-to-end observability, monitoring & customizability to define metrics or SLOs for different stages of the data product’s lifecycle, and provision computes & clusters with DataOS Resources on demand.
 - The separation of Compute & Storage allows the users to scale both independently & optimize costs while building & experimenting with new data products.
 - The native governance with Heimdall & Gateway ensures granular access control on every aspect of data products, Metis provides the ability to discover, understand & categorize the data products, and Poros automates the orchestration.
-- The interfaces of applications like [Lens](/interfaces/lens/), [Workbench](/interfaces/workbench/) & [Atlas](/interfaces/atlas/) enable data developers to experiment with data products quickly and in a self-serve manner.
+- The interfaces of applications like [Lens](/interfaces/lens/) and [Workbench](/interfaces/workbench/) enable data developers to experiment with data products quickly and in a self-serve manner.
 - The niche capabilities as provided with DataOS Resources like [Service](/resources/service/) & [Container stack](/resources/stacks/container/) allow one to create data products even for the edge cases.
 - Abstractions over all the parts of the aforementioned micro-services architecture and the open standards used while building them makes the system flexible and customizable towards the addition of new tools & technologies. 
 
@@ -113,7 +113,7 @@ From a user’s perspective, it handles system resources such as CPU scheduling,
 User Space represents the domain of the operating system where data developers work. It allows the developers to isolate & segregate their work from other users, providing multi-tenancy to develop business-domain-specific data products. All the DataOS Resources are created, deployed & managed by users in this layer. User Space is itself segregated into two logically separated layers, viz.
 #### **User Layer**
 
-This layer can be envisioned to be the layer providing the user [interfaces](/interfaces/) for various applications of DataOS, such as Atlas and Workbench. It also has a Command Line Interface to perform CRUD operations on DataOS Resources and trigger user processes. It is where DataOS Resources such as Depots are deployed, and ETL pipelines are built.
+This layer can be envisioned to be the layer providing the user [interfaces](/interfaces/) for various applications of DataOS, such as Metis and Workbench. It also has a Command Line Interface to perform CRUD operations on DataOS Resources and trigger user processes. It is where DataOS Resources such as Depots are deployed, and ETL pipelines are built.
 #### **System Layer**
 
 This layer acts as a bridge between the Core Kernel & the User Layer. It manages system-level services and libraries that the user applications can access for lower-level functionalities. A User in DataOS can be either a person or a machine/application - the system layer is where machine/application-related processes are executed. *System calls* to the Kernels are also made by this layer.

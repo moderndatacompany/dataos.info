@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Alerts
 
 Clicking on the ‘**Alerts’** tab on Atlas landing page, you can view all the alerts created by you. By default, the list is sorted in reverse chronological order. You can reorder the list by clicking the column headings. 
