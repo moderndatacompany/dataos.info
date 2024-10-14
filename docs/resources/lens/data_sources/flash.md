@@ -2,10 +2,9 @@
 
 ## Connecting to Depot using Flash Service
 
-
 ### **Prerequisites**
 
-- Flash Service
+- **Flash Service:** Ensure you have a running flash service.
 
 ```yaml
 name: flash-service-99
@@ -46,23 +45,24 @@ service:
       - create or replace table m_products as (select * from product_data_master)
 ```
 
-How does this work??
 
-The flow of Flash works like this:
 
-**Loading the Data:** In the datasets attribute, you provide the depot address of the source data you want to load into Flash. You also assign a name to this dataset, which Flash uses to create a view of the source data.
 
-**Creating Views:** Flash creates a view using the name you specified. This view allows you to reference the source data without directly querying the source itself. 
+### **How Does This Process Work?**
 
-**Creating Tables:** Using this view, you can choose specific columns from this view for further operations.
+The flow of Flash operates as follows:
 
-**Used in Lens Model in SQL:** Once initialized, the tables created in the init attribute are used in SQL queries within Lens.
+**Data Loading:** The datasets attribute specifies the depot address of the source data to be loaded into Flash. A dataset name is also provided, which Flash uses to generate a view of the source data.
 
-For example, in the manifest provided above, we first load the f_sales table from the source and create a view named sales from it. We then define a table called f_sales using this sales view.
+**View Creation:** Flash creates a view based on the assigned name, allowing for interaction with the source data without directly querying it.
 
-Subsequently, in Lens, we create an SQL model that references the f_sales table defined earlier.
+**Table Creation:** Specific columns from the generated view can be selected to define tables for further operations.
 
-> <b>Note</b> Flash directly uses deployment.yml manifest file to create a lens.
+**Usage in Lens Model(SQL):** The tables created through the `init` attribute are used in SQL queries within Lens.
+
+For example, in the manifest referenced, the `f_sales` table is first loaded from the source, and a view named `sales` is created. A table called `f_sales` is then defined using this sales view. This table is subsequently referenced in SQL models within Lens.
+
+> <b>Note</b> Flash directly uses the deployment.yml manifest file to create a Lens.
 
 
 ## Deployment Manifest File
@@ -85,14 +85,13 @@ lens:
     name: flash-service-99 # flash service name
   repo:
     url: https://github.com/iamgroot/Lens
-    lensBaseDir: Lens/flash/model     # location where lens models are kept in the repo
+    lensBaseDir: Lens/source/flash/model     # location where lens models are kept in the repo
     syncFlags:
       - --ref=main
   api:
     replicas: 1
     logLevel: debug
     envs:
-      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
       LENS2_SOURCE_WORKSPACE_NAME: public
       LENS2_SOURCE_FLASH_PORT: 5433
     resources: # optional
@@ -107,7 +106,6 @@ lens:
     replicas: 1
     logLevel: debug
     envs:
-      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
       LENS2_SOURCE_WORKSPACE_NAME: public
       LENS2_SOURCE_FLASH_PORT: 5433
     resources: # optional
@@ -121,7 +119,6 @@ lens:
   router:
     logLevel: info
     envs:
-      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
       LENS2_SOURCE_WORKSPACE_NAME: public
       LENS2_SOURCE_FLASH_PORT: 5433
     resources: # optional
@@ -135,7 +132,6 @@ lens:
   iris:
     logLevel: info  
     envs:
-      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
       LENS2_SOURCE_WORKSPACE_NAME: public
       LENS2_SOURCE_FLASH_PORT: 5433
     resources: # optional
@@ -146,3 +142,21 @@ lens:
         cpu: 6000m
         memory: 6048Mi
 ```
+
+### **Key Configurations**
+
+#### **`Source`**
+
+- **`type`** The source section specifies that Flash is used as the data source (type: flash). This indicates that data for the Lens model will be loaded from the Flash service.
+
+- **`name`**: The Flash service is identified by the name flash-service-99. This name should match the deployed Flash service used for data ingestion.
+
+#### **`envs`**
+
+The following environment variables are defined under multiple components, including api, worker, router, and iris
+
+**Key Variables**
+
+- **`LENS2_SOURCE_WORKSPACE_NAME`**  It refers to the workspace where the Flash service is deployed. 
+
+- **`LENS2_SOURCE_FLASH_PORT`** The port number `5433` is specified for the Flash service. This port is used by Lens to establish communication with the Flash service. It ensures that all components—API, worker, router, and iris—can access the Flash service consistently.
