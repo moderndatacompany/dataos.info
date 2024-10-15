@@ -172,11 +172,11 @@ The drop-down menu under **logical table** allows users to switch between logica
 
 
 
-#### **logical table**
+#### **Logical table**
 
 This is the default view in the sidebar. It shows a list of logical tables, which are structured datasets containing dimensions and measures. Logical tables are often used for performing queries, such as analyzing account data, product information, or sales figures.
 
-**For** **example**, the above image contains three logical tables: account, product, and sales.
+**For example**, the above image contains three logical tables: account, product, and sales.
 
 <center>
 <img src="/interfaces/data_product_hub/exploration/Screenshot%20from%202024-09-23%2014-51-05.png" alt="DPH" style="width:20rem; border: 1px solid black;" />
@@ -188,7 +188,7 @@ As a particular table is expanded, the list of all its dimensions and measures i
 **Search Bar**: Just below the logical table title, the search bar allows users to filter and quickly find specific tables, dimensions, or measures by typing keywords.
 
 <center>
-<img src="/interfaces/data_product_hub/exploration/image%20(32).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/exploration/search_bar.png" alt="DPH" style="width:20rem; border: 1px solid black;" />
 </center>
 
 *Besides, Logical tables the model also contains views. In the **Lens model**, users can create two types of **views**, each serving a different purpose and approach in how data is accessed and presented. Here's a differentiation between the two types of views:*
@@ -567,5 +567,77 @@ For example, In the above image are the YAML Implementation files for the Lens m
 
 ### **GraphQL Tab**
 
-The GraphQL tab provides an interface for advanced users and developers to write and execute GraphQL queries. GraphQL enables precise data retrieval, allowing full control over the structure of the returned data. This is useful for performing complex or customized data extractions that extend beyond the standard capabilities of the Studio interface.
+The GraphQL tab provides an interface for advanced users and developers to programmatically interact with the data model. It displays the data returned by a GraphQL query alongside the query itself. This feature is useful for performing complex or customized data extractions that go beyond the standard capabilities of the Studio interface.
+
+The interface includes syntax highlighting,  autocompletion and automatic documentation and error highlighting. Users can utilize GraphiQL to interactively build both page and static queries.
+
+The GraphQL tab is designed as follows:
+
+
+<center>
+<img src="/interfaces/data_product_hub/exploration/graphql.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+</center>
+
+
+The GraphQL tab is divided into three sections:
+
+1. The left sidebar contains buttons for opening plugin panes and changing settings.
+2. The middle section is used to write queries.
+3. The right section displays the results of the executed queries.
+
+The left sidebar is further divided into a top and bottom section. The top section provides buttons for accessing the documentation explorer and query history. The bottom section contains buttons to refetch the schema, view keyboard shortcuts, and modify settings.
+
+In the middle section, queries can be written using the following format:
+
+```graphql
+query LensQuery {
+    table{}
+}
+```
+
+Within the curly braces, press "Ctrl + Space" (or "Shift + Space" as an alternate keyboard shortcut) to open the autocomplete window. This will prompt a query for either logical tables or metrics in the data model. 
+
+<center>
+<img src="/interfaces/data_product_hub/exploration/graphql_autocomplete.png" alt="DPH" style="width:20rem; border: 1px solid black;" />
+</center>
+
+Construct a query like below:
+
+```
+query LensQuery {
+  table {
+    sales {
+      source
+    }
+  }
+}
+```
+
+**Components:**
+
+- Operation Type (query): Specifies the type of operation.
+- Operation Name (LensQuery): Optional name for the query, useful for debugging.
+- Root Field (table): The entry point defined in the Query root type.
+- Arguments (limit: 10): Parameters to customize the data retrieval.
+- Nested Fields (sales, total_revenue, source): Specifies the exact data to fetch.
+
+
+Press the **Execute** button (which resembles a "Play" icon) or use "Ctrl + Enter" to run the GraphQL query. The data will be returned in the Result window.
+
+
+As user query the model, the queries get saved and can be accessed by clicking on the history icon. The query will be saved with the name given in the query. This can also be accessed in the Saved query pane on top of the panels. (For e.g., here FirstQuery, SecondQuery is the qury name.)
+
+<center>
+<img src="/interfaces/data_product_hub/exploration/graphql_history.png" alt="DPH" style="width:20rem; border: 1px solid black;" />
+</center>
+
+
+
+
+
+
+
+
+
+
 
