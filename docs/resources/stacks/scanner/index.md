@@ -129,7 +129,7 @@ Here you can find templates for the depot/non-depot Scanner workflows for the su
 | Lakehouse        | Icebase          |[Link](/resources/stacks/scanner/databases_and_warehouses/icebase/)     |
 | Messaging Service| Kafka            |[Link](/resources/stacks/scanner/messaging_services/kafka/)     |
 | Messaging Service| Fastbase/Pulsar  |[Link](/resources/stacks/scanner/messaging_services/fastbase/)    |
-| Dashboard Service| Atlas            |[Link](/resources/stacks/scanner/dashboards/atlas_scan/)      |
+<!-- | Dashboard Service| Atlas            |[Link](/resources/stacks/scanner/dashboards/atlas_scan/)      | -->
 | Dashboard Service| Redash           |[Link](/resources/stacks/scanner/dashboards/redash_scan/)      |
 | Dashboard Service| Superset         |[Link](/resources/stacks/scanner/dashboards/superset_scan/)      |
 
