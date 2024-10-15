@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Adding Visualizations to Dashboards
 
 This tutorial demonstrates the steps to create and add visualizations charts like Sankey, Sunburst, Treemap, Bar, etc., to an existing/new Dashboard. 

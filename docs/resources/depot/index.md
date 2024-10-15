@@ -566,7 +566,7 @@ By running the [Scanner](/resources/stacks/scanner/), you can scan the metadata 
 
 ### **Add Depot to Cluster Sources to Query the Data**
 
-To enable the [Minerva](/resources/cluster/#minerva) Query Engine to access a specific source system, you can add the Depot to the list of sources in the [Cluster](/resources/cluster/). This allows you to query the data and create dashboards using the DataOS [Workbench](/interfaces/workbench/) and [Atlas](/interfaces/atlas/). 
+To enable the [Minerva](/resources/cluster/#minerva) Query Engine to access a specific source system, you can add the Depot to the list of sources in the [Cluster](/resources/cluster/). This allows you to query the data using the DataOS [Workbench](/interfaces/workbench/). 
 
 ### **Create Policies upon Depots to Govern the Data**
 

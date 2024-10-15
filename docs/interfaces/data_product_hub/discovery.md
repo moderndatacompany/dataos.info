@@ -574,14 +574,8 @@ After saving the exploration as a perspective, follow the steps below to access 
 
 ## **Metrics**
 
-In the **Metrics** tab, key insights of the Data Products can be accessed to gather information, assess operations, and make quick, informed business decisions. To explore the **Metrics** tab, navigate to it, and a short description will be displayed. By default, all metrics are displayed grouped by use cases.
+In the [Metrics](/interfaces/data_product_hub/core_concepts/#metrics) tab, key insights of the Data Products can be accessed to gather information, assess operations, and make quick, informed business decisions. To explore the Metrics tab, navigate to it, and a short description will be displayed. By default, all Metrics are displayed grouped by use cases.
 
-
-<aside class="callout">
-
-🗣 A metric is an entity that, by default, provides a logical view of the logical table, containing only one measure and a time dimension.
-
-</aside>
 
 <center>
 <img src="/interfaces/data_product_hub/discovery/image%20(49).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
@@ -597,7 +591,7 @@ In the **Metrics** tab, key insights of the Data Products can be accessed to gat
 
 **Search the Metrics by keyword**
 
-Metrics of interest can be directly searched in the search bar by entering the name or keyword used in the metric name, as shown below.
+Metrics of interest can be directly searched in the search bar by entering the name or keyword used in the Metric name, as shown below.
 
 
 <center>
@@ -619,7 +613,7 @@ Metrics can be filtered by a particular owner by navigating to the **Filter** dr
 
 **Metrics recommendations based on domains**
 
-By default, the **Metrics** tab recommends metrics grouped by use cases. To get metric recommendations based on the domain, navigate to the **Use-case** dropdown, select the **Domain** option, and the metrics will be grouped by domains.
+By default, the **Metrics** tab recommends Metrics grouped by use cases. To get Metric recommendations based on the domain, navigate to the **Use-case** dropdown, select the **Domain** option, and the Metrics will be grouped by domains.
 
 <center>
 <img src="/interfaces/data_product_hub/discovery/image%20(53).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
