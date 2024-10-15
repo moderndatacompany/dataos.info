@@ -1,6 +1,6 @@
 # Data Product discovery
 
-Discovering data among thousands of datasets is difficult without rich metadata and faceted search. The Data Product Hub is used as a single Data Product catalog that aggregates metadata about all Data Products and presents the appropriate information to users based on their needs. The Data Product Hub is intended to help data consumers make timely decisions with the right data.
+Discovering data among thousands of datasets is difficult without rich metadata and faceted search. The Data Product Hub is used as a single [Data Product](/products/data_product/) catalog that aggregates metadata about all Data Products and presents the appropriate information to users based on their needs. The Data Product Hub is intended to help data consumers make timely decisions with the right data.
 
 A user-friendly interface is provided for Data Product discovery. Data Products can be discovered through a variety of strategies, including keyword searches and filters.
 
@@ -28,13 +28,13 @@ A simple yet powerful way to find Data Products is provided by typing the name, 
 
 ### **Filters**
 
-Multiple filter options further help narrow the search using parameters such as **Tier**, **Domain**, and **Owner**.
+Multiple filter options further help narrow the search using parameters such as [Tier](/interfaces/data_product_hub/core_concepts/#tier), [Domain](/interfaces/data_product_hub/core_concepts/#domain), and [Owner](/products/data_product/core_concepts/#data-product-owner).
 
-- **Tier:** Describes how the data product is organized, whether it follows a medallion architecture, is source-aligned, or is structured around specific entities or consumer needs.
+- **Tier:** Describes how the Data Product is organized, whether it follows a medallion architecture, is source-aligned, or is structured around specific entities or consumer needs.
 
-- **Domain:** Specifies the business domain to which the data product belongs. Multiple domains can be selected at once to filter for the desired Data Product.
+- **Domain:** Specifies the business domain to which the Data Product belongs. Multiple domains can be selected at once to filter for the desired Data Product.
 
-- **Owner:** Filters can be applied by owner, allowing users to direct questions to the appropriate person or team. The owner's DataOS User ID is used to list the various owners in the Owner dropdown, and only a single owner can be selected at a time.
+- **Owner:** Filters can be applied by owner, allowing users to direct questions to the appropriate person or team. The owner's DataOS User ID is used to list the various owners in the owner dropdown, and only a single owner can be selected at a time.
 
 
     <center>
@@ -91,9 +91,9 @@ On clicking a Data Product, an interface is opened that provides an overview of 
 
 ### **Top panel**
 
-The top panel of the Data Product details page displays the domain, name of the Data Product, description, Git repository link, JIRA link, tier, use-case, and owner.
+The top panel of the Data Product details page displays the [domain](/interfaces/data_product_hub/core_concepts/#domain), name of the Data Product, description, Git repository link, JIRA link, [tier](/interfaces/data_product_hub/core_concepts/#tier), [use case](/interfaces/data_product_hub/core_concepts/#use-case), and owner.
 
-Additionally, a button showcasing conformance with defined Accuracy, Completeness, Freshness, Schema, Uniqueness, and Validity constraints is displayed.
+Additionally, a button showcasing conformance with defined Accuracy, Completeness, Freshness, Schema, Uniqueness, and Validity [quality checks](/resources/stacks/soda/#defining-soda-checks) is displayed.
 
 <center>
   <img src="/interfaces/data_product_hub/discovery/annotely_image%20(4)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
