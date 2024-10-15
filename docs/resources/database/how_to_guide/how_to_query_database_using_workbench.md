@@ -84,7 +84,7 @@ Once you have created a Depot manifest, simply copy the  or relative path of the
 
 ## Target a cluster 
 
-Add Depot to Cluster Sources to enable the Minerva/Themis Query Engine to access database, you can create the Postgres [Depot](/resources/depot). This allows you to query the data and create dashboards using the DataOS Workbench and Atlas
+Add Depot to Cluster Sources to enable the Minerva/Themis Query Engine to access database, you can create the Postgres [Depot](/resources/depot). This allows you to query the data using the DataOS Workbench.
 
 Create a new Cluster manifest with specified depot address. Below is a sample Cluster manifest provided for reference.
 

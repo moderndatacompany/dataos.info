@@ -67,7 +67,7 @@ For example, in the manifest referenced, the `f_sales` table is first loaded fro
 
 ## Deployment Manifest File
 
-``` title="lens_deployment.yml" hl_lines="13-15"
+```yaml title="lens_deployment.yml" hl_lines="13-15"
 version: v1alpha
 name: "lens-flash-test-99"
 layer: user
