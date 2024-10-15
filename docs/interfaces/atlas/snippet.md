@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Snippet
 
 ## Create a Snippet
