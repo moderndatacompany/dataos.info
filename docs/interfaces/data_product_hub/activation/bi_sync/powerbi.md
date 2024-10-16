@@ -12,7 +12,7 @@ Access the **Home Page** of DataOS. From there, navigate to the **Data Product H
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
 
-### **Step 2: Browse and Select a Data Product**
+### **Step 2: Browse and select a Data Product**
 
 In the Data Product Hub, users should browse through the list of data products. Clicking on a specific data product to integrate with PowerBI. For example, selecting **Sales360** from the list allows exploration of the **Sales360** data product.
 
@@ -20,7 +20,7 @@ In the Data Product Hub, users should browse through the list of data products. 
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(2).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
 
-### **Step 3: Access Integration Options**
+### **Step 3: Access integration options**
 
 4. Locate the downloaded ZIP file on the local system and unzip the folder. Three files will be present in the folder. Open the 'public_sales360' file in Power BI. Ensure that all three files are kept together, as the other two files are essential for the semantic sync of the Data Product. 
 
@@ -28,7 +28,7 @@ In the Data Product Hub, users should browse through the list of data products. 
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(3).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
 
-### **Step 4: Download and Open the ZIP File**
+### **Step 4: Download and open the ZIP file**
 
 Locate the downloaded ZIP file on the local system and unzip the folder. Three files will be present in the folder. Open the 'public_sales360' file in Power BI. It is essential to keep all three files together, as the other two files are necessary for the semantic synchronization of the data product.
 
@@ -48,7 +48,7 @@ This downloads a `file.zip` archive that stores the main components of a Power B
 
 - **public-sales-360-table.pbip:** This file serves as a Power BI project template or configuration file. Power BI uses files like `.pbip` or `.pbix` to encapsulate reports, datasets, and visualizations. The `.pbip` file ties together the semantic model and report definitions from the other folders, acting as the entry point for working on the project in Power BI Desktop or the Power BI service.
 
-### **Step 5: Enter Credentials**
+### **Step 5: Enter credentials**
 
 Once the file is opened, a popup will appear prompting for the DataOS username and API key.
 
@@ -60,7 +60,7 @@ Once the file is opened, a popup will appear prompting for the DataOS username a
 <img src="/interfaces/data_product_hub/activation/bi_sync/Untitled17.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
 
-### **Step 6: Establish Connection**
+### **Step 6: Establish connection**
 
 Click the connect button. A popup will appear; click OK.
 
@@ -68,7 +68,7 @@ Click the connect button. A popup will appear; click OK.
 <img src="/interfaces/data_product_hub/activation/bi_sync/untitled18.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
 
-### **Step 7: View Data in Power BI**
+### **Step 7: View data in Power BI**
 
 After connecting, users can see tables and views containing dimensions and measures.
 
