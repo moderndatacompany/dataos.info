@@ -12,7 +12,7 @@ hide:
 
 # :interfaces-dataproducthub: Data Product Hub
 
-The Data Product Hub is a Graphical User Interface within DataOS where actionable [Data Products](/products/data_product/) , Metrics and Perspectives can be discovered by data analysts, business analysts, data scientists, and data app developers. These Data Products are curated to provide business value and serve as a foundation for executing various use cases. Key use cases include **Analytics**, **AI/ML**, **GenAI/LLM on structured enterprise data**, and **data sharing**.
+The Data Product Hub is a Graphical User Interface within DataOS where actionable [Data Products](/products/data_product/), Metrics and Perspectives can be discovered by data analysts, business analysts, data scientists, and data app developers. These Data Products are curated to provide business value and serve as a foundation for executing various use cases. Key use cases include **Analytics**, **AI/ML**, **GenAI/LLM on structured enterprise data**, and **data sharing**.
 
 In addition, access to DataAPIs, built on top of the Data Product layer is offered by the Data Product Hub, enhancing the ability to integrate and utilize data seamlessly. The platform bridges the gap between IT-managed data infrastructure and business teams, enabling consistent data access despite changes in the underlying data systems. By providing curated, trusted data in multiple formats, time-to-value for new use cases is significantly accelerated by the Data Product Hub, helping organizations reduce data total cost of ownership (TCO) and achieve more efficient and streamlined workflows.
 
