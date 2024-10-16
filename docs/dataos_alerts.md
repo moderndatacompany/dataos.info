@@ -3,9 +3,9 @@ DataOS, as a data operating system, provides robust observability and active mon
 
 This page provides a comprehensive overview of the alert mechanisms integrated within DataOS, offering a range of routes to bolster your decision-making process and optimize efficiency. 
 
-## Dashboard Alerts
+<!-- ## Dashboard Alerts
 
-Dashboard alerts provide immediate notifications regarding significant changes or updates in your business performance metrics or other crucial dashboard data. To learn more, refer to [Setting Up Dashboard Alerts in Atlas](dataos_alerts/dashboard_alerts.md).
+Dashboard alerts provide immediate notifications regarding significant changes or updates in your business performance metrics or other crucial dashboard data. To learn more, refer to [Setting Up Dashboard Alerts in Atlas](dataos_alerts/dashboard_alerts.md). -->
 
 ## Grafana Alerts
 

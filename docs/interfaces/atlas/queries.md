@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Queries
 
 ## Edit a Query

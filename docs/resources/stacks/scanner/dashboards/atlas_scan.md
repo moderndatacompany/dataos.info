@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Atlas
 
 You can scan metadata from Atlas for a dashboard with non-depot Scanner workflows. In this document, find requirements and YAML configurations to connect to Atlas for extracting metadata for the created dashboards. 
