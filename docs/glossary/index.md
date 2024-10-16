@@ -123,7 +123,7 @@ hide:
 | [Metis](/interfaces/metis/) | Metis is a metadata manager, cataloging service, and database within the DataOS environment assissting with discoverability and observability capabilities for your enterprise data. |
 | [Minerva](/resources/cluster/#minerva) | Minerva is a query engine that enables access to data for business insights. It is an interactive query engine based on Trino that makes it easy to analyze big data using SQL. |
 |[Measures](/resources/lens/concepts/#measures)|Measures are quantifications or numerical value on which statistical calculations can be applied.|
-|Metric|A metric is a focused measurement in a data model that highlights key performance indicators. It includes relevant dimensions for grouping and filtering, enabling clear analysis of business performance. |
+|[Metric](/interfaces/data_product_hub/core_concepts/#metrics)|A metric is a focused measurement in a data model that highlights key performance indicators. It includes relevant dimensions for grouping and filtering, enabling clear analysis of business performance. |
 
 ## n 
 
@@ -147,6 +147,7 @@ hide:
 | Term | Description |
 | --- | --- |
 | [PDP](/resources/policy/core_concepts/#policy-decision-point-pdp) | Policy Desicion Point is the service that evaluates a specific subject-predicate-object-metadata request against the current policies to determine if access to the DataOS resource/ environment is allowed or denied. |
+| [Perspectives](/interfaces/data_product_hub/core_concepts/#perspectives) | Perspective is a saved exploration of a Data Product in Data Product Hub. |
 | [PEP](/resources/policy/#policy-enforcement-point-pep/) | Policy Enforcement Point is responsible for execution of the decision returned from PDP. |
 | Poros | DataOS Poros is an orchestration engine for managing workflows, which are run for data transformation and movement. Working in coordination with Kubernetes, Poros efficiently allocates resources to various running jobs and services for data processing.  |
 | [Policy](/resources/policy/) | Policy is a DataOS Resource which governs the behaviour of users(applications and persons). In DataoS, two types of policies can be created- Access Policy & Data Policy.  |
