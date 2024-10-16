@@ -4,9 +4,9 @@
 
 - **Curl**: Ensure `curl` is installed on the system. For Windows users, `curl.exe` may be required.
 
-- **Lens API Endpoint**: The API endpoint provided by Lens to sync data with meta endpoint access.
+- **Lens API endpoint**: The API endpoint provided by Lens to sync data with meta endpoint access.
 
-- **Access Credentials**: Access credentials such as username, password, and host are required for Superset.
+- **Access credentials**: Access credentials such as username, password, and host are required for Superset.
 
 Superset requires the login credentials (username and password) and the host address where Superset is hosted. The command establishes a database and table with a live connection to the Lens model in Superset, enabling direct interaction with and visualization of data from Lens within the Superset environment.
 
@@ -44,7 +44,7 @@ To sync the Lens model with Superset, follow these steps:
     }
     ```
 
-**Command Parameters:**
+**Command parameters:**
 
 - **`URL`**: `https://liberal-monkey.dataos.app/lens2/sync/api/v1/superset/public:sales360`. This is the endpoint for syncing with Superset.
 
@@ -82,7 +82,7 @@ Please follow the steps outlined to see the result:
       <img src="/resources/lens/bi_integration/superset2.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
   </div>
 
-**Step 3 Navigate to Datasets Tab:** Here, each entity will be available in the form of datasets.
+**Step 3 Navigate to Datasets tab:** Here, each entity will be available in the form of datasets.
 
   <div style="text-align: center;">
       <img src="/resources/lens/bi_integration/superset3.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
@@ -91,6 +91,6 @@ Please follow the steps outlined to see the result:
 The setup is complete. Further exploration and analysis can be performed in Superset.
 
 
-## Data Policies and Security
+## Data policies and security
 
 Any data masking, restrictions, or permissions defined by the publisher will automatically be enforced for all viewers of the report, ensuring consistent data security and compliance. However, the behavior of data policies (e.g., masking) depends on who is the user of the Superset.

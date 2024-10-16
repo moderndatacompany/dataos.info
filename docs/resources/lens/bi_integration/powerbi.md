@@ -4,17 +4,17 @@
 
 - **Curl**: Ensure you have `curl` installed on your system. Windows users may need to use `curl.exe`.
 
-- **Lens API Endpoint**: The API endpoint provided by Lens to sync data with meta endpoint access.
+- **Lens API endpoint**: The API endpoint provided by Lens to sync data with meta endpoint access.
 
-- **Access Credentials**: You will need access credentials such as username, password, and host for Power BI.
+- **Access credentials**: You will need access credentials such as username, password, and host for Power BI.
 
-- **DataOS API KEY**: Ensure you have your DataOS API key. The API key can be obtained by executing the command below.
+- **DataOS API key**: Ensure you have your DataOS API key. The API key can be obtained by executing the command below.
 
     ```bash
     dataos-ctl user apikey get
     ```
 
-**Curl Command**
+**Curl command**
 
 ```bash
 curl --location --request POST '<URL>' --header 'apikey: <apikey>' --output <FILE_NAME>.zip
@@ -68,26 +68,26 @@ To begin syncing a Lens model, the following steps should be followed:
 curl --location --request POST 'https://liberal-monkey.dataos.app/lens2/sync/api/v1/powerbi/curriculum:sales360' --header 'apikey: abcdefgh==' --output file.zip 
 
 
-**Step 2 Download the Zip File:**  Once the command is executed, a zip file will be downloaded to the specified directory.
+**Step 2 Download the zip file:**  Once the command is executed, a zip file will be downloaded to the specified directory.
 
 <div style="text-align: center;">
     <img src="/resources/lens/bi_integration/powerbi1.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
 
-**Step 3 Unzip the File:** The downloaded file should be unzipped. Three folders will be found inside, all of which are necessary for semantic synchronization with Power BI.
+**Step 3 Unzip the file:** The downloaded file should be unzipped. Three folders will be found inside, all of which are necessary for semantic synchronization with Power BI.
 
 <div style="text-align: center;">
     <img src="/resources/lens/bi_integration/powerbi2.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-**Step 4 Open the Power BI File:** Open the Power BI file using Power BI Desktop.
+**Step 4 Open the PowerBI file:** Open the Power BI file using Power BI Desktop.
 
 <div style="text-align: center;">
     <img src="/resources/lens/bi_integration/powerbi3.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-**Step 5 Enter Credentials:**  After opening the file, a popup will prompt for credentials. The DataOS username and API key should be entered.
+**Step 5 Enter credentials:**  After opening the file, a popup will prompt for credentials. The DataOS username and API key should be entered.
 
 <div style="text-align: center;">
     <img src="/resources/lens/bi_integration/powerbi4.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
@@ -104,30 +104,30 @@ curl --location --request POST 'https://liberal-monkey.dataos.app/lens2/sync/api
     <img src="/resources/lens/bi_integration/powerbi6.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-**Step 7 Access Tables with Dimensions and Measures:** Upon successful connection, tables and views will be accessible, displaying dimensions and measures.
+**Step 7 Access tables with dimensions and measures:** Upon successful connection, tables and views will be accessible, displaying dimensions and measures.
 
 
 <div style="text-align: center;">
     <img src="/resources/lens/bi_integration/powerbi7.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-## Important Considerations
+## Important considerations
 
 - Measures in Power BI are typically named as **`m_total_revenue`**.
 - The connection is live, meaning any changes to the underlying data or measure logic will be reflected in Power BI.
 - If schema changes occur, such as the addition of new dimensions and measures, the steps outlined above will need to be repeated.
 
-## Best Practices
+## Best practices
 
-### Version Compatibility
+Adhering to best practices ensures that you effectively utilize the Data Product Hub and maintain compatibility with the latest features and updates. Following these guidelines will help optimize your workflow, enhance performance, and prevent potential issues.
+
+### **Version compatibility**
 
 - Power BI versions released after **June 15, 2023**, support .pbib files. It is advisable to use a version released after this date.
 
 - Beginning with Version 2.132.908.0 (August 2024), .pbip files have moved from preview to general availability. This transition allows for the use of .pbip files without the need to enable any preview settings. It is strongly recommended to download Power BI Version 2.132.908.0 or later to fully utilize .pbip files. In earlier versions, enabling a preview feature was necessary, but this is no longer required in the latest version.
 
-
-
-### **File Handling**
+### **File handling**
 
 Ensure that `.pbip` folders are fully extracted before opening them. Failure to do so may result in missing file errors, as shown below:
 
@@ -135,17 +135,17 @@ Ensure that `.pbip` folders are fully extracted before opening them. Failure to 
     <img src="/resources/lens/bi_integration/image.png" alt="Superset Configuration" style="max-width: 60%; height: auto; border: 1px solid #000;">
 </div>
 
-### Data Retrieval and Field Selection Considerations
+### **Data retrieval and field selection considerations**
 
 - **Row Limit:** The Lens API has a maximum return limit of 50,000 rows per request. To obtain additional data, it is necessary to set an offset. This row limit is in place to manage resources efficiently and ensure optimal performance.
 
 - **Selection:** It is important to select fields from tables that are directly related or logically joined, as the system does not automatically identify relationships between tables through transitive joins. Selecting fields from unrelated tables may result in incorrect or incomplete results.
 
 
-### Data Policies and Security
+### **Data policies and security**
 
-- Data masking, restrictions, or permissions established by the publisher are automatically enforced for all report viewers, ensuring consistent data security and compliance. The behavior of these data policies, such as masking, may vary based on the user of the Power BI desktop.
+Data masking, restrictions, or permissions established by the publisher are automatically enforced for all report viewers, ensuring consistent data security and compliance. The behavior of these data policies, such as masking, may vary based on the user of the Power BI desktop.
 
-### Regular Testing and Validation
+### **Regular testing and validation**
 
 Regular testing and validation of reports are recommended after changes are made to the Lens definitions. This practice ensures that updates to dimensions, measures, or data models are accurately reflected in the reports and helps identify any issues early in the process.
