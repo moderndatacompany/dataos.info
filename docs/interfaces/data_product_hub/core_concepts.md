@@ -50,7 +50,7 @@ For example, in the 'Average Spent Per Category' metric, which shows a total amo
 
 ## Perspectives
 
-A [Perspective](/interfaces/data_product_hub/discovery/#perspectives) is a saved exploration of a Data Product. A Perspective can be created for any Data Product that has an exposed data model ([Lens model](/resources/lens/)). To explore a [Data Product](/product/data_product/), navigate to the [Explore page](/interfaces/data_product_hub/exploration/), where the Data Product can be explored in detail. After exploration, the exploration can be saved as a Perspective, which can then be accessed in the Perspective tab. Below are images showcasing the exploration process, saving an exploration as a Perspective, and how to access a saved Perspective. To save and access the Perspective, please refer to [this section](/interfaces/data_product_hub/discovery/#perspectives).
+A [Perspective](/interfaces/data_product_hub/discovery/#perspectives) is a saved exploration of a Data Product. A Perspective can be created for any Data Product that has an exposed data model ([Lens model](/resources/lens/)). To explore a [Data Product](/products/data_product/), navigate to the [Explore page](/interfaces/data_product_hub/exploration/), where the Data Product can be explored in detail. After exploration, the exploration can be saved as a Perspective, which can then be accessed in the Perspective tab. Below are images showcasing the exploration process, saving an exploration as a Perspective, and how to access a saved Perspective. To save and access the Perspective, please refer to [this section](/interfaces/data_product_hub/discovery/#perspectives).
 
 === "Explore section"
     <center>
@@ -74,7 +74,7 @@ A [Perspective](/interfaces/data_product_hub/discovery/#perspectives) is a saved
 
 ## Inputs
 
-In the Data Product Hub, an input is a dataset fed into the Data Product. A Data Product can have multiple inputs, as shown below. An input is populated from the input dataset referenced in the Data Product manifest file. For example in the 'Customer Churn Prediction' Data Product the input `customer` is populated from the address `dataos://icebase:customer_relationship_management/customer` referred in its manifest file, as shown below.
+In the Data Product Hub, an [input](/interfaces/data_product_hub/discovery/#inputs-tab) is a dataset fed into the Data Product. A Data Product can have multiple inputs, as shown below. An input is populated from the input dataset referenced in the Data Product manifest file. For example in the 'Customer Churn Prediction' Data Product the input `customer` is populated from the address `dataos://icebase:customer_relationship_management/customer` referred in its manifest file, as shown below.
 
 <center>
 <img src="/interfaces/data_product_hub/input.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -84,7 +84,7 @@ In the Data Product Hub, an input is a dataset fed into the Data Product. A Data
 
 ## Outputs
 
-In the Data Product Hub, an output is a materialized dataset generated from the Data Product. A Data Product can have multiple outputs, as shown below. An output is populated from the output dataset referenced in the Data Product manifest file. For example in the 'Customer Churn Prediction' Data Product the output `churn_probability_per_customer` is populated from the address `dataos://icebase:customer_relationship_management/churn_probability_per_customer` referred in its manifest file, as shown below.
+In the Data Product Hub, an [output](/interfaces/data_product_hub/discovery/#outputs-tab) is a materialized dataset generated from the Data Product. A Data Product can have multiple outputs, as shown below. An output is populated from the output dataset referenced in the Data Product manifest file. For example in the 'Customer Churn Prediction' Data Product the output `churn_probability_per_customer` is populated from the address `dataos://icebase:customer_relationship_management/churn_probability_per_customer` referred in its manifest file, as shown below.
 
 <center>
 <img src="/interfaces/data_product_hub/output.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -94,7 +94,7 @@ In the Data Product Hub, an output is a materialized dataset generated from the 
 
 ## Data APIs
 
-A data API refers to an application programming interface (API) that allows applications to interact with and retrieve data from a data source, such as a database or data warehouse, in a structured and controlled manner. Data APIs are used to enable communication between software applications and databases, allowing developers to query, filter, and manipulate data without directly interacting with the underlying data storage systems. Within DataOS, one can create the data APIs using [Talos Stack](/resources/stacks/talos/).
+A [data API](/interfaces/data_product_hub/discovery/#data-apis-tab) refers to an application programming interface (API) that allows applications to interact with and retrieve data from a data source, such as a database or data warehouse, in a structured and controlled manner. Data APIs are used to enable communication between software applications and databases, allowing developers to query, filter, and manipulate data without directly interacting with the underlying data storage systems. Within DataOS, one can create the data APIs using [Talos Stack](/resources/stacks/talos/).
 
 ## Tier
 
