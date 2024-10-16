@@ -1,4 +1,4 @@
-# Data API Integration
+# Data API integration
 
 You can consume the Data Product for various purposes using the API endpoint given in the Access Options tab, follow the below steps to test the API endpoint.
 
