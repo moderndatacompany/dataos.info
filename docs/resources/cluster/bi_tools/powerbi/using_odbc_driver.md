@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # DataOS Integration with Power BI Using ODBC Driver
 
 This article will help you to set up the connection between DataOS and Power BI. It provides specific steps needed to fetch data from DataOS into Power BI using Simba Presto ODBC driver.

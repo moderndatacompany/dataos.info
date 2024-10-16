@@ -142,23 +142,23 @@ nav:
     - Architecture: architecture/index.md
     - Interfaces: 
       - interfaces/index.md
-      - Atlas: 
-        - interfaces/atlas/index.md
-        - Dashboards: 
-          - interfaces/atlas/dashboards/index.md
-          - Adding Visualizations to Dashboard: interfaces/atlas/dashboards/adding_visualizations/index.md
-        - Queries: interfaces/atlas/queries.md
-        - Snippet: interfaces/atlas/snippet.md
-        - Alerts: interfaces/atlas/alerts.md
-        - Destinations: interfaces/atlas/destinations.md
-        - Integration: 
-          - interfaces/atlas/bi_tools/index.md
-          - Power BI: 
-            - interfaces/atlas/bi_tools/powerbi/index.md
-            - Using Connector: interfaces/atlas/bi_tools/powerbi/dataos_connector_powerbi.md
-            - Using ODBC Driver: interfaces/atlas/bi_tools/powerbi/using_odbc_driver.md
-          - Tableau: interfaces/atlas/bi_tools/tableau/index.md
-          - IBM SPSS: interfaces/atlas/bi_tools/spss/index.md
+      # - Atlas: 
+      #   - interfaces/atlas/index.md
+      #   - Dashboards: 
+      #     - interfaces/atlas/dashboards/index.md
+      #     - Adding Visualizations to Dashboard: interfaces/atlas/dashboards/adding_visualizations/index.md
+      #   - Queries: interfaces/atlas/queries.md
+      #   - Snippet: interfaces/atlas/snippet.md
+      #   - Alerts: interfaces/atlas/alerts.md
+      #   - Destinations: interfaces/atlas/destinations.md
+      #   - Integration: 
+      #     - interfaces/atlas/bi_tools/index.md
+      #     - Power BI: 
+      #       - interfaces/atlas/bi_tools/powerbi/index.md
+      #       - Using Connector: interfaces/atlas/bi_tools/powerbi/dataos_connector_powerbi.md
+      #       - Using ODBC Driver: interfaces/atlas/bi_tools/powerbi/using_odbc_driver.md
+      #     - Tableau: interfaces/atlas/bi_tools/tableau/index.md
+      #     - IBM SPSS: interfaces/atlas/bi_tools/spss/index.md
       - Audiences: 
         - interfaces/audiences/index.md
         - Audiences UI: interfaces/audiences/audiences_ui/index.md
@@ -179,6 +179,7 @@ nav:
         - Command Reference: interfaces/cli/command_reference.md
       - Data Product Hub: 
         - interfaces/data_product_hub/index.md
+        - Core Concepts: interfaces/data_product_hub/core_concepts.md
         - Data Product Discovery: interfaces/data_product_hub/discovery.md
         - Data Product Exploration: interfaces/data_product_hub/exploration.md
         - Data Product Activation:
@@ -266,7 +267,15 @@ nav:
           - Configurations: 
             - Manifest Reference: resources/cluster/configurations.md
             - Connectors: resources/cluster/connectors_configuration.md
-            - Setting Up CLI Client: resources/cluster/cli_client.md
+          - Integration: 
+            - resources/cluster/bi_tools/index.md
+            - Power BI: 
+              - resources/cluster/bi_tools/powerbi/index.md
+              - Using Connector: resources/cluster/bi_tools/powerbi/dataos_connector_powerbi.md
+              - Using ODBC Driver: resources/cluster/bi_tools/powerbi/using_odbc_driver.md
+            - Tableau: resources/cluster/bi_tools/tableau/index.md
+            - IBM SPSS: resources/cluster/bi_tools/spss/index.md
+            - CLI Client: resources/cluster/cli_client.md
           - Tuning:
             - Query Execution Optimization: resources/cluster/query_optimization.md
             - Performance Tuning: resources/cluster/performance_tuning.md

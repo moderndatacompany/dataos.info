@@ -74,9 +74,9 @@ The prepend toggle allows you to keep the previous SQL statements in the query p
 In Workbench, you can comment out multiple lines of SQL statement by starting with `/*` and ending with ` */`. Any text between `/*` and ` */` will be ignored. You can also highlight multiple lines and press `Ctrl+Shift+?` (Windows, Linux) or `Command+Shift+?` to comment/uncomment.</aside>
 >
 
-One can now directly export the results of the query to a BI tool. Refer to the Atlas section to learn more.
+One can now directly export the results of the query to a BI tool. 
 
-### **Atlas**
+<!-- ### **Atlas**
 
 Atlas is an in-built BI solution that is used to create customized reports/dashboards on any datasets with visualizations. In the result pane, hover over the three vertically aligned dots. Click it, and go to the Atlas option.
 
@@ -87,7 +87,7 @@ Atlas is an in-built BI solution that is used to create customized reports/dashb
 
 When you select the Atlas option, the pop-up will ask you for the query name. Type a name and click on `Export` it. It will immediately open Atlas in a new tab. 
 
-To learn more, click here : Link to Atlas. 
+To learn more, click here : Link to Atlas.  -->
 
 ### **Analyze**
 

@@ -182,7 +182,7 @@ Click on the query seen in the table format of query result.
 ![Screenshot 2024-02-28 at 5.21.39 PM.png](/quick_guides/use_lens/Screenshot_2024-02-28_at_5.21.39_PM.png)
 
 <aside class="callout">
-🗣 Once you have created your lens, you can use it as a data source in Atlas/Navigator and run the copied queries to create charts and dashboards.  Click here to learn how to create Dashboards.
+🗣 Once you have created your lens, you can use it as a data source in Navigator and run the copied queries to create charts and dashboards.  Click here to learn how to create Dashboards.
 
 </aside>
 

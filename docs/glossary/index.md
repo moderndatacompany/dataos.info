@@ -17,9 +17,9 @@ hide:
 | --- | --- |
 | [Access Policy](/resources/policy/#access-policy) | An access policy in DataOS serves as a regulatory mechanism that governs user authorizations by defining rules for granting or denying access to specific actions. These policies determine whether a user, referred to as the subject, is authorized to perform a particular action, known as the predicate, on a given dataset, API path, or other resources, referred to as objects. Read about [Bifrost](/interfaces/bifrost/) to establish access control via a Graphical User Interface.  |
 | [Airbyte](/resources/depot/list_of_connectors/) | Airbyte is a modern ELT data pipeline tool that streamlines data integration and replication by efficiently collecting data from diverse sources and making it available for analysis and storage. DataOS seamlessly integrates with Airbyte and provides a graphical user interface to enable access to Airbyte connectors. This integration empowers users to leverage Airbyte's functionalities effortlessly within the DataOS ecosystem. |
-| [Alerts](/interfaces/atlas/#set-up-alerts) | DataOS allows you to monitor & setup alerts at different stages of the data product journey. For example, you can setup Metrics Alerts in DataOS to serve a notification that informs you when a specific field returned by a query meets a predefined threshold or set of criteria; you can setup Workflow Alerts to get notified of breaks in the data pipelines; you can also setup alerts for quality checks, data changes, and a lot more. |
+<!-- | [Alerts](/interfaces/atlas/#set-up-alerts) | DataOS allows you to monitor & setup alerts at different stages of the data product journey. For example, you can setup Metrics Alerts in DataOS to serve a notification that informs you when a specific field returned by a query meets a predefined threshold or set of criteria; you can setup Workflow Alerts to get notified of breaks in the data pipelines; you can also setup alerts for quality checks, data changes, and a lot more. | -->
 | [Assertions]() | Assertions are custom validation rules tailored to a specific business domain. They are essential in evaluating the suitability of datasets for their intended purpose. By implementing assertions, datasets can undergo additional validation checks, leading to enhanced data quality.  |
-| [Atlas](/interfaces/atlas/) | A built-in business intelligence (BI) tool that enables you to generate visualizations, and create interactive dashboards. |
+<!-- | [Atlas](/interfaces/atlas/) | A built-in business intelligence (BI) tool that enables you to generate visualizations, and create interactive dashboards. | -->
 | [Audiences](/interfaces/audiences/) | It is an application derived from Lens that uses the semantic data models created through Lens to identify and categorize specific groups of people who have similar characteristics, traits, or behaviors. These categorized groups are referred to as audiences. |
 | [Authorization Atoms](/interfaces/bifrost/) | Each predicate and object in an Access Policy is an Authorization Atom. This allows us to use them in a composable manner to create modular use cases or policies. |
 
@@ -123,7 +123,7 @@ hide:
 | [Metis](/interfaces/metis/) | Metis is a metadata manager, cataloging service, and database within the DataOS environment assissting with discoverability and observability capabilities for your enterprise data. |
 | [Minerva](/resources/cluster/#minerva) | Minerva is a query engine that enables access to data for business insights. It is an interactive query engine based on Trino that makes it easy to analyze big data using SQL. |
 |[Measures](/resources/lens/concepts/#measures)|Measures are quantifications or numerical value on which statistical calculations can be applied.|
-|Metric|A metric is a focused measurement in a data model that highlights key performance indicators. It includes relevant dimensions for grouping and filtering, enabling clear analysis of business performance. |
+|[Metric](/interfaces/data_product_hub/core_concepts/#metrics)|A metric is a focused measurement in a data model that highlights key performance indicators. It includes relevant dimensions for grouping and filtering, enabling clear analysis of business performance. |
 
 ## n 
 
@@ -147,6 +147,7 @@ hide:
 | Term | Description |
 | --- | --- |
 | [PDP](/resources/policy/core_concepts/#policy-decision-point-pdp) | Policy Desicion Point is the service that evaluates a specific subject-predicate-object-metadata request against the current policies to determine if access to the DataOS resource/ environment is allowed or denied. |
+| [Perspectives](/interfaces/data_product_hub/core_concepts/#perspectives) | Perspective is a saved exploration of a Data Product in Data Product Hub. |
 | [PEP](/resources/policy/#policy-enforcement-point-pep/) | Policy Enforcement Point is responsible for execution of the decision returned from PDP. |
 | Poros | DataOS Poros is an orchestration engine for managing workflows, which are run for data transformation and movement. Working in coordination with Kubernetes, Poros efficiently allocates resources to various running jobs and services for data processing.  |
 | [Policy](/resources/policy/) | Policy is a DataOS Resource which governs the behaviour of users(applications and persons). In DataoS, two types of policies can be created- Access Policy & Data Policy.  |
