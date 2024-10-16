@@ -1,7 +1,6 @@
 ---
-title: Atlas
 search:
-  boost: 2
+  exclude: true
 ---
 
 # :material-view-dashboard-outline: Atlas

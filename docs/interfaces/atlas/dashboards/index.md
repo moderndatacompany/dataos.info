@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Dashboards
 ## Create and Manage Dashboards
 
