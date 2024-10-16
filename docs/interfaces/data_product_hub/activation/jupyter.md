@@ -1,4 +1,4 @@
-# Jupyter Notebook Integration
+# Jupyter Notebook integration
 
 You can consume a Data Product to build the AI/ML models using Jupyter Notebook. Following are the steps to connect the Data Product to the Jupyter Notebooks.
 
