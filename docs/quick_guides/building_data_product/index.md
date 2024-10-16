@@ -235,15 +235,15 @@ This section outlines data product-specific attributes such as Bundle resource, 
         
         ```yaml
         inputs:
-          - description: Fetching sales data from the S3 bucket, for comprehensive analysis of sales metrics, providing insights into revenue trends, performance tracking, and decision-making support.
+          - description: Fetching sales data from lakehouse, for comprehensive analysis of sales metrics, providing insights into revenue trends, performance tracking, and decision-making support.
             refType: dataos
             ref: dataset:icebase:sales360mockdb:f_sales
         
-          - description: Pulling customer data from the S3 bucket, for understanding customer demographics, behaviors, preferences and customer segmentation.
+          - description: Pulling customer data from bigquery, for understanding customer demographics, behaviors, preferences and customer segmentation.
             refType: depot
             ref: dataos://bigquery:sales_360/customer_data_master
         
-          - description: Fetching product data from the S3 bucket,to get a full view of the product portfolio, product performance analysis, and market positioning strategies.
+          - description: Fetching product data from Bigquery,to get a full view of the product portfolio, product performance analysis, and market positioning strategies.
             refType: depot
             ref: dataos://bigquery:sales_360/product_data_master
         
