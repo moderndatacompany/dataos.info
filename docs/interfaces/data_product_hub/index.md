@@ -14,7 +14,7 @@ hide:
 
 The Data Product Hub is a Graphical User Interface within DataOS where actionable [Data Products](/products/data_product/), Metrics and Perspectives can be discovered by data analysts, business analysts, data scientists, and data app developers. These Data Products are curated to provide business value and serve as a foundation for executing various use cases. Key use cases include **Analytics**, **AI/ML**, **GenAI/LLM on structured enterprise data**, and **data sharing**.
 
-In addition, access to DataAPIs, built on top of the Data Product layer is offered by the Data Product Hub, enhancing the ability to integrate and utilize data seamlessly. The platform bridges the gap between IT-managed data infrastructure and business teams, enabling consistent data access despite changes in the underlying data systems. By providing curated, trusted data in multiple formats, time-to-value for new use cases is significantly accelerated by the Data Product Hub, helping organizations reduce data total cost of ownership (TCO) and achieve more efficient and streamlined workflows.
+In addition, access to [Data APIs](/resources/stacks/talos/), built on top of the Data Product layer is offered by the Data Product Hub, enhancing the ability to integrate and utilize data seamlessly. The platform bridges the gap between IT-managed data infrastructure and business teams, enabling consistent data access despite changes in the underlying data systems. By providing curated, trusted data in multiple formats, time-to-value for new use cases is significantly accelerated by the Data Product Hub, helping organizations reduce data total cost of ownership (TCO) and achieve more efficient and streamlined workflows. To understand the key concepts of Data Product Hub, refer to the following link: [Core Concepts](/interfaces/data_product_hub/core_concepts/).
 
 ## Key features
 
@@ -62,7 +62,7 @@ A central layer for generating APIs, connecting to BI/analytics tools, and AI an
 ## **Data Product discovery**
 
 The right Data Products can be discovered to make timely business decisions. In this section, the Data Product Hub interface is explained in detail to discover potential Data Products for a specific use case. To get started with the Data Product Hub, click on Data Product Hub 2.0, and you will be redirected to the Data Product Hub home page.
-For more information, check out the [Data Product discovery](/interfaces/data_product_hub/discovery/)
+For more information, check out the [Data Product discovery](/interfaces/data_product_hub/discovery/).
 
 <center>
   <img src="/interfaces/data_product_hub/dataos.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -211,7 +211,7 @@ Essential strategies to ensure efficient and optimal usage of the Data Product H
 
 ## Examples
 
-This section involves detailed, step-by-step guides for solving specific business use cases using the Data Product Hub. Each section focuses on a particular aspect of DPH, such as discovering relevant Data Products, exploring them in-depth, and integrating the data into external tools like BI platforms and Jupyter Notebooks. These examples demonstrate how data analysts and business users can collaborate to solve real-world challenges efficiently. For more information, check out the [examples](interfaces/data_product_hub/recipe/).
+This section involves detailed, step-by-step guides for solving specific business use cases using the Data Product Hub. Each section focuses on a particular aspect of DPH, such as discovering relevant Data Products, exploring them in-depth, and integrating the data into external tools like BI platforms and Jupyter Notebooks. These examples demonstrate how data analysts and business users can collaborate to solve real-world challenges efficiently. For more information, check out the [examples](/interfaces/data_product_hub/recipe/).
 
 
 

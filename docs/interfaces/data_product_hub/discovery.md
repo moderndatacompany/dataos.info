@@ -1,6 +1,6 @@
 # Data Product discovery
 
-Discovering data among thousands of datasets is difficult without rich metadata and faceted search. The Data Product Hub is used as a single Data Product catalog that aggregates metadata about all Data Products and presents the appropriate information to users based on their needs. The Data Product Hub is intended to help data consumers make timely decisions with the right data.
+Discovering data among thousands of datasets is difficult without rich metadata and faceted search. The Data Product Hub is used as a single [Data Product](/products/data_product/) catalog that aggregates metadata about all Data Products and presents the appropriate information to users based on their needs. The Data Product Hub is intended to help data consumers make timely decisions with the right data.
 
 A user-friendly interface is provided for Data Product discovery. Data Products can be discovered through a variety of strategies, including keyword searches and filters.
 
@@ -28,11 +28,11 @@ A simple yet powerful way to find Data Products is provided by typing the name, 
 
 ### **Filters**
 
-Multiple filter options further help narrow the search using parameters such as **Tier**, **Domain**, and **Owner**.
+Multiple filter options further help narrow the search using parameters such as [Tier](/interfaces/data_product_hub/core_concepts/#tier), [Domain](/interfaces/data_product_hub/core_concepts/#domain), and [Owner](/products/data_product/core_concepts/#data-product-owner).
 
-- **Tier:** Describes how the data product is organized, whether it follows a medallion architecture, is source-aligned, or is structured around specific entities or consumer needs.
+- **Tier:** Describes how the Data Product is organized, whether it follows a medallion architecture, is source-aligned, or is structured around specific entities or consumer needs.
 
-- **Domain:** Specifies the business domain to which the data product belongs. Multiple domains can be selected at once to filter for the desired Data Product.
+- **Domain:** Specifies the business domain to which the Data Product belongs. Multiple domains can be selected at once to filter for the desired Data Product.
 
 - **Owner:** Filters can be applied by owner, allowing users to direct questions to the appropriate person or team. The owner's DataOS User ID is used to list the various owners in the Owner dropdown, and only a single owner can be selected at a time.
 
@@ -75,7 +75,7 @@ All starred Data Products can be found in the 'Favorites' tab.
 
 ## Get a quick glance of the Data Products
 
-For each Data Product displayed on the Data Products page, some basic information is shown on the Data Product card. The name of the Data Product, description, tier, and domain information can be viewed for each Data Product, while each one is categorized by use-case.
+For each Data Product displayed on the Data Products page, some basic information is shown on the Data Product card. The name of the Data Product, description, [tier](/interfaces/data_product_hub/core_concepts/#tier), and [domain](/interfaces/data_product_hub/core_concepts/#domain) information can be viewed for each Data Product, while each one is categorized by use-case.
 
 <center>
   <img src="/interfaces/data_product_hub/discovery/image%20(30).png" alt="DPH" style="width:20rem; border: 1px solid black;" />
@@ -91,9 +91,9 @@ On clicking a Data Product, an interface is opened that provides an overview of 
 
 ### **Top panel**
 
-The top panel of the Data Product details page displays the domain, name of the Data Product, description, Git repository link, JIRA link, tier, use-case, and owner.
+The top panel of the Data Product details page displays the [domain](/interfaces/data_product_hub/core_concepts/#domain), name of the Data Product, description, Git repository link, JIRA link, [tier](/interfaces/data_product_hub/core_concepts/#tier), [use case](/interfaces/data_product_hub/core_concepts/#use-case), and owner.
 
-Additionally, a button showcasing conformance with defined Accuracy, Completeness, Freshness, Schema, Uniqueness, and Validity constraints is displayed.
+Additionally, a button showcasing conformance with defined Accuracy, Completeness, Freshness, Schema, Uniqueness, and Validity [quality checks](/resources/stacks/soda/#defining-soda-checks) is displayed.
 
 <center>
   <img src="/interfaces/data_product_hub/discovery/annotely_image%20(4)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -106,11 +106,11 @@ Additionally, a button showcasing conformance with defined Accuracy, Completenes
 Details on the top right of the data product details page include:
 
 - **Add to Favorite:** By clicking the star icon (⭐), the respective Data Product can be added to Favorites.
-- **BI Sync:** Opens the BI sync functionality, enabling the Data Product to be synced to PowerBI, Tableau Cloud, Tableau Desktop, and Apache Superset.
-- **AI and ML:** Allows the data product to be consumed in Jupyter Notebooks to power AI and ML use cases.
-- **App Development:** Enables syncing of the data product using REST and GraphQL APIs to power data applications.
-- **Data API:** Allows the creation of Data APIs on top of the data product.
-- **Explore:** Opens the Data Product for further exploration.
+- **BI Sync:** Opens the BI sync functionality, enabling the Data Product to be synced to [PowerBI](/interfaces/data_product_hub/activation/bi_sync/powerbi/), [Tableau Cloud](/interfaces/data_product_hub/activation/bi_sync/tableau_cloud/), [Tableau Desktop](/interfaces/data_product_hub/activation/bi_sync/tableau_desk/), and [Apache Superset](/interfaces/data_product_hub/activation/bi_sync/superset/).
+- **AI and ML:** Allows the Data Product to be consumed in [Jupyter Notebooks](/interfaces/data_product_hub/activation/jupyter/) to power AI and ML use cases.
+- **App Development:** Enables syncing of the data product using REST and GraphQL [APIs](/interfaces/data_product_hub/activation/app_development/) to power data applications.
+- **Data API:** Allows the creation of [Data APIs](/interfaces/data_product_hub/activation/data_api/) on top of the Data Product.
+- **Explore:** Opens the Data Product for further [exploration](/interfaces/data_product_hub/exploration/).
 
 
     <center>
@@ -125,25 +125,25 @@ There are separate tabs each for Overview, Inputs, Outputs, Model, Metrics, Data
 
 | **Tabs** | **Description** |
 | --- | --- |
-| **Overview** | Displays a visual snapshot of the Data Product, from inputs to outputs, including the semantic model. |
-| **Inputs** | Lists all tables and schemas feeding into the data product with metadata and search functionality. |
-| **Outputs** | Shows the tables generated by the data product, with metadata and search options for further analysis. |
-| **Model** | Displays the semantic model, transforming inputs into insights for easier analysis. |
-| **Metrics** | Allows exploration of key business metrics derived from the data product's lens models. |
-| **Data APIs** | Lists available API endpoints for building data applications, with detailed descriptions and access info. |
-| **Quality** | Provides insights into data quality checks, including completeness, freshness, and accuracy trends. |
-| **Access Options** | Offers connection options to BI, AI, ML, and app development tools like Power BI, Excel, and Jupyter Notebook. |
+| **[Overview](/interfaces/data_product_hub/discovery/#overview-tab)** | Displays a visual snapshot of the Data Product, from inputs to outputs, including the semantic model. |
+| **[Inputs](/interfaces/data_product_hub/discovery/#inputs-tab)** | Lists all tables and schemas feeding into the data product with metadata and search functionality. |
+| **[Outputs](/interfaces/data_product_hub/discovery/#outputs-tab)** | Shows the tables generated by the Data Product, with metadata and search options for further analysis. |
+| **[Model](/interfaces/data_product_hub/discovery/#model-tab)** | Displays the semantic model, transforming inputs into insights for easier analysis. |
+| **[Metrics](/interfaces/data_product_hub/discovery/#metrics-tab)** | Allows exploration of key business [Metrics](/interfaces/data_product_hub/core_concepts/#metrics) derived from the data product's Lens models. |
+| **[Data APIs](/interfaces/data_product_hub/discovery/#data-apis-tab)** | Lists available API endpoints for building data applications, with detailed descriptions and access info. |
+| **[Quality](/interfaces/data_product_hub/discovery/#quality-tab)** | Provides insights into data quality checks, including completeness, freshness, and accuracy trends. |
+| **[Access Options](/interfaces/data_product_hub/discovery/#access-options-tab)** | Offers connection options to BI, AI, ML, and app development tools like Power BI, Excel, and Jupyter Notebook. |
 
-**Overview tab**
+#### **Overview tab**
 
-The Overview Tab will display the visual snapshot of your Data Product's work: from input to output, including the semantic model, metrics, and access options.
+The Overview Tab will display the visual snapshot of your Data Product's work: from input to output, including the [semantic model](/resources/lens/overview/), [Metrics](/interfaces/data_product_hub/core_concepts/#metrics) , and [access options](/interfaces/data_product_hub/#data-product-activation).
 
 <center>
   <img src="/interfaces/data_product_hub/discovery/annotely_image%20(5)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
   <figcaption><i>Overview Tab</i></figcaption>
 </center>
 
-The 'Inputs' section displays all the datasets that are fed into the Data Product, while the 'Output' section lists the materialized tables that are generated from it. An output does not need to be present for a Data Product, as there can be Data Products that expose models. Only one model is presented by a Data Product at a time, along with its associated metrics. Metrics are not available if the model is not built on top of the Data Product. The 'Access Options' lists all the available consumption options for sharing the Data Product.
+The '[Inputs](/interfaces/data_product_hub/core_concepts/#inputs)' section displays all the datasets that are fed into the Data Product, while the '[Output](/interfaces/data_product_hub/core_concepts/#outputs)' section lists the materialized dataset that are generated from it. An output does not need to be present for a Data Product, as there can be Data Products that expose models. Only one model is presented by a Data Product at a time, along with its associated Metrics. Metrics are not available if the model is not built on top of the Data Product. The 'Access Options' lists all the available consumption options for sharing the Data Product.
 
 #### **Inputs tab**
 
@@ -151,7 +151,7 @@ Within the Inputs Tab, all tables and their schemas that feed into the Data Prod
 
 Below that, a search bar is provided to enable searching for various columns within the table. Other details of a specific column, such as data type, description, tags, and glossary terms, can also be viewed.
 
-Additionally, a specific table can be opened within Metis, the DataOS catalog, to get comprehensive metadata of that table, or in the Workbench App for exploratory analysis using SQL.
+Additionally, a specific table can be opened within [Metis](/interfaces/metis/), the DataOS catalog, to get comprehensive metadata of that table, or in the Workbench App for exploratory analysis using SQL.
 
 <center>
   <img src="/interfaces/data_product_hub/annotely_image%20(6)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -195,7 +195,7 @@ A data model, representing the Lens model built on top of the Data Product, is d
 
 #### **Metrics tab**
 
-Key business metrics derived from the Lens models can be explored in the Metrics tab to observe performance and make data-driven decisions with ease.
+Key business [Metrics](/interfaces/data_product_hub/core_concepts/#metrics) derived from the data models([Lens model](/resources/lens/)) can be explored in the Metrics tab to observe performance and make data-driven decisions with ease.
 
 
 <aside class="callout">
@@ -204,7 +204,7 @@ Key business metrics derived from the Lens models can be explored in the Metrics
 
 </aside>
 
-- In the image below, a metric 'Cloud Service Cost' is shown along with its description and the number of measures, dimensions, and segments used to derive the metric. By clicking on the quick insights or explore link, the metrics can be further explored.
+- In the image below, a metric 'Cloud Service Cost' is shown along with its description and the number of measures, dimensions, and segments used to derive the Metric. By clicking on the quick insights or explore link, the Metrics can be further explored.
 
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(10)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -213,7 +213,7 @@ Key business metrics derived from the Lens models can be explored in the Metrics
 
     
 
-- Below, the references section is shown, which displays the lineage, including the flow and the dataset from which the metric is derived.
+- Below, the references section is shown, which displays the lineage, including the flow and the dataset from which the Metric is derived.
 
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(11)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -221,7 +221,7 @@ Key business metrics derived from the Lens models can be explored in the Metrics
     </center>
 
     
-- The measures and dimensions sections provide details of each dimension and measure used to derive the metric, including the name, data type, description, and alias.
+- The [measures](/resources/lens/concepts/#measures) and [dimensions](/resources/lens/concepts/#dimensions) sections provide details of each dimension and measure used to derive the Metric, including the name, data type, description, and alias.
 
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(12)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -233,7 +233,7 @@ Key business metrics derived from the Lens models can be explored in the Metrics
 
 #### **Data APIs tab**
 
-API endpoints for developing data applications can be explored in the Data APIs tab.
+API endpoints for developing data applications can be explored in the [Data APIs](/resources/stacks/talos/) tab.
 
 <aside class="callout">
 
@@ -274,7 +274,7 @@ API endpoints for developing data applications can be explored in the Data APIs 
     </center>
 
     
-- The **View complete documentation** link will open the OpenAPI documentation, as shown below.
+- The **View complete documentation** link will open the [OpenAPI documentation](/resources/stacks/talos/recipes/api_documentation/), as shown below.
     
     <center>
     <img src="/interfaces/data_product_hub/discovery/annotely_image%20(18)%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -356,7 +356,7 @@ API endpoints for developing data applications can be explored in the Data APIs 
 
 #### **Quality tab**
 
-The **Quality tab** provides insights into the health and quality of input and output data, allowing for monitoring and ensuring that the data meets expected standards across several quality checks.
+The **Quality tab** provides insights into the health and quality of input and output data, allowing for monitoring and ensuring that the data meets expected standards across several quality checks. Wihtin DataOS the quality checks are created using [Soda Stack](/resources/stacks/soda/).
 
 Quality is categorized into six types: Schema, Freshness, Validity, Completeness, Uniqueness, and Accuracy.
 
@@ -443,7 +443,7 @@ To know more about access options, please [refer to this section](/interfaces/da
 
 ## **Perspectives**
 
-In the **Perspectives** tab, saved explorations of the Data Products can be accessed as Perspectives.
+In the [Perspective](/interfaces/data_product_hub/core_concepts/#perspectives) tab, saved explorations of the Data Products can be accessed as Perspectives.
 
 
 <center>
@@ -455,7 +455,7 @@ In the **Perspectives** tab, saved explorations of the Data Products can be acce
 
 **How to create a Perspective?**
 
-Follow the steps below to save your Data Product exploration as a Perspective, allowing you to access it later in the **Perspective** tab.
+Follow the steps below to save your Data Product exploration as a Perspective, allowing you to access it later in the Perspective tab.
 
 
 1. Choose the Data Product of choice and navigate to the **Explore** button.
