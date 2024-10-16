@@ -97,8 +97,6 @@ Once the connection is established, users can begin visualizing the Data Product
 
 </aside>
 
-
-
 ## Data policies and security
 
 Any data masking, restrictions, or permissions defined by the publisher will automatically be enforced for all viewers of the report, ensuring consistent data security and compliance. However, the behavior of data policies (e.g., masking) depends on who is the user of the PowerBI desktop.

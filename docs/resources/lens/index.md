@@ -33,11 +33,11 @@ As a resource within the DataOS ecosystem, Lens enhances Data Product consumptio
 
 Lens  is engineered to handle complex and large-scale data models with ease. Key features include:
 
-- **Code Modularity:** Lens supports modular code structures, simplifying the maintenance of extensive models, particularly when dealing with entities, dimensions, and measures. This modularity enables efficient development and management, allowing teams to navigate large codebases with reduced complexity.
+- **Code modularity:** Lens supports modular code structures, simplifying the maintenance of extensive models, particularly when dealing with entities, dimensions, and measures. This modularity enables efficient development and management, allowing teams to navigate large codebases with reduced complexity.
 
-- **Structured YAML Templates:** Lens provides standardized, easy-to-customize YAML templates. These templates streamline the creation of Lens YAML files, ensuring consistency across models and reducing manual effort. They offer an efficient way to define tables, views, dimensions, measures, joins, and segments, allowing you to quickly set up and modify your data models with minimal hassle.
+- **Structured YAML templates:** Lens provides standardized, easy-to-customize YAML templates. These templates streamline the creation of Lens YAML files, ensuring consistency across models and reducing manual effort. They offer an efficient way to define tables, views, dimensions, measures, joins, and segments, allowing you to quickly set up and modify your data models with minimal hassle.
 
-- **Local Development Environment for Model Inspection and Validation:** Lens features a [local development environment](/resources/lens/optimizing_lens_testing_in_local_development/) that supports real-time inspection and validation of models. This minimizes delays caused by SQL syntax errors, and the inclusion of a web app for model inspection allows issues to be identified and resolved before deployment.
+- **Local Development environment for model inspection and validation:** Lens features a [local development environment](/resources/lens/optimizing_lens_testing_in_local_development/) that supports real-time inspection and validation of models. This minimizes delays caused by SQL syntax errors, and the inclusion of a web app for model inspection allows issues to be identified and resolved before deployment.
 
 - **Segments:** [Segments](/resources/lens/working_with_segments/) are predefined filters that enable the definition of complex filtering logic in SQL. They allow you to create specific subsets of data, such as users from a particular city, which can be reused across different queries and reports. This feature helps streamline the data exploration process by simplifying the creation of reusable filters.
 
@@ -45,10 +45,10 @@ Lens  is engineered to handle complex and large-scale data models with ease. Key
 
 - **Governance and Access Control:** Lens ensures data governance through[ user group management and data policies](/resources/lens/working_with_user_groups_and_data_policies/), enabling precise control over who can access and interact with data models. 
 
-- **BI Integration:** Lens improves interoperability through robust integration with Superset, Tableau and PowerBI. This ensures that data models can be easily utilized across various BI platforms, enhancing the overall analytics experience. For more details on BI integration, visit the [BI Integration Guide](/resources/lens/bi_integration/).
+- **BI integration:** Lens improves interoperability through robust integration with Superset, Tableau and PowerBI. This ensures that data models can be easily utilized across various BI platforms, enhancing the overall analytics experience. For more details on BI integration, visit the [BI Integration Guide](/resources/lens/bi_integration/).
 
 
-- **Performance Optimization through Flash:** Designed to work with DataOS Lakehouse and Iceberg-format depots, [Flash](/resources/stacks/flash/) improves query performance by leveraging in-memory execution. This optimization ensures that data teams can efficiently handle large-scale queries with enhanced speed and performance.
+- **Performance optimization through Flash:** Designed to work with DataOS Lakehouse and Iceberg-format depots, [Flash](/resources/stacks/flash/) improves query performance by leveraging in-memory execution. This optimization ensures that data teams can efficiently handle large-scale queries with enhanced speed and performance.
 
 ## How to build Lens?
 
@@ -102,7 +102,7 @@ If working with Lens 1.0 interface, click [here](/interfaces/lens/).
 
 
 
-## Exploration of Deployed Lens
+## Exploration of deployed Lens
 
 After creating a Lens data model, the next step is to explore it—this means interacting with the model by running queries. The following section explains the key concepts for querying Lens through various methods, though all queries follow the same general format. Multiple ways are available to explore or interact with the Lens model or its underlying data, allowing you to ask meaningful questions of the data and retrieve valuable insights. Exploration can be performed using the following methods:
 
@@ -115,19 +115,20 @@ After creating a Lens data model, the next step is to explore it—this means in
 - [Exploration of deployed Lens using GraphQL](/resources/lens/exploration_of_deployed_lens_using_graphql/)
 
 
-## Data Modelling
+## Data modelling
 
 [Data modeling](/resources/lens/overview/) is the process of defining and structuring raw data into organized and meaningful business definitions. It involves creating logical schemas, relationships, and aggregations to represent how data is stored, processed, and accessed. Effective data modeling ensures optimal performance for queries and allows users to extract valuable insights without modifying the underlying data structure. Below are resources to guide you through essential aspects of data modeling to optimize performance and accuracy.
 
-  - [Data Modelling Concepts](/resources/lens/concepts/)
+  - [Data modelling concepts:](/resources/lens/concepts/)
+    Understand the core principles and methodologies essential for designing effective data models.
 
-  - [Best Practices](/resources/lens/best_practices/)
+  - [Best practices:](/resources/lens/best_practices/)
     Explore recommended guidelines and techniques to create efficient and scalable data models.
 
-  - [Do's and Don'ts](/resources/lens/dos_and_donts/)
+  - [Do's and don'ts:](/resources/lens/dos_and_donts/)
     A concise list of actions to follow and pitfalls to avoid when designing your data model.
 
-  - [Error reference](/resources/lens/errors/)
+  - [Error reference:](/resources/lens/errors/)
     A quick reference for understanding and resolving common errors in data modeling.
     
   <!-- - [Working with Segments](/resources/lens/working_with_segments/) 
@@ -137,11 +138,11 @@ After creating a Lens data model, the next step is to explore it—this means in
     Understand the role of logical tables and views in data models. -->
 
 
-## Optimizing Lens Model
+## Optimizing Lens model
 
 The Lens semantic layer provides several optimization techniques that can significantly enhance the performance of data queries. The following page explores best practices and strategies for fine-tuning your Lens model to maximize efficiency. 
 
-[Optimizing Lens Model: Best Practices for the Semantic Layer](/resources/lens/fine_tuning_a_lens_model/)
+[Optimizing Lens model: Best practices for the Semantic Layer](/resources/lens/fine_tuning_a_lens_model/)
 
 
 
