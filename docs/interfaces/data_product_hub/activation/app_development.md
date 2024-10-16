@@ -1,4 +1,4 @@
-# Postgres and GraphQL Integration
+# Postgres and GraphQL integration
 
 You can develop data applications on top of your Data Product either by PostgreSQL or GraphQL API endpoint, to do so follow the below steps:
 

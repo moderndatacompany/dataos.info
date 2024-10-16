@@ -106,10 +106,10 @@ Additionally, a button showcasing conformance with defined Accuracy, Completenes
 Details on the top right of the data product details page include:
 
 - **Add to Favorite:** By clicking the star icon (⭐), the respective Data Product can be added to Favorites.
-- **BI Sync:** Opens the BI sync functionality, enabling the Data Product to be synced to [PowerBI](/interfaces/data_product_hub/activation/bi_sync/powerbi/), [Tableau Cloud](/interfaces/data_product_hub/activation/bi_sync/excel/), [Tableau Desktop](/interfaces/data_product_hub/activation/bi_sync/tableau_desk/), and [Apache Superset](/interfaces/data_product_hub/activation/bi_sync/superset/).
-- **AI and ML:** Allows the data product to be consumed in [Jupyter Notebooks](/interfaces/data_product_hub/activation/jupyter/) to power AI and ML use cases.
-- **App Development:** Enables syncing of the data product using REST and GraphQL [APIs](/resources/stacks/talos/) to power data applications.
-- **Data API:** Allows the creation of [Data APIs](/resources/stacks/talos/) on top of the Data Product.
+- **BI Sync:** Opens the BI sync functionality, enabling the Data Product to be synced to [PowerBI](/interfaces/data_product_hub/activation/bi_sync/powerbi/), [Tableau Cloud](/interfaces/data_product_hub/activation/bi_sync/tableau_cloud/), [Tableau Desktop](/interfaces/data_product_hub/activation/bi_sync/tableau_desk/), and [Apache Superset](/interfaces/data_product_hub/activation/bi_sync/superset/).
+- **AI and ML:** Allows the Data Product to be consumed in [Jupyter Notebooks](/interfaces/data_product_hub/activation/jupyter/) to power AI and ML use cases.
+- **App Development:** Enables syncing of the data product using REST and GraphQL [APIs](/interfaces/data_product_hub/activation/app_development/) to power data applications.
+- **Data API:** Allows the creation of [Data APIs](/interfaces/data_product_hub/activation/data_api/) on top of the Data Product.
 - **Explore:** Opens the Data Product for further [exploration](/interfaces/data_product_hub/exploration/).
 
 
@@ -195,7 +195,7 @@ A data model, representing the Lens model built on top of the Data Product, is d
 
 #### **Metrics tab**
 
-Key business [Metrics](/interfaces/data_product_hub/core_concepts/#metrics) derived from the [data models]([Lens model](/resources/lens/)) can be explored in the Metrics tab to observe performance and make data-driven decisions with ease.
+Key business [Metrics](/interfaces/data_product_hub/core_concepts/#metrics) derived from the data models([Lens model](/resources/lens/)) can be explored in the Metrics tab to observe performance and make data-driven decisions with ease.
 
 
 <aside class="callout">
@@ -443,7 +443,7 @@ To know more about access options, please [refer to this section](/interfaces/da
 
 ## **Perspectives**
 
-In the **Perspectives** tab, saved explorations of the Data Products can be accessed as Perspectives.
+In the [Perspective](/interfaces/data_product_hub/core_concepts/#perspectives) tab, saved explorations of the Data Products can be accessed as Perspectives.
 
 
 <center>
@@ -455,7 +455,7 @@ In the **Perspectives** tab, saved explorations of the Data Products can be acce
 
 **How to create a Perspective?**
 
-Follow the steps below to save your Data Product exploration as a Perspective, allowing you to access it later in the **[Perspective](/interfaces/data_product_hub/core_concepts/#perspectives)** tab.
+Follow the steps below to save your Data Product exploration as a Perspective, allowing you to access it later in the Perspective tab.
 
 
 1. Choose the Data Product of choice and navigate to the **Explore** button.
