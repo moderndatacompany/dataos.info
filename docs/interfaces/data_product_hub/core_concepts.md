@@ -98,7 +98,7 @@ A data API refers to an application programming interface (API) that allows appl
 
 ## Tier
 
-Tier is a classification for Data Products based on their purpose, whether by medallion architecture, source-aligned, or based on specific entities or consumers. For example, in the 'Customer Churn Prediction' Data Product, its tier is labeled as `Business Certified` which basically means the Data Product is business oriented. Similarly, each organization can have its own predefined tiers. Tier is populated from the Data Product manifest file
+Tier is a classification for Data Products based on their purpose, whether by medallion architecture, source-aligned, or based on specific entities or consumers. For example, in the 'Customer Churn Prediction' Data Product, its tier is labeled as `Business Certified` which basically means the Data Product is business oriented. Similarly, each organization can have its own predefined tiers. Tier is populated from the Data Product manifest file.
 
 <center>
 <img src="/interfaces/data_product_hub/tier.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -107,7 +107,7 @@ Tier is a classification for Data Products based on their purpose, whether by me
 
 **Tier Categories** 
 
-The following are the tier categories defined within the organization.
+The following are the tier categories defined within the organization. Similarly, tiers can be categorized into different categories as per the choice.
 
 - `Business Certified`: This tier indicates that the Data Product is designed with a business-oriented focus, ensuring that it meets specific business requirements and standards.
 

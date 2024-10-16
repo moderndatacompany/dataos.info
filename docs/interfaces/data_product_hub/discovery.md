@@ -34,7 +34,7 @@ Multiple filter options further help narrow the search using parameters such as 
 
 - **Domain:** Specifies the business domain to which the Data Product belongs. Multiple domains can be selected at once to filter for the desired Data Product.
 
-- **Owner:** Filters can be applied by owner, allowing users to direct questions to the appropriate person or team. The owner's DataOS User ID is used to list the various owners in the owner dropdown, and only a single owner can be selected at a time.
+- **Owner:** Filters can be applied by owner, allowing users to direct questions to the appropriate person or team. The owner's DataOS User ID is used to list the various owners in the Owner dropdown, and only a single owner can be selected at a time.
 
 
     <center>
