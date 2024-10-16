@@ -355,6 +355,7 @@ nav:
           - Supported Data Sources: 
             # resources/lens/data_sources.md
               - Bigquery: resources/lens/data_sources/bigquery.md
+              - Flash: resources/lens/data_sources/flash.md
               - Minerva: resources/lens/data_sources/minerva.md
               - Postgres: resources/lens/data_sources/postgres.md
               - Redshift: resources/lens/data_sources/awsredshift.md
