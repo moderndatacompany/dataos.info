@@ -230,7 +230,7 @@ This section outlines data product-specific attributes such as Bundle resource, 
     
     There are two types of dataset references - 
     
-    - **dataos**: this is used when your dataset is stored in DataOS and has a DataOS address
+    - **dataos**: this is used when your dataset is stored in DataOS Lakehouse and has a DataOS address
     - **depot**: this can be used when your dataset is stored on a third party system
         
         ```yaml
@@ -240,17 +240,17 @@ This section outlines data product-specific attributes such as Bundle resource, 
             ref: dataset:icebase:sales360mockdb:f_sales
         
           - description: Pulling customer data from the S3 bucket, for understanding customer demographics, behaviors, preferences and customer segmentation.
-            refType: dataos
-            ref: dataset:icebase:sales360mockdb:customer_data_master
+            refType: depot
+            ref: dataos://bigquery:sales_360/customer_data_master
         
           - description: Fetching product data from the S3 bucket,to get a full view of the product portfolio, product performance analysis, and market positioning strategies.
-            refType: dataos 
-            ref: dataset:icebase:sales360mockdb:product_data_master
+            refType: depot
+            ref: dataos://bigquery:sales_360/product_data_master
         
         outputs:
           - description: The objective is to expose this sales data to facilitate the creation of data APIs to enable seamless access to sales data, allowing integration with external systems, real-time data consumption, and enhanced analytical capabilities.
-            refType: dataos
-            ref: dataset:icebase:sales360mockdb:f_sales
+            refType: depot
+            ref: dataos://icebase:sales360_mockdb/sales
         ```
         
 - **Ports**
