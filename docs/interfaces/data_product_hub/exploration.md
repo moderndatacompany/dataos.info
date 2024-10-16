@@ -538,7 +538,7 @@ The image above shows the YAML implementation files for the Lens model of the Da
 <img src="/interfaces/data_product_hub/exploration/image%20(44).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
 
-## **GraphQL tab**
+### **GraphQL tab**
 
 The GraphQL tab provides an interface for advanced users and developers to programmatically interact with the data model. It displays the data returned by a GraphQL query alongside the query itself. This feature helps perform complex or customized data extractions that go beyond the standard capabilities of the Studio interface. The interface includes syntax highlighting, autocompletion, automatic documentation, and error highlighting. Users can utilize GraphQL to build both page and static queries interactively.
 
