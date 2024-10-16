@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Parameterized Queries
 
 Parameterized queries allow you to place parameters in an SQL query instead of a constant value. A parameter takes a value only when the query is executed, which allows the query to be reused with different values. Any string between double curly braces `{{ }}`will be treated like a parameter. A widget will appear above the results pane, so you change the parameter value.

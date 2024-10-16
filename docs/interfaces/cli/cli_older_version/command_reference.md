@@ -1,3 +1,9 @@
+---
+search:
+  exclude: true
+---
+
+
 # CLI Command Reference
 
 You can get a complete list of all the commands, sub-commands, arguments and flags by using the help command within CLI itself.

@@ -80,7 +80,7 @@ Minerva supports an extensive range of data sources, encompassing both tradition
 
 **Query Execution Process**
 
-When initiating a SQL query from sources such as Workbench, Atlas, Minerva-CLI, JDBC, or Lens App UI, the query is seamlessly directed to the Minerva Gateway Service. The Gateway Service conducts a thorough analysis of the query and the associated tables, forwarding it to the Minerva Clusters for execution. Furthermore, the Gateway Service facilitates data policy decisions, including Masking and Filtering policies. Once the analysis is completed, the query is seamlessly passed on to the Minerva Cluster for execution.
+When initiating a SQL query from sources such as Workbench, Minerva-CLI, JDBC, or Lens App UI, the query is seamlessly directed to the Minerva Gateway Service. The Gateway Service conducts a thorough analysis of the query and the associated tables, forwarding it to the Minerva Clusters for execution. Furthermore, the Gateway Service facilitates data policy decisions, including Masking and Filtering policies. Once the analysis is completed, the query is seamlessly passed on to the Minerva Cluster for execution.
 <!-- 
 **Managing Data Access Policies and Cluster Resources**
 
@@ -672,7 +672,7 @@ For comprehensive details on the features and capabilities of Workbench, refer t
 
 ### **Using Tableau, SPSS and Power BI**
 
-Users can leverage popular BI analytics platforms like Tableau, SPSS and Power BI to access data from DataOS via Cluster URL. To learn more, navigate to the link: [How to connect Cluster with Tableau, SPSS, and Power BI.](/interfaces/atlas/bi_tools/)
+Users can leverage popular BI analytics platforms like Tableau, SPSS and Power BI to access data from DataOS via Cluster URL. To learn more, navigate to the link: [How to connect Cluster with Tableau, SPSS, and Power BI](/resources/cluster/bi_tools/).
 
 ### **Using Spark Integration (Themis only)**
 

@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # DataOS Integration with Tableau
 
 This article will help you to set up the connection between DataOS and Tableau. It provides specific steps needed to fetch data from DataOS into Tableau.

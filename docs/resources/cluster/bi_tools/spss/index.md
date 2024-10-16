@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # DataOS Integration with IBM SPSS Statistics
 
 This article will help you to set up the connection between DataOS and SPSS Statistics. It provides specific steps needed to fetch data from DataOS into SPSS Statistics for descriptive analysis and mining.
