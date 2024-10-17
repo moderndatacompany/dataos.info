@@ -1,131 +1,125 @@
-This section involves best practices that help you optimize the Flash Service for efficient query processing and handle concurrent queries from multiple analysts without service restarts or performance issues.
+# Best Practices
 
-## Adding Indexes
+This section outlines best practices for optimizing the Flash Service for efficient query processing and managing concurrent queries from multiple analysts without requiring service restarts or encountering performance issues.
 
-To optimize query performance, you can create indexes on the columns that you often use in your WHERE clauses or JOIN conditions. Indexes help speed up query performance by quickly locating data based on certain criteria. The in-memory database uses two main types of indexes as given below:
+## Adding indexes
 
-### **Min-Max Index (Zonemap)**
+To enhance query performance, indexes can be created on columns frequently used in `WHERE` clauses or `JOIN` conditions. Indexes enable faster data retrieval by quickly locating records based on specific criteria. The in-memory database supports two primary types of indexes:
 
-This index is automatically created for every column. Its primary purpose is to speed up queries that involve range searches, such as date ranges. By storing the minimum and maximum values for data blocks, the in-memory database can quickly skip over blocks that do not fall within the specified range. 
+### **Min-Max index (Zonemap)**
 
-**Example**: Suppose you have a table of sales data with columns `id`, `amount`, and `sale_date`. You can run a query to find sales within a specific date range:
+This index is automatically created for every column and is designed to speed up queries involving range searches, such as date ranges. By storing the minimum and maximum values for data blocks, the in-memory database can efficiently skip over data blocks that fall outside the specified range.
+
+**Example:** For a table containing sales data with columns `id`, `amount`, and `sale_date`, the following query retrieves sales records within a specified date range:
 
 ```sql
 SELECT * FROM sales WHERE sale_date BETWEEN '2024-01-01' AND '2024-01-31';
 ```
 
-The in-memory database can use the Min-Max index on the `sale_date` column to skip blocks of data that do not fall within the specified date range.
+The Min-Max index on the `sale_date` column enables the in-memory database to bypass data blocks that do not fall within the specified date range.
 
-To learn more about the Min-Max Index, please [refer to this](/resources/stacks/flash/minmax/).
+For more information on the Min-Max Index, refer to [this section](/resources/stacks/flash/minmax/).
 
 ### **Adaptive Radix Tree (ART)**
 
-Unlike the Min-Max index, ART indexes need to be explicitly defined by the user. They are designed to enhance performance for queries that involve exact matches or queries on columns with many unique values, as it allow for rapid lookup.
+ART indexes must be explicitly defined by the user. They are effective for queries involving exact matches or columns with many unique values, providing rapid lookups.
 
-**Example**: If you have a table of users with a unique identifier `user_id`, the in-memory database automatically creates an ART index on this column. When you run a query to find a user by their ID, the in-memory database  can quickly locate the row using the ART index:
+**Example:** For a table containing user records with a unique identifier `user_id`, the in-memory database automatically creates an ART index on this column. The following query finds a user by their ID:
 
 ```sql
 SELECT * FROM users WHERE user_id = 12345;
 ```
 
-For instance, if you have a query to find a user by their unique ID, the in-memory database can use the ART index to quickly locate the user, ensuring fast and efficient query execution.
+The ART index allows the database to quickly locate the specified `user_id`, ensuring fast query execution.
 
-To learn more about the ART Index, please [refer to this](/resources/stacks/flash/art/).
+For additional details on the ART Index, refer to [this section](/resources/stacks/flash/art/).
 
-### Creating and Dropping Indexes
+### **Creating and dropping indexes**
 
-You can create additional indexes on other columns to further enhance query performance. For example, to create an index on the `state` column in the `sales_360` table:
+Additional indexes can be created on other columns to further improve query performance. Below are examples for creating and dropping indexes:
 
 ```sql
-#Syntax
+-- Syntax for creating an index:
 CREATE INDEX index_name ON table_name(column_name);
 
-#Example
+-- Example:
 CREATE INDEX idx_state ON sales_360(state);
 ```
 
-To drop an index, you can use the `DROP INDEX` statement:
+To remove an index, use the `DROP INDEX` statement:
 
 ```sql
-# Syntax
+-- Syntax for dropping an index:
 DROP INDEX index_name;
 
-#Example
+-- Example:
 DROP INDEX idx_state;
 ```
 
-## Adding Configuration Parameters
+## Adding configuration parameters
 
-To further optimize Flash for efficient read query processing and handle concurrent queries effectively, you can customize several key configuration parameters that can be defined in the INIT section of the YAML.
+To optimize Flash for read-intensive queries and handle concurrent queries effectively, certain configuration parameters can be adjusted in the `INIT` section of the YAML configuration.
 
-### **Threads and Worker Threads**
+### **Threads and Worker threads**
 
-The `threads` and `worker_threads` settings determine the number of threads the in-memory database can use for executing queries. By default, these are set to the number of available CPU cores. 
+The `threads` and `worker_threads` settings determine the number of threads the in-memory database uses for query execution. By default, these settings match the number of available CPU cores.
 
-<aside class="callout">
-🗣 In the in-memory databases, <strong>threads</strong> are units of work that help speed up data processing and query execution by allowing multiple tasks to be performed simultaneously. <br>
-<ul>
-    <li><strong>Threads:</strong> Threads represent the upper limit on the number of threads the in-memory database will use for any operation (not just the execution of queries).</li>
-    <li><strong>Worker Threads:</strong> Worker Threads are a subset of the total <code>threads</code> available and are dedicated to the computational tasks required to execute a query.</li>
-</ul>
-</aside>
+- **Threads:** Represents the maximum number of threads that the in-memory database will use for any operation.
+- **Worker threads:** A subset of the total `threads`, dedicated specifically to computational tasks during query execution.
 
-- Increasing the number of threads beyond the number of physical cores can help improve throughput by allowing more concurrent operations.
-- Manually adjusting these parameters, you can conduct performance tests to determine the optimal configuration for your specific use case. This experimentation can reveal insights into how the in-memory database performs under different thread counts, allowing you to find a sweet spot that balances performance and resource usage. However, this must be balanced with the risk of over-saturating the CPU, which could lead to contention and reduced performance.
-- **Thread Contention:** Multiple threads competing for the same CPU resources can lead to thread contention, where threads spend time waiting for CPU access rather than executing tasks. This can further degrade performance, especially in CPU-bound workloads.
-- **Context Switching:** With more threads than available memory, the operating system will engage in context switching, where it alternates between threads to give the appearance of parallel execution. However, context switching adds overhead and can reduce overall performance due to the CPU spending time switching between threads rather than executing them.
-- **Potential Slowdown:** Instead of improving performance, increasing the number of threads beyond the number of available memory may slow down the execution of queries, as the overhead of managing too many threads outweighs the benefits of parallel execution.
+- Adjusting the number of threads beyond the physical cores may improve throughput by allowing more concurrent operations. However, it is critical to balance this adjustment to avoid over-saturating the CPU, which can lead to contention and degraded performance.
+- **Thread contention:** Excessive threads competing for CPU resources may result in contention, causing delays as threads wait for CPU access.
+- **Context switching:** Increasing threads beyond available memory can lead to frequent context switching, where the CPU alternates between threads. This overhead can reduce performance as time is spent managing threads rather than executing them.
+- **Potential slowdown:** Overuse of threads may slow query execution if the management overhead outweighs the benefits of parallel processing.
 
-### **External Threads**
+### **External threads**
 
-The `external_threads` setting specifies the number of threads that can be used for operations involving external resources, such as reading data from remote files. 
+The `external_threads` parameter specifies the number of threads for operations involving external resources, such as reading from remote files. This setting is particularly useful for parallelizing I/O operations, such as data retrieval from cloud storage or external databases.
 
-- This setting is beneficial when the in-memory database needs to perform I/O operations that can be parallelized, such as fetching data from cloud storage or other databases.
-- Increasing the number of external threads can improve performance in data-intensive applications.
-- By default, it is set to 1.
+- Increasing the number of `external_threads` can boost performance in data-intensive applications.
+- By default, `external_threads` is set to 1.
 
 ### **Example**
 
 ```sql
-#You can define these inside the ENV variable FLASH_CONFIG_INIT_SQL section of the
-#service YAML
-#Query to check the existing setting:
+-- Define these in the ENV variable FLASH_CONFIG_INIT_SQL section of the service YAML.
+-- Query to check existing settings:
 
-select * from duckdb_settings() where name in ('external_threads','memory_limit','threads','worker_threads');
+SELECT * FROM duckdb_settings() WHERE name IN ('external_threads', 'memory_limit', 'threads', 'worker_threads');
 
-#Queries to change these settings:
+-- Queries to adjust these settings:
 
-set threads = <number_of_threads>;
-set external_threads = <number_of_threads>;
-set worker_threads = <number_of_threads>;
+SET threads = <number_of_threads>;
+SET external_threads = <number_of_threads>;
+SET worker_threads = <number_of_threads>;
 ```
 
-## Using Persistent Volume
+## Using persistent volume
 
-Larger-than-memory workloads in the in-memory databases are managed by using a technique called **spilling to disk**. When a dataset is too large to fit into the computer’s memory, the in-memory databases move some of the data to the hard drive or SSD temporarily. To handle this effectively, you can add a **persistent volume** to the Flash Service. A persistent volume acts as extra storage space that Flash uses to store parts of the dataset on disk, allowing it to work with larger datasets without running out of memory. This setup ensures Flash can process and manage large datasets smoothly, even when they exceed the available memory.
+For workloads that exceed available memory, the in-memory databases use **spilling to disk**. This technique moves portions of data to disk when the dataset is too large for memory. Adding a **persistent volume** to the Flash Service enables effective management of such workloads. A persistent volume provides additional storage space for temporarily offloading data, allowing Flash to handle large datasets without exhausting memory resources.
 
-You can add the `persistentVolume` attribute in the Flash Service manifest file, as given below:
+The `persistentVolume` attribute can be added to the Flash Service manifest file as shown below:
 
 <aside class="callout">
-🗣 Note: Before using the <code>persistentVolume</code> attribute in the Flash service, the Volume Resource must be created as shown below.
+🗣 <b>Note:</b> Before using the `persistentVolume` attribute in the Flash service, a Volume Resource must be created.
 
 ```yaml
-name: duckdb-vol # Name of the Resource
-version: v1beta # Manifest version of the Resource
-type: volume # Type of Resource
-tags: # Tags for categorizing the Resource
-  - dataos:volume # Tags 
-  - volume # Additional tags
+name: duckdb-vol  # Name of the Resource
+version: v1beta  # Manifest version
+type: volume  # Resource type
+tags: 
+  - dataos:volume 
+  - volume 
 description: Common attributes applicable to all DataOS Resources
-owner: kanakgupta
+owner: iamgroot
 layer: user
 volume:
-  size: 1Gi  #100Gi, 50Mi, 10Ti, 500Mi
-  accessMode: ReadWriteMany  #ReadWriteOnce, ReadOnlyMany.
+  size: 1Gi  # Example: 100Gi, 50Mi, 10Ti, 500Mi
+  accessMode: ReadWriteMany  # Options: ReadWriteOnce, ReadOnlyMany
   type: temp
 ```
 
-To know more about Volume Resource, please <a href="https://dataos.info/resources/volume/" target="_blank">refer to this</a>.
+For more details on the Volume Resource, please refer to [this documentation](https://dataos.info/resources/volume/).
 
 </aside>
 
@@ -135,14 +129,12 @@ version: v1
 type: service
 tags:
   - service
-description: flash service
+description: Flash service
 workspace: public
 service:
   servicePort: 5433
   replicas: 1
   stack: flash+python:1.0
-  # envs:
-  #   FLASH_CONFIG_INIT_SQL: "set threads=5; set worker_threads=5"
   persistentVolume:
     name: duckdb-vol
     directory: p_volume
@@ -170,11 +162,9 @@ service:
         name: customer
 
     init:
-      - create table if not exists d_customer as  (select * from customer)
-      - create table if not exists f_sales  as (select * from numerous  )
-      - create table if not exists d_product as (select * from product)
-      - create table if not exists d_site as (select * from site)
-      - select * from duckdb_settings() where name in ('external_threads','memory_limit','threads','worker_threads','checkpoint_threshold')
-
-#join sales s2 on s.item_no = s2.item_no
+      - CREATE TABLE IF NOT EXISTS d_customer AS (SELECT * FROM customer);
+      - CREATE TABLE IF NOT EXISTS f_sales AS (SELECT * FROM numerous);
+      - CREATE TABLE IF NOT EXISTS d_product AS (SELECT * FROM product);
+      - CREATE TABLE IF NOT EXISTS d_site AS (SELECT * FROM site);
+      - SELECT * FROM duckdb_settings() WHERE name IN ('external_threads', 'memory_limit', 'threads', 'worker_threads', 'checkpoint_threshold');
 ```
