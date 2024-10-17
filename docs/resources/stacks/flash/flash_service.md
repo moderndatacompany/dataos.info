@@ -1,23 +1,23 @@
-# How to cache the dataset using Flash?
-In this section, we'll guide you to cache the data using Flash Service.
+# How to Cache a Dataset Using Flash?
 
+This section provides guidance for caching datasets using the Flash Service in DataOS.
 
-## Pre-requisites
+## Prerequisites
 
-Ensure the Flash Stack exists in the DataOS environment by executing the following command:
-    
-```bash
+Ensure that the Flash Stack is available in the DataOS environment by executing the following command:
+
+```shell
 dataos-ctl develop stack versions
 ```
-    
-Make sure you have the appropriate access permission use case to execute the above command.
-    
-**Expected Output:**
-  
-```bash
+
+Ensure that appropriate access permissions are available to execute this command.
+
+**Expected output:**
+
+```shell
 ➜  ~ dataos-ctl develop stack versions                  
 
-        STACK      │ FLAVOR  │ VERSION │                       IMAGE                       │     IMAGE PULL SECRET      
+       STACK      │ FLAVOR  │ VERSION │                       IMAGE                       │     IMAGE PULL SECRET      
 ──────────────────┼─────────┼─────────┼───────────────────────────────────────────────────┼────────────────────────────
   beacon          │ rest    │ 1.0     │ docker.io/postgrest/postgrest:v7.0.1              │ dataos-container-registry  
   benthos         │         │ 3.0     │ docker.io/rubiklabs/benthos-ds:0.8.28             │ dataos-container-registry  
@@ -35,10 +35,9 @@ Make sure you have the appropriate access permission use case to execute the abo
   talos           │         │ 2.0     │ docker.io/rubiklabs/talos:0.1.8                   │ dataos-container-registry  
   toolbox         │         │ 1.0     │ docker.io/rubiklabs/dataos-tool:0.3.9             │ dataos-container-registry  
 ```
-        
-    
-If the Flash Stack is available in the list above, proceed to the [next step](/resources/stacks/flash/flash_service/#create-a-flash-service-manifest-file). If it is not listed, deploy a new Stack by applying the below Stack manifest using the DataOS CLI.
-    
+
+If the Flash Stack is listed, proceed to the [next step](/resources/stacks/flash/flash_service/#create-a-flash-service-manifest-file). If not, deploy a new Stack using the following manifest and the DataOS CLI:
+
 ```yaml
 name: "flash-v1"
 version: v1alpha
@@ -68,7 +67,6 @@ stack:
     PG_HOST: 0.0.0.0
     PG_PORT: 5433
     FLASH_DB_FILE_PATH: /var/dataos/temp_data/duckdb/main.duckdb
-#    FLASH_DB_TEMP_FILE_PATH: /var/dataos/temp_data/tmp
   command:
     - python
   arguments:
@@ -82,151 +80,156 @@ stack:
       serviceconfig.yaml: |
       {{ toYaml .ApplicationSpec.StackSpec | indent 2 }}
 ```
-    
-**Apply the Flash Stack manifest file**
-    
-To deploy the Stack, execute the following command on the DataOS CLI.
 
-```bash
+**Apply the Flash Stack manifest file:**
+
+To deploy the Stack, run the following command:
+
+```shell
 dataos-ctl resource apply -f ${flash-stack-manifest-path} --disable-interpolation
 ```
 
-Alternatively, you can also use:
+Alternatively, use:
 
-```bash
+```shell
 dataos-ctl apply -f ${flash-stack-manifest-path} --disable-interpolation
 ```
 
-**Validate Stack creation**
+**Validate Stack creation:**
 
-To check whether the Stack is successfully created, execute the following command:
+Check if the Stack is created successfully:
 
-```bash
+```shell
 dataos-ctl resource get -t stack
 ```
 
-Alternatively, you can also check the stacks created by all users in the organization:
+To view stacks created by all users in the organization:
 
-```bash
+```shell
 dataos-ctl resource get -t stack -a
 ```
-    
 
 ## Create a Flash Service manifest file
 
-Once you have the Flash Stack, follow the below steps to create the Flash Service:
+Once the Flash Stack is available, follow these steps to create a Flash Service:
 
-1. Identify the datasets you want to cache in Flash. Flash supports BigQuery, Snowflake, Redshift, and Iceberg types of Depots.
+1. Identify the datasets to be cached in Flash. Flash supports BigQuery, Snowflake, Redshift, and Iceberg types of Depots.
+2. Create a Flash Service manifest file that specifies the datasets to be cached, the schedule, and initialization. A sample is provided below:
 
-2. Create a Flash Service manifest file specifying the datasets to be cached, the schedule, and initialization. A sample is provided below:
-    
     ```yaml
-    name: ${{flash-test}}
+    name: flash-test
     version: v1
     type: service
     tags:
-      - ${{service}}
-    description: ${{flash service}}
-    workspace: ${{public}}
+      - service
+    description: flash service
+    workspace: public
     service:
-      servicePort: ${{8080}}
+      servicePort: 8080
       servicePorts:
-      - name: ${{backup}}
-        servicePort: ${{5433}}
+      - name: backup
+        servicePort: 5433
       ingress:
-        enabled: ${{true}}
-        stripPath: ${{false}}
-        path: ${{/flash/public:flash-test-6}}
-        noAuthentication: ${{true}}
-      replicas: ${{1}}
-      logLevel: ${{info}}
-      compute: ${{runnable-default}}
+        enabled: true
+        stripPath: false
+        path: /flash/public:flash-test-6
+        noAuthentication: true
+      replicas: 1
+      logLevel: info
+      compute: runnable-default
       envs:
-        APP_BASE_PATH: ${{'dataos-basepath'}}
-        FLASH_BASE_PATH: ${{/flash/public:flash-test-6}}
+        APP_BASE_PATH: 'dataos-basepath'
+        FLASH_BASE_PATH: /flash/public:flash-test-6
       resources:
         requests:
-          cpu: ${{500m}}
-          memory: ${{512Mi}}
+          cpu: 500m
+          memory: 512Mi
         limits:
-          cpu: ${{1000m}}
-          memory: ${{1024Mi}}
+          cpu: 1000m
+          memory: 1024Mi
       stack: flash+python:2.0
       stackSpec:
         datasets:
-          - name: ${{records}}
-            address: ${dataos://icebase:flash/records}}
+          - name: records
+            address: dataos://icebase:flash/records
 
-          - name: ${{f_sales}}
-            depot: ${{dataos://bigquery}}
-            sql: ${{SELECT * FROM sales_360.f_sales}}
+          - name: f_sales
+            depot: dataos://bigquery
+            sql: SELECT * FROM sales_360.f_sales
             meta:
-              bucket: ${{tmdcdemogcs}}
+              bucket: tmdcdemogcs
             refresh:
-              expression: ${{"*/2 * * * *"}}
-              sql: ${{SELECT MAX(invoice_dt_sk) FROM sales_360.f_sales}}
-              where: ${{invoice_dt_sk > PREVIOUS_SQL_RUN_VALUE}}
+              expression: "*/2 * * * *"
+              sql: SELECT MAX(invoice_dt_sk) FROM sales_360.f_sales
+              where: invoice_dt_sk > PREVIOUS_SQL_RUN_VALUE
     
-          - name: ${{duplicate_sales}}
-            depot: ${{dataos://bigquery}}
-           sql: ${{SELECT * FROM sales_360.f_sales}}
+          - name: duplicate_sales
+            depot: dataos://bigquery
+            sql: SELECT * FROM sales_360.f_sales
             meta:
-              bucket: ${{tmdcdemogcs}}
+              bucket: tmdcdemogcs
             refresh:
-              expression: ${{"*/4 * * * *"}}
-              sql: ${{SELECT MAX(invoice_dt_sk) FROM sales_360.f_sales}}
-              where: ${{invoice_dt_sk > CURRENT_SQL_RUN_VALUE}}
-
+              expression: "*/4 * * * *"
+              sql: SELECT MAX(invoice_dt_sk) FROM sales_360.f_sales
+              where: invoice_dt_sk > CURRENT_SQL_RUN_VALUE
 
         init:
-          - ${{create table f_sales as (select * from records)}}
+          - create table f_sales as (select * from records)
 
         schedule:
-          - expression: ${{"*/2 * * * *"}}
-            sql: ${{INSERT INTO f_sales BY NAME (select * from records);}}
+          - expression: "*/2 * * * *"
+            sql: INSERT INTO f_sales BY NAME (select * from records);
     ```
-    
-    The following table provides the details of attributes to be declared in the Flash Stack-specific section:
-    
-    | **Attribute** | **Description** | **Data Type** | **Possible Value** | **Requirement** |
-    | --- | --- | --- | --- | --- |
-    | `datasets` | The datasets section is a list of mapping each specifying the name and address of the specific dataset. | list of mapping | none | mandatory |
-    | `address`  | UDL address of the dataset to be cached in Flash | string | valid DataOS UDL address | mandatory |
-    | `name`  | Name of the dataset to be cached | string | alphanumeric values with the RegEx `[a-z0-9]([-a-z0-9]*[a-z0-9])`; ``a hyphen/dash is allowed as a special character | mandatory |
-    | `init` | List of PostgreSQL statements for initialization | list of strings | valid PostgreSQL statements. You can create either tables or views | mandatory |
-    | `schedule` | List of mappings specifying the schedule expression and SQL query | list of mapping | none | optional |
-    | `expression` | Valid cron expression for the schedule | string | valid cron expression | mandatory |
-    | `sql` | SQL statement for refreshing | string | valid PostgreSQL statement | mandatory |
-    
-    To know more about each attribute, please [refer to this](/resources/stacks/flash/configurations/).
+
+    Below is a description of key attributes in the Flash Stack-specific section:
+
+    | **Attribute** | **Description** | **Data Type** | **Requirement** |
+    | ------------- | ----------------| --------------| ----------------|
+    | `datasets`    | List of mappings specifying the name and address of datasets to be cached. | List of mapping | Mandatory |
+    | `address`     | UDL address of the dataset to be cached in Flash. | String | Mandatory |
+    | `name`        | Name of the dataset to be cached. | String | Mandatory |
+    | `init`        | List of PostgreSQL statements for initialization. | List of strings | Mandatory |
+    | `schedule`    | List of mappings for schedule expressions and SQL queries. | List of mapping | Optional |
+    | `expression`  | Cron expression for scheduling. | String | Mandatory |
+    | `sql`         | SQL statement for refreshing data. | String | Mandatory |
+
+    For more information on each attribute,
+
+ refer to [this section](/resources/stacks/flash/configurations/).
 
 ## Apply the Flash Service
 
-Run the Service and load those datasets into the Flash layer by applying the manifest file using DataOS CLI. Use the following command for execution:
+To run the service and load the datasets into the Flash layer, apply the manifest file using the DataOS CLI:
 
-```yaml
+```shell
 dataos-ctl resource apply -f ${flash-service-manifest-file-path} -w ${workspace}
 ```
 
-Alternatively, you can also use
+Alternatively, use:
 
-```yaml
+```shell
 dataos-ctl apply -f ${flash-service-manifest-file-path} -w ${workspace}
 ```
 
-**Example Usage:**
+**Example usage:**
 
-```yaml
+```shell
 dataos-ctl resource apply -f ./flash/service_manifest.yaml -w curriculum
 ```
 
-Expected Output:
+**Expected output:**
 
-```bash
+```shell
 INFO[0000] 🛠 apply...                                   
 INFO[0000] 🔧 applying(public) flash-service-test:v1:service... 
 INFO[0008] 🔧 applying(public) flash-service-test:v1:service...created 
 INFO[0008] 🛠 apply...complete
 ```
 
-## [What is Next?](/resources/stacks/flash/#recipes)
+## Next steps
+
+
+- [Monitor the cached dataset](/resources/stacks/flash/recipes/monitor/)
+- [Use cached datasets in Lens models](/resources/stacks/flash/recipes/lens/)
+- [Use cached datasets using Talos](/resources/stacks/flash/recipes/talos/)
+- [Best Practices of Flash](/resources/stacks/flash/best_practices/)
