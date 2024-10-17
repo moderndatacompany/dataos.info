@@ -10,7 +10,7 @@ Access the **Home Page** of DataOS. From the home page, navigate to the **Data P
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(6).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
 
-### **Step 2: Browse and Select a Data Product**
+### **Step 2: Browse and select a Data Product**
 
 In the Data Product Hub, users should browse through the list of available data products. Selecting a specific data product to integrate with Tableau is essential. For instance, **Corp Market Performance** can be chosen to explore Tableau's data offerings.
 
@@ -26,7 +26,7 @@ After selecting a data product, users should navigate to the **Access Options** 
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(8).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
 
-### **Step 4: Locate Tableau Cloud Connection**
+### **Step 4: Locate Tableau Cloud connection**
 
 Scroll through the Access Options to find the **Tableau Cloud Connection** option.
 
@@ -34,7 +34,7 @@ Scroll through the Access Options to find the **Tableau Cloud Connection** optio
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(9).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
 
-### **Step 5: Enter Connection Details**
+### **Step 5: Enter connection details**
 
 Click on the **Add Connection** button. A connection window will open, prompting the entry of the necessary connection details.
 
@@ -42,7 +42,7 @@ Click on the **Add Connection** button. A connection window will open, prompting
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(19).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
 
-**Connection Details**
+**Connection details**
 
 - **Project**: Enter the Tableau project name. If left blank, the project name will default to the Data Product Name, registering all data sources under this project. Providing a custom project name enhances organization within Tableau.
 - **Server Address**: The address of the Tableau server (e.g., `https://prod-apnortheast-a.online.tableau.com`).
@@ -60,7 +60,7 @@ These details can be obtained upon logging into Tableau. The URL format will app
 
 In this example, `tableauuser@123` represents the **site_id**.
 
-### **Step 6: Activate the Connection**
+### **Step 6: Activate the connection**
 
 After entering the required credentials, click the **Activate Key** button to establish the connection. A confirmation message will appear upon successful connection, as illustrated in the image below.
 
@@ -86,7 +86,7 @@ Click on the **Manage Projects** option on the home page.
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(13).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
 </center>
 
-### **Step 3: Access the Project Interface**
+### **Step 3: Access the Project interface**
 
 The **Manage Projects** option opens an interface displaying all projects, including the newly created project titled **‘Corporate Finance**.’
 
@@ -102,7 +102,7 @@ Click on the **‘Corporate Finance’** project to view the available data sour
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(15).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
 
-### **Step 5: Create a New Workbook**
+### **Step 5: Create a new workbook**
 
 Click on the menu option in the upper right corner of the data source and select the **New Workbook** option.
 
@@ -110,7 +110,7 @@ Click on the menu option in the upper right corner of the data source and select
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(16).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
 
-### **Step 6: Provide Credentials**
+### **Step 6: Provide credentials**
 
 To create a new workbook, users will be prompted to provide their DataOS username and API key as the password to access the data source. This information can be retrieved by navigating to the profile page in the bottom left corner of the Data Product Hub.
 
@@ -118,7 +118,7 @@ To create a new workbook, users will be prompted to provide their DataOS usernam
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(17).png" alt="DPH" style="width:30rem; border: 1px solid black;" />
 </center>
 
-### **Step 7: Start Creating the Dashboard**
+### **Step 7: Start creating the dashboard**
 
 After signing in, users will be redirected to the workbook, where dashboard creation can commence.
 
@@ -128,48 +128,99 @@ After signing in, users will be redirected to the workbook, where dashboard crea
 </center>
 
 
+
 ## Important Considerations for Tableau Integration
 
-**1. Handling Entities Without Relationships**
+**1. Handling Entities without Relationships:** An error will occur during synchronization if any entity in the data model lacks a defined relationship. To resolve this issue, the entity can be hidden to avoid synchronization errors.
 
-An error will occur during synchronization if any entity in the data model lacks a defined relationship. To resolve this issue, the entity can be hidden to avoid synchronization errors.
+**2. Live connection:** The connection between the Lens semantic layer and Tableau Cloud is live. This means that any changes to the underlying data or measure logic will automatically be reflected in Tableau.
 
-**2. Live Connection**
+**3. Schema changes:** If there are schema updates, such as adding new dimensions or measures, the integration steps will need to be repeated to incorporate these changes into Tableau.
 
-The connection between the Lens semantic layer and Tableau Cloud is live. This means that any changes to the underlying data or measure logic will automatically be reflected in Tableau.
+**4. Avoiding cyclic dependencies:** Tableau does not support cyclic dependencies within data models. To prevent integration issues, it is essential to ensure that the data model is free of cyclic dependencies prior to syncing with Tableau.
 
-**3. Schema Changes**
 
-If there are schema updates, such as adding new dimensions or measures, the integration steps will need to be repeated to incorporate these changes into Tableau.
+## Handling specific data types in Tableau
 
-**4. Avoiding Cyclic Dependencies**
+1. **Time data type as measure in Tableau**  
 
-Tableau does not support cyclic dependencies within data models. To prevent integration issues, it is essential to ensure that the data model is free of cyclic dependencies prior to syncing with Tableau.
+    When syncing the Lens semantic layer with Tableau, note that Tableau does not support the time data type as a measure. While Lens allows time-based measures, Tableau defaults to treating date and time fields as dimensions.As a result, Tableau will not correctly interpret any measure with a **time data type**.
 
----
 
-## Handling Specific Data Types in Tableau
+    **Recommended actions**:
 
-**1. Time Data Type as Measure in Tableau**
+    To avoid synchronization issues:
 
-When syncing the Lens semantic layer with Tableau, it is important to note that Tableau **does not support the time data type as a measure**. While Lens supports time-based measures, Tableau treats **date and time fields as dimensions** by default. Consequently, Tableau will not correctly interpret any measure with a **time data type**.
+    - Use time or date fields in Tableau only for **dimension-based** filtering or grouping.
+    - For time-based calculations, limit aggregations to **MIN()** or **MAX()** functions.
 
-To avoid synchronization issues:
+2. **String data type to geographical**
 
-- Use time or date fields in Tableau solely for **dimension-based** filtering or grouping.
-- For time-based calculations, limit aggregations to **MIN()** or **MAX()** functions when handling date/time fields in Tableau.
+    When connecting a dataset to Tableau, it automatically detects fields such as **City** and **Country** and converts them from string data types to **Geography** types. This enables Tableau to treat these fields as geographical locations, allowing features like map visualizations and geospatial analysis without the need for manual adjustments.
 
 <aside class="callout">
-📌 This limitation is specific to Tableau's handling of time data types as measures and does not affect other functionalities of the Lens semantic layer.
+📌 All limitations are specific to Tableau's handling of time data types as measures and does not affect other aspects of the Lens semantic layer's functionality.
+
 </aside>
 
-**2. String Data Type to Geographical**
 
-When connecting a dataset to Tableau, the platform automatically detects fields such as **City** and **Country**, converting them from string data types to **Geography** types. This functionality enables Tableau to treat these fields as geographical locations, facilitating map visualizations and geospatial analysis without requiring manual adjustments.
+
+## Data policies and security
+
+Any data masking, restrictions, or permissions defined by the publisher will automatically be enforced for all viewers of the report, ensuring consistent data security and compliance. However, the behavior of data policies (e.g., masking) depends on who is the user of the PowerBI desktop.
+
+## Error handling 
+
+**Scenario 1: Handling syntactical errors in Measures or Dimensions** 
+
+If a measure or dimension contains a syntactical error (and is also not functioning in Lens Studio), the following error will appear when attempting to select such a measure or dimension:
+
+<div style="text-align: center;">
+    <img src="/resources/lens/bi_integration/image02.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+</div>
+
+After correcting the syntactical error in the measure or dimension within Lens, the error will no longer appear. To reflect the changes in Tableau, refreshing the data source and re-selecting the measure or dimension will be necessary to display it in the chart.
+
+
+<div style="text-align: center;">
+    <img src="/resources/lens/bi_integration/image03.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+</div>
+
+
+**Scenario 2: Reflecting logical changes in measures or dimensions**
+
+If logical changes are made to a measure or dimension, for example adjusting how the sum is calculated, the changes will not be reflected in Tableau immediately.
+
+<div style="text-align: center;">
+    <img src="/resources/lens/bi_integration/image04.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+</div>
+
+Before the change, the sum calculation may appear as shown below:
+
+<div style="text-align: center;">
+    <img src="/resources/lens/bi_integration/image05.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+</div>
+
+
+**Scenario 3: Handling inactive Lens in the environment** 
+
+If the Lens is not active in the environment while working on an existing workbook in Tableau or when attempting to establish a new connection, an error will be encountered. This may prevent access to or querying data from the Lens. Verification that the Lens exists and is active is required before syncing
+
+
+**Scenario 4: Handling data source errors due to access restrictions**
+
+If the Account table is set to public = false, a data source error will occur in Tableau. The error message will indicate that the "Account table not found," which will prevent querying or using data from that table.
+
+<div style="text-align: center;">
+    <img src="/resources/lens/bi_integration/image06.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
+</div>
+
+To resolve this issue, ensure the Account table is accessible (set to public = true or assign appropriate permissions) and then resync the Lens in Tableau to regain access.
+
 
 ---
 
-## Governance of Model on Tableau Cloud
+## Governance of model on Tableau Cloud
 
 When the Lens Model is activated via BI Sync on Tableau, all user-level access controls and data policies from Lens are automatically applied to Tableau.
 

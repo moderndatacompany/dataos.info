@@ -1,112 +1,124 @@
-To optimize data retrieval and enhance performance, you can use the datasets cached by Flash to construct Lens logical tables. This strategic caching minimizes the amount of data queried, making operations more efficient. By storing logical tables of frequently accessed or queried Lenses in Flash, you avoid repeatedly accessing the source and scanning large datasets. This enables faster performance with responses delivered in seconds.
+# How to Use Cached Datasets in Lens Models Using Flash?
 
-## When to Flash Logical Tables?
+To optimize data retrieval and enhance performance, cached datasets in Flash can be leveraged to construct Lens logical tables. This strategy minimizes data querying from the source by storing frequently accessed or queried Lenses in Flash, which avoids repeated source access and scanning of large datasets. As a result, queries can be processed faster, delivering responses in seconds.
 
-Consider the following criteria to determine if the logical tables of a Lens need to be cached in Flash:
+## When to cache logical tables in Flash?
 
-- **Complexity of the SQL View:** Look for SQL that involves complex operations such as aggregate functions, multiple joins, and subqueries. These indicate potentially resource-intensive queries.
-- **Data Volume:** Lens models operating on large volumes of data from the source are prime candidates. Caching such logical tables in Flash can expedite query processing.
-- **Source Optimization:** If the source system struggles to handle complex queries efficiently, evidenced by prolonged query execution times or frequent timeouts, storing the table in Flash could significantly enhance performance.
+Consider the following criteria to determine if the logical tables of a Lens should be cached in Flash:
 
-## Steps to consume Flash dataset in Lens
+- **Complexity of the SQL View:** Caching is beneficial for SQL operations involving complex aggregate functions, multiple joins, and subqueries, which may result in resource-intensive queries.
+- **Data Volume:** Lens models that handle large datasets from the source can benefit significantly from caching, as it expedites query processing.
+- **Source Optimization:** If the source system experiences prolonged query execution times or frequent timeouts, caching in Flash can improve overall performance.
 
-1. Define the Flash layer (Service) as the data source for your Lens deployment manifest file:
-    
-    ```yaml
-    source:
-      type: flash #minerva/themis/depot
-      name: flash-test  # name of the Flash service
-      catalog: icebase
-    ```
-    
-2. Specify two additional environment variables in the Worker, API, and router sections of the Lens deployment YAML:
-    
-    ```yaml
+## Steps to use Flash datasets in Lens
+
+### **1. Define Flash as the data source**
+
+Configure the Flash service as the data source in the Lens deployment manifest file. Below is an example configuration:
+
+```yaml
+source:
+  type: flash  # Specifies the data source type as Flash
+  name: flash-test  # Name of the Flash service
+  catalog: icebase
+```
+
+### **2. Add environment variables**
+
+To enable Lens to interact with the Flash service, specify the following environment variables in the `Worker`, `API`, and `Router` sections of the Lens deployment manifest:
+
+```yaml
+envs:
+  LENS2_SOURCE_WORKSPACE_NAME: public
+  LENS2_SOURCE_FLASH_PORT: 5433
+```
+
+### **3. Sample Lens deployment manifest**
+
+Below is a sample Lens deployment manifest that uses Flash as the data source for further clarity:
+
+```yaml
+version: v1alpha
+name: "lens-test01"
+layer: user
+type: lens
+tags:
+  - lens
+description: A sample Lens containing entities, views, and measures for testing
+lens:
+  compute: runnable-default
+  secrets:
+    - name: gitsecret-r
+      allKeys: true
+  source:
+    type: flash  # Specifies Flash as the data source
+    name: flash-test01  # Name of the Flash service
+  repo:
+    url: https://github.com/iamgroot/lens-flash
+    lensBaseDir: lens-flash/flash/model  # Directory where Lens models are stored
+    syncFlags:
+      - --ref=main
+  api:
+    replicas: 1
+    logLevel: debug
     envs:
+      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
       LENS2_SOURCE_WORKSPACE_NAME: public
       LENS2_SOURCE_FLASH_PORT: 5433
-    ```
-    
-    Below is the sample Lens deployment manifest file of Flash as a source for better understanding.
-    
-    ```yaml
-    version: v1alpha
-    name: "lens-test01"
-    layer: user
-    type: lens
-    tags:
-      - lens
-    description: A sample lens that contains three entities, a view, and a few measures for users to test
-    lens:
-      compute: runnable-default
-      secrets: # Referred Instance-secret configuration (**mandatory for private code repository, not required for public repository)
-        - name: gitsecret-r # Referred Instance Secret name (mandatory)
-          allKeys: true # All keys within the secret are required or not (optional)
-      source:
-        type: flash # minerva, themis and depot
-        name: flash-test01 # flash service name
-      repo:
-        url: https://github.com/iamgroot/lens-flash
-        lensBaseDir: lens-flash/flash/model     # location where lens models are kept in the repo
-        syncFlags:
-          - --ref=main
-      api:
-        replicas: 1
-        logLevel: debug
-        envs:
-          LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-          LENS2_SOURCE_WORKSPACE_NAME: public
-          LENS2_SOURCE_FLASH_PORT: 5433
-        resources: # optional
-          requests:
-            cpu: 100m
-            memory: 256Mi
-          limits:
-            cpu: 2000m
-            memory: 2048Mi
-    
-      worker:
-        replicas: 1
-        logLevel: debug
-        envs:
-          LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-          LENS2_SOURCE_WORKSPACE_NAME: public
-          LENS2_SOURCE_FLASH_PORT: 5433
-        resources: # optional
-          requests:
-            cpu: 100m
-            memory: 256Mi
-          limits:
-            cpu: 6000m
-            memory: 6048Mi
-    
-      router:
-        logLevel: info
-        envs:
-          LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-          LENS2_SOURCE_WORKSPACE_NAME: public
-          LENS2_SOURCE_FLASH_PORT: 5433
-        resources: # optional
-          requests:
-            cpu: 100m
-            memory: 256Mi
-          limits:
-            cpu: 6000m
-            memory: 6048Mi
-    
-      iris:
-        logLevel: info  
-        envs:
-          LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-          LENS2_SOURCE_WORKSPACE_NAME: public
-          LENS2_SOURCE_FLASH_PORT: 5433
-        resources: # optional
-          requests:
-            cpu: 100m
-            memory: 256Mi
-          limits:
-            cpu: 6000m
-            memory: 6048Mi
-    ```
-    
-3. Now create the [Lens model](https://www.notion.so/Lens-Set-up-5e0c742506304ec286d42bae32428509?pvs=21) and deploy it as mentioned [here](https://www.notion.so/Deploying-Lens-98553d2e1a7d425080cee8247b49f457?pvs=21).
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 2000m
+        memory: 2048Mi
+
+  worker:
+    replicas: 1
+    logLevel: debug
+    envs:
+      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
+      LENS2_SOURCE_WORKSPACE_NAME: public
+      LENS2_SOURCE_FLASH_PORT: 5433
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 6000m
+        memory: 6048Mi
+
+  router:
+    logLevel: info
+    envs:
+      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
+      LENS2_SOURCE_WORKSPACE_NAME: public
+      LENS2_SOURCE_FLASH_PORT: 5433
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 6000m
+        memory: 6048Mi
+
+  iris:
+    logLevel: info  
+    envs:
+      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
+      LENS2_SOURCE_WORKSPACE_NAME: public
+      LENS2_SOURCE_FLASH_PORT: 5433
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 6000m
+        memory: 6048Mi
+```
+
+### **3. Create and deploy the Lens model**
+
+Once the manifest file is ready and Flash is configured as the data source, proceed to create and deploy the [Lens](/resources/lens/) model according to your deployment procedures.
+
+This approach ensures optimal performance by leveraging cached datasets, minimizing data retrieval times, and improving query efficiency.

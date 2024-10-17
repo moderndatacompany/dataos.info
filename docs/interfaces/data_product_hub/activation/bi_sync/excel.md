@@ -2,9 +2,7 @@
 
 ## Prerequisites
 
-**PowerBI**
-
-Ensure the PowerBI remains on your screen while you try to connect with the Excel.
+**PowerBI:** Ensure the PowerBI remains on your screen while you try to connect with the Excel.
 
 **Install the Analyze in Excel plugin in PowerBI:** 
 

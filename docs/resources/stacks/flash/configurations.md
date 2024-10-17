@@ -1,4 +1,6 @@
-This section involves details of each attribute to help you better understand the Flash Service configurations.
+# Attributes of Flash Service Manifest File
+
+This section provides detailed descriptions of the attributes within the Flash Service manifest file, assisting in understanding the configuration required for effective Flash Service deployment.
 
 ```yaml
 name: ${{flash-test}}
@@ -66,9 +68,11 @@ service:
         sql: ${{INSERT INTO f_sales BY NAME (select * from records);}}
 ```
 
-To know more about the Resource meta section, please [refer to this](https://dataos.info/resources/manifest_attributes/).
+## Resource-specific section
 
-## Resource Specific Section
+Click [here](/resources/manifest_attributes/) to know Resource meta section configuration.
+
+## Service-specific section
 
 ### **`service`**
 
@@ -76,11 +80,13 @@ To know more about the Resource meta section, please [refer to this](https://dat
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
 | --- | --- | --- | --- |
-| object | mandatory | none | Contains various sub-attributes |
+| mapping | mandatory | none | Contains various sub-attributes |
+
+---
 
 ### **`servicePort`**
 
-**Description:** The port on which the service will run.
+**Description:** Specifies the port on which the service will run.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
 | --- | --- | --- | --- |
@@ -92,13 +98,16 @@ To know more about the Resource meta section, please [refer to this](https://dat
 servicePort: 8080
 ```
 
+---
+
+
 ### **`servicePorts`**
 
-**Description:** A backup Service port. 
+**Description:** A list of additional service ports, such as a backup service port.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
 | --- | --- | --- | --- |
-| integer | optional | none | Any valid port number |
+| list | optional | none | A list of valid port numbers |
 
 **Example Usage:**
 
@@ -108,17 +117,19 @@ servicePorts:
     servicePort: 5433
 ```
 
+---
+
 ### **`ingress`**
 
-**Description:** configuration for the service's ingress. Ingress exposes HTTP and HTTPS routes from outside DataOS to services within DataOS. Configure the incoming port for the service to allow access to DataOS resources from external links.
+**Description:** Configuration for exposing the service to external HTTP/HTTPS routes. This attribute specifies how external access is handled.
 
-| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
 | --- | --- | --- | --- |
 | mapping | optional | none | none |
 
 **Example Usage:**
 
-``` yaml
+```yaml
 service:
   ingress: 
       enabled: true
@@ -127,77 +138,11 @@ service:
       stripPath: true
 ```
 
-You can access the ingress path on [Metis](/interfaces/metis/), as shown below.
-
-<center>
-  <img src="/resources/stacks/flash/annotely_image%20(30).png" alt="Metis" style="width:40rem; border: 1px solid black; padding: 5px;" />
-  <figcaption><i>Metis Interface</i></figcaption>
-</center>
-
-
-
-### **`enabled`**
-**Description:** indicates whether ingress is enabled for the service.
-
-| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
-| --- | --- | --- | --- |
-| boolean | optional | false | true/false |
-
-**Example Usage:**
-
-``` yaml
-service:
-  ingress:
-    enabled: true
-```
-
-
-### **`path`**
-**Description:** the path for the Service's ingress configuration. If a Service by the same path already exists, it would get replaced.
-
-| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
-| --- | --- | --- | --- |
-| string | optional | none | any valid path |
-
-**Example Usage:**
-
-``` yaml
-service:
-  ingress:
-    path: /flash/public:flash-test 
-```
-
-### **`stripPath`**
-
-**Description:** indicates whether to strip the path from incoming requests in the ingress configuration.
-
-| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
-| --- | --- | --- | --- |
-| boolean | optional | false | true/false |
-
-**Example Usage:**
-
-``` yaml
-service:
-  ingress:
-    stripPath: true
-```
-
-
-### **`noAuthentication`**
-
-**Description:** indicates whether authentication is disabled for the ingress configuration.
-
-| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
-| --- | --- | --- | --- |
-| boolean | optional | true | true or false. |
-
-
-
+---
 
 ### **`replicas`**
 
-**Description:** The number of replicas for the service.
+**Description:** Defines the number of service replicas to deploy.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
 | --- | --- | --- | --- |
@@ -209,9 +154,11 @@ service:
 replicas: 1
 ```
 
+---
+
 ### **`logLevel`**
 
-**Description:** The level of logging detail for the service.
+**Description:** The level of logging details captured for the service.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
 | --- | --- | --- | --- |
@@ -223,13 +170,15 @@ replicas: 1
 logLevel: info
 ```
 
+---
+
 ### **`compute`**
 
-**Description:** Specifies the compute environment or type.
+**Description:** Specifies the compute environment or type for the service.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
 | --- | --- | --- | --- |
-| string | mandatory | none | Any valid compute environment |
+| string | mandatory | none | Valid compute environment identifier |
 
 **Example Usage:**
 
@@ -237,222 +186,182 @@ logLevel: info
 compute: runnable-default
 ```
 
+---
+
 ### **`envs`**
 
-**Description:** environment variables for the service.
+**Description:** Defines environment variables for the service.
 
-| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
 | --- | --- | --- | --- |
-| mapping | optional | none | key-value configurations |
+| mapping | optional | none | Key-value pairs representing environment variables |
 
 **Example Usage:**
 
-``` yaml
+```yaml
 envs:
   APP_BASE_PATH: 'dataos-basepath'
   FLASH_BASE_PATH: /flash/public:flash-test
 ```
+---
 
 ### **`resources`**
 
-**Description:** Resource allocation details for the service.
+**Description:** Specifies resource allocation, including CPU and memory for the service.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
 | --- | --- | --- | --- |
-| object | mandatory | none | Contains `requests` sub-attribute |
+| mapping | mandatory | none | Contains `requests` and `limits` sub-attributes |
 
 **Example Usage:**
 
 ```yaml
 resources:
   requests:
+    cpu: 500m
+    memory: 512Mi
+  limits:
     cpu: 1000m
     memory: 1024Mi
 ```
 
+---
+
 ### **`requests`**
 
-**Description:** Specifies the minimum resources required for the service.
+**Description:** Defines the minimum CPU and memory resources requested for the service.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
 | --- | --- | --- | --- |
-| object | mandatory | none | Contains `cpu` and `memory` sub-attributes |
+| mapping | mandatory | none | Contains `cpu` and `memory` sub-attributes |
 
 **Example Usage:**
 
 ```yaml
 requests:
+  cpu: 500m
+  memory: 512Mi
+```
+
+---
+
+### **`limits`**
+
+**Description:** Defines the maximum CPU and memory resources that the service is allowed to use.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
+| --- | --- | --- | --- |
+| mapping | mandatory | none | Contains `cpu` and `memory` sub-attributes |
+
+**Example Usage:**
+
+```yaml
+limits:
   cpu: 1000m
   memory: 1024Mi
 ```
 
-### **`cpu`**
-
-**Description:** The amount of CPU resources requested.
-
-| **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
-| --- | --- | --- | --- |
-| string | mandatory | none | Any valid CPU resource specification (e.g., `1000m`) |
-
-**Example Usage:**
-
-```yaml
-cpu: 1000m
-```
-
-### **`memory`**
-
-**Description:** The amount of memory resources requested.
-
-| **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
-| --- | --- | --- | --- |
-| string | mandatory | none | Any valid memory resource specification (e.g., `1024Mi`) |
-
-**Example Usage:**
-
-```yaml
-memory: 1024Mi
-```
+---
 
 ### **`stack`**
 
-**Description:** Specifies the stack or runtime environment for the service.
+**Description:** Specifies the stack (runtime environment) to be used by the service.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
 | --- | --- | --- | --- |
-| string | mandatory | none | Any valid stack or runtime specification |
+| string | mandatory | none | Stack version and type identifier |
 
 **Example Usage:**
 
 ```yaml
-stack: flash+python:1.0
+stack: flash+python:2.0
 ```
 
-## Stack Specific Section
+---
+
+## Flash Stack-specific Section
 
 ### **`stackSpec`**
 
-**Description:** Specification details for the stack used by the service.
+**Description:** Defines stack-specific configurations, such as datasets, initialization SQL, and scheduling for data refresh.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
 | --- | --- | --- | --- |
-| object | mandatory | none | Contains `datasets`, `init`, and `schedule` sub-attributes |
-
-**Example Usage:**
-
-```yaml
-  stackSpec: # mandatory
-    summarise: true
-    datasets: # mandatory
-      - address: dataos://icebase:retail/customer # mandatory
-        name: customer # mandatory
-```
-
-### **`summarise`**
-
-**Description:** Showcases a summary of all the datasets being cached inside Flash.
-
-| **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
-| --- | --- | --- | --- |
-| boolean | optional | false | `true`, `false` |
+| mapping | mandatory | none | Contains `datasets`, `init`, and `schedule` sub-attributes |
 
 **Example Usage:**
 
 ```yaml
 stackSpec:
-  summarise: true
   datasets:
-    - address: dataos://icebase:retail/customer
-      name: customer
+    - name: records
+      address: dataos://icebase:flash/records
 ```
+
+---
 
 ### **`datasets`**
 
-**Description:** List of mappings each specifying the name and address of the specific dataset.
+**Description:** A list specifying the datasets to be cached by the Flash Service.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
 | --- | --- | --- | --- |
-| array of objects | mandatory | none | Contains `address` and `name` sub-attributes |
+| list | mandatory | none | Contains `address` and `name` sub-attributes |
 
 **Example Usage:**
 
 ```yaml
-datasets: # mandatory
-  - address: dataos://icebase:retail/customer # mandatory
-    name: customer # mandatory
+datasets:
+  - name: records
+    address: dataos://icebase:flash/records
 ```
 
-### **`address`**
-
-**Description:** The address of the dataset.
-
-| **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
-| --- | --- | --- | --- |
-| string | mandatory | none | Any valid dataset address |
-
-**Example Usage:**
-
-```yaml
-- address: dataos://icebase:retail/customer
-```
-
-### **`name`**
-
-**Description:** The name of the dataset.
-
-| **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
-| --- | --- | --- | --- |
-| string | mandatory | none | Any valid dataset name |
-
-**Example Usage:**
-
-```yaml
-name: customer
-```
+---
 
 ### **`init`**
 
-**Description:** Initialization commands or SQL statements to run on service start.
+**Description:** Initialization SQL commands to be executed when the service starts.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
 | --- | --- | --- | --- |
-| array of strings | optional | none | Any valid SQL or command strings |
-
-<aside class="callout">
-🗣 **Best Practice:** Create views instead of tables while caching datasets. It uses less infrastructure resources - CPU and memory. Also, the View or table name should not be the same as the dataset address name. For example: creating view sales as (select * from sales) is not allowed.
-
-</aside>
+| list of strings | optional | none | SQL commands for initialization |
 
 **Example Usage:**
 
 ```yaml
 init:
-  - create table mycustomer as (select * from customer)
+  - create table f_sales as (select * from records)
 ```
+
+---
 
 ### **`schedule`**
 
-**Description:** Scheduling details for periodic tasks.
+**Description:** Defines periodic tasks using cron expressions for scheduling queries.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
 | --- | --- | --- | --- |
-| array of objects | optional | none | Contains `expression` and `sql` sub-attributes |
+| list | optional | none | Contains `expression` and `sql` sub-attributes |
 
 **Example Usage:**
 
 ```yaml
 schedule:
   - expression: "*/2 * * * *"
-    sql: INSERT INTO mycustomer BY NAME (select * from customer);
+    sql: INSERT INTO f_sales BY NAME (select
+
+ * from records);
 ```
+
+---
 
 ### **`expression`**
 
-**Description:** The cron expression for scheduling tasks.
+**Description:** Cron expression for scheduling periodic queries.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
 | --- | --- | --- | --- |
-| string | mandatory | none | Any valid cron expression |
+| string | mandatory | none | Valid cron expression |
 
 **Example Usage:**
 
@@ -460,16 +369,18 @@ schedule:
 expression: "*/2 * * * *"
 ```
 
+---
+
 ### **`sql`**
 
-**Description:** The SQL command executes on schedule.
+**Description:** SQL query that executes according to the specified cron schedule.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
 | --- | --- | --- | --- |
-| string | mandatory | none | Any valid SQL statement |
+| string | mandatory | none | Any valid SQL command |
 
 **Example Usage:**
 
 ```yaml
-sql: INSERT INTO mycustomer BY NAME (select * from customer);
+sql: INSERT INTO f_sales BY NAME (select * from records);
 ```
