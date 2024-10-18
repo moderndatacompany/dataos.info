@@ -231,11 +231,13 @@ description: The job ingests customer data
 
 **Example Usage:**
 
+
 ```yaml
 tags:
   - tag1
   - tag2
 ``` 
+
 ---
 
 ##### **`gcWhenComplete`**
@@ -356,8 +358,16 @@ configs:
 
 ```yaml
 envs:
-  CONTAINER_NAME: 'itsrandom'
+  DEPOT_SERVICE_URL: http://depotservice-api.depot.svc.cluster.local:8000/ds/
+  HTTP_CONNECT_TIMEOUT_MS: 60000
+  HTTP_SOCKET_TIMEOUT_MS: 60000
 ```
+
+**Additional Details:**
+
+- **DEPOT_SERVICE_URL**: Specifies the base URL for the Depot Service API. This is the endpoint that the service interacts with for managing Depots.
+- **HTTP_CONNECT_TIMEOUT_MS**: Defines the connection timeout for HTTP requests, in milliseconds. If a connection to a remote server cannot be established within this timeframe (60 seconds in this case), the request will timeout. This ensures that the workload does not hang indefinitely while attempting to connect.
+- **HTTP_SOCKET_TIMEOUT_MS**: Sets the socket timeout for HTTP requests, in milliseconds. This controls the maximum time that the service will wait for data after a connection has been established. If data is not received from the connected server within this period (60 seconds), the request will timeout. This helps prevent long delays in response handling when waiting for data transfer.
 
 ---
 
