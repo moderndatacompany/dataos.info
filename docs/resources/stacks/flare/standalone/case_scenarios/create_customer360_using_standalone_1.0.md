@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Create customer 360 using Standalone 1.0
 
 

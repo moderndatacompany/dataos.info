@@ -89,11 +89,11 @@ The Flare Stack YAML consists of multitude of configuration settings tailored fo
 
 [Flare Functions](/resources/stacks/flare/functions/list/)
 
-## How to test Flare Jobs
+<!-- ## How to test Flare Jobs
 
 Before deploying your logic into production, thorough testing is crucial. Flare Standalone provides a powerful and reliable testing interface, allowing you to test your Flare Jobs locally on your system. It helps identify and address potential issues before deployment. Further information regarding Flare Standalone can be accessed by clicking the link below.
 
-[Flare Standalone](/resources/stacks/flare/standalone/)
+[Flare Standalone](/resources/stacks/flare/standalone/) -->
 
 ## How to optimize jobs in Flare
 

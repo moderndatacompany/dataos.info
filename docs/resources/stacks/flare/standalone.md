@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Flare Standalone
 
 > While developing a new Flare data processing workflow, it's a good idea to confirm that your transformations will work in production. Flare Standalone is the easiest way to achieve this.

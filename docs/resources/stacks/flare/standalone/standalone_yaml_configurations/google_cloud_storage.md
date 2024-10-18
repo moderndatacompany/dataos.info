@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Google Cloud Storage (GCS)
 
 ## Read Config
