@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # From Standalone to Production
 
 

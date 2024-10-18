@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Local to Local using Standalone 2.0
 
 Let’s take a case scenario, where we read data from the Local system and write it back locally.
