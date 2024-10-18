@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Testing the Flare job on Flare Standalone
 
 

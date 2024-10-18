@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Local to Local - Using DataOS CLI
 
 This article is a step-by-step guide to run Flare Standalone using DataOS Command Line Interface to test your workflows and explore the sample data using SparkSQL.
