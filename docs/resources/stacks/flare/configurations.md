@@ -406,7 +406,7 @@ stackSpec:
 
 ### **`inputs`**
 
-**Description:** The `inputs` attribute comprises of input dataset configurations for reading data from various depots (in case of Flare) and various data sources (in case of Flare Standalone). 
+**Description:** The `inputs` attribute comprises of input dataset configurations for reading data from various depots and data sources. 
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
@@ -889,7 +889,7 @@ stackSpec:
 ### **`outputs`**
 
 
-**Description:** The `outputs` attribute comprises of output dataset configurations for writing data from various depots (in case of Flare) and various data sources (in case of Flare Standalone). 
+**Description:** The `outputs` attribute comprises of output dataset configurations for writing data from various depots and data sources. 
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |

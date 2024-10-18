@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Getting the Port of ServiceUrl and AdminUrl
 
 - Open the Operations App 

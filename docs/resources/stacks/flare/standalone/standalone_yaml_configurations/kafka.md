@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Kafka
 
 ## Read Config
