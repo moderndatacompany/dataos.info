@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Getting the Port of Service and AdminUrl
 
 

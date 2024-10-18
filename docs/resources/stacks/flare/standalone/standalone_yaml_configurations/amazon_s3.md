@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Amazon Simple Storage Service (S3)
 
 
