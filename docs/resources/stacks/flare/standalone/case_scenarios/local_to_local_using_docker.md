@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Local to Local - Using Docker
 
 This article is a step-by-step guide for downloading prerequisites to install Flare Standalone and exploring the sample data while also assisting the user in completing a guided assignment.

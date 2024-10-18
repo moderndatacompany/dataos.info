@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Azure Blob Storage (ABFSS)
 
 ## Read Config

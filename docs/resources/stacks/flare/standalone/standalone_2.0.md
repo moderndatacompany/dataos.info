@@ -1,3 +1,9 @@
+---
+search:
+  exclude: true
+---
+
+
 # Standalone 2.0
 
 
