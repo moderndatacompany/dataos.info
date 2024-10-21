@@ -141,7 +141,7 @@ After creating a Lens data model, the next step is to explore it—this means in
 
 The Lens can be integrated with a variety of data sources. This section outlines the data sources supported by Lens and provides insights into connecting and managing data to ensure optimal performance and scalability.
 
-[Supported Data Sources](/resources/lens/fine_tuning_a_lens_model/)
+[Supported Data Sources](/resources/lens/data_sources/)
 
 
 ## Optimizing Lens model

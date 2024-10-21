@@ -4,7 +4,7 @@
 
 ### **Prerequisites**
 
-- **Flash Service:** Ensure you have a running flash service.
+- **Flash Service:** A running [Flash](/resources/stacks/flash/)Service.
 
 ```yaml
 name: flash-service-99
@@ -44,8 +44,6 @@ service:
       - create or replace table m_sites as (select * from site_check1)
       - create or replace table m_products as (select * from product_data_master)
 ```
-
-
 
 
 ### **How Does This Process Work?**
