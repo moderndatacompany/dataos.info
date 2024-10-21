@@ -11,3 +11,5 @@
 [Postgres](/resources/lens/data_sources/postgres/)
 
 [Minerva](/resources/lens/data_sources/minerva/)
+
+[Flash](/resources/lens/data_sources/flash/)
