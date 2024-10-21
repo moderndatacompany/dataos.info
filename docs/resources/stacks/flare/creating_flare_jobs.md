@@ -310,7 +310,7 @@ INFO[0001] 🛠 apply...nothing
 
 </details>
     
-
+<!-- 
 ### **Testing the YAML on Flare Standalone**
 
 In spite of validating the YAML, there is a chance that the Flare job will fail in production which will result in a loss of both computing resources and time. To avoid such unforeseeable situations its the best practice to test the Flare job in the Flare Standalone before deploying it into production.
@@ -320,7 +320,7 @@ In spite of validating the YAML, there is a chance that the Flare job will fail 
 
 </aside>
 
-[Testing the Flare job on Flare Standalone](/resources/stacks/flare/creating_flare_jobs/testing_the_flare_job_on_flare_standalone/)
+[Testing the Flare job on Flare Standalone](/resources/stacks/flare/creating_flare_jobs/testing_the_flare_job_on_flare_standalone/) -->
 
 ### **Applying the YAML**
 

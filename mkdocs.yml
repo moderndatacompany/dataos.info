@@ -10,6 +10,7 @@ theme:
       - navigation.instant.progress
       - navigation.tracking
       - navigation.footer
+      - navigation.prune
       - navigation.tabs
       - navigation.tabs.sticky
       - navigation.indexes
@@ -432,6 +433,17 @@ nav:
             - resources/stacks/flare/index.md
           - Flash:
             - resources/stacks/flash/index.md
+            - Create a Flash Service: resources/stacks/flash/flash_service.md
+            - Configurations: resources/stacks/flash/configurations.md
+            - Supported Data Sources: resources/stacks/flash/data_sources.md
+            - Monitoring Flash: resources/stacks/flash/recipes/monitor.md
+            - Best Practices: resources/stacks/flash/best_practices.md
+            - Do's and Dont's: resources/stacks/flash/dos_and_donts.md
+            - Errors and Issues: 
+              - Handling Empty Tables: resources/stacks/flash/handling_empty_tables.md
+            - Recipes: 
+              - Use cached datasets in Lens models: resources/stacks/flash/recipes/lens.md
+              - Use cached datsets in Talos APIs: resources/stacks/flash/recipes/talos.md
           - Scanner: 
             - resources/stacks/scanner/index.md
           - Soda: 

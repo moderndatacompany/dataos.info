@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Standalone YAML Configurations
 
 ![Flare Standalone ex.svg](/resources/stacks/flare/standalone/standalone_yaml_configurations/flare_standalone_ex.svg)

@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Cloud to Local - Using Standalone 2.0
 
 ## Case Scenario
