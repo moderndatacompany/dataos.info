@@ -139,7 +139,7 @@ paths:
 
 
 **Additional Information:**
-The manifest tags field in both subjects and objects is an array of string arrays. The [rules](/resources/policy/rules_for_and_or_relationship) page will help you to define required expressions.
+The manifest tags field in both subjects and objects is an array of string arrays. The [rules](/resources/policy/rules_for_and_or_relationship/) page will help you to define required expressions.
 
 ---
 

@@ -45,7 +45,7 @@ minerva:
 ```
 </details>
 
-For more information, refer to the [Multi-Cluster Setup](/resources/cluster/examples/multiple_cluster_setup).
+For more information, refer to the [Multi-Cluster Setup](/resources/cluster/examples/multiple_cluster_setup/).
 
 ## Scenario 2: Data scientists/analysts running intensive data exploration
 
@@ -72,4 +72,4 @@ For a combination of large and medium queries, where data scanned ranges from a 
 
 These parameters can be tuned based on specific requirements.
 
-For further details, please refer to the [Performance Tuning](/resources/cluster/performance_tuning) section.
+For further details, please refer to the [Performance Tuning](/resources/cluster/performance_tuning/) section.

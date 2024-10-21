@@ -51,7 +51,7 @@ DataOS offers two primary categories of policies: Access Policy and Data Policy.
 
         Such a policy ensures the protection of sensitive details, including but not limited to names, titles, addresses, etc.
 
-        You can apply the Mask policy, say to mask the column with ‘customer name’ in it, directly from the [Metis UI](/interfaces/metis) via policy tags or via [DataOS CLI](/interfaces/cli/) by applying a manifest file. 
+        You can apply the Mask policy, say to mask the column with ‘customer name’ in it, directly from the [Metis UI](/interfaces/metis/) via policy tags or via [DataOS CLI](/interfaces/cli/) by applying a manifest file. 
 
     === "Data Filtering Policy"
 
@@ -125,6 +125,6 @@ Policy can be configured depending on the use case. For a detailed breakdown of 
 
 - [A end to end use-case on how to implement Access Policy](/resources/policy/how_to_guide/implementing_access_policy/)
 
-- [A end to end use-case on how to implement Filter Data Policy](/resources/policy/how_to_guide/implementing_filter_data_policy)
+- [A end to end use-case on how to implement Filter Data Policy](/resources/policy/how_to_guide/implementing_filter_data_policy/)
 
-- [A end to end use-case on how to implement Masking Data Policy](/resources/policy/how_to_guide/implementing_masking_data_policy)
+- [A end to end use-case on how to implement Masking Data Policy](/resources/policy/how_to_guide/implementing_masking_data_policy/)

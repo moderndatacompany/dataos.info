@@ -8,7 +8,7 @@ This article is a step-by-step guide to run Flare Standalone using DataOS Comman
 
 DataOS CLI should be installed on your system. If it's not installed, please look at this document for the installation steps.
 
-[CLI](/interfaces/cli)
+[CLI](/interfaces/cli/)
 
 ### **Operationalize Docker if you want to Read/Write IO Locally**
 
