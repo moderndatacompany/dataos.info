@@ -18,23 +18,24 @@ To sync the Lens model with Tableau, follow the steps below:
 **Step 1: Run the curl command**
 
 ```bash
-curl --location --request POST 'http://DATAOS_FQDN/lens2/sync/api/v1/tableau/<WORKSPACE_NAME>:<LENS_NAME>' \
---header 'apikey: <apikey>' \
+curl --location --request POST 'http://<DATAOS_FQDN>/lens2/sync/api/v1/tableau/<WORKSPACE_NAME>:<LENS_NAME>' \
+--header 'apikey: <APIKEY>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "project_name": "sample",
-    "username": "user1",
-    "password": "password1",
-    "site_id": "site1",
+    "project_name": "<SAMPLE>",
+    "username": "{USER_NAME/EMAIL}",
+    "password": "<PASSWORD>",
+    "site_id": "<SITE_ID>",
     "server_address": "https://prod-apnortheast-a.online.tableau.com"
 }'
+```
 
 1. **URL:**
 
    - This endpoint is used to sync a specific Lens model to Tableau for public access.
-   - Replace <DATAOS_FQDN> with your Fully Qualified Domain Name (FQDN) where your Lens instance is hosted. Example: - liberal-monkey.dataos.app.
-   - Replace <WORKSPACE_NAME> with the name of the workspace your Lens model is deployed in. E.g. `public`, `curriculum`.
-   - Replace <LENS_NAME> with the name of the Lens model you wish to sync. Example: `sales360`.
+   - Replace <DATAOS_FQDN> with the Fully Qualified Domain Name (FQDN) where Lens instance is hosted. Example: - liberal-monkey.dataos.app.
+   - Replace <WORKSPACE_NAME> with the name of the workspace where Lens model is deployed in. E.g. `public`, `curriculum`.
+   - Replace <LENS_NAME> with the name of the Lens model to sync. Example: `sales360`.
 
 2. **Headers:**
 
@@ -51,15 +52,15 @@ curl --location --request POST 'http://DATAOS_FQDN/lens2/sync/api/v1/tableau/<WO
 
     This section defines the details of user's Tableau credentials and project configuration:
 
-    - **project_name:** The name of the Tableau project where the data will be synced. Replace "sample" with user's actual project name. If the project already don't exist, tableau will create a new project with the given name.
+    - **project_name:** The name of the Tableau project where the data will be synced. Replace "<sample>" with the actual project name. If the project does not already exist, Tableau will create a new project with the given name.
 
-    - **username:** Your Tableau account username.
+    - **username:** Tableau account username, typically the email ID used to log in to Tableau.
 
-    - **password:** Your Tableau account password.
+    - **password:** Tableau account password.
     
-    - **site_id:** The site ID that you are connected to in Tableau.
+    - **site_id:** The site ID associated with the current Tableau connection.
 
-    - **server_address:** The URL of user's Tableau server. Replace it with the correct server address (e.g., https://prod-apnortheast-a.online.tableau.com). You can obtain these when you **log in** to Tableau. You’ll see the **URL** like below:
+    - **server_address:** The URL of the Tableau server.  Replace it with the correct server address (e.g., https://prod-apnortheast-a.online.tableau.com). This information can be obtained upon logging in to Tableau. The URL will appear as follows:
 
         > https://prod-apnortheast-a.online.tableau.com/#/site/iamgroot1086a891fef336/home
 
