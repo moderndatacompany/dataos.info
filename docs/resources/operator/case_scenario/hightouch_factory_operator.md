@@ -255,7 +255,7 @@ Alternatively, retrieve the list of all operators created in your organization:
 dataos-ctl get -t operator -a
 ```
 
-You can also access the details of any created Operator through the DataOS GUI in the [Operations App.](/interfaces/operations)
+You can also access the details of any created Operator through the DataOS GUI in the [Operations App.](/interfaces/operations/)
 
 ### **YAML manifest for Resource (Hightouch pipeline)**
 

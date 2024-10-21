@@ -245,10 +245,10 @@ The **Result and Visualization Panel** is where users can choose how to view the
 
 The following are the options for displaying the results:
 
-- [Table](/interfaces/data_product_hub/exploration#table)
-- [Chart](/interfaces/data_product_hub/exploration#chart)
-- [Pivot](/interfaces/data_product_hub/exploration#pivot)
-- [Integration](/interfaces/data_product_hub/exploration#integration)
+- [Table](/interfaces/data_product_hub/exploration/#table)
+- [Chart](/interfaces/data_product_hub/exploration/#chart)
+- [Pivot](/interfaces/data_product_hub/exploration/#pivot)
+- [Integration](/interfaces/data_product_hub/exploration/#integration)
 
 ##### **Table** 
 
