@@ -119,7 +119,7 @@ After creating a Lens data model, the next step is to explore it—this means in
 
 [Data modeling](/resources/lens/overview/) is the process of defining and structuring raw data into organized and meaningful business definitions. It involves creating logical schemas, relationships, and aggregations to represent how data is stored, processed, and accessed. Effective data modeling ensures optimal performance for queries and allows users to extract valuable insights without modifying the underlying data structure. Below are resources to guide you through essential aspects of data modeling to optimize performance and accuracy.
 
-  - [Data modelling concepts:](/resources/lens/concepts/) and [Overview](/resources/lens/overview/)
+  - [Data modelling concepts](/resources/lens/concepts/) and [Overview](/resources/lens/overview/):
     Understand the core principles and methodologies essential for designing effective data models.
 
   - [Best practices:](/resources/lens/best_practices/)
