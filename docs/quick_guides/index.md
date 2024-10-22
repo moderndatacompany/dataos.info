@@ -1,5 +1,7 @@
 # Quick Start Guides
 
+These quick start guides will help you navigate through the essentials of DataOS. We recommend leveraging these resources to strengthen your understanding.
+
 ## :resources-depot: Connecting with Data Sources
 
 Learn how to connect DataOS to various data sources, ensuring seamless integration and data flow. Depot makes it easy to connect and get data from different sources, such as files, databases, event systems, and more—all without moving the data around.
