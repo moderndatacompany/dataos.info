@@ -139,9 +139,21 @@ After creating a Lens data model, the next step is to explore it—this means in
 
 ## Supported data sources
 
-The Lens can be integrated with a variety of data sources. This section outlines the data sources supported by Lens and provides insights into connecting and managing data to ensure optimal performance and scalability.
+Lens integrates with a variety of data sources to streamline data analysis and management. Below is a list of supported data sources.
 
-[Supported Data Sources](/resources/lens/data_sources/)
+[Bigquery](/resources/lens/data_sources/bigquery/)
+
+[AWS Redshift](/resources/lens/data_sources/awsredshift/)
+
+[Themis](/resources/lens/data_sources/themis/)
+
+[Postgres](/resources/lens/data_sources/postgres/)
+
+[Minerva](/resources/lens/data_sources/minerva/)
+
+[Flash](/resources/lens/data_sources/flash/)
+
+<!-- [Snowflake](/resources/lens/data_sources/snowflake/) -->
 
 
 ## Optimizing Lens model
