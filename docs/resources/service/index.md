@@ -8,7 +8,7 @@ search:
 
 A Service represents a long-running process that acts as a receiver and/or provider of APIs. It's a DataOS [Resource](/resources/), catering to various scenarios involving continuous real-time and streaming data flow. Whether it's event processing, streaming IoT data, log processing for network devices, real-time stock trade analysis, or dynamic user interfaces (UIs), the Service Resource enables data developers to gather, process, and analyze real-time/streaming data flow, enabling timely insights and swift response to the latest information.
 
-While resembling a [Workflow](/resources/workflow/) in some aspects, a Service differentiates itself by not employing [Directed Acyclic Graphs (DAGs)](/resources/workflow/#workflows-and-directed-acyclic-graphs-dags). Instead, a Service is provisioned as a runnable entity, albeit limited to utilizing a single [Stack](/resources/stacks) at a time. This contrasts with a [Workflow](/resources/workflow/), which can accommodate multiple [jobs](/resources/workflow/#workflows-and-directed-acyclic-graphs-dags) being executed upon separate [Stacks](/resources/stacks/).
+While resembling a [Workflow](/resources/workflow/) in some aspects, a Service differentiates itself by not employing [Directed Acyclic Graphs (DAGs)](/resources/workflow/#workflows-and-directed-acyclic-graphs-dags). Instead, a Service is provisioned as a runnable entity, albeit limited to utilizing a single [Stack](/resources/stacks/) at a time. This contrasts with a [Workflow](/resources/workflow/), which can accommodate multiple [jobs](/resources/workflow/#workflows-and-directed-acyclic-graphs-dags) being executed upon separate [Stacks](/resources/stacks/).
 
 ## Core Concepts
 

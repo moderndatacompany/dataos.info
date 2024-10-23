@@ -1,6 +1,6 @@
 # Use-Cases
 
-A use-case consists of a combination of [predicates](/interfaces/bifrost/abac_implementation_in_dataos#predicate) (actions) and [objects](/interfaces/bifrost/abac_implementation_in_dataos#object) (entities upon which actions are performed), defining a specific set of permissions or actions granted to users. When you grant a use case to a user, establishing a link between the subject and the use-case. This connection, in the back end, results in the creation of an access policy.
+A use-case consists of a combination of [predicates](/interfaces/bifrost/abac_implementation_in_dataos/#predicate) (actions) and [objects](/interfaces/bifrost/abac_implementation_in_dataos/#object) (entities upon which actions are performed), defining a specific set of permissions or actions granted to users. When you grant a use case to a user, establishing a link between the subject and the use-case. This connection, in the back end, results in the creation of an access policy.
 
 These Use-Cases can be broken down into smaller, more granular permissions, or bundled together. For instance, if a user has access to read lens, it's likely they should also have access to manage lenses, as managing encompasses the ability to create and update lenses, in addition to reading them. Each use-case may involve predicates such as delete, get, patch, and post, which collectively determine the actions a user can perform.
 
@@ -35,7 +35,7 @@ Lastly, In the grant section, you'll find a subsection labeled "**Subject**" whe
 
 ## How to grant a use case to a role?
 
-Granting a use-case to a role follows the same steps as [granting a use-case to a user](/interfaces/bifrost/users#how-to-grant-a-use-case-to-a-user) but instead of navigating to users, you'll go to roles and select any existing role. Let's demonstrate this process by adding a use case named “Minerva Cluster Access" to the  `role:id:testrole`
+Granting a use-case to a role follows the same steps as [granting a use-case to a user](/interfaces/bifrost/users/#how-to-grant-a-use-case-to-a-user) but instead of navigating to users, you'll go to roles and select any existing role. Let's demonstrate this process by adding a use case named “Minerva Cluster Access" to the  `role:id:testrole`
 
 1. Navigate to Roles and select the "test role".
 2. Navigate to the grants section. Click on the "**Grant Use-Case**" button.
