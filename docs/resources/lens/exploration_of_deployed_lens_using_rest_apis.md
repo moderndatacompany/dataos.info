@@ -148,7 +148,7 @@ When working with a Postman collection to test APIs, you typically need to confi
           https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/meta
           ```
 
-    - **Replace `<DATAOS_API_KEY>` with your actual DataOS API key.** Refer to the [Generating an API Key](#generating-an-api-key) section for more information on obtaining an API key.
+    - **Replace `<DATAOS_API_KEY>` with your actual DataOS API key.** Refer to the [Generating an API Key](/resources/lens/exploration_of_deployed_lens_using_rest_apis/#generating-an-api-key) section for more information on obtaining an API key.
 
     - **Replace `<DATAOS_FQDN>` with the fully qualified domain name of your DataOS instance.** For example: `alpha-omega.dataos.app` or `happy-kangaroo.dataos.app`.
 
@@ -365,7 +365,7 @@ Curl is a command-line tool used for transferring data with URLs, making it a co
             https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/load
             ```
 
-    - **Replace `<DATAOS_API_KEY>` with your actual DataOS API key.** Refer to the [Generating an API Key](#generating-an-api-key) section for more information on obtaining an API key.
+    - **Replace `<DATAOS_API_KEY>` with your actual DataOS API key.** Refer to the [Generating an API Key](/resources/lens/exploration_of_deployed_lens_using_rest_apis/#generating-an-api-key) section for more information on obtaining an API key.
 
     - **Replace `<DATAOS_FQDN>` with the fully qualified domain name of your DataOS instance.** For example: `alpha-omega.dataos.app` or `happy-kangaroo.dataos.app`.
 
@@ -461,7 +461,7 @@ Python provides a flexible and powerful way to interact with the Lens RESTAPI AP
         https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/load
         ```
 
-    - **Replace `<DATAOS_API_KEY>` with your actual DataOS API key.** Refer to the [Generating an API Key](#generating-an-api-key) section for more information on obtaining an API key.
+    - **Replace `<DATAOS_API_KEY>` with your actual DataOS API key.** Refer to the [Generating an API Key](/resources/lens/exploration_of_deployed_lens_using_rest_apis/#generating-an-api-key) section for more information on obtaining an API key.
 
     - **Replace `<DATAOS_FQDN>` with the fully qualified domain name of your DataOS instance.** For example: `alpha-omega.dataos.app` or `happy-kangaroo.dataos.app`.
 

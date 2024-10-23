@@ -143,7 +143,7 @@ For more details, see [`binary`](/interfaces/workbench/functions_and_operators/b
 
 ### **Bitwise**
 
-For more details, see [`bitwise`](/interfaces/workbench/functions_and_operators/bitwise)
+For more details, see [`bitwise`](/interfaces/workbench/functions_and_operators/bitwise/)
 
 - [`bit_count`](/interfaces/workbench/functions_and_operators/bitwise#bit_count)
 - [`bitwise_and`](/interfaces/workbench/functions_and_operators/bitwise#bitwise_and)
@@ -157,7 +157,7 @@ For more details, see [`bitwise`](/interfaces/workbench/functions_and_operators/
 
 ### **Color**
 
-For more details, see [`color`](/interfaces/workbench/functions_and_operators/color)
+For more details, see [`color`](/interfaces/workbench/functions_and_operators/color/)
 
 - [`bar`](/interfaces/workbench/functions_and_operators/color#bar)
 - [`color`](/interfaces/workbench/functions_and_operators/color#color)
@@ -166,14 +166,14 @@ For more details, see [`color`](/interfaces/workbench/functions_and_operators/co
 
 ### **Comparison**
 
-For more details, see [`comparison`](/interfaces/workbench/functions_and_operators/comparison)
+For more details, see [`comparison`](/interfaces/workbench/functions_and_operators/comparison/)
 
 - [`greatest`](/interfaces/workbench/functions_and_operators/comparison#greatest)
 - [`least`](/interfaces/workbench/functions_and_operators/comparison#least)
 
 ### **Conditional**
 
-For more details, see [`conditional`](/interfaces/workbench/functions_and_operators/conditional)
+For more details, see [`conditional`](/interfaces/workbench/functions_and_operators/conditional/)
 
 - [`case`](/interfaces/workbench/functions_and_operators/conditional#case)
 - [`coalesce`](/interfaces/workbench/functions_and_operators/conditional#coalesce)
@@ -183,7 +183,7 @@ For more details, see [`conditional`](/interfaces/workbench/functions_and_operat
 
 ### **Conversion**
 
-For more details, see [`conversion`](/interfaces/workbench/functions_and_operators/conversion)
+For more details, see [`conversion`](/interfaces/workbench/functions_and_operators/conversion/)
 
 - [`cast`](/interfaces/workbench/functions_and_operators/conversion#cast)
 - [`format`](/interfaces/workbench/functions_and_operators/conversion#format)
@@ -192,7 +192,7 @@ For more details, see [`conversion`](/interfaces/workbench/functions_and_operato
 
 ### **Date and time**
 
-For more details, see [`date and time`](/interfaces/workbench/functions_and_operators/datetime)
+For more details, see [`date and time`](/interfaces/workbench/functions_and_operators/datetime/)
 
 - [`AT TIME ZONE`](/interfaces/workbench/functions_and_operators/datetime#at-time-zone-operator)
 - [`current_date`](/interfaces/workbench/functions_and_operators/datetime#current_date)
@@ -214,7 +214,7 @@ For more details, see [`date and time`](/interfaces/workbench/functions_and_oper
 
 ### **HyperLogLog**
 
-For more details, see [`hyperloglog`](/interfaces/workbench/functions_and_operators/hyperloglog)
+For more details, see [`hyperloglog`](/interfaces/workbench/functions_and_operators/hyperloglog/)
 
 - [`approx_set`](/interfaces/workbench/functions_and_operators/aggregate#approx_set)
 - [`cardinality()`](/interfaces/workbench/functions_and_operators/hyperloglog#cardinality)
@@ -225,7 +225,7 @@ For more details, see [`hyperloglog`](/interfaces/workbench/functions_and_operat
 
 ### **Lambda**
 
-For more details, see [`lambda`](/interfaces/workbench/functions_and_operators/lambda)
+For more details, see [`lambda`](/interfaces/workbench/functions_and_operators/lambda/)
 
 - [`any_match`](/interfaces/workbench/functions_and_operators/lambda#any_match)
 - [`reduce_agg`](/interfaces/workbench/functions_and_operators/lambda#reduce_agg)
@@ -234,7 +234,7 @@ For more details, see [`lambda`](/interfaces/workbench/functions_and_operators/l
 
 ### **Machine Learning**
 
-For more details, see [`machine learning`](/interfaces/workbench/functions_and_operators/machine_learning)
+For more details, see [`machine learning`](/interfaces/workbench/functions_and_operators/machine_learning/)
 
 - [`classify`](/interfaces/workbench/functions_and_operators/machine_learning#classify)
 - [`features`](/interfaces/workbench/functions_and_operators/machine_learning#features)
@@ -246,7 +246,7 @@ For more details, see [`machine learning`](/interfaces/workbench/functions_and_o
 
 ### **Map**
 
-For more details,see [`map`](/interfaces/workbench/functions_and_operators/map)
+For more details,see [`map`](/interfaces/workbench/functions_and_operators/map/)
 
 - [`cardinality`](/interfaces/workbench/functions_and_operators/map#cardinality)
 - [`element_at`](/interfaces/workbench/functions_and_operators/map#element_at)
@@ -313,7 +313,7 @@ For more details, see [`maths`](/interfaces/workbench/functions_and_operators/ma
 
 ### **Quantile Digest**
 
-For more details, see [`quantile digest`](/interfaces/workbench/functions_and_operators/quantile_digest)
+For more details, see [`quantile digest`](/interfaces/workbench/functions_and_operators/quantile_digest/)
 
 - [`merge()`](/interfaces/workbench/functions_and_operators/quantile_digest#merge)
 - [`qdigest_agg`](/interfaces/workbench/functions_and_operators/quantile_digest#qdigest_agg)
@@ -323,7 +323,7 @@ For more details, see [`quantile digest`](/interfaces/workbench/functions_and_op
 
 ### **Regular Expression**
 
-For more details, see [`regular expression`](/interfaces/workbench/functions_and_operators/regular_expression)
+For more details, see [`regular expression`](/interfaces/workbench/functions_and_operators/regular_expression/)
 
 - [`regexp_count`](/interfaces/workbench/functions_and_operators/regular_expression#regexp_count)
 - [`regexp_extract`](/interfaces/workbench/functions_and_operators/regular_expression#regexp_extract)
@@ -337,7 +337,7 @@ For more details, see [`regular expression`](/interfaces/workbench/functions_and
 
 ### **Session**
 
-For more details, see [`session`](/interfaces/workbench/functions_and_operators/session_information)
+For more details, see [`session`](/interfaces/workbench/functions_and_operators/session_information/)
 
 - [`current_catalog`](/interfaces/workbench/functions_and_operators/session_information#current_catalog)
 - [`current_groups`](/interfaces/workbench/functions_and_operators/session_information#current_groups)
@@ -347,7 +347,7 @@ For more details, see [`session`](/interfaces/workbench/functions_and_operators/
 
 ### **Set Digest**
 
-For more details, see [`setdigest`](/interfaces/workbench/functions_and_operators/set_digest)
+For more details, see [`setdigest`](/interfaces/workbench/functions_and_operators/set_digest/)
 
 - [`make_set_digest`](/interfaces/workbench/functions_and_operators/set_digest#make_set_digest)
 - [`merge_set_digest`](/interfaces/workbench/functions_and_operators/set_digest#merge_set_digest)
@@ -359,7 +359,7 @@ For more details, see [`setdigest`](/interfaces/workbench/functions_and_operator
 
 ### **String**
 
-For more details, see [`string`](/interfaces/workbench/functions_and_operators/string)
+For more details, see [`string`](/interfaces/workbench/functions_and_operators/string/)
 
 - [`chr`](/interfaces/workbench/functions_and_operators/string#chr)
 - [`codepoint`](/interfaces/workbench/functions_and_operators/string#codepoint)
@@ -397,7 +397,7 @@ For more details, see [`string`](/interfaces/workbench/functions_and_operators/s
 
 ### **System**
 
-For more details, see [`system`](/interfaces/workbench/functions_and_operators/system)
+For more details, see [`system`](/interfaces/workbench/functions_and_operators/system/)
 
 - [`version`](/interfaces/workbench/functions_and_operators/system#version)
 
@@ -412,7 +412,7 @@ For more details, see [`tdigest`](/interfaces/workbench/functions_and_operators/
 
 ### **Teradata**
 
-For more details, see [`teradata`](/interfaces/workbench/functions_and_operators/teradata)
+For more details, see [`teradata`](/interfaces/workbench/functions_and_operators/teradata/)
 
 - [`char2hexint`](/interfaces/workbench/functions_and_operators/teradata#char2hexint)
 - [`index`](/interfaces/workbench/functions_and_operators/teradata#index)
@@ -423,7 +423,7 @@ For more details, see [`teradata`](/interfaces/workbench/functions_and_operators
 
 ### **URL**
 
-For more details, see [`url`](/interfaces/workbench/functions_and_operators/url)
+For more details, see [`url`](/interfaces/workbench/functions_and_operators/url/)
 
 - [`url_decode`](/interfaces/workbench/functions_and_operators/url#url_decode)
 - [`url_encode`](/interfaces/workbench/functions_and_operators/url#url_encode)
@@ -438,7 +438,7 @@ For more details, see [`url`](/interfaces/workbench/functions_and_operators/url)
 
 ### **UUID**
 
-For more details, see [`uuid`](/interfaces/workbench/functions_and_operators/uuid)
+For more details, see [`uuid`](/interfaces/workbench/functions_and_operators/uuid/)
 
 - [`uuid`](/interfaces/workbench/functions_and_operators/uuid#uuid)
 
