@@ -1,4 +1,7 @@
-# Toolbox Stack Grammar
+# Attributes of Toolbox Stack manifest
+
+## Structure of Toolbox-specific section
+
 
 ```yaml
 stackSpec: 

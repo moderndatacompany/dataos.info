@@ -31,7 +31,7 @@ If you have already ingested data, you can create a separate workflow for toolbo
 
 ### **Define a Job that executes upon Toolbox Stack**
 
-Within the DAG, define a job that executes upon the Toolbox Stack. To know more about the various properties for a job executed upon toolbox stack, click [here](/resources/workflow#configuring-the-dag-section). 
+Within the DAG, define a job that executes upon the Toolbox Stack. To know more about the various properties for a job executed upon toolbox stack, click [here](/resources/workflow/configurations/). 
 
 **Sample Toolbox Workflow**
 

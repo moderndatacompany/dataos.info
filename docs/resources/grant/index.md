@@ -78,7 +78,7 @@ In DataOS, a Grant is categorized as a [Resource-type](/resources/types/). The 
         # attributes of grant-specific section
       ```
 
-For more information about the various attributes in Resource meta section, refer to the [Attributes of Resource meta section.](/resources/manifest_attributes)
+For more information about the various attributes in Resource meta section, refer to the [Attributes of Resource meta section.](/resources/manifest_attributes/)
 
 ### **Grant-specific section**
 
@@ -114,16 +114,16 @@ The Grant-specific section of a Grant manifest comprises attributes-specific to 
       ```
 | Attribute          | Data Type        | Default Value | Possible Values                                | Requirement |
 |--------------------|------------------|---------------|------------------------------------------------|-------------|
-| [`grant`](/resources/grant/configurations#grant)               | mapping          | none          | valid grant-specific attributes               | mandatory   |
-| [`policy_use_case_id`](/resources/grant/configurations#policy_use_case_id) | string           | none          | Unique identifier for the policy use case      | mandatory   |
-| [`subjects`](/resources/grant/configurations#subjects)            | list of strings  | none          | List of subject identifiers                    | optional    |
-| [`values`](/resources/grant/configurations#values)              | list of mapping  | none          | List of key-value pairs representing values   | mandatory   |
-| [`path`](/resources/grant/configurations#path)                 | string           | none          | valid path string indicating the resource location | optional    |
-| [`approve`](/resources/grant/configurations#approve)             | boolean          | false         | true, false                                    | optional    |
-| [`requester`](/resources/grant/configurations#requester)           | string           | none          | Unique identifier for the requester            | optional    |
-| [`notes`](/resources/grant/configurations#notes)               | string           | none          | Textual notes or comments                      | optional    |
-| [`collection`](/resources/grant/configurations#collection)          | string           | none          | Unique identifier for the collection           | optional    |
-| [`manageAsUser`](/resources/grant/configurations#manageAsUser)       | string           | none          | UserID of the Use Case Assignee                | optional    |
+| [`grant`](/resources/grant/configurations/#grant)               | mapping          | none          | valid grant-specific attributes               | mandatory   |
+| [`policy_use_case_id`](/resources/grant/configurations/#policy_use_case_id) | string           | none          | Unique identifier for the policy use case      | mandatory   |
+| [`subjects`](/resources/grant/configurations/#subjects)            | list of strings  | none          | List of subject identifiers                    | optional    |
+| [`values`](/resources/grant/configurations/#values)              | list of mapping  | none          | List of key-value pairs representing values   | mandatory   |
+| [`path`](/resources/grant/configurations/#path)                 | string           | none          | valid path string indicating the resource location | optional    |
+| [`approve`](/resources/grant/configurations/#approve)             | boolean          | false         | true, false                                    | optional    |
+| [`requester`](/resources/grant/configurations/#requester)           | string           | none          | Unique identifier for the requester            | optional    |
+| [`notes`](/resources/grant/configurations/#notes)               | string           | none          | Textual notes or comments                      | optional    |
+| [`collection`](/resources/grant/configurations/#collection)          | string           | none          | Unique identifier for the collection           | optional    |
+| [`manageAsUser`](/resources/grant/configurations/#manageAsUser)       | string           | none          | UserID of the Use Case Assignee                | optional    |
 
 
 To know more  about the grant attributes click [here](/resources/grant/configurations/)
