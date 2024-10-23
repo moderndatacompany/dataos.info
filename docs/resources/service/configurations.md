@@ -538,7 +538,7 @@ service:
 
 ### **`compute`**
 
-**Description:** the name of the [Compute](/resources/compute) Resource for the Service. 
+**Description:** the name of the [Compute](/resources/compute/) Resource for the Service. 
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |

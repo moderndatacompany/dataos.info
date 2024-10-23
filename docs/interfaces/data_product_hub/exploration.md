@@ -1,6 +1,6 @@
 # Explore a Data Product
 
-The **Explorer** page in Data Product Hub allows users to explore the data model ([Lens](/resources/lens/)) associated with the selected [Data Product](/product/data_product/). It provides an interface for business users and data analysts to interact with the data model's pre-defined [dimensions](/resources/lens/concepts/#dimensions), [measures](/resources/lens/concepts/#measures), and [segments](/resources/lens/concepts/#segments). It enables them to visualize, filter, and analyze the data without writing queries, offering insights through an easy-to-use exploratory environment.
+The **Explorer** page in Data Product Hub allows users to explore the data model ([Lens](/resources/lens/)) associated with the selected [Data Product](/products/data_product/). It provides an interface for business users and data analysts to interact with the data model's pre-defined [dimensions](/resources/lens/concepts/#dimensions), [measures](/resources/lens/concepts/#measures), and [segments](/resources/lens/concepts/#segments). It enables them to visualize, filter, and analyze the data without writing queries, offering insights through an easy-to-use exploratory environment.
     
 Clicking the **Explore** button opens the Explore Page, with the Studio tab displayed by default. Other available tabs include Model and GraphQL.
  
@@ -245,10 +245,10 @@ The **Result and Visualization Panel** is where users can choose how to view the
 
 The following are the options for displaying the results:
 
-- [Table](/interfaces/data_product_hub/exploration#table)
-- [Chart](/interfaces/data_product_hub/exploration#chart)
-- [Pivot](/interfaces/data_product_hub/exploration#pivot)
-- [Integration](/interfaces/data_product_hub/exploration#integration)
+- [Table](/interfaces/data_product_hub/exploration/#table)
+- [Chart](/interfaces/data_product_hub/exploration/#chart)
+- [Pivot](/interfaces/data_product_hub/exploration/#pivot)
+- [Integration](/interfaces/data_product_hub/exploration/#integration)
 
 ##### **Table** 
 

@@ -1,6 +1,6 @@
 # Data Sources
 
-## Connecting to sources via Depot/Cluster
+<!-- ## Connecting to sources via Depot/Cluster -->
 
 [Bigquery](/resources/lens/data_sources/bigquery/)
 
@@ -11,3 +11,7 @@
 [Postgres](/resources/lens/data_sources/postgres/)
 
 [Minerva](/resources/lens/data_sources/minerva/)
+
+[Flash](/resources/lens/data_sources/flash/)
+
+<!-- [Snowflake](/resources/lens/data_sources/snowflake/) -->

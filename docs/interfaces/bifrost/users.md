@@ -38,7 +38,7 @@ Clicking on a user in the list opens a detailed view, showcasing additional info
   </div>
 </center>
 
-- **Grants:** Displays a summary of Use-Cases granted to the user. Furthermore, clicking on a Use-Case will display the list of tags have previously been assigned to this Use-Case. You can [Grant a Use-Case to the User](/interfaces/users/bifrost/users#how-to-grant-a-use-case-to-a-user).
+- **Grants:** Displays a summary of Use-Cases granted to the user. Furthermore, clicking on a Use-Case will display the list of tags have previously been assigned to this Use-Case. You can [Grant a Use-Case to the User](/interfaces/bifrost/users#how-to-grant-a-use-case-to-a-user).
 
 <center>
   <div style="text-align: center;">
@@ -222,4 +222,4 @@ Following these steps will result in the selected Role or Tag being removed from
     To grant a Use-Case to a Role follow the same steps just instead of going to user now you will go to Roles and select any existing Role.
 
 
-In addition to granting existing Use-Cases, you can also create a new Use-Case by generating a YAML Use-Case artifact. This is particularly useful if you identify a combination of predicate and object that isn't already present but may be relevant to your organization. To initiate the creation of a new Use-Case manifest file, click [here](/interfaces/bifrost/use_cases#how-to-create-a-new-use-case).
+In addition to granting existing Use-Cases, you can also create a new Use-Case by generating a YAML Use-Case artifact. This is particularly useful if you identify a combination of predicate and object that isn't already present but may be relevant to your organization. To initiate the creation of a new Use-Case manifest file, click [here](/interfaces/bifrost/use_cases/#how-to-create-a-new-use-case).

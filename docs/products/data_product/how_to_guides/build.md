@@ -319,4 +319,4 @@ After executing the above command, the Policy will be applied.
 
 To know more about Policy, [refer to this](https://dataos.info/resources/policy/).
 
-Now the Data Product is ready. You can explore the Data Product on [Data Product Hub](/interfaces/data_product_hub).
+Now the Data Product is ready. You can explore the Data Product on [Data Product Hub](/interfaces/data_product_hub/).
