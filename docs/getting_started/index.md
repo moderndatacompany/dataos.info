@@ -1,5 +1,11 @@
 ---
+search:
+  boost: 2
+tags:
+  - Getting Started
 title: Getting Started
+hide: 
+  - tags
 ---
 
 # Getting Started with DataOS
