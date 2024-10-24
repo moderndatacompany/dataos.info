@@ -1,3 +1,13 @@
+---
+search:
+  boost: 2
+tags:
+  - Quick Guide
+  - Quick Start Guide
+hide:
+  - tags
+---
+
 # Quick Start Guides
 
 These quick start guides will help you navigate through the essentials of DataOS. We recommend leveraging these resources to strengthen your understanding.
