@@ -1,4 +1,4 @@
-# Getting Started
+# Benthos: First Steps
 
 Welcome to the world of Benthos, a resilient stream processing stack that enables you to handle your data flows with ease!
 

@@ -1,3 +1,13 @@
+---
+search:
+  boost: 2
+tags:
+  - Supported Connectors
+  - DataOS Connectors
+hide:
+  - tags
+---
+
 # DataOS Supported Connectors
 
 This document provides an overview of the data sources supported by DataOS. It is designed to help users understand which data sources are supported by each component, enabling effective planning of data integration and processing workflows.
