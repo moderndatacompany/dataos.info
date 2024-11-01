@@ -30,9 +30,9 @@ LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
 
 # Data Source
 
-# This defines env variables for connecting to the source via the depot
+# This defines env variables for connecting to the source via the 
 
-LENS2_SOURCE_TYPE: ${depot}
+LENS2_SOURCE_TYPE: ${}
 LENS2_SOURCE_NAME: ${depot_name}
 LENS2_SOURCE_CATALOG_NAME: ${catalog_name}
 DATAOS_RUN_AS_APIKEY: ******   #USER APIKEY
@@ -94,7 +94,7 @@ Configure the `docker-compose.yml` manifest file to tailor it to include environ
 
      **Data Source attributes for connecting via depot:**
 
-     To connect via the depot, refer to the provided environmental variables in the syntax below. 
+     To connect via the Depot, refer to the provided environmental variables in the syntax below. 
 
      ```yaml
      # Data Source
@@ -126,7 +126,7 @@ Configure the `docker-compose.yml` manifest file to tailor it to include environ
 
 Before running ensure that the working directory is the Lens project directory and that the API key is correctly configured as specified in the `docker-compose.yml` file.
 
-Lens can be tested in the development environment by running:
+Lens can be tested in the development environment by running the following command:
 
 === "Code"
 
@@ -147,7 +147,7 @@ Lens can be tested in the development environment by running:
 ## Exploring Lens in development environment
 
 !!! abstract "Quick Guide"
-    To quickly get started with testing Lens locally, follow the [quick guide on testing your Lens model locally](/quick_guides/test_data_model/). This guide provides a step-by-step approach to validating your SQL queries within the data model and ensures that tables and joins work as expected before deploying them to DataOS.
+    To quickly get started with testing Lens locally, follow the [quick guide on testing your Lens model locally](/quick_guides/test_data_model/). This guide provides a step-by-step approach to validating your SQL queries within the semantic model and ensures that tables and joins work as expected before deploying them to DataOS.
 
 Now that Lens model is successfully running without errors using docker-compose, one can begin exploring it using SQL APIs, REST APIs, or GraphQL APIs. This setup allows to thoroughly test Lens before proceeding to deployment, ensuring all functionalities are working as expected.
 
@@ -163,7 +163,7 @@ To interact with Lens through PostgreSQL, the following options are available:
 
 **PostgreSQL Client(psql)**
 
-Enter the host name as `localhost` port as given in the service of the `dockr-compose.yml` and name of the lens and it's workspace in `lens:${workspace_name}:${lens_name}` format.
+Enter the host name as `localhost` port as given in the service of the `dockr-compose.yml` and name of the Lens and it's workspace in `lens:${workspace_name}:${lens_name}` format.
 
 > Always refer to 'ports' within the services section in `docker-compose.yml` for the exposed port.
 
@@ -289,7 +289,7 @@ Now, to make a basic `GET` request using Postman, follow these steps:
 
       - `localhost:8080` represents the local or development environment for Lens, used for building and testing configurations.
       - `/lens2/api/` is the api prefix
-      - `${lens_name}` is the placeholder for lens, replace it to the actual lens undergoing testing. For example, sales360, retail360.
+      - `${lens_name}` is the placeholder for Lens, replace it to the actual Lens undergoing testing. For example, sales360, retail360.
           
 5. **Ensure the following header is passed in Authorization when running the API**
       
@@ -325,9 +325,9 @@ Now, to make a basic `GET` request using Postman, follow these steps:
 
 
 
-*You can now successfully test your lens in  development environment using postman via REST APIS.*
+*You can now successfully test your Lens in  development environment using postman via REST APIS.*
 
-To interact with the deployed lens using REST APIs read the detailed doc [here](/resources/lens/exploration_of_deployed_lens_using_rest_apis/)
+To interact with the deployed Lens using REST APIs read the detailed doc [here](/resources/lens/exploration_of_deployed_lens_using_rest_apis/)
 
 
 ## Next Step

@@ -7,7 +7,7 @@ search:
 # :resources-lens: Lens
 
 
-Lens [Resource](/resources/) in DataOS is a logical modelling layer designed for accessing tabular data in data warehouses or lakehouses. It operates on top of physical tables, allowing the extension of these tables into logical tables by adding logical columns (measures) and relationships. It  empowers analytical engineers, the key architects of business intelligence, with a model-first approach.  To understand about the different elements of lens click [here](/resources/lens/concepts/). 
+Lens [Resource](/resources/) in DataOS is a logical modelling layer designed for accessing tabular data in data warehouses or lakehouses. It operates on top of physical tables, allowing the extension of these tables into logical tables by adding logical columns (measures) and relationships. It  empowers analytical engineers, the key architects of business intelligence, with a model-first approach.  To understand about the different elements of Lens click [here](/resources/lens/concepts/). 
 
 
 !!!tip "Lens within the Data Product Lifecycle"

@@ -267,7 +267,7 @@ By leveraging Jinja macros, you can create efficient, reusable, and dynamic conf
 
 ## Don’t
 
-When creating lenses, avoid the following practices to ensure functionality and maintainability:
+When creating Lens, avoid the following practices to ensure functionality and maintainability:
 
 ### **Avoid Using Curly Braces `{}` in Descriptions**
 
@@ -399,4 +399,4 @@ Measures and dimensions from the same table cannot be filtered simultaneously us
     ```
 
 
-By adhering to these guidelines, you can avoid common pitfalls and ensure your lens functions correctly and efficiently.
+By adhering to these guidelines, you can avoid common pitfalls and ensure your Lens functions correctly and efficiently.
