@@ -6,7 +6,7 @@ The following steps outline the process for integrating PowerBI with DataOS:
 
 ### **Step 1: Navigate to the Data Product Hub**
 
-Access the **Home Page** of DataOS. From there, navigate to the **Data Product Hub** to explore the various data products available within the platform.
+Access the **Home Page** of DataOS. From there, navigate to the **Data Product Hub** to explore the various Data Products available within the platform.
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -14,7 +14,7 @@ Access the **Home Page** of DataOS. From there, navigate to the **Data Product H
 
 ### **Step 2: Browse and select a Data Product**
 
-In the Data Product Hub, users should browse through the list of data products. Clicking on a specific data product to integrate with PowerBI. For example, selecting **Sales360** from the list allows exploration of the **Sales360** data product.
+In the Data Product Hub, users should browse through the list of Data Products. Clicking on a specific Data Product to integrate with PowerBI. For example, selecting **Sales360** from the list allows exploration of the **Sales360** Data Product.
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(2).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -22,7 +22,7 @@ In the Data Product Hub, users should browse through the list of data products. 
 
 ### **Step 3: Access integration options**
 
-4. Locate the downloaded ZIP file on the local system and unzip the folder. Three files will be present in the folder. Open the 'public_sales360' file in Power BI. Ensure that all three files are kept together, as the other two files are essential for the semantic sync of the Data Product. 
+Navigate to the BI Sync option in the Activation tab, scrolling through find the Excel and PowerBI option. Click on the download .pbip file button to download a ZIP folder.
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(3).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -30,13 +30,13 @@ In the Data Product Hub, users should browse through the list of data products. 
 
 ### **Step 4: Download and open the ZIP file**
 
-Locate the downloaded ZIP file on the local system and unzip the folder. Three files will be present in the folder. Open the 'public_sales360' file in Power BI. It is essential to keep all three files together, as the other two files are necessary for the semantic synchronization of the data product.
+Locate the downloaded ZIP file on the local system and unzip the folder. Three files will be present in the folder. Open the 'public_sales360' file in Power BI. It is essential to keep all three files togethe for the semantic synchronization of the Data Product.
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/Untitled%20(15).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
 
-This downloads a `file.zip` archive that stores the main components of a Power BI project. When running the curl command, you can specify any name for the zip file, and it will be downloaded with that name. The `file.zip` contains key components for syncing the Lens Model (here sales360) to Power BI, including folders like the `.Report` and `.SemanticModel`:
+This downloads a `file.zip` archive that stores the main components of a Power BI project for syncing the Lens Model (here sales360) including folders like the `.Report` and `.SemanticModel`:
 
 - **public_sales360-table.Report:** This folder holds contains `definition.pbir` file related to the report definition in Power BI. These files define the visual representation of data, such as tables and charts, without storing actual data. They connect the semantic model and data sources to create the report views.
 
@@ -90,9 +90,12 @@ Adhering to best practices ensures that you effectively utilize the Data Product
 
 ### **Version compatibility**
 
-- Power BI versions released after **June 15, 2023**, support .pbib files. It is advisable to use a version released after this date.
+- Power BI versions released after **June 15, 2023**, support `.pbib` files. It is advisable to use a version released after this date.
 
-- Beginning with Version 2.132.908.0 (August 2024), .pbip files have moved from preview to general availability. This transition allows for the use of .pbip files without the need to enable any preview settings. It is strongly recommended to download Power BI Version 2.132.908.0 or later to fully utilize .pbip files. In earlier versions, enabling a preview feature was necessary, but this is no longer required in the latest version.
+- Beginning with Version 2.132.908.0 (August 2024), `.pbip` files have moved from preview to general availability. This transition allows for the use of `.pbip` files without the need to enable any preview settings. It is strongly recommended to download Power BI Version 2.132.908.0 or later to fully utilize `.pbip` files. 
+
+<!-- 
+In earlier versions, enabling a preview feature was necessary, but this is no longer required in the latest version. -->
 
 ### **File handling**
 

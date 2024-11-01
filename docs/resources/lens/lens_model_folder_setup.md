@@ -1,7 +1,7 @@
 # Lens model folder setup
 
 !!! abstract "Quick Guide"
-    To quickly get started with creating a Lens model in DataOS, follow the [quick guide on creating a Lens model](/quick_guides/create_data_model/). This guide provides step-by-step instructions to help you transform your conceptual design into a functional data model, ensuring effective data structuring and organization to meet your analytical and business needs.
+    To quickly get started with creating a Lens model in DataOS, follow the [quick guide on creating a Lens model](/quick_guides/create_data_model/). This guide provides step-by-step instructions to help you transform your conceptual design into a functional semantic model, ensuring effective data structuring and organization to meet your analytical and business needs.
 
 ### **Prerequisites**
 
@@ -9,7 +9,7 @@ Before setting up Lens, make sure all required dependencies are installed. Follo
 
 ### **Lens Project Folder Structure**
 
-In the Model folder, the Lens data model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each folder contains specific files related to the Lens model or you can download the following template to quickly get started.
+In the Model folder, the Lens semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each folder contains specific files related to the Lens model or you can download the following template to quickly get started.
 
 [lens template](/resources/lens/lens_model_folder_setup/lens-project-template.zip)
 

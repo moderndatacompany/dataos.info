@@ -7,7 +7,7 @@ search:
 # :resources-lens: Lens
 
 
-Lens [Resource](/resources/) in DataOS is a logical modelling layer designed for accessing tabular data in data warehouses or lakehouses. It operates on top of physical tables, allowing the extension of these tables into logical tables by adding logical columns (measures) and relationships. It  empowers analytical engineers, the key architects of business intelligence, with a model-first approach.  To understand about the different elements of lens click [here](/resources/lens/concepts/). 
+Lens [Resource](/resources/) in DataOS is a logical modelling layer designed for accessing tabular data in data warehouses or lakehouses. It operates on top of physical tables, allowing the extension of these tables into logical tables by adding logical columns (measures) and relationships. It  empowers analytical engineers, the key architects of business intelligence, with a model-first approach.  To understand about the different elements of Lens click [here](/resources/lens/concepts/). 
 
 
 !!!tip "Lens within the Data Product Lifecycle"
@@ -47,7 +47,6 @@ Lens  is engineered to handle complex and large-scale data models with ease. Key
 
 - **BI integration:** Lens improves interoperability through robust integration with Superset, Tableau and PowerBI. This ensures that data models can be easily utilized across various BI platforms, enhancing the overall analytics experience. For more details on BI integration, visit the [BI Integration Guide](/resources/lens/bi_integration/).
 
-
 - **Performance optimization through Flash:** Designed to work with DataOS Lakehouse and Iceberg-format depots, [Flash](/resources/stacks/flash/) improves query performance by leveraging in-memory execution. This optimization ensures that data teams can efficiently handle large-scale queries with enhanced speed and performance.
 
 ## How to build Lens?
@@ -78,7 +77,7 @@ Lens can be configured to connect to different sources using data source attribu
 
 
 <aside class="callout">
-If working with Lens 1.0 interface, click [here](/interfaces/lens/).
+🗣️ If working with Lens 1.0 interface, click <a href="/interfaces/lens/">here</a>.
 </aside>
 
 <!-- - [Supported Data Sources](/resources/lens/data_sources/)

@@ -6,7 +6,6 @@ Before setting up Lens on your local system, ensure you meet the following requi
 | **Docker Compose** | Configures and manages multi-container Docker applications for Lens. |
 | **Postman App/Postman VSCode Extension** | Queries and tests Lens to ensure your setup functions correctly. |
 | **VS Code** | Builds and manages Lens Model YAMLs as a code editor. |
-| **VS Code Plugin (Optional)** | Enhances development experience by aiding in creating Lens views and tables. |
 
 ### **Docker**
 
@@ -111,7 +110,7 @@ If Docker Compose is not installed, refer to the following link to [install Dock
 
 ### **Visual Studio Code**
 
-Lens includes a Visual Studio Code extension that enhances the efficiency and precision of crafting Lens YAML configurations. To use this extension, Visual Studio Code (VS Code) must be installed on the local system. The following instructions and links provide guidance for installing VS Code on various operating systems.
+To be able to create Lens model effectivelly, Visual Studio Code (VS Code) must be installed on the local system. Below are the links for installing VS Code on various operating systems.
 
 **Installation Links by Operating System**
 
@@ -173,8 +172,9 @@ python3 --version
 #Expected_Output
 Python 3.8.14
 ```
-
-- The expected output should be **`Python 3.X`** or another version that is greater than 3.7.  If the existing version is not greater than 3.7, update Python to a newer version.
+  <aside class="callout">
+  🗣️ Ensure that the version is 3.7 or higher to meet Lens requirements. If not update the Python to the version equal to or greater than 3.7.
+  </aside>
 
 **Installing Python** 
 
@@ -183,19 +183,16 @@ If Python is not already installed on the system, follow the steps below to down
 1. **Access the Installation Guide**: Visit the [Python Installation Guide](https://realpython.com/installing-python/#how-to-install-python-on-windows). This guide provides detailed instructions for installing Python on various operating systems, including Windows, macOS, and Linux.
 
 2. **Download Python**: From the guide, select the link corresponding to the operating system and download the latest version of Python.
-          
-  <aside class="callout">
-  🗣️ Ensure that the version is 3.7 or higher to meet Lens requirements.
-  </aside>
         
 3. **Install Python**: Run the downloaded installer. Be sure to check the box that says "Add Python 3.x to PATH" before clicking "Install Now". This step is crucial as it makes Python accessible from the command line.
 
-4. **Verify Installation**: After installation, open a command line interface and run the following  command to check the installed version of Python:
+4. **Verify Installation**: After installation, open a command line interface and run the following  command to check the installed version of Python. The expected output should be **`Python 3.X`** or another version that is greater than 3.7.
           
     ```bash
     python3 -V
+    #Expected_Output
+    Python 3.8.14
     ```
-   - The expected output should be **`Python 3.X`** or another version that is greater than 3.7.
 
 5. **Update Python**: If installed version of Python is older than 3.7, follow the guide on [Updating Python](https://ioflood.com/blog/update-python-step-by-step-guide/) to upgrade to a newer version that meets the Lens prerequisites.
     
