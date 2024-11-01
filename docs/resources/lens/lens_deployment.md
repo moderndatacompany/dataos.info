@@ -1,7 +1,7 @@
 # Deploying Lens model on DataOS 
 
 !!! abstract "Quick Guide"
-    To quickly get started with lens deployment follow the [quick guide on deploying your Lens model](/quick_guides/deploy_data_model/) to walk through the process. This guide ensures a smooth and secure deployment, helping you get your Lens Resource up and running quickly.
+    To quickly get started with Lens deployment follow the [quick guide on deploying your Lens model](/quick_guides/deploy_data_model/) to walk through the process. This guide ensures a smooth and secure deployment, helping you get your Lens Resource up and running quickly.
 
 This document provides instructions for setting up Lens in the DataOS environment, importing an existing Lens project from a local machine using SSH, utilizing version control tools such as Bitbucket or Git for seamless CI/CD integration.
 
@@ -172,15 +172,15 @@ Begin by creating a manifest file that will hold the configuration details for y
         limits:
         cpu: 6000m
         memory: 6048Mi
-    # iris:
-    #   logLevel: info
-    #   resources: # CPU and memory resource specifications for the iris board (optional)
-    #     requests:
-    #       cpu: 100m
-    #       memory: 256Mi
-    #     limits:
-    #       cpu: 6000m
-    #       memory: 6048Mi
+    iris:
+      logLevel: info
+      resources: # CPU and memory resource specifications for the iris board (optional)
+        requests:
+          cpu: 100m
+          memory: 256Mi
+        limits:
+          cpu: 6000m
+          memory: 6048Mi
     ```
 
 The manifest file of a Lens can be broken down into two sections:
@@ -320,7 +320,7 @@ To validate the proper creation of the Lens Resource within the DataOS environme
 
 <aside class="callout"> 
 
-💡 Once deployed, the lens will be able to explore in the Lens Studio. This is where business user can interact with the model.
+💡 Once deployed, the Lens will be able to explore in the Lens Studio. This is where business user can interact with the model.
 </aside>
 
 

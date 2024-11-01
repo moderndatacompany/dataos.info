@@ -37,7 +37,7 @@ We'll use a sample database with two tables, `owner` and `contacts` to illustrat
 
 **Example**
 
-In the example below the `owner` table is defined for a sales analytics lens:
+In the example below the `owner` table is defined for a sales analytics Lens:
 
 ```yaml
 tables:
