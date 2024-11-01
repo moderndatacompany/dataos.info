@@ -85,7 +85,7 @@ Now, click on the Acitvate button. A confirmation message will appear upon succe
 Users should log in to Tableau Cloud using the same credentials of Tableau. This will redirect to the Tableau Cloud home page.
 
 <center>
-<img src="docs/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau5.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau5.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
 
 ### **Step 2: Manage Projects**
