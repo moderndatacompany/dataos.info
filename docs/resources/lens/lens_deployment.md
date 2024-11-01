@@ -172,15 +172,15 @@ Begin by creating a manifest file that will hold the configuration details for y
         limits:
         cpu: 6000m
         memory: 6048Mi
-    # iris:
-    #   logLevel: info
-    #   resources: # CPU and memory resource specifications for the iris board (optional)
-    #     requests:
-    #       cpu: 100m
-    #       memory: 256Mi
-    #     limits:
-    #       cpu: 6000m
-    #       memory: 6048Mi
+    iris:
+      logLevel: info
+      resources: # CPU and memory resource specifications for the iris board (optional)
+        requests:
+          cpu: 100m
+          memory: 256Mi
+        limits:
+          cpu: 6000m
+          memory: 6048Mi
     ```
 
 The manifest file of a Lens can be broken down into two sections:
