@@ -67,7 +67,7 @@ Provides access to metadata-related endpoints. This scope allows users to view m
 
 ### **/v2/meta**
 
-Get meta-information for lens and views defined in the data model. Information about lens with **public: false** will not be returned.
+Get meta-information for Lens and views defined in the data model. Information about Lens with **public: false** will not be returned.
 
 === "Syntax"
 
