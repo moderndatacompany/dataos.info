@@ -230,11 +230,11 @@ To explore the views via **Lens Studio,** follow the below steps:
 
 **Step 2: View the List of Lenses**
 
-  - From the given list of lenses, users can select the desired lens to explore.
+  - From the given list of Lens, users can select the desired lens to explore.
 
-  - Users can search for a specific lens in the Resource section using the search bar.
+  - Users can search for a specific Lens in the Resource section using the search bar.
 
-  - Additionally, advanced filter options are available to narrow down the list of lenses. Filters allow users to sort lenses by parameters such as domain, owner, source, state, tags, tier, and workspace.
+  - Additionally, advanced filter options are available to narrow down the list of Lens. Filters allow users to sort all Lenses by parameters such as domain, owner, source, state, tags, tier, and workspace.
 
 
   <div style="text-align: center;">
@@ -246,7 +246,7 @@ To explore the views via **Lens Studio,** follow the below steps:
 
 **Step 3: Selecting a Lens** 
 
-- Select a desired lens from the list to explore. For example, apply the advanced filter state: active to filter only the active lenses. From the filtered list, select the lens **Churn Prediction** to view detailed information, including metadata, usage history, and related resources.
+- Select a desired Lens from the list to explore. For example, apply the advanced filter state: active to filter only the active Lens. From the filtered list, select the Lens **Churn Prediction** to view detailed information, including metadata, usage history, and related resources.
 
 <div style="text-align: center;">
     <img src="/resources/lens/working_with_views/lens04.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">

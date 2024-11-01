@@ -18,4 +18,4 @@ This error indicates that the data source was unable to interpret the value of a
 
 ## Primary key is required when join is defined
 
-This error suggests that a lens with joins has been defined without specifying a primary key. To resolve this, ensure that a primary key is set for any lens that includes joins.
+This error suggests that a Lens with joins has been defined without specifying a primary key. To resolve this, ensure that a primary key is set for any Lens that includes joins.
