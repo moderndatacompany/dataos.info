@@ -532,7 +532,7 @@ A Pager within DataOS operates by continuously monitoring the incident stream fo
 
 ## Pager recipes
 
-- [How to create a custom body template for a Pager?](/resources/pager/custom_body_template_for_pager)
+- [How to create a custom body template for a Pager?](/resources/pager/custom_body_template_for_pager/)
 
 <!-- - [How to create a Pager for sending alerts to emails?]()
 - [How to create a Pager for sending alerts to Microsoft Teams channel?]()

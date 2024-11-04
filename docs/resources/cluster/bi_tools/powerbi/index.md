@@ -12,9 +12,9 @@ DataOS gives multiple ways to connect with your BI tool.
 ## DataOS connector for Power BI
 This custom connector acts as a bridge between the DataOS platform and Power BI. With this connector in place, Users can issue SQL queries from Power BI interface and fetch data from DataOS for further analysis.
 
-To learn more, click [here](/interfaces/atlas/bi_tools/powerbi/dataos_connector_powerbi/).
+To learn more, click [here](/resources/cluster/bi_tools/powerbi/dataos_connector_powerbi/).
 
 ## Power BI integration with Simba ODBC driver
 This ODBC driver enables DataOS Integration with Power BI. users can easily access data from the DataOS platform within Power BI for comprehensive analysis, visualization, and reporting.
 
-To learn more, click [here](/interfaces/atlas/bi_tools/powerbi/using_odbc_driver/).
+To learn more, click [here](/resources/cluster/bi_tools/powerbi/using_odbc_driver/).
