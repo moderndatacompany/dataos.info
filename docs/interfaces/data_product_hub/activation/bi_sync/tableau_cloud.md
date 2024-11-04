@@ -1,6 +1,6 @@
-## Steps for Integrating Data Products with Tableau
+## Steps for Integrating Data Products with Tableau Cloud
 
-This document outlines the steps required to integrate Data Products from DataOS with Tableau.
+This document outlines the steps required to integrate Data Products from DataOS with Tableau Cloud.
 
 ### **Step 1: Navigate to the Data Product Hub**
 

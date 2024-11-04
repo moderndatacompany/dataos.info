@@ -14,7 +14,8 @@ Access the **Home Page** of DataOS. From the home page, navigate to the **Data P
 
 ### **Step 2: Browse and Select a Data Product**
 
-In the Data Product Hub, users should browse through the list of data products. Clicking on a specific data product to integrate with Tableau is essential. For example, selecting **Sales360** from the list allows exploration of the **Sales360** data product in Tableau.
+In the Data Product Hub, users can browse through a comprehensive list of available data products. To integrate with Tableau, click on a specific data product of interest. For instance `Sales360`
+
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(21).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -22,7 +23,7 @@ In the Data Product Hub, users should browse through the list of data products. 
 
 ### **Step 3: Access Integration Options**
 
-After selecting a data product, navigate to the **Access Options** tab. Within this tab, various methods to access and interact with the data product can be found, including the **BI Sync** tab, where **Tableau Desktop** is located.
+After selecting Sales360 data product, navigate to the **Access Options** tab. Within this tab, various methods to access and interact with the data product can be found, including the **BI Sync** tab, where **Tableau Desktop** is located.
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/Screenshot%20from%202024-09-21%2000-14-20.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -30,7 +31,7 @@ After selecting a data product, navigate to the **Access Options** tab. Within t
 
 ### **Step 4: Download and Extract the `.tds` File**
 
-Download the .tds file and extract the zip file into Tableau's default repository, typically located at `My Tableau Repository\Datasources\`.
+Download the `.tds` file and extract the zip file into Tableau's default repository, typically located at `My Tableau Repository\Datasources\`.
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(22).png" alt="DPH" style="width:25rem; border: 1px solid black;" />
@@ -99,7 +100,7 @@ Once the connection is established, users can begin visualizing the Data Product
 
 ## Data policies and security
 
-Any data masking, restrictions, or permissions defined by the publisher will automatically be enforced for all viewers of the report, ensuring consistent data security and compliance. However, the behavior of data policies (e.g., masking) depends on who is the user of the PowerBI desktop.
+Any data masking, restrictions, or permissions defined by the publisher will automatically be enforced for all viewers of the report, ensuring consistent data security and compliance. However, the behavior of data policies (e.g., masking) depends on who is the user of the Tableau desktop.
 
 ## Error handling 
 
