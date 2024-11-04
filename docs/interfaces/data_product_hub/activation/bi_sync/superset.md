@@ -32,6 +32,10 @@ Navigate to the Access Options tab and scroll until you find the **Superset** op
 
 Click on the **Add Connection** button. A connection window will open, prompting you to enter the necessary connection details.
 
+<center>
+<img src="/interfaces/data_product_hub/activation/bi_sync/superset_connection_detail_page.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+</center>
+
 Enter details of **Host Address** as given in the following syntax:
 
 ```yaml
