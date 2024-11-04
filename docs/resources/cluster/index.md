@@ -333,21 +333,21 @@ To create a Cluster Resource within DataOS, you have two options:
 
             | Field | Data Type | Default Value | Possible Value | Requirement |
             | --- | --- | --- | --- | --- |
-            | [`cluster`](/resources/cluster/configurations#cluster) | mapping | none | none | mandatory |
-            | [`compute`](/resources/cluster/configurations#compute) | string | none | query-default or any other query type custom Compute Resource | mandatory |
-            | [`runAsUser`](/resources/cluster/configurations#runasuser) | string | none | userid of the use case assignee | optional |
-            | [`maintenance`](/resources/cluster/configurations#maintenance) | mapping | none | none | optional |
-            | [`restartCron`](/resources/cluster/configurations#restartcron) | string | none | any valid cron expression | optional |
-            | [`scalingCrons`](/resources/cluster/configurations#scalingcrons) | mapping | none | none | optional |
-            | [`cron`](/resources/cluster/configurations#cron) | string | none | any valid cron expression | optional |
-            | [`replicas`](/resources/cluster/configurations#replicas) | integer | 1 | positive integer | optional |
-            | [`resources`](/resources/cluster/configurations#resources) | mapping | none | none | optional |
-            | [`limits`](/resources/cluster/configurations#limits) | mapping | none | none | optional |
-            | [`cpu`](/resources/cluster/configurations#cpu) | string | requests: 100m, limits: 400m | number of cpu units in milliCPU(m) or cpu Core| optional |
-            | [`memory`](/resources/cluster/configurations#memory) | string | requests: 100Mi, limits: 400Mi | memory in Mebibytes(Mi) or Gibibytes(Gi) | optional |
-            | [`requests`](/resources/cluster/configurations#requests) | mapping | none | none | optional |
+            | [`cluster`](/resources/cluster/configurations/#cluster) | mapping | none | none | mandatory |
+            | [`compute`](/resources/cluster/configurations/#compute) | string | none | query-default or any other query type custom Compute Resource | mandatory |
+            | [`runAsUser`](/resources/cluster/configurations/#runasuser) | string | none | userid of the use case assignee | optional |
+            | [`maintenance`](/resources/cluster/configurations/#maintenance) | mapping | none | none | optional |
+            | [`restartCron`](/resources/cluster/configurations/#restartcron) | string | none | any valid cron expression | optional |
+            | [`scalingCrons`](/resources/cluster/configurations/#scalingcrons) | mapping | none | none | optional |
+            | [`cron`](/resources/cluster/configurations/#cron) | string | none | any valid cron expression | optional |
+            | [`replicas`](/resources/cluster/configurations/#replicas) | integer | 1 | positive integer | optional |
+            | [`resources`](/resources/cluster/configurations/#resources) | mapping | none | none | optional |
+            | [`limits`](/resources/cluster/configurations/#limits) | mapping | none | none | optional |
+            | [`cpu`](/resources/cluster/configurations/#cpu) | string | requests: 100m, limits: 400m | number of cpu units in milliCPU(m) or cpu Core| optional |
+            | [`memory`](/resources/cluster/configurations/#memory) | string | requests: 100Mi, limits: 400Mi | memory in Mebibytes(Mi) or Gibibytes(Gi) | optional |
+            | [`requests`](/resources/cluster/configurations/#requests) | mapping | none | none | optional |
 
-    For additional information about attributes within the Cluster-specific section, refer to the link: [Attributes of Cluster-specific section.](/resources/cluster/configurations#cluster)
+    For additional information about attributes within the Cluster-specific section, refer to the link: [Attributes of Cluster-specific section.](/resources/cluster/configurations/#cluster)
 
     For the two different types of Cluster the configuration varies, which are elucidated in the sections below:
 
@@ -392,29 +392,29 @@ To create a Cluster Resource within DataOS, you have two options:
 
         | Field | Data Type | Default Value | Possible Value | Requirement |
         | --- | --- | --- | --- | --- |
-        | [`minerva`](/resources/cluster/configurations#minerva) | mapping | none | none | mandatory |
-        | [`replicas`](/resources/cluster/configurations#replicas) | integer | 1 | 1-4 | mandatory |
-        | [`match`](/resources/cluster/configurations#match) | string | none | any/all | mandatory |
-        | [`priority`](/resources/cluster/configurations#priority) | integer | 10 | 1-5000 | mandatory |
-        | [`runAsApiKey`](/resources/cluster/configurations#runasapikey) | string | users dataos api key | any valid dataos api key | mandatory |
-        | [`runAsUser`](/resources/cluster/configurations#runasuser) | string | none | userid of the use case assignee | optional |
-        | [`resources`](/resources/cluster/configurations#resources) | mapping | none | none | optional |
-        | [`limits`](/resources/cluster/configurations#limits) | mapping | none | none | optional |
-        | [`cpu`](/resources/cluster/configurations#cpu) | string | requests: 100m, limits: 400m | number of cpu units in milliCPU(m) or cpu Core| optional |
-        | [`memory`](/resources/cluster/configurations#memory) | string | requests: 100Mi, limits: 400Mi | memory in Mebibytes(Mi) or Gibibytes(Gi) | optional |
-        | [`requests`](/resources/cluster/configurations#requests) | mapping | none | none | optional |
-        | [`debug`](/resources/cluster/configurations#debug) | mapping | none | none | mandatory |
-        | [`logLevel`](/resources/cluster/configurations#loglevel) | mapping | INFO | INFO/DEBUG/ERROR | optional |
-        | [`trinoLogLevel`](/resources/cluster/configurations#trinologlevel) | mapping | INFO | INFO/DEBUG/ERROR | optional |
-        | [`depots`](/resources/cluster/configurations#depots) | list of mappings | none | none | optional |
-        | [`address`](/resources/cluster/configurations#address) | string | none | valid depot udl address | optional |
-        | [`properties`](/resources/cluster/configurations#properties) | mapping | none | none | optional |
-        | [`catalogs`](/resources/cluster/configurations#catalogs) | list of mappings | none | none | optional |
-        | [`name`](/resources/cluster/configurations#name) | string | none | any valid string | optional |
-        | [`type`](/resources/cluster/configurations#type) | string | none | oracle/memory/wrangler/redshift | mandatory |
-        | [`properties`](/resources/cluster/configurations#properties_1) | mapping | none | valid connector properties | optional |
+        | [`minerva`](/resources/cluster/configurations/#minerva) | mapping | none | none | mandatory |
+        | [`replicas`](/resources/cluster/configurations/#replicas) | integer | 1 | 1-4 | mandatory |
+        | [`match`](/resources/cluster/configurations/#match) | string | none | any/all | mandatory |
+        | [`priority`](/resources/cluster/configurations/#priority) | integer | 10 | 1-5000 | mandatory |
+        | [`runAsApiKey`](/resources/cluster/configurations/#runasapikey) | string | users dataos api key | any valid dataos api key | mandatory |
+        | [`runAsUser`](/resources/cluster/configurations/#runasuser) | string | none | userid of the use case assignee | optional |
+        | [`resources`](/resources/cluster/configurations/#resources) | mapping | none | none | optional |
+        | [`limits`](/resources/cluster/configurations/#limits) | mapping | none | none | optional |
+        | [`cpu`](/resources/cluster/configurations/#cpu) | string | requests: 100m, limits: 400m | number of cpu units in milliCPU(m) or cpu Core| optional |
+        | [`memory`](/resources/cluster/configurations/#memory) | string | requests: 100Mi, limits: 400Mi | memory in Mebibytes(Mi) or Gibibytes(Gi) | optional |
+        | [`requests`](/resources/cluster/configurations/#requests) | mapping | none | none | optional |
+        | [`debug`](/resources/cluster/configurations/#debug) | mapping | none | none | mandatory |
+        | [`logLevel`](/resources/cluster/configurations/#loglevel) | mapping | INFO | INFO/DEBUG/ERROR | optional |
+        | [`trinoLogLevel`](/resources/cluster/configurations/#trinologlevel) | mapping | INFO | INFO/DEBUG/ERROR | optional |
+        | [`depots`](/resources/cluster/configurations/#depots) | list of mappings | none | none | optional |
+        | [`address`](/resources/cluster/configurations/#address) | string | none | valid depot udl address | optional |
+        | [`properties`](/resources/cluster/configurations/#properties) | mapping | none | none | optional |
+        | [`catalogs`](/resources/cluster/configurations/#catalogs) | list of mappings | none | none | optional |
+        | [`name`](/resources/cluster/configurations/#name) | string | none | any valid string | optional |
+        | [`type`](/resources/cluster/configurations/#type) | string | none | oracle/memory/wrangler/redshift | mandatory |
+        | [`properties`](/resources/cluster/configurations/#properties_1) | mapping | none | valid connector properties | optional |
 
-        For additional information about attributes above attributes, refer to the [Attributes of Minerva-specific section.](/resources/cluster/configurations#minerva)
+        For additional information about attributes above attributes, refer to the [Attributes of Minerva-specific section.](/resources/cluster/configurations/#minerva)
 
     === "Themis"
 

@@ -362,7 +362,7 @@ service:
 
 ### **`stack`**
 
-**Description:** the name and version of the [Stack](/resources/stacks) Resource which the Service orchestrates.
+**Description:** the name and version of the [Stack](/resources/stacks/) Resource which the Service orchestrates.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
@@ -458,7 +458,7 @@ service:
 
 ### **`dataosSecrets`**
 
-**Description:** list of [DataOS Secrets](/resources/secret) associated with the Service. Each DataOS Secret is an mapping containing various attributes.
+**Description:** list of [DataOS Secrets](/resources/secret/) associated with the Service. Each DataOS Secret is an mapping containing various attributes.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
