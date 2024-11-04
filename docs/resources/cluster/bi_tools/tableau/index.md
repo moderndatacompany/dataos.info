@@ -39,21 +39,21 @@ Check your Tableau version and follow the steps given below:
     
     <b>Select the operating system and bit version according to your system configurations.</b>
 
-<center>
-  <div style="text-align: center;">
-    <img src="/interfaces/atlas/bi_tools/tableau/integration-tableau-driver-download_.png" alt="Driver download" style="width: 60rem; border: 1px solid black;">
-    <figcaption>Driver download</figcaption>
-  </div>
-</center>
+    <center>
+      <div style="text-align: center;">
+        <img src="/resources/cluster/bi_tools/tableau/integration-tableau-driver-download_.png" alt="Driver download" style="width: 40rem; border: 1px solid black;">
+        <figcaption>Driver download</figcaption>
+      </div>
+    </center>
 
 <b>Click on the Download button (mac or Windows).</b>
 
-<center>
-  <div style="text-align: center;">
-    <img src="/interfaces/atlas/bi_tools/tableau/integration-tableau-driver-downloadmac.png" alt="Driver download for Mac" style="width: 60rem; border: 1px solid black;">
-    <figcaption>Driver download for Mac</figcaption>
-  </div>
-</center>
+  <center>
+    <div style="text-align: center;">
+      <img src="/resources/cluster/bi_tools/tableau/integration-tableau-driver-downloadmac.png" alt="Driver download for Mac" style="width: 40rem; border: 1px solid black;">
+      <figcaption>Driver download for Mac</figcaption>
+    </div>
+  </center>
 
 <b>Double-click on downloaded 'Simba Presto 1.1.pkg' for mac or Windows 64-bit driver to run the installer.</b>
 
@@ -63,48 +63,48 @@ Check your Tableau version and follow the steps given below:
 
 1. Sign in to your DataOS instance with your username and password. On the DataOS home page, click on 'Profile'.
 
-<center>
-  <div style="text-align: center;">
-    <img src="/interfaces/atlas/bi_tools/tableau/integration-dataos-homepage.png" alt="DataOS home page" style="width: 60rem; border: 1px solid black;">
-    <figcaption></figcaption>
-  </div>
-</center>
+    <center>
+      <div style="text-align: center;">
+        <img src="/resources/cluster/bi_tools/tableau/integration-dataos-homepage.png" alt="DataOS home page" style="width: 40rem; border: 1px solid black;">
+        <figcaption></figcaption>
+      </div>
+    </center>
 
 2. On the 'Profile' page, click on Tokens.
 
-<center>
-  <div style="text-align: center;">
-    <img src="/interfaces/atlas/bi_tools/tableau/integration-dataos-profile.png" alt="Profile" style="width: 60rem; border: 1px solid black;">
-    <figcaption>Profile</figcaption>
-  </div>
-</center>
+    <center>
+      <div style="text-align: center;">
+        <img src="/resources/cluster/bi_tools/tableau/integration-dataos-profile.png" alt="Profile" style="width: 40rem; border: 1px solid black;">
+        <figcaption>Profile</figcaption>
+      </div>
+    </center>
 
 3. Click on the Add API Key link on the Tokens tab:
 
-<center>
-  <div style="text-align: center;">
-    <img src="/interfaces/atlas/bi_tools/tableau/integration-dataos-token-apikey.png" alt="API key" style="width: 60rem; border: 1px solid black;">
-    <figcaption>API key</figcaption>
-  </div>
-</center>
+    <center>
+      <div style="text-align: center;">
+        <img src="/resources/cluster/bi_tools/tableau/integration-dataos-token-apikey.png" alt="API key" style="width: 40rem; border: 1px solid black;">
+        <figcaption>API key</figcaption>
+      </div>
+    </center>
 
 4. Type in the name for this token and also set the validity period of your token based on the security requirements as per your business needs. Click Save to create one for you.
 
-<center>
-  <div style="text-align: center;">
-    <img src="/interfaces/atlas/bi_tools/tableau/integration-add-key.png" alt="Add key" style="width: 60rem; border: 1px solid black;">
-    <figcaption>Add key</figcaption>
-  </div>
-</center>
+    <center>
+      <div style="text-align: center;">
+        <img src="/resources/cluster/bi_tools/tableau/integration-add-key.png" alt="Add key" style="width: 40rem; border: 1px solid black;">
+        <figcaption>Add key</figcaption>
+      </div>
+    </center>
 
 5. The API key is listed below. Click on the “eye icon” on the right side to make the full API key visible.
 
-<center>
-  <div style="text-align: center;">
-    <img src="/interfaces/atlas/bi_tools/tableau/integration-key-created.png" alt="Key created" style="width: 60rem; border: 1px solid black;">
-    <figcaption>Key created</figcaption>
-  </div>
-</center>
+    <center>
+      <div style="text-align: center;">
+        <img src="/resources/cluster/bi_tools/tableau/integration-key-created.png" alt="Key created" style="width: 40rem; border: 1px solid black;">
+        <figcaption>Key created</figcaption>
+      </div>
+    </center>
 
 
 6. Click on the API key to copy it. You would need this API key to create wrapped token.
@@ -145,81 +145,82 @@ You need to configure the Presto driver in the Tableau application to connect to
 
 1. Open the Tableau desktop application. Click on More to access the list of all the servers connectors. Search for Presto and click on it.
 
-<center>
-  <div style="text-align: center;">
-    <img src="/interfaces/atlas/bi_tools/tableau/integration-tableau-more.png" alt="Server connectors" style="width: 60rem; border: 1px solid black;">
-    <figcaption>Server connectors</figcaption>
-  </div>
-</center>
+    <center>
+      <div style="text-align: center;">
+        <img src="/resources/cluster/bi_tools/tableau/integration-tableau-more.png" style="width: 40rem; border: 1px solid black;">
+        <figcaption>Server connectors</figcaption>
+      </div>
+    </center>
 
 2. A dialogue box appears where the user can provide the following values:
 
-| Property | Value |
-| --- | --- |
-| Server | e.g. tcp.reasonably-welcome-grub.dataos.io |
-| Port | 7432 |
-| Catalog | e.g. icebase |
-| Schema | an optional field |
-| Authentication | LDAP |
-| Username | Username |
-| Password | Access API Key from DataOS |
-| Require SSL | Check the box |
+    | Property | Value |
+    | --- | --- |
+    | Server | e.g. tcp.reasonably-welcome-grub.dataos.io |
+    | Port | 7432 |
+    | Catalog | e.g. icebase |
+    | Schema | an optional field |
+    | Authentication | LDAP |
+    | Username | Username |
+    | Password | Access API Key from DataOS |
+    | Require SSL | Check the box |
 
-<center>
-  <div style="text-align: center;">
-    <img src="/interfaces/atlas/bi_tools/tableau/integration-tableau-inputs.png" alt="Inputs" style="width: 60rem; border: 1px solid black;">
-    <figcaption>Inputs</figcaption>
-  </div>
-</center>
+    <center>
+      <div style="text-align: center;">
+        <img src="/resources/cluster/bi_tools/tableau/integration-tableau-inputs.png" alt="Inputs" style="width: 40rem; border: 1px solid black;">
+        <figcaption>Inputs</figcaption>
+      </div>
+    </center>
 
 
 3. Click Sign In.
 
-    > 📌 Note: If you encounter any error in setting up the connection, please check DataOS URL, and validity of the API key and try again or contact your administrator.
+> 📌 Note: If you encounter any error in setting up the connection, please check DataOS URL, and validity of the API key and try again or contact your administrator.
 
 
 ## Access DataOS on Tableau
+
 1. Once you've completed the driver configuration steps successfully, you can see the DataOS catalog in the left panel in Tableau dialog.
 
-<center>
-  <div style="text-align: center;">
-    <img src="/interfaces/atlas/bi_tools/tableau/integration-tableau-connected.png" alt="Tableau connected" style="width: 60rem; border: 1px solid black;">
-    <figcaption>Tableau connected</figcaption>
-  </div>
-</center>
+    <center>
+      <div style="text-align: center;">
+        <img src="/resources/cluster/bi_tools/tableau/integration-tableau-connected.png" alt="Tableau connected" style="width: 40rem; border: 1px solid black;">
+        <figcaption>Tableau connected</figcaption>
+      </div>
+    </center>
 
 2. To get the list of available schemas, click on Search icon. To select the relevant schema, double-click on it.
 
-<center>
-  <div style="text-align: center;">
-    <img src="/interfaces/atlas/bi_tools/tableau/integration-tableau-schema.png" alt="Schema" style="width: 60rem; border: 1px solid black;">
-    <figcaption>Schema</figcaption>
-  </div>
-</center>
+    <center>
+      <div style="text-align: center;">
+        <img src="/resources/cluster/bi_tools/tableau/integration-tableau-schema.png" alt="Schema" style="width: 40rem; border: 1px solid black;">
+        <figcaption>Schema</figcaption>
+      </div>
+    </center>
 
 3. To bring the data from the table, click on Search icon and you can see all the tables available in your DataOS schema cluster. Double-click to select a table that you want to retrieve data from.
 
-<center>
-  <div style="text-align: center;">
-    <img src="/interfaces/atlas/bi_tools/tableau/integration-tableau-tables.png" alt="Tables" style="width: 60rem; border: 1px solid black;">
-    <figcaption>Tables</figcaption>
-  </div>
-</center>
+    <center>
+      <div style="text-align: center;">
+        <img src="/resources/cluster/bi_tools/tableau/integration-tableau-tables.png" alt="Tables" style="width: 40rem; border: 1px solid black;">
+        <figcaption>Tables</figcaption>
+      </div>
+    </center>
 
 4. Click Upload Now to load the data for preview. Tableau retrieves data from the selected DataOS table and loads it into a worksheet.
 
-<center>
-  <div style="text-align: center;">
-    <img src="/interfaces/atlas/bi_tools/tableau/integration-tableau-data.png" alt="Data loaded" style="width: 60rem; border: 1px solid black;">
-    <figcaption>Data loaded</figcaption>
-  </div>
-</center>
+    <center>
+      <div style="text-align: center;">
+        <img src="/resources/cluster/bi_tools/tableau/integration-tableau-data.png" alt="Data loaded" style="width: 40rem; border: 1px solid black;">
+        <figcaption>Data loaded</figcaption>
+      </div>
+    </center>
 
 5. Now you can explore and visualize this data in Tableau.
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/atlas/bi_tools/tableau/integration-tableau-visualization.png" alt="Tableau visualization" style="width: 60rem; border: 1px solid black;">
+    <img src="/resources/cluster/bi_tools/tableau/integration-tableau-visualization.png" alt="Tableau visualization" style="width: 40rem; border: 1px solid black;">
     <figcaption>Tableau visualization</figcaption>
   </div>
 </center>
