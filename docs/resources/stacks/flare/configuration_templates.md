@@ -1,6 +1,6 @@
 # Flare Configuration Templates
 
-Flare Configuration Templates offer comprehensive settings for facilitating data reading and writing operations with the Flare Stack. Flare empowers developers to interact with diverse data sources that support [depots](/resources/depot). These templates are specifically designed to support a broad spectrum of depots, encompassing Object Storage, Relational Databases, NoSQL Databases, Data Warehouses, etc.
+Flare Configuration Templates offer comprehensive settings for facilitating data reading and writing operations with the Flare Stack. Flare empowers developers to interact with diverse data sources that support [depots](/resources/depot/). These templates are specifically designed to support a broad spectrum of depots, encompassing Object Storage, Relational Databases, NoSQL Databases, Data Warehouses, etc.
 
 ## Supported Data Sources
 

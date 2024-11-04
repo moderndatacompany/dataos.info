@@ -56,7 +56,7 @@ dataos-ctl user apikey get
 Create the payload for the POST request. This payload is a JSON object containing the query parameters, such as measures, dimensions, segments, filters, time dimensions, limit, and response format.
 
 You can choose the necessary elements from the Explorer tab of the Lens Studio and then
-click on `{}` button to generate a payload paste them below. To know  more  about Payload click [here](/resources/lens/configuration/working_with_payload/)
+click on `{}` button to generate a payload paste them below. To know  more  about Payload click [here](/resources/lens/working_with_payload/)
 
 ```python
 payload = json.dumps({

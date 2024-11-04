@@ -24,7 +24,7 @@ From the design phase, it is clear which DataOS resources we require to build th
 
 ### **Create the Flare Job for data transformation**
 
-[Flare](/resources/stack/flare) is a stack orchestrated by the [Workflow](/resources/workflow/) that abstracts Apache Spark for large-scale data processing, including ingestion, transformation, enrichment, profiling, quality assessment, and syndication for both batch and streaming data.
+[Flare](/resources/stack/flare/) is a stack orchestrated by the [Workflow](/resources/workflow/) that abstracts Apache Spark for large-scale data processing, including ingestion, transformation, enrichment, profiling, quality assessment, and syndication for both batch and streaming data.
 
 Let’s see how you can utilize Flare for various transformations, we are taking the same example of Google Analytics here, to ingest raw data as is from S3, with the only transformation being the conversion of the date column to date_time since it's initially in varchar format.
 
