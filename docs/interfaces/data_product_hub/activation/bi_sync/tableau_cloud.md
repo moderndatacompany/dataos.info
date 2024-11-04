@@ -1,6 +1,6 @@
-## Steps for Integrating Data Products with Tableau
+## Steps for Integrating Data Products with Tableau Cloud
 
-This document outlines the steps required to integrate Data Products from DataOS with Tableau.
+This document outlines the steps required to integrate Data Products from DataOS with Tableau Cloud.
 
 ### **Step 1: Navigate to the Data Product Hub**
 
@@ -18,9 +18,9 @@ Browse through the list of available Data Products. Select a specific Data Produ
 <img src="/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau0.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
 
-### **Step 3: Access Integration options**
+### **Step 3: Navigate to the Access Options**
 
-After selecting a Data Product, navigate to the **BI Sync** option in the **Access Options** tab. Scroll through the BI Sync and locate the **Tableau Cloud Connection** option. Now, Click on the **Add Connection** button
+After selecting a Data Product, navigate to the **BI Sync** option in the **Access Options** tab. Scroll through the BI Sync and locate the **Tableau Cloud** option. Now, Click on the **Add Connection** button
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau1.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -36,8 +36,8 @@ A connection window will open, prompting the entry of the necessary connection d
 
 #### Connection details for connecting via Tableau username and password
 
-- **Project**: Enter the Tableau project name. If not provided, the project name will default to the Data Product Name, registering all data sources under this project. Although, providing a custom project name enhances organization within Tableau.
-- **Server Address**: The address of the Tableau server (e.g., `https://prod-apnortheast-a.online.tableau.com`).
+- **Project Name**: Enter the Tableau project name. If Tableau project already don't exist, a new project with the given name will be created. Also, if project name not provided, the project name will default to the Data Product name, registering all data sources under this project. Although, providing a custom project name enhances organization within Tableau.
+- **Server Name**: The address of the Tableau server (e.g., `https://prod-apnortheast-a.online.tableau.com`).
 - **Site ID**: The site ID (e.g., `tableausuer@123`).
 - **Username**: The Tableau username.(e.g., `labs@tmdc.io`)
 - **Password**: The password associated with the Tableau account.
@@ -52,15 +52,15 @@ These details can be obtained upon logging into Tableau. The URL format will app
 
 In this example, `tableuuser@123` represents the **site_id**.
 
-After entering the required credentials, click the **Activate Key** button to establish the connection. A confirmation message will appear upon successful connection.  
+After entering the required credentials, click the **Activate** button to establish the connection. A confirmation message will appear upon successful connection.  
 
 <center>
-<img src="/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau2.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau3.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
 
 #### Connection details for connecting using Tableau PAT
 
-In addition to using standard Tableau credentials, users can also opt to use Personal Access Tokens (PAT) for authentication. To create a PAT in the Tableau follow the instructions given on [this link](https://help.tableau.com/current/online/en-us/security_personal_access_tokens.htm)
+In addition to using standard Tableau credentials, users can also opt to use Personal Access Tokens (PAT) for authentication. To create a PAT in the Tableau follow the instructions given on [this link](https://help.tableau.com/current/online/en-us/security_personal_access_tokens.htm).
 
 After successfully creating the PAT, follow the same steps as of connection details for the Tableau username and password and enter the connection details:
 
@@ -70,9 +70,7 @@ After successfully creating the PAT, follow the same steps as of connection deta
 - **Username**: Tableau PAT Name. (e.g., `iamgroot`, `test_token`)
 - **Password**: Personal Access Token.
 
-enter the connection details as following:
-
-Now, click on the Acitvate button. A confirmation message will appear upon successful connection.  
+After filling all details, click on the Acitvate button. A confirmation message will appear upon successful connection.  
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/Tableau/Tableau4.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
