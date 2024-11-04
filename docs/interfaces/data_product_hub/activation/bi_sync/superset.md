@@ -32,10 +32,6 @@ Navigate to the Access Options tab and scroll until you find the **Superset** op
 
 Click on the **Add Connection** button. A connection window will open, prompting you to enter the necessary connection details.
 
-<center>
-<img src="/interfaces/data_product_hub/activation/bi_sync/image%20(4).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
-</center>
-
 Enter details of **Host Address** as given in the following syntax:
 
 ```yaml
@@ -47,9 +43,8 @@ Replace `<DATAOS_FQDN**>` with the **DataOS Fully Qualified Domain Name (FQDN)**
 ```yaml
 superset-happy-raccoon.dataos.app
 ```
-    
 
-Enter **Username and Password:** The username and password for the Superset admin specific to the organization need to be provided. For example, in this case, you should add the credentials as `adder_1` for both the username and password. This ensures proper access and management of Superset within the organizational context.
+Enter **Username and Password:** The username and password for the Superset admin specific to the organization need to be provided. For example, in this case, you should add the credentials as `adder_1` for both the username and password. This ensures proper access and management of Superset within the organizational context. 
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(4).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
