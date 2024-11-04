@@ -14,7 +14,8 @@ Access the **Home Page** of DataOS. From there, navigate to the **Data Product H
 
 ### **Step 2: Browse and select a Data Product**
 
-In the Data Product Hub, users should browse through the list of Data Products. Clicking on a specific Data Product to integrate with PowerBI. For example, selecting **Sales360** from the list allows exploration of the **Sales360** Data Product.
+Browse the list of Data Products and select a specific Data Product to initiate integration with Power BI. For example, selecting **Sales360** allows detailed exploration and integration of the Product360 Data Product.
+
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(2).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -22,15 +23,15 @@ In the Data Product Hub, users should browse through the list of Data Products. 
 
 ### **Step 3: Access integration options**
 
-Navigate to the BI Sync option in the Activation tab, scrolling through find the Excel and PowerBI option. Click on the download .pbip file button to download a ZIP folder.
+Navigate to the BI Sync option in the Access Option tab, scrolling through find the Excel and PowerBI option. Click on the download `.pbip` file button to download a ZIP folder.
 
 <center>
-<img src="/interfaces/data_product_hub/activation/bi_sync/image%20(3).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/Powerbi3.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
 
 ### **Step 4: Download and open the ZIP file**
 
-Locate the downloaded ZIP file on the local system and unzip the folder. Three files will be present in the folder. Open the 'public_sales360' file in Power BI. It is essential to keep all three files togethe for the semantic synchronization of the Data Product.
+Access the downloaded ZIP file on the local system and extract its contents to the specified directory. The extracted folder will contain three files. Open the public_sales360 file in Power BI. Ensure all three files remain in the same directory to maintain semantic synchronization of the Data Product.
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/Untitled%20(15).png" alt="DPH" style="width:40rem; border: 1px solid black;" />

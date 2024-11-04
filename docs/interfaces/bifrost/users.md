@@ -38,7 +38,7 @@ Clicking on a user in the list opens a detailed view, showcasing additional info
   </div>
 </center>
 
-- **Grants:** Displays a summary of Use-Cases granted to the user. Furthermore, clicking on a Use-Case will display the list of tags have previously been assigned to this Use-Case. You can [Grant a Use-Case to the User](/interfaces/bifrost/users#how-to-grant-a-use-case-to-a-user).
+- **Grants:** Displays a summary of Use-Cases granted to the user. Furthermore, clicking on a Use-Case will display the list of tags have previously been assigned to this Use-Case. You can [Grant a Use-Case to the User](/interfaces/bifrost/users/#how-to-grant-a-use-case-to-a-user).
 
 <center>
   <div style="text-align: center;">
