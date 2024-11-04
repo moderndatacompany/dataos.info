@@ -36,7 +36,10 @@ A connection window will open, prompting the entry of the necessary connection d
 
 #### Connection details for connecting via Tableau username and password
 
-- **Project Name**: Enter the Tableau project name. If Tableau project already don't exist, a new project with the given name will be created. Also, if project name not provided, the project name will default to the Data Product name, registering all data sources under this project. Although, providing a custom project name enhances organization within Tableau.
+- **Project Name**: Enter the Tableau project name. If a project with that name does not already exist, it will be created automatically. If you do not specify a name, the project will default to the name of the Data Product, which will register all associated data sources under that project.
+
+For optimal organization within Tableau, we recommend providing a custom project name it facilitates easier navigation of your data sources.
+
 - **Server Name**: The address of the Tableau server (e.g., `https://prod-apnortheast-a.online.tableau.com`).
 - **Site ID**: The site ID (e.g., `tableausuer@123`).
 - **Username**: The Tableau username.(e.g., `labs@tmdc.io`)
