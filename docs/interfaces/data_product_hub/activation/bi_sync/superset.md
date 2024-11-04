@@ -6,7 +6,7 @@ Below are the steps to proceed:
 
 ### **Step1 : Navigate to the Data Product Hub** 
 
-Start by accessing the **Home Page** of DataOS. From there, navigate to the **Data Product Hub**, where you can explore various data products available within the platform.
+Start by accessing the **Home Page** of DataOS. From there, navigate to the **Data Product Hub**, where you can explore various Data Products available within the platform.
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(6).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -14,7 +14,7 @@ Start by accessing the **Home Page** of DataOS. From there, navigate to the **Da
 
 ###  **Step2: Browse and Select a Data Product:** 
 
-In the Data Product Hub, browse through the list of data products. Click on the specific data product you wish to integrate with Tableau. For example, select Corp Market Performance from the list to explore Tableau's **Corp Market Performance** data product.
+In the Data Product Hub, browse through the list of Data Products. Click on the specific Data Product you wish to integrate with Superset. For example, select **Sales360** from the list.
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(7).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -22,30 +22,19 @@ In the Data Product Hub, browse through the list of data products. Click on the 
 
 ### **Step 3: Access Integration Options:** 
 
-Navigate to the Access Options tab once you’ve selected a data product. Here, you’ll find various methods to access and interact with the data product.
+Navigate to the Access Options tab and scroll until you find the **Superset** option.
 
 <center>
-<img src="/interfaces/data_product_hub/activation/bi_sync/image%20(8).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+<img src="/interfaces/data_product_hub/activation/bi_sync/superset_acess_option.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
 
-
-### **Step 4: Locate Superset Connection:** 
-
-Scroll through the Access Options until you find the **Superset** option. Click on the **Add Connection** button. A connection window will open, prompting you to enter the necessary connection details.
-
-<center>
-<img src="/interfaces/data_product_hub/activation/bi_sync/annotely_image(10).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
-</center>
-
-
-### **Step 5: Enter Connection Details:** 
+### **Step 4: Enter Connection Details:** 
 
 Click on the **Add Connection** button. A connection window will open, prompting you to enter the necessary connection details.
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(4).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
-
 
 Enter details of **Host Address** as given in the following syntax:
 
@@ -76,6 +65,8 @@ Navigate to Superset, and the datasets will be created as shown below.
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(5).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
+
+Click on any of the highlihted dataset to start creating visuals and dashboards.
 
 ## Governance of model on Superset
 
