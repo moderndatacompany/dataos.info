@@ -17,7 +17,7 @@ In DataOS, different actions require specific use cases that grant the necessary
 | Delete     | Delete Resources in User Workspace               |
 | Log        | Read Resource Logs in User Workspace                 |
 
-To assign use cases, you can either contact the DataOS Operator or create a Grant Request by creating a [Grant](/resources/grant) Resource. The request will be validated by the DataOS Operator.
+To assign use cases, you can either contact the DataOS Operator or create a Grant Request by creating a [Grant](/resources/grant/) Resource. The request will be validated by the DataOS Operator.
 
 ### **Create a manifest file**
 

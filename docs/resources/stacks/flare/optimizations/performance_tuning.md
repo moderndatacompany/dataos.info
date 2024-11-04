@@ -40,4 +40,4 @@ When it comes to Flare workflows, optimizing the queries can have a drastic impa
 
 Apart from configuring the allocated resources, other properties like serializing formats, level of parallelism, disk spillage etc. can affect a job significantly in certain scenarios. To know more, click on the below page
 
-[Tuning Configurations](/resources/stacks/flare/optimizations/performance_tuning/tuning_configurations)
+[Tuning Configurations](/resources/stacks/flare/optimizations/performance_tuning/tuning_configurations/)
