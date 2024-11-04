@@ -51,7 +51,9 @@ service: # service specific section
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
-| string | mandatory | none | Alphanumeric values with the RegEx [a-z0-9]([-a-z0-9]*[a-z0-9]). A hyphen/dash is allowed as a special character. The total length should be ≤ 48 characters. |
+| string | mandatory | none | Alphanumeric values with the RegEx `[a-z0-9]([-a-z0-9]*[a-z0-9])`. A hyphen/dash is allowed as a special character. The total length should be ≤ 48 characters. |
+
+
 
 **Example Usage:**
 
@@ -65,7 +67,7 @@ name: talos-test
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
-| string | mandatory | none | Alphanumeric values with the RegEx [a-z0-9]([-a-z0-9]*[a-z0-9]). A hyphen/dash is allowed as a special character. The total length should be ≤ 48 characters. |
+| string | mandatory | none | Alphanumeric values with the RegEx `[a-z0-9]([-a-z0-9]*[a-z0-9])`. A hyphen/dash is allowed as a special character. The total length should be ≤ 48 characters. |
 
 **Example Usage:**
 

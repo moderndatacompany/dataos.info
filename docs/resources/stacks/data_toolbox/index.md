@@ -62,7 +62,7 @@ The table below elucidates the various attributes within the Toolbox-specific Se
 | [`value`](/resources/stacks/data_toolbox/data_toolbox_grammar#value) | string | none | latest or any other specific metadata version | mandatory |
 
 
-To know more about Toolbox-specfic Section YAML Configuration fields, click [here.](/resources/stacks/data_toolbox/data_toolbox_grammar)
+To know more about Toolbox-specfic Section YAML Configuration fields, click [here.](/resources/stacks/data_toolbox/data_toolbox_grammar/)
 
 ### **Apply the Workflow using CLI**
 

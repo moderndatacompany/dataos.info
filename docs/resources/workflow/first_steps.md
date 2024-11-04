@@ -302,7 +302,7 @@ To obtain the runtime status of the Workflow, use the [`get runtime`](/interface
     dataos-ctl get runtime -w curriculum -t workflow -n cnt-product-demo-01
     ```
 
-Alternatively, you can extract the Workflow information from the output of the [`get`](/interfaces/cli/command_reference/#get) command and pass it as a string to the [`get runtime`](/interfaces/cli/command_reference/runtime/) command. Look for the relevant information (highlighted) in the [`get`](/interfaces/cli/command_reference/#get) command output:
+Alternatively, you can extract the Workflow information from the output of the [`get`](/interfaces/cli/command_reference/#get) command and pass it as a string to the [`get runtime`](/interfaces/cli/command_reference/#runtime) command. Look for the relevant information (highlighted) in the [`get`](/interfaces/cli/command_reference/#get) command output:
 
 === "Command"
 
@@ -561,7 +561,7 @@ Command:
 ```shell
 dataos-ctl apply -f ${{file path}} -w ${{workspace}}
 ```
-Once you have applied the Workflow, check the runtime for its success by using the [`get runtime`](/interfaces/cli/command_reference/runtime/) command
+Once you have applied the Workflow, check the runtime for its success by using the [`get runtime`](/interfaces/cli/command_reference/#runtime) command
 
 === "Command"
 

@@ -3,16 +3,16 @@
 ## Key Characteristics
 
 - **Continuous Execution**: Workers are built to run perpetually, performing their assigned tasks without a defined end time.
-- **No Ingress**: Workers do not have ingress ports like [Services](/resources/service).
+- **No Ingress**: Workers do not have ingress ports like [Services](/resources/service/).
 - **Throughput-Based**: Workers are throughput-based and do not require synchronous responses.
-- **Lightweight**: Workers are lightweight compared to [Services](/resources/service), as they do not require multiple open network ports. This makes them faster to deploy and more efficient.
+- **Lightweight**: Workers are lightweight compared to [Services](/resources/service/), as they do not require multiple open network ports. This makes them faster to deploy and more efficient.
 - **Specialized Execution**: Worker is a self-contained system, an independent entity, ideal for executing specific tasks within a larger application, providing focused functionality.
 - **Autoscalability**: Workers can be autoscaled to handle larger workloads, making them highly adaptable.
 - **Robustness**: Workers are perfect for use cases where robustness and continuous execution are essential.
 
 ## Workflow, Service, and Worker: Key Differences
 
-[Workflow](/resources/workflow), [Service](/resources/service), and Worker are distinct runnable [DataOS Resources](/resources/), each with unique roles in the ecosystem. Data developers often face the dilemma of deciding when to use a Workflow, a Service, or a Worker in the DataOS environment. To aid in this decision-making process, the following table compares Workflow, Service, and Worker comprehensively, helping developers understand their distinct characteristics and optimal use cases within the DataOS ecosystem.
+[Workflow](/resources/workflow/), [Service](/resources/service/), and Worker are distinct runnable [DataOS Resources](/resources/), each with unique roles in the ecosystem. Data developers often face the dilemma of deciding when to use a Workflow, a Service, or a Worker in the DataOS environment. To aid in this decision-making process, the following table compares Workflow, Service, and Worker comprehensively, helping developers understand their distinct characteristics and optimal use cases within the DataOS ecosystem.
 
 | Characteristic | Workflow | Service | Worker |
 | --- | --- | --- | --- |
