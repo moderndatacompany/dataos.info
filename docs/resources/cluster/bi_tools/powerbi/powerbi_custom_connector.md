@@ -32,24 +32,24 @@ Before you start using the DataOS Power BI Connector, configure it as a custom c
 4. Under **Data Extensions**, select **(Not Recommended) Allow any extension to load without validation or warning**.
 5. Select **OK**, and then restart Power BI Desktop.
     
-<center>
-  <div style="text-align: center;">
-    <img src="/interfaces/atlas/bi_tools/powerbi/powerbi_custom_connector/powerbi_securityoption.png" alt="Security settings" style="width: 60rem; border: 1px solid black;">
-    <figcaption>Security settings</figcaption>
-  </div>
-</center>
+    <center>
+      <div style="text-align: center;">
+        <img src="/resources/cluster/bi_tools/powerbi/powerbi_custom_connector/powerbi_securityoption.png" alt="Security settings" style="width: 40rem; border: 1px solid black;">
+        <figcaption>Security settings</figcaption>
+      </div>
+    </center>
 
     
-    For more information, follow the [official documentation from Microsoft](https://learn.microsoft.com/en-us/power-bi/connect-data/desktop-connector-extensibility).
+  For more information, follow the [official documentation from Microsoft](https://learn.microsoft.com/en-us/power-bi/connect-data/desktop-connector-extensibility).
     
 6. In Power BI Desktop, click on the **Get Data > More.** You should be able to see DataOS as an available data source.
     
-<center>
-  <div style="text-align: center;">
-    <img src="/interfaces/atlas/bi_tools/powerbi/powerbi_custom_connector/getdata_dataos_option.png" alt="Data sources" style="width: 60rem; border: 1px solid black;">
-    <figcaption>Data sources</figcaption>
-  </div>
-</center>
+    <center>
+      <div style="text-align: center;">
+        <img src="/resources/cluster/bi_tools/powerbi/powerbi_custom_connector/getdata_dataos_option.png" alt="Data sources" style="width: 40rem; border: 1px solid black;">
+        <figcaption>Data sources</figcaption>
+      </div>
+    </center>
 
     
 
@@ -62,12 +62,12 @@ Once DataOS appears as a data source in Power BI Desktop, data from DataOS can b
 1. Open Power BI Desktop and select **Get Data** > **More.**
 2. Choose ‘DataOS’ from the list of available data sources. 
     
-<center>
-  <div style="text-align: center;">
-    <img src="/interfaces/atlas/bi_tools/powerbi/powerbi_custom_connector/getdata_dataos.png" alt="DataOS as data source" style="width: 60rem; border: 1px solid black;">
-    <figcaption>DataOS as data source</figcaption>
-  </div>
-</center>
+    <center>
+      <div style="text-align: center;">
+        <img src="/resources/cluster/bi_tools/powerbi/powerbi_custom_connector/getdata_dataos.png" alt="DataOS as data source" style="width: 40rem; border: 1px solid black;">
+        <figcaption>DataOS as data source</figcaption>
+      </div>
+    </center>
 
     
 3. A pop-up appears. Fill in the required and optional fields to establish communication with your DataOS environment. 
@@ -76,35 +76,35 @@ Once DataOS appears as a data source in Power BI Desktop, data from DataOS can b
 4. Leave the `Custom SQL Query` field blank.
 5. Click "OK" to scan all objects and retrieve schema and tables within the selected catalog(s).
     
-<center>
-  <div style="text-align: center;">
-    <img src="/interfaces/atlas/bi_tools/powerbi/powerbi_custom_connector/connection_details.png" alt="Connect with DataOS" style="width: 60rem; border: 1px solid black;">
-    <figcaption>Connect with DataOS</figcaption>
-  </div>
-</center>
+    <center>
+      <div style="text-align: center;">
+        <img src="/resources/cluster/bi_tools/powerbi/powerbi_custom_connector/connection_details.png" alt="Connect with DataOS" style="width: 40rem; border: 1px solid black;">
+        <figcaption>Connect with DataOS</figcaption>
+      </div>
+    </center>
 
 6. Enter your Username and Password (APIKEY) and proceed.
 
-<center>
-  <div style="text-align: center;">
-    <img src="/interfaces/atlas/bi_tools/powerbi/powerbi_custom_connector/username.png" alt="Credentials to connect" style="width: 60rem; border: 1px solid black;">
-    <figcaption>Credentials to connect</figcaption>
-  </div>
-</center>
+    <center>
+      <div style="text-align: center;">
+        <img src="/resources/cluster/bi_tools/powerbi/powerbi_custom_connector/username.png" alt="Credentials to connect" style="width: 40rem; border: 1px solid black;">
+        <figcaption>Credentials to connect</figcaption>
+      </div>
+    </center>
 
 7. Choose a table from the available list of catalogs and schemas. You'll be able to preview the data.
 
-<center>
-  <div style="text-align: center;">
-    <img src="/interfaces/atlas/bi_tools/powerbi/powerbi_custom_connector/catalogs.png" alt="Catalogs and schemas" style="width: 60rem; border: 1px solid black;">
-    <figcaption>Catalogs and schemas</figcaption>
-  </div>
-</center>
+    <center>
+      <div style="text-align: center;">
+        <img src="/resources/cluster/bi_tools/powerbi/powerbi_custom_connector/catalogs.png" alt="Catalogs and schemas" style="width: 40rem; border: 1px solid black;">
+        <figcaption>Catalogs and schemas</figcaption>
+      </div>
+    </center>
 
-    
+      
     <aside class="callout">
     🗣 The visibility of these catalogs and schemas will depend on your access level within DataOS.
-    
+
     </aside>
     
 8. Click the 'Load' option to import the data. Subsequently, you can explore and craft visualizations within Power BI using the loaded data.
@@ -116,27 +116,27 @@ Once DataOS appears as a data source in Power BI Desktop, data from DataOS can b
 3. Provide connection information. Ask the DataOS administrator for the DataOS URL and port.
 4. In the `Custom SQL Query` field, enter the desired query (or a Lens Query) and fill in the other mandatory fields.
     
-<center>
-  <div style="text-align: center;">
-    <img src="/interfaces/atlas/bi_tools/powerbi/powerbi_custom_connector/custom_query.png" alt="Query to get the result data" style="width: 60rem; border: 1px solid black;">
-    <figcaption>Query to get the result data</figcaption>
-  </div>
-</center>
+    <center>
+      <div style="text-align: center;">
+        <img src="/resources/cluster/bi_tools/powerbi/powerbi_custom_connector/custom_query.png" alt="Query to get the result data" style="width: 40rem; border: 1px solid black;">
+        <figcaption>Query to get the result data</figcaption>
+      </div>
+    </center>
 
-<aside class="callout">
-  🗣 Ensure that you have access to the datasets mentioned in the query to avoid the “forbidden access” error. Reach out to the administrator to request access to the specific datasets mentioned in your query.
-</aside>
+    <aside class="callout">
+      🗣 Ensure that you have access to the datasets mentioned in the query to avoid the “forbidden access” error. Reach out to the administrator to request access to the specific datasets mentioned in your query.
+    </aside>
 
 5. Enter your Username and Password (APIKEY) and press Enter.
 
 6. The result of that query will be fetched instead of the catalog and table views and loaded into Power BI. Click on ‘Load’ to view the data.
 
-<center>
-  <div style="text-align: center;">
-    <img src="/interfaces/atlas/bi_tools/powerbi/powerbi_custom_connector/query_result.png" alt="Query result" style="width: 60rem; border: 1px solid black;">
-    <figcaption>Query result</figcaption>
-  </div>
-</center>
+    <center>
+      <div style="text-align: center;">
+        <img src="/resources/cluster/bi_tools/powerbi/powerbi_custom_connector/query_result.png" alt="Query result" style="width: 40rem; border: 1px solid black;">
+        <figcaption>Query result</figcaption>
+      </div>
+    </center>
 
     
 
