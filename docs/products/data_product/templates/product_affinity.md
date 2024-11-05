@@ -1,3 +1,5 @@
+# Product affinity Data Product
+
 This section outlines the process for creating and activating a Data Product using an example.
 
 ## Define use cases
@@ -436,278 +438,287 @@ lens:
     
 
 - The `tables` folder contains three manifest files as shown below.
-    
-    **customer.yaml**
 
+  <details>
 
-    ```yaml
-    tables:
-      - name: customer
-        sql: {{ load_sql('customer') }}
-        description: "This table stores key details about the customers, including their personal information, income, and classification into different risk segments. It serves as the central reference point for customer-related insights."
-        public: true
-    
-        joins:
-          - name: purchase_data
-            relationship: one_to_many
-            sql: "{TABLE.customer_id}= {purchase_data.p_customer_id}"
-            
-        dimensions:   
-          - name: customer_id
-            type: number
-            column: customer_id
-            description: "The unique identifier for each customer."
-            primary_key: true
-            public: true
-    
-          - name: birth_year
-            type: number
-            column: birth_year
-            description: "The birth year of the customer, used for demographic analysis and customer segmentation."
-    
-          - name: education
-            type: string
-            column: education
-            description: "The educational level of the customer, which could be used for profiling and targeted campaigns."
-    
-          - name: marital_status
-            type: string
-            column: marital_status
-            description: "The marital status of the customer, which may provide insights into purchasing behavior and lifestyle preferences."
-    
-          - name: income
-            type: number
-            column: income
-            description: "The annual income of the customer in the local currency, which is often a key factor in market segmentation and purchasing power analysis."
-    
-          - name: country
-            type: string
-            column: country
-            description: "The country where the customer resides, providing geographic segmentation and analysis opportunities."
-    
-          - name: customer_segments
-            type: string
-            sql: >
-              CASE 
-                  WHEN random() < 0.33 THEN 'High Risk'
-                  WHEN random() < 0.66 THEN 'Moderate Risk'
-                  ELSE 'Low Risk'
-              END AS 
-            description: "Risk-based customer segments derived from the customer_id, used to categorize customers into high, moderate, and low risk groups for targeted campaigns or analysis."
-    
-        measures:
-          - name: total_customers
-            sql: "COUNT({customer_id})"
-            type: number
-            description: "The total number of customers in the dataset, used as a basic measure of customer volume."
-    
-    ```
-    
-    **product.yaml**
-    
-    ```yaml
-    tables:
-      - name: product
-        sql: {{ load_sql('product') }}
-        description: "This table stores the product information."
-        public: true
-        dimensions:   
-          - name: product_customer_id
-            type: string
-            column: product_customer_id
-            description: "The unique identifier representing the combination of a customer and a product."
-            public: false
-    
-          - name: product_id
-            type: string
-            column: product_id
-            description: "The unique identifier for the product associated with a customer."
-            primary_key: true
-    
-          - name: product_category
-            type: string
-            column: product_category
-            description: "The category of the product, such as Wines, Meats, Fish, etc."
-    
-          - name: product_name
-            type: string
-            column: product_name
-            description: "The name of the product associated with the customer."
-    
-          - name: price
-            type: number
-            column: price
-            description: "The price of the product assigned to the customer, in monetary units."
-    
-          - name: product_affinity_score
-            sql: ROUND(50 + random() * 50, 2) 
-            type: number
-            description: "customer who purchases one product category will also purchase another category. "
-    
-          - name: purchase_channel
-            type: string
-            sql: >
-              CASE 
-                  WHEN random() < 0.33 THEN 'Web'
-                  WHEN random() < 0.66 THEN 'Store'
-                  ELSE 'Catalog'
-              END
-            description: "Describes how the purchase was made (e.g., Web, Store, Catalog)."
+    <summary>Customer table manifest file</summary>
+
+  ```yaml title="customer.yaml"
+  tables:
+    - name: customer
+      sql: {{ load_sql('customer') }}
+      description: "This table stores key details about the customers, including their personal information, income, and classification into different risk segments. It serves as the central reference point for customer-related insights."
+      public: true
+
+      joins:
+        - name: purchase_data
+          relationship: one_to_many
+          sql: "{TABLE.customer_id}= {purchase_data.p_customer_id}"
           
-        measures:
-          - name: total_products
-            sql: product_id
-            type: count
-            description: "The number of products."
+      dimensions:   
+        - name: customer_id
+          type: number
+          column: customer_id
+          description: "The unique identifier for each customer."
+          primary_key: true
+          public: true
+
+        - name: birth_year
+          type: number
+          column: birth_year
+          description: "The birth year of the customer, used for demographic analysis and customer segmentation."
+
+        - name: education
+          type: string
+          column: education
+          description: "The educational level of the customer, which could be used for profiling and targeted campaigns."
+
+        - name: marital_status
+          type: string
+          column: marital_status
+          description: "The marital status of the customer, which may provide insights into purchasing behavior and lifestyle preferences."
+
+        - name: income
+          type: number
+          column: income
+          description: "The annual income of the customer in the local currency, which is often a key factor in market segmentation and purchasing power analysis."
+
+        - name: country
+          type: string
+          column: country
+          description: "The country where the customer resides, providing geographic segmentation and analysis opportunities."
+
+        - name: customer_segments
+          type: string
+          sql: >
+            CASE 
+                WHEN random() < 0.33 THEN 'High Risk'
+                WHEN random() < 0.66 THEN 'Moderate Risk'
+                ELSE 'Low Risk'
+            END AS 
+          description: "Risk-based customer segments derived from the customer_id, used to categorize customers into high, moderate, and low risk groups for targeted campaigns or analysis."
+
+      measures:
+        - name: total_customers
+          sql: "COUNT({customer_id})"
+          type: number
+          description: "The total number of customers in the dataset, used as a basic measure of customer volume."
+  ```
+  </details>
+
+
+  <details>
+
+    <summary>Product table manifest file</summary>
+
+  ```yaml title="product.yaml.yaml"
     
-    ```
+  tables:
+    - name: product
+      sql: {{ load_sql('product') }}
+      description: "This table stores the product information."
+      public: true
+      dimensions:   
+        - name: product_customer_id
+          type: string
+          column: product_customer_id
+          description: "The unique identifier representing the combination of a customer and a product."
+          public: false
+  
+        - name: product_id
+          type: string
+          column: product_id
+          description: "The unique identifier for the product associated with a customer."
+          primary_key: true
+  
+        - name: product_category
+          type: string
+          column: product_category
+          description: "The category of the product, such as Wines, Meats, Fish, etc."
+  
+        - name: product_name
+          type: string
+          column: product_name
+          description: "The name of the product associated with the customer."
+  
+        - name: price
+          type: number
+          column: price
+          description: "The price of the product assigned to the customer, in monetary units."
+  
+        - name: product_affinity_score
+          sql: ROUND(50 + random() * 50, 2) 
+          type: number
+          description: "customer who purchases one product category will also purchase another category. "
+  
+        - name: purchase_channel
+          type: string
+          sql: >
+            CASE 
+                WHEN random() < 0.33 THEN 'Web'
+                WHEN random() < 0.66 THEN 'Store'
+                ELSE 'Catalog'
+            END
+          description: "Describes how the purchase was made (e.g., Web, Store, Catalog)."
+        
+      measures:
+        - name: total_products
+          sql: product_id
+          type: count
+          description: "The number of products."
+  ```
+  </details>
     
-    **purchase.yaml**
-    
-    ```yaml
-    tables:
-      - name: purchase_data
-        sql: {{ load_sql('purchase') }}
-        description: "This table captures detailed purchase behavior of customers, including their transaction frequency, product category spends, and web interaction history. It serves as the foundation for customer segmentation, recency analysis, and churn prediction."
-        public: true
-        joins:
-          - name: product
-            relationship: many_to_one
-            sql: "{TABLE.p_customer_id} = {product.product_customer_id} "
-    
-        dimensions:   
-          - name: p_customer_id
-            type: number
-            column: p_customer_id
-            description: "The unique identifier for a customer."
-            primary_key: true
-            public: false
-    
-          - name: purchase_date
-            type: time
-            column: purchase_date
-            description: "The date when the customer made their last purchase."
-    
-          - name: recency_in_days
-            type: number
-            column: recency_in_days
-            description: "The number of days since the customer’s last purchase."
-            public: false
-    
-          - name: mntwines
-            type: number
-            column: mntwines
-            description: "The total amount spent by the customer on wine products."
-            public: false
-    
-          - name: mntmeatproducts
-            type: number
-            column: mntmeatproducts
-            description: "The total amount spent by the customer on meat products."
-            public: false
-    
-          - name: mntfishproducts
-            type: number
-            column: mntfishproducts
-            description: "The total amount spent by the customer on fish products."
-            public: false
-    
-          - name: mntsweetproducts
-            type: number
-            column: mntsweetproducts
-            description: "The total amount spent by the customer on sweet products."
-            public: false
-    
-          - name: mntgoldprods
-            type: number
-            column: mntgoldprods
-            description: "The total amount spent by the customer on gold products."
-            public: false
-    
-          - name: mntfruits
-            type: number
-            column: mntfruits
-            description: "The total amount spent by the customer on fruit products."
-            public: false
-    
-          - name: numdealspurchases
-            type: number
-            column: numdealspurchases
-            description: "The number of purchases made by the customer using deals or discounts."
-            public: false
-    
-          - name: numwebpurchases
-            type: number
-            column: numwebpurchases
-            description: "The number of purchases made by the customer through the web."
-            public: false
-    
-          - name: numcatalogpurchases
-            type: number
-            column: numcatalogpurchases
-            description: "The number of purchases made by the customer through catalogs."
-            public: false
-    
-          - name: numstorepurchases
-            type: number
-            column: numstorepurchases
-            description: "The number of purchases made by the customer in physical stores."
-            public: false
-    
-          - name: numwebvisitsmont
-            type: number
-            column: numwebvisitsmont
-            description: "The number of times the customer visited the website in the last month."
-            public: false
-    
-          - name: purchases
-            type: number
-            column: purchases
-            public: false
-    
-          - name: spend
-            type: number
-            column: spend
-            public: false
-    
-          - name: country_name
-            type: string
-            sql: "{customer.country}"
-            description: "The name of the country where the customer is located."
-    
-        measures:
-          - name: recency
-            sql: datediff(current_date,date(purchase_date))
-            type: min 
-            description: Number of days since the customers last purchase.
-    
-          - name: purchase_frequency
-            sql: purchases
-            type: sum 
-            description: The number of purchases made by the customer in a specific period.
-    
-          - name: total_spend
-            sql: spend
-            type: sum 
-            description: The total amount a customer has spent across all purchases.
-    
-          - name: average_spend
-            sql: sum(spend)/nullif(sum(purchases),0)
-            type: number 
-            description: The average amount spent per transaction by the customer.   
-    
-          - name: churn_probability
-            sql: "CASE WHEN {recency} < 30 AND {total_spend} > 500 THEN 0.9 WHEN {recency} BETWEEN 30 AND 90 AND {total_spend} BETWEEN 100 AND 500 THEN 0.5  WHEN {recency} > 90 OR {total_spend} < 100 THEN 0.2 ELSE 0.1  END"
-            type: number
-            description: "The predicted likelihood that a customer will churn, based on purchase behavior and recency."
-    
-          - name: cross_sell_opportunity_score
-            sql: >
-             sum((mntwines * 0.25 + mntmeatproducts * 0.2 + mntfishproducts * 0.15 + mntsweetproducts * 0.1 + mntgoldprods * 0.3 + mntfruits * 0.2))
-              /sum(numwebpurchases + numcatalogpurchases + numstorepurchases + 1)
-            description: "The potential for cross-selling a secondary product based on previous purchase patterns."
-            type: number
-    ```
+
+  <details>
+
+    <summary>Purchase table manifest file</summary>
+
+  ```yaml title="purchase.yaml.yaml"
+  tables:
+    - name: purchase_data
+      sql: {{ load_sql('purchase') }}
+      description: "This table captures detailed purchase behavior of customers, including their transaction frequency, product category spends, and web interaction history. It serves as the foundation for customer segmentation, recency analysis, and churn prediction."
+      public: true
+      joins:
+        - name: product
+          relationship: many_to_one
+          sql: "{TABLE.p_customer_id} = {product.product_customer_id} "
+  
+      dimensions:   
+        - name: p_customer_id
+          type: number
+          column: p_customer_id
+          description: "The unique identifier for a customer."
+          primary_key: true
+          public: false
+  
+        - name: purchase_date
+          type: time
+          column: purchase_date
+          description: "The date when the customer made their last purchase."
+  
+        - name: recency_in_days
+          type: number
+          column: recency_in_days
+          description: "The number of days since the customer’s last purchase."
+          public: false
+  
+        - name: mntwines
+          type: number
+          column: mntwines
+          description: "The total amount spent by the customer on wine products."
+          public: false
+  
+        - name: mntmeatproducts
+          type: number
+          column: mntmeatproducts
+          description: "The total amount spent by the customer on meat products."
+          public: false
+  
+        - name: mntfishproducts
+          type: number
+          column: mntfishproducts
+          description: "The total amount spent by the customer on fish products."
+          public: false
+  
+        - name: mntsweetproducts
+          type: number
+          column: mntsweetproducts
+          description: "The total amount spent by the customer on sweet products."
+          public: false
+  
+        - name: mntgoldprods
+          type: number
+          column: mntgoldprods
+          description: "The total amount spent by the customer on gold products."
+          public: false
+  
+        - name: mntfruits
+          type: number
+          column: mntfruits
+          description: "The total amount spent by the customer on fruit products."
+          public: false
+  
+        - name: numdealspurchases
+          type: number
+          column: numdealspurchases
+          description: "The number of purchases made by the customer using deals or discounts."
+          public: false
+  
+        - name: numwebpurchases
+          type: number
+          column: numwebpurchases
+          description: "The number of purchases made by the customer through the web."
+          public: false
+  
+        - name: numcatalogpurchases
+          type: number
+          column: numcatalogpurchases
+          description: "The number of purchases made by the customer through catalogs."
+          public: false
+  
+        - name: numstorepurchases
+          type: number
+          column: numstorepurchases
+          description: "The number of purchases made by the customer in physical stores."
+          public: false
+  
+        - name: numwebvisitsmont
+          type: number
+          column: numwebvisitsmont
+          description: "The number of times the customer visited the website in the last month."
+          public: false
+  
+        - name: purchases
+          type: number
+          column: purchases
+          public: false
+  
+        - name: spend
+          type: number
+          column: spend
+          public: false
+  
+        - name: country_name
+          type: string
+          sql: "{customer.country}"
+          description: "The name of the country where the customer is located."
+  
+      measures:
+        - name: recency
+          sql: datediff(current_date,date(purchase_date))
+          type: min 
+          description: Number of days since the customers last purchase.
+  
+        - name: purchase_frequency
+          sql: purchases
+          type: sum 
+          description: The number of purchases made by the customer in a specific period.
+  
+        - name: total_spend
+          sql: spend
+          type: sum 
+          description: The total amount a customer has spent across all purchases.
+  
+        - name: average_spend
+          sql: sum(spend)/nullif(sum(purchases),0)
+          type: number 
+          description: The average amount spent per transaction by the customer.   
+  
+        - name: churn_probability
+          sql: "CASE WHEN {recency} < 30 AND {total_spend} > 500 THEN 0.9 WHEN {recency} BETWEEN 30 AND 90 AND {total_spend} BETWEEN 100 AND 500 THEN 0.5  WHEN {recency} > 90 OR {total_spend} < 100 THEN 0.2 ELSE 0.1  END"
+          type: number
+          description: "The predicted likelihood that a customer will churn, based on purchase behavior and recency."
+  
+        - name: cross_sell_opportunity_score
+          sql: >
+            sum((mntwines * 0.25 + mntmeatproducts * 0.2 + mntfishproducts * 0.15 + mntsweetproducts * 0.1 + mntgoldprods * 0.3 + mntfruits * 0.2))
+            /sum(numwebpurchases + numcatalogpurchases + numstorepurchases + 1)
+          description: "The potential for cross-selling a secondary product based on previous purchase patterns."
+          type: number
+  ```
+  </details>
     
 - The views folder contains three manifest files, each defining a Metric as shown below.
     
