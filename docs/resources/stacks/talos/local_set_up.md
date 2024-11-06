@@ -81,6 +81,10 @@ This section involves step-by-step guide to set up Talos on your local enviromen
     ```
     
 4. Navigate to `docker-compose.yaml` manifest file and update the `volumes` path `/home/Desktop/talos/depot-postgres` with the actual path of your repository, add your dataos username and dataos API key in `DATAOS_RUN_AS_USER` and `DATAOS_RUN_AS_APIKEY` respectively.
+
+    <aside class="callout">
+    🗣 Ensure to provide the current verion and image of Talos by confirming with DataOS administrator.
+    </aside>
     
     ```yaml
     version: "2.2"
@@ -98,6 +102,8 @@ This section involves step-by-step guide to set up Talos on your local enviromen
         tty: true
     ```
     
+
+
 6. Navigate to `apis` folder create two files, one with `.sql` and one with `.yaml` extension for example create two file one can be `table1.sql` and another one can be `table1.yaml` as shown below. You can add multiple SQL file and their corresponding manifest file with `.yaml` extension as per your use case.    
     ```sql
     SELECT first_name, last_name FROM demo.customer_profiles LIMIT 10;
