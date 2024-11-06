@@ -208,9 +208,9 @@ To know more about Instance Secret, [please refer to this](https://dataos.info/r
     Successful execution will look like the following:
     
     ```bash
-    EBUG [CORE] Duckdb config: TimeZone = Etc/UTC
+    EBUG [CORE]   config: TimeZone = Etc/UTC
     2024-07-31 08:51:12.566  
-    DEBUG [SERVE] Data source duckdb initialized
+    DEBUG [SERVE] Data source   initialized
     2024-07-31 08:51:12.567  DEBUG
     [SERVE] Initializing data source: pg
     2024-07-31 08:51:12.567  DEBUG
