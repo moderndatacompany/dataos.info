@@ -7,7 +7,7 @@
 
 ## Steps
 
-1. Create a folder, open the folder with a code editor (VS Code), and create a `config.yaml` manifest file and copy the below code. Update the name, description, version, dataos context, Lens as type, and Lens name.
+1. Create and open a folder with a code editor (VS Code), and create a `config.yaml` manifest file and copy the below code. Update the name, description, version, dataos context, Lens as type, and Lens name.
     
     ```yaml
     name: lens
@@ -22,40 +22,8 @@
         lensName: 'public:sales360'
     ```
     
-
-2. In the same folder, create `docker-compose.yaml` manifest file, copy the below-provided code, and update the `volumes` path `/home/iamgroot/Desktop/talos-examples/lens` with the actual path of your folder, add your dataos username and dataos API key in `DATAOS_RUN_AS_USER` and `DATAOS_RUN_AS_APIKEY` respectively.
-
-  <aside class="callout">
-  🗣 Ensure you’re using the latest version and image of Talos by confirming with the DataOS administrator.
-  </aside>
-
-    ```yaml
-    version: "2.2"
-    services:
-      talos:
-        image: rubiklabs/talos:0.1.6
-        ports:
-          - "3000:3000"
-        volumes:
-          - /home/iamgroot/Desktop/talos-examples/lens:/etc/dataos/work
-        environment:
-          DATAOS_RUN_AS_USER: ${{iamgroot}}
-          DATAOS_RUN_AS_APIKEY: ${{AdtyuhJNKlsfdtMKGsopwhdgdtyjskshgJKHjdkdh86nney}}
-          DATAOS_FQDN: ${{liberal-donkey.dataos.app}}
-        tty: true
-    ```
     
-3. Create a file `Makefile` in the same folder, and copy the below code to be able test Talos locally.
-    
-    ```makefile
-    start:
-    	docker-compose -f docker-compose.yaml up -d
-    
-    stop:
-    	docker-compose -f docker-compose.yaml down -v
-    ```
-    
-4. Create a folder named `apis` inside the same parent folder, inside `apis` create the files `sales.sql` which will contain the SQL query, and `sales.yaml` to define the path to access sales data in your API as shown below. You can add as many `.sql` files as needed, but each one must have a corresponding `.yaml` manifest file with the same name.
+2. Create a folder named `apis` inside the same parent folder, inside `apis` create the files `sales.sql` which will contain the SQL query, and `sales.yaml` to define the path to access sales data in your API as shown below. You can add as many `.sql` files as needed, but each one must have a corresponding `.yaml` manifest file with the same name.
     
     ```sql
     # sales.sql
@@ -64,149 +32,51 @@
     
     ```yaml
     # sales.yaml
-    urlPath: /sales/customers
+    urlPath: /customers
     description: list customer numbers from sales table
     source: lens
     ```
     
-5. Run `docker-compose up` on the terminal to test locally, the output should look like the following. This step is optional; if you prefer, you can skip directly to the next step.
-    - output
+3. To deploy Talos as a Service within DataOS, initialize the repository and push the changes to the Bitbucket.
+
+4. Create an Instance Secret to store your Bitbucket credentials. This step ensures that the necessary authentication details are securely stored and accessible for the Talos Service.
+
+    ```yaml
+    name: ${{bitrepo}}-r
+    version: v1
+    type: instance-secret
+    description: ${{"Bitbucket credentials"}}
+    layer: ${{user}}
+    instance-secret:
+      type: ${{key-value}}
+      acl: ${{r}}
+      data:
+        GITSYNC_USERNAME: ${{"iamgroot7340"}}# Bitbucket username
+        GITSYNC_PASSWORD: ${{"ATBBe2we5UPdGVthtEHnjkLDHL7443AC"}}# Bitbukcet app password
+    ```
+
+    To create an app password in Bitbucket follow the below steps:
+
+    - Go to settings, then click on Personal Bitbucket settings.
+    - Go to App passwords create one and paste the password into your Instance Secret manifest file.
         
-        ```bash
-        docker-compose up
-        [+] Running 1/0
-         ✔ Container depot-postgres-talos-1  Created                                                                                                                                                                  0.0s 
-        Attaching to depot-postgres-talos-1
-        depot-postgres-talos-1  | 👉 /etc/dataos/work/config.yaml => {
-        depot-postgres-talos-1  |   "name": "postgres_domain",
-        depot-postgres-talos-1  |   "description": "A talos-depot-postgres app",
-        depot-postgres-talos-1  |   "version": "0.1.6",
-        depot-postgres-talos-1  |   "auth": {
-        depot-postgres-talos-1  |     "heimdallUrl": "https://liberal-donkey.dataos.app/heimdall"
-        depot-postgres-talos-1  |   },
-        depot-postgres-talos-1  |   "logLevel": "DEBUG",
-        depot-postgres-talos-1  |   "sources": [
-        depot-postgres-talos-1  |     {
-        depot-postgres-talos-1  |       "name": "postgre01",
-        depot-postgres-talos-1  |       "type": "depot"
-        depot-postgres-talos-1  |     }
-        depot-postgres-talos-1  |   ],
-        depot-postgres-talos-1  |   "schemaPath": "",
-        depot-postgres-talos-1  |   "cachePath": "tmp"
-        depot-postgres-talos-1  | }
-        depot-postgres-talos-1  | Get Depot Service Depot Fetch URL:  https://liberal-donkey.dataos.app/ds/api/v2/depots/postgre01
-        depot-postgres-talos-1  | Get Depot Service Secrets Fetch URL:  https://liberal-donkey.dataos.app/ds/api/v2/secrets/postgre01_r
-        depot-postgres-talos-1  | 🧑‍🤝‍🧑 sources => [
-        depot-postgres-talos-1  |   {
-        depot-postgres-talos-1  |     "name": "postgre01",
-        depot-postgres-talos-1  |     "type": "pg",
-        depot-postgres-talos-1  |     "connection": {
-        depot-postgres-talos-1  |       "host": "usr-db-dataos-ck-vgji-liberaldo-dev.postgres.database.azure.com",
-        depot-postgres-talos-1  |       "port": 5432,
-        depot-postgres-talos-1  |       "database": "postgres",
-        depot-postgres-talos-1  |       "user": "--REDACTED--",
-        depot-postgres-talos-1  |       "password": "--REDACTED--"
-        depot-postgres-talos-1  |     }
-        depot-postgres-talos-1  |   }
-        depot-postgres-talos-1  | ]
-        depot-postgres-talos-1  | - Building project...
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.626  
-        depot-postgres-talos-1  | DEBUG [BUILD]
-        depot-postgres-talos-1  | Initializing data source: mock
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.627  
-        depot-postgres-talos-1  | DEBUG [BUILD] Data source mock initialized
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.628  
-        depot-postgres-talos-1  | DEBUG [BUILD] Initializing data source: bq
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.628  
-        depot-postgres-talos-1  | DEBUG [BUILD] Data source bq initialized
-        depot-postgres-talos-1  | 
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.629  DEBUG
-        depot-postgres-talos-1  | [BUILD] Initializing data source: clickhouse
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.629  
-        depot-postgres-talos-1  | DEBUG [BUILD] Data source clickhouse initialized
-        depot-postgres-talos-1  | 
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.630  DEBUG [BUILD] Initializing data source:  
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.636  DEBUG
-        depot-postgres-talos-1  | [CORE] Create connection for talos.cache
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.637  
-        depot-postgres-talos-1  | DEBUG [CORE] Open database in automatic mode
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.650  
-        depot-postgres-talos-1  | DEBUG
-        depot-postgres-talos-1  | [CORE] Installed httpfs extension
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.653  
-        depot-postgres-talos-1  | DEBUG [CORE]   config: access_mode = automatic
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.653  
-        depot-postgres-talos-1  | DEBUG [CORE]   config: allow_persistent_secrets = true
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.654  
-        depot-postgres-talos-1  | DEBUG [CORE]   config: checkpoint_threshold = 16.0 MiB
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.654  
-        depot-postgres-talos-1  | DEBUG [CORE]   config: debug_checkpoint_abort = none
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.654  
-        depot-postgres-talos-1  | DEBUG [CORE]   config: storage_compatibility_version = v0.10.2
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.654  
-        depot-postgres-talos-1  | DEBUG [CORE]   config: debug_force_external = false
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.655  
-        depot-postgres-talos-1  | DEBUG [CORE]   config: debug_force_no_cross_product = false
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.655  
-        depot-postgres-talos-1  | DEBUG [CORE]   config: debug_asof_iejoin = false
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.655  
-        depot-postgres-talos-1  | DEBUG [CORE]   config: prefer_range_joins = false
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.655  
-        depot-postgres-talos-1  | DEBUG [CORE]   config: debug_window_mode = NULL
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.656  
-        depot-postgres-talos-1  | DEBUG [CORE]   config: default_collation =
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.656  
-        depot-postgres-talos-1  | DEBUG [CORE]   config: default_order = asc
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.656  
-        depot-postgres-talos-1  | DEBUG [CORE]   config: default_null_order = nulls_last
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.656  
-        depot-postgres-talos-1  | DEBUG [CORE]   config: disabled_filesystems =
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.656  
-        depot-postgres-talos-1  | DEBUG [CORE]   config: disabled_optimizers =  
-        depot-postgres-talos-1  | 2024-07-24 10:56:22.657  DEBUG [CORE]   config: enable_external_access = true
-        depot-postgres-talos-1  | 
-        
-        ```
-6. To deploy Talos as a Service within DataOS, initialize the repository and push the changes to the Bitbucket.
+        <center>
+          <img src="/resources/stacks/talos/app.png" alt="Talos" style="width:30rem; border: 1px solid black; padding: 5px;" />
+        </center>
 
-7. Create an Instance Secret to store your Bitbucket credentials. This step ensures that the necessary authentication details are securely stored and accessible for the Talos Service.
+    Apply the Instance Secret manifest file by executing the below command:
 
-```yaml
-name: ${{bitrepo}}-r
-version: v1
-type: instance-secret
-description: ${{"Bitbucket credentials"}}
-layer: ${{user}}
-instance-secret:
-  type: ${{key-value}}
-  acl: ${{r}}
-  data:
-    GITSYNC_USERNAME: ${{"iamgroot7340"}}# Bitbucket username
-    GITSYNC_PASSWORD: ${{"ATBBe2we5UPdGVthtEHnjkLDHL7443AC"}}# Bitbukcet app password
-```
+    ```bash
+    dataos-ctl resource apply -f /home/office/talos/secret.yaml 
+    ```
 
-To create an app password in Bitbucket follow the below steps:
+    To know more about Instance Secret, [please refer to this](/resources/instance_secret/).
 
-- Go to settings, then click on Personal Bitbucket settings.
-- Go to App passwords create one and paste the password into your Instance Secret manifest file.
-    
-    <center>
-      <img src="/resources/stacks/talos/app.png" alt="Talos" style="width:30rem; border: 1px solid black; padding: 5px;" />
-    </center>
+5. Now create a manifest file for the Talos Service as shown below.
 
-Apply the Instance Secret manifest file by executing the below command:
-
-```bash
-dataos-ctl resource apply -f /home/office/talos/secret.yaml 
-```
-
-To know more about Instance Secret, [please refer to this](https://dataos.info/resources/instance_secret/).
-
-8. Now create a manifest file for the Talos Service as shown below.
-
-  <aside class="callout">
-  🗣 Ensure to map the repository path correctly.
-  </aside>
+    <aside class="callout">
+    🗣 Ensure to map the repository path correctly.
+    </aside>
     
     ```yaml
     name: ${{talos-test}} # service name
@@ -239,7 +109,7 @@ To know more about Instance Secret, [please refer to this](https://dataos.info/r
         limits:
           cpu: ${{500m}}
           memory: ${{512Mi}}
-      stack: talos:2.0
+      stack: talos:1.0
       dataosSecrets:
         - name: ${{bitrepo-r}}
           allKeys: true
@@ -251,15 +121,15 @@ To know more about Instance Secret, [please refer to this](https://dataos.info/r
             - '--ref=main'
     ```
     
-To know more about each attribute, [please refer to this](/resources/stacks/talos/configurations/service/).
+    To know more about each attribute, [please refer to this](/resources/stacks/talos/configurations/service/).
     
-9. Apply the Service manifest by executing the below command:
+6. Apply the Service manifest by executing the below command:
     
     ```bash
     dataos-ctl resource apply -f /home/office/talos/service.yaml 
     ```
     
-10. To check if the service is running successfully, execute the following command.
+7. To check if the Service is running successfully, execute the following command.
     
     ```bash
     dataos-ctl log -t service -n ${{service-name}} -w ${{workspace}}
@@ -308,9 +178,9 @@ To know more about each attribute, [please refer to this](/resources/stacks/talo
     ```
     
 
-### **Good to go!**
+**Good to go!**
 
-- Now you can access the data on the API endpoint using Postman, as shown below:
+- Now you can test the API endpoint using Postman, as shown below:
     
     <center>
       <img src="/resources/stacks/talos/image2.png" alt="Talos" style="width:40rem; border: 1px solid black; padding: 5px;" />
