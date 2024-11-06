@@ -2,6 +2,10 @@
 
 Docker compose manifest file is used to configure the docker image of Talos. This section will describe each attribute to help you configure the docker-compose manifest file.
 
+<aside class="callout">
+🗣 Ensure to provide the current verion and image of Talos by confirming with DataOS administrator.
+</aside>
+
 ```yaml
 version: "2.2"
 services:
