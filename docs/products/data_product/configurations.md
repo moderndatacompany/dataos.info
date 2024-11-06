@@ -40,23 +40,35 @@ v1beta: # mandatory
     resource: # mandatory
       refType: ${{dataos}}
       ref: ${{bundle:v1beta:product-affinity-bundle}}
+      description: ${{'Ingest data'}}
+      purpose: ${{'ingestion'}}
 
     inputs: # mandatory
       - refType: ${{dataos}}
         ref: ${{dataset:icebase:customer_relationship_management:customer}}
+        description: ${{'Ingest data'}}
+        purpose: ${{'ingestion'}}
 
       - refType: ${{dataos}}
         ref: ${{dataset:icebase:customer_relationship_management:purchase}}
+        description: ${{'Ingest data'}}
+        purpose: ${{'ingestion'}}
 
       - refType: ${{dataos}}
         ref: ${{dataset:icebase:customer_relationship_management:product}}
+        description: ${{'Ingest data'}}
+        purpose: ${{'ingestion'}}
 
     outputs: # optional
       - refType: ${{dataos}}
         ref: ${{dataset:icebase:customer_relationship_management:product_affinity_matrix}}
+        description: ${{'Ingest data'}}
+        purpose: ${{'ingestion'}}
 
       - refType: ${{dataos}}
         ref: ${{dataset:icebase:customer_relationship_management:cross_sell_recommendations}}
+        description: ${{'Ingest data'}}
+        purpose: ${{'ingestion'}}
 
     ports: # optional
       lens:
@@ -89,6 +101,11 @@ This section serves as the header of the manifest file, defining the overall cha
 ```yaml
 name: product-affinity-cross-sell
 ```
+
+<center>
+  <img src="/products/data_product/configurations/metis_title.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <figcaption><i>Data Product card showing the title on the Metis</i></figcaption>
+</center>
 
 ### **`version`**
 
@@ -160,6 +177,16 @@ Following are the predefined tags which you can customize as per the specific Da
 | `DPUsecase.Product Recommendation` |  Assigns the product recommendation use case.  |
 | `DPTier.DataCOE Approved` | Assigns the tier to the Data Product. Indicates that the Data Product meets standards set by the Data Center of Excellence. |
 
+<center>
+  <img src="/products/data_product/configurations/dp_tags.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <figcaption><i>Data Product card showing the tags on the Data Product Hub</i></figcaption>
+</center>
+
+<center>
+  <img src="/products/data_product/configurations/metis_tags.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <figcaption><i>Data Product card showing the tags on the Metis</i></figcaption>
+</center>
+
 
 ### **`description`**
 
@@ -174,24 +201,15 @@ Following are the predefined tags which you can customize as per the specific Da
 ```yaml
 description: Leverages product affinity analysis to identify cross-sell opportunities, enabling businesses to enhance customer recommendations and drive additional sales by understanding the relationships between products purchased together # optional
 ```
+<center>
+  <img src="/products/data_product/configurations/dp_description.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <figcaption><i>Data Product card showing the description on the Data Product Hub</i></figcaption>
+</center>
 
-### **`collaborators`**
-
-**Description:** Optional field listing collaborators involved in developing or maintaining the product.
-
-| Data Type | Requirement | Default Value | Possible Value |
-| --- | --- | --- | --- |
-| list of strings | optional | none | list of objects, includes the name and the description of the collaborator |
-
-**Example Usage:**
-
-```yaml
-collaborators: # optional
-  - name: iamgroot
-    description: developer
-  - name: iamthor
-    description: consumer
-```
+<center>
+  <img src="/products/data_product/configurations/metis_description.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <figcaption><i>Data Product card showing the description on the Metis</i></figcaption>
+</center>
 
 **`owner`**
 
@@ -223,267 +241,16 @@ refs:
     href: https://dataos.info/interfaces/lens/
 ```
 
-
+<center>
+  <img src="/products/data_product/configurations/metis_refer.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <figcaption><i>Data Product card showing the reference links on the Metis</i></figcaption>
+</center>
 
 
 ## **Data Product-specific section**
 
 Data Product-specific section is different for different versions. This section comprises attributes specific to the Data Product for each version. The attributes within the section are listed below:
 
-### **`v1beta`**
-
-**Description:** The `v1alpha` mapping comprises attributes for configuring a Data Product in DataOS.
-
-| Data Type | Requirement | Default Value | Possible Value |
-| --- | --- | --- | --- |
-| mapping | mandatory | none | none |
-
-**Example Usage:**
-
-```yaml
-v1beta: # mandatory
-  data: # mandatory
-    meta: # mandatory
-      title: Product Affinity & Cross-Sell Opportunity
-      sourceCodeUrl: https://bitbucket.org/tmdc/product-affinity-cross-sell/src/main/
-      trackerUrl: https://rubikai.atlassian.net/browse/DPRB-65
-```
-
-#### **`data`**
-
-**Description:** The `data` attribute is a mapping that comprises attributes for configuring a Data Product in DataOS, including resources, input, output, etc.
-
-| Data Type | Requirement | Default Value | Possible Value |
-| --- | --- | --- | --- |
-| mapping | mandatory | none | none |
-
-**Example Usage:**
-
-```yaml
-data:
-  resources:
-    - name: sales360test
-      type: lens 
-      ...
-```
-
-#### **`meta`**
-
-**Description:** Represents the essential metadata associated with the Data Product, providing details like the title, source code location, and issue tracking.
-
-| Attribute | Description | Data Type | Requirement | Default Value | Possible Value |
-| --- | --- | --- | --- | --- | --- |
-| **title** | The name of the Data Product, indicating its purpose and focus. | String | Mandatory | None | Any descriptive title of the Data Product |
-| **sourceCodeUrl** | URL to the source code repository for the Data Product, enabling code access. | URL | Mandatory | None | URL pointing to the source code location |
-| **trackerUrl** | URL to the issue tracker, allowing team members to view and report issues related to the Data Product. | URL | Mandatory | None | URL pointing to the tracking system (e.g., Jira) |
-
-#### **`resources`**
-
-**Description:** Represents the resource mappings associated with the Data Product.
-
-| Data Type | Requirement | Default Value | Possible Value |
-| --- | --- | --- | --- |
-| list of mappings | mandatory | none | none |
-
-**Example Usage:**
-
-```yaml
-resource: # mandatory
-  refType: dataos
-  ref: bundle:v1beta:product-affinity-bundle
-```
-
-#### **`refType`**
-
-**Description:** Represents the resource address or location.
-
-| Data Type | Requirement | Default Value | Possible Value |
-| --- | --- | --- | --- |
-| string | mandatory | none | dataos, dataos_address |
-
-**Example Usage:**
-
-```yaml
-refType: dataos
-```
-
-#### **`ref`**
-
-**Description:** The bundle reference, specifying the version and name of the bundle associated with the Data Product.
-
-| Attribute | Data Type | Requirement | Default Value | Possible Value |
-| --- | --- | --- | --- | --- | --- |
-| **ref** | String | Mandatory | None | `bundle:v1beta:product-affinity-bundle` or similar format |
-
-
-#### **`inputs`**
-
-**Description:** Represents the input mappings.
-
-| Data Type | Requirement | Default Value | Possible Value |
-| --- | --- | --- | --- |
-| list of mappings | mandatory | none | none |
-
-
-**Example Usage:**
-
-```yaml
-inputs: 
-  - refType: dataos
-    ref: dataos://icebase:retail/customer  
-    description: Customer 
-    purpose: source 
-```
-
-#### **`description`**
-
-**Description:** Describes the input data.
-
-| Data Type | Requirement | Default Value | Possible Value |
-| --- | --- | --- | --- |
-| string | optional | none | any valid string |
-
-**Example Usage:**
-
-```yaml
-description: Customer 
-```
-
-#### **`purpose`**
-
-**Description:** Indicates the purpose of the input.
-
-| Data Type | Requirement | Default Value | Possible Value |
-| --- | --- | --- | --- |
-| string | optional | aone | any valid string |
-
-**Example Usage:**
-
-```yaml
- purpose: source 
-```
-
-#### **`refType`**
-
-**Description:** Represents the reference type of the input.
-
-| Data Type | Requirement | Default Value | Possible Value |
-| --- | --- | --- | --- |
-| string | mandatory | None | dataos, dataos_address |
-
-**Example Usage:**
-
-```yaml
-refType: dataos
-```
-
-#### **`ref`**
-
-**Description:** Represents the reference address of the input.
-
-| Data Type | Requirement | Default Value | Possible Value |
-| --- | --- | --- | --- |
-| string | mandatory | none | input data reference address |
-
-**Example Usage:**
-
-```yaml
-ref: dataos://icebase:retail/customer  
-```
-
-#### **`outputs`**
-
-**Description:** Represents the input object.
-
-| Data Type | Requirement | Default Value | Possible Value |
-| --- | --- | --- | --- |
-| list of mappings | mandatory | none | none |
-
-**Example Usage:**
-
-```yaml
-    outputs: 
-      - refType: dataos_address
-        ref: dataos://icebase:retail/customer
-        description: Customer 360 
-        purpose: consumption
-```
-
-#### **`description`**
-
-**Description:** Describes the input data.
-
-| Data Type | Requirement | Default Value | Possible Value |
-| --- | --- | --- | --- |
-| string | optional | None | Any valid string |
-
-**Example Usage:**
-
-```yaml
-description: Customer 360 
-```
-
-#### **`purpose`**
-
-**Description:** Indicates the purpose of the input.
-
-| Data Type | Requirement | Default Value | Possible Value |
-| --- | --- | --- | --- |
-| string | optional | None | Any valid string |
-
-**Example Usage:**
-
-```yaml
-purpose: consumption
-```
-
-#### **`refType`**
-
-**Description:** Represents the reference type of the input.
-
-| Data Type | Requirement | Default Value | Possible Value |
-| --- | --- | --- | --- |
-| string | mandatory | None | dataos, dataos_address |
-
-**Example Usage:**
-
-```yaml
-refType: dataos_address
-```
-
-#### **`ref`**
-
-**Description:** Represents the reference address of the input.
-
-| Data Type | Requirement | Default Value | Possible Value |
-| --- | --- | --- | --- |
-| string | mandatory | None | Reference address |
-
-**Example Usage:**
-
-```yaml
-ref: dataos://icebase:retail/customer
-```
-
-**Usecases section**
-
-#### **`useCases`**
-
-**Description:** Lists the use cases associated with the data product.
-
-| Data Type | Requirement | Default Value | Possible Value |
-| --- | --- | --- | --- |
-| list of strings | optional | none | • alpha numeric values with the RegEx[a-z0-9][-a-z0-9]*[a-z0-9]; a hyphen/dash is allowed as a special character
-• total length of the string should be less than or equal to 48 characters |
-
-**Example Usage:**
-
-```yaml
-usecases:    
-  - c360-dataset
-  - check-usecase-01
-  - check-usecase-02 
-```
 
 ### **`v1beta`**
 
@@ -498,11 +265,9 @@ usecases:
 ```yaml
 v1beta:
   data: # Data Product version details
-    meta:
-      foo: bar
 ```
 
-#### **`data`**
+### **`data`**
 
 **Description:** Contains additional sections related to the Data Product.
 
@@ -515,10 +280,9 @@ v1beta:
 ```yaml
 data:
   meta:
-    foo: bar
 ```
 
-#### **`meta`**
+### **`meta`**
 
 **Description:** An optional section for additional metadata.
 
@@ -529,11 +293,37 @@ data:
 **Example Usage:**
 
 ```yaml
-meta:
-  foo: bar
+meta: # mandatory
+  title: ${{Product Affinity & Cross-Sell Opportunity}} # optional
+  sourceCodeUrl: ${{https://bitbucket.org/tmdc/product-affinity-cross-sell/src/main/}}
+  trackerUrl: ${{https://rubikai.atlassian.net/browse/DPRB-65}}
 ```
+<center>
+  <img src="/products/data_product/configurations/dp_title.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <figcaption><i>Data Product card showing the title on the Data Product Hub</i></figcaption>
+</center>
 
-#### **`collaborators`**
+<center>
+  <img src="/products/data_product/configurations/dp_meta.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <figcaption><i>Data Product card showing the Git and Jira links on the Data Product Hub</i></figcaption>
+</center>
+
+
+Below table describes each attribute of the meta section.
+
+| Key | Value | Description |
+| --- | --- | --- |
+| `title` | `${{Product Affinity & Cross-Sell Opportunity}}` | The name of the data product for product affinity and cross-sell opportunities. |
+| `sourceCodeUrl` | `${{https://bitbucket.org/tmdc/product-affinity-cross-sell/src/main/}}` | URL to the source code repository. |
+| `trackerUrl` | `${{https://rubikai.atlassian.net/browse/DPRB-65}}` | URL to the issue tracker for tracking development and tasks. |
+
+<aside class="callout">
+
+🗣️ If no title is provided, the default title will be set to the name of the product. For example, if a developer enters a name like 'product-affinity-cross-sell' without specifying a title, the system will automatically assign 'product-affinity-cross-sell' as the title.
+ 
+</aside>
+
+### **`collaborators`**
 
 **Description:** Specifies the list of collaborators involved with the Data Product.
 
@@ -553,7 +343,17 @@ collaborators:
     description: ${{consumer}}
 ```
 
-#### **`name`**
+<center>
+  <img src="/products/data_product/configurations/dp_collaborators.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <figcaption><i>Data Product card showing the collaborators on the Data Product Hub</i></figcaption>
+</center>
+
+<center>
+  <img src="/products/data_product/configurations/metis_collaborators.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <figcaption><i>Data Product card showing the collaborators on the Metis</i></figcaption>
+</center>
+
+### **`name`**
 
 **Description:** The name of the collaborator.
 
@@ -567,7 +367,7 @@ collaborators:
 name: ${{iamgroot}}
 ```
 
-#### **`description`**
+### **`description`**
 
 **Description:** A brief description of the collaborator's role.
 
@@ -581,7 +381,7 @@ name: ${{iamgroot}}
 description: ${{owner}}
 ```
 
-#### **`relatedDataProducts`**
+### **`relatedDataProducts`**
 
 **Description:** Lists related Data Products connected or associated with the current Data Product.
 
@@ -596,7 +396,7 @@ relatedDataProducts:
   - ${{data:v1beta:customer-360-demov3}}
 ```
 
-#### **`resource`**
+### **`resource`**
 
 **Description:** Defines the resources utilized by the Data Product.
 
@@ -613,8 +413,12 @@ resource:
   refType: ${{dataos}}
   ref: ${{bundle:v1beta:sales-data-pipeline}}
 ```
+<center>
+  <img src="/products/data_product/configurations/metis_bundle.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <figcaption><i>Data Product card showing the Bundle Resource info on the Metis</i></figcaption>
+</center>
 
-#### **`description (resource)`**
+### **`description (resource)`**
 
 **Description:** A brief description of the resource.
 
@@ -628,7 +432,7 @@ resource:
 description: ${{'Ingest data'}}
 ```
 
-#### **`purpose (resource)`**
+### **`purpose (resource)`**
 
 **Description:** The purpose of the resource.
 
@@ -642,7 +446,7 @@ description: ${{'Ingest data'}}
 purpose: ${{'ingestion'}}
 ```
 
-#### **`refType`**
+### **`refType`**
 
 **Description:** The reference type of the resource.
 
@@ -656,7 +460,7 @@ purpose: ${{'ingestion'}}
 refType: ${{dataos}}
 ```
 
-#### **`ref`**
+### **`ref`**
 
 **Description:** The reference of the resource.
 
@@ -670,7 +474,7 @@ refType: ${{dataos}}
 ref: ${{bundle:v1beta:sales-data-pipeline}}
 ```
 
-#### **`inputs`**
+### **`inputs`**
 
 **Description:** Lists the input data sources required by the Data Product.
 
@@ -692,7 +496,18 @@ inputs: # mandatory
     ref: dataset:icebase:customer_relationship_management:product
 ```
 
-#### **`outputs`**
+<center>
+  <img src="/products/data_product/configurations/dp_input.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <figcaption><i>Data Product card showing an input on the Data Product Hub</i></figcaption>
+</center>
+
+<center>
+  <img src="/products/data_product/configurations/metis_input.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <figcaption><i>Data Product card showing the input datasets on the Metis</i></figcaption>
+</center>
+
+
+### **`outputs`**
 
 **Description:** Specifies the output data generated by the Data Product.
 
@@ -711,7 +526,17 @@ outputs: # optional
     ref: dataset:icebase:customer_relationship_management:cross_sell_recommendations
 ```
 
-#### **`ports`**
+<center>
+  <img src="/products/data_product/configurations/dp_output.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <figcaption><i>Data Product card showing an output on the Data Product Hub</i></figcaption>
+</center>
+
+<center>
+  <img src="/products/data_product/configurations/metis_output.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
+  <figcaption><i>Data Product card showing the output datasets on the Metis</i></figcaption>
+</center>
+
+### **`ports`**
 
 **Description:** Defines the ports for accessing the Data Product through various services.
 

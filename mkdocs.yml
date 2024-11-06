@@ -525,8 +525,7 @@ nav:
       - Create Data Product template using Cookiecutter: products/data_product/recipes/cookiecutter.md
       - Deploy Data Product using CI/CD pipeline: products/data_product/recipes/ci_cd.md
     - Examples:
-      - Financial Services Accelerator Data Product: products/data_product/templates/accelerator.md
-      - Sales 360 Data Product : products/data_product/templates/sales_360.md
+      - Product affinity Data Product: products/data_product/templates/product_affinity.md
     - Configurations: products/data_product/configurations.md   
     - Core Concepts: products/data_product/core_concepts.md
   - Glossary: glossary/index.md
