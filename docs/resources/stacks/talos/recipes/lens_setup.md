@@ -10,15 +10,15 @@ This document provides step-by-step instructions for setting up Data APIs on Len
 
 ## Prerequisites
 
-- Ensure Lens is deployed in DataOS. Refer to the [Lens documentation](/resources/talos/) for setup instructions.
+- Ensure Lens is deployed in DataOS. Refer to the [Lens documentation](/resources/lens/) for setup instructions.
 
 ## Steps
 
-### **Step 1: Initialize a Git Repository**
+### **Step 1: Initialize a Git repository**
 - Create a new project directory.
 - Initialize a Git repository within the directory.
 
-### **Step 2: Prepare the Configuration File**
+### **Step 2: Prepare the configuration file**
 - In the project directory, open a code editor (e.g., Visual Studio Code).
 - Create a file named `config.yaml` and add the following configuration:
 ```yaml
@@ -44,7 +44,7 @@ sources:
 ```
 - Adjust the values for `name`, `description`, `version`, `heimdallUrl`, `userGroups` and `lensName` to suit your environment. Refer to the [Talos config.yaml attribute documentation](/resources/stacks/talos/configurations/config/) for detailed descriptions.
 
-### **Step 3: Add SQL Query and Manifest Files**
+### **Step 3: Add SQL query and manifest files**
 
 - Inside the project directory, create a folder named `apis`.
 - Within the `apis` folder:
@@ -116,7 +116,7 @@ instance-secret:
 
 The process remains the same for other hosted code repository such as GitHub, and AWS Codecommit with slight variations in the `data` section of Instance Secret manifest file. For more details, refer to the following [link](/resources/instance_secret/#templates).
 
-### **Step 6: Define the Talos Service Manifest**
+### **Step 6: Define the Talos Service manifest**
 
 - In the project directory, create `service.yaml` to configure the Talos Service, specifying details like `servicePort`, `path`, and `resources`:
 
