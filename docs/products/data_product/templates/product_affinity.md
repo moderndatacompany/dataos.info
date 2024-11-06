@@ -511,7 +511,7 @@ lens:
 
     <summary>Product table manifest file</summary>
 
-  ```yaml title="product.yaml.yaml"
+  ```yaml title="product.yaml"
     
   tables:
     - name: product
@@ -1069,107 +1069,124 @@ dataos-ctl resource apply -f home/work/product_affinity/bundle.yaml
 
 After data modeling, the next step is to create and apply quality checks using [Soda Stack](/resources/stacks/soda/). This requires creating a manifest file for each dataset, as shown below.
 
-- **customer.yaml**
+<details>
+
+  <summary>Customer table manifest file</summary>
+
+```yaml title="customer.yaml"
+
+name: soda-customer-quality
+version: v1
+type: workflow
+tags:
+  - workflow
+  - soda-checks
+description: Applying quality checks for the customer data
+workspace: public
+workflow:
+  dag:
+    - name: soda-customer-quality
+      spec:
+        stack: soda+python:1.0
+        compute: runnable-default
+        resources:
+          requests:
+            cpu: 1000m
+            memory: 250Mi
+          limits:
+            cpu: 1000m
+            memory: 250Mi
+        logLevel: INFO # WARNING, ERROR, DEBUG
+        stackSpec:
+          inputs:
+            - dataset: dataos://icebase:customer_relationship_management/customer
+              options:
+                engine: minerva
+                clusterName: system
+              profile:
+                columns:
+                  - include *
+              checks:  
+                - schema:
+                    name: Data type of birth year should be integer
+                    fail:
+                      when wrong column type:
+                        birth_year: string
+                    attributes:
+                      category: Schema
+  
+                - missing_count(customer_id) = 0:
+                    name:  Customer Id should not be zero
+                    attributes:
+                      category: Completeness
+
+                - duplicate_count(customer_id) = 0:
+                    name:  Customer Id should not be duplicated
+                    attributes:
+                      category: Uniqueness
+```
+</details>
+
     
-    ```yaml
-    name: soda-customer-quality
-    version: v1
-    type: workflow
-    tags:
-      - workflow
-      - soda-checks
-    description: Applying quality checks for the customer data
-    workspace: public
-    workflow:
-      dag:
-        - name: soda-customer-quality
-          spec:
-            stack: soda+python:1.0
-            compute: runnable-default
-            resources:
-              requests:
-                cpu: 1000m
-                memory: 250Mi
-              limits:
-                cpu: 1000m
-                memory: 250Mi
-            logLevel: INFO # WARNING, ERROR, DEBUG
-            stackSpec:
-              inputs:
-                - dataset: dataos://icebase:customer_relationship_management/customer
-                  options:
-                    engine: minerva
-                    clusterName: system
-                  profile:
-                    columns:
-                      - include *
-                  checks:  
-                    - schema:
-                        name: Data type of birth year should be integer
-                        fail:
-                          when wrong column type:
-                            birth_year: string
-                        attributes:
-                          category: Schema
-     
-                    - missing_count(customer_id) = 0:
-                        name:  Customer Id should not be zero
-                        attributes:
-                          category: Completeness
+
     
-                    - duplicate_count(customer_id) = 0:
-                        name:  Customer Id should not be duplicated
-                        attributes:
-                          category: Uniqueness
+
+<details>
+
+  <summary>Product table manifest file</summary>
+
+```yaml title="product.yaml"
+
+name: soda-produtc-quality
+version: v1
+type: workflow
+tags:
+  - workflow
+  - soda-checks
+description: Applying quality checks for the produtc data
+workspace: public
+workflow:
+  dag:
+    - name: soda-product-quality-job
+      spec:
+        stack: soda+python:1.0
+        compute: runnable-default
+        resources:
+          requests:
+            cpu: 1000m
+            memory: 250Mi
+          limits:
+            cpu: 1000m
+            memory: 250Mi
+        logLevel: INFO # WARNING, ERROR, DEBUG
+        stackSpec:
+          inputs:
+            - dataset: dataos://icebase:customer_relationship_management/product              options:
+                engine: minerva
+                clusterName: system
+              profile:
+                columns:
+                  - include *
+              checks:  
+                - schema:
+                    name: Response should be in integer format
+                    fail:
+                      when wrong column type:
+                        response: string
+                    attributes:
+                      category: Schema
+```
+</details>
     
-    ```
-    
-- **product.yaml**
-    
-    ```yaml
-    name: soda-produtc-quality
-    version: v1
-    type: workflow
-    tags:
-      - workflow
-      - soda-checks
-    description: Applying quality checks for the produtc data
-    workspace: public
-    workflow:
-      dag:
-        - name: soda-product-quality-job
-          spec:
-            stack: soda+python:1.0
-            compute: runnable-default
-            resources:
-              requests:
-                cpu: 1000m
-                memory: 250Mi
-              limits:
-                cpu: 1000m
-                memory: 250Mi
-            logLevel: INFO # WARNING, ERROR, DEBUG
-            stackSpec:
-              inputs:
-                - dataset: dataos://icebase:customer_relationship_management/product              options:
-                    engine: minerva
-                    clusterName: system
-                  profile:
-                    columns:
-                      - include *
-                  checks:  
-                    - schema:
-                        name: Response should be in integer format
-                        fail:
-                          when wrong column type:
-                            response: string
-                        attributes:
-                          category: Schema
-    ```
-    
-- **purchase.yaml**
-    
-    ```yaml
+
+
+
+<details>
+
+  <summary>Purchase table manifest file</summary>
+
+```yaml title="purchase.yaml"
+
     name: soda-purchase-quality
     version: v1
     type: workflow
@@ -1214,7 +1231,8 @@ After data modeling, the next step is to create and apply quality checks using [
                             recency: string
                         attributes:
                           category: Schema
-    ```
+```
+</details>
     
 
 **Applying each manifest file using the following command:**
