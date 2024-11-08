@@ -31,12 +31,15 @@ After selecting a Data Product, navigate to the **BI Sync** option in the **Acce
 A connection window will open, prompting the entry of the necessary connection details. There are following two ways to pass the connection details:
 
 1. [Connection details for connecting using Tableau username and password](#connection-details-for-connecting-via-tableau-username-and-password)
-2. [Connection details for connecting using Tableau PAT](#using-personal-access-token)
+2. [Connection details for connecting using Tableau PAT](#connection-details-for-connecting-using-tableau-pat)
 
 
-#### Connection details for connecting via Tableau username and password
+#### Connection details for connecting using Tableau username and password
 
-- **Project Name**: Enter the Tableau project name. If Tableau project already don't exist, a new project with the given name will be created. Also, if project name not provided, the project name will default to the Data Product name, registering all data sources under this project. Although, providing a custom project name enhances organization within Tableau.
+- **Project Name**: Enter the Tableau project name. If a project with that name does not already exist, it will be created automatically. If you do not specify a name, the project will default to the name of the Data Product, which will register all associated data sources under that project.
+
+For optimal organization within Tableau, we recommend providing a custom project name it facilitates easier navigation of your data sources.
+
 - **Server Name**: The address of the Tableau server (e.g., `https://prod-apnortheast-a.online.tableau.com`).
 - **Site ID**: The site ID (e.g., `tableausuer@123`).
 - **Username**: The Tableau username.(e.g., `labs@tmdc.io`)
