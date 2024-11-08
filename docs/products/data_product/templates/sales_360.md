@@ -1,3 +1,9 @@
+---
+search:
+  exclude: true
+---
+
+
 
 # Sales 360 Data Product Example: StrideRight Shoes
 
