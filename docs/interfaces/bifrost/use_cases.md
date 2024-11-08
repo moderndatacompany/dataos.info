@@ -151,3 +151,103 @@ To delete a Use-Case:
 - Navigate to the Use-Case section within Bifrost.
 - Locate and select the specific use-case you wish to delete.
 - Scroll down to the options and choose "**Delete Use-Case.**"
+
+
+## List of Use-cases
+
+Here is the list of use-cases we currently support:
+
+| **Name** | **Category** | **Description** |
+| --- | --- | --- |
+| View Audience App | audience | View & browse through audience application. |
+| Manage Analytics Events | analytics | Manage Analytics Events |
+| Read Analytics Events | analytics | Read Analytics Events |
+| View Operations App | administration | Browse all resources(cluster/workflow/service/depots etc.) in operations application. |
+| Read Caretaker | application-platform | authorize user to read caretaker |
+| Read Cloud-Kernel Primitives | application-platform | read cloud-kernel primitives; dataplanes, nodes |
+| Read Collated Content Item | application-platform | read the collated content item. content items contain sensitive information. |
+| Read Collated Node | application-platform | read the collated historical information of a node |
+| Read Collated Pod | application-platform | read the collated historical information of a pod |
+| Read Core-Kernel Logs | application-platform | read core-kernel logs from pods |
+| Read Core-Kernel Primitives | application-platform | read core-kernel primitives; ingresses, services, workloads, pods |
+| Read Installed Products | application-platform | read products that are installed on this instance |
+| Read Page Events | application-platform | read page events that are installed |
+| Read Usage | application-platform | read pod and container usage resource details |
+| Peer and Exec Stream Service | application-platform | peer to a specific instance fqdn, then exec stream a pod |
+| Peer and Log Stream Service | application-platform | peer to a specific instance fqdn, then log stream a pod |
+| Peer and Stream Service | application-platform | peer to a specific instance fqdn, then tcp stream a target address |
+| Allow user for metis root access | governance | allow user for metis root access |
+| Authorize user for - read a dataset using themis | governance | authorize user for themis-read-dataset |
+| Authorize user to manage data policy | governance | Authorize user to manage data policy |
+| Authorize user to read data policy | governance | Authorize user to read data policy |
+| Manage Governance Primitives | governance | manage governance primitives like roles, providers, atoms, use-cases, grants, policies |
+| Manage Secrets | governance | Manage secrets in the heimdall vault |
+| Manage User Tags | governance | create, update, and delete user tags |
+| Manage User Tokens | governance | Manage users tokens |
+| Manage Users | governance | Manage users |
+| Minerva Cluster Access | governance | Fine grained access given to a user or a role on a specific cluster to query data using this cluster |
+| Read All Secrets From Heimdall | governance | read All secrets in the heimdall vault |
+| Read Governance Primitives | governance | read governance primitives like providers, atoms, use-cases, grants, policies |
+| Read Specific Secret | governance | read a specific secret in the heimdall vault |
+| Read User Tags | governance | read user tags |
+| Read Users | governance | Read users |
+| View Bifrost App | governance | View Bifrost App |
+| Download workbench file | query | Download files from workbench. |
+| View workbench App | query | View and query depots and sources through workbench application. |
+| Manage Lens | contract | manage lens and contracts |
+| Read Lens | contract | read lens and contracts |
+| View Lens App | lens | Browse and query lenses in lense application. |
+| Manage Lens2 Backend | lens | Manage Lens2 Backend |
+| Read Lens2 Backend | lens | Read Lens2 Backend' |
+| Save Lens Data | lens | Save lens data. |
+| Get Products Details From Poros | product-management | Get Products |
+| Manage Products in Poros | product-management | Get Products |
+| Manage Fastbase | data | Manage fastbase |
+| Manage All Dataset | data | Manage All Dataset |
+| Manage Specific Dataset | data | Manage Specific Dataset |
+| Read All Dataset | data | Read All Dataset |
+| Read Icebase | data | Read icebase |
+| Read Specific Dataset | data | Read Specific Dataset |
+| View dph app | data | View dph application. |
+| View Lens2 App | data | View & browse through lens2 application. |
+| Run Query Gateway | network-gateway | run a query through the gateway |
+| Manage Gateway | network-gateway | manage gateway entities |
+| Read Api Docs | knowledge | Read Api Docs |
+| Read Metis | knowledge | read metis entities |
+| Run Incremental Jobs | knowledge | access to run incremental jobs |
+| Manage Metis | knowledge | manage metis entities |
+| Admin Grafana App | observability | Gives persmission to create and edit graph in grafana |
+| View Grafana App | observability | It will give access to view the graphs of grafana |
+| Create Update and Delete Lakehouse in system layer workspaces | resource-management | Manage lakehouse in the system layer workspaces |
+| Create Update and Delete Lens in System layer Workspaces | resource-management | Manage lens in the System layer Workspaces |
+| Create Update and Delete Monitor Resources in user layer Workspaces | resource-management | Manage monitor in the user layer workspaces |
+| Create Update and Delete Pager Resources in System layer Workspaces | resource-management | Manage pager Resource in the system layer workspaces |
+| Create Update and Delete Pager Resources in user layer Workspaces | resource-management | Manage pager Resource in the user layer Workspaces |
+| Manage All Depot | resource-management | Give permission to create, delete, update all depot |
+| Manage Cluster in System Workspaces | resource-management | Manage cluster in the system layer workspaces |
+| Manage Cluster in User Workspaces | resource-management | Manage cluster in the user layer workspaces |
+| Manage Database in System Workspaces | resource-management | Manage database in the system layer workspaces |
+| Manage Database in User Workspaces | resource-management | Manage database in the user layer workspaces |
+| Manage Secret in System Workspaces | resource-management | Manage secret in the system layer workspaces |
+| Manage Service in System Workspaces | resource-management | Manage service in the system layer workspaces |
+| Manage Service in User Workspaces | resource-management | Manage service in the user layer workspaces |
+| Manage System Workspaces | resource-management | create, delete system layer workspaces |
+| Manage User Workspaces | resource-management | create, delete user layer workspaces |
+| Manage Workflow in System Workspaces | resource-management | Manage workflow in the system layer workspaces |
+| Manage Workflow in User Workspaces | resource-management | Manage workflow in the user layer workspaces |
+| Manage Worker in System Workspaces | resource-management | Manage worker in the system layer workspaces |
+| Manage Worker in User Workspaces | resource-management | Manage worker in the user layer workspaces |
+| Manage all instance-level resources of DataOS in System Layer | resource-management | create, delete, update of all instance-level resources of DataOS in system layer |
+| Manage All Instance-level Resources of DataOS in user layer | resource-management | create, delete, update of all Instance-level resources of DataOS in user layer |
+| Read All Resources in System Workspaces | resource-management | read all resources in the system layer workspaces |
+| Read All Resources in User Workspaces | resource-management | read all resources in the user layer workspaces |
+| Read Collated Resource | resource-management | read the collated historical information of a resource |
+| Read Instance Collated Resource | resource-management | read the collated historical information of an instance resource |
+| Read Schemas | resource-management | read schemas |
+| Read Stack related Secrets | resource-management | allows retrieval of a stack image pull secret |
+| Read Workspaces | resource-management | read workspaces |
+| Un-sanitize Resources | resource-management | un-sanitize resources during read operations, this makes secrets and sensitive fields visible |
+| Read Talos | Talos | Read Talos |
+| Manage Profile in Home App | profile | Manage Profile in Home App |
+| Manage User Tokens in Home App | profile | Create and delete user tokens in home app |
+| View home App | profile | View home app |
