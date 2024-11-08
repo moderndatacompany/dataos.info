@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Financial Services Accelerator Data Product
 
 Financial Services Accelerator is a Data Product designed to provide a unified and persistent set of identifiers and attributes that describe customers within the financial services domain. This Data Product aims to seamlessly connect customer data, product data, and transaction data across various organizational silos and business units. It is a master dataset continuously updated in real-time, ensuring accuracy and reliability. The steps required to develop this Data Product are given below. 
