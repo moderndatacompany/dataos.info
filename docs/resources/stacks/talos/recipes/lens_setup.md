@@ -1,3 +1,7 @@
+---
+title: Setting Up Data APIs on Lens with Talos
+---
+
 # Setting Up Data APIs on Lens with Talos
 
 This document provides step-by-step instructions for setting up Data APIs on Lens using Talos within DataOS. This document will enable users to:
@@ -21,32 +25,33 @@ This document provides step-by-step instructions for setting up Data APIs on Len
 ### **Step 2: Prepare the configuration file**
 - In the project directory, open a code editor (e.g., Visual Studio Code).
 - Create a file named `config.yaml` and add the following configuration:
-```yaml
-name: cross_sell_api # Replace the name with your API name
-description: A Data API on top of Lens using Talos. # API description
-version: 0.1.1 # API Version
-auth:
-  heimdallUrl: https://liberal-donkey.dataos.app/heimdall # Replace the Heimdall URL with your environments
-  userGroups: # User Groups
-    - name: datadev
-      description: Data dev group
-      includes:
-        - users:id:thor
-        - users:id:iamgroot
-    - name: default
-      description: Default group to include everyone
-      includes: "*"
-logLevel: 'DEBUG' # Log Level
-sources:
-  - name: lens # Source name
-    type: lens # Source Type
-    lensName: 'public:cross-sell-affinity' # Lens Name format '<workspace>:<lens-name>'
-```
+    ```yaml
+    name: cross_sell_api # Replace the name with your API name
+    description: A Data API on top of Lens using Talos. # API description
+    version: 0.1.1 # API Version
+    auth:
+      heimdallUrl: https://liberal-donkey.dataos.app/heimdall # Replace the Heimdall URL with your environments
+      userGroups: # User Groups
+        - name: datadev
+          description: Data dev group
+          includes:
+            - users:id:thor
+            - users:id:iamgroot
+        - name: default
+          description: Default group to include everyone
+          includes: "*"
+    logLevel: 'DEBUG' # Log Level
+    sources:
+      - name: lens # Source name
+        type: lens # Source Type
+        lensName: 'public:cross-sell-affinity' # Lens Name format '<workspace>:<lens-name>'
+    ```
 - Adjust the values for `name`, `description`, `version`, `heimdallUrl`, `userGroups` and `lensName` to suit your environment. Refer to the [Talos config.yaml attribute documentation](/resources/stacks/talos/configurations/config/) for detailed descriptions.
 
 ### **Step 3: Add SQL query and manifest files**
 
 - Inside the project directory, create a folder named `apis`.
+
 - Within the `apis` folder:
     - Create the `product_affinity.sql` containing the SQL query:
 
@@ -55,7 +60,7 @@ sources:
         SELECT affinity_score FROM product LIMIT 20
         ```
 
-    - Create a corresponding `sales.yaml` manifest file defining the API path:
+    - Create a corresponding `product_affinity.yaml` manifest file defining the API path:
 
           ```yaml
           # product_affinity.yaml
@@ -66,7 +71,45 @@ sources:
 
 - Each `.sql` file should have a matching `.yaml` manifest file to ensure correct API path mappings.
 
-### **Step 4: Push the code to the repository**
+### **Step 4: Caching the data (optional)**
+
+- To cache the data, add the cache attribute inside the `product_affinity.yaml` file as shown below.
+
+    ```yaml
+    urlPath: /affinity
+    description: This endpoint provides affinity scores. 
+    source: lens
+    cache:
+      - cacheTableName: 'affinity_cache'
+        sql: SELECT product_customer_id as customer_id,product_category FROM product
+        source: lens
+    ```
+
+- Similarly, update the `product_affinity.sql` file as shown in the example below.
+
+    ```sql
+    {% cache %}
+
+    with random_cat as(select customer_id,   CASE
+          WHEN random() < 0.2 THEN 'Wines'
+          WHEN random() < 0.4 THEN 'Meats'
+          WHEN random() < 0.6 THEN 'Fish'
+          WHEN random() < 0.8 THEN 'Sweet Products'
+          ELSE 'Fruits'
+        END AS product_category from affinity_cache) 
+      SELECT 
+        cp1.product_category AS category_1,
+        cp2.product_category AS category_2,
+        COUNT(DISTINCT cp1.customer_id)*4/10.0 AS product_affinity_score
+      FROM random_cat cp1
+        INNER JOIN random_cat cp2 
+      ON cp1.customer_id = cp2.customer_id AND cp1.product_category <> cp2.product_category 
+      group by 1,2
+    {% endcache %}
+    ```
+To know more about the caching in Talos, please [refer to this](/resources/stacks/talos/recipes/caching/).
+
+### **Step 5: Push the code to the repository**
 
 After following the above steps, push the code to the code repository. The repository structure will resemble the following:
 
@@ -78,7 +121,7 @@ project-directory/
 │   └── product_affinity.yaml
 ```
 
-### **Step 5: Configure Instance Secret**
+### **Step 6: Configure Instance Secret**
 
 !!!info
     For setups using a public code repository, this step can be skipped entirely. 
@@ -87,19 +130,19 @@ project-directory/
 
 - If you are using Bitbucket, to securely store Bitbucket credentials so that the Talos Service could securely access them, create an Instance Secret manifest file named `secret.yml` with the following content:
 
-```yaml
-name: bitbucket-r
-version: v1
-type: instance-secret
-description: "Bitbucket credentials"
-layer: user
-instance-secret:
-  type: key-value
-  acl: r
-  data:
-    GITSYNC_USERNAME: "iamgroot7340"  # Replace with actual Bitbucket username
-    GITSYNC_PASSWORD: "abcdefghijklmnopqrstuv"  # Replace with Bitbucket app password
-```
+    ```yaml
+    name: bitbucket-r
+    version: v1
+    type: instance-secret
+    description: "Bitbucket credentials"
+    layer: user
+    instance-secret:
+      type: key-value
+      acl: r
+      data:
+        GITSYNC_USERNAME: "iamgroot7340"  # Replace with actual Bitbucket username
+        GITSYNC_PASSWORD: "abcdefghijklmnopqrstuv"  # Replace with Bitbucket app password
+    ```
 
 - To generate an app password in Bitbucket:
     - Navigate to **Settings > Personal Bitbucket settings > App passwords**.
@@ -116,7 +159,7 @@ instance-secret:
 
 The process remains the same for other hosted code repository such as GitHub, and AWS Codecommit with slight variations in the `data` section of Instance Secret manifest file. For more details, refer to the following [link](/resources/instance_secret/#templates).
 
-### **Step 6: Define the Talos Service manifest**
+### **Step 7: Define the Talos Service manifest**
 
 - In the project directory, create `service.yaml` to configure the Talos Service, specifying details like `servicePort`, `path`, and `resources`:
 
@@ -166,7 +209,7 @@ The process remains the same for other hosted code repository such as GitHub, an
 - Refer to the [Talos Service configuration documentation](/resources/stacks/talos/configurations/service/) for attribute descriptions.
 
 
-### **Step 7: Deploy the Talos Service**
+### **Step 8: Deploy the Talos Service**
 
 - Run the following command to apply the `service.yaml` file:
 
