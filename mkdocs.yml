@@ -500,7 +500,7 @@ nav:
             - Retry a Job in Workflow: resources/workflow/how_to_guide/retry_jobs.md
       - Characteristics: resources/characteristics.md
       - Configuration: resources/manifest_attributes.md
-      - YAML files: resources/yaml_configuration.md
+      - YAML files: resources/yaml_best_practices.md
     - SDK: 
       - api_docs/index.md
       - DataOS Python SDK: api_docs/dataos_python_sdk.md

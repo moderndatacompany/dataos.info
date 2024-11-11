@@ -74,7 +74,7 @@ measures:
 ```
 
 
-### **Working with window function
+#### **Working with window function**
 
 To correctly aggregate a measure within a window, use the rolling_window parameter when defining the measure. This ensures that any filters applied to the measure are correctly placed in the WHERE clause, which is essential for accurate results. Without rolling_window, filters might go into the HAVING clause, leading to incorrect calculations.
 
