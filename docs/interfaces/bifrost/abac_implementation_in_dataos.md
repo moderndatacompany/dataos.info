@@ -29,7 +29,7 @@ A tag-namespace should be thought of as a container for tags. A specific glob pa
 
 ## Tags
 
-Tags serve as identifiers for different types of users, guiding the assignment of policies. These policies are then applied based on the tags associated with each user. Heimdall only recognizes tags categorized within a Tag-Namespace for access policies Based on a particular use case, the system administrator can create all the requisite policies against a tag or a set of tags and apply them. 
+Tags serve as identifiers for different types of users, guiding the assignment of policies. These policies are then applied based on the tags associated with each user. Heimdall only recognizes tags categorized within a Tag-Namespace for access policies Based on a particular Use-Case, the system administrator can create all the requisite policies against a tag or a set of tags and apply them. 
 
 For instance, if a particular user John Doe has the following two tags:
 

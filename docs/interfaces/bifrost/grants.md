@@ -1,6 +1,6 @@
 # Grants
 
-In the Grants section of  Bifrost, administrators can easily track which use cases are assigned to specific roles and users. This level of visibility allows for precise management of user permissions.
+In the Grants section of  Bifrost, administrators can easily track which Use-Cases are assigned to specific roles and users. This level of visibility allows for precise management of user permissions.
 
 To assign a particular use case to multiple roles, create a grant. When administrators create a grant, they define the access policies that govern user interactions with specific resources. Once a grant is created in the Grant section, it can be leveraged as a reusable template for similar access scenarios and employed repeatedly without recreating the entire configuration.
 

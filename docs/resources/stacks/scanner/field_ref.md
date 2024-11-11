@@ -348,7 +348,7 @@ sourceConfig:
 
 ```     
         
-> Filter patterns support Regex in `includes` and `excludes` expressions. Refer to [Filter Pattern Examples](/resources/stacks/scanner/creating_scanner_workflows/filter_pattern_examples)  page for the example scenarios.
+> Filter patterns support Regex in `includes` and `excludes` expressions. Refer to [Filter Pattern Examples](/resources/stacks/scanner/creating_scanner_workflows/filter_pattern_examples/)  page for the example scenarios.
 
 ### **`markDeletedTables`**
 **Description**: Set the Mark Deleted Tables property to true to flag tables as soft-deleted if they are not present anymore in the source system.<br>
