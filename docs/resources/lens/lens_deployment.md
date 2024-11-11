@@ -3,7 +3,7 @@
 !!! abstract "Quick Guide"
     To quickly get started with Lens deployment follow the [quick guide on deploying your Lens model](/quick_guides/deploy_data_model/) to walk through the process. This guide ensures a smooth and secure deployment, helping you get your Lens Resource up and running quickly.
 
-This document provides instructions for setting up Lens in the DataOS environment, importing an existing Lens project from a local machine using SSH, utilizing version control tools such as Bitbucket or Git for seamless CI/CD integration.
+This document provides instructions for setting up Lens in the DataOS environment, importing an existing Lens project from a local machine, utilizing version control tools such as Bitbucket or Git.
 
 ## Pre-requisites
 

@@ -108,67 +108,71 @@ hide:
 | bool_or | boolean | boolean | aggregate | 1 |  |  |
 
 ## c
-| Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
-| --- | --- | --- | --- | --- | --- | --- |
-| cardinality | bigint | array(e) | scalar | 1 | Returns the cardinality (length) of the array |  |
-| cardinality | bigint | hyperloglog | scalar | 1 | Compute the cardinality of a HyperLogLog instance |  |
-| cardinality | bigint | map(k,v) | scalar | 1 | Returns the cardinality (the number of key-value pairs) of the map |  |
-| cardinality | bigint | setdigest | scalar | 1 |  |  |
-| cbrt | double | double | scalar | 1 | Cube root |  |
-| ceil | bigint | bigint | scalar | 1 | Round up to nearest integer |  |
-| ceil | decimal(rp,0) | decimal(p,s) | scalar | 1 | Round up to nearest integer |  |
-| ceil | double | double | scalar | 1 | Round up to nearest integer |  |
-| ceil | integer | integer | scalar | 1 | Round up to nearest integer |  |
-| ceil | real | real | scalar | 1 | Round up to nearest integer |  |
-| ceil | smallint | smallint | scalar | 1 | Round up to nearest integer |  |
-| ceil | tinyint | tinyint | scalar | 1 | Round up to nearest integer |  |
-| ceiling | bigint | bigint | scalar | 1 | Round up to nearest integer |  |
-| ceiling | decimal(rp,0) | decimal(p,s) | scalar | 1 | Round up to nearest integer |  |
-| ceiling | double | double | scalar | 1 | Round up to nearest integer |  |
-| ceiling | integer | integer | scalar | 1 | Round up to nearest integer |  |
-| ceiling | real | real | scalar | 1 | Round up to nearest integer |  |
-| ceiling | smallint | smallint | scalar | 1 | Round up to nearest integer |  |
-| ceiling | tinyint | tinyint | scalar | 1 | Round up to nearest integer |  |
-| char2hexint | varchar | varchar | scalar | 1 | Returns the hexadecimal representation of the UTF-16BE encoding of the argument |  |
-| checksum | varbinary | T | aggregate | 1 | Checksum of the given values |  |
-| chr | varchar(1) | bigint | scalar | 1 | Convert Unicode code point to a string |  |
-| classify | bigint | map(bigint,double), classifier(bigint) | scalar | 1 |  |  |
-| classify | varchar | map(bigint,double), classifier(varchar) | scalar | 1 |  |  |
-| codepoint | integer | varchar(1) | scalar | 1 | Returns Unicode code point of a single character string |  |
-| color | color | double, color, color | scalar | 1 |  |  |
-| color | color | double, double, double, color, color | scalar | 1 |  |  |
-| color | color | varchar(x) | scalar | 1 |  |  |
-| combinations | array(array(t)) | array(t), integer | scalar | 1 | Return n-element subsets from array |  |
-| concat | array(E) | E, array(E) | scalar | 1 | Concatenates an element to an array |  |
-| concat | array(E) | array(E) | scalar | 1 | Concatenates given arrays |  |
-| concat | array(E) | array(E), E | scalar | 1 | Concatenates an array to an element |  |
-| concat | char(u) | char(x), char(y) | scalar | 1 | Concatenates given character strings |  |
-| concat | varbinary | varbinary | scalar | 1 | concatenates given varbinary values |  |
-| concat | varchar | varchar | scalar | 1 | Concatenates given strings |  |
-| concat_ws | varchar | varchar, array(varchar) | scalar | 1 |  |  |
-| concat_ws | varchar | varchar, varchar | scalar | 1 | Concatenates elements using separator |  |
-| contains | boolean | array(t), t | scalar | 1 | Determines whether given value exists in the array |  |
-| contains | boolean | varchar, ipaddress | scalar | 1 | Determines whether given IP address exists in the CIDR |  |
-| contains_sequence | boolean | array(t), array(t) | scalar | 1 | Determines whether an array contains a sequence, with the values in the exact order |  |
-| convex_hull_agg | geometry | geometry | aggregate | 1 | Returns a geometry that is the convex hull of all the geometries in the set. |  |
-| corr | double | double, double | aggregate | 1 |  |  |
-| corr | real | real, real | aggregate | 1 |  |  |
-| cos | double | double | scalar | 1 | Cosine |  |
-| cosh | double | double | scalar | 1 | Hyperbolic cosine |  |
-| cosine_similarity | double | map(varchar,double), map(varchar,double) | scalar | 1 | Cosine similarity between the given sparse vectors |  |
-| count | bigint |  | aggregate | 1 |  |  |
-| count | bigint | T | aggregate | 1 | Counts the non-null values |  |
-| count_if | bigint | boolean | aggregate | 1 |  |  |
-| covar_pop | double | double, double | aggregate | 1 |  |  |
-| covar_pop | real | real, real | aggregate | 1 |  |  |
-| covar_samp | double | double, double | aggregate | 1 |  |  |
-| covar_samp | real | real, real | aggregate | 1 |  |  |
-| crc32 | bigint | varbinary | scalar | 1 | Compute CRC-32 |  |
-| cume_dist | double |  | window | 1 |  |  |
-| current_date | date |  | scalar | 1 | Current date |  |
-| current_groups | array(varchar) |  | scalar | 1 | Current groups of current user |  |
-| current_timezone | varchar |  | scalar | 1 | Current time zone |  |
+
+| Function               | Return Type          | Argument Types                          | Function Type | Deterministic | Description                                                                  |
+|------------------------|----------------------|-----------------------------------------|----------------|----------------|------------------------------------------------------------------------------|
+| cardinality            | bigint               | array(e)                                | scalar         | 1              | Returns the cardinality (length) of the array                                 |
+| cardinality            | bigint               | hyperloglog                             | scalar         | 1              | Compute the cardinality of a HyperLogLog instance                             |
+| cardinality            | bigint               | map(k,v)                                | scalar         | 1              | Returns the cardinality (the number of key-value pairs) of the map            |
+| cardinality            | bigint               | setdigest                               | scalar         | 1              |                                                                              |
+| cbrt                   | double               | double                                  | scalar         | 1              | Cube root                                                                    |
+| ceil                   | bigint               | bigint                                  | scalar         | 1              | Round up to nearest integer                                                   |
+| ceil                   | decimal(rp,0)        | decimal(p,s)                            | scalar         | 1              | Round up to nearest integer                                                   |
+| ceil                   | double               | double                                  | scalar         | 1              | Round up to nearest integer                                                   |
+| ceil                   | integer              | integer                                 | scalar         | 1              | Round up to nearest integer                                                   |
+| ceil                   | real                 | real                                    | scalar         | 1              | Round up to nearest integer                                                   |
+| ceil                   | smallint             | smallint                                | scalar         | 1              | Round up to nearest integer                                                   |
+| ceil                   | tinyint              | tinyint                                 | scalar         | 1              | Round up to nearest integer                                                   |
+| ceiling                | bigint               | bigint                                  | scalar         | 1              | Round up to nearest integer                                                   |
+| ceiling                | decimal(rp,0)        | decimal(p,s)                            | scalar         | 1              | Round up to nearest integer                                                   |
+| ceiling                | double               | double                                  | scalar         | 1              | Round up to nearest integer                                                   |
+| ceiling                | integer              | integer                                 | scalar         | 1              | Round up to nearest integer                                                   |
+| ceiling                | real                 | real                                    | scalar         | 1              | Round up to nearest integer                                                   |
+| ceiling                | smallint             | smallint                                | scalar         | 1              | Round up to nearest integer                                                   |
+| ceiling                | tinyint              | tinyint                                 | scalar         | 1              | Round up to nearest integer                                                   |
+| char2hexint            | varchar              | varchar                                 | scalar         | 1              | Returns the hexadecimal representation of the UTF-16BE encoding of the argument |
+| checksum               | varbinary            | T                                       | aggregate      | 1              | Checksum of the given values                                                  |
+| chr                    | varchar(1)           | bigint                                  | scalar         | 1              | Convert Unicode code point to a string                                         |
+| classify               | bigint               | map(bigint,double), classifier(bigint)  | scalar         | 1              |                                                                              |
+| classify               | varchar              | map(bigint,double), classifier(varchar) | scalar         | 1              |                                                                              |
+| codepoint              | integer              | varchar(1)                              | scalar         | 1              | Returns Unicode code point of a single character string                       |
+| color                  | color                | double, color, color                    | scalar         | 1              |                                                                              |
+| color                  | color                | double, double, double, color, color    | scalar         | 1              |                                                                              |
+| color                  | color                | varchar(x)                              | scalar         | 1              |                                                                              |
+| combinations           | array(array(t))      | array(t), integer                       | scalar         | 1              | Return n-element subsets from array                                           |
+| concat                 | array(E)             | E, array(E)                             | scalar         | 1              | Concatenates an element to an array                                           |
+| concat                 | array(E)             | array(E)                                | scalar         | 1              | Concatenates given arrays                                                     |
+| concat                 | array(E)             | array(E), E                             | scalar         | 1              | Concatenates an array to an element                                           |
+| concat                 | char(u)              | char(x), char(y)                        | scalar         | 1              | Concatenates given character strings                                          |
+| concat                 | varbinary            | varbinary                               | scalar         | 1              | Concatenates given varbinary values                                           |
+| concat                 | varchar              | varchar                                 | scalar         | 1              | Concatenates given strings                                                     |
+| concat_ws              | varchar              | varchar, array(varchar)                 | scalar         | 1              |                                                                              |
+| concat_ws              | varchar              | varchar, varchar                        | scalar         | 1              | Concatenates elements using separator                                         |
+| contains               | boolean              | array(t), t                             | scalar         | 1              | Determines whether given value exists in the array                            |
+| contains               | boolean              | varchar, ipaddress                      | scalar         | 1              | Determines whether given IP address exists in the CIDR                        |
+| contains_sequence      | boolean              | array(t), array(t)                      | scalar         | 1              | Determines whether an array contains a sequence, with the values in the exact order |
+| convex_hull_agg        | geometry             | geometry                                | aggregate      | 1              | Returns a geometry that is the convex hull of all the geometries in the set   |
+| corr                   | double               | double, double                          | aggregate      | 1              |                                                                              |
+| corr                   | real                 | real, real                              | aggregate      | 1              |                                                                              |
+| cos                    | double               | double                                  | scalar         | 1              | Cosine                                                                       |
+| cosh                   | double               | double                                  | scalar         | 1              | Hyperbolic cosine                                                             |
+| cosine_similarity      | double               | map(varchar,double), map(varchar,double) | scalar         | 1              | Cosine similarity between the given sparse vectors                           |
+| count                  | bigint               |                                         | aggregate      | 1              |                                                                              |
+| count                  | bigint               | T                                       | aggregate      | 1              | Counts the non-null values                                                    |
+| count_if               | bigint               | boolean                                  | aggregate      | 1              |                                                                              |
+| covar_pop              | double               | double, double                          | aggregate      | 1              |                                                                              |
+| covar_pop              | real                 | real, real                              | aggregate      | 1              |                                                                              |
+| covar_samp             | double               | double, double                          | aggregate      | 1              |                                                                              |
+| covar_samp             | real                 | real, real                              | aggregate      | 1              |                                                                              |
+| crc32                  | bigint               | varbinary                               | scalar         | 1              | Compute CRC-32                                                                |
+| cume_dist              | double               |                                         | window         | 1              |                                                                              |
+| current_date           | date                 |                                         | scalar         | 1              | Current date                                                                  |
+| current_groups         | array(varchar)       |                                         | scalar         | 1              | Current groups of current user                                                 |
+| current_timezone       | varchar              |                                         | scalar         | 1              | Current time zone                                                             |
+
+
 ## d
+
 | Function | Return Type | Argument Types | Function Type | Deterministic | Description | Date |
 | --- | --- | --- | --- | --- | --- | --- |
 | date | date | timestamp(p) | scalar | 1 |  |  |

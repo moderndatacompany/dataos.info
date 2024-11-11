@@ -1,6 +1,6 @@
 # Icebase
 
-Icebase is a depot type within DataOS that leverages the power of the Apache Iceberg table format. It integrates with popular object storage systems like [Azure Data Lake](/resources/depot/depot_config_templates/azure_abfss/), [Google Cloud Storage](/resources/depot/depot_config_templates/google_gcs), and [Amazon S3](/resources/depot/depot_config_templates/amazon_s3/), following the Lakehouse pattern. By utilizing Iceberg, Icebase provides a robust OLAP (Online Analytical Processing) system that simplifies data lake access, making it as user-friendly and accessible as traditional data warehouses.
+Icebase is a depot type within DataOS that leverages the power of the Apache Iceberg table format. It integrates with popular object storage systems like [Azure Data Lake](/resources/depot/depot_config_templates/azure_abfss/), [Google Cloud Storage](/resources/depot/depot_config_templates/google_gcs/), and [Amazon S3](/resources/depot/depot_config_templates/amazon_s3/), following the Lakehouse pattern. By utilizing Iceberg, Icebase provides a robust OLAP (Online Analytical Processing) system that simplifies data lake access, making it as user-friendly and accessible as traditional data warehouses.
 
 
 >Apache Iceberg, also known as Iceberg, is an open-source and high-performance table format specifically designed for storing large-scale analytic datasets, including petabyte-scale data. As a valuable addition to the big data ecosystem, Iceberg is optimized to handle vast amounts of data efficiently.

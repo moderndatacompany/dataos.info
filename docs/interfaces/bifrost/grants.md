@@ -1,8 +1,8 @@
 # Grants
 
-In the Grants section of  Bifrost, administrators can easily track which use cases are assigned to specific roles and users. This level of visibility allows for precise management of user permissions.
+In the Grants section of  Bifrost, administrators can easily track which Use-Cases are assigned to specific roles and users. This level of visibility allows for precise management of user permissions.
 
-To assign a particular use case to multiple roles, create a grant. When administrators create a grant, they define the access policies that govern user interactions with specific resources. Once a grant is created in the Grant section, it can be leveraged as a reusable template for similar access scenarios and employed repeatedly without recreating the entire configuration.
+To assign a particular use case to multiple roles, create a Grant. When administrators create a Grant, they define the access policies that govern user interactions with specific resources. Once a Grant is created in the Grant section, it can be leveraged as a reusable template for similar access scenarios and employed repeatedly without recreating the entire configuration.
 
 <aside class="callout">
 🗣 As part of our best practice, we suggest a cautious approach by setting up restricted access for all users, granting only minimum access privileges. This approach encourages granting access only when necessary and allows flexibility to gradually expand access as visibility and understanding of usage patterns increase over time.
@@ -10,9 +10,9 @@ To assign a particular use case to multiple roles, create a grant. When administ
 
 ## How to create Policy Use-Case Grant?
 
-While it's straightforward to assign use-cases to individual users via the Bifrost UI, there's a rare chance that you may be required to assign a particular use-case to multiple users across different teams, you can accomplish this by following the steps outlined below.
+While it's straightforward to assign Use-Cases to users via the Bifrost UI, there's a rare chance that you may be required to assign a particular use-case to multiple users across different teams, you can accomplish this by following the steps outlined below.
 
-- On Bifrost UI, goto the **Grants** tab, where you can view all the grants (use-cases assigned to users). Click on **Create Grant.**
+- On Bifrost UI, goto the **Grants** tab, where you can view all the Grants (Use-Cases assigned to users). Click on **Create Grant.**
 
 <center>
   <div style="text-align: center;">
@@ -21,14 +21,14 @@ While it's straightforward to assign use-cases to individual users via the Bifro
   </div>
 </center>
 
--  In the create grant dialog box, define a grant manifest. A sample grant manifest is given
+-  In the create grant dialog box, define a grant manifest. A sample Grant manifest is given
 
 ```yaml
 policy_use_case_id: manage-pulsar
   subjects:
   - roles:id:operator
 ```
--  Click on the **Create** button to apply the use-case grant.
+-  Click on the **Create** button to apply the Use-Case Grant.
 
 Following are some more sample grant manifest
 
@@ -60,7 +60,7 @@ subjects:
 
 **Sample manifest 4**
 
-**Description:** This use-case allows subjects to create and update governance primitives; roles, providers, atoms, use-cases, grants, policies.
+**Description:** This use-case allows subjects to create and update governance primitives; roles, providers, atoms, Use-Cases, grants, policies.
 
 ```yaml
 policy_use_case_id: create-update-governance-primitives
@@ -71,7 +71,7 @@ subjects:
 
 **Sample manifest 5**
 
-**Description:** This use-case allows subjects to delete governance-primitives; roles, providers, atoms, use-cases, grants, policies.
+**Description:** This use-case allows subjects to delete governance-primitives; roles, providers, atoms, Use-Cases, grants, policies.
 
 
 ```yaml
