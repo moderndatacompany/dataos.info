@@ -30,11 +30,11 @@ An application or a person can serve as a User. Consider the User as the [subjec
 
 ## Use-cases
 
-A use case in Bifrost defines actions a user wants to perform on a specific [object](/interfaces/bifrost/abac_implementation_in_dataos/#object). Get the details of how use cases are created and assigned [here](/interfaces/bifrost/use_cases/).
+A Use-Case in Bifrost defines actions a user wants to perform on a specific [object](/interfaces/bifrost/abac_implementation_in_dataos/#object). Get the details of how Use-Cases are created and assigned [here](/interfaces/bifrost/use_cases/).
 
 ## Grant
 
-A grant is how the Subject-Predicate-Object is linked, and an access policy is generated. This is where you assign use-cases to users, giving them access to specific parts of the system or data. Get the details of Grants [here](/interfaces/bifrost/grants/).
+A Grant is how the Subject-Predicate-Object is linked, and an access policy is generated. This is where you assign use-cases to users, giving them access to specific parts of the system or data. Get the details of Grants [here](/interfaces/bifrost/grants/).
 
 ## Role
 
@@ -78,7 +78,7 @@ During the installation of DataOS, system tags, and default policies are generat
 However, these are not the exclusive tags created during the installation process.
 
 <aside class="callout">
-🗣 New tag namespaces can be created to mimic the organizational structure for a particular use case.
+🗣 New tag namespaces can be created to mimic the organizational structure for a particular Use-Case.
 </aside>
 
 #### **How to create a Tag-Namespace?**

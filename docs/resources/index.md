@@ -225,7 +225,7 @@ To parse environment variables in the configuration file of a Resource, follow t
     ```
     
 
-Here are more features and syntaxes to be kept in mind while writing a [YAML configuration files](/resources/yaml_configuration/).
+Here are more features and syntaxes to be kept in mind while writing a [YAML configuration files](/resources/yaml_best_practices/).
 
 DataOS Resources are the lynchpin around which the unified architecture of the data operating system has been built. They make the system modular, composable, interoperable and flexible, while abstracting away the system complexities, allowing users to focus on the outcomes, such as data products, rather than the arduous process of how those outcomes are achieved.
 
