@@ -3,17 +3,17 @@ A role in DataOS is a tag present in the tag-namespace called roles, with the gl
 
 For instance, when a new project is initiated within your company, involving specific users or team members assigned to work on it, and these individuals or roles require access to the same level of access for project completion, an alternative approach can be adopted. Instead of granting individual access to each person involved in the project, a new role can be created. Subsequently, users can be added to this role. For instance, if the project pertains to the marketing team, the role tag could be defined as `roles:id:marketing:userid`, indicating that this role is specific to the marketing project, granting access to the dataset within a particular database.
 
-The Roles page provides a comprehensive view of system default roles alongside custom roles tailored for specific use cases or as per organizational needs.
+The Roles page provides a comprehensive view of system default roles alongside custom roles tailored for specific Use-Cases or as per organizational needs.
 
 <aside class="callout">
-🗣 The roles added during the installation process become permanent or default, and cannot be removed thereafter.
+🗣️ The roles added during the installation process become permanent or default, and cannot be removed thereafter.
 </aside>
 
 ### Role Detail panel
 
 - **Info:** Displays the Name, ID, Tag, and description of each role.
 - **Users:** Presents a list of users associated with selected role.
-- **Grants:** This displays the list of use cases possessed by each role. In the subject action, we can observe other roles that were previously assigned a use case in addition to this role.
+- **Grants:** This displays the list of Use-Cases possessed by each role. In the subject action, we can observe other roles that were previously assigned a Use-Case in addition to this role.
 - **Change Log:** Records all historical changes made to a role, such as ID, subject ID, object ID, action taken ("what"), creation timestamp, object type, and additional details.
 
 ## How to create a Role?
@@ -39,10 +39,10 @@ To create a custom role follow the below steps:
   </div>
 </center>
 
-- A success message will be displayed confirming that the use case has been successfully added to the role.
+- A success message will be displayed confirming that the Use-Case has been successfully added to the role.
 
 !!! Note
-    After creating a new role, no users will be displayed initially. You must manually add users by navigating back to the Users tab and repeating the steps to [assign a role to a specific user](/interface/bifrost/users/#how-to-add-a-user-to-a-role).
+    After creating a new role, no users will be displayed initially. You must manually add users by navigating back to the Users tab and repeating the steps to [assign a role to a specific user](/interfaces/bifrost/users/#how-to-add-a-user-to-a-role).
 
 
 ## How to delete a role?
