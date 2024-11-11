@@ -92,6 +92,9 @@ In this learning track, you will get a comprehensive introduction to data produc
     | 8       | Integrating Data Products with BI Tools and Applications | Unlock the power of data products by connecting them to BI tools. Learn to use the data product in Jupyter Notebooks for AI/ML development, query data via Postgres or GraphQL, and easily integrate with your apps using flexible APIs. | <ul><li><strong>Integration with BI tools:</strong> Connect Data Products with BI tools for visualization and reporting.</li><li><strong>Integration with AI and ML:</strong> Explore strategies for integrating Data Products with AI and machine learning frameworks.</li><li><strong>Integration with Postgres:</strong> Learn methods for connecting Data Products with Postgres databases.</li><li><strong>Integration with GraphQL:</strong> Use GraphQL for querying.</li><li><strong>Integration with Data API:</strong> Use Data APIs for programmatic access to Data Products.</li></ul> |
 
 
+
+Click [here](/learn/dp_consumer_learn_track/) to start learning.
+
 ### **Data Product Developer**
 
 **Data Product Developers** play a key role in creating, managing, and evolving data products within DataOS. They are responsible for building the data infrastructure that powers everything from analytics to business intelligence, making sure data flows smoothly through pipelines and stays accurate and accessible for users. Plus, they ensure those data products deliver reliable insights while staying in line with governance policies.
