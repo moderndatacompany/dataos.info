@@ -11,6 +11,12 @@
 - **Defining Metrics**: Views allow you to define metrics by including measures and dimensions from different tables. This enables you to create denormalized tables that comprehensively address a specific use case. For instance, you can have a view that gives you all the dimensions and measures to understand ‘Weekly Spirits Sales in Florida’.
 - **Providing a Simplified Interface**: By exposing only the relevant measures and dimensions, views make it easier for users to understand and query the data, reducing the complexity of the underlying data model.
 
+## Types of Views
+
+- **Entity-first:** An Entity-first view is structured around an entity or object of interest, such as a customer, product, or transaction. In this type of view, the focus is on describing the attributes and relationships of a single entity. The goal is to allow users to explore and analyze the characteristics and behaviors of these entities without necessarily being focused on metrics or aggregated measures. For example, an Entity-first view could include detailed customer profiles, product details, or individual transaction records.
+
+- **Metric-first:** A Metric is a type of logical view that, by default, provides a logical view of a logical table, containing only one measure and a time dimension. This means that a Metric represents a specific data point or calculation over time, focusing on one key measure, such as average spent per category, retention rate, or churn rate, and linking it to a time period for analysis.
+
 ## How to define Views?
 
 When designing how your semantic layer will be exposed and consumed by end users, you can follow either an **entity-first approach** or a **metrics-first approach.** In both cases, views will be used to build the semantic layer interface.

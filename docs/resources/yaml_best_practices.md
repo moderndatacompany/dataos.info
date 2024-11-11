@@ -1,4 +1,4 @@
-# YAML configuration files
+# Best Practices for YAML
 
 This page has information on features of YAML which will be useful while writing the configuration files for [DataOS Resources](/resources/)
 

@@ -34,7 +34,7 @@ A Use-Case in Bifrost defines actions a user wants to perform on a specific [obj
 
 ## Grant
 
-A grant is how the Subject-Predicate-Object is linked, and an access policy is generated. This is where you assign use-cases to users, giving them access to specific parts of the system or data. Get the details of Grants [here](/interfaces/bifrost/grants/).
+A Grant is how the Subject-Predicate-Object is linked, and an access policy is generated. This is where you assign use-cases to users, giving them access to specific parts of the system or data. Get the details of Grants [here](/interfaces/bifrost/grants/).
 
 ## Role
 
