@@ -167,7 +167,7 @@ nav:
       - Bifrost: 
         - interfaces/bifrost/index.md
         - ABAC Implementation: interfaces/bifrost/abac_implementation_in_dataos.md
-        - User: interfaces/bifrost/users.md
+        - Users: interfaces/bifrost/users.md
         - Use-cases: interfaces/bifrost/use_cases.md
         - Grant: interfaces/bifrost/grants.md
         - Role: interfaces/bifrost/roles.md

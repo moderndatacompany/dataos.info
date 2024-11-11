@@ -6,7 +6,7 @@ search:
 
 # Toolbox Stack
 
-Data Toolbox Stack or simply Toolbox Stack provides vital functionality in case of metadata updation in [Icebase](/resources/depot#icebase) depots. When data is ingested into Icebase using [Flare](/resources/stacks/flare/) Stack, the metadata of ingested datasets needs to be registered with [Metis](/interfaces/metis/) before it can be queried using [Workbench](/interfaces/workbench/). The Data Toolbox allows `set_version` action on the data stored in the DataOS internal storage Icebase, which uses the Iceberg format. The [Metis](/interfaces/metis/) keeps track of the Iceberg table by storing a reference to the latest metadata file. Using the Data Toolbox `set_version` action, you can update the metadata version to the latest or any specific version.
+Data Toolbox Stack or simply Toolbox Stack provides vital functionality in case of metadata updation in [Icebase](/resources/depot/#icebase) depots. When data is ingested into Icebase using [Flare](/resources/stacks/flare/) Stack, the metadata of ingested datasets needs to be registered with [Metis](/interfaces/metis/) before it can be queried using [Workbench](/interfaces/workbench/). The Data Toolbox allows `set_version` action on the data stored in the DataOS internal storage Icebase, which uses the Iceberg format. The [Metis](/interfaces/metis/) keeps track of the Iceberg table by storing a reference to the latest metadata file. Using the Data Toolbox `set_version` action, you can update the metadata version to the latest or any specific version.
 
 ## Syntax of Data Toolbox YAML Configuration
 
@@ -55,11 +55,11 @@ The table below elucidates the various attributes within the Toolbox-specific Se
 
 | Field | Data Type | Default Value | Possible Value | Requirement |
 | --- | --- | --- | --- | --- |
-| [`stackSpec`](/resources/stacks/data_toolbox/data_toolbox_grammar#toolbox) | object | none | none | mandatory |
-| [`dataset`](/resources/stacks/data_toolbox/data_toolbox_grammar#dataset) | string | none | any valid iceberg dataset udl address | mandatory |
-| [`action`](/resources/stacks/data_toolbox/data_toolbox_grammar#action) | object | none | none | mandatory |
-| [`name`](/resources/stacks/data_toolbox/data_toolbox_grammar#name) | string | none | set_version | mandatory |
-| [`value`](/resources/stacks/data_toolbox/data_toolbox_grammar#value) | string | none | latest or any other specific metadata version | mandatory |
+| [`stackSpec`](/resources/stacks/data_toolbox/data_toolbox_grammar/#toolbox) | object | none | none | mandatory |
+| [`dataset`](/resources/stacks/data_toolbox/data_toolbox_grammar/#dataset) | string | none | any valid iceberg dataset udl address | mandatory |
+| [`action`](/resources/stacks/data_toolbox/data_toolbox_grammar/#action) | object | none | none | mandatory |
+| [`name`](/resources/stacks/data_toolbox/data_toolbox_grammar/#name) | string | none | set_version | mandatory |
+| [`value`](/resources/stacks/data_toolbox/data_toolbox_grammar/#value) | string | none | latest or any other specific metadata version | mandatory |
 
 
 To know more about Toolbox-specfic Section YAML Configuration fields, click [here.](/resources/stacks/data_toolbox/data_toolbox_grammar/)

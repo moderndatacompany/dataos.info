@@ -622,7 +622,7 @@ cluster:
 
 **Description:** Secret Resource referred by the depot/catalog.
 
-**Additional Information**: For more information, refer to the link [Secrets](/resources/secret#referencing-a-secret-in-a-depot)
+**Additional Information**: For more information, refer to the link [Secrets](/resources/secret/#referencing-a-secret-in-a-depot)
 
 ---
 

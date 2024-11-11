@@ -144,7 +144,7 @@ Further, jobs can be retried automatically by pre-defining the retry strategy wi
 
 #### **Stack-specific Section**
 
-The Stack-specific Section allows you to specify the desired [Stack](/resources/stacks) for executing your Workflow. Depending on your requirements, you can choose from the following supported Stacks:
+The Stack-specific Section allows you to specify the desired [Stack](/resources/stacks/) for executing your Workflow. Depending on your requirements, you can choose from the following supported Stacks:
 
 - [Flare Stack](/resources/stacks/flare/): The Flare stack provides advanced capabilities for data processing and analysis.
 
@@ -229,7 +229,7 @@ Once you have constructed the Workflow YAML file, it's time to [apply](/resource
     dataos-ctl apply -f home/iamgroot/resource/workflow.yml -w curriculum
     ```
 
-Workspace specification is optional. In case its not provided the Workflow runs in the `curriculum` Workspace. To create a new Workspace, execute the [`workspace create`](/interfaces/cli/command_reference/#workspace) command as shown below and then execute the above command:
+Workspace specification is optional. In case its not provided the Workflow runs in the `curriculum` Workspace. To create a new Workspace, execute the [`workspace create`](/interfaces/cli/command_reference/#/workspace) command as shown below and then execute the above command:
 
 === "Command"
 
@@ -247,7 +247,7 @@ Workspace specification is optional. In case its not provided the Workflow runs 
 
 ### **Get Status of the Workflow**
 
-To retrieve information about the Workflow, use the [`get`](/interfaces/cli/command_reference/#get) command in the [CLI](/interfaces/cli). The command below lists workflows created by the user in a specific Workspace. 
+To retrieve information about the Workflow, use the [`get`](/interfaces/cli/command_reference/#get) command in the [CLI](/interfaces/cli/). The command below lists workflows created by the user in a specific Workspace. 
 
 === "Command"
 
@@ -362,7 +362,7 @@ INFO[0001] 🔍 workflow...complete
 
 ### **Get Runtime Refresh**
 
-To refresh or see updates on the Workflow progress, add the `-r` flag to the [`get runtime`](/interfaces/cli/command_reference#runtime) command:
+To refresh or see updates on the Workflow progress, add the `-r` flag to the [`get runtime`](/interfaces/cli/command_reference/#runtime) command:
 
 ```shell
 dataos-ctl -i get runtime " cnt-product-demo-01 | v1 | workflow | curriculum" -r
@@ -512,7 +512,7 @@ Before re-running the Workflow, delete the previous version from the environment
 
 === "Method 2"
 
-    Specify the path of the YAML file and use the [`delete`](/interfaces/cli/command_reference#delete) command.
+    Specify the path of the YAML file and use the [`delete`](/interfaces/cli/command_reference/#delete) command.
 
     ===  "Command"
 
@@ -533,7 +533,7 @@ Before re-running the Workflow, delete the previous version from the environment
 
 === "Method 3" 
 
-    Specify the Workspace, Resource-type, and Workflow name in the [`delete`](/interfaces/cli/command_reference#delete) command.
+    Specify the Workspace, Resource-type, and Workflow name in the [`delete`](/interfaces/cli/command_reference/#delete) command.
 
     === "Command"
 
@@ -554,7 +554,7 @@ Before re-running the Workflow, delete the previous version from the environment
 
 ### **Rerun the Workflow**
 
-Run the Workflow again using the [`apply`](/interfaces/cli/command_reference#apply) command. 
+Run the Workflow again using the [`apply`](/interfaces/cli/command_reference/#apply) command. 
 
 Command:
 
@@ -585,7 +585,7 @@ INFO[0002] 🔍 workflow...complete
 
         NAME        | VERSION |   TYPE   | WORKSPACE |    TITLE     |   OWNER
 --------------------|---------|----------|-----------|--------------|-------------
-  cnt-city-demo-999 | v1 | workflow | curriculum    | Connect City | mebinmoncy
+  cnt-city-demo-999 | v1 | workflow | curriculum    | Connect City | iamgroot
 
   JOB NAME |   STACK    |        JOB TITLE        | JOB DEPENDENCIES
 -----------|------------|-------------------------|-------------------
