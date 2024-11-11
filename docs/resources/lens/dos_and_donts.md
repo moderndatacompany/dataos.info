@@ -73,6 +73,29 @@ measures:
       - sql: year({quarter}) = 1
 ```
 
+
+#### **Working with window function**
+
+To correctly aggregate a measure within a window, use the rolling_window parameter when defining the measure. This ensures that any filters applied to the measure are correctly placed in the WHERE clause, which is essential for accurate results. Without rolling_window, filters might go into the HAVING clause, leading to incorrect calculations.
+
+```yaml
+# This calculates the rolling sum of inventory sold for the previous 30 days
+  - name: monthly_inventory_sold
+    description: sum of total inventory sold up to the start of the month
+    type: sum
+    sql: "{TABLE.inventory}"
+    rolling_window:
+      trailing: 1 month
+      offset: start
+```
+
+**Use Cases for Rolling Windows:**
+
+- Running totals or moving averages.
+- Ranking and percentile analysis (e.g., top performers).
+- Time series analysis (e.g., tracking month-over-month growth).
+- Comparative analysis (e.g., previous/next values or differences between rows).
+
 ### **Views**
 
 1. **Purpose:** Create views to provide a limited part of your data model to the consumer layer, such as any BI tool. Views are useful for defining metrics, managing governance and data access, and controlling ambiguous join paths.

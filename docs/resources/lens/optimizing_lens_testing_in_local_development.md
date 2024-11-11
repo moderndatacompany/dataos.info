@@ -219,46 +219,15 @@ postgres=> \dt #listing all the tables in the connected database.
 ```
 **Here are some more commands for reference**
 
-- Show the schema and details of a specific table.
+| Command Description                              | Command Example                 |
+|--------------------------------------------------|---------------------------------|
+| Show the schema and details of a specific table  | `\d [table_name]` E.g.,`\d customers`|
+| List all databases in the PostgreSQL server      | `\l`                            |
+| List all roles and users                         | `\du`                           |
+| List all schemas in the database                 | `\dn`                           |
+| List all views in the connected database         | `\dv`                           |
+| Exit the PostgreSQL prompt                       | `\q`                            |
 
-    ```bash 
-    \d [table_name]
-    ```
-    for example:
-
-    ```bash
-    \d customers
-    ```
-
-- List all databases in the PostgreSQL server.
-
-    ```bash
-    \l
-    ```
-
-- List all roles and users.
-
-    ```bash
-    \du
-    ```
-
-- List all schemas in the database.
-
-    ```bash
-    \dn
-    ```
-
-- List all views in the connected database.
-
-    ```bash
-    \dv
-    ```
-
-- Exit the PostgreSQL prompt.
-
-    ```bash
-    \q
-    ```
 
 ### **Exploring Lens via REST API**
 

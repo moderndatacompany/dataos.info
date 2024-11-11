@@ -102,7 +102,7 @@ lens:
 
 ## Resource meta section
 
-Click [here](/resources/manifest_attributes) to know Resource meta section configuration.
+Click [here](/resources/manifest_attributes/) to know Resource meta section configuration.
 
 ## Lens-specific section
 

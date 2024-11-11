@@ -13,7 +13,7 @@ When adding a new application to the DataOS environment, it's imperative to regi
 - **Description**: Brief description of the PEP provider's purpose.
 - **Authorization Atoms:** Define authorization atoms for the PEP provider. Authorization atoms consist of predicates and objects, specifying the conditions under which access is granted or denied.
 
-For instance, when inspecting the authorization atoms for Lens, you may discover permissions or actions like saving charts, running queries, viewing tabs, saving results, and accessing attribute information. Similarly, other providers like Metis contain distinct authorization atoms for various actions such as deleting, writing, and reading, as well as route access, such as admin user privileges. Once authorization atoms are created for the PEP provider, they can be combined in various combinations to address different use cases.
+For instance, when inspecting the authorization atoms for Lens, you may discover permissions or actions like saving charts, running queries, viewing tabs, saving results, and accessing attribute information. Similarly, other providers like Metis contain distinct authorization atoms for various actions such as deleting, writing, and reading, as well as route access, such as admin user privileges. Once authorization atoms are created for the PEP provider, they can be combined in various combinations to address different Use-Cases.
 
 Utilize the provided sample manifest template as a reference for registering the new PEP provider:
 
