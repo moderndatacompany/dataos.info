@@ -166,7 +166,4 @@ This section provides step-by-step guides to assist you in effectively configuri
 
 This section provides practical, real-world scenarios demonstrating how to effectively develop a Data Product. Below are some examples to help you to understand the Data Product:
 
-- [Financial Services Accelerator Data Product](/products/data_product/templates/accelerator/)
-
-- [Sales 360 Data Product](/products/data_product/templates/sales_360/)
-
+- [Product affinity Data Product](/products/data_product/templates/product_affinity/)

@@ -58,6 +58,6 @@ Refer to the following table, which is used for classification and attribute tag
 | Contact Information | • email<br>• Contact Number | 
 |Government-issued IDs | • US EIN Number<br>• US SSN Number<br>• Indian Aadhar Number<br>• Indian UPI Id<br>• Indian PAN Number |
 | Driving License Information | • US Driving License<br>• Indian Driving License | 
-| Demographic Information | • Religion<br>• Sexuality<br>• Race |
+| Demographic Information | • Religion<br>• Sex/Gender<br>• Race |
 
 
