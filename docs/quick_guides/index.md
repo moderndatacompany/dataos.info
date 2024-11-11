@@ -1,3 +1,13 @@
+---
+search:
+  boost: 2
+tags:
+  - Quick Guide
+  - Quick Start Guide
+hide:
+  - tags
+---
+
 # Quick Start Guides
 
 These quick start guides will help you navigate through the essentials of DataOS. We recommend leveraging these resources to strengthen your understanding.
@@ -113,3 +123,5 @@ Learn to deploy your data applications—whether developed with Streamlit, Djang
 -   [Deploying Data Application Using Container Stack](/quick_guides/deploy_data_app_using_container_stack/)
 
 -   [Securing Deployed Data Application](/quick_guides/secure_deployed_app/)
+
+</div>

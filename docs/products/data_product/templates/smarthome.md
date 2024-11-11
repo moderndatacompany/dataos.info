@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Smart Home Data Product
 The Smarthome Data Product (smarthome-dp) is designed to monitor air quality index and environmental conditions continuously by capturing data from embedded smart IoT devices. These devices measure various parameters such as temperature, carbon dioxide, light, and smoke levels to ensure optimal living conditions over time.
 
