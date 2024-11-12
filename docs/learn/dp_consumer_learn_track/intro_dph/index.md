@@ -52,7 +52,7 @@ Click any Perspective to be redirected to the Data Product’s Explore page. Fur
 
 ![intro_explore.png](/learn/dp_consumer_learn_track/intro_dph/intro_explore.png)
 
-## Next Step
+## Next step
 
 To discover the Data Products of interest that can solve your use case, refer to the next module:
 

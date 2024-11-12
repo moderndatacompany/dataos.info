@@ -1,4 +1,4 @@
-# Exploration of semantic model modified
+# Exploration of semantic model
 
 In this topic, we’ll walk you through navigating and understanding the associated semantic model of Data Product to explore data in Studio to understand how it aligns with business goals.
 
@@ -89,15 +89,16 @@ You begin your exploration on the **Studio** tab, which opens by default when yo
 
 ![studio_tab.png](/learn/dp_consumer_learn_track/explore_sm/studio_tab.png)
 
-> **Checking Cluster health: 
-1.** Hover over the cluster name, like **Minerva**, to view its details.
-2. Toggle the **Watch** button to monitor cluster health. Close the window and you see a green dot indicating good health.  The Cluster is ready and you can proceed with further exploration, assured that any queries you run will perform smoothly.
-> 
-> 
-> ![source_health.png](/learn/dp_consumer_learn_track/explore_sm/source_health.png)
-> 
+### **Checking Cluster health**
 
-### Creating a query
+1. Hover over the cluster name, like **Minerva**, to view its details.
+
+2. Toggle the **Watch** button to monitor cluster health. Close the window and you see a green dot indicating good health.  The Cluster is ready and you can proceed with further exploration, assured that any queries you run will perform smoothly.
+
+    ![source_health.png](/learn/dp_consumer_learn_track/explore_sm/source_health.png)
+
+
+### **Creating a query**
 
 **Scenario: Total Customers by Country**
 
@@ -111,12 +112,12 @@ Let's analyze the total number of customers per country:
 
 ![query_result.png](/learn/dp_consumer_learn_track/explore_sm/query_result.png)
 
-1. Sort your data to see the top 5 countries by total customers. Use **Order By** with `total_customers` in descending order and limit the results to 5.
+3. Sort your data to see the top 5 countries by total customers. Use **Order By** with `total_customers` in descending order and limit the results to 
     
     ![order_by.png](/learn/dp_consumer_learn_track/explore_sm/order_by.png)
     
 
-### Saving your analysis as a Perspective
+### **Saving your analysis as a Perspective**
 
 Save your query result for later by clicking **Save Perspective**. Give it a meaningful name, like "Country-wise Total Customers," and save it.
 
@@ -128,14 +129,14 @@ Once you save any Perspective, it will be accessible to everyone and can be acce
 
 ![access_perspective.png](/learn/dp_consumer_learn_track/explore_sm/dc0927ba-08ae-4376-8e91-3e9743a31943.png)
 
-<aside>
+<aside class="callout">
 🗣
 
 If you want to download the findings, click on the download ⬇️ icon next to the **Save Perspective** button to download it. It will ask you to download the table in various formats, such as csv, json, etc., as shown in the image below.
 
 </aside>
 
-### Visualizing Data with Charts
+### **Visualizing Data with Charts**
 
 Transform your table into a visual story:
 
@@ -166,19 +167,18 @@ Transform your table into a visual story:
     ![axes.png](/learn/dp_consumer_learn_track/explore_sm/axes.png)
     
 
-1. Now, your graph is ready! After the chart is prepared, you will send this insight to one of your stakeholders. To do this, you click on the **Export** button, save it in JPEG format, and click the **Download** button.
+5. Now, your graph is ready! After the chart is prepared, you will send this insight to one of your stakeholders. To do this, you click on the **Export** button, save it in JPEG format, and click the **Download** button.
     
     ![export_chart.png](/learn/dp_consumer_learn_track/explore_sm/export_chart.png)
     
-    > You can **hide specific fields** by clicking the **eye icon** next to the field name. This is useful for focusing on only the most relevant data points in your analysis.
-    > 
-    > 
-    > When you're ready to start a new analysis, quickly **reset all selected dimensions and measures** by clicking the **Clear** button. This action will instantly deselect your previous choices, as shown in the image below:
-    > 
-    > ![members.png](/learn/dp_consumer_learn_track/explore_sm/members.png)
-    > 
+    You can **hide specific fields** by clicking the **eye icon** next to the field name. This is useful for focusing on only the most relevant data points in your analysis.
+    
+6. When you're ready to start a new analysis, quickly **reset all selected dimensions and measures** by clicking the **Clear** button. This action will instantly deselect your previous choices, as shown in the image below:
+ 
+    ![members.png](/learn/dp_consumer_learn_track/explore_sm/members.png)
+ 
 
-### Filtering Data
+### **Filtering Data**
 
 After clearing all members, you move to analyze some data with filters on and want to get insight on the following scenario:
 
@@ -192,7 +192,7 @@ For this analysis, you choose the following members:
 
 ![filter.png](/learn/dp_consumer_learn_track/explore_sm/filter.png)
 
-<aside>
+<aside class="callout">
 🗣
 
 You need to first select the dimension you want to apply the filter to—only then will it appear as an option in the **Filter** section. You can also **hide the selected dimension** if you don't want it to be part of the query result.
@@ -203,7 +203,7 @@ Here is the query result.
 
 ![query_results.png](/learn/dp_consumer_learn_track/explore_sm/query_results.png)
 
-### Using History for Quick Access
+### **Using History for Quick Access**
 
 If you want to revisit a query you ran an hour ago but didn't save as a Perspective, simply click on the **History** icon and select the relevant timestamp to return to that query.
 
@@ -213,7 +213,7 @@ To save a query from two days ago for future reference, click on the query, give
 
 [history.gif](/learn/dp_consumer_learn_track/explore_sm/history.gif)
 
-### Creating a Pivot Table
+### **Creating a Pivot Table**
 
 **Example:** Analyze the relationship between **customer segments**, **countries**, and **total spending**:
 
@@ -339,7 +339,7 @@ For those who prefer using the Postgres database, follow these steps:
     
     ```
     
-    ### Additional PostgreSQL Commands for Reference
+    ### **Additional PostgreSQL Commands for Reference**
     
     Here are some useful commands to interact with the Postgres database:
     
@@ -351,3 +351,11 @@ For those who prefer using the Postgres database, follow these steps:
     | `\dn` | List all schemas in the database. | `\dn` |
     | `\dv` | List all views in the connected database. | `\dv` |
     | `\q` | Exit the PostgreSQL prompt. | `\q` |
+
+
+
+## Next step
+
+Learn more about the quality checks applied to ensure that Data Product meets data standards.
+
+[Knowing the Quality of Data Products](/learn/dp_consumer_learn_track/dp_quality/)

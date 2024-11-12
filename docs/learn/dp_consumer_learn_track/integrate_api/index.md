@@ -49,9 +49,8 @@ Follow these steps to access and consume the Data Product using the REST API:
     ![api_get.png](/learn/dp_consumer_learn_track/integrate_api/api_get.png)
     
 
-<aside>
-🗣
+## Next step
 
-If you want to train machine learning models on your Data Product, proceed to the [next section](https://www.notion.so/Integration-with-AI-ML-WIP-129c5c1d4876804db259d4e61b332695?pvs=21).
+If you want to train machine learning models on your Data Product, proceed to the next module:
 
-</aside>
+[Integration with AI/ML](/learn/dp_consumer_learn_track/integrate_aiml/)

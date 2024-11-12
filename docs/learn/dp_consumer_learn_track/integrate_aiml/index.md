@@ -103,9 +103,7 @@ Follow these steps to start training your machine learning model using the Data 
     Once you’ve executed the code, the DataFrame generated will be ready for machine learning model building.
     
 
-<aside>
-🗣
+## Next step
 
-If you may want to consume the Data Product via Postgres, then follow the [next section](https://www.notion.so/Integration-with-Postgres-WIP-129c5c1d4876807e8fdafeb70d1a4320?pvs=21).
-
-</aside>
+You may want to consume the Data Product via Postgres, then follow the next module:
+[Integration with Postgres](/learn/dp_consumer_learn_track/integrate_postgres/)
