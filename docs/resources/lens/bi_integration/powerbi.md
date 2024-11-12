@@ -17,8 +17,8 @@
 **Curl command**
 
 ```bash
-curl --location --request POST '<URL>' --header 'apikey: <apikey>' --output <FILE_NAME>.zip
-
+curl --location --request POST '${URL}' --header 'apikey: ${APIKEY}' --output ${FILE_NAME}.zip
+```
 
 **Paramters:**
 
