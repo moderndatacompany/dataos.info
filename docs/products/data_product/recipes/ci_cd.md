@@ -1,8 +1,14 @@
+---
+title: CI/CD Pipeline
+search:
+  boost: 4
+---
+
 # How to deploy Data Product through a CI/CD pipeline?
 
 This documentation outlines the process for deploying a Data Product through a [CI/CD pipeline](https://support.atlassian.com/bitbucket-cloud/docs/get-started-with-bitbucket-pipelines/). A **CI/CD pipeline** (Continuous Integration/Continuous Deployment) automates building, testing, and deploying code using Bitbucket, significantly reducing the time required for Data Product deployment.
 
-The following steps are provided to guide you through the successful setup of a CI/CD Data Product pipeline:
+The following steps are provided to guide through the successful setup of a CI/CD Data Product pipeline.
 
 - Creating a repository in Bitbucket.
 - Cloning the repository.
@@ -13,64 +19,96 @@ The following steps are provided to guide you through the successful setup of a 
 
 ## Pre-requisites
 
-To begin building the pipeline, ensure the following prerequisites are met:
+To begin building the pipeline, ensure the following pre-requisites are met:
 
-- Have a blueprint of the [Data Product](/products/data_product/) you plan to build. For example, if creating a Data Product like `sales-360`, identify the necessary [Resources](/resources/), such as [Depot](/resources/depot/), [Services](/resources/service/), [Workflows](/resources/workflow/), or [Lens](/resources/lens/).
+- When building a Data Product, a blueprint should be readily available to guide the process. This blueprint, developed during the design phase. For example, if creating a Data Product like `sales-360`, identify the necessary [Resources](/resources/), such as [Depot](/resources/depot/), [Services](/resources/service/), [Workflows](/resources/workflow/), or [Lens](/resources/lens/).
+
 - Obtain the following DataOS environment variables:
-    - **License organization ID, license key, Docker username & password, and DataOS prime API key:** These details can be provided by the DataOS operator or admin.
-    - **API key**: Generate the DataOS API key in the DataOS profile section.
-    - **Client secret, access token, and refresh token:** These can be obtained from the `.dataos` folder within your home directory.
+
+    a. **License organization ID, license key, Docker username & password, and DataOS prime API key:** These details can be provided by the DataOS operator or admin.
+
+    b. **API key**: Generate the DataOS API key in the DataOS profile section.
+
+    c. **Client secret, access token, and refresh token:** These can be obtained from the `.dataos` folder within the home/root directory.
         
-        ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/c2f9e419-742a-4d3b-96f7-8cd08ea09bd0/image.png)
+    <center>
+    <img src="/products/data_product/recipes/ci_cd/dataos.png" alt="Talos" style="width:20rem; border: 1px solid black;" />
+    <figcaption><i>.dataos</i></figcaption>
+    </center>
+
+
+
         
 
 ## Steps to build a CI/CD pipeline
 
-To begin building the CI/CD pipeline for your Data Product, follow these steps.
+To begin building the CI/CD pipeline for the Data Product, follow these steps.
 
 ### **1. Create a Bit bucket repository**
 
-Begin by creating a Bitbucket repository. Follow these steps to set up the repository in Bitbucket:
-
 a. Log in to your Bitbucket account.
-    
-    ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/e6a7eb17-81ec-4e20-afa0-8fc55a15edfe/image.png)
-    
- Select the “Create” drop-down menu and choose “Repository.”
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/c4fb625f-2c60-49e3-888a-df5b1c892484/image.png)
+<center>
+<img src="/products/data_product/recipes/ci_cd/open_bb.png" alt="Talos" style="width:40rem; border: 1px solid black;" />
+<figcaption><i>Bitbucket home page</i></figcaption>
+</center>
 
-b. Enter the project, repository name, and default branch name. If you want the repository to be public, uncheck the private repository option. Then, click on “Create repository.”
     
-    ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/00e98480-a634-46d4-87a9-01ed7f41fc6d/image.png)
+b. Select the “Create” drop-down menu and choose “Repository.”
+
+<center>
+<img src="/products/data_product/recipes/ci_cd/create_repo_drop.png" alt="Talos" style="width:40rem; border: 1px solid black;" />
+<figcaption><i>Create drop down</i></figcaption>
+</center>
+
+c. Enter the project, repository name, and default branch name. If you want the repository to be public, uncheck the private repository option. Then, click on “Create repository.”
+
+<center>
+<img src="/products/data_product/recipes/ci_cd/create_repo.png" alt="Talos" style="width:40rem; border: 1px solid black;" />
+<figcaption><i>Create repository</i></figcaption>
+</center>
+
+d. The repository creation can be verified by navigating to the Repositories tab.
     
-c. The repository creation can be verified by navigating to the Repositories tab.
-    
-    ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/5f1d672a-c9b0-45bb-b0b4-f3dbcbad4847/image.png)
-    
+<center>
+<img src="/products/data_product/recipes/ci_cd/verify_repo.png" alt="Talos" style="width:40rem; border: 1px solid black;" />
+<figcaption><i>Verify repository</i></figcaption>
+</center>
+
+
 
 ### **2. Clone the repository**
 
-Follow these steps to clone the repository:
 
 a. Open the repository and click the "Clone" button.
-    
-    ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/54d9d35d-0a16-4e3e-945f-9ca731ec4ede/image.png)
-    
+
+<center>
+<img src="/products/data_product/recipes/ci_cd/copy_url.png" alt="Talos" style="width:40rem; border: 1px solid black;" />
+<figcaption><i>Copy URL</i></figcaption>
+</center>
+
+   
 b. Copy the provided URL, paste it into your terminal, and press Enter.
-    
-    ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/abb11048-b9bb-4fc8-b4e8-3a0df87746a2/image.png)
-    
+
+<center>
+<img src="/products/data_product/recipes/ci_cd/git_command.png" alt="Talos" style="width:40rem; border: 1px solid black;" />
+<figcaption><i>Git clone command</i></figcaption>
+</center>
+
 c. The repository can now be found in your home/root directory.
     
-    ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/c3e51f0b-3c1f-477d-bbfb-607ec0a35527/f731e9a8-07f0-4e1f-bfd6-9297331d54a4.png)
-    
+<center>
+<img src="/products/data_product/recipes/ci_cd/cloned.png" alt="Talos" style="width:20rem; border: 1px solid black;" />
+<figcaption><i>Root directory</i></figcaption>
+</center>
+
 
 ### **3. Start building the Data Product**
 
-This section presents a use case where data is being ingested from BigQuery to start building the Data Product. To accomplish this, various Resources must be created, including a Depot, Scanner, Flare job, Bundle, and Data Product deployment manifest. Additional Resources such as Policies, Talos, or Lenses can be created as required.
+Follow the below steps to start building the Data Product by creating the manifest files of the all the Resources and Data Product. For example, to create a Data Product, an [Instance Secret](/resources/instance_secret/) manifest file is first created to store the connection details of the data source (e.g., BigQuery). A [Depot](/resources/depot/) manifest file for the data connection is then created, followed by the creation of a [Depot Scanner](/resources/stacks/scanner/) manifest file. For data transformation, [Flare job](/resources/stacks/flare/) manifest files are created. A [Bundle](/resources/bundle/) manifest file is created to include that refers to the Instance Secret, Depot, Depot Scanner, and Flare job manifest files, along with their dependencies. Finally, a Data Product manifest file is created to apply the Data Product, and a Data Product Scanner is created to deploy the Data Product to the [Data Product Hub](/interfaces/data_product_hub/). 
 
-a. Open the cloned repository using your preferred code editor (e.g., VS Code).
+a. Open the cloned repository using the preferred code editor (e.g., VS Code).
+
 b. Inside the repository, create a folder named `data_product` to store all related Resources.
     
 ```sql
@@ -78,7 +116,7 @@ data-product-deployment
 └── data_product
 ```
     
-c. Inside the `data_product` folder, create a subfolder called `depot`. Following the depot documentation, create a depot manifest file.
+c. Inside the `data_product` folder, create a subfolder called `depot`. Following the depot documentation, create a Depot manifest file.
     
 ```sql
 data-product-deployment
@@ -97,7 +135,7 @@ data-product-deployment
         └── key.json
 ```
     
-e. Inside the `data_product` folder, create a subfolder named `scanner`. Place the scanner manifest file for both the Depot and the Data Product inside this folder.
+e. Inside the `data_product` folder, create a subfolder named `scanner`. Place the Scanner manifest file for both the Depot and the Data Product inside this folder.
     
 ```sql
 data-product-deployment
@@ -110,7 +148,7 @@ data-product-deployment
         └── dp_scanner.yaml
 ```
     
-f. Create another folder named `transformation` inside the `data_product` folder. Inside this folder, add the flare job manifest files for data transformation.
+f. Create another folder named `transformation` inside the `data_product` folder. Inside this folder, add the Flare job manifest files for data transformation.
     
 ```sql
 data-product-deployment
@@ -127,7 +165,7 @@ data-product-deployment
         
 ```
     
-g. Create a folder named `bundle` inside the `data_product` folder. Inside the `bundle` folder, create a bundle manifest file that will apply the Depot, Depot Scanner, and Flare jobs at once.
+g. Create a folder named `bundle` inside the `data_product` folder. Inside the `bundle` folder, create a Bundle manifest file that will apply the Depot, Depot Scanner, and Flare jobs at once.
     
 ```sql
 data-product-deployment
@@ -166,13 +204,14 @@ data-product-deployment
 ```
     
 i. Double-check all files and paths to ensure everything is provided correctly and that the manifest files are properly set up.
-j. You can add configuration files of more resources as per your requirements, such as Policy, Talos, Lens, etc.
+
+j. Add configuration files of more Resources as per your requirements, such as Policy, Talos, Lens, etc.
 
 ### **4. Configure the pipeline**
 
 Configure the pipeline by following the below steps. 
 
-a. In your home directory, locate the `.dataos` folder containing the current DataOS context configuration files. Copy the folder and paste it into your cloned repository.
+a. In the home directory, locate the `.dataos` folder containing the current DataOS context configuration files. Copy the folder and paste it into your cloned repository.
     
 ```sql
 data-product-deployment
@@ -233,15 +272,43 @@ pipelines:
             - docker
 ```
     
+Below table describes each attributes of the `bitbucket-pipelines.yaml` in brief.
+
+| **Attribute**                       | **Description**                                                                                                                                  |
+|-------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| **image**                           | Specifies the Docker image to use for the pipeline, in this case, `atlassian/default-image:2`.                                                       |
+| **pipelines**                       | The root element defining the pipeline configuration for specific branches.                                                                       |
+| **pipelines.branches**              | Defines the branches section for pipeline configuration.                                                                                         |
+| **pipelines.branches.main**         | Specifies the pipeline configuration for the default branch (`main`).                                                                            |
+| **pipelines.branches.main.step**    | The steps to be executed in the pipeline for the `main` branch.                                                                                   |
+| **pipelines.branches.main.step.name** | The name of the step (e.g., "Setup DataOS Data Product Self Service CLI Runtime").                                                                  |
+| **pipelines.branches.main.step.script** | A list of commands to be executed sequentially in this step (e.g., logging into Docker, pulling an image, running a Docker container).              |
+| **pipelines.branches.main.step.script[0]** | The first script command to run: logs into Docker with provided credentials.                                                                      |
+| **pipelines.branches.main.step.script[1]** | The second script command to pull the Docker image `rubiklabs/dataos-ctl:2.26.17-dev`.                                                              |
+| **pipelines.branches.main.step.script[2]** | The third script command to run the Docker container with the pulled image.                                                                        |
+| **pipelines.branches.main.step.services** | The list of services required for this step, in this case, `docker`.                                                                              |
+| **pipelines.branches.main.step.services[0]** | The service being used in the step, which is Docker in this case.                                                                                  |
+| **pipelines.branches.main.step.caches** | The caching options to be used in the pipeline, specifically for Docker cache to optimize build times.                                              |
+| **pipelines.branches.main.step.caches[0]** | The cache type being used, which is `docker` in this case.                                                                                        |
+| **DOCKER_ENV_VARS**                 | A string containing environment variables used for the Docker run command (e.g., setting configuration directories, API keys).                    |
+| **docker run**                      | Runs the Docker container with the specified environment variables and volume mounts.                                                             |
+| **docker run --rm**                 | Runs the Docker container in a way that removes it after execution, preventing leftover containers from consuming resources.                       |
+| **docker run -v**                   | Mounts the specified volumes, such as the `$BITBUCKET_CLONE_DIR/.dataos` and `$BITBUCKET_CLONE_DIR` directories, to the container.                |
+| **apply -f**                        | The command used to apply resources from a specified file (e.g., `bundle.yaml`, `data_product_spec.yml`, or `scanner.yml`).                        |
+| **services**                        | Specifies the services required for this step (e.g., Docker).                                                                                     |
+| **caches**                          | Specifies caching options (e.g., Docker cache) to be used to optimize subsequent pipeline runs.                                                   |
+| **sleep**                           | An optional command to pause the execution for a specified period (currently commented out).                                                      |
+
+
 c. Update the username and current DataOS context in the placeholders within the script section of the `bitbucket-pipelines.yaml` file.
-d. To apply the bundle manifest file, copy the relative path of your bundle manifest file and paste it into the script, as shown below. The path should be pasted after the `/jobsfolder` in this case.
+d. To apply the Bundle manifest file, copy the relative path of the Bundle manifest file and paste it into the script, as shown below. The path should be pasted after the `/jobsfolder` in this case.
     
 ```yaml
 # Apply the Bundle Resource
 - docker run --rm -i -v $BITBUCKET_CLONE_DIR/.dataos:/dataos -v $BITBUCKET_CLONE_DIR:/jobsfolder $DOCKER_ENV_VARS rubiklabs/dataos-ctl:2.26.17-dev delete -f /jobsfolder/data-product-deployment/ci_cd/slb/bundle/bundle.yaml
 ```
     
-e. Repeat the previous step to apply the Data Product deployment and Scanner manifest files. For these specific manifest files, the commands need to be updated accordingly. In this case, to apply the Data Product manifest file, the command should be provided along with the path, as shown: `product apply -f /jobsfolder/data-product-deployment/ci_cd/data_product_spec.yml`. Similarly, if you want to delete any existing resource, use the delete command along with the corresponding path.
+e. Repeat the previous step to apply the Data Product deployment and Scanner manifest files. For these specific manifest files, the commands need to be updated accordingly. In this case, to apply the Data Product manifest file, the command should be provided along with the path, as shown: `product apply -f /jobsfolder/data-product-deployment/ci_cd/data_product_spec.yml`. Similarly, to delete any existing resource, use the delete command along with the corresponding path.
     
 ```yaml
 # Apply the Data Product manifest file
@@ -256,25 +323,41 @@ f. In the same manner, any number of Resources, Stacks, and Products can be appl
 
 ### **5. Add repository variables**
 
-Add repository variables to the Bit Bucket repository settings by following the below steps.
+Add repository variables to the Bitbucket repository settings by following the below steps.
 
-a. In the Bit Bucket repository, navigate to the repository settings.
+<aside class="callout">
+🗣 Ensure that the provided repository variables are same as referred in the Bitbucket pipeline manifest file.
+</aside>
+
+
+a. In the Bitbucket repository, navigate to the repository settings.
     
-    ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/785c5826-2f1a-48a0-9ae8-bb2cb5efe8a2/d6d84d91-f397-4ce7-a92d-9b4a28ae1a4c.png)
+<center>
+<img src="/products/data_product/recipes/ci_cd/navigate_repo_settings.png" alt="Talos" style="width:50rem; border: 1px solid black;" />
+<figcaption><i>Repository settings</i></figcaption>
+</center>
     
 b. In the repository variables section, add key-value pairs mentioned in the pre-requisites section as shown below.
     
-    <aside class="callout">
-    🗣 Before adding the repository variables make sure the pipeline deployment is enabled in your Bit Bucket settings.
+<aside class="callout">
+🗣 Before adding the repository variables make sure the pipeline deployment is enabled in your Bitbucket settings.
+
+<center>
+<img src="/products/data_product/recipes/ci_cd/repo_settings.png" alt="Talos" style="width:20rem; border: 1px solid black;" />
+<figcaption><i>Repository settings</i></figcaption>
+</center>
+
+<center>
+<img src="/products/data_product/recipes/ci_cd/enable_pipeline.png" alt="Talos" style="width:20rem; border: 1px solid black;" />
+<figcaption><i>Repository settings</i></figcaption>
+</center>
+
+</aside>
     
-    ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/49e26105-570c-4a25-a3bc-d6f839dbf60f/image.png)
-    
-    ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/d0e67218-99bc-462d-af55-b385b42899a5/image.png)
-    
-    </aside>
-    
-    ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/d27de6c1-85be-4190-b81a-dfd73bdfa0b3/image.png)
-    
+<center>
+<img src="/products/data_product/recipes/ci_cd/repo_variables.png" alt="Talos" style="width:50rem; border: 1px solid black;" />
+<figcaption><i>Repository variables</i></figcaption>
+</center>
 
 ### **6. Deploy the pipeline**
 
@@ -292,20 +375,25 @@ b. Commit the changes.
 git commit -m "Added data product configurations"
 ```
     
-c. Push the changes by providing the Bit Bucket app password which can be created from the personal Bit Bucket settings.
+c. Push the changes by providing the Bitbucket app password which can be created from the personal Bitbucket settings.
 
 ```bash
 git push 
 ```
     
-d. By pushing the changes in Bit Bucket, the pipeline will automatically start deploying which can be tracked on the commits section of the Bit Bucket repository.
+d. By pushing the changes in Bitbucket, the pipeline will automatically start deploying which can be tracked on the commits section of the Bitbucket repository.
     
-    ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/6c776bdb-0289-4a29-895a-103748878612/image.png)
-    
+<center>
+<img src="/products/data_product/recipes/ci_cd/commit.png" alt="Talos" style="width:50rem; border: 1px solid black;" />
+<figcaption><i>Bitbucket commits</i></figcaption>
+</center>
+   
 e. A successful deployment will look like the following.
     
-    ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/c5c0053e-d74f-47de-a39e-24d5cf9bc95d/image.png)
-    
+<center>
+<img src="/products/data_product/recipes/ci_cd/successful.png" alt="Talos" style="width:50rem; border: 1px solid black;" />
+<figcaption><i>Bitbucket deployment</i></figcaption>
+</center>
 
 ### **8. Error fixes**
 
@@ -313,13 +401,22 @@ Fix the possible errors by following the below steps.
 
 - If an error occurs during the push due to a large file size, navigate to your repository settings. Under **Repository details**, open the **Advanced** dropdown, uncheck the “Block pushes with files over 100MB” option, and save the changes. Then push again.
     
-    ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/8838fdce-1941-4f67-94e5-c137295a5eda/image.png)
+    <center>
+    <img src="/products/data_product/recipes/ci_cd/error_shell.png" alt="Talos" style="width:50rem; border: 1px solid black;" />
+    <figcaption><i>Terminal</i></figcaption>
+    </center>
+
+    <center>
+    <img src="/products/data_product/recipes/ci_cd/file_limit.png" alt="Talos" style="width:50rem; border: 1px solid black;" />
+    <figcaption><i>Bitbucket settings</i></figcaption>
+    </center>
     
-    ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/266a517b-512f-4093-89d1-ef2985753d7e/image.png)
-    
+
 - If the pipeline fails for any reason, you can make the necessary updates, push the changes, and rerun the failed part of the pipeline based on the error received.
     
-    ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/ff04fb87-b596-435a-8376-c3af7c120f34/image.png)
-    
+    <center>
+    <img src="/products/data_product/recipes/ci_cd/rerun.png" alt="Talos" style="width:50rem; border: 1px solid black;" />
+    <figcaption><i>Bitbucket deployment</i></figcaption>
+    </center>
 
 Good to go!
