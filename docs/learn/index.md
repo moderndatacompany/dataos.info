@@ -77,7 +77,7 @@ In this learning track, you will get a comprehensive introduction to data produc
 <img src="/learn/lt_dp_consumer.jpg" alt="infographics">
 </div>
 
-**:fontawesome-solid-hourglass-start: [Click here to start learning.](/learn/dp_consumer_learn_track/)**
+**:simple-bookstack: [Start learning: Access the modules here.](/learn/dp_consumer_learn_track/)**
 
 ### **Data Product Developer**
 
