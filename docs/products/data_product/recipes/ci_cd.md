@@ -205,13 +205,12 @@ data-product-deployment
     
 i. Double-check all files and paths to ensure everything is provided correctly and that the manifest files are properly set up.
 
-j. Add configuration files of more Resources as per your requirements, such as Policy, Talos, Lens, etc.
+j. Add configuration files of more Resources as per the requirements, such as Policy, Talos, Lens, etc.
 
 ### **4. Configure the pipeline**
 
-Configure the pipeline by following the below steps. 
 
-a. In the home directory, locate the `.dataos` folder containing the current DataOS context configuration files. Copy the folder and paste it into your cloned repository.
+a. In the home directory, locate the `.dataos` folder containing the current DataOS context configuration files. Copy the folder and paste it into the cloned repository.
     
 ```sql
 data-product-deployment
@@ -361,9 +360,8 @@ b. In the repository variables section, add key-value pairs mentioned in the pre
 
 ### **6. Deploy the pipeline**
 
-Deploy the pipeline by following the below steps.
 
-a. Open the terminal of your repository, and add the changes by applying the following command.
+a. Open the terminal of the repository, and add the changes by applying the following command.
     
 ```bash
 git add .
@@ -397,9 +395,8 @@ e. A successful deployment will look like the following.
 
 ### **8. Error fixes**
 
-Fix the possible errors by following the below steps.
 
-- If an error occurs during the push due to a large file size, navigate to your repository settings. Under **Repository details**, open the **Advanced** dropdown, uncheck the “Block pushes with files over 100MB” option, and save the changes. Then push again.
+- If an error occurs during the push due to a large file size, navigate to the repository settings. Under **Repository details**, open the **Advanced** dropdown, uncheck the “Block pushes with files over 100MB” option, and save the changes. Then push again.
     
     <center>
     <img src="/products/data_product/recipes/ci_cd/error_shell.png" alt="Talos" style="width:50rem; border: 1px solid black;" />
