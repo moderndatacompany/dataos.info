@@ -60,14 +60,14 @@ Follow the below steps to discover the Data Product of interest.
     ![disc_analyze.png](/learn/dp_consumer_learn_track/discover_dp/disc_analyze.png)
     
 
-## **Best practices**
+## **Best practice**
 
 - **Add to Favorites**: For quick access, add frequently used Data Products (e.g., “Product 360”) to your favorites.
     
     ![disc_favorites.png](/learn/dp_consumer_learn_track/discover_dp/disc_favorites.png)
     
 
-## Next Step
+## Next step
 
 To explore more about analyzing a Data Product, proceed to the next module:
 

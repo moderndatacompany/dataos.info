@@ -3,25 +3,25 @@
 In this guide, you will learn how to integrate a data product with Power BI and activate it to build rich, interactive dashboards.
 
 
-### Scenario:
+## Scenario
 
 Imagine you are part of the sales team at a growing retail company, and you need to analyze sales data to track performance trends, monitor regional sales distribution, and identify product affinities. By integrating your sales data product into Power BI, you can create interactive dashboards that allow you to dive deep into metrics, explore relationships, and make actionable business decisions.
 
-1. **Navigate to the BI Sync Option**
+### **Step 1: Navigate to the BI Sync Option**
     
-    To start the integration, go to the **Access Options** tab and scroll to the **Excel and PowerBI** option in the **BI Sync** section. Click on the **Download `.pbip` File** button to initiate the download of a ZIP folder.
+To start the integration, go to the **Access Options** tab and scroll to the **Excel and PowerBI** option in the **BI Sync** section. Click on the **Download `.pbip` File** button to initiate the download of a ZIP folder.
     
-    ![powerbi_conn_details.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/powerbi_conn_details.png)
+![powerbi_conn_details.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/powerbi_conn_details.png)
     
-2. **Extract the Files**
+### **Step 2: Extract the Files**
     
-    After downloading the ZIP file, extract it to a directory on your local machine. Inside the extracted folder, you will find the essential files that help maintain semantic synchronization between the Data Product and Power BI.
+After downloading the ZIP file, extract it to a directory on your local machine. Inside the extracted folder, you will find the essential files that help maintain semantic synchronization between the Data Product and Power BI.
     
-    The folder stores the main components of a Power BI project for syncing the Lens Model (here `product360`), including folders like the`.Report` and `.SemanticModel`. 
+The folder stores the main components of a Power BI project for syncing the Lens Model (here `product360`), including folders like the`.Report` and `.SemanticModel`. 
     
-    ![folder_structure.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/folder_structure.png)
+![folder_structure.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/folder_structure.png)
     
-    Following is a brief description of each:
+Following is a brief description of each:
     
     - **public_product360.Report:** This folder holds contains `definition.pbir` file related to the report definition in Power BI. This file defines the visual representation of data, such as tables and charts, without storing actual data. It connects the semantic model and data sources to create the report views.
     - **public-product360.SemanticModel:** This folder contains files that define the underlying data model for your Power BI project. The Semantic Model is crucial in managing how Power BI interacts with data and setting up relationships, hierarchies, and measures.
@@ -47,7 +47,7 @@ Once connected, you can see tables and views containing all dimensions and measu
 
 Happy dashboarding!
 
-<aside>
+<aside class="callout">
 💡
 
 Power BI also provides the functionality to interact with the downloaded file in Excel.

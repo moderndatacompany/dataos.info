@@ -2,7 +2,7 @@
 
 In this topic, you'll learn how to effectively consume the "Product 360" Data Product through Postgres after confirming that it meets your use case requirements. This guide provides step-by-step instructions to help you connect and query the Data Product seamlessly.
 
-<aside>
+<aside class="callout">
 🗣
 
 Note that, the consumption of the Data Product through Postgres will be unavailable in the Data Products that do not have the semantic model.
@@ -47,7 +47,7 @@ Password for user iamgroot:
 
 ### 4. Ready to query
 
-<aside>
+<aside class="callout">
 🗣
 
 Note that you can only query the Metrics, Entities, and logical tables sourced from the semantic model (Lens).
@@ -62,9 +62,8 @@ lens:public:cross-sell-affinity=> write your query here
 lens:public:cross-sell-affinity=> select * from cross_sell_opportunity_score limit 10
 ```
 
-<aside>
-🗣
+## Next step
 
-You may also consume the Data Product via GraphQL covered in the [next section](https://www.notion.so/Integration-with-GraphQL-WIP-129c5c1d487680bfb5cdc006322a9878?pvs=21).
+If you want to consume the Data Product via GraphQL, refer to the next topic.
 
-</aside>
+[Integration with GraphQL](/learn/dp_consumer_learn_track/integrate_graphql/)

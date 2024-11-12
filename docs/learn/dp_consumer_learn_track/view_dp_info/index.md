@@ -66,7 +66,7 @@ After discovering the “Product 360” Data Product, follow these steps to expl
         - Postgres
         - GraphQL
 
-## Next Step
+## Next step
 
 You can further examine input and output datasets for their metadata, schema, and quality related details.
 

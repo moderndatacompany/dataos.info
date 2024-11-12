@@ -99,7 +99,7 @@ When working with the Lens semantic model in Tableau, understanding how Tableau 
 - **Time Data Type as Measure**: Tableau does not treat time as a measure; instead, it recognizes date and time fields as dimensions. To avoid issues, use date and time fields for filtering or grouping and limit calculations to `MIN()` or `MAX()` functions.
 - **String Data Type to Geographical**: When syncing data that contains location information (e.g., City or Country), Tableau automatically converts string fields to Geography types. This enables map visualizations and spatial analysis without needing additional manual adjustments.
 
-<aside>
+<aside class="callout">
 
 📌 **Note**: These limitations specifically pertain to how Tableau handles time data types as measures and do not impact other functionalities of the Lens semantic layer.
 
