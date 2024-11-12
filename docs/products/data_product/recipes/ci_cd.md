@@ -209,7 +209,6 @@ j. Add configuration files of more Resources as per your requirements, such as P
 
 ### **4. Configure the pipeline**
 
-Configure the pipeline by following the below steps. 
 
 a. In the home directory, locate the `.dataos` folder containing the current DataOS context configuration files. Copy the folder and paste it into your cloned repository.
     
@@ -361,7 +360,6 @@ b. In the repository variables section, add key-value pairs mentioned in the pre
 
 ### **6. Deploy the pipeline**
 
-Deploy the pipeline by following the below steps.
 
 a. Open the terminal of your repository, and add the changes by applying the following command.
     
@@ -397,7 +395,6 @@ e. A successful deployment will look like the following.
 
 ### **8. Error fixes**
 
-Fix the possible errors by following the below steps.
 
 - If an error occurs during the push due to a large file size, navigate to your repository settings. Under **Repository details**, open the **Advanced** dropdown, uncheck the “Block pushes with files over 100MB” option, and save the changes. Then push again.
     
