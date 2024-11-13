@@ -6,7 +6,7 @@ In this topic, we’ll walk you through navigating and understanding the associa
 
 Imagine you’re a data analyst and want to analyze data product **Product360**, aiming to leverage data insights for performance tracking and customer behavior analysis. By exploring its semantic model on **Data Product Hub**, you plan to access and analyze cross-sell and upsell opportunities, which involves examining dimensions, measures, and metrics like **customer segments, product affinity scores,** and **total spending**. Let’s see how this exploration unfolds.
 
-## Explore your semantic model
+## Uncover insights from your Semantic Model
 
 1. **Navigate to the ‘Explore’ option**
     
