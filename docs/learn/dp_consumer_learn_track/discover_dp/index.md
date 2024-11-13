@@ -45,10 +45,7 @@ Follow the below steps to discover the Data Product of interest.
     ![disc_filter.png](/learn/dp_consumer_learn_track/discover_dp/disc_filter.png)
     
     <aside class="callout">
-    🗣
-    
-    Use multiple filters to quickly pinpoint the most relevant Data Products.
-    
+    🗣 Use multiple filters to quickly pinpoint the most relevant Data Products.
     </aside>
     
 5. **Select the Data Product:** You clicked on the “Product 360” Data Product that interests you.
