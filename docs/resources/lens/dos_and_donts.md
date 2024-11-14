@@ -4,11 +4,11 @@ This documentation provides guidelines for using Lens functionalities, including
 
 ## Do's
 
-### **Data Modelling**
+### **Data modelling**
 
-#### **Calling a Measure to Create Another Measure in the Same Table**
+#### **Calling a Measure to create another Measure in the same Table**
 
-When creating a measure that references another measure within the same table, use curly braces `{}`.
+When creating a measure that references another measure within the same , use curly braces `{}`.
 
 ```yaml
 - name: current_month_sum
@@ -28,9 +28,9 @@ When creating a measure that references another measure within the same table, u
   type: number
 ```
 
-#### **Proxy Dimension: Referencing Dimensions from Another Table**
+#### **Proxy Dimension: Referencing Dimensions from another Table**
 
-To reference a dimension from one table while creating a measure in another, use the curly braces `{}`. Specify the dimension using `{table.column}` if it is from another table, or `{column name}` if it is within the same table.
+To reference a dimension from one  while creating a measure in another, use the curly braces `{}`. Specify the dimension using `{.column}` if it is from another table, or `{column name}` if it is within the same table.
 
 ```yaml
 
@@ -44,7 +44,7 @@ measures:
     type: sum
 ```
 
-#### **Calling a Measure from Another Table**
+#### **Calling a Measure from another Table**
 
 When referencing a measure from another table, set `sub_query` to `true`.
 
@@ -55,7 +55,7 @@ When referencing a measure from another table, set `sub_query` to `true`.
   type: number
 ```
 
-#### **Transforming Dimension and Calling it in a Measure**
+#### **Transforming Dimension and calling it in a Measure**
 
 Use curly braces `{}` when calling a transformed dimension within measures.
 
@@ -89,7 +89,7 @@ To correctly aggregate a measure within a window, use the rolling_window paramet
       offset: start
 ```
 
-**Use Cases for Rolling Windows:**
+**Use Cases for rolling windows:**
 
 - Running totals or moving averages.
 - Ranking and percentile analysis (e.g., top performers).
@@ -100,7 +100,7 @@ To correctly aggregate a measure within a window, use the rolling_window paramet
 
 1. **Purpose:** Create views to provide a limited part of your data model to the consumer layer, such as any BI tool. Views are useful for defining metrics, managing governance and data access, and controlling ambiguous join paths.
 2. **Members:** Views do not have their own members. Instead, use the `table` or `includes` parameters to incorporate measures and dimensions from other tables into the view.
-3. **Refresh Key:** Use a refresh key if the underlying data is refreshed on a regular cadence.
+3. **Refresh key:** Use a refresh key if the underlying data is refreshed on a regular cadence.
 
 **Example: `revenue_view`**
 
@@ -144,11 +144,11 @@ views:
           - state
 ```
 
-### **Jinja Macros**
+### **Jinja macros**
 
 Lens data models support Jinja macros, allowing you to define reusable snippets of code. This feature helps in creating dynamic data models and SQL properties efficiently.
 
-#### **Dynamic Data Models**
+#### **Dynamic data models**
 
 In the example below, we define a macro called `dimension()` which generates a dimension. This macro is then invoked multiple times to generate various dimensions.
 
@@ -188,7 +188,7 @@ tables:
       {{ dimension('county_name', description='County name of the customer.') }}
 ```
 
-#### **SQL Property**
+#### **SQL property**
 
 Macros can also be used to generate SQL snippets for use in the `sql` property. For example, to avoid division by zero errors when creating measures, define a macro and use it in multiple measures.
 
@@ -206,7 +206,7 @@ measures:
     type: number
 ```
 
-#### **Dynamic Segments with Secure Access**
+#### **Dynamic Segments with secure access**
 
 You can create dynamic segments with secure access using Jinja macros. This example sets up segments for different categories with user group restrictions.
 
@@ -292,7 +292,7 @@ By leveraging Jinja macros, you can create efficient, reusable, and dynamic conf
 
 When creating Lens, avoid the following practices to ensure functionality and maintainability:
 
-### **Avoid Using Curly Braces `{}` in Descriptions**
+### **Avoid using curly braces `{}` in descriptions**
 
 Since Jinja is supported, using curly braces `{}` in descriptions can cause issues.
 
@@ -306,7 +306,7 @@ dimensions:
     description: It is the primary key of sales
 ```
 
-### **Avoid Using Single Quotes in Measures, Dimensions, and Segments**
+### **Avoid using single quotes in Measures, Dimensions, and Segments**
 
 Using single quotes can throw errors. Instead, use double quotes.
 
@@ -330,7 +330,7 @@ tables:
         type: string
 ```
 
-### **Avoid Filtering Measures and Dimensions from the Same Table with OR Operator**
+### **Avoid filtering Measures and Dimensions from the same Table with OR operator**
 
 Measures and dimensions from the same table cannot be filtered simultaneously using the 'OR' operator.
 
