@@ -2,9 +2,9 @@
 
 In this guide, we'll walk you through the steps to connect to a deployed Lens using a SQL client (like `psql` and `dataos-ctl usql` interfaces. 
 
-## Retrieve or Create Your API Key Token
+## Retrieve or create your API key token
 
-### **Existing API Key Token Retrieval**
+### **Existing API key token retrieval**
 
 If you already possess an API key token, execute the following command to retrieve it:
 
@@ -40,7 +40,7 @@ INFO[0000] 🔑 user apikey get...complete
 
 If you get a similar output, create a new apikey.
 
-### **Creating a New API Key**
+### **Creating a new API key**
 
 To generate a new API key, use the `apikey create` command with the following syntax:
 
@@ -70,7 +70,7 @@ To generate a new API key, use the `apikey create` command with the following sy
 
 Copy the value of the Token column for the procedure ahead.
 
-### **Retrieving Lens Name**
+### **Retrieving Lens name**
 
 To identify the Lens name for generating a Cluster Token, you'll need to list all Lenses within a specific Workspace. Use the following command to retrieve a comprehensive list of Lenses:
 
