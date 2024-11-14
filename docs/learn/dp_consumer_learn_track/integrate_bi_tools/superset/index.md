@@ -4,7 +4,7 @@ In this topic, you’ll learn how to activate a data product through Apache Supe
 
 ## Scenario
 
-Enable the sales and product teams to gain valuable insights by creating interactive dashboards in Superset, leveraging the Product-360 data model in DataOS. The goal is to track sales trends, analyze product affinity, and monitor performance by region to support data-driven decision-making. 
+Leverage Apache Superset to design lightweight, yet powerful visualizations. By connecting to the 'Product 360' Data Product, you can create dashboards that track key metrics like sales performance, customer churn rates, and product engagement across various segments. 
 
 ### Steps to connect Superset with DataOS
 
@@ -39,7 +39,7 @@ Enable the sales and product teams to gain valuable insights by creating interac
     
 2. **Activate the Data Product**
     
-    Once you’ve entered all the credentials, click **Activate** to complete the setup. This will link the *Product-360* semantic model with Superset.
+    Once you’ve entered all the credentials, click **Activate** to complete the setup. This will link the *Product 360* semantic model with Superset.
     
     ![superset-connections.png](/learn/dp_consumer_learn_track/integrate_bi_tools/superset/superset-connections.png)
     
@@ -49,4 +49,4 @@ Enable the sales and product teams to gain valuable insights by creating interac
     
 4. **Creating Visualizations in Superset**
     
-    To create a chart, select datasets labeled with the data product name. Choose the **Measures** and **Dimensions** that best suit your analysis goals. This enables you to explore and analyze data directly from the Product-360 model within Superset, making it easy to generate insights.
+    To create a chart, select datasets labeled with the data product name. Choose the **Measures** and **Dimensions** that best suit your analysis goals. This enables you to explore and analyze data directly from the 'Product 360' model within Superset, making it easy to generate insights.
