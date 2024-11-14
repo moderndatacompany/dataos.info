@@ -2,9 +2,9 @@
 
 In this topic, you will learn how to use the Data Product via REST API. This guide offers step-by-step instructions for accessing and integrating the Data Product through REST API.
 
-## Use case
+## Scenario
 
-Considering that the "Product 360" Data Product fully meets your use case needs, you will now build a data application that generates valuable insights for the marketing team. These insights will empower them to create personalized promotions, enhance customer engagement, and drive additional business growth.
+Considering that the 'Product360' Data Product fully meets your use case needs, you will now build a data application that generates valuable insights for the marketing team. These insights will empower them to create personalized promotions, enhance customer engagement, and drive additional business growth.
 
 ## Quick concepts
 
