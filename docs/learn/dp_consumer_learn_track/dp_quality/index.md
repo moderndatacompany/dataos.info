@@ -1,6 +1,6 @@
 # Knowing About the Quality of Data Products
 
-In this topic, you will learn about the quality of the "Product 360" Data Product after exploring it for your use case. The focus is on ensuring the Data Product meets necessary quality standards for reliable analysis.
+In this topic, you will learn about the quality of the 'Product360' Data Product after exploring it for your use case. The focus is on ensuring the Data Product meets necessary quality standards for reliable analysis.
 
 ## Scenario
 
