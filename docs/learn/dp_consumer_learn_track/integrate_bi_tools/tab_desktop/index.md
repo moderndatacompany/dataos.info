@@ -6,9 +6,9 @@ In this module, you will learn how to activate a data product using Tableau Desk
 🗣 Tableau Desktop is available for Windows and macOS. If you’re using Linux, you’ll need to set up a virtual machine or use an alternative method since Tableau Desktop isn’t natively supported on this platform.
 </aside>
 
-## Use case
+## Scenario
 
-Imagine you’re a sales analyst for a retail company, and you’re tasked with providing insights into the company’s "Product 360" data—an extensive dataset stored in DataOS. Your goal is to visualize and analyze this data within Tableau to help the sales team track trends, understand which products are frequently purchased together (product affinity), and monitor sales across different regions.
+Imagine you’re a sales analyst for a retail company, and you’re tasked with providing insights into the company’s Product360 data—an extensive dataset stored in DataOS. Your goal is to visualize and analyze this data within Tableau to help the sales team track trends, understand which products are frequently purchased together (product affinity), and monitor sales across different regions.
 
 ## Step-by-Step: Syncing Tableau with DataOS
 

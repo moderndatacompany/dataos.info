@@ -1,6 +1,6 @@
 # Integration with Postgres
 
-In this topic, you'll learn how to effectively consume the "Product 360" Data Product through Postgres after confirming that it meets your use case requirements. This guide provides step-by-step instructions to help you connect and query the Data Product seamlessly.
+In this topic, you'll learn how to effectively consume the 'Product360' Data Product through Postgres after confirming that it meets your use case requirements. This guide provides step-by-step instructions to help you connect and query the Data Product seamlessly.
 
 <aside class="callout">
 🗣
