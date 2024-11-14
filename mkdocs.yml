@@ -522,7 +522,6 @@ nav:
       - Deploy: products/data_product/how_to_guides/deploy.md
       - Iterate: products/data_product/how_to_guides/iterate.md
     - Recipes: 
-      - Create Data Product template using Cookiecutter: products/data_product/recipes/cookiecutter.md
       - Deploy Data Product using CI/CD pipeline: products/data_product/recipes/ci_cd.md
     - Examples:
       - Product affinity Data Product: products/data_product/templates/product_affinity.md
