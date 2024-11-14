@@ -67,7 +67,7 @@ Login Succeeded
 </aside>
 
 
-**Pull the Image**
+**Pull the image**
 
 To pull a Docker image from a registry, use the docker pull command. If no tag is specified, Docker will automatically pull the latest version of the image. This command is required to fetch images from public or private registries.
 
@@ -87,11 +87,11 @@ To pull a Docker image from a registry, use the docker pull command. If no tag i
 💡  Tags are used to identify specific versions of an image and can be updated over time. Ensure the latest image tag or the tag specified in the docker-compose YAML is pulled.
 </aside>
 
-**Docker Compose**
+**Docker compose**
 
 Lens utilizes Docker Compose to configure multi-container Docker applications through a YAML manifest file. This guide outlines the process for checking an existing Docker Compose installation, installing it if needed, and validating the installation.
 
-**Checking for Existing Installation**
+**Checking for existing installation**
 
 Before installing Docker Compose, it is advisable to check if it is already installed on the system.
     
@@ -104,15 +104,15 @@ This command will return the installed version of Docker Compose, if present. Fo
 docker-compose version 1.29.2, build 5becea4c
 ```
     
-**Installing Docker Compose**
+**Installing Docker compose**
 
 If Docker Compose is not installed, refer to the following link to [install Docker Compose](https://docs.docker.com/compose/install/).
 
 ### **Visual Studio Code**
 
-To be able to create Lens model effectivelly, Visual Studio Code (VS Code) must be installed on the local system. Below are the links for installing VS Code on various operating systems.
+Visual Studio Code (VS Code) must be installed on the local system to create a Lens model effectively. Below are the links for installing VS Code on various operating systems.
 
-**Installation Links by Operating System**
+**Installation links by Operating System**
 
 - **Linux**: Follow the detailed steps to install VS Code on your Linux system by accessing the [Install VS Code on Linux guide](https://code.visualstudio.com/docs/setup/linux).
 
@@ -165,7 +165,7 @@ Type the following commands to quickly generate Lens2 tables, views, dimensions,
 
 Lens utilizes the Python programming language for tasks such as setting up directory structures and creating virtual environments for managing workloads and dependencies. To begin using Lens, Python must be installed on the system.
 
-**Checking for Existing Installation**
+**Checking for existing installation**
 
 ```bash
 python3 --version
@@ -180,13 +180,13 @@ Python 3.8.14
 
 If Python is not already installed on the system, follow the steps below to download and install the appropriate version.
 
-1. **Access the Installation Guide**: Visit the [Python Installation Guide](https://realpython.com/installing-python/#how-to-install-python-on-windows). This guide provides detailed instructions for installing Python on various operating systems, including Windows, macOS, and Linux.
+1. **Access the installation guide**: Visit the [Python Installation Guide](https://realpython.com/installing-python/#how-to-install-python-on-windows). This guide provides detailed instructions for installing Python on various operating systems, including Windows, macOS, and Linux.
 
 2. **Download Python**: From the guide, select the link corresponding to the operating system and download the latest version of Python.
         
 3. **Install Python**: Run the downloaded installer. Be sure to check the box that says "Add Python 3.x to PATH" before clicking "Install Now". This step is crucial as it makes Python accessible from the command line.
 
-4. **Verify Installation**: After installation, open a command line interface and run the following  command to check the installed version of Python. The expected output should be **`Python 3.X`** or another version that is greater than 3.7.
+4. **Verify installation**: After installation, open a command line interface and run the following  command to check the installed version of Python. The expected output should be **`Python 3.X`** or another version that is greater than 3.7.
           
     ```bash
     python3 -V
@@ -201,7 +201,7 @@ If Python is not already installed on the system, follow the steps below to down
 Postman is a tool that allows data developers to perform querying and testing within the Lens environment by sending API requests through an intuitive user interface. Follow the [Postman Installation Guide](https://learning.postman.com/docs/getting-started/installation/installation-and-updates/) to install Postman on your local system.
 
 
-**Install Postman VS Code Extension**:
+**Install Postman VS Code extension**:
 
 Alternatively, you can also install Postman Extension on your Code Editor.
 
@@ -218,6 +218,6 @@ Alternatively, you can also install Postman Extension on your Code Editor.
 With all prerequisites including Docker, VS Code, Python, and Postman installed, you are now ready to build Lens models on your system. 
 
 
-## Next Steps
+## Next steps
 
 [Lens Model Folder Setup](/resources/lens/lens_model_folder_setup/)
