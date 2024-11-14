@@ -16,18 +16,22 @@ By the end of this course, you will be able to:
 
 ## Module 1: Understanding Data Products
 
-Get a solid foundation on what data products are and how they can drive insights and decision-making. Learn about their types, features, and importance in business processes.
+Get a solid foundation on what data products are and how they can drive insights and decision-making. Learn about their features, and importance in business processes.
 
 
 <div class= "grid cards" markdown>
 
     
--   Introduction to Data Products and its Types
+-   Introduction to Data Products
 
 -   Features and Importance of the Data Product
 
 
 </div>
+
+<aside class= "callout">
+🗣 For a general understanding of what data products are and their importance, please reach out to your team. If you want to learn specifically about discovering and activating data products within DataOS, continue to Module 2 for a detailed walkthrough.
+</aside>
 
 ## Module 2: Discovering Data Products on DPH
 
