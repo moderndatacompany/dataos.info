@@ -4,7 +4,7 @@ This topic covers how to integrate the semantic model of the Data Product with T
 
 ## Scenario
 
-Here, we will demonstrate how to seamlessly integrate the "Product 360" data product with Tableau Cloud, enabling you to build compelling dashboards that drive strategic business outcomes.
+Here, we will demonstrate how to seamlessly integrate the 'Product360' data product with Tableau Cloud, enabling you to build compelling dashboards that drive strategic business outcomes.
 
 ## Establishing the data connection
 
@@ -26,7 +26,7 @@ In the subsequent setup window, input the required Tableau Cloud credentials:
 
 In the setup window, fill in the required credentials:
 
-- **Project Name**: Specify the name of the project within Tableau (e.g., "Product-360 Analysis").
+- **Project Name**: Specify the name of the project within Tableau (e.g., "Product 360 Analysis").
 - **Server Name**: Provide the URL or address of the Tableau Server hosting your cloud instance.
 - **Site ID**: Input the Site ID for your specific Tableau Cloud site.
 - **Username**: Your Tableau account username.
@@ -51,7 +51,7 @@ In addition to using standard Tableau credentials, you can also opt to use **Per
 
 ![tableau_pat.png](/learn/dp_consumer_learn_track/integrate_bi_tools/tab_cloud/tableau_pat.png)
 
-After entering the credentials, click **Activate** to complete the setup. The *Product-360* data product will now be integrated into Tableau Cloud. If the project isn’t created already, a new project, **‘Product Analysis,’** will automatically be established.
+After entering the credentials, click **Activate** to complete the setup. The *Product 360* data product will now be integrated into Tableau Cloud. If the project isn’t created already, a new project, **‘Product Analysis,’** will automatically be established.
     
 ### 3. **Consuming the Data Product on Tableau Cloud**
     
@@ -77,13 +77,13 @@ Once the *Product-360* Data Product has been successfully activated, you can pro
 
 ![tab_desk_api.png](/learn/dp_consumer_learn_track/integrate_bi_tools/tab_cloud/tab_desk_api.png)
 
-6. **Creating the Dashboard**: After successful authentication, you are redirected to the new workbook interface, where you can begin visualizing and developing dashboards with insights derived from *Product-360*.
+6. **Creating the Dashboard**: After successful authentication, you are redirected to the new workbook interface, where you can begin visualizing and developing dashboards with insights derived from *Product 360*.
 
 ![tableau_dashboard.png](/learn/dp_consumer_learn_track/integrate_bi_tools/tab_cloud/tableau_dashboard.png)
 
 ## Important Considerations for Tableau Integration
 
-When integrating your *Product-360* data model with Tableau Cloud, consider the following tips to ensure smooth functionality and avoid potential issues:
+When integrating your *Product 360* data model with Tableau Cloud, consider the following tips to ensure smooth functionality and avoid potential issues:
 
 - **Handling Entities without Relationships**:  If you encounter entities with no defined relationships in your data model, they may cause errors during synchronization. To prevent this, consider hiding these entities before syncing with Tableau.
 - **Live Connection**: You benefit from a live connection between the Lens semantic layer and Tableau Cloud; any changes made to the underlying data or measure logic will automatically be updated in Tableau, ensuring you always have access to the latest insights.

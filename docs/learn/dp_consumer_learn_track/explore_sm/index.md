@@ -4,7 +4,7 @@ In this topic, we’ll walk you through navigating and understanding the associa
 
 ## Scenario
 
-Imagine you’re a data analyst and want to analyze data product **Product360**, aiming to leverage data insights for performance tracking and customer behavior analysis. By exploring its semantic model on **Data Product Hub**, you plan to access and analyze cross-sell and upsell opportunities, which involves examining dimensions, measures, and metrics like **customer segments, product affinity scores,** and **total spending**. Let’s see how this exploration unfolds.
+Imagine you’re a data analyst and want to analyze data product 'Product360', aiming to leverage data insights for performance tracking and customer behavior analysis. By exploring its semantic model on **Data Product Hub**, you plan to access and analyze cross-sell and upsell opportunities, which involves examining dimensions, measures, and metrics like **customer segments, product affinity scores,** and **total spending**. Let’s see how this exploration unfolds.
 
 ## Uncover insights from your Semantic Model
 
@@ -29,7 +29,7 @@ You first decide to explore the Model. As you open the **Model** tab, you start 
 
 ### **Visualize Connections in the Graph View**
 
-The **Graph** view offers a visual representation of the **Product360** semantic model, showcasing how logical tables and entities are interconnected, with key metrics highlighting their relationships.
+The **Graph** view offers a visual representation of the 'Product360' semantic model, showcasing how logical tables and entities are interconnected, with key metrics highlighting their relationships.
 
 Explore entities like **Customer**, **Purchase**, and **Purchase Data** along with key metrics like **cross_sell_opportunity**, **total_spending**, and **purchase_frequency**. Metrics marked with a wave icon are derived from logical tables, showing their role in performance tracking. For example, **cross_sell_opportunity_score** is created using members from the **purchase_data** and **product** tables, while **purchase_history** and **total_spending** are built using dimensions and measures from these logical tables.
 

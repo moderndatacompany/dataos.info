@@ -1,5 +1,11 @@
 # Excel via Power BI
 
+This topic introduces the methods to connect with Excel via PowerBI to create visuals and perform analysis.
+
+## Scenario
+
+Use Excel's robust data visualization and analytics capabilities to connect with 'Product 360'. Build real-time, interactive dashboards that provide insights into customer buying patterns and help forecast demand, enabling proactive marketing decisions.
+
 There are two methods to interact  with the Excel via PowerBI
 
 - [Using third party tool -  Analyze in Excel](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/#using-analyze-in-excel)
