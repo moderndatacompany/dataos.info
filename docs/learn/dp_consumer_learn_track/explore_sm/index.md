@@ -8,19 +8,19 @@ Imagine you’re a data analyst and want to analyze data product 'Product360', a
 
 ## Uncover insights from your Semantic Model
 
-1. **Navigate to the ‘Explore’ option**
+### **Navigate to the ‘Explore’ option**
     
-    On the Data Product details page, click the "Explore" button to navigate to the Studio in the Data Product Hub.
-    
-    ![exploration_page.png](/learn/dp_consumer_learn_track/explore_sm/exploration_page.png)
-    
-    Here, the interface displays various tabs.
-    
-    You observe three tabs given  **Studio**, **Model**, and **GraphQL** to analyze the data model for different purposes.
-    
-    ![sm_explore.png](/learn/dp_consumer_learn_track/explore_sm/sm_explore.png)
-    
-    Before exploring data via the semantic model in **Studio**, let us understand the model fully. 
+On the Data Product details page, click the "Explore" button to navigate to the Studio in the Data Product Hub.
+
+![exploration_page.png](/learn/dp_consumer_learn_track/explore_sm/exploration_page.png)
+
+Here, the interface displays various tabs.
+
+You observe three tabs given  **Studio**, **Model**, and **GraphQL** to analyze the data model for different purposes.
+
+![sm_explore.png](/learn/dp_consumer_learn_track/explore_sm/sm_explore.png)
+
+Before exploring data via the semantic model in **Studio**, let us understand the model fully. 
     
 
 ## Access model for unpacking the data structure
@@ -100,8 +100,6 @@ You begin your exploration on the **Studio** tab, which opens by default when yo
 
 ### **Creating a query**
 
-**Scenario: Total Customers by Country**
-
 Let's analyze the total number of customers per country:
 
 1. **Select** the `country` dimension and the `total_customers` measure.
@@ -110,7 +108,7 @@ Let's analyze the total number of customers per country:
     
 2. Hit **Run Query** to generate the query result as table which you can change later in Chart.
 
-![query_result.png](/learn/dp_consumer_learn_track/explore_sm/query_result.png)
+    ![query_result.png](/learn/dp_consumer_learn_track/explore_sm/query_result.png)
 
 3. Sort your data to see the top 5 countries by total customers. Use **Order By** with `total_customers` in descending order and limit the results to 
     
@@ -130,9 +128,7 @@ Once you save any Perspective, it will be accessible to everyone and can be acce
 ![access_perspective.png](/learn/dp_consumer_learn_track/explore_sm/dc0927ba-08ae-4376-8e91-3e9743a31943.png)
 
 <aside class="callout">
-🗣
-
-If you want to download the findings, click on the download ⬇️ icon next to the **Save Perspective** button to download it. It will ask you to download the table in various formats, such as csv, json, etc., as shown in the image below.
+🗣 If you want to download the findings, click on the download ⬇️ icon next to the **Save Perspective** button to download it. It will ask you to download the table in various formats, such as csv, json, etc., as shown in the image below.
 
 </aside>
 
