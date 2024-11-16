@@ -42,9 +42,7 @@ In Excel, you can now use PivotTables, charts, and other Excel features to analy
 ![powerbi_excel.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_excel.png)
 
 <aside class="callout">
-💡
-
-Ensure that Power BI Desktop remains open while working in Excel, as Power BI acts as the server for the data connection with Excel.
+💡 Ensure that Power BI Desktop remains open while working in Excel, as Power BI acts as the server for the data connection with Excel.
 
 </aside>
 
@@ -55,9 +53,7 @@ Ensure that Power BI Desktop remains open while working in Excel, as Power BI ac
 In the PowerBI, click **Publish**. This action will push the report to your online Power BI service account, making it available for access in the Power BI workspace. Choose the required workspace.
 
 <aside class="callout">
-💡
-
-**Note**: This step requires a valid Power BI service account, as the report will be published to the online service.
+💡 This step requires a valid Power BI service account, as the report will be published to the online service.
 
 </aside>
 
@@ -103,7 +99,7 @@ After successfully connecting, you will be able to access the dashboard.
 
 ![powerbi_chart.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_chart.png)
 
-### **Step 9: Open "Analyze in Excel"**
+### **Step 9: Open 'Analyze in Excel'**
 
 The **Analyze in Excel** page should now appear, allowing you to interact with the data as needed.
 
