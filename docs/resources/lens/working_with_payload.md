@@ -66,15 +66,15 @@ The JSON payload provided specifies a query configuration with the following key
 | **[`timezone`](/resources/lens/working_with_payload/#time-dimension-format)** | You can set the desired time zone in the [TZ Database Name](https://en.wikipedia.org/wiki/Tz_database) format, e.g., `America/Los_Angeles`. |
 
 
-### **Order Format**
+### **Order format**
 
-**Default Ordering**
+**Default ordering**
 
 When the `order` property is not explicitly defined in the query, the results are sorted by default according to the following sequence:
 
 - **Time Dimension:** Results are first ordered by the initial time dimension with granularity, in ascending order. If no time dimension with granularity is present...
 
-- **Measure:** Next, results are sorted by the first measure found, in descending order. If no measure is specified...
+- **Measure:** Next, results are sorted by the first measure found, in descending order. If no measure is specified.
 
 - **Dimension:** Finally, if neither of the above are available, results are ordered by the first dimension, in ascending order.
 
@@ -96,7 +96,7 @@ A filter object contains the following properties:
 
 - **`operator`:** An operator to be used in the filter. Only some operators are available for measures. For dimensions the available operators depend on the type of the dimension. 
 
-- **`values`:** An array of values for the filter. Values must be of type String. If you need to pass a date, pass it as a string in `YYYY-MM-DD` format.
+- **`values`:** An array of values for the filter. Values must be of type string. If you need to pass a date, pass it as a string in `YYYY-MM-DD` format.
 
 **Filtering Dimensions vs Filtering Measures**
 

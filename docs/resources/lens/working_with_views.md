@@ -9,7 +9,7 @@
 ## When to define Views?
 
 - **Defining Metrics**: Views allow you to define metrics by including measures and dimensions from different tables. This enables you to create denormalized tables that comprehensively address a specific use case. For instance, you can have a view that gives you all the dimensions and measures to understand ‘Weekly Spirits Sales in Florida’.
-- **Providing a Simplified Interface**: By exposing only the relevant measures and dimensions, views make it easier for users to understand and query the data, reducing the complexity of the underlying data model.
+- **Providing a simplified interface**: By exposing only the relevant measures and dimensions, views make it easier for users to understand and query the data, reducing the complexity of the underlying data model.
 
 ## Types of Views
 
@@ -69,26 +69,26 @@ To populate an Entity view on Iris, one must use the `export_to_iris` attribute.
 
 
 
-### **Metrics-First Approach**
+### **Metrics-first approach**
 
 The **metrics-first approach** builds views around key performance metrics in a data model. Each view focuses on a specific measure and includes all relevant dimensions for grouping, filtering, and tracking time. This approach helps business teams make informed, data-driven decisions by providing clear, consistent, actionable metrics.
 
-**Key Benefits of the Metrics-First Approach**
+**Key benefits of the Metrics-first approach**
 
-- **Operational Evaluation**: Empowers users to understand key business performance metrics, enabling them to answer critical questions such as:
+- **Operational evaluation**: Empowers users to understand key business performance metrics, enabling them to answer critical questions such as:
     - What happened?
     - Why did it happen?
     - What will happen next?
     - What should we do in response?
-- **Simplified Analysis**: By focusing on a single measure, each view allows for efficient and straightforward analysis, ensuring clarity in data interpretation.
+- **Simplified analysis**: By focusing on a single measure, each view allows for efficient and straightforward analysis, ensuring clarity in data interpretation.
 - **Consistency**: Each metric is centrally defined, ensuring consistency across various tools and reports, thus eliminating discrepancies in business performance analysis.
 
 A metric in the metrics-first approach typically includes:
 
-- **Metric Name**: A clear, descriptive name that reflects the purpose of the metric.
+- **Metric name**: A clear, descriptive name that reflects the purpose of the metric.
 - **Measure**: The key performance indicator or value being tracked (e.g., customer churn rate).
-- **Time Dimension**: The period over which the metric is measured (e.g., daily, weekly). To access the time granularity feature, you must mention the timestamp data type instead of the time and date data type.
-- **Related Dimensions**: Additional attributes or dimensions (such as customer demographics, region, or product type) that allow for further breakdown and analysis.
+- **Time dimension**: The period over which the metric is measured (e.g., daily, weekly). To access the time granularity feature, you must mention the timestamp data type instead of the time and date data type.
+- **Related dimensions**: Additional attributes or dimensions (such as customer demographics, region, or product type) that allow for further breakdown and analysis.
 
 Views are named after the specific metric they represent, making them easy to identify and work within various systems. 
 
@@ -207,7 +207,7 @@ views:
           - customer_name
 ```
 
-## **Exploration and Activation**
+## **Exploration and activation**
 
 - **Exploration**: Views can be explored using tools such as **Iris Board,** which provides automated, dynamic dashboards for visualizing and analyzing performance metrics. These tools help detect anomalies and reveal trends over time. You can also query the view in Lens Studio directly.
 - **Activation**: Metrics can be embedded into operational workflows, triggering alerts, populating Excel models for cross-tab analysis, or integrated into email automation tools for marketing or retention strategies.
@@ -234,7 +234,7 @@ To explore the views via **Lens Studio,** follow the below steps:
       <figcaption> Lens Studio Page </figcaption>
   </div>
 
-**Step 2: View the List of Lenses**
+**Step 2: View the list of Lenses**
 
   - From the given list of Lens, users can select the desired lens to explore.
 
@@ -296,7 +296,7 @@ Once on the Lens Studio page, click the Iris button located beside the Explore b
     <figcaption> View in Iris </figcaption>
 </div>
 
-### Exploring Views on Data Products Hub
+### **Exploring Views on Data Products Hub**
 
 Follow these steps to explore views and metrics within the Data Products Hub (DPH).
 
@@ -331,7 +331,7 @@ Follow these steps to explore views and metrics within the Data Products Hub (DP
 </div>
     
 
-**Step 4: View Data Lineage**
+**Step 4: View data lineage**
 
 - You can trace the data source for each metric. For example, a metric for *Customer Churn Prediction* might be sourced from the *purchase_data* table.
 - To explore data lineage, click on the drop-down arrow. This will show the origin of the metric, including the table and dimensions used in the calculation.
@@ -343,17 +343,17 @@ Follow these steps to explore views and metrics within the Data Products Hub (DP
 </div>
     
 
-**Step 5: Access the Iris Board for Metric Analysis**
+**Step 5: Access the Iris board for Metric analysis**
 
 - Click on the Quick Insights link at the **References** section's top-r**ight** corner.
 - This will take you directly to the **Iris Board**, where you can observe and analyze the metric view in more detail.
 
-**6. Navigate to the DPH Studio**
+**Step 6: Navigate to the DPH Studio**
 
 - Next to the **Quick Insights** button, click the **Explore** button.
-- This will open the **DPH Exploration Page**, with the default tab set to **Studio**. Query your metrics here
+- This will open the **DPH Exploration Page**, with the default tab set to **Studio**. Query your metrics here.
     
 <div style="text-align: center;">
     <img src="/resources/lens/working_with_views/dph5.png" alt="Tables and Views" style="max-width: 80%; height: auto; border: 1px solid #000;">
-    <figcaption> Data Lineage </figcaption>
+    <figcaption> Entities and Metrics </figcaption>
 </div>

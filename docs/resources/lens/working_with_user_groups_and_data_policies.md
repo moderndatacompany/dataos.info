@@ -1,4 +1,4 @@
-# Working with User Groups and Data Policies
+# Working with user groups and data policies
 
 Lens allows you to secure data in logical tables by defining data policies on their dimensions and segments. User groups are used to manage both data access and API scopes, which control access to specific functionalities and endpoints. This forms part of the access policy, ensuring users interact only with the data and features they are authorized to use.
 
@@ -51,7 +51,7 @@ user_groups: # List of user groups
 
 `api_scopes`** To know more about the api scopes and their endpoints click [here](/resources/lens/api_endpoints_and_scopes/)
 
-## Group Priority
+## Group priority
 
 When a user is included in multiple user groups, the group listed first in the configuration file will determine the user's access level. This means that the permissions of the first group take precedence over any subsequent groups.
 
@@ -84,18 +84,18 @@ In this example:
 - `exampleuser` is included in both the `analyst` and `engineer` groups.
 - Since the `analyst` group is listed before the `engineer` group, `exampleuser` will have the permissions of the `analyst` group.
 
-## Data Policies
+## Data policies
 
 Data policies can be applied to dimensions and segments of tables to control data access and masking.
 
-### **Defining Data Masking Policy on a Table’s Dimension**
+### **Defining data masking policy on a Table’s dimension**
 
 You can mask data on a table's dimension using the `secure` property in the meta section. Two data masking functions are available:
 
 - **Redact**: Replaces the value with the string `redact`.
 - **md5**: Hashes the value using the MD5 algorithm.
 
-#### **Step 1 Define the Data Masking Function** 
+#### **Step 1 Define the data masking function** 
 
 - Include the masking function in the `meta` section of your dimension definition. Here we have masked the gender column for the  specific group `dataconsumer` but the same column is not redacted for the users in the default group. That means everybody can see the row values of gender column except for the users in `dataconsumer` group.
 
@@ -114,7 +114,7 @@ You can mask data on a table's dimension using the `secure` property in the meta
             - default
   ```
 
-#### **Step 2: Configure User Group Policies**
+#### **Step 2: Configure user group policies**
 
 - You can configure user group policies to control access:
 
@@ -146,11 +146,11 @@ You can mask data on a table's dimension using the `secure` property in the meta
 
     ```
 
-### **Defining Row Filter Policy on a Table’s Segment**
+### **Defining row filter policy on a Table’s Segment**
 
 You can apply a row filter policy to show specific data based on user groups.
 
-#### **Step 1: Define the Row Filter Policy**
+#### **Step 1: Define the row filter policy**
 
 - Add the filter policy to the `segments` section of your table definition:
 
