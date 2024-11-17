@@ -20,12 +20,12 @@ The Roles page provides a comprehensive view of system default roles alongside c
 
 To create a custom role follow the below steps:
 
-- Navigate to the Roles. Click on the “Create Role” button in the top right corner.
+- Navigate to the Roles tab. Click on the “Create Role” button in the top right corner.
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/bifrost/roles/roles.png" alt="Roles" style="width: 60rem; border: 1px solid black; width: 80% height: auto">
-    <figcaption>Roles</figcaption>
+    <img src="/interfaces/bifrost/roles/roles.png" alt="Roles" style="width: 40rem; border: 1px solid black; width: 80% height: auto">
+    <figcaption>Roles tab in Bifrost</figcaption>
   </div>
 </center>
 
@@ -34,12 +34,12 @@ To create a custom role follow the below steps:
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/bifrost/roles/roles2.png" alt="Roles" style="width: 60rem; border: 1px solid black; width: 80% height: auto">
-    <figcaption>Roles</figcaption>
+    <img src="/interfaces/bifrost/roles/roles2.png" alt="Roles" style="width: 20rem; border: 1px solid black; width: 80% height: auto">
+    <figcaption>Roles creation dialog box</figcaption>
   </div>
 </center>
 
-- A success message will be displayed confirming that the Use-Case has been successfully added to the role.
+- A success message will be displayed confirming that the has been created successfully.
 
 !!! Note
     After creating a new role, no users will be displayed initially. You must manually add users by navigating back to the Users tab and repeating the steps to [assign a role to a specific user](/interfaces/bifrost/users/#how-to-add-a-user-to-a-role).
