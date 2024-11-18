@@ -63,7 +63,7 @@ This step ensures that the database credentials are securely stored and ready fo
 
 With the Instance Secret deployed, the next task is to create a Depot that defines the connection configuration for your PostgreSQL database. The Depot acts as a bridge between DataOS and your data source.
 
-#### **Drafting the Depot Manifest**
+#### **Drafting the Depot manifest**
 
 Draft the manifest file for the Depot:
 
@@ -88,7 +88,7 @@ depot:
     database: sales_data # Replace with the database name to connect to
 ```
 
-### **Step 3: Applying the Depot Manifest**
+### **Step 3: Applying the Depot manifest**
 
 Apply the Depot manifest using the following command:
 
@@ -108,7 +108,7 @@ This command displays the details of the configured Depot, confirming that it is
 
 ---
 
-### **Step 5: Test Data Access**
+### **Step 5: Test data access**
 
 **Extracting metadata**
 
@@ -135,11 +135,17 @@ workflow:
 
 ---
 
-## Additional Learning Resources
+## Additional learning resources
 
 The following resources to deepen your understanding of data source connections:
 
 - [Depot Resource Documentation](https://dataos.info/resources/depot/)
 - [Instance Secret Resource Documentation](https://dataos.info/resources/instance_secret)
+- [Quick Guide: Depot Creation with DataOS CLI](/quick_guides/depot_creation_cli/)
 
 With this knowledge, you are now equipped to connect DataOS to a wide variety of data sources.
+
+## Next Step
+
+With Depot in place, you are now ready to build data pipelines to deliver reliable data for your data products ensuring seamless data flow.
+To learn more, refer to [Building and maintaining data pipelines](/learn/dp_developer_learn_track/build_pipeline/).
