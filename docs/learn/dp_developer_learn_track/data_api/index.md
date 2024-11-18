@@ -19,6 +19,7 @@ Here, you’ll find step-by-step instructions to build data API.
 
 1. You create a bit-bucket repository and clone it on your local system.
 2. Using VS code, you open the repository and create an ‘apis’ folder and a `config.yaml` manifest file.
+
     - config.yaml
         
         ```yaml
