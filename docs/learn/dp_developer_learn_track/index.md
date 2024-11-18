@@ -53,7 +53,7 @@ Now that we have a clear design plan, it’s time to move into the development p
 
 - [Building Data Pipelines](/learn/dp_developer_learn_track/build_pipeline/)
 
-- [Creating Semantic Models]()
+- [Creating Semantic Models](/learn/dp_developer_learn_track/create_semantic_model/)
 
 - [Implementing quality checks to maintain data integrity](/learn/dp_developer_learn_track/quality_check/)
 
@@ -71,7 +71,7 @@ The final step is to deploy the Data Product, making it available for consumptio
 
 - [Packaging the Data Product and related Resources into a deployment Bundle](/learn/dp_developer_learn_track/create_bundle/)
  
-- [Defining configurations, metadata, and settings in the Data Product Spec File](/learn/dp_developer_learn_track/create_dp_spec/)
+- [Defining configurations, metadata, and settings in the Data Product spec File](/learn/dp_developer_learn_track/create_dp_spec/)
 
 - [Deploying Bundle, Data Product Spec file and Scanner Manifest files using CLI](/learn/dp_developer_learn_track/deploy_dp_cli/)
 
