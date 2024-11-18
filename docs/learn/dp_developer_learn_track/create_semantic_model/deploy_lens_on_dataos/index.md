@@ -20,7 +20,7 @@ Before diving into configuring Lens, make sure you have everything ready:
 
     > **Important**: To prevent credential exposure, contact DataOS administrator and understand the best practices for handling sensitive data.
 
-4. **Organize Your Code Repository**: Place Depot manifests in a private, permission-controlled repository to maintain security and compliance. 
+4. **Organize Your Code Repository**: Place Lens manifests in a private, permission-controlled repository to maintain security and compliance. 
 
 ## Steps
 
