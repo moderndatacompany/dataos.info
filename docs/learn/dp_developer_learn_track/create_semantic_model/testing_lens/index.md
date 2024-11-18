@@ -427,6 +427,6 @@ You can achieve the same result in **Postman** by following these steps:
     ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/8b531079-87f2-4fc4-8f15-eeedfe0be3dd/image.png)
     
 
-1. **Review the Response**: Upon receiving the response, you find details about the lens, including its configuration and available tables, confirming the successful interaction with the Lens API.
+7. **Review the Response**: Upon receiving the response, you find details about the lens, including its configuration and available tables, confirming the successful interaction with the Lens API.
 
-[Deploying Lens on DataOS](https://www.notion.so/Deploying-Lens-on-DataOS-13bc5c1d487680caabe8f8d48fb98e71?pvs=21)
+[Deploying Lens on DataOS](/learn/dp_developer_learn_track/create_semantic_model/deploy_lens_on_dataos/)
