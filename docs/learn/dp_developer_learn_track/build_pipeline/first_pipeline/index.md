@@ -8,26 +8,26 @@ As a skilled Data Engineer/data Product Developer, you are presented with a new 
 
 ## Steps to follow
 
-1. **Identify Data Sources:** Determine the specific input and output data sources for the pipeline.
-2. **Select the Right Resource:** Maps the pipeline requirements to the most appropriate DataOS Resource.
-3. **Choose the Right Stack:** Select the ideal Stack to handle the pipeline’s data processing needs.
-4. **Create a Manifest File:** Configure the pipeline using a YAML manifest file.
-5. **Apply the Manifest File:** Finally, activate the pipeline using the DataOS CLI.
+1. **Identify data sources:** Determine the specific input and output data sources for the pipeline.
+2. **Select the right DataOS Resource:** Maps the pipeline requirements to the most appropriate DataOS Resource.
+3. **Choose the right Stack:** Select the ideal Stack to handle the pipeline’s data processing needs.
+4. **Create a manifest file:** Configure the pipeline using a YAML manifest file.
+5. **Apply the manifest file:** Finally, activate the pipeline using the DataOS CLI.
 
 
-### **Step 1: Identifying the Data Source**
+### **Step 1: Identifying the data source**
 
 Begin by identifying the input (Data Source A) and output (Data Source B) for the pipeline. Within DataOS, this involves understanding the characteristics of each data source:
 
-- **Data Source A:** A PostgreSQL database containing raw transactional data.
-- **Data Source B:** An S3 bucket for storing processed data in Parquet format.
+- **Data source A:** A PostgreSQL database containing raw transactional data.
+- **Data source B:** An S3 bucket for storing processed data in Parquet format.
 
 
 ### **Step 2: Creating Depots**
 
-In DataOS, pipelines can only be created for data sources connected using Depots. You need to ensure that Depots are built on top of the specific data sources. If they are not, please refer to the [Data Source Connectivity Module](/learn/data_developer_learn_track/data_source_connectivity/), to establish Depots on the specific source system.
+In DataOS, pipelines can only be created for data sources connected using Depots. You need to ensure that Depots are built on top of the specific data sources. If they are not, please refer to the [Data Source Connectivity Module](/learn/dp_developer_learn_track/data_source_connectivity/), to establish Depots on the specific source system.
 
-### **Step 3: Identifying the Right Resource**
+### **Step 3: Identifying the right DataOS Resource**
 
 Review the three primary DataOS Resources used for building pipelines in DataOS—**Workflow**, **Service**, and **Worker**—to determine which fits your use case.
 
@@ -39,7 +39,7 @@ Review the three primary DataOS Resources used for building pipelines in DataOS�
 
 Given the requirements for a batch pipeline, you can select the **Workflow** Resource, as it is designed for orchestrating multi-step data processing tasks.
 
-### **Step 4: Identifying the Right Stack**
+### **Step 4: Identifying the right Stack**
 
 DataOS provides several pre-defined stacks to handle various processing needs. Based on the requirement, you need to select the appropriate processing Stack.
 
@@ -55,7 +55,7 @@ DataOS provides several pre-defined stacks to handle various processing needs. B
 here for the given scenario, you can choose the **Flare Stack** for its robust capabilities in batch data processing. The Flare Stack enables you to efficiently read, process, and write data.
 
 
-### **Step 4: Creating the Manifest File**
+### **Step 4: Creating the manifest file**
 
 After deciding upon the suitable processing Stack, you need to draft the manifest file to configure the pipeline. Specify the **Workflow Resource**, define the input and output data sources, and integrate the **Flare Stack**.
 
@@ -108,7 +108,7 @@ workflow:
 ```
 
 
-### **Step 5: Applying the Manifest File**
+### **Step 5: Applying the manifest file**
 
 With the manifest file complete, use the DataOS CLI to deploy the pipeline:
 
@@ -128,6 +128,6 @@ By the end of this process, you have successfully created a batch data pipeline 
 
 You are now equipped to handle batch data pipelines efficiently. As you move forward, you can explore additional features and capabilities in DataOS to enhance pipeline robustness and scalability:
 
-- [Pipeline Observability](/learn/data_developer_learn_track/build_pipeline/pipeline_observability/)
-- [Scheduling Workflows](/learn/data_developer_learn_track/build_pipeline/scheduling_workflows/)
-- [Data Quality Checks](/learn/data_developer_learn_track/build_pipeline/dq_checks/)
+- [Pipeline observability](/learn/dp_developer_learn_track/build_pipeline/pipeline_observability/)
+- [Scheduling Workflows](/learn/dp_developer_learn_track/build_pipeline/scheduling_workflows/)
+- [Data quality checks](/learn/dp_developer_learn_track/build_pipeline/dq_checks/)

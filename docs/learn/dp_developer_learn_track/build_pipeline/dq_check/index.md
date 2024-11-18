@@ -22,7 +22,7 @@ The type of DataOS Resource you select depends on the use case:
 For your initial setup, choose the **Workflow Resource** to run scheduled data quality checks on a dataset.
 
 
-### **Step 2: Define the Workflow Manifest**
+### **Step 2: Define the Workflow manifest**
 Create a Workflow manifest to configure Soda Stack for batch quality checks. Ensure that the metadata and workflow-specific sections are properly defined.
 
 ```yaml
@@ -70,7 +70,7 @@ workflow:
                       category: Completeness
 ```
 
-### **Step 3: Define Soda Checks**
+### **Step 3: Define Soda checks**
 
 Use **SodaCL**, a YAML-based language, to define custom checks for data quality. Tailor the checks to address issues identified by your team:
 
@@ -94,7 +94,7 @@ stackSpec:
             attributes:
               category: Uniqueness
 ```
-### **Step 4: Configure Profiling (Optional)**
+### **Step 4: Configure profiling (Optional)**
 
 Enable profiling to gather insights into the dataset’s characteristics and data distribution. Specify the columns to be profiled in the manifest. Wildcard Matching: Use "*" to profile all columns in the dataset.
 
@@ -107,7 +107,7 @@ stackSpec:
           - "*"
 ```
 
-### **Step 5: Apply the Manifest**
+### **Step 5: Apply the manifest**
 Once the manifest is complete, apply it using the DataOS CLI:
 
 ```bash
@@ -116,7 +116,7 @@ dataos-ctl apply -f /path/to/soda-workflow.yaml -w public
 ```
 Verify the configuration in the Data Product Hub’s **Quality** tab, where the status of Soda checks is displayed.
 
-## Monitoring Results in the Quality Tab
+## Monitoring results in the Quality tab
 
 After applying the configuration, use the Quality tab in Metis to monitor the results of your checks. Each check is categorized as:
 

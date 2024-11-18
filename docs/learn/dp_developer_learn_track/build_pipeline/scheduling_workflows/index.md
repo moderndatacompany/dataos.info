@@ -1,8 +1,10 @@
 # Sheduling Workflows
 
-You understand the importance of efficient and reliable data workflows. When your team faces the challenge of frequent manual updates to keep data pipelines current, it leads to inefficiencies. To streamline this process, you’ll learn how to automate scheduling of data pipelines in DataOS, minimizing manual intervention.
-
 In this topic, you will explore how to set up and manage automated workflows, ensuring data is consistently updated and aligned with business needs. By the end, you’ll be equipped to configure scheduling attributes, use cron expressions, and implement best practices for creating reliable automated workflows in DataOS.
+
+## Scenario
+
+You understand the importance of efficient and reliable data workflows. When your team faces the challenge of frequent manual updates to keep data pipelines current, it leads to inefficiencies. To streamline this process, you’ll learn how to automate scheduling of data pipelines in DataOS, minimizing manual intervention.
 
 ## Prerequisites
 Before starting this topic, ensure you have:
@@ -17,11 +19,11 @@ Before starting this topic, ensure you have:
 
 Begin by defining your workflow setup:
 
-1. **Choose Workflow Logic**: Identify the specific data tasks like ingestion, transformation, or profiling.
-2. **Select Output Format**: Specify the desired output format (e.g., Iceberg).
-3. **Identify Source and Destination**: Ensure proper configuration of data sources (e.g., Pulsar topics) and output depots.
+1. **Choose Workflow logic**: Identify the specific data tasks like ingestion, transformation, or profiling.
+2. **Select output format**: Specify the desired output format (e.g., Iceberg).
+3. **Identify source and destination**: Ensure proper configuration of data sources (e.g., Pulsar topics) and output depots.
 
-### **Step 2: Configure Scheduling Attributes**
+### **Step 2: Configure scheduling attributes**
 
 Next, configure key scheduling attributes, starting with a cron expression to set execution intervals.
 
@@ -50,7 +52,7 @@ Key attributes include:
    - **Example**: `Asia/Kolkata` schedules executions based on Indian Standard Time (IST).
 
 
-### **Example Configuration**
+### **Example configuration**
 To set up a profiling task every 2 minutes, configure your Workflow manifest as follows:
 
 ```yaml
@@ -61,7 +63,7 @@ concurrencyPolicy: Allow
 endOn: 2024-11-01T23:40:45Z
 timezone: Asia/Kolkata
 ```
-#### **Complete Workflow Manifest**
+#### **Complete Workflow manifest**
 
 ```yaml
 
@@ -114,7 +116,7 @@ workflow:
                cluster: "system"
 
 ```
-### **Step 3: Apply the Configuration**
+### **Step 3: Apply the configuration**
 After finalizing the configuration, save it as workflow_schedule.yaml and apply it using the DataOS CLI:
 
 ```bash
@@ -128,10 +130,10 @@ Verify the schedule is active by running:
 dataos-ctl get -t workflow -w sandbox
 
 ```
-## Best Practices
+## Best practices
 Here are some best practices for scheduling workflows:
 
-1. Enable Retries: Set retries for transient issues to prevent failures.
+1. Enable retries: Set retries for transient issues to prevent failures.
 
 ```yaml
 
@@ -161,5 +163,5 @@ workflow:
       dependencies:
         - connect-customer
 ```
-2. Minimize Overlap: Use concurrency policies like Forbid to prevent conflicts in workflows with shared resources.
+2. Minimize overlap: Use concurrency policies like Forbid to prevent conflicts in workflows with shared resources.
 By following these steps and best practices, you will be able to automate data pipelines effectively, reducing manual interventions and enhancing data reliability.
