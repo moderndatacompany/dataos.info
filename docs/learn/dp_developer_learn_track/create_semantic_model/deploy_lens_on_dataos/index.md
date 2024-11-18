@@ -1,14 +1,12 @@
 # Deploy Lens in DataOS 
 
-After you’ve tested your Lens model locally and confirmed it’s working as expected, the next step is to deploy the model to a production environment, specifically DataOS. In this section, you’ll push your locally tested Lens model to a version-controlled repository and deploy it within DataOS using CI/CD pipelines.
+After you’ve tested your Lens model locally and confirmed it’s working as expected, the next step is to deploy the model to a production environment, specifically DataOS.
 
 ## Steps
 
 You follow the below steps to deploy a Lens on DataOS.
 
 ### **Step 1: Push the Lens model directory to a code repository**
-
-**Pushing to a public code repository**
 
 You first push your Lens model directory to a hosted code repository such as [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/push-code-to-bitbucket/), [GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github), [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/getting-started.html), etc.
 
@@ -17,7 +15,7 @@ You first push your Lens model directory to a hosted code repository such as [B
 
 </aside>
 
-### **Step 2: Create Instance Secrets for Code Repository Credentials**
+### **Step 2: Create Instance Secrets for code repository credentials**
 
 Create and configure an Instance Secret to secure your code repository credentials. This involves the following steps:
 
