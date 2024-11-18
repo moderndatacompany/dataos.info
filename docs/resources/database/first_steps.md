@@ -24,7 +24,7 @@ To assign use cases, you can either contact the DataOS Operator or create a Gran
 To create a Database Resource, data developers can define a set of attributes in a manifest file, typically in YAML format, and deploy it using the DataOS Command Line Interface (CLI) or API. Below is a sample manifest file for Database Resource:
 
 ???tip "Sample Database manifest"
-
+    
     ```yaml title="sample_worker.yml"
     --8<-- "examples/resources/database/database.yaml"
     ```

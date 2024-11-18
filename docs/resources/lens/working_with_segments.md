@@ -44,7 +44,7 @@ Segments are pre-defined groups of filters. It provides the ability to define Se
       sql: "{TABLE}.state = 'Illinois' or {TABLE}.state = 'Ohio'"
   ```
 
-## Defining Row Filter Policy on Segment
+## Defining row filter policy on Segment
 
 Data policies can be defined directly on segments to enforce data governance and compliance. This ensures that access and interaction with different subsets of data are managed effectively. It applies a row filter data policy to show specific data based on user groups.
 
