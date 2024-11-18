@@ -167,7 +167,7 @@ Implement attribute/role-based access control and data masking to secure sensiti
 - Are there sensitive data elements that require masking?
 - How will we maintain compliance with privacy regulations?
 
-### Defining quality checks
+### **b. Defining quality checks**
 
 Several quality checks are need to be established to ensure adherence to data quality standards:
 
@@ -177,11 +177,11 @@ Several quality checks are need to be established to ensure adherence to data qu
 - **Uniqueness:** Each `customer_id` must be unique, with no duplicates permitted.
 - **Validity:** The `mntwines` attribute must conform to specified criteria, ensuring the data falls within a valid range of 0 to 1. Any occurrence where the invalid count (`invalid_count(mntwines)`) exceeds 0 highlights a data quality issue that requires attention.
 
-### Step 7: Output and Delivery
+### **Step 7: Output and delivery**
 
 Identify how end users will consume the data product and the methods used for data delivery, such as APIs or connecting with BI tools
 
-Specify the API requirements or interfaces needed to deliver data insights to end users.
+### **a. Define the API interfaces needed to deliver data insights to users**
 
 **Questions to Ask:**
 

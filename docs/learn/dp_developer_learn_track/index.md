@@ -13,6 +13,7 @@ By the end of this course, you'll be able to:
 - **Deploy and Manage Data Products**: Utilize CI/CD practices for seamless deployment and updates.
 
 ## Module 1: Understanding Data Needs
+
 To create a successful data product, it’s crucial to first understand the business context and requirements. This module focuses on capturing key needs and expectations:
 
 <div class= "grid cards" markdown>
@@ -71,10 +72,10 @@ The final step is to deploy the Data Product, making it available for consumptio
 
 - [Packaging the Data Product and related Resources into a deployment Bundle](/learn/dp_developer_learn_track/create_bundle/)
  
-- [Defining configurations, metadata, and settings in the Data Product Spec File](/learn/dp_developer_learn_track/create_dp_spec/)
+- [Defining Data Product Spec File](/learn/dp_developer_learn_track/create_dp_spec/)
 
-- [Deploying Bundle, Data Product Spec file and Scanner Manifest files using CLI](/learn/dp_developer_learn_track/deploy_dp_cli/)
+- [Deploying Bundle and Data Product Specifications using CLI](/learn/dp_developer_learn_track/deploy_dp_cli/)
 
-- [Implementing CI/CD Integration to automate updates for reliable, up-to-date data products](/learn/dp_developer_learn_track/ci_cd/)
+- [Implementing CI/CD Integration to automate updates for reliable Data Products](/learn/dp_developer_learn_track/ci_cd/)
 
 </div>
