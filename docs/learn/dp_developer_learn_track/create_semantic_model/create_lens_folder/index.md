@@ -23,9 +23,9 @@ Lens/
 └── user_groups.yml
 ```
 
-In the Lens folder structure, you define the following folders: 
+In the Lens folder structure, you define and organize the artifacts according to the key steps in building the semantic model: loading data, defining tables, adding dimensions and measures, creating views, and managing user groups.
 
-## **Loading data from data source**
+## Loading data from data source
 
 You start by creating the **SQL** folder, where you write SQL scripts to select relevant columns from the source tables for each entity: **customer**, **product**, and **purchase** data. You focus on choosing only the necessary columns to prevent performance issues while ensuring essential data is available for analysis.
 
@@ -91,7 +91,7 @@ FROM
 
 ## Defining the tables
 
-Next, you move to the tables folder. Here, you define a manifest to load the selected columns from the SQL files into tables in YAML. 
+Next, you move to the tables folder. Here, you define a manifest to load the selected columns from the SQL files into tables in YAML. Here, you define the base table for all entities.
 
 ```yaml
 table:
@@ -102,11 +102,9 @@ table:
 
 After defining the base table, you add measures and dimensions to provide meaningful analysis.
 
-Similarly, you define the base table for all entities.
-
 ## Adding dimensions and measures
 
-So you add dimensions (attributes like `customer_id`, `product_id`) and measures (quantitative metrics such as `total_customers`, `total_products`) for each key dataset. Here you also apply a data policy to secure the price column of the `product` table. The applied data policy redacts the data from the users in the ‘dataconsumer’ group. Following are the yaml manifest files of the table of each entity:
+You add (attributes like `customer_id`, `product_id`) and measures (quantitative metrics such as `total_customers`, `total_products`) for each key dataset. Here you also apply a data policy to secure the maritial_status column of the `product` table. The applied data policy redacts the data from the users in the ‘dataconsumer’ group. Following are the yaml manifest files of the table of each entity:
 
 <details>
 
@@ -640,26 +638,25 @@ user_groups.yml
     
 ```yaml
 user_groups:
-    - name: dataconsumer
+  - name: dataconsumer
     api_scopes:
-        - meta
-        - data
-        - graphql
-        - jobs
-        - source
+      - meta
+      - data
+      - graphql
+      - jobs
+      - source
     includes: users:id:iamgroot
 
-    - name: default
+  - name: default
     api_scopes:
-        - meta
-        - data
-        - graphql
-        - jobs
-        - source
+      - meta
+      - data
+      - graphql
+      - jobs
+      - source
     includes: "*"
 ```
 
 ## Next Step
 
-After successfully creating your Lens folder structure and preparing all the necessary manifests for your semantic model, it's time to take the next step in the process: [Testing Lens locally](/learn/dp_developer_learn_track/create_semantic_model/testing_lens/).
-
+After successfully creating Lens folder structure and preparing all the necessary manifests for your semantic model, it's time to take the next step in the process: [Testing Lens locally](/learn/dp_developer_learn_track/create_semantic_model/testing_lens/).

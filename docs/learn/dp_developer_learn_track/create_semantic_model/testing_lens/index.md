@@ -12,11 +12,11 @@ After you’ve created your Lens model, you are tasked to test it locally to ens
 Before moving to technicalities, ensure you have the following pre-requisites installed.
 
 - Docker
-- Docker composetechnical
+- Docker compose
 - Postman (optional)
 - VS Code
 
-## Docker
+### **Docker**
 
 You use Docker to run Lens in an isolated environment on your local system. First, check if Docker is already installed by running `docker --version` in your terminal. If Docker is not installed, follow the appropriate installation guide for a particular operating system:
 
@@ -24,7 +24,7 @@ You use Docker to run Lens in an isolated environment on your local system. Firs
 - **Windows:** Follow the installation guide of the Docker engine for Windows here: [Install Docker on Windows](https://docs.docker.com/desktop/install/windows-install/).
 - **macOS:** Follow the installation guide of the Docker engine for Linux here: [Install Docker on macOS](https://docs.docker.com/desktop/install/mac-install/). 
 
-## Docker login
+### **Docker login**
 
 Before pulling or pushing images from or to a private repository, you must log in to Docker Hub using the command line. 
 
@@ -34,7 +34,7 @@ docker login --username=lensuser01
 
 Replace with your username.
 
-## Docker pull
+### **Docker pull**
 
 After successfully logging in, pull the image from a registry, follow the below command:
 
@@ -46,27 +46,26 @@ docker pull tmdclabs/lens:0.35.60.
 🗣️ Tags identify specific versions of an image and can be updated over time. Ensure the latest image tag or the tag specified in the docker-compose YAML is pulled.
 </aside>
 
-## Docker Compose
+### **Docker Compose**
 
-Before installing Docker Compose, it is advisable to check if it has already been installed on the system. Use the below command to check:
+Before installing Docker compose, it is advisable to check if it has already been installed on the system. Use the below command to check:
 
 ```bash
 docker-compose --version
 ```
-
- This command will return the installed version of Docker Compose if it is present. For example:
+This command will return the installed version of Docker Compose if it is present. For example
 
 ```bash
 docker-compose version 1.29.2, build 5becea4c
 ```
 
-If Docker Compose is not installed, refer to the following link to [install Docker Compose](https://docs.docker.com/compose/install/).
+If Docker compose is not installed, refer to the following link to [install Docker compose](https://docs.docker.com/compose/install/).
 
-## Postman or Postman Extension for VS Code
+### **Postman or Postman Extension for VS Code**
 
 Postman is a tool that allows data developers to perform querying and testing within the Lens environment by sending API requests through an intuitive user interface. Follow the [Postman Installation Guide](https://learning.postman.com/docs/getting-started/installation/installation-and-updates/) to install Postman on your local system.
 
-## Python
+### **Python**
 
 Python 3.7 or higher is required for managing directory structures and virtual environments. Check if Python is installed by running below command:
 
@@ -80,7 +79,7 @@ The expected output should be **`Python 3.X`** or a version greater than 3.7. 
 
 If Python is not installed on the system, follow the steps below to download and install the appropriate version.
 
-1. **Access the Installation Guide**: Visit the [Python Installation Guide](https://realpython.com/installing-python/#how-to-install-python-on-windows). This guide provides detailed instructions for installing Python on various operating systems, including Windows, macOS, and Linux.
+1. **Access the installation guide**: Visit the [Python Installation Guide](https://realpython.com/installing-python/#how-to-install-python-on-windows). This guide provides detailed instructions for installing Python on various operating systems, including Windows, macOS, and Linux.
 2. **Download Python**: From the guide, select the link corresponding to the operating system and download the latest version of Python.
 3. **Install Python**: Run the downloaded installer. Before clicking "Install Now," check the box that says "Add Python 3.x to PATH.” This step is crucial as it makes Python accessible from the command line.
 4. **Verify Installation**: After installation, open a command line interface and run the following command to check the installed version of Python. The expected output should be **`Python 3.X`** or another version greater than 3.7.
@@ -97,7 +96,7 @@ If Python is not installed on the system, follow the steps below to download and
 
 Visual Studio Code (VS Code) must be installed on the local system to create a Lens model effectively. Below are the links for installing VS Code on various operating systems.
 
-**Installation Links by Operating System**
+**Installation links by Operating System**
 
 - **Linux**: Follow the detailed steps to install VS Code on your Linux system by accessing the [Install VS Code on Linux guide](https://code.visualstudio.com/docs/setup/linux).
 - **Windows**: To install VS Code on a Windows machine, refer to the [Install VS Code on Windows guide](https://code.visualstudio.com/docs/setup/windows).
@@ -110,46 +109,45 @@ Visual Studio Code (VS Code) must be installed on the local system to create a L
 
 Now, you create a file `docker-compose.yml` in a folder parallel to your model folder (not within it).
 
-- docker-compose.yml
-    
-    ```yaml
-    version: "2.2"
-    
-    x-lens2-environment: &lens2-environment
-      # DataOS
-      DATAOS_FQDN: ${DATAOS-CONTEXT.dataos.app} 
-      # Overview
-      LENS2_NAME: ${Name of the Lens}
-      LENS2_DESCRIPTION: "${Description of the Lens}"
-      LENS2_TAGS: "${retail, sales and customer insights}"
-      LENS2_AUTHORS: "${Author1, Author2}"
-      LENS2_SOURCE_TYPE: ${minerva}
-      LENS2_SOURCE_NAME: ${system}
-      LENS2_SOURCE_CATALOG_NAME: ${icebase}
-      DATAOS_RUN_AS_APIKEY: ${YOUR_DATAOS_APIKEY}
-      # Log
-      LENS2_LOG_LEVEL: error
-      CACHE_LOG_LEVEL: "error"
-      # Operation
-      LENS2_DEV_MODE: true   
-      LENS2_REFRESH_WORKER: true
-      LENS2_SCHEMA_PATH: model
-      LENS2_PG_SQL_PORT: 5432
-      CUBESTORE_DATA_DIR: "/var/work/.store"
-    
-    services:
-      api:
-        restart: always
-        image: rubiklabs/lens2:0.35.60-8
-        ports:
-          - 4000:4000
-          - 25432:5432
-          - 13306:13306
-        environment:
-          <<: *lens2-environment   
-        volumes:
-          - ./model:/etc/dataos/work/model
-    ```
+
+```yaml
+version: "2.2"
+
+x-lens2-environment: &lens2-environment
+  # DataOS
+  DATAOS_FQDN: ${DATAOS-CONTEXT.dataos.app} 
+  # Overview
+  LENS2_NAME: ${Name of the Lens}
+  LENS2_DESCRIPTION: "${Description of the Lens}"
+  LENS2_TAGS: "${retail, sales and customer insights}"
+  LENS2_AUTHORS: "${Author1, Author2}"
+  LENS2_SOURCE_TYPE: ${minerva}
+  LENS2_SOURCE_NAME: ${system}
+  LENS2_SOURCE_CATALOG_NAME: ${icebase}
+  DATAOS_RUN_AS_APIKEY: ${YOUR_DATAOS_APIKEY}
+  # Log
+  LENS2_LOG_LEVEL: error
+  CACHE_LOG_LEVEL: "error"
+  # Operation
+  LENS2_DEV_MODE: true   
+  LENS2_REFRESH_WORKER: true
+  LENS2_SCHEMA_PATH: model
+  LENS2_PG_SQL_PORT: 5432
+  CUBESTORE_DATA_DIR: "/var/work/.store"
+
+services:
+  api:
+    restart: always
+    image: rubiklabs/lens2:0.35.60-8
+    ports:
+      - 4000:4000
+      - 25432:5432
+      - 13306:13306
+    environment:
+      <<: *lens2-environment   
+    volumes:
+      - ./model:/etc/dataos/work/model
+```
     
 
 You use the pre-configured template and update a few settings, such as your environment's URL, Lens metadata, and source details.
@@ -173,7 +171,7 @@ LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
 
 - **Customize the source details:** 
 
-Add the environment variables to connect to the data source via different methods.
+Add the environment variables to connect to the data source via Depot.
 
 - **Environment variable for connecting via data source Depot**
     
@@ -184,7 +182,7 @@ Add the environment variables to connect to the data source via different method
       DATAOS_RUN_AS_APIKEY: ****** # Add the user API Key for the env
     ```
     
-- **Environment variable to connect via Minerva or Themis Cluster**
+<!-- - **Environment variable to connect via Minerva or Themis Cluster**
     
     ```bash
       # Data Source env variables for connecting to the source via the Minerva cluster
@@ -193,7 +191,7 @@ Add the environment variables to connect to the data source via different method
       LENS2_SOURCE_CATALOG_NAME: ${icebase} #add the catalog name (e.g., icebase)
       DATAOS_RUN_AS_APIKEY: abcdefgHh==
     ```
-    
+     -->
 
 - **Verify Service Configuration:** Ensure that the image tag is up to date or is the same as the one you pulled in the prerequisite stage.
 
@@ -230,7 +228,7 @@ To access the Lens, you utilize the following command to enter the username and 
 psql -h localhost -p 25432 -d lens:curriculum:product360
 ```
 
-### **Connection Details**
+### **Connection details**
 
 <aside class="callout">
 🗣️ Always refer to 'ports' within the services section in `docker-compose.yml` for the exposed port.
@@ -261,8 +259,10 @@ You use the following details to connect to the PostgreSQL interface:
     ```bash
     dataos-ctl user apikey get
     ```
+**Commands to run**
 
-You execute a query to list all the tables in the connected database, run:
+You execute a command to list all the tables in the connected database, run:
+
 
 ```sql
 postgres=> \dt
@@ -285,11 +285,9 @@ postgres=> \dt
 
 Here are additional Commands for your reference
     
-    
-| Command Description | Command Example |
+| Command Description | Command |
 | --- | --- |
-| Show the schema and details of a specific table | `\d [table_name]`
-Example: `\d customers` |
+| Show the schema and details of a specific table | `\d [table_name]` |
 | List all databases in the PostgreSQL server | `\l` |
 | List all roles and users | `\du` |
 | List all schemas in the database | `\dn` |
@@ -417,5 +415,8 @@ You can achieve the same result in **Postman** by following these steps:
 7. **Review the Response**: Upon receiving the response, you find details about the lens, including its configuration and available tables, confirming the successful interaction with the Lens API.
 
 ## Next steps
+
+After testing, you can deploy the model to production. This phase involves optimizing the model for performance, ensuring it integrates with existing business systems, and making it accessible to users.
+
 
 [Deploying Lens on DataOS](/learn/dp_developer_learn_track/create_semantic_model/deploy_lens_on_dataos/)

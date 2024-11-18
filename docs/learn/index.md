@@ -57,19 +57,19 @@ Here are the key responsibilities of a Data Product Consumer, though specific ta
 
 #### **Key Responsibilities**
 
-- **Discovering and Accessing Data Products: I**dentify and access relevant data products based on business needs. Interpret metadata to understand product details and assess the usability of data products for informed decision-making.
+- **Discovering and accessing Data Products: I**dentify and access relevant data products based on business needs. Interpret metadata to understand product details and assess the usability of data products for informed decision-making.
 
-- **Navigating Semantic Models:** Understand the relationships between data entities within semantic models to improve data comprehension.
+- **Navigating semantic models:** Understand the relationships between data entities within semantic models to improve data comprehension.
 
-- **Checking Data Quality:** Evaluate data products for accuracy, consistency, and completeness, ensuring high-quality analysis and decision-making.
+- **Checking dqta Quality:** Evaluate data products for accuracy, consistency, and completeness, ensuring high-quality analysis and decision-making.
 
-- **Understanding Governance and Policies:** Ensure data usage and access aligns with organizational security standards and regulations.
+- **Understanding governance and policies:** Ensure data usage and access aligns with organizational security standards and regulations.
 
 - **Activating Data Products: Consider how** data products can be consumed with Business Intelligence (BI) tools, APIs, and other applications to enhance workflows and reporting.
 
-- **Tracking Metrics and Performance:** Monitor performance, usage, and impact metrics of data products to assess their effectiveness and communicate results to stakeholders.
+- **Tracking metrics and performance:** Monitor performance, usage, and impact metrics of data products to assess their effectiveness and communicate results to stakeholders.
 
-#### **Modules Overview**
+#### **Modules overview**
 
 In this learning track, you will get a comprehensive introduction to data products, covering their types and importance in driving insights. You'll learn to navigate the Data Product Hub (DPH), access essential data product information, analyze input/output for meaningful insights, explore semantic models, assess data quality, and understand governance policies for data security.
 
@@ -140,28 +140,27 @@ The DataOS Operator handles a range of tasks, from provisioning compute resource
 #### **Key Responsibilities**
 
 A DataOS Operator could be an existing Forward Deployment Engineer, DevOps Engineer, or a Cloud Engineer. Here are the key responsibilities of a DataOS Operator:
+- **Kubernetes cluster management**: Oversee and manage Kubernetes clusters to ensure the optimal performance of the DataOS platform.
 
-- **Kubernetes Cluster Management**: Oversee and manage Kubernetes clusters to ensure the optimal performance of the DataOS platform.
+- **Cloud infrastructure management**: Handle deployments and resource management on cloud platforms like AWS, GCP, or Azure.
 
-- **Cloud Infrastructure Management**: Handle deployments and resource management on cloud platforms like AWS, GCP, or Azure.
+- **System monitoring**: Use tools like Prometheus and Grafana to monitor system health, track performance metrics, and resolve issues proactively.
 
-- **System Monitoring**: Use tools like Prometheus and Grafana to monitor system health, track performance metrics, and resolve issues proactively.
+- **Access control management**: Manage authentication and authorization mechanisms to enforce data governance and ensure appropriate access to resources.
 
-- **Access Control Management**: Manage authentication and authorization mechanisms to enforce data governance and ensure appropriate access to resources.
+- **Container management**: Manage Docker containers to ensure smooth operation within DataOS' containerized environment.
 
-- **Container Management**: Manage Docker containers to ensure smooth operation within DataOS' containerized environment.
+- **Minerva cluster management**: Optimize and manage Minerva Clusters to handle query processing and ensure efficient resource use.
 
-- **Minerva Cluster Management**: Optimize and manage Minerva Clusters to handle query processing and ensure efficient resource use.
+- **Credential and secret management**: Securely manage sensitive information, including credentials and secrets, to maintain system integrity.
 
-- **Credential and Secret Management**: Securely manage sensitive information, including credentials and secrets, to maintain system integrity.
+- **Compute resource provisioning and scaling**: Provision and scale compute instances based on the platform’s needs, ensuring sufficient resources for workflows, jobs, and queries.
 
-- **Compute Resource Provisioning and Scaling**: Provision and scale compute instances based on the platform’s needs, ensuring sufficient resources for workflows, jobs, and queries.
+- **Regulatory compliance**: Ensure that all platform operations comply with relevant regulatory standards for security and data management.
 
-- **Regulatory Compliance**: Ensure that all platform operations comply with relevant regulatory standards for security and data management.
+- **System security**: Maintain the security of the DataOS platform, implementing best practices for resource and data protection.
 
-- **System Security**: Maintain the security of the DataOS platform, implementing best practices for resource and data protection.
-
-#### **Modules Overview**
+#### **Modules overview**
 
 The learning track is divided into modules, with each module focusing on key operational areas. Every module contains specific topics that address common challenges you will encounter as a DataOS Operator and guide you through the core aspects of this role with the tools to troubleshoot efficiently.
 
@@ -169,20 +168,21 @@ The learning track is divided into modules, with each module focusing on key ope
 <img src="/learn/lt_dataos_operator.jpg" alt="infographics">
 </div>
 
-**Detailed Module Breakdown**
+**Detailed module breakdown**
 
 ??? "Click here for details on the DataOS Operator learning track modules." 
     | No | Modules | Description | Topics |
     |----|---------|-------------|--------|
-    | 1  | **Compute Management** | Learn how to manage compute resources effectively to ensure smooth operation of workflows, jobs, services, and querying processes within DataOS. | <ul><li><strong>Managing Compute Resources to Avoid Workflow/Job Failures:</strong> Manage and scale compute resources to ensure that workflows, jobs, and services do not fail due to insufficient compute availability.</li><li><strong>Provisioning Minerva Clusters for Querying:</strong> Learn how to troubleshoot issues related to provisioning Minerva Clusters for querying tasks. This includes expanding compute resources or reallocating resources to ensure that queries can run smoothly.</li></ul> |
-    | 2  | **Query Cluster Management** | Understand how to optimize and manage query clusters to provide seamless data access and performance. | <ul><li><strong>Optimizing Query Clusters for Better Performance:</strong> Identify and resolve issues related to underperforming query clusters, including resizing and reconfiguring clusters for optimal performance.</li><li><strong>Scheduling Query Clusters Using Cron Jobs:</strong> Learn how to schedule query clusters using cron jobs, ensuring that they are available at specific times for batch processes or other scheduled tasks.</li></ul> |
-    | 3  | **Credential Security** | Safeguard sensitive information by managing credentials securely within the DataOS platform. | <ul><li><strong>Preventing Credential Exposure in Code:</strong> Know about best practices for managing and securing credentials to prevent accidental exposure in code. You will learn about secure storage techniques and tools for credential management.</li></ul> |
-    | 4  | **Data Source Connectivity** | Learn how to establish secure and stable connections to data sources while adhering to best practices for security and performance. | <ul><li><strong>Securing Data Source Connections:</strong> Learn to set up secure connections to various data sources, including encrypting credentials and following security best practices to protect data access.</li></ul> |
-    | 5  | **Access Management** | Ensure appropriate access control by managing user permissions and roles within the DataOS platform. | <ul><li><strong>Granting Appropriate User Access:</strong> Understand the process of evaluating and granting user access requests, ensuring that permissions are appropriately allocated according to the principle of least privilege.</li></ul> |
-    | 6  | **System Monitoring** | Proactively monitor the platform using system metrics to ensure optimal performance and resolve issues before they affect operations. | <ul><li><strong>Monitoring System Metrics for Proactive Issue Resolution:</strong> Learn how to use monitoring tools like Prometheus and Grafana to track key system metrics and proactively manage resource usage. This topic helps you catch issues early and maintain platform performance.</li></ul> |
-    | 7  | **Interoperability with External Platforms** | Ensure smooth interoperability between DataOS and external platforms by managing integrations and connections securely. | <ul><li><strong>Managing Interoperability with External Platforms:</strong> Focus on setting up and maintaining secure and stable connections with external platforms, ensuring that DataOS integrates seamlessly with third-party systems.</li></ul> |
-    | 8  | **Stack Provisioning** | Scale the DataOS platform by provisioning additional stacks to meet increasing resource demands. | <ul><li><strong>Provisioning New Stacks for Resource Scalability:</strong> Learn how to provision additional compute, storage, and networking stacks to ensure that the platform can handle growing workloads and future demands.</li></ul> |
-    | 9  | **Compliance and Governance** | Ensure that the DataOS platform adheres to global data governance standards and regulatory requirements. | <ul><li><strong>Maintaining Compliance with Data Governance Regulations:</strong> Understand how to maintain compliance with regulations such as GDPR, CCPA, and HIPAA, ensuring that DataOS meets all legal and governance requirements.</li></ul> |
+    | 1  | **Compute management** | Learn how to manage compute resources effectively to ensure smooth operation of workflows, jobs, services, and querying processes within DataOS. | <ul><li><strong>Managing compute resources to avoid workflow/job failures:</strong> Manage and scale compute resources to ensure that workflows, jobs, and services do not fail due to insufficient compute availability.</li><li><strong>Provisioning Minerva clusters for querying:</strong> Learn how to troubleshoot issues related to provisioning Minerva Clusters for querying tasks. This includes expanding compute resources or reallocating resources to ensure that queries can run smoothly.</li></ul> |
+    | 2  | **Query cluster management** | Understand how to optimize and manage query clusters to provide seamless data access and performance. | <ul><li><strong>Optimizing query clusters for better performance:</strong> Identify and resolve issues related to underperforming query clusters, including resizing and reconfiguring clusters for optimal performance.</li><li><strong>Scheduling query clusters using cron jobs:</strong> Learn how to schedule query clusters using cron jobs, ensuring that they are available at specific times for batch processes or other scheduled tasks.</li></ul> |
+    | 3  | **Credential security** | Safeguard sensitive information by managing credentials securely within the DataOS platform. | <ul><li><strong>Preventing credential exposure in code:</strong> Know about best practices for managing and securing credentials to prevent accidental exposure in code. You will learn about secure storage techniques and tools for credential management.</li></ul> |
+    | 4  | **Data source connectivity** | Learn how to establish secure and stable connections to data sources while adhering to best practices for security and performance. | <ul><li><strong>Securing data source connections:</strong> Learn to set up secure connections to various data sources, including encrypting credentials and following security best practices to protect data access.</li></ul> |
+    | 5  | **Access management** | Ensure appropriate access control by managing user permissions and roles within the DataOS platform. | <ul><li><strong>Granting appropriate user access:</strong> Understand the process of evaluating and granting user access requests, ensuring that permissions are appropriately allocated according to the principle of least privilege.</li></ul> |
+    | 6  | **System monitoring** | Proactively monitor the platform using system metrics to ensure optimal performance and resolve issues before they affect operations. | <ul><li><strong>Monitoring system metrics for proactive issue resolution:</strong> Learn how to use monitoring tools like Prometheus and Grafana to track key system metrics and proactively manage resource usage. This topic helps you catch issues early and maintain platform performance.</li></ul> |
+    | 7  | **Interoperability with external platforms** | Ensure smooth interoperability between DataOS and external platforms by managing integrations and connections securely. | <ul><li><strong>Managing interoperability with external platforms:</strong> Focus on setting up and maintaining secure and stable connections with external platforms, ensuring that DataOS integrates seamlessly with third-party systems.</li></ul> |
+    | 8  | **Stack provisioning** | Scale the DataOS platform by provisioning additional stacks to meet increasing resource demands. | <ul><li><strong>Provisioning new stacks for resource scalability:</strong> Learn how to provision additional compute, storage, and networking stacks to ensure that the platform can handle growing workloads and future demands.</li></ul> |
+    | 9  | **Compliance and governance** | Ensure that the DataOS platform adheres to global data governance standards and regulatory requirements. | <ul><li><strong>Maintaining compliance with data governance regulations:</strong> Understand how to maintain compliance with regulations such as GDPR, CCPA, and HIPAA, ensuring that DataOS meets all legal and governance requirements.</li></ul> |
+
 
 <aside class="callout">
 🗣 For more information about the onboarding process, please reach out to our team at content@tmdc.io.
