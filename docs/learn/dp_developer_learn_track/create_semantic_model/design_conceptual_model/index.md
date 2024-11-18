@@ -121,6 +121,7 @@ After you establish your goals, value objectives, drivers, measures, and dimensi
 
 ## Next steps
 
-Before delving into the technicalities of building a Lens semantic model, it’s essential to grasp the fundamental components and concepts that form the backbone of the Lens framework. Understanding these key elements will allow you to design and work with data models effectively. In this section, we'll cover the main aspects of the Lens framework: Tables, Views, Joins, Dimensions, Measures, and Segments.
+Before delving into the technicalities of building a Lens semantic model, it’s essential to grasp the fundamental components and concepts that form the backbone of the Lens framework. Understanding these key elements will allow you to design and work with data models effectively. 
 
 [Key concepts of Lens](/learn/dp_developer_learn_track/create_semantic_model/key_concepts_of_lens/)
+
