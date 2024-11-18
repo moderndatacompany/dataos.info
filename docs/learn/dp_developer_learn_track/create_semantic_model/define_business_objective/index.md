@@ -5,7 +5,7 @@
 
 The sales and marketing department has approached you with a request. Their focus is on optimizing customer engagement and sales, and they believe that data insights can play a pivotal role in achieving these goals. 
 
-The team and other stakeholder explains that they have identified some key business priorities that must be addressed. They ask you to help them build a data model to track performance, improve sales strategies, and ultimately increase revenue. 
+The team and other stakeholders explain that they have identified some key business priorities that must be addressed. They ask you to help them build a data model to track performance, improve sales strategies, and ultimately increase revenue. 
 
 ## **Business Objectives**
 
