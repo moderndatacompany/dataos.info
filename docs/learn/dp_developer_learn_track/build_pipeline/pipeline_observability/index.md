@@ -10,11 +10,11 @@ Imagine you are a Data Product Developer, tasked with ensuring that workflows ru
 
 The Monitor Resource of type Report (or simply Report Monitor) allows you to track specific string values, such as the runtime status of workflows. 
 
-## Configuring the Report Monitor
+## Configuring Report Monitor
 
 Let us consider that for the given scenario, you decide to configure a Report Monitor for a workflow named `scan-data-product-test`. Your goal is to receive an incident notification every time the workflow status changes to “succeeded.” Here’s how you can set it up:
 
-### Step 1: Define the Resource Metadata
+### Step 1: Define Resource metadata
 
 Begin by defining the metadata for the Monitor Resource. This metadata ensures the monitor is uniquely identifiable and properly tagged.
 
@@ -30,7 +30,7 @@ description: Attention! workflow run is succeeded.
 layer: user
 ```
 
-### Step 2: Specify the Monitor Configuration
+### Step 2: Specify Monitor configuration
 
 Next, Configure the Monitor-specific section. You can set a schedule to check the workflow status every 3 minutes and defines the incident details to be triggered upon detecting the desired condition.
 
@@ -45,7 +45,7 @@ monitor:
   type: report_monitor
 ```
 
-### Step 3: Configure the Report Monitor Specification
+### Step 3: Configure the Report Monitor specification
 
 To track the workflow runtime status, set up the Report Monitor’s `report` specification. You need to use the DataOS API endpoint to fetch runtime details and define the condition to match the “succeeded” status.
 
@@ -65,7 +65,7 @@ To track the workflow runtime status, set up the Report Monitor’s `report` spe
 
 ---
 
-## Testing the Configuration
+## Testing the configuration
 
 Before finalizing the monitor, test the API endpoint using a tool like Postman. Replace placeholders such as resource name, version, and workspace with actual values to ensure the API returns the expected runtime status. Once satisfied, you can proceed to deploy the configuration.
 
@@ -77,6 +77,6 @@ Now you can apply the YAML configuration using the DataOS CLI:
 dataos-ctl resource apply -f /path/to/runtime-monitor.yaml
 ```
 
-### Monitoring Workflow Success
+### Monitoring Workflow success
 
 With the Report Monitor in place, you receive high-severity incident alerts whenever the `scan-data-product-test` workflow succeeds. This ensures that your team can respond promptly, optimizing their operational efficiency.

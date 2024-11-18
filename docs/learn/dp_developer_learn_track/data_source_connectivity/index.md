@@ -1,5 +1,5 @@
 
-# Source Data Connectivity
+# Source data connectivity
 
 Connecting to data sources is the first step in building Data Products with DataOS. Now, it's time to set up connections to various data sources. In this topic, you'll learn how to configure **Depots** in DataOS, allowing seamless and secure access to a range of real-world data sources without moving the data.
 
@@ -7,7 +7,7 @@ Connecting to data sources is the first step in building Data Products with Data
 
 Your team is expanding its use of DataOS and needs to integrate multiple data sources into the platform. Using **Depots**, you can establish secure connections to these data sources, enhancing data interoperability while keeping the data securely in place. This approach not only preserves data security but also facilitates interaction with various DataOS Resources.
 
-## Quick Concepts
+## Quick concepts
 
 The **Depot Resource** in DataOS provides a standardized way to connect to a variety of enterprise data sources, such as:
 
@@ -43,7 +43,7 @@ Before diving into configuring data source connections, make sure you have every
 
 4. **Organize Your Code Repository**: Place Depot manifests in a private, permission-controlled repository to maintain security and compliance. 
 
-## Data Source Connection - PostgreSQL
+## Data source connection - PostgreSQL
 For demonstration purposes, we'll use a PostgreSQL database in this example. However, the same process applies to any database that supports the JDBC protocol, such as MySQL, MariaDB, and MSSQL-Server.
 
 With permissions set up, the next step is to establish a connection from DataOS to your hosted PostgreSQL database. This connection is vital for seamless data retrieval, enabling you to access and work with PostgreSQL datasets directly in DataOS. It lays the foundation for building data pipelines, executing queries, and developing valuable data products using your PostgreSQL data source.
