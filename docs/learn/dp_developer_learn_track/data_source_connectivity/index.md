@@ -30,16 +30,18 @@ Before diving into configuring data source connections, make sure you have every
 
     | **Access Permission (via use-cases)**       | **Access Permissions (via tags)**      |
     |--------------------------------------------|---------------------------------------|
-    | Read Workspace                             | roles:id:data-dev                     |
-    | Manage All Depot                           | roles:id:system-dev                   |
-    | Read All Dataset                           | roles:id:user                         |
+    | Read Workspace                             | 'roles:id:data-dev'                     |
+    | Manage All Depot                           | 'roles:id:system-dev'                   |
+    | Read All Dataset                           | 'roles:id:user'                         |
     | Read all secrets from Heimdall             |                                       |
 
-2. **Manage Credentials Securely**: Use **Instance Secrets** for storing your data source credentials, ensuring sensitive information remains protected.
+2. **Check CLI installation and initialization**: You need this text-based interface that allows you to interact with the DataOS context via command prompts. Click [here](/interfaces/cli/) to learn more.
+
+3. **Manage Credentials Securely**: Use **Instance Secrets** for storing your data source credentials, ensuring sensitive information remains protected.
 
     > **Important**: To prevent credential exposure, contact DataOS administrator and understand the best practices for handling sensitive data.
 
-3. **Organize Your Code Repository**: Place Depot manifests in a private, permission-controlled repository to maintain security and compliance. 
+4. **Organize Your Code Repository**: Place Depot manifests in a private, permission-controlled repository to maintain security and compliance. 
 
 ## Data Source Connection - PostgreSQL
 For demonstration purposes, we'll use a PostgreSQL database in this example. However, the same process applies to any database that supports the JDBC protocol, such as MySQL, MariaDB, and MSSQL-Server.

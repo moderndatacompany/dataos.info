@@ -24,9 +24,6 @@ The following DataOS Resources are required for the example scenarios:
 4. Soda Workflows to check the quality of data
 5. Policy to enable accessing certain columns of data which is masked by default DataOS policies.
 
-> **To access manifest files for all these Resources, refer to the Code section.**
-> 
-
 ## Step 2: Creating a Bundle Resource
 
 The Bundle Resources section allows you to define the Resources that make up the data product/application and their dependencies in the form of a flattened DAG.

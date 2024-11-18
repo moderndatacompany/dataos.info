@@ -141,5 +141,11 @@ The following resources to deepen your understanding of data source connections:
 
 - [Depot Resource Documentation](https://dataos.info/resources/depot/)
 - [Instance Secret Resource Documentation](https://dataos.info/resources/instance_secret)
+- [Quick Guide: Depot Creation with DataOS CLI](/quick_guides/depot_creation_cli/)
 
 With this knowledge, you are now equipped to connect DataOS to a wide variety of data sources.
+
+## Next Step
+
+With Depot in place, you are now ready to build data pipelines to deliver reliable data for your data products ensuring seamless data flow.
+To learn more, refer to [Building and maintaining data pipelines](/learn/dp_developer_learn_track/build_pipeline/).

@@ -18,9 +18,9 @@ Before diving into building data pipelines, you need to ensure:
 
 | **Access Permission (if granted using use-cases)** | **Access Permissions (if granted using tags)** |
 | --- | --- |
-| Read Workspace | roles:id:data-dev |
-| Manage All Depot | roles:id:system-dev |
-| Read All Dataset | roles:id:user |
+| Read Workspace | `roles:id:data-dev` |
+| Manage All Depot | `roles:id:system-dev` |
+| Read All Dataset | `roles:id:user` |
 | Read all secrets from Heimdall |  |
 
 Some steps in this module require permissions typically granted to DataOS Operators. Max confirms he has access to either of the following:
@@ -38,7 +38,7 @@ You can navigate to the **Bifrost** application to check if any permissions are 
 
 Begin by learning the basics of creating data pipelines in DataOS. This involves understanding the fundamental Resources required to construct a pipeline.
 
-Follow the step-by-step instructions provided in the [Creating Your First Data Pipeline guide]().
+Follow the step-by-step instructions provided in the [Creating Your First Data Pipeline guide](/learn/dp_developer_learn_track/build_pipeline/first_pipeline/).
 
 ## Topic 2: Pipeline Maintainability
 
@@ -53,7 +53,7 @@ Now you understand that building a pipeline is only the beginning. Maintaining i
 
 You can ensure data is refreshed at regular intervals by scheduling workflows. This keeps data current with source systems and relevant for decision-making. The **DataOS Workflow Resource** support scheduling capabilities that can be configured directly in your pipeline to meet your specific needs. For a detailed guide on setting up and managing pipeline schedules, refer to the link below.
 
-[Topic: Scheduling Pipelines](/learn/data_developer_learn_track/build_pipeline/scheduling_workflows/)
+[Topic: Scheduling Pipelines](/learn/dp_developer_learn_track/build_pipeline/scheduling_workflows/)
 
 
 ### **2. Data Expectations**
@@ -66,14 +66,14 @@ To maintain data quality, you can configure data expectations or "data quality c
 
 To learn more refer to the link below:
 
-[Topic: Data Expectation](/learn/data_developer_learn_track/build_pipeline/dq_check/)
+[Topic: Data Expectation](/learn/dp_developer_learn_track/build_pipeline/dq_check/)
 
 
 ### **3. Pipeline Observability**
 
 You can ensure pipeline performance is monitored in real-time using DataOS observability tools. DataOS Resources such as **Monitor** and **Pager Resource** help detect issues early and optimize workflows.
 
-[Topic: Pipeline Observability](/learn/data_developer_learn_track/build_pipeline/pipeline_observability/)
+[Topic: Pipeline Observability](/learn/dp_developer_learn_track/build_pipeline/pipeline_observability/)
 
 
 By completing the above topics, you would gain the skills to:
