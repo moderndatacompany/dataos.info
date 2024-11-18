@@ -53,8 +53,6 @@ At this point, you’ll start creating the conceptual model. Here’s a simplifi
 
 ```
 
----
-
 ## Measures and dimensions
 
 Once the relationships are established, it’s time to define the dimensions and measures for each entity. Dimensions provide context, while measures quantify key business metrics. For example:
@@ -123,6 +121,6 @@ After you establish your goals, value objectives, drivers, measures, and dimensi
 
 ## Next steps
 
-The next step is implementing the data model. This involves conceptually representing business objects, their relationships, and the rules governing them within the DataOS Lens framework. Before implementing you must be well aware of the key concepts and elements of Lens essential to build the semantic model
+Before delving into the technicalities of building a Lens semantic model, it’s essential to grasp the fundamental components and concepts that form the backbone of the Lens framework. Understanding these key elements will allow you to design and work with data models effectively. In this section, we'll cover the main aspects of the Lens framework: Tables, Views, Joins, Dimensions, Measures, and Segments.
 
 [Key concepts of Lens](/learn/dp_developer_learn_track/create_semantic_model/key_concepts_of_lens/)

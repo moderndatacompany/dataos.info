@@ -25,7 +25,7 @@ Create and configure an Instance Secret to secure your code repository credentia
 
 Define the Instance Secret Resource in a YAML file. Below is a template you can use for Bitbucket, substituting `${USERNAME}` and `${PASSWORD}` with your actual Bitbucket credentials:
 
-```bash
+```yaml
 # RESOURCE META SECTION
 name: bitbucket-r # Secret Resource name (mandatory)
 version: v1 # Secret manifest version (mandatory)
@@ -47,11 +47,11 @@ instance-secret:
 Deploy the Instance Secret to DataOS using the `apply` command.
 
 <aside class="callout">
-🗣️ When applying the manifest file for Instance-secret from CLI, ensure you don't specify Workspace as Instance Secret is a [Instance-level Resource](https://dataos.info/resources/types/#instance-level-resources).
+🗣️ When applying the manifest file for Instance-secret from CLI, ensure you don't specify Workspace as Instance Secret is a [Instance-level Resource](/resources/types/#instance-level-resources).
 
 </aside>
 
-you apply the manifest file as follows:
+You apply the manifest file as follows:
 
 ```bash
 dataos-ctl apply -f ./lens/instance_secret.yml
@@ -63,8 +63,7 @@ INFO[0001] 🛠 apply...complete
 ```
 
 <aside class="callout">
-🗣️ Note the name of the created Instance secret, as it will be used in the secrets attribute section of the Lens manifest file. This name is crucial for proper configuration and access within your Lens environment.
-
+🗣️ Make a note of the name of the created `Instance Secret`, as it will be required in the secrets attribute section of the Lens manifest file. This name is essential for ensuring proper configuration and access within your Lens environment.
 </aside>
 
 ### **Step 3: Create a Lens Resource manifest file**
@@ -82,11 +81,11 @@ The manifest file of a Lens can be broken down into two sections:
 
 The following YAML excerpt illustrates the attributes specified within this section:
 
-To configure a lens Resource, replace `name`, `layer`, `tags`, `description`, and `owner` values with appropriate values. For additional configuration information about the attributes of the Resource meta section, refer to the link: [Attributes of Resource meta section](https://dataos.info/resources/manifest_attributes/).
+To configure a lens Resource, replace `name`, `layer`, `tags`, `description`, and `owner` values with appropriate values. For additional configuration information about the attributes of the Resource meta section, refer to the link: [Attributes of Resource meta section](/resources/manifest_attributes/).
 
 ### **Lens manifest file**
 
-```bash
+```yaml
 # RESOURCE META SECTION
 name: cross-sell-affinity # Lens Resource name (mandatory)
 version: v1alpha # Lens manifest version (mandatory)
@@ -163,11 +162,9 @@ lens:
 # Metric configuration 
   metric: (optional)
     logLevel: info # Log level for metrics (optional)
-
 ```
 
 A typical deployment of a Lens Resource includes the following components:
-
 
 | **Section** | **Description** |
 | --- | --- |
@@ -179,5 +176,5 @@ A typical deployment of a Lens Resource includes the following components:
 | **Iris** | Manages interaction with Iris dashboards. |
 | **Metrics** | Populates the metrics in the metric section of the Data Product Hub. |
 
-For more information on how to configure a Lens manifest file, refer to the link: [Configuration Fields of the Deployment Manifest File for Lens Resource](https://dataos.info/resources/lens/lens_manifest_attributes/)
+For more information on how to configure a Lens manifest file, refer to the link: [Configuration Fields of the Deployment Manifest File for Lens Resource](/resources/lens/lens_manifest_attributes/)
 
