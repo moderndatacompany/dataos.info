@@ -2,16 +2,12 @@
 
 This guide outlines the end-to-end process for building and deploying a semantic model using Lens in DataOS. It covers everything from conceptualizing the model to implementing, testing, and deploying it for analytical and business needs.
 
----
-
 ## Scenario
 
 After you've established data connections and built robust data pipelines to process and transform raw data, the next step is to create a semantic data model (Lens) on top of the Product-360 Data Product. Your objective is to transform raw data into a structured model that enables the generation of trusted, consistent metrics and KPIs. These metrics will be accessible through APIs and usable across business intelligence, AI, and embedded analytics tools.
 
 
 ## Step 1: Defining business objectives and KPIs
-
-Before designing your Lens, establish the business objectives and key performance indicators (KPIs) the model will support to ensure that your semantic model is relevant, actionable, and focused on measurable outcomes.
 
 Before designing your Lens, establish the business objectives and key performance indicators (KPIs) the model will support to ensure that your semantic model is relevant, actionable, and focused on measurable outcomes.
 
