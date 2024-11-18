@@ -3,9 +3,10 @@
 In this section, you’ll learn how to implement quality checks for input data before building a data product. These checks help ensure that the data is accurate, complete, and ready for reliable analysis.
 
 ## Scenario
+
 As a data engineer, you’re working with datasets and exploring them on Workbench and Metis. Before using this data to create a data product, you need to validate its quality. Your task is to set up checks that verify the data's accuracy, completeness, and consistency, ensuring it meets the necessary standards for consumer use.
 
-### **Define Service Level Objectives (SLOs)**
+### **Define service level objectives (SLOs)**
 
 In the build stage, you and other stakeholders must have defined SLOs for your data product. These are measurable quality goals for the data that define what "good quality" means for your data product.
 
@@ -18,7 +19,7 @@ Suppose the following are the SLOs you and other stakeholders have decided:
 - **Uniqueness**: 0.5% of records should be duplicated at maximum.
 - **Validity**: 95% of records must meet all domain-specific rules.
 
-### **Create a Quality Directory Structure**
+### **Create a quality directory structure**
 
 Once your **SLOs** are defined, you can organize your quality check workflows. Create a quality directory to ensure that your data product's input meets the SLOs' requirements. Inside this folder, you'll organize your checks by creating subdirectories named **input**. Each subdirectory will contain the specific **SODA** check workflows for each input dataset (e.g., `customer.yml`, `product.yml`, `purchase.yml`).
 
@@ -35,7 +36,7 @@ quality/
 
 This structure helps you keep your quality checks organized and aligned with the defined SLOs for each input dataset.
 
-### **Define Quality Checks with SODA**
+### **Define quality checks with SODA**
 
 With your **SLOs** in place, the next step is to define the quality checks to ensure your data meets the established standards. These quality checks are essential to monitor and maintain the quality of your data. Below are the key quality checks available to you:
 
