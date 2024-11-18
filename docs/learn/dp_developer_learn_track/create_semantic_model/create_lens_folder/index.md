@@ -146,6 +146,13 @@ tables:
       type: string
       column: marital_status
       description: "The marital status of the customer, which may provide insights into purchasing behavior and lifestyle preferences."
+      meta:
+        secure:
+          func: redact
+          user_groups:
+            includes: "*" 
+            excludes:
+              - dataconsumer
 
     - name: income
       type: number

@@ -113,8 +113,9 @@ The **Metric-First View** enables users to track a single metric consistently, m
 
 Defining a **Metric-First View** focuses on tracking a specific measure, such as **conversion rate** or **quarter-to-date revenue**. The view will include related time dimensions and additional attributes necessary to analyze that metric effectively.
 
----
-
 ## Next steps
 
-After knowing the key concepts of the Lens, you move to implement a Lens starting by [creating the Lens semantic model in your code editor](/learn/dp_developer_learn_track/create_semantic_model/create_lens_folder/).
+After familiarizing yourself with the key concepts of Lens, the next step is to begin implementing a Lens by creating the Lens semantic model in your code editor.
+
+[creating the Lens semantic model in your code editor](/learn/dp_developer_learn_track/create_semantic_model/create_lens_folder/).
+

@@ -8,15 +8,15 @@ This guide outlines the end-to-end process for building and deploying a semantic
 
 After you've established data connections and built robust data pipelines to process and transform raw data, the next step is to create a semantic data model (Lens) on top of the Product-360 Data Product. Your objective is to transform raw data into a structured model that enables the generation of trusted, consistent metrics and KPIs. These metrics will be accessible through APIs and usable across business intelligence, AI, and embedded analytics tools.
 
----
 
 ## Step 1: Defining business objectives and KPIs
 
 Before designing your Lens, establish the business objectives and key performance indicators (KPIs) the model will support to ensure that your semantic model is relevant, actionable, and focused on measurable outcomes.
 
+Before designing your Lens, establish the business objectives and key performance indicators (KPIs) the model will support to ensure that your semantic model is relevant, actionable, and focused on measurable outcomes.
+
 [Define business objectives and KPIs](/learn/dp_developer_learn_track/create_semantic_model/define_business_objective/)
 
----
 
 ## Step2: Designing conceptual model
 
@@ -24,7 +24,6 @@ Once you've established your business goals and KPIs, the next step is to design
 
 [Design conceptual data model](/learn/dp_developer_learn_track/create_semantic_model/design_conceptual_model/) 
 
----
 
 ## Step 3: Key concepts of Lens
 
@@ -39,7 +38,6 @@ Once your conceptual model is finalized, the next step is to implement it within
 
 [Creating Lens folder structure](/learn/dp_developer_learn_track/create_semantic_model/create_lens_folder/) 
 
----
 
 ## Step 5: Testing the model
 
@@ -47,7 +45,6 @@ After implementing the model, you must test it to ensure the data flows correctl
 
 [Test Lens locally](/learn/dp_developer_learn_track/create_semantic_model/testing_lens/) 
 
----
 
 ## Step 6: Deploying the model
 
@@ -55,6 +52,6 @@ Once tested, you can deploy the model to production. This phase involves optimiz
 
 [Deploying Lens on DataOS](/learn/dp_developer_learn_track/create_semantic_model/deploy_lens_on_dataos/) 
 
----
+
 
 
