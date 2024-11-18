@@ -1,3 +1,9 @@
+---
+search:
+  exclude: true
+---
+
+
 # How to Create a Data Product Template using cookie-cutter?
 
 This section outlines the steps to create a foundational template for a data product using a cookie-cutter approach using the Bit Bucket. This template can be customized to initiate the development of various data products efficiently.
