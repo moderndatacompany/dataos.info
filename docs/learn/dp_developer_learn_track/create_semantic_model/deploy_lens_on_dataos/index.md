@@ -102,7 +102,7 @@ The following YAML excerpt illustrates the attributes specified within this sect
 
 To configure a lens Resource, replace `name`, `layer`, `tags`, `description`, and `owner` values with appropriate values. For additional configuration information about the attributes of the Resource meta section, refer to the link: [Attributes of Resource meta section](/resources/manifest_attributes/).
 
-### **Lens manifest file**
+**Lens manifest file**
 
 ```yaml
 # RESOURCE META SECTION
