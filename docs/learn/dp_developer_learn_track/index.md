@@ -54,7 +54,7 @@ Now that we have a clear design plan, it’s time to move into the development p
 
 - [Building Data Pipelines](/learn/dp_developer_learn_track/build_pipeline/)
 
-- [Creating Semantic Models]()
+- [Creating Semantic Models](/learn/dp_developer_learn_track/create_semantic_model/)
 
 - [Implementing quality checks to maintain data integrity](/learn/dp_developer_learn_track/quality_check/)
 
