@@ -2,11 +2,17 @@
 
 This guide walks you through steps to validate your SQL queries and Lens model configuration directly on your local machine to confirm that your tables, joins, and data relationships behave as intended before moving to the production environment on DataOS.
 
+## Scenario
+
+After you’ve created your Lens model, you are tasked to test it locally to ensure everything works as expected before deploying it to DataOS. 
+
 
 ## Prerequisites
 
+Before moving to technicalities, ensure you have the following pre-requisites installed.
+
 - Docker
-- Docker compose
+- Docker composetechnical
 - Postman (optional)
 - VS Code
 
@@ -22,17 +28,11 @@ You use Docker to run Lens in an isolated environment on your local system. Firs
 
 Before pulling or pushing images from or to a private repository, you must log in to Docker Hub using the command line. 
 
-Syntax
-
-```yaml
-docker login --username=${DOCKERHUB_USERNAME}
-```
-
-Example
-
 ```yaml
 docker login --username=lensuser01
 ```
+
+Replace with your username.
 
 ## Docker pull
 
@@ -51,13 +51,13 @@ docker pull tmdclabs/lens:0.35.60.
 Before installing Docker Compose, it is advisable to check if it has already been installed on the system. Use the below command to check:
 
 ```bash
-  docker-compose --version
+docker-compose --version
 ```
 
  This command will return the installed version of Docker Compose if it is present. For example:
 
 ```bash
-   docker-compose version 1.29.2, build 5becea4c
+docker-compose version 1.29.2, build 5becea4c
 ```
 
 If Docker Compose is not installed, refer to the following link to [install Docker Compose](https://docs.docker.com/compose/install/).
@@ -103,9 +103,6 @@ Visual Studio Code (VS Code) must be installed on the local system to create a L
 - **Windows**: To install VS Code on a Windows machine, refer to the [Install VS Code on Windows guide](https://code.visualstudio.com/docs/setup/windows).
 - **MacOS**: For MacOS users, installation instructions can be found in the [Install VS Code on macOS guide](https://code.visualstudio.com/docs/setup/mac).
 
-## Scenario
-
-After you’ve created your Lens model, you are tasked to test it locally to ensure everything works as expected before deploying it to DataOS. 
 
 <aside class="callout">
 💡 Local testing is an optional step. However, we recommend always testing your semantic model locally before pushing it to the deploying stage.
@@ -157,13 +154,13 @@ Now, you create a file `docker-compose.yml` in a folder parallel to your model f
 
 You use the pre-configured template and update a few settings, such as your environment's URL, Lens metadata, and source details.
 
-1. **Environment URL:** Suppose you prefer to deploy your Lens in the glad-rattler environment, so you update the `DATAOS_FQDN` attribute with the FQDN (Fully Qualified Domain Name) `glad-rattler.dataos.app` where `glad-rattler` is the name of the context.
+- **Environment URL:** Suppose you prefer to deploy your Lens in the glad-rattler environment, so you update the `DATAOS_FQDN` attribute with the FQDN (Fully Qualified Domain Name) `glad-rattler.dataos.app` where `glad-rattler` is the name of the context.
 
 ```yaml
 DATAOS_FQDN: glad-rattler.dataos.app #add the URL for the environment you prefer to use.
 ```
 
-1. **Update Lens meta info, including name, description, tags, and author details:** You update all the general information of your Lens, such as its name and description, to make it useful when other people use your artifacts and to increase its discoverability.  
+- **Update Lens meta info, including name, description, tags, and author details:** You update all the general information of your Lens, such as its name and description, to make it useful when other people use your artifacts and to increase its discoverability.  
 
 ```yaml
 # Overview
@@ -174,7 +171,7 @@ LENS2_AUTHORS: ${"author_name"} #add the owner name here
 LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
 ```
 
-1. **Customize the source details:** 
+- **Customize the source details:** 
 
 Add the environment variables to connect to the data source via different methods.
 
@@ -198,11 +195,10 @@ Add the environment variables to connect to the data source via different method
     ```
     
 
-1. **Verify Service Configuration:** Ensure that the image tag is up to date or is the same as the one you pulled in the prerequisite stage.
+- **Verify Service Configuration:** Ensure that the image tag is up to date or is the same as the one you pulled in the prerequisite stage.
 
 <aside class="callout">
 🗣️ The Lens image may change over time; contact the DataOS Administrator for the latest tag.
-
 </aside>
 
 ## **Testing Lens in development environment**
@@ -218,31 +214,23 @@ lens2-api-1  | 🔗 Lens2 SQL Service (PostgreSQL) is listening on 0.0.0.0:5432
 lens2-api-1  | 🚀 Lens2 API server (0.35.55-01 ) is listening on 4000
 ```
 
-## **Exploring Lens in development environment**
+## Exploring Lens in development environment
 
 Now that your Lens model runs successfully,  you begin interacting with Lens using SQL, REST, or GraphQL API to thoroughly test Lens before deploying, ensuring all functionalities work as expected.
 
 ### **Exploring Lens via SQL API**
 
-To validate your Lens model using the PostgreSQL interface, you start to query Lens tables and views in the PostgreSQL dialect using the **PostgreSQL client (psql), y**ou utilize this command-line tool for direct interaction with the PostgreSQL database to run queries, manage the database, and perform various administrative tasks.
+To validate your Lens model using the PostgreSQL interface, you start to query Lens tables and views in the PostgreSQL dialect using the **PostgreSQL client (psql)** you utilize this command-line tool for direct interaction with the PostgreSQL database to run queries, manage the database, and perform various administrative tasks.
 
-### Using PostgreSQL Client (psql)
+### **Using PostgreSQL Client (psql)**
 
 To access the Lens, you utilize the following command to enter the username and password and the name of your lens as the database name in the format `lens:${workspace_name}:${lens_name}`.
-
-**Syntax**
-
-```bash
-psql -h ${host_name} -p ${port_name} -d ${database_name}
-```
-
-**Example**
 
 ```bash
 psql -h localhost -p 25432 -d lens:curriculum:product360
 ```
 
-### Connection Details
+### **Connection Details**
 
 <aside class="callout">
 🗣️ Always refer to 'ports' within the services section in `docker-compose.yml` for the exposed port.
@@ -273,7 +261,6 @@ You use the following details to connect to the PostgreSQL interface:
     ```bash
     dataos-ctl user apikey get
     ```
-    
 
 You execute a query to list all the tables in the connected database, run:
 
@@ -296,18 +283,18 @@ postgres=> \dt
 
 ```
 
-- Here are additional Commands for your reference
+Here are additional Commands for your reference
     
     
-    | **Command Description** | **Command Example** |
-    | --- | --- |
-    | Show the schema and details of a specific table | `\d [table_name]`
-    Example: `\d customers` |
-    | List all databases in the PostgreSQL server | `\l` |
-    | List all roles and users | `\du` |
-    | List all schemas in the database | `\dn` |
-    | List all views in the connected database | `\dv` |
-    | Exit the PostgreSQL prompt | `\q` |
+| Command Description | Command Example |
+| --- | --- |
+| Show the schema and details of a specific table | `\d [table_name]`
+Example: `\d customers` |
+| List all databases in the PostgreSQL server | `\l` |
+| List all roles and users | `\du` |
+| List all schemas in the database | `\dn` |
+| List all views in the connected database | `\dv` |
+| Exit the PostgreSQL prompt | `\q` |
 
 ### **Exploring Lens via REST API**
 
@@ -424,9 +411,11 @@ You can achieve the same result in **Postman** by following these steps:
 6. **Send the Request**: After completing the setup, click **Send** to execute the request. Below is the given example request and its response.
 
     
-    ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/8b531079-87f2-4fc4-8f15-eeedfe0be3dd/image.png)
+    ![image.png](/learn/dp_developer_learn_track/create_semantic_model/testing_lens/restsql.png)
     
 
-1. **Review the Response**: Upon receiving the response, you find details about the lens, including its configuration and available tables, confirming the successful interaction with the Lens API.
+7. **Review the Response**: Upon receiving the response, you find details about the lens, including its configuration and available tables, confirming the successful interaction with the Lens API.
 
-[Deploying Lens on DataOS](https://www.notion.so/Deploying-Lens-on-DataOS-13bc5c1d487680caabe8f8d48fb98e71?pvs=21)
+## Next steps
+
+[Deploying Lens on DataOS](/learn/dp_developer_learn_track/create_semantic_model/deploy_lens_on_dataos/)
