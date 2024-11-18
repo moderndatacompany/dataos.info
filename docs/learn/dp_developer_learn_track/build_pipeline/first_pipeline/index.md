@@ -25,7 +25,7 @@ Begin by identifying the input (Data Source A) and output (Data Source B) for th
 
 ### **Step 2: Creating Depots**
 
-In DataOS, pipelines can only be created for data sources connected using Depots. You need to ensure that Depots are built on top of the specific data sources. If they are not, please refer to the [Data Source Connectivity Module](/learn/data_developer_learn_track/data_source_connectivity/), to establish Depots on the specific source system.
+In DataOS, pipelines can only be created for data sources connected using Depots. You need to ensure that Depots are built on top of the specific data sources. If they are not, please refer to the [Data Source Connectivity Module](/learn/dp_developer_learn_track/data_source_connectivity/), to establish Depots on the specific source system.
 
 ### **Step 3: Identifying the Right Resource**
 
@@ -128,6 +128,6 @@ By the end of this process, you have successfully created a batch data pipeline 
 
 You are now equipped to handle batch data pipelines efficiently. As you move forward, you can explore additional features and capabilities in DataOS to enhance pipeline robustness and scalability:
 
-- [Pipeline Observability](/learn/data_developer_learn_track/build_pipeline/pipeline_observability/)
-- [Scheduling Workflows](/learn/data_developer_learn_track/build_pipeline/scheduling_workflows/)
-- [Data Quality Checks](/learn/data_developer_learn_track/build_pipeline/dq_checks/)
+- [Pipeline Observability](/learn/dp_developer_learn_track/build_pipeline/pipeline_observability/)
+- [Scheduling Workflows](/learn/dp_developer_learn_track/build_pipeline/scheduling_workflows/)
+- [Data Quality Checks](/learn/dp_developer_learn_track/build_pipeline/dq_checks/)
