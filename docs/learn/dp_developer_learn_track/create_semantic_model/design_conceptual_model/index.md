@@ -25,6 +25,8 @@ These core entities will allow you to analyze the business’s most critical iss
 
 Once you’ve identified your core entities, the next step is to define how they are related to one another
 
+For instance:
+
 - **Customer to Purchase**: A `one-to-many` relationship. Each customer can have multiple purchases, but each purchase is associated with only one customer.
 - **Purchase to Product**: A `many-to-many` relationship. A single purchase can include multiple products, and each product may be part of many purchases.
 
@@ -119,6 +121,6 @@ After you establish your goals, value objectives, drivers, measures, and dimensi
 
 ## Next steps
 
-Before delving into the technicalities of building a Lens semantic model, it’s essential to grasp the fundamental components and concepts that form the backbone of the Lens framework. Understanding these key elements will allow you to design and work with data models effectively. 
+Before delving into the technicalities of building a Lens semantic model, it’s essential to grasp the fundamental components and concepts that form the backbone of the Lens framework. Understanding these key elements will allow you to design and work with data models effectively. In this section, we'll cover the main aspects of the Lens framework: Tables, Views, Joins, Dimensions, Measures, and Segments.
 
 [Key concepts of Lens](/learn/dp_developer_learn_track/create_semantic_model/key_concepts_of_lens/)

@@ -14,7 +14,7 @@ By the end of this course, you'll be able to:
 
 ## Module 1: Understanding Data Needs
 
-To create a successful data product, it’s crucial to first understand the business context and requirements. This module focuses on capturing key needs and expectations.
+To create a successful data product, it’s crucial to first understand the business context and requirements. This module focuses on capturing key needs and expectations:
 
 <div class= "grid cards" markdown>
 
@@ -46,7 +46,7 @@ This module dives into the detailed process of designing data products tailored 
 
 In the previous module, we explored the essential steps for designing a data product. We started by defining the use case of Customer Purchase Behavior for an online retail company. This use case focuses on analyzing customer buying patterns to identify cross-sell opportunities and enhance marketing strategies.
 
-Now that we have a clear design plan, it’s time to move into the development phase. In this module, we will build the data product step by step, setting up the necessary components within DataOS.
+Now that we have a clear design plan, it’s time to move into the development phase. In this module, we will build the data product step by step, setting up the necessary components within DataOS:
 
 <div class= "grid cards" markdown>
 
@@ -60,13 +60,13 @@ Now that we have a clear design plan, it’s time to move into the development p
 
 - [Creating APIs to expose data for consumption by other systems](/learn/dp_developer_learn_track/data_api/)
 
-- [Implementing Data Policies that govern access and security](/learn/dp_developer_learn_track/data_policy/)
+- [Implementing Data Policies that govern access and security]()
 
 </div>
 
 ## Module 4: Deploying Data Products
 
-The final step is to deploy the Data Product, making it available for consumption and ensuring it can be easily managed and updated.
+The final step is to deploy the Data Product, making it available for consumption and ensuring it can be easily managed and updated:
 
 <div class= "grid cards" markdown>
 
