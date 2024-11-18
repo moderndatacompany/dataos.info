@@ -12,7 +12,7 @@ A Bundle Resource in DataOS is a standardized way to deploy multiple resources, 
 
 The Bundle acts like a flattened DAG (directed acyclic graph) where each node is a DataOS Resource, linked by dependencies.
 
-## Step 1: Creating Required DataOS Resources
+## Step 1: Creating required DataOS Resources
 
 Ensure you have created all necessary Resources, such as Worker, Workflow, Service, Depot, Cluster, Policy, Secret, Instance Secret, Monitor, Pager, etc.
 

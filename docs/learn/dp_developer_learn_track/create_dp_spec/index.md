@@ -1,11 +1,11 @@
-# Creating a Data Product Spec File
+# Creating a Data Product Spec file
 
 After setting up your Bundle manifest, the next step is to define your Data Product Spec file. This file serves as a blueprint for your data product, specifying all the necessary configurations and metadata to ensure smooth deployment and management within DataOS.
 
 ## Scenario
 Imagine you are building a data product called product360 to analyze purchase behavior, revenue trends, and customer insights. To get started, you need a Data Product Spec file that captures all the essential configurations like inputs, outputs, collaborators, and associated resources. This file will help structure your data product and provide a comprehensive guide for its lifecycle management.
 
-## Step 1: Define General Information
+## Step 1: Define general information
 This section includes basic details about your data product:
 
 
@@ -44,7 +44,7 @@ This section includes basic details about your data product:
     ```
     
 
-## Step 2: Add Data Product-Specific Attributes
+## Step 2: Add Data Product-specific attributes
 
 This section outlines data product-specific attributes such as Bundle resource, inputs, outputs, and references. All the specific details related to the data product comes under `data` section in spec file.
 
@@ -84,7 +84,7 @@ This section outlines data product-specific attributes such as Bundle resource, 
             description: developer
     ```
     
-## Step 3: Specify Resource References
+## Step 3: Specify Resource references
     
 With a `resource` section, you give a reference to a single **Bundle Resource** which is expected to contain all the DataOS Resources which are part of Data Product. For example, Workflows, Services, Secrets, Policies etc.
 
@@ -98,7 +98,7 @@ resource:
     ref: bundle:v1beta:product360-bundle. # mandatory | referred Bundle must exist
 ```
     
-## tep 4: Define Inputs and Outputs
+## tep 4: Define inputs and outputs
 Set up datasets that the data product will consume and produce:
     
 There are two types of dataset references - 
@@ -126,7 +126,7 @@ outputs:
     ref: dataset:icebase:sales360mockdb:f_sales
 ```
         
-## Step 5: Configure Ports for Integration
+## Step 5: Configure ports for integration
 Set up ports for services like Lens, Talos, REST APIs, and databases:
     
 The **Ports** section lets you set up links to various services and tools tied to your Data Product, such as **Lens**, **Talos**, **REST APIs**, and **Postgres** databases. While it's optional for creating a Data Product, adding ports significantly enhances functionality.
@@ -155,12 +155,12 @@ ports:
         ssl: true
 ```
     
-## Data Product Spec (YAML) File
+## Data Product Spec (YAML) file
 <details>
 <summary>Click here to view the complete Data Product Spec file</summary>
 
 ```yaml
-name: product-affinity-cross-sell 
+name: product-360
 version: v1beta
 entity: product
 type: data
@@ -178,19 +178,19 @@ refs:
 v1beta:
   data:
     meta:
-      title: Product Affinity & Cross-Sell Opportunity
-      sourceCodeUrl: https://bitbucket.org/rubik_/dataos-examples/product360/src/main/
-      #trackerUrl: https://rubikai.atlassian.net/browse/DPRB-48?atlOrigin=eyJpIjoiNTZlZDY4NWM0OTM3NGZjNDllZTRmNDdiMmM2ZTgxMzgiLCJwIjoiaiJ9
+      title: Product 360
+      sourceCodeUrl: https://bitbucket.org/mywork15/talos/src/main/
+      trackerUrl: https://rubikai.atlassian.net/browse/DPRB-65
  
     collaborators:
-      - name: aayushisolanki
-        description: developer
       - name: shraddhaade
+        description: developer
+      - name: aayushisolanki
         description: consumer
 
     resource:
       refType: dataos
-      ref: bundle:v1beta:product360-01-bundle
+      ref: bundle:v1beta:product-360-bundle
 
     inputs:
       - refType: dataos
@@ -211,15 +211,14 @@ v1beta:
 
     ports:
       lens:
-        ref: lens:v1alpha:product360-test:curriculum
+        ref: lens:v1alpha:cross-sell-affinity:public
         refType: dataos
 
-      # talos:
-      # - ref: service:v1:affinity-cross-sell-api:public
-      #   refType: dataos
+      talos:
+        - ref: service:v1:affinity-cross-sell-api:public
+          refType: dataos
 
-
-      
+         
 ```
 </details>
 
@@ -253,9 +252,11 @@ workflow:
               markDeletedDataProducts: true
               dataProductFilterPattern:
                 includes:
-                 - product360-cross-sell
+                 - product-360
 ```
 
 ## Next step
 
-Now that you have prepared all the necessary components — Bundle Resource, Data Product Spec file, and Scanner Workflow YAML — it’s time to bring your data product to life in the DataOS environment. Refer to [Deploying Your Data Product on DataOS]().
+Now that you have prepared all the necessary components — Bundle Resource, Data Product Spec file, and Scanner Workflow YAML — it’s time to bring your data product to life in the DataOS environment.
+
+Refer to [Deploying Your Data Product on DataOS](/learn/dp_developer_learn_track/deploy_dp_cli/).
