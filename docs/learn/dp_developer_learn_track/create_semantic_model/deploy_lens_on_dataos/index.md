@@ -2,9 +2,30 @@
 
 After you’ve tested your Lens model locally and confirmed it’s working as expected, the next step is to deploy the model to a production environment, specifically DataOS.
 
+## Prerequisites
+
+Before diving into configuring Lens, make sure you have everything ready:
+
+1. **Check required Permissions**: Some tasks require specific permissions typically assigned to DataOS Operators. Ensure you have access to one of the following permission sets:
+
+    | **Access Permission (via use-cases)**       | **Access Permissions (via tags)**      |
+    |--------------------------------------------|---------------------------------------|
+    | Read Workspace                             | `roles:id:data-dev `                  |
+    | Read all secrets from Heimdall             |  `roles:id:operator`                                    |
+    |Create Update and Delete Lens in user layer specified workspace|  `roles:id:operator`  |
+
+2. **Check CLI installation and initialization**: You need this text-based interface that allows you to interact with the DataOS context via command prompts. Click [here](/interfaces/cli/) to learn more.
+
+3. **Manage Credentials Securely**: Use **Instance Secrets** for storing your data source credentials, ensuring sensitive information remains protected.
+
+    > **Important**: To prevent credential exposure, contact DataOS administrator and understand the best practices for handling sensitive data.
+
+4. **Organize Your Code Repository**: Place Depot manifests in a private, permission-controlled repository to maintain security and compliance. 
+
 ## Steps
 
 You follow the below steps to deploy a Lens on DataOS.
+
 
 ### **Step 1: Push the Lens model directory to a code repository**
 
