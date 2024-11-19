@@ -21,7 +21,7 @@ Some steps in this module require permissions typically granted to DataOS Operat
 | Read Workspace | `roles:id:data-dev` |
 | Manage All Depot | `roles:id:system-dev` |
 | Read All Dataset | `roles:id:user` |
-| Read all secrets from Heimdall | `roles:id:operator` |
+| Read all secrets from Heimdall |  |
 
 
 Verify the assigned tags using the following command:
