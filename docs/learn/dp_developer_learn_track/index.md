@@ -8,7 +8,7 @@ By the end of this course, you'll be able to:
 
 - **Design effective data models**: Use DataOS Metis and Workbench to analyze and refine data assets.
 
-- **Build and implement ata Products**: Develop logical semantic models, data pipelines, and apply access control.
+- **Build and implement Data Products**: Develop logical semantic models, data pipelines, and apply access control.
 
 - **Deploy and manage Data Products**: Utilize CI/CD practices for seamless deployment and updates.
 
