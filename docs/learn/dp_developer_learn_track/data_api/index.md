@@ -133,7 +133,29 @@ Here, you’ll find step-by-step instructions to build data API.
     
     ![image.png](/learn/dp_developer_learn_track/data_api/image1.png)
     
-4. Create a Talos Service manifest file and refer to the bitbucket repository as the path.
+4. Create an Instance Secret that will have the Bitbucket username and password (Butbucket App password) for security, and refer the Instance Secret in Talos Service.
+  ```yaml
+  name: icebasedev-rw
+  version: v1
+  type: instance-secret
+  description: "abfss v2 alpha depot password; acl=rw"
+  layer: user
+  instance-secret:
+    type: key-value-properties
+    acl: rw
+    data:
+      username: imagroot57
+      password: AyuhksPltysjnjsuog86734ggTUIBRO
+  ```
+
+5. Apply the Instance Secret manifest file.
+
+  ```yaml
+  dataos-ctl apply -f /home/office/secrets/instance_secret.yaml
+  ```
+
+
+6. Create a Talos Service manifest file and refer to the Bitbucket repository as the path.
     - service.yaml
         
         ```yaml
@@ -179,10 +201,9 @@ Here, you’ll find step-by-step instructions to build data API.
                 - --ref=main
         ```
         
-5. Apply the Service manifest file using CLI.
+7. Apply the Service manifest file using CLI.
     
-    ```bash
-    dataos-ctl apply -f /home/iamgroottalos/setup/service.yaml
-    ```
+```shell
+dataos-ctl apply -f /home/iamgroottalos/setup/service.yaml
+```
     
-6. Create an Instance Secret that will have the bitbucket username and password for security.
