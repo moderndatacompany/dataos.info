@@ -14,7 +14,7 @@ You are a Data Engineer tasked with transforming raw data into a clean, reliable
 
 ## Permissions and access
 
-Before diving into building data pipelines, you need to ensure:
+Some steps in this module require permissions typically granted to DataOS Operators. Hence, before diving into building data pipelines, you need to ensure you have the following set of permissions either via use-case or via tags:
 
 | **Access Permission (if granted using use-cases)** | **Access Permissions (if granted using tags)** |
 | --- | --- |
@@ -23,7 +23,6 @@ Before diving into building data pipelines, you need to ensure:
 | Read All Dataset | `roles:id:user` |
 | Read all secrets from Heimdall |  |
 
-Some steps in this module require permissions typically granted to DataOS Operators. Max confirms he has access to either of the following:
 
 Verify the assigned tags using the following command:
 
