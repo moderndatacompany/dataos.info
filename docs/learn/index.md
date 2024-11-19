@@ -11,7 +11,7 @@ Welcome to the DataOS Learning Hub!
 
 We have designed the DataOS Learning Hub to cater to your specific role and expertise level within the DataOS ecosystem. Our Learning Tracks are tailored to meet the needs of different personas, ensuring you receive the knowledge and skills required to excel. To further support your journey, we have made Quick Start Guides and Instructional Videos available. 
 
-## Learning Tracks 
+## Learning tracks 
 
 Learning tracks are created to meet the unique needs of different user personas. These tracks offer learning paths to help individuals acquire the necessary skills to leverage DataOS capabilities—whether it's creating, managing, or consuming data products.  
 
@@ -55,7 +55,7 @@ Data Product Consumers in DataOS encompass a variety of roles, such as Data Anal
 
 Here are the key responsibilities of a Data Product Consumer, though specific tasks may vary depending on the role or initiative:
 
-#### **Key Responsibilities**
+#### **Key responsibilities**
 
 - **Discovering and accessing Data Products: I**dentify and access relevant data products based on business needs. Interpret metadata to understand product details and assess the usability of data products for informed decision-making.
 
@@ -95,7 +95,7 @@ In this learning track, you will get a comprehensive introduction to data produc
 
 **Data Product Developers** play a key role in creating, managing, and evolving data products within DataOS. They are responsible for building the data infrastructure that powers everything from analytics to business intelligence, making sure data flows smoothly through pipelines and stays accurate and accessible for users. Plus, they ensure those data products deliver reliable insights while staying in line with governance policies.
 
-#### **Key Responsibilities**
+#### **Key responsibilities**
 
 Here are the key responsibilities of a Data Product Developer, though specific tasks may differ based on the role or objective:
 
@@ -111,7 +111,7 @@ Here are the key responsibilities of a Data Product Developer, though specific t
 
 - **Deployement and Maintainance**: Deploy data products efficiently, monitor their performance, and manage updates using CI/CD practices.
 
-#### **Modules Overview**
+#### **Modules overview**
 
 The learning track for Data Product Developers is divided into modules, each focusing on essential stages of the data product lifecycle. Every module covers key topics that provide step-by-step guidance using hands-on examples and best practices ensuring a comprehensive and practical learning experience.
 
@@ -119,7 +119,7 @@ The learning track for Data Product Developers is divided into modules, each foc
 <img src="/learn/lt_dp_developer.jpg" alt="infographics">
 </div>
 
-**Detailed Module Breakdown**
+**Detailed module breakdown**
 
 ??? "Click here for details on the Data Product Developer learning track modules."
     | No | Modules | Description | Topics |
@@ -137,7 +137,7 @@ A **DataOS Operator** is the administrator responsible for managing and maintain
 
 The DataOS Operator handles a range of tasks, from provisioning compute resources to managing access controls and system security. They are also responsible for monitoring system health, ensuring interoperability with external systems, and scaling the platform to meet growing demands. In essence, the DataOS Operator ensures the platform’s integrity and performance, allowing teams to leverage data efficiently while safeguarding critical assets.
 
-#### **Key Responsibilities**
+#### **Key responsibilities**
 
 A DataOS Operator could be an existing Forward Deployment Engineer, DevOps Engineer, or a Cloud Engineer. Here are the key responsibilities of a DataOS Operator:
 - **Kubernetes cluster management**: Oversee and manage Kubernetes clusters to ensure the optimal performance of the DataOS platform.
@@ -188,13 +188,13 @@ The learning track is divided into modules, with each module focusing on key ope
 🗣 For more information about the onboarding process, please reach out to our team at content@tmdc.io.
 </aside>
 
-## :material-badge-account-horizontal: Quick Start Guides
+## :material-badge-account-horizontal: Quick start guides
 
 Looking for a fast way to get up and running? Our Quick Start Guides provide step-by-step instructions for performing key tasks and operations within DataOS. Perfect for getting things done quickly!
 
 <div class= "grid cards" markdown>
 
--   [Quick Start Guides](/quick_guides/)
+-   [Quick start guides](/quick_guides/)
     
 </div>
 
