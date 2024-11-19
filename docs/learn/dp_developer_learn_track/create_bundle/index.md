@@ -2,7 +2,7 @@
 
 After completing the creation of required Resources, it's time to assemble them for building your data product. This involves setting up data ingestion and transformation processes, managing credentials, enforcing quality rules, and more. 
 
-**Scenario:** 
+## Scenario
 
 We will create a Data Product that provides a comprehensive view of the customer landscape with understand buying patterns and downstream applications such as targeted marketing campaigns and loyalty programs. We will also include the data model which can help experiment with understanding key business drivers and metrics.
 
