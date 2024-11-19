@@ -133,7 +133,7 @@ dataos-ctl get -t workflow -w sandbox
 ## Best practices
 Here are some best practices for scheduling workflows:
 
-1. Enable retries: Set retries for transient issues to prevent failures.
+1. **Enable retries**: Set retries for transient issues to prevent failures.
 
 ```yaml
 
@@ -163,5 +163,5 @@ workflow:
       dependencies:
         - connect-customer
 ```
-2. Minimize overlap: Use concurrency policies like Forbid to prevent conflicts in workflows with shared resources.
+2. **Minimize overlap**: Use concurrency policies like Forbid to prevent conflicts in workflows with shared resources.
 By following these steps and best practices, you will be able to automate data pipelines effectively, reducing manual interventions and enhancing data reliability.
