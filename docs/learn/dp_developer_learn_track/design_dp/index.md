@@ -81,8 +81,8 @@ After defining the use case and key metrics, you proceed to the design phase of 
 Identify the data sources required to build the product. Examples include CRM data, sales transactions, and product inventory data. You need to create Depots for the source connectivity.
 
 - Customer demographic data (`customer_info`)
-- Transactional data (`sales_transactions`)
-- Product catalog (`product_inventory`)
+- Transaction data (`purchase`)
+- Product information (`product`)
 
 **Questions to ask:**
 
