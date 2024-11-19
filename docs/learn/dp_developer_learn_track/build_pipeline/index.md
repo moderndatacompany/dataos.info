@@ -14,7 +14,7 @@ You are a Data Engineer tasked with transforming raw data into a clean, reliable
 
 ## Permissions and access
 
-Some steps in this module require permissions typically granted to DataOS Operators. Hence, before diving into building data pipelines, you need to ensure you have the following use-cases:
+Some steps in this module require permissions typically granted to DataOS Operators. Hence, before diving into building data pipelines, you need to ensure you have the following set of permissions either via use-case or via tags:
 
 | **Access Permission (if granted using use-cases)** | **Access Permissions (if granted using tags)** |
 | --- | --- |
