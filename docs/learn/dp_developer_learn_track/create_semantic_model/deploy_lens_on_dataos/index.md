@@ -10,7 +10,7 @@ After thorough testing of your Lens model in a local environment, the next criti
 
 Before diving into configuring Lens, make sure you have everything ready:
 
-1. **Check required Permissions**: Some tasks require specific permissions typically assigned to DataOS Operators. Ensure you have access to one of the following permission sets:
+1. **Check required Permissions**: Some tasks require specific permissions typically assigned to DataOS Operators. Ensure you have access to one of the following permission sets either via use-cases or via tags:
 
     | **Access Permission (via use-cases)**       | **Access Permissions (via tags)**      |
     |--------------------------------------------|---------------------------------------|
