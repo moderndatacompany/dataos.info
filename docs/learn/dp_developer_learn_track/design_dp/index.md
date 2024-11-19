@@ -179,7 +179,7 @@ Several quality checks are need to be established to ensure adherence to data qu
 
 ### **Step 7: Output and delivery**
 
-Identify how end users will consume the data product and the methods used for data delivery, such as APIs or connecting with BI tools
+Identify how end users will consume the data product and the methods used for data delivery, such as APIs or connecting with BI tools.
 
 ### **a. Define the API interfaces needed to deliver data insights to users**
 
@@ -189,3 +189,9 @@ Identify how end users will consume the data product and the methods used for da
 - What API specifications are required for seamless integration?
 
 In this module, we explored the complete process of designing a data product—from defining clear use cases to implementing data quality checks, and ensuring robust security and compliance. By addressing the key questions provided throughout, you can effectively identify the necessary requirements and design a data product that meets your organization's needs and drives business value.
+
+## Next step
+
+Now that you have a solid understanding of the design process, the next step is to move into implementation. This involves translating your data product design into an actionable plan and beginning the actual development starting with establishing the data connections.
+
+[Establishing data connections](/learn/dp_developer_learn_track/data_source_connectivity/)

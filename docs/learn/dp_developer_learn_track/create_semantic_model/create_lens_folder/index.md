@@ -1,6 +1,10 @@
-# Creating Lens folder structure
+# Creating semantic model
 
-Next, you transform conceptual design into a functional data model. This enables you to structure and organize the data effectively, ensuring it meets analytical and business needs.
+In this topic, you’ll learn how to design a conceptual semantic model that transforms business needs into structured data. As a Data Engineer, your role is to create a model that aligns with business goals, supports key metrics, and drives insights for decision-making.
+
+## Scenario
+
+You're building a semantic model for a retail business to analyze purchase patterns and product affinity. The model needs to combine data from various sources—like customer purchase history, product catalogs, and sales data—into a unified view. You want to ensure that your Lens model effectively captures customer behavior and accurately reflects relationships between different products that customers tend to purchase together. For it, you transform conceptual design into a functional data model. This enables you to structure and organize the data effectively, ensuring it meets analytical and business needs.
 
 ## Lens folder structure
 
@@ -25,9 +29,9 @@ Lens/
 
 In the Lens folder structure, you define and organize the artifacts according to the key steps in building the semantic model: loading data, defining tables, adding dimensions and measures, creating views, and managing user groups.
 
-## Loading data from data source
+## Loading data from the source
 
-You start by creating the **SQL** folder, where you write SQL scripts to select relevant columns from the source tables for each entity: **customer**, **product**, and **purchase** data. You focus on choosing only the necessary columns to prevent performance issues while ensuring essential data is available for analysis.
+You start by creating the SQL folder, where you write SQL scripts to select relevant columns from the source tables for each entity: `customer`, `product`, and `purchase` data. You focus on choosing only the necessary columns to prevent performance issues while ensuring essential data is available for analysis.
 
 <aside class="callout">
 🗣️ Make sure the SQL you use here matches the source dialect.
@@ -474,7 +478,7 @@ The Views section represents a simplified, user-friendly interface for interacti
 
 - **View Name:** The name of the view, typically aligned with the metric it represents (e.g., cross_sell_opportunity_score).
 - **Description:** A brief explanation of the view's purpose and what it represents.
-- **Public:** Indicates whether the view is publicly available or restricted to specific users.
+- **Public:** Controls the visibility of the measure. Set to `True` for key measures that should be visible on Data Product Hub. If set to `False`, the measure will be hidden by default.
 - **Meta ref:** A reference to the meta section, linking the view to its associated metadata (e.g., title, tags).
 - **Metric ref:** A reference to the metric section, linking the view to its calculation and formula.
 - **Tables ref:** A reference to the tables section, linking the view to its data sources and the fields it includes.
