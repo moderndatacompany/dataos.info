@@ -1,6 +1,10 @@
 # Deploy Lens in DataOS 
 
-After you’ve tested your Lens model locally and confirmed it’s working as expected, the next step is to deploy the model to a production environment, specifically DataOS.
+In this topic, you'll learn how to deploy your semantic model(Lens) in DataOS. This step ensures your model is accessible, reliable, and ready for real-time use, enabling stakeholders to derive insights and make data-driven decisions.
+
+## Scenario
+
+After thorough testing of your Lens model in a local environment, the next critical step is to deploy it to a production setting within DataOS. This process ensures that your model is accessible and reliable for broader usage, enabling stakeholders to leverage it for real-time data insights and decision-making.
 
 ## Prerequisites
 
