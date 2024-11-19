@@ -9,13 +9,13 @@ search:
 
 Welcome to the DataOS Learning Hub!
 
-We have designed the DataOS Learning Hub to cater to your specific role and expertise level within the DataOS ecosystem. Our Learning Tracks are tailored to meet the needs of different personas, ensuring you receive the knowledge and skills required to excel. To further support your journey, we have made Quick Start Guides and Instructional Videos available. 
+We have designed the DataOS Learning Hub to cater to your specific role and expertise level within the DataOS ecosystem. Our learning tracks are tailored to meet the needs of different personas, ensuring you receive the knowledge and skills required to excel. To further support your journey, we have made quick start guides and instructional videos available. 
 
 ## Learning tracks 
 
 Learning tracks are created to meet the unique needs of different user personas. These tracks offer learning paths to help individuals acquire the necessary skills to leverage DataOS capabilities—whether it's creating, managing, or consuming data products.  
 
-Each learning track is organized into Modules, which further break down into Topics. These topics combine quick concepts, practical scenarios, code snippets, and visuals to make your learning experience engaging and efficient. 
+Each learning track is organized into modules, which further break down into topics. These topics combine quick concepts, practical scenarios, code snippets, and visuals to make your learning experience engaging and efficient. 
 
 Choose a learning path that suits your role:
 
