@@ -479,19 +479,10 @@ The Views section represents a simplified, user-friendly interface for interacti
 - **View Name:** The name of the view, typically aligned with the metric it represents (e.g., cross_sell_opportunity_score).
 - **Description:** A brief explanation of the view's purpose and what it represents.
 - **Public:** Controls the visibility of the measure. Set to `True` for key measures that should be visible on Data Product Hub. If set to `False`, the measure will be hidden by default.
-- **Meta ref:** A reference to the meta section, linking the view to its associated metadata (e.g., title, tags).
-- **Metric ref:** A reference to the metric section, linking the view to its calculation and formula.
-- **Tables ref:** A reference to the tables section, linking the view to its data sources and the fields it includes.
+- **Meta:** A reference to the meta section, linking the view to its associated metadata (e.g., title, tags).
+- **Metric:** A reference to the metric section, linking the view to its calculation and formula.
+- **Tables:** A reference to the tables section, linking the view to its data sources and the fields it includes.
 
-```yaml
-views:
-  - name: cross_sell_opportunity_score
-    description: This metric calculates the potential for cross-selling a secondary product to customers based on past purchases.
-    public: true
-    meta_ref: Cross-Sell Opportunity Score
-    metric_ref: Cross-Sell Opportunity Score Metric
-    tables_ref: Cross-Sell Opportunity Score Tables
-```
 
 The complete manifest file looks like below: 
 
@@ -663,4 +654,6 @@ user_groups:
 
 ## Next Step
 
-After successfully creating Lens folder structure and preparing all the necessary manifests for your semantic model, it's time to take the next step in the process: [Testing Lens locally](/learn/dp_developer_learn_track/create_semantic_model/testing_lens/).
+After successfully creating Lens folder structure and preparing all the necessary manifests for your semantic model, it's time to test it.
+
+[Testing Lens locally](/learn/dp_developer_learn_track/create_semantic_model/testing_lens/).
