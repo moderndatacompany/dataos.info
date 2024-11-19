@@ -29,4 +29,6 @@ After hearing their objectives, you, as the Data Engineer, translate these goals
 
 ## Next step
 
-With these objectives and KPIs in mind, you now have a clear direction. The next step is to [design the conceptual model](/learn/dp_developer_learn_track/create_semantic_model/design_conceptual_model/).
+With these objectives and KPIs in mind, you now have a clear direction. The next step is to design the conceptual model.
+
+[Design the conceptual model](/learn/dp_developer_learn_track/create_semantic_model/design_conceptual_model/).

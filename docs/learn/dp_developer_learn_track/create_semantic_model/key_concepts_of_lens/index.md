@@ -6,13 +6,9 @@ Before delving into the technicalities of building a Lens semantic model, it’s
 
 Let’s explore each of these elements in detail
 
-### **Tables**
+### **Table**
 
-In Lens, Tables are logical constructs that define an entity in your data model. They contain information about relationships (joins), dimensions, measures, and segments. A table is equivalent to an Entity in traditional data modeling.
-
-### **Table:**
-
-A table represents a core entity, often referring to data like 'Owners', 'Customers', or 'Sales'. It is where you define the structure of your data, such as the dimensions (descriptive attributes) and measures (aggregated values). Additionally, tables specify relationships (joins) with other entities.
+Tables are logical constructs that define core entities in your semantic model, such as 'Customer', 'Product', or 'Sales'. They define the structure of your data, including dimensions (descriptive attributes) and measures (aggregated values), and specify relationships (joins) with other entities.
 
 **Key Table components:**
 
@@ -109,4 +105,4 @@ Defining a Metric-First View focuses on tracking a specific measure, such as `co
 
 After familiarizing yourself with the key concepts of Lens, the next step is to begin implementing a Lens by creating the Lens semantic model in your code editor.
 
-[creating the Lens semantic model in your code editor](/learn/dp_developer_learn_track/create_semantic_model/create_lens_folder/)
+[Creating the Lens semantic model in your code editor](/learn/dp_developer_learn_track/create_semantic_model/create_lens_folder/)
