@@ -124,7 +124,7 @@ dataos-ctl get -t workflow -w public
 
 By the end of this process, you have successfully created a batch data pipeline that automated the transfer of data from PostgreSQL to S3. Ready to take on your next data pipeline challenge? Follow the next steps and start building your own workflows in DataOS!
 
-## Next Steps
+## Next steps
 
 You are now equipped to handle batch data pipelines efficiently. As you move forward, you can explore additional features and capabilities in DataOS to enhance pipeline robustness and scalability:
 
