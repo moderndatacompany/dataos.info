@@ -94,9 +94,9 @@ An Entity-First View is structured around a specific entity or object of interes
 
 ### **2. Metric-first View**
 
-A Metric-First View is centered around a specific measure and typically includes time dimensions. The primary focus is providing clear, actionable metrics for business decision-making.
+A Metric-first View is centered around a specific measure and typically includes time dimensions. The primary focus is providing clear, actionable metrics for business decision-making.
 
-The Metric-First View enables users to track a single metric consistently, making it easier to answer questions like:
+The Metric-first View enables users to track a single metric consistently, making it easier to answer questions like:
 
 - What happened?
 - Why did it happen?
@@ -105,8 +105,8 @@ The Metric-First View enables users to track a single metric consistently, makin
 
 Defining a Metric-First View focuses on tracking a specific measure, such as `conversion rate` or `quarter-to-date`, `revenue`. The view will include related time dimensions and additional attributes necessary to analyze that metric effectively.
 
-## Next steps
+## Next step
 
 After familiarizing yourself with the key concepts of Lens, the next step is to begin implementing a Lens by creating the Lens semantic model in your code editor.
 
-[creating the Lens semantic model in your code editor](/learn/dp_developer_learn_track/create_semantic_model/create_lens_folder/)
+[Creating the Lens semantic model in your code editor](/learn/dp_developer_learn_track/create_semantic_model/create_lens_folder/)
