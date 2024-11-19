@@ -4,8 +4,7 @@ This guide walks you through steps to validate your SQL queries and Lens model c
 
 ## Scenario
 
-After you’ve created your Lens model, you are tasked to test it locally to ensure everything works as expected before deploying it to DataOS. 
-
+Before deploying it to DataOS, you test the model locally to ensure it performs accurately and provides valuable insights for business decisions.
 
 ## Prerequisites
 
@@ -81,8 +80,8 @@ If Python is not installed on the system, follow the steps below to download and
 
 1. **Access the installation guide**: Visit the [Python Installation Guide](https://realpython.com/installing-python/#how-to-install-python-on-windows). This guide provides detailed instructions for installing Python on various operating systems, including Windows, macOS, and Linux.
 2. **Download Python**: From the guide, select the link corresponding to the operating system and download the latest version of Python.
-3. **Install Python**: Run the downloaded installer. Before clicking "Install Now," check the box that says "Add Python 3.x to PATH.” This step is crucial as it makes Python accessible from the command line.
-4. **Verify Installation**: After installation, open a command line interface and run the following command to check the installed version of Python. The expected output should be **`Python 3.X`** or another version greater than 3.7.
+3. **Install Python**: Run the downloaded installer. Before clicking 'Install Now', check the box that says 'Add Python 3.x to PATH'. This step is crucial as it makes Python accessible from the command line.
+4. **Verify Installation**: After installation, open a command line interface and run the following command to check the installed version of Python. The expected output should be `Python 3.X` or another version greater than 3.7.
     
     ```bash
     python3 -V
@@ -296,7 +295,7 @@ Here are additional Commands for your reference
 
 ### **Exploring Lens via REST API**
 
-To explore Lens via the REST API, you interact using tools like C**url** or **Postman**.
+To explore Lens via the REST API, you interact using tools like Curl or Postman.
 
 Let’s suppose your company has asked you to use Curl, the syntax for the Curl command is as follows:
 
@@ -319,7 +318,7 @@ curl -X POST 'http://${DATAOS_FQDN}lens2/api/${WORKSPACE_NAME}:${LENS_NAME}/v2/$
 You open your terminal and try to create a basic `POST` request as follows:
 
 ```bash
-curl -X POST 'http://splendid-shrew.dataos.app/lens2/api/curriculum:cross-sell-affinity/v2/load' \
+curl -X POST 'http://splendid-crew.dataos.app/lens2/api/curriculum:cross-sell-affinity/v2/load' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer abcdefghijklmnopqrstuvwxyZ==' \
 --data '{
@@ -390,12 +389,12 @@ curl -X POST 'http://splendid-shrew.dataos.app/lens2/api/curriculum:cross-sell-a
   ....
 ```
 
-You can achieve the same result in **Postman** by following these steps:
+You can achieve the same result in Postman by following these steps:
 
-1. **Create a New Request**: Open Postman, click the **New** button in the top left corner, and select **Request** from the drop-down menu.
-2. **Configure the Request**: You provide a name for the request and select the recently uploaded collection.
-3. **Set the HTTPS Method**: Select **GET** from the dropdown menu next to the URL input field in the request tab.
-4. **Enter the Request URL**: You input the full URL WITH THE `load` API endpoint to get the results
+1. **Create a new request**: Open Postman, click the 'New' button in the top left corner, and select Request from the drop-down menu.
+2. **Configure the request**: You provide a name for the request and select the recently uploaded collection.
+3. **Set the HTTPS method**: Select `GET` from the dropdown menu next to the URL input field in the request tab.
+4. **Enter the request URL**: You input the full URL WITH THE `load` API endpoint to get the results
     
     ```bash
     http://localhost:8080/lens2/api/<WORKSPACE_NAME>:<LENS_NAME>/v2/load
@@ -403,7 +402,7 @@ You can achieve the same result in **Postman** by following these steps:
     
     You replace `${lens_name}` with the lens you are testing, say cross-sell-affinity.
     
-5. **Set the Authorization Header**: You ensure the following header is included in the **Authorization** section:
+5. **Set the Authorization Header**: You ensure the following header is included in the Authorization section:
     - **Type**: Bearer Token
     - **Token**: `<DATAOS API Key>` (the API key defined in your `docker-compose.yml`).
 6. **Send the Request**: After completing the setup, click **Send** to execute the request. Below is the given example request and its response.
@@ -412,11 +411,11 @@ You can achieve the same result in **Postman** by following these steps:
     ![image.png](/learn/dp_developer_learn_track/create_semantic_model/testing_lens/restsql.png)
     
 
-7. **Review the Response**: Upon receiving the response, you find details about the lens, including its configuration and available tables, confirming the successful interaction with the Lens API.
+7. **Review the Response**: Upon receiving the response, you find details about the Lens, including its configuration and available tables, confirming the successful interaction with the Lens API.
 
 ## Next steps
 
-After testing, you can deploy the model to production. This phase involves optimizing the model for performance, ensuring it integrates with existing business systems, and making it accessible to users.
+After testing, you can deploy the model in DataOS. This phase ensures it integrates with existing business systems, and is accessible to users.
 
 
 [Deploying Lens on DataOS](/learn/dp_developer_learn_track/create_semantic_model/deploy_lens_on_dataos/)
