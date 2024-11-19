@@ -116,7 +116,7 @@ After you establish your goals, value objectives, drivers, measures, and dimensi
 
 ```
 
-## Next steps
+## Next step
 
 Before delving into the technicalities of building a Lens semantic model, it’s essential to grasp the fundamental components and concepts that form the backbone of the Lens framework. Understanding these key elements will allow you to design and work with data models effectively. 
 

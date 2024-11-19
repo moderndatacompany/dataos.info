@@ -4,7 +4,8 @@ This guide walks you through steps to validate your SQL queries and Lens model c
 
 ## Scenario
 
-Before deploying it to DataOS, you test the model locally to ensure it performs accurately and provides valuable insights for business decisions.
+You're building a semantic model for a retail business to analyze purchase patterns and product affinity. The model needs to combine data from various sources—like customer purchase history, product catalogs, and sales data—into a unified view. You want to ensure that your Lens model effectively captures customer behavior and accurately reflects relationships between different products that customers tend to purchase together. 
+Before deploying it to DataOS, test the model locally to ensure it performs accurately and provides valuable insights for business decisions.Before deploying it to DataOS, you test the model locally to ensure it performs accurately and provides valuable insights for business decisions.
 
 ## Prerequisites
 
@@ -394,7 +395,7 @@ You can achieve the same result in Postman by following these steps:
 1. **Create a new request**: Open Postman, click the 'New' button in the top left corner, and select Request from the drop-down menu.
 2. **Configure the request**: You provide a name for the request and select the recently uploaded collection.
 3. **Set the HTTPS method**: Select `GET` from the dropdown menu next to the URL input field in the request tab.
-4. **Enter the request URL**: You input the full URL WITH THE `load` API endpoint to get the results
+4. **Enter the request URL**: You input the full URL WITH THE `load` API endpoint to get the results.
     
     ```bash
     http://localhost:8080/lens2/api/<WORKSPACE_NAME>:<LENS_NAME>/v2/load
@@ -413,7 +414,7 @@ You can achieve the same result in Postman by following these steps:
 
 7. **Review the Response**: Upon receiving the response, you find details about the Lens, including its configuration and available tables, confirming the successful interaction with the Lens API.
 
-## Next steps
+## Next step
 
 After testing, you can deploy the model in DataOS. This phase ensures it integrates with existing business systems, and is accessible to users.
 
