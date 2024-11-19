@@ -27,6 +27,6 @@ After hearing their objectives, you, as the Data Engineer, translate these goals
 3. **Customer Spending by Product Category:** Total spend by customer to identify high-value product categories and target customers likely to spend more in those categories, optimizing marketing and sales efforts.
     
 
-## Next steps
+## Next step
 
 With these objectives and KPIs in mind, you now have a clear direction. The next step is to [design the conceptual model](/learn/dp_developer_learn_track/create_semantic_model/design_conceptual_model/).
