@@ -1,6 +1,6 @@
 # Build a semantic model 
 
-This guide outlines the end-to-end process for building and deploying a semantic model using Lens in DataOS. It covers everything from conceptualizing the model to implementing, testing, and deploying it for analytical and business needs.
+This guide outlines the end-to-end process for building and deploying a semantic model (Lens) in DataOS. It covers everything from conceptualizing the model to implementing, testing, and deploying it for analytical and business needs.
 
 ## Scenario
 
@@ -27,17 +27,17 @@ Before diving into the technical aspects of building the Lens semantic model, it
 
 [Key concepts of Lens](/learn/dp_developer_learn_track/create_semantic_model/key_concepts_of_lens/) 
 
-## Step 4: Implementing the model
+## Step 4: Creating the semantic model
 
 Once your conceptual model is finalized, the next step is to implement it within the Lens framework. This process involves setting up a clear Lens folder structure, defining SQL scripts for data extraction, organizing tables, and implementing dimensions, measures, and metrics to reflect your business logic.
 
 
-[Creating Lens folder structure](/learn/dp_developer_learn_track/create_semantic_model/create_lens_folder/) 
+[Creating semantic model](/learn/dp_developer_learn_track/create_semantic_model/create_lens_folder/) 
 
 
 ## Step 5: Testing the model
 
-After implementing the model, you must test it to ensure the data flows correctly and the relationships work as expected. Testing ensures that the model provides accurate and reliable metrics for decision-making. This is an optional step. However, we recommend testing the lens in the local or development environment before deploying it on DataOS. 
+After implementing the model, you must test it to ensure the data flows correctly and the relationships work as expected. Testing ensures that the model provides accurate and reliable metrics for decision-making. This is an optional step. However, we recommend testing the Lens in the local or development environment before deploying it on DataOS. 
 
 [Test Lens locally](/learn/dp_developer_learn_track/create_semantic_model/testing_lens/) 
 

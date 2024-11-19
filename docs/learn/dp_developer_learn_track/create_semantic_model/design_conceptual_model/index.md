@@ -1,13 +1,10 @@
 # Designing the conceptual model
 
-
-This topic explores how a Data Engineer conceptualizes a semantic model, transforming business needs into the model. This enables them to create and monitor key business metrics to ensure the model meets their analytical and business needs.
+In this topic, you’ll learn how to design a conceptual semantic model that transforms business needs into structured data. As a Data Engineer, your role is to create a model that aligns with business goals, supports key metrics, and drives insights for decision-making.
 
 ## Scenario
 
-With clear business objectives and measurable KPIs defined, you're now ready to move to the designing the conceptual data model. At this point, the business has given you valuable insights into what they want to achieve, but it’s your job as a Data Engineer to translate those objectives into a structured, actionable model that will drive insights.
-
-The conceptual data model serves as the blueprint for the entire data structure. It defines the core entities, their relationships, and the data points needed to analyze the KPIs and meet the business goals. This model forms the foundation for everything that will follow—so it’s crucial to get it right.
+Imagine you have received clear business objectives and defined KPIs. Now, your task is to design a conceptual data model that translates those goals into a structured, actionable framework. This model will define core entities, their relationships, and the data points necessary to perform intended analysis. Getting this design right is essential for building a reliable and effective data product.
 
 ## Identifying core business entities
 

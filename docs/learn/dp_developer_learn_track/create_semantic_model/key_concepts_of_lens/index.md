@@ -1,9 +1,10 @@
 # Key concepts of Lens
 
-
 Before delving into the technicalities of building a Lens semantic model, it’s essential to grasp the fundamental components and concepts that form the backbone of the Lens framework. Understanding these key elements will allow you to design and work with data models effectively. In this section, we'll cover the main aspects of the Lens framework: Tables, Views, Joins, Dimensions, Measures, and Segments.
 
 ## Elements of Lens
+
+Let’s explore each of these elements in detail
 
 ### **Tables**
 
@@ -60,7 +61,7 @@ Measures are quantifiable metrics that provide valuable business insights, such 
 
 ### **4. Segments**
 
-Segments allow you to categorize your data based on predefined filters, which are often used to group data into meaningful subsets, such as "active users" or "high-value customers.”
+Segments allow you to categorize your data based on predefined filters, which are often used to group data into meaningful subsets, such as 'active users' or 'high-value customers'.
 
 **Key Segment Attributes:**
 
@@ -69,21 +70,19 @@ Segments allow you to categorize your data based on predefined filters, which ar
 - **public:** Controls visibility of the segment.
 - **Meta:** Metadata provides additional context for the segment, such as security levels or custom tags.
 
-
 ### **Working with Views**
 
 Views abstract away the underlying complexity of your data model, providing users with a simplified interface for querying key metrics. 
 
-For example, a view might include details from the "owner" and "contacts" tables, aggregating relevant data such as `owner_id`, `owner_name`, and `contact_email`, making it easier for end-users to understand and interact with the data.
+For example, a view might include details from the 'customer' and 'purchase' tables, aggregating relevant data such as `customer_id`, `product_name`, and `contact_email`, making it easier for end-users to understand and interact with the data.
 
 ### **When to define Views?**
 You define Views in the following scenarios:
 
 1. **Defining Metrics**:
-Views allow you to combine measures and dimensions from different tables, providing a consolidated data model tailored for specific use cases. For example, a view could give you all the necessary dimensions and measures to understand "Weekly Spirits Sales in Florida" in a unified view.
+Views allow you to combine measures and dimensions from different tables, providing a consolidated data model tailored for specific use cases. For example, a view could give you all the necessary dimensions and measures to understand 'Weekly Spirits Sales in Florida' in a unified view.
 2. **Providing a simplified interface**:
 By exposing only the relevant measures and dimensions for a given use case, views help reduce the complexity of the underlying data model, making it easier for business users to access actionable insights without wading through raw data.
-
 
 ### **Types of Views**
 
@@ -99,10 +98,10 @@ A Metric-First View is centered around a specific measure and typically includes
 
 The Metric-First View enables users to track a single metric consistently, making it easier to answer questions like:
 
-- "What happened?"
-- "Why did it happen?"
-- "What will happen next?"
-- "What should we do in response?"
+- What happened?
+- Why did it happen?
+- What will happen next?
+- What should we do in response?
 
 Defining a Metric-First View focuses on tracking a specific measure, such as `conversion rate` or `quarter-to-date`, `revenue`. The view will include related time dimensions and additional attributes necessary to analyze that metric effectively.
 
