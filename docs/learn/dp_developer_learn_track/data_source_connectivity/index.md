@@ -33,7 +33,7 @@ Before diving into configuring data source connections, make sure you have every
     | Read Workspace                             | `roles:id:data-dev `                  |
     | Manage All Depot                           | `roles:id:system-dev`                   |
     | Read All Dataset                           | `roles:id:user`                      |
-    | Read all secrets from Heimdall             |  `roles:id:operator`                                    |
+    | Read all secrets from Heimdall             |                                |
 
 2. **Check CLI installation and initialization**: You need this text-based interface that allows you to interact with the DataOS context via command prompts. Click [here](/interfaces/cli/) to learn more.
 
