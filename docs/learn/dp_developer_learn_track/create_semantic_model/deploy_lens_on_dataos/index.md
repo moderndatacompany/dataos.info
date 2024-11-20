@@ -100,6 +100,7 @@ INFO[0001] 🛠 apply...complete
 
 <aside class="callout">
 🗣️ Make a note of the name of the created `Instance Secret`, as it will be required in the secrets attribute section of the Lens manifest file. This name is essential for ensuring proper configuration and access within your Lens.
+</aside>
 
 ### **Step 3: Create Lens manifest file**
 
@@ -210,6 +211,7 @@ A typical deployment of Lens includes the following components:
 | **Router** | Configures a Router Service responsible for receiving queries from Lens, managing metadata, and handling query planning and distribution to the workers. Lens communicates only with the Router, not directly with the workers. |
 | **Iris** | Manages interaction with Iris dashboards. |
 | **Metrics** | Populates the metrics in the metric section of the Data Product Hub. |
+
 
 For more information on how to configure Lens manifest file, refer to the link: [Configuration Fields of the Deployment Manifest File for Lens](/resources/lens/lens_manifest_attributes/)
 
