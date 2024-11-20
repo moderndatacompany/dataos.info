@@ -63,6 +63,6 @@ The **Validity** tab shows a 0% trend line, indicating that some quality checks 
 
 ## Next step
 
-Connect your data products with BI tools:
+Connect your Data Products with BI tools:
 
 [Integrating Data Products with BI Tools and Applications](/learn/dp_consumer_learn_track/integrate_bi_tools/)

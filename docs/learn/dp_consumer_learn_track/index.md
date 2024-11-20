@@ -1,14 +1,14 @@
 # Data Product Consumer Learning Track
 
-This track prepares you to harness the full potential of data products, enabling faster insights and streamlined integration into your applications and tools.
+This track prepares you to harness the full potential of Data Products, enabling faster insights and streamlined integration into your applications and tools.
 
 By the end of this course, you will be able to:
 
-- **Efficiently discover Data Products**: Learn to browse and search curated data products by domain, use case, or specific criteria, ensuring you find the exact data you need for your analysis.
+- **Efficiently discover Data Products**: Learn to browse and search curated Data Products by domain, use case, or specific criteria, ensuring you find the exact data you need for your analysis.
 
-- **Ensure confidence in data products**: Implement solutions that access trusted data products in a standardized manner, reducing development time.
+- **Ensure confidence in Data Products**: Implement solutions that access trusted Data Products in a standardized manner, reducing development time.
 
-- **Activate Data Products seamlessly**: Gain hands-on experience in connecting data products to BI tools, AI platforms, or even syncing live with Excel, enabling you to access and utilize insights quickly.
+- **Activate Data Products seamlessly**: Gain hands-on experience in connecting Data Products to BI tools, AI platforms, or even syncing live with Excel, enabling you to access and utilize insights quickly.
 
 - **Utilize self-serve APIs**: Use API and GraphQL capabilities to build custom applications and deploy solutions without technical barriers, speeding up your time to insights.
 
@@ -16,7 +16,7 @@ By the end of this course, you will be able to:
 
 ## Module 1: Understanding Data Products
 
-Get a solid foundation on what data products are and how they can drive insights and decision-making. Learn about their features, and importance in business processes.
+Get a solid foundation on what Data Products are and how they can drive insights and decision-making. Learn about their features, and importance in business processes.
 
 
 <div class= "grid cards" markdown>
@@ -30,12 +30,12 @@ Get a solid foundation on what data products are and how they can drive insights
 </div>
 
 <aside class= "callout">
-🗣 For a general understanding of what data products are and their importance, please reach out to your team. If you want to learn specifically about discovering and activating data products within DataOS, continue to Module 2 for a detailed walkthrough.
+🗣 For a general understanding of what Data Products are and their importance, please reach out to your team. If you want to learn specifically about discovering and activating Data Products within DataOS, continue to Module 2 for a detailed walkthrough.
 </aside>
 
 ## Module 2: Discovering Data Products on Data Product Hub
 
-Learn how to navigate the Data Product Hub (DPH) to find data products that meet your needs using search, filters, tags, and categories.
+Learn how to navigate the Data Product Hub (DPH) to find Data Products that meet your needs using search, filters, tags, and categories.
 
 
 <div class= "grid cards" markdown>
@@ -99,7 +99,7 @@ Learn how to assess data quality through key factors like accuracy, consistency,
 
 ## Module 7: Integrating Data Products with BI tools and applications
 
-Unlock the power of data products by connecting them to BI tools. Learn to use the data product in Jupyter Notebooks for AI/ML development, query data via Postgres or GraphQL, and easily integrate with your apps using flexible APIs.
+Unlock the power of Data Products by connecting them to BI tools. Learn to use the data product in Jupyter Notebooks for AI/ML development, query data via Postgres or GraphQL, and easily integrate with your apps using flexible APIs.
 
 <div class= "grid cards" markdown>
 
