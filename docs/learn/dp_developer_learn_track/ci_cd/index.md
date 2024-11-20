@@ -61,7 +61,7 @@ Begin by creating a Bitbucket repository. Follow these steps to set up the repos
 
 Follow these steps to clone the repository:
 
-**a.** Open the repository and click the "Clone" button.
+**a.** Open the repository and click the 'Clone' button.
     
 ![image.png](/learn/dp_developer_learn_track/ci_cd/image5.png)
     
@@ -203,41 +203,41 @@ image: atlassian/default-image:2
 pipelines:
     branches:
     main:  # your default branch name
-        - step:
-            name: "Setup DataOS Data Product Self Service CLI Runtime"
+      - step:
+          name: "Setup DataOS Data Product Self Service CLI Runtime"
             script:
             # Login Docker and pull dataos docker image
-            - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin 
-            - docker pull rubiklabs/dataos-ctl:2.26.17-dev
-            - docker run rubiklabs/dataos-ctl:2.26.17-dev
+              - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin 
+              - docker pull rubiklabs/dataos-ctl:2.26.17-dev
+              - docker run rubiklabs/dataos-ctl:2.26.17-dev
 
             services: 
-            - docker 
+              - docker 
             caches:
-            - docker 
+              - docker 
     
         - step:
             name: "Deploy Data Product"
             script:
             # Define common environment variables for Docker run
-            - DOCKER_ENV_VARS="-e DATAOS_CONFIG_DIRECTORY=/dataos -e USER_ID=${{iamgroot}} DATAOS_PRIME_APIKEY=$DATAOS_PRIME_APIKEY -e LICENSE_KEY=$LICENSE_KEY -e LICENSE_ORGANIZATION_ID=$LICENSE_ORGANIZATION_ID -e DATAOS_FQDN=${{splendid-shrew.dataos.app}} -e APIKEY=$API_KEY
+              - DOCKER_ENV_VARS="-e DATAOS_CONFIG_DIRECTORY=/dataos -e USER_ID=${{iamgroot}} DATAOS_PRIME_APIKEY=$DATAOS_PRIME_APIKEY -e LICENSE_KEY=$LICENSE_KEY -e LICENSE_ORGANIZATION_ID=$LICENSE_ORGANIZATION_ID -e DATAOS_FQDN=${{splendid-shrew.dataos.app}} -e APIKEY=$API_KEY
             
             # Apply the Bundle Resource
-            - docker run --rm -i -v $BITBUCKET_CLONE_DIR/.dataos:/dataos -v $BITBUCKET_CLONE_DIR:/jobsfolder $DOCKER_ENV_VARS rubiklabs/dataos-ctl:2.26.17-dev apply -f /jobsfolder/data-product-deployment/ci_cd/slb/bundle/bundle.yaml
+              - docker run --rm -i -v $BITBUCKET_CLONE_DIR/.dataos:/dataos -v $BITBUCKET_CLONE_DIR:/jobsfolder $DOCKER_ENV_VARS rubiklabs/dataos-ctl:2.26.17-dev apply -f /jobsfolder/data-product-deployment/ci_cd/slb/bundle/bundle.yaml
             
             # Apply the Data Product manifest file
-            - docker run --rm -i -v $BITBUCKET_CLONE_DIR/.dataos:/dataos -v $BITBUCKET_CLONE_DIR:/jobsfolder $DOCKER_ENV_VARS rubiklabs/dataos-ctl:2.26.17-dev product apply -f /jobsfolder/data-product-deployment/ci_cd/data_product_spec.yml
+              - docker run --rm -i -v $BITBUCKET_CLONE_DIR/.dataos:/dataos -v $BITBUCKET_CLONE_DIR:/jobsfolder $DOCKER_ENV_VARS rubiklabs/dataos-ctl:2.26.17-dev product apply -f /jobsfolder/data-product-deployment/ci_cd/data_product_spec.yml
             
             # Apply the Data Product Dcanner
-            - docker run --rm -i -v $BITBUCKET_CLONE_DIR/.dataos:/dataos -v $BITBUCKET_CLONE_DIR:/jobsfolder $DOCKER_ENV_VARS rubiklabs/dataos-ctl:2.26.17-dev apply -f /jobsfolder/data-product-deployment/ci_cd/slb/scanner/data-product/scanner.yml
+              - docker run --rm -i -v $BITBUCKET_CLONE_DIR/.dataos:/dataos -v $BITBUCKET_CLONE_DIR:/jobsfolder $DOCKER_ENV_VARS rubiklabs/dataos-ctl:2.26.17-dev apply -f /jobsfolder/data-product-deployment/ci_cd/slb/scanner/data-product/scanner.yml
             
             
             # - sleep 20
 
             services: 
-            - docker 
+              - docker 
             caches:
-            - docker
+              - docker
 ```
     
 Below table describes each attributes of the `bitbucket-pipelines.yaml`in brief.
@@ -269,7 +269,8 @@ Below table describes each attributes of the `bitbucket-pipelines.yaml`in brief.
 
 
 **c.** Update the username and current DataOS context in the placeholders within the script section of the `bitbucket-pipelines.yaml` file.
-d. To apply the bundle manifest file, copy the relative path of your bundle manifest file and paste it into the script, as shown below. The path should be pasted after the `/jobsfolder` in this case.
+
+**d.** To apply the bundle manifest file, copy the relative path of your bundle manifest file and paste it into the script, as shown below. The path should be pasted after the `/jobsfolder` in this case.
     
 ```yaml
 # Apply the Bundle Resource
