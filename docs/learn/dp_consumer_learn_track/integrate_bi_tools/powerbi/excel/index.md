@@ -25,13 +25,13 @@ Visit the [Analyze in Excel for Power BI Desktop](https://www.sqlbi.com/tools/an
 
 ### **Step 2: Use the Analyze in Excel Feature**
 
-Once the extension is installed, a new tab labeled "Analyze in Excel" will appear in Power BI Desktop.
+Once the extension is installed, a new tab labeled 'Analyze in Excel' will appear in Power BI Desktop.
 
 ![Untitled](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/Untitled.png)
 
 ### **Step 3: Export to Excel**
 
-Click on the "Analyze in Excel" tab. This action will open Excel and establish a connection to the Power BI dataset or report.
+Click on the 'Analyze in Excel tab. This action will open Excel and establish a connection to the Power BI dataset or report.
 
 ![powerbi.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi.png)
 
