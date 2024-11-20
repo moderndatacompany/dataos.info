@@ -53,19 +53,19 @@ Choose a learning path that suits your role:
 
 Data Product Consumers in DataOS encompass a variety of roles, such as Data Analysts, Business Analysts, and Data Scientists. Analysts play essential roles in leveraging data for actionable insights and strategic decision-making. They utilize DataOS to discover, explore, and activate data products, enabling them to transform raw data into valuable business intelligence and drive innovation. Data Scientists leverage advanced analytical techniques and machine learning algorithms to extract meaningful insights from data within DataOS.
 
-Here are the key responsibilities of a Data Product Consumer, though specific tasks may vary depending on the role or initiative:
-
 #### **Key responsibilities**
+
+Here are the key responsibilities of a Data Product Consumer, though specific tasks may vary depending on the role or initiative:
 
 - **Discovering and accessing Data Products: I**dentify and access relevant data products based on business needs. Interpret metadata to understand product details and assess the usability of data products for informed decision-making.
 
 - **Navigating semantic models:** Understand the relationships between data entities within semantic models to improve data comprehension.
 
-- **Checking dqta Quality:** Evaluate data products for accuracy, consistency, and completeness, ensuring high-quality analysis and decision-making.
+- **Checking data quality:** Evaluate data products for accuracy, consistency, and completeness, ensuring high-quality analysis and decision-making.
 
 - **Understanding governance and policies:** Ensure data usage and access aligns with organizational security standards and regulations.
 
-- **Activating Data Products: Consider how** data products can be consumed with Business Intelligence (BI) tools, APIs, and other applications to enhance workflows and reporting.
+- **Activating Data Products:** Consider how data products can be consumed with Business Intelligence (BI) tools, APIs, and other applications to enhance workflows and reporting.
 
 - **Tracking metrics and performance:** Monitor performance, usage, and impact metrics of data products to assess their effectiveness and communicate results to stakeholders.
 
@@ -140,6 +140,7 @@ The DataOS Operator handles a range of tasks, from provisioning compute resource
 #### **Key responsibilities**
 
 A DataOS Operator could be an existing Forward Deployment Engineer, DevOps Engineer, or a Cloud Engineer. Here are the key responsibilities of a DataOS Operator:
+
 - **Kubernetes cluster management**: Oversee and manage Kubernetes clusters to ensure the optimal performance of the DataOS platform.
 
 - **Cloud infrastructure management**: Handle deployments and resource management on cloud platforms like AWS, GCP, or Azure.
