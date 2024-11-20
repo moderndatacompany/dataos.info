@@ -4,7 +4,7 @@ In this topic, you'll learn how to deploy your semantic model(Lens) in DataOS. T
 
 ## Scenario
 
-After thorough testing of your Lens in a local environment, the next critical step is to deploy it in DataOS. This process ensures that your model is accessible and reliable for broader usage, enabling stakeholders to leverage it for real-time data insights and decision-making.
+After thorough testing of your semantic model(Lens) in a local environment, the next critical step is to deploy it in DataOS. This process ensures that your model is accessible and reliable for broader usage, enabling stakeholders to leverage it for real-time data insights and decision-making.
 
 ## Prerequisites
 
@@ -16,7 +16,7 @@ Before diving into configuring Lens, make sure you have everything ready:
     |--------------------------------------------|---------------------------------------|
     | Read Workspace                             | `roles:id:data-dev `                  |
     |Create Update and Delete Lens in user layer specified workspace| `roles:id:system-dev`  |
-    | Read all secrets from Heimdall             |  `roles:id:operator`                                    |
+    | Read all secrets from Heimdall             |  `roles:id:user`                                    |
 
 2. **Check CLI installation and initialization**: You need this text-based interface that allows you to interact with the DataOS context via command prompts. Click [here](/interfaces/cli/) to learn more.
 
@@ -28,12 +28,12 @@ Before diving into configuring Lens, make sure you have everything ready:
 
 ## Steps
 
-You follow the below steps to deploy a Lens on DataOS.
+You follow the below steps to deploy Lens on DataOS.
 
 
 ### **Step 1: Prepare the Lens semantic model folder in the Data Product directory**
 
-The semantic model is organized within the `resources/lens/` directory of the Data Product. You don’t need to push the Lens model individually. Instead, you will push the entire Data Product directory, which includes the Lens model, to a code repository such as [GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github), [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/getting-started.html), or [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/push-code-to-bitbucket/), once all the Data Product Resources are prepared. This ensures that the Lens model, along with all Data Product resources, is included in the overall deployment, with proper synchronization for version tracking and collaboration.
+The semantic model is organized within the `resources/lens/` directory of the Data Product. You don’t need to push the Lens individually. Instead, you will push the entire Data Product directory, which includes the Lens semantic model, to a code repository such as [GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github), [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/getting-started.html), or [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/push-code-to-bitbucket/), once all the Data Product Resources are prepared. This ensures that the Lens, along with all Data Product resources, is included in the overall deployment, with proper synchronization for version tracking and collaboration.
 
 The following structure illustrates how the Lens Resource will be organized within the Data Product directory before being pushed to the code repository.
 
@@ -99,20 +99,20 @@ INFO[0001] 🛠 apply...complete
 ```
 
 <aside class="callout">
-🗣️ Make a note of the name of the created `Instance Secret`, as it will be required in the secrets attribute section of the Lens manifest file. This name is essential for ensuring proper configuration and access within your Lens model.
+🗣️ Make a note of the name of the created `Instance Secret`, as it will be required in the secrets attribute section of the Lens manifest file. This name is essential for ensuring proper configuration and access within your Lens semantic model.
 </aside>
 
-### **Step 3: Create a Lens Resource manifest file**
+### **Step 3: Create Lens Resource manifest file**
 
 You  begin by creating a manifest file that holds the configuration details for your Lens Resource. The structure of the Lens manifest file is provided below.
 
-The manifest file of a Lens can be broken down into two sections:
+The manifest file of Lens can be broken down into two sections:
 
 1. Resource meta section
 2. Lens-specific section
 
 <aside class="callout">
-🗣️ In DataOS, a Lens is categorized as a Resource type. The YAML configuration file for a Lens Resource includes a Resource meta section, which contains attributes shared among all Resource types.
+🗣️ In DataOS, Lens is categorized as a Resource type. The YAML configuration file for Lens Resource includes a Resource meta section, which contains attributes shared among all Resource types.
 </aside>
 
 The following YAML excerpt illustrates the attributes specified within this section:
@@ -200,7 +200,7 @@ lens:
     logLevel: info # Log level for metrics (optional)
 ```
 
-A typical deployment of a Lens Resource includes the following components:
+A typical deployment of Lens Resource includes the following components:
 
 | **Section** | **Description** |
 | --- | --- |
@@ -212,7 +212,7 @@ A typical deployment of a Lens Resource includes the following components:
 | **Iris** | Manages interaction with Iris dashboards. |
 | **Metrics** | Populates the metrics in the metric section of the Data Product Hub. |
 
-For more information on how to configure a Lens manifest file, refer to the link: [Configuration Fields of the Deployment Manifest File for Lens Resource](/resources/lens/lens_manifest_attributes/)
+For more information on how to configure Lens manifest file, refer to the link: [Configuration Fields of the Deployment Manifest File for Lens Resource](/resources/lens/lens_manifest_attributes/)
 
 ### **Step 4: Apply the Lens Resource manifest file**
 
