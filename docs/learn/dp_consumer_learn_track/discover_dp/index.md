@@ -24,7 +24,7 @@ To get started, you will need:
 
 ## Discovering Data Products on Data Product Hub
 
-You can discover data products by domain, use case or custom criteria.
+You can discover Data Products by domain, use case or custom criteria.
 
 Follow the below steps to discover the Data Product of interest.
 
@@ -40,7 +40,7 @@ Follow the below steps to discover the Data Product of interest.
     
     ![disc_search.png](/learn/dp_consumer_learn_track/discover_dp/disc_search.png)
     
-4. **Filter your results:** Narrow down results by applying filters, such as “Product Recommendation” under use cases. You can also filter by tier, domain, or owner. Similarly, you can find data products by domains such as related to Marketing, Sales, DataOps.
+4. **Filter your results:** Narrow down results by applying filters, such as “Product Recommendation” under use cases. You can also filter by tier, domain, or owner. Similarly, you can find Data Products by domains such as related to Marketing, Sales, DataOps.
     
     ![disc_filter.png](/learn/dp_consumer_learn_track/discover_dp/disc_filter.png)
     
