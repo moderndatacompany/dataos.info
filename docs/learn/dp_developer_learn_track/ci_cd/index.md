@@ -79,6 +79,7 @@ Follow these steps to clone the repository:
 Follow the below steps to start building the Data Product by creating the manifest files of the all the Resources and Data Product. For example, to create a Data Product, an instance secret is first created to store the connection details of the BigQuery data source. A depot for the data connection is then created, followed by the creation of a depot scanner manifest file. For data transformation, a flare job is created, with multiple flare jobs allowed for transforming multiple datasets. A bundle is created to include the paths of the instance secret, depot, depot scanner, and flare jobs, along with their dependencies. Finally, a Data Product manifest file is created to apply the Data Product, and a Data Product scanner is deployed to the Data Product Hub.
 
 **a.** Open the cloned repository using your preferred code editor (e.g., VS Code).
+
 **b.** Inside the repository, create a folder named `data_product` to store all related Resources.
     
 ```sql

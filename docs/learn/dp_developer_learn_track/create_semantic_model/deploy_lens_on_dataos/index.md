@@ -15,8 +15,8 @@ Before diving into configuring Lens, make sure you have everything ready:
     | **Access Permission (via use-cases)**       | **Access Permissions (via tags)**      |
     |--------------------------------------------|---------------------------------------|
     | Read Workspace                             | `roles:id:data-dev `                  |
+    |Create Update and Delete Lens in user layer specified workspace| `roles:id:system-dev`  |
     | Read all secrets from Heimdall             |  `roles:id:operator`                                    |
-    |Create Update and Delete Lens in user layer specified workspace|   |
 
 2. **Check CLI installation and initialization**: You need this text-based interface that allows you to interact with the DataOS context via command prompts. Click [here](/interfaces/cli/) to learn more.
 
