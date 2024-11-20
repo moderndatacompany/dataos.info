@@ -22,7 +22,7 @@ As a DataOS Operator, you are responsible for safeguarding sensitive information
 
 <div class= "grid cards" markdown>
 
-- [Securing credentials]()
+- [Safeguarding credentials in DataOS]()
 
 </div>
 
