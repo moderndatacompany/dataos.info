@@ -4,7 +4,7 @@ This track is designed to equip you with the skills needed to develop robust and
 
 By the end of this course, you'll be able to:
 
-- **Understand business needs**: Align data products with business goals and define quality and security requirements.
+- **Understand business needs**: Align Data Products with business goals and define quality and security requirements.
 
 - **Design effective data models**: Use DataOS Metis and Workbench to analyze and refine data assets.
 
@@ -34,7 +34,7 @@ To create a successful data product, it’s crucial to first understand the busi
 
 ## Module 2: Designing Data Products
 
-This module dives into the detailed process of designing data products tailored to meet specific business needs. It covers every aspect from defining use cases, and discovering existing resources, to creating a robust design and ensuring quality, security, and compliance.
+This module dives into the detailed process of designing Data Products tailored to meet specific business needs. It covers every aspect from defining use cases, and discovering existing resources, to creating a robust design and ensuring quality, security, and compliance.
 
 <div class= "grid cards" markdown>
 

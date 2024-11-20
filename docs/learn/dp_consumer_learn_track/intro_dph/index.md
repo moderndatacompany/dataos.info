@@ -16,7 +16,7 @@ To make the most out of this content, you’ll need:
 
 ## Quick concepts
 
-- **Data Products:** Curated, structured data sets that provide valuable insights, automate processes, or enhance decision-making.  They take various forms, such as enriched datasets, semantic models, dashboards, or machine learning models, and are designed to help users understand and act on data easily. Essentially, data products turn raw data into useful information that can drive actions and improve outcomes.
+- **Data Products:** Curated, structured data sets that provide valuable insights, automate processes, or enhance decision-making.  They take various forms, such as enriched datasets, semantic models, dashboards, or machine learning models, and are designed to help users understand and act on data easily. Essentially, Data Products turn raw data into useful information that can drive actions and improve outcomes.
 
 ## What is Data Product Hub?
 
@@ -24,7 +24,7 @@ The Data Product Hub is a user-friendly interface within DataOS where you can di
 
 ### **Highlights**
 
-- **Self-Service Access**: Users can independently discover, explore, and use data products tailored to specific needs.
+- **Self-Service Access**: Users can independently discover, explore, and use Data Products tailored to specific needs.
 - **Centralized Access Layer**: Data Product Hub provides a single layer for generating APIs, and accessing metrics.
 - **Contextual Metadata**: Data products include documentation, semantic definitions, quality metrics, lineage, and usage guidelines.
 - **Data Governance**: Ensures data accuracy, compliance, and reliability.
