@@ -201,3 +201,10 @@ A typical deployment of a Lens Resource includes the following components:
 
 For more information on how to configure a Lens manifest file, refer to the link: [Configuration Fields of the Deployment Manifest File for Lens Resource](/resources/lens/lens_manifest_attributes/)
 
+### **Step 4: Apply the Lens Resource manifest file**
+
+Apply the Lens manifest file using the `apply` command as shownn below, or reference the Lens manifest path in the Bundle Resource along with other Resources.
+
+```shell
+dataos-ctl apply -f /home/data_product/resources/lens/deployment.yaml #path
+```
