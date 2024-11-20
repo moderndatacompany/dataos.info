@@ -17,7 +17,7 @@ To make the most out of this part, you’ll need:
 
 Here, you’ll find step-by-step instructions to build data API. 
 
-1. You create a bit-bucket repository and clone it on your local system.
+1. You create a Bitbucket repository and clone it on your local system.
 2. Using VS code, you open the repository and create an ‘apis’ folder and a `config.yaml` manifest file.
     - config.yaml
         
@@ -51,7 +51,7 @@ Here, you’ll find step-by-step instructions to build data API.
     
     ![image.png](/learn/dp_developer_learn_track/data_api/image.png)
     
-3. Inside the apis folder create two SQL files named `cp_insights.sql` and `product_affinity.sql` and two manifest files corresponding to the SQL files named `cp_insights.yaml` and `product_affinity.yaml`. And push the changes.
+3. Inside the apis folder create two SQL files named `cp_insights.sql` and `product_affinity.sql` and two manifest files corresponding to the SQL files named `cp_insights.yaml` and `product_affinity.yaml`, and push the changes.
     - cp_insights.sql
         
         ```sql
