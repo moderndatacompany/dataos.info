@@ -8,7 +8,7 @@ To assign a particular use case to multiple roles, create a Grant. When administ
 🗣 As part of our best practice, we suggest a cautious approach by setting up restricted access for all users, granting only minimum access privileges. This approach encourages granting access only when necessary and allows flexibility to gradually expand access as visibility and understanding of usage patterns increase over time.
 </aside>
 
-## How to create Policy Use-Case Grant?
+## How to create Policy Use-case Grant?
 
 While it's straightforward to assign Use-Cases to users via the Bifrost UI, there's a rare chance that you may be required to assign a particular use-case to multiple users across different teams, you can accomplish this by following the steps outlined below.
 
@@ -23,7 +23,7 @@ policy_use_case_id: manage-pulsar
   subjects:
   - roles:id:operator
 ```
--  Click on the **Create** button to apply the Use-Case Grant.
+-  Click on the **Create** button to apply the Use-case Grant.
 
 Following are some more sample grant manifest
 
