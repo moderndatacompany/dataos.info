@@ -27,7 +27,6 @@ You have been tasked to add a new employee to the respective Identity Management
 ### **Authorization**
 
 The next step is authorization, which determines what actions an authenticated user or application can perform. Access Control are the rules that govern this process, defining what users or applications can do with specific resources within DataOS.
-Policy are based on Attribute-Based Access Control (ABAC) strategy. These policies specify which subjects (users or applications) can perform certain actions (predicates) on objects (resources), based on the attributes associated with them.
 
 Now that users are authenticated, as a DataOS operator, your next step is to ensure that each user has the correct access to resources based on their role. This requires implementing the appropriate Access Policy. Before you create these policies, it's essential to understand the strategy that DataOS uses for policy implementation.
 
@@ -49,29 +48,20 @@ Bifrost organizes key access control concepts into the following components:
 
 - **User**: In DataOS, a user can be a person or an application. The user is a subject in the access control system and is identified by a tag.
     
-[Managing users in Bifrost]()
+[Users](/learn/operator_learn_track/access_control/users/)
     
 - **Role**: Roles group users who need the same level of access to resources. For example, all data scientists in an organization might share the same role, allowing them to access the same datasets and perform similar actions.
     
-[Roles]()
+[Roles](/learn/operator_learn_track/access_control/roles/)
     
 - **Use case**: This defines the specific action a user wants to perform on a resource (e.g., `view dataset,` `edit dataset,` etc.). Use cases are combinations of objects and predicates.
     
-[Use-cases]()
+[Use-cases](/learn/operator_learn_track/access_control/use_cases/)
     
 - **Grant**: Grants link a subject (user) to a Use-Case, defining the subject's access permissions to a specific resource. For example, a grant might allow Iamgroot to view a specific dataset.
 
-[Grant]()
+[Grants](/learn/operator_learn_track/access_control/grants/)
 
 - **Grant Request**: In Bifrost, users can initiate a grant request if they want additional access permissions.
 
-
-
-
-- The desired use-case (e.g., read/write access to a specific dataset),
-- The user (e.g., iamgroot),
-- The resource (e.g., a specific dataset or application).
-
-Operators review the request, ensure it complies with security and policy standards, then approve or reject it based on existing policies and organizational needs.
-
-[Grant Request]()
+[Grant Requests](/learn/operator_learn_track/access_control/grant_requests/)

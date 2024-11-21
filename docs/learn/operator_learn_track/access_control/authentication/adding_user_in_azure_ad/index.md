@@ -1,8 +1,10 @@
 # Adding users to Azure Active Directory
 
-## Scenario 
+In this topic, you will learn how to add a guest user to your Azure Active Directory (Azure AD) tenant. Azure AD allows you to invite external users to access specific resources or collaborate on your organization’s services. 
 
-You have been tasked with adding a new user to your organisation's Azure Active Directory so that they can access the resources in your organisation.
+## Scenario
+
+You need to invite a guest user to collaborate on a project within your organization. To do so, you need to create their account in your Azure Active Directory. You will guide the guest user through the process of accepting the invitation and gaining access to your organization's resources.
 
 ## Prerequisites
 
