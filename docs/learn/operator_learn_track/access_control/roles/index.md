@@ -53,7 +53,7 @@ While DataOS provides default Role mappings based on AMS groups, you may occasio
 
 To create a custom Role, follow these steps:
 
-### Step 1: Identify job functions or departments
+### **Step 1: Identify job functions or departments**
 
 The first step in creating a custom Role is identifying the job functions or departments requiring specific access to DataOS resources. For instance, you might define Roles for:
 
@@ -62,7 +62,7 @@ The first step in creating a custom Role is identifying the job functions or dep
 
 For example, you define a ‘Consumer’ Role for stakeholders who need access to data but do not need permission to modify it.
 
-### Step 2: Define the access requirements
+### **Step 2: Define the access requirements**
 
 Next, define the access permissions for the Role, ensuring that users have only the permissions they need to perform their tasks. Follow the principle of least privilege, meaning each user should have access to the resources necessary for their job, but not more.
 
@@ -71,7 +71,7 @@ Next, define the access permissions for the Role, ensuring that users have only 
 
 For this guide, we’ll focus on creating a Data Consumer Role, assuming the data-dev Role already exists in the AMS Group.
 
-### Step 3: Navigate to the Roles section in Bifrost
+### **Step 3: Navigate to the Roles section in Bifrost**
 
 1. You navigate to the Roles tab in Bifrost.
 
