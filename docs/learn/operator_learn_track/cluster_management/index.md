@@ -147,6 +147,7 @@ Follow the steps given below.
     | `debug` | Defines the logging configuration for the cluster. The `logLevel` is set to `INFO` for general logs, and the `trinoLogLevel` is set to `ERROR` for Trino logs. |
     | `depots` | A list of depots (storage locations) associated with the cluster. |
     | `address` | Specifies the location of the depot. In this case, it points to `dataos://icebase`, indicating a depot in the DataOS. |
+    
 2. Apply the Cluster manifest using the following command in the terminal.
     
     ```bash
