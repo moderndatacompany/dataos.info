@@ -1,10 +1,10 @@
 # Deploy Lens in DataOS 
 
-In this topic, you'll learn how to deploy your semantic model(Lens) in DataOS. This step ensures your model is accessible, reliable, and ready for real-time use, enabling stakeholders to derive insights and make data-driven decisions.
+In this topic, you'll learn how to deploy your semantic model (Lens) in DataOS. This step ensures your model is accessible, reliable, and ready for real-time use, enabling stakeholders to derive insights and make data-driven decisions.
 
 ## Scenario
 
-After thorough testing of your semantic model(Lens) in a local environment, the next critical step is to deploy it in DataOS. This process ensures that your model is accessible and reliable for broader usage, enabling stakeholders to leverage it for real-time data insights and decision-making.
+After thorough testing of your semantic model (Lens) in a local environment, the next critical step is to deploy it in DataOS. This process ensures that your model is accessible and reliable for broader usage, enabling stakeholders to leverage it for real-time data insights and decision-making.
 
 ## Prerequisites
 
@@ -33,9 +33,9 @@ You follow the below steps to deploy Lens on DataOS.
 
 ### **Step 1: Prepare the Lens semantic model folder in the Data Product directory**
 
-The semantic model is organized within the `resources/lens/` directory of the Data Product. You don’t need to push the Lens individually. Instead, you will push the entire Data Product directory, which includes the Lens semantic model, to a code repository such as [GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github), [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/getting-started.html), or [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/push-code-to-bitbucket/), once all the Data Product Resources are prepared. This ensures that the Lens, along with all Data Product Resources(such as Talos), is included in the overall deployment, with proper synchronization for version tracking and collaboration.
+The semantic model is organized within the `resources/lens/` directory of the Data Product. You don’t need to push the Lens individually. Instead, you will push the entire Data Product directory, which includes the Lens semantic model, to a code repository such as [GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github), [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/getting-started.html), or [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/push-code-to-bitbucket/), once all the Data Product Resources are prepared. This ensures that the Lens, along with all Data Product Resources (such as Talos), is included in the overall deployment, with proper synchronization for version tracking and collaboration.
 
-The following structure illustrates how the Lens will be organized within the Data Product directory before being pushed to the code repository.
+The following structure illustrates how the Lens will be organized within the Data Product directory.
 
 ```jsx
 resources/                          # resources folder in dp
@@ -55,7 +55,7 @@ resources/                          # resources folder in dp
 
 ### **Step 2: Create Instance Secrets for code repository credentials**
 
-To secure your code repository credentials, you need to create and configure an Instance Secret. This secret is necessary because the Lens deployment file contains Git/Bitbucket credentials and repo address to fetch the all Lens artifacts. To create and configure an Instance Secret follow the below steps:
+To secure your code repository credentials, you need to create and configure an Instance Secret. This secret is necessary because the Lens deployment file contains Git/Bitbucket credentials and repo address to fetch all Lens artifacts. To create and configure an Instance Secret follow the below steps:
 
 **a.** **Create an Instance Secret manifest file**
 
@@ -75,7 +75,7 @@ instance-secret:
   acl: r # Access control list (mandatory)
   data: # Data (mandatory)
     GITSYNC_USERNAME: iamgroot
-    GITSYNC_PASSWORD: <git_token>
+    GITSYNC_PASSWORD: <GIT_TOKEN>
 ```
 
 **b.** **Apply the Instance Secret manifest**
@@ -217,7 +217,7 @@ For more information on how to configure Lens manifest file, refer to the link:�
 
 ### **Step 4: Apply the Lens manifest file**
 
-Apply the Lens manifest file using the `apply` command as shownn below, or reference the Lens manifest path in the Bundle Resource along with other Resources.
+Apply the Lens manifest file using the `apply` command as shown below, or reference the Lens manifest path in the Bundle Resource along with other Resources.
 
 ```shell
 dataos-ctl apply -f /home/data_product/resources/lens/deployment.yaml #path
