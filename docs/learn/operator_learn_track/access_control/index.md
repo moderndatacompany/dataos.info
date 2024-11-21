@@ -26,16 +26,15 @@ You have been tasked to add a new employee to the respective Identity Management
 
 ### **Authorization**
 
-The next step is authorization, which determines what actions an authenticated user or application can perform. Access Control are the rules that govern this process, defining what users or applications can do with specific resources within DataOS.
-
 Now that users are authenticated, as a DataOS operator, your next step is to ensure that each user has the correct access to resources based on their role. This requires implementing the appropriate Access Policy. Before you create these policies, it's essential to understand the strategy that DataOS uses for policy implementation.
 
 Learn more about the ABAC (Attribute-Based Access Control) strategy used in DataOS:
 
 [ABAC Implementation in DataOS](/learn/operator_learn_track/access_control/abac_implementation_in_dataos/)
 
+After devloping the thorough understanding of the ABAC strategy, now is the time to actually implement the Policy.
 
-[Policy](/learn/operator_learn_track/access_control/policy)
+[Policy](/learn/operator_learn_track/access_control/policy/)
 
 
 ### **Bifrost**

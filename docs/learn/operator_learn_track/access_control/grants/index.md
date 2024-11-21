@@ -16,7 +16,7 @@ While it's straightforward to assign Use-Cases to users via the Bifrost UI, ther
 
     ![grants](/learn/operator_learn_track/access_control/grants/Pasted image.png)
 
--  In the create grant dialog box, define a grant manifest. A sample Grant manifest is given
+- In the create grant dialog box, define a grant manifest. A sample Grant manifest is given
 
 ```yaml
 policy_use_case_id: manage-pulsar
@@ -77,5 +77,5 @@ subjects:
 ```
 
 <aside class="callout">
-🗣 To remove a specific permission associated with a role, you'll need to delete the corresponding grant.
+ To remove a specific permission associated with a role, you'll need to delete the corresponding grant.
 </aside>
