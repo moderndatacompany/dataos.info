@@ -88,11 +88,7 @@ A new team has been onboarded to work on a data project in DataOS. You evaluate 
 
 <div class= "grid cards" markdown>
 
-- [Access control management](/learn/operator_learn_track/)
-
-- [Adding users to Azure Active directory](/learn/operator_learn_track/)
-
-- [Adding users to Keycloak](/learn/operator_learn_track/key_cloak/)
+- [Access control management](/learn/operator_learn_track/access_control/)
 
 </div>
 
