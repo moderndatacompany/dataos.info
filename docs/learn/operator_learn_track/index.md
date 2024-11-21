@@ -63,7 +63,7 @@ Using Prometheus and Grafana, you can set up dashboards to monitor key system me
 
 <div class= "grid cards" markdown>
 
-- [Configuring Alerts and Dashboards using Grafana]()
+- [Configuring Alerts and Dashboards using Grafana](/learn/operator_learn_track/alerts_grafana/)
 
 - [Optimizing System level events](/learn/operator_learn_track/lakehouse_insights/)
 
