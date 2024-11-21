@@ -6,14 +6,14 @@ As a DataOS Operator, you understand that managing sensitive credentials is crit
 
 Imagine a scenario where your team accidentally commits database credentials to a public repository. While the issue is quickly fixed, it highlights the critical risks associated with poor credential management.
 
-To prevent such incidents, this guide introduces you to the tools in DataOS for securing sensitive information. Your first task is to understand the distinction between **Secrets** and **Instance Secrets Resources**, foundational components for robust credential security.
+To prevent such incidents, this guide introduces you to the tools in DataOS for securing sensitive information. Your first task is to understand the distinction between Secrets and Instance Secrets Resources, foundational components for robust credential security.
 
 ## Quick concepts
 
 In DataOS, credentials such as API tokens, database passwords, and certificates are protected using two key DataOS Resources:
 
-1. **Instance Secrets**: A DataOS Resource accessible instance-wide. These secrets are ideal for credentials accessed by Resources in multiple Workspaces like code repository credentials or Instance-level Resources such as **Depots**.
-2. **Secrets**: A Workspace-level DataOS Resource storing credentials with access restricted to specific Workspace Resources for targeted security. These are ideal when you want to reference secrets in Workspace-level Resources such as **Workflows**, **Worker**, **Services**, etc.
+1. **Instance Secrets**: A DataOS Resource accessible instance-wide. These secrets are ideal for credentials accessed by Resources in multiple Workspaces like code repository credentials or Instance-level Resources such as Depots.
+2. **Secrets**: A Workspace-level DataOS Resource storing credentials with access restricted to specific Workspace Resources for targeted security. These are ideal when you want to reference secrets in Workspace-level Resources such as Workflows, Worker, Services, etc.
 
 They help you to:
 
@@ -29,6 +29,7 @@ Suppose, you want to secure credentials for a new Postgres Depot and store them 
 
 1. **Identify the sensitive data**: Gather the credentials needed for the Postgres Depot, including `$POSTGRES_USERNAME` and `$POSTGRES_PASSWORD`.
 2. **Draft the manifest structure**: Using a text editor, create a manifest file for read secrets with the following structure:
+
     a. Provide the following attributes:
         - `name`: Combine the name of the Depot and access control (e.g., `postgresdepot-r` for read access).
         - `description`: Provide proper description.
