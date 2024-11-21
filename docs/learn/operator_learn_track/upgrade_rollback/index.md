@@ -1,4 +1,4 @@
-# Upgrade and Rollback Strategies
+# Upgrade and rollback strategies
 
 In this module, you’ll walk through the key steps for both upgrading and rolling back processes, ensuring your platform remains robust and scalable.
 
@@ -12,22 +12,22 @@ Your goal is to ensure system stability, communicate with stakeholders, and effe
 🗣  This documentation covers only the rollback and upgrade scenarios for DataOS. For comprehensive details regarding the installation of DataOS, please contact the DataOS Platform Administrative from Modern Team.  
 </aside>
 
-## Upgrade Strategy
+## Upgrade strategy
 
 Upgrading DataOS is a structured process that involves updating the **dataos-manager** tag and executing helm commands. In this module, you'll follow a clear set of steps to ensure a smooth upgrade process for DataOS.
 
-## Steps for an Upgrade
+## Steps for an upgrade
 
-### **1. Release Notes**
+### **1. Release notes**
 
 - First, review the detailed release notes outlining new features, fixes, and potential impacts.
 - Then, communicate the planned upgrade date and expected downtime to all relevant stakeholders.
 
-### **2. Downtime Planning**
+### **2. Downtime planning**
 
 Identify a low-traffic window for the upgrade and seek approval for the schedule.
 
-### **3. DataOS Manager Tag Update**
+### **3. DataOS Manager tag update**
 
 Update the `dataos-manager` image tag to the latest version, ensuring compatibility with the new release.
 
@@ -58,27 +58,27 @@ helm install -n dataos-manager dataos-manager dataos/dataos-manager -f <path to 
 
 Ensure all pre-installation checks are completed and dependencies are met.
 
-### **5. Post-Upgrade Validation**
+### **5. Post-upgrade validation**
 
 Validate the upgraded system’s functionality and monitor performance using Grafana.
 
-## Rollback Strategy
+## Rollback strategy
 
-When a new release causes unforeseen issues, rolling back to a stable version becomes essential to restore platform stability. This section guides you through the **Rollback Plan for DataOS**, helping you manage rollbacks efficiently and ensuring minimal disruption to operations.
+When a new release causes unforeseen issues, rolling back to a stable version becomes essential to restore platform stability. This section guides you through the **Rollback plan for DataOS**, helping you manage rollbacks efficiently and ensuring minimal disruption to operations.
 
-## Pre-Rollback Preparation
+## Pre-rollback preparation
 
 Before initiating a rollback, ensure the following steps are completed:
 
-### **1. Identify Rollback Target**
+### **1. Identify rollback target**
 
 Determine the version to rollback to and verify compatibility with dependencies across the **User Space**, **Core Kernel**, and **Cloud Kernel** layers.
 
-### **2. Backup and Safeguard**
+### **2. Backup and safeguard**
 
 Create backups of critical data, configurations, and stateful components to ensure nothing is lost during the rollback.
 
-### **3. Notify Stakeholders**
+### **3. Notify stakeholders**
 
 Communicate with the following teams:
 
@@ -87,25 +87,25 @@ Communicate with the following teams:
 - DataOS Operators or Platform Administrators
 - Any other affected teams (e.g., Operations staff)
 
-### **4. Risk Assessment**
+### **4. Risk assessment**
 
 Evaluate the potential impacts of the rollback, including downtime and service interruptions, and prepare mitigation strategies.
 
 
-## Rollback Execution
+## Rollback execution
 
 Follow a **top-down rollback strategy** to address each layer systematically and minimize dependencies and conflicts.
 
 ### **Step 1: User Space**
 
 1. **New Stacks:** Remove recently introduced stacks and their dependencies.
-2. **Stack Upgrades:** For upgraded stacks, modify environment install files to use the previous stable versions and reinstall them.
+2. **Stack upgrades:** For upgraded stacks, modify environment install files to use the previous stable versions and reinstall them.
 3. **Clusters:** Revert cluster images to the last known stable version.
 
 ### **Step 2: Core Kernel**
 
-1. **Component Interdependencies:** Analyze semantic version changes and roll back interdependent components (e.g., *Poros*, *Metis*).
-2. **Docker Artifacts:** For minor version changes, roll back individual components. For major updates, consult with component owners for compatibility checks.
+1. **Component interdependencies:** Analyze semantic version changes and roll back interdependent components (e.g., *Poros*, *Metis*).
+2. **Docker artifacts:** For minor version changes, roll back individual components. For major updates, consult with component owners for compatibility checks.
 
 ### **Step 3: Cloud Kernel**
 
@@ -113,29 +113,29 @@ Follow a **top-down rollback strategy** to address each layer systematically and
 2. **Kubernetes:** If a direct rollback isn’t possible, create a new cluster with the desired version.
 3. **Postgres:** Restore data from a snapshot matching the target version.
 
-## Post-Rollback Verification
+## Post-rollback Verification
 
 After executing the rollback, ensure the platform’s stability through comprehensive testing:
 
-### **Step 1: Component Testing**
+### **Step 1: Component testing**
 
 1. Verify the functionality of rolled-back components across all layers.
 2. Conduct regression testing to identify any residual issues.
 
-### **Step 2: Data Integrity Checks**
+### **Step 2: Data integrity checks**
 
 Validate the consistency and accuracy of critical data.
 
-### **Step 3: Inter-layer Communication**
+### **Step 3: Inter-layer communication**
 
 Confirm seamless interaction between the **User Space**, **Core Kernel**, and **Cloud Kernel**.
 
 
-## Root Cause Analysis and Continuous Improvement
+## Root cause analysis and continuous improvement
 
 After the rollback, focus on long-term improvements:
 
-### **1. Issue Investigation**
+### **1. Issue investigation**
 
 Conduct a detailed analysis to pinpoint the cause of the rollback.
 
@@ -143,16 +143,16 @@ Conduct a detailed analysis to pinpoint the cause of the rollback.
 
 Record lessons learned, including challenges faced and areas for improvement.
 
-### **3. Process Enhancements**
+### **3. Process enhancements**
 
 Update release and rollback procedures, incorporating preventive measures.
 
-### **4. Stakeholder Debrief**
+### **4. Stakeholder debrief**
 
 Share findings with relevant teams to ensure better preparation for future releases.
 
 ## Key Takeaways
 
-- **Layered Rollback Strategy:** A top-down approach minimizes dependencies and ensures systematic execution.
-- **Stakeholder Collaboration:** Clear communication and coordination are essential for successful rollbacks.
-- **Continuous Improvement:** Post-rollback analysis helps enhance future release processes.
+- **Layered rollback strategy:** A top-down approach minimizes dependencies and ensures systematic execution.
+- **Stakeholder collaboration:** Clear communication and coordination are essential for successful rollbacks.
+- **Continuous improvement:** Post-rollback analysis helps enhance future release processes.
