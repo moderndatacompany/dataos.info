@@ -1,4 +1,4 @@
-# Configuring Alerts grafana
+# Configuring Alerts and Dashboards using Grafana
 
 This topic details the steps to configure alerts for key performance indicators and troubleshooting performance issues.
 
@@ -62,30 +62,35 @@ After successfully connecting to the Prometheus, now you can move into building 
 
 This section provides a step-by-step walk-through for creating dashboards.
 
-1. Click **Dashboards** in the left-side menu.
+1. Click Dashboards in the left-side menu.
     
     ![image7.png](/learn/operator_learn_track/alerts_grafana/image7.png)
     
-2. Click **New** and select **New Dashboard**.
-3. On the empty dashboard, click **+ Add visualization**.
+2. Click New and select New Dashboard.
+3. On the empty dashboard, click + Add visualization.
     
     ![image8.png](/learn/operator_learn_track/alerts_grafana/image8.png)
     
 4. In the dialog box that opens, do one of the following:
+
     - Select one of your existing data sources.
-    - Click **Configure a new data source** to set up a new one (Admins only).
+
+    - Click Configure a new data source to set up a new one (Admins only).
     
     ![image9.png](/learn/operator_learn_track/alerts_grafana/image9.png)
     
-    The **Edit panel** view will open when you select the data source. You can change the panel data source later using the drop-down in the **Query** tab of the panel editor if needed.
+    The Edit panel view will open when you select the data source. You can change the panel data source later using the drop-down in the Query tab of the panel editor if needed.
     
 5. Write or construct a query in PromQL.
     
     ![image10.png](/learn/operator_learn_track/alerts_grafana/image10.png)
     
 6. Click the Refresh dashboard icon to query the data source.
+
+
+    <img src="/learn/operator_learn_track/alerts_grafana/image11.png" alt="image" style="width:20rem;" />
+
     
-    ![image11.png](/learn/operator_learn_track/alerts_grafana/image11.png)
     
 7. In the visualization list, select a visualization type.
     
@@ -95,20 +100,20 @@ This section provides a step-by-step walk-through for creating dashboards.
     
     For more information about individual visualizations, refer to [Visualizations options](https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/).
     
-8. Under **Panel options**, enter a title and description for your panel.
-9. After editing your panel, click **Save** to save the dashboard.
+8. Under Panel options, enter a title and description for your panel.
+9. After editing your panel, click Save to save the dashboard.
     
-    Alternatively, click **Apply** to see your changes applied to the dashboard first. Then click the save icon in the dashboard header.
+    Alternatively, click Apply to see your changes applied to the dashboard first. Then click the save icon in the dashboard header.
     
     For more information about panel editing, refer to [Panel Editing](https://www.notion.so/Panel-Editing-59b0d0ec8ed546baa732aa69b967f3ea?pvs=21).
     
 10. Enter a title for your dashboard and select a folder.
-11. Click **Save**.
-12. To add more panels to the dashboard, click **Add** in the dashboard header and select **Visualization** in the drop-down.
+11. Click Save.
+12. To add more panels to the dashboard, click Add in the dashboard header and select Visualization in the drop-down.
     
     ![image13.png](/learn/operator_learn_track/alerts_grafana/image13.png)
     
-    When you add additional panels to the dashboard, you’re taken straight to the **Edit panel** view.
+    When you add additional panels to the dashboard, you’re taken straight to the Edit panel view.
     
 
 To know more about managing the dashboards, refer to [Manage Dashboard](https://www.notion.so/Manage-Grafana-Dashboard-00701b8d4cc1474c94e98863c6166161?pvs=21).
@@ -121,7 +126,7 @@ Exploration in Grafana allows you to query data from connected data sources (Pro
 
 Builder View is the default view in the Explore section. It allows you to build queries using a graphical interface interactively. Here's how to use it:
 
-1. Click **Explore** in the left-side menu.
+1. Click Explore in the left-side menu.
 2. Choose the data source you want to query from the dropdown menu.
 3. Use the query builder to select metrics, specify filters, and define aggregations.
 4. Set the time range for your query.
@@ -142,7 +147,7 @@ Code View allows you to write and execute queries directly using the query langu
 
 Here's how to use it:
 
-1. Click **Explore** in the left-side menu.
+1. Click Explore in the left-side menu.
 2. Choose the data source you want to query from the dropdown menu.
 3. Write your query in the query editor using PromQL.
 4. Set the time range for your query.
