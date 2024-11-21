@@ -22,7 +22,7 @@ As a DataOS Operator, you are responsible for safeguarding sensitive information
 
 <div class= "grid cards" markdown>
 
-- [Safeguarding credentials in DataOS]()
+- [Safeguarding credentials in DataOS](/learn/operator_learn_track/cred_security/)
 
 </div>
 
@@ -32,7 +32,7 @@ Your team needs to connect a new data source to DataOS while ensuring robust sec
 
 <div class= "grid cards" markdown>
 
-- [setting up data source connections]()
+- [setting up data source connections](/learn/dp_developer_learn_track/data_source_connectivity/)
 
 </div>
 
@@ -42,7 +42,7 @@ As part of your daily tasks, you perform a routine system health check as you mi
 
 <div class= "grid cards" markdown>
 
-- [Managing DataOS's infrastructure and routine checks]()
+- [Managing DataOS's infrastructure and routine checks](/learn/operator_learn_track/routine_check/)
 
 </div>
 
@@ -53,7 +53,7 @@ Your team is planning to upgrade the DataOS platform to a new version. You need 
 
 <div class= "grid cards" markdown>
 
-- [DataOS upgrade plan and rollback strategy]()
+- [DataOS upgrade plan and rollback strategy](/learn/operator_learn_track/upgrade_rollback/)
 
 </div>
 
@@ -63,9 +63,9 @@ Using Prometheus and Grafana, you can set up dashboards to monitor key system me
 
 <div class= "grid cards" markdown>
 
-- [Configuring Alerts and Dashboards using Grafana]
+- [Configuring Alerts and Dashboards using Grafana]()
 
-- [Optimizing System level events]
+- [Optimizing System level events](/learn/operator_learn_track/lakehouse_insights/)
 
 </div>
 
@@ -76,9 +76,9 @@ Your team reports slow query performance during peak hours. You need to analyze 
 
 <div class= "grid cards" markdown>
 
-- [Cluster management]()
+- [Cluster management](/learn/operator_learn_track/cluster_management/)
 
-- [Cluster tuning]()
+- [Cluster tuning](/learn/operator_learn_track/cluster_tuning/)
 
 </div>
 
@@ -88,9 +88,11 @@ A new team has been onboarded to work on a data project in DataOS. You evaluate 
 
 <div class= "grid cards" markdown>
 
-- [Access control management]()
+- [Access control management](/learn/operator_learn_track/)
 
-- [Adding users to Azure Active directory]()
+- [Adding users to Azure Active directory](/learn/operator_learn_track/)
+
+- [Adding users to Keycloak](/learn/operator_learn_track/key_cloak/)
 
 </div>
 
