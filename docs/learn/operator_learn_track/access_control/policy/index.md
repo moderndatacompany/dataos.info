@@ -75,7 +75,12 @@ Use the following command to apply the Policy Resource.
 dataos-ctl apply -f apply /access_policy.yml
 ```
 
-## Next step
+## Policy evaluation
 
 After applying the Policy it is time to understand how this Policy will be evaluted.
 
+Policies are evaluated dynamically by the Policy Decision Point (PDP), which uses attributes (tags) associated with the subject, object, and predicate to decide whether to grant or deny access.
+
+- **Policy Decision Point (PDP)**: The PDP evaluates whether the policy allows the requested action. It processes the request, compares the subject’s attributes (e.g., roles or grants), and the object’s attributes (e.g., visibility, access level), and decides whether to permit or deny the request. Heimdall, the governance engine within DataOS, ensures granular access control over datasets, API paths, and applications. Acting as the Policy Decision Point (PDP), it manages authorizations and access across all data products through native governance, ensuring secure interactions at every level.
+
+- **Policy Enforcement Point (PEP)**: Once the PDP makes a decision, the PEP enforces that decision by allowing or blocking the user’s action.
