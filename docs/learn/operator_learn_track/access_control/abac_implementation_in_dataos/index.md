@@ -80,6 +80,6 @@ And the following path for a Depot:
 
 ## Next step
 
-Next, you create a Policy to provide apporopriate permissions to the Iamgroot.
+Next, you create a Policy to provide apporopriate permissions to user.
 
 [Policy](/learn/operator_learn_track/access_control/policy/)
