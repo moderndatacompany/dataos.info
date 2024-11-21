@@ -70,5 +70,5 @@ dataos-ctl apply -f apply /access_policy.yml
 
 ## Next step
 
-Ater applying the Policy it is time to understand how this Policy will be evaluted.
+After applying the Policy it is time to understand how this Policy will be evaluted.
 
