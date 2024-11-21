@@ -6,7 +6,7 @@ This guide provides the end-to-end process for creating and assigning use-cases 
 
 After defining the Roles and responsibilities within your organization (such as `data-dev`, `consumer`, `operator`), aligning with the personas in your organization (such as Data Engineer, Data Analyst, Operator, etc.), you will need to assign use cases to those Roles to manage granular access to Resources within DataOS. This ensures that each Role or user can perform only the actions necessary for their job.
 
-### **Step 1: Understand Use-Cases and Permissions**
+## Understand Use-Cases and Permissions
 
 Before assigning use cases, it's important to understand what they are and how they work. 
 
@@ -31,7 +31,7 @@ This results in the following authorization atoms:
 
 Each action represents a separate authorization atom, which helps establish fine-grain access to the resource.
 
-### **Applying Granular Access**
+**Applying Granular Access**
 
 Now, let’s explore how granular access applies to two Roles working with the Lens resource: a Data Analyst and a Data Engineer. A Data Analyst typically needs to explore and view the data without making any changes. A Data Engineer, however, requires full access to manage the Lens resource. They need the ability to create, modify, and delete lenses. This grants the Data Engineer complete control over the Lens, enabling them to create, read, update, and delete lens data.
 
@@ -44,7 +44,7 @@ Now, let’s explore how granular access applies to two Roles working with the L
 | Scope of Access       | Restricted to viewing data | Full control over the resource |
 
 
-### **Step 2: Create a Use-Case**
+# Creating a Use-Case
 
 Once you understand the concept of use-cases, the next step is to create them. This involves defining the permissions that users or Roles need to interact with Resources. Use-cases are created in YAML format, specifying the actions that can be performed on the Resources.
 
@@ -96,8 +96,7 @@ Following are the configurations of creating a Use-case:
 | **`description`** | A brief explanation of what the use case does. | `'Read workspace in dataos'` |
 | **`category`** | Specifies the category of the use case (in this case, it's related to data operations). | `data` , `resource management` etc |
 | **`authorization_atoms`** | A list of the authorization atoms required to execute the Use-case. These define the actions (predicates) and access controls applied to Resources. This section includes various authorization atoms (actions), such as creating, updating, deleting, and reading Resources in user layer workspaces, as well as interacting with ingress paths.
-
- | `get-path-ingress`: Action to access the API path (ingress). <br> `read-dataos-workspace`: Action to read (access) the workspace object. |
+| `get-path-ingress`: Action to access the API path (ingress). <br> `read-dataos-workspace`: Action to read (access) the workspace object. |
 | **`authorization_atom_id`** | Identifies the specific authorization atom used in the use case. | `get-path-ingress`, `read-dataos-workspace` |
 | **`values`** | Defines the variable values associated with the authorization atoms. These values specify the specifics of the action and conditions for performing it. | object |
 | **`Address/Path`** | Specifies the address (URL) of the resource (object) in the system. | `path: /poros/api/v1/workspaces**` - The API endpoint for accessing the workspace data. |
@@ -116,9 +115,9 @@ authorization_atoms:
   - read-dataos-workspace
   - read-cluster-dataos-resource
 values:
-- authorization_atom_id: get-path-ingress
+  - authorization_atom_id: get-path-ingress
   variable_values:
-  - path: /ds/api/v2/depots/**
+    - path: /ds/api/v2/depots/**
 ```
 
 Similarly, you create a coarser access level Use-case to manage the depot, which combines all the predicates on the Depot type object.
@@ -134,103 +133,102 @@ authorization_atoms:
   - get-path-ingress
   - put-path-ingress
 values:
-- authorization_atom_id: get-path-ingress
+  - authorization_atom_id: get-path-ingress
   variable_values:
-  - path: /ds/api/v2/depots/**
-- authorization_atom_id: put-path-ingress
+    - path: /ds/api/v2/depots/**
+    - authorization_atom_id: put-path-ingress
   variable_values:
-  - path: /ds/api/v2/depots/**
+    - path: /ds/api/v2/depots/**
 ```
 
 **Use-case to manage lens**
     
-    ```bash
-    # to create lens
-    
-    id: manage-lens
-    name: 'Manage Lens'
-    description: 'Manage lens in DataOS'
-    category: resource-management
-    authorization_atoms:
-      - create-in-user-layer-workspace
-      - create-lens-user-dataos-resource
-      - delete-in-user-layer-workspace
-      - delete-lens-user-dataos-resource
-      - read-compute-cluster-dataos-resource
-      - read-log-depot-system-cluster-dataos-resource
-      - read-log-depot-user-cluster-dataos-resource
-      - update-depot-system-cluster-dataos-resource
-      - update-depot-user-cluster-dataos-resource
-      - read-dataos-workspace
-      - read-in-user-layer-workspace
-      - get-path-ingress
-      - put-path-ingress
-      - post-path-ingress
-      - delete-path-ingress
-    
-    values:
-      - authorization_atom_id: create-in-user-layer-workspace
-        variable_values:
-          - workspace: public
-      - authorization_atom_id: create-in-user-layer-workspace
-        variable_values:
-          - workspace: sandbox
-      - authorization_atom_id: create-lens-user-dataos-resource
-        variable_values:
-          - workspace: public
-      - authorization_atom_id: create-lens-user-dataos-resource
-        variable_values:
-          - workspace: sandbox
-      - authorization_atom_id: update-in-user-layer-workspace
-        variable_values:
-          - workspace: public
-      - authorization_atom_id: update-in-user-layer-workspace
-        variable_values:
-          - workspace: sandbox
-      - authorization_atom_id: delete-in-user-layer-workspace
-        variable_values:
-          - workspace: public
-      - authorization_atom_id: delete-in-user-layer-workspace
-        variable_values:
-          - workspace: sandbox
-      - authorization_atom_id: read-in-user-layer-workspace
-        variable_values:
-          - workspace: public
-      - authorization_atom_id: read-in-user-layer-workspace
-        variable_values:
-          - workspace: sandbox
-      - authorization_atom_id: post-path-ingress
-        variable_values:
-          - path: /poros/api/v1/workspaces/*/Resources/validate
-      - authorization_atom_id: post-path-ingress
-        variable_values:
-          - path: /poros/api/v1/workspaces/*/Resources/lens
-      - authorization_atom_id: post-path-ingress
-        variable_values:
-          - path: /poros/api/v1/workspaces/*/Resources
-      - authorization_atom_id: put-path-ingress
-        variable_values:
-          - path: /poros/api/v1/workspaces/*/Resources/lens**
-      - authorization_atom_id: delete-path-ingress
-        variable_values:
-          - path: /poros/api/v1/workspaces/*/Resources/lens**
-      - authorization_atom_id: get-path-ingress
-        variable_values:
-          - path: /poros/api/v1/workspaces/*/Resources/lens**
-      - authorization_atom_id: get-path-ingress
-        variable_values:
-          - path: /poros/api/v1/workspaces/*/Resources/lens/log
-      - authorization_atom_id: get-path-ingress
-        variable_values:
-          - path: /poros/api/v1/workspaces/*
-    ```
-    
+```bash
+# to create lens
 
+id: manage-lens
+name: 'Manage Lens'
+description: 'Manage lens in DataOS'
+category: resource-management
+authorization_atoms:
+  - create-in-user-layer-workspace
+  - create-lens-user-dataos-resource
+  - delete-in-user-layer-workspace
+  - delete-lens-user-dataos-resource
+  - read-compute-cluster-dataos-resource
+  - read-log-depot-system-cluster-dataos-resource
+  - read-log-depot-user-cluster-dataos-resource
+  - update-depot-system-cluster-dataos-resource
+  - update-depot-user-cluster-dataos-resource
+  - read-dataos-workspace
+  - read-in-user-layer-workspace
+  - get-path-ingress
+  - put-path-ingress
+  - post-path-ingress
+  - delete-path-ingress
+
+values:
+  - authorization_atom_id: create-in-user-layer-workspace
+    variable_values:
+      - workspace: public
+  - authorization_atom_id: create-in-user-layer-workspace
+    variable_values:
+      - workspace: sandbox
+  - authorization_atom_id: create-lens-user-dataos-resource
+    variable_values:
+      - workspace: public
+  - authorization_atom_id: create-lens-user-dataos-resource
+    variable_values:
+      - workspace: sandbox
+  - authorization_atom_id: update-in-user-layer-workspace
+    variable_values:
+      - workspace: public
+  - authorization_atom_id: update-in-user-layer-workspace
+    variable_values:
+      - workspace: sandbox
+  - authorization_atom_id: delete-in-user-layer-workspace
+    variable_values:
+      - workspace: public
+  - authorization_atom_id: delete-in-user-layer-workspace
+    variable_values:
+      - workspace: sandbox
+  - authorization_atom_id: read-in-user-layer-workspace
+    variable_values:
+      - workspace: public
+  - authorization_atom_id: read-in-user-layer-workspace
+    variable_values:
+      - workspace: sandbox
+  - authorization_atom_id: post-path-ingress
+    variable_values:
+      - path: /poros/api/v1/workspaces/*/Resources/validate
+  - authorization_atom_id: post-path-ingress
+    variable_values:
+      - path: /poros/api/v1/workspaces/*/Resources/lens
+  - authorization_atom_id: post-path-ingress
+    variable_values:
+      - path: /poros/api/v1/workspaces/*/Resources
+  - authorization_atom_id: put-path-ingress
+    variable_values:
+      - path: /poros/api/v1/workspaces/*/Resources/lens**
+  - authorization_atom_id: delete-path-ingress
+    variable_values:
+      - path: /poros/api/v1/workspaces/*/Resources/lens**
+  - authorization_atom_id: get-path-ingress
+    variable_values:
+      - path: /poros/api/v1/workspaces/*/Resources/lens**
+  - authorization_atom_id: get-path-ingress
+    variable_values:
+      - path: /poros/api/v1/workspaces/*/Resources/lens/log
+  - authorization_atom_id: get-path-ingress
+    variable_values:
+      - path: /poros/api/v1/workspaces/*
+```
+    
 <aside class="callout">
 🗣️ This example was created to demonstrate the process of generating a Use-case. We have already defined use-cases by identifying the relevant Resources, Interfaces, and the actions that can be performed on them. However, if new Resource or Interfaces are introduced, you can create additional use-cases.
 </aside>
 
-### **Step 3: Assign a Use-Case to a Role or User**
+### Assign a Use-Case to a Role or User
 
 After creating use-cases, you will assign them to your organization's relevant Roles and users. This ensures that users in each Role have the correct permissions to interact with the Resources necessary for their tasks.
 
