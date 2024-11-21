@@ -100,7 +100,7 @@ This section provides a step-by-step walk-through for creating dashboards.
     
     Alternatively, click **Apply** to see your changes applied to the dashboard first. Then click the save icon in the dashboard header.
     
-    For more information about panel editing, refer to [Panel Editing](https://www.notion.so/Panel-Editing-59b0d0ec8ed546baa732aa69b967f3ea?pvs=21).
+    <!-- For more information about panel editing, refer to [Panel Editing](https://www.notion.so/Panel-Editing-59b0d0ec8ed546baa732aa69b967f3ea?pvs=21). -->
     
 10. Enter a title for your dashboard and select a folder.
 11. Click **Save**.
@@ -111,7 +111,7 @@ This section provides a step-by-step walk-through for creating dashboards.
     When you add additional panels to the dashboard, you’re taken straight to the **Edit panel** view.
     
 
-To know more about managing the dashboards, refer to [Manage Dashboard](https://www.notion.so/Manage-Grafana-Dashboard-00701b8d4cc1474c94e98863c6166161?pvs=21).
+<!-- To know more about managing the dashboards, refer to [Manage Dashboard](https://www.notion.so/Manage-Grafana-Dashboard-00701b8d4cc1474c94e98863c6166161?pvs=21). -->
 
 ## Explore the system metrics
 
