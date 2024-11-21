@@ -1,10 +1,10 @@
 # Access Management
 
-In this module, you will learn the basic concepts and components of DataOS Policy and how DataOS uses Bifrost, a GUI, to create and manage access policies for applications, services, people & datasets. Additionally, you will learn about two critical concepts in access control management Policy Decision Point (PDP) and Policy Enforcement Point (PEP). These concepts are crucial for understanding how DataOS Policies are processed and how access is granted or denied.
+Learn how DataOS manages access control through policies that define who can access resources and perform specific actions. This module covers key concepts like Policy Decision Point (PDP), Policy Enforcement Point (PEP), and the Bifrost GUI, which simplifies creating and managing access policies. You'll also explore how authentication and authorization work together to secure DataOS environments, ensuring resources are accessible only to authorized users, services, and applications.
 
 ## Scenario
 
-Imagine you are a DataOS operator tasked with managing access control in a large organization. Your role involves ensuring that users, applications, and services can access the resources they need, while maintaining security and minimizing risks by enforcing strict policies.
+As a DataOS operator, you’re responsible for securing access to critical resources. You must ensure users and services have the necessary permissions to perform their roles while minimizing risks. Using DataOS’s dynamic policies and the Bifrost interface, you define precise access controls that protect sensitive data.
 
 ## Overview
 
