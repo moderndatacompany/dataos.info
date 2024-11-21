@@ -46,7 +46,7 @@ Now you understand that building a pipeline is only the beginning. Maintaining i
 ### **1. Scheduling Workflows**
 
 <aside class="callout">
-🗣 Scheduling can only be applied on the Workflow Resource, and not on the **Worker** and **Service Resource** as they don’t have a defined end.
+🗣 Scheduling can only be applied on the Workflow Resource, and not on the Worker and Service Resource as they don’t have a defined end.
 
 </aside>
 
@@ -57,7 +57,7 @@ You can ensure data is refreshed at regular intervals by scheduling workflows. T
 
 ### **2. Data expectations**
 
-To maintain data quality, you can configure data expectations or "data quality checks." These checks validate data against predefined criteria, such as:
+To maintain data quality, you can configure data expectations or data quality checks. These checks validate data against predefined criteria, such as:
 
 - Data type constraints
 - Value ranges

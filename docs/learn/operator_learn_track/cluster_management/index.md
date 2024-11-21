@@ -74,6 +74,7 @@ Follow the steps given below.
     | `type` | Specifies the type of the cluster. The value `themis` indicates that the cluster is using Themis query engine. |
     | `depots` | A list of depots (storage locations) associated with the cluster. |
     | `address` | Specifies the location of the depot. In this case, it points to `dataos://icebase.` |
+    
 2. Apply the Cluster manifest by executing the following command in the terminal.
     
     ```bash
