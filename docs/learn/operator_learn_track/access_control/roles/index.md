@@ -1,3 +1,5 @@
+# Roles
+
 This guide outlines the process for creating and managing roles in DataOS, allowing for efficient access control within your organization. It walks you through defining roles, assigning permissions, and ensuring proper access control.
 
 ## Scenario
@@ -64,11 +66,8 @@ For example, if **Iamgroot** is added to both the **data-dev** and **user** grou
 
 The policies attached to the attached role also automatically get assigned, ensuring access control.
 
-<aside>
-🗣
-
-However, you always have the option to create new Roles in Bifrost to meet your organizational needs.
-
+<aside class="callout">
+🗣️ However, you always have the option to create new Roles in Bifrost to meet your organizational needs.
 </aside>
 
 ## How to create and manage Roles
@@ -102,24 +101,23 @@ For this module, we’ll focus on creating a **Data Consumer** role, assuming th
 1. You navigate to the **Roles** tab in **Bifrost.**
 2. Click on the **Create Role** button in the top right corner.
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/cd91b24b-d334-4e96-9133-727d354e14f4/image.png)
+    ![image.png](/learn/operator_learn_track/access_control/roles/image (1).png)
 
-1. A create role dialog box appears. In this dialog, input the desired **role name** (e.g., **Consumer**) and **description** of the role's purpose or responsibilities. Click the ‘Create’ button to finalize the role's creation. Once the details are entered, click the **Create** button
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/484ddaef-b8fa-4d64-af99-ac0b1a4c671d/bdbba43d-854d-453e-b6c8-e965a29b6d2e.png)
+3. A create role dialog box appears. In this dialog, input the desired **role name** (e.g., **Consumer**) and **description** of the role's purpose or responsibilities. Click the ‘Create’ button to finalize the role's creation. Once the details are entered, click the **Create** button
 
-1. Upon successful creation, a confirmation message will appear, indicating that the role has been successfully created. The newly created role will now be visible in the **Roles** tab of the Bifrost interface, as shown in the below image.
+    ![image.png](/learn/operator_learn_track/access_control/roles/image (2).png)
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/329290ff-2b61-47c2-8c3a-8e794a9908e4/image.png)
+4. Upon successful creation, a confirmation message will appear, indicating that the role has been successfully created. The newly created role will now be visible in the **Roles** tab of the Bifrost interface, as shown in the below image.
 
-<aside>
-🗣️
+    ![image.png](/learn/operator_learn_track/access_control/roles/image (3).png)
 
-When you create a new role the system automatically assigns it an **ID**. This ID is usually a lowercase version of the name. For instance, if the role name is `Consumer` the automatically generated ID will be `consumer`.
+<aside class="callout">
+🗣️ When you create a new role the system automatically assigns it an **ID**. This ID is usually a lowercase version of the name. For instance, if the role name is `Consumer` the automatically generated ID will be `consumer`.
 
 </aside>
 
-## **How to add users to the created role?**
+## How to add users to the created role?
 
 Once a custom role is created in DataOS, the next step is to assign it to the relevant users. This ensures that users are granted the appropriate access based on their responsibilities.
 
@@ -135,21 +133,17 @@ You begin by accessing the **Users** section in the Bifrost interface. Use the s
 
 You begin by accessing the **Users** section in the Bifrost interface. Use the search bar to find **Iamgroot** by their username or email.
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/e9849ee8-1efa-42ea-a687-93480280b299/image.png)
+![image.png](/learn/operator_learn_track/access_control/roles/image (4).png)
 
 When you click the Add Role button, the Add Role dialog box opens. Select the Consumer Role and click Add.
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/8c45fdd4-43b7-4da2-8f8d-f232887f17a0/image.png)
+![image.png](/learn/operator_learn_track/access_control/roles/image (5).png)
 
 With the consumer role successfully assigned, **Iamgroot** is ready to perform his duties and manage the Depot in DataOS.
 
 Now you can see the Iamgroot has a tag associated with the consumer role.
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/215a8e78-890f-4ae1-8790-724fad621927/4a3a42d1-7163-4c35-a75f-6c153841a153/image.png)
-
-<aside>
-🗣
+![image.png](/learn/operator_learn_track/access_control/roles/image (6).png)
 
 Now, Iamgroot will be granted all the access privileges attached to the Consumer role(if any). 
 
-</aside>
