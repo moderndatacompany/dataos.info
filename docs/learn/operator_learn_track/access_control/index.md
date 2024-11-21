@@ -47,7 +47,7 @@ Bifrost organizes key access control concepts into the following components:
     
 - [Use-cases](/learn/operator_learn_track/access_control/use_cases/): This defines the specific action a user wants to perform on a resource. Use cases are combinations of objects and predicates.
     
-- [Grants](/learn/operator_learn_track/access_control/grants/): Grants link a subject (user) to a Use-Case, defining the subject's access permissions to a specific resource.
+- [Grants](/learn/operator_learn_track/access_control/grants/): Grants link a subject (user) to a Use-case, defining the subject's access permissions to a specific resource.
 
 - [Grant Requests](/learn/operator_learn_track/access_control/grant_requests/): In Bifrost, users can initiate a grant request if they want additional access permissions.
 
