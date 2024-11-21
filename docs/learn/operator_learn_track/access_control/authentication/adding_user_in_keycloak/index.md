@@ -1,10 +1,20 @@
-# Adding user in the Keycloak
-
+# Adding user in Keycloak
+ 
+Managing user access is a key aspect of system administration in Keycloak. This guide explains how to create and manage users within the Keycloak Admin Console, ensuring seamless user onboarding.
+ 
+## Scenario
+ 
+You’re responsible for onboarding a new team member to your organization’s system. To provide them secure access, you need to create their user profile in Keycloak. With administrative access, you navigate to the Users section in the Keycloak Admin Console. Using the Create User option, you set up user profile to access the system confidently and securely.
+ 
+## Prerequisite
+ 
 Before proceeding, ensure that you meet the following requirements:
-
-- You must have administrative access to the Keycloak Admin Console to create and manage users.
+ 
+- **Administrator Access to Keycloak**: You must have administrative access to the Keycloak Admin Console to create and manage users.
 
 ## Steps
+
+Follow the below steps to add a user in the Keycloak:
 
 1. In the left-hand navigation menu of the Keycloak Admin Console, click on Users. This will bring up the user management screen.
 
@@ -21,6 +31,6 @@ Before proceeding, ensure that you meet the following requirements:
     
 4. **Groups:** You can add the user to an existing group. Click on the Join Group button, select the appropriate group(s), and then click Join Group to associate the user with those groups.
         
-        ![Added User](/learn/operator_learn_track/access_control/authentication/adding_user_in_keycloak/added_user.png)
+    ![Added User](/learn/operator_learn_track/access_control/authentication/adding_user_in_keycloak/added_user.png)
         
 5. After filling in the details (email, first name, last name, required actions, and groups), click the Create button. The user will be created, and the newly created user will appear in the Users list in Keycloak.
