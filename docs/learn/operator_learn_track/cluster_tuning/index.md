@@ -6,7 +6,7 @@ By default, Clusters in DataOS use predefined settings for simplicity. To tailor
 
 You’ve set up a Minerva Cluster to analyze customer transaction data. As the workload grows, you notice query performance lagging. By customizing the manifest file, you increase memory allocation with properties like query.max-memory and enable phased execution policies to optimize query scheduling. After applying the changes, the Cluster processes queries faster, ensuring smooth and efficient analytics for your team.
 
-## Sample Cluster manifest with additional properties.
+## Sample Cluster manifest with additional properties
     
 ```yaml
 name: minervac
@@ -232,9 +232,7 @@ You can resize the Cluster as per the usage by adding the below properties in th
 ## Spilling Management
 
 <aside class="callout">
-🗣
-
-spilling refers to the process where data that cannot fit into the cluster's memory is temporarily written to disk or an external storage medium, such as local disk storage, network-attached storage, or cloud storage.
+🗣 Spilling refers to the process where data that cannot fit into the cluster's memory is temporarily written to disk or an external storage medium, such as local disk storage, network-attached storage, or cloud storage.
 
 </aside>
 
@@ -347,9 +345,7 @@ You can manage the spilling by adding the below-given properties.
 ## Managing exchange
 
 <aside class="callout">
-🗣
-
-**Exchange** refers to the process of transferring data between nodes in a distributed system, often during query execution. Exchanges are crucial for enabling distributed systems to coordinate and process data across multiple nodes.
+🗣 Exchange refers to the process of transferring data between nodes in a distributed system, often during query execution. Exchanges are crucial for enabling distributed systems to coordinate and process data across multiple nodes.
 
 </aside>
 

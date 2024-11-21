@@ -48,7 +48,7 @@ Lakehouse Insights is a system-level data product within DataOS that helps DataO
 
 ## Key findings and recommended actions
 
-### Scenario 1: Too many small files
+### **Scenario 1: Too many small files**
 
 **Insight:**
 
@@ -71,7 +71,7 @@ Use the Data Product Hub Explore tab to analyze file size and count. He selects 
 
 ---
 
-### Scenario 2: Improper partitioning
+### **Scenario 2: Improper partitioning**
 
 **Insight:**
 
