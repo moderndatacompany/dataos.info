@@ -1,5 +1,7 @@
 # Policy
 
+In this guide, you will learn how to create and configure Policies in DataOS to manage access to resources. Specifically, it will walk you through granting appropriate permissions to a Role, ensuring efficient and secure access for your organization's teams.
+
 ## Scenario
 
 Your organization’s data engineering team requires access to a specific Depot for their analytics work. However, data engineers do not have default access to Depots. As an operator, your responsibility is to create a Policy to grant them the appropriate permissions.

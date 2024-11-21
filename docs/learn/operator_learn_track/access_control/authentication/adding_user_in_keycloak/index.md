@@ -29,7 +29,7 @@ Follow the below steps to add a user in the Keycloak:
     
     ![Create User](/learn/operator_learn_track/access_control/authentication/adding_user_in_keycloak/create_user.png)
     
-4. **Groups:** You can add the user to an existing group. Click on the Join Group button, select the appropriate group(s), and then click Join Group to associate the user with those groups.
+- **Groups:** You can add the user to an existing group. Click on the Join Group button, select the appropriate group(s), and then click Join Group to associate the user with those groups.
         
     ![Added User](/learn/operator_learn_track/access_control/authentication/adding_user_in_keycloak/added_user.png)
         
