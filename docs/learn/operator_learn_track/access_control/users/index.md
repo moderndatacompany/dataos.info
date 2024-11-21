@@ -1,5 +1,7 @@
 # User
 
+In this guide, you will learn how to manage users in DataOS by navigating the Users tab in Bifrost
+
 ## Scenario
 
 As a DataOS Operator, you manage users within Bifrost and ensure they have access to necessary resources by assigning appropriate Roles and policies. Recently, your data engineering team requested access to manage Depot within DataOS. You have already created a policy for the `data-dev` Role; now, you will assign this Role to your organization's data engineers to give them access to the Depot. 
