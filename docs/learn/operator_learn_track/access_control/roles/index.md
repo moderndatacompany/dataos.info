@@ -74,15 +74,18 @@ For this guide, we’ll focus on creating a Data Consumer Role, assuming the dat
 ### Step 3: Navigate to the Roles Section in Bifrost
 
 1. You navigate to the Roles tab in Bifrost.
+
 2. Click on the Create Role button in the top right corner.
+
+    ![image.png](/learn/operator_learn_track/access_control/roles/image (2).png)
 
 3. A create Role dialog box appears. In this dialog, input the desired Role name (e.g., Consumer) and description of the Role's purpose or responsibilities. Click the ‘Create’ button to finalize the Role's creation. Once the details are entered, click the Create button.
 
-    ![image.png](/learn/operator_learn_track/access_control/Roles/image (2).png)
+    ![image.png](/learn/operator_learn_track/access_control/roles/image (12).png)
 
 4. Upon successful creation, a confirmation message will appear, indicating that the Role has been successfully created. The newly created Role will now be visible in the Roles tab of the Bifrost interface, as shown in the below image.
 
-    ![image.png](/learn/operator_learn_track/access_control/Roles/image (3).png)
+    ![image.png](/learn/operator_learn_track/access_control/roles/image (3).png)
 
 <aside class="callout">
 🗣️ When you create a new Role, the system automatically assigns it an ID. This ID is usually a lowercase version of the name. For instance, if the Role name is `Consumer`, the automatically generated ID will be `consumer`.
@@ -92,18 +95,18 @@ For this guide, we’ll focus on creating a Data Consumer Role, assuming the dat
 
 Once a custom Role is created in DataOS, the next step is to assign it to the relevant users. This ensures that users are granted the appropriate access based on their responsibilities. 
 
-### Steps
+Follow the below steps:
 
 1. You begin by accessing the Users section in the Bifrost interface. Use the search bar to find Iamgroot by their username or email.
 
-    ![image.png](/learn/operator_learn_track/access_control/Roles/image (4).png)
+    ![image.png](/learn/operator_learn_track/access_control/roles/image (4).png)
 
 2. When you click the Add Role button, the Add Role dialog box opens. Select the Consumer Role and click Add.
 
-    ![image.png](/learn/operator_learn_track/access_control/Roles/image (5).png)
+    ![image.png](/learn/operator_learn_track/access_control/roles/image (5).png)
 
 3. With the consumer Role successfully assigned, Iamgroot is ready to perform his duties and manage the Depot in DataOS. Now you can see Iamgroot has a tag associated with the Consumer Role.
 
-    ![image.png](/learn/operator_learn_track/access_control/Roles/image (6).png)
+    ![image.png](/learn/operator_learn_track/access_control/roles/image (6).png)
 
 Now, Iamgroot will be granted all the access privileges attached to the Consumer Role (if any).
