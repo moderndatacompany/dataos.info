@@ -2,9 +2,11 @@
 
 ## Scenario
 
-As a DataOS Operator, you manage users within Bifrost and ensure they have access to necessary resources by assigning appropriate roles and policies. Recently, your data engineering team requested access to manage Depot within DataOS. You have already created a policy for the `data-dev` role; now, you will assign this role to your organization's data engineers to give them access to the Depot. 
+As a DataOS Operator, you manage users within Bifrost and ensure they have access to necessary resources by assigning appropriate Roles and policies. Recently, your data engineering team requested access to manage Depot within DataOS. You have already created a policy for the `data-dev` Role; now, you will assign this Role to your organization's data engineers to give them access to the Depot. 
 
-Before assigning a role to each user, you should explore the User tab in the Bifrost.
+Before you assign Roles to your users, you must first understand how to navigate the Users tab in Bifrost—a vital section where you can view and manage user access, Roles, and policies.
+
+## Users tab in Bifrost
 
 In Bifrost, the Users tab displays a list of users accessing DataOS. Users can be categorized into two types: person and application. New users can be added by clicking the Create User button, but keep in mind the following:
 

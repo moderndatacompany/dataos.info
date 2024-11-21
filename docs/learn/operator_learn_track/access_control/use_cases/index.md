@@ -1,20 +1,20 @@
 # Use-cases
 
-This guide provides the end-to-end process for creating and assigning use-cases to roles and users in DataOS, ensuring that each user has access only to the resources they need to perform their tasks. It covers the creation of use-cases, the assignment process.
+This guide provides the end-to-end process for creating and assigning use-cases to Roles and users in DataOS, ensuring that each user has access only to the resources they need to perform their tasks. It covers the creation of use-cases, the assignment process.
 
 ## Scenario
 
-After defining the roles and responsibilities within your organization (such as `data-dev`, `consumer`, `operator`), aligning with the personas in your organization (such as Data Engineer, Data Analyst, Operator, etc.), you will need to assign use cases to those roles to manage granular access to resources within DataOS. This ensures that each role or user can perform only the actions necessary for their job.
+After defining the Roles and responsibilities within your organization (such as `data-dev`, `consumer`, `operator`), aligning with the personas in your organization (such as Data Engineer, Data Analyst, Operator, etc.), you will need to assign use cases to those Roles to manage granular access to resources within DataOS. This ensures that each Role or user can perform only the actions necessary for their job.
 
 ### **Step 1: Understand Use-Cases and Permissions**
 
 Before assigning use cases, it's important to understand what they are and how they work. A use case defines a set of permissions that users have on a specific resource in DataOS, such as Lens, Depot, or Datasets. Each use case will specify which actions can be performed on those resources.
 
-A use-case combines predicates (actions) with the objects (entities upon which actions are performed), defining the set of permissions granted to users. By assigning a use-case to a role, such as Iamgroot’s data-dev role, you link that role to the specific actions it can perform on certain resources.
+A use-case combines predicates (actions) with the objects (entities upon which actions are performed), defining the set of permissions granted to users. By assigning a use-case to a Role, such as Iamgroot’s data-dev Role, you link that Role to the specific actions it can perform on certain resources.
 
 Actions in the use case can range from basic operations like reading, updating, or deleting resources to more coarser actions like managing specific platform features. For example, if a user is granted the `Manage Lens` use case, they should likely also have the ability to Read Lens, as managing includes actions like creating and updating the Lens in addition to reading it.
 
-However, breaking use-cases into more granular permissions is essential. This level of granularity allows for precise control over which actions a user can perform on a resource. By defining smaller, specific permissions, you can ensure users only have access to what’s necessary, reducing the risk of over-granting access. This granular approach enhances security, compliance, and flexibility, as you can tailor permissions to the user's roles and responsibilities.
+However, breaking use-cases into more granular permissions is essential. This level of granularity allows for precise control over which actions a user can perform on a resource. By defining smaller, specific permissions, you can ensure users only have access to what’s necessary, reducing the risk of over-granting access. This granular approach enhances security, compliance, and flexibility, as you can tailor permissions to the user's Roles and responsibilities.
 
 To illustrate, let’s take the Lens resource as an example. A use-case can be defined as the following:
 
@@ -32,7 +32,7 @@ Each action represents a separate authorization atom, which helps establish fine
 
 ### **Applying Granular Access**
 
-Now, let’s explore how granular access applies to two roles working with the Lens resource: a Data Analyst and a Data Engineer. A Data Analyst typically needs to explore and view the data without making any changes. A Data Engineer, however, requires full access to manage the Lens resource. They need the ability to create, modify, and delete lenses. This grants the Data Engineer complete control over the Lens, enabling them to create, read, update, and delete lens data.
+Now, let’s explore how granular access applies to two Roles working with the Lens resource: a Data Analyst and a Data Engineer. A Data Analyst typically needs to explore and view the data without making any changes. A Data Engineer, however, requires full access to manage the Lens resource. They need the ability to create, modify, and delete lenses. This grants the Data Engineer complete control over the Lens, enabling them to create, read, update, and delete lens data.
 
 | Aspect                | Data Analyst           | Data Engineer        |
 |-----------------------|------------------------|----------------------|
@@ -45,7 +45,7 @@ Now, let’s explore how granular access applies to two roles working with the L
 
 ### **Step 2: Create a Use-Case**
 
-Once you understand the concept of use-cases, the next step is to create them. This involves defining the permissions that users or roles need to interact with resources. Use-cases are created in YAML format, specifying the actions that can be performed on the resources.
+Once you understand the concept of use-cases, the next step is to create them. This involves defining the permissions that users or Roles need to interact with resources. Use-cases are created in YAML format, specifying the actions that can be performed on the resources.
 
 ## Steps
 
@@ -243,23 +243,23 @@ When you click on any use-case from the list, a window slides in from the right 
 
 ### **Step 3: Assign a Use-Case to a Role or User**
 
-After creating use-cases, you will assign them to your organization's relevant roles and users. This ensures that users in each role have the correct permissions to interact with the resources necessary for their tasks.
+After creating use-cases, you will assign them to your organization's relevant Roles and users. This ensures that users in each Role have the correct permissions to interact with the resources necessary for their tasks.
 
-1. Navigate to Roles and select the "Consumer"  role with the tag `roles:id:consumer`. 
+1. Navigate to Roles and select the "Consumer"  Role with the tag `roleid:consumer`. 
 
     ![image.png](/learn/operator_learn_track/access_control/use_cases/image (4).png)
 
-2. The Consumer Role Dialog Box appears. In this dialog, you navigate to the Grants section and click on the Grant Use-Case button. In the search box, you enter the newly created use-case `read lens and contracts`, and click the Grant button. This grants all users in the Consumer role the ability to read the Lens or semantic model as defined in the use-case.
+2. The Consumer Role Dialog Box appears. In this dialog, you navigate to the Grants section and click on the Grant Use-Case button. In the search box, you enter the newly created use-case `read lens and contracts`, and click the Grant button. This grants all users in the Consumer Role the ability to read the Lens or semantic model as defined in the use-case.
 
     ![image.png](/learn/operator_learn_track/access_control/use_cases/image (5).png)
 
-Next, you follow the same process for the **Data-Dev** role by granting the **Manage Lens** use-case. This ensures that engineers in the **Data-Dev** role have the necessary permissions to manage the Lens. In contrast, users in the **Consumer** role receive the appropriate level of access based on their persona. This approach ensures that each user group gets the specific access they need to perform their tasks.
+Next, you follow the same process for the **Data-Dev** Role by granting the **Manage Lens** use-case. This ensures that engineers in the **Data-Dev** Role have the necessary permissions to manage the Lens. In contrast, users in the **Consumer** Role receive the appropriate level of access based on their persona. This approach ensures that each user group gets the specific access they need to perform their tasks.
 
 ### How to assign a use-case to a user?
 
-After assigning use-cases to roles, there may be situations where individual users need permissions that go beyond the default permissions granted by their role. For example, although users in the Consumer role typically do not have the ability to manage the Lens, there may be specific situations where a user from the Consumer role requires this ability for a particular project.
+After assigning use-cases to Roles, there may be situations where individual users need permissions that go beyond the default permissions granted by their Role. For example, although users in the Consumer Role typically do not have the ability to manage the Lens, there may be specific situations where a user from the Consumer Role requires this ability for a particular project.
 
-To handle this, you can assign use-cases directly to the individual user. This allows for more granular control rather than being restricted by the role's default access settings.
+To handle this, you can assign use-cases directly to the individual user. This allows for more granular control rather than being restricted by the Role's default access settings.
 
 Here's how you can assign use-cases to individual users:
 
@@ -273,4 +273,4 @@ Here's how you can assign use-cases to individual users:
     
 - **Apply the Use-Case to the User:** You grant the selected use-case to the user.
     
-The user now has the required permissions (e.g., to manage Lens) regardless of their original role's permissions.
+The user now has the required permissions (e.g., to manage Lens) regardless of their original Role's permissions.
