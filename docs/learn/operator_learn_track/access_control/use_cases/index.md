@@ -228,7 +228,7 @@ values:
 🗣️ This example was created to demonstrate the process of generating a Use-case. We have already defined use-cases by identifying the relevant Resources, Interfaces, and the actions that can be performed on them. However, if new Resource or Interfaces are introduced, you can create additional use-cases.
 </aside>
 
-### Assign a Use-Case to a Role or User
+## Assign a Use-Case to a Role
 
 After creating use-cases, you will assign them to your organization's relevant Roles and users. This ensures that users in each Role have the correct permissions to interact with the Resources necessary for their tasks.
 
