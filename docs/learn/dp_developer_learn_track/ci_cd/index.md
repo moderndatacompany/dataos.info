@@ -79,11 +79,7 @@ Follow these steps to clone the repository:
 
 ### **Step 3: Start building the Data Product**
 
-<<<<<<< HEAD
 Follow the below steps to start building the Data Product by creating the manifest files of the all the Resources and Data Product. For example, to create a Data Product, an Instance Secret is first created to store the connection details of the BigQuery data source. A Depot for the data connection is then created, followed by the creation of a Depot Scanner manifest file. For data transformation, a Flare job is created, with multiple Flare jobs allowed for transforming multiple datasets. A Bundle is created to include the paths of the Instance Secret, Depot, Depot Scanner, and Flare jobs, along with their dependencies. Finally, a Data Product manifest file is created to apply the Data Product, and a Data Product Scanner is deployed to the Data Product Hub.
-=======
-Follow the below steps to start building the Data Product by creating the manifest files of the all the Resources and Data Product. For example, to create a Data Product, an Instance Secret is first created to store the connection details of the BigQuery data source. A Depot for the data connection is then created, followed by the creation of a Depot Scanner manifest file. For data transformation, a Flare job is created, with multiple flare jobs allowed for transforming multiple datasets. A Bundle is created to include the paths of the Instance Secret, Depot, Depot Scanner, and Flare jobs, along with their dependencies. Finally, a Data Product manifest file is created to apply the Data Product, and a Data Product Scanner is deployed to the Data Product Hub.
->>>>>>> e2ae0fd9553e0c02feaa49a391924d9444a8060f
 
 **a.** Open the cloned repository using your preferred code editor (e.g., VS Code).
 
@@ -183,11 +179,7 @@ data-product-deployment
     
 **i.** Double-check all files and paths to ensure everything is provided correctly and that the manifest files are properly set up.
 
-<<<<<<< HEAD
 **j.** You can add configuration files of more Resources as per your requirements, such as Policy, Talos, Lens, etc.
-=======
-**j.** You can add configuration files of more resources as per your requirements, such as Policy, Talos, Lens, etc.
->>>>>>> e2ae0fd9553e0c02feaa49a391924d9444a8060f
 
 ### **Step 4: Configure the pipeline**
 
@@ -364,7 +356,7 @@ git push
 
 Fix the possible errors by following the below steps.
 
-**a.** If an error occurs during the push due to a large file size, navigate to your repository settings. Under **Repository details**, open the **Advanced** dropdown, uncheck the “Block pushes with files over 100MB” option, and save the changes. Then push again.
+**a.** If an error occurs during the push due to a large file size, navigate to your repository settings. Under Repository details, open the Advanced dropdown, uncheck the 'Block pushes with files over 100MB' option, and save the changes. Then push again.
     
 ![image.png](/learn/dp_developer_learn_track/ci_cd/image13.png)
     
@@ -375,4 +367,3 @@ Fix the possible errors by following the below steps.
 ![image.png](/learn/dp_developer_learn_track/ci_cd/image15.png)
     
 
-Good to
