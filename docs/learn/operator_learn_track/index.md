@@ -63,7 +63,7 @@ Using Prometheus and Grafana, you can set up dashboards to monitor key system me
 
 <div class= "grid cards" markdown>
 
-- [Configuring Alerts and Dashboards using Grafana]()
+- [Configuring Alerts and Dashboards using Grafana](/learn/operator_learn_track/alerts_grafana/)
 
 - [Optimizing System level events](/learn/operator_learn_track/lakehouse_insights/)
 
@@ -84,6 +84,7 @@ Your team reports slow query performance during peak hours. You need to analyze 
 
 
 ## Module 7: Access Management
+
 A new team has been onboarded to work on a data project in DataOS. You evaluate their role requirements and grant them access to only the necessary datasets and tools, preventing unauthorized access while allowing the team to perform their tasks efficiently.
 
 <div class= "grid cards" markdown>
