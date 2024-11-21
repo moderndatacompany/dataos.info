@@ -15,7 +15,7 @@ In Bifrost, the Users tab displays a list of users accessing DataOS. Users can b
 🗣️ If you add a person as a new user through Bifrost without first including them in your organization’s AD, it will create an empty user who cannot perform any actions.
 </aside>
 
-### User details panel
+### **User details panel**
 
 Clicking on any user will give you detailed info about the particular user. 
 

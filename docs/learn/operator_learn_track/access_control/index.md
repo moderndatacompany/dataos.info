@@ -46,22 +46,22 @@ Bifrost presents a role-based interface, which is easier to understand and manag
 
 Bifrost organizes key access control concepts into the following components:
 
-- **User**: In DataOS, a user can be a person or an application. The user is a subject in the access control system and is identified by a tag.
+**Users**: In DataOS, a user can be a person or an application. The user is a subject in the access control system and is identified by a tag.
     
 [Users](/learn/operator_learn_track/access_control/users/)
     
-- **Role**: Roles group users who need the same level of access to resources. For example, all data scientists in an organization might share the same role, allowing them to access the same datasets and perform similar actions.
+**Role**: Roles group users who need the same level of access to resources. For example, all data scientists in an organization might share the same role, allowing them to access the same datasets and perform similar actions.
     
 [Roles](/learn/operator_learn_track/access_control/roles/)
     
-- **Use case**: This defines the specific action a user wants to perform on a resource (e.g., `view dataset,` `edit dataset,` etc.). Use cases are combinations of objects and predicates.
+**Use case**: This defines the specific action a user wants to perform on a resource (e.g., `view dataset,` `edit dataset,` etc.). Use cases are combinations of objects and predicates.
     
 [Use-cases](/learn/operator_learn_track/access_control/use_cases/)
     
-- **Grant**: Grants link a subject (user) to a Use-Case, defining the subject's access permissions to a specific resource. For example, a grant might allow Iamgroot to view a specific dataset.
+**Grant**: Grants link a subject (user) to a Use-Case, defining the subject's access permissions to a specific resource. For example, a grant might allow Iamgroot to view a specific dataset.
 
 [Grants](/learn/operator_learn_track/access_control/grants/)
 
-- **Grant Request**: In Bifrost, users can initiate a grant request if they want additional access permissions.
+**Grant Request**: In Bifrost, users can initiate a grant request if they want additional access permissions.
 
 [Grant Requests](/learn/operator_learn_track/access_control/grant_requests/)
