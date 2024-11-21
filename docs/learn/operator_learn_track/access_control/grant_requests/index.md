@@ -42,15 +42,15 @@ subjects:
 
 The request contains all the necessary information, such as the required actions (e.g., view depots, run queries) and attributes for the access.
 
-`policy_use_case_id`: Identifies the specific use case id for which the policy is created, in this case, `view-workbench-app`.
+**`policy_use_case_id`**: Identifies the specific use case id for which the policy is created, in this case, `view-workbench-app`.
 
-`name`: "View workbench App" specifies the name of the access request being submitted.
+**`name`**: 'View workbench App' specifies the name of the access request being submitted.
 
-`description`: Describes the intended actions, which include viewing and querying depots and sources via the Workbench application.
+**`description`**: Describes the intended actions, which include viewing and querying depots and sources via the Workbench application.
 
-`category`: This policy falls under the "query" category, indicating it involves querying data.
+**`category`**: This policy falls under the 'query' category, indicating it involves querying data.
 
-`authorization_atoms`: These are the specific actions or permissions the policy grants. In this case, the policy provides access to various features within the Workbench app, including:
+**`authorization_atoms`**: These are the specific actions or permissions the policy grants. In this case, the policy provides access to various features within the Workbench app, including:
 
 - **workbench-app-access-workbench-ui:** Access to the Workbench UI.
 - **workbench-app-save-cluster:** Permission to save a cluster configuration.
@@ -86,7 +86,7 @@ After the approval from the operator, the grant log status changes from requeste
 
 ![apporved log](/learn/operator_learn_track/access_control/grant_requests/approved_log.png)
 
-Iamgroot is now able to access the Workbench UI as per the granted permissions. They can now view depots, run queries, save clusters, and utilize the full functionality of the Workbench.
+Iamgroot is now able to access the Workbench UI as per the granted permissions. They can now view depots, run queries, save clusters, and utilize the full functionality of the Workbench as shown in the below image.
 
 ![confirmation_msg](/learn/operator_learn_track/access_control/grant_requests/workkbench.png)
 
