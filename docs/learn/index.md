@@ -184,7 +184,7 @@ The learning track is divided into modules, with each module focusing on key ope
     | 8  | **Stack provisioning** | Scale the DataOS platform by provisioning additional stacks to meet increasing resource demands. | <ul><li><strong>Provisioning new stacks for resource scalability:</strong> Learn how to provision additional compute, storage, and networking stacks to ensure that the platform can handle growing workloads and future demands.</li></ul> |
     | 9  | **Compliance and governance** | Ensure that the DataOS platform adheres to global data governance standards and regulatory requirements. | <ul><li><strong>Maintaining compliance with data governance regulations:</strong> Understand how to maintain compliance with regulations such as GDPR, CCPA, and HIPAA, ensuring that DataOS meets all legal and governance requirements.</li></ul> |
 
-
+**:simple-bookstack: [Start learning: Click here to access the modules.](/learn/operator_learn_track/)**
 <aside class="callout">
 🗣 For more information about the onboarding process, please reach out to our team at content@tmdc.io.
 </aside>
