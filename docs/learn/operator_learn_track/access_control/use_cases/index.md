@@ -44,7 +44,7 @@ Now, let’s explore how granular access applies to two Roles working with the L
 | Scope of Access       | Restricted to viewing data | Full control over the resource |
 
 
-# Creating a Use-Case
+## Creating a Use-Case
 
 Once you understand the concept of use-cases, the next step is to create them. This involves defining the permissions that users or Roles need to interact with Resources. Use-cases are created in YAML format, specifying the actions that can be performed on the Resources.
 
@@ -242,7 +242,7 @@ After creating use-cases, you will assign them to your organization's relevant R
 
 Next, you follow the same process for the `Data-dev` Role by granting the `Manage Lens` Use-case. This ensures that engineers in the `Data-dev` Role have the necessary permissions to manage the Lens. In contrast, users in the `Consumer` Role receive the appropriate level of access based on their persona. This approach ensures that each user group gets the specific access they need to perform their tasks.
 
-### How to assign a Use-case to a user?
+## Assigning the Use-case to the user
 
 After assigning use-cases to Roles, there may be situations where individual users need permissions that go beyond the default permissions granted by their Role. For example, although users in the Consumer Role typically do not have the ability to manage the Lens, there may be specific situations where a user from the Consumer Role requires this ability for a particular project.
 
