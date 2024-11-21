@@ -8,7 +8,7 @@ An Access Policy in DataOS defines permissions based on the ABAC authorization s
 
 A tag-namespace is a grouping or container for tags that follow the same glob pattern. Tag-namespaces allow you to categorize tags for better organization and policy enforcement.
 
-Examples:
+**Examples:**
 
 - **`roles:`** – Namespace for roles, e.g., `roles:id:operator`
 - **`dataos:system:`** – Namespace for system resources, e.g., `dataos:system:api`
@@ -33,7 +33,7 @@ For instance:
 
 The subject refers to the user or application trying to perform an action. The subject is identified by a tag, typically associated with their role or identity.
 
-Examples:
+**Examples:**
 
 - `users:id:iamgroot`: Identifies the user "Iamgroot."
 - `roles:id:data-scientist`: Identifies a role assigned to a set of users.
@@ -44,7 +44,7 @@ In DataOS, the subject must have appropriate tags assigned for the access contro
 
 The object is the Resource on which the action is to be performed. This could be a dataset, application, API path, or any other resource. Objects are identified by tags or paths.
 
-Examples:
+**Examples:**
 
 - `dataos:resource:secret`: Identifies a resource of type "secret."
 - `/api/v1/data/**`: Identifies an API path for accessing data.
@@ -67,7 +67,7 @@ A predicate specifies the action that the subject wants to perform on the object
     - `patch`: Modifies a resource's content.
     - `delete`: Deletes a resource.
 
-### **Example**
+### **Example scenario**
 
 Consider a scenario where you have the following tags for a user named Iamgroot:
 
@@ -78,8 +78,8 @@ And the following path for a Depot:
 
 - `dataos:resource:dataset` (Identifying a address of the Depot)
 
-Or it could be a path to
-
 ## Next step
 
-Next, you create a Policy to provide apporopriate permissions to the Iamgroot 
+Next, you create a Policy to provide apporopriate permissions to the Iamgroot.
+
+[Policy](/learn/operator_learn_track/access_control/policy/)
