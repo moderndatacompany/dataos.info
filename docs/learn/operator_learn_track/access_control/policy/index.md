@@ -1,4 +1,6 @@
-### Scenario
+# Policy
+
+## Scenario
 
 Your organization’s data engineering team requires access to a specific Depot for their analytics work. However, data engineers do not have default access to Depots. As an operator, your responsibility is to create a Policy to grant them the appropriate permissions.
 
@@ -6,9 +8,14 @@ We assume you have already created a Role called `data-dev` via Bifrost for this
 
 Before creating a Policy, you will determine the level of access the team needs. In this case, they require permission to read, create, update, and delete data from the Depot, ensuring they cannot modify or delete any resources.
 
+
+## Policy
+
+Policy are based on Attribute-Based Access Control (ABAC) strategy. These policies specify which subjects (users or applications) can perform certain actions (predicates) on objects (resources), based on the attributes associated with them.
+
 Following are the steps to create and apply the Policy.
 
-### Step 1: Define the resource metadata
+### **Step 1: Define the resource metadata**
 
 First, open your code editor (preferably VS Code) and create a new YAML file named `datd_dev_Policy.yml`. Then, start by defining the Policy's basic metadata. This includes the Policy's name, version, type (which should be `Policy`), and a brief description to clarify its purpose.
 
@@ -22,7 +29,7 @@ layer: user
 description: "Policy allowing data engineers to read from demo depots."
 ```
 
-### Step 2: Define the Policy configuration
+### **Step 2: Define the Policy configuration**
 
 Next, you'll define the specific access control settings for the Policy. This is done by specifying the subjects, predicates, and objects:
 
@@ -60,7 +67,7 @@ Policy:
 
 This Policy grants `data-dev` roles, which means all the data engineers have access to manage the Depots located at `dataos://crmbq` and `dataos://poss3`.
 
-## Step 3: Apply Policy manifest file
+## **Step 3: Apply Policy manifest file**
 
 Use the following command to apply the Policy Resource.
 
