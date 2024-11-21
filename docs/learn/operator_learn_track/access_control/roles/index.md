@@ -12,7 +12,7 @@ As a DataOS operator, you have been tasked with creating Roles to manage access 
 
 Before creating Roles, let us develop a deep understanding of Roles in DataOS.
 
-## What are Roles?
+## Understanding Roles
 
 In DataOS, Roles manage user access to resources based on job functions or personas within the organization. Each Role defines the user's actions and the resources they can access. For example,
 
@@ -21,13 +21,13 @@ In DataOS, Roles manage user access to resources based on job functions or perso
 
 Roles are created to align with specific personas, ensuring users have the appropriate permissions for their responsibilities.
 
-### How Roles Work with Tags and Tag Namespaces?
+### How Roles work with Tags and Tag Namespaces?
 
 Roles are linked to tags that define the permissions for each Role. These tags are associated with predefined IAM (Identity and Access Management) policies to enforce access control within DataOS. Tags specify what actions users can perform and which resources they can access.
 
 For example, the Data Dev Role is identified by the tag `Roles:id:data-dev`. The namespace for all Roles follows the pattern `Roles:id:**`, meaning every Role tag starts with `Roles:id:` followed by the Role identifier (e.g., `data-dev`, `data-consumer`). This consistent naming convention helps to easily identify and organize Role tags under the `Roles:` namespace.
 
-## Role Mapping to Access Management Groups
+## Role mapping to Access Management Groups
 
 DataOS assigns Roles to users according to their group memberships in AMS. For instance, if you define various groups in AMS such as user, data-dev, and operator and add users to these groups, the same groups will be reflected in DataOS as Roles.
 
@@ -47,13 +47,13 @@ The policies attached to the attached Role also automatically get assigned, ensu
 🗣️ However, you always have the option to create new Roles in Bifrost to meet your organizational needs.
 </aside>
 
-## How to create and manage Roles?
+## Create and manage Roles
 
 While DataOS provides default Role mappings based on AMS groups, you may occasionally need to create custom Roles to fulfill specific access requirements that don’t align with the existing AMS groups.
 
 To create a custom Role, follow these steps:
 
-### Step 1: Identify Job Functions or Departments
+### Step 1: Identify job functions or departments
 
 The first step in creating a custom Role is identifying the job functions or departments requiring specific access to DataOS resources. For instance, you might define Roles for:
 
@@ -62,7 +62,7 @@ The first step in creating a custom Role is identifying the job functions or dep
 
 For example, you define a ‘Consumer’ Role for stakeholders who need access to data but do not need permission to modify it.
 
-### Step 2: Define the Access Requirements
+### Step 2: Define the access requirements
 
 Next, define the access permissions for the Role, ensuring that users have only the permissions they need to perform their tasks. Follow the principle of least privilege, meaning each user should have access to the resources necessary for their job, but not more.
 
@@ -71,7 +71,7 @@ Next, define the access permissions for the Role, ensuring that users have only 
 
 For this guide, we’ll focus on creating a Data Consumer Role, assuming the data-dev Role already exists in the AMS Group.
 
-### Step 3: Navigate to the Roles Section in Bifrost
+### Step 3: Navigate to the Roles section in Bifrost
 
 1. You navigate to the Roles tab in Bifrost.
 
@@ -91,7 +91,7 @@ For this guide, we’ll focus on creating a Data Consumer Role, assuming the dat
 🗣️ When you create a new Role, the system automatically assigns it an ID. This ID is usually a lowercase version of the name. For instance, if the Role name is `Consumer`, the automatically generated ID will be `consumer`.
 </aside>
 
-## How to add users to the created Role?
+## Add a user to the Role
 
 Once a custom Role is created in DataOS, the next step is to assign it to the relevant users. This ensures that users are granted the appropriate access based on their responsibilities. 
 
