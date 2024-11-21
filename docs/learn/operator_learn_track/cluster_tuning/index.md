@@ -103,7 +103,7 @@ You can resize the Cluster as per the usage by adding the below properties in th
 
 ---
 
-### **`query.max-memory-per-task`[¶](https://dataos.info/resources/cluster/performance_tuning/#querymax-memory-per-task)**
+### **`query.max-memory-per-task`**
 
 **Description:** This property specifies the maximum amount of memory that a task can use on a node in the cluster. Note that support for this property is experimental.
 
@@ -117,7 +117,7 @@ You can resize the Cluster as per the usage by adding the below properties in th
 
 ---
 
-### **`memory.heap-headroom-per-node`[¶](https://dataos.info/resources/cluster/performance_tuning/#memoryheap-headroom-per-node)**
+### **`memory.heap-headroom-per-node`**
 
 **Description:** This property reserves a portion of the JVM heap as headroom or buffer for memory allocations that are not tracked by Trino.
 
@@ -129,9 +129,9 @@ You can resize the Cluster as per the usage by adding the below properties in th
 
 ## Managing the Queries
 
-### **Query Management Properties**[¶](https://dataos.info/resources/cluster/performance_tuning/#category-query-management-properties)
+### **Query Management Properties**
 
-### **`query.execution-policy`[¶](https://dataos.info/resources/cluster/performance_tuning/#queryexecution-policy)**
+### **`query.execution-policy`**
 
 **Description:** This property configures the algorithm used to schedule the stages of a query.
 
@@ -149,7 +149,7 @@ You can resize the Cluster as per the usage by adding the below properties in th
 
 ---
 
-### **`query.max-execution-time`[¶](https://dataos.info/resources/cluster/performance_tuning/#querymax-execution-time)**
+### **`query.max-execution-time`**
 
 **Description:** This property sets the maximum allowed execution time for a query on the cluster. It includes only the active execution time and excludes analysis, query planning, and queue wait times.
 
@@ -163,7 +163,7 @@ You can resize the Cluster as per the usage by adding the below properties in th
 
 ---
 
-### **`query.max-planning-time`[¶](https://dataos.info/resources/cluster/performance_tuning/#querymax-planning-time)**
+### **`query.max-planning-time`**
 
 **Description:** This property defines the maximum allowed planning time for a query. If the planning time exceeds this limit, the coordinator attempts to stop the query. Note that certain planning operations may not be immediately cancellable.
 
@@ -177,7 +177,7 @@ You can resize the Cluster as per the usage by adding the below properties in th
 
 ---
 
-### **`query.max-run-time`[¶](https://dataos.info/resources/cluster/performance_tuning/#querymax-run-time)**
+### **`query.max-run-time`**
 
 **Description:** This property specifies the maximum allowed total runtime for a query on the cluster. It includes analysis, planning, and queue wait times, providing the overall time allowed for a query to exist since its creation.
 
@@ -191,7 +191,7 @@ You can resize the Cluster as per the usage by adding the below properties in th
 
 ---
 
-### **`query.max-stage-count`[¶](https://dataos.info/resources/cluster/performance_tuning/#querymax-stage-count)**
+### **`query.max-stage-count`**
 
 **Description:** This property determines the maximum number of stages that can be generated per query. If a query exceeds this limit, it will be terminated with an error indicating that it has too many stages.
 
@@ -207,7 +207,7 @@ You can resize the Cluster as per the usage by adding the below properties in th
 
 ---
 
-### **`query.max-history`[¶](https://dataos.info/resources/cluster/performance_tuning/#querymax-history)**
+### **`query.max-history`**
 
 **Description:** This property sets the maximum number of queries to retain in the query history for statistical and informational purposes. Once this limit is reached, older queries are removed based on their age.
 
@@ -219,7 +219,7 @@ You can resize the Cluster as per the usage by adding the below properties in th
 
 ---
 
-### **`query.min-expire-age`[¶](https://dataos.info/resources/cluster/performance_tuning/#querymin-expire-age)**
+### **`query.min-expire-age`**
 
 **Description:** This property specifies the minimum age of a query in the history before it is expired. Once expired, a query is removed from the query history buffer and is no longer accessible in the Web UI.
 
@@ -240,7 +240,7 @@ spilling refers to the process where data that cannot fit into the cluster's mem
 
 You can manage the spilling by adding the below-given properties.
 
-### **`spill-enabled`[¶](https://dataos.info/resources/cluster/performance_tuning/#spill-enabled)**
+### **`spill-enabled`**
 
 **Description:** This property enables spilling memory to disk in order to avoid exceeding memory limits for the query. Spilling works by offloading memory to disk, allowing queries with large memory footprints to proceed, albeit with slower execution times. Spilling is supported for aggregations, joins (inner and outer), sorting, and window functions. Please note that this property does not reduce the memory usage required for other join types. The `spill_enabled` session property can override this configuration.
 
@@ -252,7 +252,7 @@ You can manage the spilling by adding the below-given properties.
 
 ---
 
-### **`spiller-spill-path`[¶](https://dataos.info/resources/cluster/performance_tuning/#spiller-spill-path)**
+### **`spiller-spill-path`**
 
 **Description:** This property specifies the directory where spilled content is written. It can be a comma-separated list to spill simultaneously to multiple directories, leveraging multiple drives installed in the system. It is not recommended to spill to system drives. Importantly, avoid spilling to the drive where JVM logs are written to prevent disk overutilization, which may cause queries to fail.
 
@@ -264,7 +264,7 @@ You can manage the spilling by adding the below-given properties.
 
 ---
 
-### **`spiller-max-used-space-threshold`[¶](https://dataos.info/resources/cluster/performance_tuning/#spiller-max-used-space-threshold)**
+### **`spiller-max-used-space-threshold`**
 
 **Description:** If the disk space usage ratio of a given spill path exceeds this threshold, the spill path is deemed ineligible for spilling.
 
@@ -276,7 +276,7 @@ You can manage the spilling by adding the below-given properties.
 
 ---
 
-### **`spiller-threads`[¶](https://dataos.info/resources/cluster/performance_tuning/#spiller-threads)**
+### **`spiller-threads`**
 
 **Description:** This property determines the number of spiller threads. Increase this value if the default number of threads cannot fully utilize the underlying spilling device, such as when using RAID.
 
@@ -288,7 +288,7 @@ You can manage the spilling by adding the below-given properties.
 
 ---
 
-### **`max-spill-per-node`[¶](https://dataos.info/resources/cluster/performance_tuning/#max-spill-per-node)**
+### **`max-spill-per-node`**
 
 **Description:** This property sets the maximum spill space to be used by all queries on a single node.
 
@@ -300,7 +300,7 @@ You can manage the spilling by adding the below-given properties.
 
 ---
 
-### **`query-max-spill-per-node`[¶](https://dataos.info/resources/cluster/performance_tuning/#query-max-spill-per-node)**
+### **`query-max-spill-per-node`**
 
 **Description:** This property defines the maximum spill space to be used by a single query on a single node.
 
@@ -310,7 +310,7 @@ You can manage the spilling by adding the below-given properties.
 
 **Default Value:** 100GB
 
-### **`aggregation-operator-unspill-memory-limit`[¶](https://dataos.info/resources/cluster/performance_tuning/#aggregation-operator-unspill-memory-limit)**
+### **`aggregation-operator-unspill-memory-limit`**
 
 **Description:** This property defines the memory limit for unspilling a single instance of an aggregation operator.
 
@@ -322,7 +322,7 @@ You can manage the spilling by adding the below-given properties.
 
 ---
 
-### **`spill-compression-enabled`[¶](https://dataos.info/resources/cluster/performance_tuning/#spill-compression-enabled)**
+### **`spill-compression-enabled`**
 
 **Description:** Enables data compression for pages that are spilled to disk.
 
@@ -334,7 +334,7 @@ You can manage the spilling by adding the below-given properties.
 
 ---
 
-### **`spill-encryption-enabled`[¶](https://dataos.info/resources/cluster/performance_tuning/#spill-encryption-enabled)**
+### **`spill-encryption-enabled`**
 
 **Description:** Enables the use of a randomly generated secret key (per spill file) to encrypt and decrypt data that is spilled to disk.
 
@@ -355,7 +355,7 @@ You can manage the spilling by adding the below-given properties.
 
 Manage the exchange by adding the below properties.
 
-### **`exchange.client-threads`[¶](https://dataos.info/resources/cluster/performance_tuning/#exchangeclient-threads)**
+### **`exchange.client-threads`**
 
 **Description:** This property determines the number of threads used by exchange clients to fetch data from other Trino nodes. Increasing the value can improve performance for large clusters or clusters with high concurrency. However, setting excessively high values may result in performance degradation due to context switches and increased memory usage.
 
@@ -369,7 +369,7 @@ Manage the exchange by adding the below properties.
 
 ---
 
-### **`exchange.concurrent-request-multiplier`[¶](https://dataos.info/resources/cluster/performance_tuning/#exchangeconcurrent-request-multiplier)**
+### **`exchange.concurrent-request-multiplier`**
 
 **Description:** This property determines the multiplier for the number of concurrent requests relative to the available buffer memory. The maximum number of requests is calculated based on the average buffer usage per request multiplied by this multiplier. The heuristic takes into account the available buffer space and aims to optimize concurrency and network utilization. Adjusting this value can increase concurrency and improve network utilization.
 
@@ -383,7 +383,7 @@ Manage the exchange by adding the below properties.
 
 ---
 
-### **`exchange.data-integrity-verification`[¶](https://dataos.info/resources/cluster/performance_tuning/#exchangedata-integrity-verification)**
+### **`exchange.data-integrity-verification`**
 
 **Description:** This property configures the behavior in case of data integrity issues. By default, when data integrity issues are detected during the built-in verification, queries are aborted (ABORT). Setting the property to NONE disables the verification while setting it to RETRY repeats the data exchange when integrity issues are detected.
 
@@ -397,7 +397,7 @@ Manage the exchange by adding the below properties.
 
 ---
 
-### **`exchange.max-buffer-size`[¶](https://dataos.info/resources/cluster/performance_tuning/#exchangemax-buffer-size)**
+### **`exchange.max-buffer-size`**
 
 **Description:** This property defines the size of the buffer in the exchange client that holds data fetched from other nodes before it is processed. A larger buffer size can increase network throughput for larger clusters, thereby reducing query processing time. However, it also reduces the available memory for other purposes.
 
@@ -409,7 +409,7 @@ Manage the exchange by adding the below properties.
 
 ---
 
-### **`exchange.max-response-size`[¶](https://dataos.info/resources/cluster/performance_tuning/#exchangemax-response-size)**
+### **`exchange.max-response-size`**
 
 **Description:** This property sets the maximum size of a response returned from an exchange request. The response is stored in the exchange client buffer, which is shared across all concurrent requests for the exchange. Increasing this value can improve network throughput, especially when there is high latency. Decreasing the value can improve query performance for large clusters by reducing skew, as the exchange client buffer can hold responses for more tasks.
 
@@ -423,7 +423,7 @@ Manage the exchange by adding the below properties.
 
 ---
 
-### **`sink.max-buffer-size`[¶](https://dataos.info/resources/cluster/performance_tuning/#sinkmax-buffer-size)**
+### **`sink.max-buffer-size`**
 
 **Description:** This property determines the output buffer size for task data waiting to be pulled by upstream tasks. If the task output is hash partitioned, the buffer is shared among all partitioned consumers. Increasing this value can improve network throughput for data transferred between stages, particularly in cases of high network latency or when there are many nodes in the cluster.
 
@@ -435,7 +435,7 @@ Manage the exchange by adding the below properties.
 
 ---
 
-### **`sink.max-broadcast-buffer-size`[¶](https://dataos.info/resources/cluster/performance_tuning/#sinkmax-broadcast-buffer-size)**
+### **`sink.max-broadcast-buffer-size`**
 
 **Description:** This property specifies the broadcast output buffer size for task data waiting to be pulled by upstream tasks. The broadcast buffer is used to store and transfer build-side data for replicated joins. If the buffer size is too small, it can hinder the scaling of join probe side tasks when new nodes are added to the cluster.
 
@@ -449,7 +449,7 @@ Manage the exchange by adding the below properties.
 
 Manage the tasks by adding the below properties in the Cluster manifest file.
 
-### **`task.concurrency`[¶](https://dataos.info/resources/cluster/performance_tuning/#taskconcurrency)**
+### **`task.concurrency`**
 
 **Description:** This property defines the default local concurrency for parallel operators such as joins and aggregations. The value should be adjusted based on the query concurrency and worker resource utilization. Lower values are suitable for clusters that run many queries concurrently to avoid slowdowns due to context switching and overhead. Higher values are better for clusters that handle a smaller number of queries at a time. The `task_concurrency` session property allows specifying this value on a per-query basis.
 
@@ -463,7 +463,7 @@ Manage the tasks by adding the below properties in the Cluster manifest file.
 
 ---
 
-### **`task.http-response-threads`[¶](https://dataos.info/resources/cluster/performance_tuning/#taskhttp-response-threads)**
+### **`task.http-response-threads`**
 
 **Description:** This property sets the maximum number of threads that can handle HTTP responses. Threads are created on-demand and cleaned up when idle. Increasing this value can be beneficial for clusters with a high number of concurrent queries or a large number of workers.
 
@@ -477,7 +477,7 @@ Manage the tasks by adding the below properties in the Cluster manifest file.
 
 ---
 
-### **`task.http-timeout-threads`[¶](https://dataos.info/resources/cluster/performance_tuning/#taskhttp-timeout-threads)**
+### **`task.http-timeout-threads`**
 
 **Description:** This property determines the number of threads used to handle timeouts when generating HTTP responses. If all threads are frequently in use, it may be necessary to increase this value. The thread utilization can be monitored through the `trino.server:name=AsyncHttpExecutionMBean:TimeoutExecutor` JMX object. If the `ActiveCount` is consistently the same as `PoolSize`, it indicates the need for more threads.
 
@@ -491,7 +491,7 @@ Manage the tasks by adding the below properties in the Cluster manifest file.
 
 ---
 
-### **`task.info-update-interval`[¶](https://dataos.info/resources/cluster/performance_tuning/#taskinfo-update-interval)**
+### **`task.info-update-interval`**
 
 **Description:** This property controls the staleness of task information used in scheduling. Larger values reduce coordinator CPU load but may result in suboptimal split scheduling.
 
@@ -507,7 +507,7 @@ Manage the tasks by adding the below properties in the Cluster manifest file.
 
 ---
 
-### **`task.max-drivers-per-task`[¶](https://dataos.info/resources/cluster/performance_tuning/#taskmax-drivers-per-task)**
+### **`task.max-drivers-per-task`**
 
 **Description:** This property limits the maximum number of drivers that can run concurrently within a task. Setting this value reduces the likelihood of a task using too many drivers and can improve concurrent query performance. However, setting it too low may result in underutilized resources.
 
@@ -521,7 +521,7 @@ Manage the tasks by adding the below properties in the Cluster manifest file.
 
 ---
 
-### **`task.max-partial-aggregation-memory`[¶](https://dataos.info/resources/cluster/performance_tuning/#taskmax-partial-aggregation-memory)**
+### **`task.max-partial-aggregation-memory`**
 
 **Description:** This property specifies the maximum size of partial aggregation results for distributed aggregations. Increasing this value can reduce network transfer and lower CPU utilization by allowing more groups to be kept locally before being flushed. However, it also increases memory usage.
 
@@ -533,7 +533,7 @@ Manage the tasks by adding the below properties in the Cluster manifest file.
 
 ---
 
-### **`task.max-worker-threads`[¶](https://dataos.info/resources/cluster/performance_tuning/#taskmax-worker-threads)**
+### **`task.max-worker-threads`**
 
 **Description:** This property determines the number of threads used by workers to process splits. Increasing this number can improve throughput if worker CPU utilization is low and all threads are in use. However, it also increases heap space usage. Setting the value too high may lead to a drop in performance due to context switching. The number of active threads can be monitored using the `RunningSplits` property of the `trino.execution.executor:name=TaskExecutor.RunningSplits` JMX object.
 
