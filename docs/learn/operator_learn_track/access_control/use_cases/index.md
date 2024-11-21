@@ -38,13 +38,13 @@ Now, let’s explore how granular access applies to two Roles working with the L
 | Aspect                | Data Analyst           | Data Engineer        |
 |-----------------------|------------------------|----------------------|
 | Primary Goal          | Explore and view the Lens data | Create, manage, update, and delete the Lens |
-| Use-Case              | Read Lens              | Manage Lens          |
+| Use-case              | Read Lens              | Manage Lens          |
 | Authorization Atom(s) | `read on Lens`         | `create on Lens`, `read on Lens`, `update on Lens`, `delete on Lens` |
 | Permissions           | View-only access to Lens data | Full access to create, read, update, and delete Lens data |
 | Scope of Access       | Restricted to viewing data | Full control over the resource |
 
 
-## Creating a Use-Case
+## Creating a Use-case
 
 Once you understand the concept of use-cases, the next step is to create them. This involves defining the permissions that users or Roles need to interact with Resources. Use-cases are created in YAML format, specifying the actions that can be performed on the Resources.
 
@@ -57,7 +57,7 @@ Follow the steps below to create a use case in DataOS.
 2. In the YAML artifact, you define the necessary parameters for the use case. For example, to create a Use-case for reading a DataOS workspace, you will enter the following YAML configuration:
 
     ```bash
-    # Enter the Yaml Use-Case Artifact
+    # Enter the Yaml Use-case Artifact
 
     id: read-dataos-workspace
     name: 'Read Workspace'
@@ -104,7 +104,7 @@ Following are the configurations of creating a Use-case:
 Similarly, you create a Use-case to read a depot as shown below:
 
 ```bash
-# Enter the Yaml Use-Case Artifact
+# Enter the Yaml Use-case Artifact
 
 id: read-depot
 name: 'Read Depot'
@@ -123,7 +123,7 @@ values:
 Similarly, you create a coarser access level Use-case to manage the depot, which combines all the predicates on the Depot type object.
 
 ```bash
-# Enter the Yaml Use-Case Artifact
+# Enter the Yaml Use-case Artifact
 
 id: write-depot-dataset
 name: 'Write Depot - Dataset'
@@ -228,7 +228,7 @@ values:
 🗣️ This example was created to demonstrate the process of generating a Use-case. We have already defined use-cases by identifying the relevant Resources, Interfaces, and the actions that can be performed on them. However, if new Resource or Interfaces are introduced, you can create additional use-cases.
 </aside>
 
-## Assign a Use-Case to a Role
+## Assign a Use-case to a Role
 
 After creating use-cases, you will assign them to your organization's relevant Roles and users. This ensures that users in each Role have the correct permissions to interact with the Resources necessary for their tasks.
 
@@ -236,7 +236,7 @@ After creating use-cases, you will assign them to your organization's relevant R
 
     ![image.png](/learn/operator_learn_track/access_control/use_cases/image (4).png)
 
-2. The Consumer Role Dialog Box appears. In this dialog, you navigate to the Grants section and click on the Grant Use-Case button. In the search box, you enter the newly created Use-case `read lens and contracts`, and click the Grant button. This grants all users in the Consumer Role the ability to read the Lens or semantic model as defined in the Use-case.
+2. The Consumer Role Dialog Box appears. In this dialog, you navigate to the Grants section and click on the Grant Use-case button. In the search box, you enter the newly created Use-case `read lens and contracts`, and click the Grant button. This grants all users in the Consumer Role the ability to read the Lens or semantic model as defined in the Use-case.
 
     ![image.png](/learn/operator_learn_track/access_control/use_cases/image (5).png)
 
@@ -254,10 +254,10 @@ Here's how you can assign use-cases to individual users:
     
 - **Select the User:** You select the specific user by their name from the list.
     
-- **Grant the Use-Case:** You click the Grant Use-Case button in the Grants section of the user's profile.
+- **Grant the Use-case:** You click the Grant Use-case button in the Grants section of the user's profile.
     
-- **Search for the Use-Case:** You search for the required Use-case, such as the `Manage Lens` Use-case.
+- **Search for the Use-case:** You search for the required Use-case, such as the `Manage Lens` Use-case.
     
-- **Apply the Use-Case to the User:** You grant the selected Use-case to the user.
+- **Apply the Use-case to the User:** You grant the selected Use-case to the user.
     
 The user now has the required permissions (e.g., to manage Lens) regardless of their original Role's permissions.
