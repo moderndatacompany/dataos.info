@@ -24,7 +24,7 @@ DataOS supports two types of query engines, each designed to manage and process 
 Themis is an elastic, distributed SQL query engine optimized for fast querying across large datasets. It dynamically adjusts resources based on workload demands, making it ideal for high-concurrency and scalable enterprise environments. Themis supports a wider range of data sources and offers advanced security features, making it suitable for dynamic, large-scale applications.
 
 <aside class="callout">
-Themis Cluster supports four types of Depots: Iceberg, Snowflake, Redshift, and Postgres.
+🗣 Themis Cluster supports four types of Depots: Iceberg, Snowflake, Redshift, and Postgres.
 </aside>
 
 #### **Minerva**
@@ -36,8 +36,11 @@ Minerva is a static, high-performance query engine designed for analytical and e
 To begin creating a Cluster, ensure the following prerequisites are met:
 
 - You must have the specific tags or use cases assigned to create a Cluster.
+
 - Ensure the Depot, which you are going to target is active.
+
 - Decide on which query engine is suitable for your use case.
+
 - Make sure you have already configured the Compute Resource.
 
 
