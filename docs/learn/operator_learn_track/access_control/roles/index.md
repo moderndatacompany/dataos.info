@@ -21,7 +21,7 @@ In DataOS, Roles manage user access to resources based on job functions or perso
 
 Roles are created to align with specific personas, ensuring users have the appropriate permissions for their responsibilities.
 
-### How Roles work with Tags and Tag Namespaces?
+### **How Roles work with Tags and Tag Namespaces?**
 
 Roles are linked to tags that define the permissions for each Role. These tags are associated with predefined IAM (Identity and Access Management) policies to enforce access control within DataOS. Tags specify what actions users can perform and which resources they can access.
 
