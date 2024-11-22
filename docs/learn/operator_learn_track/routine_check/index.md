@@ -363,6 +363,7 @@ In Fastbase, topics are the endpoints for publishing and consuming messages. The
 **Tenant -> Namespace -> Topic**
 
 - List tenants
+
 ```shell
 ➜  ~ dataos-ctl fastbase tenant list
 INFO[0000] 🔍 list...                                    
@@ -390,6 +391,7 @@ INFO[0002] 🔍 list...complete
 ```
 
 - List topics
+
 ```shell
  ~ dataos-ctl fastbase topic -n public/default list
 INFO[0000] 🔍 list...                                    
@@ -427,7 +429,9 @@ INFO[0004] Created consumer                              consumerID=1 name=fyita
 {"id":"CJYDEAIYACAA","string_id":"406:2:0","payload":{"age":"","city":"Logroño","country":"Spain","email":"alex.vargas@example.com","first_name":"Alex","gender":"male","id":"e6f652ec-8388-4384-a3f2-c3e7f0541f1f","last_name":"","phone":"959-740-232","postcode":"32826","state":"Comunidad de Madrid","title":"Mr"},"publish_time":"2023-12-27T13:02:20.472+05:30","event_time":"2023-12-27T13:02:20.472+05:30","producer_name":"pulsar-1-12","topic":"persistent://public/default/random_users_test_01"}
 
 ```
+
 - Read topics
+
 ```shell
 ~ dataos-ctl fastbase topic read -p -t persistent://public/default/random_users_test_01
 INFO[0000] 🔍 read...                                    
