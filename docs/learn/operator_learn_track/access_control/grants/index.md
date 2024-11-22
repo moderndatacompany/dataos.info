@@ -5,14 +5,14 @@ In the Grants section of  Bifrost, administrators can easily track which Use-Cas
 To assign a particular use case to multiple roles, create a Grant. When administrators create a Grant, they define the access policies that govern user interactions with specific resources. Once a Grant is created in the Grant section, it can be leveraged as a reusable template for similar access scenarios and employed repeatedly without recreating the entire configuration.
 
 <aside class="callout">
-🗣 As part of our best practice, we suggest a cautious approach by setting up restricted access for all users, granting only minimum access privileges. This approach encourages granting access only when necessary and allows flexibility to gradually expand access as visibility and understanding of usage patterns increase over time.
+🗣️ As part of our best practice, we suggest a cautious approach by setting up restricted access for all users, granting only minimum access privileges. This approach encourages granting access only when necessary and allows flexibility to gradually expand access as visibility and understanding of usage patterns increase over time.
 </aside>
 
 ## How to create Policy Use-case Grant?
 
 While it's straightforward to assign Use-Cases to users via the Bifrost UI, there's a rare chance that you may be required to assign a particular use-case to multiple users across different teams, you can accomplish this by following the steps outlined below.
 
-- On Bifrost UI, goto the Grants tab, where you can view all the Grants (Use-Cases assigned to users). Click on Create Grant.
+- On Bifrost UI, go to the Grants tab, where you can view all the Grants (Use-Cases assigned to users). Click on Create Grant.
 
     ![grants](/learn/operator_learn_track/access_control/grants/Pasted image.png)
 
@@ -29,7 +29,7 @@ Following are some more sample grant manifest
 
 **Sample manifest 1**
 
-**Description:** This use-case authorize actions using a user id assigned to a app-user.
+**Description:** This use-case authorizes actions using a user id assigned to a app-user.
 
 ```yaml
 policy_use_case_id: authorize-with-userid
