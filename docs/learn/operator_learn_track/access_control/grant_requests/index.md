@@ -22,7 +22,7 @@ Realizing that they lack the required access rights, Iamgroot navigates to Grant
 
 ![no access](/learn/operator_learn_track/access_control/grant_requests/bifrost_gr.png)
 
-The grant request dialog box appears. Iamgroot then paste the below grant request.
+The grant request dialog box appears. Iamgroot then pastes the below grant request.
 
 ```yaml
 policy_use_case_id: view-workbench-app
@@ -77,7 +77,7 @@ The operator reviews the grant request to verify the details to determine whethe
 
 ### **Step 4: Grant Request approval**
 
-As he click on 'Approve Grant Request' button the confirmation dialog box appears, asking operator to confirm the Grant.
+As he clicks on 'Approve Grant Request' button the confirmation dialog box appears, asking operator to confirm the Grant.
 
 ![confirmation_msg](/learn/operator_learn_track/access_control/grant_requests/image (8).png)
 
