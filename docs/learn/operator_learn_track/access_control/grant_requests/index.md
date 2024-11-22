@@ -59,7 +59,7 @@ The request contains all the necessary information, such as the required actions
 - **workbench-app-save-bench:** Permission to save a workbench.
 - **workbench-app-run-query:** Permission to run queries.
 
-**`subjects`:** Specifies the entity requesting access. In this case, the user Iamgroot is requesting permission to access the Workbench app, specifically identified by users:id:iamgroot.
+**`subjects`:** Specifies the entity requesting access. In this case, the user Iamgroot is requesting permission to access the Workbench app, specifically identified by `users:id:iamgroot`.
 
 This grant request ensures that the user Iamgroot has the necessary permissions to interact with the Workbench app and its related actions, such as viewing, saving, and querying workbenches.
 
