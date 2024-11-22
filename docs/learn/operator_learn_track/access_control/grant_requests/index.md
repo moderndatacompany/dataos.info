@@ -84,7 +84,7 @@ As he click on 'Approve Grant Request' button the confirmation dialog box appear
 
 ### **Step 5: Access granted**
 
-After the approval from the operator, the grant log status changes from requested to approved
+After the approval from the operator, the grant status in the grant log changes from requested to approved
 
 ![approved log](/learn/operator_learn_track/access_control/grant_requests/approved_log.png)
 
