@@ -58,9 +58,8 @@ The request contains all the necessary information, such as the required actions
 - **workbench-app-clone-saved-bench:** Permission to clone a saved workbench.
 - **workbench-app-save-bench:** Permission to save a workbench.
 - **workbench-app-run-query:** Permission to run queries.
-- **subjects:** Specifies the entity requesting access. In this case, the user Iamgroot is requesting permission to access the Workbench app, specifically identified by users:id:iamgroot.
 
-**`subject`**: The subject in this policy refers to the user Iamgroot, having user ID iamgroot. identified by `users:id:iamgroot` tag.
+**`subjects`:** Specifies the entity requesting access. In this case, the user Iamgroot is requesting permission to access the Workbench app, specifically identified by users:id:iamgroot.
 
 This grant request ensures that the user Iamgroot has the necessary permissions to interact with the Workbench app and its related actions, such as viewing, saving, and querying workbenches.
 
