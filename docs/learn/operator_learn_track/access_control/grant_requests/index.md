@@ -10,13 +10,13 @@ A user named Iamgroot attempts to access the Workbench but encounters access res
 
 Follow the steps below to request access to the Workbench UI and gain the necessary permissions to interact with depots and sources.
 
-### **Step 1: Initial Access Attempt**
+### **Step 1: Initial access attempt**
 
 Iamgroot, a user within the system, attempts to access the Workbench UI but encounters an access restriction message indicating that they do not have the necessary permissions to view or interact with the Workbench.
 
 ![no access](/learn/operator_learn_track/access_control/grant_requests/image (11).png)
 
-### **Step 2: Grant Request Submission**
+### **Step 2: Grant Request submission**
 
 Realizing that they lack the required access rights, Iamgroot navigates to Grant Requests tab in Bifrost to submit a grant request to operator for permission to access the Workbench UI. 
 
@@ -60,13 +60,15 @@ The request contains all the necessary information, such as the required actions
 - **workbench-app-run-query:** Permission to run queries.
 - **subjects:** Specifies the entity requesting access. In this case, the user Iamgroot is requesting permission to access the Workbench app, specifically identified by users:id:iamgroot.
 
+**`subject`**: The subject in this policy refers to the user Iamgroot, having user ID iamgroot. identified by `users:id:iamgroot` tag.
+
 This grant request ensures that the user Iamgroot has the necessary permissions to interact with the Workbench app and its related actions, such as viewing, saving, and querying workbenches.
 
 The request details submitted by Iamgroot is as shown below:
 
 ![grant request yaml](/learn/operator_learn_track/access_control/grant_requests/grant_request_yaml.png)
 
-### **Step 3: Operator Reviews the Request**
+### **Step 3: Operator reviews the request**
 
 The operator, accesses the Grant Request tab in the system, where they can review Iamgroot’s submitted request.
 
@@ -74,17 +76,17 @@ The operator, accesses the Grant Request tab in the system, where they can revie
 
 The operator reviews the grant request to verify the details to determine whether access should be granted, and then clicks the 'Approve Grant Request' button.
 
-### **Step 4: Grant Request Approval**
+### **Step 4: Grant Request approval**
 
 As he click on 'Approve Grant Request' button the confirmation dialog box appears, asking operator to confirm the Grant.
 
 ![confirmation_msg](/learn/operator_learn_track/access_control/grant_requests/image (8).png)
 
-### **Step 4: Access Granted**
+### **Step 5: Access granted**
 
-After the approval from the operator, the grant log status changes from requested to approved
+After the approval from the operator, the grant status in the grant log changes from requested to approved
 
-![apporved log](/learn/operator_learn_track/access_control/grant_requests/approved_log.png)
+![approved log](/learn/operator_learn_track/access_control/grant_requests/approved_log.png)
 
 Iamgroot is now able to access the Workbench UI as per the granted permissions. They can now view depots, run queries, save clusters, and utilize the full functionality of the Workbench as shown in the below image.
 

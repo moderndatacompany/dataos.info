@@ -14,7 +14,7 @@ Before proceeding, ensure that you meet the following requirements:
 
 ## Steps
 
-Follow the below steps to add a user in the Keycloak:
+Follow the steps below to add a user in the Keycloak:
 
 1. In the left-hand navigation menu of the Keycloak Admin Console, click on Users. This will bring up the user management screen.
 
@@ -23,7 +23,7 @@ Follow the below steps to add a user in the Keycloak:
 3. On the Create User form, you need to provide the following information for the new user:
 
     - **Required user actions:** Specify any actions the user must complete before logging in. Once a required action is completed, the user will not need to perform it again in the future. For example, the Update Password action requires the user to change their password upon the first login.
-    
+
     - **Email:** The user's email address (this is a required field).
     - **First Name:** The user's first name.
     - **Last Name:** The user's last name.
