@@ -19,20 +19,25 @@ Ensure that appropriate access permissions are available to execute this command
 
        STACK      │ FLAVOR  │ VERSION │                       IMAGE                       │     IMAGE PULL SECRET      
 ──────────────────┼─────────┼─────────┼───────────────────────────────────────────────────┼────────────────────────────
+  beacon          │ graphql │ 1.0     │ docker.io/rubiklabs/beacon:postgraphile-4.10.0.d1 │ dataos-container-registry  
   beacon          │ rest    │ 1.0     │ docker.io/postgrest/postgrest:v7.0.1              │ dataos-container-registry  
   benthos         │         │ 3.0     │ docker.io/rubiklabs/benthos-ds:0.8.28             │ dataos-container-registry  
   container       │         │ 1.0     │                                                   │                            
-  dataos-ctl      │         │ 1.0     │ docker.io/rubiklabs/dataos-ctl:2.25.2-dev         │ dataos-container-registry  
-  dataos-ctl      │         │ 2.0     │ docker.io/rubiklabs/dataos-ctl:2.24.7             │ dataos-container-registry  
+  dataos-ctl      │         │ 1.0     │ docker.io/rubiklabs/dataos-ctl:2.26.18            │ dataos-container-registry  
+  dataos-resource │ apply   │ 1.0     │ docker.io/rubiklabs/dataos-ctl:2.26.18            │ dataos-container-registry  
+  dataos-resource │ delete  │ 1.0     │ docker.io/rubiklabs/dataos-ctl:2.26.18            │ dataos-container-registry  
+  dataos-resource │ run     │ 1.0     │ docker.io/rubiklabs/dataos-ctl:2.26.18            │ dataos-container-registry  
   fastfun         │ alpha   │ 1.0     │ docker.io/rubiklabs/fastbase-functions:2.10.2-d2  │ dataos-container-registry  
-  flare           │         │ 4.0     │ docker.io/rubiklabs/flare4:7.2.42                 │ dataos-container-registry  
-  flare           │         │ 5.0     │ docker.io/rubiklabs/flare5:7.3.15                 │ dataos-container-registry  
-  flash           │ python  │ 1.0     │ docker.io/rubiklabs/flash:0.0.9-dev               │ dataos-container-registry 
+  flare           │         │ 5.0     │ docker.io/rubiklabs/flare5:7.3.17                 │ dataos-container-registry  
+  flare           │         │ 6.0     │ docker.io/rubiklabs/flare6:8.0.9                  │ dataos-container-registry  
+  flash           │ python  │ 1.0     │ docker.io/rubiklabs/flash:0.0.36                   │ dataos-container-registry  
+  flash           │ python  │ 2.0     │ docker.io/rubiklabs/flash:0.0.37-dev              │ dataos-container-registry  
+  lakesearch      │         │ 1.0     │ docker.io/rubiklabs/lakesearch:0.1.11             │ dataos-container-registry  
   scanner         │         │ 1.0     │ docker.io/rubiklabs/dataos-scanner:0.1.28         │ dataos-container-registry  
   scanner         │         │ 2.0     │ docker.io/rubiklabs/dataos-scanner:0.1.28         │ dataos-container-registry  
-  soda            │ python  │ 1.0     │ docker.io/rubiklabs/dataos-soda:0.0.17            │ dataos-container-registry  
-  stream-monitor  │         │ 1.0     │ docker.io/rubiklabs/monitor-api:0.13.13           │ dataos-container-registry               
-  talos           │         │ 2.0     │ docker.io/rubiklabs/talos:0.1.8                   │ dataos-container-registry  
+  soda            │ python  │ 1.0     │ docker.io/rubiklabs/dataos-soda:0.0.19.3          │ dataos-container-registry  
+  stream-monitor  │         │ 1.0     │ docker.io/rubiklabs/monitor-api:0.13.13           │ dataos-container-registry  
+  talos           │         │ 2.0     │ docker.io/rubiklabs/talos:0.1.22                  │ dataos-container-registry  
   toolbox         │         │ 1.0     │ docker.io/rubiklabs/dataos-tool:0.3.9             │ dataos-container-registry  
 ```
 
@@ -57,7 +62,7 @@ stack:
     registry: docker.io
     repository: rubiklabs
     image: flash
-    tag: 0.0.9
+    tag: 0.0.36
     auth:
       imagePullSecret: dataos-container-registry
   environmentVars:
@@ -103,7 +108,7 @@ Check if the Stack is created successfully:
 dataos-ctl resource get -t stack
 ```
 
-To view stacks created by all users in the organization:
+To view Stacks created by all users in the organization:
 
 ```shell
 dataos-ctl resource get -t stack -a
@@ -193,13 +198,11 @@ Once the Flash Stack is available, follow these steps to create a Flash Service:
     | `expression`  | Cron expression for scheduling. | String | Mandatory |
     | `sql`         | SQL statement for refreshing data. | String | Mandatory |
 
-    For more information on each attribute,
-
- refer to [this section](/resources/stacks/flash/configurations/).
+    For more information on each attribute, refer to [this section](/resources/stacks/flash/configurations/).
 
 ## Apply the Flash Service
 
-To run the service and load the datasets into the Flash layer, apply the manifest file using the DataOS CLI:
+To run the Service and load the datasets into the Flash layer, apply the manifest file using the DataOS CLI:
 
 ```shell
 dataos-ctl resource apply -f ${flash-service-manifest-file-path} -w ${workspace}
@@ -230,6 +233,9 @@ INFO[0008] 🛠 apply...complete
 
 
 - [Monitor the cached dataset](/resources/stacks/flash/recipes/monitor/)
+
 - [Use cached datasets in Lens models](/resources/stacks/flash/recipes/lens/)
-- [Use cached datasets using Talos](/resources/stacks/flash/recipes/talos/)
-- [Best Practices of Flash](/resources/stacks/flash/best_practices/)
+
+- [Consume cached datasets via Talos](/resources/stacks/flash/recipes/talos/)
+
+- [Best Practices for Flash](/resources/stacks/flash/best_practices/)
