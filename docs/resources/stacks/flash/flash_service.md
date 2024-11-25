@@ -30,7 +30,7 @@ Ensure that appropriate access permissions are available to execute this command
   fastfun         │ alpha   │ 1.0     │ docker.io/rubiklabs/fastbase-functions:2.10.2-d2  │ dataos-container-registry  
   flare           │         │ 5.0     │ docker.io/rubiklabs/flare5:7.3.17                 │ dataos-container-registry  
   flare           │         │ 6.0     │ docker.io/rubiklabs/flare6:8.0.9                  │ dataos-container-registry  
-  flash           │ python  │ 1.0     │ docker.io/rubiklabs/flash:0.0.9                   │ dataos-container-registry  
+  flash           │ python  │ 1.0     │ docker.io/rubiklabs/flash:0.0.36                   │ dataos-container-registry  
   flash           │ python  │ 2.0     │ docker.io/rubiklabs/flash:0.0.37-dev              │ dataos-container-registry  
   lakesearch      │         │ 1.0     │ docker.io/rubiklabs/lakesearch:0.1.11             │ dataos-container-registry  
   scanner         │         │ 1.0     │ docker.io/rubiklabs/dataos-scanner:0.1.28         │ dataos-container-registry  
@@ -51,7 +51,7 @@ layer: user
 description: "flash stack version 1"
 stack:
   name: flash
-  version: "2.0"
+  version: "1.0"
   flavor: "python"
   reconciler: "stackManager"
   dataOsAddressJqFilters:
@@ -62,7 +62,7 @@ stack:
     registry: docker.io
     repository: rubiklabs
     image: flash
-    tag: 0.0.38-dev
+    tag: 0.0.36
     auth:
       imagePullSecret: dataos-container-registry
   environmentVars:
