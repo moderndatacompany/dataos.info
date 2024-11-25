@@ -1,4 +1,4 @@
-# How to Use Cached Datasets to Create Talos APIs?
+# How to consume cached datasets via Talos APIs?
 
 To expose cached datasets as Data APIs via [Talos APIs](/resources/stacks/talos/), follow these steps to configure Flash as the data source for your Talos API.
 
@@ -68,8 +68,8 @@ description: List customers from the customer table
 source: flash  # Data source
 ```
 
-### **4. Apply the Talos service**
+### **4. Apply the Talos Service**
 
-To deploy and apply the Talos service, follow the steps provided [here](/resources/stacks/talos/set_up/#steps).
+To deploy and apply the Talos Service, follow the steps provided [here](/resources/stacks/talos/set_up/#steps).
 
 This will expose the cached dataset from Flash as a Talos API, allowing clients to query the data through the API endpoint.
