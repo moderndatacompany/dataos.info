@@ -35,7 +35,7 @@ The `ingress` attribute allows access to the Flash web app, which enables monito
 1. **Get the ingress path**: Retrieve the ingress path from [Metis](/interfaces/metis/), as shown below:
 
     <center>
-      <img src="/resources/stacks/flash/annotely_image%20(30).png" alt="Metis" style="width:40rem; border: 1px solid black; padding: 5px;" />
+      <img src="/resources/stacks/flash/annotely_image%20(30).png" alt="Metis" style="width:45rem; border: 1px solid black; padding: 5px;" />
       <figcaption><i>Metis Interface</i></figcaption>
     </center>
 
@@ -48,7 +48,7 @@ The `ingress` attribute allows access to the Flash web app, which enables monito
     Replace `<DataOS env URL>` and the ingress path as needed. This will open an interface similar to the following:
 
     <center>
-      <img src="/resources/stacks/flash/webapp.png" alt="Flash Web App" style="width:40rem; border: 1px solid black; padding: 5px;" />
+      <img src="/resources/stacks/flash/recipes/web_app.png" alt="Flash Web App" style="width:45rem; border: 1px solid black; padding: 5px;" />
       <figcaption><i>Flash Web App</i></figcaption>
     </center>
 
@@ -66,8 +66,8 @@ The **Meta** section provides detailed information about the Flash Service, incl
 - **Container Image**: The image used by the Flash container.
 
 <center>
-  <img src="/resources/stacks/flash/meta.png" alt="Meta Section" style="width:40rem; border: 1px solid black; padding: 5px;" />
-  <figcaption><i>Meta Section</i></figcaption>
+  <img src="/resources/stacks/flash/meta.png" alt="Meta Section" style="width:45rem; border: 1px solid black; padding: 5px;" />
+  <figcaption><i>Meta section</i></figcaption>
 </center>
 
 ### **Data cached**
@@ -75,13 +75,18 @@ The **Meta** section provides detailed information about the Flash Service, incl
 This section displays the number of tables and views cached in Flash, along with the total data size (in bytes).
 
 <center>
-  <img src="/resources/stacks/flash/datacached.png" alt="Data Cached Section" style="width:40rem; border: 1px solid black; padding: 5px;" />
-  <figcaption><i>Data Cached Section</i></figcaption>
+  <img src="/resources/stacks/flash/datacached.png" alt="Data Cached Section" style="width:45rem; border: 1px solid black; padding: 5px;" />
+  <figcaption><i>Data cached section</i></figcaption>
 </center>
 
 ### **Inspection**
 
 The **Inspection** section provides insights into:
+
+<center>
+  <img src="/resources/stacks/flash/recipes/inspection.png" alt="Inspection section" style="width:45rem; border: 1px solid black; padding: 5px;" />
+  <figcaption><i>Inspection section</i></figcaption>
+</center>
 
 - **CPU Usage**: The amount of CPU resources used.
 
@@ -95,6 +100,11 @@ The **Inspection** section provides insights into:
 
 The **Queries** section lists detailed information about each query, including:
 
+<center>
+  <img src="/resources/stacks/flash/recipes/queries.png" alt="Queries section" style="width:45rem; border: 1px solid black; padding: 5px;" />
+  <figcaption><i>Queries section</i></figcaption>
+</center>
+
 - **Query**: The SQL query executed.
 
 - **User**: The user who submitted the query.
@@ -104,3 +114,12 @@ The **Queries** section lists detailed information about each query, including:
 - **Status**: Whether the query was completed, in progress, or encountered an error.
 
 - **Execution Time (ms)**: The time it took to execute the query in milliseconds.
+
+### **Settings**
+
+Settings section of the Flash web app provides the information on the default settings of Flash as shown below.
+
+<center>
+  <img src="/resources/stacks/flash/recipes/settings.png" alt="Settings section" style="width:45rem; border: 1px solid black; padding: 5px;" />
+  <figcaption><i>Settings section</i></figcaption>
+</center>
