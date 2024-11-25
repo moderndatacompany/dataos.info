@@ -1,4 +1,4 @@
-# How to Use Cached Datasets in Lens Models Using Flash?
+# How to create Lens model with cached dataset?
 
 To optimize data retrieval and enhance performance, cached datasets in Flash can be leveraged to construct Lens logical tables. This strategy minimizes data querying from the source by storing frequently accessed or queried Lenses in Flash, which avoids repeated source access and scanning of large datasets. As a result, queries can be processed faster, delivering responses in seconds.
 
