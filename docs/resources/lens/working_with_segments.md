@@ -16,39 +16,33 @@ Segments are pre-defined groups of filters. It provides the ability to define Se
 
 - Use **‘OR’** to define a filter involving multiple columns
 
-  An example segment declaration to create a group of commonly used state filters:
+    An example segment declaration to create a group of commonly used state filters:
 
-  ```yaml
-  segments:
-    - name: common_state
-      sql: "{TABLE}.state = 'Illinois'"
-  ```
+    ```yaml
+    segments:
+      - name: common_state
+        sql: "{TABLE}.state = 'Illinois'"
+    ```
 
 - You can leverage filtering keywords such as `LIKE` to define filtering criteria
   
-  Below  example Segment filters for records where the state is Illinois or Ohio.
+    Below  example Segment filters for records where the state is Illinois or Ohio.
 
-  ```yaml
-  segments:
-    - name: common_state
-      sql: "{TABLE}.state = 'Illinois' or {TABLE}.state like '%Ohio%'"
-  ```
+    ```yaml
+    segments:
+      - name: common_state
+        sql: "{TABLE}.state = 'Illinois' or {TABLE}.state like '%Ohio%'"
+    ```
 
-<!-- - You can include logical operators like OR and AND to create dynamic criteria for segments. This is useful when you need to apply filters to more than one column.
+- You can include logical operators like OR and AND to create dynamic criteria for segments. This is useful when you need to apply filters to more than one column.
 
-  Below example Segment filters records where the state is "Illinois" or the sales is equal to 1000.
-
-  ```yaml
-  segments:
-    - name: common_state
-      sql: "{TABLE}.state = 'Illinois' or {TABLE}.state = 'Ohio'"
-  ```
+    Below example Segment filters records where the state is "Illinois" or the sales is equal to 1000.
 
     ```yaml
   segments:
     - name: common_state
-      sql: "{TABLE}.state = 'Illinois' or {TABLE}.sales = '1000'"
-  ``` -->
+      sql: "{TABLE}.state = 'Illinois' and {TABLE}.sales = '1000'"
+  ``` 
 
 
 ## Defining row filter policy on Segment
