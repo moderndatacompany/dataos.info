@@ -585,4 +585,4 @@ worker:
 
 ## Common Errors
 
-[Common Scanner Errors](/resources/stacks/scanner/common_scanner_errors)
+[Common Scanner Errors](/resources/stacks/scanner/common_scanner_errors/)
