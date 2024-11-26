@@ -1,11 +1,11 @@
 
 ## Local development environment
 
-Before deploying models to the development environment, it is important to ensure proper verification and validation. A recommended practice is to configure a Docker Compose manifest file (docker-compose.yml). While configuring this file is optional, it is widely considered a best practice to run and test models in the local environment to catch and resolve potential errors early. This proactive approach helps streamline the development process, ensuring smoother deployments and reducing the risk of issues arising in later stages.
+Before deploying models to the development environment, it is important to ensure proper verification and validation. A recommended practice is to configure a Docker Compose manifest file (`docker-compose.yml`). While configuring this file is optional, it is widely considered a best practice to run and test models in the local environment to catch and resolve potential errors early. This proactive approach helps streamline the development process, ensuring smoother deployments and reducing the risk of issues arising in later stages.
 
 ## Add a `docker-compose.yml` manifest file
 
-To do a local testing, add a **`docker-compose.yml`** manifest file. This file allows you to simulate the full development environment locally, ensuring that all necessary components are properly configured. The `docker-compose.yml` file defines how to set up and run Docker containers for Lens. 
+To do a local testing, add a `docker-compose.yml` manifest file. This file allows you to simulate the full development environment locally, ensuring that all necessary components are properly configured. The `docker-compose.yml` file defines how to set up and run Docker containers for Lens. 
 
 > Always create the docker-compose.yml file in parallel to the model directory. 
 
