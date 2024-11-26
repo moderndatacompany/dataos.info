@@ -67,7 +67,7 @@ cluster:
     debug:
         logLevel: INFO
         trinoLogLevel: ERROR
-    runAsApiKey: '****************************************************************************************'
+    runAsApiKey: '*****************************************************************'
     runAsUser: minerva-cluster
     maintenance:
     restartCron: 0 */8 * * *
@@ -129,7 +129,7 @@ You can resize the Cluster as per the usage by adding the below properties in th
 
 ## Managing the Queries
 
-### **Query Management Properties**
+Add the following properties to the Cluster manifest file, for managing the queries efficiently.
 
 ### **`query.execution-policy`**
 
