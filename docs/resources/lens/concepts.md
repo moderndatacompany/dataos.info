@@ -146,10 +146,8 @@ The dimension declaration involves the following properties:
 | `primary_key` | The key on which the join relationship will be defined | Column name | Ensure each dimension has a unique primary key to maintain data integrity |  
 | `type` | The data type of the dimension | string, number, time, boolean | Choose the appropriate data type to ensure proper sorting and filtering​ |  
 | `meta` |  | Key-value pairs | Use metadata to provide additional context about the dimension, such as tags, or custom attributes |  
-| `case` | Defines dimension based on SQL conditions <br><br> - `when` parameters declare a series of SQL conditions and `labels` that are returned if the condition is true <br>- `else` parameter declares the default `label` that would be returned | SQL conditions and labels | Use for creating conditional dimensions |  
 | `format` | Specifies the format of the dimension, particularly useful for time |  |   |
 | `sub_query` | Sub-query for the dimension. Set the flag to reference a measure of one table in dimension of another |  | Use to define complex dimensions using sub-queries |  
-| `propagate_filters_to_sub_query` | Determines if filters should propagate to sub-queries | True, False | Use this property to control the behavior of filters in complex queries |  
 
 ## Measures
 
