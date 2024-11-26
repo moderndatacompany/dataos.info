@@ -24,7 +24,7 @@ Segments are pre-defined groups of filters. It provides the ability to define Se
       sql: "{TABLE}.state = 'Illinois'"
   ```
 
-- You can leverage filtering keywords such as **‘LIKE’** to define filtering criteria
+- You can leverage filtering keywords such as `LIKE` to define filtering criteria
   
   Below  example Segment filters for records where the state is Illinois or Ohio.
 
@@ -34,15 +34,22 @@ Segments are pre-defined groups of filters. It provides the ability to define Se
       sql: "{TABLE}.state = 'Illinois' or {TABLE}.state like '%Ohio%'"
   ```
 
-- You can include logical operators like **OR and AND** to create dynamic criteria for segments. This is useful when you need to apply filters to more than one column.
+<!-- - You can include logical operators like OR and AND to create dynamic criteria for segments. This is useful when you need to apply filters to more than one column.
 
-  Below example Segment filters records where the region is "Midwest" or the sales are greater than 1000.
+  Below example Segment filters records where the state is "Illinois" or the sales is equal to 1000.
 
   ```yaml
   segments:
     - name: common_state
       sql: "{TABLE}.state = 'Illinois' or {TABLE}.state = 'Ohio'"
   ```
+
+    ```yaml
+  segments:
+    - name: common_state
+      sql: "{TABLE}.state = 'Illinois' or {TABLE}.sales = '1000'"
+  ``` -->
+
 
 ## Defining row filter policy on Segment
 

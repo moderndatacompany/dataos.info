@@ -28,7 +28,7 @@ You can explore lens using REST APIs using the following methods:
 
 ## Authentication and Authorization
 
-To securely interact with the Lens RESTA API, you must authenticate your requests using a **DataOS API key** and ensure proper user group configurations. This section explains how to generate an API key and configure user groups for accessing the API.
+To securely interact with the Lens REST API, you must authenticate your requests using a **DataOS API key** and ensure proper user group configurations. This section explains how to generate an API key and configure user groups for accessing the API.
 
 ### **Generating a DataOS API Key**
 
