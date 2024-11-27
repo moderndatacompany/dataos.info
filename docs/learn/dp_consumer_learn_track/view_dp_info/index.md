@@ -4,7 +4,7 @@ In this topic, you'll learn to explore the details of a Data Product in the Data
 
 ## Scenario
 
-During your initial exploration, you discovered the **“Product 360”** Data Product. Now, you’ll delve into its detailed information such as data contributors, tier classification, linked GitHub repositories, semantic model, quality, etc. This helps you gauge its reliability and relevance for your analysis, such as product affinity analysis.
+During your initial exploration, you discovered the 'Product 360' Data Product. Now, you’ll delve into its detailed information such as data contributors, tier classification, linked GitHub repositories, semantic model, quality, etc. This helps you gauge its reliability and relevance for your analysis, such as product affinity analysis.
 
 ## Quick concepts
 
