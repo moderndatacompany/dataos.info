@@ -143,7 +143,7 @@ The Quality checks populating in the Quality tab of the Data Product Hub
 ![quality_tab.png](/learn/dp_developer_learn_track/quality_check/quality_tab.png)
 
 <aside class="callout">
-🗣️ In SODA, you can define a title for the check. If none is specified, the system automatically uses the check's name as title."
+🗣️ In SODA, you can define a title for the check. If none is specified, the system automatically uses the check's name as title.
 
 </aside>
 
