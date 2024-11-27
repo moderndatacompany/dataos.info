@@ -556,7 +556,8 @@ nav:
         - Disigning Data Products:
           -  learn/dp_developer_learn_track/design_dp/index.md
         - Building Data Products:
-          - Source data connectivity: learn/dp_developer_learn_track/data_source_connectivity/index.md
+          - Source data connectivity: 
+            - learn/dp_developer_learn_track/data_source_connectivity/index.md
           - Building and maintaining data pipelines: 
             - learn/dp_developer_learn_track/build_pipeline/index.md
             - Creating your first data pipelines:
