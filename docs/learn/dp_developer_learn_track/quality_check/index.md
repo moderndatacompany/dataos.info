@@ -38,7 +38,7 @@ This structure helps you keep your quality checks organized and aligned with the
 
 ### **Define quality checks with SODA**
 
-With your **SLOs** in place, the next step is to define the quality checks to ensure your data meets the established standards. These quality checks are essential to monitor and maintain the quality of your data. Below are the key quality checks available to you:
+With your SLOs in place, the next step is to define the quality checks to ensure your data meets the established standards. These quality checks are essential to monitor and maintain the quality of your data. Below are the key quality checks available to you:
 
 - **Accuracy**: Ensures the data values are correct and fall within expected ranges.
 - **Completeness**: Checks for missing values or incomplete records, ensuring no critical data is omitted.
@@ -132,11 +132,11 @@ For the above quality checks, the SODA workflow yaml manifest file will look lik
     ```
     
 
-The quality checks are displayed in **Metis** as defined in the **SODA** YAML manifest file, including their descriptions, as shown in the image below.
+The quality checks are displayed in Metis as defined in the SODA YAML manifest file, including their descriptions, as shown in the image below.
 
 ![soda_checks_metis.png](/learn/dp_developer_learn_track/quality_check/soda_checks_metis.png)
 
-Similarly, these quality checks are also populated on the **Data Products Hub**, as shown in the example below.
+Similarly, these quality checks are also populated on the Data Products Hub, as shown in the example below.
 
 The Quality checks populating in the Quality tab of the Data Product Hub
 
