@@ -26,7 +26,7 @@ In the subsequent setup window, input the required Tableau Cloud credentials:
 
 In the setup window, fill in the required credentials:
 
-- **Project Name**: Specify the name of the project within Tableau (e.g., "Product 360 Analysis").
+- **Project Name**: Specify the name of the project within Tableau (e.g., 'Product 360 Analysis').
 - **Server Name**: Provide the URL or address of the Tableau Server hosting your cloud instance.
 - **Site ID**: Input the Site ID for your specific Tableau Cloud site.
 - **Username**: Your Tableau account username.

@@ -102,7 +102,11 @@ observability involves analyzing detailed metrics to understand your APIs' inter
 
 ## Data sources supported by Talos
 
-Talos offers extensive compatibility with a range of popular data sources, ensuring flexibility and ease of integration for your data needs such as BigQuery, Snowflake, Postgres, Redshift, and Depot of type BigQuery, Snowflake, Postgres, and Redshift.
+Talos offers extensive compatibility with a range of popular data sources, ensuring flexibility and ease of integration for your data needs such as [Lens](/resources/lens/), [Flash](/resources/stacks/flash/), BigQuery, Snowflake, Postgres, Redshift, and [Depot](/resources/depot/) of type BigQuery, Snowflake, Postgres, and Redshift.
+
+<aside class="callout">
+🗣 Talos does not directly support Icebase Depots. However, you can use Flash as a data source to build APIs for data stored in Icebase.
+</aside>
 
 
 ## **How to build APIs?**
