@@ -3,9 +3,11 @@
 After setting up your Bundle manifest, the next step is to define your Data Product Spec file. This file serves as a blueprint for your data product, specifying all the necessary configurations and metadata to ensure smooth deployment and management within DataOS.
 
 ## Scenario
+
 Imagine you are building a data product called product360 to analyze purchase behavior, revenue trends, and customer insights. To get started, you need a Data Product Spec file that captures all the essential configurations like inputs, outputs, collaborators, and associated resources. This file will help structure your data product and provide a comprehensive guide for its lifecycle management.
 
 ## Step 1: Define general information
+
 This section includes basic details about your data product:
 
 

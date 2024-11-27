@@ -73,7 +73,7 @@ In this case, there are two groups dataconsumer and default group. For users in 
 ![redact_column_info.png](/learn/dp_developer_learn_track/data_policy/user_group.png)
   
 <aside class="callout">
-It’s important to note that even if you don’t explicitly define a masking policy for certain columns in the data model, they may still be masked if the policy is inherited from the source.
+🗣️ It’s important to note that even if you don’t explicitly define a masking policy for certain columns in the data model, they may still be masked if the policy is inherited from the source.
 </aside>
 
 ## Fine-tuning data visibility with row filters

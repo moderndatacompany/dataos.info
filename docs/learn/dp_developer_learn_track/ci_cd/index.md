@@ -23,10 +23,13 @@ The following steps are provided to guide you through the successful setup of a 
 
 To begin building the pipeline, ensure the following prerequisites are met:
 
-- Have a blueprint of the Data Product you plan to build. For example, if creating a Data Product like `sales-360`, identify the necessary resources, such as depot, services, workflows, or lens.
+- Have a blueprint of the Data Product you plan to build. For example, if creating a Data Product like `sales-360`, identify the necessary resources, such as Depot, Services, Workflows, or Lens.
 - Obtain the following DataOS environment variables:
+
     - **License organization ID, license key, Docker username & password, and DataOS prime API key:** These details can be provided by the DataOS operator or admin.
+    
     - **API key**: Generate the DataOS API key in the DataOS profile section.
+
     - **Client secret, access token, and refresh token:** These can be obtained from the `.dataos` folder within your home directory.
         
         ![image.png](/learn/dp_developer_learn_track/ci_cd/image.png)
@@ -44,11 +47,11 @@ Begin by creating a Bitbucket repository. Follow these steps to set up the repos
     
 ![image.png](/learn/dp_developer_learn_track/ci_cd/image1.png)
     
-**b.** Select the “Create” drop-down menu and choose “Repository.”
+**b.** Select the “Create” drop-down menu and choose 'Repository'.
 
 ![image.png](/learn/dp_developer_learn_track/ci_cd/image2.png)
 
-**c.** Enter the project, repository name, and default branch name. If you want the repository to be public, uncheck the private repository option. Then, click on “Create repository.”
+**c.** Enter the project, repository name, and default branch name. If you want the repository to be public, uncheck the private repository option. Then, click on 'Create repository'.
     
 ![image.png](/learn/dp_developer_learn_track/ci_cd/image3.png)
     
@@ -61,7 +64,7 @@ Begin by creating a Bitbucket repository. Follow these steps to set up the repos
 
 Follow these steps to clone the repository:
 
-**a.** Open the repository and click the "Clone" button.
+**a.** Open the repository and click the 'Clone' button.
     
 ![image.png](/learn/dp_developer_learn_track/ci_cd/image5.png)
     
@@ -76,9 +79,10 @@ Follow these steps to clone the repository:
 
 ### **Step 3: Start building the Data Product**
 
-Follow the below steps to start building the Data Product by creating the manifest files of the all the Resources and Data Product. For example, to create a Data Product, an instance secret is first created to store the connection details of the BigQuery data source. A depot for the data connection is then created, followed by the creation of a depot scanner manifest file. For data transformation, a flare job is created, with multiple flare jobs allowed for transforming multiple datasets. A bundle is created to include the paths of the instance secret, depot, depot scanner, and flare jobs, along with their dependencies. Finally, a Data Product manifest file is created to apply the Data Product, and a Data Product scanner is deployed to the Data Product Hub.
+Follow the below steps to start building the Data Product by creating the manifest files of the all the Resources and Data Product. For example, to create a Data Product, an Instance Secret is first created to store the connection details of the BigQuery data source. A Depot for the data connection is then created, followed by the creation of a Depot Scanner manifest file. For data transformation, a Flare job is created, with multiple Flare jobs allowed for transforming multiple datasets. A Bundle is created to include the paths of the Instance Secret, Depot, Depot Scanner, and Flare jobs, along with their dependencies. Finally, a Data Product manifest file is created to apply the Data Product, and a Data Product Scanner is deployed to the Data Product Hub.
 
 **a.** Open the cloned repository using your preferred code editor (e.g., VS Code).
+
 **b.** Inside the repository, create a folder named `data_product` to store all related Resources.
     
 ```sql
@@ -86,7 +90,7 @@ data-product-deployment
 └── data_product
 ```
     
-**c.** Inside the `data_product` folder, create a subfolder called `depot`. Following the depot documentation, create a depot manifest file.
+**c.** Inside the `data_product` folder, create a subfolder called `depot`. Following the [Depot documentation](/resources/depot/), create a Depot manifest file.
     
 ```sql
 data-product-deployment
@@ -105,7 +109,7 @@ data-product-deployment
         └── key.json
 ```
     
-**e.** Inside the `data_product` folder, create a subfolder named `scanner`. Place the scanner manifest file for both the Depot and the Data Product inside this folder.
+**e.** Inside the `data_product` folder, create a subfolder named `scanner`. Place the Scanner manifest file for both the Depot and the Data Product inside this folder.
     
 ```sql
 data-product-deployment
@@ -118,7 +122,7 @@ data-product-deployment
         └── dp_scanner.yaml
 ```
     
-**f.** Create another folder named `transformation` inside the `data_product` folder. Inside this folder, add the flare job manifest files for data transformation.
+**f.** Create another folder named `transformation` inside the `data_product` folder. Inside this folder, add the Flare job manifest files for data transformation.
     
 ```sql
 data-product-deployment
@@ -135,7 +139,7 @@ data-product-deployment
         
 ```
     
-**g.** Create a folder named `bundle` inside the `data_product` folder. Inside the `bundle` folder, create a bundle manifest file that will apply the Depot, Depot Scanner, and Flare jobs at once.
+**g.** Create a folder named `bundle` inside the `data_product` folder. Inside the `bundle` folder, create a Bundle manifest file that will apply the Depot, Depot Scanner, and Flare jobs at once.
     
 ```sql
 data-product-deployment
@@ -174,7 +178,8 @@ data-product-deployment
 ```
     
 **i.** Double-check all files and paths to ensure everything is provided correctly and that the manifest files are properly set up.
-**j.** You can add configuration files of more resources as per your requirements, such as Policy, Talos, Lens, etc.
+
+**j.** You can add configuration files of more Resources as per your requirements, such as Policy, Talos, Lens, etc.
 
 ### **Step 4: Configure the pipeline**
 
@@ -202,41 +207,41 @@ image: atlassian/default-image:2
 pipelines:
     branches:
     main:  # your default branch name
-        - step:
-            name: "Setup DataOS Data Product Self Service CLI Runtime"
+      - step:
+          name: "Setup DataOS Data Product Self Service CLI Runtime"
             script:
             # Login Docker and pull dataos docker image
-            - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin 
-            - docker pull rubiklabs/dataos-ctl:2.26.17-dev
-            - docker run rubiklabs/dataos-ctl:2.26.17-dev
+              - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin 
+              - docker pull rubiklabs/dataos-ctl:2.26.17-dev
+              - docker run rubiklabs/dataos-ctl:2.26.17-dev
 
             services: 
-            - docker 
+              - docker 
             caches:
-            - docker 
+              - docker 
     
         - step:
             name: "Deploy Data Product"
             script:
             # Define common environment variables for Docker run
-            - DOCKER_ENV_VARS="-e DATAOS_CONFIG_DIRECTORY=/dataos -e USER_ID=${{iamgroot}} DATAOS_PRIME_APIKEY=$DATAOS_PRIME_APIKEY -e LICENSE_KEY=$LICENSE_KEY -e LICENSE_ORGANIZATION_ID=$LICENSE_ORGANIZATION_ID -e DATAOS_FQDN=${{splendid-shrew.dataos.app}} -e APIKEY=$API_KEY
+              - DOCKER_ENV_VARS="-e DATAOS_CONFIG_DIRECTORY=/dataos -e USER_ID=${{iamgroot}} DATAOS_PRIME_APIKEY=$DATAOS_PRIME_APIKEY -e LICENSE_KEY=$LICENSE_KEY -e LICENSE_ORGANIZATION_ID=$LICENSE_ORGANIZATION_ID -e DATAOS_FQDN=${{splendid-shrew.dataos.app}} -e APIKEY=$API_KEY
             
             # Apply the Bundle Resource
-            - docker run --rm -i -v $BITBUCKET_CLONE_DIR/.dataos:/dataos -v $BITBUCKET_CLONE_DIR:/jobsfolder $DOCKER_ENV_VARS rubiklabs/dataos-ctl:2.26.17-dev apply -f /jobsfolder/data-product-deployment/ci_cd/slb/bundle/bundle.yaml
+              - docker run --rm -i -v $BITBUCKET_CLONE_DIR/.dataos:/dataos -v $BITBUCKET_CLONE_DIR:/jobsfolder $DOCKER_ENV_VARS rubiklabs/dataos-ctl:2.26.17-dev apply -f /jobsfolder/data-product-deployment/ci_cd/slb/bundle/bundle.yaml
             
             # Apply the Data Product manifest file
-            - docker run --rm -i -v $BITBUCKET_CLONE_DIR/.dataos:/dataos -v $BITBUCKET_CLONE_DIR:/jobsfolder $DOCKER_ENV_VARS rubiklabs/dataos-ctl:2.26.17-dev product apply -f /jobsfolder/data-product-deployment/ci_cd/data_product_spec.yml
+              - docker run --rm -i -v $BITBUCKET_CLONE_DIR/.dataos:/dataos -v $BITBUCKET_CLONE_DIR:/jobsfolder $DOCKER_ENV_VARS rubiklabs/dataos-ctl:2.26.17-dev product apply -f /jobsfolder/data-product-deployment/ci_cd/data_product_spec.yml
             
             # Apply the Data Product Dcanner
-            - docker run --rm -i -v $BITBUCKET_CLONE_DIR/.dataos:/dataos -v $BITBUCKET_CLONE_DIR:/jobsfolder $DOCKER_ENV_VARS rubiklabs/dataos-ctl:2.26.17-dev apply -f /jobsfolder/data-product-deployment/ci_cd/slb/scanner/data-product/scanner.yml
+              - docker run --rm -i -v $BITBUCKET_CLONE_DIR/.dataos:/dataos -v $BITBUCKET_CLONE_DIR:/jobsfolder $DOCKER_ENV_VARS rubiklabs/dataos-ctl:2.26.17-dev apply -f /jobsfolder/data-product-deployment/ci_cd/slb/scanner/data-product/scanner.yml
             
             
             # - sleep 20
 
             services: 
-            - docker 
+              - docker 
             caches:
-            - docker
+              - docker
 ```
     
 Below table describes each attributes of the `bitbucket-pipelines.yaml`in brief.
@@ -268,7 +273,8 @@ Below table describes each attributes of the `bitbucket-pipelines.yaml`in brief.
 
 
 **c.** Update the username and current DataOS context in the placeholders within the script section of the `bitbucket-pipelines.yaml` file.
-d. To apply the bundle manifest file, copy the relative path of your bundle manifest file and paste it into the script, as shown below. The path should be pasted after the `/jobsfolder` in this case.
+
+**d.** To apply the Bundle manifest file, copy the relative path of your Bundle manifest file and paste it into the script, as shown below. The path should be pasted after the `/jobsfolder` in this case.
     
 ```yaml
 # Apply the Bundle Resource
@@ -350,7 +356,7 @@ git push
 
 Fix the possible errors by following the below steps.
 
-**a.** If an error occurs during the push due to a large file size, navigate to your repository settings. Under **Repository details**, open the **Advanced** dropdown, uncheck the “Block pushes with files over 100MB” option, and save the changes. Then push again.
+**a.** If an error occurs during the push due to a large file size, navigate to your repository settings. Under Repository details, open the Advanced dropdown, uncheck the 'Block pushes with files over 100MB' option, and save the changes. Then push again.
     
 ![image.png](/learn/dp_developer_learn_track/ci_cd/image13.png)
     
@@ -361,4 +367,3 @@ Fix the possible errors by following the below steps.
 ![image.png](/learn/dp_developer_learn_track/ci_cd/image15.png)
     
 
-Good to go!
