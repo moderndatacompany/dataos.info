@@ -111,7 +111,7 @@ tables:
 
 Dimensions represent the properties of a single data point in the table. They are descriptive attributes, often text values, that provide context to the data in a fact table. For example, in a sales database, attributes like "Product Name," "Category," and "Region," are called dimensions of that table which help to categorize and provide context for the sales entity. The dimensions serve as the guidelines for data analysts to view the information from different angles and apply different filtering criteria.
 
-For instance, in the following yaml, a entity owner is defined who's unique characterisitcs such as id, email are called dimensions. 
+For instance, in the following yaml, a entity owner is defined who's unique characteristics such as id, email are called dimensions. 
 
 ```yaml title="owner.yaml"
 tables:
@@ -146,16 +146,13 @@ The dimension declaration involves the following properties:
 | `primary_key` | The key on which the join relationship will be defined | Column name | Ensure each dimension has a unique primary key to maintain data integrity |  
 | `type` | The data type of the dimension | string, number, time, boolean | Choose the appropriate data type to ensure proper sorting and filtering​ |  
 | `meta` |  | Key-value pairs | Use metadata to provide additional context about the dimension, such as tags, or custom attributes |  
-| `case` | Defines dimension based on SQL conditions <br><br> - `when` parameters declare a series of SQL conditions and `labels` that are returned if the condition is true <br>- `else` parameter declares the default `label` that would be returned | SQL conditions and labels | Use for creating conditional dimensions |  
-| `format` | Specifies the format of the dimension, particularly useful for time |  |   |
 | `sub_query` | Sub-query for the dimension. Set the flag to reference a measure of one table in dimension of another |  | Use to define complex dimensions using sub-queries |  
-| `propagate_filters_to_sub_query` | Determines if filters should propagate to sub-queries | True, False | Use this property to control the behavior of filters in complex queries |  
 
 ## Measures
 
 Measures are quantifications, representing fields such as order subtotal, quantity of items purchased, or duration spent on a specific page. They encompass any measurable numerical value on which statistical calculations can be applied, including sum, average, and variance. For instance, with a measure like quantity of items purchased, operations can include calculating the average quantity ordered, sorting by descending quantities, summing all quantities, and performing various statistical analyses.
 
-**Measure Additivity:**
+**Measure Additivity**
 
 Additivity is a property of measures that tells us if we can break down or combine measure values across different categories. In simpler terms, it means that if we have a measure for a group of dimensions (like sales for different regions), we can add or combine these values to get a measure for a smaller subset of those dimensions (like sales for a specific region).
 
@@ -173,8 +170,6 @@ The measure declaration involves the following properties:
 | `public` | Controls visibility of the measure | True, False | Set to **`True`** for key measures that should be visible by default |  |
 | `filters` | Filters applied to the measure | SQL conditions | To aggregate a measure for a specific category, apply a filter.<br> For example, apply a filter for product category. | **Syntax:** `{table}.{dimension_name} = 'dimension_value'`<br> **e.g.** `sales.product_category = 'Electronics'` |
 | `rollingWindow` | Defines a rolling window for time-based measures | { trailing: **`time period`** } | Use for calculating measures over a specific time window, such as trailing 7 days or trailing 1 month. | **Example:** <br><br>measures:<br>&nbsp;&nbsp;name: count_month<br>&nbsp;&nbsp;SQL: id<br>&nbsp;&nbsp;type: count<br>&nbsp;&nbsp;rolling_window:<br>&nbsp;&nbsp;&nbsp;&nbsp;trailing: 1 month<br>&nbsp;&nbsp;&nbsp;&nbsp;offset: end<br><br>- **`trailing`** and **`leading`** parameters define window size. <br>- **`offset`** can be `start` or `end` of the date range |
-| `drillMembers` | Define drill-down fields on a measure | Array of dimensions | Define drill members to enable detailed exploration of a measure across dimensions specified on the dashboard |  |
-| `format` | Format the output of measures |  |  |  |
 | `meta` | Custom metadata |  |  |  |
 
 

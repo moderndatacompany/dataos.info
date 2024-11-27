@@ -32,7 +32,7 @@ Your team needs to connect a new data source to DataOS while ensuring robust sec
 
 <div class= "grid cards" markdown>
 
-- [setting up data source connections](/learn/dp_developer_learn_track/data_source_connectivity/)
+- [Setting up data source connections](/learn/dp_developer_learn_track/data_source_connectivity/)
 
 </div>
 
@@ -83,16 +83,14 @@ Your team reports slow query performance during peak hours. You need to analyze 
 </div>
 
 
+
 ## Module 7: Access management
+
 A new team has been onboarded to work on a data project in DataOS. You evaluate their role requirements and grant them access to only the necessary datasets and tools, preventing unauthorized access while allowing the team to perform their tasks efficiently.
 
 <div class= "grid cards" markdown>
 
-- [Access control management](/learn/operator_learn_track/)
-
-- [Adding users to Azure Active directory](/learn/operator_learn_track/)
-
-- [Adding users to Keycloak](/learn/operator_learn_track/key_cloak/)
+- [Access management](/learn/operator_learn_track/access_control/)
 
 </div>
 

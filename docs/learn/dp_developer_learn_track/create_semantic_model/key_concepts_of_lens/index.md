@@ -6,13 +6,9 @@ Before delving into the technicalities of building a Lens semantic model, it’s
 
 Let’s explore each of these elements in detail
 
-### **Tables**
+### **Table**
 
-In Lens, Tables are logical constructs that define an entity in your data model. They contain information about relationships (joins), dimensions, measures, and segments. A table is equivalent to an Entity in traditional data modeling.
-
-### **Table:**
-
-A table represents a core entity, often referring to data like 'Owners', 'Customers', or 'Sales'. It is where you define the structure of your data, such as the dimensions (descriptive attributes) and measures (aggregated values). Additionally, tables specify relationships (joins) with other entities.
+Tables are logical constructs that define core entities in your semantic model, such as 'Customer', 'Product', or 'Sales'. They define the structure of your data, including dimensions (descriptive attributes) and measures (aggregated values), and specify relationships (joins) with other entities.
 
 **Key Table components:**
 
@@ -21,9 +17,9 @@ A table represents a core entity, often referring to data like 'Owners', 'Custom
 - **Measures:** Quantifiable data points such as `count`, `sum`, or `average`, typically used in analytical calculations.
 - **Segments:** Filters that categorize data into groups based on specific criteria (e.g., active vs. inactive users).
 
-### **Table Components**
+Following is the brief description of each component:
 
-### **1. Joins**
+#### **1. Joins**
 
 Joins define the relationships between different tables within the data model. Lens supports left joins by default and allows you to specify the nature of the relationship: one-to-one, one-to-many, or many-to-one. When you define a join in a table, the base table is always positioned on the left-hand side of the join.
 
@@ -33,7 +29,7 @@ Joins define the relationships between different tables within the data model. L
 - **relationship:** The type of relationship, e.g., one-to-many or many-to-one.
 - **sql:** The SQL condition that defines the join (e.g., `table1.id = table2.table1_id`).
 
-### **2. Dimensions**
+#### **2. Dimensions**
 
 Dimensions are descriptive fields that give context to your data. They help organize and filter data, making analyzing different aspects of an entity easier. Examples include `owner_name`, `city`, or `contact_email`. Dimensions are the building blocks for slicing and dicing your data into valuable insights.
 
@@ -45,7 +41,7 @@ Dimensions are descriptive fields that give context to your data. They help orga
 - **primary_key:** The dimension’s primary key, used for establishing relationships.
 - **public:** Controls whether the dimension is visible to all users.
 
-### **3. Measures**
+#### **3. Measures**
 
 Measures are quantifiable metrics that provide valuable business insights, such as the total revenue, number of sales, or customer count. These are typically used for aggregation or statistical operations.
 
@@ -59,7 +55,7 @@ Measures are quantifiable metrics that provide valuable business insights, such 
 - **rollingWindow:** Defines time-based measures like a trailing 7-day sum.
 - **format:** Specifies the format for presenting the measure (e.g., number with two decimal places).
 
-### **4. Segments**
+#### **4. Segments**
 
 Segments allow you to categorize your data based on predefined filters, which are often used to group data into meaningful subsets, such as 'active users' or 'high-value customers'.
 
@@ -76,7 +72,7 @@ Views abstract away the underlying complexity of your data model, providing user
 
 For example, a view might include details from the 'customer' and 'purchase' tables, aggregating relevant data such as `customer_id`, `product_name`, and `contact_email`, making it easier for end-users to understand and interact with the data.
 
-### **When to define Views?**
+#### **When to define Views?**
 You define Views in the following scenarios:
 
 1. **Defining Metrics**:
@@ -84,15 +80,15 @@ Views allow you to combine measures and dimensions from different tables, provid
 2. **Providing a simplified interface**:
 By exposing only the relevant measures and dimensions for a given use case, views help reduce the complexity of the underlying data model, making it easier for business users to access actionable insights without wading through raw data.
 
-### **Types of Views**
+#### **Types of Views**
 
 There are two primary types of Views in Lens: Entity-First Views and Metric-First Views. Each type is designed to meet different business needs.
 
-### **1. Entity-first View**
+##### **1. Entity-first View**
 
 An Entity-First View is structured around a specific entity or object of interest, such as a `customer`, `product`, or `transaction`. It aims to provide users with a comprehensive, detailed view of an entity's attributes and relationships without focusing on aggregated metrics. To define an Entity-First View, you combine measures and dimensions from multiple tables that comprehensively describe an entity. 
 
-### **2. Metric-first View**
+##### **2. Metric-first View**
 
 A Metric-first View is centered around a specific measure and typically includes time dimensions. The primary focus is providing clear, actionable metrics for business decision-making.
 
