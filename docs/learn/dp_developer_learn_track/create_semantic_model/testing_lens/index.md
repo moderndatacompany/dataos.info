@@ -1,4 +1,4 @@
-# Test lens locally in development environment 
+# Test Lens locally in development environment 
 
 This guide walks you through steps to validate your SQL queries and Lens model configuration directly on your local machine to confirm that your tables, joins, and data relationships behave as intended before moving to the production environment on DataOS.
 
@@ -75,7 +75,7 @@ python3 --version
 Python 3.8.14
 ```
 
-The expected output should be **`Python 3.X`** or a version greater than 3.7. If the existing version is below 3.7, update Python by following the [Updating Python](https://ioflood.com/blog/update-python-step-by-step-guide/) guide.
+The expected output should be `Python 3.X` or a version greater than 3.7. If the existing version is below 3.7, update Python by following the [Updating Python](https://ioflood.com/blog/update-python-step-by-step-guide/) guide.
 
 If Python is not installed on the system, follow the steps below to download and install the appropriate version.
 
