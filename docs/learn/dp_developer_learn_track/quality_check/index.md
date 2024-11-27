@@ -1,14 +1,14 @@
 # Implementing quality checks to maintain data integrity
 
-In this section, you’ll learn how to implement quality checks for input data before building a data product. These checks help ensure that the data is accurate, complete, and ready for reliable analysis.
+In this section, you’ll learn how to implement quality checks for input data before building a Data Product. These quality checks help ensure that the data is accurate, complete, and ready for reliable analysis.
 
 ## Scenario
 
-As a data engineer, you’re working with datasets and exploring them on Workbench and Metis. Before using this data to create a data product, you need to validate its quality. Your task is to set up checks that verify the data's accuracy, completeness, and consistency, ensuring it meets the necessary standards for consumer use.
+As a data engineer, you’re working with datasets and exploring them on Workbench and Metis. Before using this data to create a Data Product, you need to validate its quality. Your task is to set up quality checks that verify the data's accuracy, completeness, and consistency, ensuring it meets the necessary standards for consumer use.
 
 ### **Define service level objectives (SLOs)**
 
-In the build stage, you and other stakeholders must have defined SLOs for your data product. These are measurable quality goals for the data that define what "good quality" means for your data product.
+In the build stage, you and other stakeholders must have defined SLOs for your Data Product. These are measurable quality goals for the data that define what 'good quality' means for your Data Product.
 
 Suppose the following are the SLOs you and other stakeholders have decided:
 
@@ -21,7 +21,7 @@ Suppose the following are the SLOs you and other stakeholders have decided:
 
 ### **Create a quality directory structure**
 
-Once your **SLOs** are defined, you can organize your quality check workflows. Create a quality directory to ensure that your data product's input meets the SLOs' requirements. Inside this folder, you'll organize your checks by creating subdirectories named **input**. Each subdirectory will contain the specific **SODA** check workflows for each input dataset (e.g., `customer.yml`, `product.yml`, `purchase.yml`).
+Once your SLOs are defined, you can organize your quality check workflows. Create a quality directory to ensure that your Data Product's input meets the SLOs' requirements. Inside this folder, you'll organize your quality checks by creating subdirectories named 'input'. Each subdirectory will contain the specific **SODA** check workflows for each input dataset (e.g., `customer.yml`, `product.yml`, `purchase.yml`).
 
 Here’s an example of how your folder might look:
 
@@ -38,7 +38,7 @@ This structure helps you keep your quality checks organized and aligned with the
 
 ### **Define quality checks with SODA**
 
-With your **SLOs** in place, the next step is to define the quality checks to ensure your data meets the established standards. These quality checks are essential to monitor and maintain the quality of your data. Below are the key quality checks available to you:
+With your SLOs in place, the next step is to define the quality checks to ensure your data meets the established standards. These quality checks are essential to monitor and maintain the quality of your data. Below are the key quality checks available to you:
 
 - **Accuracy**: Ensures the data values are correct and fall within expected ranges.
 - **Completeness**: Checks for missing values or incomplete records, ensuring no critical data is omitted.
@@ -47,11 +47,11 @@ With your **SLOs** in place, the next step is to define the quality checks to en
 - **Uniqueness**: Checks for duplicate records, ensuring each data point is unique within the dataset.
 - **Validity**: Ensures the data meets business rules or domain-specific constraints, confirming that it aligns with predefined logic.
 
-Each rule will accompany the status of the **last five runs**, allowing you to monitor recent check results and track ongoing compliance with your SLOs.
+Each check will display the status of the last five runs, helping you track the data's ongoing compliance with your SLOs.
 
-These checks will be implemented using the **SODA** framework and defined in YAML files for each dataset. Once these checks are specified, they will be populated on platforms like **Metis** and **Data Product Hub**, where data consumers can view the status of the data quality checks and align them with their analytical needs.
+These quality checks will be implemented using the SODA framework and defined in YAML files for each dataset. After specifying these checks, they will be displayed on platforms like Metis and Data Product Hub, where data consumers can view the status of the quality checks and align them with their analytical needs.
 
-For example, if you’re defining quality checks for a **customer dataset**, your YAML file might include the following checks:
+For example, if you’re defining quality checks for a 'customer' dataset, your YAML file might include the following checks:
 
 - **Schema**: The data type of birth year should be an integer.
 - **Accuracy**: The average length of a country is more than 6.
@@ -59,7 +59,7 @@ For example, if you’re defining quality checks for a **customer dataset**, you
 - **Validity**: Customer ID should not be null.
 - **Uniqueness**: Customer ID should be unique.
 
-For the above checks, the SODA workflow yaml manifest will look like as follows:
+For the above quality checks, the SODA workflow yaml manifest file will look like as follows:
 
 - **customer.yml**
     
@@ -132,26 +132,26 @@ For the above checks, the SODA workflow yaml manifest will look like as follows:
     ```
     
 
-Each quality check is displayed in **Metis** as defined in the **SODA** YAML manifest file. The description of the check, as specified in the YAML file, is shown on the platform, as illustrated in the image below.
+The quality checks are displayed in Metis as defined in the SODA YAML manifest file, including their descriptions, as shown in the image below.
 
 ![soda_checks_metis.png](/learn/dp_developer_learn_track/quality_check/soda_checks_metis.png)
 
-Similarly, these checks are also populated on the **Data Products Hub**, as shown in the example below.
+Similarly, these quality checks are also populated on the Data Products Hub, as shown in the example below.
 
-*The Quality checks populating in the Quality tab of the Data Product Hub*
+The Quality checks populating in the Quality tab of the Data Product Hub
 
-![quality_tab.png](/learn/dp_developer_learn_track/data_api/quality_tab.png)
+![quality_tab.png](/learn/dp_developer_learn_track/quality_check/quality_tab.png)
 
 <aside class="callout">
-🗣️ In SODA, you have an attribute to define the title, but if a title is not explicitly defined in the YAML file, the system will automatically use the check's name as the title. This name will then appear in the **Check** section.
+🗣️ In SODA, you can define a title for the check. If none is specified, the system automatically uses the check's name as title.
 
 </aside>
 
-Similarly, you decide to define the following checks for the Purchase table:
+Similarly, you define the following quality checks for the Purchase table:
 
-- **Freshness**: This check ensures the **purchase_date** is within the last 2 days. If the data is older than 2 days, this check will fail, indicating that the dataset is stale and may need to be refreshed.
-- **Schema**: The schema check verifies that the **recency** column has the correct data type. Specifically, it should be an integer; if the column is mistakenly typed as a string, the check will fail, highlighting the issue.
-- **Validity**: This check ensures that the count of invalid entries in the **mntwines** column is within a specified range (between 0 and 1). The check will flag the dataset as invalid if the count falls outside this range.
+- **Freshness**: This check ensures the 'purchase_date' is within the last 2 days. If the data is older than 2 days, this check will fail, indicating that the dataset is stale and may need to be refreshed.
+- **Schema**: The schema check ensures that the 'recency' column has the correct data type (integer). If it's mistakenly typed as a string, the check will fail.
+- **Validity**: This check ensures that the count of invalid entries in the 'mntwines' column is within a specified range (between 0 and 1). The check will flag the dataset as invalid if the count falls outside this range.
 - **Purchase.yml**
     
     ```yaml
