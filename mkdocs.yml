@@ -530,30 +530,124 @@ nav:
   - Glossary: glossary/index.md
   - Learn:
     - learn/index.md
+    - Learning tracks:
+      - Data Product Consumer:
+        - learn/dp_consumer_learn_track/index.md
+        - Discovering Data Products:
+          - Introduction to Data Product Hub:
+            - learn/dp_consumer_learn_track/intro_dph/index.md
+          - Discovering Data Products:
+            - learn/dp_consumer_learn_track/discover_dp/index.md
+        - Viewing Data Product info:
+          - learn/dp_consumer_learn_track/view_dp_info/index.md
+        - Exploring Input and Output DataOS:
+          - learn/dp_consumer_learn_track/eval_io_datasets/index.md
+        - Navigating semantic models:
+          - learn/dp_consumer_learn_track/explore_sm/index.md
+        - Checking data quality:
+          - learn/dp_consumer_learn_track/dp_quality/index.md
+        - Integrating Data Products with BI tools and Applications:
+          - Integration with BI tools:
+            - learn/dp_consumer_learn_track/integrate_bi_tools/index.md
+          - Integration with AI/ML:
+            - learn/dp_consumer_learn_track/integrate_aiml/index.md
+          - Integration with Postgres:
+            - learn/dp_consumer_learn_track/integrate_postgres/index.md
+          - Integration with GraphQL:
+            - learn/dp_consumer_learn_track/integrate_graphql/index.md
+          - Integration with data APIs:
+            - learn/dp_consumer_learn_track/integrate_api/index.md
+      - Data Product Developer:
+        - learn/dp_developer_learn_track/index.md
+        - Disigning Data Products:
+          -  learn/dp_developer_learn_track/design_dp/index.md
+        - Building Data Products:
+          - Source data connectivity: learn/dp_developer_learn_track/data_source_connectivity/index.md
+          - Building and maintaining data pipelines: 
+            - learn/dp_developer_learn_track/build_pipeline/index.md
+            - Creating your first data pipelines:
+              - learn/dp_developer_learn_track/build_pipeline/first_pipeline/index.md
+            - Sheduling Workflows:
+              - learn/dp_developer_learn_track/build_pipeline/scheduling_workflows/index.md
+            - Data quality Checks:
+              - learn/dp_developer_learn_track/build_pipeline/dq_check/index.md
+            - Pipeline observability:
+              - learn/dp_developer_learn_track/build_pipeline/pipeline_observability/
+          - Build a semantic model:
+            - learn/dp_developer_learn_track/create_semantic_model/index.md
+            - Defining business objectives and KPIs:
+              - learn/dp_developer_learn_track/create_semantic_model/define_business_objective/index.md
+            - Designing the conceptual Model:
+              - learn/dp_developer_learn_track/create_semantic_model/design_conceptual_model/index.md
+            - Key concepts of Lens:
+              - learn/dp_developer_learn_track/create_semantic_model/key_concepts_of_lens/index.md
+            - Creating semantic model:
+              - learn/dp_developer_learn_track/create_semantic_model/create_lens_folder/
+            - Test Lens Locally:
+              - /learn/dp_developer_learn_track/create_semantic_model/testing_lens/index.md
+            - Deploy Lens in DataOS:
+              - learn/dp_developer_learn_track/create_semantic_model/deploy_lens_on_dataos/index.md
+          - Implementing quality Checks:
+            - learn/dp_developer_learn_track/quality_check/index.md
+          - Creating data APIs:
+            - learn/dp_developer_learn_track/data_api/index.md
+          - Defining data policies for Lens:
+            - learn/dp_developer_learn_track/data_policy/index.md
+        - Deploying Data Products:
+          - Creating a deployable Bundles:
+            - learn/dp_developer_learn_track/create_bundle/index.md
+          - Creating a Data Product Spec Fields:
+            - learn/dp_developer_learn_track/create_dp_spec/index.md
+          - Deploying Data Products:
+            - learn/dp_developer_learn_track/deploy_dp_cli/index.md
+          - Data Product CI/CD pipeline:
+            - learn/dp_developer_learn_track/ci_cd/index.md
+      - DataOS Operator:
+        - learn/operator_learn_track/index.md
+        - Credential security:
+          - learn/operator_learn_track/cred_security/index.md
+        - Data source connectivity:
+          - learn/dp_developer_learn_track/data_source_connectivity/index.md
+        - Routine Checks:
+          - learn/operator_learn_track/routine_check/index.md
+        - DataOS upgrade and rollback strategies:
+          - learn/operator_learn_track/upgrade_rollback/index.md
+        - System monitoring:
+          - Configuring alerts and dashboards using Grafana:
+            - learn/operator_learn_track/alerts_grafana/index.md
+          - Optimizing system level events:
+            - learn/operator_learn_track/lakehouse_insights/index.md
+        - Query Cluster management:
+          - Cluster management:
+            - learn/operator_learn_track/cluster_management/index.md
+          - Cluster tuning:
+            - learn/operator_learn_track/cluster_tuning/index.md
+
+        
     - Quick Start Guides: 
       - quick_guides/index.md
-      - Connecting with Data Sources:
+      - Connecting with data sources:
         - Using GUI: 
           - quick_guides/depot_creation_gui/index.md
         - Using CLI: 
           - quick_guides/depot_creation_cli/index.md
-      - Performing Exloratory Data Analysis:
-        - Running your first data Query: 
+      - Performing exloratory data analysis:
+        - Running your first data query: 
           - quick_guides/first_query/index.md
-        - Arranging and Transforming data with Pivot: 
+        - Arranging and transforming data with Pivot: 
           - quick_guides/eda_pivot/index.md
-        - Writing Complex Queries: 
+        - Writing complex queries: 
           - quick_guides/sql_query_studio/index.md
-        - Querying Diverse Data sources: 
+        - Querying diverse data sources: 
           - quick_guides/query_diverse_data_source/index.md
-      - Using Data Modeling Layer:
+      - Using data modeling layer:
         - Defining a Data Model:
           - quick_guides/define_data_model/index.md
-        - Creating a Data Model:
+        - Creating a data model:
           - quick_guides/create_data_model/index.md
-        - Testing a Data Model:
+        - Testing a data model:
           - quick_guides/test_data_model/index.md
-        - Deploying a Data Model:
+        - Deploying a data model:
           - quick_guides/deploy_data_model/index.md
         - Exploring Lens on Catalog:
           - quick_guides/exploring_lens_on_metis/index.md
@@ -561,8 +655,8 @@ nav:
           - quick_guides/working_on_lens_studio/index.md
         - Working with Payloads:
           - quick_guides/working_with_payload/index.md
-          - Example Scenarios: quick_guides/working_with_payload/filter_operator_example_scenarios/index.md
-        - Pre-defined Filtering using Segemnts:
+          - Example scenarios: quick_guides/working_with_payload/filter_operator_example_scenarios/index.md
+        - Pre-defined filtering using Segemnts:
           - quick_guides/working_with_segments/index.md
         - Defining Data Policies:
           - quick_guides/apply_data_policy_lens/index.md 
@@ -573,15 +667,15 @@ nav:
         # - Creating Dashboard with LQL: 
         #   - quick_guides/create_dashboard_lql/index.md
       - Building Data Products: quick_guides/building_data_product/index.md
-      - Scanning Metadata: quick_guides/scan_metadata/index.md
-      - Creating ETL Pipelines:
-        - Batch Data Processing using Flare:
+      - Scanning metadata: quick_guides/scan_metadata/index.md
+      - Creating ETL pipelines:
+        - Batch data processing using Flare:
           - quick_guides/creating_etl_pipelines/flare_job/index.md
-        - Storing Query Results as Dataset with Flare:
+        - Storing query results as dataset with Flare:
           - quick_guides/creating_etl_pipelines/query_as_input_flare/index.md
-      - Deploying and Securing Data Applications:
-        - Deploying Data Application Using Container Stack: 
+      - Deploying and securing data applications:
+        - Deploying data application using Container Stack: 
           - quick_guides/deploy_data_app_using_container_stack/index.md
-        - Securing Deployed Data Applications: 
+        - Securing deployed data applications: 
           - quick_guides/secure_deployed_app/index.md
     - Videos: videos/index.md
