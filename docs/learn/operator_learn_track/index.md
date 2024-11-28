@@ -16,7 +16,7 @@ By the end of this course, you'll be able to:
 
 - **Enforce precise access control**: Manage user roles and permissions to ensure data security while enabling efficient collaboration within the DataOS platform.
 
-## Module 1: Credential Security
+## Module 1: Credential security
 
 As a DataOS Operator, you are responsible for safeguarding sensitive information by managing credentials securely within the DataOS platform. Learn to implement best practices, ensuring the system remains secure.
 
@@ -27,7 +27,7 @@ As a DataOS Operator, you are responsible for safeguarding sensitive information
 </div>
 
 
-## Module 2: Data Source Connectivity
+## Module 2: Data source connectivity
 Your team needs to connect a new data source to DataOS while ensuring robust security. You need to configure a stable connection using encrypted credentials ensuring reliable access to the data source.
 
 <div class= "grid cards" markdown>
@@ -37,7 +37,7 @@ Your team needs to connect a new data source to DataOS while ensuring robust sec
 </div>
 
 
-## Module 3: Routine Checks
+## Module 3: Routine checks
 As part of your daily tasks, you perform a routine system health check as you might often encounters challenges in managing DataOS’ Kubernetes infrastucture and managing Pulsar configurations to ensure DataOS operates smoothly. In this module, navigate through essential commands, dashboards, and administrative adjustments to keep the platform robust and efficient.
 
 <div class= "grid cards" markdown>
@@ -47,7 +47,7 @@ As part of your daily tasks, you perform a routine system health check as you mi
 </div>
 
 
-## Module 4: DataOS Upgrade and Rollback Strategies
+## Module 4: DataOS upgrade and rollback strategies
 
 Your team is planning to upgrade the DataOS platform to a new version. You need to create a detailed upgrade plan, including downtime schedules and a rollback strategy in case of failures. Learn about essential  measures to complete the upgrade successfully, ensuring minimal disruption to operations.
 
@@ -57,7 +57,7 @@ Your team is planning to upgrade the DataOS platform to a new version. You need 
 
 </div>
 
-## Module 5: System Monitoring
+## Module 5: System monitoring
 
 Using Prometheus and Grafana, you can set up dashboards to monitor key system metrics like CPU usage, memory consumption, and query performance. By Configuring alerts for key performance indicators and troubleshooting performance issues, you can prevent system slowdown and maintain performance stability.
 
@@ -70,7 +70,7 @@ Using Prometheus and Grafana, you can set up dashboards to monitor key system me
 </div>
 
 
-## Module 6: Query Cluster Management
+## Module 6: Query Cluster management
 
 Your team reports slow query performance during peak hours. You need to analyze the query cluster logs and identify an underperforming cluster. In this module, learn to schedule cluster scaling during peak hours using cron jobs, ensuring seamless data access and optimal performance.
 
@@ -83,7 +83,8 @@ Your team reports slow query performance during peak hours. You need to analyze 
 </div>
 
 
-## Module 7: Access Management
+
+## Module 7: Access management
 
 A new team has been onboarded to work on a data project in DataOS. You evaluate their role requirements and grant them access to only the necessary datasets and tools, preventing unauthorized access while allowing the team to perform their tasks efficiently.
 
