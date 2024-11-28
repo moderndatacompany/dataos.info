@@ -157,46 +157,45 @@ Lens exposes a PostgreSQL-compatible interface, enabling to query Lens tables an
 
 To interact with Lens through PostgreSQL, the following options are available:
 
-- **PostgreSQL Client (psql):** This command-line tool allows direct interaction with PostgreSQL database. Use psql to run queries, manage database, and perform various administrative tasks.
+- **PostgreSQL Client (psql):** This command-line tool allows direct interaction with PostgreSQL database. Use psql to run queries, manage database, and perform various administrative tasks. Ensure postgres-client-16 is installed.
 
 - **VS Code Extension:** Use the PostgreSQL Client extension for Visual Studio Code. This extension enables SQL query execution and database management within VS Code.
 
-**PostgreSQL Client(psql)**
+**Using PostgreSQL Client (psql)**
 
-Enter the host name as `localhost` port as given in the service of the `dockr-compose.yml` and name of the Lens and it's workspace in `lens:${workspace_name}:${lens_name}` format.
+Enter the host name as `localhost`, port as given in the service of the `dockr-compose.yml` and name of the Lens and it's workspace in `lens:${workspace_name}:${lens_name}` format.
 
 > Always refer to 'ports' within the services section in `docker-compose.yml` for the exposed port.
 
 === "Syntax"
 
     ```bash
-    psql -h ${host_name} -p ${port_name} -d ${database_name}
+    psql -h ${host_name} -p ${port_name} -U${user_name} -d ${lens:<workspace-name>:<lens-name>} 
     ```
 
 === "Example"
 
     ```bash
-    psql -h localhost -p 25432 -d lens:public:sales_analysis
+    psql -h localhost -p 25432 -U iamgroot -d lens:public:sales_analysis 
     ```
-
-**Connection Details:**
-
-Use the following details to connect to the Postgresql interface:
+For more details click [here](/resources/lens/exploration_of_deployed_lens_using_sql_apis/)
 
 **Using VS Code Extension:**
 
+Use the following details to connect to the Postgresql interface:
+
 - Install the PostgreSQL Client extension.
 
-- Click the **Create Connection** button on the left side panel.
+- Click the 'Create Connection' button on the left side panel.
 
-- Configure the connection with the following details and click **+connect**:
+- Configure the connection with the following details and click '+connect':
 
 | **POSTGRES PROPERTY** | **DESCRIPTION** | **EXAMPLE** |
 | --- | --- | --- |
 | Host  | host name | `localhost` |
 | Port | port name | `25432` |
 | Database | database name | `postgres` |
-| Username | dataos-username | `postgres` |
+| Username | dataos-username | `postgres` or `iamgroot` |
 | Password | dataos-user-apikey | `dskhcknskhknsmdnalklquajzZr=` |
 
 - Once connected, hover over the postgres folder and click the terminal icon to open the terminal for querying.
