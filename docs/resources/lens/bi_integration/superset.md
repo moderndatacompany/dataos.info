@@ -1,5 +1,14 @@
 # Superset
 
+<aside class="callout">
+💡 For a streamlined and user-friendly integration with Superset, use the Data Product Hub interface. This approach allows you to easily integrate your Lens model's semantic model with Superset, eliminating the need to manually work with `curl` commands.
+
+To get started with Superset integration through the Data Product Hub, refer to the link below:
+
+<a href="/interfaces/data_product_hub/activation/bi_sync/superset/">Access the Superset integration guide</a>.
+</aside>
+
+
 ## Prerequisites
 
 - **Curl**: Ensure `curl` is installed on the system. For Windows users, `curl.exe` may be required.
@@ -12,9 +21,11 @@ Superset requires the login credentials (username and password) and the host add
 
 ## Steps
 
+To sync the Lens model with Superset, follow these steps:
+
 **Step 1: Run the curl command**
 
-To sync the Lens model with Superset, follow these steps:
+Copy the following syntax of the curl command and replace the placeholders with the actual values.
 
 === "Syntax"
 

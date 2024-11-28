@@ -1,5 +1,14 @@
 # Tableau
 
+<aside class="callout">
+💡 For a streamlined and user-friendly integration with Tableau, use the Data Product Hub interface. This approach eliminates the need for manually working with `curl` commands, providing an easy way to connect to your Lens semantic model.
+
+To get started with Tableau integration through Data Product Hub, refer to the link below:
+
+<a href="/interfaces/data_product_hub/activation/bi_sync/tableau_cloud/">Access the Tableau integration guide</a>.
+</aside>
+
+
 ## Prerequisites
 
 - **Curl**: Ensure that `curl` is installed on the system. For Windows systems, `curl.exe` may be necessary.
@@ -64,7 +73,7 @@ curl --location --request POST 'http://<DATAOS_FQDN>/lens2/sync/api/v1/tableau/<
 
         > https://prod-apnortheast-a.online.tableau.com/#/site/iamgroot1086a891fef336/home
 
-         here: **iamgroot1086a891fef336**  is the **site_id.**
+         here: **iamgroot1086a891fef336**  is the **site_id**.
 
 **Step 2 Go to Tableau:** Access the Explore tab on the left side. The required tables and views will be visible in the project. In the screenshot below, there are three sources: one for tables and two for views.
 
@@ -119,12 +128,12 @@ Upon clicking 'Connect', a prompt will request the username and password. Enter 
 
     To avoid synchronization issues:
 
-    - Use time or date fields in Tableau only for **dimension-based** filtering or grouping.
-    - For time-based calculations, limit aggregations to **MIN()** or **MAX()** functions.
+    - Use time or date fields in Tableau only for dimension-based filtering or grouping.
+    - For time-based calculations, limit aggregations to MIN() or MAX() functions.
 
 2. **String data type to geographical**
 
-    When connecting a dataset to Tableau, it automatically detects fields such as **City** and **Country** and converts them from string data types to **Geography** types. This enables Tableau to treat these fields as geographical locations, allowing features like map visualizations and geospatial analysis without the need for manual adjustments.
+    When connecting a dataset to Tableau, it automatically detects fields such as City and Country and converts them from string data types to Geography types. This enables Tableau to treat these fields as geographical locations, allowing features like map visualizations and geospatial analysis without the need for manual adjustments.
 
 <aside class="callout">
 📌 All limitations are specific to Tableau's handling of time data types as measures and does not affect other aspects of the Lens semantic layer's functionality.

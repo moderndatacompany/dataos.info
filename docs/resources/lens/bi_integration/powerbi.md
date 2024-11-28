@@ -1,5 +1,16 @@
 # Power BI
 
+<aside class="callout">
+💡 For a streamlined and user-friendly integration with Power BI, use the Data Product Hub interface. This approach eliminates the need for manually working with `curl` commands, providing an easy way to connect to your Lens semantic model.
+
+To get started with Power BI integration through Data Product Hub, refer the below link:
+
+<a href="/interfaces/data_product_hub/activation/bi_sync/powerbi/">Access the Power BI integration guide</a>.
+
+</aside>
+
+
+
 ## Prerequisites
 
 - **Curl**: Ensure you have `curl` installed on your system. Windows users may need to use `curl.exe`.
@@ -20,9 +31,9 @@
 curl --location --request POST '${URL}' --header 'apikey: ${APIKEY}' --output ${FILE_NAME}.zip
 ```
 
-**Paramters:**
+**Parameters:**
 
-1. **URL:**  This is the api endpoint for syncing lens with PowerBI. It contains dataos_fqdn, name and workspace of lens. 
+1. **URL:**  This is the API endpoint for syncing lens with PowerBI. It contains DATAOS_FQDN, name and workspace of lens. 
 
     ```bash
     https://<DATAOS_FQDN>/lens2/sync/api/v1/power-bi/<lens_name> 
@@ -97,7 +108,7 @@ curl --location --request POST 'https://liberal-monkey.dataos.app/lens2/sync/api
     <img src="/resources/lens/bi_integration/powerbi5.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-**Step 6 Connect to DataOS:** Click on the connect button. A popup will appear. Click OK.
+**Step 6 Connect to DataOS:** Click on the connect button. A popup will appear. Click Ok.
 
 
 <div style="text-align: center;">
@@ -113,7 +124,7 @@ curl --location --request POST 'https://liberal-monkey.dataos.app/lens2/sync/api
 
 ## Important considerations
 
-- Measures in Power BI are typically named as **`m_total_revenue`**.
+- Measures in Power BI are typically named as `m_total_revenue`.
 - The connection is live, meaning any changes to the underlying data or measure logic will be reflected in Power BI.
 - If schema changes occur, such as the addition of new dimensions and measures, the steps outlined above will need to be repeated.
 
@@ -132,7 +143,7 @@ Adhering to best practices ensures that you effectively utilize the Data Product
 Ensure that `.pbip` folders are fully extracted before opening them. Failure to do so may result in missing file errors, as shown below:
 
 <div style="text-align: center;">
-    <img src="/resources/lens/bi_integration/image.png" alt="Superset Configuration" style="max-width: 60%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/bi_integration/image.png" alt="Superset Configuration" style="max-width: 25%; height: auto; border: 1px solid #000;">
 </div>
 
 ### **Data retrieval and field selection considerations**
