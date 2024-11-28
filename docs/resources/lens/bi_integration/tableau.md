@@ -14,7 +14,7 @@ To get started with Tableau integration through Data Product Hub, refer to the l
 - **Curl**: Ensure that `curl` is installed on the system. For Windows systems, `curl.exe` may be necessary.
 - **Lens API endpoint**: The API endpoint provided by Lens for syncing data with meta endpoint access.
 - **Access credentials**: Access credentials such as username, password, project name, etc., are required for Tableau.
-- **DATA_OS API key**: Ensure the DATAOS API key is available. Get it by using the following command:
+- **DataOS API key**: Ensure the DataOS API key is available. Get it by using the following command:
 
 ```bash
 dataos-ctl user apikey get
@@ -41,20 +41,21 @@ curl --location --request POST 'http://<DATAOS_FQDN>/lens2/sync/api/v1/tableau/<
 
 1. **URL:**
 
-   - This endpoint is used to sync a specific Lens model to Tableau for public access.
-   - Replace <DATAOS_FQDN> with the Fully Qualified Domain Name (FQDN) where Lens instance is hosted. Example: - liberal-monkey.dataos.app.
-   - Replace <WORKSPACE_NAME> with the name of the workspace where Lens model is deployed in. E.g. `public`, `curriculum`.
-   - Replace <LENS_NAME> with the name of the Lens model to sync. Example: `sales360`.
+    - This endpoint is used to sync a specific Lens model to Tableau for public access.
+    - Replace <DATAOS_FQDN> with the Fully Qualified Domain Name (FQDN) where Lens instance is hosted. Example: - liberal-monkey.dataos.app.
+    - Replace <WORKSPACE_NAME> with the name of the workspace where the Lens model is deployed. e.g., `public`, `curriculum`.
+    - Replace <LENS_NAME> with the name of the Lens model to sync. e.g.,: `sales360`.
 
 2. **Headers:**
 
     - **apikey:** User's API key for the current context in Lens.
 
-        The DataOS API key for the user can be obtained by executing the command below.
+            The DataOS API key for the user can be obtained by executing the below command.
 
-        ```bash
-        dataos-ctl user apikey get
-        ```
+            ```bash
+            dataos-ctl user apikey get
+            ```
+
     - **`Content-Type application/json`:** Specifies that the data being sent is in JSON format.
  
 3. **Raw data payload:**
@@ -75,19 +76,19 @@ curl --location --request POST 'http://<DATAOS_FQDN>/lens2/sync/api/v1/tableau/<
 
          here: **iamgroot1086a891fef336**  is the **site_id**.
 
-**Step 2 Go to Tableau:** Access the Explore tab on the left side. The required tables and views will be visible in the project. In the screenshot below, there are three sources: one for tables and two for views.
+**Step 2: Go to Tableau:** Access the Explore tab on the left side. The required tables and views will be visible in the project. In the screenshot below, there are three sources: one for tables and two for views.
 
 <div style="text-align: center;">
     <img src="/resources/lens/bi_integration/tableau1.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-**Step 3 Explore and create visualizations:** Navigate to the Home tab on the left side and click on 'New'. Under this option, select 'Workbook'.
+**Step 3: Explore and create visualizations** Navigate to the Home tab on the left side and click on 'New'. Under this option, select 'Workbook'.
 
 <div style="text-align: center;">
     <img src="/resources/lens/bi_integration/tableau2.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-**Step 4 Connect to data:** After clicking on 'Workbook', the 'Connect to Data' page will be displayed. Select either views or tables and click on 'Connect'.
+**Step 4: Connect to data** After clicking on 'Workbook', the 'Connect to Data' page will be displayed. Select either views or tables and click on 'Connect'.
 
 <div style="text-align: center;">
     <img src="/resources/lens/bi_integration/tableau3.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
@@ -100,7 +101,7 @@ Upon clicking 'Connect', a prompt will request the username and password. Enter 
     <img src="/resources/lens/bi_integration/tableau4.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-**Step 5 Start using the model:** After entering the credentials and clicking on 'Sign In', the model will be ready for visualization purposes.
+**Step 5: Start using the model** After entering the credentials and clicking on 'Sign In', the model will be ready for visualization purposes.
 
 <div style="text-align: center;">
     <img src="/resources/lens/bi_integration/tableau5.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
@@ -148,7 +149,7 @@ Any data masking, restrictions, or permissions defined by the publisher will aut
 
 **Scenario 1: Handling syntactical errors in measures or dimensions** 
 
-If a measure or dimension contains a syntactical error (and is also not functioning in Lens Studio), the following error will appear when attempting to select such a measure or dimension:
+If a measure or dimension contains a syntactical error (and is also not functioning in Lens Studio), the following error will appear when attempting to select it:
 
 <div style="text-align: center;">
     <img src="/resources/lens/bi_integration/image02.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
@@ -179,12 +180,12 @@ Before the change, the sum calculation may appear as shown below:
 
 **Scenario 3: Handling inactive Lens in the environment** 
 
-If the Lens is not active in the environment while working on an existing workbook in Tableau or when attempting to establish a new connection, an error will be encountered. This may prevent access to or querying data from the Lens. Verification that the Lens exists and is active is required before syncing
+If the Lens is not active in the environment while working on an existing workbook in Tableau or when attempting to establish a new connection, an error will be encountered. This may prevent access to or querying data from the Lens. Verify that the Lens exists and is active before syncing.
 
 
 **Scenario 4: Handling data source errors due to access restrictions**
 
-If the Account table is set to public = false, a data source error will occur in Tableau. The error message will indicate that the "Account table not found," which will prevent querying or using data from that table.
+If the Account table is set to `public = false`, a data source error will occur in Tableau. The error message will indicate that the "Account table not found," which will prevent querying or using data from that table.
 
 <div style="text-align: center;">
     <img src="/resources/lens/bi_integration/image06.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">

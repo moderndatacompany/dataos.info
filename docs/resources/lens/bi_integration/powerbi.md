@@ -36,7 +36,7 @@ curl --location --request POST '${URL}' --header 'apikey: ${APIKEY}' --output ${
 1. **URL:**  This is the API endpoint for syncing lens with PowerBI. It contains DATAOS_FQDN, name and workspace of lens. 
 
     ```bash
-    https://<DATAOS_FQDN>/lens2/sync/api/v1/power-bi/<lens_name> 
+    https://<DATAOS_FQDN>/lens2/sync/api/v1/power-bi/<workspace_name>:<lens_name> 
     ```
 
     - **DATAOS_FQDN:** Replace <DATAOS_FQDN> with the current Fully Qualified Domain Name (FQDN) where the Lens is deployed. For example, liberal-monkey.dataos.app,. is the FQDN and `liberal monkey` is the context name.
@@ -124,7 +124,7 @@ curl --location --request POST 'https://liberal-monkey.dataos.app/lens2/sync/api
 
 ## Important considerations
 
-- Measures in Power BI are typically named as `m_total_revenue`.
+- In Power BI, measures typically have an 'm_' prefix to indicate they represent a measure. For example, a measure calculating total revenue might be named `m_total_revenue`.
 - The connection is live, meaning any changes to the underlying data or measure logic will be reflected in Power BI.
 - If schema changes occur, such as the addition of new dimensions and measures, the steps outlined above will need to be repeated.
 

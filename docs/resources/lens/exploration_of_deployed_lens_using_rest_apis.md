@@ -1,11 +1,10 @@
 # Exploration of Lens using REST APIs
 
-REST API enables Lens to deliver data over the HTTP protocol. It is is enabled by default and secured using [API scopes](/resources/lens/api_endpoints_and_scopes/). It consists of a base path and API scopes:
+REST API enables Lens to deliver data over the HTTP protocol. It is enabled by default and secured using [API scopes](/resources/lens/api_endpoints_and_scopes/). It consists of a base path and API scopes:
 
-- **Base Path:** All REST API endpoints are prefixed with `/lens2/api`. For example, `/v2/meta` is available at `/lens2/api/<lens_name>/v2/meta`
-.
+- **Base Path:** All REST API endpoints are prefixed with `/lens2/api`. For example, `/v2/meta` is accessed at `/lens2/api/<lens_name>/v2/meta`.
 
-- **API Scopes:** Endpoints are secured by API scopes, restricting access based on user permissions. Follows the principle of least privilege to grant only necessary access.
+- **API Scopes:** Endpoints are secured by API scopes, restricting access based on user permissions. It follows the principle of least privilege, granting only the necessary access.
 
 **API Endpoint Request Methods and Body Types**
 
@@ -17,13 +16,6 @@ When accessing different API endpoints, the request method and the format of the
 | `graphql`    | POST       | GraphQL query                 | **graphql format** <br><br>query LensQuery {<br> table(limit: 10, offset: 0) {<br> products {<br> productcategory<br> average_price<br> average_margin<br> }}<br>}                                                                              |
 | `load`       | POST       | Raw or JSON                   | **json format** <br><br>{<br> "query": {<br> "dimensions": ["products.productcategory"],<br> "measures": ["products.average_price", "products.average_margin"]}<br> }                                                                          |
 | `sql`        | POST       | Raw or JSON                   | **json format**<br><br>{<br> "query": {<br> "dimensions": ["products.productcategory"],<br> "measures": ["products.average_price", "products.average_margin"] } <br> }                                                                   |
-
-
-You can explore lens using REST APIs using the following methods:
-
-1. [**Postman**](#using-postman): A API Testing tool for data application developers
-2. [**Curl**](#using-curl): A command-line tool for transferring data with URLs, useful for automated scripts.
-3. [**Python**](#using-python): Use Python's `requests` library for more complex interactions with the API.
 
 
 ## Authentication and Authorization
@@ -55,7 +47,7 @@ To access and query data via the RESTAPI endpoint, users must be part of a user 
 
 **Example User Group Configuration**
 
-The following YAML configuration demonstrates how to set up user groups with different levels of access:
+The following YAML configuration demonstrates how to set up Lens user groups with different access levels:
 
 ```yaml
 user_groups:
@@ -89,20 +81,25 @@ user_groups:
 
 **Explanation of the Configuration:**
 
-- **`engineer` Group:** This group can access the RESTAPI API and query data because it includes both the `graphql` and `data` `api_scopes`. 
-- **`analyst` Group:** This group can access the RESTAPI API but cannot query the data because the `data` scope is missing. 
-- **`testuser` Group:** This group cannot access the RESTAPI API or query data because both the `graphql` and `data` scopes are missing. 
+- **`engineer` Group:** This group can access the REST API and query data because it includes both the `graphql` and `data` `api_scopes`. 
+- **`analyst` Group:** This group can access the REST API but cannot query the data because the `data` scope is missing. 
+- **`testuser` Group:** This group cannot access the REST API or query data because both the `graphql` and `data` scopes are missing. 
 
 !!!note
-    The user groups configured above only manage access permissions at the consumption level within DataOS. However, source-level permissions defined by the source administrator (e.g., in Snowflake or BigQuery) remain applicable. For sources accessible through the DataOS Query Engine (Minerva/Themis), you can define source-level permissions using the [Bifrost](/interfaces/bifrost/) application in the DataOS GUI or using the [Policy](/resources/policy/) and [Grant](/resources/grant/) Resource using DataOS CLI.
+    The user groups configured above only manage access permissions at the consumption level within DataOS. However, source-level permissions set by the source administrator (e.g., in Snowflake or BigQuery) still apply. For sources accessible through the DataOS Query Engine (Minerva/Themis), you can define source-level permissions using the [Bifrost](/interfaces/bifrost/) application in the DataOS GUI or using the [Policy](/resources/policy/) and [Grant](/resources/grant/) Resource using DataOS CLI.
 
 
 ## How to access the RESTAPIs?
 
+Explore lens using REST APIs using the following methods:
+
+1. [**Postman**](#using-postman): A API Testing tool for data application developers
+2. [**Curl**](#using-curl): A command-line tool for transferring data with URLs, useful for automated scripts.
+3. [**Python**](#using-python): Use Python's `requests` library for more complex interactions with the API.
 
 ### **Using Postman**
 
-You can use [Postman](https://www.postman.com/) to interact with Lens via REST APIs. Start by importing the following Postman collection.
+Use [Postman](https://www.postman.com/) to interact with Lens via REST APIs. Start by importing the following Postman collection.
 
 [Lens-API Postman Collection](/resources/lens/lens_model_folder_setup/Lens2-APIs.postman_collection.json) 
 
@@ -182,13 +179,13 @@ When working with a Postman collection to test APIs, you typically need to confi
             <TABLENAME> {
               <DIMENSION>
               <MEASURE_1>
-              <MEAUSRE_2>
+              <MEASURE_2>
             }
           }
         }
         ```
 
-        - Replace table name and choose requried dimensions and measures. 
+        - Replace table name and choose required dimensions and measures. 
 
         - **For Example:** If you want to  compare the average price and average margin of two major categories: Apparel and Footwear. The  request body will be:
 
@@ -259,7 +256,7 @@ When working with a Postman collection to test APIs, you typically need to confi
         ```
 
 
-        - Replace table name and choose requried dimensions and measures. 
+        - Replace table name and choose required dimensions and measures. 
 
         - **For Example:** If you want to  compare the average price and average margin of two major categories: Apparel and Footwear. The  request body for load endpoint will be:
 
@@ -289,7 +286,7 @@ When working with a Postman collection to test APIs, you typically need to confi
 
 6. **Click Send**
 
-    - Once the body is set up for the specific endpoint, click **Send** to execute the request.
+    - Once the body is set up for the specific endpoint, click 'Send' to execute the request.
 
 
 #### **Possible Responses**
@@ -413,7 +410,7 @@ Curl is a command-line tool used for transferring data with URLs, making it a co
 
 ### **Using Python**
 
-Python provides a flexible and powerful way to interact with the Lens RESTAPI API. It is especially useful for building automation scripts or for use in data analysis workflows. Ensure that Python and the `requests` library are installed on your system before proceeding.
+Python provides a flexible and powerful way to interact with the Lens REST API. It is especially useful for building automation scripts or for use in data analysis workflows. Ensure that Python and the `requests` library are installed on your system before proceeding.
 
 1. **Install the `requests` Library:**
 
@@ -425,7 +422,7 @@ Python provides a flexible and powerful way to interact with the Lens RESTAPI AP
 
 2. **Prepare the Python Script:**
 
-    Use the following template to create a Python script for querying the Lens RESTAPI API:
+    Use the following template to create a Python script for querying the Lens REST API:
 
     ```python
     import requests
