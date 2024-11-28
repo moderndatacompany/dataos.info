@@ -14,7 +14,7 @@ By the end of this course, you'll be able to:
 
 ## Module 1: Understanding data needs
 
-To create a successful data product, it’s crucial to first understand the business context and requirements. This module focuses on capturing key needs and expectations:
+To create a successful Data Product, it’s crucial to first understand the business context and requirements. This module focuses on capturing key needs and expectations:
 
 <div class= "grid cards" markdown>
 
@@ -44,9 +44,9 @@ This module dives into the detailed process of designing Data Products tailored 
 
 ## Module 3: Building Data Products
 
-In the previous module, we explored the essential steps for designing a data product. We started by defining the use case of Customer Purchase Behavior for an online retail company. This use case focuses on analyzing customer buying patterns to identify cross-sell opportunities and enhance marketing strategies.
+In the previous module, we explored the essential steps for designing a Data Product. We started by defining the use case of Customer Purchase Behavior for an online retail company. This use case focuses on analyzing customer buying patterns to identify cross-sell opportunities and enhance marketing strategies.
 
-Now that we have a clear design plan, it’s time to move into the development phase. In this module, we will build the data product step by step, setting up the necessary components within DataOS.
+Now that we have a clear design plan, it’s time to move into the development phase. In this module, we will build the Data Product step by step, setting up the necessary components within DataOS.
 
 <div class= "grid cards" markdown>
 

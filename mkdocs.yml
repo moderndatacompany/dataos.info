@@ -361,7 +361,7 @@ nav:
               - Postgres: resources/lens/data_sources/postgres.md
               - Redshift: resources/lens/data_sources/awsredshift.md
               - Themis: resources/lens/data_sources/themis.md
-          - APIs & Integraions:
+          - APIs & Integrations:
             - API Endpoints and Scopes: resources/lens/api_endpoints_and_scopes.md
             - BI Integration: resources/lens/bi_integration.md
             # - Supported Data Quality Checks: resources/lens/supported_data_quality_checks.md
