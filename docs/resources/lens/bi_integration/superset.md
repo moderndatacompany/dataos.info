@@ -1,5 +1,14 @@
 # Superset
 
+<aside class="callout">
+💡 For a streamlined and user-friendly integration with Superset, use the Data Product Hub interface. This approach allows you to easily integrate your Lens model's semantic model with Superset, eliminating the need to manually work with `curl` commands.
+
+To get started with Superset integration through the Data Product Hub, refer to the link below:
+
+<a href="/interfaces/data_product_hub/activation/bi_sync/superset/">Access the Superset integration guide</a>.
+</aside>
+
+
 ## Prerequisites
 
 - **Curl**: Ensure `curl` is installed on the system. For Windows users, `curl.exe` may be required.
@@ -12,9 +21,11 @@ Superset requires the login credentials (username and password) and the host add
 
 ## Steps
 
+To sync the Lens model with Superset, follow these steps:
+
 **Step 1: Run the curl command**
 
-To sync the Lens model with Superset, follow these steps:
+Copy the curl command syntax below and replace the placeholders with the actual values.
 
 === "Syntax"
 
@@ -46,13 +57,13 @@ To sync the Lens model with Superset, follow these steps:
 
 **Command parameters:**
 
-- **`URL`**: `https://liberal-monkey.dataos.app/lens2/sync/api/v1/superset/public:sales360`. This is the endpoint for syncing with Superset.
+- **`URL`**: `https://liberal-monkey.dataos.app/lens2/sync/api/v1/superset/public:quality360`. This is the endpoint for syncing with Superset.
 
-- **`DataOS FQDN`**: Current DataOS FQDN, for example, `liberal-monkey.dataos.app`.
+- **`DataOS FQDN`**: Current DataOS FQDN, e.g., `liberal-monkey.dataos.app`.
 
 - **`--header 'Content-Type: application/json'`**: Specifies the content type as JSON.
 
-- **`Lens_Name`**: Name of the Lens, for example, `sales360`.
+- **`Lens_Name`**: Name of the Lens, e.g., `quality360`.
 
 - **`API_Key`**: DataOS API key. The DataOS API key for the user can be obtained by executing the command below.
 
@@ -70,19 +81,19 @@ Upon initiation, a response will be received:
 {
     "message": "Superset project creation and sync completed successfully."
 }
-`
+```
 
 Once the command is executed in the terminal, results will be visible in the Superset app as demonstrated below:
 
 Please follow the steps outlined to see the result:
 
-**Step 2 Go to DataOS**: Select Superset.
+**Step 2 Go to DataOS**: Go to DataOS and select Superset.
 
   <div style="text-align: center;">
       <img src="/resources/lens/bi_integration/superset2.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
   </div>
 
-**Step 3 Navigate to Datasets tab:** Here, each entity will be available in the form of datasets.
+**Step 3 Navigate to Datasets tab:** Here, each entity will appear as a dataset.
 
   <div style="text-align: center;">
       <img src="/resources/lens/bi_integration/superset3.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">

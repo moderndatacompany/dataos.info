@@ -4,39 +4,39 @@ Lens exposes a PostgreSQL-compatible interface, enabling interaction with the se
 
 ## Prerequisites
 
-**Active Lens:** To interact with the Lens, it must be active. If the Lens is deployed on DataOS, ensure it is properly set up. If the Lens is running locally (i.e., not deployed on DataOS), verify that the docker-compose is running in the background to ensure the Lens is active. 
+- **Active Lens:** To interact with the Lens, it must be active. If the Lens is deployed on DataOS, ensure it is properly set up. If the Lens is running locally (i.e., not deployed on DataOS), verify that the docker-compose is running in the background to ensure the Lens is active. 
 
-**DataOS API Key:**  When prompted for a password, use the DataOS API Key as the password. To retrieve the API Key, run the following command in the terminal:
+- **DataOS API Key:**  When prompted for a password, use the DataOS API Key as the password. To retrieve the API Key, run the following command in the terminal:
 
-```bash
-dataos-ctl user apikey get
+    ```bash
+    dataos-ctl user apikey get
 
-#Expected Output
+    #Expected Output
 
-TOKEN                                                   │  TYPE  │        EXPIRATION         │                   NAME                     
-───────────────────────────────────────────────────────────────────────────────────────────────────────────┼────────┼───────────────────────────┼────────────────────────────────────────────
-dG9rZW5fdXJnZW50bHlfZ2VuZXJhbGx5X2J1cnN0aW5nX2dvYmJsZXIuOGU1Yjg5MDktZjk5My00ZDkyLTkzMGQtZTMxZDYxYTRhMjAz │ apikey │ 2024-12-06T05:30:00+05:30 │ token_urgently_generally_bursting_gobbler  
-```
+    TOKEN                                                   │  TYPE  │        EXPIRATION         │                   NAME                     
+    ───────────────────────────────────────────────────────────────────────────────────────────────────────────┼────────┼───────────────────────────┼────────────────────────────────────────────
+    dG9rZW5fdXJnZW50bHlfZ2VuZXJhbGx5X2J1cnN0aW5nX2dvYmJsZXIuOGU1Yjg5MDktZjk5My00ZDkyLTkzMGQtZTMxZDYxYTRhMjAz │ apikey │ 2024-12-06T05:30:00+05:30 │ token_urgently_generally_bursting_gobbler  
+    ```
 
-If the API Key is not already available, create one using the following command:
+    If the API Key is not already available, create one using the following command:
 
-```bash
-dataos-ctl user apikey create -n ${name-of-apikey} -i ${user-id} -d ${duration}
-```
+    ```bash
+    dataos-ctl user apikey create -n ${name-of-apikey} -i ${user-id} -d ${duration}
+    ```
 
-For example, if the user name is iamgroot:
+    For example, if the user name is iamgroot:
 
-```bash
-dataos-ctl user apikey create -n test_api_key -i aayushisolanki -d 24h
+    ```bash
+    dataos-ctl user apikey create -n test_api_key -i aayushisolanki -d 24h
 
-#Expected_Output
-INFO[0000] 🔑 user apikey...                             
-INFO[0003] 🔑 user apikey...complete                     
+    #Expected_Output
+    INFO[0000] 🔑 user apikey...                             
+    INFO[0003] 🔑 user apikey...complete                     
 
-                                 TOKEN                                 │  TYPE  │        EXPIRATION         │     NAME      
-───────────────────────────────────────────────────────────────────────┼────────┼───────────────────────────┼───────────────
-  dGVzdF9hcGlfa2V5LjZjYmE2Nzg0LTIyNDktNDBjMy1hZmNhLTc1MmZlNjM3OWExZA== │ apikey │ 2024-11-29T12:30:00+05:30 │ test_api_key  
-```
+                                    TOKEN                                 │  TYPE  │        EXPIRATION         │     NAME      
+    ───────────────────────────────────────────────────────────────────────┼────────┼───────────────────────────┼───────────────
+    dGVzdF9hcGlfa2V5LjZjYmE2Nzg0LTIyNDktNDBjMy1hZmNhLTc1MmZlNjM3OWExZA== │ apikey │ 2024-11-29T12:30:00+05:30 │ test_api_key  
+    ```
 
 To interact with Lens through PostgreSQL, the following options are available:
 
@@ -69,62 +69,62 @@ Here choose the desired Data Product to explore using SQL APIs.For this example 
 
 Before using SQL APIs to explore a Lens, the Lens needs to be retrieved from the workspace. This can be done in different ways depending on whether the Lens is running locally or is deployed on DataOS.
 
-**Locally running Lens**
+- **Locally running Lens**
 
-If the Lens is running locally and has not yet been deployed on DataOS, verify the name of the Lens in the `docker-compose.yml` file. Additionally, ensure that the docker-compose is running in the background, as failing to do so may result in the following error:
-
-```bash
-psql: error: connection to server at "localhost" (127.0.0.1), port 25432 failed: Connection refused
-```
-
-**Deployed Lens**
-
-If a user has created a Lens, he can verify its name in the `deployment.yml` file or retrieve it by running the following command:
-
-=== "Command"
+    If the Lens is running locally and has not yet been deployed on DataOS, verify the name of the Lens in the `docker-compose.yml` file. Additionally, ensure that the docker-compose is running in the background, as failing to do so may result in the following error:
 
     ```bash
-    dataos-ctl resource get -t lens -w ${workspace} 
-    ```
-=== "Example"
-
-    ```bash
-    # For a workspace named "curriculum", the command and its expected output are as follows:
-    dataos-ctl resource get -t lens -w curriculum
-    # Expected Output
-    INFO[0000] 🔍 get...                                     
-    INFO[0000] 🔍 get...complete                             
-
-                  NAME             | VERSION |  TYPE   | WORKSPACE  | STATUS |   RUNTIME   |     OWNER        
-    -------------------------------|---------|---------|------------|--------|-------------|-------------------
-            sales360              | v1      | cluster | curriculum | active | running:1   |     ironman  
+    psql: error: connection to server at "localhost" (127.0.0.1), port 25432 failed: Connection refused
     ```
 
-To explore the Lens created by someone else in a particular worksapce use the following command:
+- **Deployed Lens**
 
-=== "Command"
+    If a user has created a Lens, he can verify its name in the `deployment.yml` file or retrieve it by running the following command:
 
-    This command requires specifying the workspace name to filter the Lens accordingly.
+    === "Command"
 
-    ```bash
-    dataos-ctl resource get -t lens -w ${workspace} -a
-    ```
+        ```bash
+        dataos-ctl resource get -t lens -w ${workspace} 
+        ```
+    === "Example"
 
-=== "Example"
+        ```bash
+        # For a workspace named "curriculum", the command and its expected output are as follows:
+        dataos-ctl resource get -t lens -w curriculum
+        # Expected Output
+        INFO[0000] 🔍 get...                                     
+        INFO[0000] 🔍 get...complete                             
 
-    ```bash
-    # For a workspace named "curriculum", the command and its expected output are as follows:
-    dataos-ctl resource get -t lens -w curriculum -a
-    # Expected Output
-    INFO[0000] 🔍 get...                                     
-    INFO[0000] 🔍 get...complete                             
+                    NAME             | VERSION |  TYPE   | WORKSPACE  | STATUS |   RUNTIME   |     OWNER        
+        -------------------------------|---------|---------|------------|--------|-------------|-------------------
+                sales360              | v1      | cluster | curriculum | active | running:1   |     ironman  
+        ```
 
-                  NAME             | VERSION |  TYPE   | WORKSPACE  | STATUS |   RUNTIME   |     OWNER        
-    -------------------------------|---------|---------|------------|--------|-------------|-------------------
-            c360-financial-service | v1      | cluster | curriculum | active | running:1   |     thor       
-            sales360               | v1      | cluster | curriculum | active | running:1   |     ironman  
-            Product360             | v1      | cluster | curriculum | active | running:2   |     thanos  
-    ```
+    To explore the Lens created by someone else in a particular worksapce use the following command:
+
+    === "Command"
+
+        This command requires specifying the workspace name to filter the Lens accordingly.
+
+        ```bash
+        dataos-ctl resource get -t lens -w ${workspace} -a
+        ```
+
+    === "Example"
+
+        ```bash
+        # For a workspace named "curriculum", the command and its expected output are as follows:
+        dataos-ctl resource get -t lens -w curriculum -a
+        # Expected Output
+        INFO[0000] 🔍 get...                                     
+        INFO[0000] 🔍 get...complete                             
+
+                    NAME             | VERSION |  TYPE   | WORKSPACE  | STATUS |   RUNTIME   |     OWNER        
+        -------------------------------|---------|---------|------------|--------|-------------|-------------------
+                c360-financial-service | v1      | cluster | curriculum | active | running:1   |     thor       
+                sales360               | v1      | cluster | curriculum | active | running:1   |     ironman  
+                Product360             | v1      | cluster | curriculum | active | running:2   |     thanos  
+        ```
 
 
 ### **Connect to Lens using `psql`**
