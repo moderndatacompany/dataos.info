@@ -25,7 +25,7 @@ curl --location --request POST '${URL}' --header 'apikey: ${APIKEY}' --output ${
 1. **URL:**  This is the api endpoint for syncing lens with PowerBI. It contains dataos_fqdn, name and workspace of lens. 
 
     ```bash
-    https://<DATAOS_FQDN>/lens2/sync/api/v1/powerbi/<lens_name> 
+    https://<DATAOS_FQDN>/lens2/sync/api/v1/power-bi/<lens_name> 
     ```
 
     - **DATAOS_FQDN:** Replace <DATAOS_FQDN> with the current Fully Qualified Domain Name (FQDN) where the Lens is deployed. For example, liberal-monkey.dataos.app,. is the FQDN and `liberal monkey` is the context name.
@@ -65,7 +65,7 @@ To begin syncing a Lens model, the following steps should be followed:
 **Step 1: Run the curl command:** For example, if the lens named `sales360` is located in the `curriculum` workspace deployed on the `liberal-monkey` context, the curl command would be:
 
 ```bash
-curl --location --request POST 'https://liberal-monkey.dataos.app/lens2/sync/api/v1/powerbi/curriculum:sales360' --header 'apikey: abcdefgh==' --output file.zip 
+curl --location --request POST 'https://liberal-monkey.dataos.app/lens2/sync/api/v1/power-bi/curriculum:sales360' --header 'apikey: abcdefgh==' --output file.zip 
 ```
 
 **Step 2 Download the zip file:**  Once the command is executed, a zip file will be downloaded to the specified directory.
