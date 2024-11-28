@@ -7,18 +7,18 @@ search:
 # :resources-lens: Lens
 
 
-Lens [Resource](/resources/) in DataOS is a logical modelling layer designed for accessing tabular data in data warehouses or lakehouses. It operates on top of physical tables, allowing the extension of these tables into logical tables by adding logical columns (measures) and relationships. It  empowers analytical engineers, the key architects of business intelligence, with a model-first approach.  To understand about the different elements of Lens click [here](/resources/lens/concepts/). 
+Lens [Resource](/resources/) in DataOS is a logical modelling layer designed for accessing tabular data in data warehouses or lakehouses. It operates on top of physical tables, allowing the extension of these tables into logical tables by adding logical columns (measures) and relationships. It  empowers analytical engineers, the key architects of business intelligence, with a model-first approach.  To learn about the different elements of Lens click [here](/resources/lens/concepts/). 
 
 
 !!!tip "Lens within the Data Product Lifecycle"
 
-    Lens operates within the consumption layer of the Data Product Life Cycle within DataOS, By leveraging Lens, Data Products can be created to inform decision-making, ensuring that data is logically organized and aligned with business objectives from the outset. To consume it, Lens exposes APIs such as JDBC, HTTP, and GraphQL.
+    Lens operates in the consumption layer of the Data Product Life Cycle within DataOS, By leveraging Lens, Data Products can be created to inform decision-making, ensuring data is well-organized and aligned with business objectives. To consume it, Lens exposes APIs such as JDBC, HTTP, and GraphQL.
 
 
 
 <div style="text-align: center;">
     <img src="/resources/lens/lens_diagram.jpg" alt="Untitled(5)" style="max-width: 80%; height: auto; border: 1px solid #000;">
-   <figcaption>Lens Ecosystem<figcaption>
+   <figcaption>Lens Ecosystem</figcaption>
 </div>
 
 
