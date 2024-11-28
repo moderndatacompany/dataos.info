@@ -111,7 +111,7 @@ Get meta-information for Lens and views defined in the data model. Information a
 ```
 
 <aside class="callout">
-💡 Providing access to the `<b>meta</b>` API scope grants a user access to the Model and Explore Tab of the Lens Studio Interface. But to fetch insights using the Explore interface, a user also requires the <b>`data`</b> API scope.
+💡 Providing access to the `<b>meta</b>` API scope grants a user access to the Model and Explore Tab of the Data Product Hub Interface. But to fetch insights using the Explore interface, a user also requires the <b>`data`</b> API scope.
 </aside>
 
 ## data scope
