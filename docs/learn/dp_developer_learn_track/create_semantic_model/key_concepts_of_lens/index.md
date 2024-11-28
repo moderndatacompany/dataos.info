@@ -84,11 +84,11 @@ By exposing only the relevant measures and dimensions for a given use case, view
 
 There are two primary types of Views in Lens: Entity-First Views and Metric-First Views. Each type is designed to meet different business needs.
 
-##### **1. Entity-first View**
+**1. Entity-first View**
 
 An Entity-First View is structured around a specific entity or object of interest, such as a `customer`, `product`, or `transaction`. It aims to provide users with a comprehensive, detailed view of an entity's attributes and relationships without focusing on aggregated metrics. To define an Entity-First View, you combine measures and dimensions from multiple tables that comprehensively describe an entity. 
 
-##### **2. Metric-first View**
+**2. Metric-first View**
 
 A Metric-first View is centered around a specific measure and typically includes time dimensions. The primary focus is providing clear, actionable metrics for business decision-making.
 
