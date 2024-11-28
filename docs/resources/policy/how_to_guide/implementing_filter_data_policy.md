@@ -6,7 +6,7 @@ In a filter policy, the following elements are defined:
 
 - **Selector:** Specifies the user(s) to whom this policy applies. Here, the user with the tag `users:id:iamgroot` is selected.
 - **Dataset ID:** Indicates the dataset to which the filter is applied, in this case, `icebase.retail.city`.
-- **Filters:** Defines the conditions to filter data rows. Here, the policy filters out rows where the `city_name` column value is not equal to `Verbena`.
+- **Filters:** Defines the conditions to filter data rows. Here, the policy filters out rows where the `city_name` column value is not equals to `Verbena`.
 
 ## Example
 
@@ -17,7 +17,7 @@ Suppose a user, part of a marketing team, needs access to city-specific data fro
 
 <div style="text-align: center;">
   <img src="/resources/policy/how_to_guide/filterbefore.png" alt="Sample inaccessible dataset" style="border:1px solid black; width: 80%; height: auto;">
-  <figcaption>Access to all cities</ficaption>
+  <figcaption>Access to all cities</figcaption>
 </div>
 
 
@@ -67,7 +67,7 @@ In this scenario, the policy applies a filter on the city_name column, restricti
 
 ### **Case 2**
 
-Conversely, another user `ironman` is specifically responsible for Verbena, a filter can be set to allow access only to data where the city is Verbena, ensuring they have the necessary information to develop targeted marketing strategies.
+Alternatively, another user, 'ironman', is specifically responsible for Verben, a filter can be set to allow access only to data where the city is 'Verbena', ensuring they have the necessary information to develop targeted marketing strategies.
 
 
 ???tip "Filter Policy for city not equals to Verbena"
@@ -87,7 +87,7 @@ Conversely, another user `ironman` is specifically responsible for Verbena, a fi
           user:
             match: all
             tags:
-              - "users:id:iamgroot"
+              - "users:id:ironman"
         dataset_id: "icebase.retail.city"
         description: 'data policy to filter data on city'
         filters:
