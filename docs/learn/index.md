@@ -69,7 +69,7 @@ Here are the key responsibilities of a Data Product Consumer, though specific ta
 
 - **Tracking metrics and performance:** Monitor performance, usage, and impact metrics of Data Products to assess their effectiveness and communicate results to stakeholders.
 
-#### **Modules overview**
+#### **Core modules**
 
 In this learning track, you will get a comprehensive introduction to Data Products, covering their types and importance in driving insights. You'll learn to navigate the Data Product Hub (DPH), access essential data product information, analyze input/output for meaningful insights, explore semantic models, assess data quality, and understand governance policies for data security.
 
@@ -111,7 +111,7 @@ Here are the key responsibilities of a Data Product Developer, though specific t
 
 - **Deployement and Maintainance**: Deploy Data Products efficiently, monitor their performance, and manage updates using CI/CD practices.
 
-#### **Modules overview**
+#### **Core modules**
 
 The learning track for Data Product Developers is divided into modules, each focusing on essential stages of the data product lifecycle. Every module covers key topics that provide step-by-step guidance using hands-on examples and best practices ensuring a comprehensive and practical learning experience.
 
@@ -161,7 +161,7 @@ A DataOS Operator could be an existing Forward Deployment Engineer, DevOps Engin
 
 - **System security**: Maintain the security of the DataOS platform, implementing best practices for resource and data protection.
 
-#### **Modules overview**
+#### **Core modules**
 
 The learning track is divided into modules, with each module focusing on key operational areas. Every module contains specific topics that address common challenges you will encounter as a DataOS Operator and guide you through the core aspects of this role with the tools to troubleshoot efficiently.
 
