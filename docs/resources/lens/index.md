@@ -7,25 +7,25 @@ search:
 # :resources-lens: Lens
 
 
-Lens [Resource](/resources/) in DataOS is a logical modelling layer designed for accessing tabular data in data warehouses or lakehouses. It operates on top of physical tables, allowing the extension of these tables into logical tables by adding logical columns (measures) and relationships. It  empowers analytical engineers, the key architects of business intelligence, with a model-first approach.  To understand about the different elements of Lens click [here](/resources/lens/concepts/). 
+Lens [Resource](/resources/) in DataOS is a logical modelling layer designed for accessing tabular data in data warehouses or lakehouses. It operates on top of physical tables, allowing the extension of these tables into logical tables by adding logical columns (measures) and relationships. It  empowers analytical engineers, the key architects of business intelligence, with a model-first approach.  To learn about the different elements of Lens click [here](/resources/lens/concepts/). 
 
 
 !!!tip "Lens within the Data Product Lifecycle"
 
-    Lens operates within the consumption layer of the Data Product Life Cycle within DataOS, By leveraging Lens, Data Products can be created to inform decision-making, ensuring that data is logically organized and aligned with business objectives from the outset. To consume it, Lens exposes APIs such as JDBC, HTTP, and GraphQL.
+    Lens operates in the consumption layer of the Data Product Life Cycle within DataOS, By leveraging Lens, Data Products can be created to inform decision-making, ensuring data is well-organized and aligned with business objectives. To consume it, Lens exposes APIs such as JDBC, HTTP, and GraphQL.
 
 
 
 <div style="text-align: center;">
     <img src="/resources/lens/lens_diagram.jpg" alt="Untitled(5)" style="max-width: 80%; height: auto; border: 1px solid #000;">
-   <figcaption>Lens Ecosystem<figcaption>
+   <figcaption>Lens Ecosystem</figcaption>
 </div>
 
 
 
 **Why Lens?**
 
-The data modeling layer serves as an interface that overlays the underlying data, consistently presenting business users with familiar and well-defined terms like "product," "customer," or "revenue." This abstraction enables users to access and consume data in a way that aligns with their understanding, facilitating self-service analytics and reducing dependence on data engineers for ad-hoc data requests. 
+The data modeling layer serves as an interface that overlays the underlying data, consistently presenting business users with familiar and well-defined terms like `product`, `customer`, or `revenue`. This abstraction enables users to access and consume data in a way that aligns with their understanding, facilitating self-service analytics and reducing dependence on data engineers for ad-hoc data requests. 
 
 As a resource within the DataOS ecosystem, Lens enhances Data Product consumption by delivering improvements in how Data Products are accessed and utilized. It streamlines the developer experience in consumption patterns, focusing specifically on refining the use and interaction with data products.
 
