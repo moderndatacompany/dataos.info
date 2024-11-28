@@ -12,7 +12,7 @@ A key project in your organization requires real-time data from multiple systems
 - Configuring Depots to streamline these integrations.
 - Ensuring all credentials are encrypted and security best practices are followed.
 
-You’ve already learnt managing sensitive information through the [Credential security module](learn/operator_learn_track/cred_security/), which gave you the confidence to protect and handle credentials securely. Now, follow the steps given below to integrate a growing number of data sources into DataOS for your team. These connections are essential for powering data products that fuel decision-making across the organization.
+You’ve already learnt managing sensitive information through the [Credential security module](/learn/operator_learn_track/cred_security/), which gave you the confidence to protect and handle credentials securely. Now, follow the steps given below to integrate a growing number of data sources into DataOS for your team. These connections are essential for powering data products that fuel decision-making across the organization.
 
 Why you’re key to data source connectivity
 
