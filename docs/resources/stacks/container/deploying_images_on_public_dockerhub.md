@@ -45,7 +45,7 @@ type: service # Type of Resource
 service: # Service Specific Section
   title: Swagger UI Deployment on DataOS # Title of Service
   compute: runnable-default # Compute is Runnable-default (since its a service)
-	replicas: 1 # Number of Service Replicas
+  replicas: 1 # Number of Service Replicas
   servicePort: 8601 # Service Port
   ingress: # Ingress Section
     enabled: true
@@ -55,7 +55,7 @@ service: # Service Specific Section
   stack: container # Here stack is Container (What else did you think? Beta, Gamma !!!)
   envs: # Environment Variables
     LOG_LEVEL: info # Log Level
-  container: # Container Stack Specific Section
+  stackSpec: # Container Stack Specific Section
     image: swaggerapi/swagger-ui:latest # Image Repository and Tag
 ```
 
