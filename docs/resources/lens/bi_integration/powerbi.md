@@ -73,20 +73,13 @@ curl --location --request POST '${URL}' --header 'apikey: ${APIKEY}' --output ${
 
 To begin syncing a Lens model, the following steps should be followed:
 
-**Step 1: Run the curl command:** For example, if the lens named `sales360` is located in the `curriculum` workspace deployed on the `liberal-monkey` context, the curl command would be:
+**Step 1: Run the curl command:** For example, if the lens named `sales360` is located in the `public` workspace deployed on the `liberal-monkey` context, the curl command would be:
 
 ```bash
-curl --location --request POST 'https://liberal-monkey.dataos.app/lens2/sync/api/v1/power-bi/curriculum:sales360' --header 'apikey: abcdefgh==' --output file.zip 
+curl --location --request POST 'https://tcp.liberal-monkey.dataos.app/lens2/sync/api/v1/power-bi/public:sales360' --header 'apikey: abcdefgh==' --output file.zip 
 ```
 
-**Step 2 Download the zip file:**  Once the command is executed, a zip file will be downloaded to the specified directory.
-
-<div style="text-align: center;">
-    <img src="/resources/lens/bi_integration/powerbi1.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
-</div>
-
-
-**Step 3 Unzip the file:** The downloaded file should be unzipped. Three folders will be found inside, all of which are necessary for semantic synchronization with Power BI.
+**Step 2 Download the zip file:**  Once the command is executed, a zip file will be downloaded to the specified directory. The downloaded file should be unzipped. Three folders will be found inside, all of which are necessary for semantic synchronization with Power BI.
 
 <div style="text-align: center;">
     <img src="/resources/lens/bi_integration/powerbi2.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
