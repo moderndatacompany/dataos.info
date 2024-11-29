@@ -1,11 +1,11 @@
 
 ## Local development environment
 
-Before deploying models to the development environment, it is important to ensure proper verification and validation. A recommended practice is to configure a Docker Compose manifest file (`docker-compose.yml`). While configuring this file is optional, it is widely considered a best practice to run and test models in the local environment to catch and resolve potential errors early. This proactive approach helps streamline the development process, ensuring smoother deployments and reducing the risk of issues arising in later stages.
+Before deploying models to the development environment, it is important to ensure proper verification and validation. A recommended practice is to configure a Docker Compose manifest file (`docker-compose.yml`). While configuring this file is optional, it is widely considered a best practice to run and test models in the local environment to catch and resolve potential errors early. This proactive approach helps streamline the development process, facilitating smoother deployments and minimizing the risk of issues later.
 
 ## Add a `docker-compose.yml` manifest file
 
-To do a local testing, add a `docker-compose.yml` manifest file. This file allows you to simulate the full development environment locally, ensuring that all necessary components are properly configured. The `docker-compose.yml` file defines how to set up and run Docker containers for Lens. 
+To do local testing, add `docker-compose.yml` manifest file. This file allows to simulate the full development environment locally, ensuring that all necessary components are properly configured. The `docker-compose.yml` file defines how to set up and run Docker containers for Lens. 
 
 > Always create the docker-compose.yml file in parallel to the model directory. 
 
@@ -163,7 +163,7 @@ To interact with Lens through PostgreSQL, the following options are available:
 
 **Using PostgreSQL Client (psql)**
 
-Enter the host name as `localhost`, port as given in the service of the `dockr-compose.yml` and name of the Lens and it's workspace in `lens:${workspace_name}:${lens_name}` format.
+Enter the host name as `localhost`, port as given in the service of the `docker-compose.yml` and name of the Lens and its workspace in `lens:${workspace_name}:${lens_name}` format.
 
 > Always refer to 'ports' within the services section in `docker-compose.yml` for the exposed port.
 
@@ -178,11 +178,11 @@ Enter the host name as `localhost`, port as given in the service of the `dockr-c
     ```bash
     psql -h localhost -p 25432 -U iamgroot -d lens:public:sales_analysis 
     ```
-For more details click [here](/resources/lens/exploration_of_deployed_lens_using_sql_apis/)
+For more details, click [here](/resources/lens/exploration_of_deployed_lens_using_sql_apis/)
 
 **Using VS Code Extension:**
 
-Use the following details to connect to the Postgresql interface:
+Use the following details to connect to the Postgresql interface using VS Code extension:
 
 - Install the PostgreSQL Client extension.
 
@@ -200,7 +200,7 @@ Use the following details to connect to the Postgresql interface:
 
 - Once connected, hover over the postgres folder and click the terminal icon to open the terminal for querying.
 
-- Execute queries in the terminal as needed. For example:
+- Execute the necessary commands and queries in the terminal as needed. For example, to list all the tables in the connected database (Lens semantic model), use the following command:
 
 ```bash
 postgres=> \dt #listing all the tables in the connected database.
@@ -239,21 +239,21 @@ For instance, to test Lens in development environment using Postman, upload the 
 
 Now, to make a basic `GET` request using Postman, follow these steps:
 
-1. **Create a New Request**:
+1. **Create a new request**:
     - Open Postman and click on the **New** button in the top left corner.
     - Select **Request** from the dropdown menu.
-2. **Configure the Request**:
-    - **Enter Request Name**: Provide a name for request.
-    - **Select Collection**: Choose the uploaded collection.
-3. **Set the HTTPS Method**:
+2. **Configure the request**:
+    - **Enter request name**: Provide a name for request.
+    - **Select collection**: Choose the uploaded collection.
+3. **Set the HTTPS method**:
     - In the request tab, select `GET` from the dropdown menu next to the URL input field.
-4. **Enter the Request URL**:
+4. **Enter the request URL**:
     - Enter the full URL for the API endpoint you want to access. For example:
         
         ```bash
         http://localhost:8080/lens2/api/${lens_name}/v2/meta
         ```
-    **Command Paramter**
+    **Command parameter**
 
       - `localhost:8080` represents the local or development environment for Lens, used for building and testing configurations.
       - `/lens2/api/` is the api prefix
@@ -298,6 +298,6 @@ Now, to make a basic `GET` request using Postman, follow these steps:
 To interact with the deployed Lens using REST APIs read the detailed doc [here](/resources/lens/exploration_of_deployed_lens_using_rest_apis/)
 
 
-## Next Step
+## Next step
 
 [Deploying Lens model on DataOS](/resources/lens/lens_deployment/)
