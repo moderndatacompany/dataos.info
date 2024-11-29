@@ -10,9 +10,9 @@ Container [Stack](/resources/stacks/) is a declarative DevOps software developme
 
 When deploying an application using Container Stack, the containerized image contains all the essential functionalities and logic required for the application, while execution of the image occurs within DataOS via the utilization of Container Stack, which can be invoked or called within a [Service](/resources/service/), [Worker](/resources/worker/) or a [Workflow](/resources/workflow/) Resource.
 
-## Syntax of Container Stack manifest
+<!--## Syntax of Container Stack manifest
 
-<!--![Container Manifest Configuration Syntax](/resources/stacks/container/container_syntax.png)
+![Container Manifest Configuration Syntax](/resources/stacks/container/container_syntax.png)
 
 <center><i>Container manifest configuration syntax</i></center>-->
 
