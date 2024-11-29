@@ -318,15 +318,15 @@ To validate the proper creation of the Lens Resource within the DataOS environme
          customer360 | v1alpha | lens | curriculum | active |         |  thor
      ```
 
-<aside class="callout"> 
-
-💡 Once deployed, the Lens will be able to explore in the Lens Studio. This is where business user can interact with the model.
+<aside class="callout">
+💡 Once deployed, the Lens will be available for exploration in either <a href="URL_for_Lens_Studio">Lens Studio</a> or <a href="/interfaces/data_product_hub/">Data Product Hub</a>, where business users can interact with the model.
 </aside>
+
 
 
 ## Next Step
 
-Exploration of Deployed Lens:
+Developers can further explore the Lens semantic model in the following ways:
 
 - [Exploration of deployed Lens using SQL APIs](/resources/lens/exploration_of_deployed_lens_using_sql_apis/)
 - [Exploration of deployed Lens using Python](/resources/lens/exploration_of_deployed_lens_using_python/)
