@@ -375,6 +375,7 @@ nav:
             - Using SQL APIs: resources/lens/exploration_of_deployed_lens_using_sql_apis.md
             - Using Python: resources/lens/exploration_of_deployed_lens_using_python.md
             - Using REST APIs: resources/lens/exploration_of_deployed_lens_using_rest_apis.md
+            - Using Iris dashboard: resources/lens/exploration_of_deployed_lens_using_iris_dashboard.md
           - Optimizing Lens Model: resources/lens/fine_tuning_a_lens_model.md
         
         - Monitor: 

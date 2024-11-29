@@ -11,7 +11,7 @@ Before setting up Lens on your local system, ensure you meet the following requi
 
 Docker is required to run Lens in an isolated environment on a local system. This guide provides instructions for installing Docker if it is not already installed. If Docker is already installed, you can jump to the [next step](/resources/lens/installing_prerequisites/#visual-studio-code) in the setup process.
 
-**Checking for Existing Installation**
+**Check for existing installation**
 
 Before proceeding with the installation, verify whether Docker is already installed on the system by running the following command in the terminal or command prompt:
 
@@ -31,7 +31,7 @@ If Docker is not installed, follow the appropriate installation guide for partic
 - **Windows:** Follow the installation guide of the Docker engine for Windows here: [Install Docker on Windows](https://docs.docker.com/desktop/install/windows-install/).
 - **macOS:** Follow the installation guide of the Docker engine for Linux here: [Install Docker on macOS](https://docs.docker.com/desktop/install/mac-install/).
 
-**Docker Login**
+**Docker login**
 
 Before pulling or pushing images from or to a private repository, it is necessary to log in to Docker Hub using the command line. The docker login command can be used to authenticate with Docker Hub by providing the Docker Hub username and password.
 

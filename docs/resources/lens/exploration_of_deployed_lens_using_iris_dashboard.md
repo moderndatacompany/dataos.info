@@ -1,14 +1,8 @@
----
-title: Exploration of Lens using Iris Board
-search: 
-  exclude: true
----
-<!-- 
 # Exploration of Lens using Iris Board
 
-Iris serves as an operational dashboard, providing a swift overview of your key performance metrics(measures) over time. It enables you to delve deeper into these metrics(measures) across various dimensions, aiding in the understanding of anomalies or observed differences. You can expose your Lens View to Iris boards, allowing you to observe measures across various dimensions defined within it.
+Iris serves as an operational dashboard, providing a swift overview of your key performance metrics (measures) over time. It enables you to delve deeper into these metric  (measures) across various dimensions, aiding in the understanding of anomalies or observed differences. You can expose your Lens View to Iris boards, allowing you to observe measures across various dimensions defined within it.
 
-For instance the following ‘wallet_sales_view’ iris board shows weekly performance of revenue and wallet share
+For instance, the following ‘wallet_sales_view’ Iris board shows weekly performance of revenue and wallet share
 
 <div style="text-align: center;">
     <img src="/resources/lens/consumption_of_deployed_lens/iris/iris_board.png" alt="Iris board" style="max-width: 80%; height: auto; border: 1px solid #000;">
@@ -25,50 +19,37 @@ You can create operational boards powered by Lens Views for streamlined operatio
 views:
   - name: #name of the view 
     description: #description of the view
-    public: #ensure this property is set as 'true', so that it is accessible for the consumer
-    #Here you can define whether you want this view to be exported to the IRIS board
+    public: #ensure this property is set as 'true' so that it is accessible for the consumer
+    #Here you can define whether you want this view to be exported to the Iris board
     meta:
       export_to_iris: true
       timezones: # come from lens meta
       iris:
-        timeseries: process_event.process_file_modified_date
+        timeseries: [table_name].[timeseries_column_name]
 ```
 
 <aside class="callout">
-💡 When working with the Iris board, make sure that the measures displayed in the view also include their dependent dimensions.
+💡 When working with the Iris board, ensure that the measures displayed in the view also include all the dimensions used in calculating each specific measure. 
 
 </aside>
 
 ### **Step 2: Deploy Lens**
 
-You can learn more about deploying Lens [here](/resources/lens/lens_deployment/)
+Learn more about deploying Lens [here](/resources/lens/lens_deployment/)
 
-### **Step 3: Access the IRIS board for your Lens**
+### **Step 3: Access the Iris board for your Lens via Data Product Hub**
 
-As of now, you can view the IRIS board on the following URL:
+- Navigate to the DataOS Home Page.
+- Select Data Product Hub from the menu.
+- In the Data Product Hub dialog box, choose the relevant Data Product associated with the semantic model to explore.
+- Open the 'Metrics' tab.
+- Locate the Quick Insights button in the top-right corner of the Metrics tab and click it to access the Iris Board.
 
-=== "URL Syntax"
+Once accessed, the created metric-type Views can now be explored and analyzed within the Iris Board.
 
-    ```yaml
 
-    <DataOS env-link>/lens2/iris/<workspace>:<lens_name>
 
-    #<DataOS env-link>:  Add the link of DataOS env, where you have deployed your Lens
-    #<workspace> example public, sandbox etc.
-    # <lens_name>: Name of the deployed Lens 
-    ```
 
-=== "Example"
 
-    ```yaml
-    [https://emerging-hawk.dataos.app/lens2/iris/public:sales360](https://emerging-hawk.dataos.app/lens2/iris/public:sales360/source/account_source)
-    ```
 
-Alternatively, you can navigate through the following steps:
-
-- Go to the **DataOS Home Page**.
-- Click on **Metis**.
-- Access the **Resources** section.
-- Select the **Lens** resource.
-- Locate your deployed Lens and click on it.
-- You will find the **Iris** link button—click it to view your View in Iris Board. -->
+ 
