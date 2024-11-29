@@ -1,5 +1,10 @@
 # Exploration of Lens using GraphQL
 
+<aside class="callout">
+💡 For a more streamlined and interactive experience with GraphQL, use the GraphQL playground on Data Product Hub. This interface simplifies interactions and eliminates the need to manually work with tools like curl.
+[Access the GraphQL guide here](/interfaces/data_product_hub/activation/app_development/)
+</aside>
+
 This guide provides comprehensive instructions for accessing and interacting with the Lens GraphQL API. You can interact with the Lens GraphQL API using:
 
 1. [**Lens Studio**](#using-lens-studio): An interactive in-browser tool for writing and executing GraphQL queries.

@@ -1,6 +1,6 @@
 # Fine tuning a Lens model
 
-Lens offers multiple levers at different layers that dynamically improve the performance of your query. These caches can be used to accelerate long-running scans, and aggregate and filter operations.
+Lens offers multiple options at different layers that dynamically improve the performance of your query. These caches can be used to accelerate long-running scans and aggregate and filter operations.
 
 You can adopt different caching approaches to fine-tune the performance of your Lens:
 
@@ -10,7 +10,7 @@ Flash caches the results of the SQL view used to create Lens logical tables. Thi
 
 To determine if logical tables in Lens should be cached with Flash, consider the following:
 
-- **SQL complexity:**If the SQL view involves complex operations like aggregates, joins, and subqueries, caching may help reduce query processing time.
+- **SQL complexity:** If the SQL view involves complex operations like aggregates, joins, and subqueries, caching may help reduce query processing time.
 
 - **Data volume:** Large datasets may benefit from caching as it reduces the amount of data that needs to be retrieved and processed.
 
@@ -21,7 +21,7 @@ To determine if logical tables in Lens should be cached with Flash, consider the
 A query mapping the logical table sales to the source table f_sales is complex and scans through unnecessary data. Caching its result in Flash will allow faster retrieval of relevant data.
 
 
-## Activation layer: Buffer(Cache)
+## Activation layer: Buffer (Cache)
 
 The activation layer exposes views through various APIs (REST, SQL, GraphQL) to support data applications. These applications may have specific performance needs, and each SQL API call retrieves data directly from the source, which can lead to increased latency.
 
@@ -37,17 +37,5 @@ To determine if buffering is necessary, consider the following:
 
 A SQL API call frequently retrieves revenue, wallet_share, and source data for specific time periods. Buffering this data improves the speed of retrieval for these queries.
 
-## Summary of optimization strategies
-
-Lens provides two caching layers Flash, and Buffer, to optimize query performance at different stages. Users can decide whether to use these layers based on their specific use case and set the refresh intervals for each caching layer. Additionally, the semantic layer allows users to select the compute clusters and query engines for running data models, ensuring that they can leverage the optimization features of the source system when necessary.
-
 While the semantic layer provides these functionalities to accelerate and optimize query performance at different stages of the data flow, it is essential to follow best practices in data modeling to ensure optimal performance, including efficient SQL writing, logical table materialization, and caching strategies.
 
-To summarize, while creating a mental model of the semantic layer, the users should follow these steps:
-
-1. Evaluate whether to deploy the semantic layer on a single source and leverage the source system’s query clusters.
-2. Always optimize the SQL used to create logical layers from the physical layer.
-3. Evaluate whether to leverage the Flash layer of Lens.
-4. Define the governance and quality checks for the model.
-5. Decide how downstream systems (e.g., APIs, BI tools) will consume data models.
-6. Assess whether to use the Buffer caching layer for Data APIs.

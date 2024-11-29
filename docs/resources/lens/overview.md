@@ -26,8 +26,7 @@ Instead of writing individual SQL queries for each of these questions, the data 
 
 ##  Creating a Lens
 
-Lens are used to organize entities and connections between entities. Usually one Lens is created for each table in the database, such as `sales`, `orders`, `products`, etc.
-
+A Lens is used to model entities and their relationships. It organizes multiple related entities and defines how they interact with each other. For example, a Lens could include entities such as `sales`, `orders`, `products`, etc., with defined relationships between them.
 
 In the table attribute of the Lens, define the base table. Here, it will be the sales table.
 
