@@ -8,13 +8,13 @@ search:
 
 Container [Stack](/resources/stacks/) is a declarative DevOps software development kit (SDK) to publish data-driven applications in production. As a cohesive Stack, it seamlessly integrates with web-server-based application images constructed atop DataOS, empowering users to leverage DataOS's [Compute](/resources/compute/) Resource to execute external tools or applications. With Container Stack, application development is no longer bound by programming language constraints, as it enables the fluid deployment of diverse applications onto a robust, flexible infrastructure.
 
-When deploying an application using Container Stack, the containerized image contains all the essential functionalities and logic required for the application, while execution of the image occurs within DataOS via the utilization of Container Stack, which can be invoked or called within a [Service](/resources/service/) or a [Workflow](/resources/workflow/) Resource.
+When deploying an application using Container Stack, the containerized image contains all the essential functionalities and logic required for the application, while execution of the image occurs within DataOS via the utilization of Container Stack, which can be invoked or called within a [Service](/resources/service/), [Worker](/resources/worker/) or a [Workflow](/resources/workflow/) Resource.
 
 ## Syntax of Container Stack manifest
 
-![Container Manifest Configuration Syntax](/resources/stacks/container/container_syntax.png)
+<!--![Container Manifest Configuration Syntax](/resources/stacks/container/container_syntax.png)
 
-<center><i>Container manifest configuration syntax</i></center>
+<center><i>Container manifest configuration syntax</i></center>-->
 
 ## Getting Started with Container Stack
 
@@ -33,7 +33,6 @@ You can also deploy custom-built images from a private DockerHub repository. To 
 ## Components of Container Stack
 
 ```yaml
-
 # Resource Section
 name: ${container-stack}
 version: v1
@@ -57,7 +56,7 @@ workflow/service: # Workflow/Service Specific Section
 
 ### **Resource meta section**
 
-Container Stack can be orchestrated via a [Workflow](/resources/workflow/) or a [Service](/resources/service/). Workflow/Service are [DataOS Resources](/resources/) and are both provisioned as runnable. To learn more about the manifest configurations for a [Workflow](/resources/workflow/)/[Service](/resources/service/), refer to their respective documentations.
+Container Stack can be orchestrated via a [Workflow](/resources/workflow/),[Worker](/resources/worker/), or a [Service](/resources/service/). Workflow, Worker, and Service are [DataOS Resources](/resources/) and are both provisioned as runnable. 
 
 ### **Container Stack-specific Section**
 
