@@ -13,7 +13,7 @@ To get started with Tableau integration through Data Product Hub, refer to the l
 
 - **Curl**: Ensure that `curl` is installed on the system. For Windows systems, `curl.exe` may be necessary.
 - **Lens API endpoint**: The API endpoint provided by Lens for syncing data with meta endpoint access.
-- **Access credentials**: Access credentials such as username, password, project name, etc., are required for Tableau.
+- **Access credentials**: Access credentials such as username, password, project name etc., are required for Tableau.
 - **DataOS API key**: Ensure the DataOS API key is available. Get it by using the following command:
 
 ```bash
@@ -22,12 +22,12 @@ dataos-ctl user apikey get
 
 ## Steps
 
-To sync the Lens model with Tableau, follow the steps below:
+To sync the Lens semantic model with Tableau, follow the steps below:
 
 **Step 1: Run the curl command**
 
 ```bash
-curl --location --request POST 'http://<DATAOS_FQDN>/lens2/sync/api/v1/tableau/<WORKSPACE_NAME>:<LENS_NAME>' \
+curl --location --request POST 'http://tcp.<DATAOS_FQDN>/lens2/sync/api/v1/tableau-server/<WORKSPACE_NAME>:<LENS_NAME>' \
 --header 'apikey: <APIKEY>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -41,26 +41,24 @@ curl --location --request POST 'http://<DATAOS_FQDN>/lens2/sync/api/v1/tableau/<
 
 1. **URL:**
 
-    - This endpoint is used to sync a specific Lens model to Tableau for public access.
-    - Replace <DATAOS_FQDN> with the Fully Qualified Domain Name (FQDN) where Lens instance is hosted. Example: - liberal-monkey.dataos.app.
-    - Replace <WORKSPACE_NAME> with the name of the workspace where the Lens model is deployed. e.g., `public`, `curriculum`.
-    - Replace <LENS_NAME> with the name of the Lens model to sync. e.g.,: `sales360`.
+    - This endpoint is used to sync a specific Lens semantic model to Tableau for public access.
+    - Replace <DATAOS_FQDN> with the Fully Qualified Domain Name (FQDN) where Lens instance is hosted. Example: liberal-monkey.dataos.app.
+    - Replace <WORKSPACE_NAME> with the name of the workspace where the Lens semantic model is deployed. e.g., `public`, `curriculum`.
+    - Replace <LENS_NAME> with the name of the Lens semantic model to sync. e.g.,: `sales360`.
 
 2. **Headers:**
 
-    - **apikey:** User's API key for the current context in Lens.
+    - **apikey:** User's API key for the current context in Lens. The DataOS API key for the user can be obtained by executing the below command.
 
-            The DataOS API key for the user can be obtained by executing the below command.
-
-            ```bash
-            dataos-ctl user apikey get
-            ```
+        ```bash
+        dataos-ctl user apikey get
+        ```
 
     - **`Content-Type application/json`:** Specifies that the data being sent is in JSON format.
  
 3. **Raw data payload:**
 
-    This section defines the details of user's Tableau credentials and project configuration:
+    This section defines the details of the user's Tableau credentials and project configuration:
 
     - **project_name:** The name of the Tableau project where the data will be synced. Replace "<sample>" with the actual project name. If the project does not already exist, Tableau will create a new project with the given name.
 
@@ -70,11 +68,11 @@ curl --location --request POST 'http://<DATAOS_FQDN>/lens2/sync/api/v1/tableau/<
     
     - **site_id:** The site ID associated with the current Tableau connection.
 
-    - **server_address:** The URL of the Tableau server.  Replace it with the correct server address (e.g., https://prod-apnortheast-a.online.tableau.com). This information can be obtained upon logging in to Tableau. The URL will appear as follows:
+    - **server_address:** The URL of the Tableau server.  Replace <server_address> with the correct server address (e.g., https://prod-apnortheast-a.online.tableau.com). This information can be obtained upon logging in to Tableau. The URL will appear as follows:
 
         > https://prod-apnortheast-a.online.tableau.com/#/site/iamgroot1086a891fef336/home
 
-         here: **iamgroot1086a891fef336**  is the **site_id**.
+         Here: **iamgroot1086a891fef336**  is the **site_id**.
 
 **Step 2: Go to Tableau:** Access the Explore tab on the left side. The required tables and views will be visible in the project. In the screenshot below, there are three sources: one for tables and two for views.
 
@@ -101,7 +99,7 @@ Upon clicking 'Connect', a prompt will request the username and password. Enter 
     <img src="/resources/lens/bi_integration/tableau4.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-**Step 5: Start using the model** After entering the credentials and clicking on 'Sign In', the model will be ready for visualization purposes.
+**Step 5: Start using the semantic model** After entering the credentials and clicking on 'Sign In', the model will be ready for visualization purposes.
 
 <div style="text-align: center;">
     <img src="/resources/lens/bi_integration/tableau5.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
@@ -109,16 +107,16 @@ Upon clicking 'Connect', a prompt will request the username and password. Enter 
 
 ## Important considerations for Tableau integration
 
-**1. Handling entities without relationships:** An error will occur during synchronization if any entity in the data model lacks a defined relationship. To resolve this issue, the entity can be hidden to avoid synchronization errors.
+**1. Handling entities without relationships:** An error will occur during synchronization if any entity in the semantic model lacks a defined relationship. To resolve this issue, the entity can be hidden to avoid synchronization errors.
 
 **2. Live connection:** The connection between the Lens semantic layer and Tableau Cloud is live. This means that any changes to the underlying data or measure logic will automatically be reflected in Tableau.
 
 **3. Schema changes:** If there are schema updates, such as adding new dimensions or measures, the integration steps will need to be repeated to incorporate these changes into Tableau.
 
-**4. Avoiding cyclic dependencies:** Tableau does not support cyclic dependencies within data models. To prevent integration issues, it is essential to ensure that the data model is free of cyclic dependencies prior to syncing with Tableau.
+**4. Avoiding cyclic dependencies:** Tableau does not support cyclic dependencies within semantic models. To prevent integration issues, it is essential to ensure that the semantic model is free of cyclic dependencies prior to syncing with Tableau.
 
 
-## Handling Specific Data Types in Tableau
+## Handling specific data types in Tableau
 
 1. **Time data type as measure in Tableau**  
 
