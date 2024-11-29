@@ -319,7 +319,7 @@ To validate the proper creation of the Lens Resource within the DataOS environme
      ```
 
 <aside class="callout">
-💡 Once deployed, the Lens will be available for exploration in either <a href="URL_for_Lens_Studio">Lens Studio</a> or <a href="/interfaces/data_product_hub/">Data Product Hub</a>, where business users can interact with the model.
+💡 Once deployed, the Lens will be available for exploration on <a href="/interfaces/data_product_hub/">Data Product Hub</a>, where business users can interact with the model.
 </aside>
 
 

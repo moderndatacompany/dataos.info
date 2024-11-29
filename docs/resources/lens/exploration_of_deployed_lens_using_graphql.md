@@ -2,7 +2,7 @@
 
 <aside class="callout">
 💡 For a more streamlined and interactive experience with GraphQL, use the GraphQL playground on Data Product Hub. This interface simplifies interactions and eliminates the need to manually work with tools like curl.
-[Access the GraphQL guide here](/interfaces/data_product_hub/activation/app_development/)
+<a href= "/interfaces/data_product_hub/activation/app_development/">Access the GraphQL guide here</a>
 </aside>
 
 This guide provides comprehensive instructions for accessing and interacting with the Lens GraphQL API. You can interact with the Lens GraphQL API using:
