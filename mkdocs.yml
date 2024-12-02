@@ -669,6 +669,8 @@ nav:
       - Building Data Products: quick_guides/building_data_product/index.md
       - Scanning metadata: quick_guides/scan_metadata/index.md
       - Creating ETL pipelines:
+        - Ingest external files into DataOS: 
+          - quick_guides/creating_etl_pipelines/ingest_csv_to_depot/index.md
         - Batch data processing using Flare:
           - quick_guides/creating_etl_pipelines/flare_job/index.md
         - Storing query results as dataset with Flare:
@@ -677,6 +679,5 @@ nav:
         - Deploying data application using Container Stack: 
           - quick_guides/deploy_data_app_using_container_stack/index.md
         - Securing deployed data applications: 
-          - quick_guides/secure_deployed_app/index.md
-      - Ingest external files into DataOS: quick_guides/ingest_csv_to_depot/index.md    
+          - quick_guides/secure_deployed_app/index.md   
     - Videos: videos/index.md
