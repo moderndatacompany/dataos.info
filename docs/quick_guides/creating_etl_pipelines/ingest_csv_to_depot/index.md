@@ -17,19 +17,19 @@ This section involves the one-by-one steps to ingest CSV files to dropzone01 Dep
 a. In the DataOS interface, open the Notebook app.
 
 <center>
-  <img src="/quick_guides/ingest_csv_to_depot/dataoshome.png" alt="DataOS Homepage" style="width:40rem; border: 1px solid black; padding: 5px;" />
+  <img src="/quick_guides/creating_etl_pipelines/ingest_csv_to_depot/dataoshome.png" alt="DataOS Homepage" style="width:40rem; border: 1px solid black; padding: 5px;" />
   <figcaption><i>DataOS Interface</i></figcaption>
 </center>
 
 b. Open a Python 3 Notebook.
 
 <center>
-  <img src="/quick_guides/ingest_csv_to_depot/notebook.png" alt="DataOS Homepage" style="width:40rem; border: 1px solid black; padding: 5px;" />
+  <img src="/quick_guides/creating_etl_pipelines/ingest_csv_to_depot/notebook.png" alt="DataOS Homepage" style="width:40rem; border: 1px solid black; padding: 5px;" />
   <figcaption><i>DataOS Interface</i></figcaption>
 </center>
 
 <center>
-  <img src="/quick_guides/ingest_csv_to_depot/inside_notebook.png" alt="DataOS Homepage" style="width:40rem; border: 1px solid black; padding: 5px;" />
+  <img src="/quick_guides/creating_etl_pipelines/ingest_csv_to_depot/inside_notebook.png" alt="DataOS Homepage" style="width:40rem; border: 1px solid black; padding: 5px;" />
   <figcaption><i>DataOS Interface</i></figcaption>
 </center>
 
@@ -159,7 +159,7 @@ Warning: Ignoring non-Spark config property: fs.s3a.committer.name
 Upload the CSV file from the local machine to the Notebook environment.
 
 <center>
-  <img src="/quick_guides/ingest_csv_to_depot/upload.png" alt="DataOS Homepage" style="width:25rem; border: 1px solid black; padding: 5px;" />
+  <img src="/quick_guides/creating_etl_pipelines/ingest_csv_to_depot/upload.png" alt="DataOS Homepage" style="width:25rem; border: 1px solid black; padding: 5px;" />
   <figcaption><i>DataOS Interface</i></figcaption>
 </center>
 
