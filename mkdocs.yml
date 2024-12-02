@@ -678,4 +678,5 @@ nav:
           - quick_guides/deploy_data_app_using_container_stack/index.md
         - Securing deployed data applications: 
           - quick_guides/secure_deployed_app/index.md
+      - Ingest external files into DataOS: quick_guides/ingest_csv_to_depot/index.md    
     - Videos: videos/index.md
