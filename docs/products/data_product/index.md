@@ -99,7 +99,7 @@ A Data Product manifest outlines essential metadata and configuration details ab
 
 === "Manifest Structure"
     <center>
-    ![Data Product Manifest Structure](/products/data_product/schema.jpg){: style="width:31rem;" }
+    ![Data Product Manifest Structure](/products/data_product/manifest.png){: style="width:31rem;" }
     <figcaption><i>Data Product Manifest Structure</i></figcaption>
     </center>
 
@@ -107,47 +107,63 @@ A Data Product manifest outlines essential metadata and configuration details ab
 
     ```yaml
     # Product meta section
-    name: {{dp-test}} # Product name (mandatory)
-    version: {{v1alpha}} # Manifest version (mandatory)
-    type: {{data}} # Product-type (mandatory)
-    tags: # Tags (Optional)
-      - {{data-product}}
-      - {{dataos:type:product}}
-      - {{dataos:product:data}}
-    description: {{the customer 360 view of the world}} # Descripton of the product (Optional)
-    Purpose: {{This data product is intended to provide insights into the customer for strategic decisions on cross-selling additional products.}} # purpose (Optional)
-    collaborators: # collaborators User ID (Optional)
-      - {{thor}}
-      - {{blackwidow}}
-      - {{loki}}
-    owner: {{iamgroot}} # Owner (Optional)
-    refs: # Reference (Optional)
-      - title: {{Bundle Info}} # Reference title (Mandatory if adding reference)
-        href: {{https://dataos.info/resources/bundle/}} # Reference link (Mandatory if adding reference)
-    entity: {{product}} # Entity (Mandatory)
-    # Data Product-specific section (Mandatory)
-    v1alpha: # Data Product version
-      data:
-        resources: # Resource specific section(Mandatory)
-          - name: {{bundle-dp}} # Resource name (Mandatory)
-            type: {{bundle}} # Resource type (Mandatory)
-            version: {{v1beta}} # Resource version (Mandatory)
-            refType: {{dataos}} # Resource reference type (Mandatory)
-            workspace: {{public}} # Workspace (Requirement depends on the resource type)
-            description: {{this bundle resource is for a data product}} # Resource description (Optional)
-            purpose: {{deployment of data product resources}} # Purpose of the required resource (Optional)   
-        
-        inputs: # Input specific section (Mandatory)
-          - description: Sales 360
-            purpose: source
-            refType: dataos
-            ref: dataos://bigquery:PUBLIC/MYTABLE
-        
-        outputs: # Output specific section (Mandatory)
-          - description: Customer
-            purpose: consumption
-            refType: dataos_address
-            ref: dataos://icebase:sandbox/sales?acl=rw     
+    name: ${{product-360}} # mandatory
+    version: ${{v1beta}} # mandatory
+    entity: ${{product}} # mandatory
+    type: ${{data}} # mandatory
+    tags:   # optional
+      - ${{DPDomain.Sales}}
+      - ${{DPDomain.Marketing}}
+      - ${{DPUsecase.Customer Segmentation}}
+      - ${{DPUsecase.Product Recommendation}}
+      - ${{DPTier.DataCOE Approved}}
+    description: ${{Leverages product affinity analysis to identify cross-sell opportunities, enabling businesses to enhance customer recommendations and drive additional sales by understanding the relationships between products purchased together}} # optional
+    refs: # optional
+    - title: ${{'Workspace Info'}}
+      href: ${{https://dataos.info/interfaces/cli/command_reference/#workspace}}
+    # Product specific section
+    v1beta: # mandatory
+      data: # mandatory
+        meta: # optional
+          title: ${{Product 360}}
+          sourceCodeUrl: ${{https://bitbucket.org/mywork/talos/src/main/}}
+          trackerUrl: ${{https://rubikai.atlassian.net/browse/DPRB-65}}
+    
+        collaborators: # optional
+          - name: ${{iamgroot}}
+            description: ${{developer}}
+          - name: ${{iamthor}}
+            description: ${{consumer}}
+
+        resource: # mandatory
+          refType: ${{dataos}}
+          ref: ${{bundle:v1beta:product-360-bundle}}
+
+        inputs: # mandatory
+          - refType: ${{dataos}}
+            ref: ${{dataset:icebase:customer_relationship_management:customer}}
+
+          - refType: ${{dataos}}
+            ref: ${{dataset:icebase:customer_relationship_management:purchase}}
+
+          - refType: ${{dataos}}
+            ref: ${{dataset:icebase:customer_relationship_management:product}}
+
+        outputs: # mandatory
+          - refType: ${{dataos}}
+            ref: ${{dataset:icebase:customer_relationship_management:product_affinity_matrix}}
+
+          - refType: ${{dataos}}
+            ref: ${{dataset:icebase:customer_relationship_management:cross_sell_recommendations}}
+
+        ports: # optional
+          lens:
+            - ref: ${{lens:v1alpha:cross-sell-affinity:public}}
+              refType: ${{dataos}}
+
+          talos:
+            - ref: ${{service:v1:cross-sell-api:public}}
+              refType: ${{dataos}}    
     ```
 
 
@@ -159,7 +175,6 @@ Data Product can be configured to make the efficient business decisions based on
 
 This section provides step-by-step guides to assist you in effectively configuring the Data Product to solve common challenges. Below are some recipes to help you configure Data Product effectively:
 
-- [How to Create Data Product template using Cookiecutter?](/products/data_product/recipes/cookiecutter/)
 - [How to Deploy Data Product using CI/CD pipeline?](/products/data_product/recipes/ci_cd/)
 
 ## Examples
