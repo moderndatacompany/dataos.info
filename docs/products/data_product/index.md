@@ -21,8 +21,8 @@ sharing, data monetization, analytics and application integration.
 >  **-** Gartner<sup>&reg;</sup><span class="circle"></span>
 
 <center>
-![Data Product Development Life Cycle](/products/data_product/diagram.jpg){: style="width:36rem;" }
-<figcaption><i>Data Product Development Life Cycle</i></figcaption>
+![Data Product Development lifecycle](/products/data_product/diagram.jpg){: style="width:36rem;" }
+<figcaption><i>Data Product Development lifecycle</i></figcaption>
 </center>
 
 
@@ -82,24 +82,24 @@ Experience Ports are provided by DataOS to support additional consumption paradi
 
 In the following sections, we have outlined the comprehensive thought process involved in developing a Data Product, from defining use cases to the deployment. 
 
-## Define Usecases
+## Define usecases
 
 The development of a Data Product initialized by defining the use cases, a single data product can cater to multiple use cases and all the way around. Let's take an example, suppose our usecase is to analyze the Website Traffic Source. This analysis provides actionable insights, enabling data-driven decision-making to optimize marketing strategies and improve business outcomes. The intended audience includes data analysts, marketing teams, business stakeholders, and technical teams responsible for data product development. The requirements for this use case include access to data source, an ETL (Extract, Transform, Load) process to clean and transform raw data, a data model to structure the transformed data, and visualization tools to present the analysis results. Additionally, secure data handling and storage must be ensured throughout the process.
 
-## Explore and Discover Data Products
-Once use cases have been defined, the next step is to explore the existing Data Products available in the [Data Product Hub](/interfaces/data_product_hub/). If the available Data Products sufficiently address the use cases, there is no need to develop a new Data Product. However, if the existing Data Products do not meet the requirements of the use cases, we can proceed to the Data Product Development Life Cycle to create a new Data Product.
+## Explore and discover Data Products
+Once use cases have been defined, the next step is to explore the existing Data Products available in the [Data Product Hub](/interfaces/data_product_hub/). If the available Data Products sufficiently address the use cases, there is no need to develop a new Data Product. However, if the existing Data Products do not meet the requirements of the use cases, we can proceed to the Data Product Development lifecycle to create a new Data Product.
 
-## Data Product Development Life cycle
+## Data Product development lifecycle
 
-The Data Product Development Life cycle consists of four key phases: Design, Develop, Deploy, and Iterate. It starts with Design, where business goals are translated into a solution architecture. The Develop phase involves building and testing the data product based on this design. Deploy focuses on releasing the product to users and ensuring it operates effectively in a production environment. Finally, Iterate emphasizes continuous improvement through feedback and performance analysis to adapt to evolving needs and enhance the product over time. To know about Data Product Development Life cycle in detail, please [refer to this](/products/data_product/how_to_guides/).
+The Data Product Development lifecycle consists of four key phases: Design, Develop, Deploy, and Iterate. It starts with Design, where business goals are translated into a solution architecture. The Develop phase involves building and testing the data product based on this design. Deploy focuses on releasing the product to users and ensuring it operates effectively in a production environment. Finally, Iterate emphasizes continuous improvement through feedback and performance analysis to adapt to evolving needs and enhance the product over time. To know about Data Product Development lifecycle in detail, please [refer to this](/products/data_product/how_to_guides/).
 
-## Structure of Data Product Manifest
+## Structure of Data Product manifest
 
 A Data Product manifest outlines essential metadata and configuration details about a Data Product. This structure can be modified based on specific requirements and additional metadata needed for the Data Product.
 
 === "Manifest Structure"
     <center>
-    ![Data Product Manifest Structure](/products/data_product/manifest.png){: style="width:31rem;" }
+    ![Data Product Manifest Structure](/products/data_product/manifestfile.png){: style="width:31rem;" }
     <figcaption><i>Data Product Manifest Structure</i></figcaption>
     </center>
 

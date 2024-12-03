@@ -1,5 +1,5 @@
-# Core Concepts
-## Key Facets of the Data Products
+# Core concepts
+## Key facets of the Data Products
 
 ### **Input**
 
@@ -73,7 +73,7 @@ A Data Product is responsive to user needs and environmental changes. It has mec
 
 A Data Product is capable of reacting to real-time data and events. It is designed to process and respond to new information dynamically, allowing users to make timely decisions based on the most current data available.
 
-## Data Product Persona
+## Data Product persona
 
 In the realm of Data Products, understanding the different personas is crucial for crafting an effective Data Product. These personas represent the various stakeholders who interact with the data product throughout its lifecycle. Each persona has unique requirements, goals, and perspectives, which should be addressed in the Data Product development to ensure that it is useful and accessible to everyone involved. Here, we outline the primary personas typically associated with Data Products.
 
