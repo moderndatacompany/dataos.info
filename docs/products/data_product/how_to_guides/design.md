@@ -4,10 +4,10 @@ The design phase of the Data Product development process within DataOS is crucia
 
 To design the Data Product, follow the steps outlined below. Depending on the specific Data Product, additional steps may need to be added or skipped:
 
-## Identify Data Sources
+## Identify data sources
 In this step, we identify various data sources based on usecase. For instance, in traffic source analysis, data is sourced from Google Analytics to capture website traffic, user behavior, and acquisition channel data using the Google Analytics. Additionally, data is obtained from advertising platforms such as Google Ads or Facebook Ads to access campaign performance metrics. Not all use cases necessitate generating data from scratch, if the organization already possesses the required data in its databases, this step may be skipped.
 
-## Data Understanding and Exploration
+## Data understanding and exploration
 
 To understand the data, you need to set up the data source connection to S3 using [Instance Secret](/resources/instance_secret/) and [Depot](/resources/depot/). Let’s see how can you set the data source connection using the [Depot](/resources/depot/) for S3. This step is depends on the Data Source.
 
