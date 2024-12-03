@@ -116,7 +116,7 @@ data-product-deployment
 └── data_product
 ```
     
-c. Inside the `data_product` folder, create a subfolder called `depot`. Following the depot documentation, create a Depot manifest file.
+c. Inside the `data_product` folder, create a subfolder called `depot`. Following the Depot documentation, create a Depot manifest file.
     
 ```sql
 data-product-deployment
@@ -259,7 +259,7 @@ pipelines:
             # Apply the Data Product manifest file
             - docker run --rm -i -v $BITBUCKET_CLONE_DIR/.dataos:/dataos -v $BITBUCKET_CLONE_DIR:/jobsfolder $DOCKER_ENV_VARS rubiklabs/dataos-ctl:2.26.17-dev product apply -f /jobsfolder/data-product-deployment/ci_cd/data_product_spec.yml
             
-            # Apply the Data Product Dcanner
+            # Apply the Data Product Scanner
             - docker run --rm -i -v $BITBUCKET_CLONE_DIR/.dataos:/dataos -v $BITBUCKET_CLONE_DIR:/jobsfolder $DOCKER_ENV_VARS rubiklabs/dataos-ctl:2.26.17-dev apply -f /jobsfolder/data-product-deployment/ci_cd/slb/scanner/data-product/scanner.yml
             
             
@@ -300,6 +300,7 @@ Below table describes each attributes of the `bitbucket-pipelines.yaml` in brief
 
 
 c. Update the username and current DataOS context in the placeholders within the script section of the `bitbucket-pipelines.yaml` file.
+
 d. To apply the Bundle manifest file, copy the relative path of the Bundle manifest file and paste it into the script, as shown below. The path should be pasted after the `/jobsfolder` in this case.
     
 ```yaml
