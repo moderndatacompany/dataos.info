@@ -99,7 +99,7 @@ A Data Product manifest outlines essential metadata and configuration details ab
 
 === "Manifest Structure"
     <center>
-    ![Data Product Manifest Structure](/products/data_product/manifest.png){: style="width:31rem;" }
+    ![Data Product Manifest Structure](/products/data_product/manifestfile.png){: style="width:31rem;" }
     <figcaption><i>Data Product Manifest Structure</i></figcaption>
     </center>
 
