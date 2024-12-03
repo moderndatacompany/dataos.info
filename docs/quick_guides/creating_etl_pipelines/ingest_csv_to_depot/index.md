@@ -14,14 +14,14 @@ This section involves the one-by-one steps to ingest CSV files to dropzone01 Dep
 
 ### **Step 1: Open Notebook**
 
-a. In the DataOS interface, open the Notebook app.
+**a.** In the DataOS interface, open the Notebook app.
 
 <center>
   <img src="/quick_guides/creating_etl_pipelines/ingest_csv_to_depot/dataoshome.png" alt="DataOS Homepage" style="width:40rem; border: 1px solid black; padding: 5px;" />
   <figcaption><i>DataOS Interface</i></figcaption>
 </center>
 
-b. Open a Python 3 Notebook.
+**b.** Open a Python 3 Notebook.
 
 <center>
   <img src="/quick_guides/creating_etl_pipelines/ingest_csv_to_depot/notebook.png" alt="DataOS Homepage" style="width:40rem; border: 1px solid black; padding: 5px;" />
@@ -288,9 +288,17 @@ df.show(10)
 </details>
 
 
+<aside class="callout">
+🗣 You can save the data in either CSV or JSON format:
+
+<br><b>Step 7</b> demonstrates saving the data in CSV format.
+<br><b>Step 7 (Alternate)</b> demonstrates saving the data in JSON format.
+</aside>
+
+
 ### **Step 7: Write the data to the dropzone01 Depot in CSV format**
 
-In the next cell, run the following code which saves the DataFrame `df` to a CSV format in the `filedrop**/customer**` path of the **`dropzone01`** Depot in DataOS. The **overwrite mode** ensures any existing data at that location is replaced. 
+In the next cell, run the following code which saves the DataFrame `df` to a CSV format in the `filedrop/customer` path of the **`dropzone01`** Depot in DataOS. The **overwrite mode** ensures any existing data at that location is replaced. 
 
 ```python
 save(
@@ -383,7 +391,7 @@ save(
 
 ### **Step 7 (Alternate): Write the data to the dropzone01 Depot in JSON format**
 
-In the next cell, run the following code which saves the DataFrame `df` to a JSON format in the `filedrop**/customer**` path of the **`dropzone01`** Depot in DataOS. The **overwrite mode** ensures any existing data at that location is replaced. 
+In the next cell, run the following code which saves the DataFrame `df` to a JSON format in the `filedrop/customer` path of the **`dropzone01`** Depot in DataOS. The **overwrite mode** ensures any existing data at that location is replaced. 
 
 ```python
 save(name="dataos://dropzone01:filedrop/customer", dataframe=df, format="JSON", mode="overwrite")
