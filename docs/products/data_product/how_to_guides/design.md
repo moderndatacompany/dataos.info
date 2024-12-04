@@ -4,10 +4,10 @@ The design phase of the Data Product development process within DataOS is crucia
 
 To design the Data Product, follow the steps outlined below. Depending on the specific Data Product, additional steps may need to be added or skipped:
 
-## Identify Data Sources
+## Identify data sources
 In this step, we identify various data sources based on usecase. For instance, in traffic source analysis, data is sourced from Google Analytics to capture website traffic, user behavior, and acquisition channel data using the Google Analytics. Additionally, data is obtained from advertising platforms such as Google Ads or Facebook Ads to access campaign performance metrics. Not all use cases necessitate generating data from scratch, if the organization already possesses the required data in its databases, this step may be skipped.
 
-## Data Understanding and Exploration
+## Data understanding and exploration
 
 To understand the data, you need to set up the data source connection to S3 using [Instance Secret](/resources/instance_secret/) and [Depot](/resources/depot/). Let’s see how can you set the data source connection using the [Depot](/resources/depot/) for S3. This step is depends on the Data Source.
 
@@ -206,8 +206,6 @@ Performance targets refer to predefined goals or benchmarks related to the data 
 
 Once the Data Product design is finalized, it undergoes review sessions with key stakeholders and team members to ensure it meets all defined requirements and goals. Feedback from these sessions is carefully documented. If needed, the design is refined based on this feedback to improve its alignment with requirements. All changes made during this process are noted to ensure continuous improvement of the design phase.
 
-Once the design meets the requirements, the next phase involves [building the Data Product](/products/data_product/how_to_guides/build/).
-
 ## **Create the Data Product manifest file**
 
 After successfully executing the above steps, you’ll create a manifest file for the Data Product. 
@@ -290,7 +288,7 @@ The manifest file of a Data Product can be broken down into two sections:
 1. Product Meta section
 2. Data Product-specific section 
 
-### **Product Meta section**
+### **Product meta section**
 
 The Data Product manifest comprises a product meta section outlining essential metadata attributes applicable to all product types. Note that some attributes are optional within this section, while others are mandatory.
 
@@ -381,3 +379,5 @@ INFO[0000] 🔧 applying data:v1alpha:lens-dp-test...
 INFO[0000] 🔧 applying data:v1alpha:lens-dp-test...created 
 INFO[0000] 🛠 product apply...complete 
 ```
+
+Once the design meets the requirements, the next phase involves [building the Data Product](/products/data_product/how_to_guides/build/).

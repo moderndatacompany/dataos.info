@@ -2,7 +2,7 @@
 
 You might have successfully created the data product, but in order to make it discoverable on [Metis](/interfaces/metis/) and [Data Product Hub](/interfaces/data_product_hub/), you have to run the [Scanner](/resources/stacks/scanner/). To deploy your Data Product to the Data Product hub and Metis, you have to create a manifest file for a Data Product Scanner Workflow. You can find the manifest file below.
 
-**Data Product scanner workflow manifest**
+**Data Product Scanner Workflow manifest**
     
 ```yaml
 version: v1
@@ -56,7 +56,7 @@ To check if you have created a Data Product run the following command. It will l
 dataos-ctl product get
 ```
 
-**Example Usage:**
+**Example usage:**
 
 ```bash
 dataos-ctl product get
@@ -81,7 +81,7 @@ To delete the Data Product execute the following command.
 dataos-ctl product delete -f ${path-to-dp-manifest-file}
 ```
 
-**Example Usage:**
+**Example usage:**
 
 ```bash
 dataos-ctl product delete -f /home/iamgroot/office/data_products/firstdp.yaml
@@ -100,7 +100,7 @@ INFO[0000] 🗑 product delete...complete
     dataos-ctl product delete -i TYPE:VERSION:NAME
     ```
     
-    **Example Usage:**
+    **Example usage:**
     
     ```bash
     dataos-ctl product delete -i data:v1alpha:dp-test
@@ -117,7 +117,7 @@ INFO[0000] 🗑 product delete...complete
     dataos-ctl product delete -t data -n name -v version
     ```
     
-    **Example Usage:**
+    **Example usage:**
     
     ```bash
     dataos-ctl product delete -t data -n dataproduct -v v1alpha
