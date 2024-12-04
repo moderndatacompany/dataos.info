@@ -6,16 +6,16 @@ Let’s see the steps for building a Data Product:
 
 ## Pre-requisites
 
-Before proceeding with the Data Product creation, ensure that you have the necessary tags or use cases to be assigned. To know more about use cases, go to [Bifrost](https://dataos.info/interfaces/bifrost/).
+Before proceeding with the Data Product creation, ensure that you have the necessary tags or use cases to be assigned. To know more about use cases, go to [Bifrost](/interfaces/bifrost/).
 
 <aside class="callout">
 🗣 To acquire the necessary tags and use cases, please contact your organization's DataOS Operator.
 
 </aside>
 
-## Steps to Create a Data Product
+## Steps to create a Data Product
 
-From the design phase, it is clear which DataOS resources we require to build the Data Product, and these are [Instance Secret](/resources/instance_secret/), [Depot](/resources/depot/), [Cluster](/resources/cluster/), [Scanner](/resources/stacks/scanner/), [Flare](/resources/stacks/flare/), [Policy](/resources/policy/), [SODA Checks](/resources/stacks/soda/), [Monitor](/resources/monitor/), [Pager](/resources/pager/), and [Bundle](/resources/bundle/). Let’s see how to create each one step by step. As we already created the Depot and ran the Depot scanner, we’ll directly jump into the data transformation step using Flare.
+From the design phase, it is clear which DataOS Resources we require to build the Data Product, and these are [Instance Secret](/resources/instance_secret/), [Depot](/resources/depot/), [Cluster](/resources/cluster/), [Scanner](/resources/stacks/scanner/), [Flare](/resources/stacks/flare/), [Policy](/resources/policy/), [SODA Checks](/resources/stacks/soda/), [Monitor](/resources/monitor/), [Pager](/resources/pager/), and [Bundle](/resources/bundle/). Let’s see how to create each one step by step. As we already created the Depot and ran the Depot scanner, we’ll directly jump into the data transformation step using Flare.
 
 <aside class="callout">
 🗣 Depending upon the use case more resources can be added or removed, to know more about the DataOS resources refer to <a href="https://dataos.info/resources/">DataOS Resources</a>.
@@ -24,7 +24,7 @@ From the design phase, it is clear which DataOS resources we require to build th
 
 ### **Create the Flare Job for data transformation**
 
-[Flare](/resources/stacks/flare/) is a stack orchestrated by the [Workflow](/resources/workflow/) that abstracts Apache Spark for large-scale data processing, including ingestion, transformation, enrichment, profiling, quality assessment, and syndication for both batch and streaming data.
+[Flare](/resources/stacks/flare/) is a Stack orchestrated by the [Workflow](/resources/workflow/) that abstracts Apache Spark for large-scale data processing, including ingestion, transformation, enrichment, profiling, quality assessment, and syndication for both batch and streaming data.
 
 Let’s see how you can utilize Flare for various transformations, we are taking the same example of Google Analytics here, to ingest raw data as is from S3, with the only transformation being the conversion of the date column to date_time since it's initially in varchar format.
 
@@ -122,7 +122,7 @@ workflow:
         - dg-ga-sessions-daily-raw
 ```
 
-Note that the above provided manifest file is just an example of how you can create a Flare job. To know more about the Flare, [refer to this](https://dataos.info/resources/stackss/flare/). 
+Note that the above provided manifest file is just an example of how you can create a Flare job. To know more about the Flare, [refer to this](/resources/stackss/flare/). 
 
 ### **Create the Monitor for observability**
 
@@ -163,7 +163,7 @@ monitor:
 
 The above sample configuration demonstrates how to set up the Equation Monitor to raise the incident whenever the Workflow fails.
 
-To know more about Monitor, [refer to this](https://dataos.info/resources/monitor/).
+To know more about Monitor, [refer to this](/resources/monitor/).
 
 ### **Create the Pager for managing incidents**
 
@@ -201,13 +201,13 @@ pager:
 
 The above configurations demonstrate, how to create a Pager for MS Team and Outlook notifications.
 
-To know more about Pager, [refer to this](https://dataos.info/resources/pager/).
+To know more about Pager, [refer to this](/resources/pager/).
 
-### **Create the Bundle for applying all the resources**
+### **Create the Bundle for applying all the Resources**
 
 With the help of Bundle, users can perform the deployment and management of multiple Resources in a single operation, organized as a flattened DAG with interconnected dependency nodes.
 
-Let’s see, how you can create the Bundle resource to apply all the resources based on their dependencies. To create a Bundle in DataOS, simply compose a manifest file for a Bundle as shown below:
+Let’s see, how you can create the Bundle Resource to apply all the resources based on their dependencies. To create a Bundle in DataOS, simply compose a manifest file for a Bundle as shown below:
 
 ```yaml
 # Resource meta section
@@ -262,7 +262,7 @@ bundle:
   manageAsUser: iamgroot
 ```
 
-replace the placeholder with the actual values and apply it using the following command on the DataOS [Command Line Interface (CLI)](https://dataos.info/interfaces/cli/).
+replace the placeholder with the actual values and apply it using the following command on the DataOS [Command Line Interface (CLI)](/interfaces/cli/).
 
 ```bash
 dataos-ctl apply -f ${{yamlfilepath}}
@@ -270,7 +270,7 @@ dataos-ctl apply -f ${{yamlfilepath}}
 
 After executing the above command, all the resources will be applied per the dependencies.
 
-To learn more about the Bundle, [refer to this](https://dataos.info/resources/bundle/).
+To learn more about the Bundle, [refer to this](/resources/bundle/).
 
 
 ### **Create a Policy to secure the data**
@@ -317,6 +317,6 @@ dataos-ctl apply -f ${{yamlfilepath}}
 
 After executing the above command, the Policy will be applied.
 
-To know more about Policy, [refer to this](https://dataos.info/resources/policy/).
+To know more about Policy, [refer to this](/resources/policy/).
 
 Now the Data Product is ready. You can explore the Data Product on [Data Product Hub](/interfaces/data_product_hub/).

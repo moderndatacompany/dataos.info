@@ -12,7 +12,7 @@ An online retail company has set a goal to increase sales in the next year. The 
 
 ## Discovering the Data Product
 
-The product manager used the Data Product Hub to determine if any existing Data Products addressed the use case or could be leveraged to develop a Data Product that meets the requirements. Since no suitable Products were found, it was decided to create a new Data Product from scratch.
+The Product Manager used the Data Product Hub to determine if any existing Data Products addressed the use case or could be leveraged to develop a Data Product that meets the requirements. Since no suitable Products were found, it was decided to create a new Data Product from scratch.
 
 ## Designing the Data Product
 
@@ -52,7 +52,7 @@ In this step, the name, tier, domain, use case, inputs, outputs, and consumption
 
 ## Building the Data Product
 
-After the design phase, the development team initiates building the data product according to the specifications defined during the design phase.
+After the design phase, the development team initiates building the Data Product according to the specifications defined during the design phase.
 
 ### **Create the Flare job for data transformation**
 
@@ -1035,7 +1035,7 @@ version: v1beta
 type: bundle
 tags:
   - dataproduct
-description: This bundle resource is for the cross-sell data product.
+description: This bundle resource is for the cross-sell Data Product.
 layer: "user"
 bundle:
   workspaces:
@@ -1322,7 +1322,7 @@ type: workflow
 tags:
   - scanner
   - data-product
-description: The job scans data product from poros
+description: The job scans Data Product from poros
 workflow:
   dag:
     - name: scan-data-product-job
