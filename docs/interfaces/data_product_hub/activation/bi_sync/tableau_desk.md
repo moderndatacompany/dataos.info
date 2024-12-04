@@ -61,8 +61,6 @@ Once the connection is established, users can begin visualizing the Data Product
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(25).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
 
----
-
 
 ## Important Considerations for Tableau Integration
 
@@ -74,6 +72,17 @@ Once the connection is established, users can begin visualizing the Data Product
 
 **4. Avoiding cyclic dependencies:** Tableau does not support cyclic dependencies within data models. To prevent integration issues, it is essential to ensure that the data model is free of cyclic dependencies prior to syncing with Tableau.
 
+**5. Visualization with multiple data sources:** You cannot build a visualization that incorporates data from multiple data sources. For live connections, Tableau does not support data blending. Only a single data source can be used to create a visualization.
+
+**6. Calculated Fields on Dimensions/Measures:** Any calculated field defined on top of a dimension or measure that is part of the semantic model is not supported. This means you cannot create custom calculations based on these predefined dimensions or measures within the semantic model.
+
+**7. Centralized management:** All data sources should be managed and published by the admin on the server, with everyone else using this source.
+
+**8. Single authority for desktop publications:** If data sources are published via Tableau Desktop, ensure that all sources are published by a single authority to avoid multiple data source conflicts on the server.
+
+<aside class="callout">
+🗣️ Be aware that custom calculations or fields (measures/dimensions) created in BI tools may be lost during re-sync. It is preferable to create custom logic directly in Tableau's Lens.
+</aside>
 
 ## Handling specific data types in Tableau
 
@@ -94,7 +103,7 @@ Once the connection is established, users can begin visualizing the Data Product
     When connecting a dataset to Tableau, it automatically detects fields such as **City** and **Country** and converts them from string data types to **Geography** types. This enables Tableau to treat these fields as geographical locations, allowing features like map visualizations and geospatial analysis without the need for manual adjustments.
 
 <aside class="callout">
-📌 All limitations are specific to Tableau's handling of time data types as measures and does not affect other aspects of the Lens semantic layer's functionality.
+🗣️ All limitations are specific to Tableau's handling of time data types as measures and does not affect other aspects of the Lens semantic layer's functionality.
 
 </aside>
 
@@ -149,8 +158,6 @@ If the Account table is set to public = false, a data source error will occur in
 </div>
 
 To resolve this issue, ensure the Account table is accessible (set to public = true or assign appropriate permissions) and then resync the Lens in Tableau to regain access.
-
----
 
 ## Governance of Model on Tableau Desktop
 
