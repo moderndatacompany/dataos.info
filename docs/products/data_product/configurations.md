@@ -96,7 +96,7 @@ This section serves as the header of the manifest file, defining the overall cha
 | --- | --- | --- | --- |
 | string | mandatory | none | • alpha numeric values with the RegEx `[a-z0-9]([-a-z0-9]*[a-z0-9])`; a hyphen/dash is allowed as a special character<br>• total length of the string should be less than or equal to 48 characters |
 
-**Example Usage:**
+**Example usage:**
 
 ```yaml
 name: product-affinity-cross-sell
@@ -109,13 +109,13 @@ name: product-affinity-cross-sell
 
 ### **`version`**
 
-**Description:** The version of the Product manifest file
+**Description:** The version of the Product.
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
 | string | mandatory | none | v1alpha |
 
-**Example Usage:**
+**Example usage:**
 
 ```yaml
 version: v1beta
@@ -123,13 +123,13 @@ version: v1beta
 
 **`entity`**
 
-**Description:** Indicates the DataOS Entity to which the attributes apply, specified as "product".
+**Description:** Indicates the DataOS entity to which the attributes apply, specified as "product".
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
 | string | mandatory | none | product, resource, workspace, domain |
 
-**Example Usage:**
+**Example usage:**
 
 ```yaml
 entity: product
@@ -143,7 +143,7 @@ entity: product
 | --- | --- | --- | --- |
 | string | mandatory | none | data |
 
-**Example Usage:**
+**Example usage:**
 
 ```yaml
 type: data
@@ -157,7 +157,7 @@ type: data
 | --- | --- | --- | --- |
 | list of strings | optional | none | list of strings |
 
-**Example Usage:**
+**Example usage:**
 
 ```yaml
 tags: 
@@ -190,13 +190,13 @@ Following are the predefined tags which you can customize as per the specific Da
 
 ### **`description`**
 
-**Description:** A brief description of the product.
+**Description:** A brief description of the Product.
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
 | string | optional | none | any string |
 
-**Example Usage:**
+**Example usage:**
 
 ```yaml
 description: Leverages product affinity analysis to identify cross-sell opportunities, enabling businesses to enhance customer recommendations and drive additional sales by understanding the relationships between products purchased together # optional
@@ -219,7 +219,7 @@ description: Leverages product affinity analysis to identify cross-sell opportun
 | --- | --- | --- | --- |
 | string | optional | none | valid user-id |
 
-**Example Usage:**
+**Example usage:**
 
 ```yaml
 owner: iamgroot
@@ -227,13 +227,13 @@ owner: iamgroot
 
 **`refs`**
 
- **Description:** References associated with the product that can provide the additional information about it.
+ **Description:** References associated with the Product that can provide the additional information about it.
  
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
 | list of mappings | optional | none | mappings containing title and href address |
 
-**Example Usage:**
+**Example usage:**
 
 ```yaml
 refs:
@@ -260,7 +260,7 @@ Data Product-specific section is different for different versions. This section 
 | --- | --- | --- | --- |
 | string | mandatory | none | v1beta |
 
-**Example Usage:**
+**Example usage:**
 
 ```yaml
 v1beta:
@@ -273,9 +273,9 @@ v1beta:
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| object | mandatory | none | Contains `meta`, `collaborators`, `relatedDataProducts`, `resource`, `inputs`, `outputs`, `ports`, and `metrics`. |
+| object | mandatory | none | Contains `meta`, `collaborators`, `relatedDataProducts`, `resource`, `inputs`, `outputs`, `ports`, and `metrics` |
 
-**Example Usage:**
+**Example usage:**
 
 ```yaml
 data:
@@ -288,9 +288,9 @@ data:
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| object | optional | none | Contains key-value pairs for metadata. |
+| object | optional | none | Contains key-value pairs for metadata |
 
-**Example Usage:**
+**Example usage:**
 
 ```yaml
 meta: # mandatory
@@ -309,7 +309,7 @@ meta: # mandatory
 </center>
 
 
-Below table describes each attribute of the meta section.
+Below table describes each attribute of the product meta section.
 
 | Key | Value | Description |
 | --- | --- | --- |
@@ -329,9 +329,9 @@ Below table describes each attribute of the meta section.
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| list of objects | mandatory | none | Each object contains `name` and `description`. |
+| list of objects | mandatory | none | Each object contains `name` and `description` |
 
-**Example Usage:**
+**Example usage:**
 
 ```yaml
 collaborators:
@@ -361,7 +361,7 @@ collaborators:
 | --- | --- | --- | --- |
 | string | mandatory | none | Any valid string representing the collaborator's identity. |
 
-**Example Usage:**
+**Example usage:**
 
 ```yaml
 name: ${{iamgroot}}
@@ -375,7 +375,7 @@ name: ${{iamgroot}}
 | --- | --- | --- | --- |
 | string | mandatory | none | Example roles include owner, developer, consumer. |
 
-**Example Usage:**
+**Example usage:**
 
 ```yaml
 description: ${{owner}}
@@ -389,7 +389,7 @@ description: ${{owner}}
 | --- | --- | --- | --- |
 | list of strings | optional | none | Each string references another Data Product by specifying the version and name. |
 
-**Example Usage:**
+**Example usage:**
 
 ```yaml
 relatedDataProducts:
@@ -402,9 +402,9 @@ relatedDataProducts:
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| object | mandatory | none | Contains fields like `description`, `purpose`, `refType`, and `ref`. |
+| object | mandatory | none | Contains fields like `description`, `purpose`, `refType`, and `ref` |
 
-**Example Usage:**
+**Example usage:**
 
 ```yaml
 resource:
@@ -415,7 +415,7 @@ resource:
 ```
 <center>
   <img src="/products/data_product/configurations/metis_bundle.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
-  <figcaption><i>Data Product card showing the Bundle Resource info on the Metis</i></figcaption>
+  <figcaption><i>Data Product card showing the Bundle Resource info on Metis</i></figcaption>
 </center>
 
 ### **`description (resource)`**
@@ -426,7 +426,7 @@ resource:
 | --- | --- | --- | --- |
 | string | optional | none | Any string describing the resource. |
 
-**Example Usage:**
+**Example usage:**
 
 ```yaml
 description: ${{'Ingest data'}}
@@ -434,13 +434,13 @@ description: ${{'Ingest data'}}
 
 ### **`purpose (resource)`**
 
-**Description:** The purpose of the resource.
+**Description:** The purpose of the Resource.
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| string | optional | none | Possible values include specific purposes like `ingestion`. |
+| string | optional | none | Possible values include specific purposes like `ingestion` |
 
-**Example Usage:**
+**Example usage:**
 
 ```yaml
 purpose: ${{'ingestion'}}
@@ -448,13 +448,13 @@ purpose: ${{'ingestion'}}
 
 ### **`refType`**
 
-**Description:** The reference type of the resource.
+**Description:** The reference type of the Resource.
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| string | mandatory | none | Example: `dataos`. |
+| string | mandatory | none | Example: `dataos` |
 
-**Example Usage:**
+**Example usage:**
 
 ```yaml
 refType: ${{dataos}}
@@ -462,13 +462,13 @@ refType: ${{dataos}}
 
 ### **`ref`**
 
-**Description:** The reference of the resource.
+**Description:** The reference of the Resource.
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| string | mandatory | none | Example: `bundle:v1beta:sales-data-pipeline`. |
+| string | mandatory | none | Example: `bundle:v1beta:sales-data-pipeline` |
 
-**Example Usage:**
+**Example usage:**
 
 ```yaml
 ref: ${{bundle:v1beta:sales-data-pipeline}}
@@ -476,13 +476,13 @@ ref: ${{bundle:v1beta:sales-data-pipeline}}
 
 ### **`inputs`**
 
-**Description:** Lists the input data sources required by the Data Product.
+**Description:** Lists the input data sources required for the Data Product.
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| list of objects | mandatory | none | Each object describes an input with fields like `description`, `purpose`, `refType`, and `ref`. |
+| list of objects | mandatory | none | Each object describes an input with fields like `description`, `purpose`, `refType`, and `ref` |
 
-**Example Usage:**
+**Example usage:**
 
 ```yaml
 inputs: # mandatory
@@ -513,9 +513,9 @@ inputs: # mandatory
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| list of objects | mandatory | none | Each object details an output with fields like `description`, `purpose`, `refType`, `ref`, and optional `checks`. |
+| list of objects | optional | none | Each object details an output with fields like `description`, `purpose`, `refType`, `ref`, and optional `checks` |
 
-**Example Usage:**
+**Example usage:**
 
 ```yaml
 outputs: # optional
@@ -538,19 +538,19 @@ outputs: # optional
 
 ### **`ports`**
 
-**Description:** Defines the ports for accessing the Data Product through various services.
+**Description:** Defines the ports for accessing the Data Product through various tools.
 
 | Data Type | Requirement | Default Value | Possible Value |
 | --- | --- | --- | --- |
-| object | mandatory | none | Contains `lens`, `talos`, `rest`, and `postgres` sections for different types of ports. |
+| object | mandatory | none | Contains `lens`, `talos`, `rest`, and `postgres` sections for different types of ports |
 
-**Example Usage:**
+**Example usage:**
 
 ```yaml
 ports:
   lens:
-    ref: ${{lens:v1alpha:sales360:public}}
-    refType: ${{dataos}}
+    - ref: ${{lens:v1alpha:sales360:public}}
+      refType: ${{dataos}}
 
   talos:
     - ref: ${{service:v1:sales360-talos:public}}
