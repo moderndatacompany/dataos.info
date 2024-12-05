@@ -1,4 +1,4 @@
-# Understanding Core Concepets of Policy
+# Understanding Core Concepts of Policy
 
 ## Attribute Based Access Control (ABAC)
 
