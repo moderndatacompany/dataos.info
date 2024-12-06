@@ -1256,7 +1256,7 @@ tags:
   - DPUsecase.Customer Segmentation
   - DPUsecase.Product Recommendation
   - DPTier.DataCOE Approved
-gdescription: Leverages product affinity analysis to identify cross-sell opportunities, enabling businesses to enhance customer recommendations and drive additional sales by understanding the relationships between products purchased together
+description: Leverages product affinity analysis to identify cross-sell opportunities, enabling businesses to enhance customer recommendations and drive additional sales by understanding the relationships between products purchased together
 refs:
 - title: 'Workspace Info'
   href: https://dataos.info/interfaces/cli/command_reference/#workspace
@@ -1269,9 +1269,9 @@ v1beta:
       trackerUrl: https://rubikai.atlassian.net/browse/DPRB-65
  
     collaborators:
-      - name: kanakgupta
+      - name: iamgroot
         description: developer
-      - name: soumadipde
+      - name: thisisthor
         description: consumer
 
     resource:
