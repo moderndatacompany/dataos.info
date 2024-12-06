@@ -11,7 +11,7 @@ Iterating a Data Product involves refining and enhancing it based on feedback, p
   <img src="/products/data_product/how_to_guides/image.png" style="border:2px solid black; width: auto; height: 25%;">
 </div>
 
-- **Implement changes:** Update the Data Product according to the issues arises. This might involve modifying data sources, transformation logic, data models, and workflows. To update the Data Product simply make the changes in the resources that require updation and re-apply the bundle resource using the below command:
+- **Implement changes:** Update the Data Product according to the issues arises. This might involve modifying data sources, transformation logic, data models, and workflows. To update the Data Product simply make the changes in the Resources that require updation and re-apply the Bundle Resource using the below command:
 
 ```shell
 
@@ -37,6 +37,6 @@ INFO[0001] 🛠 apply...complete
 
 - **Manage user access:** Easily provide and deny access to new users to maintain control over who can interact with the Data Product.
 
-- **Upgrade/Update and retire Products:** Easily upgrade or update data products and retire them with one-command deletion to keep the system current and relevant.
+- **Upgrade/Update and retire Products:** Easily upgrade or update Data Products and retire them with one-command deletion to keep the system current and relevant.
 
 By following these steps, you can continuously improve your Data Product to better meet user needs and business objectives.
