@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pyflare.sdk.config.constants &mdash; dataos-pyflare 0.1.7 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            dataos-pyflare
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/modules.html">pyflare</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">dataos-pyflare</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">pyflare.sdk.config.constants</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for pyflare.sdk.config.constants</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">SPARK_APP_NAME_PREFIX</span> <span class="o">=</span> <span class="s2">&quot;DataOS Pyflare&quot;</span>
+<span class="n">SPARK_APP_NAME</span> <span class="o">=</span> <span class="s2">&quot;SPARK_APP_NAME&quot;</span>
+<span class="n">HTTP_PROTOCOL</span> <span class="o">=</span> <span class="s2">&quot;https&quot;</span>
+<span class="n">DATAOS_BASE_URL</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="n">HTTPS_PREFIX</span> <span class="o">=</span> <span class="s2">&quot;https://&quot;</span>
+
+<span class="n">DEPOT_METADATA_ENDPOINT</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">://</span><span class="si">{}</span><span class="s2">/ds/api/v2/depots/</span><span class="si">{}</span><span class="s2">&quot;</span>
+<span class="n">DEPOT_RESOLVE_ENDPOINT</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">://</span><span class="si">{}</span><span class="s2">/ds/api/v2/resolve?address=</span><span class="si">{}</span><span class="s2">&quot;</span>
+<span class="n">DEPOT_RESOLVE_ENDPOINT_CUSTOM</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">://</span><span class="si">{}</span><span class="s2">/ds/api/v2/resolve?address=dataos://</span><span class="si">{}</span><span class="s2">&quot;</span>
+<span class="n">DEPOT_SECRETS_ENDPOINT</span> <span class="o">=</span> <span class="n">DEPOT_METADATA_ENDPOINT</span> <span class="o">+</span> <span class="s2">&quot;/secrets?acl=</span><span class="si">{}</span><span class="s2">&quot;</span>
+<span class="n">DEPOT_METADETA_HEADER_KEY</span> <span class="o">=</span> <span class="s2">&quot;Apikey&quot;</span>
+<span class="n">TYPE</span> <span class="o">=</span> <span class="s2">&quot;type&quot;</span>
+<span class="n">NAME</span> <span class="o">=</span> <span class="s2">&quot;name&quot;</span>
+<span class="n">FORMAT</span> <span class="o">=</span> <span class="s2">&quot;format&quot;</span>
+<span class="n">HTTP_GET</span> <span class="o">=</span> <span class="s2">&quot;GET&quot;</span>
+<span class="n">DATAOS_ADDRESS_RESOLVER_REGEX</span> <span class="o">=</span> <span class="s2">&quot;dataos:</span><span class="se">\\</span><span class="s2">/</span><span class="se">\\</span><span class="s2">/([a-zA-Z0-9-]+)(:([a-zA-Z0-9_]+))(</span><span class="se">\\</span><span class="s2">/(.*))*&quot;</span>
+<span class="n">UTF8</span> <span class="o">=</span> <span class="s2">&quot;utf-8&quot;</span>
+<span class="n">BASE64VALUE</span> <span class="o">=</span> <span class="s2">&quot;base64Value&quot;</span>
+<span class="n">CONTAINER</span> <span class="o">=</span> <span class="s2">&quot;container&quot;</span>
+<span class="n">ACCOUNT</span> <span class="o">=</span> <span class="s2">&quot;account&quot;</span>
+<span class="n">ENDPOINT_SUFFIX</span> <span class="o">=</span> <span class="s2">&quot;endpointSuffix&quot;</span>
+<span class="n">CATALOG</span> <span class="o">=</span> <span class="s2">&quot;catalog&quot;</span>
+<span class="n">STORAGE_ACCOUNT_KEY</span> <span class="o">=</span> <span class="s2">&quot;storageaccountkey&quot;</span>
+<span class="n">STORAGE_ACCOUNT_NAME</span> <span class="o">=</span> <span class="s2">&quot;storageaccountname&quot;</span>
+<span class="n">AZURE_ACCOUNT_KEY</span> <span class="o">=</span> <span class="s2">&quot;azurestorageaccountkey&quot;</span>
+<span class="n">ICEBASE</span> <span class="o">=</span> <span class="s2">&quot;icebase&quot;</span>
+<span class="n">AZURE_ACCOUNT_KEY_PREFIX</span> <span class="o">=</span> <span class="s2">&quot;fs.azure.account.key&quot;</span>
+<span class="n">FILE_PROTOCOL_TYPE</span> <span class="o">=</span> <span class="s2">&quot;file_protocol_type&quot;</span>
+<span class="n">DATASET_FORMAT</span> <span class="o">=</span> <span class="s2">&quot;dataset_format&quot;</span>
+<span class="n">DATASET_LOCATION</span> <span class="o">=</span> <span class="s2">&quot;dataset_location&quot;</span>
+<span class="n">ABFSS</span> <span class="o">=</span> <span class="s2">&quot;abfss&quot;</span>
+<span class="n">WASBS</span> <span class="o">=</span> <span class="s2">&quot;wasbs&quot;</span>
+<span class="n">PULSAR</span> <span class="o">=</span> <span class="s2">&quot;pulsar&quot;</span>
+<span class="n">RELATIVE_PATH</span> <span class="o">=</span> <span class="s2">&quot;relativePath&quot;</span>
+<span class="n">PASSWORD</span> <span class="o">=</span> <span class="s2">&quot;password&quot;</span>
+<span class="n">USERNAME</span> <span class="o">=</span> <span class="s2">&quot;username&quot;</span>
+<span class="n">MINEVRA_URL</span> <span class="o">=</span> <span class="s2">&quot;jdbc:trino://tcp.</span><span class="si">{}</span><span class="s2">:7432&quot;</span>
+<span class="n">OUTPUT_STRING</span> <span class="o">=</span> <span class="s2">&quot;Output&quot;</span>
+<span class="n">INPUT_STRING</span> <span class="o">=</span> <span class="s2">&quot;Input&quot;</span>
+<span class="n">DEPOT_NAME_JSON_FILE_REGEX</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;^</span><span class="si">{depot_name}</span><span class="s1">_.*\.json$&#39;</span>
+<span class="n">DEPOT_SECRETS_KV_REGEX</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(\w+)=(.*?)\n[ \t]*&quot;</span>
+<span class="n">DATAOS_DEFAULT_SECRET_DIRECTORY</span> <span class="o">=</span> <span class="s2">&quot;/etc/dataos/secret&quot;</span>
+<span class="n">ELASTIC_SEARCH_IO_FORMAT</span> <span class="o">=</span> <span class="s2">&quot;org.elasticsearch.spark.sql&quot;</span>
+<span class="n">S3_ACCESS_KEY_ID</span> <span class="o">=</span> <span class="s2">&quot;spark.hadoop.fs.s3a.access.key&quot;</span>
+<span class="n">S3_ACCESS_SECRET_KEY</span> <span class="o">=</span> <span class="s2">&quot;spark.hadoop.fs.s3a.secret.key&quot;</span>
+<span class="n">S3_SPARK_CONFS</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;spark.hadoop.fs.s3a.impl&quot;</span><span class="p">,</span> <span class="s2">&quot;org.apache.hadoop.fs.s3a.S3AFileSystem&quot;</span><span class="p">),</span>
+                  <span class="p">(</span><span class="s1">&#39;spark.hadoop.fs.s3a.aws.credentials.provider&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider&#39;</span><span class="p">),</span>
+                  <span class="p">(</span><span class="s2">&quot;spark.sql.json.output.committer.class&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;org.apache.spark.internal.io.cloud.PathOutputCommitProtocol&quot;</span><span class="p">),</span>
+                  <span class="p">(</span><span class="s2">&quot;spark.hadoop.mapreduce.outputcommitter.factory.scheme.s3a&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;org.apache.hadoop.fs.s3a.commit.S3ACommitterFactory&quot;</span><span class="p">),</span>
+                  <span class="p">(</span><span class="s2">&quot;spark.hadoop.fs.s3a.committer.magic.enabled&quot;</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">),</span>
+                  <span class="p">(</span><span class="s2">&quot;fs.s3a.committer.name&quot;</span><span class="p">,</span> <span class="s2">&quot;magic&quot;</span><span class="p">)</span>
+                  <span class="p">]</span>
+<span class="n">S3_ICEBERG_FILE_IO</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;spark.sql.catalog.my_catalog.io-impl&quot;</span><span class="p">,</span> <span class="s2">&quot;org.apache.iceberg.aws.s3.S3FileIO&quot;</span><span class="p">)</span>
+<span class="n">GCS_ACCOUNT_PRIVATE_KEY_ID</span> <span class="o">=</span> <span class="s2">&quot;spark.hadoop.fs.gs.auth.service.account.private.key.id&quot;</span>
+<span class="n">GCS_ACCOUNT_PRIVATE_KEY</span> <span class="o">=</span> <span class="s2">&quot;spark.hadoop.fs.gs.auth.service.account.private.key&quot;</span>
+<span class="n">GCS_ACCOUNT_PRIVATE_KEY_JSON</span> <span class="o">=</span> <span class="s2">&quot;spark.hadoop.google.cloud.auth.service.account.json.keyfile&quot;</span>
+<span class="n">GCS_ACCOUNT_EMAIL</span> <span class="o">=</span> <span class="s2">&quot;spark.hadoop.fs.gs.auth.service.account.email&quot;</span>
+<span class="n">GCS_PROJECT_ID</span> <span class="o">=</span> <span class="s2">&quot;spark.hadoop.fs.gs.project.id&quot;</span>
+<span class="n">GCS_AUTH_ACCOUNT_ENABLED</span> <span class="o">=</span> <span class="s2">&quot;spark.hadoop.google.cloud.auth.service.account.enable&quot;</span>
+<span class="n">LOG4J_PROPERTIES_DEFAULT_PATH</span> <span class="o">=</span> <span class="s2">&quot;/opt/spark/conf/log4j.properties&quot;</span>
+<span class="n">LOG4J_PROPERTIES</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;log4j.rootLogger=</span><span class="si">{root_logger_level}</span><span class="s2">, console</span>
+<span class="s2">log4j.logger.org.apache.spark=</span><span class="si">{root_logger_level}</span>
+<span class="s2">log4j.logger.org.apache.spark.api.python.PythonGatewayServer=</span><span class="si">{root_logger_level}</span>
+<span class="s2">log4j.appender.console=org.apache.log4j.ConsoleAppender</span>
+<span class="s2">log4j.appender.console.target=SYSTEM_ERR</span>
+<span class="s2">log4j.appender.console.layout=org.apache.log4j.PatternLayout</span>
+<span class="s2">log4j.appender.console.layout.ConversionPattern=[spark][</span><span class="si">%d</span><span class="s2">{{yyyy - MM - dd HH:mm:ss}}][%p][</span><span class="si">%c</span><span class="s2">][%m]%n</span>
+<span class="s2">log4j.appender.publicFile.layout.ConversionPattern=[spark][%p][</span><span class="si">%d</span><span class="s2">{{yy / MM / dd HH:mm:ss}}][</span><span class="si">%c</span><span class="s2">][%m]%n</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+
+<span class="c1"># env variables</span>
+
+<span class="n">HEIMDALL_BASE_URL</span> <span class="o">=</span> <span class="s2">&quot;HEIMDALL_BASE_URL&quot;</span>
+
+<div class="viewcode-block" id="get_log4j_properties_path"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.config.html#pyflare.sdk.config.constants.get_log4j_properties_path">[docs]</a><span class="k">def</span> <span class="nf">get_log4j_properties_path</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;LOG4J_PROPERTIES_PATH&quot;</span><span class="p">,</span> <span class="n">LOG4J_PROPERTIES_DEFAULT_PATH</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_spark_app_name"><a class="viewcode-back" href="../../../../docs/pyflare.sdk.config.html#pyflare.sdk.config.constants.get_spark_app_name">[docs]</a><span class="k">def</span> <span class="nf">get_spark_app_name</span><span class="p">():</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">SPARK_APP_NAME</span><span class="p">,</span> <span class="n">SPARK_APP_NAME_PREFIX</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Modern Labs.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
