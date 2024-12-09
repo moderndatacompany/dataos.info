@@ -22,7 +22,7 @@ dataos-ctl user apikey get
 
 ## Steps
 
-To sync the Lens semantic model with Tableau, follow the steps below:
+To sync the semantic model with Tableau, follow the steps below:
 
 **Step 1: Run the curl command**
 
@@ -41,10 +41,10 @@ curl --location --request POST 'http://tcp.<DATAOS_FQDN>/lens2/sync/api/v1/table
 
 1. **URL:**
 
-    - This endpoint is used to sync a specific Lens semantic model to Tableau for public access.
-    - Replace <DATAOS_FQDN> with the Fully Qualified Domain Name (FQDN) where Lens instance is hosted. Example: liberal-monkey.dataos.app.
-    - Replace <WORKSPACE_NAME> with the name of the workspace where the Lens semantic model is deployed. e.g., `public`, `curriculum`.
-    - Replace <LENS_NAME> with the name of the Lens semantic model to sync. e.g.,: `sales360`.
+    - This endpoint is used to sync a specific semantic model to Tableau for public access.
+    - Replace <DATAOS_FQDN> with the Fully Qualified Domain Name (FQDN) where Lens is hosted. Example: liberal-monkey.dataos.app.
+    - Replace <WORKSPACE_NAME> with the name of the workspace where the semantic model (Lens) is deployed. e.g., `public`, `curriculum`.
+    - Replace <LENS_NAME> with the name of the semantic model to sync. e.g., `sales360`.
 
 2. **Headers:**
 
@@ -109,7 +109,7 @@ Upon clicking 'Connect', a prompt will request the username and password. Enter 
 
 **1. Handling entities without relationships:** An error will occur during synchronization if any entity in the semantic model lacks a defined relationship. To resolve this issue, the entity can be hidden to avoid synchronization errors.
 
-**2. Live connection:** The connection between the Lens semantic layer and Tableau Cloud is live. This means that any changes to the underlying data or measure logic will automatically be reflected in Tableau.
+**2. Live connection:** The connection between the semantic layer and Tableau Cloud is live. This means that any changes to the underlying data or measure logic will automatically be reflected in Tableau.
 
 **3. Schema changes:** If there are schema updates, such as adding new dimensions or measures, the integration steps will need to be repeated to incorporate these changes into Tableau.
 
@@ -120,7 +120,7 @@ Upon clicking 'Connect', a prompt will request the username and password. Enter 
 
 1. **Time data type as measure in Tableau**  
 
-    When syncing the Lens semantic layer with Tableau, note that Tableau does not support the time data type as a measure. While Lens allows time-based measures, Tableau defaults to treating date and time fields as dimensions.As a result, Tableau will not correctly interpret any measure with a **time data type**.
+    When syncing the semantic layer with Tableau, note that Tableau does not support the time data type as a measure. While Lens allows time-based measures, Tableau defaults to treating date and time fields as dimensions.As a result, Tableau will not correctly interpret any measure with a **time data type**.
 
 
     **Recommended actions**:
