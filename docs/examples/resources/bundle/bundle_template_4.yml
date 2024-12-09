@@ -43,8 +43,8 @@ bundle:
             - acl: rw 
               type: key-value-properties
               data: 
-                username: XPLORERSDATA
-                password: Priyansh@2007
+                username: ironman
+                password: ironman@123
 
     - id: scanner
       spec: 
