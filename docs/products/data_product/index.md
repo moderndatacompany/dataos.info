@@ -149,7 +149,7 @@ A Data Product manifest outlines essential metadata and configuration details ab
           - refType: ${{dataos}}
             ref: ${{dataset:icebase:customer_relationship_management:product}}
 
-        outputs: # mandatory
+        outputs: # optional
           - refType: ${{dataos}}
             ref: ${{dataset:icebase:customer_relationship_management:product_affinity_matrix}}
 
