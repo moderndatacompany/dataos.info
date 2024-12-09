@@ -159,7 +159,7 @@ Now, users can create dashboard and extract relevant insights.
 | **Measure**    | `count_distinct_approx`       | Not Supported         | NA                                            |
 | **Rolling Window** | -                      | Supported                                | NA                                            |
 
-## Handling specific data types in Tableau
+<!-- ## Handling specific data types in Tableau
 
 1. **Time data type as measure in Tableau**  
 
@@ -175,11 +175,11 @@ Now, users can create dashboard and extract relevant insights.
 
 2. **String data type to geographical**
 
-    When connecting a dataset to Tableau, it automatically detects fields such as **City** and **Country** and converts it from string to **Geography** types. This enables Tableau to treat these fields as geographical locations, allowing features like map visualizations and geospatial analysis without the need for manual adjustments.
+    When connecting a dataset to Tableau, it automatically detects fields such as **City** and **Country** and converts it from string to **Geography** types. This enables Tableau to treat these fields as geographical locations, allowing features like map visualizations and geospatial analysis without the need for manual adjustments. -->
 
-<aside class="callout">
+<!-- <aside class="callout">
 🗣️ All limitations are specific to Tableau's handling of time data types as measures and does not affect other aspects of the Lens semantic layer functionality.
-</aside>
+</aside> -->
 
 
 ## Important considerations for Tableau integration
@@ -194,11 +194,15 @@ Now, users can create dashboard and extract relevant insights.
 
 **5. Visualization with multiple data sources:** You cannot build a visualization that incorporates data from multiple data sources. For live connections, Tableau does not support data blending. Only a single data source can be used to create a visualization.
 
-**6. Calculated Fields on Dimensions/Measures:** Any calculated field defined on top of a dimension or measure that is part of the semantic model is not supported. This means you cannot create custom calculations based on these predefined dimensions or measures within the semantic model.
+<!-- **6. Calculated Fields on Dimensions/Measures:** Any calculated field defined on top of a dimension or measure that is part of the semantic model is not supported. This means you cannot create custom calculations based on these predefined dimensions or measures within the semantic model. -->
 
-**7. Centralized Management:** All data sources should be managed and published by the admin on the server, with everyone else using this source.
+**6. Centralized management:** All data sources should be managed and published by the admin on the server, with everyone else using this source.
 
-**8. Single Authority for Desktop Publications:** If data sources are published via Tableau Desktop, ensure that all sources are published by a single authority to avoid multiple data source conflicts on the server.
+**7. Single authority for Desktop publications:** If data sources are published via Tableau Desktop, ensure that all sources are published by a single authority to avoid multiple data source conflicts on the server.
+
+**8. Row Limit:** The Lens API has a maximum return limit of 50,000 rows per request. To obtain additional data, it is necessary to set an offset. This row limit is in place to manage resources efficiently and ensure optimal performance.
+
+**9. Selection:** It is important to select fields from tables that are directly related or logically joined, as the system does not automatically identify relationships between tables through transitive joins. Selecting fields from unrelated tables may result in incorrect or incomplete results.
 
 <aside class="callout">
 🗣️ Be aware that custom calculations or fields (measures/dimensions) created in BI tools may be lost during re-sync. It is preferable to create custom logic directly in Tableau's Lens.
@@ -206,7 +210,7 @@ Now, users can create dashboard and extract relevant insights.
 
 ## Error handling 
 
-**Scenario 1: Handling syntactical errors in Measures or Dimensions** 
+**Scenario 1: Handling syntactical errors in measures or dimensions** 
 
 If a measure or dimension contains a syntactical error (and is also not functioning in DPH Explorer Studio), the following error will appear when attempting to select such a measure or dimension:
 
