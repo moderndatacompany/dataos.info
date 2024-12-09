@@ -122,7 +122,7 @@ workflow:
         - dg-ga-sessions-daily-raw
 ```
 
-Note that the above provided manifest file is just an example of how you can create a Flare job. To know more about the Flare, [refer to this](/resources/stackss/flare/). 
+Note that the above provided manifest file is just an example of how you can create a Flare job. To know more about the Flare, [refer to this](/resources/stacks/flare/). 
 
 ### **Create the Monitor for observability**
 

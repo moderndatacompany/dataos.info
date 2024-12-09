@@ -1,0 +1,21 @@
+name: filter-icebase-city
+version: v1
+type: policy
+layer: user
+description: "data policy to filter zip data"
+policy:
+  data:
+    type: filter
+    name: "filtericebasecity"
+    priority: 10
+    selector:
+      user:
+        match: any
+        tags:
+          - "users:id:iamgroot"
+    filters:
+      - column: county_name
+        operator: not_equals
+        value: "Autauga County"
+    dataset_id: icebase.retail.city
+    description: 'data policy to filter data on zip code'
