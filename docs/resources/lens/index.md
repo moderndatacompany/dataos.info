@@ -139,26 +139,25 @@ After creating a Lens data model, the next step is to explore it—this means in
 
 Lens integrates with a variety of data sources to streamline data analysis and management. Below is a list of supported data sources.
 
-[Bigquery](/resources/lens/data_sources/bigquery/)
+- [Bigquery](/resources/lens/data_sources/bigquery/)
 
-[AWS Redshift](/resources/lens/data_sources/awsredshift/)
+- [AWS Redshift](/resources/lens/data_sources/awsredshift/)
 
-[Themis](/resources/lens/data_sources/themis/)
+- [Themis](/resources/lens/data_sources/themis/)
 
-[Postgres](/resources/lens/data_sources/postgres/)
+- [Postgres](/resources/lens/data_sources/postgres/)
 
-[Minerva](/resources/lens/data_sources/minerva/)
+- [Minerva](/resources/lens/data_sources/minerva/)
 
-[Flash](/resources/lens/data_sources/flash/)
+- [Flash](/resources/lens/data_sources/flash/)
 
 <!-- [Snowflake](/resources/lens/data_sources/snowflake/) -->
-
 
 ## Optimizing Lens model
 
 The Lens semantic layer provides several optimization techniques that can significantly enhance the performance of data queries. The following page explores best practices and strategies for fine-tuning your Lens model to maximize efficiency. 
 
-[Optimizing Lens model: Best practices for the Semantic Layer](/resources/lens/fine_tuning_a_lens_model/)
+- [Optimizing Lens model: Best practices for the Semantic Layer](/resources/lens/fine_tuning_a_lens_model/)
 
 
 

@@ -27,7 +27,7 @@ To sync the Lens semantic model with Tableau, follow the steps below:
 **Step 1: Run the curl command**
 
 ```bash
-curl --location --request POST 'http://tcp.<DATAOS_FQDN>/lens2/sync/api/v1/tableau-server/<WORKSPACE_NAME>:<LENS_NAME>' \
+curl --location --request POST 'http://tcp.<DATAOS_FQDN>/lens2/sync/api/v1/tableau-cloud/<WORKSPACE_NAME>:<LENS_NAME>' \
 --header 'apikey: <APIKEY>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -183,10 +183,10 @@ If the Lens is not active in the environment while working on an existing workbo
 
 **Scenario 4: Handling data source errors due to access restrictions**
 
-If the Account table is set to `public = false`, a data source error will occur in Tableau. The error message will indicate that the "Account table not found," which will prevent querying or using data from that table.
+If the Account table is set to `public = false`, a data source error will occur in Tableau. The error message will indicate that the 'Account table not found,' which will prevent querying or using data from that table.
 
 <div style="text-align: center;">
     <img src="/resources/lens/bi_integration/image06.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-To resolve this issue, ensure the Account table is accessible (set to public = true or assign appropriate permissions) and then resync the Lens in Tableau to regain access.
+To resolve this issue, ensure the Account table is accessible (set to `public = true` or assign appropriate permissions) and then resync the Lens in Tableau to regain access.
