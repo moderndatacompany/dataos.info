@@ -8,7 +8,7 @@ Follow the below steps:
 
 ### **Step 1: Navigate to the Data Product Hub**
 
-Access the **Home Page** of DataOS. From there, navigate to the **Data Product Hub** to explore the various Data Products available within the platform.
+Access the Home Page of DataOS. From there, navigate to the Data Product Hub to explore the various Data Products available within the platform.
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -16,7 +16,7 @@ Access the **Home Page** of DataOS. From there, navigate to the **Data Product H
 
 ### **Step 2: Browse and select a Data Product**
 
-Browse the list of Data Products and select a specific Data Product to initiate integration with Power BI. For example, selecting **Sales360** allows detailed exploration and integration of the Sales360 Data Product.
+Browse the list of Data Products and select a specific Data Product to initiate integration with Power BI. For example, selecting 'Sales360' allows detailed exploration and integration of the Sales360 Data Product.
 
 
 <center>
@@ -25,7 +25,7 @@ Browse the list of Data Products and select a specific Data Product to initiate 
 
 ### **Step 3: Access integration options**
 
-Navigate to the BI Sync option in the Access Option tab, then scroll through find the **Excel and Power BI** option. Click on the download `.pbip` file button to download a ZIP folder.
+Navigate to the BI Sync option in the Access Option tab, then scroll through find the 'Excel and Power BI' option. Click on the download `.pbip` file button to download a ZIP folder.
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/Powerbi3.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -39,7 +39,7 @@ Access the downloaded ZIP file on the local system and extract its contents to t
 <img src="/interfaces/data_product_hub/activation/bi_sync/Untitled%20(15).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
 
-The folder contains the main components of a Power BI project for syncing the Lens Mhodel (here `sales360`) including folders like the `.Report` and `.SemanticModel`. Following is the brief description of each:
+The folder contains the main components of a Power BI project for syncing the Lens model (here `sales360`) including folders like the `.Report` and `.SemanticModel`. Following is the brief description of each:
 
 - **public_sales360-table.Report:** This folder contains `definition.pbir` file related to the report definition in Power BI. These files define the visual representation of data, such as tables and charts, without storing actual data. They connect the semantic model and data sources to create the report views.
 

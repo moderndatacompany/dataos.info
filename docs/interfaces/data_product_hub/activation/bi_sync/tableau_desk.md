@@ -151,7 +151,7 @@ If the Lens is not active in the environment while working on an existing workbo
 
 **Scenario 4: Handling data source errors due to access restrictions**
 
-If the Account table is set to public = false, a data source error will occur in Tableau. The error message will indicate that the "Account table not found," which will prevent querying or using data from that table.
+If the Account table is set to `public = false`, a data source error will occur in Tableau. The error message will indicate that the "Account table not found," which will prevent querying or using data from that table.
 
 <div style="text-align: center;">
     <img src="/resources/lens/bi_integration/image06.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
@@ -165,4 +165,4 @@ When the Lens Model is activated via BI Sync on Tableau, all user-level access c
 
 The management process utilizes authentication and authorization through the DataOS user ID and API key when accessing synced data models. This ensures that columns redacted by Lens data policies are restricted based on the user's group permissions.
 
-For instance, if a user named **iamgroot** in the "**Analyst**" group is restricted from viewing the "Annual Salary" column, this column will not be visible in either the Data Product exploration page or in Tableau after syncing. Tableau Desktop requires the DataOS user ID and API key for authentication, ensuring users can access the full model, except for any columns restricted by their data policies. This approach maintains security and guarantees that users only see the data they are authorized to view.
+For instance, if a user named 'iamgroot' in the 'Analyst' group is restricted from viewing the 'Annual Salary' column, this column will not be visible in either the Data Product exploration page or in Tableau after syncing. Tableau Desktop requires the DataOS user ID and API key for authentication, ensuring users can access the full model, except for any columns restricted by their data policies. This approach maintains security and guarantees that users only see the data they are authorized to view.
