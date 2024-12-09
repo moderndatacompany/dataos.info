@@ -25,7 +25,7 @@ Browse the list of Data Products and select a specific Data Product to initiate 
 
 ### **Step 3: Access integration options**
 
-Navigate to the BI Sync option in the Access Option tab, then scroll through find the 'Excel and Power BI' option. Click on the download `.pbip` file button to download a ZIP folder.
+Go to the BI Sync option under the Access Options tab. Scroll down to locate the Excel and Power BI section, and click the Download .pbip File button to download the ZIP folder.
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/Powerbi3.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
