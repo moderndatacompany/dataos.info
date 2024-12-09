@@ -1,6 +1,6 @@
-# PowerBI Integration
+# Power BI Integration
 
-The following document outline the process for integrating PowerBI with DataOS.
+The following document outlines the process for integrating Power BI with DataOS.
 
 ## Steps
 
@@ -8,7 +8,7 @@ Follow the below steps:
 
 ### **Step 1: Navigate to the Data Product Hub**
 
-Access the **Home Page** of DataOS. From there, navigate to the **Data Product Hub** to explore the various Data Products available within the platform.
+Access the Home Page of DataOS. From there, navigate to the Data Product Hub to explore the various Data Products available within the platform.
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(1).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -16,7 +16,7 @@ Access the **Home Page** of DataOS. From there, navigate to the **Data Product H
 
 ### **Step 2: Browse and select a Data Product**
 
-Browse the list of Data Products and select a specific Data Product to initiate integration with Power BI. For example, selecting **Sales360** allows detailed exploration and integration of the Sales360 Data Product.
+Browse the list of Data Products and select a specific Data Product to initiate integration with Power BI. For example, selecting 'Sales360' allows detailed exploration and integration of the Sales360 Data Product.
 
 
 <center>
@@ -25,7 +25,7 @@ Browse the list of Data Products and select a specific Data Product to initiate 
 
 ### **Step 3: Access integration options**
 
-Navigate to the BI Sync option in the Access Option tab, scrolling through find the **Excel and PowerBI** option. Click on the download `.pbip` file button to download a ZIP folder.
+Go to the BI Sync option under the Access Options tab. Scroll down to locate the Excel and Power BI section, and click the Download .pbip File button to download the ZIP folder.
 
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/powerbi/Powerbi3.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
@@ -39,13 +39,13 @@ Access the downloaded ZIP file on the local system and extract its contents to t
 <img src="/interfaces/data_product_hub/activation/bi_sync/Untitled%20(15).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
 
-The folder stores the main components of a Power BI project for syncing the Lens Model (here `sales360`) including folders like the `.Report` and `.SemanticModel`. Following is the brief description of each:
+The folder contains the main components of a Power BI project for syncing the Lens model (here `sales360`) including folders like the `.Report` and `.SemanticModel`. Following is the brief description of each:
 
-- **public_sales360-table.Report:** This folder holds contains `definition.pbir` file related to the report definition in Power BI. These files define the visual representation of data, such as tables and charts, without storing actual data. They connect the semantic model and data sources to create the report views.
+- **public_sales360-table.Report:** This folder contains `definition.pbir` file related to the report definition in Power BI. These files define the visual representation of data, such as tables and charts, without storing actual data. They connect the semantic model and data sources to create the report views.
 
-- **public-sales360-table.SemanticModel:** This folder contains files that define the underlying data model for your Power BI project. The Semantic Model plays a crucial role in managing how Power BI interacts with data, setting up relationships, hierarchies, and measures.
+- **public-sales360-table.SemanticModel:** This folder contains files that define the underlying data model for your Power BI project. The semantic model plays a crucial role in managing how Power BI interacts with data, setting up relationships, hierarchies, and measures.
 
-    - **definition.bism:** This file represents the Business Intelligence Semantic Model (BISM). It defines the structure of your data, including data sources, relationships, tables, and measures for your Lens Model. The `.bism` file holds essential metadata that helps Power BI understand and query the data, forming the core of the data model for report creation and analysis.
+    - **definition.bism:** This file represents the Business Intelligence Semantic Model (BISM). It defines the structure of your data, including data sources, relationships, tables, and measures for your Lens semantic model. The `.bism` file holds essential metadata that helps Power BI understand and query the data, forming the core of the data model for report creation and analysis.
 
     - **model.bim:** Power BI uses the `.bim` file to generate queries and manage interactions with the dataset. When you build reports or dashboards in Power BI, it references this semantic model to ensure the correct structure is applied to the data.
 
@@ -79,21 +79,30 @@ After connecting, users can see tables and views containing dimensions and measu
 <img src="/interfaces/data_product_hub/activation/bi_sync/Untitled%20(19).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
 
----
+
+## Supported data types
+
+| **Category**   | **Data Types**                                                                  | **Support Status**                       |
+|----------------|---------------------------------------------------------------------------------|------------------------------------------|
+| **Dimension**  | `time`, `string`, `number`, `boolean`                                                   | Supported                                |
+| **Measure**    | `max`, `min`, `number`, `sum`, `count`, `boolean`, `string`, `time`, `avg`, `count_distinct`         | Supported                                |
+| **Measure**    | `count_distinct_approx`                                                           | Not Supported                            |
+| **Rolling Window** | -                                                                           | Not Supported (Power BI doesn’t support) |
 
 ## Important considerations
 
-- Measures in Power BI are typically named as **`m_total_revenue`**.
+- Measures in Power BI are typically named as `m_total_revenue`.
 - The connection is live, meaning any changes to the underlying data or measure logic will be reflected in Power BI.
 - If schema changes occur, such as the addition of new dimensions and measures, the steps outlined above will need to be repeated.
+- Custom measures or dimensions created in Power BI may be lost during re-sync operations. It is recommended to implement custom logic directly within the Lens when possible to ensure persistence of customizations.
 
 ## Best practices
 
-Adhering to best practices ensures that you effectively utilize the Data Product Hub and maintain compatibility with the latest features and updates. Following these guidelines will help optimize your workflow, enhance performance, and prevent potential issues.
+Adhering to best practices ensures that you effectively utilize the Data Product Hub and maintain compatibility with the latest features and updates. Following these guidelines will help optimize workflow, enhance performance, and prevent potential issues.
 
 ### **Version compatibility**
 
-- Power BI versions released after **June 15, 2023**, support `.pbib` files. It is advisable to use a version released after this date.
+- Power BI versions released after June 15, 2023, support `.pbib` files. It is advisable to use a version released after this date.
 
 - Beginning with Version 2.132.908.0 (August 2024), `.pbip` files have moved from preview to general availability. This transition allows for the use of `.pbip` files without the need to enable any preview settings. It is strongly recommended to download Power BI Version 2.132.908.0 or later to fully utilize `.pbip` files. 
 
@@ -114,20 +123,26 @@ Ensure that `.pbip` folders are fully extracted before opening them. Failure to 
 
 - **Selection:** It is important to select fields from tables that are directly related or logically joined, as the system does not automatically identify relationships between tables through transitive joins. Selecting fields from unrelated tables may result in incorrect or incomplete results.
 
-
-### **Data policies and security**
-
-Data masking, restrictions, or permissions established by the publisher are automatically enforced for all report viewers, ensuring consistent data security and compliance. The behavior of these data policies, such as masking, may vary based on the user of the Power BI desktop.
-
 ### **Regular testing and validation**
 
 Regular testing and validation of reports are recommended after changes are made to the Lens definitions. This practice ensures that updates to dimensions, measures, or data models are accurately reflected in the reports and helps identify any issues early in the process.
 
+## Limitations
 
----
+Power BI’s ‘Direct Query’ mode does not support querying the rolling window measure. The lack of support for date hierarchy in 'Direct Query' prevents the application of granularity for the rolling window measure type.
 
-## Governance of Model on Power BI
+## Governance of model on Power BI
 
-When the Lens Model is activated via BI Sync on Power BI, the process is handled through authentication and authorization using the DataOS user ID and API key when accessing synced data models. This ensures that columns redacted by Lens data policies are restricted based on the user's group permissions.
+Data masking, restrictions, and permissions established by the publisher are automatically enforced for all report viewers, ensuring consistent data security and compliance. The behavior of these data policies, such as masking, may vary based on the use of Power BI Desktop or other interfaces.
 
-For instance, if a user named **iamgroot** in the "**Analyst**" group is restricted from viewing the "Annual Salary" column, this column will not be visible in either the Data Product exploration page or in PowerBI after syncing. Power BI requires the DataOS user ID and API key for authentication, ensuring that users can access the full model, except for any columns restricted by their data policies. This approach maintains security and guarantees that users only see the data they are authorized to view.
+When the Lens semantic model is activated via BI Sync on Power BI, authentication and authorization are handled using the DataOS user ID and API key. This ensures that columns redacted by Lens data policies are restricted based on the user's group permissions.
+
+For example, if a user named iamgroot, belonging to the 'Analyst' group, is restricted from viewing the 'Annual Salary' column, this column will not appear in either the Data Product exploration page or in Power BI after synchronization. Power BI requires the DataOS user ID and API key for authentication, ensuring that users can access the full model except for columns restricted by their data policies.
+
+This approach ensures that users only see the data they are authorized to view, maintaining security and compliance.
+
+
+
+
+
+
