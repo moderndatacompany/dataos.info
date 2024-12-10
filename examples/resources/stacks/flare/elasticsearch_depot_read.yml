@@ -1,0 +1,37 @@
+version: v1
+name: read-elasticsearch-01
+type: workflow
+tags:
+  - elasticsearch
+  - read
+description: this jobs reads data from elasticsearch and writes to icebase
+workflow:
+  dag:
+    - name: elasticsearch-read-b-01
+      title: read data from elasticsearch
+      description: read data from elasticsearch
+      spec:
+        tags:
+          - Connect
+        stack: flare:5.0
+        compute: runnable-default
+        stackSpec:
+          job:
+            explain: true
+            inputs:
+              - name: input
+                dataset:  dataos://elasticsearch:default/elastic_write
+                format: elasticsearch
+                options:
+                  es.nodes.wan.only: 'true'
+            logLevel: INFO
+            outputs:
+              - name: output02
+                dataset: dataos://icebase:sample/read_elasticsearch?acl=rw
+                format: iceberg
+                options:
+                  saveMode: append
+            steps:
+              - sequence:
+                  - name: output02
+                    sql: SELECT * FROM input
