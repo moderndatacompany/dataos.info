@@ -34,7 +34,7 @@ SQL Query optimization or tuning is an iterative process of enhancing the perfor
 
 When it comes to Flare workflows, optimizing the queries can have a drastic impact on overall execution time in terms of reducing response time with improved throughput. To know more go to the below page
 
-[SQL Query Optimization](/resources/stacks/flare/optimizations/performance_tuning/sql_query_optimization)
+[SQL Query Optimization](/resources/stacks/flare/optimizations/performance_tuning/sql_query_optimization/)
 
 # Job Tuning Configurations
 

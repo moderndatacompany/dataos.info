@@ -126,7 +126,7 @@ To create a Pager, the first step is to create a Pager manifest file. A sample P
             }
     ```
 
-    1.  [Resource meta section](#resource-meta-section) within a manifest file comprises metadata attributes universally applicable to all [Resource-types](/resources/types_of_dataos_resources/). To learn more about how to configure attributes within this section, refer to the link: [Attributes of Resource meta section](/resources/manifest_attributes/).
+    1.  [Resource meta section](#resource-meta-section) within a manifest file comprises metadata attributes universally applicable to all [Resource-types](/resources/types/). To learn more about how to configure attributes within this section, refer to the link: [Attributes of Resource meta section](/resources/manifest_attributes/).
 
     2.  [Pager-specific section](#pager-specific-section) within a manifest file comprises attributes specific to the Pager Resource. This section is further subdivided into: Conditions, and Output section. To learn more about how to configure attributes of Pager-specific section, refer to the link: [Attributes of Pager manifest](/resources/pager/configurations/).
 

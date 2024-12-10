@@ -444,7 +444,7 @@ For more details, see [`uuid`](/interfaces/workbench/functions_and_operators/uui
 
 ### **Window**
 
-For more details, see [`window`](/interfaces/workbench/functions_and_operators/window)
+For more details, see [`window`](/interfaces/workbench/functions_and_operators/window/)
 
 - [`cume_dist`](/interfaces/workbench/functions_and_operators/window#cume_dist)
 - [`dense_rank`](/interfaces/workbench/functions_and_operators/window#dense_rank)
