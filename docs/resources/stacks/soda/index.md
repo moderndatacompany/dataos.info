@@ -142,7 +142,7 @@ This involves the declaration of following parts:
 4. [Define Soda Checks](#defining-soda-checks)
 5. [Define Optional configuration](#define-optional-configuration)
 
-#### **Declaring Input Dataset Address**
+#### **Declaring input dataset address**
 
 The [`dataset`](/resources/stacks/soda/configurations/#dataset) attribute allows data developer to specify the data source or dataset that requires data quality evaluations. It is declared in the form of a [Uniform Data Link [UDL]](/resources/depot/), in the following format: `dataos://[depot]:[collection]/[dataset]`.
 
@@ -156,7 +156,7 @@ stackSpec:
 ```
 
 
-#### **Defining Soda Checks**
+#### **Defining Soda checks**
 
 Soda Stack utilzies SodaCL, a YAML-based, low-code, human-readable, domain-specific language for data reliability and data quality management. SodaCL enables data developers to write checks for data quality, then run a scan of the data in the data source to execute those checks.
 
@@ -318,18 +318,27 @@ workflow:
 
 </details>
 
+Explore the available checks within each category by clicking on the respective category names below:
+
+- [Accuracy](/resources/stacks/soda/accuracy_checks/)
+- [Completeness](/resources/stacks/soda/completeness_checks/)
+- [Freshness](/resources/stacks/soda/freshness_checks/)
+- [Schema validation](/resources/stacks/soda/schema_checks/)
+- [Uniqueness](/resources/stacks/soda/uniqueness_checks/)
+- [Validity](/resources/stacks/soda/validity_checks/)
+
 [Data Product Hub](/interfaces/data_product_hub/) consolidates the status of all your data quality checks under the **Quality** tab, giving a comprehensive view of the health of your data assets.   There are two ways for a check and its latest result to appear on the dashboard:
 
-**Manual Scans with Scanner:** When you define checks in a YAML file and run a scanner using the Soda Library, the checks and their results are displayed in the Checks dashboard.
+**Manual scans with Scanner:** When you define checks in a YAML file and run a scanner using the Soda Library, the checks and their results are displayed in the Checks dashboard.
 
-**Scheduled Scans by Soda Workflow:** When Soda runs a scheduled workflow, the checks and their latest results automatically appear on the Checks dashboard.
+**Scheduled scans by Soda Workflow:** When Soda runs a scheduled workflow, the checks and their latest results automatically appear on the Checks dashboard.
 
 Each check result on the dashboard indicates whether it has passed or failed based on the specific quality dimension it is assessing. For Instance, in the below provided image, we can see the status of various data quality checks:
 
 - Accuracy: Passed, as indicated by the green checkmark.
 - Completeness: Passed, with a green checkmark.
-- Freshness: Flagged with a warning (⚠), suggesting the data might not be up-to-date.
-- Schema: Also flagged (⚠), which could mean there are schema mismatches or other issues with the data structure.
+- Freshness: Flagged with a warning (⚠️), suggesting the data might not be up-to-date.
+- Schema: Also flagged (⚠️), which could mean there are schema mismatches or other issues with the data structure.
 - Uniqueness: Passed successfully.
 - Validity: Passed, indicating the data adheres to the expected validation rules.
 
@@ -347,9 +356,7 @@ When you click on any of the check, a detailed trend chart appears, displaying t
 
 The detailed trend chart shows that the data quality check was consistently run at 8:05 AM on several specific dates, including September 25, 26, 28, and daily from October 1 to 9. This regular cadence indicates the check was scheduled to run at the same time on these dates, ensuring continuous monitoring. The trend line remains at 100%, meaning the data met all SLO criteria during each check. For more details on the Quality tab refer [this link](/interfaces/data_product_hub/discovery/#data-product-tab) and scroll to Quality tab.
 
-You can refer to the Soda documentation for the grammar of check definitions: [Soda CL Reference](https://docs.soda.io/soda-cl/soda-cl-overview.html).
-
-#### **Defining Columns to be Profiled (Optional)**
+#### **Defining columns to be profiled (optional)**
 
 The [`profile`](/resources/stacks/soda/configurations/#profile) section enables you to specify a list of columns that require profiling. Profiling involves analysing and collecting information about the characteristics and data distribution in these columns. The profile section is especially beneficial for gaining insights into the data and comprehending it’s patterns.
 
@@ -362,7 +369,7 @@ stackSpec:
           - "*"
 ```
 
-**Columns Specification**
+**Columns specification**
 
 The [`columns`](/resources/stacks/soda/configurations/#columns) attribute under the profile section is where you specify the list of columns you want to profile. Each column is represented as a string item in the list. 
 
@@ -433,7 +440,7 @@ stackSpec:
 ```
 
 
-#### **Define Optional configuration**
+#### **Define optional configuration**
 
 The [`options`](/resources/stacks/soda/configurations/#options) section provides users with the flexibility to configure various attributes for connecting to data sources or data source options. These options encompass:
 
@@ -551,7 +558,7 @@ The [`engine`](/resources/stacks/soda/configurations/#engine) attribute can assu
 
 </aside>
 
-**Cluster Name**
+**Cluster name**
 
 If applicable, users can provide the [`clusterName`](/resources/stacks/soda/configurations/#clustername) on which queries will run. This is a mandatory field in the case of the Minerva engine. You can check the cluster on which your depot is mounted in Workbench or check the cluster definition in the [Operations](/interfaces/operations/) App.
 
@@ -590,7 +597,7 @@ The following table provides a comprehensive overview of the various attributes 
 
 For further details regarding the Soda Stack-specific attributes, you can refer to the link: [Attributes of Soda Stack YAML](/resources/stacks/soda/configurations/).
 
-**Branch Name Configuration for Lakehouse storage or Icebase type Depots**
+**Branch name configuration for Lakehouse storage or Icebase type Depots**
 
 In DataOS, Soda facilitates the execution of checks on different branches within a Lakehouse storage or Icebase-type Depot. By default, if no branch name is specified, Soda automatically targets the `main` branch. However, users have the option to direct the checks towards a specific branch by providing the branch name.
 
@@ -608,7 +615,7 @@ stackSpec:
 
 This configuration illustrates how to set the `branchName` to "test". Adjust the `branchName` parameter to match the branch you intend to assess.
 
-### **Code Samples**
+### **Code samples**
 
 <details>
 <summary>Sample manifest for Soda Stack orchestrated using a Workflow</summary>
@@ -924,7 +931,7 @@ Use the apply command to apply the workflow using CLI.
 dataos-ctl apply -f ${{path/file-name}} -w ${{workspace}} # By default the workspace is public
 ```
 
-## Querying Profiling and Checks data
+## Querying profiling and checks data
 
 Soda check results and profiling information are stored in Iceberg tables, and querying this information can be accomplished through [Workbench](/interfaces/workbench/) App. 
 
@@ -1236,13 +1243,13 @@ Once executed, the information can be queried from the Icebase tables using the 
 - For checks information, query the `dataos://icebase:soda/soda_check_metrics_01` table.
 - For profiling information, query the `dataos://icebase:soda/soda_profiles_01` table.
 
-**Sample Query**
+**Sample query**
 
 ```sql
 SELECT * FROM icebase.soda.soda_check_metrics_01 LIMIT 10
 ```
 
-## Case Scenarios
+## Case scenarios
 
 <!-- - [How to run Soda checks for data quality evaluation using Soda Stack in DataOS?](/resources/stacks/soda/how_to_run_soda_checks_using_soda_stack) -->
 

@@ -238,7 +238,7 @@ To save a query from two days ago for future reference, click on the query, give
 
 ## Integration with API
 
-Some team members, who are developers working on a data-driven application, need a flexible and efficient way to query and retrieve specific data, a specific metric or a subset of data, from the system, . 
+Some team members, who are developers working on a data-driven application, need a flexible and efficient way to query and retrieve specific data, a specific metric or a subset of data, from the system. 
 
 For teams needing to fetch data programmatically, the **Integration** tab provides options:
 

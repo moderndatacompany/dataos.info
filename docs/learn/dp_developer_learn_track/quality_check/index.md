@@ -21,7 +21,7 @@ Suppose the following are the SLOs you and other stakeholders have decided:
 
 ### **Create a quality directory structure**
 
-Once your SLOs are defined, you can organize your quality check workflows. Create a quality directory to ensure that your Data Product's input meets the SLOs' requirements. Inside this folder, you'll organize your quality checks by creating subdirectories named 'input'. Each subdirectory will contain the specific **SODA** check workflows for each input dataset (e.g., `customer.yml`, `product.yml`, `purchase.yml`).
+Once your SLOs are defined, you can organize your quality check workflows. Create a quality directory to ensure that your Data Product's input meets the SLOs' requirements. Inside this folder, you'll organize your quality checks by creating subdirectories named 'input'. Each subdirectory will contain the specific Soda check workflows for each input dataset (e.g., `customer.yml`, `product.yml`, `purchase.yml`).
 
 Here’s an example of how your folder might look:
 
@@ -31,12 +31,11 @@ quality/
 │     ├── customer.yml
 │     ├── product.yml
 │     └── purchase.yml
-
 ```
 
 This structure helps you keep your quality checks organized and aligned with the defined SLOs for each input dataset.
 
-### **Define quality checks with SODA**
+### **Define quality checks with Soda**
 
 With your SLOs in place, the next step is to define the quality checks to ensure your data meets the established standards. These quality checks are essential to monitor and maintain the quality of your data. Below are the key quality checks available to you:
 
@@ -49,7 +48,7 @@ With your SLOs in place, the next step is to define the quality checks to ensure
 
 Each check will display the status of the last five runs, helping you track the data's ongoing compliance with your SLOs.
 
-These quality checks will be implemented using the SODA framework and defined in YAML files for each dataset. After specifying these checks, they will be displayed on platforms like Metis and Data Product Hub, where data consumers can view the status of the quality checks and align them with their analytical needs.
+These quality checks will be implemented using the Soda framework and defined in YAML files for each dataset. After specifying these checks, they will be displayed on platforms like Metis and Data Product Hub, where data consumers can view the status of the quality checks and align them with their analytical needs.
 
 For example, if you’re defining quality checks for a 'customer' dataset, your YAML file might include the following checks:
 
@@ -59,11 +58,9 @@ For example, if you’re defining quality checks for a 'customer' dataset, your 
 - **Validity**: Customer ID should not be null.
 - **Uniqueness**: Customer ID should be unique.
 
-For the above quality checks, the SODA workflow yaml manifest file will look like as follows:
-
-- **customer.yml**
+For the above quality checks, the Soda workflow yaml manifest file will look like as follows:
     
-    ```yaml
+    ```yaml title="customer.yml"
     name: soda-customer-quality
     version: v1
     type: workflow
@@ -132,7 +129,7 @@ For the above quality checks, the SODA workflow yaml manifest file will look lik
     ```
     
 
-The quality checks are displayed in Metis as defined in the SODA YAML manifest file, including their descriptions, as shown in the image below.
+The quality checks are displayed in Metis as defined in the Soda YAML manifest file, including their descriptions, as shown in the image below.
 
 ![soda_checks_metis.png](/learn/dp_developer_learn_track/quality_check/soda_checks_metis.png)
 
@@ -143,7 +140,7 @@ The Quality checks populating in the Quality tab of the Data Product Hub
 ![quality_tab.png](/learn/dp_developer_learn_track/quality_check/quality_tab.png)
 
 <aside class="callout">
-🗣️ In SODA, you can define a title for the check. If none is specified, the system automatically uses the check's name as title.
+🗣️ In Soda, you can define a title for the check. If none is specified, the system automatically uses the check's name as title.
 
 </aside>
 
@@ -152,9 +149,8 @@ Similarly, you define the following quality checks for the Purchase table:
 - **Freshness**: This check ensures the 'purchase_date' is within the last 2 days. If the data is older than 2 days, this check will fail, indicating that the dataset is stale and may need to be refreshed.
 - **Schema**: The schema check ensures that the 'recency' column has the correct data type (integer). If it's mistakenly typed as a string, the check will fail.
 - **Validity**: This check ensures that the count of invalid entries in the 'mntwines' column is within a specified range (between 0 and 1). The check will flag the dataset as invalid if the count falls outside this range.
-- **Purchase.yml**
     
-    ```yaml
+    ```yaml title="Purchase.yml"
     name: soda-purchase-quality
     version: v1
     type: workflow

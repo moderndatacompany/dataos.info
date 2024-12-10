@@ -81,6 +81,8 @@ After filling all details, click on the Acitvate button. A confirmation message 
 
 ## Exploring the Data Product on Tableau Cloud
 
+Once the sync is successful, the data source is published to the Tableau cloud/server:
+
 ### **Step 1: Log in to Tableau Cloud**
 
 Users should log in to Tableau Cloud using the same credentials of Tableau. This will redirect to the Tableau Cloud home page.
@@ -138,26 +140,32 @@ Now, users can create dashboard and extract relevant insights.
 <figcaption><i>Happy dashboarding!</i></figcaption>
 </center>
 
+### **Step 8: Publishing workbook/dashboard**
+
+The publisher can embed their credentials (DataOS username and API Token) or ask users to provide credentials whenever they want to access the published Workbook/Sheet/Dashboard. If the publisher has chosen to ‘Embed password for data source’, users can access the published workbook and dashboard without providing credentials.
+
+**Note:** Once the credentials are embedded, they cannot be accessed. You need to overwrite and ‘publish-as’ the workbook to reconfigure the embedding password optionality.
 
 ## Supported data types
 
-| **Category**   | **Data Type**          | **Support Status**                       | **Recommended Approach**                       |
-|----------------|------------------------|------------------------------------------|-----------------------------------------------|
-| **Dimension**  | `time`                   | Supported                                | NA                                            |
-| **Dimension**  | `string`                 | Supported                                | NA                                            |
-| **Dimension**  | `number`                 | Supported                                | NA                                            |
-| **Dimension**  | `boolean`                | Supported                                | NA                                            |
-| **Measure**    | `max`                    | Supported                                | NA                                            |
-| **Measure**    | `min`                    | Supported                                | NA                                            |
-| **Measure**    | `number`                 | Supported                                | NA                                            |
-| **Measure**    | `sum`                    | Supported                                | NA                                            |
-| **Measure**    | `count`                  | Supported                                | NA                                            |
-| **Measure**    | `boolean`                | Auto-converts to Dimension               | NA                                            |
-| **Measure**    | `string`                 | Auto-converts to Dimension               | NA                                            |
-| **Measure**    | `time`                   | Auto-converts to Dimension               | NA                                            |
-| **Measure**    | `avg`                    | Not Supported                            | Option 1: To use measure of type ‘avg’, define an additional measure of type 'count' in that entity:<br>  <br>name: count<br>type: count<br>sql: '1'<br> <br> Option 2: Use measure of type 'number' and define average logic in SQL:<br>  <br>measures:<br>&nbsp;&nbsp;- name: total_accounts<br> &nbsp;&nbsp;&nbsp; type: number<br> &nbsp;&nbsp;&nbsp; sql: "avg({accounts})”<br> |
-| **Measure**    | `count_distinct_approx`       | Not Supported         | NA                                            |
-| **Rolling Window** | -                      | Supported                                | NA                                            |
+| Category        | Data Type              | Support Status                        | Recommended Approach                                                                 |
+|-----------------|------------------------|---------------------------------------|--------------------------------------------------------------------------------------|
+| Dimension       | `time`                 | Supported                             | NA                                                                                   |
+| Dimension       | `string`               | Supported                             | NA                                                                                   |
+| Dimension       | `number`               | Supported                             | NA                                                                                   |
+| Dimension       | `boolean`              | Supported                             | NA                                                                                   |
+| Measure         | `max`                  | Supported                             | NA                                                                                   |
+| Measure         | `min`                  | Supported                             | NA                                                                                   |
+| Measure         | `number`               | Supported                             | NA                                                                                   |
+| Measure         | `sum`                  | Supported                             | NA                                                                                   |
+| Measure         | `count`                | Supported                             | NA                                                                                   |
+| Measure         | `boolean`              | Auto-converts to Dimension            | NA                                                                                   |
+| Measure         | `string`               | Auto-converts to Dimension            | NA                                                                                   |
+| Measure         | `time`                 | Auto-converts to Dimension            | NA                                                                                   |
+| Measure         | `avg`                  | Not Supported                         | Option 1: To use measure of type ‘avg’, define an additional measure of type 'count' in that entity:<br>  <br>name: count<br>type: count<br>sql: '1'<br>  <br> Option 2: Use measure of type 'number' and define average logic in SQL:<br>  <br>measures:<br>&nbsp;&nbsp;- name: total_accounts<br> &nbsp;&nbsp;&nbsp; type: number<br> &nbsp;&nbsp;&nbsp; sql: "avg({accounts})”<br> |
+| Measure         | `count_distinct_approx`| Not Supported                         | NA                                                                                   |
+| Rolling Window  | -                      | Supported                             | NA                                                                                   |
+
 
 <!-- ## Handling specific data types in Tableau
 
@@ -200,9 +208,21 @@ Now, users can create dashboard and extract relevant insights.
 
 **7. Single authority for Desktop publications:** If data sources are published via Tableau Desktop, ensure that all sources are published by a single authority to avoid multiple data source conflicts on the server.
 
-**8. Row Limit:** The Lens API has a maximum return limit of 50,000 rows per request. To obtain additional data, it is necessary to set an offset. This row limit is in place to manage resources efficiently and ensure optimal performance.
+**8. Row limit:** The Lens API has a maximum return limit of 50,000 rows per request. To obtain additional data, it is necessary to set an offset. This row limit is in place to manage resources efficiently and ensure optimal performance.
 
 **9. Selection:** It is important to select fields from tables that are directly related or logically joined, as the system does not automatically identify relationships between tables through transitive joins. Selecting fields from unrelated tables may result in incorrect or incomplete results.
+
+**10. Parameter Action:** Action filters can be defined on measures/dimensions to filter visualizations effectively.
+
+**11. Default chart types:** All default chart types provided by Tableau can be plotted and visualized without issues.
+
+**12. Rolling Window Measure:** For querying a rolling window measure, it is necessary to provide a time dimension and apply a date range filter to this time dimension. When querying a rolling window measure, follow these steps:
+
+- Select the rolling window measure.
+- Select the time dimension.
+- To define granularity, right-click on the selected time dimension and set granularity (choose a granularity where the complete time, along with the year, is shown).
+- Add the time dimension to the filter, and define the range filter.
+
 
 <aside class="callout">
 🗣️ Be aware that custom calculations or fields (measures/dimensions) created in BI tools may be lost during re-sync. It is preferable to create custom logic directly in Tableau's Lens.
