@@ -159,7 +159,7 @@ output:
 
 In this example, the `output` is configured to use the `broker` pattern with a `fan_out` strategy. The data will be sent to both the `dataos_depot` plugin, specifically to the `fastbase:default/test007` address, and the `stdout` output for logging purposes.
 
-Feel free to explore the available output options and their configurations in the Benthos [outputs](/resources/stacks/benthos/components/output) documentation.
+Feel free to explore the available output options and their configurations in the Benthos [outputs](/resources/stacks/benthos/components/output/) documentation.
 
 ### **Apply the YAML file**
 
