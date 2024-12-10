@@ -491,7 +491,7 @@ Before re-running the Workflow, delete the previous version from the environment
 
 === "Method1"
 
-    Copy the name to Workspace from the output table of the [`get`](/interfaces/cli/command_reference#get) command and use it as a string in the delete command.
+    Copy the name to Workspace from the output table of the [`get`](/interfaces/cli/command_reference/#get) command and use it as a string in the delete command.
 
     === "Command"
 
