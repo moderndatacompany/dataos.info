@@ -18,7 +18,6 @@ Access the Home Page of DataOS. From there, navigate to the Data Product Hub to 
 
 Browse the list of Data Products and select a specific Data Product to initiate integration with Power BI. For example, selecting 'Sales360' allows detailed exploration and integration of the Sales360 Data Product.
 
-
 <center>
 <img src="/interfaces/data_product_hub/activation/bi_sync/image%20(2).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
