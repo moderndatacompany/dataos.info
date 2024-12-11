@@ -90,7 +90,7 @@ After connecting, users can see tables and views containing dimensions and measu
 
 ## Important considerations
 
-- Measures in Power BI are typically named as `m_total_revenue`.
+- In Power BI, measures typically have an 'm_' prefix to indicate they represent a measure. For example, a measure calculating total revenue might be named `m_total_revenue`.
 - The connection is live, meaning any changes to the underlying data or measure logic will be reflected in Power BI.
 - If schema changes occur, such as the addition of new dimensions and measures, the steps outlined above will need to be repeated.
 - Custom measures or dimensions created in Power BI may be lost during re-sync operations. It is recommended to implement custom logic directly within the Lens when possible to ensure persistence of customizations.
@@ -113,7 +113,7 @@ In earlier versions, enabling a preview feature was necessary, but this is no lo
 Ensure that `.pbip` folders are fully extracted before opening them. Failure to do so may result in missing file errors, as shown below:
 
 <div style="text-align: center;">
-    <img src="/resources/lens/bi_integration/image.png" alt="Superset Configuration" style="max-width: 60%; height: auto; border: 1px solid #000;">
+    <img src="/resources/lens/bi_integration/image.png" alt="Superset Configuration" style="max-width: 25%; height: auto; border: 1px solid #000;">
 </div>
 
 ### **Data retrieval and field selection considerations**
