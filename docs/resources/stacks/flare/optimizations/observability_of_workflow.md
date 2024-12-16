@@ -5,7 +5,7 @@ Collated continuously captures checks for the deployment of any workflows, and s
 
  It continuously  Collated continuously captures and stores all this information in the blob storage.
 
-<aside>
+<aside class="callout">
 🗣️ The difference between Collated and Operations is that Collated shows all the information about events with a delay while Operations shows live actions. Operations does not store any information and once the workflow is deleted, all the information is lost, but Collated stores all the information about workflows.
 
 </aside>
