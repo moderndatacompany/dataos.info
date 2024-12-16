@@ -109,7 +109,7 @@ Upon clicking 'Connect', a prompt will request the username and password. Enter 
 
 **1. Handling entities without relationships:** An error will occur during synchronization if any entity in the semantic model lacks a defined relationship. To resolve this issue, the entity can be hidden to avoid synchronization errors.
 
-**2. Live connection:** The connection between the semantic layer and Tableau Cloud is live. This means that any changes to the underlying data or measure logic will automatically be reflected in Tableau.
+**2. Live connection:** The connection between the semantic layer and Tableau Cloud is live. This means that any changes to the underlying data will automatically be reflected in Tableau.
 
 **3. Schema changes:** If there are schema updates, such as adding new dimensions or measures, the integration steps will need to be repeated to incorporate these changes into Tableau.
 
@@ -121,7 +121,6 @@ Upon clicking 'Connect', a prompt will request the username and password. Enter 
 1. **Time data type as measure in Tableau**  
 
     When syncing the semantic layer with Tableau, note that Tableau does not support the time data type as a measure. While Lens allows time-based measures, Tableau defaults to treating date and time fields as dimensions.As a result, Tableau will not correctly interpret any measure with a **time data type**.
-
 
     **Recommended actions**:
 
