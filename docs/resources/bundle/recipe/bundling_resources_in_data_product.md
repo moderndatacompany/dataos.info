@@ -64,9 +64,7 @@ Resources in this category are involved in one-time or infrequent tasks and gene
 - **Soda:** Performs data validation and quality checks.
 - **Scanner:** Validates deployment and operational state.
 
-These Resources are bundled together in a Workflow Bundle, ensuring efficient execution without the need for frequent redeployment.
-
-Resources that provide ongoing, real-time functionality require continuous updates and interactions, making them better suited for separate bundling:
+These Resources are bundled together in a Workflow Bundle, ensuring efficient execution without the need for frequent redeployment. Resources that provide ongoing, real-time functionality require continuous updates and interactions, making them better suited for separate bundling:
 
 - **Lens:** A semantic model that organizes and interprets data, providing continuous access to structured data for business users.
 - **Talos:** Real-time analytics and API services that respond to queries and updates as data changes.
@@ -92,7 +90,7 @@ The first step involves creating a workflow for ingesting various datasets. Sinc
 --8<-- "examples/resources/bundle/bundling_resources_in_data_product/ingestion_dag.yml"
 ```
 
-### **Step 2: Quality Check Super DAG Workflow**
+### **Step 2: Quality check Super DAG Workflow**
 
 After data ingestion, the next step is to perform data validation and quality assurance. The Quality DAG will be stored in the `build/quality/` directory of the data product. 
 

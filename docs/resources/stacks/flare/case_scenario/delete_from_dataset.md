@@ -1,13 +1,13 @@
-# Delete from Dataset
+# Delete from dataset
 
-> Supported in Flare Stack Version `flare:4.0` only.
-> 
+<!-- > Supported in Flare Stack Version `flare:4.0` only.
+>  -->
 
 The `delete_from_dataset` [action](/resources/stacks/flare/configurations/#delete_from_dataset) removes data from tables upon a specified filter. There could be myriad such filter condition, two such scenarios are provided below.
 
-## Code Snippet
+## Code snippet
 
-### **Delete from Single Dataset**
+### **Delete from single dataset**
 
 The below case scenario depicts data deletion based on a filter. To accomplish this, we make use of Flare Stack's `delete_from_dataset` action upon the input dataset `inputDf` and delete from the dataset upon the filter condition provided in `deleteWhere` property. The YAML for the same is provided below:
 
@@ -25,9 +25,9 @@ workflow: # Workflow Specific Section
       spec: # Specs
         tags: # Tags
           - Delete
-        stack: flare:4.0 # Stack Version (Here its Flare stack)
+        stack: flare:6.0 # Stack Version (Here its Flare stack)
         compute: runnable-default # Compute 
-        flare: # Flare Section
+        stackSpec: # Flare Section
           job: # Job Section
             explain: true # Explain
             logLevel: INFO # Loglevel
@@ -41,7 +41,7 @@ workflow: # Workflow Specific Section
                 deleteWhere: "target.state_code = 'AL'" # Delete where the provided condition is true
 ```
 
-### **Delete from Multiple Dataset**
+### **Delete from multiple dataset**
 
 The below case scenario also depicts data deletion based on a filter. However, here there are two input datasets `customer` and `city` on which an inner join is performed. The filter condition for the same is provided in the `deleteWhere` property. The YAML for the same is provided below:
 
@@ -53,9 +53,9 @@ workflow: # Workflow Section
   dag: # Directed Acyclic Graph (DAG)
     - name: delete-from-city # Name of the Job
       spec: # Specs
-        stack: flare:4.0 # Stack is Flare (so its a Flare Job)
+        stack: flare:6.0 # Stack is Flare (so its a Flare Job)
         compute: runnable-default # Compute
-        flare: # Flare Stack Specific Section
+        stackSpec: # Flare Stack Specific Section
           job: # Job Section
             inputs: # Inputs Section
               - name: customer # Name of First Input Dataset

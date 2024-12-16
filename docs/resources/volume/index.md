@@ -15,10 +15,8 @@ Additionally, when multiple containers are running within a Pod and need to shar
 
 The Volume Resource solves these problems by providing persistent and shared storage solutions for containerized applications, addressing the challenges posed by the ephemeral nature of container storage:
 
-1. **Persistence:**
-    - Ensures that data remains available even if the container restarts or is rescheduled.
-2. **Shared Storage**:
-    - Allows multiple containers in a Pod to access a shared filesystem easily.
+1. **Persistence:** Ensures that data remains available even if the container restarts or is rescheduled.
+2. **Shared Storage**: Allows multiple containers in a Pod to access a shared filesystem easily.
 
 ## Getting started: Volume
 
@@ -27,3 +25,8 @@ Volume Resource in DataOS can be created by applying the manifest file using the
 ## Configuration
 
 Volume can be configured to different size, accessMode and type. The specific configurations may vary depending on the use case. For a detailed breakdown of the configuration options and attributes, please refer to the documentation: [Attributes of Volume manifest](/resources/volume/configuration/).
+
+## Recipe
+
+
+[How to integrate Volume with Flash?](/resources/volume/recipe/how_to_integrate_volume_with_flash/)

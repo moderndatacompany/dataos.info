@@ -12,7 +12,7 @@ To get started with Tableau integration through Data Product Hub, refer to the l
 ## Prerequisites
 
 - **Curl**: Ensure that `curl` is installed on the system. For Windows systems, `curl.exe` may be necessary.
-- **Lens API endpoint**: The API endpoint provided by Lens for syncing data with meta endpoint access.
+- **Lens API endpoint**: The API endpoint provided by Lens to sync semantic model, enabling integration with Tableau.
 - **Access credentials**: Access credentials such as username, password, project name etc., are required for Tableau.
 - **DataOS API key**: Ensure the DataOS API key is available. Get it by using the following command:
 
@@ -109,7 +109,7 @@ Upon clicking 'Connect', a prompt will request the username and password. Enter 
 
 **1. Handling entities without relationships:** An error will occur during synchronization if any entity in the semantic model lacks a defined relationship. To resolve this issue, the entity can be hidden to avoid synchronization errors.
 
-**2. Live connection:** The connection between the semantic layer and Tableau Cloud is live. This means that any changes to the underlying data or measure logic will automatically be reflected in Tableau.
+**2. Live connection:** The connection between the semantic layer and Tableau Cloud is live. This means that any changes to the underlying data will automatically be reflected in Tableau.
 
 **3. Schema changes:** If there are schema updates, such as adding new dimensions or measures, the integration steps will need to be repeated to incorporate these changes into Tableau.
 
@@ -121,7 +121,6 @@ Upon clicking 'Connect', a prompt will request the username and password. Enter 
 1. **Time data type as measure in Tableau**  
 
     When syncing the semantic layer with Tableau, note that Tableau does not support the time data type as a measure. While Lens allows time-based measures, Tableau defaults to treating date and time fields as dimensions.As a result, Tableau will not correctly interpret any measure with a **time data type**.
-
 
     **Recommended actions**:
 

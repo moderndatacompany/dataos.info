@@ -1,5 +1,6 @@
 # Enrichment
 
+The enrichment process in the following workflow enhances the raw data related to cities, states, and countries by applying a series of data transformations and joins to provide a more comprehensive and useful dataset.
 
 ```yaml
 version: v1
@@ -12,7 +13,7 @@ tags:
   - countries
   - enriched
 description: This ingest city state and countries data and enriched data
-owner: rakeshvishvakarma
+owner: iamgroot
 workflow:
   dag:
     - name: ingest-and-enrich-city-state-country
@@ -204,7 +205,7 @@ workflow:
                     title: Enriched Countries With States and Cities Information
 ```
 
-# Toolbox Workflow
+<!-- # Toolbox Workflow
 
 ```yaml
 version: v1
@@ -250,5 +251,5 @@ workflow:
         dataset: dataos://icebase:countries_states_cities/enriched_cities_states_countries?acl=rw
         action:
           name: set_version
-          value: latest
+          value: latest -->
 ```
