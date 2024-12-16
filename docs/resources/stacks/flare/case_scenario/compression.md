@@ -1,15 +1,15 @@
 # Compression
 
+This section explains how the Flare Workflow is used to compress both Cloud Events and NY Taxi Data.
 
-## Case Scenario
-
-This Flare Workflow compresses Cloud Events and NY Taxi Data.
 
 ## Code Snippets
 
-### **Compressing Cloud Events Data**
+Below is the code snippet demonstrating the compression process for Cloud Events Data.
 
-```yaml
+### **Compressing cloud event data**
+
+```yaml title="compressing_cloud_event_data.yml"
 version: v1
 name: comcloudevent-01
 type: workflow
@@ -27,7 +27,8 @@ workflow:
       tags:
       - Compression
       - Cloudevent
-      stack: flare:5.0
+      stack: flare:6.0
+      compute: runnable-default
       stackSpec:
         driver:
           coreLimit: 1200m
@@ -50,9 +51,9 @@ workflow:
             - name: rewrite_dataset
 ```
 
-### **Compress NY Taxi Data**
+### **Compressing NY Taxi data**
 
-```yaml
+```yaml 
 version: v1
 name: com-nytaxi-01
 type: workflow
@@ -70,7 +71,7 @@ workflow:
       tags:
       - Compression
       - NyTaxi
-      stack: flare:5.0
+      stack: flare:6.0
       compute: runnable-default
       stackSpec:
         driver:
