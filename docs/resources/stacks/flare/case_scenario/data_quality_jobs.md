@@ -1,19 +1,20 @@
-# Data Quality Jobs (Assertions)
+# Data quality jobs (assertions)
 
+Data quality jobs are designed to ensure that data meets specified quality standards by applying various assertions. Assertions are checks that validate data against predefined rules, such as value ranges, missing values, uniqueness, and other conditions. These jobs are essential for monitoring and maintaining data integrity throughout your workflows.
 
 ## Case Scenario
 
 In this scenario, we define assertions to evaluate the quality of data. To learn more about Data Quality Jobs, click [here](/resources/stacks/flare/#data-quality-job)
 
-## Different Ways to Define Assertions
+## Different ways to define assertions
 
 Assertions can be classified into two categories, namely, sinked or standalone assertions and pre-sink assertions. 
 
-### **Standalone Assertions**
+### **Standalone assertions**
 
 In Flare Workflow, assertions on pre-existing datasets can be specified by declaring  `assertions` section distinct from the `inputs` section in the YAML definition. The following YAML of the Flare Workflow. It should be noted that, since check and metric information is stored in separate locations, the corresponding metadata must be updated individually. As a result, two separate Toolbox Workflow runs must be executed, one for metrics and the other for checks.
 
-#### **Code Snippets**
+#### **Code snippets**
 
 **Flare Workflow**
 
@@ -98,7 +99,7 @@ workflow:
             - spark.memory.fraction: "0.1"
             - spark.shuffle.memoryFraction: "0.2"
 ```
-
+<!-- 
 **Toolbox Workflow (for checks)**
 
 ```yaml
@@ -141,7 +142,7 @@ workflow:
           action:
             name: set_version
             value: latest
-```
+``` -->
 
 ### **Pre-Sink Assertions**
 
@@ -170,7 +171,7 @@ workflow: # Workflow Section
         tags: # Tags
           - Assertions
           - Quality
-        stack: flare:5.0 # Flare Stack Version (Here its 4.0)
+        stack: flare:6.0 # Flare Stack Version (Here its 4.0)
         compute: runnable-default # Compute
         stackSpec: # Flare Section
           job: # Job Section

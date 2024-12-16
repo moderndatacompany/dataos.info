@@ -13,7 +13,7 @@ To get started with Superset integration through the Data Product Hub, refer to 
 
 - **Curl**: Ensure `curl` is installed on the system. For Windows users, `curl.exe` may be required.
 
-- **Lens API endpoint**: The API endpoint provided by Lens to sync data with meta endpoint access.
+- **Lens API endpoint**: The API endpoint provided by Lens to sync semantic model, enabling integration with Superset.
 
 - **Access credentials**: Access credentials such as username, password, and host are required for Superset.
 

@@ -10,7 +10,7 @@ Most of the Spark jobs run as a pipeline where one Spark job writes data into a 
 
 When you have such a use case, prefer writing an intermediate file in serialized and optimized formats like Avro, Parquet, etc, any transformations on these formats perform better than text, CSV, and JSON.  
 
-<aside>
+<aside class="callout">
 🗣️ The combination of **Parquet** along with **snappy** compression gives very high performance.
 
 </aside>
@@ -22,7 +22,7 @@ When you have such a use case, prefer writing an intermediate file in serialized
 
 An object is serialized and deserialized during network transfer, writing to disk, etc. It plays a distinctive role in the performance of any distributed application as storing data in serialized form is slower to access, due to having to deserialize each object on the fly. 
 
-<aside>
+<aside class="callout">
 🗣️ The Kryo Serializer is highly recommended if you want to cache data in serialized form, as it leads to much smaller sizes than Java serialization.
 
 </aside>
@@ -68,7 +68,7 @@ This is enabled by default but if it’s disabled, you can enable it using the f
 | --- | --- | --- | --- |
 | spark.sql.cbo.enabled | Enables Cost Based Optimizer | true | true (if its false set to true) |
 
-<aside>
+<aside class="callout">
 🗣️ Prior to the Join query, run `ANALYZE TABLE` command by mentioning all columns you are joining. This command collects the statistics for tables and columns for a cost-based optimizer to find out the best query plan. 
 
 **Syntax of `ANALYZE TABLE` Command**
@@ -203,7 +203,7 @@ sparkConf:
 
 Next time your Spark job is run, you will see messages printed in the worker’s logs each time a garbage collection occur
 
-<aside>
+<aside class="callout">
 🗣️ In an ideal situation we try to keep GC overheads < 10% of heap memory.
 
 </aside>

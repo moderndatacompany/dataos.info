@@ -8,7 +8,7 @@ DataOS uses Flare workflows to carry out large-scale data transformation, ingest
   <img src="/resources/stacks/flare/basic_concepts/diagram_03.jpg" alt="diagram 03.jpg" style="border:1px solid black; width: 80%; height: auto;">
 </div>
 
-Flare is a declarative stack that can process large-scale data processing workflows using sequential YAML. On the other hand, a workflow is a primitive/Resource within DataOS that runs a sequence of jobs in a specific order. A workflow is a DAG (Directed Acyclic Graph) of jobs. To learn more about workflows, click [here](/resources/workflow/). 
+Flare is a declarative stack that processes large-scale data workflows using sequential YAML. On the other hand, a workflow is a primitive/Resource within DataOS that runs a sequence of jobs in a specific order. A workflow is a DAG (Directed Acyclic Graph) of jobs. To learn more about workflows, click [here](/resources/workflow/). 
 
 <aside class="callout">
 
@@ -18,16 +18,16 @@ Flare is a declarative stack that can process large-scale data processing workfl
 
 ## Deep Diving into a Flare Job
 
-A Job is a generalized way of defining a transformation task based on the scenario and use case; it requires the assistance of stacks to achieve the desired outcome. Any job is fully reliant on the completion of the job before it. E.g. A Flare Job represents a data processing workload which could be ingestion, transformation, profiling, syndication, etc., running on Flare stack, while in scenarios when the output dataset is to be stored in the Icebase depot, you also need the Toolbox stack along with the Flare Stack. If you would like to learn more about the Toolbox stack, click [here](/resources/stacks/data_toolbox/).
+A Job is a generalized way of defining a transformation task based on the scenario and use case; it requires the assistance of stacks to achieve the desired outcome. Any job is fully reliant on the completion of the job before it. E.g., a Flare Job represents a data processing workload such as ingestion, transformation, profiling, or syndication, running on the Flare stack. When storing the output dataset in the Icebase depot, the Toolbox stack is also required. If you would like to learn more about the Toolbox stack, click [here](/resources/stacks/data_toolbox/).
 
-In terms of YAML structure how a Flare Job is declared within the DAG, it comprises three sections: The Input (read data from), the Output (write data to), and the Steps (transformation of data during transit). 
+In terms of YAML structure, a Flare Job declared within the DAG comprises three sections: Input (data source), Output (data destination), and Steps (data transformation).
 
 ![Build.svg](/resources/stacks/flare/basic_concepts/build.svg)
 
 
 In order to grasp the intricacies of creating a Flare Job and the process of testing and deploying it, we shall explore a specific example of Data Ingestion. The data ingestion process will involve acquiring batch data in CSV format from an external source, applying various transformations on top of it, and ultimately storing the data within DataOS internal storage, Icebase.
 
-However, before delving into the technical aspects of this task, it is vital to ensure that certain prerequisites have been met to ensure a smooth and successful execution.
+However, before delving into the technical aspects of this task, it is vital to verify certain prerequisites for smooth execution.
 
 ## Prerequisites
 
@@ -39,7 +39,7 @@ Before proceeding, verify that the DataOS CLI is installed on your system. If it
 
 ### **Check Required Permissions to Run the Flare Workflow**
 
-Before proceeding to run a Flare Workflow, kindly ensure that you have the necessary permissions. To execute the Flare Workflow through the CLI, you must possess the `roles:id:data-dev`, `roles:id:depot-manager`, `roles:id:depot-reader`, and `roles:id:user` tags.
+Before running a Flare Workflow, ensure you have the necessary permissions. To execute the Flare Workflow through the CLI, you must possess the `roles:id:data-dev`, `roles:id:depot-manager`, `roles:id:depot-reader`, and `roles:id:user` tags.
 
 > If you don’t have the required permissions, you will get the `Forbidden Error` message.
 > 
@@ -72,7 +72,7 @@ INFO[0000] 😃 user get...complete
 
 To run a Flare Workflow, you need depots addressing both source and sink systems to read and write data. If you already have a depot created you can proceed to the next step. You can take help from the Metis to explore the datasets within various depots.
 
-To get the list of `depots`, created by all the DataOS users, run the below command in the CLI
+To get the list of `depots`, created by all the DataOS users, run the command below in the CLI.
 
 ```shell
 dataos-ctl get -t depot -a
@@ -124,15 +124,15 @@ In case you don’t have the required depot in the list, you can create a YAML c
 
 [Create Depot](/resources/depot/#how-to-create-a-depot)
 
-### **Check the type of workload you wanna run**
+### **Check the type of workload you want run**
 
 A workload can either be a **Batch** or **Streaming** workload. For a batch workload, you can submit one workflow with you have two options either submit a workflow that contains a job on both Flare and Toolbox Stack respectively both the Flare and Toolbox jobs one after the other in a DAG or submit two separate workflows one containing the DAG of Flare jobs and another containing the DAG of the Toolbox job. 
 
-While for a streaming workload, you need to create two separate workflows one for DAG of Flare Jobs and another for DAG of Toolbox job.  In the below use case, we will take a batch workload.
+For a streaming workload, create two separate workflows: one for a DAG of Flare Jobs and another for a DAG of Toolbox Jobs. In the below use case, we will take a batch workload.
 
 ### **Check the size of the data**
 
-For small and medium-sized data it's best to stick to the default configurations, but if you wanna do some heavy lifting by running some hundred Gigabyte and even Terabyte-sized workloads you need to alter the configuration and optimize the job according to that. To know more about optimization click the below link
+For small and medium-sized data, stick to the default configurations. For heavy workloads, such as hundreds of gigabytes or terabytes, alter and optimize the configuration accordingly. To know more about optimization click the below link
 
 [Flare Optimizations](/resources/stacks/flare/optimizations/)
 
@@ -169,7 +169,7 @@ workflow: # Workflow
       tags:
       - Connect
       - City
-      stack: flare:5.0 # Stack is Flare, so its Flare Job
+      stack: flare:6.0 # Stack is Flare, so its Flare Job
       compute: runnable-default
       stackSpec:
         job:
@@ -266,7 +266,7 @@ workflow:
       tags:
       - Connect
       - City
-      stack: flare:5.0
+      stack: flare:6.0
       stackSpec:
         job:
           explain: true
@@ -347,7 +347,7 @@ INFO[0002] 🛠 apply...complete
 
 This is an **optional** step. By default, you can always run your Flare workflow
 
-s in `public` workspace, but if you wanna create a new workspace for some specific workflows, execute the below command.
+s in `public` workspace, but if you want to create a new workspace for some specific workflows, execute the below command.
 
 ```shell
 dataos-ctl workspace create -n <name of your workspace>
@@ -444,7 +444,7 @@ INFO[0001] 🔍 workflow...complete
 
   JOB NAME |   STACK    |        JOB TITLE        | JOB DEPENDENCIES  
 -----------|------------|-------------------------|-------------------
-  city-001 | flare:5.0  | City Dimension Ingester |                   
+  city-001 | flare:6.0  | City Dimension Ingester |                   
   system   | dataos_cli | System Runnable Steps   |                   
 
   RUNTIME | PROGRESS |          STARTED          |         FINISHED           
@@ -484,7 +484,7 @@ INFO[0001] 🔍 workflow...complete
 
   JOB NAME |   STACK    |        JOB TITLE        | JOB DEPENDENCIES  
 -----------|------------|-------------------------|-------------------
-  city-001 | flare:5.0  | City Dimension Ingester |                   
+  city-001 | flare:6.0  | City Dimension Ingester |                   
   system   | dataos_cli | System Runnable Steps   |                   
 
   RUNTIME | PROGRESS |          STARTED          |         FINISHED           
@@ -708,7 +708,7 @@ INFO[0002] 🔍 workflow...complete
 
   JOB NAME |   STACK    |        JOB TITLE        | JOB DEPENDENCIES  
 -----------|------------|-------------------------|-------------------
-  city-999 | flare:5.0  | City Dimension Ingester |                   
+  city-999 | flare:6.0  | City Dimension Ingester |                   
   system   | dataos_cli | System Runnable Steps   |                   
 
     RUNTIME  | PROGRESS |          STARTED          |         FINISHED           
