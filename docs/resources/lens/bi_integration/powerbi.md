@@ -15,7 +15,7 @@ To get started with Power BI integration through Data Product Hub, refer the bel
 
 - **Curl**: Ensure you have `curl` installed on your system. Windows users may need to use `curl.exe`.
 
-- **Lens API endpoint**: The API endpoint provided by Lens to sync data with meta endpoint access.
+- **Lens API endpoint**: The API endpoint provided by Lens to sync semantic model, enabling integration with Power BI.
 
 - **Access credentials**: You will need access credentials such as username, password, and host for Power BI.
 

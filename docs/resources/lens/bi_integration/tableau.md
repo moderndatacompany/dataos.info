@@ -12,7 +12,7 @@ To get started with Tableau integration through Data Product Hub, refer to the l
 ## Prerequisites
 
 - **Curl**: Ensure that `curl` is installed on the system. For Windows systems, `curl.exe` may be necessary.
-- **Lens API endpoint**: The API endpoint provided by Lens for syncing data with meta endpoint access.
+- **Lens API endpoint**: The API endpoint provided by Lens to sync semantic model, enabling integration with Tableau.
 - **Access credentials**: Access credentials such as username, password, project name etc., are required for Tableau.
 - **DataOS API key**: Ensure the DataOS API key is available. Get it by using the following command:
 
