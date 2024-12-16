@@ -91,9 +91,10 @@ The publisher can embed their credentials (DataOS username and API Token) or ask
 | Rolling Window | -                        | Supported                                | NA                                            |
 
 
+
 ## Important considerations for Tableau Integration
 
-model lacks a defined relationship. To resolve this issue, the entity can be hidden to avoid synchronization errors.
+**1. Handling Entities without Relationships:** An error will occur during synchronization if any entity in the data model lacks a defined relationship. To resolve this issue, the entity can be hidden to avoid synchronization errors.
 
 **2. Live connection:** The connection between the Lens semantic layer and Tableau Cloud is live meaning that any changes to the underlying data or measure logic will automatically be reflected in Tableau.
 
