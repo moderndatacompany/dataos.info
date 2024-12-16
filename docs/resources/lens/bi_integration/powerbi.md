@@ -99,10 +99,6 @@ curl --location --request POST 'https://tcp.liberal-monkey.dataos.app/lens2/sync
     <img src="/resources/lens/bi_integration/powerbi4.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-<div style="text-align: center;">
-    <img src="/resources/lens/bi_integration/powerbi5.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
-</div>
-
 **Step 6 Connect to DataOS:** Click on the connect button. A popup will appear. Click Ok.
 
 
@@ -120,7 +116,7 @@ curl --location --request POST 'https://tcp.liberal-monkey.dataos.app/lens2/sync
 ## Important considerations
 
 - In Power BI, measures typically have an 'm_' prefix to indicate they represent a measure. For example, a measure calculating total revenue might be named `m_total_revenue`.
-- The connection is live, meaning any changes to the underlying data or measure logic will be reflected in Power BI.
+- The connection is live, meaning any changes to the underlying data will be reflected in Power BI.
 - If schema changes occur, such as the addition of new dimensions and measures, the steps outlined above will need to be repeated.
 
 ## Best practices

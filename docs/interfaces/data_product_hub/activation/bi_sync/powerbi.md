@@ -58,10 +58,6 @@ Open the `public_sales360` file in Power BI, once the file is opened, a popup wi
 <img src="/interfaces/data_product_hub/activation/bi_sync/Untitled%20(16).png" alt="DPH" style="width:40rem; border: 1px solid black;" />
 </center>
 
-<center>
-<img src="/interfaces/data_product_hub/activation/bi_sync/Untitled17.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
-</center>
-
 ### **Step 6: Establish connection**
 
 Click the connect button. A popup will appear; click OK.
@@ -91,7 +87,7 @@ After connecting, users can see tables and views containing dimensions and measu
 ## Important considerations
 
 - In Power BI, measures typically have an 'm_' prefix to indicate they represent a measure. For example, a measure calculating total revenue might be named `m_total_revenue`.
-- The connection is live, meaning any changes to the underlying data or measure logic will be reflected in Power BI.
+- The connection is live, meaning any changes to the underlying data will be reflected in Power BI.
 - If schema changes occur, such as the addition of new dimensions and measures, the steps outlined above will need to be repeated.
 - Custom measures or dimensions created in Power BI may be lost during re-sync operations. It is recommended to implement custom logic directly within the Lens when possible to ensure persistence of customizations.
 
