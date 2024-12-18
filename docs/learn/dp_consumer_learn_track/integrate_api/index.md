@@ -10,7 +10,7 @@ Considering that the 'Product360' Data Product fully meets your use case needs, 
 
 Before diving into the detailed steps, let’s cover some key concepts that will help you grasp the essentials:
 
-- **Data API:** An interface that allows applications to programmatically access and manipulate data stored in a database or data product, enabling seamless integration and interaction.
+- **Data API:** An interface that allows applications to programmatically access and manipulate data stored in a database or Data Product, enabling seamless integration and interaction.
 
 ## What do you need to get started?
 
@@ -42,7 +42,7 @@ Follow these steps to access and consume the Data Product using the REST API:
     ![api_postman.png](/learn/dp_consumer_learn_track/integrate_api/api_postman.png)
     
 
-1. **Send the Request and View the Output**
+4. **Send the request and view the output**
     
     After setting up your request, click **Send**. If configured correctly, you should see a successful API response, confirming that the endpoint and API key are working. This output is now ready to use in your data application.
     
