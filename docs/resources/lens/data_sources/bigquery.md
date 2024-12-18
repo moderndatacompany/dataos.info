@@ -1,26 +1,121 @@
-# Bigquery
+# Connecting to Bigquery Depot
 
-## Connecting to Bigquery with Depot/Cluster
+## Prerequisites
 
-### **Prerequisites**
+While creating a Lens on bigquery depot, the following aspects need to be considered:
 
-While migrating to Bigquery the following aspects need to be considered:
+- SQL dialect should be changed to the Bigquery one.
+- The table naming should be of the following format `project_id.dataset.table`.
+- Do not use `VARCHAR` as a datatype.
+- Use `Extract` date function of the Bigquery.
 
-- SQL dialect should be changed to the Bigquery one
-- The table naming should be of the following format `project_id.dataset.table` 
-- Do not use `VARCHAR` as a datatype
-- Use `Extract` date function of the Bigquery
+## Deployment manifest file
 
-### **Docker Compose Manifest File**
+The below manifest is intended for source type depot named `bigquerydepot`, created on the bigquery source.
+
+```yaml hl_lines="13-16"
+version: v1alpha
+name: "bigquery-lens"
+layer: user
+type: lens
+tags:
+  - lens
+description: bigquery depot lens deployment on lens2
+lens:
+  compute: runnable-default
+  secrets:
+    - name: bitbucket-cred
+      allKeys: true
+  source:
+    type: depot # source type is depot here
+    name: bigquerydepot # name of the bigquery depot
+    catalog: bigquerydepot  # catalog name/bigquery depot name
+  repo:
+    url: https://bitbucket.org/tmdc/sample
+    lensBaseDir: sample/lens/source/depot/bigquery/model 
+    # secretId: lens2_bitbucket_r
+    syncFlags:
+      - --ref=lens
+
+  api:   # optional
+    replicas: 1 # optional
+    logLevel: info  # optional
+    envs:
+      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
+      LENS2_DEV_MODE: "true"
+      LENS2_CONCURRENCY: 10
+      LENS2_DB_MAX_POOL: 15
+      LENS2_DB_TIMEOUT: 1500000
+      
+    resources: # optional
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 2000m
+        memory: 2048Mi
+  worker: # optional
+    replicas: 2 # optional
+    logLevel: debug  # optional
+    envs:
+      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
+      LENS2_DEV_MODE: "true"
+
+
+    resources: # optional
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 6000m
+        memory: 6048Mi
+  router: # optional
+    logLevel: info  # optional
+    envs:
+      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
+      LENS2_DEV_MODE: "true"
+    resources: # optional
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 6000m
+        memory: 6048Mi
+  iris:
+    logLevel: info  
+    resources: # optional
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 6000m
+        memory: 6048Mi
+```
+
+**Required Bigquery Depot Source Attributes**
+
+```yaml 
+# Data Source
+LENS2_SOURCE_TYPE: ${depot}  #source type should be depot
+LENS2_SOURCE_NAME: ${bigquerydepot} # name of the bigquery depot (it could be anything)
+DATAOS_RUN_AS_APIKEY: ${bZTFhZWJhMQ==}
+```
+
+## Docker compose manifest file
 
 Ensure that the necessary attributes are highlighted in the Docker Compose Manifest file for proper configuration during the connection setup process.
+
+
+<details>
+
+  <summary>Docker compose manifest file for local testing</summary>
 
 ```yaml hl_lines="13-15"
 version: "2.2"
 
 x-lens2-environment: &lens2-environment
   # DataOS
-  DATAOS_FQDN: liberal-donkey.dataos.app
+  DATAOS_FQDN: liberal-monkey.dataos.app
   # Overview
   LENS2_NAME: sales360
   LENS2_DESCRIPTION: "Ecommerce use case on Adventureworks sales data"
@@ -28,10 +123,10 @@ x-lens2-environment: &lens2-environment
   LENS2_AUTHORS: "rakeshvishvakarma, shubhanshu"
   LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
   # Data Source
-  LENS2_SOURCE_TYPE: ${depot}
-  LENS2_SOURCE_NAME: ${yakdevbq}
-  DATAOS_RUN_AS_APIKEY: ${bGVuc3NzLmUzMDA1ZjMzLTZiZjAtNDY4My05ZjhhLWNhODliZTFhZWJhMQ==}
-  # Log
+  LENS2_SOURCE_TYPE: ${depot} #source name - depot
+  LENS2_SOURCE_NAME: ${bigquerydepot} #name of the bigquery depot
+  DATAOS_RUN_AS_APIKEY: ${A1ZjMDliZTFhZWJhMQ==}
+  # LogZjAtNDY4My05
   LENS2_LOG_LEVEL: error
   CACHE_LOG_LEVEL: "trace"
   # Operation
@@ -59,14 +154,10 @@ services:
       # - ./scripts/bootstrap.js:/app/scripts/bootstrap.js
       # - ./scripts/config.js:/app/scripts/config.js
 ```
-**Required Bigquery Depot Source Attributes**
 
-```yaml 
-# Data Source
-LENS2_SOURCE_TYPE: ${depot}
-LENS2_SOURCE_NAME: ${yakdevbq}
-DATAOS_RUN_AS_APIKEY: ${bGVuc3NzLmUzMDA1ZjMzLTZiZjAtNDY4My05ZjhhLWNhODliZTFhZWJhMQ==}
-```
+</details>
+
+
 
 <!-- 
 ## Connecting to Bigquery without Depot/Cluster
