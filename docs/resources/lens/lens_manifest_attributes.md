@@ -102,7 +102,7 @@ lens:
 
 ## Resource meta section
 
-Click [here](/resources/manifest_attributes/) to know Resource meta section configuration.
+Click [here](/resources/manifest_attributes/)  to learn about the Resource meta section configuration.
 
 ## Lens-specific section
 
@@ -114,7 +114,7 @@ Click [here](/resources/manifest_attributes/) to know Resource meta section conf
 | --- | --- | --- | --- |
 | mapping | mandatory | none | valid Lens-specific attributes |
 
-**Example Usage:**
+**Example usage:**
 
 ```yaml
 lens:
@@ -134,7 +134,7 @@ lens:
 | --- | --- | --- | --- |
 | string | mandatory | none | runnable-default or any other valid runnable-type Compute Resource name |
 
-**Example Usage:**
+**Example usage:**
 
 ```yaml
 lens:
@@ -173,7 +173,7 @@ This sample command below creates a new API key named `myapikey` that will rem
 dataos-ctl user apikey create -n myapikey -d 30d
 ```
 
-**Example Usage:**
+**Example usage:**
 
 ```yaml
 lens:
@@ -194,7 +194,7 @@ lens:
 | --- | --- | --- | --- |
 | string | optional | user-id of the owner applying the Resource | user-id of the use-case assignee |
 
-**Example Usage:**
+**Example usage:**
 
 ```yaml
 lens:
@@ -211,19 +211,49 @@ lens:
 | --- | --- | --- | --- |
 | list of mappings | mandatory | none | list of secret configurations |
 
-**Attributes of `secrets`**
+**Attributes for `secrets`**
 
+### **`name`**
 
-| **Attribute**         | **Data Type**     | **Requirement** | **Default Value** | **Possible Values**                                             |
-| --------------------- | ----------------- | --------------- | ----------------- | --------------------------------------------------------------- |
-| **`name`**            | string            | mandatory       | none              | A valid secret name that matches a pre-existing Instance Secret within DataOS |
-| **`key`**             | string            | optional        | none              | A specific key of the Secret                                     |
-| **`keys`**            | list of strings   | optional        | none              | List of key identifiers within the secret                        |
-| **`allKeys`**         | boolean           | optional        | false             | true, false                                                      |
-| **`consumptionType`** | string            | optional        | `envVars`         | `envVars`, or other consumption methods                          |
+**Description:** A valid secret name that matches a pre-existing Instance Secret within DataOS.
 
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value**                                             |
+| ---           | ---             | ---               | ---                                                             |
+| string        | mandatory       | none              | A valid secret name                                             |
 
-**Example Usage:** If the codebase for your Lens is stored in a private code repository, you can create a Secret for the same and refer to it within the manifest file of Lens in the following way:
+### **`key`**
+
+**Description:** A specific key of the Secret.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value**                                             |
+| ---           | ---             | ---               | ---                                                             |
+| string        | optional        | none              | A valid key for the secret                                      |
+
+### **`keys`**
+
+**Description:** List of key identifiers within the secret.
+
+| **Data Type**     | **Requirement** | **Default Value** | **Possible Value**                                             |
+| ----------------- | --------------- | ----------------- | --------------------------------------------------------------- |
+| list of strings   | optional        | none              | List of key identifiers within the secret                       |
+
+### **`allKeys`**
+
+**Description:** Whether to include all keys in the secret.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value**                                             |
+| ---           | ---             | ---               | ---                                                             |
+| boolean       | optional        | false             | true, false                                                     |
+
+### **`consumptionType`**
+
+**Description:** Defines how the secret will be consumed (e.g., as environment variables or other methods).
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value**                                             |
+| ---           | ---             | ---               | ---                                                             |
+| string        | optional        | `envVars`         | `envVars`, or other consumption methods                         |
+
+**Example usage:** If the codebase for your Lens is stored in a private code repository, you can create a Secret for the same and refer to it within the manifest file of Lens in the following way:
 
 ```yaml title="instance_secret.yml"
 name: github-r
@@ -251,22 +281,46 @@ lens:
 
 ### **`source`**
 
-**Description:** Specifies the source configuration from which the Lens will be mapped.
+**Description:** Specifies the source configuration from which the Lens will be mapped. The Lens support the following sources
+
+- depot, 
+- themis, 
+- minerva, 
+- flash.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | --- | --- | --- | --- |
 | mapping | mandatory | none | valid source configuration |
 
-**Attributes of `source`:**
+**Attributes for `source`:**
 
-| **Attribute** | **Data Type** | **Requirement** | **Default Value** | **Possible Values** |
-| ------------- | ------------- | --------------- | ----------------- | ------------------- |
-| **`type`**    | string        | mandatory       | none              | `themis`, `trino`, etc. |
-| **`name`**    | string        | mandatory       | none              | A valid identifier for the source |
-| **`catalog`** | string        | mandatory       | none              | A valid identifier for the catalog within Trino/Themis |
+### **`type`**
+
+**Description:** Specifies the type of the source for Lens (e.g., themis, depot, minerva, flash.).
+
+| Data Type | Requirement | Default Value | Possible Values      |
+|-----------|-------------|---------------|----------------------|
+| string    | mandatory   | none          | themis, trino, etc.  |
 
 
-**Example Usage:**
+### **`name`**
+
+**Description:** Defines a valid identifier for the source.
+
+| Data Type | Requirement | Default Value | Possible Values               |
+|-----------|-------------|---------------|-------------------------------|
+| string    | mandatory   | none          | A valid identifier for the source.For instance, for source type cluster  (e.g., Themis and Minerva), the name refers to the cluster name (e.g., miniature, system). For Depot sources, the name refers to the Depot name. (e.g., bigquerydepot, redshift). |
+
+### **`catalog`**
+
+**Description:** Specifies a valid identifier for the catalog within Trino/Themis.
+
+| Data Type | Requirement | Default Value | Possible Values                            |
+|-----------|-------------|---------------|--------------------------------------------|
+| string    | mandatory   | none          | A valid identifier for the catalog within Trino/Themis. e.g., system, miniature, etc.|
+
+
+**Example usage:**
 
 ```yaml
 lens:
@@ -289,13 +343,13 @@ lens:
 
 ### **url**
 
-**Description:** URL of the repository containing the Lens codes and model. This is a mandatory attribute.
+**Description:** URL of the repository containing the Lens codes and model. This is a mandatory attribute. 
 
 | Data Type | Requirement | Default Value | Possible Values |
 | --- | --- | --- | --- |
 | string | mandatory | none | URL of the repository (e.g., https://bitbucket.org/mywork15/talos/). |
 
-**Example Usage:**
+**Example usage:**
 
 
 ```yaml
@@ -329,7 +383,7 @@ repo: # Code repository configuration (mandatory)
 | string | conditional | none | A valid secret identifier in the form ${secret_name}_${acl}. |
 
 
-**Example Usage:**
+**Example usage:**
 
 
 ```yaml
@@ -349,16 +403,16 @@ lens:
 | ----------| ----------- | ------------- | --------------- |
 |  string   |   optional  |      none     | List of flags for synchronization (e.g., --ref=main). |
 
-**Example Usage:**
+**Example usage:**
          
 ```yaml
 lens:
   repo: 
-    url: https://github.com/abcd/lens2
-    lensBaseDir: lens2/sales/model 
+    url: https://github.com/abcd/lens
+    lensBaseDir: lens/sales/model 
     secretId: github-r
     syncFlags: 
-        - --ref=lens2
+        - --ref=main
 ```   
 ### **`api`**
 
@@ -378,13 +432,14 @@ lens:
 | ------------- | -------------- | ------------------- | ------------------- |
 | string        | optional       | INFO               | Valid log level from amongst<br> INFO, WARN DEBUG, ERROR
 
-<b>Additional Details:</b><br>
-- <i>INFO:</i> Designates informational messages that highlight the progress of the API Instance.<br>
-- <i>WARN:</i> Designates potentially harmful situations.<br>
-- <i>DEBUG:</i> Designates fine-grained informational events that are most useful while debugging.<br>
-- <i>ERROR:</i> Desingates error events that might still allow the workflow to continue running.<br>
+**Additional Details:**
 
-**Example Usage:**<br>
+- INFO: Designates informational messages that highlight the progress of the API Instance.<br>
+- WARN: Designates potentially harmful situations.<br>
+- DEBUG: Designates fine-grained informational events that are most useful while debugging.<br>
+- ERROR: Desingates error events that might still allow the workflow to continue running.<br>
+
+**Example usage:**<br>
 ```yaml
 lens:
   api:
@@ -400,7 +455,7 @@ lens:
 | ------------- | -------------- | ------------------- | ------------------- |
 | integer       | optional       | 1                   | any positive integer
 
-**Example Usage:**<br>
+**Example usage:**<br>
 ```yaml
 api:
   replicas: 3
@@ -415,7 +470,7 @@ api:
 | ------------- | -------------- | ------------------- | ------------------- |
 | mapping        | optional       | none                 | none
 
-**Example Usage:**<br>
+**Example usage:**<br>
 ```yaml
 api:
   autoScaling:
@@ -436,7 +491,7 @@ api:
 | ------------- | -------------- | ------------------- | ------------------- |
 | boolean       | optional       | true                | true or false.
 
-**Example Usage:**<br>
+**Example usage:**<br>
 ```yaml
 lens:
   api:
@@ -458,7 +513,7 @@ lens:
 | ------------- | -------------- | ------------------- | ------------------- |
 | integer       | optional       | 1                   | any positive integer.
 
-**Example Usage:**<br>
+**Example usage:**<br>
 
 ```yaml
 lens:
@@ -477,7 +532,7 @@ lens:
 | ------------- | -------------- | ------------------- | ------------------- |
 | integer       | optional       | none                  | any positive integer
 
-**Example Usage:**<br>
+**Example usage:**<br>
 ```yaml
 lens:
   api:
@@ -489,13 +544,13 @@ lens:
 
 ### **`targetMemoryUtilizationPercentage`**
 
-**Description:** the target memory utilization percentage for autoscaling is the average memory usage of all pods in a deployment across the last minute divided by the requested CPU of this deployment. If the mean of the pods' CPU utilization is higher than the target you defined, then your replicas will be adjusted.
+**Description:** the target memory utilization percentage for autoscaling is the average memory usage: of all pods in a deployment across the last minute divided by the requested CPU of this deployment. If the mean of the pods' CPU utilization is higher than the target you defined, then your replicas will be adjusted.
 
 | **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
 | integer       | optional       | none                  | any integer between 0 and 100.
 
-**Example Usage:**<br>
+**Example usage:**<br>
 ```yaml
 lens:
   api:
@@ -507,14 +562,14 @@ lens:
 
 ### **`targetCPUUtilizationPercentage`**
 
-**Description:** the target CPU utilization percentage for autoscaling is the average CPU usage of all pods in a deployment across the last minute divided by the requested CPU of this deployment. If the mean of the pods' memory utilization is higher than the target you defined, then your replicas will be adjusted.
+**Description:** the target CPU utilization percentage for autoscaling is the average CPU usage: of all pods in a deployment across the last minute divided by the requested CPU of this deployment. If the mean of the pods' memory utilization is higher than the target you defined, then your replicas will be adjusted.
 
 
  **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
 | ------------- | -------------- | ------------------- | ------------------- |
 | integer       | optional       | 80                  | any integer between 0 and 100.
 
-**Example Usage:**<br>
+**Example usage:**<br>
 ```yaml
 lens:
   api:
@@ -535,7 +590,7 @@ lens:
 | mapping       | optional       | none              | none               |
 
 
-**Example Usage:**
+**Example usage:**
 
 ```yaml
 lens:
@@ -553,14 +608,28 @@ lens:
 
 **Description:** List of environment variables for API instance.
 
- **Attributes of `env`**
-
-  - **`LENS2_SCHEDULED_REFRESH_TIMEZONES`**: This option specifies a list of time zones in which the user wants to run queries. Users can specify multiple time zones in the [TZ Database Name format](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), such as  "UTC,America/Vancouver,America/Toronto". The default value is a list of a single time zone. UTC.
-
-  - **`LENS2_DB_TIMEOUT`**:   Defines the maximum amount of time (in milliseconds) that Lens will wait for a response from the database before timing out a query. This setting ensures that long-running or inefficient queries don't hold up resources for too long.
+ **Attributes for `env`**
 
 
-**Example Usage:**
+#### **`LENS2_SCHEDULED_REFRESH_TIMEZONES`**
+
+**Description:** Specifies a list of time zones in which the user wants to run queries. Multiple time zones can be specified using the TZ Database Name format, such as "UTC,America/Vancouver,America/Toronto". The default value is a single time zone, UTC.
+
+| Data Type | Requirement | Default Value | Possible Values                       |
+|-----------|-------------|---------------|---------------------------------------|
+| string    | mandatory   | UTC           | "UTC", "America/Vancouver", "America/Toronto", etc. |
+
+
+
+### **`LENS2_DB_TIMEOUT`**
+
+**Description:** Defines the maximum amount of time (in milliseconds) that Lens will wait for a response from the database before timing out a query. This setting prevents long-running or inefficient queries from occupying resources too long.
+
+| Data Type | Requirement | Default Value | Possible Values |
+|-----------|-------------|---------------|-----------------|
+| integer   | mandatory   | none          | A positive integer representing time in milliseconds |
+
+**Example usage:**
 
 ```yaml
 lens:
@@ -569,6 +638,7 @@ lens:
   logLevel: info
   envs:
 	  LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
+    LENS2_DB_TIMEOUT: 300000
   resources:
     requests:
       cpu: 100m
@@ -590,6 +660,42 @@ lens:
 
 **Attributes for `worker`**
 
+### **`logLevel`**
+
+**Description:** Specifies the logging level for the Worker. This controls the verbosity of the logs generated by the Worker instance.
+
+| Data Type | Requirement | Default Value | Possible Values                |
+|-----------|-------------|---------------|--------------------------------|
+| string    | optional    | INFO          | `INFO`, `WARN`, `DEBUG`, `ERROR`|
+
+
+### **`replicas`**
+
+**Description:** Defines the number of Worker replicas to run. A higher number of replicas allows for better load handling.
+
+| Data Type | Requirement | Default Value | Possible Values       |
+|-----------|-------------|---------------|-----------------------|
+| integer   | optional    | 1             | Any positive integer  |
+
+
+### **`resources`**
+
+**Description:** Specifies the CPU and memory resources allocated for the Worker instance, including both requested and limited values.
+
+| Data Type                  | Requirement | Default Value                                                              | Possible Values                                                                 |
+|----------------------------|-------------|----------------------------------------------------------------------------|---------------------------------------------------------------------------------|
+| mapping (CPU/memory)       | optional    | CPU: 100m, Memory: 100Mi (request) / CPU: 400m, Memory: 400Mi (limit)      | CPU: declared in milliCPU (m) or core / Memory: Mebibytes (Mi) or Gibibytes (Gi) |
+
+
+### **`envs`**
+
+**Description:** List of environment variables to be configured for the Worker instance.
+
+| Data Type | Requirement | Default Value | Possible Values               |
+|-----------|-------------|---------------|-------------------------------|
+| mapping   | optional    | none          | List of environment variables  |
+
+
 | **Attribute**       | **Data Type**       | **Requirement** | **Default Value**     | **Possible Values**                                                   |
 | ------------------- | ------------------- | --------------- | --------------------- | --------------------------------------------------------------------- |
 | **`logLevel`**      | string              | optional        | INFO                  | `INFO`, `WARN`, `DEBUG`, `ERROR`                                       |
@@ -597,7 +703,7 @@ lens:
 | **`resources`**     | mapping (CPU/memory)| optional        | CPU: 100m, Memory: 100Mi (request) / CPU: 400m, Memory: 400Mi (limit) | CPU: declared in milliCPU (m) or core / Memory: Mebibytes (Mi) or Gibibytes (Gi) |
 | **`envs`**          | mapping             | optional        | none                  | List of environment variables for the Worker.                         |
 
-**Example Usage:**
+**Example usage:**
 
 ```yaml
 lens:
@@ -625,17 +731,43 @@ lens:
 | --- | --- | --- | --- |
 | mapping | mandatory | none | valid router configuration |
 
-**Attributes for `router`**
 
-| **Attribute**       | **Data Type**       | **Requirement** | **Default Value**     | **Possible Values**                                                   |
-| ------------------- | ------------------- | --------------- | --------------------- | --------------------------------------------------------------------- |
-| **`logLevel`**      | string              | optional        | INFO                  | `INFO`, `WARN`, `DEBUG`, `ERROR`                                       |
-| **`replicas`**      | integer             | optional        | 1                     | Any positive integer                                                  |
-| **`resources`**     | mapping (CPU/memory)| optional        | CPU: 100m, Memory: 100Mi (request) / CPU: 400m, Memory: 400Mi (limit) | CPU: declared in milliCPU (m) or core / Memory: Mebibytes (Mi) or Gibibytes (Gi) |
-| **`envs`**          | mapping             | optional        | none                  | List of environment variables for the router.                         |
+### **`logLevel`**
+
+**Description:** Specifies the logging level for the router instance.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Values**                                |
+| -------------- | --------------- | ----------------- | ------------------------------------------------- |
+| string         | optional        | INFO              | `INFO`, `WARN`, `DEBUG`, `ERROR`                  |
 
 
-**Example Usage:**
+### **`replicas`**
+
+**Description:** Defines the number of router instances to run.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Values**                     |
+| -------------- | --------------- | ----------------- | --------------------------------------- |
+| integer        | optional        | 1                 | Any positive integer                    |
+
+
+### **`resources`**
+
+**Description:** Specifies the CPU and memory resources allocated to the router.
+
+| **Data Type**        | **Requirement** | **Default Value**                                             | **Possible Values**                                                |
+| -------------------- | --------------- | ------------------------------------------------------------- | ------------------------------------------------------------------ |
+| mapping (CPU/memory) | optional        | CPU: 100m, Memory: 100Mi (request) / CPU: 400m, Memory: 400Mi (limit) | CPU: declared in milliCPU (m) or core / Memory: Mebibytes (Mi) or Gibibytes (Gi) |
+
+
+### **`envs`**
+
+**Description:** List of environment variables for the router instance.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Values**                              |
+| -------------- | --------------- | ----------------- | ------------------------------------------------ |
+| mapping        | optional        | none              | List of environment variables for the router.    |
+
+**Example usage:**
 
 ```yaml
 lens:
@@ -662,16 +794,40 @@ lens:
 | --- | --- | --- | --- |
 | mapping | mandatory | none | valid iris configuration |
 
-**Attributes for `iris`**
+### **`logLevel`**
 
-| **Attribute**       | **Data Type**       | **Requirement** | **Default Value**     | **Possible Values**                                                   |
-| ------------------- | ------------------- | --------------- | --------------------- | --------------------------------------------------------------------- |
-| **`logLevel`**      | string              | optional        | INFO                  | `INFO`, `WARN`, `DEBUG`, `ERROR`                                       |
-| **`replicas`**      | integer             | optional        | 1                     | Any positive integer                                                  |
-| **`resources`**     | mapping (CPU/memory)| optional        | CPU: 100m, Memory: 100Mi (request) / CPU: 400m, Memory: 400Mi (limit) | CPU: declared in milliCPU (m) or core / Memory: Mebibytes (Mi) or Gibibytes (Gi) |
-| **`envs`**          | mapping             | optional        | none                  | List of environment variables for the iris.                           |
+**Description:** Defines the level of logs for Iris.
 
-**Example Usage:**
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| --- | --- | --- | --- |
+| string | optional | INFO | `INFO`, `WARN`, `DEBUG`, `ERROR` |
+
+
+### **`replicas`**
+
+**Description:** Defines the number of replicas for the Iris instance.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| --- | --- | --- | --- |
+| integer | optional | 1 | Any positive integer |
+
+### **`resources`**
+
+**Description:** Specifies the CPU and memory resource requirements for Iris.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| --- | --- | --- | --- |
+| mapping (CPU/memory) | optional | CPU: 100m, Memory: 100Mi (request) / CPU: 400m, Memory: 400Mi (limit) | CPU: declared in milliCPU (m) or core / Memory: Mebibytes (Mi) or Gibibytes (Gi) |
+
+### **`envs`**
+
+**Description:** List of environment variables for the Iris instance.
+
+| **Data Type** | **Requirement** | **Default Value** | **Possible Value** |
+| --- | --- | --- | --- |
+| mapping | optional | none | List of environment variables for the iris |                     |
+
+**Example usage:**
 
 ```yaml
 lens:
