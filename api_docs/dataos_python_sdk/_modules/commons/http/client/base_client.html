@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>commons.http.client.base_client &mdash; dataos-sdk-py 00.00.01 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            dataos-sdk-py
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">asset_tags_service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html#depot-service">depot_service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html#commons">commons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html#gateway">gateway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html#heimdall">heimdall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html#poros">poros</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html#stack-service">stack_service</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">dataos-sdk-py</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">commons.http.client.base_client</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for commons.http.client.base_client</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">urllib3.util.retry</span> <span class="kn">import</span> <span class="n">Retry</span>
+<span class="kn">from</span> <span class="nn">requests.adapters</span> <span class="kn">import</span> <span class="n">HTTPAdapter</span>
+<span class="kn">from</span> <span class="nn">commons.utils.helper</span> <span class="kn">import</span> <span class="n">normalize_base_url</span>
+
+
+<div class="viewcode-block" id="BaseHTTPClientBuilder"><a class="viewcode-back" href="../../../../commons.http.client.html#commons.http.client.base_client.BaseHTTPClientBuilder">[docs]</a><span class="k">class</span> <span class="nc">BaseHTTPClientBuilder</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Base HTTP Client Builder.</span>
+
+<span class="sd">        This class provides a blueprint for building configurations for an HTTP client.</span>
+
+<span class="sd">        Configurable Properties:</span>
+<span class="sd">            base_url (str): The base URL of the API.</span>
+<span class="sd">            apikey (str): The API key for authentication with the API.</span>
+<span class="sd">            enable_ssl (bool): Whether to enable SSL for API requests (default is False).</span>
+<span class="sd">            client (object): An instance of the HTTP client to use for making API requests.</span>
+<span class="sd">            ssl_verify_hostname (bool): Whether to verify SSL hostname for API requests (default is True).</span>
+<span class="sd">            keystore_path (str): The path to the keystore file for SSL (default is None).</span>
+<span class="sd">            keystore_pass (str): The password for the keystore file (default is None).</span>
+<span class="sd">            truststore_path (str): The path to the truststore file for SSL (default is None).</span>
+<span class="sd">            truststore_pass (str): The password for the truststore file (default is None).</span>
+<span class="sd">            connect_timeout (int): The connection timeout in milliseconds for API requests (default is 10000 ms).</span>
+<span class="sd">            read_timeout (int): The read timeout in milliseconds for API requests (default is 10000 ms).</span>
+<span class="sd">            user_agent (str): The user agent string to use for API requests.</span>
+<span class="sd">            max_retries (int): The maximum number of times to retry API requests on failure (default is 3).</span>
+<span class="sd">            backoff_factor (float): The backoff factor for retrying API requests on failure (default is 0.3).</span>
+<span class="sd">            headers (dict): Additional headers to include in API requests (default is None).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base_url</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">apikey</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enable_ssl</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ssl_verify_hostname</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">keystore_path</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">keystore_pass</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">truststore_path</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">truststore_pass</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connect_timeout</span> <span class="o">=</span> <span class="mi">10000</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">read_timeout</span> <span class="o">=</span> <span class="mi">10000</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user_agent</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_retries</span> <span class="o">=</span> <span class="mi">3</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">backoff_factor</span> <span class="o">=</span> <span class="mf">0.3</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">headers</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="BaseHTTPClientBuilder.get_http_client"><a class="viewcode-back" href="../../../../commons.http.client.html#commons.http.client.base_client.BaseHTTPClientBuilder.get_http_client">[docs]</a>    <span class="k">def</span> <span class="nf">get_http_client</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_http_client</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="BaseHTTPClientBuilder.get_user_agent"><a class="viewcode-back" href="../../../../commons.http.client.html#commons.http.client.base_client.BaseHTTPClientBuilder.get_user_agent">[docs]</a>    <span class="k">def</span> <span class="nf">get_user_agent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_agent</span> <span class="ow">or</span> <span class="sa">f</span><span class="s2">&quot;dataos-sdk-py/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_default_user_agent_suffix</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span></div>
+
+<div class="viewcode-block" id="BaseHTTPClientBuilder.get_default_user_agent_suffix"><a class="viewcode-back" href="../../../../commons.http.client.html#commons.http.client.base_client.BaseHTTPClientBuilder.get_default_user_agent_suffix">[docs]</a>    <span class="k">def</span> <span class="nf">get_default_user_agent_suffix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Subclasses must implement this method to provide the default user agent suffix.&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BaseHTTPClientBuilder.base_url"><a class="viewcode-back" href="../../../../commons.http.client.html#commons.http.client.base_client.BaseHTTPClientBuilder.base_url">[docs]</a>    <span class="k">def</span> <span class="nf">base_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_url</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base_url</span> <span class="o">=</span> <span class="n">normalize_base_url</span><span class="p">(</span><span class="n">base_url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="BaseHTTPClientBuilder.user_agent"><a class="viewcode-back" href="../../../../commons.http.client.html#commons.http.client.base_client.BaseHTTPClientBuilder.user_agent">[docs]</a>    <span class="k">def</span> <span class="nf">user_agent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_agent</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user_agent</span> <span class="o">=</span> <span class="n">user_agent</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="BaseHTTPClientBuilder.apikey"><a class="viewcode-back" href="../../../../commons.http.client.html#commons.http.client.base_client.BaseHTTPClientBuilder.apikey">[docs]</a>    <span class="k">def</span> <span class="nf">apikey</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">apikey</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">apikey</span> <span class="o">=</span> <span class="n">apikey</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="BaseHTTPClientBuilder.enable_ssl"><a class="viewcode-back" href="../../../../commons.http.client.html#commons.http.client.base_client.BaseHTTPClientBuilder.enable_ssl">[docs]</a>    <span class="k">def</span> <span class="nf">enable_ssl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">enable_ssl</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enable_ssl</span> <span class="o">=</span> <span class="n">enable_ssl</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="BaseHTTPClientBuilder.ssl_verify_hostname"><a class="viewcode-back" href="../../../../commons.http.client.html#commons.http.client.base_client.BaseHTTPClientBuilder.ssl_verify_hostname">[docs]</a>    <span class="k">def</span> <span class="nf">ssl_verify_hostname</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verify_hostname</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ssl_verify_hostname</span> <span class="o">=</span> <span class="n">verify_hostname</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="BaseHTTPClientBuilder.keystore_path"><a class="viewcode-back" href="../../../../commons.http.client.html#commons.http.client.base_client.BaseHTTPClientBuilder.keystore_path">[docs]</a>    <span class="k">def</span> <span class="nf">keystore_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keystore_path</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">keystore_path</span> <span class="o">=</span> <span class="n">keystore_path</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="BaseHTTPClientBuilder.keystore_pass"><a class="viewcode-back" href="../../../../commons.http.client.html#commons.http.client.base_client.BaseHTTPClientBuilder.keystore_pass">[docs]</a>    <span class="k">def</span> <span class="nf">keystore_pass</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keystore_pass</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">keystore_pass</span> <span class="o">=</span> <span class="n">keystore_pass</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="BaseHTTPClientBuilder.truststore_path"><a class="viewcode-back" href="../../../../commons.http.client.html#commons.http.client.base_client.BaseHTTPClientBuilder.truststore_path">[docs]</a>    <span class="k">def</span> <span class="nf">truststore_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">truststore_path</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">truststore_path</span> <span class="o">=</span> <span class="n">truststore_path</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="BaseHTTPClientBuilder.truststore_pass"><a class="viewcode-back" href="../../../../commons.http.client.html#commons.http.client.base_client.BaseHTTPClientBuilder.truststore_pass">[docs]</a>    <span class="k">def</span> <span class="nf">truststore_pass</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">truststore_pass</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">truststore_pass</span> <span class="o">=</span> <span class="n">truststore_pass</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="BaseHTTPClientBuilder.connect_timeout"><a class="viewcode-back" href="../../../../commons.http.client.html#commons.http.client.base_client.BaseHTTPClientBuilder.connect_timeout">[docs]</a>    <span class="k">def</span> <span class="nf">connect_timeout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connect_timeout</span> <span class="o">=</span> <span class="n">timeout</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="BaseHTTPClientBuilder.read_timeout"><a class="viewcode-back" href="../../../../commons.http.client.html#commons.http.client.base_client.BaseHTTPClientBuilder.read_timeout">[docs]</a>    <span class="k">def</span> <span class="nf">read_timeout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">read_timeout</span> <span class="o">=</span> <span class="n">timeout</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="BaseHTTPClientBuilder.max_retries"><a class="viewcode-back" href="../../../../commons.http.client.html#commons.http.client.base_client.BaseHTTPClientBuilder.max_retries">[docs]</a>    <span class="k">def</span> <span class="nf">max_retries</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_retries</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_retries</span> <span class="o">=</span> <span class="n">max_retries</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="BaseHTTPClientBuilder.backoff_factor"><a class="viewcode-back" href="../../../../commons.http.client.html#commons.http.client.base_client.BaseHTTPClientBuilder.backoff_factor">[docs]</a>    <span class="k">def</span> <span class="nf">backoff_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">backoff_factor</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">backoff_factor</span> <span class="o">=</span> <span class="n">backoff_factor</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="BaseHTTPClientBuilder.build_headers"><a class="viewcode-back" href="../../../../commons.http.client.html#commons.http.client.base_client.BaseHTTPClientBuilder.build_headers">[docs]</a>    <span class="k">def</span> <span class="nf">build_headers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">headers</span><span class="p">):</span>
+        <span class="n">headers_</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_user_agent</span><span class="p">()}</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">apikey</span><span class="p">:</span>
+            <span class="n">headers_</span><span class="p">[</span><span class="s2">&quot;apikey&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">apikey</span>
+        <span class="k">if</span> <span class="n">headers</span><span class="p">:</span>
+            <span class="n">headers_</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">headers_</span></div>
+
+<div class="viewcode-block" id="BaseHTTPClientBuilder.build_http_client"><a class="viewcode-back" href="../../../../commons.http.client.html#commons.http.client.base_client.BaseHTTPClientBuilder.build_http_client">[docs]</a>    <span class="k">def</span> <span class="nf">build_http_client</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Build and configure an HTTP client.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            requests.Session: An instance of the configured HTTP client.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">session</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">enable_ssl</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">ssl_verify_hostname</span><span class="p">:</span>
+                <span class="c1"># Disable SSL hostname verification</span>
+                <span class="n">session</span><span class="o">.</span><span class="n">verify</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">keystore_path</span> <span class="ow">or</span> \
+                        <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">keystore_pass</span> <span class="ow">or</span> \
+                        <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">truststore_path</span> <span class="ow">or</span> \
+                        <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">truststore_pass</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;keystore and truststore paths and passwords must be provided&quot;</span><span class="p">)</span>
+                <span class="n">session</span><span class="o">.</span><span class="n">verify</span> <span class="o">=</span> <span class="kc">True</span>
+
+                <span class="c1"># SSL with custom keystore and truststore</span>
+                <span class="n">session</span><span class="o">.</span><span class="n">cert</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">keystore_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">keystore_pass</span><span class="p">)</span>
+                <span class="n">session</span><span class="o">.</span><span class="n">verify</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">truststore_path</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_retries</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">retry_strategy</span> <span class="o">=</span> <span class="n">Retry</span><span class="p">(</span>
+                <span class="n">total</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">max_retries</span><span class="p">,</span>
+                <span class="n">backoff_factor</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">backoff_factor</span><span class="p">,</span>
+                <span class="n">status_forcelist</span><span class="o">=</span><span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">502</span><span class="p">,</span> <span class="mi">503</span><span class="p">,</span> <span class="mi">504</span><span class="p">],</span>
+            <span class="p">)</span>
+            <span class="n">adapter</span> <span class="o">=</span> <span class="n">HTTPAdapter</span><span class="p">(</span><span class="n">max_retries</span><span class="o">=</span><span class="n">retry_strategy</span><span class="p">)</span>
+            <span class="n">session</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s2">&quot;http://&quot;</span><span class="p">,</span> <span class="n">adapter</span><span class="p">)</span>
+            <span class="n">session</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s2">&quot;https://&quot;</span><span class="p">,</span> <span class="n">adapter</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">session</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">build_headers</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, tmdc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
