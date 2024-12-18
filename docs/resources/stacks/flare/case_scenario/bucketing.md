@@ -15,7 +15,7 @@ Bucketing is helpful in the following scenarios:
 
 - When joins are performed between dimension tables that contain primary keys for joining.
 - When join operations are being performed between small and large tables.
-- Where the data is heavily skewed, or for executing faster joins on a cluster we can also use the bucketing technique to improve performance
+- Where the data is heavily skewed, or for executing faster joins on a cluster we can also use the bucketing technique to improve performance.
 
 ## Configurations
 
@@ -40,7 +40,7 @@ workflow:
   dag:
     - name: sample
       spec:
-        stack: flare:5.0
+        stack: flare:6.0
         compute: runnable-default
         stackSpec:
           driver:    
@@ -100,6 +100,8 @@ workflow:
 ```
 
 **Toolbox Workflow**
+
+This additional workflow is only required if your current icebase depot is based on Hadoop catalogue and Hive metastore. However, in the case where the catalog is based on Hadoop and REST Metastore, the additional metadata setting operation is not required.
 
 ```yaml
 version: v1
@@ -198,21 +200,11 @@ workflow:
             - spark.sql.extensions: org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions
 ```
 
-**Toolbox Workflow**
+If one attempts to  set metadata on the icebase depot based on REST metastore the following error will encounter:
 
-```yaml
-version: v1
-name: datatool-wf-sample-02
-type: workflow
-workflow:
-  dag:
-  - name: dataos-tool-nested-bucket
-    spec:
-      stack: toolbox
-      compute: runnable-default
-      stackSpec:
-        dataset: dataos://icebase:sample/bucket_large_data_02
-        action:
-          name: set_version
-          value: latest
+```bash
+➜  ~ dataos-ctl dataset set-metadata -a dataos://icebase:retail/city -v latest
+INFO[0000] 📂 set metadata...                            
+ERRO[0001] 📂 set metadata...error                       
+ERRO[0001] set metadata operation is restricted to Hadoop Catalog and HIVE Metastore based depot, for given depot: icebase, icebergCatalogType: HADOOP and metastoreType: REST
 ```

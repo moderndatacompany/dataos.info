@@ -1,30 +1,28 @@
-# Data Replay
-
-## Overview
+# Data replay
 
 This documentation outlines the data replay case scenario, which involves the need to rewrite a data segment for various reasons, such as incomplete or corrupted data. In this scenario, we explore the configuration of data ingestion jobs to rectify corrupted records without the necessity of rewriting all partitions. This approach significantly reduces costs associated with complete data rewrites.
 
-## Solution Approach
+## Solution approach
 
 The primary objective of this case scenario is to configure data ingestion jobs for the replacement of a single partition of data while maintaining the ability to overwrite partitions dynamically.
 
-## Implementation Details
+## Implementation details
 
-### **Data Ingestion and Replacement**
+### **Data ingestion and replacement**
 To validate the data replay scenario, we conducted the following steps:
 
-1. **Data Ingestion**: We initiated the data replay scenario by ingesting NY-taxi data, utilizing vendor-level partitioning.
+1. **Data ingestion**: We initiated the data replay scenario by ingesting NY-taxi data, utilizing vendor-level partitioning.
 
-2. **Data Replacement**: Subsequently, we replaced the data of a specific vendor using the following attributes:
-   - `saveMode`: overwrite
-   - `overwrite-mode`: dynamic
+2. **Data replacement**: Subsequently, we replaced the data of a specific vendor using the following attributes:
+
+    - `saveMode`: overwrite
+    - `overwrite-mode`: dynamic
 
 ### **Validation**
 
 To ensure the correctness of our data replay approach, we conduct tests involving timestamp columns. Specifically, we compared the values written during the initial write operation to the values written during the second write operation, which targeted only the data for a single vendor.
 
 ### **Partitioning and Replacement**
-
 
 We also evaluated data replay by writing data with partitioning in mind. During this phase, we replaced one partition of data using a separate job.
 

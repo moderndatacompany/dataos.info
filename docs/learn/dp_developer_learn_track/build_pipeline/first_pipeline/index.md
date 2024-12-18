@@ -130,4 +130,4 @@ You are now equipped to handle batch data pipelines efficiently. As you move for
 
 - [Pipeline observability](/learn/dp_developer_learn_track/build_pipeline/pipeline_observability/)
 - [Scheduling Workflows](/learn/dp_developer_learn_track/build_pipeline/scheduling_workflows/)
-- [Data quality checks](/learn/dp_developer_learn_track/build_pipeline/dq_checks/)
+- [Data quality checks](/learn/dp_developer_learn_track/build_pipeline/dq_check/)

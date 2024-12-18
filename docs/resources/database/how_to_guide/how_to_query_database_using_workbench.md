@@ -27,7 +27,7 @@ Always update the `PGRST_OPENAPI_SERVER_PROXY_URI` with the latest dataos contex
 
 ## Create a Depot on the hosted Database Service
 
-Once you have the Database Service up and running, the next step involves creating a Depot on the Postgres Database associated with that Service. This necessitates the formulation of a Postgres Depot Manifest. Detailed configuration specifications are available on the [PostgreSQL Depot config templates](/resources/depot/depot_config_templates/postgresql). In this specific context, certain attributes demand precise configuration, as outlined below:
+Once you have the Database Service up and running, the next step involves creating a Depot on the Postgres Database associated with that Service. This necessitates the formulation of a Postgres Depot Manifest. Detailed configuration specifications are available on the [PostgreSQL Depot config templates](/resources/depot/depot_config_templates/postgresql/). In this specific context, certain attributes demand precise configuration, as outlined below:
 
 In this specific context, certain attributes demand precise configuration, as outlined below:
 
@@ -84,7 +84,7 @@ Once you have created a Depot manifest, simply copy the  or relative path of the
 
 ## Target a cluster 
 
-Add Depot to Cluster Sources to enable the Minerva/Themis Query Engine to access database, you can create the Postgres [Depot](/resources/depot). This allows you to query the data using the DataOS Workbench.
+Add Depot to Cluster Sources to enable the Minerva/Themis Query Engine to access database, you can create the Postgres [Depot](/resources/depot/). This allows you to query the data using the DataOS Workbench.
 
 Create a new Cluster manifest with specified depot address. Below is a sample Cluster manifest provided for reference.
 

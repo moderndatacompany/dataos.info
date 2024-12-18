@@ -1,11 +1,10 @@
-# Column Tagging
+# Column tagging
 
-
-In Flare 4.0, a new feature has been introduced to enable users to tag columns in an output table from the Flare Workflow YAMLs. This new functionality provides immediate governance over tagged columns during dataset writing. To facilitate this, a new `columnTags` property has been added to the `outputs` section of the Flare YAML.
+Flare provides a feature to tag columns in an output table, allowing users to have better control and governance over specific columns when writing datasets. This functionality is facilitated by the columnTags property, which is part of the outputs section in the Flare Workflow YAML configuration.
 
 Three mutually exclusive ways have been defined to identify a column, which includes specifying either `columnRegex`, `columnName`, or `columnNames` within the `columnTags` property.
 
-## Different Ways to Identify the Column
+## Different ways to identify the column
 
 The following section provides a comprehensive overview of these three ways:
 
@@ -23,7 +22,7 @@ columnTags:
       - customer
 ```
 
-### `columnName`
+### **`columnName`**
 
 The `columnName` property is utilized to designate a particular column.
 
@@ -40,7 +39,7 @@ The `columnName` property is utilized to designate a particular column.
 	    - PII.Name
 ```
 
-### `columnNames`
+### **`columnNames`**
 
 The `columnNames` property is utilized when identical tags need to be applied to columns that match the specified name.
 
@@ -58,30 +57,23 @@ The `columnNames` property is utilized when identical tags need to be applied to
 	    - PII.None
 ```
 
-<aside>
-
-🗣️ **Few important points to note**
+## Important considerations
 
 1. Tags are case-sensitive. This implies that `PII` is not interchangeable with `piI`, `pii`, or `Pii`. So, consistency in the usage of tag names should be maintained between the Metis GUI and YAML.
 2. If the intention is to attach a tag to a column that is already present on Metis, the correct tag, FQN (Fully Qualified Name), must be used. The FQN is constructed using the format `TagCategory.PrimaryTagName`.
 3. In the event of applying the incorrect tag to a dataset (through YAML), the following steps should be followed for the tag removal:
     1. Use the Metis GUI to manually remove the erroneous tag from the corresponding column. However, this step alone is not enough, as the tag may reappear in subsequent workflow runs. 
     2. Subsequently, delete and rerun the workflow by excluding the undesired tag name. It is crucial to ensure that the workflow and DAG names match.
-</aside>
 
-## Code Snippet
 
-The code snippet to define column identifiers and tags is provided below
+## Code snippet
+
+The code snippet to define column identifiers and tags is provided below: 
 
 ```yaml
 version: v1 # Version
 name: columnlevel-tag-workflow # Name of the Workflow
 type: workflow # Type of Resource (Here its workflow)
-# tags:
-#   - Platinum
-#   - PII.Age
-#   - Tier.Gold
-#   - XYZ.Workflow
 title: Column Level Tagging # Title
 description: |
   The purpose of this workflow is to provide tags at the column level using Flare. 
@@ -92,12 +84,7 @@ workflow: # Workflow Section
     description: |
       The purpose of this job is to tag columns at column level.
     spec: # Specifications
-      # tags:
-      # - System
-      # - PII.DateOfBirth
-      # - Tier.Bronze
-      # - XYZ.Job
-      stack: flare:5.0 # Stack Version (Here its 4.0)
+      stack: flare:6.0 # Stack Version (Here its 4.0)
       compute: runnable-default # Compute
       stackSpec: # Flare Section
         job: # Job Section
@@ -172,3 +159,16 @@ workflow: # Workflow Section
                       columns:
                         - "__metadata_dataos_run_mapper_id"
 ```
+
+The above code snippet will apply the tags to the specified columns of the dataset. To verify that the correct tags have been applied, navigate to Metis. In Metis, go to Assets, go to Table choose `customer_406` dataset. You will be able to see that the tags have been successfully applied, as shown in the image below. 
+
+<div style="text-align: center;">
+  <img src="/resources/stacks/flare/case_scenario/column_tagging/column_tags_on_metis.png" alt="Flare Resource" style="border:1px solid black; width: 90%; height: auto;">
+  <figcaption><i>Tags visible on Metis</i></figcaption>
+</div>
+
+<aside class="callout">
+
+🗣️ You should use only one of the above options at a time, as using columnName, columnNames, and columnRegex together in the same section can result in conflicting rules and is not recommended; choose the option that best fits your use case, whether it's for a single column, multiple columns, or pattern matching.
+
+</aside>

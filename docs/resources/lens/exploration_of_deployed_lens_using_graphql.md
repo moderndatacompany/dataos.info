@@ -7,7 +7,7 @@
 
 This guide provides comprehensive instructions for accessing and interacting with the Lens GraphQL API. You can interact with the Lens GraphQL API using:
 
-1. [**Lens Studio**](#using-lens-studio): An interactive in-browser tool for writing and executing GraphQL queries.
+1. [**Explorer Studio in Data Product Hub**](#using-explorer-studio-in-data-product-hub): An interactive in-browser tool for writing and executing GraphQL queries.
 2. [**Curl**](#using-curl): A command-line tool for transferring data with URLs, useful for automated scripts.
 3. [**Python**](#using-python): Use Python's `requests` library for more complex interactions with the API.
 4. [**Postman**](#using-postman): Use Postman API platform to start using and testing REST APIs.
@@ -83,18 +83,18 @@ user_groups:
 
 ## How to access the GraphQL API?
 
-### **Using Lens Studio**
+### **Using Explorer Studio in Data Product Hub**
 
-Lens Studio provides an intuitive, in-browser interface to interact with the GraphQL API.
+The Explorer Studio of Data Product Hub provides an intuitive, in-browser interface to interact with the GraphQL API.
 
-1. **Open Lens Studio:** Go to the Metis application on the DataOS GUI and navigate to your deployed Lens model.
+1. **Open Metis:** Go to the Metis application on the DataOS GUI and navigate to the Resource section here click on Lens choose the desired deployed Lens model.
 
     <div style="text-align: center;">
         <img src="/resources/lens/consumption_of_deployed_lens/graphql/graphql1.png" alt="graphql" style="max-width: 80%; height: auto; border: 1px solid #000;">
     </div>
     <figcaption><i><center>Deployed Lens Resource on Metis UI</center></i></figcaption>
 
-2. **Access GraphQL Tab:** Click on the ‘Explore in Studio’ button and go to the GraphQL tab.
+2. **Access GraphQL Tab:** Click on the ‘Explore in Studio’ button, the Studio will appear from here navigate to the GraphQL tab.
 
     <div style="text-align: center;">
         <img src="/resources/lens/consumption_of_deployed_lens/graphql/graphql2.png" alt="graphql" style="max-width: 80%; height: auto; border: 1px solid #000;">
@@ -106,7 +106,7 @@ Lens Studio provides an intuitive, in-browser interface to interact with the Gra
     <div style="text-align: center;">
         <img src="/resources/lens/consumption_of_deployed_lens/graphql/graphql3.png" alt="graphql" style="max-width: 80%; height: auto; border: 1px solid #000;">
     </div>
-    <figcaption><i><center>GraphQL Tab on Lens Studio</center></i></figcaption>
+    <figcaption><i><center>GraphQL Tab on Explorer Studio in Data Product Hub</center></i></figcaption>
 
       You can press `Ctrl + Space` to bring up the autocomplete window. For example:
 
@@ -416,7 +416,7 @@ When working with a Postman collection to test APIs, you typically need to confi
 
 ## GraphQL Query Examples
 
-This section provides sample GraphQL queries that you can use directly in Lens Studio. You can also use these queries with the <GRAPHQL_QUERY> placeholder in the Curl and Python methods described earlier.
+This section provides sample GraphQL queries that you can use directly in Explorer Studio of the Data Product Hub. You can also use these queries with the <GRAPHQL_QUERY> placeholder in the Curl and Python methods described earlier.
 
 ### **Querying a dimension**
 

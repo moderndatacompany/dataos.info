@@ -12,7 +12,7 @@ To get started with Tableau integration through Data Product Hub, refer to the l
 ## Prerequisites
 
 - **Curl**: Ensure that `curl` is installed on the system. For Windows systems, `curl.exe` may be necessary.
-- **Lens API endpoint**: The API endpoint provided by Lens for syncing data with meta endpoint access.
+- **Lens API endpoint**: The API endpoint provided by Lens to sync semantic model, enabling integration with Tableau.
 - **Access credentials**: Access credentials such as username, password, project name etc., are required for Tableau.
 - **DataOS API key**: Ensure the DataOS API key is available. Get it by using the following command:
 
@@ -22,12 +22,12 @@ dataos-ctl user apikey get
 
 ## Steps
 
-To sync the Lens semantic model with Tableau, follow the steps below:
+To sync the semantic model with Tableau, follow the steps below:
 
 **Step 1: Run the curl command**
 
 ```bash
-curl --location --request POST 'http://tcp.<DATAOS_FQDN>/lens2/sync/api/v1/tableau-server/<WORKSPACE_NAME>:<LENS_NAME>' \
+curl --location --request POST 'http://tcp.<DATAOS_FQDN>/lens2/sync/api/v1/tableau-cloud/<WORKSPACE_NAME>:<LENS_NAME>' \
 --header 'apikey: <APIKEY>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -41,10 +41,10 @@ curl --location --request POST 'http://tcp.<DATAOS_FQDN>/lens2/sync/api/v1/table
 
 1. **URL:**
 
-    - This endpoint is used to sync a specific Lens semantic model to Tableau for public access.
-    - Replace <DATAOS_FQDN> with the Fully Qualified Domain Name (FQDN) where Lens instance is hosted. Example: liberal-monkey.dataos.app.
-    - Replace <WORKSPACE_NAME> with the name of the workspace where the Lens semantic model is deployed. e.g., `public`, `curriculum`.
-    - Replace <LENS_NAME> with the name of the Lens semantic model to sync. e.g.,: `sales360`.
+    - This endpoint is used to sync a specific semantic model to Tableau for public access.
+    - Replace <DATAOS_FQDN> with the Fully Qualified Domain Name (FQDN) where Lens is hosted. Example: liberal-monkey.dataos.app.
+    - Replace <WORKSPACE_NAME> with the name of the workspace where the semantic model (Lens) is deployed. e.g., `public`, `curriculum`.
+    - Replace <LENS_NAME> with the name of the semantic model to sync. e.g., `sales360`.
 
 2. **Headers:**
 
@@ -109,7 +109,7 @@ Upon clicking 'Connect', a prompt will request the username and password. Enter 
 
 **1. Handling entities without relationships:** An error will occur during synchronization if any entity in the semantic model lacks a defined relationship. To resolve this issue, the entity can be hidden to avoid synchronization errors.
 
-**2. Live connection:** The connection between the Lens semantic layer and Tableau Cloud is live. This means that any changes to the underlying data or measure logic will automatically be reflected in Tableau.
+**2. Live connection:** The connection between the semantic layer and Tableau Cloud is live. This means that any changes to the underlying data will automatically be reflected in Tableau.
 
 **3. Schema changes:** If there are schema updates, such as adding new dimensions or measures, the integration steps will need to be repeated to incorporate these changes into Tableau.
 
@@ -120,8 +120,7 @@ Upon clicking 'Connect', a prompt will request the username and password. Enter 
 
 1. **Time data type as measure in Tableau**  
 
-    When syncing the Lens semantic layer with Tableau, note that Tableau does not support the time data type as a measure. While Lens allows time-based measures, Tableau defaults to treating date and time fields as dimensions.As a result, Tableau will not correctly interpret any measure with a **time data type**.
-
+    When syncing the semantic layer with Tableau, note that Tableau does not support the time data type as a measure. While Lens allows time-based measures, Tableau defaults to treating date and time fields as dimensions.As a result, Tableau will not correctly interpret any measure with a **time data type**.
 
     **Recommended actions**:
 
@@ -183,10 +182,10 @@ If the Lens is not active in the environment while working on an existing workbo
 
 **Scenario 4: Handling data source errors due to access restrictions**
 
-If the Account table is set to `public = false`, a data source error will occur in Tableau. The error message will indicate that the "Account table not found," which will prevent querying or using data from that table.
+If the Account table is set to `public = false`, a data source error will occur in Tableau. The error message will indicate that the 'Account table not found,' which will prevent querying or using data from that table.
 
 <div style="text-align: center;">
     <img src="/resources/lens/bi_integration/image06.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-To resolve this issue, ensure the Account table is accessible (set to public = true or assign appropriate permissions) and then resync the Lens in Tableau to regain access.
+To resolve this issue, ensure the Account table is accessible (set to `public = true` or assign appropriate permissions) and then resync the Lens in Tableau to regain access.

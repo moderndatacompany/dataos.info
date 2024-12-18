@@ -1,4 +1,4 @@
-# Data quality checks with SODA Stack
+# Data quality checks with Soda Stack
 
 Maintaining high data quality is crucial for delivering reliable insights and making informed business decisions. As a Data Product developer, you often encounter issues like missing values, incorrect data formats, or unexpected data inconsistencies. Identifying and resolving these problems proactively is essential to ensure the accuracy and trustworthiness of your data products.
 

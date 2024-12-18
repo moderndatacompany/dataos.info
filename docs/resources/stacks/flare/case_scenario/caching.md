@@ -21,7 +21,7 @@ workflow:
       spec:
         tags:
           - Report-Table
-        stack: flare:5.0
+        stack: flare:6.0
         tempVolume: 500Gi
         stackSpec:
           driver:
@@ -1034,3 +1034,4 @@ workflow:
       dependencies:
         - connect-labor-history-load-new
 ```
+

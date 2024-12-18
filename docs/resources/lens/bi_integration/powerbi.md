@@ -15,7 +15,7 @@ To get started with Power BI integration through Data Product Hub, refer the bel
 
 - **Curl**: Ensure you have `curl` installed on your system. Windows users may need to use `curl.exe`.
 
-- **Lens API endpoint**: The API endpoint provided by Lens to sync data with meta endpoint access.
+- **Lens API endpoint**: The API endpoint provided by Lens to sync semantic model, enabling integration with Power BI.
 
 - **Access credentials**: You will need access credentials such as username, password, and host for Power BI.
 
@@ -57,7 +57,9 @@ curl --location --request POST '${URL}' --header 'apikey: ${APIKEY}' --output ${
     dataos-ctl user apikey get
     ```
 
-3. **Output:** A `file.zip` archive is downloaded, containing the main components of a Power BI project. The name of the zip file can be specified during the curl command execution, and it will be saved accordingly. The `file.zip` includes essential components for syncing a Lens Model with Power BI, organized into folders such as `.Report` and `.SemanticModel`:
+3. **Output:** A `file.zip` archive is downloaded, containing the main components of a Power BI project. The name of the zip file can be specified during the curl command execution, and it will be saved accordingly. 
+
+The `file.zip` includes essential components for syncing a Lens Model with Power BI, organized into folders such as `.Report` and `.SemanticModel`:
 
 - **public_sales360-table.Report:** This folder contains the `definition.pbir` file, which is related to the report definition in Power BI. These files define the visual representation of data, such as tables and charts, without storing the actual data. They link the semantic model and data sources to create report views.
 
@@ -97,10 +99,6 @@ curl --location --request POST 'https://tcp.liberal-monkey.dataos.app/lens2/sync
     <img src="/resources/lens/bi_integration/powerbi4.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-<div style="text-align: center;">
-    <img src="/resources/lens/bi_integration/powerbi5.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
-</div>
-
 **Step 6 Connect to DataOS:** Click on the connect button. A popup will appear. Click Ok.
 
 
@@ -118,7 +116,7 @@ curl --location --request POST 'https://tcp.liberal-monkey.dataos.app/lens2/sync
 ## Important considerations
 
 - In Power BI, measures typically have an 'm_' prefix to indicate they represent a measure. For example, a measure calculating total revenue might be named `m_total_revenue`.
-- The connection is live, meaning any changes to the underlying data or measure logic will be reflected in Power BI.
+- The connection is live, meaning any changes to the underlying data will be reflected in Power BI.
 - If schema changes occur, such as the addition of new dimensions and measures, the steps outlined above will need to be repeated.
 
 ## Best practices
