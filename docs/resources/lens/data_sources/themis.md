@@ -1,13 +1,107 @@
 # Themis
 
-## Prerequisites
 
-While migrating to Themis the following aspects need to be considered:
+## Connecting to Themis using Depot/Cluster 
 
-- Themis Cluster name
-- Themis Depot name
+### **Prerequisites**
 
-### Docker Compose Yaml
+The following aspects need to be considered when creating a lens on the Themis cluster source:
+
+- The source name should be Themis.
+- The name of the cluster created on Themis source.
+- The name of the Depot.
+
+### **Deployment manifest file**
+
+```yaml hl_lines="13-16"
+version: v1alpha
+name: "themis-lens"
+layer: user
+type: lens
+tags:
+  - lens
+description: themis lens deployment on lens2
+lens:
+  compute: runnable-default
+  secrets:
+    - name: bitbucket-cred
+      allKeys: true
+  source:
+    type: themis #minerva/themis/depot
+    name: lenstestingthemis
+    catalog: icebase
+  repo:
+    url: https://bitbucket.org/tmdc/sample
+    lensBaseDir: sample/lens/source/themis/model 
+    # secretId: lens2_bitbucket_r
+    syncFlags:
+      - --ref=main #repo-name
+
+  api:   # optional
+    replicas: 1 # optional
+    logLevel: info  # optional
+    envs:
+      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
+      LENS2_DEV_MODE: "true"
+      LENS2_CONCURRENCY: 10
+      LENS2_DB_MAX_POOL: 15
+      LENS2_DB_TIMEOUT: 1500000
+      
+    resources: # optional
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 2000m
+        memory: 2048Mi
+  worker: # optional
+    replicas: 2 # optional
+    logLevel: debug  # optional
+    envs:
+      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
+      LENS2_DEV_MODE: "true"
+
+
+    resources: # optional
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 6000m
+        memory: 6048Mi
+  router: # optional
+    logLevel: info  # optional
+    envs:
+      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
+      LENS2_DEV_MODE: "true"
+    resources: # optional
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 6000m
+        memory: 6048Mi
+  iris:
+    logLevel: info  
+    resources: # optional
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 6000m
+        memory: 6048Mi
+```
+The above manifest is intended for a cluster named `lenstestingthemis`, created on the themis source, with the depot or data catalog named `icebase`. To use this manifest, copy the file and update the source details accordingly.
+
+<aside class="callout">
+🗣️ Within the Themis and Minerva cluster, all depots (such as Icebase, Redshift, Snowflake, etc.) are integrated. When configuring Lens, you only need to specify one depot in the `catalog` field, as Lens can connect to and utilize depots from all sources available in the Themis cluster.
+</aside>
+
+### **Docker compose manifest file**
+
+<details>
+
+  <summary>Docker compose manifest file for local testing</summary>
 
 ```yaml hl_lines="15-18"
 version: "2.2"
@@ -17,7 +111,7 @@ x-lens2-environment: &lens2-environment
   DATAOS_FQDN: liberal-donkey.dataos.app
 
   # Overview
-  LENS2_NAME: redshiftlens
+  LENS2_NAME: themislens
   LENS2_DESCRIPTION: Description 
   LENS2_TAGS: Provide tags
   LENS2_AUTHORS: creator of lens
@@ -46,7 +140,7 @@ x-lens2-environment: &lens2-environment
 services:
   api:
     restart: always
-    image: rubiklabs/lens2:0.35.55-01 
+    image: rubiklabs/lens2:0.35.60-20 
     ports:
       - 4000:4000
       - 25432:5432
@@ -56,33 +150,31 @@ services:
     volumes:
       - ./model:/etc/dataos/work/model
 ```
-Follow these steps to create the `docker-compose.yml`:
+</details>
 
-- Step 1: Create a `docker-compose.yml` manifest file.
-- Step 2: Copy the template from above and paste it in a code.
-- Step 3: Fill the values for the atttributes/fields declared in the manifest file as per the Themis source.
 
-**Required Themis Depot Source Attributes**
+While deploying Lens, adjust the configuration using the environment variables below according to the load.s
 
-```yaml
-LENS2_SOURCE_TYPE: themis  #minerva, depot
-LENS2_SOURCE_NAME: lenstestingthemis  #cluster name
-LENS2_SOURCE_CATALOG_NAME: icebase   #depot name, specify any catalog
-DATAOS_RUN_AS_APIKEY: ***** #dataos apikey
-```
-<aside class="callout">
-🗣 Within the Themis and Minerva cluster, all depots (such as Icebase, Redshift, Snowflake, etc.) are integrated. When configuring Lens, you only need to specify one depot in the `catalog` field, as Lens can connect to and utilize depots from all sources available in the Themis cluster.
-</aside>
+
+| **Environment Variable** | **Description** | **Possible Values** | **Required** | **When should these env variables be used** |
+|--------------------------|-----------------|---------------------|--------------|---------------------------------------------|
+| `LENS2_DB_SSL`            | If `true`, enables SSL encryption for database connections from Cube. | `true`, `false` | ❌ | When SSL encryption for database connections is required to ensure security. |
+| `LENS2_CONCURRENCY`       | The number of concurrent connections each queue has to the database. Default is `4`. | A valid number | ❌ | When adjusting the number of parallel operations or queries to the database is needed to optimize performance based on workload and database capabilities. Increasing the value can enhance throughput, while decreasing it can reduce load. |
+| `LENS2_DB_MAX_POOL`       | The maximum number of concurrent database connections to pool. Default is `16`. | A valid number | ❌ | When managing the maximum number of concurrent database connections to ensure efficient resource utilization and prevent overloading the database server. Adjust according to the application’s connection needs and the database server’s capacity. |
 
 ## Connecting to Themis without Depot/Cluster 
+
+<aside class="callout">
+🗣️ When deploying Lens in DataOS, you need to connect to the source via the depot/cluster. The below configs are best suited for testing Locally. Otherwise, it is recommended that you connect via depot/cluster.
+</aside>
 
 ### **Prerequisites**
 
 - The host for the Themis database server.
-- The username for the DataOS User
-- The name of the database to use with the Themis query engine database server
+- The username for the DataOS User.
+- The name of the database to use with the Themis query engine database server.
 
-## `.env` Configuration 
+### **`.env` configuration** 
 
 Add the following environment variables to your Lens (.env) file
 
@@ -158,7 +250,7 @@ LENS2_LOCAL_PG_PASSWORD="abcdefghijklmnopqrstuvwxyz"
 LENS2_LOCAL_PG_USER=iamgroot
 ```
     
-### **Environment variables Attributes**
+### **Environment variables attributes**
 
 | **Environment Variable** | **Description** | **Possible Values** | **Example Value** | **Required** |
 | --- | --- | --- | --- | --- |
@@ -182,25 +274,25 @@ To check the query statistics, please follow the steps below:
 
 1. **Access the Themis Cluster**
 
-    Navigate to the Themis cluster. You should see a screen similar to the image below:
+      Navigate to the Themis cluster. You should see a screen similar to the image below:
 
-  <div style="text-align: center;">
-    <img src="/resources/lens/data_sources/Themis/Untitled(7).png" alt="Untitled" style="max-width: 80%; height: auto; border: 1px solid #000;">
-  </div>
+    <div style="text-align: center;">
+      <img src="/resources/lens/data_sources/Themis/Untitled(7).png" alt="Untitled" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    </div>
 
 2. **Select the Running Driver**
     
-  Choose the running driver. **This driver will always be the same, regardless of the user, as queries will be directed to the creator of the Themis cluster**. The running driver remains consistent for all users.
-  
-  <div style="text-align: center;">
-      <img src="/resources/lens/data_sources/Themis/Untitled(9).png" alt="Untitled" style="max-width: 80%; height: auto; border: 1px solid #000;">
-  </div>
+    Choose the running driver. **This driver will always be the same, regardless of the user, as queries will be directed to the creator of the Themis cluster**. The running driver remains consistent for all users.
+    
+    <div style="text-align: center;">
+        <img src="/resources/lens/data_sources/Themis/Untitled(9).png" alt="Untitled" style="max-width: 80%; height: auto; border: 1px solid #000;">
+    </div>
 
 
 3. **View the Spark UI**
     
-  Go to terminal and use the following command to view the spark UI :
-    
+    Go to terminal and use the following command to view the spark UI :
+      
 
 ```yaml
 dataos-ctl -t cluster -w public -n themislens --node themis-themislens-iamgroot-default-a650032d-ad6b-4668-b2d2-cd372579020a-driver view sparkui

@@ -16,20 +16,20 @@ Payloads are crucial for structuring and transmitting data to APIs, enabling sea
 
 Before working with payloads, let’s first explore where to locate the necessary tools and settings within the Lens UI:
 
-1. Navigate to the **Home Page** of **DataOS**
-2. Select the **Lens** Icon
+1. Navigate to the Home Page of DataOS.
+2. Select the Lens Icon.
     
     <div style="text-align: left; padding-left: 1em;">
         <img src="/resources/lens/working_with_payloads/lens_icon.png" alt="Iris board" style="max-width: 100%; height: auto; border: 1px solid #000;">
     </div>
 
-3. This will open the **Lens** interface
+3. This will open the Lens interface
     
       <div style="text-align: center;">
         <img src="/resources/lens/working_with_payloads/lens_ui.png" alt="Iris board" style="max-width: 90%; height: auto; border: 1px solid #000;">
       </div> 
 
-4. The link on the Lens interface will redirect you to the **Metis** section, where you can select your desired Lens from the list of available resources.
+4. The link on the Lens interface will redirect you to the Metis section, where you can select your desired Lens from the list of available resources.
 
 5. After selecting your Lens, click on **Lens Studio** to open the interface where you can craft your queries and begin working with payloads.
 
@@ -43,7 +43,7 @@ Before working with payloads, let’s first explore where to locate the necessar
 1. **Tables and Views** On the left panel, you can see the list of tables and views.
 2. **Selecting Dimensions and Measures** Click on a table or view to expand and see its dimensions and measures. Select the ones you need for your analysis.
 3. **Building Queries** Select dimensions and measures to create your queries.
-4. **Running Queries** Click the "Run Query" button to execute your query and see the results.
+4. **Running Queries** Click the 'Run Query' button to execute your query and see the results.
 5. **Filters:** Filters allow users to narrow down data based on specific criteria, such as ranges, categories, or exact values.
 6. **Visualizing Data:** Switch between table, chart, and pivot views to visualize your data in different formats.
 7. **Payload  `{}` :** WithPayloads allow you to dynamically adjust queries, enabling filtering, sorting, and aggregation according to user needs. This functionality extends beyond what can be achieved through the UI alone.
@@ -72,7 +72,7 @@ The JSON payload provided specifies a query configuration with the following key
 
 When the `order` property is not explicitly defined in the query, the results are sorted by default according to the following sequence:
 
-- **Time Dimension:** Results are first ordered by the initial time dimension with granularity, in ascending order. If no time dimension with granularity is present...
+- **Time Dimension:** Results are first ordered by the initial time dimension with granularity, in ascending order. If no time dimension with granularity is present.
 
 - **Measure:** Next, results are sorted by the first measure found, in descending order. If no measure is specified.
 
@@ -131,7 +131,7 @@ The opposite operator of `equals`. It supports multiple values.
 - Applied to measures.
 - **Dimension types: `string`, `number`, `time`.**
 
-**Example Payload and Result:** *Retrieving the customer IDs and countries for customers who are not based in the USA, limited to 10 results.*
+**Example Payload and Result:** Retrieving the customer IDs and countries for customers who are not based in the USA, limited to 10 results.
 
 <div style="text-align: center;">
     <img src="/resources/lens/working_with_payloads/image(3).png" alt="Iris board" style="max-width: 90%; height: auto; border: 1px solid #000;">
@@ -171,9 +171,8 @@ operator with `%` at the end of each value. It supports multiple values.
 
 - **Dimension types: `string`.**
 
-**Example Payload and Result:**
-*This query retrieves up to 10 product IDs and their associated designer names, filtering for designers whose names start with "Ja."*
- 
+**Example Payload and Result:** This query retrieves up to 10 product IDs and their associated designer names, filtering for designers whose names start with 'Ja'.
+
 <div style="text-align: center;">
     <img src="/resources/lens/working_with_payloads/image(6).png" alt="Iris board" style="max-width: 90%; height: auto; border: 1px solid #000;">
     <figcaption> startsWith </figcaption>
@@ -184,8 +183,7 @@ operator with `%` at the end of each value. It supports multiple values.
 
 The opposite operator of `startsWith`.
 
-**Example Payload and Result:**
-*This query retrieves up to 10 product IDs and their associated designer names, filtering for designers whose names does not start with "Ja."*
+**Example Payload and Result:** This query retrieves up to 10 product IDs and their associated designer names, filtering for designers whose names does not start with 'Ja'.
  
 <div style="text-align: center;">
     <img src="/resources/lens/working_with_payloads/image(7).png" alt="Iris board" style="max-width: 90%; height: auto; border: 1px solid #000;">
@@ -199,8 +197,7 @@ The `endsWith` filter acts as a case-insensitive `LIKE` operator with a wildcard
 
 - **Dimension types: `string`.**
 
-**Example Payload and Result:**
-*This query retrieves up to 10 product IDs and their associated designer names, filtering for designers whose names ends with "e”*
+**Example Payload and Result:** This query retrieves up to 10 product IDs and their associated designer names, filtering for designers whose names ends with 'e'.
      
      
 <div style="text-align: center;">
@@ -211,9 +208,7 @@ The `endsWith` filter acts as a case-insensitive `LIKE` operator with a wildcard
 #### **`notEndsWith`** 
 The opposite operator of `endsWith`.
 
-**Example Payload and Results:** 
-
-*This query retrieves up to 10 product IDs and their associated designer names, filtering for designers whose names does not ends with "e”*
+**Example Payload and Results:** This query retrieves up to 10 product IDs and their associated designer names, filtering for designers whose names does not ends with 'e'.
 
 <div style="text-align: center;">
   <img src="/resources/lens/working_with_payloads/image(9).png" alt="Iris board" style="max-width: 90%; height: auto; border: 1px solid #000;">
@@ -226,9 +221,7 @@ The `gt` operator means **greater than** and is used with measures or dimensions
 - Applied to measures.
 - **Dimension types: `number`.**
 
-**Example Payload and Results:**
-
-*Retrieves records where the product price is greater than 100.* 
+**Example Payload and Results:** Retrieves records where the product price is greater than 100.
 
 <div style="text-align: center;">
   <img src="/resources/lens/working_with_payloads/image(10).png" alt="Iris board" style="max-width: 90%; height: auto; border: 1px solid #000;">
@@ -244,9 +237,7 @@ or dimensions of type `number`.
 - Applied to measures.
 - **Dimension types: `number`.**
 
-**Example Payload and Results:**
-
-*filter products based on their price, returning details for products priced more than `125.51`.*
+**Example Payload and Results:** Filter products based on their price, returning details for products priced more than `125.51`.*
 
 <div style="text-align: center;">
   <img src="/resources/lens/working_with_payloads/image(12).png" alt="Iris board" style="max-width: 90%; height: auto; border: 1px solid #000;">
@@ -259,10 +250,7 @@ The `lt` operator means **less than** and is used with measures or dimensions of
 - Applied to measures.
 - **Dimension types: `number`.**
 
-**Example Payload and Results:**
-
-*filter products based on their price, returning details for products priced below `125.51`.*
-
+**Example Payload and Results:** Filter products based on their price, returning details for products priced below `125.51`.
 <div style="text-align: center;">
   <img src="/resources/lens/working_with_payloads/image(13).png" alt="Iris board" style="max-width: 90%; height: auto; border: 1px solid #000;">
   <figcaption> lt </figcaption>
@@ -275,9 +263,7 @@ dimensions of type `number`.
 - Applied to measures.
 - **Dimension types: `number`.**
 
-**Example Payload and Results:**
-
-*filter products based on their price, returning details for products priced at or below `125.51`.*
+**Example Payload and Results:** Filter products based on their price, returning details for products priced at or below `125.51`.
 
 <div style="text-align: center;">
   <img src="/resources/lens/working_with_payloads/image(14).png" alt="Iris board" style="max-width: 90%; height: auto; border: 1px solid #000;">
@@ -291,9 +277,7 @@ don't need to pass `values` for this operator.
 - Applied to measures.
 - **Dimension types: `number`, `string`, `time`.**
 
-**Example Payload and Results:**
-
-*The query retrieves products where the price information is not missing (NOT NULL). This can help identify products for which pricing details have not been recorded.*
+**Example Payload and Results:** The query retrieves products where the price information is not missing (NOT NULL). This can help identify products for which pricing details have not been recorded.
 
 <div style="text-align: center;">
   <img src="/resources/lens/working_with_payloads/image(15).png" alt="Iris board" style="max-width: 90%; height: auto; border: 1px solid #000;">
@@ -307,9 +291,7 @@ An opposite to the `set` operator. It checks whether the value of the member **i
 - Applied to measures.
 - **Dimension types: `number`, `string`, `time`.**
 
-**Example Payload and Results:**
-
-*The query retrieves products where the price information is missing ( NULL). This can help identify products for which pricing details have not been recorded. In our data we did not have any null values hence the data is not available means NULL data is not available.*
+**Example Payload and Results:** The query retrieves products where the price information is missing ( NULL). This can help identify products for which pricing details have not been recorded. In our data we did not have any null values hence the data is not available means NULL data is not available.
 
 <div style="text-align: center;">
   <img src="/resources/lens/working_with_payloads/image(16).png" alt="Iris board" style="max-width: 90%; height: auto; border: 1px solid #000;">
@@ -325,9 +307,7 @@ date.
 
 - **Dimension types: `time`.**
 
-**Example Payload and Results:**
-
-*Return the total number of customers who registered between **January 1, 2022**, and **January 31, 2023**.*
+**Example Payload and Results:** Return the total number of customers who registered between **January 1, 2022**, and **January 31, 2023**.
 
 <div style="text-align: center;">
   <img src="/resources/lens/working_with_payloads/image(17).png" alt="Iris board" style="max-width: 90%; height: auto; border: 1px solid #000;">
@@ -340,9 +320,7 @@ opposite operator to `inDateRange`, use it when you want to exclude specific dat
 
 - **Dimension types: `time`.**
 
-**Example Payload and Results:**
-
-*Return the total number of customers who did not registered between **May 01, 2022**, and **January 31, 2023**.*
+**Example Payload and Results:** Return the total number of customers who did not registered between May 01, 2022, and January 31, 2023.
 
 <div style="text-align: center;">
   <img src="/resources/lens/working_with_payloads/image(18).png" alt="Iris board" style="max-width: 90%; height: auto; border: 1px solid #000;">
@@ -356,9 +334,7 @@ values should be an array of one element in `YYYY-MM-DD` format.
 
 - **Dimension types: `time`.**
 
-**Example Payload and Results:**
-
-*Total number of customers who registerd before **January 31, 2023***
+**Example Payload and Results:** Total number of customers who registerd before January 31, 2023.
 
 <div style="text-align: center;">
   <img src="/resources/lens/working_with_payloads/image(19).png" alt="Iris board" style="max-width: 90%; height: auto; border: 1px solid #000;">
@@ -371,9 +347,7 @@ The same as `beforeDate`, but is used to get all results after a specific date.
 
 - **Dimension types: `time`.**
 
-**Example Payload and Results:**
-
-*It returns the total number of customers who registered after **January 31, 2023***
+**Example Payload and Results:** It returns the total number of customers who registered after **January 31, 2023.
 
 <div style="text-align: center;">
   <img src="/resources/lens/working_with_payloads/image(20).png" alt="Iris board" style="max-width: 90%; height: auto; border: 1px solid #000;">
@@ -437,9 +411,7 @@ Filters can contain `or` and `and` logical operators. Logical operators have
 - `or` An array with one or more filters or other logical operators
 - `and` An array with one or more filters or other logical operators
 
-**Example Payload and results:** 
-
-*The JSON payload is used to query a product database to retrieve products that have a minimum **average margin**(Measure) of 112, and where the **cost** is at least 30 and the price is at least 100. The result will include the product name, cost, and price, with a maximum of 10 records returned starting from the first record.*
+**Example Payload and results:** The JSON payload is used to query a product database to retrieve products that have a minimum `average_margin`(Measure) of 112, and where the `cost` is at least 30 and the price is at least 100. The result will include the product name, cost, and price, with a maximum of 10 records returned starting from the first record.
 
 <div style="text-align: center;">
   <img src="/resources/lens/working_with_payloads/image(21).png" alt="Iris board" style="max-width: 90%; height: auto; border: 1px solid #000;">
