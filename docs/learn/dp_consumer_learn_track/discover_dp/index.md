@@ -1,6 +1,6 @@
-# Discovering Data Products on Data Product Hub
+# Discovering Data Products
 
-Welcome to the **Data Products Consumer Learning Track**! In this module, you’ll learn how to discover Data Products that meet your specific use cases. 
+Welcome to the Data Products Consumer Learning Track! In this module, you’ll learn how to discover Data Products that meet your specific use cases. 
 
 ## Scenario
 
@@ -20,7 +20,7 @@ To get started, you will need:
 
 - A foundational understanding of data analysis concepts.
 
-- Access to the **DataOS.** (Contact your DataOS administrator if you don’t have one.)
+- Access to the DataOS. (Contact your DataOS administrator if you don’t have one.)
 
 ## Discovering Data Products on Data Product Hub
 
@@ -57,7 +57,11 @@ Follow the below steps to discover the Data Product of interest.
     ![disc_analyze.png](/learn/dp_consumer_learn_track/discover_dp/disc_analyze.png)
     
 
-## **Best practice**
+## Best practices
+
+- **Clearly define your use case**: Start by clarifying the business question or problem you aim to solve. This will help guide your search.
+
+- **Leverage filters effectively**: Combine filters such as domain, tier, owner, and use case to refine search results and find relevant products faster.
 
 - **Add to Favorites**: For quick access, add frequently used Data Products (e.g., “Product 360”) to your favorites.
     
