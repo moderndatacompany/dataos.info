@@ -3,20 +3,20 @@ Fingerprinting in DataOS analyzes data columns to detect distinctive patterns or
 
 This analysis serves several purposes:
 
-**Understanding Data**: It helps you better comprehend the data's characteristics.
+**Understanding data**: It helps you better comprehend the data's characteristics.
 
-**Enhancing Discoverability**: By assigning relevant business labels or tags, it facilitates data discoverability and democratization.
+**Enhancing discoverability**: By assigning relevant business labels or tags, it facilitates data discoverability and democratization.
 
-**Automating Sensitive Data Identification**: It automates the recognition of sensitive data, like Personally Identifiable Information (PII) or Protected Health Information (PHI). Once data is fingerprinted, you can create data policies to effectively manage and protect this sensitive information.
+**Automating sensitive data identification**: It automates the recognition of sensitive data, like Personally Identifiable Information (PII) or Protected Health Information (PHI). Once data is fingerprinted, you can create data policies to effectively manage and protect this sensitive information.
 
-**Ensuring Regulatory Compliance**: It aids in ensuring compliance with government regulations such as GDPR."
+**Ensuring regulatory compliance**: It aids in ensuring compliance with government regulations such as GDPR."
 
-## Fingerprinting Process
+## Fingerprinting process
 The fingerprinting process is systematic and involves several key steps:
 
-**Data Column Classification:** Data columns undergo comprehensive classification, categorizing them into different data types, differentiating between categorical and non-categorical data.
+**Data column classification:** Data columns undergo comprehensive classification, categorizing them into different data types, differentiating between categorical and non-categorical data.
 
-**Attribute Tagging:** Attribute tagging involves a meticulous evaluation of both column names and their corresponding values. This evaluation helps in accurately assigning tags to the data columns.
+**Attribute tagging:** Attribute tagging involves a meticulous evaluation of both column names and their corresponding values. This evaluation helps in accurately assigning tags to the data columns.
 
 Once the initial data classification is complete, categorical columns undergo further classification using a keyword match-based scoring algorithm, ensuring accurate and reliable classification. This algorithm assigns a score that reflects the extent to which a particular column belongs to a predefined category. 
 
@@ -24,26 +24,26 @@ DataOS provides both built-in and customizable classifications seamlessly integr
 
 <aside class="callout">On the Metis UI, you can access and manage classifications organized into tag groups.</aside>
 
-## Classification of Data
+## Classification of data
 DataOS performs classification and attribute tagging with text patterns using pre-defined categories and regular expressions.
 
-### **Pre-defined Categories** 
+### **Pre-defined categories** 
 Categories are defined based on related keywords and phrases, such as personally identifiable information, medical terminology, etc. Sensitive data is compared to the dictionary entries and evaluated based on a score. DataOS provides a range of built-in categorie  tailored to industries like healthcare, banking, finance, and more. It also takes care of country specific  columns such as SSN number for US and PAN and AADHAR for India. You also have the flexibility to create custom dictionaries to align with your organization's specific requirements.
 
-### **Advanced Patterns** 
+### **Advanced patterns** 
 Advanced patterns involve the use of regular expressions or phrases to detect specific patterns, such as social security numbers or credit card numbers.  DataOS includes built-in advanced patterns designed for the identification of PII and PHI information to comply with government regulations. Additionally, you have the option to create custom advanced patterns to suit your unique data classification needs.
 
-## Classification Categories and Fields
+## Classification ctegories and fields
 
 DataOS supports the following classifications.
 
-### **Data Types**
+### **Data types**
 
 - Integer 
 - Fraction 
 - Datetime 
 
-### **Categorical/Non Categorical Columns**
+### **Categorical/non categorical columns**
 Based on the minimum number of non-null values, unique values and distribution of values, it determines and classifies a column as categorical.
 
 ### **Attributes**

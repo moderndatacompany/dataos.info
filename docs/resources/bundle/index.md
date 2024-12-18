@@ -6,7 +6,7 @@ search:
 
 # :resources-bundle: Bundle
 
-A Bundle [Resource](/resources/) within DataOS serves as a declarative and standardized mechanism for deploying a collection of Resources, data products, or applications in a single operation. It empowers data developers with the capability to programmatically orchestrate the deployment, scheduling, creation, and dismantling of code and infrastructure resources linked to these data products and applications in a unified manner. 
+A Bundle [Resource](/resources/) within DataOS serves as a declarative and standardized mechanism for deploying a collection of Resources, Data Products, or applications in a single operation. It empowers data developers with the capability to programmatically orchestrate the deployment, scheduling, creation, and dismantling of code and infrastructure resources linked to these Data Products and applications in a unified manner. 
 
 As implied by its name, the Bundle Resource aggregates various [DataOS Resources](/resources/) into a flattened directed acyclic graph (DAG). Within this structure, each node represents a distinct DataOS Resource, interconnected through dependency relationships.
 
@@ -20,11 +20,14 @@ As implied by its name, the Bundle Resource aggregates various [DataOS Resources
 
 ### **End-to-End Definition**
 
-The manifest file of the Bundle can be used to define the logical quantum for a data product - it encompasses the ‘code’ part of a ‘Data Product’. It collectively provides a comprehensive definition of a data product or application. This representation simplifies the application of software engineering best practices, including source control, code review, testing, and continuous integration/continuous deployment (CI/CD) processes.
+The manifest file of the Bundle can be used to define the logical quantum for a Data Product - it encompasses the ‘code’ part of a ‘Data Product’. It collectively provides a comprehensive definition of a Data Product or application. This representation simplifies the application of software engineering best practices, including source control, code review, testing, and continuous integration/continuous deployment (CI/CD) processes.
 
 ### **Streamlined Deployment**
 
-The Bundle eliminates fragmented deployment and validation procedures enabling robust configuration management across multiple Workspaces and cloud environments.
+The Bundle eliminates fragmented deployment and validation procedures, enabling robust configuration management across multiple Workspaces and cloud environments. By referencing a Bundle Resource in the Data Product manifest, all related resources are orchestrated and deployed together, ensuring consistency and efficiency across the entire Data Product lifecycle.
+
+For example, a pipeline of data-related tasks can be created where a Depot (a connection) is established, data is ingested using Flare, and quality checks are performed on the ingested data. All of these Resources, representing different stages of the pipeline, are included in a single Bundle. This Bundle must then be referenced in the Data Product manifest file, ensuring that the entire pipeline—covering data ingestion, quality checks, and connections—is seamlessly orchestrated and deployed as a unified entity.
+
 
 ## Structure of a Bundle YAML manifest
 
@@ -232,7 +235,7 @@ Refer to the table below for a summary of the attributes within the Bundle Works
 
 **Bundle Resources section**
 
-The Bundle Resources section allows you to define the Resources that make up the data product/application and their dependencies in the form of a flattened DAG. Each node within this DAG represents a Resource interconnected through a set of dependencies. Using the dependency and dependencyConditions, relationship and conditions can be specified such that resource only instantiates when the right dependency condition is met either the correct status and runtime, else it doesn’t. The following YAML code block outlines the attributes specified in the Bundle Workspaces section:
+The Bundle Resources section allows you to define the Resources that make up the Data Product/application and their dependencies in the form of a flattened DAG. Each node within this DAG represents a Resource interconnected through a set of dependencies. Using the dependency and dependencyConditions, relationship and conditions can be specified such that resource only instantiates when the right dependency condition is met either the correct status and runtime, else it doesn’t. The following YAML code block outlines the attributes specified in the Bundle Workspaces section:
 
 ```yaml
 bundle: # Bundle-specific section (mandatory)
@@ -423,3 +426,6 @@ Here is a reference to the various commands related to managing Bundles in DataO
     ```
     
 
+## Recipe
+
+[Optmize Bundling of Resources in Data Product](/resources/bundle/recipe/bundling_resources_in_data_product/)

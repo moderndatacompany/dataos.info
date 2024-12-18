@@ -1,4 +1,4 @@
-# Concurrent Writes
+# Concurrent writes
 
 
 This case scenario tests the situation where multiple jobs are being concurrently written at the same location.
@@ -7,7 +7,7 @@ This case scenario tests the situation where multiple jobs are being concurrentl
 
 This scenario works only for Iceberg as it supports multiple concurrent writes. A workflow with two jobs is defined to write at the same data location.
 
-## Implementation Details
+## Implementation details
 
 This case scenario is tested on NY-Taxi data. A workflow is created with two jobs (in one dag) to perform write operations for different vendors (data was filtered on vendor level). The workflow is to be submitted for both modes: 
 
@@ -22,8 +22,6 @@ When Flare's overwrite mode is dynamic, partitions that have rows produced by th
 ## Outcomes
 
 Queries were run to fetch data to validate the expected behavior. Also, it was possible to query data while data was being written.
-
-## Code files
 
 ### **Job to test concurrent writes**
 
@@ -143,7 +141,7 @@ workflow:
                   ts_ny_taxi FROM ny_taxi_changed_dateformat
 ```
 
-### **DataOS Tool Yaml**
+<!-- ### **DataOS Tool Yaml**
 
 ```yaml
 version: v1beta1
@@ -166,4 +164,4 @@ workflow:
           - dataos://icebase:raw01/ny_taxi_04
           - --version
           - latest
-```
+``` -->

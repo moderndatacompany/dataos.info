@@ -96,9 +96,9 @@ Spark persisting/caching is one of the best techniques to improve the performanc
 
 **Caching** - storing always in memory. It is the same as persisting in memory only.
 
-<aside>
-🗣️ Transformations in Spark are lazily evaluated. Cache the dataset only when you’re sure that the cached data will be used for further transformation down the line. **Do not cache just because the dataset is small, or it's a dimension table (rather broadcast it)**. Too much caching can create overhead for the LRU algorithm as it will keep evicting things being cached and bringing new ones in to replace them. And the cycle will continue. 
-Caching needs to be seen from the perspective of the data lineage, the DAG of transformations. Observe the **amount of data cached** in Spark UI and then decide.
+<aside class="callout">
+🗣️ Transformations in Spark are lazily evaluated. Cache the dataset only when you’re sure that the cached data will be used for further transformation down the line. <b>Do not cache just because the dataset is small, or it's a dimension table (rather broadcast it)</b>. Too much caching can create overhead for the LRU algorithm as it will keep evicting things being cached and bringing new ones in to replace them. And the cycle will continue. 
+Caching needs to be seen from the perspective of the data lineage, the DAG of transformations. Observe the <b>amount of data cached</b> in Spark UI and then decide.
 
 </aside>
 
