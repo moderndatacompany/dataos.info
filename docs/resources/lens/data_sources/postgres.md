@@ -91,7 +91,7 @@ lens:
         memory: 6048Mi
 ```
 
-## Docker Compose Manifest file
+## Docker compose manifest file
 
 <details>
 
