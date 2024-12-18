@@ -86,8 +86,8 @@ lens:
     type: flash # minerva, themis and depot
     name: flash-service-lens # flash service name
   repo:
-    url: https://github.com/iamgroot/Lens    # repo address
-    lensBaseDir: Lens/source/flash/model     # location where lens models are kept in the repo
+    url: https://github.com/tmdc/sample    # repo address
+    lensBaseDir: sample/source/flash/model     # location where lens models are kept in the repo
     syncFlags:
       - --ref=main
   api:
@@ -145,7 +145,7 @@ lens:
         memory: 6048Mi
 ```
 
-### **Key Configurations**
+### **Key configurations**
 
 #### **`Source`**
 
