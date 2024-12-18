@@ -453,9 +453,7 @@ nav:
             - resources/stacks/steampipe/index.md
           - Talos:
             - resources/stacks/talos/index.md
-            - Setting Up Talos: 
-              - On Local: resources/stacks/talos/local_set_up.md
-              - On DataOS: resources/stacks/talos/set_up.md
+            - Setting Up Talos: resources/stacks/talos/set_up.md
             - Configurations: 
               - resources/stacks/talos/configurations/index.md
               - config.yaml: resources/stacks/talos/configurations/config.md
@@ -554,7 +552,7 @@ nav:
             - learn/dp_consumer_learn_track/integrate_api/index.md
       - Data Product Developer:
         - learn/dp_developer_learn_track/index.md
-        - Disigning Data Products:
+        - Designing Data Products:
           -  learn/dp_developer_learn_track/design_dp/index.md
         - Building Data Products:
           - Source data connectivity: 
