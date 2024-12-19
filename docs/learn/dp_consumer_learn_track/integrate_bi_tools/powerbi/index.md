@@ -9,7 +9,7 @@ Imagine you are part of the sales team at a growing retail company, and you need
 
 ### **Step 1: Navigate to the BI Sync Option**
     
-To start the integration, go to the **Access Options** tab and scroll to the **Excel and PowerBI** option in the **BI Sync** section. Click on the **Download `.pbip` File** button to initiate the download of a ZIP folder.
+To start the integration, go to the 'Access Options' tab and scroll to the 'Excel and PowerBI' option in the 'BI Sync' section. Click on the 'Download `.pbip` File' button to initiate the download of a ZIP folder.
     
 ![powerbi_conn_details.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/powerbi_conn_details.png)
     
@@ -31,11 +31,11 @@ Following is a brief description of each:
 
 ### **Step 3: Open the File in Power BI and Connect**
 
-Open the **`public_product360`** file in Power BI. A popup will appear prompting you to enter your **DataOS username** and **API key**.
+Open the `public_product360` file in Power BI. A popup will appear prompting you to enter your 'DataOS username' and 'API key'.
 
 ![powerbi_ui.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/powerbi_ui.png)
 
-After entering your credentials, click **Connect**. A confirmation popup will appear; click **OK** to proceed.
+After entering your credentials, click 'Connect'. A confirmation popup will appear; click 'OK' to proceed.
 
 ![powerbi_pop_up.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/powerbi_pop_up.png)
 

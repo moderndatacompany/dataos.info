@@ -22,7 +22,7 @@ Follow the below steps to consume the Data Product via Postgres.
 
 ### 1. Access the Postgres section
 
-Navigate to the **Access Options** tab of your Data Product (Product360) and select the **Postgres** section.
+Navigate to the Access Options tab of your Data Product (Product360) and select the **Postgres** section.
 
 ![pg_tab.png](/learn/dp_consumer_learn_track/integrate_postgres/pg_tab.png)
 
