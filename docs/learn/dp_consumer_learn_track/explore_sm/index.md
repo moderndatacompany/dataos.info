@@ -240,11 +240,11 @@ To save a query from two days ago for future reference, click on the query, give
 
 Some team members, who are developers working on a data-driven application, need a flexible and efficient way to query and retrieve specific data, a specific metric or a subset of data, from the system. 
 
-For teams needing to fetch data programmatically, the **Integration** tab provides options:
+For teams needing to fetch data programmatically, the 'Integration' tab provides options:
 
 ![integration_tab.png](/learn/dp_consumer_learn_track/explore_sm/integration_tab.png)
 
-Let’s assume you must fetch the **total number of customers by country**. Rather than building REST endpoints, you can efficiently query the data using a **`curl`** command, **`GraphQL`**, or **`Postgres`**, depending on your preference. These methods allow you to retrieve data from a given endpoint and present it in a user-friendly format within your application.
+Let’s assume you must fetch the 'total number of customers by country'. Rather than building REST endpoints, you can efficiently query the data using a `curl` command, `GraphQL`, or `Postgres`, depending on your preference. These methods allow you to retrieve data from a given endpoint and present it in a user-friendly format within your application.
 
 First, select the following dimensions and measures:
 
@@ -257,7 +257,7 @@ To access your data over HTTP using `curl`, follow these steps:
 
 1. **Copy the `curl` Command**
     
-    Go to the **Integration** section and choose **Curl** option. Copy the provided Curl command and paste it into your terminal.
+    Go to the 'Integration' section and choose 'Curl' option. Copy the provided Curl command and paste it into your terminal.
     
     ![using_curl.png](/learn/dp_consumer_learn_track/explore_sm/using_curl.png)
     
@@ -270,14 +270,14 @@ GraphQL is another option for querying data over HTTP.
 
 To use GraphQL:
 
-1. Select **GraphQL** in integration options.
+1. Select 'GraphQL' in integration options.
 2. **Copy GraphQL Query**
     
-    Click on **GraphQL** and copy the query provided.
+    Click on 'GraphQL' and copy the query provided.
     
 3. **Test the Query**
     
-    You can either paste the query into your terminal or click **Try it out** to test it in the GraphQL playground.
+    You can either paste the query into your terminal or click 'Try it out' to test it in the GraphQL playground.
     
     ![graphql_tab.png](/learn/dp_consumer_learn_track/explore_sm/graphql_tab.png)
     

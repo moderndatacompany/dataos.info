@@ -4,9 +4,9 @@ Welcome to the Data Products Consumer Learning Track! In this section of the mod
 
 ## Scenario
 
-Imagine you're a data analyst tasked with supporting a new marketing campaign aimed at boosting customer loyalty. To get started, you need access to reliable, up-to-date data on customer purchasing patterns, product performance, and historical campaign metrics. In the past, gathering customer data would involve reaching out to multiple teams and merging disparate datasets. But with the **Data Product Hub**, you have a centralized, comprehensive source where you can instantly locate a set of relevant, **curated Data Products** designed specifically for customer behavior analysis.
+Imagine you're a data analyst tasked with supporting a new marketing campaign aimed at boosting customer loyalty. To get started, you need access to reliable, up-to-date data on customer purchasing patterns, product performance, and historical campaign metrics. In the past, gathering customer data would involve reaching out to multiple teams and merging disparate datasets. But with the Data Product Hub, you have a centralized, comprehensive source where you can instantly locate a set of relevant, curated Data Products designed specifically for customer behavior analysis.
 
-You find **Metrics** that give insights into purchase frequency and **Perspectives** that provide saved analysis views on product affinity trends. With these resources at your fingertips, you can dive straight into analysis, build machine learning models for predictive insights, and present actionable data to the marketing team—all while ensuring that the data is accurate, compliant, and well-documented.
+You find Metrics that give insights into purchase frequency and Perspectives that provide saved analysis views on product affinity trends. With these resources at your fingertips, you can dive straight into analysis, build machine learning models for predictive insights, and present actionable data to the marketing team—all while ensuring that the data is accurate, compliant, and well-documented.
 
 ## What do you need to get started?
 

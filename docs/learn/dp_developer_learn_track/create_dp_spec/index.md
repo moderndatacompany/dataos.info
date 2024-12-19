@@ -88,7 +88,7 @@ This section outlines data product-specific attributes such as Bundle resource, 
     
 ## Step 3: Specify Resource references
     
-With a `resource` section, you give a reference to a single **Bundle Resource** which is expected to contain all the DataOS Resources which are part of Data Product. For example, Workflows, Services, Secrets, Policies etc.
+With a `resource` section, you give a reference to a single Bundle Resource which is expected to contain all the DataOS Resources which are part of Data Product. For example, Workflows, Services, Secrets, Policies etc.
 
 This section is crucial to bring every workspace-level resource needed for the DP under one umbrella for lifecycle management and context comprehensive context sharing of the Data Product.
 
@@ -131,11 +131,11 @@ outputs:
 ## Step 5: Configure ports for integration
 Set up ports for services like Lens, Talos, REST APIs, and databases:
     
-The **Ports** section lets you set up links to various services and tools tied to your Data Product, such as **Lens**, **Talos**, **REST APIs**, and **Postgres** databases. While it's optional for creating a Data Product, adding ports significantly enhances functionality.
+The Ports section lets you set up links to various services and tools tied to your Data Product, such as Lens, Talos, REST APIs, and Postgres databases. While it's optional for creating a Data Product, adding ports significantly enhances functionality.
 
-Adding a **Lens** port enables direct access to data models in the **Model** tab of the Data Product details page, making data exploration seamless.
+Adding a Lens port enables direct access to data models in the Model tab of the Data Product details page, making data exploration seamless.
 
-**Talos, REST, and Postgres** ports enable integration with external services, APIs, and databases that the data product may interact with.
+Talos, REST, and Postgres ports enable integration with external services, APIs, and databases that the data product may interact with.
 
 ```yaml
 ports:

@@ -30,7 +30,7 @@ Verify the assigned tags using the following command:
 dataos-ctl user get
 ```
 
-You can navigate to the **Bifrost** application to check if any permissions are missing, if they are missing, contacts DataOS Operator for assistance.
+You can navigate to the Bifrost application to check if any permissions are missing, if they are missing, contacts DataOS Operator for assistance.
 
 
 ## Topic 1: Building data pipelines
@@ -50,7 +50,7 @@ Now you understand that building a pipeline is only the beginning. Maintaining i
 
 </aside>
 
-You can ensure data is refreshed at regular intervals by scheduling workflows. This keeps data current with source systems and relevant for decision-making. The **DataOS Workflow Resource** support scheduling capabilities that can be configured directly in your pipeline to meet your specific needs. For a detailed guide on setting up and managing pipeline schedules, refer to the link below.
+You can ensure data is refreshed at regular intervals by scheduling workflows. This keeps data current with source systems and relevant for decision-making. The DataOS Workflow Resource support scheduling capabilities that can be configured directly in your pipeline to meet your specific needs. For a detailed guide on setting up and managing pipeline schedules, refer to the link below.
 
 [Topic: Scheduling pipelines](/learn/dp_developer_learn_track/build_pipeline/scheduling_workflows/)
 
@@ -70,7 +70,7 @@ To learn more refer to the link below:
 
 ### **3. Pipeline observability**
 
-You can ensure pipeline performance is monitored in real-time using DataOS observability tools. DataOS Resources such as **Monitor** and **Pager Resource** help detect issues early and optimize workflows.
+You can ensure pipeline performance is monitored in real-time using DataOS observability tools. DataOS Resources such as Monitor and Pager Resource help detect issues early and optimize workflows.
 
 [Topic: Pipeline observability](/learn/dp_developer_learn_track/build_pipeline/pipeline_observability/)
 

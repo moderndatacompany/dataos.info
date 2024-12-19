@@ -12,7 +12,7 @@ You initiate the process by configuring the connection between *Product-360* and
 
 ### 1. **Navigate to Access Options**
     
-Go to the **Access Options** tab for your Data product in Data Product Hub. Under the **BI Sync** section, locate the **Tableau Cloud** option.
+Go to the 'Access Options' tab for your Data product in Data Product Hub. Under the **BI Sync** section, locate the 'Tableau Cloud' option.
 
 ![tableau_cloud_conn.png](/learn/dp_consumer_learn_track/integrate_bi_tools/tab_cloud/tableau_cloud_conn.png)
 
@@ -34,13 +34,13 @@ In the setup window, fill in the required credentials:
 
 ![tableau_username_and_pw.png](/learn/dp_consumer_learn_track/integrate_bi_tools/tab_cloud/tableau_username_and_pw.png)
 
-In addition to using standard Tableau credentials, you can also opt to use **Personal Access Tokens (PAT)** for authentication:
+In addition to using standard Tableau credentials, you can also opt to use 'Personal Access Tokens (PAT)' for authentication:
 
 1. To create a PAT, log in to your Tableau Cloud account.
 2. Click your avatar in the top-right corner.
-3. Select **Personal Access Tokens** from the menu.
-4. If available, click **Create a New Token**.
-5. Name your token and click **Create**.
+3. Select 'Personal Access Tokens' from the menu.
+4. If available, click 'Create a New Token'.
+5. Name your token and click 'Create'.
 6. Copy the token and store it securely.
 7. Enter the necessary Tableau details.
     - **Project Name:** The designated name for the project within Tableau. [E.g.  Projec
@@ -51,7 +51,7 @@ In addition to using standard Tableau credentials, you can also opt to use **Per
 
 ![tableau_pat.png](/learn/dp_consumer_learn_track/integrate_bi_tools/tab_cloud/tableau_pat.png)
 
-After entering the credentials, click **Activate** to complete the setup. The *Product 360* data product will now be integrated into Tableau Cloud. If the project isn’t created already, a new project, **‘Product Analysis,’** will automatically be established.
+After entering the credentials, click 'Activate' to complete the setup. The *Product 360* data product will now be integrated into Tableau Cloud. If the project isn’t created already, a new project, ‘Product Analysis,’ will automatically be established.
     
 ### 3. **Consuming the Data Product on Tableau Cloud**
     
@@ -61,19 +61,19 @@ Once the *Product-360* Data Product has been successfully activated, you can pro
 
 ![tableau_ui.png](/learn/dp_consumer_learn_track/integrate_bi_tools/tab_cloud/tableau_ui.png)
 
-2. **Accessing Manage Projects**: Select the **Manage Projects** option from the home page. This opens an interface displaying all existing projects within your Tableau environment, including the newly created **‘Product Analysis’** project.
+2. **Accessing Manage Projects**: Select the Manage Projects option from the home page. This opens an interface displaying all existing projects within your Tableau environment, including the newly created ‘Product Analysis’ project.
     
     ![tableau_projects.png](/learn/dp_consumer_learn_track/integrate_bi_tools/tab_cloud/tableau_projects.png)
     
-3. **Selecting the Project**: Locate and select the **‘Product Analysis** project. The project contains the newly synced semantic model (Lens) cross-sell-affinity and all it’s metrics.
+3. **Selecting the Project**: Locate and select the Product Analysis project. The project contains the newly synced semantic model (Lens) cross-sell-affinity and all it’s metrics.
 
 ![tableau_projectlens.png](/learn/dp_consumer_learn_track/integrate_bi_tools/tab_cloud/tableau_projectlens.png)
 
-4. **Creating a New Workbook**: In the top-right corner of the data source interface, select the menu option and click on **New Workbook**.
+4. **Creating a New Workbook**: In the top-right corner of the data source interface, select the menu option and click on New Workbook.
 
 ![tableau_workbook.png](/learn/dp_consumer_learn_track/integrate_bi_tools/tab_cloud/tableau_workbook.png)
 
-5. **Authenticate with DataOS:** This process prompts you to enter your **DataOS Username** and **API key** as the password. The API Key can be generated via clicking on the profile in the bottom left corner.
+5. **Authenticate with DataOS:** This process prompts you to enter your DataOS Username and API key as the password. The API Key can be generated via clicking on the profile in the bottom left corner.
 
 ![tab_desk_api.png](/learn/dp_consumer_learn_track/integrate_bi_tools/tab_cloud/tab_desk_api.png)
 

@@ -670,8 +670,8 @@ Best practices to follow when creating a semantic model. Key practices include:
       - **Member References ({member}):** Wrap member names in curly braces to reference other members of the same table. In the example below, the full_name dimension references the name and surname dimensions of the same table.
       ```yaml
       - name: full_name
-          sql: "CONCAT({name}, ' ', {surname})"
-          type: string
+        sql: "CONCAT({name}, ' ', {surname})"
+        type: string
       ```
       - Qualify column and member names with the table name to remove ambiguity when tables are joined and reference members of other tables. Example:
         ```yaml
@@ -704,7 +704,7 @@ tables:
         type: string
 ```
 
-
+To know more about the best practices and do's and dont's of modelling click [here](/learn/dp_developer_learn_track/create_semantic_model/create_lens_folder/dos_and_donts_of_modelling/).
 
 ## Next Step
 
