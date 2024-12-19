@@ -24,7 +24,7 @@ To make the most out of this guide, you should be familiar with:
 
 ## Steps to view Data Product details
 
-After discovering the “Product 360” Data Product, follow these steps to explore its details.
+After discovering the 'Product 360' Data Product, follow these steps to explore its details.
 
 1. **Access the Data Product details page:** From the Data Product Hub, select the 'Product 360' Data Product. This action will redirect you to the Data Product details page.
     
@@ -41,7 +41,7 @@ After discovering the “Product 360” Data Product, follow these steps to expl
     ![view_output.png](/learn/dp_consumer_learn_track/view_dp_info/view_output.png)
     
 4. **Understanding the semantic model and Metrics:**
-    - On the semantic model tab, you get to understand the data model built on top of the Data Product that is populating the key metrics of the Data Product.
+    - On the 'Semantic Model' tab, you get to understand the data model built on top of the Data Product that is populating the key metrics of the Data Product. Here, you can view the relations between logical tables and derived metrics and views.
         
         Notable metrics include:
         

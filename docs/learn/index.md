@@ -25,7 +25,7 @@ Choose a learning path that suits your role:
 
     ---
 
-    Crafted to help you gain a deeper understanding of how to work with Data Products. You'll develop the skills necessary to explore, analyze, and consume Data Products effectively in your role, whether you're a Data Analyst, Data Scientist, Business Analyst, App Developer, Product Manager.
+    Crafted to help you gain a deeper understanding of how to work with Data Products. You'll develop the skills necessary to explore, analyze, and consume Data Products effectively in your role, whether you're a Data Analyst, Data Scientist, Business Analyst, App Developer or Product Manager.
 
     [:octicons-arrow-right-24: Learn more](/learn/#data-product-consumer)
 
