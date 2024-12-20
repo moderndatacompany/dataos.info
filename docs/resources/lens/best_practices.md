@@ -1,16 +1,12 @@
-# Best Practices
+# Best practices
 
-## Naming Conventions
+By following these best practices, teams can reduce errors, improve communication, and create more maintainable and scalable systems. Below are several key best practices to consider:
 
-**Common Rules**
+## Naming conventions
 
 - Names must start with a letter.
 - Names can include letters, numbers, and underscore (`_`) symbols only.
-
-<aside class="callout">
-🗣️ <b>Recommended:</b> Use <b>snake_case</b> for naming.
-
-</aside>
+- Use snake_case for naming.
 
 **Examples**
 
@@ -22,9 +18,9 @@
 
 ---
 
-## SQL Expressions
+## SQL expressions
 
-### **Data Source Dialect**
+### **Data source dialect**
 
 When defining tables, you often provide SQL snippets in the `sql` parameter. These SQL expressions should match your data-source SQL dialect.
 
@@ -55,7 +51,7 @@ tables:
         type: string
 ```
 
-### **Case Sensitivity**
+### **Case sensitivity**
 
 If your database uses case-sensitive identifiers, ensure you properly quote table and column names.
 
@@ -195,7 +191,7 @@ tables:
 
 However, always referring to the current table by its name can lead to code repetition. Here’s how to solve that:
 
-### **`{TABLE}` Variable**
+### **`{TABLE}` variable**
 
 Use the `{TABLE}` variable to reference the current table, avoiding the need to repeat its name.
 
@@ -245,7 +241,7 @@ Using the `{TABLE}` variable keeps the data model code DRY and easy to maintain.
 
 For more examples, refer to [Do’s And Don’ts](/resources/lens/dos_and_donts/).
 
-### **Non-SQL References**
+### **Non-SQL references**
 
 Outside the `sql` parameter, `column` is not recognized as a column name but as a member name. This means you can reference members directly by their names without using curly braces: `member`, `table_name.member`, or `TABLE.member`.
 
@@ -278,17 +274,15 @@ tables:
 
 ## Partitioning
 
-1. **Optimal Query Performance:** Partitions should be small so that the Lens workers can process them in less time. Start with a relatively large partition (e.g., yearly) and adjust as needed.
-2. **Avoid Partition Queueing:** To minimize queueing, make refresh keys as infrequent as possible.
+- Partitions should be small so that the Lens workers can process them in less time. Start with a relatively large partition (e.g., yearly) and adjust as needed.
+- To minimize partition queueing, make refresh keys as infrequent as possible.
 
 
-## Payload Edit
+## Payload edit
 
 For more information on handling JSON payloads, refer to [Working with Payload](/resources/lens/working_with_payload/).
 
-## Commenting in SQL Files
-
-**Guideline:**
+## Commenting in SQL files
 
 - Add comments on a new line within the query.
 - For end-of-query comments, leave two blank lines before the comment.
