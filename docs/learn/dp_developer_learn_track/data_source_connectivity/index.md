@@ -1,7 +1,7 @@
 
 # Source data connectivity
 
-Connecting to data sources is the first step in building Data Products with DataOS. Now, it's time to set up connections to various data sources. In this topic, you'll learn how to configure **Depots** in DataOS, allowing seamless and secure access to a range of real-world data sources without moving the data.
+Connecting to data sources is the first step in building Data Products with DataOS. Now, it's time to set up connections to various data sources. In this topic, you'll learn how to configure Depots in DataOS, allowing seamless and secure access to a range of real-world data sources without moving the data.
 
 ## Scenario
 
@@ -37,7 +37,7 @@ Before diving into configuring data source connections, make sure you have every
 
 2. **Check CLI installation and initialization**: You need this text-based interface that allows you to interact with the DataOS context via command prompts. Click [here](/interfaces/cli/) to learn more.
 
-3. **Manage Credentials Securely**: Use **Instance Secrets** for storing your data source credentials, ensuring sensitive information remains protected.
+3. **Manage Credentials Securely**: Use Instance Secrets for storing your data source credentials, ensuring sensitive information remains protected.
 
     > **Important**: To prevent credential exposure, contact DataOS administrator and understand the best practices for handling sensitive data.
 

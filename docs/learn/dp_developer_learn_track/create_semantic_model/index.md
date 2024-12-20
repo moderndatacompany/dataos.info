@@ -4,7 +4,7 @@ This guide outlines the end-to-end process for building and deploying a semantic
 
 ## Scenario
 
-After you've established data connections and built robust data pipelines to process and transform raw data, the next step is to create a semantic data model (Lens) on top of the Product-360 Data Product. Your objective is to transform raw data into a structured model that enables the generation of trusted, consistent metrics and KPIs. These metrics will be accessible through APIs and usable across business intelligence, AI, and embedded analytics tools.
+After you've established data connections and built robust data pipelines to process and transform raw data, the next step is to create a semantic model (Lens) on top of the Product-360 Data Product. Your objective is to transform raw data into a structured model that enables the generation of trusted, consistent metrics and KPIs. These metrics will be accessible through APIs and usable across business intelligence, AI, and embedded analytics tools.
 
 
 ## Step 1: Defining business objectives and KPIs

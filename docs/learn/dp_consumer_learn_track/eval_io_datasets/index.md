@@ -4,7 +4,7 @@ This topic guides you in assessing the accuracy, compliance, and readiness of in
 
 ## Scenario
 
-To ensure the data you plan to use is accurate and suitable for the marketing campaign, you thoroughly check the input and output datasets of the '**Product 360**' Data Product. You analyze the schema and metadata for any red flags, such as missing fields or outdated entries, to maintain data integrity.
+To ensure the data you plan to use is accurate and suitable for the marketing campaign, you thoroughly check the input and output datasets of the 'Product 360' Data Product. You analyze the schema and metadata for any red flags, such as missing fields or outdated entries, to maintain data integrity.
 
 On Data Product Hub, open the data product details and follow the below steps:
 
@@ -92,7 +92,7 @@ After understanding the schema, structure, and quality of your dataset, you’re
 
 ### **1.  Open Workbench app**
 
-On Data Product Hub, go to **Workbench** option.
+On Data Product Hub, go to 'Workbench' option.
 
 ![workbench_on_dph.png](/learn/dp_consumer_learn_track/eval_io_datasets/workbench_on_dph.png)
 
