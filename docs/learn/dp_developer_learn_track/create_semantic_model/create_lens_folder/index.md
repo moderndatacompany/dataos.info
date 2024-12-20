@@ -484,7 +484,7 @@ The Metric section defines the actual measure being tracked and the rules for ho
 
 - **Expression:** The SQL expression or formula that defines how the metric is calculated (e.g., aggregation of values over a period of time).
 - **Timezone:** Specifies the timezone for the metric calculation (e.g., UTC).
-**Window:** Defines the time period over which the metric is measured (e.g., daily, weekly, monthly). This is crucial for time-based metrics.
+- **Window:** Defines the time period over which the metric is measured (e.g., daily, weekly, monthly). This is crucial for time-based metrics.
 - **Excludes:** Defines any data to be excluded from the calculation of the metric (e.g., certain product categories or purchase channels).
 
 
