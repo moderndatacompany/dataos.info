@@ -8,6 +8,9 @@ Imagine you're a data analyst tasked with supporting a new marketing campaign ai
 
 You find Metrics that give insights into purchase frequency and Perspectives that provide saved analysis views on product affinity trends. With these resources at your fingertips, you can dive straight into analysis, build machine learning models for predictive insights, and present actionable data to the marketing team—all while ensuring that the data is accurate, compliant, and well-documented.
 
+You find 'Metrics' that give insights into purchase frequency and 'Perspectives' that provide saved analysis views on product affinity trends. With these resources at your fingertips, you can dive straight into analysis, build machine learning models for predictive insights, and present actionable data to the marketing team—all while ensuring that the data is accurate, compliant, and well-documented.
+
+
 ## What do you need to get started?
 
 To make the most out of this content, you’ll need:
@@ -16,7 +19,7 @@ To make the most out of this content, you’ll need:
 
 ## Quick concepts
 
-- **Data Products:** Curated, structured data sets that provide valuable insights, automate processes, or enhance decision-making.  They take various forms, such as enriched datasets, semantic models, dashboards, or machine learning models, and are designed to help users understand and act on data easily. Essentially, Data Products turn raw data into useful information that can drive actions and improve outcomes.
+- Data Products: Curated, structured data sets that provide valuable insights, automate processes, or enhance decision-making.  They take various forms, such as enriched datasets, semantic models, dashboards, or machine learning models, and are designed to help users understand and act on data easily. Essentially, Data Products turn raw data into useful information that can drive actions and improve outcomes.
 
 ## What is Data Product Hub?
 
