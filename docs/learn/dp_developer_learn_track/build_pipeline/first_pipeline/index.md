@@ -29,7 +29,7 @@ In DataOS, pipelines can only be created for data sources connected using Depots
 
 ### **Step 3: Identifying the right DataOS Resource**
 
-Review the three primary DataOS Resources used for building pipelines in DataOS—**Workflow**, **Service**, and **Worker**—to determine which fits your use case.
+Review the three primary DataOS Resources used for building pipelines in DataOS— Workflow, Service, and Worker — to determine which fits your use case.
 
 | **Characteristic** | **Workflow** | **Service** | **Worker** |
 | --- | --- | --- | --- |
@@ -37,7 +37,7 @@ Review the three primary DataOS Resources used for building pipelines in DataOS�
 | *Execution Model* | Batch processing using DAGs. | API-driven execution. | Continuous task execution. |
 | *Ideal Use Case* | Batch data processing pipelines and scheduled jobs. | Real-time data retrieval or user interaction. | Event-driven or real-time analytics. |
 
-Given the requirements for a batch pipeline, you can select the **Workflow** Resource, as it is designed for orchestrating multi-step data processing tasks.
+Given the requirements for a batch pipeline, you can select the Workflow Resource, as it is designed for orchestrating multi-step data processing tasks.
 
 ### **Step 4: Identifying the right Stack**
 
@@ -52,12 +52,12 @@ DataOS provides several pre-defined stacks to handle various processing needs. B
 | **CLI Stack** | For automated CLI command execution |
 |  |  |
 
-here for the given scenario, you can choose the **Flare Stack** for its robust capabilities in batch data processing. The Flare Stack enables you to efficiently read, process, and write data.
+here for the given scenario, you can choose the Flare Stack for its robust capabilities in batch data processing. The Flare Stack enables you to efficiently read, process, and write data.
 
 
 ### **Step 4: Creating the manifest file**
 
-After deciding upon the suitable processing Stack, you need to draft the manifest file to configure the pipeline. Specify the **Workflow Resource**, define the input and output data sources, and integrate the **Flare Stack**.
+After deciding upon the suitable processing Stack, you need to draft the manifest file to configure the pipeline. Specify the Workflow Resource, define the input and output data sources, and integrate the Flare Stack.
 
 ```yaml
 version: v1

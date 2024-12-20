@@ -25,7 +25,7 @@ A tag is a specific attribute following a predefined glob pattern defined within
 
 For instance:
 
-- **Subjects**: Tags for users or applications, such as `users:id:iamgroot` (identifying the user "Iamgroot") or `roles:id:developer` (identifying the "developer" role).
+- **Subjects**: Tags for users or applications, such as `users:id:iamgroot` (identifying the user 'Iamgroot') or `roles:id:developer` (identifying the 'developer' role).
 - **Objects**: Tags for resources or services, such as `dataos:resource:dataset` (identifying a dataset resource) or `/api/v1/metis/**` (identifying an API path).
 - **Predicates**: Tags for actions like `read`, `write`, `delete`, or any CRUD (Create, Read, Update, Delete) operation.
 
@@ -35,7 +35,7 @@ The subject refers to the user or application trying to perform an action. The s
 
 **Examples:**
 
-- `users:id:iamgroot`: Identifies the user "Iamgroot."
+- `users:id:iamgroot`: Identifies the user 'Iamgroot'.
 - `roles:id:data-scientist`: Identifies a role assigned to a set of users.
 
 In DataOS, the subject must have appropriate tags assigned for the access control policies to be applied.
@@ -46,7 +46,7 @@ The object is the Resource on which the action is to be performed. This could be
 
 **Examples:**
 
-- `dataos:resource:secret`: Identifies a resource of type "secret."
+- `dataos:resource:secret`: Identifies a resource of type 'secret'.
 - `/api/v1/data/**`: Identifies an API path for accessing data.
 
 The object's tag or path helps determine what resources can be acted upon by the subject.
@@ -71,8 +71,8 @@ A predicate specifies the action that the subject wants to perform on the object
 
 Consider a scenario where you have the following tags for a user named Iamgroot:
 
-- `roles:id:data-dev`:The user is assigned to the "data-dev" role.
-- `users:id:iamgroot`: user tag to identify the user named "Iamgroot".
+- `roles:id:data-dev`:The user is assigned to the `data-dev` role.
+- `users:id:iamgroot`: user tag to identify the user named 'Iamgroot'.
 
 And the following path for a Depot:
 

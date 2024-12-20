@@ -25,26 +25,26 @@ Follow these steps to access and consume the Data Product using the REST API:
 
 1. **Navigate to the Access Options Tab**
     
-    In the Data Product Hub, go to the **Access Options** tab, where you'll find the REST API endpoint for Product 360 Data Product.
+    In the Data Product Hub, go to the 'Access Options' tab, where you'll find the REST API endpoint for Product 360 Data Product.
     
     ![api_access.png](/learn/dp_consumer_learn_track/integrate_api/api_access.png)
     
 2. **Copy the API Endpoint to Postman**
     
-    Copy the endpoint URL provided, and open **Postman** (or your preferred API testing tool). Paste the URL into the request field.
+    Copy the endpoint URL provided, and open 'Postman' (or your preferred API testing tool). Paste the URL into the request field.
     
     ![api_endpoint.png](/learn/dp_consumer_learn_track/integrate_api/api_endpoint.png)
     
 3. **Authenticate with DataOS API Key**
     
-    In Postman, go to the **Authorization** tab. Set the authorization type to **Bearer Token**, and enter your DataOS API key to authenticate.
+    In Postman, go to the 'Authorization' tab. Set the authorization type to 'Bearer Token', and enter your DataOS API key to authenticate.
     
     ![api_postman.png](/learn/dp_consumer_learn_track/integrate_api/api_postman.png)
     
 
 1. **Send the Request and View the Output**
     
-    After setting up your request, click **Send**. If configured correctly, you should see a successful API response, confirming that the endpoint and API key are working. This output is now ready to use in your data application.
+    After setting up your request, click 'Send'. If configured correctly, you should see a successful API response, confirming that the endpoint and API key are working. This output is now ready to use in your data application.
     
     ![api_get.png](/learn/dp_consumer_learn_track/integrate_api/api_get.png)
     

@@ -19,7 +19,7 @@ The type of DataOS Resource you select depends on the use case:
 - **Workflow Resource**: Ideal for batch workloads and periodic quality checks.
 - **Worker Resource**: Best suited for long-running, continuous monitoring.
 
-For your initial setup, choose the **Workflow Resource** to run scheduled data quality checks on a dataset.
+For your initial setup, choose the Workflow Resource to run scheduled data quality checks on a dataset.
 
 
 ### **Step 2: Define the Workflow manifest**
@@ -114,7 +114,7 @@ Once the manifest is complete, apply it using the DataOS CLI:
 
 dataos-ctl apply -f /path/to/soda-workflow.yaml -w public
 ```
-Verify the configuration in the Data Product Hub’s **Quality** tab, where the status of Soda checks is displayed.
+Verify the configuration in the Data Product Hub’s Quality tab, where the status of Soda checks is displayed.
 
 ## Monitoring results in the Quality tab
 

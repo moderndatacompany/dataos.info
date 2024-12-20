@@ -94,7 +94,7 @@ After understanding the schema, structure, and quality of your dataset, you’re
 
 ### **1.  Open Workbench app**
 
-On Data Product Hub, go to **Workbench** option.
+On Data Product Hub, go to 'Workbench' option.
 
 ![workbench_on_dph.png](/learn/dp_consumer_learn_track/eval_io_datasets/workbench_on_dph.png)
 
