@@ -80,10 +80,11 @@ Once the *Product-360* Data Product has been successfully activated, you can pro
     ![tableau_dashboard.png](/learn/dp_consumer_learn_track/integrate_bi_tools/tab_cloud/tableau_dashboard.png)
 
 <aside class="callout">
+🗣️
 
 The publisher can embed their credentials (DataOS username and API Token) or ask users to provide credentials whenever they want to access the published Workbook/Sheet/Dashboard. If the publisher has chosen to ‘Embed password for data source’, users can access the published workbook and dashboard without providing credentials.
 
-<b> Note </b> Once the credentials are embedded, they cannot be accessed. You need to overwrite and ‘publish-as’ the workbook to reconfigure the embedding password optionality.
+Once the credentials are embedded, they cannot be accessed. You need to overwrite and ‘publish-as’ the workbook to reconfigure the embedding password optionality.
 
 </aside>
 
@@ -142,6 +143,10 @@ The publisher can embed their credentials (DataOS username and API Token) or ask
 - Select the time dimension.
 - To define granularity, right-click on the selected time dimension and set granularity (choose a granularity where the complete time, along with the year, is shown).
 - Add the time dimension to the filter, and define the range filter.
+
+<aside class="callout">
+🗣️ Be aware that custom calculations or fields (measures/dimensions) created in BI tools may be lost during re-sync. It is preferable to create custom logic directly in Tableau's Lens.
+</aside>
 
 ## Error handling 
 
