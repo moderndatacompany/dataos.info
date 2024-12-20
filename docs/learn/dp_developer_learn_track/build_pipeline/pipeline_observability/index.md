@@ -4,7 +4,7 @@ In this topic, you will learn to configure a Report Monitor to generate an incid
 
 ## Scenario
 
-Imagine you are a Data Product Developer, tasked with ensuring that workflows run smoothly and incidents are detected promptly. Recently, your team reported delays in identifying when workflows succeed, leading to inefficient responses. Determined to streamline observability, you want to use the **Monitor** **Resource** in DataOS.
+Imagine you are a Data Product Developer, tasked with ensuring that workflows run smoothly and incidents are detected promptly. Recently, your team reported delays in identifying when workflows succeed, leading to inefficient responses. Determined to streamline observability, you want to use the Monitor Resource in DataOS.
 
 ## Quick concepts
 

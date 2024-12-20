@@ -30,7 +30,7 @@ Get a solid foundation on what Data Products are and how they can drive insights
 </div>
 
 <aside class= "callout">
-🗣 For a general understanding of what Data Products are and their importance, please reach out to your team. If you want to learn specifically about discovering and activating Data Products within DataOS, continue to Module 2 for a detailed walkthrough.
+🗣️ For a general understanding of what Data Products are and their importance, please reach out to your team. If you want to learn specifically about discovering and activating Data Products within DataOS, continue to Module 2 for a detailed walkthrough.
 </aside>
 
 ## Module 2: Discovering Data Products

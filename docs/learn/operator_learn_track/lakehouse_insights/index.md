@@ -4,7 +4,7 @@ This topic explores how to leverage Lakehouse Insights to identify and resolve i
 
 ## Scenario
 
-After mastering credential security and establishing reliable data source connections, you now face a new challenge: inefficiencies in your data lake, including slow query responses and rising storage costs. To tackle these issues, you turn to **Lakehouse Insights**, a system-level data product designed to optimize data lake performance by identifying and addressing inefficiencies in Lakehouse storage.
+After mastering credential security and establishing reliable data source connections, you now face a new challenge: inefficiencies in your data lake, including slow query responses and rising storage costs. To tackle these issues, you turn to Lakehouse Insights, a system-level data product designed to optimize data lake performance by identifying and addressing inefficiencies in Lakehouse storage.
 
 ## Overview of Lakehouse Insights
 

@@ -1,11 +1,6 @@
 # Power BI
 
-In this guide, you will learn how to integrate a data product with Power BI and activate it to build rich, interactive dashboards.
-
-
-## Scenario
-
-Imagine you are part of the sales team at a growing retail company, and you need to analyze sales data to track performance trends, monitor regional sales distribution, and identify product affinities. By integrating your sales data product into Power BI, you can create interactive dashboards that allow you to dive deep into metrics, explore relationships, and make actionable business decisions.
+In this guide, you will learn how to integrate a Data Product with Power BI and activate it to build rich, interactive dashboards.
 
 ### **Step 1: Navigate to the BI Sync Option**
     
@@ -48,12 +43,76 @@ Once connected, you can see tables and views containing all dimensions and measu
 Happy dashboarding!
 
 <aside class="callout">
-🗣 Power BI also provides the functionality to interact with the downloaded file in Excel.
+🗣️ Power BI also provides the functionality to interact with the downloaded file in Excel.
 
 </aside>
+
+## Supported data types
+
+| **Category**   | **Data Types**                                                                  | **Support Status**                       |
+|----------------|---------------------------------------------------------------------------------|------------------------------------------|
+| **Dimension**  | `time`, `string`, `number`, `boolean`                                                   | Supported                                |
+| **Measure**    | `max`, `min`, `number`, `sum`, `count`, `boolean`, `string`, `time`, `avg`, `count_distinct`         | Supported                                |
+| **Measure**    | `count_distinct_approx`                                                           | Not Supported                            |
+| **Rolling Window** | -                                                                           | Not Supported (Power BI doesn’t support) |
+
+## Important considerations
+
+- In Power BI, measures typically have an 'm_' prefix to indicate they represent a measure. For example, a measure calculating total revenue might be named `m_total_revenue`.
+- The connection is live, meaning any changes to the underlying data will be reflected in Power BI.
+- If schema changes occur, such as the addition of new dimensions and measures, the steps outlined above will need to be repeated.
+- Custom measures or dimensions created in Power BI may be lost during re-sync operations. It is recommended to implement custom logic directly within the Lens when possible to ensure persistence of customizations.
+
+## Best practices
+
+Adhering to best practices ensures that you effectively utilize the Data Product Hub and maintain compatibility with the latest features and updates. Following these guidelines will help optimize workflow, enhance performance, and prevent potential issues.
+
+### **Version compatibility**
+
+- Power BI versions released after June 15, 2023, support `.pbib` files. It is advisable to use a version released after this date.
+
+- Beginning with Version 2.132.908.0 (August 2024), `.pbip` files have moved from preview to general availability. This transition allows for the use of `.pbip` files without the need to enable any preview settings. It is strongly recommended to download Power BI Version 2.132.908.0 or later to fully utilize `.pbip` files. 
+
+<!-- 
+In earlier versions, enabling a preview feature was necessary, but this is no longer required in the latest version. -->
+
+### **File handling**
+
+Ensure that `.pbip` folders are fully extracted before opening them. Failure to do so may result in missing file errors, as shown below:
+
+<div style="text-align: center;">
+    <img src="/resources/lens/bi_integration/image.png" alt="Superset Configuration" style="max-width: 25%; height: auto; border: 1px solid #000;">
+</div>
+
+### **Data retrieval and field selection considerations**
+
+- **Row Limit:** The Lens API has a maximum return limit of 50,000 rows per request. To obtain additional data, it is necessary to set an offset. This row limit is in place to manage resources efficiently and ensure optimal performance.
+
+- **Selection:** It is important to select fields from tables that are directly related or logically joined, as the system does not automatically identify relationships between tables through transitive joins. Selecting fields from unrelated tables may result in incorrect or incomplete results.
+
+### **Regular testing and validation**
+
+Regular testing and validation of reports are recommended after changes are made to the Lens definitions. This practice ensures that updates to dimensions, measures, or data models are accurately reflected in the reports and helps identify any issues early in the process.
+
+## Limitations
+
+Power BI’s ‘Direct Query’ mode does not support querying the rolling window measure. The lack of support for date hierarchy in 'Direct Query' prevents the application of granularity for the rolling window measure type.
+
+## Governance of model on Power BI
+
+Data masking, restrictions, and permissions established by the publisher are automatically enforced for all report viewers, ensuring consistent data security and compliance. The behavior of these data policies, such as masking, may vary based on the use of Power BI Desktop or other interfaces.
+
+When the Lens semantic model is activated via BI Sync on Power BI, authentication and authorization are handled using the DataOS user ID and API key. This ensures that columns redacted by Lens data policies are restricted based on the user's group permissions.
+
+For example, if a user named iamgroot, belonging to the 'Analyst' group, is restricted from viewing the 'Annual Salary' column, this column will not appear in either the Data Product exploration page or in Power BI after synchronization. Power BI requires the DataOS user ID and API key for authentication, ensuring that users can access the full model except for columns restricted by their data policies.
+
+This approach ensures that users only see the data they are authorized to view, maintaining security and compliance.
+
 
 ## Excel via PowerBI
 
 Follow the below link to analyze in Excel via PowerBI.
 
 [Excel via Power BI](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/)
+
+
