@@ -10,7 +10,7 @@ hide:
 
 # :products-dataproduct: Data Product
 
-A Data Product is a self-contained unit within DataOS designed for handling and sharing analytical data, developed and managed by the dedicated teams. It includes meta data, data transformation code, input and output definitions, discovery and observability, APIs, documentation, service level objectives (SLOs), governance, transformation and platform dependencies such as compute and storage resources. Data Product is reusable, composable, portable and cloud-agnostic.​
+A Data Product is a self-contained unit within DataOS designed for handling and sharing analytical data, developed and managed by dedicated teams. It includes metadata, data transformation code, input and output definitions, discovery and observability, APIs, documentation, service level objectives (SLOs), governance, transformation, and platform dependencies such as compute and storage resources. Data Product is reusable, composable, portable, and cloud-agnostic.
 
 DataOS provides the platform for the development, management, processing, and deployment of Data Products across an organization. It provides a streamlined approach to handling Data Products throughout their entire lifecycle, from ingestion and storage to analysis and delivery. By integrating these functionalities into a single, cohesive system, DataOS enhances decision-making and boosts operational efficiency.
 

@@ -394,7 +394,7 @@ e. A successful deployment will look like the following.
 <figcaption><i>Bitbucket deployment</i></figcaption>
 </center>
 
-### **8. Error fixes**
+### **7. Error fixes**
 
 
 - If an error occurs during the push due to a large file size, navigate to the repository settings. Under **Repository details**, open the **Advanced** dropdown, uncheck the “Block pushes with files over 100MB” option, and save the changes. Then push again.
