@@ -25,7 +25,7 @@ Choose a learning path that suits your role:
 
     ---
 
-    Crafted to help you gain a deeper understanding of how to work with Data Products. You'll develop the skills necessary to explore, analyze, and utilize Data Products effectively in your role, whether you're a Data Analyst, Data Scientist, or Business Analyst.
+    Crafted to help you gain a deeper understanding of how to work with Data Products. You'll develop the skills necessary to explore, analyze, and consume Data Products effectively in your role, whether you're a Data Analyst, Data Scientist, Business Analyst, App Developer, Product Manager.
 
     [:octicons-arrow-right-24: Learn more](/learn/#data-product-consumer)
 
@@ -34,7 +34,7 @@ Choose a learning path that suits your role:
 
     ---
 
-    Designed to equip you with the skills needed to create, manage, and scale Data Products using DataOS. Whether it’s understanding business requirements or diving into the technical nitty-gritty of data pipelines, access control, quality checks, and more, this track covers all the essentials for your role.
+    Designed to equip you with the skills to create, manage, and scale Data Products using DataOS, tailored for roles like Data Engineers, AI/ML Engineers, Data Modelers, and Solution Architects. From translating business needs into solutions to building pipelines, enforcing access controls, ensuring data quality, and designing scalable architectures, it covers all essentials to excel in your role.
 
     [:octicons-arrow-right-24: Learn more](/learn/#data-product-developer)
 
@@ -42,7 +42,7 @@ Choose a learning path that suits your role:
 
     ---
 
-    Created to empower you with the knowledge and skills necessary to effectively manage the DataOS platform. As a DataOS Operator, you are responsible for overseeing the platform’s infrastructure, compute resources, data security, and compliance.
+    Created to empower roles like DataOS Operators, DevOps Engineers, Cloud Administrators, and Security Specialists with the knowledge and skills to effectively manage the DataOS platform. Responsibilities include overseeing infrastructure, managing compute resources, ensuring data security, and maintaining compliance.
 
     [:octicons-arrow-right-24:  Learn more](/learn/#dataos-operator)
 
@@ -51,13 +51,17 @@ Choose a learning path that suits your role:
 
 ### **Data Product Consumer**
 
-Data Product Consumers in DataOS encompass a variety of roles, such as Data Analysts, Business Analysts, and Data Scientists. Analysts play essential roles in leveraging data for actionable insights and strategic decision-making. They utilize DataOS to discover, explore, and activate Data Products, enabling them to transform raw data into valuable business intelligence and drive innovation. Data Scientists leverage advanced analytical techniques and machine learning algorithms to extract meaningful insights from data within DataOS.
+Data Product Consumers in DataOS encompass a variety of roles, such as Data Analysts, Business Analysts, Data Scientists, App Developers, Product Managers, and AI Product Managers, etc. Analysts play essential roles in leveraging data for actionable insights and strategic decision-making. They utilize DataOS to discover, explore, and activate Data Products for valuable business intelligence and drive innovation. Data Scientists leverage advanced analytical techniques and machine learning algorithms to extract meaningful insights from data within DataOS.
+
+App Developers consume Data Products to build innovative applications that enhance user experiences and expand business capabilities. Product Managers essentially bridge the gap between data capabilities and business outcomes, ensuring that Data Products serve both technical and strategic goals.
+
+AI Product Managers unlock the potential of Data Products by leveraging large language models (LLMs) and Natural Language Processing (NLP) interfaces for insights and data-driven outcomes. 
 
 #### **Key responsibilities**
 
 Here are the key responsibilities of a Data Product Consumer, though specific tasks may vary depending on the role or initiative:
 
-- **Discovering and accessing Data Products: I**dentify and access relevant Data Products based on business needs. Interpret metadata to understand product details and assess the usability of Data Products for informed decision-making.
+- **Discovering and accessing Data Products**: Identify and access relevant Data Products based on business needs. Interpret metadata to understand product details and assess the usability of Data Products for informed decision-making.
 
 - **Navigating semantic models:** Understand the relationships between data entities within semantic models to improve data comprehension.
 
@@ -65,7 +69,7 @@ Here are the key responsibilities of a Data Product Consumer, though specific ta
 
 - **Understanding governance and policies:** Ensure data usage and access aligns with organizational security standards and regulations.
 
-- **Activating Data Products:** Consider how Data Products can be consumed with Business Intelligence (BI) tools, APIs, and other applications to enhance workflows and reporting.
+- **Activating Data Products:** Consider how Data Products can be consumed with Business Intelligence (BI) tools, APIs, and other applications to enhance workflows and reporting. Leverage designated endpoints or interfaces for efficient and secure data access.
 
 - **Tracking metrics and performance:** Monitor performance, usage, and impact metrics of Data Products to assess their effectiveness and communicate results to stakeholders.
 
@@ -81,7 +85,7 @@ In this learning track, you will get a comprehensive introduction to Data Produc
     | **No.** | **Module**                                         | **Description**                                                                                                                                                                                                                                                   | **Key Topics**                                                                                                                                                                                                                                                                                                                                                                                |
     |---------|----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | 1       | Understanding Data Products                        | Get a solid foundation on what Data Products are and how they can drive insights and decision-making. Learn about their features, and importance in business processes.                                                                                      | <ul><li><strong>Introduction to Data Products :</strong> Understand how Data Products transform raw data into valuable insights, enabling data-driven decisions.</li><li><strong>Features and Importance of the Data Product:</strong> Learn key features that make Data Products indispensable for data consumers—scalability, real-time access, usability.</li></ul>                         |
-    | 2       | Discovering Data Products on DPH                   | Learn how to navigate the Data Product Hub (DPH) to find Data Products that meet your needs using search, filters, tags, and categories.                                                                                                                            | <ul><li><strong>Introduction to Data Product Hub:</strong> Learn to navigate the Data Product Hub and get to know about Perspectives and Metrics.</li><li><strong>Discover Data Products of Interest:</strong> Learn how to identify the most relevant Data Product tailored to solving your specific use case efficiently.</li></ul>                                                               |
+    | 2       | Discovering Data Products                   | Learn how to navigate the Data Product Hub (DPH) to find Data Products that meet your needs using search, filters, tags, and categories.                                                                                                                            | <ul><li><strong>Introduction to Data Product Hub:</strong> Learn to navigate the Data Product Hub and get to know about Perspectives and Metrics.</li><li><strong>Discover Data Products of Interest:</strong> Learn how to identify the most relevant Data Product tailored to solving your specific use case efficiently.</li></ul>                                                               |
     | 3       | Viewing Data Product Info                          | Access key details of the data product—contributors, tier, type, and tags, along with links to relevant Git repository and Jira for easy reference and collaboration to make informed decisions on data product usage.                                                | <ul><li><strong>Get the details of the Data Product of Interest:</strong> Examine key details of the Data Product to evaluate its suitability for your use case.</li></ul>                                                                                                                                                                                                                       |
     | 4       | Exploring Input and Output Data                    | Explore the input and output datasets that are either fed into or generated by the data product for consumption. | <ul><li><strong>Know about Input and Output datasets:</strong> Understand the schemas of the input and output datasets. Use Metis to access detailed metadata and Workbench for advanced data exploration and querying.</li></ul>                                                                                                                                                                                              |
     | 5       | Navigating Semantic Models                         | Explore semantic models to understand relationships between data entities and improve data integration and comprehension.                                                                                                                                           | <ul><li><strong>Exploring Semantic Models:</strong> Visualize how data flows from input datasets to create meaningful metrics. Understand the data flow, relationships, and transformations that drive insights.</li></ul>                                                                                                                                                                      |

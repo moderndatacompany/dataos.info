@@ -8,8 +8,10 @@ To get started with Tableau integration through Data Product Hub, refer to the l
 <a href="/interfaces/data_product_hub/activation/bi_sync/tableau_cloud/">Access the Tableau integration guide</a>.
 </aside>
 
+<!-- ## Tableau desktop
+## Tableau cloud  -->
 
-## Prerequisites
+### **Prerequisites**
 
 - **Curl**: Ensure that `curl` is installed on the system. For Windows systems, `curl.exe` may be necessary.
 - **Lens API endpoint**: The API endpoint provided by Lens to sync semantic model, enabling integration with Tableau.
@@ -20,7 +22,7 @@ To get started with Tableau integration through Data Product Hub, refer to the l
 dataos-ctl user apikey get
 ```
 
-## Steps
+### **Steps**
 
 To sync the semantic model with Tableau, follow the steps below:
 
@@ -105,6 +107,9 @@ Upon clicking 'Connect', a prompt will request the username and password. Enter 
     <img src="/resources/lens/bi_integration/tableau5.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
+
+
+
 ## Important considerations for Tableau integration
 
 **1. Handling entities without relationships:** An error will occur during synchronization if any entity in the semantic model lacks a defined relationship. To resolve this issue, the entity can be hidden to avoid synchronization errors.
@@ -114,29 +119,6 @@ Upon clicking 'Connect', a prompt will request the username and password. Enter 
 **3. Schema changes:** If there are schema updates, such as adding new dimensions or measures, the integration steps will need to be repeated to incorporate these changes into Tableau.
 
 **4. Avoiding cyclic dependencies:** Tableau does not support cyclic dependencies within semantic models. To prevent integration issues, it is essential to ensure that the semantic model is free of cyclic dependencies prior to syncing with Tableau.
-
-
-## Handling specific data types in Tableau
-
-1. **Time data type as measure in Tableau**  
-
-    When syncing the semantic layer with Tableau, note that Tableau does not support the time data type as a measure. While Lens allows time-based measures, Tableau defaults to treating date and time fields as dimensions.As a result, Tableau will not correctly interpret any measure with a **time data type**.
-
-    **Recommended actions**:
-
-    To avoid synchronization issues:
-
-    - Use time or date fields in Tableau only for dimension-based filtering or grouping.
-    - For time-based calculations, limit aggregations to MIN() or MAX() functions.
-
-2. **String data type to geographical**
-
-    When connecting a dataset to Tableau, it automatically detects fields such as City and Country and converts them from string data types to Geography types. This enables Tableau to treat these fields as geographical locations, allowing features like map visualizations and geospatial analysis without the need for manual adjustments.
-
-<aside class="callout">
-📌 All limitations are specific to Tableau's handling of time data types as measures and does not affect other aspects of the Lens semantic layer's functionality.
-
-</aside>
 
 ## Data policies and security
 
@@ -159,28 +141,12 @@ After correcting the syntactical error in the measure or dimension within Lens, 
     <img src="/resources/lens/bi_integration/image03.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-
-**Scenario 2: Reflecting logical changes in measures or dimensions**
-
-If logical changes are made to a measure or dimension, for example adjusting how the sum is calculated, the changes will not be reflected in Tableau immediately.
-
-<div style="text-align: center;">
-    <img src="/resources/lens/bi_integration/image04.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
-</div>
-
-Before the change, the sum calculation may appear as shown below:
-
-<div style="text-align: center;">
-    <img src="/resources/lens/bi_integration/image05.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
-</div>
-
-
-**Scenario 3: Handling inactive Lens in the environment** 
+**Scenario 2: Handling inactive Lens in the environment** 
 
 If the Lens is not active in the environment while working on an existing workbook in Tableau or when attempting to establish a new connection, an error will be encountered. This may prevent access to or querying data from the Lens. Verify that the Lens exists and is active before syncing.
 
 
-**Scenario 4: Handling data source errors due to access restrictions**
+**Scenario 3: Handling data source errors due to access restrictions**
 
 If the Account table is set to `public = false`, a data source error will occur in Tableau. The error message will indicate that the 'Account table not found,' which will prevent querying or using data from that table.
 
