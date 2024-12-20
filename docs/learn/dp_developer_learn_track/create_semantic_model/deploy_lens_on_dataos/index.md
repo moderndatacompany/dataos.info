@@ -150,7 +150,7 @@ lens:
       - --ref=main # Repository Branch (optional)
 
 # API Instances configuration
-  api:  (optional)
+  api:  #(optional)
     replicas: 1 # Number of API instance replicas (optional)
     logLevel: info # Logging granularity (optional)
     resources: # CPU and memory configurations for API Instances (optional)
@@ -162,7 +162,7 @@ lens:
         memory: 1048Mi
 
 # Worker configuration
-  worker:  (optional)
+  worker:  #(optional)
     replicas: 1 # Number of Worker replicas (optional)
     logLevel: debug # Logging level for Worker (optional)
     resources: # CPU and memory configurations for Worker (optional)
@@ -175,7 +175,7 @@ lens:
 
 # Router configuration
 
-  router:  (optional)
+  router:  #(optional)
     logLevel: info # Level of log detail for Router (optional)
     resources: # CPU and memory resource specifications for the router (optional)
       requests:
@@ -186,7 +186,7 @@ lens:
         memory: 2548Mi
 
 # Iris configuration 
-  iris: (optional)
+  iris: #(optional)
     logLevel: info # Log level for Iris (optional)
     resources: # CPU and memory resource specifications for the iris board (optional)
       requests:
