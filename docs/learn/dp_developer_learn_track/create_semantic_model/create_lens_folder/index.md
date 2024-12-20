@@ -393,11 +393,11 @@ The Meta section provides essential metadata for the metric, which includes the 
 
 The following tags are typically used in the Meta section:
 
-**DPDomain:** Denotes the domain or business area the metric pertains to, such as Sales, Marketing, Finance, etc. It is important to categorize the metric within a specific domain, as this helps stakeholders understand the business context and relevance of the metric.
+- **DPDomain:** Denotes the domain or business area the metric pertains to, such as Sales, Marketing, Finance, etc. It is important to categorize the metric within a specific domain, as this helps stakeholders understand the business context and relevance of the metric.
 
-**DPUsecase:** Specifies the intended use case or application of the metric, such as Customer Segmentation, Product Recommendation, etc. 
+- **DPUsecase:** Specifies the intended use case or application of the metric, such as Customer Segmentation, Product Recommendation, etc. 
 
-**DPTier:** Specifies the approval level or validation status of the metric, e.g., DataCOE Approved, Experimental, etc. 
+- **DPTier:** Specifies the approval level or validation status of the metric, e.g., DataCOE Approved, Experimental, etc. 
 
 This tags are populated within the Data Product Hub (DPH) and are essential for efficiently categorizing and discovering Data Products. These tags enable users to filter and search for metrics or Data Products that are aligned with their specific business requirements, domains, and use cases. By clearly providing the value to these tags, users can easily navigate through the available metrics, making the DPH an organized and easily accessible repository for Data Products.
 

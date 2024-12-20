@@ -32,7 +32,7 @@ When referencing a measure in the same table, always enclose the reference in cu
 
 To reference a dimension from one table while creating a measure in another, enclose the dimension name in curly braces {}. If the dimension is from a different table, use the format {table_name.column_name}. If it is from the same table, simply use {column_name}.
 
-**Example:** In the example, {ext_net} is referenced directly since it exists within the same table, while {sales.ref_dimension} includes the table name (sales) because the dimension is from another table. This allows you to reference columns from different tables in a single measure.
+**Example:** In the example, `ext_net` is referenced directly since it exists within the same table, while `ref_dimension` includes the table name (sales) because the dimension is from another table. This allows you to reference columns from different tables in a single measure.
 
 ```yaml
 - name: ref_dimension_cust

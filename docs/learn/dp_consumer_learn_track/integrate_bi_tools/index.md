@@ -2,7 +2,7 @@
 
 This module explores how a data analyst activates 'Product 360' data product within their organization’s data ecosystem. It enables you to connect the semantic model with various Business Intelligence (BI) tools. This synchronization facilitates real-time access to critical insights, empowering organizational stakeholders to make informed, data-driven decisions.
 
-# **Scenario**
+## Scenario
 
 After understanding the semantic model and validating the data quality, you are ready to build a comprehensive dashboard for your marketing campaign analysis. Using your preferred BI tool, you integrate the 'Product 360' Data Product to create visualizations that reveal customer behavior patterns and potential product affinities, allowing you to present actionable insights to the marketing team.
 

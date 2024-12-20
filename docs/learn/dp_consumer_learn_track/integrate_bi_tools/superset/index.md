@@ -2,10 +2,6 @@
 
 In this topic, you’ll learn how to activate a data product through Apache Superset to create interactive dashboards and extract actionable insights.
 
-## Scenario
-
-Leverage Apache Superset to design lightweight, yet powerful visualizations. By connecting to the 'Product 360' Data Product, you can create dashboards that track key metrics like sales performance, customer churn rates, and product engagement across various segments. 
-
 ### Steps to connect Superset with DataOS
 
 1. **Access Superset Integration**
