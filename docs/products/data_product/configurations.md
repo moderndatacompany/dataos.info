@@ -104,7 +104,7 @@ name: product-affinity-cross-sell
 
 <center>
   <img src="/products/data_product/configurations/metis_title.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
-  <figcaption><i>Data Product card showing the title on the Metis</i></figcaption>
+  <figcaption><i>Data Product card showing the title on Metis</i></figcaption>
 </center>
 
 ### **`version`**
@@ -179,12 +179,12 @@ Following are the predefined tags which you can customize as per the specific Da
 
 <center>
   <img src="/products/data_product/configurations/dp_tags.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
-  <figcaption><i>Data Product card showing the tags on the Data Product Hub</i></figcaption>
+  <figcaption><i>Data Product card showing the tags on Data Product Hub</i></figcaption>
 </center>
 
 <center>
   <img src="/products/data_product/configurations/metis_tags.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
-  <figcaption><i>Data Product card showing the tags on the Metis</i></figcaption>
+  <figcaption><i>Data Product card showing the tags on Metis</i></figcaption>
 </center>
 
 
@@ -203,12 +203,12 @@ description: Leverages product affinity analysis to identify cross-sell opportun
 ```
 <center>
   <img src="/products/data_product/configurations/dp_description.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
-  <figcaption><i>Data Product card showing the description on the Data Product Hub</i></figcaption>
+  <figcaption><i>Data Product card showing the description on Data Product Hub</i></figcaption>
 </center>
 
 <center>
   <img src="/products/data_product/configurations/metis_description.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
-  <figcaption><i>Data Product card showing the description on the Metis</i></figcaption>
+  <figcaption><i>Data Product card showing the description on Metis</i></figcaption>
 </center>
 
 **`owner`**
@@ -243,7 +243,7 @@ refs:
 
 <center>
   <img src="/products/data_product/configurations/metis_refer.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
-  <figcaption><i>Data Product card showing the reference links on the Metis</i></figcaption>
+  <figcaption><i>Data Product card showing the reference links on Metis</i></figcaption>
 </center>
 
 
@@ -300,12 +300,12 @@ meta: # mandatory
 ```
 <center>
   <img src="/products/data_product/configurations/dp_title.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
-  <figcaption><i>Data Product card showing the title on the Data Product Hub</i></figcaption>
+  <figcaption><i>Data Product card showing the title on Data Product Hub</i></figcaption>
 </center>
 
 <center>
   <img src="/products/data_product/configurations/dp_meta.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
-  <figcaption><i>Data Product card showing the Git and Jira links on the Data Product Hub</i></figcaption>
+  <figcaption><i>Data Product card showing the Git and Jira links on Data Product Hub</i></figcaption>
 </center>
 
 
@@ -345,12 +345,12 @@ collaborators:
 
 <center>
   <img src="/products/data_product/configurations/dp_collaborators.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
-  <figcaption><i>Data Product card showing the collaborators on the Data Product Hub</i></figcaption>
+  <figcaption><i>Data Product card showing the collaborators on Data Product Hub</i></figcaption>
 </center>
 
 <center>
   <img src="/products/data_product/configurations/metis_collaborators.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
-  <figcaption><i>Data Product card showing the collaborators on the Metis</i></figcaption>
+  <figcaption><i>Data Product card showing the collaborators on Metis</i></figcaption>
 </center>
 
 ### **`name`**
@@ -498,12 +498,12 @@ inputs: # mandatory
 
 <center>
   <img src="/products/data_product/configurations/dp_input.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
-  <figcaption><i>Data Product card showing an input on the Data Product Hub</i></figcaption>
+  <figcaption><i>Data Product card showing an input on Data Product Hub</i></figcaption>
 </center>
 
 <center>
   <img src="/products/data_product/configurations/metis_input.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
-  <figcaption><i>Data Product card showing the input datasets on the Metis</i></figcaption>
+  <figcaption><i>Data Product card showing the input datasets on Metis</i></figcaption>
 </center>
 
 
@@ -528,12 +528,12 @@ outputs: # optional
 
 <center>
   <img src="/products/data_product/configurations/dp_output.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
-  <figcaption><i>Data Product card showing an output on the Data Product Hub</i></figcaption>
+  <figcaption><i>Data Product card showing an output on Data Product Hub</i></figcaption>
 </center>
 
 <center>
   <img src="/products/data_product/configurations/metis_output.png" alt="DPH" style="width:40rem; border: 1px solid black;" />
-  <figcaption><i>Data Product card showing the output datasets on the Metis</i></figcaption>
+  <figcaption><i>Data Product card showing the output datasets on Metis</i></figcaption>
 </center>
 
 ### **`ports`**
