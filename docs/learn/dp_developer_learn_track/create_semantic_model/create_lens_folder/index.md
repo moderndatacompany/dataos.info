@@ -652,6 +652,60 @@ user_groups:
     includes: "*"
 ```
 
+## Best practices
+
+Best practices to follow when creating a semantic model. Key practices include:
+
+- **Naming conventions:** Names should begin with a letter and may contain letters, numbers, and underscores (_). Use snake_case for consistency. Examples: orders, stripe_invoices, base_payments
+
+- **SQL expressions and source dialects:** When defining tables with SQL snippets, ensure the expressions match the SQL dialect of your data source. For example, use the [`LISTAGG` function](https://docs.snowflake.com/en/sql-reference/functions/listagg) to aggregate a list of strings in Snowflake; similarly, use [`STRING_AGG` function](https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators#string_agg) in bigquery.
+
+- **Case sensitivity:** If your database uses case-sensitive identifiers, ensure you properly quote table and column names.
+
+- **Partitioning:** Keep partitions small for faster processing. Start with a large partition (e.g., yearly) and adjust as needed. Minimize partition queueing by using infrequent refresh keys.
+
+- **References:** To create reusable data models, reference table members (e.g., measures, dimensions, columns) using the following syntax:
+
+      - **Column References:** Prefix columns with the table name or use the TABLE constant for the current table. Example: TABLE.status
+      - **Member References ({member}):** Wrap member names in curly braces to reference other members of the same table. In the example below, the full_name dimension references the name and surname dimensions of the same table.
+      ```yaml
+      - name: full_name
+          sql: "CONCAT({name}, ' ', {surname})"
+          type: string
+      ```
+      - Qualify column and member names with the table name to remove ambiguity when tables are joined and reference members of other tables. Example:
+        ```yaml
+        - name: name
+          sql: "COALESCE({users.name}, {contacts.name})"
+          type: string
+        ```
+      - Use the `{TABLE}` variable to reference the current table, avoiding the need to repeat its name. Example:
+        ```yaml
+        tables:
+          - name: contacts
+            sql: {{ load_sql('contacts') }}
+
+            dimensions:
+              - name: id
+                sql: "{TABLE}.id"
+                type: number
+                primary_key: true
+        ```
+
+- **Non SQL references:** Outside of the sql parameter, columns are treated as members (not actual columns). This means you can refer to them by their name directly, without using curly braces. Example:
+```yaml
+tables:
+  - name: users
+    sql: {{ load_sql('users') }}
+
+    dimensions:
+      - name: status
+        sql: status
+        type: string
+```
+
+
+
 ## Next Step
 
 After successfully creating Lens folder structure and preparing all the necessary manifests for your semantic model, it's time to test it.
