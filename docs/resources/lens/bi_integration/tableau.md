@@ -108,27 +108,80 @@ Upon clicking 'Connect', a prompt will request the username and password. Enter 
 </div>
 
 
+<aside class="callout">
+🗣️
+
+The publisher can embed their credentials (DataOS username and API Token) or ask users to provide credentials whenever they want to access the published Workbook/Sheet/Dashboard. If the publisher has chosen to ‘Embed password for data source’, users can access the published workbook and dashboard without providing credentials.
+
+Once the credentials are embedded, they cannot be accessed. You need to overwrite and ‘publish-as’ the workbook to reconfigure the embedding password optionality.
+
+</aside>
+
+
+## Supported data types
+
+| Category        | Data Type              | Support Status                        | Recommended Approach                                                                 |
+|-----------------|------------------------|---------------------------------------|--------------------------------------------------------------------------------------|
+| Dimension       | `time`                 | Supported                             | NA                                                                                   |
+| Dimension       | `string`               | Supported                             | NA                                                                                   |
+| Dimension       | `number`               | Supported                             | NA                                                                                   |
+| Dimension       | `boolean`              | Supported                             | NA                                                                                   |
+| Measure         | `max`                  | Supported                             | NA                                                                                   |
+| Measure         | `min`                  | Supported                             | NA                                                                                   |
+| Measure         | `number`               | Supported                             | NA                                                                                   |
+| Measure         | `sum`                  | Supported                             | NA                                                                                   |
+| Measure         | `count`                | Supported                             | NA                                                                                   |
+| Measure         | `boolean`              | Auto-converts to Dimension            | NA                                                                                   |
+| Measure         | `string`               | Auto-converts to Dimension            | NA                                                                                   |
+| Measure         | `time`                 | Auto-converts to Dimension            | NA                                                                                   |
+| Measure         | `avg`                  | Not Supported                         | Option 1: To use measure of type ‘avg’, define an additional measure of type 'count' in that entity:<br>  <br>name: count<br>type: count<br>sql: '1'<br>  <br> Option 2: Use measure of type 'number' and define average logic in SQL:<br>  <br>measures:<br>&nbsp;&nbsp;- name: total_accounts<br> &nbsp;&nbsp;&nbsp; type: number<br> &nbsp;&nbsp;&nbsp; sql: "avg({accounts})”<br> |
+| Measure        | `count_distinct`         | Not Supported                            | Option 1: To use measure of type ‘count_distinct’, additionally define a measure of type 'count' in that entity:<br>  <br>name: count<br>type: count<br>sql: '1'<br> <br> Option 2: Or, use measure of type 'number' and define logic for count_distinct in SQL:<br>  <br>measures:<br>&nbsp;&nbsp;- name: total_accounts<br> &nbsp;&nbsp;&nbsp; type: number<br> &nbsp;&nbsp;&nbsp; sql: "count(distinct({accounts}))”<br> |
+| Measure         | `count_distinct_approx`| Not Supported                         | NA                                                                                   |
+| Rolling Window  | -                      | Supported                             | NA                                                                                   |
 
 
 ## Important considerations for Tableau integration
 
-**1. Handling entities without relationships:** An error will occur during synchronization if any entity in the semantic model lacks a defined relationship. To resolve this issue, the entity can be hidden to avoid synchronization errors.
+**1. Handling Entities without Relationships:** An error will occur during synchronization if any entity in the data model lacks a defined relationship. To resolve this issue, the entity can be hidden to avoid synchronization errors.
 
-**2. Live connection:** The connection between the semantic layer and Tableau Cloud is live. This means that any changes to the underlying data will automatically be reflected in Tableau.
+**2. Live connection:** The connection between the Lens semantic layer and Tableau Cloud is live meaning that any changes to the underlying data will automatically be reflected in Tableau.
 
 **3. Schema changes:** If there are schema updates, such as adding new dimensions or measures, the integration steps will need to be repeated to incorporate these changes into Tableau.
 
-**4. Avoiding cyclic dependencies:** Tableau does not support cyclic dependencies within semantic models. To prevent integration issues, it is essential to ensure that the semantic model is free of cyclic dependencies prior to syncing with Tableau.
+**4. Avoiding cyclic dependencies:** Tableau does not support cyclic dependencies within data models. To prevent integration issues, it is essential to ensure that the data model is free of cyclic dependencies prior to syncing with Tableau.
 
-## Data policies and security
+**5. Visualization with multiple data sources:** You cannot build a visualization that incorporates data from multiple data sources. For live connections, Tableau does not support data blending. Only a single data source can be used to create a visualization.
 
-Any data masking, restrictions, or permissions defined by the publisher will automatically be enforced for all viewers of the report, ensuring consistent data security and compliance. However, the behavior of data policies (e.g., masking) depends on who is the user of the PowerBI desktop.
+<!-- **6. Calculated Fields on Dimensions/Measures:** Any calculated field defined on top of a dimension or measure that is part of the semantic model is not supported. This means you cannot create custom calculations based on these predefined dimensions or measures within the semantic model. -->
+
+**6. Centralized management:** All data sources should be managed and published by the admin on the server, with everyone else using this source.
+
+**7. Single authority for Desktop publications:** If data sources are published via Tableau Desktop, ensure that all sources are published by a single authority to avoid multiple data source conflicts on the server.
+
+**8. Row limit:** The Lens API has a maximum return limit of 50,000 rows per request. To obtain additional data, it is necessary to set an offset. This row limit is in place to manage resources efficiently and ensure optimal performance.
+
+**9. Selection:** It is important to select fields from tables that are directly related or logically joined, as the system does not automatically identify relationships between tables through transitive joins. Selecting fields from unrelated tables may result in incorrect or incomplete results.
+
+**10. Parameter Action:** Action filters can be defined on measures/dimensions to filter visualizations effectively.
+
+**11. Default chart types:** All default chart types provided by Tableau can be plotted and visualized without issues.
+
+**12. Rolling Window Measure:** For querying a rolling window measure, it is necessary to provide a time dimension and apply a date range filter to this time dimension. When querying a rolling window measure, follow these steps:
+
+- Select the rolling window measure.
+- Select the time dimension.
+- To define granularity, right-click on the selected time dimension and set granularity (choose a granularity where the complete time, along with the year, is shown).
+- Add the time dimension to the filter, and define the range filter.
+
+<aside class="callout">
+🗣️ Be aware that custom calculations or fields (measures/dimensions) created in BI tools may be lost during re-sync. It is preferable to create custom logic directly in Tableau's Lens.
+</aside>
 
 ## Error handling 
 
 **Scenario 1: Handling syntactical errors in measures or dimensions** 
 
-If a measure or dimension contains a syntactical error (and is also not functioning in Lens Studio), the following error will appear when attempting to select it:
+If a measure or dimension contains a syntactical error (and is also not functioning in Explore studio of DPH), the following error will appear when attempting to select it:
 
 <div style="text-align: center;">
     <img src="/resources/lens/bi_integration/image02.png" alt="Superset Configuration" style="max-width: 80%; height: auto; border: 1px solid #000;">
@@ -155,3 +208,12 @@ If the Account table is set to `public = false`, a data source error will occur 
 </div>
 
 To resolve this issue, ensure the Account table is accessible (set to `public = true` or assign appropriate permissions) and then resync the Lens in Tableau to regain access.
+
+
+## Governance of model on Tableau Cloud
+
+When the semantic model is activated via BI Sync in Tableau, data masking, restrictions, and permissions set by the publisher are automatically applied, ensuring consistent data security and compliance. The behavior of these policies (e.g., masking) may vary based on the Tableau user.
+
+The Tableau management process involves authentication and authorization using the DataOS user ID and API key when accessing synced data models. This ensures that columns redacted by Lens data policies are restricted based on the user's group permissions.
+
+For example, if a user named **iamgroot** in the **Analyst** group is restricted from viewing the 'Annual Salary' column, this column will not be visible in either the Data Product exploration page or Tableau after syncing. Tableau Cloud requires the DataOS user ID and API key for authentication, ensuring that users can access the full model, except for any columns restricted by any data policies. This approach maintains security and guarantees that users only see the data they are authorized to view.

@@ -1,6 +1,6 @@
 # User
 
-In this guide, you will learn how to manage users in DataOS by navigating the Users tab in Bifrost
+In this guide, you will learn how to manage users in DataOS by navigating the Users tab in Bifrost.
 
 ## Scenario
 

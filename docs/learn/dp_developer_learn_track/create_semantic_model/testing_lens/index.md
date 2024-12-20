@@ -7,6 +7,10 @@ This guide walks you through steps to validate your SQL queries and Lens model c
 You're building a semantic model for a retail business to analyze purchase patterns and product affinity. The model needs to combine data from various sources—like customer purchase history, product catalogs, and sales data—into a unified view. You want to ensure that your Lens model effectively captures customer behavior and accurately reflects relationships between different products that customers tend to purchase together. 
 Before deploying it to DataOS, test the model locally to ensure it performs accurately and provides valuable insights for business decisions.Before deploying it to DataOS, you test the model locally to ensure it performs accurately and provides valuable insights for business decisions.
 
+<aside class="callout">
+💡 Local testing is an optional step. However, we recommend always testing your semantic model locally before pushing it to the deploying stage.
+</aside>
+
 ## Prerequisites
 
 Before moving to technicalities, ensure you have the following pre-requisites installed.
@@ -102,10 +106,6 @@ Visual Studio Code (VS Code) must be installed on the local system to create a L
 - **Windows**: To install VS Code on a Windows machine, refer to the [Install VS Code on Windows guide](https://code.visualstudio.com/docs/setup/windows).
 - **MacOS**: For MacOS users, installation instructions can be found in the [Install VS Code on macOS guide](https://code.visualstudio.com/docs/setup/mac).
 
-
-<aside class="callout">
-💡 Local testing is an optional step. However, we recommend always testing your semantic model locally before pushing it to the deploying stage.
-</aside>
 
 Now, you create a file `docker-compose.yml` in a folder parallel to your model folder (not within it).
 

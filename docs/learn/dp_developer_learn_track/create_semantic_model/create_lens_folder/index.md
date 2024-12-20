@@ -391,6 +391,15 @@ The Meta section provides essential metadata for the metric, which includes the 
 - **Title:** A descriptive name for the metric, providing clarity on what the metric measures (e.g., Cross-Sell Opportunity Score).
 - **Tags:** A set of keywords or labels that help categorize the metric into specific domains, use cases, and approval tiers, making it easier to search and filter across Data Product Hub.
 
+The following tags are typically used in the Meta section:
+
+- **DPDomain:** Denotes the domain or business area the metric pertains to, such as Sales, Marketing, Finance, etc. It is important to categorize the metric within a specific domain, as this helps stakeholders understand the business context and relevance of the metric.
+
+- **DPUsecase:** Specifies the intended use case or application of the metric, such as Customer Segmentation, Product Recommendation, etc. 
+
+- **DPTier:** Specifies the approval level or validation status of the metric, e.g., DataCOE Approved, Experimental, etc. 
+
+This tags are populated within the Data Product Hub (DPH) and are essential for efficiently categorizing and discovering Data Products. These tags enable users to filter and search for metrics or Data Products that are aligned with their specific business requirements, domains, and use cases. By clearly providing the value to these tags, users can easily navigate through the available metrics, making the DPH an organized and easily accessible repository for Data Products.
 
 ```yaml
 meta:
@@ -403,7 +412,65 @@ meta:
     - DPTier.DataCOE Approved
 ```
 
-In this case, the Cross-Sell Opportunity Score metric is tagged with both the Customer Segmentation and Product Recommendation use-cases. As a result, the metric will appear in both of these categories in the Data Product Hub interface as shown in the below image.
+here is the complete manifest file:
+
+<details>
+   <summary> cross-sell-oppurtunity-score metrics manifest file  </summary>
+
+```yaml
+views:
+  - name: cross_sell_opportunity_score
+    description: This metric calculate the potential for cross-selling a secondary product to customers based on past purchases. 
+    public: true
+    meta:
+      title: Cross-Sell Opportunity Score
+      tags:   
+        - DPDomain.Sales
+        - DPDomain.Marketing
+        - DPUsecase.Customer Segmentation
+        - DPUsecase.Product Recommendation
+        - DPTier.DataCOE Approved
+      metric:
+        expression: "*/45  * * * *"
+        timezone: "UTC"
+        window: "day"
+        excludes: 
+          - mntwines
+          - mntmeatproducts
+          - mntfishproducts
+          - mntsweetproducts
+          - mntgoldprods
+          - mntfruits
+          - numwebpurchases
+          - numcatalogpurchases
+          - numstorepurchases
+    tables:
+      - join_path: purchase_data
+        prefix: true
+        includes:
+          - cross_sell_opportunity_score
+          - mntwines
+          - mntmeatproducts
+          - mntfishproducts
+          - mntsweetproducts
+          - mntgoldprods
+          - mntfruits
+          - numwebpurchases
+          - numcatalogpurchases
+          - numstorepurchases
+          - customer_id
+          - purchase_date
+
+      - join_path: product
+        prefix: true
+        includes:
+          - product_category
+          - product_name
+```
+
+</details>
+
+For instance, in this case, the Cross-Sell Opportunity Score metric is tagged with both the Customer Segmentation and Product Recommendation use-cases. As a result, the metric will appear in both of these categories in the Data Product Hub interface as shown in the below image.
 
 | Metric visibility in the customer segmentation use-case | Metric visibility in the product recommendation use-case |
 |--------|------|
@@ -417,7 +484,7 @@ The Metric section defines the actual measure being tracked and the rules for ho
 
 - **Expression:** The SQL expression or formula that defines how the metric is calculated (e.g., aggregation of values over a period of time).
 - **Timezone:** Specifies the timezone for the metric calculation (e.g., UTC).
-**Window:** Defines the time period over which the metric is measured (e.g., daily, weekly, monthly). This is crucial for time-based metrics.
+- **Window:** Defines the time period over which the metric is measured (e.g., daily, weekly, monthly). This is crucial for time-based metrics.
 - **Excludes:** Defines any data to be excluded from the calculation of the metric (e.g., certain product categories or purchase channels).
 
 
@@ -484,64 +551,7 @@ The Views section represents a simplified, user-friendly interface for interacti
 - **Tables:** A reference to the tables section, linking the view to its data sources and the fields it includes.
 
 
-The complete manifest file looks like below: 
-
-<details>
-
-
-  <summary>Manifest file for cross_sell_opportunity_score view</summary>
-
-```yaml
-  views:
-    - name: cross_sell_opportunity_score
-      description: "This metric calculates the potential for cross-selling a secondary product to customers based on past purchases."
-      public: true
-      meta:
-        title: Cross-Sell Opportunity Score
-        tags:
-          - DPDomain.Sales
-          - DPDomain.Marketing
-          - DPUsecase.Customer Segmentation
-          - DPUsecase.Product Recommendation
-          - DPTier.DataCOE Approved
-      metric:
-        expression: "*/45  * * * *"
-        timezone: "UTC"
-        window: "day"
-        excludes:
-          - mntwines
-          - mntmeatproducts
-          - mntfishproducts
-          - mntsweetproducts
-          - mntgoldprods
-          - mntfruits
-          - numwebpurchases
-          - numcatalogpurchases
-          - numstorepurchases
-      tables:
-        - join_path: purchase_data
-          prefix: true
-          includes:
-            - cross_sell_opportunity_score
-            - mntwines
-            - mntmeatproducts
-            - mntfishproducts
-            - mntsweetproducts
-            - mntgoldprods
-            - mntfruits
-            - numwebpurchases
-            - numcatalogpurchases
-            - numstorepurchases
-            - customer_id
-            - purchase_date
-        - join_path: product
-          prefix: true
-          includes:
-            - product_category
-            - product_name
-```
-</details>
-
+Similarly here are other metrics complete manifest file: 
 
 <details>
 
@@ -670,8 +680,8 @@ Best practices to follow when creating a semantic model. Key practices include:
       - **Member References ({member}):** Wrap member names in curly braces to reference other members of the same table. In the example below, the full_name dimension references the name and surname dimensions of the same table.
       ```yaml
       - name: full_name
-          sql: "CONCAT({name}, ' ', {surname})"
-          type: string
+        sql: "CONCAT({name}, ' ', {surname})"
+        type: string
       ```
       - Qualify column and member names with the table name to remove ambiguity when tables are joined and reference members of other tables. Example:
         ```yaml
@@ -704,7 +714,7 @@ tables:
         type: string
 ```
 
-
+To know more about the best practices and do's and dont's of modelling click [here](/learn/dp_developer_learn_track/create_semantic_model/create_lens_folder/dos_and_donts_of_modelling/).
 
 ## Next Step
 
