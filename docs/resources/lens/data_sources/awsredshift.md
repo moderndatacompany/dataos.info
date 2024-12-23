@@ -1,16 +1,108 @@
-# AWS Redshift
+# Connecting to AWS Redshift Depot
 
 ## Prerequisites
 
-Ensure that you have the following credentials available for [AWSRedshift Depot](/resources/depot/#amazon-redshift):
+Ensure that you have an active AWS Redshift Depot.
 
-- The [hostname](https://docs.aws.amazon.com/redshift/latest/mgmt/configuring-connections.html#connecting-drivers) for the [AWS Redshift](https://aws.amazon.com/redshift/) cluster
-- The [username/password](https://docs.aws.amazon.com/redshift/latest/dg/r_Users.html) for the AWS Redshift  cluster
-- The name of the database to use within the AWS Redshift cluster
+## Deployment manifest file
 
-### **Docker Compose Manifest file**
+The below manifest is intended for source type depot named `awsredshift`, created on the redshift source.
 
-The highlighted attributes are all the required attributes.
+```yaml hl_lines="13-16"
+version: v1alpha
+name: "redshiftlens"
+layer: user
+type: lens
+tags:
+  - lens
+description: redshiftlens deployment on lens2
+lens:
+  compute: runnable-default
+  secrets:
+    - name: bitbucket-cred
+      allKeys: true
+  source:
+    type: depot # source type is depot here
+    name: redshiftdepot # name of the redshift depot
+    catalog: redshiftdepot  # catalog name/redshift depot name
+  repo:
+    url: https://bitbucket.org/tmdc/sample
+    lensBaseDir: sample/lens/source/depot/redshift/model 
+    # secretId: lens2_bitbucket_r
+    syncFlags:
+      - --ref=lens
+
+  api:   # optional
+    replicas: 1 # optional
+    logLevel: info  # optional
+    envs:
+      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
+      LENS2_DEV_MODE: "true"
+      LENS2_CONCURRENCY: 10
+      LENS2_DB_MAX_POOL: 15
+      LENS2_DB_TIMEOUT: 1500000
+      
+    resources: # optional
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 2000m
+        memory: 2048Mi
+  worker: # optional
+    replicas: 2 # optional
+    logLevel: debug  # optional
+    envs:
+      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
+      LENS2_DEV_MODE: "true"
+
+
+    resources: # optional
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 6000m
+        memory: 6048Mi
+  router: # optional
+    logLevel: info  # optional
+    envs:
+      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
+      LENS2_DEV_MODE: "true"
+    resources: # optional
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 6000m
+        memory: 6048Mi
+  iris:
+    logLevel: info  
+    resources: # optional
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 6000m
+        memory: 6048Mi
+```
+
+
+
+**Required AWS Redshift Depot Source Attributes**
+
+```yaml
+LENS2_SOURCE_TYPE: ${depot}  
+LENS2_SOURCE_NAME: ${redshiftdepot}
+LENS2_SOURCE_CATALOG_NAME: ${redshiftdepot}
+```
+
+
+## Docker compose Manifest file
+
+<details>
+
+  <summary>Docker compose manifest file for local testing</summary>
 
 ```yaml hl_lines="14-16"
 version: "2.2"
@@ -56,19 +148,7 @@ services:
     volumes:
       - ./model:/etc/dataos/work/model
 ```
-Follow these steps to create the `docker-compose.yml`:
-
-- Step 1: Create a `docker-compose.yml` manifest file.
-- Step 2: Copy the template from above and paste it in a code.
-- Step 3: Fill the values for the atttributes/fields declared in the manifest file as per the AWS Redshift source.
-
-**Required AWS Redshift Depot Source Attributes**
-
-```yaml
-LENS2_SOURCE_TYPE: ${depot}  
-LENS2_SOURCE_NAME: ${redshiftdepot}
-LENS2_SOURCE_CATALOG_NAME: ${redshiftdepot}
-```
+</details>
 
 <!-- 
 
@@ -82,50 +162,51 @@ LENS2_SOURCE_CATALOG_NAME: ${redshiftdepot}
 
        -->
 
+## Check query statistics for AWSRedshift
+
+
 > Note: Ensure the user has AWS console access before proceeding.
 > 
 
-## Check Query Stats fo AWSRedshift
+### **1. Log in to AWS Console and access Redshift**
 
-### 1. **Log in to AWS Console and Access Redshift**
-
-1. **Login to the AWS Console.**
-2. **Search for "Redshift" in the AWS Console search bar.**
+  a. Login to the AWS Console.<br>
+  b. Search for 'Redshift' in the AWS Console search bar.
 
 <div style="text-align: center;">
     <img src="/resources/lens/data_sources/awsredshift/Untitled1.png" alt="Untitled" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-### 2. **Select Redshift Cluster**
+### **2. Select Redshift Cluster**
 
-1. **Click on "Amazon Redshift" from the search results.** You will be directed to the Redshift dashboard.
-2. **Select the appropriate region** and **choose the desired cluster name** from the list.
+  a. Click on 'Amazon Redshift' from the search results.You will be directed to the Redshift dashboard.<br>
+  b. Select the appropriate region and choose the desired cluster name from the list.
 
 <div style="text-align: center;">
     <img src="/resources/lens/data_sources/awsredshift/Untitled2.png" alt="Untitled" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-### 3. Access Query Monitoring
+### **3. Access Query Monitoring**
 
-1. **Select the cluster** you want to monitor.
-2. **Navigate to the "Query monitoring" tab** to view query statistics
+  a. Select the cluster you want to monitor.<br>
+  b. Navigate to the 'Query monitoring' tab to view query statistics.
 
 <div style="text-align: center;">
     <img src="/resources/lens/data_sources/awsredshift/Untitled3.png" alt="Untitled" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-### 4. View Running and Completed Queries
+### **4. View running and completed queries**
 
-1. **In the "Query monitoring" tab**, you will see a list of running  and completed queries.
+  a. In the 'Query monitoring' tab, you will see a list of running  and completed queries.
 
 <div style="text-align: center;">
     <img src="/resources/lens/data_sources/awsredshift/Untitled4.png" alt="Untitled" style="max-width: 80%; height: auto; border: 1px solid #000;">
 </div>
 
-### 5. Monitor Specific Query
+### **5. Monitor specific query**
 
-1. **Click on the query** you want to monitor.
-2. **View the query statistics**, as shown in the example below.
+  a. Click on the query you want to monitor.
+  b. View the query statistics, as shown in the example below.
 
 <div style="text-align: center;">
     <img src="/resources/lens/data_sources/awsredshift/Untitled5.png" alt="Untitled" style="max-width: 80%; height: auto; border: 1px solid #000;">
