@@ -61,7 +61,7 @@ Now sign in as the guest user to see the invitation.
     
 3. In the email body, select 'Accept Invitation'. A Review permissions page opens in the browser.
     
-    ![Consent Screen](/learn/operator_learn_track/access_control/authentication/adding_user_in_azure_ad/email_invite.png) 
+    ![Consent Screen](/learn/operator_learn_track/access_control/authentication/adding_user_in_azure_ad/consent_screen.png) 
 
 4. Select Accept.
 
