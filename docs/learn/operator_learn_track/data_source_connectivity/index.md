@@ -22,7 +22,7 @@ Why you’re key to data source connectivity
 
 ## Quick concepts
 
-The **Depot Resource** in DataOS provides a standardized way to connect to a variety of enterprise data sources, such as:
+The Depot Resource in DataOS provides a standardized way to connect to a variety of enterprise data sources, such as:
 
 - Cloud-based object stores
 - Databases
@@ -50,7 +50,7 @@ Before diving into configuring data source connections, make sure you have every
 
 2. **Check CLI installation and initialization**: You need this text-based interface that allows you to interact with the DataOS context via command prompts. Click [here](/interfaces/cli/) to learn more.
 
-3. **Manage Credentials Securely**: Use **Instance Secrets** for storing your data source credentials, ensuring sensitive information remains protected.
+3. **Manage Credentials Securely**: Use Instance Secrets for storing your data source credentials, ensuring sensitive information remains protected.
 
     > **Important**: To prevent credential exposure, contact DataOS administrator and understand the best practices for handling sensitive data.
 

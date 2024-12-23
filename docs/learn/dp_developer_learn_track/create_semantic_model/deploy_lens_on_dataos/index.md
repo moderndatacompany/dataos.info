@@ -31,15 +31,15 @@ Before diving into configuring Lens, make sure you have everything ready:
 You follow the below steps to deploy Lens on DataOS.
 
 
-### **Step 1: Prepare the Lens semantic model folder in the Data Product directory**
+### **Step 1: Prepare the semantic model folder in the Data Product directory**
 
-The semantic model is organized within the `resources/lens/` directory of the Data Product. You don’t need to push the Lens individually. Instead, you will push the entire Data Product directory, which includes the Lens semantic model, to a code repository such as [GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github), [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/getting-started.html), or [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/push-code-to-bitbucket/), once all the Data Product Resources are prepared. This ensures that the Lens, along with all Data Product Resources (such as Talos), is included in the overall deployment, with proper synchronization for version tracking and collaboration.
+The semantic model is organized within the `build/semantic_model` directory of the Data Product. You don’t need to push the semantic model individually. Instead, you will push the entire Data Product directory, which includes the semantic model, to a code repository such as [GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github), [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/getting-started.html), or [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/push-code-to-bitbucket/), once all the Data Product Resources are prepared. This ensures that the Lens, along with all Data Product Resources (such as Talos), is included in the overall deployment, with proper synchronization for version tracking and collaboration.
 
 The following structure illustrates how the Lens will be organized within the Data Product directory.
 
 ```jsx
-resources/                          # resources folder in dp
-├── lens/                           # Lens  folder
+build/                          # resources folder in dp
+├── semantic_model/                           # Lens  folder
 │   ├── deployment.yaml             # Deployment file for Lens
 │   ├── model/                      # Lens model folder
 │   │   ├── sql/                    # SQL files for the Lens model
@@ -150,7 +150,7 @@ lens:
       - --ref=main # Repository Branch (optional)
 
 # API Instances configuration
-  api:  (optional)
+  api:  #(optional)
     replicas: 1 # Number of API instance replicas (optional)
     logLevel: info # Logging granularity (optional)
     resources: # CPU and memory configurations for API Instances (optional)
@@ -162,7 +162,7 @@ lens:
         memory: 1048Mi
 
 # Worker configuration
-  worker:  (optional)
+  worker:  #(optional)
     replicas: 1 # Number of Worker replicas (optional)
     logLevel: debug # Logging level for Worker (optional)
     resources: # CPU and memory configurations for Worker (optional)
@@ -175,7 +175,7 @@ lens:
 
 # Router configuration
 
-  router:  (optional)
+  router:  #(optional)
     logLevel: info # Level of log detail for Router (optional)
     resources: # CPU and memory resource specifications for the router (optional)
       requests:
@@ -186,7 +186,7 @@ lens:
         memory: 2548Mi
 
 # Iris configuration 
-  iris: (optional)
+  iris: #(optional)
     logLevel: info # Log level for Iris (optional)
     resources: # CPU and memory resource specifications for the iris board (optional)
       requests:

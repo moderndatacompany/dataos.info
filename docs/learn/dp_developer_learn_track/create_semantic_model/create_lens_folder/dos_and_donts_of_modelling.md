@@ -1,14 +1,14 @@
 # Do's and Dont's 
 
-This documentation provides guidelines for using Lens functionalities, including when to create views and best practices to avoid errors.
+This section outlines essential Do's and Don'ts for using Lens functionalities. Following these guidelines will help you avoid common mistakes, ensure proper usage, and create efficient, maintainable data models.
 
 ## Do's
 
 ### **Data modelling**
 
-#### **Calling a Measure to create another Measure in the same Table**
+#### **Referencing One Measure to Create Another Measure Within the Same Table**
 
-When creating a measure that references another measure within the same table, use curly braces `{}`.
+When referencing a measure in the same table, always enclose the reference in curly braces {}. This ensures the reference is correctly interpreted and used in calculations.
 
 ```yaml
 - name: current_month_sum
@@ -30,10 +30,11 @@ When creating a measure that references another measure within the same table, u
 
 #### **Proxy Dimension: Referencing Dimensions from another Table**
 
-To reference a dimension from one  while creating a measure in another, use the curly braces `{}`. Specify the dimension using `{.column}` if it is from another table, or `{column name}` if it is within the same table.
+To reference a dimension from one table while creating a measure in another, enclose the dimension name in curly braces {}. If the dimension is from a different table, use the format {table_name.column_name}. If it is from the same table, simply use {column_name}.
+
+**Example:** In the example, `ext_net` is referenced directly since it exists within the same table, while `ref_dimension` includes the table name (sales) because the dimension is from another table. This allows you to reference columns from different tables in a single measure.
 
 ```yaml
-
 - name: ref_dimension_cust
   sql: "{account.state}"
   type: string
@@ -46,7 +47,7 @@ measures:
 
 #### **Calling a Measure from another Table**
 
-When referencing a measure from another table, set `sub_query` to `true`.
+When referencing a measure from another table, set `sub_query` to `true` to indicate that the measure is sourced from another table, ensuring the correct retrieval of data.
 
 ```yaml
 - name: subq_rev
@@ -72,11 +73,20 @@ measures:
     filters:
       - sql: year({quarter}) = 1
 ```
+### **Rolling window**
+
+- Use rolling windows for running totals or moving averages.
+
+- Apply rolling windows for ranking and percentile analysis (e.g., top performers).
+
+- Leverage rolling windows for time series analysis (e.g., tracking month-over-month growth).
+
+- Use rolling windows for comparative analysis (e.g., previous/next values or differences between rows).
 
 
-#### **Working with window function**
+### **Working with window function**
 
-To correctly aggregate a measure within a window, use the rolling_window parameter when defining the measure. This ensures that any filters applied to the measure are correctly placed in the WHERE clause, which is essential for accurate results. Without rolling_window, filters might go into the HAVING clause, leading to incorrect calculations.
+To correctly aggregate a measure within a window, use the `rolling_window` parameter when defining the measure. This ensures that any filters applied to the measure are correctly placed in the WHERE clause, which is essential for accurate results. Without `rolling_window`, filters might go into the HAVING clause, leading to incorrect calculations.
 
 ```yaml
 # This calculates the rolling sum of inventory sold for the previous 30 days
@@ -89,20 +99,16 @@ To correctly aggregate a measure within a window, use the rolling_window paramet
       offset: start
 ```
 
-**Use Cases for rolling windows:**
-
-- Running totals or moving averages.
-- Ranking and percentile analysis (e.g., top performers).
-- Time series analysis (e.g., tracking month-over-month growth).
-- Comparative analysis (e.g., previous/next values or differences between rows).
 
 ### **Views**
 
-1. **Purpose:** Create views to provide a limited part of your data model to the consumer layer, such as any BI tool. Views are useful for defining metrics, managing governance and data access, and controlling ambiguous join paths.
-2. **Members:** Views do not have their own members. Instead, use the `table` or `includes` parameters to incorporate measures and dimensions from other tables into the view.
-3. **Refresh key:** Use a refresh key if the underlying data is refreshed on a regular cadence.
+- Views are helpful for defining metrics, managing data governance, controlling access, and resolving ambiguous join paths. Create views to expose a subset of your data model to consumer layers like BI tools. 
 
-**Example: `revenue_view`**
+- Use the `table` or `includes` attribute in views to pull measures and dimensions from other tables, as views don’t have members of their own.
+
+- Implement a refresh key in your views if the underlying data is regularly updated.
+
+- To join other tables in a view, use the `join_path` and `includes` attribute to specify how tables should be joined.
 
 In the following example, we create a view called `revenue_view`, which includes selected members from the `sales`, `product`, and `account` tables:
 
@@ -150,6 +156,7 @@ Lens data models support Jinja macros, allowing you to define reusable snippets 
 
 #### **Dynamic data models**
 
+Declare macros before use to avoid errors in the model. This allows you to generate dynamic SQL or configuration snippets.
 In the example below, we define a macro called `dimension()` which generates a dimension. This macro is then invoked multiple times to generate various dimensions.
 
 **Example:**
@@ -190,7 +197,7 @@ tables:
 
 #### **SQL property**
 
-Macros can also be used to generate SQL snippets for use in the `sql` property. For example, to avoid division by zero errors when creating measures, define a macro and use it in multiple measures.
+Leverage macros for `sql` properties to generate complex SQL code, like handling edge cases (e.g., division by zero) across multiple measures. For example, to avoid division by zero errors when creating measures, define a macro and use it in multiple measures.
 
 **Example:**
 
@@ -208,7 +215,7 @@ measures:
 
 #### **Dynamic Segments with secure access**
 
-You can create dynamic segments with secure access using Jinja macros. This example sets up segments for different categories with user group restrictions.
+Use Jinja macros for dynamic segments to apply dynamic SQL logic with secure access control, like restricting access based on user groups. This example sets up segments for different categories with user group restrictions.
 
 **Example:**
 
