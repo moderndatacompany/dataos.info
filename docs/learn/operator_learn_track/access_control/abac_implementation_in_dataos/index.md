@@ -55,17 +55,20 @@ The object's tag or path helps determine what resources can be acted upon by the
 
 A predicate specifies the action that the subject wants to perform on the object. Actions are typically CRUD or other HTTP operations such as `get`, `post`, `put`, `delete`, etc.
 
-- **DataOS User Actions**:
-    - `create`: Creates a new resource (e.g., a new dataset on a specific path).
-    - `read`: Grants permission to read the data.
-    - `update`: Updates the data.
-    - `delete`: Deletes the data.
-- **DataOS Application Actions** (API operations):
-    - `get`: Retrieves the resource (content or data).
-    - `post`: Creates a new resource.
-    - `put`: Replaces an existing resource.
-    - `patch`: Modifies a resource's content.
-    - `delete`: Deletes a resource.
+**DataOS User Actions**:
+
+- `create`: Creates a new resource (e.g., a new dataset on a specific path).
+- `read`: Grants permission to read the data.
+- `update`: Updates the data.
+- `delete`: Deletes the data.
+
+**DataOS Application Actions** (API operations):
+
+- `get`: Retrieves the resource (content or data).
+- `post`: Creates a new resource.
+- `put`: Replaces an existing resource.
+- `patch`: Modifies a resource's content.
+- `delete`: Deletes a resource.
 
 ### **Example scenario**
 
