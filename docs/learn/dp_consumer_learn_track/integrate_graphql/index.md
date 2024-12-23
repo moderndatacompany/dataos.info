@@ -10,7 +10,7 @@ here are the steps to access and use the Data Product via GraphQL.
 
 1. **Open the Access Options Tab**
     
-    Go to the **Access Options** tab on your Data Product’s details page. Locate the **GraphQL** section to begin.
+    Go to the Access Options tab on your Data Product’s details page. Locate the GraphQL section to begin.
     
     ![gq_tab.png](/learn/dp_consumer_learn_track/integrate_graphql/gq_tab.png)
     
@@ -22,6 +22,6 @@ here are the steps to access and use the Data Product via GraphQL.
     
 3. Run Queries and Integrate with Your Application
     
-    In the Playground, enter your query and hit the **Play** button to run it. Copy the endpoint URL and authentication details, and input them into your application’s settings to establish a connection. You’re now ready to integrate the data into your application!
+    In the Playground, enter your query and hit the Play button to run it. Copy the endpoint URL and authentication details, and input them into your application’s settings to establish a connection. You’re now ready to integrate the data into your application!
     
     ![gq_query.png](/learn/dp_consumer_learn_track/integrate_graphql/gq_query.png)

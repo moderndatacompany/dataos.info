@@ -50,7 +50,7 @@ In Excel, you can now use PivotTables, charts, and other Excel features to analy
 
 ### **Step 1: Publish the Report to Power BI Service**
 
-In the PowerBI, click **Publish**. This action will push the report to your online Power BI service account, making it available for access in the Power BI workspace. Choose the required workspace.
+In the PowerBI, click 'Publish'. This action will push the report to your online Power BI service account, making it available for access in the Power BI workspace. Choose the required workspace.
 
 <aside class="callout">
 💡 This step requires a valid Power BI service account, as the report will be published to the online service.
@@ -67,7 +67,7 @@ The image below shows the power BI is publishing the semantic model in the chose
 
 ### **Step 3: Navigate to Your Workspace**
 
-Once published, go to your **workspace** where the report has been saved. Here it is Demo Testing.
+Once published, go to your 'workspace' where the report has been saved. Here it is Demo Testing.
 
 ![powerrbi_workspace.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerrbi_workspace.png)
 
@@ -77,13 +77,13 @@ Click on the connected semantic model below the workspace with the name `cross-s
 
 ### **Step 4: Locate and Access Report Settings**
 
-Scroll down to the **Gateway and Cloud Connections** section. Toggle the switch to **enable the gateway connection**. Click on the **Add to Gateway** button to initiate the connection process.
+Scroll down to the 'Gateway and Cloud Connections' section. Toggle the switch to 'enable the gateway connection'. Click on the 'Add to Gateway' button to initiate the connection process.
 
 ![powerbi_gateway.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_gateway.png)
 
 ### **Step 5: Enable Gateway Connection**
 
-After clicking the “Add to Gateway” button, you'll be prompted to enter the necessary **connection details** for the data source. Once you’ve entered the required connection information, finalize the connection setup.
+After clicking the “Add to Gateway” button, you'll be prompted to enter the necessary 'connection details' for the data source. Once you’ve entered the required connection information, finalize the connection setup.
 
 ![powerbi_gateway_connection.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_gateway_connection.png)
 
@@ -101,7 +101,7 @@ After successfully connecting, you will be able to access the dashboard.
 
 ### **Step 9: Open 'Analyze in Excel'**
 
-The **Analyze in Excel** page should now appear, allowing you to interact with the data as needed.
+The *'Analyze in Excel' page should now appear, allowing you to interact with the data as needed.
 
 ![powerbi_analyze_excel.png](/learn/dp_consumer_learn_track/integrate_bi_tools/powerbi/excel/powerbi_analyze_excel.png)
 
