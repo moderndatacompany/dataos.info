@@ -8,13 +8,25 @@ During your initial exploration, you discovered the 'Product 360' Data Product. 
 
 ## Quick concepts
 
-Before we dive in, let’s review a few essential terms:
 
-- **Inputs:** The raw data that feed into a Data Product or analysis.
-- **Outputs:** The insights or processed data generated from a Data product.
-- **Semantic Model:** A framework that defines and organizes data relationships to ensure clarity and consistency.
-- **Metric:** A quantifiable measure used to track and evaluate the performance of a Data Product.
-- **Data Quality:** The degree to which data is accurate, complete, consistent, and reliable for its intended use.
+As we understand that Data Product is a ready-to-use, reliable, and governed data solution designed to provide meaningful and actionable insights to meet specific business needs. It is a self-contained entity that delivers analytical data through predefined inputs, outputs, and APIs. Let's understand more about its components.
+
+### **Components of a Data Product**
+
+- **Inputs**: Inputs refer to the raw data that feeds into a Data Product or analysis. These datasets serve as the foundation for all processing and transformations that the Data Product performs.
+
+- **Outputs**: Outputs are the insights or processed data generated from a Data Product. A Data Product may have one or more outputs, or in some cases, none. These outputs might include processed datasets which are cleaned and transformed data, ready for analysis.
+
+- **Semantic model**: A Semantic Model maps physical data to logical tables by defining relationships between data entities and creating meaningful metrics. It simplifies the underlying data structure into familiar business terms.
+
+    1. **Abstracting complexity**:  It abstract representations of the data designed for ease of use.
+    2. **Providing insights**: Enables easy understanding of key metrics and relationships. 
+       - A Metric is a quantifiable measure used to track and evaluate the product performance or customer behaviour. Metrics are  derived from the Semantic Model and represent key business indicators.
+    3. **Facilitating Interaction**: Serves as a user-friendly interface for data exploration.
+
+- **Data Quality**: The degree to which data is accurate, complete, consistent, and reliable for its intended use.
+
+- **Access options**: These are consumption portsfor exposing data through APIs or BI tools for downstream applications.
 
 ## What do you need to get started?
 
@@ -60,12 +72,17 @@ After discovering the 'Product 360' Data Product, follow these steps to explore 
         
         ![view_quality.png](/learn/dp_consumer_learn_track/view_dp_info/view_quality.png)
         
-    - On the access options tab, you can see the ways to consume the Data Product via various tools:
-        - Power BI and MS Excel
-        - Jupyter Notebook
-        - Data APIs
-        - Postgres
-        - GraphQL
+6. **Access options:**
+    You can explored the semantic model associated with your data Product using tools like Studio or integrated with various BI tools, AI/ML platforms, or applications using DataOS APIs. If a Data Product includes a Semantic Model, then the following consumption ports are available on  the access options tab:
+
+    - Power BI and MS Excel
+    - Jupyter Notebook
+    - Data APIs
+    - Postgres
+    - GraphQL
+
+    Output datasets are generally consumed via Talos APIs. As well as these outputs can become inputs for some other Data Products.
+
 
 ## Best practices
 
@@ -74,6 +91,28 @@ After discovering the 'Product 360' Data Product, follow these steps to explore 
 - **Evaluate Suitability of Data Products**: Check linked resources, like Git repositories or Jira tickets, to understand its development and governance history.
 
 - **Check inputs and outputs**: Ensure they align with your analysis requirements.
+
+## FAQs
+
+1. How can Semantic Models be consumed?
+
+   Semantic Models can be explored using tools like Studio or integrated with BI tools and GraphQL APIs. Their versatility makes them suitable for a wide range of consumption layers.
+
+2. What are Metrics in a Semantic Model?
+
+   Metrics are quantifiable measures used to track and evaluate the performance of a Data Product or user behavior. Derived from the Semantic Model, they represent key business indicators.
+
+3. How are Outputs consumed in a Data Product?
+
+   Outputs are generally consumed through Talos APIs For direct integration with systems. However they can be input for other Data Products to enable seamless data processing across multiple Data Products.
+
+4. What are consumption ports?
+
+   Consumption ports are the methods or interfaces to expose data from a Data Product. Examples include APIs, BI tools, and GraphQL APIs. 
+
+5. What happens if a Data Product has no semantic model?
+
+   If a Data Product lacks a Semantic model, its outputs are typically limited to processed output datasets that are consumed using Talos APIs. "Talos" is a service within DataOS that provides APIs for interacting with data.
 
 
 ## Next step

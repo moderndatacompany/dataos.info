@@ -6,7 +6,35 @@ In this topic, we’ll walk you through navigating and understanding the associa
 
 Imagine you’re a data analyst and want to analyze data product 'Product360', aiming to leverage data insights for performance tracking and customer behavior analysis. By exploring its semantic model on **Data Product Hub**, you plan to access and analyze cross-sell and upsell opportunities, which involves examining dimensions, measures, and metrics like **customer segments, product affinity scores,** and **total spending**. Let’s see how this exploration unfolds.
 
+## Quick concepts
+
+'Lens' is a key DataOS Resource in creating and implementing semantic models. Here are the foundational concepts to know before diving into exploring your semantic model:
+
+1. **Physical Data Sources**  
+   Semantic models connect to a variety of physical data sources, such as Postgres, BigQuery, and Redshift. Understanding where your data originates helps in appreciating how the semantic model organizes it into logical structures.
+
+2. **Lakehouse (Optional)**  
+   For large datasets, consider creating a Lakehouse within DataOS. Lakehouses unify data from multiple sources, making it easier to manage and query data.
+
+3. **Logical Tables**  
+   A semantic model maps physical data (from data sources or Lakehouse) to logical tables establishing relationships between data entities. These logical tables are structured representations of your data. Semantic models organize these tables to simplify analysis and help users focus on insights rather than raw data.
+
+4. **Table Properties**  
+   When creating logical tables, SQL and key properties like schema, data types, and constraints are specified.
+
+5. **Data Quality and Transformation**  
+   Semantic models incorporate tools for ensuring high data quality and transforming raw data into user-friendly formats. By maintaining accuracy, consistency, and reliability, semantic models ensure that the data is ready for exploration.
+
+6. **Metrics**  
+   Semantic models define meaningful metrics to track performance or key business indicators.
+
+7. **Consumption Ports**  
+   Semantic models enable versatile data consumption options, such as BI tools and APIs for seamless integration with GraphQL and Studio for advanced analytics.
+
+
 ## Uncover insights from your Semantic Model
+
+Exploring semantic models allows users to understand the data flow, relationships within the data, and the transformations that drive insights.
 
 ### **Navigate to the ‘Explore’ option**
     
