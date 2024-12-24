@@ -11,7 +11,7 @@ You're building a semantic model for a retail business to analyze purchase patte
 You  begin by understanding the structure of the Lens semantic model and organize your data in the following structure:
 
 ```
-Lens/
+semantic_model/model
 ├── sqls
 │   ├── customer.sql
 │   ├── product.sql
@@ -632,7 +632,7 @@ Similarly here are other metrics complete manifest file:
 </details>
     
 
-## User Groups and Data Policies
+## User groups and data policies
 
 After defining the Views, you define user groups to manage access to data effectively. You categorize users based on their roles and responsibilities within the organization, ensuring each group has appropriate access to relevant data while maintaining security.
 
@@ -666,9 +666,9 @@ user_groups:
 
 Best practices to follow when creating a semantic model. Key practices include:
 
-- **Naming conventions:** Names should begin with a letter and may contain letters, numbers, and underscores (_). Use snake_case for consistency. Examples: orders, stripe_invoices, base_payments
+- **Naming conventions:** Names should begin with a letter and may contain letters, numbers, and underscores (_). Use snake_case for consistency. Examples: `orders`, `stripe_invoices`, `base_payments`.
 
-- **SQL expressions and source dialects:** When defining tables with SQL snippets, ensure the expressions match the SQL dialect of your data source. For example, use the [`LISTAGG` function](https://docs.snowflake.com/en/sql-reference/functions/listagg) to aggregate a list of strings in Snowflake; similarly, use [`STRING_AGG` function](https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators#string_agg) in bigquery.
+- **SQL expressions and source dialects:** When defining tables with SQL snippets, ensure the expressions match the SQL dialect of your data source. For example, use the [`LISTAGG` function](https://docs.snowflake.com/en/sql-reference/functions/listagg) to aggregate a list of strings in Snowflake; Similarly, use [`STRING_AGG` function](https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators#string_agg) in bigquery.
 
 - **Case sensitivity:** If your database uses case-sensitive identifiers, ensure you properly quote table and column names.
 
@@ -676,8 +676,8 @@ Best practices to follow when creating a semantic model. Key practices include:
 
 - **References:** To create reusable data models, reference table members (e.g., measures, dimensions, columns) using the following syntax:
 
-      - **Column References:** Prefix columns with the table name or use the TABLE constant for the current table. Example: TABLE.status
-      - **Member References ({member}):** Wrap member names in curly braces to reference other members of the same table. In the example below, the full_name dimension references the name and surname dimensions of the same table.
+      - **Column references:** Prefix columns with the table name or use the `TABLE` constant for the current table. Example: `TABLE.status`.
+      - **Member references ({member}):** Wrap member names in curly braces when referencing other members of the same table. In the example below, the full_name dimension references the name and surname dimensions of the same table.
       ```yaml
       - name: full_name
         sql: "CONCAT({name}, ' ', {surname})"
