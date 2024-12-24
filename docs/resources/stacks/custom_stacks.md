@@ -151,7 +151,7 @@ The attributes for the Stack meta section are summarized in the table below.
 | [`stack`](/resources/stacks/custom_stacks/configurations/#stack) | mapping | none | none | mandatory |
 | [`name`](/resources/stacks/custom_stacks/configurations/#name) | string | none | any valid string | mandatory |
 | [`flavor`](/resources/stacks/custom_stacks/configurations/#flavor) | string | none | any valid string | optional |
-| [`version`](/resources/stacks/custom_stacks/configurations#version) | string | none | valid stack version | mandatory |
+| [`version`](/resources/stacks/custom_stacks/configurations/#version) | string | none | valid stack version | mandatory |
 | [`reconciler`](/resources/stacks/custom_stacks/configurations/#reconciler) | string | none | StackManager/<br>LegacyStackManager | mandatory |
 
 For additional details, regarding the various attributes refer to the: [Attributes of Stack Manifest](/resources/stacks/custom_stacks/configurations/).
