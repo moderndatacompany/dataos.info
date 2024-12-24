@@ -94,25 +94,20 @@ After discovering the 'Product 360' Data Product, follow these steps to explore 
 
 ## FAQs
 
-1. How can Semantic Models be consumed?
+**Q1: How can Semantic Models be consumed?**  
+Semantic Models can be explored using tools like Studio or integrated with BI tools and GraphQL APIs. Their versatility makes them suitable for a wide range of consumption layers.
 
-   Semantic Models can be explored using tools like Studio or integrated with BI tools and GraphQL APIs. Their versatility makes them suitable for a wide range of consumption layers.
+**Q2: What are Metrics in a Semantic Model?**  
+Metrics are quantifiable measures used to track and evaluate the performance of a Data Product or user behavior. Derived from the Semantic Model, they represent key business indicators.
 
-2. What are Metrics in a Semantic Model?
+**Q3: How are Outputs consumed in a Data Product?**  
+Outputs are generally consumed through Talos APIs for direct integration with systems. However, they can be input for other Data Products to enable seamless data processing across multiple Data Products.
 
-   Metrics are quantifiable measures used to track and evaluate the performance of a Data Product or user behavior. Derived from the Semantic Model, they represent key business indicators.
+**Q4: What are consumption ports?**  
+Consumption ports are the methods or interfaces to expose data from a Data Product. Examples include APIs, BI tools, and GraphQL APIs.
 
-3. How are Outputs consumed in a Data Product?
-
-   Outputs are generally consumed through Talos APIs For direct integration with systems. However they can be input for other Data Products to enable seamless data processing across multiple Data Products.
-
-4. What are consumption ports?
-
-   Consumption ports are the methods or interfaces to expose data from a Data Product. Examples include APIs, BI tools, and GraphQL APIs. 
-
-5. What happens if a Data Product has no semantic model?
-
-   If a Data Product lacks a Semantic model, its outputs are typically limited to processed output datasets that are consumed using Talos APIs. "Talos" is a service within DataOS that provides APIs for interacting with data.
+**Q5: What happens if a Data Product has no semantic model?**  
+If a Data Product lacks a Semantic Model, its outputs are typically limited to processed output datasets that are consumed using Talos APIs. "Talos" is a service within DataOS that provides APIs for interacting with data.
 
 
 ## Next step

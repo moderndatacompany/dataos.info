@@ -3,7 +3,11 @@
 !!! info "Information"
     Scanning metadata allows for a comprehensive understanding of the source data's structure, which helps in designing and optimizing ETL processes that meet desired use cases and ensure data quality. This guide explains the different ways to scan metadata and provides detailed instructions to perform the metadata scan.
 
-The Scanner stack in DataOS is  designed for developers to extract metadata from external source systems (such as RDBMS, Data Warehouses, Messaging services, Dashboards, etc.) and the components/services within the DataOS environment to extract information about Data products and DataOS Resources. Within DataOS, different workflows can be deployed and scheduled, which will connect to the data sources to extract metadata.
+The Scanner stack in DataOS is  designed for developers to extract metadata from external source systems (such as RDBMS, Data Warehouses, Messaging services, Dashboards, etc.) and the components/services within the DataOS environment to extract information about Data products and DataOS Resources. 
+
+## Metadata Extraction Workflows
+
+Within DataOS, different workflows can be deployed and scheduled, which will connect to the data sources to extract metadata.
 
 <div class= "grid cards" markdown>
 
