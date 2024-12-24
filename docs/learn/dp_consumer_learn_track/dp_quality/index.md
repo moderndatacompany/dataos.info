@@ -61,6 +61,14 @@ The 'Validity' tab shows a 0% trend line, indicating that some quality checks ha
     
 ![qua_validity.png](/learn/dp_consumer_learn_track/dp_quality/qua_validity.png)
 
+## Best practices
+
+1. Regularly review tabs like Accuracy, Completeness, and Freshness on Data Product Hub.
+2. Ensure the structure of datasets aligns with predefined schema rules.
+3. Run periodic checks for duplicate records, especially in critical fields like customer IDs.
+4. Schedule workflows to update data regularly, preventing outdated information from affecting analysis.
+5. Investigate and resolve issues flagged in tabs like Validity or Schema as soon as possible.
+
 ## Next step
 
 Connect your Data Products with BI tools:
