@@ -58,9 +58,9 @@ Now that we have a clear design plan, it’s time to move into the development p
 
 - [#4 Creating semantic models](/learn/dp_developer_learn_track/create_semantic_model/)
 
-- [#5 Creating APIs to expose data for consumption by other systems](/learn/dp_developer_learn_track/data_api/)
+- [#5 Implementing Data Policies that govern access and security](/learn/dp_developer_learn_track/data_policy/)
 
-- [#6 Implementing Data Policies that govern access and security](/learn/dp_developer_learn_track/data_policy/)
+- [#6 Creating APIs to expose data for consumption by other systems](/learn/dp_developer_learn_track/data_api/)
 
 </div>
 
