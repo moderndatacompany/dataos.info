@@ -27,7 +27,7 @@ Follow the below steps to understand the quality of the Data Product on the Data
 
 ### **Access the quality tab on the Data Product details page**
     
-Navigate to the Data Product details page and click on the 'Quality' tab. The Accuracy section opens by default, displaying quality checks applied to the dataset. For example, it indicates that the average length of the “country” column is over six characters, confirming 100% accuracy.
+Navigate to the Data Product details page and click on the 'Quality' tab. The Accuracy section opens by default, displaying quality checks applied to the dataset. For example, it indicates that the average length of the 'country' column is over six characters, confirming 100% accuracy.
     
 ![qua_accuracy.png](/learn/dp_consumer_learn_track/dp_quality/qua_accuracy.png)
     
@@ -45,7 +45,7 @@ In the 'Freshness' tab, you will see a 100% freshness rating, meaning no data is
     
 ### **Understand the schema of the data**
     
-On the 'Schema' tab, you may find a trend line at zero, indicating that the data has not passed certain quality checks. This could mean that the data types of columns like “birth_year” and “recency” do not align with the established quality conditions.
+On the 'Schema' tab, you may find a trend line at zero, indicating that the data has not passed certain quality checks. This could mean that the data types of columns like 'birth_year' and 'recency' do not align with the established quality conditions.
     
 ![qua_schema.png](/learn/dp_consumer_learn_track/dp_quality/qua_schema.png)
     

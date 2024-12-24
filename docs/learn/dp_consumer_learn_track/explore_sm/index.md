@@ -4,7 +4,7 @@ In this topic, we’ll walk you through navigating and understanding the associa
 
 ## Scenario
 
-Imagine you’re a data analyst and want to analyze data product 'Product360', aiming to leverage data insights for performance tracking and customer behavior analysis. By exploring its semantic model on **Data Product Hub**, you plan to access and analyze cross-sell and upsell opportunities, which involves examining dimensions, measures, and metrics like **customer segments, product affinity scores,** and **total spending**. Let’s see how this exploration unfolds.
+Imagine you’re a data analyst and want to analyze data product 'Product360', aiming to leverage data insights for performance tracking and customer behavior analysis. By exploring its semantic model on Data Product Hub, you plan to access and analyze cross-sell and upsell opportunities, which involves examining dimensions, measures, and metrics like `customer_segments`, `product affinity scores`,and `total spending`. Let’s see how this exploration unfolds.
 
 ## Quick concepts
 
@@ -71,7 +71,7 @@ To examine the members of a single metric, say `total_spending`. You hover over 
 
 ![metric_referennce.png](/learn/dp_consumer_learn_track/explore_sm/metric_referennce.png)
 
-You click on a metric, say **cross_sell_oppurtunity_score,** which opens a side panel detailing all measures, segments, and dimensions within it. You can see each attribute's data type (numeric, string, date).
+You click on a metric, say `cross_sell_oppurtunity_score`, which opens a side panel detailing all measures, segments, and dimensions within it. You can see each attribute's data type (numeric, string, date).
 
 ![customer_schema.png](/learn/dp_consumer_learn_track/explore_sm/customer_schema.png)
 
@@ -228,7 +228,7 @@ Here is the query result.
 
 ### **Using History for Quick Access**
 
-If you want to revisit a query you ran an hour ago but didn't save as a Perspective, simply click on the **History** icon and select the relevant timestamp to return to that query.
+If you want to revisit a query you ran an hour ago but didn't save as a Perspective, simply click on the 'History' icon and select the relevant timestamp to return to that query.
 
 ![history.png](/learn/dp_consumer_learn_track/explore_sm/history.png)
 

@@ -1,4 +1,4 @@
-# Do's and Dont's 
+# Do's and Don'ts 
 
 This section outlines essential Do's and Don'ts for using Lens functionalities. Following these guidelines will help you avoid common mistakes, ensure proper usage, and create efficient, maintainable data models.
 
