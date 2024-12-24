@@ -101,7 +101,7 @@ For more details, see [`array`](/interfaces/workbench/functions_and_operators/ar
 
 ### **Binary**
 
-For more details, see [`binary`](/interfaces/workbench/functions_and_operators/binary)
+For more details, see [`binary`](/interfaces/workbench/functions_and_operators/binary/)
 
 
 - [`concat()`](/interfaces/workbench/functions_and_operators/binary#binary-operators)
@@ -264,21 +264,21 @@ For more details,see [`map`](/interfaces/workbench/functions_and_operators/map/)
 
 ### **Math**
 
-For more details, see [`maths`](/interfaces/workbench/functions_and_operators/math#abs)
+For more details, see [`maths`](/interfaces/workbench/functions_and_operators/math/#abs)
 
-- [`acos`](/interfaces/workbench/functions_and_operators/math#acos)
-- [`asin`](/interfaces/workbench/functions_and_operators/math#asin)
-- [`atan`](/interfaces/workbench/functions_and_operators/math#atan)
-- [`beta_cdf`](/interfaces/workbench/functions_and_operators/math#beta_cdf)
-- [`cbrt`](/interfaces/workbench/functions_and_operators/math#cbrt)
-- [`ceil`](/interfaces/workbench/functions_and_operators/math#ceil)
-- [`cos`](/interfaces/workbench/functions_and_operators/math#cos)
-- [`cosh`](/interfaces/workbench/functions_and_operators/math#cosh)
-- [`cosine_similarity`](/interfaces/workbench/functions_and_operators/math#cosine_similarity)
-- [`degrees`](/interfaces/workbench/functions_and_operators/math#degrees)
-- [`e`](/interfaces/workbench/functions_and_operators/math#e)
-- [`exp`](/interfaces/workbench/functions_and_operators/math#exp)
-- [`floor`](/interfaces/workbench/functions_and_operators/math#floor)
+- [`acos`](/interfaces/workbench/functions_and_operators/math/#acos)
+- [`asin`](/interfaces/workbench/functions_and_operators/math/#asin)
+- [`atan`](/interfaces/workbench/functions_and_operators/math/#atan)
+- [`beta_cdf`](/interfaces/workbench/functions_and_operators/math/#beta_cdf)
+- [`cbrt`](/interfaces/workbench/functions_and_operators/math/#cbrt)
+- [`ceil`](/interfaces/workbench/functions_and_operators/math/#ceil)
+- [`cos`](/interfaces/workbench/functions_and_operators/math/#cos)
+- [`cosh`](/interfaces/workbench/functions_and_operators/math/#cosh)
+- [`cosine_similarity`](/interfaces/workbench/functions_and_operators/math/#cosine_similarity)
+- [`degrees`](/interfaces/workbench/functions_and_operators/math/#degrees)
+- [`e`](/interfaces/workbench/functions_and_operators/math/#e)
+- [`exp`](/interfaces/workbench/functions_and_operators/math/#exp)
+- [`floor`](/interfaces/workbench/functions_and_operators/math/#floor)
 - [`from_base`](/interfaces/workbench/functions_and_operators/math#from_base)
 - [`infinity`](/interfaces/workbench/functions_and_operators/math#infinity)
 - [`inverse_beta_cdf`](/interfaces/workbench/functions_and_operators/math#inverse_beta_cdf)

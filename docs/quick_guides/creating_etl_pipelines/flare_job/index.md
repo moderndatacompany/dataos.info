@@ -8,13 +8,14 @@ We'll set up an ETL pipeline using Flare Stack's Data Processing capabilities to
 ## Key Steps
 
 Here are the essential steps to leverage Flare Stack to establish a robust data pipeline, process and transform data efficiently.
+
 <center>
 <div style="text-align: center;">
 <img src="/quick_guides/creating_etl_pipelines/flare_job/6_etl_flare.jpg" alt="Steps to create a Flare Workflow" style="border: 1px solid black;">
 </div>    
 </center>
 
-## **Before You Begin**
+## Before You Begin
 
 1. **Check CLI Installation**
 
