@@ -21,17 +21,10 @@ Get a solid foundation on what Data Products are and how they can drive insights
 
 <div class= "grid cards" markdown>
 
-    
--   Introduction to Data Products
-
--   Features and Importance of the Data Product
+-   [Features and importance of Data Products](/learn/dp_consumer_learn_track/introduction_data_product/)
 
 
 </div>
-
-<aside class= "callout">
-🗣️ For a general understanding of what Data Products are and their importance, please reach out to your team. If you want to learn specifically about discovering and activating Data Products within DataOS, continue to Module 2 for a detailed walkthrough.
-</aside>
 
 ## Module 2: Discovering Data Products
 
@@ -43,7 +36,7 @@ Learn how to navigate the Data Product Hub (DPH) to find Data Products that meet
     
 -   [Introduction to Data Product Hub](/learn/dp_consumer_learn_track/intro_dph/)
 
--   [Discover Data Products of Interest](/learn/dp_consumer_learn_track/discover_dp/)
+-   [Discover Data Products of interest](/learn/dp_consumer_learn_track/discover_dp/)
 
 
 </div>
@@ -56,7 +49,7 @@ Access key details of the data product—contributors, tier, type, and tags and 
 <div class= "grid cards" markdown>
 
     
--   [Get the key details of the Data Product of Interest](/learn/dp_consumer_learn_track/view_dp_info/)
+-   [Get the key details of the Data Product of interest](/learn/dp_consumer_learn_track/view_dp_info/)
 
 
 </div>
@@ -80,7 +73,7 @@ Explore semantic models to understand relationships between data entities. Visua
 <div class= "grid cards" markdown>
 
     
--   [Exploring Semantic Models](/learn/dp_consumer_learn_track/explore_sm/)
+-   [Exploring semantic models](/learn/dp_consumer_learn_track/explore_sm/)
 
 </div>
 
@@ -92,7 +85,7 @@ Learn how to assess data quality through key factors like accuracy, consistency,
 <div class= "grid cards" markdown>
 
     
--   [Understanding the Quality Checks](/learn/dp_consumer_learn_track/dp_quality/)
+-   [Understanding the quality checks](/learn/dp_consumer_learn_track/dp_quality/)
 
 
 </div>
