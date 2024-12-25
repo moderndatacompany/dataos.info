@@ -191,6 +191,23 @@ measures:
     description: "The total number of unique customers in the dataset, providing an overview of customer base size."
 ```
 
+### **5. Segments section**
+
+The Segments section defines filters or conditions that segment data based on specific criteria, enabling the creation of subsets of the dataset for more granular analysis. Segments are often used to focus on specific groups of data that meet certain conditions, like customers from a particular region or products from a certain category.
+
+In the YAML manifest, each segment is defined by:
+
+- **name:** Specifies the segment's name, which serves as an identifier for the condition or subset of data. 
+
+- **sql:** Contains the SQL logic or condition that defines the segment. The SQL condition is used to filter the data, ensuring that only the records that meet the condition are included in the segment. In the provided YAML example, the condition is {TABLE}.state = 'Illinois', which means only rows where the state column equals "Illinois" will be included in this segment.
+
+```yaml
+segments:
+  - name: common_state
+    sql: "{TABLE}.state = 'Illinois'"
+```
+
+
 Following are the yaml manifest files of the table of each entity:
 
 <details>
@@ -459,21 +476,6 @@ tables:
 ```
 </details>
 
-### **5. Segments section**
-
-The Segments section defines filters or conditions that segment data based on specific criteria, enabling the creation of subsets of the dataset for more granular analysis. Segments are often used to focus on specific groups of data that meet certain conditions, like customers from a particular region or products from a certain category.
-
-In the YAML manifest, each segment is defined by:
-
-- **name:** Specifies the segment's name, which serves as an identifier for the condition or subset of data. 
-
-- **sql:** Contains the SQL logic or condition that defines the segment. The SQL condition is used to filter the data, ensuring that only the records that meet the condition are included in the segment. In the provided YAML example, the condition is {TABLE}.state = 'Illinois', which means only rows where the state column equals "Illinois" will be included in this segment.
-
-```yaml
-segments:
-  - name: common_state
-    sql: "{TABLE}.state = 'Illinois'"
-```
 
 ## Views
 
