@@ -134,8 +134,8 @@ A Data Product is considered consumption-ready when it is trusted by consumers, 
 
 **Q3: Can Data Products evolve over time?**  
 Yes, Data Products are designed to be:  
-- **Responsive**: Adaptable to user feedback and changing requirements.  
-- **Reactive**: Capable of processing real-time data for timely decision-making.
+**Responsive**: Adaptable to user feedback and changing requirements.  
+**Reactive**: Capable of processing real-time data for timely decision-making.
 
 **Q4: Why are Data Products important?**  
 Data Products enable businesses to:  

@@ -19,7 +19,7 @@ As a Product Manager, you must design this data product, ensuring it captures es
 
 Designing a data product requires meticulous planning and a deep understanding of the business needs. To effectively design the data product, consider the following key aspects:
 
-## Step 1. Defining use cases
+## Step 1. Defining use cases and metrics
 
 Defining clear use cases is the foundation of any successful data product. It involves understanding business needs, identifying key problems, and determining the metrics that will help solve them.
 
@@ -116,7 +116,7 @@ Design an ETL pipeline to process raw data into structured datasets.
 - What transformations are essential for data preparation?
 - How often should the ETL process run to maintain data freshness?
 
-### **b. Implement data quality checks**
+### **b. Define data quality checks**
 
 Embed quality checks to validate data integrity during the ETL process.
 
@@ -167,7 +167,21 @@ Implement attribute/role-based access control and data masking to secure sensiti
 - Are there sensitive data elements that require masking?
 - How will we maintain compliance with privacy regulations?
 
-### **b. Defining quality checks**
+## Step 7: Defining SLOs
+
+SLOs or service level objectives are quantitative measurement of a service’s performance or reliability, measured over time. SLOs guide/ support architecture, operations and observability decisions.
+
+**Questions to ask:**
+
+- What are the relevant architecture target metrics for the DP?
+- What are the relevant data quality target metrics for the DP?
+- What are the relevant data governance target metrics for the DP?
+
+### **Key Metrics:**
+
+- **Architecture**: Performance, scalability, and reliability.
+- **Data Quality**: Completeness, freshness, and accuracy.
+- **Governance**: Compliance with regulations like GDPR, HIPAA, etc.
 
 Several quality checks are need to be established to ensure adherence to data quality standards:
 
@@ -175,9 +189,9 @@ Several quality checks are need to be established to ensure adherence to data qu
 - **Schema:** The schema must be validated to ensure that column data types align with the defined structure.
 - **Freshness:** Purchase data must be kept up to date.
 - **Uniqueness:** Each `customer_id` must be unique, with no duplicates permitted.
-- **Validity:** The `mntwines` attribute must conform to specified criteria, ensuring the data falls within a valid range of 0 to 1. Any occurrence where the invalid count (`invalid_count(mntwines)`) exceeds 0 highlights a data quality issue that requires attention.
+- **Validity:** Any occurrence where the invalid count (`invalid_count(mntwines)`) exceeds 0 highlights a data quality issue that requires attention.
 
-### **Step 7: Output and delivery**
+## Step 8: Output and delivery
 
 Identify how end users will consume the data product and the methods used for data delivery, such as APIs or connecting with BI tools.
 
@@ -192,6 +206,6 @@ In this module, we explored the complete process of designing a data product—f
 
 ## Next step
 
-Now that you have a solid understanding of the design process, the next step is to move into implementation. This involves translating your data product design into an actionable plan and beginning the actual development starting with establishing the data connections.
+Now that you have a solid understanding of the design process, the next step is to move into implementation phase. This involves translating your data product design into an actionable plan and beginning the actual development starting with establishing the data connections.
 
 [Establishing data connections](/learn/dp_developer_learn_track/data_source_connectivity/)
