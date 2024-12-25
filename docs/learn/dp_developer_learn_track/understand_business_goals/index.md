@@ -34,16 +34,54 @@ Data Products are components interacting to fulfill use cases.
 - Identify data producers (sources) and consumers (stakeholders, systems).
 - Define dependencies across domains if applicable.
 
+## Step 4: Create a Data Products Interaction Map
+
+### **Source-Aligned Data Products**
+
+- Represent data as it exists in operational systems.
+
+### **Consumer-Aligned Data Products**
+
+- Transform and align data with the intended business use cases.
+- Define the flow: Sources → Source-Aligned DPs → Intermediate DPs → Consumer-Aligned DPs.
+- Map intermediate steps for seamless data transformation.
+
+## Step 5: Identify Usage Patterns
+
+Try to ask questions to find the following:
+
+**Frequency**: How often will the data product be used?
+
+**Users**: Who are the end-users or systems?
+
+**Requirements**: Completeness, freshness, and accuracy expectations?
+
+**Update Cadence**: What’s the schedule for data updates?
+
+- Define architectural expectations based on consumer behavior and objectives.
+
+## Step 6: Define Service Level Objectives (SLOs)
+
+### Key Metrics:
+
+- **Architecture**: Performance, scalability, and reliability.
+- **Data Quality**: Completeness, freshness, and accuracy.
+- **Governance**: Compliance with regulations like GDPR, HIPAA, etc.
+
+**Action**:
+
+- Document target metrics and map them to goals to guide development.
+
 ## Closing the Loop: North Star Metric Identification
 
-1. Start with the North Star Metric:
+1. **Start with the North Star Metric:**
     - Define what success looks like for your business in terms of measurable outcomes.
     - Document target metrics and map them to goals to guide development.
     - Align all goals and initiatives to this metric.
-2. Work backward:
+2. **Work backward:**
     - Identify the measures, dimensions, and data sources required to track progress.
     - Ensure every step ties back to achieving the North Star Metric.
-3. Build with purpose:
+3. **Build with purpose:**
     - Use the right-to-left approach to design a data product that directly serves the defined goals.
 
 ## Next step
