@@ -6,12 +6,31 @@ In this topic, you’ll learn how to design a conceptual semantic model that tra
 
 You're building a semantic model for a retail business to analyze purchase patterns and product affinity. The model needs to combine data from various tables in the source such as customer purchase history, product catalogs, and sales data—into a unified view. You want to ensure that your semantic model effectively captures customer behavior and accurately reflects relationships between different products that customers tend to purchase together. For it, you transform conceptual design into a functional data model. This enables you to structure and organize the data effectively, ensuring it meets analytical and business needs.
 
-## Lens folder structure
+##  folder structure
 
-You begin by understanding the structure of the semantic model and organize your data. The folder structure is organized to support the key steps in building the semantic model: loading data, defining tables, adding dimensions and measures, creating views, and managing user groups. This ensures a structured and efficient model that meets business and analytical needs.
+You begin by understanding the structure of the semantic model and organize your data in the following structure:
+
+```
+semantic_model/model
+├── sqls
+│   ├── customer.sql
+│   ├── product.sql
+│   └── purchase.sql
+├── tables
+│   ├── customer.yml
+│   ├── product.yml
+│   └── purchase.yml
+└── views
+│   ├── total_spend.yml
+│   ├── purchase_frequency.yml
+│   └── cross_sell_opportunities.yml   
+└── user_groups.yml
+```
+
+In the semantic model folder structure, you define and organize the artifacts according to the key steps in building the semantic model: loading data, defining tables, adding dimensions and measures, creating views, and managing user groups.
 
 
-## Sql
+## Sqls
 
 Here you load the data from the source by creating the SQL folder, where you write SQL scripts to select relevant columns from the source tables for each entity: `customer`, `product`, and `purchase` data. You focus on choosing only the necessary columns to prevent performance issues while ensuring essential data is available for analysis.
 
@@ -75,7 +94,7 @@ FROM
 ```
     
 
-## Table
+## Tables
 
 Next, you move to the tables folder. Here, you define a manifest to load the selected columns from the SQL files into tables in YAML. Here, you define the base table for all entities.
 
@@ -139,6 +158,16 @@ The Dimension section captures the attributes or fields of the table, detailing 
 - **sql:** Custom SQL logic to create derived dimensions.
 
 
+```yaml
+dimensions:
+  - name: customer_id
+    type: number
+    column: customer_id
+    description: "The unique identifier for each customer."
+    primary_key: true
+    public: true
+```
+
 ### **4. Measures section**
 
 The Measure section defines aggregated metrics derived from the table data  such as `total_customers`, `total_products`. These measures provide quantitative insights and often include policies to protect sensitive information. 
@@ -152,6 +181,31 @@ The Measure section defines aggregated metrics derived from the table data  such
 - **description:** Provides additional details about the measure.
 
 - **secure:** Highlights measures that include data policy logic to protect sensitive information. For instance, in the `customer` table a data policy is applied to secure the maritial_status column of the `product` table. The applied data policy redacts the data from the users in the ‘dataconsumer’ group. 
+
+
+```yaml
+measures:
+  - name: total_customers
+    sql: "COUNT(DISTINCT {customer_id})"
+    type: number
+    description: "The total number of unique customers in the dataset, providing an overview of customer base size."
+```
+
+### **5. Segments section**
+
+The Segments section defines filters or conditions that segment data based on specific criteria, enabling the creation of subsets of the dataset for more granular analysis. Segments are often used to focus on specific groups of data that meet certain conditions, like customers from a particular region or products from a certain category.
+
+In the YAML manifest, each segment is defined by:
+
+- **name:** Specifies the segment's name, which serves as an identifier for the condition or subset of data. 
+
+- **sql:** Contains the SQL logic or condition that defines the segment. The SQL condition is used to filter the data, ensuring that only the records that meet the condition are included in the segment. In the provided YAML example, the condition is {TABLE}.state = 'Illinois', which means only rows where the state column equals "Illinois" will be included in this segment.
+
+```yaml
+segments:
+  - name: common_state
+    sql: "{TABLE}.state = 'Illinois'"
+```
 
 
 Following are the yaml manifest files of the table of each entity:
@@ -422,21 +476,6 @@ tables:
 ```
 </details>
 
-### **5. Segments section**
-
-The Segments section defines filters or conditions that segment data based on specific criteria, enabling the creation of subsets of the dataset for more granular analysis. Segments are often used to focus on specific groups of data that meet certain conditions, like customers from a particular region or products from a certain category.
-
-In the YAML manifest, each segment is defined by:
-
-- **name:** Specifies the segment's name, which serves as an identifier for the condition or subset of data. 
-
-- **sql:** Contains the SQL logic or condition that defines the segment. The SQL condition is used to filter the data, ensuring that only the records that meet the condition are included in the segment. In the provided YAML example, the condition is {TABLE}.state = 'Illinois', which means only rows where the state column equals "Illinois" will be included in this segment.
-
-```yaml
-segments:
-  - name: common_state
-    sql: "{TABLE}.state = 'Illinois'"
-```
 
 ## Views
 
@@ -616,37 +655,37 @@ views:
   <summary>Manifest file for purchase_frequency metrics</summary>
 
 ```yaml
-  views:
-    - name: purchase_frequency
-      description: "This metric calculates the average number of times a product is purchased by customers within a given time period."
-      public: true
-      meta:
-        title: Product Purchase Frequency
-        tags:   
-          - DPDomain.Sales
-          - DPDomain.Marketing
-          - DPUsecase.Customer Segmentation
-          - DPUsecase.Product Recommendation
-          - DPTier.DataCOE Approved
-      metric:
-        expression: "*/45  * * * *"
-        timezone: "UTC"
-        window: "day"
-        excludes: 
+views:
+  - name: purchase_frequency
+    description: "This metric calculates the average number of times a product is purchased by customers within a given time period."
+    public: true
+    meta:
+      title: Product Purchase Frequency
+      tags:   
+        - DPDomain.Sales
+        - DPDomain.Marketing
+        - DPUsecase.Customer Segmentation
+        - DPUsecase.Product Recommendation
+        - DPTier.DataCOE Approved
+    metric:
+      expression: "*/45  * * * *"
+      timezone: "UTC"
+      window: "day"
+      excludes: 
+        - purchases
+    tables:
+      - join_path: purchase_data
+        prefix: true
+        includes:
+          - purchase_date
+          - customer_id
+          - purchase_frequency
           - purchases
-      tables:
-        - join_path: purchase_data
-          prefix: true
-          includes:
-            - purchase_date
-            - customer_id
-            - purchase_frequency
-            - purchases
-        - join_path: product
-          prefix: true
-          includes:
-            - product_category
-            - product_name
+      - join_path: product
+        prefix: true
+        includes:
+          - product_category
+          - product_name
 ```
 </details>
     
@@ -655,37 +694,37 @@ views:
   <summary>Manifest file for total_spend metrics</summary>
 
 ```yaml
-  views:
-    - name: total_spend
-      description: "This metric calculates the total amount spent by customers in a given time period."
-      public: true
-      meta:
-        title: Total Spend
-        tags:   
-          - DPDomain.Sales
-          - DPDomain.Marketing
-          - DPUsecase.Customer Segmentation
-          - DPUsecase.Product Recommendation
-          - DPTier.DataCOE Approved
-      metric:
-        expression: "*/45  * * * *"
-        timezone: "UTC"
-        window: "day"
-        excludes: 
+views:
+  - name: total_spend
+    description: "This metric calculates the total amount spent by customers in a given time period."
+    public: true
+    meta:
+      title: Total Spend
+      tags:   
+        - DPDomain.Sales
+        - DPDomain.Marketing
+        - DPUsecase.Customer Segmentation
+        - DPUsecase.Product Recommendation
+        - DPTier.DataCOE Approved
+    metric:
+      expression: "*/45  * * * *"
+      timezone: "UTC"
+      window: "day"
+      excludes: 
+        - purchases
+    tables:
+      - join_path: purchase_data
+        prefix: true
+        includes:
+          - purchase_date
+          - customer_id
+          - purchase_frequency
           - purchases
-      tables:
-        - join_path: purchase_data
-          prefix: true
-          includes:
-            - purchase_date
-            - customer_id
-            - purchase_frequency
-            - purchases
-        - join_path: product
-          prefix: true
-          includes:
-            - product_category
-            - product_name
+      - join_path: product
+        prefix: true
+        includes:
+          - product_category
+          - product_name
 ```
 </details>
     
