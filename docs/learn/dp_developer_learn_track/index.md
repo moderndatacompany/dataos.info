@@ -14,23 +14,13 @@ By the end of this course, you'll be able to:
 
 ## Module 1: Understanding data needs
 
-To create a successful Data Product, it’s crucial to first understand the business context and requirements. This module focuses on capturing key needs and expectations:
+To create a successful Data Product, it’s crucial to first understand the business context and requirements. This module focuses on capturing key needs and expectations for Data Products for your organization based on Righ to Left approach:
 
 <div class= "grid cards" markdown>
 
-- Understanding business goals
-
-- Collaboration with stakeholders
-
-- Quality & security expectations
-
-- Understanding consumption
+- [Understanding business goals](/learn/dp_developer_learn_track/understand_business_goals/)
 
 </div>
-
-<aside class= "callout">
-🗣 For a broad overview of understanding data needs and aligning business goals for Data Products for your organization based on Righ to Left approach, feel free to reach out to the DataOS team. Once you've completed the requirement identification, move on to Module 2 to start designing Data Products.
-</aside>
 
 ## Module 2: Designing Data Products
 
