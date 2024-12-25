@@ -4,13 +4,12 @@ In this topic, you’ll learn how to design a conceptual semantic model that tra
 
 ## Scenario
 
-You're building a semantic model for a retail business to analyze purchase patterns and product affinity. The model needs to combine data from various sources such as customer purchase history, product catalogs, and sales data—into a unified view. You want to ensure that your Lens model effectively captures customer behavior and accurately reflects relationships between different products that customers tend to purchase together. For it, you transform conceptual design into a functional data model. This enables you to structure and organize the data effectively, ensuring it meets analytical and business needs.
+You're building a semantic model for a retail business to analyze purchase patterns and product affinity. The model needs to combine data from various tables in the source such as customer purchase history, product catalogs, and sales data—into a unified view. You want to ensure that your semantic model effectively captures customer behavior and accurately reflects relationships between different products that customers tend to purchase together. For it, you transform conceptual design into a functional data model. This enables you to structure and organize the data effectively, ensuring it meets analytical and business needs.
 
 ## Lens folder structure
 
-You begin by understanding the structure of the semantic model and organize your data in the following structure:
+You begin by understanding the structure of the semantic model and organize your data. The folder structure is organized to support the key steps in building the semantic model: loading data, defining tables, adding dimensions and measures, creating views, and managing user groups. This ensures a structured and efficient model that meets business and analytical needs.
 
-In the folder structure, you define and organize the artifacts according to the key steps in building the semantic model: loading data, defining tables, adding dimensions and measures, creating views, and managing user groups.
 
 ## Sql
 
