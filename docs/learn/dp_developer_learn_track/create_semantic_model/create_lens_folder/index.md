@@ -6,7 +6,7 @@ In this topic, you’ll learn how to design a conceptual semantic model that tra
 
 You're building a semantic model for a retail business to analyze purchase patterns and product affinity. The model needs to combine data from various tables in the source such as customer purchase history, product catalogs, and sales data—into a unified view. You want to ensure that your semantic model effectively captures customer behavior and accurately reflects relationships between different products that customers tend to purchase together. For it, you transform conceptual design into a functional data model. This enables you to structure and organize the data effectively, ensuring it meets analytical and business needs.
 
-##  folder structure
+##  Folder structure
 
 You begin by understanding the structure of the semantic model and organize your data in the following structure in your code editor:
 
