@@ -8,7 +8,7 @@ You initiate the process by configuring the connection between *Product-360* and
 
 ### **1. Navigate to Access Options**
     
-Go to the 'Access Options' tab for your Data product in Data Product Hub. Under the **BI Sync** section, locate the 'Tableau Cloud' option.
+Go to the 'Access Options' tab for your Data product in Data Product Hub. Under the 'BI Sync' section, locate the 'Tableau Cloud' option.
 
 ![tableau_cloud_conn.png](/learn/dp_consumer_learn_track/integrate_bi_tools/tab_cloud/tableau_cloud_conn.png)
 
@@ -23,12 +23,17 @@ In the subsequent setup window, input the required Tableau Cloud credentials:
 In the setup window, fill in the required credentials:
 
 - **Project name**: Specify the name of the project within Tableau (e.g., 'Product 360 Analysis').
-- **Server name**: Provide the URL or address of the Tableau Server hosting your cloud instance.
-- **Site ID**: Input the Site ID for your specific Tableau Cloud site.
-- **Username**: Your Tableau account username.
-- **Password**: Your Tableau account password.
+- **Server name**: Provide the URL or address of the Tableau Server hosting your cloud instance e.g, (https://prod-apnortheast-a.online.tableau.com).
+- **Site id**: Input the Site ID for your specific Tableau Cloud site. You can obtain it when you log in to Tableau (e.g., `https://prod-apnortheast-a.online.tableau.com/#/site/moderndata/` where `moderndata` is the site id).  
+- **Username**: Your Tableau account username (e.g., labs@modern.io).
+- **Password**: Your Tableau account password. 
 
 ![tableau_username_and_pw.png](/learn/dp_consumer_learn_track/integrate_bi_tools/tab_cloud/tableau_username_and_pw.png)
+
+<aside class="callout">
+🗣️ For environments requiring Multi-Factor Authentication (MFA), use Personal Access Tokens instead of traditional username and password credentials.
+</aside>
+
 
 In addition to using standard Tableau credentials, you can also opt to use 'Personal Access Tokens (PAT)' for authentication, to create a PAT follow the below steps:
 
@@ -41,9 +46,9 @@ In addition to using standard Tableau credentials, you can also opt to use 'Pers
 
 Enter the following necessary Tableau details:
 
-- **Project name:** The designated name for the project within Tableau. (E.g.  Product-analysis)
-- **Server name:** The URL or address of the Tableau Server hosting the cloud instance.
-- **Site ID:** The identifier for the specific site on Tableau Cloud.
+- **Project name:** The designated name for the project within Tableau. (e.g.  Product-analysis).
+- **Server name:** The URL or address of the Tableau Server hosting the cloud instance  (e.g, https://prod-apnortheast-a.online.tableau.com). 
+- **Site id:** The identifier for the specific site on Tableau Cloud.  You can obtain it when you log in to Tableau (e.g., `https://prod-apnortheast-a.online.tableau.com/#/site/moderndata/`), where `moderndata` is the site id. 
 - **PAT name**: Your Tableau PAT name.
 - **PAT**: Personal Access Token.
 

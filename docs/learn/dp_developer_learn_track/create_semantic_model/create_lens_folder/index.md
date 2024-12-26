@@ -8,7 +8,7 @@ You're building a semantic model for a retail business to analyze purchase patte
 
 ##  folder structure
 
-You begin by understanding the structure of the semantic model and organize your data in the following structure:
+You begin by understanding the structure of the semantic model and organize your data in the following structure in your code editor:
 
 ```
 semantic_model/model
