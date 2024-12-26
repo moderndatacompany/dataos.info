@@ -487,6 +487,7 @@ Finally, in the views folder, you create metrics (a type of view) that build on 
 The Meta section provides essential metadata for the metric, which includes the title and tags. This section helps categorize the metric within specific domains (such as sales, marketing) and use cases (e.g., customer segmentation, product recommendation). It also includes a tier to specify the approval level or validation status (e.g., DataCOE Approved).
 
 - **Title:** A descriptive name for the metric, providing clarity on what the metric measures (e.g., Cross-Sell Opportunity Score).
+
 - **Tags:** A set of keywords or labels that help categorize the metric into specific domains, use cases, and approval tiers, making it easier to search and filter across Data Product Hub.
 
 The following tags are typically used in the Meta section:
@@ -498,6 +499,17 @@ The following tags are typically used in the Meta section:
 - **DPTier:** Specifies the approval level or validation status of the metric, e.g., DataCOE Approved, Experimental, etc. 
 
 This tags are populated within the Data Product Hub (DPH) and are essential for efficiently categorizing and discovering Data Products. These tags enable users to filter and search for metrics or Data Products that are aligned with their specific business requirements, domains, and use cases. By clearly providing the value to these tags, users can easily navigate through the available metrics, making the DPH an organized and easily accessible repository for Data Products.
+
+```yaml
+meta:
+  title: Cross-Sell Opportunity Score
+  tags:
+    - DPDomain.Sales
+    - DPDomain.Marketing
+    - DPUsecase.Customer Segmentation
+    - DPUsecase.Product Recommendation
+    - DPTier.DataCOE Approved
+``` 
 
 For instance, in this case, the Cross-Sell Opportunity Score metric is tagged with both the Customer Segmentation and Product Recommendation use-cases. As a result, the metric will appear in both of these categories in the Data Product Hub interface as shown in the below image.
 
