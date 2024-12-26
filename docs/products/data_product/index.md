@@ -1,11 +1,9 @@
 ---
 title: Data Product
 search:
-  boost: 4
+  boost: 2
 tags:
   - Data Product
-hide:
-  - tags
 ---
 
 # :products-dataproduct: Data Product
