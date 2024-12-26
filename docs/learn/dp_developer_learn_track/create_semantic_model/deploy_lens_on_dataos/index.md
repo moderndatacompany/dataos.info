@@ -140,9 +140,9 @@ lens:
       
 # Data Source configuration      
   source: 
-    type: minerva # Source type (optional)
-    name: system # Source name (optional)
-    catalog: icebase # Catalog name for Minerva or Themis (optional)
+    type: depot # Source type (could be themis, minerva flash as well)
+    name: lakehouse # Source name (name of the depot)
+    catalog: lakehouse # Catalog name for the depot
   repo: # Lens model code repository configuration (mandatory)
     url: https://bitbucket.org/tmdc/dataproducts # URL of repository containing the Lens model (mandatory)
     lensBaseDir: dataproducts/setup/resources/lens2/model # Relative path of the Lens 'model' directory in repository (mandatory)
@@ -196,7 +196,7 @@ lens:
         cpu: 1600m
         memory: 2240Mi
 # Metric configuration 
-  metric: (optional)
+  metric:                         #(optional)
     logLevel: info # Log level for metrics (optional)
 ```
 
