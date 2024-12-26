@@ -9,13 +9,13 @@ Let’s explore each of these elements in detail
 ### **Table**
 
 Tables are logical constructs that define core entities in your semantic model, such as 'Customer', 'Product', or 'Sales'. They define the structure of your data, including dimensions (descriptive attributes) and measures (aggregated values), and specify relationships (joins) with other entities.
-<!-- 
+
 **Key Table components:**
 
 - **Joins:** Define relationships between tables (e.g., linking 'customer' to 'product').
 - **Dimensions:** Descriptive attributes like `owner_id` or `owner_name` that add context to your data.
 - **Measures:** Quantifiable data points such as `count`, `sum`, or `average`, typically used in analytical calculations.
-- **Segments:** Filters that categorize data into groups based on specific criteria (e.g., active vs. inactive users). -->
+- **Segments:** Filters that categorize data into groups based on specific criteria (e.g., active vs. inactive users).
 
 Following is the brief description of each component:
 
