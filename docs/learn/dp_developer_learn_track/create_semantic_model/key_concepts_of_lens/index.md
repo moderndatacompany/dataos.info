@@ -9,13 +9,13 @@ Let’s explore each of these elements in detail
 ### **Table**
 
 Tables are logical constructs that define core entities in your semantic model, such as 'Customer', 'Product', or 'Sales'. They define the structure of your data, including dimensions (descriptive attributes) and measures (aggregated values), and specify relationships (joins) with other entities.
-
+<!-- 
 **Key Table components:**
 
 - **Joins:** Define relationships between tables (e.g., linking 'customer' to 'product').
 - **Dimensions:** Descriptive attributes like `owner_id` or `owner_name` that add context to your data.
 - **Measures:** Quantifiable data points such as `count`, `sum`, or `average`, typically used in analytical calculations.
-- **Segments:** Filters that categorize data into groups based on specific criteria (e.g., active vs. inactive users).
+- **Segments:** Filters that categorize data into groups based on specific criteria (e.g., active vs. inactive users). -->
 
 Following is the brief description of each component:
 
@@ -23,28 +23,28 @@ Following is the brief description of each component:
 
 Joins define the relationships between different tables within the data model. Lens supports left joins by default and allows you to specify the nature of the relationship: one-to-one, one-to-many, or many-to-one. When you define a join in a table, the base table is always positioned on the left-hand side of the join.
 
-**Key Join attributes:**
+<!-- **Key Join attributes:**
 
 - **name:** The name of the table to join.
 - **relationship:** The type of relationship, e.g., one-to-many or many-to-one.
-- **sql:** The SQL condition that defines the join (e.g., `table1.id = table2.table1_id`).
+- **sql:** The SQL condition that defines the join (e.g., `table1.id = table2.table1_id`). -->
 
 #### **2. Dimensions**
 
 Dimensions are descriptive fields that give context to your data. They help organize and filter data, making analyzing different aspects of an entity easier. Examples include `owner_name`, `city`, or `contact_email`. Dimensions are the building blocks for slicing and dicing your data into valuable insights.
 
-**Key Dimension attributes:**
+<!-- **Key Dimension attributes:**
 
 - **name:** A unique identifier for the dimension (e.g., `owner_id`).
 - **type:** The data type of the dimension (e.g., string, number, time).
 - **description:** A detailed explanation of the dimension's role and significance.
 - **primary_key:** The dimension’s primary key, used for establishing relationships.
-- **public:** Controls whether the dimension is visible to all users.
+- **public:** Controls whether the dimension is visible to all users. -->
 
 #### **3. Measures**
 
 Measures are quantifiable metrics that provide valuable business insights, such as the total revenue, number of sales, or customer count. These are typically used for aggregation or statistical operations.
-
+<!-- 
 **Key Measure attributes:**
 
 - **name:** A unique identifier for the measure (e.g., `total_sales`).
@@ -53,18 +53,18 @@ Measures are quantifiable metrics that provide valuable business insights, such 
 - **description:** A concise explanation of the measure’s purpose.
 - **filters:** SQL conditions that apply filters to the measure (e.g., limit to a specific date range).
 - **rollingWindow:** Defines time-based measures like a trailing 7-day sum.
-- **format:** Specifies the format for presenting the measure (e.g., number with two decimal places).
+- **format:** Specifies the format for presenting the measure (e.g., number with two decimal places). -->
 
 #### **4. Segments**
 
 Segments allow you to categorize your data based on predefined filters, which are often used to group data into meaningful subsets, such as 'active users' or 'high-value customers'.
 
-**Key Segment Attributes:**
+<!-- **Key Segment Attributes:**
 
 - **name:** A unique name for the segment (e.g., `active_owners`).
 - **sql:** The filter criteria used to define the segment (e.g., `{TABLE}.status = 'active'`).
 - **public:** Controls visibility of the segment.
-- **Meta:** Metadata provides additional context for the segment, such as security levels or custom tags.
+- **Meta:** Metadata provides additional context for the segment, such as security levels or custom tags. -->
 
 ### **Working with Views**
 
