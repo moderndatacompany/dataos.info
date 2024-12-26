@@ -559,7 +559,7 @@ nav:
         - learn/dp_developer_learn_track/index.md
         - Understanding business goals:
           -  learn/dp_developer_learn_track/understand_business_goals/index.md
-        - Disigning Data Products:
+        - Designing Data Products:
           -  learn/dp_developer_learn_track/design_dp/index.md
         - Building Data Products:
           - Source data connectivity: 
@@ -592,7 +592,7 @@ nav:
               - learn/dp_developer_learn_track/create_semantic_model/testing_lens/index.md
             - Deploy Lens in DataOS:
               - learn/dp_developer_learn_track/create_semantic_model/deploy_lens_on_dataos/index.md
-          - Defining data policies for Lens:
+          - Defining data policies for semantic model:
             - learn/dp_developer_learn_track/data_policy/index.md
           - Creating data APIs:
             - learn/dp_developer_learn_track/data_api/index.md
