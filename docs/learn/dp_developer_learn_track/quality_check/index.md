@@ -60,73 +60,73 @@ For example, if you’re defining quality checks for a 'customer' dataset, your 
 
 For the above quality checks, the Soda workflow yaml manifest file will look like as follows:
     
-    ```yaml title="customer.yml"
-    name: soda-customer-quality
-    version: v1
-    type: workflow
-    tags:
-      - workflow
-      - soda-checks
-    description: Applying quality checks for the customer data
-    workspace: public
-    workflow:
-      # schedule:
-      #   cron: '00 08 * * *'
-      #  # endOn: '2023-12-12T22:00:00Z'
-      #   concurrencyPolicy: Forbid
-      dag:
-        - name: soda-customer-quality
-          spec:
-            stack: soda+python:1.0
-            compute: runnable-default
-            resources:
-              requests:
-                cpu: 1000m
-                memory: 250Mi
-              limits:
-                cpu: 1000m
-                memory: 250Mi
-            logLevel: INFO # WARNING, ERROR, DEBUG
-            stackSpec:
-              inputs:
-                - dataset: dataos://icebase:customer_relationship_management/customer
-                  options:
-                    engine: minerva
-                    clusterName: system
-                  profile:
-                    columns:
-                      - include *
-                  checks:  
-                    - schema:
-                        name: Data type of birth year should be integer
-                        fail:
-                          when wrong column type:
-                            birth_year: string
-                        attributes:
-                          category: Schema
-     
-                    - invalid_count(customer_id) = 0 :
-                        name: Customer Id  should not be null
-                        valid min: 1
-                        attributes:
-                          category: Validity
-     
-                    - missing_count(customer_id) = 0:
-                        name:  Customer Id should not be zero
-                        attributes:
-                          category: Completeness
-    
-                    - duplicate_count(customer_id) = 0:
-                        name:  Customer Id should not be duplicated
-                        attributes:
-                          category: Uniqueness
-     
-                    - avg_length(country) > 6:
-                        name:  Average length of country more than 6
-                        attributes:
-                          category: Accuracy
-     
-    ```
+```yaml title="customer.yml"
+name: soda-customer-quality
+version: v1
+type: workflow
+tags:
+  - workflow
+  - soda-checks
+description: Applying quality checks for the customer data
+workspace: public
+workflow:
+  # schedule:
+  #   cron: '00 08 * * *'
+  #  # endOn: '2023-12-12T22:00:00Z'
+  #   concurrencyPolicy: Forbid
+  dag:
+    - name: soda-customer-quality
+      spec:
+        stack: soda+python:1.0
+        compute: runnable-default
+        resources:
+          requests:
+            cpu: 1000m
+            memory: 250Mi
+          limits:
+            cpu: 1000m
+            memory: 250Mi
+        logLevel: INFO # WARNING, ERROR, DEBUG
+        stackSpec:
+          inputs:
+            - dataset: dataos://icebase:customer_relationship_management/customer
+              options:
+                engine: minerva
+                clusterName: system
+              profile:
+                columns:
+                  - include *
+              checks:  
+                - schema:
+                    name: Data type of birth year should be integer
+                    fail:
+                      when wrong column type:
+                        birth_year: string
+                    attributes:
+                      category: Schema
+  
+                - invalid_count(customer_id) = 0 :
+                    name: Customer Id  should not be null
+                    valid min: 1
+                    attributes:
+                      category: Validity
+  
+                - missing_count(customer_id) = 0:
+                    name:  Customer Id should not be zero
+                    attributes:
+                      category: Completeness
+
+                - duplicate_count(customer_id) = 0:
+                    name:  Customer Id should not be duplicated
+                    attributes:
+                      category: Uniqueness
+  
+                - avg_length(country) > 6:
+                    name:  Average length of country more than 6
+                    attributes:
+                      category: Accuracy
+  
+```
     
 
 The quality checks are displayed in Metis as defined in the Soda YAML manifest file, including their descriptions, as shown in the image below.
@@ -150,56 +150,56 @@ Similarly, you define the following quality checks for the Purchase table:
 - **Schema**: The schema check ensures that the 'recency' column has the correct data type (integer). If it's mistakenly typed as a string, the check will fail.
 - **Validity**: This check ensures that the count of invalid entries in the 'mntwines' column is within a specified range (between 0 and 1). The check will flag the dataset as invalid if the count falls outside this range.
     
-    ```yaml title="Purchase.yml"
-    name: soda-purchase-quality
-    version: v1
-    type: workflow
-    tags:
-      - workflow
-      - soda-checks
-    description: Applying quality checks for the purchase data
-    workspace: public
-    workflow:
-      dag:
-        - name: soda-purchase-quality-job
-          spec:
-            stack: soda+python:1.0
-            compute: runnable-default
-            resources:
-              requests:
-                cpu: 1000m
-                memory: 250Mi
-              limits:
-                cpu: 1000m
-                memory: 250Mi
-            logLevel: INFO # WARNING, ERROR, DEBUG
-            stackSpec:
-              inputs:
-                - dataset: dataos://icebase:customer_relationship_management/purchase
-                  options:
-                    engine: minerva
-                    clusterName: system
-                  profile:
-                    columns:
-                      - include *
-                  checks:  
-                    - freshness(purchase_date) < 2d:
-                        name: If data is older than 2 days 
-                        attributes:
-                          category: Freshness
-    
-                    - schema:
-                        name: Data type of recency should be integer
-                        fail:
-                          when wrong column type:
-                            recency: string
-                        attributes:
-                          category: Schema
-     
-                    - invalid_count(mntwines) < 0:
-                        valid min: 0
-                        valid max: 1
-                        attributes:
-                          category: Validity
-                        title: Invalid count of mntwines
-    ```
+```yaml title="Purchase.yml"
+name: soda-purchase-quality
+version: v1
+type: workflow
+tags:
+  - workflow
+  - soda-checks
+description: Applying quality checks for the purchase data
+workspace: public
+workflow:
+  dag:
+    - name: soda-purchase-quality-job
+      spec:
+        stack: soda+python:1.0
+        compute: runnable-default
+        resources:
+          requests:
+            cpu: 1000m
+            memory: 250Mi
+          limits:
+            cpu: 1000m
+            memory: 250Mi
+        logLevel: INFO # WARNING, ERROR, DEBUG
+        stackSpec:
+          inputs:
+            - dataset: dataos://icebase:customer_relationship_management/purchase
+              options:
+                engine: minerva
+                clusterName: system
+              profile:
+                columns:
+                  - include *
+              checks:  
+                - freshness(purchase_date) < 2d:
+                    name: If data is older than 2 days 
+                    attributes:
+                      category: Freshness
+
+                - schema:
+                    name: Data type of recency should be integer
+                    fail:
+                      when wrong column type:
+                        recency: string
+                    attributes:
+                      category: Schema
+  
+                - invalid_count(mntwines) < 0:
+                    valid min: 0
+                    valid max: 1
+                    attributes:
+                      category: Validity
+                    title: Invalid count of mntwines
+```
