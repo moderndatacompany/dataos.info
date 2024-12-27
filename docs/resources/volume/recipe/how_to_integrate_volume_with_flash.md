@@ -1,6 +1,6 @@
 # How to integrate Volume with Flash?
 
-In DataOS, Flash enhances query performance with in-memory caching. However, when dealing with large datasets, Flash’s memory can become overloaded, leading to system crashes. Volume Storage is attached to Flash to address these challenges by offering persistent and scalable storage. Volume storage extends Flash’s capacity to handle large datasets, ensuring stable performance and preventing crashes.  
+In DataOS, Flash enhances query performance with in-memory caching. However, when dealing with large datasets, Flash’s memory can become overloaded, leading to system crashes. A Persistent Volume alongside Flash is recommended when working with high volumes of data. The PV enables Flash to spill data to disk, which significantly improves performance by preventing memory overload and ensuring smoother handling of large datasets.
 
 Follow the below steps:
 
