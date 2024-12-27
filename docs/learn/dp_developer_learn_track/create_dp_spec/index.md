@@ -100,7 +100,7 @@ resource:
     ref: bundle:v1beta:product360-bundle. # mandatory | referred Bundle must exist
 ```
     
-## tep 4: Define inputs and outputs
+## Step 4: Define inputs and outputs
 Set up datasets that the data product will consume and produce:
     
 There are two types of dataset references - 

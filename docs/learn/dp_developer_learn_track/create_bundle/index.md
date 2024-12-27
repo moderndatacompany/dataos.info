@@ -49,7 +49,7 @@ layer: "user"
 bundle:
   resources:
     - id: lens
-      file: resources/lens2/deployement.yaml
+      file: resources/lens2/deployment.yaml
       workspace: public
 
     - id: api
