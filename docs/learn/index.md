@@ -113,7 +113,7 @@ Here are the key responsibilities of a Data Product Developer, though specific t
 
 - **Data Governance and Security**: Apply appropriate data security, access controls, ensuring regulatory compliance.
 
-- **Deployement and Maintainance**: Deploy Data Products efficiently, monitor their performance, and manage updates using CI/CD practices.
+- **deployment and Maintainance**: Deploy Data Products efficiently, monitor their performance, and manage updates using CI/CD practices.
 
 #### **Core modules**
 
