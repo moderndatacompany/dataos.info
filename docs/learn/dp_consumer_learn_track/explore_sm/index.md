@@ -130,11 +130,11 @@ You begin your exploration on the 'Studio' tab, which opens by default when you 
 
 Let's analyze the total number of customers per country:
 
-1. **Select** the `country` dimension and the `total_customers` measure.
+1. Select the `country` dimension and the `total_customers` measure.
     
     ![table.png](/learn/dp_consumer_learn_track/explore_sm/table.png)
     
-2. Hit **Run Query** to generate the query result as table which you can change later in Chart.
+2. Hit Run Query to generate the query result as table which you can change later in Chart.
 
     ![query_result.png](/learn/dp_consumer_learn_track/explore_sm/query_result.png)
 
@@ -164,7 +164,7 @@ Once you save any Perspective, it will be accessible to everyone and can be acce
 
 Transform your table into a visual story:
 
-1. **Switch to the Chart** tab and select the chart type, Line, or Bar Chart.
+1. Switch to the Chart tab and select the chart type, Line, or Bar Chart.
     
     ![bar_chart.png](/learn/dp_consumer_learn_track/explore_sm/bar_chart.png)
     
@@ -254,7 +254,7 @@ To save a query from two days ago for future reference, click on the query, give
     
     ![pivot.gif](/learn/dp_consumer_learn_track/explore_sm/pivot.gif)
     
-    This matrix will help the you identify:
+    This matrix will help you identify:
     
     - High-risk customers by segment and country.
     - Which countries have the highest total spend.
@@ -271,7 +271,7 @@ For teams needing to fetch data programmatically, the 'Integration' tab provides
 
 ![integration_tab.png](/learn/dp_consumer_learn_track/explore_sm/integration_tab.png)
 
-Let’s assume you must fetch the 'total number of customers by country'. Rather than building REST endpoints, you can efficiently query the data using a `curl` command, `GraphQL`, or `Postgres`, depending on your preference. These methods allow you to retrieve data from a given endpoint and present it in a user-friendly format within your application.
+Let’s assume you need to fetch the 'total number of customers by country'. Rather than building REST endpoints, you can efficiently query the data using a `curl` command, `GraphQL`, or `Postgres`, depending on your preference. These methods allow you to retrieve data from a given endpoint and present it in a user-friendly format within your application.
 
 First, select the following dimensions and measures:
 
@@ -298,9 +298,7 @@ GraphQL is another option for querying data over HTTP.
 To use GraphQL:
 
 1. Select 'GraphQL' in integration options.
-2. **Copy GraphQL Query**
-    
-    Click on 'GraphQL' and copy the query provided.
+2. Click on 'GraphQL' and copy the query provided.
     
 3. **Test the Query**
     
