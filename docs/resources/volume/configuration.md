@@ -1,10 +1,28 @@
-# Attributes of Volume Manifest
+# Attributes of Volume manifest
 
 ## Structure of Volume manifest
 
-```yaml title="Volume Manifest Reference"
---8 "examples/resources/volume/manifest_reference.yaml"
+```yaml 
+## RESOURCE META SECTION
+# Attributes commmon across all DataOS Resources
+name: ${{resource_name}} # Name of the Resource (e.g., my-first-worker)
+version: v1beta # Manifest version of the Resource
+type: worker # Type of Resource
+tags: # Tags for categorizing the Resource
+  - ${{tag_example_1}} # Tags (e.g., dataos:worker)
+  - ${{tag_example_2}} # Additional tags (e.g., dataos:workspace:curriculum)
+description: ${{resource_description}} # Description of the resource (e.g., Common attributes applicable to all DataOS Resources)
+owner: ${{resource_owner}} # Owner of the Resource (e.g., iamgroot)
+layer: ${{resource_layer}} # DataOS Layer (e.g., user, system)
+
+# VOLUME-SPECIFIC SECTION
+# Attributes specific to Volume resource-type
+volume:
+   size: ${{1Gi} } #100Gi, 50Mi, 10Ti, 500Mi
+   accessMode: ${{accessMode}} #Mode Eg: ReadWriteMany ReadWriteOnce, ReadOnlyMany 
+   type: ${{typeofvolume}} #Volume type (e.g. temps)
 ```
+
 
 ## Configuration
 
@@ -61,6 +79,12 @@ volume:
 
 
 #### **`accessMode`**
+
+**ReadOnlyMany:** In this mode multiple pods running on different Nodes could connect to the storage and carry out read operation.
+
+**ReadWriteMany:** In this mode multiple pods running on different Nodes could connect to the storage and carry out read and write operation.
+
+**ReadWriteOnce:** the volume can be mounted as read-write by a single node. ReadWriteOnce access mode still can allow multiple pods to access the volume when the pods are running on the same node. For single pod access, please see ReadWriteOncePod.
 
 **Description:** A Volume can be mounted on a host in any way each Volumes access modes are set to the specific modes.
 

@@ -218,7 +218,7 @@ For this analysis, you choose the following members:
 
 <aside class="callout">
 🗣️
-You need to first select the dimension you want to apply the filter to—only then will it appear as an option in the 'Filter' section. You can also hide the selected dimension if you don't want it to be part of the query result.
+To apply a filter, first select the dimension you want to filter—this will make it available as an option in the 'Filter' section. If you don’t want the selected dimension to appear in the query result, you can hide it.
 
 </aside>
 
