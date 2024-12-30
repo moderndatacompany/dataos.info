@@ -7,9 +7,10 @@ This guide outlines the end-to-end process for building and deploying a semantic
 After you've established data connections and built robust data pipelines to process and transform raw data, the next step is to create a semantic model (Lens) on top of the Product-360 Data Product. Your objective is to transform raw data into a structured model that enables the generation of trusted, consistent metrics and KPIs. These metrics will be accessible through APIs and usable across business intelligence, AI, and embedded analytics tools.
 
 ## Quick concepts
-Semantic models aim to represent data in a way that is easily understandable by business users.
 
-**Why are semantic models important in data products and management?**
+Semantic models aim to represent data in a way that is easily understandable by business users. They provide a logical structure that defines key entities, their relationships.
+
+**Importance of semantic models:**
 
 - **Improved Data Accessibility:** Semantic models present data in a understandable way, using a common business language that enables users of all technical levels to access and use data effectively, promoting self-service in data product development.
 - **Enhanced Data Discovery:** By organizing data clearly, semantic models simplify the process of discovering and exploring data, especially in large or complex datasets, helping users quickly find relevant information.
