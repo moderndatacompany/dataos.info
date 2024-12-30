@@ -120,8 +120,10 @@ arguments:
 
 ## Recipes
 
-[How to deploy a Streamlit App on DataOS](/resources/stacks/container/build_a_streamlit_app_on_dataos/)
+[How to deploy a Streamlit App on DataOS?](/resources/stacks/container/build_a_streamlit_app_on_dataos/)
 
 [Container Stack within a Workflow](/resources/stacks/container/container_stack_within_a_workflow/)
 
 [Creating shortcut for Container Stack based applications](/resources/stacks/container/container_stack_based_app_shortcut/)
+
+[How to integrate a Volume in Container Stack?](/resources/stacks/container/attach_volume_to_container/)
