@@ -126,4 +126,4 @@ arguments:
 
 [Creating shortcut for Container Stack based applications](/resources/stacks/container/container_stack_based_app_shortcut/)
 
-[How to integrate a Volume in Container Stack?](/resources/stacks/container/attach_volume_to_container/)
+[Attaching a Volume to a Container Stack](/resources/stacks/container/attach_volume_to_container/)
