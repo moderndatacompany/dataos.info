@@ -143,7 +143,7 @@ The Pager manifest file is structurally comprised of the following sections:
 
 #### **Resource meta section**
 
-In DataOS, a Pager is categorized as a [Resource-type](/resources/types_of_dataos_resources/). The Resource meta section within a manifest file comprises metadata attributes universally applicable to all DataOS Resources. This information is stored in the Poros database. The provided codeblock elucidates the requisite attributes for this section:
+In DataOS, a Pager is categorized as a [Resource-type](/resources/types/). The Resource meta section within a manifest file comprises metadata attributes universally applicable to all DataOS Resources. This information is stored in the Poros database. The provided codeblock elucidates the requisite attributes for this section:
 
 === "Syntax"
 
