@@ -19,8 +19,8 @@ As a skilled Data Engineer/data Product Developer, you are presented with a new 
 
 Begin by identifying the input (Data Source A) and output (Data Source B) for the pipeline. Within DataOS, this involves understanding the characteristics of each data source:
 
-- **Data source A:** A PostgreSQL database containing raw transactional data.
-- **Data source B:** An S3 bucket for storing processed data in Parquet format.
+- **Data source A:** An Azure BLOB storage containing raw customer data.
+- **Data source B:** A Lakehouse instance for storing processed data in Parquet format.
 
 
 ### **Step 2: Creating Depots**
@@ -60,53 +60,76 @@ here for the given scenario, you can choose the Flare Stack for its robust capab
 After deciding upon the suitable processing Stack, you need to draft the manifest file to configure the pipeline. Specify the Workflow Resource, define the input and output data sources, and integrate the Flare Stack.
 
 ```yaml
-version: v1
-name: postgres-read-01
+version: v1  # v1
+name: wf-customer-data
 type: workflow
 tags:
-  - bq
-  - dataset
-description: This job read and write data from to postgres
-title: Read Write Postgres
+  - crm
+description: Ingesting customer data in lakehouse
 workflow:
+  # schedule:
+  #   cron: '00 20 * * *'
+  #  # endOn: '2023-12-12T22:00:00Z'
+  #   concurrencyPolicy: Forbid
   dag:
-    - name: read-postgres
-      title: Read Postgres
-      description: This job read data from postgres
+    - name: dg-customer-data
+      # title: flatten  Data Ingester
+      # description: The job ingests Adobe flatten  data from S3 into icebase zone
       spec:
         tags:
-          - Connect
+          - crm
         stack: flare:6.0
         compute: runnable-default
-
-        flare:
+        stackSpec:
+          driver:
+            coreLimit: 2000m
+            cores: 1
+            memory: 2000m
+          executor:
+            coreLimit: 2000m
+            cores: 1
+            instances: 1
+            memory: 2000m
           job:
             explain: true
             inputs:
-              - name: city_connect
-                dataset: dataos://sanitypostgres:public/postgres_write_12
+              - name: customer_data
+                dataset: dataos://thirdparty:onboarding/customer.csv
+                format: csv
                 options:
-                  driver: org.postgresql.Driver
-
+                  inferSchema: true
             logLevel: INFO
             outputs:
-              - name: input
-                dataset: dataos://icebase:smoketest/postgres_read_12?acl=rw
+              - name: final
+                dataset: dataos://lakehouse:customer_relationship_management/customer_data?acl=rw
                 format: Iceberg
                 options:
                   saveMode: overwrite
-                description: Data set from blender
-                tags:
-                  - Connect
-                title: Postgres Dataset
+                  iceberg:
+                    properties:
+                      write.format.default: parquet
+                      write.metadata.compression-codec: gzip
+                    # partitionSpec:
+                    #   - type: day
+                    #     column: date_time
+                    #     name: day
             steps:
               - sequence:
-                  - name: input
-                    doc: Pick all columns from cities and add version as yyyyMMddHHmm formatted
-                      timestamp.
-                    sql: SELECT * FROM city_connect limit 10 
-```
+                  - name: final
+                    sql: >
+                      SELECT 
+                        CAST(customer_id AS LONG)  as customer_id,
+                        CAST(birth_year AS LONG) as birth_year,
+                        education, 
+                        marital_status, 
+                        CAST(income AS DOUBLE) as income,
+                        country,
+                        current_timestamp() as created_at
+                      FROM customer_data
+                    
 
+
+```
 
 ### **Step 5: Applying the manifest file**
 

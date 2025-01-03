@@ -8,18 +8,24 @@ To effectively analyze customer and sales data for uncovering product affinities
 
 ## Quick concepts
 
-Before diving into the detailed steps, let’s cover some key concepts that will help you grasp the essentials:
+### **Overview of data quality checks**
 
-- **Accuracy:** The degree to which data correctly represents the real-world entity or event.
-- **Completeness:** The extent to which all required data is available and no essential information is missing.
-- **Freshness:** The timeliness of the data, ensuring it is up-to-date and reflects the most recent information.
-- **Schema:** The structure or organization of the data, defining how data elements are arranged and related.
-- **Uniqueness:** Ensuring that each record or data point is distinct and not duplicated within the dataset.
+Data quality checks verify that data meet predefined standards of accuracy, completeness, uniqueness, and validity. These checks are essential for:
+
+- Identifying and resolving data inconsistencies.
+
+- Ensuring data readiness for reliable analysis.
+
+- Maintaining compliance with defined Service Level Objectives (SLOs).
+
+### **Common SLOs for data quality**
+
+- **Accuracy:** The degree to which data correctly represents the real-world entity or event. For example, at least 99% of data points must be correct.
+- **Completeness:** The extent to which all required data is available and no essential information is missing. Like, No more than 1% of records can have missing values.
+- **Freshness:** The timeliness of the data, ensuring it is up-to-date and reflects the most recent information. You may require that data should be updated within the last 24 hours.
+- **Schema:** The structure or organization of the data, defining how data elements are arranged and related. In critical applications, you might want that 100% of records must adhere to the expected schema.
+- **Uniqueness:** Ensuring that each record or data point is distinct and not duplicated within the dataset. You may define that a maximum of 0.5% of records can be duplicates.
 - **Validity:** The adherence of data to defined formats, rules, and constraints to ensure correctness.
-
-## What do you need to get started?
-
-To fully engage with this topic, a basic understanding of data quality concepts is recommended.
 
 ## Steps to access Data Product quality
 

@@ -4,7 +4,29 @@
 - **Gartner®**
 > 
 
-In today’s data-driven world, businesses are constantly looking for ways to leverage data to make informed decisions, optimize operations, and drive revenue growth. A *Data Product* is an integrated, self-contained data solution that serves as a key enabler of these business goals. It combines data, metadata, and analytical capabilities into a consumable format that solves specific business problems or supports data analytics and business intelligence efforts.
+In today’s data-driven world, businesses are constantly looking for ways to leverage data to make informed decisions, optimize operations, and drive revenue growth. A *Data Product* is an integrated, self-contained data solution that serves as a key enabler of these business goals. It combines data, metadata, and analytical capabilities into a consumable format that solves specific business problems or supports data analytics and business intelligence efforts. 
+
+A Data Product encompasses:
+
+- **Data**: The core data itself, which can come from various sources.
+
+- **Metadata**: Information about the data, including its origin, quality, and relevance.
+
+- **Transformation Code**: Scripts or programs that process and prepare the data for analysis.
+
+- **Input and Output Definitions**: Specifications for how data is ingested and delivered.
+
+- **Discovery and Observability**: Mechanisms for finding and monitoring the Data Product.
+
+- **APIs**: Interfaces for programmatic access to the data (consumption options).
+
+- **Documentation**: Explanations and instructions for understanding and using the Data Product.
+
+- **SLOs (Service Level Objectives)**: Performance and quality standards for the Data Product.
+
+- **Governance**: Rules and policies for managing access, security, and compliance.
+
+- **Platform Dependencies**: Resources like compute and storage required to run the Data Product
 
 Think of Data Products as purpose-driven solutions designed to transform raw data into insights you can act on. 
 
@@ -110,7 +132,7 @@ Entity-first Data Products focus on the characteristics and origins of the under
 🗣️ Source-aligned data products represent data as it is in the operational system with minimal transformation.
 </aside>
 
-### **Model-First Data Products**
+### **Model-First Data Products or Consumer-aligned Data Products**
 
 Model-first Data Products are designed with a focus on the end-user’s needs and use cases, emphasizing semantics and context. Instead of starting with the raw data, these products prototype the desired outcomes first, and then the underlying components are organized to achieve those outcomes. These are also known as Consumer-aligned Data Products.
 
@@ -126,20 +148,32 @@ Model-first Data Products are designed with a focus on the end-user’s needs an
 
 ## FAQs
 
-**Q1: Can multiple consumer-aligned data products use the same set of source-aligned data products?**  
-DataOS offers the flexibility to build a variety of Data Products with potentially shared underlying data sources. This means that multiple data products aligned with different consumers can use the same set of source-aligned data products. For example, you could create data products using Customer, Product, and Sales data to support marketing campaigns, cross-sell opportunities, and customer 360 use cases.
-
-**Q2: What makes a Data Product consumption-ready?**  
-A Data Product is considered consumption-ready when it is trusted by consumers, maintained up-to-date by engineering teams, and governed with proper approvals for use.
-
-**Q3: Can Data Products evolve over time?**  
-Yes, Data Products are designed to be:  
-**Responsive**: Adaptable to user feedback and changing requirements.  
-**Reactive**: Capable of processing real-time data for timely decision-making.
-
-**Q4: Why are Data Products important?**  
+**Q1: Why are Data Products important?**  
 Data Products enable businesses to:  
 1. Gain actionable insights.  
 2. Reuse, share, and monetize data effectively.  
 3. Improve decision-making through analytics.  
 4. Seamlessly integrate data into applications.
+
+**Q2: Is consumption part of a Data Product?**  
+Yes, consumption is linked to the consumption-ready layer of a Data Product.
+
+**Q3: Is a report/dashboard considered a Data Product?**  
+No, a report or visualization is a way to consume a Data Product but is not a Data Product itself.
+
+**Q4: Are tables and schemas included in a Data Product?**  
+Yes, tables and schemas are integral components of a Data Product.
+
+**Q5: Can one Data Product serve as input for another?**  
+Absolutely, Data Products can interconnect to support various workflows.
+
+**Q6: What makes a Data Product consumption-ready?**  
+A Data Product is considered consumption-ready when it is trusted by consumers, maintained up-to-date by engineering teams, and governed with proper approvals for use.
+
+**Q7: Can Data Products evolve over time?**  
+Yes, Data Products are designed to be:  
+**Responsive**: Adaptable to user feedback and changing requirements.  
+**Reactive**: Capable of processing real-time data for timely decision-making.
+
+**Q8: Can multiple consumer-aligned data products use the same set of source-aligned data products?**  
+DataOS offers the flexibility to build a variety of Data Products with potentially shared underlying data sources. This means that multiple data products aligned with different consumers can use the same set of source-aligned data products. For example, you could create data products using Customer, Product, and Sales data to support marketing campaigns, cross-sell opportunities, and customer 360 use cases.

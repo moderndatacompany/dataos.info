@@ -572,11 +572,11 @@ nav:
               - learn/dp_developer_learn_track/build_pipeline/first_pipeline/index.md
             - Sheduling Workflows:
               - learn/dp_developer_learn_track/build_pipeline/scheduling_workflows/index.md
-            - Data quality Checks:
+            - Data quality checks:
               - learn/dp_developer_learn_track/build_pipeline/dq_check/index.md
             - Pipeline observability:
               - learn/dp_developer_learn_track/build_pipeline/pipeline_observability/index.md
-          - Implementing quality Checks:
+          - Implementing quality checks:
             - learn/dp_developer_learn_track/quality_check/index.md
           - Build a semantic model:
             - learn/dp_developer_learn_track/create_semantic_model/index.md
