@@ -1,0 +1,45 @@
+depot\_service.apis package
+===========================
+
+Submodules
+----------
+
+depot\_service.apis.dataset\_api module
+---------------------------------------
+
+.. automodule:: depot_service.apis.dataset_api
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.apis.depot\_api module
+-------------------------------------
+
+.. automodule:: depot_service.apis.depot_api
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.apis.resolver\_api module
+----------------------------------------
+
+.. automodule:: depot_service.apis.resolver_api
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+depot\_service.apis.secret\_api module
+--------------------------------------
+
+.. automodule:: depot_service.apis.secret_api
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: depot_service.apis
+   :members:
+   :undoc-members:
+   :show-inheritance:
