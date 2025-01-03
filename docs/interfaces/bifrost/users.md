@@ -10,7 +10,7 @@ The Users tab in Bifrost presents a list of users who have access to DataOS. Use
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/bifrost/users/userpanel.png" alt="User tab in Bifrost" style="width: 60rem; border: 1px solid black;">
+    <img src="/interfaces/bifrost/users/userpanel.png" alt="User tab in Bifrost" style="width: 40rem; border: 1px solid black;">
     <figcaption>User tab in Bifrost</figcaption>
   </div>
 </center>
@@ -24,7 +24,7 @@ Clicking on a user in the list opens a detailed view, showcasing additional info
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/bifrost/users/userpanel2.png" alt="Info section" style="width: 60rem; border: 1px solid black;">
+    <img src="/interfaces/bifrost/users/userpanel2.png" alt="Info section" style="width: 40rem; border: 1px solid black;">
     <figcaption>Info section</figcaption>
   </div>
 </center>
@@ -33,7 +33,7 @@ Clicking on a user in the list opens a detailed view, showcasing additional info
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/bifrost/users/userpanel3.png" alt="Tags section" style="width: 60rem; border: 1px solid black;">
+    <img src="/interfaces/bifrost/users/userpanel3.png" alt="Tags section" style="width: 40rem; border: 1px solid black;">
     <figcaption>Tags section</figcaption>
   </div>
 </center>
@@ -42,7 +42,7 @@ Clicking on a user in the list opens a detailed view, showcasing additional info
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/bifrost/users/userpanel4.png" alt="Grants section" style="width: 60rem; border: 1px solid black;">
+    <img src="/interfaces/bifrost/users/userpanel4.png" alt="Grants section" style="width: 40rem; border: 1px solid black;">
     <figcaption>Grants section</figcaption>
   </div>
 </center>
@@ -51,7 +51,7 @@ Clicking on a user in the list opens a detailed view, showcasing additional info
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/bifrost/users/userpanel5.png" alt="Change logs section" style="width: 60rem; border: 1px solid black;">
+    <img src="/interfaces/bifrost/users/userpanel5.png" alt="Change logs section" style="width: 40rem; border: 1px solid black;">
     <figcaption>Change logs section</figcaption>
   </div>
 </center>
@@ -60,7 +60,7 @@ Clicking on a user in the list opens a detailed view, showcasing additional info
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/bifrost/users/userpanel6.png" alt="Advanced section" style="width: 60rem; border: 1px solid black;">
+    <img src="/interfaces/bifrost/users/userpanel6.png" alt="Advanced section" style="width: 40rem; border: 1px solid black;">
     <figcaption>Advanced section</figcaption>
   </div>
 </center>
@@ -124,7 +124,7 @@ To add a user to a Role follow the below steps:
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/bifrost/users/users1.png" alt="Users tab" style="width: 60rem; border: 1px solid black;">
+    <img src="/interfaces/bifrost/users/users1.png" alt="Users tab" style="width: 40rem; border: 1px solid black;">
     <figcaption>Users tab</figcaption>
   </div>
 </center>
@@ -133,7 +133,7 @@ To add a user to a Role follow the below steps:
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/bifrost/users/users2.png" alt="Tags section under Users tab" style="width: 60rem; border: 1px solid black;">
+    <img src="/interfaces/bifrost/users/users2.png" alt="Tags section under Users tab" style="width: 40rem; border: 1px solid black;">
     <figcaption>Tags section under Users tab</figcaption>
   </div>
 </center>
@@ -142,7 +142,7 @@ To add a user to a Role follow the below steps:
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/bifrost/users/users3.png" alt="Add Role button under Tags section of Users tab" style="width: 60rem; border: 1px solid black;">
+    <img src="/interfaces/bifrost/users/users3.png" alt="Add Role button under Tags section of Users tab" style="width: 40rem; border: 1px solid black;">
     <figcaption>Add Role button under Tags section of Users tab</figcaption>
   </div>
 </center>
@@ -151,7 +151,7 @@ To add a user to a Role follow the below steps:
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/bifrost/users/users4.png" alt="New Role tag added in the Tags section" style="width: 60rem; border: 1px solid black;">
+    <img src="/interfaces/bifrost/users/users4.png" alt="New Role tag added in the Tags section" style="width: 40rem; border: 1px solid black;">
     <figcaption>New Role tag added in the Tags section</figcaption>
   </div>
 </center>
@@ -189,7 +189,7 @@ Following these steps will result in the selected Role or Tag being removed from
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/bifrost/users/grant_usecase_minerva1.png" alt="All Use-cases assigned to the user are displayed" style="width: 60rem; border: 1px solid black;">
+    <img src="/interfaces/bifrost/users/grant_usecase_minerva1.png" alt="All Use-cases assigned to the user are displayed" style="width: 40rem; border: 1px solid black;">
     <figcaption>All Use-cases assigned to the user are displayed</figcaption>
   </div>
 </center>
@@ -199,7 +199,7 @@ Following these steps will result in the selected Role or Tag being removed from
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/bifrost/users/grant_usecase_minerva2.png" alt="Minerva Cluster Access Use-Case displayed" style="width: 60rem; border: 1px solid black;">
+    <img src="/interfaces/bifrost/users/grant_usecase_minerva2.png" alt="Minerva Cluster Access Use-Case displayed" style="width: 40rem; border: 1px solid black;">
     <figcaption>Minerva Cluster Access Use-Case displayed</figcaption>
   </div>
 </center>

@@ -140,9 +140,9 @@ lens:
       
 # Data Source configuration      
   source: 
-    type: minerva # Source type (optional)
-    name: system # Source name (optional)
-    catalog: icebase # Catalog name for Minerva or Themis (optional)
+    type: depot # Source type (could be themis, minerva flash as well)
+    name: lakehouse # Source name (name of the depot)
+    catalog: lakehouse # Catalog name for the depot
   repo: # Lens model code repository configuration (mandatory)
     url: https://bitbucket.org/tmdc/dataproducts # URL of repository containing the Lens model (mandatory)
     lensBaseDir: dataproducts/setup/resources/lens2/model # Relative path of the Lens 'model' directory in repository (mandatory)
@@ -196,7 +196,7 @@ lens:
         cpu: 1600m
         memory: 2240Mi
 # Metric configuration 
-  metric: (optional)
+  metric:                         #(optional)
     logLevel: info # Log level for metrics (optional)
 ```
 
@@ -204,7 +204,7 @@ A typical deployment of Lens includes the following components:
 
 | **Section** | **Description** |
 | --- | --- |
-| **Source** | Defines the configuration of the data source for data processing and querying. |
+| **Source** | Specifies the source configuration from which the Lens will be mapped. The Lens support the depot, themis, minerva and flash as source. |
 | **Repo** | Outlines the configuration of the code repository where the model used by Lens resides. |
 | **API** | Configures an API service that processes incoming requests, connecting to the database for raw data. A single instance is provisioned by default, but the system can auto-scale to add more instances based on workload demands, with a recommendation of one instance for every 5-10 requests per second. |
 | **Worker** | When `LENS2_REFRESH_WORKER` is set to true, a Refresh Worker manages and refreshes the memory cache in the background, keeping refresh keys for all data models up-to-date. It invalidates the in-memory cache but does not populate it, which is done lazily during query execution. |
