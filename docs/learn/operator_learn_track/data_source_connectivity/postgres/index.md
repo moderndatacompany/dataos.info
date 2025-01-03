@@ -112,7 +112,7 @@ This command displays the details of the configured Depot, confirming that it is
 
 **Extracting metadata**
 
-Finally, run a Scanner Workflow to extracct metadata of the connected data source to validate that the Depot is established successfully. This step completes the process of establishing a secure connection from DataOS to the PostgreSQL database.
+Finally, run a Scanner Workflow to extract metadata of the connected data source to validate that the Depot is established successfully. This step completes the process of establishing a secure connection from DataOS to the PostgreSQL database.
 
 ```yaml
 version: v1
