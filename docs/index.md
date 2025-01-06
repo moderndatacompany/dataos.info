@@ -278,7 +278,7 @@ These DataOS Resources ensure data security and access control, managing sensiti
     Links the Subject-Predicate-Object relationship to create access policies, granting specific system or data access.
 </div>
 
-#### **Deployement**
+#### **deployment**
 
 These DataOS Resources streamline the deployment process of data products, facilitate the packaging, distribution, and execution of applications and services.
 

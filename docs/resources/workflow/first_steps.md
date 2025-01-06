@@ -229,7 +229,7 @@ Once you have constructed the Workflow YAML file, it's time to [apply](/resource
     dataos-ctl apply -f home/iamgroot/resource/workflow.yml -w curriculum
     ```
 
-Workspace specification is optional. In case its not provided the Workflow runs in the `curriculum` Workspace. To create a new Workspace, execute the [`workspace create`](/interfaces/cli/command_reference/#/workspace) command as shown below and then execute the above command:
+Workspace specification is optional. In case its not provided the Workflow runs in the `curriculum` Workspace. To create a new Workspace, execute the [`workspace create`](/interfaces/cli/command_reference/#workspace) command as shown below and then execute the above command:
 
 === "Command"
 

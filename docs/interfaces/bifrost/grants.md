@@ -12,11 +12,11 @@ To assign a particular use case to multiple roles, create a Grant. When administ
 
 While it's straightforward to assign Use-Cases to users via the Bifrost UI, there's a rare chance that you may be required to assign a particular use-case to multiple users across different teams, you can accomplish this by following the steps outlined below.
 
-- On Bifrost UI, goto the **Grants** tab, where you can view all the Grants (Use-Cases assigned to users). Click on **Create Grant.**
+- On Bifrost UI, go to the **Grants** tab, where you can view all the Grants (Use-Cases assigned to users). Click on **Create Grant.**
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/bifrost/grants/create_grant.png" alt="Create Grant" style="width: 60rem; border: 1px solid black;">
+    <img src="/interfaces/bifrost/grants/create_grant.png" alt="Create Grant" style="width: 40rem; border: 1px solid black;">
     <figcaption>Create Grant</figcaption>
   </div>
 </center>

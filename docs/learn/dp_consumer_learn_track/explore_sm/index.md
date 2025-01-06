@@ -4,9 +4,37 @@ In this topic, we’ll walk you through navigating and understanding the associa
 
 ## Scenario
 
-Imagine you’re a data analyst and want to analyze data product 'Product360', aiming to leverage data insights for performance tracking and customer behavior analysis. By exploring its semantic model on **Data Product Hub**, you plan to access and analyze cross-sell and upsell opportunities, which involves examining dimensions, measures, and metrics like **customer segments, product affinity scores,** and **total spending**. Let’s see how this exploration unfolds.
+Imagine you’re a data analyst and want to analyze data product 'Product360', aiming to leverage data insights for performance tracking and customer behavior analysis. By exploring its semantic model on Data Product Hub, you plan to access and analyze cross-sell and upsell opportunities, which involves examining dimensions, measures, and metrics like `customer_segments`, `product affinity scores`,and `total spending`. Let’s see how this exploration unfolds.
+
+## Quick concepts
+
+'Lens' is a key DataOS Resource in creating and implementing semantic models. Here are the foundational concepts to know before diving into exploring your semantic model:
+
+1. **Physical Data Sources**  
+   Semantic models connect to a variety of physical data sources, such as Postgres, BigQuery, and Redshift. Understanding where your data originates helps in appreciating how the semantic model organizes it into logical structures.
+
+2. **Lakehouse (Optional)**  
+   For large datasets, consider creating a Lakehouse within DataOS. Lakehouses unify data from multiple sources, making it easier to manage and query data.
+
+3. **Logical Tables**  
+   A semantic model maps physical data (from data sources or Lakehouse) to logical tables establishing relationships between data entities. These logical tables are structured representations of your data. Semantic models organize these tables to simplify analysis and help users focus on insights rather than raw data.
+
+4. **Table Properties**  
+   When creating logical tables, SQL and key properties like schema, data types, and constraints are specified.
+
+5. **Data Quality and Transformation**  
+   Semantic models incorporate tools for ensuring high data quality and transforming raw data into user-friendly formats. By maintaining accuracy, consistency, and reliability, semantic models ensure that the data is ready for exploration.
+
+6. **Metrics**  
+   Semantic models define meaningful metrics to track performance or key business indicators.
+
+7. **Consumption Ports**  
+   Semantic models enable versatile data consumption options, such as BI tools and APIs for seamless integration with GraphQL and Studio for advanced analytics.
+
 
 ## Uncover insights from your Semantic Model
+
+Exploring semantic models allows users to understand the data flow, relationships within the data, and the transformations that drive insights.
 
 ### **Navigate to the ‘Explore’ option**
     
@@ -16,56 +44,56 @@ On the Data Product details page, click the "Explore" button to navigate to the 
 
 Here, the interface displays various tabs.
 
-You observe three tabs given  **Studio**, **Model**, and **GraphQL** to analyze the data model for different purposes.
+You observe three tabs given  Studio, Model, and GraphQL to analyze the data model for different purposes.
 
 ![sm_explore.png](/learn/dp_consumer_learn_track/explore_sm/sm_explore.png)
 
-Before exploring data via the semantic model in **Studio**, let us understand the model fully. 
+Before exploring data via the semantic model in Studio, let us understand the model fully. 
     
 
 ## Access model for unpacking the data structure
 
-You first decide to explore the Model. As you open the **Model** tab, you start exploring the structure of the Data Product, gaining insights into the connections and dependencies across datasets. 
+You first decide to explore the Model. As you open the Model tab, you start exploring the structure of the Data Product, gaining insights into the connections and dependencies across datasets. 
 
 ### **Visualize Connections in the Graph View**
 
 The **Graph** view offers a visual representation of the 'Product360' semantic model, showcasing how logical tables and entities are interconnected, with key metrics highlighting their relationships.
 
-Explore entities like **Customer**, **Purchase**, and **Purchase Data** along with key metrics like **cross_sell_opportunity**, **total_spending**, and **purchase_frequency**. Metrics marked with a wave icon are derived from logical tables, showing their role in performance tracking. For example, **cross_sell_opportunity_score** is created using members from the **purchase_data** and **product** tables, while **purchase_history** and **total_spending** are built using dimensions and measures from these logical tables.
+Explore entities like `Customer`, `Product`, and `Purchase` Data along with key metrics like `cross_sell_opportunity`, `total_spending`, and `purchase_frequency`. Metrics marked with a wave icon are derived from logical tables, showing their role in performance tracking. For example, `cross_sell_opportunity_score` is created using members from the `purchase_data` and `product` tables, while `purchase_history` and `total_spending` are built using dimensions and measures from these logical tables.
 
 ![model_schema.png](/learn/dp_consumer_learn_track/explore_sm/model_schema.png)
 
-Click **Show Fullscreen** to explore the model easily. Then, use **Expand All** to view all measures, dimensions, entities, and metrics for detailed insights.
+Click 'Show Fullscreen' to explore the model easily. Then, use 'Expand All' to view all measures, dimensions, entities, and metrics for detailed insights.
 
 ![schema_fullscreen.png](/learn/dp_consumer_learn_track/explore_sm/schema_fullscreen.png)
 
-To examine the members of a single metric, say **total_spending. Y**ou hover over it and get the names of the dimensions and measures taken from purchase_data and the product table represented by the blue dashed line. The blue dashed lines highlight which dimensions and measures from the tables are utilized to calculate the **total-spending** metric. This referencing adopts a naming convention where each measure or dimension is prefixed with its table name, like `purchase_data_total_spend`. This convention and visual representation make it easy to understand the relationships and dependencies within the data model.
+To examine the members of a single metric, say `total_spending`. You hover over it and get the names of the dimensions and measures taken from purchase_data and the product table represented by the blue dashed line. The blue dashed lines highlight which dimensions and measures from the tables are utilized to calculate the `total_spending` metric. This referencing adopts a naming convention where each measure or dimension is prefixed with its table name, like `purchase_data_total_spend`. This convention and visual representation make it easy to understand the relationships and dependencies within the data model.
 
 ![metric_referennce.png](/learn/dp_consumer_learn_track/explore_sm/metric_referennce.png)
 
-You click on a metric, say **cross_sell_oppurtunity_score,** which opens a side panel detailing all measures, segments, and dimensions within it. You can see each attribute's data type (numeric, string, date).
+You click on a metric, say `cross_sell_oppurtunity_score`, which opens a side panel detailing all measures, segments, and dimensions within it. You can see each attribute's data type (numeric, string, date).
 
 ![customer_schema.png](/learn/dp_consumer_learn_track/explore_sm/customer_schema.png)
 
 ### **Explore Details in the Schema Section**
 
-Under **Schema**, gain insight into the table structure, column names, data types, and primary keys. This detailed breakdown ensures that you have a thorough understanding of data hierarchies and access control.
+Under 'Schema', gain insight into the table structure, column names, data types, and primary keys. This detailed breakdown ensures that you have a thorough understanding of data hierarchies and access control.
 
 ![schema.png](/learn/dp_consumer_learn_track/explore_sm/schema.png)
 
-Here you gain access to specific information about table structures, columns, data types, and relationships, deepening your understanding of how data is stored and connected within the Data Product. The **Overview** section gives you additional details, such as the Lens model’s name and user groups  (default), and the API scopes give the info on the level of access given to the users included in the group and the redacted fields for data security. Here, the group includes *, which means everyone provides access to all other members.
+Here you gain access to specific information about table structures, columns, data types, and relationships, deepening your understanding of how data is stored and connected within the Data Product. The 'Overview' section gives you additional details, such as the Lens model’s name and user groups  (default), and the API scopes give the info on the level of access given to the users included in the group and the redacted fields for data security. Here, the group includes *, which means everyone provides access to all other members.
 
 ![schema_overview.png](/learn/dp_consumer_learn_track/explore_sm/71c9f0db-a619-4394-9139-630e0de7eb84.png)
 
-You select a table **customer** to get more details on the table.
+You select a table `customer` to get more details on the table.
 
 ![customer_table.png](/learn/dp_consumer_learn_track/explore_sm/99e6316a-f97d-4c9a-885a-7c399e763d40.png)
 
 The schema section shares the following details:
 
-- **Table Name and Type**: The name **Customer** is shown along with its type which is a table.
-- **Measures**: Here, **total_customers** provides a quantitative count of customers, with its data type and aggregation type shown.
-- **Dimensions**: C**ustomer_id**, **country**, and **customer_segments** are categorized as data within the **Customer** table. You observe the key on the `customer_id` row, indicating that the `cusotmer_id` the primary key of the `customer` table.
+- **Table Name and Type**: The name `Customer` is shown along with its type which is a table.
+- **Measures**: Here, `total_customers` provides a quantitative count of customers, with its data type and aggregation type shown.
+- **Dimensions**: `customer_id`, `country`, and `customer_segments` are categorized as data within the `Customer` table. You observe the key on the `customer_id` row, indicating that the `cusotmer_id` the primary key of the `customer` table.
 - **Segments**: If available, pre-defined filters enhance granular analysis. Here, there are no segments defined, hence zero.
 - **Additional Info**: Secured and redacted fields for sensitive data protection will be shown at the bottom as you set them in the Lens user groups and data policy manifest file.
 
@@ -79,21 +107,21 @@ This section contains all relevant SQL files, tables, views, and YAML files esse
 
 You begin examining the files available, recognizing that this is a crucial feature for developers who need access to the underlying code and metadata that powers the Data Product. As you look through the list, you see the YAML implementation files for the Lens model, which span all entities involved in your analysis.
 
-If you want further details, notice the **Open in Metis** button in the top right corner. You click this button to access the semantic model artifact in Metis.
+If you want further details, notice the 'Open in Metis' button in the top right corner. You click this button to access the semantic model artifact in Metis.
 
-Engaging with the **Files** section, you understand the Data Product’s structure and logic, empowering you to effectively develop and manage your data workflows.
+Engaging with the 'Files' section, you understand the Data Product’s structure and logic, empowering you to effectively develop and manage your data workflows.
 
 ## Analyze data with Studio
 
-You begin your exploration on the **Studio** tab, which opens by default when you access the Explore page. This interactive workspace is designed for data consumers who want to create queries to analyze and visualize data as tables, pivot tables, and charts- all without coding skills.
+You begin your exploration on the 'Studio' tab, which opens by default when you access the Explore page. This interactive workspace is designed for data consumers who want to create queries to analyze and visualize data as tables, pivot tables, and charts- all without coding skills.
 
 ![studio_tab.png](/learn/dp_consumer_learn_track/explore_sm/studio_tab.png)
 
 ### **Checking Cluster health**
 
-1. Hover over the cluster name, like **Minerva**, to view its details.
+1. Hover over the cluster name, like Minerva, to view its details.
 
-2. Toggle the **Watch** button to monitor cluster health. Close the window and you see a green dot indicating good health.  The Cluster is ready and you can proceed with further exploration, assured that any queries you run will perform smoothly.
+2. Toggle the Watch button to monitor cluster health. Close the window and you see a green dot indicating good health.  The Cluster is ready and you can proceed with further exploration, assured that any queries you run will perform smoothly.
 
     ![source_health.png](/learn/dp_consumer_learn_track/explore_sm/source_health.png)
 
@@ -102,22 +130,22 @@ You begin your exploration on the **Studio** tab, which opens by default when yo
 
 Let's analyze the total number of customers per country:
 
-1. **Select** the `country` dimension and the `total_customers` measure.
+1. Select the `country` dimension and the `total_customers` measure.
     
     ![table.png](/learn/dp_consumer_learn_track/explore_sm/table.png)
     
-2. Hit **Run Query** to generate the query result as table which you can change later in Chart.
+2. Hit Run Query to generate the query result as table which you can change later in Chart.
 
     ![query_result.png](/learn/dp_consumer_learn_track/explore_sm/query_result.png)
 
-3. Sort your data to see the top 5 countries by total customers. Use **Order By** with `total_customers` in descending order and limit the results to 
+3. Sort your data to see the top 5 countries by total customers. Use Order By with `total_customers` in descending order and limit the results to 
     
     ![order_by.png](/learn/dp_consumer_learn_track/explore_sm/order_by.png)
     
 
 ### **Saving your analysis as a Perspective**
 
-Save your query result for later by clicking **Save Perspective**. Give it a meaningful name, like "Country-wise Total Customers," and save it.
+Save your query result for later by clicking 'Save Perspective'. Give it a meaningful name, like "Country-wise Total Customers," and save it.
 
 ![perspective.png](/learn/dp_consumer_learn_track/explore_sm/perspective.png)
 
@@ -128,7 +156,7 @@ Once you save any Perspective, it will be accessible to everyone and can be acce
 ![access_perspective.png](/learn/dp_consumer_learn_track/explore_sm/dc0927ba-08ae-4376-8e91-3e9743a31943.png)
 
 <aside class="callout">
-🗣 If you want to download the findings, click on the download ⬇️ icon next to the **Save Perspective** button to download it. It will ask you to download the table in various formats, such as csv, json, etc., as shown in the image below.
+🗣️ If you want to download the findings, click on the download ⬇️ icon next to the 'Save Perspective' button to download it. It will ask you to download the table in various formats, such as csv, json, etc., as shown in the image below.
 
 </aside>
 
@@ -136,7 +164,7 @@ Once you save any Perspective, it will be accessible to everyone and can be acce
 
 Transform your table into a visual story:
 
-1. **Switch to the Chart** tab and select the chart type, Line, or Bar Chart.
+1. Switch to the Chart tab and select the chart type, Line, or Bar Chart.
     
     ![bar_chart.png](/learn/dp_consumer_learn_track/explore_sm/bar_chart.png)
     
@@ -144,11 +172,11 @@ Transform your table into a visual story:
     
     ![line_chart.png](/learn/dp_consumer_learn_track/explore_sm/line_chart.png)
     
-3. But here, you are not able to see the actual values of each country, so to be able to display the value labels on top of each country, you click the '**Configure**' button as shown below:
+3. But here, you are not able to see the actual values of each country, so to be able to display the value labels on top of each country, you click the 'Configure' button as shown below:
     
     ![configure_button.png](/learn/dp_consumer_learn_track/explore_sm/configure_button.png)
     
-    A pop window appears as you click on the Configure button; here, you click on the Value labels toggle to change the label from **Hidden** to **Top.**
+    A pop window appears as you click on the Configure button; here, you click on the Value labels toggle to change the label from Hidden to Top.
     
     ![Series.png](/learn/dp_consumer_learn_track/explore_sm/Series.png)
     
@@ -163,13 +191,13 @@ Transform your table into a visual story:
     ![axes.png](/learn/dp_consumer_learn_track/explore_sm/axes.png)
     
 
-5. Now, your graph is ready! After the chart is prepared, you will send this insight to one of your stakeholders. To do this, you click on the **Export** button, save it in JPEG format, and click the **Download** button.
+5. Now, your graph is ready! After the chart is prepared, you will send this insight to one of your stakeholders. To do this, you click on the 'Export' button, save it in JPEG format, and click the 'Download' button.
     
     ![export_chart.png](/learn/dp_consumer_learn_track/explore_sm/export_chart.png)
     
-    You can **hide specific fields** by clicking the **eye icon** next to the field name. This is useful for focusing on only the most relevant data points in your analysis.
+    You can 'hide specific fields' by clicking the 'eye icon' next to the field name. This is useful for focusing on only the most relevant data points in your analysis.
     
-6. When you're ready to start a new analysis, quickly **reset all selected dimensions and measures** by clicking the **Clear** button. This action will instantly deselect your previous choices, as shown in the image below:
+6. When you're ready to start a new analysis, quickly reset all selected dimensions and measures by clicking the 'Clear' button. This action will instantly deselect your previous choices, as shown in the image below:
  
     ![members.png](/learn/dp_consumer_learn_track/explore_sm/members.png)
  
@@ -189,9 +217,8 @@ For this analysis, you choose the following members:
 ![filter.png](/learn/dp_consumer_learn_track/explore_sm/filter.png)
 
 <aside class="callout">
-🗣
-
-You need to first select the dimension you want to apply the filter to—only then will it appear as an option in the **Filter** section. You can also **hide the selected dimension** if you don't want it to be part of the query result.
+🗣️
+To apply a filter, first select the dimension you want to filter—this will make it available as an option in the 'Filter' section. If you don’t want the selected dimension to appear in the query result, you can hide it.
 
 </aside>
 
@@ -201,7 +228,7 @@ Here is the query result.
 
 ### **Using History for Quick Access**
 
-If you want to revisit a query you ran an hour ago but didn't save as a Perspective, simply click on the **History** icon and select the relevant timestamp to return to that query.
+If you want to revisit a query you ran an hour ago but didn't save as a Perspective, simply click on the 'History' icon and select the relevant timestamp to return to that query.
 
 ![history.png](/learn/dp_consumer_learn_track/explore_sm/history.png)
 
@@ -211,23 +238,23 @@ To save a query from two days ago for future reference, click on the query, give
 
 ### **Creating a Pivot Table**
 
-**Example:** Analyze the relationship between **customer segments**, **countries**, and **total spending**:
+**Example:** Analyze the relationship between customer segments, countries, and total spending:
 
 1. Select:
     - **Dimensions**: `customer_segments`, `country`
     - **Measure**: `total_spend`
-2. Click **Run Query.** 
+2. Click Run Query. 
     
     ![query_for_pivot.png](/learn/dp_consumer_learn_track/explore_sm/query_for_pivot.png)
     
-3. To make this more understandable, switch to the **Pivot** tab. Drag and drop your fields to rows and columns area.
+3. To make this more understandable, switch to the Pivot tab. Drag and drop your fields to rows and columns area.
     
     > The Pivot option is available only after running the query.
     > 
     
     ![pivot.gif](/learn/dp_consumer_learn_track/explore_sm/pivot.gif)
     
-    This matrix will help the you identify:
+    This matrix will help you identify:
     
     - High-risk customers by segment and country.
     - Which countries have the highest total spend.
@@ -240,11 +267,11 @@ To save a query from two days ago for future reference, click on the query, give
 
 Some team members, who are developers working on a data-driven application, need a flexible and efficient way to query and retrieve specific data, a specific metric or a subset of data, from the system. 
 
-For teams needing to fetch data programmatically, the **Integration** tab provides options:
+For teams needing to fetch data programmatically, the 'Integration' tab provides options:
 
 ![integration_tab.png](/learn/dp_consumer_learn_track/explore_sm/integration_tab.png)
 
-Let’s assume you must fetch the **total number of customers by country**. Rather than building REST endpoints, you can efficiently query the data using a **`curl`** command, **`GraphQL`**, or **`Postgres`**, depending on your preference. These methods allow you to retrieve data from a given endpoint and present it in a user-friendly format within your application.
+Let’s assume you need to fetch the 'total number of customers by country'. Rather than building REST endpoints, you can efficiently query the data using a `curl` command, `GraphQL`, or `Postgres`, depending on your preference. These methods allow you to retrieve data from a given endpoint and present it in a user-friendly format within your application.
 
 First, select the following dimensions and measures:
 
@@ -257,7 +284,7 @@ To access your data over HTTP using `curl`, follow these steps:
 
 1. **Copy the `curl` Command**
     
-    Go to the **Integration** section and choose **Curl** option. Copy the provided Curl command and paste it into your terminal.
+    Go to the 'Integration' section and choose 'Curl' option. Copy the provided Curl command and paste it into your terminal.
     
     ![using_curl.png](/learn/dp_consumer_learn_track/explore_sm/using_curl.png)
     
@@ -270,14 +297,12 @@ GraphQL is another option for querying data over HTTP.
 
 To use GraphQL:
 
-1. Select **GraphQL** in integration options.
-2. **Copy GraphQL Query**
-    
-    Click on **GraphQL** and copy the query provided.
+1. Select 'GraphQL' in integration options.
+2. Click on 'GraphQL' and copy the query provided.
     
 3. **Test the Query**
     
-    You can either paste the query into your terminal or click **Try it out** to test it in the GraphQL playground.
+    You can either paste the query into your terminal or click 'Try it out' to test it in the GraphQL playground.
     
     ![graphql_tab.png](/learn/dp_consumer_learn_track/explore_sm/graphql_tab.png)
     

@@ -84,7 +84,7 @@ Follow the steps below to create a use case in DataOS.
 The Image describes the following properties:
 
 - **Info:** This section provides the Use-case's name, ID, and category, allowing you to identify its purpose and classification quickly.
-- **Authorization Atoms:** Clicking on a predicate reveals additional details, including the action and the object the action is applied to. For example, clicking on a "get" predicate shows the associated API path, giving you insight into the specific Resources and operations the Use-case grants access to.
+- **Authorization Atoms:** Clicking on a predicate reveals additional details, including the action and the object the action is applied to. For example, clicking on a `get` predicate shows the associated API path, giving you insight into the specific Resources and operations the Use-case grants access to.
 - **Variables & Grant:** You can view the variables linked to each authorization atom, such as specific API paths or workspace names. In the **Grant** section, you can see who has been granted access to the Use-case and the associated permissions.
 
 Following are the configurations of creating a Use-case:
@@ -232,7 +232,7 @@ values:
 
 After creating use-cases, you will assign them to your organization's relevant Roles and users. This ensures that users in each Role have the correct permissions to interact with the Resources necessary for their tasks.
 
-1. Navigate to Roles and select the "Consumer"  Role with the tag `roleid:consumer`. 
+1. Navigate to Roles and select the 'Consumer'  Role with the tag `roleid:consumer`. 
 
     ![image.png](/learn/operator_learn_track/access_control/use_cases/image (4).png)
 

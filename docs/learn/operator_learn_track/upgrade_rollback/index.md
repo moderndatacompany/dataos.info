@@ -14,7 +14,7 @@ Your goal is to ensure system stability, communicate with stakeholders, and effe
 
 ## Upgrade strategy
 
-Upgrading DataOS is a structured process that involves updating the **dataos-manager** tag and executing helm commands. In this module, you'll follow a clear set of steps to ensure a smooth upgrade process for DataOS.
+Upgrading DataOS is a structured process that involves updating the 'dataos-manager' tag and executing helm commands. In this module, you'll follow a clear set of steps to ensure a smooth upgrade process for DataOS.
 
 ## Steps for an upgrade
 
@@ -64,7 +64,7 @@ Validate the upgraded system’s functionality and monitor performance using Gra
 
 ## Rollback strategy
 
-When a new release causes unforeseen issues, rolling back to a stable version becomes essential to restore platform stability. This section guides you through the **Rollback plan for DataOS**, helping you manage rollbacks efficiently and ensuring minimal disruption to operations.
+When a new release causes unforeseen issues, rolling back to a stable version becomes essential to restore platform stability. This section guides you through the Rollback plan for DataOS, helping you manage rollbacks efficiently and ensuring minimal disruption to operations.
 
 ## Pre-rollback preparation
 
@@ -72,7 +72,7 @@ Before initiating a rollback, ensure the following steps are completed:
 
 ### **1. Identify rollback target**
 
-Determine the version to rollback to and verify compatibility with dependencies across the **User Space**, **Core Kernel**, and **Cloud Kernel** layers.
+Determine the version to rollback to and verify compatibility with dependencies across the User Space, Core Kernel, and Cloud Kernel layers.
 
 ### **2. Backup and safeguard**
 
@@ -94,7 +94,7 @@ Evaluate the potential impacts of the rollback, including downtime and service i
 
 ## Rollback execution
 
-Follow a **top-down rollback strategy** to address each layer systematically and minimize dependencies and conflicts.
+Follow a top-down rollback strategy to address each layer systematically and minimize dependencies and conflicts.
 
 ### **Step 1: User Space**
 
@@ -128,7 +128,7 @@ Validate the consistency and accuracy of critical data.
 
 ### **Step 3: Inter-layer communication**
 
-Confirm seamless interaction between the **User Space**, **Core Kernel**, and **Cloud Kernel**.
+Confirm seamless interaction between the User Space, Core Kernel, and Cloud Kernel.
 
 
 ## Root cause analysis and continuous improvement

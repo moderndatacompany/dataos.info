@@ -111,7 +111,7 @@ bundle:
       workspace: public
 
     - id: lens 
-      file: retail360/bundle/lens2/deployement.yml
+      file: retail360/bundle/lens2/deployment.yml
       workspace: public
 
     - id: dataapi
@@ -512,7 +512,7 @@ To ensure that Metrics show up on DPH and under **Metrics** tab on the DP detail
           workspace: public
     
         **- id: lens 
-          file: retail360/bundle/lens2/deployement.yml
+          file: retail360/bundle/lens2/deployment.yml
           workspace: public**
     
         - id: dataapi

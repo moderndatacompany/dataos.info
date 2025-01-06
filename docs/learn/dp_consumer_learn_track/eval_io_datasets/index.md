@@ -1,10 +1,10 @@
 # Evaluating input & output datasets 
 
-This topic guides you in assessing the accuracy, compliance, and readiness of input and output datasets by examining their metadata, schema, and quality standards using Metis. You'll also learn to explore these datasets in Workbench for understanding data.
+This topic explains how to access detailed information about input and output datasets. Users can explore these details through two options available in the Data Product Hub: delve into Metis to review metadata, schema, and quality standards, or explore them directly in Workbench for a greater insight into the data.
 
 ## Scenario
 
-To ensure the data you plan to use is accurate and suitable for the marketing campaign, you thoroughly check the input and output datasets of the '**Product 360**' Data Product. You analyze the schema and metadata for any red flags, such as missing fields or outdated entries, to maintain data integrity.
+To gain a deeper understanding of the data you plan to use for the marketing campaign, you thoroughly explore the input and output datasets of the 'Product 360' Data Product. You analyze the schema and metadata for insights, such as identifying missing fields or outdated entries, to better comprehend the data.
 
 On Data Product Hub, open the data product details and follow the below steps:
 
@@ -20,7 +20,9 @@ Click on the Metis option as shown below:
 
 For structured data sources, you will see comprehensive details such as asset type, meta version, last update time, follower count, and various editing options for owner, tier, domain, tags, and description.
 
-You will also see schema details, including table/column names, their descriptions and type, constraints, and sensitive tags, etc. You can suggest some tags if required.
+You will see the DataOS address for your dataset. Within DataOS, each source system is identified by a unique Uniform Data Link (UDL). This address acts as a consistent reference point, regardless of the source system's internal naming conventions and structure. Leveraging the UDL enables access to datasets and seamless execution of various operations.
+
+You will also get schema details, including table/column names, their descriptions and type, constraints, and sensitive tags, etc. You can suggest some tags if required.
 
 ![dataset_metis.png](/learn/dp_consumer_learn_track/eval_io_datasets/dataset_metis.png)
 
@@ -40,11 +42,11 @@ Get an overview of the dataset structural information such as, total records, fi
     
     ![query_on_dataset.png](/learn/dp_consumer_learn_track/eval_io_datasets/query_on_dataset.png)
     
-2. . Data profiling results on Metis show valuable metrics on data distribution and column profiles, helping you validate whether the dataset’s structure aligns with your analytical needs.
+2. Data profiling results on Metis show valuable metrics on data distribution and column profiles, helping you know whether the dataset’s structure aligns with your analytical needs.
     
     ![dataset_profiling.png](/learn/dp_consumer_learn_track/eval_io_datasets/ce85fb16-0137-41dc-b92c-3901bd5832f3.png)
     
-3. Column profile helps you find the distribution of values within each field, null values, unique values, etc. This can highlight patterns or outliers, indicating anomalies or irregularities that might require further investigation. Understanding these patterns allows you to validate assumptions about the data or adjust their approach. For this dataset, there are no missing values for the column of interest. 
+3. Column profile helps you find the distribution of values within each field, null values, unique values, etc. This can highlight patterns or outliers, indicating anomalies or irregularities that might require further investigation. Understanding these patterns allows you to validate assumptions about the data. For this dataset, there are no missing values for the column of interest. 
     
     You can further investigate the quality issues if any, by clicking on the number of tests. 
     
@@ -92,7 +94,7 @@ After understanding the schema, structure, and quality of your dataset, you’re
 
 ### **1.  Open Workbench app**
 
-On Data Product Hub, go to **Workbench** option.
+On Data Product Hub, go to 'Workbench' option.
 
 ![workbench_on_dph.png](/learn/dp_consumer_learn_track/eval_io_datasets/workbench_on_dph.png)
 
@@ -138,13 +140,13 @@ Check the results of your query and review any applied governance policies. The 
 
 ## Best practices
 
-- **Assess metadata thoroughly**: Check for accurate descriptions of datasets and columns
+- **Assess metadata thoroughly**: Check for accurate descriptions of datasets and columns.
 
 - **Evaluate data profiling metrics**: Inspect column profiles for null values, unique counts, and patterns. Use this to detect outliers or anomalies early.
 
-- **Investigate lineage and dependencies**: Trace data transformations and sources to ensure the dataset's accuracy and readiness. Validate whether the dataset complies with use-case requirements.
+- **Investigate lineage and dependencies**: Understand data transformations and sources. This information will help you understand whether the dataset meets the use-case requirements.
 
-- **Check governance policies**: Confirm compliance with regulatory and security standards, especially for sensitive data fields. You can 
+- **Check governance policies**: Know about compliance with regulatory and security standards, especially for sensitive data fields. You can 
 
 ## Guidelines: Do's and Don'ts
 

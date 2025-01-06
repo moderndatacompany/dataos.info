@@ -16,7 +16,7 @@ Imagine you’re a sales analyst for a retail company, and you’re tasked with 
     
     Go to the **Access Options** tab for your Data product in Data Product Hub. Under the **BI Sync**
     
-    section, locate the **Tableau Desktop** option. Click to download the .tds file, which contains all the necessary connection settings for Tableau.
+    section, locate the Tableau Desktop option. Click to download the .tds file, which contains all the necessary connection settings for Tableau.
     
     ![tab-desk_conn.png](/learn/dp_consumer_learn_track/integrate_bi_tools/tab_desktop/tab-desk_conn.png)
     
@@ -29,7 +29,7 @@ Imagine you’re a sales analyst for a retail company, and you’re tasked with 
 
 3. **Open the Connection in Tableau**
     
-    Next, open Tableau and locate the `public.sales360.tables` data source. When prompted, enter your **DataOS Username** and use your **API Key** as the password. You can retrieve your API Key by clicking on your profile icon at the bottom left of the screen.
+    Next, open Tableau and locate the `public.sales360.tables` data source. When prompted, enter your **DataOS Username** and use your API Key as the password. You can retrieve your API Key by clicking on your profile icon at the bottom left of the screen.
     
     ![tab_desk_apikey.png](/learn/dp_consumer_learn_track/integrate_bi_tools/tab_desktop/tab_desk_apikey.png)
     

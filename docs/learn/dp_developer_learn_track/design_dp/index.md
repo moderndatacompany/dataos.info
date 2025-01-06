@@ -6,9 +6,9 @@ Whether you're a Product Manager, Data Scientist, or Developer, this guide will 
 
 - Identify key use cases for a data product
 - Evaluate and leverage existing data products
-- Design input data sources and plan ETL processes
-- Define a semantic model and validate its accuracy
-- Ensure data quality and security
+- Identify input data sources and plan ETL processes
+- Understand the semantic models 
+- Understand the data quality and security requirements
 - Plan for compliance with data regulations
 
 ## Scenario
@@ -19,7 +19,7 @@ As a Product Manager, you must design this data product, ensuring it captures es
 
 Designing a data product requires meticulous planning and a deep understanding of the business needs. To effectively design the data product, consider the following key aspects:
 
-## Step 1. Defining use cases
+## Step 1. Defining use cases and metrics
 
 Defining clear use cases is the foundation of any successful data product. It involves understanding business needs, identifying key problems, and determining the metrics that will help solve them.
 
@@ -35,7 +35,7 @@ Start by defining the specific business problems your data product aims to solve
 - Who are the key stakeholders, and what insights do they need?
 - How will this data product support decision-making processes?
 
-### **b. Define business Metrics**
+### **b. Define business metrics**
 
 Identify key performance metrics that align with your use case goals. These metrics will drive the analysis and provide value to the stakeholders.
 
@@ -49,8 +49,10 @@ Identify key performance metrics that align with your use case goals. These metr
 
 - Which metrics are most valuable for our stakeholders?
 - How will these metrics be utilized in business strategies?
+- Are there any dependencies or limitations affecting these metrics?
+- Can these metrics be tracked with the existing data, or do new data sources need to be integrated?
 
-## Step 2. Discovering Existing Data Products
+## Step 2. Discovering existing Data Products
 
 Before building a new data product, explore if similar products already exist within your organization to avoid duplication and leverage available resources.
 
@@ -74,11 +76,31 @@ Analyze the quality and relevance of existing data products, considering their m
 
 ## Step 3. Designing the Data Product
 
-After defining the use case and key metrics, you proceed to the design phase of the Data Product. by identifying input data sources, defining data transformations, and creating a semantic model.
+If existing data products do not meet the desired outcomes, it's time to consider designing a new Data Product. To ensure alignment with business objectives, follow a right-to-left approach— start from the defined goals and work backward to structure the Data Product effectively.
 
-### **a. Identify input data sources**
+### **a. Start with key metrics**
+In the first step, we have already defined the measurable outcomes in terms of key metrics that align with your business objectives.
 
-Identify the data sources required to build the product. Examples include CRM data, sales transactions, and product inventory data. You need to create Depots for the source connectivity.
+Example: Cross-sell opportunity score, purchase frequency, and total spending.
+
+### **b. Identify measures and dimensions**
+
+Break down key metrics into specific measures (quantitative data points) and dimensions (categorical attributes).
+
+**Questions to ask:**
+
+- What are the measures directly tied to each metric (e.g., revenue, counts, percentages)?
+- Which dimensions are critical to segmenting or filtering the data (e.g., customer, product, geography)?
+- How do measures and dimensions interact to create actionable insights?
+- Are there existing standards or definitions for these measures and dimensions, or do they need to be defined?
+- Are there any additional dimensions that might enrich the analysis or provide deeper insights?
+
+Measures: Sales revenue, purchase frequency.
+Dimensions: Customer demographics, product categories.
+
+### **c. Identify input data sources**
+
+Identify the data sources containing these dimensions. We require them to build the Data Product. Examples include CRM data, sales transactions, and product inventory data. You need to create Depots for the source connectivity.
 
 - Customer demographic data (`customer_info`)
 - Transaction data (`purchase`)
@@ -90,7 +112,7 @@ Identify the data sources required to build the product. Examples include CRM da
 - Which datasets have the necessary measures and dimensions?
 - Are there any gaps in the data that need to be addressed?
 
-### **b. Data exploration and understanding**
+### **d. Data exploration and understanding**
 
 Explore and understand the content and structure of your datasets using Metis and Workbench. This will help you understand the raw data.
 
@@ -101,7 +123,7 @@ Explore and understand the content and structure of your datasets using Metis an
 
 ## Step 4. Identifying the need for ETL process
 
-The ETL process is critical for converting raw data into a usable format. It involves extracting data, transforming it based on business logic, and loading it into a storage system. 
+The ETL process is critical for converting raw data into a usable format. It involves extracting data, transforming it based on business logic, and loading it into a storage system.  This process enables the creation of source-aligned data products, which represent data in its original form with minimal transformation. These source-aligned products can then be used to create consumer-aligned data products.
 
 ### **a. Define ETL processes**
 
@@ -116,11 +138,11 @@ Design an ETL pipeline to process raw data into structured datasets.
 - What transformations are essential for data preparation?
 - How often should the ETL process run to maintain data freshness?
 
-### **b. Implement data quality checks**
+### **b. Define data quality checks**
 
 Embed quality checks to validate data integrity during the ETL process.
 
-**Quality checks include:**
+Quality checks include:
 
 - **Completeness:** Ensure no missing values.
 - **Uniqueness:** Avoid duplicate records.
@@ -131,31 +153,43 @@ Embed quality checks to validate data integrity during the ETL process.
 - Which quality checks are most critical for this product?
 - How will issues be detected and resolved?
 
-## Step 5. Defining the Semantic Model
+## Step 5. Defining the semantic model
 
 The semantic model provides a logical structure for the data, defining key entities and relationships, making it easy for end users to query and understand.
 
+Creating a semantic model can be particularly beneficial in situations such as:
+
+- When data needs to be accessible to a wide range of users with varying levels of technical expertise. Such as, a marketing team can easily view customer data through simplified metrics like "Total Sales" instead of raw database fields.
+- When there is a need for a single, consistent view of data across different departments or systems. For instance, different departments like finance and sales may have different ways of defining 'revenue'. But a semantic model standardizes the definition of revenue across systems.
+- When complex data needs to be made more understandable and usable for business decision-making. For example, when column names need to be changed to more business-friendly terms for decision-making.
+- When building applications to answer data-related questions using large language models (LLMs).
+
 Organize the transformed data into a structured logical model (Lens) that represents key customer and product relationships. Users can explore data through this logical model.
 
-### **a. Define logical tables**
+**Components of semantic model:**
 
-The data model is defined in collaboration with the development team. It incorporates three key metrics derived from the customer, product, and purchase tables: cross-sell opportunity score, purchase frequency, and total spending.
-
-**Components of Semantic Model:**
-
+- **Tables**: Customer, Product, or Sales.
 - **Dimensions:** Customer demographics, product details.
 - **Measures:** Sales revenue, purchase frequency.
-- **Relationships:** Link customer purchases to products.
+- **Relationships/joins:** Link customer purchases to products.
 
 **Questions to ask:**
 
+- Identify entities to define logical tables
 - What are the critical dimensions and measures?
 - How will relationships between entities be represented?
 - Does the model capture all necessary metrics?
 
+### **a. Define logical tables, dimensions, measures**
+
+The data model is defined in collaboration with the development team. Create the logical tables containing dimensions and measures incorporates three key metrics derived from the customer, product, and purchase tables: cross-sell opportunity score, purchase frequency, and total spending.
+
+<aside class="callout">
+🗣️ Logical tables are beneficial in scenarios where organizations prefer not to replicate data or wish to directly access data from source systems. They do not persist, making them ideal when you want to avoid duplication or store data in a Lakehouse-type storage. In such cases, semantic models offer significant advantages by providing structured access to the data. </aside>
+
 ## Step 6. Ensuring data security and compliance
 
-Ensuring data security and compliance with regulations is crucial to protecting sensitive data throughout its lifecycle.
+Ensuring data security and compliance with regulations is crucial to protecting sensitive data throughout its lifecycle. Define governance right there for semantic model. It includes defining rules for access control, and compliance, ensuring that the data remains safe and trustworthy.
 
 ### **a. Define data access and security policies**
 
@@ -167,7 +201,21 @@ Implement attribute/role-based access control and data masking to secure sensiti
 - Are there sensitive data elements that require masking?
 - How will we maintain compliance with privacy regulations?
 
-### **b. Defining quality checks**
+## Step 7: Defining SLOs
+
+SLOs or service level objectives are quantitative measurement of a service’s performance or reliability, measured over time. SLOs guide/ support architecture, operations and observability decisions.
+
+**Questions to ask:**
+
+- What are the relevant architecture target metrics for the DP?
+- What are the relevant data quality target metrics for the DP?
+- What are the relevant data governance target metrics for the DP?
+
+### **Key Metrics:**
+
+- **Architecture**: Performance, scalability, and reliability.
+- **Data Quality**: Completeness, freshness, and accuracy.
+- **Governance**: Compliance with regulations like GDPR, HIPAA, etc.
 
 Several quality checks are need to be established to ensure adherence to data quality standards:
 
@@ -175,9 +223,9 @@ Several quality checks are need to be established to ensure adherence to data qu
 - **Schema:** The schema must be validated to ensure that column data types align with the defined structure.
 - **Freshness:** Purchase data must be kept up to date.
 - **Uniqueness:** Each `customer_id` must be unique, with no duplicates permitted.
-- **Validity:** The `mntwines` attribute must conform to specified criteria, ensuring the data falls within a valid range of 0 to 1. Any occurrence where the invalid count (`invalid_count(mntwines)`) exceeds 0 highlights a data quality issue that requires attention.
+- **Validity:** Any occurrence where the invalid count (`invalid_count(mntwines)`) exceeds 0 highlights a data quality issue that requires attention.
 
-### **Step 7: Output and delivery**
+## Step 8: Output and delivery
 
 Identify how end users will consume the data product and the methods used for data delivery, such as APIs or connecting with BI tools.
 
@@ -192,6 +240,6 @@ In this module, we explored the complete process of designing a data product—f
 
 ## Next step
 
-Now that you have a solid understanding of the design process, the next step is to move into implementation. This involves translating your data product design into an actionable plan and beginning the actual development starting with establishing the data connections.
+Now that you have a solid understanding of the design process, the next step is to move into implementation phase. This involves translating your data product design into an actionable plan and beginning the actual development starting with establishing the data connections.
 
 [Establishing data connections](/learn/dp_developer_learn_track/data_source_connectivity/)
