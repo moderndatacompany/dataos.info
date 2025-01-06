@@ -1,18 +1,20 @@
 # Pipeline observability
 
-In this topic, you will learn to configure a Report Monitor to generate an incident whenever a workflow succeeds.
+In this topic, you will learn how to configure a Monitor Resource to generate incidents whenever a workflow fails and set up a Pager Resource to send notifications for these incidents.
 
 ## Scenario
 
-Imagine you are a Data Product Developer, tasked with ensuring that workflows run smoothly and incidents are detected promptly. Recently, your team reported delays in identifying when workflows succeed, leading to inefficient responses. Determined to streamline observability, you want to use the Monitor Resource in DataOS.
+Imagine you are a Data Product Developer, responsible for ensuring seamless workflow operations and prompt incident detection. Recently, your team has faced delays in identifying workflow failures, resulting in slower response times and reduced efficiency. To address this challenge and enhance observability, you decide to leverage the Monitor Resource in DataOS.
 
 ## Quick concepts
 
-The Monitor Resource of type Report (or simply Report Monitor) allows you to track specific string values, such as the runtime status of workflows. 
+- **Monitor Resource**: A key component of DataOS' observability system, designed to track specific events or metrics and trigger incidents when predefined thresholds or conditions are met.
 
-## Configuring Report Monitor
+- **Pager Resource**: A notification tool in DataOS that sends real-time alerts to designated channels, enabling proactive incident management and swift response to workflow issues.
 
-Let us consider that for the given scenario, you decide to configure a Report Monitor for a workflow named `wf-customer-data`. Your goal is to receive an incident notification every time the workflow status changes to 'failed'. Here’s how you can set it up:
+## Configuring Monitor
+
+Let us consider that for the given scenario, you decide to configure a Monitor for a workflow named `wf-customer-data`. Your goal is to receive an incident notification every time the workflow status changes to 'failed'. Here’s how you can set it up:
 
 ### **Step 1: Define Resource metadata**
 
@@ -77,9 +79,9 @@ Now you can apply the YAML configuration using the DataOS CLI:
 dataos-ctl resource apply -f /path/to/runtime-monitor.yaml
 ```
 
-### **Monitoring Workflow success**
+### **Monitoring Workflow failure**
 
-With the Report Monitor in place, you receive high-severity incident alerts whenever the `scan-data-product-test` workflow succeeds. This ensures that your team can respond promptly, optimizing their operational efficiency.
+With the Monitor in place, you receive high-severity incident alerts whenever the `scan-data-product-test` workflow succeeds. This ensures that your team can respond promptly, optimizing their operational efficiency.
 
 ??? "Click here to see the complete Monitor manifest file"
     ```yaml

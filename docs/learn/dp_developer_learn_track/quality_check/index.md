@@ -41,7 +41,7 @@ This structure helps you keep your quality checks organized and aligned with the
 
 With your SLOs in place, the next step is to define the quality checks to ensure your data meets the established standards. These quality checks are essential to monitor and maintain the quality of your data. 
 
-For example, if you’re defining quality checks for a 'customer' dataset, your YAML file might include the following checks:
+For example, if you’re defining quality checks for a 'customer' dataset, you can specify the following checks:
 
 - **Schema**: The data type of birth year should be an integer.
 - **Accuracy**: The average length of a country is more than 6.
@@ -49,83 +49,14 @@ For example, if you’re defining quality checks for a 'customer' dataset, your 
 - **Validity**: Customer ID should not be null.
 - **Uniqueness**: Customer ID should be unique.
 
-For the above quality checks, the Soda workflow yaml manifest file will look like as follows:
-    
-```yaml title="customer.yml"
-name: soda-customer-quality
-version: v1
-type: workflow
-tags:
-  - workflow
-  - soda-checks
-description: Applying quality checks for the customer data
-workspace: public
-workflow:
-  # schedule:
-  #   cron: '00 08 * * *'
-  #  # endOn: '2023-12-12T22:00:00Z'
-  #   concurrencyPolicy: Forbid
-  dag:
-    - name: soda-customer-quality
-      spec:
-        stack: soda+python:1.0
-        compute: runnable-default
-        resources:
-          requests:
-            cpu: 1000m
-            memory: 250Mi
-          limits:
-            cpu: 1000m
-            memory: 250Mi
-        logLevel: INFO # WARNING, ERROR, DEBUG
-        stackSpec:
-          inputs:
-            - dataset: dataos://icebase:customer_relationship_management/customer
-              options:
-                engine: minerva
-                clusterName: system
-              profile:
-                columns:
-                  - include *
-              checks:  
-                - schema:
-                    name: Data type of birth year should be integer
-                    fail:
-                      when wrong column type:
-                        birth_year: string
-                    attributes:
-                      category: Schema
-  
-                - invalid_count(customer_id) = 0 :
-                    name: Customer Id  should not be null
-                    valid min: 1
-                    attributes:
-                      category: Validity
-  
-                - missing_count(customer_id) = 0:
-                    name:  Customer Id should not be zero
-                    attributes:
-                      category: Completeness
+Quality checks will be implemented using the Soda framework, leveraging SodaCL—a YAML-based language—to define custom data quality checks for each dataset. The Soda Stack allows you to embed these rules directly into your workflow, enabling validation of key metrics such as accuracy, completeness, and uniqueness.
 
-                - duplicate_count(customer_id) = 0:
-                    name:  Customer Id should not be duplicated
-                    attributes:
-                      category: Uniqueness
-  
-                - avg_length(country) > 6:
-                    name:  Average length of country more than 6
-                    attributes:
-                      category: Accuracy
-  
-```
 
-These quality checks will be implemented using the Soda framework and defined in YAML files for each dataset.
-
-## Configuring Soda Stack
+## Configuring quality checks using Soda Stack
 
 Use Soda Stack within DataOS to establish robust data quality checks using 
 
-### **Step 1: Choose the right Resource for the Job**
+### **Step 1: Choose the right DataOS Resource for the Job**
 
 The type of DataOS Resource you select depends on the use case:
 
@@ -133,7 +64,7 @@ The type of DataOS Resource you select depends on the use case:
 
 - Worker Resource: Best suited for long-running, continuous monitoring.
 
-For demonstration, we will choose the Workflow Resource to run scheduled data quality checks on a dataset.
+For demonstration, we will choose the Workflow Resource to run scheduled data quality checks on a customer dataset.
 
 ### **Step 2: Define the Soda Workflow manifest**
 
@@ -171,6 +102,7 @@ workflow:
 ### **Step 3: Declare the Soda stackSpec section**
 
 **Declaring input dataset address**
+
 The dataset attribute allows data developer to specify the data source or dataset that requires data quality evaluations. It is declared in the form of a Uniform Data Link [UDL], in the following format: dataos://[depot]:[collection]/[dataset].
 
 **Profile the dataset (Optional)**
@@ -189,12 +121,9 @@ stackSpec:
           - include *
 ```
 
-
-
 ### **Step 4: Define Soda checks**
-Use SodaCL, a YAML-based language, to define custom checks for data quality. Soda Stack, using Soda Checks Language (SodaCL), allows you to define rules for validating data directly in your workflow, helping you monitor key metrics such as accuracy, completeness, and uniqueness. 
-
 Tailor the checks to address issues identified by your team.
+
 ```yaml
 stackSpec:
   inputs:
@@ -247,23 +176,90 @@ stackSpec:
 </aside>
 
 
-
 ### **Step 5: Apply the manifest**
 Once the manifest is complete, apply it using the DataOS CLI:
 
 ```bash
 dataos-ctl apply -f /path/to/soda-workflow.yaml -w public
 ```
-<!-- ??? "Click here to view the complete manifest file"
+??? "Click here to view the complete manifest file"
     ```yaml
+    name: soda-customer-quality
+    version: v1
+    type: workflow
+    tags:
+      - workflow
+      - soda-checks
+    description: Applying quality checks for the customer data
+    workspace: public
+    workflow:
+      # schedule:
+      #   cron: '00 08 * * *'
+      #  # endOn: '2023-12-12T22:00:00Z'
+      #   concurrencyPolicy: Forbid
+      dag:
+        - name: soda-customer-quality
+          spec:
+            stack: soda+python:1.0
+            compute: runnable-default
+            resources:
+              requests:
+                cpu: 1000m
+                memory: 250Mi
+              limits:
+                cpu: 1000m
+                memory: 250Mi
+            logLevel: INFO # WARNING, ERROR, DEBUG
+            stackSpec:
+              inputs:
+                - dataset: dataos://lakehouse:customer_relationship_management/customer_data
+                  options:
+                    engine: minerva
+                    clusterName: miniature
+                  profile:
+                    columns:
+                      - include *
+                  checks:  
+                    - schema:
+                        name: Data type of birth year should be integer
+                        fail:
+                          when wrong column type:
+                            birth_year: bigint
+                        attributes:
+                          category: Schema
 
-    ``` -->
+                    - freshness(created_at) < 7d:
+                        name: If data is older than 7 days 
+                        attributes:
+                          category: Freshness
     
+                    - invalid_count(customer_id) = 1 :
+                        name: Customer Id  should not be zero
+                        valid min: 1
+                        attributes:
+                          category: Validity
+    
+                    - missing_count(customer_id) = 0:
+                        name:  Customer Id should not be zero
+                        attributes:
+                          category: Completeness
+
+                    - duplicate_count(customer_id) = 0:
+                        name:  Customer Id should not be duplicated
+                        attributes:
+                          category: Uniqueness
+    
+                    - avg_length(country) > 2:
+                        name:  Average length of country more than 2
+                        attributes:
+                          category: Accuracy
+    
+    ``` 
 
     
 ## Monitoring results 
     
-Once these checks are applied, their results will be displayed on Metis and Data Product Hub. Here, you can monitor the status of the quality checks and ensure they align with your analytical requirements. Each check is categorized as:
+Once these checks are applied, their results will be displayed on Metis. Here, you can monitor the status of the quality checks and ensure they align with your analytical requirements. Each check is categorized as:
 
 - Accuracy: Green checkmark for passed validations.
 
@@ -278,65 +274,14 @@ The quality checks displayed in Metis as defined in the Soda YAML manifest file,
 
 ![soda_checks_metis.png](/learn/dp_developer_learn_track/quality_check/soda_checks_metis.png)
 
-Similarly, these quality checks are also populated on the Data Products Hub.
-
-![quality_tab.png](/learn/dp_developer_learn_track/quality_check/quality_tab.png)
-
 <aside class="callout">
 🗣️ Similarly, define the quality checks for all other input and output datasets. Ensure your folder structure includes an 'output' directory to organize these checks effectively.
-
 </aside>
 
-```yaml title="Purchase.yml"
-name: soda-purchase-quality
-version: v1
-type: workflow
-tags:
-  - workflow
-  - soda-checks
-description: Applying quality checks for the purchase data
-workspace: public
-workflow:
-  dag:
-    - name: soda-purchase-quality-job
-      spec:
-        stack: soda+python:1.0
-        compute: runnable-default
-        resources:
-          requests:
-            cpu: 1000m
-            memory: 250Mi
-          limits:
-            cpu: 1000m
-            memory: 250Mi
-        logLevel: INFO # WARNING, ERROR, DEBUG
-        stackSpec:
-          inputs:
-            - dataset: dataos://icebase:customer_relationship_management/purchase
-              options:
-                engine: minerva
-                clusterName: system
-              profile:
-                columns:
-                  - include *
-              checks:  
-                - freshness(purchase_date) < 2d:
-                    name: If data is older than 2 days 
-                    attributes:
-                      category: Freshness
+## Next Step
+Once you’ve ensured the quality of your datasets, you can proceed to build the semantic model. If you choose not to include a semantic model in your data product, you can move directly to deploying the data product. Refer to the following links for detailed guidance:
 
-                - schema:
-                    name: Data type of recency should be integer
-                    fail:
-                      when wrong column type:
-                        recency: string
-                    attributes:
-                      category: Schema
-  
-                - invalid_count(mntwines) < 0:
-                    valid min: 0
-                    valid max: 1
-                    attributes:
-                      category: Validity
-                    title: Invalid count of mntwines
-```
+[Building a Semantic Model](/learn/dp_developer_learn_track/create_semantic_model/)
+
+[Deploying a Data Product](/learn/dp_developer_learn_track/create_bundle/)
+
