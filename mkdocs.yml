@@ -526,6 +526,9 @@ nav:
     - Learning tracks:
       - Data Product Consumer:
         - learn/dp_consumer_learn_track/index.md
+        - Introduction to Data Products:
+          - Features and importance of Data Products:
+            - learn/dp_consumer_learn_track/introduction_data_product/index.md
         - Discovering Data Products:
           - Introduction to Data Product Hub:
             - learn/dp_consumer_learn_track/intro_dph/index.md
@@ -552,6 +555,8 @@ nav:
             - learn/dp_consumer_learn_track/integrate_api/index.md
       - Data Product Developer:
         - learn/dp_developer_learn_track/index.md
+        - Understanding business goals:
+          -  learn/dp_developer_learn_track/understand_business_goals/index.md
         - Designing Data Products:
           -  learn/dp_developer_learn_track/design_dp/index.md
         - Building Data Products:
@@ -565,10 +570,12 @@ nav:
               - learn/dp_developer_learn_track/build_pipeline/first_pipeline/index.md
             - Sheduling Workflows:
               - learn/dp_developer_learn_track/build_pipeline/scheduling_workflows/index.md
-            - Data quality Checks:
+            - Data quality checks:
               - learn/dp_developer_learn_track/build_pipeline/dq_check/index.md
             - Pipeline observability:
               - learn/dp_developer_learn_track/build_pipeline/pipeline_observability/index.md
+          - Implementing quality checks:
+            - learn/dp_developer_learn_track/quality_check/index.md
           - Build a semantic model:
             - learn/dp_developer_learn_track/create_semantic_model/index.md
             - Defining business objectives and KPIs:
@@ -580,15 +587,13 @@ nav:
             - Creating semantic model:
               - learn/dp_developer_learn_track/create_semantic_model/create_lens_folder/index.md
             - Test Lens Locally:
-              - /learn/dp_developer_learn_track/create_semantic_model/testing_lens/index.md
+              - learn/dp_developer_learn_track/create_semantic_model/testing_lens/index.md
             - Deploy Lens in DataOS:
               - learn/dp_developer_learn_track/create_semantic_model/deploy_lens_on_dataos/index.md
-          - Implementing quality Checks:
-            - learn/dp_developer_learn_track/quality_check/index.md
+          - Defining data policies for semantic model:
+            - learn/dp_developer_learn_track/data_policy/index.md
           - Creating data APIs:
             - learn/dp_developer_learn_track/data_api/index.md
-          - Defining data policies for Lens:
-            - learn/dp_developer_learn_track/data_policy/index.md
         - Deploying Data Products:
           - Creating a deployable Bundles:
             - learn/dp_developer_learn_track/create_bundle/index.md

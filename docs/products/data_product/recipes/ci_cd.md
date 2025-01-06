@@ -105,12 +105,12 @@ c. The repository can now be found in your home/root directory.
 
 ### **3. Start building the Data Product**
 
-Follow the below steps to start building the Data Product by creating the manifest files of the all the Resources and Data Product. For example, to create a Data Product, an [Instance Secret](/resources/instance_secret/) manifest file is first created to store the connection details of the data source (e.g., BigQuery). A [Depot](/resources/depot/) manifest file for the data connection is then created, followed by the creation of a [Depot Scanner](/resources/stacks/scanner/) manifest file. For data transformation, [Flare job](/resources/stacks/flare/) manifest files are created. A [Bundle](/resources/bundle/) manifest file is created to include that refers to the Instance Secret, Depot, Depot Scanner, and Flare job manifest files, along with their dependencies. Finally, a Data Product manifest file is created to apply the Data Product, and a Data Product Scanner is created to deploy the Data Product to the [Data Product Hub](/interfaces/data_product_hub/). 
+Follow the below steps to start building the Data Product by creating the manifest files of the all the Resources and Data Product. For example, to create a Data Product, an [Instance Secret](/resources/instance_secret/) manifest file is first created to store the connection details of the data source (e.g., BigQuery). A [Depot](/resources/depot/) manifest file for the data connection is then created, followed by the creation of a [Depot Scanner](/resources/stacks/scanner/) manifest file. For data transformation, [Flare job](/resources/stacks/flare/) manifest files are created. A [Bundle](/resources/bundle/) manifest file is created to include that refers to the Instance Secret, Depot, Depot Scanner, and Flare job manifest files, along with their dependencies. Finally, a Data Product manifest file is created to apply the Data Product, and a Data Product Scanner is created to deploy the Data Product to the [Data Product Hub](/interfaces/data_product_hub/).
 
 a. Open the cloned repository using the preferred code editor (e.g., VS Code).
 
 b. Inside the repository, create a folder named `data_product` to store all related Resources.
-    
+
 ```sql
 data-product-deployment
 └── data_product
@@ -217,7 +217,7 @@ data-product-deployment
 ├── data_product
 └── .dataos    
 ```
-    
+
 b. Create a manifest file named `bitbucket-pipelines.yaml` and include the following code. This file will contain the DataOS ctl commands to apply the manifest files along with their dependencies. Additionally, update the default branch name in the file. In this case, the default branch is `main`, but it can be any name, such as `master`, depending on the branch defined when creating the Bitbucket repository.
     
 ```sql
@@ -226,7 +226,6 @@ data-product-deployment
 ├── .dataos  
 └── bitbucket-pipelines.yaml  
 ```
-    
 
 
 ```yaml

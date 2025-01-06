@@ -188,8 +188,8 @@ Flags:
   -b, --nullable string   true for nullable field, else false
 ```
 
-## `set-snapshot
-`
+## `set-snapshot`
+
 Set snapshot.
 
 ```bash

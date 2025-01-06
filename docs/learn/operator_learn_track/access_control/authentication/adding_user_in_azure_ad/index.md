@@ -61,8 +61,8 @@ Now sign in as the guest user to see the invitation.
     
 3. In the email body, select 'Accept Invitation'. A Review permissions page opens in the browser.
     
-    ![Consent Screen](/learn/operator_learn_track/access_control/authentication/adding_user_in_azure_ad/email_invite.png) 
+    ![Consent Screen](/learn/operator_learn_track/access_control/authentication/adding_user_in_azure_ad/consent_screen.png) 
 
 4. Select Accept.
 
-5. The My Apps page opens. Because we haven't assigned any apps to this guest user, you'll see the message 'There are no apps to show'.. In a real-life scenario, you would [add the guest user to an app](https://learn.microsoft.com/en-us/azure/active-directory/external-identities/add-users-administrator#add-guest-users-to-an-application), which would then appear here."
+5. The My Apps page opens. Because we haven't assigned any apps to this guest user, you'll see the message 'There are no apps to show'. In a real-life scenario, you would [add the guest user to an app](https://learn.microsoft.com/en-us/azure/active-directory/external-identities/add-users-administrator#add-guest-users-to-an-application), which would then appear here.

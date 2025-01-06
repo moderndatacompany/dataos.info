@@ -101,7 +101,7 @@ To create a new Tag-Namespace Open Bifrost navigate to Heimdall Primitives
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/bifrost/tag_namespace.png" alt="Tag Namespace">
+    <img src="/interfaces/bifrost/tag_namespace.png" alt="Tag Namespace" style="border: 1px solid black; width: 55rem, height: auto; ">
     <figcaption><i>  Users will be directed to a page where all existing Tag-Namespaces are listed.</i></figcaption>
   </div>
 </center>
@@ -115,7 +115,7 @@ To create a new Tag-Namespace Open Bifrost navigate to Heimdall Primitives
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/bifrost/tag_namespace_config.png" alt="Tag Namespace Configuration" style="border: 1px solid black; width: 80%, height: auto; ">
+    <img src="/interfaces/bifrost/tag_namespace_config.png" alt="Tag Namespace Configuration" style="border: 1px solid black; width: 55rem, height: auto; ">
   </div>
 </center>
 
@@ -130,7 +130,7 @@ A tag is an attribute following a fixed glob pattern, as defined by its Tag-Name
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/bifrost/list_of_tags.png" alt="List of Tags" style="width: 60rem; border: 1px solid black;">
+    <img src="/interfaces/bifrost/list_of_tags.png" alt="List of Tags" style="width: 55rem; border: 1px solid black;">
   </div>
 </center>
 
@@ -141,7 +141,7 @@ The diagram below summarizes how you can provide access through Bifrost.
 
 <center>
   <div style="text-align: center;">
-    <img src="/interfaces/bifrost/bifrost.png" alt="Bifrost" style="width: 60rem; border: 1px solid black;">
+    <img src="/interfaces/bifrost/bifrost.png" alt="Bifrost" style="width: 55rem; border: 1px solid black;">
     <figcaption>Bifrost</figcaption>
   </div>
 </center>

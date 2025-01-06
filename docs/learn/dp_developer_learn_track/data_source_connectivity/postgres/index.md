@@ -1,10 +1,14 @@
 # Data source connectivity- Postgres
 
-In this topic, you'll learn about data connectivity by establishing a connection from the DataOS platform to a hosted PostgreSQL database.
+In this topic, you'll learn how to establish a connection from the DataOS platform to the data source to fetch your data seamlessly. 
 
 ## Scenario
 
-Imagine you are a DataOS Operator or Data Product Developer and you need to integrate various data sources within DataOS without moving the data. By configuring a Depot, you can establish a secure connection to your PostgreSQL database, making it accessible for querying, building pipelines, and creating data products directly in DataOS. This setup not only enhances data security but also promotes interoperability with a wide range of DataOS Resources.
+Imagine you are a DataOS Operator or Data Product Developer and you need to integrate various data sources within DataOS without moving the data. Consider that the data for the use case is stored in PostgreSQL and Azure. By configuring a Depot, you can establish a secure connection to your PostgreSQL database and Azure BLOB storage, making it accessible for querying, building pipelines, and creating data products directly in DataOS. 
+
+## Steps to create a Depot
+
+First, we'll create instance secrets containing the credentials required to connect to the data source. Then, we'll reference these instance secrets in the Depot. This approach strengthens security while ensuring seamless compatibility with DataOS Resources.
 
 ### **Step 1: Create an Instance Secret manifest file**
 
@@ -17,7 +21,7 @@ Begin by drafting the manifest file for a read-only Instance Secret:
 ```yaml
 # PostgreSQL Read Instance-secret Manifest
 
-name: postgresdepot-r # Unique identifier for Resource, replace ${DEPOT_NAME} with depot name
+name: postgres-r # Unique identifier for Resource, replace ${DEPOT_NAME} with depot name
 version: v1 # Manifest version
 type: instance-secret # Type of the Resource
 description: Postgres Depot instance secret # Purpose of the Instance-secret
@@ -58,6 +62,9 @@ dataos-ctl resource apply -f /path/to/instance_secret.yml
 
 This step ensures that the database credentials are securely stored and ready for use in the next step.
 
+<aside class="callout">
+🗣 If you don’t have the necessary credentials, contact your administrator. They will create the instance secret for you and provide its details, which you can then reference in the Depot.
+</aside>
 
 ### **Step 2: Create a Depot Manifest File**
 
@@ -70,7 +77,7 @@ Draft the manifest file for the Depot:
 ```yaml
 # PostgreSQL Depot Manifest
 
-name: postgres-depot # Unique name for the Depot
+name: postgres # Unique name for the Depot
 version: v2alpha # Manifest version
 type: depot # Type of the Resource
 layer: user # DataOS layer
@@ -79,9 +86,11 @@ depot:
   description: PostgreSQL data source connection
   external: true
   secrets:
-    - name: postgres-depot-r # Reference the Instance Secret for read access
+    - name: postgres-r # Reference the Instance Secret for read access
+      keys: 
+        - postgres-r
       allkeys: true
-  postgresql:
+  jdbc:
     subprotocol: postgresql
     host: db.postgres.example.com # Replace with the database host URL
     port: 5432 # Replace with the database port number
@@ -108,11 +117,15 @@ This command displays the details of the configured Depot, confirming that it is
 
 ---
 
+<aside>
+Ensure that the name of your Instance secret is ${depot-name}-${acl}. For instance, if your Depot name is postgres and the acl(access control list) is rw, then the instance secret name will be postgres-rw.
+</aside>
+
 ### **Step 5: Test data access**
 
 **Extracting metadata**
 
-Finally, run a Scanner Workflow to extracct metadata of the connected data source to validate that the Depot is established successfully. This step completes the process of establishing a secure connection from DataOS to the PostgreSQL database.
+Finally, run a Scanner Workflow to extract metadata of the connected data source to validate that the Depot is established successfully. This step completes the process of establishing a secure connection from DataOS to the PostgreSQL database.
 
 ```yaml
 version: v1
@@ -133,11 +146,97 @@ workflow:
           depot: dataos://postgresdepot          # Postgres depot name
 ```
 
----
+To simplify the creation of depots for commonly used data sources, a set of pre-defined manifest [templates](/resources/depot/#templates-of-depot-for-different-source-systems) is available. These templates provide a quick starting point for setting up depots for popular data sources.
+
+To use these templates, you must fill in the key-value properties in the manifest file with the specific details of your data source. The required values will vary depending on the data source. A basic understanding of your organization's data infrastructure, as well as the necessary credentials or connection details, is essential for configuring these templates effectively.
+
+Similarly you can create a Depot for Azure using Instance-secret:
+??? Click to see Azure Depot manifest
+
+    ```yaml
+    name: thirdparty
+    version: v1
+    type: depot
+    tags:
+      - dataos:type:resource
+      - dataos:type:cluster-resource
+      - dataos:resource:depot
+      - dataos:layer:user
+    description: Default Third Party Depot for new
+    owner: {{owner}}
+    layer: user
+    depot:
+      name: thirdparty
+      type: ABFSS
+      owner: 
+      description: Default Third Party Depot for new
+      secrets:
+            - name: thirdparty-rw
+              keys:
+              - thirdparty-rw
+            - name: thirdparty-r
+              keys:
+              - thirdparty-r
+      external: true
+      compute: query-default
+      resources:
+        requests:
+          cpu: 100m
+          memory: 550Mi
+        limits:
+          cpu: 1000m
+          memory: 1500Mi
+      spec:
+        account: mockdataos
+        container: dropzone001
+        relativePath: large_dataset_20200511
+      source: thirdparty
+    ```
+
+## FAQs
+
+**Q1: What are the naming conventions for Instance-secrets and Depots?**
+
+**In Instance-secret names:**
+
+- Only lowercase letters (`a-z`), digits (`0-9`), and hyphens/dashes () are allowed.
+- Hyphens/dashes cannot be at the start or end of the string.
+- No uppercase letters or additional special characters are allowed.
+
+**In Depot names:**
+
+- Only lowercase letters (`a-z`) and digits (`0-9`) are allowed.
+- Hyphens/dashes and other special characters are not allowed.
+
+**Q2: Are usernames/passwords visible in Depot files?**
+
+No, usernames and passwords can be securely stored using instance secrets or referenced through a JSON file path in the Depot manifest, keeping credentials hidden.
+
+Alternatively, you can use environment variables like SNOWFLAKE_USERNAME and SNOWFLAKE_PASSWORD. Define these variables in the shell using export and reference them in the manifest file as $VARIABLE_NAME.
+
+DataOS securely interpolates these values during execution, ensuring sensitive information remains secure and isn’t exposed in code or repositories.
+
+**Q3: Can users see everyone’s Depots or only their own?** 
+
+By default, users with **data-dev** or **operator** roles can view all depots. Access can be restricted by removing the **Manage All Depot** use-case or applying policies to block the depot listing endpoint.  
+
+**Check your Depots:**
+
+```bash
+dataos-ctl get -t depot
+```
+
+**View all Depots (with permissions):**
+
+```bash
+dataos-ctl get -t depot -a
+```
+
+Depot details can also be explored via the Metis UI in DataOS.
 
 ## Additional learning resources
 
-The following resources to deepen your understanding of data source connections:
+Explore the following resources to enhance your understanding of data source connections:
 
 - [Depot Resource Documentation](https://dataos.info/resources/depot/)
 - [Instance Secret Resource Documentation](https://dataos.info/resources/instance_secret)
@@ -145,7 +244,7 @@ The following resources to deepen your understanding of data source connections:
 
 With this knowledge, you are now equipped to connect DataOS to a wide variety of data sources.
 
-## Next Step
+## Next step
 
 With Depot in place, you are now ready to build data pipelines to deliver reliable data for your data products ensuring seamless data flow.
 To learn more, refer to [Building and maintaining data pipelines](/learn/dp_developer_learn_track/build_pipeline/).

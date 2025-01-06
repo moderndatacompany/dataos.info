@@ -31,15 +31,15 @@ Before diving into configuring Lens, make sure you have everything ready:
 You follow the below steps to deploy Lens on DataOS.
 
 
-### **Step 1: Prepare the Lens semantic model folder in the Data Product directory**
+### **Step 1: Prepare the semantic model folder in the Data Product directory**
 
-The semantic model is organized within the `resources/lens/` directory of the Data Product. You don’t need to push the Lens individually. Instead, you will push the entire Data Product directory, which includes the Lens semantic model, to a code repository such as [GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github), [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/getting-started.html), or [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/push-code-to-bitbucket/), once all the Data Product Resources are prepared. This ensures that the Lens, along with all Data Product Resources (such as Talos), is included in the overall deployment, with proper synchronization for version tracking and collaboration.
+The semantic model is organized within the `build/semantic_model` directory of the Data Product. You don’t need to push the semantic model individually. Instead, you will push the entire Data Product directory, which includes the semantic model, to a code repository such as [GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github), [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/getting-started.html), or [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/push-code-to-bitbucket/), once all the Data Product Resources are prepared. This ensures that the Lens, along with all Data Product Resources (such as Talos), is included in the overall deployment, with proper synchronization for version tracking and collaboration.
 
 The following structure illustrates how the Lens will be organized within the Data Product directory.
 
 ```jsx
-resources/                          # resources folder in dp
-├── lens/                           # Lens  folder
+build/                          # resources folder in dp
+├── semantic_model/                           # Lens  folder
 │   ├── deployment.yaml             # Deployment file for Lens
 │   ├── model/                      # Lens model folder
 │   │   ├── sql/                    # SQL files for the Lens model
@@ -140,9 +140,9 @@ lens:
       
 # Data Source configuration      
   source: 
-    type: minerva # Source type (optional)
-    name: system # Source name (optional)
-    catalog: icebase # Catalog name for Minerva or Themis (optional)
+    type: depot # Source type (could be themis, minerva flash as well)
+    name: lakehouse # Source name (name of the depot)
+    catalog: lakehouse # Catalog name for the depot
   repo: # Lens model code repository configuration (mandatory)
     url: https://bitbucket.org/tmdc/dataproducts # URL of repository containing the Lens model (mandatory)
     lensBaseDir: dataproducts/setup/resources/lens2/model # Relative path of the Lens 'model' directory in repository (mandatory)
@@ -150,7 +150,7 @@ lens:
       - --ref=main # Repository Branch (optional)
 
 # API Instances configuration
-  api:  (optional)
+  api:  #(optional)
     replicas: 1 # Number of API instance replicas (optional)
     logLevel: info # Logging granularity (optional)
     resources: # CPU and memory configurations for API Instances (optional)
@@ -162,7 +162,7 @@ lens:
         memory: 1048Mi
 
 # Worker configuration
-  worker:  (optional)
+  worker:  #(optional)
     replicas: 1 # Number of Worker replicas (optional)
     logLevel: debug # Logging level for Worker (optional)
     resources: # CPU and memory configurations for Worker (optional)
@@ -175,7 +175,7 @@ lens:
 
 # Router configuration
 
-  router:  (optional)
+  router:  #(optional)
     logLevel: info # Level of log detail for Router (optional)
     resources: # CPU and memory resource specifications for the router (optional)
       requests:
@@ -186,7 +186,7 @@ lens:
         memory: 2548Mi
 
 # Iris configuration 
-  iris: (optional)
+  iris: #(optional)
     logLevel: info # Log level for Iris (optional)
     resources: # CPU and memory resource specifications for the iris board (optional)
       requests:
@@ -196,7 +196,7 @@ lens:
         cpu: 1600m
         memory: 2240Mi
 # Metric configuration 
-  metric: (optional)
+  metric:                         #(optional)
     logLevel: info # Log level for metrics (optional)
 ```
 
@@ -204,7 +204,7 @@ A typical deployment of Lens includes the following components:
 
 | **Section** | **Description** |
 | --- | --- |
-| **Source** | Defines the configuration of the data source for data processing and querying. |
+| **Source** | Specifies the source configuration from which the Lens will be mapped. The Lens support the depot, themis, minerva and flash as source. |
 | **Repo** | Outlines the configuration of the code repository where the model used by Lens resides. |
 | **API** | Configures an API service that processes incoming requests, connecting to the database for raw data. A single instance is provisioned by default, but the system can auto-scale to add more instances based on workload demands, with a recommendation of one instance for every 5-10 requests per second. |
 | **Worker** | When `LENS2_REFRESH_WORKER` is set to true, a Refresh Worker manages and refreshes the memory cache in the background, keeping refresh keys for all data models up-to-date. It invalidates the in-memory cache but does not populate it, which is done lazily during query execution. |

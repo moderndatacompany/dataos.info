@@ -20,7 +20,7 @@ Follow these steps to start training your machine learning model using the Data 
 
 1. **Download the Jupyter Notebook Template**
     
-    Go to the **Access Options** tab in your Data Product details, and in the **AI and ML** section, click **Download**. This will download a `.ipynb` file pre-configured with templates to consume the Data Product via REST APIs, PostgreSQL, GraphQL, and SQL interfaces.
+    Go to the **Access Options** tab in your Data Product details, and in the 'AI and ML' section, click 'Download'. This will download a `.ipynb` file pre-configured with templates to consume the Data Product via REST APIs, PostgreSQL, GraphQL, and SQL interfaces.
     
     ![ml_tab.png](/learn/dp_consumer_learn_track/integrate_aiml/ml_tab.png)
     
@@ -32,7 +32,7 @@ Follow these steps to start training your machine learning model using the Data 
     
 3. **Set Up the REST API for Data Retrieval**
     
-    Here we choose the REST API integration in the notebook template. First, copy your DataOS API key from your profile page and retrieve the endpoint URL from the **Access Options** tab.
+    Here we choose the REST API integration in the notebook template. First, copy your DataOS API key from your profile page and retrieve the endpoint URL from the 'Access Options' tab.
     
 4. **Configure the Template with Your API Key and Query**
     
