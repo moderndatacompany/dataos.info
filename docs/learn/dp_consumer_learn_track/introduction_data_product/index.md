@@ -28,6 +28,8 @@ A Data Product encompasses:
 
 - **Platform Dependencies**: Resources like compute and storage required to run the Data Product
 
+![data_product_def.png](/learn/dp_consumer_learn_track/introduction_data_product/data_product_def.png)
+
 Think of Data Products as purpose-driven solutions designed to transform raw data into insights you can act on. 
 
 Picture this:
