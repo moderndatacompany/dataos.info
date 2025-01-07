@@ -210,7 +210,7 @@ nav:
       #   - Elements of Lens: 
       #     - interfaces/lens/elements_of_lens/index.md
       #     - Entities: interfaces/lens/elements_of_lens/entity.md
-      #     - Fields: interfaces/lens/elements_of_lens/fields.md
+      #     - Fields: interfaces/lens/elements_of_lens/fields.md      
       #     - Dimensions: interfaces/lens/elements_of_lens/dimensions.md
       #     - Measures: interfaces/lens/elements_of_lens/measures.md
       #     - Relationships: interfaces/lens/elements_of_lens/relationships.md
