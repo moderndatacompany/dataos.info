@@ -207,7 +207,7 @@ To know more about Pager, [refer to this](/resources/pager/).
 
 With the help of Bundle, users can perform the deployment and management of multiple Resources in a single operation, organized as a flattened DAG with interconnected dependency nodes.
 
-Let’s see, how you can create the Bundle Resource to apply all the resources based on their dependencies. To create a Bundle in DataOS, simply compose a manifest file for a Bundle as shown below:
+Let’s see, how you can create the Bundle Resource to apply all the Resources based on their dependencies. To create a Bundle in DataOS, simply compose a manifest file for a Bundle as shown below:
 
 ```yaml
 # Resource meta section
