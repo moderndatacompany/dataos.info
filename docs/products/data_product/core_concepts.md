@@ -41,19 +41,19 @@ A Data Product is assigned a unique identifier, making it easily referencable an
 
 A Data Product is presented in a manner that is easily understandable to users. It employs clear and intuitive visualizations, documentation, and explanations, facilitating users' understanding of the data and its implications.
 
-### **Natively Accessible**
+### **Natively accessible**
 
 A Data Product is made available in its native format, ensuring seamless integration with different tools and systems commonly used by data consumers. This eliminates the need for complex conversions or transformations, allowing for direct access and utilization.
 
-### **Trustworthy and Truthful**
+### **Trustworthy and truthful**
 
 A Data Product adheres to rigorous quality assurance processes and data governance principles. It ensures that the data is accurate, reliable, and transparently sourced, instilling trust and confidence in the insights or outputs it provides.
 
-### **Interoperable and Composable**
+### **Interoperable and composable**
 
 A Data Product is designed to integrate and interact with other Data Products and systems seamlessly. It follows standardized protocols and interfaces, enabling interoperability and composability, thus allowing users to combine and leverage multiple data products for comprehensive analysis.
 
-### **Valuable on Its Own**
+### **Valuable on its own**
 
 A Data Product provides users with intrinsic value without further processing or integration. It delivers meaningful insights, actionable information, or standalone functionalities that can be used to support decision-making and drive desired outcomes.
 
@@ -61,7 +61,7 @@ A Data Product provides users with intrinsic value without further processing or
 
 A Data Product incorporates robust security measures to protect the data's confidentiality, integrity, and availability. It implements access controls, encryption mechanisms, and privacy safeguards, ensuring the data is safeguarded from unauthorized access or breaches.
 
-### **Purpose Driven**
+### **Purpose driven**
 
 A Data Product have a clear purpose and be aligned with specific business objectives. It is designed to solve particular problems or provide distinct value to its users, ensuring that its development and deployment are goal-oriented and impactful.
 
