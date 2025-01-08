@@ -7,10 +7,9 @@ The `config.yaml` file is the main configuration file for a Talos project. It de
 ```yaml
 name: employee
 description: A talos app
-version: 0.0.1
+version: 0.1.25
 logLevel: DEBUG
 auth:
-    heimdallUrl: https://liberal-donkey.dataos.app/heimdall
     userGroups:
     - name : intern
       description: intern group
@@ -112,14 +111,6 @@ logLevel: DEBUG
 
 **Description:** Authentication configuration.
 
-### **`heimdallUrl`**
-
-**Description:** URL for the authentication service.
-
-| Data Type | Requirement | Default Value | Possible Values |
-| --- | --- | --- | --- |
-| string | mandatory | none | Any valid URL |
-
 ### **`userGroups`**
 
 **Description:** Defines user groups with specific permissions.
@@ -132,7 +123,6 @@ logLevel: DEBUG
 
 ```yaml
 auth:
-    heimdallUrl: https://liberal-donkey.dataos.app/heimdall
     userGroups:
     - name: intern
       description: intern group
