@@ -4,7 +4,7 @@ In this section of the module, you'll learn how to consume the Data Product for 
 
 ## Scenario
 
-Once you've confirmed that the Product360 Data Product fully addresses your use case, you’ll use machine learning algorithms to build a recommendation system. This system will not only pinpoint cross-sell opportunities but also deliver valuable insights to the marketing team. These insights will help craft personalized promotions, boost customer engagement, and drive additional sales for the business.
+Once you've confirmed that the 'Product Affinity' Data Product fully addresses your use case, you’ll use machine learning algorithms to build a recommendation system. This system will not only pinpoint cross-sell opportunities but also deliver valuable insights to the marketing team. These insights will help craft personalized promotions, boost customer engagement, and drive additional sales for the business.
 
 ## What do you need to get started?
 
