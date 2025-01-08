@@ -38,7 +38,7 @@ Exploring semantic models allows users to understand the data flow, relationship
 
 ### **Navigate to the ‘Explore’ option**
     
-On the Data Product details page, click the "Explore" button to navigate to the Studio in the Data Product Hub.
+On the Data Product details page, click the 'Explore' button to navigate to the Studio in the Data Product Hub.
 
 ![exploration_page.png](/learn/dp_consumer_learn_track/explore_sm/exploration_page.png)
 
@@ -145,7 +145,7 @@ Let's analyze the total number of customers per country:
 
 ### **Saving your analysis as a Perspective**
 
-Save your query result for later by clicking 'Save Perspective'. Give it a meaningful name, like "Country-wise Total Customers," and save it.
+Save your query result for later by clicking 'Save Perspective'. Give it a meaningful name, like 'Country-wise Total Customers,' and save it.
 
 ![perspective.png](/learn/dp_consumer_learn_track/explore_sm/perspective.png)
 
