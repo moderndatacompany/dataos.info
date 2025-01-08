@@ -42,9 +42,17 @@ Open the repository on your preferred code editor. Navigate to the `setup` folde
 ```yaml
 name: ${{superstore}}
 description: ${{A talos-depot-postgres app}} # description
-version: 0.1.6 # talos image version
-auth: # authentication details
-  heimdallUrl: https://${{dataos-context}}/heimdall 
+version: 0.1.25 # talos image version
+auth:
+  userGroups:
+  - name: datadev
+    description: data dev group
+    includes:
+      - users:id:iamgroot
+      - users:id:thisisthor
+  - name: default
+    description: Default group to accept everyone
+    includes: "*"
 logLevel: ${{'DEBUG'}}
 sources: # source details
   - name: ${{snowflakedepot}} # source name
@@ -253,7 +261,7 @@ To know more about Instance Secret, [please refer to this](https://dataos.info/r
 - Now you can access the data on the API endpoint using Postman, as shown below:
     
     <center>
-      <img src="/resources/stacks/talos/image2.png" alt="Talos" style="width:40rem; border: 1px solid black; padding: 5px;" />
+      <img src="/resources/stacks/talos/image2.png" alt="Talos" style="width:40rem; border: 1px solid black; padding: 0px;" />
     </center>
 
     You can even hit the endpoint `/doc/postman?apikey='xxxxxxxxx'` to download the postman collection and import the `.json` collection into postman.
