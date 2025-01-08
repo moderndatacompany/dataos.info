@@ -8,7 +8,7 @@ In this module, you will learn how to activate a data product using Tableau Desk
 
 ## Scenario
 
-Imagine you’re a sales analyst for a retail company, and you’re tasked with providing insights into the company’s Product360 data—an extensive dataset stored in DataOS. Your goal is to visualize and analyze this data within Tableau to help the sales team track trends, understand which products are frequently purchased together (product affinity), and monitor sales across different regions.
+Imagine you’re a sales analyst for a retail company, and you’re tasked with analyzing 'Product Affinity' Data Product—an extensive data stored in DataOS. Your goal is to visualize and analyze this data within Tableau to help the sales team track trends, understand which products are frequently purchased together (product affinity), and monitor sales across different regions.
 
 ## Step-by-Step: Syncing Tableau with DataOS
 
