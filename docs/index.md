@@ -316,17 +316,39 @@ This category includes DataOS Resources for managing computational power and inf
     Streamlines the allocation of processing power for data tasks, acting as an abstraction over node pools of similarly configured VMs.   
 </div>
 
-### **Learning Assets**
+### **Learning Tracks**
 
-The following sections in the documentation help you understand various aspects of DataOS, which are essential for building data products using DataOS.
+Explore role-based learning tracks to master essential DataOS capabilities to create, manage and consume Data Products. These paths enable you to focus on the training and knowledge areas most relevant to your specific role. With practical insights, and step-by-step guidance, these learning tracks streamline your journey, empowering you to unlock the full potential of Data Products.
 
 <div class= "grid cards" markdown>
 
--   :material-list-box-outline:{ .lg .middle } **Video Tutorials**
+-   :fontawesome-solid-user-tag:{ .lg .middle } **Data Product Consumer**
 
     ---
 
-    [:octicons-arrow-right-24: Learn more](/videos/)
+    [:octicons-arrow-right-24: Learn more](/learn/#data-product-consumer)
+
+
+-   :fontawesome-solid-user-gear:{ .lg .middle } **Data Product Developer**
+
+    ---
+
+    [:octicons-arrow-right-24:  Learn more](/learn/#data-product-developer)
+
+-   :fontawesome-solid-user-check:{ .lg .middle } **DataOS Operator**
+
+    ---
+
+    [:octicons-arrow-right-24: Learn more](/learn/#dataos-operator)
+
+</div>
+
+
+### **Learning Assets**
+
+To further support your journey, the following sections in the documentation help you understand various aspects of DataOS, which are essential for building Data Products using DataOS.
+
+<div class= "grid cards" markdown>
 
 -   :material-network-pos:{ .lg .middle } **Glossary**
 
@@ -334,10 +356,17 @@ The following sections in the documentation help you understand various aspects 
 
     [:octicons-arrow-right-24: Learn more](/glossary/)
 
--   :material-content-duplicate:{ .lg .middle } **Quick Guides**
+
+-   :material-content-duplicate:{ .lg .middle } **Quick Start Guides**
 
     ---
 
-    [:octicons-arrow-right-24:  Learn more]()
+    [:octicons-arrow-right-24:  Learn more](/quick_guides/)
+
+-   :material-list-box-outline:{ .lg .middle } **Video Tutorials**
+
+    ---
+
+    [:octicons-arrow-right-24: Learn more](/videos/)
 
 </div>
