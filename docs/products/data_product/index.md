@@ -10,7 +10,7 @@ hide:
 
 # :products-dataproduct: Data Product
 
-A Data Product is a self-contained unit within DataOS designed for handling and sharing analytical data, developed and managed by the dedicated teams. It includes meta data, data transformation code, input and output definitions, discovery and observability, APIs, documentation, service level objectives (SLOs), governance, transformation and platform dependencies such as compute and storage resources. Data Product is reusable, composable, portable and cloud-agnostic.​
+A Data Product is a self-contained unit within DataOS designed for handling and sharing analytical data, developed and managed by dedicated teams. It includes metadata, data transformation code, input and output definitions, discovery and observability, APIs, documentation, service level objectives (SLOs), governance, transformation, and platform dependencies such as compute and storage resources. Data Product is reusable, composable, portable, and cloud-agnostic.
 
 DataOS provides the platform for the development, management, processing, and deployment of Data Products across an organization. It provides a streamlined approach to handling Data Products throughout their entire lifecycle, from ingestion and storage to analysis and delivery. By integrating these functionalities into a single, cohesive system, DataOS enhances decision-making and boosts operational efficiency.
 
@@ -91,7 +91,7 @@ Once use cases have been defined, the next step is to explore the existing Data 
 
 ## Data Product development lifecycle
 
-The Data Product Development lifecycle consists of four key phases: Design, Develop, Deploy, and Iterate. It starts with Design, where business goals are translated into a solution architecture. The Develop phase involves building and testing the data product based on this design. Deploy focuses on releasing the product to users and ensuring it operates effectively in a production environment. Finally, Iterate emphasizes continuous improvement through feedback and performance analysis to adapt to evolving needs and enhance the product over time. To know about Data Product Development lifecycle in detail, please [refer to this](/products/data_product/how_to_guides/).
+The Data Product Development lifecycle consists of four key phases: Design, Develop, Deploy, and Iterate. It starts with Design, where business goals are translated into a solution architecture. The Develop phase involves building and testing the Data Product based on this design. Deploy focuses on releasing the product to users and ensuring it operates effectively in a production environment. Finally, Iterate emphasizes continuous improvement through feedback and performance analysis to adapt to evolving needs and enhance the product over time. To know about Data Product Development lifecycle in detail, please [refer to this](/products/data_product/how_to_guides/).
 
 ## Structure of Data Product manifest
 
