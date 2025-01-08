@@ -1,1 +1,0 @@
-# How to declare a Worker configuration within a Stack definition for seamless orchestration?

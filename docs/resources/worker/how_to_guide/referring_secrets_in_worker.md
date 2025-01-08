@@ -1,1 +1,0 @@
-# How to refer Secrets in Workers?

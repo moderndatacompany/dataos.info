@@ -1,7 +1,0 @@
-setup.py
-mkdocs_material.egg-info/PKG-INFO
-mkdocs_material.egg-info/SOURCES.txt
-mkdocs_material.egg-info/dependency_links.txt
-mkdocs_material.egg-info/not-zip-safe
-mkdocs_material.egg-info/requires.txt
-mkdocs_material.egg-info/top_level.txt

@@ -1,9 +1,0 @@
-name: ${secret-name}
-version: v1
-type: instance-secret
-instance-secret:
-  type: certificate
-  acl: rw
-  files:
-      truststoreLocation: ${file-path}
-      keystoreLocation: ${file-path}
