@@ -1,0 +1,242 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "DataOS Documentation",
+  "logo": {
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg",
+    "href": "https://www.themoderndatacompany.com/"
+  },
+  "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#1E88E5",
+    "light": "#BBDEFB",
+    "dark": "#0D47A1",
+    "anchors": {
+      "from": "#1565C0",
+      "to": "#2196F3"
+    }
+  },
+  "layout": "topnav",
+  "background": {
+    "style": "gradient"
+  },
+  "font": {
+    "headings": {
+      "family": "Open Sans"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "Support",
+      "url": "mailto:content@tmdc.io"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Schedule a Demo",
+    "url": "https://www.themoderndatacompany.com/schedule-a-demo"
+  },
+  "tabs": [
+    {
+      "name": "APIs and SDKs",
+      "url": "api-and-sdk"
+    },
+    {
+      "name": "Changelog",
+      "url": "changelog"
+    }
+  ],
+  "primaryTab": {
+    "name": "Home"
+  },
+  "anchors": [
+    {
+      "name": "Community",
+      "icon": "slack",
+      "url": "https://moderndata101.com/"
+    },
+    {
+      "name": "Blog",
+      "icon": "newspaper",
+      "url": "https://moderndata101.substack.com/"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Getting Started",
+      "pages": [
+        "getting_started/introduction"
+      ]
+    },
+    {
+      "group": "Lens",
+      "pages": [
+        "resources/lens/index",
+        {
+          "group": "Lens Setup",
+          "pages": [
+            "resources/lens/lens_model_folder_setup",
+            "resources/lens/optimizing_lens_testing_in_local_development",
+            "resources/lens/lens_deployment"
+          ]
+        },
+        {
+          "group": "Data Modelling",
+          "pages": [
+            "resources/lens/overview",
+            "resources/lens/concepts",
+            "resources/lens/best_practices",
+            "resources/lens/dos_and_donts",
+            "resources/lens/errors"
+          ]
+        },
+        {
+          "group": "Configurations",
+          "pages": [
+            "resources/lens/lens_manifest_attributes",
+            "resources/lens/docker_compose_manifest_attributes"
+          ]
+        },
+        {
+          "group": "Supported Data Sources",
+          "pages": [
+            "resources/lens/data_sources/bigquery",
+            "resources/lens/data_sources/flash",
+            "resources/lens/data_sources/minerva",
+            "resources/lens/data_sources/postgres",
+            "resources/lens/data_sources/awsredshift",
+            "resources/lens/data_sources/themis"
+          ]
+        },
+        {
+          "group": "APIs & Integrations",
+          "pages": [
+            "resources/lens/api_endpoints_and_scopes",
+            {
+              "group": "BI Integration",
+              "pages": [
+                "resources/lens/bi_integration",
+                "resources/lens/bi_integration/powerbi",
+                "resources/lens/bi_integration/superset",
+                "resources/lens/bi_integration/tableau"
+              ]
+            }
+          ]
+        },
+        {
+          "group": "Reference",
+          "pages": [
+            "resources/lens/working_with_payload",
+            "resources/lens/working_with_segments",
+            "resources/lens/working_with_views",
+            "resources/lens/working_with_user_groups_and_data_policies"
+          ]
+        },
+        {
+          "group": "Exploration",
+          "pages": [
+            "resources/lens/exploration_of_deployed_lens_using_graphql",
+            "resources/lens/exploration_of_deployed_lens_using_sql_apis",
+            "resources/lens/exploration_of_deployed_lens_using_python",
+            "resources/lens/exploration_of_deployed_lens_using_rest_apis",
+            "resources/lens/exploration_of_deployed_lens_using_iris_dashboard"
+          ]
+        },
+        "resources/lens/fine_tuning_a_lens_model"
+      ]
+    },
+    {
+      "group": "API Documentation",
+      "pages": [
+        "api-and-sdk/introduction"
+      ]
+    },
+    {
+      "group": "Endpoint Examples",
+      "pages": [
+        "api-and-sdk/endpoint/get",
+        "api-and-sdk/endpoint/create",
+        "api-and-sdk/endpoint/delete"
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "getting_started/introduction",
+      "destination": ""
+    },
+    {
+      "source": "resources/lens/index/",
+      "destination": "resources/lens/"
+    }
+  ],
+  "versions": [
+    "v1.22"
+  ],
+  "search": {
+    "location": "top",
+    "prompt": "Search or Ask your queries..."
+  },
+  "feedback": {
+    "thumbsRating": true
+  },
+  "footer": {
+    "socials": {
+      "x": "https://x.com/TheModernDataCo",
+      "facebook": "https://www.facebook.com/themoderndatacompany",
+      "linkedin": "https://www.linkedin.com/company/themoderndatacompany/"
+    },
+    "links": [
+      {
+        "title": "Resources",
+        "links": [
+          {
+            "label": "Resource Hub",
+            "url": "https://www.themoderndatacompany.com/resources"
+          },
+          {
+            "label": "Blog",
+            "url": "https://www.themoderndatacompany.com/blog"
+          },
+          {
+            "label": "Documentation",
+            "url": "https://dataos.info/"
+          }
+        ]
+      },
+      {
+        "title": "Company",
+        "links": [
+          {
+            "label": "About Us",
+            "url": "https://www.themoderndatacompany.com/company"
+          },
+          {
+            "label": "Newsroom",
+            "url": "https://www.themoderndatacompany.com/newsroom"
+          },
+          {
+            "label": "Careers",
+            "url": "https://www.themoderndatacompany.com/careers"
+          },
+          {
+            "label": "Blog",
+            "url": "https://www.themoderndatacompany.com/blog"
+          }
+        ]
+      },
+      {
+        "title": "Legal",
+        "links": [
+          {
+            "label": "Privacy Policy",
+            "url": "https://www.themoderndatacompany.com/privacy-policy"
+          },
+          {
+            "label": "Terms of Use",
+            "url": "https://www.themoderndatacompany.com/terms-of-use"
+          }
+        ]
+      }
+    ]
+  }
+}
