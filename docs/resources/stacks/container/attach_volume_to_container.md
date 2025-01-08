@@ -21,7 +21,7 @@ volume:
 
 ## Create the Container Stack
 
-Refer the created Volume Resource in the `persistentVolume` attribute of the Container manifest file. The `persistentVolume` section specifies the volume's name (persistent-v) and the directory (mymount) where it will be mounted inside the container. This allows the container to use the volume for persistent storage
+Refer the created Volume Resource in the `persistentVolume` attribute of the Container manifest file. The `persistentVolume` section specifies the volume's name (persistent-v) and the directory (mymount) where it will be mounted inside the container. This allows the container to use the volume for persistent storage.
 
 ```yaml
 version: v1
