@@ -1,12 +1,12 @@
 ---
 title: Policy
 search:
-  boost: 4
+  boost: 2
 ---
 
 # :resources-policy: Policy
 
-Policy is a [Resource](/resources/) in DataOS that defines a set of rules or guardrails governing the behavior of users, be it individuals or applications/services. Within DataOS, Policies are enforced using [Attribute Based Access Control (ABAC)](/resources/policy/core_concepts/#attribute-based-access-control-abac) and define what [predicates](/resources/policy/core_concepts/#predicate) a user (a [subject](/resources/policy/core_concepts/#subject) can perform on a dataset, API Path, or a Resource (an [object](/resources/policy/core_concepts/#object), thus defining the constraints of the relationship between the subject and object. To understand the key characteristics of Policy, refer to the following link: [Core Concepts](/resources/policy/core_concepts/).
+Policy is a [Resource](/resources/) in DataOS that defines a set of rules or guardrails governing the behavior of users, be it individuals or applications/services. Within DataOS, Policies are enforced using [Attribute Based Access Control (ABAC)](/resources/policy/core_concepts#attribute-based-access-control-abac) and define what [predicates](/resources/policy/core_concepts#predicate) a user (a [subject](/resources/policy/core_concepts/#subject) can perform on a dataset, API Path, or a Resource (an [object](/resources/policy/core_concepts/#object), thus defining the constraints of the relationship between the subject and object. To understand the key characteristics of Policy, refer to the following link: [Core Concepts](/resources/policy/core_concepts/).
 
 ## Types of Policies
 
@@ -51,7 +51,7 @@ DataOS offers two primary categories of policies: Access Policy and Data Policy.
 
         Such a policy ensures the protection of sensitive details, including but not limited to names, titles, addresses, etc.
 
-        You can apply the Mask policy, say to mask the column with ‘customer name’ in it, directly from the [Metis UI](/interfaces/metis/) via policy tags or via [DataOS CLI](/interfaces/cli/) by applying a manifest file. 
+        You can apply the Mask policy, say to mask the column with ‘customer name’ in it, directly from the [Metis UI](/interfaces/metis) via policy tags or via [DataOS CLI](/interfaces/cli/) by applying a manifest file. 
 
     === "Data Filtering Policy"
 
@@ -96,7 +96,7 @@ DataOS offers two primary categories of policies: Access Policy and Data Policy.
         === "Code"
 
             ```yaml title="sample_data_filter_policy.yml"
-            --8<-- "examples/resources/policy/sample_data_policy_filter.yml"
+            --8<-- "examples/resources/policy/sample_filter_data_policy.yml"
             ```
 
     === "Masking Data Policy"
@@ -109,7 +109,7 @@ DataOS offers two primary categories of policies: Access Policy and Data Policy.
         === "Code"
 
             ```yaml title="policy_manifest_structure.yml"
-            --8<-- "examples/resources/policy/sample_mask_data_policy.yml"
+            --8<-- "examples/resources/policy/sample_data_masking_policy.yml"
             ```
 
 
@@ -120,6 +120,7 @@ Policy Resource in DataOS can be created by applying the manifest file using the
 ## Configuration
 
 Policy can be configured depending on the use case. For a detailed breakdown of the configuration options and attributes, please refer to the documentation: [Attributes of Policy manifest](/resources/policy/configurations/).
+
 
 ## Recipes
 
