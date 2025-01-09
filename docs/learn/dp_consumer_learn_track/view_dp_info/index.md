@@ -4,7 +4,7 @@ In this topic, you'll learn to explore the details of a Data Product in the Data
 
 ## Scenario
 
-During your initial exploration, you discovered the 'Product 360' Data Product. Now, you’ll delve into its detailed information such as data contributors, tier classification, linked GitHub repositories, semantic model, quality, etc. This helps you gauge its reliability and relevance for your analysis, such as product affinity analysis.
+During your initial exploration, you discovered the 'Product Affinity' Data Product. Now, you’ll delve into its detailed information such as data contributors, tier classification, linked GitHub repositories, semantic model, quality, etc. This helps you gauge its reliability and relevance for your analysis, such as product affinity analysis.
 
 ## Quick concepts
 
@@ -36,9 +36,9 @@ To make the most out of this guide, you should be familiar with:
 
 ## Steps to view Data Product details
 
-After discovering the 'Product 360' Data Product, follow these steps to explore its details.
+After discovering the 'Product Affinity' Data Product, follow these steps to explore its details.
 
-1. **Access the Data Product details page:** From the Data Product Hub, select the 'Product 360' Data Product. This action will redirect you to the Data Product details page.
+1. **Access the Data Product details page:** From the Data Product Hub, select the 'Product Affinity' Data Product. This action will redirect you to the Data Product details page.
     
     ![view_access.png](/learn/dp_consumer_learn_track/view_dp_info/view_access.png)
     

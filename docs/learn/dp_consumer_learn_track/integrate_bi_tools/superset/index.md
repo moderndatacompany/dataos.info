@@ -32,7 +32,7 @@ In this topic, you’ll learn how to activate a data product through Apache Supe
     
 4. **Activate the Data Product**
     
-    Once you’ve entered all the credentials, click 'Activate' to complete the setup. This will link the *Product 360* semantic model with Superset.
+    Once you’ve entered all the credentials, click 'Activate' to complete the setup. This will link the *Product Affinity* semantic model with Superset.
     
     ![superset-connections.png](/learn/dp_consumer_learn_track/integrate_bi_tools/superset/superset-connections.png)
     
@@ -42,4 +42,4 @@ In this topic, you’ll learn how to activate a data product through Apache Supe
     
 6. **Creating Visualizations in Superset**
     
-    To create a chart, select datasets labeled with the data product name. Choose the 'Measures' and 'Dimensions' that best suit your analysis goals. This enables you to explore and analyze data directly from the 'Product 360' model within Superset, making it easy to generate insights.
+    To create a chart, select datasets labeled with the data product name. Choose the 'Measures' and 'Dimensions' that best suit your analysis goals. This enables you to explore and analyze data directly from the 'Product Affinity' model within Superset, making it easy to generate insights.

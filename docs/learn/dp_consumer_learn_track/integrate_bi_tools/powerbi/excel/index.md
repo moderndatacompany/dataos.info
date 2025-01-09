@@ -4,7 +4,7 @@ This topic introduces the methods to connect with Excel via PowerBI to create vi
 
 ## Scenario
 
-Use Excel's robust data visualization and analytics capabilities to connect with 'Product 360'. Build real-time, interactive dashboards that provide insights into customer buying patterns and help forecast demand, enabling proactive marketing decisions.
+Use Excel's robust data visualization and analytics capabilities to connect with 'Product Affinity'. Build real-time, interactive dashboards that provide insights into customer buying patterns and help forecast demand, enabling proactive marketing decisions.
 
 There are two methods to interact  with the Excel via PowerBI
 

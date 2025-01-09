@@ -110,7 +110,7 @@ command:
 
 **`arguments`**
 
-The arguments are the additional arguments apart form the primary command specified within the Dockerfile, as described above
+The arguments are the additional arguments apart form the primary command specified within the Dockerfile, as described above.
 
 ```yaml
 arguments:
