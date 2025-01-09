@@ -1,23 +1,23 @@
-name: {{mysql01}}
+name: ${{mysql01}}
 version: v2alpha
 type: depot
 tags:
-  - {{dropzone}}
-  - {{mysql}}
+  - ${{dropzone}}
+  - ${{mysql}}
 layer: user
 depot:
   type: MYSQL
-  description: {{"MYSQL Sample Database"}}
+  description: ${{"MYSQL Sample Database"}}
   mysql:
     subprotocol: "mysql"
-    host: {{host}}
-    port: {{port}}
+    host: ${{host}}
+    port: ${{port}}
     params: # Required
-      tls: {{skip-verify}}
-  external: {{true}}
+      tls: ${{skip-verify}}
+  external: ${{true}}
   secrets:
-    - name: {{sf-instance-secret-name}}-r
+    - name: ${{sf-instance-secret-name}}-r
       allkeys: true
 
-    - name: {{sf-instance-secret-name}}-rw
+    - name: ${{sf-instance-secret-name}}-rw
       allkeys: true

@@ -1,24 +1,24 @@
-name: {{"sanityeventhub01"}}
+name: ${{"sanityeventhub01"}}
 version: v1
 type: depot
 tags:
-  - {{Eventhub}}
-  - {{Sanity}}
+  - ${{Eventhub}}
+  - ${{Sanity}}
 layer: user
 depot:
   type: "EVENTHUB"
-  compute: {{runnable-default}}
+  compute: ${{runnable-default}}
   spec:
-    endpoint: {{"sb://event-hubns.servicebus.windows.net/"}}
-  external: {{true}}
+    endpoint: ${{"sb://event-hubns.servicebus.windows.net/"}}
+  external: ${{true}}
   connectionSecret:
     - acl: r
       type: key-value-properties
       data:
-        eh_shared_access_key_name: {{$EH_SHARED_ACCESS_KEY_NAME}}
-        eh_shared_access_key: {{$EH_SHARED_ACCESS_KEY}}
+        eh_shared_access_key_name: ${{$EH_SHARED_ACCESS_KEY_NAME}}
+        eh_shared_access_key: ${{$EH_SHARED_ACCESS_KEY}}
     - acl: rw
       type: key-value-properties
       data:
-        eh_shared_access_key_name: {{$EH_SHARED_ACCESS_KEY_NAME}}
-        eh_shared_access_key: {{$EH_SHARED_ACCESS_KEY}}        
+        eh_shared_access_key_name: ${{$EH_SHARED_ACCESS_KEY_NAME}}
+        eh_shared_access_key: ${{$EH_SHARED_ACCESS_KEY}}        
