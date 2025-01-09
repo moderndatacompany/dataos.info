@@ -46,6 +46,8 @@ After analyzing the data using Workbench, several quality checks are established
 - **Uniqueness:** Each `customer_id` must be unique, with no duplicates permitted.
 - **Validity:** The `mntwines` attribute must conform to specified criteria, ensuring the data falls within a valid range of 0 to 1. Any occurrence where the invalid count (`invalid_count(mntwines)`) exceeds 0 highlights a data quality issue that requires attention.
 
+Explore the full range of Soda quality checks available for implementation [here](/resources/stacks/soda/#soda-check-references/).
+
 ### **Defining metadata of the Data Product**
 
 In this step, the name, tier, domain, use case, inputs, outputs, and consumption ports of the Data Product are determined.
