@@ -1102,11 +1102,25 @@ You can access these templates by visiting the following links: 
         🗣️ Please note that the credentials are directly specified in the depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
         </aside>
 
-        === "Inline Credentials"
+        === "Inline credentials"
 
-            ```yaml title="mongo_v1.yaml" 
-            --8<-- "examples/resources/depot/nosql_db/mongodb/mongo_v1.yaml"
-            ```  
+            === "Via username and password"
+
+                ```yaml title="mongo_v1.yaml" 
+                --8<-- "examples/resources/depot/nosql_db/mongodb/mongo_v1.yaml"
+                ```  
+            === "Via certification"
+
+                ```yaml title="mongo_cert.yaml" 
+                --8<-- "examples/resources/depot/nosql_db/mongodb/mongo_cert.yaml"
+                ``` 
+            === "Via VPC endpoint"
+
+                ```yaml title="mongo_vpce.yaml" 
+                --8<-- "examples/resources/depot/nosql_db/mongodb/mongo_vpce.yaml"
+                ``` 
+
+
             Follow these steps to create the depot:
 
             - **Step 1**: Create a manifest file. 
@@ -1115,7 +1129,7 @@ You can access these templates by visiting the following links: 
             - **Step 4**: Apply the file through DataOS CLI.
 
 
-        === "Instance Secret Reference"
+        === "Instance Secret reference"
 
             ```yaml title="mongo_v2alpha.yaml" 
             --8<-- "examples/resources/depot/nosql_db/mongodb/mongo_v2alpha.yaml"
@@ -1136,6 +1150,10 @@ You can access these templates by visiting the following links: 
         - Nodes: Node
         - Username: The username for authentication.
         - Password: The password for authentication.
+        - `.crt` file (for creating Depot via certification)
+        - `.cert` file (for creating Depot via VPC endpoint)
+        - `key_store_file` (for creating Depot via certification or VPC endpoint)
+        - `trust_store_file` (for creating Depot via certification or VPC endpoint)
 
 
     === "Opensearch"

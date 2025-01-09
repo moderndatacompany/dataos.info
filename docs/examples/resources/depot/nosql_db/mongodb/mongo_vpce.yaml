@@ -1,0 +1,31 @@
+version: ${{v1}}  # depot version
+name: ${{"ldmmongodb"}}  # name of the depot
+type: ${{depot}}  # resource type (depot)
+tags:  
+  - ${{Mongodb}} 
+layer: ${{user}}  # defines user layer
+depot:  
+  type: ${{mongodb}}  # specifies mongodb as the depot type
+  description: ${{"MongoDb depot for sanity"}}  # description of the depot
+  compute: ${{query-default}}  # default compute configuration for queries
+  spec:  
+    subprotocol: ${{"mongodb"}}  # protocol used (mongodb)
+    nodes: ${{["SG-demo-664533.servers.mongodirector.com:27071"]}}  # mongodb node(s) to connect
+    params:  
+      tls: ${{true}}  # enable tls for secure communication
+      tlsAllowInvalidHostnames: ${{true}}  # allow invalid tls hostnames
+      directConnection: ${{true}}  # direct connection to the database
+  external: ${{true}}  # marks depot as external
+  secrets:  
+  connectionSecret:
+    - acl: ${{rw}}  # read-write access control
+      type: ${{key-value-properties}}  # type of secret storage
+      data:  
+        username: ${{admin}}  # database username
+        password: ${{Kl6lyCRLPteqljkdyrf}}  # database password
+        keyStorePassword: ${{changeit}}  # key store password
+        trustStorePassword: ${{changeit}}  # trust store password
+      files:  
+        ca_file: ${{/Users/iamgroot/Downloads/ca-chain-cn-qa.crt}}  # ca certificate file path
+        key_store_file: ${{$JAVA_HOME/lib/security/cacerts}}  # key store file path
+        trust_store_file: ${{$JAVA_HOME/lib/security/cacerts}}  # trust store file path
