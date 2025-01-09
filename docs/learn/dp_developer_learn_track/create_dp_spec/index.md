@@ -180,7 +180,7 @@ refs:
 v1beta:
   data:
     meta:
-      title: Product 360
+      title: Product Affinity
       sourceCodeUrl: https://bitbucket.org/mywork15/talos/src/main/
       trackerUrl: https://rubikai.atlassian.net/browse/DPRB-65
  

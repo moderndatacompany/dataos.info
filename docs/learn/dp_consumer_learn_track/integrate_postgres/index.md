@@ -1,6 +1,6 @@
 # Integration with Postgres
 
-In this topic, you'll learn how to effectively consume the 'Product360' Data Product through Postgres after confirming that it meets your use case requirements. This guide provides step-by-step instructions to help you connect and query the Data Product seamlessly.
+In this topic, you'll learn how to effectively consume the 'Product Affinity' Data Product through Postgres after confirming that it meets your use case requirements. This guide provides step-by-step instructions to help you connect and query the Data Product seamlessly.
 
 <aside class="callout">
 🗣
@@ -22,7 +22,7 @@ Follow the below steps to consume the Data Product via Postgres.
 
 ### 1. Access the Postgres section
 
-Navigate to the Access Options tab of your Data Product (Product360) and select the 'Postgres' section.
+Navigate to the Access Options tab of your Data Product (Product Affinity) and select the 'Postgres' section.
 
 ![pg_tab.png](/learn/dp_consumer_learn_track/integrate_postgres/pg_tab.png)
 

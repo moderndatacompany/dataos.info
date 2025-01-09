@@ -48,7 +48,7 @@ Follow the below steps to discover the Data Product of interest.
     🗣 Use multiple filters to quickly pinpoint the most relevant Data Products.
     </aside>
     
-5. **Select the Data Product:** You clicked on the “Product 360” Data Product that interests you.
+5. **Select the Data Product:** You clicked on the “Product Affinity” Data Product that interests you.
     
     ![disc_select.png](/learn/dp_consumer_learn_track/discover_dp/disc_select.png)
     
@@ -63,7 +63,7 @@ Follow the below steps to discover the Data Product of interest.
 
 - **Leverage filters effectively**: Combine filters such as domain, tier, owner, and use case to refine search results and find relevant products faster.
 
-- **Add to Favorites**: For quick access, add frequently used Data Products (e.g., “Product 360”) to your favorites.
+- **Add to Favorites**: For quick access, add frequently used Data Products (e.g., “Product Affinity”) to your favorites.
     
     ![disc_favorites.png](/learn/dp_consumer_learn_track/discover_dp/disc_favorites.png)
     
