@@ -4,7 +4,7 @@ In this topic, we’ll walk you through navigating and understanding the associa
 
 ## Scenario
 
-Imagine you’re a data analyst and want to analyze data product 'Product360', aiming to leverage data insights for performance tracking and customer behavior analysis. By exploring its semantic model on Data Product Hub, you plan to access and analyze cross-sell and upsell opportunities, which involves examining dimensions, measures, and metrics like `customer_segments`, `product affinity scores`,and `total spending`. Let’s see how this exploration unfolds.
+Imagine you’re a data analyst and want to analyze data product 'Product Affinity', aiming to leverage data insights for performance tracking and customer behavior analysis. By exploring its semantic model on Data Product Hub, you plan to access and analyze cross-sell and upsell opportunities, which involves examining dimensions, measures, and metrics like `customer_segments`, `product affinity scores`,and `total spending`. Let’s see how this exploration unfolds.
 
 ## Quick concepts
 
@@ -32,42 +32,38 @@ Imagine you’re a data analyst and want to analyze data product 'Product360', a
    Semantic models enable versatile data consumption options, such as BI tools and APIs for seamless integration with GraphQL and Studio for advanced analytics.
 
 
-## Uncover insights from your Semantic Model
+## Uncover insights from Semantic Model
 
 Exploring semantic models allows users to understand the data flow, relationships within the data, and the transformations that drive insights.
 
-### **Navigate to the ‘Explore’ option**
+**Navigate to the ‘Explore’ option**
     
 On the Data Product details page, click the 'Explore' button to navigate to the Studio in the Data Product Hub.
 
 ![exploration_page.png](/learn/dp_consumer_learn_track/explore_sm/exploration_page.png)
 
-Here, the interface displays various tabs.
-
-You observe three tabs given  Studio, Model, and GraphQL to analyze the data model for different purposes.
+The interface presents three tabs: 'Studio', 'Model', and 'GraphQL'. Each tab is designed to help you analyze the data model from a unique perspective
 
 ![sm_explore.png](/learn/dp_consumer_learn_track/explore_sm/sm_explore.png)
 
 Before exploring data via the semantic model in Studio, let us understand the model fully. 
     
 
-## Access model for unpacking the data structure
+## Access model to unpack data structure
 
 You first decide to explore the Model. As you open the Model tab, you start exploring the structure of the Data Product, gaining insights into the connections and dependencies across datasets. 
 
-### **Visualize Connections in the Graph View**
+### **Visualize Connections in Graph View**
 
-The **Graph** view offers a visual representation of the 'Product360' semantic model, showcasing how logical tables and entities are interconnected, with key metrics highlighting their relationships.
+The **Graph** view offers a visual representation of the 'Product Affinity' semantic model, showcasing how logical tables and entities are interconnected, with key metrics highlighting their relationships.
 
-Explore entities like `Customer`, `Product`, and `Purchase` Data along with key metrics like `cross_sell_opportunity`, `total_spending`, and `purchase_frequency`. Metrics marked with a wave icon are derived from logical tables, showing their role in performance tracking. For example, `cross_sell_opportunity_score` is created using members from the `purchase_data` and `product` tables, while `purchase_history` and `total_spending` are built using dimensions and measures from these logical tables.
+Explore entities like `Customer`, `Product`, and `Purchase` Data along with key metrics like `cross_sell_opportunity`, `total_spending`, and `purchase_frequency`. Metrics marked with a wave icon are derived from logical tables, showing their role in performance tracking. For example, `cross_sell_opportunity_score` is created using members from the `purchase` and `product` tables, while `purchase_history` and `total_spending` are built using dimensions and measures from these logical tables.
 
 ![model_schema.png](/learn/dp_consumer_learn_track/explore_sm/model_schema.png)
 
 Click 'Show Fullscreen' to explore the model easily. Then, use 'Expand All' to view all measures, dimensions, entities, and metrics for detailed insights.
 
-![schema_fullscreen.png](/learn/dp_consumer_learn_track/explore_sm/schema_fullscreen.png)
-
-To examine the members of a single metric, say `total_spending`. You hover over it and get the names of the dimensions and measures taken from purchase_data and the product table represented by the blue dashed line. The blue dashed lines highlight which dimensions and measures from the tables are utilized to calculate the `total_spending` metric. This referencing adopts a naming convention where each measure or dimension is prefixed with its table name, like `purchase_data_total_spend`. This convention and visual representation make it easy to understand the relationships and dependencies within the data model.
+To examine the members of a single metric, say `total_spending`. You hover over it and get the names of the dimensions and measures taken from purchase_data and the product table represented by the blue dashed line. The blue dashed lines highlight which dimensions and measures from the tables are utilized to calculate the `total_spending` metric. This referencing adopts a naming convention where each measure or dimension is prefixed with its table name, like `purchase_total_spend`. This convention and visual representation make it easy to understand the relationships and dependencies within the data model.
 
 ![metric_referennce.png](/learn/dp_consumer_learn_track/explore_sm/metric_referennce.png)
 
@@ -75,7 +71,7 @@ You click on a metric, say `cross_sell_oppurtunity_score`, which opens a side pa
 
 ![customer_schema.png](/learn/dp_consumer_learn_track/explore_sm/customer_schema.png)
 
-### **Explore Details in the Schema Section**
+### **Explore Details in Schema Section**
 
 Under 'Schema', gain insight into the table structure, column names, data types, and primary keys. This detailed breakdown ensures that you have a thorough understanding of data hierarchies and access control.
 
@@ -99,7 +95,7 @@ The schema section shares the following details:
 
 Each element you explore reinforces your understanding of how data connects, ensuring you can confidently interact with and analyze the Data Product. 
 
-### **Delve into Configuration in the Files Section**
+### **Explore Configuration in Files Section**
 
 View the underlying SQL, YAML files, and other resources to see the logic and structure of the data model.
 
@@ -143,7 +139,7 @@ Let's analyze the total number of customers per country:
     ![order_by.png](/learn/dp_consumer_learn_track/explore_sm/order_by.png)
     
 
-### **Saving your analysis as a Perspective**
+### **Saving analysis as a Perspective**
 
 Save your query result for later by clicking 'Save Perspective'. Give it a meaningful name, like 'Country-wise Total Customers,' and save it.
 
@@ -234,7 +230,7 @@ If you want to revisit a query you ran an hour ago but didn't save as a Perspect
 
 To save a query from two days ago for future reference, click on the query, give it a name, and save it. You can easily access it whenever needed, as demonstrated here.
 
-[history.gif](/learn/dp_consumer_learn_track/explore_sm/history.gif)
+![history.gif](/learn/dp_consumer_learn_track/explore_sm/history.gif)
 
 ### **Creating a Pivot Table**
 
@@ -260,7 +256,7 @@ To save a query from two days ago for future reference, click on the query, give
     - Which countries have the highest total spend.
     - Potential focus areas for cross-selling or customer retention efforts based on risk levels and regional data.
     
-    To learn more about creating Pivot tables for query results, refer to the [quick start guide](https://dataos.info/quick_guides/eda_pivot/) on the topic.
+    To learn more about creating Pivot tables for query results, refer to the [Quick start guide](https://dataos.info/quick_guides/eda_pivot/) on the topic.
     
 
 ## Integration with API
@@ -360,7 +356,7 @@ For those who prefer using the Postgres database, follow these steps:
     
     ```
     
-    ### **Additional PostgreSQL Commands for Reference**
+    ### **Additional PostgreSQL Commands**
     
     Here are some useful commands to interact with the Postgres database:
     
