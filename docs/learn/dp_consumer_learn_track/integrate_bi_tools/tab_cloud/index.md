@@ -1,10 +1,10 @@
 # Tableau Cloud
 
-This topic covers how to integrate the semantic model of the Data Product 'Product 360' with Tableau Cloud. By the end of this guide, you will be able to independently set up this integration and utilize the semantic model effectively.
+This topic covers how to integrate the semantic model of the Data Product 'Product Affinity' with Tableau Cloud. By the end of this guide, you will be able to independently set up this integration and utilize the semantic model effectively.
 
 ## Establishing the data connection
 
-You initiate the process by configuring the connection between *Product-360* and your organization’s selected BI platform, Tableau Cloud. To successfully set up the integration, you need to enable BI-Sync.
+You initiate the process by configuring the connection between 'Product Affinity' and your organization’s selected BI platform, Tableau Cloud. To successfully set up the integration, you need to enable BI-Sync.
 
 ### **1. Navigate to Access Options**
     
@@ -22,7 +22,7 @@ In the subsequent setup window, input the required Tableau Cloud credentials:
 
 In the setup window, fill in the required credentials:
 
-- **Project name**: Specify the name of the project within Tableau (e.g., 'Product 360 Analysis').
+- **Project name**: Specify the name of the project within Tableau (e.g., 'Product Affinity Analysis').
 - **Server name**: Provide the URL or address of the Tableau Server hosting your cloud instance e.g, (https://prod-apnortheast-a.online.tableau.com).
 - **Site id**: Input the Site ID for your specific Tableau Cloud site. You can obtain it when you log in to Tableau (e.g., `https://prod-apnortheast-a.online.tableau.com/#/site/moderndata/` where `moderndata` is the site id).  
 - **Username**: Your Tableau account username (e.g., labs@modern.io).
@@ -54,11 +54,11 @@ Enter the following necessary Tableau details:
 
 ![tableau_pat.png](/learn/dp_consumer_learn_track/integrate_bi_tools/tab_cloud/tableau_pat.png)
 
-After entering the credentials, click 'Activate' to complete the setup. The *Product 360* data product will now be integrated into Tableau Cloud. If the project isn’t created already, a new project, ‘Product Analysis,’ will automatically be established.
+After entering the credentials, click 'Activate' to complete the setup. The *Product Affinity* data product will now be integrated into Tableau Cloud. If the project isn’t created already, a new project, ‘Product Analysis,’ will automatically be established.
     
 ### **3. Consuming the Data Product on Tableau Cloud**
     
-Once the *Product-360* Data Product has been successfully activated, you can proceed to create a dashboard in Tableau Cloud by following these steps:
+Once the 'Product Affinity' Data Product has been successfully activated, you can proceed to create a dashboard in Tableau Cloud by following these steps:
 
 1. **Login to Tableau Cloud**: Log into Tableau Cloud using the credentials; this action redirects you to the home page.
 
@@ -80,7 +80,7 @@ Once the *Product-360* Data Product has been successfully activated, you can pro
 
     ![tab_desk_api.png](/learn/dp_consumer_learn_track/integrate_bi_tools/tab_cloud/tab_desk_api.png)
 
-6. **Creating the dashboard**: After successful authentication, you are redirected to the new workbook interface, where you can begin visualizing and developing dashboards with insights derived from *Product 360*.
+6. **Creating the dashboard**: After successful authentication, you are redirected to the new workbook interface, where you can begin visualizing and developing dashboards with insights derived from *Product Affinity*.
 
     ![tableau_dashboard.png](/learn/dp_consumer_learn_track/integrate_bi_tools/tab_cloud/tableau_dashboard.png)
 
