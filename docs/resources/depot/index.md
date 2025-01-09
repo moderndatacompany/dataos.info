@@ -137,25 +137,25 @@ The Resource section of the manifest configuration file consists of attributes t
 
 === "v1"
     ```yaml
-    name: ${{mydepot}}
+    name: $${{mydepot}}
     version: v1 
     type: depot 
     tags: 
-      - ${{dataos:type:resource}}
-    description: ${{This is a sample depot YAML configuration}} 
-    owner: ${{iamgroot}}
+      - $${{dataos:type:resource}}
+    description: $${{This is a sample depot YAML configuration}} 
+    owner: $${{iamgroot}}
     layer: user
     ```
 
 === "v2alpha"
     ```yaml
-    name: ${{mydepot}}
+    name: $${{mydepot}}
     version: v2alpha 
     type: depot 
     tags: 
-      - ${{dataos:type:resource}}
-    description: ${{This is a sample depot YAML configuration}} 
-    owner: ${{iamgroot}}
+      - $${{dataos:type:resource}}
+    description: $${{This is a sample depot YAML configuration}} 
+    owner: $${{iamgroot}}
     layer: user
     ```
 
@@ -167,11 +167,11 @@ The Depot-specific section of the configuration file includes key-value properti
 
 ```yaml
 depot:   
-  type: ${{BIGQUERY}}                  
-  description: ${{description}}
-  external: ${{true}}                  
-  source: ${{bigquerymetadata}} 
-  compute: ${{runnable-default}}
+  type: $${{BIGQUERY}}                  
+  description: $${{description}}
+  external: $${{true}}                  
+  source: $${{bigquerymetadata}} 
+  compute: $${{runnable-default}}
   connectionSecrets:
     {}
   specs:
@@ -214,14 +214,14 @@ Here are examples demonstrating how the key-value properties can be defined for 
       - acl: rw                        
         type: key-value-properties
         data:
-          projectid: ${{project-name}}
-          email: ${{email-id}}
+          projectid: $${{project-name}}
+          email: $${{email-id}}
         files:
-          json_keyfile: ${{secrets/gcp-demo-sa.json}} #JSON file containing the credentials to read-write 
+          json_keyfile: $${{secrets/gcp-demo-sa.json}} #JSON file containing the credentials to read-write 
       - acl: r                        
         type: key-value-properties
         files:
-          json_keyfile: ${{secrets/gcp-demo-sa.json}} #JSON file containing the credentials to read-only`  
+          json_keyfile: $${{secrets/gcp-demo-sa.json}} #JSON file containing the credentials to read-only`  
     ```
 === "AWS S3"
     This is how you can declare connection secrets to create a Depot for [AWS S3](/resources/depot/depot_config_templates/amazon_s3/) storage:
@@ -231,9 +231,9 @@ Here are examples demonstrating how the key-value properties can be defined for 
       - acl: rw                         
         type: key-value-properties
         data:                           #credentials required to access aws
-          awsaccesskeyid: ${{AWS_ACCESS_KEY_ID}}
-          awsbucketname: ${{bucket-name}}
-          awssecretaccesskey: ${{AWS_SECRET_ACCESS_KEY}}
+          awsaccesskeyid: $${{AWS_ACCESS_KEY_ID}}
+          awsbucketname: $${{bucket-name}}
+          awssecretaccesskey: $${{AWS_SECRET_ACCESS_KEY}}
     ```
 
 === "JDBC"
@@ -244,8 +244,8 @@ Here are examples demonstrating how the key-value properties can be defined for 
       - acl: rw
         type: key-value-properties
         data:                            #for JDBC, the credentials you get from the data source should have permission to read/write schemas of the database being accessed 
-          username: ${{username}}
-          password: ${{password}}
+          username: $${{username}}
+          password: $${{password}}
     ```
 
 
@@ -270,20 +270,21 @@ The basic attributes filled in this section are provided in the table below:
 - Create an Instance Secret file with the details on the connection secret:
 
 ``` yaml
-name: ${{mysql-secret}}
+name: $${{mysql-secret}}
 version: v1      
 type: instance-secret
 instance-secret:
   type: key-value-properties
   acl: rw
   data:
-    connection-user: ${{user}}
-    connection-password: ${{password}}
+    connection-user: $${{user}}
+    connection-password: $${{password}}
 ```
+
 - Apply this YAML file on DataOS CLI
 
 ``` shell
-dataos-ctl apply -f ${{path/instance_secret.yaml}}
+dataos-ctl apply -f $${{path/instance_secret.yaml}}
 ```
 
 
@@ -305,8 +306,8 @@ depot:
   type: MYSQL
   description: "MYSQL Sample data"
 spec:
-  host: ${{host}}
-  port: ${{port}}
+  host: $${{host}}
+  port: $${{port}}
 external: true
 dataosSecrets:
   - name: depotsecret-r
@@ -450,7 +451,7 @@ Let's understand this hierarchy through real-world examples:
     - `dataos://s3depot:none/file2`
 
     <aside class="callout">
-    🗣️ When writing data to a source system, names like 'none' or 'system' cannot be used for the collection. Therefore, the output of a Flare job cannot have an address like <code>dataos://${{depot name}}:none/${{dataset name}}</code> or <code>dataos://${{depot name}}:system/${{dataset name}}</code>.
+    🗣️ When writing data to a source system, names like 'none' or 'system' cannot be used for the collection. Therefore, the output of a Flare job cannot have an address like <code>dataos://$${{depot name}}:none/$${{dataset name}}</code> or <code>dataos://$${{depot name}}:system/$${{dataset name}}</code>.
     </aside>
 
 === "Kafka"
@@ -459,19 +460,19 @@ Let's understand this hierarchy through real-world examples:
     ``` yaml
     depot:
       type: KAFKA
-      description: ${{description}}
+      description: $${{description}}
       external: true
       spec:
         brokers:
-          - ${{broker1}}
-          - ${{broker2}}
+          - $${{broker1}}
+          - $${{broker2}}
     ```
 ### **Apply Depot YAML**
 
 Once you have the manifest file ready in your code editor, simply copy the path of the manifest file and apply it through the DataOS CLI, using the command given below:
 
 ``` shell
-dataos-ctl apply -f ${{yamlfilepath}}
+dataos-ctl apply -f $${{yamlfilepath}}
 ```
 
 ## **How to manage a Depot?**
@@ -504,7 +505,7 @@ You can also access the details of any created Depot through the DataOS GUI in t
 If you need to delete a depot, use the following command in the DataOS CLI:
 
 ``` shell
-dataos-ctl delete -t depot -n ${{name of depot}}
+dataos-ctl delete -t depot -n $${{name of depot}}
 ```
 
 
@@ -529,13 +530,13 @@ Another important function that a Depot can play is to limit the file type which
 ``` yaml
 depot:
   type: S3
-  description: ${{description}}
+  description: $${{description}}
   external: true
   spec:
-    scheme: ${{s3a}}
-    bucket: ${{bucket-name}}
+    scheme: $${{s3a}}
+    bucket: $${{bucket-name}}
     relativePath: "raw" 
-    format: ${{format}}  # mention the file format, such as JSON
+    format: $${{format}}  # mention the file format, such as JSON
 ```
 For File based systems, if you define the format as ‘Iceberg’, you can choose the meta-store catalog between Hadoop and Hive. This is how you do it:
 
@@ -1321,50 +1322,50 @@ You can access these templates by visiting the following links: 
         
             ``` yaml
 
-            name: {{"mysql01"}}
+            name: ${{"mysql01"}}
             version: v1
             type: depot
             tags:
-              - {{dropzone}}
-              - {{mysql}}
+              - ${{dropzone}}
+              - ${{mysql}}
             layer: user
             depot:
               type: MYSQL
-              description: {{"MYSQL Sample data"}}
+              description: ${{"MYSQL Sample data"}}
               spec:
-                host: {{host}}
-                port: {{port}}
+                host: ${{host}}
+                port: ${{port}}
               external: true
               connectionSecret:
                 - acl: rw
                   type: key-value-properties
                   data:
-                    username: {{username}}
-                    password: {{password}}
+                    username: ${{username}}
+                    password: ${{password}}
             ```      
 
         === "Instance Secret Reference"
 
             ``` yaml
-            name: {{"mysql01"}}
+            name: ${{"mysql01"}}
             version: v2alpha
             type: depot
             tags:
-              - {{dropzone}}
-              - {{mysql}}
+              - ${{dropzone}}
+              - ${{mysql}}
             layer: user
             depot:
               type: MYSQL
-              description: {{"MYSQL Sample data"}}
+              description: ${{"MYSQL Sample data"}}
               mysql:
-                host: {{host}}
-                port: {{port}}
+                host: ${{host}}
+                port: ${{port}}
               external: true
               secrets:
-                - name: {{nstance-secret-name}}-r
+                - name: ${{nstance-secret-name}}-r
                   allkeys: true
 
-                - name: {{instance-secret-name}}-rw
+                - name: ${{instance-secret-name}}-rw
                   allkeys: true
             ```
 
@@ -1418,56 +1419,56 @@ You can access these templates by visiting the following links: 
         === "Inline Credentials"
 
             ``` yaml
-            name: {{mssql01}}
+            name: ${{mssql01}}
             version: v1
             type: depot
             tags:
-              - {{dropzone}}
-              - {{mssql}}
+              - ${{dropzone}}
+              - ${{mssql}}
             layer: user
             depot:
               type: JDBC
-              description: {{MSSQL Sample data}}
+              description: ${{MSSQL Sample data}}
               spec:
                 subprotocol: sqlserver
-                host: {{host}}
-                port: {{port}}
-                database: {{database}}
-                params: {{'{"key":"value","key2":"value2"}'}}
-              external: {{true}}
+                host: ${{host}}
+                port: ${{port}}
+                database: ${{database}}
+                params: ${{'{"key":"value","key2":"value2"}'}}
+              external: ${{true}}
               connectionSecret:
                 - acl: rw
                   type: key-value-properties
                   data:
-                    username: {{username}}
-                    password: {{password}}
+                    username: ${{username}}
+                    password: ${{password}}
             ```
 
         === "Instance Secret Reference"
 
             ``` yaml
-            name: {{mssql01}}
+            name: ${{mssql01}}
             version: v2alpha
             type: depot
             tags:
-              - {{dropzone}}
-              - {{mssql}}
+              - ${{dropzone}}
+              - ${{mssql}}
             layer: user
             depot:
               type: JDBC
-              description: {{MSSQL Sample data}}
+              description: ${{MSSQL Sample data}}
               jdbc:
                 subprotocol: sqlserver
-                host: {{host}}
-                port: {{port}}
-                database: {{database}}
-                params: {{'{"key":"value","key2":"value2"}'}}
-              external: {{true}}
+                host: ${{host}}
+                port: ${{port}}
+                database: ${{database}}
+                params: ${{'{"key":"value","key2":"value2"}'}}
+              external: ${{true}}
               secrets:
-                - name: {{nstance-secret-name}}-r
+                - name: ${{nstance-secret-name}}-r
                   allkeys: true
 
-                - name: {{instance-secret-name}}-rw
+                - name: ${{instance-secret-name}}-rw
                   allkeys: true
             ```
 
@@ -1566,62 +1567,62 @@ You can access these templates by visiting the following links: 
         === "Inline Credentials"
 
             ``` yaml
-            name: {{depot-name}}
+            name: ${{depot-name}}
             version: v1
             type: depot
             tags:
-              - {{tag1}}
-            owner: {{owner-name}}
+              - ${{tag1}}
+            owner: ${{owner-name}}
             layer: user
             depot:
               type: POSTGRESQL
-              description: {{description}}
+              description: ${{description}}
               external: true
               connectionSecret:                               
                 - acl: rw
                   type: key-value-properties
                   data:
-                    username: {{posgresql-username}}
-                    password: {{posgresql-password}}
+                    username: ${{posgresql-username}}
+                    password: ${{posgresql-password}}
                 - acl: r
                   type: key-value-properties
                   data:
-                    username: {{posgresql-username}}
-                    password: {{posgresql-password}}
+                    username: ${{posgresql-username}}
+                    password: ${{posgresql-password}}
               spec:                                          
-                host: {{host}}
-                port: {{port}}
-                database: {{database-name}}
+                host: ${{host}}
+                port: ${{port}}
+                database: ${{database-name}}
                 params: # Optional
-                  {{"key1": "value1"}}
-                  {{"key2": "value2"}}
+                  ${{"key1": "value1"}}
+                  ${{"key2": "value2"}}
             ```
 
         === "Instance Secret Reference"
 
             ``` yaml
-            name: {{depot-name}}
+            name: ${{depot-name}}
             version: v2alpha
             type: depot
             tags:
-              - {{tag1}}
-            owner: {{owner-name}}
+              - ${{tag1}}
+            owner: ${{owner-name}}
             layer: user
             depot:
               type: POSTGRESQL
-              description: {{description}}
+              description: ${{description}}
               external: true
               secrets:
-                - name: {{nstance-secret-name}}-r
+                - name: ${{nstance-secret-name}}-r
                   allkeys: true
 
-                - name: {{instance-secret-name}}-rw
+                - name: ${{instance-secret-name}}-rw
                   allkeys: true
               postgresql:                                          
-                host: {{host}}
-                port: {{port}}
-                database: {{database-name}}
+                host: ${{host}}
+                port: ${{port}}
+                database: ${{database-name}}
                 params: # Optional
-                  {{"key1": "value1"}}
-                  {{"key2": "value2"}}
+                  ${{"key1": "value1"}}
+                  ${{"key2": "value2"}}
             ```
