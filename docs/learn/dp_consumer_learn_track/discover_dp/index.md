@@ -48,9 +48,7 @@ Follow the below steps to discover the Data Product of interest.
     🗣 Use multiple filters to quickly pinpoint the most relevant Data Products.
     </aside>
     
-5. **Select the Data Product:** You clicked on the “Product Affinity” Data Product that interests you.
-    
-    ![disc_select.png](/learn/dp_consumer_learn_track/discover_dp/disc_select.png)
+5. **Select the Data Product:** Click on the “Product Affinity” Data Product.
     
 6. **Analyze the Details:** Review the metadata, including Data Product’s description, tier, owners and collaborators. You will also get details on quality checks, inputs, outputs, semantic model, metrics, quality, and access options.
     

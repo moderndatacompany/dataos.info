@@ -29,6 +29,8 @@ semantic_model/model
 
 In the semantic model folder structure, you define and organize the artifacts according to the key steps in building the semantic model: loading data, defining tables, adding dimensions and measures, creating views, and managing user groups.
 
+> The data used to demonstrate the process of creating a semantic model includes the physical tables `customer_data` and `Product_data`, stored in the Lakehouse, and `purchase data`, sourced from PostgreSQL.
+
 
 ## Sqls
 
@@ -51,7 +53,7 @@ SELECT
     income, 
     country 
 FROM 
-    icebase.customer_relationship_management.customer
+    lakehouse.customer_relationship_management.customer_data
 ```
     
 **product.sql**
@@ -64,7 +66,7 @@ select
     product_name,
     price
 FROM
-    icebase.customer_relationship_management.product
+    lakehouse.customer_relationship_management.product_data
 ```
     
 This can be a simple extraction or include more complex transformations, such as:
@@ -90,7 +92,7 @@ SELECT
     numwebpurchases + numcatalogpurchases + numstorepurchases + numstorepurchases as purchases,
     (mntwines+mntmeatproducts+mntfishproducts+mntsweetproducts+mntgoldprods+mntfruits) as spend
 FROM
-    icebase.customer_relationship_management.purchase
+    postgres.public.purchase_data
 ```
     
 
