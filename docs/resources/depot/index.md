@@ -23,7 +23,7 @@ Depot in DataOS is a [Resource](/resources/) used to connect different data sou
 
     ---
 
-    Utilize depots to work on your data.
+    Utilize Depots to work on your data.
 
     [:octicons-arrow-right-24: Utilizing Depots](/resources/depot/#how-to-utilize-depots)
 
@@ -52,7 +52,7 @@ Depot in DataOS is a [Resource](/resources/) used to connect different data sou
 Within DataOS, the hierarchical structure of a data source is represented as follows:
 
 <div style="text-align: center;">
-  <img src="/resources/depot/udl.png" alt="Hierarchical Structure of a Data Source within DataOS" style="border:1px solid black; width: 80%; height: auto;">
+  <img src="/resources/depot/udl.png" alt="Hierarchical Structure of a Data Source within DataOS" style="border:1px solid black; width: 60%; height: auto;">
   <figcaption><i>Hierarchical Structure of a Data Source within DataOS</i></figcaption>
 </div>
 
@@ -65,7 +65,7 @@ The Depot serves as the registration of data locations to be made accessible to 
 
 <aside class="callout">
 
-🗣 Depot Service is a DataOS Service that manages the Depot Resource. It facilitates in-depth introspection of depots and their associated storage engines. Once a Depot is created, users can obtain comprehensive information about the datasets contained within, including details such as constraints, partition, indexing, etc.
+🗣 Depot Service is a DataOS Service that manages the Depot Resource. It facilitates in-depth introspection of Depots and their associated storage engines. Once a Depot is created, users can obtain comprehensive information about the datasets contained within, including details such as constraints, partition, indexing, etc.
 
 </aside>
 
@@ -75,7 +75,7 @@ Once this mapping is established, Depot Service automatically generates the Un
 
 For a simple file storage system, "Collection" can be analogous to "Folder," and "Dataset" can be equated to "File." The Depot's strength lies in its capacity to establish uniformity, eliminating concerns about varying source system terminologies.
 
-Once a Depot is created, all members of an organization gain secure access to datasets within the associated source system. The Depot not only facilitates data access but also assigns **default** [Access Policies](/resources/policy/) to ensure data security. Moreover, users have the flexibility to define and utilize custom [Access Policies](/resources/policy/) for the depot and [Data Policies](/resources/policy/) for specific datasets within the Depot.
+Once a Depot is created, all members of an organization gain secure access to datasets within the associated source system. The Depot not only facilitates data access but also assigns **default** [Access Policies](/resources/policy/) to ensure data security. Moreover, users have the flexibility to define and utilize custom [Access Policies](/resources/policy/) for the Depot and [Data Policies](/resources/policy/) for specific datasets within the Depot.
 
 <aside class="callout">
  🗣️ Depot provides 'access' to data, meaning that data remains within the source system and is neither moved nor duplicated. However, DataOS offers multiple Stacks such as Flare, Benthos, etc. to perform ingestion, querying, syndication, and copying if the need arises.
@@ -89,12 +89,11 @@ To create a Depot in DataOS, simply compose a manifest configuration file for a 
 
 ### **Structure of a Depot manifest**
 
-<center>
-  <div style="text-align: center;">
-    <img src="/resources/depot/depot_yaml.png" alt_text = "Structure of a Depot manifest" style="border:1px solid black;">
-  </div>
-</center>
 
+<center>
+  <img src="/resources/depot/depot_yaml.png" alt="Structure of a Depot manifest" style="width:40rem; border: 1px solid black; padding: 5px;" />
+  <figcaption><i>Structure of a Depot manifest</i></figcaption>
+</center>
 
 To know more about the attributes of Depot manifest Configuration, refer to the link: [Attributes of Depot manifest](/resources/depot/configurations/).
 
@@ -124,7 +123,7 @@ To create Depots, ensure that you possess the following tags.
 
 
 <aside class="callout">
-🗣 If you do not possess these tags, contact the DataOS Operator or Administrator within your organization to assign you the necessary tag or the use case for the creation of the depot.
+🗣 If you do not possess these tags, contact the DataOS Operator or Administrator within your organization to assign you the necessary tag or the use case for the creation of the Depot.
 
 </aside>
 
@@ -139,10 +138,10 @@ The Resource section of the manifest configuration file consists of attributes t
     ```yaml
     name: $${{mydepot}}
     version: v1 
-    type: depot 
+    type: Depot 
     tags: 
       - $${{dataos:type:resource}}
-    description: $${{This is a sample depot YAML configuration}} 
+    description: $${{This is a sample Depot YAML configuration}} 
     owner: $${{iamgroot}}
     layer: user
     ```
@@ -151,10 +150,10 @@ The Resource section of the manifest configuration file consists of attributes t
     ```yaml
     name: $${{mydepot}}
     version: v2alpha 
-    type: depot 
+    type: Depot 
     tags: 
       - $${{dataos:type:resource}}
-    description: $${{This is a sample depot YAML configuration}} 
+    description: $${{This is a sample Depot YAML configuration}} 
     owner: $${{iamgroot}}
     layer: user
     ```
@@ -163,7 +162,7 @@ For more details regarding attributes in the Resource section, refer to the link
 
 **Configure Depot-specific Section**
 
-The Depot-specific section of the configuration file includes key-value properties specific to the Depot-type being created. Each Depot type represents a Depot created for a particular data source. Multiple Depots can be established for the same data source, and they will be considered as a single depot type. The following snippet illustrates the key values to be declared in this section:
+The Depot-specific section of the configuration file includes key-value properties specific to the Depot-type being created. Each Depot type represents a Depot created for a particular data source. Multiple Depots can be established for the same data source, and they will be considered as a single Depot type. The following snippet illustrates the key values to be declared in this section:
 
 ```yaml
 depot:   
@@ -186,7 +185,7 @@ The table below elucidates the various attributes in the Depot-specific section:
 | [`type`](/resources/depot/configurations/#type) | string | none | ABFSS, WASBS, REDSHIFT,<br> S3, ELASTICSEARCH, EVENTHUB, PULSAR, BIGQUERY, GCS, JDBC, MSSQL, MYSQL, OPENSEARCH, ORACLE, POSTGRES, SNOWFLAKE | mandatory |
 | [`description`](/resources/depot/configurations/#description) | string | none | any string | mandatory |
 | [`external`](/resources/depot/configurations/#external) | boolean | false | true/false | mandatory |
-| [`source`](/resources/depot/configurations/#source) | string | depot name | any string which is a valid depot name | optional |
+| [`source`](/resources/depot/configurations/#source) | string | Depot name | any string which is a valid Depot name | optional |
 | [`compute`](/resources/depot/configurations/#compute) | string | runnable-default | any custom Compute Resource | optional |
 | [`connectionSecret`](/resources/depot/configurations/#connectionSecret) | object | none | varies between data sources | optional |
 | [`spec`](/resources/depot/configurations/#spec) | object | none | varies between data sources | mandatory |
@@ -203,7 +202,7 @@ The configuration of connection secrets is specific to each Depot type and depen
 
 **Examples**
 
-Here are examples demonstrating how the key-value properties can be defined for different depot-types:
+Here are examples demonstrating how the key-value properties can be defined for different Depot-types:
 
 
 === "BigQuery"
@@ -297,7 +296,7 @@ For example, if a user wishes to create a MySQL Depot, they can define a Depot c
 
 name: mysql05
 version: v1
-type: depot
+type: Depot
 tags:
   - dropzone
   - mysql
@@ -310,20 +309,20 @@ spec:
   port: $${{port}}
 external: true
 dataosSecrets:
-  - name: depotsecret-r
+  - name: Depotsecret-r
     keys:
-      - depotsecret-r
+      - Depotsecret-r
 
-  - name: depotsecret-rw
+  - name: Depotsecret-rw
     keys:
-      - depotsecret-rw
+      - Depotsecret-rw
 ```
 
 By referencing the name of the Instance Secret, "mysql-secret," users can easily incorporate the specified credentials into their Depot configuration. This approach ensures the secure handling and sharing of sensitive information.
 
 </details>
 
-To learn more about Instance Secrets as a Resource and their usage, refer to the documentation [here](/resources/instance_secret/)
+To learn more about Instance Secrets as a Resource and their usage, refer to the documentation [here](/resources/instance_secret/).
 
 **Configure Spec Section**
 
@@ -353,11 +352,11 @@ Let's understand this hierarchy through real-world examples:
     ```yaml
     name: covidbq
     version: v1
-    type: depot
+    type: Depot
     tags:
       - bigquery
     layer: user
-    depot:
+    Depot:
       type: BIGQUERY
       description: "Covid public data in Google Cloud BigQuery"
       external: true
@@ -378,7 +377,7 @@ Let's understand this hierarchy through real-world examples:
     <center><i>Amazon S3 Bucket Structure</i></center>
 
 
-    Here's an example of creating a depot named 's3depot' that maps the following structure:
+    Here's an example of creating a Depot named 's3depot' that maps the following structure:
 
     - Bucket: `abcdata` (Depot)
     - Folder: `transactions` (Collection)
@@ -389,11 +388,11 @@ Let's understand this hierarchy through real-world examples:
     ``` yaml
     name: s3depot
     version: v1
-    type: depot
+    type: Depot
     tags:
       - S3
     layer: user
-    depot:
+    Depot:
       type: S3
       description: "AWS S3 Bucket for dummy data"
       external: true
@@ -401,7 +400,7 @@ Let's understand this hierarchy through real-world examples:
         bucket: "abcdata"
         relativePath:
     ```
-    If you omit the `relativePath` in the manifest configuration, the bucket itself becomes the depot in DataOS. In this case, the following UDLs can be used to read the data:
+    If you omit the `relativePath` in the manifest configuration, the bucket itself becomes the Depot in DataOS. In this case, the following UDLs can be used to read the data:
 
     - `dataos://s3depot:transactions/file1`
     - `dataos://s3depot:transactions/file2`
@@ -423,16 +422,16 @@ Let's understand this hierarchy through real-world examples:
 
     In this case, the interpretation is that there is no collection in the bucket, and 'file1' and 'file2' are directly accessed as objects with the path '/transactions/file1' and '/transactions/file2'.
 
-    When configuring the manifets file for S3, if you include the `relativePath` as shown below, the 'transactions' folder is positioned as the depot:
+    When configuring the manifets file for S3, if you include the `relativePath` as shown below, the 'transactions' folder is positioned as the Depot:
 
     ``` yaml
     name: s3depot
     version: v1
-    type: depot
+    type: Depot
     tags:
       - S3
     layer: user
-    depot:
+    Depot:
       type: S3
       description: "AWS S3 Bucket for dummy data"
       external: true
@@ -441,9 +440,9 @@ Let's understand this hierarchy through real-world examples:
         relativePath: "/transactions"
     ```    
 
-    Since the folder ‘transactions’ in the bucket has now been positioned as the depot, two things happen.
+    Since the folder ‘transactions’ in the bucket has now been positioned as the Depot, two things happen.
 
-    First, you cannot read the object files online-transaction and offline-transaction using this depot.
+    First, you cannot read the object files online-transaction and offline-transaction using this Depot.
 
     Secondly with this setup, you can read the files within the 'transactions' folder using the following UDLs:
 
@@ -451,46 +450,46 @@ Let's understand this hierarchy through real-world examples:
     - `dataos://s3depot:none/file2`
 
     <aside class="callout">
-    🗣️ When writing data to a source system, names like 'none' or 'system' cannot be used for the collection. Therefore, the output of a Flare job cannot have an address like <code>dataos://$${{depot name}}:none/$${{dataset name}}</code> or <code>dataos://$${{depot name}}:system/$${{dataset name}}</code>.
+    🗣️ When writing data to a source system, names like 'none' or 'system' cannot be used for the collection. Therefore, the output of a Flare job cannot have an address like <code>dataos://${{depot name}}:none/${{dataset name}}</code> or <code>dataos://${{depot name}}:system/${{dataset name}}</code>.
     </aside>
 
 === "Kafka"
 
-    For accessing data from [Kafka](https://dataos.info/resources/depot/depot_config_templates/kafka/), where the structure consists of a broker list and topics, the `spec` section in the YAML configuration will point the depot to the broker list, and the datasets will map to the topic list. The format of the manifest file will be as follows:
+    For accessing data from [Kafka](/resources/depot/depot_config_templates/kafka/), where the structure consists of a broker list and topics, the `spec` section in the YAML configuration will point the Depot to the broker list, and the datasets will map to the topic list. The format of the manifest file will be as follows:
     ``` yaml
-    depot:
+    Depot:
       type: KAFKA
-      description: $${{description}}
+      description: ${{description}}
       external: true
       spec:
         brokers:
-          - $${{broker1}}
-          - $${{broker2}}
+          - ${{broker1}}
+          - ${{broker2}}
     ```
 ### **Apply Depot YAML**
 
 Once you have the manifest file ready in your code editor, simply copy the path of the manifest file and apply it through the DataOS CLI, using the command given below:
 
 ``` shell
-dataos-ctl apply -f $${{yamlfilepath}}
+dataos-ctl apply -f ${{yamlfilepath}}
 ```
 
 ## **How to manage a Depot?**
 
 ### **Verify Depot Creation**
 
-To ensure that your depot has been successfully created, you can verify it in two ways:
+To ensure that your Depot has been successfully created, you can verify it in two ways:
 
-- Check the name of the newly created depot in the list of depots where you are named as the owner:
+- Check the name of the newly created Depot in the list of Depots where you are named as the owner:
 
 ``` shell
-dataos-ctl get -t depot
+dataos-ctl get -t Depot
 ```
 
-- Alternatively, retrieve the list of all depots created in your organization:
+- Alternatively, retrieve the list of all Depots created in your organization:
 
 ``` shell
-dataos-ctl get -t depot -a
+dataos-ctl get -t Depot -a
 ```
 
 You can also access the details of any created Depot through the DataOS GUI in the [Operations App](/interfaces/operations/) and [Metis UI](/interfaces/metis/).
@@ -502,14 +501,14 @@ You can also access the details of any created Depot through the DataOS GUI in t
 </aside>
 
 
-If you need to delete a depot, use the following command in the DataOS CLI:
+If you need to delete a Depot, use the following command in the DataOS CLI:
 
 ``` shell
-dataos-ctl delete -t depot -n $${{name of depot}}
+dataos-ctl delete -t Depot -n ${{name of Depot}}
 ```
 
 
-By executing the above command, the specified depot will be deleted from your DataOS environment.
+By executing the above command, the specified Depot will be deleted from your DataOS environment.
 
 ## **How to utilize Depots?**
 
@@ -517,9 +516,9 @@ Once a Depot is created, you can leverage its Uniform Data Links (UDLs) to acces
 
 ### **Work with Stacks**
 
-Depots are compatible with different Stacks in DataOS. [Stacks](/resources/stacks/) provide distinct approaches to interact with the system and enable various programming paradigms in DataOS. Several Stacks are available that can be utilized with depots, including [Scanner](/resources/stacks/scanner/) for introspecting depots, [Flare](/resources/stacks/flare/) for data ingestion, transformation, syndication, etc., [Benthos](/resources/stacks/benthos/) for stream processing and [Data Toolbox](/resources/stacks/data_toolbox/) for managing [Icebase](/resources/depot/icebase/) DDL and DML. 
+Depots are compatible with different Stacks in DataOS. [Stacks](/resources/stacks/) provide distinct approaches to interact with the system and enable various programming paradigms in DataOS. Several Stacks are available that can be utilized with Depots, including [Scanner](/resources/stacks/scanner/) for introspecting Depots, [Flare](/resources/stacks/flare/) for data ingestion, transformation, syndication, etc., [Benthos](/resources/stacks/benthos/) for stream processing and [Data Toolbox](/resources/stacks/data_toolbox/) for managing [Icebase](/resources/depot/icebase/) DDL and DML. 
 
-[Flare](/resources/stacks/flare/) and [Scanner](/resources/stacks/scanner/) Stacks are supported by all Depots, while [Benthos](/resources/stacks/benthos/), the stream-processing Stack, is compatible with read/write operations from streaming depots like [Fastbase](/resources/depot/fastbase/) and Kafka Depots.
+[Flare](/resources/stacks/flare/) and [Scanner](/resources/stacks/scanner/) Stacks are supported by all Depots, while [Benthos](/resources/stacks/benthos/), the stream-processing Stack, is compatible with read/write operations from streaming Depots like [Fastbase](/resources/depot/fastbase/) and Kafka Depots.
 
 The UDL references are used as addresses for your input and output datasets within the manifest configuration file.
 
@@ -543,7 +542,7 @@ For File based systems, if you define the format as ‘Iceberg’, you can choos
 ``` yaml
 depot:
   type: ABFSS
-  description: "ABFSS Iceberg depot for sanity"
+  description: "ABFSS Iceberg Depot for sanity"
   compute: runnable-default
   spec:
     account: 
@@ -556,10 +555,12 @@ depot:
 If you do not mention the catalog name as Hive, it will use Hadoop as the default catalog for Iceberg format.
 
 
-![Depot Hierarchy](/resources/depot/depot_catalog.png)
-<center><i>Flow when Hive is chosen as the catalog type</i></center>
+<center>
+  <img src="/resources/depot/depot_catalog.png" alt="Flow when Hive is chosen as the catalog type" style="width:40rem; border: 1px solid black; padding: 5px;" />
+  <figcaption><i>Flow when Hive is chosen as the catalog type</i></figcaption>
+</center>
 
-Hive, automatically keeps the pointer updated to the latest metadata version. If you use Hadoop, you have to manually do this by running the set metadata command as described on this page: [Set Metadata](/resources/depot/icebase/)
+Hive, automatically keeps the pointer updated to the latest metadata version. If you use Hadoop, you have to manually do this by running the set metadata command as described on this page: [Set Metadata](/resources/depot/icebase/).
 
 ### **Scan and Catalog Metadata**
 
@@ -571,7 +572,7 @@ To enable the [Minerva](/resources/cluster/#minerva) Query Engine to access a sp
 
 ### **Create Policies upon Depots to Govern the Data**
 
-[Access](/resources/#access-policy) and [Data Policies](/resources/#data-policy) can be created upon Depots to govern the data. This helps in reducing data breach risks and simplifying compliance with regulatory requirements. Access Policies can restrict access to specific depots, collections, or datasets, while Data Policies allow you to control the visibility and usage of data.
+[Access](/resources/#access-policy) and [Data Policies](/resources/#data-policy) can be created upon Depots to govern the data. This helps in reducing data breach risks and simplifying compliance with regulatory requirements. Access Policies can restrict access to specific Depots, collections, or datasets, while Data Policies allow you to control the visibility and usage of data.
 
 ### **Building Data Models**
 
@@ -583,20 +584,20 @@ DataOS Depots facilitate seamless connectivity with diverse storage systems whil
 
 ### **Icebase**
 
-Icebase-type depots are designed to store data suitable for OLAP processes. It offers built-in functionalities such as [schema evolution](/resources/depot/icebase/#schema-evolution), [upsert commands](/resources/depot/icebase/#creating-and-getting-datasets), and [time-travel capabilities](/resources/depot/icebase/#maintenance-snapshot-modelling-and-metadata-listing) for datasets. With Icebase, you can conveniently perform these actions directly through the DataOS CLI, eliminating the need for additional Stacks like [Flare](/resources/stacks/flare/). Moreover, queries executed on data stored in Icebase exhibit enhanced performance. For detailed information, refer to the Icebase [page](/resources/depot/icebase/).
+Icebase-type Depots are designed to store data suitable for OLAP processes. It offers built-in functionalities such as [schema evolution](/resources/depot/icebase/#schema-evolution), [upsert commands](/resources/depot/icebase/#creating-and-getting-datasets), and [time-travel capabilities](/resources/depot/icebase/#maintenance-snapshot-modelling-and-metadata-listing) for datasets. With Icebase, you can conveniently perform these actions directly through the DataOS CLI, eliminating the need for additional Stacks like [Flare](/resources/stacks/flare/). Moreover, queries executed on data stored in Icebase exhibit enhanced performance. For detailed information, refer to the Icebase [page](/resources/depot/icebase/).
 
 ### **Fastbase**
 
-Fastbase type-depots are optimized for handling streaming data workloads. It provides features such as [creating](/resources/depot/fastbase/#create-a-dataset) and [listing topics](/resources/depot/fastbase/#list-topics), which can be executed effortlessly using the DataOS CLI. To explore Fastbase further, consult the [link](/resources/depot/fastbase/).
+Fastbase type Depots are optimized for handling streaming data workloads. It provides features such as [creating](/resources/depot/fastbase/#create-a-dataset) and [listing topics](/resources/depot/fastbase/#list-topics), which can be executed effortlessly using the DataOS CLI. To explore Fastbase further, consult the [link](/resources/depot/fastbase/).
 
 ## **Data Integration - Supported Connectors in DataOS**
 
-The catalogue of data sources accessible by one or more components within DataOS is provided on the following page: [Supported Connectors in DataOS](/resources/depot/list_of_connectors/)
+The catalogue of data sources accessible by one or more components within DataOS is provided on the following page: [Supported Connectors in DataOS](/resources/depot/list_of_connectors/).
 
 
 ## **Templates of Depot for different source systems**
 
-To facilitate the creation of depots accessing commonly used data sources, we have compiled a collection of pre-defined manifest templates. These templates serve as a starting point, allowing you to quickly set up depots for popular data sources. 
+To facilitate the creation of Depots accessing commonly used data sources, we have compiled a collection of pre-defined manifest templates. These templates serve as a starting point, allowing you to quickly set up Depots for popular data sources. 
 
 To make the process of creating a Depot configuration easier, we provide a set of predefined templates for various data sources. These templates serve as a starting point for configuring your Depot based on the specific data source you are working with. Simply choose the template that corresponds to your organization's data source and follow the instructions provided to fill in the required information.
 
@@ -606,7 +607,7 @@ To make the process of creating a Depot configuration easier, we provide a set o
 
 </aside>
 
-You can access these templates by visiting the following links: 
+You can access these templates by visiting the following tabs:
 
 
 === "Data <br> Warehouse"
@@ -616,7 +617,7 @@ You can access these templates by visiting the following links: 
         DataOS provides the capability to establish a connection with the Amazon Redshift database. We have provided the template for the manifest file to establish this connection. To create a Depot of type ‘REDSHIFT‘, utilize the following template:
 
         <aside class=callout>
-        🗣️ Please note that the credentials are directly specified in the depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
+        🗣️ Please note that the credentials are directly specified in the Depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
         </aside>
 
         === "Inline Credentials"
@@ -624,7 +625,7 @@ You can access these templates by visiting the following links: 
             --8<-- "examples/resources/depot/data_warehouse/redshift/redshift_v1.yaml"
             ```
 
-            Follow these steps to create the depot: 
+            Follow these steps to create the Depot: 
 
             - **Step 1**: Create a manifest file. 
             - **Step 2**: Copy the template from above and paste it in a code.
@@ -636,9 +637,9 @@ You can access these templates by visiting the following links: 
             --8<-- "examples/resources/depot/data_warehouse/redshift/redshift_v2alpha.yaml"
             ```
 
-            Follow these steps to create the depot: 
+            Follow these steps to create the Depot: 
 
-            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about instance secret, refer to [Instance Secret](/resources/instance_secret/). 
+            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about Instance Secret, refer to [Instance Secret](/resources/instance_secret/). 
             - **Step 2**: Copy the template from above and paste it in a code.
             - **Step 3**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
             - **Step 4**: Apply the file through DataOS CLI.
@@ -664,7 +665,7 @@ You can access these templates by visiting the following links: 
         DataOS enables the creation of a Depot of type 'BIGQUERY' to read data stored in BigQuery projects. Multiple Depots can be created, each pointing to a different project. To create a Depot of type 'BIGQUERY', utilize the following template:
 
         <aside class=callout>
-        🗣️ Please note that the credentials are directly specified in the depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
+        🗣️ Please note that the credentials are directly specified in the Depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
         </aside>
 
         === "Inline Credentials"
@@ -672,7 +673,7 @@ You can access these templates by visiting the following links: 
             ```yaml title="bigquery_v2alpha.yaml" 
             --8<-- "examples/resources/depot/data_warehouse/bigquery/bigquery_v1.yaml"
             ```
-            Follow these steps to create the depot: 
+            Follow these steps to create the Depot: 
 
             - **Step 1**: Create a manifest file. 
             - **Step 2**: Copy the template from above and paste it in a code.
@@ -684,9 +685,9 @@ You can access these templates by visiting the following links: 
             ```yaml title="bigquery_v2alpha.yaml" 
             --8<-- "examples/resources/depot/data_warehouse/bigquery/bigquery_v2alpha.yaml"
             ```
-            Follow these steps to create the depot: 
+            Follow these steps to create the Depot: 
 
-            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about instance secret, refer to [Instance Secret](/resources/instance_secret/). 
+            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about Instance Secret, refer to [Instance Secret](/resources/instance_secret/). 
             - **Step 2**: Copy the template from above and paste it in a code.
             - **Step 3**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
             - **Step 4**: Apply the file through DataOS CLI.
@@ -704,7 +705,7 @@ You can access these templates by visiting the following links: 
         DataOS provides integration with Snowflake, allowing you to seamlessly read data from Snowflake tables using Depots. Snowflake is a cloud-based data storage and analytics data warehouse offered as a Software-as-a-Service (SaaS) solution. It utilizes a new SQL database engine designed specifically for cloud infrastructure, enabling efficient access to Snowflake databases. To create a Depot of type 'SNOWFLAKE', you can utilize the following YAML template as a starting point:
 
         <aside class=callout>
-        🗣️ Please note that the credentials are directly specified in the depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
+        🗣️ Please note that the credentials are directly specified in the Depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
         </aside>
 
         === "Inline Credentials"
@@ -712,7 +713,7 @@ You can access these templates by visiting the following links: 
             ```yaml title="snowflake_v2alpha.yaml" 
             --8<-- "examples/resources/depot/data_warehouse/snowflake/snowflake_v1.yaml"
             ```   
-            Follow these steps to create the depot: 
+            Follow these steps to create the Depot: 
 
             - **Step 1**: Create a manifest file. 
             - **Step 2**: Copy the template from above and paste it in a code.
@@ -724,9 +725,9 @@ You can access these templates by visiting the following links: 
             ```yaml title="snowflake_v2alpha.yaml" 
             --8<-- "examples/resources/depot/data_warehouse/snowflake/snowflake_v2alpha.yaml"
             ```
-            Follow these steps to create the depot: 
+            Follow these steps to create the Depot: 
 
-            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about instance secret, refer to [Instance Secret](/resources/instance_secret/). 
+            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about Instance Secret, refer to [Instance Secret](/resources/instance_secret/). 
             - **Step 2**: Copy the template from above and paste it in a code.
             - **Step 3**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
             - **Step 4**: Apply the file through DataOS CLI.
@@ -748,7 +749,7 @@ You can access these templates by visiting the following links: 
         DataOS provides the capability to establish a connection with the Amazon S3 buckets. We have provided the template for the manifest file to establish this connection. To create a Depot of type ‘S3‘, utilize the following template:
 
         <aside class=callout>
-        🗣️ Please note that the credentials are directly specified in the depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
+        🗣️ Please note that the credentials are directly specified in the Depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
         </aside>
 
         === "Inline Credentials"
@@ -756,7 +757,7 @@ You can access these templates by visiting the following links: 
             ```yaml title="s3_v1.yaml" 
             --8<-- "examples/resources/depot/lakehouse/amazon_s3/s3_v1.yaml"
             ```  
-            Follow these steps to create the depot: 
+            Follow these steps to create the Depot: 
 
             - **Step 1**: Create a manifest file. 
             - **Step 2**: Copy the template from above and paste it in a code.
@@ -768,9 +769,9 @@ You can access these templates by visiting the following links: 
             ```yaml title="s3_v2alpha.yaml" 
             --8<-- "examples/resources/depot/lakehouse/amazon_s3/s3_v2alpha.yaml"
             ```
-            Follow these steps to create the depot: 
+            Follow these steps to create the Depot: 
 
-            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about instance secret, refer to [Instance Secret](/resources/instance_secret/). 
+            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about Instance Secret, refer to [Instance Secret](/resources/instance_secret/). 
             - **Step 2**: Copy the template from above and paste it in a code.
             - **Step 3**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
             - **Step 4**: Apply the file through DataOS CLI.
@@ -793,7 +794,7 @@ You can access these templates by visiting the following links: 
         DataOS enables the creation of a Depot of type 'ABFSS' to facilitate the reading of data stored in an Azure Blob Storage account. This Depot provides access to the storage account, which can consist of multiple containers. A container serves as a grouping mechanism for multiple blobs. It is recommended to define a separate Depot for each container. To create a Depot of type ‘ABFSS‘, utilize the following template:
 
         <aside class=callout>
-        🗣️ Please note that the credentials are directly specified in the depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
+        🗣️ Please note that the credentials are directly specified in the Depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
         </aside>
 
         === "Inline Credentials"
@@ -801,7 +802,7 @@ You can access these templates by visiting the following links: 
             ```yaml title="abfss_v1.yaml" 
             --8<-- "examples/resources/depot/lakehouse/abfss/abfss_v1.yaml"
             ``` 
-            Follow these steps to create the depot: 
+            Follow these steps to create the Depot: 
 
             - **Step 1**: Create a manifest file. 
             - **Step 2**: Copy the template from above and paste it in a code.
@@ -813,9 +814,9 @@ You can access these templates by visiting the following links: 
             ```yaml title="abfss_v2alpha.yaml" 
             --8<-- "examples/resources/depot/lakehouse/abfss/abfss_v2alpha.yaml"
             ```
-            Follow these steps to create the depot: 
+            Follow these steps to create the Depot: 
 
-            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about instance secret, refer to [Instance Secret](/resources/instance_secret/). 
+            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about Instance Secret, refer to [Instance Secret](/resources/instance_secret/). 
             - **Step 2**: Copy the template from above and paste it in a code.
             - **Step 3**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
             - **Step 4**: Apply the file through DataOS CLI.
@@ -835,7 +836,7 @@ You can access these templates by visiting the following links: 
         DataOS enables the creation of a Depot of type 'WASBS' to facilitate the reading of data stored in Azure Data Lake Storage. This Depot enables access to the storage account, which can contain multiple containers. A container serves as a grouping of multiple blobs. It is recommended to define a separate Depot for each container.To create a Depot of type ‘WASBS‘, utilize the following template:
 
         <aside class=callout>
-        🗣️ Please note that the credentials are directly specified in the depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
+        🗣️ Please note that the credentials are directly specified in the Depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
         </aside>
 
         === "Inline Credentials"
@@ -843,7 +844,7 @@ You can access these templates by visiting the following links: 
             ```yaml title="wasbs_v1.yaml" 
             --8<-- "examples/resources/depot/lakehouse/wasbs/wasbs_v1.yaml"
             ``` 
-            Follow these steps to create the depot: 
+            Follow these steps to create the Depot: 
 
             - **Step 1**: Create a manifest file. 
             - **Step 2**: Copy the template from above and paste it in a code.
@@ -855,9 +856,9 @@ You can access these templates by visiting the following links: 
             ```yaml title="wasbs_v2alpha.yaml" 
             --8<-- "examples/resources/depot/lakehouse/wasbs/wasbs_v2alpha.yaml"
             ```
-            Follow these steps to create the depot: 
+            Follow these steps to create the Depot: 
 
-            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about instance secret, refer to [Instance Secret](/resources/instance_secret/). 
+            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about Instance Secret, refer to [Instance Secret](/resources/instance_secret/). 
             - **Step 2**: Copy the template from above and paste it in a code.
             - **Step 3**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
             - **Step 4**: Apply the file through DataOS CLI.
@@ -879,7 +880,7 @@ You can access these templates by visiting the following links: 
         DataOS provides the capability to connect to Google Cloud Storage data using Depot. To create a Depot of Google Cloud Storage, in the type field you will have to specify type 'GCS', and utilize the following template:
 
         <aside class=callout>
-        🗣️ Please note that the credentials are directly specified in the depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
+        🗣️ Please note that the credentials are directly specified in the Depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
         </aside>
 
         === "Inline Credentials"
@@ -887,7 +888,7 @@ You can access these templates by visiting the following links: 
             ```yaml title="gcs_v1.yaml" 
             --8<-- "examples/resources/depot/lakehouse/gcs/gcs_v1.yaml"
             ```
-            Follow these steps to create the depot: 
+            Follow these steps to create the Depot: 
 
             - **Step 1**: Create a manifest file. 
             - **Step 2**: Copy the template from above and paste it in a code.
@@ -899,9 +900,9 @@ You can access these templates by visiting the following links: 
             ```yaml title="gcs_v2alpha.yaml" 
             --8<-- "examples/resources/depot/lakehouse/gcs/gcs_v2alpha.yaml"
             ```
-            Follow these steps to create the depot: 
+            Follow these steps to create the Depot: 
 
-            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about instance secret, refer to [Instance Secret](/resources/instance_secret/). 
+            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about Instance Secret, refer to [Instance Secret](/resources/instance_secret/). 
             - **Step 2**: Copy the template from above and paste it in a code.
             - **Step 3**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
             - **Step 4**: Apply the file through DataOS CLI.
@@ -923,7 +924,7 @@ You can access these templates by visiting the following links: 
         DataOS provides the capability to establish a connection with the Icebase Lakehouse over Amazon S3 or other object storages. We have provided the template for the manifest file to establish this connection. To create a Depot of type ‘S3‘, utilize the following template:
 
         <aside class=callout>
-        🗣️ Please note that the credentials are directly specified in the depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
+        🗣️ Please note that the credentials are directly specified in the Depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
         </aside>
 
         === "Inline Credentials"
@@ -931,7 +932,7 @@ You can access these templates by visiting the following links: 
             ```yaml title="icebase_v1.yaml" 
             --8<-- "examples/resources/depot/lakehouse/icebase/icebase_v1.yaml"
             ``` 
-            Follow these steps to create the depot: 
+            Follow these steps to create the Depot: 
 
             - **Step 1**: Create a manifest file. 
             - **Step 2**: Copy the template from above and paste it in a code.
@@ -943,9 +944,9 @@ You can access these templates by visiting the following links: 
             ```yaml title="icebase_v2alpha.yaml" 
             --8<-- "examples/resources/depot/lakehouse/icebase/icebase_v2alpha.yaml"
             ```
-            Follow these steps to create the depot: 
+            Follow these steps to create the Depot: 
 
-            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about instance secret, refer to [Instance Secret](/resources/instance_secret/). 
+            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about Instance Secret, refer to [Instance Secret](/resources/instance_secret/). 
             - **Step 2**: Copy the template from above and paste it in a code.
             - **Step 3**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
             - **Step 4**: Apply the file through DataOS CLI.
@@ -973,7 +974,7 @@ You can access these templates by visiting the following links: 
             ```yaml title="pulsar_v1.yaml" 
             --8<-- "examples/resources/depot/streaming_source/apache_pulsar/pulsar_v1.yaml"
             ``` 
-            Follow these steps to create the depot: 
+            Follow these steps to create the Depot: 
 
             - **Step 1**: Create a manifest file. 
             - **Step 2**: Copy the template from above and paste it in a code.
@@ -992,7 +993,7 @@ You can access these templates by visiting the following links: 
         DataOS provides the capability to connect to Eventhub data using Depot. The Depot facilitates access to all documents that are visible to the specified user, allowing for text queries and analytics. To create a Depot of Eventhub, in the type field you will have to specify type 'EVENTHUB', and utilize the following template:
 
         <aside class=callout>
-        🗣️ Please note that the credentials are directly specified in the depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
+        🗣️ Please note that the credentials are directly specified in the Depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
         </aside>
 
         === "Inline Credentials"
@@ -1000,7 +1001,7 @@ You can access these templates by visiting the following links: 
             ```yaml title="eh_v1.yaml" 
             --8<-- "examples/resources/depot/streaming_source/eventhub/eh_v1.yaml"
             ``` 
-            Follow these steps to create the depot: 
+            Follow these steps to create the Depot: 
 
             - **Step 1**: Create a manifest file. 
             - **Step 2**: Copy the template from above and paste it in a code.
@@ -1012,9 +1013,9 @@ You can access these templates by visiting the following links: 
             ```yaml title="eh_v2alpha.yaml" 
             --8<-- "examples/resources/depot/streaming_source/eventhub/eh_v2alpha.yaml"
             ```
-            Follow these steps to create the depot: 
+            Follow these steps to create the Depot: 
 
-            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about instance secret, refer to [Instance Secret](/resources/instance_secret/). 
+            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about Instance Secret, refer to [Instance Secret](/resources/instance_secret/). 
             - **Step 2**: Copy the template from above and paste it in a code.
             - **Step 3**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
             - **Step 4**: Apply the file through DataOS CLI.
@@ -1036,7 +1037,7 @@ You can access these templates by visiting the following links: 
             ```yaml title="kafka_v1.yaml" 
             --8<-- "examples/resources/depot/streaming_source/kafka/kafka.yaml"
             ``` 
-            Follow these steps to create the depot: 
+            Follow these steps to create the Depot: 
 
             - **Step 1**: Create a manifest file. 
             - **Step 2**: Copy the template from above and paste it in a code.
@@ -1059,7 +1060,7 @@ You can access these templates by visiting the following links: 
         DataOS provides the capability to connect to Elasticsearch data using Depot. The Depot facilitates access to all documents that are visible to the specified user, allowing for text queries and analytics. To create a Depot of type ‘ELASTICSEARCH‘, utilize the following template:
 
         <aside class=callout>
-        🗣️ Please note that the credentials are directly specified in the depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
+        🗣️ Please note that the credentials are directly specified in the Depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
         </aside>
 
         === "Inline Credentials"
@@ -1067,7 +1068,7 @@ You can access these templates by visiting the following links: 
             ```yaml title="es_v1.yaml" 
             --8<-- "examples/resources/depot/nosql_db/elasticsearch/es_v1.yaml"
             ``` 
-            Follow these steps to create the depot: 
+            Follow these steps to create the Depot: 
 
             - **Step 1**: Create a manifest file. 
             - **Step 2**: Copy the template from above and paste it in a code.
@@ -1079,9 +1080,9 @@ You can access these templates by visiting the following links: 
             ```yaml title="es_v2alpha.yaml" 
             --8<-- "examples/resources/depot/nosql_db/elasticsearch/es_v2alpha.yaml"
             ```  
-            Follow these steps to create the depot: 
+            Follow these steps to create the Depot: 
 
-            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about instance secret, refer to [Instance Secret](/resources/instance_secret/). 
+            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about Instance Secret, refer to [Instance Secret](/resources/instance_secret/). 
             - **Step 2**: Copy the template from above and paste it in a code.
             - **Step 3**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
             - **Step 4**: Apply the file through DataOS CLI.
@@ -1100,7 +1101,7 @@ You can access these templates by visiting the following links: 
         DataOS allows you to connect to MongoDB using Depot, enabling you to interact with your MongoDB database and perform various data operations. You can create a MongoDB Depot in DataOS by providing specific configurations. To create a Depot of type 'MONGODB', use the following template:
 
         <aside class=callout>
-        🗣️ Please note that the credentials are directly specified in the depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
+        🗣️ Please note that the credentials are directly specified in the Depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
         </aside>
 
         === "Inline credentials"
@@ -1122,7 +1123,7 @@ You can access these templates by visiting the following links: 
                 ``` 
 
 
-            Follow these steps to create the depot:
+            Follow these steps to create the Depot:
 
             - **Step 1**: Create a manifest file. 
             - **Step 2**: Copy the template from above and paste it in a code.
@@ -1135,9 +1136,9 @@ You can access these templates by visiting the following links: 
             ```yaml title="mongo_v2alpha.yaml" 
             --8<-- "examples/resources/depot/nosql_db/mongodb/mongo_v2alpha.yaml"
             ```  
-            Follow these steps to create the depot:
+            Follow these steps to create the Depot:
 
-            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about instance secret, refer to [Instance Secret](/resources/instance_secret/). 
+            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about Instance Secret, refer to [Instance Secret](/resources/instance_secret/). 
             - **Step 2**: Copy the template from above and paste it in a code.
             - **Step 3**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
             - **Step 4**: Apply the file through DataOS CLI.
@@ -1162,7 +1163,7 @@ You can access these templates by visiting the following links: 
         DataOS provides the capability to connect to Opensearch data using Depot. The Depot facilitates access to all documents that are visible to the specified user, allowing for text queries and analytics. To create a Depot of Opensearch, in the type field you will have to specify type ‘ELASTICSEARCH‘, and utilize the following template:
 
         <aside class=callout>
-        🗣️ Please note that the credentials are directly specified in the depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
+        🗣️ Please note that the credentials are directly specified in the Depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
         </aside>
 
         === "Inline Credentials"
@@ -1170,7 +1171,7 @@ You can access these templates by visiting the following links: 
             ```yaml title="os_v2alpha.yaml" 
             --8<-- "examples/resources/depot/nosql_db/opensearch/os_v1.yaml"
             ```  
-            Follow these steps to create the depot:
+            Follow these steps to create the Depot:
 
             - **Step 1**: Create a manifest file. 
             - **Step 2**: Copy the template from above and paste it in a code.
@@ -1183,9 +1184,9 @@ You can access these templates by visiting the following links: 
             ```yaml title="os_v1.yaml" 
             --8<-- "examples/resources/depot/nosql_db/opensearch/os_v2alpha.yaml"
             ```
-            Follow these steps to create the depot:
+            Follow these steps to create the Depot:
 
-            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about instance secret, refer to [Instance Secret](/resources/instance_secret/). 
+            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about Instance Secret, refer to [Instance Secret](/resources/instance_secret/). 
             - **Step 2**: Copy the template from above and paste it in a code.
             - **Step 3**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
             - **Step 4**: Apply the file through DataOS CLI.
@@ -1206,7 +1207,7 @@ You can access these templates by visiting the following links: 
         DataOS provides the capability to establish a connection to a database using the JDBC driver in order to read data from tables using a Depot. The Depot facilitates access to all schemas visible to the specified user within the configured database. To create a Depot of type ‘JDBC‘, utilize the following template:
 
         <aside class=callout>
-        🗣️ Please note that the credentials are directly specified in the depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
+        🗣️ Please note that the credentials are directly specified in the Depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
         </aside>
 
         === "Inline Credentials"
@@ -1214,7 +1215,7 @@ You can access these templates by visiting the following links: 
             ```yaml title="jdbc_v1.yaml" 
             --8<-- "examples/resources/depot/relational_db/jdbc/jdbc_v1.yaml"
             ``` 
-            Follow these steps to create the depot:
+            Follow these steps to create the Depot:
 
             - **Step 1**: Create a manifest file.
             - **Step 2**: Copy the template from above and paste it in a code.
@@ -1226,9 +1227,9 @@ You can access these templates by visiting the following links: 
             ```yaml title="jdbc_v2alpha.yaml" 
             --8<-- "examples/resources/depot/relational_db/jdbc/jdbc_v2alpha.yaml"
             ```  
-            Follow these steps to create the depot:
+            Follow these steps to create the Depot:
 
-            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about instance secret, refer to [Instance Secret](/resources/instance_secret/). 
+            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about Instance Secret, refer to [Instance Secret](/resources/instance_secret/). 
             - **Step 2**: Copy the template from above and paste it in a code.
             - **Step 3**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
             - **Step 4**: Apply the file through DataOS CLI.
@@ -1277,7 +1278,7 @@ You can access these templates by visiting the following links: 
         DataOS allows you to connect to a MySQL database and read data from tables using Depots. A Depot provides access to all tables within the specified schema of the configured database. You can create multiple Depots to connect to different MySQL servers or databases. To create a Depot of type ‘MYSQL‘, utilize the following template:
 
         <aside class=callout>
-        🗣️ Please note that the credentials are directly specified in the depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
+        🗣️ Please note that the credentials are directly specified in the Depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
         </aside>
 
         **Use this template, if self-signed certificate is enabled.**
@@ -1288,7 +1289,7 @@ You can access these templates by visiting the following links: 
             ```yaml title="mysql_v1.yaml" 
             --8<-- "examples/resources/depot/relational_db/mysql/mysql_v1.yaml"
             ``` 
-            Follow these steps to create the depot:
+            Follow these steps to create the Depot:
 
             - **Step 1**: Create a manifest file. 
             - **Step 2**: Copy the template from above and paste it in a code.
@@ -1300,9 +1301,9 @@ You can access these templates by visiting the following links: 
             ```yaml title="mysql_v2alpha.yaml" 
             --8<-- "examples/resources/depot/relational_db/mysql/mysql_v2alpha.yaml"
             ```  
-            Follow these steps to create the depot:
+            Follow these steps to create the Depot:
 
-            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about instance secret, refer to [Instance Secret](/resources/instance_secret/). 
+            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about Instance Secret, refer to [Instance Secret](/resources/instance_secret/). 
             - **Step 2**: Copy the template from above and paste it in a code.
             - **Step 3**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
             - **Step 4**: Apply the file through DataOS CLI.
@@ -1321,15 +1322,14 @@ You can access these templates by visiting the following links: 
         === "Inline Credentials"
         
             ``` yaml
-
             name: ${{"mysql01"}}
             version: v1
-            type: depot
+            type: Depot
             tags:
               - ${{dropzone}}
               - ${{mysql}}
             layer: user
-            depot:
+            Depot:
               type: MYSQL
               description: ${{"MYSQL Sample data"}}
               spec:
@@ -1349,12 +1349,12 @@ You can access these templates by visiting the following links: 
             ``` yaml
             name: ${{"mysql01"}}
             version: v2alpha
-            type: depot
+            type: Depot
             tags:
               - ${{dropzone}}
               - ${{mysql}}
             layer: user
-            depot:
+            Depot:
               type: MYSQL
               description: ${{"MYSQL Sample data"}}
               mysql:
@@ -1362,7 +1362,7 @@ You can access these templates by visiting the following links: 
                 port: ${{port}}
               external: true
               secrets:
-                - name: ${{nstance-secret-name}}-r
+                - name: ${{instance-secret-name}}-r
                   allkeys: true
 
                 - name: ${{instance-secret-name}}-rw
@@ -1375,7 +1375,7 @@ You can access these templates by visiting the following links: 
         DataOS allows you to connect to a Microsoft SQL Server database and read data from tables using Depots. A Depot provides access to all tables within the specified schema of the configured database. You can create multiple Depots to connect to different SQL servers or databases. To create a Depot of type ‘SQLSERVER‘, utilize the following template:
 
         <aside class=callout>
-        🗣️ Please note that the credentials are directly specified in the depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
+        🗣️ Please note that the credentials are directly specified in the Depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
         </aside>
 
         **Use this template, if self-signed certificate is enabled.**
@@ -1385,7 +1385,7 @@ You can access these templates by visiting the following links: 
             ```yaml title="mssql_v1.yaml" 
             --8<-- "examples/resources/depot/relational_db/mssql_server/mssql_v1.yaml"
             ```         
-            Follow these steps to create the depot:
+            Follow these steps to create the Depot:
 
             - **Step 1**: Create a manifest file. 
             - **Step 2**: Copy the template from above and paste it in a code.
@@ -1397,9 +1397,9 @@ You can access these templates by visiting the following links: 
             ```yaml title="mssql_v2alpha.yaml" 
             --8<-- "examples/resources/depot/relational_db/mssql_server/mssql_v2alpha.yaml"
             ```  
-            Follow these steps to create the depot:
+            Follow these steps to create the Depot:
 
-            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about instance secret, refer to [Instance Secret](/resources/instance_secret/). 
+            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about Instance Secret, refer to [Instance Secret](/resources/instance_secret/). 
             - **Step 2**: Copy the template from above and paste it in a code.
             - **Step 3**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
             - **Step 4**: Apply the file through DataOS CLI.
@@ -1421,12 +1421,12 @@ You can access these templates by visiting the following links: 
             ``` yaml
             name: ${{mssql01}}
             version: v1
-            type: depot
+            type: Depot
             tags:
               - ${{dropzone}}
               - ${{mssql}}
             layer: user
-            depot:
+            Depot:
               type: JDBC
               description: ${{MSSQL Sample data}}
               spec:
@@ -1449,12 +1449,12 @@ You can access these templates by visiting the following links: 
             ``` yaml
             name: ${{mssql01}}
             version: v2alpha
-            type: depot
+            type: Depot
             tags:
               - ${{dropzone}}
               - ${{mssql}}
             layer: user
-            depot:
+            Depot:
               type: JDBC
               description: ${{MSSQL Sample data}}
               jdbc:
@@ -1465,7 +1465,7 @@ You can access these templates by visiting the following links: 
                 params: ${{'{"key":"value","key2":"value2"}'}}
               external: ${{true}}
               secrets:
-                - name: ${{nstance-secret-name}}-r
+                - name: ${{instance-secret-name}}-r
                   allkeys: true
 
                 - name: ${{instance-secret-name}}-rw
@@ -1477,7 +1477,7 @@ You can access these templates by visiting the following links: 
         DataOS allows you to connect to an Oracle database and access data from tables using Depots. A Depot provides access to all schemas within the specified service in the configured database. You can create multiple Depots to connect to different Oracle servers or databases. To create a Depot of type ‘ORACLE‘, you can use the following template:
 
         <aside class=callout>
-        🗣️ Please note that the credentials are directly specified in the depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
+        🗣️ Please note that the credentials are directly specified in the Depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
         </aside>
 
         === "Inline Credentials"
@@ -1485,7 +1485,7 @@ You can access these templates by visiting the following links: 
             ```yaml title="oracle_v1.yaml" 
             --8<-- "examples/resources/depot/relational_db/oracle/oracle_v1.yaml"
             ```  
-            Follow these steps to create the depot:
+            Follow these steps to create the Depot:
 
             - **Step 1**: Create a manifest file. 
             - **Step 2**: Copy the template from above and paste it in a code.
@@ -1497,9 +1497,9 @@ You can access these templates by visiting the following links: 
             ```yaml title="oracle_v2alpha.yaml" 
             --8<-- "examples/resources/depot/relational_db/oracle/oracle_v2alpha.yaml"
             ```  
-            Follow these steps to create the depot:
+            Follow these steps to create the Depot:
 
-            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about instance secret, refer to [Instance Secret](/resources/instance_secret/). 
+            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about Instance Secret, refer to [Instance Secret](/resources/instance_secret/). 
             - **Step 2**: Copy the template from above and paste it in a code.
             - **Step 3**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
             - **Step 4**: Apply the file through DataOS CLI.
@@ -1523,7 +1523,7 @@ You can access these templates by visiting the following links: 
         DataOS allows you to connect to a PostgreSQL database and read data from tables using Depots. A Depot provides access to all schemas visible to the specified user in the configured database. To create a Depot of type ‘POSTGRESQL‘, use the following template:
 
         <aside class=callout>
-        🗣️ Please note that the credentials are directly specified in the depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
+        🗣️ Please note that the credentials are directly specified in the Depot manifest using the `connectionSecret`, whereas credentials are referred via [Instance Secret](/resources/instance_secret/) as `secrets` or `dataosSecrets`.      
         </aside>
 
         **Use this templates, if self-signed certificate is enabled.**
@@ -1533,7 +1533,7 @@ You can access these templates by visiting the following links: 
             ```yaml title="ps_v1.yaml" 
             --8<-- "examples/resources/depot/relational_db/postgre/ps_v1.yaml"
             ```
-            Follow these steps to create the depot:
+            Follow these steps to create the Depot:
 
             - **Step 1**: Create a manifest file. 
             - **Step 2**: Copy the template from above and paste it in a code.
@@ -1545,9 +1545,9 @@ You can access these templates by visiting the following links: 
             ```yaml title="ps_v2alpha.yaml" 
             --8<-- "examples/resources/depot/relational_db/postgre/ps_v2alpha.yaml"
             ```  
-            Follow these steps to create the depot:
+            Follow these steps to create the Depot:
 
-            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about instance secret, refer to [Instance Secret](/resources/instance_secret/). 
+            - **Step 1**: Create Instance-secret to store the credentials, for more imformation about Instance Secret, refer to [Instance Secret](/resources/instance_secret/). 
             - **Step 2**: Copy the template from above and paste it in a code.
             - **Step 3**: Fill the values for the atttributes/fields declared in the YAML-based manifest file. 
             - **Step 4**: Apply the file through DataOS CLI.
@@ -1569,12 +1569,12 @@ You can access these templates by visiting the following links: 
             ``` yaml
             name: ${{depot-name}}
             version: v1
-            type: depot
+            type: Depot
             tags:
               - ${{tag1}}
             owner: ${{owner-name}}
             layer: user
-            depot:
+            Depot:
               type: POSTGRESQL
               description: ${{description}}
               external: true
@@ -1582,13 +1582,13 @@ You can access these templates by visiting the following links: 
                 - acl: rw
                   type: key-value-properties
                   data:
-                    username: ${{posgresql-username}}
-                    password: ${{posgresql-password}}
+                    username: ${{postgresql-username}}
+                    password: ${{posgtresql-password}}
                 - acl: r
                   type: key-value-properties
                   data:
-                    username: ${{posgresql-username}}
-                    password: ${{posgresql-password}}
+                    username: ${{postgresql-username}}
+                    password: ${{postgresql-password}}
               spec:                                          
                 host: ${{host}}
                 port: ${{port}}
@@ -1603,17 +1603,17 @@ You can access these templates by visiting the following links: 
             ``` yaml
             name: ${{depot-name}}
             version: v2alpha
-            type: depot
+            type: Depot
             tags:
               - ${{tag1}}
             owner: ${{owner-name}}
             layer: user
-            depot:
+            Depot:
               type: POSTGRESQL
               description: ${{description}}
               external: true
               secrets:
-                - name: ${{nstance-secret-name}}-r
+                - name: ${{instance-secret-name}}-r
                   allkeys: true
 
                 - name: ${{instance-secret-name}}-rw
