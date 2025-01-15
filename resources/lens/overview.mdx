@@ -1,34 +1,34 @@
-
 The data model is used to transform raw data into meaningful business definitions for optimal results. This data model is then exposed through a rich set of APIs that allows end-users to run a wide variety of analytical queries without modifying the data model itself.
 
 Let's use a `sales` table with the following columns as an example:
 
 **`sales`**
 
-| order_id | product | amount | city          | customer_name |
-|----------|---------|--------|---------------|---------------|
-| 1        | Shoes   | 150    | New York      | John Doe      |
-| 2        | Jacket  | 200    | San Francisco | Jane Smith    |
-| 3        | Hat     | 50     | Los Angeles   | Michael Brown |
-| 4        | Shoes   | 120    | New York      | Emily Davis   |
-| 5        | Jacket  | 220    | Chicago       | Sarah Wilson  |
+| order\_id | product | amount | city          | customer\_name |
+| --------- | ------- | ------ | ------------- | -------------- |
+| 1         | Shoes   | 150    | New York      | John Doe       |
+| 2         | Jacket  | 200    | San Francisco | Jane Smith     |
+| 3         | Hat     | 50     | Los Angeles   | Michael Brown  |
+| 4         | Shoes   | 120    | New York      | Emily Davis    |
+| 5         | Jacket  | 220    | Chicago       | Sarah Wilson   |
 
 We can start with a set of simple questions about `sales` we want to answer:
 
-- What is the total sales amount?
-- What is the total order count?
-- What is the average sales amount?
-- How many sales came from different cities and customers?
+* What is the total sales amount?
+
+* What is the total order count?
+
+* What is the average sales amount?
+
+* How many sales came from different cities and customers?
 
 Instead of writing individual SQL queries for each of these questions, the data model in Lens allows for creating well-organized and reusable SQL logic. By defining dimensions and measures in the data model, you can streamline these analyses and enhance the ability to extract meaningful insights from your data efficiently.
 
-
-##  Creating a Lens
+## Creating a Lens
 
 A Lens is used to model entities and their relationships. It organizes multiple related entities and defines how they interact with each other. For example, a Lens could include entities such as `sales`, `orders`, `products`, etc., with defined relationships between them.
 
 In the table attribute of the Lens, define the base table. Here, it will be the sales table.
-
 
 ### **1. Loading data from the data source**
 
@@ -61,7 +61,6 @@ FROM
   "icebase"."sales_360".customer;
 ```
 
-
 ### 2. **Defining the Table in the Model**
 
 In the tables directory, create a definition for each entity. For example, to define a table for sales data:
@@ -77,7 +76,7 @@ This links the SQL script loaded from the source to the Lens model.
 
 ### **3. Adding Measures and Dimensions**
 
-After defining the base table, add measures and dimensions to provide meaningful analysis. 
+After defining the base table, add measures and dimensions to provide meaningful analysis.
 
 > Dimensions are used for filtering and grouping data, while measures are the numerical values you want to analyze.
 
@@ -112,7 +111,7 @@ tables:
 
 Let's break down the above code snippet piece-by-piece. After defining the base table for the Lens (with the table attribute), we create a count measure in the measures block. The count type and sql means that when this measure will be requested via an API, Lens will generate and execute the following SQL:
 
-```sql 
+```sql
 SELECT COUNT(order_id) AS total_orders_count
 FROM sales;
 ```
@@ -127,7 +126,6 @@ GROUP BY 2;
 
 You can add as many dimensions as you want to your query when you perform grouping.
 
-
 ### **4. Adding Segments to Measures**
 
 Now let's answer the next question – "What is the total sales amount for city New York?". To accomplish this, we will introduce measure filters called segments:
@@ -137,7 +135,8 @@ segments:
   - name: total_sales_newyork
     sql: "{TABLE}.city = 'New York'"
 ```
-Since the `segments` attribute type is an array, you can apply as many segments as required. 
+
+Since the `segments` attribute type is an array, you can apply as many segments as required.
 
 ```yaml
 segments:
@@ -152,7 +151,6 @@ segments:
 
  #....
 ```
-
 
 ### **5. Using Calculated Measures**
 
@@ -178,6 +176,7 @@ measures:
 
 # .....
 ```
+
 Here we defined a calculated measure `average_sales_amount_per_order`, which divides the total sales amount by the total number of orders. The NULLIF function prevents division by zero in case there are no orders.
 
 This example shows how you can reference measures inside other measure definitions. When you request the `average_sales_amount_per_order` measure via an API, the following SQL will be generated:
@@ -188,4 +187,5 @@ SELECT
 FROM
   sales
 ```
-As with other measures, average_sales_amount_per_order can be used with dimensions.
+
+As with other measures, average\_sales\_amount\_per\_order can be used with dimensions.

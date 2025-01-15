@@ -1,14 +1,15 @@
 ---
-title: Lens model Folder setup
-sidebarTitle: Model Folder Setup
+title: "Lens model Folder setup"
+sidebarTitle: "Model Folder Setup"
 ---
 
-!!! abstract "Quick Guide"
-    To quickly get started with creating a Lens model in DataOS, follow the [quick guide on creating a Lens model](/quick_guides/create_data_model/). This guide provides step-by-step instructions to help you transform your conceptual design into a functional semantic model, ensuring effective data structuring and organization to meet your analytical and business needs.
+<Info>
+  To quickly get started with creating a Lens model in DataOS, follow the [quick guide on creating a Lens model](/quick_guides/create_data_model/). This guide provides step-by-step instructions to help you transform your conceptual design into a functional semantic model, ensuring effective data structuring and organization to meet your analytical and business needs.
+</Info>
 
-### **Prerequisites**
+**Prerequisites**
 
-Before setting up Lens, make sure all required dependencies are installed. Follow the [Prerequisites for Lens](/resources/lens/installing_prerequisites/) guide for detailed instructions and resources to ensure a seamless installation and configuration process.
+Before setting up Lens, refer to the **Prerequisites for Lens** guide for detailed instructions and ensure all required dependencies are installed.
 
 ### **Lens Project folder structure**
 
@@ -16,9 +17,9 @@ In the Model folder, the Lens semantic model will be defined, encompassing SQL m
 
 [lens template](/resources/lens/lens_model_folder_setup/lens-project-template.zip)
 
-- Open the Model folder in your preferred editor. It is recommended to organize each Table or View into a separate file within the `model/tables` and `model/views` folders, respectively. The Model folder should follow this structure:
+* Open the Model folder in your preferred editor. It is recommended to organize each Table or View into a separate file within the `model/tables` and `model/views` folders, respectively. The Model folder should follow this structure:
 
-``` bash
+```bash
 model
 ├── sqls
 │   └── sample.sql  # SQL script for the dimensions of the tables
@@ -29,23 +30,108 @@ model
 └── user_groups.yml  # User groups for easier policy enforcement and access control.
 ```
 
-- **Create `sqls` folder**
-    - This directory will contain SQL scripts corresponding to the dimensions of tables.  A dedicated SQL file needs to be maintained for each table. The SQL dialect used will be source-specific.
+* **Create `sqls` folder**: This directory will contain SQL scripts corresponding to the dimensions of tables.  A dedicated SQL file needs to be maintained for each table. The SQL dialect used will be source-specific.
 
-- **Create `tables` folder**
-    - This directory will store logical tables, with each Table defined in a separate YAML file. It defines all the dimensions, measures, segments of the Table.
-    
-- **Create `views` folder**
-    - This directory will store all logical views. Each view should be defined in a separate YAML file, like `sample_view.yml`, which references dimensions, measures, and segments from the tables.
+* **Create `tables` folder**: This directory will store logical tables, with each Table defined in a separate YAML file. It defines all the dimensions, measures, segments of the Table.
 
--  **Add `user_groups.yml` manifest file**
-    - This YAML manifest file is used to manage access levels for the Lens semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, there is a 'default' user group in the YAML file that includes all users.
+* **Create `views` folder:** This directory will store all logical views. Each view should be defined in a separate YAML file, like `sample_view.yml`, which references dimensions, measures, and segments from the tables.
+
+* **Add `user_groups.yml` manifest file**: This YAML manifest file is used to manage access levels for the Lens semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, there is a 'default' user group in the YAML file that includes all users.
+
+<Steps>
+  <Step title="Loading data from the data source">
+    In the `sqls` folder, create `.sql` files for each logical table, with each file dedicated to loading or selecting the relevant data from the source. Each file will be responsible for loading or selecting the relevant data from the source, ensuring that only the necessary columns are extracted. The SQL dialect used will be specific to the data source.
+
+    For example, a simple data load might look like this:
+
+    ```sql
+    SELECT
+      *
+    FROM
+      "icebase"."sales_360".channel;
+    ```
+
+    Alternatively, you can write more advanced queries that include transformations, such as:
+
+    ```sql
+    SELECT
+      CAST(customer_id AS VARCHAR) AS customer_id,
+      first_name,
+      CAST(DATE_PARSE(birth_date, '%d-%m-%Y') AS TIMESTAMP) AS birth_date,
+      age,
+      CAST(register_date AS TIMESTAMP) AS register_date,
+      occupation,
+      annual_income,
+      city,
+      state,
+      country,
+      zip_code
+    FROM
+      "icebase"."sales_360".customer;
+
+    ```
+  </Step>
+
+  <Step title="Defining the Table in the Mode">
+    Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file. These files will outline all dimensions, measures, and segments associated with each table. To define a table in the model, create a YAML file for each entity within the `tables` directory. For example, to define a table for `sales `data:
+
+    ```yaml
+    table:
+      - name: customers
+        sql: {{ load_sql('customers') }}
+        description: Table containing information about sales transactions.
+    ```
+
+    After defining the base table, add the necessary dimensions and measures. For example, to create a table for sales data with measures and dimensions, the YAML definition could look like this:
+
+    ```yaml
+    tables:
+      - name: sales
+        sql: {{ load_sql('sales') }}
+        description: Table containing sales records with order details.
+
+        dimensions:
+          - name: order_id
+            type: number
+            description: Unique identifier for each order.
+            sql: order_id
+            primary_key: true
+            public: true
+
+          - name: city
+            type: string
+            description: City where the customer is located.
+            sql: city
+
+        measures:
+          - name: total_orders_count
+            type: count
+            sql: id
+            description: Total number of orders.
+    ```
+
+    This code snippet defines the base table, followed by the addition of dimensions (`order_id` and `city`) and a measure (`total_orders_count`).
+
+    When the measure is requested via an API, Lens will generate and execute the following SQL:
+
+    ```sql
+    SELECT COUNT(order_id) AS total_orders_count
+    FROM sales;
+    ```
+
+    If you apply the `city` dimension to the measure to analyze "Where are customers based?", Lens will generate a SQL query with a `GROUP BY` clause:
+
+    ```
+    SELECT city, COUNT(id) AS total_orders_count
+    FROM sales
+    GROUP BY city;
+
+    ```
+
+
+  </Step>
+</Steps>
 
 ## Next steps
 
-[Optimizing Lens testing in local development](/resources/lens/optimizing_lens_testing_in_local_development/)
-
 [Deploying Lens model on DataOS](/resources/lens/lens_deployment/)
-
-
-
