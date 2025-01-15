@@ -27,7 +27,7 @@ Before initiating the deployment process, please ensure you have the following:
 Follow the steps below to deploy Lens on DataOS:
 
 <Steps>
-  <Step title="Push the Lens model directory to a code repository" stepNumber="1">
+  <Step title="Push the Lens model directory to a code repository" stepNumber="1" titleSize="h2">
     First, push your Lens model directory to a hosted code repository. This can be done on hosted code repository like [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/push-code-to-bitbucket/), [GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github), [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/getting-started.html) etc.
 
     <Info>
@@ -35,7 +35,7 @@ Follow the steps below to deploy Lens on DataOS:
     </Info>
   </Step>
 
-  <Step title="Create Instance Secrets for Code Repository Credentials">
+  <Step title="Create Instance Secrets for Code Repository Credentials" titleSize="h2">
     Define the Instance Secret Resource in a YAML file. Below is a template you can use for Bitbucket, substituting `${USERNAME}` and `${PASSWORD}` with your actual Bitbucket credentials:
 
     <CodeGroup>
@@ -105,7 +105,7 @@ Follow the steps below to deploy Lens on DataOS:
     </Note>
   </Step>
 
-  <Step title="Create a Lens Resource manifest file">
+  <Step title="Create a Lens Resource manifest file" titleSize="h2">
     Begin by creating a manifest file that will hold the configuration details for your Lens Resource. The structure of the Lens manifest file is provided below.
 
     <Accordion title="Sample Lens manifest" defaultOpen={false}>
@@ -220,7 +220,7 @@ Follow the steps below to deploy Lens on DataOS:
 
     To configure a lens Resource, replace the values of `name`, `layer`, `tags`, `description`, and `owner` with appropriate values. For additional configuration information about the attributes of the Resource meta section, refer to the link: [Attributes of Resource meta section](/resources/manifest_attributes/).
 
-    ## **Lens-specific section**
+    ### **Lens-specific section**
 
     A typical deployment of a Lens Resource includes the following components:
 
@@ -291,19 +291,17 @@ Follow the steps below to deploy Lens on DataOS:
 
     To get the details of Lens created by all the users within the DataOS Instance, use the            above command with `-a `flag.
 
-    ````yaml
-     dataos-ctl get -t lens -w ${workspace} -a
-      ```Example```bash
-      dataos-ctl get -t lens -w curriculum -a
-      # Expected Output
-      INFO[0000] 🔍 get...                                     
-      INFO[0000] 🔍 get...complete                             
-
-            NAME      | VERSION | TYPE | WORKSPACE  | STATUS | RUNTIME |    OWNER     
-      ----------------|---------|------|------------|--------|---------|--------------
-          sales360    | v1alpha | lens | curriculum | active |         |  iamgroot
-          customer360 | v1alpha | lens | curriculum | active |         |  thor
-    ````
+    ```yaml
+    dataos-ctl get -t lens -w curriculum -a
+                    # Expected Output
+                    INFO[0000] 🔍 get...                                     
+                    INFO[0000] 🔍 get...complete                             
+          
+                  NAME      | VERSION | TYPE | WORKSPACE  | STATUS | RUNTIME |    OWNER     
+            ----------------|---------|------|------------|--------|---------|--------------
+                sales360    | v1alpha | lens | curriculum | active |         |  iamgroot
+                customer360 | v1alpha | lens | curriculum | active |         |  thor
+    ```
 
     <Info>
       Once a Lens  is deployed, it becomes available for exploration on the Data Product Hub, enabling users to interact with the model.
