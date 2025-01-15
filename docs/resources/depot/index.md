@@ -483,13 +483,13 @@ To ensure that your Depot has been successfully created, you can verify it in tw
 - Check the name of the newly created Depot in the list of Depots where you are named as the owner:
 
 ``` shell
-dataos-ctl get -t Depot
+dataos-ctl get -t depot
 ```
 
 - Alternatively, retrieve the list of all Depots created in your organization:
 
 ``` shell
-dataos-ctl get -t Depot -a
+dataos-ctl get -t depot -a
 ```
 
 You can also access the details of any created Depot through the DataOS GUI in the [Operations App](/interfaces/operations/) and [Metis UI](/interfaces/metis/).
@@ -504,7 +504,7 @@ You can also access the details of any created Depot through the DataOS GUI in t
 If you need to delete a Depot, use the following command in the DataOS CLI:
 
 ``` shell
-dataos-ctl delete -t Depot -n ${{name of Depot}}
+dataos-ctl delete -t depot -n ${{name of Depot}}
 ```
 
 
