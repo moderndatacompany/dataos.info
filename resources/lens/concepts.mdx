@@ -4,10 +4,7 @@ title: "Data modelling concepts"
 
 The data model in Lens transforms raw data into meaningful business definitions, optimizing it for analytical purposes. This model is exposed through a robust set of APIs, enabling end-users to run diverse analytical queries without modifying the underlying data model. Let’s take a sales table as an example, containing the following columns:
 
-
-
 **\*\*\`sales\`\*\***
-
 
 /table
 
@@ -24,7 +21,6 @@ The data model in Lens transforms raw data into meaningful business definitions,
 \| 4        | Shoes   | 120    | New York      | Emily Davis    |
 
 \| 5        | Jacket  | 220    | Chicago       | Sarah Wilson   |
-
 
 To analyze sales data effectively, it is essential to address key business questions, such as:
 
@@ -138,9 +134,9 @@ tables:
 
 ## Dimensions
 
-Dimensions represent the properties of a single data point in the table. They are descriptive attributes, often text values, that provide context to the data in a fact table. For example, in a sales database, attributes like "Product Name," "Category," and "Region," are called dimensions of that table which help to categorize and provide context for the sales entity. The dimensions serve as the guidelines for data analysts to view the information from different angles and apply different filtering criteria.
+Dimensions represent the properties of a single data point in the table. They are descriptive attributes, often text values, that provide context to the data in a fact table. For example, in a sales database, attributes like `product_name`, `category`, and `region`, are called dimensions of that table which help to categorize and provide context for the `sales` table. The dimensions serve as the guidelines for data analysts to view the information from different angles and apply different filtering criteria.
 
-For instance, in the following yaml, a entity owner is defined who's unique characteristics such as id, email are called dimensions.
+For example, in the following YAML code snippet, the `owner` table is defined, with unique attributes such as `id` and `email` categorized as dimensions.
 
 ```yaml owner.yml
 tables:
@@ -174,7 +170,7 @@ The dimension declaration involves the following properties:
 | `public`      | Controls visibility of dimension, i.e. whether the dimension is visible to all users or hidden. If not mentioned explicitly, by default this property is true                  | True, False                   | Set to **`True`** for key dimensions that should be visible by default                             |
 | `primary_key` | The key on which the join relationship will be defined                                                                                                                         | Column name                   | Ensure each dimension has a unique primary key to maintain data integrity                          |
 | `type`        | The data type of the dimension                                                                                                                                                 | string, number, time, boolean | Choose the appropriate data type to ensure proper sorting and filtering​                           |
-| `meta`        |                                                                                                                                                                                | Key-value pairs               | Use metadata to provide additional context about the dimension, such as tags, or custom attributes |
+| `meta`        |  Ensures sensitive data is masked for specified user groups.                                                                                                                   | Key-value pairs               | Use metadata to provide additional context about the dimension, such as tags, or custom attributes |
 | `sub_query`   | Sub-query for the dimension. Set the flag to reference a measure of one table in dimension of another                                                                          |                               | Use to define complex dimensions using sub-queries                                                 |
 
 ## Measures
@@ -256,7 +252,7 @@ The segment declaration involves the following properties:
 | ------------ | ---------------------------------------------------------------------------------------------- | ------------------ |
 | `name`       | Specify the name of the dimension.                                                             | NA                 |
 | `public`     | Controls visibility of dimension, i.e. whether the dimension is visible to all users or hidden | `True`, `False`    |
-| `sql`        | Add filter criteria: <code>table.{dimension} = “dimension\_values”</code>                      | NA                 |
+| `sql`        | Add filter criteria: `table.`{dimension}` = “dimension_values”`                                | NA                 |
 | `meta`       | Custom metadata. This is also used to define `secure` sub property                             | NA                 |
 
 In the below example, we define a filter for active owners. Similarly, we can create a filter for non-active owners to differentiate.
