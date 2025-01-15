@@ -14,7 +14,7 @@ Imagine you are a Data Product Developer, responsible for ensuring seamless work
 
 ## Configuring Monitor
 
-Let us consider that for the given scenario, you decide to configure a Monitor for a workflow named `wf-customer-data`. Your goal is to receive an incident notification every time the workflow status changes to 'failed'. Here’s how you can set it up:
+Let us consider that for the given scenario, you decide to configure a Monitor for a workflow named `wf-purchase-data`. Your goal is to receive an incident notification every time the workflow status changes to 'failed'. Here’s how you can set it up:
 
 ### **Step 1: Define Resource metadata**
 
@@ -56,7 +56,7 @@ To track the workflow runtime status, set up the Report Monitor’s `report` spe
   report:
     source:
       dataosInstance:
-        path: /collated/api/v1/reports/resources/runtime?id=workflow:v1:wf-customer-data:public     
+        path: /collated/api/v1/reports/resources/runtime?id=workflow:v1:wf-purchase-data:public     
     conditions:
       - valueComparison:
           observationType: workflow-runs
@@ -99,7 +99,7 @@ With the Monitor in place, you receive high-severity incident alerts whenever th
       report:
         source:
           dataosInstance:
-            path: /collated/api/v1/reports/resources/runtime?id=workflow:v1:wf-customer-data:public     
+            path: /collated/api/v1/reports/resources/runtime?id=workflow:v1:wf-purchase-data:public     
         conditions:
           - valueComparison:
               observationType: workflow-runs

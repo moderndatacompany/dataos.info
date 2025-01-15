@@ -76,25 +76,30 @@ Draft the manifest file for the Depot:
 
 ```yaml
 # PostgreSQL Depot Manifest
-
-name: postgres # Unique name for the Depot
-version: v2alpha # Manifest version
-type: depot # Type of the Resource
-layer: user # DataOS layer
+name: postgres    # Unique name for the Depot
+version: v2alpha  # Manifest version
+type: depot       # Type of the Resource
+layer: user
 depot:
-  type: postgresql
-  description: PostgreSQL data source connection
+  type: jdbc                 
+  description: default postgres depot
   external: true
   secrets:
-    - name: postgres-r # Reference the Instance Secret for read access
+    - name: postgres-rw   # Reference the Instance Secret for read & write access
+      keys: 
+        - postgres-rw
+      allkeys: true
+
+    - name: postgres-r    # Reference the Instance Secret for read access
       keys: 
         - postgres-r
       allkeys: true
+    
   jdbc:
     subprotocol: postgresql
-    host: db.postgres.example.com # Replace with the database host URL
-    port: 5432 # Replace with the database port number
-    database: sales_data # Replace with the database name to connect to
+    host: usr-db-dataos-ck-eymm-dataostra-stg.postgres.database.azure.com # Replace with the database host URL
+    port: 5432  # Replace with the database port number
+    database: postgres  # Replace with the database name to connect to
 ```
 
 ### **Step 3: Applying the Depot manifest**
@@ -151,7 +156,7 @@ To simplify the creation of depots for commonly used data sources, a set of pre-
 To use these templates, you must fill in the key-value properties in the manifest file with the specific details of your data source. The required values will vary depending on the data source. A basic understanding of your organization's data infrastructure, as well as the necessary credentials or connection details, is essential for configuring these templates effectively.
 
 Similarly you can create a Depot for Azure using Instance-secret:
-??? Click to see Azure Depot manifest
+??? "Click to see Azure Depot manifest"
 
     ```yaml
     name: thirdparty
