@@ -1,25 +1,25 @@
-name: {{depot-name}}
+name: ${{depot-name}}
 version: v2alpha
 type: depot
 tags:
-  - {{tag1}}
-owner: {{owner-name}}
+  - ${{tag1}}
+owner: ${{owner-name}}
 layer: user
 depot:
   type: JDBC                                      
-  description: {{description}}
-  external: {{true}}
+  description: ${{description}}
+  external: ${{true}}
   secrets:
-    - name: {{sf-instance-secret-name}}-r
+    - name: ${{sf-instance-secret-name}}-r
       allkeys: true
 
-    - name: {{sf-instance-secret-name}}-rw
+    - name: ${{sf-instance-secret-name}}-rw
       allkeys: true
   jdbc:                                           
-    subprotocol: {{subprotocol}}
-    host: {{host}}
-    port: {{port}}
-    database: {{database-name}}
+    subprotocol: ${{subprotocol}}
+    host: ${{host}}
+    port: ${{port}}
+    database: ${{database-name}}
     params:
-      {{"key1": "value1"}}
-      {{"key2": "value2"}}
+      ${{"key1": "value1"}}
+      ${{"key2": "value2"}}

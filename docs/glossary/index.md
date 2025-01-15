@@ -186,6 +186,7 @@ hide:
 | TUI | Terminal User Interface shows all the key resources deployed in the DataOS Context for real-time monitoring and exploration. It provides an easy-to-use interface for developers and operators to access vital information about the applications and infrastructure. TUI using DataOS CLI. |
 
 ## u
+
 | Term | Description |
 | --- | --- | 
 | Unified Architecture | The unified architecture of DataOS refers to the cohesive and integrated design approach that combines various components, services, and technologies into a unified system. It enables data management, processing, and analysis, ensuring seamless interoperability and consistent user experience across different functionalities and applications within DataOS.|
@@ -199,8 +200,6 @@ hide:
 |[Views](/resources/lens/concepts/#views)|Views are abstractions that provide a simplified interface for interacting with a data model. They allow users to access key metrics and relevant information without needing to navigate the entire underlying data structure. A view serves as a reference point to dimensions, measures, and segments from multiple logical tables, but does not define any metrics or attributes independently.
 
 
-
-|
 
 
 ## w 
