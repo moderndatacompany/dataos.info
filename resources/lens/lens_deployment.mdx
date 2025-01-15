@@ -27,9 +27,7 @@ Before initiating the deployment process, please ensure you have the following:
 Follow the steps below to deploy Lens on DataOS:
 
 <Steps>
-  <Step title="Step 1">
-    ### ***Push*** **the Lens model directory to a code repository**
-
+  <Step title="Push the Lens model directory to a code repository" stepNumber="1">
     First, push your Lens model directory to a hosted code repository. This can be done on hosted code repository like [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/push-code-to-bitbucket/), [GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github), [AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/getting-started.html) etc.
 
     <Info>
@@ -37,9 +35,7 @@ Follow the steps below to deploy Lens on DataOS:
     </Info>
   </Step>
 
-  <Step title="Step 2">
-    ### **Create Instance Secrets for Code Repository Credentials**
-
+  <Step title="Create Instance Secrets for Code Repository Credentials">
     Define the Instance Secret Resource in a YAML file. Below is a template you can use for Bitbucket, substituting `${USERNAME}` and `${PASSWORD}` with your actual Bitbucket credentials:
 
     <CodeGroup>
@@ -109,9 +105,7 @@ Follow the steps below to deploy Lens on DataOS:
     </Note>
   </Step>
 
-  <Step title="Step 3">
-    ### ***Create*** **a Lens Resource manifest file**
-
+  <Step title="Create a Lens Resource manifest file">
     Begin by creating a manifest file that will hold the configuration details for your Lens Resource. The structure of the Lens manifest file is provided below.
 
     <Accordion title="Sample Lens manifest" defaultOpen={false}>
@@ -241,9 +235,7 @@ Follow the steps below to deploy Lens on DataOS:
     For more information on how to configure a Lens manifest file, refer to the link: [Configuration Fields of the Deployment Manifest File (YAML) for Lens Resource](https://dataos.info/resources/lens/lens_manifest_attributes/)
   </Step>
 
-  <Step title="Step 4">
-    ### **Apply the manifest file of Lens Resource using DataOS CLI**
-
+  <Step title="Apply the manifest file of Lens Resource using DataOS CLI">
     Deploy the Lens model to DataOS using the `apply` command. Replace `${manifest-file-path}` with the path to your Lens manifest file, and `${workspace}` with the name of the Workspace.
 
     <CodeGroup>
@@ -266,9 +258,7 @@ Follow the steps below to deploy Lens on DataOS:
     </Warning>
   </Step>
 
-  <Step title="Step 5">
-    ### **Get the status of created Lens**
-
+  <Step title="Get the status of created Lens">
     To view the status of a Lens Resource in the DataOS environment, use the `get` command. This command provides a list of Lens models available in the specified workspace and context.
 
     <CodeGroup>
@@ -318,8 +308,6 @@ Follow the steps below to deploy Lens on DataOS:
     <Info>
       Once a Lens  is deployed, it becomes available for exploration on the Data Product Hub, enabling users to interact with the model.
     </Info>
-
-
   </Step>
 </Steps>
 
