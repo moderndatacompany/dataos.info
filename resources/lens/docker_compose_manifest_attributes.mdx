@@ -13,7 +13,6 @@ x-lens2-environment: &lens2-environment
   LENS2_DESCRIPTION: "Ecommerce use case on Lens2 audit data"
   LENS2_TAGS: "lens2"
   LENS2_AUTHORS: "iamgroot"
-  LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
 
   # Data Source
   LENS2_SOURCE_TYPE: minerva
@@ -29,7 +28,6 @@ x-lens2-environment: &lens2-environment
   # Operation
   LENS2_DEV_MODE: true
   LENS2_DEV_MODE_PLAYGROUND: false
-  LENS2_REFRESH_WORKER: true
   LENS2_SCHEMA_PATH: model
   LENS2_PG_SQL_PORT: 5432
   CACHE_DATA_DIR: "/var/work/.store"
@@ -57,8 +55,8 @@ services:
 **Description:** The version of the Docker Compose file format.
 
 | Data Type | Requirement | Default Value | Possible Value |
-| --- | --- | --- | --- |
-| string | mandatory | none | "2.2" |
+| --------- | ----------- | ------------- | -------------- |
+| string    | mandatory   | none          | "2.2"          |
 
 **Example usage:**
 
@@ -66,7 +64,7 @@ services:
 version: "2.2"
 ```
 
----
+***
 
 ### **`x-lens2-environment`**
 
@@ -91,7 +89,6 @@ x-lens2-environment: &lens2-environment
   LENS2_LOG_LEVEL: error
   CACHE_LOG_LEVEL: "error"
   LENS2_DEV_MODE: true
-  LENS2_REFRESH_WORKER: true
   LENS2_SCHEMA_PATH: model
   LENS2_PG_SQL_PORT: 5432
   CACHE_DATA_DIR: "/var/work/.store"
@@ -100,27 +97,43 @@ x-lens2-environment: &lens2-environment
 
 **Fields:**
 
-- **DATAOS_BASE_URL:** Base URL for DataOS.
-- **LENS2_NAME:** Name of the Lens instance.
-- **LENS2_DESCRIPTION:** Description of the Lens use case.
-- **LENS2_TAGS:** Tags related to the Lens instance.
-- **LENS2_AUTHORS:** Authors of the Lens instance.
-- **LENS2_DB_HOST:** Database host for Lens.
-- **LENS2_DB_PORT:** Database port for Lens.
-- **LENS2_DB_USER:** Database user for Lens.
-- **LENS2_DB_PASS:** Database password for Lens (encoded).
-- **LENS2_DB_PRESTO_CATALOG:** Presto catalog for Lens.
-- **LENS2_DB_SSL:** SSL usage for Lens database connection.
-- **LENS2_DB_TYPE:** Type of database for Lens.
-- **LENS2_LOG_LEVEL:** Log level for Lens.
-- **CACHE_LOG_LEVEL:** Log level for cache.
-- **LENS2_DEV_MODE:** Development mode toggle for Lens.
-- **LENS2_REFRESH_WORKER:** Refresh worker toggle for Lens.
-- **LENS2_SCHEMA_PATH:** Schema path for Lens.
-- **LENS2_PG_SQL_PORT:** PostgreSQL port for Lens.
-- **CACHE_DATA_DIR:** Data directory for Lens.
+* **DATAOS\_BASE\_URL:** Base URL for DataOS.
 
----
+* **LENS2\_NAME:** Name of the Lens instance.
+
+* **LENS2\_DESCRIPTION:** Description of the Lens use case.
+
+* **LENS2\_TAGS:** Tags related to the Lens instance.
+
+* **LENS2\_AUTHORS:** Authors of the Lens instance.
+
+* **LENS2\_DB\_HOST:** Database host for Lens.
+
+* **LENS2\_DB\_PORT:** Database port for Lens.
+
+* **LENS2\_DB\_USER:** Database user for Lens.
+
+* **LENS2\_DB\_PASS:** Database password for Lens (encoded).
+
+* **LENS2\_DB\_PRESTO\_CATALOG:** Presto catalog for Lens.
+
+* **LENS2\_DB\_SSL:** SSL usage for Lens database connection.
+
+* **LENS2\_DB\_TYPE:** Type of database for Lens.
+
+* **LENS2\_LOG\_LEVEL:** Log level for Lens.
+
+* **CACHE\_LOG\_LEVEL:** Log level for cache.
+
+* **LENS2\_DEV\_MODE:** Development mode toggle for Lens.
+
+* **LENS2\_SCHEMA\_PATH:** Schema path for Lens.
+
+* **LENS2\_PG\_SQL\_PORT:** PostgreSQL port for Lens.
+
+* **CACHE\_DATA\_DIR:** Data directory for Lens.
+
+***
 
 # Services section configuration
 
@@ -146,29 +159,29 @@ services:
 
 **Fields:**
 
-**restart** 
+**restart**
 
 **Description:** Restart policy for the API service.
 
-| **Data Type** | **Requirement** | **Default Value** | **Possible Values**       |
-| ------------- | --------------- | ----------------- | ------------------------- |
-| string        | optional        | none              | always, on-failure, no    |
+| **Data Type** | **Requirement** | **Default Value** | **Possible Values**    |
+| ------------- | --------------- | ----------------- | ---------------------- |
+| string        | optional        | none              | always, on-failure, no |
 
-**Example Usage** 
+**Example Usage**
 
 ```yaml
 restart: always
 ```
 
-**image** 
+**image**
 
 **Description:** Docker image for the API service.
 
-| **Data Type** | **Requirement** | **Default Value** | **Possible Values**       |
-| ------------- | --------------- | ----------------- | ------------------------- |
-| string        | optional        | none              | always, on-failure, no    |
+| **Data Type** | **Requirement** | **Default Value** | **Possible Values**    |
+| ------------- | --------------- | ----------------- | ---------------------- |
+| string        | optional        | none              | always, on-failure, no |
 
-**Example Usage:** 
+**Example Usage:**
 
 ```yaml
 image: rubiklabs/lens2:0.35.55-01 
@@ -178,43 +191,43 @@ image: rubiklabs/lens2:0.35.55-01
 
 **Description:**  Ports mapping for the API service.
 
-| **Data Type**      | **Requirement** | **Default Value** | **Possible Values**     |
-| ------------------ | --------------- | ----------------- | ----------------------- |
-| list of strings    | optional        | none              | any valid port mapping  |
+| **Data Type**   | **Requirement** | **Default Value** | **Possible Values**    |
+| --------------- | --------------- | ----------------- | ---------------------- |
+| list of strings | optional        | none              | any valid port mapping |
 
 **Example Usage:**
-      
+
 ```yaml
 ports:
   - 4000:4000
   - 25432:5432
 ```
-        
+
 **environment**
 
 **Description:** Environment variables for the service.
 
-| **Data Type** | **Requirement** | **Default Value** | **Possible Values**                |
-| ------------- | --------------- | ----------------- | ---------------------------------- |
-| map            | optional        | none              | any valid environment variables    |
+| **Data Type** | **Requirement** | **Default Value** | **Possible Values**             |
+| ------------- | --------------- | ----------------- | ------------------------------- |
+| map           | optional        | none              | any valid environment variables |
 
 **Example Usage:**
-        
+
 ```yaml
 environment:
   <<: *lens2-environment
 ```
-        
+
 **volumes** Volume mappings for the API service.
 
 **Description:** The volume mappings for the API service.
 
-| **Data Type**     | **Requirement** | **Default Value** | **Possible Values**        |
-| ----------------- | --------------- | ----------------- | --------------------------- |
-| list of strings   | optional        | none              | any valid volume mapping    |
+| **Data Type**   | **Requirement** | **Default Value** | **Possible Values**      |
+| --------------- | --------------- | ----------------- | ------------------------ |
+| list of strings | optional        | none              | any valid volume mapping |
 
 **Example Usage:**
-        
+
 ```yaml
 volumes:
   - ./model:/etc/dataos/work/model
