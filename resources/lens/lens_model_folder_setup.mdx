@@ -19,27 +19,8 @@ In the Model folder, the Lens semantic model will be defined, encompassing SQL m
 
 * Open the Model folder in your preferred editor. It is recommended to organize each Table or View into a separate file within the `model/tables` and `model/views` folders, respectively. The Model folder should follow this structure:
 
-```bash
-model
-├── sqls
-│   └── sample.sql  # SQL script for the dimensions of the tables
-├── tables
-│   └── sample_table.yml  # Logical table definition, including joins, dimensions, measures, and segments.
-├── views
-│   └── sample_view.yml  # View referencing dimensions, measures, and segments from tables.
-└── user_groups.yml  # User groups for easier policy enforcement and access control.
-```
-
-* **Create `sqls` folder**: This directory will contain SQL scripts corresponding to the dimensions of tables.  A dedicated SQL file needs to be maintained for each table. The SQL dialect used will be source-specific.
-
-* **Create `tables` folder**: This directory will store logical tables, with each Table defined in a separate YAML file. It defines all the dimensions, measures, segments of the Table.
-
-* **Create `views` folder:** This directory will store all logical views. Each view should be defined in a separate YAML file, like `sample_view.yml`, which references dimensions, measures, and segments from the tables.
-
-* **Add `user_groups.yml` manifest file**: This YAML manifest file is used to manage access levels for the Lens semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, there is a 'default' user group in the YAML file that includes all users.
-
 <Steps>
-  <Step title="Loading data from the data source">
+  <Step title="Load data from the data source" titleSize="h2">
     In the `sqls` folder, create `.sql` files for each logical table, with each file dedicated to loading or selecting the relevant data from the source. Each file will be responsible for loading or selecting the relevant data from the source, ensuring that only the necessary columns are extracted. The SQL dialect used will be specific to the data source.
 
     For example, a simple data load might look like this:
@@ -72,7 +53,7 @@ model
     ```
   </Step>
 
-  <Step title="Defining the Table in the Mode">
+  <Step title="Defining the Table in the Model" titleSize="h2">
     Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file. These files will outline all dimensions, measures, and segments associated with each table. To define a table in the model, create a YAML file for each entity within the `tables` directory. For example, to define a table for `sales `data:
 
     ```yaml
@@ -82,7 +63,7 @@ model
         description: Table containing information about sales transactions.
     ```
 
-    ### Adding Dimensions and Measures
+    ### Add Dimensions and Measures
 
     After defining the base table, add the necessary dimensions and measures. For example, to create a table for sales data with measures and dimensions, the YAML definition could look like this:
 
@@ -100,11 +81,6 @@ model
             primary_key: true
             public: true
 
-          - name: city
-            type: string
-            description: City where the customer is located.
-            sql: city
-
         measures:
           - name: total_orders_count
             type: count
@@ -112,28 +88,11 @@ model
             description: Total number of orders.
     ```
 
-    This code snippet defines the base table, followed by the addition of dimensions (`order_id` and `city`) and a measure (`total_orders_count`). When the measure is requested via an API, Lens will generate and execute the following SQL:
-
-    ```sql
-    SELECT COUNT(order_id) AS total_orders_count
-    FROM sales;
-    ```
-
-    If you apply the `city` dimension to the measure to analyze "Where are customers based?", Lens will generate a SQL query with a `GROUP BY` clause:
-
-    ```
-    SELECT city, COUNT(id) AS total_orders_count
-    FROM sales
-    GROUP BY city;
-    ```
-
-    You can add multiple dimensions to the query for more complex groupings.
-
-    ### Adding Segments to Measures
+    ### Add Segments to Measures
 
     Segments are measure filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in your analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment like this:
 
-    ```
+    ```yaml
     segments:
       - name: state_filter
         sql: "{TABLE}.state IN ('Illinois', 'Ohio')"
@@ -142,8 +101,34 @@ model
     To know more about segments click [here](https://dataos.info/resources/lens/working_with_segments/)
   </Step>
 
-  <Step title="Creating the Views">
+  <Step title="Creating the Views" titleSize="h2">
+    Create a **views** folder to store all logical views, with each view defined in a separate YAML file (e.g., `sample_view.yml`). Each view references dimensions, measures, and segments from multiple logical tables. For instance the following`customer_churn` view is created.
 
+    ```yaml
+    views:
+      - name: customer_churn_prediction
+        description: Contains customer churn information.
+        tables:
+          - join_path: marketing_campaign
+            includes:
+              - engagement_score
+              - customer_id
+          - join_path: customer
+            includes:
+              - country
+              - customer_segments
+    ```
+  </Step>
+
+  <Step title="Create User Groups" titleSize="h2">
+    This YAML manifest file is used to manage access levels for the Lens semantic model. It defines user groups that organize users based on their access privileges. In this file, you can create multiple groups and assign different users to each group, allowing you to control access to the model.By default, there is a 'default' user group in the YAML file that includes all users.
+
+    ```yaml
+    user_groups:
+      - name: default
+        description: this is default user group
+        includes: "*"
+    ```
   </Step>
 </Steps>
 
