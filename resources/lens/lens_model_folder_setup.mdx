@@ -82,6 +82,8 @@ model
         description: Table containing information about sales transactions.
     ```
 
+    ### Adding Dimensions and Measures
+
     After defining the base table, add the necessary dimensions and measures. For example, to create a table for sales data with measures and dimensions, the YAML definition could look like this:
 
     ```yaml
@@ -110,9 +112,7 @@ model
             description: Total number of orders.
     ```
 
-    This code snippet defines the base table, followed by the addition of dimensions (`order_id` and `city`) and a measure (`total_orders_count`).
-
-    When the measure is requested via an API, Lens will generate and execute the following SQL:
+    This code snippet defines the base table, followed by the addition of dimensions (`order_id` and `city`) and a measure (`total_orders_count`). When the measure is requested via an API, Lens will generate and execute the following SQL:
 
     ```sql
     SELECT COUNT(order_id) AS total_orders_count
@@ -125,9 +125,24 @@ model
     SELECT city, COUNT(id) AS total_orders_count
     FROM sales
     GROUP BY city;
-
     ```
 
+    You can add multiple dimensions to the query for more complex groupings.
+
+    ### Adding Segments to Measures
+
+    Segments are measure filters that allow for the application of specific conditions to refine the data analysis. By defining segments, you can focus on particular subsets of data, ensuring that only the relevant records are included in your analysis. For example, to filter for records where the state is either Illinois or Ohio, you can define a segment like this:
+
+    ```
+    segments:
+      - name: state_filter
+        sql: "{TABLE}.state IN ('Illinois', 'Ohio')"
+    ```
+
+    To know more about segments click [here](https://dataos.info/resources/lens/working_with_segments/)
+  </Step>
+
+  <Step title="Creating the Views">
 
   </Step>
 </Steps>
