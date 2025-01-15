@@ -7,15 +7,26 @@ sidebarTitle: "Model Folder Setup"
   To quickly get started with creating a Lens model in DataOS, follow the [quick guide on creating a Lens model](/quick_guides/create_data_model/). This guide provides step-by-step instructions to help you transform your conceptual design into a functional semantic model, ensuring effective data structuring and organization to meet your analytical and business needs.
 </Info>
 
-**Prerequisites**
+## **Prerequisites**
 
 Before setting up Lens, refer to the **Prerequisites for Lens** guide for detailed instructions and ensure all required dependencies are installed.
 
-### **Lens Project folder structure**
+## **Lens Project folder structure**
 
 In the Model folder, the Lens semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each folder contains specific files related to the Lens model or you can download the following template to quickly get started.
 
 [lens template](/resources/lens/lens_model_folder_setup/lens-project-template.zip)
+
+```bash
+model
+├── sqls
+│   └── sample.sql  # SQL script for the dimensions of the tables
+├── tables
+│   └── sample_table.yml  # Logical table definition, including joins, dimensions, measures, and segments.
+├── views
+│   └── sample_view.yml  # View referencing dimensions, measures, and segments from tables.
+└── user_groups.yml  # User groups for easier policy enforcement and access control.
+```
 
 * Open the Model folder in your preferred editor. It is recommended to organize each Table or View into a separate file within the `model/tables` and `model/views` folders, respectively. The Model folder should follow this structure:
 
@@ -49,11 +60,10 @@ In the Model folder, the Lens semantic model will be defined, encompassing SQL m
       zip_code
     FROM
       "icebase"."sales_360".customer;
-
     ```
   </Step>
 
-  <Step title="Defining the Table in the Model" titleSize="h2">
+  <Step title="Define the Table in the Model" titleSize="h2">
     Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file. These files will outline all dimensions, measures, and segments associated with each table. To define a table in the model, create a YAML file for each entity within the `tables` directory. For example, to define a table for `sales `data:
 
     ```yaml
@@ -98,10 +108,10 @@ In the Model folder, the Lens semantic model will be defined, encompassing SQL m
         sql: "{TABLE}.state IN ('Illinois', 'Ohio')"
     ```
 
-    To know more about segments click [here](https://dataos.info/resources/lens/working_with_segments/)
+    To know more about Segments click [here](https://dataos.info/resources/lens/working_with_segments/).
   </Step>
 
-  <Step title="Creating the Views" titleSize="h2">
+  <Step title="Create the Views" titleSize="h2">
     Create a **views** folder to store all logical views, with each view defined in a separate YAML file (e.g., `sample_view.yml`). Each view references dimensions, measures, and segments from multiple logical tables. For instance the following`customer_churn` view is created.
 
     ```yaml
@@ -118,6 +128,8 @@ In the Model folder, the Lens semantic model will be defined, encompassing SQL m
               - country
               - customer_segments
     ```
+
+    To know more about the Views click [here](https://dataos.info/resources/lens/working_with_views/).
   </Step>
 
   <Step title="Create User Groups" titleSize="h2">
@@ -129,6 +141,8 @@ In the Model folder, the Lens semantic model will be defined, encompassing SQL m
         description: this is default user group
         includes: "*"
     ```
+
+    To know more about the User Groups click [here](https://dataos.info/resources/lens/working_with_user_groups_and_data_policies/)
   </Step>
 </Steps>
 
