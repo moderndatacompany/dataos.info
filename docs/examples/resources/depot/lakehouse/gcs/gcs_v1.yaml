@@ -1,23 +1,23 @@
-name: {{"sanitygcs01"}}
+name: ${{"sanitygcs01"}}
 version: v1
 type: depot
 tags:
-  - {{GCS}}
-  - {{Sanity}}
+  - ${{GCS}}
+  - ${{Sanity}}
 layer: user
 depot:
   type: GCS
-  description: {{"GCS depot for sanity"}}
-  compute: {{runnable-default}}
+  description: ${{"GCS depot for sanity"}}
+  compute: ${{runnable-default}}
   spec:
-    bucket: {{"airbyte-minio-testing"}}
-    relativePath: {{"/sanity"}}
-  external: {{true}}
+    bucket: ${{"airbyte-minio-testing"}}
+    relativePath: ${{"/sanity"}}
+  external: ${{true}}
   connectionSecret:
-    - acl: {{rw}}
+    - acl: ${{rw}}
       type: key-value-properties
       data:
-        projectid: {{$GCS_PROJECT_ID}}
-        email: {{$GCS_ACCOUNT_EMAIL}}
+        projectid: ${{$GCS_PROJECT_ID}}
+        email: ${{$GCS_ACCOUNT_EMAIL}}
       files:
-        gcskey_json: {{$GCS_KEY_JSON}}
+        gcskey_json: ${{$GCS_KEY_JSON}}

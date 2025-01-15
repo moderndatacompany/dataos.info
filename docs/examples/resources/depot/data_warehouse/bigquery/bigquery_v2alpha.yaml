@@ -1,23 +1,23 @@
-name: {{depot-name}}
+name: ${{depot-name}}
 version: v2alpha
 type: depot
 tags:
-  - {{dropzone}}
-  - {{bigquery}}
-owner: {{owner-name}}
+  - ${{dropzone}}
+  - ${{bigquery}}
+owner: ${{owner-name}}
 layer: user
 depot:
   type: BIGQUERY                 
-  description: {{description}} # optional
-  external: {{true}}
+  description: ${{description}} # optional
+  external: ${{true}}
   secrets:
-    - name: {{bq-instance-secret-name}}-r
+    - name: ${{bq-instance-secret-name}}-r
       allkeys: true
 
-    - name: {{bq-instance-secret-name}}-rw
+    - name: ${{bq-instance-secret-name}}-rw
       allkeys: true
   bigquery:  # optional                         
-    project: {{project-name}} # optional
+    project: ${{project-name}} # optional
     params: # optional
-      {{"key1": "value1"}}
-      {{"key2": "value2"}}
+      ${{"key1": "value1"}}
+      ${{"key2": "value2"}}
