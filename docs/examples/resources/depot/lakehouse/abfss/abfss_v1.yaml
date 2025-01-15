@@ -1,29 +1,29 @@
-name: {{depot-name}}
+name: ${{depot-name}}
 version: v1
 type: depot
 tags:
-  - {{tag1}}
-  - {{tag2}}
-owner: {{owner-name}}
+  - ${{tag1}}
+  - ${{tag2}}
+owner: ${{owner-name}}
 layer: user
 depot:
   type: ABFSS                                       
-  description: {{description}}
-  external: {{true}}
-  compute: {{runnable-default}}
+  description: ${{description}}
+  external: ${{true}}
+  compute: ${{runnable-default}}
   connectionSecret:                                 
     - acl: rw
       type: key-value-properties
       data:
-        azurestorageaccountname: {{account-name}}
-        azurestorageaccountkey: {{account-key}}
+        azurestorageaccountname: ${{account-name}}
+        azurestorageaccountkey: ${{account-key}}
     - acl: r
       type: key-value-properties
       data:
-        azurestorageaccountname: {{account-name}}
-        azurestorageaccountkey: {{account-key}}
+        azurestorageaccountname: ${{account-name}}
+        azurestorageaccountkey: ${{account-key}}
   spec:                                             
-    account: {{account-name}}
-    container: {{container-name}}
-    relativePath: {{relative-path}}
-    format: {{format}}
+    account: ${{account-name}}
+    container: ${{container-name}}
+    relativePath: ${{relative-path}}
+    format: ${{format}}

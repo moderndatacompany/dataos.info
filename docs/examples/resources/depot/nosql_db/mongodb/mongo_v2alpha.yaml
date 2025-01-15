@@ -1,21 +1,21 @@
-name: {{depot-name}}
+name: ${{depot-name}}
 version: v2alpha
 type: depot
 tags:
-  - {{tag1}}
-  - {{tag2}}
+  - ${{tag1}}
+  - ${{tag2}}
 layer: user
 depot:
   type: MONGODB                                 
-  description: {{description}}
-  compute: {{runnable-default}}
+  description: ${{description}}
+  compute: ${{runnable-default}}
   mongodb:                                          
-    subprotocol: {{"mongodb+srv"}}
-    nodes: {{["clusterabc.ezlggfy.mongodb.net"]}}
-  external: {{true}}
+    subprotocol: ${{"mongodb+srv"}}
+    nodes: ${{["clusterabc.ezlggfy.mongodb.net"]}}
+  external: ${{true}}
   secrets:
-    - name: {{sf-instance-secret-name}}-r
-      allkeys: true
+    - name: ${{sf-instance-secret-name}}-r
+      allkeys: ${{true}}
 
-    - name: {{sf-instance-secret-name}}-rw
-      allkeys: true
+    - name: ${{sf-instance-secret-name}}-rw
+      allkeys: ${{true}}
