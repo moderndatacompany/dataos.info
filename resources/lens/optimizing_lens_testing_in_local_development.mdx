@@ -15,8 +15,6 @@ To do local testing, add `docker-compose.yml` manifest file. This file allows 
 
 > Always create the docker-compose.yml file in parallel to the model directory.;
 
-
-
 <Accordion title="To view the docker-compose.yml file, click here." defaultOpen={false}>
   ```
   version: "2.2"
@@ -73,8 +71,6 @@ To do local testing, add `docker-compose.yml` manifest file. This file allows 
   - ./model:/etc/dataos/work/model
   ```
 </Accordion>
-
-
 
 ## Configure the docker-compose manifest file[¶](https://dataos.info/resources/lens/optimizing_lens_testing_in_local_development/#configure-the-docker-compose-manifest-file "Permanent link")
 
@@ -146,8 +142,6 @@ Lens can be tested in the development environment by running the following comma
 </CodeGroup>
 
 The above given output indicates that the Lens server has successfully started locally.
-
-
 
 ## Exploring Lens in development environment
 
@@ -250,3 +244,79 @@ postgres=> \dt #listing all the tables in the connected database.
 \| List all views in the connected database           | \dv                                              |                                |
 
 \| Exit the PostgreSQL prompt                         | \q                                               |                                |
+
+
+
+### **Exploring Lens via REST API**[¶](https://dataos.info/resources/lens/optimizing_lens_testing_in_local_development/#exploring-lens-via-rest-api "Permanent link")
+
+To interact with REST APIs use tools like `curl`, [Postman](https://www.postman.com/).
+
+For instance, to test Lens in development environment using Postman, upload the following API collection to Postman.
+
+[Lens2-API](https://dataos.info/resources/lens/lens_model_folder_setup/Lens2-APIs.postman_collection.json)
+
+Now, to make a basic `GET` request using Postman, follow these steps:
+
+1. **Create a new request**:
+
+   * Open Postman and click on the **New** button in the top left corner.
+
+   * Select **Request** from the dropdown menu.
+
+2. **Configure the request**:
+
+   * **Enter request name**: Provide a name for request.
+
+   * **Select collection**: Choose the uploaded collection.
+
+3. **Set the HTTPS method**:
+
+   * In the request tab, select `GET` from the dropdown menu next to the URL input field.
+
+4. **Enter the request URL**:
+
+   * Enter the full URL for the API endpoint you want to access. For example:
+     [](https://dataos.info/resources/lens/optimizing_lens_testing_in_local_development/#__codelineno-10-1)`http://localhost:8080/lens2/api/${lens_name}`/v2/meta
+     **Command parameter**
+
+   * `localhost:8080` represents the local or development environment for Lens, used for building and testing configurations.
+
+   * `/lens2/api/` is the api prefix
+
+   * `${lens_name}` is the placeholder for Lens, replace it to the actual Lens undergoing testing. For example, sales360, retail360.
+
+5. **Ensure the following header is passed in Authorization when running the API**
+   [](https://dataos.info/resources/lens/optimizing_lens_testing_in_local_development/#__codelineno-11-1)`Type: Bearer `Token
+   [](https://dataos.info/resources/lens/optimizing_lens_testing_in_local_development/#__codelineno-11-2)`Token: <DATAOS API Key> #Use the API key of the env defined in docker-compose.yml`
+
+
+6. Click **Send**
+
+**Example response:**
+
+```json
+{
+  "name": "",
+  "description": [],
+  "authors": [],
+  "devMode": true,
+  "source": {
+    "type": "minerva"
+  },
+  "timeZones": ["UTC"],
+  "tables": [
+    {
+      "name": "product_analysis",
+      "type": "view",
+      "title": "Product Analysis"
+    }
+  ]
+}        
+```
+
+[](https://dataos.info/resources/lens/optimizing_lens_testing_in_local_development/#__codelineno-12-1)`    `
+
+
+*You can now successfully test your Lens in development environment using postman via REST APIS.*
+
+To interact with the deployed Lens using REST APIs read the detailed doc [here](https://dataos.info/resources/lens/exploration_of_deployed_lens_using_rest_apis/)
