@@ -94,10 +94,8 @@ lens:
 
 ## Docker compose manifest file
 
-<details>
-  <summary>Docker compose manifest file for local testing</summary>
-
-  ```yaml hl_lines="14-16"
+<Accordion title="Docker compose manifest file for local testing" defaultOpen={false}>
+  ```
   version: "2.2"
 
   x-lens2-environment: &lens2-environment
@@ -139,4 +137,6 @@ lens:
       volumes:
         - ./model:/etc/dataos/work/model
   ```
-</details>
+</Accordion>
+
+##
