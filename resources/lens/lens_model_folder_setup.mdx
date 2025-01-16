@@ -19,7 +19,7 @@ In the Model folder, the Lens semantic model will be defined, encompassing SQL m
 
 <Steps>
   <Step title="Load data from the data source" titleSize="h3">
-    In the `sqls` folder, create `.sql` files for each logical table, with each file dedicated to loading or selecting the relevant data from the source. Each file will be responsible for loading or selecting the relevant data from the source, ensuring that only the necessary columns are extracted. The SQL dialect used will be specific to the data source.
+    In the `sqls` folder, create `.sql` files for each logical table, where each file is responsible for loading or selecting the relevant data from the source. Ensure that only the necessary columns are extracted, and the SQL dialect is specific to the data source.
 
     For example, a simple data load might look like this:
 
@@ -51,7 +51,7 @@ In the Model folder, the Lens semantic model will be defined, encompassing SQL m
   </Step>
 
   <Step title="Define the Table in the Model" titleSize="h2">
-    Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file. These files will outline all dimensions, measures, and segments associated with each table. To define a table in the model, create a YAML file for each entity within the `tables` directory. For example, to define a table for `sales `data:
+    Create a `tables` folder to store logical table definitions, with each table defined in a separate YAML file outlining its dimensions, measures, and segments. For example, to define a table for `sales `data:
 
     ```yaml
     table:
