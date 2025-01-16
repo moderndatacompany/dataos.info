@@ -4,7 +4,7 @@ title: "Data modelling concepts"
 
 The data model in Lens transforms raw data into meaningful business definitions, optimizing it for analytical purposes. This model is exposed through a robust set of APIs, enabling end-users to run diverse analytical queries without modifying the underlying data model. Let’s take a sales table as an example, containing the following columns:
 
-### **`sales`**
+### `sales `Table
 
 | order\_id | product | amount | city          | customer\_name |
 | --------- | ------- | ------ | ------------- | -------------- |
@@ -202,7 +202,7 @@ GROUP BY 2;
 
 You can include multiple dimensions in your query to perform grouping as needed.
 
-### **Using Calculated Measures**
+### **Calculated Measures**
 
 To answer the question “What is the average sales amount per order?”, you’ll need to calculate the average amount for all orders. This can be done by defining a measure that calculates the average of the amount field. Here’s how you can define this in YAML for your sales table:
 
@@ -240,7 +240,7 @@ FROM
 
 As with other measures, average\_sales\_amount\_per\_order can be used with dimensions.
 
-**Measure Additivity**
+### **Measure Additivity**
 
 Additivity is a property of measures that tells us if we can break down or combine measure values across different categories. In simpler terms, it means that if we have a measure for a group of dimensions (like sales for different regions), we can add or combine these values to get a measure for a smaller subset of those dimensions (like sales for a specific region).
 
