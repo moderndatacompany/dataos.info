@@ -34,7 +34,7 @@ lens:
   source:
     type: depot # source type is depot here
     name: bigquerydepot # name of the bigquery depot
-    catalog: bigquerydepot  # catalog name/bigquery depot name
+ 
   repo:
     url: https://bitbucket.org/tmdc/sample
     lensBaseDir: sample/lens/source/depot/bigquery/model 
@@ -76,9 +76,6 @@ lens:
         memory: 6048Mi
   router: # optional
     logLevel: info  # optional
-    envs:
-      LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
-      LENS2_DEV_MODE: "true"
     resources: # optional
       requests:
         cpu: 100m
@@ -103,12 +100,59 @@ lens:
 # Data Source
 LENS2_SOURCE_TYPE: ${depot}  #source type should be depot
 LENS2_SOURCE_NAME: ${bigquerydepot} # name of the bigquery depot (it could be anything)
-DATAOS_RUN_AS_APIKEY: ${bZTFhZWJhMQ==}
+
 ```
 
 ## Docker compose manifest file
 
-Ensure that the necessary attributes are highlighted in the Docker Compose Manifest file for proper configuration during the connection setup process.
+Ensure that highlighted attributes are in the Docker Compose Manifest file for proper configuration during the connection setup process.
+
+```
+version: "2.2"
+
+x-lens2-environment: &lens2-environment
+  # DataOS
+  DATAOS_FQDN: liberal-monkey.dataos.app
+  # Overview
+  LENS2_NAME: sales360
+  LENS2_DESCRIPTION: "Ecommerce use case on Adventureworks sales data"
+  LENS2_TAGS: "lens2, ecom, sales and customer insights"
+  LENS2_AUTHORS: "rakeshvishvakarma, shubhanshu"
+  LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
+  # Data Source
+  LENS2_SOURCE_TYPE: ${depot} #source name - depot
+  LENS2_SOURCE_NAME: ${bigquerydepot} #name of the bigquery depot
+  DATAOS_RUN_AS_APIKEY: ${A1ZjMDliZTFhZWJhMQ==}
+  # LogZjAtNDY4My05
+  LENS2_LOG_LEVEL: error
+  CACHE_LOG_LEVEL: "trace"
+  # Operation
+  LENS2_DEV_MODE: true
+  LENS2_DEV_MODE_PLAYGROUND: false
+  LENS2_REFRESH_WORKER: true
+  LENS2_SCHEMA_PATH: model
+  LENS2_PG_SQL_PORT: 5432
+  CACHE_DATA_DIR: "/var/work/.store"
+  NODE_ENV: production
+  LENS2_ALLOW_UNGROUPED_WITHOUT_PRIMARY_KEY: "true"
+services:
+  api:
+    restart: always
+    image: rubiklabs/lens2:0.35.41-05
+    ports:
+      - 4000:4000
+      - 25432:5432
+      - 13306:13306
+    environment:
+      <<: *lens2-environment   
+    volumes:
+      - ./model:/etc/dataos/work/model
+      # - ./scripts/commons.js:/app/scripts/commons.js
+      # - ./scripts/bootstrap.js:/app/scripts/bootstrap.js
+      # - ./scripts/config.js:/app/scripts/config.js
+```
+
+
 
 <details>
   <summary>Docker compose manifest file for local testing</summary>
