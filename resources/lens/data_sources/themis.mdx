@@ -16,7 +16,7 @@ The following aspects need to be considered when creating a lens on the Themis c
 
 ### **Deployment manifest file**
 
-```yaml hl_lines="13-16"
+```yaml 
 version: v1alpha
 name: "themis-lens"
 layer: user
@@ -101,7 +101,6 @@ The above manifest is intended for a cluster named `lenstestingthemis`, created 
     LENS2_DESCRIPTION: Description 
     LENS2_TAGS: Provide tags
     LENS2_AUTHORS: creator of lens
-    LENS2_SCHEDULED_REFRESH_TIMEZONES: "UTC,America/Vancouver,America/Toronto"
     
     # Data Source
     LENS2_SOURCE_TYPE: themis  #minerva, depot
@@ -164,7 +163,6 @@ While deploying Lens, adjust the configuration using the environment variables b
 
 Add the following environment variables to your Lens (.env) file
 
-\=== "Syntax"
 
 ```yaml
 # Themis query engine configuration
@@ -178,7 +176,7 @@ LENS2_DB_SSL=${ENABLE_SSL}
 
 ```
 
-\=== "Sample"
+
 
 ```yaml
 # Themis query engine configuration

@@ -81,7 +81,6 @@
         {
           "group": "Data Modelling",
           "pages": [
-            "resources/lens/overview",
             "resources/lens/concepts",
             "resources/lens/best_practices",
             "resources/lens/dos_and_donts",
@@ -92,7 +91,7 @@
           "group": "Configurations",
           "pages": [
             "resources/lens/lens_manifest_attributes",
-            "resources/lens/docker_compose_manifest_attributes"
+          
           ]
         },
         {
