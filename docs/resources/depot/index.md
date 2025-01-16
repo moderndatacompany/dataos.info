@@ -127,10 +127,10 @@ To create Depots, ensure that you possess the following tags.
 
 </aside>
 
-### **Create a Manifest File**
+### **Create a manifest file**
 The manifest configuration file for a Depot can be divided into four main sections: [Resource section](#configure-resource-section), [Depot-specific section](#configure-depot-specific-section), [Connection Secrets section](#configure-connection-secrets-section), and [Specifications section](#configure-spec-section¶). Each section serves a distinct purpose and contains specific attributes.
 
-**Configure Resource Section**
+**Configure Resource section**
 
 The Resource section of the manifest configuration file consists of attributes that are common across all resource types. The following snippet demonstrates the key-value properties that need to be declared in this section:
 
@@ -158,9 +158,9 @@ The Resource section of the manifest configuration file consists of attributes t
     layer: user
     ```
 
-For more details regarding attributes in the Resource section, refer to the link: [Attributes of Resource Section.](/resources/manifest_attributes/)
+For more details regarding attributes in the Resource section, refer to the link: [Attributes of Resource section.](/resources/manifest_attributes/)
 
-**Configure Depot-specific Section**
+**Configure Depot-specific section**
 
 The Depot-specific section of the configuration file includes key-value properties specific to the Depot-type being created. Each Depot type represents a Depot created for a particular data source. Multiple Depots can be established for the same data source, and they will be considered as a single Depot type. The following snippet illustrates the key values to be declared in this section:
 
@@ -191,7 +191,7 @@ The table below elucidates the various attributes in the Depot-specific section:
 | [`spec`](/resources/depot/configurations/#spec) | object | none | varies between data sources | mandatory |
 
 
-**Configure Connection Secrets Section**
+**Configure connection Secrets section**
 
 The configuration of connection secrets is specific to each Depot type and depends on the underlying data source. The details for these connection secrets, such as credentials and authentication information, should be obtained from your enterprise or data source provider. For commonly used data sources, we have compiled the connection secrets [here.](/resources/depot/depot_config_templates/) Please refer to these templates for guidance on how to configure the connection secrets for your specific data source.
 
@@ -262,7 +262,7 @@ The basic attributes filled in this section are provided in the table below:
 </center>
 
 
-**Alternative Approach: Using Instance Secret**
+**Alternative approach: using Instance Secret**
 
 [Instance Secret](/resources/instance_secret/) is also a [Resource](/resources/) in DataOS that allows users to securely store sensitive piece of information such as username, password, etc. Using Secrets in conjunction with [Depots](/resources/depot/), [Stacks](/resources/stacks/) allows for decoupling of sensitive information from Depot and Stack YAMLs. For more clarity, let’s take the example of MySQL data source to understand how you can use Instance Secret Resource for Depot creation:
 
@@ -324,7 +324,7 @@ By referencing the name of the Instance Secret, "mysql-secret," users can easily
 
 To learn more about Instance Secrets as a Resource and their usage, refer to the documentation [here](/resources/instance_secret/).
 
-**Configure Spec Section**
+**Configure spec section**
 
 The `spec` section in the manifest configuration file plays a crucial role in directing the Depot to the precise location of your data and providing it with the hierarchical structure of the data source. By defining the specification parameters, you establish a mapping between the data and the hierarchy followed within DataOS.
 
@@ -422,7 +422,7 @@ Let's understand this hierarchy through real-world examples:
 
     In this case, the interpretation is that there is no collection in the bucket, and 'file1' and 'file2' are directly accessed as objects with the path '/transactions/file1' and '/transactions/file2'.
 
-    When configuring the manifets file for S3, if you include the `relativePath` as shown below, the 'transactions' folder is positioned as the Depot:
+    When configuring the manifest file for S3, if you include the `relativePath` as shown below, the 'transactions' folder is positioned as the Depot:
 
     ``` yaml
     name: s3depot
@@ -476,7 +476,7 @@ dataos-ctl apply -f ${{yamlfilepath}}
 
 ## **How to manage a Depot?**
 
-### **Verify Depot Creation**
+### **Verify Depot creation**
 
 To ensure that your Depot has been successfully created, you can verify it in two ways:
 
@@ -522,7 +522,7 @@ Depots are compatible with different Stacks in DataOS. [Stacks](/resources/stack
 
 The UDL references are used as addresses for your input and output datasets within the manifest configuration file.
 
-### **Limit Data Source's File Format**
+### **Limit data source's file format**
 
 Another important function that a Depot can play is to limit the file type which you can read from and write to a particular data source. In the `spec` section of manifest config file, simply mention the `format` of the files you want to allow access for.
 
@@ -537,7 +537,7 @@ depot:
     relativePath: "raw" 
     format: $${{format}}  # mention the file format, such as JSON
 ```
-For File based systems, if you define the format as ‘Iceberg’, you can choose the meta-store catalog between Hadoop and Hive. This is how you do it:
+For file based systems, if you define the format as ‘Iceberg’, you can choose the meta-store catalog between Hadoop and Hive. This is how you do it:
 
 ``` yaml
 depot:
@@ -562,23 +562,23 @@ If you do not mention the catalog name as Hive, it will use Hadoop as the defaul
 
 Hive, automatically keeps the pointer updated to the latest metadata version. If you use Hadoop, you have to manually do this by running the set metadata command as described on this page: [Set Metadata](/resources/depot/icebase/).
 
-### **Scan and Catalog Metadata**
+### **Scan and catalog metadata**
 
 By running the [Scanner](/resources/stacks/scanner/), you can scan the metadata from a source system via the Depot interface. Once the metadata is scanned, you can utilize [Metis](/interfaces/metis/) to catalog and explore the metadata in a structured manner. This allows for efficient management and organization of data resources.
 
-### **Add Depot to Cluster Sources to Query the Data**
+### **Add Depot to Cluster sources to query the data**
 
 To enable the [Minerva](/resources/cluster/#minerva) Query Engine to access a specific source system, you can add the Depot to the list of sources in the [Cluster](/resources/cluster/). This allows you to query the data using the DataOS [Workbench](/interfaces/workbench/). 
 
-### **Create Policies upon Depots to Govern the Data**
+### **Create Policies upon Depots to govern the data**
 
 [Access](/resources/#access-policy) and [Data Policies](/resources/#data-policy) can be created upon Depots to govern the data. This helps in reducing data breach risks and simplifying compliance with regulatory requirements. Access Policies can restrict access to specific Depots, collections, or datasets, while Data Policies allow you to control the visibility and usage of data.
 
-### **Building Data Models**
+### **Building data models**
 
 You can use Lens to create Data Models on top of Depots and explore them using the [Lens App UI](/interfaces/lens/).
 
-## **Supported Storage Architectures in DataOS**
+## **Supported storage architectures in DataOS**
 
 DataOS Depots facilitate seamless connectivity with diverse storage systems while eliminating the need for data relocation. This resolves challenges pertaining to accessibility across heterogeneous data sources. However, the escalating intricacy of pipelines and the exponential growth of data pose potential issues, resulting in cumbersome, expensive, and unattainable storage solutions. In order to address this critical concern, DataOS introduces support for two distinct and specialized storage architectures - [Icebase](/resources/depot/icebase/) Depot, the Unified Lakehouse designed for OLAP data, and [Fastbase](/resources/depot/fastbase/) Depot, the Unified Streaming solution tailored for handling streaming data.
 
@@ -590,7 +590,7 @@ Icebase-type Depots are designed to store data suitable for OLAP processes. It o
 
 Fastbase type Depots are optimized for handling streaming data workloads. It provides features such as [creating](/resources/depot/fastbase/#create-a-dataset) and [listing topics](/resources/depot/fastbase/#list-topics), which can be executed effortlessly using the DataOS CLI. To explore Fastbase further, consult the [link](/resources/depot/fastbase/).
 
-## **Data Integration - Supported Connectors in DataOS**
+## **Data integration - Supported connectors in DataOS**
 
 The catalogue of data sources accessible by one or more components within DataOS is provided on the following page: [Supported Connectors in DataOS](/resources/depot/list_of_connectors/).
 
