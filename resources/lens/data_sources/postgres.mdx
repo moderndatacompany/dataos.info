@@ -6,13 +6,13 @@ title: Postgres
 
 While creating Lens on Postgres Depot the following aspects need to be considered:
 
-* SQL dialect should be changed to the Postgres one.
+* The SQL dialect used in the `model/sql` folder to load data from the Postgres source should be of the Postgres dialect.
 
-* The table naming should be of the format: `schema.table`.
+* The table naming in the `model/table` sho should be of the format: `schema.table`.
 
 ## Deployment manifest file
 
-The below manifest is intended for source type depot named `postgresdepot`, created on the postgres source.
+The below manifest is intended for source-type depot named `postgresdepot`, created on the Postgres source.
 
 ```yaml
 version: v1alpha
