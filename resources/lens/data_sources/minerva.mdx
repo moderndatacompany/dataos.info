@@ -12,7 +12,7 @@ While migrating to Minerva the following aspects need to be considered:
 
 * The name of the cluster created on Minerva source.
 
-* The name of the Depot.
+* The name of the catalog.&#x20;
 
 ### **Deployment manifest file**
 
@@ -95,7 +95,7 @@ lens:
         memory: 6048Mi
 ```
 
-The above YAML manifest is intended for a cluster named `minervacluster`, created on the minerva source, with the data catalog named `icebase`. To use this manifest file, copy the file and update the source details accordingly.
+The above YAML manifest is intended for a cluster named `minervacluster`, created on the Minerva source, with the data catalog named `icebase`. To use this manifest file, copy the file and update the source details accordingly.
 
 <Info>
   Within the Themis and Minerva cluster, all depots (such as Icebase, Redshift, Snowflake, etc.) are integrated. When configuring Lens, you only need to specify one depot in the \`catalog\` field, as Lens can connect to and utilize depots from all sources available in the Themis cluster.
