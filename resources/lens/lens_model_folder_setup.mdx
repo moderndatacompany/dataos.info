@@ -13,22 +13,9 @@ Before setting up Lens, refer to the **Prerequisites for Lens** guide for detail
 
 ## **Lens Project folder structure**
 
-In the Model folder, the Lens semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each folder contains specific files related to the Lens model or you can download the following template to quickly get started.
+In the Model folder, the Lens semantic model will be defined, encompassing SQL mappings, logical tables, logical views, and user groups. Each subfolder contains specific files related to the Lens model. You can download the Lens  template to quickly get started.
 
 [lens template](/resources/lens/lens_model_folder_setup/lens-project-template.zip)
-
-```bash
-model
-├── sqls
-│   └── sample.sql  # SQL script for the dimensions of the tables
-├── tables
-│   └── sample_table.yml  # Logical table definition, including joins, dimensions, measures, and segments.
-├── views
-│   └── sample_view.yml  # View referencing dimensions, measures, and segments from tables.
-└── user_groups.yml  # User groups for easier policy enforcement and access control.
-```
-
-* Open the Model folder in your preferred editor. It is recommended to organize each Table or View into a separate file within the `model/tables` and `model/views` folders, respectively. The Model folder should follow this structure:
 
 <Steps>
   <Step title="Load data from the data source" titleSize="h3">

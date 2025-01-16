@@ -1,19 +1,19 @@
 ---
-title: "Local Development Environment"
+title: "Lens Development Environment"
 description: "Description of your new file."
 ---
 
-# Develop Lens Locally
+<Info>
+  Testing Lens in the development environment is an optional step.
+</Info>
 
-## Local development environment[¶](https://dataos.info/resources/lens/optimizing_lens_testing_in_local_development/#local-development-environment "Permanent link")
-
-Before deploying models to the development environment, it is important to ensure proper verification and validation. A recommended practice is to configure a Docker Compose manifest file (`docker-compose.yml`). While configuring this file is optional, it is widely considered a best practice to run and test models in the local environment to catch and resolve potential errors early. This proactive approach helps streamline the development process, facilitating smoother deployments and minimizing the risk of issues later.
+Running and testing models in the development environment allows you to catch and resolve potential issues early, which helps streamline the development process and ensures smoother deployments with reduced risk of complications in production.
 
 ## Add a `docker-compose.yml` manifest file
 
-To do local testing, add `docker-compose.yml` manifest file. This file allows to simulate the full development environment locally, ensuring that all necessary components are properly configured. The `docker-compose.yml` file defines how to set up and run Docker containers for Lens.
+To do local testing, add `docker-compose.yml` manifest file. This file allows to simulate the environment locally, ensuring that all necessary components are properly configured. The `docker-compose.yml` file defines how to set up and run Docker containers for Lens.
 
-> Always create the docker-compose.yml file in parallel to the model directory.;
+> Always create the docker-compose.yml file in parallel to the model directory.
 
 <Accordion title="To view the docker-compose.yml file, click here." defaultOpen={false}>
   ```
@@ -120,20 +120,18 @@ When connecting with different sources, refer to the [data source guide](https:
 
 * **Verify Service Configuration:** In the service configuration, the image attribute specifies the container image to be used. Ensure that the image tag is up to date or matches the version pulled during the prerequisite setup.
 
-## Testing Lens in development environment[¶](https://dataos.info/resources/lens/optimizing_lens_testing_in_local_development/#testing-lens-in-development-environment "Permanent link")
+## Testing Lens in development environment
 
 Before running ensure that the working directory is the Lens project directory and that the API key is correctly configured as specified in the `docker-compose.yml` file.
 
 Lens can be tested in the development environment by running the following command:
 
-[](https://dataos.info/resources/lens/optimizing_lens_testing_in_local_development/#__codelineno-4-1)
-
 <CodeGroup>
-  ```yaml Syntax
+  ```bash Command
   docker-compose up  #run docker-compose up command in terminal
   ```
 
-  ```
+  ```bash Output
   lens2-api-1  | Loaded  /app/scripts/config.js
   lens2-api-1  | 🔥 Table Store (0.35.55-01 ) is assigned to 3030 port.
   lens2-api-1  | 🔗 Lens2 SQL Service (PostgreSQL) is listening on 0.0.0.0:5432
@@ -142,6 +140,8 @@ Lens can be tested in the development environment by running the following comma
 </CodeGroup>
 
 The above given output indicates that the Lens server has successfully started locally.
+
+<CodeGroup />
 
 ## Exploring Lens in development environment
 
@@ -172,15 +172,9 @@ Enter the host name as `localhost`, port as given in the service of the `docke
   ](https://dataos.info/resources/lens/optimizing_lens_testing_in_local_development/#__codelineno-4-1)
 </Tip>
 
-<CodeGroup>
-  ```javascript Syntax
-  psql -h ${host_name} -p ${port_name} -U${user_name} -d ${lens:<workspace-name>:<lens-name>}
-  ```
-
-  ```
-  psql -h localhost -p 25432 -U iamgroot -d lens:public:sales_analysis 
-  ```
-</CodeGroup>
+```
+psql -h ${host_name} -p ${port_name} -U${user_name} -d ${lens:<workspace-name>:<lens-name>}
+```
 
 For more details, click [here](https://dataos.info/resources/lens/exploration_of_deployed_lens_using_sql_apis/).
 
@@ -208,7 +202,7 @@ Use the following details to connect to the Postgresql interface using VS Code e
 
 \| Password          | dataos-user-apikey | dskhcknskhknsmdnalklquajzZr=      |
 
-* Once connected, hover over the postgres folder and click the terminal icon to open the terminal for querying.
+* Once connected, hover over the Postgres folder and click the terminal icon to open the terminal for querying.
 
 * Execute the necessary commands and queries in the terminal as needed. For example, to list all the tables in the connected database (Lens semantic model), use the following command:
 
@@ -245,9 +239,7 @@ postgres=> \dt #listing all the tables in the connected database.
 
 \| Exit the PostgreSQL prompt                         | \q                                               |                                |
 
-
-
-### **Exploring Lens via REST API**[¶](https://dataos.info/resources/lens/optimizing_lens_testing_in_local_development/#exploring-lens-via-rest-api "Permanent link")
+### **Exploring Lens via REST API**
 
 To interact with REST APIs use tools like `curl`, [Postman](https://www.postman.com/).
 
@@ -289,7 +281,6 @@ Now, to make a basic `GET` request using Postman, follow these steps:
    [](https://dataos.info/resources/lens/optimizing_lens_testing_in_local_development/#__codelineno-11-1)`Type: Bearer `Token
    [](https://dataos.info/resources/lens/optimizing_lens_testing_in_local_development/#__codelineno-11-2)`Token: <DATAOS API Key> #Use the API key of the env defined in docker-compose.yml`
 
-
 6. Click **Send**
 
 **Example response:**
@@ -315,7 +306,6 @@ Now, to make a basic `GET` request using Postman, follow these steps:
 ```
 
 [](https://dataos.info/resources/lens/optimizing_lens_testing_in_local_development/#__codelineno-12-1)`    `
-
 
 *You can now successfully test your Lens in development environment using postman via REST APIS.*
 
