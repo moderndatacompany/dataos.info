@@ -139,9 +139,11 @@ Lens can be tested in the development environment by running the following comma
   ```
 </CodeGroup>
 
-The above given output indicates that the Lens server has successfully started locally.
+The above-given output indicates that the Lens server has successfully started locally.
 
-<CodeGroup />
+<Info>
+  To quickly get started with testing Lens locally, follow the [quick guide on testing your Lens model locally](https://dataos.info/quick_guides/test_data_model/). This guide provides a step-by-step approach to validating your SQL queries within the semantic model and ensures that tables and joins work as expected before deploying them to DataOS.
+</Info>
 
 ## Exploring Lens in development environment
 
@@ -153,13 +155,13 @@ The above given output indicates that the Lens server has successfully started l
 
 Now that Lens model is successfully running without errors using docker-compose, one can begin exploring it using SQL APIs, REST APIs, or GraphQL APIs. This setup allows to thoroughly test Lens before proceeding to deployment, ensuring all functionalities are working as expected.
 
-**Exploring Lens via SQL API**
+**via SQL API**
 
-Lens exposes a PostgreSQL-compatible interface, enabling to query Lens tables and views using standard PostgreSQL syntax.
+Lens exposes a PostgreSQL-compatible interface, to query Lens tables and views using standard PostgreSQL syntax.
 
 To interact with Lens through PostgreSQL, the following options are available:
 
-* **PostgreSQL Client (psql):** This command-line tool allows direct interaction with PostgreSQL database. Use psql to run queries, manage database, and perform various administrative tasks. Ensure postgres-client-16 is installed.
+* **PostgreSQL Client (psql):** This command-line tool allows direct interaction with PostgreSQL database. Use psql to run queries, manage databases, and perform various administrative tasks. Ensure postgres-client-16 is installed.
 
 * **VS Code Extension:** Use the PostgreSQL Client extension for Visual Studio Code. This extension enables SQL query execution and database management within VS Code.
 
@@ -226,11 +228,11 @@ postgres=> \dt #listing all the tables in the connected database.
 | List all views in the connected database        | `\dv`             |                      |
 | Exit the PostgreSQL prompt                      | `\q`              |                      |
 
-### **Exploring Lens via REST API**
+### **via REST API**
 
 To interact with REST APIs use tools like `curl`, [Postman](https://www.postman.com/).
 
-For instance, to test Lens in development environment using Postman, upload the following API collection to Postman.
+For instance, to test Lens in a development environment using Postman, upload the following API collection to Postman.
 
 [Lens2-API](https://dataos.info/resources/lens/lens_model_folder_setup/Lens2-APIs.postman_collection.json)
 
@@ -244,7 +246,7 @@ Now, to make a basic `GET` request using Postman, follow these steps:
 
 2. **Configure the request**:
 
-   * **Enter request name**: Provide a name for request.
+   * **Enter request name**: Provide a name for the request.
 
    * **Select collection**: Choose the uploaded collection.
 
@@ -260,9 +262,9 @@ Now, to make a basic `GET` request using Postman, follow these steps:
 
    * `localhost:8080` represents the local or development environment for Lens, used for building and testing configurations.
 
-   * `/lens2/api/` is the api prefix
+   * `/lens2/api/` is the API prefix
 
-   * `${lens_name}` is the placeholder for Lens, replace it to the actual Lens undergoing testing. For example, sales360, retail360.
+   * `${lens_name}` is the placeholder for Lens, replace it with the actual Lens undergoing testing. For example, sales360, retail360.
 
 5. **Ensure the following header is passed in Authorization when running the API**
    [](https://dataos.info/resources/lens/optimizing_lens_testing_in_local_development/#__codelineno-11-1)`Type: Bearer `Token
@@ -294,6 +296,6 @@ Now, to make a basic `GET` request using Postman, follow these steps:
 
 [](https://dataos.info/resources/lens/optimizing_lens_testing_in_local_development/#__codelineno-12-1)`    `
 
-*You can now successfully test your Lens in development environment using postman via REST APIS.*
+*You can now successfully test your Lens in a development environment using Postman via REST APIS.*
 
 To interact with the deployed Lens using REST APIs read the detailed doc [here](https://dataos.info/resources/lens/exploration_of_deployed_lens_using_rest_apis/)
