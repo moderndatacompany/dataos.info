@@ -158,7 +158,7 @@ The Resource section of the manifest configuration file consists of attributes t
     layer: user
     ```
 
-For more details regarding attributes in the Resource section, refer to the link: [Attributes of Resource Section.](/resources/manifest_attributes/)
+For more details regarding attributes in the Resource section, refer to the link: [Attributes of Resource section.](/resources/manifest_attributes/)
 
 **Configure Depot-specific section**
 
@@ -422,7 +422,7 @@ Let's understand this hierarchy through real-world examples:
 
     In this case, the interpretation is that there is no collection in the bucket, and 'file1' and 'file2' are directly accessed as objects with the path '/transactions/file1' and '/transactions/file2'.
 
-    When configuring the manifets file for S3, if you include the `relativePath` as shown below, the 'transactions' folder is positioned as the Depot:
+    When configuring the manifest file for S3, if you include the `relativePath` as shown below, the 'transactions' folder is positioned as the Depot:
 
     ``` yaml
     name: s3depot
@@ -537,7 +537,7 @@ depot:
     relativePath: "raw" 
     format: $${{format}}  # mention the file format, such as JSON
 ```
-For File based systems, if you define the format as ‘Iceberg’, you can choose the meta-store catalog between Hadoop and Hive. This is how you do it:
+For file based systems, if you define the format as ‘Iceberg’, you can choose the meta-store catalog between Hadoop and Hive. This is how you do it:
 
 ``` yaml
 depot:
