@@ -202,6 +202,44 @@ GROUP BY 2;
 
 You can include multiple dimensions in your query to perform grouping as needed.
 
+### **Using Calculated Measures**
+
+To answer the question “What is the average sales amount per order?”, you’ll need to calculate the average amount for all orders. This can be done by defining a measure that calculates the average of the amount field. Here’s how you can define this in YAML for your sales table:
+
+```yaml
+measures:
+ - name: total_sales_amount
+   sql: SUM(amount)
+   type: number
+   description: Total sales amount across all orders.
+
+ - name: total_order_count
+   sql: COUNT(order_id)
+   type: count
+   description: Total number of orders.
+
+ - name: average_sales_amount_per_order
+   sql: "{total_sales_amount} / NULLIF({total_order_count}, 0)"
+   type: number
+   format: currency
+   description: The average sales amount per order.
+
+# .....
+```
+
+Here we defined a calculated measure `average_sales_amount_per_order`, which divides the total sales amount by the total number of orders. The NULLIF function prevents division by zero in case there are no orders.
+
+This example shows how you can reference measures inside other measure definitions. When you request the `average_sales_amount_per_order` measure via an API, the following SQL will be generated:
+
+```sql
+SELECT
+  SUM(amount) / NULLIF(COUNT(order_id), 0) AS average_sales_amount_per_order
+FROM
+  sales
+```
+
+As with other measures, average\_sales\_amount\_per\_order can be used with dimensions.
+
 **Measure Additivity**
 
 Additivity is a property of measures that tells us if we can break down or combine measure values across different categories. In simpler terms, it means that if we have a measure for a group of dimensions (like sales for different regions), we can add or combine these values to get a measure for a smaller subset of those dimensions (like sales for a specific region).
@@ -257,6 +295,22 @@ tables:
     segments:
       - name: active_owners
         sql: "{TABLE}.status = 'active'"
+```
+
+Since the `segments` attribute type is an array, you can apply as many segments as required.
+
+```yaml
+segments:
+  - name: sanfrancisco_sales
+    sql: "{TABLE}.city = 'San Francisco'"
+
+  - name: losangeles_sales
+    sql: "{TABLE}.city = 'Los Angeles'"
+
+  - name: chicago_sales
+    sql: "{TABLE}.city = 'Chicago'"
+
+ #....
 ```
 
 A more thorough introduction can be found in [Working with Segments](/resources/lens/working_with_segments/).
