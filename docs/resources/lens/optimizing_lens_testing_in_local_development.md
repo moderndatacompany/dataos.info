@@ -92,7 +92,7 @@ Configure the `docker-compose.yml` manifest file to tailor it to include environ
      
      > Ensure access to the compute of the source. This needs to be verified at the source end.
 
-     **Data Source attributes for connecting via depot:**
+     **Data Source attributes for connecting via Depot:**
 
      To connect via the Depot, refer to the provided environmental variables in the syntax below. 
 
