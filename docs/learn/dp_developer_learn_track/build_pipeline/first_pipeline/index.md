@@ -19,9 +19,12 @@ As a skilled Data Engineer/data Product Developer, you are presented with a new 
 
 Begin by identifying the input (Data Source A) and output (Data Source B) for the pipeline. Within DataOS, this involves understanding the characteristics of each data source:
 
-- **Data source A:** An Azure BLOB storage containing raw customer data.
-- **Data source B:** A Lakehouse instance for storing processed data in Parquet format.
+- **Data source A:** An Azure BLOB storage containing raw purchase data in CSV format.
+- **Data source B:** A Postgres database for storing processed Purchase data.
 
+<aside class="callout">
+🗣 Ensure you have read permissions for Data Source A and write permissions for Data Source B when ingesting data from A to B.
+</aside>
 
 ### **Step 2: Creating Depots**
 
@@ -60,21 +63,19 @@ here for the given scenario, you can choose the Flare Stack for its robust capab
 After deciding upon the suitable processing Stack, you need to draft the manifest file to configure the pipeline. Specify the Workflow Resource, define the input and output data sources, and integrate the Flare Stack.
 
 ```yaml
-version: v1  # v1
-name: wf-customer-data
+version: v1
+name: wf-purchase-data
 type: workflow
 tags:
   - crm
-description: Ingesting customer data in lakehouse
+description: Ingesting purchase data in postgres 
 workflow:
   # schedule:
   #   cron: '00 20 * * *'
   #  # endOn: '2023-12-12T22:00:00Z'
   #   concurrencyPolicy: Forbid
   dag:
-    - name: dg-customer-data
-      # title: flatten  Data Ingester
-      # description: The job ingests Adobe flatten  data from S3 into icebase zone
+    - name: dg-purchase-data
       spec:
         tags:
           - crm
@@ -92,42 +93,44 @@ workflow:
             memory: 2000m
           job:
             explain: true
+            logLevel: INFO
             inputs:
-              - name: customer_data
-                dataset: dataos://thirdparty:onboarding/customer.csv
+              - name: purchase_data
+                dataset: dataos://thirdparty:onboarding/purchase.csv?acl=rw
                 format: csv
                 options:
                   inferSchema: true
-            logLevel: INFO
-            outputs:
-              - name: final
-                dataset: dataos://lakehouse:customer_relationship_management/customer_data?acl=rw
-                format: Iceberg
-                options:
-                  saveMode: overwrite
-                  iceberg:
-                    properties:
-                      write.format.default: parquet
-                      write.metadata.compression-codec: gzip
-                    # partitionSpec:
-                    #   - type: day
-                    #     column: date_time
-                    #     name: day
+                 
             steps:
               - sequence:
                   - name: final
                     sql: >
                       SELECT 
-                        CAST(customer_id AS LONG)  as customer_id,
-                        CAST(birth_year AS LONG) as birth_year,
-                        education, 
-                        marital_status, 
-                        CAST(income AS DOUBLE) as income,
-                        country,
-                        current_timestamp() as created_at
-                      FROM customer_data
-                    
+                        CAST(customer_id AS LONG) as customer_id,
+                        date_sub(CURRENT_DATE, CAST(recency AS INT)) AS purchase_date,
+                        CAST(recency AS LONG) as  recency,
+                        CAST(mntwines AS LONG) as mntwines, 
+                        CAST(mntmeatproducts AS LONG) as mntmeatproducts, 
+                        CAST(mntfishproducts AS LONG) as mntfishproducts,
+                        CAST(mntsweetproducts AS LONG) as mntsweetproducts,
+                        CAST(mntgoldprods AS LONG) as mntgoldprods,
+                        CAST(mntfruits AS LONG) as mntfruits,
+                        CAST(numdealspurchases AS LONG) as numdealspurchases, 
+                        CAST(numwebpurchases AS LONG) as numwebpurchases, 
+                        CAST(numcatalogpurchases AS LONG) as numcatalogpurchases, 
+                        CAST(numstorepurchases AS LONG) as numstorepurchases,
+                        CAST(numwebvisitsmonth AS LONG) as numwebvisitsmonth
+                      FROM purchase_data
 
+            outputs:
+              - name: final
+                dataset: dataos://postgres:public/purchase_data?acl=rw
+                driver: org.postgresql.Driver
+                format: jdbc
+                title: Purchase Dataset
+                options:
+                  saveMode: overwrite
+    
 
 ```
 
@@ -145,12 +148,152 @@ Verify the pipeline’s activation by checking the status of the Workflow Resour
 dataos-ctl get -t workflow -w public
 ```
 
-By the end of this process, you have successfully created a batch data pipeline that automated the transfer of data from PostgreSQL to S3. Ready to take on your next data pipeline challenge? Follow the next steps and start building your own workflows in DataOS!
+By the end of this process, you have successfully created a batch data pipeline that automated the transfer of purchase data from Azure blob storage to PostgreSQL. Ready to take on your next data pipeline challenge? Follow the same steps and start building your own workflows in DataOS to transfer customer and product data for the example use case.
+
+??? "Click here to see Workflow for ingesting Customer data from Azure blob storage to DataOS Lakehouse"
+    ```yaml
+    version: v1
+    name: wf-customer-data
+    type: workflow
+    tags:
+      - crm
+    description: Ingesting customer data in lakehouse
+    workflow:
+      # schedule:
+      #   cron: '00 20 * * *'
+      #  # endOn: '2023-12-12T22:00:00Z'
+      #   concurrencyPolicy: Forbid
+      dag:
+        - name: dg-customer-data
+          spec:
+            tags:
+              - crm
+            stack: flare:6.0
+            compute: runnable-default
+            stackSpec:
+              driver:
+                coreLimit: 2000m
+                cores: 1
+                memory: 2000m
+              executor:
+                coreLimit: 2000m
+                cores: 1
+                instances: 1
+                memory: 2000m
+              job:
+                explain: true
+                logLevel: INFO
+                inputs:
+                  - name: customer_data
+                    dataset: dataos://thirdparty:onboarding/customer.csv
+                    format: csv
+                    options:
+                      inferSchema: true
+
+                steps:
+                  - sequence:
+                      - name: final
+                        sql: >
+                          SELECT 
+                            CAST(customer_id AS LONG)  as customer_id,
+                            CAST(birth_year AS LONG) as birth_year,
+                            education, 
+                            marital_status, 
+                            CAST(income AS DOUBLE) as income,
+                            country,
+                            current_timestamp() as created_at
+                          FROM customer_data
+                        
+                outputs:
+                  - name: final
+                    dataset: dataos://lakehouse:customer_relationship_management/customer_data?acl=rw
+                    format: Iceberg
+                    options:
+                      saveMode: overwrite
+                      iceberg:
+                        properties:
+                          write.format.default: parquet
+                          write.metadata.compression-codec: gzip
+                        # partitionSpec:
+                        #   - type: day
+                        #     column: date_time
+                        #     name: day
+
+
+    ```
+
+??? "Click here to see Workflow for ingesting Product data from Azure blob storage to DataOS Lakehouse"
+    ```yaml
+    version: v1
+    name: wf-product-data
+    type: workflow
+    tags:
+      - crm
+    description: Ingesting product data in lakehouse
+    workflow:
+      # schedule:
+      #   cron: '00 20 * * *'
+      #  # endOn: '2023-12-12T22:00:00Z'
+      #   concurrencyPolicy: Forbid
+      dag:
+        - name: dg-product-data
+          spec:
+            tags:
+              - crm
+            stack: flare:6.0
+            compute: runnable-default
+            stackSpec:
+              driver:
+                coreLimit: 2000m
+                cores: 1
+                memory: 2000m
+              executor:
+                coreLimit: 2000m
+                cores: 1
+                instances: 1
+                memory: 2000m
+              job:
+                explain: true
+                logLevel: INFO
+                inputs:
+                  - name: product_data
+                    dataset: dataos://thirdparty:onboarding/product.csv?acl=rw
+                    format: csv
+                    options:
+                      inferSchema: true
+
+                steps:
+                  - sequence:
+                      - name: final
+                        sql: >
+                          SELECT 
+                            CAST(customer_id AS DOUBLE) as customer_id,
+                            product_id, 
+                            product_category, 
+                            product_name, 
+                            CAST(price AS DOUBLE) as price
+                          FROM product_data
+                        
+                outputs:
+                  - name: final
+                    dataset: dataos://lakehouse:customer_relationship_management/product_data?acl=rw
+                    format: Iceberg
+                    options:
+                      saveMode: overwrite
+                      iceberg:
+                        properties:
+                          write.format.default: parquet
+                          write.metadata.compression-codec: gzip
+                        # partitionSpec:
+                        #   - type: day
+                        #     column: date_time
+                        #     name: day
+    ```
 
 ## Next steps
 
 You are now equipped to handle batch data pipelines efficiently. As you move forward, you can explore additional features and capabilities in DataOS to enhance pipeline robustness and scalability:
 
-- [Pipeline observability](/learn/dp_developer_learn_track/build_pipeline/pipeline_observability/)
 - [Scheduling Workflows](/learn/dp_developer_learn_track/build_pipeline/scheduling_workflows/)
+- [Pipeline observability](/learn/dp_developer_learn_track/build_pipeline/pipeline_observability/)
 - [Data quality checks](/learn/dp_developer_learn_track/build_pipeline/dq_check/)

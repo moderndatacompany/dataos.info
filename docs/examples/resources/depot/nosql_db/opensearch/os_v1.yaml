@@ -1,24 +1,24 @@
-name: {{depot-name}}
+name: ${{depot-name}}
 version: v1
 type: depot
 tags:
-  - {{tag1}}
-  - {{tag2}}
-owner: {{owner-name}}
+  - ${{tag1}}
+  - ${{tag2}}
+owner: ${{owner-name}}
 layer: user
 depot:
   type: OPENSEARCH             
-  description: {{description}}
-  external: {{true}}
+  description: ${{description}}
+  external: ${{true}}
   connectionSecret:                
     - acl: rw
       values:
-        username: {{username}}
-        password: {{password}}
+        username: ${{username}}
+        password: ${{password}}
     - acl: r
       values:
-        username: {{opensearch-username}}
-        password: {{opensearch-password}}
+        username: ${{opensearch-username}}
+        password: ${{opensearch-password}}
   spec:                           
     nodes:
-      - {{nodes}}
+      - ${{nodes}}

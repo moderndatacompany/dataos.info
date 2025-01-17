@@ -15,8 +15,8 @@ depot:
     scheme: s3a       
   external: true
   secrets:
-    - name: {{icebase-s3-instance-secret-name}}-r
+    - name: ${{icebase-s3-instance-secret-name}}-r
       allkeys: true
 
-    - name: {{icebase-s3-instance-secret-name}}-rw
+    - name: ${{icebase-s3-instance-secret-name}}-rw
       allkeys: true

@@ -1,25 +1,25 @@
-name: {{mssql01}}
+name: ${{mssql01}}
 version: v2alpha
 type: depot
 tags:
-  - {{dropzone}}
-  - {{mssql}}
+  - ${{dropzone}}
+  - ${{mssql}}
 layer: user
 depot:
   type: JDBC
-  description: {{MSSQL Sample data}}
+  description: ${{MSSQL Sample data}}
   jdbc:
-    subprotocol: {{sqlserver}}
-    host: {{host}}
-    port: {{port}}
-    database: {{database}}
+    subprotocol: ${{sqlserver}}
+    host: ${{host}}
+    port: ${{port}}
+    database: ${{database}}
     params: # Required
-      encrypt: {{false}}
-  external: {{true}}
-  hiveSync: {{false}}
+      encrypt: ${{false}}
+  external: ${{true}}
+  hiveSync: ${{false}}
   secrets:
-    - name: {{sf-instance-secret-name}}-r
+    - name: ${{sf-instance-secret-name}}-r
       allkeys: true
 
-    - name: {{sf-instance-secret-name}}-rw
+    - name: ${{sf-instance-secret-name}}-rw
       allkeys: true
