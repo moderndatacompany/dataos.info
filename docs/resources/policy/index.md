@@ -96,7 +96,7 @@ DataOS offers two primary categories of policies: Access Policy and Data Policy.
         === "Code"
 
             ```yaml title="sample_data_filter_policy.yml"
-            --8<-- "examples/resources/policy/sample_filter_data_policy.yml"
+            --8<-- "examples/resources/policy/sample_data_policy_filter.yml"
             ```
 
     === "Masking Data Policy"
@@ -109,7 +109,7 @@ DataOS offers two primary categories of policies: Access Policy and Data Policy.
         === "Code"
 
             ```yaml title="policy_manifest_structure.yml"
-            --8<-- "examples/resources/policy/sample_data_masking_policy.yml"
+            --8<-- "examples/resources/policy/sample_mask_data_policy.yml"
             ```
 
 
