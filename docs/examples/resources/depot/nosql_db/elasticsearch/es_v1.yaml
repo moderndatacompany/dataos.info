@@ -1,23 +1,23 @@
-name: {{depot-name}}
+name: ${{depot-name}}
 version: v1
 type: depot
 tags:
-  - {{tag1}}
-  - {{tag2}}
-owner: {{owner-name}}
+  - ${{tag1}}
+  - ${{tag2}}
+owner: ${{owner-name}}
 layer: user
 depot:
   type: ELASTICSEARCH              
-  description: {{description}}
-  external: {{true}}
+  description: ${{description}}
+  external: ${{true}}
   connectionSecret:                
     - acl: rw
       values:
-        username: {{username}}
-        password: {{password}}
+        username: ${{username}}
+        password: ${{password}}
     - acl: r
       values:
-        username: {{username}}
-        password: {{password}}
+        username: ${{username}}
+        password: ${{password}}
   spec:                           
-    nodes: {{["localhost:9092", "localhost:9093"]}}
+    nodes: ${{["localhost:9092", "localhost:9093"]}}

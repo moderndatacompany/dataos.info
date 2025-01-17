@@ -1,21 +1,21 @@
-name: {{depot-name}}
+name: ${{depot-name}}
 version: v1
 type: depot
 tags:
-  - {{tag1}}
-  - {{tag2}}
+  - ${{tag1}}
+  - ${{tag2}}
 layer: user
 depot:
   type: MONGODB                                 
-  description: {{description}}
-  compute: {{runnable-default}}
+  description: ${{description}}
+  compute: ${{runnable-default}}
   spec:                                          
-    subprotocol: {{"mongodb+srv"}}
-    nodes: {{["clusterabc.ezlggfy.mongodb.net"]}}
-  external: {{true}}
+    subprotocol: ${{"mongodb+srv"}}
+    nodes: ${{["clusterabc.ezlggfy.mongodb.net"]}}
+  external: ${{true}}
   connectionSecret:                              
     - acl: rw
       type: key-value-properties
       data:
-        username: {{username}}
-        password: {{password}}
+        username: ${{username}}
+        password: ${{password}}

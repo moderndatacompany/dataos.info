@@ -1,28 +1,28 @@
-name: {{mysql01}}
+name: ${{mysql01}}
 version: v1
 type: depot
 tags:
-  - {{dropzone}}
-  - {{mysql}}
+  - ${{dropzone}}
+  - ${{mysql}}
 layer: user
 depot:
   type: MYSQL
-  description: {{"MYSQL Sample Database"}}
+  description: ${{"MYSQL Sample Database"}}
   spec:
     subprotocol: "mysql"
-    host: {{host}}
-    port: {{port}}
+    host: ${{host}}
+    port: ${{port}}
     params: # Required
-      tls: {{skip-verify}}
-  external: {{true}}
+      tls: ${{skip-verify}}
+  external: ${{true}}
   connectionSecret:
     - acl: r
       type: key-value-properties
       data:
-        username: {{username}}
-        password: {{password}} 
+        username: ${{username}}
+        password: ${{password}} 
     - acl: rw
       type: key-value-properties
       data:
-        username: {{username}}
-        password: {{password}}
+        username: ${{username}}
+        password: ${{password}}
