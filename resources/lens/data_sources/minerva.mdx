@@ -111,7 +111,7 @@ The above YAML manifest is intended for a cluster named `minervacluster`, create
 
 * The name of the database to use with the Minerva query engine database server.
 
-### **`.env` Configuration**
+### **Docker compose configuration**
 
 Add the following environment variables to your Lens (.env) file
 
@@ -135,54 +135,64 @@ Add the following environment variables to your Lens (.env) file
   LENS2_DB_PRESTO_CATALOG="icebase"
   LENS2_DB_PORT=7432
   ```
+
+  ```
+  # Trino configuration
+  LENS2_DB_HOST=tcp.alpha-omega.dataos.app
+  LENS2_DB_PORT=7432
+  LENS2_DB_USER=iamgroot
+  LENS2_DB_PASS="abcdefghijklmnpqrstuvwyzabcdefghijklmnopqrstuvwzyz"
+  LENS2_DB_PRESTO_CATALOG=icebase
+  LENS2_DB_TYPE=trino
+  ```
 </CodeGroup>
 
-**Sample environment variable file configuration**
+<Accordion title="Click here to see complete Docker compose manifest file " defaultOpen={false}>
+  ```yaml
+  LENS2_VERSION=0.35.55-01 
 
-```yaml
-LENS2_VERSION=0.35.55-01 
+  # Minerva configuration
+  LENS2_DB_HOST=tcp.alpha-omega.dataos.app
+  LENS2_DB_PORT=7432
+  LENS2_DB_USER=iamgroot
+  LENS2_DB_PASS="abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwzyz"
+  LENS2_DB_PRESTO_CATALOG=icebase
+  LENS2_DB_SSL=true
+  LENS2_DB_TYPE=trino
 
-# Minerva configuration
-LENS2_DB_HOST=tcp.alpha-omega.dataos.app
-LENS2_DB_PORT=7432
-LENS2_DB_USER=iamgroot
-LENS2_DB_PASS="abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwzyz"
-LENS2_DB_PRESTO_CATALOG=icebase
-LENS2_DB_SSL=true
-LENS2_DB_TYPE=trino
+  # Meta information
+  LENS2_NAME=trinolens # fetch from CLI
+  LENS2_DESCRIPTION="Trino lens generated"
+  LENS2_TAGS="lens2, sales, customer insights"
+  LENS2_AUTHORS="iamgroot"
 
-# Meta information
-LENS2_NAME=trinolens # fetch from CLI
-LENS2_DESCRIPTION="Trino lens generated"
-LENS2_TAGS="lens2, sales, customer insights"
-LENS2_AUTHORS="iamgroot"
+  LENS2_DEV_MODE="true"
+  LENS2_SCHEMA_PATH=model
 
-LENS2_DEV_MODE="true"
-LENS2_SCHEMA_PATH=model
+  LENS2_LOG_LEVEL="error"
+  LENS2_LOADER_LOG_LEVEL="error"
+  CACHE_LOG_LEVEL="error" #
 
-LENS2_LOG_LEVEL="error"
-LENS2_LOADER_LOG_LEVEL="error"
-CACHE_LOG_LEVEL="error" # not there in Kishan's
+  DATAOS_FQDN=alpha-omega.dataos.app
+  DATAOS_USER_NAME=iamgroot
+  DATAOS_USER_APIKEY=abcdeghijklmopqrstuvwxyz
 
-DATAOS_FQDN=alpha-omega.dataos.app
-DATAOS_USER_NAME=iamgroot
-DATAOS_USER_APIKEY=abcdeghijklmopqrstuvwxyz
+  LENS2_DEPOT_SERVICE_URL="https://alpha-omega.dataos.app/ds" 
+  LENS2_HEIMDALL_BASE_URL="https://alpa-omega.dataos.app/heimdall" 
 
-LENS2_DEPOT_SERVICE_URL="https://alpha-omega.dataos.app/ds" 
-LENS2_HEIMDALL_BASE_URL="https://alpa-omega.dataos.app/heimdall" 
+  LENS2_SOURCE_TYPE=trino
+  LENS2_SOURCE_NAME=system
+  LENS2_SOURCE_CATALOG_NAME=icebase 
 
-LENS2_SOURCE_TYPE=trino
-LENS2_SOURCE_NAME=system
-LENS2_SOURCE_CATALOG_NAME=icebase 
+  LENS2_BASE_URL="http://localhost:4000/lens2/api"
+  LENS2_META_PATH="/v2/meta"
+  LENS2_RILL_PATH=boards
+  LENS2_CHECKS_PATH=checks
+  LENS2_BOARD_PATH=boards
+  ```
+</Accordion>
 
-LENS2_BASE_URL="http://localhost:4000/lens2/api"
-LENS2_META_PATH="/v2/meta"
-LENS2_RILL_PATH=boards
-LENS2_CHECKS_PATH=checks
-LENS2_BOARD_PATH=boards
-```
-
-### **Environment variables attributes**
+### **Environment variables attribute**
 
 | **Environment Variable**  | **Description**                                                                                                                                                               | **Possible Values**                                                                                                                                                                                     | **Example Value**            | **Required** |
 | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ------------ |
@@ -202,19 +212,17 @@ LENS2_BOARD_PATH=boards
 
 To check the query statistics, please follow the steps below:
 
-1. **Access Minerva Queries**
+1. **Access Minerva Queries:** Navigate to the operation section and then to Minerva queries. Set the filters as follows:
 
-Navigate to the operation section, then go to Minerva queries. Set the filters as follows:
+<div>
+  <img src="/resources/lens/data_sources/minerva/Untitled1.png" alt="Untitled" />
+</div>
 
 * Source: `lens2`
 
 * Dialect: `trino_sql`
 
 * You can also filter by cluster, username, and other criteria as per your choice.
-
-<div>
-  <img src="/resources/lens/data_sources/minerva/Untitled1.png" alt="Untitled" />
-</div>
 
 1. **Select the Query ID:** Choose the query ID you are interested in. You will then be able to check the statistics, as shown in the example below:
 
