@@ -65,7 +65,7 @@ FROM
 
 ### 2. **Defining the Table in the Model**
 
-In the tables directory, create a definition for each entity. For example, to define a table for sales data:
+In the tables directory, create a definition for real world entity. For example, to define a table for sales data:
 
 ```yaml
 table:
