@@ -144,7 +144,8 @@
           ]
         },
         "resources/lens/fine_tuning_a_lens_model"
-    },
+          ]
+        },
     {
       "group": "API Documentation",
       "pages": [
