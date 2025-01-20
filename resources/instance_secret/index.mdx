@@ -38,168 +38,74 @@ The structure of the Instance Secret manifest file is outlined as follows:
 To facilitate the creation of Instance Secret accessing commonly used data sources and repositories, we have compiled a collection of pre-defined manifest templates. These templates serve as a starting point.
 
 <AccordionGroup>
-  <Accordion title="Object Store" defaultOpen={false}>
-    Object stores are distributed storage systems designed to store and manage large amounts of unstructured data. Instance-Secrets can configured to securely store sensitive information of the following object stores:
-
-    <AccordionGroup>
-      <Accordion title="ABFSS" defaultOpen={false}>
-        The manifest files provided below are the templates for securely storing ABFSS credentials. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
-
-        <CodeGroup>
-          ```yaml Read-only instance-secret
-          # Azure Blob File System Secure (ABFSS) Read Instance Secret Manifest
-
-          name: ${abfss-depot-name}-r # Name of the instance-secret, indicating it's for read-only access.
-          version: v1 # Manifest Version           
-          type: instance-secret # Resource-type
-          description: ${description}   # Optional: Brief description of the instance-secret's purpose.
-          layer: user # DataOS Layer                 
-          instance-secret:
-            type: key-value-properties  # Type of Instance-secret
-            acl: r                     # Access control level, set to 'r' for read-only access.
-            data:                       
-              azureendpointsuffix: ${azure-endpoint-suffix}  # Endpoint suffix for the Azure storage account.
-              azurestorageaccountkey: ${azure-storage-account-key}  # Access key for the Azure storage account.
-              azurestorageaccountname: ${azure-storage-account-name}  # Name of the Azure storage account.
-          ```
-
-          ```
-          ```
-        </CodeGroup>
-      </Accordion>
-
-      <Accordion title="WASBS" defaultOpen={false}>
-        The manifest files provided below are the templates for securely storing WASBS credentials. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
-
-        <CodeGroup>
-          ```javascript helloWorld.js
-          console.log("Hello World");
-          ```
-        </CodeGroup>
-      </Accordion>
-
-      <Accordion title="GCS" defaultOpen={false}>
-        The manifest files provided below are the templates for securely storing GCS credentials. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
-
-        <CodeGroup>
-          ```javascript Read-only instance-secret
-          console.log("Hello World");
-          ```
-
-          ```
-          console.log("Hello World");
-          ```
-        </CodeGroup>
-      </Accordion>
-
-      <Accordion title="S3" defaultOpen={false}>
-        The manifest files provided below are the templates for securely storing GCS credentials. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
-
-        <CodeGroup>
-          ```javascript helloWorld.js
-          console.log("Hello World");
-          ```
-        </CodeGroup>
-      </Accordion>
-    </AccordionGroup>
+  <Accordion title="ABFSS" defaultOpen={false}>
+    k
   </Accordion>
 
-  <Accordion title="Data Warehouse" defaultOpen={false}>
-    A data warehouse serves as a centralized repository for structured data, enabling efficient query and analysis. Instance-Secrets can be configured for securely storing credentials for the Amazon Redshift, Snowflake, and Google Bigquery Warehouses in the following ways:
-
-    <AccordionGroup>
-      <Accordion title="Bigquery" defaultOpen={false}>
-        The manifest files provided below are the templates for securely storing Google Bigquery credentials. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
-
-        <CodeGroup>
-          ```javascript helloWorld.js
-          console.log("Hello World");
-          ```
-        </CodeGroup>
-      </Accordion>
-
-      <Accordion title="Redshift" defaultOpen={false}>
-        The manifest files provided below are the templates for securely storing Amazon Redshift credentials. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
-
-        <CodeGroup>
-          ```javascript helloWorld.js
-          console.log("Hello World");
-          ```
-        </CodeGroup>
-      </Accordion>
-
-      <Accordion title="Snowflake" defaultOpen={false}>
-        The manifest files provided below are the templates for securely storing Snowflake credentials. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
-
-        <CodeGroup>
-          ```javascript Read-only instance-secret
-          console.log("Hello World");
-          ```
-        </CodeGroup>
-      </Accordion>
-    </AccordionGroup>
+  <Accordion title="WASBS" defaultOpen={false}>
+    k
   </Accordion>
 
-  <Accordion title="SQL Databases" defaultOpen={false}>
-    SQL databases are typically centralized systems designed for structured data, organized into tables with a predefined schema. Instance-Secrets are configured to securely access and interact with the respective SQL databases.
+  <Accordion title="GCS" defaultOpen={false}>
+    k
+  </Accordion>
 
-    <AccordionGroup>
-      <Accordion title="MySQL" defaultOpen={false}>
-        The manifest files provided below are the templates for securely storing MySQL credentials. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+  <Accordion title="S3" defaultOpen={false}>
+    k
+  </Accordion>
 
-        <CodeGroup>
-          ```javascript helloWorld.js
-          console.log("Hello World");
-          ```
-        </CodeGroup>
-      </Accordion>
+  <Accordion title="Bigquery" defaultOpen={false}>
+    k
+  </Accordion>
 
-      <Accordion title="MSSQL" defaultOpen={false}>
-        The manifest files provided below are the templates for securely storing MSSQL credentials. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+  <Accordion title="Redshift" defaultOpen={false}>
+    k
+  </Accordion>
 
-        <CodeGroup>
-          ```javascript helloWorld.js
-          console.log("Hello World");
-          ```
+  <Accordion title="Snowflake" defaultOpen={false}>
+    k
+  </Accordion>
 
-          ```
-          console.log("Hello World");
-          ```
-        </CodeGroup>
-      </Accordion>
+  <Accordion title="MySQL" defaultOpen={false}>
+    k
+  </Accordion>
 
-      <Accordion title="JDBC" defaultOpen={false}>
-        The manifest files provided below are the templates for securely storing JDBC credentials. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+  <Accordion title="JDBC" defaultOpen={false}>
+    k
+  </Accordion>
 
-        <CodeGroup>
-          ```javascript helloWorld.js
-          console.log("Hello World");
-          ```
-        </CodeGroup>
-      </Accordion>
+  <Accordion title="Oracle " defaultOpen={false}>
+    k
+  </Accordion>
 
-      <Accordion title="Oracle" defaultOpen={false}>
-        The manifest files provided below are the templates for securely storing Oracle credentials. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+  <Accordion title="Postgres" defaultOpen={false}>
+    k
+  </Accordion>
 
-        <CodeGroup>
-          ```javascript helloWorld.js
-          console.log("Hello World");
-          ```
-        </CodeGroup>
-      </Accordion>
+  <Accordion title="MongoDB" defaultOpen={false}>
+    k
+  </Accordion>
 
-      <Accordion title="Postgres" defaultOpen={false}>
-        The manifest files provided below are the templates for securely storing Postgres credentials. Depending on your access needs (read-only or read-write), start with the corresponding YAML template provided below.
+  <Accordion title="Eventhub" defaultOpen={false}>
+    k
+  </Accordion>
 
-        <CodeGroup>
-          ```javascript helloWorld.js
-          console.log("Hello World");
-          ```
-        </CodeGroup>
-      </Accordion>
-    </AccordionGroup>
+  <Accordion title="Git" defaultOpen={false}>
+    k
+  </Accordion>
+
+  <Accordion title="Bitbucket" defaultOpen={false}>
+    k
+  </Accordion>
+
+  <Accordion title="AWS CodeCommit" defaultOpen={false}>
+    k
   </Accordion>
 </AccordionGroup>
+
+
+
+
 
 ## First steps
 

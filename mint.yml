@@ -55,6 +55,16 @@ topbarLinks:
 
   * resources/instance_secret/index
 
+  * group: First Steps
+    pages: 
+
+    * resources/instance_secret/first_steps
+
+  * group: Configurations
+    pages:
+
+    * resources/instance_secret/configurations
+
 * group: Lens
   pages:
 

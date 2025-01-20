@@ -68,7 +68,7 @@
       ]
     },
     {
-      "group": "Introduction",
+      "group": "Instance Secret",
       "pages": [
         "resources/instance_secret/index",
         {
