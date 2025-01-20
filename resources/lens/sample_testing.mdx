@@ -1,87 +1,1103 @@
 ---
-title: "Working with Segments"
+title: "Exploration of Lens using GraphQL"
 ---
 
 <Info>
-  To get started with segments, refer to this quick guide on working with segments. This guide will help in defining and applying segments in Lens that can be used during analysis. With segments, users can save time and make complex filtering logic reusable.
+  For a more streamlined and interactive experience with GraphQL, use the GraphQL playground on Data Product Hub. This interface simplifies interactions and eliminates the need to manually work with tools like curl. [Access the GraphQL guide here](https://dataos.info/interfaces/data_product_hub/activation/app_development/).
 </Info>
 
-## When to use Segments?
+This guide provides comprehensive instructions for accessing and interacting with the Lens GraphQL API. You can interact with the Lens GraphQL API using:
 
-* **Complex filtering logic**: Segments are ideal for defining complex filtering logic in SQL that can be reused across multiple queries.
+1. [**Explorer Studio in Data Product Hub**](#using-explorer-studio-in-data-product-hub): An interactive in-browser tool for writing and executing GraphQL queries.
 
-* **Reusability**: When you observe the reuse of common filters across various queries. Where the value of the filter doesn’t vary much.## How to define Segments?Segments are pre-defined groups of filters. It provides the ability to define Segments (filters) as code within the Lens YAML. They can be used to define repetitively used groups of filters by the stakeholders. Segments are defined within a Lens table’s schema. Utilize the **`sql`** parameter to define how a segment filters out a subset of data, ensuring the SQL expression is valid within a **`WHERE`** statement. For example, users for one particular city can be treated as a segment
+2. [**Curl**](#using-curl): A command-line tool for transferring data with URLs, useful for automated scripts.
 
-```sql
-  tables:
-    - name: customers
-      sql: {{ load_sql('customers') }}
-      description: "This table captures detailed customer information"
-      public: true
-      dimensions:   
-        - name: country
-          type: string
-          column: country
-          description: "The country where the customer resides, providing geographic segmentation and analysis opportunities."
+3. [**Python**](#using-python): Use Python's `requests` library for more complex interactions with the API.
 
-       #...
-       
-      segments:
-        - name: common_state
-          sql: "{TABLE}.state = 'Illinois'"
-```
+4. [**Postman**](#using-postman): Use Postman API platform to start using and testing REST APIs.
 
-* This is the segment definition for customers located in **Illinois**. It can be reused in queries instead of repeatedly writing `WHERE {TABLE}.state = 'Illinois'`.
+## Authentication and Authorization
 
-* Use ‘OR’ to define a filter involving multiple columns. An example segment declaration to create a group of commonly used state filters:\`\`\`
-  segments:
+To securely interact with the Lens GraphQL API, you must authenticate your requests using a **DataOS API key** and ensure proper user group configurations. This section explains how to generate an API key and configure user groups for accessing the API.
 
-  * name: common\_state
-    sql: "{TABLE}.state = 'Illinois' or {TABLE}.state = 'Ohio'"
+### **Generating a DataOS API Key**
 
-````
-Consider the above segment equivalent to the following `WHERE` clause.
+To authenticate API requests, you need a DataOS API key. This key validates your identity and ensures only authorized users can access and query the data.
 
-```sql
-WHERE Country = 'Illinois' OR Country = 'Ohio';
-```- You can leverage filtering keywords such as `LIKE` to define filtering criteria. For example to segment customer records based on the condition that the `state` is either **Illinois** or contains the word **Ohio** (such as "Ohio", "New Ohio", etc.).
-  ```yaml
-  segments:
-    - name: common_state
-      sql: "{TABLE}.state = 'Illinois' or {TABLE}.state like '%Ohio%'"
-````
+**Steps to Generate an API Key:**
 
-The above segment would be equivalent to the following SQL `WHERE` clause.
+1. Open your terminal and run the following command to create a new API key:\`\`\`bash
+   dataos-ctl user apikey create\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\````
+   ```
 
-```sql
-WHERE state = 'Illinois' OR state LIKE '%Ohio%'
-```
+2. To view existing API keys, use:\`\`\`bash
+   dataos-ctl user apikey get\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\````
+   ```
 
-* You can combine logical operators like `OR` and `AND` to create dynamic criteria for segments. This is useful when you need to apply filters to more than one column.Below example filters records from the `Customers` table where the `Country` is **Spain**, and the `CustomerName` starts with either "G" or "R".\`\`\`
-  segments:\`\`\`## Defining row filter policy on Segment```
+3. Note down your API key and keep it secure. You will use this key to authenticate your API requests.
 
-  * name: spain\_and\_customer\_name
-    sql: "{TABLE}.Country = 'Spain' AND ({TABLE}.CustomerName LIKE 'G%' OR {TABLE}.CustomerName LIKE 'R%')"
-  ```
+APIkey tokens can also be fetched from the DataOS GUI, for more details refer to the [documentation here](/interfaces/#create-tokens).
 
-Data policies can be defined directly on segments to enforce data governance and compliance. This ensures that access and interaction with different subsets of data are managed effectively. It applies a row filter data policy to show specific data based on user groups.Let's demonstrate an example by adding the filter policy to the `segments` section of a table definition:
+### **Configuring User Groups**
 
-**Example:** Filtering rows to show online sales data to `type-analyst` user groups and hide `reader` user groups.
+To access and query data via the GraphQL endpoint, users must be part of a user group with the required permissions. The necessary permissions are defined using the `api_scopes` attribute within the user group configuration located in the Lens directory.
+
+**Example User Group Configuration**
+
+The following YAML configuration demonstrates how to set up user groups with different levels of access:
 
 ```yaml
-table:
+user_groups:
+  # User group with full access to GraphQL API and data querying capabilities
+  - name: engineer
+    description: Data Analyst
+    api_scopes:
+      - meta      # For accessing metadata
+      - graphql   # For accessing the GraphQL API
+      - data      # For querying the data
+    includes:
+      - users:id:exampleuser
 
-#...
+  # User group with access to GraphQL API but no data querying capabilities
+  - name: analyst
+    description: Data Engineer
+    api_scopes:
+      - meta
+      - graphql
+    includes:
+      - users:id:testuser
 
-segments:
+  # User group without access to GraphQL API or data querying capabilities
+  - name: testuser
+    description: Data Engineer
+    api_scopes:
+      - meta
+    includes:
+      - users:id:testuser
+```
 
-  name: online\_sales
-  sql: "{TABLE}.order\_mode = 'online'"
-  meta:
-    secure:
-  user_groups:
-  includes:
-    - reader
-  excludes:
-    - type-analyst
+**Explanation of the Configuration:**
+
+* **`engineer` Group:** This group can access the GraphQL API and query data because it includes both the `graphql` and `data` `api_scopes`.
+
+* **`analyst` Group:** This group can access the GraphQL API but cannot query the data because the `data` scope is missing.
+
+* **`testuser` Group:** This group cannot access the GraphQL API or query data because both the `graphql` and `data` scopes are missing.
+
+<Note>
+  The user groups configured above only manage access permissions at the consumption level within DataOS. However, source-level permissions defined by the source administrator (e.g., in Snowflake or BigQuery) remain applicable. For sources accessible through the DataOS Query Engine (Minerva/Themis), you can define source-level permissions using the [Bifrost](/interfaces/bifrost/) application in the DataOS GUI or using the [Policy](/resources/policy/) and [Grant](/resources/grant/) Resource using DataOS CLI.
+</Note>
+
+## How to access the GraphQL API?
+
+### **Using Explorer Studio in Data Product Hub**
+
+The Explorer Studio of Data Product Hub provides an intuitive, in-browser interface to interact with the GraphQL API.
+
+1. **Open Metis:** Go to the Metis application on the DataOS GUI and navigate to the Resource section here click on Lens choose the desired deployed Lens model.
+
+<div>
+  <img src="/resources/lens/consumption_of_deployed_lens/graphql/graphql1.png" alt="graphql" />
+</div>
+
+1. **Access GraphQL Tab:** Click on the ‘Explore in Studio’ button, the Studio will appear from here navigate to the GraphQL tab.
+
+<div>
+  <img src="/resources/lens/consumption_of_deployed_lens/graphql/graphql2.png" alt="graphql" />
+</div>
+
+1. **Compose a Query:** Enter your GraphQL query in the left pane.
+
+<div>
+  <img src="/resources/lens/consumption_of_deployed_lens/graphql/graphql3.png" alt="graphql" />
+</div>
+
+You can press `Ctrl + Space` to bring up the autocomplete window. For example:
+
+```graphql
+query LensQuery {
+    table {
+      wallet_sales_view {
+      revenue
+    }
+    }
+  }
+```
+
+1. **Execute the Query:** Click the 'Execute' button or press `Ctrl + Enter` to run the query. The results will appear in the right pane.
+
+```graphql
+{
+   "data": {
+       "table": [
+           {
+               "wallet_sales_view": {
+                   "revenue": 77835071
+               }
+           }
+       ]
+   }
+}
+```
+
+### **Using Curl**
+
+Curl is a command-line tool used for transferring data with URLs, making it a convenient choice for interacting with APIs directly from the terminal. Ensure that `curl` is installed on your system before proceeding.
+
+1. **Prepare the Request:** To send a GraphQL query using Curl, construct your request with the following template:
+
+<CodeGroup>
+ ```bash Syntax
+ curl -X POST <URL> \
+ -H "Content-Type: application/json" \
+ -H "apikey: <DATAOS_API_KEY>" \
+ -d '{"query": "<GRAPHQL_QUERY>"}'
+ ```
+
+ ```bash Example
+ curl -X POST https://alpha-omega.dataos.app/lens2/api/public:lakehouse-insights01/v2/graphql \
+ -H "Content-Type: application/json" \
+ -H "apikey: abcdefghijklmnopqrstuvwxyz" \
+ -d '{"query": "query LensQuery { table { total_operations { lakehouse_insights_total_data_size_in_gb lakehouse_insights_table_name } } }"}'
+ ```
+</CodeGroup>
+
+* **Replace `<URL>` with the appropriate endpoint based on your environment**:
+
+```bash
+https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/graphql
+```
+
+* **Replace `<DATAOS_API_KEY>`with your actual DataOS API key:** Refer to the \[Generating an API Key]\(#generating-an-api-key) section for more information on obtaining an API key.
+
+  * **Replace `<DATAOS_FQDN>` with the fully qualified domain name of your DataOS instance:** For example: \`alpha-omega.dataos.app\` or \`happy-kangaroo.dataos.app\`.
+
+  * **Replace `<WORKSPACE>` with the DataOS Workspace name where the Lens is deployed:** This is typically the name of the DataOS Workspace where the Lens is deployed. For example: `public`, `sandbox`, etc.
+
+  * **Replace `<NAME_OF_LENS>` with the name of your deployed Lens model:** This corresponds to the specific Lens model you want to query.
+
+  * **Replace `<GRAPHQL_QUERY>` with your GraphQL query:**  Format the query as a valid JSON string.
+
+1. **Execute the Command:**  Run the command in your terminal to execute the query and view the response.
+
+<Note>
+  Ensure you replace the placeholders with the actual values specific to your environment. Properly formatted queries and valid API keys are essential for successful API interactions.
+</Note>
+
+
+      {
+        "account": {
+          "city": "Cincinnati",
+          "total_accounts": 3
+        }
+      },
+      {
+        "account": {
+          "city": "Denver",
+          "total_accounts": 2
+        }
+      },
+      {
+        "account": {
+          "city": "Baton Rouge",
+          "total_accounts": 2
+        }
+      },
+      {
+        "account": {
+          "city": "Baltimore",
+          "total_accounts": 2
+        }
+      },
+      {
+        "account": {
+          "city": "Portland",
+          "total_accounts": 2
+        }
+      },
+
+      {
+        "account": {
+          "city": "Seattle",
+          "total_accounts": 2
+        }
+      },
+      {
+        "account": {
+          "city": "Springfield",
+          "total_accounts": 1
+        }
+      },
+      {
+        "account": {
+          "city": "San Diego",
+          "total_accounts": 1
+        }
+      },
+      {
+        "account": {
+          "city": "Austin",
+          "total_accounts": 1
+        }
+      },
+      {
+        "account": {
+          "city": "King of Prussia",
+          "total_accounts": 1
+        }
+      },
+      {
+        "account": {
+          "city": "Columbus",
+          "total_accounts": 1
+        }
+      }
+    ]
+  }
+}
+```
+
+### **Modifying time dimension granularity**
+
+The granularity for a time dimension can easily be changed by specifying it in the query:
+
+```graphql
+query LensQuery {
+  table {
+    sales {
+      invoice_date {
+        month
+      }
+    }
+  }
+}
+```
+
+Any supported granularity can be used. If you prefer to not specify a granularity, then use `value`:
+
+```graphql
+query LensQuery {
+  table {
+    sales {
+      invoice_date {
+        value
+      }
+    }
+  }
+}
+```
+
+### **Specifying filters**
+
+Filters can be set on the load query or on a specific table. Specifying the filter on the load query applies it to all tables in the query. Filters can be added to the query as follows:
+
+\=== "Query"
+
+```graphql
+query LensQuery {
+    table{
+    account(
+      where: { premise_code: { equals: "OFF" } }
+    ) {
+      total_accounts
+      city
+      premise_code
+    }
+  }
+}
+```
+
+\=== "Expected output"
+
+```json
+{
+  "data": {
+    "table": [
+      {
+        "account": {
+          "total_accounts": 25,
+          "city": "Los Angeles",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 11,
+          "city": "Kansas City",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 9,
+          "city": "Chicago",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 5,
+          "city": "San Francisco",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 5,
+          "city": "New York",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 5,
+          "city": "Houston",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 4,
+          "city": "Miami",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 4,
+          "city": "Philadelphia",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 2,
+          "city": "Sacramento",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Spokane",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Rochester",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Charleston",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Jacksonville",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Austin",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "King of Prussia",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Longview",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "San Antonio",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "San Jose",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Springfield",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Tulsa",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Baltimore",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Lafayette",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Greenville",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Portland",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Fort Lauderdale",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Tampa",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Cincinnati",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Fort Myers",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Colorado Springs",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "San Diego",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Amarillo",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Syracuse",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Omaha",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Baton Rouge",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Fort Wayne",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Minneapolis",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Columbus",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Denver",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Puyallup",
+          "premise_code": "OFF"
+        }
+      }
+    ]
+  }
+}
+```
+
+### **Specifying order by condition and limiting the result**
+
+A GraphQL query that specifies an order by condition and limits the number of results returned would look like this:
+
+\=== "Query"
+
+```graphql
+query LensQuery {
+    table(limit: 10) {
+    account(
+      orderBy: { total_accounts: desc}
+    ) {
+      total_accounts
+      city
+      premise_code
+    }
+  }
+}
+```
+
+\=== "Expected Output"
+
+```json
+{
+  "data": {
+    "table": [
+      {
+        "account": {
+          "total_accounts": 27,
+          "city": "Los Angeles",
+          "premise_code": "ON"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 25,
+          "city": "Los Angeles",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 9,
+          "city": "Chicago",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 7,
+          "city": "Los Angeles",
+          "premise_code": "BOTH"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 5,
+          "city": "Houston",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 5,
+          "city": "New York",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 5,
+          "city": "San Francisco",
+          "premise_code": "OFF"
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 4,
+          "city": "Greenville",
+          "premise_code": "ON"
+        }
+      },
+
+    ]
+  }
+}
+```
+
+### **Querying multiple tables**
+
+Using the same `account` table as before, let’s try and get the revenue for each. We can do this by adding the `sales` table to our query as follows:
+
+\=== "Query"
+
+```graphql
+query LensQuery {
+    table{
+    account{
+      total_accounts
+      city
+      premise_code
+    }
+    sales{
+      revenue
+    }
+  }
+}
+```
+
+\=== "Expected Output"
+
+```json
+{
+  "data": {
+    "table": [
+      {
+        "account": {
+          "total_accounts": 26,
+          "city": "Los Angeles",
+          "premise_code": "ON"
+        },
+        "sales": {
+          "revenue": 3911966
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 25,
+          "city": "Los Angeles",
+          "premise_code": "OFF"
+        },
+        "sales": {
+          "revenue": 10562513
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 11,
+          "city": "Kansas City",
+          "premise_code": "OFF"
+        },
+        "sales": {
+          "revenue": 3423034
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 9,
+          "city": "Chicago",
+          "premise_code": "OFF"
+        },
+        "sales": {
+          "revenue": 3206423
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 7,
+          "city": "Los Angeles",
+          "premise_code": "BOTH"
+        },
+        "sales": {
+          "revenue": 937897
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 5,
+          "city": "New York",
+          "premise_code": "OFF"
+        },
+        "sales": {
+          "revenue": 6716860
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 5,
+          "city": "Houston",
+          "premise_code": "OFF"
+        },
+        "sales": {
+          "revenue": 2687617
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 5,
+          "city": "San Francisco",
+          "premise_code": "OFF"
+        },
+        "sales": {
+          "revenue": 4070105
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 4,
+          "city": "Greenville",
+          "premise_code": "ON"
+        },
+        "sales": {
+          "revenue": 477785
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 4,
+          "city": "Philadelphia",
+          "premise_code": "OFF"
+        },
+        "sales": {
+          "revenue": 1942174
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 4,
+          "city": "Miami",
+          "premise_code": "OFF"
+        },
+        "sales": {
+          "revenue": 668754
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 2,
+          "city": "Cincinnati",
+          "premise_code": "ON"
+        },
+        "sales": {
+          "revenue": 164592
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 2,
+          "city": "San Francisco",
+          "premise_code": "ON"
+        },
+        "sales": {
+          "revenue": 679107
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 2,
+          "city": "Chicago",
+          "premise_code": "BOTH"
+        },
+        "sales": {
+          "revenue": 832273
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Springfield",
+          "premise_code": "OFF"
+        },
+        "sales": {
+          "revenue": 777520
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "King of Prussia",
+          "premise_code": "OFF"
+        },
+        "sales": {
+          "revenue": 766746
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Seattle",
+          "premise_code": "BOTH"
+        },
+        "sales": {
+          "revenue": 1063062
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Seattle",
+          "premise_code": "ON"
+        },
+        "sales": {
+          "revenue": 1177920
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "New York",
+          "premise_code": "BOTH"
+        },
+        "sales": {
+          "revenue": 781302
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Baltimore",
+          "premise_code": "OFF"
+        },
+        "sales": {
+          "revenue": 869502
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Chicago",
+          "premise_code": "ON"
+        },
+        "sales": {
+          "revenue": 74490
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Portland",
+          "premise_code": "OFF"
+        },
+        "sales": {
+          "revenue": 828035
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Jacksonville",
+          "premise_code": "OFF"
+        },
+        "sales": {
+          "revenue": 94176
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Greenville",
+          "premise_code": "OFF"
+        },
+        "sales": {
+          "revenue": 1767816
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "San Francisco",
+          "premise_code": "BOTH"
+        },
+        "sales": {
+          "revenue": 700260
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Philadelphia",
+          "premise_code": "BOTH"
+        },
+        "sales": {
+          "revenue": 848815
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "San Diego",
+          "premise_code": "OFF"
+        },
+        "sales": {
+          "revenue": 920196
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Portland",
+          "premise_code": "ON"
+        },
+        "sales": {
+          "revenue": 925375
+        }
+      },
+
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Baltimore",
+          "premise_code": "ON"
+        },
+        "sales": {
+          "revenue": 486769
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Jacksonville",
+          "premise_code": "ON"
+        },
+        "sales": {
+          "revenue": 64960
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Denver",
+          "premise_code": "OFF"
+        },
+        "sales": {
+          "revenue": 219864
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Columbus",
+          "premise_code": "OFF"
+        },
+        "sales": {
+          "revenue": 617413
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Baton Rouge",
+          "premise_code": "ON"
+        },
+        "sales": {
+          "revenue": 173586
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Baton Rouge",
+          "premise_code": "OFF"
+        },
+        "sales": {
+          "revenue": 819126
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Miami",
+          "premise_code": "BOTH"
+        },
+        "sales": {
+          "revenue": 142380
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Denver",
+          "premise_code": "ON"
+        },
+        "sales": {
+          "revenue": 798121
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Cincinnati",
+          "premise_code": "OFF"
+        },
+        "sales": {
+          "revenue": 941096
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Austin",
+          "premise_code": "OFF"
+        },
+        "sales": {
+          "revenue": 84138
+        }
+      },
+      {
+        "account": {
+          "total_accounts": 1,
+          "city": "Spokane",
+          "premise_code": "ON"
+        },
+        "sales": {
+          "revenue": 972030
+        }
+      }
+    ]
+  }
+}
 ```
