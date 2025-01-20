@@ -26,14 +26,12 @@ To authenticate API requests, you need a DataOS API key. This key validates your
 
 **Steps to Generate an API Key:**
 
-1. Open your terminal and run the following command to create a new API key:
-   ```bash
-   dataos-ctl user apikey create
+1. Open your terminal and run the following command to create a new API key:\`\`\`bash
+   dataos-ctl user apikey create\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\````
    ```
 
-2. To view existing API keys, use:
-   ```bash
-   dataos-ctl user apikey get
+2. To view existing API keys, use:\`\`\`bash
+   dataos-ctl user apikey get\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\````
    ```
 
 3. Note down your API key and keep it secure. You will use this key to authenticate your API requests.
@@ -303,6 +301,44 @@ query LensQuery {
   }
   ```
 </CodeGroup>
+
+## GraphQL API Reference
+
+### `table`
+
+```graphql
+query {
+  Table [([TableQueryArgs])] {
+    <TableName> [([TableArgs])] {
+      <TableMember>
+    }
+  }
+}
+```
+
+| Key            | Schema         | Description                                 |
+| -------------- | -------------- | ------------------------------------------- |
+| TableQueryArgs | TableQueryArgs | Options that apply to the entire query      |
+| TableArgs      | TableArgs      | Options that apply only to a specific table |
+
+### TableQueryArgs
+
+* **`limit` (`Int`):** A [row limit](https://cube.dev/docs/product/apis-integrations/queries#row-limit) for your query.
+
+* **`offset` (`Int`):** The number of initial rows to be skipped for your query. The default value is `0`.
+
+* **`timezone` (`String`):** The [time zone](https://cube.dev/docs/product/apis-integrations/queries#time-zone) for your query. You can set the desired time zone in the [TZ Database Name(opens in a new tab)](https://en.wikipedia.org/wiki/Tz_database) format, e.g., `America/Los_Angeles`.
+
+### TableArgs
+
+| Key     | Schema            | Description                                                                                                                                                                                                                    |
+| ------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| where   | TableWhereInput   | The Where clause conditions specify the logical operators and filters you can use inside the where argument to refine your query. It uses logical operators like `AND`, `OR`  and to filter the specific table member filters. |
+| orderBy | TableOrderByInput | The `orderBy` clause specifies how to sort the query results. You can use it to sort by specific **table members** (fields/columns) in either ascending or descending order.                                                   |
+
+###
+
+
 
 ## GraphQL Query Examples
 
