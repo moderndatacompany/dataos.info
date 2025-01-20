@@ -4,20 +4,6 @@
 
 To create an Instance Secret Resource in DataOS, ensure you have access to the [DataOS Command Line Interface (CLI)](/interfaces/cli/) and the required permissions. Then, follow the provided steps to complete the creation process efficiently and securely.
 
-### **Get Appropriate Access Permission Use Case**
-
-In DataOS, different actions require specific use cases that grant the necessary permissions to execute a task. You can grant these use cases directly to a user or group them under a tag, which is then assigned to the user. The following table outlines various actions related to Worker Resources and the corresponding use cases required:
-
-| **Action** | **Required Use Cases** |
-|------------|------------------------|
-| Create a Worker   | [Read Workspace]()         |
-| Applying a Worker     | [Read Workspace]()         |
-| Get Workers in a Workspace       | [Read Workspaces]()<br>[Read Resources in User Specified Workspace]() OR<br>[Read Resources in User Workspaces]() (for public and sandbox workspaces) |
-| Delete Worker   | [Update]()                 |
-| Get Worker Logs   | [Update]()                 |
-
-To assign use cases, you can either contact the DataOS Operator or create a Grant Request by creating a Grant Resource. The request will be validated by the DataOS Operator.
-
 ### **Create a manifest file**
 
 Begin by creating a manifest file that will hold the configuration details for your Instance Secret. A sample manifest is provided below:
