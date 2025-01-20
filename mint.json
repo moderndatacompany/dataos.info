@@ -71,13 +71,11 @@
       "group": "Instance Secret",
       "pages": [
         "resources/instance_secret/first_steps",
-        "resources/instance_secret/templates",
         "resources/instance_secret/configurations",
         {
           "group": "Recipes",
           "pages": [
-            "resources/instance_secret/recipes/example_1",
-            "resources/instance_secret/recipes/example_2"
+            "resources/instance_secret/how_to_guide/recipe_1"
           ]
         }
       ]
