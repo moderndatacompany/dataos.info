@@ -26,12 +26,12 @@ To authenticate API requests, you need a DataOS API key. This key validates your
 
 **Steps to Generate an API Key:**
 
-1. Open your terminal and run the following command to create a new API key:```bash
-   dataos-ctl user apikey create
+1. Open your terminal and run the following command to create a new API key:\`\`\`bash
+   dataos-ctl user apikey create```
    ```
 
-2. To view existing API keys, use:```bash
-   dataos-ctl user apikey get
+2. To view existing API keys, use:\`\`\`bash
+   dataos-ctl user apikey get```
    ```
 
 3. Note down your API key and keep it secure. You will use this key to authenticate your API requests.
@@ -249,7 +249,7 @@ query LensQuery {
 }
 ```
 
-* Replace the table name and choose the required dimensions and measures.**** For instance,  to compare the average price and average margin of two major categories: Apparel and Footwear for the `products` table. The request body will be:
+* Replace the table name and choose the required dimensions and measures.\*\*\*\* For instance,  to compare the average price and average margin of two major categories: Apparel and Footwear for the `products` table. The request body will be:
 
 [](https://dataos.info/resources/lens/exploration_of_deployed_lens_using_graphql/#__codelineno-18-1)
 
@@ -274,6 +274,29 @@ query LensQuery {
         average_price
         average_margin
       }
+    }
+  }
+  ```
+
+  ```json Response
+  {
+    "data": {
+      "table": [
+        {
+          "products": {
+            "productcategory": "Apparel",
+            "average_price": 84.94859281437131,
+            "average_margin": 50.872714570858385
+          }
+        },
+        {
+          "products": {
+            "productcategory": "Footwear",
+            "average_price": 83.98569138276541,
+            "average_margin": 49.84462925851698
+          }
+        }
+      ]
     }
   }
   ```
@@ -398,9 +421,30 @@ Filters can be set on the load query or on a specific table. Specifying the filt
     }
   }
   ```
+
+  ```
+  {
+    "data": {
+      "table": [
+        {
+          "account": {
+            "total_accounts": 25,
+            "city": "Los Angeles",
+            "premise_code": "OFF"
+          }
+        },
+        {
+          "account": {
+            "total_accounts": 11,
+            "city": "Kansas City",
+            "premise_code": "OFF"
+          }
+        }
+      ]
+    }
+  }
+  ```
 </CodeGroup>
-
-
 
 [](https://dataos.info/resources/lens/exploration_of_deployed_lens_using_graphql/#__codelineno-26-1)**Specifying order by condition and limiting the result**
 
@@ -486,11 +530,9 @@ A GraphQL query that specifies an order by condition and limits the number of re
 
       ]
     }
-  }llo World");
+  }
   ```
 </CodeGroup>
-
-
 
 ### **Querying multiple tables**
 
@@ -510,6 +552,55 @@ Using the same `account` table as before, let’s try and get the revenue for 
       sales{
         revenue
       }
+    }
+  }
+  ```
+
+  ```
+  {
+    "data": {
+      "table": [
+        {
+          "account": {
+            "total_accounts": 26,
+            "city": "Los Angeles",
+            "premise_code": "ON"
+          },
+          "sales": {
+            "revenue": 3911966
+          }
+        },
+        {
+          "account": {
+            "total_accounts": 25,
+            "city": "Los Angeles",
+            "premise_code": "OFF"
+          },
+          "sales": {
+            "revenue": 10562513
+          }
+        },
+        {
+          "account": {
+            "total_accounts": 7,
+            "city": "New York",
+            "premise_code": "BOTH"
+          },
+          "sales": {
+            "revenue": 937897
+          }
+        },
+        {
+          "account": {
+            "total_accounts": 5,
+            "city": "Chicago",
+            "premise_code": "OFF"
+          },
+          "sales": {
+            "revenue": 3206423
+          }
+        }
+      ]
     }
   }
   ```
