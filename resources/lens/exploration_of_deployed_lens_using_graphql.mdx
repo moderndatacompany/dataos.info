@@ -27,11 +27,11 @@ To authenticate API requests, you need a DataOS API key. This key validates your
 **Steps to Generate an API Key:**
 
 1. Open your terminal and run the following command to create a new API key:\`\`\`bash
-   dataos-ctl user apikey create\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\````
+   dataos-ctl user apikey create\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\````
    ```
 
 2. To view existing API keys, use:\`\`\`bash
-   dataos-ctl user apikey get\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\````
+   dataos-ctl user apikey get\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\`\````
    ```
 
 3. Note down your API key and keep it secure. You will use this key to authenticate your API requests.
@@ -331,14 +331,59 @@ query {
 
 ### TableArgs
 
-| Key     | Schema            | Description                                                                                                                                                                                                                    |
-| ------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| where   | TableWhereInput   | The Where clause conditions specify the logical operators and filters you can use inside the where argument to refine your query. It uses logical operators like `AND`, `OR`  and to filter the specific table member filters. |
-| orderBy | TableOrderByInput | The `orderBy` clause specifies how to sort the query results. You can use it to sort by specific **table members** (fields/columns) in either ascending or descending order.                                                   |
+| Key     | Schema            | Description                                                                                                                                                                                                                                  |
+| ------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| where   | TableWhereInput   | The 'where' clause conditions specify the logical operators and filters you can use inside the where argument to refine your query. It uses logical operators like `AND`, `OR`  and to [filter](#filters) the specific table member filters. |
+| orderBy | TableOrderByInput | The `orderBy` clause specifies how to sort the query results. You can use it to sort by specific **table members** (fields/columns) in either ascending or descending order.                                                                 |
 
-###
+### Filters
 
+* Datetime filters
 
+*
+
+These filters are used within the `where` clause to refine query results based on different data types like `DateTime`, `Float`, and `String`.
+
+#### `datetime` filter
+
+| Key            | Schema    | Description                                      |
+| -------------- | --------- | ------------------------------------------------ |
+| equals         | String    | Matches exactly the specified datetime string.   |
+| notEquals      | String    | Does not match the specified datetime string.    |
+| in             | \[String] | Matches any datetime from the list of values.    |
+| notIn          | \[String] | Does not match any datetime from the list.       |
+| inDateRange    | \[String] | Matches datetime values within the given range.  |
+| notInDateRange | \[String] | Excludes datetime values within the given range. |
+| beforeDate     | String    | Matches any datetime before the specified date.  |
+| afterDate      | String    | Matches any datetime after the specified date.   |
+| set            | Boolean   | Indicates if the datetime field is set.          |
+
+#### `float` filter
+
+| Key       | Schema   | Description                                   |
+| --------- | -------- | --------------------------------------------- |
+| equals    | Float    | Matches exactly the specified float value.    |
+| notEquals | Float    | Does not match the specified float value.     |
+| in        | \[Float] | Matches any float value from the list.        |
+| notIn     | \[Float] | Does not match any float value from the list. |
+| set       | Boolean  | Indicates if the float field is set.          |
+
+#### `string` filter
+
+| Key         | Schema    | Description                                              |
+| ----------- | --------- | -------------------------------------------------------- |
+| equals      | String    | Matches exactly the specified string value.              |
+| notEquals   | String    | Does not match the specified string value.               |
+| in          | \[String] | Matches any string value from the list.                  |
+| notIn       | \[String] | Does not match any string value from the list.           |
+| contains    | String    | Matches strings that contain the specified value.        |
+| notContains | String    | Does not match strings that contain the specified value. |
+| set         | Boolean   | Indicates if the string field is set.                    |
+|             |           |                                                          |
+
+### orderBy
+
+`asc` | `desc`
 
 ## GraphQL Query Examples
 
