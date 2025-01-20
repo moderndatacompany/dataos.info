@@ -68,6 +68,22 @@
       ]
     },
     {
+      "group": "Instance Secret",
+      "pages": [
+        "resources/instance_secret/first_steps",
+        "resources/instance_secret/templates",
+        "resources/instance_secret/configurations",
+        {
+          "group": "Recipes",
+          "pages": [
+            "resources/instance_secret/recipes/example_1",
+            "resources/instance_secret/recipes/example_2"
+          ]
+        }
+      ]
+    },
+    
+    {
       "group": "Lens",
       "pages": [
         "resources/lens/index",
