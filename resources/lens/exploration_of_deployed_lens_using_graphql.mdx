@@ -197,9 +197,10 @@ When working with a Postman collection to test APIs, you typically need to confi
    * Open Postman and click on the **Import** button located at the top-left corner.
 
    * Import the Postman Collection file you’ve been given. For example, if you import the Lens API collection from the provided link, you will see a collection of API requests neatly organized into folders. Refer to the below image for subsequent steps.
-     ![postman](https://dataos.info/resources/lens/exploring_deployed_lens_using_rest_apis/Untitled1.png "Postman")
 
-2. **Set up Authorization (bearer token):**
+![postman](https://dataos.info/resources/lens/exploring_deployed_lens_using_rest_apis/Untitled1.png "Postman")
+
+1. **Set up Authorization (bearer token):**
 
    * Once the collection is imported, click on the specific API request you want to test.
 
@@ -211,9 +212,9 @@ When working with a Postman collection to test APIs, you typically need to confi
 
    * This token grants you access to the meta and data scopes.
 
-3. **Set the Request type:** Select the API request type as `POST` from the dropdown next to the API URL.
+2. **Set the Request type:** Select the API request type as `POST` from the dropdown next to the API URL.
 
-4. **Prepare the URL and Query the API:**  Prepare the URL according to what data you want to fetch.
+3. **Prepare the URL and Query the API:**  Prepare the URL according to what data you want to fetch.
 
 ```bash
 
@@ -238,8 +239,6 @@ https://<DATAOS_FQDN>/lens2/api/<WORKSPACE>:<NAME_OF_LENS>/v2/graphql
 
 * Enter the GraphQL query in the provided field in the following format.
 
-[](https://dataos.info/resources/lens/exploration_of_deployed_lens_using_graphql/#__codelineno-18-1)
-
 ```json
 query LensQuery {
   table(limit: <int>, offset: <int> timezone:<>) {
@@ -254,8 +253,6 @@ query LensQuery {
 ```
 
 * Replace the table name and choose the required dimensions and measures.\*\*\*\* For instance,  to compare the average price and average margin of two major categories: Apparel and Footwear for the `products` table. The request body will be:
-
-[](https://dataos.info/resources/lens/exploration_of_deployed_lens_using_graphql/#__codelineno-18-1)
 
 <CodeGroup>
   ```json Query
@@ -350,40 +347,29 @@ These filters are used within the `where` clause to refine query results based o
 
 #### `datetime` filter
 
-| Key            | Schema    | Description                                      |
-| -------------- | --------- | ------------------------------------------------ |
-| equals         | String    | Matches exactly the specified datetime string.   |
-| notEquals      | String    | Does not match the specified datetime string.    |
-| in             | \[String] | Matches any datetime from the list of values.    |
-| notIn          | \[String] | Does not match any datetime from the list.       |
-| inDateRange    | \[String] | Matches datetime values within the given range.  |
-| notInDateRange | \[String] | Excludes datetime values within the given range. |
-| beforeDate     | String    | Matches any datetime before the specified date.  |
-| afterDate      | String    | Matches any datetime after the specified date.   |
-| set            | Boolean   | Indicates if the datetime field is set.          |
+| Key            | **Schema** | **Description**                                  |
+| -------------- | ---------- | ------------------------------------------------ |
+| equals         | String     | Matches exactly the specified datetime string.   |
+| notEquals      | String     | Does not match the specified datetime string.    |
+| in             | \[String]  | Matches any datetime from the list of values.    |
+| notIn          | \[String]  | Does not match any datetime from the list.       |
+| inDateRange    | \[String]  | Matches datetime values within the given range.  |
+| notInDateRange | \[String]  | Excludes datetime values within the given range. |
+| beforeDate     | String     | Matches any datetime before the specified date.  |
+| afterDate      | String     | Matches any datetime after the specified date.   |
+| set            | Boolean    | Indicates if the datetime field is set.          |
 
 #### `float` filter
 
-| Key       | Schema   | Description                                   |
-| --------- | -------- | --------------------------------------------- |
-| equals    | Float    | Matches exactly the specified float value.    |
-| notEquals | Float    | Does not match the specified float value.     |
-| in        | \[Float] | Matches any float value from the list.        |
-| notIn     | \[Float] | Does not match any float value from the list. |
-| set       | Boolean  | Indicates if the float field is set.          |
+| Key       | Schema  | Description                                   |
+| --------- | ------- | --------------------------------------------- |
+| equals    | Float   | Matches exactly the specified float value.    |
+| notEquals | Float   | Does not match the specified float value.     |
+| in        | Float   | Matches any float value from the list.        |
+| notIn     | Float   | Does not match any float value from the list. |
+| set       | Boolean | Indicates if the float field is set.          |
 
 #### `string` filter
-
-| Key         | Schema    | Description                                              |
-| ----------- | --------- | -------------------------------------------------------- |
-| equals      | String    | Matches exactly the specified string value.              |
-| notEquals   | String    | Does not match the specified string value.               |
-| in          | \[String] | Matches any string value from the list.                  |
-| notIn       | \[String] | Does not match any string value from the list.           |
-| contains    | String    | Matches strings that contain the specified value.        |
-| notContains | String    | Does not match strings that contain the specified value. |
-| set         | Boolean   | Indicates if the string field is set.                    |
-|             |           |                                                          |
 
 ### orderBy
 
@@ -396,8 +382,6 @@ This section provides sample GraphQL queries that you can use directly in Explor
 ### **Querying a dimension**
 
 A GraphQL query to retrieve the `city` dimension associated with an `account` table might look something like this:
-
-[](https://dataos.info/resources/lens/exploration_of_deployed_lens_using_graphql/#__codelineno-18-1)
 
 <CodeGroup>
   ```json Query
@@ -437,8 +421,6 @@ A GraphQL query to retrieve the `city` dimension associated with an `account`
 
 The granularity for a time dimension can easily be changed by specifying it in the query:
 
-[](https://dataos.info/resources/lens/exploration_of_deployed_lens_using_graphql/#__codelineno-18-1)
-
 The granularity for a time dimension can easily be changed by specifying it in the query:
 
 ```
@@ -453,7 +435,7 @@ query LensQuery {
 }
 ```
 
-[](https://dataos.info/resources/lens/exploration_of_deployed_lens_using_graphql/#__codelineno-25-1)Any supported granularity can be used. If you prefer to not specify a granularity, then use `value`:
+Any supported granularity can be used. If you prefer to not specify a granularity, then use `value`:
 
 ```
 query LensQuery {
@@ -533,11 +515,9 @@ Filters can be set on the load query or on a specific table. Specifying the filt
   ```
 </CodeGroup>
 
-[](https://dataos.info/resources/lens/exploration_of_deployed_lens_using_graphql/#__codelineno-26-1)**Specifying order by condition and limiting the result**
+**Specifying order by condition and limiting the result**
 
 A GraphQL query that specifies an order by condition and limits the number of results returned would look like this:
-
-[](https://dataos.info/resources/lens/exploration_of_deployed_lens_using_graphql/#__codelineno-18-1)
 
 <CodeGroup>
   ```javascript Query
@@ -624,8 +604,6 @@ A GraphQL query that specifies an order by condition and limits the number of re
 ### **Querying multiple tables**
 
 Using the same `account` table as before, let’s try and get the revenue for each. We can do this by adding the `sales` table to our query as follows:
-
-[](https://dataos.info/resources/lens/exploration_of_deployed_lens_using_graphql/#__codelineno-18-1)
 
 <CodeGroup>
   ```javascript Query
@@ -741,6 +719,3 @@ Using the same `account` table as before, let’s try and get the revenue for 
   }
   ```
 </CodeGroup>
-
-[
-](https://dataos.info/resources/lens/exploration_of_deployed_lens_using_graphql/#__codelineno-18-1)
