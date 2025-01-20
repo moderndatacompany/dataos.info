@@ -345,31 +345,41 @@ query {
 
 These filters are used within the `where` clause to refine query results based on different data types like `DateTime`, `Float`, and `String`.
 
-#### `datetime` filter
+### `datetime` filter
 
-| Key            | **Schema** | **Description**                                  |
-| -------------- | ---------- | ------------------------------------------------ |
-| equals         | String     | Matches exactly the specified datetime string.   |
-| notEquals      | String     | Does not match the specified datetime string.    |
-| in             | \[String]  | Matches any datetime from the list of values.    |
-| notIn          | \[String]  | Does not match any datetime from the list.       |
-| inDateRange    | \[String]  | Matches datetime values within the given range.  |
-| notInDateRange | \[String]  | Excludes datetime values within the given range. |
-| beforeDate     | String     | Matches any datetime before the specified date.  |
-| afterDate      | String     | Matches any datetime after the specified date.   |
-| set            | Boolean    | Indicates if the datetime field is set.          |
+| Key              | Schema     | Description                                      |
+| ---------------- | ---------- | ------------------------------------------------ |
+| `equals`         | `String`   | Matches exactly the specified datetime string.   |
+| `notEquals`      | `String`   | Does not match the specified datetime string.    |
+| `in`             | `[String]` | Matches any datetime from the list of values.    |
+| `notIn`          | `[String]` | Does not match any datetime from the list.       |
+| `inDateRange`    | `[String]` | Matches datetime values within the given range.  |
+| `notInDateRange` | `[String]` | Excludes datetime values within the given range. |
+| `beforeDate`     | `String`   | Matches any datetime before the specified date.  |
+| `afterDate`      | `String`   | Matches any datetime after the specified date.   |
+| `set`            | `Boolean`  | Indicates if the datetime field is set.          |
 
-#### `float` filter
+### `float` filter
 
-| Key       | Schema  | Description                                   |
-| --------- | ------- | --------------------------------------------- |
-| equals    | Float   | Matches exactly the specified float value.    |
-| notEquals | Float   | Does not match the specified float value.     |
-| in        | Float   | Matches any float value from the list.        |
-| notIn     | Float   | Does not match any float value from the list. |
-| set       | Boolean | Indicates if the float field is set.          |
+| Key         | Schema    | Description                                   |
+| ----------- | --------- | --------------------------------------------- |
+| `equals`    | `Float`   | Matches exactly the specified float value.    |
+| `notEquals` | `Float`   | Does not match the specified float value.     |
+| `in`        | `[Float]` | Matches any float value from the list.        |
+| `notIn`     | `[Float]` | Does not match any float value from the list. |
+| `set`       | `Boolean` | Indicates if the float field is set.          |
 
-#### `string` filter
+### `string` filter
+
+| Key           | Schema     | Description                                              |
+| ------------- | ---------- | -------------------------------------------------------- |
+| `equals`      | `String`   | Matches exactly the specified string value.              |
+| `notEquals`   | `String`   | Does not match the specified string value.               |
+| `in`          | `[String]` | Matches any string value from the list.                  |
+| `notIn`       | `[String]` | Does not match any string value from the list.           |
+| `contains`    | `String`   | Matches strings that contain the specified value.        |
+| `notContains` | `String`   | Does not match strings that contain the specified value. |
+| `set`         | `Boolean`  | Indicates if the string field is set.                    |
 
 ### orderBy
 
@@ -454,7 +464,7 @@ query LensQuery {
 Filters can be set on the load query or on a specific table. Specifying the filter on the load query applies it to all tables in the query. Filters can be added to the query as follows:
 
 <CodeGroup>
-  ```javascript Query
+  ```graphql Query
   query LensQuery {
       table{
       account(
@@ -468,7 +478,7 @@ Filters can be set on the load query or on a specific table. Specifying the filt
   }
   ```
 
-  ```
+  ```graphql
   {
     "data": {
       "table": [
@@ -491,7 +501,30 @@ Filters can be set on the load query or on a specific table. Specifying the filt
   }
   ```
 
+  ```graphql
+  {
+    "data": {
+      "table": [
+        {
+          "account": {
+            "total_accounts": 25,
+            "city": "Los Angeles",
+            "premise_code": "OFF"
+          }
+        },
+        {
+          "account": {
+            "total_accounts": 11,
+            "city": "Kansas City",
+            "premise_code": "OFF"
+          }
+        }
+      ]
+    }
+  }
   ```
+
+  ```graphql Response
   {
     "data": {
       "table": [
@@ -520,7 +553,7 @@ Filters can be set on the load query or on a specific table. Specifying the filt
 A GraphQL query that specifies an order by condition and limits the number of results returned would look like this:
 
 <CodeGroup>
-  ```javascript Query
+  ```graphql Query
   query LensQuery {
       table(limit: 10) {
       account(
@@ -534,8 +567,7 @@ A GraphQL query that specifies an order by condition and limits the number of re
   }
   ```
 
-  ```json Response
-  console.log("He{
+  ```graphql Response
     "data": {
       "table": [
         {
@@ -606,7 +638,7 @@ A GraphQL query that specifies an order by condition and limits the number of re
 Using the same `account` table as before, let’s try and get the revenue for each. We can do this by adding the `sales` table to our query as follows:
 
 <CodeGroup>
-  ```javascript Query
+  ```graphql Query
   query LensQuery {
       table{
       account{
@@ -617,6 +649,55 @@ Using the same `account` table as before, let’s try and get the revenue for 
       sales{
         revenue
       }
+    }
+  }
+  ```
+
+  ```
+  {
+    "data": {
+      "table": [
+        {
+          "account": {
+            "total_accounts": 26,
+            "city": "Los Angeles",
+            "premise_code": "ON"
+          },
+          "sales": {
+            "revenue": 3911966
+          }
+        },
+        {
+          "account": {
+            "total_accounts": 25,
+            "city": "Los Angeles",
+            "premise_code": "OFF"
+          },
+          "sales": {
+            "revenue": 10562513
+          }
+        },
+        {
+          "account": {
+            "total_accounts": 7,
+            "city": "New York",
+            "premise_code": "BOTH"
+          },
+          "sales": {
+            "revenue": 937897
+          }
+        },
+        {
+          "account": {
+            "total_accounts": 5,
+            "city": "Chicago",
+            "premise_code": "OFF"
+          },
+          "sales": {
+            "revenue": 3206423
+          }
+        }
+      ]
     }
   }
   ```
