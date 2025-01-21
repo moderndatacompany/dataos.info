@@ -1,8 +1,12 @@
-# How to refer Instance Secret in other DataOS Resources?
+---
+title: "Instance Secret Recipe"
+---
+
+# How to refer to Instance Secret in other DataOS Resources?
 
 To access the stored secret data in DataOS, you can reference them in your code using the `dataosSecrets` attribute. This identifier ensures secure referencing of Instance Secrets for various resources, enhancing system security and operational integrity.
 
-## **Referring Instance Secret in Depot**
+## **Referring to Instance Secret in Depot**
 
 To refer to an Instance Secret in Depots, follow these steps:
 
@@ -12,31 +16,71 @@ To refer to an Instance Secret in Depots, follow these steps:
 
 For read-only access to a Depot, create read-only secrets. For read-write access, create both read and read-write instance-secrets. This is necessary because when providing someone else access to the Depot, you can grant either read or read-write access using either CLI or Bifrost UI. For either type of access, the person will have access to the respective instance-secret.
 
-=== "Read-only Instance Secret"
+<CodeGroup>
+  ```yaml Read-only Instance Secret
+  name: depotsecret-r # Resource name (mandatory)
+  version: v1 # Manifest version (mandatory)
+  type: instance-secret # Resource-type (mandatory)
+  tags: # Tags (optional)
+    - just for practice
+  description: instance secret configuration # Description of Resource (optional)
+  layer: user
+  instance-secret: # Instance Secret mapping (mandatory)
+    type: key-value-properties # Type of Instance-secret (mandatory)
+    acl: r # Access control list (mandatory)
+    data: # Data section mapping (mandatory)
+      username: iamgroot
+      password: yourpassword
+  ```
 
-    ```yaml title="read_instance_secret.yaml"
-    --8<-- "examples/resources/instance_secret/referencing_instance_secret_in_depot/sample_secret_r.yaml"
-    ```
+  ```
+  name: depotsecret-rw # Resource name (mandatory)
+  version: v1 # Manifest version (mandatory)
+  type: instance-secret # Resource-type (mandatory)
+  tags: # Tags (optional)
+    - just for practice
+  description: instance secret configuration # Description of Resource (optional)
+  layer: user
+  instance-secret: # Instance Secret mapping (mandatory)
+    type: key-value-properties # Type of Instance-secret (mandatory)
+    acl: rw # Access control list (mandatory)
+    data: # Data section mapping (mandatory)
+      username: iamgroot
+      password: yourpassword
+  ```
 
-=== "Read-write Instance Secret"
+  ```yaml Depot manifest file
+  name: depotsecret
+  version: v2alpha
+  type: depot
+  tags:
+    - snowflake
+    - depot
+  layer: user
+  depot:
+    type: SNOWFLAKE
+    description: testing instance secrets using snowflake depot
+  snowflake:
+    warehouse: mywarehouse
+    url: avengers.central-india.azure.snowflakecomputing.com
+    database: mydatabase
+    external: true
+    dataosSecrets:
+      - name: depotsecret-r
+        keys:
+          - depotsecret-r
 
-    ```yaml title="read_write_instance_secret.yaml"
-    --8<-- "examples/resources/instance_secret/referencing_instance_secret_in_depot/sample_secret_rw.yaml"
-    ```
+      - name: depotsecret-rw
+        keys:
+          - depotsecret-rw
+  ```
+</CodeGroup>
 
-    Now while creating the manifest file for your Depot, ensure to include a reference to the Instance Secret using the `dataosSecrets` identifier, instead of directly specifying the secret using the `connectionSecrets` attribute:
+Now while creating the manifest file for your Depot, ensure to include a reference to the Instance Secret using the `dataosSecrets` identifier, instead of directly specifying the secret using the `connectionSecrets` attribute.
 
-=== "Depot"
-
-    ```yaml title="depot.yaml"
-    --8<-- "examples/resources/instance_secret/referencing_instance_secret_in_depot/sample_depot.yaml"
-    ```
-
-<aside class="callout">
-
-🗣️ To ensure controlled access for read-write, it is essential to create two Instance Secrets: one with acl:r for read-only access and another with acl:rw for both read and write access and refer to both Instance-Secrets in a Depot as shown above. This enables precise management of permissions for different levels of access.
-
-</aside>
+<Warning>
+   To ensure controlled access for read-write, it is essential to create two Instance Secrets: one with acl:r for read-only access and another with acl:rw for both read and write access and refer to both Instance-Secrets in a Depot as shown above. This enables precise management of permissions for different levels of access.
+</Warning>
 
 ## **Referring Instance Secret in Service**
 
@@ -48,30 +92,88 @@ To refer to an Instance Secret in Service Resource, follow these steps:
 
 For read-only access to a Service, create read-only instance secrets. For read-write access, create both read and read-write instance-secrets. This is necessary because when providing someone else access to the Service, you can grant either read or read-write access using either CLI or Bifrost UI. For either type of access, the person will have access to the respective instance-secret.
 
-=== "Read-only Instance Secret"
+<CodeGroup>
+  ```yaml Read-only Instance Secret
+  name: codecommit-r
+  version: v1
+  type: instance-secret
+  description: "talos-example aws codecommit creds"
+  layer: user
+  instance-secret:
+    type: key-value
+    acl: r
+    data:
+      GITSYNC_USERNAME: "lens2-codecommit-at-387694172098"
+      GITSYNC_PASSWORD: "56F4japOhkkQDS3trUnAe12cXRTCl9+uuASDFG872J3lnclDPgHThHLto="
+  ```
 
-    ```yaml title="read_instance_secret.yaml"
-    --8<-- "examples/resources/instance_secret/service/secret.yaml"
-    ```
+  ```yaml Read-write Instance Secret
+  name: codecommit-rw
+  version: v1
+  type: instance-secret
+  description: "talos-example aws codecommit creds"
+  layer: user
+  instance-secret:
+    type: key-value
+    acl: rw
+    data:
+      GITSYNC_USERNAME: "lens2-codecommit-at-387694172098"
+      GITSYNC_PASSWORD: "56F4japOhkkQDS3trUnAe12cXRTCl9+uuAS1DFGTH872J3lnclDPgHThHLto="
+  ```
 
-=== "Read-write Instance Secret"
+  ```yaml Service manifest file
+  name: talos02
+  version: v1
+  type: service
+  tags:
+    - service
+    - dataos:type:resource
+    - dataos:resource:service
+    - dataos:layer:user
+  description: Talos Service
+  workspace: public
+  service:
+    servicePort: 3000
+    ingress:
+      enabled: true
+      stripPath: true
+      path: /talos/public:talos02
+      noAuthentication: true
+    replicas: 1
+    logLevel: DEBUG
+    compute: runnable-default
+    envs:
+      TALOS_SCHEMA_PATH: lens2/setup/talos1
+      TALOS_BASE_PATH: /talos/public:talos02
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 500m
+        memory: 512Mi
+    stack: talos:2.0
 
-    ```yaml title="read_write_instance_secret.yaml"
-    --8<-- "examples/resources/instance_secret/service/secret_rw.yaml"
-    ```
+    dataosSecrets:            # instance secret reference
+      - name: codecommit-r
+        allKeys: true
 
-    Now while creating the manifest file for your Service, ensure to include a reference to the Instance Secret using the `dataosSecrets` identifier, instead of directly specifying the secret using the `connectionSecrets` attribute:
+      - name: codecommit-rw
+        allkeys: true
 
-=== "Service"
+    stackSpec:
+      repo:
+        url: https://git-codecommit.ap-south-1.amazonaws.com/v1/repos/lens2/
+        projectDirectory: lens2/setup/talos1
+        syncFlags:
+          - '--ref=master'
+  ```
+</CodeGroup>
 
-    ```yaml title="service.yaml"
-    --8<-- "examples/resources/instance_secret/service/service.yaml"
-    ```
+Now while creating the manifest file for your Service, ensure to include a reference to the Instance Secret using the `dataosSecrets` identifier, instead of directly specifying the secret using the `connectionSecrets` attribute.
 
-<aside class="callout">
-
-🗣️ To ensure controlled access for read-write, it is essential to create two Instance Secrets: one with acl:r for read-only access and another with acl:rw for both read and write access and refer to both Instance-Secrets in a Service as shown above. This enables precise management of permissions for different levels of access.
-
-</aside>
+<Warning>
+  To ensure controlled access for read-write, it is essential to create two Instance Secrets: one with acl:r for read-only access and another with acl:rw for both read and write access and refer to both Instance-Secrets in a Service as shown above. This enables precise management of permissions for different levels of access.
+</Warning>
 
 Similarly, you can create and refer Instance Secrets to a [Workflow](/resources/workflow/).
