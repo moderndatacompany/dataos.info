@@ -305,7 +305,7 @@ query LensQuery {
 
 ## GraphQL API Reference
 
-### `table`
+### **`table`**
 
 ```graphql
 query {
@@ -322,7 +322,7 @@ query {
 | TableQueryArgs | TableQueryArgs | Options that apply to the entire query      |
 | TableArgs      | TableArgs      | Options that apply only to a specific table |
 
-### tableQueryArgs
+### **tableQueryArgs**
 
 * **`limit` (`Int`):** A [row limit](https://cube.dev/docs/product/apis-integrations/queries#row-limit) for your query.
 
@@ -330,14 +330,14 @@ query {
 
 * **`timezone` (`String`):** The [time zone](https://cube.dev/docs/product/apis-integrations/queries#time-zone) for your query. You can set the desired time zone in the [TZ Database Name(opens in a new tab)](https://en.wikipedia.org/wiki/Tz_database) format, e.g., `America/Los_Angeles`.
 
-### tableArgs
+### **tableArgs**
 
 | Key       | Schema                                  | Description                                                                                                                                                                                                                                  |
 | --------- | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `where`   | [`TableWhereInput`](#table-where-input) | The 'where' clause conditions specify the logical operators and filters you can use inside the where argument to refine your query. It uses logical operators like `AND`, `OR`  and to [filter](#filters) the specific table member filters. |
 | `orderBy` | `TableOrderByInput`                     | The `orderBy` clause specifies how to sort the query results. You can use it to sort by specific table members (fields/columns) in either ascending or descending order.                                                                     |
 
-### `tableWhereInput`
+### **`tableWhereInput`**
 
 | Key             | Schema              | Description                                                                                                                                                                                                   |
 | --------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -345,20 +345,18 @@ query {
 | `OR`            | `[RootWhereInput!]` | The `OR` condition allows you to combine multiple filter conditions. At least one condition within this group must be true for the query to return results.                                                   |
 | `<tableMember>` | `Filter`            | Represents a filter for a specific member (field) of the table. You can use different filter types like `DateTimeFilter`, `FloatFilter`, and `StringFilter` to refine results based on specific field values. |
 
-### `tableOrderByInput`
+### **`tableOrderByInput`**
 
 | Key             | Schema                 | Description |
 | --------------- | ---------------------- | ----------- |
 | `<tableMember>` | [`OrderBy`](#order-by) |             |
 
-## Filters
+### **Filters**
 
-These filters are used within the `where` clause to refine query results based on different data types like `DateTime`,
+These filters are used within the `where` clause to refine query results based on different data types like `DateTime`, `Float`, and `String`.
 
 [`DateTimeFilter`](#date-time-filter) | [`FloatFilter`](#float-time-filter) |
 [`StringFilter`](#string-time-filter)
-
-`Float`, and `String`.
 
 ### **`datetime` filter**
 
