@@ -308,7 +308,7 @@ query {
 | --------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `AND`           | `[RootWhereInput!]` | The `AND` condition allows you to combine multiple filter conditions. All conditions within this group must be true for the query to return results.                                                          |
 | `OR`            | `[RootWhereInput!]` | The `OR` condition allows you to combine multiple filter conditions. At least one condition within this group must be true for the query to return results.                                                   |
-| `<tableMember>` | [`Filter`](#filter)           | Represents a filter for a specific member (field) of the table. You can use different filter types like `DateTimeFilter`, `FloatFilter`, and `StringFilter` to refine results based on specific field values. |
+| `<tableMember>` | [`Filter`](#filter) | Represents a filter for a specific member (field) of the table. You can use different filter types like `DateTimeFilter`, `FloatFilter`, and `StringFilter` to refine results based on specific field values. |
 
 ### **`tableOrderByInput`**
 
@@ -405,7 +405,45 @@ A GraphQL query to retrieve the `city` dimension associated with an `account`
   ```
 </CodeGroup>
 
-### **Modifying time dimension granularity**
+### **Specifying  filters**
+
+Filters can be set on the load query or on a specific table. Specifying the filter on the load query applies it to all tables in the query. Filters can be added to the query as follows:
+
+```
+query LensQuery {
+    table{
+    account(
+      where: { premise_code: { equals: "OFF" } }
+    ) {
+      total_accounts
+      city
+      premise_code
+    }
+  }
+}
+```
+
+## Date filter
+
+This filter ensures that only records with `birth_date` values within the specified range, between `"1955-01-01"` and `"1955-03-03"`, are returned.
+
+```
+query LensQuery { 
+  table(limit: 10) { 
+    customers(
+      where: { birth_date: { inDateRange: ["1955-01-01", "1955-03-03"] } }
+    ) {
+      customer_name
+      marital_status
+      customer_key
+    } 
+  }
+}
+```
+
+##
+
+### **Time dimension granularity**
 
 The granularity for a time dimension can easily be changed by specifying it in the query:
 
@@ -437,71 +475,7 @@ query LensQuery {
 }
 ```
 
-### **Specifying filters**
-
-Filters can be set on the load query or on a specific table. Specifying the filter on the load query applies it to all tables in the query. Filters can be added to the query as follows:
-
-<CodeGroup>
-  ```graphql Query
-  query LensQuery {
-      table{
-      account(
-        where: { premise_code: { equals: "OFF" } }
-      ) {
-        total_accounts
-        city
-        premise_code
-      }
-    }
-  }
-  ```
-
-  ```
-  {
-    "data": {
-      "table": [
-        {
-          "account": {
-            "total_accounts": 25,
-            "city": "Los Angeles",
-            "premise_code": "OFF"
-          }
-        },
-        {
-          "account": {
-            "total_accounts": 11,
-            "city": "Kansas City",
-            "premise_code": "OFF"
-          }
-        }
-      ]
-    }
-  }
-  ```
-
-  ```
-  {
-    "data": {
-      "table": [
-        {
-          "account": {
-            "total_accounts": 25,
-            "city": "Los Angeles",
-            "premise_code": "OFF"
-          }
-        },
-        {
-          "account": {
-            "total_accounts": 11,
-            "city": "Kansas City",
-            "premise_code": "OFF"
-          }
-        }
-      ]
-    }
-  }
-  ```
-</CodeGroup>
+###
 
 **Specifying order by condition and limiting the result**
 

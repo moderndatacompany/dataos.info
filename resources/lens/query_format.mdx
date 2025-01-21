@@ -1,0 +1,111 @@
+---
+title: "GraphQL Query Examples"
+---
+
+### `equals`
+
+Use it when you need an exact match. It supports multiple values.
+
+* Applied to measures.
+
+* Dimension types: `string`, `number`, `time`.
+
+```graphql
+query LensQuery {
+  table(limit: 10) {
+    users(
+      where: { country: { equals: "US" } }
+    ) {
+      country
+    }
+  }
+}
+```
+
+### `notEquals`
+
+The opposite operator of `equals`. It supports multiple values.
+
+* Applied to measures.
+
+* Dimension types: `string`, `number`, `time`.
+
+```graphql
+query LensQuery {
+  table(limit: 10) {
+    users(
+      where: { country: { notEquals: "France" } }
+    ) {
+      country
+    }
+  }
+}
+```
+
+<Info>
+  If you would like to check if a value is not `NULL`, use the [`set`](https://cube.dev/docs/product/apis-integrations/rest-api/query-format#set) operator instead.
+</Info>
+
+### `contains`
+
+The `contains` filter acts as a wildcard case-insensitive `LIKE` operator. In
+the majority of SQL backends it uses `ILIKE` operator with values being
+surrounded by `%`. It supports multiple values.
+
+* Dimension types: `string`.
+
+```graphql
+query LensQuery {
+  table(limit: 10) {
+    customers(
+      where: { customer_name: { contains: ["MR. ADRIAN STEWART", "MR. AARON ROSS"] } }
+    ) {
+      customer_name
+      marital_status
+      customer_key
+    }
+  }
+}
+```
+
+### `notContains`
+
+The opposite operator of `contains`. It supports multiple values.
+
+* Dimension types: `string`.
+
+```json
+query LensQuery {
+  table(limit: 10) {
+    customers(
+      where: {customer_name: {notContains: ["MR. ADRIAN STEWART", "MR. AARAV ROSS"]}}
+    ) {
+      customer_name
+      marital_status
+      customer_key
+    }
+  }
+}
+```
+
+### `startsWith`
+
+The `startsWith` filter acts as a case-insensitive `LIKE` operator with a
+wildcard at the end. In the majority of SQL backends, it uses the `ILIKE`
+operator with `%` at the end of each value. It supports multiple values.
+
+* Dimension types: `string`.
+
+```graphql
+query LensQuery {
+  table(limit: 10) {
+    customers(
+      where: {customer_name: {startsWith: "MRS."}}
+    ) {
+      customer_name
+      marital_status
+      customer_key
+    }
+  }
+}
+```
