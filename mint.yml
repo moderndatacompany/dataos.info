@@ -49,21 +49,21 @@ topbarLinks:
   pages:
 
   * getting\_started/introduction
-  
-* group: Instance Secret
+
+* group: Introduction
   pages:
 
-  * resources/instance_secret/index
+  * resources/instance\_secret/index
 
   * group: First Steps
-    pages: 
+    pages:
 
-    * resources/instance_secret/first_steps
+    * resources/instance\_secret/first\_steps
 
   * group: Configurations
     pages:
 
-    * resources/instance_secret/configurations
+    * resources/instance\_secret/configurations
 
 * group: Lens
   pages:
