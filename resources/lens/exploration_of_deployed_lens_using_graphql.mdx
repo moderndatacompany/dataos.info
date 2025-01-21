@@ -464,7 +464,7 @@ query LensQuery {
 Filters can be set on the load query or on a specific table. Specifying the filter on the load query applies it to all tables in the query. Filters can be added to the query as follows:
 
 <CodeGroup>
-  ```graphql Query
+  ```javascript Query
   query LensQuery {
       table{
       account(
@@ -478,7 +478,7 @@ Filters can be set on the load query or on a specific table. Specifying the filt
   }
   ```
 
-  ```graphql
+  ```
   {
     "data": {
       "table": [
@@ -501,30 +501,7 @@ Filters can be set on the load query or on a specific table. Specifying the filt
   }
   ```
 
-  ```graphql
-  {
-    "data": {
-      "table": [
-        {
-          "account": {
-            "total_accounts": 25,
-            "city": "Los Angeles",
-            "premise_code": "OFF"
-          }
-        },
-        {
-          "account": {
-            "total_accounts": 11,
-            "city": "Kansas City",
-            "premise_code": "OFF"
-          }
-        }
-      ]
-    }
-  }
   ```
-
-  ```graphql Response
   {
     "data": {
       "table": [
@@ -553,7 +530,7 @@ Filters can be set on the load query or on a specific table. Specifying the filt
 A GraphQL query that specifies an order by condition and limits the number of results returned would look like this:
 
 <CodeGroup>
-  ```graphql Query
+  ```javascript Query
   query LensQuery {
       table(limit: 10) {
       account(
@@ -567,7 +544,8 @@ A GraphQL query that specifies an order by condition and limits the number of re
   }
   ```
 
-  ```graphql Response
+  ```json Response
+  console.log("He{
     "data": {
       "table": [
         {
@@ -638,7 +616,7 @@ A GraphQL query that specifies an order by condition and limits the number of re
 Using the same `account` table as before, let’s try and get the revenue for each. We can do this by adding the `sales` table to our query as follows:
 
 <CodeGroup>
-  ```graphql Query
+  ```javascript Query
   query LensQuery {
       table{
       account{
@@ -649,55 +627,6 @@ Using the same `account` table as before, let’s try and get the revenue for 
       sales{
         revenue
       }
-    }
-  }
-  ```
-
-  ```
-  {
-    "data": {
-      "table": [
-        {
-          "account": {
-            "total_accounts": 26,
-            "city": "Los Angeles",
-            "premise_code": "ON"
-          },
-          "sales": {
-            "revenue": 3911966
-          }
-        },
-        {
-          "account": {
-            "total_accounts": 25,
-            "city": "Los Angeles",
-            "premise_code": "OFF"
-          },
-          "sales": {
-            "revenue": 10562513
-          }
-        },
-        {
-          "account": {
-            "total_accounts": 7,
-            "city": "New York",
-            "premise_code": "BOTH"
-          },
-          "sales": {
-            "revenue": 937897
-          }
-        },
-        {
-          "account": {
-            "total_accounts": 5,
-            "city": "Chicago",
-            "premise_code": "OFF"
-          },
-          "sales": {
-            "revenue": 3206423
-          }
-        }
-      ]
     }
   }
   ```
