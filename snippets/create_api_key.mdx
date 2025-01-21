@@ -1,0 +1,65 @@
+---
+title: 'Create API key'
+---
+
+<Tabs>
+  <Tab title="Using CLI">
+    When prompted for a password, use the DataOS API Key as the password. To retrieve the API Key, run the following command in the terminal:
+
+    ```bash
+    dataos-ctl user apikey get
+
+    #Expected Output
+
+    TOKEN                  │  TYPE  │        EXPIRATION         │                   NAME                     
+    ────────────────┼──────┼───────────────────────────┼────────────────────────────────────────────
+    abcdefghijiklmnopqrstuvwxyz │ apikey │ 2024-12-06T05:30:00+05:30 │ token_urgently_generally_bursting_gobbler 
+    ```
+
+    If the API Key is not already available, create one using the following command:
+
+    ```bash
+    dataos-ctl user apikey create -n ${name-of-apikey} -i ${user-id} -d ${duration}
+    ```
+
+    For example, if the user name is iamgroot:
+
+    ```bash
+    dataos-ctl user apikey create -n test_api_key -i iamgroot -d 24h
+
+    #Expected_Output
+    INFO[0000] 🔑 user apikey...                             
+    INFO[0003] 🔑 user apikey...complete                     
+
+           TOKEN                │  TYPE  │        EXPIRATION         │     NAME      
+    ───────────────────────────────────────────────────────────────────────┼────────┼───────────────────────────┼───────────────
+    abcdefghijklmnopqrstuvwxyz== │ apikey │ 2024-11-29T12:30:00+05:30 │ test_api_key
+    ```
+  </Tab>
+
+  <Tab title="Using GUI">
+    When exploring the semantic model via Data Product Hub, you can easily generate an API key directly within the Data Product Hub. Below are the steps to create and view your API key:
+
+    1. **Accessing profile settings:**
+
+       * Navigate to the bottom-left corner of the Data Product Hub interface, where you will find your profile icon.
+
+       * Click on the profile icon to reveal a message displaying your profile details.
+
+       * Hover over the message and click on it to open the overview section of your profile.
+
+    2. **Viewing or creating an API key:**
+
+       * Within the overview section, click on the ‘Tokens’ tab.
+
+       * By default, API keys are hidden. To reveal your existing API key, click the eye icon next to the key.
+
+       * To copy the API key, simply click on the key.
+
+    3. **Creating a new API Key:**
+
+       * If an API key is not already listed, you can create a new one by clicking the `+ Add APIKey` button.
+
+       * A dialog box will appear where you can name your API key and set an expiration duration for the key, either in hours or by specifying a specific end date.
+  </Tab>
+</Tabs>
