@@ -1,9 +1,9 @@
 ---
-title: "Exploration of Lens using GraphQL"
+title: "GraphQL API"
 ---
 
 <Info>
-  For a more streamlined and interactive experience with GraphQL, use the GraphQL playground on Data Product Hub. This interface simplifies interactions and eliminates the need to manually work with tools like curl. [Access the GraphQL guide here](https://dataos.info/interfaces/data_product_hub/activation/app_development/).
+  For a more streamlined and interactive experience with GraphQL, use the GraphQL playground on Data Product Hub. This interface simplifies interactions and eliminates the need to manually work with tools like curl. [Access the GraphQL guide here](/interfaces/data_product_hub/activation/app_development/).
 </Info>
 
 This guide provides comprehensive instructions for accessing and interacting with the Lens GraphQL API. You can interact with the Lens GraphQL API using:
@@ -18,7 +18,7 @@ This guide provides comprehensive instructions for accessing and interacting wit
 
 ## Authentication and Authorization
 
-To securely interact with the Lens GraphQL API, you must authenticate your requests using a **DataOS API key** and ensure proper user group configurations. This section explains how to generate an API key and configure user groups to access the API.
+To securely interact with the Lens GraphQL API, you must authenticate your requests using a DataOS API key and ensure proper user group configurations. This section explains how to generate an API key and configure user groups to access the API.
 
 ### **Generating a DataOS API Key**
 
@@ -26,7 +26,7 @@ To authenticate API requests, you need a DataOS API key. This key validates your
 
 **Steps to Generate an API Key:**
 
-* Open your terminal and run the following command to create a new API key:&#x20;
+* Open your terminal and run the following command to create a new API key:
 
 ```bash
 dataos-ctl user apikey create
@@ -42,11 +42,11 @@ dataos-ctl user apikey get
 
 API key tokens can also be fetched from the DataOS GUI, for more details refer to the [documentation here](/interfaces/#create-tokens).
 
-### **Configuring User Groups**
+### **Configuring user groups**
 
 To access and query data through the GraphQL endpoint, users need to belong to a user group that has the appropriate permissions. These permissions are granted through the `api_scopes` attribute in the user group configuration, which can be found in the Lens directory. Each user group defines the API scopes (such as meta, data, source, or graphql) that determine the access level for various API endpoints.
 
-**Example User Group Configuration**
+**Example user group configuration**
 
 The following YAML configuration demonstrates how to set up user groups with different levels of access:
 
